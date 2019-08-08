@@ -284,16 +284,14 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 	}
 	valType := in.GetValueType()
 
-	keyPrefix := func(out bool) string {
-		if out {
-			return util.BtPropValOutPrefix
-		}
-		return util.BtPropValInPrefix
+	keyPrefix := map[bool]string{
+		true:  util.BtPropValOutPrefix,
+		false: util.BtPropValInPrefix,
 	}
 
 	rowRangeList := bigtable.RowRangeList{}
 	for _, dcid := range dcids {
-		rowPrefix := fmt.Sprintf("%s%s-%s", keyPrefix(arcOut), dcid, prop)
+		rowPrefix := fmt.Sprintf("%s%s-%s", keyPrefix[arcOut], dcid, prop)
 		if valType != "" {
 			rowPrefix = rowPrefix + "-" + valType
 		}
@@ -306,7 +304,7 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
 			parts := strings.Split(rowKey, "-")
-			dcid := strings.TrimPrefix(parts[0], keyPrefix(arcOut))
+			dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
 
 			btResult := btRow[util.BtFamily][0]
 			if _, ok := btRawValuesMap[dcid]; !ok {

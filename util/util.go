@@ -63,8 +63,10 @@ const (
 	BtNodeInfoPrefix = "d/c/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
-	// BtCacheLimit cache limit. The limit is per predicate and neighbor type.
+	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
 	BtCacheLimit = 100
+	// BtBatchQuerySize is the size of BigTable batch query.
+	BtBatchQuerySize = 1000
 	// LimitFactor is the amount to multiply the limit by to make sure certain
 	// triples are returned by the BQ query.
 	LimitFactor = 1
@@ -264,9 +266,9 @@ func BigTableReadRowsParallel(ctx context.Context, btClient *bigtable.Client,
 
 	errs, errCtx := errgroup.WithContext(ctx)
 	rowChan := make(chan []bigtable.Row, rowSetSize)
-	for i := 0; i <= rowSetSize/1000; i++ {
-		left := i * 1000
-		right := (i + 1) * 1000
+	for i := 0; i <= rowSetSize/BtBatchQuerySize; i++ {
+		left := i * BtBatchQuerySize
+		right := (i + 1) * BtBatchQuerySize
 		if right > rowSetSize {
 			right = rowSetSize
 		}
