@@ -24,10 +24,10 @@
 
 ## Build and deploy
 
-    gcloud builds submit --tag gcr.io/datcom-mixer/go-grpc-mixer:1.0 .
+    gcloud builds submit --tag gcr.io/datcom-mixer/go-grpc-mixer:<TAG> .
     cd deployment
     ./gcp.sh <PROJECT_ID>
-    ./gke.sh <PROJECT_ID> <TAG_ID> <DOMAIN>
+    ./gke.sh <PROJECT_ID> <TAG> <DOMAIN>
 
 ## (Optional) Use custom domain
 
