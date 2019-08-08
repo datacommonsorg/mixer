@@ -1,0 +1,68 @@
+# Copyright 2019 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# The configuration schema is defined by service.proto file
+# https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
+type: google.api.Service
+config_version: 3
+
+# Name of the service configuration.
+#_d|name: datacommons.endpoints.PROJECT_ID.cloud.goog
+#_c|name: DOMAIN
+
+# API title to appear in the user interface (Google Cloud Console).
+title: Data Commons API
+apis:
+- name: datacommons.Mixer
+
+# Endpoints DNS
+endpoints:
+#_d|- name: datacommons.endpoints.PROJECT_ID.cloud.goog
+#_d|  target: "IP_ADDRESS"
+#_c|- name: DOMAIN
+#_c|  target: "IP_ADDRESS"
+
+usage:
+  rules:
+  # Query methods can be called without an API Key.
+  - selector: datacommons.Mixer.Query
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.QueryPost
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPropertyLabels
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPropertyLabelsPost
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPropertyValues
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPropertyValuesPost
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetTriples
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetTriplesPost
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPopObs
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPlaceObs
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPopulations
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetObservations
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPlacesIn
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPlacesInPost
+    allow_unregistered_calls: true
+  - selector: datacommons.Mixer.GetPlaceKML
+    allow_unregistered_calls: true

@@ -1,0 +1,482 @@
+[
+  {
+    "predicate": "address",
+    "subType": "PlannedParenthoodClinic",
+    "objType": "PostalAddress"
+  },
+  {
+    "predicate": "addressLocality",
+    "subType": "PostalAddress",
+    "objType": "Borough"
+  },
+  {
+    "predicate": "addressLocality",
+    "subType": "PostalAddress",
+    "objType": "CensusCountyDivision"
+  },
+  {
+    "predicate": "addressLocality",
+    "subType": "PostalAddress",
+    "objType": "City"
+  },
+  {
+    "predicate": "addressLocality",
+    "subType": "PostalAddress",
+    "objType": "County"
+  },
+  {
+    "predicate": "addressLocality",
+    "subType": "PostalAddress",
+    "objType": "Town"
+  },
+  {
+    "predicate": "addressLocality",
+    "subType": "PostalAddress",
+    "objType": "Village"
+  },
+  {
+    "predicate": "addressRegion",
+    "subType": "PostalAddress",
+    "objType": "County"
+  },
+  {
+    "predicate": "addressRegion",
+    "subType": "PostalAddress",
+    "objType": "State"
+  },
+  {
+    "predicate": "award",
+    "subType": "EncodeBedFile",
+    "objType": "EncodeAward"
+  },
+  {
+    "predicate": "award",
+    "subType": "EncodeBiosample",
+    "objType": "EncodeAward"
+  },
+  {
+    "predicate": "biosampleOntology",
+    "subType": "EncodeBiosample",
+    "objType": "EncodeBiosampleType"
+  },
+  {
+    "predicate": "biosampleOntology",
+    "subType": "EncodeExperiment",
+    "objType": "EncodeBiosampleType"
+  },
+  {
+    "predicate": "carnegieResidenceType",
+    "subType": "CollegeOrUniversity",
+    "objType": "CarnegieResidenceTypeEnum"
+  },
+  {
+    "predicate": "carnegieSize",
+    "subType": "CollegeOrUniversity",
+    "objType": "CarnegieInstitutionSizeEnum"
+  },
+  {
+    "predicate": "carnegieType",
+    "subType": "CollegeOrUniversity",
+    "objType": "CarnegieInstitutionTypeEnum"
+  },
+  {
+    "predicate": "childhoodLocation",
+    "subType": "StatisticalPopulation",
+    "objType": "CensusTract"
+  },
+  {
+    "predicate": "childhoodLocation",
+    "subType": "StatisticalPopulation",
+    "objType": "CommutingZone"
+  },
+  {
+    "predicate": "childhoodLocation",
+    "subType": "StatisticalPopulation",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "Borough",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "Borough",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "CensusCoreBasedStatisticalArea",
+    "objType": "Country"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "CensusCountyDivision",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "CensusCountyDivision",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "CensusTract",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "CensusTract",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "City",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "City",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "CommutingZone",
+    "objType": "Country"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "CongressionalDistrict",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "Country",
+    "objType": "Continent"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "County",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "ElementarySchoolDistrict",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "ElementarySchoolDistrict",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "HighSchoolDistrict",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "PowerPlant",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "PowerPlantUnit",
+    "objType": "PowerPlant"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "SchoolDistrict",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "SchoolDistrict",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "State",
+    "objType": "Country"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "StateComponent",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "Town",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "Town",
+    "objType": "State"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "Village",
+    "objType": "County"
+  },
+  {
+    "predicate": "containedInPlace",
+    "subType": "Village",
+    "objType": "State"
+  },
+  {
+    "predicate": "continent",
+    "subType": "BiologicalSpecimen",
+    "objType": "Continent"
+  },
+  {
+    "predicate": "country",
+    "subType": "BiologicalSpecimen",
+    "objType": "Country"
+  },
+  {
+    "predicate": "domainIncludes",
+    "subType": "Property",
+    "objType": "Class"
+  },
+  {
+    "predicate": "doumainIncludes",
+    "subType": "Property",
+    "objType": "Class"
+  },
+  {
+    "predicate": "establishmentOwnership",
+    "subType": "Observation",
+    "objType": "EstablishmentOwnershipEnum"
+  },
+  {
+    "predicate": "forCandidate",
+    "subType": "ElectionCampaign",
+    "objType": "FECCandidateAccount"
+  },
+  {
+    "predicate": "forElection",
+    "subType": "ElectionCampaign",
+    "objType": "Election"
+  },
+  {
+    "predicate": "forOffice",
+    "subType": "Election",
+    "objType": "ElectedOffice"
+  },
+  {
+    "predicate": "forOffice",
+    "subType": "ElectionCampaign",
+    "objType": "ElectedOffice"
+  },
+  {
+    "predicate": "foundingLocation",
+    "subType": "MedicalOrganization",
+    "objType": "CensusCountyDivision"
+  },
+  {
+    "predicate": "fromExperiment",
+    "subType": "EncodeBedFile",
+    "objType": "EncodeExperiment"
+  },
+  {
+    "predicate": "host",
+    "subType": "EncodeBiosample",
+    "objType": "EncodeBiosample"
+  },
+  {
+    "predicate": "institutionType",
+    "subType": "CollegeOrUniversity",
+    "objType": "InstitutionControlEnum"
+  },
+  {
+    "predicate": "lab",
+    "subType": "EncodeBedFile",
+    "objType": "Lab"
+  },
+  {
+    "predicate": "lab",
+    "subType": "EncodeBiosample",
+    "objType": "Lab"
+  },
+  {
+    "predicate": "lab",
+    "subType": "EncodeExperiment",
+    "objType": "Lab"
+  },
+  {
+    "predicate": "library",
+    "subType": "EncodeBedFile",
+    "objType": "EncodeLibrary"
+  },
+  {
+    "predicate": "location",
+    "subType": "CollegeOrUniversity",
+    "objType": "State"
+  },
+  {
+    "predicate": "location",
+    "subType": "Election",
+    "objType": "CongressionalDistrict"
+  },
+  {
+    "predicate": "location",
+    "subType": "Election",
+    "objType": "Country"
+  },
+  {
+    "predicate": "location",
+    "subType": "Election",
+    "objType": "State"
+  },
+  {
+    "predicate": "memberOf",
+    "subType": "PlannedParenthoodClinic",
+    "objType": "MedicalOrganization"
+  },
+  {
+    "predicate": "memberOf",
+    "subType": "StatisticalPopulation",
+    "objType": "Cohort"
+  },
+  {
+    "predicate": "naics",
+    "subType": "Observation",
+    "objType": "NAICSEnum"
+  },
+  {
+    "predicate": "originatedFrom",
+    "subType": "EncodeBiosample",
+    "objType": "EncodeBiosample"
+  },
+  {
+    "predicate": "overlapsWith",
+    "subType": "CensusCoreBasedStatisticalArea",
+    "objType": "State"
+  },
+  {
+    "predicate": "parentOf",
+    "subType": "EncodeBiosample",
+    "objType": "EncodeBiosample"
+  },
+  {
+    "predicate": "partOf",
+    "subType": "EncodeBiosample",
+    "objType": "EncodeBiosample"
+  },
+  {
+    "predicate": "partyAffiliation",
+    "subType": "ElectionCampaign",
+    "objType": "PoliticalParty"
+  },
+  {
+    "predicate": "pooledFrom",
+    "subType": "EncodeBiosample",
+    "objType": "EncodeBiosample"
+  },
+  {
+    "predicate": "postalCode",
+    "subType": "CollegeOrUniversity",
+    "objType": "CensusZipCodeTabulationArea"
+  },
+  {
+    "predicate": "postalCode",
+    "subType": "PostalAddress",
+    "objType": "CensusZipCodeTabulationArea"
+  },
+  {
+    "predicate": "rangeIncludes",
+    "subType": "Property",
+    "objType": "Class"
+  },
+  {
+    "predicate": "rangeIncludes",
+    "subType": "Property",
+    "objType": "DataType"
+  },
+  {
+    "predicate": "rangeIncludes",
+    "subType": "Property",
+    "objType": "USC_TotalFieldsOfBachelorSDegreesReportedEnum"
+  },
+  {
+    "predicate": "reportsOnCandidate",
+    "subType": "FECAllCandidatesTwoYearFinancialSummary",
+    "objType": "FECCandidateAccount"
+  },
+  {
+    "predicate": "specializationOf",
+    "subType": "NAICSEnum",
+    "objType": "NAICSEnum"
+  },
+  {
+    "predicate": "subClassOf",
+    "subType": "Class",
+    "objType": "Class"
+  },
+  {
+    "predicate": "subClassOf",
+    "subType": "Class",
+    "objType": "DataType"
+  },
+  {
+    "predicate": "subClassOf",
+    "subType": "EnrollmentLevelEnum",
+    "objType": "Class"
+  },
+  {
+    "predicate": "subClassOf",
+    "subType": "IPEDSFamilyIncomeEnum",
+    "objType": "Class"
+  },
+  {
+    "predicate": "subClassOf",
+    "subType": "StudentTypeEnum",
+    "objType": "Class"
+  },
+  {
+    "predicate": "subClassificationOf",
+    "subType": "ICD10Code",
+    "objType": "ICD10Code"
+  },
+  {
+    "predicate": "subClassificationOf",
+    "subType": "ICD10Code",
+    "objType": "ICD10Section"
+  },
+  {
+    "predicate": "subClassificationOf",
+    "subType": "ICD10Section",
+    "objType": "ICD10Code"
+  },
+  {
+    "predicate": "subClassificationOf",
+    "subType": "ICD10Section",
+    "objType": "ICD10Section"
+  },
+  {
+    "predicate": "submittedBy",
+    "subType": "EncodeBedFile",
+    "objType": "Person"
+  },
+  {
+    "predicate": "submittedBy",
+    "subType": "EncodeBiosample",
+    "objType": "Person"
+  },
+  {
+    "predicate": "submittedBy",
+    "subType": "EncodeExperiment",
+    "objType": "Person"
+  },
+  {
+    "predicate": "supportsCandidate",
+    "subType": "PoliticalCampaignCmte",
+    "objType": "FECCandidateAccount"
+  },
+  {
+    "predicate": "supportsElectionCampaign",
+    "subType": "PoliticalCampaignCmte",
+    "objType": "ElectionCampaign"
+  }
+]

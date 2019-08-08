@@ -1,0 +1,366 @@
+// Copyright 2019 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package datacommons;
+
+import "google/api/annotations.proto";
+
+
+// Represents a triple in the Data Commons graph.
+message Triple {
+  // Subject dcid. Always set.
+  string subject_id = 1;
+
+  // Subject name.
+  string subject_name = 2;
+
+  // A list of types for subject
+  repeated string subject_types = 3;
+
+  // Predicate of the triple.
+  string predicate = 4;
+
+  // Object id for object that is node reference.
+  string object_id = 5;
+
+  // Object name for object that is node reference.
+  string object_name = 6;
+
+  // A list of types for object.
+  repeated string object_types = 7;
+
+  // Object value for leaf node.
+  string object_value = 8;
+
+  // Dcid of the Provenance for this triple.
+  string provenance_id = 9;
+
+}
+
+// A graph query request in Sparql query language.
+message QueryRequest {
+  // Sparql query string.
+  string sparql = 1;
+}
+
+// Cell in the QueryResponse
+message QueryResponseCell {
+  // Cell value.
+  string value = 1;
+
+  // Provenance ID.
+  string provenance_id = 2;
+}
+
+// A graph query response row corresponding to the query variables in graph query.
+message QueryResponseRow {
+  // A list of QueryResponseCell.
+  repeated QueryResponseCell cells = 1;
+}
+
+// Graph query response.
+message QueryResponse {
+  // Identifier for selected variable. Size of the header is the same as number
+  // of cells for each row.
+  repeated string header = 1;
+
+  // Query results, with each row containing cells corresponding to header
+  // variable order.
+  repeated QueryResponseRow rows = 2;
+}
+
+// Request to translate a graph query.
+message TranslateRequest {
+  // String representaion of schema mappings used to translate.
+  string schema_mapping = 1;
+
+  // String representation of datalog query.
+  string datalog = 2;
+}
+
+// Response of a translate request.
+message TranslateResponse {
+  // The translated sql.
+  string sql = 1;
+
+  // Serialized json string of the translation result
+  string translation = 2;
+}
+
+// Request to get property labels.
+message GetPropertyLabelsRequest {
+  // The dcids of nodes.
+  repeated string dcids = 1;
+}
+
+// Response returned by GetPropertyLabels.
+message GetPropertyLabelsResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get all neighboring nodes along an edge labeled by a property.
+message GetPropertyValuesRequest {
+  // The dcids of nodes to query for.
+  repeated string dcids = 1;
+
+  // The type of the neighboring node to query for.
+  string value_type = 2;
+
+  // The property to get adjacent nodes for.
+  string property = 3;
+
+  // Maximum number of nodes to query for.
+  int32 limit = 4;
+}
+
+// Response returned by GetPropertyValues.
+message GetPropertyValuesResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get all triples linking to the given nodes.
+message GetTriplesRequest {
+  // The dcids of the nodes to query for.
+  repeated string dcids = 1;
+
+  // Maximum number of triples for each property and type of the neighbor.
+  int32 limit = 2;
+}
+
+// Response returned by GetTriples.
+message GetTriplesResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get all population/observation information for a place.
+message GetPopObsRequest {
+  // DCID of a place.
+  string dcid = 1;
+}
+
+// Response of GetPopObs.
+message GetPopObsResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Represents a property value pair.
+message PropertyValue {
+  // The property schema
+  string property = 1;
+
+  // The value in string.
+  string value = 2;
+}
+
+// Requests to get observation for all place.
+message GetPlaceObsRequest {
+  // The type of the place.
+  string place_type = 1;
+
+  // The type of the Statistical population.
+  string population_type = 2;
+
+  // A list of constraining property values that defines the population.
+  repeated PropertyValue pvs = 3;
+}
+
+// Response of GetPlaceObs.
+message GetPlaceObsResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Get the KML file for a place.
+message GetPlaceKMLRequest {
+  // DCID of a place.
+  string dcid = 1;
+}
+
+// Response of GetPlaceKML.
+message GetPlaceKMLResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get certain population for a set of places.
+message GetPopulationsRequest {
+  // DCIDs for a list of places.
+  repeated string dcids = 1;
+
+  // Population type.
+  string population_type = 2;
+
+  // A list of constraining property values that define the population.
+  repeated PropertyValue pvs = 3;
+}
+
+// Response of GetPopulation.
+message GetPopulationsResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get observation given a list of population and observation properties.
+message GetObservationsRequest {
+  // Population for a list of populations.
+  repeated string dcids = 1;
+
+  // The measured property of the observation.
+  string measured_property = 2;
+
+  // The observation date.
+  string observation_date = 3;
+
+  // The statistics type, like "measured_value", "median_value", etc...
+  string stats_type = 4;
+
+  // (Optional) Observation period like "P1Y", "P3M" etc...
+  string observation_period = 5;
+
+  // (Opitonal) Measurement method used to get the observation.
+  string measurement_method = 6;
+}
+
+// Response of GetObservation request.
+message GetObservationsResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get places that are contained in parent places.
+message GetPlacesInRequest {
+  // The parent place dcids.
+  repeated string dcids = 1;
+
+  // The child place type.
+  string place_type = 2;
+}
+
+// Response of GetPlacesIn.
+message GetPlacesInResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+service Mixer {
+
+  // Query DataCommons Graph with Sparql.
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    option (google.api.http) = { get: "/query" };
+  }
+
+  // Query DataCommons Graph with Sparql.
+  rpc QueryPost(QueryRequest) returns (QueryResponse) {
+    option (google.api.http) = {
+      post: "/query"
+      body: "*"
+    };
+  }
+
+  // Fetch property labels adjacent of nodes
+  rpc GetPropertyLabels(GetPropertyLabelsRequest) returns (GetPropertyLabelsResponse) {
+    option (google.api.http) = { get: "/node/property-labels"};
+  }
+
+  // Fetch property labels adjacent of nodes
+  rpc GetPropertyLabelsPost(GetPropertyLabelsRequest) returns (GetPropertyLabelsResponse) {
+    option (google.api.http) = {
+      post: "/node/property-labels"
+      body: "*"
+    };
+  }
+
+  // Fetch nodes that linked to source nodes with a given property.
+  rpc GetPropertyValues(GetPropertyValuesRequest) returns (GetPropertyValuesResponse) {
+    option (google.api.http) = { get: "/node/property-values" };
+  }
+
+  // Fetch nodes that linked to source nodes with a given property.
+  rpc GetPropertyValuesPost(GetPropertyValuesRequest) returns (GetPropertyValuesResponse) {
+    option (google.api.http) = {
+      post: "/node/property-values"
+      body: "*"
+    };
+  }
+
+  // Fetch triples that have the given nodes as subject or object.
+  rpc GetTriples(GetTriplesRequest) returns (GetTriplesResponse) {
+    option (google.api.http) = { get: "/node/triples"};
+  }
+
+  // Fetch triples that have the given nodes as subject or object.
+  rpc GetTriplesPost(GetTriplesRequest) returns (GetTriplesResponse) {
+    option (google.api.http) = {
+      post: "/node/triples"
+      body: "*"
+    };
+  }
+
+  // Get populations for a list of places, given the population type and constraining property values.
+  rpc GetPopulations(GetPopulationsRequest) returns (GetPopulationsResponse) {
+    option (google.api.http) = {
+      post: "/node/populations"
+      body: "*"
+    };
+  }
+
+  // Get observations for a list of population, given the observation constraints.
+  rpc GetObservations(GetObservationsRequest) returns (GetObservationsResponse) {
+    option (google.api.http) = {
+      post: "/node/observations"
+      body: "*"
+    };
+  }
+
+  // Get places contained in parent places.
+  rpc GetPlacesIn(GetPlacesInRequest) returns (GetPlacesInResponse) {
+    option (google.api.http) = { get: "/node/places-in" };
+  }
+
+  // Get places contained in parent places.
+  rpc GetPlacesInPost(GetPlacesInRequest) returns (GetPlacesInResponse) {
+    option (google.api.http) = {
+      post: "/node/places-in"
+      body: "*"
+    };
+  }
+
+  // Get population and observation data for a place.
+  rpc GetPopObs(GetPopObsRequest) returns (GetPopObsResponse) {
+    option (google.api.http) = { get: "/bulk/pop-obs"};
+  }
+
+  // Get observation data for a list of places, given place type, population type, and
+  // population constraining properties.
+  rpc GetPlaceObs(GetPlaceObsRequest) returns (GetPlaceObsResponse) {
+    option (google.api.http) = {
+      post: "/bulk/place-obs"
+      body: "*"
+    };
+  }
+
+  // Get KML coordinates for a place.
+  rpc GetPlaceKML(GetPlaceKMLRequest) returns (GetPlaceKMLResponse) {
+    option (google.api.http) = { get: "/bulk/place-kml" };
+  }
+
+  // Translate datalog query into SQL and translation objects.
+  rpc Translate(TranslateRequest) returns (TranslateResponse) {}
+}

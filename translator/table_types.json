@@ -1,0 +1,84 @@
+{
+  "table_types":[
+    {
+      "parent": "StatisticalPopulation",
+      "table": "StatisticalPopulation"
+    },
+    {
+      "parent": "Observation",
+      "table": "Observation",
+      "children": [
+          "ComparativeObservation"
+      ]
+    },
+    {
+      "parent": "Quantity",
+      "children": ["QuantityRange"],
+      "table": "Quantity"
+    },
+    {
+      "parent": "Place",
+      "children": [
+        "Continent",
+        "Country",
+        "State",
+        "County",
+        "City",
+        "StateComponent",
+        "CensusCoreBasedStatisticalArea",
+        "CensusCountyDivision",
+        "CensusTract",
+        "CensusZipCodeTabulationArea",
+        "CongressionalDistrict",
+        "SchoolDistrict",
+        "ElementarySchoolDistrict",
+        "HighSchoolDistrict",
+        "CommutingZone",
+        "Borough",
+        "Town",
+        "Village"
+      ],
+      "table": "Place"
+    },
+    {
+      "parent": "Place",
+      "children": [
+        "Continent",
+        "Country",
+        "State",
+        "County",
+        "City",
+        "StateComponent",
+        "CensusCoreBasedStatisticalArea",
+        "CensusCountyDivision",
+        "CensusTract",
+        "CensusZipCodeTabulationArea",
+        "CongressionalDistrict",
+        "SchoolDistrict",
+        "ElementarySchoolDistrict",
+        "HighSchoolDistrict",
+        "CommutingZone",
+        "Borough",
+        "Town",
+        "Village"
+      ],
+      "table": "PlaceExt"
+    },
+    {
+      "parent": "BedLine",
+      "table": "EncodeBedLine"
+    },
+    {
+      "parent": "Provenance",
+      "table": "Provenance"
+    },
+    {
+      "parent": "Source",
+      "table": "Source"
+    },
+    {
+      "parent": "Curator",
+      "table": "Curator"
+    }
+  ]
+}
