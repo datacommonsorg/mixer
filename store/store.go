@@ -78,19 +78,17 @@ type store struct {
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
 func NewStore(ctx context.Context, bqDb, projectID, schemaPath string,
-	subTypeMap map[string]string, containedIn map[util.TypePair][]string) (Interface, error) {
-	// Initialize BigQuery client
-	bqOptions := []option.ClientOption{}
-	bqClient, err := bigquery.NewClient(ctx, projectID, bqOptions...)
+	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
+	opts ...option.ClientOption) (Interface, error) {
+	// BigQuery.
+	bqClient, err := bigquery.NewClient(ctx, projectID, opts...)
 	if err != nil {
 		return nil, err
 	}
-
 	files, err := ioutil.ReadDir(schemaPath)
 	if err != nil {
 		return nil, err
 	}
-
 	mappings := []*base.Mapping{}
 	for _, f := range files {
 		if strings.HasSuffix(f.Name(), ".mcf") {
@@ -105,12 +103,11 @@ func NewStore(ctx context.Context, bqDb, projectID, schemaPath string,
 			mappings = append(mappings, mapping...)
 		}
 	}
-
 	outArcInfo := map[string]map[string][]translator.OutArcInfo{}
 	inArcInfo := map[string][]translator.InArcInfo{}
 
-	btOptions := []option.ClientOption{}
-	btClient, err := bigtable.NewClient(ctx, util.BtProject, util.BtInstance, btOptions...)
+	// Bigtable.
+	btClient, err := bigtable.NewClient(ctx, util.BtProject, util.BtInstance, opts...)
 	if err != nil {
 		return nil, err
 	}
