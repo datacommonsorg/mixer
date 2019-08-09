@@ -55,13 +55,16 @@ func main() {
 		Dcids:     []string{"geoId/06", "geoId/08"},
 		PlaceType: "County",
 	}
+	schoolReq := &pb.GetPlacesInRequest{
+		Dcids:     []string{"geoId/51111"},
+		PlaceType: "SchoolDistrict",
+	}
 
 	// Call GetPlacesIn
-	if testGetPlaceIn(ctx, c, countryReq) != nil {
-		log.Printf("Error: %v", err)
-	}
-	if testGetPlaceIn(ctx, c, stateReq) != nil {
-		log.Printf("Error: %v", err)
+	for _, req := range []*pb.GetPlacesInRequest{countryReq, stateReq, schoolReq} {
+		if testGetPlaceIn(ctx, c, req) != nil {
+			log.Printf("Error: %v", err)
+		}
 	}
 }
 
