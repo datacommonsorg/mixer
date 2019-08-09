@@ -15,16 +15,13 @@
 package main
 
 import (
-	"bytes"
 	"context"
 	"flag"
-	"fmt"
 	"log"
 	"time"
 
-	"encoding/json"
-
 	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc"
 )
 
@@ -45,7 +42,7 @@ func main() {
 	ctx := context.Background()
 
 	req := &pb.GetPlaceKMLRequest{Dcid: "geoId/04"}
-	fmt.Printf("Requesting { %s}\n", req)
+	log.Printf("Requesting { %s}\n", req)
 
 	start := time.Now()
 	res, err := c.GetPlaceKML(ctx, req)
@@ -54,11 +51,11 @@ func main() {
 		log.Fatalf("GetPlaceKML() = %v", err)
 	}
 
-	// Print the payload.
-	var jsonFmt bytes.Buffer
-	if err := json.Indent(&jsonFmt, []byte(res.GetPayload()), "", "  "); err != nil {
-		log.Fatalf("json.Indent() = %v", err)
+	jsonRaw, err := util.UnzipAndDecode(res.GetPayload())
+	if err != nil {
+		log.Fatalf("util.UnzipAndDecode() = %v", err)
 	}
-	fmt.Println(string(jsonFmt.Bytes()))
-	fmt.Printf("Request took: %s\n\n", elapsed)
+	log.Printf("%s", string(jsonRaw))
+
+	log.Printf("Request took: %s\n\n", elapsed)
 }

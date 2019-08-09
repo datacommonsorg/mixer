@@ -20,6 +20,7 @@ import (
 	"log"
 
 	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc"
 )
 
@@ -63,5 +64,11 @@ func main() {
 	}
 
 	log.Printf("Now printing place obs:\n")
-	log.Printf("%s", r.GetPayload())
+
+	jsonRaw, err := util.UnzipAndDecode(r.GetPayload())
+	if err != nil {
+		log.Fatalf("util.UnzipAndDecode() = %v", err)
+	}
+
+	log.Printf("%s", string(jsonRaw))
 }

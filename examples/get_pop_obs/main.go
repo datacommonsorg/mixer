@@ -20,6 +20,7 @@ import (
 	"log"
 
 	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc"
 )
 
@@ -57,6 +58,13 @@ func getPopObs(ctx context.Context, c pb.MixerClient, dcid string) {
 	if err != nil {
 		log.Fatalf("could not GetPopObs: %s", err)
 	}
+
 	log.Printf("Now printing pop obs for dcid = %s", dcid)
-	log.Printf("%s", r.GetPayload())
+
+	jsonRaw, err := util.UnzipAndDecode(r.GetPayload())
+	if err != nil {
+		log.Fatalf("util.UnzipAndDecode() = %v", err)
+	}
+
+	log.Printf("%s", string(jsonRaw))
 }
