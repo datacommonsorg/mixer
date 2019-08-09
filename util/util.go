@@ -41,7 +41,7 @@ const (
 	// BtInstance for internal cache instance.
 	BtInstance = "prophet-cache"
 	// BtTable for internal table.
-	BtTable = "dc7"
+	BtTable = "dc8"
 	// BtPropValInPrefix for internal GetPropertyValues in arc cache.
 	BtPropValInPrefix = "d/0/"
 	// BtPropValOutPrefix for internal GetPropertyValues out arc cache.
@@ -63,7 +63,7 @@ const (
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
-	BtCacheLimit = 100
+	BtCacheLimit = 200
 	// BtBatchQuerySize is the size of BigTable batch query.
 	BtBatchQuerySize = 1000
 	// LimitFactor is the amount to multiply the limit by to make sure certain
@@ -232,9 +232,15 @@ func SnakeToCamel(s string) string {
 
 	var result string
 	parts := strings.Split(s, "_")
-	for i, p := range parts {
-		if i == 0 {
+	capitalize := false
+	for _, p := range parts {
+		if p == "" {
+			continue
+		}
+
+		if !capitalize {
 			result += p
+			capitalize = true
 		} else {
 			result += strings.Title(p)
 		}
