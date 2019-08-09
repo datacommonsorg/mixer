@@ -286,13 +286,6 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 		return err
 	}
 
-	// Iterate through all dcids to make sure they are present in the final result.
-	for _, dcid := range dcids {
-		if _, ok := dcidStore[dcid]; !ok {
-			collection = append(collection, &PopObs{PopulationID: dcid})
-		}
-	}
-
 	jsonRaw, err := json.Marshal(collection)
 	if err != nil {
 		return err
