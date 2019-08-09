@@ -199,7 +199,7 @@ func (s *store) bqGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	out *pb.GetObservationsResponse) error {
 	qStr := fmt.Sprintf(
 		"SELECT id, %s FROM `%s.Observation` WHERE observed_node_key IN (%s) AND observation_date = \"%s\" AND measured_prop = \"%s\" ",
-		in.GetStatsType(),
+		util.CamelToSnake(in.GetStatsType()),
 		s.bqDb,
 		util.StringList(in.GetDcids()),
 		in.GetObservationDate(),

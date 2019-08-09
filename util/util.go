@@ -22,6 +22,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"regexp"
 	"sort"
 	"strings"
 
@@ -245,6 +246,13 @@ func SnakeToCamel(s string) string {
 		}
 	}
 	return result
+}
+
+var match = regexp.MustCompile("([a-z0-9])([A-Z])")
+
+// CamelToSnake converts a camel case string to snake case string.
+func CamelToSnake(str string) string {
+	return strings.ToLower(match.ReplaceAllString(str, "${1}_${2}"))
 }
 
 // BigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet
