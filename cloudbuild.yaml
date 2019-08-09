@@ -1,0 +1,7 @@
+# Test the module.
+steps:
+
+- id: go_test
+  name: mirror.gcr.io/library/golang
+  env: ['GO111MODULE=on']
+  args: ['go', 'test', './...']
