@@ -76,17 +76,14 @@ func (s *store) bqGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 	out *pb.GetPopulationsResponse) error {
 	collection := []*PlacePopInfo{}
 
+	// Construct the query string.
 	numConstraints := len(in.GetPvs())
 	qStr := fmt.Sprintf("SELECT p.id, p.place_key "+
 		"FROM `%s.StatisticalPopulation` AS p "+
 		"WHERE p.place_key IN (%s) "+
+		"AND p.population_type = \"%s\" "+
 		"AND p.num_constraints = %d",
-		s.bqDb, util.StringList(in.GetDcids()), numConstraints)
-
-	if in.GetPopulationType() != "" {
-		qStr += fmt.Sprintf(" AND p.population_type = \"%s\"", in.GetPopulationType())
-	}
-
+		s.bqDb, util.StringList(in.GetDcids()), in.GetPopulationType(), numConstraints)
 	if numConstraints > 0 {
 		util.IterateSortPVs(in.GetPvs(), func(i int, p, v string) {
 			qStr += fmt.Sprintf(" AND p.p%d = \"%s\" AND p.v%d = \"%s\"",
@@ -94,6 +91,10 @@ func (s *store) bqGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 		})
 	}
 
+	// Log the query string.
+	log.Printf("GetPopulations: Sending query \"%s\"", qStr)
+
+	// Issue the query to BQ.
 	q := s.bqClient.Query(qStr)
 	it, err := q.Read(ctx)
 	if err != nil {
@@ -114,6 +115,7 @@ func (s *store) bqGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 		})
 	}
 
+	// Format the response
 	jsonRaw, err := json.Marshal(collection)
 	if err != nil {
 		return err
@@ -127,6 +129,7 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 	out *pb.GetPopulationsResponse) error {
 	dcids := in.GetDcids()
 
+	// Create the cache key suffix
 	keySuffix := "-" + in.GetPopulationType()
 	if len(in.GetPvs()) > 0 {
 		util.IterateSortPVs(in.GetPvs(), func(i int, p, v string) {
@@ -134,11 +137,14 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 		})
 	}
 
+	// Generate the list of all keys to query cache for
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		rowList = append(rowList, util.BtPopPrefix+dcid+keySuffix)
+		btKey := util.BtPopPrefix + dcid + keySuffix
+		rowList = append(rowList, btKey)
 	}
 
+	// Query the cache
 	collection := []*PlacePopInfo{}
 	dcidStore := map[string]struct{}{}
 	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
@@ -153,24 +159,21 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 				if err != nil {
 					return err
 				}
-				collection = append(collection, &PlacePopInfo{
-					PlaceID:      dcid,
-					PopulationID: string(popIDRaw),
-				})
-				dcidStore[dcid] = struct{}{}
+				popIDFmt := string(popIDRaw)
+				if len(popIDFmt) > 0 {
+					collection = append(collection, &PlacePopInfo{
+						PlaceID:      dcid,
+						PopulationID: popIDFmt,
+					})
+					dcidStore[dcid] = struct{}{}
+				}
 			}
 			return nil
 		}); err != nil {
 		return err
 	}
 
-	// Iterate through all dcids to make sure they are present in the final result.
-	for _, dcid := range dcids {
-		if _, ok := dcidStore[dcid]; !ok {
-			collection = append(collection, &PlacePopInfo{PlaceID: dcid})
-		}
-	}
-
+	// Format the response
 	jsonRaw, err := json.Marshal(collection)
 	if err != nil {
 		return err
@@ -197,21 +200,41 @@ func (s *store) GetObservations(ctx context.Context, in *pb.GetObservationsReque
 
 func (s *store) bqGetObservations(ctx context.Context, in *pb.GetObservationsRequest,
 	out *pb.GetObservationsResponse) error {
+	// Construct the query string.
 	qStr := fmt.Sprintf(
-		"SELECT id, %s FROM `%s.Observation` WHERE observed_node_key IN (%s) AND observation_date = \"%s\" AND measured_prop = \"%s\" ",
+		"SELECT id, %s FROM `%s.Observation` "+
+		"WHERE observed_node_key IN (%s) "+
+		"AND observation_date = \"%s\" "+
+		"AND measured_prop = \"%s\"",
 		util.CamelToSnake(in.GetStatsType()),
 		s.bqDb,
 		util.StringList(in.GetDcids()),
 		in.GetObservationDate(),
 		in.GetMeasuredProperty(),
 	)
+
+	// Add optional parameters for an observations
 	if in.GetObservationPeriod() != "" {
-		qStr += fmt.Sprintf("AND observation_period = \"%s\" ", in.GetObservationPeriod())
+		qStr += fmt.Sprintf(
+			"AND observation_period = \"%s\" ",
+			in.GetObservationPeriod(),
+		)
+	} else {
+		qStr += " AND observation_period is NULL"
 	}
 	if in.GetMeasurementMethod() != "" {
-		qStr += fmt.Sprintf("AND measurement_method = \"%s\" ", in.GetMeasurementMethod())
+		qStr += fmt.Sprintf(
+			"AND measurement_method = \"%s\" ",
+			in.GetMeasurementMethod(),
+		)
+	} else {
+		qStr += " AND measurement_method is NULL"
 	}
-	log.Printf("Query: %v\n", qStr)
+
+	// Log the query string.
+	log.Printf("GetObservations: Sending query \"%s\"", qStr)
+
+	// Execute the query and collect the response.
 	q := s.bqClient.Query(qStr)
 	it, err := q.Read(ctx)
 	if err != nil {
@@ -241,11 +264,14 @@ func (s *store) bqGetObservations(ctx context.Context, in *pb.GetObservationsReq
 		}
 		collection = append(collection, PopObs{id, strconv.FormatFloat(m, 'f', 6, 64)})
 	}
+
+	// Format the response
 	jsonRaw, err := json.Marshal(collection)
 	if err != nil {
 		return err
 	}
 	out.Payload = string(jsonRaw)
+
 	return nil
 }
 
@@ -253,14 +279,17 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	out *pb.GetObservationsResponse) error {
 	dcids := in.GetDcids()
 
+	// Construct the list of cache keys to query.
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		rowList = append(rowList,
-			fmt.Sprintf("%s%s-%s-%s-%s-%s-%s", util.BtObsPrefix, dcid, in.GetMeasuredProperty(),
-				util.SnakeToCamel(in.GetStatsType()), in.GetObservationDate(),
-				in.GetObservationPeriod(), in.GetMeasurementMethod()))
+		btKey := fmt.Sprintf("%s%s-%s-%s-%s-%s-%s",
+			util.BtObsPrefix, dcid, in.GetMeasuredProperty(),
+			util.SnakeToCamel(in.GetStatsType()), in.GetObservationDate(),
+			in.GetObservationPeriod(), in.GetMeasurementMethod())
+		rowList = append(rowList, btKey)
 	}
 
+	// Query the cache for all keys.
 	collection := []*PopObs{}
 	dcidStore := map[string]struct{}{}
 	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
@@ -270,22 +299,28 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 			parts := strings.Split(rowKey, "-")
 			dcid := strings.TrimPrefix(parts[0], util.BtObsPrefix)
 
+			// Add the results of the query.
 			if len(btRow[util.BtFamily]) > 0 {
 				valRaw, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
 				if err != nil {
 					return err
 				}
-				collection = append(collection, &PopObs{
-					PopulationID:     dcid,
-					ObservationValue: string(valRaw),
-				})
-				dcidStore[dcid] = struct{}{}
+
+				valFmt := string(valRaw)
+				if len(valFmt) > 0 {
+					collection = append(collection, &PopObs{
+						PopulationID:     dcid,
+						ObservationValue: valFmt,
+					})
+					dcidStore[dcid] = struct{}{}
+				}
 			}
 			return nil
 		}); err != nil {
 		return err
 	}
 
+	// Format the response
 	jsonRaw, err := json.Marshal(collection)
 	if err != nil {
 		return err
