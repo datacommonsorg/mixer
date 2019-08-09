@@ -48,6 +48,8 @@ message Triple {
   // Dcid of the Provenance for this triple.
   string provenance_id = 9;
 
+  // Type of object value, 'Text' or 'Number'.
+  string object_value_type = 10;
 }
 
 // A graph query request in Sparql query language.
