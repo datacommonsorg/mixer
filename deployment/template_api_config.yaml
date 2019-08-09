@@ -32,37 +32,3 @@ endpoints:
 #_d|  target: "IP_ADDRESS"
 #_c|- name: DOMAIN
 #_c|  target: "IP_ADDRESS"
-
-usage:
-  rules:
-  # Query methods can be called without an API Key.
-  - selector: datacommons.Mixer.Query
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.QueryPost
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPropertyLabels
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPropertyLabelsPost
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPropertyValues
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPropertyValuesPost
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetTriples
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetTriplesPost
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPopObs
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPlaceObs
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPopulations
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetObservations
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPlacesIn
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPlacesInPost
-    allow_unregistered_calls: true
-  - selector: datacommons.Mixer.GetPlaceKML
-    allow_unregistered_calls: true
