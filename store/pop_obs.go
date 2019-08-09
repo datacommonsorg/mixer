@@ -26,7 +26,6 @@ import (
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
-	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 )
 
@@ -52,7 +51,7 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest, out *pb.
 	return nil
 }
 
-// PlacePopInfo contains basic info for a place and a pop.
+// PlacePopInfo contains basic info for a place and a population.
 type PlacePopInfo struct {
 	PlaceID      string `json:"dcid,omitempty"`
 	PopulationID string `json:"population,omitempty"`
@@ -126,7 +125,6 @@ func (s *store) bqGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 
 func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsRequest,
 	out *pb.GetPopulationsResponse) error {
-	btTable := s.btClient.Open(util.BtTable)
 	dcids := in.GetDcids()
 
 	keySuffix := "-" + in.GetPopulationType()
@@ -141,58 +139,29 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 		rowList = append(rowList, util.BtPopPrefix+dcid+keySuffix)
 	}
 
-	collectionChan := make(chan []*PlacePopInfo, len(rowList)/1000+1)
-	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= len(rowList)/1000; i++ {
-		left := i * 1000
-		right := (i + 1) * 1000
-		if right > len(rowList) {
-			right = len(rowList)
-		}
-
-		errs.Go(func() error {
-			collection := []*PlacePopInfo{}
-
-			if err := btTable.ReadRows(errCtx, rowList[left:right], func(btRow bigtable.Row) bool {
-				// Extract DCID from row key.
-				rowKey := btRow.Key()
-				parts := strings.Split(rowKey, "-")
-				dcid := strings.TrimPrefix(parts[0], util.BtPopPrefix)
-
-				if len(btRow[util.BtFamily]) > 0 {
-					popIDRaw, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
-					if err != nil {
-						return false
-					}
-					collection = append(collection, &PlacePopInfo{
-						PlaceID:      dcid,
-						PopulationID: string(popIDRaw),
-					})
-				}
-				return true
-			}); err != nil {
-				return err
-			}
-
-			collectionChan <- collection
-
-			return nil
-		})
-	}
-
-	err := errs.Wait()
-	if err != nil {
-		return err
-	}
-	close(collectionChan)
-
 	collection := []*PlacePopInfo{}
 	dcidStore := map[string]struct{}{}
-	for c := range collectionChan {
-		collection = append(collection, c...)
-		for _, item := range c {
-			dcidStore[item.PlaceID] = struct{}{}
-		}
+	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			rowKey := btRow.Key()
+			parts := strings.Split(rowKey, "-")
+			dcid := strings.TrimPrefix(parts[0], util.BtPopPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				popIDRaw, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
+				if err != nil {
+					return err
+				}
+				collection = append(collection, &PlacePopInfo{
+					PlaceID:      dcid,
+					PopulationID: string(popIDRaw),
+				})
+				dcidStore[dcid] = struct{}{}
+			}
+			return nil
+		}); err != nil {
+		return err
 	}
 
 	// Iterate through all dcids to make sure they are present in the final result.
@@ -282,7 +251,6 @@ func (s *store) bqGetObservations(ctx context.Context, in *pb.GetObservationsReq
 
 func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsRequest,
 	out *pb.GetObservationsResponse) error {
-	btTable := s.btClient.Open(util.BtTable)
 	dcids := in.GetDcids()
 
 	rowList := bigtable.RowList{}
@@ -293,59 +261,29 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 				in.GetObservationPeriod(), in.GetMeasurementMethod()))
 	}
 
-	collectionChan := make(chan []*PopObs, len(rowList)/1000+1)
-	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= len(rowList)/1000; i++ {
-		left := i * 1000
-		right := (i + 1) * 1000
-		if right > len(rowList) {
-			right = len(rowList)
-		}
-
-		errs.Go(func() error {
-			collection := []*PopObs{}
-
-			if err := btTable.ReadRows(errCtx, rowList[left:right], func(btRow bigtable.Row) bool {
-				// Extract DCID from row key.
-				rowKey := btRow.Key()
-				parts := strings.Split(rowKey, "-")
-				dcid := strings.TrimPrefix(parts[0], util.BtObsPrefix)
-
-				if len(btRow[util.BtFamily]) > 0 {
-					valRaw, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
-					if err != nil {
-						return false
-					}
-					collection = append(collection, &PopObs{
-						PopulationID:     dcid,
-						ObservationValue: string(valRaw),
-					})
-				}
-				return true
-			}); err != nil {
-				return err
-			}
-
-			collectionChan <- collection
-
-			return nil
-		})
-	}
-
-	err := errs.Wait()
-	if err != nil {
-		return err
-	}
-	close(collectionChan)
-
 	collection := []*PopObs{}
 	dcidStore := map[string]struct{}{}
-	for c := range collectionChan {
-		collection = append(collection, c...)
+	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			rowKey := btRow.Key()
+			parts := strings.Split(rowKey, "-")
+			dcid := strings.TrimPrefix(parts[0], util.BtObsPrefix)
 
-		for _, item := range c {
-			dcidStore[item.PopulationID] = struct{}{}
-		}
+			if len(btRow[util.BtFamily]) > 0 {
+				valRaw, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
+				if err != nil {
+					return err
+				}
+				collection = append(collection, &PopObs{
+					PopulationID:     dcid,
+					ObservationValue: string(valRaw),
+				})
+				dcidStore[dcid] = struct{}{}
+			}
+			return nil
+		}); err != nil {
+		return err
 	}
 
 	// Iterate through all dcids to make sure they are present in the final result.

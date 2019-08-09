@@ -17,6 +17,7 @@ package util
 import (
 	"bytes"
 	"compress/gzip"
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -24,7 +25,9 @@ import (
 	"sort"
 	"strings"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -60,8 +63,10 @@ const (
 	BtNodeInfoPrefix = "d/c/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
-	// BtMaxCachedLines is the number of triples cached per DCID.
-	BtMaxCachedLines = 100
+	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
+	BtCacheLimit = 100
+	// BtBatchQuerySize is the size of BigTable batch query.
+	BtBatchQuerySize = 1000
 	// LimitFactor is the amount to multiply the limit by to make sure certain
 	// triples are returned by the BQ query.
 	LimitFactor = 1
@@ -236,4 +241,71 @@ func SnakeToCamel(s string) string {
 		}
 	}
 	return result
+}
+
+// BigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet
+// is 500KB.
+func BigTableReadRowsParallel(ctx context.Context, btClient *bigtable.Client,
+	rowSet bigtable.RowSet, action func(row bigtable.Row) error) error {
+	btTable := btClient.Open(BtTable)
+
+	var rowSetSize int
+	var rowList bigtable.RowList
+	var rowRangeList bigtable.RowRangeList
+
+	switch v := rowSet.(type) {
+	case bigtable.RowList:
+		rowList = rowSet.(bigtable.RowList)
+		rowSetSize = len(rowList)
+	case bigtable.RowRangeList:
+		rowRangeList = rowSet.(bigtable.RowRangeList)
+		rowSetSize = len(rowRangeList)
+	default:
+		return fmt.Errorf("unsupported RowSet type: %v", v)
+	}
+
+	errs, errCtx := errgroup.WithContext(ctx)
+	rowChan := make(chan []bigtable.Row, rowSetSize)
+	for i := 0; i <= rowSetSize/BtBatchQuerySize; i++ {
+		left := i * BtBatchQuerySize
+		right := (i + 1) * BtBatchQuerySize
+		if right > rowSetSize {
+			right = rowSetSize
+		}
+		var rowSetPart bigtable.RowSet
+		if len(rowList) > 0 {
+			rowSetPart = rowList[left:right]
+		} else {
+			rowSetPart = rowRangeList[left:right]
+		}
+
+		errs.Go(func() error {
+			btRows := []bigtable.Row{}
+			if err := btTable.ReadRows(errCtx, rowSetPart,
+				func(btRow bigtable.Row) bool {
+					btRows = append(btRows, btRow)
+					return true
+				}); err != nil {
+				return err
+			}
+			rowChan <- btRows
+			return nil
+		})
+	}
+
+	err := errs.Wait()
+	if err != nil {
+		return err
+	}
+	close(rowChan)
+
+	for rows := range rowChan {
+		for _, row := range rows {
+			if err := action(row); err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
 }

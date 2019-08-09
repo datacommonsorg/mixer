@@ -78,12 +78,12 @@ type PropLabelCache struct {
 func (s *store) GetPropertyValues(ctx context.Context,
 	in *pb.GetPropertyValuesRequest, out *pb.GetPropertyValuesResponse) error {
 	if in.GetLimit() == 0 {
-		in.Limit = 100
+		in.Limit = util.BtCacheLimit
 	}
 
 	var err error
 	var inRes, outRes map[string]map[string][]Node
-	if in.GetLimit() > util.BtMaxCachedLines {
+	if in.GetLimit() > util.BtCacheLimit {
 		inRes, err = s.bqGetPropertyValues(ctx, in, false)
 		if err != nil {
 			return err
@@ -283,91 +283,62 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 		direction = "in"
 	}
 	valType := in.GetValueType()
-	btTable := s.btClient.Open(util.BtTable)
 
-	keyPrefix := func(out bool) string {
-		if out {
-			return util.BtPropValOutPrefix
-		}
-		return util.BtPropValInPrefix
+	keyPrefix := map[bool]string{
+		true:  util.BtPropValOutPrefix,
+		false: util.BtPropValInPrefix,
 	}
 
 	rowRangeList := bigtable.RowRangeList{}
 	for _, dcid := range dcids {
-		rowPrefix := fmt.Sprintf("%s%s-%s", keyPrefix(arcOut), dcid, prop)
+		rowPrefix := fmt.Sprintf("%s%s-%s", keyPrefix[arcOut], dcid, prop)
 		if valType != "" {
 			rowPrefix = rowPrefix + "-" + valType
 		}
 		rowRangeList = append(rowRangeList, bigtable.PrefixRange((rowPrefix)))
 	}
 
-	btRawValuesMapChan := make(chan map[string][]string, len(rowRangeList)/1000+1)
-	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= len(rowRangeList)/1000; i++ {
-		left := i * 1000
-		right := (i + 1) * 1000
-		if right > len(rowRangeList) {
-			right = len(rowRangeList)
-		}
+	btRawValuesMap := map[string][]string{} // Key: dcid; value: a list of raw row values.
+	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowRangeList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			rowKey := btRow.Key()
+			parts := strings.Split(rowKey, "-")
+			dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
 
-		errs.Go(func() error {
-			btRawValuesMap := map[string][]string{} // Key: dcid; value: a list of raw row values.
-
-			// RowSet of ReadRows have size limit of 500k.
-			if err := btTable.ReadRows(errCtx, rowRangeList[left:right],
-				func(btRow bigtable.Row) bool {
-					// Extract DCID from row key.
-					rowKey := btRow.Key()
-					parts := strings.Split(rowKey, "-")
-					dcid := strings.TrimPrefix(parts[0], keyPrefix(arcOut))
-
-					btResult := btRow[util.BtFamily][0]
-					if _, ok := btRawValuesMap[dcid]; !ok {
-						btRawValuesMap[dcid] = []string{}
-					}
-					btRawValuesMap[dcid] = append(btRawValuesMap[dcid], string(btResult.Value))
-
-					return true
-				}); err != nil {
-				return err
+			btResult := btRow[util.BtFamily][0]
+			if _, ok := btRawValuesMap[dcid]; !ok {
+				btRawValuesMap[dcid] = []string{}
 			}
-
-			btRawValuesMapChan <- btRawValuesMap
+			btRawValuesMap[dcid] = append(btRawValuesMap[dcid], string(btResult.Value))
 
 			return nil
-		})
-	}
-
-	err := errs.Wait()
-	if err != nil {
+		}); err != nil {
 		return nil, err
 	}
-	close(btRawValuesMapChan)
 
 	nodeRes := make(map[string]map[string][]Node, 0)
-	for btRawValuesMap := range btRawValuesMapChan {
-		for dcid, btRawValues := range btRawValuesMap {
-			nodeList := make([]Node, 0)
-			for _, btRawValue := range btRawValues {
-				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
-				if err != nil {
-					return nil, err
-				}
-
-				// Parse the JSON and send the triples to the channel.
-				var btPropVals PropValueCache
-				json.Unmarshal(btJSONRaw, &btPropVals)
-
-				nodes := btPropVals.Nodes
-				if limit := int(in.GetLimit()); len(btPropVals.Nodes) > limit {
-					nodes = nodes[:limit]
-				}
-				nodeList = append(nodeList, nodes...)
+	for dcid, btRawValues := range btRawValuesMap {
+		nodeList := make([]Node, 0)
+		for _, btRawValue := range btRawValues {
+			btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+			if err != nil {
+				return nil, err
 			}
 
-			nodeRes[dcid] = map[string][]Node{
-				direction: nodeList,
+			// Parse the JSON and send the triples to the channel.
+			var btPropVals PropValueCache
+			json.Unmarshal(btJSONRaw, &btPropVals)
+
+			nodes := btPropVals.Nodes
+			if limit := int(in.GetLimit()); len(btPropVals.Nodes) > limit {
+				nodes = nodes[:limit]
 			}
+			nodeList = append(nodeList, nodes...)
+		}
+
+		nodeRes[dcid] = map[string][]Node{
+			direction: nodeList,
 		}
 	}
 
@@ -377,11 +348,11 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 func (s *store) GetTriples(ctx context.Context,
 	in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
 	if in.GetLimit() == 0 {
-		in.Limit = 100
+		in.Limit = util.BtCacheLimit
 	}
 
 	var err error
-	if in.GetLimit() > util.BtMaxCachedLines {
+	if in.GetLimit() > util.BtCacheLimit {
 		err = s.bqGetTriples(ctx, in, out)
 	} else {
 		err = s.btGetTriples(ctx, in, out)
@@ -592,69 +563,40 @@ func (s *store) GetPropertyLabels(
 	in *pb.GetPropertyLabelsRequest,
 	out *pb.GetPropertyLabelsResponse) error {
 	dcids := in.GetDcids()
-	btTable := s.btClient.Open(util.BtTable)
 
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtArcsPrefix, dcid))
 	}
 
-	resultsMapChan := make(chan map[string]*PropLabelCache, len(rowList)/1000+1)
-	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= len(rowList)/1000; i++ {
-		left := i * 1000
-		right := (i + 1) * 1000
-		if right > len(rowList) {
-			right = len(rowList)
-		}
+	resultsMap := map[string]*PropLabelCache{}
+	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			dcid := strings.TrimPrefix(btRow.Key(), util.BtArcsPrefix)
 
-		errs.Go(func() error {
-			resultsMap := map[string]*PropLabelCache{}
-
-			if err := btTable.ReadRows(errCtx, rowList[left:right], func(btRow bigtable.Row) bool {
-				// Extract DCID from row key.
-				dcid := strings.TrimPrefix(btRow.Key(), util.BtArcsPrefix)
-
-				if len(btRow[util.BtFamily]) > 0 {
-					btRawValue := btRow[util.BtFamily][0].Value
-					btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
-					if err != nil {
-						return false
-					}
-					var btPropLabels PropLabelCache
-					json.Unmarshal(btJSONRaw, &btPropLabels)
-					resultsMap[dcid] = &btPropLabels
-
-					// Fill in InLabels / OutLabels with an empty list if not present.
-					if resultsMap[dcid].InLabels == nil {
-						resultsMap[dcid].InLabels = []string{}
-					}
-					if resultsMap[dcid].OutLabels == nil {
-						resultsMap[dcid].OutLabels = []string{}
-					}
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
 				}
-				return true
-			}); err != nil {
-				return err
+				var btPropLabels PropLabelCache
+				json.Unmarshal(btJSONRaw, &btPropLabels)
+				resultsMap[dcid] = &btPropLabels
+
+				// Fill in InLabels / OutLabels with an empty list if not present.
+				if resultsMap[dcid].InLabels == nil {
+					resultsMap[dcid].InLabels = []string{}
+				}
+				if resultsMap[dcid].OutLabels == nil {
+					resultsMap[dcid].OutLabels = []string{}
+				}
 			}
 
-			resultsMapChan <- resultsMap
-
 			return nil
-		})
-	}
-
-	err := errs.Wait()
-	if err != nil {
+		}); err != nil {
 		return err
-	}
-	close(resultsMapChan)
-
-	resultsMap := map[string]*PropLabelCache{}
-	for r := range resultsMapChan {
-		for k, v := range r {
-			resultsMap[k] = v
-		}
 	}
 
 	// Iterate through all dcids to make sure they are present in resultsMap.
@@ -680,72 +622,41 @@ func (s *store) GetPropertyLabels(
 func (s *store) btGetTriples(
 	ctx context.Context, in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
 	dcids := in.GetDcids()
-	btTable := s.btClient.Open(util.BtTable)
 
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtTriplesPrefix, dcid))
 	}
 
-	resultsMapChan := make(chan map[string][]Triple, len(rowList)/1000+1)
-	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= len(rowList)/1000; i++ {
-		left := i * 1000
-		right := (i + 1) * 1000
-		if right > len(rowList) {
-			right = len(rowList)
-		}
-
-		errs.Go(func() error {
-			resultsMap := map[string][]Triple{}
-
-			// RowSet of ReadRows have size limit of 500k.
-			if err := btTable.ReadRows(errCtx, rowList[left:right], func(btRow bigtable.Row) bool {
-				// Extract DCID from row key.
-				dcid := strings.TrimPrefix(btRow.Key(), util.BtTriplesPrefix)
-
-				if len(btRow[util.BtFamily]) > 0 {
-					btRawValue := btRow[util.BtFamily][0].Value
-					btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
-					if err != nil {
-						return false
-					}
-
-					var btTriples TriplesCache
-					json.Unmarshal(btJSONRaw, &btTriples)
-
-					if limit := int(in.GetLimit()); limit < len(btTriples.Triples) {
-						btTriples.Triples = btTriples.Triples[:limit]
-					}
-
-					if btTriples.Triples == nil {
-						resultsMap[dcid] = []Triple{}
-					} else {
-						resultsMap[dcid] = btTriples.Triples
-					}
-				}
-				return true
-			}); err != nil {
-				return err
-			}
-
-			resultsMapChan <- resultsMap
-
-			return nil
-		})
-	}
-
-	err := errs.Wait()
-	if err != nil {
-		return err
-	}
-	close(resultsMapChan)
-
 	resultsMap := map[string][]Triple{}
-	for r := range resultsMapChan {
-		for k, v := range r {
-			resultsMap[k] = v
-		}
+	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			dcid := strings.TrimPrefix(btRow.Key(), util.BtTriplesPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+
+				var btTriples TriplesCache
+				json.Unmarshal(btJSONRaw, &btTriples)
+
+				if limit := int(in.GetLimit()); limit < len(btTriples.Triples) {
+					btTriples.Triples = btTriples.Triples[:limit]
+				}
+
+				if btTriples.Triples == nil {
+					resultsMap[dcid] = []Triple{}
+				} else {
+					resultsMap[dcid] = btTriples.Triples
+				}
+			}
+			return nil
+		}); err != nil {
+		return err
 	}
 
 	// Iterate through all dcids to make sure they are present in resultsMap.
