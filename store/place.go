@@ -63,7 +63,7 @@ func (s *store) GetPlacesIn(ctx context.Context,
 
 	// Build the query string.
 	qStr := fmt.Sprintf(
-		"SELECT t%d.object_id, t0.subject_id "+
+		"SELECT DISTINCT t%d.object_id, t0.subject_id "+
 			"FROM `%s.Triple` as t0 "+
 			"JOIN `%s.Instance` as i ON t0.subject_id = i.id AND i.type = '%s' ",
 		len(interTypes), s.bqDb, s.bqDb, in.GetPlaceType())
