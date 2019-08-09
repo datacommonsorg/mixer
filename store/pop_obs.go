@@ -141,7 +141,6 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		btKey := util.BtPopPrefix + dcid + keySuffix
-		log.Printf("GetPopulations: Querying cache with key \"%s\"", btKey)
 		rowList = append(rowList, btKey)
 	}
 
@@ -287,7 +286,6 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 			util.BtObsPrefix, dcid, in.GetMeasuredProperty(),
 			util.SnakeToCamel(in.GetStatsType()), in.GetObservationDate(),
 			in.GetObservationPeriod(), in.GetMeasurementMethod())
-		log.Printf("GetObservations: Querying cache with key \"%s\"", btKey)
 		rowList = append(rowList, btKey)
 	}
 
