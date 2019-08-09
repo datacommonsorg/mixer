@@ -231,9 +231,15 @@ func SnakeToCamel(s string) string {
 
 	var result string
 	parts := strings.Split(s, "_")
-	for i, p := range parts {
-		if i == 0 {
+	capitalize := false
+	for _, p := range parts {
+		if p == "" {
+			continue
+		}
+
+		if !capitalize {
 			result += p
+			capitalize = true
 		} else {
 			result += strings.Title(p)
 		}
