@@ -44,19 +44,19 @@ func main() {
 
 	// Get Observation for count
 	getObservation(ctx, c, []string{"dc/p/2ygbv16ky4yvb", "dc/p/cg941cc1lbsvb"},
-		"count", "2015", "measured_value", "", "CenusACS5yrSurvey")
+		"count", "2015", "measuredValue", "", "CenusACS5yrSurvey")
 
 	// Get Observation for income
 	getObservation(ctx, c, []string{"dc/p/04z1y6c67r448", "dc/p/04zmmqm0fpfn1"},
-		"income", "2015", "median_value", "", "CenusACS5yrSurvey")
+		"income", "2015", "medianValue", "", "CenusACS5yrSurvey")
 
 	// Get Observation for income
 	getObservation(ctx, c, []string{"dc/p/053kf3t9s9bg"},
-		"count", "2012-07", "measured_value", "P1M", "")
+		"count", "2012-07", "measuredValue", "P1M", "")
 
 	// Observation period and measurement method are not specified.
 	getObservation(ctx, c, []string{"dc/p/dxxmsf6txdgx4"},
-		"count", "2017", "measured_value", "", "")
+		"count", "2017", "measuredValue", "", "")
 }
 
 func getObservation(ctx context.Context, c pb.MixerClient, dcids []string,

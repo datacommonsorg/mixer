@@ -9,6 +9,7 @@ require (
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/google/pprof v0.0.0-20190723021845-34ac40c74b70 // indirect
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
+	github.com/iancoleman/strcase v0.0.0-20190422225806-e506e3ef7365
 	github.com/kr/pty v1.1.8 // indirect
 	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4 // indirect
 	golang.org/x/mobile v0.0.0-20190806162312-597adff16ade // indirect
