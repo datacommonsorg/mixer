@@ -53,6 +53,10 @@ func main() {
 	// Get Observation for income
 	getObservation(ctx, c, []string{"dc/p/053kf3t9s9bg"},
 		"count", "2012-07", "measured_value", "P1M", "")
+
+	// Observation period and measurement method are not specified.
+	getObservation(ctx, c, []string{"dc/p/dxxmsf6txdgx4"},
+		"count", "2017", "measured_value", "", "")
 }
 
 func getObservation(ctx context.Context, c pb.MixerClient, dcids []string,
