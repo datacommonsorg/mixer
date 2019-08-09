@@ -59,8 +59,6 @@ const (
 	BtPopPrefix = "d/a/"
 	// BtObsPrefix for observation cache.
 	BtObsPrefix = "d/b/"
-	// BtNodeInfoPrefix for basic node info cache.
-	BtNodeInfoPrefix = "d/c/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
