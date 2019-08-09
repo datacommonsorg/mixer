@@ -622,72 +622,41 @@ func (s *store) GetPropertyLabels(
 func (s *store) btGetTriples(
 	ctx context.Context, in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
 	dcids := in.GetDcids()
-	btTable := s.btClient.Open(util.BtTable)
 
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtTriplesPrefix, dcid))
 	}
 
-	resultsMapChan := make(chan map[string][]Triple, len(rowList)/1000+1)
-	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= len(rowList)/1000; i++ {
-		left := i * 1000
-		right := (i + 1) * 1000
-		if right > len(rowList) {
-			right = len(rowList)
-		}
-
-		errs.Go(func() error {
-			resultsMap := map[string][]Triple{}
-
-			// RowSet of ReadRows have size limit of 500k.
-			if err := btTable.ReadRows(errCtx, rowList[left:right], func(btRow bigtable.Row) bool {
-				// Extract DCID from row key.
-				dcid := strings.TrimPrefix(btRow.Key(), util.BtTriplesPrefix)
-
-				if len(btRow[util.BtFamily]) > 0 {
-					btRawValue := btRow[util.BtFamily][0].Value
-					btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
-					if err != nil {
-						return false
-					}
-
-					var btTriples TriplesCache
-					json.Unmarshal(btJSONRaw, &btTriples)
-
-					if limit := int(in.GetLimit()); limit < len(btTriples.Triples) {
-						btTriples.Triples = btTriples.Triples[:limit]
-					}
-
-					if btTriples.Triples == nil {
-						resultsMap[dcid] = []Triple{}
-					} else {
-						resultsMap[dcid] = btTriples.Triples
-					}
-				}
-				return true
-			}); err != nil {
-				return err
-			}
-
-			resultsMapChan <- resultsMap
-
-			return nil
-		})
-	}
-
-	err := errs.Wait()
-	if err != nil {
-		return err
-	}
-	close(resultsMapChan)
-
 	resultsMap := map[string][]Triple{}
-	for r := range resultsMapChan {
-		for k, v := range r {
-			resultsMap[k] = v
-		}
+	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			dcid := strings.TrimPrefix(btRow.Key(), util.BtTriplesPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+
+				var btTriples TriplesCache
+				json.Unmarshal(btJSONRaw, &btTriples)
+
+				if limit := int(in.GetLimit()); limit < len(btTriples.Triples) {
+					btTriples.Triples = btTriples.Triples[:limit]
+				}
+
+				if btTriples.Triples == nil {
+					resultsMap[dcid] = []Triple{}
+				} else {
+					resultsMap[dcid] = btTriples.Triples
+				}
+			}
+			return nil
+		}); err != nil {
+		return err
 	}
 
 	// Iterate through all dcids to make sure they are present in resultsMap.
