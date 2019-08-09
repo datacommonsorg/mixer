@@ -109,12 +109,11 @@ func (s *store) GetPlacesIn(ctx context.Context,
 func (s *store) GetPlaceKML(ctx context.Context,
 	in *pb.GetPlaceKMLRequest, out *pb.GetPlaceKMLResponse) error {
 	btTable := s.btClient.Open(util.BtTable)
-	btPrefix := util.BtPlaceKMLPrefix + in.GetDcid()
-	btRow, err := btTable.ReadRow(ctx, btPrefix)
+	btRow, err := btTable.ReadRow(ctx, util.BtPlaceKMLPrefix+in.GetDcid())
 	if err != nil {
 		return err
 	}
-	if len(btRow[util.BtFamily]) > 0 && btRow[util.BtFamily][0].Row == btPrefix {
+	if len(btRow[util.BtFamily]) > 0 {
 		out.Payload = string(btRow[util.BtFamily][0].Value)
 	}
 	return nil
