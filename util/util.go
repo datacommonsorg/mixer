@@ -40,8 +40,6 @@ const (
 	BtProject = "google.com:datcom-store-dev"
 	// BtInstance for internal cache instance.
 	BtInstance = "prophet-cache"
-	// BtTable for internal table.
-	BtTable = "dc9"
 	// BtPropValInPrefix for internal GetPropertyValues in arc cache.
 	BtPropValInPrefix = "d/0/"
 	// BtPropValOutPrefix for internal GetPropertyValues out arc cache.
@@ -257,10 +255,8 @@ func CamelToSnake(str string) string {
 
 // BigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet
 // is 500KB.
-func BigTableReadRowsParallel(ctx context.Context, btClient *bigtable.Client,
+func BigTableReadRowsParallel(ctx context.Context, btTable *bigtable.Table,
 	rowSet bigtable.RowSet, action func(row bigtable.Row) error) error {
-	btTable := btClient.Open(BtTable)
-
 	var rowSetSize int
 	var rowList bigtable.RowList
 	var rowRangeList bigtable.RowRangeList

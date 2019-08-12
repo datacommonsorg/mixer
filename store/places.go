@@ -108,8 +108,7 @@ func (s *store) GetPlacesIn(ctx context.Context,
 
 func (s *store) GetPlaceKML(ctx context.Context,
 	in *pb.GetPlaceKMLRequest, out *pb.GetPlaceKMLResponse) error {
-	btTable := s.btClient.Open(util.BtTable)
-	btRow, err := btTable.ReadRow(ctx, util.BtPlaceKMLPrefix+in.GetDcid())
+	btRow, err := s.btTable.ReadRow(ctx, util.BtPlaceKMLPrefix+in.GetDcid())
 	if err != nil {
 		return err
 	}
