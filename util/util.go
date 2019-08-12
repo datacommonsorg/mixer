@@ -71,8 +71,6 @@ const (
 	TextType = "Text"
 )
 
-var typeRelationJSON, _ = ioutil.ReadFile("type_relation.json")
-
 type typeInfo struct {
 	Predicate string `json:"predicate"`
 	SubType   string `json:"subType"`
