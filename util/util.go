@@ -41,7 +41,7 @@ const (
 	// BtInstance for internal cache instance.
 	BtInstance = "prophet-cache"
 	// BtTable for internal table.
-	BtTable = "dc8"
+	BtTable = "dc9"
 	// BtPropValInPrefix for internal GetPropertyValues in arc cache.
 	BtPropValInPrefix = "d/0/"
 	// BtPropValOutPrefix for internal GetPropertyValues out arc cache.
