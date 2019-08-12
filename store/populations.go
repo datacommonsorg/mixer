@@ -51,6 +51,28 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest, out *pb.
 	return nil
 }
 
+func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
+	out *pb.GetPlaceObsResponse) error {
+	key := in.GetPlaceType() + "-" + in.GetPopulationType()
+	if len(in.GetPvs()) > 0 {
+		util.IterateSortPVs(in.GetPvs(), func(i int, p, v string) {
+			key += "-" + p + "-" + v
+		})
+	}
+	btPrefix := fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
+	btTable := s.btClient.Open(util.BtTable)
+
+	// Query for the prefix.
+	btRow, err := btTable.ReadRow(ctx, btPrefix)
+	if err != nil {
+		return err
+	}
+	if len(btRow[util.BtFamily]) > 0 && btRow[util.BtFamily][0].Row == btPrefix {
+		out.Payload = string(btRow[util.BtFamily][0].Value)
+	}
+	return nil
+}
+
 // PlacePopInfo contains basic info for a place and a population.
 type PlacePopInfo struct {
 	PlaceID      string `json:"dcid,omitempty"`
@@ -203,9 +225,9 @@ func (s *store) bqGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	// Construct the query string.
 	qStr := fmt.Sprintf(
 		"SELECT id, %s FROM `%s.Observation` "+
-		"WHERE observed_node_key IN (%s) "+
-		"AND observation_date = \"%s\" "+
-		"AND measured_prop = \"%s\"",
+			"WHERE observed_node_key IN (%s) "+
+			"AND observation_date = \"%s\" "+
+			"AND measured_prop = \"%s\"",
 		util.CamelToSnake(in.GetStatsType()),
 		s.bqDb,
 		util.StringList(in.GetDcids()),
