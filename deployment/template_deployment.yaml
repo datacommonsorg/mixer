@@ -55,7 +55,8 @@ spec:
           image: gcr.io/PROJECT_ID/go-grpc-mixer:TAG
           imagePullPolicy: Always
           args: [
-            "--default_db", "google.com:datcom-store-dev.dc_v3_clustered",
+            "--bq_dataset", "google.com:datcom-store-dev.dc_v3_clustered",
+            "--bt_table", "dc9",
             "--project_id", "PROJECT_ID",
           ]
           ports:

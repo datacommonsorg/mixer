@@ -38,10 +38,9 @@ type PopObs struct {
 func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest, out *pb.GetPopObsResponse) error {
 	dcid := in.GetDcid()
 	btPrefix := fmt.Sprintf("%s%s", util.BtPopObsPrefix, dcid)
-	btTable := s.btClient.Open(util.BtTable)
 
 	// Query for the prefix
-	btRow, err := btTable.ReadRow(ctx, btPrefix)
+	btRow, err := s.btTable.ReadRow(ctx, btPrefix)
 	if err != nil {
 		return err
 	}
@@ -60,10 +59,9 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 		})
 	}
 	btPrefix := fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
-	btTable := s.btClient.Open(util.BtTable)
 
 	// Query for the prefix.
-	btRow, err := btTable.ReadRow(ctx, btPrefix)
+	btRow, err := s.btTable.ReadRow(ctx, btPrefix)
 	if err != nil {
 		return err
 	}
@@ -169,7 +167,7 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 	// Query the cache
 	collection := []*PlacePopInfo{}
 	dcidStore := map[string]struct{}{}
-	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
+	if err := util.BigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
@@ -314,7 +312,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	// Query the cache for all keys.
 	collection := []*PopObs{}
 	dcidStore := map[string]struct{}{}
-	if err := util.BigTableReadRowsParallel(ctx, s.btClient, rowList,
+	if err := util.BigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()

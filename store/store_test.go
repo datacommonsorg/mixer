@@ -13,6 +13,7 @@ import (
 const (
 	testProject  = "project"
 	testInstance = "instance"
+	testTable    = "dc"
 )
 
 func newTestBtStore(ctx context.Context, opts ...option.ClientOption) (Interface, error) {
@@ -21,7 +22,7 @@ func newTestBtStore(ctx context.Context, opts ...option.ClientOption) (Interface
 		return nil, err
 	}
 
-	return &store{"", nil, nil, nil, nil, nil, nil, btClient}, nil
+	return &store{"", nil, nil, nil, nil, nil, nil, btClient.Open(testTable)}, nil
 }
 
 func setupBigtable(ctx context.Context, data map[string]string) (*grpc.ClientConn, error) {
@@ -41,11 +42,11 @@ func setupBigtable(ctx context.Context, data map[string]string) (*grpc.ClientCon
 		return nil, err
 	}
 
-	if err := adminClient.CreateTable(ctx, util.BtTable); err != nil {
+	if err := adminClient.CreateTable(ctx, testTable); err != nil {
 		return nil, err
 	}
 
-	if err := adminClient.CreateColumnFamily(ctx, util.BtTable, util.BtFamily); err != nil {
+	if err := adminClient.CreateColumnFamily(ctx, testTable, util.BtFamily); err != nil {
 		return nil, err
 	}
 
@@ -54,7 +55,7 @@ func setupBigtable(ctx context.Context, data map[string]string) (*grpc.ClientCon
 	if err != nil {
 		return nil, err
 	}
-	bt := client.Open(util.BtTable)
+	bt := client.Open(testTable)
 
 	mut := bigtable.NewMutation()
 	for key, value := range data {

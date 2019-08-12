@@ -16,8 +16,8 @@
 
 ## Run grpc server and examples locally
 
-    go run server/main.go --default_db=google.com:datcom-store-dev.dc_v3_clustered \
-      --project_id=datcom-mixer --schema_path=deployment/mapping
+    go run server/main.go --bq_dataset=google.com:datcom-store-dev.dc_v3_clustered \
+      --bt_table=dc9 --project_id=datcom-mixer --schema_path=deployment/mapping
 
     cd examples
     ./run_all.sh

@@ -73,11 +73,11 @@ type store struct {
 	inArcInfo   map[string][]translator.InArcInfo
 	subTypeMap  map[string]string
 	containedIn map[util.TypePair][]string
-	btClient    *bigtable.Client
+	btTable     *bigtable.Table
 }
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
-func NewStore(ctx context.Context, bqDb, projectID, schemaPath string,
+func NewStore(ctx context.Context, bqDataset, btTable, projectID, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
 	// BigQuery.
@@ -112,6 +112,6 @@ func NewStore(ctx context.Context, bqDb, projectID, schemaPath string,
 		return nil, err
 	}
 
-	return &store{bqDb, bqClient, mappings, outArcInfo, inArcInfo,
-		subTypeMap, containedIn, btClient}, nil
+	return &store{bqDataset, bqClient, mappings, outArcInfo, inArcInfo,
+		subTypeMap, containedIn, btClient.Open(btTable)}, nil
 }
