@@ -27,7 +27,7 @@ func TestGetPlaceKML(t *testing.T) {
 		t.Fatalf("newTestBtStore() = %v", err)
 	}
 
-	var out = pb.GetPlaceKMLResponse{}
+	var out pb.GetPlaceKMLResponse
 	if err := store.GetPlaceKML(ctx, &pb.GetPlaceKMLRequest{Dcid: dcid}, &out); err != nil {
 		t.Fatalf("GetPlaceKML() = %v", err)
 	}
