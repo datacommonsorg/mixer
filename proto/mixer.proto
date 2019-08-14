@@ -19,37 +19,6 @@ package datacommons;
 import "google/api/annotations.proto";
 
 
-// Represents a triple in the Data Commons graph.
-message Triple {
-  // Subject dcid. Always set.
-  string subject_id = 1;
-
-  // Subject name.
-  string subject_name = 2;
-
-  // A list of types for subject
-  repeated string subject_types = 3;
-
-  // Predicate of the triple.
-  string predicate = 4;
-
-  // Object id for object that is node reference.
-  string object_id = 5;
-
-  // Object name for object that is node reference.
-  string object_name = 6;
-
-  // A list of types for object.
-  repeated string object_types = 7;
-
-  // Object value for leaf node.
-  string object_value = 8;
-
-  // Dcid of the Provenance for this triple.
-  string provenance_id = 9;
-
-}
-
 // A graph query request in Sparql query language.
 message QueryRequest {
   // Sparql query string.
