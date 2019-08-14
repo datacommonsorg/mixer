@@ -49,7 +49,7 @@ func main() {
 	for _, req := range []*pb.GetTriplesRequest{
 		&pb.GetTriplesRequest{Dcids: []string{"State", "County", "City"}},
 		&pb.GetTriplesRequest{Dcids: []string{"Class"}},
-		&pb.GetTriplesRequest{Dcids: []string{"geoId/0649670"}, Limit: 102},
+		&pb.GetTriplesRequest{Dcids: []string{"geoId/0649670"}, Limit: 205},
 	} {
 		if err := getTriples(ctx, c, req); err != nil {
 			log.Fatalf("Could not GetTriples: %v", err)

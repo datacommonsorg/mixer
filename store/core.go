@@ -47,7 +47,8 @@ type Triple struct {
 	ObjectID     string   `json:"objectId,omitempty"`
 	ObjectName   string   `json:"objectName,omitempty"`
 	ObjectValue  string   `json:"objectValue,omitempty"`
-	ObjectTypes  string   `json:"objectTypes,omitempty"`
+	ObjectTypes  []string `json:"objectTypes,omitempty"`
+	ProvenanceID string   `json:"objectTypes,omitempty"`
 }
 
 // Node represents a information about a node.
@@ -140,7 +141,7 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 		direction = "in"
 	}
 	limit := in.GetLimit()
-	triples := []*pb.Triple{}
+	triples := []*Triple{}
 
 	// Get triples from the triples table
 	var srcIDCol, valIDCol string
@@ -216,10 +217,10 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 	// getNodeInfo for
 	nodeIds := make([]string, 0)
 	for _, t := range triples {
-		if arcOut && t.GetObjectId() != "" {
-			nodeIds = append(nodeIds, t.GetObjectId())
+		if arcOut && t.ObjectID != "" {
+			nodeIds = append(nodeIds, t.ObjectID)
 		} else if !arcOut {
-			nodeIds = append(nodeIds, t.GetSubjectId())
+			nodeIds = append(nodeIds, t.SubjectID)
 		}
 	}
 	nodeInfo, err := getNodeInfo(ctx, s.bqClient, s.bqDb, nodeIds)
@@ -240,27 +241,27 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 		// Get the node's contents
 		var srcID string
 		var node Node
-		if arcOut && t.GetObjectValue() != "" {
-			srcID = t.GetSubjectId()
+		if arcOut && t.ObjectValue != "" {
+			srcID = t.SubjectID
 			node = Node{
-				ProvID: t.GetProvenanceId(),
-				Value:  t.GetObjectValue(),
+				ProvID: t.ProvenanceID,
+				Value:  t.ObjectValue,
 			}
 		} else {
 			var valID string
 			if arcOut {
-				srcID = t.GetSubjectId()
-				valID = t.GetObjectId()
+				srcID = t.SubjectID
+				valID = t.ObjectID
 			} else {
-				srcID = t.GetObjectId()
-				valID = t.GetSubjectId()
+				srcID = t.ObjectID
+				valID = t.SubjectID
 			}
 			if valNode, valOk := nodeInfo[valID]; valOk {
 				node = *valNode
 			} else {
 				node = Node{
 					Dcid:   valID,
-					ProvID: t.GetProvenanceId(),
+					ProvID: t.ProvenanceID,
 				}
 			}
 		}
@@ -365,7 +366,7 @@ func (s *store) bqGetTriples(
 	// Get parameters from the request and create the triples channel
 	dcids := in.GetDcids()
 	limit := in.GetLimit()
-	resultsChan := make(chan map[string][]*pb.Triple, len(dcids))
+	resultsChan := make(chan map[string][]*Triple, len(dcids))
 
 	// Perform the BigQuery queries for each dcid asynchronously.
 	// TODO(antaresc): replace all instances of ctx.
@@ -375,15 +376,15 @@ func (s *store) bqGetTriples(
 		dcid := dcid
 		errs.Go(func() error {
 			// Maintain a list of triples to return
-			resTrips := make([]*pb.Triple, 0)
+			resTrips := make([]*Triple, 0)
 
 			// First get the node type associated with this dcid.
 			nodeType, err := getNodeType(errCtx, s.bqClient, s.bqDb, dcid)
 			if err != nil {
 				return err
 			}
-			resTrips = append(resTrips, &pb.Triple{
-				SubjectId:   dcid,
+			resTrips = append(resTrips, &Triple{
+				SubjectID:   dcid,
 				Predicate:   "typeOf",
 				ObjectValue: nodeType,
 			})
@@ -450,12 +451,12 @@ func (s *store) bqGetTriples(
 
 			allDcids := []string{}
 			for _, t := range resTrips {
-				if t.GetSubjectId() == dcid {
-					if t.GetObjectId() != "" {
-						allDcids = append(allDcids, t.GetObjectId())
+				if t.SubjectID == dcid {
+					if t.ObjectID != "" {
+						allDcids = append(allDcids, t.ObjectID)
 					}
 				} else {
-					allDcids = append(allDcids, t.GetSubjectId())
+					allDcids = append(allDcids, t.SubjectID)
 				}
 			}
 			nodeInfo, err := getNodeInfo(errCtx, s.bqClient, s.bqDb, allDcids)
@@ -463,23 +464,23 @@ func (s *store) bqGetTriples(
 				return err
 			}
 			for _, t := range resTrips {
-				if t.GetSubjectId() == dcid {
+				if t.SubjectID == dcid {
 					t.SubjectName = name
 					t.SubjectTypes = types
-					if t.GetObjectId() != "" {
-						t.ObjectName = nodeInfo[t.GetObjectId()].Name
-						t.ObjectTypes = nodeInfo[t.GetObjectId()].Types
+					if t.ObjectID != "" {
+						t.ObjectName = nodeInfo[t.ObjectID].Name
+						t.ObjectTypes = nodeInfo[t.ObjectID].Types
 					}
 				} else {
-					t.SubjectName = nodeInfo[t.GetSubjectId()].Name
-					t.SubjectTypes = nodeInfo[t.GetSubjectId()].Types
+					t.SubjectName = nodeInfo[t.SubjectID].Name
+					t.SubjectTypes = nodeInfo[t.SubjectID].Types
 					t.ObjectName = name
 					t.ObjectTypes = types
 				}
 			}
 
 			// Send the list of triples to the channel
-			triplesMap := map[string][]*pb.Triple{dcid: resTrips}
+			triplesMap := map[string][]*Triple{dcid: resTrips}
 			resultsChan <- triplesMap
 
 			return nil
@@ -494,7 +495,7 @@ func (s *store) bqGetTriples(
 
 	// Copy over the contents of the results channel
 	close(resultsChan)
-	resultsMap := map[string][]*pb.Triple{}
+	resultsMap := map[string][]*Triple{}
 	for triplesMap := range resultsChan {
 		for dcid := range triplesMap {
 			// Need only copy over the dcids because an empty list of triples is
@@ -679,10 +680,10 @@ func (s *store) btGetTriples(
 
 // ----------------------------- HELPER FUNCTIONS -----------------------------
 
-func readTripleFromBq(it *bigquery.RowIterator) ([]*pb.Triple, error) {
-	result := []*pb.Triple{}
+func readTripleFromBq(it *bigquery.RowIterator) ([]*Triple, error) {
+	result := []*Triple{}
 	for {
-		t := pb.Triple{}
+		t := Triple{}
 		var row []bigquery.Value
 		err := it.Next(&row)
 		if err == iterator.Done {
@@ -696,14 +697,14 @@ func readTripleFromBq(it *bigquery.RowIterator) ([]*pb.Triple, error) {
 			v, _ := cell.(string)
 			switch idx {
 			case 0:
-				t.ProvenanceId = v
+				t.ProvenanceID = v
 			case 1:
-				t.SubjectId = v
+				t.SubjectID = v
 			case 2:
 				t.Predicate = v
 			case 3:
 				if cell != nil {
-					t.ObjectId = v
+					t.ObjectID = v
 				}
 			case 4:
 				if cell != nil {
@@ -718,8 +719,8 @@ func readTripleFromBq(it *bigquery.RowIterator) ([]*pb.Triple, error) {
 	return result, nil
 }
 
-func queryTripleTable(ctx context.Context, client *bigquery.Client, qStrs []string) ([]*pb.Triple, error) {
-	tripleChan := make(chan []*pb.Triple, 2)
+func queryTripleTable(ctx context.Context, client *bigquery.Client, qStrs []string) ([]*Triple, error) {
+	tripleChan := make(chan []*Triple, 2)
 	errs, errCtx := errgroup.WithContext(ctx)
 	for _, qStr := range qStrs {
 		qStr := qStr
@@ -745,7 +746,7 @@ func queryTripleTable(ctx context.Context, client *bigquery.Client, qStrs []stri
 	}
 	close(tripleChan)
 
-	result := []*pb.Triple{}
+	result := []*Triple{}
 	for triples := range tripleChan {
 		result = append(result, triples...)
 	}
@@ -758,8 +759,8 @@ func getOutArcFromSpecialTable(
 	db string,
 	dcid []string,
 	outArcInfo map[string][]translator.OutArcInfo,
-	predicate ...string) ([]*pb.Triple, error) {
-	result := []*pb.Triple{}
+	predicate ...string) ([]*Triple, error) {
+	result := []*Triple{}
 	for table, pcs := range outArcInfo {
 		hasQuery := false
 		qStr := "SELECT id"
@@ -800,9 +801,9 @@ func getOutArcFromSpecialTable(
 					continue
 				}
 				pcIndex := i - 1
-				t := pb.Triple{SubjectId: rowDcid, Predicate: pcs[pcIndex].Pred}
+				t := Triple{SubjectID: rowDcid, Predicate: pcs[pcIndex].Pred}
 				if pcs[pcIndex].IsNode {
-					t.ObjectId = v
+					t.ObjectID = v
 				} else {
 					t.ObjectValue = v
 				}
@@ -819,8 +820,8 @@ func getInArcFromSpecialTable(
 	db string,
 	dcid []string,
 	inArcInfo []translator.InArcInfo,
-	predicate ...string) ([]*pb.Triple, error) {
-	result := []*pb.Triple{}
+	predicate ...string) ([]*Triple, error) {
+	result := []*Triple{}
 	for _, info := range inArcInfo {
 		if info.ObjCol == "place_key" || info.ObjCol == "observed_node_key" {
 			continue
@@ -854,8 +855,8 @@ func getInArcFromSpecialTable(
 				if cell == nil {
 					continue
 				}
-				t := pb.Triple{SubjectId: rowDcid, Predicate: info.Pred}
-				t.ObjectId = v
+				t := Triple{SubjectID: rowDcid, Predicate: info.Pred}
+				t.ObjectID = v
 				result = append(result, &t)
 			}
 		}
@@ -868,8 +869,8 @@ func getInstances(
 	client *bigquery.Client,
 	db string,
 	dcid string,
-	limit int32) ([]*pb.Triple, error) {
-	result := []*pb.Triple{}
+	limit int32) ([]*Triple, error) {
+	result := []*Triple{}
 	qStr := fmt.Sprintf("SELECT id From `%s.Instance` where type = \"%s\" LIMIT %d", db, dcid, limit)
 	log.Printf("Query: %v\n", qStr)
 	q := client.Query(qStr)
@@ -889,8 +890,8 @@ func getInstances(
 		inst := row[0].(string)
 		result = append(
 			result,
-			&pb.Triple{
-				SubjectId:   inst,
+			&Triple{
+				SubjectID:   inst,
 				Predicate:   "typeOf",
 				ObjectValue: dcid,
 			})
