@@ -65,6 +65,9 @@ func (s *server) GetPropertyLabels(ctx context.Context,
 	if len(in.GetDcids()) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
 	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
 
 	out := pb.GetPropertyLabelsResponse{}
 	if err := s.st.GetPropertyLabels(ctx, in, &out); err != nil {
@@ -78,6 +81,9 @@ func (s *server) GetPropertyLabelsPost(ctx context.Context,
 	if len(in.GetDcids()) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
 	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
 
 	out := pb.GetPropertyLabelsResponse{}
 	if err := s.st.GetPropertyLabels(ctx, in, &out); err != nil {
@@ -90,6 +96,9 @@ func (s *server) GetPropertyValues(ctx context.Context,
 	in *pb.GetPropertyValuesRequest) (*pb.GetPropertyValuesResponse, error) {
 	if in.GetProperty() == "" || len(in.GetDcids()) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
 	if in.GetLimit() == 0 {
@@ -105,8 +114,11 @@ func (s *server) GetPropertyValues(ctx context.Context,
 
 func (s *server) GetPropertyValuesPost(ctx context.Context,
 	in *pb.GetPropertyValuesRequest) (*pb.GetPropertyValuesResponse, error) {
-	if in.GetProperty() == "" {
+	if in.GetProperty() == "" || len(in.GetDcids()) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
 	out := pb.GetPropertyValuesResponse{}
@@ -121,6 +133,9 @@ func (s *server) GetTriples(ctx context.Context,
 	if len(in.GetDcids()) == 0 {
 		return nil, fmt.Errorf("must provide DCIDs")
 	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
 
 	out := pb.GetTriplesResponse{}
 	if err := s.st.GetTriples(ctx, in, &out); err != nil {
@@ -134,6 +149,9 @@ func (s *server) GetTriplesPost(ctx context.Context,
 	if len(in.GetDcids()) == 0 {
 		return nil, fmt.Errorf("must provide DCIDs")
 	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
 
 	out := pb.GetTriplesResponse{}
 	if err := s.st.GetTriples(ctx, in, &out); err != nil {
@@ -146,6 +164,9 @@ func (s *server) GetPopObs(ctx context.Context,
 	in *pb.GetPopObsRequest) (*pb.GetPopObsResponse, error) {
 	if in.GetDcid() == "" {
 		return nil, fmt.Errorf("must provide a DCID")
+	}
+	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
+		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
 	out := pb.GetPopObsResponse{}
@@ -173,6 +194,9 @@ func (s *server) GetPopulations(ctx context.Context,
 	if len(in.GetDcids()) == 0 || in.GetPopulationType() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
 
 	out := pb.GetPopulationsResponse{}
 	if err := s.st.GetPopulations(ctx, in, &out); err != nil {
@@ -187,6 +211,9 @@ func (s *server) GetObservations(ctx context.Context,
 		in.GetObservationDate() == "" || in.GetStatsType() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
 
 	out := pb.GetObservationsResponse{}
 	if err := s.st.GetObservations(ctx, in, &out); err != nil {
@@ -197,8 +224,11 @@ func (s *server) GetObservations(ctx context.Context,
 
 func (s *server) GetPlacesIn(ctx context.Context,
 	in *pb.GetPlacesInRequest) (*pb.GetPlacesInResponse, error) {
-	if in.GetPlaceType() == "" {
-		return nil, fmt.Errorf("must provide a place type")
+	if len(in.GetDcids()) == 0 || in.GetPlaceType() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
 	out := pb.GetPlacesInResponse{}
@@ -210,8 +240,11 @@ func (s *server) GetPlacesIn(ctx context.Context,
 
 func (s *server) GetPlacesInPost(ctx context.Context,
 	in *pb.GetPlacesInRequest) (*pb.GetPlacesInResponse, error) {
-	if in.GetPlaceType() == "" {
-		return nil, fmt.Errorf("must provide a place type")
+	if len(in.GetDcids()) == 0 || in.GetPlaceType() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
 	out := pb.GetPlacesInResponse{}
@@ -225,6 +258,9 @@ func (s *server) GetPlaceKML(ctx context.Context,
 	in *pb.GetPlaceKMLRequest) (*pb.GetPlaceKMLResponse, error) {
 	if in.GetDcid() == "" {
 		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
+		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
 	out := pb.GetPlaceKMLResponse{}
