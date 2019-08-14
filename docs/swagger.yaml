@@ -1,0 +1,554 @@
+swagger: '2.0'
+info:
+  title: Data Commons REST API
+  version: '1.0'
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /bulk/place-kml:
+    get:
+      summary: Get KML coordinates for a place.
+      operationId: GetPlaceKML
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPlaceKMLResponse'
+      parameters:
+        - name: dcid
+          description: DCID of a place.
+          in: query
+          required: false
+          type: string
+      tags:
+        - Mixer
+  /bulk/place-obs:
+    post:
+      summary: >-
+        Get observation data for a list of places, given place type, population
+        type, and
+
+        population constraining properties.
+      operationId: GetPlaceObs
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPlaceObsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsGetPlaceObsRequest'
+      tags:
+        - Mixer
+  /bulk/pop-obs:
+    get:
+      summary: Get population and observation data for a place.
+      operationId: GetPopObs
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPopObsResponse'
+      parameters:
+        - name: dcid
+          description: DCID of a place.
+          in: query
+          required: false
+          type: string
+      tags:
+        - Mixer
+  /node/observations:
+    post:
+      summary: >-
+        Get observations for a list of population, given the observation
+        constraints.
+      operationId: GetObservations
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetObservationsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsGetObservationsRequest'
+      tags:
+        - Mixer
+  /node/places-in:
+    get:
+      summary: Get places contained in parent places.
+      operationId: GetPlacesIn
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPlacesInResponse'
+      parameters:
+        - name: dcids
+          description: The parent place dcids.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: place_type
+          description: The child place type.
+          in: query
+          required: false
+          type: string
+      tags:
+        - Mixer
+    post:
+      summary: Get places contained in parent places.
+      operationId: GetPlacesInPost
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPlacesInResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsGetPlacesInRequest'
+      tags:
+        - Mixer
+  /node/populations:
+    post:
+      summary: >-
+        Get populations for a list of places, given the population type and
+        constraining property values.
+      operationId: GetPopulations
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPopulationsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsGetPopulationsRequest'
+      tags:
+        - Mixer
+  /node/property-labels:
+    get:
+      summary: Fetch property labels adjacent of nodes
+      operationId: GetPropertyLabels
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPropertyLabelsResponse'
+      parameters:
+        - name: dcids
+          description: The dcids of nodes.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      tags:
+        - Mixer
+    post:
+      summary: Fetch property labels adjacent of nodes
+      operationId: GetPropertyLabelsPost
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPropertyLabelsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsGetPropertyLabelsRequest'
+      tags:
+        - Mixer
+  /node/property-values:
+    get:
+      summary: Fetch nodes that linked to source nodes with a given property.
+      operationId: GetPropertyValues
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPropertyValuesResponse'
+      parameters:
+        - name: dcids
+          description: The dcids of nodes to query for.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: value_type
+          description: The type of the neighboring node to query for.
+          in: query
+          required: false
+          type: string
+        - name: property
+          description: The property to get adjacent nodes for.
+          in: query
+          required: false
+          type: string
+        - name: limit
+          description: Maximum number of nodes to query for.
+          in: query
+          required: false
+          type: integer
+          format: int32
+      tags:
+        - Mixer
+    post:
+      summary: Fetch nodes that linked to source nodes with a given property.
+      operationId: GetPropertyValuesPost
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetPropertyValuesResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsGetPropertyValuesRequest'
+      tags:
+        - Mixer
+  /node/triples:
+    get:
+      summary: Fetch triples that have the given nodes as subject or object.
+      operationId: GetTriples
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetTriplesResponse'
+      parameters:
+        - name: dcids
+          description: The dcids of the nodes to query for.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: limit
+          description: >-
+            Maximum number of triples for each property and type of the
+            neighbor.
+          in: query
+          required: false
+          type: integer
+          format: int32
+      tags:
+        - Mixer
+    post:
+      summary: Fetch triples that have the given nodes as subject or object.
+      operationId: GetTriplesPost
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsGetTriplesResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsGetTriplesRequest'
+      tags:
+        - Mixer
+  /query:
+    get:
+      summary: Query DataCommons Graph with Sparql.
+      operationId: Query
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsQueryResponse'
+      parameters:
+        - name: sparql
+          description: Sparql query string.
+          in: query
+          required: false
+          type: string
+      tags:
+        - Mixer
+    post:
+      summary: Query DataCommons Graph with Sparql.
+      operationId: QueryPost
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/datacommonsQueryResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/datacommonsQueryRequest'
+      tags:
+        - Mixer
+definitions:
+  datacommonsGetObservationsRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+        description: Population for a list of populations.
+      measured_property:
+        type: string
+        description: The measured property of the observation.
+      observation_date:
+        type: string
+        description: The observation date.
+      stats_type:
+        type: string
+        description: 'The statistics type, like "measured_value", "median_value", etc...'
+      observation_period:
+        type: string
+        description: '(Optional) Observation period like "P1Y", "P3M" etc...'
+      measurement_method:
+        type: string
+        description: (Opitonal) Measurement method used to get the observation.
+    description: >-
+      Request to get observation given a list of population and observation
+      properties.
+  datacommonsGetObservationsResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response of GetObservation request.
+  datacommonsGetPlaceKMLResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response of GetPlaceKML.
+  datacommonsGetPlaceObsRequest:
+    type: object
+    properties:
+      place_type:
+        type: string
+        description: The type of the place.
+      population_type:
+        type: string
+        description: The type of the Statistical population.
+      pvs:
+        type: array
+        items:
+          $ref: '#/definitions/datacommonsPropertyValue'
+        description: A list of constraining property values that defines the population.
+    description: Requests to get observation for all place.
+  datacommonsGetPlaceObsResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response of GetPlaceObs.
+  datacommonsGetPlacesInRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+        description: The parent place dcids.
+      place_type:
+        type: string
+        description: The child place type.
+    description: Request to get places that are contained in parent places.
+  datacommonsGetPlacesInResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response of GetPlacesIn.
+  datacommonsGetPopObsResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response of GetPopObs.
+  datacommonsGetPopulationsRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+        description: DCIDs for a list of places.
+      population_type:
+        type: string
+        description: Population type.
+      pvs:
+        type: array
+        items:
+          $ref: '#/definitions/datacommonsPropertyValue'
+        description: A list of constraining property values that define the population.
+    description: Request to get certain population for a set of places.
+  datacommonsGetPopulationsResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response of GetPopulation.
+  datacommonsGetPropertyLabelsRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+        description: The dcids of nodes.
+    description: Request to get property labels.
+  datacommonsGetPropertyLabelsResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response returned by GetPropertyLabels.
+  datacommonsGetPropertyValuesRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+        description: The dcids of nodes to query for.
+      value_type:
+        type: string
+        description: The type of the neighboring node to query for.
+      property:
+        type: string
+        description: The property to get adjacent nodes for.
+      limit:
+        type: integer
+        format: int32
+        description: Maximum number of nodes to query for.
+    description: Request to get all neighboring nodes along an edge labeled by a property.
+  datacommonsGetPropertyValuesResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response returned by GetPropertyValues.
+  datacommonsGetTriplesRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+        description: The dcids of the nodes to query for.
+      limit:
+        type: integer
+        format: int32
+        description: Maximum number of triples for each property and type of the neighbor.
+    description: Request to get all triples linking to the given nodes.
+  datacommonsGetTriplesResponse:
+    type: object
+    properties:
+      payload:
+        type: string
+        description: The JSON payload.
+    description: Response returned by GetTriples.
+  datacommonsPropertyValue:
+    type: object
+    properties:
+      property:
+        type: string
+        title: The property schema
+      value:
+        type: string
+        description: The value in string.
+    description: Represents a property value pair.
+  datacommonsQueryRequest:
+    type: object
+    properties:
+      sparql:
+        type: string
+        description: Sparql query string.
+    description: A graph query request in Sparql query language.
+  datacommonsQueryResponse:
+    type: object
+    properties:
+      header:
+        type: array
+        items:
+          type: string
+        description: >-
+          Identifier for selected variable. Size of the header is the same as
+          number
+
+          of cells for each row.
+      rows:
+        type: array
+        items:
+          $ref: '#/definitions/datacommonsQueryResponseRow'
+        description: |-
+          Query results, with each row containing cells corresponding to header
+          variable order.
+    description: Graph query response.
+  datacommonsQueryResponseCell:
+    type: object
+    properties:
+      value:
+        type: string
+        description: Cell value.
+      provenance_id:
+        type: string
+        description: Provenance ID.
+    title: Cell in the QueryResponse
+  datacommonsQueryResponseRow:
+    type: object
+    properties:
+      cells:
+        type: array
+        items:
+          $ref: '#/definitions/datacommonsQueryResponseCell'
+        description: A list of QueryResponseCell.
+    description: >-
+      A graph query response row corresponding to the query variables in graph
+      query.
+  datacommonsTranslateResponse:
+    type: object
+    properties:
+      sql:
+        type: string
+        description: The translated sql.
+      translation:
+        type: string
+        title: Serialized json string of the translation result
+    description: Response of a translate request.
