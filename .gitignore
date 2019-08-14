@@ -50,3 +50,6 @@ deployment.yaml
 certificate.yaml
 custom-certificate.yaml
 key.json
+
+# Sphinx documentation
+docs/_build/
