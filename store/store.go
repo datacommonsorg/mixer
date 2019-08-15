@@ -17,12 +17,14 @@ package store
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
+	"golang.org/x/sync/errgroup"
 
 	"github.com/datacommonsorg/mixer/base"
 	pb "github.com/datacommonsorg/mixer/proto"
@@ -114,4 +116,69 @@ func NewStore(ctx context.Context, bqDataset, btTable, projectID, schemaPath str
 
 	return &store{bqDataset, bqClient, mappings, outArcInfo, inArcInfo,
 		subTypeMap, containedIn, btClient.Open(btTable)}, nil
+}
+
+// bigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet
+// is 500KB.
+func bigTableReadRowsParallel(ctx context.Context, btTable *bigtable.Table,
+	rowSet bigtable.RowSet, action func(row bigtable.Row) error) error {
+	var rowSetSize int
+	var rowList bigtable.RowList
+	var rowRangeList bigtable.RowRangeList
+
+	switch v := rowSet.(type) {
+	case bigtable.RowList:
+		rowList = rowSet.(bigtable.RowList)
+		rowSetSize = len(rowList)
+	case bigtable.RowRangeList:
+		rowRangeList = rowSet.(bigtable.RowRangeList)
+		rowSetSize = len(rowRangeList)
+	default:
+		return fmt.Errorf("unsupported RowSet type: %v", v)
+	}
+
+	errs, errCtx := errgroup.WithContext(ctx)
+	rowChan := make(chan []bigtable.Row, rowSetSize)
+	for i := 0; i <= rowSetSize/util.BtBatchQuerySize; i++ {
+		left := i * util.BtBatchQuerySize
+		right := (i + 1) * util.BtBatchQuerySize
+		if right > rowSetSize {
+			right = rowSetSize
+		}
+		var rowSetPart bigtable.RowSet
+		if len(rowList) > 0 {
+			rowSetPart = rowList[left:right]
+		} else {
+			rowSetPart = rowRangeList[left:right]
+		}
+
+		errs.Go(func() error {
+			btRows := []bigtable.Row{}
+			if err := btTable.ReadRows(errCtx, rowSetPart,
+				func(btRow bigtable.Row) bool {
+					btRows = append(btRows, btRow)
+					return true
+				}); err != nil {
+				return err
+			}
+			rowChan <- btRows
+			return nil
+		})
+	}
+
+	err := errs.Wait()
+	if err != nil {
+		return err
+	}
+	close(rowChan)
+
+	for rows := range rowChan {
+		for _, row := range rows {
+			if err := action(row); err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
 }

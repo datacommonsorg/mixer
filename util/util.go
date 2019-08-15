@@ -17,18 +17,13 @@ package util
 import (
 	"bytes"
 	"compress/gzip"
-	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"regexp"
-	"sort"
 	"strings"
 
-	"cloud.google.com/go/bigtable"
-	pb "github.com/datacommonsorg/mixer/proto"
-	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -206,20 +201,6 @@ func GetContainedIn(typeRelationJSONFilePath string) (map[TypePair][]string, err
 	return result, nil
 }
 
-// IterateSortPVs iterates a list of PVs and performs actions on them.
-func IterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
-	pvMap := map[string]string{}
-	pList := []string{}
-	for _, pv := range pvs {
-		pvMap[pv.GetProperty()] = pv.GetValue()
-		pList = append(pList, pv.GetProperty())
-	}
-	sort.Strings(pList)
-	for i, p := range pList {
-		action(i, p, pvMap[p])
-	}
-}
-
 // SnakeToCamel converts a snake case string to camel case string.
 func SnakeToCamel(s string) string {
 	if !strings.Contains(s, "_") {
@@ -249,71 +230,6 @@ var match = regexp.MustCompile("([a-z0-9])([A-Z])")
 // CamelToSnake converts a camel case string to snake case string.
 func CamelToSnake(str string) string {
 	return strings.ToLower(match.ReplaceAllString(str, "${1}_${2}"))
-}
-
-// BigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet
-// is 500KB.
-func BigTableReadRowsParallel(ctx context.Context, btTable *bigtable.Table,
-	rowSet bigtable.RowSet, action func(row bigtable.Row) error) error {
-	var rowSetSize int
-	var rowList bigtable.RowList
-	var rowRangeList bigtable.RowRangeList
-
-	switch v := rowSet.(type) {
-	case bigtable.RowList:
-		rowList = rowSet.(bigtable.RowList)
-		rowSetSize = len(rowList)
-	case bigtable.RowRangeList:
-		rowRangeList = rowSet.(bigtable.RowRangeList)
-		rowSetSize = len(rowRangeList)
-	default:
-		return fmt.Errorf("unsupported RowSet type: %v", v)
-	}
-
-	errs, errCtx := errgroup.WithContext(ctx)
-	rowChan := make(chan []bigtable.Row, rowSetSize)
-	for i := 0; i <= rowSetSize/BtBatchQuerySize; i++ {
-		left := i * BtBatchQuerySize
-		right := (i + 1) * BtBatchQuerySize
-		if right > rowSetSize {
-			right = rowSetSize
-		}
-		var rowSetPart bigtable.RowSet
-		if len(rowList) > 0 {
-			rowSetPart = rowList[left:right]
-		} else {
-			rowSetPart = rowRangeList[left:right]
-		}
-
-		errs.Go(func() error {
-			btRows := []bigtable.Row{}
-			if err := btTable.ReadRows(errCtx, rowSetPart,
-				func(btRow bigtable.Row) bool {
-					btRows = append(btRows, btRow)
-					return true
-				}); err != nil {
-				return err
-			}
-			rowChan <- btRows
-			return nil
-		})
-	}
-
-	err := errs.Wait()
-	if err != nil {
-		return err
-	}
-	close(rowChan)
-
-	for rows := range rowChan {
-		for _, row := range rows {
-			if err := action(row); err != nil {
-				return err
-			}
-		}
-	}
-
-	return nil
 }
 
 // CheckValidDCIDs checks if DCIDs are valid. More criteria will be added as being discovered.
