@@ -180,13 +180,6 @@ func GetContainedIn(typeRelationJSONFilePath string) (map[TypePair][]string, err
 			all = append(all, info.SubType, info.ObjType)
 		}
 	}
-	// Node that has no parent node.
-	endNodes := []string{}
-	for _, one := range all {
-		if _, ok := link[one]; !ok {
-			endNodes = append(endNodes, one)
-		}
-	}
 	for c, ps := range link {
 		morep := ps
 		for len(morep) > 0 {
