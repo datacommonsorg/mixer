@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -54,7 +55,7 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	out *pb.GetPlaceObsResponse) error {
 	key := in.GetPlaceType() + "-" + in.GetPopulationType()
 	if len(in.GetPvs()) > 0 {
-		util.IterateSortPVs(in.GetPvs(), func(i int, p, v string) {
+		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
 			key += "-" + p + "-" + v
 		})
 	}
@@ -105,7 +106,7 @@ func (s *store) bqGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 		"AND p.num_constraints = %d",
 		s.bqDb, util.StringList(in.GetDcids()), in.GetPopulationType(), numConstraints)
 	if numConstraints > 0 {
-		util.IterateSortPVs(in.GetPvs(), func(i int, p, v string) {
+		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
 			qStr += fmt.Sprintf(" AND p.p%d = \"%s\" AND p.v%d = \"%s\"",
 				i+1, p, i+1, v)
 		})
@@ -152,7 +153,7 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 	// Create the cache key suffix
 	keySuffix := "-" + in.GetPopulationType()
 	if len(in.GetPvs()) > 0 {
-		util.IterateSortPVs(in.GetPvs(), func(i int, p, v string) {
+		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
 			keySuffix += ("-" + p + "-" + v)
 		})
 	}
@@ -167,7 +168,7 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 	// Query the cache
 	collection := []*PlacePopInfo{}
 	dcidStore := map[string]struct{}{}
-	if err := util.BigTableReadRowsParallel(ctx, s.btTable, rowList,
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
@@ -312,7 +313,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	// Query the cache for all keys.
 	collection := []*PopObs{}
 	dcidStore := map[string]struct{}{}
-	if err := util.BigTableReadRowsParallel(ctx, s.btTable, rowList,
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
@@ -348,4 +349,18 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	out.Payload = string(jsonRaw)
 
 	return nil
+}
+
+// iterateSortPVs iterates a list of PVs and performs actions on them.
+func iterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
+	pvMap := map[string]string{}
+	pList := []string{}
+	for _, pv := range pvs {
+		pvMap[pv.GetProperty()] = pv.GetValue()
+		pList = append(pList, pv.GetProperty())
+	}
+	sort.Strings(pList)
+	for i, p := range pList {
+		action(i, p, pvMap[p])
+	}
 }

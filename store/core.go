@@ -300,7 +300,7 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 	}
 
 	btRawValuesMap := map[string][]string{} // Key: dcid; value: a list of raw row values.
-	if err := util.BigTableReadRowsParallel(ctx, s.btTable, rowRangeList,
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowRangeList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
@@ -571,7 +571,7 @@ func (s *store) GetPropertyLabels(
 	}
 
 	resultsMap := map[string]*PropLabelCache{}
-	if err := util.BigTableReadRowsParallel(ctx, s.btTable, rowList,
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			dcid := strings.TrimPrefix(btRow.Key(), util.BtArcsPrefix)
@@ -630,7 +630,7 @@ func (s *store) btGetTriples(
 	}
 
 	resultsMap := map[string][]Triple{}
-	if err := util.BigTableReadRowsParallel(ctx, s.btTable, rowList,
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			dcid := strings.TrimPrefix(btRow.Key(), util.BtTriplesPrefix)
