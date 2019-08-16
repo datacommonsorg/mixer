@@ -27,6 +27,7 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	"github.com/datacommonsorg/mixer/base"
+	"github.com/datacommonsorg/mixer/models"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/translator"
 	"github.com/datacommonsorg/mixer/util"
@@ -37,7 +38,7 @@ import (
 // Interface exposes the database access for mixer.
 type Interface interface {
 	Query(ctx context.Context,
-		in *pb.QueryRequest, out *pb.QueryResponse) error
+		in *models.QueryRequest, out *models.QueryResponse) error
 
 	GetPropertyLabels(ctx context.Context,
 		in *pb.GetPropertyLabelsRequest, out *pb.GetPropertyLabelsResponse) error

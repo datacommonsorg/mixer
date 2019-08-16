@@ -21,16 +21,15 @@ import (
 
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/base"
+	"github.com/datacommonsorg/mixer/models"
 	"github.com/datacommonsorg/mixer/sparql"
 	"github.com/datacommonsorg/mixer/translator"
-
-	pb "github.com/datacommonsorg/mixer/proto"
 
 	"google.golang.org/api/iterator"
 )
 
 func (s *store) Query(
-	ctx context.Context, in *pb.QueryRequest, out *pb.QueryResponse) error {
+	ctx context.Context, in *models.QueryRequest, out *models.QueryResponse) error {
 	opts := &base.QueryOptions{}
 
 	var (
@@ -39,7 +38,7 @@ func (s *store) Query(
 		err     error
 	)
 
-	nodes, queries, opts, err = sparql.ParseQuery(in.GetSparql())
+	nodes, queries, opts, err = sparql.ParseQuery(in.Sparql)
 	if err != nil {
 		return err
 	}
@@ -62,7 +61,7 @@ func (s *store) Query(
 		return err
 	}
 	for {
-		responseRow := pb.QueryResponseRow{}
+		var responseRow models.Row
 		var row []bigquery.Value
 		err := it.Next(&row)
 		if err == iterator.Done {
@@ -85,12 +84,12 @@ func (s *store) Query(
 				}
 			}
 			if i < n {
-				responseRow.Cells = append(responseRow.Cells, &pb.QueryResponseCell{Value: str})
+				responseRow.Cells = append(responseRow.Cells, &models.Cell{Value: str})
 			} else {
 				// Add provenance to corresponding cells.
 				if idx, ok := translation.Prov[i]; ok {
 					for _, j := range idx {
-						responseRow.Cells[j].ProvenanceId = str
+						responseRow.Cells[j].ProvenanceID = str
 					}
 				}
 			}
