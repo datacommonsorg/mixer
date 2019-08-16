@@ -11,24 +11,24 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Cell cell
-// swagger:model Cell
-type Cell struct {
+// TranslateRequest translate request
+// swagger:model TranslateRequest
+type TranslateRequest struct {
 
-	// provenance Id
-	ProvenanceID string `json:"provenanceId,omitempty"`
+	// datalog
+	Datalog string `json:"datalog,omitempty"`
 
-	// value
-	Value string `json:"value,omitempty"`
+	// schema mapping
+	SchemaMapping string `json:"schemaMapping,omitempty"`
 }
 
-// Validate validates this cell
-func (m *Cell) Validate(formats strfmt.Registry) error {
+// Validate validates this translate request
+func (m *TranslateRequest) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *Cell) MarshalBinary() ([]byte, error) {
+func (m *TranslateRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -36,8 +36,8 @@ func (m *Cell) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *Cell) UnmarshalBinary(b []byte) error {
-	var res Cell
+func (m *TranslateRequest) UnmarshalBinary(b []byte) error {
+	var res TranslateRequest
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

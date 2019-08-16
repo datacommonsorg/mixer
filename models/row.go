@@ -15,7 +15,7 @@ import (
 )
 
 // Row row
-// swagger:model row
+// swagger:model Row
 type Row struct {
 
 	// cells

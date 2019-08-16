@@ -12,7 +12,7 @@ import (
 )
 
 // QueryRequest query request
-// swagger:model queryRequest
+// swagger:model QueryRequest
 type QueryRequest struct {
 
 	// sparql

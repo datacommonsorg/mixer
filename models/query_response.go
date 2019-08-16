@@ -15,7 +15,7 @@ import (
 )
 
 // QueryResponse query response
-// swagger:model queryResponse
+// swagger:model QueryResponse
 type QueryResponse struct {
 
 	// header
