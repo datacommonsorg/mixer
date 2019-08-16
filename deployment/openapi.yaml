@@ -1,0 +1,836 @@
+# Copyright 2019 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+swagger: "2.0"
+info:
+  title: "Data Commons API"
+  version: "1.0.0"
+  description: |
+    # Overview
+    Data Commons makes it easy to integrate data from its knowledge graph to your web application through a RESTful API. This guide explains how to get started with the API, describes each of the available resources, and provides example code.
+
+    The API of DataCommons is a Web API with a base url of:
+
+    [$ curl http://api.datacommons.org/](http://api.datacommos.org/)
+
+    This base URL, referred to here as API root, exposes a list of the URLs required to access each of three resource types including:
+    * **/query**: implements access through a graph query language such as SPARQL.
+    * **/node**: implements direct access to nodes or collections of nodes in the KG.
+    * **/bulk**: implements bulk access to large subgraphs in the kg (i.e. get all populations, observations, KML texts, etc.).
+
+    Each resource type is accessible via the HTTP GET or POST method.
+
+    # Data Models
+
+    In this section, we will introduce how Data Commons stores data in its open knowledge graph.
+
+    ### Important Terms
+
+    | Term            | Description                                               |
+    | :-------------- |:----------------------------------------------------------|
+    | Knowledge Graph | The graph structure storing all data in Data Commons.     |
+    | Node            | The representation of an entity in the knowledge graph.   |
+    | DCID            | The unique identifier assigned to each node in the Data Commons knowledge graph. Short for Data Commons Identifier. |
+    | Type            | The class describing a node. For example, the node for "California" has type "State". |
+    | Property        | The relation that associates two nodes together.          |
+    | Property Label  | Another name for *property*.                              |
+    | Property Value  | The set of nodes adjacent to a given node along edges of a given *property*. |
+    | Triple          | A compact representation of a statement in the Data Commons knowledge graph of the form (subject, property, object)     |
+
+
+    ### Overview of the Graph
+
+    Data Commons organizes its data as an open access *knowledge graph*. It contains
+    statements about real world objects such as
+
+    - ["Alameda County"](https://browser.datacommons.org/kg?dcid=geoId/06001) is contained in the State of ["California"](https://browser.datacommons.org/kg?dcid=geoId/06).
+    - The latitude of
+      ["Berkeley"](https://browser.datacommons.org/kg?dcid=geoId/0606000), CA is 37.8703
+    - The [population of all persons in Maryland](https://browser.datacommons.org/kg?dcid=dc/o/6w1c9qk7hxjch) has a total count of 5,996,080.
+
+    [Entities](https://en.wikipedia.org/wiki/Entity) such as "Alameda County", "California", and "Berkeley" are represented as **nodes** in the Data Commons
+    knowledge graph. There are two important details about a node
+
+    1.  Every node is uniquely identified by a **dcid** which is short for Data
+        Commons Identifier. The dcid identifying "California" is `geoId/06`
+    2.  Every node has a **class** that broadly describes the category of entities
+        that it is an instance of. For example, "California" has type
+        [State](https://browser.datacommons.org/kg?dcid=State).
+
+    Relations between entities are represented as a directed edge between two nodes
+    in the graph. These relations are called **properties** or **property labels**.
+    A portion of the Data Commons graph capturing the statement
+
+      `Alameda County is contained in the California`
+
+    can thus be visualized as the following:
+
+    ![image](https://storage.googleapis.com/notebook-resources/image-1.png)
+
+    Here "Alameda County" and "California" are nodes while
+    ["containedInPlace"](https://browser.datacommons.org/kg?dcid=containedInPlace)
+    is a property denoting that the node adjacent to the tail of the edge is
+    contained in the node adjacent to the head.
+
+    ### Property Values
+
+    When accessing nodes in the graph, it is often useful to describe a set of nodes
+    adjacent to a given node. One may wish to query for all cities that are
+    contained in a certain county, ask for all schools within a school district,
+    etc. Given a node and a property, we denote the **property value** as the set
+    of all nodes that are adjacent to the given node along an edge labeled by the
+    given property.
+
+    For example, the following are a few property values of "Alameda County"
+    along the property "containedInPlace".
+
+    - [California](https://browser.datacommons.org/kg?dcid=geoId/06)
+    - [Berkeley](https://browser.datacommons.org/kg?dcid=geoId/0606000)
+    - [Oakland](https://browser.datacommons.org/kg?dcid=geoId/0653000)
+    - [Emeryville](https://browser.datacommons.org/kg?dcid=geoId/0622594)
+
+    The graph around Alameda County looks like the following.
+
+    ![image](https://storage.googleapis.com/notebook-resources/readthedocs-image-2.png)
+
+    An important thing to note is that direction matters! Berkeley is certainly
+    contained in Alameda County, but California is *not* contained in Alameda
+    County. Alameda County is contained in California, but it is *not* contained
+    in Berkeley!
+
+    When asking for property values one may thus wish to distinguish by the
+    *orientation* or direction of the edge. The property values of "Alameda County"
+    along *outgoing* edges labeled by "containedInPlace" includes California while
+    property values along *incoming* edges include Berkeley, Oakland, and
+    Emeryville.
+
+    ### Triples
+
+    Relations in the graph can be compactly described in the format of a **triple**.
+    Triples are 3-tuples that take the form `(subject, property, object)`.
+
+    - The *subject* and *object* are two nodes in the Data Commons graph.
+    - The *property* is the property labeling the edge oriented from subject to
+      object.
+
+    The statement "Alameda County is contained in the California" can be represented
+    as a triple of the following form
+
+      ("Alameda County", "containedInPlace", "California")
+
+    Indeed, one could represent the entire Data Commons graph as a collection of
+    triples.
+
+    ### More Information
+
+    Data Commons leverages the [Schema.org](https://schema.org) vocabulary to
+    provide a common set of types and properties. The Data Model used by Data
+    Commons also closely resembles the Schema.org data model. One may refer to
+    documentation on the [Schema.org data model](#section/Data Models) to learn more.
+
+
+    # Authentication
+
+    Using the Data Commons Python API requires you to provision an API key on GCP. Follow these steps to create your own key.
+
+    1. Start by creating a [GCP Project](https://pantheon.corp.google.com/projectcreate?debugUI=DEVELOPERS) and [enabling billing](https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project) for that project.
+    2. After creating your project, you can navigate to the GCP Console to create an API key.
+      - Begin by navigating to **APIs & Services > Credentials** in the side bar or by clicking on [this link](https://pantheon.corp.google.com/apis/credentials?debugUI=DEVELOPERS)
+      - Click **Create Credentials** then select **API Key**
+      Once you do this, you’ll be presented a key that you can copy to your clipboard.
+    3. Enable the Data Commons API on GCP
+      - Navigate to the `Data Commons API` in the Google APIs Console.
+      - Click the `Enable` button and wait for the process to complete.
+    4. Use the API key as a url parameter like **&key=<API_KEY>**
+
+      An example API path would be http://api.datacommons.org/node/triples?dcids=geoId/06&key=API_KEY
+
+tags:
+  - name: query
+    description: Access DataCommons via a graph query language SPARQL.
+  - name: node
+    description: Access to nodes or collections of nodes in the KG.
+  - name: bulk
+    description: Bulk access to large subgraphs in the kg (i.e. get all populations, observations, KML texts, etc.).
+
+
+host: "api.datacommons.org"
+x-google-endpoints:
+- name: "api.datacommons.org"
+  target: "TARGET_IP"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+schemes:
+# Uncomment the next line if you configure SSL for this API.
+#- "https"
+- "http"
+paths:
+  /query:
+    post:
+      tags:
+        - query
+      description: "Query DataCommons graph with sparql"
+      operationId: "query (post)"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Query"
+          schema:
+            $ref: "#/definitions/QueryResponse"
+      parameters:
+      - description: "Message to query"
+        in: body
+        name: "query"
+        required: true
+        schema:
+          $ref: "#/definitions/QueryRequest"
+      security:
+      - api_key: []
+    get:
+      tags:
+        - query
+      description: "Query DataCommons graph with sparql."
+      operationId: "query (get)"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Query"
+          schema:
+            $ref: "#/definitions/QueryResponse"
+      parameters:
+        - in: query
+          name: "sparql"
+          type: string
+          required: true
+          description: "Sparql query string"
+      security:
+      - api_key: []
+
+  /translate:
+    post:
+      tags:
+        - query
+      description: "Translate datalog (with schema mapping) into sql query"
+      operationId: "translate"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Translate response"
+          schema:
+            $ref: "#/definitions/TranslateResponse"
+      parameters:
+      - description: "translate request"
+        in: body
+        name: "translate request"
+        required: true
+        schema:
+          $ref: "#/definitions/TranslateRequest"
+      security:
+      - api_key: []
+
+  /node/property-labels:
+    post:
+      tags:
+        - node
+      description: "Fetch property labels adjacent of nodes"
+      operationId: "property labels (post)"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Response to fetch property labels"
+          schema:
+            $ref: "#/definitions/PropertyLabelsResponse"
+      parameters:
+      - description: "Parameters to fetch property labels"
+        in: body
+        name: "property labels request"
+        required: true
+        schema:
+          $ref: "#/definitions/PropertyLabelsRequest"
+      security:
+      - api_key: []
+    get:
+      tags:
+        - node
+      description: "Fetch property labels adjacent of nodes"
+      operationId: "property labels (get)"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Response to fetch property labels"
+          schema:
+            $ref: "#/definitions/PropertyLabelsResponse"
+      parameters:
+        - in: query
+          name: "dcids"
+          type: array
+          items:
+            type: string
+          required: true
+          description: "Dcids of node to query for"
+      security:
+      - api_key: []
+
+  /node/property-values:
+    post:
+      tags:
+        - node
+      description: "Fetch nodes that linked to source nodes with a given property"
+      operationId: "property values (post)"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Response to fetch property values"
+          schema:
+            $ref: "#/definitions/PropertyValuesResponse"
+      parameters:
+      - description: "Parameters to fetch property values"
+        in: body
+        name: "property values request"
+        required: true
+        schema:
+          $ref: "#/definitions/PropertyValuesRequest"
+      security:
+      - api_key: []
+    get:
+      tags:
+        - node
+      description: "Fetch nodes that linked to source nodes with a given property"
+      operationId: "property values (get)"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Response to fetch property values"
+          schema:
+            $ref: "#/definitions/PropertyValuesResponse"
+      parameters:
+        - in: query
+          name: "dcids"
+          type: array
+          items:
+            type: string
+          required: true
+          description: "Dcids of node to query for"
+        - in: query
+          name: "valueType"
+          type: string
+          required: true
+          description: "The type of the neighboring node to query for"
+        - in: query
+          name: "property"
+          type: string
+          required: true
+          description: "The property to get adjacent nodes for"
+        - in: query
+          name: "limit"
+          type: integer
+          description: "Maximum number of nodes to query for"
+      security:
+      - api_key: []
+
+  /node/triples:
+    post:
+      tags:
+        - node
+      description: "Fetch triples that have the given nodes as subject or object"
+      operationId: "triples (post)"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Response to fetch triples"
+          schema:
+            $ref: "#/definitions/TriplesResponse"
+      parameters:
+      - description: "Parameters to fetch triples"
+        in: body
+        name: "triples request"
+        required: true
+        schema:
+          $ref: "#/definitions/TriplesRequest"
+      security:
+      - api_key: []
+    get:
+      tags:
+        - node
+      description: "Fetch triples that have the given nodes as subject or object"
+      operationId: "triples (get)"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Response to fetch triples"
+          schema:
+            $ref: "#/definitions/TriplesResponse"
+      parameters:
+        - in: query
+          name: "dcids"
+          type: array
+          items:
+            type: string
+          required: true
+          description: "Dcids of node to query for"
+        - in: query
+          name: "limit"
+          type: integer
+          maximum: 500
+          description: "Number of nodes to query per predicate and type"
+      security:
+      - api_key: []
+
+  /node/populations:
+    post:
+      tags:
+        - node
+      description: "Get populations for a list of places, given the population type and constraining property values"
+      operationId: "populations"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Response to fetch populations"
+          schema:
+            $ref: "#/definitions/PopulationsResponse"
+      parameters:
+      - description: "Parameters to fetch populations"
+        in: body
+        name: "populations request"
+        required: true
+        schema:
+          $ref: "#/definitions/PopulationsRequest"
+      security:
+      - api_key: []
+
+  /node/observations:
+    post:
+      tags:
+        - node
+      description: "Get observations for a list of population, given the observation constraints"
+      operationId: "observations"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Response to fetch observations"
+          schema:
+            $ref: "#/definitions/ObservationsResponse"
+      parameters:
+      - description: "Parameters to fetch observations"
+        in: body
+        name: "observations request"
+        required: true
+        schema:
+          $ref: "#/definitions/ObservationsRequest"
+      security:
+      - api_key: []
+
+  /node/places-in:
+    post:
+      tags:
+        - node
+      description: "Get places contained in parent places"
+      operationId: "places in (post)"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Response to fetch places in"
+          schema:
+            $ref: "#/definitions/PlacesInResponse"
+      parameters:
+      - description: "Parameters to fetch places in"
+        in: body
+        name: "places in request"
+        required: true
+        schema:
+          $ref: "#/definitions/PlacesInRequest"
+      security:
+      - api_key: []
+    get:
+      tags:
+        - node
+      description: "Get places contained in parent places"
+      operationId: "places in (get)"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Response to fetch places in"
+          schema:
+            $ref: "#/definitions/PlacesInResponse"
+      parameters:
+        - in: query
+          name: "dcids"
+          type: array
+          items:
+            type: string
+          required: true
+          description: "The parent place dcids"
+        - in: query
+          name: "placeType"
+          type: string
+          required: true
+          description: "The child place type"
+      security:
+      - api_key: []
+
+  /bulk/pop-obs:
+    get:
+      tags:
+        - bulk
+      description: "Get population and observation data for a place"
+      operationId: "populations & observations"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Response to fetch population and observation data"
+          schema:
+            $ref: "#/definitions/PopObsResponse"
+      parameters:
+        - in: query
+          name: "dcid"
+          type: string
+          required: true
+          description: "The dcid of the place to query for"
+      security:
+      - api_key: []
+
+  /bulk/place-obs:
+    post:
+      tags:
+        - bulk
+      description: "Get observation data for a list of places, given place type, population type, and population constraining properties"
+      operationId: "places & observations"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Response to fetch places observations"
+          schema:
+            $ref: "#/definitions/PlaceObsResponse"
+      parameters:
+      - description: "Parameters to fetch place observations"
+        in: body
+        name: "place obs request"
+        required: true
+        schema:
+          $ref: "#/definitions/PlaceObsRequest"
+      security:
+      - api_key: []
+
+  /bulk/place-kml:
+    get:
+      tags:
+        - bulk
+      description: "Get KML coordinates for a place"
+      operationId: "place kml"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Response to fetch place kml data"
+          schema:
+            $ref: "#/definitions/PlaceKmlResponse"
+      parameters:
+        - in: query
+          name: "dcid"
+          type: string
+          required: true
+          description: "The dcid of the place to query for"
+      security:
+      - api_key: []
+
+definitions:
+  QueryRequest:
+    type: object
+    properties:
+      sparql:
+        type: string
+    example:
+      sparql: "SELECT ?name WHERE { ?a typeOf Place . ?a name ?name . ?a dcid \"geoIo/06\" }"
+
+  QueryResponse:
+    type: object
+    properties:
+      header:
+        type: array
+        items:
+          type: string
+      rows:
+        type: array
+        items:
+          $ref: "#/definitions/Row"
+    example:
+      header: ["name", "address", "age"]
+      rows:
+        - cell:
+          - value: "John"
+          - value: "111 main street"
+          - value: "36"
+        - cell:
+          - value: "Mike"
+          - value: "Town Hall"
+          - value: "18"
+
+  Row:
+    type: object
+    properties:
+      cells:
+        type: array
+        items:
+          $ref: "#/definitions/Cell"
+
+  Cell:
+    properties:
+      value:
+        type: string
+      provenanceId:
+        type: string
+
+  TranslateRequest:
+    type: object
+    properties:
+      schemaMapping:
+        type: string
+      datalog:
+        type: string
+
+  TranslateResponse:
+    type: object
+    properties:
+      sql:
+        type: string
+      translation:
+        type: string
+
+  PropertyLabelsRequest:
+    type: array
+    items:
+      type: string
+
+  PropertyLabelsResponse:
+    type: object
+    additionalProperties:
+      type: object
+      properties:
+        inLabels:
+          type: array
+          items:
+            type: string
+        outLabels:
+          type: array
+          items:
+            type: string
+    example:
+      geoId/0606000:
+        inLabels: ["addressLocality"]
+        outLabels: ["containedInPlace", "geoId", "kmlCoordinates"]
+
+  PropertyValuesRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+      valueType:
+        type: string
+      property:
+        type: string
+      limit:
+        type: integer
+
+  PropertyValuesResponse:
+    type: object
+    additionalProperties:
+      type: object
+      properties:
+        in:
+          type: array
+          items:
+            type: object
+        out:
+          type: array
+          items:
+            type: object
+
+  TriplesRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+      limit:
+        type: integer
+        maximum: 500
+
+  TriplesResponse:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        type: object
+        properties:
+          subjectId:
+            type: string
+          subjectName:
+            type: string
+          subjectTypes:
+            type: array
+            items:
+              type: string
+          predicate:
+            type: string
+          objectId:
+            type: string
+          objectName:
+            type: string
+          objectValue:
+            type: string
+          objectTypes:
+            type: array
+            items:
+              type: string
+          provenanceId:
+            type: string
+
+  PopulationsRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+      populationType:
+        type: string
+      pvs:
+        type: object
+        properties:
+          property:
+            type: string
+          value:
+            type: string
+
+  PopulationsResponse:
+    type: object
+    additionalProperties:
+      type: string
+    example:
+      geoId/0606000: "dc/p/abc000"
+      geoId/1235: "dc/p/xyz111"
+
+  ObservationsRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+      measuredProperty:
+        type: string
+      observationDate:
+        type: string
+      statsType:
+        type: string
+      observationPeriod:
+        type: string
+      measurementMethod:
+        type: string
+    required:
+    - dcids
+    - measuredProperty
+    - observationDate
+    - statsType
+
+  ObservationsResponse:
+    type: object
+    additionalProperties:
+      type: number
+    example:
+      dc/p/abc000: 30.1
+      dc/p/xyz111: 20
+
+  PlacesInRequest:
+    type: object
+    properties:
+      dcids:
+        type: array
+        items:
+          type: string
+      placeType:
+        type: string
+    required:
+    - dcids
+    - placeType
+
+  PlacesInResponse:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        type: string
+    example:
+      "geoId/06": ["geoId/323", "geoId/132"]
+      "geoId/08": ["geoId/21"]
+
+  PopObsResponse:
+    type: string
+    description: "Compressed population observation data"
+
+  PlaceObsRequest:
+    type: object
+    properties:
+      placeType:
+        type: string
+      populationType:
+        type: string
+      pvs:
+        type: object
+        properties:
+          property:
+            type: string
+          value:
+            type: string
+    required:
+    - placeType
+    - populationType
+
+  PlaceObsResponse:
+    type: string
+    description: "Compressed place observation data"
+
+  PlaceKmlResponse:
+    type: string
+    description: "Compressed place observation data"
+
+
+# This section requires all requests to any path to require an API key.
+securityDefinitions:
+  # This section configures basic authentication with an API key.
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
