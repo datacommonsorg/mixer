@@ -56,7 +56,7 @@ const (
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
-	BtCacheLimit = 200
+	BtCacheLimit = 500
 	// BtBatchQuerySize is the size of BigTable batch query.
 	BtBatchQuerySize = 1000
 	// LimitFactor is the amount to multiply the limit by to make sure certain
