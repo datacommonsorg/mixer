@@ -62,7 +62,7 @@ type Node struct {
 
 // TriplesCache represents the json structure returned by the BT triples cache
 type TriplesCache struct {
-	Triples []Triple `json:"triples"`
+	Triples []*Triple `json:"triples"`
 }
 
 // PropValueCache represents the json structure returned by the BT PropVal cache
@@ -348,17 +348,7 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 
 func (s *store) GetTriples(ctx context.Context,
 	in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
-	if in.GetLimit() == 0 {
-		in.Limit = util.BtCacheLimit
-	}
-
-	var err error
-	if in.GetLimit() > util.BtCacheLimit {
-		err = s.bqGetTriples(ctx, in, out)
-	} else {
-		err = s.btGetTriples(ctx, in, out)
-	}
-	return err
+	return s.btGetTriples(ctx, in, out)
 }
 
 func (s *store) bqGetTriples(
@@ -629,7 +619,7 @@ func (s *store) btGetTriples(
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtTriplesPrefix, dcid))
 	}
 
-	resultsMap := map[string][]Triple{}
+	resultsMap := map[string][]*Triple{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
@@ -641,19 +631,9 @@ func (s *store) btGetTriples(
 				if err != nil {
 					return err
 				}
-
 				var btTriples TriplesCache
 				json.Unmarshal(btJSONRaw, &btTriples)
-
-				if limit := int(in.GetLimit()); limit < len(btTriples.Triples) {
-					btTriples.Triples = btTriples.Triples[:limit]
-				}
-
-				if btTriples.Triples == nil {
-					resultsMap[dcid] = []Triple{}
-				} else {
-					resultsMap[dcid] = btTriples.Triples
-				}
+				resultsMap[dcid] = filterTriplesLimit(dcid, btTriples.Triples, int(in.GetLimit()))
 			}
 			return nil
 		}); err != nil {
@@ -663,7 +643,7 @@ func (s *store) btGetTriples(
 	// Iterate through all dcids to make sure they are present in resultsMap.
 	for _, dcid := range dcids {
 		if _, exists := resultsMap[dcid]; !exists {
-			resultsMap[dcid] = []Triple{}
+			resultsMap[dcid] = []*Triple{}
 		}
 	}
 
@@ -679,6 +659,51 @@ func (s *store) btGetTriples(
 }
 
 // ----------------------------- HELPER FUNCTIONS -----------------------------
+
+func filterTriplesLimit(dcid string, triples []*Triple, limit int) []*Triple {
+	if triples == nil {
+		return []*Triple{}
+	}
+	if limit == 0 { // Default limit value means no further limit.
+		return triples
+	}
+
+	store := map[string][]*Triple{} // Key is {isOut + predicate + neighborType}.
+	for _, t := range triples {
+		isOut := "0"
+		neighborTypes := t.SubjectTypes
+		if t.SubjectID == dcid {
+			isOut = "1"
+			neighborTypes = t.ObjectTypes
+		}
+
+		for _, nt := range neighborTypes {
+			key := isOut + t.Predicate + nt
+			if _, ok := store[key]; !ok {
+				store[key] = []*Triple{}
+			}
+			store[key] = append(store[key], t)
+		}
+	}
+
+	triplesMap := map[*Triple]struct{}{}
+	for _, triples := range store {
+		filteredTriples := triples
+		if len(triples) > limit {
+			filteredTriples = triples[:limit]
+		}
+		for _, t := range filteredTriples {
+			triplesMap[t] = struct{}{}
+		}
+	}
+
+	result := []*Triple{}
+	for t := range triplesMap {
+		result = append(result, t)
+	}
+
+	return result
+}
 
 func readTripleFromBq(it *bigquery.RowIterator) ([]*Triple, error) {
 	result := []*Triple{}
