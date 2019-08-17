@@ -47,7 +47,7 @@ func main() {
 
 	// Get Triples for various lists of nodes.
 	for _, req := range []*pb.GetTriplesRequest{
-		&pb.GetTriplesRequest{Dcids: []string{"State", "County", "City"}},
+		&pb.GetTriplesRequest{Dcids: []string{"State", "County", "City"}, Limit: 3},
 		&pb.GetTriplesRequest{Dcids: []string{"Class"}},
 		&pb.GetTriplesRequest{Dcids: []string{"geoId/0649670"}, Limit: 205},
 	} {
