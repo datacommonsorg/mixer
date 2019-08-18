@@ -53,7 +53,7 @@ const (
 	BtPopPrefix = "d/a/"
 	// BtObsPrefix for observation cache.
 	BtObsPrefix = "d/b/"
-	// BtPlacesInPrefix	for GetPlacesIn cache.
+	// BtPlacesInPrefix for GetPlacesIn cache.
 	BtPlacesInPrefix = "d/c/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
