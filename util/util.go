@@ -53,6 +53,8 @@ const (
 	BtPopPrefix = "d/a/"
 	// BtObsPrefix for observation cache.
 	BtObsPrefix = "d/b/"
+	// BtPlacesInPrefix for GetPlacesIn cache.
+	BtPlacesInPrefix = "d/c/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.

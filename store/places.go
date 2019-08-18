@@ -18,10 +18,12 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"strings"
 
 	"encoding/json"
 
 	"cloud.google.com/go/bigquery"
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/api/iterator"
@@ -31,14 +33,59 @@ import (
 
 func (s *store) GetPlacesIn(ctx context.Context,
 	in *pb.GetPlacesInRequest, out *pb.GetPlacesInResponse) error {
-	// By default, return empty list.
-	out.Payload = "[]"
+	return s.btGetPlacesIn(ctx, in, out)
+}
 
-	// If no DCIDs given, return empty result
-	parentIds := in.GetDcids()
-	if len(parentIds) == 0 {
-		return nil
+func (s *store) btGetPlacesIn(ctx context.Context,
+	in *pb.GetPlacesInRequest, out *pb.GetPlacesInResponse) error {
+	dcids := in.GetDcids()
+	placeType := in.GetPlaceType()
+
+	rowList := bigtable.RowList{}
+	for _, dcid := range dcids {
+		rowList = append(rowList, fmt.Sprintf("%s%s-%s", util.BtPlacesInPrefix, dcid, placeType))
 	}
+
+	results := []map[string]string{}
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			parts := strings.Split(btRow.Key(), "-")
+			dcid := strings.TrimPrefix(parts[0], util.BtPlacesInPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btValueRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+				for _, place := range strings.Split(string(btValueRaw), ",") {
+					results = append(results, map[string]string{
+						"dcid":  dcid,
+						"place": place,
+					})
+				}
+			}
+
+			return nil
+		}); err != nil {
+		return err
+	}
+
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
+
+	return nil
+}
+
+// TODO(*): Deprecate this method once the BT route is stable.
+func (s *store) bqGetPlacesIn(ctx context.Context,
+	in *pb.GetPlacesInRequest, out *pb.GetPlacesInResponse) error {
+	out.Payload = "[]" // By default, return empty list.
+	parentIds := in.GetDcids()
 
 	// Get typing information from the first node.
 	nodeInfo, err := getNodeInfo(ctx, s.bqClient, s.bqDb, parentIds[:1])
