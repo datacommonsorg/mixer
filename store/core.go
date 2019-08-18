@@ -351,6 +351,7 @@ func (s *store) GetTriples(ctx context.Context,
 	return s.btGetTriples(ctx, in, out)
 }
 
+// TODO(*): Deprecate this method once the BT route is stable.
 func (s *store) bqGetTriples(
 	ctx context.Context, in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
 	// Get parameters from the request and create the triples channel
