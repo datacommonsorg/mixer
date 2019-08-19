@@ -2,7 +2,6 @@
 
 go run basic_demo/main.go
 go run get_observations/main.go
-go run get_place_kml/main.go
 go run get_place_obs/main.go
 go run get_places_in/main.go
 go run get_pop_obs/main.go
