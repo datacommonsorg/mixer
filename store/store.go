@@ -62,9 +62,6 @@ type Interface interface {
 
 	GetPlacesIn(ctx context.Context,
 		in *pb.GetPlacesInRequest, out *pb.GetPlacesInResponse) error
-
-	GetPlaceKML(ctx context.Context,
-		in *pb.GetPlaceKMLRequest, out *pb.GetPlaceKMLResponse) error
 }
 
 type store struct {

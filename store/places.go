@@ -152,15 +152,3 @@ func (s *store) bqGetPlacesIn(ctx context.Context,
 
 	return nil
 }
-
-func (s *store) GetPlaceKML(ctx context.Context,
-	in *pb.GetPlaceKMLRequest, out *pb.GetPlaceKMLResponse) error {
-	btRow, err := s.btTable.ReadRow(ctx, util.BtPlaceKMLPrefix+in.GetDcid())
-	if err != nil {
-		return err
-	}
-	if len(btRow[util.BtFamily]) > 0 {
-		out.Payload = string(btRow[util.BtFamily][0].Value)
-	}
-	return nil
-}
