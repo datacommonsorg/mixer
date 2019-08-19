@@ -254,22 +254,6 @@ func (s *server) GetPlacesInPost(ctx context.Context,
 	return &out, nil
 }
 
-func (s *server) GetPlaceKML(ctx context.Context,
-	in *pb.GetPlaceKMLRequest) (*pb.GetPlaceKMLResponse, error) {
-	if in.GetDcid() == "" {
-		return nil, fmt.Errorf("missing required arguments")
-	}
-	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
-		return nil, fmt.Errorf("invalid DCIDs")
-	}
-
-	out := pb.GetPlaceKMLResponse{}
-	if err := s.st.GetPlaceKML(ctx, in, &out); err != nil {
-		return nil, err
-	}
-	return &out, nil
-}
-
 func (s *server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetDatalog() == "" {

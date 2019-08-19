@@ -156,18 +156,6 @@ message GetPlaceObsResponse {
   string payload = 1;
 }
 
-// Get the KML file for a place.
-message GetPlaceKMLRequest {
-  // DCID of a place.
-  string dcid = 1;
-}
-
-// Response of GetPlaceKML.
-message GetPlaceKMLResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
 // Request to get certain population for a set of places.
 message GetPopulationsRequest {
   // DCIDs for a list of places.
@@ -323,11 +311,6 @@ service Mixer {
       post: "/bulk/place-obs"
       body: "*"
     };
-  }
-
-  // Get KML coordinates for a place.
-  rpc GetPlaceKML(GetPlaceKMLRequest) returns (GetPlaceKMLResponse) {
-    option (google.api.http) = { get: "/bulk/place-kml" };
   }
 
   // Translate datalog query into SQL and translation objects.
