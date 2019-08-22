@@ -48,7 +48,7 @@ type Triple struct {
 	ObjectName   string   `json:"objectName,omitempty"`
 	ObjectValue  string   `json:"objectValue,omitempty"`
 	ObjectTypes  []string `json:"objectTypes,omitempty"`
-	ProvenanceID string   `json:"ProvenanceId,omitempty"`
+	ProvenanceID string   `json:"provenanceId,omitempty"`
 }
 
 // Node represents a information about a node.
