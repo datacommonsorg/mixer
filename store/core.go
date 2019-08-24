@@ -710,22 +710,24 @@ func (s *store) btGetTriples(
 		for dcid := range objPlaceIDNameMap {
 			objPlaceDCIDs = append(objPlaceDCIDs, dcid)
 		}
-		res, err := s.btGetPropertyValues(ctx, &pb.GetPropertyValuesRequest{
-			Dcids:    objPlaceDCIDs,
-			Property: "name",
-			Limit:    util.BtCacheLimit,
-		}, true)
-		if err != nil {
-			return err
-		}
-		for dcid, v1 := range res {
-			if _, ok := v1["out"]; !ok {
-				continue
+		if len(objPlaceDCIDs) > 0 {
+			res, err := s.btGetPropertyValues(ctx, &pb.GetPropertyValuesRequest{
+				Dcids:    objPlaceDCIDs,
+				Property: "name",
+				Limit:    util.BtCacheLimit,
+			}, true)
+			if err != nil {
+				return err
 			}
-			if len(v1["out"]) == 0 {
-				continue
+			for dcid, v1 := range res {
+				if _, ok := v1["out"]; !ok {
+					continue
+				}
+				if len(v1["out"]) == 0 {
+					continue
+				}
+				objPlaceIDNameMap[dcid] = v1["out"][0].Value
 			}
-			objPlaceIDNameMap[dcid] = v1["out"][0].Value
 		}
 	}
 
