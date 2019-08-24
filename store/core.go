@@ -614,37 +614,133 @@ func (s *store) GetPropertyLabels(
 func (s *store) btGetTriples(
 	ctx context.Context, in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
 	dcids := in.GetDcids()
-
-	rowList := bigtable.RowList{}
+	var regDcids, obsDcids []string
 	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtTriplesPrefix, dcid))
+		if strings.HasPrefix(dcid, "dc/o/") {
+			obsDcids = append(obsDcids, dcid)
+		} else {
+			regDcids = append(regDcids, dcid)
+		}
 	}
 
 	resultsMap := map[string][]*Triple{}
-	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
-		func(btRow bigtable.Row) error {
-			// Extract DCID from row key.
-			dcid := strings.TrimPrefix(btRow.Key(), util.BtTriplesPrefix)
 
-			if len(btRow[util.BtFamily]) > 0 {
-				btRawValue := btRow[util.BtFamily][0].Value
-				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
-				if err != nil {
-					return err
+	// Regular DCIDs.
+	if len(regDcids) > 0 {
+		rowList := bigtable.RowList{}
+		for _, dcid := range regDcids {
+			rowList = append(rowList, fmt.Sprintf("%s%s", util.BtTriplesPrefix, dcid))
+		}
+		if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+			func(btRow bigtable.Row) error {
+				// Extract DCID from row key.
+				dcid := strings.TrimPrefix(btRow.Key(), util.BtTriplesPrefix)
+
+				if len(btRow[util.BtFamily]) > 0 {
+					btRawValue := btRow[util.BtFamily][0].Value
+					btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+					if err != nil {
+						return err
+					}
+					var btTriples TriplesCache
+					json.Unmarshal(btJSONRaw, &btTriples)
+					resultsMap[dcid] = filterTriplesLimit(dcid, btTriples.Triples, int(in.GetLimit()))
 				}
-				var btTriples TriplesCache
-				json.Unmarshal(btJSONRaw, &btTriples)
-				resultsMap[dcid] = filterTriplesLimit(dcid, btTriples.Triples, int(in.GetLimit()))
+				return nil
+			}); err != nil {
+			return err
+		}
+	}
+
+	objPlaceIDNameMap := map[string]string{}
+	if len(obsDcids) > 0 {
+		// Observation DCIDs.
+		obsRowList := bigtable.RowList{}
+		for _, dcid := range obsDcids {
+			for _, pred := range []string{"0", "1"} {
+				obsRowList = append(obsRowList,
+					fmt.Sprintf("%s%s-%s", util.BtObsAncestorPrefix, dcid, pred))
 			}
-			return nil
-		}); err != nil {
-		return err
+		}
+		if err := bigTableReadRowsParallel(ctx, s.btTable, obsRowList,
+			func(btRow bigtable.Row) error {
+				// Extract DCID from row key.
+				parts := strings.Split(btRow.Key(), "-")
+				dcid := strings.TrimPrefix(parts[0], util.BtObsAncestorPrefix)
+				var pred string
+				if parts[1] == "0" {
+					pred = "observedNode"
+				} else if parts[1] == "1" {
+					pred = "comparedNode"
+				} else {
+					return fmt.Errorf("unsupported predicate")
+				}
+
+				if len(btRow[util.BtFamily]) > 0 {
+					btRawValue := btRow[util.BtFamily][0].Value
+					val, err := util.UnzipAndDecode(string(btRawValue))
+					if err != nil {
+						return err
+					}
+					objID := string(val)
+
+					if !strings.HasPrefix(objID, "dc/p/") { // Not StatisticalPopulation.
+						objPlaceIDNameMap[objID] = ""
+					}
+
+					if _, ok := resultsMap[dcid]; !ok {
+						resultsMap[dcid] = []*Triple{}
+					}
+					resultsMap[dcid] = append(resultsMap[dcid], &Triple{
+						SubjectID: dcid,
+						Predicate: pred,
+						ObjectID:  objID,
+					})
+				}
+				return nil
+			}); err != nil {
+			return err
+		}
+
+		// Get name for places that are ancestors of obseravtions.
+		objPlaceDCIDs := []string{}
+		for dcid := range objPlaceIDNameMap {
+			objPlaceDCIDs = append(objPlaceDCIDs, dcid)
+		}
+		res, err := s.btGetPropertyValues(ctx, &pb.GetPropertyValuesRequest{
+			Dcids:    objPlaceDCIDs,
+			Property: "name",
+			Limit:    util.BtCacheLimit,
+		}, true)
+		if err != nil {
+			return err
+		}
+		for dcid, v1 := range res {
+			if _, ok := v1["out"]; !ok {
+				continue
+			}
+			if len(v1["out"]) == 0 {
+				continue
+			}
+			objPlaceIDNameMap[dcid] = v1["out"][0].Value
+		}
 	}
 
 	// Iterate through all dcids to make sure they are present in resultsMap.
 	for _, dcid := range dcids {
 		if _, exists := resultsMap[dcid]; !exists {
 			resultsMap[dcid] = []*Triple{}
+		}
+	}
+
+	if len(obsDcids) > 0 {
+		// Add place names to observation triples as ObjectName.
+		for _, dcid := range obsDcids {
+			for _, t := range resultsMap[dcid] {
+				if v, ok := objPlaceIDNameMap[t.ObjectID]; ok {
+					t.ObjectName = v
+				}
+			}
 		}
 	}
 
