@@ -36,7 +36,10 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// --------------------------------- STRUCTS ----------------------------------
+const (
+	obsAncestorTypeObservedNode = "0"
+	obsAncestorTypeComparedNode = "1"
+)
 
 // Triple represents a triples entry in the BT triples cache.
 type Triple struct {
@@ -657,7 +660,7 @@ func (s *store) btGetTriples(
 		// Observation DCIDs.
 		obsRowList := bigtable.RowList{}
 		for _, dcid := range obsDcids {
-			for _, pred := range []string{"0", "1"} {
+			for _, pred := range []string{obsAncestorTypeObservedNode, obsAncestorTypeComparedNode} {
 				obsRowList = append(obsRowList,
 					fmt.Sprintf("%s%s-%s", util.BtObsAncestorPrefix, dcid, pred))
 			}
@@ -668,9 +671,9 @@ func (s *store) btGetTriples(
 				parts := strings.Split(btRow.Key(), "-")
 				dcid := strings.TrimPrefix(parts[0], util.BtObsAncestorPrefix)
 				var pred string
-				if parts[1] == "0" {
+				if parts[1] == obsAncestorTypeObservedNode {
 					pred = "observedNode"
-				} else if parts[1] == "1" {
+				} else if parts[1] == obsAncestorTypeComparedNode {
 					pred = "comparedNode"
 				} else {
 					return fmt.Errorf("unsupported predicate")
