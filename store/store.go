@@ -133,6 +133,9 @@ func bigTableReadRowsParallel(ctx context.Context, btTable *bigtable.Table,
 	default:
 		return fmt.Errorf("unsupported RowSet type: %v", v)
 	}
+	if rowSetSize == 0 {
+		return nil
+	}
 
 	errs, errCtx := errgroup.WithContext(ctx)
 	rowChan := make(chan []bigtable.Row, rowSetSize)
