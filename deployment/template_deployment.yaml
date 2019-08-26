@@ -56,7 +56,7 @@ spec:
           imagePullPolicy: Always
           args: [
             "--bq_dataset", "google.com:datcom-store-dev.dc_v3_clustered",
-            "--bt_table", "dc5",
+            "--bt_table", "dc7",
             "--project_id", "PROJECT_ID",
           ]
           ports:
