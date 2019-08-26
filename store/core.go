@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"strconv"
 	"strings"
 
 	"cloud.google.com/go/bigquery"
@@ -617,12 +618,15 @@ func (s *store) GetPropertyLabels(
 func (s *store) btGetTriples(
 	ctx context.Context, in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
 	dcids := in.GetDcids()
-	var regDcids, obsDcids []string
+	var regDcids, obsDcids, popDcids []string
 	for _, dcid := range dcids {
 		if strings.HasPrefix(dcid, "dc/o/") {
 			obsDcids = append(obsDcids, dcid)
 		} else {
 			regDcids = append(regDcids, dcid)
+			if strings.HasPrefix(dcid, "dc/p/") {
+				popDcids = append(popDcids, dcid)
+			}
 		}
 	}
 
@@ -655,9 +659,9 @@ func (s *store) btGetTriples(
 		}
 	}
 
+	// Observation DCIDs.
 	objPlaceIDNameMap := map[string]string{}
 	if len(obsDcids) > 0 {
-		// Observation DCIDs.
 		obsRowList := bigtable.RowList{}
 		for _, dcid := range obsDcids {
 			for _, pred := range []string{obsAncestorTypeObservedNode, obsAncestorTypeComparedNode} {
@@ -738,14 +742,54 @@ func (s *store) btGetTriples(
 		}
 	}
 
+	// Add place names to observation triples as ObjectName.
 	if len(obsDcids) > 0 {
-		// Add place names to observation triples as ObjectName.
 		for _, dcid := range obsDcids {
 			for _, t := range resultsMap[dcid] {
 				if v, ok := objPlaceIDNameMap[t.ObjectID]; ok {
 					t.ObjectName = v
 				}
 			}
+		}
+	}
+
+	// Add PVs for populations.
+	if len(popDcids) > 0 {
+		popPVRowList := bigtable.RowList{}
+		for _, dcid := range popDcids {
+			popPVRowList = append(popPVRowList, fmt.Sprintf("%s%s", util.BtPopPVPrefix, dcid))
+		}
+		if err := bigTableReadRowsParallel(ctx, s.btTable, popPVRowList,
+			func(btRow bigtable.Row) error {
+				// Extract DCID from row key.
+				dcid := strings.TrimPrefix(btRow.Key(), util.BtPopPVPrefix)
+
+				if len(btRow[util.BtFamily]) > 0 {
+					btRawValue := btRow[util.BtFamily][0].Value
+					val, err := util.UnzipAndDecode(string(btRawValue))
+					if err != nil {
+						return err
+					}
+					parts := strings.Split(string(val), "-")
+					if len(parts) == 0 || len(parts)%2 != 0 {
+						return fmt.Errorf("wrong number of PVs: %v", string(val))
+					}
+					resultsMap[dcid] = append(resultsMap[dcid], &Triple{
+						SubjectID:   dcid,
+						Predicate:   "numConstraints",
+						ObjectValue: strconv.Itoa(len(parts) / 2),
+					})
+					for i := 0; i < len(parts); i = i + 2 {
+						resultsMap[dcid] = append(resultsMap[dcid], &Triple{
+							SubjectID: dcid,
+							Predicate: parts[i],
+							ObjectID:  parts[i+1],
+						})
+					}
+				}
+				return nil
+			}); err != nil {
+			return err
 		}
 	}
 
