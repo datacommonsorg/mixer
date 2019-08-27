@@ -31,10 +31,14 @@ spec:
         - name: schema-mapping
           configMap:
             name: schema-mapping
+        - name: nginx-config
+          configMap:
+            name: nginx-config
       containers:
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
           args: [
+            "-n", "/etc/nginx/custom/nginx.conf",
             "--http_port", "8081",
             "-a", "grpc://127.0.0.1:12345",
             #_d|"--service", "datacommons.endpoints.PROJECT_ID.cloud.goog",
@@ -51,6 +55,10 @@ spec:
               port: 8081
           ports:
             - containerPort: 8081
+          volumeMounts:
+          - mountPath: /etc/nginx/custom
+            name: nginx-config
+            readOnly: true
         - name: mixer
           image: gcr.io/PROJECT_ID/go-grpc-mixer:TAG
           imagePullPolicy: Always

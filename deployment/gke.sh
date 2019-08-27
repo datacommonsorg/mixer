@@ -98,6 +98,9 @@ else
   kubectl create secret generic bigquery-key --from-file=key.json=key.json --namespace=mixer
 fi
 
+# Mount nginx config
+kubectl create configmap nginx-config --from-file=nginx.conf --namespace=mixer
+
 # Mount schema mapping volumes
 kubectl delete configmap schema-mapping --namespace mixer
 kubectl create configmap schema-mapping --from-file=mapping/ --namespace=mixer
