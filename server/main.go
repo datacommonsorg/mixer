@@ -34,6 +34,8 @@ import (
 var (
 	bqDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
 	btTable    = flag.String("bt_table", "", "DataCommons Bigtable table.")
+	btProject  = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
+	btInstance = flag.String("bt_instance", "", "BigTable instance.")
 	projectID  = flag.String("project_id", "", "The cloud project to run the mixer instance.")
 	schemaPath = flag.String("schema_path", "/mixer/config/mapping", "Path to the schema mapping directory.")
 	port       = flag.String("port", ":12345", "Port on which to run the server.")
@@ -306,10 +308,12 @@ func main() {
 		log.Fatalf("util.GetContainedIn() = %v", err)
 	}
 
-	st, err := store.NewStore(ctx, *bqDataset, *btTable, *projectID,
+	st, err := store.NewStore(
+		ctx, *bqDataset, *btTable, *btProject, *btInstance, *projectID,
 		*schemaPath, subTypeMap, containedIn)
 	if err != nil {
-		log.Fatalf("Failed to create store for %s, %s: %s", *bqDataset, *projectID, err)
+		log.Fatalf("Failed to create store for %s, %s, %s, %s, %s: %s",
+			*bqDataset, *btTable, *btProject, *btInstance, *projectID, err)
 	}
 
 	pb.RegisterMixerServer(s, &server{st, subTypeMap})
