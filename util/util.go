@@ -31,10 +31,6 @@ import (
 const (
 	// BqPrefix for internal dataset.
 	BqPrefix = "google.com:"
-	// BtProject is the GCP project containing the BigTable instance
-	BtProject = "google.com:datcom-store-dev"
-	// BtInstance for internal cache instance.
-	BtInstance = "prophet-cache"
 	// BtPropValInPrefix for internal GetPropertyValues in arc cache.
 	BtPropValInPrefix = "d/0/"
 	// BtPropValOutPrefix for internal GetPropertyValues out arc cache.

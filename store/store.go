@@ -76,7 +76,9 @@ type store struct {
 }
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
-func NewStore(ctx context.Context, bqDataset, btTable, projectID, schemaPath string,
+func NewStore(
+	ctx context.Context,
+	bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
 	// BigQuery.
@@ -106,7 +108,7 @@ func NewStore(ctx context.Context, bqDataset, btTable, projectID, schemaPath str
 	inArcInfo := map[string][]translator.InArcInfo{}
 
 	// Bigtable.
-	btClient, err := bigtable.NewClient(ctx, util.BtProject, util.BtInstance, opts...)
+	btClient, err := bigtable.NewClient(ctx, btProject, btInstance, opts...)
 	if err != nil {
 		return nil, err
 	}

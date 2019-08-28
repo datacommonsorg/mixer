@@ -65,6 +65,8 @@ spec:
           args: [
             "--bq_dataset", "google.com:datcom-store-dev.dc_v3_clustered",
             "--bt_table", "dc7",
+            "--bt_project", "google.com:datcom-store-dev",
+            "--bt_instance", "prophet-cache",
             "--project_id", "PROJECT_ID",
           ]
           ports:
