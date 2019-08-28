@@ -80,15 +80,8 @@ type PlacePopInfo struct {
 
 func (s *store) GetPopulations(ctx context.Context, in *pb.GetPopulationsRequest,
 	out *pb.GetPopulationsResponse) error {
-	// By default, return empty list.
-	out.Payload = "[]"
 	if err := s.btGetPopulations(ctx, in, out); err != nil {
 		return err
-	}
-	if out.GetPayload() == "[]" {
-		if err := s.bqGetPopulations(ctx, in, out); err != nil {
-			return err
-		}
 	}
 	return nil
 }
@@ -206,15 +199,8 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 
 func (s *store) GetObservations(ctx context.Context, in *pb.GetObservationsRequest,
 	out *pb.GetObservationsResponse) error {
-	// By default, return empty list.
-	out.Payload = "[]"
 	if err := s.btGetObservations(ctx, in, out); err != nil {
 		return err
-	}
-	if out.GetPayload() == "[]" {
-		if err := s.bqGetObservations(ctx, in, out); err != nil {
-			return err
-		}
 	}
 	return nil
 }

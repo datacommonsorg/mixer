@@ -57,6 +57,10 @@ func main() {
 	// Observation period and measurement method are not specified.
 	getObservation(ctx, c, []string{"dc/p/dxxmsf6txdgx4"},
 		"count", "2017", "measuredValue", "", "")
+
+	// Empty dcids.
+	getObservation(ctx, c, []string{""},
+		"count", "2017", "measuredValue", "", "")
 }
 
 func getObservation(ctx context.Context, c pb.MixerClient, dcids []string,
