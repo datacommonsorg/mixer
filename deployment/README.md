@@ -3,11 +3,9 @@
 
 ## Build and deploy
 
-Create a Google Cloud Platform (GCP) project.
+Create a Google Cloud Platform (GCP) project and run the following command where:
 
-Run the following command.
-
-`<PROJECT_ID>` refers to the GCP project id, where:
+`<PROJECT_ID>` refers to the GCP project id.
 
 `<IMAGE>` is DataCommons mixer docer image registry url. It is in the form of `gcr.io/datcom-mixer/go-grpc-mixer:<TAG>`. Ask DataCommons team to obtain the TAG number.
 
@@ -18,9 +16,9 @@ Run the following command.
 
 ## (Optional) Use custom domain
 
-    Verify your domain as described in https://cloud.google.com/endpoints/docs/openapi/verify-domain-name
+Verify your domain as described in https://cloud.google.com/endpoints/docs/openapi/verify-domain-name
 
-    Visit your domain provider account and edit your domain settings. You must create an A record that contains your API name, for example, myapi.example.com, with the external IP address in deployment.yaml.
+Visit your domain provider account and edit your domain settings. You must create an A record that contains your API name, for example, myapi.example.com, with the external IP address in deployment.yaml.
 
 
 ## Accessing API
