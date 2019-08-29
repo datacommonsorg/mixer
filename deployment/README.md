@@ -5,8 +5,13 @@
 
 Create a Google Cloud Platform (GCP) project.
 
-Run the following command. <PROJECT_ID> refers to the GCP project id. <IMAGE> is DataCommons mixer docer image
-registry url. It is in the form of `gcr.io/datcom-mixer/go-grpc-mixer:<TAG>`. Ask DataCommons team to obtain the TAG number. <DOMAIN> is optional, and only need to be set if you want to expose the endpoints from your custom domain.
+Run the following command.
+
+`<PROJECT_ID>` refers to the GCP project id, where:
+
+`<IMAGE>` is DataCommons mixer docer image registry url. It is in the form of `gcr.io/datcom-mixer/go-grpc-mixer:<TAG>`. Ask DataCommons team to obtain the TAG number.
+
+`<DOMAIN>` is optional, and only need to be set if you want to expose the endpoints from your custom domain.
 
     ./gcp.sh <PROJECT_ID>
     ./gke.sh <PROJECT_ID> <IMAGE> <DOMAIN>
