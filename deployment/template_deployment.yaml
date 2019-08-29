@@ -60,7 +60,7 @@ spec:
             name: nginx-config
             readOnly: true
         - name: mixer
-          image: gcr.io/PROJECT_ID/go-grpc-mixer:TAG
+          image: IMAGE
           imagePullPolicy: Always
           args: [
             "--bq_dataset", "google.com:datcom-store-dev.dc_v3_clustered",
