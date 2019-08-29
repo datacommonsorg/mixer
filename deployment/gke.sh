@@ -16,7 +16,7 @@
 
 
 PROJECT_ID=$1
-TAG=$2
+IMAGE=$2
 DOMAIN=$3
 
 SERVICE_ACCOUNT=mixer-robot@$PROJECT_ID.iam.gserviceaccount.com
@@ -32,8 +32,8 @@ cp template_api_config.yaml api_config.yaml
 # Set project id
 perl -i -pe's/PROJECT_ID/'"$PROJECT_ID"'/g' deployment.yaml api_config.yaml
 
-# Set docker image tag
-perl -i -pe's/TAG/'"$2"'/g' deployment.yaml
+# Set docker image
+perl -i -pe's/IMAGE/'"$2"'/g' deployment.yaml
 
 # Set endpints domain
 if [[ $DOMAIN ]]; then
