@@ -148,6 +148,9 @@ message GetPlaceObsRequest {
 
   // A list of constraining property values that defines the population.
   repeated PropertyValue pvs = 3;
+
+  // Observation date.
+  string observation_date = 4;
 }
 
 // Response of GetPlaceObs.
