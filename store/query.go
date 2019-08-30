@@ -54,6 +54,7 @@ func (s *store) Query(
 	for _, node := range translation.Nodes {
 		out.Header = append(out.Header, node.Alias)
 	}
+	out.Rows = []*pb.QueryResponseRow{}
 	n := len(out.Header)
 
 	q := s.bqClient.Query(translation.SQL)
