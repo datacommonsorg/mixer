@@ -15,9 +15,9 @@
 #!/bin/bash
 
 
-PROJECT_ID=$1
-TAG=$2
-DOMAIN=$3
+export PROJECT_ID=$1
+export IMAGE=$2
+export DOMAIN=$3
 
 SERVICE_ACCOUNT=mixer-robot@$PROJECT_ID.iam.gserviceaccount.com
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
@@ -30,15 +30,15 @@ cp template_deployment.yaml deployment.yaml
 cp template_api_config.yaml api_config.yaml
 
 # Set project id
-perl -i -pe's/PROJECT_ID/'"$PROJECT_ID"'/g' deployment.yaml api_config.yaml
+perl -i -pe's/PROJECT_ID/$ENV{PROJECT_ID}/g' deployment.yaml api_config.yaml
 
-# Set docker image tag
-perl -i -pe's/TAG/'"$2"'/g' deployment.yaml
+# Set docker image
+perl -i -pe's/IMAGE/$ENV{IMAGE}/g' deployment.yaml
 
 # Set endpints domain
 if [[ $DOMAIN ]]; then
   perl -i -pe's/#_c\|//g' deployment.yaml
-  perl -i -pe's/DOMAIN/'"$DOMAIN"'/g' deployment.yaml
+  perl -i -pe's/DOMAIN/$ENV{DOMAIN}/g' deployment.yaml
 else
   perl -i -pe's/#_d\|//g' deployment.yaml
 fi
@@ -56,7 +56,7 @@ perl -i -pe's/IP_ADDRESS/'"$ip"'/g' api_config.yaml
 
 if [[ $DOMAIN ]]; then
   perl -i -pe's/#_c\|//g' api_config.yaml
-  perl -i -pe's/DOMAIN/'"$DOMAIN"'/g' api_config.yaml
+  perl -i -pe's/DOMAIN/$ENV{DOMAIN}/g' api_config.yaml
 else
   perl -i -pe's/#_d\|//g' api_config.yaml
 fi
