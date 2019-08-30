@@ -58,6 +58,7 @@ func main() {
 				Value:    "BornInOtherStateInTheUnitedStates",
 			},
 		},
+		ObservationDate: "2013",
 	})
 	if err != nil {
 		log.Fatalf("could not GetPlaceObs: %s", err)

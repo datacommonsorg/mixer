@@ -53,7 +53,7 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest, out *pb.
 
 func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	out *pb.GetPlaceObsResponse) error {
-	key := in.GetPlaceType() + "-" + in.GetPopulationType()
+	key := fmt.Sprintf("%s-%s-%s", in.GetPlaceType(), in.GetObservationDate(), in.GetPopulationType())
 	if len(in.GetPvs()) > 0 {
 		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
 			key += "-" + p + "-" + v
