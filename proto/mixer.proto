@@ -56,8 +56,8 @@ message TranslateRequest {
   // String representaion of schema mappings used to translate.
   string schema_mapping = 1;
 
-  // String representation of datalog query.
-  string datalog = 2;
+  // String representation of sparql query.
+  string sparql = 2;
 }
 
 // Response of a translate request.
@@ -316,6 +316,11 @@ service Mixer {
     };
   }
 
-  // Translate datalog query into SQL and translation objects.
-  rpc Translate(TranslateRequest) returns (TranslateResponse) {}
+  // Translate Sparql Query into translation results.
+  rpc Translate(TranslateRequest) returns (TranslateResponse) {
+    option (google.api.http) = {
+      post: "/translate"
+      body: "*"
+    };
+  }
 }
