@@ -23,6 +23,7 @@ import (
 	"net"
 
 	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/sparql"
 	"github.com/datacommonsorg/mixer/store"
 	"github.com/datacommonsorg/mixer/translator"
 	"github.com/datacommonsorg/mixer/util"
@@ -258,7 +259,7 @@ func (s *server) GetPlacesInPost(ctx context.Context,
 
 func (s *server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
-	if in.GetSchemaMapping() == "" || in.GetDatalog() == "" {
+	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
 
@@ -267,21 +268,22 @@ func (s *server) Translate(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
-	nodes, queries, err := translator.ParseQuery(in.GetDatalog())
+	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
 	if err != nil {
 		return nil, err
 	}
-	trans, err := translator.Translate(mappings, nodes, queries, s.subTypeMap)
+	trans, err := translator.Translate(mappings, nodes, queries, s.subTypeMap, opts)
 	if err != nil {
 		return nil, err
 	}
+	log.Println(trans)
 	out.Sql = trans.SQL
 	translation, err := json.MarshalIndent(trans, "", "  ")
 	if err != nil {
 		return nil, err
 	}
 	out.Translation = string(translation)
-	return nil, nil
+	return &out, nil
 }
 
 func main() {
