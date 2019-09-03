@@ -32,6 +32,13 @@ cp template_api_config.yaml api_config.yaml
 # Set project id
 perl -i -pe's/PROJECT_ID/$ENV{PROJECT_ID}/g' deployment.yaml api_config.yaml
 
+# Set api title
+if [ "$PROJECT_ID" == "datcom-mixer" ]; then
+  perl -i -pe's/TITLE/Data Commons API/g' api_config.yaml
+else
+  perl -i -pe's/TITLE/Data Commons API ($ENV{PROJECT_ID})/g' api_config.yaml
+fi
+
 # Set docker image
 perl -i -pe's/IMAGE/$ENV{IMAGE}/g' deployment.yaml
 

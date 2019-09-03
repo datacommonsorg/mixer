@@ -22,7 +22,7 @@ config_version: 3
 #_c|name: DOMAIN
 
 # API title to appear in the user interface (Google Cloud Console).
-title: Data Commons API
+title: TITLE
 apis:
 - name: datacommons.Mixer
 
