@@ -66,9 +66,7 @@ func main() {
 		}
 		ORDER BY DESC(?Unemployment)
 		LIMIT 10`,
-		`
-		SELECT ?a
-		WHERE { ?a typeof USC_RaceCodeEnum}`,
+		`SELECT ?a WHERE {?a typeof USC_RaceCodeEnum}`,
 	}
 	for _, str := range qStrs {
 		r, err := c.Query(ctx, &pb.QueryRequest{Sparql: str})
