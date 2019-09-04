@@ -113,7 +113,7 @@ func main() {
 		?pop typeOf StatisticalPopulation .
 		?place typeOf State .
 		?pop location ?place .
-		?pop dcid ?dcid
+		?pop dcid ?dcid .
 		?place name "California" .
 	}
 	`
