@@ -104,10 +104,6 @@ func (s *server) GetPropertyValues(ctx context.Context,
 		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
-	if in.GetLimit() == 0 {
-		in.Limit = 100
-	}
-
 	out := pb.GetPropertyValuesResponse{}
 	if err := s.st.GetPropertyValues(ctx, in, &out); err != nil {
 		return nil, err
