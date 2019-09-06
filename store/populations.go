@@ -68,7 +68,28 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	if err != nil {
 		return err
 	}
-	if len(btRow[util.BtFamily]) > 0 && btRow[util.BtFamily][0].Row == btPrefix {
+	if len(btRow[util.BtFamily]) > 0 {
+		out.Payload = string(btRow[util.BtFamily][0].Value)
+	}
+	return nil
+}
+
+func (s *store) GetObsSeries(ctx context.Context, in *pb.GetObsSeriesRequest,
+	out *pb.GetObsSeriesResponse) error {
+	key := fmt.Sprintf("%s-%s", in.GetPlace(), in.GetPopulationType())
+	if len(in.GetPvs()) > 0 {
+		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
+			key += "-" + p + "-" + v
+		})
+	}
+	btPrefix := fmt.Sprintf("%s%s", util.BtObsSeriesPrefix, key)
+
+	// Query for the prefix.
+	btRow, err := s.btTable.ReadRow(ctx, btPrefix)
+	if err != nil {
+		return err
+	}
+	if len(btRow[util.BtFamily]) > 0 {
 		out.Payload = string(btRow[util.BtFamily][0].Value)
 	}
 	return nil
