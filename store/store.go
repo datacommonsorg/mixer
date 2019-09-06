@@ -54,6 +54,9 @@ type Interface interface {
 	GetPlaceObs(ctx context.Context,
 		in *pb.GetPlaceObsRequest, out *pb.GetPlaceObsResponse) error
 
+	GetObsSeries(ctx context.Context,
+		in *pb.GetObsSeriesRequest, out *pb.GetObsSeriesResponse) error
+
 	GetPopulations(ctx context.Context,
 		in *pb.GetPopulationsRequest, out *pb.GetPopulationsResponse) error
 

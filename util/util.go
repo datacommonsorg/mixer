@@ -39,6 +39,8 @@ const (
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
+	// BtObsSeriesPrefix for internal obs series cache.
+	BtObsSeriesPrefix = "d/4/"
 	// BtObsAncestorPrefix for the ancestor node of Bigtable.
 	BtObsAncestorPrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.

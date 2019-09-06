@@ -159,6 +159,24 @@ message GetPlaceObsResponse {
   string payload = 1;
 }
 
+// Request message for GetObsSeries.
+message GetObsSeriesRequest {
+  // The dcid of the place.
+  string place = 1;
+
+  // The type of the Statistical population.
+  string population_type = 2;
+
+  // A list of constraining property values that defines the population.
+  repeated PropertyValue pvs = 3;
+}
+
+// Response of GetObsSeries.
+message GetObsSeriesResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
 // Request to get certain population for a set of places.
 message GetPopulationsRequest {
   // DCIDs for a list of places.
@@ -312,6 +330,14 @@ service Mixer {
   rpc GetPlaceObs(GetPlaceObsRequest) returns (GetPlaceObsResponse) {
     option (google.api.http) = {
       post: "/bulk/place-obs"
+      body: "*"
+    };
+  }
+
+  // Get observations for a given place, population type, and population constraining properties.
+  rpc GetObsSeries(GetObsSeriesRequest) returns (GetObsSeriesResponse) {
+    option (google.api.http) = {
+      post: "/bulk/obs-series"
       body: "*"
     };
   }

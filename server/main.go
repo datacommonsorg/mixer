@@ -188,6 +188,19 @@ func (s *server) GetPlaceObs(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) GetObsSeries(ctx context.Context,
+	in *pb.GetObsSeriesRequest) (*pb.GetObsSeriesResponse, error) {
+	if in.GetPlace() == "" || in.GetPopulationType() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+
+	out := pb.GetObsSeriesResponse{}
+	if err := s.st.GetObsSeries(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func (s *server) GetPopulations(ctx context.Context,
 	in *pb.GetPopulationsRequest) (*pb.GetPopulationsResponse, error) {
 	if len(in.GetDcids()) == 0 || in.GetPopulationType() == "" {
