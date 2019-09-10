@@ -4,9 +4,10 @@ go 1.12
 
 require (
 	cloud.google.com/go v0.45.1
+	cloud.google.com/go/bigquery v1.0.1
+	cloud.google.com/go/bigtable v1.0.0
 	github.com/go-test/deep v1.0.3
 	github.com/golang/protobuf v1.3.2
-	github.com/google/btree v1.0.0 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/google/pprof v0.0.0-20190723021845-34ac40c74b70 // indirect
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
@@ -27,5 +28,4 @@ require (
 	google.golang.org/grpc v1.23.0
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	honnef.co/go/tools v0.0.1-2019.2.3 // indirect
-	rsc.io/binaryregexp v0.2.0 // indirect
 )
