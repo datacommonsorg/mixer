@@ -296,7 +296,7 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 
 	rowRangeList := bigtable.RowRangeList{}
 	for _, dcid := range dcids {
-		rowPrefix := fmt.Sprintf("%s%s-%s", keyPrefix[arcOut], dcid, prop)
+		rowPrefix := fmt.Sprintf("%s%s,%s", keyPrefix[arcOut], dcid, prop)
 		if valType != "" {
 			rowPrefix = rowPrefix + "," + valType
 		}
