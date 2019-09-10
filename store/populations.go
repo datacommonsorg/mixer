@@ -54,11 +54,11 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 
 func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	out *pb.GetPlaceObsResponse) error {
-	key := fmt.Sprintf("%s-%s-%s", in.GetPlaceType(), in.GetObservationDate(),
+	key := fmt.Sprintf("%s^%s^%s", in.GetPlaceType(), in.GetObservationDate(),
 		in.GetPopulationType())
 	if len(in.GetPvs()) > 0 {
 		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
-			key += "-" + p + "-" + v
+			key += "^" + p + "^" + v
 		})
 	}
 	btPrefix := fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
@@ -76,10 +76,10 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 
 func (s *store) GetObsSeries(ctx context.Context, in *pb.GetObsSeriesRequest,
 	out *pb.GetObsSeriesResponse) error {
-	key := fmt.Sprintf("%s-%s", in.GetPlace(), in.GetPopulationType())
+	key := fmt.Sprintf("%s^%s", in.GetPlace(), in.GetPopulationType())
 	if len(in.GetPvs()) > 0 {
 		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
-			key += "-" + p + "-" + v
+			key += "^" + p + "^" + v
 		})
 	}
 	btPrefix := fmt.Sprintf("%s%s", util.BtObsSeriesPrefix, key)
@@ -167,10 +167,10 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 	dcids := in.GetDcids()
 
 	// Create the cache key suffix
-	keySuffix := "-" + in.GetPopulationType()
+	keySuffix := "^" + in.GetPopulationType()
 	if len(in.GetPvs()) > 0 {
 		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
-			keySuffix += ("-" + p + "-" + v)
+			keySuffix += ("^" + p + "^" + v)
 		})
 	}
 
@@ -188,7 +188,7 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
-			parts := strings.Split(rowKey, "-")
+			parts := strings.Split(rowKey, "^")
 			dcid := strings.TrimPrefix(parts[0], util.BtPopPrefix)
 
 			if len(btRow[util.BtFamily]) > 0 {
@@ -312,7 +312,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	// Construct the list of cache keys to query.
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		btKey := fmt.Sprintf("%s%s-%s-%s-%s-%s-%s",
+		btKey := fmt.Sprintf("%s%s^%s^%s^%s^%s^%s",
 			util.BtObsPrefix, dcid, in.GetMeasuredProperty(),
 			util.SnakeToCamel(in.GetStatsType()), in.GetObservationDate(),
 			in.GetObservationPeriod(), in.GetMeasurementMethod())
@@ -326,7 +326,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
-			parts := strings.Split(rowKey, "-")
+			parts := strings.Split(rowKey, "^")
 			dcid := strings.TrimPrefix(parts[0], util.BtObsPrefix)
 
 			// Add the results of the query.
