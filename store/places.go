@@ -43,14 +43,14 @@ func (s *store) btGetPlacesIn(ctx context.Context,
 
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf("%s%s-%s", util.BtPlacesInPrefix, dcid, placeType))
+		rowList = append(rowList, fmt.Sprintf("%s%s,%s", util.BtPlacesInPrefix, dcid, placeType))
 	}
 
 	results := []map[string]string{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
-			parts := strings.Split(btRow.Key(), "-")
+			parts := strings.Split(btRow.Key(), ",")
 			dcid := strings.TrimPrefix(parts[0], util.BtPlacesInPrefix)
 
 			if len(btRow[util.BtFamily]) > 0 {

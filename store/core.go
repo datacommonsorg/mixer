@@ -298,7 +298,7 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 	for _, dcid := range dcids {
 		rowPrefix := fmt.Sprintf("%s%s-%s", keyPrefix[arcOut], dcid, prop)
 		if valType != "" {
-			rowPrefix = rowPrefix + "-" + valType
+			rowPrefix = rowPrefix + "," + valType
 		}
 		rowRangeList = append(rowRangeList, bigtable.PrefixRange((rowPrefix)))
 	}
@@ -308,7 +308,7 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
-			parts := strings.Split(rowKey, "-")
+			parts := strings.Split(rowKey, ",")
 			dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
 
 			btResult := btRow[util.BtFamily][0]
@@ -666,13 +666,13 @@ func (s *store) btGetTriples(
 		for _, dcid := range obsDcids {
 			for _, pred := range []string{obsAncestorTypeObservedNode, obsAncestorTypeComparedNode} {
 				obsRowList = append(obsRowList,
-					fmt.Sprintf("%s%s-%s", util.BtObsAncestorPrefix, dcid, pred))
+					fmt.Sprintf("%s%s,%s", util.BtObsAncestorPrefix, dcid, pred))
 			}
 		}
 		if err := bigTableReadRowsParallel(ctx, s.btTable, obsRowList,
 			func(btRow bigtable.Row) error {
 				// Extract DCID from row key.
-				parts := strings.Split(btRow.Key(), "-")
+				parts := strings.Split(btRow.Key(), ",")
 				dcid := strings.TrimPrefix(parts[0], util.BtObsAncestorPrefix)
 				var pred string
 				if parts[1] == obsAncestorTypeObservedNode {
@@ -770,7 +770,7 @@ func (s *store) btGetTriples(
 					if err != nil {
 						return err
 					}
-					parts := strings.Split(string(val), "-")
+					parts := strings.Split(string(val), ",")
 					if len(parts) == 0 || len(parts)%2 != 0 {
 						return fmt.Errorf("wrong number of PVs: %v", string(val))
 					}
