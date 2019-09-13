@@ -10,3 +10,4 @@ go run get_populations/main.go
 go run get_property_labels/main.go
 go run get_property_values/main.go
 go run get_triples/main.go
+go run query/main.go
