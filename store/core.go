@@ -666,13 +666,13 @@ func (s *store) btGetTriples(
 		for _, dcid := range obsDcids {
 			for _, pred := range []string{obsAncestorTypeObservedNode, obsAncestorTypeComparedNode} {
 				obsRowList = append(obsRowList,
-					fmt.Sprintf("%s%s-%s", util.BtObsAncestorPrefix, dcid, pred))
+					fmt.Sprintf("%s%s^%s", util.BtObsAncestorPrefix, dcid, pred))
 			}
 		}
 		if err := bigTableReadRowsParallel(ctx, s.btTable, obsRowList,
 			func(btRow bigtable.Row) error {
 				// Extract DCID from row key.
-				parts := strings.Split(btRow.Key(), "-")
+				parts := strings.Split(btRow.Key(), "^")
 				dcid := strings.TrimPrefix(parts[0], util.BtObsAncestorPrefix)
 				var pred string
 				if parts[1] == obsAncestorTypeObservedNode {

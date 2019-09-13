@@ -177,6 +177,18 @@ message GetObsSeriesResponse {
   string payload = 1;
 }
 
+// Request message for GetPopCategory.
+message GetPopCategoryRequest {
+  // The type of the place.
+  string place_type = 1;
+}
+
+// Response of GetPopCategory.
+message GetPopCategoryResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
 // Request to get certain population for a set of places.
 message GetPopulationsRequest {
   // DCIDs for a list of places.
@@ -341,6 +353,14 @@ service Mixer {
       body: "*"
     };
   }
+
+    // Get a list of possible population type, measured property, and PVs for a given place type.
+    rpc GetPopCategory(GetPopCategoryRequest) returns (GetPopCategoryResponse) {
+      option (google.api.http) = {
+        post: "/bulk/pop-category"
+        body: "*"
+      };
+    }
 
   // Translate Sparql Query into translation results.
   rpc Translate(TranslateRequest) returns (TranslateResponse) {

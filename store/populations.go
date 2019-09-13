@@ -95,6 +95,19 @@ func (s *store) GetObsSeries(ctx context.Context, in *pb.GetObsSeriesRequest,
 	return nil
 }
 
+func (s *store) GetPopCategory(ctx context.Context,
+	in *pb.GetPopCategoryRequest, out *pb.GetPopCategoryResponse) error {
+	btRow, err := s.btTable.ReadRow(ctx, util.BtPopCategory+in.GetPlaceType())
+	if err != nil {
+		return err
+	}
+	if len(btRow[util.BtFamily]) > 0 {
+		out.Payload = string(btRow[util.BtFamily][0].Value)
+	}
+
+	return nil
+}
+
 // PlacePopInfo contains basic info for a place and a population.
 type PlacePopInfo struct {
 	PlaceID      string `json:"dcid,omitempty"`

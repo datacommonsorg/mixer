@@ -57,6 +57,9 @@ type Interface interface {
 	GetObsSeries(ctx context.Context,
 		in *pb.GetObsSeriesRequest, out *pb.GetObsSeriesResponse) error
 
+	GetPopCategory(ctx context.Context,
+		in *pb.GetPopCategoryRequest, out *pb.GetPopCategoryResponse) error
+
 	GetPopulations(ctx context.Context,
 		in *pb.GetPopulationsRequest, out *pb.GetPopulationsResponse) error
 
