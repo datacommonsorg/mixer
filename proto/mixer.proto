@@ -356,10 +356,7 @@ service Mixer {
 
     // Get a list of possible population type, measured property, and PVs for a given place type.
     rpc GetPopCategory(GetPopCategoryRequest) returns (GetPopCategoryResponse) {
-      option (google.api.http) = {
-        post: "/bulk/pop-category"
-        body: "*"
-      };
+      option (google.api.http) = { get: "/bulk/pop-category" };
     }
 
   // Translate Sparql Query into translation results.
