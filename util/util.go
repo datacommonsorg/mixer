@@ -55,6 +55,8 @@ const (
 	BtPlacesInPrefix = "d/c/"
 	// BtPopPVPrefix for population PVs.
 	BtPopPVPrefix = "d/d/"
+	// BtPopCategory for population categories for a given place type.
+	BtPopCategory = "d/e/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
