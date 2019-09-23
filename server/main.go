@@ -177,7 +177,8 @@ func (s *server) GetPopObs(ctx context.Context,
 
 func (s *server) GetPlaceObs(ctx context.Context,
 	in *pb.GetPlaceObsRequest) (*pb.GetPlaceObsResponse, error) {
-	if in.GetPlaceType() == "" || in.GetPopulationType() == "" {
+	if in.GetPlaceType() == "" || in.GetPopulationType() == "" ||
+		in.GetObservationDate() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
 
