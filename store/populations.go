@@ -48,6 +48,8 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	}
 	if len(btRow[util.BtFamily]) > 0 && btRow[util.BtFamily][0].Row == btPrefix {
 		out.Payload = string(btRow[util.BtFamily][0].Value)
+	} else {
+		out.Payload, _ = util.ZipAndEncode("{}")
 	}
 	return nil
 }
