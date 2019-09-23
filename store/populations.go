@@ -72,6 +72,8 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	}
 	if len(btRow[util.BtFamily]) > 0 {
 		out.Payload = string(btRow[util.BtFamily][0].Value)
+	} else {
+		out.Payload, _ = util.ZipAndEncode("{}")
 	}
 	return nil
 }
