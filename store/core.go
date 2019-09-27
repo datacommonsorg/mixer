@@ -282,11 +282,6 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 	dcids := in.GetDcids()
 	prop := in.GetProperty()
 
-	// TODO(wsws): Temporary code to filter "mid". Remove this code once "mid" is removed from BT.
-	if prop == "mid" {
-		return nil, nil
-	}
-
 	var direction string
 	if arcOut {
 		direction = "out"
@@ -594,16 +589,6 @@ func (s *store) GetPropertyLabels(
 				if resultsMap[dcid].OutLabels == nil {
 					resultsMap[dcid].OutLabels = []string{}
 				}
-
-				// TODO(wsws): Temporary code to remove 'mid', which only appears in OutLabels.
-				// Remove this code once 'mid' is removed from BT.
-				tmpOut := []string{}
-				for _, outL := range resultsMap[dcid].OutLabels {
-					if outL != "mid" {
-						tmpOut = append(tmpOut, outL)
-					}
-				}
-				resultsMap[dcid].OutLabels = tmpOut
 			}
 
 			return nil
@@ -668,16 +653,6 @@ func (s *store) btGetTriples(
 					var btTriples TriplesCache
 					json.Unmarshal(btJSONRaw, &btTriples)
 					resultsMap[dcid] = filterTriplesLimit(dcid, btTriples.Triples, int(in.GetLimit()))
-
-					// TODO(wsws): Temporary code to remove "mid". Remove this code once "mid" is
-					// removed from BT.
-					tmpT := []*Triple{}
-					for _, t := range resultsMap[dcid] {
-						if t.Predicate != "mid" {
-							tmpT = append(tmpT, t)
-						}
-					}
-					resultsMap[dcid] = tmpT
 				}
 				return nil
 			}); err != nil {
