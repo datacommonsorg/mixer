@@ -51,6 +51,9 @@ type Interface interface {
 	GetPopObs(ctx context.Context,
 		in *pb.GetPopObsRequest, out *pb.GetPopObsResponse) error
 
+	GetPlacePop(ctx context.Context,
+		in *pb.GetPlacePopRequest, out *pb.GetPlacePopResponse) error
+
 	GetPlaceObs(ctx context.Context,
 		in *pb.GetPlaceObsRequest, out *pb.GetPlaceObsResponse) error
 
