@@ -39,14 +39,28 @@ type PopObs struct {
 func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	out *pb.GetPopObsResponse) error {
 	dcid := in.GetDcid()
-	btPrefix := fmt.Sprintf("%s%s", util.BtPopObsPrefix, dcid)
 
-	// Query for the prefix
-	btRow, err := s.btTable.ReadRow(ctx, btPrefix)
+	btRow, err := s.btTable.ReadRow(ctx, util.BtPopObsPrefix+dcid)
 	if err != nil {
 		return err
 	}
-	if len(btRow[util.BtFamily]) > 0 && btRow[util.BtFamily][0].Row == btPrefix {
+	if len(btRow[util.BtFamily]) > 0 {
+		out.Payload = string(btRow[util.BtFamily][0].Value)
+	} else {
+		out.Payload, _ = util.ZipAndEncode("{}")
+	}
+	return nil
+}
+
+func (s *store) GetPlacePop(ctx context.Context, in *pb.GetPlacePopRequest,
+	out *pb.GetPlacePopResponse) error {
+	dcid := in.GetDcid()
+
+	btRow, err := s.btTable.ReadRow(ctx, util.BtPlacePopPrefix+dcid)
+	if err != nil {
+		return err
+	}
+	if len(btRow[util.BtFamily]) > 0 {
 		out.Payload = string(btRow[util.BtFamily][0].Value)
 	} else {
 		out.Payload, _ = util.ZipAndEncode("{}")
@@ -101,7 +115,7 @@ func (s *store) GetObsSeries(ctx context.Context, in *pb.GetObsSeriesRequest,
 
 func (s *store) GetPopCategory(ctx context.Context,
 	in *pb.GetPopCategoryRequest, out *pb.GetPopCategoryResponse) error {
-	btRow, err := s.btTable.ReadRow(ctx, util.BtPopCategory+in.GetPlaceType())
+	btRow, err := s.btTable.ReadRow(ctx, util.BtPopCategoryPrefix+in.GetPlaceType())
 	if err != nil {
 		return err
 	}
