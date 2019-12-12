@@ -24,7 +24,7 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
 
     go run server/main.go \
       --bq_dataset=google.com:datcom-store-dev.dc_v3_clustered \
-      --bt_table=dc9 \
+      --bt_table=dc20 \
       --bt_project=google.com:datcom-store-dev \
       --bt_instance=prophet-cache \
       --project_id=datcom-mixer \

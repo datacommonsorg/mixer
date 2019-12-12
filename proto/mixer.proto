@@ -129,18 +129,6 @@ message GetPopObsResponse {
   string payload = 1;
 }
 
-// Request to get all population information (w/o observaitons) for a place.
-message GetPlacePopRequest {
-  // DCID of a place.
-  string dcid = 1;
-}
-
-// Response of GetPlacePop.
-message GetPlacePopResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
 // Represents a property value pair.
 message PropertyValue {
   // The property schema
@@ -347,11 +335,6 @@ service Mixer {
   // Get population and observation data for a place.
   rpc GetPopObs(GetPopObsRequest) returns (GetPopObsResponse) {
     option (google.api.http) = { get: "/bulk/pop-obs"};
-  }
-
-  // Get population data (w/o observations) for a place.
-  rpc GetPlacePop(GetPlacePopRequest) returns (GetPlacePopResponse) {
-    option (google.api.http) = { get: "/bulk/place-pop"};
   }
 
   // Get observation data for a list of places, given place type, population type, and

@@ -52,22 +52,6 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	return nil
 }
 
-func (s *store) GetPlacePop(ctx context.Context, in *pb.GetPlacePopRequest,
-	out *pb.GetPlacePopResponse) error {
-	dcid := in.GetDcid()
-
-	btRow, err := s.btTable.ReadRow(ctx, util.BtPlacePopPrefix+dcid)
-	if err != nil {
-		return err
-	}
-	if len(btRow[util.BtFamily]) > 0 {
-		out.Payload = string(btRow[util.BtFamily][0].Value)
-	} else {
-		out.Payload, _ = util.ZipAndEncode("{}")
-	}
-	return nil
-}
-
 func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	out *pb.GetPlaceObsResponse) error {
 	key := fmt.Sprintf("%s^%s^%s", in.GetPlaceType(), in.GetObservationDate(),

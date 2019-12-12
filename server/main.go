@@ -159,22 +159,6 @@ func (s *server) GetTriplesPost(ctx context.Context,
 	return &out, nil
 }
 
-func (s *server) GetPlacePop(ctx context.Context,
-	in *pb.GetPlacePopRequest) (*pb.GetPlacePopResponse, error) {
-	if in.GetDcid() == "" {
-		return nil, fmt.Errorf("must provide a DCID")
-	}
-	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
-		return nil, fmt.Errorf("invalid DCIDs")
-	}
-
-	out := pb.GetPlacePopResponse{}
-	if err := s.st.GetPlacePop(ctx, in, &out); err != nil {
-		return nil, err
-	}
-	return &out, nil
-}
-
 func (s *server) GetPopObs(ctx context.Context,
 	in *pb.GetPopObsRequest) (*pb.GetPopObsResponse, error) {
 	if in.GetDcid() == "" {
