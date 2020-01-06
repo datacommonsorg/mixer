@@ -327,7 +327,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	// Construct the list of cache keys to query.
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		btKey := fmt.Sprintf("%s%s^%s^%s^%s^%s^%s",
+		btKey := fmt.Sprintf("%s%s^%s^%s^%s^%s^%s^^^",
 			util.BtObsPrefix, dcid, in.GetMeasuredProperty(),
 			util.SnakeToCamel(in.GetStatsType()), in.GetObservationDate(),
 			in.GetObservationPeriod(), in.GetMeasurementMethod())
