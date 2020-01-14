@@ -87,41 +87,20 @@ func (s *store) GetPropertyValues(ctx context.Context,
 	}
 
 	var err error
-	var inRes, outRes map[string]map[string][]Node
+	var res map[string]map[string][]Node
 	if in.GetLimit() > util.BtCacheLimit {
-		inRes, err = s.bqGetPropertyValues(ctx, in, false)
-		if err != nil {
-			return err
-		}
-		outRes, err = s.bqGetPropertyValues(ctx, in, true)
+		res, err = s.bqGetPropertyValues(ctx, in)
 		if err != nil {
 			return err
 		}
 	} else {
-		inRes, err = s.btGetPropertyValues(ctx, in, false)
-		if err != nil {
-			return err
-		}
-		outRes, err = s.btGetPropertyValues(ctx, in, true)
+		res, err = s.btGetPropertyValues(ctx, in)
 		if err != nil {
 			return err
 		}
 	}
 
-	nodeRes := make(map[string]map[string][]Node)
-	for _, r := range []map[string]map[string][]Node{inRes, outRes} {
-		for k1, v1 := range r {
-			if _, ok := nodeRes[k1]; !ok {
-				nodeRes[k1] = v1
-			} else {
-				for k2, v2 := range v1 {
-					nodeRes[k1][k2] = v2
-				}
-			}
-		}
-	}
-
-	jsonRaw, err := json.Marshal(nodeRes)
+	jsonRaw, err := json.Marshal(res)
 	if err != nil {
 		return err
 	}
@@ -131,9 +110,10 @@ func (s *store) GetPropertyValues(ctx context.Context,
 }
 
 func (s *store) bqGetPropertyValues(ctx context.Context,
-	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string]map[string][]Node, error) {
+	in *pb.GetPropertyValuesRequest) (map[string]map[string][]Node, error) {
 	// TODO(antaresc): Fix the ValueType not being used in the triple query
 	dcids := in.GetDcids()
+	arcOut := in.GetOutArc()
 
 	// Get request parameters
 	valueType := in.GetValueType()
@@ -278,8 +258,9 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 }
 
 func (s *store) btGetPropertyValues(ctx context.Context,
-	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string]map[string][]Node, error) {
+	in *pb.GetPropertyValuesRequest) (map[string]map[string][]Node, error) {
 	dcids := in.GetDcids()
+	arcOut := in.GetOutArc()
 	prop := in.GetProperty()
 
 	var direction string
@@ -720,7 +701,8 @@ func (s *store) btGetTriples(
 				Dcids:    objPlaceDCIDs,
 				Property: "name",
 				Limit:    util.BtCacheLimit,
-			}, true)
+				OutArc:   true,
+			})
 			if err != nil {
 				return err
 			}

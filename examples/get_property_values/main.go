@@ -65,6 +65,7 @@ func main() {
 		&pb.GetPropertyValuesRequest{
 			Dcids:    dcids,
 			Property: "name",
+			OutArc:   true,
 		},
 	} {
 		// Call GetPropertyValues
