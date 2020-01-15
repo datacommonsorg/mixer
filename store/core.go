@@ -86,21 +86,70 @@ func (s *store) GetPropertyValues(ctx context.Context,
 		in.Limit = util.BtCacheLimit
 	}
 
+	direction := in.GetDirection()
+	var inArc, outArc bool
+	switch direction {
+	case "in":
+		inArc = true
+		outArc = false
+	case "out":
+		inArc = false
+		outArc = true
+	default:
+		inArc = true
+		outArc = true
+	}
+
 	var err error
-	var res map[string]map[string][]Node
+	var inRes, outRes map[string]map[string][]Node
 	if in.GetLimit() > util.BtCacheLimit {
-		res, err = s.bqGetPropertyValues(ctx, in)
-		if err != nil {
-			return err
+		if inArc {
+			inRes, err = s.bqGetPropertyValues(ctx, in, false)
+			if err != nil {
+				return err
+			}
+		}
+		if outArc {
+			outRes, err = s.bqGetPropertyValues(ctx, in, true)
+			if err != nil {
+				return err
+			}
 		}
 	} else {
-		res, err = s.btGetPropertyValues(ctx, in)
-		if err != nil {
-			return err
+		if inArc {
+			inRes, err = s.btGetPropertyValues(ctx, in, false)
+			if err != nil {
+				return err
+			}
+		}
+		if outArc {
+			outRes, err = s.btGetPropertyValues(ctx, in, true)
+			if err != nil {
+				return err
+			}
 		}
 	}
 
-	jsonRaw, err := json.Marshal(res)
+	nodeRes := make(map[string]map[string][]Node)
+	if inArc && outArc {
+		for _, r := range []map[string]map[string][]Node{inRes, outRes} {
+			for k1, v1 := range r {
+				if _, ok := nodeRes[k1]; !ok {
+					nodeRes[k1] = v1
+				} else {
+					for k2, v2 := range v1 {
+						nodeRes[k1][k2] = v2
+					}
+				}
+			}
+		}
+	} else if inArc {
+		nodeRes = inRes
+	} else { // outArc.
+		nodeRes = outRes
+	}
+
+	jsonRaw, err := json.Marshal(nodeRes)
 	if err != nil {
 		return err
 	}
@@ -110,10 +159,9 @@ func (s *store) GetPropertyValues(ctx context.Context,
 }
 
 func (s *store) bqGetPropertyValues(ctx context.Context,
-	in *pb.GetPropertyValuesRequest) (map[string]map[string][]Node, error) {
+	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string]map[string][]Node, error) {
 	// TODO(antaresc): Fix the ValueType not being used in the triple query
 	dcids := in.GetDcids()
-	arcOut := (in.GetDirection() != "in")
 
 	// Get request parameters
 	valueType := in.GetValueType()
@@ -258,9 +306,8 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 }
 
 func (s *store) btGetPropertyValues(ctx context.Context,
-	in *pb.GetPropertyValuesRequest) (map[string]map[string][]Node, error) {
+	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string]map[string][]Node, error) {
 	dcids := in.GetDcids()
-	arcOut := (in.GetDirection() != "in")
 	prop := in.GetProperty()
 
 	var direction string
@@ -698,11 +745,10 @@ func (s *store) btGetTriples(
 		}
 		if len(objPlaceDCIDs) > 0 {
 			res, err := s.btGetPropertyValues(ctx, &pb.GetPropertyValuesRequest{
-				Dcids:     objPlaceDCIDs,
-				Property:  "name",
-				Limit:     util.BtCacheLimit,
-				Direction: "out",
-			})
+				Dcids:    objPlaceDCIDs,
+				Property: "name",
+				Limit:    util.BtCacheLimit,
+			}, true)
 			if err != nil {
 				return err
 			}
