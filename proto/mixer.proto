@@ -94,6 +94,9 @@ message GetPropertyValuesRequest {
 
   // Maximum number of nodes to query for.
   int32 limit = 4;
+
+  // Direction, "in" or "out", default to "out".
+  string direction = 5;
 }
 
 // Response returned by GetPropertyValues.

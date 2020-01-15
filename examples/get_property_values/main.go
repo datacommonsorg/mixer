@@ -53,6 +53,7 @@ func main() {
 			ValueType: "Town",
 			Property:  "containedInPlace",
 			Limit:     3,
+			Direction: "in",
 		},
 		&pb.GetPropertyValuesRequest{
 			Dcids:    dcids,
