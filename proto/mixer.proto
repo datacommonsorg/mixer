@@ -95,8 +95,8 @@ message GetPropertyValuesRequest {
   // Maximum number of nodes to query for.
   int32 limit = 4;
 
-  // If choosing out arc (or in arc).
-  bool out_arc = 5;
+  // If choosing in arc (default is out arc).
+  bool in_arc = 5;
 }
 
 // Response returned by GetPropertyValues.

@@ -113,7 +113,7 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 	in *pb.GetPropertyValuesRequest) (map[string]map[string][]Node, error) {
 	// TODO(antaresc): Fix the ValueType not being used in the triple query
 	dcids := in.GetDcids()
-	arcOut := in.GetOutArc()
+	arcOut := !in.GetInArc()
 
 	// Get request parameters
 	valueType := in.GetValueType()
@@ -260,7 +260,7 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 func (s *store) btGetPropertyValues(ctx context.Context,
 	in *pb.GetPropertyValuesRequest) (map[string]map[string][]Node, error) {
 	dcids := in.GetDcids()
-	arcOut := in.GetOutArc()
+	arcOut := !in.GetInArc()
 	prop := in.GetProperty()
 
 	var direction string
@@ -701,7 +701,7 @@ func (s *store) btGetTriples(
 				Dcids:    objPlaceDCIDs,
 				Property: "name",
 				Limit:    util.BtCacheLimit,
-				OutArc:   true,
+				InArc:    false,
 			})
 			if err != nil {
 				return err
