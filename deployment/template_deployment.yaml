@@ -63,10 +63,10 @@ spec:
           image: IMAGE
           imagePullPolicy: Always
           args: [
-            "--bq_dataset", "google.com:datcom-store-dev.dc_v3_clustered",
+            "--bq_dataset", "BQ_DATASET",
             "--bt_table", "dc22",
             "--bt_project", "google.com:datcom-store-dev",
-            "--bt_instance", "prophet-cache",
+            "--bt_instance", "BT_INSTANCE",
             "--project_id", "PROJECT_ID",
           ]
           ports:
