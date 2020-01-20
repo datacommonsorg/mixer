@@ -50,6 +50,14 @@ else
   perl -i -pe's/#_d\|//g' deployment.yaml
 fi
 
+# Set BT instance & BQ dataset
+if [ "$PROJECT_ID" == "datcom-mixer-staging" ]; then
+  perl -i -pe's/BT_INSTANCE/prophet-cache-staging/g' deployment.yaml
+  perl -i -pe's/BQ_DATASET/google.com:datcom-store-dev.dc_v3_staging_clustered/g' deployment.yaml
+else 
+  perl -i -pe's/BT_INSTANCE/prophet-cache/g' deployment.yaml
+  perl -i -pe's/BQ_DATASET/google.com:datcom-store-dev.dc_v3_clustered/g' deployment.yaml
+fi
 
 # Get a static ip address
 if ! [[ $(gcloud compute addresses list --global --filter='name:mixer-ip' --format=yaml) ]]; then
