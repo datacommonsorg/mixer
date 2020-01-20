@@ -17,7 +17,8 @@
 
 export PROJECT_ID=$1
 export IMAGE=$2
-export DOMAIN=$3
+export BT_TABLE=$3
+export DOMAIN=$4
 
 SERVICE_ACCOUNT=mixer-robot@$PROJECT_ID.iam.gserviceaccount.com
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
@@ -42,14 +43,6 @@ fi
 # Set docker image
 perl -i -pe's/IMAGE/$ENV{IMAGE}/g' deployment.yaml
 
-# Set endpints domain
-if [[ $DOMAIN ]]; then
-  perl -i -pe's/#_c\|//g' deployment.yaml
-  perl -i -pe's/DOMAIN/$ENV{DOMAIN}/g' deployment.yaml
-else
-  perl -i -pe's/#_d\|//g' deployment.yaml
-fi
-
 # Set BT instance & BQ dataset
 if [ "$PROJECT_ID" == "datcom-mixer-staging" ]; then
   perl -i -pe's/BT_INSTANCE/prophet-cache-staging/g' deployment.yaml
@@ -58,6 +51,18 @@ else
   perl -i -pe's/BT_INSTANCE/prophet-cache/g' deployment.yaml
   perl -i -pe's/BQ_DATASET/google.com:datcom-store-dev.dc_v3_clustered/g' deployment.yaml
 fi
+
+# Set BT table, please refer to template_deployment for current table choice.
+perl -i -pe's/BT_TABLE/$ENV{BT_TABLE}/g' deployment.yaml
+
+# Set endpints domain
+if [[ $DOMAIN ]]; then
+  perl -i -pe's/#_c\|//g' deployment.yaml
+  perl -i -pe's/DOMAIN/$ENV{DOMAIN}/g' deployment.yaml
+else
+  perl -i -pe's/#_d\|//g' deployment.yaml
+fi
+
 
 # Get a static ip address
 if ! [[ $(gcloud compute addresses list --global --filter='name:mixer-ip' --format=yaml) ]]; then
