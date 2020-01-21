@@ -1,5 +1,15 @@
 # DataCommons Mixer Development
 
+## Development Process
+
+In https://github.com/datacommonsorg/mixer, click on "Fork" button to fork the repo.
+
+Clone your forked repo to your desktop and develop locally.
+
+Submit your change to your own repo and send a Pull Request from github.
+
+Wait for approval of the Pull Request and merge the change.
+
 ## Generate Protobuf go code and out.pb
 
 Install protoc by following [this](http://google.github.io/proto-lens/installing-protoc.html).
