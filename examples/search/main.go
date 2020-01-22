@@ -47,5 +47,26 @@ func main() {
 	if err != nil {
 		log.Fatalf("could not Search: %v", err)
 	}
+
+	sections := r.GetSection()
+	log.Printf("%d sections", len(sections))
+	if numSection := len(sections); numSection < 5 {
+		log.Fatalf("too few results from search: %d sections", numSection)
+	}
+
+	for _, section := range sections {
+		if section.GetTypeName() == "County" {
+			if numEntity := len(section.GetEntity()); numEntity != 1 {
+				log.Fatalf("There should be one entity, found %d", numEntity)
+			}
+			if dcid := section.GetEntity()[0].GetDcid(); dcid != "geoId/06085" {
+				log.Fatalf("Wrong dcid: %s", dcid)
+			}
+			if name := section.GetEntity()[0].GetName(); name != "Santa Clara County (in California)" {
+				log.Fatalf("Wrong name: %s", name)
+			}
+		}
+	}
+
 	log.Printf("Search: %v", r.GetSection())
 }

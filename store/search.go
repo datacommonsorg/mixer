@@ -31,7 +31,9 @@ func (s *store) Search(
 	result := map[string]*pb.SearchResultSection{}
 	tokens := strings.Split(strings.ToLower(in.GetQuery()), " ")
 	qStr := fmt.Sprintf(
-		"SELECT id, type, extended_name FROM `%s`.Instance WHERE type != \"CensusTract\"", s.bqDb)
+		"SELECT id, type, extended_name FROM `%s`.Instance "+
+			"WHERE type != \"CensusTract\" and type != \"PowerPlant\""+
+			" and type != \"PowerPlantUnit\"", s.bqDb)
 	for _, token := range tokens {
 		qStr += fmt.Sprintf(` AND REGEXP_CONTAINS(LOWER(extended_name), r"\b%s\b")`, token)
 	}

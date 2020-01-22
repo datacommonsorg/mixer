@@ -1348,7 +1348,7 @@ type SearchRequest struct {
 	// to choose an interpretation of the query, e.g. using NLP or just plain
 	// keyword search and return relevant entities from the graph.
 	Query string `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	// Maximum number of entities to return, default to 200.
+	// Maximum number of entities to return.
 	MaxResults           int32    `protobuf:"varint,2,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
