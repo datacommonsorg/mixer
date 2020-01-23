@@ -252,6 +252,43 @@ message GetPlacesInResponse {
   string payload = 1;
 }
 
+
+// Search request sent to the mixer.
+message SearchRequest {
+  // Search query which is just a plain text string, e.g. "california".
+  // This is not a datalog query, but a plain text query. The mixer is free
+  // to choose an interpretation of the query, e.g. using NLP or just plain
+  // keyword search and return relevant entities from the graph.
+  string query = 1;
+
+  // Maximum number of entities to return.
+  int32 max_results = 2;
+}
+
+// Search response from mixer.
+message SearchResponse {
+  // Matching entities broken down by type.
+  repeated SearchResultSection section = 1;
+}
+
+// Wrapper for all entities returned from search which belong to a single type.
+message SearchResultSection {
+  // Type of entities in this section.
+  string type_name = 1;
+
+  // List of entities in this section.
+  repeated SearchEntityResult entity = 2;
+}
+
+// Data for a single entity returned by the search endpoint.
+message SearchEntityResult {
+  // DCID of the entity.
+  string dcid = 1;
+
+  // Name of the entity.
+  string name = 2;
+}
+
 service Mixer {
 
   // Query DataCommons Graph with Sparql.
@@ -368,5 +405,10 @@ service Mixer {
       post: "/translate"
       body: "*"
     };
+  }
+
+  // Given a text search query, return all entities matching the query.
+  rpc Search(SearchRequest) returns (SearchResponse) {
+    option (google.api.http) = { get: "/search" };
   }
 }

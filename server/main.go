@@ -309,6 +309,15 @@ func (s *server) Translate(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) Search(
+	ctx context.Context, in *pb.SearchRequest) (*pb.SearchResponse, error) {
+	out := pb.SearchResponse{}
+	if err := s.st.Search(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func main() {
 	flag.Parse()
 

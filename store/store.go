@@ -39,6 +39,8 @@ type Interface interface {
 	Query(ctx context.Context,
 		in *pb.QueryRequest, out *pb.QueryResponse) error
 
+	Search(ctx context.Context, in *pb.SearchRequest, out *pb.SearchResponse) error
+
 	GetPropertyLabels(ctx context.Context,
 		in *pb.GetPropertyLabelsRequest, out *pb.GetPropertyLabelsResponse) error
 
