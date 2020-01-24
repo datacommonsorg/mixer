@@ -9,17 +9,17 @@ Clone your forked repo to your desktop.
 Add datacommonsorg/mixer repo as a remote.
 
 ```shell
-git remote add git@github.com:datacommonsorg/mixer.git
+git remote add dc https://github.com/datacommonsorg/mixer.git
 ```
 
 Every time when you want to send a Pull Request, do the following steps:
 
 ```shell
-git fetch dc
 git checkout master
 git pull dc master
 git checkout -b new_branch_name
 # Make some code change
+git add .
 git commit -m "commit message"
 git push -u origin new_branch_name
 ```
