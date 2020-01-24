@@ -24,8 +24,7 @@ git commit -m "commit message"
 git push -u origin new_branch_name
 ```
 
-Then in your forked repo, can send a Pull Request. Github will ask you to pick
-the branch as a base, choose "new_branch_name"
+Then in your forked repo, can send a Pull Request.
 
 Wait for approval of the Pull Request and merge the change.
 
