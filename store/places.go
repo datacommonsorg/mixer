@@ -155,6 +155,7 @@ func (s *store) bqGetPlacesIn(ctx context.Context,
 
 func (s *store) GetRelatedPlaces(ctx context.Context,
 	in *pb.GetRelatedPlacesRequest, out *pb.GetRelatedPlacesResponse) error {
+	// TODO: Add StatType when it's available in BT.
 	popObsSignatureItems := []string{in.GetMeasuredProperty(), in.GetMeasurementMethod(),
 		in.GetMeasurementDenominator(), in.GetMeasurementQualifier(), in.GetScalingFactor(),
 		in.GetUnit(), in.GetPopulationType()}
