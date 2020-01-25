@@ -152,3 +152,54 @@ func (s *store) bqGetPlacesIn(ctx context.Context,
 
 	return nil
 }
+
+func (s *store) GetRelatedPlaces(ctx context.Context,
+	in *pb.GetRelatedPlacesRequest, out *pb.GetRelatedPlacesResponse) error {
+	popObsSignatureItems := []string{in.GetMeasuredProperty(), in.GetMeasurementMethod(),
+		in.GetMeasurementDenominator(), in.GetMeasurementQualifier(), in.GetScalingFactor(),
+		in.GetUnit(), in.GetPopulationType()}
+	if len(in.GetPvs()) > 0 {
+		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
+			popObsSignatureItems = append(popObsSignatureItems, []string{p, v}...)
+		})
+	}
+	popObsSignature := strings.Join(popObsSignatureItems, "^")
+
+	dcids := in.GetDcids()
+	rowList := bigtable.RowList{}
+	for _, dcid := range dcids {
+		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtRelatedPlacesPrefix, dcid,
+			popObsSignature))
+	}
+
+	results := map[string][]string{}
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			parts := strings.Split(btRow.Key(), "^")
+			dcid := strings.TrimPrefix(parts[0], util.BtRelatedPlacesPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btValueRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+				for _, place := range strings.Split(string(btValueRaw), ",") {
+					results[dcid] = append(results[dcid], place)
+				}
+			}
+
+			return nil
+		}); err != nil {
+		return err
+	}
+
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
+
+	return nil
+}

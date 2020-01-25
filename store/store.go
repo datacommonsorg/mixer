@@ -70,6 +70,9 @@ type Interface interface {
 
 	GetPlacesIn(ctx context.Context,
 		in *pb.GetPlacesInRequest, out *pb.GetPlacesInResponse) error
+
+	GetRelatedPlaces(ctx context.Context,
+		in *pb.GetRelatedPlacesRequest, out *pb.GetRelatedPlacesResponse) error
 }
 
 type store struct {
