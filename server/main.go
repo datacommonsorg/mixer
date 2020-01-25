@@ -280,6 +280,23 @@ func (s *server) GetPlacesInPost(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) GetRelatedPlaces(ctx context.Context,
+	in *pb.GetRelatedPlacesRequest) (*pb.GetRelatedPlacesResponse, error) {
+	// TODO: Add checks for emtpy StatType when it's avaiable in BT.
+	if len(in.GetDcids()) == 0 || in.GetPopulationType() == "" || in.GetMeasuredProperty() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
+
+	out := pb.GetRelatedPlacesResponse{}
+	if err := s.st.GetRelatedPlaces(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func (s *server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
