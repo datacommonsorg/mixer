@@ -1,6 +1,11 @@
 # Deploy Data Commons Mixer to GKE and Google Endpoints
 
-## Build and deploy
+## Do you need to point to a new Bigtable? 
+
+If yes, update prod_bt_table.txt for prod or staging_bt_table.txt for staging first. 
+And please don't forget to get these change into master repository.
+
+## Build & Deploy
 
 Create a Google Cloud Platform (GCP) project and run the following command where:
 
@@ -10,6 +15,10 @@ Create a Google Cloud Platform (GCP) project and run the following command where
 
 `{DOMAIN}` is optional, and only need to be set if you want to expose the endpoints from your custom domain.
 
+To build a new image, run the command below. Tag number should be larger than any existing one. 
+gcloud builds submit --tag gcr.io/datcom-mixer/go-grpc-mixer:<TAG> 
+
+To deploy the project, run the command below. 
 ```shell
 ./gcp.sh {PROJECT_ID}
 ./gke.sh {PROJECT_ID} {IMAGE} {DOMAIN}
