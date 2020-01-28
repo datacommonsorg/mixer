@@ -99,7 +99,6 @@ gcloud services enable container.googleapis.com
 if [[ $(gcloud container clusters list --filter='mixer-cluster' --format=yaml) ]]; then
   echo "mixer-cluster already exists, continue..."
 else
-  # Use version > 1.13 to make sure only provision one certificate object per ssl-certificate
   gcloud container clusters create mixer-cluster --zone=us-central1-c
 fi
 
