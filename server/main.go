@@ -233,8 +233,9 @@ func (s *server) GetPopulations(ctx context.Context,
 
 func (s *server) GetObservations(ctx context.Context,
 	in *pb.GetObservationsRequest) (*pb.GetObservationsResponse, error) {
+	// TODO: Add checks for empty in.GetStatType().
 	if len(in.GetDcids()) == 0 || in.GetMeasuredProperty() == "" ||
-		in.GetObservationDate() == "" || in.GetStatsType() == "" {
+		in.GetObservationDate() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
 	if !util.CheckValidDCIDs(in.GetDcids()) {

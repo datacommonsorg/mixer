@@ -60,7 +60,8 @@ func main() {
 			},
 		},
 		MeasuredProperty: "count",
-		// TODO: Add StatType when available in BT.
+		// TODO: Set StatType value to "measuredValue" once having it in BT.
+		StatType: "",
 	}); err != nil {
 		log.Printf("Error: %v", err)
 	}
