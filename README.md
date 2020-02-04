@@ -50,6 +50,8 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
 
 ## Run grpc server and examples locally
 
+    gcloud auth application-default login
+
     go run server/main.go \
       --bq_dataset=google.com:datcom-store-dev.dc_v3_clustered \
       --bt_table=dc26 \
