@@ -30,12 +30,6 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-// PopObs represents a pair of population and observation node.
-type PopObs struct {
-	PopulationID     string `json:"dcid,omitempty"`
-	ObservationValue string `json:"observation,omitempty"`
-}
-
 func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	out *pb.GetPopObsResponse) error {
 	dcid := in.GetDcid()
@@ -198,7 +192,6 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 
 	// Query the cache
 	collection := []*PlacePopInfo{}
-	dcidStore := map[string]struct{}{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
@@ -217,7 +210,6 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 						PlaceID:      dcid,
 						PopulationID: popIDFmt,
 					})
-					dcidStore[dcid] = struct{}{}
 				}
 			}
 			return nil
@@ -285,7 +277,7 @@ func (s *store) bqGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	if err != nil {
 		return err
 	}
-	collection := []PopObs{}
+	observations := make(map[string]string)
 	for {
 		var row []bigquery.Value
 		err := it.Next(&row)
@@ -307,11 +299,11 @@ func (s *store) bqGetObservations(ctx context.Context, in *pb.GetObservationsReq
 				m = cell.(float64)
 			}
 		}
-		collection = append(collection, PopObs{id, strconv.FormatFloat(m, 'f', 6, 64)})
+		observations[id] = strconv.FormatFloat(m, 'f', 6, 64)
 	}
 
 	// Format the response
-	jsonRaw, err := json.Marshal(collection)
+	jsonRaw, err := json.Marshal(observations)
 	if err != nil {
 		return err
 	}
@@ -335,8 +327,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	}
 
 	// Query the cache for all keys.
-	collection := []*PopObs{}
-	dcidStore := map[string]struct{}{}
+	observations := make(map[string]string)
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
@@ -353,11 +344,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 
 				valFmt := string(valRaw)
 				if len(valFmt) > 0 {
-					collection = append(collection, &PopObs{
-						PopulationID:     dcid,
-						ObservationValue: valFmt,
-					})
-					dcidStore[dcid] = struct{}{}
+					observations[dcid] = valFmt
 				}
 			}
 			return nil
@@ -366,7 +353,7 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 	}
 
 	// Format the response
-	jsonRaw, err := json.Marshal(collection)
+	jsonRaw, err := json.Marshal(observations)
 	if err != nil {
 		return err
 	}
