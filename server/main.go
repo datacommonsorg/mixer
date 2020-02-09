@@ -283,8 +283,8 @@ func (s *server) GetPlacesInPost(ctx context.Context,
 
 func (s *server) GetRelatedPlaces(ctx context.Context,
 	in *pb.GetRelatedPlacesRequest) (*pb.GetRelatedPlacesResponse, error) {
-	// TODO: Add checks for emtpy StatType when it's avaiable in BT.
-	if len(in.GetDcids()) == 0 || in.GetPopulationType() == "" || in.GetMeasuredProperty() == "" {
+	if len(in.GetDcids()) == 0 || in.GetPopulationType() == "" ||
+		in.GetMeasuredProperty() == "" || in.GetStatType() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
 	if !util.CheckValidDCIDs(in.GetDcids()) {

@@ -17,12 +17,11 @@ package main
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
 	"time"
-
-	"encoding/json"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"google.golang.org/grpc"
@@ -46,24 +45,77 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
-	if testGetRelatedPlaces(ctx, c, &pb.GetRelatedPlacesRequest{
-		Dcids:          []string{"geoId/06085"},
-		PopulationType: "Person",
-		Pvs: []*pb.PropertyValue{
-			{
-				Property: "gender",
-				Value:    "Female",
-			},
-			{
-				Property: "age",
-				Value:    "Years21To64",
-			},
+	requests := []*pb.GetRelatedPlacesRequest{
+		{
+			Dcids:             []string{"geoId/06085"},
+			PopulationType:    "Person",
+			MeasuredProperty:  "count",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			StatType:          "measuredValue",
 		},
-		MeasuredProperty: "count",
-		// TODO: Set StatType value to "measuredValue" once having it in BT.
-		StatType: "",
-	}); err != nil {
-		log.Printf("Error: %v", err)
+		{
+			Dcids:          []string{"geoId/06085"},
+			PopulationType: "Person",
+			Pvs: []*pb.PropertyValue{
+				{
+					Property: "incomeStatus",
+					Value:    "WithIncome",
+				},
+				{
+					Property: "age",
+					Value:    "Years15Onwards",
+				},
+			},
+			MeasuredProperty:  "income",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			StatType:          "medianValue",
+		},
+		{
+			Dcids:             []string{"geoId/06085"},
+			PopulationType:    "Person",
+			MeasuredProperty:  "age",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			StatType:          "medianValue",
+		},
+		{
+			Dcids:             []string{"geoId/06085"},
+			PopulationType:    "Person",
+			MeasuredProperty:  "unemploymentRate",
+			MeasurementMethod: "BLSSeasonallyUnadjusted",
+			StatType:          "measuredValue",
+		},
+		{
+			Dcids:          []string{"geoId/0649670"},
+			PopulationType: "CriminalActivities",
+			Pvs: []*pb.PropertyValue{
+				{
+					Property: "crimeType",
+					Value:    "UCR_CombinedCrime",
+				},
+			},
+			MeasuredProperty: "count",
+			StatType:         "measuredValue",
+		},
+	}
+
+	for _, r := range requests {
+		fmt.Printf("Testing for related places.\n")
+		if testGetRelatedPlaces(ctx, c, r); err != nil {
+			log.Printf("Error: %v", err)
+		}
+
+		fmt.Printf("Testing for related places with same place type.\n")
+		r.SamePlaceType = true
+		if testGetRelatedPlaces(ctx, c, r); err != nil {
+			log.Printf("Error: %v", err)
+		}
+		r.SamePlaceType = false
+
+		fmt.Printf("Testing for related places with same ancestor.\n")
+		r.WithinPlace = "geoId/06"
+		if testGetRelatedPlaces(ctx, c, r); err != nil {
+			log.Printf("Error: %v", err)
+		}
 	}
 }
 
