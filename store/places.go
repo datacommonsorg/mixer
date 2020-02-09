@@ -226,7 +226,7 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			parts := strings.Split(btRow.Key(), "^")
-			dcid := strings.TrimPrefix(parts[0], util.BtRelatedPlacesPrefix)
+			dcid := strings.TrimPrefix(parts[0], prefix)
 
 			if len(btRow[util.BtFamily]) > 0 {
 				btRawValue := btRow[util.BtFamily][0].Value
