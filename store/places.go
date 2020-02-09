@@ -153,6 +153,13 @@ func (s *store) bqGetPlacesIn(ctx context.Context,
 	return nil
 }
 
+// RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.
+type RelatedPlacesInfo struct {
+	RelatedPlaces          []string `json:"relatedPlaces"`
+	RankAmongRelatedPlaces int32    `json:"rankAmongRelatedPlaces"`
+	ContainedInPlace       string   `json:"containedInPlace"`
+}
+
 func (s *store) GetRelatedPlaces(ctx context.Context,
 	in *pb.GetRelatedPlacesRequest, out *pb.GetRelatedPlacesResponse) error {
 	// TODO: Move the default value up to Python API. Consult wsws before moving.
@@ -214,7 +221,7 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 		}
 	}
 
-	results := map[string][]string{}
+	results := map[string]*RelatedPlacesInfo{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
@@ -223,13 +230,13 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 
 			if len(btRow[util.BtFamily]) > 0 {
 				btRawValue := btRow[util.BtFamily][0].Value
-				btValueRaw, err := util.UnzipAndDecode(string(btRawValue))
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
 				if err != nil {
 					return err
 				}
-				for _, place := range strings.Split(string(btValueRaw), ",") {
-					results[dcid] = append(results[dcid], place)
-				}
+				var btRelatedPlacesInfo RelatedPlacesInfo
+				json.Unmarshal(btJSONRaw, &btRelatedPlacesInfo)
+				results[dcid] = &btRelatedPlacesInfo
 			}
 
 			return nil
