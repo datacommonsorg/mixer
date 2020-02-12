@@ -63,6 +63,8 @@ const (
 	BtRelatedPlacesSameTypePrefix = "d/h/"
 	// BtRelatedPlacesSameAncestorPrefix for related places with same ancestor.
 	BtRelatedPlacesSameAncestorPrefix = "d/i/"
+	// BtRelatedPlacesSameTypeAndAncestorPrefix for related places with same type and ancestor.
+	BtRelatedPlacesSameTypeAndAncestorPrefix = "d/j/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.

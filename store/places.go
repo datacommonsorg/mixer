@@ -155,9 +155,10 @@ func (s *store) bqGetPlacesIn(ctx context.Context,
 
 // RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.
 type RelatedPlacesInfo struct {
-	RelatedPlaces          []string `json:"relatedPlaces"`
-	RankAmongRelatedPlaces int32    `json:"rankAmongRelatedPlaces"`
-	ContainedInPlace       string   `json:"containedInPlace"`
+	RelatedPlaces    []string `json:"relatedPlaces"`
+	RankFromTop      int32    `json:"rankFromTop"`
+	RankFromBottom   int32    `json:"rankFromBottom"`
+	ContainedInPlace string   `json:"containedInPlace"`
 }
 
 func (s *store) GetRelatedPlaces(ctx context.Context,
@@ -203,19 +204,32 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 	// TODO: Currently same_place_type and within_place options are mutually exclusive.
 	// The logic here chooses within_place when both set.
 	// Remove the logic when both options can live together.
-	prefix := util.BtRelatedPlacesPrefix
-	if in.GetWithinPlace() != "" {
-		prefix = util.BtRelatedPlacesSameAncestorPrefix
-	} else if in.GetSamePlaceType() {
-		prefix = util.BtRelatedPlacesSameTypePrefix
+	withinPlace := in.GetWithinPlace()
+	if withinPlace == "country/USA" {
+		withinPlace = ""
+	}
+	samePlaceType := in.GetSamePlaceType()
+	var prefix string
+	if withinPlace == "" {
+		if samePlaceType {
+			prefix = util.BtRelatedPlacesSameTypePrefix
+		} else {
+			prefix = util.BtRelatedPlacesPrefix
+		}
+	} else {
+		if samePlaceType {
+			prefix = util.BtRelatedPlacesSameTypeAndAncestorPrefix
+		} else {
+			prefix = util.BtRelatedPlacesSameAncestorPrefix
+		}
 	}
 
 	dcids := in.GetDcids()
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		if prefix == util.BtRelatedPlacesSameAncestorPrefix {
-			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, dcid,
-				in.GetWithinPlace(), popObsSignature))
+			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, dcid, withinPlace,
+				popObsSignature))
 		} else {
 			rowList = append(rowList, fmt.Sprintf("%s%s^%s", prefix, dcid, popObsSignature))
 		}
