@@ -116,6 +116,12 @@ func main() {
 		if testGetRelatedPlaces(ctx, c, r); err != nil {
 			log.Printf("Error: %v", err)
 		}
+
+		fmt.Printf("Testing for related places with same type and ancestor.\n")
+		r.SamePlaceType = true
+		if testGetRelatedPlaces(ctx, c, r); err != nil {
+			log.Printf("Error: %v", err)
+		}
 	}
 }
 
