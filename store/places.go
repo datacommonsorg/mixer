@@ -227,7 +227,7 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 	dcids := in.GetDcids()
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		if prefix == util.BtRelatedPlacesSameAncestorPrefix {
+		if withinPlace != "" {
 			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, dcid, withinPlace,
 				popObsSignature))
 		} else {
