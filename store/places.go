@@ -158,7 +158,9 @@ type RelatedPlacesInfo struct {
 	RelatedPlaces    []string `json:"relatedPlaces"`
 	RankFromTop      int32    `json:"rankFromTop"`
 	RankFromBottom   int32    `json:"rankFromBottom"`
-	ContainedInPlace string   `json:"containedInPlace"`
+	AllPlaces        []string `json:"allPlaces"`
+	Top1000Places    []string `json:"top1000Places"`
+	Bottom1000Places []string `json:"bottom1000Places"`
 }
 
 func (s *store) GetRelatedPlaces(ctx context.Context,
@@ -227,6 +229,11 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 	dcids := in.GetDcids()
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
+		// TODO: Remove this swap once BT uses "*" instead of "" to represent all places.
+		if dcid == "*" {
+			dcid = ""
+		}
+
 		if withinPlace != "" {
 			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, dcid, withinPlace,
 				popObsSignature))
