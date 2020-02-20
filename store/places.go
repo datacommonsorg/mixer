@@ -229,11 +229,6 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 	dcids := in.GetDcids()
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		// TODO: Remove this swap once BT uses "*" instead of "" to represent all places.
-		if dcid == "*" {
-			dcid = ""
-		}
-
 		if withinPlace != "" {
 			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, dcid, withinPlace,
 				popObsSignature))
