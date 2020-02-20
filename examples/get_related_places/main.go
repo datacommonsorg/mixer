@@ -122,6 +122,16 @@ func main() {
 		if testGetRelatedPlaces(ctx, c, r); err != nil {
 			log.Printf("Error: %v", err)
 		}
+		r.SamePlaceType = false
+		r.WithinPlace = ""
+
+		fmt.Printf("Testing for all places or top/bottom 1000 places.\n")
+		r.SamePlaceType = false
+		r.WithinPlace = ""
+		r.Dcids = []string{"*"}
+		if testGetRelatedPlaces(ctx, c, r); err != nil {
+			log.Printf("Error: %v", err)
+		}
 	}
 }
 
