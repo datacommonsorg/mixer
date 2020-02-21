@@ -18,6 +18,8 @@ Create a Google Cloud Platform (GCP) project and run the following command where
 To build a new image, run the command below. Tag number should be larger than any existing one. 
 gcloud builds submit --tag gcr.io/datcom-mixer/go-grpc-mixer:<TAG> 
 
+If you need to point to a different Bigtable table or BigQuery dataset, update the corresponding bt_table.txt or bq_dataset.txt.
+
 To deploy the project, run the command below. 
 ```shell
 ./gcp.sh {PROJECT_ID}

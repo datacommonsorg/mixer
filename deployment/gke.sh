@@ -51,11 +51,16 @@ else
 fi
 
 # Set BQ dataset
-if [ "$PROJECT_ID" == "datcom-mixer-staging" ]; then
-  perl -i -pe's/BQ_DATASET/google.com:datcom-store-dev.dc_v3_staging_clustered/g' deployment.yaml
-else 
-  perl -i -pe's/BQ_DATASET/google.com:datcom-store-dev.dc_v3_clustered/g' deployment.yaml
+if [ "$PROJECT_ID" == "datcom-mixer" ]; then
+  bq_dataset_input_file="./prod_bq_dataset.txt"
+else
+  bq_dataset_input_file="./staging_bq_dataset.txt"
 fi
+while read -r line; do
+  BQ_DATASET=$line
+done < "$bq_dataset_input_file"
+export BQ_DATASET
+perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' deployment.yaml
 
 # Set BT_INSTANCE, same for prod and staging.
 perl -i -pe's/BT_INSTANCE/prophet-cache/g' deployment.yaml
@@ -89,84 +94,84 @@ else
  perl -i -pe's/#_d\|//g' api_config.yaml
 fi
 
-gcloud endpoints services deploy out.pb api_config.yaml
+# gcloud endpoints services deploy out.pb api_config.yaml
 
 
-# GKE setup
-gcloud components install kubectl
-gcloud services enable container.googleapis.com
+# # GKE setup
+# gcloud components install kubectl
+# gcloud services enable container.googleapis.com
 
-# Create GKE instance
-if [[ $(gcloud container clusters list --filter='mixer-cluster' --format=yaml) ]]; then
-  echo "mixer-cluster already exists, continue..."
-else
-  gcloud container clusters create mixer-cluster --zone=us-central1-c
-fi
+# # Create GKE instance
+# if [[ $(gcloud container clusters list --filter='mixer-cluster' --format=yaml) ]]; then
+#   echo "mixer-cluster already exists, continue..."
+# else
+#   gcloud container clusters create mixer-cluster --zone=us-central1-c
+# fi
 
-gcloud container clusters get-credentials mixer-cluster
+# gcloud container clusters get-credentials mixer-cluster
 
-# Create namespace
-kubectl create namespace mixer
+# # Create namespace
+# kubectl create namespace mixer
 
-if [[ $(kubectl get secret bigquery-key --namespace mixer -o yaml | grep 'key.json') ]]; then
-  echo "The secret bigquery-key already exists..."
-else
-  echo "Creating new bigquery-key..."
-  # Create service account key and mount secret
-    key_ids=$(gcloud iam service-accounts keys list --iam-account "$SERVICE_ACCOUNT" --managed-by=user --format="value(KEY_ID)")
-    while read -r key_id; do
-      if [[ $key_id ]]; then
-        gcloud iam service-accounts keys delete $key_id --iam-account $SERVICE_ACCOUNT
-      fi
-    done <<< "$key_ids"
-  gcloud iam service-accounts keys create key.json --iam-account $SERVICE_ACCOUNT
+# if [[ $(kubectl get secret bigquery-key --namespace mixer -o yaml | grep 'key.json') ]]; then
+#   echo "The secret bigquery-key already exists..."
+# else
+#   echo "Creating new bigquery-key..."
+#   # Create service account key and mount secret
+#     key_ids=$(gcloud iam service-accounts keys list --iam-account "$SERVICE_ACCOUNT" --managed-by=user --format="value(KEY_ID)")
+#     while read -r key_id; do
+#       if [[ $key_id ]]; then
+#         gcloud iam service-accounts keys delete $key_id --iam-account $SERVICE_ACCOUNT
+#       fi
+#     done <<< "$key_ids"
+#   gcloud iam service-accounts keys create key.json --iam-account $SERVICE_ACCOUNT
 
-  # Mount secrete
-  kubectl create secret generic bigquery-key --from-file=key.json=key.json --namespace=mixer
-fi
+#   # Mount secrete
+#   kubectl create secret generic bigquery-key --from-file=key.json=key.json --namespace=mixer
+# fi
 
-# Mount nginx config
-kubectl create configmap nginx-config --from-file=nginx.conf --namespace=mixer
+# # Mount nginx config
+# kubectl create configmap nginx-config --from-file=nginx.conf --namespace=mixer
 
-# Mount schema mapping volumes
-kubectl delete configmap schema-mapping --namespace mixer
-kubectl create configmap schema-mapping --from-file=mapping/ --namespace=mixer
+# # Mount schema mapping volumes
+# kubectl delete configmap schema-mapping --namespace mixer
+# kubectl create configmap schema-mapping --from-file=mapping/ --namespace=mixer
 
-# Create certificate
-if [ $DOMAIN ]; then
-cat <<EOT > custom-certificate.yaml
-apiVersion: networking.gke.io/v1beta1
-kind: ManagedCertificate
-metadata:
-  name: custom-certificate
-  namespace: mixer
-spec:
-  domains:
-    - $DOMAIN
-EOT
-kubectl apply -f custom-certificate.yaml
-else
-cat <<EOT > certificate.yaml
-apiVersion: networking.gke.io/v1beta1
-kind: ManagedCertificate
-metadata:
-  name: mixer-certificate
-  namespace: mixer
-spec:
-  domains:
-    - datacommons.endpoints.$PROJECT_ID.cloud.goog
-EOT
-kubectl apply -f certificate.yaml
-fi
-
-
-# Bring up service and pods
-kubectl apply -f service.yaml
-kubectl apply -f deployment.yaml
+# # Create certificate
+# if [ $DOMAIN ]; then
+# cat <<EOT > custom-certificate.yaml
+# apiVersion: networking.gke.io/v1beta1
+# kind: ManagedCertificate
+# metadata:
+#   name: custom-certificate
+#   namespace: mixer
+# spec:
+#   domains:
+#     - $DOMAIN
+# EOT
+# kubectl apply -f custom-certificate.yaml
+# else
+# cat <<EOT > certificate.yaml
+# apiVersion: networking.gke.io/v1beta1
+# kind: ManagedCertificate
+# metadata:
+#   name: mixer-certificate
+#   namespace: mixer
+# spec:
+#   domains:
+#     - datacommons.endpoints.$PROJECT_ID.cloud.goog
+# EOT
+# kubectl apply -f certificate.yaml
+# fi
 
 
-# Bring ingress with certificate
-if [ "$PROJECT_ID" == "datcom-mixer" ]; then
-  perl -i -pe's/#__//g' ingress-ssl.yaml
-fi
-kubectl apply -f ingress-ssl.yaml
+# # Bring up service and pods
+# kubectl apply -f service.yaml
+# kubectl apply -f deployment.yaml
+
+
+# # Bring ingress with certificate
+# if [ "$PROJECT_ID" == "datcom-mixer" ]; then
+#   perl -i -pe's/#__//g' ingress-ssl.yaml
+# fi
+# kubectl apply -f ingress-ssl.yaml
