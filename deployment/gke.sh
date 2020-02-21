@@ -52,13 +52,11 @@ fi
 
 # Set BQ dataset
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
-  bq_dataset_input_file="./prod_bq_dataset.txt"
+  bq_dataset_input_file="prod_bq_dataset.txt"
 else
-  bq_dataset_input_file="./staging_bq_dataset.txt"
+  bq_dataset_input_file="staging_bq_dataset.txt"
 fi
-while read -r line; do
-  BQ_DATASET=$line
-done < "$bq_dataset_input_file"
+BQ_DATASET=$(cat $bq_dataset_input_file)
 export BQ_DATASET
 perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' deployment.yaml
 
@@ -67,13 +65,11 @@ perl -i -pe's/BT_INSTANCE/prophet-cache/g' deployment.yaml
 
 # Set BT table
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
-  bt_table_input_file="./prod_bt_table.txt"
+  bt_table_input_file="prod_bt_table.txt"
 else
-  bt_table_input_file="./staging_bt_table.txt"
+  bt_table_input_file="staging_bt_table.txt"
 fi
-while read -r line; do
-  BT_TABLE=$line
-done < "$bt_table_input_file"
+BT_TABLE=$(cat $bt_table_input_file)
 export BT_TABLE
 perl -i -pe's/BT_TABLE/$ENV{BT_TABLE}/g' deployment.yaml
 
