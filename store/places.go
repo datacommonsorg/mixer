@@ -153,11 +153,49 @@ func (s *store) bqGetPlacesIn(ctx context.Context,
 	return nil
 }
 
+// RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.
+type RelatedPlacesInfo struct {
+	RelatedPlaces    []string `json:"relatedPlaces"`
+	RankFromTop      int32    `json:"rankFromTop"`
+	RankFromBottom   int32    `json:"rankFromBottom"`
+	AllPlaces        []string `json:"allPlaces"`
+	Top1000Places    []string `json:"top1000Places"`
+	Bottom1000Places []string `json:"bottom1000Places"`
+}
+
 func (s *store) GetRelatedPlaces(ctx context.Context,
 	in *pb.GetRelatedPlacesRequest, out *pb.GetRelatedPlacesResponse) error {
-	popObsSignatureItems := []string{in.GetMeasuredProperty(), in.GetMeasurementMethod(),
+	// TODO: Move the default value up to Python API. Consult wsws before moving.
+	//
+	// The default values ensure for the following 5 cache keys.
+	// count^CensusACS5yrSurvey^^^^^measuredValue^Person
+	// income^CensusACS5yrSurvey^^^^USDollar^medianValue^Person^age^Years15Onwards^ \
+	//   incomeStatus^WithIncome
+	// age^CensusACS5yrSurvey^^^^Year^medianValue^Person
+	// unemploymentRate^BLSSeasonallyUnadjusted^^^^^measuredValue^Person
+	// count^^^^^^measuredValue^CriminalActivities^crimeType^UCR_CombinedCrime
+	measuredProperty := in.GetMeasuredProperty()
+	populationType := in.GetPopulationType()
+	measurementMethod := in.GetMeasurementMethod()
+	if measurementMethod == "" && populationType == "Person" {
+		if measuredProperty == "unemploymentRate" {
+			measurementMethod = "BLSSeasonallyUnadjusted"
+		} else {
+			measurementMethod = "CensusACS5yrSurvey"
+		}
+	}
+	unit := in.GetUnit()
+	if unit == "" {
+		if measuredProperty == "age" {
+			unit = "Year"
+		} else if measuredProperty == "income" {
+			unit = "USDollar"
+		}
+	}
+
+	popObsSignatureItems := []string{measuredProperty, measurementMethod,
 		in.GetMeasurementDenominator(), in.GetMeasurementQualifier(), in.GetScalingFactor(),
-		in.GetUnit(), in.GetStatType(), in.GetPopulationType()}
+		unit, in.GetStatType(), in.GetPopulationType()}
 	if len(in.GetPvs()) > 0 {
 		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
 			popObsSignatureItems = append(popObsSignatureItems, []string{p, v}...)
@@ -165,29 +203,56 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 	}
 	popObsSignature := strings.Join(popObsSignatureItems, "^")
 
+	// TODO: Currently same_place_type and within_place options are mutually exclusive.
+	// The logic here chooses within_place when both set.
+	// Remove the logic when both options can live together.
+	withinPlace := in.GetWithinPlace()
+	if withinPlace == "country/USA" {
+		withinPlace = ""
+	}
+	samePlaceType := in.GetSamePlaceType()
+	var prefix string
+	if withinPlace == "" {
+		if samePlaceType {
+			prefix = util.BtRelatedPlacesSameTypePrefix
+		} else {
+			prefix = util.BtRelatedPlacesPrefix
+		}
+	} else {
+		if samePlaceType {
+			prefix = util.BtRelatedPlacesSameTypeAndAncestorPrefix
+		} else {
+			prefix = util.BtRelatedPlacesSameAncestorPrefix
+		}
+	}
+
 	dcids := in.GetDcids()
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtRelatedPlacesPrefix, dcid,
-			popObsSignature))
+		if withinPlace != "" {
+			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, dcid, withinPlace,
+				popObsSignature))
+		} else {
+			rowList = append(rowList, fmt.Sprintf("%s%s^%s", prefix, dcid, popObsSignature))
+		}
 	}
 
-	results := map[string][]string{}
+	results := map[string]*RelatedPlacesInfo{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			parts := strings.Split(btRow.Key(), "^")
-			dcid := strings.TrimPrefix(parts[0], util.BtRelatedPlacesPrefix)
+			dcid := strings.TrimPrefix(parts[0], prefix)
 
 			if len(btRow[util.BtFamily]) > 0 {
 				btRawValue := btRow[util.BtFamily][0].Value
-				btValueRaw, err := util.UnzipAndDecode(string(btRawValue))
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
 				if err != nil {
 					return err
 				}
-				for _, place := range strings.Split(string(btValueRaw), ",") {
-					results[dcid] = append(results[dcid], place)
-				}
+				var btRelatedPlacesInfo RelatedPlacesInfo
+				json.Unmarshal(btJSONRaw, &btRelatedPlacesInfo)
+				results[dcid] = &btRelatedPlacesInfo
 			}
 
 			return nil
