@@ -26,7 +26,8 @@ To deploy the project, run the command below.
 ./gcp.sh {PROJECT_ID}
 ./gke.sh {PROJECT_ID} {IMAGE} {DOMAIN}
 ```
-
+./gke.sh should be run even if new mixer image is not pushed. If new mixer image is not being pushed use the image_id that is in prod.
+ 
 ## (Optional) Use custom domain
 
 Verify your domain as described in <https://cloud.google.com/endpoints/docs/openapi/verify-domain-name>
