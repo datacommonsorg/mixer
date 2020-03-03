@@ -125,12 +125,26 @@ func main() {
 		r.SamePlaceType = false
 		r.WithinPlace = ""
 
+		if r.MeasuredProperty == "count" {
+			fmt.Printf("Testing for related places, per capita.\n")
+			r.IsPerCapita = true
+			if testGetRelatedPlaces(ctx, c, r); err != nil {
+				log.Printf("Error: %v", err)
+			}
+			r.IsPerCapita = false
+		}
+
 		fmt.Printf("Testing for all places or top/bottom 1000 places.\n")
-		r.SamePlaceType = false
-		r.WithinPlace = ""
 		r.Dcids = []string{"*"}
 		if testGetRelatedPlaces(ctx, c, r); err != nil {
 			log.Printf("Error: %v", err)
+		}
+
+		if r.MeasuredProperty == "count" {
+			fmt.Printf("Testing for all places or top/bottom 1000 places, per capita.\n")
+			if testGetRelatedPlaces(ctx, c, r); err != nil {
+				log.Printf("Error: %v", err)
+			}
 		}
 	}
 }

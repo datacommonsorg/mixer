@@ -73,6 +73,9 @@ type Interface interface {
 
 	GetRelatedPlaces(ctx context.Context,
 		in *pb.GetRelatedPlacesRequest, out *pb.GetRelatedPlacesResponse) error
+
+	GetInterestingPlaceAspects(ctx context.Context,
+		in *pb.GetInterestingPlaceAspectsRequest, out *pb.GetInterestingPlaceAspectsResponse) error
 }
 
 type store struct {

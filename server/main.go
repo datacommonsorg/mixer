@@ -298,6 +298,22 @@ func (s *server) GetRelatedPlaces(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) GetInterestingPlaceAspects(ctx context.Context,
+	in *pb.GetInterestingPlaceAspectsRequest) (*pb.GetInterestingPlaceAspectsResponse, error) {
+	if len(in.GetDcids()) == 0 {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
+
+	out := pb.GetInterestingPlaceAspectsResponse{}
+	if err := s.st.GetInterestingPlaceAspects(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func (s *server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {

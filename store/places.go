@@ -155,12 +155,12 @@ func (s *store) bqGetPlacesIn(ctx context.Context,
 
 // RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.
 type RelatedPlacesInfo struct {
-	RelatedPlaces    []string `json:"relatedPlaces"`
-	RankFromTop      int32    `json:"rankFromTop"`
-	RankFromBottom   int32    `json:"rankFromBottom"`
-	AllPlaces        []string `json:"allPlaces"`
-	Top1000Places    []string `json:"top1000Places"`
-	Bottom1000Places []string `json:"bottom1000Places"`
+	RelatedPlaces    []string `json:"relatedPlaces,omitempty"`
+	RankFromTop      int32    `json:"rankFromTop,omitempty"`
+	RankFromBottom   int32    `json:"rankFromBottom,omitempty"`
+	AllPlaces        []string `json:"allPlaces,omitempty"`
+	Top1000Places    []string `json:"top1000Places,omitempty"`
+	Bottom1000Places []string `json:"bottom1000Places,omitempty"`
 }
 
 func (s *store) GetRelatedPlaces(ctx context.Context,
@@ -211,18 +211,31 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 		withinPlace = ""
 	}
 	samePlaceType := in.GetSamePlaceType()
+	isPerCapita := in.GetIsPerCapita()
 	var prefix string
 	if withinPlace == "" {
 		if samePlaceType {
 			prefix = util.BtRelatedPlacesSameTypePrefix
+			if isPerCapita {
+				prefix = util.BtRelatedPlacesSameTypePCPrefix
+			}
 		} else {
 			prefix = util.BtRelatedPlacesPrefix
+			if isPerCapita {
+				prefix = util.BtRelatedPlacesPCPrefix
+			}
 		}
 	} else {
 		if samePlaceType {
 			prefix = util.BtRelatedPlacesSameTypeAndAncestorPrefix
+			if isPerCapita {
+				prefix = util.BtRelatedPlacesSameTypeAndAncestorPCPrefix
+			}
 		} else {
 			prefix = util.BtRelatedPlacesSameAncestorPrefix
+			if isPerCapita {
+				prefix = util.BtRelatedPlacesSameAncestorPCPrefix
+			}
 		}
 	}
 
@@ -253,6 +266,72 @@ func (s *store) GetRelatedPlaces(ctx context.Context,
 				var btRelatedPlacesInfo RelatedPlacesInfo
 				json.Unmarshal(btJSONRaw, &btRelatedPlacesInfo)
 				results[dcid] = &btRelatedPlacesInfo
+			}
+
+			return nil
+		}); err != nil {
+		return err
+	}
+
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
+
+	return nil
+}
+
+// StatisticalVariable contains key info of population and observation.
+type StatisticalVariable struct {
+	PopType                string            `json:"popType,omitempty"`
+	PVs                    map[string]string `json:"pvs,omitempty"`
+	MeasuredProp           string            `json:"measuredProp,omitempty"`
+	MeasurementMethod      string            `json:"measurementMethod,omitempty"`
+	MeasurementDenominator string            `json:"measurementDeonominator,omitempty"`
+	MeasurementQualifier   string            `json:"measurementQualifier,omitempty"`
+	ScalingFactor          string            `json:"scalingFactor,omitempty"`
+	Unit                   string            `json:"unit,omitempty"`
+	StatType               string            `json:"statType,omitempty"`
+}
+
+// InterestingPlaceAspect contains info about why a place is interesting.
+type InterestingPlaceAspect struct {
+	RankFromTop      int32                `json:"rankFromTop,omitempty"`
+	RankFromBottom   int32                `json:"rankFromBottom,omitempty"`
+	StatVar          *StatisticalVariable `json:"statVar,omitempty"`
+	ContainedInPlace string               `json:containedInPlace,omitempty`
+	PlaceType        string               `json:placeType,omitempty`
+	PerCapita        bool                 `json:perCapita,omitempty`
+}
+
+// InterestingPlaceAspects contains a list of InterestingPlaceAspect objects.
+type InterestingPlaceAspects struct {
+	Aspects []*InterestingPlaceAspect `json:"aspects,omitempty"`
+}
+
+func (s *store) GetInterestingPlaceAspects(ctx context.Context,
+	in *pb.GetInterestingPlaceAspectsRequest, out *pb.GetInterestingPlaceAspectsResponse) error {
+	rowList := bigtable.RowList{}
+	for _, dcid := range in.GetDcids() {
+		rowList = append(rowList, fmt.Sprintf("%s%s", util.BTInterestingPlaceAspectPrefix, dcid))
+	}
+
+	results := map[string]*InterestingPlaceAspects{}
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(btRow bigtable.Row) error {
+			// Extract DCID from row key.
+			dcid := strings.TrimPrefix(btRow.Key(), util.BTInterestingPlaceAspectPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+				var btInterestingPlaceAspects InterestingPlaceAspects
+				json.Unmarshal(btJSONRaw, &btInterestingPlaceAspects)
+				results[dcid] = &btInterestingPlaceAspects
 			}
 
 			return nil
