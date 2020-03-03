@@ -33,7 +33,8 @@ func (s *store) Search(
 	qStr := fmt.Sprintf(
 		"SELECT id, type, extended_name FROM `%s`.Instance "+
 			"WHERE type != \"CensusTract\" and type != \"PowerPlant\""+
-			" and type != \"PowerPlantUnit\"", s.bqDb)
+			" and type != \"PowerPlantUnit\""+
+			" and type != \"BiologicalSpecimen\"", s.bqDb)
 	for _, token := range tokens {
 		qStr += fmt.Sprintf(` AND REGEXP_CONTAINS(LOWER(extended_name), r"\b%s\b")`, token)
 	}
