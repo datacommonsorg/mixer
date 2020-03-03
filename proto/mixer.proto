@@ -290,12 +290,27 @@ message GetRelatedPlacesRequest {
 
   // (Optional) Whether to require all related places under the same ancestor.
   string within_place = 12;
+
+  // (Opitonal) Whether the computation needs to be based on per capita.
+  bool is_per_capita = 13;
 }
 
 // Response of GetRelatedPlaces request.
 message GetRelatedPlacesResponse {
   // The JSON payload.
   string payload = 1;
+}
+
+// Request to get interesting aspects for places.
+message GetInterestingPlaceAspectsRequest {
+   // Place DCIDs.
+   repeated string dcids = 1;
+}
+
+// Response to get interesting aspects for places.
+message GetInterestingPlaceAspectsResponse {
+    // The JSON payload.
+    string payload = 1;
 }
 
 // Search request sent to the mixer.
@@ -388,7 +403,8 @@ service Mixer {
     };
   }
 
-  // Get populations for a list of places, given the population type and constraining property values.
+  // Get populations for a list of places, given the population type and constraining property
+  // values.
   rpc GetPopulations(GetPopulationsRequest) returns (GetPopulationsResponse) {
     option (google.api.http) = {
       post: "/node/populations"
@@ -451,6 +467,12 @@ service Mixer {
       post: "/node/related-places"
       body: "*"
     };
+  }
+
+  // Get interesting aspects for places.
+  rpc GetInterestingPlaceAspects(GetInterestingPlaceAspectsRequest) returns (
+    GetInterestingPlaceAspectsResponse) {
+    option (google.api.http) = { get: "/node/interesting-place-aspects"};
   }
 
   // Translate Sparql Query into translation results.
