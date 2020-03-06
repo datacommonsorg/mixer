@@ -1,4 +1,4 @@
-Database: google.com:datcom-store-dev.dc_v3_clustered
+Database: BQ_DATASET
 
 Node: E:StatisticalPopulation->E1
 typeOf: StatisticalPopulation
