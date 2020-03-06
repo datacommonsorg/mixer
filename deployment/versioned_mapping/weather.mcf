@@ -1,4 +1,4 @@
-Database: BQ_DATASET
+Database: google.com:datcom-store-dev.dc_v3_staging_clustered
 
 Node: E:DailyWeather->E1
 typeOf: Place
