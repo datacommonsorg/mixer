@@ -59,6 +59,11 @@ fi
 BQ_DATASET=$(cat $bq_dataset_input_file)
 export BQ_DATASET
 perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' deployment.yaml
+mkdir mapping_version
+cp mapping/* mapping_version/
+perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' mapping_version/weather.mcf
+perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' mapping_version/base.mcf
+
 
 # Set BT_INSTANCE, same for prod and staging.
 perl -i -pe's/BT_INSTANCE/prophet-cache/g' deployment.yaml
@@ -131,7 +136,7 @@ kubectl create configmap nginx-config --from-file=nginx.conf --namespace=mixer
 
 # Mount schema mapping volumes
 kubectl delete configmap schema-mapping --namespace mixer
-kubectl create configmap schema-mapping --from-file=mapping/ --namespace=mixer
+kubectl create configmap schema-mapping --from-file=mapping_version/ --namespace=mixer
 
 # Create certificate
 if [ $DOMAIN ]; then
