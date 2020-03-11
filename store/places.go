@@ -300,9 +300,9 @@ type InterestingPlaceAspect struct {
 	RankFromTop      int32                `json:"rankFromTop,omitempty"`
 	RankFromBottom   int32                `json:"rankFromBottom,omitempty"`
 	StatVar          *StatisticalVariable `json:"statVar,omitempty"`
-	ContainedInPlace string               `json:containedInPlace,omitempty`
-	PlaceType        string               `json:placeType,omitempty`
-	PerCapita        bool                 `json:perCapita,omitempty`
+	ContainedInPlace string               `json:"containedInPlace,omitempty"`
+	PlaceType        string               `json:"placeType,omitempty"`
+	PerCapita        bool                 `json:"perCapita,omitempty"`
 }
 
 // InterestingPlaceAspects contains a list of InterestingPlaceAspect objects.

@@ -19,11 +19,13 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"path/filepath"
 	"strings"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
+	"cloud.google.com/go/storage"
 	"golang.org/x/sync/errgroup"
 
 	"github.com/datacommonsorg/mixer/base"
@@ -81,12 +83,14 @@ type Interface interface {
 type store struct {
 	bqDb        string
 	bqClient    *bigquery.Client
+	gcsClient   *storage.Client
 	bqMapping   []*base.Mapping
 	outArcInfo  map[string]map[string][]translator.OutArcInfo
 	inArcInfo   map[string][]translator.InArcInfo
 	subTypeMap  map[string]string
 	containedIn map[util.TypePair][]string
 	btTable     *bigtable.Table
+	btInstance  string
 }
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
@@ -95,6 +99,12 @@ func NewStore(
 	bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
+	// Cloud storage.
+	gcsClient, err := storage.NewClient(ctx)
+	if err != nil {
+		log.Fatalf("Failed to create clodu storage client: %v", err)
+	}
+
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, projectID, opts...)
 	if err != nil {
@@ -127,8 +137,9 @@ func NewStore(
 		return nil, err
 	}
 
-	return &store{bqDataset, bqClient, mappings, outArcInfo, inArcInfo,
-		subTypeMap, containedIn, btClient.Open(btTable)}, nil
+	return &store{bqDataset, bqClient, gcsClient, mappings, outArcInfo,
+		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable),
+		btInstance}, nil
 }
 
 // bigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet
