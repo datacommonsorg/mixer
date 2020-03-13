@@ -833,6 +833,20 @@ func (s *store) btGetTriples(
 	return nil
 }
 
+// ObsTimeSeries contains information about observation time series.
+type ObsTimeSeries struct {
+	Val           map[string]float64 `json:"val,omitempty"`
+	Unit          string             `json:"unit,omitempty"`
+	PlaceName     string             `json:"placeName,omitempty"`
+	IsDcAggregate bool               `json:"isDcAggregate,omitempty"`
+}
+
+// Chart store contains ObsTimeSeries.
+// TODO(*): Add ObsCollection when needed.
+type ChartStore struct {
+	ObsTimeSeries *ObsTimeSeries `json:"obsTimeSeries,omitempty"`
+}
+
 // TODO(*): Define structs to allow for json unmarshal to put results in json instead of a string.
 func (s *store) GetChartData(ctx context.Context,
 	in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error {
@@ -841,7 +855,7 @@ func (s *store) GetChartData(ctx context.Context,
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtChartDataPrefix, key))
 	}
 
-	results := map[string]string{}
+	results := map[string]*ChartStore{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			key := strings.TrimPrefix(btRow.Key(), util.BtChartDataPrefix)
@@ -852,7 +866,9 @@ func (s *store) GetChartData(ctx context.Context,
 				if err != nil {
 					return err
 				}
-				results[key] = string(btJSONRaw)
+				var chartStore ChartStore
+				json.Unmarshal(btJSONRaw, &chartStore)
+				results[key] = &chartStore
 			}
 
 			return nil
