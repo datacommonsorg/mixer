@@ -833,6 +833,42 @@ func (s *store) btGetTriples(
 	return nil
 }
 
+// TODO(*): Define structs to allow for json unmarshal to put results in json instead of a string.
+func (s *store) GetChartData(ctx context.Context,
+	in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error {
+	rowList := bigtable.RowList{}
+	for _, key := range in.GetKeys() {
+		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtChartDataPrefix, key))
+	}
+
+	results := map[string]string{}
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(btRow bigtable.Row) error {
+			key := strings.TrimPrefix(btRow.Key(), util.BtChartDataPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+				results[key] = string(btJSONRaw)
+			}
+
+			return nil
+		}); err != nil {
+		return err
+	}
+
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
+
+	return nil
+}
+
 // ----------------------------- HELPER FUNCTIONS -----------------------------
 
 func filterTriplesLimit(dcid string, triples []*Triple, limit int) []*Triple {

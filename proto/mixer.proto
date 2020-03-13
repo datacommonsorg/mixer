@@ -313,6 +313,18 @@ message GetInterestingPlaceAspectsResponse {
     string payload = 1;
 }
 
+// Request to get chart data.
+message GetChartDataRequest{
+   // Keys.
+   repeated string keys = 1;
+}
+
+// Response to get chart data.
+message GetChartDataResponse{
+    // The JSON payload.
+    string payload = 1;
+}
+
 // Search request sent to the mixer.
 message SearchRequest {
   // Search query which is just a plain text string, e.g. "california".
@@ -473,6 +485,12 @@ service Mixer {
   rpc GetInterestingPlaceAspects(GetInterestingPlaceAspectsRequest) returns (
     GetInterestingPlaceAspectsResponse) {
     option (google.api.http) = { get: "/node/interesting-place-aspects"};
+  }
+
+  // Get chart data.
+  rpc GetChartData(GetChartDataRequest) returns (
+    GetChartDataResponse) {
+    option (google.api.http) = { get: "/node/chart-data"};
   }
 
   // Translate Sparql Query into translation results.

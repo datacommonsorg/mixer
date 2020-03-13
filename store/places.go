@@ -314,14 +314,14 @@ func (s *store) GetInterestingPlaceAspects(ctx context.Context,
 	in *pb.GetInterestingPlaceAspectsRequest, out *pb.GetInterestingPlaceAspectsResponse) error {
 	rowList := bigtable.RowList{}
 	for _, dcid := range in.GetDcids() {
-		rowList = append(rowList, fmt.Sprintf("%s%s", util.BTInterestingPlaceAspectPrefix, dcid))
+		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtInterestingPlaceAspectPrefix, dcid))
 	}
 
 	results := map[string]*InterestingPlaceAspects{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
-			dcid := strings.TrimPrefix(btRow.Key(), util.BTInterestingPlaceAspectPrefix)
+			dcid := strings.TrimPrefix(btRow.Key(), util.BtInterestingPlaceAspectPrefix)
 
 			if len(btRow[util.BtFamily]) > 0 {
 				btRawValue := btRow[util.BtFamily][0].Value
