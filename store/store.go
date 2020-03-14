@@ -37,6 +37,8 @@ import (
 	"google.golang.org/api/option"
 )
 
+const gcsBucket = "prophet_cache"
+
 // Interface exposes the database access for mixer.
 type Interface interface {
 	Query(ctx context.Context,
@@ -99,7 +101,7 @@ type store struct {
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
 func NewStore(
 	ctx context.Context,
-	bqDataset, btTable, btProject, btInstance, projectID, gcsBucket, schemaPath string,
+	bqDataset, btTable, btProject, btInstance, projectID, gcsFolder, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
 	// Cloud storage.
@@ -109,7 +111,7 @@ func NewStore(
 		log.Fatalf("Failed to create cloud storage client: %v", err)
 	}
 	it := gcsClient.Bucket(gcsBucket).Objects(ctx, &storage.Query{
-		Prefix: "wsws_2020-03-14T14:43/",
+		Prefix: gcsFolder + "/",
 	})
 	for {
 		attrs, err := it.Next()

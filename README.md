@@ -59,7 +59,7 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
       --bt_instance=prophet-cache \
       --project_id=datcom-mixer \
       --schema_path=deployment/mapping \
-      --gcs_bucket=datcom-data-mcf
+      --gcs_folder=wsws_2020-03-13T14:31
 
     cd examples
     ./run_all.sh
