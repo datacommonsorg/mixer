@@ -67,7 +67,7 @@ perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' versioned_mapping/base.mcf
 perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' versioned_mapping/weather.mcf
 
 
-# Set GCS bucket and in memory mcf name
+# Set GCS bucket that contains side cache.
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
   perl -i -pe's/GCS_BUCKET/datcom-data-mcf/g' deployment.yaml
 else
