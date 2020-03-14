@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"sort"
 	"strconv"
@@ -43,17 +42,17 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 
 	// Read pop obs cache from csv in gcs.
 	// TODO(boxu): replace file name with a flag.
-	rc, err := s.gcsClient.Bucket(s.btInstance).Object(
-		"testpopobs.csv").NewReader(ctx)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer rc.Close()
-	body, err := ioutil.ReadAll(rc)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("%v", body)
+	// rc, err := s.gcsClient.Bucket(s.btInstance).Object(
+	// 	"testpopobs.csv").NewReader(ctx)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer rc.Close()
+	// body, err := ioutil.ReadAll(rc)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// log.Printf("%v", body)
 
 	btRow, err := s.btTable.ReadRow(ctx, util.BtPopObsPrefix+dcid)
 	if err != nil {
