@@ -40,7 +40,22 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	out *pb.GetPopObsResponse) error {
 	dcid := in.GetDcid()
 
-	btRow, err := s.btTable.ReadRow(ctx, util.BtPopObsPrefix+dcid)
+	key := util.BtPopObsPrefix + dcid
+
+	if content, ok := s.cacheData[key]; ok {
+		log.Println(content)
+		c, err := util.UnzipAndDecode(content)
+		if err != nil {
+			log.Print(err)
+		} else {
+			log.Println(string(c))
+			res := pb.PopObsPlace{}
+			json.Unmarshal(c, &res)
+			log.Print(res)
+		}
+	}
+
+	btRow, err := s.btTable.ReadRow(ctx, key)
 	if err != nil {
 		return err
 	}

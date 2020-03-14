@@ -93,6 +93,7 @@ type store struct {
 	subTypeMap  map[string]string
 	containedIn map[util.TypePair][]string
 	btTable     *bigtable.Table
+	cacheData   map[string]string
 }
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
@@ -102,11 +103,14 @@ func NewStore(
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
 	// Cloud storage.
+	cacheData := map[string]string{}
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		log.Fatalf("Failed to create cloud storage client: %v", err)
 	}
-	it := gcsClient.Bucket(gcsBucket).Objects(ctx, nil)
+	it := gcsClient.Bucket(gcsBucket).Objects(ctx, &storage.Query{
+		Prefix: "wsws_2020-03-14T14:43/",
+	})
 	for {
 		attrs, err := it.Next()
 		if err == iterator.Done {
@@ -126,7 +130,15 @@ func NewStore(
 			log.Printf("%s", err)
 			continue
 		}
-		log.Printf("%s", data)
+		temp := strings.Split(string(data), "\n")
+		for _, line := range temp {
+			parts := strings.Split(line, ",")
+			if len(parts) != 2 {
+				log.Printf("Bad line %s", line)
+				continue
+			}
+			cacheData[parts[0]] = parts[1]
+		}
 	}
 
 	// BigQuery.
@@ -162,7 +174,7 @@ func NewStore(
 	}
 
 	return &store{bqDataset, bqClient, mappings, outArcInfo,
-		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable)}, nil
+		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable), cacheData}, nil
 }
 
 // bigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet

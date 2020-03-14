@@ -361,6 +361,215 @@ message SearchEntityResult {
   string name = 2;
 }
 
+// TODO(wsws): Refactor all these "won't persist to cache" fields across caches
+// into a single TemporaryFields message, and clear just that "tmp_data" field
+// before persistence.
+
+// PopObsObservation holds information for an observation for the
+// Population-Observation knowledge graph..
+message PopObsObservation {
+  reserved 21;
+  string id = 1;
+  string type = 2;
+  string measured_prop = 3;
+  double min_value = 4;
+  double max_value = 5;
+  double mean_value = 6;
+  double median_value = 7;
+  double measured_value = 8;
+  double sample_size = 9;
+  double margin_of_error = 10;
+  double std_error = 11;
+  double mean_std_error = 12;
+  double sum_value = 13;
+  double percentile10 = 14;
+  double percentile25 = 15;
+  double percentile75 = 16;
+  double percentile90 = 17;
+  string unit = 18;
+  string measurement_method = 19;
+  string provenance_id = 20;
+  string observation_date = 22;
+  string observation_period = 23;
+  string measurement_result = 24;
+  double growth_rate = 25;
+  string observed_node = 26;  // Won't persist to cache.
+  string comparison_operator = 27;
+  double std_deviation_value = 28;
+  string measurement_denominator = 29;
+  string measurement_qualifier = 30;
+  string scaling_factor = 31;
+  repeated string measurement_variable = 32;
+  string stat_type = 33;  // Won't persist to cache.
+}
+
+// PopObsPop holds information for a statistical population for the
+// Population-Observation knowledge graph.
+message PopObsPop {
+  reserved 3, 4, 7;
+  string pop_type = 1;
+  int32 num_constraints = 2;
+  repeated PopObsObservation observations = 5;
+  string provenance_id = 6;
+  map<string, string> property_values = 8;
+  string place_id = 9;  // Won't persist to cache.
+  string pop_id = 10;
+  string childhood_location = 11;  // Won't persist to cache.
+  // Observations whose comparedNode is this population.
+  repeated PopObsObservation compared_observations = 12;
+}
+
+// PopObsPlace holds information for a place for the Population-Observation
+// knowledge graph.
+message PopObsPlace {
+  string name = 1;
+  string type = 2;
+  map<string, PopObsPop> populations = 3;
+  string place = 4;  // Place DCID.
+  double latitude = 5;
+  double longitude = 6;
+  string kml_coordinates = 7;
+  // Populations whose childhood location is this place.
+  map<string, PopObsPop> childhood_location_populations = 8;
+  repeated PopObsObservation observations = 9;
+  string mid = 10;                           // Won't persist to cache.
+  repeated string contained_in_places = 11;  // Won't persist to cache.
+}
+
+// PopObsCollection holds information for multiple PopObsPlace instances.
+message PopObsCollection {
+  repeated PopObsPlace places = 1;
+}
+
+// Basic info for an entity (subject or object).
+message EntityInfo {
+  string name = 1;
+  repeated string types = 2;
+  string dcid = 3;
+  string provenance_id = 4;
+  string value = 5;  // Only for object value.
+}
+
+// Basic info for a collection of entities.
+message EntityInfoCollection {
+  repeated EntityInfo entities = 1;
+  int64 total_count = 2;  // Before potential truncation.
+}
+
+// A pair of entities linked by containedInPlace.
+message ContainedInPlaceRelation {
+  string parent_id = 1;
+  string parent_type = 2;
+  string child_id = 3;
+  string child_type = 4;
+}
+
+// Triple.
+message Triple {
+  string subject_id = 1;
+  string predicate = 2;
+  string object_id = 3;
+  string object_name = 4;  // Only when object_id is set.
+  string object_value = 5;
+  string provenance_id = 6;
+  string subject_name = 7;            // Only for in arcs.
+  repeated string subject_types = 8;  // Only for in arcs.
+  repeated string object_types = 10;  // Only when object_id is set.
+}
+
+// A collection of triples.
+message Triples {
+  repeated Triple triples = 1;
+  int64 total_count = 2;  // Before potential truncation.
+}
+
+// Essential provenance information.
+message ProvenanceInfo {
+  string provenance_id = 1;
+  // Domain is obtained from the source of the provenance.
+  string domain = 2;
+  string import_name = 3;
+}
+
+// A full list of provenances.
+message Provenances {
+  repeated ProvenanceInfo provenances = 1;
+}
+
+// Full lists of in and out labels for a given node ID.
+message PropertyLabels {
+  repeated string in_labels = 1;
+  repeated string out_labels = 2;
+}
+
+// For a given place type, a map from pop type to possible measured properties
+// and PVs.
+message PopCategory {
+  // Only used as Flume key. This should be safe to be a key as all workers use
+  // the same binary which should serialize the proto message in the same way.
+  message Item {
+    string place_type = 1;
+    string pop_type = 2;
+    string measured_prop = 3;
+    string stat_type = 4;
+    repeated string properties = 5;
+    repeated string values = 6;
+  }
+  message MeasuredObsPropPVs {
+    map<string, string> pvs = 1;
+    // A list of measured properties and stat types (e.g., age^median) with the
+    // same PVs and population type.
+    repeated string props = 2;
+  }
+  message PopTypeCategory {
+    repeated MeasuredObsPropPVs prop_pvs = 1;
+  }
+  // Key is population type.
+  map<string, PopTypeCategory> categories = 1;
+}
+
+// Related places info for a given place and condition.
+message RelatedPlacesInfo {
+  // The following 3 fields are set only when place is not empty.
+  repeated string related_places = 1;
+  int32 rank_from_top = 2;     // Starting from 1.
+  int32 rank_from_bottom = 3;  // Starting from 1.
+
+  // The following 3 fields are set only when place is empty.
+  repeated string all_places = 4;
+  repeated string top_1000_places = 5;
+  repeated string bottom_1000_places = 6;
+}
+
+// A statistical variable contains key info of population and observation.
+message StatisticalVariable {
+  string pop_type = 1;
+  map<string, string> pvs = 2;
+  string measured_prop = 3;
+  string measurement_method = 4;
+  string measurement_denominator = 5;
+  string measurement_qualifier = 6;
+  string scaling_factor = 7;
+  string unit = 8;
+  string stat_type = 9;
+}
+
+// Info about why a place is interesting: For the statistical variable, under
+// certain constraints (place type, ancestor, per capita or not), if a place
+// ranks among top or bottom, it is considered as interesting.
+message InterestingPlaceAspect {
+  message Aspect {
+    int32 rank_from_top = 1;
+    int32 rank_from_bottom = 2;
+    StatisticalVariable stat_var = 3;
+    string contained_in_place = 4;
+    string place_type = 5;
+    bool per_capita = 6;
+  }
+  repeated Aspect aspects = 1;
+}
+
+
 service Mixer {
 
   // Query DataCommons Graph with Sparql.

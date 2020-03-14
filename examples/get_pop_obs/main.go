@@ -44,13 +44,13 @@ func main() {
 	ctx := context.Background()
 
 	// Get PopObs for Mountain View
-	getPopObs(ctx, c, "geoId/0649670")
+	getPopObs(ctx, c, "country/ITA")
 
-	// Get PopObs for California
-	getPopObs(ctx, c, "geoId/06")
+	// // Get PopObs for California
+	// getPopObs(ctx, c, "geoId/06")
 
-	// No PopObs for Class
-	getPopObs(ctx, c, "Class")
+	// // No PopObs for Class
+	// getPopObs(ctx, c, "Class")
 
 }
 
