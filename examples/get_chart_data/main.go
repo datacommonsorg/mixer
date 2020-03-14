@@ -48,8 +48,8 @@ func main() {
 	fmt.Printf("Testing for chart data.\n")
 	if testGetChartData(ctx, c, &pb.GetChartDataRequest{
 		Keys: []string{
-			"/m/010005^age^CensusACS5yrSurvey^^marginOfError^^^^Person",
-			"/m/0200033^age^CensusACS5yrSurvey^^marginOfError^^^^Person^gender^Male",
+			"nces/010000200277^count^^^measured^^^^Student",
+			"nces/010000200277^count^^^measured^^^^Student^gender^Female",
 		},
 	}); err != nil {
 		log.Printf("Error: %v", err)
