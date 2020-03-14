@@ -847,7 +847,6 @@ type ChartStore struct {
 	ObsTimeSeries *ObsTimeSeries `json:"obsTimeSeries,omitempty"`
 }
 
-// TODO(*): Define structs to allow for json unmarshal to put results in json instead of a string.
 func (s *store) GetChartData(ctx context.Context,
 	in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error {
 	rowList := bigtable.RowList{}
