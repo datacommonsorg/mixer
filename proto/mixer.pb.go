@@ -1930,9 +1930,7 @@ func init() {
 	proto.RegisterType((*SearchEntityResult)(nil), "datacommons.SearchEntityResult")
 }
 
-func init() {
-	proto.RegisterFile("mixer.proto", fileDescriptor_b26934ec017ec8df)
-}
+func init() { proto.RegisterFile("mixer.proto", fileDescriptor_b26934ec017ec8df) }
 
 var fileDescriptor_b26934ec017ec8df = []byte{
 	// 1679 bytes of a gzipped FileDescriptorProto
@@ -2045,11 +2043,11 @@ var fileDescriptor_b26934ec017ec8df = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConnInterface
+var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+const _ = grpc.SupportPackageIsVersion4
 
 // MixerClient is the client API for Mixer service.
 //
@@ -2102,10 +2100,10 @@ type MixerClient interface {
 }
 
 type mixerClient struct {
-	cc grpc.ClientConnInterface
+	cc *grpc.ClientConn
 }
 
-func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
+func NewMixerClient(cc *grpc.ClientConn) MixerClient {
 	return &mixerClient{cc}
 }
 

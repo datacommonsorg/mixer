@@ -33,6 +33,7 @@ import (
 	"github.com/datacommonsorg/mixer/translator"
 	"github.com/datacommonsorg/mixer/util"
 
+	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 )
 
@@ -86,26 +87,46 @@ type Interface interface {
 type store struct {
 	bqDb        string
 	bqClient    *bigquery.Client
-	gcsClient   *storage.Client
 	bqMapping   []*base.Mapping
 	outArcInfo  map[string]map[string][]translator.OutArcInfo
 	inArcInfo   map[string][]translator.InArcInfo
 	subTypeMap  map[string]string
 	containedIn map[util.TypePair][]string
 	btTable     *bigtable.Table
-	btInstance  string
 }
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
 func NewStore(
 	ctx context.Context,
-	bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
+	bqDataset, btTable, btProject, btInstance, projectID, gcsBucket, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
 	// Cloud storage.
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
-		log.Fatalf("Failed to create clodu storage client: %v", err)
+		log.Fatalf("Failed to create cloud storage client: %v", err)
+	}
+	it := gcsClient.Bucket(gcsBucket).Objects(ctx, nil)
+	for {
+		attrs, err := it.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		rc, err := gcsClient.Bucket(gcsBucket).Object(attrs.Name).NewReader(ctx)
+		if err != nil {
+			log.Printf("%s", err)
+			continue
+		}
+		defer rc.Close()
+		data, err := ioutil.ReadAll(rc)
+		if err != nil {
+			log.Printf("%s", err)
+			continue
+		}
+		log.Printf("%s", data)
 	}
 
 	// BigQuery.
@@ -140,9 +161,8 @@ func NewStore(
 		return nil, err
 	}
 
-	return &store{bqDataset, bqClient, gcsClient, mappings, outArcInfo,
-		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable),
-		btInstance}, nil
+	return &store{bqDataset, bqClient, mappings, outArcInfo,
+		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable)}, nil
 }
 
 // bigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet

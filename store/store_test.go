@@ -23,7 +23,7 @@ func newTestBtStore(ctx context.Context, opts ...option.ClientOption) (Interface
 	}
 
 	return &store{
-		"", nil, nil, nil, nil, nil, nil, nil, btClient.Open(testTable), ""}, nil
+		"", nil, nil, nil, nil, nil, nil, btClient.Open(testTable)}, nil
 }
 
 func setupBigtable(ctx context.Context, data map[string]string) (*grpc.ClientConn, error) {

@@ -40,20 +40,6 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	out *pb.GetPopObsResponse) error {
 	dcid := in.GetDcid()
 
-	// Read pop obs cache from csv in gcs.
-	// TODO(boxu): replace file name with a flag.
-	// rc, err := s.gcsClient.Bucket(s.btInstance).Object(
-	// 	"testpopobs.csv").NewReader(ctx)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer rc.Close()
-	// body, err := ioutil.ReadAll(rc)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// log.Printf("%v", body)
-
 	btRow, err := s.btTable.ReadRow(ctx, util.BtPopObsPrefix+dcid)
 	if err != nil {
 		return err

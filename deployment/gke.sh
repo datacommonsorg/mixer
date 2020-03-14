@@ -67,6 +67,14 @@ perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' versioned_mapping/base.mcf
 perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' versioned_mapping/weather.mcf
 
 
+# Set GCS bucket and in memory mcf name
+if [ "$PROJECT_ID" == "datcom-mixer" ]; then
+  perl -i -pe's/GCS_BUCKET/datcom-data-mcf/g' deployment.yaml
+else
+  perl -i -pe's/GCS_BUCKET/datcom-data-mcf/g' deployment.yaml
+fi
+
+
 # Set BT_INSTANCE, same for prod and staging.
 perl -i -pe's/BT_INSTANCE/prophet-cache/g' deployment.yaml
 
