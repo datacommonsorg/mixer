@@ -833,6 +833,57 @@ func (s *store) btGetTriples(
 	return nil
 }
 
+// ObsTimeSeries contains information about observation time series.
+type ObsTimeSeries struct {
+	Val           map[string]float64 `json:"val,omitempty"`
+	Unit          string             `json:"unit,omitempty"`
+	PlaceName     string             `json:"placeName,omitempty"`
+	IsDcAggregate bool               `json:"isDcAggregate,omitempty"`
+}
+
+// Chart store contains ObsTimeSeries.
+// TODO(*): Add ObsCollection when needed.
+type ChartStore struct {
+	ObsTimeSeries *ObsTimeSeries `json:"obsTimeSeries,omitempty"`
+}
+
+func (s *store) GetChartData(ctx context.Context,
+	in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error {
+	rowList := bigtable.RowList{}
+	for _, key := range in.GetKeys() {
+		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtChartDataPrefix, key))
+	}
+
+	results := map[string]*ChartStore{}
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(btRow bigtable.Row) error {
+			key := strings.TrimPrefix(btRow.Key(), util.BtChartDataPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+				var chartStore ChartStore
+				json.Unmarshal(btJSONRaw, &chartStore)
+				results[key] = &chartStore
+			}
+
+			return nil
+		}); err != nil {
+		return err
+	}
+
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
+
+	return nil
+}
+
 // ----------------------------- HELPER FUNCTIONS -----------------------------
 
 func filterTriplesLimit(dcid string, triples []*Triple, limit int) []*Triple {

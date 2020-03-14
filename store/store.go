@@ -78,6 +78,9 @@ type Interface interface {
 
 	GetInterestingPlaceAspects(ctx context.Context,
 		in *pb.GetInterestingPlaceAspectsRequest, out *pb.GetInterestingPlaceAspectsResponse) error
+
+	GetChartData(ctx context.Context,
+		in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error
 }
 
 type store struct {

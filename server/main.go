@@ -314,6 +314,19 @@ func (s *server) GetInterestingPlaceAspects(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) GetChartData(ctx context.Context,
+	in *pb.GetChartDataRequest) (*pb.GetChartDataResponse, error) {
+	if len(in.GetKeys()) == 0 {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+
+	out := pb.GetChartDataResponse{}
+	if err := s.st.GetChartData(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func (s *server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
