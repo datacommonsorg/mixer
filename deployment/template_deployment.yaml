@@ -64,11 +64,11 @@ spec:
           imagePullPolicy: Always
           args: [
             "--bq_dataset", "BQ_DATASET",
-            # Prod using dc22 and staging using dc1. Update this when bt_table change.
             "--bt_table", "BT_TABLE",
             "--bt_project", "google.com:datcom-store-dev",
             "--bt_instance", "BT_INSTANCE",
             "--project_id", "PROJECT_ID",
+            "--gcs_bucket", "GCS_BUCKET",
           ]
           ports:
             - containerPort: 12345
