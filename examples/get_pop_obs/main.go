@@ -43,6 +43,8 @@ func main() {
 
 	ctx := context.Background()
 
+	getPopObs(ctx, c, "country/ITA")
+
 	// Get PopObs for Mountain View
 	getPopObs(ctx, c, "geoId/0649670")
 

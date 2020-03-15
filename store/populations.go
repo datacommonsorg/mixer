@@ -27,6 +27,7 @@ import (
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
+	"github.com/golang/protobuf/jsonpb"
 	"google.golang.org/api/iterator"
 )
 
@@ -39,18 +40,52 @@ type PopObs struct {
 func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	out *pb.GetPopObsResponse) error {
 	dcid := in.GetDcid()
+	key := util.BtPopObsPrefix + dcid
 
-	btRow, err := s.btTable.ReadRow(ctx, util.BtPopObsPrefix+dcid)
+	var baseData, sideData pb.PopObsPlace
+	var baseString, sideString string
+	var hasBaseData, hasSideData bool
+	out.Payload, _ = util.ZipAndEncode("{}")
+
+	btRow, err := s.btTable.ReadRow(ctx, key)
 	if err != nil {
+		log.Print(err)
+	}
+
+	hasBaseData = len(btRow[util.BtFamily]) > 0
+	if hasBaseData {
+		baseString = string(btRow[util.BtFamily][0].Value)
+	}
+	sideString, hasSideData = s.cacheData[key]
+
+	if !hasBaseData && !hasSideData {
+		return nil
+	} else if !hasBaseData {
+		out.Payload = sideString
+		return nil
+	} else if !hasSideData {
+		out.Payload = baseString
+		return nil
+	} else {
+		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &baseData)
+		}
+		if tmp, err := util.UnzipAndDecode(sideString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &sideData)
+		}
+		if baseData.Populations == nil {
+			baseData.Populations = map[string]*pb.PopObsPop{}
+		}
+		for k, v := range sideData.Populations {
+			baseData.Populations[k] = v
+		}
+		resStr, err := (&jsonpb.Marshaler{}).MarshalToString(&baseData)
+		if err != nil {
+			return err
+		}
+		out.Payload, err = util.ZipAndEncode(resStr)
 		return err
 	}
-	// TODO(boxu): merge the gcs data with main cache.
-	if len(btRow[util.BtFamily]) > 0 {
-		out.Payload = string(btRow[util.BtFamily][0].Value)
-	} else {
-		out.Payload, _ = util.ZipAndEncode("{}")
-	}
-	return nil
 }
 
 func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
