@@ -42,42 +42,50 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	dcid := in.GetDcid()
 	key := util.BtPopObsPrefix + dcid
 
-	res1 := pb.PopObsPlace{}
-	if content, ok := s.cacheData[key]; ok {
-		c, err := util.UnzipAndDecode(content)
-		if err != nil {
-			log.Print(err)
-		} else {
-			jsonpb.UnmarshalString(string(c), &res1)
-		}
-	}
+	var baseData, sideData pb.PopObsPlace
+	var baseString, sideString string
+	var hasBaseData, hasSideData bool
+	out.Payload, _ = util.ZipAndEncode("{}")
 
-	if res1.Populations == nil {
-		res1.Populations = map[string]*pb.PopObsPop{}
-	}
-
-	res2 := pb.PopObsPlace{}
 	btRow, err := s.btTable.ReadRow(ctx, key)
 	if err != nil {
-		return err
+		log.Print(err)
 	}
-	if len(btRow[util.BtFamily]) > 0 {
-		c, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
-		if err != nil {
-			log.Print(err)
-		}
-		jsonpb.UnmarshalString(string(c), &res2)
 
-		for k, v := range res2.Populations {
-			res1.Populations[k] = v
-		}
+	hasBaseData = len(btRow[util.BtFamily]) > 0
+	if hasBaseData {
+		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	resStr, err := (&jsonpb.Marshaler{}).MarshalToString(&res1)
-	if err != nil {
+	sideString, hasSideData = s.cacheData[key]
+
+	if !hasBaseData && !hasSideData {
+		return nil
+	} else if !hasBaseData {
+		out.Payload = sideString
+		return nil
+	} else if !hasSideData {
+		out.Payload = baseString
+		return nil
+	} else {
+		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &baseData)
+		}
+		if tmp, err := util.UnzipAndDecode(sideString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &sideData)
+		}
+		if baseData.Populations == nil {
+			baseData.Populations = map[string]*pb.PopObsPop{}
+		}
+		for k, v := range sideData.Populations {
+			baseData.Populations[k] = v
+		}
+		resStr, err := (&jsonpb.Marshaler{}).MarshalToString(&baseData)
+		if err != nil {
+			return err
+		}
+		out.Payload, err = util.ZipAndEncode(resStr)
 		return err
 	}
-	out.Payload, err = util.ZipAndEncode(resStr)
-	return err
 }
 
 func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
