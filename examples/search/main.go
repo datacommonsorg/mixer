@@ -20,7 +20,6 @@ import (
 	"log"
 
 	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc"
 )
 
@@ -29,8 +28,6 @@ var (
 )
 
 func main() {
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
-
 	flag.Parse()
 
 	// Set up a connection to the server.
@@ -43,33 +40,33 @@ func main() {
 
 	ctx := context.Background()
 
-	getPopObs(ctx, c, "country/ITA")
+	// Send a bunch of Sparql query and print out its response.
+	qStr := "Santa Clara"
 
-	// Get PopObs for Mountain View
-	getPopObs(ctx, c, "geoId/0649670")
-
-	// Get PopObs for California
-	getPopObs(ctx, c, "geoId/06")
-
-	// No PopObs for Class
-	getPopObs(ctx, c, "Class")
-
-}
-
-func getPopObs(ctx context.Context, c pb.MixerClient, dcid string) {
-	r, err := c.GetPopObs(ctx, &pb.GetPopObsRequest{
-		Dcid: dcid,
-	})
+	r, err := c.Search(ctx, &pb.SearchRequest{Query: qStr})
 	if err != nil {
-		log.Fatalf("could not GetPopObs: %s", err)
+		log.Fatalf("could not Search: %v", err)
 	}
 
-	log.Printf("Now printing pop obs for dcid = %s", dcid)
-
-	jsonRaw, err := util.UnzipAndDecode(r.GetPayload())
-	if err != nil {
-		log.Fatalf("util.UnzipAndDecode() = %v", err)
+	sections := r.GetSection()
+	log.Printf("%d sections", len(sections))
+	if numSection := len(sections); numSection < 5 {
+		log.Fatalf("too few results from search: %d sections", numSection)
 	}
 
-	log.Printf("%s", string(jsonRaw))
+	for _, section := range sections {
+		if section.GetTypeName() == "County" {
+			if numEntity := len(section.GetEntity()); numEntity != 1 {
+				log.Fatalf("There should be one entity, found %d", numEntity)
+			}
+			if dcid := section.GetEntity()[0].GetDcid(); dcid != "geoId/06085" {
+				log.Fatalf("Wrong dcid: %s", dcid)
+			}
+			if name := section.GetEntity()[0].GetName(); name != "Santa Clara County (in California)" {
+				log.Fatalf("Wrong name: %s", name)
+			}
+		}
+	}
+
+	log.Printf("Search: %v", r.GetSection())
 }

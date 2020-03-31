@@ -1,5 +1,33 @@
 # DataCommons Mixer Development
 
+## Development Process
+
+In https://github.com/datacommonsorg/mixer, click on "Fork" button to fork the repo.
+
+Clone your forked repo to your desktop.
+
+Add datacommonsorg/mixer repo as a remote.
+
+```shell
+git remote add dc https://github.com/datacommonsorg/mixer.git
+```
+
+Every time when you want to send a Pull Request, do the following steps:
+
+```shell
+git checkout master
+git pull dc master
+git checkout -b new_branch_name
+# Make some code change
+git add .
+git commit -m "commit message"
+git push -u origin new_branch_name
+```
+
+Then in your forked repo, can send a Pull Request.
+
+Wait for approval of the Pull Request and merge the change.
+
 ## Generate Protobuf go code and out.pb
 
 Install protoc by following [this](http://google.github.io/proto-lens/installing-protoc.html).
@@ -22,13 +50,16 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
 
 ## Run grpc server and examples locally
 
+    gcloud auth application-default login
+
     go run server/main.go \
       --bq_dataset=google.com:datcom-store-dev.dc_v3_clustered \
-      --bt_table=dc20 \
+      --bt_table=wsws_2020-03-11T18_22 \
       --bt_project=google.com:datcom-store-dev \
       --bt_instance=prophet-cache \
       --project_id=datcom-mixer \
-      --schema_path=deployment/mapping
+      --schema_path=deployment/mapping \
+      --gcs_folder=wsws_2020-03-14T14:43
 
     cd examples
     ./run_all.sh

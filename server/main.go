@@ -38,6 +38,7 @@ var (
 	btProject  = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
 	btInstance = flag.String("bt_instance", "", "BigTable instance.")
 	projectID  = flag.String("project_id", "", "The cloud project to run the mixer instance.")
+	gcsFolder  = flag.String("gcs_folder", "", "The cloud storge folder name.")
 	schemaPath = flag.String("schema_path", "/mixer/config/mapping", "Path to the schema mapping directory.")
 	port       = flag.String("port", ":12345", "Port on which to run the server.")
 )
@@ -233,8 +234,9 @@ func (s *server) GetPopulations(ctx context.Context,
 
 func (s *server) GetObservations(ctx context.Context,
 	in *pb.GetObservationsRequest) (*pb.GetObservationsResponse, error) {
+	// TODO: Add checks for empty in.GetStatType().
 	if len(in.GetDcids()) == 0 || in.GetMeasuredProperty() == "" ||
-		in.GetObservationDate() == "" || in.GetStatsType() == "" {
+		in.GetObservationDate() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
 	if !util.CheckValidDCIDs(in.GetDcids()) {
@@ -280,6 +282,52 @@ func (s *server) GetPlacesInPost(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) GetRelatedPlaces(ctx context.Context,
+	in *pb.GetRelatedPlacesRequest) (*pb.GetRelatedPlacesResponse, error) {
+	if len(in.GetDcids()) == 0 || in.GetPopulationType() == "" ||
+		in.GetMeasuredProperty() == "" || in.GetStatType() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
+
+	out := pb.GetRelatedPlacesResponse{}
+	if err := s.st.GetRelatedPlaces(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (s *server) GetInterestingPlaceAspects(ctx context.Context,
+	in *pb.GetInterestingPlaceAspectsRequest) (*pb.GetInterestingPlaceAspectsResponse, error) {
+	if len(in.GetDcids()) == 0 {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
+
+	out := pb.GetInterestingPlaceAspectsResponse{}
+	if err := s.st.GetInterestingPlaceAspects(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (s *server) GetChartData(ctx context.Context,
+	in *pb.GetChartDataRequest) (*pb.GetChartDataResponse, error) {
+	if len(in.GetKeys()) == 0 {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+
+	out := pb.GetChartDataResponse{}
+	if err := s.st.GetChartData(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func (s *server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
@@ -309,6 +357,15 @@ func (s *server) Translate(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) Search(
+	ctx context.Context, in *pb.SearchRequest) (*pb.SearchResponse, error) {
+	out := pb.SearchResponse{}
+	if err := s.st.Search(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func main() {
 	flag.Parse()
 
@@ -335,10 +392,11 @@ func main() {
 
 	st, err := store.NewStore(
 		ctx, *bqDataset, *btTable, *btProject, *btInstance, *projectID,
-		*schemaPath, subTypeMap, containedIn)
+		*gcsFolder, *schemaPath, subTypeMap, containedIn)
 	if err != nil {
-		log.Fatalf("Failed to create store for %s, %s, %s, %s, %s: %s",
-			*bqDataset, *btTable, *btProject, *btInstance, *projectID, err)
+		log.Fatalf("Failed to create store for %s, %s, %s, %s, %s, %s: %s",
+			*bqDataset, *btTable, *btProject, *btInstance, *projectID,
+			*gcsFolder, err)
 	}
 
 	pb.RegisterMixerServer(s, &server{st, subTypeMap})

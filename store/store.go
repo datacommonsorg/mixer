@@ -19,11 +19,13 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"path/filepath"
 	"strings"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
+	"cloud.google.com/go/storage"
 	"golang.org/x/sync/errgroup"
 
 	"github.com/datacommonsorg/mixer/base"
@@ -31,13 +33,18 @@ import (
 	"github.com/datacommonsorg/mixer/translator"
 	"github.com/datacommonsorg/mixer/util"
 
+	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 )
+
+const gcsBucket = "prophet_cache"
 
 // Interface exposes the database access for mixer.
 type Interface interface {
 	Query(ctx context.Context,
 		in *pb.QueryRequest, out *pb.QueryResponse) error
+
+	Search(ctx context.Context, in *pb.SearchRequest, out *pb.SearchResponse) error
 
 	GetPropertyLabels(ctx context.Context,
 		in *pb.GetPropertyLabelsRequest, out *pb.GetPropertyLabelsResponse) error
@@ -68,6 +75,15 @@ type Interface interface {
 
 	GetPlacesIn(ctx context.Context,
 		in *pb.GetPlacesInRequest, out *pb.GetPlacesInResponse) error
+
+	GetRelatedPlaces(ctx context.Context,
+		in *pb.GetRelatedPlacesRequest, out *pb.GetRelatedPlacesResponse) error
+
+	GetInterestingPlaceAspects(ctx context.Context,
+		in *pb.GetInterestingPlaceAspectsRequest, out *pb.GetInterestingPlaceAspectsResponse) error
+
+	GetChartData(ctx context.Context,
+		in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error
 }
 
 type store struct {
@@ -79,14 +95,54 @@ type store struct {
 	subTypeMap  map[string]string
 	containedIn map[util.TypePair][]string
 	btTable     *bigtable.Table
+	cacheData   map[string]string
 }
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
 func NewStore(
 	ctx context.Context,
-	bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
+	bqDataset, btTable, btProject, btInstance, projectID, gcsFolder, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
+	// Cloud storage.
+	cacheData := map[string]string{}
+	gcsClient, err := storage.NewClient(ctx)
+	if err != nil {
+		log.Fatalf("Failed to create cloud storage client: %v", err)
+	}
+	it := gcsClient.Bucket(gcsBucket).Objects(ctx, &storage.Query{
+		Prefix: gcsFolder + "/",
+	})
+	for {
+		attrs, err := it.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		rc, err := gcsClient.Bucket(gcsBucket).Object(attrs.Name).NewReader(ctx)
+		if err != nil {
+			log.Printf("%s", err)
+			continue
+		}
+		defer rc.Close()
+		data, err := ioutil.ReadAll(rc)
+		if err != nil {
+			log.Printf("%s", err)
+			continue
+		}
+		temp := strings.Split(string(data), "\n")
+		for _, line := range temp {
+			parts := strings.Split(line, ",")
+			if len(parts) != 2 {
+				log.Printf("Bad line %s", line)
+				continue
+			}
+			cacheData[parts[0]] = parts[1]
+		}
+	}
+
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, projectID, opts...)
 	if err != nil {
@@ -119,8 +175,8 @@ func NewStore(
 		return nil, err
 	}
 
-	return &store{bqDataset, bqClient, mappings, outArcInfo, inArcInfo,
-		subTypeMap, containedIn, btClient.Open(btTable)}, nil
+	return &store{bqDataset, bqClient, mappings, outArcInfo,
+		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable), cacheData}, nil
 }
 
 // bigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet

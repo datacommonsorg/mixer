@@ -15,12 +15,15 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"flag"
+	"fmt"
 	"log"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc"
 )
 
@@ -40,36 +43,27 @@ func main() {
 	}
 	defer conn.Close()
 	c := pb.NewMixerClient(conn)
-
 	ctx := context.Background()
 
-	getPopObs(ctx, c, "country/ITA")
-
-	// Get PopObs for Mountain View
-	getPopObs(ctx, c, "geoId/0649670")
-
-	// Get PopObs for California
-	getPopObs(ctx, c, "geoId/06")
-
-	// No PopObs for Class
-	getPopObs(ctx, c, "Class")
-
-}
-
-func getPopObs(ctx context.Context, c pb.MixerClient, dcid string) {
-	r, err := c.GetPopObs(ctx, &pb.GetPopObsRequest{
-		Dcid: dcid,
-	})
-	if err != nil {
-		log.Fatalf("could not GetPopObs: %s", err)
+	req := &pb.GetInterestingPlaceAspectsRequest{
+		Dcids: []string{"geoId/0649670"},
 	}
 
-	log.Printf("Now printing pop obs for dcid = %s", dcid)
-
-	jsonRaw, err := util.UnzipAndDecode(r.GetPayload())
+	fmt.Printf("Requesting { %s}\n", req)
+	start := time.Now()
+	res, err := c.GetInterestingPlaceAspects(ctx, req)
+	elapsed := time.Since(start)
 	if err != nil {
-		log.Fatalf("util.UnzipAndDecode() = %v", err)
+		log.Printf("Error: %v", err)
 	}
 
-	log.Printf("%s", string(jsonRaw))
+	// Format the payload
+	jsonByte := []byte(res.GetPayload())
+	var jsonFmt bytes.Buffer
+	err = json.Indent(&jsonFmt, jsonByte, "", "  ")
+	if err != nil {
+		log.Printf("Error: %v", err)
+	}
+	fmt.Println(string(jsonFmt.Bytes()))
+	fmt.Printf("Request took: %s\n\n", elapsed)
 }

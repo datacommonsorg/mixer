@@ -15,12 +15,15 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"flag"
+	"fmt"
 	"log"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc"
 )
 
@@ -40,36 +43,37 @@ func main() {
 	}
 	defer conn.Close()
 	c := pb.NewMixerClient(conn)
-
 	ctx := context.Background()
 
-	getPopObs(ctx, c, "country/ITA")
-
-	// Get PopObs for Mountain View
-	getPopObs(ctx, c, "geoId/0649670")
-
-	// Get PopObs for California
-	getPopObs(ctx, c, "geoId/06")
-
-	// No PopObs for Class
-	getPopObs(ctx, c, "Class")
-
+	fmt.Printf("Testing for chart data.\n")
+	if testGetChartData(ctx, c, &pb.GetChartDataRequest{
+		Keys: []string{
+			"nces/010000200277^count^^^measured^^^^Student",
+			"nces/010000200277^count^^^measured^^^^Student^gender^Female",
+		},
+	}); err != nil {
+		log.Printf("Error: %v", err)
+	}
 }
 
-func getPopObs(ctx context.Context, c pb.MixerClient, dcid string) {
-	r, err := c.GetPopObs(ctx, &pb.GetPopObsRequest{
-		Dcid: dcid,
-	})
+func testGetChartData(ctx context.Context, c pb.MixerClient,
+	req *pb.GetChartDataRequest) error {
+	fmt.Printf("Requesting { %s}\n", req)
+	start := time.Now()
+	res, err := c.GetChartData(ctx, req)
+	elapsed := time.Since(start)
 	if err != nil {
-		log.Fatalf("could not GetPopObs: %s", err)
+		return err
 	}
 
-	log.Printf("Now printing pop obs for dcid = %s", dcid)
-
-	jsonRaw, err := util.UnzipAndDecode(r.GetPayload())
+	// Format the payload
+	jsonByte := []byte(res.GetPayload())
+	var jsonFmt bytes.Buffer
+	err = json.Indent(&jsonFmt, jsonByte, "", "  ")
 	if err != nil {
-		log.Fatalf("util.UnzipAndDecode() = %v", err)
+		return err
 	}
-
-	log.Printf("%s", string(jsonRaw))
+	fmt.Println(string(jsonFmt.Bytes()))
+	fmt.Printf("Request took: %s\n\n", elapsed)
+	return nil
 }

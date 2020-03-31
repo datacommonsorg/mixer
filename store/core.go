@@ -86,39 +86,67 @@ func (s *store) GetPropertyValues(ctx context.Context,
 		in.Limit = util.BtCacheLimit
 	}
 
+	direction := in.GetDirection()
+	var inArc, outArc bool
+	switch direction {
+	case "in":
+		inArc = true
+		outArc = false
+	case "out":
+		inArc = false
+		outArc = true
+	default:
+		inArc = true
+		outArc = true
+	}
+
 	var err error
 	var inRes, outRes map[string]map[string][]Node
 	if in.GetLimit() > util.BtCacheLimit {
-		inRes, err = s.bqGetPropertyValues(ctx, in, false)
-		if err != nil {
-			return err
+		if inArc {
+			inRes, err = s.bqGetPropertyValues(ctx, in, false)
+			if err != nil {
+				return err
+			}
 		}
-		outRes, err = s.bqGetPropertyValues(ctx, in, true)
-		if err != nil {
-			return err
+		if outArc {
+			outRes, err = s.bqGetPropertyValues(ctx, in, true)
+			if err != nil {
+				return err
+			}
 		}
 	} else {
-		inRes, err = s.btGetPropertyValues(ctx, in, false)
-		if err != nil {
-			return err
+		if inArc {
+			inRes, err = s.btGetPropertyValues(ctx, in, false)
+			if err != nil {
+				return err
+			}
 		}
-		outRes, err = s.btGetPropertyValues(ctx, in, true)
-		if err != nil {
-			return err
+		if outArc {
+			outRes, err = s.btGetPropertyValues(ctx, in, true)
+			if err != nil {
+				return err
+			}
 		}
 	}
 
 	nodeRes := make(map[string]map[string][]Node)
-	for _, r := range []map[string]map[string][]Node{inRes, outRes} {
-		for k1, v1 := range r {
-			if _, ok := nodeRes[k1]; !ok {
-				nodeRes[k1] = v1
-			} else {
-				for k2, v2 := range v1 {
-					nodeRes[k1][k2] = v2
+	if inArc && outArc {
+		for _, r := range []map[string]map[string][]Node{inRes, outRes} {
+			for k1, v1 := range r {
+				if _, ok := nodeRes[k1]; !ok {
+					nodeRes[k1] = v1
+				} else {
+					for k2, v2 := range v1 {
+						nodeRes[k1][k2] = v2
+					}
 				}
 			}
 		}
+	} else if inArc {
+		nodeRes = inRes
+	} else { // outArc.
+		nodeRes = outRes
 	}
 
 	jsonRaw, err := json.Marshal(nodeRes)
@@ -801,6 +829,57 @@ func (s *store) btGetTriples(
 	}
 	jsonStr := string(jsonRaw)
 	out.Payload = jsonStr
+
+	return nil
+}
+
+// ObsTimeSeries contains information about observation time series.
+type ObsTimeSeries struct {
+	Val           map[string]float64 `json:"val,omitempty"`
+	Unit          string             `json:"unit,omitempty"`
+	PlaceName     string             `json:"placeName,omitempty"`
+	IsDcAggregate bool               `json:"isDcAggregate,omitempty"`
+}
+
+// Chart store contains ObsTimeSeries.
+// TODO(*): Add ObsCollection when needed.
+type ChartStore struct {
+	ObsTimeSeries *ObsTimeSeries `json:"obsTimeSeries,omitempty"`
+}
+
+func (s *store) GetChartData(ctx context.Context,
+	in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error {
+	rowList := bigtable.RowList{}
+	for _, key := range in.GetKeys() {
+		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtChartDataPrefix, key))
+	}
+
+	results := map[string]*ChartStore{}
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(btRow bigtable.Row) error {
+			key := strings.TrimPrefix(btRow.Key(), util.BtChartDataPrefix)
+
+			if len(btRow[util.BtFamily]) > 0 {
+				btRawValue := btRow[util.BtFamily][0].Value
+				btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+				if err != nil {
+					return err
+				}
+				var chartStore ChartStore
+				json.Unmarshal(btJSONRaw, &chartStore)
+				results[key] = &chartStore
+			}
+
+			return nil
+		}); err != nil {
+		return err
+	}
+
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
 
 	return nil
 }

@@ -57,6 +57,27 @@ const (
 	BtPopPVPrefix = "d/d/"
 	// BtPopCategoryPrefix for population categories for a given place type.
 	BtPopCategoryPrefix = "d/e/"
+	// BtChartDataPrefix for chart data.
+	BtChartDataPrefix = "d/f/"
+	// BtRelatedPlacesPrefix for related places.
+	BtRelatedPlacesPrefix = "d/g/"
+	// BtRelatedPlacesSameTypePrefix for related places with same type.
+	BtRelatedPlacesSameTypePrefix = "d/h/"
+	// BtRelatedPlacesSameAncestorPrefix for related places with same ancestor.
+	BtRelatedPlacesSameAncestorPrefix = "d/i/"
+	// BtRelatedPlacesSameTypeAndAncestorPrefix for related places with same type and ancestor.
+	BtRelatedPlacesSameTypeAndAncestorPrefix = "d/j/"
+	// BtRelatedPlacesPCPrefix for related places, per capita.
+	BtRelatedPlacesPCPrefix = "d/g0/"
+	// BtRelatedPlacesSameTypePCPrefix for related places with same type, per capita.
+	BtRelatedPlacesSameTypePCPrefix = "d/h0/"
+	// BtRelatedPlacesSameAncestorPCPrefix for related places with same ancestor, per capita.
+	BtRelatedPlacesSameAncestorPCPrefix = "d/i0/"
+	// BtRelatedPlacesSameTypeAndAncestorPCPrefix for related places with same type and ancestor,
+	// per capita.
+	BtRelatedPlacesSameTypeAndAncestorPCPrefix = "d/j0/"
+	// BtInterestingPlaceAspectPrefix for interesting place aspect.
+	BtInterestingPlaceAspectPrefix = "d/k/"
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
