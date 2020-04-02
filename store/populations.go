@@ -97,19 +97,58 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 			key += "^" + p + "^" + v
 		})
 	}
-	btPrefix := fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
+	key = fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
 
-	// Query for the prefix.
-	btRow, err := s.btTable.ReadRow(ctx, btPrefix)
+	// TODO(boxu): abstract out the common logic for handling cache merging.
+	var baseData, sideData pb.PopObsCollection
+	var baseString, sideString string
+	var hasBaseData, hasSideData bool
+	out.Payload, _ = util.ZipAndEncode("{}")
+
+	btRow, err := s.btTable.ReadRow(ctx, key)
 	if err != nil {
+		log.Print(err)
+	}
+
+	hasBaseData = len(btRow[util.BtFamily]) > 0
+	if hasBaseData {
+		baseString = string(btRow[util.BtFamily][0].Value)
+	}
+	sideString, hasSideData = s.cacheData[key]
+
+	if !hasBaseData && !hasSideData {
+		return nil
+	} else if !hasBaseData {
+		out.Payload = sideString
+		return nil
+	} else if !hasSideData {
+		out.Payload = baseString
+		return nil
+	} else {
+		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &baseData)
+		}
+		if tmp, err := util.UnzipAndDecode(sideString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &sideData)
+		}
+		dataMap := map[string]*pb.PopObsPlace{}
+		for _, data := range baseData.Places {
+			dataMap[data.Place] = data
+		}
+		for _, data := range sideData.Places {
+			dataMap[data.Place] = data
+		}
+		res := pb.PopObsCollection{}
+		for _, v := range dataMap {
+			res.Places = append(res.Places, v)
+		}
+		resStr, err := (&jsonpb.Marshaler{}).MarshalToString(&res)
+		if err != nil {
+			return err
+		}
+		out.Payload, err = util.ZipAndEncode(resStr)
 		return err
 	}
-	if len(btRow[util.BtFamily]) > 0 {
-		out.Payload = string(btRow[util.BtFamily][0].Value)
-	} else {
-		out.Payload, _ = util.ZipAndEncode("{}")
-	}
-	return nil
 }
 
 func (s *store) GetObsSeries(ctx context.Context, in *pb.GetObsSeriesRequest,

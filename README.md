@@ -53,13 +53,13 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
     gcloud auth application-default login
 
     go run server/main.go \
-      --bq_dataset=google.com:datcom-store-dev.dc_v3_clustered \
-      --bt_table=wsws_2020-03-11T18_22 \
+      --bq_dataset=google.com:datcom-store-dev.dc_kg_2020_03_30_23_06_54 \
+      --bt_table=borgcron_2020_03_30_23_06_54 \
       --bt_project=google.com:datcom-store-dev \
       --bt_instance=prophet-cache \
       --project_id=datcom-mixer \
       --schema_path=deployment/mapping \
-      --gcs_folder=wsws_2020-03-14T14:43
+      --gcs_folder=boxu_2020_03_31_17_42_20
 
     cd examples
     ./run_all.sh

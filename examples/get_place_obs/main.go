@@ -42,34 +42,54 @@ func main() {
 	}
 	defer conn.Close()
 	c := pb.NewMixerClient(conn)
-
 	ctx := context.Background()
 
-	r, err := c.GetPlaceObs(ctx, &pb.GetPlaceObsRequest{
-		PlaceType:      "City",
-		PopulationType: "Person",
-		Pvs: []*pb.PropertyValue{
-			{
-				Property: "age",
-				Value:    "Years5To17",
+	reqs := []*pb.GetPlaceObsRequest{
+		&pb.GetPlaceObsRequest{
+			PlaceType:      "City",
+			PopulationType: "Person",
+			Pvs: []*pb.PropertyValue{
+				{
+					Property: "age",
+					Value:    "Years5To17",
+				},
+				{
+					Property: "placeOfBirth",
+					Value:    "BornInOtherStateInTheUnitedStates",
+				},
 			},
-			{
-				Property: "placeOfBirth",
-				Value:    "BornInOtherStateInTheUnitedStates",
-			},
+			ObservationDate: "2013",
 		},
-		ObservationDate: "2013",
-	})
-	if err != nil {
-		log.Fatalf("could not GetPlaceObs: %s", err)
+		&pb.GetPlaceObsRequest{
+			PlaceType:      "Country",
+			PopulationType: "MedicalConditionIncident",
+			Pvs: []*pb.PropertyValue{
+				{
+					Property: "incidentType",
+					Value:    "COVID_19",
+				},
+				{
+					Property: "medicalStatus",
+					Value:    "ConfirmedCase",
+				},
+			},
+			ObservationDate: "2020-03-29",
+		},
 	}
 
-	log.Printf("Now printing place obs:\n")
+	for _, req := range reqs {
+		r, err := c.GetPlaceObs(ctx, req)
+		if err != nil {
+			log.Fatalf("could not GetPlaceObs: %s", err)
+		}
 
-	jsonRaw, err := util.UnzipAndDecode(r.GetPayload())
-	if err != nil {
-		log.Fatalf("util.UnzipAndDecode() = %v", err)
+		log.Printf("Now printing place obs:\n")
+
+		jsonRaw, err := util.UnzipAndDecode(r.GetPayload())
+		if err != nil {
+			log.Fatalf("util.UnzipAndDecode() = %v", err)
+		}
+
+		log.Printf("%s", string(jsonRaw))
 	}
-
-	log.Printf("%s", string(jsonRaw))
 }
