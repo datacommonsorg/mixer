@@ -36,7 +36,7 @@ func TestGetPropertyLabels(t *testing.T) {
 	} {
 		jsonRaw, err := json.Marshal(d.labels)
 		if err != nil {
-			t.Errorf("json.Marshal(%+v) = %+v", d.dcid, err)
+			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
 		}
 		tableValue, err := util.ZipAndEncode(string(jsonRaw))
 		if err != nil {

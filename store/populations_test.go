@@ -28,50 +28,50 @@ func TestGetPopObs(t *testing.T) {
 	key := util.BtPopObsPrefix + dcid
 	btRow := `{
 	"name": "Santa Clara",
-  "populations": {
-    "dc/p/zzlmxxtp1el87": {
-      "popType": "Household",
-      "numConstraints": 3,
-      "propertyValues": {
-        "householderAge": "Years45To64",
-        "householderRace": "AsianAlone",
-        "income": "USDollar35000To39999"
-      },
-      "observations": [
-        {
-          "marginOfError": 274,
-          "measuredProp": "count",
-          "measuredValue": 1352,
-          "measurementMethod": "CensusACS5yrSurvey",
-          "observationDate": "2017"
-        },
-        {
-          "marginOfError": 226,
-          "measuredProp": "count",
-          "measuredValue": 1388,
-          "measurementMethod": "CensusACS5yrSurvey",
-          "observationDate": "2013"
-        }
-      ],
-    },
-  },
-  "observations": [
-    {
-      "meanValue": 4.1583,
-      "measuredProp": "particulateMatter25",
-      "measurementMethod": "CDCHealthTracking",
-      "observationDate": "2014-04-04",
-      "observedNode": "geoId/06085"
-    },
-    {
-      "meanValue": 9.4461,
-      "measuredProp": "particulateMatter25",
-      "measurementMethod": "CDCHealthTracking",
-      "observationDate": "2014-03-20",
-      "observedNode": "geoId/06085"
-    }
-  ]
-}`
+	"populations": {
+		"dc/p/zzlmxxtp1el87": {
+		"popType": "Household",
+		"numConstraints": 3,
+		"propertyValues": {
+			"householderAge": "Years45To64",
+			"householderRace": "AsianAlone",
+			"income": "USDollar35000To39999"
+		},
+		"observations": [
+			{
+			"marginOfError": 274,
+			"measuredProp": "count",
+			"measuredValue": 1352,
+			"measurementMethod": "CensusACS5yrSurvey",
+			"observationDate": "2017"
+			},
+			{
+			"marginOfError": 226,
+			"measuredProp": "count",
+			"measuredValue": 1388,
+			"measurementMethod": "CensusACS5yrSurvey",
+			"observationDate": "2013"
+			}
+		],
+		},
+	},
+	"observations": [
+		{
+		"meanValue": 4.1583,
+		"measuredProp": "particulateMatter25",
+		"measurementMethod": "CDCHealthTracking",
+		"observationDate": "2014-04-04",
+		"observedNode": "geoId/06085"
+		},
+		{
+		"meanValue": 9.4461,
+		"measuredProp": "particulateMatter25",
+		"measurementMethod": "CDCHealthTracking",
+		"observationDate": "2014-03-20",
+		"observedNode": "geoId/06085"
+		}
+	]
+	}`
 
 	tableValue, err := util.ZipAndEncode(string(btRow))
 	if err != nil {
