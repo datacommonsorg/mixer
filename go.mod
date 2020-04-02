@@ -7,8 +7,8 @@ require (
 	cloud.google.com/go/bigquery v1.0.1
 	cloud.google.com/go/bigtable v1.0.0
 	github.com/go-test/deep v1.0.3
-	github.com/golang/protobuf v1.3.4
-	github.com/google/go-cmp v0.3.1 // indirect
+	github.com/golang/protobuf v1.4.0-rc.4
+	github.com/google/go-cmp v0.4.0
 	github.com/google/pprof v0.0.0-20190723021845-34ac40c74b70 // indirect
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
 	github.com/kr/pty v1.1.8 // indirect
@@ -26,6 +26,7 @@ require (
 	google.golang.org/appengine v1.6.2 // indirect
 	google.golang.org/genproto v0.0.0-20200303153909-beee998c1893
 	google.golang.org/grpc v1.27.1
+	google.golang.org/protobuf v1.20.1
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	honnef.co/go/tools v0.0.1-2019.2.3 // indirect
 )
