@@ -841,7 +841,7 @@ type ObsTimeSeries struct {
 	IsDcAggregate bool               `json:"isDcAggregate,omitempty"`
 }
 
-// Chart store contains ObsTimeSeries.
+// ChartStore contains ObsTimeSeries.
 // TODO(*): Add ObsCollection when needed.
 type ChartStore struct {
 	ObsTimeSeries *ObsTimeSeries `json:"obsTimeSeries,omitempty"`
