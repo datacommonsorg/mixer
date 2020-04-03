@@ -93,8 +93,8 @@ func TestGetPopObs(t *testing.T) {
 	}
 	var out pb.GetPopObsResponse
 	s.GetPopObs(context.Background(), in, &out)
-	if out.GetPayload() != tableValue {
-		t.Errorf("GetPopObs() = %+v; want: %v", out.GetPayload(), tableValue)
+	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
+		t.Errorf("GetPopObs() got diff: %v", diff)
 	}
 }
 
@@ -191,5 +191,140 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 
 	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff %+v", diff)
+	}
+}
+
+func TestGetPlaceObs(t *testing.T) {
+	data := map[string]string{}
+	key := util.BtPlaceObsPrefix + "City^2013^Person^gender^Male"
+	btRow := `{
+		"places":[
+			{
+				"name":"Stony Prairie CDP",
+				"observations":[
+					{
+						"measuredProp":"count",
+						"measuredValue":5000,
+						"measurementMethod":"CensusACS5yrSurvey"
+					}
+				],
+				"place":"geoId/3974832"
+			},
+			{
+				"name":"Americus",
+				"observations":[
+					{
+						"measuredProp":"count",
+						"measuredValue":6000,
+						"measurementMethod":"CensusACS5yrSurvey"
+					}
+				],
+				"place":"geoId/2001675"
+			}
+		]
+	}`
+
+	tableValue, err := util.ZipAndEncode(string(btRow))
+	if err != nil {
+		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
+	}
+	data[key] = tableValue
+	// Setup bigtable
+	btClient, err := SetupBigtable(context.Background(), data)
+	if err != nil {
+		t.Errorf("SetupBigtable(...) = %v", err)
+	}
+	// Test
+	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), nil}, nil
+	in := &pb.GetPlaceObsRequest{
+		PlaceType:       "City",
+		PopulationType:  "Person",
+		ObservationDate: "2013",
+		Pvs: []*pb.PropertyValue{
+			&pb.PropertyValue{Property: "gender", Value: "Male"},
+		},
+	}
+	var out pb.GetPlaceObsResponse
+	s.GetPlaceObs(context.Background(), in, &out)
+	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
+		t.Errorf("GetPlaceObs() got diff: %v", diff)
+	}
+
+	var resultProto, expectProto pb.PopObsCollection
+	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
+		jsonpb.UnmarshalString(string(tmp), &resultProto)
+	}
+	jsonpb.UnmarshalString(btRow, &expectProto)
+
+	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
+		t.Errorf("GetPlaceObs() got diff %+v", diff)
+	}
+}
+
+func TestGetPlaceObsCacheMerge(t *testing.T) {
+	key := util.BtPlaceObsPrefix + "City^2013^Person^gender^Male"
+
+	// No base data
+	baseData := map[string]string{}
+	btClient, err := SetupBigtable(context.Background(), baseData)
+	if err != nil {
+		t.Errorf("SetupBigtable(...) = %v", err)
+	}
+
+	// branch cache data. Have observation on newer date.
+	branchData := map[string]string{}
+	branchCache := `{
+		"places":[
+			{
+				"name":"Stony Prairie CDP",
+				"observations":[
+					{
+						"measuredProp":"count",
+						"measuredValue":5000,
+						"measurementMethod":"CensusACS5yrSurvey"
+					}
+				],
+				"place":"geoId/3974832"
+			},
+			{
+				"name":"Americus",
+				"observations":[
+					{
+						"measuredProp":"count",
+						"measuredValue":6000,
+						"measurementMethod":"CensusACS5yrSurvey"
+					}
+				],
+				"place":"geoId/2001675"
+			}
+		]
+	}`
+	branchCacheValue, err := util.ZipAndEncode(branchCache)
+	if err != nil {
+		t.Errorf("util.ZipAndEncode(%+v) = %v", branchCache, err)
+	}
+	branchData[key] = branchCacheValue
+	// Test
+	s, err := &store{
+		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), branchData}, nil
+	in := &pb.GetPlaceObsRequest{
+		PlaceType:       "City",
+		PopulationType:  "Person",
+		ObservationDate: "2013",
+		Pvs: []*pb.PropertyValue{
+			&pb.PropertyValue{Property: "gender", Value: "Male"},
+		},
+	}
+	var out pb.GetPlaceObsResponse
+	s.GetPlaceObs(context.Background(), in, &out)
+
+	var resultProto, expectProto pb.PopObsPlace
+	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
+		jsonpb.UnmarshalString(string(tmp), &resultProto)
+	}
+	jsonpb.UnmarshalString(branchCache, &expectProto)
+
+	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
+		t.Errorf("GetPlaceObs() got diff %+v", diff)
 	}
 }
