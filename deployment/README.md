@@ -1,8 +1,8 @@
 # Deploy Data Commons Mixer to GKE and Google Endpoints
 
-## Do you need to point to a new Bigtable? 
+## Do you need to update BT and BQ? 
 
-If yes, update prod_bt_table.txt for prod or staging_bt_table.txt for staging first. 
+If yes, update (prod|staging)_bt_table.txt and (prod|staging)_bq_dataset.txt. 
 And please don't forget to get these change into master repository.
 
 ## Build & Deploy
