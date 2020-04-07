@@ -23,7 +23,9 @@ import (
 	"math/rand"
 	"path/filepath"
 	"strings"
+	"sync/atomic"
 	"time"
+	"unsafe"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
@@ -163,7 +165,11 @@ func (st *store) LoadBranchCache(
 			cacheData[parts[0]] = parts[1]
 		}
 	}
-	st.cacheData = cacheData
+
+	// Atomically store the new cacheData into store.cacheData.
+	var unsafeSrc = (*unsafe.Pointer)(unsafe.Pointer(&(st.cacheData)))
+	atomic.StorePointer(unsafeSrc, unsafe.Pointer(&cacheData))
+
 	return nil
 }
 
