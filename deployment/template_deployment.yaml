@@ -36,7 +36,7 @@ spec:
             name: nginx-config
       containers:
         - name: esp
-          image: gcr.io/endpoints-release/endpoints-runtime:2
+          image: gcr.io/endpoints-release/endpoints-runtime:1
           resources:
           args: [
             "-n", "/etc/nginx/custom/nginx.conf",
