@@ -56,7 +56,7 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	if hasBaseData {
 		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	sideString, hasSideData = s.cacheData[key]
+	sideString, hasSideData = s.cache.Read(key)
 
 	if !hasBaseData && !hasSideData {
 		return nil
@@ -114,7 +114,7 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	if hasBaseData {
 		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	sideString, hasSideData = s.cacheData[key]
+	sideString, hasSideData = s.cache.Read(key)
 
 	if !hasBaseData && !hasSideData {
 		return nil

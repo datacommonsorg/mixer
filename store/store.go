@@ -23,9 +23,7 @@ import (
 	"math/rand"
 	"path/filepath"
 	"strings"
-	"sync/atomic"
 	"time"
-	"unsafe"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
@@ -105,7 +103,7 @@ type store struct {
 	subTypeMap  map[string]string
 	containedIn map[util.TypePair][]string
 	btTable     *bigtable.Table
-	cacheData   map[string]string
+	cache       *Cache
 }
 
 // randomString creates a random string with 16 runes.
@@ -128,7 +126,7 @@ func (st *store) LoadBranchCache(
 	gcsFolder string) error {
 	// Cloud storage.
 	log.Println("Loading cache data ...")
-	cacheData := map[string]string{}
+	newCache := map[string]string{}
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		return err
@@ -162,14 +160,10 @@ func (st *store) LoadBranchCache(
 				log.Printf("Bad line %s", line)
 				continue
 			}
-			cacheData[parts[0]] = parts[1]
+			newCache[parts[0]] = parts[1]
 		}
 	}
-
-	// Atomically store the new cacheData into store.cacheData.
-	var unsafeSrc = (*unsafe.Pointer)(unsafe.Pointer(&(st.cacheData)))
-	atomic.StorePointer(unsafeSrc, unsafe.Pointer(&cacheData))
-
+	st.cache.Update(newCache)
 	return nil
 }
 
@@ -213,7 +207,7 @@ func NewStore(
 	}
 
 	st := &store{bqDataset, bqClient, mappings, outArcInfo,
-		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable), nil}
+		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable), NewCache()}
 
 	// Cloud PubSub receiver when branch cache is updated.
 	pubsubClient, err := pubsub.NewClient(ctx, pubsubProject)

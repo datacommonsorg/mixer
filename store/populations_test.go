@@ -87,7 +87,7 @@ func TestGetPopObs(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), nil}, nil
+	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}, nil
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
@@ -175,8 +175,10 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	}
 	branchData[key] = branchCacheValue
 	// Test
+	cache := Cache{}
+	cache.Update(branchData)
 	s, err := &store{
-		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), branchData}, nil
+		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), &cache}, nil
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
@@ -235,7 +237,7 @@ func TestGetPlaceObs(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), nil}, nil
+	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}, nil
 	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",
@@ -305,8 +307,10 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	}
 	branchData[key] = branchCacheValue
 	// Test
+	cache := Cache{}
+	cache.Update(branchData)
 	s, err := &store{
-		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), branchData}, nil
+		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), &cache}, nil
 	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",
