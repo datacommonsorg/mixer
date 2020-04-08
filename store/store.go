@@ -45,6 +45,7 @@ const (
 	subIDPrefix   = "mixer-subscriber-"
 	pubsubTopic   = "branch-cache-reload"
 	pubsubProject = "google.com:datcom-store-dev"
+	versionFile   = "latest_branch_cache_version.txt"
 )
 
 // Interface exposes the database access for mixer.
@@ -170,7 +171,7 @@ func (st *store) LoadBranchCache(
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
 func NewStore(
 	ctx context.Context,
-	bqDataset, btTable, btProject, btInstance, projectID, gcsFolder, schemaPath string,
+	bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
 	opts ...option.ClientOption) (Interface, error) {
 
@@ -235,12 +236,26 @@ func NewStore(
 			}
 		})
 		if err != nil {
-			log.Fatalf("Cloud pubsub receive: %v", err)
+			log.Printf("Cloud pubsub receive: %v", err)
 		}
 	}()
 
 	// Initial branch cachel load.
-	err = st.LoadBranchCache(ctx, gcsFolder)
+	gcsClient, err := storage.NewClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+	rc, err := gcsClient.Bucket(gcsBucket).Object(versionFile).NewReader(ctx)
+	if err != nil {
+		log.Fatalf("%s", err)
+	}
+	defer rc.Close()
+	gcsFolder, err := ioutil.ReadAll(rc)
+	if err != nil {
+		log.Fatalf("%s", err)
+	}
+	log.Printf("branch cache folder: %s", gcsFolder)
+	err = st.LoadBranchCache(ctx, string(gcsFolder))
 	if err != nil {
 		log.Printf("Load cache data got error %s", err)
 	}
