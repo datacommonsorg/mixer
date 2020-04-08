@@ -16,8 +16,11 @@
 
 
 export PROJECT_ID=$1
-export IMAGE=$2
-export DOMAIN=$3
+export DOMAIN=$2
+
+IMAGE=$(cat "docker_image.txt")
+export IMAGE
+echo "Docker image: ${IMAGE}"
 
 SERVICE_ACCOUNT=mixer-robot@$PROJECT_ID.iam.gserviceaccount.com
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
