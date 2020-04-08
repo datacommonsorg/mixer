@@ -243,7 +243,7 @@ func NewStore(
 	// Initial branch cachel load.
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
-		return nil, err
+		log.Fatalf("%s", err)
 	}
 	rc, err := gcsClient.Bucket(gcsBucket).Object(versionFile).NewReader(ctx)
 	if err != nil {
