@@ -34,8 +34,8 @@ func NewCache() *Cache {
 
 // Read is used for key value look up for Cache.
 func (c *Cache) Read(key string) (string, bool) {
-	c.Lock()
-	defer c.Unlock()
+	c.RLock()
+	defer c.RUnlock()
 	value, ok := c.data[key]
 	return value, ok
 }
