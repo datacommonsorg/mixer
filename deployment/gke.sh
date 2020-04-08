@@ -82,16 +82,6 @@ BT_TABLE=$(cat $bt_table_input_file)
 export BT_TABLE
 perl -i -pe's/BT_TABLE/$ENV{BT_TABLE}/g' deployment.yaml
 
-# Set side cache folder
-if [ "$PROJECT_ID" == "datcom-mixer" ]; then
-  cache_folder_input_file="prod_cache_folder.txt"
-else
-  cache_folder_input_file="staging_cache_folder.txt"
-fi
-CACHE_FOLDER=$(cat $cache_folder_input_file)
-export CACHE_FOLDER
-perl -i -pe's/CACHE_FOLDER/$ENV{CACHE_FOLDER}/g' deployment.yaml
-
 # Get a static ip address
 if ! [[ $(gcloud compute addresses list --global --filter='name:mixer-ip' --format=yaml) ]]; then
  gcloud compute addresses create mixer-ip --global

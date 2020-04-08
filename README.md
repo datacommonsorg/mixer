@@ -58,8 +58,7 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
       --bt_project=google.com:datcom-store-dev \
       --bt_instance=prophet-cache \
       --project_id=datcom-mixer \
-      --schema_path=deployment/mapping \
-      --gcs_folder=boxu_2020_03_31_17_42_20
+      --schema_path=deployment/mapping
 
     cd examples
     ./run_all.sh
