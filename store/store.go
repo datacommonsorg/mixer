@@ -20,11 +20,14 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
+	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"golang.org/x/sync/errgroup"
 
@@ -37,7 +40,12 @@ import (
 	"google.golang.org/api/option"
 )
 
-const gcsBucket = "prophet_cache"
+const (
+	gcsBucket     = "prophet_cache"
+	subIDPrefix   = "mixer-subscriber-"
+	pubsubTopic   = "branch-cache-reload"
+	pubsubProject = "google.com:datcom-store-dev"
+)
 
 // Interface exposes the database access for mixer.
 type Interface interface {
@@ -95,20 +103,33 @@ type store struct {
 	subTypeMap  map[string]string
 	containedIn map[util.TypePair][]string
 	btTable     *bigtable.Table
-	cacheData   map[string]string
+	cache       *Cache
 }
 
-// NewStore returns an implementation of Interface backed by BigQuery and BigTable.
-func NewStore(
+// randomString creates a random string with 16 runes.
+func randomString() string {
+	rand.Seed(time.Now().UnixNano())
+	chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+		"abcdefghijklmnopqrstuvwxyz" +
+		"0123456789")
+	length := 16
+	var b strings.Builder
+	for i := 0; i < length; i++ {
+		b.WriteRune(chars[rand.Intn(len(chars))])
+	}
+	return b.String()
+}
+
+// LoadBranchCache reads the branch cache from GCS.
+func (st *store) LoadBranchCache(
 	ctx context.Context,
-	bqDataset, btTable, btProject, btInstance, projectID, gcsFolder, schemaPath string,
-	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
-	opts ...option.ClientOption) (Interface, error) {
+	gcsFolder string) error {
 	// Cloud storage.
-	cacheData := map[string]string{}
+	log.Println("Loading cache data ...")
+	newCache := map[string]string{}
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
-		log.Fatalf("Failed to create cloud storage client: %v", err)
+		return err
 	}
 	it := gcsClient.Bucket(gcsBucket).Objects(ctx, &storage.Query{
 		Prefix: gcsFolder + "/",
@@ -119,7 +140,7 @@ func NewStore(
 			break
 		}
 		if err != nil {
-			return nil, err
+			return err
 		}
 		rc, err := gcsClient.Bucket(gcsBucket).Object(attrs.Name).NewReader(ctx)
 		if err != nil {
@@ -139,9 +160,19 @@ func NewStore(
 				log.Printf("Bad line %s", line)
 				continue
 			}
-			cacheData[parts[0]] = parts[1]
+			newCache[parts[0]] = parts[1]
 		}
 	}
+	st.cache.Update(newCache)
+	return nil
+}
+
+// NewStore returns an implementation of Interface backed by BigQuery and BigTable.
+func NewStore(
+	ctx context.Context,
+	bqDataset, btTable, btProject, btInstance, projectID, gcsFolder, schemaPath string,
+	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
+	opts ...option.ClientOption) (Interface, error) {
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, projectID, opts...)
@@ -175,12 +206,50 @@ func NewStore(
 		return nil, err
 	}
 
-	return &store{bqDataset, bqClient, mappings, outArcInfo,
-		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable), cacheData}, nil
+	st := &store{bqDataset, bqClient, mappings, outArcInfo,
+		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable), NewCache()}
+
+	// Cloud PubSub receiver when branch cache is updated.
+	pubsubClient, err := pubsub.NewClient(ctx, pubsubProject)
+	if err != nil {
+		log.Fatalf("pubsub.NewClient: %v", err)
+	}
+	// Always create a new subscriber with default expiration date of 31 days.
+	subID := subIDPrefix + randomString()
+	sub, err := pubsubClient.CreateSubscription(ctx, subID,
+		pubsub.SubscriptionConfig{Topic: pubsubClient.Topic(pubsubTopic)})
+	if err != nil {
+		log.Fatalf("pubsub CreateSubscription: %v", err)
+	}
+	log.Printf("Subscriber ID: %s", subID)
+
+	// Start the receiver in a goroutine.
+	go func() {
+		err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
+			gcsFolder := string(msg.Data)
+			log.Printf("Got message: %q\n", string(gcsFolder))
+			msg.Ack()
+			err := st.LoadBranchCache(ctx, gcsFolder)
+			if err != nil {
+				log.Printf("Load cache data got error %s", err)
+			}
+		})
+		if err != nil {
+			log.Fatalf("Cloud pubsub receive: %v", err)
+		}
+	}()
+
+	// Initial branch cachel load.
+	err = st.LoadBranchCache(ctx, gcsFolder)
+	if err != nil {
+		log.Printf("Load cache data got error %s", err)
+	}
+
+	return st, nil
 }
 
-// bigTableReadRowsParallel reads BigTable rows in parallel, considering the size limit for RowSet
-// is 500KB.
+// bigTableReadRowsParallel reads BigTable rows in parallel,
+// considering the size limit for RowSet is 500KB.
 func bigTableReadRowsParallel(ctx context.Context, btTable *bigtable.Table,
 	rowSet bigtable.RowSet, action func(row bigtable.Row) error) error {
 	var rowSetSize int
