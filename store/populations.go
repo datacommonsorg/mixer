@@ -56,7 +56,7 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	if hasBaseData {
 		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	if in.GetOption() == pb.Option_BASE_CACHE_ONLY {
+	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
 		hasBranchData = false
 	} else {
 		branchString, hasBranchData = s.cache.Read(key)
@@ -118,7 +118,7 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	if hasBaseData {
 		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	if in.GetOption() == pb.Option_BASE_CACHE_ONLY {
+	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
 		hasBranchData = false
 	} else {
 		branchString, hasBranchData = s.cache.Read(key)

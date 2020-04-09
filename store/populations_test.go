@@ -203,7 +203,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	// Only use the base cache.
 	in = &pb.GetPopObsRequest{
 		Dcid:   dcid,
-		Option: pb.Option_BASE_CACHE_ONLY,
+		Option: &pb.Option{CacheChoice: pb.Option_BASE_CACHE_ONLY},
 	}
 	s.GetPopObs(context.Background(), in, &out)
 
