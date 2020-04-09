@@ -37,7 +37,6 @@ spec:
       containers:
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
-          resources:
           args: [
             "-n", "/etc/nginx/custom/nginx.conf",
             "--http_port", "8081",
@@ -63,7 +62,6 @@ spec:
         - name: mixer
           image: IMAGE
           imagePullPolicy: Always
-          resources:
           args: [
             "--bq_dataset", "BQ_DATASET",
             "--bt_table", "BT_TABLE",

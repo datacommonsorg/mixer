@@ -18,6 +18,14 @@ package datacommons;
 
 import "google/api/annotations.proto";
 
+message Option {
+  enum CacheChoice {
+    DEFAULT = 0;
+    // Only get data from main cache.
+    BASE_CACHE_ONLY = 1;
+  }
+  CacheChoice cache_choice = 1;
+}
 
 // A graph query request in Sparql query language.
 message QueryRequest {
@@ -73,6 +81,8 @@ message TranslateResponse {
 message GetPropertyLabelsRequest {
   // The dcids of nodes.
   repeated string dcids = 1;
+
+  Option option = 2;
 }
 
 // Response returned by GetPropertyLabels.
@@ -97,6 +107,8 @@ message GetPropertyValuesRequest {
 
   // Direction, "in" or "out", default to "out".
   string direction = 5;
+
+  Option option = 6;
 }
 
 // Response returned by GetPropertyValues.
@@ -112,6 +124,8 @@ message GetTriplesRequest {
 
   // Maximum number of triples for each property and type of the neighbor.
   int32 limit = 2;
+
+  Option option = 3;
 }
 
 // Response returned by GetTriples.
@@ -124,6 +138,8 @@ message GetTriplesResponse {
 message GetPopObsRequest {
   // DCID of a place.
   string dcid = 1;
+
+  Option option = 2;
 }
 
 // Response of GetPopObs.
@@ -154,6 +170,8 @@ message GetPlaceObsRequest {
 
   // Observation date.
   string observation_date = 4;
+
+  Option option = 5;
 }
 
 // Response of GetPlaceObs.
@@ -172,6 +190,8 @@ message GetObsSeriesRequest {
 
   // A list of constraining property values that defines the population.
   repeated PropertyValue pvs = 3;
+
+  Option option = 4;
 }
 
 // Response of GetObsSeries.
@@ -202,6 +222,8 @@ message GetPopulationsRequest {
 
   // A list of constraining property values that define the population.
   repeated PropertyValue pvs = 3;
+
+  Option option = 4;
 }
 
 // Response of GetPopulation.
@@ -230,6 +252,8 @@ message GetObservationsRequest {
 
   // (Opitonal) Measurement method used to get the observation.
   string measurement_method = 6;
+
+  Option option = 7;
 }
 
 // Response of GetObservation request.

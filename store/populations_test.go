@@ -179,18 +179,38 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	cache.Update(branchData)
 	s, err := &store{
 		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), &cache}, nil
-	in := &pb.GetPopObsRequest{
+
+	var (
+		in                       *pb.GetPopObsRequest
+		out                      pb.GetPopObsResponse
+		resultProto, expectProto pb.PopObsPlace
+	)
+
+	// Merge base cache and branch cache.
+	in = &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
-	var out pb.GetPopObsResponse
 	s.GetPopObs(context.Background(), in, &out)
 
-	var resultProto, expectProto pb.PopObsPlace
 	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
 		jsonpb.UnmarshalString(string(tmp), &resultProto)
 	}
 	jsonpb.UnmarshalString(branchCache, &expectProto)
+	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
+		t.Errorf("GetPopObs() got diff %+v", diff)
+	}
 
+	// Only use the base cache.
+	in = &pb.GetPopObsRequest{
+		Dcid:   dcid,
+		Option: &pb.Option{CacheChoice: pb.Option_BASE_CACHE_ONLY},
+	}
+	s.GetPopObs(context.Background(), in, &out)
+
+	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
+		jsonpb.UnmarshalString(string(tmp), &resultProto)
+	}
+	jsonpb.UnmarshalString(btRow, &expectProto)
 	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff %+v", diff)
 	}
@@ -236,9 +256,16 @@ func TestGetPlaceObs(t *testing.T) {
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
-	// Test
+
+	var (
+		in                       *pb.GetPlaceObsRequest
+		out                      pb.GetPlaceObsResponse
+		resultProto, expectProto pb.PopObsCollection
+	)
 	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}, nil
-	in := &pb.GetPlaceObsRequest{
+
+	// Base cache only.
+	in = &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",
 		ObservationDate: "2013",
@@ -246,13 +273,10 @@ func TestGetPlaceObs(t *testing.T) {
 			&pb.PropertyValue{Property: "gender", Value: "Male"},
 		},
 	}
-	var out pb.GetPlaceObsResponse
 	s.GetPlaceObs(context.Background(), in, &out)
 	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
 		t.Errorf("GetPlaceObs() got diff: %v", diff)
 	}
-
-	var resultProto, expectProto pb.PopObsCollection
 	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
 		jsonpb.UnmarshalString(string(tmp), &resultProto)
 	}
