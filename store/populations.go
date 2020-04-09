@@ -42,9 +42,9 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	dcid := in.GetDcid()
 	key := util.BtPopObsPrefix + dcid
 
-	var baseData, sideData pb.PopObsPlace
-	var baseString, sideString string
-	var hasBaseData, hasSideData bool
+	var baseData, branchData pb.PopObsPlace
+	var baseString, branchString string
+	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode("{}")
 
 	btRow, err := s.btTable.ReadRow(ctx, key)
@@ -56,27 +56,31 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	if hasBaseData {
 		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	sideString, hasSideData = s.cache.Read(key)
+	if in.GetOption() == pb.Option_BASE_CACHE_ONLY {
+		hasBranchData = false
+	} else {
+		branchString, hasBranchData = s.cache.Read(key)
+	}
 
-	if !hasBaseData && !hasSideData {
+	if !hasBaseData && !hasBranchData {
 		return nil
 	} else if !hasBaseData {
-		out.Payload = sideString
+		out.Payload = branchString
 		return nil
-	} else if !hasSideData {
+	} else if !hasBranchData {
 		out.Payload = baseString
 		return nil
 	} else {
 		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
 			jsonpb.UnmarshalString(string(tmp), &baseData)
 		}
-		if tmp, err := util.UnzipAndDecode(sideString); err == nil {
-			jsonpb.UnmarshalString(string(tmp), &sideData)
+		if tmp, err := util.UnzipAndDecode(branchString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &branchData)
 		}
 		if baseData.Populations == nil {
 			baseData.Populations = map[string]*pb.PopObsPop{}
 		}
-		for k, v := range sideData.Populations {
+		for k, v := range branchData.Populations {
 			baseData.Populations[k] = v
 		}
 		resStr, err := (&jsonpb.Marshaler{}).MarshalToString(&baseData)
@@ -100,9 +104,9 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	key = fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
 
 	// TODO(boxu): abstract out the common logic for handling cache merging.
-	var baseData, sideData pb.PopObsCollection
-	var baseString, sideString string
-	var hasBaseData, hasSideData bool
+	var baseData, branchData pb.PopObsCollection
+	var baseString, branchString string
+	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode("{}")
 
 	btRow, err := s.btTable.ReadRow(ctx, key)
@@ -114,28 +118,32 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 	if hasBaseData {
 		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	sideString, hasSideData = s.cache.Read(key)
+	if in.GetOption() == pb.Option_BASE_CACHE_ONLY {
+		hasBranchData = false
+	} else {
+		branchString, hasBranchData = s.cache.Read(key)
+	}
 
-	if !hasBaseData && !hasSideData {
+	if !hasBaseData && !hasBranchData {
 		return nil
 	} else if !hasBaseData {
-		out.Payload = sideString
+		out.Payload = branchString
 		return nil
-	} else if !hasSideData {
+	} else if !hasBranchData {
 		out.Payload = baseString
 		return nil
 	} else {
 		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
 			jsonpb.UnmarshalString(string(tmp), &baseData)
 		}
-		if tmp, err := util.UnzipAndDecode(sideString); err == nil {
-			jsonpb.UnmarshalString(string(tmp), &sideData)
+		if tmp, err := util.UnzipAndDecode(branchString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &branchData)
 		}
 		dataMap := map[string]*pb.PopObsPlace{}
 		for _, data := range baseData.Places {
 			dataMap[data.Place] = data
 		}
-		for _, data := range sideData.Places {
+		for _, data := range branchData.Places {
 			dataMap[data.Place] = data
 		}
 		res := pb.PopObsCollection{}
