@@ -644,6 +644,43 @@ func (s *store) GetPropertyLabels(
 	return nil
 }
 
+func addObsTriple(
+	key string,
+	btRawValue string,
+	resultsMap map[string][]*Triple,
+	objPlaceIDNameMap map[string]string,
+) error {
+	parts := strings.Split(key, "^")
+	dcid := strings.TrimPrefix(parts[0], util.BtObsAncestorPrefix)
+	var pred string
+	if parts[1] == obsAncestorTypeObservedNode {
+		pred = "observedNode"
+	} else if parts[1] == obsAncestorTypeComparedNode {
+		pred = "comparedNode"
+	} else {
+		return fmt.Errorf("unsupported predicate")
+	}
+	val, err := util.UnzipAndDecode(string(btRawValue))
+	if err != nil {
+		return err
+	}
+	objID := string(val)
+
+	if !strings.HasPrefix(objID, "dc/p/") { // Not StatisticalPopulation.
+		objPlaceIDNameMap[objID] = ""
+	}
+
+	if _, ok := resultsMap[dcid]; !ok {
+		resultsMap[dcid] = []*Triple{}
+	}
+	resultsMap[dcid] = append(resultsMap[dcid], &Triple{
+		SubjectID: dcid,
+		Predicate: pred,
+		ObjectID:  objID,
+	})
+	return nil
+}
+
 func (s *store) btGetTriples(
 	ctx context.Context, in *pb.GetTriplesRequest, out *pb.GetTriplesResponse) error {
 	dcids := in.GetDcids()
@@ -693,49 +730,46 @@ func (s *store) btGetTriples(
 	if len(obsDcids) > 0 {
 		obsRowList := bigtable.RowList{}
 		for _, dcid := range obsDcids {
-			for _, pred := range []string{obsAncestorTypeObservedNode, obsAncestorTypeComparedNode} {
+			for _, pred := range []string{
+				obsAncestorTypeObservedNode,
+				obsAncestorTypeComparedNode,
+			} {
 				obsRowList = append(obsRowList,
 					fmt.Sprintf("%s%s^%s", util.BtObsAncestorPrefix, dcid, pred))
 			}
 		}
 		if err := bigTableReadRowsParallel(ctx, s.btTable, obsRowList,
 			func(btRow bigtable.Row) error {
-				// Extract DCID from row key.
-				parts := strings.Split(btRow.Key(), "^")
-				dcid := strings.TrimPrefix(parts[0], util.BtObsAncestorPrefix)
-				var pred string
-				if parts[1] == obsAncestorTypeObservedNode {
-					pred = "observedNode"
-				} else if parts[1] == obsAncestorTypeComparedNode {
-					pred = "comparedNode"
-				} else {
-					return fmt.Errorf("unsupported predicate")
-				}
-
 				if len(btRow[util.BtFamily]) > 0 {
 					btRawValue := btRow[util.BtFamily][0].Value
-					val, err := util.UnzipAndDecode(string(btRawValue))
+					err := addObsTriple(
+						btRow.Key(),
+						string(btRawValue),
+						resultsMap,
+						objPlaceIDNameMap)
 					if err != nil {
 						return err
 					}
-					objID := string(val)
-
-					if !strings.HasPrefix(objID, "dc/p/") { // Not StatisticalPopulation.
-						objPlaceIDNameMap[objID] = ""
-					}
-
-					if _, ok := resultsMap[dcid]; !ok {
-						resultsMap[dcid] = []*Triple{}
-					}
-					resultsMap[dcid] = append(resultsMap[dcid], &Triple{
-						SubjectID: dcid,
-						Predicate: pred,
-						ObjectID:  objID,
-					})
 				}
 				return nil
 			}); err != nil {
 			return err
+		}
+
+		// If using branch cache, then check the branch cache as well.
+		if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
+			for _, key := range obsRowList {
+				if branchString, ok := s.cache.Read(key); ok {
+					err := addObsTriple(
+						key,
+						branchString,
+						resultsMap,
+						objPlaceIDNameMap)
+					if err != nil {
+						return err
+					}
+				}
+			}
 		}
 
 		// Get name for places that are ancestors of obseravtions.
