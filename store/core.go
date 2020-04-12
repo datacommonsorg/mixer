@@ -296,40 +296,52 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 		false: util.BtInPropValPrefix,
 	}
 
-	rowRangeList := bigtable.RowRangeList{}
+	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowKey := fmt.Sprintf("%s%s^%s", keyPrefix[arcOut], dcid, prop)
-		rowRangeList = append(rowRangeList, bigtable.PrefixRange((rowKey)))
+		rowList = append(rowList, rowKey)
 	}
 
 	nodeRes := map[string][]Node{}
-	if err := bigTableReadRowsParallel(ctx, s.btTable, rowRangeList,
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
+			btJSONArray := [][]byte{}
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
 			parts := strings.Split(rowKey, "^")
 			dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
 			btResult := btRow[util.BtFamily][0]
 			btJSONRaw, err := util.UnzipAndDecode(string(btResult.Value))
-			if err != nil {
-				return err
+			if err == nil {
+				btJSONArray = append(btJSONArray, btJSONRaw)
 			}
-			// Parse the JSON and filter the nodes by type and apply limit.
-			nodeRes[dcid] = []Node{}
-			var btPropVals PropValueCache
-			json.Unmarshal(btJSONRaw, &btPropVals)
-			// Filter nodes if value type is specified.
-			if valType != "" {
-				for _, node := range btPropVals.Nodes {
-					for _, nType := range node.Types {
-						if nType == valType {
-							nodeRes[dcid] = append(nodeRes[dcid], node)
-							break
-						}
+			// Add branch cache data
+			if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
+				if branchString, ok := s.cache.Read(rowKey); ok {
+					btJSONRaw, err := util.UnzipAndDecode(branchString)
+					if err == nil {
+						btJSONArray = append(btJSONArray, btJSONRaw)
 					}
 				}
-			} else {
-				nodeRes[dcid] = btPropVals.Nodes
+			}
+			for _, btJSONRaw := range btJSONArray {
+				// Parse the JSON and filter the nodes by type and apply limit.
+				nodeRes[dcid] = []Node{}
+				var btPropVals PropValueCache
+				json.Unmarshal(btJSONRaw, &btPropVals)
+				// Filter nodes if value type is specified.
+				if valType != "" {
+					for _, node := range btPropVals.Nodes {
+						for _, nType := range node.Types {
+							if nType == valType {
+								nodeRes[dcid] = append(nodeRes[dcid], node)
+								break
+							}
+						}
+					}
+				} else {
+					nodeRes[dcid] = btPropVals.Nodes
+				}
 			}
 			// Limit the number of nodes.
 			if len(nodeRes[dcid]) > limit {
