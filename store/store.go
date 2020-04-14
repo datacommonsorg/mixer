@@ -93,6 +93,9 @@ type Interface interface {
 
 	GetChartData(ctx context.Context,
 		in *pb.GetChartDataRequest, out *pb.GetChartDataResponse) error
+
+	GetStats(ctx context.Context,
+		in *pb.GetStatsRequest, out *pb.GetStatsResponse) error
 }
 
 type store struct {

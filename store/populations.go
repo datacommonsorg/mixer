@@ -28,6 +28,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
 	"github.com/golang/protobuf/jsonpb"
+	"github.com/golang/protobuf/proto"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 )
 
@@ -470,4 +472,148 @@ func iterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
 	for i, p := range pList {
 		action(i, p, pvMap[p])
 	}
+}
+
+func addObsSeries(
+	key string,
+	cacheValue string,
+	result map[string]pb.ObsTimeSeries,
+	mmethod string,
+	mprop string,
+	statType string,
+) error {
+	parts := strings.Split(key, "^")
+	dcid := strings.TrimPrefix(parts[0], util.BtObsSeriesPrefix)
+	val, err := util.UnzipAndDecode(cacheValue)
+	if err != nil {
+		return err
+	}
+	pbData := pb.PopObsPlace{}
+	jsonpb.UnmarshalString(string(val), &pbData)
+	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
+	for _, obs := range pbData.Observations {
+		if obs.MeasurementMethod != mmethod {
+			continue
+		}
+		if obs.MeasuredProp != mprop {
+			continue
+		}
+		msg := proto.MessageReflect(obs)
+		fd := msg.Descriptor().Fields().ByJSONName(statType)
+		if msg.Has(fd) {
+			ts.Data[obs.ObservationDate] = msg.Get(fd).Float()
+		}
+	}
+	result[dcid] = ts
+	return nil
+}
+
+func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
+	out *pb.GetStatsResponse) error {
+	statsVarKey := fmt.Sprintf("%s%s", util.BtTriplesPrefix, in.GetStatsVar())
+	// Query for stats var.
+	btRow, err := s.btTable.ReadRow(ctx, statsVarKey)
+	if err != nil {
+		return err
+	}
+	if len(btRow[util.BtFamily]) == 0 {
+		return nil
+	}
+
+	btRawValue := string(btRow[util.BtFamily][0].Value)
+	btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+	if err != nil {
+		return err
+	}
+	var btTriples TriplesCache
+	json.Unmarshal(btJSONRaw, &btTriples)
+
+	var statType, popType, mmethod, mprop string
+	var pvs []*pb.PropertyValue
+	for _, t := range btTriples.Triples {
+		if t.Predicate == "typeOf" {
+			if t.ObjectID != "StatisticalVariable" {
+				return fmt.Errorf("%s is not a StatisticalVariable", in.GetStatsVar())
+			}
+		} else if t.Predicate == "statType" {
+			statType = t.ObjectValue
+		} else if t.Predicate == "provenance" {
+			continue
+		} else if t.Predicate == "populationType" {
+			popType = t.ObjectID
+		} else if t.Predicate == "measurementMethod" {
+			mmethod = t.ObjectID
+		} else if t.Predicate == "measuredProperty" {
+			mprop = t.ObjectID
+		} else {
+			pvs = append(pvs, &pb.PropertyValue{Property: t.Predicate, Value: t.ObjectID})
+		}
+	}
+	keySuffix := fmt.Sprintf("%s", popType)
+	if len(pvs) > 0 {
+		iterateSortPVs(pvs, func(i int, p, v string) {
+			keySuffix += "^" + p + "^" + v
+		})
+	}
+	rowList := bigtable.RowList{}
+	for _, dcid := range in.GetPlace() {
+		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtObsSeriesPrefix, dcid, keySuffix))
+	}
+
+	result := map[string]pb.ObsTimeSeries{}
+	// Read result from base cache.
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(btRow bigtable.Row) error {
+			rowKey := btRow.Key()
+			if len(btRow[util.BtFamily]) > 0 {
+				err := addObsSeries(
+					rowKey,
+					string(btRow[util.BtFamily][0].Value),
+					result,
+					mmethod,
+					mprop,
+					statType,
+				)
+				if err != nil {
+					return err
+				}
+			}
+			return nil
+		}); err != nil {
+		return err
+	}
+	// Read result from branch cache.
+	errs, _ := errgroup.WithContext(ctx)
+	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
+		for _, rowKey := range rowList {
+			rowKey := rowKey
+			errs.Go(func() error {
+				if branchString, ok := s.cache.Read(rowKey); ok {
+					err := addObsSeries(
+						rowKey,
+						string(branchString),
+						result,
+						mmethod,
+						mprop,
+						statType,
+					)
+					if err != nil {
+						return err
+					}
+				}
+				return nil
+			})
+		}
+	}
+	// Wait for completion and return the first error (if any)
+	err = errs.Wait()
+	if err != nil {
+		return err
+	}
+	jsonRaw, err := json.Marshal(result)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
+	return nil
 }
