@@ -478,9 +478,7 @@ func addObsSeries(
 	key string,
 	cacheValue string,
 	result map[string]pb.ObsTimeSeries,
-	mmethod string,
-	mprop string,
-	statType string,
+	statsVar pb.StatisticalVariable,
 ) error {
 	parts := strings.Split(key, "^")
 	dcid := strings.TrimPrefix(parts[0], util.BtObsSeriesPrefix)
@@ -492,14 +490,26 @@ func addObsSeries(
 	jsonpb.UnmarshalString(string(val), &pbData)
 	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
 	for _, obs := range pbData.Observations {
-		if obs.MeasurementMethod != mmethod {
+		if obs.MeasurementMethod != statsVar.MeasurementMethod {
 			continue
 		}
-		if obs.MeasuredProp != mprop {
+		if obs.MeasuredProp != statsVar.MeasuredProp {
+			continue
+		}
+		if obs.ScalingFactor != statsVar.ScalingFactor {
+			continue
+		}
+		if obs.MeasurementDenominator != statsVar.MeasurementDenominator {
+			continue
+		}
+		if obs.MeasurementQualifier != statsVar.MeasurementQualifier {
+			continue
+		}
+		if obs.Unit != statsVar.Unit {
 			continue
 		}
 		msg := proto.MessageReflect(obs)
-		fd := msg.Descriptor().Fields().ByJSONName(statType)
+		fd := msg.Descriptor().Fields().ByJSONName(statsVar.StatType)
 		if msg.Has(fd) {
 			ts.Data[obs.ObservationDate] = msg.Get(fd).Float()
 		}
@@ -528,7 +538,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 	var btTriples TriplesCache
 	json.Unmarshal(btJSONRaw, &btTriples)
 
-	var statType, popType, mmethod, mprop string
+	var statsVar pb.StatisticalVariable
 	var pvs []*pb.PropertyValue
 	for _, t := range btTriples.Triples {
 		if t.Predicate == "typeOf" {
@@ -536,20 +546,30 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 				return fmt.Errorf("%s is not a StatisticalVariable", in.GetStatsVar())
 			}
 		} else if t.Predicate == "statType" {
-			statType = t.ObjectValue
+			statsVar.StatType = t.ObjectValue
 		} else if t.Predicate == "provenance" {
 			continue
 		} else if t.Predicate == "populationType" {
-			popType = t.ObjectID
+			statsVar.PopType = t.ObjectID
 		} else if t.Predicate == "measurementMethod" {
-			mmethod = t.ObjectID
+			statsVar.MeasurementMethod = t.ObjectID
 		} else if t.Predicate == "measuredProperty" {
-			mprop = t.ObjectID
+			statsVar.MeasuredProp = t.ObjectID
+		} else if t.Predicate == "measurementDenominator" {
+			statsVar.MeasurementDenominator = t.ObjectID
+		} else if t.Predicate == "measurementQualifier" {
+			statsVar.MeasurementQualifier = t.ObjectID
+		} else if t.Predicate == "scalingFactor" {
+			statsVar.ScalingFactor = t.ObjectID
+		} else if t.Predicate == "unit" {
+			statsVar.Unit = t.ObjectID
 		} else {
+			// Do not use the pvs in pb.StatisticalVariable. Instead use the
+			// pb.PropertyValue array to use the sorting function.
 			pvs = append(pvs, &pb.PropertyValue{Property: t.Predicate, Value: t.ObjectID})
 		}
 	}
-	keySuffix := fmt.Sprintf("%s", popType)
+	keySuffix := fmt.Sprintf("%s", statsVar.PopType)
 	if len(pvs) > 0 {
 		iterateSortPVs(pvs, func(i int, p, v string) {
 			keySuffix += "^" + p + "^" + v
@@ -570,9 +590,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 					rowKey,
 					string(btRow[util.BtFamily][0].Value),
 					result,
-					mmethod,
-					mprop,
-					statType,
+					statsVar,
 				)
 				if err != nil {
 					return err
@@ -593,9 +611,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 						rowKey,
 						string(branchString),
 						result,
-						mmethod,
-						mprop,
-						statType,
+						statsVar,
 					)
 					if err != nil {
 						return err
