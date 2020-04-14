@@ -131,8 +131,11 @@ func (s *store) GetPropertyValues(ctx context.Context,
 	}
 
 	nodeRes := make(map[string]map[string][]Node)
+	for _, dcid := range in.GetDcids() {
+		nodeRes[dcid] = map[string][]Node{}
+	}
 	for dcid, data := range inRes {
-		nodeRes[dcid] = map[string][]Node{"in": data}
+		nodeRes[dcid]["in"] = data
 	}
 	for dcid, data := range outRes {
 		nodeRes[dcid]["out"] = data
@@ -361,8 +364,8 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 	}
 
 	// Add branch cache data
-	errs, _ := errgroup.WithContext(ctx)
 	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
+		errs, _ := errgroup.WithContext(ctx)
 		for _, rowKey := range rowList {
 			rowKey := rowKey
 			errs.Go(func() error {
@@ -383,13 +386,12 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 				return nil
 			})
 		}
+		// Wait for completion and return the first error (if any)
+		err := errs.Wait()
+		if err != nil {
+			return nil, err
+		}
 	}
-	// Wait for completion and return the first error (if any)
-	err := errs.Wait()
-	if err != nil {
-		return nil, err
-	}
-
 	return nodeRes, nil
 }
 
