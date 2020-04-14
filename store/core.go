@@ -284,6 +284,41 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 	return nodeRes, nil
 }
 
+func addPropertyValue(
+	dcid string,
+	valType string,
+	cacheString string,
+	nodeRes map[string][]Node,
+	limit int,
+) error {
+	btJSONRaw, err := util.UnzipAndDecode(cacheString)
+	if err != nil {
+		return err
+	}
+	// Parse the JSON and filter the nodes by type and apply limit.
+	nodeRes[dcid] = []Node{}
+	var btPropVals PropValueCache
+	json.Unmarshal(btJSONRaw, &btPropVals)
+	// Filter nodes if value type is specified.
+	if valType != "" {
+		for _, node := range btPropVals.Nodes {
+			for _, nType := range node.Types {
+				if nType == valType {
+					nodeRes[dcid] = append(nodeRes[dcid], node)
+					break
+				}
+			}
+		}
+	} else {
+		nodeRes[dcid] = btPropVals.Nodes
+	}
+	// Limit the number of nodes.
+	if len(nodeRes[dcid]) > limit {
+		nodeRes[dcid] = nodeRes[dcid][:limit]
+	}
+	return nil
+}
+
 func (s *store) btGetPropertyValues(ctx context.Context,
 	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string][]Node, error) {
 	dcids := in.GetDcids()
@@ -305,52 +340,60 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 	nodeRes := map[string][]Node{}
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
-			btJSONArray := [][]byte{}
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
 			parts := strings.Split(rowKey, "^")
 			dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
 			btResult := btRow[util.BtFamily][0]
-			btJSONRaw, err := util.UnzipAndDecode(string(btResult.Value))
-			if err == nil {
-				btJSONArray = append(btJSONArray, btJSONRaw)
-			}
-			// Add branch cache data
-			if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
-				if branchString, ok := s.cache.Read(rowKey); ok {
-					btJSONRaw, err := util.UnzipAndDecode(branchString)
-					if err == nil {
-						btJSONArray = append(btJSONArray, btJSONRaw)
-					}
-				}
-			}
-			for _, btJSONRaw := range btJSONArray {
-				// Parse the JSON and filter the nodes by type and apply limit.
-				nodeRes[dcid] = []Node{}
-				var btPropVals PropValueCache
-				json.Unmarshal(btJSONRaw, &btPropVals)
-				// Filter nodes if value type is specified.
-				if valType != "" {
-					for _, node := range btPropVals.Nodes {
-						for _, nType := range node.Types {
-							if nType == valType {
-								nodeRes[dcid] = append(nodeRes[dcid], node)
-								break
-							}
-						}
-					}
-				} else {
-					nodeRes[dcid] = btPropVals.Nodes
-				}
-			}
-			// Limit the number of nodes.
-			if len(nodeRes[dcid]) > limit {
-				nodeRes[dcid] = nodeRes[dcid][:limit]
+			err := addPropertyValue(
+				dcid,
+				valType,
+				string(btResult.Value),
+				nodeRes,
+				limit,
+			)
+			if err != nil {
+				return err
 			}
 			return nil
 		}); err != nil {
 		return nil, err
 	}
+
+	// Add branch cache data
+	errs, _ := errgroup.WithContext(ctx)
+	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
+		for _, rowKey := range rowList {
+			rowKey := rowKey
+			errs.Go(func() error {
+				if branchString, ok := s.cache.Read(rowKey); ok {
+					btJSONRaw, err := util.UnzipAndDecode(branchString)
+					if err != nil {
+						return err
+					}
+					parts := strings.Split(rowKey, "^")
+					dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
+					err = addPropertyValue(
+						dcid,
+						valType,
+						string(btJSONRaw),
+						nodeRes,
+						limit,
+					)
+					if err != nil {
+						return err
+					}
+				}
+				return nil
+			})
+		}
+	}
+	// Wait for completion and return the first error (if any)
+	err := errs.Wait()
+	if err != nil {
+		return nil, err
+	}
+
 	return nodeRes, nil
 }
 
