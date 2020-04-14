@@ -132,7 +132,7 @@ func (s *store) GetPropertyValues(ctx context.Context,
 
 	nodeRes := make(map[string]map[string][]Node)
 	for dcid, data := range inRes {
-		nodeRes[dcid]["in"] = data
+		nodeRes[dcid] = map[string][]Node{"in": data}
 	}
 	for dcid, data := range outRes {
 		nodeRes[dcid]["out"] = data
@@ -367,16 +367,12 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 			rowKey := rowKey
 			errs.Go(func() error {
 				if branchString, ok := s.cache.Read(rowKey); ok {
-					btJSONRaw, err := util.UnzipAndDecode(branchString)
-					if err != nil {
-						return err
-					}
 					parts := strings.Split(rowKey, "^")
 					dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
-					err = addPropertyValue(
+					err := addPropertyValue(
 						dcid,
 						valType,
-						string(btJSONRaw),
+						branchString,
 						nodeRes,
 						limit,
 					)
@@ -678,7 +674,7 @@ func addObsTriple(
 	} else {
 		return fmt.Errorf("unsupported predicate")
 	}
-	val, err := util.UnzipAndDecode(string(btRawValue))
+	val, err := util.UnzipAndDecode(btRawValue)
 	if err != nil {
 		return err
 	}

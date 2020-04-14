@@ -56,12 +56,14 @@ func main() {
 			Direction: "in",
 		},
 		&pb.GetPropertyValuesRequest{
-			Dcids:    dcids,
-			Property: "containedInPlace",
+			Dcids:     dcids,
+			Property:  "containedInPlace",
+			Direction: "out",
 		},
 		&pb.GetPropertyValuesRequest{
 			Dcids:    dcids,
 			Property: "containedInPlace",
+			Limit:    10,
 		},
 		&pb.GetPropertyValuesRequest{
 			Dcids:    dcids,
