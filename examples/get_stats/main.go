@@ -45,7 +45,7 @@ func main() {
 	ctx := context.Background()
 
 	r, err := c.GetStats(ctx, &pb.GetStatsRequest{
-		Place:    []string{"geoId/06085"},
+		Place:    []string{"geoId/06085", "geoId/06"},
 		StatsVar: "dc/014lx3qxhdddd",
 	})
 	if err != nil {
