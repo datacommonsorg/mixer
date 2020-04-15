@@ -220,8 +220,12 @@ func NewStore(
 	}
 	// Always create a new subscriber with default expiration date of 31 days.
 	subID := subIDPrefix + randomString()
+	expiration, _ := time.ParseDuration("48h")
 	sub, err := pubsubClient.CreateSubscription(ctx, subID,
-		pubsub.SubscriptionConfig{Topic: pubsubClient.Topic(pubsubTopic)})
+		pubsub.SubscriptionConfig{
+			Topic:            pubsubClient.Topic(pubsubTopic),
+			ExpirationPolicy: time.Duration(expiration),
+		})
 	if err != nil {
 		log.Fatalf("pubsub CreateSubscription: %v", err)
 	}
