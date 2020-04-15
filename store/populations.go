@@ -486,8 +486,8 @@ func addObsSeries(
 	if err != nil {
 		return err
 	}
-	pbData := pb.PopObsPlace{}
-	jsonpb.UnmarshalString(string(val), &pbData)
+	pbData := &pb.PopObsPlace{}
+	jsonpb.UnmarshalString(string(val), pbData)
 	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
 	for _, obs := range pbData.Observations {
 		if obs.MeasurementMethod != statsVar.MeasurementMethod {
