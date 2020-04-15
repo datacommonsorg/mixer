@@ -200,6 +200,30 @@ message GetObsSeriesResponse {
   string payload = 1;
 }
 
+// Represents observation time series data.
+message ObsTimeSeries {
+  map<string, double> data = 1;  // Date to value.
+  string unit = 2;
+  string place_name = 3;
+}
+
+// Request message for GetStats.
+message GetStatsRequest {
+  // The dcids of the place.
+  repeated string place = 1;
+
+  // The dcid of the StatisticalVariable.
+  string stats_var = 2;
+
+  Option option = 3;
+}
+
+// Response of GetStats
+message GetStatsResponse {
+  // The JSON payload.
+  string payload = 2;
+}
+
 // Request message for GetPopCategory.
 message GetPopCategoryRequest {
   // The type of the place.
@@ -700,6 +724,13 @@ service Mixer {
     };
   }
 
+  // Get stats of places by StatisticalVariable.
+  rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {
+    option (google.api.http) = {
+      post: "/bulk/stats"
+      body: "*"
+    };
+  }
 
   // Get a list of possible population type, measured property, and PVs for a given place type.
   rpc GetPopCategory(GetPopCategoryRequest) returns (GetPopCategoryResponse) {

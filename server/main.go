@@ -202,6 +202,19 @@ func (s *server) GetObsSeries(ctx context.Context,
 	return &out, nil
 }
 
+func (s *server) GetStats(ctx context.Context,
+	in *pb.GetStatsRequest) (*pb.GetStatsResponse, error) {
+	if len(in.GetPlace()) == 0 || in.GetStatsVar() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+
+	out := pb.GetStatsResponse{}
+	if err := s.st.GetStats(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 func (s *server) GetPopCategory(ctx context.Context,
 	in *pb.GetPopCategoryRequest) (*pb.GetPopCategoryResponse, error) {
 	if in.GetPlaceType() == "" {
