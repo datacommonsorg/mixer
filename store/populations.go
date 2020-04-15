@@ -477,8 +477,8 @@ func iterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
 func addObsSeries(
 	key string,
 	cacheValue string,
-	result map[string]pb.ObsTimeSeries,
-	statsVar pb.StatisticalVariable,
+	result map[string]*pb.ObsTimeSeries,
+	statsVar *pb.StatisticalVariable,
 ) error {
 	parts := strings.Split(key, "^")
 	dcid := strings.TrimPrefix(parts[0], util.BtObsSeriesPrefix)
@@ -514,7 +514,7 @@ func addObsSeries(
 			ts.Data[obs.ObservationDate] = msg.Get(fd).Float()
 		}
 	}
-	result[dcid] = ts
+	result[dcid] = &ts
 	return nil
 }
 
@@ -580,7 +580,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtObsSeriesPrefix, dcid, keySuffix))
 	}
 
-	result := map[string]pb.ObsTimeSeries{}
+	result := map[string]*pb.ObsTimeSeries{}
 	// Read result from base cache.
 	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
@@ -590,7 +590,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 					rowKey,
 					string(btRow[util.BtFamily][0].Value),
 					result,
-					statsVar,
+					&statsVar,
 				)
 				if err != nil {
 					return err
@@ -611,7 +611,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 						rowKey,
 						string(branchString),
 						result,
-						statsVar,
+						&statsVar,
 					)
 					if err != nil {
 						return err
