@@ -78,6 +78,11 @@ const (
 	BtRelatedPlacesSameTypeAndAncestorPCPrefix = "d/j0/"
 	// BtInterestingPlaceAspectPrefix for interesting place aspect.
 	BtInterestingPlaceAspectPrefix = "d/k/"
+	// BtInPropValPrefix for in-arc prop value.
+	BtInPropValPrefix = "d/l/"
+	// BtOutPropValPrefix for out-arc prop value.
+	BtOutPropValPrefix = "d/m/"
+
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
 	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
