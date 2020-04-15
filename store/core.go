@@ -101,7 +101,7 @@ func (s *store) GetPropertyValues(ctx context.Context,
 	}
 
 	var err error
-	var inRes, outRes map[string]map[string][]Node
+	var inRes, outRes map[string][]Node
 	if in.GetLimit() > util.BtCacheLimit {
 		if inArc {
 			inRes, err = s.bqGetPropertyValues(ctx, in, false)
@@ -131,22 +131,14 @@ func (s *store) GetPropertyValues(ctx context.Context,
 	}
 
 	nodeRes := make(map[string]map[string][]Node)
-	if inArc && outArc {
-		for _, r := range []map[string]map[string][]Node{inRes, outRes} {
-			for k1, v1 := range r {
-				if _, ok := nodeRes[k1]; !ok {
-					nodeRes[k1] = v1
-				} else {
-					for k2, v2 := range v1 {
-						nodeRes[k1][k2] = v2
-					}
-				}
-			}
-		}
-	} else if inArc {
-		nodeRes = inRes
-	} else { // outArc.
-		nodeRes = outRes
+	for _, dcid := range in.GetDcids() {
+		nodeRes[dcid] = map[string][]Node{}
+	}
+	for dcid, data := range inRes {
+		nodeRes[dcid]["in"] = data
+	}
+	for dcid, data := range outRes {
+		nodeRes[dcid]["out"] = data
 	}
 
 	jsonRaw, err := json.Marshal(nodeRes)
@@ -154,24 +146,17 @@ func (s *store) GetPropertyValues(ctx context.Context,
 		return err
 	}
 	out.Payload = string(jsonRaw)
-
 	return err
 }
 
 func (s *store) bqGetPropertyValues(ctx context.Context,
-	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string]map[string][]Node, error) {
+	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string][]Node, error) {
 	// TODO(antaresc): Fix the ValueType not being used in the triple query
 	dcids := in.GetDcids()
 
 	// Get request parameters
 	valueType := in.GetValueType()
 	prop := in.GetProperty()
-	var direction string
-	if arcOut {
-		direction = "out"
-	} else {
-		direction = "in"
-	}
 	limit := in.GetLimit()
 	triples := []*Triple{}
 
@@ -262,12 +247,10 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 
 	// Populate nodes from the final list of triples. First initialize the map
 	// with the given parameters
-	nodeRes := make(map[string]map[string][]Node, 0)
+	nodeRes := make(map[string][]Node, 0)
 	for _, dcid := range dcids {
-		nodeRes[dcid] = make(map[string][]Node, 0)
-		nodeRes[dcid][direction] = make([]Node, 0)
+		nodeRes[dcid] = []Node{}
 	}
-
 	// Then copy over all triples
 	for _, t := range triples {
 		// Get the node's contents
@@ -297,85 +280,118 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 				}
 			}
 		}
-
 		// Map the node accordingly
-		nodeRes[srcID][direction] = append(nodeRes[srcID][direction], node)
+		nodeRes[srcID] = append(nodeRes[srcID], node)
 	}
 
 	return nodeRes, nil
 }
 
+func addPropertyValue(
+	dcid string,
+	valType string,
+	cacheString string,
+	nodeRes map[string][]Node,
+	limit int,
+) error {
+	btJSONRaw, err := util.UnzipAndDecode(cacheString)
+	if err != nil {
+		return err
+	}
+	// Parse the JSON and filter the nodes by type and apply limit.
+	nodeRes[dcid] = []Node{}
+	var btPropVals PropValueCache
+	json.Unmarshal(btJSONRaw, &btPropVals)
+	// Filter nodes if value type is specified.
+	if valType != "" {
+		for _, node := range btPropVals.Nodes {
+			for _, nType := range node.Types {
+				if nType == valType {
+					nodeRes[dcid] = append(nodeRes[dcid], node)
+					break
+				}
+			}
+		}
+	} else {
+		nodeRes[dcid] = btPropVals.Nodes
+	}
+	// Limit the number of nodes.
+	if len(nodeRes[dcid]) > limit {
+		nodeRes[dcid] = nodeRes[dcid][:limit]
+	}
+	return nil
+}
+
 func (s *store) btGetPropertyValues(ctx context.Context,
-	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string]map[string][]Node, error) {
+	in *pb.GetPropertyValuesRequest, arcOut bool) (map[string][]Node, error) {
 	dcids := in.GetDcids()
 	prop := in.GetProperty()
-
-	var direction string
-	if arcOut {
-		direction = "out"
-	} else {
-		direction = "in"
-	}
 	valType := in.GetValueType()
+	limit := int(in.GetLimit())
 
 	keyPrefix := map[bool]string{
-		true:  util.BtPropValOutPrefix,
-		false: util.BtPropValInPrefix,
+		true:  util.BtOutPropValPrefix,
+		false: util.BtInPropValPrefix,
 	}
 
-	rowRangeList := bigtable.RowRangeList{}
+	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		rowPrefix := fmt.Sprintf("%s%s^%s", keyPrefix[arcOut], dcid, prop)
-		if valType != "" {
-			rowPrefix = rowPrefix + "^" + valType
-		}
-		rowRangeList = append(rowRangeList, bigtable.PrefixRange((rowPrefix)))
+		rowKey := fmt.Sprintf("%s%s^%s", keyPrefix[arcOut], dcid, prop)
+		rowList = append(rowList, rowKey)
 	}
 
-	btRawValuesMap := map[string][]string{} // Key: dcid; value: a list of raw row values.
-	if err := bigTableReadRowsParallel(ctx, s.btTable, rowRangeList,
+	nodeRes := map[string][]Node{}
+	if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(btRow bigtable.Row) error {
 			// Extract DCID from row key.
 			rowKey := btRow.Key()
 			parts := strings.Split(rowKey, "^")
 			dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
-
 			btResult := btRow[util.BtFamily][0]
-			if _, ok := btRawValuesMap[dcid]; !ok {
-				btRawValuesMap[dcid] = []string{}
+			err := addPropertyValue(
+				dcid,
+				valType,
+				string(btResult.Value),
+				nodeRes,
+				limit,
+			)
+			if err != nil {
+				return err
 			}
-			btRawValuesMap[dcid] = append(btRawValuesMap[dcid], string(btResult.Value))
-
 			return nil
 		}); err != nil {
 		return nil, err
 	}
 
-	nodeRes := make(map[string]map[string][]Node, 0)
-	for dcid, btRawValues := range btRawValuesMap {
-		nodeList := make([]Node, 0)
-		for _, btRawValue := range btRawValues {
-			btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
-			if err != nil {
-				return nil, err
-			}
-
-			// Parse the JSON and send the triples to the channel.
-			var btPropVals PropValueCache
-			json.Unmarshal(btJSONRaw, &btPropVals)
-
-			nodes := btPropVals.Nodes
-			if limit := int(in.GetLimit()); len(btPropVals.Nodes) > limit {
-				nodes = nodes[:limit]
-			}
-			nodeList = append(nodeList, nodes...)
+	// Add branch cache data
+	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
+		errs, _ := errgroup.WithContext(ctx)
+		for _, rowKey := range rowList {
+			rowKey := rowKey
+			errs.Go(func() error {
+				if branchString, ok := s.cache.Read(rowKey); ok {
+					parts := strings.Split(rowKey, "^")
+					dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
+					err := addPropertyValue(
+						dcid,
+						valType,
+						branchString,
+						nodeRes,
+						limit,
+					)
+					if err != nil {
+						return err
+					}
+				}
+				return nil
+			})
 		}
-
-		nodeRes[dcid] = map[string][]Node{
-			direction: nodeList,
+		// Wait for completion and return the first error (if any)
+		err := errs.Wait()
+		if err != nil {
+			return nil, err
 		}
 	}
-
 	return nodeRes, nil
 }
 
@@ -660,7 +676,7 @@ func addObsTriple(
 	} else {
 		return fmt.Errorf("unsupported predicate")
 	}
-	val, err := util.UnzipAndDecode(string(btRawValue))
+	val, err := util.UnzipAndDecode(btRawValue)
 	if err != nil {
 		return err
 	}
@@ -787,13 +803,10 @@ func (s *store) btGetTriples(
 				return err
 			}
 			for dcid, v1 := range res {
-				if _, ok := v1["out"]; !ok {
+				if len(v1) == 0 {
 					continue
 				}
-				if len(v1["out"]) == 0 {
-					continue
-				}
-				objPlaceIDNameMap[dcid] = v1["out"][0].Value
+				objPlaceIDNameMap[dcid] = v1[0].Value
 			}
 		}
 	}
