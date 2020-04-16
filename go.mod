@@ -8,6 +8,7 @@ require (
 	cloud.google.com/go/bigtable v1.0.0
 	cloud.google.com/go/pubsub v1.3.1
 	cloud.google.com/go/storage v1.6.0
+	github.com/deckarep/golang-set v1.7.1
 	github.com/go-test/deep v1.0.3
 	github.com/golang/protobuf v1.4.0-rc.4
 	github.com/google/go-cmp v0.4.0

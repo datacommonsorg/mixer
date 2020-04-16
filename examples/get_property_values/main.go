@@ -69,6 +69,11 @@ func main() {
 			Dcids:    dcids,
 			Property: "name",
 		},
+		&pb.GetPropertyValuesRequest{
+			Dcids:     []string{"geoId/05"},
+			Property:  "location",
+			ValueType: "Election",
+		},
 	} {
 		// Call GetPropertyValues
 		if err := testGetPropertyValue(ctx, c, req); err != nil {
