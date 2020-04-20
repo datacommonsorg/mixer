@@ -55,6 +55,17 @@ func main() {
 		}
 		LIMIT 10`,
 		`
+		SELECT ?date ?mean ?unit
+		WHERE {
+			?o typeOf WeatherObservation .
+			?o observedNode geoId/0649670 .
+			?o measuredProperty temperature .
+			?o observationDate ?date .
+			?o unit ?unit .
+			?o meanValue ?mean .
+		}
+		`,
+		`
 		BASE <http://schema.org/>
 		SELECT  ?Unemployment
 		WHERE {
