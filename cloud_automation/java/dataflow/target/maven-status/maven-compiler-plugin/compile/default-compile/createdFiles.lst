@@ -1,0 +1,4 @@
+org/datacommons/dataflow/CloudBigtableOptions.class
+org/datacommons/dataflow/CsvImport$CsvToBigtableFn.class
+org/datacommons/dataflow/CsvImport.class
+org/datacommons/dataflow/CsvImport$BigtableCsvOptions.class
