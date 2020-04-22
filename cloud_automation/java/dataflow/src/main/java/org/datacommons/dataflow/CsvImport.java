@@ -78,7 +78,7 @@ public class CsvImport {
 
 
   /**
-   * <p>Creates a dataflow templae with following stages: </p>
+   * <p>Creates a dataflow template with following stages: </p>
    * <ol>
    * <li> Read a CSV from GCS.
    * <li> Transform each line to a Bigtable Row mutation.
@@ -87,9 +87,9 @@ public class CsvImport {
    *
    * @param args Arguments to use to configure the Dataflow Pipeline. Check README for deployment
    * instructions.
-   * --project=[dataflow project] \\ --stagingLocation=gs://[your google storage bucket] \\
-   * --inputFile=gs://[your google storage object] \\
-   * --bigtableProject=[bigtable project] \\ --bigtableInstanceId=[bigtable instance id] \\
+   * --project=[dataflow project] --stagingLocation=gs://[your google storage bucket]
+   * --inputFile=gs://[your google storage object]
+   * --bigtableProject=[bigtable project] --bigtableInstanceId=[bigtable instance id]
    * --bigtableTableId=[bigtable tableName]
    *
    *
@@ -113,7 +113,7 @@ public class CsvImport {
         .apply("WriteToBigtable", write);
 
     PipelineResult result = p.run();
-            // Wait for pipeline to finish only if it is not constructing a template.
+    // Wait for pipeline to finish only if it is not constructing a template.
     if (options.as(DataflowPipelineOptions.class).getTemplateLocation() == null) {
       result.waitUntilFinish();
     }
