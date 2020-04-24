@@ -48,11 +48,7 @@ public class CsvImport {
           setCell =  Mutation.SetCell.newBuilder()
                           .setFamilyName(FAMILY)
                           .setColumnQualifier(ByteString.copyFrom( headerBytes[i]))
-<<<<<<< HEAD
                           .setValue(ByteString.copyFrom(Bytes.toBytes(values[i+1]))) // since values[0] is the key.
-=======
-                          .setValue(ByteString.copyFrom(Bytes.toBytes(values[i])))
->>>>>>> 6713982d7633e8f1c2cace0f42578fd193fb2218
                           .build();
            mutations.add(Mutation.newBuilder().setSetCell(setCell).build());
         }
