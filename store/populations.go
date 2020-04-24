@@ -546,7 +546,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 				return fmt.Errorf("%s is not a StatisticalVariable", in.GetStatsVar())
 			}
 		} else if t.Predicate == "statType" {
-			statsVar.StatType = t.ObjectValue
+			statsVar.StatType = t.ObjectID
 		} else if t.Predicate == "provenance" {
 			continue
 		} else if t.Predicate == "populationType" {
