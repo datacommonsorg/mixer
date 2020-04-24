@@ -549,6 +549,8 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 			statsVar.StatType = t.ObjectID
 		} else if t.Predicate == "provenance" {
 			continue
+		} else if t.Predicate == "name" {
+			continue
 		} else if t.Predicate == "populationType" {
 			statsVar.PopType = t.ObjectID
 		} else if t.Predicate == "measurementMethod" {
