@@ -1,6 +1,7 @@
 {
    "variables_config": {
       "gcp_project": "google.com:datcom-store-dev",
+      "bt_instance": "prophet-cache",
       "completion_status_file_bucket": "prophet-cache",
       "email": "snarsale@google.com",
       "dataflow_template_location": "gs://datcom-dataflow-templates/templates/csv_to_bt",
