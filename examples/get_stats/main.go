@@ -46,7 +46,7 @@ func main() {
 
 	r, err := c.GetStats(ctx, &pb.GetStatsRequest{
 		Place:    []string{"geoId/06085", "geoId/06"},
-		StatsVar: "dc/014lx3qxhdddd",
+		StatsVar: "TotalPopulation",
 	})
 	if err != nil {
 		log.Fatalf("could not GetStats: %s", err)
