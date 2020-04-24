@@ -35,9 +35,9 @@ public class CsvImport {
     public void processElement(ProcessContext c) throws Exception {
       try {
         // TODO: Pass header as congfiguration.
-        String[] headers = new String[] {"key", "value"};
+        String[] headers = new String[] {"value"};
         String[] values = c.element().split(",");
-        Preconditions.checkArgument(headers.length == values.length);
+        Preconditions.checkArgument(headers.length == (values.length-1)); // first element of values is key for BT row.
 
         byte[] rowkey = Bytes.toBytes(values[0]);
         byte[][] headerBytes = new byte[headers.length][];
@@ -48,7 +48,7 @@ public class CsvImport {
           setCell =  Mutation.SetCell.newBuilder()
                           .setFamilyName(FAMILY)
                           .setColumnQualifier(ByteString.copyFrom( headerBytes[i]))
-                          .setValue(ByteString.copyFrom(Bytes.toBytes(values[i])))
+                          .setValue(ByteString.copyFrom(Bytes.toBytes(values[i+1]))) // since values[0] is the key.
                           .build();
            mutations.add(Mutation.newBuilder().setSetCell(setCell).build());
         }
