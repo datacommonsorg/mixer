@@ -29,7 +29,6 @@ import (
 	"github.com/datacommonsorg/mixer/util"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
-	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 )
 
@@ -602,32 +601,24 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 		}); err != nil {
 		return err
 	}
-	// Read result from branch cache.
-	errs, _ := errgroup.WithContext(ctx)
+
 	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
 		for _, rowKey := range rowList {
 			rowKey := rowKey
-			errs.Go(func() error {
-				if branchString, ok := s.cache.Read(rowKey); ok {
-					err := addObsSeries(
-						rowKey,
-						string(branchString),
-						result,
-						&statsVar,
-					)
-					if err != nil {
-						return err
-					}
+			if branchString, ok := s.cache.Read(rowKey); ok {
+				err := addObsSeries(
+					rowKey,
+					string(branchString),
+					result,
+					&statsVar,
+				)
+				if err != nil {
+					log.Println(err)
 				}
-				return nil
-			})
+			}
 		}
 	}
-	// Wait for completion and return the first error (if any)
-	err = errs.Wait()
-	if err != nil {
-		return err
-	}
+
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
 		return err
