@@ -114,7 +114,7 @@ if [[ $(gcloud container clusters list --filter="$CLUSTER_NAME" --format=yaml) ]
 else
   gcloud container clusters create $CLUSTER_NAME \
     --zone=us-central1-c \
-    --machine-type=custom-1-5120
+    --machine-type=custom-2-5120
 fi
 
 gcloud container clusters get-credentials $CLUSTER_NAME
