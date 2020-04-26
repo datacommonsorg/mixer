@@ -52,7 +52,7 @@ spec:
               memory: "100M"
               cpu: "100m"
             limits:
-              memory: "500M"
+              memory: "1.5G"
               cpu: "300m"
           # HEALTH CHECK START
           # Used by ingress to perform health check
@@ -74,7 +74,7 @@ spec:
               memory: "1G"
               cpu: "500m"
             limits:
-              memory: "4G"
+              memory: "3.5G"
               cpu: "1500m"
           args: [
             "--bq_dataset", "BQ_DATASET",
