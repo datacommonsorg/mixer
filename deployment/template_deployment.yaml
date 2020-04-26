@@ -47,6 +47,13 @@ spec:
             "-z", "healthz",
             "--cors_preset", "basic",
           ]
+          resources:
+            requests:
+              memory: "100M"
+              cpu: "100m"
+            limits:
+              memory: "500M"
+              cpu: "300m"
           # HEALTH CHECK START
           # Used by ingress to perform health check
           readinessProbe:
@@ -62,6 +69,13 @@ spec:
         - name: mixer
           image: IMAGE
           imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "1G"
+              cpu: "100m"
+            limits:
+              memory: "4G"
+              cpu: "700m"
           args: [
             "--bq_dataset", "BQ_DATASET",
             "--bt_table", "BT_TABLE",
