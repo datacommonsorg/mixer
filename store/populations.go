@@ -601,7 +601,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 		}
 	}
 
-	// Read result from base cache if no branch cache data found
+	// Read result from base cache if no branch cache data found.
 	// This is valid since branch cache is a superset of base cache.
 	if len(dcidToRaw) == 0 {
 		if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
