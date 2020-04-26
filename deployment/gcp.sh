@@ -26,11 +26,7 @@ else
 fi
 gcloud auth login
 gcloud config set project $PROJECT_ID
-if [ "$PROJECT_ID" == "datcom-mixer" ]; then
-  gcloud config set compute/zone us-central1
-else
-  gcloud config set compute/zone us-central1-c
-fi
+gcloud config set compute/zone us-central1-c
 
 # Create service account
 if [[ $(gcloud iam service-accounts list --filter="name:mixer-robot" --format=yaml) ]]; then
