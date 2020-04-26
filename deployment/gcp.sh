@@ -28,7 +28,7 @@ gcloud auth login
 gcloud config set project $PROJECT_ID
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
   gcloud config set compute/zone us-central1
-else 
+else
   gcloud config set compute/zone us-central1-c
 fi
 
@@ -45,6 +45,8 @@ fi
 # Enable service account
 gcloud alpha iam service-accounts enable $SERVICE_ACCOUNT
 
+# Enable Service Control API. This is crucial to get the endpoints working.
+gcloud services enable servicecontrol.googleapis.com
 
 # Service account policy
 gcloud projects add-iam-policy-binding $PROJECT_ID \
