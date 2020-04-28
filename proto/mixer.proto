@@ -756,7 +756,7 @@ service Mixer {
   rpc GetChartData(GetChartDataRequest) returns (
     GetChartDataResponse) {
     option (google.api.http) = {
-      get: "/node/chart-data"
+      post: "/node/chart-data"
       body: "*"
     };
   }
