@@ -34,7 +34,7 @@ def gcs_trigger(data, context=None):
   name = data['name']
 
   # Check if this is triggered after flume job completion
-  if object.endswith(PIPELINE_TRIGGER_FILE):
+  if name.endswith(PIPELINE_TRIGGER_FILE):
     csv_file = read_contents(bucket, name)
     path = pathlib.PurePath(csv_file)
     # path.parent.name gives the last directory in the path. We use this as
