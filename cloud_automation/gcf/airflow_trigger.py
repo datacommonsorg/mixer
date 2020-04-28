@@ -40,7 +40,7 @@ def gcs_trigger(data, context=None):
     # path.parent.name gives the last directory in the path. We use this as
     # bt table id.
     bt_table_id = path.parent.name
-    trigger_dag(table_id, csv_file)
+    trigger_dag(bt_table_id, csv_file)
   return
 
 
