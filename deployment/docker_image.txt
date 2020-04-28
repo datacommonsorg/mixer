@@ -1,1 +1,1 @@
-gcr.io/datcom-mixer/go-grpc-mixer:0.3.13
+gcr.io/datcom-mixer/go-grpc-mixer:0.3.14
