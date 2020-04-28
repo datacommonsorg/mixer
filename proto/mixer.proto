@@ -755,7 +755,10 @@ service Mixer {
   // Get chart data.
   rpc GetChartData(GetChartDataRequest) returns (
     GetChartDataResponse) {
-    option (google.api.http) = { get: "/node/chart-data"};
+    option (google.api.http) = {
+      get: "/node/chart-data"
+      body: "*"
+    };
   }
 
   // Translate Sparql Query into translation results.
