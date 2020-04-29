@@ -1,3 +1,13 @@
+// Package btcachegeneration runs a GCF function that triggers in 2 scenarios:
+// 1) completion of prophet-flume job in borg. 
+//    The trigger is based on GCS file prophet-cache/latest_base_cache_run.txt.
+// 2) On completion of BT cache ingestion via an airflow job. This trigger is based
+//    on GCS file prophet-cache/[success|failure].txt
+//
+// In the first case, on triggering it sets up new cloud BT table, scales up BT cluster to 300 nodes
+// and starts an airflow job by writing to prophet-cache/airflow.txt
+//
+// In the second case it scales BT cluster to 20 nodes.
 package btcachegeneration
 
 import (
@@ -6,9 +16,9 @@ import (
 	"io/ioutil"
 	"log"
 	"path/filepath"
+	"strings"
 	"time"
 
-	"google.golang.org/api/dataflow/v1b3"
 	"cloud.google.com/go/bigtable"
 	"cloud.google.com/go/storage"
 )
@@ -19,8 +29,12 @@ const (
 	bigtableCluster    = "prophet-cache-c1"
 	createTableRetries = 3
 	columnFamily       = "csv"
-	dataflowTemplate   = "gs://datcom-dataflow-templates/templates/csv_to_bt"
-	bigtableNodes      = 300
+	bigtableNodesHigh  = 300
+	bigtableNodesLow   = 20
+	triggerFile        = "latest_base_cache_run.txt"
+	successFile        = "success.txt"
+	failureFile        = "failure.txt"
+	airflowTriggerFile = "trigger_airflow.txt"
 )
 
 // GCSEvent is the payload of a GCS event.
@@ -29,13 +43,9 @@ type GCSEvent struct {
 	Bucket string `json:"bucket"`
 }
 
-func ReadFromGCS(ctx context.Context, bucketName, fileName string) ([]byte, error) {
-	gcsClient, err := storage.NewClient(ctx)
-	if err != nil {
-		log.Printf("Failed to create gcsClient: %v\n", err)
-		return nil, fmt.Errorf("Failed to create gcsClient: %v", err)
-	}
 
+// readFromGCS reads contents of GCS file.
+func readFromGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fileName string) ([]byte, error) {
 	bucket := gcsClient.Bucket(bucketName)
 	rc, err := bucket.Object(fileName).NewReader(ctx)
 	if err != nil {
@@ -46,7 +56,21 @@ func ReadFromGCS(ctx context.Context, bucketName, fileName string) ([]byte, erro
 	return ioutil.ReadAll(rc)
 }
 
-func SetupBigtable(ctx context.Context, tableID string) error {
+// writeToGCS writes to GCS files.
+func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fileName string, data []byte) (error) {
+	bucket := gcsClient.Bucket(bucketName)
+	w := bucket.Object(fileName).NewWriter(ctx)
+
+	if _, err := fmt.Fprintf(w, string(data)); err != nil {
+		w.Close()
+    log.Printf("Unable to open file for writing from bucket %q, file %q: %v\n", bucketName, fileName, err)
+		return fmt.Errorf("Unable to write to bucket %q, file %q: %v", bucketName, fileName, err)
+	}
+	return w.Close()
+}
+
+// setupBigtable creates a new cloud BT table and scales up the cluster to 300 nodes.
+func setupBigtable(ctx context.Context, tableID string) error {
 	log.Printf("Creating new bigtable table: %s", tableID)
 	adminClient, err := bigtable.NewAdminClient(ctx, projectID, bigtableInstance)
 	if err != nil {
@@ -75,15 +99,21 @@ func SetupBigtable(ctx context.Context, tableID string) error {
 		log.Printf("Unable to create column family: csv for table: %s, got error: %v", tableID, err)
 		return err
 	}
+	return scaleBT(ctx, bigtableNodesHigh)
+}
 
+// scaleBT adjustes numNodes for cloud BT cluster.
+func scaleBT(ctx context.Context, numNodes int32) error {
 	// Scale up bigtable cluster. This helps speed up the dataflow job.
 	// We scale down again once dataflow job completes.
 	instanceAdminClient, err := bigtable.NewInstanceAdminClient(ctx, projectID)
+	dctx, cancel := context.WithDeadline(ctx, time.Now().Add(10*time.Minute))
+	defer cancel()
 	if err != nil {
 		log.Printf("Unable to create a table instance admin client. %v", err)
 		return err
 	}
-	if err := instanceAdminClient.UpdateCluster(dctx, bigtableInstance, bigtableCluster, bigtableNodes); err != nil {
+	if err := instanceAdminClient.UpdateCluster(dctx, bigtableInstance, bigtableCluster, numNodes); err != nil {
 		log.Printf("Unable to increase bigtable cluster size: %v", err)
 		return err
 	}
@@ -92,45 +122,33 @@ func SetupBigtable(ctx context.Context, tableID string) error {
 
 // GCSTrigger consumes a GCS event.
 func GCSTrigger(ctx context.Context, e GCSEvent) error {
-	return nil
-	// Read contents of GCS file.
-	inputFile, err := ReadFromGCS(ctx, e.Bucket, e.Name)
-	if err != nil {
-		log.Printf("Unable to read from gcs gs://%s/%s, got err: %v", e.Bucket, e.Name, err)
-		return err
-	}
-	tableID := filepath.Base(filepath.Dir(string(inputFile)))
-	SetupBigtable(ctx, tableID)
 
-	// Call cloud dataflow template
-	dataflowService, err := dataflow.NewService(ctx)
-	if err != nil {
-		log.Printf("Unable to create dataflow client: borgcron_2020_04_10_02_32_53. %v", err)
-		return err
-	}
-	prjSrv := dataflow.NewProjectsTemplatesService(dataflowService)
-	jobParams := map[string]string{
-		"bigtableInstanceId": bigtableInstance,
-		"bigtableTableId":    string(tableID),
-		"inputFile":          string(inputFile),
-		"bigtableProjectId":  projectID,
-	}
+	// Check if GCS file that triggered this function was written by flume job in borg.
+	if strings.HasSuffix(e.Name, triggerFile) {
+		// Read contents of GCS file. it contains path to csv files
+		// for base cache.
+		gcsClient, err := storage.NewClient(ctx)
+		if err != nil {
+			log.Printf("Failed to create gcsClient: %v\n", err)
+			return fmt.Errorf("Failed to create gcsClient: %v", err)
+		}
 
-	tmplParams := &dataflow.LaunchTemplateParameters{
-		JobName:    tableID,
-		Parameters: jobParams,
-		Environment: &dataflow.RuntimeEnvironment{
-			IpConfiguration: "WORKER_IP_PRIVATE",
-			//NumWorkers:      600,
-			WorkerRegion:    "us-central1",
-		},
-	}
-	c := prjSrv.Launch(projectID, tmplParams)
-	c.GcsPath(dataflowTemplate)
-	_, err = c.Do()
-	if err != nil {
-		log.Printf("Template launch failed: %v", err)
+		inputFile, err := readFromGCS(ctx, gcsClient, e.Bucket, e.Name)
+		if err != nil {
+			log.Printf("Unable to read from gcs gs://%s/%s, got err: %v", e.Bucket, e.Name, err)
+			return err
+		}
+
+		// Create and scale up cloud BT.
+		tableID := filepath.Base(filepath.Dir(string(inputFile)))
+		if err := setupBigtable(ctx, tableID); err != nil {
+			return nil
+		}
+		// Write to GCS file that triggers airflow job.
+		writeToGCS(ctx, gcsClient, e.Bucket, airflowTriggerFile, inputFile)
+	} else if strings.HasSuffix(e.Name, successFile) || strings.HasSuffix(e.Name, failureFile) { // triggered at the end of airflow run
+		// Ingestion is done, scale down BT.
+		return scaleBT(ctx, bigtableNodesLow)
 	}
 	return nil
 }
-
