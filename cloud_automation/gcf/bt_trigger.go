@@ -31,7 +31,7 @@ const (
 	columnFamily       = "csv"
 	bigtableNodesHigh  = 300
 	bigtableNodesLow   = 20
-	triggerFile        = "latest_base_cache_run.txt"
+	triggerFile        = "latest_base_cache_version.txt"
 	successFile        = "success.txt"
 	failureFile        = "failure.txt"
 	airflowTriggerFile = "trigger_airflow.txt"
@@ -132,18 +132,18 @@ func GCSTrigger(ctx context.Context, e GCSEvent) error {
 			return fmt.Errorf("Failed to create gcsClient: %v", err)
 		}
 
-		inputFile, err := readFromGCS(ctx, gcsClient, e.Bucket, e.Name)
+		tableID, err := readFromGCS(ctx, gcsClient, e.Bucket, e.Name)
 		if err != nil {
 			log.Printf("Unable to read from gcs gs://%s/%s, got err: %v", e.Bucket, e.Name, err)
 			return err
 		}
 
 		// Create and scale up cloud BT.
-		tableID := filepath.Base(filepath.Dir(string(inputFile)))
 		if err := setupBigtable(ctx, tableID); err != nil {
 			return nil
 		}
 		// Write to GCS file that triggers airflow job.
+		inputFile = fmt.Sprintf("gs://prophet_cache/%s/cache.csv*", tableID)
 		writeToGCS(ctx, gcsClient, e.Bucket, airflowTriggerFile, inputFile)
 	} else if strings.HasSuffix(e.Name, successFile) || strings.HasSuffix(e.Name, failureFile) { // triggered at the end of airflow run
 		// Ingestion is done, scale down BT.
