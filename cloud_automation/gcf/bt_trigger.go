@@ -63,7 +63,7 @@ func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, file
 
 	if _, err := fmt.Fprintf(w, string(data)); err != nil {
 		w.Close()
-    log.Printf("Unable to open file for writing from bucket %q, file %q: %v\n", bucketName, fileName, err)
+		log.Printf("Unable to open file for writing from bucket %q, file %q: %v\n", bucketName, fileName, err)
 		return fmt.Errorf("Unable to write to bucket %q, file %q: %v", bucketName, fileName, err)
 	}
 	return w.Close()
@@ -71,7 +71,6 @@ func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, file
 
 // setupBigtable creates a new cloud BT table and scales up the cluster to 300 nodes.
 func setupBigtable(ctx context.Context, tableID string) error {
-	log.Printf("Creating new bigtable table: %s", tableID)
 	adminClient, err := bigtable.NewAdminClient(ctx, projectID, bigtableInstance)
 	if err != nil {
 		log.Printf("Unable to create a table admin client. %v", err)
