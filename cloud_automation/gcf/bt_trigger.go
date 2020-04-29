@@ -57,11 +57,11 @@ func readFromGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fil
 }
 
 // writeToGCS writes to GCS files.
-func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fileName string, data []byte) (error) {
+func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fileName, data string) (error) {
 	bucket := gcsClient.Bucket(bucketName)
 	w := bucket.Object(fileName).NewWriter(ctx)
 
-	if _, err := fmt.Fprintf(w, string(data)); err != nil {
+	if _, err := fmt.Fprintf(w, data); err != nil {
 		w.Close()
 		log.Printf("Unable to open file for writing from bucket %q, file %q: %v\n", bucketName, fileName, err)
 		return fmt.Errorf("Unable to write to bucket %q, file %q: %v", bucketName, fileName, err)
@@ -139,11 +139,11 @@ func GCSTrigger(ctx context.Context, e GCSEvent) error {
 		}
 
 		// Create and scale up cloud BT.
-		if err := setupBigtable(ctx, tableID); err != nil {
+		if err := setupBigtable(ctx, string(tableID)); err != nil {
 			return nil
 		}
 		// Write to GCS file that triggers airflow job.
-		inputFile = fmt.Sprintf("gs://prophet_cache/%s/cache.csv*", tableID)
+		inputFile := fmt.Sprintf("gs://prophet_cache/%s/cache.csv*", tableID)
 		writeToGCS(ctx, gcsClient, e.Bucket, airflowTriggerFile, inputFile)
 	} else if strings.HasSuffix(e.Name, successFile) || strings.HasSuffix(e.Name, failureFile) { // triggered at the end of airflow run
 		// Ingestion is done, scale down BT.
