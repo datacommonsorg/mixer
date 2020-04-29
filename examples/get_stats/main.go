@@ -15,9 +15,11 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"flag"
 	"log"
+	"os"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"google.golang.org/grpc"
@@ -46,11 +48,36 @@ func main() {
 
 	r, err := c.GetStats(ctx, &pb.GetStatsRequest{
 		Place:    []string{"geoId/06085", "geoId/06"},
-		StatsVar: "dc/014lx3qxhdddd",
+		StatsVar: "TotalPopulation",
 	})
 	if err != nil {
 		log.Fatalf("could not GetStats: %s", err)
 	}
 	log.Printf("Now printing result:\n")
 	log.Printf("%s", r.GetPayload())
+
+	// Large payload
+	file, err := os.Open("geos.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	place := []string{}
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		place = append(place, scanner.Text())
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	req := &pb.GetStatsRequest{
+		StatsVar: "NYTCovid19CumulativeCases",
+		Place:    place,
+	}
+	resp, err := c.GetStats(ctx, req)
+	if err != nil {
+		log.Fatalf("could not GetStats: %s", err)
+	}
+	log.Printf("%s", resp.GetPayload())
 }

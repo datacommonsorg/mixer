@@ -449,6 +449,7 @@ message PopObsObservation {
   string scaling_factor = 31;
   repeated string measurement_variable = 32;
   string stat_type = 33;  // Won't persist to cache.
+  repeated string stat_var_ids = 34;  // Only set for PopObs cache.
 }
 
 // PopObsPop holds information for a statistical population for the
@@ -754,7 +755,10 @@ service Mixer {
   // Get chart data.
   rpc GetChartData(GetChartDataRequest) returns (
     GetChartDataResponse) {
-    option (google.api.http) = { get: "/node/chart-data"};
+    option (google.api.http) = {
+      post: "/node/chart-data"
+      body: "*"
+    };
   }
 
   // Translate Sparql Query into translation results.
