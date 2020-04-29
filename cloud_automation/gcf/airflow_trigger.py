@@ -24,9 +24,9 @@ FAILURE_FILE = 'failure.txt'
 
 def read_contents(bucket, name):
   client = storage.Client()
-  bucket = client.get_bucket(bucket)
-  blob = bucket.get_blob(name)
-  return blob.download_as_string()
+  blob = client.get_bucket(bucket).blob(name)
+  result = blob.download_as_string()
+  return result
 
 
 def gcs_trigger(data, context=None):
