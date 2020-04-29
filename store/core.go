@@ -702,6 +702,11 @@ func addObsTriple(
 	if _, ok := resultsMap[dcid]; !ok {
 		resultsMap[dcid] = []*Triple{}
 	}
+	for _, t := range resultsMap[dcid] {
+		if t.ObjectID == objID {
+			return nil
+		}
+	}
 	resultsMap[dcid] = append(resultsMap[dcid], &Triple{
 		SubjectID: dcid,
 		Predicate: pred,

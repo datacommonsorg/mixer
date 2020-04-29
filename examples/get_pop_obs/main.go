@@ -34,7 +34,10 @@ func main() {
 	flag.Parse()
 
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(*addr, grpc.WithInsecure())
+	conn, err := grpc.Dial(
+		*addr,
+		grpc.WithInsecure(),
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(2<<30)))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
