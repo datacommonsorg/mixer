@@ -545,6 +545,8 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 	json.Unmarshal(btJSONRaw, &btTriples)
 
 	var statsVar pb.StatisticalVariable
+	// TODO(boxu): Remove when data is fixed.
+	allP := map[string]struct{}{}
 	var pvs []*pb.PropertyValue
 	for _, t := range btTriples.Triples {
 		if t.Predicate == "typeOf" {
@@ -572,9 +574,12 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 		} else if t.Predicate == "unit" {
 			statsVar.Unit = t.ObjectID
 		} else {
-			// Do not use the pvs in pb.StatisticalVariable. Instead use the
-			// pb.PropertyValue array to use the sorting function.
-			pvs = append(pvs, &pb.PropertyValue{Property: t.Predicate, Value: t.ObjectID})
+			if _, ok := allP[t.Predicate]; !ok {
+				// Do not use the pvs in pb.StatisticalVariable. Instead use the
+				// pb.PropertyValue array to use the sorting function.
+				pvs = append(pvs, &pb.PropertyValue{Property: t.Predicate, Value: t.ObjectID})
+				allP[t.Predicate] = struct{}{}
+			}
 		}
 	}
 
