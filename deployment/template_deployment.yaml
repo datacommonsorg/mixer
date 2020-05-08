@@ -38,18 +38,24 @@ spec:
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
           args: [
-            "-n", "/etc/nginx/custom/nginx.conf",
-            "--http_port", "8081",
-            "-a", "grpc://127.0.0.1:12345",
-            #_d|"--service", "datacommons.endpoints.PROJECT_ID.cloud.goog",
-            #_c|"--service", "DOMAIN",
-            "--rollout_strategy", "managed",
-            "-z", "healthz",
-            "--cors_preset", "basic",
-          ]
+              "-n",
+              "/etc/nginx/custom/nginx.conf",
+              "--http_port",
+              "8081",
+              "-a",
+              "grpc://127.0.0.1:12345",
+              #_d|"--service", "datacommons.endpoints.PROJECT_ID.cloud.goog",
+              #_c|"--service", "DOMAIN",
+              "--rollout_strategy",
+              "managed",
+              "-z",
+              "healthz",
+              "--cors_preset",
+              "basic",
+            ]
           resources:
             requests:
-              memory: "100M"
+              memory: "500M"
               cpu: "100m"
             limits:
               memory: "1.5G"
@@ -71,18 +77,24 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "1G"
+              memory: "2G"
               cpu: "500m"
             limits:
               memory: "3.5G"
               cpu: "1500m"
-          args: [
-            "--bq_dataset", "BQ_DATASET",
-            "--bt_table", "BT_TABLE",
-            "--bt_project", "google.com:datcom-store-dev",
-            "--bt_instance", "BT_INSTANCE",
-            "--project_id", "PROJECT_ID",
-          ]
+          args:
+            [
+              "--bq_dataset",
+              "BQ_DATASET",
+              "--bt_table",
+              "BT_TABLE",
+              "--bt_project",
+              "google.com:datcom-store-dev",
+              "--bt_instance",
+              "BT_INSTANCE",
+              "--project_id",
+              "PROJECT_ID",
+            ]
           ports:
             - containerPort: 12345
           volumeMounts:
