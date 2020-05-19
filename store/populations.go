@@ -497,7 +497,7 @@ func getObsSeries(
 	jsonpb.UnmarshalString(string(val), pbData)
 	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
 	for _, obs := range pbData.Observations {
-		if obs.MeasurementMethod != statsVar.MeasurementMethod {
+		if obs.MeasurementMethod != "DataCommonsAggregate" && obs.MeasurementMethod != statsVar.MeasurementMethod {
 			continue
 		}
 		if obs.MeasuredProp != statsVar.MeasuredProp {
