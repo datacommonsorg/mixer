@@ -49,13 +49,15 @@ DEFAULT_DAG_ARGS = {
      'project': config['gcp_project'],
      'template_location': config['dataflow_template_location'],
      'runner': 'DataflowRunner',
+     'region': 'us-central1',
      'zone': 'us-central1-a',
      'ip_configuration': 'WORKER_IP_PRIVATE',
-     'stagingLocation': config['dataflow_staging_location'],
+     'staging_location': config['dataflow_staging_location'],
+     'no_use_public_ips': True, 
   }
 }
 
-def update_on_completion(obj, **kwargs):
+def update_on_completion(src, dst, **kwargs):
   """Write to GCS on completion of dataflow task.
 
   Update the completion status. This writes to either success.txt or
@@ -63,7 +65,7 @@ def update_on_completion(obj, **kwargs):
   """
   conn = gcs_hook.GoogleCloudStorageHook()
   bucket = config['completion_status_file_bucket']
-  conn.copy(bucket, obj, bucket, obj)
+  conn.copy(bucket, dst, bucket, src)
 
 with models.DAG(dag_id='GcsToBTCache',
                 description='A DAG triggered by an external Cloud Function',
@@ -87,13 +89,13 @@ with models.DAG(dag_id='GcsToBTCache',
 
   success_task = python_operator.PythonOperator(task_id='success-move-to-completion',
                                                 python_callable=update_on_completion,
-                                                op_args=[SUCCESS_TAG],
+                                                op_args=[SUCCESS_TAG, FAILURE_TAG],
                                                 provide_context=True,
                                                 trigger_rule=TriggerRule.ALL_SUCCESS)
 
   failure_task = python_operator.PythonOperator(task_id='failure-move-to-completion',
                                                 python_callable=update_on_completion,
-                                                op_args=[FAILURE_TAG],
+                                                op_args=[FAILURE_TAG, SUCCESS_TAG],
                                                 provide_context=True,
                                                 trigger_rule=TriggerRule.ALL_FAILED)
 
