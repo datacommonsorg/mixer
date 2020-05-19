@@ -15,7 +15,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -34,7 +33,7 @@ const (
 	triggerFile        = "latest_base_cache_version.txt"
 	successFile        = "success.txt"
 	failureFile        = "failure.txt"
-	airflowTriggerFile = "trigger_airflow.txt"
+	airflowTriggerFile = "airflow_trigger.txt"
 )
 
 // GCSEvent is the payload of a GCS event.
@@ -43,8 +42,6 @@ type GCSEvent struct {
 	Bucket string `json:"bucket"`
 }
 
-
-// readFromGCS reads contents of GCS file.
 func readFromGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fileName string) ([]byte, error) {
 	bucket := gcsClient.Bucket(bucketName)
 	rc, err := bucket.Object(fileName).NewReader(ctx)
@@ -56,8 +53,7 @@ func readFromGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fil
 	return ioutil.ReadAll(rc)
 }
 
-// writeToGCS writes to GCS files.
-func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fileName, data string) (error) {
+func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fileName string, data string) error {
 	bucket := gcsClient.Bucket(bucketName)
 	w := bucket.Object(fileName).NewWriter(ctx)
 
@@ -69,8 +65,8 @@ func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, file
 	return w.Close()
 }
 
-// setupBigtable creates a new cloud BT table and scales up the cluster to 300 nodes.
 func setupBigtable(ctx context.Context, tableID string) error {
+	log.Printf("Creating new bigtable table: %s", tableID)
 	adminClient, err := bigtable.NewAdminClient(ctx, projectID, bigtableInstance)
 	if err != nil {
 		log.Printf("Unable to create a table admin client. %v", err)
@@ -101,7 +97,6 @@ func setupBigtable(ctx context.Context, tableID string) error {
 	return scaleBT(ctx, bigtableNodesHigh)
 }
 
-// scaleBT adjustes numNodes for cloud BT cluster.
 func scaleBT(ctx context.Context, numNodes int32) error {
 	// Scale up bigtable cluster. This helps speed up the dataflow job.
 	// We scale down again once dataflow job completes.
@@ -122,7 +117,6 @@ func scaleBT(ctx context.Context, numNodes int32) error {
 // GCSTrigger consumes a GCS event.
 func GCSTrigger(ctx context.Context, e GCSEvent) error {
 
-	// Check if GCS file that triggered this function was written by flume job in borg.
 	if strings.HasSuffix(e.Name, triggerFile) {
 		// Read contents of GCS file. it contains path to csv files
 		// for base cache.
@@ -137,17 +131,17 @@ func GCSTrigger(ctx context.Context, e GCSEvent) error {
 			log.Printf("Unable to read from gcs gs://%s/%s, got err: %v", e.Bucket, e.Name, err)
 			return err
 		}
-
 		// Create and scale up cloud BT.
-		if err := setupBigtable(ctx, string(tableID)); err != nil {
+		tableIDStr := strings.TrimSpace(fmt.Sprintf("%s", tableID))
+		if err := setupBigtable(ctx, tableIDStr); err != nil {
 			return nil
 		}
 		// Write to GCS file that triggers airflow job.
-		inputFile := fmt.Sprintf("gs://prophet_cache/%s/cache.csv*", tableID)
+		inputFile := fmt.Sprintf("gs://prophet_cache/%s/cache.csv*", tableIDStr)
 		writeToGCS(ctx, gcsClient, e.Bucket, airflowTriggerFile, inputFile)
-	} else if strings.HasSuffix(e.Name, successFile) || strings.HasSuffix(e.Name, failureFile) { // triggered at the end of airflow run
-		// Ingestion is done, scale down BT.
+	} else if strings.HasSuffix(e.Name, successFile) || strings.HasSuffix(e.Name, failureFile) {
 		return scaleBT(ctx, bigtableNodesLow)
 	}
 	return nil
 }
+

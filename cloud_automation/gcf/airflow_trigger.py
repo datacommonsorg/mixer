@@ -1,4 +1,4 @@
-""" This module triggers when a file is written to prophet-cache GCS bucket by a task in borg.
+""" This module triggers when a file is writtent to prophet-cache GCS bucket.
 
 This create a cloud BT table, scales it up and then triggers a dataflow job.
 """
@@ -17,34 +17,32 @@ import requests
 IAM_SCOPE = 'https://www.googleapis.com/auth/iam'
 OAUTH_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
 PROJECT_ID          = 'google.com:datcom-store-dev'
-DATAFLOW_TMPL   = 'gs://datcom-dataflow-templates/templates/csv_to_bt'
 PIPELINE_TRIGGER_FILE = 'airflow_trigger.txt'
-SUCCESS_FILE = 'success.txt'
-FAILURE_FILE = 'failure.txt'
 
 def read_contents(bucket, name):
   client = storage.Client()
   blob = client.get_bucket(bucket).blob(name)
-  result = blob.download_as_string()
-  return result
+  result = blob.download_as_string().decode('utf8')
+  print("Got result: " + str(result))
+  return str(result).rstrip()
 
 
 def gcs_trigger(data, context=None):
   bucket = data['bucket']
   name = data['name']
-
+  print("triggered for: " + bucket + " " + name)
   # Check if this is triggered after flume job completion
   if name.endswith(PIPELINE_TRIGGER_FILE):
-    cache_csv_file = read_contents(bucket, name)
-    path = pathlib.PurePath(cache_csv_file)
+    csv_file = read_contents(bucket, name)
+    path = pathlib.PurePath(csv_file)
     # path.parent.name gives the last directory in the path. We use this as
     # bt table id.
     bt_table_id = path.parent.name
-    trigger_dag(bt_table_id, cache_csv_file)
+    trigger_dag(data, bt_table_id, csv_file)
   return
 
 
-def trigger_dag(table_id, cache_csv_file):
+def trigger_dag(data, table_id, csv_file):
     """Makes a POST request to the Cloud Composer(Airflow) DAG Trigger API.
     When called via Google Cloud Functions (GCF),
     data and context are Background function parameters.
@@ -55,7 +53,6 @@ def trigger_dag(table_id, cache_csv_file):
     """
     # Instructions to find client id can be found at:
     # https://medium.com/google-cloud/using-airflow-experimental-rest-api-on-google-cloud-platform-cloud-composer-and-iap-9bd0260f095a
-    # snarsale@ figure out where to store this in long-term.
     client_id = '386888630136-tjng343n77bnjvhdv240cc6rmr5ej8on.apps.googleusercontent.com'
     # This should be part of your airflow's URL:
     # {tenant-project-id}.appspot.com
@@ -72,7 +69,7 @@ def trigger_dag(table_id, cache_csv_file):
     # bigtable_id and input_file are passed to airflow as these are required to
     # trigger the dataflow pipeline to read from CSV to cloud BT.
     data['bigtable_id'] = table_id
-    data['input_file']  = cache_csv_file
+    data['input_file']  = csv_file
     # Make a POST request to IAP which then Triggers the DAG
     make_iap_request(webserver_url, client_id, method='POST', json={"conf":data})
 
