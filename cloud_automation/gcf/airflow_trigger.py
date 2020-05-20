@@ -1,4 +1,4 @@
-""" This module triggers when a file is writtent to prophet-cache GCS bucket.
+""" This module triggers when a file is written to prophet-cache GCS bucket.
 
 This create a cloud BT table, scales it up and then triggers a dataflow job.
 """
