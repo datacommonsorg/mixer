@@ -16,8 +16,11 @@
 
 
 export PROJECT_ID=$1
-export IMAGE=$2
-export DOMAIN=$3
+export DOMAIN=$2
+
+IMAGE=$(cat "docker_image.txt")
+export IMAGE
+echo "Docker image: ${IMAGE}"
 
 SERVICE_ACCOUNT=mixer-robot@$PROJECT_ID.iam.gserviceaccount.com
 if [ "$PROJECT_ID" == "datcom-mixer" ]; then
@@ -79,16 +82,6 @@ BT_TABLE=$(cat $bt_table_input_file)
 export BT_TABLE
 perl -i -pe's/BT_TABLE/$ENV{BT_TABLE}/g' deployment.yaml
 
-# Set side cache folder
-if [ "$PROJECT_ID" == "datcom-mixer" ]; then
-  cache_folder_input_file="prod_cache_folder.txt"
-else
-  cache_folder_input_file="staging_cache_folder.txt"
-fi
-CACHE_FOLDER=$(cat $cache_folder_input_file)
-export CACHE_FOLDER
-perl -i -pe's/CACHE_FOLDER/$ENV{CACHE_FOLDER}/g' deployment.yaml
-
 # Get a static ip address
 if ! [[ $(gcloud compute addresses list --global --filter='name:mixer-ip' --format=yaml) ]]; then
  gcloud compute addresses create mixer-ip --global
@@ -114,13 +107,17 @@ gcloud components install kubectl
 gcloud services enable container.googleapis.com
 
 # Create GKE instance
-if [[ $(gcloud container clusters list --filter='mixer-cluster' --format=yaml) ]]; then
-  echo "mixer-cluster already exists, continue..."
+# Use custom machine type with 1cpu and 5G memory per instance. There are 3 instance by default.
+CLUSTER_NAME="mixer-cluster-high-mem"
+if [[ $(gcloud container clusters list --filter="$CLUSTER_NAME" --format=yaml) ]]; then
+  echo "$CLUSTER_NAME already exists, continue..."
 else
-  gcloud container clusters create mixer-cluster --zone=us-central1-c
+  gcloud container clusters create $CLUSTER_NAME \
+    --zone=us-central1-c \
+    --machine-type=custom-2-5120
 fi
 
-gcloud container clusters get-credentials mixer-cluster
+gcloud container clusters get-credentials $CLUSTER_NAME
 
 # Create namespace
 kubectl create namespace mixer

@@ -38,7 +38,6 @@ var (
 	btProject  = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
 	btInstance = flag.String("bt_instance", "", "BigTable instance.")
 	projectID  = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	gcsFolder  = flag.String("gcs_folder", "", "The cloud storge folder name.")
 	schemaPath = flag.String("schema_path", "/mixer/config/mapping", "Path to the schema mapping directory.")
 	port       = flag.String("port", ":12345", "Port on which to run the server.")
 )
@@ -198,6 +197,19 @@ func (s *server) GetObsSeries(ctx context.Context,
 
 	out := pb.GetObsSeriesResponse{}
 	if err := s.st.GetObsSeries(ctx, in, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (s *server) GetStats(ctx context.Context,
+	in *pb.GetStatsRequest) (*pb.GetStatsResponse, error) {
+	if len(in.GetPlace()) == 0 || in.GetStatsVar() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+
+	out := pb.GetStatsResponse{}
+	if err := s.st.GetStats(ctx, in, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -392,11 +404,10 @@ func main() {
 
 	st, err := store.NewStore(
 		ctx, *bqDataset, *btTable, *btProject, *btInstance, *projectID,
-		*gcsFolder, *schemaPath, subTypeMap, containedIn)
+		*schemaPath, subTypeMap, containedIn)
 	if err != nil {
-		log.Fatalf("Failed to create store for %s, %s, %s, %s, %s, %s: %s",
-			*bqDataset, *btTable, *btProject, *btInstance, *projectID,
-			*gcsFolder, err)
+		log.Fatalf("Failed to create store for %s, %s, %s, %s, %s: %s",
+			*bqDataset, *btTable, *btProject, *btInstance, *projectID, err)
 	}
 
 	pb.RegisterMixerServer(s, &server{st, subTypeMap})

@@ -28,6 +28,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
 	"github.com/golang/protobuf/jsonpb"
+	"github.com/golang/protobuf/proto"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 )
 
@@ -42,9 +44,9 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	dcid := in.GetDcid()
 	key := util.BtPopObsPrefix + dcid
 
-	var baseData, sideData pb.PopObsPlace
-	var baseString, sideString string
-	var hasBaseData, hasSideData bool
+	var baseData, branchData pb.PopObsPlace
+	var baseString, branchString string
+	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode("{}")
 
 	btRow, err := s.btTable.ReadRow(ctx, key)
@@ -56,27 +58,31 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	if hasBaseData {
 		baseString = string(btRow[util.BtFamily][0].Value)
 	}
-	sideString, hasSideData = s.cacheData[key]
+	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
+		hasBranchData = false
+	} else {
+		branchString, hasBranchData = s.cache.Read(key)
+	}
 
-	if !hasBaseData && !hasSideData {
+	if !hasBaseData && !hasBranchData {
 		return nil
 	} else if !hasBaseData {
-		out.Payload = sideString
+		out.Payload = branchString
 		return nil
-	} else if !hasSideData {
+	} else if !hasBranchData {
 		out.Payload = baseString
 		return nil
 	} else {
 		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
 			jsonpb.UnmarshalString(string(tmp), &baseData)
 		}
-		if tmp, err := util.UnzipAndDecode(sideString); err == nil {
-			jsonpb.UnmarshalString(string(tmp), &sideData)
+		if tmp, err := util.UnzipAndDecode(branchString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &branchData)
 		}
 		if baseData.Populations == nil {
 			baseData.Populations = map[string]*pb.PopObsPop{}
 		}
-		for k, v := range sideData.Populations {
+		for k, v := range branchData.Populations {
 			baseData.Populations[k] = v
 		}
 		resStr, err := (&jsonpb.Marshaler{}).MarshalToString(&baseData)
@@ -97,19 +103,62 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 			key += "^" + p + "^" + v
 		})
 	}
-	btPrefix := fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
+	key = fmt.Sprintf("%s%s", util.BtPlaceObsPrefix, key)
 
-	// Query for the prefix.
-	btRow, err := s.btTable.ReadRow(ctx, btPrefix)
+	// TODO(boxu): abstract out the common logic for handling cache merging.
+	var baseData, branchData pb.PopObsCollection
+	var baseString, branchString string
+	var hasBaseData, hasBranchData bool
+	out.Payload, _ = util.ZipAndEncode("{}")
+
+	btRow, err := s.btTable.ReadRow(ctx, key)
 	if err != nil {
+		log.Print(err)
+	}
+
+	hasBaseData = len(btRow[util.BtFamily]) > 0
+	if hasBaseData {
+		baseString = string(btRow[util.BtFamily][0].Value)
+	}
+	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
+		hasBranchData = false
+	} else {
+		branchString, hasBranchData = s.cache.Read(key)
+	}
+
+	if !hasBaseData && !hasBranchData {
+		return nil
+	} else if !hasBaseData {
+		out.Payload = branchString
+		return nil
+	} else if !hasBranchData {
+		out.Payload = baseString
+		return nil
+	} else {
+		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &baseData)
+		}
+		if tmp, err := util.UnzipAndDecode(branchString); err == nil {
+			jsonpb.UnmarshalString(string(tmp), &branchData)
+		}
+		dataMap := map[string]*pb.PopObsPlace{}
+		for _, data := range baseData.Places {
+			dataMap[data.Place] = data
+		}
+		for _, data := range branchData.Places {
+			dataMap[data.Place] = data
+		}
+		res := pb.PopObsCollection{}
+		for _, v := range dataMap {
+			res.Places = append(res.Places, v)
+		}
+		resStr, err := (&jsonpb.Marshaler{}).MarshalToString(&res)
+		if err != nil {
+			return err
+		}
+		out.Payload, err = util.ZipAndEncode(resStr)
 		return err
 	}
-	if len(btRow[util.BtFamily]) > 0 {
-		out.Payload = string(btRow[util.BtFamily][0].Value)
-	} else {
-		out.Payload, _ = util.ZipAndEncode("{}")
-	}
-	return nil
 }
 
 func (s *store) GetObsSeries(ctx context.Context, in *pb.GetObsSeriesRequest,
@@ -423,4 +472,192 @@ func iterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
 	for i, p := range pList {
 		action(i, p, pvMap[p])
 	}
+}
+
+func keyToDcid(key, prefix string) string {
+	parts := strings.Split(key, "^")
+	return strings.TrimPrefix(parts[0], util.BtObsSeriesPrefix)
+}
+
+type dcidObs struct {
+	dcid      string
+	obsSeries *pb.ObsTimeSeries
+}
+
+func getObsSeries(
+	dcid string,
+	cacheValue string,
+	statsVar *pb.StatisticalVariable,
+) (*pb.ObsTimeSeries, error) {
+	val, err := util.UnzipAndDecode(cacheValue)
+	if err != nil {
+		return nil, err
+	}
+	pbData := &pb.PopObsPlace{}
+	jsonpb.UnmarshalString(string(val), pbData)
+	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
+	for _, obs := range pbData.Observations {
+		if obs.MeasurementMethod != "DataCommonsAggregate" && obs.MeasurementMethod != statsVar.MeasurementMethod {
+			continue
+		}
+		if obs.MeasuredProp != statsVar.MeasuredProp {
+			continue
+		}
+		if obs.ScalingFactor != statsVar.ScalingFactor {
+			continue
+		}
+		if obs.MeasurementDenominator != statsVar.MeasurementDenominator {
+			continue
+		}
+		if obs.MeasurementQualifier != statsVar.MeasurementQualifier {
+			continue
+		}
+		if obs.Unit != statsVar.Unit {
+			continue
+		}
+		msg := proto.MessageReflect(obs)
+		fd := msg.Descriptor().Fields().ByJSONName(statsVar.StatType)
+		if msg.Has(fd) {
+			ts.Data[obs.ObservationDate] = msg.Get(fd).Float()
+		}
+	}
+	return &ts, nil
+}
+
+func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
+	out *pb.GetStatsResponse) error {
+	statsVarKey := fmt.Sprintf("%s%s", util.BtTriplesPrefix, in.GetStatsVar())
+	// Query for stats var.
+	btRow, err := s.btTable.ReadRow(ctx, statsVarKey)
+	if err != nil {
+		return err
+	}
+	if len(btRow[util.BtFamily]) == 0 {
+		return nil
+	}
+
+	btRawValue := string(btRow[util.BtFamily][0].Value)
+	btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
+	if err != nil {
+		return err
+	}
+	var btTriples TriplesCache
+	json.Unmarshal(btJSONRaw, &btTriples)
+
+	var statsVar pb.StatisticalVariable
+	// TODO(boxu): Remove when data is fixed.
+	allP := map[string]struct{}{}
+	var pvs []*pb.PropertyValue
+	for _, t := range btTriples.Triples {
+		if t.Predicate == "typeOf" {
+			if t.ObjectID != "StatisticalVariable" {
+				return fmt.Errorf("%s is not a StatisticalVariable", in.GetStatsVar())
+			}
+		} else if t.Predicate == "statType" {
+			statsVar.StatType = t.ObjectID
+		} else if t.Predicate == "provenance" {
+			continue
+		} else if t.Predicate == "name" {
+			continue
+		} else if t.Predicate == "populationType" {
+			statsVar.PopType = t.ObjectID
+		} else if t.Predicate == "measurementMethod" {
+			statsVar.MeasurementMethod = t.ObjectID
+		} else if t.Predicate == "measuredProperty" {
+			statsVar.MeasuredProp = t.ObjectID
+		} else if t.Predicate == "measurementDenominator" {
+			statsVar.MeasurementDenominator = t.ObjectID
+		} else if t.Predicate == "measurementQualifier" {
+			statsVar.MeasurementQualifier = t.ObjectID
+		} else if t.Predicate == "scalingFactor" {
+			statsVar.ScalingFactor = t.ObjectID
+		} else if t.Predicate == "unit" {
+			statsVar.Unit = t.ObjectID
+		} else {
+			if _, ok := allP[t.Predicate]; !ok {
+				// Do not use the pvs in pb.StatisticalVariable. Instead use the
+				// pb.PropertyValue array to use the sorting function.
+				pvs = append(pvs, &pb.PropertyValue{Property: t.Predicate, Value: t.ObjectID})
+				allP[t.Predicate] = struct{}{}
+			}
+		}
+	}
+
+	keySuffix := fmt.Sprintf("%s", statsVar.PopType)
+	if len(pvs) > 0 {
+		iterateSortPVs(pvs, func(i int, p, v string) {
+			keySuffix += "^" + p + "^" + v
+		})
+	}
+	rowList := bigtable.RowList{}
+	for _, dcid := range in.GetPlace() {
+		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtObsSeriesPrefix, dcid, keySuffix))
+	}
+
+	dcidToRaw := map[string]string{}
+
+	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
+		for _, rowKey := range rowList {
+			rowKey := rowKey
+			if branchString, ok := s.cache.Read(rowKey); ok {
+				dcid := keyToDcid(rowKey, util.BtObsSeriesPrefix)
+				dcidToRaw[dcid] = branchString
+			}
+		}
+	}
+
+	// Read result from base cache if no branch cache data found.
+	// This is valid since branch cache is a superset of base cache.
+	if len(dcidToRaw) == 0 {
+		if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+			func(btRow bigtable.Row) error {
+				rowKey := btRow.Key()
+				if len(btRow[util.BtFamily]) > 0 {
+					dcid := keyToDcid(rowKey, util.BtObsSeriesPrefix)
+					dcidToRaw[dcid] = string(btRow[util.BtFamily][0].Value)
+					if err != nil {
+						return err
+					}
+				}
+				return nil
+			}); err != nil {
+			return err
+		}
+	}
+
+	result := map[string]*pb.ObsTimeSeries{}
+	dcidObsChan := make(chan *dcidObs, len(dcidToRaw))
+	errs, _ := errgroup.WithContext(ctx)
+	for dcid, data := range dcidToRaw {
+		dcid := dcid
+		data := data
+		errs.Go(func() error {
+			obsSeries, err := getObsSeries(
+				dcid,
+				string(data),
+				&statsVar,
+			)
+			if err != nil {
+				return err
+			}
+			dcidObsChan <- &dcidObs{dcid, obsSeries}
+			return nil
+		})
+	}
+	err = errs.Wait()
+	if err != nil {
+		return err
+	}
+	close(dcidObsChan)
+
+	for item := range dcidObsChan {
+		result[item.dcid] = item.obsSeries
+	}
+
+	jsonRaw, err := json.Marshal(result)
+	if err != nil {
+		return err
+	}
+	out.Payload = string(jsonRaw)
+	return nil
 }

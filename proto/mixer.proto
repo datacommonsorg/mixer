@@ -18,6 +18,14 @@ package datacommons;
 
 import "google/api/annotations.proto";
 
+message Option {
+  enum CacheChoice {
+    DEFAULT = 0;
+    // Only get data from main cache.
+    BASE_CACHE_ONLY = 1;
+  }
+  CacheChoice cache_choice = 1;
+}
 
 // A graph query request in Sparql query language.
 message QueryRequest {
@@ -73,6 +81,8 @@ message TranslateResponse {
 message GetPropertyLabelsRequest {
   // The dcids of nodes.
   repeated string dcids = 1;
+
+  Option option = 2;
 }
 
 // Response returned by GetPropertyLabels.
@@ -97,6 +107,8 @@ message GetPropertyValuesRequest {
 
   // Direction, "in" or "out", default to "out".
   string direction = 5;
+
+  Option option = 6;
 }
 
 // Response returned by GetPropertyValues.
@@ -112,6 +124,8 @@ message GetTriplesRequest {
 
   // Maximum number of triples for each property and type of the neighbor.
   int32 limit = 2;
+
+  Option option = 3;
 }
 
 // Response returned by GetTriples.
@@ -124,6 +138,8 @@ message GetTriplesResponse {
 message GetPopObsRequest {
   // DCID of a place.
   string dcid = 1;
+
+  Option option = 2;
 }
 
 // Response of GetPopObs.
@@ -154,6 +170,8 @@ message GetPlaceObsRequest {
 
   // Observation date.
   string observation_date = 4;
+
+  Option option = 5;
 }
 
 // Response of GetPlaceObs.
@@ -172,12 +190,38 @@ message GetObsSeriesRequest {
 
   // A list of constraining property values that defines the population.
   repeated PropertyValue pvs = 3;
+
+  Option option = 4;
 }
 
 // Response of GetObsSeries.
 message GetObsSeriesResponse {
   // The JSON payload.
   string payload = 1;
+}
+
+// Represents observation time series data.
+message ObsTimeSeries {
+  map<string, double> data = 1;  // Date to value.
+  string unit = 2;
+  string place_name = 3;
+}
+
+// Request message for GetStats.
+message GetStatsRequest {
+  // The dcids of the place.
+  repeated string place = 1;
+
+  // The dcid of the StatisticalVariable.
+  string stats_var = 2;
+
+  Option option = 3;
+}
+
+// Response of GetStats
+message GetStatsResponse {
+  // The JSON payload.
+  string payload = 2;
 }
 
 // Request message for GetPopCategory.
@@ -202,6 +246,8 @@ message GetPopulationsRequest {
 
   // A list of constraining property values that define the population.
   repeated PropertyValue pvs = 3;
+
+  Option option = 4;
 }
 
 // Response of GetPopulation.
@@ -230,6 +276,8 @@ message GetObservationsRequest {
 
   // (Opitonal) Measurement method used to get the observation.
   string measurement_method = 6;
+
+  Option option = 7;
 }
 
 // Response of GetObservation request.
@@ -401,6 +449,7 @@ message PopObsObservation {
   string scaling_factor = 31;
   repeated string measurement_variable = 32;
   string stat_type = 33;  // Won't persist to cache.
+  repeated string stat_var_ids = 34;  // Only set for PopObs cache.
 }
 
 // PopObsPop holds information for a statistical population for the
@@ -676,6 +725,13 @@ service Mixer {
     };
   }
 
+  // Get stats of places by StatisticalVariable.
+  rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {
+    option (google.api.http) = {
+      post: "/bulk/stats"
+      body: "*"
+    };
+  }
 
   // Get a list of possible population type, measured property, and PVs for a given place type.
   rpc GetPopCategory(GetPopCategoryRequest) returns (GetPopCategoryResponse) {
@@ -699,7 +755,10 @@ service Mixer {
   // Get chart data.
   rpc GetChartData(GetChartDataRequest) returns (
     GetChartDataResponse) {
-    option (google.api.http) = { get: "/node/chart-data"};
+    option (google.api.http) = {
+      post: "/node/chart-data"
+      body: "*"
+    };
   }
 
   // Translate Sparql Query into translation results.

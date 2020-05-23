@@ -56,16 +56,23 @@ func main() {
 			Direction: "in",
 		},
 		&pb.GetPropertyValuesRequest{
-			Dcids:    dcids,
-			Property: "containedInPlace",
+			Dcids:     dcids,
+			Property:  "containedInPlace",
+			Direction: "out",
 		},
 		&pb.GetPropertyValuesRequest{
 			Dcids:    dcids,
 			Property: "containedInPlace",
+			Limit:    10,
 		},
 		&pb.GetPropertyValuesRequest{
 			Dcids:    dcids,
 			Property: "name",
+		},
+		&pb.GetPropertyValuesRequest{
+			Dcids:     []string{"geoId/05"},
+			Property:  "location",
+			ValueType: "Election",
 		},
 	} {
 		// Call GetPropertyValues

@@ -50,9 +50,10 @@ func main() {
 		&pb.GetTriplesRequest{Dcids: []string{"State", "County", "City"}, Limit: 3},
 		&pb.GetTriplesRequest{Dcids: []string{"Class"}},
 		&pb.GetTriplesRequest{Dcids: []string{"geoId/0649670"}, Limit: 205},
-		&pb.GetTriplesRequest{Dcids: []string{"dc/p/lytvhyrwbsysb"}},
+		&pb.GetTriplesRequest{Dcids: []string{"dc/o/9dmdq8wmzbet8"}},
 		&pb.GetTriplesRequest{Dcids: []string{"dc/o/ty8hrlt8zvpg1"}},
 		&pb.GetTriplesRequest{Dcids: []string{"dc/o/fdwrfmmxltw62", "dc/o/00gl0j9epq10d"}},
+		&pb.GetTriplesRequest{Dcids: []string{"dc/o/zvhk7el4dy1tc"}},
 	} {
 		if err := getTriples(ctx, c, req); err != nil {
 			log.Fatalf("Could not GetTriples: %v", err)
