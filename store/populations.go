@@ -497,8 +497,11 @@ func getObsSeries(
 	jsonpb.UnmarshalString(string(val), pbData)
 	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
 	for _, obs := range pbData.Observations {
-		if obs.MeasurementMethod != "DataCommonsAggregate" && obs.MeasurementMethod != statsVar.MeasurementMethod {
-			continue
+		if obs.MeasurementMethod != "DataCommonsAggregate" {
+			mmethod := strings.Replace(obs.MeasurementMethod, "dcAggregate/", "", -1)
+			if mmethod != statsVar.MeasurementMethod {
+				continue
+			}
 		}
 		if obs.MeasuredProp != statsVar.MeasuredProp {
 			continue
@@ -652,6 +655,12 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 
 	for item := range dcidObsChan {
 		result[item.dcid] = item.obsSeries
+	}
+
+	for _, dcid := range in.GetPlace() {
+		if _, ok := result[dcid]; !ok {
+			result[dcid] = nil
+		}
 	}
 
 	jsonRaw, err := json.Marshal(result)

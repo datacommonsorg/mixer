@@ -43,26 +43,14 @@ func main() {
 	}
 	defer conn.Close()
 	c := pb.NewMixerClient(conn)
-
 	ctx := context.Background()
 
-	r, err := c.GetStats(ctx, &pb.GetStatsRequest{
-		Place:    []string{"geoId/06085", "geoId/06"},
-		StatsVar: "TotalPopulation",
-	})
-	if err != nil {
-		log.Fatalf("could not GetStats: %s", err)
-	}
-	log.Printf("Now printing result:\n")
-	log.Printf("%s", r.GetPayload())
-
-	// Large payload
+	// Read a large number of places.
 	file, err := os.Open("geos.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close()
-
 	place := []string{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
@@ -71,11 +59,20 @@ func main() {
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-	req := &pb.GetStatsRequest{
-		StatsVar: "NYTCovid19CumulativeCases",
+	// Total population
+	runGetStats(ctx, c, []string{"geoId/06085", "geoId/06"}, "TotalPopulation")
+
+	// StateUnemploymentInsurance
+	runGetStats(ctx, c, []string{"geoId/06085", "geoId/06"}, "dc/kgklfjwvtwx0b")
+
+	runGetStats(ctx, c, place, "NYTCovid19CumulativeCases")
+}
+
+func runGetStats(ctx context.Context, c pb.MixerClient, place []string, statsVar string) {
+	resp, err := c.GetStats(ctx, &pb.GetStatsRequest{
+		StatsVar: statsVar,
 		Place:    place,
-	}
-	resp, err := c.GetStats(ctx, req)
+	})
 	if err != nil {
 		log.Fatalf("could not GetStats: %s", err)
 	}
