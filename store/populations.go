@@ -497,7 +497,6 @@ func getObsSeries(
 	jsonpb.UnmarshalString(string(val), pbData)
 	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
 	for _, obs := range pbData.Observations {
-		log.Printf("%+v", obs)
 		if obs.MeasurementMethod != "DataCommonsAggregate" {
 			mmethod := strings.Replace(obs.MeasurementMethod, "dcAggregate/", "", -1)
 			if mmethod != statsVar.MeasurementMethod {
