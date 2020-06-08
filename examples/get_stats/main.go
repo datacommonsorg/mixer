@@ -62,6 +62,9 @@ func main() {
 	// Total population
 	runGetStats(ctx, c, []string{"geoId/06085", "geoId/06"}, "TotalPopulation")
 
+	// Citizenship
+	runGetStats(ctx, c, []string{"geoId/0649670"}, "dc/jpbdx38nyvhdd")
+
 	// StateUnemploymentInsurance
 	runGetStats(ctx, c, []string{"geoId/06085", "geoId/06"}, "dc/kgklfjwvtwx0b")
 

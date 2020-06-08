@@ -562,6 +562,8 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 			continue
 		} else if t.Predicate == "name" {
 			continue
+		} else if t.Predicate == "censusACSTableId" {
+			continue
 		} else if t.Predicate == "populationType" {
 			statsVar.PopType = t.ObjectID
 		} else if t.Predicate == "measurementMethod" {
@@ -592,6 +594,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 			keySuffix += "^" + p + "^" + v
 		})
 	}
+	log.Println(keySuffix)
 	rowList := bigtable.RowList{}
 	for _, dcid := range in.GetPlace() {
 		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtObsSeriesPrefix, dcid, keySuffix))
