@@ -497,8 +497,11 @@ func getObsSeries(
 	jsonpb.UnmarshalString(string(val), pbData)
 	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
 	for _, obs := range pbData.Observations {
-		if obs.MeasurementMethod != "DataCommonsAggregate" && obs.MeasurementMethod != statsVar.MeasurementMethod {
-			continue
+		if obs.MeasurementMethod != "DataCommonsAggregate" {
+			mmethod := strings.Replace(obs.MeasurementMethod, "dcAggregate/", "", -1)
+			if mmethod != statsVar.MeasurementMethod {
+				continue
+			}
 		}
 		if obs.MeasuredProp != statsVar.MeasuredProp {
 			continue
@@ -559,6 +562,8 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 			continue
 		} else if t.Predicate == "name" {
 			continue
+		} else if t.Predicate == "censusACSTableId" {
+			continue
 		} else if t.Predicate == "populationType" {
 			statsVar.PopType = t.ObjectID
 		} else if t.Predicate == "measurementMethod" {
@@ -589,6 +594,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 			keySuffix += "^" + p + "^" + v
 		})
 	}
+	log.Println(keySuffix)
 	rowList := bigtable.RowList{}
 	for _, dcid := range in.GetPlace() {
 		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtObsSeriesPrefix, dcid, keySuffix))
@@ -652,6 +658,12 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 
 	for item := range dcidObsChan {
 		result[item.dcid] = item.obsSeries
+	}
+
+	for _, dcid := range in.GetPlace() {
+		if _, ok := result[dcid]; !ok {
+			result[dcid] = nil
+		}
 	}
 
 	jsonRaw, err := json.Marshal(result)
