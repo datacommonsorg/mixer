@@ -564,6 +564,8 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 			continue
 		} else if t.Predicate == "censusACSTableId" {
 			continue
+		} else if t.Predicate == "constrainingProperties" {
+			continue
 		} else if t.Predicate == "populationType" {
 			statsVar.PopType = t.ObjectID
 		} else if t.Predicate == "measurementMethod" {
