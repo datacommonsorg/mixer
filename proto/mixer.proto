@@ -202,9 +202,26 @@ message GetObsSeriesResponse {
 
 // Represents observation time series data.
 message ObsTimeSeries {
-  map<string, double> data = 1;  // Date to value.
+  message SourceSeries {
+    reserved 2;
+    map<string, double> val = 1;
+    string measurement_method = 3;
+    string observation_period = 4;
+    string import_name = 5;
+  }
+  map<string, double> val = 1;  // Date to value.
   string unit = 2;
   string place_name = 3;
+  bool is_dc_aggregate = 4;
+  string place_dcid = 5;  // Only set if the key uses mid.
+  repeated SourceSeries source_series = 6;
+}
+
+// Wrapper for observation data.
+message ChartStore {
+  oneof val {
+    ObsTimeSeries obs_time_series = 1;
+  }
 }
 
 // Request message for GetStats.
