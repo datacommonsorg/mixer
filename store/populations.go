@@ -37,13 +37,17 @@ type rankKey struct {
 	mmethod string
 }
 
+// Ranking for (import name, measurement method) combination. This is used to rank
+// multiple dataset for the same StatisticalVariable, where lower value means
+// higher ranking.
+// The ranking score ranges from 0 to 100.
 var statsRanking = map[rankKey]int{
-	rankKey{"CensusPEP", "CensusPEPSurvey"}:                   0,
-	rankKey{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:     1,
-	rankKey{"EurostatData", "EurostatRegionalPopulationData"}: 2,
-	rankKey{"WorldDevelopmentIndicators", ""}:                 3,
-	rankKey{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:            0,
-	rankKey{"EurostatData", ""}:                               1,
+	rankKey{"CensusPEP", "CensusPEPSurvey"}:                   0, // Population
+	rankKey{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:     1, // Population
+	rankKey{"EurostatData", "EurostatRegionalPopulationData"}: 2, // Population
+	rankKey{"WorldDevelopmentIndicators", ""}:                 3, // Population
+	rankKey{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:            0, // Unemployment Rate
+	rankKey{"EurostatData", ""}:                               1, // Unemployment Rate
 }
 
 const lowestRank = 100
