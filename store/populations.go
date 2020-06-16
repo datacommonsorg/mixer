@@ -28,10 +28,25 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
 	"github.com/golang/protobuf/jsonpb"
-	"github.com/golang/protobuf/proto"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 )
+
+type rankKey struct {
+	prov    string
+	mmethod string
+}
+
+var statsRanking = map[rankKey]int{
+	rankKey{"CensusPEP", "CensusPEPSurvey"}:                   0,
+	rankKey{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:     1,
+	rankKey{"EurostatData", "EurostatRegionalPopulationData"}: 2,
+	rankKey{"WorldDevelopmentIndicators", ""}:                 3,
+	rankKey{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:            0,
+	rankKey{"EurostatData", ""}:                               1,
+}
+
+const lowestRank = 100
 
 // PopObs represents a pair of population and observation node.
 type PopObs struct {
@@ -476,7 +491,7 @@ func iterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
 
 func keyToDcid(key, prefix string) string {
 	parts := strings.Split(key, "^")
-	return strings.TrimPrefix(parts[0], util.BtObsSeriesPrefix)
+	return strings.TrimPrefix(parts[0], prefix)
 }
 
 type dcidObs struct {
@@ -493,38 +508,32 @@ func getObsSeries(
 	if err != nil {
 		return nil, err
 	}
-	pbData := &pb.PopObsPlace{}
+	pbData := &pb.ChartStore{}
 	jsonpb.UnmarshalString(string(val), pbData)
-	ts := pb.ObsTimeSeries{PlaceName: pbData.Name, Data: map[string]float64{}}
-	for _, obs := range pbData.Observations {
-		if obs.MeasurementMethod != "DataCommonsAggregate" {
-			mmethod := strings.Replace(obs.MeasurementMethod, "dcAggregate/", "", -1)
-			if mmethod != statsVar.MeasurementMethod {
-				continue
+	switch x := pbData.Val.(type) {
+	case *pb.ChartStore_ObsTimeSeries:
+		result := &pb.ObsTimeSeries{}
+		result.Unit = x.ObsTimeSeries.GetUnit()
+		result.PlaceName = x.ObsTimeSeries.GetPlaceName()
+		result.IsDcAggregate = x.ObsTimeSeries.GetIsDcAggregate()
+		bestScore := lowestRank
+		for _, series := range x.ObsTimeSeries.SourceSeries {
+			key := rankKey{series.GetImportName(), series.GetMeasurementMethod()}
+			score, ok := statsRanking[key]
+			if !ok {
+				score = lowestRank
+			}
+			if score <= bestScore {
+				result.Val = series.Val
+				bestScore = score
 			}
 		}
-		if obs.MeasuredProp != statsVar.MeasuredProp {
-			continue
-		}
-		if obs.ScalingFactor != statsVar.ScalingFactor {
-			continue
-		}
-		if obs.MeasurementDenominator != statsVar.MeasurementDenominator {
-			continue
-		}
-		if obs.MeasurementQualifier != statsVar.MeasurementQualifier {
-			continue
-		}
-		if obs.Unit != statsVar.Unit {
-			continue
-		}
-		msg := proto.MessageReflect(obs)
-		fd := msg.Descriptor().Fields().ByJSONName(statsVar.StatType)
-		if msg.Has(fd) {
-			ts.Data[obs.ObservationDate] = msg.Get(fd).Float()
-		}
+		return result, nil
+	case nil:
+		return nil, fmt.Errorf("ChartStore.Val is not set")
+	default:
+		return nil, fmt.Errorf("ChartStore.Val has unexpected type %T", x)
 	}
-	return &ts, nil
 }
 
 func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
@@ -557,7 +566,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 				return fmt.Errorf("%s is not a StatisticalVariable", in.GetStatsVar())
 			}
 		} else if t.Predicate == "statType" {
-			statsVar.StatType = t.ObjectID
+			statsVar.StatType = strings.Replace(t.ObjectID, "Value", "", 1)
 		} else if t.Predicate == "provenance" {
 			continue
 		} else if t.Predicate == "name" {
@@ -590,16 +599,23 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 		}
 	}
 
-	keySuffix := fmt.Sprintf("%s", statsVar.PopType)
+	keySuffix := strings.Join([]string{
+		statsVar.MeasuredProp,
+		statsVar.StatType,
+		statsVar.MeasurementDenominator,
+		statsVar.MeasurementQualifier,
+		statsVar.ScalingFactor,
+		statsVar.PopType},
+		"^")
+
 	if len(pvs) > 0 {
 		iterateSortPVs(pvs, func(i int, p, v string) {
 			keySuffix += "^" + p + "^" + v
 		})
 	}
-	log.Println(keySuffix)
 	rowList := bigtable.RowList{}
 	for _, dcid := range in.GetPlace() {
-		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtObsSeriesPrefix, dcid, keySuffix))
+		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, dcid, keySuffix))
 	}
 
 	dcidToRaw := map[string]string{}
@@ -608,7 +624,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 		for _, rowKey := range rowList {
 			rowKey := rowKey
 			if branchString, ok := s.cache.Read(rowKey); ok {
-				dcid := keyToDcid(rowKey, util.BtObsSeriesPrefix)
+				dcid := keyToDcid(rowKey, util.BtChartDataPrefix)
 				dcidToRaw[dcid] = branchString
 			}
 		}
@@ -621,7 +637,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 			func(btRow bigtable.Row) error {
 				rowKey := btRow.Key()
 				if len(btRow[util.BtFamily]) > 0 {
-					dcid := keyToDcid(rowKey, util.BtObsSeriesPrefix)
+					dcid := keyToDcid(rowKey, util.BtChartDataPrefix)
 					dcidToRaw[dcid] = string(btRow[util.BtFamily][0].Value)
 					if err != nil {
 						return err
