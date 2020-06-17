@@ -528,7 +528,7 @@ func getObsSeries(
 				score = lowestRank
 			}
 			if score <= bestScore {
-				result.Val = series.Val
+				result.Data = series.Val
 				bestScore = score
 			}
 		}

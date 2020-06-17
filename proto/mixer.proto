@@ -209,7 +209,7 @@ message ObsTimeSeries {
     string observation_period = 4;
     string import_name = 5;
   }
-  map<string, double> val = 1;  // Date to value.
+  map<string, double> data = 1;  // Date to value.
   string unit = 2;
   string place_name = 3;
   bool is_dc_aggregate = 4;
