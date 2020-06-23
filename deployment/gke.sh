@@ -108,13 +108,13 @@ gcloud services enable container.googleapis.com
 
 # Create GKE instance
 # Use custom machine type with 1cpu and 5G memory per instance. There are 3 instance by default.
-CLUSTER_NAME="mixer-cluster-high-mem"
+CLUSTER_NAME="mixer-cluster"
 if [[ $(gcloud container clusters list --filter="$CLUSTER_NAME" --format=yaml) ]]; then
   echo "$CLUSTER_NAME already exists, continue..."
 else
   gcloud container clusters create $CLUSTER_NAME \
     --zone=us-central1-c \
-    --machine-type=custom-2-5120
+    --machine-type=custom-4-26624
 fi
 
 gcloud container clusters get-credentials $CLUSTER_NAME
