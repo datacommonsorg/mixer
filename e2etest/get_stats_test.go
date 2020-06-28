@@ -72,27 +72,71 @@ func TestResponse(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "../golden_response/staging/get_stats")
-	resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
-		StatsVar: "TotalPopulation",
-		Place:    []string{"geoId/06"},
-	})
-	if err != nil {
-		t.Fatalf("could not GetStats: %s", err)
-	}
-	var result map[string]*pb.ObsTimeSeries
-	err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-	if err != nil {
-		t.Errorf("Can not Unmarshal payload")
-	}
 
-	var expected map[string]*pb.ObsTimeSeries
-	file, _ := ioutil.ReadFile(path.Join(goldenPath, "California_TotalPopulation.json"))
-	err = json.Unmarshal(file, &expected)
-	if err != nil {
-		t.Errorf("Can not Unmarshal golden file")
-	}
+	for _, c := range []struct {
+		statsVar     string
+		place        []string
+		goldenFile   string
+		partialMatch bool
+	}{
+		{
+			"TotalPopulation",
+			[]string{"country/USA", "geoId/06", "geoId/06085", "geoId/0649670"},
+			"TotalPopulation.json",
+			false,
+		},
+		{
+			"NYTCovid19CumulativeCases",
+			[]string{"country/USA", "geoId/06", "geoId/06085"},
+			"NYTCovid19CumulativeCases.json",
+			true,
+		},
+		{
+			"TotalCrimes",
+			[]string{"geoId/06", "geoId/0649670"},
+			"TotalCrimes.json",
+			false,
+		},
+	} {
 
-	if diff := cmp.Diff(result, expected); diff != "" {
-		t.Errorf("payload got diff: %v", diff)
+		resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
+			StatsVar: c.statsVar,
+			Place:    c.place,
+		})
+		if err != nil {
+			t.Errorf("could not GetStats: %s", err)
+			continue
+		}
+		var result map[string]*pb.ObsTimeSeries
+		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+		if err != nil {
+			t.Errorf("Can not Unmarshal payload")
+			continue
+		}
+		var expected map[string]*pb.ObsTimeSeries
+		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		err = json.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file")
+			continue
+		}
+		if c.partialMatch {
+			for geo := range expected {
+				for date := range expected[geo].Data {
+					if expected[geo].Data[date] != result[geo].Data[date] {
+						t.Errorf("%s, %s, %s want: %f, got: %f", c.statsVar, geo,
+							date, expected[geo].Data[date], result[geo].Data[date],
+						)
+						continue
+					}
+				}
+			}
+		} else {
+			if diff := cmp.Diff(result, expected); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
+		}
+
 	}
 }

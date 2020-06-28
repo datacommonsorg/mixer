@@ -369,12 +369,14 @@ func (s *server) Search(
 	return &out, nil
 }
 
+// Server wraps gRpc go server.
 type Server struct {
 	Addr string
 	Lis  net.Listener
 	Srv  *grpc.Server
 }
 
+// NewServer creates a new Server instance given config parameters.
 func NewServer(
 	port, bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
 	branchCache bool,
@@ -386,7 +388,6 @@ func NewServer(
 	log.Println("Now listening to port ", port)
 
 	_, filename, _, _ := runtime.Caller(0)
-	log.Println(filename)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
 	if err != nil {

@@ -20,6 +20,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -149,6 +150,12 @@ func (st *store) LoadBranchCache(
 			return err
 		}
 		log.Println(attrs.Name)
+		if strings.Contains(attrs.Name, "00000") ||
+			strings.Contains(attrs.Name, "00001") ||
+			strings.Contains(attrs.Name, "00002") ||
+			strings.Contains(attrs.Name, "00003") {
+			continue
+		}
 		rc, err := gcsClient.Bucket(gcsBucket).Object(attrs.Name).NewReader(ctx)
 		if err != nil {
 			log.Printf("%s", err)
@@ -156,22 +163,18 @@ func (st *store) LoadBranchCache(
 		}
 		defer rc.Close()
 
-		scanner := bufio.NewScanner(rc)
-		// There is some large single cache data upto hundreds of Kb as known.
-		// Set the maximum allowed buffer size to be 10Mb.
-		buf := make([]byte, 0, 64*1024)
-		scanner.Buffer(buf, 10*1024*1024)
-		for scanner.Scan() {
-			line := scanner.Bytes()
+		rd := bufio.NewReader(rc)
+		for {
+			line, err := rd.ReadBytes('\n')
+			if err == io.EOF {
+				break
+			}
 			parts := bytes.Split(line, []byte(","))
 			if len(parts) != 2 {
 				log.Printf("Bad line with %d parts:\n%s", len(parts), string(line))
 				continue
 			}
 			newCache[string(parts[0])] = parts[1]
-		}
-		if err := scanner.Err(); err != nil {
-			return err
 		}
 	}
 	st.cache.Update(newCache)

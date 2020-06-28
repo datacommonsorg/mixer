@@ -18,8 +18,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"sort"
 	"strings"
+	"sync"
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
@@ -49,20 +51,18 @@ var statsRanking = map[rankKey]int{
 const lowestRank = 100
 
 // Limit the concurrent channels when processing in-memory cache data.
-// Without the limit, it can get very slow when process thousands of dcids
-// concurrently.
-const maxChannelSize = 100
+const maxChannelSize = 50
 
 // triplesToStatsVar converts a Triples cache into a StatisticalVarible object.
 func triplesToStatsVar(triples *TriplesCache) (*StatisticalVariable, error) {
 	// Get constraint properties.
-	var propValMap map[string]string
+	propValMap := map[string]string{}
 	for _, t := range triples.Triples {
 		if t.Predicate == "constraintProperties" {
 			propValMap[t.ObjectID] = ""
 		}
 	}
-	var statsVar StatisticalVariable
+	statsVar := StatisticalVariable{}
 	// Populate the field.
 	for _, t := range triples.Triples {
 		object := t.ObjectID
@@ -89,6 +89,9 @@ func triplesToStatsVar(triples *TriplesCache) (*StatisticalVariable, error) {
 			statsVar.Unit = object
 		default:
 			if _, ok := propValMap[t.Predicate]; ok {
+				if statsVar.PVs == nil {
+					statsVar.PVs = map[string]string{}
+				}
 				statsVar.PVs[t.Predicate] = object
 			}
 		}
@@ -168,7 +171,7 @@ func btReadStats(ctx context.Context, btTable *bigtable.Table,
 		var rowSetPart bigtable.RowSet
 		rowSetPart = rowSet[left:right]
 		errs.Go(func() error {
-			var ObsSeriesSet []*pb.ObsTimeSeries
+			ObsSeriesSet := []*pb.ObsTimeSeries{}
 			if err := btTable.ReadRows(errCtx, rowSetPart,
 				func(btRow bigtable.Row) bool {
 					rowKey := btRow.Key()
@@ -208,31 +211,32 @@ func btReadStats(ctx context.Context, btTable *bigtable.Table,
 // Read stats data from the in-memory branch cache.
 func memReadStats(rowList bigtable.RowList, cache *Cache) (
 	map[string]*pb.ObsTimeSeries, error) {
-	obsSeriesChan := make(chan *pb.ObsTimeSeries, maxChannelSize)
-	errs := errgroup.Group{}
+	obsSeriesChan := make(chan *pb.ObsTimeSeries, len(rowList))
+	rowKeyChan := make(chan bool, maxChannelSize)
+
+	var wg sync.WaitGroup
 	for _, rowKey := range rowList {
-		rowKey := rowKey
-		errs.Go(func() error {
+		rowKeyChan <- true // Block if the rowKeyChan has size maxChannelSize
+		go func(rowKey string) {
+			wg.Add(1)
 			if data, ok := cache.Read(rowKey); ok {
 				dcid := btKeyToDcid(rowKey, util.BtChartDataPrefix)
 				obsSeries, err := getObsSeries(data)
-				if err != nil {
-					return nil
+				if err == nil {
+					// Set the place dcid since it is not always available.
+					obsSeries.PlaceDcid = dcid
+					obsSeriesChan <- obsSeries
+				} else {
+					log.Printf("Read BT cache error, key: %s", rowKey)
 				}
-				// Set the place dcid since it is not always available.
-				obsSeries.PlaceDcid = dcid
-				obsSeriesChan <- obsSeries
-				return nil
 			}
-			return nil
-		})
+			<-rowKeyChan
+			wg.Done()
+		}(rowKey)
 	}
-	err := errs.Wait()
-	if err != nil {
-		return nil, err
-	}
+	wg.Wait()
 	close(obsSeriesChan)
-	var result map[string]*pb.ObsTimeSeries
+	result := map[string]*pb.ObsTimeSeries{}
 	for obsSeries := range obsSeriesChan {
 		result[obsSeries.PlaceDcid] = obsSeries
 	}
@@ -259,7 +263,7 @@ func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 		rowList = append(rowList, rowKey)
 	}
 	// Map from place dcid to compressed cache data.
-	var result map[string]*pb.ObsTimeSeries
+	result := map[string]*pb.ObsTimeSeries{}
 	// Read data from branch in-momery cache first.
 	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
 		result, err = memReadStats(rowList, s.cache)
