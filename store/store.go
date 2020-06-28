@@ -150,12 +150,6 @@ func (st *store) LoadBranchCache(
 			return err
 		}
 		log.Println(attrs.Name)
-		if strings.Contains(attrs.Name, "00000") ||
-			strings.Contains(attrs.Name, "00001") ||
-			strings.Contains(attrs.Name, "00002") ||
-			strings.Contains(attrs.Name, "00003") {
-			continue
-		}
 		rc, err := gcsClient.Bucket(gcsBucket).Object(attrs.Name).NewReader(ctx)
 		if err != nil {
 			log.Printf("%s", err)
