@@ -473,8 +473,3 @@ func iterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
 		action(i, p, pvMap[p])
 	}
 }
-
-type dcidObs struct {
-	dcid      string
-	obsSeries *pb.ObsTimeSeries
-}

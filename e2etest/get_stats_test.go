@@ -32,7 +32,8 @@ func Setup(ctx context.Context) (pb.MixerClient, error) {
 		path.Join(path.Dir(filename), "../deployment/staging_bt_table.txt"))
 	bqTable, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../deployment/staging_bq_table.txt"))
-	schemaPath := path.Join(path.Dir(filename), "../deployment/versioned_mapping")
+	// Use a fixed BQ dataset for now.
+	schemaPath := path.Join(path.Dir(filename), "../")
 
 	s, err := server.NewServer(
 		"localhost:0",
