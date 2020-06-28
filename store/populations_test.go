@@ -29,7 +29,7 @@ func TestGetPopObs(t *testing.T) {
 	data := map[string]string{}
 	dcid := "geoId/06"
 	key := util.BtPopObsPrefix + dcid
-	btRow := `{
+	btRow := []byte(`{
 		"name": "Santa Clara",
 		"populations": {
 			"dc/p/zzlmxxtp1el87": {
@@ -74,9 +74,9 @@ func TestGetPopObs(t *testing.T) {
 				"observedNode": "geoId/06085"
 			}
 		]
-	}`
+	}`)
 
-	tableValue, err := util.ZipAndEncode(string(btRow))
+	tableValue, err := util.ZipAndEncode(btRow)
 	if err != nil {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
 	}
@@ -87,7 +87,7 @@ func TestGetPopObs(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}, nil
+	s := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
@@ -104,7 +104,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 
 	// Setup bigtable
 	baseData := map[string]string{}
-	btRow := `{
+	btRow := []byte(`{
 		"name": "Santa Clara",
 		"populations": {
 			"dc/p/abcxyz": {
@@ -126,7 +126,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 				]
 			}
 		}
-	}`
+	}`)
 	tableValue, err := util.ZipAndEncode(btRow)
 	if err != nil {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
@@ -138,8 +138,8 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	}
 
 	// branch cache data. Have observation on newer date.
-	branchData := map[string]string{}
-	branchCache := `{
+	branchData := map[string][]byte{}
+	branchCache := []byte(`{
 		"name": "Santa Clara",
 		"populations": {
 			"dc/p/abcxyz": {
@@ -168,12 +168,12 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 				]
 			}
 		}
-	}`
+	}`)
 	branchCacheValue, err := util.ZipAndEncode(branchCache)
 	if err != nil {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", branchCache, err)
 	}
-	branchData[key] = branchCacheValue
+	branchData[key] = []byte(branchCacheValue)
 	// Test
 	cache := Cache{}
 	cache.Update(branchData)
@@ -195,7 +195,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
 		jsonpb.UnmarshalString(string(tmp), &resultProto)
 	}
-	jsonpb.UnmarshalString(branchCache, &expectProto)
+	jsonpb.UnmarshalString(string(branchCache), &expectProto)
 	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff %+v", diff)
 	}
@@ -210,7 +210,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
 		jsonpb.UnmarshalString(string(tmp), &resultProto)
 	}
-	jsonpb.UnmarshalString(btRow, &expectProto)
+	jsonpb.UnmarshalString(string(btRow), &expectProto)
 	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff %+v", diff)
 	}
@@ -219,7 +219,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 func TestGetPlaceObs(t *testing.T) {
 	data := map[string]string{}
 	key := util.BtPlaceObsPrefix + "City^2013^Person^gender^Male"
-	btRow := `{
+	btRow := []byte(`{
 		"places":[
 			{
 				"name":"Stony Prairie CDP",
@@ -244,9 +244,9 @@ func TestGetPlaceObs(t *testing.T) {
 				"place":"geoId/2001675"
 			}
 		]
-	}`
+	}`)
 
-	tableValue, err := util.ZipAndEncode(string(btRow))
+	tableValue, err := util.ZipAndEncode(btRow)
 	if err != nil {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
 	}
@@ -270,7 +270,7 @@ func TestGetPlaceObs(t *testing.T) {
 		PopulationType:  "Person",
 		ObservationDate: "2013",
 		Pvs: []*pb.PropertyValue{
-			&pb.PropertyValue{Property: "gender", Value: "Male"},
+			{Property: "gender", Value: "Male"},
 		},
 	}
 	s.GetPlaceObs(context.Background(), in, &out)
@@ -280,7 +280,7 @@ func TestGetPlaceObs(t *testing.T) {
 	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
 		jsonpb.UnmarshalString(string(tmp), &resultProto)
 	}
-	jsonpb.UnmarshalString(btRow, &expectProto)
+	jsonpb.UnmarshalString(string(btRow), &expectProto)
 
 	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPlaceObs() got diff %+v", diff)
@@ -298,8 +298,8 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	}
 
 	// branch cache data. Have observation on newer date.
-	branchData := map[string]string{}
-	branchCache := `{
+	branchData := map[string][]byte{}
+	branchCache := []byte(`{
 		"places":[
 			{
 				"name":"Stony Prairie CDP",
@@ -324,12 +324,12 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 				"place":"geoId/2001675"
 			}
 		]
-	}`
+	}`)
 	branchCacheValue, err := util.ZipAndEncode(branchCache)
 	if err != nil {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", branchCache, err)
 	}
-	branchData[key] = branchCacheValue
+	branchData[key] = []byte(branchCacheValue)
 	// Test
 	cache := Cache{}
 	cache.Update(branchData)
@@ -340,7 +340,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 		PopulationType:  "Person",
 		ObservationDate: "2013",
 		Pvs: []*pb.PropertyValue{
-			&pb.PropertyValue{Property: "gender", Value: "Male"},
+			{Property: "gender", Value: "Male"},
 		},
 	}
 	var out pb.GetPlaceObsResponse
@@ -350,7 +350,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
 		jsonpb.UnmarshalString(string(tmp), &resultProto)
 	}
-	jsonpb.UnmarshalString(branchCache, &expectProto)
+	jsonpb.UnmarshalString(string(branchCache), &expectProto)
 
 	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPlaceObs() got diff %+v", diff)

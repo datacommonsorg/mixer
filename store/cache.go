@@ -22,18 +22,18 @@ import (
 // Cache represents a Read Write locked object for in-memory key-value cache.
 type Cache struct {
 	sync.RWMutex
-	data map[string]string
+	data map[string][]byte
 }
 
 // NewCache returns a new Cache instance.
 func NewCache() *Cache {
 	cache := Cache{}
-	cache.data = map[string]string{}
+	cache.data = map[string][]byte{}
 	return &cache
 }
 
 // Read is used for key value look up for Cache.
-func (c *Cache) Read(key string) (string, bool) {
+func (c *Cache) Read(key string) ([]byte, bool) {
 	c.RLock()
 	defer c.RUnlock()
 	value, ok := c.data[key]
@@ -41,7 +41,7 @@ func (c *Cache) Read(key string) (string, bool) {
 }
 
 // Update is used to update the data in Cache.
-func (c *Cache) Update(data map[string]string) {
+func (c *Cache) Update(data map[string][]byte) {
 	c.Lock()
 	defer c.Unlock()
 	c.data = data

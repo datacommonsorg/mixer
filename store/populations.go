@@ -28,29 +28,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
 	"github.com/golang/protobuf/jsonpb"
-	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 )
-
-type rankKey struct {
-	prov    string
-	mmethod string
-}
-
-// Ranking for (import name, measurement method) combination. This is used to rank
-// multiple dataset for the same StatisticalVariable, where lower value means
-// higher ranking.
-// The ranking score ranges from 0 to 100.
-var statsRanking = map[rankKey]int{
-	rankKey{"CensusPEP", "CensusPEPSurvey"}:                   0, // Population
-	rankKey{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:     1, // Population
-	rankKey{"EurostatData", "EurostatRegionalPopulationData"}: 2, // Population
-	rankKey{"WorldDevelopmentIndicators", ""}:                 3, // Population
-	rankKey{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:            0, // Unemployment Rate
-	rankKey{"EurostatData", ""}:                               1, // Unemployment Rate
-}
-
-const lowestRank = 100
 
 // PopObs represents a pair of population and observation node.
 type PopObs struct {
@@ -64,9 +43,9 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 	key := util.BtPopObsPrefix + dcid
 
 	var baseData, branchData pb.PopObsPlace
-	var baseString, branchString string
+	var baseRaw, branchRaw []byte
 	var hasBaseData, hasBranchData bool
-	out.Payload, _ = util.ZipAndEncode("{}")
+	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
 	btRow, err := s.btTable.ReadRow(ctx, key)
 	if err != nil {
@@ -75,27 +54,27 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 
 	hasBaseData = len(btRow[util.BtFamily]) > 0
 	if hasBaseData {
-		baseString = string(btRow[util.BtFamily][0].Value)
+		baseRaw = btRow[util.BtFamily][0].Value
 	}
 	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
 		hasBranchData = false
 	} else {
-		branchString, hasBranchData = s.cache.Read(key)
+		branchRaw, hasBranchData = s.cache.Read(key)
 	}
 
 	if !hasBaseData && !hasBranchData {
 		return nil
 	} else if !hasBaseData {
-		out.Payload = branchString
+		out.Payload = string(branchRaw)
 		return nil
 	} else if !hasBranchData {
-		out.Payload = baseString
+		out.Payload = string(baseRaw)
 		return nil
 	} else {
-		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
+		if tmp, err := util.UnzipAndDecode(string(baseRaw)); err == nil {
 			jsonpb.UnmarshalString(string(tmp), &baseData)
 		}
-		if tmp, err := util.UnzipAndDecode(branchString); err == nil {
+		if tmp, err := util.UnzipAndDecode(string(branchRaw)); err == nil {
 			jsonpb.UnmarshalString(string(tmp), &branchData)
 		}
 		if baseData.Populations == nil {
@@ -108,7 +87,7 @@ func (s *store) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest,
 		if err != nil {
 			return err
 		}
-		out.Payload, err = util.ZipAndEncode(resStr)
+		out.Payload, err = util.ZipAndEncode([]byte(resStr))
 		return err
 	}
 }
@@ -126,9 +105,9 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 
 	// TODO(boxu): abstract out the common logic for handling cache merging.
 	var baseData, branchData pb.PopObsCollection
-	var baseString, branchString string
+	var baseRaw, branchRaw []byte
 	var hasBaseData, hasBranchData bool
-	out.Payload, _ = util.ZipAndEncode("{}")
+	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
 	btRow, err := s.btTable.ReadRow(ctx, key)
 	if err != nil {
@@ -137,27 +116,27 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 
 	hasBaseData = len(btRow[util.BtFamily]) > 0
 	if hasBaseData {
-		baseString = string(btRow[util.BtFamily][0].Value)
+		baseRaw = btRow[util.BtFamily][0].Value
 	}
 	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
 		hasBranchData = false
 	} else {
-		branchString, hasBranchData = s.cache.Read(key)
+		branchRaw, hasBranchData = s.cache.Read(key)
 	}
 
 	if !hasBaseData && !hasBranchData {
 		return nil
 	} else if !hasBaseData {
-		out.Payload = branchString
+		out.Payload = string(branchRaw)
 		return nil
 	} else if !hasBranchData {
-		out.Payload = baseString
+		out.Payload = string(baseRaw)
 		return nil
 	} else {
-		if tmp, err := util.UnzipAndDecode(baseString); err == nil {
+		if tmp, err := util.UnzipAndDecode(string(baseRaw)); err == nil {
 			jsonpb.UnmarshalString(string(tmp), &baseData)
 		}
-		if tmp, err := util.UnzipAndDecode(branchString); err == nil {
+		if tmp, err := util.UnzipAndDecode(string(branchRaw)); err == nil {
 			jsonpb.UnmarshalString(string(tmp), &branchData)
 		}
 		dataMap := map[string]*pb.PopObsPlace{}
@@ -175,7 +154,7 @@ func (s *store) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest,
 		if err != nil {
 			return err
 		}
-		out.Payload, err = util.ZipAndEncode(resStr)
+		out.Payload, err = util.ZipAndEncode([]byte(resStr))
 		return err
 	}
 }
@@ -311,7 +290,8 @@ func (s *store) btGetPopulations(ctx context.Context, in *pb.GetPopulationsReque
 			dcid := strings.TrimPrefix(parts[0], util.BtPopPrefix)
 
 			if len(btRow[util.BtFamily]) > 0 {
-				popIDRaw, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
+				popIDRaw, err := util.UnzipAndDecode(
+					string(btRow[util.BtFamily][0].Value))
 				if err != nil {
 					return err
 				}
@@ -450,7 +430,8 @@ func (s *store) btGetObservations(ctx context.Context, in *pb.GetObservationsReq
 
 			// Add the results of the query.
 			if len(btRow[util.BtFamily]) > 0 {
-				valRaw, err := util.UnzipAndDecode(string(btRow[util.BtFamily][0].Value))
+				valRaw, err := util.UnzipAndDecode(
+					string(btRow[util.BtFamily][0].Value))
 				if err != nil {
 					return err
 				}
@@ -493,205 +474,7 @@ func iterateSortPVs(pvs []*pb.PropertyValue, action func(i int, p, v string)) {
 	}
 }
 
-func keyToDcid(key, prefix string) string {
-	parts := strings.Split(key, "^")
-	return strings.TrimPrefix(parts[0], prefix)
-}
-
 type dcidObs struct {
 	dcid      string
 	obsSeries *pb.ObsTimeSeries
-}
-
-func getObsSeries(
-	dcid string,
-	cacheValue string,
-	statsVar *pb.StatisticalVariable,
-) (*pb.ObsTimeSeries, error) {
-	val, err := util.UnzipAndDecode(cacheValue)
-	if err != nil {
-		return nil, err
-	}
-	pbData := &pb.ChartStore{}
-	jsonpb.UnmarshalString(string(val), pbData)
-	switch x := pbData.Val.(type) {
-	case *pb.ChartStore_ObsTimeSeries:
-		result := &pb.ObsTimeSeries{}
-		result.Unit = x.ObsTimeSeries.GetUnit()
-		result.PlaceName = x.ObsTimeSeries.GetPlaceName()
-		result.IsDcAggregate = x.ObsTimeSeries.GetIsDcAggregate()
-		bestScore := lowestRank
-		for _, series := range x.ObsTimeSeries.SourceSeries {
-			key := rankKey{series.GetImportName(), series.GetMeasurementMethod()}
-			score, ok := statsRanking[key]
-			if !ok {
-				score = lowestRank
-			}
-			if score <= bestScore {
-				result.Data = series.Val
-				bestScore = score
-			}
-		}
-		return result, nil
-	case nil:
-		return nil, fmt.Errorf("ChartStore.Val is not set")
-	default:
-		return nil, fmt.Errorf("ChartStore.Val has unexpected type %T", x)
-	}
-}
-
-func (s *store) GetStats(ctx context.Context, in *pb.GetStatsRequest,
-	out *pb.GetStatsResponse) error {
-	statsVarKey := fmt.Sprintf("%s%s", util.BtTriplesPrefix, in.GetStatsVar())
-	// Query for stats var.
-	btRow, err := s.btTable.ReadRow(ctx, statsVarKey)
-	if err != nil {
-		return err
-	}
-	if len(btRow[util.BtFamily]) == 0 {
-		return nil
-	}
-
-	btRawValue := string(btRow[util.BtFamily][0].Value)
-	btJSONRaw, err := util.UnzipAndDecode(string(btRawValue))
-	if err != nil {
-		return err
-	}
-	var btTriples TriplesCache
-	json.Unmarshal(btJSONRaw, &btTriples)
-
-	var statsVar pb.StatisticalVariable
-	// TODO(boxu): Remove when data is fixed.
-	allP := map[string]struct{}{}
-	var pvs []*pb.PropertyValue
-	for _, t := range btTriples.Triples {
-		if t.Predicate == "typeOf" {
-			if t.ObjectID != "StatisticalVariable" {
-				return fmt.Errorf("%s is not a StatisticalVariable", in.GetStatsVar())
-			}
-		} else if t.Predicate == "statType" {
-			statsVar.StatType = strings.Replace(t.ObjectID, "Value", "", 1)
-		} else if t.Predicate == "provenance" {
-			continue
-		} else if t.Predicate == "name" {
-			continue
-		} else if t.Predicate == "censusACSTableId" {
-			continue
-		} else if t.Predicate == "constraintProperties" {
-			continue
-		} else if t.Predicate == "populationType" {
-			statsVar.PopType = t.ObjectID
-		} else if t.Predicate == "measurementMethod" {
-			statsVar.MeasurementMethod = t.ObjectID
-		} else if t.Predicate == "measuredProperty" {
-			statsVar.MeasuredProp = t.ObjectID
-		} else if t.Predicate == "measurementDenominator" {
-			statsVar.MeasurementDenominator = t.ObjectID
-		} else if t.Predicate == "measurementQualifier" {
-			statsVar.MeasurementQualifier = t.ObjectID
-		} else if t.Predicate == "scalingFactor" {
-			statsVar.ScalingFactor = t.ObjectID
-		} else if t.Predicate == "unit" {
-			statsVar.Unit = t.ObjectID
-		} else {
-			if _, ok := allP[t.Predicate]; !ok {
-				// Do not use the pvs in pb.StatisticalVariable. Instead use the
-				// pb.PropertyValue array to use the sorting function.
-				pvs = append(pvs, &pb.PropertyValue{Property: t.Predicate, Value: t.ObjectID})
-				allP[t.Predicate] = struct{}{}
-			}
-		}
-	}
-
-	keySuffix := strings.Join([]string{
-		statsVar.MeasuredProp,
-		statsVar.StatType,
-		statsVar.MeasurementDenominator,
-		statsVar.MeasurementQualifier,
-		statsVar.ScalingFactor,
-		statsVar.PopType},
-		"^")
-
-	if len(pvs) > 0 {
-		iterateSortPVs(pvs, func(i int, p, v string) {
-			keySuffix += "^" + p + "^" + v
-		})
-	}
-	rowList := bigtable.RowList{}
-	for _, dcid := range in.GetPlace() {
-		rowList = append(rowList, fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, dcid, keySuffix))
-	}
-
-	dcidToRaw := map[string]string{}
-
-	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
-		for _, rowKey := range rowList {
-			rowKey := rowKey
-			if branchString, ok := s.cache.Read(rowKey); ok {
-				dcid := keyToDcid(rowKey, util.BtChartDataPrefix)
-				dcidToRaw[dcid] = branchString
-			}
-		}
-	}
-
-	// Read result from base cache if no branch cache data found.
-	// This is valid since branch cache is a superset of base cache.
-	if len(dcidToRaw) == 0 {
-		if err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
-			func(btRow bigtable.Row) error {
-				rowKey := btRow.Key()
-				if len(btRow[util.BtFamily]) > 0 {
-					dcid := keyToDcid(rowKey, util.BtChartDataPrefix)
-					dcidToRaw[dcid] = string(btRow[util.BtFamily][0].Value)
-					if err != nil {
-						return err
-					}
-				}
-				return nil
-			}); err != nil {
-			return err
-		}
-	}
-
-	result := map[string]*pb.ObsTimeSeries{}
-	dcidObsChan := make(chan *dcidObs, len(dcidToRaw))
-	errs, _ := errgroup.WithContext(ctx)
-	for dcid, data := range dcidToRaw {
-		dcid := dcid
-		data := data
-		errs.Go(func() error {
-			obsSeries, err := getObsSeries(
-				dcid,
-				string(data),
-				&statsVar,
-			)
-			if err != nil {
-				return err
-			}
-			dcidObsChan <- &dcidObs{dcid, obsSeries}
-			return nil
-		})
-	}
-	err = errs.Wait()
-	if err != nil {
-		return err
-	}
-	close(dcidObsChan)
-
-	for item := range dcidObsChan {
-		result[item.dcid] = item.obsSeries
-	}
-
-	for _, dcid := range in.GetPlace() {
-		if _, ok := result[dcid]; !ok {
-			result[dcid] = nil
-		}
-	}
-
-	jsonRaw, err := json.Marshal(result)
-	if err != nil {
-		return err
-	}
-	out.Payload = string(jsonRaw)
-	return nil
 }
