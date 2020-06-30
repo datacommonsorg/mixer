@@ -32,8 +32,8 @@ func Setup(ctx context.Context) (pb.MixerClient, error) {
 		path.Join(path.Dir(filename), "../deployment/staging_bt_table.txt"))
 	bqTable, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../deployment/staging_bq_table.txt"))
-	// Use a fixed BQ dataset for now.
-	schemaPath := path.Join(path.Dir(filename), "../")
+	// Use mapping template before we need to test SPARQL query.
+	schemaPath := path.Join(path.Dir(filename), "../deployment/mapping")
 
 	s, err := server.NewServer(
 		"localhost:0",
