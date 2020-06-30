@@ -38,7 +38,7 @@ func TestGetPropertyLabels(t *testing.T) {
 		if err != nil {
 			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
 		}
-		tableValue, err := util.ZipAndEncode(string(jsonRaw))
+		tableValue, err := util.ZipAndEncode(jsonRaw)
 		if err != nil {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}

@@ -16,8 +16,11 @@
 package store
 
 import (
+	"bufio"
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -130,7 +133,7 @@ func (st *store) LoadBranchCache(
 	gcsFolder string) error {
 	// Cloud storage.
 	log.Println("Loading cache data ...")
-	newCache := map[string]string{}
+	newCache := map[string][]byte{}
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		return err
@@ -146,38 +149,39 @@ func (st *store) LoadBranchCache(
 		if err != nil {
 			return err
 		}
+		log.Println(attrs.Name)
 		rc, err := gcsClient.Bucket(gcsBucket).Object(attrs.Name).NewReader(ctx)
 		if err != nil {
 			log.Printf("%s", err)
 			continue
 		}
 		defer rc.Close()
-		data, err := ioutil.ReadAll(rc)
-		if err != nil {
-			log.Printf("%s", err)
-			continue
-		}
-		temp := strings.Split(string(data), "\n")
-		for _, line := range temp {
-			parts := strings.Split(line, ",")
+
+		rd := bufio.NewReader(rc)
+		for {
+			line, err := rd.ReadBytes('\n')
+			if err == io.EOF {
+				break
+			}
+			parts := bytes.Split(line, []byte(","))
 			if len(parts) != 2 {
-				log.Printf("Bad line %s", line)
+				log.Printf("Bad line with %d parts:\n%s", len(parts), string(line))
 				continue
 			}
-			newCache[parts[0]] = parts[1]
+			newCache[string(parts[0])] = parts[1]
 		}
 	}
 	st.cache.Update(newCache)
+	log.Println("Branch cache load complete")
 	return nil
 }
 
 // NewStore returns an implementation of Interface backed by BigQuery and BigTable.
 func NewStore(
-	ctx context.Context,
 	bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
 	subTypeMap map[string]string, containedIn map[util.TypePair][]string,
-	opts ...option.ClientOption) (Interface, error) {
-
+	branchCache bool, opts ...option.ClientOption) (Interface, error) {
+	ctx := context.Background()
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, projectID, opts...)
 	if err != nil {
@@ -212,6 +216,11 @@ func NewStore(
 
 	st := &store{bqDataset, bqClient, mappings, outArcInfo,
 		inArcInfo, subTypeMap, containedIn, btClient.Open(btTable), NewCache()}
+
+	if !branchCache {
+		log.Println("Branch cache is not loaded.")
+		return st, nil
+	}
 
 	// Cloud PubSub receiver when branch cache is updated.
 	pubsubClient, err := pubsub.NewClient(ctx, pubsubProject)
@@ -264,9 +273,8 @@ func NewStore(
 	log.Printf("branch cache folder: %s", gcsFolder)
 	err = st.LoadBranchCache(ctx, string(gcsFolder))
 	if err != nil {
-		log.Printf("Load cache data got error %s", err)
+		log.Fatalf("Load cache data got error %s", err)
 	}
-
 	return st, nil
 }
 

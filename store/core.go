@@ -291,10 +291,10 @@ func (s *store) bqGetPropertyValues(ctx context.Context,
 
 func getPropertyValue(
 	valType string,
-	cacheString string,
+	cacheRaw []byte,
 	limit int,
 ) ([]*Node, error) {
-	btJSONRaw, err := util.UnzipAndDecode(cacheString)
+	btJSONRaw, err := util.UnzipAndDecode(string(cacheRaw))
 	if err != nil {
 		return nil, err
 	}
@@ -350,7 +350,7 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 			btResult := btRow[util.BtFamily][0]
 			nodes, err := getPropertyValue(
 				valType,
-				string(btResult.Value),
+				btResult.Value,
 				limit,
 			)
 			nodeRes[dcid] = nodes
@@ -368,12 +368,12 @@ func (s *store) btGetPropertyValues(ctx context.Context,
 		for _, rowKey := range rowList {
 			rowKey := rowKey
 			errs.Go(func() error {
-				if branchString, ok := s.cache.Read(rowKey); ok {
+				if branchRaw, ok := s.cache.Read(rowKey); ok {
 					parts := strings.Split(rowKey, "^")
 					dcid := strings.TrimPrefix(parts[0], keyPrefix[arcOut])
 					nodes, err := getPropertyValue(
 						valType,
-						branchString,
+						branchRaw,
 						limit,
 					)
 					baseNodes, exist := nodeRes[dcid]
@@ -591,7 +591,8 @@ func (s *store) bqGetInArcInfo(nodeType string) ([]translator.InArcInfo, error) 
 }
 
 // Returns information for outwards facing arcs towards the given node type.
-func (s *store) bqGetOutArcInfo(nodeType string) (map[string][]translator.OutArcInfo, error) {
+func (s *store) bqGetOutArcInfo(nodeType string) (
+	map[string][]translator.OutArcInfo, error) {
 	// Get parent type
 	parentType, exists := s.subTypeMap[nodeType]
 	if !exists {
@@ -675,7 +676,7 @@ func (s *store) GetPropertyLabels(
 
 func addObsTriple(
 	key string,
-	btRawValue string,
+	btRawValue []byte,
 	resultsMap map[string][]*Triple,
 	objPlaceIDNameMap map[string]string,
 ) error {
@@ -689,7 +690,7 @@ func addObsTriple(
 	} else {
 		return fmt.Errorf("unsupported predicate")
 	}
-	val, err := util.UnzipAndDecode(btRawValue)
+	val, err := util.UnzipAndDecode(string(btRawValue))
 	if err != nil {
 		return err
 	}
@@ -778,7 +779,7 @@ func (s *store) btGetTriples(
 					btRawValue := btRow[util.BtFamily][0].Value
 					err := addObsTriple(
 						btRow.Key(),
-						string(btRawValue),
+						btRawValue,
 						resultsMap,
 						objPlaceIDNameMap)
 					if err != nil {
@@ -793,10 +794,10 @@ func (s *store) btGetTriples(
 		// If using branch cache, then check the branch cache as well.
 		if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
 			for _, key := range obsRowList {
-				if branchString, ok := s.cache.Read(key); ok {
+				if branchRaw, ok := s.cache.Read(key); ok {
 					err := addObsTriple(
 						key,
-						branchString,
+						branchRaw,
 						resultsMap,
 						objPlaceIDNameMap)
 					if err != nil {

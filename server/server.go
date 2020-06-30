@@ -12,15 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main
+package server
 
 import (
 	"context"
 	"encoding/json"
-	"flag"
 	"fmt"
 	"log"
 	"net"
+	"path"
+	"runtime"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/sparql"
@@ -30,16 +31,6 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-)
-
-var (
-	bqDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	btTable    = flag.String("bt_table", "", "DataCommons Bigtable table.")
-	btProject  = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
-	btInstance = flag.String("bt_instance", "", "BigTable instance.")
-	projectID  = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	schemaPath = flag.String("schema_path", "/mixer/config/mapping", "Path to the schema mapping directory.")
-	port       = flag.String("port", ":12345", "Port on which to run the server.")
 )
 
 type server struct {
@@ -378,42 +369,53 @@ func (s *server) Search(
 	return &out, nil
 }
 
-func main() {
-	flag.Parse()
+// Server wraps gRpc go server.
+type Server struct {
+	Addr string
+	Lis  net.Listener
+	Srv  *grpc.Server
+}
 
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
-
-	ctx := context.Background()
-
-	lis, err := net.Listen("tcp", *port)
+// NewServer creates a new Server instance given config parameters.
+func NewServer(
+	port, bqDataset, btTable, btProject, btInstance, projectID, schemaPath string,
+	branchCache bool,
+) (*Server, error) {
+	l, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		return nil, err
 	}
-	s := grpc.NewServer()
-	log.Println("Now listening to port ", *port)
+	log.Println("Now listening to port ", port)
 
-	subTypeMap, err := translator.GetSubTypeMap("translator/table_types.json")
+	_, filename, _, _ := runtime.Caller(0)
+	subTypeMap, err := translator.GetSubTypeMap(
+		path.Join(path.Dir(filename), "../translator/table_types.json"))
 	if err != nil {
 		log.Fatalf("translator.GetSubTypeMap() = %v", err)
 	}
 
-	containedIn, err := util.GetContainedIn("type_relation.json")
+	containedIn, err := util.GetContainedIn(
+		path.Join(path.Dir(filename), "../type_relation.json"))
 	if err != nil {
 		log.Fatalf("util.GetContainedIn() = %v", err)
 	}
 
 	st, err := store.NewStore(
-		ctx, *bqDataset, *btTable, *btProject, *btInstance, *projectID,
-		*schemaPath, subTypeMap, containedIn)
+		bqDataset, btTable, btProject, btInstance, projectID,
+		schemaPath, subTypeMap, containedIn, branchCache)
 	if err != nil {
-		log.Fatalf("Failed to create store for %s, %s, %s, %s, %s: %s",
-			*bqDataset, *btTable, *btProject, *btInstance, *projectID, err)
+		log.Fatalf("Failed to create store for %s, %s, %s, %s, %s: %v",
+			bqDataset, btTable, btProject, btInstance, projectID, err)
 	}
 
-	pb.RegisterMixerServer(s, &server{st, subTypeMap})
+	srv := grpc.NewServer()
+	pb.RegisterMixerServer(srv, &server{st, subTypeMap})
 	// Register reflection service on gRPC server.
-	reflection.Register(s)
-	if err := s.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
+	reflection.Register(srv)
+	log.Println("Mixer server ready to serve!")
+	return &Server{
+		Addr: l.Addr().String(),
+		Lis:  l,
+		Srv:  srv,
+	}, nil
 }

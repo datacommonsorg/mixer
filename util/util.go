@@ -127,12 +127,12 @@ func GetProjectID(db string) (string, error) {
 }
 
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64
-func ZipAndEncode(contents string) (string, error) {
+func ZipAndEncode(contents []byte) (string, error) {
 	// Zip the string
 	var buf bytes.Buffer
 	gzWriter := gzip.NewWriter(&buf)
 
-	_, err := gzWriter.Write([]byte(contents))
+	_, err := gzWriter.Write(contents)
 	if err != nil {
 		return "", err
 	}

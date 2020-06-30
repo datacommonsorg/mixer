@@ -97,11 +97,11 @@ func TestReadRowsParallel(t *testing.T) {
 
 func TestIsterateSortPVs(t *testing.T) {
 	var pvs = []*pb.PropertyValue{
-		&pb.PropertyValue{
+		{
 			Property: "gender",
 			Value:    "Male",
 		},
-		&pb.PropertyValue{
+		{
 			Property: "age",
 			Value:    "Years85Onwards",
 		},

@@ -20,6 +20,7 @@ import (
 	"flag"
 	"log"
 	"os"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"google.golang.org/grpc"
@@ -72,12 +73,20 @@ func main() {
 }
 
 func runGetStats(ctx context.Context, c pb.MixerClient, place []string, statsVar string) {
+	t1 := time.Now()
 	resp, err := c.GetStats(ctx, &pb.GetStatsRequest{
 		StatsVar: statsVar,
 		Place:    place,
 	})
+	t2 := time.Now()
 	if err != nil {
 		log.Fatalf("could not GetStats: %s", err)
 	}
-	log.Printf("%s", resp.GetPayload())
+	diff := t2.Sub(t1)
+	log.Println(diff)
+	if len(resp.GetPayload()) > 1000 {
+		log.Printf("%s", string(resp.GetPayload()[0:1000]))
+	} else {
+		log.Printf("%s", string(resp.GetPayload()))
+	}
 }
