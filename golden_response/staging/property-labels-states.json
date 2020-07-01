@@ -9,8 +9,11 @@
         "overlapsWith"
       ],
       "outLabels": [
+        "alternateName",
         "area",
         "containedInPlace",
+        "digitalElevationModel",
+        "elevation",
         "geoId",
         "geoJsonCoordinates",
         "geoNamesId",
@@ -21,6 +24,7 @@
         "name",
         "nearbyPlaces",
         "provenance",
+        "timezone",
         "typeOf",
         "waterArea",
         "wikidataId"
@@ -35,8 +39,11 @@
         "overlapsWith"
       ],
       "outLabels": [
+        "alternateName",
         "area",
         "containedInPlace",
+        "digitalElevationModel",
+        "elevation",
         "geoId",
         "geoJsonCoordinates",
         "geoNamesId",
@@ -47,6 +54,7 @@
         "name",
         "nearbyPlaces",
         "provenance",
+        "timezone",
         "typeOf",
         "waterArea",
         "wikidataId"
