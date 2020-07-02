@@ -45,14 +45,14 @@ func TestGetTriples(t *testing.T) {
 		count        []int
 	}{
 		{
-			[]string{"State", "Class"},
+			[]string{"State", "Country"},
 			"place_type.json",
 			false,
 			-1,
 			nil,
 		},
 		{
-			[]string{"geoId/0649670"},
+			[]string{"zip/00603"},
 			"place.json",
 			true,
 			-1,
@@ -77,7 +77,7 @@ func TestGetTriples(t *testing.T) {
 			"",
 			false,
 			5,
-			[]int{25, 16},
+			[]int{42, 22},
 		},
 	} {
 		req := &pb.GetTriplesRequest{Dcids: c.dcids}
@@ -101,7 +101,7 @@ func TestGetTriples(t *testing.T) {
 				if count != c.count[idx] {
 					t.Errorf(
 						"Len of triples for %s expect %d, got %d",
-						place, count, c.count[idx])
+						place, c.count[idx], count)
 				}
 			}
 			continue
