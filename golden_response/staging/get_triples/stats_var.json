@@ -1,0 +1,134 @@
+{
+  "MarriedPopulation": [
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "typeOf",
+      "objectId": "StatisticalVariable",
+      "objectName": "StatisticalVariable",
+      "objectTypes": ["Class"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "statType",
+      "objectId": "measuredValue",
+      "objectName": "measuredValue",
+      "objectTypes": ["Property"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "provenance",
+      "objectId": "dc/5l5zxr1",
+      "objectName": "http://schema.datacommons.org",
+      "objectTypes": ["Provenance"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "populationType",
+      "objectId": "Person",
+      "objectName": "Person",
+      "objectTypes": ["Class"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "measurementMethod",
+      "objectId": "CensusACS5yrSurvey",
+      "objectName": "CensusACS5yrSurvey",
+      "objectTypes": ["CensusSurveyEnum"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "measuredProperty",
+      "objectId": "count",
+      "objectName": "count",
+      "objectTypes": ["Property"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "maritalStatus",
+      "objectId": "MarriedAndNotSeparated",
+      "objectName": "MarriedAndNotSeparated",
+      "objectTypes": ["USC_MaritalStatusEnum"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "constraintProperties",
+      "objectId": "maritalStatus",
+      "objectName": "maritalStatus",
+      "objectTypes": ["Property"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "constraintProperties",
+      "objectId": "age",
+      "objectName": "age",
+      "objectTypes": ["Property"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "MarriedPopulation",
+      "predicate": "age",
+      "objectId": "Years15Onwards",
+      "objectName": "Years 15 Onwards",
+      "objectTypes": ["QuantityRange"],
+      "provenanceId": "dc/5l5zxr1"
+    }
+  ],
+  "TotalPopulation": [
+    {
+      "subjectId": "TotalPopulation",
+      "predicate": "typeOf",
+      "objectId": "StatisticalVariable",
+      "objectName": "StatisticalVariable",
+      "objectTypes": ["Class"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "TotalPopulation",
+      "predicate": "statType",
+      "objectId": "measuredValue",
+      "objectName": "measuredValue",
+      "objectTypes": ["Property"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "TotalPopulation",
+      "predicate": "provenance",
+      "objectId": "dc/5l5zxr1",
+      "objectName": "http://schema.datacommons.org",
+      "objectTypes": ["Provenance"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "TotalPopulation",
+      "predicate": "populationType",
+      "objectId": "Person",
+      "objectName": "Person",
+      "objectTypes": ["Class"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "TotalPopulation",
+      "predicate": "measurementMethod",
+      "objectId": "CensusACS5yrSurvey",
+      "objectName": "CensusACS5yrSurvey",
+      "objectTypes": ["CensusSurveyEnum"],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "TotalPopulation",
+      "predicate": "measuredProperty",
+      "objectId": "count",
+      "objectName": "count",
+      "objectTypes": ["Property"],
+      "provenanceId": "dc/5l5zxr1"
+    }
+  ]
+}

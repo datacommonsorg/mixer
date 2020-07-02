@@ -1,0 +1,4989 @@
+{
+  "geoId/0649670": [
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "wikidataId",
+      "objectValue": "Q486860",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "waterArea",
+      "objectId": "SquareMeter719721",
+      "objectName": "SquareMeter 719721",
+      "objectTypes": ["Quantity"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": ["Class"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "provenance",
+      "objectId": "dc/sm3m2w3",
+      "objectName": "https://www.census.gov/geographies/reference-files.html",
+      "objectTypes": ["Provenance"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "nearbyPlaces",
+      "objectValue": "geoId/0677000@4931.88m",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "nearbyPlaces",
+      "objectValue": "geoId/0655282@5616.16m",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "nearbyPlaces",
+      "objectValue": "geoId/0644378@5756.41m",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "nearbyPlaces",
+      "objectValue": "geoId/0643294@6406.21m",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "nearbyPlaces",
+      "objectValue": "geoId/0643280@3791.57m",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "name",
+      "objectValue": "Mountain View",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "CDC500_City",
+      "subjectName": "CDC500_City",
+      "subjectTypes": ["CohortSet"],
+      "predicate": "member",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/9xkkc71"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "longitude",
+      "objectValue": "-122.079269",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "nces/062631003931",
+      "subjectName": "Alta Vista High",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062631003930",
+      "subjectName": "Mountain View High",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628013928",
+      "subjectName": "Gabriela Mistral Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628013301",
+      "subjectName": "Slater Special Education Preschool",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628012773",
+      "subjectName": "Mvwsd Home \u0026 Hospital",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628012629",
+      "subjectName": "Independent Study Program",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628012540",
+      "subjectName": "Stevenson Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628007791",
+      "subjectName": "Frank L. Huff Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628006933",
+      "subjectName": "Theuerkauf Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628006932",
+      "subjectName": "Monta Loma Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628006931",
+      "subjectName": "Crittenden Middle",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628003926",
+      "subjectName": "Edith Landels Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628003924",
+      "subjectName": "Isaac Newton Graham Middle",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628003923",
+      "subjectName": "Mariano Castro Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062628003922",
+      "subjectName": "Benjamin Bubb Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "nces/062265002790",
+      "subjectName": "Springer Elementary",
+      "subjectTypes": ["School"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "subjectId": "geoId/sch0626310",
+      "subjectName": "Mountain View-Los Altos Union High",
+      "subjectTypes": ["HighSchoolDistrict", "SchoolDistrict"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/sch0626280",
+      "subjectName": "Mountain View Whisman",
+      "subjectTypes": ["ElementarySchoolDistrict", "SchoolDistrict"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "dc/p/zyqhnq1tdg944",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/zp1sbgqdg10df",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/zkwh2nf79lb03",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/zgjd74fcttdv9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/zfxxzz3bljj5c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/zfnc17zr84rl1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/zf33z5pv02gs6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/ze9cenkyek1q8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/zdzc6bxvfree9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/z99y1m1t8fc6f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/z5ph4s3ny8l4g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/z2dqxgthfgde5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/ywfdljj5kd8rh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/yvp3vcs3tcdkb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/yvf2m8e88g5db",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/yqf1fvh0bdxmb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ym78f8fhj4w1b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/yjv2ehq8kj1nh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/yj3e79bebmhl6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/yh303egmj1s5g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/yf2gdxxs57d8b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ye5g3w89qmlpf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ydf55szc76x5h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/yccsq7jwgfpff",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/y9mqm21bnfre2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/y9801hs1ztb5c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/y503nxpqw2rb8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/y3frfyqbksp51",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/y1bn9kpcq1w9d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/y0b5enbmre897",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/y09083qyz5pw7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/xxx7c68n105cc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/xqdrqv90yjrth",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/xlsv13rcwjy81",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/xjbs2d26kgyf6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/xdr7r7z05b519",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/4n95th2"
+    },
+    {
+      "subjectId": "dc/p/xbrw0tkqjqcr5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/x9f3vxhl8x9b1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/x5pnxlgrnj0vd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/x2cptb2zh3db1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/x1q93nsvwnyrd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/x1pj8gt2f1652",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/x1jpbft0bkg3d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/x0j9s90vc4lv9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wyknvc2lrftm7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/wtcgwm3lheped",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wt3rlenklgdjh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wrg99gt9s2c1c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wpj0cblrhcf3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wmz7xfjrjxkk3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wm0xzyzqsgbe",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wlgvzdvdhx9f2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/wct64xr5rv66d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/w9grbqr5ls8b5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/w955ct3c60pph",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/w9186zje1zc3c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/w8e4xdlztpzy4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/w6xz9yhtlt7k7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/w5vf2fldvxjv5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/w5qxh74yhme3h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/w14s870fnk0l2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/w05l4kzzsj5e7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/vx09464xgd9w9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/vvdwpzv7k6es2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/vrcqz0e0r9hn",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/vlj76kbwvf4vg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/vftjqb62y7zy6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/vdchtss1wmtmh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/vcnrw57g628vd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/vc9nze3z32qr7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/vc3yl9sky33w8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/v71v8hb44q4lg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/v3fg1vb2yxr76",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/v23qcrtgjgl18",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/v20v91zjjyll9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/v12tv64dgkl37",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/tzhnbqrcg0yf3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/txtbs1bgwkk3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/txdyp1wp294nf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/twz7w7bs9shyc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/tpxl0bxmvdgn4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/tm4l27q5kdgnh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/tkz33xny3f0nb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/tkpbff2bkh59g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/thy8s6gb0lpq",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/thbf0rte04ps1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/9xkkc71"
+    },
+    {
+      "subjectId": "dc/p/tfk8dgjjdxl0d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/tej91drwy2wy8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/tbvn6e780984g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/tbp4jd6b5frf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/t9veefnm4emr6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/t699l3wbfsyjg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/t5y992jbgqy08",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/sxsrfsjd1jtqb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/srcddxbr1kbq7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/snb3t0y8y43t5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/sjxsgbnjte43f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/sg993sysyjx03",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/sexhzc7jebbtb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/seljzgq6bcpg5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/sc94qjwx8g9y4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/s70qsyrv1k4r2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/s5q42njvvfzd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/s5852hvttndk1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/s53vrsf32g9fc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/rz9ppn4zwd00g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ry91wqqjew28d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/rw2fm4jqh01cg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/rvhh3bxn5czyd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/rv1ld5j71tllc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/rrdmgc369z7d9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/rj0xwv2pnfkn2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/rhc722q2betkd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/rgctmfsk99hnb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/rcr38g8y90wq3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/rcmwr116ytm74",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/qxmvjwtfdv87d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/qvth6hqjkr2yd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/qv1k2rrfyrmef",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/qtzd44sh9jjl3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/qt0jy92dxb6df",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/qsvewlp0s5lrc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/qkyffhn2sw70f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/qetwzespttzn4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/qb56c4qgme0k8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/q81tq4vte6512",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/q7hytmszh3t39",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/q2x5e5mhnxgm8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/pzpcqzy68xnhh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/pzg27b4x0sp88",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/pz2pflkpe0208",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ptfdq3tc9qx84",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/pt21k6cmb5qv5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ps487z58xclrg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/pr0v1f9evkw9b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/pqs3tx8chmg47",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/pp65emm4kxqm6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/pnwwjnv1epxk",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/pkyte9jyn5yth",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/phqfq8lxj9k92",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/ph60lryejvdxc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/9xkkc71"
+    },
+    {
+      "subjectId": "dc/p/pds21tyx13j9g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/pderzb9yxdzh5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/pc2qqqfwqtm2f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/pbheb8v5qpbdg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/p8nz5l8xlchn4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/p7p53wbycwdl1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/p4wfxt2en6s0c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/p4qr7vpyvrle4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/cdkhj21"
+    },
+    {
+      "subjectId": "dc/p/p39fmglvdsjc5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/p1mbq0pnvzjq8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/nz8mrgrqzpr22",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/nw03hd19d3976",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/nv41by7j6db1c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/nt5y00dmk4yp4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/nt3eqz7c5e2b6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/nrxr03qlv66pg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/nn5q4nkjjllkf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/nmke6c1nrreyc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/nlq5chjh9kkcb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/n9z6m3fxb76w3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/n8e7lcr81cnqf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/n47m3zhvhlbj2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/n2q52jbbks0e5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/n0txxm6vq7zh8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/n0qqxqfvv61r9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/mz72828rrc9f6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/mv9yk6mcbdy82",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/msg4wvjfhezb5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/mqqppx1b0896b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/mphmtzk58x90g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/mlrcgtqlpfxh3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ml48nnb0d7drh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/mjkg5dn4c063b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/mh0nq642vlc5g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/me51hm23ejksc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/m8vyt8412g0jd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/m6gzbgbv1wmbd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/m41pkzzm1pmxg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/m2qkv57hx2xkc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/m1xyevcbcr9q5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/m08lbm1v0kylh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/m036hr0gxqkrd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/lw88ktbtddpsh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/lv9f7vw4slc43",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/lqcd52hr7gm5h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/lh25wf2z43nq7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/lgmdr794p6fd2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/lgjgm2mn96yc3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/lg0f3de7s32db",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/lff100rvkwd3g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/lch9mv26z2nb1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/lblb2j09qxnq9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/l8djrlvj4z7nb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/l84znklqw2cf6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/l7wvel1j67fc8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/l7b0qywrv55pg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/l6h9jvbbk7n04",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/l5gc0l9806bb7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/kx4jxel95bfv9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/kt08h7zljftr5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ks9knmprwpvz2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/krx1fqw9ctc0g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/kp97w0zenncxc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/knte4q9kj302c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/kb1mlx7pgd0l7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/k98kbq2n60f78",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/k8wg99rjsgzt2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/k61wxr6tjkbp3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/k5ex88ghd88hc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/k2yldc5z20761",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/k03l81nqz3q69",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/jztpm3dxlq9eg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/jtr7eztknnjqf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/jqbrlcxztmgfh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/jnxp4mq6cq0jb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/jmx6del4ng3r7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/jmqgettbz69tb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/jg3etc6y6xshd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/4n95th2"
+    },
+    {
+      "subjectId": "dc/p/jdlwsqp98ylxf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/j8rs8chktb38d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/j8lv6zpnhsb51",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/j8c6qzxzzggk4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/j7kkjm9wv7lw6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/j75189rxpcg04",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/j5vzjphympj22",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/j5pn8xzwe239h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/j522b20nz3mv6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/j0b9t7gbj5bgf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/hzwr1vqfrwe5h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/hxjz0p5vrjzj1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/htgycwbgv5kn",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hqv25y8cqp8m2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hq6nl6yk1fez2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hq09sm9b11slg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/hnh866r9btfz4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hmn8te7cjzph3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hldwts3zzhd07",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hkbf84czej5w9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hjqvrhctqr23f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/hhv7mc465m7d1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hggkhj3lqxndc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hcsxe91lzm958",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/hc4mnkfycl9b1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/h8gvvtvtgwq8g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/h789hge97d637",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/h3n82h8ewd34",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/h1tjevf95hnk6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/gzwgtnvy92enf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/gynm8d3s4kr6g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/gvnhybtyrerb2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/gsbezfpb289wd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/gpxfjgn0y60e8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/gp0je6fe55x88",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/glmq8mtj57bc4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/gkl3xs3sz8j96",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/gkey0zxqj6vg9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/ghtckn9r7dx4f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/gd470lnrvmyff",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/gb3ddbm7jlhkc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/g7n6pfwsl2qx3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/fxdk83y1bdwv2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/ftld9brh0jb08",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ft2wlqc5pzppb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/fsw34y3yyft24",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/fqbzk982sk31",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/fq305vcqfej12",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/fkppb9gzmk57",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/9xkkc71"
+    },
+    {
+      "subjectId": "dc/p/fj9mrwz229ef8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/fh81ny6p434j6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ffd4bhbz3x598",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/fdhre7tnd92z2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/f941spfc655k6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/f7wgmb15pcgc6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/f7r1yfp9qwvyd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/f6s1qhhcty4r1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/exvshnh8lv8yg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ew24wqzsxveq3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/esxt1n0k9vybh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/esbzfddbc90z8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/em5kwtfrzx101",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/ekmrg6qdr5b8c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/effs3epxmxhfg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/edm173bws514h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/e9vjlpnpn98e7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/e96mwwqghrxy4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/e6kpjkzrt7yd4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/e60v16xcqd9xb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/e30sl2gm5cvh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/dwfk32fzf1pz2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/dsncs1813wplh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/dr2vm4cg5dyx5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/dr254qfkshxx8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/dn14bejyg0rz7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/djwyzbp8k30g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/djfv7rxh82cq6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/dj8wgfw738sy7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/df166h8ggpc8f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/dep3nqw0x3ey6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/dd2sndngh4cd8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/db58gc8hzylnc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/d93we8tbe838",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/d2cr3myh25bjg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/d1xh0mk8lvtmc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/d0894p5ylvrj9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/cyzmxqxdn3e7c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/cyflvllbemxr3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/cwbn55w1427zg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/cw8q3768gfmq5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/cv7wfbw5j6txb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/cscgqpj2lk0q",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/cq8q98vg782j",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/cn6h0v32yx6sd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/ckvh1fk3r88b6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/ckm2ttmeb9d12",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/cgktynegdev4d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/cfhez15gyy6y4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/c98t3ej7f9f6c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/c78e4hyhheb42",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/c4y3f0cej52t9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/9xkkc71"
+    },
+    {
+      "subjectId": "dc/p/c0818pvq65j17",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/bzz62xzdnjer3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/bz5y8re0e18e5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/bx6cg12gys65b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/bsvdej0czcg91",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/brt28glxyyyx9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/bpfs5hzgsh985",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/bp1vxv0jjd724",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/bj1ke3gzk14m5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/bhzm99snwk3q6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/bgqw5zmxe9232",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/bf2pqknyerchg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/beyx56tge65w6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/bdnv7ew178kq1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/bcsljs29ds7f3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/b9ycc6fgmjnbc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/b9l3rrpq1xq8d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/b4l7jd33n95l9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/9s7zywfgx6kg2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/9qp302lbtw5yb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/9mnbnzlrj78j8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/9f37fqzb62wk6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/9eks9lcjw0bs6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/9bc2k8e82e8r7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/9303jh5bbypc2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8ztyyrd3gy59b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/8z4kwjgc8tj78",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/8yrtcb76n9ff7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8yhrg9bffmb9c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8xfvhbxfqp95c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/8x2p3vy7w5v27",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8vtzwcfrtrprf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/8sb64hw76j6n",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8s9c2fse94286",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/8qeetx1jrgbm9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/8pzewdym5k4qb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8pn2vvng1504d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8mcvh998qwvv",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8jtnw7h6e1q69",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/8fz0nlnpb6fhf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8fmpyn0c7wlhb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/8ff3hwehfwh87",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8epxe5ns3bdq3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8d6wnhf814h2f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/8brctv1k92ws3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/89e2v6f0dekv3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/87jwm5rhe8bn2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/86f2qwrknzvm1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/85k1966c9c0k7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/85j8mj5ytnyk5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/83vzn635x468c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/7p7h5vddgb3r",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/7kldqxdzsj3j9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/7jsrhk4z7m437",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/7hvjl9br7bv28",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/7f9ntvr00hfg8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/7eyxx75sngded",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/7en2wbz8hrxkg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/7d42c8y5m3sz1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/79hxhx7wd22m8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/773frp2vx31ec",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/76pmkqgj7kb31",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/75m3tv427t6vd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/7060x9mkdmbm9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/6zdng6z7ml7jd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6xwyf8wsjll8g",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6t86z7xm1jwk7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6t7zr8j6y336c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6t4vqgw5h1wf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6r40wflw6bl43",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6q6ng91kx1q1h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/6nckn7g8p37t5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6lfwqg8vpk0xb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6jflw25c7hr26",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/6g8dll6c69ckg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6eny637p7v97f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/6e6rl0swr6gsd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/6c109mx570x4d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/6b5yejgyk50xg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/68hv8yjjr6b97",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/670t7gm2qjl9d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/6642vgwgqgbz2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/645w0e7xqcvhb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/62dty17z3jz7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/5tm3ymv9zmmh7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/5smlhr2169smb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/5n25xdgxd3ljg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/5mzs5wjssdee7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/5llf2db97rdth",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/5l826s0dx4rf1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/5kdzhnthnnc12",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/5gt8wr2n4lcqc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/5bnsnysz4rb58",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/57c9nfkjv2lw5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/565pwqryczb49",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/543ls6ms0mzyc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4yg38ctshpye1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/4y9sxk1hhcm1c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4xbb6z7633829",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/4wnqj8212kv75",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4txs7wkex3s17",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/4t6y092sxytg9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/4t6cq7y0cq673",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4r4ms68xppfc8",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/4qwtz5239b4k1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4p96f7qfetkx2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/4mepn65r5bb79",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4mbrqr2svl8tg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/4fnqr1xx5pb01",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4dltc1v52gzhd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/47y027jx7rb21",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/47cc6hd288cr3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/4496hsh7qe7b5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/42qc2bmvbkg17",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/427w37sfecwf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/3x4sly63wlysb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/3r0phqg4fmsw4",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/3q1d9zr2plve",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/3mh30njz7wvdh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/3k6h8nj0e0p66",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/3hfnxn4fsgss6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/3e7tf302hpt4h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/3d6cccqn5szx5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/3bnxjc8pgqrxf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/39dh2vr95d148",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/37s6fvqkebkf6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/32bb0wqxwge97",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/302qn47t1w70d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/2zgz9tf815q79",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2ynjctbgkbmxc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2wjtpx4nhbwy6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2vdbhyyslqrw6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2vb0bzj1vzgk5",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2szn1nykprykg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2pnq2sfdsc43",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/2jme6g9y1vj1h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2fxw269r5tyj2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/2bejgf1d5zt72",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/29sf3k5r8k00b",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/2868wdqht4823",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/281t3xp1f9hn9",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/24lmzsspcxkcf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/24c6rg7dpe2b3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/1qls91cr790n1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/1pbcnkw5c21zd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/1nrtn1c03eee7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/1k57x88kyssrc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/1j24rhnpn08mf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/1hlmh2d1fekxg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/1e6wj98l3xkzb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/1d8yw1vzrchzh",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/1bbmqre6khrdd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/17l5jz8mx7q6d",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/17bn8vr3mtdvb",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/3wy0fz3"
+    },
+    {
+      "subjectId": "dc/p/173jxn6190fg",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/137r4qe1dnq3c",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/121wrtbevbbm7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/10f0he6e012jc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/0z92wqw3yd0ec",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/0yc9qqxzjhlm2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/0xhq2mqfdfpcd",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/0wlmvp81elb1f",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/0ty9n8t9sm0lc",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/0sx2s9w5cyj3h",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/0sbhbgh6pcdjf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/0rc0dmxqnxs75",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/0hnshlygq34t2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/w6y8952"
+    },
+    {
+      "subjectId": "dc/p/0hn6x8hsywrqf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/0ghhb750ztks3",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/0c7fk1exyd752",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/07tsg59fjqezf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/06qyw2frk8543",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/06f23wsr8rsm7",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/06907tmt1pkk2",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/05cp03vr4yvp6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/pstvq72"
+    },
+    {
+      "subjectId": "dc/p/04e6vmzb5vx13",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/513rg73"
+    },
+    {
+      "subjectId": "dc/p/02ghfqjy5pfb6",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/01jz3l7qdkjrf",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "dc/p/017yn0h6syzh1",
+      "subjectTypes": ["StatisticalPopulation"],
+      "predicate": "location",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/gg17432"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "latitude",
+      "objectValue": "37.399686",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "landArea",
+      "objectId": "SquareMeter31055433",
+      "objectName": "SquareMeter 31055433",
+      "objectTypes": ["Quantity"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "kmlCoordinates",
+      "objectValue": "\u003ccoordinates\u003e-122.089064,37.363297,0.0 -122.089036,37.362614,0.0 -122.08698,37.362668,0.0 -122.08697,37.36298,0.0 -122.086976,37.363268,0.0 -122.089064,37.363297,0.0\u003c/coordinates\u003e\u003ccoordinates\u003e-122.117724,37.404365,0.0 -122.11684,37.40363,0.0 -122.11531,37.40232,0.0 -122.11344,37.40127,0.0 -122.10628,37.39777,0.0 -122.10188,37.39583,0.0 -122.101271,37.395375,0.0 -122.102813,37.393204,0.0 -122.10484,37.3899,0.0 -122.105825,37.388621,0.0 -122.096002,37.388637,0.0 -122.09601,37.38819,0.0 -122.09601,37.38645,0.0 -122.095986,37.384442,0.0 -122.090413,37.384108,0.0 -122.089546,37.384378,0.0 -122.090048,37.383515,0.0 -122.090041,37.382411,0.0 -122.088918,37.381389,0.0 -122.09598,37.381468,0.0 -122.095995,37.379415,0.0 -122.093373,37.37944,0.0 -122.093373,37.376867,0.0 -122.095974,37.3769,0.0 -122.09594,37.37372,0.0 -122.09594,37.37368,0.0 -122.09597,37.37076,0.0 -122.09603,37.366898,0.0 -122.09428,37.36686,0.0 -122.088973,37.366841,0.0 -122.087098,37.365952,0.0 -122.080596,37.366804,0.0 -122.077854,37.366125,0.0 -122.07786,37.36582,0.0 -122.07786,37.3651,0.0 -122.07777,37.36128,0.0 -122.07779,37.35954,0.0 -122.07781,37.358989,0.0 -122.070491,37.358987,0.0 -122.068681,37.357709,0.0 -122.06866,37.35676,0.0 -122.06575,37.35676,0.0 -122.065706,37.359508,0.0 -122.063014,37.35955,0.0 -122.06246,37.35618,0.0 -122.061557,37.354068,0.0 -122.060757,37.354915,0.0 -122.060922,37.357299,0.0 -122.062574,37.358915,0.0 -122.062023,37.359793,0.0 -122.061722,37.36082,0.0 -122.062567,37.36309,0.0 -122.063038,37.366115,0.0 -122.062772,37.367441,0.0 -122.061968,37.368547,0.0 -122.05831,37.374541,0.0 -122.060128,37.375275,0.0 -122.058148,37.381386,0.0 -122.057883,37.383031,0.0 -122.057175,37.385011,0.0 -122.052844,37.3842,0.0 -122.052311,37.385744,0.0 -122.05227,37.38597,0.0 -122.05218,37.38615,0.0 -122.04968,37.38587,0.0 -122.04744,37.38648,0.0 -122.04743,37.38803,0.0 -122.047257,37.390592,0.0 -122.046597,37.390507,0.0 -122.045638,37.392556,0.0 -122.044981,37.394453,0.0 -122.046315,37.394871,0.0 -122.044473,37.399732,0.0 -122.046115,37.400025,0.0 -122.046534,37.40293,0.0 -122.056433,37.405359,0.0 -122.061834,37.406554,0.0 -122.0646,37.40715,0.0 -122.064481,37.408582,0.0 -122.06355,37.41025,0.0 -122.068626,37.410061,0.0 -122.068566,37.417039,0.0 -122.06622,37.41652,0.0 -122.064931,37.416771,0.0 -122.064012,37.41695,0.0 -122.06398,37.4176,0.0 -122.06406,37.41802,0.0 -122.06406,37.41906,0.0 -122.06051,37.41903,0.0 -122.060326,37.419479,0.0 -122.058553,37.424713,0.0 -122.059767,37.424837,0.0 -122.059667,37.426802,0.0 -122.066062,37.427881,0.0 -122.065458,37.429017,0.0 -122.06832,37.429934,0.0 -122.067928,37.434478,0.0 -122.069775,37.435144,0.0 -122.075545,37.435957,0.0 -122.082611,37.435026,0.0 -122.085199,37.434967,0.0 -122.088704,37.435914,0.0 -122.093346,37.436159,0.0 -122.097613,37.43587,0.0 -122.090964,37.43939,0.0 -122.088718,37.44308,0.0 -122.088088,37.446532,0.0 -122.08848,37.447962,0.0 -122.086207,37.450275,0.0 -122.084014244778,37.4518126273868,0.0 -122.085441378309,37.4519498436329,0.0 -122.087249,37.450809,0.0 -122.090833,37.450331,0.0 -122.090002,37.448981,0.0 -122.091008,37.446958,0.0 -122.093325,37.446417,0.0 -122.09508,37.444157,0.0 -122.093178,37.44265,0.0 -122.09419,37.441286,0.0 -122.096091,37.441196,0.0 -122.099816,37.43714,0.0 -122.100756,37.427689,0.0 -122.10115,37.42791,0.0 -122.097506,37.424598,0.0 -122.098146,37.421652,0.0 -122.10025,37.42177,0.0 -122.101557,37.419413,0.0 -122.100654,37.418138,0.0 -122.10203,37.41552,0.0 -122.101189,37.412084,0.0 -122.103285,37.413211,0.0 -122.107544,37.40821,0.0 -122.1081,37.40829,0.0 -122.10832,37.408441,0.0 -122.115637,37.412699,0.0 -122.116508,37.411303,0.0 -122.117291,37.410653,0.0 -122.116392,37.410057,0.0 -122.115686,37.409628,0.0 -122.115813,37.40951,0.0 -122.115155,37.409119,0.0 -122.114736,37.408657,0.0 -122.114273,37.409114,0.0 -122.112893,37.408224,0.0 -122.113202,37.407883,0.0 -122.115609,37.405586,0.0 -122.117724,37.404365,0.0\u003c/coordinates\u003e\u003ccoordinates\u003e-122.07407,37.40119,0.0 -122.074728,37.402323,0.0 -122.073433,37.403982,0.0 -122.06994,37.40274,0.0 -122.07018,37.40253,0.0 -122.07311,37.40037,0.0 -122.07407,37.40119,0.0\u003c/coordinates\u003e",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94306",
+      "subjectName": "94306",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94303",
+      "subjectName": "94303",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94087",
+      "subjectName": "94087",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94086",
+      "subjectName": "94086",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94085",
+      "subjectName": "94085",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94043",
+      "subjectName": "94043",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94040",
+      "subjectName": "94040",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94024",
+      "subjectName": "94024",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94306",
+      "objectName": "94306",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94303",
+      "objectName": "94303",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94087",
+      "objectName": "94087",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94086",
+      "objectName": "94086",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94085",
+      "objectName": "94085",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94043",
+      "objectName": "94043",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94040",
+      "objectName": "94040",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoOverlaps",
+      "objectId": "zip/94024",
+      "objectName": "94024",
+      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoNamesId",
+      "objectValue": "7173909",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoNamesId",
+      "objectValue": "5375480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoJsonCoordinates",
+      "objectValue": "{   \"type\": \"MultiPolygon\",   \"coordinates\": [     [       [         [-122.089064, 37.363297],         [-122.089036, 37.362614],         [-122.08698, 37.362668],         [-122.08697, 37.36298],         [-122.086976, 37.363268],         [-122.089064, 37.363297]       ]     ],     [       [         [-122.117724, 37.404365],         [-122.11684, 37.40363],         [-122.11531, 37.40232],         [-122.11344, 37.40127],         [-122.10628, 37.39777],         [-122.10188, 37.39583],         [-122.101271, 37.395375],         [-122.102813, 37.393204],         [-122.10484, 37.3899],         [-122.105825, 37.388621],         [-122.096002, 37.388637],         [-122.09601, 37.38819],         [-122.09601, 37.38645],         [-122.095986, 37.384442],         [-122.090413, 37.384108],         [-122.089546, 37.384378],         [-122.090048, 37.383515],         [-122.090041, 37.382411],         [-122.088918, 37.381389],         [-122.09598, 37.381468],         [-122.095995, 37.379415],         [-122.093373, 37.37944],         [-122.093373, 37.376867],         [-122.095974, 37.3769],         [-122.09594, 37.37372],         [-122.09594, 37.37368],         [-122.09597, 37.37076],         [-122.09603, 37.366898],         [-122.09428, 37.36686],         [-122.088973, 37.366841],         [-122.087098, 37.365952],         [-122.080596, 37.366804],         [-122.077854, 37.366125],         [-122.07786, 37.36582],         [-122.07786, 37.3651],         [-122.07777, 37.36128],         [-122.07779, 37.35954],         [-122.07781, 37.358989],         [-122.070491, 37.358987],         [-122.068681, 37.357709],         [-122.06866, 37.35676],         [-122.06575, 37.35676],         [-122.065706, 37.359508],         [-122.063014, 37.35955],         [-122.06246, 37.35618],         [-122.061557, 37.354068],         [-122.060757, 37.354915],         [-122.060922, 37.357299],         [-122.062574, 37.358915],         [-122.062023, 37.359793],         [-122.061722, 37.36082],         [-122.062567, 37.36309],         [-122.063038, 37.366115],         [-122.062772, 37.367441],         [-122.061968, 37.368547],         [-122.05831, 37.374541],         [-122.060128, 37.375275],         [-122.058148, 37.381386],         [-122.057883, 37.383031],         [-122.057175, 37.385011],         [-122.052844, 37.3842],         [-122.052311, 37.385744],         [-122.05227, 37.38597],         [-122.05218, 37.38615],         [-122.04968, 37.38587],         [-122.04744, 37.38648],         [-122.04743, 37.38803],         [-122.047257, 37.390592],         [-122.046597, 37.390507],         [-122.045638, 37.392556],         [-122.044981, 37.394453],         [-122.046315, 37.394871],         [-122.044473, 37.399732],         [-122.046115, 37.400025],         [-122.046534, 37.40293],         [-122.056433, 37.405359],         [-122.061834, 37.406554],         [-122.0646, 37.40715],         [-122.064481, 37.408582],         [-122.06355, 37.41025],         [-122.068626, 37.410061],         [-122.068566, 37.417039],         [-122.06622, 37.41652],         [-122.064931, 37.416771],         [-122.064012, 37.41695],         [-122.06398, 37.4176],         [-122.06406, 37.41802],         [-122.06406, 37.41906],         [-122.06051, 37.41903],         [-122.060326, 37.419479],         [-122.058553, 37.424713],         [-122.059767, 37.424837],         [-122.059667, 37.426802],         [-122.066062, 37.427881],         [-122.065458, 37.429017],         [-122.06832, 37.429934],         [-122.067928, 37.434478],         [-122.069775, 37.435144],         [-122.075545, 37.435957],         [-122.082611, 37.435026],         [-122.085199, 37.434967],         [-122.088704, 37.435914],         [-122.093346, 37.436159],         [-122.097613, 37.43587],         [-122.090964, 37.43939],         [-122.088718, 37.44308],         [-122.088088, 37.446532],         [-122.08848, 37.447962],         [-122.086207, 37.450275],         [-122.084014244778, 37.4518126273868],         [-122.085441378309, 37.4519498436329],         [-122.087249, 37.450809],         [-122.090833, 37.450331],         [-122.090002, 37.448981],         [-122.091008, 37.446958],         [-122.093325, 37.446417],         [-122.09508, 37.444157],         [-122.093178, 37.44265],         [-122.09419, 37.441286],         [-122.096091, 37.441196],         [-122.099816, 37.43714],         [-122.100756, 37.427689],         [-122.10115, 37.42791],         [-122.097506, 37.424598],         [-122.098146, 37.421652],         [-122.10025, 37.42177],         [-122.101557, 37.419413],         [-122.100654, 37.418138],         [-122.10203, 37.41552],         [-122.101189, 37.412084],         [-122.103285, 37.413211],         [-122.107544, 37.40821],         [-122.1081, 37.40829],         [-122.10832, 37.408441],         [-122.115637, 37.412699],         [-122.116508, 37.411303],         [-122.117291, 37.410653],         [-122.116392, 37.410057],         [-122.115686, 37.409628],         [-122.115813, 37.40951],         [-122.115155, 37.409119],         [-122.114736, 37.408657],         [-122.114273, 37.409114],         [-122.112893, 37.408224],         [-122.113202, 37.407883],         [-122.115609, 37.405586],         [-122.117724, 37.404365]       ]     ]   ] } ",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "geoId",
+      "objectValue": "0649670",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/94041",
+      "subjectName": "94041",
+      "subjectTypes": ["CensusZipCodeTabulationArea"],
+      "predicate": "containedInPlace",
+      "objectId": "geoId/0649670",
+      "objectName": "Mountain View",
+      "objectTypes": ["City"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "containedInPlace",
+      "objectId": "geoId/06085",
+      "objectName": "Santa Clara County",
+      "objectTypes": ["AdministrativeArea", "County"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "containedInPlace",
+      "objectId": "geoId/06",
+      "objectName": "California",
+      "objectTypes": ["AdministrativeArea", "State"],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "censusFunctionalStatusCode",
+      "objectValue": "A",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "censusAreaDescriptionCode",
+      "objectValue": "25",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/0649670",
+      "predicate": "ansiCode",
+      "objectValue": "02411186",
+      "provenanceId": "dc/sm3m2w3"
+    }
+  ]
+}
