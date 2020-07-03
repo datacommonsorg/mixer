@@ -217,15 +217,6 @@ func (s *Scanner) scanDigits() string {
 	return buf.String()
 }
 
-// skipUntilNewline skips characters until it reaches a newline.
-func (s *Scanner) skipUntilNewline() {
-	for {
-		if ch, _ := s.r.read(); ch == '\n' || ch == eof {
-			return
-		}
-	}
-}
-
 // bufScanner represents a wrapper for scanner to add a buffer.
 // It provides a fixed-length circular buffer that can be unread.
 type bufScanner struct {

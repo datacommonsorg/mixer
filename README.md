@@ -34,7 +34,8 @@ Install protoc by following [this](http://google.github.io/proto-lens/installing
 
 Run the following code to get the proto dependency.
 
-    go get github.com/golang/protobuf/protoc-gen-go
+    go get -u google.golang.org/protobuf/cmd/protoc-gen-go
+    go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
     mkdir -p proto/google/api/
     curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto --output proto/google/api/annotations.proto
     curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto --output proto/google/api/http.proto
@@ -45,7 +46,9 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
         --proto_path=proto \
         --include_source_info \
         --descriptor_set_out deployment/out.pb \
-        --go_out=plugins=grpc:proto \
+        --go_out=. \
+        --go-grpc_out=. \
+        --go-grpc_opt=requireUnimplementedServers=false \
         proto/mixer.proto
 
 ## Run grpc server and examples locally

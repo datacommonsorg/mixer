@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package store
+package server
 
 import (
 	"context"
@@ -20,7 +20,6 @@ import (
 	"log"
 
 	"cloud.google.com/go/bigquery"
-	"github.com/datacommonsorg/mixer/base"
 	"github.com/datacommonsorg/mixer/sparql"
 	"github.com/datacommonsorg/mixer/translator"
 
@@ -29,28 +28,29 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-func (s *store) Query(
-	ctx context.Context, in *pb.QueryRequest, out *pb.QueryResponse) error {
-	opts := &base.QueryOptions{}
+// QueryPost implements API for Mixer.QueryPost.
+func (s *Server) QueryPost(
+	ctx context.Context, in *pb.QueryRequest) (*pb.QueryResponse, error) {
+	return s.Query(ctx, in)
+}
 
-	var (
-		nodes   []base.Node
-		queries []*base.Query
-		err     error
-	)
-
-	nodes, queries, opts, err = sparql.ParseQuery(in.GetSparql())
+// Query implements API for Mixer.Query.
+func (s *Server) Query(
+	ctx context.Context, in *pb.QueryRequest) (*pb.QueryResponse, error) {
+	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	translation, err := translator.Translate(s.bqMapping, nodes, queries, s.subTypeMap, opts)
+	translation, err := translator.Translate(
+		s.metadata.Mappings, nodes, queries, s.metadata.SubTypeMap, opts)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	log.Printf("translated SQL query for Bigquery:%v\n", translation.SQL)
 
+	var out pb.QueryResponse
 	for _, node := range translation.Nodes {
 		out.Header = append(out.Header, node.Alias)
 	}
@@ -60,7 +60,7 @@ func (s *store) Query(
 	q := s.bqClient.Query(translation.SQL)
 	it, err := q.Read(ctx)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	for {
 		responseRow := pb.QueryResponseRow{}
@@ -70,7 +70,7 @@ func (s *store) Query(
 			break
 		}
 		if err != nil {
-			return err
+			return nil, err
 		}
 		for i, cell := range row {
 			var str string
@@ -86,7 +86,8 @@ func (s *store) Query(
 				}
 			}
 			if i < n {
-				responseRow.Cells = append(responseRow.Cells, &pb.QueryResponseCell{Value: str})
+				responseRow.Cells = append(
+					responseRow.Cells, &pb.QueryResponseCell{Value: str})
 			} else {
 				// Add provenance to corresponding cells.
 				if idx, ok := translation.Prov[i]; ok {
@@ -98,5 +99,5 @@ func (s *store) Query(
 		}
 		out.Rows = append(out.Rows, &responseRow)
 	}
-	return nil
+	return &out, nil
 }

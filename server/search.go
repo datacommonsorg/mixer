@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package store
+package server
 
 import (
 	"context"
@@ -26,17 +26,19 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-func (s *store) Search(
-	ctx context.Context, in *pb.SearchRequest, out *pb.SearchResponse) error {
+// Search implements API for Mixer.Search.
+func (s *Server) Search(
+	ctx context.Context, in *pb.SearchRequest) (*pb.SearchResponse, error) {
 	result := map[string]*pb.SearchResultSection{}
 	tokens := strings.Split(strings.ToLower(in.GetQuery()), " ")
 	qStr := fmt.Sprintf(
 		"SELECT id, type, extended_name FROM `%s`.Instance "+
 			"WHERE type != \"CensusTract\" and type != \"PowerPlant\""+
 			" and type != \"PowerPlantUnit\""+
-			" and type != \"BiologicalSpecimen\"", s.bqDb)
+			" and type != \"BiologicalSpecimen\"", s.bq)
 	for _, token := range tokens {
-		qStr += fmt.Sprintf(` AND REGEXP_CONTAINS(LOWER(extended_name), r"\b%s\b")`, token)
+		qStr += fmt.Sprintf(
+			` AND REGEXP_CONTAINS(LOWER(extended_name), r"\b%s\b")`, token)
 	}
 	if in.GetMaxResults() > 0 {
 		qStr += fmt.Sprintf(" LIMIT %d", in.GetMaxResults())
@@ -44,7 +46,7 @@ func (s *store) Search(
 	q := s.bqClient.Query(qStr)
 	it, err := q.Read(ctx)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	for {
 		var row []bigquery.Value
@@ -53,7 +55,7 @@ func (s *store) Search(
 			break
 		}
 		if err != nil {
-			return err
+			return nil, err
 		}
 		dcid := row[0].(string)
 		typeName := row[1].(string)
@@ -69,10 +71,10 @@ func (s *store) Search(
 			&pb.SearchEntityResult{Dcid: dcid, Name: name},
 		)
 	}
-
+	out := pb.SearchResponse{}
 	for _, v := range result {
 		out.Section = append(out.Section, v)
 	}
 
-	return nil
+	return &out, nil
 }

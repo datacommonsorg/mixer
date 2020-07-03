@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package store
+package server
 
 import (
 	"context"
@@ -20,8 +20,8 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
-	"github.com/golang/protobuf/jsonpb"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -82,17 +82,19 @@ func TestGetPopObs(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btClient, err := SetupBigtable(context.Background(), data)
+	btTable, err := setupBigtable(context.Background(), data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}
+	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil, "")
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
-	var out pb.GetPopObsResponse
-	s.GetPopObs(context.Background(), in, &out)
+	out, err := s.GetPopObs(context.Background(), in)
+	if err != nil {
+		t.Errorf("GetPopObs() got err: %v", err)
+	}
 	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
 		t.Errorf("GetPopObs() got diff: %v", diff)
 	}
@@ -132,7 +134,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
 	}
 	baseData[key] = tableValue
-	btClient, err := SetupBigtable(context.Background(), baseData)
+	btTable, err := setupBigtable(context.Background(), baseData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -175,28 +177,35 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	}
 	branchData[key] = []byte(branchCacheValue)
 	// Test
-	cache := Cache{}
-	cache.Update(branchData)
-	s, err := &store{
-		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), &cache}, nil
+	memcache := Memcache{}
+	memcache.Update(branchData)
+	s := NewServer(nil, btTable, &memcache, nil, "")
 
 	var (
-		in                       *pb.GetPopObsRequest
-		out                      pb.GetPopObsResponse
 		resultProto, expectProto pb.PopObsPlace
 	)
 
 	// Merge base cache and branch cache.
-	in = &pb.GetPopObsRequest{
+	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
-	s.GetPopObs(context.Background(), in, &out)
+	out, err := s.GetPopObs(context.Background(), in)
+	if err != nil {
+		t.Errorf("GetPopObs() got error %v", err)
+	}
 
 	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
-		jsonpb.UnmarshalString(string(tmp), &resultProto)
+		err = protojson.Unmarshal(tmp, &resultProto)
+		if err != nil {
+			t.Errorf("Unmarshal result got error %v", err)
+			return
+		}
 	}
-	jsonpb.UnmarshalString(string(branchCache), &expectProto)
-	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
+	err = protojson.Unmarshal(branchCache, &expectProto)
+	if err != nil {
+		t.Errorf("Unmarshal branchCache got err %v", err)
+	}
+	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff %+v", diff)
 	}
 
@@ -205,13 +214,21 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 		Dcid:   dcid,
 		Option: &pb.Option{CacheChoice: pb.Option_BASE_CACHE_ONLY},
 	}
-	s.GetPopObs(context.Background(), in, &out)
-
-	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
-		jsonpb.UnmarshalString(string(tmp), &resultProto)
+	out, err = s.GetPopObs(context.Background(), in)
+	if err != nil {
+		t.Errorf("GetPopObs get error %v", err)
 	}
-	jsonpb.UnmarshalString(string(btRow), &expectProto)
-	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
+
+	tmp, err := util.UnzipAndDecode(out.GetPayload())
+	if err != nil {
+		t.Errorf("UnzipAndDecode got error %v", err)
+	}
+	err = protojson.Unmarshal(tmp, &resultProto)
+	if err != nil {
+		t.Errorf("Unmarshal got error %v", err)
+	}
+	_ = protojson.Unmarshal(btRow, &expectProto)
+	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff %+v", diff)
 	}
 }
@@ -252,20 +269,18 @@ func TestGetPlaceObs(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btClient, err := SetupBigtable(context.Background(), data)
+	btTable, err := setupBigtable(context.Background(), data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
 	var (
-		in                       *pb.GetPlaceObsRequest
-		out                      pb.GetPlaceObsResponse
 		resultProto, expectProto pb.PopObsCollection
 	)
-	s, err := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}, nil
+	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil, "")
 
 	// Base cache only.
-	in = &pb.GetPlaceObsRequest{
+	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",
 		ObservationDate: "2013",
@@ -273,14 +288,24 @@ func TestGetPlaceObs(t *testing.T) {
 			{Property: "gender", Value: "Male"},
 		},
 	}
-	s.GetPlaceObs(context.Background(), in, &out)
+	out, err := s.GetPlaceObs(context.Background(), in)
+	if err != nil {
+		t.Errorf("GetPlaceObs get error %v", err)
+	}
+
 	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
 		t.Errorf("GetPlaceObs() got diff: %v", diff)
 	}
-	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
-		jsonpb.UnmarshalString(string(tmp), &resultProto)
+	tmp, err := util.UnzipAndDecode(out.GetPayload())
+	if err != nil {
+		t.Errorf("UnzipAndDecode got error %v", err)
 	}
-	jsonpb.UnmarshalString(string(btRow), &expectProto)
+	if err = protojson.Unmarshal(tmp, &resultProto); err != nil {
+		t.Errorf("Unmarshal result proto got error %v", err)
+	}
+	if err = protojson.Unmarshal(btRow, &expectProto); err != nil {
+		t.Errorf("Unmarshal expected proto got error %v", err)
+	}
 
 	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPlaceObs() got diff %+v", diff)
@@ -292,7 +317,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 
 	// No base data
 	baseData := map[string]string{}
-	btClient, err := SetupBigtable(context.Background(), baseData)
+	btTable, err := setupBigtable(context.Background(), baseData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -331,10 +356,9 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	}
 	branchData[key] = []byte(branchCacheValue)
 	// Test
-	cache := Cache{}
-	cache.Update(branchData)
-	s, err := &store{
-		"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), &cache}, nil
+	memcache := Memcache{}
+	memcache.Update(branchData)
+	s := NewServer(nil, btTable, &memcache, nil, "")
 	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",
@@ -343,16 +367,49 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 			{Property: "gender", Value: "Male"},
 		},
 	}
-	var out pb.GetPlaceObsResponse
-	s.GetPlaceObs(context.Background(), in, &out)
-
-	var resultProto, expectProto pb.PopObsPlace
-	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
-		jsonpb.UnmarshalString(string(tmp), &resultProto)
+	out, err := s.GetPlaceObs(context.Background(), in)
+	if err != nil {
+		t.Errorf("GetPlaceObs got err %v", err)
+		return
 	}
-	jsonpb.UnmarshalString(string(branchCache), &expectProto)
 
-	if diff := cmp.Diff(resultProto, expectProto, protocmp.Transform()); diff != "" {
+	var resultProto, expectProto pb.PopObsCollection
+	tmp, err := util.UnzipAndDecode(out.GetPayload())
+	if err != nil {
+		t.Errorf("UnzipAndDecode got err %v", err)
+	}
+	if err = protojson.Unmarshal(tmp, &resultProto); err != nil {
+		t.Errorf("Unmarshal result proto got error %v", err)
+	}
+	if err = protojson.Unmarshal(branchCache, &expectProto); err != nil {
+		t.Errorf("Unmarshal expected proto got error %v", err)
+	}
+
+	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPlaceObs() got diff %+v", diff)
+	}
+}
+
+func TestIsterateSortPVs(t *testing.T) {
+	var pvs = []*pb.PropertyValue{
+		{
+			Property: "gender",
+			Value:    "Male",
+		},
+		{
+			Property: "age",
+			Value:    "Years85Onwards",
+		},
+	}
+	got := "^populationType"
+	if len(pvs) > 0 {
+		iterateSortPVs(pvs, func(i int, p, v string) {
+			got += ("^" + p + "^" + v)
+		})
+	}
+
+	want := "^populationType^age^Years85Onwards^gender^Male"
+	if got != want {
+		t.Errorf("iterateSortPVs() = %s, want %s", got, want)
 	}
 }

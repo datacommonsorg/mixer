@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package store
+package server
 
 import (
 	"context"
@@ -23,6 +23,7 @@ import (
 )
 
 func TestReadTriple(t *testing.T) {
+	ctx := context.Background()
 	data := map[string]string{}
 	dcid := "City"
 	key := util.BtTriplesPrefix + dcid
@@ -46,13 +47,12 @@ func TestReadTriple(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btClient, err := SetupBigtable(context.Background(), data)
+	btTable, err := setupBigtable(ctx, data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s := &store{"", nil, nil, nil, nil, nil, nil, btClient.Open("dc"), NewCache()}
-	expected := &TriplesCache{
+	want := &TriplesCache{
 		[]*Triple{
 			{
 				SubjectID:    "wikidataId/Q9879",
@@ -65,11 +65,11 @@ func TestReadTriple(t *testing.T) {
 			},
 		},
 	}
-	triples, err := s.ReadTriples(context.Background(), "City")
+	got, err := readTriples(ctx, btTable, BuildTriplesKey([]string{"City"}))
 	if err != nil {
 		t.Errorf("ReadTriple get err: %v", err)
 	}
-	if diff := cmp.Diff(expected, triples); diff != "" {
+	if diff := cmp.Diff(want, got["City"]); diff != "" {
 		t.Errorf("ReadTriple() got diff: %v", diff)
 	}
 }
