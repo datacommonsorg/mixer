@@ -1,0 +1,16 @@
+{
+  "dc/o/10b2df1lqhz54": [
+    {
+      "subjectId": "dc/o/10b2df1lqhz54",
+      "predicate": "observedNode",
+      "objectId": "dc/p/d58vtpesp76kg"
+    }
+  ],
+  "dc/o/2brkkmq0lxd5h": [
+    {
+      "subjectId": "dc/o/2brkkmq0lxd5h",
+      "predicate": "observedNode",
+      "objectId": "dc/p/cmtdk79lnk2pd"
+    }
+  ]
+}
