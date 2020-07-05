@@ -47,8 +47,6 @@ type MixerClient interface {
 	// Get observation data for a list of places, given place type, population type, and
 	// population constraining properties.
 	GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, opts ...grpc.CallOption) (*GetPlaceObsResponse, error)
-	// Get observations for a given place, population type, and population constraining properties.
-	GetObsSeries(ctx context.Context, in *GetObsSeriesRequest, opts ...grpc.CallOption) (*GetObsSeriesResponse, error)
 	// Get stats of places by StatisticalVariable.
 	GetStats(ctx context.Context, in *GetStatsRequest, opts ...grpc.CallOption) (*GetStatsResponse, error)
 	// Get a list of possible population type, measured property, and PVs for a given place type.
@@ -199,15 +197,6 @@ func (c *mixerClient) GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, o
 	return out, nil
 }
 
-func (c *mixerClient) GetObsSeries(ctx context.Context, in *GetObsSeriesRequest, opts ...grpc.CallOption) (*GetObsSeriesResponse, error) {
-	out := new(GetObsSeriesResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetObsSeries", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) GetStats(ctx context.Context, in *GetStatsRequest, opts ...grpc.CallOption) (*GetStatsResponse, error) {
 	out := new(GetStatsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStats", in, out, opts...)
@@ -305,8 +294,6 @@ type MixerServer interface {
 	// Get observation data for a list of places, given place type, population type, and
 	// population constraining properties.
 	GetPlaceObs(context.Context, *GetPlaceObsRequest) (*GetPlaceObsResponse, error)
-	// Get observations for a given place, population type, and population constraining properties.
-	GetObsSeries(context.Context, *GetObsSeriesRequest) (*GetObsSeriesResponse, error)
 	// Get stats of places by StatisticalVariable.
 	GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error)
 	// Get a list of possible population type, measured property, and PVs for a given place type.
@@ -368,9 +355,6 @@ func (*UnimplementedMixerServer) GetPopObs(context.Context, *GetPopObsRequest) (
 }
 func (*UnimplementedMixerServer) GetPlaceObs(context.Context, *GetPlaceObsRequest) (*GetPlaceObsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceObs not implemented")
-}
-func (*UnimplementedMixerServer) GetObsSeries(context.Context, *GetObsSeriesRequest) (*GetObsSeriesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetObsSeries not implemented")
 }
 func (*UnimplementedMixerServer) GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStats not implemented")
@@ -650,24 +634,6 @@ func _Mixer_GetPlaceObs_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetObsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetObsSeriesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetObsSeries(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetObsSeries",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetObsSeries(ctx, req.(*GetObsSeriesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_GetStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetStatsRequest)
 	if err := dec(in); err != nil {
@@ -853,10 +819,6 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlaceObs",
 			Handler:    _Mixer_GetPlaceObs_Handler,
-		},
-		{
-			MethodName: "GetObsSeries",
-			Handler:    _Mixer_GetObsSeries_Handler,
 		},
 		{
 			MethodName: "GetStats",

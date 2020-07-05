@@ -85,10 +85,17 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 		result[dcid] = map[string][]*Node{}
 	}
 	for dcid, nodes := range inRes {
-		result[dcid]["in"] = trimNodes(nodes, typ, limit)
+		trimedNodes := trimNodes(nodes, typ, limit)
+		if len(trimedNodes) > 0 {
+			result[dcid]["in"] = trimedNodes
+
+		}
 	}
 	for dcid, nodes := range outRes {
-		result[dcid]["out"] = trimNodes(nodes, typ, limit)
+		trimedNodes := trimNodes(nodes, typ, limit)
+		if len(trimedNodes) > 0 {
+			result[dcid]["out"] = trimedNodes
+		}
 	}
 
 	jsonRaw, err := json.Marshal(result)
@@ -107,7 +114,7 @@ func getPropertyValuesHelper(
 	arcOut bool,
 	useBranchCache bool,
 ) (map[string][]*Node, error) {
-	rowList := BuildPropertyValuesKey(dcids, prop, arcOut)
+	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
 	nodeMap, err := readPropertyValues(ctx, btTable, rowList)
 	if err != nil {
 		return nil, err

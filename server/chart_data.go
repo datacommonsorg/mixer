@@ -25,27 +25,29 @@ import (
 // GetChartData implements API for Mixer.GetChartData.
 func (s *Server) GetChartData(ctx context.Context,
 	in *pb.GetChartDataRequest) (*pb.GetChartDataResponse, error) {
-	dcids := in.GetKeys()
-	if len(dcids) == 0 {
+	keys := in.GetKeys()
+	if len(keys) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
 	}
-	rowList := buildChartDataKey(dcids)
+	rowList := buildChartDataKey(keys)
 	dataMap, err := bigTableReadRowsParallel(
 		ctx, s.btTable, rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(key string, jsonRaw []byte) (interface{}, error) {
 			var chartStore ChartStore
 			err := json.Unmarshal(jsonRaw, &chartStore)
 			if err != nil {
 				return nil, err
 			}
 			return &chartStore, nil
-		})
+		},
+		true,
+	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]*ChartStore{}
-	for dcid, data := range dataMap {
-		result[dcid] = data.(*ChartStore)
+	for key, data := range dataMap {
+		result[key] = data.(*ChartStore)
 	}
 
 	jsonRaw, err := json.Marshal(result)

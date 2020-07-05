@@ -186,32 +186,6 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	}
 }
 
-// GetObsSeries implements API for Mixer.GetObsSeries.
-func (s *Server) GetObsSeries(ctx context.Context, in *pb.GetObsSeriesRequest) (
-	*pb.GetObsSeriesResponse, error) {
-	if in.GetPlace() == "" || in.GetPopulationType() == "" {
-		return nil, fmt.Errorf("missing required arguments")
-	}
-	key := fmt.Sprintf("%s^%s", in.GetPlace(), in.GetPopulationType())
-	if len(in.GetPvs()) > 0 {
-		iterateSortPVs(in.GetPvs(), func(i int, p, v string) {
-			key += "^" + p + "^" + v
-		})
-	}
-	btPrefix := fmt.Sprintf("%s%s", util.BtObsSeriesPrefix, key)
-
-	out := pb.GetObsSeriesResponse{}
-	// Query for the prefix.
-	btRow, err := s.btTable.ReadRow(ctx, btPrefix)
-	if err != nil {
-		return &out, err
-	}
-	if len(btRow[util.BtFamily]) > 0 {
-		out.Payload = string(btRow[util.BtFamily][0].Value)
-	}
-	return &out, nil
-}
-
 // GetPopulations implements API for Mixer.GetPopulations.
 func (s *Server) GetPopulations(
 	ctx context.Context, in *pb.GetPopulationsRequest) (

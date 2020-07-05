@@ -55,7 +55,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		return nil, fmt.Errorf("missing required arguments")
 	}
 	// Read triples for stats var.
-	triplesRowList := BuildTriplesKey([]string{in.GetStatsVar()})
+	triplesRowList := buildTriplesKey([]string{in.GetStatsVar()})
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
 	if err != nil {
 		return nil, err
@@ -66,7 +66,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		return nil, err
 	}
 	// Construct BigTable row keys.
-	rowList := BuildStatsKey(in.GetPlace(), statsVar)
+	rowList := buildStatsKey(in.GetPlace(), statsVar)
 
 	result := map[string]*pb.ObsTimeSeries{}
 

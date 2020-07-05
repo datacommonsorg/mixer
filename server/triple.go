@@ -67,7 +67,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		allTriplesCache, err := readTriples(ctx, s.btTable, BuildTriplesKey(regDcids))
+		allTriplesCache, err := readTriples(ctx, s.btTable, buildTriplesKey(regDcids))
 		if err != nil {
 			return nil, err
 		}
@@ -114,7 +114,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			for _, dcid := range observedNodeMap {
 				observedNodes = append(observedNodes, dcid)
 			}
-			nameRowList := BuildPropertyValuesKey(observedNodes, "name", true)
+			nameRowList := buildPropertyValuesKey(observedNodes, "name", true)
 			nameNodes, err := readPropertyValues(ctx, s.btTable, nameRowList)
 			if err != nil {
 				return nil, err
@@ -124,13 +124,14 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 					resultsMap[dcid] = []*Triple{}
 				}
 				name := observedNode
-				if len(nameNodes[observedNode]) > 1 {
+				if len(nameNodes[observedNode]) > 0 {
 					name = nameNodes[observedNode][0].Value
 				}
 				resultsMap[dcid] = append(resultsMap[dcid], &Triple{
-					SubjectID: dcid,
-					Predicate: param.pred,
-					ObjectID:  name,
+					SubjectID:  dcid,
+					Predicate:  param.pred,
+					ObjectID:   observedNode,
+					ObjectName: name,
 				})
 			}
 		}
@@ -166,7 +167,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			return nil, err
 		}
 		for dcid, data := range dataMap {
-			resultsMap[dcid] = data.([]*Triple)
+			resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
 		}
 	}
 

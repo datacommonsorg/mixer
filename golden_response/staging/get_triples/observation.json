@@ -3,14 +3,49 @@
     {
       "subjectId": "dc/o/10b2df1lqhz54",
       "predicate": "observedNode",
-      "objectId": "dc/p/d58vtpesp76kg"
+      "objectId": "dc/p/d58vtpesp76kg",
+      "objectName": "dc/p/d58vtpesp76kg"
     }
   ],
   "dc/o/2brkkmq0lxd5h": [
     {
       "subjectId": "dc/o/2brkkmq0lxd5h",
       "predicate": "observedNode",
-      "objectId": "dc/p/cmtdk79lnk2pd"
+      "objectId": "dc/p/cmtdk79lnk2pd",
+      "objectName": "dc/p/cmtdk79lnk2pd"
+    }
+  ],
+  "dc/o/sz10wj1qyyy1d": [
+    {
+      "subjectId": "dc/o/sz10wj1qyyy1d",
+      "predicate": "observedNode",
+      "objectId": "geoId/06085",
+      "objectName": "Santa Clara County"
+    }
+  ],
+  "dc/p/cmtdk79lnk2pd": [
+    {
+      "subjectId": "dc/p/cmtdk79lnk2pd",
+      "predicate": "location",
+      "objectId": "geoId/06085",
+      "objectName": "Santa Clara County",
+      "objectTypes": ["AdministrativeArea", "AdministrativeArea2", "County"],
+      "provenanceId": "dc/e9k9ze"
+    },
+    {
+      "subjectId": "dc/p/cmtdk79lnk2pd",
+      "predicate": "numConstraints",
+      "objectValue": "2"
+    },
+    {
+      "subjectId": "dc/p/cmtdk79lnk2pd",
+      "predicate": "incidentType",
+      "objectId": "COVID_19"
+    },
+    {
+      "subjectId": "dc/p/cmtdk79lnk2pd",
+      "predicate": "medicalStatus",
+      "objectId": "ConfirmedOrProbableCase"
     }
   ]
 }

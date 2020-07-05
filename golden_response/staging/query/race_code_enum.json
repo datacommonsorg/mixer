@@ -1,0 +1,66 @@
+[
+  {
+    "cells": [{ "value": "AsianAloneOrInCombinationWithOneOrMoreOtherRaces" }]
+  },
+  { "cells": [{ "value": "HawaiianNativeOrPacificIslander" }] },
+  { "cells": [{ "value": "HispanicOrLatino" }] },
+  { "cells": [{ "value": "DAD_Black" }] },
+  { "cells": [{ "value": "Vietnamese" }] },
+  { "cells": [{ "value": "Korean" }] },
+  { "cells": [{ "value": "Samoan" }] },
+  { "cells": [{ "value": "White" }] },
+  { "cells": [{ "value": "AmericanIndianOrAlaskaNativeAlone" }] },
+  { "cells": [{ "value": "USC_RacialNonMinority" }] },
+  { "cells": [{ "value": "WhiteAlone" }] },
+  {
+    "cells": [{ "value": "WhiteAloneOrInCombinationWithOneOrMoreOtherRaces" }]
+  },
+  { "cells": [{ "value": "AmericanIndianAndAlaskaNativeAlone" }] },
+  { "cells": [{ "value": "BlackOrAfricanAmericanAlone" }] },
+  { "cells": [{ "value": "NativeHawaiianAndOtherPacificIslanderAlone" }] },
+  { "cells": [{ "value": "DAD_NonBlack" }] },
+  { "cells": [{ "value": "Chinese" }] },
+  { "cells": [{ "value": "Filipino" }] },
+  { "cells": [{ "value": "NativeHawaiian" }] },
+  { "cells": [{ "value": "NativeHawaiianOrOtherPacificIslanderAlone" }] },
+  {
+    "cells": [
+      {
+        "value": "AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+      }
+    ]
+  },
+  {
+    "cells": [
+      { "value": "SomeOtherRaceAloneOrInCombinationWithOneOrMoreOtherRaces" }
+    ]
+  },
+  { "cells": [{ "value": "GuamanianOrChamorro" }] },
+  { "cells": [{ "value": "AsianAlone" }] },
+  { "cells": [{ "value": "Japanese" }] },
+  { "cells": [{ "value": "Asian" }] },
+  { "cells": [{ "value": "AmericanIndianOrAlaskaNative" }] },
+  { "cells": [{ "value": "SomeOtherRaceAlone" }] },
+  { "cells": [{ "value": "WhiteAloneNotHispanicOrLatino" }] },
+  {
+    "cells": [
+      {
+        "value": "BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+      }
+    ]
+  },
+  {
+    "cells": [
+      {
+        "value": "NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+      }
+    ]
+  },
+  { "cells": [{ "value": "Black" }] },
+  { "cells": [{ "value": "NotHispanicOrLatino" }] },
+  { "cells": [{ "value": "USC_RacialMinority" }] },
+  { "cells": [{ "value": "OtherAsian" }] },
+  { "cells": [{ "value": "OtherPacificIslander" }] },
+  { "cells": [{ "value": "AsianIndian" }] },
+  { "cells": [{ "value": "TwoOrMoreRaces" }] }
+]

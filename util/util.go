@@ -41,8 +41,6 @@ const (
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
-	// BtObsSeriesPrefix for internal obs series cache.
-	BtObsSeriesPrefix = "d/4/"
 	// BtObsAncestorPrefix for the ancestor node of Bigtable.
 	BtObsAncestorPrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.
@@ -288,6 +286,15 @@ var re = regexp.MustCompile(`(.+?)\/(.+?)\/(.+)`)
 func KeyToDcid(key string) (string, error) {
 	parts := strings.Split(key, "^")
 	match := re.FindStringSubmatch(parts[0])
+	if len(match) != 4 {
+		return "", fmt.Errorf("Invalid bigtable row key %s", key)
+	}
+	return match[3], nil
+}
+
+// RemoveKeyPrefix removes the prefix of a big query key
+func RemoveKeyPrefix(key string) (string, error) {
+	match := re.FindStringSubmatch(key)
 	if len(match) != 4 {
 		return "", fmt.Errorf("Invalid bigtable row key %s", key)
 	}

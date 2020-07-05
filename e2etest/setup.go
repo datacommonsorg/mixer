@@ -23,6 +23,7 @@ import (
 	"runtime"
 	"strings"
 
+	"cloud.google.com/go/bigquery"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
 	"google.golang.org/grpc"
@@ -34,25 +35,40 @@ import (
 // It needs Application Default Credentials to run locally or need to
 // provide service account credential when running on GCP.
 const (
-	btProject  = "google.com:datcom-store-dev"
-	btInstance = "prophet-cache"
+	btProject        = "google.com:datcom-store-dev"
+	btInstance       = "prophet-cache"
+	bqBillingProject = "datcom-ci"
 )
 
 func setup() (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
+	bqTableID, _ := ioutil.ReadFile(
+		path.Join(path.Dir(filename), "../deployment/staging_bq_table.txt"))
 	btTableID, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../deployment/staging_bt_table.txt"))
-	// Use mapping template before we need to test SPARQL query.
+
+	// BigQuery.
+	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
+	if err != nil {
+		log.Fatalf("failed to create Bigquery client: %v", err)
+	}
 
 	btTable, err := server.NewBtTable(
 		ctx, btProject, btInstance, strings.TrimSpace(string(btTableID)))
 	if err != nil {
 		return nil, err
 	}
+	// TODO(boxu): Change mapping not to have dataset name in it.
+	// Metadata.
+	metadata, err := server.NewMetadata(path.Join(path.Dir(filename), "mapping"))
+	if err != nil {
+		return nil, err
+	}
 
 	memcache := server.NewMemcache(map[string][]byte{})
-	s := server.NewServer(nil, btTable, memcache, nil, "")
+	s := server.NewServer(
+		bqClient, btTable, memcache, metadata, strings.TrimSpace(string(bqTableID)))
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)

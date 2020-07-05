@@ -23,8 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/util"
 )
 
-// PropValkeyPrefix ...
-var PropValkeyPrefix = map[bool]string{
+var propValkeyPrefix = map[bool]string{
 	true:  util.BtOutPropValPrefix,
 	false: util.BtInPropValPrefix,
 }
@@ -49,8 +48,7 @@ func buildStatsKeySuffix(statsVar *StatisticalVariable) string {
 	return keySuffix
 }
 
-// BuildTriplesKey ...
-func BuildTriplesKey(dcids []string) bigtable.RowList {
+func buildTriplesKey(dcids []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtTriplesPrefix, dcid))
@@ -58,8 +56,7 @@ func BuildTriplesKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
-// BuildStatsKey ...
-func BuildStatsKey(
+func buildStatsKey(
 	dcids []string, statsVar *StatisticalVariable) bigtable.RowList {
 	keySuffix := buildStatsKeySuffix(statsVar)
 	rowList := bigtable.RowList{}
@@ -70,12 +67,11 @@ func BuildStatsKey(
 	return rowList
 }
 
-// BuildPropertyValuesKey ...
-func BuildPropertyValuesKey(
+func buildPropertyValuesKey(
 	dcids []string, prop string, arcOut bool) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
-		rowKey := fmt.Sprintf("%s%s^%s", PropValkeyPrefix[arcOut], dcid, prop)
+		rowKey := fmt.Sprintf("%s%s^%s", propValkeyPrefix[arcOut], dcid, prop)
 		rowList = append(rowList, rowKey)
 	}
 	return rowList
@@ -106,9 +102,9 @@ func buildPopPVKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
-func buildChartDataKey(dcids []string) bigtable.RowList {
+func buildChartDataKey(keys []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
-	for _, key := range dcids {
+	for _, key := range keys {
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtChartDataPrefix, key))
 	}
 	return rowList

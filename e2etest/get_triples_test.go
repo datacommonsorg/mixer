@@ -59,7 +59,12 @@ func TestGetTriples(t *testing.T) {
 			nil,
 		},
 		{
-			[]string{"dc/o/2brkkmq0lxd5h", "dc/o/10b2df1lqhz54"},
+			[]string{
+				"dc/o/2brkkmq0lxd5h",
+				"dc/o/10b2df1lqhz54",
+				"dc/o/sz10wj1qyyy1d",
+				"dc/p/cmtdk79lnk2pd",
+			},
 			"observation.json",
 			false,
 			-1,
@@ -111,7 +116,7 @@ func TestGetTriples(t *testing.T) {
 		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
-			t.Errorf("Can not Unmarshal golden file")
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
 		if diff := cmp.Diff(result, expected); diff != "" {
