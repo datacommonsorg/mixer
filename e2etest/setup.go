@@ -40,7 +40,7 @@ const (
 	bqBillingProject = "datcom-ci"
 )
 
-func setup() (pb.MixerClient, error) {
+func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(
@@ -66,7 +66,6 @@ func setup() (pb.MixerClient, error) {
 		return nil, err
 	}
 
-	memcache := server.NewMemcache(map[string][]byte{})
 	s := server.NewServer(
 		bqClient, btTable, memcache, metadata, strings.TrimSpace(string(bqTableID)))
 	srv := grpc.NewServer()

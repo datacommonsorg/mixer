@@ -29,7 +29,7 @@ import (
 
 func TestGetChartData(t *testing.T) {
 	ctx := context.Background()
-	client, err := setup()
+	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

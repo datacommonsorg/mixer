@@ -23,13 +23,14 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/server"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetStats(t *testing.T) {
 	ctx := context.Background()
-	client, err := setup()
+	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
