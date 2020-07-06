@@ -43,11 +43,11 @@ func (s *Server) GetChartData(ctx context.Context,
 
 	// Read from branch cache first
 	memData := s.memcache.ReadParallel(rowList, transform, true)
-	for dcid, data := range memData {
-		result[dcid] = data.(*ChartStore)
+	for key, data := range memData {
+		result[key] = data.(*ChartStore)
 	}
-	// Read data from Bigtable if no data exists from Memcache
-	if len(memData) == 0 {
+	// Read data from Bigtable if not all data is obtained from memcache.
+	if len(memData) < len(keys) {
 		dataMap, err := bigTableReadRowsParallel(
 			ctx, s.btTable, rowList,
 			transform,
@@ -57,7 +57,10 @@ func (s *Server) GetChartData(ctx context.Context,
 			return nil, err
 		}
 		for key, data := range dataMap {
-			result[key] = data.(*ChartStore)
+			if _, ok := result[key]; !ok {
+				result[key] = data.(*ChartStore)
+
+			}
 		}
 	}
 

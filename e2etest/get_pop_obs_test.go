@@ -33,16 +33,9 @@ func TestGetPopObs(t *testing.T) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 
-	// Load memcache first
-	var memcacheTmp map[string]string
-	file, _ := ioutil.ReadFile(path.Join(path.Dir(filename), "memcache.json"))
-	err := json.Unmarshal(file, &memcacheTmp)
+	memcacheData, err := loadMemcache()
 	if err != nil {
-		t.Fatalf("Failed to load memcache data")
-	}
-	memcacheData := map[string][]byte{}
-	for dcid, raw := range memcacheTmp {
-		memcacheData[dcid] = []byte(raw)
+		t.Fatalf("Failed to load memcache %v", err)
 	}
 
 	// This tests merging the branch cache into the final results.

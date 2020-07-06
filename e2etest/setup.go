@@ -16,6 +16,7 @@ package e2etest
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net"
@@ -93,4 +94,19 @@ func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 	}
 	client := pb.NewMixerClient(conn)
 	return client, nil
+}
+
+func loadMemcache() (map[string][]byte, error) {
+	_, filename, _, _ := runtime.Caller(0)
+	file, _ := ioutil.ReadFile(path.Join(path.Dir(filename), "memcache.json"))
+	var memcacheTmp map[string]string
+	err := json.Unmarshal(file, &memcacheTmp)
+	if err != nil {
+		return nil, err
+	}
+	memcacheData := map[string][]byte{}
+	for dcid, raw := range memcacheTmp {
+		memcacheData[dcid] = []byte(raw)
+	}
+	return memcacheData, nil
 }
