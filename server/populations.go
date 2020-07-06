@@ -224,11 +224,16 @@ func (s *Server) GetPopulations(
 	if err != nil {
 		return nil, err
 	}
-	for dcid, data := range dataMap {
-		collection = append(collection, &PlacePopInfo{
-			PlaceID:      dcid,
-			PopulationID: data.(string),
-		})
+	for _, dcid := range dcids {
+		item := &PlacePopInfo{}
+		data, ok := dataMap[dcid]
+		if ok {
+			item = &PlacePopInfo{
+				PlaceID:      dcid,
+				PopulationID: data.(string),
+			}
+		}
+		collection = append(collection, item)
 	}
 	// Format the response
 	jsonRaw, err := json.Marshal(collection)
@@ -272,10 +277,11 @@ func (s *Server) GetObservations(
 	if err != nil {
 		return nil, err
 	}
-	for dcid, data := range dataMap {
+
+	for _, dcid := range dcids {
 		collection = append(collection, &PopObs{
 			PopulationID:     dcid,
-			ObservationValue: data.(string),
+			ObservationValue: dataMap[dcid].(string),
 		})
 	}
 

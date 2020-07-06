@@ -130,7 +130,7 @@ func getPropertyValuesHelper(
 				if err != nil {
 					return nil, err
 				}
-				return &propVals, nil
+				return propVals.Nodes, nil
 			})
 		for dcid := range branchNodeMap {
 			branchNodes := branchNodeMap[dcid].([]*Node)

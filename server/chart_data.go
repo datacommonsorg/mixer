@@ -22,6 +22,15 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 )
 
+var transform = func(key string, jsonRaw []byte) (interface{}, error) {
+	var chartStore ChartStore
+	err := json.Unmarshal(jsonRaw, &chartStore)
+	if err != nil {
+		return nil, err
+	}
+	return &chartStore, nil
+}
+
 // GetChartData implements API for Mixer.GetChartData.
 func (s *Server) GetChartData(ctx context.Context,
 	in *pb.GetChartDataRequest) (*pb.GetChartDataResponse, error) {
@@ -29,25 +38,27 @@ func (s *Server) GetChartData(ctx context.Context,
 	if len(keys) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
 	}
-	rowList := buildChartDataKey(keys)
-	dataMap, err := bigTableReadRowsParallel(
-		ctx, s.btTable, rowList,
-		func(key string, jsonRaw []byte) (interface{}, error) {
-			var chartStore ChartStore
-			err := json.Unmarshal(jsonRaw, &chartStore)
-			if err != nil {
-				return nil, err
-			}
-			return &chartStore, nil
-		},
-		true,
-	)
-	if err != nil {
-		return nil, err
-	}
 	result := map[string]*ChartStore{}
-	for key, data := range dataMap {
-		result[key] = data.(*ChartStore)
+	rowList := buildChartDataKey(keys)
+
+	// Read from branch cache first
+	memData := s.memcache.ReadParallel(rowList, transform, true)
+	for dcid, data := range memData {
+		result[dcid] = data.(*ChartStore)
+	}
+	// Read data from Bigtable if no data exists from Memcache
+	if len(memData) == 0 {
+		dataMap, err := bigTableReadRowsParallel(
+			ctx, s.btTable, rowList,
+			transform,
+			true,
+		)
+		if err != nil {
+			return nil, err
+		}
+		for key, data := range dataMap {
+			result[key] = data.(*ChartStore)
+		}
 	}
 
 	jsonRaw, err := json.Marshal(result)

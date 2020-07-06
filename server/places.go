@@ -55,9 +55,8 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 		return nil, err
 	}
 	results := []map[string]string{}
-	for dcid, data := range dataMap {
-
-		for _, place := range data.([]string) {
+	for _, dcid := range dcids {
+		for _, place := range dataMap[dcid].([]string) {
 			results = append(results, map[string]string{"dcid": dcid, "place": place})
 		}
 	}
