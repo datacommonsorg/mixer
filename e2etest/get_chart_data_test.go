@@ -25,11 +25,18 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetChartData(t *testing.T) {
 	ctx := context.Background()
-	client, err := setup(server.NewMemcache(map[string][]byte{}))
+
+	memcacheData, err := loadMemcache()
+	if err != nil {
+		t.Fatalf("Failed to load memcache %v", err)
+	}
+
+	client, err := setup(server.NewMemcache(memcacheData))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -41,6 +48,7 @@ func TestGetChartData(t *testing.T) {
 		"geoId/06^count^CensusACS5yrSurvey^^measured^^^^Person",
 		"nces/062631003930^count^^^measured^^^^Student",
 		"nces/062631003930^count^^^measured^^^^Student^gender^Female",
+		"geoId/06085^cumulativeCount^NYT_COVID19_GitHub^^measured^^^^MedicalConditionIncident^incidentType^COVID_19^medicalStatus^ConfirmedOrProbableCase",
 	}
 	req := &pb.GetChartDataRequest{
 		Keys: keys,
@@ -60,7 +68,7 @@ func TestGetChartData(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 	}
-	if diff := cmp.Diff(result, expected); diff != "" {
+	if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
 		t.Errorf("payload got diff: %v", diff)
 	}
 }

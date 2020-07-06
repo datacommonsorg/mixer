@@ -279,10 +279,13 @@ func (s *Server) GetObservations(
 	}
 
 	for _, dcid := range dcids {
-		collection = append(collection, &PopObs{
-			PopulationID:     dcid,
-			ObservationValue: dataMap[dcid].(string),
-		})
+		if obs, ok := dataMap[dcid]; ok {
+			item := &PopObs{
+				PopulationID:     dcid,
+				ObservationValue: obs.(string),
+			}
+			collection = append(collection, item)
+		}
 	}
 
 	// Format the response
