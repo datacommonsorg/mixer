@@ -1,0 +1,232 @@
+{
+  "geoId/05": {
+    "in": [
+      {
+        "dcid": "election/2022_S_AR00",
+        "name": "2022 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2020_S_AR00",
+        "name": "2020 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2016_S_AR00",
+        "name": "2016 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2014_S_AR00",
+        "name": "2014 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2010_S_AR00",
+        "name": "2010 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2008_S_AR00",
+        "name": "2008 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2004_S_AR00",
+        "name": "2004 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2002_S_AR00",
+        "name": "2002 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1998_S_AR00",
+        "name": "1998 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1996_S_AR00",
+        "name": "1996 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1992_S_AR00",
+        "name": "1992 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1990_S_AR00",
+        "name": "1990 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1986_S_AR00",
+        "name": "1986 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1984_S_AR00",
+        "name": "1984 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1980_S_AR00",
+        "name": "1980 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1978_S_AR00",
+        "name": "1978 US Senate Elections - AR",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      }
+    ]
+  },
+  "geoId/06": {
+    "in": [
+      {
+        "dcid": "election/2024_S_CA00",
+        "name": "2024 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2022_S_CA00",
+        "name": "2022 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2020_S_CA00",
+        "name": "2020 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2019_S_CA00",
+        "name": "2019 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2018_S_CA00",
+        "name": "2018 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2016_S_CA00",
+        "name": "2016 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2012_S_CA00",
+        "name": "2012 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2010_S_CA00",
+        "name": "2010 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2006_S_CA00",
+        "name": "2006 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2004_S_CA00",
+        "name": "2004 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2002_S_CA00",
+        "name": "2002 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/2000_S_CA00",
+        "name": "2000 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1998_S_CA00",
+        "name": "1998 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1996_S_CA00",
+        "name": "1996 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1994_S_CA00",
+        "name": "1994 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1992_S_CA00",
+        "name": "1992 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1988_S_CA00",
+        "name": "1988 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1986_S_CA00",
+        "name": "1986 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1982_S_CA00",
+        "name": "1982 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1980_S_CA00",
+        "name": "1980 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      },
+      {
+        "dcid": "election/1976_S_CA00",
+        "name": "1976 US Senate Elections - CA",
+        "provenanceId": "dc/gld24w2",
+        "types": ["Election"]
+      }
+    ]
+  }
+}

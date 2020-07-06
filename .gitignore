@@ -54,3 +54,6 @@ key.json
 
 # Sphinx documentation
 docs/_build/
+
+# vscode
+.vscode

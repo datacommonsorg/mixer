@@ -23,13 +23,13 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/store"
+	"github.com/datacommonsorg/mixer/server"
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestGetTriples(t *testing.T) {
 	ctx := context.Background()
-	client, err := Setup(ctx)
+	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -59,7 +59,12 @@ func TestGetTriples(t *testing.T) {
 			nil,
 		},
 		{
-			[]string{"dc/o/2brkkmq0lxd5h", "dc/o/10b2df1lqhz54"},
+			[]string{
+				"dc/o/2brkkmq0lxd5h",
+				"dc/o/10b2df1lqhz54",
+				"dc/o/sz10wj1qyyy1d",
+				"dc/p/cmtdk79lnk2pd",
+			},
 			"observation.json",
 			false,
 			-1,
@@ -77,7 +82,7 @@ func TestGetTriples(t *testing.T) {
 			"",
 			false,
 			5,
-			[]int{42, 22},
+			[]int{43, 27},
 		},
 	} {
 		req := &pb.GetTriplesRequest{Dcids: c.dcids}
@@ -89,7 +94,7 @@ func TestGetTriples(t *testing.T) {
 			t.Errorf("could not GetTriples: %s", err)
 			continue
 		}
-		var result map[string][]*store.Triple
+		var result map[string][]*server.Triple
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -107,11 +112,11 @@ func TestGetTriples(t *testing.T) {
 			continue
 		}
 
-		var expected map[string][]*store.Triple
+		var expected map[string][]*server.Triple
 		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
-			t.Errorf("Can not Unmarshal golden file")
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
 		if diff := cmp.Diff(result, expected); diff != "" {

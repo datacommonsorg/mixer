@@ -74,8 +74,7 @@ type Orderby struct {
 
 // Parser represents a Sparql parser.
 type Parser struct {
-	s      *bufScanner
-	params map[string]interface{}
+	s *bufScanner
 }
 
 // NewParser returns a new instance of Parser.
@@ -101,16 +100,16 @@ func (p *Parser) parseURI() string {
 func (p *Parser) parsePrologue() (*Prologue, *ParseError) {
 	result := Prologue{Prefix: map[string]string{}}
 	for {
-		tok, pos, lit := p.ScanIgnoreWhitespace()
+		tok, _, _ := p.ScanIgnoreWhitespace()
 		if tok == BASE {
-			if tok, pos, lit = p.ScanIgnoreWhitespace(); tok != LT {
+			if tok, pos, lit := p.ScanIgnoreWhitespace(); tok != LT {
 				return nil, newParseError(tokstr(tok, lit), []string{"<"}, pos)
 			}
 			p.Unscan()
 			result.Base = p.parseURI()
 		} else if tok == PREFIX {
-			tok, pos, pre := p.ScanIgnoreWhitespace()
-			if tok, pos, lit = p.ScanIgnoreWhitespace(); tok != LT {
+			_, _, pre := p.ScanIgnoreWhitespace()
+			if tok, pos, lit := p.ScanIgnoreWhitespace(); tok != LT {
 				return nil, newParseError(tokstr(tok, lit), []string{"<"}, pos)
 			}
 			p.Unscan()
@@ -128,7 +127,7 @@ func (p *Parser) parseSelect() (*Select, *ParseError) {
 	if tok != SELECT {
 		return nil, newParseError(tokstr(tok, lit), []string{"SELECT"}, pos)
 	}
-	tok, pos, lit = p.ScanIgnoreWhitespace()
+	tok, _, _ = p.ScanIgnoreWhitespace()
 	if tok == DISTINCT {
 		result.Distinct = true
 	} else {
@@ -202,7 +201,7 @@ func (p *Parser) parseWhere() (*Where, *ParseError) {
 func (p *Parser) parseOrderBy() (*Orderby, *ParseError) {
 	varString := ""
 	asc := true
-	tok, pos, lit := p.ScanIgnoreWhitespace()
+	tok, _, _ := p.ScanIgnoreWhitespace()
 	if tok == EOF {
 		return nil, nil
 	}
@@ -210,7 +209,7 @@ func (p *Parser) parseOrderBy() (*Orderby, *ParseError) {
 		p.Unscan()
 		return nil, nil
 	}
-	tok, pos, lit = p.ScanIgnoreWhitespace()
+	tok, pos, lit := p.ScanIgnoreWhitespace()
 	if tok != BY {
 		return nil, newParseError(tokstr(tok, lit), []string{"BY"}, pos)
 	}
