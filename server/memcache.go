@@ -126,7 +126,7 @@ func (m *Memcache) ReadParallel(
 			if raw, ok := m.Read(rowKey); ok {
 				var token string
 				var err error
-				if len(opts) > 0 && opts[0] == true {
+				if len(opts) > 0 && opts[0] {
 					token, err = util.RemoveKeyPrefix(rowKey)
 					if err != nil {
 						log.Printf("Invalid row key in memcache %s", rowKey)

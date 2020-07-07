@@ -43,11 +43,13 @@ func TestGetStats(t *testing.T) {
 		place        []string
 		goldenFile   string
 		partialMatch bool
+		wantErr      bool
 	}{
 		{
 			"TotalPopulation",
 			[]string{"country/USA", "geoId/06", "geoId/06085", "geoId/0649670"},
 			"TotalPopulation.json",
+			false,
 			false,
 		},
 		{
@@ -55,18 +57,33 @@ func TestGetStats(t *testing.T) {
 			[]string{"country/USA", "geoId/06", "geoId/06085"},
 			"NYTCovid19CumulativeCases.json",
 			true,
+			false,
 		},
 		{
 			"TotalCrimes",
 			[]string{"geoId/06", "geoId/0649670"},
 			"TotalCrimes.json",
 			false,
+			false,
+		},
+		{
+			"BadStatsVar",
+			[]string{"geoId/06"},
+			"",
+			false,
+			true,
 		},
 	} {
 		resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
 			StatsVar: c.statsVar,
 			Place:    c.place,
 		})
+		if c.wantErr {
+			if err == nil {
+				t.Errorf("Expect GetStats to error out but it succeed")
+			}
+			continue
+		}
 		if err != nil {
 			t.Errorf("could not GetStats: %s", err)
 			continue
