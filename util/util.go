@@ -21,8 +21,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"regexp"
 	"strings"
+	"time"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -39,8 +41,6 @@ const (
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
-	// BtObsSeriesPrefix for internal obs series cache.
-	BtObsSeriesPrefix = "d/4/"
 	// BtObsAncestorPrefix for the ancestor node of Bigtable.
 	BtObsAncestorPrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.
@@ -127,12 +127,12 @@ func GetProjectID(db string) (string, error) {
 }
 
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64
-func ZipAndEncode(contents string) (string, error) {
+func ZipAndEncode(contents []byte) (string, error) {
 	// Zip the string
 	var buf bytes.Buffer
 	gzWriter := gzip.NewWriter(&buf)
 
-	_, err := gzWriter.Write([]byte(contents))
+	_, err := gzWriter.Write(contents)
 	if err != nil {
 		return "", err
 	}
@@ -158,15 +158,14 @@ func UnzipAndDecode(contents string) ([]byte, error) {
 
 	// Unzip the string
 	gzReader, err := gzip.NewReader(bytes.NewReader(decode))
-	defer gzReader.Close()
 	if err != nil {
 		return nil, err
 	}
+	defer gzReader.Close()
 	gzResult, err := ioutil.ReadAll(gzReader)
 	if err != nil {
 		return nil, err
 	}
-
 	return gzResult, nil
 }
 
@@ -198,16 +197,17 @@ func GetContainedIn(typeRelationJSONFilePath string) (map[TypePair][]string, err
 	}
 
 	ti := []typeInfo{}
-	json.Unmarshal(typeRelationJSON, &ti)
+	err = json.Unmarshal(typeRelationJSON, &ti)
+	if err != nil {
+		return nil, err
+	}
 	result := make(map[TypePair][]string)
 	link := map[string][]string{}
-	all := []string{}
 	for _, info := range ti {
 		if info.Predicate == "containedInPlace" {
 			link[info.SubType] = append(link[info.SubType], info.ObjType)
 			pair := TypePair{Child: info.SubType, Parent: info.ObjType}
 			result[pair] = []string{}
-			all = append(all, info.SubType, info.ObjType)
 		}
 	}
 	for c, ps := range link {
@@ -263,4 +263,40 @@ func CheckValidDCIDs(dcids []string) bool {
 		}
 	}
 	return true
+}
+
+// RandomString creates a random string with 16 runes.
+func RandomString() string {
+	rand.Seed(time.Now().UnixNano())
+	chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+		"abcdefghijklmnopqrstuvwxyz" +
+		"0123456789")
+	length := 16
+	var b strings.Builder
+	for i := 0; i < length; i++ {
+		b.WriteRune(chars[rand.Intn(len(chars))])
+	}
+	return b.String()
+}
+
+var re = regexp.MustCompile(`(.+?)\/(.+?)\/(.+)`)
+
+// KeyToDcid ...
+// The Bigtable key is in the form of "x/y/dcid^prop1^prop2^..."
+func KeyToDcid(key string) (string, error) {
+	parts := strings.Split(key, "^")
+	match := re.FindStringSubmatch(parts[0])
+	if len(match) != 4 {
+		return "", fmt.Errorf("Invalid bigtable row key %s", key)
+	}
+	return match[3], nil
+}
+
+// RemoveKeyPrefix removes the prefix of a big query key
+func RemoveKeyPrefix(key string) (string, error) {
+	match := re.FindStringSubmatch(key)
+	if len(match) != 4 {
+		return "", fmt.Errorf("Invalid bigtable row key %s", key)
+	}
+	return match[3], nil
 }

@@ -1,0 +1,64 @@
+{
+  "payload": {
+    "geoId/05": {
+      "inLabels": [
+        "affectedPlace",
+        "containedInPlace",
+        "location",
+        "member",
+        "overlapsWith"
+      ],
+      "outLabels": [
+        "alternateName",
+        "area",
+        "containedInPlace",
+        "digitalElevationModel",
+        "elevation",
+        "geoId",
+        "geoJsonCoordinates",
+        "geoNamesId",
+        "kmlCoordinates",
+        "landArea",
+        "latitude",
+        "longitude",
+        "name",
+        "nearbyPlaces",
+        "provenance",
+        "timezone",
+        "typeOf",
+        "waterArea",
+        "wikidataId"
+      ]
+    },
+    "geoId/06": {
+      "inLabels": [
+        "affectedPlace",
+        "containedInPlace",
+        "location",
+        "member",
+        "overlapsWith"
+      ],
+      "outLabels": [
+        "alternateName",
+        "area",
+        "containedInPlace",
+        "digitalElevationModel",
+        "elevation",
+        "geoId",
+        "geoJsonCoordinates",
+        "geoNamesId",
+        "kmlCoordinates",
+        "landArea",
+        "latitude",
+        "longitude",
+        "name",
+        "nearbyPlaces",
+        "provenance",
+        "timezone",
+        "typeOf",
+        "waterArea",
+        "wikidataId"
+      ]
+    }
+  }
+}

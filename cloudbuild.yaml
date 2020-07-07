@@ -2,6 +2,6 @@
 steps:
 
 - id: go_test
-  name: mirror.gcr.io/library/golang
+  name: golang
   env: ['GO111MODULE=on']
   args: ['go', 'test', './...']

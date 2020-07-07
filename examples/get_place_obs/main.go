@@ -45,7 +45,7 @@ func main() {
 	ctx := context.Background()
 
 	reqs := []*pb.GetPlaceObsRequest{
-		&pb.GetPlaceObsRequest{
+		{
 			PlaceType:      "City",
 			PopulationType: "Person",
 			Pvs: []*pb.PropertyValue{
@@ -60,7 +60,7 @@ func main() {
 			},
 			ObservationDate: "2013",
 		},
-		&pb.GetPlaceObsRequest{
+		{
 			PlaceType:      "Country",
 			PopulationType: "MedicalConditionIncident",
 			Pvs: []*pb.PropertyValue{

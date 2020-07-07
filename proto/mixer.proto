@@ -14,6 +14,8 @@
 
 syntax = "proto3";
 
+// Use relative go package so the generated file is in the current folder.
+option go_package = "./proto";
 package datacommons;
 
 import "google/api/annotations.proto";
@@ -176,26 +178,6 @@ message GetPlaceObsRequest {
 
 // Response of GetPlaceObs.
 message GetPlaceObsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
-// Request message for GetObsSeries.
-message GetObsSeriesRequest {
-  // The dcid of the place.
-  string place = 1;
-
-  // The type of the Statistical population.
-  string population_type = 2;
-
-  // A list of constraining property values that defines the population.
-  repeated PropertyValue pvs = 3;
-
-  Option option = 4;
-}
-
-// Response of GetObsSeries.
-message GetObsSeriesResponse {
   // The JSON payload.
   string payload = 1;
 }
@@ -730,14 +712,6 @@ service Mixer {
   rpc GetPlaceObs(GetPlaceObsRequest) returns (GetPlaceObsResponse) {
     option (google.api.http) = {
       post: "/bulk/place-obs"
-      body: "*"
-    };
-  }
-
-  // Get observations for a given place, population type, and population constraining properties.
-  rpc GetObsSeries(GetObsSeriesRequest) returns (GetObsSeriesResponse) {
-    option (google.api.http) = {
-      post: "/bulk/obs-series"
       body: "*"
     };
   }
