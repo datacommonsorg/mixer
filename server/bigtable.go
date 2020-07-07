@@ -74,7 +74,7 @@ func bigTableReadRowsParallel(
 					raw := btRow[util.BtFamily][0].Value
 					var token string
 					var err error
-					if len(opts) > 0 && opts[0] == true {
+					if len(opts) > 0 && opts[0] {
 						token, err = util.RemoveKeyPrefix(btRow.Key())
 						if err != nil {
 							return false

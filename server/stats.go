@@ -61,6 +61,9 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		return nil, err
 	}
 	// Get the StatisticalVariable
+	if triples[in.GetStatsVar()] == nil {
+		return nil, fmt.Errorf("No stats var found for %s", in.GetStatsVar())
+	}
 	statsVar, err := triplesToStatsVar(triples[in.GetStatsVar()])
 	if err != nil {
 		return nil, err
