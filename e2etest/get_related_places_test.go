@@ -47,12 +47,49 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 		pvs        map[string]string
 	}{
 		{
-			"person_count.json",
+			"population.json",
 			[]string{"geoId/06085"},
 			"Person",
 			"count",
 			"measuredValue",
 			nil,
+		},
+		{
+			"income.json",
+			[]string{"geoId/06085"},
+			"Person",
+			"income",
+			"medianValue",
+			map[string]string{
+				"age":          "Years15Onwards",
+				"incomeStatus": "WithIncome",
+			},
+		},
+		{
+			"age.json",
+			[]string{"geoId/06085"},
+			"Person",
+			"age",
+			"medianValue",
+			nil,
+		},
+		{
+			"unemployment.json",
+			[]string{"geoId/06085"},
+			"Person",
+			"unemploymentRate",
+			"measuredValue",
+			nil,
+		},
+		{
+			"crime.json",
+			[]string{"geoId/06085"},
+			"CriminalActivities",
+			"count",
+			"measuredValue",
+			map[string]string{
+				"crimeType": "UCR_CombinedCrime",
+			},
 		},
 	} {
 		req := &pb.GetRelatedPlacesRequest{

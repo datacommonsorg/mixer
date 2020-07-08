@@ -79,17 +79,7 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
-	// TODO: Move the default value up to Python API. Consult wsws before moving.
-	//
-	// The default values ensure for the following 5 cache keys.
-	// count^CensusACS5yrSurvey^^^^^measuredValue^Person
-	// income^CensusACS5yrSurvey^^^^USDollar^medianValue^Person^age^Years15Onwards^ \
-	//   incomeStatus^WithIncome
-	// age^CensusACS5yrSurvey^^^^Year^medianValue^Person
-	// unemploymentRate^BLSSeasonallyUnadjusted^^^^^measuredValue^Person
-	// count^^^^^^measuredValue^CriminalActivities^crimeType^UCR_CombinedCrime
 	measuredProperty := in.GetMeasuredProperty()
-
 	popObsSignatureItems := []string{
 		measuredProperty,
 		in.GetMeasurementDenominator(),
