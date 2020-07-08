@@ -1,1 +1,1 @@
-google.com:datcom-store-dev.dc_kg_2020_06_30_01_02_51
+google.com:datcom-store-dev:dc_kg_2020_07_07_19_47_23
