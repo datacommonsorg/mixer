@@ -82,8 +82,11 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 	measuredProperty := in.GetMeasuredProperty()
 	popObsSignatureItems := []string{
 		measuredProperty,
+		"",
 		in.GetMeasurementDenominator(),
 		in.GetMeasurementQualifier(),
+		"",
+		"",
 		in.GetStatType(),
 		in.GetPopulationType(),
 	}
