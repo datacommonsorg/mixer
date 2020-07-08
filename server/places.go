@@ -89,31 +89,11 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 	// unemploymentRate^BLSSeasonallyUnadjusted^^^^^measuredValue^Person
 	// count^^^^^^measuredValue^CriminalActivities^crimeType^UCR_CombinedCrime
 	measuredProperty := in.GetMeasuredProperty()
-	populationType := in.GetPopulationType()
-	measurementMethod := in.GetMeasurementMethod()
-	if measurementMethod == "" && populationType == "Person" {
-		if measuredProperty == "unemploymentRate" {
-			measurementMethod = "BLSSeasonallyUnadjusted"
-		} else {
-			measurementMethod = "CensusACS5yrSurvey"
-		}
-	}
-	unit := in.GetUnit()
-	if unit == "" {
-		if measuredProperty == "age" {
-			unit = "Year"
-		} else if measuredProperty == "income" {
-			unit = "USDollar"
-		}
-	}
 
 	popObsSignatureItems := []string{
 		measuredProperty,
-		measurementMethod,
 		in.GetMeasurementDenominator(),
 		in.GetMeasurementQualifier(),
-		in.GetScalingFactor(),
-		unit,
 		in.GetStatType(),
 		in.GetPopulationType(),
 	}

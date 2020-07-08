@@ -314,20 +314,11 @@ message GetRelatedPlacesRequest {
   // The measured property of the observation.
   string measured_property = 4;
 
-  // (Opitonal) Measurement method.
-  string measurement_method = 5;
-
   // (Opitonal) Measurement denominator.
   string measurement_denominator = 6;
 
   // (Opitonal) Measurement qualifier.
   string measurement_qualifier = 7;
-
-  // (Opitonal) Scaling factor.
-  string scaling_factor = 8;
-
-  // (Optional) Unit.
-  string unit = 9;
 
   // The statistics type, like "measured", "median", etc...
   string stat_type = 10;
