@@ -45,10 +45,11 @@ func TestGetChartData(t *testing.T) {
 		path.Dir(filename), "../golden_response/staging/get_chart_data.json")
 
 	keys := []string{
-		"geoId/06^count^CensusACS5yrSurvey^^measured^^^^Person",
-		"nces/062631003930^count^^^measured^^^^Student",
-		"nces/062631003930^count^^^measured^^^^Student^gender^Female",
-		"geoId/06085^cumulativeCount^NYT_COVID19_GitHub^^measured^^^^MedicalConditionIncident^incidentType^COVID_19^medicalStatus^ConfirmedOrProbableCase",
+		"country/ITA^count^measured^^^^Person",
+		"geoId/06^count^measured^^^^Person",
+		"nces/062631003930^count^measured^^^^Student",
+		"nces/062631003930^count^measured^^^^Student^gender^Female",
+		"geoId/06085^cumulativeCount^measured^^^^MedicalConditionIncident^incidentType^COVID_19^medicalStatus^ConfirmedOrProbableCase",
 	}
 	req := &pb.GetChartDataRequest{
 		Keys: keys,
@@ -57,12 +58,12 @@ func TestGetChartData(t *testing.T) {
 	if err != nil {
 		t.Fatalf("could not GetChartData: %s", err)
 	}
-	var result map[string]*server.ChartStore
+	var result map[string]*pb.ObsTimeSeries
 	err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 	if err != nil {
 		t.Fatalf("Can not Unmarshal payload: %v", err)
 	}
-	var expected map[string]*server.ChartStore
+	var expected map[string]*pb.ObsTimeSeries
 	file, _ := ioutil.ReadFile(goldenFile)
 	err = json.Unmarshal(file, &expected)
 	if err != nil {

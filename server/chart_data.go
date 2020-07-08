@@ -18,18 +18,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 )
-
-var transform = func(key string, jsonRaw []byte) (interface{}, error) {
-	var chartStore ChartStore
-	err := json.Unmarshal(jsonRaw, &chartStore)
-	if err != nil {
-		return nil, err
-	}
-	return &chartStore, nil
-}
 
 // GetChartData implements API for Mixer.GetChartData.
 func (s *Server) GetChartData(ctx context.Context,
@@ -38,19 +30,19 @@ func (s *Server) GetChartData(ctx context.Context,
 	if len(keys) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
 	}
-	result := map[string]*ChartStore{}
+	result := map[string]*pb.ObsTimeSeries{}
 	rowList := buildChartDataKey(keys)
 
 	// Read from branch cache first
-	memData := s.memcache.ReadParallel(rowList, transform, true)
+	memData := s.memcache.ReadParallel(rowList, convertToObsSeries, true)
 	for key, data := range memData {
-		result[key] = data.(*ChartStore)
+		result[key] = data.(*pb.ObsTimeSeries)
 	}
 	// Read data from Bigtable if not all data is obtained from memcache.
 	if len(memData) < len(keys) {
 		dataMap, err := bigTableReadRowsParallel(
 			ctx, s.btTable, rowList,
-			transform,
+			convertToObsSeries,
 			true,
 		)
 		if err != nil {
@@ -58,8 +50,8 @@ func (s *Server) GetChartData(ctx context.Context,
 		}
 		for key, data := range dataMap {
 			if _, ok := result[key]; !ok {
-				result[key] = data.(*ChartStore)
-
+				result[key] = data.(*pb.ObsTimeSeries)
+				result[key].PlaceDcid = strings.Split(result[key].PlaceDcid, "^")[0]
 			}
 		}
 	}
