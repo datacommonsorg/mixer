@@ -115,16 +115,3 @@ type Metadata struct {
 	SubTypeMap  map[string]string
 	ContainedIn map[util.TypePair][]string
 }
-
-// ObsTimeSeries represents observation time series.
-type ObsTimeSeries struct {
-	Val           map[string]float64 `json:"val,omitempty"`
-	Unit          string             `json:"unit,omitempty"`
-	PlaceName     string             `json:"placeName,omitempty"`
-	IsDcAggregate bool               `json:"isDcAggregate,omitempty"`
-}
-
-// ChartStore represents chart store for data.
-type ChartStore struct {
-	ObsTimeSeries *ObsTimeSeries `json:"obsTimeSeries,omitempty"`
-}

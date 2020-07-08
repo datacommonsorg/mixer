@@ -17,7 +17,6 @@ package e2etest
 import (
 	"context"
 	"encoding/json"
-	"log"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/proto"
@@ -66,7 +65,6 @@ func TestGetPopulations(t *testing.T) {
 			t.Errorf("could not GetPropertyValues: %s", err)
 			continue
 		}
-		log.Println(resp)
 		var result []*server.PlacePopInfo
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
