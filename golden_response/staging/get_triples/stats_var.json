@@ -34,14 +34,6 @@
     },
     {
       "subjectId": "MarriedPopulation",
-      "predicate": "measurementMethod",
-      "objectId": "CensusACS5yrSurvey",
-      "objectName": "CensusACS5yrSurvey",
-      "objectTypes": ["CensusSurveyEnum"],
-      "provenanceId": "dc/5l5zxr1"
-    },
-    {
-      "subjectId": "MarriedPopulation",
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
@@ -112,14 +104,6 @@
       "objectId": "Person",
       "objectName": "Person",
       "objectTypes": ["Class"],
-      "provenanceId": "dc/5l5zxr1"
-    },
-    {
-      "subjectId": "TotalPopulation",
-      "predicate": "measurementMethod",
-      "objectId": "CensusACS5yrSurvey",
-      "objectName": "CensusACS5yrSurvey",
-      "objectTypes": ["CensusSurveyEnum"],
       "provenanceId": "dc/5l5zxr1"
     },
     {
