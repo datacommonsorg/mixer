@@ -91,8 +91,6 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 			},
 		},
 	} {
-		// TODO: remove this when dataset is updated.
-		continue
 		req := &pb.GetRelatedPlacesRequest{
 			Dcids:            c.dcids,
 			PopulationType:   c.popType,
@@ -123,7 +121,7 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff != "" {
+		if diff := cmp.Diff(result, expected); diff == "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

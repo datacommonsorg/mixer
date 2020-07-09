@@ -53,7 +53,7 @@ func TestGetPlacesIn(t *testing.T) {
 			"County",
 		},
 		{
-			"county_schooldistrict.json",
+			"county_zip.json",
 			[]string{"geoId/06085"},
 			"CensusZipCodeTabulationArea",
 		},
