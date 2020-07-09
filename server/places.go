@@ -56,8 +56,10 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 	}
 	results := []map[string]string{}
 	for _, dcid := range dcids {
-		for _, place := range dataMap[dcid].([]string) {
-			results = append(results, map[string]string{"dcid": dcid, "place": place})
+		if dataMap[dcid] != nil {
+			for _, place := range dataMap[dcid].([]string) {
+				results = append(results, map[string]string{"dcid": dcid, "place": place})
+			}
 		}
 	}
 
@@ -79,41 +81,14 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 		return nil, fmt.Errorf("invalid DCIDs")
 	}
 
-	// TODO: Move the default value up to Python API. Consult wsws before moving.
-	//
-	// The default values ensure for the following 5 cache keys.
-	// count^CensusACS5yrSurvey^^^^^measuredValue^Person
-	// income^CensusACS5yrSurvey^^^^USDollar^medianValue^Person^age^Years15Onwards^ \
-	//   incomeStatus^WithIncome
-	// age^CensusACS5yrSurvey^^^^Year^medianValue^Person
-	// unemploymentRate^BLSSeasonallyUnadjusted^^^^^measuredValue^Person
-	// count^^^^^^measuredValue^CriminalActivities^crimeType^UCR_CombinedCrime
 	measuredProperty := in.GetMeasuredProperty()
-	populationType := in.GetPopulationType()
-	measurementMethod := in.GetMeasurementMethod()
-	if measurementMethod == "" && populationType == "Person" {
-		if measuredProperty == "unemploymentRate" {
-			measurementMethod = "BLSSeasonallyUnadjusted"
-		} else {
-			measurementMethod = "CensusACS5yrSurvey"
-		}
-	}
-	unit := in.GetUnit()
-	if unit == "" {
-		if measuredProperty == "age" {
-			unit = "Year"
-		} else if measuredProperty == "income" {
-			unit = "USDollar"
-		}
-	}
-
 	popObsSignatureItems := []string{
 		measuredProperty,
-		measurementMethod,
+		"",
 		in.GetMeasurementDenominator(),
 		in.GetMeasurementQualifier(),
-		in.GetScalingFactor(),
-		unit,
+		"",
+		"",
 		in.GetStatType(),
 		in.GetPopulationType(),
 	}

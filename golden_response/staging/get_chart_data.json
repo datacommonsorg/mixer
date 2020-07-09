@@ -225,7 +225,7 @@
       "2020-07-04": 5077
     },
     "place_name": "Santa Clara County",
-    "place_dcid": "geoId/06085^cumulativeCount^measured^^^^MedicalConditionIncident^incidentType^COVID_19^medicalStatus^ConfirmedOrProbableCase"
+    "place_dcid": "geoId/06085"
   },
   "geoId/06^count^measured^^^^Person": {
     "data": {

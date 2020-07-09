@@ -51,9 +51,11 @@ func (s *Server) GetChartData(ctx context.Context,
 		for key, data := range dataMap {
 			if _, ok := result[key]; !ok {
 				result[key] = data.(*pb.ObsTimeSeries)
-				result[key].PlaceDcid = strings.Split(result[key].PlaceDcid, "^")[0]
 			}
 		}
+	}
+	for key := range result {
+		result[key].PlaceDcid = strings.Split(result[key].PlaceDcid, "^")[0]
 	}
 
 	jsonRaw, err := json.Marshal(result)
