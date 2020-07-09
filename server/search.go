@@ -35,7 +35,7 @@ func (s *Server) Search(
 		"SELECT id, type, extended_name FROM `%s`.Instance "+
 			"WHERE type != \"CensusTract\" and type != \"PowerPlant\""+
 			" and type != \"PowerPlantUnit\""+
-			" and type != \"BiologicalSpecimen\"", s.bq)
+			" and type != \"BiologicalSpecimen\"", s.metadata.Bq)
 	for _, token := range tokens {
 		qStr += fmt.Sprintf(
 			` AND REGEXP_CONTAINS(LOWER(extended_name), r"\b%s\b")`, token)

@@ -45,7 +45,7 @@ func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(
-		path.Join(path.Dir(filename), "../deployment/staging_bq_table.txt"))
+		path.Join(path.Dir(filename), "../deployment/staging_bq_dataset.txt"))
 	btTableID, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../deployment/staging_bt_table.txt"))
 
@@ -60,15 +60,12 @@ func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	// TODO(boxu): Change mapping not to have dataset name in it.
-	// Metadata.
-	metadata, err := server.NewMetadata(path.Join(path.Dir(filename), "mapping"))
+	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)))
 	if err != nil {
 		return nil, err
 	}
 
-	s := server.NewServer(
-		bqClient, btTable, memcache, metadata, strings.TrimSpace(string(bqTableID)))
+	s := server.NewServer(bqClient, btTable, memcache, metadata)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)

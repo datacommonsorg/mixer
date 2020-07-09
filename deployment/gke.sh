@@ -142,9 +142,6 @@ fi
 # Mount nginx config
 kubectl create configmap nginx-config --from-file=nginx.conf --namespace=mixer
 
-# Mount schema mapping volumes
-kubectl delete configmap schema-mapping --namespace mixer
-kubectl create configmap schema-mapping --from-file=versioned_mapping/ --namespace=mixer
 
 # Create certificate
 if [ $DOMAIN ]; then
