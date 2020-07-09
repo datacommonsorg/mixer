@@ -27,7 +27,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetRelatedPlacesTest(t *testing.T) {
+func TestGetPropertyLabels(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -35,93 +35,43 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_related_places")
+		path.Dir(filename), "../golden_response/staging/get_property_labels")
 
 	for _, c := range []struct {
 		goldenFile string
 		dcids      []string
-		popType    string
-		mprop      string
-		statType   string
-		pvs        map[string]string
 	}{
 		{
-			"population.json",
-			[]string{"geoId/06085"},
-			"Person",
-			"count",
-			"measuredValue",
-			nil,
+			"property-labels-class.json",
+			[]string{"Class"},
 		},
 		{
-			"income.json",
-			[]string{"geoId/06085"},
-			"Person",
-			"income",
-			"medianValue",
-			map[string]string{
-				"age":          "Years15Onwards",
-				"incomeStatus": "WithIncome",
-			},
-		},
-		{
-			"age.json",
-			[]string{"geoId/06085"},
-			"Person",
-			"age",
-			"medianValue",
-			nil,
-		},
-		{
-			"unemployment.json",
-			[]string{"geoId/06085"},
-			"Person",
-			"unemploymentRate",
-			"measuredValue",
-			nil,
-		},
-		{
-			"crime.json",
-			[]string{"geoId/06"},
-			"CriminalActivities",
-			"count",
-			"measuredValue",
-			map[string]string{
-				"crimeType": "UCR_CombinedCrime",
-			},
+			"property-labels-states.json",
+			[]string{"geoId/05", "geoId/06"},
 		},
 	} {
-		req := &pb.GetRelatedPlacesRequest{
-			Dcids:            c.dcids,
-			PopulationType:   c.popType,
-			MeasuredProperty: c.mprop,
-			StatType:         c.statType,
+		req := &pb.GetPropertyLabelsRequest{
+			Dcids: c.dcids,
 		}
-		for p, v := range c.pvs {
-			req.Pvs = append(req.Pvs, &pb.PropertyValue{
-				Property: p,
-				Value:    v,
-			})
-		}
-		resp, err := client.GetRelatedPlaces(ctx, req)
+		resp, err := client.GetPropertyLabels(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetRelatedPlaces: %s", err)
+			t.Errorf("could not GetPropertyLabels: %s", err)
 			continue
 		}
-		var result map[string]*server.RelatedPlacesInfo
+		var result map[string]*server.PropLabelCache
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-		var expected map[string]*server.RelatedPlacesInfo
+		var expected map[string]map[string]*server.PropLabelCache
 		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff == "" {
+		if diff := cmp.Diff(result, expected["payload"]); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
