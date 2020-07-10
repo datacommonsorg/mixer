@@ -408,16 +408,20 @@ message SearchEntityResult {
   string name = 2;
 }
 
+// StatsVars represent a list of statistical variable dcids.
 message StatsVars {
   repeated string statsVars = 1;
 }
 
+// Request message for GetPlaceStats API.
 message GetPlaceStatsVarRequest {
   // DCIDs of the places.
   repeated string dcids = 1;
 }
 
+// Response message for GetPlaceStats API.
 message GetPlaceStatsVarResponse {
+  // A map from place dcid to a list of statistical variable dcids.
   map<string, StatsVars> places = 1;
 }
 

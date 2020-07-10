@@ -2505,6 +2505,7 @@ func (x *SearchEntityResult) GetName() string {
 	return ""
 }
 
+// StatsVars represent a list of statistical variable dcids.
 type StatsVars struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2552,6 +2553,7 @@ func (x *StatsVars) GetStatsVars() []string {
 	return nil
 }
 
+// Request message for GetPlaceStats API.
 type GetPlaceStatsVarRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2600,11 +2602,13 @@ func (x *GetPlaceStatsVarRequest) GetDcids() []string {
 	return nil
 }
 
+// Response message for GetPlaceStats API.
 type GetPlaceStatsVarResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// A map from place dcid to a list of statistical variable dcids.
 	Places map[string]*StatsVars `protobuf:"bytes,1,rep,name=places,proto3" json:"places,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

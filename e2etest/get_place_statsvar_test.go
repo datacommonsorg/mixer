@@ -29,34 +29,65 @@ func TestGetPlaceStatsVar(t *testing.T) {
 		t.Fatalf("Failed to set up mixer and client")
 	}
 
-	dcids := []string{"geoId/05", "geoId/06885", "invalid"}
-	want := map[string]struct {
-		minCount  int
-		statsVars []string
+	for _, c := range []struct {
+		dcids    []string
+		want     []string
+		minCount int
+		wanterr  bool
 	}{
-		"geoId/05":    {1000, []string{"TotalPopulation"}},
-		"geoId/06858": {1000, []string{"Person_Count"}},
-		"invalid":     {0, []string{}},
-	}
-	req := &pb.GetPlaceStatsVarRequest{
-		Dcids: dcids,
-	}
-	resp, err := client.GetPlaceStatsVar(ctx, req)
-	if err != nil {
-		t.Errorf("could not GetPlaceStatsVar: %s", err)
-	}
-	for dcid, place := range resp.Places {
-		if len(place.StatsVars) < want[dcid].minCount {
-			t.Errorf("%s has less than %d stats vars", dcid, want[dcid].minCount)
+		{
+			[]string{"geoId/05"},
+			[]string{"TotalPopulation"},
+			1000,
+			false,
+		},
+		{
+			[]string{"geoId/06085"},
+			[]string{"TotalPopulation"},
+			1000,
+			false,
+		},
+		{
+			[]string{"invalid"},
+			[]string{},
+			0,
+			false,
+		},
+		{
+			[]string{},
+			[]string{},
+			0,
+			true,
+		},
+	} {
+
+		req := &pb.GetPlaceStatsVarRequest{
+			Dcids: c.dcids,
 		}
-		statsVarSet := map[string]bool{}
-		for _, statsVar := range place.StatsVars {
-			statsVarSet[statsVar] = true
+		resp, err := client.GetPlaceStatsVar(ctx, req)
+		if c.wanterr {
+			if err == nil {
+				t.Errorf("Expect to get error for GetPlaceStatsVar() but succeed")
+			}
+			continue
 		}
-		for _, statsVar := range want[dcid].statsVars {
-			if _, ok := statsVarSet[statsVar]; !ok {
-				t.Errorf("%s is not in the stats var list of %s", statsVar, dcid)
-				continue
+		if err != nil {
+			t.Errorf("Could not GetPlaceStatsVar: %s", err)
+			continue
+		}
+		for dcid, place := range resp.Places {
+			if len(place.StatsVars) < c.minCount {
+				t.Errorf("%s has less than %d stats vars", dcid, c.minCount)
+			}
+			statsVarSet := map[string]bool{}
+			for _, statsVar := range place.StatsVars {
+				statsVarSet[statsVar] = true
+			}
+			for _, statsVar := range c.want {
+				if _, ok := statsVarSet[statsVar]; !ok {
+					t.Errorf("%s is not in the stats var list of %s", statsVar, dcid)
+					continue
+				}
 			}
 		}
 	}
