@@ -62,12 +62,6 @@ fi
 BQ_DATASET=$(cat $bq_dataset_input_file)
 export BQ_DATASET
 perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' deployment.yaml
-# Set BQ dataset in versioned_mapping MCFs
-mkdir versioned_mapping
-rm versioned_mapping/*
-cp mapping/* versioned_mapping/
-perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' versioned_mapping/base.mcf
-perl -i -pe's/BQ_DATASET/$ENV{BQ_DATASET}/g' versioned_mapping/weather.mcf
 
 # Set BT_INSTANCE, same for prod and staging.
 perl -i -pe's/BT_INSTANCE/prophet-cache/g' deployment.yaml
