@@ -107,6 +107,11 @@ type PlacePopInfo struct {
 	PopulationID string `json:"population,omitempty"`
 }
 
+//PlaceStatsVar contains the place stats var list.
+type PlaceStatsVar struct {
+	StatVarIds []string `json:"statVarIds,omitempty"`
+}
+
 // Metadata represents the metadata used by the server.
 type Metadata struct {
 	Mappings    []*base.Mapping

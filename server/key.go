@@ -118,3 +118,12 @@ func buildPlaceInKey(dcids []string, placeType string) bigtable.RowList {
 	}
 	return rowList
 }
+
+func buildPlaceStatsVarKey(dcids []string) bigtable.RowList {
+	rowList := bigtable.RowList{}
+	for _, dcid := range dcids {
+		rowList = append(
+			rowList, fmt.Sprintf("%s%s", util.BtPlaceStatsVarPrefix, dcid))
+	}
+	return rowList
+}

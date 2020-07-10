@@ -25,18 +25,12 @@ import (
 	"regexp"
 	"strings"
 	"time"
-
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 const (
-	// BqPrefix for internal dataset.
-	BqPrefix = "google.com:"
-	// BtPropValInPrefix for internal GetPropertyValues in arc cache.
-	BtPropValInPrefix = "d/0/"
-	// BtPropValOutPrefix for internal GetPropertyValues out arc cache.
-	BtPropValOutPrefix = "d/1/"
+	// BtPlaceStatsVarPrefix for place to statsvar list cache.
+	BtPlaceStatsVarPrefix = "d/0/"
+
 	// BtPopObsPrefix for internal pop obs cache.
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
@@ -106,24 +100,6 @@ type typeInfo struct {
 type TypePair struct {
 	Child  string
 	Parent string
-}
-
-// GetProjectID gets the bigquery project id based on dataset name.
-func GetProjectID(db string) (string, error) {
-	if strings.HasPrefix(db, BqPrefix) {
-		parts := strings.SplitN(strings.Replace(db, BqPrefix, "", 1), ".", 2)
-		if len(parts) != 2 {
-			return "", status.Errorf(
-				codes.InvalidArgument, "Bad bigquery database name %s", db)
-		}
-		return BqPrefix + parts[0], nil
-	}
-	parts := strings.SplitN(db, ".", 2)
-	if len(parts) != 2 {
-		return "", status.Errorf(
-			codes.InvalidArgument, "Bad bigquery database name %s", db)
-	}
-	return parts[0], nil
 }
 
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64

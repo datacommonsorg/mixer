@@ -408,6 +408,20 @@ message SearchEntityResult {
   string name = 2;
 }
 
+message RepeatedString {
+  repeated string values = 1;
+}
+
+message GetPlaceStatsVarRequest {
+  // DCIDs of the places.
+  repeated string dcids = 1;
+}
+
+message GetPlaceStatsVarResponse {
+  map<string, RepeatedString> places = 8;
+}
+
+
 // TODO(wsws): Refactor all these "won't persist to cache" fields across caches
 // into a single TemporaryFields message, and clear just that "tmp_data" field
 // before persistence.
@@ -763,5 +777,11 @@ service Mixer {
   // Given a text search query, return all entities matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
     option (google.api.http) = { get: "/search" };
+  }
+
+  // Give a list of place dcids, return all the statistical variables for each
+  // place.
+  rpc GetPlaceStatsVar(GetPlaceStatsVarRequest) returns (GetPlaceStatsVarResponse) {
+    option (google.api.http) = { get: "/place/stats-var" };
   }
 }
