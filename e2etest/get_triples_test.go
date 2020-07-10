@@ -71,7 +71,7 @@ func TestGetTriples(t *testing.T) {
 			nil,
 		},
 		{
-			[]string{"TotalPopulation", "MarriedPopulation"},
+			[]string{"Count_Person", "Count_Person_Female"},
 			"stats_var.json",
 			false,
 			-1,
