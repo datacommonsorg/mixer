@@ -121,7 +121,7 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff == "" {
+		if diff := cmp.Diff(result, expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

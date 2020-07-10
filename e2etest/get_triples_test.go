@@ -71,7 +71,7 @@ func TestGetTriples(t *testing.T) {
 			nil,
 		},
 		{
-			[]string{"TotalPopulation", "MarriedPopulation"},
+			[]string{"Count_Person", "Count_Person_Female"},
 			"stats_var.json",
 			false,
 			-1,
@@ -82,7 +82,7 @@ func TestGetTriples(t *testing.T) {
 			"",
 			false,
 			5,
-			[]int{43, 27},
+			[]int{42, 27},
 		},
 	} {
 		req := &pb.GetTriplesRequest{Dcids: c.dcids}

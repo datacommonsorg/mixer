@@ -55,16 +55,21 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
 
     gcloud auth application-default login
 
-    go run server/main.go \
+    go run main.go \
       --bq_dataset=google.com:datcom-store-dev.dc_kg_2020_04_13_02_32_53 \
       --bt_table=borgcron_2020_04_13_02_32_53 \
       --bt_project=google.com:datcom-store-dev \
       --bt_instance=prophet-cache \
       --project_id=datcom-mixer \
-      --schema_path=deployment/versioned_mapping
+      --schema_path=deployment/mapping
 
     cd examples
     ./run_all.sh
+
+## E2E test locally.
+
+Install `cloud-build-local` following [the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally).
+cloud-build-local --config=cloudbuild.yaml --dryrun=false .
 
 ## Build mixer docker image and submit to Google Cloud Registry
 

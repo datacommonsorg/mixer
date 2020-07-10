@@ -4,25 +4,25 @@
       {
         "dcid": "geoId/0677000",
         "name": "Sunnyvale",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
         "dcid": "geoId/0673906",
         "name": "Stanford",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
         "dcid": "geoId/0670280",
         "name": "Saratoga",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
         "dcid": "geoId/0669084",
         "name": "Santa Clara",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
@@ -34,7 +34,7 @@
       {
         "dcid": "geoId/0668000",
         "name": "San Jose",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
@@ -46,13 +46,13 @@
       {
         "dcid": "geoId/0649670",
         "name": "Mountain View",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
         "dcid": "geoId/0649278",
         "name": "Morgan Hill",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
@@ -64,7 +64,7 @@
       {
         "dcid": "geoId/0647766",
         "name": "Milpitas",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
@@ -76,13 +76,13 @@
       {
         "dcid": "geoId/0644112",
         "name": "Los Gatos",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City", "Town"]
       },
       {
         "dcid": "geoId/0643294",
         "name": "Los Altos Hills",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City", "Town"]
       },
       {
@@ -100,7 +100,7 @@
       {
         "dcid": "geoId/0629504",
         "name": "Gilroy",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {
@@ -118,7 +118,7 @@
       {
         "dcid": "geoId/0617610",
         "name": "Cupertino",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": ["City"]
       },
       {

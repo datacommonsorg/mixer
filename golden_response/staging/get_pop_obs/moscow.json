@@ -6,6 +6,286 @@
       "popType": "Person",
       "observations": [
         {
+          "id": "dc/o/zxgjjf5jxdmp",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 188700,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1785",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/zqjxx6c8bdqj8",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 250000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1800",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/zl8m9mv5b33k3",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 353300,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1847",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/zl0sds0x5grv4",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 161000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1775",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/z5v5eccyt7s02",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1174700,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1902",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/z2hzcf0wvwb7",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1854400,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1917",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/ykv86cpzbzz42",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 8815000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1987",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/ycevllygqns1h",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9066025,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1993",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/x44119n384zzd",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 10382754,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2002",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/x1xn2k5jvl0n6",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 8769117,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1989",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/x1fwh9z03steb",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 305600,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1830",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/x1czbsjgkyry6",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 145000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1725",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/wtyn6tbhq5x0g",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 12500123,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2018",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/wqhn6yjg457s2",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 351600,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1864",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/w0g0rphhx1gpc",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 2781300,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1931",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/vfdsgqv8kdzm9",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 822400,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1891",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/vefvrfv54e22b",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9066612,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1994",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/trwj58sf7y7nf",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 349100,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1840",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/tnj9yewktelh7",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9604297,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1998",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/tjbk7x0p3c3fg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 7255000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1973",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/sz5y2g9gdbbw4",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 40000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1400",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/s3cnv738bngdb",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 11979529,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2013",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/rmk0q8x3kxeth",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 2080000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1926",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/r54d0nhgmmpe3",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 4131633,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1939",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/r1h22xrqp0k42",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9932932,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2000",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/r0mch80wlgv04",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 5045905,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1959",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/r0jyycp560dpf",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1563100,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1913",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/qxq7n924l3v65",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 215000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1813",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
           "id": "dc/o/qhn73t6n52cx6",
           "type": "Observation",
           "measuredProp": "count",
@@ -13,7 +293,247 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2007",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/qf031kt41vh2b",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 200000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1638",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/qe90str4m4037",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1175000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1900",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/qd0s35cflfe5b",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 753459,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1886",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/pjzgsqtbl6fsc",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 3641500,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1936",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/pbr7qqxlpgt77",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 7830509,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1979",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/p53ft20ypjeq9",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 241500,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1825",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/p4rsbqys6grz5",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 100000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1600",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/p3wh2hdqp7xbg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 10726429,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2005",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/nfsxc2gjltbd",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9783242,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1999",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/ne83vf368sq8c",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 8527000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1986",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/mnsxn488v6n21",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 7862000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1975",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/mmz339c7pk0ph",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9246727,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1996",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/mfq5qn058y9r2",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 10114203,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2001",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/lj4ye9sgdx0w5",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 11091428,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2007",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/lcwyrfgr9t9vg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 373800,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1852",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/l8hrmz3m5jqzf",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1039000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1897",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/kv9dd7pqdjhqg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 160000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1710",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/kfx2r6fxmk409",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 377800,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1858",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/kb8d4zcr76hn2",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 7151000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1972",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/k4ehhgsx0n2d6",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 11776764,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2011",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/jycdyb30p22m1",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 12692466,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2020",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/jv1cgq4v3e9lh",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 6941961,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1970",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/jsnl73rrrwrv5",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 753500,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1882",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/jlj6f4mfkpq5f",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 8880124,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1990",
+          "statVarIds": ["TotalPopulation"]
         },
         {
           "id": "dc/o/jgenn08p8d4n6",
@@ -23,7 +543,87 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2011",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/jfhkwkpl4gv4f",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1617157,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1912",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/j885z9s72s0tb",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 30000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1350",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/j3b6nw031c8p9",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 6422000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1967",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/hy8zsj818q15",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 12197596,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2015",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/hw9rp4cpnw6jb",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 138400,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1738",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/hsxq8gj9qn9z9",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 11281631,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2009",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/h75vlhetq2rh",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 11186851,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2008",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/gzdw320p77n74",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 270200,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1811",
+          "statVarIds": ["TotalPopulation"]
         },
         {
           "id": "dc/o/gny6j1j1371q4",
@@ -33,7 +633,7 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2008",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
         },
         {
           "id": "dc/o/glzgrmn97ts98",
@@ -43,7 +643,17 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2006",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/gdlrpf29bz613",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 8652000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1985",
+          "statVarIds": ["TotalPopulation"]
         },
         {
           "id": "dc/o/g43fz38yhwk0d",
@@ -53,7 +663,57 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2004",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/g1fz7fmttdxt7",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 4839000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1956",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/ffy7lee8918sd",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 12615882,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2019",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/ff9wy75bmt9t7",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 12506468,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2018-01-01",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/enmy0gd8scp12",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9017415,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1991",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/e8qfqyesy2084",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1817000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1915",
+          "statVarIds": ["TotalPopulation"]
         },
         {
           "id": "dc/o/e3pxhqfmkjh41",
@@ -63,7 +723,67 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2010",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/d2tf0f8wcbn89",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1359200,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1908",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/cmdkt9dcrbgwg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 379300,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1859",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/cjz29sr95njzg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 601969,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1871",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/ces24pl6q9x5h",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 335800,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1835",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/c4xqz6c7flfb7",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 416400,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1868",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/bz606zh22rl52",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 462500,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1863",
+          "statVarIds": ["TotalPopulation"]
         },
         {
           "id": "dc/o/bh5sln07bej0d",
@@ -73,7 +793,167 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2012",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/bb3ef52bv2013",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9067808,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1992",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/b8xdc6j1rs039",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 10923762,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2006",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/b79hp51dyf6x3",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 10535681,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2004",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/9pjm18czx294h",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 11856578,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2012",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/9gkrtdvqf2kz3",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 12380664,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2017",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/8tt14070mvj52",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 2127200,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1928",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/742elnv2pje5g",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1345700,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1907",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/72j10mj0nxzfh",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 11503501,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2010",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/62cpvnwrbferg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1762700,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1914",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/4vjwhd5wbeygc",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 8111000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1982",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/3zpektcz73c2g",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 368800,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1856",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/383w9wm87rc7g",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 7658000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1976",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/2s10gs173d417",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 10386903,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2003",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/2pdezxnvt6bs2",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9411236,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1997",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/1gfxsy1n41lcg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1028200,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1920",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/0lqyvsysv0drg",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 12108257,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "2014",
+          "statVarIds": ["TotalPopulation"]
         },
         {
           "id": "dc/o/0l0fwkvvnd236",
@@ -83,7 +963,37 @@
           "measurementMethod": "UNData",
           "provenanceId": "dc/qct90y2",
           "observationDate": "2009",
-          "statVarIds": ["dc/yt717pee5ytx8"]
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/02xtpdqwjqdtf",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 1542900,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1923",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/02ehv4qjj1rcb",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 130000,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1750",
+          "statVarIds": ["TotalPopulation"]
+        },
+        {
+          "id": "dc/o/00gjrzgbkte3d",
+          "type": "Observation",
+          "measuredProp": "count",
+          "measuredValue": 9085457,
+          "measurementMethod": "WikidataPopulation",
+          "provenanceId": "dc/6p25cm",
+          "observationDate": "1995",
+          "statVarIds": ["TotalPopulation"]
         }
       ],
       "provenanceId": "dc/qct90y2"
