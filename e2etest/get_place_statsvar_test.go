@@ -45,12 +45,12 @@ func TestGetPlaceStatsVar(t *testing.T) {
 	if err != nil {
 		t.Errorf("could not GetPlaceStatsVar: %s", err)
 	}
-	for dcid, statsVars := range resp.Places {
-		if len(statsVars.Values) < want[dcid].minCount {
+	for dcid, place := range resp.Places {
+		if len(place.StatsVars) < want[dcid].minCount {
 			t.Errorf("%s has less than %d stats vars", dcid, want[dcid].minCount)
 		}
 		statsVarSet := map[string]bool{}
-		for _, statsVar := range statsVars.Values {
+		for _, statsVar := range place.StatsVars {
 			statsVarSet[statsVar] = true
 		}
 		for _, statsVar := range want[dcid].statsVars {

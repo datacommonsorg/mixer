@@ -231,11 +231,11 @@ func (s *Server) GetPlaceStatsVar(
 	if err != nil {
 		return nil, err
 	}
-	resp := pb.GetPlaceStatsVarResponse{Places: map[string]*pb.RepeatedString{}}
+	resp := pb.GetPlaceStatsVarResponse{Places: map[string]*pb.StatsVars{}}
 	for _, dcid := range dcids {
-		resp.Places[dcid] = &pb.RepeatedString{Values: []string{}}
+		resp.Places[dcid] = &pb.StatsVars{StatsVars: []string{}}
 		if dataMap[dcid] != nil {
-			resp.Places[dcid].Values = dataMap[dcid].([]string)
+			resp.Places[dcid].StatsVars = dataMap[dcid].([]string)
 		}
 	}
 	return &resp, nil

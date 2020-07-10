@@ -408,8 +408,8 @@ message SearchEntityResult {
   string name = 2;
 }
 
-message RepeatedString {
-  repeated string values = 1;
+message StatsVars {
+  repeated string statsVars = 1;
 }
 
 message GetPlaceStatsVarRequest {
@@ -418,7 +418,7 @@ message GetPlaceStatsVarRequest {
 }
 
 message GetPlaceStatsVarResponse {
-  map<string, RepeatedString> places = 8;
+  map<string, StatsVars> places = 1;
 }
 
 
