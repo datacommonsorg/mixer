@@ -34,43 +34,49 @@ Install protoc by following [this](http://google.github.io/proto-lens/installing
 
 Run the following code to get the proto dependency.
 
-    go get -u google.golang.org/protobuf/cmd/protoc-gen-go
-    go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
-    mkdir -p proto/google/api/
-    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto --output proto/google/api/annotations.proto
-    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto --output proto/google/api/http.proto
+```bash
+go get -u google.golang.org/protobuf/cmd/protoc-gen-go
+go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
+mkdir -p proto/google/api/
+curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto --output proto/google/api/annotations.proto
+curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto --output proto/google/api/http.proto
+```
 
 Generate protobuf code and out.pb (used for cloud endpoints deployment).
 
-    protoc \
-        --proto_path=proto \
-        --include_source_info \
-        --descriptor_set_out deployment/out.pb \
-        --go_out=. \
-        --go-grpc_out=. \
-        --go-grpc_opt=requireUnimplementedServers=false \
-        proto/mixer.proto
-
-## Run grpc server and examples locally
-
-    gcloud auth application-default login
-
-    go run main.go \
-      --bq_dataset=google.com:datcom-store-dev.dc_kg_2020_04_13_02_32_53 \
-      --bt_table=borgcron_2020_04_13_02_32_53 \
-      --bt_project=google.com:datcom-store-dev \
-      --bt_instance=prophet-cache \
-      --project_id=datcom-mixer \
-      --schema_path=deployment/mapping
-
-    cd examples
-    ./run_all.sh
+```bash
+protoc \
+    --proto_path=proto \
+    --include_source_info \
+    --descriptor_set_out deployment/out.pb \
+    --go_out=. \
+    --go-grpc_out=. \
+    --go-grpc_opt=requireUnimplementedServers=false \
+    proto/mixer.proto
+```
 
 ## E2E test locally.
 
-Install `cloud-build-local` following [the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally).
+Install `cloud-build-local` following [the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally), then run:
+
+```bash
 cloud-build-local --config=cloudbuild.yaml --dryrun=false .
+```
 
-## Build mixer docker image and submit to Google Cloud Registry
+## Run grpc server and examples locally
 
-    gcloud builds submit --tag gcr.io/datcom-mixer/go-grpc-mixer:<TAG> .
+```bash
+gcloud auth application-default login
+
+go run main.go \
+    --bq_dataset=google.com:datcom-store-dev.dc_kg_2020_04_13_02_32_53 \
+    --bt_table=borgcron_2020_04_13_02_32_53 \
+    --bt_project=google.com:datcom-store-dev \
+    --bt_instance=prophet-cache \
+    --project_id=datcom-mixer \
+    --schema_path=deployment/mapping
+
+# Open a new shell
+cd examples/get_place_obs
+go run main.go
+```
