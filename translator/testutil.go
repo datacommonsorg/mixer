@@ -21,6 +21,9 @@ import (
 	"github.com/datacommonsorg/mixer/base"
 )
 
+// DB is the database name.
+const DB = "dc_v3"
+
 // ReadTestMapping reads the testing schema mapping files into list of Mapping structs.
 func readTestMapping(t *testing.T, files []string) []*base.Mapping {
 	mappings := []*base.Mapping{}
@@ -29,7 +32,7 @@ func readTestMapping(t *testing.T, files []string) []*base.Mapping {
 		if err != nil {
 			t.Fatalf("reading test schema mapping file: %s", err)
 		}
-		mapping, err := ParseMapping(string(mappingStr))
+		mapping, err := ParseMapping(string(mappingStr), DB)
 		if err != nil {
 			t.Fatalf("parsing test schema mapping file: %s", err)
 		}

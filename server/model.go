@@ -114,4 +114,5 @@ type Metadata struct {
 	InArcInfo   map[string][]translator.InArcInfo
 	SubTypeMap  map[string]string
 	ContainedIn map[util.TypePair][]string
+	Bq          string
 }

@@ -39,7 +39,6 @@ type Server struct {
 	btTable  *bigtable.Table
 	memcache *Memcache
 	metadata *Metadata
-	bq       string
 }
 
 // ReadBranchCacheFolder reads branch cache folder from GCS.
@@ -62,7 +61,7 @@ func ReadBranchCacheFolder(
 }
 
 // NewMetadata initialize the metadata for translator.
-func NewMetadata(schemaPath string) (*Metadata, error) {
+func NewMetadata(bqDataset string) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -74,6 +73,7 @@ func NewMetadata(schemaPath string) (*Metadata, error) {
 	if err != nil {
 		return nil, err
 	}
+	schemaPath := path.Join(path.Dir(filename), "../translator/mapping/")
 	files, err := ioutil.ReadDir(schemaPath)
 	if err != nil {
 		return nil, err
@@ -85,7 +85,7 @@ func NewMetadata(schemaPath string) (*Metadata, error) {
 			if err != nil {
 				return nil, err
 			}
-			mapping, err := translator.ParseMapping(string(mappingStr))
+			mapping, err := translator.ParseMapping(string(mappingStr), bqDataset)
 			if err != nil {
 				return nil, err
 			}
@@ -94,7 +94,8 @@ func NewMetadata(schemaPath string) (*Metadata, error) {
 	}
 	outArcInfo := map[string]map[string][]translator.OutArcInfo{}
 	inArcInfo := map[string][]translator.InArcInfo{}
-	return &Metadata{mappings, outArcInfo, inArcInfo, subTypeMap, containedIn}, nil
+	return &Metadata{
+		mappings, outArcInfo, inArcInfo, subTypeMap, containedIn, bqDataset}, nil
 }
 
 // NewBtTable creates a new bigtable.Table instance.
@@ -153,7 +154,6 @@ func NewServer(
 	bqClient *bigquery.Client,
 	btTable *bigtable.Table,
 	memcache *Memcache,
-	metadata *Metadata,
-	bq string) *Server {
-	return &Server{bqClient, btTable, memcache, metadata, bq}
+	metadata *Metadata) *Server {
+	return &Server{bqClient, btTable, memcache, metadata}
 }

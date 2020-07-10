@@ -66,7 +66,9 @@ func TestQuery(t *testing.T) {
 				?o observationDate ?date .
 				?o unit ?unit .
 				?o meanValue ?mean .
-			}`,
+			}
+			ORDER BY ASC(?date)
+			`,
 			"weather2.json",
 		},
 		{
@@ -85,7 +87,7 @@ func TestQuery(t *testing.T) {
 			"unemployment.json",
 		},
 		{
-			`SELECT ?a WHERE {?a typeOf RaceCodeEnum}`,
+			`SELECT ?a WHERE {?a typeOf RaceCodeEnum} ORDER BY ASC(?a)`,
 			"race_code_enum.json",
 		},
 	} {

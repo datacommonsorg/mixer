@@ -174,9 +174,7 @@ func TestParseMapping(t *testing.T) {
 		wantErr     bool
 	}{
 		{
-			`Database: dc_v3
-
-			 Node: E:Source->E1
+			`Node: E:Source->E1
 			 typeOf: Source
 			 dcid: C:Source->id
 			 functionalDeps: dcid`,
@@ -200,9 +198,7 @@ func TestParseMapping(t *testing.T) {
 			false,
 		},
 		{
-			`Database: dc_v3
-
-			 Node: E:Triple->E1
+			`Node: E:Triple->E1
 			 dcid: C:Triple->Col.subject_id
 			 C:Triple->Col.predicate: E:Triple->E2
 			 C:Triple->Col.predicate: C:Triple->Col.object_value`,
@@ -226,9 +222,7 @@ func TestParseMapping(t *testing.T) {
 			false,
 		},
 		{
-			`Database: dc_v3
-
-			 Node: E:Place->E1
+			`Node: E:Place->E1
 			 dcid: C:Place->Col.dcid
 			 # Next entity
 			 Node: E:Place->E2
@@ -248,9 +242,7 @@ func TestParseMapping(t *testing.T) {
 			false,
 		},
 		{
-			`Database: dc_v3
-
-			 Node: E:MonthlyWeather->E1
+			`Node: E:MonthlyWeather->E1
 			 typeOf: WeatherObservation
 			 measuredProperty: "barometricPressure"
 			 observationPeriod: "P1M"`,
@@ -274,7 +266,7 @@ func TestParseMapping(t *testing.T) {
 			false,
 		},
 	} {
-		gotMapping, err := ParseMapping(c.mcf)
+		gotMapping, err := ParseMapping(c.mcf, "dc_v3")
 		if c.wantErr {
 			if err == nil {
 				t.Errorf("ParseMapping(%s) = nil, want error", c.mcf)

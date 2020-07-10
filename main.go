@@ -34,7 +34,6 @@ var (
 	btProject  = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
 	btInstance = flag.String("bt_instance", "", "BigTable instance.")
 	projectID  = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	schemaPath = flag.String("schema_path", "/mixer/config/mapping", "Path to the schema mapping directory.")
 	port       = flag.String("port", ":12345", "Port on which to run the server.")
 )
 
@@ -62,7 +61,7 @@ func main() {
 		log.Fatalf("failed to create BigTable client: %v", err)
 	}
 	// Metadata.
-	metadata, err := server.NewMetadata(*schemaPath)
+	metadata, err := server.NewMetadata(*bqDataset)
 	if err != nil {
 		log.Fatalf("failed to create metadata: %v", err)
 	}
@@ -78,7 +77,7 @@ func main() {
 		log.Fatalf("failed to create memcache from gcs: %v", err)
 	}
 	// Create server object
-	s := server.NewServer(bqClient, btTable, memcache, metadata, *bqDataset)
+	s := server.NewServer(bqClient, btTable, memcache, metadata)
 	// Subscribe to cache update
 	err = s.SubscribeBranchCacheUpdate(
 		ctx, pubsubProject, branchCacheBucket, subscriberPrefix, pubsubTopic)

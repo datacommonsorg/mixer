@@ -1,5 +1,3 @@
-Database: BQ_DATASET
-
 Node: E:StatisticalPopulation->E1
 typeOf: StatisticalPopulation
 dcid: C:StatisticalPopulation->id

@@ -87,7 +87,7 @@ func TestGetPopObs(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil, "")
+	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil)
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
@@ -179,7 +179,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	// Test
 	memcache := Memcache{}
 	memcache.Update(branchData)
-	s := NewServer(nil, btTable, &memcache, nil, "")
+	s := NewServer(nil, btTable, &memcache, nil)
 
 	var (
 		resultProto, expectProto pb.PopObsPlace
@@ -277,7 +277,7 @@ func TestGetPlaceObs(t *testing.T) {
 	var (
 		resultProto, expectProto pb.PopObsCollection
 	)
-	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil, "")
+	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil)
 
 	// Base cache only.
 	in := &pb.GetPlaceObsRequest{
@@ -358,7 +358,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	// Test
 	memcache := Memcache{}
 	memcache.Update(branchData)
-	s := NewServer(nil, btTable, &memcache, nil, "")
+	s := NewServer(nil, btTable, &memcache, nil)
 	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",

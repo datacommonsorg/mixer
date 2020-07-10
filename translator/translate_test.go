@@ -941,11 +941,11 @@ func TestTranslatePew(t *testing.T) {
 				?response inLanguage "Spanish"
 			}
 			`,
-			"SELECT _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Name AS name " +
-				"FROM `datcom-pew-test.csv_tables.PewReligiousLandscapeSurvey2007Response` AS _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Response_1 " +
-				"JOIN `datcom-pew-test.csv_tables.PewReligiousLandscapeSurvey2007Response` AS _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Response_0 " +
-				"ON _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Response_1.SampleUnit_Dcid = _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Dcid " +
-				"WHERE _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Response_1.SurveyResponse_InLanguage = \"Spanish\"",
+			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Name AS name " +
+				"FROM `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_1 " +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_0 " +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SampleUnit_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Dcid " +
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SurveyResponse_InLanguage = \"Spanish\"",
 		},
 		{
 			"option name",
@@ -959,11 +959,11 @@ func TestTranslatePew(t *testing.T) {
 				?roption name ?roptionname
 			}
 			`,
-			"SELECT _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Name AS roptionname " +
-				"FROM `datcom-pew-test.csv_tables.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_0 " +
-				"JOIN `datcom-pew-test.csv_tables.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_1 " +
-				"ON _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid = _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid " +
-				"WHERE _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = \"SurveyItem/Pew_ContinentalUS_ReligiousLandscapeSurvey_2007_protfam\"",
+			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Name AS roptionname " +
+				"FROM `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0 " +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1 " +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid " +
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = \"SurveyItem/Pew_ContinentalUS_ReligiousLandscapeSurvey_2007_protfam\"",
 		},
 		{
 			"qcode",
@@ -977,13 +977,13 @@ func TestTranslatePew(t *testing.T) {
 				?roption identifier "0"
 			}
 			`,
-			"SELECT _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Name AS qcode " +
-				"FROM `datcom-pew-test.csv_tables.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_1 " +
-				"JOIN `datcom-pew-test.csv_tables.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_0 " +
-				"ON _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid = _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid " +
-				"JOIN `datcom-pew-test.csv_tables.PewReligiousLandscapeSurvey2007Items` AS _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Items_0 " +
-				"ON _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Dcid " +
-				"WHERE _datcom_pew_test_csv_tables_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Identifier = \"0\"",
+			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Name AS qcode " +
+				"FROM `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1 " +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0 " +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid " +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Items` AS _dc_v3_PewReligiousLandscapeSurvey2007Items_0 " +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Dcid " +
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Identifier = \"0\"",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)

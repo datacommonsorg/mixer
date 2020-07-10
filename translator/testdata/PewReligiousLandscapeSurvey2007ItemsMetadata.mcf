@@ -1,5 +1,3 @@
-Database: datcom-pew-test.csv_tables
-
 Node: E:PewReligiousLandscapeSurvey2007ItemsMetadata->E1
 typeOf: ResponseOption
 dcid: C:PewReligiousLandscapeSurvey2007ItemsMetadata->ResponseOption_Dcid
