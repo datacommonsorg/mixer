@@ -408,6 +408,24 @@ message SearchEntityResult {
   string name = 2;
 }
 
+// StatsVars represent a list of statistical variable dcids.
+message StatsVars {
+  repeated string statsVars = 1;
+}
+
+// Request message for GetPlaceStats API.
+message GetPlaceStatsVarRequest {
+  // DCIDs of the places.
+  repeated string dcids = 1;
+}
+
+// Response message for GetPlaceStats API.
+message GetPlaceStatsVarResponse {
+  // A map from place dcid to a list of statistical variable dcids.
+  map<string, StatsVars> places = 1;
+}
+
+
 // TODO(wsws): Refactor all these "won't persist to cache" fields across caches
 // into a single TemporaryFields message, and clear just that "tmp_data" field
 // before persistence.
@@ -763,5 +781,11 @@ service Mixer {
   // Given a text search query, return all entities matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
     option (google.api.http) = { get: "/search" };
+  }
+
+  // Give a list of place dcids, return all the statistical variables for each
+  // place.
+  rpc GetPlaceStatsVar(GetPlaceStatsVarRequest) returns (GetPlaceStatsVarResponse) {
+    option (google.api.http) = { get: "/place/stats-var" };
   }
 }

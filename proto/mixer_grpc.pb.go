@@ -61,6 +61,9 @@ type MixerClient interface {
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
+	// Give a list of place dcids, return all the statistical variables for each
+	// place.
+	GetPlaceStatsVar(ctx context.Context, in *GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*GetPlaceStatsVarResponse, error)
 }
 
 type mixerClient struct {
@@ -260,6 +263,15 @@ func (c *mixerClient) Search(ctx context.Context, in *SearchRequest, opts ...grp
 	return out, nil
 }
 
+func (c *mixerClient) GetPlaceStatsVar(ctx context.Context, in *GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*GetPlaceStatsVarResponse, error) {
+	out := new(GetPlaceStatsVarResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatsVar", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -308,6 +320,9 @@ type MixerServer interface {
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
+	// Give a list of place dcids, return all the statistical variables for each
+	// place.
+	GetPlaceStatsVar(context.Context, *GetPlaceStatsVarRequest) (*GetPlaceStatsVarResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -376,6 +391,9 @@ func (*UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (
 }
 func (*UnimplementedMixerServer) Search(context.Context, *SearchRequest) (*SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
+}
+func (*UnimplementedMixerServer) GetPlaceStatsVar(context.Context, *GetPlaceStatsVarRequest) (*GetPlaceStatsVarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatsVar not implemented")
 }
 
 func RegisterMixerServer(s *grpc.Server, srv MixerServer) {
@@ -760,6 +778,24 @@ func _Mixer_Search_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_GetPlaceStatsVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlaceStatsVarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetPlaceStatsVar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/GetPlaceStatsVar",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetPlaceStatsVar(ctx, req.(*GetPlaceStatsVarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Mixer_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
@@ -847,6 +883,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Search",
 			Handler:    _Mixer_Search_Handler,
+		},
+		{
+			MethodName: "GetPlaceStatsVar",
+			Handler:    _Mixer_GetPlaceStatsVar_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
