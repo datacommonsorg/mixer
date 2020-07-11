@@ -12,11 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#!/bin/bash
 
-
-
-
-gcloud endpoints services deploy out.pb api_config.yaml
-
-kubectl apply -f deployment.yaml
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: mixer-certificate
+  namespace: mixer
+spec:
+  domains:
+    - $DOMAIN

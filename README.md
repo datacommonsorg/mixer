@@ -48,7 +48,6 @@ Generate protobuf code and out.pb (used for cloud endpoints deployment).
 protoc \
     --proto_path=proto \
     --include_source_info \
-    --descriptor_set_out deployment/out.pb \
     --go_out=. \
     --go-grpc_out=. \
     --go-grpc_opt=requireUnimplementedServers=false \
