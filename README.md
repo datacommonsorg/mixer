@@ -2,7 +2,8 @@
 
 ## Development Process
 
-In https://github.com/datacommonsorg/mixer, click on "Fork" button to fork the repo.
+In https://github.com/datacommonsorg/mixer, click on "Fork" button to fork the
+repo.
 
 Clone your forked repo to your desktop.
 
@@ -30,7 +31,8 @@ Wait for approval of the Pull Request and merge the change.
 
 ## Generate Protobuf go code and out.pb
 
-Install protoc by following [this](http://google.github.io/proto-lens/installing-protoc.html).
+Install protoc by following
+[this](http://google.github.io/proto-lens/installing-protoc.html).
 
 Run the following code to get the proto dependency.
 
@@ -56,7 +58,9 @@ protoc \
 
 ## E2E test locally.
 
-Install `cloud-build-local` following [the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally), then run:
+Install `cloud-build-local` following
+[the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally), then
+run:
 
 ```bash
 cloud-build-local --config=cloudbuild.yaml --dryrun=false .
