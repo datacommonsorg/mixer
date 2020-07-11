@@ -18,12 +18,6 @@
 
 steps:
 
-# Run tests
-- id: run-test
-  name: golang
-  env: ['GO111MODULE=on']
-  args: ['go', 'test', './...']
-
 # Prepare go package and proto dependency
 - id: prepare-proto
   name: golang
@@ -56,6 +50,12 @@ steps:
       --go-grpc_out=. \
       --go-grpc_opt=requireUnimplementedServers=false \
       proto/mixer.proto
+
+# Run tests
+- id: run-test
+  name: golang
+  env: ['GO111MODULE=on']
+  args: ['go', 'test', './...']
 
 # Push the mixer docker image to container registry
 - id: push-docker-image

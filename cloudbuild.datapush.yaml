@@ -14,6 +14,39 @@
 
 steps:
 
+# Prepare go package and proto dependency
+- id: prepare-proto
+  name: golang
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    go get google.golang.org/protobuf/cmd/protoc-gen-go
+    go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+    mkdir -p proto/google/api/
+    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto \
+         --output proto/google/api/annotations.proto
+    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto \
+         --output proto/google/api/http.proto
+
+# Compile protobuf and grpc descriptor
+- id: compile-proto
+  name: gcr.io/datcom-ci/protoc
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    protoc \
+      --proto_path=proto \
+      --plugin=protoc-gen-go=/go/bin/protoc-gen-go \
+      --plugin=protoc-gen-go-grpc=/go/bin/protoc-gen-go-grpc \
+      --include_source_info \
+      --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
+      --go_out=. \
+      --go-grpc_out=. \
+      --go-grpc_opt=requireUnimplementedServers=false \
+      proto/mixer.proto
+
 - id: run-test
   name: golang
   env: ['GO111MODULE=on']
@@ -36,3 +69,8 @@ steps:
     git add /tmp/deployment/mixer/staging/*
     git commit -m "Update staging mixer data version at commit https://github.com/datacommonsorg/mixer/commit/$SHORT_SHA"
     git push origin master
+
+options:
+  volumes:
+  - name: go-modules
+    path: /go
