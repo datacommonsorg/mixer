@@ -21,13 +21,7 @@ steps:
   args:
   - -c
   - |
-    go get google.golang.org/protobuf/cmd/protoc-gen-go
-    go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
-    mkdir -p proto/google/api/
-    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto \
-         --output proto/google/api/annotations.proto
-    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto \
-         --output proto/google/api/http.proto
+    ./prepare-proto.sh
 
 # Compile protobuf and grpc descriptor
 - id: compile-proto
