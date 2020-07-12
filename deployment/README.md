@@ -109,5 +109,5 @@ Endpoints.
 
 ## Binary Registry
 
-- Mixer docker image: gcr.io/datcom-ci/datacommons-mixer
-- Mixer grpc descriptor: gs://artifacts.datcom-ci.appspot.com/mixer-grpc/
+-   Mixer docker image: gcr.io/datcom-ci/datacommons-mixer
+-   Mixer grpc descriptor: gs://artifacts.datcom-ci.appspot.com/mixer-grpc/
