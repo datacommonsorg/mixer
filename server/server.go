@@ -68,11 +68,6 @@ func NewMetadata(bqDataset string) (*Metadata, error) {
 	if err != nil {
 		return nil, err
 	}
-	containedIn, err := util.GetContainedIn(
-		path.Join(path.Dir(filename), "../type_relation.json"))
-	if err != nil {
-		return nil, err
-	}
 	schemaPath := path.Join(path.Dir(filename), "../translator/mapping/")
 	files, err := ioutil.ReadDir(schemaPath)
 	if err != nil {
@@ -95,7 +90,7 @@ func NewMetadata(bqDataset string) (*Metadata, error) {
 	outArcInfo := map[string]map[string][]translator.OutArcInfo{}
 	inArcInfo := map[string][]translator.InArcInfo{}
 	return &Metadata{
-		mappings, outArcInfo, inArcInfo, subTypeMap, containedIn, bqDataset}, nil
+		mappings, outArcInfo, inArcInfo, subTypeMap, bqDataset}, nil
 }
 
 // NewBtTable creates a new bigtable.Table instance.

@@ -82,7 +82,7 @@ Endpoints.
     kubectl create namespace mixer
     # Mount service account secrete created above to the GKE instance
     kubectl create secret generic mixer-robot-key \
-      --from-file=/tmp/key.json --namespace=mixer
+      --from-file=/tmp/mixer-robot-key.json --namespace=mixer
     # Mount nginx config
     kubectl create configmap nginx-config --from-file=nginx.conf --namespace=mixer
     ```
