@@ -17,7 +17,6 @@ package server
 import (
 	"github.com/datacommonsorg/mixer/base"
 	"github.com/datacommonsorg/mixer/translator"
-	"github.com/datacommonsorg/mixer/util"
 )
 
 // Triple represents a triples entry in the BT triples cache.
@@ -114,10 +113,9 @@ type PlaceStatsVar struct {
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {
-	Mappings    []*base.Mapping
-	OutArcInfo  map[string]map[string][]translator.OutArcInfo
-	InArcInfo   map[string][]translator.InArcInfo
-	SubTypeMap  map[string]string
-	ContainedIn map[util.TypePair][]string
-	Bq          string
+	Mappings   []*base.Mapping
+	OutArcInfo map[string]map[string][]translator.OutArcInfo
+	InArcInfo  map[string][]translator.InArcInfo
+	SubTypeMap map[string]string
+	Bq         string
 }
