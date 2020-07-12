@@ -12,23 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# The configuration schema is defined by service.proto file
-# https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
-type: google.api.Service
-config_version: 3
+#!/bin/bash
 
-# Name of the service configuration.
-#_d|name: datacommons.endpoints.PROJECT_ID.cloud.goog
-#_c|name: DOMAIN
-
-# API title to appear in the user interface (Google Cloud Console).
-title: TITLE
-apis:
-- name: datacommons.Mixer
-
-# Endpoints DNS
-endpoints:
-#_d|- name: datacommons.endpoints.PROJECT_ID.cloud.goog
-#_d|  target: "IP_ADDRESS"
-#_c|- name: DOMAIN
-#_c|  target: "IP_ADDRESS"
+go get google.golang.org/protobuf/cmd/protoc-gen-go
+go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+mkdir -p proto/google/api/
+curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto \
+      --output proto/google/api/annotations.proto
+curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto \
+      --output proto/google/api/http.proto

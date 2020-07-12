@@ -1,48 +1,108 @@
 # Deploy Data Commons Mixer to GKE and Google Endpoints
 
-## Do you need to update BT and BQ?
+Data Commmons Mixer is an API server hosted on GKE and exposed via Cloud
+Endpoints.
 
-If yes, update (prod|staging)_bt_table.txt and (prod|staging)_bq_dataset.txt.
-And please don't forget to get these change into master repository.
+## One Time Setup
 
-## Build & Deploy
+-   [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+    with project id "project-id". Install the
+    [Google Cloud SDK](https://cloud.google.com/sdk/install).
 
-Create a Google Cloud Platform (GCP) project and run the following command where:
+-   Set the project id as enviornment variable and authenticate the following
+    steps.
 
-`{PROJECT_ID}` refers to the GCP project id.
+    ```bash
+    export PROJECT_ID="project-id"
+    gcloud auth login
+    gcloud config set project $PROJECT_ID
+    ```
 
-`{DOMAIN}` is optional, and only need to be set if you want to expose the endpoints from your custom domain.
+-   Create a service account that can interact with Cloud APIs
 
-To deploy the project, run the command below.
+    ```bash
+    export SERVICE_ACCOUNT_NAME="mixer-robot"
+    export SERVICE_ACCOUNT="$SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com"
+    # Create service account
+    gcloud beta iam service-accounts create $SERVICE_ACCOUNT_NAME \
+      --description "Service account for mixer" \
+      --display-name "mixer-robot"
+    # Enable service account
+    gcloud alpha iam service-accounts enable $SERVICE_ACCOUNT
+    # Allow service account to access Bigtable and Bigquery
+    gcloud projects add-iam-policy-binding $PROJECT_ID \
+      --member serviceAccount:$SERVICE_ACCOUNT \
+      --role roles/bigtable.reader
+    gcloud projects add-iam-policy-binding $PROJECT_ID \
+      --member serviceAccount:$SERVICE_ACCOUNT \
+      --role roles/bigquery.user
+    # This key will be used later by GKE
+    gcloud iam service-accounts keys create /tmp/mixer-robot-key.json \
+      --iam-account $SERVICE_ACCOUNT
+    ```
 
-```shell
-./gcp.sh {PROJECT_ID}
-./gke.sh {PROJECT_ID} {DOMAIN}
-```
-./gke.sh should be run even if new mixer image is not pushed. If new mixer image is not being pushed use the image_id that is in prod.
+-   Create a new managed Google Cloud Service
 
-## Build New Image
+    ```bash
+    # Enable Service Control API
+    gcloud services enable servicecontrol.googleapis.com
+    # Create a static IP address for the API
+    gcloud compute addresses create mixer-ip --global
+    # Record the IP address. This will be needed to set the endpointsapi.yaml
+    IP=$(gcloud compute addresses list --global --filter='name:mixer-ip' --format='value(ADDRESS)')
+    # Set the domain for endpoints. This could be a custom domain or default domain from Endpoints like xxx.endpoints.$PROJECT_ID.cloud.goog
+    export DOMAIN="<replace-me-with-your-domain>"
+    # Create a blank service
+    cat <<EOT > endpointsapi.yaml
+    type: google.api.Service
+    config_version: 3
+    name: $DOMAIN
+    producer_project_id: $PROJECT_ID
+    EOT
+    # Deploy the blank server
+    gcloud endpoints services deploy endpointsapis.yaml
+    ```
 
-Data Commons mixer Docker image registry url: `gcr.io/datcom-mixer/go-grpc-mixer:{TAG}`.
-Ask Data Commons team to obtain the TAG number.
-To build a new image, go to the top level of this git repo and un the command below.
-Tag number should be larger than any existing one.
-Then update the docker image url in docker_image.txt.
+-   Create a GKE cluster
 
-```
-gcloud builds submit --tag gcr.io/datcom-mixer/go-grpc-mixer:<TAG>
-```
+    ```bash
+    gcloud components install kubectl
+    gcloud services enable container.googleapis.com
+    export CLUSTER_NAME="mixer-cluster"
+    gcloud container clusters create $CLUSTER_NAME \
+      --zone=us-central1-c \
+      --machine-type=custom-4-26624
+    gcloud container clusters get-credentials $CLUSTER_NAME
+    ```
 
-## Update Bigtable or BigQuery dataset.
-If you need to point to a different Bigtable table or BigQuery dataset, update the corresponding bt_table.txt or bq_dataset.txt.
-Both of them have two versions, prefixed with prod_ or staging_.
+-   Setup GKE instance
 
-## (Optional) Use custom domain
+    ```bash
+    # Create namespace
+    kubectl create namespace mixer
+    # Mount service account secrete created above to the GKE instance
+    kubectl create secret generic mixer-robot-key \
+      --from-file=/tmp/key.json --namespace=mixer
+    # Mount nginx config
+    kubectl create configmap nginx-config --from-file=nginx.conf --namespace=mixer
+    ```
 
-Verify your domain as described in <https://cloud.google.com/endpoints/docs/openapi/verify-domain-name>
+-   Create SSL certificate for the Cloud Endpoints Domain.
 
-Visit your domain provider account and edit your domain settings. You must create an A record that contains your API name, for example, myapi.example.com, with the external IP address in deployment.yaml.
+    ```bash
+    perl -i -pe's/DOMAIN/<replace-me-with-your-domain>/g' certificate.yaml
+    # Deploy the certificate
+    kubectl apply -f certificate.yaml
+    ```
 
-## Accessing API
+-   Create the ingress for GKE.
 
-Once successfully deployed, the endpoints is available at: `http://datacommons.endpoints.{PROJECT_ID}.cloud.goog/`. If `{DOMAIN}` is used in the steps above, the endpoints will also be accessible in the custom domain.
+    ```bash
+    kubectl apply -f ingress-ssl.yaml
+    ```
+
+-   Deploy the GKE service.
+
+    ```bash
+    kubectl apply -f service.yaml
+    ```

@@ -8,9 +8,6 @@
 # Test binary, built with `go test -c`
 *.test
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
 ### Go Patch ###
 /vendor/
 /Godeps/
@@ -43,14 +40,8 @@ Temporary Items
 .apdisk
 
 # Build and Config Files
-/mapping
-/deployment/versioned_mapping
 proto/google/
-api_config.yaml
-deployment.yaml
-certificate.yaml
-custom-certificate.yaml
-key.json
+proto/*.go
 
 # Sphinx documentation
 docs/_build/

@@ -1,7 +1,0 @@
-# Test the module.
-steps:
-
-- id: go_test
-  name: golang
-  env: ['GO111MODULE=on']
-  args: ['go', 'test', './...']
