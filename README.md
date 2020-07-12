@@ -29,41 +29,31 @@ Then in your forked repo, can send a Pull Request.
 
 Wait for approval of the Pull Request and merge the change.
 
-## Generate Protobuf go code and out.pb
+## Generate Protobuf go code
 
 Install protoc by following
 [this](http://google.github.io/proto-lens/installing-protoc.html).
 
-Run the following code to get the proto dependency.
+Run the following code to generate golang proto files.
 
 ```bash
-go get -u google.golang.org/protobuf/cmd/protoc-gen-go
-go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
-mkdir -p proto/google/api/
-curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto --output proto/google/api/annotations.proto
-curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto --output proto/google/api/http.proto
-```
-
-Generate protobuf code and out.pb (used for cloud endpoints deployment).
-
-```bash
+./prepare-proto.sh
 protoc \
     --proto_path=proto \
-    --include_source_info \
     --go_out=. \
     --go-grpc_out=. \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/mixer.proto
 ```
 
-## E2E test locally.
+## E2E test locally
 
 Install `cloud-build-local` following
 [the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally), then
 run:
 
 ```bash
-cloud-build-local --config=cloudbuild.yaml --dryrun=false .
+cloud-build-local --config=cloudbuild.test.yaml --dryrun=false .
 ```
 
 ## Run grpc server and examples locally
@@ -72,12 +62,11 @@ cloud-build-local --config=cloudbuild.yaml --dryrun=false .
 gcloud auth application-default login
 
 go run main.go \
-    --bq_dataset=google.com:datcom-store-dev.dc_kg_2020_04_13_02_32_53 \
-    --bt_table=borgcron_2020_04_13_02_32_53 \
+    --bq_dataset=$(head -1 deployment/bigquery.txt) \
+    --bt_table=$(head -1 deployment/bigtable.txt) \
     --bt_project=google.com:datcom-store-dev \
     --bt_instance=prophet-cache \
-    --project_id=datcom-mixer \
-    --schema_path=deployment/mapping
+    --project_id=datcom-mixer-staging
 
 # Open a new shell
 cd examples/get_place_obs

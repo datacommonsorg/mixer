@@ -106,3 +106,8 @@ Endpoints.
     ```bash
     kubectl apply -f service.yaml
     ```
+
+## Binary Registry
+
+- Mixer docker image: gcr.io/datcom-ci/datacommons-mixer
+- Mixer grpc descriptor: gs://artifacts.datcom-ci.appspot.com/mixer-grpc/
