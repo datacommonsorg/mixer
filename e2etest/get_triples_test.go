@@ -103,7 +103,7 @@ func TestGetTriples(t *testing.T) {
 		if c.limit > 0 {
 			for idx, place := range c.dcids {
 				count := len(result[place])
-				if count != c.count[idx] {
+				if count < c.count[idx] {
 					t.Errorf(
 						"Len of triples for %s expect %d, got %d",
 						place, c.count[idx], count)

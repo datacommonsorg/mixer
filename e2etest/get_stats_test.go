@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"math"
 	"path"
 	"runtime"
 	"testing"
@@ -104,11 +105,21 @@ func TestGetStats(t *testing.T) {
 		if c.partialMatch {
 			for geo := range expected {
 				for date := range expected[geo].Data {
-					if expected[geo].Data[date] != result[geo].Data[date] {
-						t.Errorf("%s, %s, %s want: %f, got: %f", c.statsVar, geo,
-							date, expected[geo].Data[date], result[geo].Data[date],
-						)
-						continue
+					got := result[geo].Data[date]
+					want := expected[geo].Data[date]
+					if c.statsVar == "NYTCovid19CumulativeCases" {
+						// Allow approximate match for NYT covid data.
+						if math.Abs(float64(got)/float64(want)-1) > 0.05 {
+							t.Errorf(
+								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+							continue
+						}
+					} else {
+						if want != got {
+							t.Errorf(
+								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+							continue
+						}
 					}
 				}
 			}
