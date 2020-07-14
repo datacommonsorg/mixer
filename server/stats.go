@@ -82,8 +82,8 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 			result[dcid] = tmp[dcid].(*pb.ObsTimeSeries)
 		}
 	}
-	// Read data from base cache if no branch cache data is found.
-	// This is valid since branch cache is a superset of base cache.
+	// For each place, if the data is missing in branch cache, fetch it from the
+	// base cache in Bigtable.
 	if len(result) < len(placeDcids) {
 		extraDcids := []string{}
 		for _, dcid := range placeDcids {
@@ -101,7 +101,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	}
 
 	// Fill missing place data and result result
-	for _, dcid := range in.GetPlace() {
+	for _, dcid := range placeDcids {
 		if _, ok := result[dcid]; !ok {
 			result[dcid] = nil
 		}
