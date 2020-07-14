@@ -43,6 +43,7 @@ func TestGetPropertyValues(t *testing.T) {
 		property   string
 		direction  string
 		valueType  string
+		limit      int32
 	}{
 		{
 			"name.json",
@@ -50,6 +51,7 @@ func TestGetPropertyValues(t *testing.T) {
 			"name",
 			"out",
 			"",
+			0,
 		},
 		{
 			"contained_in_place.json",
@@ -57,6 +59,7 @@ func TestGetPropertyValues(t *testing.T) {
 			"containedInPlace",
 			"",
 			"City",
+			0,
 		},
 		{
 			"location.json",
@@ -64,6 +67,15 @@ func TestGetPropertyValues(t *testing.T) {
 			"location",
 			"",
 			"Election",
+			0,
+		},
+		{
+			"limit.json",
+			[]string{"country/USA"},
+			"name",
+			"out",
+			"",
+			1,
 		},
 	} {
 		req := &pb.GetPropertyValuesRequest{
@@ -71,6 +83,9 @@ func TestGetPropertyValues(t *testing.T) {
 			Property:  c.property,
 			Direction: c.direction,
 			ValueType: c.valueType,
+		}
+		if c.limit > 0 {
+			req.Limit = c.limit
 		}
 		resp, err := client.GetPropertyValues(ctx, req)
 		if err != nil {
