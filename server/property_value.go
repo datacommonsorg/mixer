@@ -171,7 +171,7 @@ func trimNodes(nodes []*Node, typ string, limit int) []*Node {
 				}
 			}
 		}
-		if len(result) == limit {
+		if limit > 0 && len(result) == limit {
 			break
 		}
 	}
