@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"math"
 	"path"
 	"runtime"
@@ -31,7 +32,13 @@ import (
 
 func TestGetStats(t *testing.T) {
 	ctx := context.Background()
-	client, err := setup(server.NewMemcache(map[string][]byte{}))
+
+	memcacheData, err := loadMemcache()
+	if err != nil {
+		t.Fatalf("Failed to load memcache %v", err)
+	}
+
+	client, err := setup(server.NewMemcache(memcacheData))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -54,7 +61,7 @@ func TestGetStats(t *testing.T) {
 			false,
 		},
 		{
-			"NYTCovid19CumulativeCases",
+			"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
 			[]string{"country/USA", "geoId/06", "geoId/06085"},
 			"NYTCovid19CumulativeCases.json",
 			true,
@@ -91,6 +98,7 @@ func TestGetStats(t *testing.T) {
 		}
 		var result map[string]*pb.ObsTimeSeries
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+		log.Println(resp.GetPayload())
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
@@ -105,9 +113,12 @@ func TestGetStats(t *testing.T) {
 		if c.partialMatch {
 			for geo := range expected {
 				for date := range expected[geo].Data {
+					if result[geo] == nil {
+						t.Fatalf("result does not have data for geo %s", geo)
+					}
 					got := result[geo].Data[date]
 					want := expected[geo].Data[date]
-					if c.statsVar == "NYTCovid19CumulativeCases" {
+					if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
 						// Allow approximate match for NYT covid data.
 						if math.Abs(float64(got)/float64(want)-1) > 0.05 {
 							t.Errorf(
