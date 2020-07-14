@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"math"
 	"path"
 	"runtime"
@@ -98,7 +97,6 @@ func TestGetStats(t *testing.T) {
 		}
 		var result map[string]*pb.ObsTimeSeries
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		log.Println(resp.GetPayload())
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
