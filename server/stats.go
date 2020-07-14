@@ -41,6 +41,7 @@ var statsRanking = map[rankKey]int{
 	{"WorldDevelopmentIndicators", ""}:                 3, // Population
 	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:            0, // Unemployment Rate
 	{"EurostatData", ""}:                               1, // Unemployment Rate
+	{"NYT_COVID19", "NYT_COVID19_GitHub"}:              0, // Covid
 }
 
 const lowestRank = 100
@@ -51,7 +52,8 @@ const maxChannelSize = 50
 // GetStats implements API for Mixer.GetStats.
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {
-	if len(in.GetPlace()) == 0 || in.GetStatsVar() == "" {
+	placeDcids := in.GetPlace()
+	if len(placeDcids) == 0 || in.GetStatsVar() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
 	// Read triples for stats var.
@@ -69,7 +71,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		return nil, err
 	}
 	// Construct BigTable row keys.
-	rowList := buildStatsKey(in.GetPlace(), statsVar)
+	rowList := buildStatsKey(placeDcids, statsVar)
 
 	result := map[string]*pb.ObsTimeSeries{}
 
@@ -80,18 +82,26 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 			result[dcid] = tmp[dcid].(*pb.ObsTimeSeries)
 		}
 	}
-
-	// Read data from base cache if no branch cache data is found.
-	// This is valid since branch cache is a superset of base cache.
-	if len(result) == 0 {
-		result, err = readStats(ctx, s.btTable, rowList)
-	}
-	if err != nil {
-		return nil, err
+	// For each place, if the data is missing in branch cache, fetch it from the
+	// base cache in Bigtable.
+	if len(result) < len(placeDcids) {
+		extraDcids := []string{}
+		for _, dcid := range placeDcids {
+			if _, ok := result[dcid]; !ok {
+				extraDcids = append(extraDcids, dcid)
+			}
+		}
+		extraData, err := readStats(ctx, s.btTable, buildStatsKey(extraDcids, statsVar))
+		if err != nil {
+			return nil, err
+		}
+		for dcid := range extraData {
+			result[dcid] = extraData[dcid]
+		}
 	}
 
 	// Fill missing place data and result result
-	for _, dcid := range in.GetPlace() {
+	for _, dcid := range placeDcids {
 		if _, ok := result[dcid]; !ok {
 			result[dcid] = nil
 		}
