@@ -156,16 +156,23 @@ func getPropertyValuesHelper(
 }
 
 func trimNodes(nodes []*Node, typ string, limit int) []*Node {
-	if typ == "" {
+	if limit == 0 && typ == "" {
 		return nodes
 	}
 	result := []*Node{}
 	for _, node := range nodes {
-		for _, t := range node.Types {
-			if t == typ {
-				result = append(result, node)
-				break
+		if typ == "" {
+			result = append(result, node)
+		} else {
+			for _, t := range node.Types {
+				if t == typ {
+					result = append(result, node)
+					break
+				}
 			}
+		}
+		if limit > 0 && len(result) == limit {
+			break
 		}
 	}
 	return result
