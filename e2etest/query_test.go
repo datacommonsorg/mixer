@@ -90,6 +90,15 @@ func TestQuery(t *testing.T) {
 			`SELECT ?a WHERE {?a typeOf RaceCodeEnum} ORDER BY ASC(?a)`,
 			"race_code_enum.json",
 		},
+		{
+			`SELECT ?name
+			WHERE{
+				?state typeOf State .
+				?state dcid geoId/06 .
+				?state name ?name
+			}`,
+			"name.json",
+		},
 	} {
 		req := &pb.QueryRequest{Sparql: c.sparql}
 		resp, err := client.Query(ctx, req)
@@ -97,14 +106,13 @@ func TestQuery(t *testing.T) {
 			t.Errorf("could not Query: %v", err)
 			continue
 		}
-		result := resp.Rows
-		var expected []*pb.QueryResponseRow
+		var expected pb.QueryResponse
 		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
 		if err := json.Unmarshal(file, &expected); err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(resp, expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
