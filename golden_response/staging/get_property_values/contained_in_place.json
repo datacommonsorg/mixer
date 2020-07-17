@@ -4,7 +4,7 @@
       {
         "dcid": "geoId/0677000",
         "name": "Sunnyvale",
-        "provenanceId": "dc/5n63hr1",
+        "provenanceId": "dc/bqr5zc1",
         "types": [
           "City"
         ]
@@ -44,7 +44,7 @@
       {
         "dcid": "geoId/0668000",
         "name": "San Jose",
-        "provenanceId": "dc/5n63hr1",
+        "provenanceId": "dc/bqr5zc1",
         "types": [
           "City"
         ]
@@ -52,7 +52,7 @@
       {
         "dcid": "geoId/0655282",
         "name": "Palo Alto",
-        "provenanceId": "dc/5n63hr1",
+        "provenanceId": "dc/bqr5zc1",
         "types": [
           "City"
         ]
@@ -60,7 +60,7 @@
       {
         "dcid": "geoId/0649670",
         "name": "Mountain View",
-        "provenanceId": "dc/5n63hr1",
+        "provenanceId": "dc/bqr5zc1",
         "types": [
           "City"
         ]

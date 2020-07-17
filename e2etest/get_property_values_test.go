@@ -102,11 +102,7 @@ func TestGetPropertyValues(t *testing.T) {
 		}
 
 		if generateGolden {
-			jsonByte, err := json.MarshalIndent(result, "", "  ")
-			err = ioutil.WriteFile(goldenFile, jsonByte, 0644)
-			if err != nil {
-				t.Errorf("could not write golden files to %s", goldenFile)
-			}
+			updateGolden(result, goldenFile)
 			continue
 		}
 

@@ -1,12 +1,12 @@
 {
   "geoId/06085": {
     "relatedPlaces": [
-      "iso/BO-C",
-      "iso/KZ-YUZ",
-      "nuts/FR22",
-      "nuts/RO41"
+      "geoId/12011",
+      "geoId/26163",
+      "geoId/48029",
+      "geoId/48439"
     ],
-    "rankFromTop": 1220,
-    "rankFromBottom": 98295
+    "rankFromTop": 18,
+    "rankFromBottom": 3092
   }
 }

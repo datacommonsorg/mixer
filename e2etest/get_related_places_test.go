@@ -96,6 +96,7 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 			PopulationType:   c.popType,
 			MeasuredProperty: c.mprop,
 			StatType:         c.statType,
+			SamePlaceType:    true,
 		}
 		for p, v := range c.pvs {
 			req.Pvs = append(req.Pvs, &pb.PropertyValue{
@@ -117,11 +118,7 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			jsonByte, err := json.MarshalIndent(result, "", "  ")
-			err = ioutil.WriteFile(goldenFile, jsonByte, 0644)
-			if err != nil {
-				t.Errorf("could not write golden files to %s", goldenFile)
-			}
+			updateGolden(result, goldenFile)
 			continue
 		}
 

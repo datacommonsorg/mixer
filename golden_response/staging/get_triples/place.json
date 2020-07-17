@@ -266,8 +266,9 @@
       "subjectId": "zip/00603",
       "predicate": "containedInPlace",
       "objectId": "geoId/72005",
-      "objectName": "Aguadilla Municipio",
+      "objectName": "Aguadilla",
       "objectTypes": [
+        "AdministrativeArea2",
         "County"
       ],
       "provenanceId": "dc/sm3m2w3"
@@ -302,9 +303,8 @@
     },
     {
       "subjectId": "geoId/7200745",
-      "subjectName": "Aguadilla",
+      "subjectName": "Aguadilla zona urbana",
       "subjectTypes": [
-        "AdministrativeArea2",
         "City"
       ],
       "predicate": "containedInPlace",

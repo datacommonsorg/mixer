@@ -115,3 +115,11 @@ func loadMemcache() (map[string][]byte, error) {
 	}
 	return memcacheData, nil
 }
+
+func updateGolden(v interface{}, fname string) {
+	jsonByte, _ := json.MarshalIndent(v, "", "  ")
+	err := ioutil.WriteFile(fname, jsonByte, 0644)
+	if err != nil {
+		log.Printf("could not write golden files to %s", fname)
+	}
+}
