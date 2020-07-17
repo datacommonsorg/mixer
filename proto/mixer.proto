@@ -222,6 +222,10 @@ message GetStatsRequest {
   // any unit could be returned.
   string unit = 5;
 
+  // (Optional) The observation period of the observation. If not specified,
+  // stats series with any observation period could be returned.
+  string observation_period = 6;
+
   Option option = 3;
 }
 

@@ -59,6 +59,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 
 	mmethod := in.GetMeasurementMethod()
 	unit := in.GetUnit()
+	op := in.GetObservationPeriod()
 
 	// Read triples for stats var.
 	triplesRowList := buildTriplesKey([]string{in.GetStatsVar()})
@@ -111,7 +112,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		}
 	}
 	for dcid := range result {
-		result[dcid] = filterAndRank(result[dcid], mmethod, unit)
+		result[dcid] = filterAndRank(result[dcid], mmethod, unit, op)
 	}
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
@@ -167,7 +168,7 @@ func triplesToStatsVar(triples *TriplesCache) (*StatisticalVariable, error) {
 }
 
 func filterAndRank(
-	in *pb.ObsTimeSeries, mmethod, unit string) *pb.ObsTimeSeries {
+	in *pb.ObsTimeSeries, mmethod, op, unit string) *pb.ObsTimeSeries {
 	out := &pb.ObsTimeSeries{
 		PlaceDcid:     in.GetPlaceDcid(),
 		PlaceName:     in.GetPlaceName(),
@@ -176,6 +177,9 @@ func filterAndRank(
 	filteredSeries := []*pb.ObsTimeSeries_SourceSeries{}
 	for _, series := range in.GetSourceSeries() {
 		if mmethod != "" && mmethod != series.GetMeasurementMethod() {
+			continue
+		}
+		if op != "" && op != series.GetObservationPeriod() {
 			continue
 		}
 		// Uncomment when unit is moved into source series

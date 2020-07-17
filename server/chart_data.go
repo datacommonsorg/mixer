@@ -59,7 +59,7 @@ func (s *Server) GetChartData(ctx context.Context,
 	}
 
 	for dcid := range result {
-		result[dcid] = filterAndRank(result[dcid], "", "")
+		result[dcid] = filterAndRank(result[dcid], "", "", "")
 	}
 
 	jsonRaw, err := json.Marshal(result)
