@@ -18,7 +18,9 @@ import (
 	"encoding/json"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 const covidJSON = `{
@@ -213,6 +215,116 @@ func TestTriplesToStatsVar(t *testing.T) {
 		}
 		if diff := cmp.Diff(gotStatsVar, c.wantStatsVar); diff != "" {
 			t.Errorf("triplesToStatsVar() got diff %+v", diff)
+		}
+	}
+}
+
+func TestFilterAndRank(t *testing.T) {
+	for _, c := range []struct {
+		input   *pb.ObsTimeSeries
+		mmethod string
+		unit    string
+		op      string
+		want    *pb.ObsTimeSeries
+	}{
+		// Default ranking
+		{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.ObsTimeSeries_SourceSeries{
+					{
+						Val:               map[string]float64{"2011": 100, "2012": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+					},
+					{
+						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+						MeasurementMethod: "CensusACS5yrSurvey",
+						ImportName:        "CensusACS5YearSurvey",
+					},
+				},
+			},
+			"",
+			"",
+			"",
+			&pb.ObsTimeSeries{
+				Data: map[string]float64{"2011": 100, "2012": 101},
+			},
+		},
+		// Filter by mmethod
+		{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.ObsTimeSeries_SourceSeries{
+					{
+						Val:               map[string]float64{"2011": 100, "2012": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+					},
+					{
+						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+						MeasurementMethod: "CensusACS5yrSurvey",
+						ImportName:        "CensusACS5YearSurvey",
+					},
+				},
+			},
+			"CensusACS5yrSurvey",
+			"",
+			"",
+			&pb.ObsTimeSeries{
+				Data: map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+			},
+		},
+		// Filter by observation period
+		{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.ObsTimeSeries_SourceSeries{
+					{
+						Val:               map[string]float64{"2011": 100, "2012": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+						ObservationPeriod: "P1Y",
+					},
+					{
+						Val:               map[string]float64{"2017": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+						ObservationPeriod: "P2Y",
+					},
+				},
+			},
+			"",
+			"",
+			"P2Y",
+			&pb.ObsTimeSeries{
+				Data: map[string]float64{"2017": 101},
+			},
+		},
+		// No match
+		{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.ObsTimeSeries_SourceSeries{
+					{
+						Val:               map[string]float64{"2011": 100, "2012": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+						ObservationPeriod: "P1Y",
+					},
+					{
+						Val:               map[string]float64{"2017": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+						ObservationPeriod: "P2Y",
+					},
+				},
+			},
+			"",
+			"",
+			"P3Y",
+			&pb.ObsTimeSeries{},
+		},
+	} {
+		got := filterAndRank(c.input, c.mmethod, c.op, c.unit)
+		if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
+			t.Errorf("filterAndRank() got diff %+v", diff)
 		}
 	}
 }

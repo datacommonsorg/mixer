@@ -48,27 +48,39 @@ func TestGetStats(t *testing.T) {
 	for _, c := range []struct {
 		statsVar     string
 		place        []string
+		mmethod      string
 		goldenFile   string
 		partialMatch bool
 		wantErr      bool
 	}{
 		{
-			"TotalPopulation",
+			"Count_Person",
 			[]string{"country/USA", "geoId/06", "geoId/06085", "geoId/0649670"},
-			"TotalPopulation.json",
+			"",
+			"census_pep.json",
 			false,
 			false,
 		},
 		{
 			"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
 			[]string{"country/USA", "geoId/06", "geoId/06085"},
+			"",
 			"NYTCovid19CumulativeCases.json",
+			true,
+			false,
+		},
+		{
+			"Count_Person",
+			[]string{"geoId/06"},
+			"CensusACS5yrSurvey",
+			"census_acs.json",
 			true,
 			false,
 		},
 		{
 			"TotalCrimes",
 			[]string{"geoId/06", "geoId/0649670"},
+			"",
 			"TotalCrimes.json",
 			false,
 			false,
@@ -77,13 +89,15 @@ func TestGetStats(t *testing.T) {
 			"BadStatsVar",
 			[]string{"geoId/06"},
 			"",
+			"",
 			false,
 			true,
 		},
 	} {
 		resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
-			StatsVar: c.statsVar,
-			Place:    c.place,
+			StatsVar:          c.statsVar,
+			Place:             c.place,
+			MeasurementMethod: c.mmethod,
 		})
 		if c.wantErr {
 			if err == nil {

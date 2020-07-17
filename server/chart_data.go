@@ -58,6 +58,10 @@ func (s *Server) GetChartData(ctx context.Context,
 		result[key].PlaceDcid = strings.Split(result[key].PlaceDcid, "^")[0]
 	}
 
+	for dcid := range result {
+		result[dcid] = filterAndRank(result[dcid], "", "", "")
+	}
+
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
 		return nil, err
