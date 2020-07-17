@@ -29,7 +29,11 @@
       "predicate": "location",
       "objectId": "geoId/06085",
       "objectName": "Santa Clara County",
-      "objectTypes": ["AdministrativeArea", "AdministrativeArea2", "County"],
+      "objectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea2",
+        "County"
+      ],
       "provenanceId": "dc/e9k9ze"
     },
     {

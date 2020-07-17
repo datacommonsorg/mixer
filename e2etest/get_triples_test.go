@@ -82,7 +82,7 @@ func TestGetTriples(t *testing.T) {
 			"",
 			false,
 			5,
-			[]int{42, 27},
+			[]int{40, 25},
 		},
 	} {
 		req := &pb.GetTriplesRequest{Dcids: c.dcids}
@@ -100,6 +100,18 @@ func TestGetTriples(t *testing.T) {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			if c.goldenFile != "" {
+				jsonByte, err := json.MarshalIndent(result, "", "  ")
+				err = ioutil.WriteFile(goldenFile, jsonByte, 0644)
+				if err != nil {
+					t.Errorf("could not write golden files to %s", goldenFile)
+				}
+			}
+			continue
+		}
+
 		if c.limit > 0 {
 			for idx, place := range c.dcids {
 				count := len(result[place])
@@ -113,7 +125,7 @@ func TestGetTriples(t *testing.T) {
 		}
 
 		var expected map[string][]*server.Triple
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)

@@ -114,8 +114,19 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
+
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			jsonByte, err := json.MarshalIndent(result, "", "  ")
+			err = ioutil.WriteFile(goldenFile, jsonByte, 0644)
+			if err != nil {
+				t.Errorf("could not write golden files to %s", goldenFile)
+			}
+			continue
+		}
+
 		var expected map[string]*server.RelatedPlacesInfo
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)

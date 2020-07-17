@@ -17,6 +17,7 @@ package e2etest
 import (
 	"context"
 	"encoding/json"
+	"flag"
 	"io/ioutil"
 	"log"
 	"net"
@@ -30,6 +31,13 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
+
+var generateGolden bool
+
+func init() {
+	flag.BoolVar(
+		&generateGolden, "generate_golden", false, "generate golden files")
+}
 
 // This test runs agains staging staging bt and bq dataset.
 // This is billed to GCP project "datcom-ci"

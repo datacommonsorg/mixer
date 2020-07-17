@@ -5,7 +5,9 @@
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
       "objectName": "StatisticalVariable",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -13,7 +15,9 @@
       "predicate": "statType",
       "objectId": "measuredValue",
       "objectName": "measuredValue",
-      "objectTypes": ["Property"],
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -21,7 +25,9 @@
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://www.datacommons.org",
-      "objectTypes": ["Provenance"],
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -29,7 +35,9 @@
       "predicate": "populationType",
       "objectId": "Person",
       "objectName": "Person",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -37,7 +45,9 @@
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
-      "objectTypes": ["Property"],
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     }
   ],
@@ -47,7 +57,9 @@
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
       "objectName": "StatisticalVariable",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -55,7 +67,9 @@
       "predicate": "statType",
       "objectId": "measuredValue",
       "objectName": "measuredValue",
-      "objectTypes": ["Property"],
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -63,7 +77,9 @@
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://www.datacommons.org",
-      "objectTypes": ["Provenance"],
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -71,7 +87,9 @@
       "predicate": "populationType",
       "objectId": "Person",
       "objectName": "Person",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -79,7 +97,9 @@
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
-      "objectTypes": ["Property"],
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -87,7 +107,9 @@
       "predicate": "gender",
       "objectId": "Female",
       "objectName": "Female",
-      "objectTypes": ["GenderType"],
+      "objectTypes": [
+        "GenderType"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -95,7 +117,9 @@
       "predicate": "constraintProperties",
       "objectId": "gender",
       "objectName": "gender",
-      "objectTypes": ["Property"],
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     }
   ]

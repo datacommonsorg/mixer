@@ -72,3 +72,9 @@ go run main.go \
 cd examples/get_place_obs
 go run main.go
 ```
+
+## Update golden files on staging
+
+```bash
+gcloud auth application-default login
+```
