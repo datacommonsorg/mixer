@@ -54,10 +54,10 @@ func TestGetStats(t *testing.T) {
 		wantErr      bool
 	}{
 		{
-			"TotalPopulation",
+			"Count_Person",
 			[]string{"country/USA", "geoId/06", "geoId/06085", "geoId/0649670"},
 			"",
-			"TotalPopulation.json",
+			"census_pep.json",
 			false,
 			false,
 		},
@@ -70,10 +70,10 @@ func TestGetStats(t *testing.T) {
 			false,
 		},
 		{
-			"dc/2w8dcw4hcqqe6",
+			"Count_Person",
 			[]string{"geoId/06"},
-			"GoogleHealthCovidForecastingProject",
-			"google_health.json",
+			"CensusACS5yrSurvey",
+			"census_acs.json",
 			true,
 			false,
 		},
