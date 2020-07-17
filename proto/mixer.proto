@@ -214,6 +214,12 @@ message GetStatsRequest {
   // The dcid of the StatisticalVariable.
   string stats_var = 2;
 
+  // The measurement method of the observation.
+  string measurement_method = 4;
+
+  // The unit of the observation.
+  string unit = 5;
+
   Option option = 3;
 }
 

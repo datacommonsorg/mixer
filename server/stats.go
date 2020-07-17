@@ -56,6 +56,10 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	if len(placeDcids) == 0 || in.GetStatsVar() == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
+
+	mmethod := in.GetMeasurementMethod()
+	unit := in.GetUnit()
+
 	// Read triples for stats var.
 	triplesRowList := buildTriplesKey([]string{in.GetStatsVar()})
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
@@ -105,6 +109,9 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		if _, ok := result[dcid]; !ok {
 			result[dcid] = nil
 		}
+	}
+	for dcid := range result {
+		result[dcid] = filterAndRank(result[dcid], mmethod, unit)
 	}
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
@@ -159,6 +166,40 @@ func triplesToStatsVar(triples *TriplesCache) (*StatisticalVariable, error) {
 	return &statsVar, nil
 }
 
+func filterAndRank(
+	in *pb.ObsTimeSeries, mmethod, unit string) *pb.ObsTimeSeries {
+	out := &pb.ObsTimeSeries{
+		PlaceDcid:     in.GetPlaceDcid(),
+		PlaceName:     in.GetPlaceName(),
+		IsDcAggregate: in.GetIsDcAggregate(),
+	}
+	filteredSeries := []*pb.ObsTimeSeries_SourceSeries{}
+	for _, series := range in.GetSourceSeries() {
+		if mmethod != "" && mmethod != series.GetMeasurementMethod() {
+			continue
+		}
+		// Uncomment when unit is moved into source series
+		// if unit != "" && unit != series.GetUnit() {
+		// 	continue
+		// }
+		filteredSeries = append(filteredSeries, series)
+	}
+	bestScore := lowestRank
+	for _, series := range filteredSeries {
+		key := rankKey{series.GetImportName(), series.GetMeasurementMethod()}
+		score, ok := statsRanking[key]
+		if !ok {
+			score = lowestRank
+		}
+		if score <= bestScore {
+			out.Data = series.Val
+			bestScore = score
+		}
+	}
+	out.SourceSeries = nil
+	return out
+}
+
 func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
@@ -166,23 +207,8 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsTimeSeries:
-		result := &pb.ObsTimeSeries{PlaceDcid: dcid}
-		result.Unit = x.ObsTimeSeries.GetUnit()
-		result.PlaceName = x.ObsTimeSeries.GetPlaceName()
-		result.IsDcAggregate = x.ObsTimeSeries.GetIsDcAggregate()
-		bestScore := lowestRank
-		for _, series := range x.ObsTimeSeries.SourceSeries {
-			key := rankKey{series.GetImportName(), series.GetMeasurementMethod()}
-			score, ok := statsRanking[key]
-			if !ok {
-				score = lowestRank
-			}
-			if score <= bestScore {
-				result.Data = series.Val
-				bestScore = score
-			}
-		}
-		return result, nil
+		x.ObsTimeSeries.PlaceDcid = dcid
+		return x.ObsTimeSeries, nil
 	case nil:
 		return nil, fmt.Errorf("ChartStore.Val is not set")
 	default:
