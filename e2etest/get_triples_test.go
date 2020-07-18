@@ -45,32 +45,32 @@ func TestGetTriples(t *testing.T) {
 		limit        int32
 		count        []int
 	}{
-		// {
-		// 	[]string{"State", "Country"},
-		// 	"place_type.json",
-		// 	false,
-		// 	-1,
-		// 	nil,
-		// },
-		// {
-		// 	[]string{"zip/00603"},
-		// 	"place.json",
-		// 	true,
-		// 	-1,
-		// 	nil,
-		// },
-		// {
-		// 	[]string{
-		// 		"dc/o/2brkkmq0lxd5h",
-		// 		"dc/o/10b2df1lqhz54",
-		// 		"dc/o/sz10wj1qyyy1d",
-		// 		"dc/p/cmtdk79lnk2pd",
-		// 	},
-		// 	"observation.json",
-		// 	false,
-		// 	-1,
-		// 	nil,
-		// },
+		{
+			[]string{"State", "Country"},
+			"place_type.json",
+			false,
+			-1,
+			nil,
+		},
+		{
+			[]string{"zip/00603"},
+			"place.json",
+			true,
+			-1,
+			nil,
+		},
+		{
+			[]string{
+				"dc/o/2brkkmq0lxd5h",
+				"dc/o/10b2df1lqhz54",
+				"dc/o/sz10wj1qyyy1d",
+				"dc/p/cmtdk79lnk2pd",
+			},
+			"observation.json",
+			false,
+			-1,
+			nil,
+		},
 		{
 			[]string{"Count_Person", "Count_Person_Female"},
 			"stats_var.json",
@@ -78,13 +78,13 @@ func TestGetTriples(t *testing.T) {
 			-1,
 			nil,
 		},
-		// {
-		// 	[]string{"City", "County"},
-		// 	"",
-		// 	false,
-		// 	5,
-		// 	[]int{30, 25},
-		// },
+		{
+			[]string{"City", "County"},
+			"",
+			false,
+			5,
+			[]int{30, 25},
+		},
 	} {
 		req := &pb.GetTriplesRequest{Dcids: c.dcids}
 		if c.limit > 0 {

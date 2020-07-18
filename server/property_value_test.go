@@ -16,45 +16,46 @@ package server
 
 import (
 	"testing"
+
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestTrimNodes(t *testing.T) {
 
 	input := []*Node{
-		&Node{
-			Dcid: "dcid1",
+		{
+			Dcid:  "dcid1",
 			Value: "1",
 			Types: []string{"City"},
 		},
-		&Node{
-			Dcid: "dcid2",
+		{
+			Dcid:  "dcid2",
 			Value: "2",
 			Types: []string{"City"},
 		},
-		&Node{
-			Dcid: "dcid3",
+		{
+			Dcid:  "dcid3",
 			Value: "3",
 			Types: []string{"County"},
 		},
-		&Node{
-			Dcid: "dcid4",
+		{
+			Dcid:  "dcid4",
 			Value: "4",
 			Types: []string{"County"},
 		},
 	}
 
 	for _, c := range []struct {
-		typ string
+		typ   string
 		limit int
-		want []*Node
-	} {
+		want  []*Node
+	}{
 		{
 			"",
 			1,
 			[]*Node{
 				{
-					Dcid: "dcid1",
+					Dcid:  "dcid1",
 					Value: "1",
 					Types: []string{"City"},
 				},
@@ -65,12 +66,12 @@ func TestTrimNodes(t *testing.T) {
 			0,
 			[]*Node{
 				{
-					Dcid: "dcid1",
+					Dcid:  "dcid1",
 					Value: "1",
 					Types: []string{"City"},
 				},
 				{
-					Dcid: "dcid2",
+					Dcid:  "dcid2",
 					Value: "2",
 					Types: []string{"City"},
 				},
@@ -81,7 +82,7 @@ func TestTrimNodes(t *testing.T) {
 			1,
 			[]*Node{
 				{
-					Dcid: "dcid1",
+					Dcid:  "dcid1",
 					Value: "1",
 					Types: []string{"City"},
 				},
