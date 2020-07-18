@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"path"
 	"runtime"
 	"testing"
@@ -82,7 +83,7 @@ func TestGetTriples(t *testing.T) {
 			"",
 			false,
 			5,
-			[]int{42, 27},
+			[]int{30, 25},
 		},
 	} {
 		req := &pb.GetTriplesRequest{Dcids: c.dcids}
@@ -94,12 +95,19 @@ func TestGetTriples(t *testing.T) {
 			t.Errorf("could not GetTriples: %s", err)
 			continue
 		}
+		log.Println(resp.GetPayload())
 		var result map[string][]*server.Triple
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden && c.goldenFile != "" {
+			updateGolden(result, goldenFile)
+			continue
+		}
+
 		if c.limit > 0 {
 			for idx, place := range c.dcids {
 				count := len(result[place])
@@ -113,7 +121,7 @@ func TestGetTriples(t *testing.T) {
 		}
 
 		var expected map[string][]*server.Triple
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)

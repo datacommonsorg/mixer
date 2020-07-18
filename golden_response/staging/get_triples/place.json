@@ -5,7 +5,9 @@
       "predicate": "waterArea",
       "objectId": "SquareMeter181411",
       "objectName": "SquareMeter 181411",
-      "objectTypes": ["Quantity"],
+      "objectTypes": [
+        "Quantity"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -13,7 +15,9 @@
       "predicate": "typeOf",
       "objectId": "CensusZipCodeTabulationArea",
       "objectName": "CensusZipCodeTabulationArea",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21,47 +25,65 @@
       "predicate": "provenance",
       "objectId": "dc/sm3m2w3",
       "objectName": "https://www.census.gov/geographies/reference-files.html",
-      "objectTypes": ["Provenance"],
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "ipedsId/445984",
       "subjectName": "Xtreme Career Institute",
-      "subjectTypes": ["CollegeOrUniversity"],
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/89fk9x3"
     },
     {
       "subjectId": "ipedsId/443951",
       "subjectName": "Charlie's Guard-Detective Bureau and Academy Inc",
-      "subjectTypes": ["CollegeOrUniversity"],
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/89fk9x3"
     },
     {
       "subjectId": "ipedsId/376385",
       "subjectName": "Universal Technology College of Puerto Rico",
-      "subjectTypes": ["CollegeOrUniversity"],
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/89fk9x3"
     },
     {
       "subjectId": "ipedsId/242626",
       "subjectName": "Inter American University of Puerto Rico-Aguadilla",
-      "subjectTypes": ["CollegeOrUniversity"],
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/89fk9x3"
     },
     {
@@ -87,7 +109,9 @@
       "predicate": "landArea",
       "objectId": "SquareMeter81887185",
       "objectName": "SquareMeter 81887185",
-      "objectTypes": ["Quantity"],
+      "objectTypes": [
+        "Quantity"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -101,7 +125,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200549335",
       "objectName": "Maleza Baja",
-      "objectTypes": ["CensusCountyDivision"],
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -109,7 +135,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200549292",
       "objectName": "Maleza Alta",
-      "objectTypes": ["CensusCountyDivision"],
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -117,7 +145,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200516225",
       "objectName": "Ceiba Alta",
-      "objectTypes": ["CensusCountyDivision"],
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -125,7 +155,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200503626",
       "objectName": "Arenales",
-      "objectTypes": ["CensusCountyDivision"],
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -133,57 +165,79 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200500530",
       "objectName": "Aguacate",
-      "objectTypes": ["CensusCountyDivision"],
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200549335",
       "subjectName": "Maleza Baja",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200549292",
       "subjectName": "Maleza Alta",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200516225",
       "subjectName": "Ceiba Alta",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200503626",
       "subjectName": "Arenales",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200500530",
       "subjectName": "Aguacate",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -203,145 +257,202 @@
       "predicate": "containedInPlace",
       "objectId": "geoId/7298",
       "objectName": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico",
-      "objectTypes": ["CongressionalDistrict"],
+      "objectTypes": [
+        "CongressionalDistrict"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "zip/00603",
       "predicate": "containedInPlace",
       "objectId": "geoId/72005",
-      "objectName": "Aguadilla Municipio",
-      "objectTypes": ["County"],
+      "objectName": "Aguadilla",
+      "objectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7268599",
       "subjectName": "Rafael Hernández comunidad",
-      "subjectTypes": ["City"],
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7209689",
       "subjectName": "Cabán comunidad",
-      "subjectTypes": ["City"],
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200745",
-      "subjectName": "Aguadilla",
-      "subjectTypes": ["AdministrativeArea2", "City"],
+      "subjectName": "Aguadilla zona urbana",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200585842",
       "subjectName": "Victoria",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200557935",
       "subjectName": "Palmar",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200532694",
       "subjectName": "Guerrero",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200520955",
       "subjectName": "Corrales",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200516268",
       "subjectName": "Ceiba Baja",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200511237",
       "subjectName": "Camaceyes",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200510635",
       "subjectName": "Caimital Bajo",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200510592",
       "subjectName": "Caimital Alto",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200508313",
       "subjectName": "Borinquen",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200500788",
       "subjectName": "Aguadilla",
-      "subjectTypes": ["CensusCountyDivision"],
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
-      "objectTypes": ["CensusZipCodeTabulationArea"],
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
       "provenanceId": "dc/sm3m2w3"
     }
   ]

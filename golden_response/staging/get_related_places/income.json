@@ -1,12 +1,12 @@
 {
   "geoId/06085": {
     "relatedPlaces": [
-      "geoId/06111001202",
-      "geoId/08005005614",
-      "geoId/53061053302",
-      "geoId/55079150301"
+      "geoId/08014",
+      "geoId/19049",
+      "geoId/25021",
+      "geoId/51179"
     ],
-    "rankFromTop": 15691,
-    "rankFromBottom": 133340
+    "rankFromTop": 28,
+    "rankFromBottom": 3160
   }
 }

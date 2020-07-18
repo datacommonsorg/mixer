@@ -1,2690 +1,3760 @@
 {
   "Country": [
     {
-      "subjectId": "nuts/LU000",
-      "subjectName": "Luxembourg",
-      "subjectTypes": ["Country", "EurostatNUTS3"],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/feypvb3"
-    },
-    {
-      "subjectId": "nuts/DK0",
-      "subjectName": "DANMARK",
-      "subjectTypes": ["Country", "EurostatNUTS1"],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/feypvb3"
-    },
-    {
       "subjectId": "iso/NL",
-      "subjectName": "Netherlands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/64",
-      "subjectName": "Federated States of Micronesia",
-      "subjectTypes": ["Country", "State"],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ZWE",
       "subjectName": "Zimbabwe",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ZMB",
       "subjectName": "Zambia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ZAF",
       "subjectName": "South Africa",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/YUG",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/YEM",
       "subjectName": "Yemen",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/XKS",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/WSM",
       "subjectName": "Samoa",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/WLF",
       "subjectName": "Wallis and Futuna",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/VUT",
       "subjectName": "Vanuatu",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/VNM",
       "subjectName": "Vietnam",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/VIR",
       "subjectName": "U.S. Virgin Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/VGB",
       "subjectName": "British Virgin Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/VEN",
       "subjectName": "Venezuela",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/VCT",
       "subjectName": "Saint Vincent and the Grenadines",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/VAT",
       "subjectName": "Vatican City",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/UZB",
       "subjectName": "Uzbekistan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/USA",
       "subjectName": "United States",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/URY",
       "subjectName": "Uruguay",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/UMI",
       "subjectName": "U.S. Minor Outlying Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/UKR",
       "subjectName": "Ukraine",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/UGA",
       "subjectName": "Uganda",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TZA",
       "subjectName": "Tanzania",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TWN",
       "subjectName": "Taiwan",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TUV",
       "subjectName": "Tuvalu",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/TUR",
       "subjectName": "Turkey",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TUN",
       "subjectName": "Tunisia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TTO",
       "subjectName": "Trinidad and Tobago",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/TON",
       "subjectName": "Tonga",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TLS",
       "subjectName": "East Timor",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TKM",
       "subjectName": "Turkmenistan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TKL",
       "subjectName": "Tokelau",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TJK",
       "subjectName": "Tajikistan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/THA",
       "subjectName": "Thailand",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TGO",
       "subjectName": "Togo",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TCD",
       "subjectName": "Chad",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/TCA",
       "subjectName": "Turks and Caicos Islands",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SYR",
       "subjectName": "Syria",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SYC",
       "subjectName": "Seychelles",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SXM",
       "subjectName": "Sint Maarten (Dutch part)",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SWZ",
       "subjectName": "Swaziland",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SWE",
       "subjectName": "Sweden",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SVN",
       "subjectName": "Slovenia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SVK",
       "subjectName": "Slovakia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SUR",
       "subjectName": "Suriname",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SUN",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/STP",
       "subjectName": "São Tomé and Príncipe",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SSD",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SRB",
       "subjectName": "Serbia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SPM",
       "subjectName": "Saint Pierre and Miquelon",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SOM",
       "subjectName": "Somalia",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SMR",
       "subjectName": "San Marino",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SLV",
       "subjectName": "El Salvador",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SLE",
       "subjectName": "Sierra Leone",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SLB",
       "subjectName": "Solomon Islands",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SJM",
       "subjectName": "Svalbard and Jan Mayen",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/SHN",
       "subjectName": "Saint Helena",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SGS",
       "subjectName": "South Georgia and the South Sandwich Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SGP",
       "subjectName": "Singapore",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SEN",
       "subjectName": "Senegal",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SDN",
       "subjectName": "Sudan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SCG",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/SAU",
       "subjectName": "Saudi Arabia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/RWA",
       "subjectName": "Rwanda",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/RUS",
       "subjectName": "Russia",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ROU",
       "subjectName": "Romania",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/REU",
       "subjectName": "Réunion",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/QAT",
       "subjectName": "Qatar",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PYF",
       "subjectName": "French Polynesia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/PSE",
       "subjectName": "Palestinian Territories",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PRY",
       "subjectName": "Paraguay",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PRT",
       "subjectName": "Portugal",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PRK",
       "subjectName": "North Korea",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PRI",
       "subjectName": "Puerto Rico",
-      "subjectTypes": ["AdministrativeArea1", "Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/POL",
       "subjectName": "Poland",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PNG",
       "subjectName": "Papua New Guinea",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PLW",
       "subjectName": "Palau",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PHL",
       "subjectName": "Philippines",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/PER",
       "subjectName": "Peru",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PCN",
       "subjectName": "Pitcairn Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/PAN",
       "subjectName": "Panama",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/PAK",
       "subjectName": "Pakistan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/OMN",
       "subjectName": "Oman",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NZL",
       "subjectName": "New Zealand",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/NRU",
       "subjectName": "Nauru",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NPL",
       "subjectName": "Nepal",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NOR",
       "subjectName": "Norway",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NLD",
       "subjectName": "Netherlands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NIU",
       "subjectName": "Niue",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NIC",
       "subjectName": "Nicaragua",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NHB",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/NGA",
       "subjectName": "Nigeria",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NFK",
       "subjectName": "Norfolk Island",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NER",
       "subjectName": "Niger",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NCL",
       "subjectName": "New Caledonia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/NAM",
       "subjectName": "Namibia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MYT",
       "subjectName": "Mayotte",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/MYS",
       "subjectName": "Malaysia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MWI",
       "subjectName": "Malawi",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MUS",
       "subjectName": "Mauritius",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MTQ",
       "subjectName": "Martinique",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/MSR",
       "subjectName": "Montserrat",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/MRT",
       "subjectName": "Mauritania",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MOZ",
       "subjectName": "Mozambique",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MNP",
       "subjectName": "Northern Mariana Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/MNG",
       "subjectName": "Mongolia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MNE",
       "subjectName": "Montenegro",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/MMR",
       "subjectName": "Myanmar",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MLT",
       "subjectName": "Malta",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MLI",
       "subjectName": "Mali",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MKD",
       "subjectName": "Macedonia [FYROM]",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MHL",
       "subjectName": "Marshall Islands",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/MEX",
       "subjectName": "Mexico",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MDV",
       "subjectName": "Maldives",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/MDG",
       "subjectName": "Madagascar",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MDA",
       "subjectName": "Moldova",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MCO",
       "subjectName": "Monaco",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MAR",
       "subjectName": "Morocco",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MAF",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/MAC",
       "subjectName": "Macau",
-      "subjectTypes": ["City", "Country"],
+      "subjectTypes": [
+        "City",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/LVA",
       "subjectName": "Latvia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/LUX",
       "subjectName": "Luxembourg",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/LTU",
       "subjectName": "Lithuania",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/LSO",
       "subjectName": "Lesotho",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/LKA",
       "subjectName": "Sri Lanka",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/LIE",
       "subjectName": "Liechtenstein",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/LCA",
       "subjectName": "Saint Lucia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/LBY",
       "subjectName": "Libya",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/LBR",
       "subjectName": "Liberia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/LBN",
       "subjectName": "Lebanon",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/LAO",
       "subjectName": "Laos",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/KWT",
       "subjectName": "Kuwait",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/KOR",
       "subjectName": "South Korea",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/KNA",
       "subjectName": "Saint Kitts and Nevis",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/KIR",
       "subjectName": "Kiribati",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/KHM",
       "subjectName": "Cambodia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/KGZ",
       "subjectName": "Kyrgyzstan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/KEN",
       "subjectName": "Kenya",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/KAZ",
       "subjectName": "Kazakhstan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/JPN",
       "subjectName": "Japan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/JOR",
       "subjectName": "Jordan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/JEY",
       "subjectName": "Jersey",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/JAM",
       "subjectName": "Jamaica",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ITA",
       "subjectName": "Italy",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ISR",
       "subjectName": "Israel",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ISL",
       "subjectName": "Iceland",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/IRQ",
       "subjectName": "Iraq",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/IRN",
       "subjectName": "Iran",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/IRL",
       "subjectName": "Ireland",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/IOT",
       "subjectName": "British Indian Ocean Territory",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/IND",
       "subjectName": "India",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/IMN",
       "subjectName": "Isle of Man",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/IDN",
       "subjectName": "Indonesia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/HVO",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/HUN",
       "subjectName": "Hungary",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/HTI",
       "subjectName": "Haiti",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/HRV",
       "subjectName": "Croatia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/HND",
       "subjectName": "Honduras",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/HMD",
       "subjectName": "Heard Island and McDonald Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/HKG",
       "subjectName": "Hong Kong",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/GUY",
       "subjectName": "Guyana",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/GUM",
       "subjectName": "Guam",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GUF",
       "subjectName": "French Guiana",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/GTM",
       "subjectName": "Guatemala",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GRL",
       "subjectName": "Greenland",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GRD",
       "subjectName": "Grenada",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GRC",
       "subjectName": "Greece",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/GNQ",
       "subjectName": "Equatorial Guinea",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/GNB",
       "subjectName": "Guinea-Bissau",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GMB",
       "subjectName": "Gambia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/GLP",
       "subjectName": "Guadeloupe",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/GIN",
       "subjectName": "Guinea",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GIB",
       "subjectName": "Gibraltar",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GHA",
       "subjectName": "Ghana",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/GGY",
       "subjectName": "Guernsey",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GEO",
       "subjectName": "Georgia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GEL",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/GBR",
       "subjectName": "United Kingdom",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/GAB",
       "subjectName": "Gabon",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/FXX",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/FSM",
-      "subjectName": "Micronesia",
-      "subjectTypes": ["Country"],
+      "subjectName": "Federated States of Micronesia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/FRO",
       "subjectName": "Faroe Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/FRA",
       "subjectName": "France",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/FLK",
       "subjectName": "Falkland Islands [Islas Malvinas]",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/FJI",
       "subjectName": "Fiji",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/FIN",
       "subjectName": "Finland",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ETH",
       "subjectName": "Ethiopia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/EST",
       "subjectName": "Estonia",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ESP",
       "subjectName": "Spain",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ESH",
       "subjectName": "Western Sahara",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/ERI",
       "subjectName": "Eritrea",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/EGY",
       "subjectName": "Egypt",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ECU",
       "subjectName": "Ecuador",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/DZA",
       "subjectName": "Algeria",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/DOM",
       "subjectName": "Dominican Republic",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/DNK",
       "subjectName": "Denmark",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/DMA",
       "subjectName": "Dominica",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/DJI",
       "subjectName": "Djibouti",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/DHY",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/DEU",
       "subjectName": "Germany",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/DDR",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CZE",
       "subjectName": "Czech Republic",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CYP",
       "subjectName": "Cyprus",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CYM",
       "subjectName": "Cayman Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CXR",
       "subjectName": "Christmas Island",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CUW",
       "subjectName": "Curaçao",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/CUB",
       "subjectName": "Cuba",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CTE",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/CSK",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CRI",
       "subjectName": "Costa Rica",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CPV",
       "subjectName": "Cape Verde",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/COM",
       "subjectName": "Comoros",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/COL",
       "subjectName": "Colombia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/COK",
       "subjectName": "Cook Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/COG",
       "subjectName": "Congo [Republic]",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/COD",
       "subjectName": "Congo [DRC]",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CMR",
       "subjectName": "Cameroon",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CIV",
       "subjectName": "Côte d'Ivoire",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CHN",
       "subjectName": "China",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/CHL",
       "subjectName": "Chile",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CHE",
       "subjectName": "Switzerland",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CCK",
       "subjectName": "Cocos [Keeling] Islands",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CAN",
       "subjectName": "Canada",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/CAF",
       "subjectName": "Central African Republic",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BYS",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BWA",
       "subjectName": "Botswana",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BVT",
       "subjectName": "Bouvet Island",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BTN",
       "subjectName": "Bhutan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BRN",
       "subjectName": "Brunei",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BRB",
       "subjectName": "Barbados",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BRA",
       "subjectName": "Brazil",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BOL",
       "subjectName": "Bolivia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BMU",
       "subjectName": "Bermuda",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BLZ",
       "subjectName": "Belize",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BLR",
       "subjectName": "Belarus",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BLM",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BIH",
       "subjectName": "Bosnia and Herzegovina",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BHS",
       "subjectName": "Bahamas",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BHR",
       "subjectName": "Bahrain",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BGR",
       "subjectName": "Bulgaria",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BGD",
       "subjectName": "Bangladesh",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BFA",
       "subjectName": "Burkina Faso",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BES",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BEN",
       "subjectName": "Benin",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/BEL",
       "subjectName": "Belgium",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BDI",
       "subjectName": "Burundi",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/AZE",
       "subjectName": "Azerbaijan",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/AUT",
       "subjectName": "Austria",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/AUS",
       "subjectName": "Australia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ATN",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/ATG",
       "subjectName": "Antigua and Barbuda",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ATF",
       "subjectName": "French Southern Territories",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ATB",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ATA",
       "subjectName": "Antarctica",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/ASM",
       "subjectName": "American Samoa",
-      "subjectTypes": ["AdministrativeArea", "Country"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ARM",
       "subjectName": "Armenia",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ARG",
       "subjectName": "Argentina",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ARE",
       "subjectName": "United Arab Emirates",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ANT",
       "subjectName": "Netherlands Antilles",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/AND",
       "subjectName": "Andorra",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ALB",
       "subjectName": "Albania",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/ALA",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/AIA",
       "subjectName": "Anguilla",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/AGO",
       "subjectName": "Angola",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "country/AFI",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/AFG",
       "subjectName": "Afghanistan",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ABW",
       "subjectName": "Aruba",
-      "subjectTypes": ["Country"],
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "Country",
       "predicate": "typeOf",
       "objectId": "Class",
       "objectName": "Class",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -2692,37 +3762,51 @@
       "predicate": "subClassOf",
       "objectId": "AdministrativeArea",
       "objectName": "AdministrativeArea",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
       "subjectId": "nationality",
       "subjectName": "nationality",
-      "subjectTypes": ["Property"],
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "rangeIncludes",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
       "subjectId": "countryOfOrigin",
       "subjectName": "countryOfOrigin",
-      "subjectTypes": ["Property"],
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "rangeIncludes",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
       "subjectId": "addressCountry",
       "subjectName": "addressCountry",
-      "subjectTypes": ["Property"],
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "rangeIncludes",
       "objectId": "Country",
       "objectName": "Country",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -2730,7 +3814,9 @@
       "predicate": "provenance",
       "objectId": "dc/5l5zxr1",
       "objectName": "http://schema.datacommons.org",
-      "objectTypes": ["Provenance"],
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -2744,684 +3830,1040 @@
     {
       "subjectId": "geoId/95",
       "subjectName": "Palmyra Atoll",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/89",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/86",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/84",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/81",
       "subjectName": "Baker Island",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/fnc0mz2"
     },
     {
       "subjectId": "geoId/79",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/78",
       "subjectName": "Virgin Islands of the U.S.",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/76",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/74",
       "subjectName": "U.S. Minor Outlying Islands",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/72",
       "subjectName": "Puerto Rico",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/71",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/70",
       "subjectName": "Palau",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/69",
       "subjectName": "Northern Mariana Islands",
-      "subjectTypes": ["AdministrativeArea", "State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/68",
       "subjectName": "Marshall Islands",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/67",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/66",
       "subjectName": "Guam",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/8qw92p"
     },
     {
       "subjectId": "geoId/64",
       "subjectName": "Federated States of Micronesia",
-      "subjectTypes": ["Country", "State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/60",
       "subjectName": "American Samoa",
-      "subjectTypes": ["State"],
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/8qw92p"
     },
     {
       "subjectId": "geoId/56",
       "subjectName": "Wyoming",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/55",
       "subjectName": "Wisconsin",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/54",
       "subjectName": "West Virginia",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/53",
       "subjectName": "Washington",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/51",
       "subjectName": "Virginia",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/50",
       "subjectName": "Vermont",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/49",
       "subjectName": "Utah",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/48",
       "subjectName": "Texas",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/47",
       "subjectName": "Tennessee",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/46",
       "subjectName": "South Dakota",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/45",
       "subjectName": "South Carolina",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/44",
       "subjectName": "Rhode Island",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/42",
       "subjectName": "Pennsylvania",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/41",
       "subjectName": "Oregon",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/40",
       "subjectName": "Oklahoma",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/39",
       "subjectName": "Ohio",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/38",
       "subjectName": "North Dakota",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/37",
       "subjectName": "North Carolina",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/36",
       "subjectName": "New York",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/35",
       "subjectName": "New Mexico",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/34",
       "subjectName": "New Jersey",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/33",
       "subjectName": "New Hampshire",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/32",
       "subjectName": "Nevada",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/31",
       "subjectName": "Nebraska",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/30",
       "subjectName": "Montana",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/29",
       "subjectName": "Missouri",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/28",
       "subjectName": "Mississippi",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/27",
       "subjectName": "Minnesota",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/26",
       "subjectName": "Michigan",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/25",
       "subjectName": "Massachusetts",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/24",
       "subjectName": "Maryland",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/23",
       "subjectName": "Maine",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/22",
       "subjectName": "Louisiana",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/21",
       "subjectName": "Kentucky",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/20",
       "subjectName": "Kansas",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/19",
       "subjectName": "Iowa",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/18",
       "subjectName": "Indiana",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/17",
       "subjectName": "Illinois",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/16",
       "subjectName": "Idaho",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/15",
       "subjectName": "Hawaii",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/13",
       "subjectName": "Georgia",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/12",
       "subjectName": "Florida",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/11",
       "subjectName": "District of Columbia",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/10",
       "subjectName": "Delaware",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/09",
       "subjectName": "Connecticut",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/5n63hr1"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/08",
       "subjectName": "Colorado",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/06",
       "subjectName": "California",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/05",
       "subjectName": "Arkansas",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/04",
       "subjectName": "Arizona",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/02",
       "subjectName": "Alaska",
-      "subjectTypes": ["AdministrativeArea", "AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea",
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
-      "provenanceId": "dc/sm3m2w3"
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/bqr5zc1"
     },
     {
       "subjectId": "geoId/01",
       "subjectName": "Alabama",
-      "subjectTypes": ["AdministrativeArea1", "State"],
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -3429,7 +4871,9 @@
       "predicate": "typeOf",
       "objectId": "Class",
       "objectName": "Class",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -3437,7 +4881,9 @@
       "predicate": "subClassOf",
       "objectId": "AdministrativeArea",
       "objectName": "AdministrativeArea",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -3445,7 +4891,9 @@
       "predicate": "provenance",
       "objectId": "dc/5l5zxr1",
       "objectName": "http://schema.datacommons.org",
-      "objectTypes": ["Provenance"],
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -3457,11 +4905,15 @@
     {
       "subjectId": "dc/w69kmen1t5l19",
       "subjectName": "Plant Name",
-      "subjectTypes": ["PowerPlant"],
+      "subjectTypes": [
+        "PowerPlant"
+      ],
       "predicate": "containedInPlace",
       "objectId": "State",
       "objectName": "State",
-      "objectTypes": ["Class"],
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/22t2hr3"
     }
   ]

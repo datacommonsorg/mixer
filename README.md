@@ -2,8 +2,8 @@
 
 ## Development Process
 
-In https://github.com/datacommonsorg/mixer, click on "Fork" button to fork the
-repo.
+In Mixer GitHub [repo](https://github.com/datacommonsorg/mixer), click on "Fork"
+button to fork the repo.
 
 Clone your forked repo to your desktop.
 
@@ -71,4 +71,12 @@ go run main.go \
 # Open a new shell
 cd examples/get_place_obs
 go run main.go
+```
+
+## Update golden files on staging
+
+Run the following commands to update golden files in ./golden_response/staging.
+
+```bash
+./update-golden.sh
 ```

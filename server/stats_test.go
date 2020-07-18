@@ -155,6 +155,18 @@ const populationJSON = `{
       "objectName": "count",
       "objectTypes": ["Property"],
       "provenanceId": "dc/5l5zxr1"
+		},
+    {
+      "subjectId": "dc/d20yq6r828zrc",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "TotalPopulation",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/cweckx1"
     }
   ]
 }`
@@ -173,11 +185,13 @@ func TestTriplesToStatsVar(t *testing.T) {
 		return
 	}
 	for _, c := range []struct {
+		statsVar     string
 		triples      *TriplesCache
 		wantStatsVar *StatisticalVariable
 		wantErr      bool
 	}{
 		{
+			"Covid19CumulativeCases",
 			&covidStatsVarTriples,
 			&StatisticalVariable{
 				PopType: "MedicalConditionIncident",
@@ -192,6 +206,7 @@ func TestTriplesToStatsVar(t *testing.T) {
 			false,
 		},
 		{
+			"TotalPopulation",
 			&populationStatsVarTriples,
 			&StatisticalVariable{
 				PopType:           "Person",
@@ -202,7 +217,7 @@ func TestTriplesToStatsVar(t *testing.T) {
 			false,
 		},
 	} {
-		gotStatsVar, err := triplesToStatsVar(c.triples)
+		gotStatsVar, err := triplesToStatsVar(c.statsVar, c.triples)
 		if c.wantErr {
 			if err == nil {
 				t.Errorf("triplesToStatsVar want error for triples %v", c.triples)

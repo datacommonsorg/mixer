@@ -92,14 +92,22 @@ func TestGetPropertyValues(t *testing.T) {
 			t.Errorf("could not GetPropertyValues: %s", err)
 			continue
 		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+
 		var result map[string]map[string][]*server.Node
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
+
+		if generateGolden {
+			updateGolden(result, goldenFile)
+			continue
+		}
+
 		var expected map[string]map[string][]*server.Node
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)

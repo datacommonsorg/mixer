@@ -96,6 +96,7 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 			PopulationType:   c.popType,
 			MeasuredProperty: c.mprop,
 			StatType:         c.statType,
+			SamePlaceType:    true,
 		}
 		for p, v := range c.pvs {
 			req.Pvs = append(req.Pvs, &pb.PropertyValue{
@@ -114,8 +115,15 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
+
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(result, goldenFile)
+			continue
+		}
+
 		var expected map[string]*server.RelatedPlacesInfo
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)

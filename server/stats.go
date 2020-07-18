@@ -53,7 +53,8 @@ const maxChannelSize = 50
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {
 	placeDcids := in.GetPlace()
-	if len(placeDcids) == 0 || in.GetStatsVar() == "" {
+	statsVarDcid := in.GetStatsVar()
+	if len(placeDcids) == 0 || statsVarDcid == "" {
 		return nil, fmt.Errorf("missing required arguments")
 	}
 
@@ -62,16 +63,16 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	op := in.GetObservationPeriod()
 
 	// Read triples for stats var.
-	triplesRowList := buildTriplesKey([]string{in.GetStatsVar()})
+	triplesRowList := buildTriplesKey([]string{statsVarDcid})
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
 	// Get the StatisticalVariable
-	if triples[in.GetStatsVar()] == nil {
-		return nil, fmt.Errorf("No stats var found for %s", in.GetStatsVar())
+	if triples[statsVarDcid] == nil {
+		return nil, fmt.Errorf("No stats var found for %s", statsVarDcid)
 	}
-	statsVar, err := triplesToStatsVar(triples[in.GetStatsVar()])
+	statsVar, err := triplesToStatsVar(statsVarDcid, triples[statsVarDcid])
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +123,8 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 }
 
 // triplesToStatsVar converts a Triples cache into a StatisticalVarible object.
-func triplesToStatsVar(triples *TriplesCache) (*StatisticalVariable, error) {
+func triplesToStatsVar(
+	statsVarDcid string, triples *TriplesCache) (*StatisticalVariable, error) {
 	// Get constraint properties.
 	propValMap := map[string]string{}
 	for _, t := range triples.Triples {
@@ -133,6 +135,9 @@ func triplesToStatsVar(triples *TriplesCache) (*StatisticalVariable, error) {
 	statsVar := StatisticalVariable{}
 	// Populate the field.
 	for _, t := range triples.Triples {
+		if t.SubjectID != statsVarDcid {
+			continue
+		}
 		object := t.ObjectID
 		switch t.Predicate {
 		case "typeOf":
