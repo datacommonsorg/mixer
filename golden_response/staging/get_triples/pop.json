@@ -1,0 +1,24 @@
+{
+  "dc/p/7c8egrk3ypkl5": [
+    {
+      "subjectId": "dc/p/7c8egrk3ypkl5",
+      "predicate": "location",
+      "objectId": "geoId/06",
+      "objectName": "California",
+      "objectTypes": [
+        "State"
+      ],
+      "provenanceId": "dc/vk6c1c3"
+    },
+    {
+      "subjectId": "dc/p/7c8egrk3ypkl5",
+      "predicate": "numConstraints",
+      "objectValue": "1"
+    },
+    {
+      "subjectId": "dc/p/7c8egrk3ypkl5",
+      "predicate": "placeCategory",
+      "objectId": "Park"
+    }
+  ]
+}

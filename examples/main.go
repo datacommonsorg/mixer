@@ -15,13 +15,9 @@
 package main
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"flag"
-	"fmt"
 	"log"
-	"time"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"google.golang.org/grpc"
@@ -37,7 +33,9 @@ func main() {
 	flag.Parse()
 
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(*addr, grpc.WithInsecure())
+	conn, err := grpc.Dial(*addr,
+		grpc.WithInsecure(),
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
@@ -45,25 +43,28 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
-	req := &pb.GetInterestingPlaceAspectsRequest{
-		Dcids: []string{"geoId/0649670"},
+	{
+		// Get Triples
+		req := &pb.GetTriplesRequest{
+			Dcids: []string{"dc/p/7c8egrk3ypkl5"},
+		}
+		r, err := c.GetTriples(ctx, req)
+		if err != nil {
+			log.Fatalf("could not GetTriples: %s", err)
+		}
+		log.Printf("%s", r.GetPayload())
 	}
 
-	fmt.Printf("Requesting { %s}\n", req)
-	start := time.Now()
-	res, err := c.GetInterestingPlaceAspects(ctx, req)
-	elapsed := time.Since(start)
-	if err != nil {
-		log.Printf("Error: %v", err)
-	}
+	// {
+	// 	// Get Stats
+	// 	req := &pb.GetStatsRequest{
+	// 		StatsVar: "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_AsAFractionOfCount_Person_25To64Years",
+	// 	}
+	// 	r, err := c.GetStats(ctx, req)
+	// 	if err != nil {
+	// 		log.Fatalf("could not GetStats: %s", err)
+	// 	}
+	// 	log.Printf("%s", r.GetPayload())
+	// }
 
-	// Format the payload
-	jsonByte := []byte(res.GetPayload())
-	var jsonFmt bytes.Buffer
-	err = json.Indent(&jsonFmt, jsonByte, "", "  ")
-	if err != nil {
-		log.Printf("Error: %v", err)
-	}
-	fmt.Println(string(jsonFmt.Bytes()))
-	fmt.Printf("Request took: %s\n\n", elapsed)
 }
