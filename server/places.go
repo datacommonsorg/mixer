@@ -172,11 +172,11 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 // GetRelatedLocations implements API for Mixer.GetRelatedLocations.
 func (s *Server) GetRelatedLocations(ctx context.Context,
 	in *pb.GetRelatedLocationsRequest) (*pb.GetRelatedLocationsResponse, error) {
-	if len(in.GetDcids()) == 0 || in.GetStatVarDcid() == "" {
+	if in.GetDcid() == "" || len(in.GetStatVarDcids()) == 0 {
 		return nil, fmt.Errorf("missing required arguments")
 	}
-	if !util.CheckValidDCIDs(in.GetDcids()) {
-		return nil, fmt.Errorf("invalid DCIDs")
+	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
+		return nil, fmt.Errorf("invalid DCID")
 	}
 
 	withinPlace := in.GetWithinPlace()
@@ -209,15 +209,14 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		}
 	}
 
-	dcids := in.GetDcids()
 	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
+	for _, statVarDcid := range in.GetStatVarDcids() {
 		if withinPlace != "" {
 			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s^%s", prefix, dcid, withinPlace, in.GetStatVarDcid()))
+				"%s%s^%s^%s", prefix, in.GetDcid(), withinPlace, statVarDcid))
 		} else {
 			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s", prefix, dcid, in.GetStatVarDcid()))
+				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
 		}
 	}
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,

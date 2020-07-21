@@ -360,12 +360,12 @@ message GetRelatedPlacesResponse {
   string payload = 1;
 }
 
-// Request to get related locations of a place for a given stat var DCID.
+// Request to get related locations of a place for given stat var DCIDs.
 message GetRelatedLocationsRequest {
-  // Place DCIDs.
-  repeated string dcids = 1;
+  // Place DCID.
+  string dcid = 1;
 
-  string stat_var_dcid = 2;
+  repeated string stat_var_dcids = 2;
 
   // (Optional) Wheter to require same place type for related places.
   bool same_place_type = 3;
@@ -792,7 +792,7 @@ service Mixer {
     };
   }
 
-  // Get related locations for a given stat var DCID.
+  // Get related locations for given stat var DCIDs.
   rpc GetRelatedLocations(GetRelatedLocationsRequest) returns (GetRelatedLocationsResponse) {
     option (google.api.http) = {
       post: "/node/related-locations"

@@ -38,39 +38,39 @@ func TestGetRelatedLocationsTest(t *testing.T) {
 		path.Dir(filename), "../golden_response/staging/get_related_places")
 
 	for _, c := range []struct {
-		goldenFile  string
-		dcids       []string
-		statVarDcid string
+		goldenFile   string
+		dcid         string
+		statVarDcids []string
 	}{
 		{
 			"population.json",
-			[]string{"geoId/06085"},
-			"Count_Person",
+			"geoId/06085",
+			[]string{"Count_Person"},
 		},
 		{
 			"income.json",
-			[]string{"geoId/06085"},
-			"Median_Income_Person",
+			"geoId/06085",
+			[]string{"Median_Income_Person"},
 		},
 		{
 			"age.json",
-			[]string{"geoId/06085"},
-			"Median_Age_Person",
+			"geoId/06085",
+			[]string{"Median_Age_Person"},
 		},
 		{
 			"unemployment.json",
-			[]string{"geoId/06085"},
-			"UnemploymentRate_Person",
+			"geoId/06085",
+			[]string{"UnemploymentRate_Person"},
 		},
 		{
 			"crime.json",
-			[]string{"geoId/06"},
-			"Count_CriminalActivities_CombinedCrime",
+			"geoId/06",
+			[]string{"Count_CriminalActivities_CombinedCrime"},
 		},
 	} {
 		req := &pb.GetRelatedLocationsRequest{
-			Dcids:       c.dcids,
-			StatVarDcid: c.statVarDcid,
+			Dcid:         c.dcid,
+			StatVarDcids: c.statVarDcids,
 		}
 		resp, err := client.GetRelatedLocations(ctx, req)
 		if err != nil {
