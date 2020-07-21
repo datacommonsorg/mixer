@@ -14,8 +14,13 @@
 
 #!/bin/bash
 
-gcloud config set project google.com:datcom-store-dev
 export BT=$(head -1 ../deployment/bigtable.txt)
+export PROJECT=google.com:datcom-store-dev
+echo $BT
+echo $PROJECT
 
 # Check get_stats cache
-cbt -instance prophet-cache read ${BT} prefix=d/f/country/AUT^count^measured^^^^Person^gender^Male
+echo "Get stats for d/f/country/AUT^count^measured^^^^Person^gender^Male"
+cbt -project=$PROJECT -instance prophet-cache read ${BT} prefix="d/f/country/AUT^count^measured^^^^Person^gender^Male"
+echo "Get stats for d/f/country/AUT^count^measured^Count_Person_25To64Years^^^Person^age^Years25To64^educationalAttainment^LessThanPrimaryEducation&PrimaryEducation&LowerSecondaryEducation"
+cbt -project=$PROJECT -instance prophet-cache read ${BT} prefix="d/f/country/AUT^count^measured^Count_Person_25To64Years^^^Person^age^Years25To64^educationalAttainment^LessThanPrimaryEducation&PrimaryEducation&LowerSecondaryEducation"

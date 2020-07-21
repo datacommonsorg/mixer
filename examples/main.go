@@ -55,16 +55,17 @@ func main() {
 		log.Printf("%s", r.GetPayload())
 	}
 
-	// {
-	// 	// Get Stats
-	// 	req := &pb.GetStatsRequest{
-	// 		StatsVar: "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_AsAFractionOfCount_Person_25To64Years",
-	// 	}
-	// 	r, err := c.GetStats(ctx, req)
-	// 	if err != nil {
-	// 		log.Fatalf("could not GetStats: %s", err)
-	// 	}
-	// 	log.Printf("%s", r.GetPayload())
-	// }
+	{
+		// Get Stats
+		req := &pb.GetStatsRequest{
+			StatsVar: "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_AsAFractionOfCount_Person_25To64Years",
+			Place:    []string{"country/AUT"},
+		}
+		r, err := c.GetStats(ctx, req)
+		if err != nil {
+			log.Fatalf("could not GetStats: %s", err)
+		}
+		log.Printf("%s", r.GetPayload())
+	}
 
 }

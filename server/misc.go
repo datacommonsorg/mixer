@@ -33,7 +33,7 @@ func (s *Server) Translate(ctx context.Context,
 	}
 
 	out := pb.TranslateResponse{}
-	mappings, err := translator.ParseMapping(in.GetSchemaMapping(), s.metadata.Bq)
+	mappings, err := translator.ParseMapping(in.GetSchemaMapping(), "bq")
 	if err != nil {
 		return nil, err
 	}
