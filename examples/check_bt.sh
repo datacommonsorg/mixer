@@ -14,13 +14,15 @@
 
 #!/bin/bash
 
+# Useful BT prefix:
+
+# "d/f/country/AUT^count^measured^^^^Person^gender^Male"
+# "d/f/country/AUT^count^measured^Count_Person_25To64Years^^^Person^age^Years25To64^educationalAttainment^LessThanPrimaryEducation&PrimaryEducation&LowerSecondaryEducation"
+
 export BT=$(head -1 ../deployment/bigtable.txt)
 export PROJECT=google.com:datcom-store-dev
-echo $BT
-echo $PROJECT
+echo "$BT"
+echo "$PROJECT"
 
 # Check get_stats cache
-echo "Get stats for d/f/country/AUT^count^measured^^^^Person^gender^Male"
-cbt -project=$PROJECT -instance prophet-cache read ${BT} prefix="d/f/country/AUT^count^measured^^^^Person^gender^Male"
-echo "Get stats for d/f/country/AUT^count^measured^Count_Person_25To64Years^^^Person^age^Years25To64^educationalAttainment^LessThanPrimaryEducation&PrimaryEducation&LowerSecondaryEducation"
-cbt -project=$PROJECT -instance prophet-cache read ${BT} prefix="d/f/country/AUT^count^measured^Count_Person_25To64Years^^^Person^age^Years25To64^educationalAttainment^LessThanPrimaryEducation&PrimaryEducation&LowerSecondaryEducation"
+cbt -project="$PROJECT" -instance prophet-cache read "${BT}" prefix=$1
