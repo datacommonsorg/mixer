@@ -169,6 +169,36 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 	return &pb.GetRelatedPlacesResponse{Payload: string(jsonRaw)}, nil
 }
 
+// RelatedLocationsPrefixMap is a map from different scenarios to key prefix for
+// RelatedLocations cache.
+//
+// The three levels of keys are:
+// - Whether related locaitons have the same ancestor.
+// - Whether related locaitons have the same place type.
+// - Whether closeness computaion is per capita.
+var RelatedLocationsPrefixMap = map[bool]map[bool]map[bool]string{
+	true: {
+		true: {
+			true:  util.BtRelatedLocationsSameTypeAndAncestorPCPrefix,
+			false: util.BtRelatedLocationsSameTypeAndAncestorPrefix,
+		},
+		false: {
+			true:  util.BtRelatedLocationsSameAncestorPCPrefix,
+			false: util.BtRelatedLocationsSameAncestorPrefix,
+		},
+	},
+	false: {
+		true: {
+			true:  util.BtRelatedLocationsSameTypePCPrefix,
+			false: util.BtRelatedLocationsSameTypePrefix,
+		},
+		false: {
+			true:  util.BtRelatedLocationsPCPrefix,
+			false: util.BtRelatedLocationsPrefix,
+		},
+	},
+}
+
 // GetRelatedLocations implements API for Mixer.GetRelatedLocations.
 func (s *Server) GetRelatedLocations(ctx context.Context,
 	in *pb.GetRelatedLocationsRequest) (*pb.GetRelatedLocationsResponse, error) {
@@ -179,41 +209,16 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		return nil, fmt.Errorf("invalid DCID")
 	}
 
-	withinPlace := in.GetWithinPlace()
+	sameAncestor := (in.GetWithinPlace() != "")
 	samePlaceType := in.GetSamePlaceType()
 	isPerCapita := in.GetIsPerCapita()
-	var prefix string
-	if withinPlace == "" {
-		if samePlaceType {
-			prefix = util.BtRelatedLocationsSameTypePrefix
-			if isPerCapita {
-				prefix = util.BtRelatedLocationsSameTypePCPrefix
-			}
-		} else {
-			prefix = util.BtRelatedLocationsPrefix
-			if isPerCapita {
-				prefix = util.BtRelatedLocationsPCPrefix
-			}
-		}
-	} else {
-		if samePlaceType {
-			prefix = util.BtRelatedLocationsSameTypeAndAncestorPrefix
-			if isPerCapita {
-				prefix = util.BtRelatedLocationsSameTypeAndAncestorPCPrefix
-			}
-		} else {
-			prefix = util.BtRelatedLocationsSameAncestorPrefix
-			if isPerCapita {
-				prefix = util.BtRelatedLocationsSameAncestorPCPrefix
-			}
-		}
-	}
+	prefix := RelatedLocationsPrefixMap[sameAncestor][samePlaceType][isPerCapita]
 
 	rowList := bigtable.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {
-		if withinPlace != "" {
+		if sameAncestor {
 			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s^%s", prefix, in.GetDcid(), withinPlace, statVarDcid))
+				"%s%s^%s^%s", prefix, in.GetDcid(), in.GetWithinPlace(), statVarDcid))
 		} else {
 			rowList = append(rowList, fmt.Sprintf(
 				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
