@@ -169,6 +169,80 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 	return &pb.GetRelatedPlacesResponse{Payload: string(jsonRaw)}, nil
 }
 
+// GetRelatedLocations implements API for Mixer.GetRelatedLocations.
+func (s *Server) GetRelatedLocations(ctx context.Context,
+	in *pb.GetRelatedLocationsRequest) (*pb.GetRelatedLocationsResponse, error) {
+	if len(in.GetDcids()) == 0 || in.GetStatVarDcid() == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(in.GetDcids()) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
+
+	withinPlace := in.GetWithinPlace()
+	samePlaceType := in.GetSamePlaceType()
+	isPerCapita := in.GetIsPerCapita()
+	var prefix string
+	if withinPlace == "" {
+		if samePlaceType {
+			prefix = util.BtRelatedLocationsSameTypePrefix
+			if isPerCapita {
+				prefix = util.BtRelatedLocationsSameTypePCPrefix
+			}
+		} else {
+			prefix = util.BtRelatedLocationsPrefix
+			if isPerCapita {
+				prefix = util.BtRelatedLocationsPCPrefix
+			}
+		}
+	} else {
+		if samePlaceType {
+			prefix = util.BtRelatedLocationsSameTypeAndAncestorPrefix
+			if isPerCapita {
+				prefix = util.BtRelatedLocationsSameTypeAndAncestorPCPrefix
+			}
+		} else {
+			prefix = util.BtRelatedLocationsSameAncestorPrefix
+			if isPerCapita {
+				prefix = util.BtRelatedLocationsSameAncestorPCPrefix
+			}
+		}
+	}
+
+	dcids := in.GetDcids()
+	rowList := bigtable.RowList{}
+	for _, dcid := range dcids {
+		if withinPlace != "" {
+			rowList = append(rowList, fmt.Sprintf(
+				"%s%s^%s^%s", prefix, dcid, withinPlace, in.GetStatVarDcid()))
+		} else {
+			rowList = append(rowList, fmt.Sprintf(
+				"%s%s^%s", prefix, dcid, in.GetStatVarDcid()))
+		}
+	}
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var btRelatedPlacesInfo RelatedPlacesInfo
+			err := json.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
+			if err != nil {
+				return nil, err
+			}
+			return &btRelatedPlacesInfo, nil
+		})
+	if err != nil {
+		return nil, err
+	}
+	results := map[string]*RelatedPlacesInfo{}
+	for dcid, data := range dataMap {
+		results[dcid] = data.(*RelatedPlacesInfo)
+	}
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.GetRelatedLocationsResponse{Payload: string(jsonRaw)}, nil
+}
+
 // GetInterestingPlaceAspects implements API for Mixer.GetInterestingPlaceAspects.
 func (s *Server) GetInterestingPlaceAspects(
 	ctx context.Context, in *pb.GetInterestingPlaceAspectsRequest) (

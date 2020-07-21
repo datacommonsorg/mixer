@@ -27,7 +27,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetRelatedPlacesTest(t *testing.T) {
+func TestGetRelatedLocationsTest(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -38,44 +38,75 @@ func TestGetRelatedPlacesTest(t *testing.T) {
 		path.Dir(filename), "../golden_response/staging/get_related_places")
 
 	for _, c := range []struct {
-		goldenFile  string
-		dcids       []string
-		statVarDcid string
+		goldenFile string
+		dcids      []string
+		popType    string
+		mprop      string
+		statType   string
+		pvs        map[string]string
 	}{
 		{
 			"population.json",
 			[]string{"geoId/06085"},
-			"Count_Person",
+			"Person",
+			"count",
+			"measuredValue",
+			nil,
 		},
 		{
 			"income.json",
 			[]string{"geoId/06085"},
-			"Median_Income_Person",
+			"Person",
+			"income",
+			"medianValue",
+			map[string]string{
+				"age":          "Years15Onwards",
+				"incomeStatus": "WithIncome",
+			},
 		},
 		{
 			"age.json",
 			[]string{"geoId/06085"},
-			"Median_Age_Person",
+			"Person",
+			"age",
+			"medianValue",
+			nil,
 		},
 		{
 			"unemployment.json",
 			[]string{"geoId/06085"},
-			"UnemploymentRate_Person",
+			"Person",
+			"unemploymentRate",
+			"measuredValue",
+			nil,
 		},
 		{
 			"crime.json",
 			[]string{"geoId/06"},
-			"Count_CriminalActivities_CombinedCrime",
+			"CriminalActivities",
+			"count",
+			"measuredValue",
+			map[string]string{
+				"crimeType": "UCR_CombinedCrime",
+			},
 		},
 	} {
-		req := &pb.GetRelatedLocationsRequest{
-			Dcids:         c.dcids,
-			StatVarDcid:   c.statVarDcid,
-			SamePlaceType: true,
+		req := &pb.GetRelatedPlacesRequest{
+			Dcids:            c.dcids,
+			PopulationType:   c.popType,
+			MeasuredProperty: c.mprop,
+			StatType:         c.statType,
+			SamePlaceType:    true,
 		}
-		resp, err := client.GetRelatedLocations(ctx, req)
+		for p, v := range c.pvs {
+			req.Pvs = append(req.Pvs, &pb.PropertyValue{
+				Property: p,
+				Value:    v,
+			})
+		}
+		resp, err := client.GetRelatedPlaces(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetRelatedLocations: %s", err)
+			t.Errorf("could not GetRelatedPlaces: %s", err)
 			continue
 		}
 		var result map[string]*server.RelatedPlacesInfo
