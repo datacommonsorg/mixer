@@ -50,7 +50,7 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
-		})
+		}, TokenTypeDcid)
 	if err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 				return nil, err
 			}
 			return &btRelatedPlacesInfo, nil
-		})
+		}, TokenTypeDcid)
 	if err != nil {
 		return nil, err
 	}
@@ -227,7 +227,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 				return nil, err
 			}
 			return &btRelatedPlacesInfo, nil
-		})
+		}, TokenTypeLastItem)
 	if err != nil {
 		return nil, err
 	}
@@ -268,7 +268,7 @@ func (s *Server) GetInterestingPlaceAspects(
 				return nil, err
 			}
 			return &btInterestingPlaceAspects, nil
-		})
+		}, TokenTypeDcid)
 	if err != nil {
 		return nil, err
 	}
@@ -300,7 +300,7 @@ func (s *Server) GetPlaceStatsVar(
 				return nil, err
 			}
 			return data.StatVarIds, nil
-		})
+		}, TokenTypeDcid)
 	if err != nil {
 		return nil, err
 	}

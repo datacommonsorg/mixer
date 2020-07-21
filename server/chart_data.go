@@ -42,7 +42,7 @@ func (s *Server) GetChartData(ctx context.Context,
 	if len(memData) < len(keys) {
 		dataMap, err := bigTableReadRowsParallel(
 			ctx, s.btTable, rowList,
-			convertToObsSeries,
+			convertToObsSeries, TokenTypeDcid,
 			true,
 		)
 		if err != nil {

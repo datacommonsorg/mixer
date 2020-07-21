@@ -43,24 +43,14 @@ func TestGetRelatedLocationsTest(t *testing.T) {
 		statVarDcids []string
 	}{
 		{
-			"population.json",
+			"county.json",
 			"geoId/06085",
-			[]string{"Count_Person"},
-		},
-		{
-			"income.json",
-			"geoId/06085",
-			[]string{"Median_Income_Person"},
-		},
-		{
-			"age.json",
-			"geoId/06085",
-			[]string{"Median_Age_Person"},
-		},
-		{
-			"unemployment.json",
-			"geoId/06085",
-			[]string{"UnemploymentRate_Person"},
+			[]string{
+				"Count_Person",
+				"Median_Income_Person",
+				"Median_Age_Person",
+				"UnemploymentRate_Person",
+			},
 		},
 		{
 			"crime.json",

@@ -191,7 +191,7 @@ func readPropertyValues(
 				return nil, err
 			}
 			return propVals.Nodes, nil
-		})
+		}, TokenTypeDcid)
 	if err != nil {
 		return nil, err
 	}

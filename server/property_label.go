@@ -51,7 +51,7 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 				return nil, err
 			}
 			return &propLabels, nil
-		})
+		}, TokenTypeDcid)
 	if err != nil {
 		return nil, err
 	}

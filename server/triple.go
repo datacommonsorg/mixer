@@ -89,7 +89,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 				ctx, s.btTable, rowList,
 				func(dcid string, raw []byte) (interface{}, error) {
 					return string(raw), nil
-				})
+				}, TokenTypeDcid)
 			if err != nil {
 				return nil, err
 			}
@@ -162,7 +162,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 					})
 				}
 				return triples, nil
-			})
+			}, TokenTypeDcid)
 		if err != nil {
 			return nil, err
 		}
@@ -234,7 +234,7 @@ func readTriples(
 				return nil, err
 			}
 			return &triples, nil
-		})
+		}, TokenTypeDcid)
 	if err != nil {
 		return nil, err
 	}
