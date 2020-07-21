@@ -75,6 +75,14 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			resultsMap[dcid] = applyLimit(dcid, allTriplesCache[dcid].Triples, limit)
 		}
 	}
+	// Regular triples cache from memcache for population data
+	if len(popDcids) > 0 {
+		dataMap := s.memcache.ReadParallel(
+			buildTriplesKey(popDcids), convertTriplesCache)
+		for dcid, data := range dataMap {
+			resultsMap[dcid] = data.(*TriplesCache).Triples
+		}
+	}
 
 	// Observation DCIDs.
 	if len(obsDcids) > 0 {
@@ -141,33 +149,19 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	if len(popDcids) > 0 {
 		rowList := buildPopPVKey(popDcids)
 		dataMap, err := bigTableReadRowsParallel(
-			ctx, s.btTable, rowList,
-			func(dcid string, jsonRaw []byte) (interface{}, error) {
-				jsonVal := string(jsonRaw)
-				parts := strings.Split(jsonVal, "^")
-				if len(parts) == 0 || len(parts)%2 != 0 {
-					return nil, fmt.Errorf("wrong number of PVs: %v", jsonVal)
-				}
-				triples := []*Triple{}
-				triples = append(triples, &Triple{
-					SubjectID:   dcid,
-					Predicate:   "numConstraints",
-					ObjectValue: strconv.Itoa(len(parts) / 2),
-				})
-				for i := 0; i < len(parts); i = i + 2 {
-					triples = append(triples, &Triple{
-						SubjectID: dcid,
-						Predicate: parts[i],
-						ObjectID:  parts[i+1],
-					})
-				}
-				return triples, nil
-			})
+			ctx, s.btTable, rowList, convertPopTriples)
 		if err != nil {
 			return nil, err
 		}
 		for dcid, data := range dataMap {
 			resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
+		}
+		// No data found in base cache, look in branch cache
+		if len(dataMap) == 0 {
+			branchDataMap := s.memcache.ReadParallel(rowList, convertPopTriples)
+			for dcid, data := range branchDataMap {
+				resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
+			}
 		}
 	}
 
@@ -177,6 +171,37 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		return nil, err
 	}
 	return &pb.GetTriplesResponse{Payload: string(jsonRaw)}, nil
+}
+
+func convertTriplesCache(dcid string, jsonRaw []byte) (interface{}, error) {
+	var triples TriplesCache
+	err := json.Unmarshal(jsonRaw, &triples)
+	if err != nil {
+		return nil, err
+	}
+	return &triples, nil
+}
+
+func convertPopTriples(dcid string, jsonRaw []byte) (interface{}, error) {
+	jsonVal := string(jsonRaw)
+	parts := strings.Split(jsonVal, "^")
+	if len(parts) == 0 || len(parts)%2 != 0 {
+		return nil, fmt.Errorf("wrong number of PVs: %v", jsonVal)
+	}
+	triples := []*Triple{}
+	triples = append(triples, &Triple{
+		SubjectID:   dcid,
+		Predicate:   "numConstraints",
+		ObjectValue: strconv.Itoa(len(parts) / 2),
+	})
+	for i := 0; i < len(parts); i = i + 2 {
+		triples = append(triples, &Triple{
+			SubjectID: dcid,
+			Predicate: parts[i],
+			ObjectID:  parts[i+1],
+		})
+	}
+	return triples, nil
 }
 
 func applyLimit(
@@ -226,15 +251,7 @@ func readTriples(
 	ctx context.Context, btTable *bigtable.Table, rowList bigtable.RowList) (
 	map[string]*TriplesCache, error) {
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var triples TriplesCache
-			err := json.Unmarshal(jsonRaw, &triples)
-			if err != nil {
-				return nil, err
-			}
-			return &triples, nil
-		})
+		ctx, btTable, rowList, convertTriplesCache)
 	if err != nil {
 		return nil, err
 	}

@@ -29,7 +29,13 @@ import (
 
 func TestGetTriples(t *testing.T) {
 	ctx := context.Background()
-	client, err := setup(server.NewMemcache(map[string][]byte{}))
+
+	memcacheData, err := loadMemcache()
+	if err != nil {
+		t.Fatalf("Failed to load memcache %v", err)
+	}
+
+	client, err := setup(server.NewMemcache(memcacheData))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -54,6 +60,13 @@ func TestGetTriples(t *testing.T) {
 		{
 			[]string{"zip/00603"},
 			"place.json",
+			true,
+			-1,
+			nil,
+		},
+		{
+			[]string{"dc/p/7c8egrk3ypkl5"},
+			"pop.json",
 			true,
 			-1,
 			nil,

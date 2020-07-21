@@ -29,12 +29,13 @@ import (
 )
 
 var (
-	bqDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	btTable    = flag.String("bt_table", "", "DataCommons Bigtable table.")
-	btProject  = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
-	btInstance = flag.String("bt_instance", "", "BigTable instance.")
-	projectID  = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	port       = flag.String("port", ":12345", "Port on which to run the server.")
+	bqDataset    = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	btTable      = flag.String("bt_table", "", "DataCommons Bigtable table.")
+	btProject    = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
+	btInstance   = flag.String("bt_instance", "", "BigTable instance.")
+	projectID    = flag.String("project_id", "", "The cloud project to run the mixer instance.")
+	branchFolder = flag.String("branch_folder", "", "The branch cache gcs folder.")
+	port         = flag.String("port", ":12345", "Port on which to run the server.")
 )
 
 const (
@@ -66,11 +67,15 @@ func main() {
 		log.Fatalf("failed to create metadata: %v", err)
 	}
 	// Memcache
-	branchCacheFolder, err := server.ReadBranchCacheFolder(
-		ctx, branchCacheBucket, branchCacheVersionFile)
-	if err != nil {
-		log.Fatalf("failed to read branch cache folder: %v", err)
+	branchCacheFolder := *branchFolder
+	if branchCacheFolder == "" {
+		branchCacheFolder, err = server.ReadBranchCacheFolder(
+			ctx, branchCacheBucket, branchCacheVersionFile)
+		if err != nil {
+			log.Fatalf("failed to read branch cache folder: %v", err)
+		}
 	}
+
 	memcache, err := server.NewMemcacheFromGCS(
 		ctx, branchCacheBucket, branchCacheFolder)
 	if err != nil {
