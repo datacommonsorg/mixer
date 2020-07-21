@@ -38,75 +38,43 @@ func TestGetRelatedLocationsTest(t *testing.T) {
 		path.Dir(filename), "../golden_response/staging/get_related_places")
 
 	for _, c := range []struct {
-		goldenFile string
-		dcids      []string
-		popType    string
-		mprop      string
-		statType   string
-		pvs        map[string]string
+		goldenFile  string
+		dcids       []string
+		statVarDcid string
 	}{
 		{
 			"population.json",
 			[]string{"geoId/06085"},
-			"Person",
-			"count",
-			"measuredValue",
-			nil,
+			"Count_Person",
 		},
 		{
 			"income.json",
 			[]string{"geoId/06085"},
-			"Person",
-			"income",
-			"medianValue",
-			map[string]string{
-				"age":          "Years15Onwards",
-				"incomeStatus": "WithIncome",
-			},
+			"Median_Income_Person",
 		},
 		{
 			"age.json",
 			[]string{"geoId/06085"},
-			"Person",
-			"age",
-			"medianValue",
-			nil,
+			"Median_Age_Person",
 		},
 		{
 			"unemployment.json",
 			[]string{"geoId/06085"},
-			"Person",
-			"unemploymentRate",
-			"measuredValue",
-			nil,
+			"UnemploymentRate_Person",
 		},
 		{
 			"crime.json",
 			[]string{"geoId/06"},
-			"CriminalActivities",
-			"count",
-			"measuredValue",
-			map[string]string{
-				"crimeType": "UCR_CombinedCrime",
-			},
+			"Count_CriminalActivities_CombinedCrime",
 		},
 	} {
-		req := &pb.GetRelatedPlacesRequest{
-			Dcids:            c.dcids,
-			PopulationType:   c.popType,
-			MeasuredProperty: c.mprop,
-			StatType:         c.statType,
-			SamePlaceType:    true,
+		req := &pb.GetRelatedLocationsRequest{
+			Dcids:       c.dcids,
+			StatVarDcid: c.statVarDcid,
 		}
-		for p, v := range c.pvs {
-			req.Pvs = append(req.Pvs, &pb.PropertyValue{
-				Property: p,
-				Value:    v,
-			})
-		}
-		resp, err := client.GetRelatedPlaces(ctx, req)
+		resp, err := client.GetRelatedLocations(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetRelatedPlaces: %s", err)
+			t.Errorf("could not GetRelatedLocations: %s", err)
 			continue
 		}
 		var result map[string]*server.RelatedPlacesInfo
