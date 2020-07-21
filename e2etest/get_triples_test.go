@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"path"
 	"runtime"
 	"testing"
@@ -95,7 +94,6 @@ func TestGetTriples(t *testing.T) {
 			t.Errorf("could not GetTriples: %s", err)
 			continue
 		}
-		log.Println(resp.GetPayload())
 		var result map[string][]*server.Triple
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
