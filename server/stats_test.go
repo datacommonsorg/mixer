@@ -262,7 +262,8 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			&pb.ObsTimeSeries{
-				Data: map[string]float64{"2011": 100, "2012": 101},
+				Data:   map[string]float64{"2011": 100, "2012": 101},
+				Source: "CensusPEP",
 			},
 		},
 		// Filter by mmethod
@@ -285,7 +286,8 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			&pb.ObsTimeSeries{
-				Data: map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+				Data:   map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+				Source: "CensusACS5YearSurvey",
 			},
 		},
 		// Filter by observation period
@@ -310,7 +312,8 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"P2Y",
 			&pb.ObsTimeSeries{
-				Data: map[string]float64{"2017": 101},
+				Data:   map[string]float64{"2017": 101},
+				Source: "CensusPEP",
 			},
 		},
 		// No match
