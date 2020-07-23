@@ -220,7 +220,7 @@ func (s *Server) GetPopulations(
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
-		}, TokenTypeDcid)
+		}, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -273,7 +273,7 @@ func (s *Server) GetObservations(
 		ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
-		}, TokenTypeDcid)
+		}, nil)
 	if err != nil {
 		return nil, err
 	}

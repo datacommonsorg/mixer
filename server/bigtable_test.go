@@ -36,7 +36,7 @@ func TestReadRowsParallel(t *testing.T) {
 	dataMap, err := bigTableReadRowsParallel(ctx, btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
-		}, TokenTypeDcid)
+		}, nil)
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}

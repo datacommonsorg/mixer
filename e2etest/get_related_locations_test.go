@@ -17,6 +17,7 @@ package e2etest
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -35,7 +36,7 @@ func TestGetRelatedLocationsTest(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_related_places")
+		path.Dir(filename), "../golden_response/staging/get_related_locations")
 
 	for _, c := range []struct {
 		goldenFile   string
@@ -46,16 +47,16 @@ func TestGetRelatedLocationsTest(t *testing.T) {
 			"county.json",
 			"geoId/06085",
 			[]string{
-				"Count_Person",
-				"Median_Income_Person",
-				"Median_Age_Person",
-				"UnemploymentRate_Person",
+				"TotalPopulation",
+				"MedianIncome",
+				"MedianAge",
+				"UnemploymentRate",
 			},
 		},
 		{
 			"crime.json",
 			"geoId/06",
-			[]string{"Count_CriminalActivities_CombinedCrime"},
+			[]string{"TotalCrimes"},
 		},
 	} {
 		req := &pb.GetRelatedLocationsRequest{
@@ -73,6 +74,8 @@ func TestGetRelatedLocationsTest(t *testing.T) {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
+
+		fmt.Println(resp.GetPayload())
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {

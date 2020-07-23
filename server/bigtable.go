@@ -17,21 +17,10 @@ package server
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	"cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/util"
 	"golang.org/x/sync/errgroup"
-)
-
-// TokenType is the type of the token used for each BT row.
-type TokenType int
-
-const (
-	// TokenTypeDcid means DCID is used as BT row token.
-	TokenTypeDcid TokenType = iota
-	// TokenTypeLastItem means the last item in the key string is used as BT row token.
-	TokenTypeLastItem
 )
 
 // bigTableReadRowsParallel reads BigTable rows in parallel,
@@ -41,8 +30,7 @@ func bigTableReadRowsParallel(
 	btTable *bigtable.Table,
 	rowSet bigtable.RowSet,
 	action func(string, []byte) (interface{}, error),
-	tokenType TokenType,
-	opts ...bool) (
+	getToken func(string) (string, error)) (
 	map[string]interface{}, error) {
 	// Function start
 	var rowSetSize int
@@ -84,30 +72,15 @@ func bigTableReadRowsParallel(
 						return true
 					}
 					raw := btRow[util.BtFamily][0].Value
-					var token string
-					var err error
-					if len(opts) > 0 && opts[0] {
-						token, err = util.RemoveKeyPrefix(btRow.Key())
-						if err != nil {
-							return false
-						}
-					} else {
-						switch tokenType {
-						case TokenTypeDcid:
-							token, err = util.KeyToDcid(btRow.Key())
-							if err != nil {
-								return false
-							}
-						case TokenTypeLastItem:
-							parts := strings.Split(btRow.Key(), "^")
-							if len(parts) <= 1 {
-								return false
-							}
-							token = parts[len(parts)-1]
-						default:
-							return false
-						}
+
+					if getToken == nil {
+						getToken = util.KeyToDcid
 					}
+					token, err := getToken(btRow.Key())
+					if err != nil {
+						return false
+					}
+
 					jsonRaw, err := util.UnzipAndDecode(string(raw))
 					if err != nil {
 						return false

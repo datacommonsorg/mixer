@@ -231,7 +231,7 @@ func readStats(ctx context.Context, btTable *bigtable.Table,
 	rowList bigtable.RowList) (map[string]*pb.ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertToObsSeries, TokenTypeDcid)
+		ctx, btTable, rowList, convertToObsSeries, nil)
 	if err != nil {
 		return nil, err
 	}

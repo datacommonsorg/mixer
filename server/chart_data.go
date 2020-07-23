@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/util"
 )
 
 // GetChartData implements API for Mixer.GetChartData.
@@ -42,9 +43,7 @@ func (s *Server) GetChartData(ctx context.Context,
 	if len(memData) < len(keys) {
 		dataMap, err := bigTableReadRowsParallel(
 			ctx, s.btTable, rowList,
-			convertToObsSeries, TokenTypeDcid,
-			true,
-		)
+			convertToObsSeries, util.RemoveKeyPrefix)
 		if err != nil {
 			return nil, err
 		}
