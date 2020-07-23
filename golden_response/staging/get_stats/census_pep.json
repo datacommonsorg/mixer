@@ -123,6 +123,7 @@
       "2019": 328239523
     },
     "place_name": "United States",
+    "is_dc_aggregate": true,
     "place_dcid": "country/USA"
   },
   "geoId/06": {
@@ -329,7 +330,7 @@
       "2017": 81197,
       "2018": 83377
     },
-    "place_name": "Mountain View",
+    "place_name": "City of Mountain View",
     "place_dcid": "geoId/0649670"
   }
 }

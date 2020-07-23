@@ -1,12 +1,12 @@
 {
   "geoId/06085": {
     "relatedPlaces": [
+      "geoId/06001",
       "geoId/12011",
       "geoId/26163",
-      "geoId/48029",
-      "geoId/48439"
+      "geoId/48029"
     ],
     "rankFromTop": 18,
-    "rankFromBottom": 3092
+    "rankFromBottom": 3157
   }
 }
