@@ -30,7 +30,7 @@ func bigTableReadRowsParallel(
 	btTable *bigtable.Table,
 	rowSet bigtable.RowSet,
 	action func(string, []byte) (interface{}, error),
-	opts ...bool) (
+	getToken func(string) (string, error)) (
 	map[string]interface{}, error) {
 	// Function start
 	var rowSetSize int
@@ -72,19 +72,15 @@ func bigTableReadRowsParallel(
 						return true
 					}
 					raw := btRow[util.BtFamily][0].Value
-					var token string
-					var err error
-					if len(opts) > 0 && opts[0] {
-						token, err = util.RemoveKeyPrefix(btRow.Key())
-						if err != nil {
-							return false
-						}
-					} else {
-						token, err = util.KeyToDcid(btRow.Key())
-						if err != nil {
-							return false
-						}
+
+					if getToken == nil {
+						getToken = util.KeyToDcid
 					}
+					token, err := getToken(btRow.Key())
+					if err != nil {
+						return false
+					}
+
 					jsonRaw, err := util.UnzipAndDecode(string(raw))
 					if err != nil {
 						return false

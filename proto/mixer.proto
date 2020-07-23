@@ -360,6 +360,29 @@ message GetRelatedPlacesResponse {
   string payload = 1;
 }
 
+// Request to get related locations of a place for given stat var DCIDs.
+message GetRelatedLocationsRequest {
+  // Place DCID.
+  string dcid = 1;
+
+  repeated string stat_var_dcids = 2;
+
+  // (Optional) Wheter to require same place type for related places.
+  bool same_place_type = 3;
+
+  // (Optional) Whether to require all related places under the same ancestor.
+  string within_place = 4;
+
+  // (Opitonal) Whether the computation needs to be based on per capita.
+  bool is_per_capita = 5;
+}
+
+// Response of GetRelatedLocations request.
+message GetRelatedLocationsResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
 // Request to get interesting aspects for places.
 message GetInterestingPlaceAspectsRequest {
    // Place DCIDs.
@@ -765,6 +788,14 @@ service Mixer {
   rpc GetRelatedPlaces(GetRelatedPlacesRequest) returns (GetRelatedPlacesResponse) {
     option (google.api.http) = {
       post: "/node/related-places"
+      body: "*"
+    };
+  }
+
+  // Get related locations for given stat var DCIDs.
+  rpc GetRelatedLocations(GetRelatedLocationsRequest) returns (GetRelatedLocationsResponse) {
+    option (google.api.http) = {
+      post: "/node/related-locations"
       body: "*"
     };
   }

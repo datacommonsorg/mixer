@@ -50,7 +50,7 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
-		})
+		}, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 				return nil, err
 			}
 			return &btRelatedPlacesInfo, nil
-		})
+		}, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -167,6 +167,90 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 		return nil, err
 	}
 	return &pb.GetRelatedPlacesResponse{Payload: string(jsonRaw)}, nil
+}
+
+// RelatedLocationsPrefixMap is a map from different scenarios to key prefix for
+// RelatedLocations cache.
+//
+// The three levels of keys are:
+// - Whether related locaitons have the same ancestor.
+// - Whether related locaitons have the same place type.
+// - Whether closeness computaion is per capita.
+var RelatedLocationsPrefixMap = map[bool]map[bool]map[bool]string{
+	true: {
+		true: {
+			true:  util.BtRelatedLocationsSameTypeAndAncestorPCPrefix,
+			false: util.BtRelatedLocationsSameTypeAndAncestorPrefix,
+		},
+		false: {
+			true:  util.BtRelatedLocationsSameAncestorPCPrefix,
+			false: util.BtRelatedLocationsSameAncestorPrefix,
+		},
+	},
+	false: {
+		true: {
+			true:  util.BtRelatedLocationsSameTypePCPrefix,
+			false: util.BtRelatedLocationsSameTypePrefix,
+		},
+		false: {
+			true:  util.BtRelatedLocationsPCPrefix,
+			false: util.BtRelatedLocationsPrefix,
+		},
+	},
+}
+
+// GetRelatedLocations implements API for Mixer.GetRelatedLocations.
+func (s *Server) GetRelatedLocations(ctx context.Context,
+	in *pb.GetRelatedLocationsRequest) (*pb.GetRelatedLocationsResponse, error) {
+	if in.GetDcid() == "" || len(in.GetStatVarDcids()) == 0 {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
+		return nil, fmt.Errorf("invalid DCID")
+	}
+
+	sameAncestor := (in.GetWithinPlace() != "")
+	samePlaceType := in.GetSamePlaceType()
+	isPerCapita := in.GetIsPerCapita()
+	prefix := RelatedLocationsPrefixMap[sameAncestor][samePlaceType][isPerCapita]
+
+	rowList := bigtable.RowList{}
+	for _, statVarDcid := range in.GetStatVarDcids() {
+		if sameAncestor {
+			rowList = append(rowList, fmt.Sprintf(
+				"%s%s^%s^%s", prefix, in.GetDcid(), in.GetWithinPlace(), statVarDcid))
+		} else {
+			rowList = append(rowList, fmt.Sprintf(
+				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
+		}
+	}
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var btRelatedPlacesInfo RelatedPlacesInfo
+			err := json.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
+			if err != nil {
+				return nil, err
+			}
+			return &btRelatedPlacesInfo, nil
+		}, func(key string) (string, error) {
+			parts := strings.Split(key, "^")
+			if len(parts) <= 1 {
+				return "", fmt.Errorf("no ^ in key to parse for StatVarDcid")
+			}
+			return parts[len(parts)-1], nil
+		})
+	if err != nil {
+		return nil, err
+	}
+	results := map[string]*RelatedPlacesInfo{}
+	for statVarDcid, data := range dataMap {
+		results[statVarDcid] = data.(*RelatedPlacesInfo)
+	}
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.GetRelatedLocationsResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetInterestingPlaceAspects implements API for Mixer.GetInterestingPlaceAspects.
@@ -195,7 +279,7 @@ func (s *Server) GetInterestingPlaceAspects(
 				return nil, err
 			}
 			return &btInterestingPlaceAspects, nil
-		})
+		}, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -227,7 +311,7 @@ func (s *Server) GetPlaceStatsVar(
 				return nil, err
 			}
 			return data.StatVarIds, nil
-		})
+		}, nil)
 	if err != nil {
 		return nil, err
 	}
