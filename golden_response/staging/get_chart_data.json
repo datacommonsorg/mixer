@@ -63,7 +63,8 @@
       "2019": 60359546
     },
     "place_name": "Italy",
-    "place_dcid": "country/ITA"
+    "place_dcid": "country/ITA",
+    "source": "EurostatData"
   },
   "geoId/06085^cumulativeCount^measured^^^^MedicalConditionIncident^incidentType^COVID_19^medicalStatus^ConfirmedOrProbableCase": {
     "data": {
@@ -225,7 +226,8 @@
       "2020-07-04": 5077
     },
     "place_name": "Santa Clara County",
-    "place_dcid": "geoId/06085"
+    "place_dcid": "geoId/06085",
+    "source": "NYT_COVID19"
   },
   "geoId/06^count^measured^^^^Person": {
     "data": {
@@ -351,12 +353,16 @@
       "2019": 39512223
     },
     "place_name": "California",
-    "place_dcid": "geoId/06"
+    "place_dcid": "geoId/06",
+    "source": "CensusPEP"
   },
   "nces/062631003930^count^measured^^^^Student": {
-    "data": { "2011": 1836 },
+    "data": {
+      "2011": 1836
+    },
     "place_name": "Mountain View High",
-    "place_dcid": "nces/062631003930"
+    "place_dcid": "nces/062631003930",
+    "source": "K12"
   },
   "nces/062631003930^count^measured^^^^Student^gender^Female": {
     "data": {
@@ -368,6 +374,7 @@
       "2016": 935
     },
     "place_name": "Mountain View High",
-    "place_dcid": "nces/062631003930"
+    "place_dcid": "nces/062631003930",
+    "source": "K12"
   }
 }

@@ -197,6 +197,7 @@ message ObsTimeSeries {
   bool is_dc_aggregate = 4;
   string place_dcid = 5;  // Only set if the key uses mid.
   repeated SourceSeries source_series = 6;
+  string source = 7;
 }
 
 // Wrapper for observation data.

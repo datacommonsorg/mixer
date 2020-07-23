@@ -11,6 +11,7 @@
       "2018": 39148760
     },
     "place_name": "California",
+    "source": "CensusACS5YearSurvey",
     "place_dcid": "geoId/06"
   }
 }
