@@ -13,7 +13,6 @@
       "2017": 1164741
     },
     "place_name": "California",
-    "source": "FBIGovCrime",
     "place_dcid": "geoId/06"
   },
   "geoId/0649670": {
@@ -30,7 +29,6 @@
       "2017": 2138
     },
     "place_name": "City of Mountain View",
-    "source": "FBIGovCrime",
     "place_dcid": "geoId/0649670"
   }
 }

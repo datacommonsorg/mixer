@@ -78,7 +78,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	// Regular triples cache from memcache for population data
 	if len(popDcids) > 0 {
 		dataMap := s.memcache.ReadParallel(
-			buildTriplesKey(popDcids), convertTriplesCache)
+			buildTriplesKey(popDcids), convertTriplesCache, nil)
 		for dcid, data := range dataMap {
 			resultsMap[dcid] = data.(*TriplesCache).Triples
 		}
@@ -107,7 +107,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 				branchDataMap = s.memcache.ReadParallel(rowList,
 					func(dcid string, raw []byte) (interface{}, error) {
 						return string(raw), nil
-					})
+					}, nil)
 			}
 			// Map from observation dcid to observedNode dcid.
 			observedNodeMap := map[string]string{}
@@ -158,7 +158,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		}
 		// No data found in base cache, look in branch cache
 		if len(dataMap) == 0 {
-			branchDataMap := s.memcache.ReadParallel(rowList, convertPopTriples)
+			branchDataMap := s.memcache.ReadParallel(rowList, convertPopTriples, nil)
 			for dcid, data := range branchDataMap {
 				resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
 			}

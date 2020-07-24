@@ -35,7 +35,7 @@ func (s *Server) GetChartData(ctx context.Context,
 	rowList := buildChartDataKey(keys)
 
 	// Read from branch cache first
-	memData := s.memcache.ReadParallel(rowList, convertToObsSeries, true)
+	memData := s.memcache.ReadParallel(rowList, convertToObsSeries, util.RemoveKeyPrefix)
 	for key, data := range memData {
 		result[key] = data.(*pb.ObsTimeSeries)
 	}

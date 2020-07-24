@@ -131,7 +131,7 @@ func getPropertyValuesHelper(
 					return nil, err
 				}
 				return propVals.Nodes, nil
-			})
+			}, nil)
 		for dcid := range branchNodeMap {
 			branchNodes := branchNodeMap[dcid].([]*Node)
 			baseNodes, exist := nodeMap[dcid]
