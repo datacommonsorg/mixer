@@ -113,7 +113,7 @@ func (m *Memcache) Update(data map[string][]byte) {
 func (m *Memcache) ReadParallel(
 	rowList bigtable.RowList,
 	transform func(string, []byte) (interface{}, error),
-	opts ...bool,
+	getToken func(string) (string, error),
 ) map[string]interface{} {
 	// Channel to hold the returned object.
 	elemChan := make(chan chanData, len(rowList))
@@ -125,20 +125,13 @@ func (m *Memcache) ReadParallel(
 		wg.Add(1)
 		go func(rowKey string) {
 			if raw, ok := m.Read(rowKey); ok {
-				var token string
-				var err error
-				if len(opts) > 0 && opts[0] {
-					token, err = util.RemoveKeyPrefix(rowKey)
-					if err != nil {
-						log.Printf("Invalid row key in memcache %s", rowKey)
-					}
-				} else {
-					token, err = util.KeyToDcid(rowKey)
-					if err != nil {
-						log.Printf("Invalid row key in memcache %s", rowKey)
-					}
+				if getToken == nil {
+					getToken = util.KeyToDcid
 				}
-
+				token, err := getToken(rowKey)
+				if err != nil {
+					log.Printf("Failed to get token for rowKey %s", rowKey)
+				}
 				if err != nil {
 					log.Printf("Invalid row key in memcache %s", rowKey)
 				}
@@ -148,7 +141,7 @@ func (m *Memcache) ReadParallel(
 				}
 				elem, err := transform(token, jsonRaw)
 				if err != nil {
-					log.Printf("Unable to process data %s", jsonRaw)
+					log.Printf("Unable to process token %s, data %s", token, jsonRaw)
 				}
 				elemChan <- chanData{token, elem}
 			}

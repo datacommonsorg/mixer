@@ -20,7 +20,12 @@
     "rankFromBottom": 112518
   },
   "TotalPopulation": {
-    "relatedPlaces": ["country/LVA", "country/XKS", "geoId/12011", "geoId/31"],
+    "relatedPlaces": [
+      "country/LVA",
+      "country/XKS",
+      "geoId/12011",
+      "geoId/31"
+    ],
     "rankFromTop": 216,
     "rankFromBottom": 21360
   },

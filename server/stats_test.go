@@ -250,11 +250,13 @@ func TestFilterAndRank(t *testing.T) {
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
+						ProvenanceDomain:  "census.gov",
 					},
 					{
 						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
 						MeasurementMethod: "CensusACS5yrSurvey",
 						ImportName:        "CensusACS5YearSurvey",
+						ProvenanceDomain:  "census.gov",
 					},
 				},
 			},
@@ -262,7 +264,8 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			&pb.ObsTimeSeries{
-				Data: map[string]float64{"2011": 100, "2012": 101},
+				Data:             map[string]float64{"2011": 100, "2012": 101},
+				ProvenanceDomain: "census.gov",
 			},
 		},
 		// Filter by mmethod
@@ -273,11 +276,13 @@ func TestFilterAndRank(t *testing.T) {
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
+						ProvenanceDomain:  "census.gov",
 					},
 					{
 						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
 						MeasurementMethod: "CensusACS5yrSurvey",
 						ImportName:        "CensusACS5YearSurvey",
+						ProvenanceDomain:  "census.gov",
 					},
 				},
 			},
@@ -285,7 +290,8 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			&pb.ObsTimeSeries{
-				Data: map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+				Data:             map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+				ProvenanceDomain: "census.gov",
 			},
 		},
 		// Filter by observation period
@@ -297,12 +303,14 @@ func TestFilterAndRank(t *testing.T) {
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
 						ObservationPeriod: "P1Y",
+						ProvenanceDomain:  "census.gov",
 					},
 					{
 						Val:               map[string]float64{"2017": 101},
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
 						ObservationPeriod: "P2Y",
+						ProvenanceDomain:  "census.gov",
 					},
 				},
 			},
@@ -310,7 +318,8 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"P2Y",
 			&pb.ObsTimeSeries{
-				Data: map[string]float64{"2017": 101},
+				Data:             map[string]float64{"2017": 101},
+				ProvenanceDomain: "census.gov",
 			},
 		},
 		// No match
@@ -322,12 +331,14 @@ func TestFilterAndRank(t *testing.T) {
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
 						ObservationPeriod: "P1Y",
+						ProvenanceDomain:  "census.gov",
 					},
 					{
 						Val:               map[string]float64{"2017": 101},
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
 						ObservationPeriod: "P2Y",
+						ProvenanceDomain:  "census.gov",
 					},
 				},
 			},

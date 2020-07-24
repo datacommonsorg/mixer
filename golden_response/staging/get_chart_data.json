@@ -354,7 +354,9 @@
     "place_dcid": "geoId/06"
   },
   "nces/062631003930^count^measured^^^^Student": {
-    "data": { "2011": 1836 },
+    "data": {
+      "2011": 1836
+    },
     "place_name": "Mountain View High",
     "place_dcid": "nces/062631003930"
   },

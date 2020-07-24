@@ -68,4 +68,18 @@ func main() {
 		log.Printf("%s", r.GetPayload())
 	}
 
+	{
+		// Get Stats
+		req := &pb.GetStatsRequest{
+			StatsVar: "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased",
+			Place:    []string{"geoId/12"},
+		}
+		r, err := c.GetStats(ctx, req)
+		if err != nil {
+			log.Fatalf("could not GetStats: %s", err)
+		}
+		log.Printf("%s", r.GetPayload())
+
+	}
+
 }

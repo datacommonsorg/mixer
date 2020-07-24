@@ -63,6 +63,12 @@ func TestGetChartData(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Can not Unmarshal payload: %v", err)
 	}
+
+	if generateGolden {
+		updateGolden(result, goldenFile)
+		return
+	}
+
 	var expected map[string]*pb.ObsTimeSeries
 	file, _ := ioutil.ReadFile(goldenFile)
 	err = json.Unmarshal(file, &expected)

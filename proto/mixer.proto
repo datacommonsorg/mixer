@@ -190,6 +190,7 @@ message ObsTimeSeries {
     string measurement_method = 3;
     string observation_period = 4;
     string import_name = 5;
+    string provenance_domain = 6;
   }
   map<string, double> data = 1;  // Date to value.
   string unit = 2;
@@ -197,6 +198,7 @@ message ObsTimeSeries {
   bool is_dc_aggregate = 4;
   string place_dcid = 5;  // Only set if the key uses mid.
   repeated SourceSeries source_series = 6;
+  string provenance_domain = 7;
 }
 
 // Wrapper for observation data.

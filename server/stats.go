@@ -83,7 +83,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 
 	// Read data from branch in-memory cache first.
 	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
-		tmp := s.memcache.ReadParallel(rowList, convertToObsSeries)
+		tmp := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
 		for dcid := range tmp {
 			result[dcid] = tmp[dcid].(*pb.ObsTimeSeries)
 		}
@@ -175,9 +175,8 @@ func triplesToStatsVar(
 func filterAndRank(
 	in *pb.ObsTimeSeries, mmethod, op, unit string) *pb.ObsTimeSeries {
 	out := &pb.ObsTimeSeries{
-		PlaceDcid:     in.GetPlaceDcid(),
-		PlaceName:     in.GetPlaceName(),
-		IsDcAggregate: in.GetIsDcAggregate(),
+		PlaceDcid: in.GetPlaceDcid(),
+		PlaceName: in.GetPlaceName(),
 	}
 	filteredSeries := []*pb.ObsTimeSeries_SourceSeries{}
 	for _, series := range in.GetSourceSeries() {
@@ -202,6 +201,8 @@ func filterAndRank(
 		}
 		if score <= bestScore {
 			out.Data = series.Val
+			// TODO(boxu): correct this when source url is populated in cache data.
+			out.ProvenanceDomain = series.GetProvenanceDomain()
 			bestScore = score
 		}
 	}
