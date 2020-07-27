@@ -68,7 +68,7 @@ func TestGetLandingPage(t *testing.T) {
 			continue
 		}
 
-		var expected map[string]*server.RelatedPlacesInfo
+		var expected map[string]*server.LandingPageInfo
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
