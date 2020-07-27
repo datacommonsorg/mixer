@@ -27,7 +27,8 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetRelatedPlaces(t *testing.T) {
+// TestGetLandingPage tests GetLandingPage.
+func TestGetLandingPage(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -35,81 +36,34 @@ func TestGetRelatedPlaces(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_related_places")
+		path.Dir(filename), "../golden_response/staging/get_landing_page")
 
 	for _, c := range []struct {
-		goldenFile string
-		dcids      []string
-		popType    string
-		mprop      string
-		statType   string
-		pvs        map[string]string
+		goldenFile   string
+		dcids        []string
+		statVarDcids []string
 	}{
 		{
-			"population.json",
+			"county.json",
 			[]string{"geoId/06085"},
-			"Person",
-			"count",
-			"measuredValue",
-			nil,
+			[]string{},
 		},
 		{
-			"income.json",
-			[]string{"geoId/06085"},
-			"Person",
-			"income",
-			"medianValue",
-			map[string]string{
-				"age":          "Years15Onwards",
-				"incomeStatus": "WithIncome",
-			},
-		},
-		{
-			"age.json",
-			[]string{"geoId/06085"},
-			"Person",
-			"age",
-			"medianValue",
-			nil,
-		},
-		{
-			"unemployment.json",
-			[]string{"geoId/06085"},
-			"Person",
-			"unemploymentRate",
-			"measuredValue",
-			nil,
-		},
-		{
-			"crime.json",
-			[]string{"geoId/06"},
-			"CriminalActivities",
-			"count",
-			"measuredValue",
-			map[string]string{
-				"crimeType": "UCR_CombinedCrime",
-			},
+			"state.json",
+			[]string{"geoId/06", "geoId/08"},
+			[]string{"Count_Person_Male"},
 		},
 	} {
-		req := &pb.GetRelatedPlacesRequest{
-			Dcids:            c.dcids,
-			PopulationType:   c.popType,
-			MeasuredProperty: c.mprop,
-			StatType:         c.statType,
-			SamePlaceType:    true,
+		req := &pb.GetLandingPageRequest{
+			Dcids:        c.dcids,
+			StatVarDcids: c.statVarDcids,
 		}
-		for p, v := range c.pvs {
-			req.Pvs = append(req.Pvs, &pb.PropertyValue{
-				Property: p,
-				Value:    v,
-			})
-		}
-		resp, err := client.GetRelatedPlaces(ctx, req)
+		resp, err := client.GetLandingPage(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetRelatedPlaces: %s", err)
+			t.Errorf("could not GetLandingPage: %s", err)
 			continue
 		}
-		var result map[string]*server.RelatedPlacesInfo
+		var result map[string]*server.LandingPageInfo
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -122,7 +76,7 @@ func TestGetRelatedPlaces(t *testing.T) {
 			continue
 		}
 
-		var expected map[string]*server.RelatedPlacesInfo
+		var expected map[string]*server.LandingPageInfo
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

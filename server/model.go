@@ -119,3 +119,31 @@ type Metadata struct {
 	SubTypeMap map[string]string
 	Bq         string
 }
+
+// LandingPageChartMetadata represents the metadata of a chart of a landing page.
+type LandingPageChartMetadata struct {
+	ImportName        string `json:"importName,omitempty"`
+	ObservationPeriod string `json:"observationPeriod,omitempty"`
+	MeasurementMethod string `json:"measurementMethod,omitempty"`
+	ScalingFactor     string `json:"scalingFactor,omitempty"`
+	Unit              string `json:"unit,omitempty"`
+	Domain            string `json:"domain,omitempty"`
+}
+
+// LandingPageChart represents a chart of a landing page.
+type LandingPageChart struct {
+	Metadata   LandingPageChartMetadata `json:"metadata,omitempty"`
+	TimeSeries map[string]float64       `json:"timeSeries,omitempty"`
+	Latest     float64                  `json:"latest,omitempty"`
+}
+
+// LandingPageCharts represents charts of a landing page.
+type LandingPageCharts struct {
+	Charts []*LandingPageChart `json:"charts,omitempty"`
+}
+
+// LandingPageInfo represents landing page info.
+type LandingPageInfo struct {
+	// Key: stat var DCID.
+	Info map[string]*LandingPageCharts `json:"info,omitempty"`
+}

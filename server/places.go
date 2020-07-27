@@ -324,3 +324,66 @@ func (s *Server) GetPlaceStatsVar(
 	}
 	return &resp, nil
 }
+
+// GetLandingPage implements API for Mixer.GetLandingPage.
+func (s *Server) GetLandingPage(
+	ctx context.Context, in *pb.GetLandingPageRequest) (
+	*pb.GetLandingPageResponse, error) {
+	dcids := in.GetDcids()
+	if len(dcids) == 0 {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	if !util.CheckValidDCIDs(dcids) {
+		return nil, fmt.Errorf("invalid DCIDs")
+	}
+
+	rowList := bigtable.RowList{}
+	for _, dcid := range dcids {
+		rowList = append(rowList, fmt.Sprintf(
+			"%s%s", util.BtLandingPagePrefix, dcid))
+	}
+
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var btLandingPageInfo LandingPageInfo
+			err := json.Unmarshal(jsonRaw, &btLandingPageInfo)
+			if err != nil {
+				return nil, err
+			}
+			return &btLandingPageInfo, nil
+		}, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	results := map[string]*LandingPageInfo{}
+
+	filter := len(in.GetStatVarDcids()) > 0
+	wantStatVarDcids := map[string]struct{}{}
+	if filter {
+		for _, statVarDcid := range in.GetStatVarDcids() {
+			wantStatVarDcids[statVarDcid] = struct{}{}
+		}
+	}
+
+	for dcid, data := range dataMap {
+		info := data.(*LandingPageInfo)
+
+		if filter {
+			filteredInfo := &LandingPageInfo{Info: map[string]*LandingPageCharts{}}
+			for statVarDcid := range info.Info {
+				if _, ok := wantStatVarDcids[statVarDcid]; ok {
+					filteredInfo.Info[statVarDcid] = info.Info[statVarDcid]
+				}
+			}
+			info = filteredInfo
+		}
+
+		results[dcid] = info
+	}
+	jsonRaw, err := json.Marshal(results)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.GetLandingPageResponse{Payload: string(jsonRaw)}, nil
+}

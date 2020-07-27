@@ -1,0 +1,34 @@
+{
+  "geoId/06": {
+    "info": {
+      "Count_Person_Male": {
+        "charts": [
+          {
+            "metadata": {
+              "importName": "CensusACS5YearSurvey",
+              "measurementMethod": "CensusACS5yrSurvey",
+              "domain": "census.gov"
+            },
+            "latest": 19453769
+          }
+        ]
+      }
+    }
+  },
+  "geoId/08": {
+    "info": {
+      "Count_Person_Male": {
+        "charts": [
+          {
+            "metadata": {
+              "importName": "CensusACS5YearSurvey",
+              "measurementMethod": "CensusACS5yrSurvey",
+              "domain": "census.gov"
+            },
+            "latest": 2780831
+          }
+        ]
+      }
+    }
+  }
+}
