@@ -17,7 +17,6 @@ package e2etest
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -28,7 +27,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetRelatedLocationsTest(t *testing.T) {
+func TestGetRelatedLocations(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -74,8 +73,6 @@ func TestGetRelatedLocationsTest(t *testing.T) {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-
-		fmt.Println(resp.GetPayload())
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {

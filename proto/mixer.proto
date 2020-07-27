@@ -409,6 +409,18 @@ message GetChartDataResponse{
     string payload = 1;
 }
 
+// Request to get landing page info for places.
+message GetLandingPageRequest {
+  // Place DCIDs.
+  repeated string dcids = 1;
+}
+
+// Response to get landing page info for places.
+message GetLandingPageResponse {
+   // The JSON payload.
+   string payload = 1;
+}
+
 // Search request sent to the mixer.
 message SearchRequest {
   // Search query which is just a plain text string, e.g. "california".
@@ -813,6 +825,14 @@ service Mixer {
     GetChartDataResponse) {
     option (google.api.http) = {
       post: "/node/chart-data"
+      body: "*"
+    };
+  }
+
+  // Get landing page info for a place.
+  rpc GetLandingPage(GetLandingPageRequest) returns (GetLandingPageResponse) {
+    option (google.api.http) = {
+      post: "/node/landing-page"
       body: "*"
     };
   }
