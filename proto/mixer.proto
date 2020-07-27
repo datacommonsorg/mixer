@@ -413,6 +413,8 @@ message GetChartDataResponse{
 message GetLandingPageRequest {
   // Place DCIDs.
   repeated string dcids = 1;
+  // A list of stat vars used for filtering. If empty, then no filtering.
+  repeated string stat_var_dcids = 2;
 }
 
 // Response to get landing page info for places.

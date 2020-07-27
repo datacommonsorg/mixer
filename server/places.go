@@ -355,9 +355,31 @@ func (s *Server) GetLandingPage(
 	if err != nil {
 		return nil, err
 	}
+
 	results := map[string]*LandingPageInfo{}
+
+	filter := len(in.GetStatVarDcids()) > 0
+	wantStatVarDcids := map[string]struct{}{}
+	if filter {
+		for _, statVarDcid := range in.GetStatVarDcids() {
+			wantStatVarDcids[statVarDcid] = struct{}{}
+		}
+	}
+
 	for dcid, data := range dataMap {
-		results[dcid] = data.(*LandingPageInfo)
+		info := data.(*LandingPageInfo)
+
+		if filter {
+			filteredInfo := &LandingPageInfo{Info: map[string]*LandingPageCharts{}}
+			for statVarDcid := range info.Info {
+				if _, ok := wantStatVarDcids[statVarDcid]; ok {
+					filteredInfo.Info[statVarDcid] = info.Info[statVarDcid]
+				}
+			}
+			info = filteredInfo
+		}
+
+		results[dcid] = info
 	}
 	jsonRaw, err := json.Marshal(results)
 	if err != nil {

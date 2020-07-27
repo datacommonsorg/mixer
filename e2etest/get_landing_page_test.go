@@ -39,16 +39,24 @@ func TestGetLandingPage(t *testing.T) {
 		path.Dir(filename), "../golden_response/staging/get_landing_page")
 
 	for _, c := range []struct {
-		goldenFile string
-		dcids      []string
+		goldenFile   string
+		dcids        []string
+		statVarDcids []string
 	}{
 		{
-			"res.json",
-			[]string{"geoId/06085", "geoId/06"},
+			"county.json",
+			[]string{"geoId/06085"},
+			[]string{},
+		},
+		{
+			"state.json",
+			[]string{"geoId/06", "geoId/08"},
+			[]string{"Count_Person_Male"},
 		},
 	} {
 		req := &pb.GetLandingPageRequest{
-			Dcids: c.dcids,
+			Dcids:        c.dcids,
+			StatVarDcids: c.statVarDcids,
 		}
 		resp, err := client.GetLandingPage(ctx, req)
 		if err != nil {
