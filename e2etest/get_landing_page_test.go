@@ -17,7 +17,6 @@ package e2etest
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -30,7 +29,6 @@ import (
 
 // TestGetLandingPage tests GetLandingPage.
 func TestGetLandingPage(t *testing.T) {
-	fmt.Println("00000000000")
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -63,10 +61,6 @@ func TestGetLandingPage(t *testing.T) {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-
-		fmt.Println("aaaaaaa")
-
-		fmt.Println(resp.GetPayload())
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
