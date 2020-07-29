@@ -57,7 +57,7 @@ func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, file
 	bucket := gcsClient.Bucket(bucketName)
 	w := bucket.Object(fileName).NewWriter(ctx)
 
-	if _, err := fmt.Fprintf(w, data); err != nil {
+	if _, err := fmt.Fprint(w, data); err != nil {
 		w.Close()
 		log.Printf("Unable to open file for writing from bucket %q, file %q: %v\n", bucketName, fileName, err)
 		return fmt.Errorf("Unable to write to bucket %q, file %q: %v", bucketName, fileName, err)
