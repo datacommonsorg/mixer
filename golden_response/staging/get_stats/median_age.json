@@ -11,7 +11,8 @@
       "2018": 36.3
     },
     "place_name": "California",
-    "place_dcid": "geoId/06"
+    "place_dcid": "geoId/06",
+    "provenance_domain": "census.gov"
   },
   "geoId/06085": {
     "data": {
@@ -25,7 +26,8 @@
       "2018": 37
     },
     "place_name": "Santa Clara County",
-    "place_dcid": "geoId/06085"
+    "place_dcid": "geoId/06085",
+    "provenance_domain": "census.gov"
   },
   "geoId/0649670": {
     "data": {
@@ -39,6 +41,7 @@
       "2018": 34.9
     },
     "place_name": "City of Mountain View",
-    "place_dcid": "geoId/0649670"
+    "place_dcid": "geoId/0649670",
+    "provenance_domain": "census.gov"
   }
 }

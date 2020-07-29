@@ -41,6 +41,18 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "dc/gywfwwmg5gsrg",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
       "subjectId": "dc/d20yq6r828zrc",
       "subjectTypes": [
         "StatisticalVariable"
