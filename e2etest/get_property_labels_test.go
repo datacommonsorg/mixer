@@ -69,14 +69,14 @@ func TestGetPropertyLabels(t *testing.T) {
 			updateGolden(result, goldenFile)
 			continue
 		}
-		var expected map[string]map[string]*server.PropLabelCache
+		var expected map[string]*server.PropLabelCache
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected["payload"]); diff != "" {
+		if diff := cmp.Diff(result, expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
