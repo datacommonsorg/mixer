@@ -13,7 +13,8 @@
       "2017": 1164741
     },
     "place_name": "California",
-    "place_dcid": "geoId/06"
+    "place_dcid": "geoId/06",
+    "provenance_domain": "fbi.gov"
   },
   "geoId/0649670": {
     "data": {
@@ -29,6 +30,7 @@
       "2017": 2138
     },
     "place_name": "City of Mountain View",
-    "place_dcid": "geoId/0649670"
+    "place_dcid": "geoId/0649670",
+    "provenance_domain": "fbi.gov"
   }
 }

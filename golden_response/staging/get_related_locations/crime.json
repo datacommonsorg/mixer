@@ -1,1 +1,11 @@
-{}
+{
+  "Count_CriminalActivities_CombinedCrime": {
+    "relatedPlaces": [
+      "country/USA",
+      "geoId/12",
+      "geoId/48"
+    ],
+    "rankFromTop": 2,
+    "rankFromBottom": 8765
+  }
+}

@@ -78,7 +78,7 @@ func TestGetStats(t *testing.T) {
 			false,
 		},
 		{
-			"TotalCrimes",
+			"Count_CriminalActivities_CombinedCrime",
 			[]string{"geoId/06", "geoId/0649670"},
 			"",
 			"total_crimes.json",
