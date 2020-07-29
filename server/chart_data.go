@@ -37,7 +37,11 @@ func (s *Server) GetChartData(ctx context.Context,
 	// Read from branch cache first
 	memData := s.memcache.ReadParallel(rowList, convertToObsSeries, util.RemoveKeyPrefix)
 	for key, data := range memData {
-		result[key] = data.(*pb.ObsTimeSeries)
+		if data == nil {
+			result[key] = nil
+		} else {
+			result[key] = data.(*pb.ObsTimeSeries)
+		}
 	}
 	// Read data from Bigtable if not all data is obtained from memcache.
 	if len(memData) < len(keys) {
@@ -49,7 +53,11 @@ func (s *Server) GetChartData(ctx context.Context,
 		}
 		for key, data := range dataMap {
 			if _, ok := result[key]; !ok {
-				result[key] = data.(*pb.ObsTimeSeries)
+				if data == nil {
+					result[key] = nil
+				} else {
+					result[key] = data.(*pb.ObsTimeSeries)
+				}
 			}
 		}
 	}

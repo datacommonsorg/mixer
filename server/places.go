@@ -160,7 +160,11 @@ func (s *Server) GetRelatedPlaces(ctx context.Context,
 	}
 	results := map[string]*RelatedPlacesInfo{}
 	for dcid, data := range dataMap {
-		results[dcid] = data.(*RelatedPlacesInfo)
+		if data == nil {
+			results[dcid] = nil
+		} else {
+			results[dcid] = data.(*RelatedPlacesInfo)
+		}
 	}
 	jsonRaw, err := json.Marshal(results)
 	if err != nil {
@@ -244,7 +248,11 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 	}
 	results := map[string]*RelatedPlacesInfo{}
 	for statVarDcid, data := range dataMap {
-		results[statVarDcid] = data.(*RelatedPlacesInfo)
+		if data == nil {
+			results[statVarDcid] = nil
+		} else {
+			results[statVarDcid] = data.(*RelatedPlacesInfo)
+		}
 	}
 	jsonRaw, err := json.Marshal(results)
 	if err != nil {
@@ -285,7 +293,11 @@ func (s *Server) GetInterestingPlaceAspects(
 	}
 	results := map[string]*InterestingPlaceAspects{}
 	for dcid, data := range dataMap {
-		results[dcid] = data.(*InterestingPlaceAspects)
+		if data == nil {
+			results[dcid] = nil
+		} else {
+			results[dcid] = data.(*InterestingPlaceAspects)
+		}
 	}
 	jsonRaw, err := json.Marshal(results)
 	if err != nil {

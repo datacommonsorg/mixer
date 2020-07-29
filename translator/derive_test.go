@@ -86,9 +86,9 @@ func TestGetEntityType(t *testing.T) {
 	mappings, _ := ParseMapping(mappingStr, "dc")
 	gotEntityType := GetEntityType(mappings)
 	wantEntityType := map[string][]string{
-		"`dc.Observation`->E2": []string{
+		"`dc.Observation`->E2": {
 			"StatisticalPopulation", "Place", "Tract", "CensusTract", "CommutingZone"},
-		"`dc.Observation`->E3": []string{"Provenance"},
+		"`dc.Observation`->E3": {"Provenance"},
 	}
 
 	if diff := deep.Equal(wantEntityType, gotEntityType); diff != nil {
@@ -118,7 +118,7 @@ func TestGetExplicitTypeProp(t *testing.T) {
 
 	gotTypeProp := GetExplicitTypeProp(mappings)
 	wantTypeProp := map[string][]string{
-		"Observation": []string{
+		"Observation": {
 			"typeOf", "dcid", "provenance", "isPublic", "measuredProperty", "startTime", "endTime"},
 	}
 
@@ -216,10 +216,10 @@ func TestGetFuncDeps(t *testing.T) {
 	}
 
 	wantStr := map[string]map[string]string{
-		"E:ACLGroup->E1": map[string]string{
+		"E:ACLGroup->E1": {
 			"dcid": "C:ACLGroup->id",
 		},
-		"E:ACLGroup->E2": map[string]string{
+		"E:ACLGroup->E2": {
 			"dcid": "C:ACLGroup->prov_id",
 		},
 	}
@@ -259,17 +259,17 @@ func TestGetFuncDepsWithEntity(t *testing.T) {
 	}
 
 	wantStr := map[string]map[string]string{
-		"E:bq_county_outcomes->E1": map[string]string{
+		"E:bq_county_outcomes->E1": {
 			"geoId": "C:bq_county_outcomes->geo_id",
 		},
-		"E:bq_county_outcomes->E2": map[string]string{
+		"E:bq_county_outcomes->E2": {
 			"location":   "E:bq_county_outcomes->E1",
 			"outcome":    "C:bq_county_outcomes->outcome",
 			"race":       "C:bq_county_outcomes->race",
 			"gender":     "C:bq_county_outcomes->gender",
 			"percentile": "C:bq_county_outcomes->percentile",
 		},
-		"E:bq_county_outcomes->E3": map[string]string{
+		"E:bq_county_outcomes->E3": {
 			"observedNode":     "E:bq_county_outcomes->E2",
 			"measuredProperty": "C:bq_county_outcomes->measured_property",
 		},
@@ -377,22 +377,22 @@ func TestRewriteQuery(t *testing.T) {
 func TestGetOutArcInfo(t *testing.T) {
 	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
 	wantOutArcInfo := map[string][]OutArcInfo{
-		"`dc_v3.Place`": []OutArcInfo{
-			OutArcInfo{Pred: "name", Column: "name"},
-			OutArcInfo{Pred: "alternateName", Column: "alternate_name"},
-			OutArcInfo{Pred: "timezone", Column: "timezone"},
-			OutArcInfo{Pred: "landArea", Column: "land_area", IsNode: true},
-			OutArcInfo{Pred: "waterArea", Column: "water_area", IsNode: true},
-			OutArcInfo{Pred: "latitude", Column: "latitude"},
-			OutArcInfo{Pred: "longitude", Column: "longitude"},
-			OutArcInfo{Pred: "elevation", Column: "elevation"},
-			OutArcInfo{Pred: "stateCode", Column: "state_code"},
-			OutArcInfo{Pred: "countryAlpha2Code", Column: "country_alpha_2_code"},
-			OutArcInfo{Pred: "countryAlpha3Code", Column: "country_alpha_3_code"},
-			OutArcInfo{Pred: "countryNumericCode", Column: "country_numeric_code"},
+		"`dc_v3.Place`": {
+			{Pred: "name", Column: "name"},
+			{Pred: "alternateName", Column: "alternate_name"},
+			{Pred: "timezone", Column: "timezone"},
+			{Pred: "landArea", Column: "land_area", IsNode: true},
+			{Pred: "waterArea", Column: "water_area", IsNode: true},
+			{Pred: "latitude", Column: "latitude"},
+			{Pred: "longitude", Column: "longitude"},
+			{Pred: "elevation", Column: "elevation"},
+			{Pred: "stateCode", Column: "state_code"},
+			{Pred: "countryAlpha2Code", Column: "country_alpha_2_code"},
+			{Pred: "countryAlpha3Code", Column: "country_alpha_3_code"},
+			{Pred: "countryNumericCode", Column: "country_numeric_code"},
 		},
-		"`dc_v3.PlaceExt`": []OutArcInfo{
-			OutArcInfo{Pred: "kmlCoordinates", Column: "kml_coordinates"},
+		"`dc_v3.PlaceExt`": {
+			{Pred: "kmlCoordinates", Column: "kml_coordinates"},
 		},
 	}
 	gotOutArcInfo, err := GetOutArcInfo(mappings, "Place")
