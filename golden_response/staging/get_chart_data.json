@@ -63,7 +63,8 @@
       "2019": 60359546
     },
     "place_name": "Italy",
-    "place_dcid": "country/ITA"
+    "place_dcid": "country/ITA",
+    "provenance_domain": "europa.eu"
   },
   "geoId/06085^cumulativeCount^measured^^^^MedicalConditionIncident^incidentType^COVID_19^medicalStatus^ConfirmedOrProbableCase": {
     "data": {
@@ -351,14 +352,16 @@
       "2019": 39512223
     },
     "place_name": "California",
-    "place_dcid": "geoId/06"
+    "place_dcid": "geoId/06",
+    "provenance_domain": "census.gov"
   },
   "nces/062631003930^count^measured^^^^Student": {
     "data": {
       "2011": 1836
     },
     "place_name": "Mountain View High",
-    "place_dcid": "nces/062631003930"
+    "place_dcid": "nces/062631003930",
+    "provenance_domain": "ed.gov"
   },
   "nces/062631003930^count^measured^^^^Student^gender^Female": {
     "data": {
@@ -370,6 +373,7 @@
       "2016": 935
     },
     "place_name": "Mountain View High",
-    "place_dcid": "nces/062631003930"
+    "place_dcid": "nces/062631003930",
+    "provenance_domain": "ed.gov"
   }
 }
