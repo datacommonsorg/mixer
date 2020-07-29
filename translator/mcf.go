@@ -103,11 +103,10 @@ func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
 }
 
 // ParseMapping parses schema mapping mcf into a list of Mapping struct.
-func ParseMapping(mcf string) ([]*base.Mapping, error) {
+func ParseMapping(mcf, database string) ([]*base.Mapping, error) {
 	lines := strings.Split(mcf, "\n")
 	mappings := []*base.Mapping{}
 	var sub string
-	var database string
 	for _, line := range lines {
 		line = strings.TrimSpace(line)
 		if strings.HasPrefix(line, "#") || line == "" {
@@ -121,9 +120,7 @@ func ParseMapping(mcf string) ([]*base.Mapping, error) {
 		head := strings.TrimSpace(parts[0])
 		body := strings.TrimSuffix(strings.TrimPrefix(strings.TrimSpace(parts[1]), `"`), `"`)
 
-		if head == "Database" {
-			database = body
-		} else if head == "Node" {
+		if head == "Node" {
 			sub = body
 		} else {
 			if sub == "" {

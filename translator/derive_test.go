@@ -69,8 +69,6 @@ func TestGetNodeType(t *testing.T) {
 
 func TestGetEntityType(t *testing.T) {
 	mappingStr := `
-		Database: dc
-
 		Node: E:Observation->E2
 		typeOf: StatisticalPopulation
 		typeOf: Place
@@ -85,7 +83,7 @@ func TestGetEntityType(t *testing.T) {
 		dcid: C:Observation->prov_id
 		functionalDeps: dcid`
 
-	mappings, _ := ParseMapping(mappingStr)
+	mappings, _ := ParseMapping(mappingStr, "dc")
 	gotEntityType := GetEntityType(mappings)
 	wantEntityType := map[string][]string{
 		"`dc.Observation`->E2": []string{
@@ -115,7 +113,7 @@ func TestGetExplicitTypeProp(t *testing.T) {
 		dcid: C:Observation->observed_node_key
 		functionalDeps: dcid`
 
-	mappings, _ := ParseMapping(mappingStr)
+	mappings, _ := ParseMapping(mappingStr, "dc")
 	mappings = PruneMapping(mappings)
 
 	gotTypeProp := GetExplicitTypeProp(mappings)

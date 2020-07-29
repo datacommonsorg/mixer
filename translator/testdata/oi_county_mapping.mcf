@@ -1,5 +1,3 @@
-Database: dc_v3
-
 Node: E:bq_county_outcomes->E1
 typeOf: Place
 geoId: C:bq_county_outcomes->geo_id

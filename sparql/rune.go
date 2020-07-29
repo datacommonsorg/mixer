@@ -40,10 +40,6 @@ func isIdentChar(ch rune) bool {
 	return isLetter(ch) || isDigit(ch) || ch == '_' || ch == ':' || ch == '/'
 }
 
-// isIdentFirstChar returns true if the rune can be used as the first char
-// in an unquoted identifier.
-func isIdentFirstChar(ch rune) bool { return isLetter(ch) || ch == '_' }
-
 // ScanDelimited reads a delimited set of runes.
 func ScanDelimited(
 	r io.RuneScanner, start, end rune, escapes map[rune]rune, escapesPassThru bool) ([]byte, error) {
@@ -75,7 +71,10 @@ func ScanDelimited(
 			if !ok {
 				if escapesPassThru {
 					// Unread ch1 (char after the \)
-					r.UnreadRune()
+					err := r.UnreadRune()
+					if err != nil {
+						return nil, err
+					}
 					// Write ch0 (\) to the output buffer.
 					buf.WriteRune(ch0)
 					continue
@@ -139,7 +138,10 @@ func ScanBareIdent(r io.RuneScanner) string {
 		if err != nil {
 			break
 		} else if !isIdentChar(ch) {
-			r.UnreadRune()
+			err := r.UnreadRune()
+			if err != nil {
+				break
+			}
 			break
 		} else {
 			buf.WriteRune(ch)

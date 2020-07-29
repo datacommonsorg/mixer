@@ -19,7 +19,7 @@ metadata:
   namespace: mixer
   annotations:
     kubernetes.io/ingress.global-static-ip-name: mixer-ip
-    networking.gke.io/managed-certificates: mixer-certificate, custom-certificate
+    networking.gke.io/managed-certificates: mixer-certificate
 spec:
   rules:
   -  http:

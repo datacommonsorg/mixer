@@ -22,11 +22,11 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*
+import java.util.*;
 
 public class CsvImport {
 
-  private static final byte[] FAMILY = Bytes.toBytes("csv");
+  private static final String FAMILY = "csv";
   private static final Logger LOG = LoggerFactory.getLogger(CsvImport.class);
 
   static class CsvToBigtableFn
@@ -47,7 +47,7 @@ public class CsvImport {
           headerBytes[i] = Bytes.toBytes(headers[i]);
           setCell =  Mutation.SetCell.newBuilder()
                           .setFamilyName(FAMILY)
-                          .setColumnQualifier(ByteString.copyFrom( headerBytes[i]))
+                          .setColumnQualifier(ByteString.copyFrom(headerBytes[i]))
                           .setValue(ByteString.copyFrom(Bytes.toBytes(values[i+1]))) // since values[0] is the key.
                           .build();
            mutations.add(Mutation.newBuilder().setSetCell(setCell).build());
@@ -108,7 +108,7 @@ public class CsvImport {
             .withProjectId(options.getBigtableProjectId())
             .withInstanceId(options.getBigtableInstanceId())
             .withTableId(options.getBigtableTableId());
-    p.apply("ReadMyFile", TextIO.read().from(options.getInputFile()))
+    p.apply("ReadMyFile", TextIO.read().from(options.getInputFile()).withHintMatchesManyFiles())
         .apply("TransformParsingsToBigtable", ParDo.of(new CsvToBigtableFn()))
         .apply("WriteToBigtable", write);
 
