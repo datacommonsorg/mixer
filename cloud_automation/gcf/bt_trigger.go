@@ -138,7 +138,10 @@ func GCSTrigger(ctx context.Context, e GCSEvent) error {
 		}
 		// Write to GCS file that triggers airflow job.
 		inputFile := fmt.Sprintf("gs://prophet_cache/%s/cache.csv*", tableIDStr)
-		writeToGCS(ctx, gcsClient, e.Bucket, airflowTriggerFile, inputFile)
+		err = writeToGCS(ctx, gcsClient, e.Bucket, airflowTriggerFile, inputFile)
+		if err != nil {
+			return nil
+		}
 	} else if strings.HasSuffix(e.Name, successFile) || strings.HasSuffix(e.Name, failureFile) {
 		return scaleBT(ctx, bigtableNodesLow)
 	}
