@@ -64,7 +64,10 @@ func GetSubTypeMap(tableTypesJSONFilePath string) (map[string]string, error) {
 	}
 	result := map[string]string{}
 	tableTypes := tableTypes{}
-	json.Unmarshal(tableTypesJSON, &tableTypes)
+	err = json.Unmarshal(tableTypesJSON, &tableTypes)
+	if err != nil {
+		return nil, err
+	}
 	for _, d := range tableTypes.TableTypes {
 		for _, c := range d.Children {
 			result[c] = d.Parent
@@ -304,11 +307,7 @@ func PruneMapping(mappings []*base.Mapping) []*base.Mapping {
 	result := []*base.Mapping{}
 	for _, m := range mappings {
 		if pred, ok := m.Pred.(string); ok {
-			if _, ok := tableInfo[m.Sub]; ok {
-				tableInfo[m.Sub] = append(tableInfo[m.Sub], pred)
-			} else {
-				tableInfo[m.Sub] = []string{pred}
-			}
+			tableInfo[m.Sub] = append(tableInfo[m.Sub], pred)
 		}
 	}
 	for sub, predList := range tableInfo {

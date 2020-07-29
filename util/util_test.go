@@ -5,10 +5,10 @@ import (
 )
 
 func TestZipAndEndocde(t *testing.T) {
-	for _, c := range []string{
-		"abc123",
-		"<a>abc</a>",
-		"[\"a\":{\"b\":\"c\"}]",
+	for _, c := range [][]byte{
+		[]byte("abc123"),
+		[]byte("<a>abc</a>"),
+		[]byte("[\"a\":{\"b\":\"c\"}]"),
 	} {
 		r1, err := ZipAndEncode(c)
 		if err != nil {
@@ -22,7 +22,7 @@ func TestZipAndEndocde(t *testing.T) {
 			continue
 		}
 
-		if got, want := string(r2), c; got != want {
+		if got, want := r2, c; string(got) != string(want) {
 			t.Errorf("UnzipAndDecode(ZipAndEncode()) = %v, want %v", got, want)
 		}
 	}
