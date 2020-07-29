@@ -1,15 +1,18 @@
 {
-  "payload": {
-    "Class": {
-      "inLabels": ["domainIncludes", "rangeIncludes", "subClassOf", "typeOf"],
-      "outLabels": [
-        "isPartOf",
-        "name",
-        "provenance",
-        "sameAs",
-        "subClassOf",
-        "typeOf"
-      ]
-    }
+  "Class": {
+    "inLabels": [
+      "domainIncludes",
+      "rangeIncludes",
+      "subClassOf",
+      "typeOf"
+    ],
+    "outLabels": [
+      "isPartOf",
+      "name",
+      "provenance",
+      "sameAs",
+      "subClassOf",
+      "typeOf"
+    ]
   }
 }
