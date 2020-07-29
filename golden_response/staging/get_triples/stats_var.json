@@ -1,0 +1,286 @@
+{
+  "Count_Person": [
+    {
+      "subjectId": "Count_Person",
+      "predicate": "typeOf",
+      "objectId": "StatisticalVariable",
+      "objectName": "StatisticalVariable",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person",
+      "predicate": "statType",
+      "objectId": "measuredValue",
+      "objectName": "measuredValue",
+      "objectTypes": [
+        "Property"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person",
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://www.datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person",
+      "predicate": "populationType",
+      "objectId": "Person",
+      "objectName": "Person",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/d20yq6r828zrc",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/btjrtzjfksspd",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/6kk2e7env541h",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/64exg7jchnekb",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "WorldBank/VC_IHR_PSRC_P5",
+      "subjectName": "Intentional homicides (per 100,000 people)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "WorldBank/SH_STA_SUIC_P5",
+      "subjectName": "Suicide mortality rate (per 100,000 population)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AsAFractionOfCount_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_BirthEvent_AsAFractionOfCount_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_AsAFractionOfCount_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person",
+      "predicate": "measuredProperty",
+      "objectId": "count",
+      "objectName": "count",
+      "objectTypes": [
+        "Property"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    }
+  ],
+  "Count_Person_Female": [
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "typeOf",
+      "objectId": "StatisticalVariable",
+      "objectName": "StatisticalVariable",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "statType",
+      "objectId": "measuredValue",
+      "objectName": "measuredValue",
+      "objectTypes": [
+        "Property"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://www.datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "populationType",
+      "objectId": "Person",
+      "objectName": "Person",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/begqg4vhfbtdb",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/3n1cbgh69ys4c",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "WorldBank/VC_IHR_PSRC_FE_P5",
+      "subjectName": "Intentional homicides, female (per 100,000 female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "WorldBank/SH_STA_SUIC_FE_P5",
+      "subjectName": "Suicide mortality rate, female (per 100,000 female population)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "measuredProperty",
+      "objectId": "count",
+      "objectName": "count",
+      "objectTypes": [
+        "Property"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "gender",
+      "objectId": "Female",
+      "objectName": "Female",
+      "objectTypes": [
+        "GenderType"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "constraintProperties",
+      "objectId": "gender",
+      "objectName": "gender",
+      "objectTypes": [
+        "Property"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    }
+  ]
+}

@@ -21,26 +21,21 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"regexp"
 	"strings"
-
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
+	"time"
 )
 
 const (
-	// BqPrefix for internal dataset.
-	BqPrefix = "google.com:"
-	// BtPropValInPrefix for internal GetPropertyValues in arc cache.
-	BtPropValInPrefix = "d/0/"
-	// BtPropValOutPrefix for internal GetPropertyValues out arc cache.
-	BtPropValOutPrefix = "d/1/"
+	// BtPlaceStatsVarPrefix for place to statsvar list cache.
+	BtPlaceStatsVarPrefix = "d/0/"
+	// BtLandingPagePrefix for place landing page cache.
+	BtLandingPagePrefix = "d/1/"
 	// BtPopObsPrefix for internal pop obs cache.
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
-	// BtObsSeriesPrefix for internal obs series cache.
-	BtObsSeriesPrefix = "d/4/"
 	// BtObsAncestorPrefix for the ancestor node of Bigtable.
 	BtObsAncestorPrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.
@@ -82,6 +77,23 @@ const (
 	BtInPropValPrefix = "d/l/"
 	// BtOutPropValPrefix for out-arc prop value.
 	BtOutPropValPrefix = "d/m/"
+	// BtRelatedLocationsPrefix for related places.
+	BtRelatedLocationsPrefix = "d/n/"
+	// BtRelatedLocationsSameTypePrefix for related places with same type.
+	BtRelatedLocationsSameTypePrefix = "d/o/"
+	// BtRelatedLocationsSameAncestorPrefix for related places with same ancestor.
+	BtRelatedLocationsSameAncestorPrefix = "d/p/"
+	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same type and ancestor.
+	BtRelatedLocationsSameTypeAndAncestorPrefix = "d/q/"
+	// BtRelatedLocationsPCPrefix for related places, per capita.
+	BtRelatedLocationsPCPrefix = "d/n0/"
+	// BtRelatedLocationsSameTypePCPrefix for related places with same type, per capita.
+	BtRelatedLocationsSameTypePCPrefix = "d/o0/"
+	// BtRelatedLocationsSameAncestorPCPrefix for related places with same ancestor, per capita.
+	BtRelatedLocationsSameAncestorPCPrefix = "d/p0/"
+	// BtRelatedLocationsSameTypeAndAncestorPCPrefix for related places with same type and ancestor,
+	// per capita.
+	BtRelatedLocationsSameTypeAndAncestorPCPrefix = "d/q0/"
 
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
@@ -108,31 +120,13 @@ type TypePair struct {
 	Parent string
 }
 
-// GetProjectID gets the bigquery project id based on dataset name.
-func GetProjectID(db string) (string, error) {
-	if strings.HasPrefix(db, BqPrefix) {
-		parts := strings.SplitN(strings.Replace(db, BqPrefix, "", 1), ".", 2)
-		if len(parts) != 2 {
-			return "", status.Errorf(
-				codes.InvalidArgument, "Bad bigquery database name %s", db)
-		}
-		return BqPrefix + parts[0], nil
-	}
-	parts := strings.SplitN(db, ".", 2)
-	if len(parts) != 2 {
-		return "", status.Errorf(
-			codes.InvalidArgument, "Bad bigquery database name %s", db)
-	}
-	return parts[0], nil
-}
-
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64
-func ZipAndEncode(contents string) (string, error) {
+func ZipAndEncode(contents []byte) (string, error) {
 	// Zip the string
 	var buf bytes.Buffer
 	gzWriter := gzip.NewWriter(&buf)
 
-	_, err := gzWriter.Write([]byte(contents))
+	_, err := gzWriter.Write(contents)
 	if err != nil {
 		return "", err
 	}
@@ -158,15 +152,14 @@ func UnzipAndDecode(contents string) ([]byte, error) {
 
 	// Unzip the string
 	gzReader, err := gzip.NewReader(bytes.NewReader(decode))
-	defer gzReader.Close()
 	if err != nil {
 		return nil, err
 	}
+	defer gzReader.Close()
 	gzResult, err := ioutil.ReadAll(gzReader)
 	if err != nil {
 		return nil, err
 	}
-
 	return gzResult, nil
 }
 
@@ -198,16 +191,17 @@ func GetContainedIn(typeRelationJSONFilePath string) (map[TypePair][]string, err
 	}
 
 	ti := []typeInfo{}
-	json.Unmarshal(typeRelationJSON, &ti)
+	err = json.Unmarshal(typeRelationJSON, &ti)
+	if err != nil {
+		return nil, err
+	}
 	result := make(map[TypePair][]string)
 	link := map[string][]string{}
-	all := []string{}
 	for _, info := range ti {
 		if info.Predicate == "containedInPlace" {
 			link[info.SubType] = append(link[info.SubType], info.ObjType)
 			pair := TypePair{Child: info.SubType, Parent: info.ObjType}
 			result[pair] = []string{}
-			all = append(all, info.SubType, info.ObjType)
 		}
 	}
 	for c, ps := range link {
@@ -263,4 +257,40 @@ func CheckValidDCIDs(dcids []string) bool {
 		}
 	}
 	return true
+}
+
+// RandomString creates a random string with 16 runes.
+func RandomString() string {
+	rand.Seed(time.Now().UnixNano())
+	chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+		"abcdefghijklmnopqrstuvwxyz" +
+		"0123456789")
+	length := 16
+	var b strings.Builder
+	for i := 0; i < length; i++ {
+		b.WriteRune(chars[rand.Intn(len(chars))])
+	}
+	return b.String()
+}
+
+var re = regexp.MustCompile(`(.+?)\/(.+?)\/(.+)`)
+
+// KeyToDcid ...
+// The Bigtable key is in the form of "x/y/dcid^prop1^prop2^..."
+func KeyToDcid(key string) (string, error) {
+	parts := strings.Split(key, "^")
+	match := re.FindStringSubmatch(parts[0])
+	if len(match) != 4 {
+		return "", fmt.Errorf("Invalid bigtable row key %s", key)
+	}
+	return match[3], nil
+}
+
+// RemoveKeyPrefix removes the prefix of a big query key
+func RemoveKeyPrefix(key string) (string, error) {
+	match := re.FindStringSubmatch(key)
+	if len(match) != 4 {
+		return "", fmt.Errorf("Invalid bigtable row key %s", key)
+	}
+	return match[3], nil
 }

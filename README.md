@@ -2,7 +2,8 @@
 
 ## Development Process
 
-In https://github.com/datacommonsorg/mixer, click on "Fork" button to fork the repo.
+In Mixer GitHub [repo](https://github.com/datacommonsorg/mixer), click on "Fork"
+button to fork the repo.
 
 Clone your forked repo to your desktop.
 
@@ -28,41 +29,54 @@ Then in your forked repo, can send a Pull Request.
 
 Wait for approval of the Pull Request and merge the change.
 
-## Generate Protobuf go code and out.pb
+## Generate Protobuf go code
 
-Install protoc by following [this](http://google.github.io/proto-lens/installing-protoc.html).
+Install protoc by following
+[this](http://google.github.io/proto-lens/installing-protoc.html).
 
-Run the following code to get the proto dependency.
+Run the following code to generate golang proto files.
 
-    go get github.com/golang/protobuf/protoc-gen-go
-    mkdir -p proto/google/api/
-    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto --output proto/google/api/annotations.proto
-    curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto --output proto/google/api/http.proto
+```bash
+./prepare-proto.sh
+protoc \
+    --proto_path=proto \
+    --go_out=. \
+    --go-grpc_out=. \
+    --go-grpc_opt=requireUnimplementedServers=false \
+    proto/mixer.proto
+```
 
-Generate protobuf code and out.pb (used for cloud endpoints deployment).
+## E2E test locally
 
-    protoc \
-        --proto_path=proto \
-        --include_source_info \
-        --descriptor_set_out deployment/out.pb \
-        --go_out=plugins=grpc:proto \
-        proto/mixer.proto
+Install `cloud-build-local` following
+[the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally), then
+run:
+
+```bash
+cloud-build-local --config=cloudbuild.test.yaml --dryrun=false .
+```
 
 ## Run grpc server and examples locally
 
-    gcloud auth application-default login
+```bash
+gcloud auth application-default login
 
-    go run server/main.go \
-      --bq_dataset=google.com:datcom-store-dev.dc_kg_2020_04_13_02_32_53 \
-      --bt_table=borgcron_2020_04_13_02_32_53 \
-      --bt_project=google.com:datcom-store-dev \
-      --bt_instance=prophet-cache \
-      --project_id=datcom-mixer \
-      --schema_path=deployment/versioned_mapping
+go run main.go \
+    --bq_dataset=$(head -1 deployment/bigquery.txt) \
+    --bt_table=$(head -1 deployment/bigtable.txt) \
+    --bt_project=google.com:datcom-store-dev \
+    --bt_instance=prophet-cache \
+    --project_id=datcom-mixer-staging
 
-    cd examples
-    ./run_all.sh
+# Open a new shell
+cd examples/get_place_obs
+go run main.go
+```
 
-## Build mixer docker image and submit to Google Cloud Registry
+## Update golden files on staging
 
-    gcloud builds submit --tag gcr.io/datcom-mixer/go-grpc-mixer:<TAG> .
+Run the following commands to update golden files in ./golden_response/staging.
+
+```bash
+./update-golden.sh
+```

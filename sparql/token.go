@@ -39,12 +39,10 @@ const (
 	TRUE      // true
 	FALSE     // false
 
-	operatorBeg
 	// AND and following are Sparql operators.
 	AND // AND
 	OR  // OR
 	EQ  // =
-	operatorEnd
 
 	LT        // <
 	GT        // >
@@ -155,9 +153,6 @@ func (tok Token) Precedence() int {
 	}
 	return 0
 }
-
-// isOperator returns true for operator tokens.
-func (tok Token) isOperator() bool { return tok > operatorBeg && tok < operatorEnd }
 
 // Lookup returns the token associated with a given string.
 func Lookup(ident string) Token {
