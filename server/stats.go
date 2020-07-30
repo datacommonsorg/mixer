@@ -84,8 +84,12 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	// Read data from branch in-memory cache first.
 	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
 		tmp := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
-		for dcid := range tmp {
-			result[dcid] = tmp[dcid].(*pb.ObsTimeSeries)
+		for dcid, data := range tmp {
+			if data == nil {
+				result[dcid] = nil
+			} else {
+				result[dcid] = data.(*pb.ObsTimeSeries)
+			}
 		}
 	}
 	// For each place, if the data is missing in branch cache, fetch it from the
@@ -238,7 +242,11 @@ func readStats(ctx context.Context, btTable *bigtable.Table,
 	}
 	result := map[string]*pb.ObsTimeSeries{}
 	for dcid, data := range dataMap {
-		result[dcid] = data.(*pb.ObsTimeSeries)
+		if data == nil {
+			result[dcid] = nil
+		} else {
+			result[dcid] = data.(*pb.ObsTimeSeries)
+		}
 	}
 	return result, nil
 }

@@ -25,11 +25,11 @@ import (
 )
 
 var skippedPred = map[string]struct{}{
-	"typeOf":     struct{}{},
-	"subType":    struct{}{},
-	"dcid":       struct{}{},
-	"isPublic":   struct{}{},
-	"provenance": struct{}{},
+	"typeOf":     {},
+	"subType":    {},
+	"dcid":       {},
+	"isPublic":   {},
+	"provenance": {},
 }
 
 type tableTypes struct {
