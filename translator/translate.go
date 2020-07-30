@@ -201,7 +201,7 @@ func Bind(mappings []*base.Mapping, queries []*base.Query) (map[*base.Query][]*b
 
 // This obtains the Cartesian product among key, value groups.
 func getBindingSets(bindingMap map[*base.Query][]*base.Mapping) [][]Binding {
-	result := [][]Binding{[]Binding{}}
+	result := [][]Binding{{}}
 	for q, ms := range bindingMap {
 		tmp := [][]Binding{}
 		for _, m := range ms {
@@ -496,7 +496,7 @@ func (graph Graph) prune(resolvedEntities map[base.Entity]entityInfo) {
 		for key, values := range graph {
 			if _, ok := key.(base.Node); ok && len(values) == 1 {
 				if _, ok := allEqual[key]; ok {
-					graph[key] = map[interface{}]struct{}{alt: struct{}{}}
+					graph[key] = map[interface{}]struct{}{alt: {}}
 				}
 			}
 		}
@@ -741,7 +741,7 @@ func getSQL(
 
 	sql += fmt.Sprintf(" FROM %s AS %s", currTable.Name, currTable.Alias())
 
-	processedTable := map[base.Table]struct{}{currTable: struct{}{}}
+	processedTable := map[base.Table]struct{}{currTable: {}}
 	var currCol, otherCol base.Column
 	for len(joinConstraints) > 0 {
 		futureTables := []base.Table{}
