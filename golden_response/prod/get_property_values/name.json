@@ -1,6 +1,20 @@
 {
-  "State": { "out": [{ "provenanceId": "dc/5l5zxr1", "value": "State" }] },
-  "TotalPopulation": {},
+  "Count_Person": {},
+  "State": {
+    "out": [
+      {
+        "provenanceId": "dc/5l5zxr1",
+        "value": "State"
+      }
+    ]
+  },
   "dc/p/cmtdk79lnk2pd": {},
-  "geoId/05": { "out": [{ "provenanceId": "dc/5n63hr1", "value": "Arkansas" }] }
+  "geoId/05": {
+    "out": [
+      {
+        "provenanceId": "dc/bqr5zc1",
+        "value": "Arkansas"
+      }
+    ]
+  }
 }
