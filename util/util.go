@@ -50,8 +50,6 @@ const (
 	BtPlacesInPrefix = "d/c/"
 	// BtPopPVPrefix for population PVs.
 	BtPopPVPrefix = "d/d/"
-	// BtPopCategoryPrefix for population categories for a given place type.
-	BtPopCategoryPrefix = "d/e/"
 	// BtChartDataPrefix for chart data.
 	BtChartDataPrefix = "d/f/"
 	// BtInterestingPlaceAspectPrefix for interesting place aspect.

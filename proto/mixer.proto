@@ -237,18 +237,6 @@ message GetStatsResponse {
   string payload = 2;
 }
 
-// Request message for GetPopCategory.
-message GetPopCategoryRequest {
-  // The type of the place.
-  string place_type = 1;
-}
-
-// Response of GetPopCategory.
-message GetPopCategoryResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
 // Request to get certain population for a set of places.
 message GetPopulationsRequest {
   // DCIDs for a list of places.
@@ -571,32 +559,6 @@ message PropertyLabels {
   repeated string out_labels = 2;
 }
 
-// For a given place type, a map from pop type to possible measured properties
-// and PVs.
-message PopCategory {
-  // Only used as Flume key. This should be safe to be a key as all workers use
-  // the same binary which should serialize the proto message in the same way.
-  message Item {
-    string place_type = 1;
-    string pop_type = 2;
-    string measured_prop = 3;
-    string stat_type = 4;
-    repeated string properties = 5;
-    repeated string values = 6;
-  }
-  message MeasuredObsPropPVs {
-    map<string, string> pvs = 1;
-    // A list of measured properties and stat types (e.g., age^median) with the
-    // same PVs and population type.
-    repeated string props = 2;
-  }
-  message PopTypeCategory {
-    repeated MeasuredObsPropPVs prop_pvs = 1;
-  }
-  // Key is population type.
-  map<string, PopTypeCategory> categories = 1;
-}
-
 // Related places info for a given place and condition.
 message RelatedPlacesInfo {
   // The following 3 fields are set only when place is not empty.
@@ -745,11 +707,6 @@ service Mixer {
       post: "/bulk/stats"
       body: "*"
     };
-  }
-
-  // Get a list of possible population type, measured property, and PVs for a given place type.
-  rpc GetPopCategory(GetPopCategoryRequest) returns (GetPopCategoryResponse) {
-    option (google.api.http) = { get: "/bulk/pop-category" };
   }
 
   // Get related locations for given stat var DCIDs.
