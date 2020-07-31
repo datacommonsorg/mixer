@@ -4,7 +4,7 @@
       {
         "dcid": "geoId/0677000",
         "name": "Sunnyvale",
-        "provenanceId": "dc/bqr5zc1",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "City"
         ]
@@ -28,7 +28,7 @@
       {
         "dcid": "geoId/0669084",
         "name": "Santa Clara",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "City"
         ]
@@ -52,7 +52,7 @@
       {
         "dcid": "geoId/0655282",
         "name": "Palo Alto",
-        "provenanceId": "dc/bqr5zc1",
+        "provenanceId": "dc/5j06ly1",
         "types": [
           "City"
         ]
@@ -60,7 +60,7 @@
       {
         "dcid": "geoId/0649670",
         "name": "City of Mountain View",
-        "provenanceId": "dc/bqr5zc1",
+        "provenanceId": "dc/5j06ly1",
         "types": [
           "AdministrativeArea",
           "City"

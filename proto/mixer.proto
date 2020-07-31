@@ -237,18 +237,6 @@ message GetStatsResponse {
   string payload = 2;
 }
 
-// Request message for GetPopCategory.
-message GetPopCategoryRequest {
-  // The type of the place.
-  string place_type = 1;
-}
-
-// Response of GetPopCategory.
-message GetPopCategoryResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
 // Request to get certain population for a set of places.
 message GetPopulationsRequest {
   // DCIDs for a list of places.
@@ -310,54 +298,6 @@ message GetPlacesInRequest {
 
 // Response of GetPlacesIn.
 message GetPlacesInResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
-// Request to get related places of a place for a given statistical variable.
-message GetRelatedPlacesRequest {
-  // Place DCIDs.
-  repeated string dcids = 1;
-
-  // Population type.
-  string population_type = 2;
-
-  // A list of constraining property values that defines the population.
-  repeated PropertyValue pvs = 3;
-
-  // The measured property of the observation.
-  string measured_property = 4;
-
-  // (Opitonal) Measurement method.
-  string measurement_method = 5;
-
-  // (Opitonal) Measurement denominator.
-  string measurement_denominator = 6;
-
-  // (Opitonal) Measurement qualifier.
-  string measurement_qualifier = 7;
-
-  // (Opitonal) Scaling factor.
-  string scaling_factor = 8;
-
-  // (Optional) Unit.
-  string unit = 9;
-
-  // The statistics type, like "measured", "median", etc...
-  string stat_type = 10;
-
-  // (Optional) Wheter to require same place type for related places.
-  bool same_place_type = 11;
-
-  // (Optional) Whether to require all related places under the same ancestor.
-  string within_place = 12;
-
-  // (Opitonal) Whether the computation needs to be based on per capita.
-  bool is_per_capita = 13;
-}
-
-// Response of GetRelatedPlaces request.
-message GetRelatedPlacesResponse {
   // The JSON payload.
   string payload = 1;
 }
@@ -619,32 +559,6 @@ message PropertyLabels {
   repeated string out_labels = 2;
 }
 
-// For a given place type, a map from pop type to possible measured properties
-// and PVs.
-message PopCategory {
-  // Only used as Flume key. This should be safe to be a key as all workers use
-  // the same binary which should serialize the proto message in the same way.
-  message Item {
-    string place_type = 1;
-    string pop_type = 2;
-    string measured_prop = 3;
-    string stat_type = 4;
-    repeated string properties = 5;
-    repeated string values = 6;
-  }
-  message MeasuredObsPropPVs {
-    map<string, string> pvs = 1;
-    // A list of measured properties and stat types (e.g., age^median) with the
-    // same PVs and population type.
-    repeated string props = 2;
-  }
-  message PopTypeCategory {
-    repeated MeasuredObsPropPVs prop_pvs = 1;
-  }
-  // Key is population type.
-  map<string, PopTypeCategory> categories = 1;
-}
-
 // Related places info for a given place and condition.
 message RelatedPlacesInfo {
   // The following 3 fields are set only when place is not empty.
@@ -791,19 +705,6 @@ service Mixer {
   rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {
     option (google.api.http) = {
       post: "/bulk/stats"
-      body: "*"
-    };
-  }
-
-  // Get a list of possible population type, measured property, and PVs for a given place type.
-  rpc GetPopCategory(GetPopCategoryRequest) returns (GetPopCategoryResponse) {
-    option (google.api.http) = { get: "/bulk/pop-category" };
-  }
-
-  // Get related places for a given statistical variable.
-  rpc GetRelatedPlaces(GetRelatedPlacesRequest) returns (GetRelatedPlacesResponse) {
-    option (google.api.http) = {
-      post: "/node/related-places"
       body: "*"
     };
   }

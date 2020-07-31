@@ -37,13 +37,13 @@ func TestGetPlaceStatsVar(t *testing.T) {
 	}{
 		{
 			[]string{"geoId/05"},
-			[]string{"TotalPopulation"},
+			[]string{"Count_Person"},
 			1000,
 			false,
 		},
 		{
 			[]string{"geoId/06085"},
-			[]string{"TotalPopulation"},
+			[]string{"Count_Person"},
 			1000,
 			false,
 		},

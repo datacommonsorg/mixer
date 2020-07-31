@@ -47,7 +47,7 @@ func TestGetPropertyValues(t *testing.T) {
 	}{
 		{
 			"name.json",
-			[]string{"State", "geoId/05", "TotalPopulation", "dc/p/cmtdk79lnk2pd"},
+			[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
 			"name",
 			"out",
 			"",

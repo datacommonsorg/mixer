@@ -44,6 +44,8 @@ func TestGetPopObs(t *testing.T) {
 		t.Fatalf("Failed to set up mixer and client")
 	}
 
+	goldenPath := path.Join(
+		path.Dir(filename), "../golden_response/staging/get_pop_obs")
 	for _, c := range []struct {
 		dcid       string
 		goldenFile string
@@ -74,11 +76,13 @@ func TestGetPopObs(t *testing.T) {
 			t.Errorf("Can not Unmarshal raw json %v", err)
 			continue
 		}
-
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(result, goldenFile)
+			continue
+		}
 		var expected pb.PopObsPlace
-		goldenPath := path.Join(
-			path.Dir(filename), "../golden_response/staging/get_pop_obs")
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %v", err)

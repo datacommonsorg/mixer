@@ -22,7 +22,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/sparql"
 	"github.com/datacommonsorg/mixer/translator"
-	"github.com/datacommonsorg/mixer/util"
 )
 
 // Translate implements API for Mixer.Translate.
@@ -52,23 +51,5 @@ func (s *Server) Translate(ctx context.Context,
 		return nil, err
 	}
 	out.Translation = string(translation)
-	return &out, nil
-}
-
-// GetPopCategory implements API for Mixer.GetPopCategory.
-func (s *Server) GetPopCategory(ctx context.Context,
-	in *pb.GetPopCategoryRequest) (*pb.GetPopCategoryResponse, error) {
-	if in.GetPlaceType() == "" {
-		return nil, fmt.Errorf("missing required arguments")
-	}
-	btRow, err := s.btTable.ReadRow(
-		ctx, util.BtPopCategoryPrefix+in.GetPlaceType())
-	if err != nil {
-		return nil, err
-	}
-	out := pb.GetPopCategoryResponse{}
-	if len(btRow[util.BtFamily]) > 0 {
-		out.Payload = string(btRow[util.BtFamily][0].Value)
-	}
 	return &out, nil
 }

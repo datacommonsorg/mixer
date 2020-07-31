@@ -64,14 +64,19 @@ func TestGetPropertyLabels(t *testing.T) {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-		var expected map[string]map[string]*server.PropLabelCache
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(result, goldenFile)
 			continue
 		}
-		if diff := cmp.Diff(result, expected["payload"]); diff != "" {
+		var expected map[string]*server.PropLabelCache
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = json.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+			continue
+		}
+		if diff := cmp.Diff(result, expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
