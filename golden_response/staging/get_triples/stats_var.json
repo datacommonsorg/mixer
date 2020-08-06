@@ -127,7 +127,19 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "Count_MortalityEvent_AsAFractionOfCount_Person",
+      "subjectId": "Count_Death_AsAFractionOfCount_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -254,6 +266,30 @@
     {
       "subjectId": "WorldBank/SH_STA_SUIC_FE_P5",
       "subjectName": "Suicide mortality rate, female (per 100,000 female population)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Death_Female_AsAFractionOf_Count_Person_Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],

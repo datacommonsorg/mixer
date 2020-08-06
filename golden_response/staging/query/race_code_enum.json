@@ -1,7 +1,15 @@
 {
-  "header": ["?a"],
+  "header": [
+    "?a"
+  ],
   "rows": [
-    { "cells": [{ "value": "AmericanIndianAndAlaskaNativeAlone" }] },
+    {
+      "cells": [
+        {
+          "value": "AmericanIndianAndAlaskaNativeAlone"
+        }
+      ]
+    },
     {
       "cells": [
         {
@@ -9,16 +17,62 @@
         }
       ]
     },
-    { "cells": [{ "value": "AmericanIndianOrAlaskaNative" }] },
-    { "cells": [{ "value": "AmericanIndianOrAlaskaNativeAlone" }] },
-    { "cells": [{ "value": "Asian" }] },
-    { "cells": [{ "value": "AsianAlone" }] },
     {
-      "cells": [{ "value": "AsianAloneOrInCombinationWithOneOrMoreOtherRaces" }]
+      "cells": [
+        {
+          "value": "AmericanIndianOrAlaskaNative"
+        }
+      ]
     },
-    { "cells": [{ "value": "AsianIndian" }] },
-    { "cells": [{ "value": "Black" }] },
-    { "cells": [{ "value": "BlackOrAfricanAmericanAlone" }] },
+    {
+      "cells": [
+        {
+          "value": "AmericanIndianOrAlaskaNativeAlone"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Asian"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "AsianAlone"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "AsianIndian"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Black"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "BlackOrAfricanAmericanAlone"
+        }
+      ]
+    },
     {
       "cells": [
         {
@@ -26,17 +80,83 @@
         }
       ]
     },
-    { "cells": [{ "value": "Chinese" }] },
-    { "cells": [{ "value": "DAD_Black" }] },
-    { "cells": [{ "value": "DAD_NonBlack" }] },
-    { "cells": [{ "value": "Filipino" }] },
-    { "cells": [{ "value": "GuamanianOrChamorro" }] },
-    { "cells": [{ "value": "HawaiianNativeOrPacificIslander" }] },
-    { "cells": [{ "value": "HispanicOrLatino" }] },
-    { "cells": [{ "value": "Japanese" }] },
-    { "cells": [{ "value": "Korean" }] },
-    { "cells": [{ "value": "NativeHawaiian" }] },
-    { "cells": [{ "value": "NativeHawaiianAndOtherPacificIslanderAlone" }] },
+    {
+      "cells": [
+        {
+          "value": "Chinese"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "DAD_Black"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "DAD_NonBlack"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Filipino"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "GuamanianOrChamorro"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "HawaiianNativeOrPacificIslander"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "HispanicOrLatino"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Japanese"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Korean"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "NativeHawaiian"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "NativeHawaiianAndOtherPacificIslanderAlone"
+        }
+      ]
+    },
     {
       "cells": [
         {
@@ -44,26 +164,110 @@
         }
       ]
     },
-    { "cells": [{ "value": "NativeHawaiianOrOtherPacificIslanderAlone" }] },
-    { "cells": [{ "value": "NotHispanicOrLatino" }] },
-    { "cells": [{ "value": "OtherAsian" }] },
-    { "cells": [{ "value": "OtherPacificIslander" }] },
-    { "cells": [{ "value": "Samoan" }] },
-    { "cells": [{ "value": "SomeOtherRaceAlone" }] },
     {
       "cells": [
-        { "value": "SomeOtherRaceAloneOrInCombinationWithOneOrMoreOtherRaces" }
+        {
+          "value": "NativeHawaiianOrOtherPacificIslanderAlone"
+        }
       ]
     },
-    { "cells": [{ "value": "TwoOrMoreRaces" }] },
-    { "cells": [{ "value": "USC_RacialMinority" }] },
-    { "cells": [{ "value": "USC_RacialNonMinority" }] },
-    { "cells": [{ "value": "Vietnamese" }] },
-    { "cells": [{ "value": "White" }] },
-    { "cells": [{ "value": "WhiteAlone" }] },
-    { "cells": [{ "value": "WhiteAloneNotHispanicOrLatino" }] },
     {
-      "cells": [{ "value": "WhiteAloneOrInCombinationWithOneOrMoreOtherRaces" }]
+      "cells": [
+        {
+          "value": "NotHispanicOrLatino"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "OtherAsian"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "OtherPacificIslander"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Samoan"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "SomeOtherRaceAlone"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "SomeOtherRaceAloneOrInCombinationWithOneOrMoreOtherRaces"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "TwoOrMoreRaces"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "USC_RacialMinority"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "USC_RacialNonMinority"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Vietnamese"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "White"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "WhiteAlone"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "WhiteAloneNotHispanicOrLatino"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+        }
+      ]
     }
   ]
 }

@@ -29,6 +29,9 @@ Then in your forked repo, can send a Pull Request.
 
 Wait for approval of the Pull Request and merge the change.
 
+## Setup Go
+Install [Golang](https://golang.org/doc/install). You may need to add `$(go env GOPATH)/bin` to your `PATH`.
+
 ## Generate Protobuf go code
 
 Install protoc by following
