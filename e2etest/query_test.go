@@ -106,8 +106,15 @@ func TestQuery(t *testing.T) {
 			t.Errorf("could not Query: %v", err)
 			continue
 		}
+
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(resp, goldenFile)
+			continue
+		}
+
 		var expected pb.QueryResponse
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		if err := json.Unmarshal(file, &expected); err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue

@@ -5,6 +5,15 @@
         "charts": [
           {
             "metadata": {
+              "importName": "OECDRegionalDemography",
+              "observationPeriod": "P1Y",
+              "measurementMethod": "OECDRegionalStatistics",
+              "domain": "oecd.org"
+            },
+            "latest": 19663600
+          },
+          {
+            "metadata": {
               "importName": "CensusACS5YearSurvey",
               "measurementMethod": "CensusACS5yrSurvey",
               "domain": "census.gov"
@@ -19,6 +28,15 @@
     "info": {
       "Count_Person_Male": {
         "charts": [
+          {
+            "metadata": {
+              "importName": "OECDRegionalDemography",
+              "observationPeriod": "P1Y",
+              "measurementMethod": "OECDRegionalStatistics",
+              "domain": "oecd.org"
+            },
+            "latest": 2867870
+          },
           {
             "metadata": {
               "importName": "CensusACS5YearSurvey",

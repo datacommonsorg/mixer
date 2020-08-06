@@ -28,7 +28,7 @@
       {
         "dcid": "geoId/0669084",
         "name": "Santa Clara",
-        "provenanceId": "dc/5n63hr1",
+        "provenanceId": "dc/sm3m2w3",
         "types": [
           "City"
         ]
@@ -60,7 +60,7 @@
       {
         "dcid": "geoId/0649670",
         "name": "City of Mountain View",
-        "provenanceId": "dc/5j06ly1",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "AdministrativeArea",
           "City"
