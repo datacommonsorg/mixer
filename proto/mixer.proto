@@ -337,18 +337,6 @@ message GetInterestingPlaceAspectsResponse {
     string payload = 1;
 }
 
-// Request to get chart data.
-message GetChartDataRequest{
-   // Keys.
-   repeated string keys = 1;
-}
-
-// Response to get chart data.
-message GetChartDataResponse{
-    // The JSON payload.
-    string payload = 1;
-}
-
 // Request to get landing page info for places.
 message GetLandingPageRequest {
   // Place DCIDs.
@@ -721,15 +709,6 @@ service Mixer {
   rpc GetInterestingPlaceAspects(GetInterestingPlaceAspectsRequest) returns (
     GetInterestingPlaceAspectsResponse) {
     option (google.api.http) = { get: "/node/interesting-place-aspects"};
-  }
-
-  // Get chart data.
-  rpc GetChartData(GetChartDataRequest) returns (
-    GetChartDataResponse) {
-    option (google.api.http) = {
-      post: "/node/chart-data"
-      body: "*"
-    };
   }
 
   // Get landing page info for a place.
