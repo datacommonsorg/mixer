@@ -1,1 +1,14 @@
-{ "header": ["?name"], "rows": [{ "cells": [{ "value": "California" }] }] }
+{
+  "header": [
+    "?name"
+  ],
+  "rows": [
+    {
+      "cells": [
+        {
+          "value": "California"
+        }
+      ]
+    }
+  ]
+}
