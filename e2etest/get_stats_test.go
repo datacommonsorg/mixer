@@ -94,6 +94,14 @@ func TestGetStats(t *testing.T) {
 			false,
 		},
 		{
+			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+			[]string{"country/USA"},
+			"",
+			"gdp.json",
+			false,
+			false,
+		},
+		{
 			"BadStatsVar",
 			[]string{"geoId/06"},
 			"",

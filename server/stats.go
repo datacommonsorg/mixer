@@ -190,10 +190,9 @@ func filterAndRank(
 		if op != "" && op != series.GetObservationPeriod() {
 			continue
 		}
-		// Uncomment when unit is moved into source series
-		// if unit != "" && unit != series.GetUnit() {
-		// 	continue
-		// }
+		if unit != "" && unit != series.GetUnit() {
+			continue
+		}
 		filteredSeries = append(filteredSeries, series)
 	}
 	bestScore := lowestRank
