@@ -102,14 +102,6 @@ func buildPopPVKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
-func buildChartDataKey(keys []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, key := range keys {
-		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtChartDataPrefix, key))
-	}
-	return rowList
-}
-
 func buildPlaceInKey(dcids []string, placeType string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
