@@ -94,6 +94,23 @@ func TestGetStats(t *testing.T) {
 			false,
 		},
 		{
+			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+			[]string{"country/USA"},
+			"",
+			"gdp.json",
+			false,
+			false,
+		},
+		{
+			// This is to test for scaling factor.
+			"Count_Person_IsInternetUser_PerCapita",
+			[]string{"country/JPN"},
+			"",
+			"internet_user.json",
+			false,
+			false,
+		},
+		{
 			"BadStatsVar",
 			[]string{"geoId/06"},
 			"",

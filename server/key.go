@@ -34,7 +34,6 @@ func buildStatsKeySuffix(statsVar *StatisticalVariable) string {
 		statsVar.StatType,
 		statsVar.MeasurementDenominator,
 		statsVar.MeasurementQualifier,
-		statsVar.ScalingFactor,
 		statsVar.PopType},
 		"^")
 	var cprops []string
