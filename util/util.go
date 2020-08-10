@@ -31,7 +31,7 @@ const (
 	// BtPlaceStatsVarPrefix for place to statsvar list cache.
 	BtPlaceStatsVarPrefix = "d/0/"
 	// BtLandingPagePrefix for place landing page cache.
-	BtLandingPagePrefix = "d/1/"
+	BtLandingPagePrefix = "d/4/"
 	// BtPopObsPrefix for internal pop obs cache.
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
