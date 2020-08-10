@@ -63,7 +63,7 @@ func TestGetLandingPage(t *testing.T) {
 			t.Errorf("could not GetLandingPage: %s", err)
 			continue
 		}
-		var result map[string]*server.LandingPageInfo
+		var result map[string]map[string]*server.ObsTimeSeries
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -76,7 +76,7 @@ func TestGetLandingPage(t *testing.T) {
 			continue
 		}
 
-		var expected map[string]*server.LandingPageInfo
+		var expected map[string]map[string]*server.ObsTimeSeries
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

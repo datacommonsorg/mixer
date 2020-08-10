@@ -254,18 +254,18 @@ func (s *Server) GetLandingPage(
 
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var btLandingPageInfo LandingPageInfo
-			err := json.Unmarshal(jsonRaw, &btLandingPageInfo)
+			var landingPageData LandingPageData
+			err := json.Unmarshal(jsonRaw, &landingPageData)
 			if err != nil {
 				return nil, err
 			}
-			return &btLandingPageInfo, nil
+			return &landingPageData, nil
 		}, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	results := map[string]*LandingPageInfo{}
+	results := map[string]map[string]*ObsTimeSeries{}
 
 	filter := len(in.GetStatVarDcids()) > 0
 	wantStatVarDcids := map[string]struct{}{}
@@ -276,19 +276,18 @@ func (s *Server) GetLandingPage(
 	}
 
 	for dcid, data := range dataMap {
-		info := data.(*LandingPageInfo)
-
+		landingPageData := data.(*LandingPageData)
 		if filter {
-			filteredInfo := &LandingPageInfo{Info: map[string]*LandingPageCharts{}}
-			for statVarDcid := range info.Info {
+			filteredData := map[string]*ObsTimeSeries{}
+			for statVarDcid := range landingPageData.Data {
 				if _, ok := wantStatVarDcids[statVarDcid]; ok {
-					filteredInfo.Info[statVarDcid] = info.Info[statVarDcid]
+					filteredData[statVarDcid] = landingPageData.Data[statVarDcid]
 				}
 			}
-			info = filteredInfo
+			results[dcid] = filteredData
+		} else {
+			results[dcid] = landingPageData.Data
 		}
-
-		results[dcid] = info
 	}
 	jsonRaw, err := json.Marshal(results)
 	if err != nil {
