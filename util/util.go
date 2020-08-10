@@ -30,12 +30,12 @@ import (
 const (
 	// BtPlaceStatsVarPrefix for place to statsvar list cache.
 	BtPlaceStatsVarPrefix = "d/0/"
-	// BtLandingPagePrefix for place landing page cache.
-	BtLandingPagePrefix = "d/4/"
 	// BtPopObsPrefix for internal pop obs cache.
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
+	// BtLandingPagePrefix for place landing page cache.
+	BtLandingPagePrefix = "d/4/"
 	// BtObsAncestorPrefix for the ancestor node of Bigtable.
 	BtObsAncestorPrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.
