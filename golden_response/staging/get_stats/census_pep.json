@@ -122,9 +122,9 @@
       "2018": 327167434,
       "2019": 328239523
     },
-    "place_name": "United States",
-    "place_dcid": "country/USA",
-    "provenance_domain": "census.gov"
+    "placeName": "United States",
+    "placeDcid": "country/USA",
+    "provenanceDomain": "census.gov"
   },
   "geoId/06": {
     "data": {
@@ -249,9 +249,9 @@
       "2018": 39461588,
       "2019": 39512223
     },
-    "place_name": "California",
-    "place_dcid": "geoId/06",
-    "provenance_domain": "census.gov"
+    "placeName": "California",
+    "placeDcid": "geoId/06",
+    "provenanceDomain": "census.gov"
   },
   "geoId/06085": {
     "data": {
@@ -296,9 +296,9 @@
       "2018": 1932337,
       "2019": 1927852
     },
-    "place_name": "Santa Clara County",
-    "place_dcid": "geoId/06085",
-    "provenance_domain": "census.gov"
+    "placeName": "Santa Clara County",
+    "placeDcid": "geoId/06085",
+    "provenanceDomain": "census.gov"
   },
   "geoId/0649670": {
     "data": {
@@ -332,8 +332,8 @@
       "2017": 81197,
       "2018": 83377
     },
-    "place_name": "City of Mountain View",
-    "place_dcid": "geoId/0649670",
-    "provenance_domain": "census.gov"
+    "placeName": "City of Mountain View",
+    "placeDcid": "geoId/0649670",
+    "provenanceDomain": "census.gov"
   }
 }

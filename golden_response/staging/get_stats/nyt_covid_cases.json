@@ -197,11 +197,14 @@
       "2020-08-01": 4628534,
       "2020-08-02": 4677855,
       "2020-08-03": 4725274,
-      "2020-08-04": 4778669
+      "2020-08-04": 4778669,
+      "2020-08-05": 4832395,
+      "2020-08-06": 4889733,
+      "2020-08-07": 4950708
     },
-    "place_name": "United States",
-    "place_dcid": "country/USA",
-    "provenance_domain": "nytimes.com"
+    "placeName": "United States",
+    "placeDcid": "country/USA",
+    "provenanceDomain": "nytimes.com"
   },
   "geoId/06": {
     "data": {
@@ -376,8 +379,8 @@
       "2020-07-11": 320030,
       "2020-07-12": 327676
     },
-    "place_name": "California",
-    "place_dcid": "geoId/06"
+    "placeName": "California",
+    "placeDcid": "geoId/06"
   },
   "geoId/06085": {
     "data": {
@@ -538,7 +541,7 @@
       "2020-07-03": 4849,
       "2020-07-04": 5077
     },
-    "place_name": "Santa Clara County",
-    "place_dcid": "geoId/06085"
+    "placeName": "Santa Clara County",
+    "placeDcid": "geoId/06085"
   }
 }

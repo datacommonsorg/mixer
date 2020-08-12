@@ -79,7 +79,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	// Construct BigTable row keys.
 	rowList := buildStatsKey(placeDcids, statsVar)
 
-	result := map[string]*pb.ObsTimeSeries{}
+	result := map[string]*ObsTimeSeries{}
 
 	// Read data from branch in-memory cache first.
 	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
@@ -88,7 +88,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 			if data == nil {
 				result[dcid] = nil
 			} else {
-				result[dcid] = data.(*pb.ObsTimeSeries)
+				result[dcid] = data.(*ObsTimeSeries)
 			}
 		}
 	}
@@ -177,27 +177,27 @@ func triplesToStatsVar(
 }
 
 func filterAndRank(
-	in *pb.ObsTimeSeries, mmethod, op, unit string) *pb.ObsTimeSeries {
-	out := &pb.ObsTimeSeries{
-		PlaceDcid: in.GetPlaceDcid(),
-		PlaceName: in.GetPlaceName(),
+	in *ObsTimeSeries, mmethod, op, unit string) *ObsTimeSeries {
+	out := &ObsTimeSeries{
+		PlaceDcid: in.PlaceDcid,
+		PlaceName: in.PlaceName,
 	}
-	filteredSeries := []*pb.ObsTimeSeries_SourceSeries{}
-	for _, series := range in.GetSourceSeries() {
-		if mmethod != "" && mmethod != series.GetMeasurementMethod() {
+	filteredSeries := []*SourceSeries{}
+	for _, series := range in.SourceSeries {
+		if mmethod != "" && mmethod != series.MeasurementMethod {
 			continue
 		}
-		if op != "" && op != series.GetObservationPeriod() {
+		if op != "" && op != series.ObservationPeriod {
 			continue
 		}
-		if unit != "" && unit != series.GetUnit() {
+		if unit != "" && unit != series.Unit {
 			continue
 		}
 		filteredSeries = append(filteredSeries, series)
 	}
 	bestScore := lowestRank
 	for _, series := range filteredSeries {
-		key := rankKey{series.GetImportName(), series.GetMeasurementMethod()}
+		key := rankKey{series.ImportName, series.MeasurementMethod}
 		score, ok := statsRanking[key]
 		if !ok {
 			score = lowestRank
@@ -205,7 +205,7 @@ func filterAndRank(
 		if score <= bestScore {
 			out.Data = series.Val
 			// TODO(boxu): correct this when source url is populated in cache data.
-			out.ProvenanceDomain = series.GetProvenanceDomain()
+			out.ProvenanceDomain = series.ProvenanceDomain
 			bestScore = score
 		}
 	}
@@ -220,8 +220,26 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsTimeSeries:
-		x.ObsTimeSeries.PlaceDcid = dcid
-		return x.ObsTimeSeries, nil
+		pbSourceSeries := x.ObsTimeSeries.GetSourceSeries()
+		ret := &ObsTimeSeries{
+			Data:         x.ObsTimeSeries.GetData(),
+			PlaceName:    x.ObsTimeSeries.GetPlaceName(),
+			PlaceDcid:    dcid,
+			SourceSeries: make([]*SourceSeries, len(pbSourceSeries)),
+		}
+		for i, source := range pbSourceSeries {
+			ret.SourceSeries[i] = &SourceSeries{
+				ImportName:        source.GetImportName(),
+				ObservationPeriod: source.GetObservationPeriod(),
+				MeasurementMethod: source.GetMeasurementMethod(),
+				ScalingFactor:     source.GetScalingFactor(),
+				Unit:              source.GetUnit(),
+				ProvenanceDomain:  source.GetProvenanceDomain(),
+				Val:               source.GetVal(),
+			}
+		}
+		ret.ProvenanceDomain = x.ObsTimeSeries.GetProvenanceDomain()
+		return ret, nil
 	case nil:
 		return nil, fmt.Errorf("ChartStore.Val is not set")
 	default:
@@ -232,19 +250,19 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 // readStats reads and process BigTable rows in parallel.
 // Consider consolidate this function and bigTableReadRowsParallel.
 func readStats(ctx context.Context, btTable *bigtable.Table,
-	rowList bigtable.RowList) (map[string]*pb.ObsTimeSeries, error) {
+	rowList bigtable.RowList) (map[string]*ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
 		ctx, btTable, rowList, convertToObsSeries, nil)
 	if err != nil {
 		return nil, err
 	}
-	result := map[string]*pb.ObsTimeSeries{}
+	result := map[string]*ObsTimeSeries{}
 	for dcid, data := range dataMap {
 		if data == nil {
 			result[dcid] = nil
 		} else {
-			result[dcid] = data.(*pb.ObsTimeSeries)
+			result[dcid] = data.(*ObsTimeSeries)
 		}
 	}
 	return result, nil

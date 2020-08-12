@@ -70,7 +70,7 @@ func TestGetPopObs(t *testing.T) {
 		if err != nil {
 			t.Errorf("could not UnzipAndDecode: %s", err)
 		}
-		var result pb.PopObsPlace
+		var result *pb.PopObsPlace
 		err = json.Unmarshal(jsonRaw, &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal raw json %v", err)
@@ -81,7 +81,7 @@ func TestGetPopObs(t *testing.T) {
 			updateGolden(result, goldenFile)
 			continue
 		}
-		var expected pb.PopObsPlace
+		var expected *pb.PopObsPlace
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
