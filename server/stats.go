@@ -220,8 +220,26 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsTimeSeries:
-		x.ObsTimeSeries.PlaceDcid = dcid
-		return x.ObsTimeSeries, nil
+		pbSourceSeries := x.ObsTimeSeries.GetSourceSeries()
+		ret := &ObsTimeSeries{
+			Data:         x.ObsTimeSeries.GetData(),
+			PlaceName:    x.ObsTimeSeries.GetPlaceName(),
+			PlaceDcid:    dcid,
+			SourceSeries: make([]*SourceSeries, len(pbSourceSeries)),
+		}
+		for i, source := range pbSourceSeries {
+			ret.SourceSeries[i] = &SourceSeries{
+				ImportName:        source.GetImportName(),
+				ObservationPeriod: source.GetObservationPeriod(),
+				MeasurementMethod: source.GetMeasurementMethod(),
+				ScalingFactor:     source.GetScalingFactor(),
+				Unit:              source.GetUnit(),
+				ProvenanceDomain:  source.GetProvenanceDomain(),
+				Val:               source.GetVal(),
+			}
+		}
+		ret.ProvenanceDomain = x.ObsTimeSeries.GetProvenanceDomain()
+		return ret, nil
 	case nil:
 		return nil, fmt.Errorf("ChartStore.Val is not set")
 	default:

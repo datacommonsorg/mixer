@@ -30,8 +30,8 @@
       "2016": 93.18272128,
       "2017": 84.58806583
     },
-    "place_name": "Japan",
-    "place_dcid": "country/JPN",
-    "provenance_domain": "worldbank.org"
+    "placeName": "Japan",
+    "placeDcid": "country/JPN",
+    "provenanceDomain": "worldbank.org"
   }
 }

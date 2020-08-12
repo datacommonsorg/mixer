@@ -31,8 +31,8 @@
       "2017": 60990,
       "2018": 63690
     },
-    "place_name": "United States",
-    "place_dcid": "country/USA",
-    "provenance_domain": "worldbank.org"
+    "placeName": "United States",
+    "placeDcid": "country/USA",
+    "provenanceDomain": "worldbank.org"
   }
 }

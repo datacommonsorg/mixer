@@ -48,3 +48,6 @@ docs/_build/
 
 # vscode
 .vscode
+
+# Downloaded tools, e.g. golangci-lint
+bin/
