@@ -277,17 +277,17 @@ func (s *Server) GetLandingPage(
 
 	for dcid, data := range dataMap {
 		landingPageData := data.(*LandingPageData)
-		if filter {
-			filteredData := map[string]*ObsTimeSeries{}
-			for statVarDcid := range landingPageData.Data {
-				if _, ok := wantStatVarDcids[statVarDcid]; ok {
-					filteredData[statVarDcid] = landingPageData.Data[statVarDcid]
+
+		filteredData := map[string]*ObsTimeSeries{}
+		for statVarDcid := range landingPageData.Data {
+			if filter {
+				if _, ok := wantStatVarDcids[statVarDcid]; !ok {
+					continue
 				}
 			}
-			results[dcid] = filteredData
-		} else {
-			results[dcid] = landingPageData.Data
+			filteredData[statVarDcid] = filterAndRank(landingPageData.Data[statVarDcid], "", "", "")
 		}
+		results[dcid] = filteredData
 	}
 	jsonRaw, err := json.Marshal(results)
 	if err != nil {
