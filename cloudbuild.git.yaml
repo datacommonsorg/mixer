@@ -24,6 +24,9 @@ steps:
     echo $SHORT_SHA
     echo $REPO_NAME
     echo $BRANCH_NAME
+    echo $_HEAD_REPO_URL
+    echo $_PR_NUMBER
     git clone https://github.com/datacommonsorg/mixer.git
     cd mixer
+    git fetch origin origin/$_PR_NUMBER/head:$BRANCH_NAME
     git show $SHORT_SHA | head -n 2 | tail -n 1
