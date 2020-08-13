@@ -163,7 +163,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_AsAFractionOfCount_Person",
+      "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
