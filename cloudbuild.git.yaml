@@ -28,5 +28,5 @@ steps:
     echo $_PR_NUMBER
     git clone https://github.com/datacommonsorg/mixer.git
     cd mixer
-    git fetch origin origin/$_PR_NUMBER/head:$BRANCH_NAME
+    git fetch origin pull/$_PR_NUMBER/head:$BRANCH_NAME
     git show $SHORT_SHA | head -n 2 | tail -n 1
