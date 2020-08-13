@@ -178,6 +178,9 @@ func triplesToStatsVar(
 
 func filterAndRank(
 	in *ObsTimeSeries, mmethod, op, unit string) *ObsTimeSeries {
+	if in == nil {
+		return nil
+	}
 	out := &ObsTimeSeries{
 		PlaceDcid: in.PlaceDcid,
 		PlaceName: in.PlaceName,
