@@ -24,3 +24,5 @@ steps:
     echo $SHORT_SHA
     echo $REPO_NAME
     echo $BRANCH_NAME
+    git clone https://github.com/datacommonsorg/mixer.git
+    git show $SHORT_SHA | head -n 2 | tail -n 1
