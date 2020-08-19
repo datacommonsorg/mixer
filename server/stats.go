@@ -277,17 +277,17 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 		}
 		return 0, fmt.Errorf("No data found for date %s", date)
 	}
-	latestData := ""
+	latestDate := ""
 	var result float64
 	for _, series := range sourceSeries {
 		for date, value := range series.Val {
-			if date > latestData {
-				latestData = date
+			if date > latestDate {
+				latestDate = date
 				result = value
 			}
 		}
 	}
-	if latestData == "" {
+	if latestDate == "" {
 		return 0, fmt.Errorf("No stat data found for %s", in.PlaceDcid)
 	}
 	return result, nil
