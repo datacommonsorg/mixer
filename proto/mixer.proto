@@ -609,6 +609,16 @@ message GetStatSeriesRequest {
   string place = 1;
   // dcid of the stat var.
   string stat_var = 2;
+  // (optional) data provenance domain like "cdc.org".
+  string provenance_domain = 3;
+  // (optional) measuremet method of the observation, ex: "CensusACS5yrSurvey".
+  string measurement_method = 4;
+  // (optional) observation period of the observation, ex: "P1Y".
+  string observation_period = 5;
+  // (optional) unit of the observation.
+  string unit = 6;
+  // (optional) scaling factor of the observation.
+  string scaling_factor = 7;
 }
 
 // Response for GetStatSeries service.

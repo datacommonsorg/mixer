@@ -26,6 +26,14 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+type obsProp struct {
+	domain  string
+	mmethod string
+	op      string
+	unit    string
+	sf      string
+}
+
 type rankKey struct {
 	prov    string
 	mmethod string
@@ -76,7 +84,47 @@ func (a byRank) Less(i, j int) bool {
 		scorej = lowestRank
 	}
 	// Higher score value means lower rank.
-	return scorei < scorej
+	if scorei != scorej {
+		return scorei < scorej
+	}
+	// Compare other fields to get consistent ranking.
+	if oi.ObservationPeriod != oj.ObservationPeriod {
+		return oi.ObservationPeriod < oj.ObservationPeriod
+	}
+	if oi.ScalingFactor != oj.ScalingFactor {
+		return oi.ScalingFactor < oj.ScalingFactor
+	}
+	if oi.Unit != oj.Unit {
+		return oi.Unit < oj.Unit
+	}
+	if oi.ProvenanceDomain != oj.ProvenanceDomain {
+		return oi.ProvenanceDomain < oj.ProvenanceDomain
+	}
+	return true
+}
+
+// Filter a list of source series given the
+func filterSeries(in []*SourceSeries, prop *obsProp) []*SourceSeries {
+	result := []*SourceSeries{}
+	for _, series := range in {
+		if prop.domain != "" && prop.domain != series.ProvenanceDomain {
+			continue
+		}
+		if prop.mmethod != "" && prop.mmethod != series.MeasurementMethod {
+			continue
+		}
+		if prop.op != "" && prop.op != series.ObservationPeriod {
+			continue
+		}
+		if prop.unit != "" && prop.unit != series.Unit {
+			continue
+		}
+		if prop.sf != "" && prop.sf != series.ScalingFactor {
+			continue
+		}
+		result = append(result, series)
+	}
+	return result
 }
 
 // GetStatValue implements API for Mixer.GetStatValue.
@@ -85,11 +133,11 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	place := in.GetPlace()
 	statVar := in.GetStatVar()
 	if place == "" || statVar == "" {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, fmt.Errorf("Missing required arguments")
 	}
 	date := in.GetDate()
 
-	// Read triples for stats var.
+	// Read triples for the statistical variable.
 	triplesRowList := buildTriplesKey([]string{statVar})
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
 	if err != nil {
@@ -97,7 +145,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	}
 	// Get the StatisticalVariable
 	if triples[statVar] == nil {
-		return nil, fmt.Errorf("No stats var found for %s", statVar)
+		return nil, fmt.Errorf("No statistical variable found for %s", statVar)
 	}
 	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
 	if err != nil {
@@ -132,15 +180,23 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 }
 
 // GetStatSeries implements API for Mixer.GetStatSeries.
+// TODO(shifucun): consilidate and dedup the logic among these similar APIs.
 func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest) (
 	*pb.GetStatSeriesResponse, error) {
 	place := in.GetPlace()
 	statVar := in.GetStatVar()
 	if place == "" || statVar == "" {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, fmt.Errorf("Missing required arguments")
+	}
+	filterProp := &obsProp{
+		domain:  in.GetProvenanceDomain(),
+		mmethod: in.GetMeasurementMethod(),
+		op:      in.GetObservationPeriod(),
+		unit:    in.GetUnit(),
+		sf:      in.GetScalingFactor(),
 	}
 
-	// Read triples for stats var.
+	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey([]string{statVar})
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
 	if err != nil {
@@ -148,7 +204,7 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 	}
 	// Get the StatisticalVariable
 	if triples[statVar] == nil {
-		return nil, fmt.Errorf("No stats var found for %s", statVar)
+		return nil, fmt.Errorf("No statistical variable found for %s", statVar)
 	}
 	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
 	if err != nil {
@@ -175,9 +231,13 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 		}
 		obsTimeSeries = btData[place]
 	}
-	filteredObsTimeSeries := filterAndRank(obsTimeSeries, "", "", "")
+	series := obsTimeSeries.SourceSeries
+	series = filterSeries(series, filterProp)
+	sort.Sort(byRank(series))
 	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
-	resp.Series = filteredObsTimeSeries.Data
+	if len(series) > 0 {
+		resp.Series = series[0].Val
+	}
 	return &resp, nil
 }
 
@@ -187,14 +247,15 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	placeDcids := in.GetPlace()
 	statsVarDcid := in.GetStatsVar()
 	if len(placeDcids) == 0 || statsVarDcid == "" {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, fmt.Errorf("Missing required arguments")
+	}
+	filterProp := &obsProp{
+		mmethod: in.GetMeasurementMethod(),
+		op:      in.GetObservationPeriod(),
+		unit:    in.GetUnit(),
 	}
 
-	mmethod := in.GetMeasurementMethod()
-	unit := in.GetUnit()
-	op := in.GetObservationPeriod()
-
-	// Read triples for stats var.
+	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey([]string{statsVarDcid})
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
 	if err != nil {
@@ -202,7 +263,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	}
 	// Get the StatisticalVariable
 	if triples[statsVarDcid] == nil {
-		return nil, fmt.Errorf("No stats var found for %s", statsVarDcid)
+		return nil, fmt.Errorf("No statistical variable found for %s", statsVarDcid)
 	}
 	statsVar, err := triplesToStatsVar(statsVarDcid, triples[statsVarDcid])
 	if err != nil {
@@ -248,8 +309,8 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 			result[dcid] = nil
 		}
 	}
-	for dcid := range result {
-		result[dcid] = filterAndRank(result[dcid], mmethod, unit, op)
+	for _, obsSeries := range result {
+		obsSeries.filterAndRank(filterProp)
 	}
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
@@ -343,46 +404,18 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 	return result, nil
 }
 
-func filterAndRank(
-	in *ObsTimeSeries, mmethod, op, unit string) *ObsTimeSeries {
+func (in *ObsTimeSeries) filterAndRank(prop *obsProp) {
 	if in == nil {
-		return nil
+		return
 	}
-	out := &ObsTimeSeries{
-		PlaceDcid: in.PlaceDcid,
-		PlaceName: in.PlaceName,
+	series := filterSeries(in.SourceSeries, prop)
+	sort.Sort(byRank(series))
+	if len(series) > 0 {
+		in.Data = series[0].Val
+		in.ProvenanceDomain = series[0].ProvenanceDomain
 	}
-	filteredSeries := []*SourceSeries{}
-	for _, series := range in.SourceSeries {
-		if mmethod != "" && mmethod != series.MeasurementMethod {
-			continue
-		}
-		if op != "" && op != series.ObservationPeriod {
-			continue
-		}
-		if unit != "" && unit != series.Unit {
-			continue
-		}
-		filteredSeries = append(filteredSeries, series)
-	}
-	bestScore := lowestRank
-	for _, series := range filteredSeries {
-		key := rankKey{series.ImportName, series.MeasurementMethod}
-		score, ok := statsRanking[key]
-		if !ok {
-			score = lowestRank
-		}
-		if score <= bestScore {
-			out.Data = series.Val
-			// TODO(boxu): correct this when source url is populated in cache data.
-			out.ProvenanceDomain = series.ProvenanceDomain
-			bestScore = score
-		}
-	}
-	out.SourceSeries = nil
-	return out
+	in.SourceSeries = nil
 }
-
 func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {

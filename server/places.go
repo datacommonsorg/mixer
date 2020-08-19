@@ -279,13 +279,14 @@ func (s *Server) GetLandingPage(
 		landingPageData := data.(*LandingPageData)
 
 		filteredData := map[string]*ObsTimeSeries{}
-		for statVarDcid := range landingPageData.Data {
+		for statVarDcid, obsTimeSeries := range landingPageData.Data {
 			if filter {
 				if _, ok := wantStatVarDcids[statVarDcid]; !ok {
 					continue
 				}
 			}
-			filteredData[statVarDcid] = filterAndRank(landingPageData.Data[statVarDcid], "", "", "")
+			obsTimeSeries.filterAndRank(&obsProp{})
+			filteredData[statVarDcid] = obsTimeSeries
 		}
 		results[dcid] = filteredData
 	}
