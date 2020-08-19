@@ -50,6 +50,8 @@ const lowestRank = 100
 // Limit the concurrent channels when processing in-memory cache data.
 const maxChannelSize = 50
 
+// TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
+// decision, so the ranking is deterministic.
 // byRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
 type byRank []*SourceSeries
@@ -275,17 +277,17 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 		}
 		return 0, fmt.Errorf("No data found for date %s", date)
 	}
-	currDate := ""
+	latestData := ""
 	var result float64
 	for _, series := range sourceSeries {
 		for date, value := range series.Val {
-			if date > currDate {
-				currDate = date
+			if date > latestData {
+				latestData = date
 				result = value
 			}
 		}
 	}
-	if currDate == "" {
+	if latestData == "" {
 		return 0, fmt.Errorf("No stat data found for %s", in.PlaceDcid)
 	}
 	return result, nil

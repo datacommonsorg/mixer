@@ -593,7 +593,7 @@ message InterestingPlaceAspect {
 message GetStatValueRequest {
   // dcid of the place.
   string place = 1;
-  // dcid of the stats var.
+  // dcid of the stat var.
   string stat_var = 2;
   // (optional) date of the stat.
   string date = 3;
