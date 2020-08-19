@@ -263,7 +263,7 @@ func triplesToStatsVar(
 // source series.
 func getValue(in *ObsTimeSeries, date string) (float64, error) {
 	if in == nil {
-		return 0, fmt.Errorf("Nil obs time series for getLatest()")
+		return 0, fmt.Errorf("Nil obs time series for getValue()")
 	}
 	sourceSeries := in.SourceSeries
 	sort.Sort(byRank(sourceSeries))
