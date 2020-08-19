@@ -16,6 +16,7 @@ package server
 
 import (
 	"encoding/json"
+	"sort"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -350,6 +351,84 @@ func TestFilterAndRank(t *testing.T) {
 		got := filterAndRank(c.input, c.mmethod, c.op, c.unit)
 		if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
 			t.Errorf("filterAndRank() got diff %+v", diff)
+		}
+	}
+}
+
+func TestByRank(t *testing.T) {
+	sourceSeries := []*SourceSeries{
+		{
+			Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+			MeasurementMethod: "randomeMMethod",
+			ImportName:        "randomImportName",
+			ProvenanceDomain:  "census.gov",
+		},
+		{
+			Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+			MeasurementMethod: "CensusACS5yrSurvey",
+			ImportName:        "CensusACS5YearSurvey",
+			ProvenanceDomain:  "census.gov",
+		},
+		{
+			Val:               map[string]float64{"2011": 100, "2012": 101},
+			MeasurementMethod: "CensusPEPSurvey",
+			ImportName:        "CensusPEP",
+			ProvenanceDomain:  "census.gov",
+		},
+	}
+	sort.Sort(byRank(sourceSeries))
+	expectImportName := []string{"CensusPEP", "CensusACS5YearSurvey", "randomImportName"}
+	for index, series := range sourceSeries {
+		if expectImportName[index] != series.ImportName {
+			t.Errorf("Bad ranking for %d, %s", index, series.ImportName)
+		}
+	}
+}
+
+func TestGetLatest(t *testing.T) {
+	obsTimeSeries := &ObsTimeSeries{
+		SourceSeries: []*SourceSeries{
+			{
+				Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 105, "2014": 200},
+				MeasurementMethod: "randomeMMethod",
+				ImportName:        "randomImportName",
+				ProvenanceDomain:  "census.gov",
+			},
+			{
+				Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+				MeasurementMethod: "CensusACS5yrSurvey",
+				ImportName:        "CensusACS5YearSurvey",
+				ProvenanceDomain:  "census.gov",
+			},
+			{
+				Val:               map[string]float64{"2011": 100, "2012": 101},
+				MeasurementMethod: "CensusPEPSurvey",
+				ImportName:        "CensusPEP",
+				ProvenanceDomain:  "census.gov",
+			},
+		},
+	}
+
+	for _, c := range []struct {
+		date string
+		want float64
+	}{
+		{
+			"",
+			200,
+		},
+		{
+			"2013",
+			103,
+		},
+		{
+			"2014",
+			200,
+		},
+	} {
+		value, _ := getLatest(obsTimeSeries, c.date)
+		if c.want != value {
+			t.Errorf("Wrong latest value %f", value)
 		}
 	}
 }

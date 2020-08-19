@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"sort"
 	"strings"
 
 	"cloud.google.com/go/bigtable"
@@ -48,6 +49,86 @@ const lowestRank = 100
 
 // Limit the concurrent channels when processing in-memory cache data.
 const maxChannelSize = 50
+
+// byRank implements sort.Interface for []*ObsTimeSeries based on
+// the rank score.
+type byRank []*SourceSeries
+
+func (a byRank) Len() int {
+	return len(a)
+}
+func (a byRank) Swap(i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
+func (a byRank) Less(i, j int) bool {
+	oi := a[i]
+	keyi := rankKey{oi.ImportName, oi.MeasurementMethod}
+	scorei, ok := statsRanking[keyi]
+	if !ok {
+		scorei = lowestRank
+	}
+	oj := a[j]
+	keyj := rankKey{oj.ImportName, oj.MeasurementMethod}
+	scorej, ok := statsRanking[keyj]
+	if !ok {
+		scorej = lowestRank
+	}
+	// Higher score value means lower rank.
+	return scorei < scorej
+}
+
+// GetStatValue implements API for Mixer.GetStatValue.
+func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
+	*pb.GetStatValueResponse, error) {
+	place := in.GetPlace()
+	statVar := in.GetStatVar()
+	if place == "" || statVar == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+	date := in.GetDate()
+
+	// Read triples for stats var.
+	triplesRowList := buildTriplesKey([]string{statVar})
+	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	if err != nil {
+		return nil, err
+	}
+	// Get the StatisticalVariable
+	if triples[statVar] == nil {
+		return nil, fmt.Errorf("No stats var found for %s", statVar)
+	}
+	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
+	if err != nil {
+		return nil, err
+	}
+	// Construct BigTable row keys.
+	rowList := buildStatsKey([]string{place}, statVarObject)
+
+	var obsTimeSeries *ObsTimeSeries
+	// Read data from branch in-memory cache first.
+	cacheData := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
+	if data, ok := cacheData[place]; ok {
+		if data == nil {
+			obsTimeSeries = nil
+		} else {
+			obsTimeSeries = data.(*ObsTimeSeries)
+		}
+	} else {
+		// If the data is missing in branch cache, fetch it from the base cache in
+		// Bigtable.
+		btData, err := readStats(
+			ctx, s.btTable, buildStatsKey([]string{place}, statVarObject))
+		if err != nil {
+			return nil, err
+		}
+		obsTimeSeries = btData[place]
+	}
+	result, err := getLatest(obsTimeSeries, date)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.GetStatValueResponse{Value: result}, nil
+}
 
 // GetStats implements API for Mixer.GetStats.
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
@@ -174,6 +255,33 @@ func triplesToStatsVar(
 		}
 	}
 	return &statsVar, nil
+}
+
+func getLatest(in *ObsTimeSeries, date string) (float64, error) {
+	if in == nil {
+		return 0, fmt.Errorf("Nil obs time series for getLatest()")
+	}
+	sourceSeries := in.SourceSeries
+	sort.Sort(byRank(sourceSeries))
+	if date != "" {
+		for _, series := range sourceSeries {
+			if value, ok := series.Val[date]; ok {
+				return value, nil
+			}
+		}
+		return 0, fmt.Errorf("No data found for date %s", date)
+	}
+	currDate := ""
+	var result float64
+	for _, series := range sourceSeries {
+		for date, value := range series.Val {
+			if date > currDate {
+				currDate = date
+				result = value
+			}
+		}
+	}
+	return result, nil
 }
 
 func filterAndRank(

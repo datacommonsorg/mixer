@@ -589,6 +589,20 @@ message InterestingPlaceAspect {
   repeated Aspect aspects = 1;
 }
 
+// Request for GetStat service.
+message GetStatValueRequest {
+  // dcid of the place.
+  string place = 1;
+  // dcid of the stats var.
+  string stat_var = 2;
+  // (optional) date of the stat.
+  string date = 3;
+}
+
+message GetStatValueResponse {
+  double value = 1;
+}
+
 
 service Mixer {
 
@@ -694,6 +708,15 @@ service Mixer {
   rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {
     option (google.api.http) = {
       post: "/bulk/stats"
+      body: "*"
+    };
+  }
+
+  // Get a single stat value given a place, a statistical variable and a date.
+  // If no date is given, the latest statistical variable will be returned.
+  rpc GetStatValue(GetStatValueRequest) returns (GetStatValueResponse) {
+    option (google.api.http) = {
+      get: "/stat/value"
       body: "*"
     };
   }
