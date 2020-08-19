@@ -50,7 +50,7 @@ const lowestRank = 100
 // Limit the concurrent channels when processing in-memory cache data.
 const maxChannelSize = 50
 
-// byRank implements sort.Interface for []*ObsTimeSeries based on
+// byRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
 type byRank []*SourceSeries
 
@@ -123,7 +123,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		}
 		obsTimeSeries = btData[place]
 	}
-	result, err := getLatest(obsTimeSeries, date)
+	result, err := getValue(obsTimeSeries, date)
 	if err != nil {
 		return nil, err
 	}
@@ -257,7 +257,12 @@ func triplesToStatsVar(
 	return &statsVar, nil
 }
 
-func getLatest(in *ObsTimeSeries, date string) (float64, error) {
+// getValue get the stat value from ObsTimeSeries.
+// When date is given, it get the value from the highest ranked source series
+// that has the date.
+// When date is not given, it get the latest value from the highest ranked
+// source series.
+func getValue(in *ObsTimeSeries, date string) (float64, error) {
 	if in == nil {
 		return 0, fmt.Errorf("Nil obs time series for getLatest()")
 	}
