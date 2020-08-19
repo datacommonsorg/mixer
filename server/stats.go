@@ -116,8 +116,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
 		// Bigtable.
-		btData, err := readStats(
-			ctx, s.btTable, buildStatsKey([]string{place}, statVarObject))
+		btData, err := readStats(ctx, s.btTable, rowList)
 		if err != nil {
 			return nil, err
 		}
@@ -285,6 +284,9 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 				result = value
 			}
 		}
+	}
+	if currDate == "" {
+		return 0, fmt.Errorf("No stat data found for %s", in.PlaceDcid)
 	}
 	return result, nil
 }
