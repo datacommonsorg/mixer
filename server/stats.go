@@ -131,6 +131,56 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	return &pb.GetStatValueResponse{Value: result}, nil
 }
 
+// GetStatSeries implements API for Mixer.GetStatSeries.
+func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest) (
+	*pb.GetStatSeriesResponse, error) {
+	place := in.GetPlace()
+	statVar := in.GetStatVar()
+	if place == "" || statVar == "" {
+		return nil, fmt.Errorf("missing required arguments")
+	}
+
+	// Read triples for stats var.
+	triplesRowList := buildTriplesKey([]string{statVar})
+	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	if err != nil {
+		return nil, err
+	}
+	// Get the StatisticalVariable
+	if triples[statVar] == nil {
+		return nil, fmt.Errorf("No stats var found for %s", statVar)
+	}
+	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
+	if err != nil {
+		return nil, err
+	}
+	// Construct BigTable row keys.
+	rowList := buildStatsKey([]string{place}, statVarObject)
+
+	var obsTimeSeries *ObsTimeSeries
+	// Read data from branch in-memory cache first.
+	cacheData := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
+	if data, ok := cacheData[place]; ok {
+		if data == nil {
+			obsTimeSeries = nil
+		} else {
+			obsTimeSeries = data.(*ObsTimeSeries)
+		}
+	} else {
+		// If the data is missing in branch cache, fetch it from the base cache in
+		// Bigtable.
+		btData, err := readStats(ctx, s.btTable, rowList)
+		if err != nil {
+			return nil, err
+		}
+		obsTimeSeries = btData[place]
+	}
+	filteredObsTimeSeries := filterAndRank(obsTimeSeries, "", "", "")
+	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
+	resp.Series = filteredObsTimeSeries.Data
+	return &resp, nil
+}
+
 // GetStats implements API for Mixer.GetStats.
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {

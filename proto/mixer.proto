@@ -595,7 +595,7 @@ message GetStatValueRequest {
   string place = 1;
   // dcid of the stat var.
   string stat_var = 2;
-  // (optional) date of the stat.
+  // (optional) date of the stat. The latest date will be used if unspecified.
   string date = 3;
 }
 
@@ -603,9 +603,22 @@ message GetStatValueResponse {
   double value = 1;
 }
 
+// Request for GetStatSeries service.
+message GetStatSeriesRequest {
+  // dcid of the place.
+  string place = 1;
+  // dcid of the stat var.
+  string stat_var = 2;
+}
+
+// Response for GetStatSeries service.
+message GetStatSeriesResponse {
+  // A map from ISO date to stat value.
+  map<string, double> series = 1;
+}
+
 
 service Mixer {
-
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
     option (google.api.http) = { get: "/query" };
@@ -717,6 +730,15 @@ service Mixer {
   rpc GetStatValue(GetStatValueRequest) returns (GetStatValueResponse) {
     option (google.api.http) = {
       get: "/stat/value"
+      body: "*"
+    };
+  }
+
+  // Get a series of stat value with dates, given the place and statistical
+  // variable.
+  rpc GetStatSeries(GetStatSeriesRequest) returns (GetStatSeriesResponse) {
+    option (google.api.http) = {
+      get: "/stat/series"
       body: "*"
     };
   }
