@@ -119,28 +119,3 @@ type Metadata struct {
 	SubTypeMap map[string]string
 	Bq         string
 }
-
-// SourceSeries represents time series data for a particular source.
-type SourceSeries struct {
-	ImportName        string             `json:"importName,omitempty"`
-	ObservationPeriod string             `json:"observationPeriod,omitempty"`
-	MeasurementMethod string             `json:"measurementMethod,omitempty"`
-	ScalingFactor     string             `json:"scalingFactor,omitempty"`
-	Unit              string             `json:"unit,omitempty"`
-	ProvenanceDomain  string             `json:"provenanceDomain,omitempty"`
-	Val               map[string]float64 `json:"val,omitempty"`
-}
-
-// ObsTimeSeries repesents multiple time series data.
-type ObsTimeSeries struct {
-	Data             map[string]float64 `json:"data,omitempty"`
-	PlaceName        string             `json:"placeName,omitempty"`
-	PlaceDcid        string             `json:"placeDcid,omitempty"`
-	SourceSeries     []*SourceSeries    `json:"sourceSeries,omitempty"`
-	ProvenanceDomain string             `json:"provenanceDomain,omitempty"`
-}
-
-// LandingPageData represents the landing page cache data.
-type LandingPageData struct {
-	Data map[string]*ObsTimeSeries `json:"data,omitempty"`
-}

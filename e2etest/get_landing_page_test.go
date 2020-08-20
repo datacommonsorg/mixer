@@ -16,7 +16,6 @@ package e2etest
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -25,6 +24,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 // TestGetLandingPage tests GetLandingPage.
@@ -63,27 +64,26 @@ func TestGetLandingPage(t *testing.T) {
 			t.Errorf("could not GetLandingPage: %s", err)
 			continue
 		}
-		var result map[string]map[string]*server.ObsTimeSeries
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile)
+			marshaller := protojson.MarshalOptions{Indent: " "}
+			jsonStr := marshaller.Format(resp)
+			err := ioutil.WriteFile(goldenFile, []byte(jsonStr), 0644)
+			if err != nil {
+				t.Errorf("could not write golden files to %s", c.goldenFile)
+			}
 			continue
 		}
 
-		var expected map[string]map[string]*server.ObsTimeSeries
+		var expected pb.GetLandingPageResponse
 		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
+		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff != "" {
+		if diff := cmp.Diff(&resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

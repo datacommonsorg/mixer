@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"sort"
 	"strings"
@@ -61,7 +60,7 @@ const maxChannelSize = 50
 // decision, so the ranking is deterministic.
 // byRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
-type byRank []*SourceSeries
+type byRank []*pb.SourceSeries
 
 func (a byRank) Len() int {
 	return len(a)
@@ -103,19 +102,19 @@ func (a byRank) Less(i, j int) bool {
 }
 
 // Filter a list of source series given the observation properties.
-func filterSeries(in []*SourceSeries, prop *obsProp) []*SourceSeries {
-	result := []*SourceSeries{}
+func filterSeries(in []*pb.SourceSeries, prop *obsProp) []*pb.SourceSeries {
+	result := []*pb.SourceSeries{}
 	for _, series := range in {
-		if prop.mmethod != "" && prop.mmethod != series.MeasurementMethod {
+		if prop.mmethod != "" && prop.mmethod != series.GetMeasurementMethod() {
 			continue
 		}
-		if prop.operiod != "" && prop.operiod != series.ObservationPeriod {
+		if prop.operiod != "" && prop.operiod != series.GetObservationPeriod() {
 			continue
 		}
-		if prop.unit != "" && prop.unit != series.Unit {
+		if prop.unit != "" && prop.unit != series.GetUnit() {
 			continue
 		}
-		if prop.sfactor != "" && prop.sfactor != series.ScalingFactor {
+		if prop.sfactor != "" && prop.sfactor != series.GetScalingFactor() {
 			continue
 		}
 		result = append(result, series)
@@ -156,14 +155,14 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	// Construct BigTable row keys.
 	rowList := buildStatsKey([]string{place}, statVarObject)
 
-	var obsTimeSeries *ObsTimeSeries
+	var obsTimeSeries *pb.ObsTimeSeries
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
 	if data, ok := cacheData[place]; ok {
 		if data == nil {
 			obsTimeSeries = nil
 		} else {
-			obsTimeSeries = data.(*ObsTimeSeries)
+			obsTimeSeries = data.(*pb.ObsTimeSeries)
 		}
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
@@ -218,14 +217,14 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 	// Construct BigTable row keys.
 	rowList := buildStatsKey([]string{place}, statVarObject)
 
-	var obsTimeSeries *ObsTimeSeries
+	var obsTimeSeries *pb.ObsTimeSeries
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
 	if data, ok := cacheData[place]; ok {
 		if data == nil {
 			obsTimeSeries = nil
 		} else {
-			obsTimeSeries = data.(*ObsTimeSeries)
+			obsTimeSeries = data.(*pb.ObsTimeSeries)
 		}
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
@@ -280,7 +279,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	// Construct BigTable row keys.
 	rowList := buildStatsKey(placeDcids, statsVar)
 
-	result := map[string]*ObsTimeSeries{}
+	result := map[string]*pb.ObsTimeSeries{}
 
 	// Read data from branch in-memory cache first.
 	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
@@ -289,7 +288,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 			if data == nil {
 				result[dcid] = nil
 			} else {
-				result[dcid] = data.(*ObsTimeSeries)
+				result[dcid] = data.(*pb.ObsTimeSeries)
 			}
 		}
 	}
@@ -318,13 +317,9 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		}
 	}
 	for _, obsSeries := range result {
-		obsSeries.filterAndRank(filterProp)
+		obsSeries = filterAndRank(obsSeries, filterProp)
 	}
-	jsonRaw, err := json.Marshal(result)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetStatsResponse{Payload: string(jsonRaw)}, nil
+	return &pb.GetStatsResponse{Payload: result}, nil
 }
 
 // triplesToStatsVar converts a Triples cache into a StatisticalVarible object.
@@ -382,11 +377,11 @@ func triplesToStatsVar(
 // that has the date.
 // When date is not given, it get the latest value from the highest ranked
 // source series.
-func getValue(in *ObsTimeSeries, date string) (float64, error) {
+func getValue(in *pb.ObsTimeSeries, date string) (float64, error) {
 	if in == nil {
 		return 0, fmt.Errorf("Nil obs time series for getValue()")
 	}
-	sourceSeries := in.SourceSeries
+	sourceSeries := in.GetSourceSeries()
 	sort.Sort(byRank(sourceSeries))
 	if date != "" {
 		for _, series := range sourceSeries {
@@ -412,18 +407,20 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 	return result, nil
 }
 
-func (in *ObsTimeSeries) filterAndRank(prop *obsProp) {
+func filterAndRank(in *pb.ObsTimeSeries, prop *obsProp) *pb.ObsTimeSeries {
 	if in == nil {
-		return
+		return nil
 	}
-	series := filterSeries(in.SourceSeries, prop)
+	series := filterSeries(in.GetSourceSeries(), prop)
 	sort.Sort(byRank(series))
 	if len(series) > 0 {
 		in.Data = series[0].Val
 		in.ProvenanceDomain = series[0].ProvenanceDomain
 	}
 	in.SourceSeries = nil
+	return in
 }
+
 func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
@@ -431,26 +428,7 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsTimeSeries:
-		pbSourceSeries := x.ObsTimeSeries.GetSourceSeries()
-		ret := &ObsTimeSeries{
-			Data:         x.ObsTimeSeries.GetData(),
-			PlaceName:    x.ObsTimeSeries.GetPlaceName(),
-			PlaceDcid:    dcid,
-			SourceSeries: make([]*SourceSeries, len(pbSourceSeries)),
-		}
-		for i, source := range pbSourceSeries {
-			ret.SourceSeries[i] = &SourceSeries{
-				ImportName:        source.GetImportName(),
-				ObservationPeriod: source.GetObservationPeriod(),
-				MeasurementMethod: source.GetMeasurementMethod(),
-				ScalingFactor:     source.GetScalingFactor(),
-				Unit:              source.GetUnit(),
-				ProvenanceDomain:  source.GetProvenanceDomain(),
-				Val:               source.GetVal(),
-			}
-		}
-		ret.ProvenanceDomain = x.ObsTimeSeries.GetProvenanceDomain()
-		return ret, nil
+		return x.ObsTimeSeries, nil
 	case nil:
 		return nil, fmt.Errorf("ChartStore.Val is not set")
 	default:
@@ -461,19 +439,19 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 // readStats reads and process BigTable rows in parallel.
 // Consider consolidate this function and bigTableReadRowsParallel.
 func readStats(ctx context.Context, btTable *bigtable.Table,
-	rowList bigtable.RowList) (map[string]*ObsTimeSeries, error) {
+	rowList bigtable.RowList) (map[string]*pb.ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
 		ctx, btTable, rowList, convertToObsSeries, nil)
 	if err != nil {
 		return nil, err
 	}
-	result := map[string]*ObsTimeSeries{}
+	result := map[string]*pb.ObsTimeSeries{}
 	for dcid, data := range dataMap {
 		if data == nil {
 			result[dcid] = nil
 		} else {
-			result[dcid] = data.(*ObsTimeSeries)
+			result[dcid] = data.(*pb.ObsTimeSeries)
 		}
 	}
 	return result, nil

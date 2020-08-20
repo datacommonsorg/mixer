@@ -19,6 +19,7 @@ import (
 	"sort"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -236,16 +237,16 @@ func TestTriplesToStatsVar(t *testing.T) {
 
 func TestFilterAndRank(t *testing.T) {
 	for _, c := range []struct {
-		input   *ObsTimeSeries
+		input   *pb.ObsTimeSeries
 		mmethod string
 		unit    string
 		op      string
-		want    *ObsTimeSeries
+		want    *pb.ObsTimeSeries
 	}{
 		// Default ranking
 		{
-			&ObsTimeSeries{
-				SourceSeries: []*SourceSeries{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.SourceSeries{
 					{
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
@@ -263,15 +264,15 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			"",
-			&ObsTimeSeries{
+			&pb.ObsTimeSeries{
 				Data:             map[string]float64{"2011": 100, "2012": 101},
 				ProvenanceDomain: "census.gov",
 			},
 		},
 		// Filter by mmethod
 		{
-			&ObsTimeSeries{
-				SourceSeries: []*SourceSeries{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.SourceSeries{
 					{
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
@@ -289,15 +290,15 @@ func TestFilterAndRank(t *testing.T) {
 			"CensusACS5yrSurvey",
 			"",
 			"",
-			&ObsTimeSeries{
+			&pb.ObsTimeSeries{
 				Data:             map[string]float64{"2011": 101, "2012": 102, "2013": 103},
 				ProvenanceDomain: "census.gov",
 			},
 		},
 		// Filter by observation period
 		{
-			&ObsTimeSeries{
-				SourceSeries: []*SourceSeries{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.SourceSeries{
 					{
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
@@ -317,15 +318,15 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			"P2Y",
-			&ObsTimeSeries{
+			&pb.ObsTimeSeries{
 				Data:             map[string]float64{"2017": 101},
 				ProvenanceDomain: "census.gov",
 			},
 		},
 		// No match
 		{
-			&ObsTimeSeries{
-				SourceSeries: []*SourceSeries{
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.SourceSeries{
 					{
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
@@ -345,11 +346,10 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			"P3Y",
-			&ObsTimeSeries{},
+			&pb.ObsTimeSeries{},
 		},
 	} {
-		got := c.input
-		got.filterAndRank(&obsProp{
+		got := filterAndRank(c.input, &obsProp{
 			mmethod: c.mmethod,
 			operiod: c.op,
 			unit:    c.unit})
@@ -360,7 +360,7 @@ func TestFilterAndRank(t *testing.T) {
 }
 
 func TestByRank(t *testing.T) {
-	sourceSeries := []*SourceSeries{
+	sourceSeries := []*pb.SourceSeries{
 		{
 			Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
 			MeasurementMethod: "randomeMMethod",
@@ -390,8 +390,8 @@ func TestByRank(t *testing.T) {
 }
 
 func TestGetLatest(t *testing.T) {
-	obsTimeSeries := &ObsTimeSeries{
-		SourceSeries: []*SourceSeries{
+	obsTimeSeries := &pb.ObsTimeSeries{
+		SourceSeries: []*pb.SourceSeries{
 			{
 				Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 105, "2014": 200},
 				MeasurementMethod: "randomeMMethod",

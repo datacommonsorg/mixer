@@ -24,6 +24,7 @@ import (
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // GetPlacesInPost implements API for Mixer.GetPlacesInPost.
@@ -254,8 +255,8 @@ func (s *Server) GetLandingPage(
 
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var landingPageData LandingPageData
-			err := json.Unmarshal(jsonRaw, &landingPageData)
+			var landingPageData pb.LandingPageData
+			err := protojson.Unmarshal(jsonRaw, &landingPageData)
 			if err != nil {
 				return nil, err
 			}
@@ -265,7 +266,7 @@ func (s *Server) GetLandingPage(
 		return nil, err
 	}
 
-	results := map[string]map[string]*ObsTimeSeries{}
+	results := map[string]*pb.LandingPageData{}
 
 	filter := len(in.GetStatVarDcids()) > 0
 	wantStatVarDcids := map[string]struct{}{}
@@ -276,23 +277,18 @@ func (s *Server) GetLandingPage(
 	}
 
 	for dcid, data := range dataMap {
-		landingPageData := data.(*LandingPageData)
-
-		filteredData := map[string]*ObsTimeSeries{}
+		landingPageData := data.(*pb.LandingPageData)
+		filteredData := &pb.LandingPageData{Data: map[string]*pb.ObsTimeSeries{}}
 		for statVarDcid, obsTimeSeries := range landingPageData.Data {
 			if filter {
 				if _, ok := wantStatVarDcids[statVarDcid]; !ok {
 					continue
 				}
 			}
-			obsTimeSeries.filterAndRank(&obsProp{})
-			filteredData[statVarDcid] = obsTimeSeries
+			obsTimeSeries = filterAndRank(obsTimeSeries, &obsProp{})
+			filteredData.Data[statVarDcid] = obsTimeSeries
 		}
 		results[dcid] = filteredData
 	}
-	jsonRaw, err := json.Marshal(results)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetLandingPageResponse{Payload: string(jsonRaw)}, nil
+	return &pb.GetLandingPageResponse{Payload: results}, nil
 }

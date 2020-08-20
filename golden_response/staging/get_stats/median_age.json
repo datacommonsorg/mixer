@@ -1,47 +1,46 @@
 {
-  "geoId/06": {
-    "data": {
-      "2011": 35.1,
-      "2012": 35.2,
-      "2013": 35.4,
-      "2014": 35.6,
-      "2015": 35.8,
-      "2016": 36,
-      "2017": 36.1,
-      "2018": 36.3
-    },
-    "placeName": "California",
-    "placeDcid": "geoId/06",
-    "provenanceDomain": "census.gov"
+ "payload":  {
+  "geoId/06":  {
+   "data":  {
+    "2011":  35.1,
+    "2012":  35.2,
+    "2013":  35.4,
+    "2014":  35.6,
+    "2015":  35.8,
+    "2016":  36,
+    "2017":  36.1,
+    "2018":  36.3
+   },
+   "placeName":  "California",
+   "provenanceDomain":  "census.gov"
   },
-  "geoId/06085": {
-    "data": {
-      "2011": 36,
-      "2012": 36.2,
-      "2013": 36.4,
-      "2014": 36.6,
-      "2015": 36.8,
-      "2016": 36.8,
-      "2017": 37,
-      "2018": 37
-    },
-    "placeName": "Santa Clara County",
-    "placeDcid": "geoId/06085",
-    "provenanceDomain": "census.gov"
+  "geoId/06085":  {
+   "data":  {
+    "2011":  36,
+    "2012":  36.2,
+    "2013":  36.4,
+    "2014":  36.6,
+    "2015":  36.8,
+    "2016":  36.8,
+    "2017":  37,
+    "2018":  37
+   },
+   "placeName":  "Santa Clara County",
+   "provenanceDomain":  "census.gov"
   },
-  "geoId/0649670": {
-    "data": {
-      "2011": 36,
-      "2012": 35.9,
-      "2013": 35.8,
-      "2014": 35.9,
-      "2015": 35.4,
-      "2016": 35,
-      "2017": 35,
-      "2018": 34.9
-    },
-    "placeName": "City of Mountain View",
-    "placeDcid": "geoId/0649670",
-    "provenanceDomain": "census.gov"
+  "geoId/0649670":  {
+   "data":  {
+    "2011":  36,
+    "2012":  35.9,
+    "2013":  35.8,
+    "2014":  35.9,
+    "2015":  35.4,
+    "2016":  35,
+    "2017":  35,
+    "2018":  34.9
+   },
+   "placeName":  "City of Mountain View",
+   "provenanceDomain":  "census.gov"
   }
+ }
 }

@@ -182,24 +182,29 @@ message GetPlaceObsResponse {
   string payload = 1;
 }
 
+message SourceSeries {
+  reserved 2;
+  map<string, double> val = 1;
+  string measurement_method = 3;
+  string observation_period = 4;
+  string import_name = 5;
+  string provenance_domain = 6;
+  string unit = 7;
+  string scaling_factor = 8;
+}
+
 // Represents observation time series data.
 message ObsTimeSeries {
-  message SourceSeries {
-    reserved 2;
-    map<string, double> val = 1;
-    string measurement_method = 3;
-    string observation_period = 4;
-    string import_name = 5;
-    string provenance_domain = 6;
-    string unit = 7;
-    string scaling_factor = 8;
-}
   map<string, double> data = 1;  // Date to value.
   string place_name = 3;
   bool is_dc_aggregate = 4;
   string place_dcid = 5;  // Only set if the key uses mid.
   repeated SourceSeries source_series = 6;
   string provenance_domain = 7;
+}
+
+message LandingPageData {
+  map<string, ObsTimeSeries> data = 1;
 }
 
 // Wrapper for observation data.
@@ -235,7 +240,7 @@ message GetStatsRequest {
 // Response of GetStats
 message GetStatsResponse {
   // The JSON payload.
-  string payload = 2;
+  map<string, ObsTimeSeries> payload = 1;
 }
 
 // Request to get certain population for a set of places.
@@ -349,7 +354,7 @@ message GetLandingPageRequest {
 // Response to get landing page info for places.
 message GetLandingPageResponse {
    // The JSON payload.
-   string payload = 1;
+   map<string, LandingPageData> payload = 1;
 }
 
 // Search request sent to the mixer.

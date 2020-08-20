@@ -16,7 +16,6 @@ package e2etest
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"math"
 	"path"
@@ -26,6 +25,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -134,33 +134,32 @@ func TestGetStats(t *testing.T) {
 			t.Errorf("could not GetStats: %s", err)
 			continue
 		}
-		var result map[string]*server.ObsTimeSeries
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile)
+			marshaller := protojson.MarshalOptions{Indent: " "}
+			jsonStr := marshaller.Format(resp)
+			err := ioutil.WriteFile(goldenFile, []byte(jsonStr), 0644)
+			if err != nil {
+				t.Errorf("could not write golden files to %s", c.goldenFile)
+			}
 			continue
 		}
 
-		var expected map[string]*server.ObsTimeSeries
+		var expected pb.GetStatsResponse
 		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
+		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file")
 			continue
 		}
 		if c.partialMatch {
-			for geo := range expected {
-				for date := range expected[geo].Data {
-					if result[geo] == nil {
+			for geo := range expected.Payload {
+				for date := range expected.Payload[geo].Data {
+					if resp.Payload[geo] == nil {
 						t.Fatalf("result does not have data for geo %s", geo)
 					}
-					got := result[geo].Data[date]
-					want := expected[geo].Data[date]
+					got := resp.Payload[geo].Data[date]
+					want := expected.Payload[geo].Data[date]
 					if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
 						// Allow approximate match for NYT covid data.
 						if math.Abs(float64(got)/float64(want)-1) > 0.05 {
@@ -178,7 +177,7 @@ func TestGetStats(t *testing.T) {
 				}
 			}
 		} else {
-			if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(&resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue
 			}
