@@ -27,11 +27,10 @@ import (
 )
 
 type obsProp struct {
-	domain  string
 	mmethod string
-	op      string
+	operiod string
 	unit    string
-	sf      string
+	sfactor string
 }
 
 type rankKey struct {
@@ -103,23 +102,20 @@ func (a byRank) Less(i, j int) bool {
 	return true
 }
 
-// Filter a list of source series given the
+// Filter a list of source series given the observation properties.
 func filterSeries(in []*SourceSeries, prop *obsProp) []*SourceSeries {
 	result := []*SourceSeries{}
 	for _, series := range in {
-		if prop.domain != "" && prop.domain != series.ProvenanceDomain {
-			continue
-		}
 		if prop.mmethod != "" && prop.mmethod != series.MeasurementMethod {
 			continue
 		}
-		if prop.op != "" && prop.op != series.ObservationPeriod {
+		if prop.operiod != "" && prop.operiod != series.ObservationPeriod {
 			continue
 		}
 		if prop.unit != "" && prop.unit != series.Unit {
 			continue
 		}
-		if prop.sf != "" && prop.sf != series.ScalingFactor {
+		if prop.sfactor != "" && prop.sfactor != series.ScalingFactor {
 			continue
 		}
 		result = append(result, series)
@@ -189,11 +185,10 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 		return nil, fmt.Errorf("Missing required arguments")
 	}
 	filterProp := &obsProp{
-		domain:  in.GetProvenanceDomain(),
 		mmethod: in.GetMeasurementMethod(),
-		op:      in.GetObservationPeriod(),
+		operiod: in.GetObservationPeriod(),
 		unit:    in.GetUnit(),
-		sf:      in.GetScalingFactor(),
+		sfactor: in.GetScalingFactor(),
 	}
 
 	// Read triples for statistical variable.
@@ -251,7 +246,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	}
 	filterProp := &obsProp{
 		mmethod: in.GetMeasurementMethod(),
-		op:      in.GetObservationPeriod(),
+		operiod: in.GetObservationPeriod(),
 		unit:    in.GetUnit(),
 	}
 
