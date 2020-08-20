@@ -15,4 +15,9 @@
 #!/bin/bash
 
 cd e2etest
-go test -generate_golden=true
+if [ "$#" -eq 1 ]; then
+    go test -generate_golden=true -run "$1"
+else
+    go test -generate_golden=true
+fi
+
