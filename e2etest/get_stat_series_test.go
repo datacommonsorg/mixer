@@ -51,41 +51,41 @@ func TestGetStatSeries(t *testing.T) {
 		mmethod    string
 		wantErr    bool
 	}{
-		// {
-		// 	"Count_Person",
-		// 	"country/USA",
-		// 	"count_person.json",
-		// 	"CensusACS5yrSurvey",
-		// 	false,
-		// },
-		// {
-		// 	"Count_CriminalActivities_CombinedCrime",
-		// 	"geoId/06",
-		// 	"total_crimes.json",
-		// 	"",
-		// 	false,
-		// },
-		// {
-		// 	"Median_Age_Person",
-		// 	"geoId/0649670",
-		// 	"median_age.json",
-		// 	"",
-		// 	false,
-		// },
-		// {
-		// 	"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-		// 	"country/USA",
-		// 	"gdp.json",
-		// 	"",
-		// 	false,
-		// },
-		// {
-		// 	"BadStatsVar",
-		// 	"geoId/06",
-		// 	"",
-		// 	"",
-		// 	true,
-		// },
+		{
+			"Count_Person",
+			"country/USA",
+			"count_person.json",
+			"CensusACS5yrSurvey",
+			false,
+		},
+		{
+			"Count_CriminalActivities_CombinedCrime",
+			"geoId/06",
+			"total_crimes.json",
+			"",
+			false,
+		},
+		{
+			"Median_Age_Person",
+			"geoId/0649670",
+			"median_age.json",
+			"",
+			false,
+		},
+		{
+			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+			"country/USA",
+			"gdp.json",
+			"",
+			false,
+		},
+		{
+			"BadStatsVar",
+			"geoId/06",
+			"",
+			"",
+			true,
+		},
 		{
 			"Count_Person",
 			"BadPlace",
