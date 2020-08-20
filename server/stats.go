@@ -132,6 +132,12 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		return nil, fmt.Errorf("Missing required arguments")
 	}
 	date := in.GetDate()
+	filterProp := &obsProp{
+		mmethod: in.GetMeasurementMethod(),
+		operiod: in.GetObservationPeriod(),
+		unit:    in.GetUnit(),
+		sfactor: in.GetScalingFactor(),
+	}
 
 	// Read triples for the statistical variable.
 	triplesRowList := buildTriplesKey([]string{statVar})
@@ -168,6 +174,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		}
 		obsTimeSeries = btData[place]
 	}
+	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
 	result, err := getValue(obsTimeSeries, date)
 	if err != nil {
 		return nil, err

@@ -597,6 +597,14 @@ message GetStatValueRequest {
   string stat_var = 2;
   // (optional) date of the stat. The latest date will be used if unspecified.
   string date = 3;
+  // (optional) measurement method of the observation, ex: "CensusACS5yrSurvey".
+  string measurement_method = 4;
+  // (optional) observation period of the observation, ex: "P1Y".
+  string observation_period = 5;
+  // (optional) unit of the observation.
+  string unit = 6;
+  // (optional) scaling factor of the observation.
+  string scaling_factor = 7;
 }
 
 message GetStatValueResponse {
@@ -610,13 +618,13 @@ message GetStatSeriesRequest {
   // dcid of the stat var.
   string stat_var = 2;
   // (optional) measurement method of the observation, ex: "CensusACS5yrSurvey".
-  string measurement_method = 4;
+  string measurement_method = 3;
   // (optional) observation period of the observation, ex: "P1Y".
-  string observation_period = 5;
+  string observation_period = 4;
   // (optional) unit of the observation.
-  string unit = 6;
+  string unit = 5;
   // (optional) scaling factor of the observation.
-  string scaling_factor = 7;
+  string scaling_factor = 6;
 }
 
 // Response for GetStatSeries service.
