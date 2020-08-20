@@ -48,42 +48,56 @@ func TestGetStatValue(t *testing.T) {
 		statVar    string
 		place      string
 		goldenFile string
+		mmethod    string
 		wantErr    bool
 	}{
 		{
 			"Count_Person",
 			"country/USA",
 			"count_person.json",
+			"",
 			false,
 		},
 		{
 			"Count_CriminalActivities_CombinedCrime",
 			"geoId/06",
 			"total_crimes.json",
+			"",
 			false,
 		},
 		{
 			"Median_Age_Person",
 			"geoId/0649670",
 			"median_age.json",
+			"",
 			false,
 		},
 		{
 			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 			"country/USA",
 			"gdp.json",
+			"",
 			false,
+		},
+		{
+			"Count_Person",
+			"country/USA",
+			"empty.json",
+			"bad_mmethod",
+			true,
 		},
 		{
 			"BadStatsVar",
 			"geoId/06",
 			"",
+			"",
 			true,
 		},
 	} {
 		resp, err := client.GetStatValue(ctx, &pb.GetStatValueRequest{
-			StatVar: c.statVar,
-			Place:   c.place,
+			StatVar:           c.statVar,
+			Place:             c.place,
+			MeasurementMethod: c.mmethod,
 		})
 		if c.wantErr {
 			if err == nil {
