@@ -645,14 +645,15 @@ message GetStatAllRequest {
 // Each leaf object contains multiple source series with <date, value> object
 // and observation metadata.
 //
-// Example response is like:
+// The response is transcoded by esp: https://cloud.google.com/endpoints/docs/grpc/grpc-service-config
+// Example response after esp transcoding is like below.
 // {
-//   place_data: {
+//   placeData: {
 //     "geoId/01": {
-//       stat_var_data: {
+//       statVarData: {
 //         "statvar1": {
-//           "place_name": "City of Mountain View",
-//           "source_series": [
+//           "placeName": "City of Mountain View",
+//           "sourceSeries": [
 //             {
 //               "val": {
 //                 "2008": 2116,
@@ -666,16 +667,16 @@ message GetStatAllRequest {
 //                 "2016": 1913,
 //                 "2017": 2138
 //               },
-//               "observation_period": "P1Y",
-//               "import_name": "FBIGovCrime",
-//               "provenance_domain": "fbi.gov"
+//               "observationPeriod": "P1Y",
+//               "importName": "FBIGovCrime",
+//               "provenanceDomain": "fbi.gov"
 //             }
 //           ]
 //         },
 //       }
 //     },
 //     "geoId/02": {
-//       stat_var_data: {
+//       statVarData: {
 //         "statvar3": {...},
 //       }
 //     }
