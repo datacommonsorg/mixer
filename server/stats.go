@@ -269,10 +269,12 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	*pb.GetStatAllResponse, error) {
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
-	if len(places) == 0 || len(statVars) == 0 {
-		return nil, fmt.Errorf("Missing required arguments")
+	if len(places) == 0 {
+		return nil, fmt.Errorf("Missing required argument: 'places'")
 	}
-
+	if len(statVars) == 0 {
+		return nil, fmt.Errorf("Missing required argument: 'stat_vars'")
+	}
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)

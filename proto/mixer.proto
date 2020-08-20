@@ -639,6 +639,24 @@ message GetStatAllRequest {
   repeated string stat_vars = 2;
 }
 
+// Response for GetStatAll service.
+// The response is a two level map, with the first level keyed by place dcid,
+// and the second level keyed by the stat var dcid. Example response is like:
+// {
+//   place_data: {
+//     "geoId/01": {
+//       stat_var_data: {
+//         "statvar1": {},
+//         "statvar2": {},
+//       }
+//     },
+//     "geoId/02": {
+//       stat_var_data: {
+//         "statvar3": {},
+//       }
+//     }
+//   }
+// }
 message GetStatAllResponse {
   message PlaceStat {
     map<string, ObsTimeSeries> stat_var_data = 3;
