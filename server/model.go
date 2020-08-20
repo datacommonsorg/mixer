@@ -131,8 +131,6 @@ type SourceSeries struct {
 	Val               map[string]float64 `json:"val,omitempty"`
 }
 
-// TODO(shifucun): deprecate the equivalant proto definition and use this
-// throughout
 // ObsTimeSeries repesents multiple time series data.
 type ObsTimeSeries struct {
 	Data             map[string]float64 `json:"data,omitempty"`

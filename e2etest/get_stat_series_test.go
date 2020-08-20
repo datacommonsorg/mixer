@@ -86,6 +86,13 @@ func TestGetStatSeries(t *testing.T) {
 			"",
 			true,
 		},
+		{
+			"Count_Person",
+			"BadPlace",
+			"",
+			"",
+			true,
+		},
 	} {
 		resp, err := client.GetStatSeries(ctx, &pb.GetStatSeriesRequest{
 			StatVar:           c.statVar,

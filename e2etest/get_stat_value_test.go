@@ -93,6 +93,13 @@ func TestGetStatValue(t *testing.T) {
 			"",
 			true,
 		},
+		{
+			"Count_Person",
+			"badPlace",
+			"",
+			"",
+			true,
+		},
 	} {
 		resp, err := client.GetStatValue(ctx, &pb.GetStatValueRequest{
 			StatVar:           c.statVar,
