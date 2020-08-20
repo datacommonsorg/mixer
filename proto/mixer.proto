@@ -641,18 +641,42 @@ message GetStatAllRequest {
 
 // Response for GetStatAll service.
 // The response is a two level map, with the first level keyed by place dcid,
-// and the second level keyed by the stat var dcid. Example response is like:
+// and the second level keyed by the stat var dcid.
+// Each leaf object contains multiple source series with <date, value> object
+// and observation metadata.
+//
+// Example response is like:
 // {
 //   place_data: {
 //     "geoId/01": {
 //       stat_var_data: {
-//         "statvar1": {},
-//         "statvar2": {},
+//         "statvar1": {
+//           "place_name": "City of Mountain View",
+//           "source_series": [
+//             {
+//               "val": {
+//                 "2008": 2116,
+//                 "2009": 2155,
+//                 "2010": 1633,
+//                 "2011": 1509,
+//                 "2012": 1581,
+//                 "2013": 1867,
+//                 "2014": 1770,
+//                 "2015": 2201,
+//                 "2016": 1913,
+//                 "2017": 2138
+//               },
+//               "observation_period": "P1Y",
+//               "import_name": "FBIGovCrime",
+//               "provenance_domain": "fbi.gov"
+//             }
+//           ]
+//         },
 //       }
 //     },
 //     "geoId/02": {
 //       stat_var_data: {
-//         "statvar3": {},
+//         "statvar3": {...},
 //       }
 //     }
 //   }
