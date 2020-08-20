@@ -228,8 +228,6 @@ message GetStatsRequest {
   // (Optional) The observation period of the observation. If not specified,
   // stats series with any observation period could be returned.
   string observation_period = 6;
-
-  Option option = 3;
 }
 
 // Response of GetStats
@@ -633,6 +631,20 @@ message GetStatSeriesResponse {
   map<string, double> series = 1;
 }
 
+// Request for GetStatAll service.
+message GetStatAllRequest {
+  // dcids of the place.
+  repeated string places = 1;
+  // dcids of the stat var.
+  repeated string stat_vars = 2;
+}
+
+message GetStatAllResponse {
+  message PlaceStat {
+    map<string, ObsTimeSeries> stat_var_data = 3;
+  }
+  map<string, PlaceStat> place_data = 1;
+}
 
 service Mixer {
   // Query DataCommons Graph with Sparql.
@@ -755,6 +767,15 @@ service Mixer {
   rpc GetStatSeries(GetStatSeriesRequest) returns (GetStatSeriesResponse) {
     option (google.api.http) = {
       get: "/stat/series"
+      body: "*"
+    };
+  }
+
+  // Get all stat series given a list of places and a list of statistical
+  // variables.
+  rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
+    option (google.api.http) = {
+      get: "/stat/all"
       body: "*"
     };
   }

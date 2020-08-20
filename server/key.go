@@ -55,15 +55,25 @@ func buildTriplesKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
+type placeStatVar struct {
+	place   string
+	statVar string
+}
+
 func buildStatsKey(
-	dcids []string, statsVar *StatisticalVariable) bigtable.RowList {
-	keySuffix := buildStatsKeySuffix(statsVar)
+	places []string, statVars map[string]*StatisticalVariable) (
+	bigtable.RowList, map[string]*placeStatVar) {
 	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, dcid, keySuffix)
-		rowList = append(rowList, rowKey)
+	keyToToken := map[string]*placeStatVar{}
+	for statVarDcid, statVarObject := range statVars {
+		keySuffix := buildStatsKeySuffix(statVarObject)
+		for _, place := range places {
+			rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, place, keySuffix)
+			rowList = append(rowList, rowKey)
+			keyToToken[rowKey] = &placeStatVar{place, statVarDcid}
+		}
 	}
-	return rowList
+	return rowList, keyToToken
 }
 
 func buildPropertyValuesKey(

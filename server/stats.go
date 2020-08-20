@@ -154,11 +154,18 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		return nil, err
 	}
 	// Construct BigTable row keys.
-	rowList := buildStatsKey([]string{place}, statVarObject)
+	rowList, keyTokens := buildStatsKey(
+		[]string{place},
+		map[string]*StatisticalVariable{statVar: statVarObject})
 
 	var obsTimeSeries *ObsTimeSeries
 	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		convertToObsSeries,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+		})
 	if data, ok := cacheData[place]; ok {
 		if data == nil {
 			obsTimeSeries = nil
@@ -168,11 +175,11 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
 		// Bigtable.
-		btData, err := readStats(ctx, s.btTable, rowList)
+		btData, err := readStats(ctx, s.btTable, rowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
-		obsTimeSeries = btData[place]
+		obsTimeSeries = btData[place][statVar]
 	}
 	if obsTimeSeries == nil {
 		return nil, fmt.Errorf("No data for %s, %s", place, statVar)
@@ -216,11 +223,19 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 		return nil, err
 	}
 	// Construct BigTable row keys.
-	rowList := buildStatsKey([]string{place}, statVarObject)
+	rowList, keyTokens := buildStatsKey(
+		[]string{place},
+		map[string]*StatisticalVariable{statVar: statVarObject})
 
 	var obsTimeSeries *ObsTimeSeries
 	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		convertToObsSeries,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+		},
+	)
 	if data, ok := cacheData[place]; ok {
 		if data == nil {
 			obsTimeSeries = nil
@@ -230,11 +245,11 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
 		// Bigtable.
-		btData, err := readStats(ctx, s.btTable, rowList)
+		btData, err := readStats(ctx, s.btTable, rowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
-		obsTimeSeries = btData[place]
+		obsTimeSeries = btData[place][statVar]
 	}
 	if obsTimeSeries == nil {
 		return nil, fmt.Errorf("No data for %s, %s", place, statVar)
@@ -247,6 +262,82 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 		resp.Series = series[0].Val
 	}
 	return &resp, nil
+}
+
+// GetStatAll implements API for Mixer.GetStatAll.
+func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
+	*pb.GetStatAllResponse, error) {
+	places := in.GetPlaces()
+	statVars := in.GetStatVars()
+	if len(places) == 0 || len(statVars) == 0 {
+		return nil, fmt.Errorf("Missing required arguments")
+	}
+
+	// Read triples for statistical variable.
+	triplesRowList := buildTriplesKey(statVars)
+	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	if err != nil {
+		return nil, err
+	}
+	statVarObject := map[string]*StatisticalVariable{}
+	for statVar, triplesCache := range triples {
+		if triplesCache != nil {
+			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	// Construct BigTable row keys.
+	rowList, keyTokens := buildStatsKey(places, statVarObject)
+
+	// Initialize result with place and stat var dcids.
+	result := &pb.GetStatAllResponse{
+		PlaceData: make(map[string]*pb.GetStatAllResponse_PlaceStat),
+	}
+	for _, place := range places {
+		result.PlaceData[place] = &pb.GetStatAllResponse_PlaceStat{
+			StatVarData: make(map[string]*pb.ObsTimeSeries),
+		}
+		for _, statVar := range statVars {
+			result.PlaceData[place].StatVarData[statVar] = nil
+		}
+	}
+
+	// Read data from branch in-memory cache first.
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		convertToObsSeries,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+		},
+	)
+
+	for token, data := range cacheData {
+		parts := strings.Split(token, "^")
+		place := parts[0]
+		statVar := parts[1]
+		if data == nil {
+			result.PlaceData[place].StatVarData[statVar] = &pb.ObsTimeSeries{}
+		} else {
+			result.PlaceData[place].StatVarData[statVar] = data.(*pb.ObsTimeSeries)
+		}
+	}
+
+	// If cache value is not found in memcache, then look up in BigTable
+	extraRowList := bigtable.RowList{}
+	for key, token := range keyTokens {
+		if result.PlaceData[token.place].StatVarData[token.statVar] == nil {
+			extraRowList = append(extraRowList, key)
+		}
+	}
+	extraData, err := readStatsPb(ctx, s.btTable, extraRowList, keyTokens)
+	for place, placeData := range extraData {
+		for statVar, data := range placeData {
+			result.PlaceData[place].StatVarData[statVar] = data
+		}
+	}
+	return result, nil
 }
 
 // GetStats implements API for Mixer.GetStats.
@@ -273,24 +364,32 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	if triples[statsVarDcid] == nil {
 		return nil, fmt.Errorf("No statistical variable found for %s", statsVarDcid)
 	}
-	statsVar, err := triplesToStatsVar(statsVarDcid, triples[statsVarDcid])
+	statsVarObject, err := triplesToStatsVar(statsVarDcid, triples[statsVarDcid])
 	if err != nil {
 		return nil, err
 	}
 	// Construct BigTable row keys.
-	rowList := buildStatsKey(placeDcids, statsVar)
+	rowList, keyTokens := buildStatsKey(
+		placeDcids,
+		map[string]*StatisticalVariable{statsVarDcid: statsVarObject},
+	)
 
 	result := map[string]*ObsTimeSeries{}
 
 	// Read data from branch in-memory cache first.
-	if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
-		tmp := s.memcache.ReadParallel(rowList, convertToObsSeries, nil)
-		for dcid, data := range tmp {
-			if data == nil {
-				result[dcid] = nil
-			} else {
-				result[dcid] = data.(*ObsTimeSeries)
-			}
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		convertToObsSeries,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+		},
+	)
+	for token, data := range cacheData {
+		place := strings.Split(token, "^")[0]
+		if data == nil {
+			result[place] = nil
+		} else {
+			result[place] = data.(*ObsTimeSeries)
 		}
 	}
 	// For each place, if the data is missing in branch cache, fetch it from the
@@ -302,12 +401,15 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 				extraDcids = append(extraDcids, dcid)
 			}
 		}
-		extraData, err := readStats(ctx, s.btTable, buildStatsKey(extraDcids, statsVar))
+		rowList, keyTokens := buildStatsKey(
+			extraDcids,
+			map[string]*StatisticalVariable{statsVarDcid: statsVarObject})
+		extraData, err := readStats(ctx, s.btTable, rowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
-		for dcid := range extraData {
-			result[dcid] = extraData[dcid]
+		for place := range extraData {
+			result[place] = extraData[place][statsVarDcid]
 		}
 	}
 
@@ -424,7 +526,25 @@ func (in *ObsTimeSeries) filterAndRank(prop *obsProp) {
 	}
 	in.SourceSeries = nil
 }
-func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
+
+func convertToObsSeriesPb(token string, jsonRaw []byte) (
+	interface{}, error) {
+	pbData := &pb.ChartStore{}
+	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
+		return nil, err
+	}
+	switch x := pbData.Val.(type) {
+	case *pb.ChartStore_ObsTimeSeries:
+		return x.ObsTimeSeries, nil
+	case nil:
+		return nil, fmt.Errorf("ChartStore.Val is not set")
+	default:
+		return nil, fmt.Errorf("ChartStore.Val has unexpected type %T", x)
+	}
+}
+
+func convertToObsSeries(token string, jsonRaw []byte) (
+	interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
 		return nil, err
@@ -435,7 +555,6 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 		ret := &ObsTimeSeries{
 			Data:         x.ObsTimeSeries.GetData(),
 			PlaceName:    x.ObsTimeSeries.GetPlaceName(),
-			PlaceDcid:    dcid,
 			SourceSeries: make([]*SourceSeries, len(pbSourceSeries)),
 		}
 		for i, source := range pbSourceSeries {
@@ -460,20 +579,69 @@ func convertToObsSeries(dcid string, jsonRaw []byte) (interface{}, error) {
 
 // readStats reads and process BigTable rows in parallel.
 // Consider consolidate this function and bigTableReadRowsParallel.
-func readStats(ctx context.Context, btTable *bigtable.Table,
-	rowList bigtable.RowList) (map[string]*ObsTimeSeries, error) {
+func readStats(
+	ctx context.Context,
+	btTable *bigtable.Table,
+	rowList bigtable.RowList,
+	keyTokens map[string]*placeStatVar) (
+	map[string]map[string]*ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertToObsSeries, nil)
+		ctx, btTable, rowList, convertToObsSeries,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
-	result := map[string]*ObsTimeSeries{}
-	for dcid, data := range dataMap {
+	result := map[string]map[string]*ObsTimeSeries{}
+	for token, data := range dataMap {
+		parts := strings.Split(token, "^")
+		place := parts[0]
+		statVar := parts[1]
+		if result[place] == nil {
+			result[place] = map[string]*ObsTimeSeries{}
+		}
 		if data == nil {
-			result[dcid] = nil
+			result[place][statVar] = nil
 		} else {
-			result[dcid] = data.(*ObsTimeSeries)
+			result[place][statVar] = data.(*ObsTimeSeries)
+		}
+	}
+	return result, nil
+}
+
+// readStats reads and process BigTable rows in parallel.
+// Consider consolidate this function and bigTableReadRowsParallel.
+func readStatsPb(
+	ctx context.Context,
+	btTable *bigtable.Table,
+	rowList bigtable.RowList,
+	keyTokens map[string]*placeStatVar) (
+	map[string]map[string]*pb.ObsTimeSeries, error) {
+
+	dataMap, err := bigTableReadRowsParallel(
+		ctx, btTable, rowList, convertToObsSeriesPb,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]map[string]*pb.ObsTimeSeries{}
+	for token, data := range dataMap {
+		parts := strings.Split(token, "^")
+		place := parts[0]
+		statVar := parts[1]
+		if result[place] == nil {
+			result[place] = map[string]*pb.ObsTimeSeries{}
+		}
+		if data == nil {
+			result[place][statVar] = nil
+		} else {
+			result[place][statVar] = data.(*pb.ObsTimeSeries)
 		}
 	}
 	return result, nil
