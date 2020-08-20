@@ -57,6 +57,13 @@ const lowestRank = 100
 // Limit the concurrent channels when processing in-memory cache data.
 const maxChannelSize = 50
 
+func tokenFn(
+	keyTokens map[string]*placeStatVar) func(rowKey string) (string, error) {
+	return func(rowKey string) (string, error) {
+		return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+	}
+}
+
 // TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
 // decision, so the ranking is deterministic.
 // byRank implements sort.Interface for []*SourceSeries based on
@@ -163,9 +170,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	cacheData := s.memcache.ReadParallel(
 		rowList,
 		convertToObsSeries,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
-		})
+		tokenFn(keyTokens))
 	if data, ok := cacheData[place]; ok {
 		if data == nil {
 			obsTimeSeries = nil
@@ -232,9 +237,7 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 	cacheData := s.memcache.ReadParallel(
 		rowList,
 		convertToObsSeries,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
-		},
+		tokenFn(keyTokens),
 	)
 	if data, ok := cacheData[place]; ok {
 		if data == nil {
@@ -310,9 +313,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	cacheData := s.memcache.ReadParallel(
 		rowList,
 		convertToObsSeries,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
-		},
+		tokenFn(keyTokens),
 	)
 
 	for token, data := range cacheData {
@@ -333,12 +334,18 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 			extraRowList = append(extraRowList, key)
 		}
 	}
-	extraData, err := readStatsPb(ctx, s.btTable, extraRowList, keyTokens)
-	for place, placeData := range extraData {
-		for statVar, data := range placeData {
-			result.PlaceData[place].StatVarData[statVar] = data
+	if len(extraRowList) > 0 {
+		extraData, err := readStatsPb(ctx, s.btTable, extraRowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		for place, placeData := range extraData {
+			for statVar, data := range placeData {
+				result.PlaceData[place].StatVarData[statVar] = data
+			}
 		}
 	}
+
 	return result, nil
 }
 
@@ -382,9 +389,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	cacheData := s.memcache.ReadParallel(
 		rowList,
 		convertToObsSeries,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
-		},
+		tokenFn(keyTokens),
 	)
 	for token, data := range cacheData {
 		place := strings.Split(token, "^")[0]
@@ -589,10 +594,7 @@ func readStats(
 	map[string]map[string]*ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertToObsSeries,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
-		},
+		ctx, btTable, rowList, convertToObsSeries, tokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
@@ -624,10 +626,7 @@ func readStatsPb(
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertToObsSeriesPb,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
-		},
+		ctx, btTable, rowList, convertToObsSeriesPb, tokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
