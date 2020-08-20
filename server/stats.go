@@ -174,6 +174,9 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		}
 		obsTimeSeries = btData[place]
 	}
+	if obsTimeSeries == nil {
+		return nil, fmt.Errorf("No data for %s, %s", place, statVar)
+	}
 	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
 	result, err := getValue(obsTimeSeries, date)
 	if err != nil {
@@ -232,6 +235,9 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 			return nil, err
 		}
 		obsTimeSeries = btData[place]
+	}
+	if obsTimeSeries == nil {
+		return nil, fmt.Errorf("No data for %s, %s", place, statVar)
 	}
 	series := obsTimeSeries.SourceSeries
 	series = filterSeries(series, filterProp)
