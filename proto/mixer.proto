@@ -817,7 +817,7 @@ service Mixer {
   // variables.
   rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
     option (google.api.http) = {
-      get: "/stat/all"
+      post: "/stat/all"
       body: "*"
     };
   }
