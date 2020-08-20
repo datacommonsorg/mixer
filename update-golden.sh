@@ -16,7 +16,7 @@
 
 cd e2etest
 if [ "$#" -eq 1 ]; then
-    go test -generate_golden=true -run $1
+    go test -generate_golden=true -run "$1"
 else
     go test -generate_golden=true
 fi
