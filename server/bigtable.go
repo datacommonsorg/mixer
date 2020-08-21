@@ -16,11 +16,12 @@ package server
 
 import (
 	"context"
-	"fmt"
 
 	"cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/util"
 	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // bigTableReadRowsParallel reads BigTable rows in parallel,
@@ -45,7 +46,7 @@ func bigTableReadRowsParallel(
 		rowRangeList = rowSet.(bigtable.RowRangeList)
 		rowSetSize = len(rowRangeList)
 	default:
-		return nil, fmt.Errorf("unsupported RowSet type: %v", v)
+		return nil, status.Errorf(codes.Internal, "unsupported RowSet type: %v", v)
 	}
 	if rowSetSize == 0 {
 		return nil, nil

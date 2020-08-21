@@ -17,8 +17,10 @@ package sparql
 import (
 	"bytes"
 	"errors"
-	"fmt"
 	"io"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 var (
@@ -47,7 +49,7 @@ func ScanDelimited(
 	if ch, _, err := r.ReadRune(); err != nil {
 		return nil, err
 	} else if ch != start {
-		return nil, fmt.Errorf("expected %s; found %s", string(start), string(ch))
+		return nil, status.Errorf(codes.Internal, "Expected %s; found %s", string(start), string(ch))
 	}
 
 	var buf bytes.Buffer
