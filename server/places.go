@@ -41,10 +41,10 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 	placeType := in.GetPlaceType()
 
 	if len(dcids) == 0 || placeType == "" {
-		return nil, status.Error(codes.InvalidArgument, "missing required arguments")
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	rowList := buildPlaceInKey(dcids, placeType)
@@ -106,10 +106,10 @@ var RelatedLocationsPrefixMap = map[bool]map[bool]map[bool]string{
 func (s *Server) GetRelatedLocations(ctx context.Context,
 	in *pb.GetRelatedLocationsRequest) (*pb.GetRelatedLocationsResponse, error) {
 	if in.GetDcid() == "" || len(in.GetStatVarDcids()) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
 	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid DCID")
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
 	}
 
 	sameAncestor := (in.GetWithinPlace() != "")
@@ -138,7 +138,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		}, func(key string) (string, error) {
 			parts := strings.Split(key, "^")
 			if len(parts) <= 1 {
-				return "", status.Error(codes.Internal, "no ^ in key to parse for StatVarDcid")
+				return "", status.Error(codes.Internal, "Invalid bigtable row key %s", key)
 			}
 			return parts[len(parts)-1], nil
 		})
@@ -166,10 +166,10 @@ func (s *Server) GetInterestingPlaceAspects(
 	*pb.GetInterestingPlaceAspectsResponse, error) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcids")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Error(codes.InvalidArgument, "invalid DCIDs")
+		return nil, status.Error(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	rowList := bigtable.RowList{}
@@ -242,10 +242,10 @@ func (s *Server) GetLandingPage(
 	*pb.GetLandingPageResponse, error) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments: dcids")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcids")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Error(codes.InvalidArgument, "invalid DCIDs")
+		return nil, status.Error(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	rowList := bigtable.RowList{}

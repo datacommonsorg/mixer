@@ -46,7 +46,7 @@ func bigTableReadRowsParallel(
 		rowRangeList = rowSet.(bigtable.RowRangeList)
 		rowSetSize = len(rowRangeList)
 	default:
-		return nil, status.Errorf(codes.Internal, "unsupported RowSet type: %v", v)
+		return nil, status.Errorf(codes.Internal, "Unsupported RowSet type: %v", v)
 	}
 	if rowSetSize == 0 {
 		return nil, nil

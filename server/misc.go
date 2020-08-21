@@ -29,7 +29,7 @@ import (
 func (s *Server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
 
 	out := pb.TranslateResponse{}

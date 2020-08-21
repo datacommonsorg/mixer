@@ -852,7 +852,7 @@ func Translate(
 	if len(bindingSets) > 1 {
 		log.Printf("There are %d binding sets", len(bindingSets))
 	} else if len(bindingSets) == 0 {
-		return nil, status.Errorf(codes.Internal, "failed to get translation result")
+		return nil, status.Errorf(codes.Internal, "Failed to get translation result")
 	}
 
 	nodeRefs := GetNodeRef(queries)

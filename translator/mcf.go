@@ -53,16 +53,16 @@ func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
 	statements, err := split(strings.TrimSpace(queryString), ',')
 
 	if err != nil {
-		return nil, nil, status.Error(codes.InvalidArgument, "found unpaired quotes")
+		return nil, nil, status.Error(codes.InvalidArgument, "Found unpaired quotes for query: %s", queryString)
 	}
 
 	if len(statements) < 2 {
-		return nil, nil, status.Error(codes.InvalidArgument, "query separated by comma")
+		return nil, nil, status.Error(codes.InvalidArgument, "Query separated by comma: %s": queryString)
 	}
 
 	sVars := strings.Fields(statements[0])
 	if strings.ToUpper(sVars[0]) != "SELECT" {
-		return nil, nil, status.Error(codes.InvalidArgument, "query starts with SELECT")
+		return nil, nil, status.Error(codes.InvalidArgument, "Query does starts with SELECT: %s", queryString)
 	}
 
 	nodes := []base.Node{}
@@ -74,7 +74,7 @@ func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
 	for _, statement := range statements[1:] {
 		tmp, err := split(strings.TrimSpace(statement), ' ')
 		if err != nil {
-			return nil, nil, status.Error(codes.InvalidArgument, "found unpaired quotes")
+			return nil, nil, status.Error(codes.InvalidArgument, "Found unpaired quotes")
 		}
 		terms := []string{}
 		for _, term := range tmp {
@@ -84,7 +84,7 @@ func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
 		}
 
 		if len(terms) < 3 {
-			return nil, nil, status.Errorf(codes.InvalidArgument, "query terms length < 3: %s", terms)
+			return nil, nil, status.Errorf(codes.InvalidArgument, "Query terms length < 3: %s", terms)
 		}
 		var query *base.Query
 		if strings.HasPrefix(terms[2], "?") {
@@ -124,7 +124,7 @@ func ParseMapping(mcf, database string) ([]*base.Mapping, error) {
 			sub = body
 		} else {
 			if sub == "" {
-				return nil, status.Error(codes.InvalidArgument, "missing Node identifier")
+				return nil, status.Error(codes.InvalidArgument, "Missing Node identifier")
 			}
 			m, err := base.NewMapping(head, sub, body, database)
 			if err != nil {
