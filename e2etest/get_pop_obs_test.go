@@ -83,11 +83,11 @@ func TestGetPopObs(t *testing.T) {
 			t.Errorf("Can not Unmarshal raw json %v", err)
 			continue
 		}
+		for _, popObsPop := range result.Populations {
+			sort.Sort(byID(popObsPop.GetObservations()))
+		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			for popID := range result.Populations {
-				sort.Sort(byID(result.Populations[popID].GetObservations()))
-			}
 			updateGolden(&result, goldenFile)
 			continue
 		}
