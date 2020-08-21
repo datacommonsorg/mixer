@@ -207,7 +207,6 @@
       "2020-08-11": 5154641
     },
     "placeName": "United States",
-    "placeDcid": "country/USA",
     "provenanceDomain": "nytimes.com"
   },
   "geoId/06": {
@@ -383,8 +382,7 @@
       "2020-07-11": 320030,
       "2020-07-12": 327676
     },
-    "placeName": "California",
-    "placeDcid": "geoId/06"
+    "placeName": "California"
   },
   "geoId/06085": {
     "data": {
@@ -545,7 +543,6 @@
       "2020-07-03": 4849,
       "2020-07-04": 5077
     },
-    "placeName": "Santa Clara County",
-    "placeDcid": "geoId/06085"
+    "placeName": "Santa Clara County"
   }
 }
