@@ -24,6 +24,8 @@ import (
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
@@ -39,10 +41,10 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	dcid := in.GetDcid()
 
 	if dcid == "" {
-		return nil, fmt.Errorf("must provide a DCID")
+		return nil, status.Error(codes.InvalidArgument, "Missing argument: dcid")
 	}
 	if !util.CheckValidDCIDs([]string{dcid}) {
-		return nil, fmt.Errorf("invalid DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs: %s", dcid)
 	}
 
 	out := pb.GetPopObsResponse{}
@@ -110,7 +112,7 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	*pb.GetPlaceObsResponse, error) {
 	if in.GetPlaceType() == "" || in.GetPopulationType() == "" ||
 		in.GetObservationDate() == "" {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
 	}
 
 	key := fmt.Sprintf("%s^%s^%s", in.GetPlaceType(), in.GetObservationDate(),
@@ -194,10 +196,10 @@ func (s *Server) GetPopulations(
 	dcids := in.GetDcids()
 
 	if len(dcids) == 0 || in.GetPopulationType() == "" {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, fmt.Errorf("invalid DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	// Create the cache key suffix
@@ -251,10 +253,10 @@ func (s *Server) GetObservations(
 	// TODO: Add checks for empty in.GetStatType().
 	if len(dcids) == 0 || in.GetMeasuredProperty() == "" ||
 		in.GetObservationDate() == "" {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, fmt.Errorf("invalid DCIDs")
+		return nil, status.Error(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	// Construct the list of cache keys to query.

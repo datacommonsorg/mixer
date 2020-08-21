@@ -25,6 +25,9 @@ import (
 	"regexp"
 	"strings"
 	"time"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -262,7 +265,7 @@ func KeyToDcid(key string) (string, error) {
 	parts := strings.Split(key, "^")
 	match := re.FindStringSubmatch(parts[0])
 	if len(match) != 4 {
-		return "", fmt.Errorf("Invalid bigtable row key %s", key)
+		return "", status.Errorf(codes.Internal, "Invalid bigtable row key %s", key)
 	}
 	return match[3], nil
 }
@@ -271,7 +274,7 @@ func KeyToDcid(key string) (string, error) {
 func RemoveKeyPrefix(key string) (string, error) {
 	match := re.FindStringSubmatch(key)
 	if len(match) != 4 {
-		return "", fmt.Errorf("Invalid bigtable row key %s", key)
+		return "", status.Errorf(codes.Internal, "Invalid bigtable row key %s", key)
 	}
 	return match[3], nil
 }

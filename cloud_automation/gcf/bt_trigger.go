@@ -1,5 +1,5 @@
 // Package btcachegeneration runs a GCF function that triggers in 2 scenarios:
-// 1) completion of prophet-flume job in borg. 
+// 1) completion of prophet-flume job in borg.
 //    The trigger is based on GCS file prophet-cache/latest_base_cache_run.txt.
 // 2) On completion of BT cache ingestion via an airflow job. This trigger is based
 //    on GCS file prophet-cache/[success|failure].txt
@@ -20,6 +20,8 @@ import (
 
 	"cloud.google.com/go/bigtable"
 	"cloud.google.com/go/storage"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -47,7 +49,8 @@ func readFromGCS(ctx context.Context, gcsClient *storage.Client, bucketName, fil
 	rc, err := bucket.Object(fileName).NewReader(ctx)
 	if err != nil {
 		log.Printf("Unable to open file from bucket %q, file %q: %v\n", bucketName, fileName, err)
-		return nil, fmt.Errorf("Unable to open file from bucket %q, file %q: %v", bucketName, fileName, err)
+		return nil, status.Errorf(
+			codes.Internal, "Unable to open file from bucket %q, file %q: %v", bucketName, fileName, err)
 	}
 	defer rc.Close()
 	return ioutil.ReadAll(rc)
@@ -60,7 +63,7 @@ func writeToGCS(ctx context.Context, gcsClient *storage.Client, bucketName, file
 	if _, err := fmt.Fprint(w, data); err != nil {
 		w.Close()
 		log.Printf("Unable to open file for writing from bucket %q, file %q: %v\n", bucketName, fileName, err)
-		return fmt.Errorf("Unable to write to bucket %q, file %q: %v", bucketName, fileName, err)
+		return status.Errorf(codes.Internal, "Unable to write to bucket %q, file %q: %v", bucketName, fileName, err)
 	}
 	return w.Close()
 }
@@ -123,7 +126,7 @@ func GCSTrigger(ctx context.Context, e GCSEvent) error {
 		gcsClient, err := storage.NewClient(ctx)
 		if err != nil {
 			log.Printf("Failed to create gcsClient: %v\n", err)
-			return fmt.Errorf("Failed to create gcsClient: %v", err)
+			return status.Errorf(codes.Internal, "Failed to create gcsClient: %v", err)
 		}
 
 		tableID, err := readFromGCS(ctx, gcsClient, e.Bucket, e.Name)
@@ -147,4 +150,3 @@ func GCSTrigger(ctx context.Context, e GCSEvent) error {
 	}
 	return nil
 }
-

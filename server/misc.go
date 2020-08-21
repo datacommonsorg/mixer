@@ -17,18 +17,19 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/sparql"
 	"github.com/datacommonsorg/mixer/translator"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // Translate implements API for Mixer.Translate.
 func (s *Server) Translate(ctx context.Context,
 	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
 
 	out := pb.TranslateResponse{}

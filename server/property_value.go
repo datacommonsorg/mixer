@@ -17,9 +17,10 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 
 	mapset "github.com/deckarep/golang-set"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/util"
@@ -45,10 +46,10 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 
 	// Check arguments
 	if prop == "" || len(dcids) == 0 {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, fmt.Errorf("invalid DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	// Get in, out or both direction

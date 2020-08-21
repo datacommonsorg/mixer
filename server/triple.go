@@ -17,13 +17,14 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"strconv"
 	"strings"
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -44,10 +45,10 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	limit := in.GetLimit()
 
 	if len(dcids) == 0 {
-		return nil, fmt.Errorf("must provide DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing argument: dcids")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, fmt.Errorf("invalid DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	// Need to fetch addtional information for observation and population node.
@@ -190,7 +191,7 @@ func convertPopTriples(dcid string, jsonRaw []byte) (interface{}, error) {
 	jsonVal := string(jsonRaw)
 	parts := strings.Split(jsonVal, "^")
 	if len(parts) == 0 || len(parts)%2 != 0 {
-		return nil, fmt.Errorf("wrong number of PVs: %v", jsonVal)
+		return nil, status.Errorf(codes.Internal, "Wrong number of PVs: %v", jsonVal)
 	}
 	triples := []*Triple{}
 	triples = append(triples, &Triple{

@@ -17,10 +17,11 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // GetPropertyLabelsPost implements API for Mixer.GetPropertyLabelsPost.
@@ -34,10 +35,10 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 	in *pb.GetPropertyLabelsRequest) (*pb.GetPropertyLabelsResponse, error) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
-		return nil, fmt.Errorf("missing required arguments")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, fmt.Errorf("invalid DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
 	rowList := buildPropertyLabelKey(dcids)
