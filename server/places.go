@@ -138,7 +138,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		}, func(key string) (string, error) {
 			parts := strings.Split(key, "^")
 			if len(parts) <= 1 {
-				return "", status.Error(codes.Internal, "Invalid bigtable row key %s", key)
+				return "", status.Errorf(codes.Internal, "Invalid bigtable row key %s", key)
 			}
 			return parts[len(parts)-1], nil
 		})

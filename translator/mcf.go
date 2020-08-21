@@ -53,16 +53,16 @@ func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
 	statements, err := split(strings.TrimSpace(queryString), ',')
 
 	if err != nil {
-		return nil, nil, status.Error(codes.InvalidArgument, "Found unpaired quotes for query: %s", queryString)
+		return nil, nil, status.Errorf(codes.InvalidArgument, "Found unpaired quotes for query: %s", queryString)
 	}
 
 	if len(statements) < 2 {
-		return nil, nil, status.Error(codes.InvalidArgument, "Query separated by comma: %s": queryString)
+		return nil, nil, status.Errorf(codes.InvalidArgument, "Query separated by comma: %s", queryString)
 	}
 
 	sVars := strings.Fields(statements[0])
 	if strings.ToUpper(sVars[0]) != "SELECT" {
-		return nil, nil, status.Error(codes.InvalidArgument, "Query does starts with SELECT: %s", queryString)
+		return nil, nil, status.Errorf(codes.InvalidArgument, "Query does starts with SELECT: %s", queryString)
 	}
 
 	nodes := []base.Node{}
