@@ -16,18 +16,25 @@ package e2etest
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
+	"sort"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
 	"github.com/datacommonsorg/mixer/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
+
+type byID []*pb.PopObsObservation
+
+func (a byID) Len() int           { return len(a) }
+func (a byID) Less(i, j int) bool { return a[i].GetId() < a[j].GetId() }
+func (a byID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func TestGetPopObs(t *testing.T) {
 	ctx := context.Background()
@@ -70,20 +77,23 @@ func TestGetPopObs(t *testing.T) {
 		if err != nil {
 			t.Errorf("could not UnzipAndDecode: %s", err)
 		}
-		var result *pb.PopObsPlace
-		err = json.Unmarshal(jsonRaw, &result)
+		var result pb.PopObsPlace
+		err = protojson.Unmarshal(jsonRaw, &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal raw json %v", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile)
+			for popID := range result.Populations {
+				sort.Sort(byID(result.Populations[popID].GetObservations()))
+			}
+			updateGolden(&result, goldenFile)
 			continue
 		}
-		var expected *pb.PopObsPlace
+		var expected pb.PopObsPlace
 		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
+		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %v", err)
 			continue
