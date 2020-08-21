@@ -16,7 +16,6 @@ package e2etest
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -25,6 +24,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -115,7 +115,7 @@ func TestQuery(t *testing.T) {
 
 		var expected pb.QueryResponse
 		file, _ := ioutil.ReadFile(goldenFile)
-		if err := json.Unmarshal(file, &expected); err != nil {
+		if err := protojson.Unmarshal(file, &expected); err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
