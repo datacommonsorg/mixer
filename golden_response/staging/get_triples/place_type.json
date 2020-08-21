@@ -3654,19 +3654,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/ALA",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/zgd6823"
-    },
-    {
       "subjectId": "country/AIA",
       "subjectName": "Anguilla",
       "subjectTypes": [
