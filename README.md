@@ -30,6 +30,7 @@ Then in your forked repo, can send a Pull Request.
 Wait for approval of the Pull Request and merge the change.
 
 ## Setup Go
+
 Install [Golang](https://golang.org/doc/install). You may need to add `$(go env GOPATH)/bin` to your `PATH`.
 
 ## Generate Protobuf go code
@@ -76,10 +77,16 @@ cd examples/get_place_obs
 go run main.go
 ```
 
-## Update golden files on staging
+## Update golden files
 
-Run the following commands to update golden files in ./golden_response/staging.
+Run the following commands to update golden files in ./golden_response/staging
 
 ```bash
-./update-golden.sh
+./update-golden-staging.sh
+```
+
+Run the following commands to update prod golden files from staging golden files
+
+```bash
+./update-golden-prod.sh
 ```
