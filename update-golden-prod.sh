@@ -17,5 +17,5 @@
 for dest in golden_response/prod/*/*.json
 do
   src="${dest/prod/staging}"
-  cp $src $dest
+  cp "$src" "$dest"
 done
