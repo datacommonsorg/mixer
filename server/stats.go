@@ -317,7 +317,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(
 		rowList,
-		convertToObsSeries,
+		convertToObsSeriesPb,
 		tokenFn(keyTokens),
 	)
 
