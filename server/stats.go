@@ -550,6 +550,8 @@ func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsTimeSeries:
+		res := x.ObsTimeSeries
+		res.PlaceName = ""
 		return x.ObsTimeSeries, nil
 	case nil:
 		return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")
