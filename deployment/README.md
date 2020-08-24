@@ -3,6 +3,12 @@
 Data Commmons Mixer is an API server hosted on GKE and exposed via Cloud
 Endpoints.
 
+## gRPC transcoding
+
+The gRPC API is transcoded to the REST API vis Google [Cloud Endpoints](https://cloud.google.com/endpoints/docs/quickstart-endpoints).
+The REST path is defined in `proto/mixer.proto` and is transcoded into [http method](https://cloud.google.com/endpoints/docs/grpc/transcoding#map_a_get_method).
+By default, Cloud Endpoints converts protobuf snake case fields into camel case for the REST response.
+
 ## One Time Setup
 
 -   [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
