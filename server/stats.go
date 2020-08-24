@@ -317,7 +317,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(
 		rowList,
-		convertToObsSeries,
+		convertToObsSeriesPb,
 		tokenFn(keyTokens),
 	)
 
@@ -550,6 +550,7 @@ func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsTimeSeries:
+		x.ObsTimeSeries.PlaceName = ""
 		return x.ObsTimeSeries, nil
 	case nil:
 		return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")

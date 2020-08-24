@@ -3,7 +3,6 @@
   "country/USA": {
    "statVarData": {
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
-     "placeName": "United States",
      "sourceSeries": [
       {
        "val": {
@@ -45,7 +44,6 @@
      ]
     },
     "Count_CriminalActivities_CombinedCrime": {
-     "placeName": "United States",
      "isDcAggregate": true,
      "sourceSeries": [
       {
@@ -68,7 +66,6 @@
      ]
     },
     "Count_Person": {
-     "placeName": "United States",
      "sourceSeries": [
       {
        "val": {
@@ -365,7 +362,6 @@
    "statVarData": {
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
     "Count_CriminalActivities_CombinedCrime": {
-     "placeName": "California",
      "sourceSeries": [
       {
        "val": {
@@ -387,7 +383,6 @@
      ]
     },
     "Count_Person": {
-     "placeName": "California",
      "sourceSeries": [
       {
        "val": {
@@ -610,7 +605,6 @@
    "statVarData": {
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
     "Count_CriminalActivities_CombinedCrime": {
-     "placeName": "City of Mountain View",
      "sourceSeries": [
       {
        "val": {
@@ -632,7 +626,6 @@
      ]
     },
     "Count_Person": {
-     "placeName": "City of Mountain View",
      "sourceSeries": [
       {
        "val": {
