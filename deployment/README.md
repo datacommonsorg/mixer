@@ -5,9 +5,9 @@ Endpoints.
 
 ## gRPC transcoding
 
-The gRPC API is transcoded to REST API vis Google [Cloud Endpoints](https://cloud.google.com/endpoints/docs/quickstart-endpoints).
-The REST path is defined in `proto/mixer.proto` and trascoded into [http method](https://cloud.google.com/endpoints/docs/grpc/transcoding#map_a_get_method).
-By default, Cloud Endpoints converts protobuf snake case field into camel case in REST response.
+The gRPC API is transcoded to the REST API vis Google [Cloud Endpoints](https://cloud.google.com/endpoints/docs/quickstart-endpoints).
+The REST path is defined in `proto/mixer.proto` and is transcoded into [http method](https://cloud.google.com/endpoints/docs/grpc/transcoding#map_a_get_method).
+By default, Cloud Endpoints converts protobuf snake case fields into camel case for the REST response.
 
 ## One Time Setup
 
