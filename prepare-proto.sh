@@ -14,8 +14,8 @@
 
 #!/bin/bash
 
-go get google.golang.org/protobuf/cmd/protoc-gen-go
-go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
+go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 mkdir -p proto/google/api/
 curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto \
       --output proto/google/api/annotations.proto

@@ -95,7 +95,7 @@ func TestGetTriples(t *testing.T) {
 			"",
 			false,
 			5,
-			[]int{30, 25},
+			[]int{5, 5},
 		},
 	} {
 		req := &pb.GetTriplesRequest{Dcids: c.dcids}
