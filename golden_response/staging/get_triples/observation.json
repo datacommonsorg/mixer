@@ -30,7 +30,6 @@
       "objectId": "geoId/06085",
       "objectName": "Santa Clara County",
       "objectTypes": [
-        "AdministrativeArea",
         "AdministrativeArea2",
         "County"
       ],
