@@ -6,7 +6,6 @@
         "name": "Sunnyvale",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -15,7 +14,6 @@
         "name": "Stanford",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -24,7 +22,6 @@
         "name": "Saratoga",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -33,7 +30,6 @@
         "name": "Santa Clara",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -42,7 +38,6 @@
         "name": "San Martin",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -51,7 +46,6 @@
         "name": "San Jose",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -60,7 +54,6 @@
         "name": "Palo Alto",
         "provenanceId": "dc/5n63hr1",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -69,7 +62,6 @@
         "name": "Mountain View",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -78,7 +70,6 @@
         "name": "Morgan Hill",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -87,7 +78,6 @@
         "name": "Monte Sereno",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -96,7 +86,6 @@
         "name": "Milpitas",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -105,7 +94,6 @@
         "name": "Loyola",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -114,7 +102,6 @@
         "name": "Los Gatos",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City",
           "Town"
         ]
@@ -124,7 +111,6 @@
         "name": "Los Altos Hills",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City",
           "Town"
         ]
@@ -134,7 +120,6 @@
         "name": "Los Altos",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -143,7 +128,6 @@
         "name": "Lexington Hills",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -152,7 +136,6 @@
         "name": "Gilroy",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -161,7 +144,6 @@
         "name": "Fruitdale",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -170,7 +152,6 @@
         "name": "East Foothills",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City",
           "Neighborhood"
         ]
@@ -180,7 +161,6 @@
         "name": "Cupertino",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -189,7 +169,6 @@
         "name": "Campbell",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -206,7 +185,6 @@
         "name": "Burbank",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City",
           "Neighborhood"
         ]
@@ -216,7 +194,6 @@
         "name": "Alum Rock",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City",
           "Neighborhood"
         ]

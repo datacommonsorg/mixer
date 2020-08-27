@@ -7,36 +7,36 @@
       "geoId/48029"
     ],
     "rankFromTop": 263,
-    "rankFromBottom": 146957
+    "rankFromBottom": 146960
   },
   "Median_Age_Person": {
     "relatedPlaces": [
-      "geoId/36059304202",
-      "geoId/39061021003",
-      "zip/45874",
-      "zip/99360"
+      "geoId/35011",
+      "geoId/5540675",
+      "geoId/sch0513530",
+      "zip/89138"
     ],
-    "rankFromTop": 101061,
-    "rankFromBottom": 47976
+    "rankFromTop": 100806,
+    "rankFromBottom": 48234
   },
   "Median_Income_Person": {
     "relatedPlaces": [
-      "geoId/06111001202",
+      "geoId/06079011800",
       "geoId/08005005614",
-      "geoId/27163070701",
-      "geoId/55079150301"
+      "geoId/3702593380",
+      "geoId/53061053302"
     ],
-    "rankFromTop": 15689,
-    "rankFromBottom": 133348
+    "rankFromTop": 15691,
+    "rankFromBottom": 133349
   },
   "UnemploymentRate_Person": {
     "relatedPlaces": [
-      "geoId/1753481",
-      "geoId/1780645",
-      "geoId/31161",
-      "geoId/4967825"
+      "geoId/0973000",
+      "geoId/18025",
+      "geoId/2501605",
+      "geoId/41005"
     ],
-    "rankFromTop": 5291,
-    "rankFromBottom": 532
+    "rankFromTop": 1944,
+    "rankFromBottom": 3855
   }
 }

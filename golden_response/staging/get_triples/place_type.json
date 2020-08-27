@@ -1,610 +1,8 @@
 {
   "Country": [
     {
-      "subjectId": "wikidataId/Q958291",
-      "subjectName": "United Principalities",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q940741",
-      "subjectName": "Republic of Hungary",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q93180",
-      "subjectName": "Seleucid Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q903779",
-      "subjectName": "United Kingdom of Portugal, Brazil and the Algarves",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q8733",
-      "subjectName": "Qing dynasty",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q870517",
-      "subjectName": "Odrysian kingdom",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q83958",
-      "subjectName": "Macedonia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q837998",
-      "subjectName": "Kingdom of East Anglia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q83618",
-      "subjectName": "Maratha Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q83572",
-      "subjectName": "Sikh Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q83546",
-      "subjectName": "Grand Duchy of Vladimir",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q81931",
-      "subjectName": "Confederate States of America",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q79965",
-      "subjectName": "Golden Horde",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q784851",
-      "subjectName": "Turkish Federated State of Cyprus",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
       "subjectId": "wikidataId/Q756617",
       "subjectName": "Kingdom of Denmark",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q738144",
-      "subjectName": "United Provinces of the Río de la Plata",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q7318",
-      "subjectName": "Nazi Germany",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q7313",
-      "subjectName": "Yuan Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q715257",
-      "subjectName": "Unified Silla",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q713750",
-      "subjectName": "West Germany",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q71234",
-      "subjectName": "Corsican Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q70972",
-      "subjectName": "Kingdom of France",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q6987126",
-      "subjectName": "Negara Daha",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q696241",
-      "subjectName": "Khanate of Kokand",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q68682",
-      "subjectName": "Bukharan People's Soviet Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q668294",
-      "subjectName": "Kamerun",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q655621",
-      "subjectName": "Principality of Transylvania",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q61291",
-      "subjectName": "Khorezm People's Soviet Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q600018",
-      "subjectName": "Kingdom of Hungary",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q589662",
-      "subjectName": "Royal Prussia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q577867",
-      "subjectName": "Kingdom of Poland",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q56885910",
-      "subjectName": "Emirate of Diriyah",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q568712",
-      "subjectName": "Wassoulou Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q550374",
-      "subjectName": "South African Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q536476",
-      "subjectName": "Toucouleur Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q5343710",
-      "subjectName": "Kingdom of Italy",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q523435",
-      "subjectName": "United States of Indonesia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q516160",
-      "subjectName": "First Hungarian Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q507346",
-      "subjectName": "Baté Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q49683",
-      "subjectName": "Grand Duchy of Lithuania",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q45670",
-      "subjectName": "Kingdom of Portugal",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q4517333",
-      "subjectName": "Da Chu",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q42834",
-      "subjectName": "Western Roman Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q4083686",
-      "subjectName": "Sultanate of Bengal",
       "subjectTypes": [
         "Country"
       ],
@@ -628,119 +26,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q3968612",
-      "subjectName": "Italian United Provinces",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q389004",
-      "subjectName": "Principality of Wallachia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q38872",
-      "subjectName": "Prussia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
       "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q386496",
-      "subjectName": "Kingdom of Montenegro",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q38610",
-      "subjectName": "Dominion of Newfoundland",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q36704",
-      "subjectName": "Yugoslavia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q3456432",
-      "subjectName": "République des Sept-Dizains",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q34266",
-      "subjectName": "Russian Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "wikidataId/Q31354462",
@@ -757,134 +43,8 @@
       "provenanceId": "dc/5j06ly1"
     },
     {
-      "subjectId": "wikidataId/Q30623",
-      "subjectName": "Manchukuo",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
       "subjectId": "wikidataId/Q29999",
       "subjectName": "Kingdom of the Netherlands",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q28513",
-      "subjectName": "Austria-Hungary",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q28370",
-      "subjectName": "Goguryeo",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q28233",
-      "subjectName": "Korean Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q28208",
-      "subjectName": "Goryeo",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q28179",
-      "subjectName": "Joseon",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q28058158",
-      "subjectName": "Madurai Nayak Kingdom",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q28025",
-      "subjectName": "Ryukyu Kingdom",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q27306",
-      "subjectName": "Kingdom of Prussia",
       "subjectTypes": [
         "Country"
       ],
@@ -911,34 +71,6 @@
       "provenanceId": "dc/5j06ly1"
     },
     {
-      "subjectId": "wikidataId/Q268970",
-      "subjectName": "Republic of German-Austria",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q2453974",
-      "subjectName": "Don Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
       "subjectId": "wikidataId/Q244165",
       "subjectName": "Artsakh",
       "subjectTypes": [
@@ -953,988 +85,8 @@
       "provenanceId": "dc/5j06ly1"
     },
     {
-      "subjectId": "wikidataId/Q2437292",
-      "subjectName": "Nueva Galicia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q243610",
-      "subjectName": "Ukrainian People's Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q241748",
-      "subjectName": "Kingdom of Serbia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
       "subjectId": "wikidataId/Q23681",
       "subjectName": "Turkish Republic of Northern Cyprus",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q235030",
-      "subjectName": "Principality of Antioch",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q231392",
-      "subjectName": "Kingdom of Asturias",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q230791",
-      "subjectName": "Kingdom of Scotland",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q2305208",
-      "subjectName": "Russian Soviet Federative Socialist Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q229411",
-      "subjectName": "Delhi Sultanate",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q223936",
-      "subjectName": "Kingdom of Italy",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q2208978",
-      "subjectName": "Alamannia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q217196",
-      "subjectName": "Crown of Castile",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q217169",
-      "subjectName": "Rhodesia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q216173",
-      "subjectName": "Free City of Danzig",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q213638",
-      "subjectName": "Kingdom of Cyprus",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q211274",
-      "subjectName": "Polish People's Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q209065",
-      "subjectName": "Kingdom of Greece",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q208169",
-      "subjectName": "Republic of Ragusa",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q207272",
-      "subjectName": "Second Polish Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q203493",
-      "subjectName": "Kingdom of Romania",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q199821",
-      "subjectName": "Gran Colombia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q199442",
-      "subjectName": "Kingdom of Aragon",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1986139",
-      "subjectName": "Parthian Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q191077",
-      "subjectName": "Kingdom of Yugoslavia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q188712",
-      "subjectName": "Empire of Japan",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q186096",
-      "subjectName": "Tsardom of Russia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q18608788",
-      "subjectName": "Ghurid dynasty",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q18234383",
-      "subjectName": "Safavid Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q180393",
-      "subjectName": "Kingdom of the Two Sicilies",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q179876",
-      "subjectName": "Kingdom of England",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1775277",
-      "subjectName": "Dominion of India",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1760473",
-      "subjectName": "Principality of Abkhazia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q175276",
-      "subjectName": "Kingdom of León",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1747689",
-      "subjectName": "ancient Rome",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q174193",
-      "subjectName": "United Kingdom of Great Britain and Ireland",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q172579",
-      "subjectName": "Kingdom of Italy",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q172107",
-      "subjectName": "Polish–Lithuanian Commonwealth",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q171348",
-      "subjectName": "Crown of the Kingdom of Poland",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q171150",
-      "subjectName": "Kingdom of Hungary",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q170770",
-      "subjectName": "Grand Duchy of Moscow",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q170174",
-      "subjectName": "Papal States",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q167360",
-      "subjectName": "First Portuguese Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1658411",
-      "subjectName": "Raj of Sarawak",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q165154",
-      "subjectName": "Kingdom of Sardinia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q16410",
-      "subjectName": "People's Republic of Hungary",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1587244",
-      "subjectName": "Kong Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q154401",
-      "subjectName": "Slovak State (1939-1945)",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q153943",
-      "subjectName": "Kingdom of Westphalia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q153136",
-      "subjectName": "Habsburg Monarchy",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q153091",
-      "subjectName": "Duchy of Prussia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q152115",
-      "subjectName": "Duchy of Warsaw",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q15102440",
-      "subjectName": "Kingdom of Serbs, Croats and Slovenes",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q150981",
-      "subjectName": "North German Confederation",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q1508143",
-      "subjectName": "Ukrainian State",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q148540",
-      "subjectName": "Republic of Florence",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q147909",
-      "subjectName": "Kingdom of Bulgaria",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q146246",
-      "subjectName": "Francia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q139319",
-      "subjectName": "Russian Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q13426199",
-      "subjectName": "Republic of China (1912–1949)",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q131964",
-      "subjectName": "Austrian Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q12548",
-      "subjectName": "Holy Roman Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q12544",
-      "subjectName": "Byzantine Empire",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q1206012",
-      "subjectName": "German Reich",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q1146786",
-      "subjectName": "Señorío of Cuzcatlán",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1131500",
-      "subjectName": "Free State of Icaria",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1108445",
-      "subjectName": "Kyivska Rus'",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q10957559",
-      "subjectName": "Principality of Moldavia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q1081620",
-      "subjectName": "Siam",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1072140",
-      "subjectName": "Roman Republic",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q105313",
-      "subjectName": "Kingdom of Wessex",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q10416611",
-      "subjectName": "Vandal Kingdom",
       "subjectTypes": [
         "Country"
       ],
@@ -1990,7 +142,6 @@
     },
     {
       "subjectId": "country/YUG",
-      "subjectName": "Socialist Federal Republic of Yugoslavia",
       "subjectTypes": [
         "Country"
       ],
@@ -2000,7 +151,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/YEM",
@@ -2115,7 +266,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/VEN",
@@ -2214,7 +365,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/UKR",
@@ -2568,7 +719,6 @@
     },
     {
       "subjectId": "country/SUN",
-      "subjectName": "Soviet Union",
       "subjectTypes": [
         "Country"
       ],
@@ -2734,7 +884,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/SGS",
@@ -2795,7 +945,6 @@
     },
     {
       "subjectId": "country/SCG",
-      "subjectName": "Serbia and Montenegro",
       "subjectTypes": [
         "Country"
       ],
@@ -4097,7 +2246,6 @@
     },
     {
       "subjectId": "country/HVO",
-      "subjectName": "Republic of Upper Volta",
       "subjectTypes": [
         "Country"
       ],
@@ -4107,7 +2255,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/HUN",
@@ -4767,7 +2915,6 @@
     },
     {
       "subjectId": "country/DDR",
-      "subjectName": "German Democratic Republic",
       "subjectTypes": [
         "Country"
       ],
@@ -4879,7 +3026,6 @@
     },
     {
       "subjectId": "country/CSK",
-      "subjectName": "Czechoslovakia",
       "subjectTypes": [
         "Country"
       ],
@@ -5104,9 +3250,7 @@
     },
     {
       "subjectId": "country/BYS",
-      "subjectName": "Byelorussian Soviet Socialist Republic",
       "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -5115,7 +3259,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/BWA",
@@ -5790,9 +3934,7 @@
     },
     {
       "subjectId": "geoId/89",
-      "subjectName": "Kingman Reef",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5805,9 +3947,7 @@
     },
     {
       "subjectId": "geoId/86",
-      "subjectName": "Jarvis Island",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5831,7 +3971,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/81",
@@ -5846,7 +3986,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/79",
@@ -5980,9 +4120,7 @@
     },
     {
       "subjectId": "geoId/67",
-      "subjectName": "Johnston Atoll",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -6078,7 +4216,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/53",
@@ -6123,7 +4261,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/49",
@@ -6138,7 +4276,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/48",
@@ -6513,7 +4651,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/22",
@@ -6543,7 +4681,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/20",
@@ -6648,7 +4786,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/12",
@@ -6678,7 +4816,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/10",
