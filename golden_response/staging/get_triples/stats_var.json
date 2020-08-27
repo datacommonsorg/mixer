@@ -41,7 +41,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "dc/gywfwwmg5gsrg",
+      "subjectId": "dc/h00kfxhs73dhc",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -54,6 +54,18 @@
     },
     {
       "subjectId": "dc/d20yq6r828zrc",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/cwk07wqzew6t8",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -225,6 +237,30 @@
         "Class"
       ],
       "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/yhbqx0489qcc",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/twktdj71ngkz1",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
     },
     {
       "subjectId": "dc/begqg4vhfbtdb",
