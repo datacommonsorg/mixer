@@ -4,7 +4,7 @@
       {
         "dcid": "geoId/0677000",
         "name": "Sunnyvale",
-        "provenanceId": "dc/5n63hr1",
+        "provenanceId": "dc/sm3m2w3",
         "types": [
           "City"
         ]
@@ -44,7 +44,7 @@
       {
         "dcid": "geoId/0668000",
         "name": "San Jose",
-        "provenanceId": "dc/5n63hr1",
+        "provenanceId": "dc/sm3m2w3",
         "types": [
           "City"
         ]
@@ -52,17 +52,16 @@
       {
         "dcid": "geoId/0655282",
         "name": "Palo Alto",
-        "provenanceId": "dc/5j06ly1",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "City"
         ]
       },
       {
         "dcid": "geoId/0649670",
-        "name": "City of Mountain View",
-        "provenanceId": "dc/5n63hr1",
+        "name": "Mountain View",
+        "provenanceId": "dc/sm3m2w3",
         "types": [
-          "AdministrativeArea",
           "City"
         ]
       },
@@ -153,7 +152,8 @@
         "name": "East Foothills",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "City"
+          "City",
+          "Neighborhood"
         ]
       },
       {
@@ -185,7 +185,8 @@
         "name": "Burbank",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "City"
+          "City",
+          "Neighborhood"
         ]
       },
       {
@@ -193,7 +194,8 @@
         "name": "Alum Rock",
         "provenanceId": "dc/sm3m2w3",
         "types": [
-          "City"
+          "City",
+          "Neighborhood"
         ]
       }
     ]
