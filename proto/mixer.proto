@@ -308,14 +308,29 @@ message GetRelatedLocationsRequest {
 
   repeated string stat_var_dcids = 2;
 
-  // (Optional) Wheter to require same place type for related places.
+  // (Optional) Whether to require same place type for related places.
   bool same_place_type = 3;
 
   // (Optional) Whether to require all related places under the same ancestor.
   string within_place = 4;
 
-  // (Opitonal) Whether the computation needs to be based on per capita.
+  // (Optional) Whether the computation needs to be based on per capita.
   bool is_per_capita = 5;
+}
+
+// Request to get rankings of locations for given stat var DCIDs.
+message GetLocationsRankingsRequest {
+  repeated string stat_var_dcids = 1;
+
+  // Place type to get rankings for.
+  string place_type = 2;
+
+  // (Optional) Whether to require all related places under the same ancestor.
+  string within_place = 3;
+}
+
+message GetLocationsRankingsResponse {
+  map<string, RelatedPlacesInfo> payload = 1;
 }
 
 // Response of GetRelatedLocations request.
@@ -548,15 +563,25 @@ message PropertyLabels {
 
 // Related places info for a given place and condition.
 message RelatedPlacesInfo {
+  message Ranking {
+    message RankInfo {
+      int32 rank = 1;
+      double value = 2;
+      string place_dcid = 3;
+    }
+    repeated RankInfo info = 1;
+  }
   // The following 3 fields are set only when place is not empty.
   repeated string related_places = 1;
   int32 rank_from_top = 2;     // Starting from 1.
   int32 rank_from_bottom = 3;  // Starting from 1.
 
   // The following 3 fields are set only when place is empty.
-  repeated string all_places = 4;
-  repeated string top_1000_places = 5;
-  repeated string bottom_1000_places = 6;
+  Ranking rank_all = 7;
+  Ranking rank_top_1000 = 8;
+  Ranking rank_bottom_1000 = 9;
+
+  reserved 4, 5, 6;
 }
 
 // A statistical variable contains key info of population and observation.
@@ -819,6 +844,14 @@ service Mixer {
   rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
     option (google.api.http) = {
       post: "/stat/all"
+      body: "*"
+    };
+  }
+
+  // Get rankings for given stat var DCIDs.
+  rpc GetLocationsRankings(GetLocationsRankingsRequest) returns (GetLocationsRankingsResponse) {
+    option (google.api.http) = {
+      post: "/node/ranking-locations"
       body: "*"
     };
   }

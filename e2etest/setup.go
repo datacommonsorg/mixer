@@ -30,6 +30,8 @@ import (
 	"github.com/datacommonsorg/mixer/server"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	"google.golang.org/protobuf/encoding/protojson"
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 )
 
 var generateGolden bool
@@ -119,6 +121,15 @@ func loadMemcache() (map[string][]byte, error) {
 func updateGolden(v interface{}, fname string) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
 	err := ioutil.WriteFile(fname, jsonByte, 0644)
+	if err != nil {
+		log.Printf("could not write golden files to %s", fname)
+	}
+}
+
+func updateProtoGolden(resp protoreflect.ProtoMessage, fname string) {
+	marshaller := protojson.MarshalOptions{Indent: "  "}
+	jsonStr := marshaller.Format(resp)
+	err := ioutil.WriteFile(fname, []byte(jsonStr), 0644)
 	if err != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}

@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // GetPlacesInPost implements API for Mixer.GetPlacesInPost.
@@ -76,8 +77,8 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 // RelatedLocations cache.
 //
 // The three levels of keys are:
-// - Whether related locaitons have the same ancestor.
-// - Whether related locaitons have the same place type.
+// - Whether related locations have the same ancestor.
+// - Whether related locations have the same place type.
 // - Whether closeness computaion is per capita.
 var RelatedLocationsPrefixMap = map[bool]map[bool]map[bool]string{
 	true: {
@@ -125,7 +126,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		} else {
 			rowList = append(rowList, fmt.Sprintf(
 				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
-		}
+	}
 	}
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
@@ -158,6 +159,57 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		return nil, err
 	}
 	return &pb.GetRelatedLocationsResponse{Payload: string(jsonRaw)}, nil
+}
+
+// GetLocationsRankings implements API for Mixer.GetLocationsRankings.
+func (s *Server) GetLocationsRankings(ctx context.Context,
+	in *pb.GetLocationsRankingsRequest) (*pb.GetLocationsRankingsResponse, error) {
+	if in.GetPlaceType() == "" || len(in.GetStatVarDcids()) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
+	}
+
+	prefix := util.BtRelatedLocationsSameTypePrefix
+	sameAncestor := (in.GetWithinPlace() != "")
+	if sameAncestor {
+		prefix = util.BtRelatedLocationsSameTypeAndAncestorPrefix
+	}
+	rowList := bigtable.RowList{}
+	for _, statVarDcid := range in.GetStatVarDcids() {
+		if sameAncestor {
+			rowList = append(rowList, fmt.Sprintf(
+				"%s%s^%s^%s^%s", prefix, "*", in.GetPlaceType(), in.GetWithinPlace(), statVarDcid))
+		} else {
+			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, "*", in.GetPlaceType(), statVarDcid))
+		}
+	}
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var btRelatedPlacesInfo pb.RelatedPlacesInfo
+			err := protojson.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
+			if err != nil {
+				return nil, err
+			}
+			return &btRelatedPlacesInfo, nil
+		}, func(key string) (string, error) {
+			parts := strings.Split(key, "^")
+			if len(parts) <= 1 {
+				return "", status.Errorf(codes.Internal, "Invalid bigtable row key %s", key)
+			}
+			return parts[len(parts)-1], nil
+		})
+	if err != nil {
+		return nil, err
+	}
+
+	results := map[string]*pb.RelatedPlacesInfo{}
+	for statVarDcid, data := range dataMap {
+		if data == nil {
+			results[statVarDcid] = nil
+		} else {
+			results[statVarDcid] = data.(*pb.RelatedPlacesInfo)
+		}
+	}
+	return &pb.GetLocationsRankingsResponse{Payload: results}, nil
 }
 
 // GetInterestingPlaceAspects implements API for Mixer.GetInterestingPlaceAspects.
