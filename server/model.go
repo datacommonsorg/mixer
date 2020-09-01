@@ -62,14 +62,26 @@ type chanData struct {
 	data interface{}
 }
 
+// RelatedPlaceRankInfo represents the json structure for rankinglists in the RelatedPlaces cache.
+type RelatedPlaceRankInfo struct {
+	Rank      int32   `json:"rank,omitempty"`
+	Value     float64 `json:"value,omitempty"`
+	PlaceDcid string  `json:"placeDcid,omitempty"`
+}
+
+// RelatedPlaceRanking lists ranking information for the RelatedPlaces cache.
+type RelatedPlaceRanking struct {
+	Info []RelatedPlaceRankInfo `json:"info,omitempty"`
+}
+
 // RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.
 type RelatedPlacesInfo struct {
-	RelatedPlaces    []string `json:"relatedPlaces,omitempty"`
-	RankFromTop      int32    `json:"rankFromTop,omitempty"`
-	RankFromBottom   int32    `json:"rankFromBottom,omitempty"`
-	AllPlaces        []string `json:"allPlaces,omitempty"`
-	Top1000Places    []string `json:"top1000Places,omitempty"`
-	Bottom1000Places []string `json:"bottom1000Places,omitempty"`
+	RelatedPlaces  []string             `json:"relatedPlaces,omitempty"`
+	RankFromTop    int32                `json:"rankFromTop,omitempty"`
+	RankFromBottom int32                `json:"rankFromBottom,omitempty"`
+	RankAll        *RelatedPlaceRanking `json:"rankAll;,omitempty"`
+	RankTop1000    *RelatedPlaceRanking `json:"rankTop1000,omitempty"`
+	RankBottom1000 *RelatedPlaceRanking `json:"rankBottom1000,omitempty"`
 }
 
 // StatisticalVariable contains key info of population and observation.
