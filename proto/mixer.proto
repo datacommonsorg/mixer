@@ -326,7 +326,7 @@ message GetLocationsRankingsRequest {
   string place_type = 2;
 
   // (Optional) Whether to require all related places under the same ancestor.
-  string within_place = 4;
+  string within_place = 3;
 }
 
 message GetLocationsRankingsResponse {
