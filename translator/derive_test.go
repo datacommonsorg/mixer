@@ -393,6 +393,10 @@ func TestGetOutArcInfo(t *testing.T) {
 		},
 		"`dc_v3.PlaceExt`": {
 			{Pred: "kmlCoordinates", Column: "kml_coordinates"},
+			{Pred: "geoJsonCoordinates", Column: "geo_json_coordinates"},
+			{Pred: "geoJsonCoordinatesDP1", Column: "geo_json_coordinates_dp1"},
+			{Pred: "geoJsonCoordinatesDP2", Column: "geo_json_coordinates_dp2"},
+			{Pred: "geoJsonCoordinatesDP3", Column: "geo_json_coordinates_dp3"},
 		},
 	}
 	gotOutArcInfo, err := GetOutArcInfo(mappings, "Place")
