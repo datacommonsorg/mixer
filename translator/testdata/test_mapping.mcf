@@ -131,6 +131,10 @@ subType: C:PlaceExt->type
 dcid: C:PlaceExt->id
 isPublic: C:PlaceExt->is_public
 kmlCoordinates: C:PlaceExt->kml_coordinates
+geoJsonCoordinates: C:PlaceExt->geo_json_coordinates
+geoJsonCoordinatesDP1: C:PlaceExt->geo_json_coordinates_dp1
+geoJsonCoordinatesDP2: C:PlaceExt->geo_json_coordinates_dp2
+geoJsonCoordinatesDP3: C:PlaceExt->geo_json_coordinates_dp3
 provenance: E:PlaceExt->E2
 functionalDeps: dcid
 
