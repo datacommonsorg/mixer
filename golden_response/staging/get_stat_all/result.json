@@ -214,6 +214,14 @@
       },
       {
        "val":  {
+        "2011":  311591917
+       },
+       "measurementMethod":  "GoogleKGHumanCurated",
+       "importName":  "KGHumanCurated",
+       "provenanceDomain":  "google.com"
+      },
+      {
+       "val":  {
         "1900":  76094000,
         "1901":  77584000,
         "1902":  79163000,
@@ -454,6 +462,14 @@
        "observationPeriod":  "P1Y",
        "importName":  "OECDRegionalDemography",
        "provenanceDomain":  "oecd.org"
+      },
+      {
+       "val":  {
+        "2011":  37683933
+       },
+       "measurementMethod":  "GoogleKGHumanCurated",
+       "importName":  "KGHumanCurated",
+       "provenanceDomain":  "google.com"
       },
       {
        "val":  {
