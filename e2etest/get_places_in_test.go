@@ -81,7 +81,7 @@ func TestGetPlacesIn(t *testing.T) {
 		}
 
 		var expected []map[string]string
-		file, _ := ioutil.ReadFile(path.Join(goldenPath, goldenFile))
+		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
