@@ -26,7 +26,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "wikidataId/Q31354462",
@@ -199,7 +199,6 @@
       "subjectId": "country/WLF",
       "subjectName": "Wallis and Futuna",
       "subjectTypes": [
-        "AdministrativeArea",
         "Country"
       ],
       "predicate": "typeOf",
@@ -242,7 +241,6 @@
       "subjectId": "country/VIR",
       "subjectName": "U.S. Virgin Islands",
       "subjectTypes": [
-        "AdministrativeArea",
         "Country"
       ],
       "predicate": "typeOf",
@@ -266,7 +264,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/VEN",
@@ -365,7 +363,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/UKR",
@@ -491,7 +489,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/TLS",
@@ -533,7 +531,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/TJK",
@@ -604,7 +602,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/SYR",
@@ -673,7 +671,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/SVN",
@@ -776,7 +774,6 @@
       "subjectId": "country/SPM",
       "subjectName": "Saint Pierre and Miquelon",
       "subjectTypes": [
-        "AdministrativeArea",
         "Country"
       ],
       "predicate": "typeOf",
@@ -884,7 +881,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/SGS",
@@ -1046,7 +1043,6 @@
       "subjectId": "country/PYF",
       "subjectName": "French Polynesia",
       "subjectTypes": [
-        "AdministrativeArea",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1392,7 +1388,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/NER",
@@ -1523,7 +1519,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/MRT",
@@ -1754,7 +1750,6 @@
       "subjectId": "country/MAF",
       "subjectName": "Saint Martin (French part)",
       "subjectTypes": [
-        "AdministrativeArea",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1849,7 +1844,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/LIE",
@@ -1947,7 +1942,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/KOR",
@@ -2087,7 +2082,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/JAM",
@@ -2228,7 +2223,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/IDN",
@@ -2600,7 +2595,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/GAB",
@@ -2620,7 +2615,6 @@
       "subjectId": "country/FXX",
       "subjectName": "Metropolitan France",
       "subjectTypes": [
-        "AdministrativeArea",
         "Country"
       ],
       "predicate": "typeOf",
@@ -2813,7 +2807,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/DZA",
@@ -2967,7 +2961,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/CXR",
@@ -2982,7 +2976,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/CUW",
@@ -3022,7 +3016,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/zgd6823"
     },
     {
       "subjectId": "country/CSK",
@@ -3091,7 +3085,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/COK",
@@ -3189,7 +3183,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/CHE",
@@ -3218,7 +3212,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/CAN",
@@ -3372,7 +3366,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/BLZ",
@@ -3406,7 +3400,6 @@
       "subjectId": "country/BLM",
       "subjectName": "Saint Barthélemy",
       "subjectTypes": [
-        "AdministrativeArea",
         "Country"
       ],
       "predicate": "typeOf",
@@ -3415,7 +3408,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/BIH",
@@ -3637,7 +3630,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/ATB",
@@ -3652,7 +3645,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/ATA",
@@ -3765,7 +3758,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "country/AIA",
@@ -3780,7 +3773,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/AGO",
@@ -3835,7 +3828,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "Country",
@@ -4015,7 +4008,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/8qw92p"
+      "provenanceId": "dc/78h3b73"
     },
     {
       "subjectId": "geoId/76",
@@ -4102,7 +4095,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/8qw92p"
+      "provenanceId": "dc/78h3b73"
     },
     {
       "subjectId": "geoId/68",
@@ -4143,7 +4136,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/8qw92p"
+      "provenanceId": "dc/78h3b73"
     },
     {
       "subjectId": "geoId/64",
@@ -4171,7 +4164,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/8qw92p"
+      "provenanceId": "dc/78h3b73"
     },
     {
       "subjectId": "geoId/56",
@@ -4186,7 +4179,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/55",
@@ -4201,7 +4194,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/54",
@@ -4261,7 +4254,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/49",
@@ -4276,7 +4269,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/48",
@@ -4306,7 +4299,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/46",
@@ -4321,7 +4314,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/45",
@@ -4336,7 +4329,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/44",
@@ -4351,7 +4344,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/42",
@@ -4366,7 +4359,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/41",
@@ -4396,7 +4389,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/39",
@@ -4426,7 +4419,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/37",
@@ -4441,7 +4434,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/36",
@@ -4456,7 +4449,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/35",
@@ -4471,7 +4464,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/34",
@@ -4486,7 +4479,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/33",
@@ -4501,7 +4494,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/32",
@@ -4516,7 +4509,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/31",
@@ -4531,7 +4524,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/30",
@@ -4546,7 +4539,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/29",
@@ -4576,7 +4569,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/27",
@@ -4591,7 +4584,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/26",
@@ -4606,7 +4599,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/25",
@@ -4621,7 +4614,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/24",
@@ -4636,7 +4629,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/23",
@@ -4711,7 +4704,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/18",
@@ -4726,7 +4719,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/17",
@@ -4741,7 +4734,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/16",
@@ -4756,7 +4749,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/15",
@@ -4831,7 +4824,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/09",
@@ -4861,7 +4854,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/06",
@@ -4891,7 +4884,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/04",
@@ -4921,7 +4914,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/78h3b73"
     },
     {
       "subjectId": "geoId/01",
