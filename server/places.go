@@ -126,7 +126,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		} else {
 			rowList = append(rowList, fmt.Sprintf(
 				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
-	}
+		}
 	}
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
@@ -168,11 +168,9 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
 
-	prefix := util.BtRelatedLocationsSameTypePrefix
+	isPerCapita := in.GetIsPerCapita()
 	sameAncestor := (in.GetWithinPlace() != "")
-	if sameAncestor {
-		prefix = util.BtRelatedLocationsSameTypeAndAncestorPrefix
-	}
+	prefix := RelatedLocationsPrefixMap[sameAncestor][true][isPerCapita]
 	rowList := bigtable.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {
 		if sameAncestor {

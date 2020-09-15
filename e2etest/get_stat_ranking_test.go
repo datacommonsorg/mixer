@@ -42,12 +42,14 @@ func TestGetLocationsRankings(t *testing.T) {
 		goldenFile   string
 		placeType    string
 		withinPlace  string
+		isPerCapita  bool
 		statVarDcids []string
 	}{
 		{
 			"country.json",
 			"Country",
 			"",
+			false,
 			[]string{
 				"Count_Person",
 				"Median_Income_Person",
@@ -57,9 +59,19 @@ func TestGetLocationsRankings(t *testing.T) {
 			"california.json",
 			"County",
 			"geoId/06",
+			false,
 			[]string{
 				"Count_Person",
 				"Median_Age_Person",
+				"Count_CriminalActivities_CombinedCrime",
+			},
+		},
+		{
+			"crime_percapita.json",
+			"City",
+			"geoId/06",
+			true,
+			[]string{
 				"Count_CriminalActivities_CombinedCrime",
 			},
 		},
