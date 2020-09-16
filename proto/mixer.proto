@@ -44,7 +44,8 @@ message QueryResponseCell {
   string provenance_id = 2;
 }
 
-// A graph query response row corresponding to the query variables in graph query.
+// A graph query response row corresponding to the query variables in graph
+// query.
 message QueryResponseRow {
   // A list of QueryResponseCell.
   repeated QueryResponseCell cells = 1;
@@ -193,7 +194,7 @@ message ObsTimeSeries {
     string provenance_domain = 6;
     string unit = 7;
     string scaling_factor = 8;
-}
+  }
   map<string, double> data = 1;  // Date to value.
   string place_name = 3;
   bool is_dc_aggregate = 4;
@@ -256,7 +257,8 @@ message GetPopulationsResponse {
   string payload = 1;
 }
 
-// Request to get observation given a list of population and observation properties.
+// Request to get observation given a list of population and observation
+// properties.
 message GetObservationsRequest {
   // Population for a list of populations.
   repeated string dcids = 1;
@@ -327,6 +329,9 @@ message GetLocationsRankingsRequest {
 
   // (Optional) Whether to require all related places under the same ancestor.
   string within_place = 3;
+
+  // (Optional) Whether the computation needs to be based on per capita.
+  bool is_per_capita = 4;
 }
 
 message GetLocationsRankingsResponse {
@@ -341,14 +346,14 @@ message GetRelatedLocationsResponse {
 
 // Request to get interesting aspects for places.
 message GetInterestingPlaceAspectsRequest {
-   // Place DCIDs.
-   repeated string dcids = 1;
+  // Place DCIDs.
+  repeated string dcids = 1;
 }
 
 // Response to get interesting aspects for places.
 message GetInterestingPlaceAspectsResponse {
-    // The JSON payload.
-    string payload = 1;
+  // The JSON payload.
+  string payload = 1;
 }
 
 // Request to get landing page info for places.
@@ -361,8 +366,8 @@ message GetLandingPageRequest {
 
 // Response to get landing page info for places.
 message GetLandingPageResponse {
-   // The JSON payload.
-   string payload = 1;
+  // The JSON payload.
+  string payload = 1;
 }
 
 // Search request sent to the mixer.
@@ -418,7 +423,6 @@ message GetPlaceStatsVarResponse {
   map<string, StatsVars> places = 1;
 }
 
-
 // TODO(wsws): Refactor all these "won't persist to cache" fields across caches
 // into a single TemporaryFields message, and clear just that "tmp_data" field
 // before persistence.
@@ -458,7 +462,7 @@ message PopObsObservation {
   string measurement_qualifier = 30;
   string scaling_factor = 31;
   repeated string measurement_variable = 32;
-  string stat_type = 33;  // Won't persist to cache.
+  string stat_type = 33;              // Won't persist to cache.
   repeated string stat_var_ids = 34;  // Only set for PopObs cache.
 }
 
@@ -670,8 +674,9 @@ message GetStatAllRequest {
 // Each leaf object contains multiple source series with <date, value> object
 // and observation metadata.
 //
-// The response is transcoded by esp: https://cloud.google.com/endpoints/docs/grpc/grpc-service-config
-// Example response after esp transcoding is like below.
+// The response is transcoded by esp:
+// https://cloud.google.com/endpoints/docs/grpc/grpc-service-config Example
+// response after esp transcoding is like below.
 // {
 //   placeData: {
 //     "geoId/01": {
@@ -717,7 +722,9 @@ message GetStatAllResponse {
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
-    option (google.api.http) = { get: "/query" };
+    option (google.api.http) = {
+      get: "/query"
+    };
   }
 
   // Query DataCommons Graph with Sparql.
@@ -729,12 +736,16 @@ service Mixer {
   }
 
   // Fetch property labels adjacent of nodes
-  rpc GetPropertyLabels(GetPropertyLabelsRequest) returns (GetPropertyLabelsResponse) {
-    option (google.api.http) = { get: "/node/property-labels"};
+  rpc GetPropertyLabels(GetPropertyLabelsRequest)
+      returns (GetPropertyLabelsResponse) {
+    option (google.api.http) = {
+      get: "/node/property-labels"
+    };
   }
 
   // Fetch property labels adjacent of nodes
-  rpc GetPropertyLabelsPost(GetPropertyLabelsRequest) returns (GetPropertyLabelsResponse) {
+  rpc GetPropertyLabelsPost(GetPropertyLabelsRequest)
+      returns (GetPropertyLabelsResponse) {
     option (google.api.http) = {
       post: "/node/property-labels"
       body: "*"
@@ -742,12 +753,16 @@ service Mixer {
   }
 
   // Fetch nodes that linked to source nodes with a given property.
-  rpc GetPropertyValues(GetPropertyValuesRequest) returns (GetPropertyValuesResponse) {
-    option (google.api.http) = { get: "/node/property-values" };
+  rpc GetPropertyValues(GetPropertyValuesRequest)
+      returns (GetPropertyValuesResponse) {
+    option (google.api.http) = {
+      get: "/node/property-values"
+    };
   }
 
   // Fetch nodes that linked to source nodes with a given property.
-  rpc GetPropertyValuesPost(GetPropertyValuesRequest) returns (GetPropertyValuesResponse) {
+  rpc GetPropertyValuesPost(GetPropertyValuesRequest)
+      returns (GetPropertyValuesResponse) {
     option (google.api.http) = {
       post: "/node/property-values"
       body: "*"
@@ -756,7 +771,9 @@ service Mixer {
 
   // Fetch triples that have the given nodes as subject or object.
   rpc GetTriples(GetTriplesRequest) returns (GetTriplesResponse) {
-    option (google.api.http) = { get: "/node/triples"};
+    option (google.api.http) = {
+      get: "/node/triples"
+    };
   }
 
   // Fetch triples that have the given nodes as subject or object.
@@ -767,8 +784,8 @@ service Mixer {
     };
   }
 
-  // Get populations for a list of places, given the population type and constraining property
-  // values.
+  // Get populations for a list of places, given the population type and
+  // constraining property values.
   rpc GetPopulations(GetPopulationsRequest) returns (GetPopulationsResponse) {
     option (google.api.http) = {
       post: "/node/populations"
@@ -776,8 +793,10 @@ service Mixer {
     };
   }
 
-  // Get observations for a list of population, given the observation constraints.
-  rpc GetObservations(GetObservationsRequest) returns (GetObservationsResponse) {
+  // Get observations for a list of population, given the observation
+  // constraints.
+  rpc GetObservations(GetObservationsRequest)
+      returns (GetObservationsResponse) {
     option (google.api.http) = {
       post: "/node/observations"
       body: "*"
@@ -786,7 +805,9 @@ service Mixer {
 
   // Get places contained in parent places.
   rpc GetPlacesIn(GetPlacesInRequest) returns (GetPlacesInResponse) {
-    option (google.api.http) = { get: "/node/places-in" };
+    option (google.api.http) = {
+      get: "/node/places-in"
+    };
   }
 
   // Get places contained in parent places.
@@ -799,11 +820,13 @@ service Mixer {
 
   // Get population and observation data for a place.
   rpc GetPopObs(GetPopObsRequest) returns (GetPopObsResponse) {
-    option (google.api.http) = { get: "/bulk/pop-obs"};
+    option (google.api.http) = {
+      get: "/bulk/pop-obs"
+    };
   }
 
-  // Get observation data for a list of places, given place type, population type, and
-  // population constraining properties.
+  // Get observation data for a list of places, given place type, population
+  // type, and population constraining properties.
   rpc GetPlaceObs(GetPlaceObsRequest) returns (GetPlaceObsResponse) {
     option (google.api.http) = {
       post: "/bulk/place-obs"
@@ -849,15 +872,17 @@ service Mixer {
   }
 
   // Get rankings for given stat var DCIDs.
-  rpc GetLocationsRankings(GetLocationsRankingsRequest) returns (GetLocationsRankingsResponse) {
+  rpc GetLocationsRankings(GetLocationsRankingsRequest)
+      returns (GetLocationsRankingsResponse) {
     option (google.api.http) = {
-      post: "/node/ranking-locations"
+      get: "/node/ranking-locations"
       body: "*"
     };
   }
 
   // Get related locations for given stat var DCIDs.
-  rpc GetRelatedLocations(GetRelatedLocationsRequest) returns (GetRelatedLocationsResponse) {
+  rpc GetRelatedLocations(GetRelatedLocationsRequest)
+      returns (GetRelatedLocationsResponse) {
     option (google.api.http) = {
       post: "/node/related-locations"
       body: "*"
@@ -865,9 +890,11 @@ service Mixer {
   }
 
   // Get interesting aspects for places.
-  rpc GetInterestingPlaceAspects(GetInterestingPlaceAspectsRequest) returns (
-    GetInterestingPlaceAspectsResponse) {
-    option (google.api.http) = { get: "/node/interesting-place-aspects"};
+  rpc GetInterestingPlaceAspects(GetInterestingPlaceAspectsRequest)
+      returns (GetInterestingPlaceAspectsResponse) {
+    option (google.api.http) = {
+      get: "/node/interesting-place-aspects"
+    };
   }
 
   // Get landing page info for a place.
@@ -888,12 +915,17 @@ service Mixer {
 
   // Given a text search query, return all entities matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
-    option (google.api.http) = { get: "/search" };
+    option (google.api.http) = {
+      get: "/search"
+    };
   }
 
   // Give a list of place dcids, return all the statistical variables for each
   // place.
-  rpc GetPlaceStatsVar(GetPlaceStatsVarRequest) returns (GetPlaceStatsVarResponse) {
-    option (google.api.http) = { get: "/place/stats-var" };
+  rpc GetPlaceStatsVar(GetPlaceStatsVarRequest)
+      returns (GetPlaceStatsVarResponse) {
+    option (google.api.http) = {
+      get: "/place/stats-var"
+    };
   }
 }
