@@ -40,11 +40,13 @@ func TestGetRelatedLocations(t *testing.T) {
 	for _, c := range []struct {
 		goldenFile   string
 		dcid         string
+		withinPlace  string
 		statVarDcids []string
 	}{
 		{
 			"county.json",
 			"geoId/06085",
+			"country/USA",
 			[]string{
 				"Count_Person",
 				"Median_Income_Person",
@@ -55,12 +57,14 @@ func TestGetRelatedLocations(t *testing.T) {
 		{
 			"crime.json",
 			"geoId/06",
+			"",
 			[]string{"Count_CriminalActivities_CombinedCrime"},
 		},
 	} {
 		req := &pb.GetRelatedLocationsRequest{
 			Dcid:         c.dcid,
 			StatVarDcids: c.statVarDcids,
+			WithinPlace:  c.withinPlace,
 		}
 		resp, err := client.GetRelatedLocations(ctx, req)
 		if err != nil {
