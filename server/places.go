@@ -17,7 +17,6 @@ package server
 import (
 	"context"
 	"fmt"
-	"log"
 	"strings"
 
 	"encoding/json"
@@ -312,9 +311,6 @@ func (s *Server) GetLandingPage(
 			err := json.Unmarshal(jsonRaw, &landingPageData)
 			if err != nil {
 				return nil, err
-			}
-			for key := range landingPageData.Data {
-				log.Printf("%s", key)
 			}
 			return &landingPageData, nil
 		}, nil)

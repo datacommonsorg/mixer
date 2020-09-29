@@ -88,8 +88,13 @@ var continents = map[string]struct{}{
 	"South America": {},
 }
 
+// A lot of the code below mimics the logic from website server:
+// https://github.com/datacommonsorg/website/blob/45ede51440f85597920abeb2f7b7531ccd50e9dc/server/routes/api/place.py
+
+// get the type of a place.
 func getPlaceType(ctx context.Context, s *Server, dcid string) (string, error) {
-	resp, err := getPropertyValuesHelper(ctx, s.btTable, s.memcache, []string{dcid}, "typeOf", true)
+	resp, err := getPropertyValuesHelper(
+		ctx, s.btTable, s.memcache, []string{dcid}, "typeOf", true)
 	if err != nil {
 		return "", err
 	}
@@ -99,13 +104,16 @@ func getPlaceType(ctx context.Context, s *Server, dcid string) (string, error) {
 	}
 	chosenType := ""
 	for _, placeType := range types {
-		if chosenType == "" || strings.HasPrefix(chosenType, "AdministrativeArea") || chosenType == "Place" {
+		if chosenType == "" ||
+			strings.HasPrefix(chosenType, "AdministrativeArea") ||
+			chosenType == "Place" {
 			chosenType = placeType
 		}
 	}
 	return chosenType, nil
 }
 
+// When there are equivalent types, only choose the primary type.
 func trimTypes(types []string) []string {
 	result := []string{}
 	toTrim := map[string]struct{}{}
@@ -122,7 +130,9 @@ func trimTypes(types []string) []string {
 	return result
 }
 
-func getLatestPop(ctx context.Context, s *Server, placeDcids []string) (map[string]int32, error) {
+// Get the latest population count for a list of places.
+func getLatestPop(ctx context.Context, s *Server, placeDcids []string) (
+	map[string]int32, error) {
 	req := &pb.GetStatsRequest{
 		Place:    placeDcids,
 		StatsVar: "Count_Person",
@@ -155,7 +165,7 @@ func getLatestPop(ctx context.Context, s *Server, placeDcids []string) (map[stri
 	return result, nil
 }
 
-// Pick child places with the most average population
+// Pick child places with the most average population.
 func filterChildPlaces(childPlaces map[string][]*place) []*place {
 	var highestAvg float32
 	var result []*place
@@ -176,6 +186,7 @@ func filterChildPlaces(childPlaces map[string][]*place) []*place {
 	return result
 }
 
+// Fetch landing page cache data for a list of places.
 func fetchBtData(ctx context.Context, s *Server, places []string) (
 	map[string]map[string]*ObsTimeSeries, error) {
 	rowList := bigtable.RowList{}
@@ -211,77 +222,8 @@ func fetchBtData(ctx context.Context, s *Server, places []string) (
 	return result, nil
 }
 
-// GetLandingPageData implements API for Mixer.GetLandingPageData.
-func (s *Server) GetLandingPageData(
-	ctx context.Context, in *pb.GetLandingPageDataRequest) (
-	*pb.GetLandingPageDataResponse, error) {
-	placeDcid := in.GetPlace()
-	if placeDcid == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
-	}
-
-	errs, errCtx := errgroup.WithContext(ctx)
-	relatedPlaceChan := make(chan *relatedPlace, 2)
-	allChildPlaceChan := make(chan map[string][]*place, 1)
-	errs.Go(func() error {
-		childPlaces, err := getChildPlaces(errCtx, s, placeDcid)
-		if err != nil {
-			return err
-		}
-		allChildPlaceChan <- childPlaces
-		filtered := filterChildPlaces(childPlaces)
-		relatedPlaceChan <- &relatedPlace{category: childEnum, places: filtered}
-		return nil
-	})
-	errs.Go(func() error {
-		parentPlaces, err := getParentPlaces(errCtx, s, placeDcid)
-		if err != nil {
-			return err
-		}
-		relatedPlaceChan <- &relatedPlace{category: parentEnum, places: parentPlaces}
-		return nil
-	})
-	err := errs.Wait()
-	if err != nil {
-		return nil, err
-	}
-	close(allChildPlaceChan)
-	close(relatedPlaceChan)
-
-	payload := LandingPageResponse{}
-
-	var allChildPlaces map[string][]*place
-	for tmp := range allChildPlaceChan {
-		allChildPlaces = tmp
-		break
-	}
-	payload.AllChildPlaces = allChildPlaces
-
-	// Fetch the landing page cache for all places.
-	allPlaces := []string{}
-	for relatedPlace := range relatedPlaceChan {
-		switch relatedPlace.category {
-		case childEnum:
-			payload.ChildPlaces = relatedPlace.places
-			break
-		case parentEnum:
-			payload.ParentPlaces = relatedPlace.places
-		default:
-			break
-		}
-		for _, place := range relatedPlace.places {
-			allPlaces = append(allPlaces, place.Dcid)
-		}
-	}
-	statData, err := fetchBtData(ctx, s, allPlaces)
-	payload.Data = statData
-	jsonRaw, err := json.Marshal(payload)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetLandingPageDataResponse{Payload: string(jsonRaw)}, nil
-}
-
+// Get child places by types.
+// The city under each type is sorted by the population.
 func getChildPlaces(ctx context.Context, s *Server, dcid string) (
 	map[string][]*place, error) {
 	children := []*Node{}
@@ -350,6 +292,7 @@ func getChildPlaces(ctx context.Context, s *Server, dcid string) (
 	return result, nil
 }
 
+// Get parent places up to continent level.
 func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 	[]*place, error) {
 	result := []*place{}
@@ -374,4 +317,77 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 		dcid = result[len(result)-1].Dcid
 	}
 	return result, nil
+}
+
+// GetLandingPageData implements API for Mixer.GetLandingPageData.
+// TODO(shifucun): implement similar and nearby places.
+func (s *Server) GetLandingPageData(
+	ctx context.Context, in *pb.GetLandingPageDataRequest) (
+	*pb.GetLandingPageDataResponse, error) {
+	placeDcid := in.GetPlace()
+	if placeDcid == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
+	}
+
+	// Fetch child and prarent places in go routines.
+	errs, errCtx := errgroup.WithContext(ctx)
+	relatedPlaceChan := make(chan *relatedPlace, 2)
+	allChildPlaceChan := make(chan map[string][]*place, 1)
+	errs.Go(func() error {
+		childPlaces, err := getChildPlaces(errCtx, s, placeDcid)
+		if err != nil {
+			return err
+		}
+		allChildPlaceChan <- childPlaces
+		filtered := filterChildPlaces(childPlaces)
+		relatedPlaceChan <- &relatedPlace{category: childEnum, places: filtered}
+		return nil
+	})
+	errs.Go(func() error {
+		parentPlaces, err := getParentPlaces(errCtx, s, placeDcid)
+		if err != nil {
+			return err
+		}
+		relatedPlaceChan <- &relatedPlace{category: parentEnum, places: parentPlaces}
+		return nil
+	})
+	err := errs.Wait()
+	if err != nil {
+		return nil, err
+	}
+	close(allChildPlaceChan)
+	close(relatedPlaceChan)
+
+	payload := LandingPageResponse{}
+
+	var allChildPlaces map[string][]*place
+	for tmp := range allChildPlaceChan {
+		allChildPlaces = tmp
+		break
+	}
+	payload.AllChildPlaces = allChildPlaces
+
+	// Fetch the landing page stats data for all places.
+	allPlaces := []string{}
+	for relatedPlace := range relatedPlaceChan {
+		switch relatedPlace.category {
+		case childEnum:
+			payload.ChildPlaces = relatedPlace.places
+			break
+		case parentEnum:
+			payload.ParentPlaces = relatedPlace.places
+		default:
+			break
+		}
+		for _, place := range relatedPlace.places {
+			allPlaces = append(allPlaces, place.Dcid)
+		}
+	}
+	statData, err := fetchBtData(ctx, s, allPlaces)
+	payload.Data = statData
+	jsonRaw, err := json.Marshal(payload)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.GetLandingPageDataResponse{Payload: string(jsonRaw)}, nil
 }
