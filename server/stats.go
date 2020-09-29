@@ -303,10 +303,10 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 
 	// Initialize result with place and stat var dcids.
 	result := &pb.GetStatAllResponse{
-		PlaceData: make(map[string]*pb.GetStatAllResponse_PlaceStat),
+		PlaceData: make(map[string]*pb.PlaceStat),
 	}
 	for _, place := range places {
-		result.PlaceData[place] = &pb.GetStatAllResponse_PlaceStat{
+		result.PlaceData[place] = &pb.PlaceStat{
 			StatVarData: make(map[string]*pb.ObsTimeSeries),
 		}
 		for _, statVar := range statVars {

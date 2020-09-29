@@ -141,3 +141,17 @@ type ObsTimeSeries struct {
 type LandingPageData struct {
 	Data map[string]*ObsTimeSeries `json:"data,omitempty"`
 }
+
+type place struct {
+	Dcid string
+	Name string
+	Pop  int32
+}
+
+// LandingPageResponse represents all the data needed for rendering landing page.
+type LandingPageResponse struct {
+	Data           map[string]map[string]*ObsTimeSeries `json:"data,omitempty"`
+	AllChildPlaces map[string][]*place                  `json:"allChildPlaces,omitempty"`
+	ChildPlaces    []*place                             `json:"childPlaces,omitempty"`
+	ParentPlaces   []*place                             `json:"parentPlaces,omitempty"`
+}
