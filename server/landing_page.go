@@ -521,7 +521,7 @@ func (s *Server) GetLandingPageData(
 	payload.AllChildPlaces = allChildPlaces
 
 	// Fetch the landing page stats data for all places.
-	allPlaces := []string{}
+	allPlaces := []string{placeDcid}
 	for relatedPlace := range relatedPlaceChan {
 		switch relatedPlace.category {
 		case childEnum:
