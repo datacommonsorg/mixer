@@ -46,6 +46,10 @@ func TestGetLandingPageData(t *testing.T) {
 			"county.json",
 			"geoId/06085",
 		},
+		{
+			"city.json",
+			"geoId/0656938",
+		},
 	} {
 		req := &pb.GetLandingPageDataRequest{
 			Place:    c.place,
