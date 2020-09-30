@@ -211,7 +211,7 @@ func fetchBtData(ctx context.Context, s *Server, places []string) (
 	return result, nil
 }
 
-// Pick child places with the most average population.
+// Pick child places with the largest average population.
 func filterChildPlaces(childPlaces map[string][]*place) []*place {
 	var highestAvg float32
 	var result []*place
@@ -226,6 +226,8 @@ func filterChildPlaces(childPlaces map[string][]*place) []*place {
 			result = children
 		}
 	}
+	// TODO(shifucun): if the number of children is too few, consider picking
+	// child places with non highest population type.
 	if len(result) > maxNumChild {
 		result = result[0:maxNumChild]
 	}
@@ -233,7 +235,7 @@ func filterChildPlaces(childPlaces map[string][]*place) []*place {
 }
 
 // Get child places by types.
-// The city under each type is sorted by the population.
+// The place under each type is sorted by the population.
 func getChildPlaces(ctx context.Context, s *Server, dcid string) (
 	map[string][]*place, error) {
 	children := []*Node{}
@@ -449,6 +451,12 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 }
 
 // GetLandingPageData implements API for Mixer.GetLandingPageData.
+//
+// TODO(shifucun):For each related place, it is supposed to have dcid, name and
+// population but it's not complete now as the client in most cases only requires
+// the dcid. Should consider have the full name, even with parent place
+// abbreviations like "CA" filled in here so the client won't bother to fetch
+// those again.
 func (s *Server) GetLandingPageData(
 	ctx context.Context, in *pb.GetLandingPageDataRequest) (
 	*pb.GetLandingPageDataResponse, error) {
