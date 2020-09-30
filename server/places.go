@@ -307,6 +307,7 @@ func (s *Server) GetLandingPage(
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var landingPageData LandingPageData
+
 			err := json.Unmarshal(jsonRaw, &landingPageData)
 			if err != nil {
 				return nil, err

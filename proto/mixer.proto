@@ -370,6 +370,20 @@ message GetLandingPageResponse {
   string payload = 1;
 }
 
+
+// Request to get all stat data in landing page for a place.
+message GetLandingPageDataRequest {
+  // The dcid of the place.
+  string place = 1;
+  // A list of all stat vars used in the landing page.
+  repeated string stat_vars = 2;
+}
+
+// Response to get landing page info for places.
+message GetLandingPageDataResponse {
+  string payload = 3;
+}
+
 // Search request sent to the mixer.
 message SearchRequest {
   // Search query which is just a plain text string, e.g. "california".
@@ -712,10 +726,11 @@ message GetStatAllRequest {
 //     }
 //   }
 // }
+message PlaceStat {
+  map<string, ObsTimeSeries> stat_var_data = 3;
+}
+
 message GetStatAllResponse {
-  message PlaceStat {
-    map<string, ObsTimeSeries> stat_var_data = 3;
-  }
   map<string, PlaceStat> place_data = 1;
 }
 
@@ -901,6 +916,14 @@ service Mixer {
   rpc GetLandingPage(GetLandingPageRequest) returns (GetLandingPageResponse) {
     option (google.api.http) = {
       post: "/node/landing-page"
+      body: "*"
+    };
+  }
+
+  // Get landing page info for a place.
+  rpc GetLandingPageData(GetLandingPageDataRequest) returns (GetLandingPageDataResponse) {
+    option (google.api.http) = {
+      post: "/landing-page"
       body: "*"
     };
   }

@@ -129,7 +129,7 @@ func TestGetStatValue(t *testing.T) {
 			continue
 		}
 
-		if diff := cmp.Diff(resp, expected, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

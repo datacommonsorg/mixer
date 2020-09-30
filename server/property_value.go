@@ -42,7 +42,6 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 	typ := in.GetValueType()
 	direction := in.GetDirection()
 	limit := int(in.GetLimit())
-	useBranchCache := in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY
 
 	// Check arguments
 	if prop == "" || len(dcids) == 0 {
@@ -68,14 +67,14 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 
 	if inArc {
 		inRes, err = getPropertyValuesHelper(ctx, s.btTable, s.memcache, dcids,
-			prop, false, useBranchCache)
+			prop, false)
 		if err != nil {
 			return nil, err
 		}
 	}
 	if outArc {
 		outRes, err = getPropertyValuesHelper(ctx, s.btTable, s.memcache, dcids,
-			prop, true, useBranchCache)
+			prop, true)
 		if err != nil {
 			return nil, err
 		}
@@ -113,7 +112,6 @@ func getPropertyValuesHelper(
 	dcids []string,
 	prop string,
 	arcOut bool,
-	useBranchCache bool,
 ) (map[string][]*Node, error) {
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
 	nodeMap, err := readPropertyValues(ctx, btTable, rowList)
@@ -122,34 +120,32 @@ func getPropertyValuesHelper(
 	}
 
 	// Add branch cache data
-	if useBranchCache {
-		branchNodeMap := memcache.ReadParallel(
-			rowList,
-			func(dcid string, jsonRaw []byte) (interface{}, error) {
-				var propVals PropValueCache
-				err := json.Unmarshal(jsonRaw, &propVals)
-				if err != nil {
-					return nil, err
+	branchNodeMap := memcache.ReadParallel(
+		rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var propVals PropValueCache
+			err := json.Unmarshal(jsonRaw, &propVals)
+			if err != nil {
+				return nil, err
+			}
+			return propVals.Nodes, nil
+		}, nil)
+	for dcid := range branchNodeMap {
+		branchNodes := branchNodeMap[dcid].([]*Node)
+		baseNodes, exist := nodeMap[dcid]
+		if !exist {
+			nodeMap[dcid] = branchNodes
+		} else if len(branchNodes) > 0 {
+			// Merge branch cache into base cache.
+			itemKeys := mapset.NewSet()
+			for _, n := range baseNodes {
+				itemKeys.Add(n.Dcid + n.Value)
+			}
+			for _, n := range branchNodes {
+				if itemKeys.Contains(n.Dcid + n.Value) {
+					continue
 				}
-				return propVals.Nodes, nil
-			}, nil)
-		for dcid := range branchNodeMap {
-			branchNodes := branchNodeMap[dcid].([]*Node)
-			baseNodes, exist := nodeMap[dcid]
-			if !exist {
-				nodeMap[dcid] = branchNodes
-			} else if len(branchNodes) > 0 {
-				// Merge branch cache into base cache.
-				itemKeys := mapset.NewSet()
-				for _, n := range baseNodes {
-					itemKeys.Add(n.Dcid + n.Value)
-				}
-				for _, n := range branchNodes {
-					if itemKeys.Contains(n.Dcid + n.Value) {
-						continue
-					}
-					nodeMap[dcid] = append(nodeMap[dcid], n)
-				}
+				nodeMap[dcid] = append(nodeMap[dcid], n)
 			}
 		}
 	}
