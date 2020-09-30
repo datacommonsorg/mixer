@@ -36,6 +36,7 @@ import (
 const (
 	maxNumChild     = 5
 	maxSimilarPlace = 5
+	maxNearbyPlace  = 5
 	cityCohort      = "PlacePagesComparisonCityCohort"
 	countyCohort    = "PlacePagesComparisonCountyCohort"
 )
@@ -413,8 +414,41 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string) (
 	return result, nil
 }
 
+// Get nearby places.
+func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
+	[]*place, error) {
+
+	resp, err := getPropertyValuesHelper(
+		ctx, s.btTable, s.memcache, []string{dcid}, "nearbyPlaces", true)
+	if err != nil {
+		return nil, err
+	}
+	places := []string{}
+	for _, node := range resp[dcid] {
+		tokens := strings.Split(node.Value, "@")
+		places = append(places, tokens[0])
+	}
+	placePop, err := getLatestPop(ctx, s, places)
+	if err != nil {
+		return nil, err
+	}
+	result := []*place{}
+	for dcid, pop := range placePop {
+		result = append(result, &place{
+			Dcid: dcid,
+			Pop:  pop,
+		})
+	}
+	sort.SliceStable(result, func(i, j int) bool {
+		return result[i].Pop > result[j].Pop
+	})
+	if len(result) > maxNearbyPlace {
+		return result, nil
+	}
+	return result[0:maxNearbyPlace], nil
+}
+
 // GetLandingPageData implements API for Mixer.GetLandingPageData.
-// TODO(shifucun): implement similar and nearby places.
 func (s *Server) GetLandingPageData(
 	ctx context.Context, in *pb.GetLandingPageDataRequest) (
 	*pb.GetLandingPageDataResponse, error) {
@@ -425,7 +459,7 @@ func (s *Server) GetLandingPageData(
 
 	// Fetch child and prarent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
-	relatedPlaceChan := make(chan *relatedPlace, 3)
+	relatedPlaceChan := make(chan *relatedPlace, 4)
 	allChildPlaceChan := make(chan map[string][]*place, 1)
 	errs.Go(func() error {
 		childPlaces, err := getChildPlaces(errCtx, s, placeDcid)
@@ -451,6 +485,14 @@ func (s *Server) GetLandingPageData(
 			return err
 		}
 		relatedPlaceChan <- &relatedPlace{category: similarEnum, places: similarPlaces}
+		return nil
+	})
+	errs.Go(func() error {
+		nearbyPlaces, err := getNearbyPlaces(errCtx, s, placeDcid)
+		if err != nil {
+			return err
+		}
+		relatedPlaceChan <- &relatedPlace{category: nearbyEnum, places: nearbyPlaces}
 		return nil
 	})
 
@@ -481,6 +523,8 @@ func (s *Server) GetLandingPageData(
 			payload.ParentPlaces = relatedPlace.places
 		case similarEnum:
 			payload.SimilarPlaces = relatedPlace.places
+		case nearbyEnum:
+			payload.NearbyPlaces = relatedPlace.places
 		default:
 			break
 		}

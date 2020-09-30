@@ -155,4 +155,5 @@ type LandingPageResponse struct {
 	ChildPlaces    []*place                             `json:"childPlaces,omitempty"`
 	ParentPlaces   []*place                             `json:"parentPlaces,omitempty"`
 	SimilarPlaces  []*place                             `json:"similarPlaces,omitempty"`
+	NearbyPlaces   []*place                             `json:"nearbyPlaces,omitempty"`
 }
