@@ -58386,88 +58386,29 @@
     ]
   },
   "childPlaces": [
-    {
-      "dcid": "geoId/0668000",
-      "name": "San Jose",
-      "pop": 1030119
-    },
-    {
-      "dcid": "geoId/0677000",
-      "name": "Sunnyvale",
-      "pop": 153185
-    },
-    {
-      "dcid": "geoId/0669084",
-      "name": "Santa Clara",
-      "pop": 129488
-    },
-    {
-      "dcid": "geoId/0649670",
-      "name": "Mountain View",
-      "pop": 83377
-    },
-    {
-      "dcid": "geoId/0647766",
-      "name": "Milpitas",
-      "pop": 80430
-    }
+    "geoId/0668000",
+    "geoId/0677000",
+    "geoId/0669084",
+    "geoId/0649670",
+    "geoId/0647766"
   ],
   "parentPlaces": [
-    {
-      "dcid": "geoId/06",
-      "name": "California"
-    },
-    {
-      "dcid": "country/USA",
-      "name": "United States"
-    },
-    {
-      "dcid": "northamerica",
-      "name": "North America"
-    }
+    "geoId/06",
+    "country/USA",
+    "northamerica"
   ],
   "similarPlaces": [
-    {
-      "dcid": "geoId/0667000",
-      "name": "San Francisco"
-    },
-    {
-      "dcid": "geoId/0937000",
-      "name": "Hartford"
-    },
-    {
-      "dcid": "geoId/4513330",
-      "name": "Charleston"
-    },
-    {
-      "dcid": "geoId/2603000",
-      "name": "Ann Arbor"
-    },
-    {
-      "dcid": "geoId/1245000",
-      "name": "Miami"
-    }
+    "geoId/0667000",
+    "geoId/0937000",
+    "geoId/4513330",
+    "geoId/2603000",
+    "geoId/1245000"
   ],
   "nearbyPlaces": [
-    {
-      "dcid": "geoId/06001",
-      "pop": 1671329
-    },
-    {
-      "dcid": "geoId/06013",
-      "pop": 1153526
-    },
-    {
-      "dcid": "geoId/06081",
-      "pop": 765935
-    },
-    {
-      "dcid": "geoId/06099",
-      "pop": 550660
-    },
-    {
-      "dcid": "geoId/06087",
-      "pop": 273213
-    }
+    "geoId/06001",
+    "geoId/06013",
+    "geoId/06081",
+    "geoId/06099",
+    "geoId/06087"
   ]
 }

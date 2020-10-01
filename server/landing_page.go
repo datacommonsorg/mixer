@@ -50,7 +50,7 @@ const (
 
 type relatedPlace struct {
 	category string
-	places   []*place
+	places   []string
 }
 
 var wantedPlaceTypes = map[string]map[string]struct{}{
@@ -176,6 +176,14 @@ func getLatestPop(ctx context.Context, s *Server, placeDcids []string) (
 		}
 	}
 	return result, nil
+}
+
+func getDcids(places []*place) []string {
+	result := []string{}
+	for _, dcid := range places {
+		result = append(result, dcid.Dcid)
+	}
+	return result
 }
 
 // Fetch landing page cache data for a list of places.
@@ -312,7 +320,7 @@ func getChildPlaces(ctx context.Context, s *Server, dcid string) (
 
 // Get parent places up to continent level.
 func getParentPlaces(ctx context.Context, s *Server, dcid string) (
-	[]*place, error) {
+	[]string, error) {
 	result := []*place{}
 	for {
 		containedInPlaces, err := getPropertyValuesHelper(
@@ -337,12 +345,12 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 		}
 		dcid = result[len(result)-1].Dcid
 	}
-	return result, nil
+	return getDcids(result), nil
 }
 
 // Get similar places.
 func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
-	[]*place, error) {
+	[]string, error) {
 
 	isCity, err := regexp.MatchString(`^geoId/\d{5}$`, dcid)
 	if err != nil {
@@ -391,12 +399,11 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 		for _, place := range places {
 			result = append(result, place)
 			if len(result) == maxSimilarPlace {
-				return result, nil
+				return getDcids(result), nil
 			}
 		}
-		return result, nil
+		return getDcids(result), nil
 	}
-	result := []*place{}
 	// For non US city and county, use related places.
 	parents, err := getParentPlaces(ctx, s, dcid)
 	if err != nil {
@@ -404,7 +411,7 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 	}
 	parentDcid := ""
 	if len(parents) >= 2 {
-		parentDcid = parents[len(parents)-2].Dcid
+		parentDcid = parents[len(parents)-2]
 	}
 	resp, err := s.GetRelatedLocations(ctx, &pb.GetRelatedLocationsRequest{
 		Dcid:          dcid,
@@ -420,17 +427,12 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 	if err != nil {
 		return nil, err
 	}
-	for _, n := range relatedPlaceData["Count_Person"].RelatedPlaces {
-		result = append(result, &place{
-			Dcid: n,
-		})
-	}
-	return result, nil
+	return relatedPlaceData["Count_Person"].RelatedPlaces, nil
 }
 
 // Get nearby places.
 func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
-	[]*place, error) {
+	[]string, error) {
 
 	resp, err := getPropertyValuesHelper(
 		ctx, s.btTable, s.memcache, []string{dcid}, "nearbyPlaces", true)
@@ -457,9 +459,9 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 		return result[i].Pop > result[j].Pop
 	})
 	if len(result) < maxNearbyPlace {
-		return result, nil
+		return getDcids(result), nil
 	}
-	return result[0:maxNearbyPlace], nil
+	return getDcids(result[0:maxNearbyPlace]), nil
 }
 
 // GetLandingPageData implements API for Mixer.GetLandingPageData.
@@ -489,7 +491,7 @@ func (s *Server) GetLandingPageData(
 		}
 		allChildPlaceChan <- childPlaces
 		filtered := filterChildPlaces(childPlaces)
-		relatedPlaceChan <- &relatedPlace{category: childEnum, places: filtered}
+		relatedPlaceChan <- &relatedPlace{category: childEnum, places: getDcids(filtered)}
 		return nil
 	})
 	errs.Go(func() error {
@@ -548,7 +550,7 @@ func (s *Server) GetLandingPageData(
 		default:
 		}
 		for _, place := range relatedPlace.places {
-			allPlaces = append(allPlaces, place.Dcid)
+			allPlaces = append(allPlaces, place)
 		}
 	}
 	statData, err := fetchBtData(ctx, s, allPlaces)
