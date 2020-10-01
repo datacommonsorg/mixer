@@ -152,8 +152,8 @@ type place struct {
 type LandingPageResponse struct {
 	Data           map[string]map[string]*ObsTimeSeries `json:"data,omitempty"`
 	AllChildPlaces map[string][]*place                  `json:"allChildPlaces,omitempty"`
-	ChildPlaces    []*place                             `json:"childPlaces,omitempty"`
-	ParentPlaces   []*place                             `json:"parentPlaces,omitempty"`
-	SimilarPlaces  []*place                             `json:"similarPlaces,omitempty"`
-	NearbyPlaces   []*place                             `json:"nearbyPlaces,omitempty"`
+	ChildPlaces    []string                             `json:"childPlaces,omitempty"`
+	ParentPlaces   []string                             `json:"parentPlaces,omitempty"`
+	SimilarPlaces  []string                             `json:"similarPlaces,omitempty"`
+	NearbyPlaces   []string                             `json:"nearbyPlaces,omitempty"`
 }

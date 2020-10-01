@@ -44667,82 +44667,28 @@
     ]
   },
   "childPlaces": [
-    {
-      "dcid": "zip/94611",
-      "name": "94611",
-      "pop": 39384
-    },
-    {
-      "dcid": "zip/94610",
-      "name": "94610",
-      "pop": 31496
-    },
-    {
-      "dcid": "zip/94618",
-      "name": "94618",
-      "pop": 17041
-    }
+    "zip/94611",
+    "zip/94610",
+    "zip/94618"
   ],
   "parentPlaces": [
-    {
-      "dcid": "geoId/06001",
-      "name": "Alameda County"
-    },
-    {
-      "dcid": "geoId/06",
-      "name": "California"
-    },
-    {
-      "dcid": "country/USA",
-      "name": "United States"
-    },
-    {
-      "dcid": "northamerica",
-      "name": "North America"
-    }
+    "geoId/06001",
+    "geoId/06",
+    "country/USA",
+    "northamerica"
   ],
   "similarPlaces": [
-    {
-      "dcid": "geoId/06001",
-      "name": "Alameda County"
-    },
-    {
-      "dcid": "geoId/12031",
-      "name": "Duval County"
-    },
-    {
-      "dcid": "geoId/53033",
-      "name": "King County"
-    },
-    {
-      "dcid": "geoId/36005",
-      "name": "Bronx County"
-    },
-    {
-      "dcid": "geoId/04013",
-      "name": "Maricopa County"
-    }
+    "geoId/06001",
+    "geoId/12031",
+    "geoId/53033",
+    "geoId/36005",
+    "geoId/04013"
   ],
   "nearbyPlaces": [
-    {
-      "dcid": "geoId/0653000",
-      "pop": 429082
-    },
-    {
-      "dcid": "geoId/0606000",
-      "pop": 121643
-    },
-    {
-      "dcid": "geoId/0600562",
-      "pop": 78338
-    },
-    {
-      "dcid": "geoId/0654232",
-      "pop": 19806
-    },
-    {
-      "dcid": "geoId/0622594",
-      "pop": 12104
-    }
+    "geoId/0653000",
+    "geoId/0606000",
+    "geoId/0600562",
+    "geoId/0654232",
+    "geoId/0622594"
   ]
 }
