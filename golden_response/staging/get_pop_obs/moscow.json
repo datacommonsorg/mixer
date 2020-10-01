@@ -8948,7 +8948,7 @@
           "measured_prop": "count",
           "measured_value": 11979529,
           "measurement_method": "GoogleKGHumanCurated",
-          "provenance_id": "dc/97m6fj1",
+          "provenance_id": "dc/r0cmqw",
           "observation_date": "2013",
           "stat_var_ids": [
             "Count_Person"
@@ -10470,7 +10470,7 @@
           ]
         }
       ],
-      "provenance_id": "dc/qct90y2"
+      "provenance_id": "dc/r0cmqw"
     },
     "dc/p/cbwecgxe9x9z7": {
       "pop_type": "Person",

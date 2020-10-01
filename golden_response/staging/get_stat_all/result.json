@@ -66,6 +66,7 @@
      ]
     },
     "Count_Person": {
+     "isDcAggregate": true,
      "sourceSeries": [
       {
        "val": {
@@ -132,6 +133,14 @@
        "observationPeriod": "P1Y",
        "importName": "WorldDevelopmentIndicators",
        "provenanceDomain": "worldbank.org"
+      },
+      {
+       "val": {
+        "2011": 311591917
+       },
+       "measurementMethod": "GoogleKGHumanCurated",
+       "importName": "WikipediaAndHumanCurated",
+       "provenanceDomain": "wikipedia.org"
       },
       {
        "val": {
@@ -211,14 +220,6 @@
        "observationPeriod": "P1Y",
        "importName": "OECDRegionalDemography",
        "provenanceDomain": "oecd.org"
-      },
-      {
-       "val": {
-        "2011": 311591917
-       },
-       "measurementMethod": "GoogleKGHumanCurated",
-       "importName": "KGHumanCurated",
-       "provenanceDomain": "google.com"
       },
       {
        "val": {
@@ -394,6 +395,14 @@
      "sourceSeries": [
       {
        "val": {
+        "2011": 37683933
+       },
+       "measurementMethod": "GoogleKGHumanCurated",
+       "importName": "WikipediaAndHumanCurated",
+       "provenanceDomain": "wikipedia.org"
+      },
+      {
+       "val": {
         "1850": 92597,
         "1860": 379994,
         "1870": 560247,
@@ -462,14 +471,6 @@
        "observationPeriod": "P1Y",
        "importName": "OECDRegionalDemography",
        "provenanceDomain": "oecd.org"
-      },
-      {
-       "val": {
-        "2011": 37683933
-       },
-       "measurementMethod": "GoogleKGHumanCurated",
-       "importName": "KGHumanCurated",
-       "provenanceDomain": "google.com"
       },
       {
        "val": {
@@ -645,19 +646,19 @@
      "sourceSeries": [
       {
        "val": {
+        "2013": 77846
+       },
+       "measurementMethod": "GoogleKGHumanCurated",
+       "importName": "WikipediaAndHumanCurated",
+       "provenanceDomain": "wikipedia.org"
+      },
+      {
+       "val": {
         "2010": 74066
        },
        "measurementMethod": "WikidataPopulation",
        "importName": "WikidataPopulation",
        "provenanceDomain": "wikidata.org"
-      },
-      {
-       "val": {
-        "2013": 77846
-       },
-       "measurementMethod": "GoogleKGHumanCurated",
-       "importName": "KGHumanCurated",
-       "provenanceDomain": "google.com"
       },
       {
        "val": {
