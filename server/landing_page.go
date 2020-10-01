@@ -143,6 +143,9 @@ func trimTypes(types []string) []string {
 // Get the latest population count for a list of places.
 func getLatestPop(ctx context.Context, s *Server, placeDcids []string) (
 	map[string]int32, error) {
+	if len(placeDcids) == 0 {
+		return nil, nil
+	}
 	req := &pb.GetStatsRequest{
 		Place:    placeDcids,
 		StatsVar: "Count_Person",
@@ -255,6 +258,9 @@ func getChildPlaces(ctx context.Context, s *Server, dcid string) (
 	children = append(children, overlapPlaces[dcid]...)
 	// Get the wanted place types
 	placeType, err := getPlaceType(ctx, s, dcid)
+	if err != nil {
+		return nil, err
+	}
 	wantedTypes, ok := wantedPlaceTypes[placeType]
 	if !ok {
 		wantedTypes = allWantedPlaceTypes
@@ -323,6 +329,9 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 				Name: parent.Name,
 			})
 		}
+		if len(result) == 0 {
+			break
+		}
 		if _, ok := continents[result[len(result)-1].Name]; ok {
 			break
 		}
@@ -332,7 +341,7 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 }
 
 // Get similar places.
-func getSimilarPlaces(ctx context.Context, s *Server, dcid string) (
+func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 	[]*place, error) {
 
 	isCity, err := regexp.MatchString(`^geoId/\d{5}$`, dcid)
@@ -350,7 +359,10 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string) (
 		}
 		// Seed with day of the year and place dcid to make it relatively stable
 		// in a day.
-		rand.Seed(int64(time.Now().YearDay() + geoID))
+		if seed == 0 {
+			seed = int64(time.Now().YearDay() + geoID)
+		}
+		rand.Seed(seed)
 		var cohort string
 		if isCity {
 			cohort = cityCohort
@@ -444,7 +456,7 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 	sort.SliceStable(result, func(i, j int) bool {
 		return result[i].Pop > result[j].Pop
 	})
-	if len(result) > maxNearbyPlace {
+	if len(result) < maxNearbyPlace {
 		return result, nil
 	}
 	return result[0:maxNearbyPlace], nil
@@ -464,6 +476,7 @@ func (s *Server) GetLandingPageData(
 	if placeDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
+	seed := in.GetSeed()
 
 	// Fetch child and prarent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
@@ -488,7 +501,7 @@ func (s *Server) GetLandingPageData(
 		return nil
 	})
 	errs.Go(func() error {
-		similarPlaces, err := getSimilarPlaces(errCtx, s, placeDcid)
+		similarPlaces, err := getSimilarPlaces(errCtx, s, placeDcid, seed)
 		if err != nil {
 			return err
 		}
@@ -526,7 +539,6 @@ func (s *Server) GetLandingPageData(
 		switch relatedPlace.category {
 		case childEnum:
 			payload.ChildPlaces = relatedPlace.places
-			break
 		case parentEnum:
 			payload.ParentPlaces = relatedPlace.places
 		case similarEnum:
@@ -534,13 +546,15 @@ func (s *Server) GetLandingPageData(
 		case nearbyEnum:
 			payload.NearbyPlaces = relatedPlace.places
 		default:
-			break
 		}
 		for _, place := range relatedPlace.places {
 			allPlaces = append(allPlaces, place.Dcid)
 		}
 	}
 	statData, err := fetchBtData(ctx, s, allPlaces)
+	if err != nil {
+		return nil, err
+	}
 	payload.Data = statData
 	jsonRaw, err := json.Marshal(payload)
 	if err != nil {

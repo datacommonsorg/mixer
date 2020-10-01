@@ -41,19 +41,23 @@ func TestGetLandingPageData(t *testing.T) {
 	for _, c := range []struct {
 		goldenFile string
 		place      string
+		seed       int64
 	}{
 		{
 			"county.json",
 			"geoId/06085",
+			1,
 		},
 		{
 			"city.json",
 			"geoId/0656938",
+			1,
 		},
 	} {
 		req := &pb.GetLandingPageDataRequest{
 			Place:    c.place,
 			StatVars: []string{},
+			Seed:     c.seed,
 		}
 		resp, err := client.GetLandingPageData(ctx, req)
 		if err != nil {
