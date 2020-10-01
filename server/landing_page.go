@@ -341,7 +341,7 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 }
 
 // Get similar places.
-func getSimilarPlaces(ctx context.Context, s *Server, dcid string) (
+func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 	[]*place, error) {
 
 	isCity, err := regexp.MatchString(`^geoId/\d{5}$`, dcid)
@@ -359,7 +359,10 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string) (
 		}
 		// Seed with day of the year and place dcid to make it relatively stable
 		// in a day.
-		rand.Seed(int64(time.Now().YearDay() + geoID))
+		if seed == 0 {
+			seed = int64(time.Now().YearDay() + geoID)
+		}
+		rand.Seed(seed)
 		var cohort string
 		if isCity {
 			cohort = cityCohort
@@ -473,6 +476,7 @@ func (s *Server) GetLandingPageData(
 	if placeDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
+	seed := in.GetSeed()
 
 	// Fetch child and prarent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
@@ -497,7 +501,7 @@ func (s *Server) GetLandingPageData(
 		return nil
 	})
 	errs.Go(func() error {
-		similarPlaces, err := getSimilarPlaces(errCtx, s, placeDcid)
+		similarPlaces, err := getSimilarPlaces(errCtx, s, placeDcid, seed)
 		if err != nil {
 			return err
 		}
