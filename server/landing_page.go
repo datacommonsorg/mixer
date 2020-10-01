@@ -143,6 +143,9 @@ func trimTypes(types []string) []string {
 // Get the latest population count for a list of places.
 func getLatestPop(ctx context.Context, s *Server, placeDcids []string) (
 	map[string]int32, error) {
+	if len(placeDcids) == 0 {
+		return nil, nil
+	}
 	req := &pb.GetStatsRequest{
 		Place:    placeDcids,
 		StatsVar: "Count_Person",
@@ -323,6 +326,9 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 				Name: parent.Name,
 			})
 		}
+		if len(result) == 0 {
+			break
+		}
 		if _, ok := continents[result[len(result)-1].Name]; ok {
 			break
 		}
@@ -444,7 +450,7 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 	sort.SliceStable(result, func(i, j int) bool {
 		return result[i].Pop > result[j].Pop
 	})
-	if len(result) > maxNearbyPlace {
+	if len(result) < maxNearbyPlace {
 		return result, nil
 	}
 	return result[0:maxNearbyPlace], nil
