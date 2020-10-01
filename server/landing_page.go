@@ -258,6 +258,9 @@ func getChildPlaces(ctx context.Context, s *Server, dcid string) (
 	children = append(children, overlapPlaces[dcid]...)
 	// Get the wanted place types
 	placeType, err := getPlaceType(ctx, s, dcid)
+	if err != nil {
+		return nil, err
+	}
 	wantedTypes, ok := wantedPlaceTypes[placeType]
 	if !ok {
 		wantedTypes = allWantedPlaceTypes
@@ -532,7 +535,6 @@ func (s *Server) GetLandingPageData(
 		switch relatedPlace.category {
 		case childEnum:
 			payload.ChildPlaces = relatedPlace.places
-			break
 		case parentEnum:
 			payload.ParentPlaces = relatedPlace.places
 		case similarEnum:
@@ -540,13 +542,15 @@ func (s *Server) GetLandingPageData(
 		case nearbyEnum:
 			payload.NearbyPlaces = relatedPlace.places
 		default:
-			break
 		}
 		for _, place := range relatedPlace.places {
 			allPlaces = append(allPlaces, place.Dcid)
 		}
 	}
 	statData, err := fetchBtData(ctx, s, allPlaces)
+	if err != nil {
+		return nil, err
+	}
 	payload.Data = statData
 	jsonRaw, err := json.Marshal(payload)
 	if err != nil {

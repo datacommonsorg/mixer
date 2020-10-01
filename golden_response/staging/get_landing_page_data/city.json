@@ -36708,113 +36708,99 @@
   "allChildPlaces": {
     "CensusZipCodeTabulationArea": [
       {
-        "Dcid": "zip/94611",
-        "Name": "94611",
-        "Pop": 39384
+        "dcid": "zip/94611",
+        "name": "94611",
+        "pop": 39384
       },
       {
-        "Dcid": "zip/94610",
-        "Name": "94610",
-        "Pop": 31496
+        "dcid": "zip/94610",
+        "name": "94610",
+        "pop": 31496
       },
       {
-        "Dcid": "zip/94618",
-        "Name": "94618",
-        "Pop": 17041
+        "dcid": "zip/94618",
+        "name": "94618",
+        "pop": 17041
       }
     ]
   },
   "childPlaces": [
     {
-      "Dcid": "zip/94611",
-      "Name": "94611",
-      "Pop": 39384
+      "dcid": "zip/94611",
+      "name": "94611",
+      "pop": 39384
     },
     {
-      "Dcid": "zip/94610",
-      "Name": "94610",
-      "Pop": 31496
+      "dcid": "zip/94610",
+      "name": "94610",
+      "pop": 31496
     },
     {
-      "Dcid": "zip/94618",
-      "Name": "94618",
-      "Pop": 17041
+      "dcid": "zip/94618",
+      "name": "94618",
+      "pop": 17041
     }
   ],
   "parentPlaces": [
     {
-      "Dcid": "geoId/06001",
-      "Name": "Alameda County",
-      "Pop": 0
+      "dcid": "geoId/06001",
+      "name": "Alameda County"
     },
     {
-      "Dcid": "geoId/06",
-      "Name": "California",
-      "Pop": 0
+      "dcid": "geoId/06",
+      "name": "California"
     },
     {
-      "Dcid": "country/USA",
-      "Name": "United States",
-      "Pop": 0
+      "dcid": "country/USA",
+      "name": "United States"
     },
     {
-      "Dcid": "northamerica",
-      "Name": "North America",
-      "Pop": 0
+      "dcid": "northamerica",
+      "name": "North America"
     }
   ],
   "similarPlaces": [
     {
-      "Dcid": "geoId/08041",
-      "Name": "El Paso County",
-      "Pop": 0
+      "dcid": "geoId/08041",
+      "name": "El Paso County"
     },
     {
-      "Dcid": "geoId/39035",
-      "Name": "Cuyahoga County",
-      "Pop": 0
+      "dcid": "geoId/39035",
+      "name": "Cuyahoga County"
     },
     {
-      "Dcid": "geoId/51059",
-      "Name": "Fairfax County",
-      "Pop": 0
+      "dcid": "geoId/51059",
+      "name": "Fairfax County"
     },
     {
-      "Dcid": "geoId/06065",
-      "Name": "Riverside County",
-      "Pop": 0
+      "dcid": "geoId/06065",
+      "name": "Riverside County"
     },
     {
-      "Dcid": "geoId/06085",
-      "Name": "Santa Clara County",
-      "Pop": 0
+      "dcid": "geoId/06085",
+      "name": "Santa Clara County"
     }
   ],
   "nearbyPlaces": [
     {
-      "Dcid": "geoId/0653000",
-      "Name": "",
-      "Pop": 429082
+      "dcid": "geoId/0653000",
+      "pop": 429082
     },
     {
-      "Dcid": "geoId/0606000",
-      "Name": "",
-      "Pop": 121643
+      "dcid": "geoId/0606000",
+      "pop": 121643
     },
     {
-      "Dcid": "geoId/0600562",
-      "Name": "",
-      "Pop": 78338
+      "dcid": "geoId/0600562",
+      "pop": 78338
     },
     {
-      "Dcid": "geoId/0654232",
-      "Name": "",
-      "Pop": 19806
+      "dcid": "geoId/0654232",
+      "pop": 19806
     },
     {
-      "Dcid": "geoId/0622594",
-      "Name": "",
-      "Pop": 12104
+      "dcid": "geoId/0622594",
+      "pop": 12104
     }
   ]
 }

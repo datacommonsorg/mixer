@@ -46066,225 +46066,212 @@
   "allChildPlaces": {
     "City": [
       {
-        "Dcid": "geoId/0668000",
-        "Name": "San Jose",
-        "Pop": 1030119
+        "dcid": "geoId/0668000",
+        "name": "San Jose",
+        "pop": 1030119
       },
       {
-        "Dcid": "geoId/0677000",
-        "Name": "Sunnyvale",
-        "Pop": 153185
+        "dcid": "geoId/0677000",
+        "name": "Sunnyvale",
+        "pop": 153185
       },
       {
-        "Dcid": "geoId/0669084",
-        "Name": "Santa Clara",
-        "Pop": 129488
+        "dcid": "geoId/0669084",
+        "name": "Santa Clara",
+        "pop": 129488
       },
       {
-        "Dcid": "geoId/0649670",
-        "Name": "Mountain View",
-        "Pop": 83377
+        "dcid": "geoId/0649670",
+        "name": "Mountain View",
+        "pop": 83377
       },
       {
-        "Dcid": "geoId/0647766",
-        "Name": "Milpitas",
-        "Pop": 80430
+        "dcid": "geoId/0647766",
+        "name": "Milpitas",
+        "pop": 80430
       },
       {
-        "Dcid": "geoId/0655282",
-        "Name": "Palo Alto",
-        "Pop": 66666
+        "dcid": "geoId/0655282",
+        "name": "Palo Alto",
+        "pop": 66666
       },
       {
-        "Dcid": "geoId/0617610",
-        "Name": "Cupertino",
-        "Pop": 60170
+        "dcid": "geoId/0617610",
+        "name": "Cupertino",
+        "pop": 60170
       },
       {
-        "Dcid": "geoId/0629504",
-        "Name": "Gilroy",
-        "Pop": 58756
+        "dcid": "geoId/0629504",
+        "name": "Gilroy",
+        "pop": 58756
       },
       {
-        "Dcid": "geoId/0649278",
-        "Name": "Morgan Hill",
-        "Pop": 45135
+        "dcid": "geoId/0649278",
+        "name": "Morgan Hill",
+        "pop": 45135
       },
       {
-        "Dcid": "geoId/0610345",
-        "Name": "Campbell",
-        "Pop": 42466
+        "dcid": "geoId/0610345",
+        "name": "Campbell",
+        "pop": 42466
       },
       {
-        "Dcid": "geoId/0670280",
-        "Name": "Saratoga",
-        "Pop": 30599
+        "dcid": "geoId/0670280",
+        "name": "Saratoga",
+        "pop": 30599
       },
       {
-        "Dcid": "geoId/0643280",
-        "Name": "Los Altos",
-        "Pop": 30531
+        "dcid": "geoId/0643280",
+        "name": "Los Altos",
+        "pop": 30531
       },
       {
-        "Dcid": "geoId/0673906",
-        "Name": "Stanford",
-        "Pop": 15668
+        "dcid": "geoId/0673906",
+        "name": "Stanford",
+        "pop": 15668
       },
       {
-        "Dcid": "geoId/0601458",
-        "Name": "Alum Rock",
-        "Pop": 11791
+        "dcid": "geoId/0601458",
+        "name": "Alum Rock",
+        "pop": 11791
       },
       {
-        "Dcid": "geoId/0668238",
-        "Name": "San Martin",
-        "Pop": 7010
+        "dcid": "geoId/0668238",
+        "name": "San Martin",
+        "pop": 7010
       },
       {
-        "Dcid": "geoId/0620598",
-        "Name": "East Foothills",
-        "Pop": 6278
+        "dcid": "geoId/0620598",
+        "name": "East Foothills",
+        "pop": 6278
       },
       {
-        "Dcid": "geoId/0608968",
-        "Name": "Burbank",
-        "Pop": 5252
+        "dcid": "geoId/0608968",
+        "name": "Burbank",
+        "pop": 5252
       },
       {
-        "Dcid": "geoId/0648956",
-        "Name": "Monte Sereno",
-        "Pop": 3487
+        "dcid": "geoId/0648956",
+        "name": "Monte Sereno",
+        "pop": 3487
       },
       {
-        "Dcid": "geoId/0644378",
-        "Name": "Loyola",
-        "Pop": 3364
+        "dcid": "geoId/0644378",
+        "name": "Loyola",
+        "pop": 3364
       },
       {
-        "Dcid": "geoId/0610088",
-        "Name": "Cambrian Park",
-        "Pop": 3094
+        "dcid": "geoId/0610088",
+        "name": "Cambrian Park",
+        "pop": 3094
       },
       {
-        "Dcid": "geoId/0641282",
-        "Name": "Lexington Hills",
-        "Pop": 2603
+        "dcid": "geoId/0641282",
+        "name": "Lexington Hills",
+        "pop": 2603
       },
       {
-        "Dcid": "geoId/0627080",
-        "Name": "Fruitdale",
-        "Pop": 899
+        "dcid": "geoId/0627080",
+        "name": "Fruitdale",
+        "pop": 899
       }
     ],
     "Town": [
       {
-        "Dcid": "geoId/0644112",
-        "Name": "Los Gatos",
-        "Pop": 30680
+        "dcid": "geoId/0644112",
+        "name": "Los Gatos",
+        "pop": 30680
       },
       {
-        "Dcid": "geoId/0643294",
-        "Name": "Los Altos Hills",
-        "Pop": 8559
+        "dcid": "geoId/0643294",
+        "name": "Los Altos Hills",
+        "pop": 8559
       }
     ]
   },
   "childPlaces": [
     {
-      "Dcid": "geoId/0668000",
-      "Name": "San Jose",
-      "Pop": 1030119
+      "dcid": "geoId/0668000",
+      "name": "San Jose",
+      "pop": 1030119
     },
     {
-      "Dcid": "geoId/0677000",
-      "Name": "Sunnyvale",
-      "Pop": 153185
+      "dcid": "geoId/0677000",
+      "name": "Sunnyvale",
+      "pop": 153185
     },
     {
-      "Dcid": "geoId/0669084",
-      "Name": "Santa Clara",
-      "Pop": 129488
+      "dcid": "geoId/0669084",
+      "name": "Santa Clara",
+      "pop": 129488
     },
     {
-      "Dcid": "geoId/0649670",
-      "Name": "Mountain View",
-      "Pop": 83377
+      "dcid": "geoId/0649670",
+      "name": "Mountain View",
+      "pop": 83377
     },
     {
-      "Dcid": "geoId/0647766",
-      "Name": "Milpitas",
-      "Pop": 80430
+      "dcid": "geoId/0647766",
+      "name": "Milpitas",
+      "pop": 80430
     }
   ],
   "parentPlaces": [
     {
-      "Dcid": "geoId/06",
-      "Name": "California",
-      "Pop": 0
+      "dcid": "geoId/06",
+      "name": "California"
     },
     {
-      "Dcid": "country/USA",
-      "Name": "United States",
-      "Pop": 0
+      "dcid": "country/USA",
+      "name": "United States"
     },
     {
-      "Dcid": "northamerica",
-      "Name": "North America",
-      "Pop": 0
+      "dcid": "northamerica",
+      "name": "North America"
     }
   ],
   "similarPlaces": [
     {
-      "Dcid": "geoId/3916000",
-      "Name": "Cleveland",
-      "Pop": 0
+      "dcid": "geoId/3916000",
+      "name": "Cleveland"
     },
     {
-      "Dcid": "geoId/0644000",
-      "Name": "Los Angeles",
-      "Pop": 0
+      "dcid": "geoId/0644000",
+      "name": "Los Angeles"
     },
     {
-      "Dcid": "geoId/4513330",
-      "Name": "Charleston",
-      "Pop": 0
+      "dcid": "geoId/4513330",
+      "name": "Charleston"
     },
     {
-      "Dcid": "geoId/2603000",
-      "Name": "Ann Arbor",
-      "Pop": 0
+      "dcid": "geoId/2603000",
+      "name": "Ann Arbor"
     },
     {
-      "Dcid": "geoId/0667000",
-      "Name": "San Francisco",
-      "Pop": 0
+      "dcid": "geoId/0667000",
+      "name": "San Francisco"
     }
   ],
   "nearbyPlaces": [
     {
-      "Dcid": "geoId/06001",
-      "Name": "",
-      "Pop": 1671329
+      "dcid": "geoId/06001",
+      "pop": 1671329
     },
     {
-      "Dcid": "geoId/06013",
-      "Name": "",
-      "Pop": 1153526
+      "dcid": "geoId/06013",
+      "pop": 1153526
     },
     {
-      "Dcid": "geoId/06081",
-      "Name": "",
-      "Pop": 765935
+      "dcid": "geoId/06081",
+      "pop": 765935
     },
     {
-      "Dcid": "geoId/06099",
-      "Name": "",
-      "Pop": 550660
+      "dcid": "geoId/06099",
+      "pop": 550660
     },
     {
-      "Dcid": "geoId/06087",
-      "Name": "",
-      "Pop": 273213
+      "dcid": "geoId/06087",
+      "pop": 273213
     }
   ]
 }

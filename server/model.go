@@ -143,9 +143,9 @@ type LandingPageData struct {
 }
 
 type place struct {
-	Dcid string
-	Name string
-	Pop  int32
+	Dcid string `json:"dcid,omitempty"`
+	Name string `json:"name,omitempty"`
+	Pop  int32  `json:"pop,omitempty"`
 }
 
 // LandingPageResponse represents all the data needed for rendering landing page.
