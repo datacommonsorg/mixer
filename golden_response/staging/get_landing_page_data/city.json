@@ -18398,10 +18398,10 @@
       },
       "Percent_Person_Obesity": {
         "data": {
-          "2014": 19.2,
-          "2015": 17.7,
-          "2016": 18.5,
-          "2017": 20.2
+          "2014": 18.7,
+          "2015": 17.3,
+          "2016": 18.1,
+          "2017": 19.7
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -18432,18 +18432,18 @@
       },
       "Percent_Person_WithArthritis": {
         "data": {
-          "2014": 20.3,
-          "2015": 19.5,
-          "2016": 18.7,
-          "2017": 19.3
+          "2014": 18.5,
+          "2015": 17.7,
+          "2016": 17.1,
+          "2017": 17.6
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_WithHighBloodPressure": {
         "data": {
-          "2013": 26.4,
-          "2015": 25.8,
-          "2017": 25.6
+          "2013": 24.3,
+          "2015": 23.8,
+          "2017": 23.6
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -20927,10 +20927,10 @@
       },
       "Percent_Person_Obesity": {
         "data": {
-          "2014": 18.8,
-          "2015": 17.5,
-          "2016": 18.5,
-          "2017": 20.4
+          "2014": 21,
+          "2015": 19.6,
+          "2016": 20.6,
+          "2017": 22.6
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -20995,10 +20995,10 @@
       },
       "Percent_Person_WithPhysicalHealthNotGood": {
         "data": {
-          "2014": 8.6,
-          "2015": 8.2,
-          "2016": 8.2,
-          "2017": 8.2
+          "2014": 9.4,
+          "2015": 9,
+          "2016": 9,
+          "2017": 8.9
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -24812,42 +24812,42 @@
       },
       "Percent_Person_SleepLessThan7Hours": {
         "data": {
-          "2014": 36.3,
-          "2016": 37.3
+          "2014": 36,
+          "2016": 37
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_Smoking": {
         "data": {
-          "2014": 15.6,
-          "2015": 14.6,
-          "2016": 15.5,
-          "2017": 14.6
+          "2014": 15.2,
+          "2015": 14.3,
+          "2016": 15.1,
+          "2017": 14.2
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_WithArthritis": {
         "data": {
-          "2014": 20.5,
-          "2015": 19.9,
-          "2016": 19.2,
-          "2017": 19.3
+          "2014": 21,
+          "2015": 20.4,
+          "2016": 19.7,
+          "2017": 19.8
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_WithHighBloodPressure": {
         "data": {
-          "2013": 28.6,
-          "2015": 28.9,
-          "2017": 28.6
+          "2013": 29.3,
+          "2015": 29.6,
+          "2017": 29.3
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_WithHighCholesterol": {
         "data": {
-          "2013": 35.1,
-          "2015": 30.8,
-          "2017": 27.9
+          "2013": 31.7,
+          "2015": 27.9,
+          "2017": 25.9
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -29983,9 +29983,9 @@
       },
       "Percent_Person_WithHighCholesterol": {
         "data": {
-          "2013": 34.3,
-          "2015": 32.1,
-          "2017": 29.1
+          "2013": 31.4,
+          "2015": 29.5,
+          "2017": 27.3
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -29993,7 +29993,7 @@
         "data": {
           "2014": 9.8,
           "2015": 9.8,
-          "2016": 9.9,
+          "2016": 9.8,
           "2017": 10.2
         },
         "provenanceDomain": "cdc.gov"
@@ -32453,19 +32453,19 @@
       "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone": {},
       "Percent_Person_BingeDrinking": {
         "data": {
-          "2014": 13.5,
-          "2015": 13.6,
-          "2016": 14.6,
-          "2017": 12.9
+          "2014": 12.3,
+          "2015": 12.4,
+          "2016": 13.4,
+          "2017": 11.8
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_Obesity": {
         "data": {
-          "2014": 37.1,
-          "2015": 36.7,
-          "2016": 35.7,
-          "2017": 36.7
+          "2014": 38.6,
+          "2015": 38.2,
+          "2016": 37.2,
+          "2017": 38.2
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -32487,19 +32487,19 @@
       },
       "Percent_Person_Smoking": {
         "data": {
-          "2014": 22,
-          "2015": 23.1,
-          "2016": 20.6,
-          "2017": 19.3
+          "2014": 21.6,
+          "2015": 22.8,
+          "2016": 20.5,
+          "2017": 19.4
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_WithArthritis": {
         "data": {
-          "2014": 23.3,
-          "2015": 23.3,
-          "2016": 23.4,
-          "2017": 21.1
+          "2014": 26.6,
+          "2015": 26.6,
+          "2016": 26.8,
+          "2017": 24.2
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -32521,10 +32521,10 @@
       },
       "Percent_Person_WithMentalHealthNotGood": {
         "data": {
-          "2014": 16.2,
-          "2015": 16.9,
-          "2016": 15.7,
-          "2017": 16.7
+          "2014": 15.9,
+          "2015": 16.5,
+          "2016": 15.2,
+          "2017": 16
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -34989,10 +34989,10 @@
       },
       "Percent_Person_Obesity": {
         "data": {
-          "2014": 31.9,
-          "2015": 29.7,
-          "2016": 29.5,
-          "2017": 33.1
+          "2014": 32.1,
+          "2015": 29.9,
+          "2016": 29.8,
+          "2017": 33.4
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -35007,8 +35007,8 @@
       },
       "Percent_Person_SleepLessThan7Hours": {
         "data": {
-          "2014": 37,
-          "2016": 34.8
+          "2014": 37.4,
+          "2016": 35.2
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -35040,9 +35040,9 @@
       },
       "Percent_Person_WithHighCholesterol": {
         "data": {
-          "2013": 41,
-          "2015": 38.3,
-          "2017": 34.2
+          "2013": 35.6,
+          "2015": 33.2,
+          "2017": 30.5
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -37499,10 +37499,10 @@
       "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone": {},
       "Percent_Person_BingeDrinking": {
         "data": {
-          "2014": 21.4,
-          "2015": 20.9,
-          "2016": 23,
-          "2017": 20
+          "2014": 18.7,
+          "2015": 18.5,
+          "2016": 20.7,
+          "2017": 17.7
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -37517,10 +37517,10 @@
       },
       "Percent_Person_PhysicalInactivity": {
         "data": {
-          "2014": 16.1,
-          "2015": 16.9,
-          "2016": 15.7,
-          "2017": 18.3
+          "2014": 16.8,
+          "2015": 17.5,
+          "2016": 16.2,
+          "2017": 18.7
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -37567,10 +37567,10 @@
       },
       "Percent_Person_WithMentalHealthNotGood": {
         "data": {
-          "2014": 10.5,
-          "2015": 10.9,
-          "2016": 12.3,
-          "2017": 13.6
+          "2014": 9.4,
+          "2015": 9.6,
+          "2016": 10.6,
+          "2017": 11.4
         },
         "provenanceDomain": "cdc.gov"
       },
@@ -40034,26 +40034,26 @@
       },
       "Percent_Person_SleepLessThan7Hours": {
         "data": {
-          "2014": 34.1,
-          "2016": 32.6
+          "2014": 34.7,
+          "2016": 33.2
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_Smoking": {
         "data": {
-          "2014": 17.6,
-          "2015": 17,
-          "2016": 15.8,
-          "2017": 15.1
+          "2014": 17.4,
+          "2015": 16.9,
+          "2016": 15.9,
+          "2017": 15.4
         },
         "provenanceDomain": "cdc.gov"
       },
       "Percent_Person_WithArthritis": {
         "data": {
-          "2014": 22.3,
-          "2015": 20.2,
-          "2016": 22.3,
-          "2017": 20.4
+          "2014": 24.3,
+          "2015": 22.1,
+          "2016": 24.5,
+          "2017": 22.3
         },
         "provenanceDomain": "cdc.gov"
       },

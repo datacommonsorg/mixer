@@ -79,6 +79,9 @@ func TestQuery(t *testing.T) {
 				?pop typeOf StatisticalPopulation .
 				?o typeOf Observation .
 				?pop dcid ("dc/p/qep2q2lcc3rcc" "dc/p/gmw3cn8tmsnth" "dc/p/92cxc027krdcd") .
+				?o measuredProperty unemploymentRate .
+				?o measurementMethod BLSSeasonallyUnadjusted .
+				?o observationPeriod P1Y .
 				?o observedNode ?pop .
 				?o measuredValue ?Unemployment
 			}

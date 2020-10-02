@@ -65,12 +65,7 @@ func TestGetStatAll(t *testing.T) {
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			marshaller := protojson.MarshalOptions{Indent: " "}
-			jsonStr := marshaller.Format(resp)
-			err := ioutil.WriteFile(goldenFile, []byte(jsonStr), 0644)
-			if err != nil {
-				t.Errorf("could not write golden files to %s", c.goldenFile)
-			}
+			updateProtoGolden(resp, goldenFile)
 			continue
 		}
 		var expected pb.GetStatAllResponse
