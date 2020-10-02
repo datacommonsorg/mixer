@@ -352,11 +352,11 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 	[]string, error) {
 
-	isCity, err := regexp.MatchString(`^geoId/\d{5}$`, dcid)
+	isCounty, err := regexp.MatchString(`^geoId/\d{5}$`, dcid)
 	if err != nil {
 		return nil, err
 	}
-	isCounty, err := regexp.MatchString(`^geoId/\d{7}$`, dcid)
+	isCity, err := regexp.MatchString(`^geoId/\d{7}$`, dcid)
 	if err != nil {
 		return nil, err
 	}
