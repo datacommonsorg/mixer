@@ -51,6 +51,7 @@ var statsRanking = map[rankKey]int{
 	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:            0, // Unemployment Rate
 	{"EurostatData", ""}:                               1, // Unemployment Rate
 	{"NYT_COVID19", "NYT_COVID19_GitHub"}:              0, // Covid
+	{"CDC500", "AgeAdjustedPrevalence"}:                0, // CDC500
 }
 
 const lowestRank = 100
