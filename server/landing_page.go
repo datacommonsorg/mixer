@@ -270,16 +270,10 @@ func fetchBtData(
 			for place := range item.data {
 				if result[place] != nil {
 					result[place][statVar] = item.data[place]
-<<<<<<< HEAD
 					if result[place][statVar] == nil {
 						result[place][statVar] = &ObsTimeSeries{}
 					}
 					result[place][statVar].PlaceName = ""
-=======
-					if result[place][statVar] != nil {
-						result[place][statVar].PlaceName = ""
-					}
->>>>>>> dc97830 (Fetch stat var data that are missing from landing page cache)
 				}
 			}
 		}
