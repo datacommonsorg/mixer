@@ -549,9 +549,7 @@ func (s *Server) GetLandingPageData(
 			payload.NearbyPlaces = relatedPlace.places
 		default:
 		}
-		for _, place := range relatedPlace.places {
-			allPlaces = append(allPlaces, place)
-		}
+		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
 	statData, err := fetchBtData(ctx, s, allPlaces)
 	if err != nil {
