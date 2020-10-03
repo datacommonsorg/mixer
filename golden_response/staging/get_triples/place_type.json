@@ -26,7 +26,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "wikidataId/Q31354462",
@@ -54,7 +54,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "wikidataId/Q27304761",
@@ -264,7 +264,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/VEN",
@@ -2195,7 +2195,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/IND",
@@ -2321,7 +2321,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/HKG",
@@ -3281,7 +3281,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/BTN",
@@ -3979,7 +3979,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/79",
@@ -4269,7 +4269,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "geoId/48",
@@ -4464,7 +4464,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/34",
@@ -4644,7 +4644,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/22",
@@ -4689,7 +4689,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/19",
@@ -4779,7 +4779,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/12",

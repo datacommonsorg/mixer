@@ -44,16 +44,16 @@ type rankKey struct {
 // higher ranking.
 // The ranking score ranges from 0 to 100.
 var statsRanking = map[rankKey]int{
-	{"CensusPEP", "CensusPEPSurvey"}:                          0, // Population
-	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:            1, // Population
-	{"CensusACS5YearSurvey_AggCountry", "CensusACS5yrSurvey"}: 1, // Population
-	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey"}:        1, // Population
-	{"EurostatData", "EurostatRegionalPopulationData"}:        2, // Population
-	{"WorldDevelopmentIndicators", ""}:                        3, // Population
-	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:                   0, // Unemployment Rate
-	{"EurostatData", ""}:                                      1, // Unemployment Rate
-	{"NYT_COVID19", "NYT_COVID19_GitHub"}:                     0, // Covid
-	{"CDC500", "AgeAdjustedPrevalence"}:                       0, // CDC500
+	{"CensusPEP", "CensusPEPSurvey"}:                                      0, // Population
+	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1, // Population
+	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey"}: 1, // Population
+	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey"}:                    1, // Population
+	{"EurostatData", "EurostatRegionalPopulationData"}:                    2, // Population
+	{"WorldDevelopmentIndicators", ""}:                                    3, // Population
+	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:                               0, // Unemployment Rate
+	{"EurostatData", ""}:                                                  1, // Unemployment Rate
+	{"NYT_COVID19", "NYT_COVID19_GitHub"}:                                 0, // Covid
+	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
 }
 
 const lowestRank = 100

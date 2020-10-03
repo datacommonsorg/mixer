@@ -126,6 +126,19 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "WorldBank/SH_XPD_CHEX_PP_CD",
+      "subjectName": "Current health expenditure per capita, PPP (current international $)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "WorldBank/SH_STA_SUIC_P5",
       "subjectName": "Suicide mortality rate (per 100,000 population)",
       "subjectTypes": [
