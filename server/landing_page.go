@@ -391,6 +391,9 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 			return containedInPlaces[dcid][i].Dcid > containedInPlaces[dcid][j].Dcid
 		})
 		for _, parent := range containedInPlaces[dcid] {
+			if parent.Types[0] == "CensusZipCodeTabulationArea" {
+				continue
+			}
 			result = append(result, &place{
 				Dcid: parent.Dcid,
 				Name: parent.Name,
