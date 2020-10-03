@@ -270,9 +270,10 @@ func fetchBtData(
 			for place := range item.data {
 				if result[place] != nil {
 					result[place][statVar] = item.data[place]
-					if result[place][statVar] != nil {
-						result[place][statVar].PlaceName = ""
+					if result[place][statVar] == nil {
+						result[place][statVar] = &ObsTimeSeries{}
 					}
+					result[place][statVar].PlaceName = ""
 				}
 			}
 		}
