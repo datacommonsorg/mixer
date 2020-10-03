@@ -66,7 +66,6 @@
           ]
         },
         "Count_Person": {
-          "isDcAggregate": true,
           "sourceSeries": [
             {
               "val": {
@@ -362,6 +361,23 @@
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey_AggCountry",
               "provenanceDomain": "census.gov"
+            },
+            {
+              "val": {
+                "2010": 309349689,
+                "2011": 311591919,
+                "2012": 313914040,
+                "2013": 316128839,
+                "2014": 318857056,
+                "2015": 321418821,
+                "2016": 323127515,
+                "2017": 325719178,
+                "2018": 327167439,
+                "2019": 328239523
+              },
+              "measurementMethod": "CensusACS1yrSurvey",
+              "importName": "CensusACS1YearSurvey",
+              "provenanceDomain": "census.gov"
             }
           ]
         }
@@ -613,6 +629,23 @@
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
               "provenanceDomain": "census.gov"
+            },
+            {
+              "val": {
+                "2010": 37349363,
+                "2011": 37691912,
+                "2012": 38041430,
+                "2013": 38332521,
+                "2014": 38802500,
+                "2015": 39144818,
+                "2016": 39250017,
+                "2017": 39536653,
+                "2018": 39557045,
+                "2019": 39512223
+              },
+              "measurementMethod": "CensusACS1yrSurvey",
+              "importName": "CensusACS1YearSurvey",
+              "provenanceDomain": "census.gov"
             }
           ]
         }
@@ -709,6 +742,23 @@
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
+              "provenanceDomain": "census.gov"
+            },
+            {
+              "val": {
+                "2010": 74320,
+                "2011": 75230,
+                "2012": 76612,
+                "2013": 77839,
+                "2014": 79374,
+                "2015": 80438,
+                "2016": 80459,
+                "2017": 81443,
+                "2018": 83377,
+                "2019": 82726
+              },
+              "measurementMethod": "CensusACS1yrSurvey",
+              "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov"
             }
           ]
