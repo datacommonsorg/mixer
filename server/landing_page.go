@@ -37,6 +37,7 @@ const (
 	maxNumChild     = 5
 	maxSimilarPlace = 5
 	maxNearbyPlace  = 5
+	minPopulation   = 10000
 	cityCohort      = "PlacePagesComparisonCityCohort"
 	countyCohort    = "PlacePagesComparisonCountyCohort"
 )
@@ -187,7 +188,8 @@ func getDcids(places []*place) []string {
 }
 
 // Fetch landing page cache data for a list of places.
-func fetchBtData(ctx context.Context, s *Server, places []string) (
+func fetchBtData(
+	ctx context.Context, s *Server, places []string, statVars []string) (
 	map[string]map[string]*ObsTimeSeries, error) {
 	rowList := bigtable.RowList{}
 	for _, dcid := range places {
@@ -195,6 +197,7 @@ func fetchBtData(ctx context.Context, s *Server, places []string) (
 			"%s%s", util.BtLandingPagePrefix, dcid))
 	}
 
+	// Fetch landing page cache data in parallel.
 	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var landingPageData LandingPageData
@@ -208,7 +211,7 @@ func fetchBtData(ctx context.Context, s *Server, places []string) (
 	if err != nil {
 		return nil, err
 	}
-
+	// Populate result from landing page cache
 	result := map[string]map[string]*ObsTimeSeries{}
 	for dcid, data := range dataMap {
 		landingPageData := data.(*LandingPageData)
@@ -218,6 +221,62 @@ func fetchBtData(ctx context.Context, s *Server, places []string) (
 			finalData[statVarDcid] = obsTimeSeries
 		}
 		result[dcid] = finalData
+	}
+
+	// The landing page cache may depends on out dated chart config. Fetch stats
+	// that are not included in the landing page cache.
+	gotStatVars := map[string]struct{}{}
+	for statVar := range result[places[0]] {
+		gotStatVars[statVar] = struct{}{}
+	}
+	missingStatVars := []string{}
+	for _, statVar := range statVars {
+		if _, ok := gotStatVars[statVar]; !ok {
+			missingStatVars = append(missingStatVars, statVar)
+		}
+	}
+	if len(missingStatVars) > 0 {
+		type svData struct {
+			sv   string
+			data map[string]*ObsTimeSeries
+		}
+		errs, errCtx := errgroup.WithContext(ctx)
+		dataChan := make(chan svData, len(missingStatVars))
+		for _, statVar := range missingStatVars {
+			errs.Go(func() error {
+				resp, err := s.GetStats(errCtx, &pb.GetStatsRequest{
+					Place:    places,
+					StatsVar: statVar,
+				})
+				if err != nil {
+					return err
+				}
+				var tmp map[string]*ObsTimeSeries
+				err = json.Unmarshal([]byte(resp.Payload), &tmp)
+				if err != nil {
+					return err
+				}
+				dataChan <- svData{sv: statVar, data: tmp}
+				return nil
+			})
+		}
+		err := errs.Wait()
+		if err != nil {
+			return nil, err
+		}
+		close(dataChan)
+		for item := range dataChan {
+			statVar := item.sv
+			for place := range item.data {
+				if result[place] != nil {
+					result[place][statVar] = item.data[place]
+					if result[place][statVar] == nil {
+						result[place][statVar] = &ObsTimeSeries{}
+					}
+					result[place][statVar].PlaceName = ""
+				}
+			}
+		}
 	}
 	return result, nil
 }
@@ -332,6 +391,9 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 			return containedInPlaces[dcid][i].Dcid > containedInPlaces[dcid][j].Dcid
 		})
 		for _, parent := range containedInPlaces[dcid] {
+			if parent.Types[0] == "CensusZipCodeTabulationArea" {
+				continue
+			}
 			result = append(result, &place{
 				Dcid: parent.Dcid,
 				Name: parent.Name,
@@ -450,10 +512,12 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 	}
 	result := []*place{}
 	for dcid, pop := range placePop {
-		result = append(result, &place{
-			Dcid: dcid,
-			Pop:  pop,
-		})
+		if pop > minPopulation {
+			result = append(result, &place{
+				Dcid: dcid,
+				Pop:  pop,
+			})
+		}
 	}
 	sort.SliceStable(result, func(i, j int) bool {
 		return result[i].Pop > result[j].Pop
@@ -479,6 +543,7 @@ func (s *Server) GetLandingPageData(
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	seed := in.GetSeed()
+	statVars := in.GetStatVars()
 
 	// Fetch child and prarent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
@@ -551,7 +616,7 @@ func (s *Server) GetLandingPageData(
 		}
 		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
-	statData, err := fetchBtData(ctx, s, allPlaces)
+	statData, err := fetchBtData(ctx, s, allPlaces, statVars)
 	if err != nil {
 		return nil, err
 	}
