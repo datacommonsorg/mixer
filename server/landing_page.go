@@ -243,6 +243,7 @@ func fetchBtData(
 		errs, errCtx := errgroup.WithContext(ctx)
 		dataChan := make(chan svData, len(missingStatVars))
 		for _, statVar := range missingStatVars {
+			statVar := statVar
 			errs.Go(func() error {
 				resp, err := s.GetStats(errCtx, &pb.GetStatsRequest{
 					Place:    places,
