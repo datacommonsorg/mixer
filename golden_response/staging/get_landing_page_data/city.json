@@ -44479,6 +44479,7 @@
       }
     ]
   },
+  "childPlacesType": "CensusZipCodeTabulationArea",
   "childPlaces": [
     "zip/94611",
     "zip/94610",
