@@ -13331,6 +13331,7 @@
       }
     ]
   },
+  "childPlacesType": "AdministrativeArea1",
   "childPlaces": [
     "wikidataId/Q1861",
     "wikidataId/Q271737",

@@ -59248,6 +59248,7 @@
       }
     ]
   },
+  "childPlacesType": "City",
   "childPlaces": [
     "geoId/0668000",
     "geoId/0677000",

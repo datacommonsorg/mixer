@@ -283,10 +283,12 @@ func fetchBtData(
 }
 
 // Pick child places with the largest average population.
-func filterChildPlaces(childPlaces map[string][]*place) []*place {
+// Returns a tuple of child place type, and list of child places.
+func filterChildPlaces(childPlaces map[string][]*place) (string, []*place) {
 	var highestAvg float32
-	var result []*place
-	for _, children := range childPlaces {
+	var resultPlaces []*place
+	var resultType string
+	for childType, children := range childPlaces {
 		var sum int32
 		for _, child := range children {
 			sum += child.Pop
@@ -294,15 +296,16 @@ func filterChildPlaces(childPlaces map[string][]*place) []*place {
 		avg := float32(sum) / float32(len(children))
 		if avg > highestAvg {
 			highestAvg = avg
-			result = children
+			resultPlaces = children
+			resultType = childType
 		}
 	}
 	// TODO(shifucun): if the number of children is too few, consider picking
 	// child places with non highest population type.
-	if len(result) > maxNumChild {
-		result = result[0:maxNumChild]
+	if len(resultPlaces) > maxNumChild {
+		resultPlaces = resultPlaces[0:maxNumChild]
 	}
-	return result
+	return resultType, resultPlaces
 }
 
 // Get child places by types.
@@ -550,14 +553,16 @@ func (s *Server) GetLandingPageData(
 	errs, errCtx := errgroup.WithContext(ctx)
 	relatedPlaceChan := make(chan *relatedPlace, 4)
 	allChildPlaceChan := make(chan map[string][]*place, 1)
+	var filteredChildPlaceType string
 	errs.Go(func() error {
 		childPlaces, err := getChildPlaces(errCtx, s, placeDcid)
 		if err != nil {
 			return err
 		}
 		allChildPlaceChan <- childPlaces
-		filtered := filterChildPlaces(childPlaces)
-		relatedPlaceChan <- &relatedPlace{category: childEnum, places: getDcids(filtered)}
+		childPlaceType, childPlaceList := filterChildPlaces(childPlaces)
+		filteredChildPlaceType = childPlaceType
+		relatedPlaceChan <- &relatedPlace{category: childEnum, places: getDcids(childPlaceList)}
 		return nil
 	})
 	errs.Go(func() error {
@@ -600,6 +605,7 @@ func (s *Server) GetLandingPageData(
 		break
 	}
 	payload.AllChildPlaces = allChildPlaces
+	payload.ChildPlacesType = filteredChildPlaceType
 
 	// Fetch the landing page stats data for all places.
 	allPlaces := []string{placeDcid}
