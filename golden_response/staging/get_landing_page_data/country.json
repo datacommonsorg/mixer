@@ -1249,7 +1249,6 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2019-12-31": 0,
           "2020-01-01": 0,
           "2020-01-02": 0,
           "2020-01-03": 0,
@@ -3816,7 +3815,6 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2019-12-31": 0,
           "2020-01-01": 0,
           "2020-01-02": 0,
           "2020-01-03": 0,
@@ -7041,6 +7039,7 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
+          "2019-12-31": 0,
           "2020-01-01": 0,
           "2020-01-02": 0,
           "2020-01-03": 0,
