@@ -285,23 +285,16 @@ func fetchBtData(
 // Pick child places with the largest average population.
 // Returns a tuple of child place type, and list of child places.
 func filterChildPlaces(childPlaces map[string][]*place) (string, []*place) {
-	var highestAvg float32
+	var maxCount int
 	var resultPlaces []*place
 	var resultType string
 	for childType, children := range childPlaces {
-		var sum int32
-		for _, child := range children {
-			sum += child.Pop
-		}
-		avg := float32(sum) / float32(len(children))
-		if avg > highestAvg {
-			highestAvg = avg
+		if len(children) > maxCount {
+			maxCount = len(children)
 			resultPlaces = children
 			resultType = childType
 		}
 	}
-	// TODO(shifucun): if the number of children is too few, consider picking
-	// child places with non highest population type.
 	if len(resultPlaces) > maxNumChild {
 		resultPlaces = resultPlaces[0:maxNumChild]
 	}
