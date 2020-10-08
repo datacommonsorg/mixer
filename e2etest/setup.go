@@ -127,9 +127,21 @@ func updateGolden(v interface{}, fname string) {
 }
 
 func updateProtoGolden(resp protoreflect.ProtoMessage, fname string) {
-	marshaller := protojson.MarshalOptions{Indent: "  "}
-	jsonStr := marshaller.Format(resp)
-	err := ioutil.WriteFile(fname, []byte(jsonStr), 0644)
+	marshaller := protojson.MarshalOptions{Indent: ""}
+	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
+	// Use encoding/json to get stable output.
+	data, err := marshaller.Marshal(resp)
+	if err != nil {
+		log.Printf("could not write golden files to %s", fname)
+		return
+	}
+	var rm json.RawMessage = data
+	jsonByte, err := json.MarshalIndent(rm, "", "  ")
+	if err != nil {
+		log.Printf("could not write golden files to %s", fname)
+		return
+	}
+	err = ioutil.WriteFile(fname, jsonByte, 0644)
 	if err != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
