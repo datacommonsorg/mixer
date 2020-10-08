@@ -80,26 +80,14 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 // - Whether related locations have the same ancestor.
 // - Whether related locations have the same place type.
 // - Whether closeness computaion is per capita.
-var RelatedLocationsPrefixMap = map[bool]map[bool]map[bool]string{
+var RelatedLocationsPrefixMap = map[bool]map[bool]string{
 	true: {
-		true: {
-			true:  util.BtRelatedLocationsSameTypeAndAncestorPCPrefix,
-			false: util.BtRelatedLocationsSameTypeAndAncestorPrefix,
-		},
-		false: {
-			true:  util.BtRelatedLocationsSameAncestorPCPrefix,
-			false: util.BtRelatedLocationsSameAncestorPrefix,
-		},
+		true:  util.BtRelatedLocationsSameTypeAndAncestorPCPrefix,
+		false: util.BtRelatedLocationsSameTypeAndAncestorPrefix,
 	},
 	false: {
-		true: {
-			true:  util.BtRelatedLocationsSameTypePCPrefix,
-			false: util.BtRelatedLocationsSameTypePrefix,
-		},
-		false: {
-			true:  util.BtRelatedLocationsPCPrefix,
-			false: util.BtRelatedLocationsPrefix,
-		},
+		true:  util.BtRelatedLocationsSameTypePCPrefix,
+		false: util.BtRelatedLocationsSameTypePrefix,
 	},
 }
 
@@ -114,9 +102,8 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 	}
 
 	sameAncestor := (in.GetWithinPlace() != "")
-	samePlaceType := in.GetSamePlaceType()
 	isPerCapita := in.GetIsPerCapita()
-	prefix := RelatedLocationsPrefixMap[sameAncestor][samePlaceType][isPerCapita]
+	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
 
 	rowList := bigtable.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {
@@ -170,7 +157,7 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 
 	isPerCapita := in.GetIsPerCapita()
 	sameAncestor := (in.GetWithinPlace() != "")
-	prefix := RelatedLocationsPrefixMap[sameAncestor][true][isPerCapita]
+	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
 	rowList := bigtable.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {
 		if sameAncestor {

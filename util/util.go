@@ -61,20 +61,12 @@ const (
 	BtInPropValPrefix = "d/l/"
 	// BtOutPropValPrefix for out-arc prop value.
 	BtOutPropValPrefix = "d/m/"
-	// BtRelatedLocationsPrefix for related places.
-	BtRelatedLocationsPrefix = "d/n/"
 	// BtRelatedLocationsSameTypePrefix for related places with same type.
 	BtRelatedLocationsSameTypePrefix = "d/o/"
-	// BtRelatedLocationsSameAncestorPrefix for related places with same ancestor.
-	BtRelatedLocationsSameAncestorPrefix = "d/p/"
 	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same type and ancestor.
 	BtRelatedLocationsSameTypeAndAncestorPrefix = "d/q/"
-	// BtRelatedLocationsPCPrefix for related places, per capita.
-	BtRelatedLocationsPCPrefix = "d/n0/"
 	// BtRelatedLocationsSameTypePCPrefix for related places with same type, per capita.
 	BtRelatedLocationsSameTypePCPrefix = "d/o0/"
-	// BtRelatedLocationsSameAncestorPCPrefix for related places with same ancestor, per capita.
-	BtRelatedLocationsSameAncestorPCPrefix = "d/p0/"
 	// BtRelatedLocationsSameTypeAndAncestorPCPrefix for related places with same type and ancestor,
 	// per capita.
 	BtRelatedLocationsSameTypeAndAncestorPCPrefix = "d/q0/"

@@ -41,14 +41,12 @@ func TestGetRelatedLocations(t *testing.T) {
 		goldenFile   string
 		dcid         string
 		withinPlace  string
-		sameType     bool
 		statVarDcids []string
 	}{
 		{
 			"county.json",
 			"geoId/06085",
 			"country/USA",
-			true,
 			[]string{
 				"Count_Person",
 				"Median_Income_Person",
@@ -60,15 +58,13 @@ func TestGetRelatedLocations(t *testing.T) {
 			"crime.json",
 			"geoId/06",
 			"",
-			false,
 			[]string{"Count_CriminalActivities_CombinedCrime"},
 		},
 	} {
 		req := &pb.GetRelatedLocationsRequest{
-			Dcid:          c.dcid,
-			StatVarDcids:  c.statVarDcids,
-			WithinPlace:   c.withinPlace,
-			SamePlaceType: c.sameType,
+			Dcid:         c.dcid,
+			StatVarDcids: c.statVarDcids,
+			WithinPlace:  c.withinPlace,
 		}
 		resp, err := client.GetRelatedLocations(ctx, req)
 		if err != nil {

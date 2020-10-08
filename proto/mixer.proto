@@ -310,9 +310,6 @@ message GetRelatedLocationsRequest {
 
   repeated string stat_var_dcids = 2;
 
-  // (Optional) Whether to require same place type for related places.
-  bool same_place_type = 3;
-
   // (Optional) Whether to require all related places under the same ancestor.
   string within_place = 4;
 
