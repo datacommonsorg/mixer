@@ -114,9 +114,8 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 	}
 
 	sameAncestor := (in.GetWithinPlace() != "")
-	samePlaceType := in.GetSamePlaceType()
 	isPerCapita := in.GetIsPerCapita()
-	prefix := RelatedLocationsPrefixMap[sameAncestor][samePlaceType][isPerCapita]
+	prefix := RelatedLocationsPrefixMap[sameAncestor][true][isPerCapita]
 
 	rowList := bigtable.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {

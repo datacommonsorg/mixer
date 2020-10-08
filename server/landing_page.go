@@ -473,10 +473,9 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 		parentDcid = parents[len(parents)-2]
 	}
 	resp, err := s.GetRelatedLocations(ctx, &pb.GetRelatedLocationsRequest{
-		Dcid:          dcid,
-		StatVarDcids:  []string{"Count_Person"},
-		SamePlaceType: true,
-		WithinPlace:   parentDcid,
+		Dcid:         dcid,
+		StatVarDcids: []string{"Count_Person"},
+		WithinPlace:  parentDcid,
 	})
 	if err != nil {
 		return nil, err
