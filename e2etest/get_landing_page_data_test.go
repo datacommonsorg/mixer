@@ -45,7 +45,13 @@ func TestGetLandingPageData(t *testing.T) {
 		statVars   []string
 	}{
 		{
-			"country.json",
+			"asm.json",
+			"country/ASM",
+			1,
+			[]string{},
+		},
+		{
+			"tha.json",
 			"country/THA",
 			1,
 			[]string{"WorldBank/CM_MKT_LCAP_CD", "WorldBank/SL_TLF_0714_ZS"},

@@ -485,6 +485,9 @@ func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
 	if err != nil {
 		return nil, err
 	}
+	if relatedPlaceData["Count_Person"] == nil {
+		return []string{}, nil
+	}
 	return relatedPlaceData["Count_Person"].RelatedPlaces, nil
 }
 
