@@ -1,41 +1,17 @@
 {
   "Count_Person": {
-    "relatedPlaces": [
-      "geoId/06001",
-      "geoId/12011",
-      "geoId/26163",
-      "geoId/48029"
-    ],
     "rankFromTop": 18,
     "rankFromBottom": 3215
   },
   "Median_Age_Person": {
-    "relatedPlaces": [
-      "geoId/21117",
-      "geoId/28089",
-      "geoId/35011",
-      "geoId/51149"
-    ],
     "rankFromTop": 2603,
     "rankFromBottom": 625
   },
   "Median_Income_Person": {
-    "relatedPlaces": [
-      "geoId/08014",
-      "geoId/19049",
-      "geoId/25021",
-      "geoId/51179"
-    ],
     "rankFromTop": 32,
     "rankFromBottom": 3196
   },
   "UnemploymentRate_Person": {
-    "relatedPlaces": [
-      "geoId/39077",
-      "geoId/45039",
-      "geoId/46023",
-      "geoId/5129600"
-    ],
     "rankFromTop": 698,
     "rankFromBottom": 2529
   }
