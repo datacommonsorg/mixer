@@ -18,10 +18,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"hash/fnv"
 	"math/rand"
 	"regexp"
 	"sort"
-	"strconv"
 	"strings"
 	"time"
 
@@ -38,8 +38,6 @@ const (
 	maxSimilarPlace = 5
 	maxNearbyPlace  = 5
 	minPopulation   = 10000
-	cityCohort      = "PlacePagesComparisonCityCohort"
-	countyCohort    = "PlacePagesComparisonCountyCohort"
 )
 
 const (
@@ -97,6 +95,42 @@ var continents = map[string]struct{}{
 	"North America": {},
 	"Oceania":       {},
 	"South America": {},
+}
+
+func getCohort(placeType string, placeDcid string) (string, error) {
+	// Country
+	if placeType == "Country" {
+		return "PlacePagesComparisonCountriesCohort", nil
+	}
+	// US State
+	ok, err := regexp.MatchString(`^geoId/\d{2}$`, placeDcid)
+	if err != nil {
+		return "", err
+	}
+	if ok {
+		return "PlacePagesComparisonStateCohort", nil
+	}
+	// US County
+	ok, err = regexp.MatchString(`^geoId/\d{5}$`, placeDcid)
+	if err != nil {
+		return "", err
+	}
+	if ok {
+		return "PlacePagesComparisonCountyCohort", nil
+	}
+	// US City
+	ok, err = regexp.MatchString(`^geoId/\d{7}$`, placeDcid)
+	if err != nil {
+		return "", err
+	}
+	if ok {
+		return "PlacePagesComparisonCityCohort", nil
+	}
+	// World cities
+	if placeType == "City" {
+		return "PlacePagesComparisonWorldCitiesCohort", nil
+	}
+	return "", nil
 }
 
 // A lot of the code below mimics the logic from website server:
@@ -303,28 +337,24 @@ func filterChildPlaces(childPlaces map[string][]*place) (string, []*place) {
 
 // Get child places by types.
 // The place under each type is sorted by the population.
-func getChildPlaces(ctx context.Context, s *Server, dcid string) (
+func getChildPlaces(ctx context.Context, s *Server, placedDcid, placeType string) (
 	map[string][]*place, error) {
 	children := []*Node{}
 	// ContainedIn places
 	containedInPlaces, err := getPropertyValuesHelper(
-		ctx, s.btTable, s.memcache, []string{dcid}, "containedInPlace", false)
+		ctx, s.btTable, s.memcache, []string{placedDcid}, "containedInPlace", false)
 	if err != nil {
 		return nil, err
 	}
-	children = append(children, containedInPlaces[dcid]...)
+	children = append(children, containedInPlaces[placedDcid]...)
 	// GeoOverlaps places
 	overlapPlaces, err := getPropertyValuesHelper(
-		ctx, s.btTable, s.memcache, []string{dcid}, "geoOverlaps", false)
+		ctx, s.btTable, s.memcache, []string{placedDcid}, "geoOverlaps", false)
 	if err != nil {
 		return nil, err
 	}
-	children = append(children, overlapPlaces[dcid]...)
+	children = append(children, overlapPlaces[placedDcid]...)
 	// Get the wanted place types
-	placeType, err := getPlaceType(ctx, s, dcid)
-	if err != nil {
-		return nil, err
-	}
 	wantedTypes, ok := wantedPlaceTypes[placeType]
 	if !ok {
 		wantedTypes = allWantedPlaceTypes
@@ -408,87 +438,50 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 }
 
 // Get similar places.
-func getSimilarPlaces(ctx context.Context, s *Server, dcid string, seed int64) (
+func getSimilarPlaces(
+	ctx context.Context, s *Server, placeDcid, placeType string, seed int64) (
 	[]string, error) {
 
-	isCounty, err := regexp.MatchString(`^geoId/\d{5}$`, dcid)
+	cohort, err := getCohort(placeType, placeDcid)
 	if err != nil {
 		return nil, err
 	}
-	isCity, err := regexp.MatchString(`^geoId/\d{7}$`, dcid)
-	if err != nil {
-		return nil, err
-	}
-	if isCity || isCounty {
-		geoID, err := strconv.Atoi(strings.TrimPrefix(dcid, "geoId/"))
-		if err != nil {
-			return nil, err
-		}
-		// Seed with day of the year and place dcid to make it relatively stable
-		// in a day.
-		if seed == 0 {
-			seed = int64(time.Now().YearDay() + geoID)
-		}
-		rand.Seed(seed)
-		var cohort string
-		if isCity {
-			cohort = cityCohort
-		} else {
-			cohort = countyCohort
-		}
-		resp, err := getPropertyValuesHelper(
-			ctx, s.btTable, s.memcache, []string{cohort}, "member", true)
-		if err != nil {
-			return nil, err
-		}
-		places := []*place{}
-		for _, node := range resp[cohort] {
-			if node.Dcid != dcid {
-				places = append(places, &place{
-					Dcid: node.Dcid,
-					Name: node.Name,
-				})
-			}
-		}
-		// Shuffle places to get random results at different query time.
-		rand.Shuffle(len(places), func(i, j int) {
-			places[i], places[j] = places[j], places[i]
-		})
-		result := []*place{}
-		for _, place := range places {
-			result = append(result, place)
-			if len(result) == maxSimilarPlace {
-				return getDcids(result), nil
-			}
-		}
-		return getDcids(result), nil
-	}
-	// For non US city and county, use related places.
-	parents, err := getParentPlaces(ctx, s, dcid)
-	if err != nil {
-		return nil, err
-	}
-	parentDcid := ""
-	if len(parents) >= 2 {
-		parentDcid = parents[len(parents)-2]
-	}
-	resp, err := s.GetRelatedLocations(ctx, &pb.GetRelatedLocationsRequest{
-		Dcid:         dcid,
-		StatVarDcids: []string{"Count_Person"},
-		WithinPlace:  parentDcid,
-	})
-	if err != nil {
-		return nil, err
-	}
-	var relatedPlaceData map[string]*RelatedPlacesInfo
-	err = json.Unmarshal([]byte(resp.Payload), &relatedPlaceData)
-	if err != nil {
-		return nil, err
-	}
-	if relatedPlaceData["Count_Person"] == nil {
+	if cohort == "" {
 		return []string{}, nil
 	}
-	return relatedPlaceData["Count_Person"].RelatedPlaces, nil
+	resp, err := getPropertyValuesHelper(
+		ctx, s.btTable, s.memcache, []string{cohort}, "member", true)
+	if err != nil {
+		return nil, err
+	}
+	places := []*place{}
+	for _, node := range resp[cohort] {
+		if node.Dcid != placeDcid {
+			places = append(places, &place{
+				Dcid: node.Dcid,
+				Name: node.Name,
+			})
+		}
+	}
+	// Shuffle places to get random results at different query time.
+	if seed == 0 {
+		h := fnv.New32a()
+		h.Write([]byte(placeDcid))
+		seed = int64(time.Now().YearDay() + int(h.Sum32()))
+	}
+	rand.Seed(seed)
+	rand.Shuffle(len(places), func(i, j int) {
+		places[i], places[j] = places[j], places[i]
+	})
+	result := []*place{}
+	for _, place := range places {
+		result = append(result, place)
+		if len(result) == maxSimilarPlace {
+			return getDcids(result), nil
+		}
+	}
+	return getDcids(result), nil
+
 }
 
 // Get nearby places.
@@ -544,13 +537,18 @@ func (s *Server) GetLandingPageData(
 	seed := in.GetSeed()
 	statVars := in.GetStatVars()
 
+	placeType, err := getPlaceType(ctx, s, placeDcid)
+	if err != nil {
+		return nil, err
+	}
+
 	// Fetch child and prarent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
 	relatedPlaceChan := make(chan *relatedPlace, 4)
 	allChildPlaceChan := make(chan map[string][]*place, 1)
 	var filteredChildPlaceType string
 	errs.Go(func() error {
-		childPlaces, err := getChildPlaces(errCtx, s, placeDcid)
+		childPlaces, err := getChildPlaces(errCtx, s, placeDcid, placeType)
 		if err != nil {
 			return err
 		}
@@ -569,7 +567,7 @@ func (s *Server) GetLandingPageData(
 		return nil
 	})
 	errs.Go(func() error {
-		similarPlaces, err := getSimilarPlaces(errCtx, s, placeDcid, seed)
+		similarPlaces, err := getSimilarPlaces(errCtx, s, placeDcid, placeType, seed)
 		if err != nil {
 			return err
 		}
@@ -585,7 +583,7 @@ func (s *Server) GetLandingPageData(
 		return nil
 	})
 
-	err := errs.Wait()
+	err = errs.Wait()
 	if err != nil {
 		return nil, err
 	}
