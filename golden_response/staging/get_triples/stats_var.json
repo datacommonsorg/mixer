@@ -113,8 +113,7 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
-      "subjectId": "WorldBank/VC_IHR_PSRC_P5",
-      "subjectName": "Intentional homicides (per 100,000 people)",
+      "subjectId": "WorldBank_VC_IHR_PSRC_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -126,8 +125,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "WorldBank/SH_XPD_CHEX_PP_CD",
-      "subjectName": "Current health expenditure per capita, PPP (current international $)",
+      "subjectId": "WorldBank_SH_XPD_CHEX_PP_CD",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -139,8 +137,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "WorldBank/SH_STA_SUIC_P5",
-      "subjectName": "Suicide mortality rate (per 100,000 population)",
+      "subjectId": "WorldBank_SH_STA_SUIC_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -300,8 +297,7 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
-      "subjectId": "WorldBank/VC_IHR_PSRC_FE_P5",
-      "subjectName": "Intentional homicides, female (per 100,000 female)",
+      "subjectId": "WorldBank_VC_IHR_PSRC_FE_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -313,8 +309,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "WorldBank/SH_STA_SUIC_FE_P5",
-      "subjectName": "Suicide mortality rate, female (per 100,000 female population)",
+      "subjectId": "WorldBank_SH_STA_SUIC_FE_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],

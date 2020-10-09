@@ -425,6 +425,21 @@
       },
       "provenanceDomain": "census.gov"
     },
+    "Count_Person_10To14Years": {},
+    "Count_Person_15To19Years": {},
+    "Count_Person_18To24Years": {
+      "data": {
+        "2011": 156880,
+        "2012": 158783,
+        "2013": 160218,
+        "2014": 162358,
+        "2015": 164085,
+        "2016": 165073,
+        "2017": 165587,
+        "2018": 165715
+      },
+      "provenanceDomain": "census.gov"
+    },
     "Count_Person_20To24Years": {},
     "Count_Person_25OrMoreYears": {
       "data": {
@@ -439,6 +454,7 @@
       },
       "provenanceDomain": "census.gov"
     },
+    "Count_Person_25To29Years": {},
     "Count_Person_25To34Years": {
       "data": {
         "2011": 269462,
@@ -626,20 +642,64 @@
       },
       "provenanceDomain": "census.gov"
     },
-    "Count_Person_60To64Years": {},
-    "Count_Person_65OrMoreYears": {
+    "Count_Person_5To9Years": {},
+    "Count_Person_60To61Years": {
       "data": {
-        "2011": 192422,
-        "2012": 199208,
-        "2013": 206532,
-        "2014": 214715,
-        "2015": 222863,
-        "2016": 230274,
-        "2017": 239965,
-        "2018": 246908
+        "2011": 35439,
+        "2012": 36726,
+        "2013": 37175,
+        "2014": 39139,
+        "2015": 40489,
+        "2016": 42116,
+        "2017": 43661,
+        "2018": 44690
       },
       "provenanceDomain": "census.gov"
     },
+    "Count_Person_60To64Years": {},
+    "Count_Person_62To64Years": {
+      "data": {
+        "2011": 44470,
+        "2012": 46772,
+        "2013": 49330,
+        "2014": 51040,
+        "2015": 52093,
+        "2016": 53059,
+        "2017": 55094,
+        "2018": 56888
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_Person_65To69Years": {},
+    "Count_Person_65To74Years": {
+      "data": {
+        "2011": 103118,
+        "2012": 107718,
+        "2013": 112625,
+        "2014": 118011,
+        "2015": 123435,
+        "2016": 128311,
+        "2017": 134022,
+        "2018": 138006
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_Person_70To74Years": {},
+    "Count_Person_75OrMoreYears": {
+      "data": {
+        "2011": 89304,
+        "2012": 91490,
+        "2013": 93907,
+        "2014": 96704,
+        "2015": 99428,
+        "2016": 101963,
+        "2017": 105943,
+        "2018": 108902
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_Person_75To79Years": {},
+    "Count_Person_80OrMoreYears": {},
     "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
       "data": {
         "2011": 9906,
@@ -1911,19 +1971,7 @@
       },
       "provenanceDomain": "census.gov"
     },
-    "Count_Person_Upto5Years": {
-      "data": {
-        "2011": 124848,
-        "2012": 124697,
-        "2013": 123460,
-        "2014": 123124,
-        "2015": 122397,
-        "2016": 120684,
-        "2017": 119885,
-        "2018": 118688
-      },
-      "provenanceDomain": "census.gov"
-    },
+    "Count_Person_Upto4Years": {},
     "Count_Person_WhiteAlone": {
       "data": {
         "2011": 896937,
@@ -2237,7 +2285,10 @@
         "2020-10-01": 21457,
         "2020-10-02": 21605,
         "2020-10-03": 21734,
-        "2020-10-04": 21840
+        "2020-10-04": 21840,
+        "2020-10-05": 21926,
+        "2020-10-06": 21978,
+        "2020-10-07": 22056
       },
       "provenanceDomain": "nytimes.com"
     },
@@ -2490,7 +2541,10 @@
         "2020-10-01": 326,
         "2020-10-02": 331,
         "2020-10-03": 334,
-        "2020-10-04": 345
+        "2020-10-04": 345,
+        "2020-10-05": 346,
+        "2020-10-06": 348,
+        "2020-10-07": 354
       },
       "provenanceDomain": "nytimes.com"
     },
@@ -3439,6 +3493,31 @@
       "provenanceDomain": "bls.gov"
     },
     "UnemploymentRate_Person_Female": {},
-    "UnemploymentRate_Person_Male": {}
+    "UnemploymentRate_Person_Male": {},
+    "WorldBank_BM_TRF_PWKR_CD_DT": {},
+    "WorldBank_BX_TRF_PWKR_CD_DT": {},
+    "WorldBank_BX_TRF_PWKR_DT_GD_ZS": {},
+    "WorldBank_CM_MKT_LCAP_CD": {},
+    "WorldBank_CM_MKT_LCAP_GD_ZS": {},
+    "WorldBank_MS_MIL_XPND_CD": {},
+    "WorldBank_MS_MIL_XPND_GD_ZS": {},
+    "WorldBank_SE_XPD_TOTL_GB_ZS": {},
+    "WorldBank_SE_XPD_TOTL_GD_ZS": {},
+    "WorldBank_SH_ALC_PCAP_LI": {},
+    "WorldBank_SH_STA_WAST_FE_ZS": {},
+    "WorldBank_SH_STA_WAST_MA_ZS": {},
+    "WorldBank_SH_STA_WAST_ZS": {},
+    "WorldBank_SH_SVR_WAST_FE_ZS": {},
+    "WorldBank_SH_SVR_WAST_MA_ZS": {},
+    "WorldBank_SH_SVR_WAST_ZS": {},
+    "WorldBank_SI_POV_GINI": {},
+    "WorldBank_SL_TLF_0714_FE_ZS": {},
+    "WorldBank_SL_TLF_0714_MA_ZS": {},
+    "WorldBank_SL_TLF_0714_ZS": {},
+    "WorldBank_SP_DYN_IMRT_FE_IN": {},
+    "WorldBank_SP_DYN_IMRT_IN": {},
+    "WorldBank_SP_DYN_IMRT_MA_IN": {},
+    "WorldBank_SP_RUR_TOTL": {},
+    "WorldBank_SP_URB_TOTL": {}
   }
 }
