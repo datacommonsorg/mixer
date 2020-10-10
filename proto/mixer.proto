@@ -341,18 +341,6 @@ message GetRelatedLocationsResponse {
   string payload = 1;
 }
 
-// Request to get interesting aspects for places.
-message GetInterestingPlaceAspectsRequest {
-  // Place DCIDs.
-  repeated string dcids = 1;
-}
-
-// Response to get interesting aspects for places.
-message GetInterestingPlaceAspectsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
 // Request to get landing page info for places.
 message GetLandingPageRequest {
   // Place DCIDs.
@@ -612,21 +600,6 @@ message StatisticalVariable {
   string scaling_factor = 7;
   string unit = 8;
   string stat_type = 9;
-}
-
-// Info about why a place is interesting: For the statistical variable, under
-// certain constraints (place type, ancestor, per capita or not), if a place
-// ranks among top or bottom, it is considered as interesting.
-message InterestingPlaceAspect {
-  message Aspect {
-    int32 rank_from_top = 1;
-    int32 rank_from_bottom = 2;
-    StatisticalVariable stat_var = 3;
-    string contained_in_place = 4;
-    string place_type = 5;
-    bool per_capita = 6;
-  }
-  repeated Aspect aspects = 1;
 }
 
 // Request for GetStat service.
@@ -900,14 +873,6 @@ service Mixer {
     option (google.api.http) = {
       post: "/node/related-locations"
       body: "*"
-    };
-  }
-
-  // Get interesting aspects for places.
-  rpc GetInterestingPlaceAspects(GetInterestingPlaceAspectsRequest)
-      returns (GetInterestingPlaceAspectsResponse) {
-    option (google.api.http) = {
-      get: "/node/interesting-place-aspects"
     };
   }
 

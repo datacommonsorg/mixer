@@ -197,51 +197,6 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 	return &pb.GetLocationsRankingsResponse{Payload: results}, nil
 }
 
-// GetInterestingPlaceAspects implements API for Mixer.GetInterestingPlaceAspects.
-func (s *Server) GetInterestingPlaceAspects(
-	ctx context.Context, in *pb.GetInterestingPlaceAspectsRequest) (
-	*pb.GetInterestingPlaceAspectsResponse, error) {
-	dcids := in.GetDcids()
-	if len(dcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcids")
-	}
-	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Error(codes.InvalidArgument, "Invalid DCIDs")
-	}
-
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf(
-			"%s%s", util.BtInterestingPlaceAspectPrefix, dcid))
-	}
-
-	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var btInterestingPlaceAspects InterestingPlaceAspects
-			err := json.Unmarshal(jsonRaw, &btInterestingPlaceAspects)
-			if err != nil {
-				return nil, err
-			}
-			return &btInterestingPlaceAspects, nil
-		}, nil)
-	if err != nil {
-		return nil, err
-	}
-	results := map[string]*InterestingPlaceAspects{}
-	for dcid, data := range dataMap {
-		if data == nil {
-			results[dcid] = nil
-		} else {
-			results[dcid] = data.(*InterestingPlaceAspects)
-		}
-	}
-	jsonRaw, err := json.Marshal(results)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetInterestingPlaceAspectsResponse{Payload: string(jsonRaw)}, nil
-}
-
 // GetPlaceStatsVar implements API for Mixer.GetPlaceStatsVar.
 func (s *Server) GetPlaceStatsVar(
 	ctx context.Context, in *pb.GetPlaceStatsVarRequest) (
