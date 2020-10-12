@@ -41,6 +41,18 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "dc/vec47kj93z2m6",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
       "subjectId": "dc/h00kfxhs73dhc",
       "subjectTypes": [
         "StatisticalVariable"
@@ -113,7 +125,7 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
-      "subjectId": "WorldBank_VC_IHR_PSRC_P5",
+      "subjectId": "WorldBank/VC_IHR_PSRC_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -125,7 +137,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "WorldBank_SH_XPD_CHEX_PP_CD",
+      "subjectId": "WorldBank/SH_XPD_CHEX_PP_CD",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -137,7 +149,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "WorldBank_SH_STA_SUIC_P5",
+      "subjectId": "WorldBank/SH_STA_SUIC_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -297,7 +309,7 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
-      "subjectId": "WorldBank_VC_IHR_PSRC_FE_P5",
+      "subjectId": "WorldBank/VC_IHR_PSRC_FE_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -309,7 +321,7 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "WorldBank_SH_STA_SUIC_FE_P5",
+      "subjectId": "WorldBank/SH_STA_SUIC_FE_P5",
       "subjectTypes": [
         "StatisticalVariable"
       ],
