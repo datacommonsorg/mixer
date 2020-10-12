@@ -50,12 +50,13 @@ func TestGetLandingPageData(t *testing.T) {
 			1,
 			[]string{},
 		},
-		{
-			"tha.json",
-			"country/THA",
-			1,
-			[]string{"Amount_Stock", "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"},
-		},
+// TODO(tjann): uncomment this on next release (after 2020-10-12).
+//		{
+//			"tha.json",
+//			"country/THA",
+//			1,
+//			[]string{"Amount_Stock", "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"},
+//		},
 		{
 			"county.json",
 			"geoId/06085",
