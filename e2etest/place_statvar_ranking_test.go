@@ -30,7 +30,7 @@ type Chart struct {
 }
 
 func readChartConfig() ([]Chart, error) {
-	var config []Chart // quick and dirty
+	var config []Chart
 	resp, err := http.Get("https://raw.githubusercontent.com/datacommonsorg/website/master/server/chart_config.json")
 	if err != nil {
 		return config, err
