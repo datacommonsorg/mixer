@@ -54,7 +54,7 @@ func TestGetLandingPageData(t *testing.T) {
 			"tha.json",
 			"country/THA",
 			1,
-			[]string{"WorldBank_CM_MKT_LCAP_CD", "WorldBank_SL_TLF_0714_ZS"},
+			[]string{"Amount_Stock", "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"},
 		},
 		{
 			"county.json",
