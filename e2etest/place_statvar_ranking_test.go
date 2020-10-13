@@ -15,61 +15,76 @@
 package e2etest
 
 import (
-  "context"
-  "io/ioutil"
-  "path"
-  "runtime"
-  "strings"
-  "testing"
+	"context"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
+	"testing"
 
-  pb "github.com/datacommonsorg/mixer/proto"
-  "github.com/datacommonsorg/mixer/server"
+	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/server"
 )
 
+type Chart struct {
+	StatsVars []string `json:"statsVars"`
+}
+
+func readChartConfig() ([]Chart, error) {
+	var config []Chart // quick and dirty
+	resp, err := http.Get("https://raw.githubusercontent.com/datacommonsorg/website/master/server/chart_config.json")
+	if err != nil {
+		return config, err
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return config, err
+	}
+	err = json.Unmarshal(body, &config)
+	if err != nil {
+		return config, err
+	}
+	return config, nil
+}
+
 func TestChartConfigRankings(t *testing.T) {
-  ctx := context.Background()
-  client, err := setup(server.NewMemcache(map[string][]byte{}))
-  if err != nil {
-    t.Fatalf("Failed to set up mixer and client")
-  }
-  _, filename, _, _ := runtime.Caller(0)
-  configStatVars := path.Join(path.Dir(filename), "config_statvars.txt")
-  dat, err := ioutil.ReadFile(configStatVars)
-  if err != nil {
-    t.Errorf("could not read config_statvars.txt")
-    return
-  }
-  for _, sv := range strings.Split(string(dat), "\n") {
-		if sv == "" {
-			continue
-		}
-    for _, c := range []struct {
-      placeType   string
-    }{
-      {
-        "Country",
-      },
-      {
-        "State",
-      },
-      {
-        "County",
-      },
-      {
-        "City",
-      },
-    } {
-      req := &pb.GetLocationsRankingsRequest{
-        PlaceType:    c.placeType,
-        StatVarDcids: []string {sv},
-      }
-      response, err := client.GetLocationsRankings(ctx, req)
-      if err != nil || len(response.Payload) == 0 {
-        t.Errorf("No rankings for: %s %s", sv, c.placeType)
-        continue
-			// } else {
-			// 	t.Logf("found rankings for (%s, %s)", sv, c.placeType)
+	ctx := context.Background()
+	client, err := setup(server.NewMemcache(map[string][]byte{}))
+	if err != nil {
+		t.Fatalf("Failed to set up mixer and client")
+	}
+	config, err := readChartConfig()
+	if err != nil {
+		t.Errorf("could not read config_statvars.txt")
+		return
+	}
+	for _, c := range []struct {
+		placeType string
+	}{
+		{
+			"Country",
+		},
+		{
+			"State",
+		},
+		{
+			"County",
+		},
+		{
+			"City",
+		},
+	} {
+		for _, chart := range config {
+			for _, sv := range chart.StatsVars {
+				req := &pb.GetLocationsRankingsRequest{
+					PlaceType:    c.placeType,
+					StatVarDcids: []string{sv},
+				}
+				response, err := client.GetLocationsRankings(ctx, req)
+				if err != nil || len(response.Payload) == 0 {
+					t.Errorf("No rankings for %s: %s", c.placeType, sv)
+					continue
+				}
 			}
-    }
-  }
+		}
+	}
 }
