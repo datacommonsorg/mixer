@@ -41,6 +41,18 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "dc/vec47kj93z2m6",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
       "subjectId": "dc/h00kfxhs73dhc",
       "subjectTypes": [
         "StatisticalVariable"
@@ -113,31 +125,7 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
-      "subjectId": "WorldBank_VC_IHR_PSRC_P5",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "WorldBank_SH_XPD_CHEX_PP_CD",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "WorldBank_SH_STA_SUIC_P5",
+      "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -173,6 +161,18 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Count_BirthEvent_AsAFractionOfCount_Person",
       "subjectTypes": [
         "StatisticalVariable"
@@ -186,6 +186,18 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -297,19 +309,7 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
-      "subjectId": "WorldBank_VC_IHR_PSRC_FE_P5",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person_Female",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "WorldBank_SH_STA_SUIC_FE_P5",
+      "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -334,6 +334,18 @@
     },
     {
       "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],

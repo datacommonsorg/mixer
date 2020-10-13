@@ -66,6 +66,7 @@
           ]
         },
         "Count_Person": {
+          "isDcAggregate": true,
           "sourceSeries": [
             {
               "val": {
