@@ -79,6 +79,7 @@ func TestGetLocationsRankings(t *testing.T) {
 		req := &pb.GetLocationsRankingsRequest{
 			PlaceType:    c.placeType,
 			WithinPlace:  c.withinPlace,
+			IsPerCapita:  c.isPerCapita,
 			StatVarDcids: c.statVarDcids,
 		}
 		response, err := client.GetLocationsRankings(ctx, req)
