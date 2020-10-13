@@ -1,17 +1,30 @@
 {
   "geoId/06085": {
+    "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears": {},
     "Amount_Consumption_Electricity_PerCapita": {},
     "Amount_Consumption_Energy_PerCapita": {},
     "Amount_Debt_Government": {},
+    "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {},
+    "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+    "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
+    "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
     "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
     "Amount_Emissions_CarbonDioxide_PerCapita": {},
+    "Amount_Remittance_InwardRemittance": {},
+    "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+    "Amount_Remittance_OutwardRemittance": {},
+    "Amount_Stock": {},
+    "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
     "Count_CriminalActivities_Arson": {},
     "Count_CriminalActivities_CombinedCrime": {},
     "Count_CriminalActivities_PropertyCrime": {},
     "Count_CriminalActivities_ViolentCrime": {},
     "Count_CycloneEvent": {},
+    "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {},
+    "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {},
+    "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {},
     "Count_Death_DiseasesOfTheCirculatorySystem": {
       "data": {
         "1999": 3706,
@@ -380,6 +393,586 @@
       },
       "provenanceDomain": "census.gov"
     },
+    "Count_HousingUnit": {
+      "data": {
+        "2011": 629448,
+        "2012": 632299,
+        "2013": 636190,
+        "2014": 640439,
+        "2015": 646190,
+        "2016": 651905,
+        "2017": 658409,
+        "2018": 665365
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_1940To1949DateBuilt": {
+      "data": {
+        "2011": 27495,
+        "2012": 27253,
+        "2013": 26736,
+        "2014": 27183,
+        "2015": 27318,
+        "2016": 26449,
+        "2017": 26199,
+        "2018": 25260
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_1950To1959DateBuilt": {
+      "data": {
+        "2011": 100795,
+        "2012": 101433,
+        "2013": 100684,
+        "2014": 99810,
+        "2015": 100443,
+        "2016": 98662,
+        "2017": 97100,
+        "2018": 96343
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_1960To1969DateBuilt": {
+      "data": {
+        "2011": 121349,
+        "2012": 120997,
+        "2013": 121749,
+        "2014": 122681,
+        "2015": 121911,
+        "2016": 122399,
+        "2017": 123235,
+        "2018": 123843
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_1970To1979DateBuilt": {
+      "data": {
+        "2011": 143847,
+        "2012": 144870,
+        "2013": 145946,
+        "2014": 146210,
+        "2015": 146679,
+        "2016": 146990,
+        "2017": 147110,
+        "2018": 146608
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_1980To1989DateBuilt": {
+      "data": {
+        "2011": 79409,
+        "2012": 79876,
+        "2013": 80553,
+        "2014": 80091,
+        "2015": 81256,
+        "2016": 81849,
+        "2017": 82185,
+        "2018": 81705
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_1990To1999DateBuilt": {
+      "data": {
+        "2011": 63429,
+        "2012": 62633,
+        "2013": 63278,
+        "2014": 64939,
+        "2015": 65723,
+        "2016": 67168,
+        "2017": 67933,
+        "2018": 68111
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_2000To2009DateBuilt": {
+      "data": {
+        "2012": 60555,
+        "2013": 61936,
+        "2014": 62555,
+        "2015": 62246,
+        "2016": 61603,
+        "2017": 61064,
+        "2018": 61166
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_2010OrLaterDateBuilt": {
+      "data": {
+        "2012": 1235,
+        "2013": 2611,
+        "2014": 4670
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_Before1939DateBuilt": {
+      "data": {
+        "2011": 33244,
+        "2012": 33447,
+        "2013": 32697,
+        "2014": 32300,
+        "2015": 31846,
+        "2016": 32144,
+        "2017": 31914,
+        "2018": 32729
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue1000000To1499999USDollar": {
+      "data": {
+        "2015": 47275,
+        "2016": 54647,
+        "2017": 62425,
+        "2018": 73102
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue100000To124999USDollar": {
+      "data": {
+        "2011": 2735,
+        "2012": 2574,
+        "2013": 2310,
+        "2014": 2348,
+        "2015": 2405,
+        "2016": 2618,
+        "2017": 3174,
+        "2018": 3363
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue10000To14999USDollar": {
+      "data": {
+        "2011": 621,
+        "2012": 659,
+        "2013": 688,
+        "2014": 692,
+        "2015": 641,
+        "2016": 645,
+        "2017": 517,
+        "2018": 531
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue125000To149999USDollar": {
+      "data": {
+        "2011": 1918,
+        "2012": 1874,
+        "2013": 1785,
+        "2014": 1569,
+        "2015": 1540,
+        "2016": 1529,
+        "2017": 1204,
+        "2018": 1111
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue1500000To1999999USDollar": {
+      "data": {
+        "2015": 21556,
+        "2016": 25508,
+        "2017": 30230,
+        "2018": 35586
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue150000To174999USDollar": {
+      "data": {
+        "2011": 2531,
+        "2012": 2722,
+        "2013": 2784,
+        "2014": 2755,
+        "2015": 2609,
+        "2016": 2266,
+        "2017": 2094,
+        "2018": 2114
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue15000To19999USDollar": {
+      "data": {
+        "2011": 620,
+        "2012": 681,
+        "2013": 655,
+        "2014": 749,
+        "2015": 493,
+        "2016": 409,
+        "2017": 330,
+        "2018": 291
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue175000To199999USDollar": {
+      "data": {
+        "2011": 2262,
+        "2012": 2401,
+        "2013": 2843,
+        "2014": 2535,
+        "2015": 2138,
+        "2016": 1781,
+        "2017": 1537,
+        "2018": 1239
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue2000000OrMoreUSDollar": {
+      "data": {
+        "2015": 21218,
+        "2016": 27328,
+        "2017": 34235,
+        "2018": 44113
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue200000To249999USDollar": {
+      "data": {
+        "2011": 5603,
+        "2012": 6817,
+        "2013": 7040,
+        "2014": 6831,
+        "2015": 5784,
+        "2016": 4801,
+        "2017": 3747,
+        "2018": 3186
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue20000To24999USDollar": {
+      "data": {
+        "2011": 666,
+        "2012": 663,
+        "2013": 833,
+        "2014": 766,
+        "2015": 666,
+        "2016": 627,
+        "2017": 509,
+        "2018": 383
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue250000To299999USDollar": {
+      "data": {
+        "2011": 6962,
+        "2012": 8588,
+        "2013": 9265,
+        "2014": 8035,
+        "2015": 7013,
+        "2016": 5345,
+        "2017": 3607,
+        "2018": 2965
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue25000To29999USDollar": {
+      "data": {
+        "2011": 461,
+        "2012": 567,
+        "2013": 654,
+        "2014": 741,
+        "2015": 716,
+        "2016": 685,
+        "2017": 549,
+        "2018": 416
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue300000To399999USDollar": {
+      "data": {
+        "2011": 23821,
+        "2012": 28754,
+        "2013": 30166,
+        "2014": 27969,
+        "2015": 25024,
+        "2016": 20092,
+        "2017": 14687,
+        "2018": 10492
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue30000To34999USDollar": {
+      "data": {
+        "2011": 736,
+        "2012": 977,
+        "2013": 908,
+        "2014": 765,
+        "2015": 787,
+        "2016": 712,
+        "2017": 430,
+        "2018": 410
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue35000To39999USDollar": {
+      "data": {
+        "2011": 766,
+        "2012": 762,
+        "2013": 766,
+        "2014": 688,
+        "2015": 575,
+        "2016": 453,
+        "2017": 286,
+        "2018": 163
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue400000To499999USDollar": {
+      "data": {
+        "2011": 35273,
+        "2012": 40002,
+        "2013": 41787,
+        "2014": 38504,
+        "2015": 34231,
+        "2016": 27934,
+        "2017": 22351,
+        "2018": 16547
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue40000To49999USDollar": {
+      "data": {
+        "2011": 1485,
+        "2012": 1592,
+        "2013": 1764,
+        "2014": 1416,
+        "2015": 1318,
+        "2016": 1124,
+        "2017": 946,
+        "2018": 813
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue500000To749999USDollar": {
+      "data": {
+        "2011": 109537,
+        "2012": 105944,
+        "2013": 103276,
+        "2014": 102734,
+        "2015": 100398,
+        "2016": 95366,
+        "2017": 89391,
+        "2018": 77149
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue50000To59999USDollar": {
+      "data": {
+        "2011": 2128,
+        "2012": 2249,
+        "2013": 2293,
+        "2014": 2194,
+        "2015": 2068,
+        "2016": 1821,
+        "2017": 1372,
+        "2018": 1047
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue60000To69999USDollar": {
+      "data": {
+        "2011": 1803,
+        "2012": 1599,
+        "2013": 1737,
+        "2014": 1505,
+        "2015": 1458,
+        "2016": 1294,
+        "2017": 1210,
+        "2018": 805
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue70000To79999USDollar": {
+      "data": {
+        "2011": 1847,
+        "2012": 1761,
+        "2013": 1506,
+        "2014": 1606,
+        "2015": 1525,
+        "2016": 1374,
+        "2017": 1118,
+        "2018": 913
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue750000To999999USDollar": {
+      "data": {
+        "2011": 71172,
+        "2012": 63885,
+        "2013": 59394,
+        "2014": 61273,
+        "2015": 65713,
+        "2016": 70329,
+        "2017": 77064,
+        "2018": 79098
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue80000To89999USDollar": {
+      "data": {
+        "2011": 1906,
+        "2012": 1760,
+        "2013": 1685,
+        "2014": 1672,
+        "2015": 1478,
+        "2016": 1350,
+        "2017": 1111,
+        "2018": 1013
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValue90000To99999USDollar": {
+      "data": {
+        "2011": 1469,
+        "2012": 1391,
+        "2013": 1454,
+        "2014": 1403,
+        "2015": 1177,
+        "2016": 849,
+        "2017": 868,
+        "2018": 797
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HomeValueUpto10000USDollar": {
+      "data": {
+        "2011": 992,
+        "2012": 1012,
+        "2013": 2124,
+        "2014": 2876,
+        "2015": 3030,
+        "2016": 3368,
+        "2017": 3872,
+        "2018": 3011
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
+      "data": {
+        "2011": 3195,
+        "2012": 3187,
+        "2013": 3118,
+        "2014": 3043,
+        "2015": 2998,
+        "2016": 2961,
+        "2017": 3026,
+        "2018": 3007
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceAsianAlone": {
+      "data": {
+        "2011": 177008,
+        "2012": 181982,
+        "2013": 185318,
+        "2014": 191750,
+        "2015": 198384,
+        "2016": 205361,
+        "2017": 211620,
+        "2018": 219251
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceBlackOrAfricanAmericanAlone": {
+      "data": {
+        "2011": 15837,
+        "2012": 16312,
+        "2013": 16668,
+        "2014": 16824,
+        "2015": 16844,
+        "2016": 16850,
+        "2017": 16756,
+        "2018": 16444
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceHispanicOrLatino": {
+      "data": {
+        "2011": 115999,
+        "2012": 116768,
+        "2013": 118552,
+        "2014": 120343,
+        "2015": 120926,
+        "2016": 120550,
+        "2017": 120017,
+        "2018": 120112
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "data": {
+        "2011": 1843,
+        "2012": 1970,
+        "2013": 1770,
+        "2014": 1885,
+        "2015": 1976,
+        "2016": 1991,
+        "2017": 1921,
+        "2018": 2196
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceSomeOtherRaceAlone": {
+      "data": {
+        "2011": 42462,
+        "2012": 41206,
+        "2013": 41981,
+        "2014": 41374,
+        "2015": 43180,
+        "2016": 46403,
+        "2017": 48509,
+        "2018": 47379
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceTwoOrMoreRaces": {
+      "data": {
+        "2011": 14393,
+        "2012": 15288,
+        "2013": 17340,
+        "2014": 17690,
+        "2015": 18483,
+        "2016": 18332,
+        "2017": 19449,
+        "2018": 19653
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_HouseholderRaceWhiteAlone": {
+      "data": {
+        "2011": 344914,
+        "2012": 344510,
+        "2013": 343182,
+        "2014": 342148,
+        "2015": 339598,
+        "2016": 334681,
+        "2017": 329170,
+        "2018": 327595
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_OwnerOccupied": {
+      "data": {
+        "2011": 351897,
+        "2012": 351460,
+        "2013": 350367,
+        "2014": 350103,
+        "2015": 352836,
+        "2016": 354255,
+        "2017": 358864,
+        "2018": 360658
+      },
+      "provenanceDomain": "census.gov"
+    },
+    "Count_HousingUnit_RenterOccupied": {
+      "data": {
+        "2011": 247755,
+        "2012": 252995,
+        "2013": 259010,
+        "2014": 264611,
+        "2015": 268627,
+        "2016": 272324,
+        "2017": 271587,
+        "2018": 274867
+      },
+      "provenanceDomain": "census.gov"
+    },
     "Count_Person": {
       "data": {
         "1980": 1295071,
@@ -699,6 +1292,9 @@
       "provenanceDomain": "census.gov"
     },
     "Count_Person_75To79Years": {},
+    "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {},
+    "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {},
+    "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {},
     "Count_Person_80OrMoreYears": {},
     "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
       "data": {
@@ -1893,6 +2489,7 @@
       "provenanceDomain": "census.gov"
     },
     "Count_Person_PerArea": {},
+    "Count_Person_Rural": {},
     "Count_Person_Separated": {
       "data": {
         "2011": 22821,
@@ -1972,6 +2569,13 @@
       "provenanceDomain": "census.gov"
     },
     "Count_Person_Upto4Years": {},
+    "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
+    "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
+    "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {},
+    "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {},
+    "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {},
+    "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {},
+    "Count_Person_Urban": {},
     "Count_Person_WhiteAlone": {
       "data": {
         "2011": 896937,
@@ -2289,7 +2893,10 @@
         "2020-10-05": 21926,
         "2020-10-06": 21978,
         "2020-10-07": 22056,
-        "2020-10-08": 22154
+        "2020-10-08": 22154,
+        "2020-10-09": 22312,
+        "2020-10-10": 22419,
+        "2020-10-11": 22555
       },
       "provenanceDomain": "nytimes.com"
     },
@@ -2546,11 +3153,15 @@
         "2020-10-05": 346,
         "2020-10-06": 348,
         "2020-10-07": 354,
-        "2020-10-08": 355
+        "2020-10-08": 355,
+        "2020-10-09": 358,
+        "2020-10-10": 358,
+        "2020-10-11": 358
       },
       "provenanceDomain": "nytimes.com"
     },
     "FertilityRate_Person_Female": {},
+    "GiniIndex_EcconomicActivity": {},
     "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {},
     "GrowthRate_Count_Person": {},
     "LifeExpectancy_Person": {},
@@ -3495,31 +4106,6 @@
       "provenanceDomain": "bls.gov"
     },
     "UnemploymentRate_Person_Female": {},
-    "UnemploymentRate_Person_Male": {},
-    "WorldBank_BM_TRF_PWKR_CD_DT": {},
-    "WorldBank_BX_TRF_PWKR_CD_DT": {},
-    "WorldBank_BX_TRF_PWKR_DT_GD_ZS": {},
-    "WorldBank_CM_MKT_LCAP_CD": {},
-    "WorldBank_CM_MKT_LCAP_GD_ZS": {},
-    "WorldBank_MS_MIL_XPND_CD": {},
-    "WorldBank_MS_MIL_XPND_GD_ZS": {},
-    "WorldBank_SE_XPD_TOTL_GB_ZS": {},
-    "WorldBank_SE_XPD_TOTL_GD_ZS": {},
-    "WorldBank_SH_ALC_PCAP_LI": {},
-    "WorldBank_SH_STA_WAST_FE_ZS": {},
-    "WorldBank_SH_STA_WAST_MA_ZS": {},
-    "WorldBank_SH_STA_WAST_ZS": {},
-    "WorldBank_SH_SVR_WAST_FE_ZS": {},
-    "WorldBank_SH_SVR_WAST_MA_ZS": {},
-    "WorldBank_SH_SVR_WAST_ZS": {},
-    "WorldBank_SI_POV_GINI": {},
-    "WorldBank_SL_TLF_0714_FE_ZS": {},
-    "WorldBank_SL_TLF_0714_MA_ZS": {},
-    "WorldBank_SL_TLF_0714_ZS": {},
-    "WorldBank_SP_DYN_IMRT_FE_IN": {},
-    "WorldBank_SP_DYN_IMRT_IN": {},
-    "WorldBank_SP_DYN_IMRT_MA_IN": {},
-    "WorldBank_SP_RUR_TOTL": {},
-    "WorldBank_SP_URB_TOTL": {}
+    "UnemploymentRate_Person_Male": {}
   }
 }
