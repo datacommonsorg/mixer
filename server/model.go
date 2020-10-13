@@ -82,21 +82,6 @@ type StatisticalVariable struct {
 	StatType               string            `json:"statType,omitempty"`
 }
 
-// InterestingPlaceAspect contains info about why a place is interesting.
-type InterestingPlaceAspect struct {
-	RankFromTop      int32                `json:"rankFromTop,omitempty"`
-	RankFromBottom   int32                `json:"rankFromBottom,omitempty"`
-	StatVar          *StatisticalVariable `json:"statVar,omitempty"`
-	ContainedInPlace string               `json:"containedInPlace,omitempty"`
-	PlaceType        string               `json:"placeType,omitempty"`
-	PerCapita        bool                 `json:"perCapita,omitempty"`
-}
-
-// InterestingPlaceAspects contains a list of InterestingPlaceAspect objects.
-type InterestingPlaceAspects struct {
-	Aspects []*InterestingPlaceAspect `json:"aspects,omitempty"`
-}
-
 // PlacePopInfo contains basic info for a place and a population.
 type PlacePopInfo struct {
 	PlaceID      string `json:"dcid,omitempty"`

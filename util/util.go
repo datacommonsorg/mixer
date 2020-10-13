@@ -55,8 +55,6 @@ const (
 	BtPopPVPrefix = "d/d/"
 	// BtChartDataPrefix for chart data.
 	BtChartDataPrefix = "d/f/"
-	// BtInterestingPlaceAspectPrefix for interesting place aspect.
-	BtInterestingPlaceAspectPrefix = "d/k/"
 	// BtInPropValPrefix for in-arc prop value.
 	BtInPropValPrefix = "d/l/"
 	// BtOutPropValPrefix for out-arc prop value.
