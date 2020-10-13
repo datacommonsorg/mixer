@@ -22,6 +22,7 @@ import (
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
+	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -359,6 +360,85 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	return result, nil
 }
 
+// GetStatCollection implements API for Mixer.GetStatCollection.
+// TODO(shifucun): consilidate and dedup the logic among these similar APIs.
+func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollectionRequest) (
+	*pb.GetStatCollectionResponse, error) {
+	place := in.GetPlace()
+	statVars := in.GetStatVars()
+	childType := in.GetChildType()
+	date := in.GetDate()
+	if place == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+	}
+	if len(statVars) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_vars")
+	}
+	if date == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: date")
+	}
+	if childType == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: child_type")
+	}
+
+	// Read triples for statistical variable.
+	triplesRowList := buildTriplesKey(statVars)
+	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	if err != nil {
+		return nil, err
+	}
+	statVarObject := map[string]*StatisticalVariable{}
+	for statVar, triplesCache := range triples {
+		if triplesCache != nil {
+			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	// Construct BigTable row keys.
+	rowList := buildStatCollectionKey(place, childType, date, statVarObject)
+
+	var obsTimeSeries *ObsTimeSeries
+	// Read data from branch in-memory cache first.
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		convertToObsCollection,
+		func(token string) (string, error) {
+			//
+			parts := strings.Split(token, "^")
+			place := strings.TrimPrefix(parts[0], util.BtChartDataPrefix)
+			return place, nil
+		},
+	)
+	if data, ok := cacheData[place]; ok {
+		if data == nil {
+			obsTimeSeries = nil
+		} else {
+			obsTimeSeries = data.(*ObsTimeSeries)
+		}
+	} else {
+		// If the data is missing in branch cache, fetch it from the base cache in
+		// Bigtable.
+		btData, err := readStats(ctx, s.btTable, rowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		obsTimeSeries = btData[place][statVar]
+	}
+	if obsTimeSeries == nil {
+		return nil, status.Errorf(codes.NotFound, "No data for %s, %s", place, statVar)
+	}
+	series := obsTimeSeries.SourceSeries
+	series = filterSeries(series, filterProp)
+	sort.Sort(byRank(series))
+	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
+	if len(series) > 0 {
+		resp.Series = series[0].Val
+	}
+	return &resp, nil
+}
+
 // GetStats implements API for Mixer.GetStats.
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {
@@ -595,6 +675,22 @@ func convertToObsSeries(token string, jsonRaw []byte) (
 		ret.ProvenanceDomain = x.ObsTimeSeries.GetProvenanceDomain()
 		ret.ProvenanceURL = x.ObsTimeSeries.GetProvenanceUrl()
 		return ret, nil
+	case nil:
+		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
+	default:
+		return nil, status.Errorf(codes.Internal, "ChartStore.Val has unexpected type %T", x)
+	}
+}
+
+func convertToObsCollection(token string, jsonRaw []byte) (
+	interface{}, error) {
+	pbData := &pb.ChartStore{}
+	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
+		return nil, err
+	}
+	switch x := pbData.Val.(type) {
+	case *pb.ChartStore_ObsCollection:
+		return x.ObsCollection, nil
 	case nil:
 		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
 	default:

@@ -76,6 +76,30 @@ func buildStatsKey(
 	return rowList, keyToToken
 }
 
+func buildStatCollectionKey(
+	place, childType, date string, statVars map[string]*StatisticalVariable) (
+	bigtable.RowList, map[string]string) {
+	rowKey := strings.Join([]string{
+		util.BtChartDataPrefix,
+		childType,
+		statVar.MeasuredProp,
+		statVar.StatType,
+		statVar.MeasurementDenominator,
+		statVar.MeasurementQualifier,
+		date,
+		statVar.PopType,
+	}, "^")
+	cprops := []string{}
+	for cprop := range statVar.PVs {
+		cprops = append(cprops, cprop)
+	}
+	sort.Strings(cprops)
+	for _, cprop := range cprops {
+		rowKey += fmt.Sprintf("^%s^%s", cprop, statVar.PVs[cprop])
+	}
+	return []string{rowKey}
+}
+
 func buildPropertyValuesKey(
 	dcids []string, prop string, arcOut bool) bigtable.RowList {
 	rowList := bigtable.RowList{}

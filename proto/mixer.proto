@@ -205,10 +205,32 @@ message ObsTimeSeries {
   string provenance_url = 8;
 }
 
+
+// A collection of observation values for various places with the same parent
+// and place type, for given measured property, observation period, stat type,
+// observation date, pop type, and an optional list of pop PVs.
+message ObsCollection {
+  message ObsInfo {
+    string place_name = 1;
+    double obs_value = 2;
+  }
+  message SourceCohort {
+    map<string, ObsInfo> val = 1;  // Place ID (dcid) to ObsInfo.
+    string measurement_method = 2;
+    string scaling_factor = 3;
+    string unit = 4;
+  }
+  string unit = 2;
+  bool is_dc_aggregate = 3;
+  repeated SourceCohort source_cohort = 4;
+}
+
+
 // Wrapper for observation data.
 message ChartStore {
   oneof val {
     ObsTimeSeries obs_time_series = 1;
+    ObsCollection obs_collection = 2;
   }
 }
 
@@ -723,6 +745,34 @@ message GetStatAllResponse {
   map<string, PlaceStat> place_data = 1;
 }
 
+message StatMetadata {
+  string import_name = 1;
+  string provenance_domain = 2;
+  string measurement_method = 3;
+  string scaling_factor = 4;
+  string observation_period = 5;
+  string unit = 6;
+}
+
+message GetStatCollectionRequest {
+  // Parent place dcid.
+  string place = 1;
+  // Child place type.
+  string child_type = 2;
+  // Date for the stat in ISO format.
+  string date = 3;
+  // Dcid of the stat var.
+  repeated string stat_vars = 4;
+}
+
+// Response for GetStatCollection service.
+message GetStatCollectionResponse {
+  // A map from place dcid to stat value.
+  map<string, double> stat = 1;
+  StatMetadata metadata = 2;
+
+}
+
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -883,6 +933,15 @@ service Mixer {
   rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
     option (google.api.http) = {
       post: "/stat/all"
+      body: "*"
+    };
+  }
+
+  // Get the stat value for children places of certain place type at a given
+  // date.
+  rpc GetStatCollection(GetStatCollectionRequest) returns (GetStatCollectionResponse) {
+    option (google.api.http) = {
+      post: "/stat/collection"
       body: "*"
     };
   }
