@@ -26,3 +26,4 @@ spec:
       protocol: TCP
   selector:
     app: mixer-backend
+    name: mixer-backend
