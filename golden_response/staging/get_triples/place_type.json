@@ -364,7 +364,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/UKR",
@@ -2970,7 +2970,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/CXR",
@@ -3027,7 +3027,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/zgd6823"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/CSK",
@@ -3266,7 +3266,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/zgd6823"
     },
     {
       "subjectId": "country/BWA",
@@ -3844,7 +3844,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "Country",
@@ -4690,7 +4690,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/20",
@@ -4930,7 +4930,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "geoId/01",
@@ -4945,7 +4945,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "State",

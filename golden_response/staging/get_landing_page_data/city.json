@@ -272,67 +272,67 @@
         },
         "provenanceDomain": "worldbank.org"
       },
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
         "data": {
-          "1960": 543300000000,
-          "1961": 563300000000,
-          "1962": 605100000000,
-          "1963": 638600000000,
-          "1964": 685800000000,
-          "1965": 743700000000,
-          "1966": 815000000000,
-          "1967": 861700000000,
-          "1968": 942500000000,
-          "1969": 1019900000000,
-          "1970": 1073303000000,
-          "1971": 1164850000000,
-          "1972": 1279110000000,
-          "1973": 1425376000000,
-          "1974": 1545243000000,
-          "1975": 1684904000000,
-          "1976": 1873412000000,
-          "1977": 2081826000000,
-          "1978": 2351599000000,
-          "1979": 2627334000000,
-          "1980": 2857307000000,
-          "1981": 3207042000000,
-          "1982": 3343789000000,
-          "1983": 3634038000000,
-          "1984": 4037613000000,
-          "1985": 4338979000000,
-          "1986": 4579631000000,
-          "1987": 4855215000000,
-          "1988": 5236438000000,
-          "1989": 5641580000000,
-          "1990": 5963144000000,
-          "1991": 6158129000000,
-          "1992": 6520327000000,
-          "1993": 6858559000000,
-          "1994": 7287236000000,
-          "1995": 7639749000000,
-          "1996": 8073122000000,
-          "1997": 8577554463000,
-          "1998": 9062818211000,
-          "1999": 9630664202000,
-          "2000": 10252345464000,
-          "2001": 10581821399000,
-          "2002": 10936419054000,
-          "2003": 11458243878000,
-          "2004": 12213729147000,
-          "2005": 13036640229000,
-          "2006": 13814611414000,
-          "2007": 14451858650000,
-          "2008": 14712844084000,
-          "2009": 14448933025000,
-          "2010": 14992052727000,
-          "2011": 15542581104000,
-          "2012": 16197007349000,
-          "2013": 16784849190000,
-          "2014": 17521746534000,
-          "2015": 18219297584000,
-          "2016": 18707188235000,
-          "2017": 19485393853000,
-          "2018": 20544343456936.5
+          "1960": 3007.12344537862,
+          "1961": 3066.56286916615,
+          "1962": 3243.84307754988,
+          "1963": 3374.51517105082,
+          "1964": 3573.94118474743,
+          "1965": 3827.52710972039,
+          "1966": 4146.31664631665,
+          "1967": 4336.42658722171,
+          "1968": 4695.92339043178,
+          "1969": 5032.14474262003,
+          "1970": 5234.2966662115,
+          "1971": 5609.38259952519,
+          "1972": 6094.01798986165,
+          "1973": 6726.35895596695,
+          "1974": 7225.69135952566,
+          "1975": 7801.45666356443,
+          "1976": 8592.25353727612,
+          "1977": 9452.57651914511,
+          "1978": 10564.9482220275,
+          "1979": 11674.1863100131,
+          "1980": 12574.7915062163,
+          "1981": 13976.1097504641,
+          "1982": 14433.787727053,
+          "1983": 15543.8937174925,
+          "1984": 17121.2254849995,
+          "1985": 18236.8277265009,
+          "1986": 19071.2271949295,
+          "1987": 20038.9410992658,
+          "1988": 21417.0119305191,
+          "1989": 22857.1544330056,
+          "1990": 23888.6000088133,
+          "1991": 24342.2589048189,
+          "1992": 25418.9907763319,
+          "1993": 26387.2937338171,
+          "1994": 27694.853416234,
+          "1995": 28690.8757013347,
+          "1996": 29967.7127181749,
+          "1997": 31459.139002483,
+          "1998": 32853.6769849268,
+          "1999": 34513.5615037271,
+          "2000": 36334.9087770589,
+          "2001": 37133.2428088526,
+          "2002": 38023.1611144021,
+          "2003": 39496.4858751381,
+          "2004": 41712.8010675545,
+          "2005": 44114.7477776705,
+          "2006": 46298.7314440927,
+          "2007": 47975.9676758856,
+          "2008": 48382.5584490552,
+          "2009": 47099.9804711343,
+          "2010": 48466.8233750801,
+          "2011": 49883.1139837344,
+          "2012": 51603.4972614412,
+          "2013": 53106.9097703155,
+          "2014": 55032.9579979166,
+          "2015": 56803.4724334919,
+          "2016": 57904.2019610641,
+          "2017": 59927.9298339535,
+          "2018": 62794.5856522398
         },
         "provenanceDomain": "worldbank.org"
       },
@@ -2297,6 +2297,19 @@
         },
         "provenanceDomain": "oecd.org"
       },
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 248585691,
+          "2012": 251029658,
+          "2013": 253381418,
+          "2014": 255936025,
+          "2015": 258354477,
+          "2016": 260429416,
+          "2017": 262873959,
+          "2018": 264772910
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {
         "data": {
           "2001": 20456300,
@@ -2319,6 +2332,54 @@
           "2018": 21097200
         },
         "provenanceDomain": "oecd.org"
+      },
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
+        "data": {
+          "1990": 0.7576799774,
+          "1991": 0.7543599701,
+          "1992": 0.7578800201,
+          "1993": 0.757480011,
+          "1994": 0.7604199982,
+          "1995": 0.7621900177,
+          "1996": 0.7640200043,
+          "1997": 0.7670300293,
+          "1998": 0.7664700317,
+          "1999": 0.7655899811,
+          "2000": 0.7643399811,
+          "2001": 0.7592700195,
+          "2002": 0.754240036,
+          "2003": 0.7477799988,
+          "2004": 0.7434600067,
+          "2005": 0.7425499725,
+          "2006": 0.743730011,
+          "2007": 0.7410700226,
+          "2008": 0.7403700256,
+          "2009": 0.7329699707,
+          "2010": 0.7254799652,
+          "2011": 0.7196299744,
+          "2012": 0.721230011,
+          "2013": 0.7166799927,
+          "2014": 0.7158100128,
+          "2015": 0.7154599762,
+          "2016": 0.7193000031,
+          "2017": 0.7237400055,
+          "2018": 0.7263500214,
+          "2019": 0.7255500031
+        },
+        "provenanceDomain": "worldbank.org"
+      },
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 244237360,
+          "2012": 246742184,
+          "2013": 249117334,
+          "2014": 251686654,
+          "2015": 254105462,
+          "2016": 256187366,
+          "2017": 258633976,
+          "2018": 260547872
+        },
+        "provenanceDomain": "census.gov"
       },
       "Count_Person_18To24Years": {
         "data": {
@@ -5969,14 +6030,16 @@
           "2020-10-01": 7309113,
           "2020-10-02": 7362517,
           "2020-10-03": 7410296,
-          "2020-10-04": 7444705,
-          "2020-10-05": 7487064,
-          "2020-10-06": 7529682,
-          "2020-10-07": 7582317,
-          "2020-10-08": 7638454,
-          "2020-10-09": 7696993,
-          "2020-10-10": 7748087,
-          "2020-10-11": 7792420
+          "2020-10-04": 7445343,
+          "2020-10-05": 7487035,
+          "2020-10-06": 7529899,
+          "2020-10-07": 7582877,
+          "2020-10-08": 7639252,
+          "2020-10-09": 7698203,
+          "2020-10-10": 7749789,
+          "2020-10-11": 7794555,
+          "2020-10-12": 7840482,
+          "2020-10-13": 7894994
         },
         "provenanceDomain": "nytimes.com"
       },
@@ -6246,7 +6309,9 @@
           "2020-10-08": 212678,
           "2020-10-09": 213593,
           "2020-10-10": 214185,
-          "2020-10-11": 214604
+          "2020-10-11": 214604,
+          "2020-10-12": 214955,
+          "2020-10-13": 215781
         },
         "provenanceDomain": "nytimes.com"
       },
@@ -6563,7 +6628,7 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {},
       "Median_Age_Person_SomeOtherRaceAlone": {},
       "Median_Age_Person_TwoOrMoreRaces": {},
       "Median_Age_Person_WhiteAlone": {},
@@ -8272,7 +8337,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -9514,6 +9579,19 @@
         },
         "provenanceDomain": "oecd.org"
       },
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 29343832,
+          "2012": 29700084,
+          "2013": 30048767,
+          "2014": 30462253,
+          "2015": 30831622,
+          "2016": 31078878,
+          "2017": 31419652,
+          "2018": 31612093
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {
         "data": {
           "2001": 2485190,
@@ -9536,6 +9614,20 @@
           "2018": 2545380
         },
         "provenanceDomain": "oecd.org"
+      },
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 28796402,
+          "2012": 29163075,
+          "2013": 29516595,
+          "2014": 29934838,
+          "2015": 30312429,
+          "2016": 30565746,
+          "2017": 30910058,
+          "2018": 31109195
+        },
+        "provenanceDomain": "census.gov"
       },
       "Count_Person_18To24Years": {
         "data": {
@@ -10825,7 +10917,8 @@
           "2020-04": 15524485,
           "2020-05": 15473941,
           "2020-06": 16076206,
-          "2020-07": 16294206
+          "2020-07": 16295254,
+          "2020-08": 16557613
         },
         "provenanceDomain": "bls.gov"
       },
@@ -11417,7 +11510,8 @@
           "2020-04": 18518277,
           "2020-05": 18423388,
           "2020-06": 18928353,
-          "2020-07": 18885235
+          "2020-07": 18919860,
+          "2020-08": 18729407
         },
         "provenanceDomain": "bls.gov"
       },
@@ -14031,7 +14125,9 @@
           "2020-10-08": 847384,
           "2020-10-09": 851228,
           "2020-10-10": 854302,
-          "2020-10-11": 857076
+          "2020-10-11": 857076,
+          "2020-10-12": 859959,
+          "2020-10-13": 863614
         },
         "provenanceDomain": "nytimes.com"
       },
@@ -14297,7 +14393,9 @@
           "2020-10-08": 16425,
           "2020-10-09": 16502,
           "2020-10-10": 16568,
-          "2020-10-11": 16581
+          "2020-10-11": 16581,
+          "2020-10-12": 16594,
+          "2020-10-13": 16650
         },
         "provenanceDomain": "nytimes.com"
       },
@@ -14402,7 +14500,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 31.7,
+          "2012": 32.1,
+          "2013": 32.3,
+          "2014": 32.7,
+          "2015": 33.1,
+          "2016": 33.8,
+          "2017": 34.3,
+          "2018": 34.7
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 27.4,
@@ -15471,7 +15581,8 @@
           "2020-04": 16.2,
           "2020-05": 16,
           "2020-06": 15.1,
-          "2020-07": 13.7
+          "2020-07": 13.9,
+          "2020-08": 11.6
         },
         "provenanceDomain": "bls.gov"
       },
@@ -15487,7 +15598,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -16471,7 +16582,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 1212996,
+          "2012": 1231539,
+          "2013": 1250604,
+          "2014": 1273286,
+          "2015": 1297183,
+          "2016": 1316201,
+          "2017": 1339671,
+          "2018": 1353974
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 1194327,
+          "2012": 1213334,
+          "2013": 1232607,
+          "2014": 1255728,
+          "2015": 1279499,
+          "2016": 1298246,
+          "2017": 1321464,
+          "2018": 1335756
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 146328,
@@ -17305,7 +17443,9 @@
           "2020-03": 802729,
           "2020-04": 691247,
           "2020-05": 693368,
-          "2020-06": 712705
+          "2020-06": 712987,
+          "2020-07": 719097,
+          "2020-08": 727055
         },
         "provenanceDomain": "bls.gov"
       },
@@ -17728,7 +17868,9 @@
           "2020-03": 835440,
           "2020-04": 804162,
           "2020-05": 803440,
-          "2020-06": 823402
+          "2020-06": 824065,
+          "2020-07": 819060,
+          "2020-08": 806224
         },
         "provenanceDomain": "bls.gov"
       },
@@ -18316,7 +18458,9 @@
           "2020-10-08": 21959,
           "2020-10-09": 21963,
           "2020-10-10": 22093,
-          "2020-10-11": 22170
+          "2020-10-11": 22170,
+          "2020-10-12": 22237,
+          "2020-10-13": 22300
         },
         "provenanceDomain": "nytimes.com"
       },
@@ -18546,7 +18690,9 @@
           "2020-10-08": 440,
           "2020-10-09": 440,
           "2020-10-10": 441,
-          "2020-10-11": 441
+          "2020-10-11": 441,
+          "2020-10-12": 436,
+          "2020-10-13": 431
         },
         "provenanceDomain": "nytimes.com"
       },
@@ -18646,7 +18792,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 30.8,
+          "2012": 31.6,
+          "2013": 32.5,
+          "2014": 32.9,
+          "2015": 32.9,
+          "2016": 33.9,
+          "2017": 35,
+          "2018": 36.1
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 28.6,
@@ -19504,7 +19662,9 @@
           "2020-03": 3.9,
           "2020-04": 14,
           "2020-05": 13.7,
-          "2020-06": 13.4
+          "2020-06": 13.5,
+          "2020-07": 12.2,
+          "2020-08": 9.8
         },
         "provenanceDomain": "bls.gov"
       },
@@ -19520,7 +19680,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -20372,7 +20532,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 60889,
+          "2012": 61599,
+          "2013": 62101,
+          "2014": 62853,
+          "2015": 63981,
+          "2016": 64168,
+          "2017": 64860,
+          "2018": 64936
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 60041,
+          "2012": 60718,
+          "2013": 61218,
+          "2014": 62037,
+          "2015": 63136,
+          "2016": 63235,
+          "2017": 63925,
+          "2018": 64047
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 5823,
@@ -21206,7 +21393,9 @@
           "2020-03": 39432,
           "2020-04": 33956,
           "2020-05": 34060,
-          "2020-06": 35010
+          "2020-06": 35024,
+          "2020-07": 35324,
+          "2020-08": 35715
         },
         "provenanceDomain": "bls.gov"
       },
@@ -21629,7 +21818,9 @@
           "2020-03": 40892,
           "2020-04": 39365,
           "2020-05": 39466,
-          "2020-06": 40474
+          "2020-06": 40495,
+          "2020-07": 40196,
+          "2020-08": 39579
         },
         "provenanceDomain": "bls.gov"
       },
@@ -22058,7 +22249,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 30,
+          "2012": 37.4,
+          "2013": 43.6,
+          "2014": 43.7,
+          "2015": 35.6,
+          "2016": 35.5,
+          "2017": 33.2,
+          "2018": 34.7
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 34.8,
@@ -22703,7 +22906,9 @@
           "2020-03": 3.6,
           "2020-04": 13.7,
           "2020-05": 13.7,
-          "2020-06": 13.5
+          "2020-06": 13.5,
+          "2020-07": 12.1,
+          "2020-08": 9.8
         },
         "provenanceDomain": "bls.gov"
       },
@@ -22719,7 +22924,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -23571,7 +23776,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 98704,
+          "2012": 100809,
+          "2013": 102065,
+          "2014": 103512,
+          "2015": 105428,
+          "2016": 106324,
+          "2017": 107657,
+          "2018": 108329
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 97979,
+          "2012": 100123,
+          "2013": 101388,
+          "2014": 102800,
+          "2015": 104594,
+          "2016": 105482,
+          "2017": 106822,
+          "2018": 107515
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 26920,
@@ -24405,7 +24637,9 @@
           "2020-03": 59802,
           "2020-04": 51497,
           "2020-05": 51655,
-          "2020-06": 53096
+          "2020-06": 53117,
+          "2020-07": 53572,
+          "2020-08": 54165
         },
         "provenanceDomain": "bls.gov"
       },
@@ -24828,7 +25062,9 @@
           "2020-03": 62049,
           "2020-04": 56914,
           "2020-05": 57028,
-          "2020-06": 58979
+          "2020-06": 59051,
+          "2020-07": 59116,
+          "2020-08": 58457
         },
         "provenanceDomain": "bls.gov"
       },
@@ -25257,7 +25493,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 21.5,
+          "2012": 21.4,
+          "2013": 22.1,
+          "2014": 22.8,
+          "2015": 24.6,
+          "2016": 28.4,
+          "2017": 28.7,
+          "2018": 26.7
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 25.3,
@@ -25898,7 +26146,9 @@
           "2020-03": 3.6,
           "2020-04": 9.5,
           "2020-05": 9.4,
-          "2020-06": 10
+          "2020-06": 10,
+          "2020-07": 9.4,
+          "2020-08": 7.3
         },
         "provenanceDomain": "bls.gov"
       },
@@ -25914,7 +26164,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -26766,7 +27016,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 317809,
+          "2012": 321142,
+          "2013": 326292,
+          "2014": 331409,
+          "2015": 336450,
+          "2016": 340499,
+          "2017": 346533,
+          "2018": 350066
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 313483,
+          "2012": 316941,
+          "2013": 322048,
+          "2014": 327145,
+          "2015": 332257,
+          "2016": 336596,
+          "2017": 342523,
+          "2018": 345953
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 35833,
@@ -27600,7 +27877,9 @@
           "2020-03": 203463,
           "2020-04": 175206,
           "2020-05": 175744,
-          "2020-06": 180645
+          "2020-06": 180716,
+          "2020-07": 182265,
+          "2020-08": 184282
         },
         "provenanceDomain": "bls.gov"
       },
@@ -28023,7 +28302,9 @@
           "2020-03": 213367,
           "2020-04": 208065,
           "2020-05": 208251,
-          "2020-06": 213964
+          "2020-06": 214440,
+          "2020-07": 213600,
+          "2020-08": 209411
         },
         "provenanceDomain": "bls.gov"
       },
@@ -28452,7 +28733,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 23.4,
+          "2012": 23.9,
+          "2013": 26.9,
+          "2014": 25.9,
+          "2015": 30.8,
+          "2016": 32.1,
+          "2017": 32.4,
+          "2018": 32.8
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 27,
@@ -29098,7 +29391,9 @@
           "2020-03": 4.6,
           "2020-04": 15.8,
           "2020-05": 15.6,
-          "2020-06": 15.6
+          "2020-06": 15.7,
+          "2020-07": 14.7,
+          "2020-08": 12
         },
         "provenanceDomain": "bls.gov"
       },
@@ -29114,7 +29409,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -29945,7 +30240,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 8418,
+          "2012": 8166,
+          "2013": 8278,
+          "2014": 8407,
+          "2015": 8491,
+          "2016": 8733,
+          "2017": 8858,
+          "2018": 8997
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 8207,
+          "2012": 8033,
+          "2013": 8133,
+          "2014": 8276,
+          "2015": 8368,
+          "2016": 8594,
+          "2017": 8665,
+          "2018": 8766
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 712,
@@ -30879,7 +31201,7 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {},
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 45.5,
@@ -31062,7 +31384,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -31910,7 +32232,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 80983,
+          "2012": 81884,
+          "2013": 83790,
+          "2014": 84555,
+          "2015": 85905,
+          "2016": 87430,
+          "2017": 88140,
+          "2018": 89050
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 79491,
+          "2012": 80347,
+          "2013": 82511,
+          "2014": 83372,
+          "2015": 84617,
+          "2016": 86015,
+          "2017": 86828,
+          "2018": 87669
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 9841,
@@ -32744,7 +33093,9 @@
           "2020-03": 50031,
           "2020-04": 43078,
           "2020-05": 43208,
-          "2020-06": 44441
+          "2020-06": 44460,
+          "2020-07": 44874,
+          "2020-08": 45374
         },
         "provenanceDomain": "bls.gov"
       },
@@ -33167,7 +33518,9 @@
           "2020-03": 52375,
           "2020-04": 51938,
           "2020-05": 51821,
-          "2020-06": 52999
+          "2020-06": 53104,
+          "2020-07": 53008,
+          "2020-08": 51968
         },
         "provenanceDomain": "bls.gov"
       },
@@ -33596,7 +33949,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 43.4,
+          "2012": 38.5,
+          "2013": 38,
+          "2014": 38,
+          "2015": 38.5,
+          "2016": 36.9,
+          "2017": 28.8,
+          "2018": 26.9
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 27.5,
@@ -34240,7 +34605,9 @@
           "2020-03": 4.5,
           "2020-04": 17.1,
           "2020-05": 16.6,
-          "2020-06": 16.1
+          "2020-06": 16.3,
+          "2020-07": 15.3,
+          "2020-08": 12.7
         },
         "provenanceDomain": "bls.gov"
       },
@@ -34256,7 +34623,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -35108,7 +35475,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 708509,
+          "2012": 717041,
+          "2013": 725246,
+          "2014": 734838,
+          "2015": 744725,
+          "2016": 752386,
+          "2017": 764957,
+          "2018": 769865
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 702526,
+          "2012": 711384,
+          "2013": 719881,
+          "2014": 729309,
+          "2015": 739386,
+          "2016": 746834,
+          "2017": 759471,
+          "2018": 764514
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 74647,
@@ -35942,7 +36336,9 @@
           "2020-03": 561210,
           "2020-04": 483904,
           "2020-05": 483093,
-          "2020-06": 499148
+          "2020-06": 498786,
+          "2020-07": 510017,
+          "2020-08": 515899
         },
         "provenanceDomain": "bls.gov"
       },
@@ -36365,7 +36761,9 @@
           "2020-03": 579275,
           "2020-04": 553710,
           "2020-05": 553517,
-          "2020-06": 570229
+          "2020-06": 569986,
+          "2020-07": 573467,
+          "2020-08": 565744
         },
         "provenanceDomain": "bls.gov"
       },
@@ -36794,7 +37192,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 29.7,
+          "2012": 29.8,
+          "2013": 30,
+          "2014": 30.3,
+          "2015": 30.8,
+          "2016": 35.7,
+          "2017": 37.5,
+          "2018": 36.2
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 31.1,
@@ -37440,7 +37850,9 @@
           "2020-03": 3.1,
           "2020-04": 12.6,
           "2020-05": 12.7,
-          "2020-06": 12.5
+          "2020-06": 12.5,
+          "2020-07": 11.1,
+          "2020-08": 8.8
         },
         "provenanceDomain": "bls.gov"
       },
@@ -37456,7 +37868,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -38308,7 +38720,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 67844,
+          "2012": 69326,
+          "2013": 71123,
+          "2014": 72351,
+          "2015": 73047,
+          "2016": 73953,
+          "2017": 74585,
+          "2018": 75073
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 66727,
+          "2012": 68239,
+          "2013": 70009,
+          "2014": 71289,
+          "2015": 72051,
+          "2016": 72962,
+          "2017": 73681,
+          "2018": 74117
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 6909,
@@ -39142,7 +39581,9 @@
           "2020-03": 44154,
           "2020-04": 38022,
           "2020-05": 38139,
-          "2020-06": 39203
+          "2020-06": 39218,
+          "2020-07": 39554,
+          "2020-08": 39992
         },
         "provenanceDomain": "bls.gov"
       },
@@ -39565,7 +40006,9 @@
           "2020-03": 46037,
           "2020-04": 46371,
           "2020-05": 46429,
-          "2020-06": 47238
+          "2020-06": 47222,
+          "2020-07": 46637,
+          "2020-08": 45649
         },
         "provenanceDomain": "bls.gov"
       },
@@ -39994,7 +40437,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 30,
+          "2012": 30.1,
+          "2013": 30.6,
+          "2014": 30.5,
+          "2015": 31.3,
+          "2016": 31.8,
+          "2017": 38.4,
+          "2018": 40.5
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 31.6,
@@ -40640,7 +41095,9 @@
           "2020-03": 4.1,
           "2020-04": 18,
           "2020-05": 17.9,
-          "2020-06": 17
+          "2020-06": 16.9,
+          "2020-07": 15.2,
+          "2020-08": 12.4
         },
         "provenanceDomain": "bls.gov"
       },
@@ -40656,7 +41113,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -41508,7 +41965,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 98123,
+          "2012": 98344,
+          "2013": 98846,
+          "2014": 99103,
+          "2015": 99238,
+          "2016": 98611,
+          "2017": 99218,
+          "2018": 99111
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 95933,
+          "2012": 96280,
+          "2013": 97013,
+          "2014": 97295,
+          "2015": 97484,
+          "2016": 97031,
+          "2017": 97671,
+          "2018": 97668
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 18710,
@@ -42342,7 +42826,9 @@
           "2020-03": 50555,
           "2020-04": 45369,
           "2020-05": 44953,
-          "2020-06": 46600
+          "2020-06": 46830,
+          "2020-07": 47603,
+          "2020-08": 47284
         },
         "provenanceDomain": "bls.gov"
       },
@@ -42765,7 +43251,9 @@
           "2020-03": 53852,
           "2020-04": 50956,
           "2020-05": 52209,
-          "2020-06": 55492
+          "2020-06": 55960,
+          "2020-07": 57813,
+          "2020-08": 55367
         },
         "provenanceDomain": "bls.gov"
       },
@@ -43194,7 +43682,17 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 8.8,
+          "2012": 50.9,
+          "2013": 50.5,
+          "2014": 23.9,
+          "2015": 23.7,
+          "2018": 15.1
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 27.5,
@@ -43836,7 +44334,9 @@
           "2020-03": 6.1,
           "2020-04": 11,
           "2020-05": 13.9,
-          "2020-06": 16
+          "2020-06": 16.3,
+          "2020-07": 17.7,
+          "2020-08": 14.6
         },
         "provenanceDomain": "bls.gov"
       },
@@ -43852,7 +44352,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -44704,7 +45204,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 333036,
+          "2012": 338781,
+          "2013": 343354,
+          "2014": 349916,
+          "2015": 357933,
+          "2016": 366191,
+          "2017": 375736,
+          "2018": 384822
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 329295,
+          "2012": 335260,
+          "2013": 339720,
+          "2014": 346830,
+          "2015": 354574,
+          "2016": 362512,
+          "2017": 371805,
+          "2018": 380874
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 36861,
@@ -45538,7 +46065,9 @@
           "2020-03": 213973,
           "2020-04": 180743,
           "2020-05": 181506,
-          "2020-06": 189847
+          "2020-06": 190386,
+          "2020-07": 193408,
+          "2020-08": 209813
         },
         "provenanceDomain": "bls.gov"
       },
@@ -45961,7 +46490,9 @@
           "2020-03": 222252,
           "2020-04": 206341,
           "2020-05": 208141,
-          "2020-06": 215880
+          "2020-06": 217632,
+          "2020-07": 228715,
+          "2020-08": 229787
         },
         "provenanceDomain": "bls.gov"
       },
@@ -46390,7 +46921,16 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 57.5,
+          "2015": 30.9,
+          "2016": 45.1,
+          "2017": 45.9,
+          "2018": 45.4
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 33.3,
@@ -47029,7 +47569,9 @@
           "2020-03": 3.7,
           "2020-04": 12.4,
           "2020-05": 12.8,
-          "2020-06": 12.1
+          "2020-06": 12.5,
+          "2020-07": 15.4,
+          "2020-08": 8.7
         },
         "provenanceDomain": "bls.gov"
       },
@@ -47045,7 +47587,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -47897,7 +48439,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 101432,
+          "2012": 101825,
+          "2013": 101852,
+          "2014": 102581,
+          "2015": 102996,
+          "2016": 104515,
+          "2017": 105913,
+          "2018": 107519
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 100465,
+          "2012": 100927,
+          "2013": 100856,
+          "2014": 101651,
+          "2015": 102139,
+          "2016": 103735,
+          "2017": 105153,
+          "2018": 106795
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 35604,
@@ -48731,7 +49300,9 @@
           "2020-03": 64847,
           "2020-04": 53179,
           "2020-05": 56994,
-          "2020-06": 62639
+          "2020-06": 62166,
+          "2020-07": 62604,
+          "2020-08": 63779
         },
         "provenanceDomain": "bls.gov"
       },
@@ -49154,7 +49725,9 @@
           "2020-03": 66101,
           "2020-04": 60719,
           "2020-05": 64481,
-          "2020-06": 68663
+          "2020-06": 68233,
+          "2020-07": 67024,
+          "2020-08": 67665
         },
         "provenanceDomain": "bls.gov"
       },
@@ -49583,7 +50156,15 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2015": 32.6,
+          "2016": 46.8,
+          "2017": 46.3,
+          "2018": 52.1
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 23.6,
@@ -50214,7 +50795,9 @@
           "2020-03": 1.9,
           "2020-04": 12.4,
           "2020-05": 11.6,
-          "2020-06": 8.8
+          "2020-06": 8.9,
+          "2020-07": 6.6,
+          "2020-08": 5.7
         },
         "provenanceDomain": "bls.gov"
       },
@@ -50230,7 +50813,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -51061,7 +51644,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 98935,
+          "2012": 101556,
+          "2013": 103348,
+          "2014": 105499,
+          "2015": 107988,
+          "2016": 110190,
+          "2017": 111527,
+          "2018": 114218
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 97927,
+          "2012": 100611,
+          "2013": 102402,
+          "2014": 104674,
+          "2015": 107228,
+          "2016": 109260,
+          "2017": 110593,
+          "2018": 113329
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 18928,
@@ -51895,7 +52505,9 @@
           "2020-03": 73560,
           "2020-04": 65013,
           "2020-05": 66164,
-          "2020-06": 70467
+          "2020-06": 70632,
+          "2020-07": 71462,
+          "2020-08": 71120
         },
         "provenanceDomain": "bls.gov"
       },
@@ -52318,7 +52930,9 @@
           "2020-03": 75411,
           "2020-04": 76125,
           "2020-05": 76950,
-          "2020-06": 78186
+          "2020-06": 78405,
+          "2020-07": 79137,
+          "2020-08": 76528
         },
         "provenanceDomain": "bls.gov"
       },
@@ -52747,7 +53361,17 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 26.1,
+          "2012": 29.3,
+          "2013": 29.3,
+          "2014": 29.1,
+          "2015": 26.9,
+          "2016": 29.6
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 25,
@@ -53388,7 +54012,9 @@
           "2020-03": 2.5,
           "2020-04": 14.6,
           "2020-05": 14,
-          "2020-06": 9.9
+          "2020-06": 9.9,
+          "2020-07": 9.7,
+          "2020-08": 7.1
         },
         "provenanceDomain": "bls.gov"
       },
@@ -53404,7 +54030,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -54179,7 +54805,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 26249,
+          "2012": 26345,
+          "2013": 26197,
+          "2014": 26084,
+          "2015": 26718,
+          "2016": 27575,
+          "2017": 27524,
+          "2018": 27891
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 26004,
+          "2012": 26123,
+          "2013": 25997,
+          "2014": 25939,
+          "2015": 26524,
+          "2016": 27393,
+          "2017": 27398,
+          "2018": 27713
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 1877,
@@ -55125,7 +55778,17 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2012": 30.8,
+          "2013": 32.6,
+          "2014": 32.9,
+          "2015": 33.5,
+          "2016": 32.9,
+          "2017": 32.8
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 29.3,
@@ -55329,7 +55992,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -56104,7 +56767,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 31094,
+          "2012": 30116,
+          "2013": 30591,
+          "2014": 31176,
+          "2015": 31865,
+          "2016": 32079,
+          "2017": 32768,
+          "2018": 33654
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 30799,
+          "2012": 29892,
+          "2013": 30332,
+          "2014": 30930,
+          "2015": 31577,
+          "2016": 31774,
+          "2017": 32441,
+          "2018": 33196
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 1551,
@@ -57050,7 +57740,19 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2011": 81.3,
+          "2012": 81.4,
+          "2013": 65,
+          "2014": 65.1,
+          "2015": 62.7,
+          "2016": 54.4,
+          "2017": 37.9,
+          "2018": 37.6
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 34.4,
@@ -57261,7 +57963,7 @@
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
       "Amount_Emissions_CarbonDioxide_PerCapita": {},
@@ -58036,7 +58738,34 @@
         "provenanceDomain": "census.gov"
       },
       "Count_Person_10To14Years": {},
+      "Count_Person_15OrMoreYears": {
+        "data": {
+          "2011": 13969,
+          "2012": 14300,
+          "2013": 14633,
+          "2014": 14311,
+          "2015": 14217,
+          "2016": 13937,
+          "2017": 14011,
+          "2018": 14352
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_15To19Years": {},
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {},
+      "Count_Person_16OrMoreYears": {
+        "data": {
+          "2011": 13895,
+          "2012": 14209,
+          "2013": 14534,
+          "2014": 14226,
+          "2015": 14094,
+          "2016": 13724,
+          "2017": 13820,
+          "2018": 14156
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Count_Person_18To24Years": {
         "data": {
           "2011": 799,
@@ -58980,7 +59709,17 @@
         },
         "provenanceDomain": "census.gov"
       },
-      "Median_Age_Person_NativeHawaiianAndOtherPacificIslanderAlone": {},
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+        "data": {
+          "2012": 26.7,
+          "2014": 53.2,
+          "2015": 54,
+          "2016": 51.8,
+          "2017": 54.3,
+          "2018": 54.4
+        },
+        "provenanceDomain": "census.gov"
+      },
       "Median_Age_Person_SomeOtherRaceAlone": {
         "data": {
           "2011": 36.7,
