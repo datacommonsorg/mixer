@@ -17,7 +17,6 @@ package server
 import (
 	"context"
 	"fmt"
-	"log"
 
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/sparql"
@@ -47,8 +46,6 @@ func (s *Server) Query(
 	if err != nil {
 		return nil, err
 	}
-
-	log.Printf("translated SQL query for Bigquery:%v\n", translation.SQL)
 
 	var out pb.QueryResponse
 	for _, node := range translation.Nodes {
