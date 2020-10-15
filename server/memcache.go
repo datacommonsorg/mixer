@@ -67,7 +67,6 @@ func NewMemcacheFromGCS(
 		if err != nil {
 			return nil, err
 		}
-		log.Println(attrs.Name)
 		rc, err := client.Bucket(bucket).Object(attrs.Name).NewReader(ctx)
 		if err != nil {
 			return nil, err
