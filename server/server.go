@@ -139,6 +139,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 				log.Printf("Load cache data got error %s", err)
 			}
 			s.memcache.Update(cache.data)
+			util.PrintMemUsage()
 		})
 		if err != nil {
 			log.Printf("Cloud pubsub receive: %v", err)

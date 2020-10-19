@@ -23,6 +23,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
+	"github.com/datacommonsorg/mixer/util"
 
 	"cloud.google.com/go/bigquery"
 	"google.golang.org/grpc"
@@ -49,6 +50,7 @@ const (
 
 func main() {
 	fmt.Println("Enter mixer main() function")
+	util.PrintMemUsage()
 
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
@@ -81,6 +83,7 @@ func main() {
 
 	memcache, err := server.NewMemcacheFromGCS(
 		ctx, branchCacheBucket, branchCacheFolder)
+	util.PrintMemUsage()
 	if err != nil {
 		log.Fatalf("failed to create memcache from gcs: %v", err)
 	}

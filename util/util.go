@@ -23,6 +23,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"regexp"
+	"runtime"
 	"strings"
 	"time"
 
@@ -267,4 +268,20 @@ func RemoveKeyPrefix(key string) (string, error) {
 		return "", status.Errorf(codes.Internal, "Invalid bigtable row key %s", key)
 	}
 	return match[3], nil
+}
+
+// PrintMemUsage outputs the current, total and OS memory being used. As well as the number
+// of garage collection cycles completed.
+func PrintMemUsage() {
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	// For info on each, see: https://golang.org/pkg/runtime/#MemStats
+	fmt.Printf("Alloc = %v MiB", bToMb(m.Alloc))
+	fmt.Printf("\tTotalAlloc = %v MiB", bToMb(m.TotalAlloc))
+	fmt.Printf("\tSys = %v MiB", bToMb(m.Sys))
+	fmt.Printf("\tNumGC = %v\n", m.NumGC)
+}
+
+func bToMb(b uint64) uint64 {
+	return b / 1024 / 1024
 }
