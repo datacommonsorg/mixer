@@ -51,9 +51,9 @@ func NewMemcache(data map[string][]byte) *Memcache {
 func NewMemcacheFromGCS(
 	ctx context.Context, bucket, folder string) (*Memcache, error) {
 	// Cloud storage.
-	fmt.Printf("Enter NewMemcacheFromGCS() function")
+	fmt.Println("Enter NewMemcacheFromGCS() function")
 	fmt.Printf(
-		"Reading memcache data from GCS bucket: %s, folder: %s", bucket, folder)
+		"Reading memcache data from GCS bucket: %s, folder: %s\n", bucket, folder)
 	data := make(map[string][]byte)
 	client, err := storage.NewClient(ctx)
 	if err != nil {

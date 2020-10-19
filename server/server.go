@@ -109,7 +109,7 @@ func NewBtTable(
 func (s *Server) SubscribeBranchCacheUpdate(
 	ctx context.Context, pubsubProjectID, branchCacheBucket, subscriberPrefix,
 	pubsubTopic string) error {
-	fmt.Printf("Enter SubscribeBranchCacheUpdate() function")
+	fmt.Println("Enter SubscribeBranchCacheUpdate() function")
 	// Cloud PubSub receiver when branch cache is updated.
 	pubsubClient, err := pubsub.NewClient(ctx, pubsubProjectID)
 	if err != nil {
@@ -126,7 +126,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	if err != nil {
 		return err
 	}
-	fmt.Printf("Subscriber ID: %s", subID)
+	fmt.Printf("Subscriber ID: %s\n", subID)
 	// Start the receiver in a goroutine.
 	go func() {
 		err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
