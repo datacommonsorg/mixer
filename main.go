@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/util"
 
 	"cloud.google.com/go/bigquery"
+	"cloud.google.com/go/profiler"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -49,6 +50,13 @@ const (
 )
 
 func main() {
+	cfg := profiler.Config{
+		Service:        "mixer-service",
+		ServiceVersion: "1.0.0",
+		DebugLogging:   true,
+	}
+	profiler.Start(cfg)
+
 	fmt.Println("Enter mixer main() function")
 	util.PrintMemUsage()
 
