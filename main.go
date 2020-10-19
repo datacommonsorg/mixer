@@ -59,17 +59,17 @@ func main() {
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, *projectID)
 	if err != nil {
-		log.Fatalf("failed to create Bigquery client: %v", err)
+		log.Fatalf("Failed to create Bigquery client: %v", err)
 	}
 	// BigTable.
 	btTable, err := server.NewBtTable(ctx, *btProject, *btInstance, *btTable)
 	if err != nil {
-		log.Fatalf("failed to create BigTable client: %v", err)
+		log.Fatalf("Failed to create BigTable client: %v", err)
 	}
 	// Metadata.
 	metadata, err := server.NewMetadata(*bqDataset)
 	if err != nil {
-		log.Fatalf("failed to create metadata: %v", err)
+		log.Fatalf("Failed to create metadata: %v", err)
 	}
 	// Memcache
 	branchCacheFolder := *branchFolder
@@ -77,7 +77,7 @@ func main() {
 		branchCacheFolder, err = server.ReadBranchCacheFolder(
 			ctx, branchCacheBucket, branchCacheVersionFile)
 		if err != nil {
-			log.Fatalf("failed to read branch cache folder: %v", err)
+			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
 	}
 
@@ -85,7 +85,7 @@ func main() {
 		ctx, branchCacheBucket, branchCacheFolder)
 	util.PrintMemUsage()
 	if err != nil {
-		log.Fatalf("failed to create memcache from gcs: %v", err)
+		log.Fatalf("Failed to create memcache from gcs: %v", err)
 	}
 	// Create server object
 	s := server.NewServer(bqClient, btTable, memcache, metadata)
@@ -93,7 +93,7 @@ func main() {
 	err = s.SubscribeBranchCacheUpdate(
 		ctx, pubsubProject, branchCacheBucket, subscriberPrefix, pubsubTopic)
 	if err != nil {
-		log.Fatalf("failed to subscribe to branch cache update: %v", err)
+		log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 	}
 	// Start mixer
 	srv := grpc.NewServer()
@@ -103,11 +103,11 @@ func main() {
 	// Listen on network
 	lis, err := net.Listen("tcp", *port)
 	if err != nil {
-		log.Fatalf("failed to listen on network: %v", err)
+		log.Fatalf("Failed to listen on network: %v", err)
 	}
-	fmt.Println("mixer ready to server")
+	fmt.Println("Mixer ready to serve")
 	if err := srv.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+		log.Fatalf("Failed to serve: %v", err)
 	}
 
 }
