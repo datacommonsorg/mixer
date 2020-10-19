@@ -16,7 +16,6 @@ package translator
 
 import (
 	"fmt"
-	"log"
 	"sort"
 	"strconv"
 	"strings"
@@ -321,7 +320,7 @@ func getFuncDepsCol(
 	e.Table.ID = "" // Unset the table id to check the func deps map.
 	propCol := funcDeps[e]
 	if len(propCol) != 1 {
-		log.Printf("Multiple functional deps: %s => %s", e, propCol)
+		fmt.Printf("Multiple functional deps: %s => %s", e, propCol)
 	}
 
 	var col base.Column
@@ -850,7 +849,7 @@ func Translate(
 	}
 	bindingSets := getBindingSets(bindingMap)
 	if len(bindingSets) > 1 {
-		log.Printf("There are %d binding sets", len(bindingSets))
+		fmt.Printf("There are %d binding sets", len(bindingSets))
 	} else if len(bindingSets) == 0 {
 		return nil, status.Errorf(codes.Internal, "Failed to get translation result")
 	}
