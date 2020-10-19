@@ -53,7 +53,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not GetTriples: %s", err)
 		}
-		fmt.Printf("%s", r.GetPayload())
+		fmt.Printf("%s\n", r.GetPayload())
 	}
 
 	{
@@ -66,7 +66,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not GetStats: %s", err)
 		}
-		fmt.Printf("%s", r.GetPayload())
+		fmt.Printf("%s\n", r.GetPayload())
 	}
 
 	{
@@ -79,7 +79,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not GetStats: %s", err)
 		}
-		fmt.Printf("%s", r.GetPayload())
+		fmt.Printf("%s\n", r.GetPayload())
 	}
 
 }

@@ -280,7 +280,7 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 // GetStatAll implements API for Mixer.GetStatAll.
 func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	*pb.GetStatAllResponse, error) {
-	fmt.Printf("START API HANDLER: GetStatAll")
+	fmt.Println("START API HANDLER: GetStatAll")
 	util.PrintMemUsage()
 
 	places := in.GetPlaces()
@@ -358,7 +358,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 			}
 		}
 	}
-	fmt.Printf("END API HANDLER: GetStatAll")
+	fmt.Println("END API HANDLER: GetStatAll")
 	util.PrintMemUsage()
 	return result, nil
 }
@@ -367,7 +367,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {
 
-	fmt.Printf("START API HANDLER: GetStats")
+	fmt.Println("START API HANDLER: GetStats")
 	util.PrintMemUsage()
 
 	placeDcids := in.GetPlace()
@@ -455,7 +455,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		return nil, err
 	}
 
-	fmt.Printf("END API HANDLER: GetStats")
+	fmt.Println("END API HANDLER: GetStats")
 	util.PrintMemUsage()
 	return &pb.GetStatsResponse{Payload: string(jsonRaw)}, nil
 }

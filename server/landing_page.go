@@ -531,7 +531,7 @@ func (s *Server) GetLandingPageData(
 	ctx context.Context, in *pb.GetLandingPageDataRequest) (
 	*pb.GetLandingPageDataResponse, error) {
 
-	fmt.Printf("START API HANDLER: GetLandingPageData")
+	fmt.Println("START API HANDLER: GetLandingPageData")
 	util.PrintMemUsage()
 
 	placeDcid := in.GetPlace()
@@ -630,7 +630,7 @@ func (s *Server) GetLandingPageData(
 		return nil, err
 	}
 
-	fmt.Printf("END API HANDLER: GetLandingPageData")
+	fmt.Println("END API HANDLER: GetLandingPageData")
 	util.PrintMemUsage()
 	return &pb.GetLandingPageDataResponse{Payload: string(jsonRaw)}, nil
 }
