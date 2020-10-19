@@ -17,6 +17,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"net"
 
@@ -47,6 +48,8 @@ const (
 )
 
 func main() {
+	fmt.Println("Enter mixer main() function")
+
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	ctx := context.Background()
@@ -99,7 +102,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen on network: %v", err)
 	}
-	log.Println("mixer ready to server")
+	fmt.Println("mixer ready to server")
 	if err := srv.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

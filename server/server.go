@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"path"
@@ -108,6 +109,7 @@ func NewBtTable(
 func (s *Server) SubscribeBranchCacheUpdate(
 	ctx context.Context, pubsubProjectID, branchCacheBucket, subscriberPrefix,
 	pubsubTopic string) error {
+	fmt.Printf("Enter SubscribeBranchCacheUpdate() function")
 	// Cloud PubSub receiver when branch cache is updated.
 	pubsubClient, err := pubsub.NewClient(ctx, pubsubProjectID)
 	if err != nil {
@@ -124,13 +126,14 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	if err != nil {
 		return err
 	}
-	log.Printf("Subscriber ID: %s", subID)
+	fmt.Printf("Subscriber ID: %s", subID)
 	// Start the receiver in a goroutine.
 	go func() {
 		err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
 			gcsFolder := string(msg.Data)
-			log.Printf("Got message: %q\n", string(gcsFolder))
+			fmt.Printf("Got message: %q\n", string(gcsFolder))
 			msg.Ack()
+			fmt.Println("Subscriber action: reload mem cache...")
 			cache, err := NewMemcacheFromGCS(ctx, branchCacheBucket, gcsFolder)
 			if err != nil {
 				log.Printf("Load cache data got error %s", err)
