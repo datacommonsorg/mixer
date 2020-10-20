@@ -18,6 +18,7 @@ import (
 	"bufio"
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"log"
 	"sync"
@@ -50,8 +51,9 @@ func NewMemcache(data map[string][]byte) *Memcache {
 func NewMemcacheFromGCS(
 	ctx context.Context, bucket, folder string) (*Memcache, error) {
 	// Cloud storage.
-	log.Printf(
-		"Reading memcache data from GCS bucket: %s, folder: %s", bucket, folder)
+	fmt.Println("Enter NewMemcacheFromGCS() function")
+	fmt.Printf(
+		"Reading memcache data from GCS bucket: %s, folder: %s\n", bucket, folder)
 	data := make(map[string][]byte)
 	client, err := storage.NewClient(ctx)
 	if err != nil {
@@ -88,7 +90,7 @@ func NewMemcacheFromGCS(
 			data[string(parts[0])] = parts[1]
 		}
 	}
-	log.Println("Memcache read complete")
+	fmt.Println("Memcache read complete")
 	return NewMemcache(data), nil
 }
 

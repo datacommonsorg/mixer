@@ -17,6 +17,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 
 	pb "github.com/datacommonsorg/mixer/proto"
@@ -52,7 +53,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not GetTriples: %s", err)
 		}
-		log.Printf("%s", r.GetPayload())
+		fmt.Printf("%s\n", r.GetPayload())
 	}
 
 	{
@@ -65,7 +66,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not GetStats: %s", err)
 		}
-		log.Printf("%s", r.GetPayload())
+		fmt.Printf("%s\n", r.GetPayload())
 	}
 
 	{
@@ -78,8 +79,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not GetStats: %s", err)
 		}
-		log.Printf("%s", r.GetPayload())
-
+		fmt.Printf("%s\n", r.GetPayload())
 	}
 
 }
