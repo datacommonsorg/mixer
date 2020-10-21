@@ -1,0 +1,457 @@
+[
+  {
+    "title": "Labor Force Participation Rate",
+    "statsVars": [
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "State Unemployment Insurance Claims",
+    "statsVars": [
+      "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+      ]
+    }
+  },
+  {
+    "title": "Children in Employment",
+    "statsVars": [
+      "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Children in Employment by Gender",
+    "statsVars": [
+      "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female",
+      "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Unemployment Rate by Gender",
+    "statsVars": [
+      "UnemploymentRate_Person_Male",
+      "UnemploymentRate_Person_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Gross Domestic Product Per Capita",
+    "statsVars": [
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Gross Domestic Product Growth Rate",
+    "statsVars": [
+      "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Gross National Income, Per Capita (Purchasing Power Parity)",
+    "statsVars": [
+      "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Gross National Income (Purchasing Power Parity)",
+    "statsVars": [
+      "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Government Debt",
+    "statsVars": [
+      "Amount_Debt_Government"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Amount_Debt_Government"
+      ]
+    }
+  },
+  {
+    "title": "Government Expenditures on Education (% of Government Expenditure)",
+    "statsVars": [
+      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Government Expenditures on Education (% of GDP)",
+    "statsVars": [
+      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Government Expenditures on Military",
+    "statsVars": [
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Government Expenditures on Military (% of GDP)",
+    "statsVars": [
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Market Capitalization of Domestic Companies",
+    "statsVars": [
+      "Amount_Stock"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Market Capitalization of Domestic Companies (% of GDP)",
+    "statsVars": [
+      "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Inward Remittance",
+    "statsVars": [
+      "Amount_Remittance_InwardRemittance"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Inward Remittance (% of GDP)",
+    "statsVars": [
+      "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Outward Remittance",
+    "statsVars": [
+      "Amount_Remittance_OutwardRemittance"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Life Expectancy (Years)",
+    "statsVars": [
+      "LifeExpectancy_Person"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "COVID-19 Cumulative Cases",
+    "statsVars": [
+      "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+      ]
+    }
+  },
+  {
+    "title": "COVID-19 Cumulative Deaths",
+    "statsVars": [
+      "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
+      ]
+    }
+  },
+  {
+    "title": "Mortality Events",
+    "statsVars": [
+      "Count_Death_DiseasesOfTheCirculatorySystem",
+      "Count_Death_Neoplasms",
+      "Count_Death_DiseasesOfTheRespiratorySystem",
+      "Count_Death_ExternalCauses",
+      "Count_Death_DiseasesOfTheNervousSystem"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Death_DiseasesOfTheCirculatorySystem",
+        "Count_Death_Neoplasms",
+        "Count_Death_DiseasesOfTheRespiratorySystem",
+        "Count_Death_ExternalCauses",
+        "Count_Death_DiseasesOfTheNervousSystem"
+      ]
+    }
+  },
+  {
+    "title": "Infant Mortality Rate",
+    "statsVars": [
+      "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Infant Mortality Rate by Gender",
+    "statsVars": [
+      "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
+      "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Wasting among Children under 5",
+    "statsVars": [
+      "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Wasting among Children under 5 by Gender",
+    "statsVars": [
+      "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male",
+      "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Severe Wasting among Children under 5",
+    "statsVars": [
+      "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Severe Wasting among Children under 5 by Gender",
+    "statsVars": [
+      "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male",
+      "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Prescribed Drugs (Quarterly)",
+    "statsVars": [
+      "RetailDrugDistribution_DrugDistribution_Oxycodone",
+      "RetailDrugDistribution_DrugDistribution_Hydrocodone",
+      "RetailDrugDistribution_DrugDistribution_Codeine",
+      "RetailDrugDistribution_DrugDistribution_Amphetamine",
+      "RetailDrugDistribution_DrugDistribution_Morphine"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "RetailDrugDistribution_DrugDistribution_Oxycodone",
+        "RetailDrugDistribution_DrugDistribution_Hydrocodone",
+        "RetailDrugDistribution_DrugDistribution_Codeine",
+        "RetailDrugDistribution_DrugDistribution_Amphetamine",
+        "RetailDrugDistribution_DrugDistribution_Morphine"
+      ]
+    }
+  },
+  {
+    "title": "Alcohol Consumption Per Capita (Annual)",
+    "statsVars": [
+      "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Gini Index",
+    "statsVars": [
+      "GiniIndex_EcconomicActivity"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Poverty Rate by Race",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
+      "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Unemployment Rate by Gender",
+    "statsVars": [
+      "UnemploymentRate_Person_Female",
+      "UnemploymentRate_Person_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Percentage of People Without Health Insurance by Race",
+    "statsVars": [
+      "Percent_Person_18To64Years_NoHealthInsurance_BlackOrAfricanAmericanAlone",
+      "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino",
+      "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Percentage of People Without Health Insurance by Gender",
+    "statsVars": [
+      "Percent_Person_18To64Years_Female_NoHealthInsurance",
+      "Percent_Person_18To64Years_Male_NoHealthInsurance"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Rate of Associate Degree Attainment by Gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Rate of Bachelor's Degree Attainment by Gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Rate of Graduate or Professional Degree Attainment by Gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Population Growth Rate",
+    "statsVars": [
+      "GrowthRate_Count_Person"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Population Density",
+    "statsVars": [
+      "Count_Person_PerArea"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Urban and Rural Population",
+    "statsVars": [
+      "Count_Person_Urban",
+      "Count_Person_Rural"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Population by Age",
+    "statsVars": [
+      "Count_Person_Upto4Years",
+      "Count_Person_5To9Years",
+      "Count_Person_10To14Years",
+      "Count_Person_15To19Years",
+      "Count_Person_20To24Years",
+      "Count_Person_25To29Years",
+      "Count_Person_30To34Years",
+      "Count_Person_35To39Years",
+      "Count_Person_40To44Years",
+      "Count_Person_45To49Years",
+      "Count_Person_50To54Years",
+      "Count_Person_60To64Years",
+      "Count_Person_65To69Years",
+      "Count_Person_70To74Years",
+      "Count_Person_75To79Years",
+      "Count_Person_80OrMoreYears"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Upto4Years",
+        "Count_Person_5To9Years",
+        "Count_Person_10To14Years",
+        "Count_Person_15To19Years",
+        "Count_Person_20To24Years",
+        "Count_Person_25To29Years",
+        "Count_Person_30To34Years",
+        "Count_Person_35To39Years",
+        "Count_Person_40To44Years",
+        "Count_Person_45To49Years",
+        "Count_Person_50To54Years",
+        "Count_Person_60To64Years",
+        "Count_Person_65To69Years",
+        "Count_Person_70To74Years",
+        "Count_Person_75To79Years",
+        "Count_Person_80OrMoreYears"
+      ]
+    }
+  },
+  {
+    "title": "Fertility Rate",
+    "statsVars": [
+      "FertilityRate_Person_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Energy Consumption Per Capita",
+    "statsVars": [
+      "Amount_Consumption_Energy_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "CO2 Emissions Per Capita",
+    "statsVars": [
+      "Amount_Emissions_CarbonDioxide_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Electricity Consumption Per Capita",
+    "statsVars": [
+      "Amount_Consumption_Electricity_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Disasters",
+    "statsVars": [
+      "Count_CycloneEvent",
+      "Count_DroughtEvent",
+      "Count_EarthquakeEvent",
+      "Count_FloodEvent",
+      "Count_StormSurgeTideEvent",
+      "Count_ThunderstormWindEvent",
+      "Count_TornadoEvent",
+      "Count_WildlandFireEvent"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Earthquake Event",
+    "statsVars": [
+      "Count_EarthquakeEvent"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Cyclone Event",
+    "statsVars": [
+      "Count_CycloneEvent"
+    ],
+    "relatedChart": {}
+  }
+]
