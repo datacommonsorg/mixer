@@ -4,18 +4,13 @@
     "statsVars": [
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "State Unemployment Insurance Claims",
     "statsVars": [
       "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -28,11 +23,7 @@
     "statsVars": [
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Children in Employment by Gender",
@@ -40,11 +31,7 @@
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female",
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Unemployment Rate by Gender",
@@ -52,62 +39,41 @@
       "UnemploymentRate_Person_Male",
       "UnemploymentRate_Person_Female"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Gross Domestic Product Per Capita",
     "statsVars": [
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Gross Domestic Product Growth Rate",
     "statsVars": [
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Gross National Income, Per Capita (Purchasing Power Parity)",
     "statsVars": [
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Gross National Income (Purchasing Power Parity)",
     "statsVars": [
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Government Debt",
     "statsVars": [
       "Amount_Debt_Government"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -120,117 +86,76 @@
     "statsVars": [
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Government Expenditures on Education (% of GDP)",
     "statsVars": [
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Government Expenditures on Military",
     "statsVars": [
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Government Expenditures on Military (% of GDP)",
     "statsVars": [
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Market Capitalization of Domestic Companies",
     "statsVars": [
       "Amount_Stock"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Market Capitalization of Domestic Companies (% of GDP)",
     "statsVars": [
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Inward Remittance",
     "statsVars": [
       "Amount_Remittance_InwardRemittance"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Inward Remittance (% of GDP)",
     "statsVars": [
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Outward Remittance",
     "statsVars": [
       "Amount_Remittance_OutwardRemittance"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Life Expectancy (Years)",
     "statsVars": [
       "LifeExpectancy_Person"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "COVID-19 Cumulative Cases",
     "statsVars": [
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -243,7 +168,6 @@
     "statsVars": [
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -260,7 +184,6 @@
       "Count_Death_ExternalCauses",
       "Count_Death_DiseasesOfTheNervousSystem"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -277,11 +200,7 @@
     "statsVars": [
       "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Infant Mortality Rate by Gender",
@@ -289,22 +208,14 @@
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Wasting among Children under 5",
     "statsVars": [
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Wasting among Children under 5 by Gender",
@@ -312,22 +223,14 @@
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male",
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Severe Wasting among Children under 5",
     "statsVars": [
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Severe Wasting among Children under 5 by Gender",
@@ -335,11 +238,7 @@
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male",
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Prescribed Drugs (Quarterly)",
@@ -350,7 +249,6 @@
       "RetailDrugDistribution_DrugDistribution_Amphetamine",
       "RetailDrugDistribution_DrugDistribution_Morphine"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -367,22 +265,14 @@
     "statsVars": [
       "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Gini Index",
     "statsVars": [
       "GiniIndex_EcconomicActivity"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Poverty Rate by Race",
@@ -393,11 +283,7 @@
       "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
       "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Unemployment Rate by Gender",
@@ -405,11 +291,7 @@
       "UnemploymentRate_Person_Female",
       "UnemploymentRate_Person_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Percentage of People Without Health Insurance by Race",
@@ -418,11 +300,7 @@
       "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino",
       "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Percentage of People Without Health Insurance by Gender",
@@ -430,11 +308,7 @@
       "Percent_Person_18To64Years_Female_NoHealthInsurance",
       "Percent_Person_18To64Years_Male_NoHealthInsurance"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Rate of Associate Degree Attainment by Gender",
@@ -442,11 +316,7 @@
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Rate of Bachelor's Degree Attainment by Gender",
@@ -454,11 +324,7 @@
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Rate of Graduate or Professional Degree Attainment by Gender",
@@ -466,33 +332,21 @@
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Population Growth Rate",
     "statsVars": [
       "GrowthRate_Count_Person"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Population Density",
     "statsVars": [
       "Count_Person_PerArea"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Urban and Rural Population",
@@ -500,11 +354,7 @@
       "Count_Person_Urban",
       "Count_Person_Rural"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Population by Age",
@@ -526,7 +376,6 @@
       "Count_Person_75To79Years",
       "Count_Person_80OrMoreYears"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -554,44 +403,28 @@
     "statsVars": [
       "FertilityRate_Person_Female"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Energy Consumption Per Capita",
     "statsVars": [
       "Amount_Consumption_Energy_PerCapita"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "CO2 Emissions Per Capita",
     "statsVars": [
       "Amount_Emissions_CarbonDioxide_PerCapita"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Electricity Consumption Per Capita",
     "statsVars": [
       "Amount_Consumption_Electricity_PerCapita"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Disasters",
@@ -605,32 +438,20 @@
       "Count_TornadoEvent",
       "Count_WildlandFireEvent"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Earthquake Event",
     "statsVars": [
       "Count_EarthquakeEvent"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Cyclone Event",
     "statsVars": [
       "Count_CycloneEvent"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   }
 ]

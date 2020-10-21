@@ -4,7 +4,6 @@
     "statsVars": [
       "Count_Person_Employed"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -17,7 +16,6 @@
     "statsVars": [
       "Count_Person_InLaborForce"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -30,18 +28,13 @@
     "statsVars": [
       "UnemploymentRate_Person"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "State Unemployment Insurance Claims",
     "statsVars": [
       "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -54,11 +47,7 @@
     "statsVars": [
       "Median_Income_Person"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Individual Income",
@@ -72,7 +61,6 @@
       "Count_Person_IncomeOf65000To74999USDollar",
       "Count_Person_IncomeOf75000OrMoreUSDollar"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -92,11 +80,7 @@
     "statsVars": [
       "Median_Income_Household"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Household Income",
@@ -113,7 +97,6 @@
       "Count_Household_IncomeOf150000To199999USDollar",
       "Count_Household_IncomeOf200000OrMoreUSDollar"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -136,7 +119,6 @@
     "statsVars": [
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -149,7 +131,6 @@
     "statsVars": [
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -166,7 +147,6 @@
       "Count_Death_ExternalCauses",
       "Count_Death_DiseasesOfTheNervousSystem"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -187,11 +167,7 @@
       "Percent_Person_WithMentalHealthNotGood",
       "Percent_Person_WithPhysicalHealthNotGood"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Health Behaviors",
@@ -202,11 +178,7 @@
       "Percent_Person_PhysicalInactivity",
       "Percent_Person_Smoking"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Prescribed Drugs (Quarterly)",
@@ -217,7 +189,6 @@
       "RetailDrugDistribution_DrugDistribution_Amphetamine",
       "RetailDrugDistribution_DrugDistribution_Morphine"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -239,11 +210,7 @@
       "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone",
       "Median_Income_Household_HouseholderRaceWhiteAlone"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Median Income by Gender",
@@ -251,11 +218,7 @@
       "Median_Income_Person_15OrMoreYears_Female_WithIncome",
       "Median_Income_Person_15OrMoreYears_Male_WithIncome"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Poverty Rate by Race",
@@ -267,11 +230,7 @@
       "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone",
       "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Poverty Rate by Gender",
@@ -279,11 +238,7 @@
       "Count_Person_Female_BelowPovertyLevelInThePast12Months",
       "Count_Person_Male_BelowPovertyLevelInThePast12Months"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Percentage of People Without Health Insurance by Race",
@@ -292,11 +247,7 @@
       "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino",
       "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Percentage of People Without Health Insurance by Gender",
@@ -304,11 +255,7 @@
       "Percent_Person_18To64Years_Female_NoHealthInsurance",
       "Percent_Person_18To64Years_Male_NoHealthInsurance"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Rate of Associate Degree Attainment by Gender",
@@ -316,11 +263,7 @@
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Rate of Bachelor's Degree Attainment by Gender",
@@ -328,11 +271,7 @@
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Rate of Graduate or Professional Degree Attainment by Gender",
@@ -340,18 +279,13 @@
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Total Crime",
     "statsVars": [
       "Count_CriminalActivities_CombinedCrime"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -364,7 +298,6 @@
     "statsVars": [
       "Count_CriminalActivities_ViolentCrime"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -377,7 +310,6 @@
     "statsVars": [
       "Count_CriminalActivities_PropertyCrime"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -390,7 +322,6 @@
     "statsVars": [
       "Count_CriminalActivities_Arson"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -407,7 +338,6 @@
       "Count_Person_EducationalAttainmentMastersDegree",
       "Count_Person_EducationalAttainmentDoctorateDegree"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -425,7 +355,6 @@
       "Count_Person_EnrolledInSchool",
       "Count_Person_NotEnrolledInSchool"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -439,11 +368,7 @@
     "statsVars": [
       "GrowthRate_Count_Person"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Population by Age",
@@ -459,7 +384,6 @@
       "Count_Person_65To74Years",
       "Count_Person_75OrMoreYears"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -482,7 +406,6 @@
       "Count_Person_Female",
       "Count_Person_Male"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -503,7 +426,6 @@
       "Count_Person_TwoOrMoreRaces",
       "Count_Person_WhiteAlone"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -523,11 +445,7 @@
     "statsVars": [
       "Median_Age_Person"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Median Age by Gender",
@@ -535,11 +453,7 @@
       "Median_Age_Person_Female",
       "Median_Age_Person_Male"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Median Age by Race",
@@ -553,11 +467,7 @@
       "Median_Age_Person_TwoOrMoreRaces",
       "Median_Age_Person_WhiteAlone"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Citizenship",
@@ -567,7 +477,6 @@
       "Count_Person_NotAUSCitizen",
       "Count_Person_USCitizenBornAbroadOfAmericanParents"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -587,7 +496,6 @@
       "Count_Person_Widowed",
       "Count_Person_Separated"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -604,18 +512,13 @@
     "statsVars": [
       "FertilityRate_Person_Female"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   },
   {
     "title": "Housing Units",
     "statsVars": [
       "Count_HousingUnit"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -635,7 +538,6 @@
       "Count_HousingUnit_HouseholderRaceTwoOrMoreRaces",
       "Count_HousingUnit_HouseholderRaceWhiteAlone"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -680,7 +582,6 @@
       "Count_HousingUnit_HomeValue1500000To1999999USDollar",
       "Count_HousingUnit_HomeValue2000000OrMoreUSDollar"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -726,7 +627,6 @@
       "Count_HousingUnit_2000To2009DateBuilt",
       "Count_HousingUnit_2010OrLaterDateBuilt"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -748,7 +648,6 @@
       "Count_HousingUnit_OwnerOccupied",
       "Count_HousingUnit_RenterOccupied"
     ],
-    "denominator": null,
     "relatedChart": {
       "scale": true,
       "statsVars": [
@@ -763,10 +662,6 @@
       "Count_DroughtEvent",
       "Count_StormSurgeTideEvent"
     ],
-    "denominator": null,
-    "relatedChart": {
-      "scale": false,
-      "statsVars": null
-    }
+    "relatedChart": {}
   }
 ]

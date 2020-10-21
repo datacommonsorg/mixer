@@ -29,15 +29,15 @@ import (
 )
 
 type RelatedChart struct {
-	Scale     bool     `json:"scale"`
-	StatsVars []string `json:"statsVars"` // Used only for golden files
+	Scale     bool     `json:"scale,omitempty"`
+	StatsVars []string `json:"statsVars,omitempty"` // Used only for golden files
 }
 
 type Chart struct {
-	Title        string       `json:"title"`
-	StatsVars    []string     `json:"statsVars"`
-	Denominator  []string     `json:"denominator"`
-	RelatedChart RelatedChart `json:"relatedChart"`
+	Title        string       `json:"title,omitempty"`
+	StatsVars    []string     `json:"statsVars,omitempty"`
+	Denominator  []string     `json:"denominator,omitempty"`
+	RelatedChart RelatedChart `json:"relatedChart,omitempty"`
 }
 
 func readChartConfig() ([]Chart, error) {
