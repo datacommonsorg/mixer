@@ -19,14 +19,25 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"path"
+	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
+	"github.com/google/go-cmp/cmp"
 )
 
+type RelatedChart struct {
+	Scale     bool     `json:"scale"`
+	StatsVars []string `json:"statsVars"` // Used only for golden files
+}
+
 type Chart struct {
-	StatsVars []string `json:"statsVars"`
+	Title        string       `json:"title"`
+	StatsVars    []string     `json:"statsVars"`
+	Denominator  []string     `json:"denominator"`
+	RelatedChart RelatedChart `json:"relatedChart"`
 }
 
 func readChartConfig() ([]Chart, error) {
@@ -46,8 +57,26 @@ func readChartConfig() ([]Chart, error) {
 	return config, nil
 }
 
-func TestChartConfigRankings(t *testing.T) {
+func getMissingStatVarRanking(client pb.MixerClient, req *pb.GetLocationsRankingsRequest) ([]string, error) {
 	ctx := context.Background()
+	response, err := client.GetLocationsRankings(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	statVars := req.StatVarDcids
+	if len(response.Payload) == 0 {
+		return statVars, nil
+	}
+	var missing []string
+	for _, sv := range statVars {
+		if response.Payload[sv] == nil {
+			missing = append(missing, sv)
+		}
+	}
+	return missing, nil
+}
+
+func TestChartConfigRankings(t *testing.T) {
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
@@ -57,34 +86,87 @@ func TestChartConfigRankings(t *testing.T) {
 		t.Errorf("could not read config_statvars.txt")
 		return
 	}
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "../golden_response/staging/statvar_ranking")
 	for _, c := range []struct {
-		placeType string
+		placeType   string
+		parentPlace string
+		goldenFile  string
 	}{
 		{
 			"Country",
+			"",
+			"missing_Earth_country_rankings.json",
 		},
 		{
 			"State",
+			"country/USA",
+			"missing_USA_state_rankings.json",
 		},
 		{
 			"County",
+			"geoId/06",
+			"missing_USA_county_rankings.json",
 		},
 		{
 			"City",
+			"geoId/06",
+			"missing_USA_city_rankings.json",
 		},
 	} {
+		var missingRankings []Chart
 		for _, chart := range config {
-			for _, sv := range chart.StatsVars {
-				req := &pb.GetLocationsRankingsRequest{
-					PlaceType:    c.placeType,
-					StatVarDcids: []string{sv},
-				}
-				response, err := client.GetLocationsRankings(ctx, req)
-				if err != nil || len(response.Payload) == 0 {
-					t.Errorf("No rankings for %s: %s", c.placeType, sv)
+			var missingRanking Chart
+			missingRanking.Title = chart.Title
+
+			// Test main chart rankings
+			req := &pb.GetLocationsRankingsRequest{
+				PlaceType:    c.placeType,
+				WithinPlace:  c.parentPlace,
+				StatVarDcids: chart.StatsVars,
+				IsPerCapita:  len(chart.Denominator) > 0,
+			}
+			missingStatVars, err := getMissingStatVarRanking(client, req)
+			if err != nil {
+				t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
+				t.Errorf("%s", err.Error())
+				continue
+			}
+			missingRanking.StatsVars = missingStatVars
+
+			// Test related chart rankings
+			if chart.RelatedChart.Scale {
+				req.IsPerCapita = true
+				missingStatVars, err := getMissingStatVarRanking(client, req)
+				if err != nil {
+					t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
+					t.Errorf("%s", err.Error())
 					continue
 				}
+				missingRanking.RelatedChart.Scale = true
+				missingRanking.RelatedChart.StatsVars = missingStatVars
 			}
+			if missingRanking.StatsVars != nil {
+				missingRankings = append(missingRankings, missingRanking)
+			}
+
+		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(missingRankings, goldenFile)
+			continue
+		}
+
+		var expected []Chart
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = json.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+			continue
+		}
+		if diff := cmp.Diff(&missingRankings, &expected); diff != "" {
+			t.Errorf("payload got diff: %v", diff)
+			continue
 		}
 	}
 }
