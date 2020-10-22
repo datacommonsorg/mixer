@@ -1,6 +1,6 @@
 [
   {
-    "title": "Number of People Employed",
+    "title": "Number of people employed",
     "statsVars": [
       "Count_Person_Employed"
     ],
@@ -12,7 +12,7 @@
     }
   },
   {
-    "title": "State Unemployment Insurance Claims",
+    "title": "State unemployment insurance claims",
     "statsVars": [
       "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
     ],
@@ -24,14 +24,14 @@
     }
   },
   {
-    "title": "Median Individual Income",
+    "title": "Median individual income",
     "statsVars": [
       "Median_Income_Person"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Individual Income",
+    "title": "Individual income",
     "statsVars": [
       "Count_Person_IncomeOfUpto9999USDollar",
       "Count_Person_IncomeOf10000To14999USDollar",
@@ -57,14 +57,14 @@
     }
   },
   {
-    "title": "Median Household Income",
+    "title": "Median household income",
     "statsVars": [
       "Median_Income_Household"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Household Income",
+    "title": "Household income",
     "statsVars": [
       "Count_Household_IncomeOfUpto10000USDollar",
       "Count_Household_IncomeOf10000To14999USDollar",
@@ -96,7 +96,7 @@
     }
   },
   {
-    "title": "COVID-19 Cumulative Cases",
+    "title": "COVID-19 cumulative cases",
     "statsVars": [
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
     ],
@@ -108,7 +108,7 @@
     }
   },
   {
-    "title": "Mortality Events",
+    "title": "Mortality events",
     "statsVars": [
       "Count_Death_DiseasesOfTheCirculatorySystem",
       "Count_Death_Neoplasms",
@@ -128,7 +128,7 @@
     }
   },
   {
-    "title": "Health Outcomes",
+    "title": "Health outcomes",
     "statsVars": [
       "Percent_Person_WithHighCholesterol",
       "Percent_Person_WithHighBloodPressure",
@@ -139,7 +139,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Health Behaviors",
+    "title": "Health behaviors",
     "statsVars": [
       "Percent_Person_SleepLessThan7Hours",
       "Percent_Person_Obesity",
@@ -150,7 +150,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Prescribed Drugs (Quarterly)",
+    "title": "Prescribed drugs (quarterly)",
     "statsVars": [
       "RetailDrugDistribution_DrugDistribution_Oxycodone",
       "RetailDrugDistribution_DrugDistribution_Hydrocodone",
@@ -170,14 +170,7 @@
     }
   },
   {
-    "title": "Gini Index",
-    "statsVars": [
-      "GiniIndex_EcconomicActivity"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Median Household Income by Race",
+    "title": "Median household income by race",
     "statsVars": [
       "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
       "Median_Income_Household_HouseholderRaceAsianAlone",
@@ -189,7 +182,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Median Income by Gender",
+    "title": "Median income by gender",
     "statsVars": [
       "Median_Income_Person_15OrMoreYears_Female_WithIncome",
       "Median_Income_Person_15OrMoreYears_Male_WithIncome"
@@ -197,7 +190,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Poverty Rate by Race",
+    "title": "Poverty rate by race",
     "statsVars": [
       "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
       "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
@@ -209,7 +202,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Poverty Rate by Gender",
+    "title": "Poverty rate by gender",
     "statsVars": [
       "Count_Person_Female_BelowPovertyLevelInThePast12Months",
       "Count_Person_Male_BelowPovertyLevelInThePast12Months"
@@ -217,7 +210,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Percentage of People Without Health Insurance by Race",
+    "title": "Percentage of people without health insurance by race",
     "statsVars": [
       "Percent_Person_18To64Years_NoHealthInsurance_BlackOrAfricanAmericanAlone",
       "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino",
@@ -226,7 +219,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Percentage of People Without Health Insurance by Gender",
+    "title": "Percentage of people without health insurance by gender",
     "statsVars": [
       "Percent_Person_18To64Years_Female_NoHealthInsurance",
       "Percent_Person_18To64Years_Male_NoHealthInsurance"
@@ -234,7 +227,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Rate of Associate Degree Attainment by Gender",
+    "title": "Rate of associate degree attainment by gender",
     "statsVars": [
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
@@ -242,7 +235,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Rate of Bachelor's Degree Attainment by Gender",
+    "title": "Rate of bachelor's degree attainment by gender",
     "statsVars": [
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
@@ -250,7 +243,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Rate of Graduate or Professional Degree Attainment by Gender",
+    "title": "Rate of graduate or professional degree attainment by gender",
     "statsVars": [
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
@@ -258,7 +251,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Total Crime",
+    "title": "Total crime",
     "statsVars": [
       "Count_CriminalActivities_CombinedCrime"
     ],
@@ -270,7 +263,7 @@
     }
   },
   {
-    "title": "Violent Crime",
+    "title": "Violent crime",
     "statsVars": [
       "Count_CriminalActivities_ViolentCrime"
     ],
@@ -282,7 +275,7 @@
     }
   },
   {
-    "title": "Property Crime",
+    "title": "Property crime",
     "statsVars": [
       "Count_CriminalActivities_PropertyCrime"
     ],
@@ -306,7 +299,7 @@
     }
   },
   {
-    "title": "Education Attainment",
+    "title": "Education attainment",
     "statsVars": [
       "Count_Person_EducationalAttainmentNoSchoolingCompleted",
       "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
@@ -326,7 +319,7 @@
     }
   },
   {
-    "title": "School Enrollment",
+    "title": "School enrollment",
     "statsVars": [
       "Count_Person_EnrolledInSchool",
       "Count_Person_NotEnrolledInSchool"
@@ -340,7 +333,7 @@
     }
   },
   {
-    "title": "Population by Age",
+    "title": "Population by age",
     "statsVars": [
       "Count_Person_5To17Years",
       "Count_Person_18To24Years",
@@ -366,7 +359,7 @@
     }
   },
   {
-    "title": "Population by Race",
+    "title": "Population by race",
     "statsVars": [
       "Count_Person_AmericanIndianOrAlaskaNativeAlone",
       "Count_Person_AsianAlone",
@@ -399,7 +392,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Median Age by Gender",
+    "title": "Median age by gender",
     "statsVars": [
       "Median_Age_Person_Female",
       "Median_Age_Person_Male"
@@ -407,7 +400,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Median Age by Race",
+    "title": "Median age by race",
     "statsVars": [
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone",
       "Median_Age_Person_AsianAlone",
@@ -421,7 +414,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Citizenship",
+    "title": "Citizenship status",
     "statsVars": [
       "Count_Person_USCitizenBornInTheUnitedStates",
       "Count_Person_USCitizenByNaturalization",
@@ -439,7 +432,7 @@
     }
   },
   {
-    "title": "Marital Status",
+    "title": "Marital status",
     "statsVars": [
       "Count_Person_MarriedAndNotSeparated",
       "Count_Person_Divorced",
@@ -459,7 +452,7 @@
     }
   },
   {
-    "title": "Housing Units",
+    "title": "Housing units",
     "statsVars": [
       "Count_HousingUnit"
     ],
@@ -471,7 +464,7 @@
     }
   },
   {
-    "title": "Housing Units by Householder Race",
+    "title": "Housing units by householder race",
     "statsVars": [
       "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
       "Count_HousingUnit_HouseholderRaceAsianAlone",
@@ -497,7 +490,7 @@
     }
   },
   {
-    "title": "Housing Units by Price",
+    "title": "Housing units by price",
     "statsVars": [
       "Count_HousingUnit_HomeValueUpto10000USDollar",
       "Count_HousingUnit_HomeValue10000To14999USDollar",
@@ -559,7 +552,7 @@
     }
   },
   {
-    "title": "Housing Units by Date Built",
+    "title": "Housing units by date built",
     "statsVars": [
       "Count_HousingUnit_Before1939DateBuilt",
       "Count_HousingUnit_1940To1949DateBuilt",
@@ -587,7 +580,7 @@
     }
   },
   {
-    "title": "Housing Units by Rental Status",
+    "title": "Housing units by rental status",
     "statsVars": [
       "Count_HousingUnit_OwnerOccupied",
       "Count_HousingUnit_RenterOccupied"
