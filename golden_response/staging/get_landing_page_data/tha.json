@@ -2225,45 +2225,7 @@
         },
         "provenanceDomain": "worldbank.org"
       },
-      "GiniIndex_EcconomicActivity": {
-        "data": {
-          "1981": 58,
-          "1982": 58.4,
-          "1983": 59,
-          "1984": 58.4,
-          "1985": 55.6,
-          "1986": 58.5,
-          "1987": 59.7,
-          "1988": 61.4,
-          "1989": 63.3,
-          "1990": 60.5,
-          "1992": 53.2,
-          "1993": 60.1,
-          "1995": 59.6,
-          "1996": 59.9,
-          "1997": 59.8,
-          "1998": 59.6,
-          "1999": 59,
-          "2001": 58.4,
-          "2002": 58.1,
-          "2003": 57.6,
-          "2004": 56.5,
-          "2005": 56.3,
-          "2006": 55.6,
-          "2007": 54.9,
-          "2008": 54,
-          "2009": 53.7,
-          "2011": 52.9,
-          "2012": 53.5,
-          "2013": 52.8,
-          "2014": 52.1,
-          "2015": 51.9,
-          "2016": 53.3,
-          "2017": 53.3,
-          "2018": 53.9
-        },
-        "provenanceDomain": "worldbank.org"
-      },
+      "GiniIndex_EcconomicActivity": {},
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 10.275911554301,
@@ -5529,30 +5491,7 @@
         },
         "provenanceDomain": "worldbank.org"
       },
-      "GiniIndex_EcconomicActivity": {
-        "data": {
-          "1991": 29.2,
-          "1994": 29.2,
-          "1995": 28.9,
-          "1998": 28.3,
-          "2000": 28.8,
-          "2001": 30.3,
-          "2002": 29.9,
-          "2003": 30,
-          "2004": 30.4,
-          "2005": 32.1,
-          "2006": 31.3,
-          "2007": 31.3,
-          "2008": 31.1,
-          "2009": 30.5,
-          "2010": 30.2,
-          "2011": 30.5,
-          "2013": 31.1,
-          "2015": 31.7,
-          "2016": 31.9
-        },
-        "provenanceDomain": "worldbank.org"
-      },
+      "GiniIndex_EcconomicActivity": {},
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1971": 3.13269974699064,
@@ -8564,20 +8503,7 @@
         },
         "provenanceDomain": "worldbank.org"
       },
-      "GiniIndex_EcconomicActivity": {
-        "data": {
-          "1990": 32,
-          "1995": 30.1,
-          "1999": 32.8,
-          "2004": 31.8,
-          "2008": 31.1,
-          "2010": 30.2,
-          "2012": 28.3,
-          "2015": 31.8,
-          "2017": 31.5
-        },
-        "provenanceDomain": "worldbank.org"
-      },
+      "GiniIndex_EcconomicActivity": {},
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 5.16111414527542,
@@ -13493,33 +13419,7 @@
         },
         "provenanceDomain": "worldbank.org"
       },
-      "GiniIndex_EcconomicActivity": {
-        "data": {
-          "1997": 53.7,
-          "1998": 56.1,
-          "1999": 56.3,
-          "2000": 49.1,
-          "2001": 51.3,
-          "2002": 53.6,
-          "2003": 53.1,
-          "2004": 49.9,
-          "2005": 50.4,
-          "2006": 50.3,
-          "2007": 50,
-          "2008": 47.5,
-          "2009": 47,
-          "2010": 45.5,
-          "2011": 44.7,
-          "2012": 44.4,
-          "2013": 43.9,
-          "2014": 43.2,
-          "2015": 43.4,
-          "2016": 43.6,
-          "2017": 43.3,
-          "2018": 42.8
-        },
-        "provenanceDomain": "worldbank.org"
-      },
+      "GiniIndex_EcconomicActivity": {},
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 7.34709633145569,
@@ -15581,35 +15481,7 @@
         },
         "provenanceDomain": "worldbank.org"
       },
-      "GiniIndex_EcconomicActivity": {
-        "data": {
-          "1981": 45.2,
-          "1988": 43.8,
-          "1990": 45.3,
-          "1992": 47.9,
-          "1994": 43.5,
-          "1996": 42.9,
-          "1998": 41.5,
-          "1999": 43.1,
-          "2000": 42.8,
-          "2002": 41.9,
-          "2004": 42.5,
-          "2006": 41.8,
-          "2007": 39.8,
-          "2008": 40.3,
-          "2009": 39.6,
-          "2010": 39.4,
-          "2011": 37.5,
-          "2012": 39.3,
-          "2013": 37.8,
-          "2014": 37,
-          "2015": 36,
-          "2016": 36.9,
-          "2017": 36.5,
-          "2018": 36.4
-        },
-        "provenanceDomain": "worldbank.org"
-      },
+      "GiniIndex_EcconomicActivity": {},
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 5.36214630168787,
