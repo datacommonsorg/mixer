@@ -233,14 +233,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Poverty Rate by Race",
-    "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Unemployment Rate by Gender",
     "statsVars": [
       "UnemploymentRate_Person_Female",

@@ -275,17 +275,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Poverty Rate by Race",
-    "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
-      "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Unemployment Rate by Gender",
     "statsVars": [
       "UnemploymentRate_Person_Female",
@@ -307,30 +296,6 @@
     "statsVars": [
       "Percent_Person_18To64Years_Female_NoHealthInsurance",
       "Percent_Person_18To64Years_Male_NoHealthInsurance"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Rate of Associate Degree Attainment by Gender",
-    "statsVars": [
-      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
-      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Rate of Bachelor's Degree Attainment by Gender",
-    "statsVars": [
-      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
-      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Rate of Graduate or Professional Degree Attainment by Gender",
-    "statsVars": [
-      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
-      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
     ],
     "relatedChart": {}
   },

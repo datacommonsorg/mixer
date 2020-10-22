@@ -12,25 +12,6 @@
     }
   },
   {
-    "title": "Labor Force",
-    "statsVars": [
-      "Count_Person_InLaborForce"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_InLaborForce"
-      ]
-    }
-  },
-  {
-    "title": "Unemployment Rate",
-    "statsVars": [
-      "UnemploymentRate_Person"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "State Unemployment Insurance Claims",
     "statsVars": [
       "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
@@ -127,18 +108,6 @@
     }
   },
   {
-    "title": "COVID-19 Cumulative Deaths",
-    "statsVars": [
-      "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
-      ]
-    }
-  },
-  {
     "title": "Mortality Events",
     "statsVars": [
       "Count_Death_DiseasesOfTheCirculatorySystem",
@@ -199,6 +168,13 @@
         "RetailDrugDistribution_DrugDistribution_Morphine"
       ]
     }
+  },
+  {
+    "title": "Gini Index",
+    "statsVars": [
+      "GiniIndex_EcconomicActivity"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Median Household Income by Race",
@@ -364,13 +340,6 @@
     }
   },
   {
-    "title": "Population Growth Rate",
-    "statsVars": [
-      "GrowthRate_Count_Person"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Population by Age",
     "statsVars": [
       "Count_Person_5To17Years",
@@ -378,11 +347,9 @@
       "Count_Person_25To34Years",
       "Count_Person_35To44Years",
       "Count_Person_45To54Years",
-      "Count_Person_55To59Years",
       "Count_Person_60To61Years",
       "Count_Person_62To64Years",
-      "Count_Person_65To74Years",
-      "Count_Person_75OrMoreYears"
+      "Count_Person_65To74Years"
     ],
     "relatedChart": {
       "scale": true,
@@ -392,25 +359,9 @@
         "Count_Person_25To34Years",
         "Count_Person_35To44Years",
         "Count_Person_45To54Years",
-        "Count_Person_55To59Years",
         "Count_Person_60To61Years",
         "Count_Person_62To64Years",
-        "Count_Person_65To74Years",
-        "Count_Person_75OrMoreYears"
-      ]
-    }
-  },
-  {
-    "title": "Population by Gender",
-    "statsVars": [
-      "Count_Person_Female",
-      "Count_Person_Male"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_Female",
-        "Count_Person_Male"
+        "Count_Person_65To74Years"
       ]
     }
   },
@@ -506,13 +457,6 @@
         "Count_Person_Separated"
       ]
     }
-  },
-  {
-    "title": "Fertility Rate",
-    "statsVars": [
-      "FertilityRate_Person_Female"
-    ],
-    "relatedChart": {}
   },
   {
     "title": "Housing Units",
