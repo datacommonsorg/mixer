@@ -17,13 +17,11 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"sort"
 	"strings"
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -280,8 +278,6 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 // GetStatAll implements API for Mixer.GetStatAll.
 func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	*pb.GetStatAllResponse, error) {
-	fmt.Println("START API HANDLER: GetStatAll")
-	util.PrintMemUsage()
 
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
@@ -358,17 +354,12 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 			}
 		}
 	}
-	fmt.Println("END API HANDLER: GetStatAll")
-	util.PrintMemUsage()
 	return result, nil
 }
 
 // GetStats implements API for Mixer.GetStats.
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {
-
-	fmt.Println("START API HANDLER: GetStats")
-	util.PrintMemUsage()
 
 	placeDcids := in.GetPlace()
 	statsVarDcid := in.GetStatsVar()
@@ -454,9 +445,6 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	if err != nil {
 		return nil, err
 	}
-
-	fmt.Println("END API HANDLER: GetStats")
-	util.PrintMemUsage()
 	return &pb.GetStatsResponse{Payload: string(jsonRaw)}, nil
 }
 
