@@ -109,7 +109,6 @@ func NewBtTable(
 func (s *Server) SubscribeBranchCacheUpdate(
 	ctx context.Context, pubsubProjectID, branchCacheBucket, subscriberPrefix,
 	pubsubTopic string) error {
-	fmt.Println("Enter SubscribeBranchCacheUpdate() function")
 	// Cloud PubSub receiver when branch cache is updated.
 	pubsubClient, err := pubsub.NewClient(ctx, pubsubProjectID)
 	if err != nil {
@@ -131,9 +130,9 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	go func() {
 		err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
 			gcsFolder := string(msg.Data)
-			fmt.Printf("Got message: %q\n", string(gcsFolder))
 			msg.Ack()
-			fmt.Println("Subscriber action: reload mem cache...")
+			fmt.Printf("Subscriber action: reload mem cache from %s\n", string(gcsFolder))
+			s.memcache.Update(map[string][]byte{})
 			cache, err := NewMemcacheFromGCS(ctx, branchCacheBucket, gcsFolder)
 			if err != nil {
 				log.Printf("Load cache data got error %s", err)

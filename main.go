@@ -52,8 +52,7 @@ const (
 func main() {
 	cfg := profiler.Config{
 		Service:        "mixer-service",
-		ServiceVersion: "1.0.0",
-		DebugLogging:   true,
+		ServiceVersion: *btTable,
 	}
 	profiler.Start(cfg)
 
@@ -113,7 +112,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to listen on network: %v", err)
 	}
-	fmt.Println("Mixer ready to serve")
+	fmt.Println("Mixer ready to serve!!")
 	if err := srv.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}

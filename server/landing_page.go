@@ -531,9 +531,6 @@ func (s *Server) GetLandingPageData(
 	ctx context.Context, in *pb.GetLandingPageDataRequest) (
 	*pb.GetLandingPageDataResponse, error) {
 
-	fmt.Println("START API HANDLER: GetLandingPageData")
-	util.PrintMemUsage()
-
 	placeDcid := in.GetPlace()
 	if placeDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
