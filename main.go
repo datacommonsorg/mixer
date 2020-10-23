@@ -57,7 +57,6 @@ func main() {
 	profiler.Start(cfg)
 
 	fmt.Println("Enter mixer main() function")
-	util.PrintMemUsage()
 
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)

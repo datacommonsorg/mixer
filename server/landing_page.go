@@ -627,7 +627,5 @@ func (s *Server) GetLandingPageData(
 		return nil, err
 	}
 
-	fmt.Println("END API HANDLER: GetLandingPageData")
-	util.PrintMemUsage()
 	return &pb.GetLandingPageDataResponse{Payload: string(jsonRaw)}, nil
 }
