@@ -341,21 +341,6 @@ message GetRelatedLocationsResponse {
   string payload = 1;
 }
 
-// Request to get landing page info for places.
-message GetLandingPageRequest {
-  // Place DCIDs.
-  repeated string dcids = 1;
-  // A list of stat vars used for filtering. If empty, then no filtering.
-  repeated string stat_var_dcids = 2;
-}
-
-// Response to get landing page info for places.
-message GetLandingPageResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
-
 // Request to get all stat data in landing page for a place.
 message GetLandingPageDataRequest {
   // The dcid of the place.
@@ -872,14 +857,6 @@ service Mixer {
       returns (GetRelatedLocationsResponse) {
     option (google.api.http) = {
       post: "/node/related-locations"
-      body: "*"
-    };
-  }
-
-  // Get landing page info for a place.
-  rpc GetLandingPage(GetLandingPageRequest) returns (GetLandingPageResponse) {
-    option (google.api.http) = {
-      post: "/node/landing-page"
       body: "*"
     };
   }
