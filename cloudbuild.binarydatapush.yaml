@@ -58,6 +58,7 @@ steps:
   args:
   - -c
   - |
+    set -e
     cat <<EOT > Dockerfile
     FROM golang:1.13
     WORKDIR /mixer
@@ -79,6 +80,7 @@ steps:
   args:
   - -c
   - |
+    set -e
     gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
     cd /tmp/deployment
     # Configure Git to create commits with Cloud Build's service account

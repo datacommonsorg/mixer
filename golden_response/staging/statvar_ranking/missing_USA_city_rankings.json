@@ -371,6 +371,18 @@
     "relatedChart": {}
   },
   {
+    "title": "Housing units by householder race",
+    "statsVars": [
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
+      ]
+    }
+  },
+  {
     "title": "Energy use (kg of oil equivalent per capita)",
     "statsVars": [
       "Amount_Consumption_Energy_PerCapita"
