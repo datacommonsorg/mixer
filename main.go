@@ -54,10 +54,12 @@ func main() {
 		Service:        "mixer-service",
 		ServiceVersion: *btTable,
 	}
-	profiler.Start(cfg)
+	err := profiler.Start(cfg)
+	if err != nil {
+		log.Fatalf("Failed to start profiler: %v", err)
+	}
 
 	fmt.Println("Enter mixer main() function")
-	util.PrintMemUsage()
 
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)

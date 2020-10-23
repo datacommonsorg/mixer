@@ -22,6 +22,7 @@ import (
 	"path"
 	"path/filepath"
 	"runtime"
+	"runtime/debug"
 	"strings"
 	"time"
 
@@ -133,6 +134,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 			msg.Ack()
 			fmt.Printf("Subscriber action: reload mem cache from %s\n", string(gcsFolder))
 			s.memcache.Update(map[string][]byte{})
+			debug.FreeOSMemory()
 			cache, err := NewMemcacheFromGCS(ctx, branchCacheBucket, gcsFolder)
 			if err != nil {
 				log.Printf("Load cache data got error %s", err)

@@ -466,7 +466,10 @@ func getSimilarPlaces(
 	// Shuffle places to get random results at different query time.
 	if seed == 0 {
 		h := fnv.New32a()
-		h.Write([]byte(placeDcid))
+		_, err = h.Write([]byte(placeDcid))
+		if err != nil {
+			return nil, err
+		}
 		seed = int64(time.Now().YearDay() + int(h.Sum32()))
 	}
 	rand.Seed(seed)
@@ -627,7 +630,5 @@ func (s *Server) GetLandingPageData(
 		return nil, err
 	}
 
-	fmt.Println("END API HANDLER: GetLandingPageData")
-	util.PrintMemUsage()
 	return &pb.GetLandingPageDataResponse{Payload: string(jsonRaw)}, nil
 }
