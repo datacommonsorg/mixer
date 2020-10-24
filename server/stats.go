@@ -27,23 +27,24 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-type obsProp struct {
-	mmethod string
-	operiod string
-	unit    string
-	sfactor string
+// ObsProp represents properties for a StatObservation.
+type ObsProp struct {
+	Mmethod string
+	Operiod string
+	Unit    string
+	Sfactor string
 }
 
-type rankKey struct {
-	prov    string
-	mmethod string
+// RankKey represents keys used for ranking.
+type RankKey struct {
+	Prov    string
+	Mmethod string
 }
 
-// Ranking for (import name, measurement method) combination. This is used to rank
-// multiple dataset for the same StatisticalVariable, where lower value means
-// higher ranking.
+// StatsRanking is used to rank multiple source series for the same
+// StatisticalVariable, where lower value means higher ranking.
 // The ranking score ranges from 0 to 100.
-var statsRanking = map[rankKey]int{
+var StatsRanking = map[RankKey]int{
 	{"CensusPEP", "CensusPEPSurvey"}:                                      0, // Population
 	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1, // Population
 	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey"}: 1, // Population
@@ -56,7 +57,8 @@ var statsRanking = map[rankKey]int{
 	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
 }
 
-const lowestRank = 100
+// LowestRank is the lowest ranking score.
+const LowestRank = 100
 
 // Limit the concurrent channels when processing in-memory cache data.
 const maxChannelSize = 50
@@ -80,16 +82,16 @@ func (a byRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 func (a byRank) Less(i, j int) bool {
 	oi := a[i]
-	keyi := rankKey{oi.ImportName, oi.MeasurementMethod}
-	scorei, ok := statsRanking[keyi]
+	keyi := RankKey{oi.ImportName, oi.MeasurementMethod}
+	scorei, ok := StatsRanking[keyi]
 	if !ok {
-		scorei = lowestRank
+		scorei = LowestRank
 	}
 	oj := a[j]
-	keyj := rankKey{oj.ImportName, oj.MeasurementMethod}
-	scorej, ok := statsRanking[keyj]
+	keyj := RankKey{oj.ImportName, oj.MeasurementMethod}
+	scorej, ok := StatsRanking[keyj]
 	if !ok {
-		scorej = lowestRank
+		scorej = LowestRank
 	}
 	// Higher score value means lower rank.
 	if scorei != scorej {
@@ -112,19 +114,19 @@ func (a byRank) Less(i, j int) bool {
 }
 
 // Filter a list of source series given the observation properties.
-func filterSeries(in []*SourceSeries, prop *obsProp) []*SourceSeries {
+func filterSeries(in []*SourceSeries, prop *ObsProp) []*SourceSeries {
 	result := []*SourceSeries{}
 	for _, series := range in {
-		if prop.mmethod != "" && prop.mmethod != series.MeasurementMethod {
+		if prop.Mmethod != "" && prop.Mmethod != series.MeasurementMethod {
 			continue
 		}
-		if prop.operiod != "" && prop.operiod != series.ObservationPeriod {
+		if prop.Operiod != "" && prop.Operiod != series.ObservationPeriod {
 			continue
 		}
-		if prop.unit != "" && prop.unit != series.Unit {
+		if prop.Unit != "" && prop.Unit != series.Unit {
 			continue
 		}
-		if prop.sfactor != "" && prop.sfactor != series.ScalingFactor {
+		if prop.Sfactor != "" && prop.Sfactor != series.ScalingFactor {
 			continue
 		}
 		result = append(result, series)
@@ -144,11 +146,11 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
 	}
 	date := in.GetDate()
-	filterProp := &obsProp{
-		mmethod: in.GetMeasurementMethod(),
-		operiod: in.GetObservationPeriod(),
-		unit:    in.GetUnit(),
-		sfactor: in.GetScalingFactor(),
+	filterProp := &ObsProp{
+		Mmethod: in.GetMeasurementMethod(),
+		Operiod: in.GetObservationPeriod(),
+		Unit:    in.GetUnit(),
+		Sfactor: in.GetScalingFactor(),
 	}
 
 	// Read triples for the statistical variable.
@@ -214,11 +216,11 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 	if statVar == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
 	}
-	filterProp := &obsProp{
-		mmethod: in.GetMeasurementMethod(),
-		operiod: in.GetObservationPeriod(),
-		unit:    in.GetUnit(),
-		sfactor: in.GetScalingFactor(),
+	filterProp := &ObsProp{
+		Mmethod: in.GetMeasurementMethod(),
+		Operiod: in.GetObservationPeriod(),
+		Unit:    in.GetUnit(),
+		Sfactor: in.GetScalingFactor(),
 	}
 
 	// Read triples for statistical variable.
@@ -369,10 +371,10 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	if statsVarDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
 	}
-	filterProp := &obsProp{
-		mmethod: in.GetMeasurementMethod(),
-		operiod: in.GetObservationPeriod(),
-		unit:    in.GetUnit(),
+	filterProp := &ObsProp{
+		Mmethod: in.GetMeasurementMethod(),
+		Operiod: in.GetObservationPeriod(),
+		Unit:    in.GetUnit(),
 	}
 
 	// Read triples for statistical variable.
@@ -533,7 +535,7 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 	return result, nil
 }
 
-func (in *ObsTimeSeries) filterAndRank(prop *obsProp) {
+func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 	if in == nil {
 		return
 	}

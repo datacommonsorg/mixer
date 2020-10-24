@@ -1,0 +1,52 @@
+{
+  "stat": {
+    "geoId/06": {
+      "val": {
+        "2011": 35.1,
+        "2012": 35.2,
+        "2013": 35.4,
+        "2014": 35.6,
+        "2015": 35.8,
+        "2016": 36,
+        "2017": 36.1,
+        "2018": 36.3
+      },
+      "measurementMethod": "CensusACS5yrSurvey",
+      "importName": "CensusACS5YearSurvey",
+      "provenanceDomain": "census.gov",
+      "unit": "Year"
+    },
+    "geoId/06085": {
+      "val": {
+        "2011": 36,
+        "2012": 36.2,
+        "2013": 36.4,
+        "2014": 36.6,
+        "2015": 36.8,
+        "2016": 36.8,
+        "2017": 37,
+        "2018": 37
+      },
+      "measurementMethod": "CensusACS5yrSurvey",
+      "importName": "CensusACS5YearSurvey",
+      "provenanceDomain": "census.gov",
+      "unit": "Year"
+    },
+    "geoId/0649670": {
+      "val": {
+        "2011": 36,
+        "2012": 35.9,
+        "2013": 35.8,
+        "2014": 35.9,
+        "2015": 35.4,
+        "2016": 35,
+        "2017": 35,
+        "2018": 34.9
+      },
+      "measurementMethod": "CensusACS5yrSurvey",
+      "importName": "CensusACS5YearSurvey",
+      "provenanceDomain": "census.gov",
+      "unit": "Year"
+    }
+  }
+}

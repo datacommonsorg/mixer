@@ -1,0 +1,19 @@
+{
+  "stat": {
+    "geoId/06": {
+      "val": {
+        "2011": 36969200,
+        "2012": 37325068,
+        "2013": 37659181,
+        "2014": 38066920,
+        "2015": 38421464,
+        "2016": 38654206,
+        "2017": 38982847,
+        "2018": 39148760
+      },
+      "measurementMethod": "CensusACS5yrSurvey",
+      "importName": "CensusACS5YearSurvey",
+      "provenanceDomain": "census.gov"
+    }
+  }
+}
