@@ -184,14 +184,13 @@ message GetPlaceObsResponse {
 }
 
 message SourceSeries {
-  reserved 2;
   map<string, double> val = 1;
-  string measurement_method = 3;
-  string observation_period = 4;
-  string import_name = 5;
-  string provenance_domain = 6;
-  string unit = 7;
-  string scaling_factor = 8;
+  string measurement_method = 2;
+  string observation_period = 3;
+  string import_name = 4;
+  string provenance_domain = 5;
+  string unit = 6;
+  string scaling_factor = 7;
 }
 
 // Represents observation time series data.
@@ -252,20 +251,20 @@ message GetStatRequest {
 
   // (Optional) The measurement method of the observation. If not specified,
   // stats series with any measurement methods could be returned.
-  string measurement_method = 4;
+  string measurement_method = 3;
 
   // (Optional) The unit of the observation. If not specified, stats series with
   // any unit could be returned.
-  string unit = 5;
+  string unit = 4;
 
   // (Optional) The observation period of the observation. If not specified,
   // stats series with any observation period could be returned.
-  string observation_period = 6;
+  string observation_period = 5;
 }
 
 // Response of GetStat
 message GetStatResponse {
-  // The JSON payload.
+  // A map from place dcid to stat series.
   map<string, SourceSeries> stat = 1;
 }
 
