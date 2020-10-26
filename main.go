@@ -28,6 +28,7 @@ import (
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/profiler"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/alts"
 	"google.golang.org/grpc/reflection"
 )
 
@@ -70,16 +71,19 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to create Bigquery client: %v", err)
 	}
+
 	// BigTable.
 	btTable, err := server.NewBtTable(ctx, *btProject, *btInstance, *btTable)
 	if err != nil {
 		log.Fatalf("Failed to create BigTable client: %v", err)
 	}
+
 	// Metadata.
 	metadata, err := server.NewMetadata(*bqDataset)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
+
 	// Memcache
 	branchCacheFolder := *branchFolder
 	if branchCacheFolder == "" {
@@ -89,13 +93,13 @@ func main() {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
 	}
-
 	memcache, err := server.NewMemcacheFromGCS(
 		ctx, branchCacheBucket, branchCacheFolder)
 	util.PrintMemUsage()
 	if err != nil {
 		log.Fatalf("Failed to create memcache from gcs: %v", err)
 	}
+
 	// Create server object
 	s := server.NewServer(bqClient, btTable, memcache, metadata)
 	// Subscribe to cache update
@@ -104,8 +108,15 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 	}
+
+	// Use ALTS server credential to bind to VM's private IPv6 interface.
+	altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
+	opts := []grpc.ServerOption{
+		grpc.Creds(altsTC),
+	}
+
 	// Start mixer
-	srv := grpc.NewServer()
+	srv := grpc.NewServer(opts...)
 	pb.RegisterMixerServer(srv, s)
 	// Register reflection service on gRPC server.
 	reflection.Register(srv)
@@ -118,5 +129,4 @@ func main() {
 	if err := srv.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
-
 }
