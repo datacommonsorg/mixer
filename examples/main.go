@@ -25,7 +25,7 @@ import (
 )
 
 var (
-	addr = flag.String("addr", "localhost:12345", "Address of grpc server.")
+	addr = flag.String("addr", "127.0.0.1:12345", "Address of grpc server.")
 )
 
 func main() {
