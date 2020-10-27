@@ -25,7 +25,7 @@ import (
 )
 
 var (
-	addr = flag.String("addr", "127.0.0.1:12345", "Address of grpc server.")
+	addr = flag.String("addr", "localhost:12345", "Address of grpc server.")
 )
 
 func main() {
@@ -36,7 +36,8 @@ func main() {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(*addr,
 		grpc.WithInsecure(),
-		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)))
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)),
+	)
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}

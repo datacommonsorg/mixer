@@ -66,12 +66,21 @@ steps:
     RUN go install .
     ENTRYPOINT ["/go/bin/mixer"]
     EOT
-    docker build -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA .
+    docker build \
+      -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
+      -t gcr.io/datcom-ci/datacommons-mixer:latest \
+      .
     docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
 
 # Push the grpc descriptor to gcs.
 - name: gcr.io/cloud-builders/gsutil
-  args: [cp, mixer-grpc.$SHORT_SHA.pb, gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb]
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    set -e
+    gsutil cp mixer-grpc.$SHORT_SHA.pb, gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
+    gsutil cp -f mixer-grpc.$SHORT_SHA.pb, gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.latest.pb
 
 # Update all the versions.
 - id: update version
