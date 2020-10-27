@@ -23,10 +23,11 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
-	"github.com/datacommonsorg/mixer/util"
+	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/profiler"
+	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/alts"
 	"google.golang.org/grpc/reflection"
@@ -40,6 +41,7 @@ var (
 	projectID    = flag.String("project_id", "", "The cloud project to run the mixer instance.")
 	branchFolder = flag.String("branch_folder", "", "The branch cache gcs folder.")
 	port         = flag.String("port", ":12345", "Port on which to run the server.")
+	useALTS      = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 )
 
 const (
@@ -51,20 +53,23 @@ const (
 )
 
 func main() {
-	cfg := profiler.Config{
-		Service:        "mixer-service",
-		ServiceVersion: *btTable,
-	}
-	err := profiler.Start(cfg)
-	if err != nil {
-		log.Fatalf("Failed to start profiler: %v", err)
-	}
-
 	fmt.Println("Enter mixer main() function")
 
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	ctx := context.Background()
+
+	credentials, error := google.FindDefaultCredentials(ctx, compute.ComputeScope)
+	if error == nil && credentials.ProjectID != "" {
+		cfg := profiler.Config{
+			Service:        "mixer-service",
+			ServiceVersion: *btTable,
+		}
+		err := profiler.Start(cfg)
+		if err != nil {
+			log.Fatalf("Failed to start profiler: %v", err)
+		}
+	}
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, *projectID)
@@ -95,7 +100,6 @@ func main() {
 	}
 	memcache, err := server.NewMemcacheFromGCS(
 		ctx, branchCacheBucket, branchCacheFolder)
-	util.PrintMemUsage()
 	if err != nil {
 		log.Fatalf("Failed to create memcache from gcs: %v", err)
 	}
@@ -109,10 +113,12 @@ func main() {
 		log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 	}
 
+	opts := []grpc.ServerOption{}
+
 	// Use ALTS server credential to bind to VM's private IPv6 interface.
-	altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
-	opts := []grpc.ServerOption{
-		grpc.Creds(altsTC),
+	if *useALTS {
+		altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
+		opts = append(opts, grpc.Creds(altsTC))
 	}
 
 	// Start mixer
