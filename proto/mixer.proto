@@ -237,8 +237,7 @@ message GetStatsResponse {
   string payload = 2;
 }
 
-// GetStat is a newer version of GetStats API, that use protobuf type as return
-// field instead of a "payload" of json string.
+// Request for GetStat API.
 // TODO(shifucun): Deprecate GetStats() once all clients are switched to use
 // this API.
 // Request message for GetStat.
