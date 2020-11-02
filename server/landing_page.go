@@ -251,7 +251,7 @@ func fetchBtData(
 		landingPageData := data.(*LandingPageData)
 		finalData := map[string]*ObsTimeSeries{}
 		for statVarDcid, obsTimeSeries := range landingPageData.Data {
-			obsTimeSeries.filterAndRank(&obsProp{})
+			obsTimeSeries.filterAndRank(&ObsProp{})
 			finalData[statVarDcid] = obsTimeSeries
 		}
 		result[dcid] = finalData

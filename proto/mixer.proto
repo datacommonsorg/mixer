@@ -183,18 +183,18 @@ message GetPlaceObsResponse {
   string payload = 1;
 }
 
+message SourceSeries {
+  map<string, double> val = 1;
+  string measurement_method = 2;
+  string observation_period = 3;
+  string import_name = 4;
+  string provenance_domain = 5;
+  string unit = 6;
+  string scaling_factor = 7;
+}
+
 // Represents observation time series data.
 message ObsTimeSeries {
-  message SourceSeries {
-    reserved 2;
-    map<string, double> val = 1;
-    string measurement_method = 3;
-    string observation_period = 4;
-    string import_name = 5;
-    string provenance_domain = 6;
-    string unit = 7;
-    string scaling_factor = 8;
-  }
   map<string, double> data = 1;  // Date to value.
   string place_name = 3;
   bool is_dc_aggregate = 4;
@@ -235,6 +235,36 @@ message GetStatsRequest {
 message GetStatsResponse {
   // The JSON payload.
   string payload = 2;
+}
+
+// Request for GetStat API.
+// TODO(shifucun): Deprecate GetStats() once all clients are switched to use
+// this API.
+// Request message for GetStat.
+message GetStatRequest {
+  // The dcids of the place.
+  repeated string places = 1;
+
+  // The dcid of the StatisticalVariable.
+  string stat_var = 2;
+
+  // (Optional) The measurement method of the observation. If not specified,
+  // stats series with any measurement methods could be returned.
+  string measurement_method = 3;
+
+  // (Optional) The unit of the observation. If not specified, stats series with
+  // any unit could be returned.
+  string unit = 4;
+
+  // (Optional) The observation period of the observation. If not specified,
+  // stats series with any observation period could be returned.
+  string observation_period = 5;
+}
+
+// Response of GetStat
+message GetStatResponse {
+  // A map from place dcid to stat series.
+  map<string, SourceSeries> stat = 1;
 }
 
 // Request to get certain population for a set of places.
@@ -812,6 +842,18 @@ service Mixer {
   rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {
     option (google.api.http) = {
       post: "/bulk/stats"
+      body: "*"
+    };
+  }
+
+  // Get stat of places by StatisticalVariable. If multiple time series data
+  // are avaialable, the highest ranked one by measurement method and import
+  // will be returned.
+  // This is a newer version of GetStats and returns protobuf field instead of
+  // "payload" of json string.
+  rpc GetStat(GetStatRequest) returns (GetStatResponse) {
+    option (google.api.http) = {
+      post: "/stat/series/rich"
       body: "*"
     };
   }
