@@ -30,6 +30,14 @@ import (
 // Limit the concurrent channels when processing in-memory cache data.
 const maxChannelSize = 50
 
+// ObsProp represents properties for a StatObservation.
+type ObsProp struct {
+	Mmethod string
+	Operiod string
+	Unit    string
+	Sfactor string
+}
+
 func tokenFn(
 	keyTokens map[string]*placeStatVar) func(rowKey string) (string, error) {
 	return func(rowKey string) (string, error) {
@@ -64,10 +72,12 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	place := in.GetPlace()
 	statVar := in.GetStatVar()
 	if place == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if statVar == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
 	date := in.GetDate()
 	filterProp := &ObsProp{
@@ -85,7 +95,8 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	}
 	// Get the StatisticalVariable
 	if triples[statVar] == nil {
-		return nil, status.Errorf(codes.NotFound, "No statistical variable found for %s", statVar)
+		return nil, status.Errorf(codes.NotFound,
+			"No statistical variable found for %s", statVar)
 	}
 	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
 	if err != nil {
@@ -118,7 +129,8 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		obsTimeSeries = btData[place][statVar]
 	}
 	if obsTimeSeries == nil {
-		return nil, status.Errorf(codes.NotFound, "No data for %s, %s", place, statVar)
+		return nil, status.Errorf(
+			codes.NotFound, "No data for %s, %s", place, statVar)
 	}
 	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
 	result, err := getValue(obsTimeSeries, date)
@@ -130,15 +142,18 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 
 // GetStatSeries implements API for Mixer.GetStatSeries.
 // TODO(shifucun): consilidate and dedup the logic among these similar APIs.
-func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest) (
+func (s *Server) GetStatSeries(
+	ctx context.Context, in *pb.GetStatSeriesRequest) (
 	*pb.GetStatSeriesResponse, error) {
 	place := in.GetPlace()
 	statVar := in.GetStatVar()
 	if place == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if statVar == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
 	filterProp := &ObsProp{
 		Mmethod: in.GetMeasurementMethod(),
@@ -155,7 +170,8 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 	}
 	// Get the StatisticalVariable
 	if triples[statVar] == nil {
-		return nil, status.Errorf(codes.NotFound, "No statistical variable found for %s", statVar)
+		return nil, status.Errorf(
+			codes.NotFound, "No statistical variable found for %s", statVar)
 	}
 	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
 	if err != nil {
@@ -189,7 +205,8 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 		obsTimeSeries = btData[place][statVar]
 	}
 	if obsTimeSeries == nil {
-		return nil, status.Errorf(codes.NotFound, "No data for %s, %s", place, statVar)
+		return nil, status.Errorf(codes.NotFound,
+			"No data for %s, %s", place, statVar)
 	}
 	series := obsTimeSeries.SourceSeries
 	series = filterSeries(series, filterProp)
@@ -208,10 +225,12 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
 	if len(places) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if len(statVars) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
 
 	// Initialize result with place and stat var dcids.
@@ -285,24 +304,28 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 }
 
 // GetStatCollection implements API for Mixer.GetStatCollection.
-// TODO(shifucun): consilidate and dedup the logic among these similar APIs.
-func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollectionRequest) (
+func (s *Server) GetStatCollection(
+	ctx context.Context, in *pb.GetStatCollectionRequest) (
 	*pb.GetStatCollectionResponse, error) {
 	parentPlace := in.GetParentPlace()
 	statVars := in.GetStatVars()
 	childType := in.GetChildType()
 	date := in.GetDate()
 	if parentPlace == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: parent_place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: parent_place")
 	}
 	if len(statVars) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_vars")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_vars")
 	}
 	if date == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: date")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: date")
 	}
 	if childType == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: child_type")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: child_type")
 	}
 
 	// Initialize result.
@@ -384,10 +407,12 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	placeDcids := in.GetPlace()
 	statsVarDcid := in.GetStatsVar()
 	if len(placeDcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if statsVarDcid == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
 	filterProp := &ObsProp{
 		Mmethod: in.GetMeasurementMethod(),
@@ -403,7 +428,8 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	}
 	// Get the StatisticalVariable
 	if triples[statsVarDcid] == nil {
-		return nil, status.Errorf(codes.NotFound, "No statistical variable found for %s", statsVarDcid)
+		return nil, status.Errorf(codes.NotFound,
+			"No statistical variable found for %s", statsVarDcid)
 	}
 	statsVarObject, err := triplesToStatsVar(statsVarDcid, triples[statsVarDcid])
 	if err != nil {
@@ -488,7 +514,8 @@ func triplesToStatsVar(
 		switch t.Predicate {
 		case "typeOf":
 			if object != "StatisticalVariable" {
-				return nil, status.Errorf(codes.Internal, "%s is not a StatisticalVariable", t.SubjectID)
+				return nil, status.Errorf(
+					codes.Internal, "%s is not a StatisticalVariable", t.SubjectID)
 			}
 		case "statType":
 			statsVar.StatType = strings.Replace(object, "Value", "", 1)
@@ -548,7 +575,8 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 		}
 	}
 	if latestDate == "" {
-		return 0, status.Errorf(codes.NotFound, "No stat data found for %s", in.PlaceDcid)
+		return 0, status.Errorf(codes.NotFound,
+			"No stat data found for %s", in.PlaceDcid)
 	}
 	return result, nil
 }
@@ -580,7 +608,8 @@ func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	case nil:
 		return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")
 	default:
-		return nil, status.Errorf(codes.NotFound, "ChartStore.Val has unexpected type %T", x)
+		return nil, status.Errorf(codes.NotFound,
+			"ChartStore.Val has unexpected type %T", x)
 	}
 }
 
@@ -630,9 +659,11 @@ func convertToObsCollection(token string, jsonRaw []byte) (
 	case *pb.ChartStore_ObsCollection:
 		return x.ObsCollection, nil
 	case nil:
-		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
+		return nil, status.Error(codes.Internal,
+			"ChartStore.Val is not set")
 	default:
-		return nil, status.Errorf(codes.Internal, "ChartStore.Val has unexpected type %T", x)
+		return nil, status.Errorf(codes.Internal,
+			"ChartStore.Val has unexpected type %T", x)
 	}
 }
 
