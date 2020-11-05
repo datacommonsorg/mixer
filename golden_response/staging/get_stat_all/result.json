@@ -39,12 +39,12 @@
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
               "provenanceDomain": "worldbank.org",
-              "unit": "InternationalDollar"
+              "unit": "InternationalDollar",
+              "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
             }
           ]
         },
         "Count_CriminalActivities_CombinedCrime": {
-          "isDcAggregate": true,
           "sourceSeries": [
             {
               "val": {
@@ -61,7 +61,9 @@
               },
               "observationPeriod": "P1Y",
               "importName": "FBIGovCrime_AggCountry",
-              "provenanceDomain": "fbi.gov"
+              "provenanceDomain": "fbi.gov",
+              "isDcAggregate": true,
+              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
             }
           ]
         },
@@ -131,7 +133,8 @@
               },
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
-              "provenanceDomain": "worldbank.org"
+              "provenanceDomain": "worldbank.org",
+              "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
             },
             {
               "val": {
@@ -139,7 +142,8 @@
               },
               "measurementMethod": "GoogleKGHumanCurated",
               "importName": "WikipediaAndHumanCurated",
-              "provenanceDomain": "wikipedia.org"
+              "provenanceDomain": "wikipedia.org",
+              "provenanceUrl": "https://www.wikipedia.org"
             },
             {
               "val": {
@@ -191,7 +195,8 @@
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org"
+              "provenanceDomain": "wikidata.org",
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             },
             {
               "val": {
@@ -218,7 +223,8 @@
               "measurementMethod": "OECDRegionalStatistics",
               "observationPeriod": "P1Y",
               "importName": "OECDRegionalDemography",
-              "provenanceDomain": "oecd.org"
+              "provenanceDomain": "oecd.org",
+              "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
             },
             {
               "val": {
@@ -345,7 +351,8 @@
               },
               "measurementMethod": "CensusPEPSurvey",
               "importName": "CensusPEP",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
             },
             {
               "val": {
@@ -360,7 +367,9 @@
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey_AggCountry",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "isDcAggregate": true,
+              "provenanceUrl": "https://www.census.gov/"
             },
             {
               "val": {
@@ -377,7 +386,8 @@
               },
               "measurementMethod": "CensusACS1yrSurvey",
               "importName": "CensusACS1YearSurvey",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/"
             }
           ]
         }
@@ -403,7 +413,8 @@
               },
               "observationPeriod": "P1Y",
               "importName": "FBIGovCrime",
-              "provenanceDomain": "fbi.gov"
+              "provenanceDomain": "fbi.gov",
+              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
             }
           ]
         },
@@ -415,7 +426,8 @@
               },
               "measurementMethod": "GoogleKGHumanCurated",
               "importName": "WikipediaAndHumanCurated",
-              "provenanceDomain": "wikipedia.org"
+              "provenanceDomain": "wikipedia.org",
+              "provenanceUrl": "https://www.wikipedia.org"
             },
             {
               "val": {
@@ -459,7 +471,8 @@
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org"
+              "provenanceDomain": "wikidata.org",
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             },
             {
               "val": {
@@ -486,7 +499,8 @@
               "measurementMethod": "OECDRegionalStatistics",
               "observationPeriod": "P1Y",
               "importName": "OECDRegionalDemography",
-              "provenanceDomain": "oecd.org"
+              "provenanceDomain": "oecd.org",
+              "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
             },
             {
               "val": {
@@ -613,7 +627,8 @@
               },
               "measurementMethod": "CensusPEPSurvey",
               "importName": "CensusPEP",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
             },
             {
               "val": {
@@ -628,7 +643,8 @@
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/"
             },
             {
               "val": {
@@ -645,7 +661,8 @@
               },
               "measurementMethod": "CensusACS1yrSurvey",
               "importName": "CensusACS1YearSurvey",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/"
             }
           ]
         }
@@ -671,7 +688,8 @@
               },
               "observationPeriod": "P1Y",
               "importName": "FBIGovCrime",
-              "provenanceDomain": "fbi.gov"
+              "provenanceDomain": "fbi.gov",
+              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
             }
           ]
         },
@@ -683,7 +701,8 @@
               },
               "measurementMethod": "GoogleKGHumanCurated",
               "importName": "WikipediaAndHumanCurated",
-              "provenanceDomain": "wikipedia.org"
+              "provenanceDomain": "wikipedia.org",
+              "provenanceUrl": "https://www.wikipedia.org"
             },
             {
               "val": {
@@ -691,7 +710,8 @@
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org"
+              "provenanceDomain": "wikidata.org",
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             },
             {
               "val": {
@@ -727,7 +747,8 @@
               },
               "measurementMethod": "CensusPEPSurvey",
               "importName": "CensusPEP",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
             },
             {
               "val": {
@@ -742,7 +763,8 @@
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/"
             },
             {
               "val": {
@@ -759,7 +781,8 @@
               },
               "measurementMethod": "CensusACS1yrSurvey",
               "importName": "CensusACS1YearSurvey",
-              "provenanceDomain": "census.gov"
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/"
             }
           ]
         }

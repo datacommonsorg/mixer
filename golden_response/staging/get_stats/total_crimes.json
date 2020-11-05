@@ -13,7 +13,8 @@
       "2017": 1164741
     },
     "placeName": "California",
-    "provenanceDomain": "fbi.gov"
+    "provenanceDomain": "fbi.gov",
+    "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
   },
   "geoId/0649670": {
     "data": {
@@ -29,6 +30,7 @@
       "2017": 2138
     },
     "placeName": "Mountain View",
-    "provenanceDomain": "fbi.gov"
+    "provenanceDomain": "fbi.gov",
+    "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
   }
 }

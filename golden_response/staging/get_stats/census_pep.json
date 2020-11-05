@@ -123,7 +123,8 @@
       "2019": 328239523
     },
     "placeName": "United States",
-    "provenanceDomain": "census.gov"
+    "provenanceDomain": "census.gov",
+    "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
   },
   "geoId/06": {
     "data": {
@@ -249,7 +250,8 @@
       "2019": 39512223
     },
     "placeName": "California",
-    "provenanceDomain": "census.gov"
+    "provenanceDomain": "census.gov",
+    "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
   },
   "geoId/06085": {
     "data": {
@@ -295,7 +297,8 @@
       "2019": 1927852
     },
     "placeName": "Santa Clara County",
-    "provenanceDomain": "census.gov"
+    "provenanceDomain": "census.gov",
+    "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
   },
   "geoId/0649670": {
     "data": {
@@ -330,6 +333,7 @@
       "2018": 83377
     },
     "placeName": "Mountain View",
-    "provenanceDomain": "census.gov"
+    "provenanceDomain": "census.gov",
+    "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
   }
 }

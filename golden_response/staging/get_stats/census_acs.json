@@ -11,6 +11,7 @@
       "2018": 39148760
     },
     "placeName": "California",
-    "provenanceDomain": "census.gov"
+    "provenanceDomain": "census.gov",
+    "provenanceUrl": "https://www.census.gov/"
   }
 }
