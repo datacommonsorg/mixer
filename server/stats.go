@@ -544,6 +544,7 @@ func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 	if len(series) > 0 {
 		in.Data = series[0].Val
 		in.ProvenanceDomain = series[0].ProvenanceDomain
+		in.ProvenanceURL = series[0].ProvenanceURL
 	}
 	in.SourceSeries = nil
 }
@@ -587,10 +588,12 @@ func convertToObsSeries(token string, jsonRaw []byte) (
 				ScalingFactor:     source.GetScalingFactor(),
 				Unit:              source.GetUnit(),
 				ProvenanceDomain:  source.GetProvenanceDomain(),
+				ProvenanceURL:     source.GetProvenanceUrl(),
 				Val:               source.GetVal(),
 			}
 		}
 		ret.ProvenanceDomain = x.ObsTimeSeries.GetProvenanceDomain()
+		ret.ProvenanceURL = x.ObsTimeSeries.GetProvenanceUrl()
 		return ret, nil
 	case nil:
 		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")

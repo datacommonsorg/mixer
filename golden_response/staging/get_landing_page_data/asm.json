@@ -10,7 +10,8 @@
         "data": {
           "2006": 14.62928
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {},
@@ -34,7 +35,8 @@
           "2017": 10823.4448040273,
           "2018": 11466.6907058505
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {},
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
@@ -62,7 +64,8 @@
         "data": {
           "1995": 17
         },
-        "provenanceDomain": "usgs.gov"
+        "provenanceDomain": "usgs.gov",
+        "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
       "Count_Household": {},
@@ -185,7 +188,8 @@
           "2017": 55620,
           "2018": 55465
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {},
       "Count_Person_15OrMoreYears": {},
@@ -329,7 +333,8 @@
           "2018": 7126,
           "2019": 7109
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
       "Count_Person_SomeOtherRaceAlone": {},
@@ -407,7 +412,8 @@
           "2018": 48339,
           "2019": 48203
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
       "Count_Person_Widowed": {},
@@ -711,12 +717,27 @@
           "2020-10-18": 0,
           "2020-10-19": 0,
           "2020-10-20": 0,
-          "2020-10-21": 0
+          "2020-10-21": 0,
+          "2020-10-22": 0,
+          "2020-10-23": 0,
+          "2020-10-24": 0,
+          "2020-10-25": 0,
+          "2020-10-26": 0,
+          "2020-10-27": 0,
+          "2020-10-28": 0,
+          "2020-10-29": 0,
+          "2020-10-30": 0,
+          "2020-10-31": 0,
+          "2020-11-01": 0,
+          "2020-11-02": 0,
+          "2020-11-03": 0,
+          "2020-11-04": 0
         },
-        "provenanceDomain": "who.int"
+        "provenanceDomain": "who.int",
+        "provenanceUrl": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/"
       },
       "FertilityRate_Person_Female": {},
-      "GiniIndex_EcconomicActivity": {},
+      "GiniIndex_EconomicActivity": {},
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "2003": 0.814111261872426,
@@ -736,7 +757,8 @@
           "2017": -5.85443037974683,
           "2018": 2.18487394957982
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
         "data": {
@@ -800,7 +822,8 @@
           "2017": -0.217311352480231,
           "2018": -0.279065761519574
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {},
       "Median_Age_Person": {},
@@ -854,7 +877,8 @@
           "2010": 8.8,
           "2016": 7.8
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
         "data": {
@@ -903,7 +927,8 @@
           "2013": 2568.82970799499,
           "2014": 2619.96061573831
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
         "data": {
@@ -952,7 +977,8 @@
           "2013": 1461.07678089719,
           "2014": 1495.54120710984
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
@@ -975,7 +1001,8 @@
           "2014": 15.44382,
           "2015": 16.21822
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -998,7 +1025,8 @@
           "2014": 5.94848,
           "2015": 6.24106
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
         "data": {
@@ -1062,7 +1090,8 @@
           "2017": 29283050314.4654,
           "2018": 27766427104.014
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -1126,7 +1155,8 @@
           "2017": 1.4195266381,
           "2018": 1.4749015474
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
         "data": {
@@ -1190,7 +1220,8 @@
           "2017": 9880.94654326324,
           "2018": 8920.76210462979
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
         "data": {
@@ -1224,7 +1255,8 @@
           "2017": 3194802640636.97,
           "2018": 3320409685210.91
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
         "data": {
@@ -1258,7 +1290,8 @@
           "2017": 15370,
           "2018": 15850
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
         "data": {
@@ -1318,7 +1351,8 @@
           "2013": 2.50540878760348,
           "2014": 2.61293352087838
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
         "data": {
@@ -1368,7 +1402,8 @@
           "2018": 2933489276.49,
           "2019": 3295529773.22
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -1418,7 +1453,8 @@
           "2018": 0.1555829462,
           "2019": 0.1791284343
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
         "data": {
@@ -1468,7 +1504,8 @@
           "2018": 2253247430.04,
           "2019": 2231583198.17
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
         "data": {
@@ -1493,7 +1530,8 @@
           "2018": 916824390000,
           "2019": 1187361690000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -1518,7 +1556,8 @@
           "2018": 48.6254512228,
           "2019": 64.5390134839
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
       "Count_CriminalActivities_CombinedCrime": {},
@@ -1529,7 +1568,8 @@
           "2004": 1,
           "2011": 1
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
         "data": {
@@ -1594,7 +1634,8 @@
           "2018": 12.8,
           "2019": 12.4
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
         "data": {
@@ -1659,7 +1700,8 @@
           "2018": 11.2,
           "2019": 10.9
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
         "data": {
@@ -1724,7 +1766,8 @@
           "2018": 14.3,
           "2019": 13.9
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
       "Count_Death_DiseasesOfTheNervousSystem": {},
@@ -1779,7 +1822,8 @@
           "2018": 2,
           "2019": 2
         },
-        "provenanceDomain": "usgs.gov"
+        "provenanceDomain": "usgs.gov",
+        "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
       "Count_Household": {},
@@ -1902,7 +1946,8 @@
           "2017": 207833831,
           "2018": 209469333
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {
         "data": {
@@ -1925,7 +1970,8 @@
           "2017": 15365200,
           "2018": 15182000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15OrMoreYears": {},
       "Count_Person_15To19Years": {
@@ -1949,7 +1995,8 @@
           "2017": 16821600,
           "2018": 16439800
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
         "data": {
@@ -1984,7 +2031,8 @@
           "2018": 0.7031400299,
           "2019": 0.7038899994
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
       "Count_Person_18To24Years": {},
@@ -2009,7 +2057,8 @@
           "2017": 17203500,
           "2018": 17294800
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25OrMoreYears": {},
       "Count_Person_25To29Years": {
@@ -2033,7 +2082,8 @@
           "2017": 17161700,
           "2018": 17068600
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25To34Years": {},
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {},
@@ -2065,7 +2115,8 @@
           "2017": 17306900,
           "2018": 17296700
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To39Years": {
         "data": {
@@ -2088,7 +2139,8 @@
           "2017": 16402800,
           "2018": 16662000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To44Years": {},
       "Count_Person_3OrMoreYears": {},
@@ -2113,7 +2165,8 @@
           "2017": 14500800,
           "2018": 14879000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To49Years": {
         "data": {
@@ -2136,7 +2189,8 @@
           "2017": 13171000,
           "2018": 13281300
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To54Years": {},
       "Count_Person_50To54Years": {
@@ -2160,7 +2214,8 @@
           "2017": 12102400,
           "2018": 12293900
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_55To59Years": {
         "data": {
@@ -2183,7 +2238,8 @@
           "2017": 10463700,
           "2018": 10746100
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_5To17Years": {},
       "Count_Person_5To9Years": {
@@ -2207,7 +2263,8 @@
           "2017": 14593300,
           "2018": 14537800
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_60To61Years": {},
       "Count_Person_60To64Years": {
@@ -2231,7 +2288,8 @@
           "2017": 8503040,
           "2018": 8797470
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_62To64Years": {},
       "Count_Person_65To69Years": {
@@ -2255,7 +2313,8 @@
           "2017": 6572590,
           "2018": 6823730
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_65To74Years": {},
       "Count_Person_70To74Years": {
@@ -2279,7 +2338,8 @@
           "2017": 4709480,
           "2018": 4938530
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_75OrMoreYears": {},
       "Count_Person_75To79Years": {
@@ -2303,7 +2363,8 @@
           "2017": 3292380,
           "2018": 3376250
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {
         "data": {
@@ -2316,7 +2377,8 @@
           "2014": 3.5326490334,
           "2015": 2.54
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {
         "data": {
@@ -2329,7 +2391,8 @@
           "2014": 2.2096160918,
           "2015": 1.53
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {
         "data": {
@@ -2342,7 +2405,8 @@
           "2014": 4.7786048224,
           "2015": 3.52
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_80OrMoreYears": {
         "data": {
@@ -2365,7 +2429,8 @@
           "2017": 3913380,
           "2018": 4089320
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
       "Count_Person_AsianAlone": {},
@@ -2405,7 +2470,8 @@
           "2017": 105641000,
           "2018": 106524000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_HispanicOrLatino": {},
@@ -2442,7 +2508,8 @@
           "2018": 105542232,
           "2019": 106500838
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
       "Count_Person_IncomeOf15000To24999USDollar": {},
@@ -2473,7 +2540,8 @@
           "2017": 101164000,
           "2018": 101971000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_MarriedAndNotSeparated": {},
@@ -2504,7 +2572,8 @@
           "2018": 24.5,
           "2019": 24.7
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
         "data": {
@@ -2569,7 +2638,8 @@
           "2018": 28133826,
           "2019": 27807886
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
       "Count_Person_SomeOtherRaceAlone": {},
@@ -2598,7 +2668,8 @@
           "2017": 14720800,
           "2018": 14787600
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {
         "data": {
@@ -2606,7 +2677,8 @@
           "1996": 1,
           "2007": 0.5
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
         "data": {
@@ -2614,7 +2686,8 @@
           "1996": 2.6,
           "2007": 1.6
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
         "data": {
@@ -2622,7 +2695,8 @@
           "1996": 0.9,
           "2007": 0.3
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
         "data": {
@@ -2630,7 +2704,8 @@
           "1996": 3.1,
           "2007": 2
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
@@ -2638,7 +2713,8 @@
           "1996": 1,
           "2007": 0.4
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
@@ -2646,7 +2722,8 @@
           "1996": 2.8,
           "2007": 1.8
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
         "data": {
@@ -2711,7 +2788,8 @@
           "2018": 181335507,
           "2019": 183241641
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
       "Count_Person_Widowed": {},
@@ -3008,7 +3086,8 @@
           "2020-10-08": 148228,
           "2020-10-09": 148957
         },
-        "provenanceDomain": "google.com"
+        "provenanceDomain": "google.com",
+        "provenanceUrl": "https://research.google.com"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -3071,9 +3150,49 @@
           "2016": 1.747,
           "2017": 1.739
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
-      "GiniIndex_EcconomicActivity": {},
+      "GiniIndex_EconomicActivity": {
+        "data": {
+          "1981": 58,
+          "1982": 58.4,
+          "1983": 59,
+          "1984": 58.4,
+          "1985": 55.6,
+          "1986": 58.5,
+          "1987": 59.7,
+          "1988": 61.4,
+          "1989": 63.3,
+          "1990": 60.5,
+          "1992": 53.2,
+          "1993": 60.1,
+          "1995": 59.6,
+          "1996": 59.9,
+          "1997": 59.8,
+          "1998": 59.6,
+          "1999": 59,
+          "2001": 58.4,
+          "2002": 58.1,
+          "2003": 57.6,
+          "2004": 56.5,
+          "2005": 56.3,
+          "2006": 55.6,
+          "2007": 54.9,
+          "2008": 54,
+          "2009": 53.7,
+          "2011": 52.9,
+          "2012": 53.5,
+          "2013": 52.8,
+          "2014": 52.1,
+          "2015": 51.9,
+          "2016": 53.3,
+          "2017": 53.3,
+          "2018": 53.9
+        },
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+      },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 10.275911554301,
@@ -3135,7 +3254,8 @@
           "2017": 1.0638325547677,
           "2018": 1.11758734985511
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
         "data": {
@@ -3199,7 +3319,8 @@
           "2017": 0.807147162261819,
           "2018": 0.783847578971981
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
         "data": {
@@ -3262,7 +3383,8 @@
           "2016": 75.23,
           "2017": 75.456
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -3315,7 +3437,8 @@
           "2010": 13,
           "2016": 13.4
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
         "data": {
@@ -3375,7 +3498,8 @@
           "2013": 7217.52908915495,
           "2014": 7035.48297471676
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
         "data": {
@@ -3436,7 +3560,8 @@
           "2014": 3779.46192078536,
           "2015": 3817.54941455461
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {
         "data": {
@@ -3466,7 +3591,8 @@
           "2018": 2068562200000,
           "2019": 2053033400000
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
         "data": {
@@ -3487,7 +3613,8 @@
           "2015": 10.97799,
           "2016": 10.92541
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -3508,7 +3635,8 @@
           "2015": 4.80518,
           "2016": 4.80093
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
         "data": {
@@ -3572,7 +3700,8 @@
           "2017": 45381722042.225,
           "2018": 49470627810.6299
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -3636,7 +3765,8 @@
           "2017": 1.2341411022,
           "2018": 1.2337687569
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
         "data": {
@@ -3690,7 +3820,8 @@
           "2017": 44240.0441099604,
           "2018": 47603.0276328757
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
         "data": {
@@ -3724,7 +3855,8 @@
           "2017": 4412838501715.13,
           "2018": 4524462097074.55
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
         "data": {
@@ -3758,7 +3890,8 @@
           "2017": 53390,
           "2018": 54560
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
         "data": {
@@ -3787,7 +3920,8 @@
           "2013": 9.39062341958994,
           "2014": 8.88937039483839
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
         "data": {
@@ -3841,7 +3975,8 @@
           "2018": 17024407727.6008,
           "2019": 16474116128.0303
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -3895,7 +4030,8 @@
           "2018": 0.4310468978,
           "2019": 0.428385362
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
         "data": {
@@ -3949,7 +4085,8 @@
           "2018": 24322173787.7839,
           "2019": 24062113415.0434
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
         "data": {
@@ -3999,7 +4136,8 @@
           "2018": 1755172790000,
           "2019": 2098173930000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -4049,7 +4187,8 @@
           "2018": 44.4398300614,
           "2019": 54.5599528083
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
       "Count_CriminalActivities_CombinedCrime": {},
@@ -4111,7 +4250,8 @@
           "2018": 3.3,
           "2019": 3.2
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
         "data": {
@@ -4168,7 +4308,8 @@
           "2018": 3,
           "2019": 2.9
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
         "data": {
@@ -4225,7 +4366,8 @@
           "2018": 3.5,
           "2019": 3.5
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
       "Count_Death_DiseasesOfTheNervousSystem": {},
@@ -4279,7 +4421,8 @@
           "2015": 1,
           "2018": 2
         },
-        "provenanceDomain": "usgs.gov"
+        "provenanceDomain": "usgs.gov",
+        "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
       "Count_Household": {},
@@ -4403,7 +4546,8 @@
           "2018": 82792351,
           "2019": 83019213
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_10To14Years": {
         "data": {
@@ -4468,7 +4612,8 @@
           "2018": 3682765,
           "2019": 3702180
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_15OrMoreYears": {},
       "Count_Person_15To19Years": {
@@ -4534,7 +4679,8 @@
           "2018": 4080567,
           "2019": 4003477
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
         "data": {
@@ -4569,7 +4715,8 @@
           "2018": 0.7848699951,
           "2019": 0.7857099915
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
       "Count_Person_18To24Years": {},
@@ -4636,7 +4783,8 @@
           "2018": 4602514,
           "2019": 4607272
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_25OrMoreYears": {},
       "Count_Person_25To29Years": {
@@ -4702,7 +4850,8 @@
           "2018": 5298080,
           "2019": 5193335
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_25To34Years": {},
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {},
@@ -4776,7 +4925,8 @@
           "2018": 5290252,
           "2019": 5409029
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_35To39Years": {
         "data": {
@@ -4841,7 +4991,8 @@
           "2018": 5163210,
           "2019": 5237416
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_35To44Years": {},
       "Count_Person_3OrMoreYears": {},
@@ -4908,7 +5059,8 @@
           "2018": 4788357,
           "2019": 4841738
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_45To49Years": {
         "data": {
@@ -4973,7 +5125,8 @@
           "2018": 5943287,
           "2019": 5584519
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_45To54Years": {},
       "Count_Person_50To54Years": {
@@ -5039,7 +5192,8 @@
           "2018": 6968045,
           "2019": 6875948
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_55To59Years": {
         "data": {
@@ -5104,7 +5258,8 @@
           "2018": 6401516,
           "2019": 6598218
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_5To17Years": {},
       "Count_Person_5To9Years": {
@@ -5170,7 +5325,8 @@
           "2018": 3642216,
           "2019": 3662238
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_60To61Years": {},
       "Count_Person_60To64Years": {
@@ -5236,7 +5392,8 @@
           "2018": 5375053,
           "2019": 5493914
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_62To64Years": {},
       "Count_Person_65To69Years": {
@@ -5302,7 +5459,8 @@
           "2018": 4711694,
           "2019": 4808497
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_65To74Years": {},
       "Count_Person_70To74Years": {
@@ -5368,7 +5526,8 @@
           "2018": 3611909,
           "2019": 3596545
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_75OrMoreYears": {
         "data": {
@@ -5403,7 +5562,8 @@
           "2018": 9386108,
           "2019": 9478490
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_75To79Years": {
         "data": {
@@ -5468,7 +5628,8 @@
           "2018": 4235423,
           "2019": 4089384
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {},
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {},
@@ -5536,7 +5697,8 @@
           "2018": 5150685,
           "2019": 5389106
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
       "Count_Person_AsianAlone": {},
@@ -5618,7 +5780,8 @@
           "2018": 41948786,
           "2019": 42052522
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_HispanicOrLatino": {},
@@ -5655,7 +5818,8 @@
           "2018": 43560137,
           "2019": 43577709
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
       "Count_Person_IncomeOf15000To24999USDollar": {},
@@ -5728,7 +5892,8 @@
           "2018": 40843565,
           "2019": 40966691
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_MarriedAndNotSeparated": {},
@@ -5759,7 +5924,8 @@
           "2018": 234.34,
           "2019": 234.98
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
         "data": {
@@ -5824,7 +5990,8 @@
           "2018": 18809664,
           "2019": 18807964
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
       "Count_Person_SomeOtherRaceAlone": {},
@@ -5895,7 +6062,8 @@
           "2018": 3846778,
           "2019": 3926397
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
@@ -5905,14 +6073,16 @@
         "data": {
           "2004": 0.1
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
           "2004": 1,
           "2016": 0.3
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
         "data": {
@@ -5977,7 +6147,8 @@
           "2018": 64096118,
           "2019": 64324835
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
       "Count_Person_Widowed": {},
@@ -6274,7 +6445,8 @@
           "2020-10-08": 9578,
           "2020-10-09": 9589
         },
-        "provenanceDomain": "google.com"
+        "provenanceDomain": "google.com",
+        "provenanceUrl": "https://research.google.com"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -6337,9 +6509,34 @@
           "2016": 1.59,
           "2017": 1.57
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
-      "GiniIndex_EcconomicActivity": {},
+      "GiniIndex_EconomicActivity": {
+        "data": {
+          "1991": 29.2,
+          "1994": 29.2,
+          "1995": 28.9,
+          "1998": 28.3,
+          "2000": 28.8,
+          "2001": 30.3,
+          "2002": 29.9,
+          "2003": 30,
+          "2004": 30.4,
+          "2005": 32.1,
+          "2006": 31.3,
+          "2007": 31.3,
+          "2008": 31.1,
+          "2009": 30.5,
+          "2010": 30.2,
+          "2011": 30.5,
+          "2013": 31.1,
+          "2015": 31.7,
+          "2016": 31.9
+        },
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+      },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1971": 3.13269974699064,
@@ -6391,7 +6588,8 @@
           "2017": 2.46503002917808,
           "2018": 1.52744629830981
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
         "data": {
@@ -6455,7 +6653,8 @@
           "2017": 0.373724559895838,
           "2018": 0.327228150005957
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
         "data": {
@@ -6518,7 +6717,8 @@
           "2016": 80.990243902439,
           "2017": 80.990243902439
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -6911,7 +7111,8 @@
           "2019-11": 3.2,
           "2019-12": 3.3
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "UnemploymentRate_Person_Female": {
         "data": {
@@ -7263,7 +7464,8 @@
           "2019-11": 2.7,
           "2019-12": 2.8
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "UnemploymentRate_Person_Male": {
         "data": {
@@ -7615,7 +7817,8 @@
           "2019-11": 3.6,
           "2019-12": 3.7
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       }
     },
     "country/EGY": {
@@ -7624,7 +7827,8 @@
           "2010": 0.4,
           "2016": 0.4
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
         "data": {
@@ -7673,7 +7877,8 @@
           "2013": 1684.91156120312,
           "2014": 1683.21351829557
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
         "data": {
@@ -7722,7 +7927,8 @@
           "2013": 848.629144352604,
           "2014": 827.497166867788
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
@@ -7734,7 +7940,8 @@
           "2007": 11.20964,
           "2008": 10.9418
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -7762,7 +7969,8 @@
           "2007": 3.68461,
           "2008": 3.76083
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
         "data": {
@@ -7824,7 +8032,8 @@
           "2017": 2765588434.01207,
           "2018": 3109997891.99423
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -7886,7 +8095,8 @@
           "2017": 1.422609271,
           "2018": 1.2470692398
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
         "data": {
@@ -7945,7 +8155,8 @@
           "2017": 2440.51017311107,
           "2018": 2549.13225178609
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
         "data": {
@@ -7979,7 +8190,8 @@
           "2017": 1110453289593.77,
           "2018": 1191085353575.37
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
         "data": {
@@ -8013,7 +8225,8 @@
           "2017": 11510,
           "2018": 12100
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
         "data": {
@@ -8073,7 +8286,8 @@
           "2013": 2.41403693290307,
           "2014": 2.23273200470305
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
         "data": {
@@ -8121,7 +8335,8 @@
           "2018": 25515700000,
           "2019": 26791485235.2
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -8169,7 +8384,8 @@
           "2018": 10.1698815728,
           "2019": 8.836966755
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
         "data": {
@@ -8204,7 +8420,8 @@
           "2017": 270800000,
           "2018": 514500000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
         "data": {
@@ -8223,7 +8440,8 @@
           "2018": 42005550000,
           "2019": 44199850000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -8242,7 +8460,8 @@
           "2018": 16.74229862,
           "2019": 14.5789828969
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
       "Count_CriminalActivities_CombinedCrime": {},
@@ -8312,7 +8531,8 @@
           "2018": 17.9,
           "2019": 17.3
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
         "data": {
@@ -8377,7 +8597,8 @@
           "2018": 16.7,
           "2019": 16.1
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
         "data": {
@@ -8442,7 +8663,8 @@
           "2018": 19.1,
           "2019": 18.5
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
       "Count_Death_DiseasesOfTheNervousSystem": {},
@@ -8492,7 +8714,8 @@
           "2016": 1,
           "2017": 1
         },
-        "provenanceDomain": "usgs.gov"
+        "provenanceDomain": "usgs.gov",
+        "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
       "Count_Household": {},
@@ -8615,7 +8838,8 @@
           "2017": 96442593,
           "2018": 98423595
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {},
       "Count_Person_15OrMoreYears": {},
@@ -8653,7 +8877,8 @@
           "2018": 0.4934400177,
           "2019": 0.4947499847
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
       "Count_Person_18To24Years": {},
@@ -8693,21 +8918,24 @@
           "2005": 7.9,
           "2009": 2.9
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {
         "data": {
           "2005": 4.3,
           "2009": 0.9
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {
         "data": {
           "2005": 11.5,
           "2009": 4.8
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_80OrMoreYears": {},
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -8763,7 +8991,8 @@
           "2018": 30177778,
           "2019": 30828413
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
       "Count_Person_IncomeOf15000To24999USDollar": {},
@@ -8845,7 +9074,8 @@
           "2018": 56392783,
           "2019": 57492249
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
       "Count_Person_SomeOtherRaceAlone": {},
@@ -8864,7 +9094,8 @@
           "2008": 3.6,
           "2014": 4.7
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
         "data": {
@@ -8876,7 +9107,8 @@
           "2008": 7.1,
           "2014": 9.5
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
         "data": {
@@ -8888,7 +9120,8 @@
           "2008": 3.9,
           "2014": 4.8
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
         "data": {
@@ -8900,7 +9133,8 @@
           "2008": 8.8,
           "2014": 9.4
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
@@ -8913,7 +9147,8 @@
           "2008": 3.8,
           "2014": 4.8
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
@@ -8928,7 +9163,8 @@
           "2008": 7.9,
           "2014": 9.5
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
         "data": {
@@ -8993,7 +9229,8 @@
           "2018": 42030812,
           "2019": 42895824
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
       "Count_Person_Widowed": {},
@@ -9286,7 +9523,8 @@
           "2020-10-08": 6010,
           "2020-10-09": 6017
         },
-        "provenanceDomain": "google.com"
+        "provenanceDomain": "google.com",
+        "provenanceUrl": "https://research.google.com"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -9349,9 +9587,24 @@
           "2016": 3.41,
           "2017": 3.37
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
-      "GiniIndex_EcconomicActivity": {},
+      "GiniIndex_EconomicActivity": {
+        "data": {
+          "1990": 32,
+          "1995": 30.1,
+          "1999": 32.8,
+          "2004": 31.8,
+          "2008": 31.1,
+          "2010": 30.2,
+          "2012": 28.3,
+          "2015": 31.8,
+          "2017": 31.5
+        },
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+      },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 5.16111414527542,
@@ -9413,7 +9666,8 @@
           "2017": 4.18122100091018,
           "2018": 5.31412103746398
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
         "data": {
@@ -9477,7 +9731,8 @@
           "2017": 2.09083471976459,
           "2018": 2.03326217641077
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
         "data": {
@@ -9540,7 +9795,8 @@
           "2016": 71.482,
           "2017": 71.656
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -9593,7 +9849,8 @@
           "2010": 11.4,
           "2016": 10.7
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
         "data": {
@@ -9653,7 +9910,8 @@
           "2013": 9089.61977443101,
           "2014": 9026.32104131095
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
         "data": {
@@ -9714,7 +9972,8 @@
           "2014": 4559.89223229927,
           "2015": 4444.72528668103
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
@@ -9746,7 +10005,8 @@
           "2015": 16.37508,
           "2016": 16.82011
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -9788,7 +10048,8 @@
           "2015": 6.34016,
           "2016": 6.44277
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
         "data": {
@@ -9852,7 +10113,8 @@
           "2017": 2328156653.09662,
           "2018": 2262928311.88156
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -9916,7 +10178,8 @@
           "2017": 1.2084632895,
           "2018": 1.1613884018
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
         "data": {
@@ -9980,7 +10243,8 @@
           "2017": 42260.1251767853,
           "2018": 41945.3316690932
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
         "data": {
@@ -10014,7 +10278,8 @@
           "2017": 186322763044.727,
           "2018": 192544436973.835
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
         "data": {
@@ -10048,7 +10313,8 @@
           "2017": 38870,
           "2018": 39410
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
         "data": {
@@ -10108,7 +10374,8 @@
           "2013": 7.53195740753247,
           "2014": 7.68657582544293
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
         "data": {
@@ -10161,7 +10428,8 @@
           "2018": 452514256.39015,
           "2019": 433500782.343737
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -10214,7 +10482,8 @@
           "2018": 0.2176379955,
           "2019": 0.2094927601
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
         "data": {
@@ -10267,7 +10536,8 @@
           "2018": 843732402.346712,
           "2019": 762227926.315988
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
         "data": {
@@ -10307,7 +10577,8 @@
           "2018": 86132630000,
           "2019": 107879780000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -10347,7 +10618,8 @@
           "2018": 41.425728964,
           "2019": 52.133776431
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
       "Count_CriminalActivities_CombinedCrime": {},
@@ -10381,7 +10653,8 @@
           "2017": 1,
           "2018": 2
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
         "data": {
@@ -10446,7 +10719,8 @@
           "2018": 4.1,
           "2019": 3.9
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
         "data": {
@@ -10511,7 +10785,8 @@
           "2018": 3.7,
           "2019": 3.6
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
         "data": {
@@ -10576,7 +10851,8 @@
           "2018": 4.4,
           "2019": 4.3
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
       "Count_Death_DiseasesOfTheNervousSystem": {},
@@ -10663,7 +10939,8 @@
           "2018": 56,
           "2019": 48
         },
-        "provenanceDomain": "usgs.gov"
+        "provenanceDomain": "usgs.gov",
+        "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
       "Count_Household": {},
@@ -10786,7 +11063,8 @@
           "2017": 4793900,
           "2018": 4885500
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {
         "data": {
@@ -10810,7 +11088,8 @@
           "2018": 313470,
           "2019": 322540
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15OrMoreYears": {},
       "Count_Person_15To19Years": {
@@ -10835,7 +11114,8 @@
           "2018": 315060,
           "2019": 315410
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
         "data": {
@@ -10870,7 +11150,8 @@
           "2018": 0.8108300018,
           "2019": 0.8121299744
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
       "Count_Person_18To24Years": {},
@@ -10896,7 +11177,8 @@
           "2018": 339100,
           "2019": 338630
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25OrMoreYears": {},
       "Count_Person_25To29Years": {
@@ -10921,7 +11203,8 @@
           "2018": 353360,
           "2019": 359710
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25To34Years": {},
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {},
@@ -10954,7 +11237,8 @@
           "2018": 323830,
           "2019": 336760
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To39Years": {
         "data": {
@@ -10978,7 +11262,8 @@
           "2018": 301010,
           "2019": 311160
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To44Years": {},
       "Count_Person_3OrMoreYears": {},
@@ -11004,7 +11289,8 @@
           "2018": 294550,
           "2019": 294870
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To49Years": {
         "data": {
@@ -11028,7 +11314,8 @@
           "2018": 325800,
           "2019": 325540
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To54Years": {},
       "Count_Person_50To54Years": {
@@ -11053,7 +11340,8 @@
           "2018": 312560,
           "2019": 313280
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_55To59Years": {
         "data": {
@@ -11077,7 +11365,8 @@
           "2018": 312220,
           "2019": 316350
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_5To17Years": {},
       "Count_Person_5To9Years": {
@@ -11102,7 +11391,8 @@
           "2018": 330220,
           "2019": 329580
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_60To61Years": {},
       "Count_Person_60To64Years": {
@@ -11127,7 +11417,8 @@
           "2018": 271240,
           "2019": 279100
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_62To64Years": {},
       "Count_Person_65To69Years": {
@@ -11152,7 +11443,8 @@
           "2018": 236400,
           "2019": 240900
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_65To74Years": {},
       "Count_Person_70To74Years": {
@@ -11177,7 +11469,8 @@
           "2018": 194220,
           "2019": 204100
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_75OrMoreYears": {},
       "Count_Person_75To79Years": {
@@ -11202,7 +11495,8 @@
           "2018": 137550,
           "2019": 143000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {},
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {},
@@ -11229,7 +11523,8 @@
           "2018": 175530,
           "2019": 180770
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
       "Count_Person_AsianAlone": {},
@@ -11270,7 +11565,8 @@
           "2018": 2461000,
           "2019": 2497300
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_HispanicOrLatino": {},
@@ -11307,7 +11603,8 @@
           "2018": 2721966,
           "2019": 2764798
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
       "Count_Person_IncomeOf15000To24999USDollar": {},
@@ -11339,7 +11636,8 @@
           "2018": 2380000,
           "2019": 2419700
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_MarriedAndNotSeparated": {},
@@ -11370,7 +11668,8 @@
           "2018": 18.27,
           "2019": 18.56
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
         "data": {
@@ -11435,7 +11734,8 @@
           "2018": 651695,
           "2019": 658140
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
       "Count_Person_SomeOtherRaceAlone": {},
@@ -11465,7 +11765,8 @@
           "2018": 304890,
           "2019": 305350
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
@@ -11536,7 +11837,8 @@
           "2018": 4189305,
           "2019": 4258860
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
       "Count_Person_Widowed": {},
@@ -11824,7 +12126,8 @@
           "2020-10-08": 25,
           "2020-10-09": 25
         },
-        "provenanceDomain": "google.com"
+        "provenanceDomain": "google.com",
+        "provenanceUrl": "https://research.google.com"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -11887,9 +12190,10 @@
           "2016": 1.87,
           "2017": 1.81
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
-      "GiniIndex_EcconomicActivity": {},
+      "GiniIndex_EconomicActivity": {},
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1971": 3.78545823631424,
@@ -11941,7 +12245,8 @@
           "2017": 3.12846078945779,
           "2018": 2.77357101506234
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
         "data": {
@@ -12004,7 +12309,8 @@
           "2017": 2.12296238197075,
           "2018": 1.89273580152215
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
         "data": {
@@ -12067,7 +12373,8 @@
           "2016": 81.6124390243903,
           "2017": 81.6585365853659
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -12120,7 +12427,8 @@
           "2010": 8,
           "2016": 6.3
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
         "data": {
@@ -12169,7 +12477,8 @@
           "2013": 1301.30371857823,
           "2014": 1345.8795888743
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
         "data": {
@@ -12218,7 +12527,8 @@
           "2013": 684.15409061608,
           "2014": 790.217192157794
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
@@ -12243,7 +12553,8 @@
           "2017": 18.23592,
           "2018": 17.13195
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -12271,7 +12582,8 @@
           "2017": 3.93676,
           "2018": 3.71993
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
         "data": {
@@ -12335,7 +12647,8 @@
           "2017": 2665785313.29571,
           "2018": 2708912280.26713
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -12399,7 +12712,8 @@
           "2017": 1.2421353007,
           "2018": 1.1871449004
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
         "data": {
@@ -12463,7 +12777,8 @@
           "2017": 6710.50802896038,
           "2018": 6941.23584763012
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
         "data": {
@@ -12497,7 +12812,8 @@
           "2017": 413110852732.656,
           "2018": 438563290668.618
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
         "data": {
@@ -12531,7 +12847,8 @@
           "2017": 13140,
           "2018": 13710
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
         "data": {
@@ -12591,7 +12908,8 @@
           "2013": 1.91959048010601,
           "2014": 2.05198435817931
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
         "data": {
@@ -12626,7 +12944,8 @@
           "2018": 3224754054.74744,
           "2019": 3326000000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -12661,7 +12980,8 @@
           "2018": 1.452297725,
           "2019": 1.4661796687
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
         "data": {
@@ -12686,7 +13006,8 @@
           "2003": 116003776.6,
           "2004": 113242790.2
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
         "data": {
@@ -12714,7 +13035,8 @@
           "2018": 93385360000,
           "2019": 98964960000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -12742,7 +13064,8 @@
           "2018": 42.0569580097,
           "2019": 43.6261011027
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
       "Count_CriminalActivities_CombinedCrime": {},
@@ -12812,7 +13135,8 @@
           "2018": 10.7,
           "2019": 10.3
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
         "data": {
@@ -12877,7 +13201,8 @@
           "2018": 9.6,
           "2019": 9.2
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
         "data": {
@@ -12942,7 +13267,8 @@
           "2018": 11.7,
           "2019": 11.2
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
       "Count_Death_DiseasesOfTheNervousSystem": {},
@@ -13033,7 +13359,8 @@
           "2018": 115,
           "2019": 98
         },
-        "provenanceDomain": "usgs.gov"
+        "provenanceDomain": "usgs.gov",
+        "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
       "Count_Household": {},
@@ -13156,7 +13483,8 @@
           "2017": 31444297,
           "2018": 31989256
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {
         "data": {
@@ -13176,7 +13504,8 @@
           "2014": 2916310,
           "2015": 2914160
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15OrMoreYears": {},
       "Count_Person_15To19Years": {
@@ -13197,7 +13526,8 @@
           "2014": 2889780,
           "2015": 2887530
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
         "data": {
@@ -13232,7 +13562,8 @@
           "2018": 0.8061599731,
           "2019": 0.8108999634
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
       "Count_Person_18To24Years": {},
@@ -13254,7 +13585,8 @@
           "2014": 2815950,
           "2015": 2828390
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25OrMoreYears": {},
       "Count_Person_25To29Years": {
@@ -13275,7 +13607,8 @@
           "2014": 2628320,
           "2015": 2661350
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25To34Years": {},
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {},
@@ -13304,7 +13637,8 @@
           "2014": 2389600,
           "2015": 2411780
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To39Years": {
         "data": {
@@ -13324,7 +13658,8 @@
           "2014": 2221570,
           "2015": 2258370
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To44Years": {},
       "Count_Person_3OrMoreYears": {},
@@ -13346,7 +13681,8 @@
           "2014": 1936260,
           "2015": 1977630
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To49Years": {
         "data": {
@@ -13366,7 +13702,8 @@
           "2014": 1688350,
           "2015": 1725350
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To54Years": {},
       "Count_Person_50To54Years": {
@@ -13387,7 +13724,8 @@
           "2014": 1443080,
           "2015": 1486310
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_55To59Years": {
         "data": {
@@ -13407,7 +13745,8 @@
           "2014": 1166680,
           "2015": 1205100
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_5To17Years": {},
       "Count_Person_5To9Years": {
@@ -13428,7 +13767,8 @@
           "2014": 2930450,
           "2015": 2922740
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_60To61Years": {},
       "Count_Person_60To64Years": {
@@ -13449,7 +13789,8 @@
           "2014": 933698,
           "2015": 967702
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_62To64Years": {},
       "Count_Person_65To69Years": {
@@ -13470,7 +13811,8 @@
           "2014": 710008,
           "2015": 736059
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_65To74Years": {},
       "Count_Person_70To74Years": {
@@ -13491,7 +13833,8 @@
           "2014": 530116,
           "2015": 545659
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_75OrMoreYears": {},
       "Count_Person_75To79Years": {
@@ -13512,7 +13855,8 @@
           "2014": 382689,
           "2015": 394230
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {
         "data": {
@@ -13522,7 +13866,8 @@
           "2014": 26.10942,
           "2015": 22.5665722357
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {
         "data": {
@@ -13532,7 +13877,8 @@
           "2014": 24.79848,
           "2015": 21.9941019785
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {
         "data": {
@@ -13542,7 +13888,8 @@
           "2014": 27.37085,
           "2015": 23.1219325657
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_80OrMoreYears": {
         "data": {
@@ -13562,7 +13909,8 @@
           "2014": 701254,
           "2015": 367400
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
       "Count_Person_AsianAlone": {},
@@ -13601,7 +13949,8 @@
           "2016": 15716200,
           "2017": 15887000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_HispanicOrLatino": {},
@@ -13638,7 +13987,8 @@
           "2018": 18346713,
           "2019": 18864899
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
       "Count_Person_IncomeOf15000To24999USDollar": {},
@@ -13668,7 +14018,8 @@
           "2016": 15772400,
           "2017": 15939100
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
       "Count_Person_MarriedAndNotSeparated": {},
@@ -13697,7 +14048,8 @@
           "2016": 24.5,
           "2017": 24.76
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
         "data": {
@@ -13762,7 +14114,8 @@
           "2018": 7067386,
           "2019": 7120114
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
       "Count_Person_SomeOtherRaceAlone": {},
@@ -13788,7 +14141,8 @@
           "2014": 2880690,
           "2015": 2861870
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {
         "data": {
@@ -13808,7 +14162,8 @@
           "2017": 0,
           "2018": 0.1
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
         "data": {
@@ -13828,7 +14183,8 @@
           "2017": 0.4,
           "2018": 0.4
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
         "data": {
@@ -13848,7 +14204,8 @@
           "2017": 0.1,
           "2018": 0.1
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
         "data": {
@@ -13868,7 +14225,8 @@
           "2017": 0.7,
           "2018": 0.5
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
@@ -13888,7 +14246,8 @@
           "2017": 0.1,
           "2018": 0.1
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
@@ -13908,7 +14267,8 @@
           "2017": 0.5,
           "2018": 0.5
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
         "data": {
@@ -13973,7 +14333,8 @@
           "2018": 24921870,
           "2019": 25390339
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
       "Count_Person_Widowed": {},
@@ -14202,7 +14563,8 @@
           "2020-10-08": 33009,
           "2020-10-09": 33098
         },
-        "provenanceDomain": "google.com"
+        "provenanceDomain": "google.com",
+        "provenanceUrl": "https://research.google.com"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -14265,9 +14627,37 @@
           "2016": 2.297,
           "2017": 2.275
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
-      "GiniIndex_EcconomicActivity": {},
+      "GiniIndex_EconomicActivity": {
+        "data": {
+          "1997": 53.7,
+          "1998": 56.1,
+          "1999": 56.3,
+          "2000": 49.1,
+          "2001": 51.3,
+          "2002": 53.6,
+          "2003": 53.1,
+          "2004": 49.9,
+          "2005": 50.4,
+          "2006": 50.3,
+          "2007": 50,
+          "2008": 47.5,
+          "2009": 47,
+          "2010": 45.5,
+          "2011": 44.7,
+          "2012": 44.4,
+          "2013": 43.9,
+          "2014": 43.2,
+          "2015": 43.4,
+          "2016": 43.6,
+          "2017": 43.3,
+          "2018": 42.8
+        },
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+      },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 7.34709633145569,
@@ -14329,7 +14719,8 @@
           "2017": 2.51883544233135,
           "2018": 3.97693571755005
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
         "data": {
@@ -14393,7 +14784,8 @@
           "2017": 1.66193424693243,
           "2018": 1.71824651729878
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
         "data": {
@@ -14456,7 +14848,8 @@
           "2016": 76.044,
           "2017": 76.286
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -14509,7 +14902,8 @@
           "2010": 9.3,
           "2016": 9.8
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
         "data": {
@@ -14569,7 +14963,8 @@
           "2013": 13004.1149096791,
           "2014": 12993.9618247727
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
         "data": {
@@ -14630,7 +15025,8 @@
           "2014": 6960.68198524082,
           "2015": 6803.91856371416
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
@@ -14638,14 +15034,16 @@
           "2013": 13.22944,
           "2014": 13.39711
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
           "2013": 4.93105,
           "2014": 4.96174
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
         "data": {
@@ -14709,7 +15107,8 @@
           "2017": 605802927000,
           "2018": 648798273000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -14773,7 +15172,8 @@
           "2017": 3.1090104054,
           "2018": 3.1628648797
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
         "data": {
@@ -14837,7 +15237,8 @@
           "2017": 59927.9298339535,
           "2018": 62794.5856522398
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
         "data": {
@@ -14871,7 +15272,8 @@
           "2017": 19830277000000,
           "2018": 20837347000000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
         "data": {
@@ -14905,7 +15307,8 @@
           "2017": 60990,
           "2018": 63690
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
         "data": {
@@ -14965,7 +15368,8 @@
           "2013": 16.3234767932125,
           "2014": 16.502837239406
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
         "data": {
@@ -15013,7 +15417,8 @@
           "2018": 6668000000,
           "2019": 6835000000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -15061,7 +15466,8 @@
           "2018": 0.0324808029,
           "2019": 0.0319774776
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
         "data": {
@@ -15116,7 +15522,8 @@
           "2018": 68472000000,
           "2019": 69699000000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
         "data": {
@@ -15160,7 +15567,8 @@
           "2017": 32120702650000,
           "2018": 30436313050000
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
         "data": {
@@ -15204,7 +15612,8 @@
           "2017": 164.8450264456,
           "2018": 148.2597308387
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
       "Count_CriminalActivities_CombinedCrime": {
@@ -15220,7 +15629,8 @@
           "2016": 9161163,
           "2017": 8940603
         },
-        "provenanceDomain": "fbi.gov"
+        "provenanceDomain": "fbi.gov",
+        "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
       },
       "Count_CriminalActivities_PropertyCrime": {
         "data": {
@@ -15235,7 +15645,8 @@
           "2016": 7896324.000001,
           "2017": 7674469.000001
         },
-        "provenanceDomain": "fbi.gov"
+        "provenanceDomain": "fbi.gov",
+        "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
       },
       "Count_CriminalActivities_ViolentCrime": {
         "data": {
@@ -15250,7 +15661,8 @@
           "2016": 1275896.000001,
           "2017": 1277166.000001
         },
-        "provenanceDomain": "fbi.gov"
+        "provenanceDomain": "fbi.gov",
+        "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
       },
       "Count_CycloneEvent": {
         "data": {
@@ -15424,7 +15836,8 @@
           "2018": 4,
           "2019": 5
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
         "data": {
@@ -15489,7 +15902,8 @@
           "2018": 5.6,
           "2019": 5.6
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
         "data": {
@@ -15554,7 +15968,8 @@
           "2018": 5.1,
           "2019": 5.1
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
         "data": {
@@ -15619,7 +16034,8 @@
           "2018": 6.1,
           "2019": 6
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {
         "data": {
@@ -15643,7 +16059,8 @@
           "2016": 839728,
           "2017": 858322
         },
-        "provenanceDomain": "cdc.gov"
+        "provenanceDomain": "cdc.gov",
+        "provenanceUrl": "http://cdc.gov/"
       },
       "Count_Death_DiseasesOfTheNervousSystem": {
         "data": {
@@ -15667,7 +16084,8 @@
           "2016": 198190,
           "2017": 212395
         },
-        "provenanceDomain": "cdc.gov"
+        "provenanceDomain": "cdc.gov",
+        "provenanceUrl": "http://cdc.gov/"
       },
       "Count_Death_DiseasesOfTheRespiratorySystem": {
         "data": {
@@ -15691,7 +16109,8 @@
           "2016": 263307,
           "2017": 276073
         },
-        "provenanceDomain": "cdc.gov"
+        "provenanceDomain": "cdc.gov",
+        "provenanceUrl": "http://cdc.gov/"
       },
       "Count_Death_ExternalCauses": {
         "data": {
@@ -15715,7 +16134,8 @@
           "2016": 231326,
           "2017": 243906
         },
-        "provenanceDomain": "cdc.gov"
+        "provenanceDomain": "cdc.gov",
+        "provenanceUrl": "http://cdc.gov/"
       },
       "Count_Death_Neoplasms": {
         "data": {
@@ -15739,7 +16159,8 @@
           "2016": 612593,
           "2017": 613470
         },
-        "provenanceDomain": "cdc.gov"
+        "provenanceDomain": "cdc.gov",
+        "provenanceUrl": "http://cdc.gov/"
       },
       "Count_DroughtEvent": {
         "data": {
@@ -15768,7 +16189,8 @@
           "2018": 2417,
           "2019": 178
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_EarthquakeEvent": {
         "data": {
@@ -15885,7 +16307,8 @@
           "2018": 633,
           "2019": 437
         },
-        "provenanceDomain": "usgs.gov"
+        "provenanceDomain": "usgs.gov",
+        "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {
         "data": {
@@ -15914,7 +16337,8 @@
           "2018": 4822,
           "2019": 3819
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_Household": {
         "data": {
@@ -15927,7 +16351,8 @@
           "2017": 120048527,
           "2018": 120935203
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf100000To124999USDollar": {
         "data": {
@@ -15940,7 +16365,8 @@
           "2017": 10295604,
           "2018": 10623297
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf10000To14999USDollar": {
         "data": {
@@ -15953,7 +16379,8 @@
           "2017": 5912909,
           "2018": 5650451
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf125000To149999USDollar": {
         "data": {
@@ -15966,7 +16393,8 @@
           "2017": 6439142,
           "2018": 6943175
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf150000To199999USDollar": {
         "data": {
@@ -15979,7 +16407,8 @@
           "2017": 6941320,
           "2018": 7523407
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf200000OrMoreUSDollar": {
         "data": {
@@ -15992,7 +16421,8 @@
           "2017": 7475296,
           "2018": 8366093
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf20000To24999USDollar": {
         "data": {
@@ -16005,7 +16435,8 @@
           "2017": 6009672,
           "2018": 5755344
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf40000To44999USDollar": {
         "data": {
@@ -16018,7 +16449,8 @@
           "2017": 5401277,
           "2018": 5323160
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf50000To59999USDollar": {
         "data": {
@@ -16031,7 +16463,8 @@
           "2017": 9241728,
           "2018": 9201772
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf60000To74999USDollar": {
         "data": {
@@ -16044,7 +16477,8 @@
           "2017": 11877176,
           "2018": 11828929
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOf75000To99999USDollar": {
         "data": {
@@ -16057,7 +16491,8 @@
           "2017": 14683147,
           "2018": 14983827
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Household_IncomeOfUpto10000USDollar": {
         "data": {
@@ -16070,7 +16505,8 @@
           "2017": 8290228,
           "2018": 7917450
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit": {
         "data": {
@@ -16083,7 +16519,8 @@
           "2017": 136960864,
           "2018": 137947451
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_1940To1949DateBuilt": {
         "data": {
@@ -16096,7 +16533,8 @@
           "2017": 6958328,
           "2018": 6890026
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_1950To1959DateBuilt": {
         "data": {
@@ -16109,7 +16547,8 @@
           "2017": 14367849,
           "2018": 14307499
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_1960To1969DateBuilt": {
         "data": {
@@ -16122,7 +16561,8 @@
           "2017": 14843286,
           "2018": 14840030
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_1970To1979DateBuilt": {
         "data": {
@@ -16135,7 +16575,8 @@
           "2017": 21272093,
           "2018": 21251889
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_1980To1989DateBuilt": {
         "data": {
@@ -16148,7 +16589,8 @@
           "2017": 18661407,
           "2018": 18684622
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_1990To1999DateBuilt": {
         "data": {
@@ -16161,7 +16603,8 @@
           "2017": 19189933,
           "2018": 19260963
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_2000To2009DateBuilt": {
         "data": {
@@ -16173,7 +16616,8 @@
           "2017": 19866554,
           "2018": 19633526
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_2010OrLaterDateBuilt": {
         "data": {
@@ -16181,7 +16625,8 @@
           "2013": 775492,
           "2014": 1321057
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_Before1939DateBuilt": {
         "data": {
@@ -16194,7 +16639,8 @@
           "2017": 17485791,
           "2018": 17440740
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue1000000To1499999USDollar": {
         "data": {
@@ -16203,7 +16649,8 @@
           "2017": 1108620,
           "2018": 1255818
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue100000To124999USDollar": {
         "data": {
@@ -16216,7 +16663,8 @@
           "2017": 5960414,
           "2018": 5682565
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue10000To14999USDollar": {
         "data": {
@@ -16229,7 +16677,8 @@
           "2017": 640927,
           "2018": 603156
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue125000To149999USDollar": {
         "data": {
@@ -16242,7 +16691,8 @@
           "2017": 5428766,
           "2018": 5251479
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue1500000To1999999USDollar": {
         "data": {
@@ -16251,7 +16701,8 @@
           "2017": 399505,
           "2018": 453393
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue150000To174999USDollar": {
         "data": {
@@ -16264,7 +16715,8 @@
           "2017": 6604499,
           "2018": 6486896
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue15000To19999USDollar": {
         "data": {
@@ -16277,7 +16729,8 @@
           "2017": 567790,
           "2018": 532441
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue175000To199999USDollar": {
         "data": {
@@ -16290,7 +16743,8 @@
           "2017": 4630670,
           "2018": 4614767
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue2000000OrMoreUSDollar": {
         "data": {
@@ -16299,7 +16753,8 @@
           "2017": 567188,
           "2018": 638384
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue200000To249999USDollar": {
         "data": {
@@ -16312,7 +16767,8 @@
           "2017": 7946561,
           "2018": 8118431
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue20000To24999USDollar": {
         "data": {
@@ -16325,7 +16781,8 @@
           "2017": 612253,
           "2018": 577426
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue250000To299999USDollar": {
         "data": {
@@ -16338,7 +16795,8 @@
           "2017": 6337986,
           "2018": 6596849
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue25000To29999USDollar": {
         "data": {
@@ -16351,7 +16809,8 @@
           "2017": 558227,
           "2018": 528294
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue300000To399999USDollar": {
         "data": {
@@ -16364,7 +16823,8 @@
           "2017": 8399690,
           "2018": 8901613
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue30000To34999USDollar": {
         "data": {
@@ -16377,7 +16837,8 @@
           "2017": 688276,
           "2018": 653666
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue35000To39999USDollar": {
         "data": {
@@ -16390,7 +16851,8 @@
           "2017": 511794,
           "2018": 484125
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue400000To499999USDollar": {
         "data": {
@@ -16403,7 +16865,8 @@
           "2017": 4723924,
           "2018": 5096614
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue40000To49999USDollar": {
         "data": {
@@ -16416,7 +16879,8 @@
           "2017": 1335856,
           "2018": 1264896
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue500000To749999USDollar": {
         "data": {
@@ -16429,7 +16893,8 @@
           "2017": 5314701,
           "2018": 5792116
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue50000To59999USDollar": {
         "data": {
@@ -16442,7 +16907,8 @@
           "2017": 1666394,
           "2018": 1576207
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue60000To69999USDollar": {
         "data": {
@@ -16455,7 +16921,8 @@
           "2017": 1945765,
           "2018": 1837151
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue70000To79999USDollar": {
         "data": {
@@ -16468,7 +16935,8 @@
           "2017": 2241352,
           "2018": 2107377
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue750000To999999USDollar": {
         "data": {
@@ -16481,7 +16949,8 @@
           "2017": 2047938,
           "2018": 2277645
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue80000To89999USDollar": {
         "data": {
@@ -16494,7 +16963,8 @@
           "2017": 2642447,
           "2018": 2505731
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValue90000To99999USDollar": {
         "data": {
@@ -16507,7 +16977,8 @@
           "2017": 2297858,
           "2018": 2160882
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HomeValueUpto10000USDollar": {
         "data": {
@@ -16520,7 +16991,8 @@
           "2017": 1491263,
           "2018": 1267293
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
         "data": {
@@ -16533,7 +17005,8 @@
           "2017": 852713,
           "2018": 873255
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceAsianAlone": {
         "data": {
@@ -16546,7 +17019,8 @@
           "2017": 5408231,
           "2018": 5569108
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceBlackOrAfricanAmericanAlone": {
         "data": {
@@ -16559,7 +17033,8 @@
           "2017": 14628650,
           "2018": 14820140
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceHispanicOrLatino": {
         "data": {
@@ -16572,7 +17047,8 @@
           "2017": 16347641,
           "2018": 16712985
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
         "data": {
@@ -16585,7 +17061,8 @@
           "2017": 151493.000001,
           "2018": 156254
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceSomeOtherRaceAlone": {
         "data": {
@@ -16598,7 +17075,8 @@
           "2017": 4299199,
           "2018": 4410031
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceTwoOrMoreRaces": {
         "data": {
@@ -16611,7 +17089,8 @@
           "2017": 2381818,
           "2018": 2467655
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_HouseholderRaceWhiteAlone": {
         "data": {
@@ -16624,7 +17103,8 @@
           "2017": 92326423,
           "2018": 92638760
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_OwnerOccupied": {
         "data": {
@@ -16637,7 +17117,8 @@
           "2017": 76670664,
           "2018": 77265215
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_HousingUnit_RenterOccupied": {
         "data": {
@@ -16650,7 +17131,8 @@
           "2017": 43377863,
           "2018": 43669988
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person": {
         "data": {
@@ -16775,7 +17257,8 @@
           "2018": 327167434,
           "2019": 328239523
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
       },
       "Count_Person_10To14Years": {
         "data": {
@@ -16798,7 +17281,8 @@
           "2017": 20765800,
           "2018": 20879500
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15OrMoreYears": {
         "data": {
@@ -16811,7 +17295,8 @@
           "2017": 262873959,
           "2018": 264772910
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_15To19Years": {
         "data": {
@@ -16834,7 +17319,8 @@
           "2017": 21103300,
           "2018": 21097200
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
         "data": {
@@ -16869,7 +17355,8 @@
           "2018": 0.7263500214,
           "2019": 0.7255500031
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {
         "data": {
@@ -16882,7 +17369,8 @@
           "2017": 258633976,
           "2018": 260547872
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_18To24Years": {
         "data": {
@@ -16895,7 +17383,8 @@
           "2017": 31131484,
           "2018": 30903719
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_20To24Years": {
         "data": {
@@ -16918,7 +17407,8 @@
           "2017": 22065700,
           "2018": 21873600
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25OrMoreYears": {
         "data": {
@@ -16931,7 +17421,8 @@
           "2017": 218662435,
           "2018": 220810469
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To29Years": {
         "data": {
@@ -16954,7 +17445,8 @@
           "2017": 23336200,
           "2018": 23561800
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25To34Years": {
         "data": {
@@ -16967,7 +17459,8 @@
           "2017": 44044173,
           "2018": 44567976
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {
         "data": {
@@ -16980,7 +17473,8 @@
           "2017": 2185472,
           "2018": 2218674
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male": {
         "data": {
@@ -16993,7 +17487,8 @@
           "2017": 1790886,
           "2018": 1832690
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female": {
         "data": {
@@ -17006,7 +17501,8 @@
           "2017": 5736821,
           "2018": 5893388
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male": {
         "data": {
@@ -17019,7 +17515,8 @@
           "2017": 4909693,
           "2018": 5078862
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female": {
         "data": {
@@ -17032,7 +17529,8 @@
           "2017": 2732153,
           "2018": 2812096
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male": {
         "data": {
@@ -17045,7 +17543,8 @@
           "2017": 1912604,
           "2018": 1974923
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_Female": {
         "data": {
@@ -17058,7 +17557,8 @@
           "2017": 22011410,
           "2018": 22233800
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_25To34Years_Male": {
         "data": {
@@ -17071,7 +17571,8 @@
           "2017": 22466891,
           "2018": 22756228
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_30To34Years": {
         "data": {
@@ -17094,7 +17595,8 @@
           "2017": 21938400,
           "2018": 22136000
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To39Years": {
         "data": {
@@ -17117,7 +17619,8 @@
           "2017": 21190500,
           "2018": 21563600
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To44Years": {
         "data": {
@@ -17130,7 +17633,8 @@
           "2017": 40656419,
           "2018": 40763210
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_3OrMoreYears": {
         "data": {
@@ -17143,7 +17647,8 @@
           "2017": 312714581,
           "2018": 314529693
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_40To44Years": {
         "data": {
@@ -17166,7 +17671,8 @@
           "2017": 19590800,
           "2018": 19714300
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To49Years": {
         "data": {
@@ -17189,7 +17695,8 @@
           "2017": 20916200,
           "2018": 20747100
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To54Years": {
         "data": {
@@ -17202,7 +17709,8 @@
           "2017": 43091143,
           "2018": 42589573
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_50To54Years": {
         "data": {
@@ -17225,7 +17733,8 @@
           "2017": 21347600,
           "2018": 20884600
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_55To59Years": {
         "data": {
@@ -17238,7 +17747,8 @@
           "2017": 21523460,
           "2018": 21611374
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_5To17Years": {
         "data": {
@@ -17251,7 +17761,8 @@
           "2017": 54306892,
           "2018": 54246697
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_5To9Years": {
         "data": {
@@ -17274,7 +17785,8 @@
           "2017": 20304900,
           "2018": 20195600
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_60To61Years": {
         "data": {
@@ -17287,7 +17799,8 @@
           "2017": 8117125,
           "2018": 8285250
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_60To64Years": {
         "data": {
@@ -17310,7 +17823,8 @@
           "2017": 19942000,
           "2018": 20331700
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_62To64Years": {
         "data": {
@@ -17323,7 +17837,8 @@
           "2017": 11106935,
           "2018": 11390107
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_65To69Years": {
         "data": {
@@ -17346,7 +17861,8 @@
           "2017": 16803000,
           "2018": 17086900
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_65To74Years": {
         "data": {
@@ -17359,7 +17875,8 @@
           "2017": 27503389,
           "2018": 28535419
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_70To74Years": {
         "data": {
@@ -17382,7 +17899,8 @@
           "2017": 12829700,
           "2018": 13405400
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_75OrMoreYears": {
         "data": {
@@ -17395,7 +17913,8 @@
           "2017": 20229000,
           "2018": 20703162
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_75To79Years": {
         "data": {
@@ -17418,7 +17937,8 @@
           "2017": 8730530,
           "2018": 9267070
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {},
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {},
@@ -17444,7 +17964,8 @@
           "2017": 12430700,
           "2018": 12671800
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
         "data": {
@@ -17457,7 +17978,8 @@
           "2017": 2642951,
           "2018": 2707577
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_AsianAlone": {
         "data": {
@@ -17470,7 +17992,8 @@
           "2017": 17194109,
           "2018": 17581234
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone": {
         "data": {
@@ -17483,7 +18006,8 @@
           "2017": 686509,
           "2018": 677541
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone": {
         "data": {
@@ -17496,7 +18020,8 @@
           "2017": 2015330,
           "2018": 1993041
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone": {
         "data": {
@@ -17509,7 +18034,8 @@
           "2017": 9961140,
           "2018": 9656177
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino": {
         "data": {
@@ -17522,7 +18048,8 @@
           "2017": 13799847,
           "2018": 13331195
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
@@ -17535,7 +18062,8 @@
           "2017": 105019,
           "2018": 103535
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone": {
         "data": {
@@ -17548,7 +18076,8 @@
           "2017": 28634132,
           "2018": 27697544
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_BlackOrAfricanAmericanAlone": {
         "data": {
@@ -17561,7 +18090,8 @@
           "2017": 40949754,
           "2018": 41281123
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Divorced": {
         "data": {
@@ -17574,7 +18104,8 @@
           "2017": 28212237,
           "2018": 28417093
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_EducationalAttainmentBachelorsDegree": {
         "data": {
@@ -17586,7 +18117,8 @@
           "2017": 41803378,
           "2018": 42899237
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_EducationalAttainmentDoctorateDegree": {
         "data": {
@@ -17598,7 +18130,8 @@
           "2017": 2987052,
           "2018": 3072307
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_EducationalAttainmentMastersDegree": {
         "data": {
@@ -17610,7 +18143,8 @@
           "2017": 18270373,
           "2018": 18927526
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
         "data": {
@@ -17622,7 +18156,8 @@
           "2017": 3183932,
           "2018": 3222256
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
         "data": {
@@ -17634,7 +18169,8 @@
           "2017": 51093567,
           "2018": 51216179
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Employed": {},
       "Count_Person_EnrolledInSchool": {
@@ -17648,7 +18184,8 @@
           "2017": 82624168,
           "2018": 82248539
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Female": {
         "data": {
@@ -17661,7 +18198,8 @@
           "2017": 164800620,
           "2018": 165692916
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {
         "data": {
@@ -17674,7 +18212,8 @@
           "2017": 26081778,
           "2018": 25336327
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_HispanicOrLatino": {
         "data": {
@@ -17687,7 +18226,8 @@
           "2017": 59943182,
           "2018": 60867275
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_InLaborForce": {
         "data": {
@@ -17722,7 +18262,8 @@
           "2018": 165483017,
           "2019": 165890069
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {
         "data": {
@@ -17735,7 +18276,8 @@
           "2017": 22623950,
           "2018": 22192017
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_IncomeOf15000To24999USDollar": {
         "data": {
@@ -17748,7 +18290,8 @@
           "2017": 36003301,
           "2018": 35285784
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_IncomeOf25000To34999USDollar": {
         "data": {
@@ -17761,7 +18304,8 @@
           "2017": 28542281,
           "2018": 29319957
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_IncomeOf35000To49999USDollar": {
         "data": {
@@ -17774,7 +18318,8 @@
           "2017": 30968277,
           "2018": 31364750
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_IncomeOf50000To64999USDollar": {
         "data": {
@@ -17787,7 +18332,8 @@
           "2017": 21795300,
           "2018": 22708324
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_IncomeOf65000To74999USDollar": {
         "data": {
@@ -17800,7 +18346,8 @@
           "2017": 9190131,
           "2018": 9407218
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_IncomeOf75000OrMoreUSDollar": {
         "data": {
@@ -17813,7 +18360,8 @@
           "2017": 33488614,
           "2018": 36223051
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_IncomeOfUpto9999USDollar": {
         "data": {
@@ -17826,7 +18374,8 @@
           "2017": 41824672,
           "2018": 40202045
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Male": {
         "data": {
@@ -17839,7 +18388,8 @@
           "2017": 159672750,
           "2018": 160597055
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {
         "data": {
@@ -17852,7 +18402,8 @@
           "2017": 21111787,
           "2018": 20416812
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_MarriedAndNotSeparated": {
         "data": {
@@ -17865,7 +18416,8 @@
           "2017": 125270799,
           "2018": 126043825
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
         "data": {
@@ -17878,7 +18430,8 @@
           "2017": 570252,
           "2018": 583021
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
@@ -17891,7 +18444,8 @@
           "2017": 570252,
           "2018": 583021
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_NeverMarried": {
         "data": {
@@ -17904,7 +18458,8 @@
           "2017": 86087136,
           "2018": 87108551
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_NotAUSCitizen": {
         "data": {
@@ -17917,7 +18472,8 @@
           "2017": 22337765,
           "2018": 22289490
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_NotEnrolledInSchool": {
         "data": {
@@ -17930,7 +18486,8 @@
           "2017": 230090413,
           "2018": 232281154
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_PerArea": {
         "data": {
@@ -17954,7 +18511,8 @@
           "2018": 35.66,
           "2019": 35.83
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
         "data": {
@@ -18019,7 +18577,8 @@
           "2018": 57967430,
           "2019": 57576495
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {
         "data": {
@@ -18032,7 +18591,8 @@
           "2017": 5258165,
           "2018": 5154862
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_SomeOtherRaceAlone": {
         "data": {
@@ -18045,7 +18605,8 @@
           "2017": 16065593,
           "2018": 16337215
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_TwoOrMoreRaces": {
         "data": {
@@ -18058,7 +18619,8 @@
           "2017": 10291063,
           "2018": 10611263
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_USCitizenBornAbroadOfAmericanParents": {
         "data": {
@@ -18071,7 +18633,8 @@
           "2017": 2967442,
           "2018": 3055127
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_USCitizenBornInTheUnitedStates": {
         "data": {
@@ -18084,7 +18647,8 @@
           "2017": 273082894,
           "2018": 274335209
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_USCitizenByNaturalization": {
         "data": {
@@ -18097,7 +18661,8 @@
           "2017": 20690362,
           "2018": 21250009
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Upto4Years": {
         "data": {
@@ -18120,7 +18685,8 @@
           "2017": 19892000,
           "2018": 19810300
         },
-        "provenanceDomain": "oecd.org"
+        "provenanceDomain": "oecd.org",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
@@ -18134,7 +18700,8 @@
           "2009": 0,
           "2012": 0
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
         "data": {
@@ -18146,7 +18713,8 @@
           "2014": 0.3,
           "2016": 0.4
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
         "data": {
@@ -18211,7 +18779,8 @@
           "2018": 268720071,
           "2019": 270663028
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {
         "data": {
@@ -18224,7 +18793,8 @@
           "2017": 236759648,
           "2018": 237188538
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_Person_Widowed": {
         "data": {
@@ -18237,7 +18807,8 @@
           "2017": 15164322,
           "2018": 15212936
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Count_StormSurgeTideEvent": {
         "data": {
@@ -18266,7 +18837,8 @@
           "2018": 26,
           "2019": 15
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_ThunderstormWindEvent": {
         "data": {
@@ -18336,7 +18908,8 @@
           "2018": 14620,
           "2019": 13262
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_TornadoEvent": {
         "data": {
@@ -18411,7 +18984,8 @@
           "2018": 1250,
           "2019": 1370
         },
-        "provenanceDomain": "noaa.gov"
+        "provenanceDomain": "noaa.gov",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance": {
         "data": {
@@ -20224,32 +20798,35 @@
           "2020-04-11": 17338427,
           "2020-04-18": 20467777,
           "2020-04-25": 21213993,
-          "2020-05-02": 24524370,
-          "2020-05-09": 23139858,
-          "2020-05-16": 25150101,
-          "2020-05-23": 20878022,
-          "2020-05-30": 20668936,
-          "2020-06-06": 20605853,
-          "2020-06-13": 20060497,
-          "2020-06-20": 19178033,
-          "2020-06-27": 18843084,
-          "2020-07-04": 17910648,
-          "2020-07-11": 18777763,
-          "2020-07-18": 17667227,
-          "2020-07-25": 17987133,
-          "2020-08-01": 16784215,
-          "2020-08-08": 16025638,
-          "2020-08-15": 14982560,
-          "2020-08-22": 14612341,
-          "2020-08-29": 13897499,
-          "2020-09-05": 14142590,
-          "2020-09-12": 13164122,
-          "2020-09-19": 13184846,
-          "2020-09-26": 12355030,
-          "2020-10-03": 11566260,
-          "2020-10-10": 10619126
+          "2020-05-02": 24524271,
+          "2020-05-09": 23134708,
+          "2020-05-16": 25141686,
+          "2020-05-23": 20866924,
+          "2020-05-30": 20656513,
+          "2020-06-06": 20591912,
+          "2020-06-13": 20045375,
+          "2020-06-20": 19162333,
+          "2020-06-27": 18826345,
+          "2020-07-04": 17893486,
+          "2020-07-11": 18759682,
+          "2020-07-18": 17648596,
+          "2020-07-25": 17966412,
+          "2020-08-01": 16763006,
+          "2020-08-08": 16003838,
+          "2020-08-15": 14960466,
+          "2020-08-22": 14589048,
+          "2020-08-29": 13872985,
+          "2020-09-05": 14116508,
+          "2020-09-12": 13136601,
+          "2020-09-19": 13154358,
+          "2020-09-26": 11729523,
+          "2020-10-03": 10836146,
+          "2020-10-10": 9697370,
+          "2020-10-17": 8800150,
+          "2020-10-24": 8169726
         },
-        "provenanceDomain": "doleta.gov"
+        "provenanceDomain": "doleta.gov",
+        "provenanceUrl": "https://oui.doleta.gov/unemploy/"
       },
       "Count_WildlandFireEvent": {
         "data": {
@@ -20273,7 +20850,8 @@
           "2017": 26153,
           "2018": 22718
         },
-        "provenanceDomain": "nwcg.gov"
+        "provenanceDomain": "nwcg.gov",
+        "provenanceUrl": "https://fam.nwcg.gov/fam-web/"
       },
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
         "data": {
@@ -20535,24 +21113,39 @@
           "2020-10-02": 7362563,
           "2020-10-03": 7410342,
           "2020-10-04": 7445405,
-          "2020-10-05": 7487091,
-          "2020-10-06": 7529955,
-          "2020-10-07": 7582939,
-          "2020-10-08": 7639314,
-          "2020-10-09": 7698273,
-          "2020-10-10": 7749859,
-          "2020-10-11": 7794625,
-          "2020-10-12": 7840546,
-          "2020-10-13": 7894905,
-          "2020-10-14": 7954777,
-          "2020-10-15": 8020104,
-          "2020-10-16": 8090568,
-          "2020-10-17": 8143329,
-          "2020-10-18": 8191211,
-          "2020-10-19": 8255429,
-          "2020-10-20": 8316027
+          "2020-10-05": 7507699,
+          "2020-10-06": 7550563,
+          "2020-10-07": 7603547,
+          "2020-10-08": 7659922,
+          "2020-10-09": 7718881,
+          "2020-10-10": 7770467,
+          "2020-10-11": 7815233,
+          "2020-10-12": 7863239,
+          "2020-10-13": 7917598,
+          "2020-10-14": 7977470,
+          "2020-10-15": 8042797,
+          "2020-10-16": 8113261,
+          "2020-10-17": 8166022,
+          "2020-10-18": 8213904,
+          "2020-10-19": 8279279,
+          "2020-10-20": 8339867,
+          "2020-10-21": 8404058,
+          "2020-10-22": 8479122,
+          "2020-10-23": 8564207,
+          "2020-10-24": 8642963,
+          "2020-10-25": 8702675,
+          "2020-10-26": 8777118,
+          "2020-10-27": 8851546,
+          "2020-10-28": 8933448,
+          "2020-10-29": 9024176,
+          "2020-10-30": 9123960,
+          "2020-10-31": 9208245,
+          "2020-11-01": 9282481,
+          "2020-11-02": 9376062,
+          "2020-11-03": 9468722
         },
-        "provenanceDomain": "nytimes.com"
+        "provenanceDomain": "nytimes.com",
+        "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
       },
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
@@ -20825,13 +21418,28 @@
           "2020-10-13": 215783,
           "2020-10-14": 216792,
           "2020-10-15": 217585,
-          "2020-10-16": 218494,
-          "2020-10-17": 219173,
+          "2020-10-16": 218476,
+          "2020-10-17": 219154,
           "2020-10-18": 219541,
           "2020-10-19": 220058,
-          "2020-10-20": 220987
+          "2020-10-20": 220987,
+          "2020-10-21": 222195,
+          "2020-10-22": 223023,
+          "2020-10-23": 223948,
+          "2020-10-24": 224821,
+          "2020-10-25": 225160,
+          "2020-10-26": 225698,
+          "2020-10-27": 226681,
+          "2020-10-28": 227697,
+          "2020-10-29": 228701,
+          "2020-10-30": 229672,
+          "2020-10-31": 230510,
+          "2020-11-01": 230937,
+          "2020-11-02": 231477,
+          "2020-11-03": 232607
         },
-        "provenanceDomain": "nytimes.com"
+        "provenanceDomain": "nytimes.com",
+        "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -20894,9 +21502,27 @@
           "2016": 1.8205,
           "2017": 1.7655
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
-      "GiniIndex_EcconomicActivity": {},
+      "GiniIndex_EconomicActivity": {
+        "data": {
+          "1974": 35.3,
+          "1979": 34.6,
+          "1986": 37.5,
+          "1991": 38.2,
+          "1994": 40.2,
+          "1997": 40.7,
+          "2000": 40.3,
+          "2004": 40.5,
+          "2007": 41,
+          "2010": 40.3,
+          "2013": 41,
+          "2016": 41.4
+        },
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+      },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
         "data": {
           "1961": 2.29999999999968,
@@ -20958,7 +21584,8 @@
           "2017": 2.21701033031884,
           "2018": 2.92732272821085
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
         "data": {
@@ -21022,7 +21649,8 @@
           "2017": 0.640458800224899,
           "2018": 0.619431053430858
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
         "data": {
@@ -21085,7 +21713,8 @@
           "2016": 78.5390243902439,
           "2017": 78.5390243902439
         },
-        "provenanceDomain": "worldbank.org"
+        "provenanceDomain": "worldbank.org",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {
         "data": {
@@ -21098,7 +21727,8 @@
           "2017": 37.8,
           "2018": 37.9
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {},
       "Median_Age_Person_AsianAlone": {},
@@ -21114,7 +21744,8 @@
           "2017": 39.1,
           "2018": 39.3
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Median_Age_Person_HispanicOrLatino": {},
       "Median_Age_Person_Male": {
@@ -21128,7 +21759,8 @@
           "2017": 36.5,
           "2018": 36.6
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {},
       "Median_Age_Person_SomeOtherRaceAlone": {},
@@ -21152,7 +21784,8 @@
           "2017": 28776,
           "2018": 30119
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Median_Income_Person_15OrMoreYears_Female_WithIncome": {
         "data": {
@@ -21165,7 +21798,8 @@
           "2017": 23058,
           "2018": 24208
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Median_Income_Person_15OrMoreYears_Male_WithIncome": {
         "data": {
@@ -21178,7 +21812,8 @@
           "2017": 35504,
           "2018": 36741
         },
-        "provenanceDomain": "census.gov"
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
       },
       "Percent_Person_18To64Years_Female_NoHealthInsurance": {},
       "Percent_Person_18To64Years_Male_NoHealthInsurance": {},
@@ -21246,7 +21881,8 @@
           "2017-07": 5181758.77,
           "2017-10": 5384712.93
         },
-        "provenanceDomain": "usdoj.gov"
+        "provenanceDomain": "usdoj.gov",
+        "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/"
       },
       "RetailDrugDistribution_DrugDistribution_Codeine": {
         "data": {
@@ -21299,7 +21935,8 @@
           "2017-07": 3949389.18,
           "2017-10": 3910813.8
         },
-        "provenanceDomain": "usdoj.gov"
+        "provenanceDomain": "usdoj.gov",
+        "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/"
       },
       "RetailDrugDistribution_DrugDistribution_Hydrocodone": {
         "data": {
@@ -21352,7 +21989,8 @@
           "2017-07": 6581661.61,
           "2017-10": 6488648.31
         },
-        "provenanceDomain": "usdoj.gov"
+        "provenanceDomain": "usdoj.gov",
+        "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/"
       },
       "RetailDrugDistribution_DrugDistribution_Morphine": {
         "data": {
@@ -21405,7 +22043,8 @@
           "2017-07": 4047824.25,
           "2017-10": 3925663.66
         },
-        "provenanceDomain": "usdoj.gov"
+        "provenanceDomain": "usdoj.gov",
+        "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/"
       },
       "RetailDrugDistribution_DrugDistribution_Oxycodone": {
         "data": {
@@ -21458,7 +22097,8 @@
           "2017-07": 11899026.09,
           "2017-10": 11681682.22
         },
-        "provenanceDomain": "usdoj.gov"
+        "provenanceDomain": "usdoj.gov",
+        "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/"
       },
       "UnemploymentRate_Person": {
         "data": {
@@ -21914,7 +22554,8 @@
           "2020-06": 11.1,
           "2020-07": 10.2
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "UnemploymentRate_Person_Female": {
         "data": {
@@ -22370,7 +23011,8 @@
           "2020-06": 11.7,
           "2020-07": 10.6
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "UnemploymentRate_Person_Male": {
         "data": {
@@ -22826,7 +23468,8 @@
           "2020-06": 10.6,
           "2020-07": 9.8
         },
-        "provenanceDomain": "europa.eu"
+        "provenanceDomain": "europa.eu",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       }
     }
   },

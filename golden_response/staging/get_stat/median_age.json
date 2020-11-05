@@ -14,7 +14,8 @@
       "measurementMethod": "CensusACS5yrSurvey",
       "importName": "CensusACS5YearSurvey",
       "provenanceDomain": "census.gov",
-      "unit": "Year"
+      "unit": "Year",
+      "provenanceUrl": "https://www.census.gov/"
     },
     "geoId/06085": {
       "val": {
@@ -30,7 +31,8 @@
       "measurementMethod": "CensusACS5yrSurvey",
       "importName": "CensusACS5YearSurvey",
       "provenanceDomain": "census.gov",
-      "unit": "Year"
+      "unit": "Year",
+      "provenanceUrl": "https://www.census.gov/"
     },
     "geoId/0649670": {
       "val": {
@@ -46,7 +48,8 @@
       "measurementMethod": "CensusACS5yrSurvey",
       "importName": "CensusACS5YearSurvey",
       "provenanceDomain": "census.gov",
-      "unit": "Year"
+      "unit": "Year",
+      "provenanceUrl": "https://www.census.gov/"
     }
   }
 }

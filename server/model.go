@@ -110,6 +110,7 @@ type SourceSeries struct {
 	ScalingFactor     string             `json:"scalingFactor,omitempty"`
 	Unit              string             `json:"unit,omitempty"`
 	ProvenanceDomain  string             `json:"provenanceDomain,omitempty"`
+	ProvenanceURL     string             `json:"provenanceUrl,omitempty"`
 	Val               map[string]float64 `json:"val,omitempty"`
 }
 
@@ -120,6 +121,7 @@ type ObsTimeSeries struct {
 	PlaceDcid        string             `json:"placeDcid,omitempty"`
 	SourceSeries     []*SourceSeries    `json:"sourceSeries,omitempty"`
 	ProvenanceDomain string             `json:"provenanceDomain,omitempty"`
+	ProvenanceURL    string             `json:"provenanceUrl,omitempty"`
 }
 
 // LandingPageData represents the landing page cache data.

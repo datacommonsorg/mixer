@@ -35,7 +35,8 @@
       "observationPeriod": "P1Y",
       "importName": "WorldDevelopmentIndicators",
       "provenanceDomain": "worldbank.org",
-      "unit": "InternationalDollar"
+      "unit": "InternationalDollar",
+      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
     }
   }
 }

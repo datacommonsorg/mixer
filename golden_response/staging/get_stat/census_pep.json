@@ -125,7 +125,8 @@
       },
       "measurementMethod": "CensusPEPSurvey",
       "importName": "CensusPEP",
-      "provenanceDomain": "census.gov"
+      "provenanceDomain": "census.gov",
+      "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
     },
     "geoId/06": {
       "val": {
@@ -252,7 +253,8 @@
       },
       "measurementMethod": "CensusPEPSurvey",
       "importName": "CensusPEP",
-      "provenanceDomain": "census.gov"
+      "provenanceDomain": "census.gov",
+      "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
     },
     "geoId/06085": {
       "val": {
@@ -299,7 +301,8 @@
       },
       "measurementMethod": "CensusPEPSurvey",
       "importName": "CensusPEP",
-      "provenanceDomain": "census.gov"
+      "provenanceDomain": "census.gov",
+      "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
     },
     "geoId/0649670": {
       "val": {
@@ -335,7 +338,8 @@
       },
       "measurementMethod": "CensusPEPSurvey",
       "importName": "CensusPEP",
-      "provenanceDomain": "census.gov"
+      "provenanceDomain": "census.gov",
+      "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
     }
   }
 }

@@ -191,16 +191,18 @@ message SourceSeries {
   string provenance_domain = 5;
   string unit = 6;
   string scaling_factor = 7;
+  bool is_dc_aggregate = 8;
+  string provenance_url = 9;
 }
 
 // Represents observation time series data.
 message ObsTimeSeries {
   map<string, double> data = 1;  // Date to value.
   string place_name = 3;
-  bool is_dc_aggregate = 4;
   string place_dcid = 5;  // Only set if the key uses mid.
   repeated SourceSeries source_series = 6;
   string provenance_domain = 7;
+  string provenance_url = 8;
 }
 
 // Wrapper for observation data.

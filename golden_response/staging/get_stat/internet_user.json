@@ -34,7 +34,8 @@
       "observationPeriod": "P1Y",
       "importName": "WorldDevelopmentIndicators",
       "provenanceDomain": "worldbank.org",
-      "scalingFactor": "100"
+      "scalingFactor": "100",
+      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
     }
   }
 }

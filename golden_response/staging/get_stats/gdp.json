@@ -32,6 +32,7 @@
       "2018": 63690
     },
     "placeName": "United States",
-    "provenanceDomain": "worldbank.org"
+    "provenanceDomain": "worldbank.org",
+    "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
   }
 }

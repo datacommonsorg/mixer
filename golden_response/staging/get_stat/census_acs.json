@@ -13,7 +13,8 @@
       },
       "measurementMethod": "CensusACS5yrSurvey",
       "importName": "CensusACS5YearSurvey",
-      "provenanceDomain": "census.gov"
+      "provenanceDomain": "census.gov",
+      "provenanceUrl": "https://www.census.gov/"
     }
   }
 }

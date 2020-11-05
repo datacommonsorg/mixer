@@ -31,6 +31,7 @@
       "2017": 84.58806583
     },
     "placeName": "Japan",
-    "provenanceDomain": "worldbank.org"
+    "provenanceDomain": "worldbank.org",
+    "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
   }
 }
