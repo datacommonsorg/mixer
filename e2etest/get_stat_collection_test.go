@@ -55,8 +55,22 @@ func TestGetStatCollection(t *testing.T) {
 			"geoId/06",
 			"County",
 			"2016",
-			[]string{"Count_Person", "Median_Age"},
-			"County_2016.json",
+			[]string{"Count_Person", "Median_Age_Person"},
+			"CA_County_2016.json",
+		},
+		{
+			"country/USA",
+			"County",
+			"2016",
+			[]string{"Count_Person"},
+			"USA_County_2016.json",
+		},
+		{
+			"country/USA",
+			"City",
+			"2016",
+			[]string{"Count_Person"},
+			"USA_City_2016.json",
 		},
 	} {
 		resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{

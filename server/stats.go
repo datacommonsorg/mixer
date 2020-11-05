@@ -292,7 +292,6 @@ func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollection
 	statVars := in.GetStatVars()
 	childType := in.GetChildType()
 	date := in.GetDate()
-	op := in.GetObservationPeriod()
 	if parentPlace == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: parent_place")
 	}
@@ -308,7 +307,7 @@ func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollection
 
 	// Initialize result.
 	result := &pb.GetStatCollectionResponse{
-		Data: make(map[string]*pb.SourceCohort),
+		Data: make(map[string]*pb.SourceSeries),
 	}
 	// Initialize with nil to help check if data is in mem-cache. The nil field
 	// will be populated with empty pb.ObsCollection struct in the end.
@@ -332,7 +331,8 @@ func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollection
 		}
 	}
 	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatCollectionKey(parentPlace, childType, date, statVarObject, op)
+	rowList, keyTokens := buildStatCollectionKey(
+		parentPlace, childType, date, statVarObject)
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(
 		rowList,
@@ -343,8 +343,8 @@ func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollection
 	)
 	for token, data := range cacheData {
 		if data != nil {
-			cohorts := data.(*pb.ObsCollection).SourceCohort
-			sort.Sort(SourceCohortByRank(cohorts))
+			cohorts := data.(*pb.ObsCollection).SourceCohorts
+			sort.Sort(SeriesByRank(cohorts))
 			result.Data[token] = cohorts[0]
 		}
 	}
@@ -363,15 +363,15 @@ func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollection
 		}
 		for sv, data := range extraData {
 			if data != nil {
-				cohorts := data.SourceCohort
-				sort.Sort(SourceCohortByRank(cohorts))
+				cohorts := data.SourceCohorts
+				sort.Sort(SeriesByRank(cohorts))
 				result.Data[sv] = cohorts[0]
 			}
 		}
 	}
 	for sv := range result.Data {
 		if result.Data[sv] == nil {
-			result.Data[sv] = &pb.SourceCohort{}
+			result.Data[sv] = &pb.SourceSeries{}
 		}
 	}
 	return result, nil

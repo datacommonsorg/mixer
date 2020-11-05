@@ -211,25 +211,13 @@ message ObsInfo {
   double obs_value = 2 [json_name="val"];
 }
 
-message SourceCohort {
-  map<string, ObsInfo> val = 1;  // Place ID (dcid) to ObsInfo.
-  string import_name  = 2;
-  string provenance_domain = 3;
-  string measurement_method = 4;
-  string observation_period = 5;
-  string scaling_factor = 6;
-  string unit = 7;
-}
-
 
 // A collection of observation values for various places with the same parent
 // and place type, for given measured property, observation period, stat type,
 // observation date, pop type, and an optional list of pop PVs.
 message ObsCollection {
-  bool is_dc_aggregate = 1;
-  repeated SourceCohort source_cohort = 2;
+  repeated SourceSeries source_cohorts = 2;
 }
-
 
 // Wrapper for observation data.
 message ChartStore {
@@ -768,14 +756,11 @@ message GetStatCollectionRequest {
   string date = 3;
   // Dcid of the stat var.
   repeated string stat_vars = 4;
-  // TODO(shifucun): remove observation_period from the cache key.
-  // (Optional) Observation period.
-  string observation_period = 5;
 }
 
 // Response for GetStatCollection service.
 message GetStatCollectionResponse {
-  map<string, SourceCohort> data = 1;
+  map<string, SourceSeries> data = 1;
 }
 
 service Mixer {

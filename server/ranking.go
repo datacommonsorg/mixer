@@ -41,13 +41,6 @@ var StatsRanking = map[RankKey]int{
 // LowestRank is the lowest ranking score.
 const LowestRank = 100
 
-type Interface interface {
-}
-
-func compare() {
-
-}
-
 // SeriesByRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
 // protobuf version of byRank.
@@ -111,50 +104,6 @@ func (a byRank) Less(i, j int) bool {
 	}
 	oj := a[j]
 	keyj := RankKey{oj.ImportName, oj.MeasurementMethod}
-	scorej, ok := StatsRanking[keyj]
-	if !ok {
-		scorej = LowestRank
-	}
-	// Higher score value means lower rank.
-	if scorei != scorej {
-		return scorei < scorej
-	}
-	// Compare other fields to get consistent ranking.
-	if oi.ObservationPeriod != oj.ObservationPeriod {
-		return oi.ObservationPeriod < oj.ObservationPeriod
-	}
-	if oi.ScalingFactor != oj.ScalingFactor {
-		return oi.ScalingFactor < oj.ScalingFactor
-	}
-	if oi.Unit != oj.Unit {
-		return oi.Unit < oj.Unit
-	}
-	if oi.ProvenanceDomain != oj.ProvenanceDomain {
-		return oi.ProvenanceDomain < oj.ProvenanceDomain
-	}
-	return true
-}
-
-// SourceCohortByRank implements sort.Interface for []*pb.Collections based on
-// the rank score.
-// protobuf version of byRank.
-// TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
-// decision, so the ranking is deterministic.
-type SourceCohortByRank []*pb.SourceCohort
-
-func (a SourceCohortByRank) Len() int { return len(a) }
-
-func (a SourceCohortByRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
-
-func (a SourceCohortByRank) Less(i, j int) bool {
-	oi := a[i]
-	keyi := RankKey{Prov: oi.ImportName, Mmethod: oi.MeasurementMethod}
-	scorei, ok := StatsRanking[keyi]
-	if !ok {
-		scorei = LowestRank
-	}
-	oj := a[j]
-	keyj := RankKey{Prov: oj.ImportName, Mmethod: oj.MeasurementMethod}
 	scorej, ok := StatsRanking[keyj]
 	if !ok {
 		scorej = LowestRank

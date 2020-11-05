@@ -78,7 +78,7 @@ func buildStatsKey(
 
 func buildStatCollectionKey(
 	parentPlace, childType, date string,
-	statVars map[string]*StatisticalVariable, op string) (
+	statVars map[string]*StatisticalVariable) (
 	bigtable.RowList, map[string]string) {
 
 	rowList := bigtable.RowList{}
@@ -88,7 +88,6 @@ func buildStatCollectionKey(
 			util.BtChartDataPrefix + parentPlace,
 			childType,
 			svObj.MeasuredProp,
-			op,
 			svObj.StatType,
 			svObj.MeasurementDenominator,
 			svObj.MeasurementQualifier,
