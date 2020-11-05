@@ -22,44 +22,10 @@ import (
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 )
-
-// ObsProp represents properties for a StatObservation.
-type ObsProp struct {
-	Mmethod string
-	Operiod string
-	Unit    string
-	Sfactor string
-}
-
-// RankKey represents keys used for ranking.
-type RankKey struct {
-	Prov    string
-	Mmethod string
-}
-
-// StatsRanking is used to rank multiple source series for the same
-// StatisticalVariable, where lower value means higher ranking.
-// The ranking score ranges from 0 to 100.
-var StatsRanking = map[RankKey]int{
-	{"CensusPEP", "CensusPEPSurvey"}:                                      0, // Population
-	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1, // Population
-	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey"}: 1, // Population
-	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey"}:                    1, // Population
-	{"EurostatData", "EurostatRegionalPopulationData"}:                    2, // Population
-	{"WorldDevelopmentIndicators", ""}:                                    3, // Population
-	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:                               0, // Unemployment Rate
-	{"EurostatData", ""}:                                                  1, // Unemployment Rate
-	{"NYT_COVID19", "NYT_COVID19_GitHub"}:                                 0, // Covid
-	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
-}
-
-// LowestRank is the lowest ranking score.
-const LowestRank = 100
 
 // Limit the concurrent channels when processing in-memory cache data.
 const maxChannelSize = 50
@@ -69,49 +35,6 @@ func tokenFn(
 	return func(rowKey string) (string, error) {
 		return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
 	}
-}
-
-// TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
-// decision, so the ranking is deterministic.
-// byRank implements sort.Interface for []*SourceSeries based on
-// the rank score.
-type byRank []*SourceSeries
-
-func (a byRank) Len() int { return len(a) }
-
-func (a byRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
-
-func (a byRank) Less(i, j int) bool {
-	oi := a[i]
-	keyi := RankKey{oi.ImportName, oi.MeasurementMethod}
-	scorei, ok := StatsRanking[keyi]
-	if !ok {
-		scorei = LowestRank
-	}
-	oj := a[j]
-	keyj := RankKey{oj.ImportName, oj.MeasurementMethod}
-	scorej, ok := StatsRanking[keyj]
-	if !ok {
-		scorej = LowestRank
-	}
-	// Higher score value means lower rank.
-	if scorei != scorej {
-		return scorei < scorej
-	}
-	// Compare other fields to get consistent ranking.
-	if oi.ObservationPeriod != oj.ObservationPeriod {
-		return oi.ObservationPeriod < oj.ObservationPeriod
-	}
-	if oi.ScalingFactor != oj.ScalingFactor {
-		return oi.ScalingFactor < oj.ScalingFactor
-	}
-	if oi.Unit != oj.Unit {
-		return oi.Unit < oj.Unit
-	}
-	if oi.ProvenanceDomain != oj.ProvenanceDomain {
-		return oi.ProvenanceDomain < oj.ProvenanceDomain
-	}
-	return true
 }
 
 // Filter a list of source series given the observation properties.
@@ -290,6 +213,20 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	if len(statVars) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
 	}
+
+	// Initialize result with place and stat var dcids.
+	result := &pb.GetStatAllResponse{
+		PlaceData: make(map[string]*pb.PlaceStat),
+	}
+	for _, place := range places {
+		result.PlaceData[place] = &pb.PlaceStat{
+			StatVarData: make(map[string]*pb.ObsTimeSeries),
+		}
+		for _, statVar := range statVars {
+			result.PlaceData[place].StatVarData[statVar] = nil
+		}
+	}
+
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
@@ -307,19 +244,6 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-
-	// Initialize result with place and stat var dcids.
-	result := &pb.GetStatAllResponse{
-		PlaceData: make(map[string]*pb.PlaceStat),
-	}
-	for _, place := range places {
-		result.PlaceData[place] = &pb.PlaceStat{
-			StatVarData: make(map[string]*pb.ObsTimeSeries),
-		}
-		for _, statVar := range statVars {
-			result.PlaceData[place].StatVarData[statVar] = nil
-		}
-	}
 
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(
@@ -364,12 +288,13 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 // TODO(shifucun): consilidate and dedup the logic among these similar APIs.
 func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollectionRequest) (
 	*pb.GetStatCollectionResponse, error) {
-	place := in.GetPlace()
+	parentPlace := in.GetParentPlace()
 	statVars := in.GetStatVars()
 	childType := in.GetChildType()
 	date := in.GetDate()
-	if place == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+	op := in.GetObservationPeriod()
+	if parentPlace == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: parent_place")
 	}
 	if len(statVars) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_vars")
@@ -379,6 +304,16 @@ func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollection
 	}
 	if childType == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: child_type")
+	}
+
+	// Initialize result.
+	result := &pb.GetStatCollectionResponse{
+		Data: make(map[string]*pb.SourceCohort),
+	}
+	// Initialize with nil to help check if data is in mem-cache. The nil field
+	// will be populated with empty pb.ObsCollection struct in the end.
+	for _, sv := range statVars {
+		result.Data[sv] = nil
 	}
 
 	// Read triples for statistical variable.
@@ -397,46 +332,49 @@ func (s *Server) GetStatCollection(ctx context.Context, in *pb.GetStatCollection
 		}
 	}
 	// Construct BigTable row keys.
-	rowList := buildStatCollectionKey(place, childType, date, statVarObject)
-
-	var obsTimeSeries *ObsTimeSeries
+	rowList, keyTokens := buildStatCollectionKey(parentPlace, childType, date, statVarObject, op)
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(
 		rowList,
 		convertToObsCollection,
-		func(token string) (string, error) {
-			//
-			parts := strings.Split(token, "^")
-			place := strings.TrimPrefix(parts[0], util.BtChartDataPrefix)
-			return place, nil
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey], nil
 		},
 	)
-	if data, ok := cacheData[place]; ok {
-		if data == nil {
-			obsTimeSeries = nil
-		} else {
-			obsTimeSeries = data.(*ObsTimeSeries)
+	for token, data := range cacheData {
+		if data != nil {
+			cohorts := data.(*pb.ObsCollection).SourceCohort
+			sort.Sort(SourceCohortByRank(cohorts))
+			result.Data[token] = cohorts[0]
 		}
-	} else {
-		// If the data is missing in branch cache, fetch it from the base cache in
-		// Bigtable.
-		btData, err := readStats(ctx, s.btTable, rowList, keyTokens)
+	}
+	// Get row keys that are not in mem-cache.
+	extraRowList := bigtable.RowList{}
+	for key, token := range keyTokens {
+		if result.Data[token] == nil {
+			extraRowList = append(extraRowList, key)
+		}
+	}
+
+	if len(extraRowList) > 0 {
+		extraData, err := readStatCollection(ctx, s.btTable, extraRowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
-		obsTimeSeries = btData[place][statVar]
+		for sv, data := range extraData {
+			if data != nil {
+				cohorts := data.SourceCohort
+				sort.Sort(SourceCohortByRank(cohorts))
+				result.Data[sv] = cohorts[0]
+			}
+		}
 	}
-	if obsTimeSeries == nil {
-		return nil, status.Errorf(codes.NotFound, "No data for %s, %s", place, statVar)
+	for sv := range result.Data {
+		if result.Data[sv] == nil {
+			result.Data[sv] = &pb.SourceCohort{}
+		}
 	}
-	series := obsTimeSeries.SourceSeries
-	series = filterSeries(series, filterProp)
-	sort.Sort(byRank(series))
-	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
-	if len(series) > 0 {
-		resp.Series = series[0].Val
-	}
-	return &resp, nil
+	return result, nil
 }
 
 // GetStats implements API for Mixer.GetStats.
@@ -758,6 +696,31 @@ func readStatsPb(
 		} else {
 			result[place][statVar] = data.(*pb.ObsTimeSeries)
 		}
+	}
+	return result, nil
+}
+
+// readStatCollection reads and process ObsCollection cache from BigTable
+// in parallel.
+func readStatCollection(
+	ctx context.Context,
+	btTable *bigtable.Table,
+	rowList bigtable.RowList,
+	keyTokens map[string]string) (
+	map[string]*pb.ObsCollection, error) {
+
+	dataMap, err := bigTableReadRowsParallel(
+		ctx, btTable, rowList, convertToObsCollection,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey], nil
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]*pb.ObsCollection{}
+	for token, data := range dataMap {
+		result[token] = data.(*pb.ObsCollection)
 	}
 	return result, nil
 }

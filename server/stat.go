@@ -24,50 +24,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// ByRank implements sort.Interface for []*SourceSeries based on
-// the rank score.
-// protobuf version of byRank.
-// TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
-// decision, so the ranking is deterministic.
-type ByRank []*pb.SourceSeries
-
-func (a ByRank) Len() int { return len(a) }
-
-func (a ByRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
-
-func (a ByRank) Less(i, j int) bool {
-	oi := a[i]
-	keyi := RankKey{Prov: oi.ImportName, Mmethod: oi.MeasurementMethod}
-	scorei, ok := StatsRanking[keyi]
-	if !ok {
-		scorei = LowestRank
-	}
-	oj := a[j]
-	keyj := RankKey{Prov: oj.ImportName, Mmethod: oj.MeasurementMethod}
-	scorej, ok := StatsRanking[keyj]
-	if !ok {
-		scorej = LowestRank
-	}
-	// Higher score value means lower rank.
-	if scorei != scorej {
-		return scorei < scorej
-	}
-	// Compare other fields to get consistent ranking.
-	if oi.ObservationPeriod != oj.ObservationPeriod {
-		return oi.ObservationPeriod < oj.ObservationPeriod
-	}
-	if oi.ScalingFactor != oj.ScalingFactor {
-		return oi.ScalingFactor < oj.ScalingFactor
-	}
-	if oi.Unit != oj.Unit {
-		return oi.Unit < oj.Unit
-	}
-	if oi.ProvenanceDomain != oj.ProvenanceDomain {
-		return oi.ProvenanceDomain < oj.ProvenanceDomain
-	}
-	return true
-}
-
 // Filter a list of source series given the observation properties.
 func filterSeriesPb(in []*pb.SourceSeries, prop *ObsProp) []*pb.SourceSeries {
 	result := []*pb.SourceSeries{}
@@ -94,7 +50,7 @@ func filterAndRankPb(in *pb.ObsTimeSeries, prop *ObsProp) *pb.SourceSeries {
 		return nil
 	}
 	series := filterSeriesPb(in.SourceSeries, prop)
-	sort.Sort(ByRank(series))
+	sort.Sort(SeriesByRank(series))
 	if len(series) > 0 {
 		return series[0]
 	}

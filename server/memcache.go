@@ -153,7 +153,7 @@ func (m *Memcache) ReadParallel(
 	close(elemChan)
 	result := map[string]interface{}{}
 	for elem := range elemChan {
-		result[elem.dcid] = elem.data
+		result[elem.token] = elem.data
 	}
 	return result
 }
