@@ -27,6 +27,9 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+// Limit the concurrent channels when processing in-memory cache data.
+const maxChannelSize = 50
+
 // ObsProp represents properties for a StatObservation.
 type ObsProp struct {
 	Mmethod string
@@ -35,82 +38,11 @@ type ObsProp struct {
 	Sfactor string
 }
 
-// RankKey represents keys used for ranking.
-type RankKey struct {
-	Prov    string
-	Mmethod string
-}
-
-// StatsRanking is used to rank multiple source series for the same
-// StatisticalVariable, where lower value means higher ranking.
-// The ranking score ranges from 0 to 100.
-var StatsRanking = map[RankKey]int{
-	{"CensusPEP", "CensusPEPSurvey"}:                                      0, // Population
-	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1, // Population
-	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey"}: 1, // Population
-	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey"}:                    1, // Population
-	{"EurostatData", "EurostatRegionalPopulationData"}:                    2, // Population
-	{"WorldDevelopmentIndicators", ""}:                                    3, // Population
-	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:                               0, // Unemployment Rate
-	{"EurostatData", ""}:                                                  1, // Unemployment Rate
-	{"NYT_COVID19", "NYT_COVID19_GitHub"}:                                 0, // Covid
-	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
-}
-
-// LowestRank is the lowest ranking score.
-const LowestRank = 100
-
-// Limit the concurrent channels when processing in-memory cache data.
-const maxChannelSize = 50
-
 func tokenFn(
 	keyTokens map[string]*placeStatVar) func(rowKey string) (string, error) {
 	return func(rowKey string) (string, error) {
 		return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
 	}
-}
-
-// TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
-// decision, so the ranking is deterministic.
-// byRank implements sort.Interface for []*SourceSeries based on
-// the rank score.
-type byRank []*SourceSeries
-
-func (a byRank) Len() int { return len(a) }
-
-func (a byRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
-
-func (a byRank) Less(i, j int) bool {
-	oi := a[i]
-	keyi := RankKey{oi.ImportName, oi.MeasurementMethod}
-	scorei, ok := StatsRanking[keyi]
-	if !ok {
-		scorei = LowestRank
-	}
-	oj := a[j]
-	keyj := RankKey{oj.ImportName, oj.MeasurementMethod}
-	scorej, ok := StatsRanking[keyj]
-	if !ok {
-		scorej = LowestRank
-	}
-	// Higher score value means lower rank.
-	if scorei != scorej {
-		return scorei < scorej
-	}
-	// Compare other fields to get consistent ranking.
-	if oi.ObservationPeriod != oj.ObservationPeriod {
-		return oi.ObservationPeriod < oj.ObservationPeriod
-	}
-	if oi.ScalingFactor != oj.ScalingFactor {
-		return oi.ScalingFactor < oj.ScalingFactor
-	}
-	if oi.Unit != oj.Unit {
-		return oi.Unit < oj.Unit
-	}
-	if oi.ProvenanceDomain != oj.ProvenanceDomain {
-		return oi.ProvenanceDomain < oj.ProvenanceDomain
-	}
-	return true
 }
 
 // Filter a list of source series given the observation properties.
@@ -140,10 +72,12 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	place := in.GetPlace()
 	statVar := in.GetStatVar()
 	if place == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if statVar == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
 	date := in.GetDate()
 	filterProp := &ObsProp{
@@ -161,7 +95,8 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	}
 	// Get the StatisticalVariable
 	if triples[statVar] == nil {
-		return nil, status.Errorf(codes.NotFound, "No statistical variable found for %s", statVar)
+		return nil, status.Errorf(codes.NotFound,
+			"No statistical variable found for %s", statVar)
 	}
 	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
 	if err != nil {
@@ -194,7 +129,8 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		obsTimeSeries = btData[place][statVar]
 	}
 	if obsTimeSeries == nil {
-		return nil, status.Errorf(codes.NotFound, "No data for %s, %s", place, statVar)
+		return nil, status.Errorf(
+			codes.NotFound, "No data for %s, %s", place, statVar)
 	}
 	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
 	result, err := getValue(obsTimeSeries, date)
@@ -206,15 +142,18 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 
 // GetStatSeries implements API for Mixer.GetStatSeries.
 // TODO(shifucun): consilidate and dedup the logic among these similar APIs.
-func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest) (
+func (s *Server) GetStatSeries(
+	ctx context.Context, in *pb.GetStatSeriesRequest) (
 	*pb.GetStatSeriesResponse, error) {
 	place := in.GetPlace()
 	statVar := in.GetStatVar()
 	if place == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if statVar == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
 	filterProp := &ObsProp{
 		Mmethod: in.GetMeasurementMethod(),
@@ -231,7 +170,8 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 	}
 	// Get the StatisticalVariable
 	if triples[statVar] == nil {
-		return nil, status.Errorf(codes.NotFound, "No statistical variable found for %s", statVar)
+		return nil, status.Errorf(
+			codes.NotFound, "No statistical variable found for %s", statVar)
 	}
 	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
 	if err != nil {
@@ -265,7 +205,8 @@ func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest)
 		obsTimeSeries = btData[place][statVar]
 	}
 	if obsTimeSeries == nil {
-		return nil, status.Errorf(codes.NotFound, "No data for %s, %s", place, statVar)
+		return nil, status.Errorf(codes.NotFound,
+			"No data for %s, %s", place, statVar)
 	}
 	series := obsTimeSeries.SourceSeries
 	series = filterSeries(series, filterProp)
@@ -284,11 +225,27 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
 	if len(places) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if len(statVars) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
+
+	// Initialize result with place and stat var dcids.
+	result := &pb.GetStatAllResponse{
+		PlaceData: make(map[string]*pb.PlaceStat),
+	}
+	for _, place := range places {
+		result.PlaceData[place] = &pb.PlaceStat{
+			StatVarData: make(map[string]*pb.ObsTimeSeries),
+		}
+		for _, statVar := range statVars {
+			result.PlaceData[place].StatVarData[statVar] = nil
+		}
+	}
+
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
 	triples, err := readTriples(ctx, s.btTable, triplesRowList)
@@ -306,19 +263,6 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-
-	// Initialize result with place and stat var dcids.
-	result := &pb.GetStatAllResponse{
-		PlaceData: make(map[string]*pb.PlaceStat),
-	}
-	for _, place := range places {
-		result.PlaceData[place] = &pb.PlaceStat{
-			StatVarData: make(map[string]*pb.ObsTimeSeries),
-		}
-		for _, statVar := range statVars {
-			result.PlaceData[place].StatVarData[statVar] = nil
-		}
-	}
 
 	// Read data from branch in-memory cache first.
 	cacheData := s.memcache.ReadParallel(
@@ -359,6 +303,103 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	return result, nil
 }
 
+// GetStatCollection implements API for Mixer.GetStatCollection.
+func (s *Server) GetStatCollection(
+	ctx context.Context, in *pb.GetStatCollectionRequest) (
+	*pb.GetStatCollectionResponse, error) {
+	parentPlace := in.GetParentPlace()
+	statVars := in.GetStatVars()
+	childType := in.GetChildType()
+	date := in.GetDate()
+	if parentPlace == "" {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: parent_place")
+	}
+	if len(statVars) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_vars")
+	}
+	if date == "" {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: date")
+	}
+	if childType == "" {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: child_type")
+	}
+
+	// Initialize result.
+	result := &pb.GetStatCollectionResponse{
+		Data: make(map[string]*pb.SourceSeries),
+	}
+	// Initialize with nil to help check if data is in mem-cache. The nil field
+	// will be populated with empty pb.ObsCollection struct in the end.
+	for _, sv := range statVars {
+		result.Data[sv] = nil
+	}
+
+	// Read triples for statistical variable.
+	triplesRowList := buildTriplesKey(statVars)
+	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	if err != nil {
+		return nil, err
+	}
+	statVarObject := map[string]*StatisticalVariable{}
+	for statVar, triplesCache := range triples {
+		if triplesCache != nil {
+			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	// Construct BigTable row keys.
+	rowList, keyTokens := buildStatCollectionKey(
+		parentPlace, childType, date, statVarObject)
+	// Read data from branch in-memory cache first.
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		convertToObsCollection,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey], nil
+		},
+	)
+	for token, data := range cacheData {
+		if data != nil {
+			cohorts := data.(*pb.ObsCollection).SourceCohorts
+			sort.Sort(SeriesByRank(cohorts))
+			result.Data[token] = cohorts[0]
+		}
+	}
+	// Get row keys that are not in mem-cache.
+	extraRowList := bigtable.RowList{}
+	for key, token := range keyTokens {
+		if result.Data[token] == nil {
+			extraRowList = append(extraRowList, key)
+		}
+	}
+
+	if len(extraRowList) > 0 {
+		extraData, err := readStatCollection(ctx, s.btTable, extraRowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		for sv, data := range extraData {
+			if data != nil {
+				cohorts := data.SourceCohorts
+				sort.Sort(SeriesByRank(cohorts))
+				result.Data[sv] = cohorts[0]
+			}
+		}
+	}
+	for sv := range result.Data {
+		if result.Data[sv] == nil {
+			result.Data[sv] = &pb.SourceSeries{}
+		}
+	}
+	return result, nil
+}
+
 // GetStats implements API for Mixer.GetStats.
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {
@@ -366,10 +407,12 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	placeDcids := in.GetPlace()
 	statsVarDcid := in.GetStatsVar()
 	if len(placeDcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: place")
 	}
 	if statsVarDcid == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_var")
 	}
 	filterProp := &ObsProp{
 		Mmethod: in.GetMeasurementMethod(),
@@ -385,7 +428,8 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	}
 	// Get the StatisticalVariable
 	if triples[statsVarDcid] == nil {
-		return nil, status.Errorf(codes.NotFound, "No statistical variable found for %s", statsVarDcid)
+		return nil, status.Errorf(codes.NotFound,
+			"No statistical variable found for %s", statsVarDcid)
 	}
 	statsVarObject, err := triplesToStatsVar(statsVarDcid, triples[statsVarDcid])
 	if err != nil {
@@ -470,7 +514,8 @@ func triplesToStatsVar(
 		switch t.Predicate {
 		case "typeOf":
 			if object != "StatisticalVariable" {
-				return nil, status.Errorf(codes.Internal, "%s is not a StatisticalVariable", t.SubjectID)
+				return nil, status.Errorf(
+					codes.Internal, "%s is not a StatisticalVariable", t.SubjectID)
 			}
 		case "statType":
 			statsVar.StatType = strings.Replace(object, "Value", "", 1)
@@ -530,7 +575,8 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 		}
 	}
 	if latestDate == "" {
-		return 0, status.Errorf(codes.NotFound, "No stat data found for %s", in.PlaceDcid)
+		return 0, status.Errorf(codes.NotFound,
+			"No stat data found for %s", in.PlaceDcid)
 	}
 	return result, nil
 }
@@ -562,7 +608,8 @@ func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	case nil:
 		return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")
 	default:
-		return nil, status.Errorf(codes.NotFound, "ChartStore.Val has unexpected type %T", x)
+		return nil, status.Errorf(codes.NotFound,
+			"ChartStore.Val has unexpected type %T", x)
 	}
 }
 
@@ -599,6 +646,24 @@ func convertToObsSeries(token string, jsonRaw []byte) (
 		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
 	default:
 		return nil, status.Errorf(codes.Internal, "ChartStore.Val has unexpected type %T", x)
+	}
+}
+
+func convertToObsCollection(token string, jsonRaw []byte) (
+	interface{}, error) {
+	pbData := &pb.ChartStore{}
+	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
+		return nil, err
+	}
+	switch x := pbData.Val.(type) {
+	case *pb.ChartStore_ObsCollection:
+		return x.ObsCollection, nil
+	case nil:
+		return nil, status.Error(codes.Internal,
+			"ChartStore.Val is not set")
+	default:
+		return nil, status.Errorf(codes.Internal,
+			"ChartStore.Val has unexpected type %T", x)
 	}
 }
 
@@ -662,6 +727,31 @@ func readStatsPb(
 		} else {
 			result[place][statVar] = data.(*pb.ObsTimeSeries)
 		}
+	}
+	return result, nil
+}
+
+// readStatCollection reads and process ObsCollection cache from BigTable
+// in parallel.
+func readStatCollection(
+	ctx context.Context,
+	btTable *bigtable.Table,
+	rowList bigtable.RowList,
+	keyTokens map[string]string) (
+	map[string]*pb.ObsCollection, error) {
+
+	dataMap, err := bigTableReadRowsParallel(
+		ctx, btTable, rowList, convertToObsCollection,
+		func(rowKey string) (string, error) {
+			return keyTokens[rowKey], nil
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]*pb.ObsCollection{}
+	for token, data := range dataMap {
+		result[token] = data.(*pb.ObsCollection)
 	}
 	return result, nil
 }

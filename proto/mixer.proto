@@ -205,10 +205,18 @@ message ObsTimeSeries {
   string provenance_url = 8;
 }
 
+// A collection of observation values for various places with the same parent
+// and place type, for given measured property, observation period, stat type,
+// observation date, pop type, and an optional list of pop PVs.
+message ObsCollection {
+  repeated SourceSeries source_cohorts = 2;
+}
+
 // Wrapper for observation data.
 message ChartStore {
   oneof val {
     ObsTimeSeries obs_time_series = 1;
+    ObsCollection obs_collection = 2;
   }
 }
 
@@ -723,6 +731,22 @@ message GetStatAllResponse {
   map<string, PlaceStat> place_data = 1;
 }
 
+message GetStatCollectionRequest {
+  // Parent place dcid.
+  string parent_place = 1;
+  // Child place type.
+  string child_type = 2;
+  // Date for the stat in ISO format.
+  string date = 3;
+  // Dcid of the stat var.
+  repeated string stat_vars = 4;
+}
+
+// Response for GetStatCollection service.
+message GetStatCollectionResponse {
+  map<string, SourceSeries> data = 1;
+}
+
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -883,6 +907,15 @@ service Mixer {
   rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
     option (google.api.http) = {
       post: "/stat/all"
+      body: "*"
+    };
+  }
+
+  // Get the stat value for children places of certain place type at a given
+  // date.
+  rpc GetStatCollection(GetStatCollectionRequest) returns (GetStatCollectionResponse) {
+    option (google.api.http) = {
+      get: "/stat/collection"
       body: "*"
     };
   }

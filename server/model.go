@@ -58,8 +58,10 @@ type PropLabelCache struct {
 }
 
 type chanData struct {
-	dcid string
-	data interface{}
+	// token is the identifier of the data when reading multiple BigTable rows
+	// concurrently. It could be place dcid, statvar dcid or other "key".
+	token string
+	data  interface{}
 }
 
 // RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.

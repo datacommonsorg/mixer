@@ -65,13 +65,45 @@ func buildStatsKey(
 	bigtable.RowList, map[string]*placeStatVar) {
 	rowList := bigtable.RowList{}
 	keyToToken := map[string]*placeStatVar{}
-	for statVarDcid, statVarObject := range statVars {
-		keySuffix := buildStatsKeySuffix(statVarObject)
+	for sv, svObj := range statVars {
+		keySuffix := buildStatsKeySuffix(svObj)
 		for _, place := range places {
 			rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, place, keySuffix)
 			rowList = append(rowList, rowKey)
-			keyToToken[rowKey] = &placeStatVar{place, statVarDcid}
+			keyToToken[rowKey] = &placeStatVar{place, sv}
 		}
+	}
+	return rowList, keyToToken
+}
+
+func buildStatCollectionKey(
+	parentPlace, childType, date string,
+	statVars map[string]*StatisticalVariable) (
+	bigtable.RowList, map[string]string) {
+
+	rowList := bigtable.RowList{}
+	keyToToken := map[string]string{}
+	for sv, svObj := range statVars {
+		rowKey := strings.Join([]string{
+			util.BtChartDataPrefix + parentPlace,
+			childType,
+			svObj.MeasuredProp,
+			svObj.StatType,
+			svObj.MeasurementDenominator,
+			svObj.MeasurementQualifier,
+			date,
+			svObj.PopType,
+		}, "^")
+		cprops := []string{}
+		for cprop := range svObj.PVs {
+			cprops = append(cprops, cprop)
+		}
+		sort.Strings(cprops)
+		for _, cprop := range cprops {
+			rowKey += fmt.Sprintf("^%s^%s", cprop, svObj.PVs[cprop])
+		}
+		rowList = append(rowList, rowKey)
+		keyToToken[rowKey] = sv
 	}
 	return rowList, keyToToken
 }
