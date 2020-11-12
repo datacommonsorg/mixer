@@ -7,6 +7,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Poverty rate",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Children in employment",
     "statsVars": [
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"
