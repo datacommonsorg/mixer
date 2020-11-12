@@ -12,6 +12,13 @@
     }
   },
   {
+    "title": "Poverty rate",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "State unemployment insurance claims",
     "statsVars": [
       "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
