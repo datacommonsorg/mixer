@@ -40,7 +40,7 @@ var (
 	btInstance   = flag.String("bt_instance", "", "BigTable instance.")
 	projectID    = flag.String("project_id", "", "The cloud project to run the mixer instance.")
 	branchFolder = flag.String("branch_folder", "", "The branch cache gcs folder.")
-	port         = flag.String("port", ":12345", "Port on which to run the server.")
+	port         = flag.Int("port", 12345, "Port on which to run the server.")
 	useALTS      = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 )
 
@@ -127,7 +127,7 @@ func main() {
 	// Register reflection service on gRPC server.
 	reflection.Register(srv)
 	// Listen on network
-	lis, err := net.Listen("tcp", *port)
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
 		log.Fatalf("Failed to listen on network: %v", err)
 	}
