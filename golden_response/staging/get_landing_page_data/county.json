@@ -2154,7 +2154,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 134557,
           "2012": 137077,
@@ -3099,6 +3099,20 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 44415979,
+          "2012": 46510939,
+          "2013": 48307561,
+          "2014": 49386571,
+          "2015": 49365160,
+          "2016": 48509300,
+          "2017": 47193565,
+          "2018": 45753139
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
       "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone": {
         "data": {
           "2011": 654976,
@@ -3519,20 +3533,6 @@
           "2016": 123770934,
           "2017": 125270799,
           "2018": 126043825
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 500669,
-          "2012": 514446,
-          "2013": 526408,
-          "2014": 535890,
-          "2015": 546384,
-          "2016": 560203,
-          "2017": 570252,
-          "2018": 583021
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -5901,34 +5901,36 @@
           "2020-04-04": 14325393,
           "2020-04-11": 17338427,
           "2020-04-18": 20467777,
-          "2020-04-25": 21213993,
-          "2020-05-02": 24524271,
-          "2020-05-09": 23134708,
-          "2020-05-16": 25141686,
-          "2020-05-23": 20866924,
-          "2020-05-30": 20656513,
-          "2020-06-06": 20591912,
-          "2020-06-13": 20045375,
-          "2020-06-20": 19162333,
-          "2020-06-27": 18826345,
-          "2020-07-04": 17893486,
-          "2020-07-11": 18759682,
-          "2020-07-18": 17648596,
-          "2020-07-25": 17966412,
-          "2020-08-01": 16763006,
-          "2020-08-08": 16003838,
-          "2020-08-15": 14960466,
-          "2020-08-22": 14589048,
-          "2020-08-29": 13872985,
-          "2020-09-05": 14116508,
-          "2020-09-12": 13136601,
-          "2020-09-19": 13154358,
-          "2020-09-26": 11729523,
-          "2020-10-03": 10836146,
-          "2020-10-10": 9697385,
-          "2020-10-17": 8800233,
-          "2020-10-24": 8169801,
-          "2020-10-31": 7915924
+          "2020-04-25": 21213863,
+          "2020-05-02": 24511091,
+          "2020-05-09": 23134644,
+          "2020-05-16": 25141396,
+          "2020-05-23": 20868671,
+          "2020-05-30": 20656312,
+          "2020-06-06": 20591682,
+          "2020-06-13": 20045158,
+          "2020-06-20": 19162105,
+          "2020-06-27": 18826123,
+          "2020-07-04": 17893260,
+          "2020-07-11": 18759404,
+          "2020-07-18": 17648330,
+          "2020-07-25": 17966177,
+          "2020-08-01": 16762736,
+          "2020-08-08": 16003610,
+          "2020-08-15": 14960277,
+          "2020-08-22": 14588840,
+          "2020-08-29": 13872768,
+          "2020-09-05": 14116248,
+          "2020-09-12": 13136286,
+          "2020-09-19": 13154102,
+          "2020-09-26": 11729228,
+          "2020-10-03": 10835870,
+          "2020-10-10": 9697042,
+          "2020-10-17": 8799975,
+          "2020-10-24": 8169469,
+          "2020-10-31": 7575825,
+          "2020-11-07": 7174620,
+          "2020-11-14": 6785229
         },
         "provenanceDomain": "doleta.gov",
         "provenanceUrl": "https://oui.doleta.gov/unemploy/"
@@ -6215,46 +6217,56 @@
           "2020-09-29": 7220676,
           "2020-09-30": 7262734,
           "2020-10-01": 7309152,
-          "2020-10-02": 7362563,
-          "2020-10-03": 7410342,
-          "2020-10-04": 7445405,
-          "2020-10-05": 7507699,
-          "2020-10-06": 7550563,
-          "2020-10-07": 7603547,
-          "2020-10-08": 7659922,
-          "2020-10-09": 7718881,
-          "2020-10-10": 7770467,
-          "2020-10-11": 7815233,
-          "2020-10-12": 7863239,
-          "2020-10-13": 7917598,
-          "2020-10-14": 7977470,
-          "2020-10-15": 8042797,
-          "2020-10-16": 8113261,
-          "2020-10-17": 8166022,
-          "2020-10-18": 8213904,
-          "2020-10-19": 8279279,
-          "2020-10-20": 8339867,
-          "2020-10-21": 8404058,
-          "2020-10-22": 8479122,
-          "2020-10-23": 8564207,
-          "2020-10-24": 8642963,
-          "2020-10-25": 8702675,
-          "2020-10-26": 8777118,
-          "2020-10-27": 8851546,
-          "2020-10-28": 8933448,
-          "2020-10-29": 9024176,
-          "2020-10-30": 9123960,
-          "2020-10-31": 9208245,
-          "2020-11-01": 9282481,
-          "2020-11-02": 9376123,
-          "2020-11-03": 9468722,
-          "2020-11-04": 9576594,
-          "2020-11-05": 9698098,
-          "2020-11-06": 9830909,
-          "2020-11-07": 9956841,
-          "2020-11-08": 10060708,
-          "2020-11-09": 10192074,
-          "2020-11-10": 10331929
+          "2020-10-02": 7362732,
+          "2020-10-03": 7410511,
+          "2020-10-04": 7445574,
+          "2020-10-05": 7507956,
+          "2020-10-06": 7550841,
+          "2020-10-07": 7603856,
+          "2020-10-08": 7660231,
+          "2020-10-09": 7719190,
+          "2020-10-10": 7770838,
+          "2020-10-11": 7815621,
+          "2020-10-12": 7863637,
+          "2020-10-13": 7917996,
+          "2020-10-14": 7977889,
+          "2020-10-15": 8043229,
+          "2020-10-16": 8113706,
+          "2020-10-17": 8166467,
+          "2020-10-18": 8214349,
+          "2020-10-19": 8279780,
+          "2020-10-20": 8340387,
+          "2020-10-21": 8404616,
+          "2020-10-22": 8479704,
+          "2020-10-23": 8564816,
+          "2020-10-24": 8643572,
+          "2020-10-25": 8703284,
+          "2020-10-26": 8777727,
+          "2020-10-27": 8852180,
+          "2020-10-28": 8934082,
+          "2020-10-29": 9024852,
+          "2020-10-30": 9124654,
+          "2020-10-31": 9208952,
+          "2020-11-01": 9283188,
+          "2020-11-02": 9376874,
+          "2020-11-03": 9469493,
+          "2020-11-04": 9577421,
+          "2020-11-05": 9698960,
+          "2020-11-06": 9831814,
+          "2020-11-07": 9957746,
+          "2020-11-08": 10061162,
+          "2020-11-09": 10191549,
+          "2020-11-10": 10331303,
+          "2020-11-11": 10474163,
+          "2020-11-12": 10637603,
+          "2020-11-13": 10819174,
+          "2020-11-14": 10978295,
+          "2020-11-15": 11113482,
+          "2020-11-16": 11280026,
+          "2020-11-17": 11441728,
+          "2020-11-18": 11614076,
+          "2020-11-19": 11801504,
+          "2020-11-20": 12000089
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -6555,7 +6567,17 @@
           "2020-11-07": 237584,
           "2020-11-08": 238048,
           "2020-11-09": 238793,
-          "2020-11-10": 240241
+          "2020-11-10": 240258,
+          "2020-11-11": 241689,
+          "2020-11-12": 242861,
+          "2020-11-13": 244250,
+          "2020-11-14": 245460,
+          "2020-11-15": 246083,
+          "2020-11-16": 246879,
+          "2020-11-17": 248486,
+          "2020-11-18": 250411,
+          "2020-11-19": 252373,
+          "2020-11-20": 254325
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -9680,7 +9702,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 37695,
           "2012": 37899,
@@ -10586,6 +10608,20 @@
           "2016": 5354608,
           "2017": 5503672,
           "2018": 5604339
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 5211481,
+          "2012": 5590100,
+          "2013": 5885417,
+          "2014": 6115244,
+          "2015": 6135142,
+          "2016": 6004257,
+          "2017": 5773408,
+          "2018": 5487141
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -12057,20 +12093,6 @@
           "2016": 14474790,
           "2017": 14660743,
           "2018": 14783799
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 141382,
-          "2012": 144236,
-          "2013": 146290,
-          "2014": 147286,
-          "2015": 150370,
-          "2016": 150908,
-          "2017": 152027,
-          "2018": 153366
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -14260,7 +14282,9 @@
           "2020-10-10": 2180262,
           "2020-10-17": 1988074,
           "2020-10-24": 1797503,
-          "2020-10-31": 1705918
+          "2020-10-31": 1705918,
+          "2020-11-07": 1596432,
+          "2020-11-14": 1540018
         },
         "provenanceDomain": "doleta.gov",
         "provenanceUrl": "https://oui.doleta.gov/unemploy/"
@@ -14582,7 +14606,17 @@
           "2020-11-07": 972801,
           "2020-11-08": 978844,
           "2020-11-09": 985598,
-          "2020-11-10": 994341
+          "2020-11-10": 994341,
+          "2020-11-11": 999498,
+          "2020-11-12": 1009187,
+          "2020-11-13": 1019052,
+          "2020-11-14": 1027016,
+          "2020-11-15": 1035981,
+          "2020-11-16": 1047360,
+          "2020-11-17": 1058096,
+          "2020-11-18": 1069517,
+          "2020-11-19": 1082674,
+          "2020-11-20": 1096401
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -14879,7 +14913,17 @@
           "2020-11-07": 17964,
           "2020-11-08": 17975,
           "2020-11-09": 18035,
-          "2020-11-10": 18073
+          "2020-11-10": 18073,
+          "2020-11-11": 18109,
+          "2020-11-12": 18141,
+          "2020-11-13": 18218,
+          "2020-11-14": 18254,
+          "2020-11-15": 18265,
+          "2020-11-16": 18304,
+          "2020-11-17": 18360,
+          "2020-11-18": 18467,
+          "2020-11-19": 18555,
+          "2020-11-20": 18649
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -17022,7 +17066,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 3294,
           "2012": 3566,
@@ -17503,6 +17547,20 @@
           "2016": 452582,
           "2017": 471335,
           "2018": 486434
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 173156,
+          "2012": 178897,
+          "2013": 188501,
+          "2014": 197191,
+          "2015": 194639,
+          "2016": 189590,
+          "2017": 181194,
+          "2018": 170884
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -18642,20 +18700,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 12191,
-          "2012": 12674,
-          "2013": 12579,
-          "2014": 12923,
-          "2015": 13760,
-          "2016": 13811,
-          "2017": 13652,
-          "2018": 13768
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 12191,
@@ -19129,7 +19173,17 @@
           "2020-11-07": 24685,
           "2020-11-08": 24872,
           "2020-11-09": 25022,
-          "2020-11-10": 25131
+          "2020-11-10": 25131,
+          "2020-11-11": 25270,
+          "2020-11-12": 25421,
+          "2020-11-13": 25620,
+          "2020-11-14": 25781,
+          "2020-11-15": 25893,
+          "2020-11-16": 26068,
+          "2020-11-17": 26481,
+          "2020-11-18": 26676,
+          "2020-11-19": 26948,
+          "2020-11-20": 27244
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -19390,7 +19444,17 @@
           "2020-11-07": 475,
           "2020-11-08": 475,
           "2020-11-09": 475,
-          "2020-11-10": 475
+          "2020-11-10": 475,
+          "2020-11-11": 483,
+          "2020-11-12": 486,
+          "2020-11-13": 486,
+          "2020-11-14": 489,
+          "2020-11-15": 490,
+          "2020-11-16": 490,
+          "2020-11-17": 493,
+          "2020-11-18": 494,
+          "2020-11-19": 495,
+          "2020-11-20": 499
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -21311,7 +21375,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 1392,
           "2012": 1312,
@@ -21792,6 +21856,20 @@
           "2016": 171853,
           "2017": 180072,
           "2018": 185065
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 101562,
+          "2012": 106304,
+          "2013": 111173,
+          "2014": 114171,
+          "2015": 117915,
+          "2016": 111922,
+          "2017": 108630,
+          "2018": 102543
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -22931,20 +23009,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 4727,
-          "2012": 4860,
-          "2013": 5101,
-          "2014": 5133,
-          "2015": 5548,
-          "2016": 5511,
-          "2017": 5542,
-          "2018": 5585
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 4727,
@@ -23413,7 +23477,17 @@
           "2020-11-07": 19744,
           "2020-11-08": 19899,
           "2020-11-09": 20031,
-          "2020-11-10": 20193
+          "2020-11-10": 20193,
+          "2020-11-11": 20326,
+          "2020-11-12": 20452,
+          "2020-11-13": 20619,
+          "2020-11-14": 20799,
+          "2020-11-15": 20975,
+          "2020-11-16": 21458,
+          "2020-11-17": 21630,
+          "2020-11-18": 21758,
+          "2020-11-19": 21959,
+          "2020-11-20": 22191
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -23672,7 +23746,17 @@
           "2020-11-07": 250,
           "2020-11-08": 251,
           "2020-11-09": 253,
-          "2020-11-10": 253
+          "2020-11-10": 253,
+          "2020-11-11": 253,
+          "2020-11-12": 253,
+          "2020-11-13": 252,
+          "2020-11-14": 253,
+          "2020-11-15": 253,
+          "2020-11-16": 253,
+          "2020-11-17": 253,
+          "2020-11-18": 255,
+          "2020-11-19": 256,
+          "2020-11-20": 257
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -25653,7 +25737,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 351,
           "2012": 341,
@@ -26134,6 +26218,20 @@
           "2016": 40088,
           "2017": 41263,
           "2018": 41842
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 169635,
+          "2012": 180779,
+          "2013": 186811,
+          "2014": 192972,
+          "2015": 195744,
+          "2016": 194354,
+          "2017": 191123,
+          "2018": 187232
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -27273,20 +27371,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 914,
-          "2012": 1052,
-          "2013": 1159,
-          "2014": 1078,
-          "2015": 1314,
-          "2016": 1623,
-          "2017": 1620,
-          "2018": 1698
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 914,
@@ -27777,7 +27861,17 @@
           "2020-11-07": 35205,
           "2020-11-08": 35394,
           "2020-11-09": 35467,
-          "2020-11-10": 35610
+          "2020-11-10": 35610,
+          "2020-11-11": 35818,
+          "2020-11-12": 36069,
+          "2020-11-13": 36227,
+          "2020-11-14": 36470,
+          "2020-11-15": 36618,
+          "2020-11-16": 36919,
+          "2020-11-17": 37141,
+          "2020-11-18": 37323,
+          "2020-11-19": 37632,
+          "2020-11-20": 37982
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -28022,7 +28116,17 @@
           "2020-11-07": 429,
           "2020-11-08": 429,
           "2020-11-09": 429,
-          "2020-11-10": 429
+          "2020-11-10": 429,
+          "2020-11-11": 429,
+          "2020-11-12": 430,
+          "2020-11-13": 432,
+          "2020-11-14": 432,
+          "2020-11-15": 432,
+          "2020-11-16": 432,
+          "2020-11-17": 432,
+          "2020-11-18": 437,
+          "2020-11-19": 437,
+          "2020-11-20": 440
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -29900,7 +30004,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 3541,
           "2012": 3845,
@@ -30381,6 +30485,20 @@
           "2016": 224235,
           "2017": 229441,
           "2018": 235474
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 205715,
+          "2012": 230523,
+          "2013": 248304,
+          "2014": 258031,
+          "2015": 262251,
+          "2016": 260877,
+          "2017": 246203,
+          "2018": 235982
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -31520,20 +31638,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 13912,
-          "2012": 14435,
-          "2013": 14432,
-          "2014": 14533,
-          "2015": 15148,
-          "2016": 15500,
-          "2017": 16019,
-          "2018": 16715
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 13912,
@@ -32021,7 +32125,17 @@
           "2020-11-07": 27529,
           "2020-11-08": 27772,
           "2020-11-09": 28236,
-          "2020-11-10": 28720
+          "2020-11-10": 28720,
+          "2020-11-11": 29013,
+          "2020-11-12": 29509,
+          "2020-11-13": 29836,
+          "2020-11-14": 29836,
+          "2020-11-15": 30297,
+          "2020-11-16": 30998,
+          "2020-11-17": 31386,
+          "2020-11-18": 31851,
+          "2020-11-19": 32410,
+          "2020-11-20": 32864
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -32291,7 +32405,17 @@
           "2020-11-07": 508,
           "2020-11-08": 508,
           "2020-11-09": 513,
-          "2020-11-10": 514
+          "2020-11-10": 514,
+          "2020-11-11": 514,
+          "2020-11-12": 517,
+          "2020-11-13": 520,
+          "2020-11-14": 520,
+          "2020-11-15": 520,
+          "2020-11-16": 527,
+          "2020-11-17": 533,
+          "2020-11-18": 536,
+          "2020-11-19": 544,
+          "2020-11-20": 546
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -34179,7 +34303,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 1099,
           "2012": 1130,
@@ -34628,6 +34752,20 @@
           "2016": 287847,
           "2017": 295347,
           "2018": 297667
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 96801,
+          "2012": 104784,
+          "2013": 108306,
+          "2014": 108328,
+          "2015": 109524,
+          "2016": 104180,
+          "2017": 99096,
+          "2018": 92979
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -35767,20 +35905,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 3277,
-          "2012": 3485,
-          "2013": 3461,
-          "2014": 3566,
-          "2015": 3649,
-          "2016": 3168,
-          "2017": 3226,
-          "2018": 2911
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 3277,
@@ -36266,7 +36390,17 @@
           "2020-11-07": 12863,
           "2020-11-08": 12983,
           "2020-11-09": 13084,
-          "2020-11-10": 13142
+          "2020-11-10": 13142,
+          "2020-11-11": 13213,
+          "2020-11-12": 13311,
+          "2020-11-13": 13407,
+          "2020-11-14": 13519,
+          "2020-11-15": 13668,
+          "2020-11-16": 13760,
+          "2020-11-17": 13850,
+          "2020-11-18": 13955,
+          "2020-11-19": 14060,
+          "2020-11-20": 14254
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -36555,7 +36689,17 @@
           "2020-11-07": 151,
           "2020-11-08": 151,
           "2020-11-09": 151,
-          "2020-11-10": 151
+          "2020-11-10": 151,
+          "2020-11-11": 153,
+          "2020-11-12": 153,
+          "2020-11-13": 153,
+          "2020-11-14": 155,
+          "2020-11-15": 156,
+          "2020-11-16": 156,
+          "2020-11-17": 156,
+          "2020-11-18": 156,
+          "2020-11-19": 156,
+          "2020-11-20": 156
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -38453,7 +38597,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 2194,
           "2012": 2284,
@@ -38902,6 +39046,20 @@
           "2016": 203926,
           "2017": 210816,
           "2018": 215337
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 48891,
+          "2012": 52888,
+          "2013": 54905,
+          "2014": 55672,
+          "2015": 59232,
+          "2016": 57490,
+          "2017": 54981,
+          "2018": 53387
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -40041,20 +40199,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 10556,
-          "2012": 10614,
-          "2013": 10638,
-          "2014": 10463,
-          "2015": 10516,
-          "2016": 10615,
-          "2017": 10797,
-          "2018": 10504
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 10556,
@@ -40525,7 +40669,17 @@
           "2020-11-07": 11810,
           "2020-11-08": 11810,
           "2020-11-09": 11937,
-          "2020-11-10": 12049
+          "2020-11-10": 12049,
+          "2020-11-11": 12127,
+          "2020-11-12": 12127,
+          "2020-11-13": 12332,
+          "2020-11-14": 12465,
+          "2020-11-15": 12465,
+          "2020-11-16": 12565,
+          "2020-11-17": 12684,
+          "2020-11-18": 12780,
+          "2020-11-19": 12878,
+          "2020-11-20": 12988
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -40785,7 +40939,17 @@
           "2020-11-07": 162,
           "2020-11-08": 162,
           "2020-11-09": 162,
-          "2020-11-10": 165
+          "2020-11-10": 165,
+          "2020-11-11": 165,
+          "2020-11-12": 165,
+          "2020-11-13": 168,
+          "2020-11-14": 168,
+          "2020-11-15": 168,
+          "2020-11-16": 168,
+          "2020-11-17": 168,
+          "2020-11-18": 168,
+          "2020-11-19": 168,
+          "2020-11-20": 169
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -42736,7 +42900,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 1843,
           "2012": 1970,
@@ -43217,6 +43381,20 @@
           "2016": 648047,
           "2017": 671511,
           "2018": 689176
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 160396,
+          "2012": 171669,
+          "2013": 181376,
+          "2014": 180153,
+          "2015": 175690,
+          "2016": 172213,
+          "2017": 162525,
+          "2018": 149850
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -44356,20 +44534,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 6445,
-          "2012": 6432,
-          "2013": 6317,
-          "2014": 6739,
-          "2015": 7163,
-          "2016": 7810,
-          "2017": 7438,
-          "2018": 7541
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 6445,
@@ -44875,7 +45039,17 @@
           "2020-11-07": 26137,
           "2020-11-08": 26490,
           "2020-11-09": 26747,
-          "2020-11-10": 26972
+          "2020-11-10": 26972,
+          "2020-11-11": 27124,
+          "2020-11-12": 27299,
+          "2020-11-13": 27648,
+          "2020-11-14": 27977,
+          "2020-11-15": 28307,
+          "2020-11-16": 28686,
+          "2020-11-17": 29023,
+          "2020-11-18": 29297,
+          "2020-11-19": 29631,
+          "2020-11-20": 30025
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -45166,7 +45340,17 @@
           "2020-11-07": 431,
           "2020-11-08": 431,
           "2020-11-09": 434,
-          "2020-11-10": 437
+          "2020-11-10": 437,
+          "2020-11-11": 441,
+          "2020-11-12": 441,
+          "2020-11-13": 445,
+          "2020-11-14": 445,
+          "2020-11-15": 445,
+          "2020-11-16": 446,
+          "2020-11-17": 448,
+          "2020-11-18": 454,
+          "2020-11-19": 460,
+          "2020-11-20": 464
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -46966,7 +47150,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 80,
           "2012": 64,
@@ -47436,6 +47620,20 @@
           "2016": 49562,
           "2017": 50479,
           "2018": 51947
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 3815,
+          "2012": 3958,
+          "2013": 4702,
+          "2014": 5043,
+          "2015": 5723,
+          "2016": 6115,
+          "2017": 6213,
+          "2018": 5515
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -48571,20 +48769,6 @@
           "2016": 33155,
           "2017": 34149,
           "2018": 35731
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 280,
-          "2012": 209,
-          "2013": 324,
-          "2014": 486,
-          "2015": 443,
-          "2016": 446,
-          "2017": 548,
-          "2018": 343
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -50358,7 +50542,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 112,
           "2012": 125,
@@ -50828,6 +51012,20 @@
           "2016": 22217,
           "2017": 24406,
           "2018": 25459
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 5645,
+          "2012": 6056,
+          "2013": 6107,
+          "2014": 6337,
+          "2015": 6063,
+          "2016": 6846,
+          "2017": 6280,
+          "2018": 5654
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -51963,20 +52161,6 @@
           "2016": 32055,
           "2017": 33547,
           "2018": 33821
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 472,
-          "2012": 368,
-          "2013": 218,
-          "2014": 236,
-          "2015": 289,
-          "2016": 401,
-          "2017": 305,
-          "2018": 293
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -53748,7 +53932,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 858,
           "2012": 923,
@@ -54218,6 +54402,20 @@
           "2016": 344188,
           "2017": 355623,
           "2018": 363037
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 102964,
+          "2012": 110927,
+          "2013": 117443,
+          "2014": 114805,
+          "2015": 112053,
+          "2016": 108709,
+          "2017": 101651,
+          "2018": 92585
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -55353,20 +55551,6 @@
           "2016": 412320,
           "2017": 418678,
           "2018": 422089
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 3239,
-          "2012": 3641,
-          "2013": 3187,
-          "2014": 3427,
-          "2015": 3870,
-          "2016": 4477,
-          "2017": 4203,
-          "2018": 5181
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -57142,7 +57326,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 199,
           "2012": 145,
@@ -57612,6 +57796,20 @@
           "2016": 49583,
           "2017": 51895,
           "2018": 52171
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 9881,
+          "2012": 10158,
+          "2013": 10319,
+          "2014": 10407,
+          "2015": 9893,
+          "2016": 9735,
+          "2017": 9260,
+          "2018": 9637
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -58747,20 +58945,6 @@
           "2016": 52464,
           "2017": 52651,
           "2018": 54195
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 811,
-          "2012": 355,
-          "2013": 351,
-          "2014": 438,
-          "2015": 867,
-          "2016": 942,
-          "2017": 920,
-          "2018": 872
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -60535,7 +60719,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 265,
           "2012": 285,
@@ -61005,6 +61189,20 @@
           "2016": 64760,
           "2017": 67958,
           "2018": 69845
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 9271,
+          "2012": 10080,
+          "2013": 11586,
+          "2014": 11507,
+          "2015": 11049,
+          "2016": 10484,
+          "2017": 9928,
+          "2018": 8725
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -62140,20 +62338,6 @@
           "2016": 70726,
           "2017": 71700,
           "2018": 71686
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 763,
-          "2012": 911,
-          "2013": 1029,
-          "2014": 942,
-          "2015": 609,
-          "2016": 693,
-          "2017": 586,
-          "2018": 371
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -63999,7 +64183,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 163,
           "2012": 187,
@@ -64470,6 +64654,20 @@
           "2016": 42007,
           "2017": 42770,
           "2018": 43289
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 434174,
+          "2012": 471169,
+          "2013": 498751,
+          "2014": 524382,
+          "2015": 530006,
+          "2016": 522143,
+          "2017": 505182,
+          "2018": 482656
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -65609,20 +65807,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 648,
-          "2012": 779,
-          "2013": 644,
-          "2014": 701,
-          "2015": 612,
-          "2016": 734,
-          "2017": 724,
-          "2018": 751
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 648,
@@ -66196,7 +66380,17 @@
           "2020-11-07": 192645,
           "2020-11-08": 194355,
           "2020-11-09": 194878,
-          "2020-11-10": 195272
+          "2020-11-10": 195272,
+          "2020-11-11": 195990,
+          "2020-11-12": 197195,
+          "2020-11-13": 199071,
+          "2020-11-14": 200258,
+          "2020-11-15": 202643,
+          "2020-11-16": 203653,
+          "2020-11-17": 205535,
+          "2020-11-18": 207220,
+          "2020-11-19": 209165,
+          "2020-11-20": 211256
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -66447,7 +66641,17 @@
           "2020-11-07": 3682,
           "2020-11-08": 3683,
           "2020-11-09": 3688,
-          "2020-11-10": 3690
+          "2020-11-10": 3690,
+          "2020-11-11": 3693,
+          "2020-11-12": 3701,
+          "2020-11-13": 3706,
+          "2020-11-14": 3707,
+          "2020-11-15": 3709,
+          "2020-11-16": 3709,
+          "2020-11-17": 3723,
+          "2020-11-18": 3731,
+          "2020-11-19": 3738,
+          "2020-11-20": 3746
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -68315,7 +68519,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 161,
           "2012": 176,
@@ -68796,6 +69000,20 @@
           "2016": 64202,
           "2017": 67503,
           "2018": 70225
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 139609,
+          "2012": 151055,
+          "2013": 161757,
+          "2014": 166936,
+          "2015": 167391,
+          "2016": 163674,
+          "2017": 156519,
+          "2018": 149412
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -69935,20 +70153,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 413,
-          "2012": 368,
-          "2013": 391,
-          "2014": 372,
-          "2015": 378,
-          "2016": 396,
-          "2017": 356,
-          "2018": 321
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 413,
@@ -70483,7 +70687,17 @@
           "2020-11-07": 34940,
           "2020-11-08": 35109,
           "2020-11-09": 35229,
-          "2020-11-10": 35605
+          "2020-11-10": 35605,
+          "2020-11-11": 35783,
+          "2020-11-12": 36039,
+          "2020-11-13": 36277,
+          "2020-11-14": 36549,
+          "2020-11-15": 36708,
+          "2020-11-16": 36592,
+          "2020-11-17": 37250,
+          "2020-11-18": 37477,
+          "2020-11-19": 37734,
+          "2020-11-20": 38026
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -70743,7 +70957,17 @@
           "2020-11-07": 663,
           "2020-11-08": 663,
           "2020-11-09": 665,
-          "2020-11-10": 669
+          "2020-11-10": 669,
+          "2020-11-11": 671,
+          "2020-11-12": 674,
+          "2020-11-13": 674,
+          "2020-11-14": 677,
+          "2020-11-15": 677,
+          "2020-11-16": 677,
+          "2020-11-17": 678,
+          "2020-11-18": 679,
+          "2020-11-19": 679,
+          "2020-11-20": 680
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -72655,7 +72879,7 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianAndOtherPacificIslanderAlone": {
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 3751,
           "2012": 3808,
@@ -73136,6 +73360,20 @@
           "2016": 332246,
           "2017": 350616,
           "2018": 370908
+        },
+        "provenanceDomain": "census.gov",
+        "provenanceUrl": "https://www.census.gov/"
+      },
+      "Count_Person_BelowPovertyLevelInThePast12Months": {
+        "data": {
+          "2011": 198186,
+          "2012": 207946,
+          "2013": 222813,
+          "2014": 233458,
+          "2015": 226204,
+          "2016": 219317,
+          "2017": 212509,
+          "2018": 203702
         },
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
@@ -74275,20 +74513,6 @@
         "provenanceDomain": "census.gov",
         "provenanceUrl": "https://www.census.gov/"
       },
-      "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone": {
-        "data": {
-          "2011": 13996,
-          "2012": 14554,
-          "2013": 14531,
-          "2014": 15323,
-          "2015": 16044,
-          "2016": 16215,
-          "2017": 16522,
-          "2018": 16779
-        },
-        "provenanceDomain": "census.gov",
-        "provenanceUrl": "https://www.census.gov/"
-      },
       "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
         "data": {
           "2011": 13996,
@@ -74764,7 +74988,17 @@
           "2020-11-07": 30434,
           "2020-11-08": 30885,
           "2020-11-09": 31263,
-          "2020-11-10": 31595
+          "2020-11-10": 31595,
+          "2020-11-11": 31967,
+          "2020-11-12": 32589,
+          "2020-11-13": 33387,
+          "2020-11-14": 34014,
+          "2020-11-15": 34556,
+          "2020-11-16": 35228,
+          "2020-11-17": 35729,
+          "2020-11-18": 36012,
+          "2020-11-19": 36816,
+          "2020-11-20": 37454
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -75027,7 +75261,17 @@
           "2020-11-07": 841,
           "2020-11-08": 841,
           "2020-11-09": 845,
-          "2020-11-10": 848
+          "2020-11-10": 848,
+          "2020-11-11": 848,
+          "2020-11-12": 857,
+          "2020-11-13": 855,
+          "2020-11-14": 855,
+          "2020-11-15": 855,
+          "2020-11-16": 857,
+          "2020-11-17": 864,
+          "2020-11-18": 864,
+          "2020-11-19": 865,
+          "2020-11-20": 866
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
