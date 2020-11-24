@@ -364,7 +364,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/UKR",
@@ -645,7 +645,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/SWZ",
@@ -884,7 +884,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/SGS",
@@ -899,7 +899,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/SGP",
@@ -1336,7 +1336,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/NIC",
@@ -1393,7 +1393,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/NER",
@@ -1753,7 +1753,7 @@
     },
     {
       "subjectId": "country/MAF",
-      "subjectName": "Saint Martin (French part)",
+      "subjectName": "Saint Martin",
       "subjectTypes": [
         "Country"
       ],
@@ -1763,7 +1763,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/MAC",
@@ -2087,7 +2087,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/JAM",
@@ -3421,7 +3421,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/BIH",
@@ -3645,7 +3645,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "country/ATB",
@@ -3844,7 +3844,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "Country",
@@ -4480,7 +4480,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/34",
