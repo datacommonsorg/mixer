@@ -82,12 +82,12 @@ func TestBind(t *testing.T) {
 
 func TestGetBindings(t *testing.T) {
 	qToM := map[string][]string{
-		"typeOf ?a City": []string{"typeOf E:Place->E1 Place"},
-		"name ?a MTV": []string{
+		"typeOf ?a City": {"typeOf E:Place->E1 Place"},
+		"name ?a MTV": {
 			"name E:Place->E1 C:Place->name",
 			"name E:Instance->E1 C:Instance->name",
 		},
-		"dcid ?a x123": []string{
+		"dcid ?a x123": {
 			"name E:Place->E1 C:Place->id",
 			"name E:Instance->E1 C:Instance->id",
 		},
@@ -113,13 +113,13 @@ func TestGetBindings(t *testing.T) {
 
 func TestGetGraph(t *testing.T) {
 	q2m := map[[3]string][3]string{
-		[3]string{"dcid", "?p", "?dcid"}: [3]string{
+		{"dcid", "?p", "?dcid"}: {
 			"dcid", "E:Place->E1", "C:Place->id"},
-		[3]string{"typeOf", "?p", "Place"}: [3]string{
+		{"typeOf", "?p", "Place"}: {
 			"typeOf", "E:Place->E1", "Place"},
-		[3]string{"subType", "?p", "City"}: [3]string{
+		{"subType", "?p", "City"}: {
 			"subType", "E:Place->E1", "C:Place->type"},
-		[3]string{"name", "?p", "San Jose"}: [3]string{
+		{"name", "?p", "San Jose"}: {
 			"name", "E:Place->E1", "C:Place->name"},
 	}
 	bindings := []Binding{}
@@ -154,30 +154,30 @@ func TestGetConstraint(t *testing.T) {
 		t.Fatalf("Invalid input %s", err)
 	}
 	n1 := base.NewNode("?p")
-	graph[*e] = map[interface{}]struct{}{n1: struct{}{}}
-	graph[n1] = map[interface{}]struct{}{*e: struct{}{}}
+	graph[*e] = map[interface{}]struct{}{n1: {}}
+	graph[n1] = map[interface{}]struct{}{*e: {}}
 
 	c1, err := base.NewColumn("C:Place->name", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
-	graph[*c1] = map[interface{}]struct{}{"MTV": struct{}{}}
-	graph["MTV"] = map[interface{}]struct{}{*c1: struct{}{}}
+	graph[*c1] = map[interface{}]struct{}{"MTV": {}}
+	graph["MTV"] = map[interface{}]struct{}{*c1: {}}
 
 	c2, err := base.NewColumn("C:Place->type", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
-	graph[*c2] = map[interface{}]struct{}{"City": struct{}{}}
-	graph["City"] = map[interface{}]struct{}{*c2: struct{}{}}
+	graph[*c2] = map[interface{}]struct{}{"City": {}}
+	graph["City"] = map[interface{}]struct{}{*c2: {}}
 
 	n2 := base.NewNode("?dcid")
 	c3, err := base.NewColumn("C:Place->id", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
-	graph[n2] = map[interface{}]struct{}{*c3: struct{}{}}
-	graph[*c3] = map[interface{}]struct{}{n2: struct{}{}}
+	graph[n2] = map[interface{}]struct{}{*c3: {}}
+	graph[*c3] = map[interface{}]struct{}{n2: {}}
 
 	funcDeps, err := GetFuncDeps(mappings)
 	if err != nil {
@@ -186,10 +186,10 @@ func TestGetConstraint(t *testing.T) {
 
 	gotConstraints, _, _ := GetConstraint(graph, funcDeps)
 	wantConstraints := map[Constraint]struct{}{
-		{*c1, "MTV"}:  struct{}{},
-		{*c2, "City"}: struct{}{},
-		{*c3, n1}:     struct{}{},
-		{*c3, n2}:     struct{}{},
+		{*c1, "MTV"}:  {},
+		{*c2, "City"}: {},
+		{*c3, n1}:     {},
+		{*c3, n2}:     {},
 	}
 	for _, con := range gotConstraints {
 		if _, ok := wantConstraints[con]; !ok {
@@ -300,7 +300,7 @@ func TestTranslate(t *testing.T) {
 
 			"SELECT _dc_v3_Instance_0.type AS node_type, _dc_v3_Instance_0.prov_id AS prov0 " +
 				"FROM `dc_v3.Instance` AS _dc_v3_Instance_0 WHERE _dc_v3_Instance_0.id = \"dc/m1rl3k\"",
-			map[int][]int{1: []int{0}},
+			map[int][]int{1: {0}},
 		},
 		{
 			"InstanceQueryByType",
@@ -363,7 +363,7 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id JOIN `dc_v3.Place` AS _dc_v3_Place_0 " +
 				"ON _dc_v3_Triple_0.object_id = _dc_v3_Place_0.id WHERE _dc_v3_Place_1.id IN (\"dc/1234\", \"dc/4321\") " +
 				"AND _dc_v3_Place_1.type = \"City\" AND _dc_v3_Triple_0.predicate = \"containedInPlace\"",
-			map[int][]int{5: []int{0, 1, 2}, 6: []int{3, 4}},
+			map[int][]int{5: {0, 1, 2}, 6: {3, 4}},
 		},
 
 		{
@@ -541,7 +541,7 @@ func TestTranslate(t *testing.T) {
 			"SELECT _dc_v3_Observation_1.observed_node_key AS parentDcid, _dc_v3_Observation_1.id AS dcid, " +
 				"_dc_v3_Observation_1.measured_prop AS measuredProperty, _dc_v3_Observation_1.prov_id AS prov0 " +
 				"FROM `dc_v3.Observation` AS _dc_v3_Observation_1 WHERE _dc_v3_Observation_1.observed_node_key = \"dc/p/zcerrzm76y0bh\"",
-			map[int][]int{3: []int{0, 1, 2}},
+			map[int][]int{3: {0, 1, 2}},
 		},
 		{
 			"ObservationCommuteZone",
@@ -629,7 +629,7 @@ func TestTranslate(t *testing.T) {
 				"_dc_v3_Provenance_0.mcf_url AS importUrl, _dc_v3_Provenance_0.timestamp_secs AS importTime, " +
 				"_dc_v3_Provenance_0.duration_secs AS importDuration, _dc_v3_Provenance_0.prov_id AS prov0 " +
 				"FROM `dc_v3.Provenance` AS _dc_v3_Provenance_0 WHERE _dc_v3_Provenance_0.id = \"dc/8eednm2\"",
-			map[int][]int{9: []int{0, 1, 2, 3, 4, 5, 6, 7, 8}},
+			map[int][]int{9: {0, 1, 2, 3, 4, 5, 6, 7, 8}},
 		},
 		{
 			"Encode",
@@ -1038,6 +1038,74 @@ func TestSparql(t *testing.T) {
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_0 ON _dc_v3_StatisticalPopulation_1.place_key = _dc_v3_Place_0.id " +
 				"WHERE _dc_v3_Observation_2.measured_prop = \"count\" AND _dc_v3_Place_0.type = \"State\" AND " +
 				"_dc_v3_StatisticalPopulation_1.num_constraints = 0 AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"",
+		},
+	} {
+		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
+		if err != nil {
+			t.Errorf("ParseQuery error: %s", err)
+			continue
+		}
+		translation, err := Translate(mappings, nodes, queries, subTypeMap)
+		if err != nil {
+			t.Errorf("Translate(%s) = %s", c.name, err)
+		}
+		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
+			continue
+		}
+	}
+}
+
+func TestStatVarObs(t *testing.T) {
+	subTypeMap, err := GetSubTypeMap("table_types.json")
+	if err != nil {
+		t.Fatalf("GetSubTypeMap() = %v", err)
+	}
+
+	mappings := readTestMapping(t, []string{
+		"test_mapping.mcf",
+	})
+	for _, c := range []struct {
+		name     string
+		queryStr string
+		wantSQL  string
+	}{
+		{
+			"country-gdp",
+			`
+				SELECT ?observation
+				WHERE {
+				 ?observation typeOf Observation .
+				 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
+				 ?observation observedNode ?population .
+				 ?population typeOf StatisticalPopulation .
+				 ?population location ?place .
+				 ?place typeOf Country .
+				}
+				`,
+			"SELECT _dc_v3_ObsStatVarPlace_0.id AS observation FROM `dc_v3.ObsStatVarPlace` AS _dc_v3_ObsStatVarPlace_0 " +
+				"JOIN `dc_v3.Observation` AS _dc_v3_Observation_0 ON _dc_v3_ObsStatVarPlace_0.id = _dc_v3_Observation_0.id " +
+				"JOIN `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1 ON _dc_v3_Observation_0.observed_node_key = _dc_v3_StatisticalPopulation_1.id " +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_2 ON _dc_v3_StatisticalPopulation_1.place_key = _dc_v3_Place_2.id " +
+				"WHERE _dc_v3_ObsStatVarPlace_0.stat_var_id = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\" " +
+				"AND _dc_v3_Place_2.type = \"Country\"",
+		},
+		{
+			"country-gdp-place",
+			`
+				SELECT ?observation ?place
+				WHERE {
+				 ?observation typeOf Observation .
+				 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
+				 ?observation observedPlace ?place .
+				 ?place typeOf Country .
+				}
+				`,
+			"SELECT _dc_v3_ObsStatVarPlace_0.id AS observation, _dc_v3_ObsStatVarPlace_0.place_id AS place " +
+				"FROM `dc_v3.ObsStatVarPlace` AS _dc_v3_ObsStatVarPlace_0 " +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_1 ON _dc_v3_ObsStatVarPlace_0.place_id = _dc_v3_Place_1.id " +
+				"WHERE _dc_v3_ObsStatVarPlace_0.stat_var_id = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\" " +
+				"AND _dc_v3_Place_1.type = \"Country\"",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)

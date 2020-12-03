@@ -102,6 +102,18 @@ func TestQuery(t *testing.T) {
 			}`,
 			"name.json",
 		},
+		{
+			`SELECT ?observation ?place
+			WHERE {
+			 ?observation typeOf Observation .
+			 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
+			 ?observation observedPlace ?place .
+			 ?place typeOf Country .
+			}
+			ORDER BY ASC (?place)
+			LIMIT 100`,
+			"statvar-obs.json",
+		},
 	} {
 		req := &pb.QueryRequest{Sparql: c.sparql}
 		resp, err := client.Query(ctx, req)
