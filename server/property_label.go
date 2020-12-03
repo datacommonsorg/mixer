@@ -17,7 +17,6 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"log"
 
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/util"
@@ -34,7 +33,6 @@ func (s *Server) GetPropertyLabelsPost(ctx context.Context,
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
 func (s *Server) GetPropertyLabels(ctx context.Context,
 	in *pb.GetPropertyLabelsRequest) (*pb.GetPropertyLabelsResponse, error) {
-	log.Println(in.GetDcids())
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")

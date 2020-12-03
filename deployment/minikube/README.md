@@ -24,12 +24,11 @@ gcloud auth application-default login
 
 gcloud iam service-accounts keys create mixer-robot-key.json \
       --iam-account mixer-robot@datcom-mixer-staging.iam.gserviceaccount.com
-# cp ~/.config/gcloud/application_default_credentials.json mixer-robot-key.json
 ```
 
 ## Run Minikube cluster
 
-From a terminal, start a cluster with name "mixer" and a namespace "mixer":
+From a terminal, start a cluster:
 
 ```bash
 minikube start --memory=4g
