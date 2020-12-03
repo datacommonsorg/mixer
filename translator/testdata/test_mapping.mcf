@@ -354,7 +354,7 @@ Node: E:ObsStatVarPlace->E1
 typeOf: Observation
 dcid: C:ObsStatVarPlace->id
 statisticalVariable: E:ObsStatVarPlace->E2
-observedPlace: E:ObsStatVarPlace->E3
+observedNodeLocation: E:ObsStatVarPlace->E3
 functionalDeps: dcid
 
 Node: E:ObsStatVarPlace->E2

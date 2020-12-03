@@ -107,11 +107,11 @@ func TestQuery(t *testing.T) {
 			WHERE {
 			 ?observation typeOf Observation .
 			 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
-			 ?observation observedPlace ?place .
+			 ?observation observedNodeLocation ?place .
 			 ?place typeOf Country .
 			}
 			ORDER BY ASC (?place)
-			LIMIT 100`,
+			LIMIT 10`,
 			"statvar-obs.json",
 		},
 	} {
