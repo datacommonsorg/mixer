@@ -252,3 +252,21 @@ Node: E:Triple->E2
 typeOf: Provenance
 dcid: C:Triple->prov_id
 functionalDeps: dcid
+
+
+Node: E:ObsStatVarPlace->E1
+typeOf: Observation
+dcid: C:ObsStatVarPlace->id
+statisticalVariable: E:ObsStatVarPlace->E2
+observedNodeLocation: E:ObsStatVarPlace->E3
+functionalDeps: dcid
+
+Node: E:ObsStatVarPlace->E2
+typeOf: StatisticalVariable
+dcid: C:ObsStatVarPlace->stat_var_id
+functionalDeps: dcid
+
+Node: E:ObsStatVarPlace->E3
+typeOf: Place
+dcid: C:ObsStatVarPlace->place_id
+functionalDeps: dcid

@@ -1,0 +1,108 @@
+{
+  "header": [
+    "?observation",
+    "?place"
+  ],
+  "rows": [
+    {
+      "cells": [
+        {
+          "value": "dc/o/pgym0z20p7v05"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/vjv17yc2zq21b"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/q86f2x7n069w7"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/9l577dgl0h157"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/5h86g14fj2fr8"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/qlj8n58zk9ll4"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/6vptjvx9td8zf"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/srfs77qhtngb3"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/kg6pryqvbgd78"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/o/lxgzljcplhdr4"
+        },
+        {
+          "value": "country/ABW"
+        }
+      ]
+    }
+  ]
+}
