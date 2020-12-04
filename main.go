@@ -67,7 +67,7 @@ func main() {
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
-			log.Fatalf("Failed to start profiler: %v", err)
+			log.Printf("Failed to start profiler: %v", err)
 		}
 	}
 
