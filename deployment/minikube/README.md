@@ -58,13 +58,6 @@ Mount the GCP credential
 kubectl create secret generic mixer-robot-key --from-file=mixer-robot-key.json --namespace=mixer
 ```
 
-Mount nginx config.
-This is needed to support ESP v1 and should be able to remove after migration to ESP v2.
-
-```bash
-kubectl create configmap nginx-config --from-file=../nginx.conf --namespace=mixer
-```
-
 ## Generate YAML files
 
 ```bash
