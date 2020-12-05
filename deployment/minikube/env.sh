@@ -23,7 +23,7 @@ REPLICAS="1"
 
 # Mixer container
 MIXER_IMAGE="mixer:local"
-IMAGE_PULL_POLICY="Never"
+MIXER_PULL_POLICY="Never"
 
 # Mixer arguments
 BQ_DATASET="$(head -1 ../bigquery.txt)"

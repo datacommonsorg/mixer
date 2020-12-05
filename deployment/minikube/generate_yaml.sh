@@ -13,7 +13,7 @@ yq w -i --style=double deployment.yaml spec.template.spec.containers[0].resource
 # Mixer container
 yq w -i deployment.yaml spec.replicas $REPLICAS
 yq w -i deployment.yaml spec.template.spec.containers[0].image $MIXER_IMAGE
-yq w -i deployment.yaml spec.template.spec.containers[0].imagePullPolicy $IMAGE_PULL_POLICY
+yq w -i deployment.yaml spec.template.spec.containers[0].imagePullPolicy $MIXER_PULL_POLICY
 
 # Mixer argumennts
 yq w -i --style=double deployment.yaml spec.template.spec.containers[0].args[1] $BQ_DATASET

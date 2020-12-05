@@ -56,8 +56,8 @@ bin/
 mixer-robot-key.json
 
 # Kubenetes
-*/minikube/deployment.yaml
-*/minikube/endpoints.yaml
+**/minikube/deployment.yaml
+**/minikube/endpoints.yaml
 
 # ESP
 mixer-grpc.pb

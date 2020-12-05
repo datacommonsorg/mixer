@@ -30,13 +30,13 @@ spec:
         app: mixer-grpc
     spec:
       volumes:
-        - name: google-cloud-key
+        - name: mixer-robot-key
           secret:
             secretName: mixer-robot-key
       containers:
         - name: mixer
           image: <MIXER_IMAGE>
-          imagePullPolicy: <IMAGE_PULL_POLICY>
+          imagePullPolicy: <MIXER_PULL_POLICY>
           resources:
             requests:
               memory: "<MIXER_MEM_REQ>"
@@ -56,7 +56,7 @@ spec:
           ports:
             - containerPort: 12345
           volumeMounts:
-            - name: google-cloud-key
+            - name: mixer-robot-key
               mountPath: /var/secrets/google
           env:
             - name: GOOGLE_APPLICATION_CREDENTIALS
