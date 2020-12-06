@@ -41,11 +41,9 @@
         "EurostatNUTS3",
         "HighSchoolDistrict",
         "Neighborhood",
-        "Place",
         "SchoolDistrict",
         "State",
         "StateComponent",
-        "type",
         "USMetropolitanDivision",
         "Village"
       ],
@@ -76,11 +74,9 @@
         "EurostatNUTS3",
         "HighSchoolDistrict",
         "Neighborhood",
-        "Place",
         "SchoolDistrict",
         "State",
         "StateComponent",
-        "type",
         "USMetropolitanDivision",
         "Village"
       ],
