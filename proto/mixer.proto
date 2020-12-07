@@ -452,7 +452,7 @@ message GetPlaceStatsVarResponse {
 
 // StatVars represent a list of statistical variable dcids.
 message StatVars {
-  repeated string statVars = 1;
+  repeated string stat_vars = 1;
 }
 
 // Request message for GetPlaceStatVars API.
