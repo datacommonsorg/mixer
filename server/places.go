@@ -227,3 +227,34 @@ func (s *Server) GetPlaceStatsVar(
 	}
 	return &resp, nil
 }
+
+// GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.
+func (s *Server) GetPlaceStatVars(
+	ctx context.Context, in *pb.GetPlaceStatVarsRequest) (
+	*pb.GetPlaceStatVarsResponse, error) {
+	dcids := in.GetDcids()
+	if len(dcids) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
+	}
+	rowList := buildPlaceStatsVarKey(dcids)
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var data PlaceStatsVar
+			err := json.Unmarshal(jsonRaw, &data)
+			if err != nil {
+				return nil, err
+			}
+			return data.StatVarIds, nil
+		}, nil)
+	if err != nil {
+		return nil, err
+	}
+	resp := pb.GetPlaceStatVarsResponse{Places: map[string]*pb.StatVars{}}
+	for _, dcid := range dcids {
+		resp.Places[dcid] = &pb.StatVars{StatVars: []string{}}
+		if dataMap[dcid] != nil {
+			resp.Places[dcid].StatVars = dataMap[dcid].([]string)
+		}
+	}
+	return &resp, nil
+}
