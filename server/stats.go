@@ -494,6 +494,94 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	return &pb.GetStatsResponse{Payload: string(jsonRaw)}, nil
 }
 
+// GetStat implements API for Mixer.GetStat.
+func (s *Server) GetStat(ctx context.Context, in *pb.GetStatRequest) (
+	*pb.GetStatResponse, error) {
+	placeDcids := in.GetPlaces()
+	statVarDcid := in.GetStatVar()
+	if len(placeDcids) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: place")
+	}
+	if statVarDcid == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required argument: stat_var")
+	}
+	filterProp := &ObsProp{
+		Mmethod: in.GetMeasurementMethod(),
+		Operiod: in.GetObservationPeriod(),
+		Unit:    in.GetUnit(),
+	}
+
+	// Read triples for statistical variable.
+	triplesRowList := buildTriplesKey([]string{statVarDcid})
+	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	if err != nil {
+		return nil, err
+	}
+	// Get the StatisticalVariable
+	if triples[statVarDcid] == nil {
+		return nil, status.Errorf(codes.NotFound, "No statistical variable found for %s", statVarDcid)
+	}
+	statVarObject, err := triplesToStatsVar(statVarDcid, triples[statVarDcid])
+	if err != nil {
+		return nil, err
+	}
+	// Construct BigTable row keys.
+	rowList, keyTokens := buildStatsKey(
+		placeDcids,
+		map[string]*StatisticalVariable{statVarDcid: statVarObject},
+	)
+
+	tmp := map[string]*pb.ObsTimeSeries{}
+
+	// Read data from branch in-memory cache first.
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		convertToObsSeriesPb,
+		tokenFn(keyTokens),
+	)
+	for token, data := range cacheData {
+		place := strings.Split(token, "^")[0]
+		if data == nil {
+			tmp[place] = nil
+		} else {
+			tmp[place] = data.(*pb.ObsTimeSeries)
+		}
+	}
+	// For each place, if the data is missing in branch cache, fetch it from the
+	// base cache in Bigtable.
+	if len(tmp) < len(placeDcids) {
+		extraDcids := []string{}
+		for _, dcid := range placeDcids {
+			if _, ok := tmp[dcid]; !ok {
+				extraDcids = append(extraDcids, dcid)
+			}
+		}
+		rowList, keyTokens := buildStatsKey(
+			extraDcids,
+			map[string]*StatisticalVariable{statVarDcid: statVarObject})
+		extraData, err := readStatsPb(ctx, s.btTable, rowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		for place := range extraData {
+			tmp[place] = extraData[place][statVarDcid]
+		}
+	}
+
+	// Fill missing place data and result result
+	for _, dcid := range placeDcids {
+		if _, ok := tmp[dcid]; !ok {
+			tmp[dcid] = nil
+		}
+	}
+	result := map[string]*pb.SourceSeries{}
+	for place, obsSeries := range tmp {
+		result[place] = filterAndRankPb(obsSeries, filterProp)
+	}
+
+	return &pb.GetStatResponse{Stat: result}, nil
+}
+
 // triplesToStatsVar converts a Triples cache into a StatisticalVarible object.
 func triplesToStatsVar(
 	statsVarDcid string, triples *TriplesCache) (*StatisticalVariable, error) {
