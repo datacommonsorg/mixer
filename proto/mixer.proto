@@ -995,6 +995,10 @@ service Mixer {
       returns (GetPlaceStatVarsResponse) {
     option (google.api.http) = {
       get: "/place/stat-vars"
+      additional_bindings: {
+        post: "/place/stat-vars"
+        body: "*"
+      }
     };
   }
 }
