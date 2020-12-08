@@ -264,14 +264,10 @@ func (s *Server) GetPlaceStatVarsUnion(
 		return nil, err
 	}
 	places := resp.GetPlaces()
-	// Find distinct statvars.
+	// Get union of the statvars for each place.
 	set := map[string]bool{}
 	for _, statVars := range places {
 		for _, dcid := range statVars.GetStatVars() {
-			_, ok := set[dcid]
-			if ok {
-				continue
-			}
 			set[dcid] = true
 		}
 	}
