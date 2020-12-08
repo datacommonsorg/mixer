@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"fmt"
+	"sort"
 	"strings"
 
 	"encoding/json"
@@ -239,6 +240,17 @@ func (s *Server) GetPlaceStatVars(
 	return &resp, nil
 }
 
+func keysToSlice(m map[string]bool) []string {
+	s := make([]string, len(m))
+	i := 0
+	for k := range m {
+		s[i] = k
+		i++
+	}
+	sort.Strings(s)
+	return s
+}
+
 // GetPlaceStatVarsUnion implements API for Mixer.GetPlaceStatVarsUnion.
 func (s *Server) GetPlaceStatVarsUnion(
 	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
@@ -264,11 +276,9 @@ func (s *Server) GetPlaceStatVarsUnion(
 		}
 	}
 	// Store keys in a slice.
-	statVars := &pb.StatVars{StatVars: make([]string, len(set))}
-	i := 0
-	for dcid := range set {
-		statVars.StatVars[i] = dcid
-		i++
-	}
-	return &pb.GetPlaceStatVarsUnionResponse{StatVars: statVars}, nil
+	return &pb.GetPlaceStatVarsUnionResponse{
+		StatVars: &pb.StatVars{
+			StatVars: keysToSlice(set),
+		},
+	}, nil
 }

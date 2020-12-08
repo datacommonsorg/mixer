@@ -991,6 +991,8 @@ service Mixer {
     };
   }
 
+  // Given a list of place dcids, returns the union of available
+  // statistical variables for the places.
   rpc GetPlaceStatVarsUnion(GetPlaceStatVarsUnionRequest)
       returns (GetPlaceStatVarsUnionResponse) {
     option (google.api.http) = {
