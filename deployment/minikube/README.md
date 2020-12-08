@@ -79,7 +79,7 @@ protoc \
   --go_out=. \
   --go-grpc_out=. \
   --go-grpc_opt=requireUnimplementedServers=false \
-  proto/mixer.proto
+  proto/*.proto
 cd deployment/minikube
 ```
 
