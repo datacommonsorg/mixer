@@ -24,7 +24,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // Limit the concurrent channels when processing in-memory cache data.
@@ -681,78 +680,6 @@ func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 		in.ProvenanceURL = series[0].ProvenanceURL
 	}
 	in.SourceSeries = nil
-}
-
-func convertToObsSeriesPb(token string, jsonRaw []byte) (
-	interface{}, error) {
-	pbData := &pb.ChartStore{}
-	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
-		return nil, err
-	}
-	switch x := pbData.Val.(type) {
-	case *pb.ChartStore_ObsTimeSeries:
-		x.ObsTimeSeries.PlaceName = ""
-		return x.ObsTimeSeries, nil
-	case nil:
-		return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")
-	default:
-		return nil, status.Errorf(codes.NotFound,
-			"ChartStore.Val has unexpected type %T", x)
-	}
-}
-
-func convertToObsSeries(token string, jsonRaw []byte) (
-	interface{}, error) {
-	pbData := &pb.ChartStore{}
-	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
-		return nil, err
-	}
-	switch x := pbData.Val.(type) {
-	case *pb.ChartStore_ObsTimeSeries:
-		pbSourceSeries := x.ObsTimeSeries.GetSourceSeries()
-		ret := &ObsTimeSeries{
-			Data:         x.ObsTimeSeries.GetData(),
-			PlaceName:    x.ObsTimeSeries.GetPlaceName(),
-			SourceSeries: make([]*SourceSeries, len(pbSourceSeries)),
-		}
-		for i, source := range pbSourceSeries {
-			ret.SourceSeries[i] = &SourceSeries{
-				ImportName:        source.GetImportName(),
-				ObservationPeriod: source.GetObservationPeriod(),
-				MeasurementMethod: source.GetMeasurementMethod(),
-				ScalingFactor:     source.GetScalingFactor(),
-				Unit:              source.GetUnit(),
-				ProvenanceDomain:  source.GetProvenanceDomain(),
-				ProvenanceURL:     source.GetProvenanceUrl(),
-				Val:               source.GetVal(),
-			}
-		}
-		ret.ProvenanceDomain = x.ObsTimeSeries.GetProvenanceDomain()
-		ret.ProvenanceURL = x.ObsTimeSeries.GetProvenanceUrl()
-		return ret, nil
-	case nil:
-		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
-	default:
-		return nil, status.Errorf(codes.Internal, "ChartStore.Val has unexpected type %T", x)
-	}
-}
-
-func convertToObsCollection(token string, jsonRaw []byte) (
-	interface{}, error) {
-	pbData := &pb.ChartStore{}
-	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
-		return nil, err
-	}
-	switch x := pbData.Val.(type) {
-	case *pb.ChartStore_ObsCollection:
-		return x.ObsCollection, nil
-	case nil:
-		return nil, status.Error(codes.Internal,
-			"ChartStore.Val is not set")
-	default:
-		return nil, status.Errorf(codes.Internal,
-			"ChartStore.Val has unexpected type %T", x)
-	}
 }
 
 // readStats reads and process BigTable rows in parallel.
