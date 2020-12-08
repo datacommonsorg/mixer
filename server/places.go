@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"fmt"
+	"sort"
 	"strings"
 
 	"encoding/json"
@@ -237,4 +238,43 @@ func (s *Server) GetPlaceStatVars(
 		}
 	}
 	return &resp, nil
+}
+
+// keysToSlice stores the keys of a map in a slice.
+func keysToSlice(m map[string]bool) []string {
+	s := make([]string, len(m))
+	i := 0
+	for k := range m {
+		s[i] = k
+		i++
+	}
+	sort.Strings(s)
+	return s
+}
+
+// GetPlaceStatVarsUnion implements API for Mixer.GetPlaceStatVarsUnion.
+func (s *Server) GetPlaceStatVarsUnion(
+	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
+	*pb.GetPlaceStatVarsUnionResponse, error) {
+	dcids := in.GetDcids()
+	if len(dcids) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
+	}
+	resp, err := s.GetPlaceStatVars(ctx, &pb.GetPlaceStatVarsRequest{Dcids: dcids})
+	if err != nil {
+		return nil, err
+	}
+	places := resp.GetPlaces()
+	// Get union of the statvars for each place.
+	set := map[string]bool{}
+	for _, statVars := range places {
+		for _, dcid := range statVars.GetStatVars() {
+			set[dcid] = true
+		}
+	}
+	return &pb.GetPlaceStatVarsUnionResponse{
+		StatVars: &pb.StatVars{
+			StatVars: keysToSlice(set),
+		},
+	}, nil
 }
