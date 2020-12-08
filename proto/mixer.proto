@@ -449,6 +449,24 @@ message GetPlaceStatsVarResponse {
   map<string, StatsVars> places = 1;
 }
 
+
+// StatVars represent a list of statistical variable dcids.
+message StatVars {
+  repeated string stat_vars = 1;
+}
+
+// Request message for GetPlaceStatVars API.
+message GetPlaceStatVarsRequest {
+  // DCIDs of the places.
+  repeated string dcids = 1;
+}
+
+// Response message for GetPlaceStatVars API.
+message GetPlaceStatVarsResponse {
+  // A map from place dcid to a list of statistical variable dcids.
+  map<string, StatVars> places = 1;
+}
+
 // TODO(wsws): Refactor all these "won't persist to cache" fields across caches
 // into a single TemporaryFields message, and clear just that "tmp_data" field
 // before persistence.
@@ -945,6 +963,20 @@ service Mixer {
       returns (GetPlaceStatsVarResponse) {
     option (google.api.http) = {
       get: "/place/stats-var"
+    };
+  }
+
+  // Give a list of place dcids, return all the statistical variables for each
+  // place.
+  // TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are migrated.
+  rpc GetPlaceStatVars(GetPlaceStatVarsRequest)
+      returns (GetPlaceStatVarsResponse) {
+    option (google.api.http) = {
+      get: "/place/stat-vars"
+      additional_bindings: {
+        post: "/place/stat-vars"
+        body: "*"
+      }
     };
   }
 }

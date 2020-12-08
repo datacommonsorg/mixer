@@ -195,6 +195,23 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 func (s *Server) GetPlaceStatsVar(
 	ctx context.Context, in *pb.GetPlaceStatsVarRequest) (
 	*pb.GetPlaceStatsVarResponse, error) {
+
+	req := pb.GetPlaceStatVarsRequest{Dcids: in.GetDcids()}
+	resp, err := s.GetPlaceStatVars(ctx, &req)
+	if err != nil {
+		return nil, err
+	}
+	out := pb.GetPlaceStatsVarResponse{Places: map[string]*pb.StatsVars{}}
+	for dcid, statVars := range resp.Places {
+		out.Places[dcid] = &pb.StatsVars{StatsVars: statVars.StatVars}
+	}
+	return &out, nil
+}
+
+// GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.
+func (s *Server) GetPlaceStatVars(
+	ctx context.Context, in *pb.GetPlaceStatVarsRequest) (
+	*pb.GetPlaceStatVarsResponse, error) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
@@ -212,11 +229,11 @@ func (s *Server) GetPlaceStatsVar(
 	if err != nil {
 		return nil, err
 	}
-	resp := pb.GetPlaceStatsVarResponse{Places: map[string]*pb.StatsVars{}}
+	resp := pb.GetPlaceStatVarsResponse{Places: map[string]*pb.StatVars{}}
 	for _, dcid := range dcids {
-		resp.Places[dcid] = &pb.StatsVars{StatsVars: []string{}}
+		resp.Places[dcid] = &pb.StatVars{StatVars: []string{}}
 		if dataMap[dcid] != nil {
-			resp.Places[dcid].StatsVars = dataMap[dcid].([]string)
+			resp.Places[dcid].StatVars = dataMap[dcid].([]string)
 		}
 	}
 	return &resp, nil

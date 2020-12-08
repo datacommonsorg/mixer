@@ -12,98 +12,97 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 # This cloud build is triggered when there is code change, but can also involve
 # data change.
 
 steps:
+  # Prepare go package and proto dependency
+  - id: prepare-proto
+    name: golang
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        ./prepare-proto.sh
 
-# Prepare go package and proto dependency
-- id: prepare-proto
-  name: golang
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    ./prepare-proto.sh
+  # Compile protobuf and grpc descriptor
+  - id: compile-proto
+    name: gcr.io/datcom-ci/protoc
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        protoc \
+          --proto_path=proto \
+          --plugin=protoc-gen-go=/go/bin/protoc-gen-go \
+          --plugin=protoc-gen-go-grpc=/go/bin/protoc-gen-go-grpc \
+          --include_source_info \
+          --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
+          --go_out=. \
+          --go-grpc_out=. \
+          --go-grpc_opt=requireUnimplementedServers=false \
+          proto/mixer.proto
 
-# Compile protobuf and grpc descriptor
-- id: compile-proto
-  name: gcr.io/datcom-ci/protoc
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    protoc \
-      --proto_path=proto \
-      --plugin=protoc-gen-go=/go/bin/protoc-gen-go \
-      --plugin=protoc-gen-go-grpc=/go/bin/protoc-gen-go-grpc \
-      --include_source_info \
-      --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
-      --go_out=. \
-      --go-grpc_out=. \
-      --go-grpc_opt=requireUnimplementedServers=false \
-      proto/mixer.proto
+  # Run tests
+  - id: run-test
+    name: golang
+    env: ["GO111MODULE=on"]
+    args: ["go", "test", "./..."]
 
-# Run tests
-- id: run-test
-  name: golang
-  env: ['GO111MODULE=on']
-  args: ['go', 'test', './...']
+  # Push the mixer docker image to container registry
+  - id: push-docker-image
+    name: gcr.io/cloud-builders/docker
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        cat <<EOT > Dockerfile
+        FROM golang:1.13
+        WORKDIR /mixer
+        COPY . .
+        RUN go install .
+        ENTRYPOINT ["/go/bin/mixer"]
+        EOT
+        docker build \
+          -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
+          -t gcr.io/datcom-ci/datacommons-mixer:latest \
+          .
+        docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
+        docker push gcr.io/datcom-ci/datacommons-mixer:latest
 
-# Push the mixer docker image to container registry
-- id: push-docker-image
-  name: gcr.io/cloud-builders/docker
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    set -e
-    cat <<EOT > Dockerfile
-    FROM golang:1.13
-    WORKDIR /mixer
-    COPY . .
-    RUN go install .
-    ENTRYPOINT ["/go/bin/mixer"]
-    EOT
-    docker build \
-      -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
-      -t gcr.io/datcom-ci/datacommons-mixer:latest \
-      .
-    docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
+  # Push the grpc descriptor to gcs.
+  - name: gcr.io/cloud-builders/gsutil
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        gsutil cp mixer-grpc.$SHORT_SHA.pb gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
+        gsutil cp mixer-grpc.$SHORT_SHA.pb gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.latest.pb
 
-# Push the grpc descriptor to gcs.
-- name: gcr.io/cloud-builders/gsutil
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    set -e
-    gsutil cp mixer-grpc.$SHORT_SHA.pb gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
-    gsutil cp mixer-grpc.$SHORT_SHA.pb gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.latest.pb
-
-# Update all the versions.
-- id: update version
-  name: 'gcr.io/cloud-builders/git'
-  entrypoint: /bin/bash
-  args:
-  - -c
-  - |
-    set -e
-    gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
-    cd /tmp/deployment
-    # Configure Git to create commits with Cloud Build's service account
-    git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
-    git checkout master
-    echo gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb > /tmp/deployment/mixer/staging/grpc.txt
-    echo gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA > /tmp/deployment/mixer/staging/docker.txt
-    cp /workspace/deployment/bigquery.txt /tmp/deployment/mixer/staging/bigquery.txt
-    cp /workspace/deployment/bigtable.txt /tmp/deployment/mixer/staging/bigtable.txt
-    git add /tmp/deployment/mixer/staging/*
-    git commit -m "Update staging mixer versions at commit https://github.com/datacommonsorg/mixer/commit/$SHORT_SHA"
-    git push origin master
+  # Update all the versions.
+  - id: update version
+    name: "gcr.io/cloud-builders/git"
+    entrypoint: /bin/bash
+    args:
+      - -c
+      - |
+        set -e
+        gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
+        cd /tmp/deployment
+        # Configure Git to create commits with Cloud Build's service account
+        git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
+        git checkout master
+        echo gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb > /tmp/deployment/mixer/staging/grpc.txt
+        echo gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA > /tmp/deployment/mixer/staging/docker.txt
+        cp /workspace/deployment/bigquery.txt /tmp/deployment/mixer/staging/bigquery.txt
+        cp /workspace/deployment/bigtable.txt /tmp/deployment/mixer/staging/bigtable.txt
+        git add /tmp/deployment/mixer/staging/*
+        git commit -m "Update staging mixer versions at commit https://github.com/datacommonsorg/mixer/commit/$SHORT_SHA"
+        git push origin master
 
 options:
   volumes:
-  - name: go-modules
-    path: /go
+    - name: go-modules
+      path: /go

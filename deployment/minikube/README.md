@@ -36,6 +36,9 @@ minikube start --memory=4g
 
 Use local docker image with Minikube.
 
+**NOTE** Must run `docker build` below in the same terminal as this one,
+so the docker image can be found.
+
 ```bash
 eval $(minikube docker-env)
 ```
@@ -84,7 +87,7 @@ cd deployment/minikube
 
 ```bash
 cd ../..
-docker build --tag mixer:local .
+DOCKER_BUILDKIT=1 docker build --tag mixer:local .
 cd deployment/minikube
 ```
 

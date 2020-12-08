@@ -1039,6 +1039,17 @@ func TestSparql(t *testing.T) {
 				"WHERE _dc_v3_Observation_2.measured_prop = \"count\" AND _dc_v3_Place_0.type = \"State\" AND " +
 				"_dc_v3_StatisticalPopulation_1.num_constraints = 0 AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"",
 		},
+		{
+			"adminarea1",
+			`
+			SELECT ?name
+      WHERE {
+      	?state typeOf AdministrativeArea1 .
+        ?state name ?name .
+      }
+			`,
+			"SELECT _dc_v3_Place_0.name AS name FROM `dc_v3.Place` AS _dc_v3_Place_0 WHERE _dc_v3_Place_0.type = \"AdministrativeArea1\"",
+		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
 		if err != nil {
