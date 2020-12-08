@@ -29,12 +29,6 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-// GetPlacesInPost implements API for Mixer.GetPlacesInPost.
-func (s *Server) GetPlacesInPost(ctx context.Context,
-	in *pb.GetPlacesInRequest) (*pb.GetPlacesInResponse, error) {
-	return s.GetPlacesIn(ctx, in)
-}
-
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 	*pb.GetPlacesInResponse, error) {

@@ -752,14 +752,10 @@ service Mixer {
   rpc Query(QueryRequest) returns (QueryResponse) {
     option (google.api.http) = {
       get: "/query"
-    };
-  }
-
-  // Query DataCommons Graph with Sparql.
-  rpc QueryPost(QueryRequest) returns (QueryResponse) {
-    option (google.api.http) = {
-      post: "/query"
-      body: "*"
+      additional_bindings: {
+        post: "/query"
+        body: "*"
+      }
     };
   }
 
@@ -768,15 +764,10 @@ service Mixer {
       returns (GetPropertyLabelsResponse) {
     option (google.api.http) = {
       get: "/node/property-labels"
-    };
-  }
-
-  // Fetch property labels adjacent of nodes
-  rpc GetPropertyLabelsPost(GetPropertyLabelsRequest)
-      returns (GetPropertyLabelsResponse) {
-    option (google.api.http) = {
-      post: "/node/property-labels"
-      body: "*"
+      additional_bindings: {
+        post: "/node/property-labels"
+        body: "*"
+      }
     };
   }
 
@@ -785,15 +776,10 @@ service Mixer {
       returns (GetPropertyValuesResponse) {
     option (google.api.http) = {
       get: "/node/property-values"
-    };
-  }
-
-  // Fetch nodes that linked to source nodes with a given property.
-  rpc GetPropertyValuesPost(GetPropertyValuesRequest)
-      returns (GetPropertyValuesResponse) {
-    option (google.api.http) = {
-      post: "/node/property-values"
-      body: "*"
+      additional_bindings: {
+        post: "/node/property-values"
+        body: "*"
+      }
     };
   }
 
@@ -801,14 +787,10 @@ service Mixer {
   rpc GetTriples(GetTriplesRequest) returns (GetTriplesResponse) {
     option (google.api.http) = {
       get: "/node/triples"
-    };
-  }
-
-  // Fetch triples that have the given nodes as subject or object.
-  rpc GetTriplesPost(GetTriplesRequest) returns (GetTriplesResponse) {
-    option (google.api.http) = {
-      post: "/node/triples"
-      body: "*"
+      additional_bindings: {
+        post: "/node/triples"
+        body: "*"
+      }
     };
   }
 
@@ -835,14 +817,10 @@ service Mixer {
   rpc GetPlacesIn(GetPlacesInRequest) returns (GetPlacesInResponse) {
     option (google.api.http) = {
       get: "/node/places-in"
-    };
-  }
-
-  // Get places contained in parent places.
-  rpc GetPlacesInPost(GetPlacesInRequest) returns (GetPlacesInResponse) {
-    option (google.api.http) = {
-      post: "/node/places-in"
-      body: "*"
+      additional_bindings: {
+        post: "/node/places-in"
+        body: "*"
+      }
     };
   }
 
