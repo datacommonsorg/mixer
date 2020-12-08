@@ -210,7 +210,7 @@ func getValuePb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
 				return &pb.PointStat{
 					Date:  date,
 					Value: value,
-					Metadata: &pb.Metadata{
+					Metadata: &pb.StatMetadata{
 						ImportName:        series.ImportName,
 						ProvenanceUrl:     series.ProvenanceUrl,
 						MeasurementMethod: series.MeasurementMethod,
@@ -232,7 +232,7 @@ func getValuePb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
 				result = &pb.PointStat{
 					Date:  date,
 					Value: value,
-					Metadata: &pb.Metadata{
+					Metadata: &pb.StatMetadata{
 						ImportName:        series.ImportName,
 						ProvenanceUrl:     series.ProvenanceUrl,
 						MeasurementMethod: series.MeasurementMethod,

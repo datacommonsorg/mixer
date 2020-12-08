@@ -19,7 +19,9 @@ option go_package = "./proto";
 package datacommons;
 
 
-message Metadata {
+// StatMetadata contains the source and measurement information for a
+// statistical observation.
+message StatMetadata {
   string import_name = 1;
   string provenance_url = 2;
   string measurement_method = 3;
@@ -29,12 +31,14 @@ message Metadata {
 }
 
 message PointStat {
+  // date in IOS-8601 format
   string date = 1;
   double value = 2;
-  Metadata metadata = 3;
+  StatMetadata metadata = 3;
 }
 
 message PlacePointStat {
+  // Keyed by place DCID.
   map<string, PointStat> stat = 1;
 }
 
@@ -268,5 +272,6 @@ message GetStatMultiRequest {
 }
 
 message GetStatMultiResponse {
+  // Keyed by statVar.
   map<string, PlacePointStat> data = 1;
 }
