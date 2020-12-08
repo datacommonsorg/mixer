@@ -18,6 +18,7 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
+import "stat.proto";
 import "google/api/annotations.proto";
 
 message Option {
@@ -181,100 +182,6 @@ message GetPlaceObsRequest {
 message GetPlaceObsResponse {
   // The JSON payload.
   string payload = 1;
-}
-
-message SourceSeries {
-  map<string, double> val = 1;
-  string measurement_method = 2;
-  string observation_period = 3;
-  string import_name = 4;
-  string provenance_domain = 5;
-  string unit = 6;
-  string scaling_factor = 7;
-  bool is_dc_aggregate = 8;
-  string provenance_url = 9;
-}
-
-// Represents observation time series data.
-message ObsTimeSeries {
-  map<string, double> data = 1;  // Date to value.
-  string place_name = 3;
-  string place_dcid = 5;  // Only set if the key uses mid.
-  repeated SourceSeries source_series = 6;
-  string provenance_domain = 7;
-  string provenance_url = 8;
-}
-
-// A collection of observation values for various places with the same parent
-// and place type, for given measured property, observation period, stat type,
-// observation date, pop type, and an optional list of pop PVs.
-message ObsCollection {
-  repeated SourceSeries source_cohorts = 2;
-}
-
-// Wrapper for observation data.
-message ChartStore {
-  oneof val {
-    ObsTimeSeries obs_time_series = 1;
-    ObsCollection obs_collection = 2;
-  }
-}
-
-// Request message for GetStats.
-message GetStatsRequest {
-  // The dcids of the place.
-  repeated string place = 1;
-
-  // The dcid of the StatisticalVariable.
-  string stats_var = 2;
-
-  // (Optional) The measurement method of the observation. If not specified,
-  // stats series with any measurement methods could be returned.
-  string measurement_method = 4;
-
-  // (Optional) The unit of the observation. If not specified, stats series with
-  // any unit could be returned.
-  string unit = 5;
-
-  // (Optional) The observation period of the observation. If not specified,
-  // stats series with any observation period could be returned.
-  string observation_period = 6;
-}
-
-// Response of GetStats
-message GetStatsResponse {
-  // The JSON payload.
-  string payload = 2;
-}
-
-// Request for GetStat API.
-// TODO(shifucun): Deprecate GetStats() once all clients are switched to use
-// this API.
-// Request message for GetStat.
-message GetStatRequest {
-  // The dcids of the place.
-  repeated string places = 1;
-
-  // The dcid of the StatisticalVariable.
-  string stat_var = 2;
-
-  // (Optional) The measurement method of the observation. If not specified,
-  // stats series with any measurement methods could be returned.
-  string measurement_method = 3;
-
-  // (Optional) The unit of the observation. If not specified, stats series with
-  // any unit could be returned.
-  string unit = 4;
-
-  // (Optional) The observation period of the observation. If not specified,
-  // stats series with any observation period could be returned.
-  string observation_period = 5;
-}
-
-// Response of GetStat
-message GetStatResponse {
-  // A map from place dcid to stat series.
-  map<string, SourceSeries> stat = 1;
 }
 
 // Request to get certain population for a set of places.
@@ -656,126 +563,6 @@ message StatisticalVariable {
   string stat_type = 9;
 }
 
-// Request for GetStat service.
-message GetStatValueRequest {
-  // dcid of the place.
-  string place = 1;
-  // dcid of the stat var.
-  string stat_var = 2;
-  // (optional) date of the stat. The latest date will be used if unspecified.
-  string date = 3;
-  // (optional) measurement method of the observation, ex: "CensusACS5yrSurvey".
-  string measurement_method = 4;
-  // (optional) observation period of the observation, ex: "P1Y".
-  string observation_period = 5;
-  // (optional) unit of the observation.
-  string unit = 6;
-  // (optional) scaling factor of the observation.
-  string scaling_factor = 7;
-}
-
-message GetStatValueResponse {
-  double value = 1;
-}
-
-// Request for GetStatSeries service.
-message GetStatSeriesRequest {
-  // dcid of the place.
-  string place = 1;
-  // dcid of the stat var.
-  string stat_var = 2;
-  // (optional) measurement method of the observation, ex: "CensusACS5yrSurvey".
-  string measurement_method = 3;
-  // (optional) observation period of the observation, ex: "P1Y".
-  string observation_period = 4;
-  // (optional) unit of the observation.
-  string unit = 5;
-  // (optional) scaling factor of the observation.
-  string scaling_factor = 6;
-}
-
-// Response for GetStatSeries service.
-message GetStatSeriesResponse {
-  // A map from ISO date to stat value.
-  map<string, double> series = 1;
-}
-
-// Request for GetStatAll service.
-message GetStatAllRequest {
-  // dcids of the place.
-  repeated string places = 1;
-  // dcids of the stat var.
-  repeated string stat_vars = 2;
-}
-
-// Response for GetStatAll service.
-// The response is a two level map, with the first level keyed by place dcid,
-// and the second level keyed by the stat var dcid.
-// Each leaf object contains multiple source series with <date, value> object
-// and observation metadata.
-//
-// The response is transcoded by esp:
-// https://cloud.google.com/endpoints/docs/grpc/grpc-service-config Example
-// response after esp transcoding is like below.
-// {
-//   placeData: {
-//     "geoId/01": {
-//       statVarData: {
-//         "statvar1": {
-//           "placeName": "City of Mountain View",
-//           "sourceSeries": [
-//             {
-//               "val": {
-//                 "2008": 2116,
-//                 "2009": 2155,
-//                 "2010": 1633,
-//                 "2011": 1509,
-//                 "2012": 1581,
-//                 "2013": 1867,
-//                 "2014": 1770,
-//                 "2015": 2201,
-//                 "2016": 1913,
-//                 "2017": 2138
-//               },
-//               "observationPeriod": "P1Y",
-//               "importName": "FBIGovCrime",
-//               "provenanceDomain": "fbi.gov"
-//             }
-//           ]
-//         },
-//       }
-//     },
-//     "geoId/02": {
-//       statVarData: {
-//         "statvar3": {...},
-//       }
-//     }
-//   }
-// }
-message PlaceStat {
-  map<string, ObsTimeSeries> stat_var_data = 3;
-}
-
-message GetStatAllResponse {
-  map<string, PlaceStat> place_data = 1;
-}
-
-message GetStatCollectionRequest {
-  // Parent place dcid.
-  string parent_place = 1;
-  // Child place type.
-  string child_type = 2;
-  // Date for the stat in ISO format.
-  string date = 3;
-  // Dcid of the stat var.
-  repeated string stat_vars = 4;
-}
-
-// Response for GetStatCollection service.
-message GetStatCollectionResponse {
-  map<string, SourceSeries> data = 1;
-}
-
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -923,6 +710,15 @@ service Mixer {
   rpc GetStatCollection(GetStatCollectionRequest) returns (GetStatCollectionResponse) {
     option (google.api.http) = {
       get: "/stat/collection"
+      body: "*"
+    };
+  }
+
+  // Get the stat value for given places and stat vars. If date is not given,
+  // then the latest value for each <place, stat var> is returned.
+  rpc GetStatMulti(GetStatMultiRequest) returns (GetStatMultiResponse) {
+    option (google.api.http) = {
+      post: "/stat/multi"
       body: "*"
     };
   }

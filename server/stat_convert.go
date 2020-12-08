@@ -21,6 +21,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+// convert ChartStore to pb.ObsTimeSerie
 func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	interface{}, error) {
 	pbData := &pb.ChartStore{}
@@ -39,6 +40,7 @@ func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	}
 }
 
+// convert ChartStore to ObsSeries
 func convertToObsSeries(token string, jsonRaw []byte) (
 	interface{}, error) {
 	pbData := &pb.ChartStore{}
@@ -75,6 +77,7 @@ func convertToObsSeries(token string, jsonRaw []byte) (
 	}
 }
 
+// convert ChartStore to pb.ObsCollection
 func convertToObsCollection(token string, jsonRaw []byte) (
 	interface{}, error) {
 	pbData := &pb.ChartStore{}
@@ -90,5 +93,33 @@ func convertToObsCollection(token string, jsonRaw []byte) (
 	default:
 		return nil, status.Errorf(codes.Internal,
 			"ChartStore.Val has unexpected type %T", x)
+	}
+}
+
+// Use func closure to wrap date.
+func makeFnConvertToPointStat(date string) func(token string, jsonRaw []byte) (
+	interface{}, error) {
+	// convert ChartStore to pb.PointStat
+	// This get the highest ranked source series and convert it to PointStat with
+	// the latest value.
+	return func(token string, jsonRaw []byte) (
+		interface{}, error) {
+		pbData := &pb.ChartStore{}
+		if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
+			return nil, err
+		}
+		switch x := pbData.Val.(type) {
+		case *pb.ChartStore_ObsTimeSeries:
+			pointStat, err := getValuePb(x.ObsTimeSeries, date)
+			if err != nil {
+				return nil, err
+			}
+			return pointStat, nil
+		case nil:
+			return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")
+		default:
+			return nil, status.Errorf(codes.NotFound,
+				"ChartStore.Val has unexpected type %T", x)
+		}
 	}
 }

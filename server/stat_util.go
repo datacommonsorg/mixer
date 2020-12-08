@@ -80,6 +80,20 @@ func filterSeriesPb(in []*pb.SourceSeries, prop *ObsProp) []*pb.SourceSeries {
 	return result
 }
 
+func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
+	if in == nil {
+		return
+	}
+	series := filterSeries(in.SourceSeries, prop)
+	sort.Sort(byRank(series))
+	if len(series) > 0 {
+		in.Data = series[0].Val
+		in.ProvenanceDomain = series[0].ProvenanceDomain
+		in.ProvenanceURL = series[0].ProvenanceURL
+	}
+	in.SourceSeries = nil
+}
+
 func filterAndRankPb(in *pb.ObsTimeSeries, prop *ObsProp) *pb.SourceSeries {
 	if in == nil {
 		return nil
@@ -179,16 +193,60 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 	return result, nil
 }
 
-func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
+// getValue get the stat value from ObsTimeSeries.
+// When date is given, it get the value from the highest ranked source series
+// that has the date.
+// When date is not given, it get the latest value from the highest ranked
+// source series.
+func getValuePb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
 	if in == nil {
-		return
+		return nil, status.Error(codes.Internal, "Nil obs time series for getValue()")
 	}
-	series := filterSeries(in.SourceSeries, prop)
-	sort.Sort(byRank(series))
-	if len(series) > 0 {
-		in.Data = series[0].Val
-		in.ProvenanceDomain = series[0].ProvenanceDomain
-		in.ProvenanceURL = series[0].ProvenanceURL
+	sourceSeries := in.SourceSeries
+	sort.Sort(SeriesByRank(sourceSeries))
+	if date != "" {
+		for _, series := range sourceSeries {
+			if value, ok := series.Val[date]; ok {
+				return &pb.PointStat{
+					Date:  date,
+					Value: value,
+					Metadata: &pb.Metadata{
+						ImportName:        series.ImportName,
+						ProvenanceUrl:     series.ProvenanceUrl,
+						MeasurementMethod: series.MeasurementMethod,
+						ObservationPeriod: series.ObservationPeriod,
+						ScalingFactor:     series.ScalingFactor,
+						Unit:              series.Unit,
+					},
+				}, nil
+			}
+		}
+		return nil, status.Errorf(codes.NotFound, "No data found for date %s", date)
 	}
-	in.SourceSeries = nil
+	latestDate := ""
+	result := &pb.PointStat{}
+	for _, series := range sourceSeries {
+		for date, value := range series.Val {
+			if date > latestDate {
+				latestDate = date
+				result = &pb.PointStat{
+					Date:  date,
+					Value: value,
+					Metadata: &pb.Metadata{
+						ImportName:        series.ImportName,
+						ProvenanceUrl:     series.ProvenanceUrl,
+						MeasurementMethod: series.MeasurementMethod,
+						ObservationPeriod: series.ObservationPeriod,
+						ScalingFactor:     series.ScalingFactor,
+						Unit:              series.Unit,
+					},
+				}
+			}
+		}
+	}
+	if latestDate == "" {
+		return nil, status.Errorf(codes.NotFound,
+			"No stat data found for %s", in.PlaceDcid)
+	}
+	return result, nil
 }

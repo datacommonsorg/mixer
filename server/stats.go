@@ -26,9 +26,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// Limit the concurrent channels when processing in-memory cache data.
-const maxChannelSize = 50
-
 // GetStatValue implements API for Mixer.GetStatValue.
 func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	*pb.GetStatValueResponse, error) {
@@ -260,6 +257,92 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 		for place, placeData := range extraData {
 			for statVar, data := range placeData {
 				result.PlaceData[place].StatVarData[statVar] = data
+			}
+		}
+	}
+	return result, nil
+}
+
+// GetStatMulti implements API for Mixer.GetStatMulti.
+func (s *Server) GetStatMulti(ctx context.Context, in *pb.GetStatMultiRequest) (
+	*pb.GetStatMultiResponse, error) {
+	places := in.GetPlaces()
+	statVars := in.GetStatVars()
+	date := in.GetDate()
+	if len(places) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: places")
+	}
+	if len(statVars) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_vars")
+	}
+
+	// Initialize result with stat vars and place dcids.
+	result := &pb.GetStatMultiResponse{
+		Data: make(map[string]*pb.PlacePointStat),
+	}
+	for _, statVar := range statVars {
+		result.Data[statVar] = &pb.PlacePointStat{
+			Stat: make(map[string]*pb.PointStat),
+		}
+		for _, place := range places {
+			result.Data[statVar].Stat[place] = nil
+		}
+	}
+	// TODO(shifucun): Merge this with the logic in GetStatAll()
+	// Read triples for statistical variable.
+	triplesRowList := buildTriplesKey(statVars)
+	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	if err != nil {
+		return nil, err
+	}
+	statVarObject := map[string]*StatisticalVariable{}
+	for statVar, triplesCache := range triples {
+		if triplesCache != nil {
+			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	// Construct BigTable row keys.
+	rowList, keyTokens := buildStatsKey(places, statVarObject)
+
+	// Read data from branch in-memory cache first.
+	cacheData := s.memcache.ReadParallel(
+		rowList,
+		makeFnConvertToPointStat(date),
+		tokenFn(keyTokens),
+	)
+
+	for token, data := range cacheData {
+		parts := strings.Split(token, "^")
+		place := parts[0]
+		statVar := parts[1]
+		if data != nil {
+			result.Data[statVar].Stat[place] = data.(*pb.PointStat)
+		}
+	}
+
+	// If cache value is not found in memcache, then look up in BigTable
+	extraRowList := bigtable.RowList{}
+	for key, token := range keyTokens {
+		if result.Data[token.statVar].Stat[token.place] == nil {
+			extraRowList = append(extraRowList, key)
+		}
+	}
+	if len(extraRowList) > 0 {
+		extraData, err := readStatsPb(ctx, s.btTable, extraRowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		for place, placeData := range extraData {
+			for statVar, data := range placeData {
+				result.Data[statVar].Stat[place], err = getValuePb(data, date)
+				if err != nil {
+					return nil, err
+				}
 			}
 		}
 	}

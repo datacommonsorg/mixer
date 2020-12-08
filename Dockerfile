@@ -40,7 +40,7 @@ RUN protoc \
     --go_out=. \
     --go-grpc_out=. \
     --go-grpc_opt=requireUnimplementedServers=false \
-    proto/mixer.proto
+    proto/*.proto
 
 # Install the Go app.
 RUN go install .
