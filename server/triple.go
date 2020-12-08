@@ -32,12 +32,6 @@ const (
 	obsAncestorTypeComparedNode = "1"
 )
 
-// GetTriplesPost implements API for Mixer.GetTriplesPost.
-func (s *Server) GetTriplesPost(ctx context.Context,
-	in *pb.GetTriplesRequest) (*pb.GetTriplesResponse, error) {
-	return s.GetTriples(ctx, in)
-}
-
 // GetTriples implements API for Mixer.GetTriples.
 func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	*pb.GetTriplesResponse, error) {

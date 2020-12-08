@@ -24,12 +24,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// GetPropertyLabelsPost implements API for Mixer.GetPropertyLabelsPost.
-func (s *Server) GetPropertyLabelsPost(ctx context.Context,
-	in *pb.GetPropertyLabelsRequest) (*pb.GetPropertyLabelsResponse, error) {
-	return s.GetPropertyLabels(ctx, in)
-}
-
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
 func (s *Server) GetPropertyLabels(ctx context.Context,
 	in *pb.GetPropertyLabelsRequest) (*pb.GetPropertyLabelsResponse, error) {

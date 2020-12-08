@@ -28,12 +28,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/proto"
 )
 
-// GetPropertyValuesPost implements API for Mixer.GetPropertyValuesPost.
-func (s *Server) GetPropertyValuesPost(ctx context.Context,
-	in *pb.GetPropertyValuesRequest) (*pb.GetPropertyValuesResponse, error) {
-	return s.GetPropertyValues(ctx, in)
-}
-
 // GetPropertyValues implements API for Mixer.GetPropertyValues.
 func (s *Server) GetPropertyValues(ctx context.Context,
 	in *pb.GetPropertyValuesRequest) (*pb.GetPropertyValuesResponse, error) {

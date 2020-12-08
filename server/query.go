@@ -27,12 +27,6 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-// QueryPost implements API for Mixer.QueryPost.
-func (s *Server) QueryPost(
-	ctx context.Context, in *pb.QueryRequest) (*pb.QueryResponse, error) {
-	return s.Query(ctx, in)
-}
-
 // Query implements API for Mixer.Query.
 func (s *Server) Query(
 	ctx context.Context, in *pb.QueryRequest) (*pb.QueryResponse, error) {
