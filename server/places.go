@@ -240,6 +240,7 @@ func (s *Server) GetPlaceStatVars(
 	return &resp, nil
 }
 
+// keysToSlice stores the keys of a map in a slice.
 func keysToSlice(m map[string]bool) []string {
 	s := make([]string, len(m))
 	i := 0
@@ -271,7 +272,6 @@ func (s *Server) GetPlaceStatVarsUnion(
 			set[dcid] = true
 		}
 	}
-	// Store keys in a slice.
 	return &pb.GetPlaceStatVarsUnionResponse{
 		StatVars: &pb.StatVars{
 			StatVars: keysToSlice(set),
