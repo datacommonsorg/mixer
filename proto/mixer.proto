@@ -467,6 +467,17 @@ message GetPlaceStatVarsResponse {
   map<string, StatVars> places = 1;
 }
 
+// Request message for GetPlaceStatVarsUnion API.
+message GetPlaceStatVarsUnionRequest {
+  // DCIDs of the places.
+  repeated string dcids = 1;
+}
+
+// Response message for GetPlaceStatVarsUnion API.
+message GetPlaceStatVarsUnionResponse {
+  StatVars stat_vars = 1;
+}
+
 // TODO(wsws): Refactor all these "won't persist to cache" fields across caches
 // into a single TemporaryFields message, and clear just that "tmp_data" field
 // before persistence.
@@ -977,6 +988,14 @@ service Mixer {
         post: "/place/stat-vars"
         body: "*"
       }
+    };
+  }
+
+  rpc GetPlaceStatVarsUnion(GetPlaceStatVarsUnionRequest)
+      returns (GetPlaceStatVarsUnionResponse) {
+    option (google.api.http) = {
+      post: "/place/stat-vars/union"
+      body: "*"
     };
   }
 }
