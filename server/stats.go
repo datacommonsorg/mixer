@@ -263,9 +263,9 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	return result, nil
 }
 
-// GetStatMulti implements API for Mixer.GetStatMulti.
-func (s *Server) GetStatMulti(ctx context.Context, in *pb.GetStatMultiRequest) (
-	*pb.GetStatMultiResponse, error) {
+// GetStatSet implements API for Mixer.GetStatSet.
+func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
+	*pb.GetStatSetResponse, error) {
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
 	date := in.GetDate()
@@ -279,7 +279,7 @@ func (s *Server) GetStatMulti(ctx context.Context, in *pb.GetStatMultiRequest) (
 	}
 
 	// Initialize result with stat vars and place dcids.
-	result := &pb.GetStatMultiResponse{
+	result := &pb.GetStatSetResponse{
 		Data: make(map[string]*pb.PlacePointStat),
 	}
 	for _, statVar := range statVars {

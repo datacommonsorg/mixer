@@ -716,9 +716,9 @@ service Mixer {
 
   // Get the stat value for given places and stat vars. If date is not given,
   // then the latest value for each <place, stat var> is returned.
-  rpc GetStatMulti(GetStatMultiRequest) returns (GetStatMultiResponse) {
+  rpc GetStatSet(GetStatSetRequest) returns (GetStatSetResponse) {
     option (google.api.http) = {
-      post: "/stat/multi"
+      post: "/stat/set"
       body: "*"
     };
   }

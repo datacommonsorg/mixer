@@ -28,7 +28,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatMulti(t *testing.T) {
+func TestGetStatSet(t *testing.T) {
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()
@@ -42,7 +42,7 @@ func TestGetStatMulti(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat_multi")
+		path.Dir(filename), "../golden_response/staging/get_stat_set")
 
 	for _, c := range []struct {
 		statVars   []string
@@ -63,13 +63,13 @@ func TestGetStatMulti(t *testing.T) {
 			"2010.json",
 		},
 	} {
-		resp, err := client.GetStatMulti(ctx, &pb.GetStatMultiRequest{
+		resp, err := client.GetStatSet(ctx, &pb.GetStatSetRequest{
 			StatVars: c.statVars,
 			Places:   c.places,
 			Date:     c.date,
 		})
 		if err != nil {
-			t.Errorf("could not GetStatMulti: %s", err)
+			t.Errorf("could not GetStatSet: %s", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
@@ -77,7 +77,7 @@ func TestGetStatMulti(t *testing.T) {
 			updateProtoGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.GetStatMultiResponse
+		var expected pb.GetStatSetResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {

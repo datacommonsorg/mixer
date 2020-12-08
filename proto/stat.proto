@@ -261,7 +261,7 @@ message GetStatCollectionResponse {
 }
 
 
-message GetStatMultiRequest {
+message GetStatSetRequest {
   // A list of place DCIDs.
   repeated string places = 1;
   // A list of statistical variable DCIDs.
@@ -271,7 +271,7 @@ message GetStatMultiRequest {
   string date = 3;
 }
 
-message GetStatMultiResponse {
+message GetStatSetResponse {
   // Keyed by statVar.
   map<string, PlacePointStat> data = 1;
 }
