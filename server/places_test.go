@@ -20,7 +20,6 @@ import (
 )
 
 func TestKeysToSlice(t *testing.T) {
-
 	m := map[string]bool{
 		"1": true,
 		"2": true,
