@@ -157,12 +157,14 @@ func triplesToStatsVar(
 	return &statsVar, nil
 }
 
-// getValue get the stat value from ObsTimeSeries.
+// getValueFromTopRank get the stat value from top ranked source series.
+//
 // When date is given, it get the value from the highest ranked source series
 // that has the date.
+//
 // When date is not given, it get the latest value from the highest ranked
 // source series.
-func getValue(in *ObsTimeSeries, date string) (float64, error) {
+func getValueFromTopRank(in *ObsTimeSeries, date string) (float64, error) {
 	if in == nil {
 		return 0, status.Error(codes.Internal, "Nil obs time series for getValue()")
 	}
@@ -193,12 +195,14 @@ func getValue(in *ObsTimeSeries, date string) (float64, error) {
 	return result, nil
 }
 
-// getValue get the stat value from ObsTimeSeries.
+// getValueFromTopRankedPb get the stat value from ObsTimeSeries (protobuf version)
+//
 // When date is given, it get the value from the highest ranked source series
 // that has the date.
+//
 // When date is not given, it get the latest value from the highest ranked
 // source series.
-func getValuePb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
+func getValueFromTopRankedPb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
 	if in == nil {
 		return nil, status.Error(codes.Internal, "Nil obs time series for getValue()")
 	}
@@ -225,22 +229,21 @@ func getValuePb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
 	}
 	latestDate := ""
 	result := &pb.PointStat{}
-	for _, series := range sourceSeries {
-		for date, value := range series.Val {
-			if date > latestDate {
-				latestDate = date
-				result = &pb.PointStat{
-					Date:  date,
-					Value: value,
-					Metadata: &pb.StatMetadata{
-						ImportName:        series.ImportName,
-						ProvenanceUrl:     series.ProvenanceUrl,
-						MeasurementMethod: series.MeasurementMethod,
-						ObservationPeriod: series.ObservationPeriod,
-						ScalingFactor:     series.ScalingFactor,
-						Unit:              series.Unit,
-					},
-				}
+	series := sourceSeries[len(sourceSeries)-1]
+	for date, value := range series.Val {
+		if date > latestDate {
+			latestDate = date
+			result = &pb.PointStat{
+				Date:  date,
+				Value: value,
+				Metadata: &pb.StatMetadata{
+					ImportName:        series.ImportName,
+					ProvenanceUrl:     series.ProvenanceUrl,
+					MeasurementMethod: series.MeasurementMethod,
+					ObservationPeriod: series.ObservationPeriod,
+					ScalingFactor:     series.ScalingFactor,
+					Unit:              series.Unit,
+				},
 			}
 		}
 	}

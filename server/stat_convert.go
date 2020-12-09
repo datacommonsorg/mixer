@@ -110,7 +110,7 @@ func makeFnConvertToPointStat(date string) func(token string, jsonRaw []byte) (
 		}
 		switch x := pbData.Val.(type) {
 		case *pb.ChartStore_ObsTimeSeries:
-			pointStat, err := getValuePb(x.ObsTimeSeries, date)
+			pointStat, err := getValueFromTopRankedPb(x.ObsTimeSeries, date)
 			if err != nil {
 				return nil, err
 			}

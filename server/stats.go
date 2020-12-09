@@ -93,7 +93,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 			codes.NotFound, "No data for %s, %s", place, statVar)
 	}
 	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
-	result, err := getValue(obsTimeSeries, date)
+	result, err := getValueFromTopRank(obsTimeSeries, date)
 	if err != nil {
 		return nil, err
 	}
@@ -339,7 +339,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 		}
 		for place, placeData := range extraData {
 			for statVar, data := range placeData {
-				result.Data[statVar].Stat[place], err = getValuePb(data, date)
+				result.Data[statVar].Stat[place], err = getValueFromTopRankedPb(data, date)
 				if err != nil {
 					return nil, err
 				}
