@@ -166,7 +166,7 @@ func triplesToStatsVar(
 // source series.
 func getValueFromTopRank(in *ObsTimeSeries, date string) (float64, error) {
 	if in == nil {
-		return 0, status.Error(codes.Internal, "Nil obs time series for getValue()")
+		return 0, status.Error(codes.Internal, "Nil obs time series for getValueFromTopRank()")
 	}
 	sourceSeries := in.SourceSeries
 	sort.Sort(byRank(sourceSeries))
@@ -204,7 +204,7 @@ func getValueFromTopRank(in *ObsTimeSeries, date string) (float64, error) {
 // source series.
 func getValueFromTopRankedPb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
 	if in == nil {
-		return nil, status.Error(codes.Internal, "Nil obs time series for getValue()")
+		return nil, status.Error(codes.Internal, "Nil obs time series for getValueFromTopRankedPb()")
 	}
 	sourceSeries := in.SourceSeries
 	sort.Sort(SeriesByRank(sourceSeries))
