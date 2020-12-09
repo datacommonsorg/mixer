@@ -195,16 +195,16 @@ func getValueFromTopRank(in *ObsTimeSeries, date string) (float64, error) {
 	return result, nil
 }
 
-// getValueFromTopRankedPb get the stat value from ObsTimeSeries (protobuf version)
+// getValueFromBestSourcePb get the stat value from ObsTimeSeries (protobuf version)
 //
 // When date is given, it get the value from the highest ranked source series
 // that has the date.
 //
 // When date is not given, it get the latest value from the highest ranked
 // source series.
-func getValueFromTopRankedPb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
+func getValueFromBestSourcePb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
 	if in == nil {
-		return nil, status.Error(codes.Internal, "Nil obs time series for getValueFromTopRankedPb()")
+		return nil, status.Error(codes.Internal, "Nil obs time series for getValueFromBestSourcePb()")
 	}
 	sourceSeries := in.SourceSeries
 	sort.Sort(SeriesByRank(sourceSeries))

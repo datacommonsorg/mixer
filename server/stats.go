@@ -339,7 +339,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 		}
 		for place, placeData := range extraData {
 			for statVar, data := range placeData {
-				result.Data[statVar].Stat[place], err = getValueFromTopRankedPb(data, date)
+				result.Data[statVar].Stat[place], err = getValueFromBestSourcePb(data, date)
 				if err != nil {
 					return nil, err
 				}
