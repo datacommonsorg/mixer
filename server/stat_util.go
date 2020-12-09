@@ -229,7 +229,7 @@ func getValueFromTopRankedPb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, 
 	}
 	latestDate := ""
 	result := &pb.PointStat{}
-	series := sourceSeries[len(sourceSeries)-1]
+	series := sourceSeries[0]
 	for date, value := range series.Val {
 		if date > latestDate {
 			latestDate = date

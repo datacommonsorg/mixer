@@ -62,41 +62,38 @@
       "stat": {
         "country/FRA": {
           "date": "2019",
-          "value": 67012900,
+          "value": 67012883,
           "metadata": {
-            "importName": "OECDRegionalDemography",
-            "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "EurostatData",
+            "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
+            "measurementMethod": "EurostatRegionalPopulationData"
           }
         },
         "country/USA": {
           "date": "2019",
-          "value": 328240000,
+          "value": 328239523,
           "metadata": {
-            "importName": "OECDRegionalDemography",
-            "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusPEP",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+            "measurementMethod": "CensusPEPSurvey"
           }
         },
         "geoId/06": {
           "date": "2019",
-          "value": 39512200,
+          "value": 39512223,
           "metadata": {
-            "importName": "OECDRegionalDemography",
-            "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusPEP",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+            "measurementMethod": "CensusPEPSurvey"
           }
         },
         "geoId/0649670": {
-          "date": "2013",
-          "value": 77846,
+          "date": "2018",
+          "value": 83377,
           "metadata": {
-            "importName": "WikipediaAndHumanCurated",
-            "provenanceUrl": "https://www.wikipedia.org",
-            "measurementMethod": "GoogleKGHumanCurated"
+            "importName": "CensusPEP",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+            "measurementMethod": "CensusPEPSurvey"
           }
         }
       }
