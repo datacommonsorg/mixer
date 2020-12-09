@@ -68,6 +68,12 @@ func TestGetLandingPageData(t *testing.T) {
 			1,
 			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
 		},
+		{
+			"zuid-nederland.json",
+			"nuts/NL4",
+			1,
+			[]string{"Count_Person"},
+		},
 	} {
 		req := &pb.GetLandingPageDataRequest{
 			Place:    c.place,
