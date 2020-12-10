@@ -93,7 +93,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 			codes.NotFound, "No data for %s, %s", place, statVar)
 	}
 	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
-	result, err := getValueFromTopRank(obsTimeSeries, date)
+	result, err := getValueFromBestSource(obsTimeSeries, date)
 	if err != nil {
 		return nil, err
 	}

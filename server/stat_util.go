@@ -157,16 +157,16 @@ func triplesToStatsVar(
 	return &statsVar, nil
 }
 
-// getValueFromTopRank get the stat value from top ranked source series.
+// getValueFromBestSource get the stat value from top ranked source series.
 //
 // When date is given, it get the value from the highest ranked source series
 // that has the date.
 //
 // When date is not given, it get the latest value from the highest ranked
 // source series.
-func getValueFromTopRank(in *ObsTimeSeries, date string) (float64, error) {
+func getValueFromBestSource(in *ObsTimeSeries, date string) (float64, error) {
 	if in == nil {
-		return 0, status.Error(codes.Internal, "Nil obs time series for getValueFromTopRank()")
+		return 0, status.Error(codes.Internal, "Nil obs time series for getValueFromBestSource()")
 	}
 	sourceSeries := in.SourceSeries
 	sort.Sort(byRank(sourceSeries))
