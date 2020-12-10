@@ -1,0 +1,102 @@
+{
+  "data": {
+    "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+      "stat": {
+        "country/FRA": {
+          "date": "2018",
+          "value": 46360,
+          "metadata": {
+            "importName": "WorldDevelopmentIndicators",
+            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "observationPeriod": "P1Y",
+            "unit": "InternationalDollar"
+          }
+        },
+        "country/USA": {
+          "date": "2018",
+          "value": 63690,
+          "metadata": {
+            "importName": "WorldDevelopmentIndicators",
+            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "observationPeriod": "P1Y",
+            "unit": "InternationalDollar"
+          }
+        },
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_CriminalActivities_CombinedCrime": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {
+          "date": "2017",
+          "value": 8940603,
+          "metadata": {
+            "importName": "FBIGovCrime_AggCountry",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "geoId/06": {
+          "date": "2017",
+          "value": 1164741,
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "geoId/0649670": {
+          "date": "2017",
+          "value": 2138,
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    },
+    "Count_Person": {
+      "stat": {
+        "country/FRA": {
+          "date": "2019",
+          "value": 67012883,
+          "metadata": {
+            "importName": "EurostatData",
+            "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
+            "measurementMethod": "EurostatRegionalPopulationData"
+          }
+        },
+        "country/USA": {
+          "date": "2019",
+          "value": 328239523,
+          "metadata": {
+            "importName": "CensusPEP",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+            "measurementMethod": "CensusPEPSurvey"
+          }
+        },
+        "geoId/06": {
+          "date": "2019",
+          "value": 39512223,
+          "metadata": {
+            "importName": "CensusPEP",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+            "measurementMethod": "CensusPEPSurvey"
+          }
+        },
+        "geoId/0649670": {
+          "date": "2018",
+          "value": 83377,
+          "metadata": {
+            "importName": "CensusPEP",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+            "measurementMethod": "CensusPEPSurvey"
+          }
+        }
+      }
+    }
+  }
+}

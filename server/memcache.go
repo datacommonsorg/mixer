@@ -29,6 +29,9 @@ import (
 	"google.golang.org/api/iterator"
 )
 
+// Limit the concurrent channels when processing in-memory cache data.
+const maxChannelSize = 50
+
 // Memcache represents a Read Write locked object for in-memory key-value cache.
 type Memcache struct {
 	sync.RWMutex

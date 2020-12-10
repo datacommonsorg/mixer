@@ -41,7 +41,7 @@ steps:
           --go_out=. \
           --go-grpc_out=. \
           --go-grpc_opt=requireUnimplementedServers=false \
-          proto/mixer.proto
+          proto/*.proto
 
   # Run tests
   - id: run-test
