@@ -414,6 +414,10 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 		if err != nil {
 			return nil, err
 		}
+		if len(containedInPlaces) == 0 {
+			// There may be ancestors without any parents.
+			break
+		}
 		sort.SliceStable(containedInPlaces[dcid], func(i, j int) bool {
 			return containedInPlaces[dcid][i].Dcid > containedInPlaces[dcid][j].Dcid
 		})
