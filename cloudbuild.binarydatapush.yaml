@@ -50,6 +50,7 @@ steps:
     args: ["go", "test", "./..."]
 
   # Push the mixer docker image to container registry
+  # TODO(shifucun): use the Dockerfile for this step
   - id: push-docker-image
     name: gcr.io/cloud-builders/docker
     entrypoint: "bash"
