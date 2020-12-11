@@ -1837,7 +1837,7 @@
           "observation_date": "2005",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -1851,7 +1851,7 @@
           "observation_date": "2011",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -1891,7 +1891,7 @@
           "observation_date": "2008",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -1905,7 +1905,7 @@
           "observation_date": "2014",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -1919,7 +1919,7 @@
           "observation_date": "2016",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -1933,7 +1933,7 @@
           "observation_date": "2015",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -1947,7 +1947,7 @@
           "observation_date": "2001",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -1974,7 +1974,7 @@
           "observation_date": "2004",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2014,7 +2014,7 @@
           "observation_date": "2003",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2067,7 +2067,7 @@
           "observation_date": "2012",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2081,7 +2081,7 @@
           "observation_date": "2002",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2095,7 +2095,7 @@
           "observation_date": "2013",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2109,7 +2109,7 @@
           "observation_date": "2009",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2175,7 +2175,7 @@
           "observation_date": "2006",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2202,7 +2202,7 @@
           "observation_date": "2018",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2216,7 +2216,7 @@
           "observation_date": "2017",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2282,7 +2282,7 @@
           "observation_date": "2010",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         },
         {
@@ -2309,7 +2309,7 @@
           "observation_date": "2007",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/3bpjn5e953v0b"
+            "LifeExpectancy_Person_Female"
           ]
         }
       ],
@@ -5206,7 +5206,7 @@
           "observation_date": "2003",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5233,7 +5233,7 @@
           "observation_date": "2014",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5299,7 +5299,7 @@
           "observation_date": "2004",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5313,7 +5313,7 @@
           "observation_date": "2002",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5327,7 +5327,7 @@
           "observation_date": "2005",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5341,7 +5341,7 @@
           "observation_date": "2001",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5368,7 +5368,7 @@
           "observation_date": "2015",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5408,7 +5408,7 @@
           "observation_date": "2011",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5422,7 +5422,7 @@
           "observation_date": "2010",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5475,7 +5475,7 @@
           "observation_date": "2007",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5489,7 +5489,7 @@
           "observation_date": "2006",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5516,7 +5516,7 @@
           "observation_date": "2018",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5530,7 +5530,7 @@
           "observation_date": "2008",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5544,7 +5544,7 @@
           "observation_date": "2017",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5558,7 +5558,7 @@
           "observation_date": "2009",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5598,7 +5598,7 @@
           "observation_date": "2012",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5612,7 +5612,7 @@
           "observation_date": "2013",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
@@ -5639,7 +5639,7 @@
           "observation_date": "2016",
           "observation_period": "P1Y",
           "stat_var_ids": [
-            "dc/40z3sm5wkgqeh"
+            "LifeExpectancy_Person_Male"
           ]
         },
         {
