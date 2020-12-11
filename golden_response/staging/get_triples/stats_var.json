@@ -125,6 +125,30 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
+      "subjectId": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
@@ -162,6 +186,18 @@
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
