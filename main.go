@@ -21,6 +21,7 @@ import (
 	"log"
 	"net"
 
+	"github.com/datacommonsorg/mixer/healthcheck"
 	pb "github.com/datacommonsorg/mixer/proto"
 	"github.com/datacommonsorg/mixer/server"
 	"golang.org/x/oauth2/google"
@@ -30,6 +31,7 @@ import (
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/alts"
+	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
 )
 
@@ -126,6 +128,10 @@ func main() {
 	pb.RegisterMixerServer(srv, s)
 	// Register reflection service on gRPC server.
 	reflection.Register(srv)
+
+	healthService := healthcheck.NewHealthChecker()
+	grpc_health_v1.RegisterHealthServer(srv, healthService)
+
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
