@@ -62,18 +62,7 @@ spec:
             ]
           ports:
             - containerPort: 12345
-          # Mixer startup loading branch cache, can taking minutes
-          # Use a large failureThreshold to prevent infinit loop of restart
-          startupProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:12345"]
-            failureThreshold: 50
-            periodSeconds: 10
           readinessProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:12345"]
-            periodSeconds: 5
-          livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 5
