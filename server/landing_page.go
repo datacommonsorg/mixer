@@ -322,7 +322,16 @@ func filterChildPlaces(childPlaces map[string][]*place) (string, []*place) {
 	var maxCount int
 	var resultPlaces []*place
 	var resultType string
-	for childType, children := range childPlaces {
+
+	// Sort child types to get stable result.
+	childTypes := make([]string, 0, len(childPlaces))
+	for k := range childPlaces {
+		childTypes = append(childTypes, k)
+	}
+	sort.Strings(childTypes)
+
+	for _, childType := range childTypes {
+		children := childPlaces[childType]
 		if len(children) > maxCount {
 			maxCount = len(children)
 			resultPlaces = children
