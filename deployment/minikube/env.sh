@@ -4,6 +4,7 @@ set -a
 # Cloud Endpoints service name
 email=$(git config user.email)
 SERVICE_NAME="${email/@/.}.endpoints.datcom-mixer-staging.cloud.goog"
+API_TITLE="Data Commons Mixer - Minikube"
 
 
 # ESP resources

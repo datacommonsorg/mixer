@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# TODO(shifucun): Use config.yaml instead of env.sh
 . env.sh
 
 yq merge -a=append ../template/mixer.yaml.tmpl ../template/esp.yaml.tmpl > deployment.yaml
@@ -38,5 +39,4 @@ yq w -i --style=double --inplace -- deployment.yaml spec.template.spec.container
 
 # ESP service configuration
 yq w --style=double ../template/endpoints.yaml.tmpl name $SERVICE_NAME > endpoints.yaml
-
-# Deploy
+yq w -i endpoints.yaml title $API_TITLE
