@@ -40,5 +40,3 @@ yq w -i --style=double --inplace -- deployment.yaml spec.template.spec.container
 # ESP service configuration
 yq w --style=double ../template/endpoints.yaml.tmpl name $SERVICE_NAME > endpoints.yaml
 yq w -i endpoints.yaml title $API_TITLE
-
-# Deploy
