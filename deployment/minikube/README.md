@@ -31,7 +31,7 @@ gcloud iam service-accounts keys create mixer-robot-key.json \
 From a terminal, start a cluster:
 
 ```bash
-minikube start --memory=4g
+minikube start
 ```
 
 Use local docker image with Minikube.
@@ -43,7 +43,7 @@ so the docker image can be found.
 eval $(minikube docker-env)
 ```
 
-Start Minikube dashboard
+Start Minikube dashboard (in a different terminal)
 
 ```bash
 minikube dashboard
