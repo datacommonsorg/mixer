@@ -23,6 +23,7 @@ yq w -i --style=double deployment.yaml spec.template.spec.containers[0].args[5] 
 yq w -i --style=double deployment.yaml spec.template.spec.containers[0].args[7] $BT_INSTANCE
 yq w -i --style=double deployment.yaml spec.template.spec.containers[0].args[9] $PROJECT_ID
 yq w -i --style=double deployment.yaml spec.template.spec.containers[0].args[11] $BRANCH_FOLDER
+yq w -i --style=double deployment.yaml spec.template.spec.containers[0].args[13] "false"
 
 # ESP service name
 yq w -i --style=double deployment.yaml spec.template.spec.containers[1].args[1] $SERVICE_NAME
@@ -39,4 +40,4 @@ yq w -i --style=double --inplace -- deployment.yaml spec.template.spec.container
 
 # ESP service configuration
 yq w --style=double ../template/endpoints.yaml.tmpl name $SERVICE_NAME > endpoints.yaml
-yq w -i endpoints.yaml title $API_TITLE
+yq w -i endpoints.yaml title "$API_TITLE"
