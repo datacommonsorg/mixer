@@ -36,14 +36,15 @@ import (
 )
 
 var (
-	bqDataset    = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	btTable      = flag.String("bt_table", "", "DataCommons Bigtable table.")
-	btProject    = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
-	btInstance   = flag.String("bt_instance", "", "BigTable instance.")
-	projectID    = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	branchFolder = flag.String("branch_folder", "", "The branch cache gcs folder.")
-	port         = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS      = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	bqDataset         = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	btTable           = flag.String("bt_table", "", "DataCommons Bigtable table.")
+	btProject         = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
+	btInstance        = flag.String("bt_instance", "", "BigTable instance.")
+	projectID         = flag.String("project_id", "", "The cloud project to run the mixer instance.")
+	branchFolder      = flag.String("branch_folder", "", "The branch cache gcs folder.")
+	port              = flag.Int("port", 12345, "Port on which to run the server.")
+	useALTS           = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	enableBranchCache = flag.Bool("enable_branch_cache", true, "Whether to use branch cache")
 )
 
 const (
@@ -91,28 +92,34 @@ func main() {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
-	// Memcache
-	branchCacheFolder := *branchFolder
-	if branchCacheFolder == "" {
-		branchCacheFolder, err = server.ReadBranchCacheFolder(
-			ctx, branchCacheBucket, branchCacheVersionFile)
-		if err != nil {
-			log.Fatalf("Failed to read branch cache folder: %v", err)
+	memcache := &server.Memcache{}
+	if *enableBranchCache {
+		// Memcache
+		branchCacheFolder := *branchFolder
+		if branchCacheFolder == "" {
+			branchCacheFolder, err = server.ReadBranchCacheFolder(
+				ctx, branchCacheBucket, branchCacheVersionFile)
+			if err != nil {
+				log.Fatalf("Failed to read branch cache folder: %v", err)
+			}
 		}
-	}
-	memcache, err := server.NewMemcacheFromGCS(
-		ctx, branchCacheBucket, branchCacheFolder)
-	if err != nil {
-		log.Fatalf("Failed to create memcache from gcs: %v", err)
+		memcache, err = server.NewMemcacheFromGCS(
+			ctx, branchCacheBucket, branchCacheFolder)
+		if err != nil {
+			log.Fatalf("Failed to create memcache from gcs: %v", err)
+		}
 	}
 
 	// Create server object
 	s := server.NewServer(bqClient, btTable, memcache, metadata)
+
 	// Subscribe to cache update
-	err = s.SubscribeBranchCacheUpdate(
-		ctx, pubsubProject, branchCacheBucket, subscriberPrefix, pubsubTopic)
-	if err != nil {
-		log.Fatalf("Failed to subscribe to branch cache update: %v", err)
+	if *enableBranchCache {
+		err = s.SubscribeBranchCacheUpdate(
+			ctx, pubsubProject, branchCacheBucket, subscriberPrefix, pubsubTopic)
+		if err != nil {
+			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
+		}
 	}
 
 	opts := []grpc.ServerOption{}
