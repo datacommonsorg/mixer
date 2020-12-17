@@ -26,6 +26,7 @@ import (
 )
 
 // GetPlaceStatsVar implements API for Mixer.GetPlaceStatsVar.
+// TODO(shifucun): Migrate clients to use GetPlaceStatVars and deprecate this.
 func (s *Server) GetPlaceStatsVar(
 	ctx context.Context, in *pb.GetPlaceStatsVarRequest) (
 	*pb.GetPlaceStatsVarResponse, error) {
