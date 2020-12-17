@@ -100,9 +100,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			if err != nil {
 				return nil, err
 			}
-			// If using branch cache, then check the branch cache as well.
-			var branchDataMap map[string]interface{}
-			branchDataMap = s.memcache.ReadParallel(rowList,
+			branchDataMap := s.memcache.ReadParallel(rowList,
 				func(dcid string, raw []byte) (interface{}, error) {
 					return string(raw), nil
 				}, nil)
