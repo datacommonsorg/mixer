@@ -208,29 +208,6 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff %+v", diff)
 	}
-
-	// Only use the base cache.
-	in = &pb.GetPopObsRequest{
-		Dcid:   dcid,
-		Option: &pb.Option{CacheChoice: pb.Option_BASE_CACHE_ONLY},
-	}
-	out, err = s.GetPopObs(context.Background(), in)
-	if err != nil {
-		t.Errorf("GetPopObs get error %v", err)
-	}
-
-	tmp, err := util.UnzipAndDecode(out.GetPayload())
-	if err != nil {
-		t.Errorf("UnzipAndDecode got error %v", err)
-	}
-	err = protojson.Unmarshal(tmp, &resultProto)
-	if err != nil {
-		t.Errorf("Unmarshal got error %v", err)
-	}
-	_ = protojson.Unmarshal(btRow, &expectProto)
-	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
-		t.Errorf("GetPopObs() got diff %+v", diff)
-	}
 }
 
 func TestGetPlaceObs(t *testing.T) {

@@ -102,12 +102,10 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			}
 			// If using branch cache, then check the branch cache as well.
 			var branchDataMap map[string]interface{}
-			if in.GetOption().GetCacheChoice() != pb.Option_BASE_CACHE_ONLY {
-				branchDataMap = s.memcache.ReadParallel(rowList,
-					func(dcid string, raw []byte) (interface{}, error) {
-						return string(raw), nil
-					}, nil)
-			}
+			branchDataMap = s.memcache.ReadParallel(rowList,
+				func(dcid string, raw []byte) (interface{}, error) {
+					return string(raw), nil
+				}, nil)
 			// Map from observation dcid to observedNode dcid.
 			observedNodeMap := map[string]string{}
 			for dcid, data := range dataMap {

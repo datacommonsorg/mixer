@@ -65,11 +65,8 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	if hasBaseData {
 		baseRaw = btRow[util.BtFamily][0].Value
 	}
-	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
-		hasBranchData = false
-	} else {
-		branchRaw, hasBranchData = s.memcache.Read(key)
-	}
+
+	branchRaw, hasBranchData = s.memcache.Read(key)
 
 	if !hasBaseData && !hasBranchData {
 		return &out, nil
@@ -141,11 +138,8 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	if hasBaseData {
 		baseRaw = btRow[util.BtFamily][0].Value
 	}
-	if in.GetOption().GetCacheChoice() == pb.Option_BASE_CACHE_ONLY {
-		hasBranchData = false
-	} else {
-		branchRaw, hasBranchData = s.memcache.Read(key)
-	}
+
+	branchRaw, hasBranchData = s.memcache.Read(key)
 
 	if !hasBaseData && !hasBranchData {
 		return &out, nil
