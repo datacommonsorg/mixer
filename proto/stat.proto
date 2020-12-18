@@ -42,6 +42,9 @@ message PlacePointStat {
   map<string, PointStat> stat = 1;
 }
 
+message DateList {
+  repeated string dates = 1;
+}
 
 message SourceSeries {
   map<string, double> val = 1;
@@ -274,4 +277,15 @@ message GetStatSetRequest {
 message GetStatSetResponse {
   // Keyed by statVar.
   map<string, PlacePointStat> data = 1;
+}
+
+
+message GetPlaceStatDateWithinPlaceRequest {
+  string ancestor_place = 1;
+  string place_type = 2;
+  repeated string stat_vars = 3;
+}
+
+message GetPlaceStatDateWithinPlaceResponse {
+  map<string, DateList> data = 1;
 }

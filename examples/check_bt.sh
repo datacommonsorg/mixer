@@ -25,4 +25,4 @@ echo "$BT"
 echo "$PROJECT"
 
 # Check get_stats cache
-cbt -project="$PROJECT" -instance prophet-cache read "${BT}" prefix=$1
+cbt -project="$PROJECT" -instance prophet-cache lookup "${BT}" $1
