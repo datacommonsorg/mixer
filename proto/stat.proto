@@ -287,5 +287,6 @@ message GetPlaceStatDateWithinPlaceRequest {
 }
 
 message GetPlaceStatDateWithinPlaceResponse {
+  // Keyed by statVar.
   map<string, DateList> data = 1;
 }
