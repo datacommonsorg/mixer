@@ -16,17 +16,14 @@
 # https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
 type: google.api.Service
 config_version: 3
-
 # Name of the service configuration.
-name: "<SERVICE_NAME>"
-
+name: "mixer.endpoints.datcom-api.cloud.goog"
 # API title to appear in the user interface (Google Cloud Console).
-title: <API_TITLE>
+title: mixer.endpoints.datcom-api.cloud.goog
 apis:
-- name: datacommons.Mixer
-
+  - name: datacommons.Mixer
 usage:
   rules:
-  # All methods can be called without an API Key.
-  - selector: "*"
-    allow_unregistered_calls: true
+    # All methods can be called without an API Key.
+    - selector: "*"
+      allow_unregistered_calls: true

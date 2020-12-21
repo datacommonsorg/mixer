@@ -58,7 +58,7 @@ kubectl create namespace mixer
 Mount the GCP credential
 
 ```bash
-kubectl create secret generic mixer-robot-key --from-file=mixer-robot-key.json --namespace=mixer
+kubectl create secret generic service-account-key --from-file=$HOME/.config/gcloud/application_default_credentials.json --namespace=mixer
 ```
 
 ## Generate YAML files

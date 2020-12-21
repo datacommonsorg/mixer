@@ -14,16 +14,6 @@ export CLUSTER_NAME="mixer-cluster"
 
 ## Setup Google Cloud Project
 
-* [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) with project id "project-id".
-
-* Install the [Google Cloud SDK](https://cloud.google.com/sdk/install).
-
-* Set the project id as enviornment variable and authenticate.
-
-  ```bash
-  gcloud auth login
-  gcloud config set project $PROJECT_ID
-  ```
 
 * Create a service account that can interact with Cloud APIs.
 
@@ -112,12 +102,7 @@ By default, Cloud Endpoints converts protobuf snake case fields into camel case 
 * Create a new managed Google Cloud Service
 
   ```bash
-  # Enable Service Control API
-  gcloud services enable servicecontrol.googleapis.com
-  # Create a static IP address for the API
-  gcloud compute addresses create mixer-ip --global
-  # Record the IP address. This will be needed to set the endpointsapi.yaml
-  IP=$(gcloud compute addresses list --global --filter='name:mixer-ip' --format='value(ADDRESS)')
+
   # Set the domain for endpoints. This could be a custom domain or default domain from Endpoints like xxx.endpoints.$PROJECT_ID.cloud.goog
   export DOMAIN="<replace-me-with-your-domain>"
 
