@@ -12,18 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: mixer-service
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: staging-
+
+resources:
+- ../../base
+
+configMapGenerator:
+- name: mixer-configmap
+  behavior: create
   namespace: mixer
-spec:
-  type: LoadBalancer
-  ports:
-    - name: http
-      port: 80
-      targetPort: 8081
-      protocol: TCP
-  selector:
-    app: mixer-backend
-    name: mixer-backend
+  literals:
+    - projectId=datcom-website-dev
+    - serviceName=mixer.endpoints.datcom-website-dev.cloud.goog
+
+
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: mixer-grpc
+  spec:
+    replicas: 3

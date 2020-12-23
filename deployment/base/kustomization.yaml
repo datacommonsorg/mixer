@@ -12,26 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# The configuration schema is defined by service.proto file
-# https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
-type: google.api.Service
-config_version: 3
 
-# Name of the service configuration.
-name:
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
-# API title to appear in the user interface (Google Cloud Console).
-title:
+namespace: mixer
 
-apis:
-- name: datacommons.Mixer
+resources:
+- deployment.yaml
+- service.yaml
+- namespace.yaml
+- ingress.yaml
 
-endpoints:
-- target:
-  name:
-
-usage:
-  rules:
-  # All methods can be called without an API Key.
-  - selector: "*"
-    allow_unregistered_calls: true
+configMapGenerator:
+- name: store-configmap
+  behavior: create
+  files:
+  - bigtable.version
+  - bigquery.version

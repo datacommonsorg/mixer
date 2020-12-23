@@ -4,7 +4,9 @@ This instruction contains the steps to do the first time setup of the GCP projec
 
 ## Steps
 
-* [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). If working on an existing project, you should have owner/editor role to perform the tasks. Record the project id in config.yaml, `project` field.
+* [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). If working on an existing project, you should have owner/editor role to perform the tasks.
+
+* Record the project id in config.yaml, `project` field.
 
 * Install the [Google Cloud SDK](https://cloud.google.com/sdk/install)
 
@@ -68,21 +70,7 @@ This instruction contains the steps to do the first time setup of the GCP projec
     ./create_cluster.sh
     ```
 
-  * Make sure the managed SSL certificate is "ACTIVE" by checking ["Load balancing" in GCP](https://pantheon.corp.google.com/net-services/loadbalancing/advanced/sslCertificates/list?sslCertificateTablesize=50). This can take minutes up to hours.
+* Make sure the managed SSL certificate is "ACTIVE" by checking ["Load balancing" in GCP](https://pantheon.corp.google.com/net-services/loadbalancing/advanced/sslCertificates/list?sslCertificateTablesize=50). This can take minutes up to hours.
 
-  * [Optional] DNS Setup for custom domain
-    * [configure the DNS in the domain registrar](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#update-dns)
-
-    * Add the following field to the `endpoints.yaml` file
-
-      ```yaml
-      endpoints:
-      - name: $DOMAIN
-        target: "$IP"
-      ```
-
-    * Redploy ESP
-
-      ```bash
-      gcloud endpoints services deploy mixer-grpc.latest.pb endpoints.yaml
-      ```
+* [Optional] DNS Setup for custom domain
+  * [configure the DNS in the domain registrar](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#update-dns)

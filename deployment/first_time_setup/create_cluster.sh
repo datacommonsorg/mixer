@@ -23,8 +23,28 @@ CLUSTER_NAME="mixer-$REGION"
 
 gcloud config set project $PROJECT_ID
 
+# Create VPC native-cluster to enable Ingress for Anthos and enable Workload Identity
 gcloud container clusters create $CLUSTER_NAME \
   --num-nodes=$NODES \
   --region=$REGION \
   --machine-type=e2-highmem-4 \
-  --enable-ip-alias # VPC native-cluster to enable Ingress for Anthos
+  --enable-ip-alias \
+  --workload-pool=$PROJECT_ID.svc.id.goog
+
+# All resources will be in mixer
+kubectl create namespace mixer
+
+# Create service account which is mapped to the GCP service account for Workload Identity.
+kubectl create serviceaccount --namespace mixer mixer-ksa
+
+# Allow the Kubernetes service account to impersonate the Google service account
+gcloud iam service-accounts add-iam-policy-binding \
+  --role roles/iam.workloadIdentityUser \
+  --member "serviceAccount:$PROJECT_ID.svc.id.goog[mixer/mixer-ksa]" \
+  mixer-robot@$PROJECT_ID.iam.gserviceaccount.com
+
+# Annotate service account
+kubectl annotate serviceaccount \
+  --namespace mixer \
+  mixer-ksa \
+  iam.gke.io/gcp-service-account=mixer-robot@$PROJECT_ID.iam.gserviceaccount.com

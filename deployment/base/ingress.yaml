@@ -12,26 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# The configuration schema is defined by service.proto file
-# https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
-type: google.api.Service
-config_version: 3
-
-# Name of the service configuration.
-name:
-
-# API title to appear in the user interface (Google Cloud Console).
-title:
-
-apis:
-- name: datacommons.Mixer
-
-endpoints:
-- target:
-  name:
-
-usage:
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mixer-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: mixer-ip
+    networking.gke.io/managed-certificates: mixer-certificate
+spec:
   rules:
-  # All methods can be called without an API Key.
-  - selector: "*"
-    allow_unregistered_calls: true
+  -  http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: mixer-service
+          servicePort: 80

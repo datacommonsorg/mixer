@@ -26,6 +26,7 @@ SERVICE_ACCOUNT="$NAME@$PROJECT_ID.iam.gserviceaccount.com"
 declare -a roles=(
    # service control report for endpoints.
     "roles/endpoints.serviceAgent"
+    "roles/cloudtrace.agent"
     # Logging and monitoring
     "roles/logging.logWriter"
     "roles/monitoring.metricWriter"

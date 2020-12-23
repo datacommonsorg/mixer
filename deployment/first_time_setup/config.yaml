@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-project: datcom-api
-ip: 35.227.198.224
-domain: mixer.endpoints.datcom-api.cloud.goog
+project: datcom-website-dev
+ip: 130.211.4.131
+domain: mixer.endpoints.datcom-website-dev.cloud.goog
 api_title:
-region: us-central1
+region: us-east1
 nodes: 1
 store: google.com:datcom-store-dev

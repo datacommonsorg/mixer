@@ -12,19 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: v1
+kind: Namespace
 metadata:
-  name: mixer-ingress
-  namespace: mixer
-  annotations:
-    kubernetes.io/ingress.global-static-ip-name: mixer-ip
-    networking.gke.io/managed-certificates: mixer-certificate
-spec:
-  rules:
-  -  http:
-      paths:
-      - path: /*
-        backend:
-          serviceName: mixer-service
-          servicePort: 80
+  name: mixer-namespace
