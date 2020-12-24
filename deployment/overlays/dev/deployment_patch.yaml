@@ -28,7 +28,8 @@ spec:
             secretName: service-account-key-dev
       containers:
       - name: mixer
-        image: mixer/mixer
+        image: datacommons/mixer
+        imagePullPolicy: Never
       - name: esp
         volumeMounts:
           - mountPath: /var/secrets/google

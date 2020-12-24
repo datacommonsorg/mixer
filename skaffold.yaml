@@ -22,8 +22,10 @@ profiles:
     - kubeContext: minikube
       command: dev
   build:
+    local:
+      push: false
     artifacts:
-    - image: mixer/mixer
+    - image: datacommons/mixer
       context: .
       docker:
         dockerfile: Dockerfile

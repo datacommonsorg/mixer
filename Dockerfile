@@ -66,5 +66,6 @@ COPY main.go /mixer
 # Install the Go app.
 ARG SKAFFOLD_GO_GCFLAGS
 RUN go build -gcflags="${SKAFFOLD_GO_GCFLAGS}"
+RUN go install .
 
 ENTRYPOINT ["/go/bin/mixer"]
