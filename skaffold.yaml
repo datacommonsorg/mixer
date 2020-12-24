@@ -16,36 +16,22 @@ apiVersion: skaffold/v2beta10
 kind: Config
 metadata:
   name: mixer
-profiles:
-- name: dev
-  activation:
-    - kubeContext: minikube
-      command: dev
-  build:
-    local:
-      push: false
-    artifacts:
-    - image: datacommons/mixer
-      context: .
-      docker:
-        dockerfile: Dockerfile
-  deploy:
-    kustomize:
-      paths:
-      - deployment/overlays/dev
-  portForward:
-  - resourceType: service
-    resourceName: mixer-service
-    namespace: mixer
-    port: 80
-    localPort: 9090
-- name: prod
-  deploy:
-    kustomize:
-      paths:
-      - deployment/overlays/prod
-- name: staging
-  deploy:
-    kustomize:
-      paths:
-      - deployment/overlays/staging
+build:
+  local:
+    push: false
+  artifacts:
+  - image: datacommons/mixer
+    context: .
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubeContext: minikube
+  kustomize:
+    paths:
+    - deployment/overlays/dev
+portForward:
+- resourceType: service
+  resourceName: mixer-service-dev
+  namespace: mixer
+  port: 80
+  localPort: 9090
