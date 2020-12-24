@@ -54,6 +54,7 @@ bin/
 
 # GCP
 mixer-robot-key.json
+service-account-key.json
 
 # Kubenetes
 **/minikube/deployment.yaml
