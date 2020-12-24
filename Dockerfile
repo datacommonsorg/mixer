@@ -13,21 +13,16 @@
 # limitations under the License.
 
 
-FROM golang:1.13
+FROM golang:1.15
 
 # Install protoc
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install protobuf-compiler -y
 
-# Copy the source from the current directory the working directory, excluding
-# the deployment directory.
-WORKDIR /mixer
-COPY . .
-RUN rm -r deployment
-
-# Install protobuf go plugin
-RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
-RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
+# Adding the grpc_health_probe
+RUN GRPC_HEALTH_PROBE_VERSION=v0.3.5 && \
+    wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
+    chmod +x /bin/grpc_health_probe
 
 # Only download the two files. Can `git clone` entire library if needed.
 RUN mkdir -p /mixer/proto/google/api/
@@ -35,6 +30,22 @@ RUN curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/goo
          --output /mixer/proto/google/api/annotations.proto
 RUN curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto \
          --output /mixer/proto/google/api/http.proto
+
+# Copy the source from the current directory the working directory, excluding
+# the deployment directory.
+WORKDIR /mixer
+
+# Docker cache: Download modules
+COPY go.mod go.sum /mixer/
+RUN go mod download
+
+# Install protobuf go plugin
+RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
+RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
+
+# Build protobuf
+COPY proto/*.proto /mixer/proto/
+
 RUN protoc \
     --proto_path=proto \
     --go_out=. \
@@ -42,12 +53,18 @@ RUN protoc \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/*.proto
 
-# Install the Go app.
-RUN go install .
+# TODO(shifucun): re-structure the folders, put app code in one directory and
+# deploy, ci codes in other top level folders
+COPY base/ /mixer/base
+COPY healthcheck/ /mixer/healthcheck
+COPY server/ /mixer/server
+COPY sparql/ /mixer/sparql
+COPY translator/ /mixer/translator
+COPY util/ /mixer/util
+COPY main.go /mixer
 
-# Adding the grpc_health_probe
-RUN GRPC_HEALTH_PROBE_VERSION=v0.3.5 && \
-    wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
-    chmod +x /bin/grpc_health_probe
+# Install the Go app.
+ARG SKAFFOLD_GO_GCFLAGS
+RUN go build -gcflags="${SKAFFOLD_GO_GCFLAGS}"
 
 ENTRYPOINT ["/go/bin/mixer"]

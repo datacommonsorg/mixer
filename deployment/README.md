@@ -1,62 +1,11 @@
 # Deploy Data Commons Mixer
 
 Data Commmons Mixer is a gRPC server deployed on Google Kubernetes Engine (GKE).
-The server can be exposed as REST API via Google Cloud Endpoints by gRPC transcoding.
+The server is exposed as REST API via Google Cloud Endpoints by gRPC transcoding.
 
-## Set environment variables
+## Setup a new GKE cluster
 
-```bash
-export PROJECT_ID="<project-id>"
-export SERVICE_ACCOUNT_NAME="mixer-robot"
-export SERVICE_ACCOUNT="$SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com"
-export CLUSTER_NAME="mixer-cluster"
-```
-
-## Setup Google Cloud Project
-
-
-* Create a service account that can interact with Cloud APIs.
-
-  ```bash
-  # Create service account
-  gcloud beta iam service-accounts create $SERVICE_ACCOUNT_NAME \
-    --description "Service account for mixer" \
-    --display-name "mixer-robot"
-  # Enable service account
-  gcloud alpha iam service-accounts enable $SERVICE_ACCOUNT
-  # Allow service account to access Bigtable and Bigquery
-  gcloud projects add-iam-policy-binding $PROJECT_ID \
-    --member serviceAccount:$SERVICE_ACCOUNT \
-    --role roles/bigtable.reader
-  gcloud projects add-iam-policy-binding $PROJECT_ID \
-    --member serviceAccount:$SERVICE_ACCOUNT \
-    --role roles/bigquery.user
-  # This key will be used later by GKE
-  gcloud iam service-accounts keys create /tmp/mixer-robot-key.json \
-    --iam-account $SERVICE_ACCOUNT
-  ```
-
-* Create a GKE cluster
-
-  ```bash
-  gcloud components install kubectl
-  gcloud services enable container.googleapis.com
-  gcloud container clusters create $CLUSTER_NAME \
-    --num-nodes=10 \
-    --zone=us-central1-c \
-    --machine-type=e2-highmem-4
-  gcloud container clusters get-credentials $CLUSTER_NAME
-  ```
-
-* Setup GKE instance
-
-  ```bash
-  # Create namespace
-  kubectl create namespace mixer
-  # Mount service account secrete created above to the GKE instance
-  kubectl create secret generic mixer-robot-key \
-    --from-file=/tmp/mixer-robot-key.json --namespace=mixer
-  ```
+Follow the steps in GKE setup [README](gke/README.md)
 
 ## Deploy Mixer gRPC service (Option 1)
 

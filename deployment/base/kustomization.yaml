@@ -23,6 +23,7 @@ resources:
 - service.yaml
 - namespace.yaml
 - ingress.yaml
+- serviceaccount.yaml
 
 configMapGenerator:
 - name: store-configmap

@@ -1,7 +1,4 @@
-# Bring up the Mixer and ESP locally in Minikube
-
-Mixer is deployed in Google Kubenetes Engine (GKE) and exposed as REST API via
-Google Cloud Endpoint. We can use [MiniKube](https://minikube.sigs.k8s.io/docs/) to develop and test locally.
+# Run Mixer and ESP locally
 
 ## Prerequisit
 
@@ -9,11 +6,25 @@ Google Cloud Endpoint. We can use [MiniKube](https://minikube.sigs.k8s.io/docs/)
 
 * Install `Minikube`, following the [Installation](https://minikube.sigs.k8s.io/docs/start/) guide.
 
+* Install [`Skaffold`](https://skaffold.dev/docs/install/).
+
 * Install [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 * Install [`protoc`](http://google.github.io/proto-lens/installing-protoc.html).
 
 * Install [`yq`](https://mikefarah.gitbook.io/yq/).
+
+
+## NEW STEPS
+
+
+
+```bash
+```
+
+
+
+
 
 * If not done yet, run gcloud application credential and copy the auth key:
 
