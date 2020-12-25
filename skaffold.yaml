@@ -28,7 +28,7 @@ deploy:
   kubeContext: minikube
   kustomize:
     paths:
-    - deployment/overlays/dev
+    - deploy/overlays/dev
 portForward:
 - resourceType: service
   resourceName: mixer-service-dev
