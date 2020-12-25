@@ -23,7 +23,7 @@ build:
   - image: datacommons/mixer
     context: .
     docker:
-      dockerfile: Dockerfile
+      dockerfile: build/Dockerfile
 deploy:
   kubeContext: minikube
   kustomize:

@@ -14,9 +14,9 @@
 
 syntax = "proto3";
 
-// Use relative go package so the generated file is in the current folder.
+package datacommons.proto;
+
 option go_package = "./proto";
-package datacommons;
 
 
 // StatMetadata contains the source and measurement information for a

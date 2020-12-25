@@ -39,10 +39,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Build and Config Files
-proto/google/
-proto/*.go
-
 # Sphinx documentation
 docs/_build/
 

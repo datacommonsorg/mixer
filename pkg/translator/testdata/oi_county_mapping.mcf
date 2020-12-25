@@ -1,0 +1,20 @@
+Node: E:bq_county_outcomes->E1
+typeOf: Place
+geoId: C:bq_county_outcomes->geo_id
+functionalDeps: geoId
+
+Node: E:bq_county_outcomes->E2
+typeOf: StatisticalPopulation
+location: E:bq_county_outcomes->E1
+outcome: C:bq_county_outcomes->outcome
+race: C:bq_county_outcomes->race
+gender: C:bq_county_outcomes->gender
+percentile: C:bq_county_outcomes->percentile
+functionalDeps: location, outcome, race, gender, percentile
+
+Node: E:bq_county_outcomes->E3
+typeOf: Observation
+observedNode: E:bq_county_outcomes->E2
+measuredProperty: C:bq_county_outcomes->measured_property
+measuredValue: C:bq_county_outcomes->measured_value
+functionalDeps: observedNode, measuredProperty

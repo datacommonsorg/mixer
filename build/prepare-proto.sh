@@ -20,8 +20,3 @@ ROOT="$(dirname "$DIR")"
 set -e
 go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
 go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
-mkdir -p $ROOT/proto/google/api/
-curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto \
-      --output $ROOT/proto/google/api/annotations.proto
-curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto \
-      --output $ROOT/proto/google/api/http.proto

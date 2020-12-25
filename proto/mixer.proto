@@ -14,12 +14,12 @@
 
 syntax = "proto3";
 
-// Use relative go package so the generated file is in the current folder.
-option go_package = "./proto";
-package datacommons;
+package datacommons.proto;
 
 import "stat.proto";
 import "google/api/annotations.proto";
+
+option go_package = "./proto";
 
 // A graph query request in Sparql query language.
 message QueryRequest {

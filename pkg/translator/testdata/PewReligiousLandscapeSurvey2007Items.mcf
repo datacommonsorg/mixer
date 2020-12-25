@@ -1,0 +1,20 @@
+Node: E:PewReligiousLandscapeSurvey2007Items->E1
+typeOf: SurveyItem
+dcid: C:PewReligiousLandscapeSurvey2007Items->SurveyItem_Dcid
+name: C:PewReligiousLandscapeSurvey2007Items->SurveyItem_Name
+text: C:PewReligiousLandscapeSurvey2007Items->SurveyItem_Text
+functionalDeps: dcid
+
+Node: E:PewReligiousLandscapeSurvey2007Items->E2
+answersItem: E:PewReligiousLandscapeSurvey2007Items->E1
+typeOf: SurveyItemResponse
+dcid: C:PewReligiousLandscapeSurvey2007Items->SurveyItemResponse_Dcid
+name: C:PewReligiousLandscapeSurvey2007Items->SurveyItemResponse_Name
+value: C:PewReligiousLandscapeSurvey2007Items->SurveyItemResponse_Value
+isPartOf: E:PewReligiousLandscapeSurvey2007Items->E3
+functionalDeps: dcid
+
+Node: E:PewReligiousLandscapeSurvey2007Items->E3
+typeOf: SurveyResponse
+dcid: C:PewReligiousLandscapeSurvey2007Items->SurveyResponse_Dcid
+functionalDeps: dcid
