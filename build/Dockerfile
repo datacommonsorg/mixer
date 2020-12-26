@@ -42,6 +42,8 @@ RUN go mod download
 COPY proto/ proto
 COPY pkg/ pkg
 COPY cmd/ cmd
+COPY test/ test
+COPY deploy/ deploy
 
 RUN protoc \
     --proto_path=proto \
@@ -53,4 +55,4 @@ RUN protoc \
 # Install the Go app.
 RUN go build -o /go/bin/mixer cmd/main.go
 
-ENTRYPOINT ["/go/bin/mixer"]
+CMD ["/go/bin/mixer"]

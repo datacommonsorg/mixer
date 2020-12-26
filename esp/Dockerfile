@@ -52,4 +52,4 @@ RUN ./run.sh \
     --descriptor mixer-grpc.pb \
     --json_out /output/mixer-grpc.json
 
-ENTRYPOINT [ "/bin/sh" ]
+CMD [ "/bin/sh" ]
