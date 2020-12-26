@@ -16,9 +16,13 @@
 
 set -e
 
-if [ "$#" -eq 1 ]; then
-    go test ./test/e2e -generate_golden=true -run "$1"
-else
-    go test ./test/e2e -generate_golden=true
-fi
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT="$(dirname "$DIR")"
 
+for dest in $ROOT/test/e2e/golden_response/prod/*/*.json
+do
+  src="${dest/prod/staging}"
+  cp "$src" "$dest"
+  echo "$src"
+  echo "$dest"
+done

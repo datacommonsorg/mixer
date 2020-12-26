@@ -14,8 +14,14 @@
 
 #!/bin/bash
 
-for dest in golden_response/prod/*/*.json
-do
-  src="${dest/prod/staging}"
-  cp "$src" "$dest"
-done
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT="$(dirname "$DIR")"
+
+if [ "$#" -eq 1 ]; then
+    go test $ROOT/test/e2e -generate_golden=true -run "$1"
+else
+    go test $ROOT/test/e2e -generate_golden=true
+fi
+
