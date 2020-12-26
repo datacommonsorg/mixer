@@ -119,6 +119,7 @@ func loadMemcache() (map[string][]byte, error) {
 }
 
 func updateGolden(v interface{}, fname string) {
+	log.Printf("Update golden files in %s", fname)
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
 	err := ioutil.WriteFile(fname, jsonByte, 0644)
 	if err != nil {
@@ -130,6 +131,7 @@ func updateProtoGolden(resp protoreflect.ProtoMessage, fname string) {
 	marshaller := protojson.MarshalOptions{Indent: ""}
 	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
 	// Use encoding/json to get stable output.
+	log.Printf("Update golden files in %s", fname)
 	data, err := marshaller.Marshal(resp)
 	if err != nil {
 		log.Printf("could not write golden files to %s", fname)

@@ -19,9 +19,26 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-if [ "$#" -eq 1 ]; then
-    go test $ROOT/test/e2e -generate_golden=true -run "$1"
+while getopts "dt:" OPTION; do
+  case $OPTION in
+    d)
+        echo -e "### Update golden files in docker mode"
+        DOCKER=true
+        ;;
+    t)
+        echo -e "### Update golden files for test: ${OPTARG}"
+        TARGET=${OPTARG}
+        ;;
+    *)
+        break ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [[ $TARGET != "" ]]; then
+    ARGS="-run $TARGET"
 else
-    go test $ROOT/test/e2e -generate_golden=true
+    ARGS=""
 fi
 
+go test -v $ROOT/test/e2e -generate_golden=true $ARGS

@@ -15,6 +15,9 @@
 
 FROM golang:1.15
 
+ARG mod
+ENV MOD=${mod}
+
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -34,17 +37,21 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.3.5 && \
 # the deployment directory.
 WORKDIR /mixer
 
+# Golint
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
+
 # Docker cache: Download modules
 COPY go.mod go.sum /mixer/
 RUN go mod download
 
-# Build protobuf
+# Copy files
 COPY proto/ proto
 COPY pkg/ pkg
 COPY cmd/ cmd
 COPY test/ test
 COPY deploy/ deploy
 
+# Build protobuf
 RUN protoc \
     --proto_path=proto \
     --go_out=pkg \
@@ -52,7 +59,12 @@ RUN protoc \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/*.proto
 
-# Install the Go app.
-RUN go build -o /go/bin/mixer cmd/main.go
+# Perform the action: test; update golden; build binary
 
-CMD ["/go/bin/mixer"]
+RUN if [[ mod == "test" ]] ; then \
+        go test ./... ; \
+    elif [[ mod == "update" ]]; then \
+        go test -v ./test/e2e -generate_golden=true \
+    else \
+        go build -o /go/bin/mixer cmd/main.go \
+    fi
