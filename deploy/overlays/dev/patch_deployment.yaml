@@ -23,15 +23,24 @@ spec:
   template:
     spec:
       volumes:
-        - name: secret-volume
-          secret:
-            secretName: service-account-key-dev
+        - name: mixer-grpc-json
+          emptyDir: {}
       containers:
       - name: mixer
         image: datacommons/mixer
         imagePullPolicy: Never
       - name: esp
         volumeMounts:
-          - mountPath: /var/secrets/google
-            name: secret-volume
-            readOnly: true
+          - mountPath: /esp
+            name: mixer-grpc-json
+      - name: api-compiler
+        image: datacommons/api-compiler
+        imagePullPolicy: Never
+        command: ["/bin/sh"]
+        args:
+          - "-c"
+          - >
+            cp /output/mixer-grpc.json /esp/
+        volumeMounts:
+          - name: mixer-grpc-json
+            mountPath: /esp

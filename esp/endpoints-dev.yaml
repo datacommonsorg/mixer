@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ROOT="$(dirname "$DIR")"
+# The configuration schema is defined by service.proto file
+# https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
+type: google.api.Service
+config_version: 3
 
-protoc \
-  --proto_path=$ROOT/proto \
-  --include_source_info \
-  --include_imports \
-  --descriptor_set_out $DIR/mixer-grpc.pb \
-  $ROOT/proto/*.proto
+# Name of the service configuration.
+name: mixer
+
+apis:
+- name: datacommons.Mixer
+
+usage:
+  rules:
+  # All methods can be called without an API Key.
+  - selector: "*"
+    allow_unregistered_calls: true

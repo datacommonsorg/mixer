@@ -14,7 +14,7 @@
 
 syntax = "proto3";
 
-package datacommons.proto;
+package datacommons;
 
 import "stat.proto";
 import "google/api/annotations.proto";

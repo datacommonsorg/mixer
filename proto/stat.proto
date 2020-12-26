@@ -14,7 +14,7 @@
 
 syntax = "proto3";
 
-package datacommons.proto;
+package datacommons;
 
 option go_package = "./proto";
 

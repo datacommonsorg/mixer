@@ -12,12 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- op: remove
+  path: /spec/template/spec/containers/1/args/0
+- op: remove
+  path: /spec/template/spec/containers/1/args/0
 - op: add
   path: /spec/template/spec/containers/1/args/0
-  value: --service_account_key
+  value: --service_json_path
 - op: add
   path: /spec/template/spec/containers/1/args/1
-  value: /var/secrets/google/service-account-key.json
+  value: /esp/mixer-grpc.json
 - op: add
   path: /spec/template/spec/containers/1/args/2
   value: --non_gcp

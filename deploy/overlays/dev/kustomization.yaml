@@ -26,18 +26,13 @@ configMapGenerator:
   behavior: create
   literals:
     - projectId=datcom-website-dev
-    - serviceName=mixer.endpoints.datcom-website-dev.cloud.goog
-
-secretGenerator:
-- name: service-account-key
-  files:
-  - service-account-key.json
+    - serviceName=
 
 generatorOptions:
   disableNameSuffixHash: true
 
 patchesStrategicMerge:
-- deployment_patch.yaml
+- patch_deployment.yaml
 
 patchesJson6902:
 - target:
@@ -45,4 +40,4 @@ patchesJson6902:
     version: v1
     kind: Deployment
     name: mixer-grpc
-  path: esp_patch.yaml
+  path: patch_esp.yaml

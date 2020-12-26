@@ -24,6 +24,10 @@ build:
     context: .
     docker:
       dockerfile: build/Dockerfile
+  - image: datacommons/api-compiler
+    context: .
+    docker:
+      dockerfile: esp/Dockerfile
 deploy:
   kubeContext: minikube
   kustomize:
