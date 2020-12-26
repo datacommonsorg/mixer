@@ -40,7 +40,15 @@ spec:
         args:
           - "-c"
           - >
-            cp /output/mixer-grpc.json /esp/
+            cp /output/mixer-grpc.json /esp/ &&
+            while true; do
+              echo "api-compiler running"
+              sleep 10;
+            done
         volumeMounts:
           - name: mixer-grpc-json
             mountPath: /esp
+        readinessProbe:
+          exec:
+            command: ["ls", "/esp/mixer-grpc.json"]
+          periodSeconds: 1

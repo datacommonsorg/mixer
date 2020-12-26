@@ -13,8 +13,6 @@ require (
 	github.com/golang/mock v1.4.4 // indirect
 	github.com/golang/protobuf v1.4.3
 	github.com/google/go-cmp v0.5.2
-	github.com/google/martian/v3 v3.0.0 // indirect
-	github.com/google/pprof v0.0.0-20201023163331-3e6fc7fc9c4c // indirect
 	go.opencensus.io v0.22.5 // indirect
 	golang.org/x/net v0.0.0-20201026091529-146b70c837a4 // indirect
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
@@ -28,7 +26,6 @@ require (
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20200515170657-fc4c6c6a6587
 	google.golang.org/grpc v1.33.1
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v0.0.0-20200824180931-410880dd7d91 // indirect
 	google.golang.org/protobuf v1.23.0
 	honnef.co/go/tools v0.0.1-2020.1.5 // indirect
 

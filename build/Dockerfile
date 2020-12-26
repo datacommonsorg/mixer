@@ -16,8 +16,14 @@
 FROM golang:1.15
 
 # Install protoc
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install protobuf-compiler -y
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y protobuf-compiler
+
+# Install protobuf go plugin
+ENV GO111MODULE=on
+RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
+RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 
 # Adding the grpc_health_probe
 RUN GRPC_HEALTH_PROBE_VERSION=v0.3.5 && \
@@ -31,10 +37,6 @@ WORKDIR /mixer
 # Docker cache: Download modules
 COPY go.mod go.sum /mixer/
 RUN go mod download
-
-# Install protobuf go plugin
-RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
-RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 
 # Build protobuf
 COPY proto/ proto

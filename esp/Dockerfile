@@ -12,43 +12,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.15 AS protoc
+FROM golang:1.15 AS base
 
-# Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install protobuf-compiler -y
-
-WORKDIR /workspace
+    apt-get install -y protobuf-compiler && \
+    apt-get install -y git
 
 # Install protobuf go plugin
 ENV GO111MODULE=on
 RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
 RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 
+WORKDIR /workspace
+
+RUN git clone https://github.com/googleapis/api-compiler
+RUN cd api-compiler && \
+    git submodule update --recursive --init
+
 # Build protobuf
 COPY proto/ proto
-
 RUN protoc \
     --proto_path=proto \
     --include_source_info \
     --include_imports \
-    --descriptor_set_out mixer-grpc.pb \
+    --descriptor_set_out api-compiler/mixer-grpc.pb \
     proto/*.proto
 
 
 FROM openjdk:8-slim
 
-WORKDIR /workspace/
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git && \
-    git clone https://github.com/googleapis/api-compiler
-
+COPY --from=base /workspace/api-compiler /workspace/api-compiler
 WORKDIR /workspace/api-compiler
 
-RUN git submodule update --recursive --init
-COPY --from=protoc /workspace/mixer-grpc.pb .
 COPY esp/endpoints-dev.yaml .
 RUN mkdir /output
 RUN ./run.sh \
