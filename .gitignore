@@ -41,7 +41,6 @@ Temporary Items
 
 # Build and Config Files
 **/proto/google/
-**/proto/*.go
 
 # vscode
 .vscode
