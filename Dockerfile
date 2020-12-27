@@ -36,8 +36,8 @@ RUN curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/goo
          --output /mixer/proto/google/api/http.proto
 RUN protoc \
     --proto_path=proto \
-    --go_out=pkg \
-    --go-grpc_out=pkg \
+    --go_out=internal \
+    --go-grpc_out=internal \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/*.proto
 

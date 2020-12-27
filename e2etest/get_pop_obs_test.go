@@ -22,9 +22,9 @@ import (
 	"sort"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/pkg/proto"
-	"github.com/datacommonsorg/mixer/pkg/server"
-	"github.com/datacommonsorg/mixer/pkg/util"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"

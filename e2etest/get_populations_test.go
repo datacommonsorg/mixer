@@ -19,8 +19,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/pkg/proto"
-	"github.com/datacommonsorg/mixer/pkg/server"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/google/go-cmp/cmp"
 )
 

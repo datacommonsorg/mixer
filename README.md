@@ -44,8 +44,8 @@ Run the following code to generate golang proto files.
 ./prepare-proto.sh
 protoc \
     --proto_path=proto \
-    --go_out=pkg \
-    --go-grpc_out=pkg \
+    --go_out=internal \
+    --go-grpc_out=internal \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/*.proto
 ```

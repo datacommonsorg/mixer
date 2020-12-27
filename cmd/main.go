@@ -21,9 +21,9 @@ import (
 	"log"
 	"net"
 
-	"github.com/datacommonsorg/mixer/pkg/healthcheck"
-	pb "github.com/datacommonsorg/mixer/pkg/proto"
-	"github.com/datacommonsorg/mixer/pkg/server"
+	"github.com/datacommonsorg/mixer/internal/healthcheck"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
