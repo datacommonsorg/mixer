@@ -43,11 +43,11 @@ steps:
           --go-grpc_opt=requireUnimplementedServers=false \
           proto/*.proto
 
-  # # Run tests
-  # - id: run-test
-  #   name: golang
-  #   env: ["GO111MODULE=on"]
-  #   args: ["go", "test", "./..."]
+  # Run tests
+  - id: run-test
+    name: golang
+    env: ["GO111MODULE=on"]
+    args: ["go", "test", "./..."]
 
   # Push the mixer docker image to container registry
   # TODO(shifucun): use the Dockerfile for this step
