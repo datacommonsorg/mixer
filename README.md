@@ -44,8 +44,8 @@ Run the following code to generate golang proto files.
 ./prepare-proto.sh
 protoc \
     --proto_path=proto \
-    --go_out=. \
-    --go-grpc_out=. \
+    --go_out=pkg \
+    --go-grpc_out=pkg \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/*.proto
 ```
@@ -65,7 +65,7 @@ cloud-build-local --config=cloudbuild.test.yaml --dryrun=false .
 ```bash
 gcloud auth application-default login
 
-go run main.go \
+go run cmd/main.go \
     --bq_dataset=$(head -1 deployment/bigquery.txt) \
     --bt_table=$(head -1 deployment/bigtable.txt) \
     --bt_project=google.com:datcom-store-dev \
@@ -73,7 +73,7 @@ go run main.go \
     --project_id=datcom-mixer-staging
 
 # Open a new shell
-cd examples/get_place_obs
+cd examples
 go run main.go
 ```
 

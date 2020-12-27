@@ -22,8 +22,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/server"
+	pb "github.com/datacommonsorg/mixer/pkg/proto"
+	"github.com/datacommonsorg/mixer/pkg/server"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"

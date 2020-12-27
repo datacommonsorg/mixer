@@ -87,7 +87,7 @@ kubectl get services --namespace=mixer
 ```
 
 Look for the "EXTERNAL-IP" field in the output and then you can send gRPC
-request via a client. One example is in "https://github.com/datacommonsorg/mixer/blob/master/examples/main.go".
+request via a client. One example is in "https://github.com/datacommonsorg/mixer/pkg/blob/master/examples/main.go".
 
 Under "examples" folder, run
 

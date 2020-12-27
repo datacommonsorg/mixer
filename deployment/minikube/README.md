@@ -76,8 +76,8 @@ protoc \
   --proto_path=proto \
   --include_source_info \
   --descriptor_set_out deployment/minikube/mixer-grpc.pb \
-  --go_out=. \
-  --go-grpc_out=. \
+  --go_out=pkg \
+  --go-grpc_out=pkg \
   --go-grpc_opt=requireUnimplementedServers=false \
   proto/*.proto
 cd deployment/minikube

@@ -36,8 +36,8 @@ steps:
       --plugin=protoc-gen-go-grpc=/go/bin/protoc-gen-go-grpc \
       --include_source_info \
       --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
-      --go_out=. \
-      --go-grpc_out=. \
+      --go_out=pkg \
+      --go-grpc_out=pkg \
       --go-grpc_opt=requireUnimplementedServers=false \
       proto/*.proto
 

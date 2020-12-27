@@ -26,8 +26,8 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
-	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/server"
+	pb "github.com/datacommonsorg/mixer/pkg/proto"
+	"github.com/datacommonsorg/mixer/pkg/server"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"

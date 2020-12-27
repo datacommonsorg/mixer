@@ -18,8 +18,8 @@ import (
 	"context"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/server"
+	pb "github.com/datacommonsorg/mixer/pkg/proto"
+	"github.com/datacommonsorg/mixer/pkg/server"
 )
 
 func TestGetPlaceStatsVar(t *testing.T) {
