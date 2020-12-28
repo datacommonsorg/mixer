@@ -39,6 +39,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Build and Config Files
+proto/*.go
+
+# Sphinx documentation
+docs/_build/
+
 # vscode
 .vscode
 

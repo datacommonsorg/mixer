@@ -19,7 +19,6 @@
 FROM golang:1.15 AS base
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
     apt-get install -y protobuf-compiler && \
     apt-get install -y git
 
@@ -31,8 +30,10 @@ RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-4
 WORKDIR /workspace
 
 RUN git clone https://github.com/googleapis/api-compiler
-RUN cd api-compiler && \
-    git submodule update --recursive --init
+
+WORKDIR /workspace/api-compiler
+
+RUN git submodule update --recursive --init
 
 # Build protobuf
 COPY proto/ proto
@@ -40,7 +41,7 @@ RUN protoc \
     --proto_path=proto \
     --include_source_info \
     --include_imports \
-    --descriptor_set_out api-compiler/mixer-grpc.pb \
+    --descriptor_set_out mixer-grpc.pb \
     proto/*.proto
 
 
