@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -28,7 +28,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatCollection(t *testing.T) {
+func TestGetStatValue(t *testing.T) {
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()
@@ -42,45 +42,78 @@ func TestGetStatCollection(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat_collection")
+		path.Dir(filename), "../golden_response/staging/get_stat_value")
 
 	for _, c := range []struct {
-		parentPlace string
-		childType   string
-		date        string
-		statVar     []string
-		goldenFile  string
+		statVar    string
+		place      string
+		goldenFile string
+		mmethod    string
+		wantErr    bool
 	}{
 		{
+			"Count_Person",
+			"country/USA",
+			"count_person.json",
+			"",
+			false,
+		},
+		{
+			"Count_CriminalActivities_CombinedCrime",
 			"geoId/06",
-			"County",
-			"2016",
-			[]string{"Count_Person", "Median_Age_Person"},
-			"CA_County_2016.json",
+			"total_crimes.json",
+			"",
+			false,
 		},
 		{
-			"country/USA",
-			"County",
-			"2016",
-			[]string{"Count_Person"},
-			"USA_County_2016.json",
+			"Median_Age_Person",
+			"geoId/0649670",
+			"median_age.json",
+			"",
+			false,
 		},
 		{
+			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 			"country/USA",
-			"City",
-			"2016",
-			[]string{"Count_Person"},
-			"USA_City_2016.json",
+			"gdp.json",
+			"",
+			false,
+		},
+		{
+			"Count_Person",
+			"country/USA",
+			"empty.json",
+			"bad_mmethod",
+			true,
+		},
+		{
+			"BadStatsVar",
+			"geoId/06",
+			"",
+			"",
+			true,
+		},
+		{
+			"Count_Person",
+			"badPlace",
+			"",
+			"",
+			true,
 		},
 	} {
-		resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{
-			ParentPlace: c.parentPlace,
-			ChildType:   c.childType,
-			StatVars:    c.statVar,
-			Date:        c.date,
+		resp, err := client.GetStatValue(ctx, &pb.GetStatValueRequest{
+			StatVar:           c.statVar,
+			Place:             c.place,
+			MeasurementMethod: c.mmethod,
 		})
+		if c.wantErr {
+			if err == nil {
+				t.Errorf("Expect GetStatValue to error out but it succeed")
+			}
+			continue
+		}
 		if err != nil {
-			t.Errorf("could not GetStatCollections: %s", err)
+			t.Errorf("could not GetStatValue: %s", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
@@ -88,7 +121,7 @@ func TestGetStatCollection(t *testing.T) {
 			updateGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.GetStatCollectionResponse
+		var expected pb.GetStatValueResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {

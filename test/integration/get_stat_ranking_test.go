@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -28,55 +28,80 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatAll(t *testing.T) {
+func TestGetLocationsRankings(t *testing.T) {
 	ctx := context.Background()
-
-	memcacheData, err := loadMemcache()
-	if err != nil {
-		t.Fatalf("Failed to load memcache %v", err)
-	}
-
-	client, err := setup(server.NewMemcache(memcacheData))
+	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat_all")
+		path.Dir(filename), "../golden_response/staging/get_stat_ranking")
 
 	for _, c := range []struct {
-		statVars   []string
-		places     []string
-		goldenFile string
+		goldenFile   string
+		placeType    string
+		withinPlace  string
+		isPerCapita  bool
+		statVarDcids []string
 	}{
 		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
-			[]string{"country/USA", "geoId/06", "geoId/0649670"},
-			"result.json",
+			"country.json",
+			"Country",
+			"",
+			false,
+			[]string{
+				"Count_Person",
+				"Median_Income_Person",
+			},
+		},
+		{
+			"california.json",
+			"County",
+			"geoId/06",
+			false,
+			[]string{
+				"Count_Person",
+				"Median_Age_Person",
+				"Count_CriminalActivities_CombinedCrime",
+			},
+		},
+		{
+			"crime_percapita.json",
+			"City",
+			"geoId/06",
+			true,
+			[]string{
+				"Count_CriminalActivities_CombinedCrime",
+			},
 		},
 	} {
-		resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
-		})
+		req := &pb.GetLocationsRankingsRequest{
+			PlaceType:    c.placeType,
+			WithinPlace:  c.withinPlace,
+			IsPerCapita:  c.isPerCapita,
+			StatVarDcids: c.statVarDcids,
+		}
+		response, err := client.GetLocationsRankings(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetStatAll: %s", err)
+			t.Errorf("could not GetLocationsRankings: %s", err)
 			continue
 		}
+
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateProtoGolden(resp, goldenFile)
+			updateProtoGolden(response, goldenFile)
 			continue
 		}
-		var expected pb.GetStatAllResponse
+
+		var expected pb.GetLocationsRankingsResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
-			t.Errorf("Can not Unmarshal golden file")
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(response, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

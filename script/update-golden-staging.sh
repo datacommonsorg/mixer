@@ -14,7 +14,7 @@
 
 #!/bin/bash
 
-cd e2etest
+cd test/integration/e2etest
 if [ "$#" -eq 1 ]; then
     go test -generate_golden=true -run "$1"
 else

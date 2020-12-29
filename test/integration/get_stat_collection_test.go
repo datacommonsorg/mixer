@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -28,7 +28,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatSet(t *testing.T) {
+func TestGetStatCollection(t *testing.T) {
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()
@@ -42,42 +42,53 @@ func TestGetStatSet(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat_set")
+		path.Dir(filename), "../golden_response/staging/get_stat_collection")
 
 	for _, c := range []struct {
-		statVars   []string
-		places     []string
-		date       string
-		goldenFile string
+		parentPlace string
+		childType   string
+		date        string
+		statVar     []string
+		goldenFile  string
 	}{
 		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
-			[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
-			"",
-			"latest.json",
+			"geoId/06",
+			"County",
+			"2016",
+			[]string{"Count_Person", "Median_Age_Person"},
+			"CA_County_2016.json",
 		},
 		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
-			[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
-			"2010",
-			"2010.json",
+			"country/USA",
+			"County",
+			"2016",
+			[]string{"Count_Person"},
+			"USA_County_2016.json",
+		},
+		{
+			"country/USA",
+			"City",
+			"2016",
+			[]string{"Count_Person"},
+			"USA_City_2016.json",
 		},
 	} {
-		resp, err := client.GetStatSet(ctx, &pb.GetStatSetRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
-			Date:     c.date,
+		resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{
+			ParentPlace: c.parentPlace,
+			ChildType:   c.childType,
+			StatVars:    c.statVar,
+			Date:        c.date,
 		})
 		if err != nil {
-			t.Errorf("could not GetStatSet: %s", err)
+			t.Errorf("could not GetStatCollections: %s", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateProtoGolden(resp, goldenFile)
+			updateGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.GetStatSetResponse
+		var expected pb.GetStatCollectionResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {

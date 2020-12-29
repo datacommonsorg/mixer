@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -28,7 +28,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatValue(t *testing.T) {
+func TestGetStatSeries(t *testing.T) {
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()
@@ -42,7 +42,7 @@ func TestGetStatValue(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat_value")
+		path.Dir(filename), "../golden_response/staging/get_stat_series")
 
 	for _, c := range []struct {
 		statVar    string
@@ -55,7 +55,7 @@ func TestGetStatValue(t *testing.T) {
 			"Count_Person",
 			"country/USA",
 			"count_person.json",
-			"",
+			"CensusACS5yrSurvey",
 			false,
 		},
 		{
@@ -80,13 +80,6 @@ func TestGetStatValue(t *testing.T) {
 			false,
 		},
 		{
-			"Count_Person",
-			"country/USA",
-			"empty.json",
-			"bad_mmethod",
-			true,
-		},
-		{
 			"BadStatsVar",
 			"geoId/06",
 			"",
@@ -95,25 +88,25 @@ func TestGetStatValue(t *testing.T) {
 		},
 		{
 			"Count_Person",
-			"badPlace",
+			"BadPlace",
 			"",
 			"",
 			true,
 		},
 	} {
-		resp, err := client.GetStatValue(ctx, &pb.GetStatValueRequest{
+		resp, err := client.GetStatSeries(ctx, &pb.GetStatSeriesRequest{
 			StatVar:           c.statVar,
 			Place:             c.place,
 			MeasurementMethod: c.mmethod,
 		})
 		if c.wantErr {
 			if err == nil {
-				t.Errorf("Expect GetStatValue to error out but it succeed")
+				t.Errorf("Expect GetStatSeries to error out but it succeed")
 			}
 			continue
 		}
 		if err != nil {
-			t.Errorf("could not GetStatValue: %s", err)
+			t.Errorf("could not GetStatSeries: %s", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
@@ -121,7 +114,7 @@ func TestGetStatValue(t *testing.T) {
 			updateGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.GetStatValueResponse
+		var expected pb.GetStatSeriesResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {

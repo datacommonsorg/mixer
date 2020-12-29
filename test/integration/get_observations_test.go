@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -25,9 +25,10 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetPlacesIn(t *testing.T) {
+func TestGetObservations(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -35,59 +36,63 @@ func TestGetPlacesIn(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_places_in")
+		path.Dir(filename), "../golden_response/staging/get_observations")
 
 	for _, c := range []struct {
-		goldenFile string
 		dcids      []string
-		typ        string
+		mprop      string
+		statsType  string
+		obsDate    string
+		obsPeriod  string
+		mmethod    string
+		goldenFile string
 	}{
 		{
-			"usa-state.json",
-			[]string{"country/USA"},
-			"State",
+			[]string{"dc/p/x6t44d8jd95rd", "dc/p/lr52m1yr46r44"},
+			"count",
+			"measuredValue",
+			"2018-12",
+			"P1M",
+			"BLSSeasonallyAdjusted",
+			"employment.json",
 		},
 		{
-			"state_county.json",
-			[]string{"geoId/05", "geoId/06"},
-			"County",
-		},
-		{
-			"county_zip.json",
-			[]string{"geoId/06085"},
-			"CensusZipCodeTabulationArea",
+			[]string{"dc/p/2ygbv16ky4yvb", "dc/p/cg941cc1lbsvb"},
+			"count",
+			"measuredValue",
+			"2015",
+			"",
+			"CensusACS5yrSurvey",
+			"total_count.json",
 		},
 	} {
-		req := &pb.GetPlacesInRequest{
-			Dcids:     c.dcids,
-			PlaceType: c.typ,
+		req := &pb.GetObservationsRequest{
+			Dcids:             c.dcids,
+			MeasuredProperty:  c.mprop,
+			StatsType:         c.statsType,
+			ObservationDate:   c.obsDate,
+			ObservationPeriod: c.obsPeriod,
+			MeasurementMethod: c.mmethod,
 		}
-		resp, err := client.GetPlacesIn(ctx, req)
+		resp, err := client.GetObservations(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetPlacesIn: %s", err)
+			t.Errorf("could not GetObservations: %s", err)
 			continue
 		}
-		var result []map[string]string
+		var result []*server.PopObs
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateGolden(result, goldenFile)
-			continue
-		}
-
-		var expected []map[string]string
-		file, _ := ioutil.ReadFile(goldenFile)
+		var expected []*server.PopObs
+		file, _ := ioutil.ReadFile(path.Join(goldenPath, c.goldenFile))
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff != "" {
+		if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

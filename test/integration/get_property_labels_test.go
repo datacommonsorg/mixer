@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -27,7 +27,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetPropertyValues(t *testing.T) {
+func TestGetPropertyLabels(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -35,82 +35,45 @@ func TestGetPropertyValues(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_property_values")
+		path.Dir(filename), "../golden_response/staging/get_property_labels")
 
 	for _, c := range []struct {
 		goldenFile string
 		dcids      []string
-		property   string
-		direction  string
-		valueType  string
-		limit      int32
 	}{
 		{
-			"name.json",
-			[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
-			"name",
-			"out",
-			"",
-			0,
+			"property-labels-class.json",
+			[]string{"Class"},
 		},
 		{
-			"contained_in_place.json",
-			[]string{"geoId/06085", "geoId/0647766"},
-			"containedInPlace",
-			"",
-			"City",
-			0,
-		},
-		{
-			"location.json",
+			"property-labels-states.json",
 			[]string{"geoId/05", "geoId/06"},
-			"location",
-			"",
-			"Election",
-			0,
-		},
-		{
-			"limit.json",
-			[]string{"country/USA"},
-			"name",
-			"out",
-			"",
-			1,
 		},
 	} {
-		req := &pb.GetPropertyValuesRequest{
-			Dcids:     c.dcids,
-			Property:  c.property,
-			Direction: c.direction,
-			ValueType: c.valueType,
+		req := &pb.GetPropertyLabelsRequest{
+			Dcids: c.dcids,
 		}
-		if c.limit > 0 {
-			req.Limit = c.limit
-		}
-		resp, err := client.GetPropertyValues(ctx, req)
+		resp, err := client.GetPropertyLabels(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetPropertyValues: %s", err)
+			t.Errorf("could not GetPropertyLabels: %s", err)
 			continue
 		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-
-		var result map[string]map[string][]*server.Node
+		var result map[string]*server.PropLabelCache
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-
+		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
 			updateGolden(result, goldenFile)
 			continue
 		}
-
-		var expected map[string]map[string][]*server.Node
+		var expected map[string]*server.PropLabelCache
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 			continue
 		}
 		if diff := cmp.Diff(result, expected); diff != "" {

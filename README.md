@@ -50,7 +50,7 @@ protoc \
     proto/*.proto
 ```
 
-## E2E test locally
+## Run integration test locally
 
 Install `cloud-build-local` following
 [the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally), then
