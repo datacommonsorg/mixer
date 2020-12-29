@@ -35,7 +35,7 @@ func TestGetPlacesIn(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_places_in")
+		path.Dir(filename), "golden_response/staging/get_places_in")
 
 	for _, c := range []struct {
 		goldenFile string

@@ -36,7 +36,7 @@ func TestGetLandingPageData(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_landing_page_data")
+		path.Dir(filename), "golden_response/staging/get_landing_page_data")
 
 	for _, c := range []struct {
 		goldenFile string

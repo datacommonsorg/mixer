@@ -41,7 +41,7 @@ func TestGetTriples(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_triples")
+		path.Dir(filename), "golden_response/staging/get_triples")
 
 	for _, c := range []struct {
 		dcids        []string

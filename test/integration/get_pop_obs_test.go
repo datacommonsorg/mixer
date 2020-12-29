@@ -52,7 +52,7 @@ func TestGetPopObs(t *testing.T) {
 	}
 
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_pop_obs")
+		path.Dir(filename), "golden_response/staging/get_pop_obs")
 	for _, c := range []struct {
 		dcid       string
 		goldenFile string

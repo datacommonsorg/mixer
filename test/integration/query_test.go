@@ -36,7 +36,7 @@ func TestQuery(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/query")
+		path.Dir(filename), "golden_response/staging/query")
 
 	for _, c := range []struct {
 		sparql     string
