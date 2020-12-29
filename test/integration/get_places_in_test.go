@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -24,59 +25,69 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatAll(t *testing.T) {
+func TestGetPlacesIn(t *testing.T) {
 	ctx := context.Background()
-
-	memcacheData, err := loadMemcache()
-	if err != nil {
-		t.Fatalf("Failed to load memcache %v", err)
-	}
-
-	client, err := setup(server.NewMemcache(memcacheData))
+	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat_all")
+		path.Dir(filename), "golden_response/staging/get_places_in")
 
 	for _, c := range []struct {
-		statVars   []string
-		places     []string
 		goldenFile string
+		dcids      []string
+		typ        string
 	}{
 		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
-			[]string{"country/USA", "geoId/06", "geoId/0649670"},
-			"result.json",
+			"usa-state.json",
+			[]string{"country/USA"},
+			"State",
+		},
+		{
+			"state_county.json",
+			[]string{"geoId/05", "geoId/06"},
+			"County",
+		},
+		{
+			"county_zip.json",
+			[]string{"geoId/06085"},
+			"CensusZipCodeTabulationArea",
 		},
 	} {
-		resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
-		})
+		req := &pb.GetPlacesInRequest{
+			Dcids:     c.dcids,
+			PlaceType: c.typ,
+		}
+		resp, err := client.GetPlacesIn(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetStatAll: %s", err)
+			t.Errorf("could not GetPlacesIn: %s", err)
 			continue
 		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateProtoGolden(resp, goldenFile)
-			continue
-		}
-		var expected pb.GetStatAllResponse
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
+		var result []map[string]string
+		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
-			t.Errorf("Can not Unmarshal golden file")
+			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(result, goldenFile)
+			continue
+		}
+
+		var expected []map[string]string
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = json.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+			continue
+		}
+		if diff := cmp.Diff(result, expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -43,7 +43,7 @@ func TestGetStat(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat")
+		path.Dir(filename), "golden_response/staging/get_stat")
 
 	for _, c := range []struct {
 		statVar      string

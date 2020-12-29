@@ -14,7 +14,7 @@
 
 #!/bin/bash
 
-for dest in golden_response/prod/*/*.json
+for dest in test/integration/golden_response/prod/*/*.json
 do
   src="${dest/prod/staging}"
   cp "$src" "$dest"

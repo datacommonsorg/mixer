@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -27,7 +27,8 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetPropertyValues(t *testing.T) {
+// TestGetLandingPageData tests GetLandingPageData.
+func TestGetLandingPageData(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -35,85 +36,76 @@ func TestGetPropertyValues(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_property_values")
+		path.Dir(filename), "golden_response/staging/get_landing_page_data")
 
 	for _, c := range []struct {
 		goldenFile string
-		dcids      []string
-		property   string
-		direction  string
-		valueType  string
-		limit      int32
+		place      string
+		seed       int64
+		statVars   []string
 	}{
 		{
-			"name.json",
-			[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
-			"name",
-			"out",
-			"",
-			0,
-		},
-		{
-			"contained_in_place.json",
-			[]string{"geoId/06085", "geoId/0647766"},
-			"containedInPlace",
-			"",
-			"City",
-			0,
-		},
-		{
-			"location.json",
-			[]string{"geoId/05", "geoId/06"},
-			"location",
-			"",
-			"Election",
-			0,
-		},
-		{
-			"limit.json",
-			[]string{"country/USA"},
-			"name",
-			"out",
-			"",
+			"asm.json",
+			"country/ASM",
 			1,
+			[]string{},
+		},
+		{
+			"tha.json",
+			"country/THA",
+			1,
+			[]string{"Amount_Stock", "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"},
+		},
+		{
+			"county.json",
+			"geoId/06085",
+			1,
+			[]string{},
+		},
+		{
+			"city.json",
+			"geoId/0656938",
+			1,
+			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
+		},
+		{
+			"zuid-nederland.json",
+			"nuts/NL4",
+			1,
+			[]string{"Count_Person"},
 		},
 	} {
-		req := &pb.GetPropertyValuesRequest{
-			Dcids:     c.dcids,
-			Property:  c.property,
-			Direction: c.direction,
-			ValueType: c.valueType,
+		req := &pb.GetLandingPageDataRequest{
+			Place:    c.place,
+			StatVars: c.statVars,
+			Seed:     c.seed,
 		}
-		if c.limit > 0 {
-			req.Limit = c.limit
-		}
-		resp, err := client.GetPropertyValues(ctx, req)
+		resp, err := client.GetLandingPageData(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetPropertyValues: %s", err)
+			t.Errorf("could not GetLandingPageData: %s", err)
 			continue
 		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-
-		var result map[string]map[string][]*server.Node
+		var result server.LandingPageResponse
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
 
+		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
 			updateGolden(result, goldenFile)
 			continue
 		}
 
-		var expected map[string]map[string][]*server.Node
+		var expected server.LandingPageResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff != "" {
+		if diff := cmp.Diff(&result, &expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

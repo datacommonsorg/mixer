@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -27,85 +27,118 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-// TestGetLandingPageData tests GetLandingPageData.
-func TestGetLandingPageData(t *testing.T) {
+func TestGetTriples(t *testing.T) {
 	ctx := context.Background()
-	client, err := setup(server.NewMemcache(map[string][]byte{}))
+
+	memcacheData, err := loadMemcache()
+	if err != nil {
+		t.Fatalf("Failed to load memcache %v", err)
+	}
+
+	client, err := setup(server.NewMemcache(memcacheData))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_landing_page_data")
+		path.Dir(filename), "golden_response/staging/get_triples")
 
 	for _, c := range []struct {
-		goldenFile string
-		place      string
-		seed       int64
-		statVars   []string
+		dcids        []string
+		goldenFile   string
+		partialMatch bool
+		limit        int32
+		count        []int
 	}{
 		{
-			"asm.json",
-			"country/ASM",
-			1,
-			[]string{},
+			[]string{"State", "Country"},
+			"place_type.json",
+			false,
+			-1,
+			nil,
 		},
 		{
-			"tha.json",
-			"country/THA",
-			1,
-			[]string{"Amount_Stock", "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"},
+			[]string{"zip/00603"},
+			"place.json",
+			true,
+			-1,
+			nil,
 		},
 		{
-			"county.json",
-			"geoId/06085",
-			1,
-			[]string{},
+			[]string{"dc/p/7c8egrk3ypkl5"},
+			"pop.json",
+			true,
+			-1,
+			nil,
 		},
 		{
-			"city.json",
-			"geoId/0656938",
-			1,
-			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
+			[]string{
+				"dc/o/2brkkmq0lxd5h",
+				"dc/o/10b2df1lqhz54",
+				"dc/o/sz10wj1qyyy1d",
+				"dc/p/cmtdk79lnk2pd",
+			},
+			"observation.json",
+			false,
+			-1,
+			nil,
 		},
 		{
-			"zuid-nederland.json",
-			"nuts/NL4",
-			1,
-			[]string{"Count_Person"},
+			[]string{"Count_Person", "Count_Person_Female"},
+			"stats_var.json",
+			false,
+			-1,
+			nil,
+		},
+		{
+			[]string{"City", "County"},
+			"",
+			false,
+			5,
+			[]int{5, 5},
 		},
 	} {
-		req := &pb.GetLandingPageDataRequest{
-			Place:    c.place,
-			StatVars: c.statVars,
-			Seed:     c.seed,
+		req := &pb.GetTriplesRequest{Dcids: c.dcids}
+		if c.limit > 0 {
+			req.Limit = c.limit
 		}
-		resp, err := client.GetLandingPageData(ctx, req)
+		resp, err := client.GetTriples(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetLandingPageData: %s", err)
+			t.Errorf("could not GetTriples: %s", err)
 			continue
 		}
-		var result server.LandingPageResponse
+		var result map[string][]*server.Triple
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-
 		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
+		if generateGolden && c.goldenFile != "" {
 			updateGolden(result, goldenFile)
 			continue
 		}
 
-		var expected server.LandingPageResponse
+		if c.limit > 0 {
+			for idx, place := range c.dcids {
+				count := len(result[place])
+				if count < c.count[idx] {
+					t.Errorf(
+						"Len of triples for %s expect %d, got %d",
+						place, c.count[idx], count)
+				}
+			}
+			continue
+		}
+
+		var expected map[string][]*server.Triple
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(&result, &expected); diff != "" {
+		if diff := cmp.Diff(result, expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

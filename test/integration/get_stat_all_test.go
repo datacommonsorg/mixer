@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -28,7 +28,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatCollection(t *testing.T) {
+func TestGetStatAll(t *testing.T) {
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()
@@ -42,53 +42,33 @@ func TestGetStatCollection(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_stat_collection")
+		path.Dir(filename), "golden_response/staging/get_stat_all")
 
 	for _, c := range []struct {
-		parentPlace string
-		childType   string
-		date        string
-		statVar     []string
-		goldenFile  string
+		statVars   []string
+		places     []string
+		goldenFile string
 	}{
 		{
-			"geoId/06",
-			"County",
-			"2016",
-			[]string{"Count_Person", "Median_Age_Person"},
-			"CA_County_2016.json",
-		},
-		{
-			"country/USA",
-			"County",
-			"2016",
-			[]string{"Count_Person"},
-			"USA_County_2016.json",
-		},
-		{
-			"country/USA",
-			"City",
-			"2016",
-			[]string{"Count_Person"},
-			"USA_City_2016.json",
+			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
+			[]string{"country/USA", "geoId/06", "geoId/0649670"},
+			"result.json",
 		},
 	} {
-		resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{
-			ParentPlace: c.parentPlace,
-			ChildType:   c.childType,
-			StatVars:    c.statVar,
-			Date:        c.date,
+		resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
+			StatVars: c.statVars,
+			Places:   c.places,
 		})
 		if err != nil {
-			t.Errorf("could not GetStatCollections: %s", err)
+			t.Errorf("could not GetStatAll: %s", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(resp, goldenFile)
+			updateProtoGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.GetStatCollectionResponse
+		var expected pb.GetStatAllResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
