@@ -38,8 +38,8 @@ steps:
           --plugin=protoc-gen-go-grpc=/go/bin/protoc-gen-go-grpc \
           --include_source_info \
           --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
-          --go_out=. \
-          --go-grpc_out=. \
+          --go_out=internal \
+          --go-grpc_out=internal \
           --go-grpc_opt=requireUnimplementedServers=false \
           proto/*.proto
 
@@ -62,11 +62,11 @@ steps:
         FROM golang:1.13
         WORKDIR /mixer
         COPY . .
-        RUN go install .
 
         RUN wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/v0.3.5/grpc_health_probe-linux-amd64 && \
         chmod +x /bin/grpc_health_probe
 
+        RUN go build -o /go/bin/mixer cmd/main.go
         ENTRYPOINT ["/go/bin/mixer"]
         EOT
         docker build \

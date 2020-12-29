@@ -16,7 +16,6 @@
 FROM golang:1.13
 
 # Install protoc
-RUN apt-get update && apt-get upgrade -y
 RUN apt-get install protobuf-compiler -y
 
 # Copy the source from the current directory the working directory, excluding
@@ -37,17 +36,15 @@ RUN curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/goo
          --output /mixer/proto/google/api/http.proto
 RUN protoc \
     --proto_path=proto \
-    --go_out=. \
-    --go-grpc_out=. \
+    --go_out=internal \
+    --go-grpc_out=internal \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/*.proto
-
-# Install the Go app.
-RUN go install .
 
 # Adding the grpc_health_probe
 RUN GRPC_HEALTH_PROBE_VERSION=v0.3.5 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
 
+RUN go build -o /go/bin/mixer cmd/main.go
 ENTRYPOINT ["/go/bin/mixer"]

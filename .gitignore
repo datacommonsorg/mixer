@@ -40,11 +40,7 @@ Temporary Items
 .apdisk
 
 # Build and Config Files
-proto/google/
-proto/*.go
-
-# Sphinx documentation
-docs/_build/
+**/proto/google/
 
 # vscode
 .vscode

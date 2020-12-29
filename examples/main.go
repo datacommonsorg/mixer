@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"log"
 
-	pb "github.com/datacommonsorg/mixer/proto"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc"
 )
 
