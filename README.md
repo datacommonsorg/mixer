@@ -41,7 +41,8 @@ Install protoc by following
 Run the following code to generate golang proto files.
 
 ```bash
-./prepare-proto.sh
+go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
+go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 protoc \
     --proto_path=proto \
     --go_out=internal \
@@ -57,7 +58,7 @@ Install `cloud-build-local` following
 run:
 
 ```bash
-cloud-build-local --config=cloudbuild.test.yaml --dryrun=false .
+cloud-build-local --config=build/ci/cloudbuild.test.yaml --dryrun=false .
 ```
 
 ## Run grpc server and examples locally
