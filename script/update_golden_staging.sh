@@ -14,11 +14,10 @@
 
 #!/bin/bash
 
-set -e
-go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
-go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
-mkdir -p proto/google/api/
-curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto \
-      --output proto/google/api/annotations.proto
-curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto \
-      --output proto/google/api/http.proto
+cd test/integration
+if [ "$#" -eq 1 ]; then
+    go test -generate_golden=true -run "$1"
+else
+    go test -generate_golden=true
+fi
+

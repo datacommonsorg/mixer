@@ -13,11 +13,7 @@
 # limitations under the License.
 
 #!/bin/bash
+set -e
 
-cd test/integration/e2etest
-if [ "$#" -eq 1 ]; then
-    go test -generate_golden=true -run "$1"
-else
-    go test -generate_golden=true
-fi
-
+docker build -t gcr.io/datcom-ci/go-protoc:latest -f build/Dockerfile --target go-protoc .
+docker push gcr.io/datcom-ci/go-protoc:latest
