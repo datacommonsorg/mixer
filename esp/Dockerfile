@@ -14,7 +14,8 @@
 
 
 # Creates a container that generates gRPC json config that can be used directly
-# by local ESP container.
+# by local ESP container. These two containers share the same volume that holds
+# the mixer-grpc.json.
 
 FROM golang:1.15 AS base
 
