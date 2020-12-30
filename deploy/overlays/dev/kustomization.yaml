@@ -28,7 +28,7 @@ configMapGenerator:
 - name: mixer-configmap
   behavior: create
   literals:
-    - projectId=datcom-website-dev
+    - projectId=datcom-mixer-dev
     - serviceName=
 
 generatorOptions:
