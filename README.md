@@ -83,11 +83,11 @@ go run main.go
 Run the following commands to update golden files in ./golden_response/staging
 
 ```bash
-./update-golden-staging.sh
+./script/update-golden-staging.sh
 ```
 
 Run the following commands to update prod golden files from staging golden files
 
 ```bash
-./update-golden-prod.sh
+./script/update-golden-prod.sh
 ```
