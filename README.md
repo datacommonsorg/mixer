@@ -11,6 +11,7 @@ Clone the forked repo to your local machine and add datacommonsorg/mixer repo as
 
 ```shell
 git clone git@github.com:<YOUR-REPO>/mixer.git
+cd mixer
 git remote add dc https://github.com/datacommonsorg/mixer.git
 ```
 
@@ -30,7 +31,7 @@ Then in your forked repo, can send a Pull Request. Wait for approval of the Pull
 
 ## Develop and test locally
 
-Follow the [Developer Guide](docs/developer_guid.md).
+Follow the [Developer Guide](docs/developer_guide.md).
 
 ## Setup a new GKE cluster
 
