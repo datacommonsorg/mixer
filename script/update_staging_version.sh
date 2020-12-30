@@ -13,6 +13,11 @@
 # limitations under the License.
 
 #!/bin/bash
+
+# This script is used to update the current staging mixer version in the
+# `deployment`:https://source.cloud.google.com/datcom-ci/deployment repo.
+# This is used by continous deployment process.
+
 set -e
 
 VERSION=$1

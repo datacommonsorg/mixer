@@ -14,6 +14,11 @@
 
 #!/bin/bash
 
+# This script is used to generate golden files for staging enviroment.
+# Arguments:
+# `-d`: Do the update using Docker
+# `-t <TestName>`: Only update the golden files for the specified test.
+
 set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"

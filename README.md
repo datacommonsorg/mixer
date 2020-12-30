@@ -51,6 +51,11 @@ protoc \
     proto/*.proto
 ```
 
+Note there are two protobuf dependency files copied from
+[Google API repo](https://github.com/googleapis/googleapis/tree/master/google/api):
+`proto/google/api/annotations.proto` and `proto/google/api/http.proto`.
+These files are needed to build the protobuf annotation used for gRPC to REST transcoding.
+
 ## Run integration test locally
 
 Install `cloud-build-local` following

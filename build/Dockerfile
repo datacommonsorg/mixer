@@ -13,6 +13,15 @@
 # limitations under the License.
 
 
+# This Dockerfile is used to build various container images. There are a few
+# targets:
+#
+# go-protoc: image with Golang, protoc and protoc-go pluggin
+# base: image with Go modules download and protobuf built
+# server: image for mixer server
+# test: image to run all the tests
+# golden-update: image to update golden files
+
 # =========  base stage ==========
 
 FROM golang:1.15 AS go-protoc

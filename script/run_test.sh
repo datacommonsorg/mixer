@@ -13,6 +13,11 @@
 # limitations under the License.
 
 #!/bin/bash
+
+# This script is used to run all the mixer test.
+# `./run_test.sh` runs the tests with local Golang enviroment.
+# `./run_test.sh -d` runs the test using Docker.
+
 set -e
 
 while true; do
