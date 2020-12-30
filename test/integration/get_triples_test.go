@@ -28,6 +28,7 @@ import (
 )
 
 func TestGetTriples(t *testing.T) {
+	t.Parallel()
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()

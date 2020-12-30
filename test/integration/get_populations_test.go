@@ -25,6 +25,7 @@ import (
 )
 
 func TestGetPopulations(t *testing.T) {
+	t.Parallel()
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {

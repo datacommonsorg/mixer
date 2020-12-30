@@ -37,6 +37,7 @@ func TestGetPropertyValues(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "golden_response/staging/get_property_values")
 
+	t.Parallel()
 	for _, c := range []struct {
 		goldenFile string
 		dcids      []string

@@ -77,6 +77,7 @@ func getMissingStatVarRanking(client pb.MixerClient, req *pb.GetLocationsRanking
 }
 
 func TestChartConfigRankings(t *testing.T) {
+	t.Parallel()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
@@ -114,59 +115,60 @@ func TestChartConfigRankings(t *testing.T) {
 			"missing_USA_city_rankings.json",
 		},
 	} {
-		var missingRankings []Chart
-		for _, chart := range config {
-			var missingRanking Chart
-			missingRanking.Title = chart.Title
+		c := c
+		t.Run(c.goldenFile, func(t *testing.T) {
+			t.Parallel()
+			var missingRankings []Chart
+			for _, chart := range config {
+				var missingRanking Chart
+				missingRanking.Title = chart.Title
 
-			// Test main chart rankings
-			req := &pb.GetLocationsRankingsRequest{
-				PlaceType:    c.placeType,
-				WithinPlace:  c.parentPlace,
-				StatVarDcids: chart.StatsVars,
-				IsPerCapita:  len(chart.Denominator) > 0,
-			}
-			missingStatVars, err := getMissingStatVarRanking(client, req)
-			if err != nil {
-				t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
-				t.Errorf("%s", err.Error())
-				continue
-			}
-			missingRanking.StatsVars = missingStatVars
-
-			// Test related chart rankings
-			if chart.RelatedChart.Scale {
-				req.IsPerCapita = true
+				// Test main chart rankings
+				req := &pb.GetLocationsRankingsRequest{
+					PlaceType:    c.placeType,
+					WithinPlace:  c.parentPlace,
+					StatVarDcids: chart.StatsVars,
+					IsPerCapita:  len(chart.Denominator) > 0,
+				}
 				missingStatVars, err := getMissingStatVarRanking(client, req)
 				if err != nil {
 					t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
 					t.Errorf("%s", err.Error())
 					continue
 				}
-				missingRanking.RelatedChart.Scale = true
-				missingRanking.RelatedChart.StatsVars = missingStatVars
+				missingRanking.StatsVars = missingStatVars
+
+				// Test related chart rankings
+				if chart.RelatedChart.Scale {
+					req.IsPerCapita = true
+					missingStatVars, err := getMissingStatVarRanking(client, req)
+					if err != nil {
+						t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
+						t.Errorf("%s", err.Error())
+						continue
+					}
+					missingRanking.RelatedChart.Scale = true
+					missingRanking.RelatedChart.StatsVars = missingStatVars
+				}
+				if missingRanking.StatsVars != nil {
+					missingRankings = append(missingRankings, missingRanking)
+				}
+
 			}
-			if missingRanking.StatsVars != nil {
-				missingRankings = append(missingRankings, missingRanking)
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if generateGolden {
+				updateGolden(missingRankings, goldenFile)
 			}
 
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateGolden(missingRankings, goldenFile)
-			continue
-		}
-
-		var expected []Chart
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(&missingRankings, &expected); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
-		}
+			var expected []Chart
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+			}
+			if diff := cmp.Diff(&missingRankings, &expected); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+			}
+		})
 	}
 }

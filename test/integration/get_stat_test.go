@@ -30,6 +30,7 @@ import (
 )
 
 func TestGetStat(t *testing.T) {
+	t.Parallel()
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()
