@@ -41,7 +41,8 @@ Install protoc by following
 Run the following code to generate golang proto files.
 
 ```bash
-./prepare-proto.sh
+go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
+go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 protoc \
     --proto_path=proto \
     --go_out=internal \
@@ -50,6 +51,11 @@ protoc \
     proto/*.proto
 ```
 
+Note there are two protobuf dependency files copied from
+[Google API repo](https://github.com/googleapis/googleapis/tree/master/google/api):
+`proto/google/api/annotations.proto` and `proto/google/api/http.proto`.
+These files are needed to build the protobuf annotation used for gRPC to REST transcoding.
+
 ## Run integration test locally
 
 Install `cloud-build-local` following
@@ -57,7 +63,7 @@ Install `cloud-build-local` following
 run:
 
 ```bash
-cloud-build-local --config=cloudbuild.test.yaml --dryrun=false .
+cloud-build-local --config=build/ci/cloudbuild.test.yaml --dryrun=false .
 ```
 
 ## Run grpc server and examples locally
@@ -82,11 +88,11 @@ go run main.go
 Run the following commands to update golden files in ./golden_response/staging
 
 ```bash
-./update-golden-staging.sh
+./script/update-golden-staging.sh
 ```
 
 Run the following commands to update prod golden files from staging golden files
 
 ```bash
-./update-golden-prod.sh
+./script/update-golden-prod.sh
 ```

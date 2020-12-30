@@ -14,10 +14,24 @@
 
 #!/bin/bash
 
-cd test/integration
-if [ "$#" -eq 1 ]; then
-    go test -generate_golden=true -run "$1"
-else
-    go test -generate_golden=true
-fi
+# This script is used to run all the mixer test.
+# `./run_test.sh` runs the tests with local Golang enviroment.
+# `./run_test.sh -d` runs the test using Docker.
 
+set -e
+
+while true; do
+  case "$1" in
+    -d | --docker ) DOCKER=true; shift ;;
+    * ) break ;;
+  esac
+done
+
+if [[ $DOCKER == "true" ]]; then
+  DOCKER_BUILDKIT=1 docker build --tag datacommons/mixer-test  -f build/Dockerfile --target test .
+  docker run \
+    -v $HOME/.config/gcloud:/root/.config/gcloud \
+    datacommons/mixer-test
+else
+  go test ./...
+fi

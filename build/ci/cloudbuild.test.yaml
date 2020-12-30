@@ -13,35 +13,20 @@
 # limitations under the License.
 
 steps:
-
-# Prepare go package and proto dependency
-- id: prepare-proto
-  name: golang
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    ./prepare-proto.sh
-
-# Compile protobuf and grpc descriptor
-- id: compile-proto
-  name: gcr.io/datcom-ci/protoc
+# Build protobuf to go bindings
+- id: build-proto
+  name: gcr.io/datcom-ci/go-protoc
   entrypoint: 'bash'
   args:
   - -c
   - |
     protoc \
       --proto_path=proto \
-      --plugin=protoc-gen-go=/go/bin/protoc-gen-go \
-      --plugin=protoc-gen-go-grpc=/go/bin/protoc-gen-go-grpc \
-      --include_source_info \
-      --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
-      --go_out=. \
-      --go-grpc_out=. \
+      --go_out=internal \
+      --go-grpc_out=internal \
       --go-grpc_opt=requireUnimplementedServers=false \
       proto/*.proto
-
-- id: lint-test
+- id: test
   name: golang
   env: ['GO111MODULE=on']
   entrypoint: 'bash'
@@ -52,7 +37,6 @@ steps:
     wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
     ./bin/golangci-lint run --timeout=600s
     go test ./...
-
 options:
   volumes:
   - name: go-modules
