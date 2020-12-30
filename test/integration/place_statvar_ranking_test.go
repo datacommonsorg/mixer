@@ -21,6 +21,8 @@ import (
 	"net/http"
 	"path"
 	"runtime"
+	"sort"
+	"sync"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -57,7 +59,9 @@ func readChartConfig() ([]Chart, error) {
 	return config, nil
 }
 
-func getMissingStatVarRanking(client pb.MixerClient, req *pb.GetLocationsRankingsRequest) ([]string, error) {
+func getMissingStatVarRanking(
+	client pb.MixerClient,
+	req *pb.GetLocationsRankingsRequest) ([]string, error) {
 	ctx := context.Background()
 	response, err := client.GetLocationsRankings(ctx, req)
 	if err != nil {
@@ -77,6 +81,7 @@ func getMissingStatVarRanking(client pb.MixerClient, req *pb.GetLocationsRanking
 }
 
 func TestChartConfigRankings(t *testing.T) {
+	t.Parallel()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
@@ -87,7 +92,10 @@ func TestChartConfigRankings(t *testing.T) {
 		return
 	}
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "golden_response/staging/statvar_ranking")
+	goldenPath := path.Join(
+		path.Dir(filename),
+		"golden_response/staging/statvar_ranking",
+	)
 	for _, c := range []struct {
 		placeType   string
 		parentPlace string
@@ -114,59 +122,82 @@ func TestChartConfigRankings(t *testing.T) {
 			"missing_USA_city_rankings.json",
 		},
 	} {
-		var missingRankings []Chart
-		for _, chart := range config {
-			var missingRanking Chart
-			missingRanking.Title = chart.Title
+		c := c
+		t.Run(c.goldenFile, func(t *testing.T) {
+			t.Parallel()
+			missingRankingsChan := make(chan Chart, len(config))
+			var wg sync.WaitGroup
 
-			// Test main chart rankings
-			req := &pb.GetLocationsRankingsRequest{
-				PlaceType:    c.placeType,
-				WithinPlace:  c.parentPlace,
-				StatVarDcids: chart.StatsVars,
-				IsPerCapita:  len(chart.Denominator) > 0,
+			for _, chart := range config {
+				wg.Add(1)
+				go func(chart Chart, wg *sync.WaitGroup) {
+					defer wg.Done()
+					var missingRanking Chart
+					missingRanking.Title = chart.Title
+					// Test main chart rankings
+					req := &pb.GetLocationsRankingsRequest{
+						PlaceType:    c.placeType,
+						WithinPlace:  c.parentPlace,
+						StatVarDcids: chart.StatsVars,
+						IsPerCapita:  len(chart.Denominator) > 0,
+					}
+					missingStatVars, err := getMissingStatVarRanking(client, req)
+					if err != nil {
+						t.Errorf(
+							"Error fetching rankings for chart %s: %s",
+							chart.Title,
+							c.placeType,
+						)
+						t.Errorf("%s", err.Error())
+					}
+					missingRanking.StatsVars = missingStatVars
+
+					// Test related chart rankings
+					if chart.RelatedChart.Scale {
+						req.IsPerCapita = true
+						missingStatVars, err := getMissingStatVarRanking(client, req)
+						if err != nil {
+							t.Errorf(
+								"Error fetching rankings for chart %s: %s",
+								chart.Title,
+								c.placeType,
+							)
+							t.Errorf("%s", err.Error())
+						}
+						missingRanking.RelatedChart.Scale = true
+						missingRanking.RelatedChart.StatsVars = missingStatVars
+					}
+					if missingRanking.StatsVars != nil {
+						missingRankingsChan <- missingRanking
+					}
+				}(chart, &wg)
 			}
-			missingStatVars, err := getMissingStatVarRanking(client, req)
+			wg.Wait()
+			close(missingRankingsChan)
+			var missingRankings []Chart
+			for elem := range missingRankingsChan {
+				missingRankings = append(missingRankings, elem)
+			}
+			sort.Slice(missingRankings, func(i, j int) bool {
+				si := missingRankings[i].Title + missingRankings[i].StatsVars[0]
+				sj := missingRankings[j].Title + missingRankings[j].StatsVars[0]
+				return si < sj
+			})
+
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if generateGolden {
+				updateGolden(missingRankings, goldenFile)
+			}
+
+			var expected []Chart
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
 			if err != nil {
-				t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
-				t.Errorf("%s", err.Error())
-				continue
+				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			}
-			missingRanking.StatsVars = missingStatVars
-
-			// Test related chart rankings
-			if chart.RelatedChart.Scale {
-				req.IsPerCapita = true
-				missingStatVars, err := getMissingStatVarRanking(client, req)
-				if err != nil {
-					t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
-					t.Errorf("%s", err.Error())
-					continue
-				}
-				missingRanking.RelatedChart.Scale = true
-				missingRanking.RelatedChart.StatsVars = missingStatVars
+			if diff := cmp.Diff(&missingRankings, &expected); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
 			}
-			if missingRanking.StatsVars != nil {
-				missingRankings = append(missingRankings, missingRanking)
-			}
-
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateGolden(missingRankings, goldenFile)
-			continue
-		}
-
-		var expected []Chart
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(&missingRankings, &expected); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
-		}
+		})
 	}
 }

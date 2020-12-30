@@ -29,6 +29,7 @@ import (
 )
 
 func TestGetStatSeries(t *testing.T) {
+	t.Parallel()
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()

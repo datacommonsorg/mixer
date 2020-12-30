@@ -37,6 +37,7 @@ func (a byID) Less(i, j int) bool { return a[i].GetId() < a[j].GetId() }
 func (a byID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func TestGetPopObs(t *testing.T) {
+	t.Parallel()
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 

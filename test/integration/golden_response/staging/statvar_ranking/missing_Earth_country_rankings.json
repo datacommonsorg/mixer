@@ -1,72 +1,93 @@
 [
   {
-    "title": "Number of people employed",
+    "title": "Arson",
     "statsVars": [
-      "Count_Person_Employed"
+      "Count_CriminalActivities_Arson"
     ],
     "relatedChart": {
       "scale": true,
       "statsVars": [
-        "Count_Person_Employed"
+        "Count_CriminalActivities_Arson"
       ]
     }
   },
   {
-    "title": "Poverty rate",
+    "title": "COVID-19 cumulative cases",
     "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months"
+      "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+      ]
+    }
+  },
+  {
+    "title": "Citizenship status",
+    "statsVars": [
+      "Count_Person_USCitizenBornInTheUnitedStates",
+      "Count_Person_USCitizenByNaturalization",
+      "Count_Person_NotAUSCitizen",
+      "Count_Person_USCitizenBornAbroadOfAmericanParents"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_USCitizenBornInTheUnitedStates",
+        "Count_Person_USCitizenByNaturalization",
+        "Count_Person_NotAUSCitizen",
+        "Count_Person_USCitizenBornAbroadOfAmericanParents"
+      ]
+    }
+  },
+  {
+    "title": "Disasters",
+    "statsVars": [
+      "Count_DroughtEvent",
+      "Count_StormSurgeTideEvent"
     ],
     "relatedChart": {}
   },
   {
-    "title": "State unemployment insurance claims",
+    "title": "Education attainment",
     "statsVars": [
-      "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+      "Count_Person_EducationalAttainmentNoSchoolingCompleted",
+      "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
+      "Count_Person_EducationalAttainmentBachelorsDegree",
+      "Count_Person_EducationalAttainmentMastersDegree",
+      "Count_Person_EducationalAttainmentDoctorateDegree"
     ],
     "relatedChart": {
       "scale": true,
       "statsVars": [
-        "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+        "Count_Person_EducationalAttainmentNoSchoolingCompleted",
+        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
+        "Count_Person_EducationalAttainmentBachelorsDegree",
+        "Count_Person_EducationalAttainmentMastersDegree",
+        "Count_Person_EducationalAttainmentDoctorateDegree"
       ]
     }
   },
   {
-    "title": "Median individual income",
+    "title": "Health behaviors",
     "statsVars": [
-      "Median_Income_Person"
+      "Percent_Person_SleepLessThan7Hours",
+      "Percent_Person_Obesity",
+      "Percent_Person_BingeDrinking",
+      "Percent_Person_PhysicalInactivity",
+      "Percent_Person_Smoking"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Individual income",
+    "title": "Health outcomes",
     "statsVars": [
-      "Count_Person_IncomeOfUpto9999USDollar",
-      "Count_Person_IncomeOf10000To14999USDollar",
-      "Count_Person_IncomeOf15000To24999USDollar",
-      "Count_Person_IncomeOf25000To34999USDollar",
-      "Count_Person_IncomeOf35000To49999USDollar",
-      "Count_Person_IncomeOf50000To64999USDollar",
-      "Count_Person_IncomeOf65000To74999USDollar",
-      "Count_Person_IncomeOf75000OrMoreUSDollar"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_IncomeOfUpto9999USDollar",
-        "Count_Person_IncomeOf10000To14999USDollar",
-        "Count_Person_IncomeOf15000To24999USDollar",
-        "Count_Person_IncomeOf25000To34999USDollar",
-        "Count_Person_IncomeOf35000To49999USDollar",
-        "Count_Person_IncomeOf50000To64999USDollar",
-        "Count_Person_IncomeOf65000To74999USDollar",
-        "Count_Person_IncomeOf75000OrMoreUSDollar"
-      ]
-    }
-  },
-  {
-    "title": "Median household income",
-    "statsVars": [
-      "Median_Income_Household"
+      "Percent_Person_WithHighCholesterol",
+      "Percent_Person_WithHighBloodPressure",
+      "Percent_Person_WithArthritis",
+      "Percent_Person_WithMentalHealthNotGood",
+      "Percent_Person_WithPhysicalHealthNotGood"
     ],
     "relatedChart": {}
   },
@@ -103,370 +124,30 @@
     }
   },
   {
-    "title": "COVID-19 cumulative cases",
+    "title": "Housing units by date built",
     "statsVars": [
-      "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+      "Count_HousingUnit_Before1939DateBuilt",
+      "Count_HousingUnit_1940To1949DateBuilt",
+      "Count_HousingUnit_1950To1959DateBuilt",
+      "Count_HousingUnit_1960To1969DateBuilt",
+      "Count_HousingUnit_1970To1979DateBuilt",
+      "Count_HousingUnit_1980To1989DateBuilt",
+      "Count_HousingUnit_1990To1999DateBuilt",
+      "Count_HousingUnit_2000To2009DateBuilt",
+      "Count_HousingUnit_2010OrLaterDateBuilt"
     ],
     "relatedChart": {
       "scale": true,
       "statsVars": [
-        "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
-      ]
-    }
-  },
-  {
-    "title": "Mortality events",
-    "statsVars": [
-      "Count_Death_DiseasesOfTheCirculatorySystem",
-      "Count_Death_Neoplasms",
-      "Count_Death_DiseasesOfTheRespiratorySystem",
-      "Count_Death_ExternalCauses",
-      "Count_Death_DiseasesOfTheNervousSystem"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Death_DiseasesOfTheCirculatorySystem",
-        "Count_Death_Neoplasms",
-        "Count_Death_DiseasesOfTheRespiratorySystem",
-        "Count_Death_ExternalCauses",
-        "Count_Death_DiseasesOfTheNervousSystem"
-      ]
-    }
-  },
-  {
-    "title": "Health outcomes",
-    "statsVars": [
-      "Percent_Person_WithHighCholesterol",
-      "Percent_Person_WithHighBloodPressure",
-      "Percent_Person_WithArthritis",
-      "Percent_Person_WithMentalHealthNotGood",
-      "Percent_Person_WithPhysicalHealthNotGood"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Health behaviors",
-    "statsVars": [
-      "Percent_Person_SleepLessThan7Hours",
-      "Percent_Person_Obesity",
-      "Percent_Person_BingeDrinking",
-      "Percent_Person_PhysicalInactivity",
-      "Percent_Person_Smoking"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Prescribed drugs (quarterly)",
-    "statsVars": [
-      "RetailDrugDistribution_DrugDistribution_Oxycodone",
-      "RetailDrugDistribution_DrugDistribution_Hydrocodone",
-      "RetailDrugDistribution_DrugDistribution_Codeine",
-      "RetailDrugDistribution_DrugDistribution_Amphetamine",
-      "RetailDrugDistribution_DrugDistribution_Morphine"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "RetailDrugDistribution_DrugDistribution_Oxycodone",
-        "RetailDrugDistribution_DrugDistribution_Hydrocodone",
-        "RetailDrugDistribution_DrugDistribution_Codeine",
-        "RetailDrugDistribution_DrugDistribution_Amphetamine",
-        "RetailDrugDistribution_DrugDistribution_Morphine"
-      ]
-    }
-  },
-  {
-    "title": "Median household income by race",
-    "statsVars": [
-      "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
-      "Median_Income_Household_HouseholderRaceAsianAlone",
-      "Median_Income_Household_HouseholderRaceBlackOrAfricanAmericanAlone",
-      "Median_Income_Household_HouseholderRaceHispanicOrLatino",
-      "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone",
-      "Median_Income_Household_HouseholderRaceWhiteAlone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Median income by gender",
-    "statsVars": [
-      "Median_Income_Person_15OrMoreYears_Female_WithIncome",
-      "Median_Income_Person_15OrMoreYears_Male_WithIncome"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Poverty rate by race",
-    "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
-      "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone",
-      "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Poverty rate by gender",
-    "statsVars": [
-      "Count_Person_Female_BelowPovertyLevelInThePast12Months",
-      "Count_Person_Male_BelowPovertyLevelInThePast12Months"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Percentage of people without health insurance by race",
-    "statsVars": [
-      "Percent_Person_18To64Years_NoHealthInsurance_BlackOrAfricanAmericanAlone",
-      "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino",
-      "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Percentage of people without health insurance by gender",
-    "statsVars": [
-      "Percent_Person_18To64Years_Female_NoHealthInsurance",
-      "Percent_Person_18To64Years_Male_NoHealthInsurance"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Rate of associate degree attainment by gender",
-    "statsVars": [
-      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
-      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Rate of bachelor's degree attainment by gender",
-    "statsVars": [
-      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
-      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Rate of graduate or professional degree attainment by gender",
-    "statsVars": [
-      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
-      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Total crime",
-    "statsVars": [
-      "Count_CriminalActivities_CombinedCrime"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_CriminalActivities_CombinedCrime"
-      ]
-    }
-  },
-  {
-    "title": "Violent crime",
-    "statsVars": [
-      "Count_CriminalActivities_ViolentCrime"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_CriminalActivities_ViolentCrime"
-      ]
-    }
-  },
-  {
-    "title": "Property crime",
-    "statsVars": [
-      "Count_CriminalActivities_PropertyCrime"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_CriminalActivities_PropertyCrime"
-      ]
-    }
-  },
-  {
-    "title": "Arson",
-    "statsVars": [
-      "Count_CriminalActivities_Arson"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_CriminalActivities_Arson"
-      ]
-    }
-  },
-  {
-    "title": "Education attainment",
-    "statsVars": [
-      "Count_Person_EducationalAttainmentNoSchoolingCompleted",
-      "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
-      "Count_Person_EducationalAttainmentBachelorsDegree",
-      "Count_Person_EducationalAttainmentMastersDegree",
-      "Count_Person_EducationalAttainmentDoctorateDegree"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_EducationalAttainmentNoSchoolingCompleted",
-        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
-        "Count_Person_EducationalAttainmentBachelorsDegree",
-        "Count_Person_EducationalAttainmentMastersDegree",
-        "Count_Person_EducationalAttainmentDoctorateDegree"
-      ]
-    }
-  },
-  {
-    "title": "School enrollment",
-    "statsVars": [
-      "Count_Person_EnrolledInSchool",
-      "Count_Person_NotEnrolledInSchool"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_EnrolledInSchool",
-        "Count_Person_NotEnrolledInSchool"
-      ]
-    }
-  },
-  {
-    "title": "Population by age",
-    "statsVars": [
-      "Count_Person_5To17Years",
-      "Count_Person_18To24Years",
-      "Count_Person_25To34Years",
-      "Count_Person_35To44Years",
-      "Count_Person_45To54Years",
-      "Count_Person_60To61Years",
-      "Count_Person_62To64Years",
-      "Count_Person_65To74Years"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_5To17Years",
-        "Count_Person_18To24Years",
-        "Count_Person_25To34Years",
-        "Count_Person_35To44Years",
-        "Count_Person_45To54Years",
-        "Count_Person_60To61Years",
-        "Count_Person_62To64Years",
-        "Count_Person_65To74Years"
-      ]
-    }
-  },
-  {
-    "title": "Population by race",
-    "statsVars": [
-      "Count_Person_AmericanIndianOrAlaskaNativeAlone",
-      "Count_Person_AsianAlone",
-      "Count_Person_BlackOrAfricanAmericanAlone",
-      "Count_Person_HispanicOrLatino",
-      "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone",
-      "Count_Person_SomeOtherRaceAlone",
-      "Count_Person_TwoOrMoreRaces",
-      "Count_Person_WhiteAlone"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_AmericanIndianOrAlaskaNativeAlone",
-        "Count_Person_AsianAlone",
-        "Count_Person_BlackOrAfricanAmericanAlone",
-        "Count_Person_HispanicOrLatino",
-        "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone",
-        "Count_Person_SomeOtherRaceAlone",
-        "Count_Person_TwoOrMoreRaces",
-        "Count_Person_WhiteAlone"
-      ]
-    }
-  },
-  {
-    "title": "Median Age",
-    "statsVars": [
-      "Median_Age_Person"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Median age by gender",
-    "statsVars": [
-      "Median_Age_Person_Female",
-      "Median_Age_Person_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Median age by race",
-    "statsVars": [
-      "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone",
-      "Median_Age_Person_AsianAlone",
-      "Median_Age_Person_BlackOrAfricanAmericanAlone",
-      "Median_Age_Person_HispanicOrLatino",
-      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone",
-      "Median_Age_Person_SomeOtherRaceAlone",
-      "Median_Age_Person_TwoOrMoreRaces",
-      "Median_Age_Person_WhiteAlone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Citizenship status",
-    "statsVars": [
-      "Count_Person_USCitizenBornInTheUnitedStates",
-      "Count_Person_USCitizenByNaturalization",
-      "Count_Person_NotAUSCitizen",
-      "Count_Person_USCitizenBornAbroadOfAmericanParents"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_USCitizenBornInTheUnitedStates",
-        "Count_Person_USCitizenByNaturalization",
-        "Count_Person_NotAUSCitizen",
-        "Count_Person_USCitizenBornAbroadOfAmericanParents"
-      ]
-    }
-  },
-  {
-    "title": "Marital status",
-    "statsVars": [
-      "Count_Person_MarriedAndNotSeparated",
-      "Count_Person_Divorced",
-      "Count_Person_NeverMarried",
-      "Count_Person_Widowed",
-      "Count_Person_Separated"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_MarriedAndNotSeparated",
-        "Count_Person_Divorced",
-        "Count_Person_NeverMarried",
-        "Count_Person_Widowed",
-        "Count_Person_Separated"
-      ]
-    }
-  },
-  {
-    "title": "Housing units",
-    "statsVars": [
-      "Count_HousingUnit"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_HousingUnit"
+        "Count_HousingUnit_Before1939DateBuilt",
+        "Count_HousingUnit_1940To1949DateBuilt",
+        "Count_HousingUnit_1950To1959DateBuilt",
+        "Count_HousingUnit_1960To1969DateBuilt",
+        "Count_HousingUnit_1970To1979DateBuilt",
+        "Count_HousingUnit_1980To1989DateBuilt",
+        "Count_HousingUnit_1990To1999DateBuilt",
+        "Count_HousingUnit_2000To2009DateBuilt",
+        "Count_HousingUnit_2010OrLaterDateBuilt"
       ]
     }
   },
@@ -559,34 +240,6 @@
     }
   },
   {
-    "title": "Housing units by date built",
-    "statsVars": [
-      "Count_HousingUnit_Before1939DateBuilt",
-      "Count_HousingUnit_1940To1949DateBuilt",
-      "Count_HousingUnit_1950To1959DateBuilt",
-      "Count_HousingUnit_1960To1969DateBuilt",
-      "Count_HousingUnit_1970To1979DateBuilt",
-      "Count_HousingUnit_1980To1989DateBuilt",
-      "Count_HousingUnit_1990To1999DateBuilt",
-      "Count_HousingUnit_2000To2009DateBuilt",
-      "Count_HousingUnit_2010OrLaterDateBuilt"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_HousingUnit_Before1939DateBuilt",
-        "Count_HousingUnit_1940To1949DateBuilt",
-        "Count_HousingUnit_1950To1959DateBuilt",
-        "Count_HousingUnit_1960To1969DateBuilt",
-        "Count_HousingUnit_1970To1979DateBuilt",
-        "Count_HousingUnit_1980To1989DateBuilt",
-        "Count_HousingUnit_1990To1999DateBuilt",
-        "Count_HousingUnit_2000To2009DateBuilt",
-        "Count_HousingUnit_2010OrLaterDateBuilt"
-      ]
-    }
-  },
-  {
     "title": "Housing units by rental status",
     "statsVars": [
       "Count_HousingUnit_OwnerOccupied",
@@ -601,11 +254,358 @@
     }
   },
   {
-    "title": "Disasters",
+    "title": "Housing units",
     "statsVars": [
-      "Count_DroughtEvent",
-      "Count_StormSurgeTideEvent"
+      "Count_HousingUnit"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit"
+      ]
+    }
+  },
+  {
+    "title": "Individual income",
+    "statsVars": [
+      "Count_Person_IncomeOfUpto9999USDollar",
+      "Count_Person_IncomeOf10000To14999USDollar",
+      "Count_Person_IncomeOf15000To24999USDollar",
+      "Count_Person_IncomeOf25000To34999USDollar",
+      "Count_Person_IncomeOf35000To49999USDollar",
+      "Count_Person_IncomeOf50000To64999USDollar",
+      "Count_Person_IncomeOf65000To74999USDollar",
+      "Count_Person_IncomeOf75000OrMoreUSDollar"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_IncomeOfUpto9999USDollar",
+        "Count_Person_IncomeOf10000To14999USDollar",
+        "Count_Person_IncomeOf15000To24999USDollar",
+        "Count_Person_IncomeOf25000To34999USDollar",
+        "Count_Person_IncomeOf35000To49999USDollar",
+        "Count_Person_IncomeOf50000To64999USDollar",
+        "Count_Person_IncomeOf65000To74999USDollar",
+        "Count_Person_IncomeOf75000OrMoreUSDollar"
+      ]
+    }
+  },
+  {
+    "title": "Marital status",
+    "statsVars": [
+      "Count_Person_MarriedAndNotSeparated",
+      "Count_Person_Divorced",
+      "Count_Person_NeverMarried",
+      "Count_Person_Widowed",
+      "Count_Person_Separated"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_MarriedAndNotSeparated",
+        "Count_Person_Divorced",
+        "Count_Person_NeverMarried",
+        "Count_Person_Widowed",
+        "Count_Person_Separated"
+      ]
+    }
+  },
+  {
+    "title": "Median Age",
+    "statsVars": [
+      "Median_Age_Person"
     ],
     "relatedChart": {}
+  },
+  {
+    "title": "Median age by gender",
+    "statsVars": [
+      "Median_Age_Person_Female",
+      "Median_Age_Person_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median age by race",
+    "statsVars": [
+      "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone",
+      "Median_Age_Person_AsianAlone",
+      "Median_Age_Person_BlackOrAfricanAmericanAlone",
+      "Median_Age_Person_HispanicOrLatino",
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone",
+      "Median_Age_Person_SomeOtherRaceAlone",
+      "Median_Age_Person_TwoOrMoreRaces",
+      "Median_Age_Person_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median household income by race",
+    "statsVars": [
+      "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
+      "Median_Income_Household_HouseholderRaceAsianAlone",
+      "Median_Income_Household_HouseholderRaceBlackOrAfricanAmericanAlone",
+      "Median_Income_Household_HouseholderRaceHispanicOrLatino",
+      "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone",
+      "Median_Income_Household_HouseholderRaceWhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median household income",
+    "statsVars": [
+      "Median_Income_Household"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median income by gender",
+    "statsVars": [
+      "Median_Income_Person_15OrMoreYears_Female_WithIncome",
+      "Median_Income_Person_15OrMoreYears_Male_WithIncome"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median individual income",
+    "statsVars": [
+      "Median_Income_Person"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mortality events",
+    "statsVars": [
+      "Count_Death_DiseasesOfTheCirculatorySystem",
+      "Count_Death_Neoplasms",
+      "Count_Death_DiseasesOfTheRespiratorySystem",
+      "Count_Death_ExternalCauses",
+      "Count_Death_DiseasesOfTheNervousSystem"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Death_DiseasesOfTheCirculatorySystem",
+        "Count_Death_Neoplasms",
+        "Count_Death_DiseasesOfTheRespiratorySystem",
+        "Count_Death_ExternalCauses",
+        "Count_Death_DiseasesOfTheNervousSystem"
+      ]
+    }
+  },
+  {
+    "title": "Number of people employed",
+    "statsVars": [
+      "Count_Person_Employed"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Employed"
+      ]
+    }
+  },
+  {
+    "title": "Percentage of people without health insurance by gender",
+    "statsVars": [
+      "Percent_Person_18To64Years_Female_NoHealthInsurance",
+      "Percent_Person_18To64Years_Male_NoHealthInsurance"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Percentage of people without health insurance by race",
+    "statsVars": [
+      "Percent_Person_18To64Years_NoHealthInsurance_BlackOrAfricanAmericanAlone",
+      "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino",
+      "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Population by age",
+    "statsVars": [
+      "Count_Person_5To17Years",
+      "Count_Person_18To24Years",
+      "Count_Person_25To34Years",
+      "Count_Person_35To44Years",
+      "Count_Person_45To54Years",
+      "Count_Person_60To61Years",
+      "Count_Person_62To64Years",
+      "Count_Person_65To74Years"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_5To17Years",
+        "Count_Person_18To24Years",
+        "Count_Person_25To34Years",
+        "Count_Person_35To44Years",
+        "Count_Person_45To54Years",
+        "Count_Person_60To61Years",
+        "Count_Person_62To64Years",
+        "Count_Person_65To74Years"
+      ]
+    }
+  },
+  {
+    "title": "Population by race",
+    "statsVars": [
+      "Count_Person_AmericanIndianOrAlaskaNativeAlone",
+      "Count_Person_AsianAlone",
+      "Count_Person_BlackOrAfricanAmericanAlone",
+      "Count_Person_HispanicOrLatino",
+      "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone",
+      "Count_Person_SomeOtherRaceAlone",
+      "Count_Person_TwoOrMoreRaces",
+      "Count_Person_WhiteAlone"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_AmericanIndianOrAlaskaNativeAlone",
+        "Count_Person_AsianAlone",
+        "Count_Person_BlackOrAfricanAmericanAlone",
+        "Count_Person_HispanicOrLatino",
+        "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone",
+        "Count_Person_SomeOtherRaceAlone",
+        "Count_Person_TwoOrMoreRaces",
+        "Count_Person_WhiteAlone"
+      ]
+    }
+  },
+  {
+    "title": "Poverty rate by gender",
+    "statsVars": [
+      "Count_Person_Female_BelowPovertyLevelInThePast12Months",
+      "Count_Person_Male_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Poverty rate by race",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
+      "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Poverty rate",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Prescribed drugs (quarterly)",
+    "statsVars": [
+      "RetailDrugDistribution_DrugDistribution_Oxycodone",
+      "RetailDrugDistribution_DrugDistribution_Hydrocodone",
+      "RetailDrugDistribution_DrugDistribution_Codeine",
+      "RetailDrugDistribution_DrugDistribution_Amphetamine",
+      "RetailDrugDistribution_DrugDistribution_Morphine"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "RetailDrugDistribution_DrugDistribution_Oxycodone",
+        "RetailDrugDistribution_DrugDistribution_Hydrocodone",
+        "RetailDrugDistribution_DrugDistribution_Codeine",
+        "RetailDrugDistribution_DrugDistribution_Amphetamine",
+        "RetailDrugDistribution_DrugDistribution_Morphine"
+      ]
+    }
+  },
+  {
+    "title": "Property crime",
+    "statsVars": [
+      "Count_CriminalActivities_PropertyCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_PropertyCrime"
+      ]
+    }
+  },
+  {
+    "title": "Rate of associate degree attainment by gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Rate of bachelor's degree attainment by gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Rate of graduate or professional degree attainment by gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "School enrollment",
+    "statsVars": [
+      "Count_Person_EnrolledInSchool",
+      "Count_Person_NotEnrolledInSchool"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_EnrolledInSchool",
+        "Count_Person_NotEnrolledInSchool"
+      ]
+    }
+  },
+  {
+    "title": "State unemployment insurance claims",
+    "statsVars": [
+      "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+      ]
+    }
+  },
+  {
+    "title": "Total crime",
+    "statsVars": [
+      "Count_CriminalActivities_CombinedCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_CombinedCrime"
+      ]
+    }
+  },
+  {
+    "title": "Violent crime",
+    "statsVars": [
+      "Count_CriminalActivities_ViolentCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_ViolentCrime"
+      ]
+    }
   }
 ]
