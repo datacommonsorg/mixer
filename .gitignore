@@ -39,9 +39,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Build and Config Files
-**/proto/google/
-
 # vscode
 .vscode
 
