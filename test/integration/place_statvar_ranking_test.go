@@ -59,7 +59,9 @@ func readChartConfig() ([]Chart, error) {
 	return config, nil
 }
 
-func getMissingStatVarRanking(client pb.MixerClient, req *pb.GetLocationsRankingsRequest) ([]string, error) {
+func getMissingStatVarRanking(
+	client pb.MixerClient,
+	req *pb.GetLocationsRankingsRequest) ([]string, error) {
 	ctx := context.Background()
 	response, err := client.GetLocationsRankings(ctx, req)
 	if err != nil {
@@ -90,7 +92,10 @@ func TestChartConfigRankings(t *testing.T) {
 		return
 	}
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "golden_response/staging/statvar_ranking")
+	goldenPath := path.Join(
+		path.Dir(filename),
+		"golden_response/staging/statvar_ranking",
+	)
 	for _, c := range []struct {
 		placeType   string
 		parentPlace string
@@ -138,7 +143,11 @@ func TestChartConfigRankings(t *testing.T) {
 					}
 					missingStatVars, err := getMissingStatVarRanking(client, req)
 					if err != nil {
-						t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
+						t.Errorf(
+							"Error fetching rankings for chart %s: %s",
+							chart.Title,
+							c.placeType,
+						)
 						t.Errorf("%s", err.Error())
 					}
 					missingRanking.StatsVars = missingStatVars
@@ -148,7 +157,11 @@ func TestChartConfigRankings(t *testing.T) {
 						req.IsPerCapita = true
 						missingStatVars, err := getMissingStatVarRanking(client, req)
 						if err != nil {
-							t.Errorf("Error fetching rankings for chart %s: %s", chart.Title, c.placeType)
+							t.Errorf(
+								"Error fetching rankings for chart %s: %s",
+								chart.Title,
+								c.placeType,
+							)
 							t.Errorf("%s", err.Error())
 						}
 						missingRanking.RelatedChart.Scale = true
@@ -166,7 +179,9 @@ func TestChartConfigRankings(t *testing.T) {
 				missingRankings = append(missingRankings, elem)
 			}
 			sort.Slice(missingRankings, func(i, j int) bool {
-				return missingRankings[i].Title < missingRankings[j].Title
+				si := missingRankings[i].Title + missingRankings[i].StatsVars[0]
+				sj := missingRankings[j].Title + missingRankings[j].StatsVars[0]
+				return si < sj
 			})
 
 			goldenFile := path.Join(goldenPath, c.goldenFile)

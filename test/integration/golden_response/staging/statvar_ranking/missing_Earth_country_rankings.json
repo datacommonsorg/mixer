@@ -124,18 +124,6 @@
     }
   },
   {
-    "title": "Housing units",
-    "statsVars": [
-      "Count_HousingUnit"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_HousingUnit"
-      ]
-    }
-  },
-  {
     "title": "Housing units by date built",
     "statsVars": [
       "Count_HousingUnit_Before1939DateBuilt",
@@ -266,6 +254,18 @@
     }
   },
   {
+    "title": "Housing units",
+    "statsVars": [
+      "Count_HousingUnit"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit"
+      ]
+    }
+  },
+  {
     "title": "Individual income",
     "statsVars": [
       "Count_Person_IncomeOfUpto9999USDollar",
@@ -341,13 +341,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Median household income",
-    "statsVars": [
-      "Median_Income_Household"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Median household income by race",
     "statsVars": [
       "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
@@ -356,6 +349,13 @@
       "Median_Income_Household_HouseholderRaceHispanicOrLatino",
       "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone",
       "Median_Income_Household_HouseholderRaceWhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median household income",
+    "statsVars": [
+      "Median_Income_Household"
     ],
     "relatedChart": {}
   },
@@ -476,13 +476,6 @@
     }
   },
   {
-    "title": "Poverty rate",
-    "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Poverty rate by gender",
     "statsVars": [
       "Count_Person_Female_BelowPovertyLevelInThePast12Months",
@@ -499,6 +492,13 @@
       "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
       "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone",
       "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Poverty rate",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months"
     ],
     "relatedChart": {}
   },

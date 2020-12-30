@@ -38,17 +38,17 @@
     }
   },
   {
-    "title": "Children in employment",
-    "statsVars": [
-      "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Children in employment by gender",
     "statsVars": [
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female",
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Children in employment",
+    "statsVars": [
+      "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"
     ],
     "relatedChart": {}
   },
@@ -135,16 +135,16 @@
     "relatedChart": {}
   },
   {
-    "title": "Government expenditures on military",
+    "title": "Government expenditures on military (% of GDP)",
     "statsVars": [
-      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government"
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Government expenditures on military (% of GDP)",
+    "title": "Government expenditures on military",
     "statsVars": [
-      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government"
     ],
     "relatedChart": {}
   },
@@ -189,13 +189,6 @@
     }
   },
   {
-    "title": "Infant mortality rate",
-    "statsVars": [
-      "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Infant mortality rate by gender",
     "statsVars": [
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
@@ -204,9 +197,9 @@
     "relatedChart": {}
   },
   {
-    "title": "Inward remittance",
+    "title": "Infant mortality rate",
     "statsVars": [
-      "Amount_Remittance_InwardRemittance"
+      "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth"
     ],
     "relatedChart": {}
   },
@@ -214,6 +207,13 @@
     "title": "Inward remittance (% of GDP)",
     "statsVars": [
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Inward remittance",
+    "statsVars": [
+      "Amount_Remittance_InwardRemittance"
     ],
     "relatedChart": {}
   },
@@ -232,16 +232,16 @@
     "relatedChart": {}
   },
   {
-    "title": "Market capitalization of domestic companies",
+    "title": "Market capitalization of domestic companies (% of GDP)",
     "statsVars": [
-      "Amount_Stock"
+      "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Market capitalization of domestic companies (% of GDP)",
+    "title": "Market capitalization of domestic companies",
     "statsVars": [
-      "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+      "Amount_Stock"
     ],
     "relatedChart": {}
   },
@@ -373,17 +373,17 @@
     }
   },
   {
-    "title": "Severe wasting among children under 5",
-    "statsVars": [
-      "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Severe wasting among children under 5 by gender",
     "statsVars": [
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male",
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Severe wasting among children under 5",
+    "statsVars": [
+      "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years"
     ],
     "relatedChart": {}
   },
@@ -402,16 +402,16 @@
   {
     "title": "Unemployment rate by gender",
     "statsVars": [
-      "UnemploymentRate_Person_Male",
-      "UnemploymentRate_Person_Female"
+      "UnemploymentRate_Person_Female",
+      "UnemploymentRate_Person_Male"
     ],
     "relatedChart": {}
   },
   {
     "title": "Unemployment rate by gender",
     "statsVars": [
-      "UnemploymentRate_Person_Female",
-      "UnemploymentRate_Person_Male"
+      "UnemploymentRate_Person_Male",
+      "UnemploymentRate_Person_Female"
     ],
     "relatedChart": {}
   },
@@ -424,17 +424,17 @@
     "relatedChart": {}
   },
   {
-    "title": "Wasting among children under 5",
-    "statsVars": [
-      "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Wasting among children under 5 by gender",
     "statsVars": [
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male",
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Wasting among children under 5",
+    "statsVars": [
+      "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
     ],
     "relatedChart": {}
   }
