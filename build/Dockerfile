@@ -33,13 +33,13 @@ COPY go.mod go.sum /mixer/
 RUN go mod download
 # Copy files
 COPY proto/ proto
-COPY pkg/ pkg
+COPY internal/ internal
 COPY deploy/ deploy
 # Build protobuf
 RUN protoc \
     --proto_path=proto \
-    --go_out=pkg \
-    --go-grpc_out=pkg \
+    --go_out=internal \
+    --go-grpc_out=internal \
     --go-grpc_opt=requireUnimplementedServers=false \
     proto/*.proto
 

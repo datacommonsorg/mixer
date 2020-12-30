@@ -28,7 +28,12 @@ git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(
 
 # Update version file
 git checkout master
+
 echo $VERSION > /tmp/deployment/mixer/staging/version.txt
+echo gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb > /tmp/deployment/mixer/staging/grpc.txt
+echo gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA > /tmp/deployment/mixer/staging/docker.txt
+cp /workspace/deployment/bigquery.txt /tmp/deployment/mixer/staging/bigquery.txt
+cp /workspace/deployment/bigtable.txt /tmp/deployment/mixer/staging/bigtable.txt
 
 # Commit the version file
 git add /tmp/deployment/mixer/staging/*

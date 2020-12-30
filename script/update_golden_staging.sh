@@ -14,10 +14,40 @@
 
 #!/bin/bash
 
-cd test/integration
-if [ "$#" -eq 1 ]; then
-    go test -generate_golden=true -run "$1"
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT="$(dirname "$DIR")"
+
+while getopts "dt:" OPTION; do
+  case $OPTION in
+    d)
+        echo -e "### Update golden files in docker mode"
+        DOCKER=true
+        ;;
+    t)
+        echo -e "### Update golden files for test: ${OPTARG}"
+        TARGET=${OPTARG}
+        ;;
+    *)
+        break ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [[ $TARGET != "" ]]; then
+    ARG="-run $TARGET"
 else
-    go test -generate_golden=true
+    ARG=""
 fi
 
+if [[ $DOCKER == "true" ]]; then
+  DOCKER_BUILDKIT=1 docker build --tag datacommons/mixer-golden-update  -f build/Dockerfile --target golden-update .
+  docker run \
+    -v $HOME/.config/gcloud:/root/.config/gcloud \
+    -v $ROOT/test/integration:/result \
+    -e arg="$ARG" \
+    datacommons/mixer-golden-update
+else
+    go test -v $ROOT/test/integration -generate_golden=true $ARG
+fi
