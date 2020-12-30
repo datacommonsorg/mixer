@@ -1,15 +1,27 @@
 [
   {
-    "title": "Labor force participation rate",
+    "title": "Alcohol consumption per capita (annual)",
     "statsVars": [
-      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years"
+      "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Poverty rate",
+    "title": "Arson",
     "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months"
+      "Count_CriminalActivities_Arson"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_Arson"
+      ]
+    }
+  },
+  {
+    "title": "CO2 emissions per capita",
+    "statsVars": [
+      "Amount_Emissions_CarbonDioxide_PerCapita"
     ],
     "relatedChart": {}
   },
@@ -29,38 +41,30 @@
     "relatedChart": {}
   },
   {
-    "title": "Unemployment rate by gender",
+    "title": "Electricity consumption per capita",
     "statsVars": [
-      "UnemploymentRate_Person_Male",
-      "UnemploymentRate_Person_Female"
+      "Amount_Consumption_Electricity_PerCapita"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Gross domestic product per capita",
+    "title": "Energy use (kg of oil equivalent per capita)",
     "statsVars": [
-      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita"
+      "Amount_Consumption_Energy_PerCapita"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Gross domestic product growth rate",
+    "title": "Fertility rate",
     "statsVars": [
-      "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction"
+      "FertilityRate_Person_Female"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Gross national income per capita (purchasing power parity)",
+    "title": "Gini index",
     "statsVars": [
-      "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Gross national income (purchasing power parity)",
-    "statsVars": [
-      "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity"
+      "GiniIndex_EconomicActivity"
     ],
     "relatedChart": {}
   },
@@ -77,16 +81,16 @@
     }
   },
   {
-    "title": "Government expenditures on education (% of government expenditure)",
+    "title": "Government expenditures on education (% of GDP)",
     "statsVars": [
-      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government"
+      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Government expenditures on education (% of GDP)",
+    "title": "Government expenditures on education (% of government expenditure)",
     "statsVars": [
-      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government"
     ],
     "relatedChart": {}
   },
@@ -105,16 +109,79 @@
     "relatedChart": {}
   },
   {
-    "title": "Market capitalization of domestic companies",
+    "title": "Gross domestic product growth rate",
     "statsVars": [
-      "Amount_Stock"
+      "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Market capitalization of domestic companies (% of GDP)",
+    "title": "Gross domestic product per capita",
     "statsVars": [
-      "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Gross national income (purchasing power parity)",
+    "statsVars": [
+      "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Gross national income per capita (purchasing power parity)",
+    "statsVars": [
+      "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Health behaviors",
+    "statsVars": [
+      "Percent_Person_SleepLessThan7Hours",
+      "Percent_Person_Obesity",
+      "Percent_Person_BingeDrinking",
+      "Percent_Person_PhysicalInactivity",
+      "Percent_Person_Smoking"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Health outcomes",
+    "statsVars": [
+      "Percent_Person_WithHighCholesterol",
+      "Percent_Person_WithHighBloodPressure",
+      "Percent_Person_WithArthritis",
+      "Percent_Person_WithMentalHealthNotGood",
+      "Percent_Person_WithPhysicalHealthNotGood"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Housing units by householder race",
+    "statsVars": [
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
+      ]
+    }
+  },
+  {
+    "title": "Infant mortality rate",
+    "statsVars": [
+      "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Infant mortality rate by gender",
+    "statsVars": [
+      "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
+      "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
     ],
     "relatedChart": {}
   },
@@ -133,6 +200,27 @@
     "relatedChart": {}
   },
   {
+    "title": "Labor force participation rate",
+    "statsVars": [
+      "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Market capitalization of domestic companies",
+    "statsVars": [
+      "Amount_Stock"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Market capitalization of domestic companies (% of GDP)",
+    "statsVars": [
+      "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Outward remittance",
     "statsVars": [
       "Amount_Remittance_OutwardRemittance"
@@ -140,32 +228,16 @@
     "relatedChart": {}
   },
   {
-    "title": "Infant mortality rate",
+    "title": "Population growth rate",
     "statsVars": [
-      "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth"
+      "GrowthRate_Count_Person"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Infant mortality rate by gender",
+    "title": "Poverty rate",
     "statsVars": [
-      "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
-      "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Wasting among children under 5",
-    "statsVars": [
-      "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Wasting among children under 5 by gender",
-    "statsVars": [
-      "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male",
-      "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
+      "Count_Person_BelowPovertyLevelInThePast12Months"
     ],
     "relatedChart": {}
   },
@@ -185,42 +257,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Health outcomes",
-    "statsVars": [
-      "Percent_Person_WithHighCholesterol",
-      "Percent_Person_WithHighBloodPressure",
-      "Percent_Person_WithArthritis",
-      "Percent_Person_WithMentalHealthNotGood",
-      "Percent_Person_WithPhysicalHealthNotGood"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Health behaviors",
-    "statsVars": [
-      "Percent_Person_SleepLessThan7Hours",
-      "Percent_Person_Obesity",
-      "Percent_Person_BingeDrinking",
-      "Percent_Person_PhysicalInactivity",
-      "Percent_Person_Smoking"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Alcohol consumption per capita (annual)",
-    "statsVars": [
-      "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Gini index",
-    "statsVars": [
-      "GiniIndex_EconomicActivity"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Unemployment rate by gender",
     "statsVars": [
       "UnemploymentRate_Person_Female",
@@ -229,21 +265,10 @@
     "relatedChart": {}
   },
   {
-    "title": "Arson",
+    "title": "Unemployment rate by gender",
     "statsVars": [
-      "Count_CriminalActivities_Arson"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_CriminalActivities_Arson"
-      ]
-    }
-  },
-  {
-    "title": "Population growth rate",
-    "statsVars": [
-      "GrowthRate_Count_Person"
+      "UnemploymentRate_Person_Male",
+      "UnemploymentRate_Person_Female"
     ],
     "relatedChart": {}
   },
@@ -256,42 +281,17 @@
     "relatedChart": {}
   },
   {
-    "title": "Fertility rate",
+    "title": "Wasting among children under 5",
     "statsVars": [
-      "FertilityRate_Person_Female"
+      "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Housing units by householder race",
+    "title": "Wasting among children under 5 by gender",
     "statsVars": [
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
-      ]
-    }
-  },
-  {
-    "title": "Energy use (kg of oil equivalent per capita)",
-    "statsVars": [
-      "Amount_Consumption_Energy_PerCapita"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "CO2 emissions per capita",
-    "statsVars": [
-      "Amount_Emissions_CarbonDioxide_PerCapita"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Electricity consumption per capita",
-    "statsVars": [
-      "Amount_Consumption_Electricity_PerCapita"
+      "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male",
+      "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
     ],
     "relatedChart": {}
   }
