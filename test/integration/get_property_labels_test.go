@@ -12,11 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package integration
 
 import (
 	"context"
 	"encoding/json"
+	"io/ioutil"
+	"path"
+	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/pkg/proto"
@@ -24,57 +27,53 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetPopulations(t *testing.T) {
+func TestGetPropertyLabels(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "golden_response/staging/get_property_labels")
 
 	for _, c := range []struct {
-		dcids          []string
-		populationType string
-		pvs            map[string]string
-		want           []byte
+		goldenFile string
+		dcids      []string
 	}{
 		{
+			"property-labels-class.json",
+			[]string{"Class"},
+		},
+		{
+			"property-labels-states.json",
 			[]string{"geoId/05", "geoId/06"},
-			"Person",
-			map[string]string{"gender": "Male", "age": "Years85Onwards"},
-			[]byte(`[
-				{
-					"dcid":"geoId/05",
-					"population":"dc/p/7j2me3p74sht1"
-				},
-				{
-					"dcid":"geoId/06",
-					"population":"dc/p/gpvt9t84mq3gg"
-				}
-			]`),
 		},
 	} {
-		req := &pb.GetPopulationsRequest{
-			Dcids:          c.dcids,
-			PopulationType: c.populationType,
+		req := &pb.GetPropertyLabelsRequest{
+			Dcids: c.dcids,
 		}
-		for p, v := range c.pvs {
-			req.Pvs = append(req.Pvs, &pb.PropertyValue{Property: p, Value: v})
-		}
-		resp, err := client.GetPopulations(ctx, req)
+		resp, err := client.GetPropertyLabels(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetPropertyValues: %s", err)
+			t.Errorf("could not GetPropertyLabels: %s", err)
 			continue
 		}
-		var result []*server.PlacePopInfo
+		var result map[string]*server.PropLabelCache
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
-		var expected []*server.PlacePopInfo
-		err = json.Unmarshal(c.want, &expected)
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(result, goldenFile)
+			continue
+		}
+		var expected map[string]*server.PropLabelCache
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = json.Unmarshal(file, &expected)
 		if err != nil {
-			t.Errorf("Can not Unmarshal want: %v", err)
+			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 			continue
 		}
 		if diff := cmp.Diff(result, expected); diff != "" {

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package integration
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 	"github.com/datacommonsorg/mixer/pkg/server"
 )
 
-func TestGetPlaceStatsVar(t *testing.T) {
+func TestGetPlaceStatVars(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -61,10 +61,10 @@ func TestGetPlaceStatsVar(t *testing.T) {
 		},
 	} {
 
-		req := &pb.GetPlaceStatsVarRequest{
+		req := &pb.GetPlaceStatVarsRequest{
 			Dcids: c.dcids,
 		}
-		resp, err := client.GetPlaceStatsVar(ctx, req)
+		resp, err := client.GetPlaceStatVars(ctx, req)
 		if c.wanterr {
 			if err == nil {
 				t.Errorf("Expect to get error for GetPlaceStatsVar() but succeed")
@@ -76,11 +76,11 @@ func TestGetPlaceStatsVar(t *testing.T) {
 			continue
 		}
 		for dcid, place := range resp.Places {
-			if len(place.StatsVars) < c.minCount {
+			if len(place.StatVars) < c.minCount {
 				t.Errorf("%s has less than %d stats vars", dcid, c.minCount)
 			}
 			statsVarSet := map[string]bool{}
-			for _, statsVar := range place.StatsVars {
+			for _, statsVar := range place.StatVars {
 				statsVarSet[statsVar] = true
 			}
 			for _, statsVar := range c.want {

@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package integration
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -24,11 +25,9 @@ import (
 	pb "github.com/datacommonsorg/mixer/pkg/proto"
 	"github.com/datacommonsorg/mixer/pkg/server"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetLocationsRankings(t *testing.T) {
+func TestGetPropertyValues(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -36,72 +35,85 @@ func TestGetLocationsRankings(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_stat_ranking")
+		path.Dir(filename), "golden_response/staging/get_property_values")
 
 	for _, c := range []struct {
-		goldenFile   string
-		placeType    string
-		withinPlace  string
-		isPerCapita  bool
-		statVarDcids []string
+		goldenFile string
+		dcids      []string
+		property   string
+		direction  string
+		valueType  string
+		limit      int32
 	}{
 		{
-			"country.json",
-			"Country",
+			"name.json",
+			[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
+			"name",
+			"out",
 			"",
-			false,
-			[]string{
-				"Count_Person",
-				"Median_Income_Person",
-			},
+			0,
 		},
 		{
-			"california.json",
-			"County",
-			"geoId/06",
-			false,
-			[]string{
-				"Count_Person",
-				"Median_Age_Person",
-				"Count_CriminalActivities_CombinedCrime",
-			},
-		},
-		{
-			"crime_percapita.json",
+			"contained_in_place.json",
+			[]string{"geoId/06085", "geoId/0647766"},
+			"containedInPlace",
+			"",
 			"City",
-			"geoId/06",
-			true,
-			[]string{
-				"Count_CriminalActivities_CombinedCrime",
-			},
+			0,
+		},
+		{
+			"location.json",
+			[]string{"geoId/05", "geoId/06"},
+			"location",
+			"",
+			"Election",
+			0,
+		},
+		{
+			"limit.json",
+			[]string{"country/USA"},
+			"name",
+			"out",
+			"",
+			1,
 		},
 	} {
-		req := &pb.GetLocationsRankingsRequest{
-			PlaceType:    c.placeType,
-			WithinPlace:  c.withinPlace,
-			IsPerCapita:  c.isPerCapita,
-			StatVarDcids: c.statVarDcids,
+		req := &pb.GetPropertyValuesRequest{
+			Dcids:     c.dcids,
+			Property:  c.property,
+			Direction: c.direction,
+			ValueType: c.valueType,
 		}
-		response, err := client.GetLocationsRankings(ctx, req)
+		if c.limit > 0 {
+			req.Limit = c.limit
+		}
+		resp, err := client.GetPropertyValues(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetLocationsRankings: %s", err)
+			t.Errorf("could not GetPropertyValues: %s", err)
 			continue
 		}
-
 		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateProtoGolden(response, goldenFile)
+
+		var result map[string]map[string][]*server.Node
+		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+		if err != nil {
+			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
 
-		var expected pb.GetLocationsRankingsResponse
+		if generateGolden {
+			updateGolden(result, goldenFile)
+			continue
+		}
+
+		var expected map[string]map[string][]*server.Node
 		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
+		err = json.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(response, &expected, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(result, expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

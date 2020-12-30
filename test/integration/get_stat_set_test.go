@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package integration
 
 import (
 	"context"
@@ -28,7 +28,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatSeries(t *testing.T) {
+func TestGetStatSet(t *testing.T) {
 	ctx := context.Background()
 
 	memcacheData, err := loadMemcache()
@@ -42,79 +42,42 @@ func TestGetStatSeries(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_stat_series")
+		path.Dir(filename), "golden_response/staging/get_stat_set")
 
 	for _, c := range []struct {
-		statVar    string
-		place      string
+		statVars   []string
+		places     []string
+		date       string
 		goldenFile string
-		mmethod    string
-		wantErr    bool
 	}{
 		{
-			"Count_Person",
-			"country/USA",
-			"count_person.json",
-			"CensusACS5yrSurvey",
-			false,
+			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
+			[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
+			"",
+			"latest.json",
 		},
 		{
-			"Count_CriminalActivities_CombinedCrime",
-			"geoId/06",
-			"total_crimes.json",
-			"",
-			false,
-		},
-		{
-			"Median_Age_Person",
-			"geoId/0649670",
-			"median_age.json",
-			"",
-			false,
-		},
-		{
-			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-			"country/USA",
-			"gdp.json",
-			"",
-			false,
-		},
-		{
-			"BadStatsVar",
-			"geoId/06",
-			"",
-			"",
-			true,
-		},
-		{
-			"Count_Person",
-			"BadPlace",
-			"",
-			"",
-			true,
+			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
+			[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
+			"2010",
+			"2010.json",
 		},
 	} {
-		resp, err := client.GetStatSeries(ctx, &pb.GetStatSeriesRequest{
-			StatVar:           c.statVar,
-			Place:             c.place,
-			MeasurementMethod: c.mmethod,
+		resp, err := client.GetStatSet(ctx, &pb.GetStatSetRequest{
+			StatVars: c.statVars,
+			Places:   c.places,
+			Date:     c.date,
 		})
-		if c.wantErr {
-			if err == nil {
-				t.Errorf("Expect GetStatSeries to error out but it succeed")
-			}
-			continue
-		}
 		if err != nil {
-			t.Errorf("could not GetStatSeries: %s", err)
+			t.Errorf("could not GetStatSet: %s", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(resp, goldenFile)
+			updateProtoGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.GetStatSeriesResponse
+		var expected pb.GetStatSetResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {

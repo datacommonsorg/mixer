@@ -64,7 +64,7 @@ RUN protoc \
 RUN if [[ mod == "test" ]] ; then \
         go test ./... ; \
     elif [[ mod == "update" ]]; then \
-        go test -v ./test/e2e -generate_golden=true \
+        go test -v ./test/integration -generate_golden=true \
     else \
         go build -o /go/bin/mixer cmd/main.go \
     fi

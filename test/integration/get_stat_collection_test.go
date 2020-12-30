@@ -12,11 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package integration
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
@@ -25,73 +24,79 @@ import (
 	pb "github.com/datacommonsorg/mixer/pkg/proto"
 	"github.com/datacommonsorg/mixer/pkg/server"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetRelatedLocations(t *testing.T) {
+func TestGetStatCollection(t *testing.T) {
 	ctx := context.Background()
-	client, err := setup(server.NewMemcache(map[string][]byte{}))
+
+	memcacheData, err := loadMemcache()
+	if err != nil {
+		t.Fatalf("Failed to load memcache %v", err)
+	}
+
+	client, err := setup(server.NewMemcache(memcacheData))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_related_locations")
+		path.Dir(filename), "golden_response/staging/get_stat_collection")
 
 	for _, c := range []struct {
-		goldenFile   string
-		dcid         string
-		withinPlace  string
-		statVarDcids []string
+		parentPlace string
+		childType   string
+		date        string
+		statVar     []string
+		goldenFile  string
 	}{
 		{
-			"county.json",
-			"geoId/06085",
-			"country/USA",
-			[]string{
-				"Count_Person",
-				"Median_Income_Person",
-				"Median_Age_Person",
-				"UnemploymentRate_Person",
-			},
+			"geoId/06",
+			"County",
+			"2016",
+			[]string{"Count_Person", "Median_Age_Person"},
+			"CA_County_2016.json",
 		},
 		{
-			"crime.json",
-			"geoId/06",
-			"",
-			[]string{"Count_CriminalActivities_CombinedCrime"},
+			"country/USA",
+			"County",
+			"2016",
+			[]string{"Count_Person"},
+			"USA_County_2016.json",
+		},
+		{
+			"country/USA",
+			"City",
+			"2016",
+			[]string{"Count_Person"},
+			"USA_City_2016.json",
 		},
 	} {
-		req := &pb.GetRelatedLocationsRequest{
-			Dcid:         c.dcid,
-			StatVarDcids: c.statVarDcids,
-			WithinPlace:  c.withinPlace,
-		}
-		resp, err := client.GetRelatedLocations(ctx, req)
+		resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{
+			ParentPlace: c.parentPlace,
+			ChildType:   c.childType,
+			StatVars:    c.statVar,
+			Date:        c.date,
+		})
 		if err != nil {
-			t.Errorf("could not GetRelatedLocations: %s", err)
+			t.Errorf("could not GetStatCollections: %s", err)
 			continue
 		}
-		var result map[string]*server.RelatedPlacesInfo
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
-
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile)
+			updateGolden(resp, goldenFile)
+			continue
+		}
+		var expected pb.GetStatCollectionResponse
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = protojson.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file")
 			continue
 		}
 
-		var expected map[string]*server.RelatedPlacesInfo
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(result, expected); diff != "" {
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

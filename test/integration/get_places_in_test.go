@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package integration
 
 import (
 	"context"
@@ -27,7 +27,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetPropertyLabels(t *testing.T) {
+func TestGetPlacesIn(t *testing.T) {
 	ctx := context.Background()
 	client, err := setup(server.NewMemcache(map[string][]byte{}))
 	if err != nil {
@@ -35,41 +35,52 @@ func TestGetPropertyLabels(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_property_labels")
+		path.Dir(filename), "golden_response/staging/get_places_in")
 
 	for _, c := range []struct {
 		goldenFile string
 		dcids      []string
+		typ        string
 	}{
 		{
-			"property-labels-class.json",
-			[]string{"Class"},
+			"usa-state.json",
+			[]string{"country/USA"},
+			"State",
 		},
 		{
-			"property-labels-states.json",
+			"state_county.json",
 			[]string{"geoId/05", "geoId/06"},
+			"County",
+		},
+		{
+			"county_zip.json",
+			[]string{"geoId/06085"},
+			"CensusZipCodeTabulationArea",
 		},
 	} {
-		req := &pb.GetPropertyLabelsRequest{
-			Dcids: c.dcids,
+		req := &pb.GetPlacesInRequest{
+			Dcids:     c.dcids,
+			PlaceType: c.typ,
 		}
-		resp, err := client.GetPropertyLabels(ctx, req)
+		resp, err := client.GetPlacesIn(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetPropertyLabels: %s", err)
+			t.Errorf("could not GetPlacesIn: %s", err)
 			continue
 		}
-		var result map[string]*server.PropLabelCache
+		var result []map[string]string
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
 			continue
 		}
+
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
 			updateGolden(result, goldenFile)
 			continue
 		}
-		var expected map[string]*server.PropLabelCache
+
+		var expected []map[string]string
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

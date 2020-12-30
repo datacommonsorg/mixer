@@ -19,26 +19,10 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-while getopts "dt:" OPTION; do
-  case $OPTION in
-    d)
-        echo -e "### Update golden files in docker mode"
-        DOCKER=true
-        ;;
-    t)
-        echo -e "### Update golden files for test: ${OPTARG}"
-        TARGET=${OPTARG}
-        ;;
-    *)
-        break ;;
-    esac
+for dest in $ROOT/test/integration/golden_response/prod/*/*.json
+do
+  src="${dest/prod/staging}"
+  cp "$src" "$dest"
+  echo "$src"
+  echo "$dest"
 done
-shift $((OPTIND-1))
-
-if [[ $TARGET != "" ]]; then
-    ARGS="-run $TARGET"
-else
-    ARGS=""
-fi
-
-go test -v $ROOT/test/e2e -generate_golden=true $ARGS

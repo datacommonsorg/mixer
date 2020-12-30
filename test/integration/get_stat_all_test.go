@@ -12,94 +12,71 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package integration
 
 import (
 	"context"
 	"io/ioutil"
 	"path"
 	"runtime"
-	"sort"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/pkg/proto"
 	"github.com/datacommonsorg/mixer/pkg/server"
-	"github.com/datacommonsorg/mixer/pkg/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-type byID []*pb.PopObsObservation
-
-func (a byID) Len() int           { return len(a) }
-func (a byID) Less(i, j int) bool { return a[i].GetId() < a[j].GetId() }
-func (a byID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-
-func TestGetPopObs(t *testing.T) {
+func TestGetStatAll(t *testing.T) {
 	ctx := context.Background()
-	_, filename, _, _ := runtime.Caller(0)
 
 	memcacheData, err := loadMemcache()
 	if err != nil {
 		t.Fatalf("Failed to load memcache %v", err)
 	}
 
-	// This tests merging the branch cache into the final results.
 	client, err := setup(server.NewMemcache(memcacheData))
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-
+	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_pop_obs")
+		path.Dir(filename), "golden_response/staging/get_stat_all")
+
 	for _, c := range []struct {
-		dcid       string
+		statVars   []string
+		places     []string
 		goldenFile string
 	}{
 		{
-			"wikidataId/Q649",
-			"moscow.json",
-		},
-		{
-			"Class",
-			"empty.json",
+			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
+			[]string{"country/USA", "geoId/06", "geoId/0649670"},
+			"result.json",
 		},
 	} {
-		resp, err := client.GetPopObs(ctx, &pb.GetPopObsRequest{
-			Dcid: c.dcid,
+		resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
+			StatVars: c.statVars,
+			Places:   c.places,
 		})
 		if err != nil {
-			t.Errorf("could not GetPopObs: %s", err)
+			t.Errorf("could not GetStatAll: %s", err)
 			continue
-		}
-		jsonRaw, err := util.UnzipAndDecode(resp.GetPayload())
-		if err != nil {
-			t.Errorf("could not UnzipAndDecode: %s", err)
-		}
-		var result pb.PopObsPlace
-		err = protojson.Unmarshal(jsonRaw, &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal raw json %v", err)
-			continue
-		}
-		for _, popObsPop := range result.Populations {
-			sort.Sort(byID(popObsPop.GetObservations()))
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(&result, goldenFile)
+			updateProtoGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.PopObsPlace
+		var expected pb.GetStatAllResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %v", err)
+			t.Errorf("Can not Unmarshal golden file")
 			continue
 		}
 
-		if diff := cmp.Diff(&result, &expected, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
