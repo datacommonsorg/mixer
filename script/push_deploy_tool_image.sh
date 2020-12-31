@@ -1,4 +1,5 @@
-# Copyright 2020 Google LLC
+#!/bin/bash
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Staging Mixer GKE params
 
-project: datcom-mixer-staging
-region: us-central1
-ip: 34.107.161.252
-domain: mixer.endpoints.datcom-mixer-staging.cloud.goog
-api_title: DataCommons API (Staging)
-nodes: 3
-store: google.com:datcom-store-dev
+# Push the Docker image used for deployment to Container Registry
+
+set -e
+
+docker build -t gcr.io/datcom-ci/deploy-tool:latest -f deploy/Dockerfile .
+docker push gcr.io/datcom-ci/deploy-tool:latest

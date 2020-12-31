@@ -15,9 +15,9 @@
 # Production Mixer GKE params
 
 project: datcom-mixer
-region: us-west2-c
+region: us-central1
 ip: 35.244.133.155
 domain: api.datacommons.org
 api_title: DataCommons API
-nodes: 18
+nodes: 10
 store: google.com:datcom-store-dev

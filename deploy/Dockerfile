@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+# Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Staging Mixer GKE params
+# Build docker image used in Cloud Build for staging/prod deployment.
+# This image contains "gcloud", "kubectl", "yq", "kustomize"
 
-project: datcom-mixer-staging
-region: us-central1
-ip: 34.107.161.252
-domain: mixer.endpoints.datcom-mixer-staging.cloud.goog
-api_title: DataCommons API (Staging)
-nodes: 3
-store: google.com:datcom-store-dev
+FROM google/cloud-sdk:slim
+
+RUN apt-get install wget
+RUN apt-get install kubectl
+
+RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+RUN mv kustomize /bin/
+
+RUN wget https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_386 -O /usr/bin/yq &&\
+    chmod +x /usr/bin/yq

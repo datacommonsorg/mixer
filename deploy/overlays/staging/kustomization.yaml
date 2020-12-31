@@ -29,9 +29,8 @@ configMapGenerator:
   behavior: create
   namespace: mixer
   literals:
-    - projectId=datcom-mixer-staging
-    - serviceName=mixer.endpoints.datcom-mixer-staging.cloud.goog
-
+  - projectId=datcom-mixer-staging
+  - serviceName=mixer.endpoints.datcom-mixer-staging.cloud.goog
 
 patchesStrategicMerge:
 - |-
@@ -40,4 +39,4 @@ patchesStrategicMerge:
   metadata:
     name: mixer-grpc
   spec:
-    replicas: 3
+    replicas: 24
