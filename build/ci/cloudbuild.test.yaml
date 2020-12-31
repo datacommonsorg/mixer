@@ -37,7 +37,9 @@ steps:
     wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
     ./bin/golangci-lint run --timeout=600s
     go test ./...
+
 options:
   volumes:
   - name: go-modules
     path: /go
+  machineType: 'N1_HIGHCPU_8'

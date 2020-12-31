@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 # This Dockerfile is used to build various container images. There are a few
 # targets:
 #
@@ -22,7 +21,7 @@
 # test: image to run all the tests
 # golden-update: image to update golden files
 
-# =========  base stage ==========
+# =========  protoc stage ==========
 
 FROM golang:1.15 AS go-protoc
 # Install protoc
@@ -35,11 +34,14 @@ RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
 RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 
 
+# =========  base stage ==========
+
 FROM go-protoc AS base
 WORKDIR /mixer
 # Docker cache: Download modules
 COPY go.mod go.sum /mixer/
-RUN go mod download
+RUN go mod download -x
+
 # Copy files
 COPY proto/ proto
 COPY internal/ internal

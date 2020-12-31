@@ -69,8 +69,10 @@ steps:
     args:
       - -c
       - |
-        ./scripts/update_staging_version.sh $SHORT_SHA
+        ./script/update_staging_version.sh $SHORT_SHA
+
 options:
   volumes:
-    - name: go-modules
-      path: /go
+  - name: go-modules
+    path: /go
+  machineType: 'N1_HIGHCPU_8'

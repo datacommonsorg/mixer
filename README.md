@@ -1,15 +1,17 @@
-# DataCommons Mixer Development
+# DataCommons Mixer
 
-## Development Process
+Data Commons Mixer is an API server that serves Data Commons Data API. It gets deployed in a Kubernetes cluster.
+
+## Git Development Process
 
 In Mixer GitHub [repo](https://github.com/datacommonsorg/mixer), click on "Fork"
 button to fork the repo.
 
-Clone your forked repo to your desktop.
-
-Add datacommonsorg/mixer repo as a remote.
+Clone the forked repo to your local machine and add datacommonsorg/mixer repo as a remote.
 
 ```shell
+git clone git@github.com:<YOUR-REPO>/mixer.git
+cd mixer
 git remote add dc https://github.com/datacommonsorg/mixer.git
 ```
 
@@ -25,74 +27,12 @@ git commit -m "commit message"
 git push -u origin new_branch_name
 ```
 
-Then in your forked repo, can send a Pull Request.
+Then in your forked repo, can send a Pull Request. Wait for approval of the Pull Request and merge the change.
 
-Wait for approval of the Pull Request and merge the change.
+## Develop and test locally
 
-## Setup Go
+Follow the [Developer Guide](docs/developer_guide.md).
 
-Install [Golang](https://golang.org/doc/install). You may need to add `$(go env GOPATH)/bin` to your `PATH`.
+## Setup a new GKE cluster
 
-## Generate Protobuf go code
-
-Install protoc by following
-[this](http://google.github.io/proto-lens/installing-protoc.html).
-
-Run the following code to generate golang proto files.
-
-```bash
-go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
-go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
-protoc \
-    --proto_path=proto \
-    --go_out=internal \
-    --go-grpc_out=internal \
-    --go-grpc_opt=requireUnimplementedServers=false \
-    proto/*.proto
-```
-
-Note there are two protobuf dependency files copied from
-[Google API repo](https://github.com/googleapis/googleapis/tree/master/google/api):
-`proto/google/api/annotations.proto` and `proto/google/api/http.proto`.
-These files are needed to build the protobuf annotation used for gRPC to REST transcoding.
-
-## Run integration test locally
-
-Install `cloud-build-local` following
-[the guide](https://cloud.google.com/cloud-build/docs/build-debug-locally), then
-run:
-
-```bash
-cloud-build-local --config=build/ci/cloudbuild.test.yaml --dryrun=false .
-```
-
-## Run grpc server and examples locally
-
-```bash
-gcloud auth application-default login
-
-go run cmd/main.go \
-    --bq_dataset=$(head -1 deployment/bigquery.txt) \
-    --bt_table=$(head -1 deployment/bigtable.txt) \
-    --bt_project=google.com:datcom-store-dev \
-    --bt_instance=prophet-cache \
-    --project_id=datcom-mixer-staging
-
-# Open a new shell
-cd examples
-go run main.go
-```
-
-## Update golden files
-
-Run the following commands to update golden files in ./golden_response/staging
-
-```bash
-./script/update-golden-staging.sh
-```
-
-Run the following commands to update prod golden files from staging golden files
-
-```bash
-./script/update-golden-prod.sh
-```
+Follow GKE [Setup Guide](gke/README.md).
