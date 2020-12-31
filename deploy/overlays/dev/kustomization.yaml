@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Kustomization for dev mixer in local Minikube environment.
-# - Addes "dev" suffix to all the resources
+# - Adds "dev" suffix to all the resources
 # - Use "serviceaccount.yaml" to create service account explicitly.
 #   Note the GKE cluster service account is created once at cluster creation time.
 # - Patch deployment with "api-compiler" image that can updates the gRPC config on code change.

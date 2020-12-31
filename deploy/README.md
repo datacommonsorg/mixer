@@ -5,7 +5,7 @@ Mixer is deployed to Kubernetes cluster either locally on
 
 ## Folder structure
 
-* `db`: BigQuery and Bigtable version config
+* `storage`: BigQuery and Bigtable version config
 * `base`: Base Kubernetes config yaml files.
 * `overlays`: Kubernetes deployment yaml files extending the base yaml files on dev/staging/prod environment.
 * `gke`: GKE cluster config.
