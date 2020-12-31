@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Skaffold (https://skaffold.dev/docs/quickstart/) configuration file that is
+# used to deploy mixer in a local Minikube cluster.
+# There are 3 steps involved here:
+#   build: builds mixer and api-compiler image.
+#   deploy: deploy mixer, esp, api-comipler to minikube.
+#   portFoward: expose the service in host port.
+
 apiVersion: skaffold/v2beta10
 kind: Config
 metadata:

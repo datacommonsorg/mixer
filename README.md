@@ -1,6 +1,6 @@
 # DataCommons Mixer
 
-Data Commons Mixer is an API server that serves Data Commons Data API. It can be deployed in a Kubernetes cluster.
+Data Commons Mixer is an API server that serves Data Commons Data API. It gets deployed in a Kubernetes cluster.
 
 ## Git Development Process
 

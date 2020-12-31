@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Kustomization for dev mixer in local Minikube environment.
+# - Addes "staging" suffix to all the resources.
+# - Use replica of 3.
+
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 

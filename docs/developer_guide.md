@@ -1,5 +1,12 @@
 # Data Commons Mixer Developer Guide
 
+The developement uses [Kustomize](https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/)
+to manage yaml templating and composition. Detailed deploy folder structure can be
+found [here](../deploy/README.md).
+
+Local development uses [Skaffold](https://skaffold.dev) to manage the build, deploy and
+port forwarding.
+
 ## Prerequisit
 
 * Contact DataCommons team to get data access to Cloud Bigtable and BigQuery.
@@ -35,7 +42,7 @@ which is compiled using [API Compiler](https://github.com/googleapis/api-compile
 minikube start
 minikube addons enable gcp-auth
 eval $(minikube docker-env)
-skallfold dev --port-foward
+skaffold dev --port-foward
 ```
 
 This exposes the local mixer service at `localhost:9090`.
@@ -60,9 +67,10 @@ After code edit, the container images are automatically rebuilt and re-deployed 
 ./script/update_golden_staging.sh -d
 ```
 
-## Develop mixer locally as a Go server
+## Develop mixer locally as a Go server (non-Docker)
 
-**NOTE** This can only develop and test the gRPC server but not the transcoding of [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev).
+**NOTE** This can only develop and test the gRPC server. Since the [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
+brought up here, can not test the REST API.
 
 ### Start mixer as a gRPC server
 
@@ -85,8 +93,8 @@ Run the following code to start mixer gRPC server
 # cd into repo root directory
 
 go run cmd/main.go \
-    --bq_dataset=$(head -1 deploy/db/bigquery.version) \
-    --bt_table=$(head -1 deploy/db/bigtable.version) \
+    --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
+    --bt_table=$(head -1 deploy/storage/bigtable.version) \
     --bt_project=google.com:datcom-store-dev \
     --bt_instance=prophet-cache \
     --project_id=datcom-mixer-staging

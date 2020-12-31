@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Staging Mixer GKE params
+
 project: datcom-mixer-staging
 region: us-west2-c
 ip: 34.107.161.252

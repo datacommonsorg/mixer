@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Production Mixer GKE params
+
 project: datcom-mixer
 region: us-west2-c
 ip: 35.244.133.155

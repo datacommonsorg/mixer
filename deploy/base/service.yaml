@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Mixer Kubernetes Service config. (https://kubernetes.io/docs/concepts/services-networking/service/)
+# The service exposes the esp (on port 8081) to port 80 via NodePort.
+
 apiVersion: v1
 kind: Service
 metadata:

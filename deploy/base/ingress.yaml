@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Mixer Kubernetes Ingress config (https://kubernetes.io/docs/concepts/services-networking/ingress/)
+# The ingress exposes the mixer service to port :80.
+# It binds to the static ip and managed ssl certificate when deployed to GKE.
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
