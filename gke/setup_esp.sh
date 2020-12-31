@@ -15,21 +15,22 @@
 
 set -e
 
+PROJECT_ID=$(yq r config.yaml project)
 DOMAIN=$(yq r config.yaml domain)
 API_TITLE=$(yq r config.yaml api_title)
 IP=$(yq r config.yaml ip)
 
-if [ $API_TITLE == '']; then
+if [[ $API_TITLE == '' ]]; then
   API_TITLE=$DOMAIN
 fi
 
 # ESP service configuration
-yq w --style=double ../endpoints.yaml.tmpl name $DOMAIN > endpoints.yaml
+yq w --style=double ../esp/endpoints.yaml.tmpl name $DOMAIN > endpoints.yaml
 yq w -i endpoints.yaml title "$API_TITLE"
 yq w -i endpoints.yaml endpoints[0].target "$IP"
 yq w -i endpoints.yaml endpoints[0].name "$DOMAIN"
 
 ## Deploy ESP configuration
 gsutil cp gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.latest.pb .
-gcloud endpoints services deploy mixer-grpc.latest.pb endpoints.yaml
+gcloud endpoints services deploy mixer-grpc.latest.pb endpoints.yaml --project $PROJECT_ID
 gcloud services enable $DOMAIN
