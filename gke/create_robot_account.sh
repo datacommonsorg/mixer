@@ -1,10 +1,11 @@
+#!/bin/bash
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     https://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,12 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Staging Mixer GKE params
+set -e
 
-project: datcom-mixer-staging
-region: us-central1
-ip: 34.107.161.252
-domain: mixer.endpoints.datcom-mixer-staging.cloud.goog
-api_title: DataCommons API (Staging)
-nodes: 3
-store: google.com:datcom-store-dev
+PROJECT_ID=$(yq r config.yaml project)
+
+NAME="mixer-robot"
+SERVICE_ACCOUNT="$NAME@$PROJECT_ID.iam.gserviceaccount.com"
+
+gcloud config set project $PROJECT_ID
+
+# Create service account
+gcloud iam service-accounts create $NAME
+
+# Enable service account
+gcloud alpha iam service-accounts enable $SERVICE_ACCOUNT

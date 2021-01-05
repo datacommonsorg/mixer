@@ -12,12 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Staging Mixer GKE params
 
-project: datcom-mixer-staging
-region: us-central1
-ip: 34.107.161.252
-domain: mixer.endpoints.datcom-mixer-staging.cloud.goog
-api_title: DataCommons API (Staging)
-nodes: 3
-store: google.com:datcom-store-dev
+PROJECT_ID=$(yq r config.yaml project)
+
+gcloud config set project $PROJECT_ID
+
+# Create a static IP address for the API
+gcloud compute addresses create mixer-ip --global
+
+# Record the IP address.
+echo $(gcloud compute addresses list --global --filter='name:mixer-ip' --format='value(ADDRESS)')
