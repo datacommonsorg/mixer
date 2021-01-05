@@ -55,9 +55,9 @@ func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(
-		path.Join(path.Dir(filename), "../../deployment/bigquery.txt"))
+		path.Join(path.Dir(filename), "../../deploy/base/bigquery.version"))
 	btTableID, _ := ioutil.ReadFile(
-		path.Join(path.Dir(filename), "../../deployment/bigtable.txt"))
+		path.Join(path.Dir(filename), "../../deploy/base/bigtable.version"))
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
