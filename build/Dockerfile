@@ -45,7 +45,7 @@ RUN go mod download -x
 # Copy files
 COPY proto/ proto
 COPY internal/ internal
-COPY deployment/ deployment
+COPY deploy/ deploy
 # Build protobuf
 RUN protoc \
     --proto_path=proto \

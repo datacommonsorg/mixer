@@ -45,6 +45,3 @@ Temporary Items
 # Downloaded tools, e.g. golangci-lint
 bin/
 
-# Kubenetes
-**/minikube/deployment.yaml
-**/minikube/endpoints.yaml
