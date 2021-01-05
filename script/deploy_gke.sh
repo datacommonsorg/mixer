@@ -15,13 +15,29 @@
 
 
 # Script to deploy mixer to a GKE cluster.
+#
+# Usage:
+#
+# ./deploy_key.sh <"prod"|"staging"> <commit_hash>
+#
+# First argument is either "prod" or "staging".
+# (Optional) second argument is the git commit hash of the mixer repo.
+#
+# !!! WARNING: Run this script in a clean Git checkout at the desired commit.
+#
 # This retrives the docker images and gRPC descriptor based on git commit hash,
 # so these binaries should have been pushed to container registry and Cloud
-# Storage.
+# Storage by the continous deployment flow (../build/ci/cloudbuild.push.yaml).
 
 set -e
 
 ENV=$1
+
+if [[ ENV != "staging" || ENV != "prod" ]]; then
+  echo "First argument should be 'staging' or 'prod' "
+  exit
+fi
+
 
 TAG=$(git rev-parse --short HEAD)
 if [[ $2 != "" ]]; then
