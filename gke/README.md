@@ -6,7 +6,13 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
 
 * [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). If working on an existing project, you should have owner/editor role to perform the tasks.
 
-* Add the GCP project id in config.yaml, `project` field.
+* Make a copy of the `config.yaml.tpl` as `config.yaml`.
+
+  ```bash
+  cp config.yaml.tpl config.yaml
+  ```
+
+* Add the GCP project id in `config.yaml`, **project** field.
 
 * Install [Google Cloud SDK](https://cloud.google.com/sdk/install).
 
@@ -24,9 +30,9 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
     ./create_ip.sh
     ```
 
-  * Record the IP address and update it in config.yaml, `ip` field.
+  * Record the IP address and update it in `config.yaml`, **ip** field.
 
-* Add the domain in config.yaml, `domain` field. If you want to use the domain from Cloud Endpoints, it would be `mixer.endpoints.<PROJECT_ID>.cloud.goog`.
+* Add the domain in `config.yaml`, **domain** field. If you want to use the domain from Cloud Endpoints, it would be `mixer.endpoints.<PROJECT_ID>.cloud.goog`.
 
 * Enable the GCP services.
 
@@ -50,7 +56,7 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
   * If you see authentication errors, need to contact DataCommons team to complete some of the role binding operations as the service account need access to the Cloud Bigtable and Big Query.
 
 * Deploy Extensive Service Proxy.
-  * Add API title in config.yaml, `api_title` field. If omit, the API title would be the same as the domain.
+  * Add API title in `config.yaml`, **api_title** field. If omit, the API title would be the same as the domain.
   * Run:
 
     ```bash
@@ -64,8 +70,8 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
   ```
 
 * Create the cluster.
-  * Add the cluster region in config.yaml, `region` field.
-  * Add the number of nodes in config.yaml, `nodes` field.
+  * Add the cluster region in `config.yaml`, **region** field.
+  * Add the number of nodes in `config.yaml`, **nodes** field.
   * Run:
 
     ```bash
