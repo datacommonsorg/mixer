@@ -13,7 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# Push the Docker image used for deployment to Container Registry
+
 set -e
 
-docker build -t gcr.io/datcom-ci/go-protoc:latest -f build/Dockerfile --target go-protoc .
-docker push gcr.io/datcom-ci/go-protoc:latest
+docker build -t gcr.io/datcom-ci/deploy-tool:latest -f deploy/Dockerfile .
+docker push gcr.io/datcom-ci/deploy-tool:latest
