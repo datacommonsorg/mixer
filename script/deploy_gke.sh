@@ -33,7 +33,7 @@ set -e
 
 ENV=$1
 
-if [[ ENV != "staging" || ENV != "prod" ]]; then
+if [[ $ENV != "staging" && $ENV != "prod" ]]; then
   echo "First argument should be 'staging' or 'prod' "
   exit
 fi
