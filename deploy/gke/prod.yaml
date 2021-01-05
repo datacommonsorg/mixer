@@ -19,5 +19,5 @@ region: us-central1
 ip: 35.244.133.155
 domain: api.datacommons.org
 api_title: DataCommons API
-nodes: 10
+nodes: 6
 store: google.com:datcom-store-dev
