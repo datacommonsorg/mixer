@@ -11,13 +11,15 @@ port forwarding.
 
 * Contact DataCommons team to get data access to Cloud Bigtable and BigQuery.
 
-* Install the following tools to develop mixer locally:
-  * [`Golang`](https://golang.org/doc/install)
+* Install the following tools to develop mixer locally (with Docker):
   * [`Docker`](https://www.docker.com/products/docker-desktop)
   * [`Minikube`](https://minikube.sigs.k8s.io/docs/start/)
   * [`Skaffold`](https://skaffold.dev/docs/install/)
   * [`gcloud`](https://cloud.google.com/sdk/docs/install)
   * [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+* If you prefer to do it locally without Docker, then need to install the following:
+  * [`Golang`](https://golang.org/doc/install)
   * [`protoc`](http://google.github.io/proto-lens/installing-protoc.html)
 
 * Authenticate to GCP
