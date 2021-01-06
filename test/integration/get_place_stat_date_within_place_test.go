@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2etest
+package integration
 
 import (
 	"context"
@@ -21,8 +21,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/proto"
-	"github.com/datacommonsorg/mixer/server"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -42,7 +42,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "../golden_response/staging/get_place_stat_date_within_place")
+		path.Dir(filename), "golden_response/staging/get_place_stat_date_within_place")
 
 	for _, c := range []struct {
 		ancestorPlace string
@@ -59,7 +59,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 		{
 			"country/USA",
 			"State",
-			[]string{"Count_Person", "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
+			[]string{"Count_Person", "Count_Person_Female"},
 			"USA_State.json",
 		},
 	} {
