@@ -45,7 +45,6 @@ RUN go mod download -x
 # Copy files
 COPY proto/ proto
 COPY internal/ internal
-COPY deploy/ deploy
 # Build protobuf
 RUN protoc \
     --proto_path=proto \
@@ -78,6 +77,7 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 RUN ./bin/golangci-lint run --timeout=600s
 # Test
 COPY test/ test
+COPY deploy/ deploy
 CMD ["go", "test", "./..."]
 
 
@@ -86,4 +86,5 @@ CMD ["go", "test", "./..."]
 FROM base as golden-update
 WORKDIR /mixer
 COPY test/ test
+COPY deploy/ deploy
 CMD ["sh", "-c", "go test -v ./test/integration/... -generate_golden=true $arg && cp -r ./test/integration/golden_response/ /result"]

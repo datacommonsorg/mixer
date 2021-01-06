@@ -44,7 +44,7 @@ which is compiled using [API Compiler](https://github.com/googleapis/api-compile
 minikube start
 minikube addons enable gcp-auth
 eval $(minikube docker-env)
-skaffold dev --port-foward
+skaffold dev --port-forward
 ```
 
 This exposes the local mixer service at `localhost:9090`.
