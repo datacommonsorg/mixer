@@ -3,8 +3,8 @@
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
       "stat": {
         "country/FRA": {
-          "date": "2018",
-          "value": 46360,
+          "date": "2019",
+          "value": 50460,
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -13,8 +13,8 @@
           }
         },
         "country/USA": {
-          "date": "2018",
-          "value": 63690,
+          "date": "2019",
+          "value": 66080,
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
