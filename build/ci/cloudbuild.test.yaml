@@ -21,13 +21,13 @@ steps:
   - -c
   - |
     set -e
-    c=`tail -c 1 deploy/storage/bigtable.version`
-    if [ "$c" == "" ]; then
+    c=`cat deploy/storage/bigtable.version | wc -l`
+    if [ "$c" != "0" ]; then
       echo "bigtable.version should not have end of file newline"
       exit 1
     fi
-    c=`tail -c 1 deploy/storage/bigquery.version`
-    if [ "$c" == "" ]; then
+    c=`cat deploy/storage/bigquery.version | wc -l`
+    if [ "$c" != "0" ]; then
       echo "bigquery.version should not have end of file newline"
       exit 1
     fi
