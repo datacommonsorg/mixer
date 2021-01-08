@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization for staging mixer runnign on GCP `datcom-mixer-staging` project.
+# Kustomization for staging mixer running on GCP `datcom-mixer-staging` project.
 # - Adds "staging" suffix to all the resources.
-# - Use replica of 3.
+# - Use replica of 24.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization

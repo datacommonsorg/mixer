@@ -47,7 +47,7 @@ spec:
           imagePullPolicy: Always
           resources:
             limits:
-              memory: "2G"
+              memory: "3G"
               cpu: "500m"
           args:
             - --bq_dataset
@@ -110,7 +110,7 @@ spec:
                 key: serviceName
           resources:
             limits:
-              memory: "1G"
+              memory: "0.5G"
               cpu: "100m"
           readinessProbe:
             httpGet:
