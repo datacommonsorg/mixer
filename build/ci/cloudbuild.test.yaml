@@ -14,6 +14,26 @@
 
 steps:
 # Build protobuf to go bindings
+- id: lint
+  name: gcr.io/datcom-ci/go-protoc
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    set -e
+    c=`cat deploy/storage/bigtable.version | wc -l`
+    if [ "$c" != "0" ]; then
+      echo "bigtable.version should not have end of file newline"
+      exit 1
+    fi
+    c=`cat deploy/storage/bigquery.version | wc -l`
+    if [ "$c" != "0" ]; then
+      echo "bigquery.version should not have end of file newline"
+      exit 1
+    fi
+    wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
+    ./bin/golangci-lint run --timeout=600s
+
 - id: build-proto
   name: gcr.io/datcom-ci/go-protoc
   entrypoint: 'bash'
@@ -26,6 +46,7 @@ steps:
       --go-grpc_out=internal \
       --go-grpc_opt=requireUnimplementedServers=false \
       proto/*.proto
+
 - id: test
   name: golang
   env: ['GO111MODULE=on']
@@ -33,9 +54,6 @@ steps:
   args:
   - -c
   - |
-    set -e
-    wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
-    ./bin/golangci-lint run --timeout=600s
     go test ./...
 
 options:
