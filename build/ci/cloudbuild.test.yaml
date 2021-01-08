@@ -15,7 +15,7 @@
 steps:
 # Build protobuf to go bindings
 - id: lint
-  name: golang
+  name: gcr.io/datcom-ci/go-protoc
   entrypoint: 'bash'
   args:
   - -c
