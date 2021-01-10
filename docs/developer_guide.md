@@ -41,10 +41,10 @@ which is compiled using [API Compiler](https://github.com/googleapis/api-compile
 ### Start mixer in minikube
 
 ```bash
-minikube start
+minikube start --meory 6G
 minikube addons enable gcp-auth
 eval $(minikube docker-env)
-skaffold dev --port-forward
+skaffold dev --port-forward -n mixer
 ```
 
 This exposes the local mixer service at `localhost:9090`.

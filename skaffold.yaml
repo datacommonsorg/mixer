@@ -24,8 +24,6 @@ kind: Config
 metadata:
   name: mixer
 build:
-  local:
-    push: false
   artifacts:
   - image: datacommons/mixer
     context: .
