@@ -43,7 +43,7 @@ spec:
             cp /output/mixer-grpc.json /esp/ &&
             while true; do
               echo "api-compiler running"
-              sleep 10;
+              sleep 3600;
             done
         volumeMounts:
           - name: mixer-grpc-json
