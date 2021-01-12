@@ -365,7 +365,8 @@
                 "2015": 320098094,
                 "2016": 322087547,
                 "2017": 324473370,
-                "2018": 326289971
+                "2018": 326289971,
+                "2019": 328016242
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey_AggCountry",
