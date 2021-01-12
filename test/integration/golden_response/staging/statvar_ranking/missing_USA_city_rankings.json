@@ -177,18 +177,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Housing units by householder race",
-    "statsVars": [
-      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone"
-      ]
-    }
-  },
-  {
     "title": "Infant mortality rate by gender",
     "statsVars": [
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
@@ -342,13 +330,6 @@
     "title": "Population growth rate",
     "statsVars": [
       "GrowthRate_Count_Person"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Poverty rate",
-    "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months"
     ],
     "relatedChart": {}
   },

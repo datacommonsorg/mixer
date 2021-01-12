@@ -5,42 +5,42 @@
         "info": [
           {
             "rank": 1,
-            "value": 0.268965517241379,
+            "value": 0.299539170506912,
             "placeDcid": "geoId/0614736"
           },
           {
             "rank": 2,
-            "value": 0.19114636642784,
+            "value": 0.18833515421464,
             "placeDcid": "geoId/0622594"
           },
           {
             "rank": 3,
-            "value": 0.159430604982206,
+            "value": 0.160688665710187,
             "placeDcid": "geoId/0636826"
           },
           {
             "rank": 4,
-            "value": 0.0992809093017861,
+            "value": 0.100077942322681,
             "placeDcid": "geoId/0614974"
           },
           {
             "rank": 5,
-            "value": 0.0903054448871182,
+            "value": 0.0907877169559413,
             "placeDcid": "geoId/0606798"
           },
           {
             "rank": 6,
-            "value": 0.0820903361344538,
+            "value": 0.0805960913731759,
             "placeDcid": "geoId/0654386"
           },
           {
             "rank": 7,
-            "value": 0.0799603736201528,
+            "value": 0.0792204150308469,
             "placeDcid": "geoId/0659892"
           },
           {
             "rank": 8,
-            "value": 0.0754873496474492,
+            "value": 0.0751445086705202,
             "placeDcid": "geoId/0672674"
           },
           {
@@ -50,7 +50,7 @@
           },
           {
             "rank": 10,
-            "value": 0.0705494886462125,
+            "value": 0.0707088255733148,
             "placeDcid": "geoId/0671876"
           },
           {
@@ -60,22 +60,22 @@
           },
           {
             "rank": 12,
-            "value": 0.0659681800543267,
+            "value": 0.0662251655629139,
             "placeDcid": "geoId/0601444"
           },
           {
             "rank": 13,
-            "value": 0.0653182042427232,
+            "value": 0.0654085564667523,
             "placeDcid": "geoId/0611040"
           },
           {
             "rank": 14,
-            "value": 0.0652015063796302,
+            "value": 0.0651319483436272,
             "placeDcid": "geoId/0669154"
           },
           {
             "rank": 15,
-            "value": 0.0641045468605011,
+            "value": 0.064308432239547,
             "placeDcid": "geoId/0630798"
           },
           {
@@ -85,22 +85,22 @@
           },
           {
             "rank": 17,
-            "value": 0.0618430792005922,
+            "value": 0.0619669213083142,
             "placeDcid": "geoId/0623042"
           },
           {
             "rank": 18,
-            "value": 0.0600722136253621,
+            "value": 0.0596109929915741,
             "placeDcid": "geoId/0621796"
           },
           {
             "rank": 19,
-            "value": 0.0589022757697456,
+            "value": 0.0587674107994657,
             "placeDcid": "geoId/0606434"
           },
           {
             "rank": 20,
-            "value": 0.0565450206623596,
+            "value": 0.0568361317498391,
             "placeDcid": "geoId/0606308"
           },
           {
@@ -110,67 +110,67 @@
           },
           {
             "rank": 22,
-            "value": 0.0556127703398558,
-            "placeDcid": "geoId/0639710"
-          },
-          {
-            "rank": 23,
             "value": 0.0553426779725264,
             "placeDcid": "geoId/0606000"
           },
           {
+            "rank": 23,
+            "value": 0.054989816700611,
+            "placeDcid": "geoId/0639710"
+          },
+          {
             "rank": 24,
-            "value": 0.0547203090878549,
+            "value": 0.0545211096698607,
             "placeDcid": "geoId/0604030"
           },
           {
             "rank": 25,
-            "value": 0.0538973175021988,
+            "value": 0.0537997256515775,
             "placeDcid": "geoId/0684410"
           },
           {
             "rank": 26,
-            "value": 0.0538309800664452,
+            "value": 0.0537890969448623,
             "placeDcid": "geoId/0657288"
           },
           {
             "rank": 27,
-            "value": 0.0537210448496796,
+            "value": 0.0533007334963325,
             "placeDcid": "geoId/0657414"
           },
           {
             "rank": 28,
-            "value": 0.0528604429949721,
+            "value": 0.0532730758696248,
             "placeDcid": "geoId/0625058"
           },
           {
             "rank": 29,
-            "value": 0.0526784578190609,
+            "value": 0.0528479154433353,
             "placeDcid": "geoId/0617568"
           },
           {
             "rank": 30,
-            "value": 0.0526376311628576,
+            "value": 0.0525545350172216,
             "placeDcid": "geoId/0657764"
           },
           {
             "rank": 31,
-            "value": 0.052508524111057,
-            "placeDcid": "geoId/0602042"
-          },
-          {
-            "rank": 32,
-            "value": 0.0524336520898249,
-            "placeDcid": "geoId/0677574"
-          },
-          {
-            "rank": 33,
             "value": 0.0522522940031514,
             "placeDcid": "geoId/0665000"
           },
           {
+            "rank": 32,
+            "value": 0.0520699957319676,
+            "placeDcid": "geoId/0677574"
+          },
+          {
+            "rank": 33,
+            "value": 0.051792063034496,
+            "placeDcid": "geoId/0602042"
+          },
+          {
             "rank": 34,
-            "value": 0.0510343927429355,
+            "value": 0.0509479444914978,
             "placeDcid": "geoId/0613945"
           },
           {
@@ -180,7 +180,7 @@
           },
           {
             "rank": 36,
-            "value": 0.0502361178961081,
+            "value": 0.0500527297801574,
             "placeDcid": "geoId/0646170"
           },
           {
@@ -200,23 +200,23 @@
           },
           {
             "rank": 40,
-            "value": 0.0477955831938133,
+            "value": 0.0478232255748559,
             "placeDcid": "geoId/0612552"
           },
           {
             "rank": 41,
-            "value": 0.0476461500935035,
+            "value": 0.0474974670719352,
             "placeDcid": "geoId/0670882"
           },
           {
             "rank": 42,
-            "value": 0.0474697527617044,
-            "placeDcid": "geoId/0655254"
+            "value": 0.0471218961625282,
+            "placeDcid": "geoId/0648872"
           },
           {
             "rank": 43,
-            "value": 0.0472064042254684,
-            "placeDcid": "geoId/0625296"
+            "value": 0.0471010710482911,
+            "placeDcid": "geoId/0655254"
           },
           {
             "rank": 44,
@@ -230,68 +230,68 @@
           },
           {
             "rank": 46,
-            "value": 0.0468574635241302,
-            "placeDcid": "geoId/0648872"
+            "value": 0.0468468468468468,
+            "placeDcid": "geoId/0625296"
           },
           {
             "rank": 47,
-            "value": 0.0459246434917308,
-            "placeDcid": "geoId/0621782"
-          },
-          {
-            "rank": 48,
             "value": 0.0458221725899953,
             "placeDcid": "geoId/0603526"
           },
           {
-            "rank": 49,
-            "value": 0.0457738324971054,
-            "placeDcid": "geoId/0648788"
+            "rank": 48,
+            "value": 0.0458150580642229,
+            "placeDcid": "geoId/0621782"
           },
           {
-            "rank": 50,
-            "value": 0.0456565037536387,
+            "rank": 49,
+            "value": 0.0455123962734817,
             "placeDcid": "geoId/0607218"
           },
           {
+            "rank": 50,
+            "value": 0.0454348103690461,
+            "placeDcid": "geoId/0648788"
+          },
+          {
             "rank": 51,
-            "value": 0.045143087464732,
+            "value": 0.0451158106747231,
             "placeDcid": "geoId/0650734"
           },
           {
             "rank": 52,
-            "value": 0.0450016605778811,
+            "value": 0.0450690171295526,
             "placeDcid": "geoId/0685684"
           },
           {
             "rank": 53,
-            "value": 0.0446469248291572,
-            "placeDcid": "geoId/0631260"
-          },
-          {
-            "rank": 54,
-            "value": 0.044195751138088,
-            "placeDcid": "geoId/0619612"
-          },
-          {
-            "rank": 55,
-            "value": 0.0440791931266343,
+            "value": 0.0442113150992881,
             "placeDcid": "geoId/0683850"
           },
           {
-            "rank": 56,
+            "rank": 54,
             "value": 0.0440403249928045,
             "placeDcid": "geoId/0627000"
           },
           {
+            "rank": 55,
+            "value": 0.0435943060498221,
+            "placeDcid": "geoId/0631260"
+          },
+          {
+            "rank": 56,
+            "value": 0.0435432629415063,
+            "placeDcid": "geoId/0619612"
+          },
+          {
             "rank": 57,
-            "value": 0.0435457063711911,
-            "placeDcid": "geoId/0602476"
+            "value": 0.043452274221505,
+            "placeDcid": "geoId/0622412"
           },
           {
             "rank": 58,
-            "value": 0.0431454005934718,
-            "placeDcid": "geoId/0622412"
+            "value": 0.0432390802068434,
+            "placeDcid": "geoId/0602476"
           },
           {
             "rank": 59,
@@ -300,28 +300,28 @@
           },
           {
             "rank": 60,
-            "value": 0.0418150975402884,
+            "value": 0.0416895691514101,
             "placeDcid": "geoId/0668154"
           },
           {
             "rank": 61,
-            "value": 0.0416778807335922,
+            "value": 0.0415707930664212,
             "placeDcid": "geoId/0608058"
           },
           {
             "rank": 62,
-            "value": 0.0415931240887115,
-            "placeDcid": "geoId/0655184"
+            "value": 0.0413322596915345,
+            "placeDcid": "geoId/0616532"
           },
           {
             "rank": 63,
-            "value": 0.0415394824153948,
+            "value": 0.0412384716732543,
             "placeDcid": "geoId/0616322"
           },
           {
             "rank": 64,
-            "value": 0.0413322596915345,
-            "placeDcid": "geoId/0616532"
+            "value": 0.0412363290537328,
+            "placeDcid": "geoId/0655184"
           },
           {
             "rank": 65,
@@ -345,58 +345,58 @@
           },
           {
             "rank": 69,
-            "value": 0.039964077233947,
+            "value": 0.0399940083882564,
             "placeDcid": "geoId/0617022"
           },
           {
             "rank": 70,
-            "value": 0.0399616368286445,
-            "placeDcid": "geoId/0650874"
-          },
-          {
-            "rank": 71,
             "value": 0.0397589983368375,
             "placeDcid": "geoId/0615044"
           },
           {
-            "rank": 72,
-            "value": 0.0397548558643276,
-            "placeDcid": "geoId/0668294"
+            "rank": 71,
+            "value": 0.0397582697201018,
+            "placeDcid": "geoId/0650874"
           },
           {
-            "rank": 73,
+            "rank": 72,
             "value": 0.0397164985418559,
             "placeDcid": "geoId/0646898"
           },
           {
+            "rank": 73,
+            "value": 0.0395905318564924,
+            "placeDcid": "geoId/0668294"
+          },
+          {
             "rank": 74,
-            "value": 0.0392724465672794,
+            "value": 0.0392838183485353,
             "placeDcid": "geoId/0672996"
           },
           {
             "rank": 75,
-            "value": 0.0392506079391718,
+            "value": 0.0391179683233206,
             "placeDcid": "geoId/0603162"
           },
           {
             "rank": 76,
-            "value": 0.0384366374757215,
+            "value": 0.038661251349545,
             "placeDcid": "geoId/0636056"
           },
           {
             "rank": 77,
-            "value": 0.0383116206357478,
-            "placeDcid": "geoId/0612524"
-          },
-          {
-            "rank": 78,
             "value": 0.0381619652005918,
             "placeDcid": "geoId/0608786"
           },
           {
+            "rank": 78,
+            "value": 0.0381217073878956,
+            "placeDcid": "geoId/0612524"
+          },
+          {
             "rank": 79,
-            "value": 0.0379528666901161,
-            "placeDcid": "geoId/0618996"
+            "value": 0.0380327868852459,
+            "placeDcid": "geoId/0618688"
           },
           {
             "rank": 80,
@@ -405,8 +405,8 @@
           },
           {
             "rank": 81,
-            "value": 0.0377312742464936,
-            "placeDcid": "geoId/0683668"
+            "value": 0.0377470701416827,
+            "placeDcid": "geoId/0618996"
           },
           {
             "rank": 82,
@@ -415,38 +415,38 @@
           },
           {
             "rank": 83,
+            "value": 0.0376022304832714,
+            "placeDcid": "geoId/0683668"
+          },
+          {
+            "rank": 84,
             "value": 0.0375627922533173,
             "placeDcid": "geoId/0664224"
           },
           {
-            "rank": 84,
+            "rank": 85,
             "value": 0.0369651837812831,
             "placeDcid": "geoId/0686972"
           },
           {
-            "rank": 85,
-            "value": 0.0367351759981101,
-            "placeDcid": "geoId/0608100"
-          },
-          {
             "rank": 86,
-            "value": 0.036405529953917,
+            "value": 0.0364811821750173,
             "placeDcid": "geoId/0618506"
           },
           {
             "rank": 87,
-            "value": 0.0363408521303258,
-            "placeDcid": "geoId/0618688"
+            "value": 0.0364356342846431,
+            "placeDcid": "geoId/0608100"
           },
           {
             "rank": 88,
-            "value": 0.0362303576694612,
-            "placeDcid": "geoId/0667112"
+            "value": 0.0361716985617497,
+            "placeDcid": "geoId/0682954"
           },
           {
             "rank": 89,
-            "value": 0.0361716985617497,
-            "placeDcid": "geoId/0682954"
+            "value": 0.0358415470211924,
+            "placeDcid": "geoId/0667112"
           },
           {
             "rank": 90,
@@ -455,18 +455,18 @@
           },
           {
             "rank": 91,
+            "value": 0.0356428741768019,
+            "placeDcid": "geoId/0655618"
+          },
+          {
+            "rank": 92,
             "value": 0.0355710447412484,
             "placeDcid": "geoId/0664000"
           },
           {
-            "rank": 92,
+            "rank": 93,
             "value": 0.0355313864604112,
             "placeDcid": "geoId/0662000"
-          },
-          {
-            "rank": 93,
-            "value": 0.0354717394479334,
-            "placeDcid": "geoId/0655618"
           },
           {
             "rank": 94,
@@ -480,23 +480,23 @@
           },
           {
             "rank": 96,
-            "value": 0.035278775150735,
-            "placeDcid": "geoId/0686328"
-          },
-          {
-            "rank": 97,
-            "value": 0.0352331346722091,
+            "value": 0.0352225504430982,
             "placeDcid": "geoId/0609710"
           },
           {
+            "rank": 97,
+            "value": 0.0351832182687201,
+            "placeDcid": "geoId/0677364"
+          },
+          {
             "rank": 98,
-            "value": 0.0350946894451066,
+            "value": 0.035043639248876,
             "placeDcid": "geoId/0686944"
           },
           {
             "rank": 99,
-            "value": 0.0348317560462671,
-            "placeDcid": "geoId/0677364"
+            "value": 0.0348852788477642,
+            "placeDcid": "geoId/0686328"
           },
           {
             "rank": 100,
@@ -510,173 +510,173 @@
           },
           {
             "rank": 102,
+            "value": 0.034437838990076,
+            "placeDcid": "geoId/0610345"
+          },
+          {
+            "rank": 103,
+            "value": 0.0344294547498595,
+            "placeDcid": "geoId/0670364"
+          },
+          {
+            "rank": 104,
             "value": 0.0344211292778182,
             "placeDcid": "geoId/0684550"
           },
           {
-            "rank": 103,
+            "rank": 105,
             "value": 0.0343638203560383,
             "placeDcid": "geoId/0683346"
           },
           {
-            "rank": 104,
-            "value": 0.0343374535396318,
-            "placeDcid": "geoId/0650916"
-          },
-          {
-            "rank": 105,
-            "value": 0.0343185320072839,
-            "placeDcid": "geoId/0670364"
-          },
-          {
             "rank": 106,
-            "value": 0.0342359312455851,
-            "placeDcid": "geoId/0610345"
-          },
-          {
-            "rank": 107,
             "value": 0.0342076538166413,
             "placeDcid": "geoId/0643000"
           },
           {
-            "rank": 108,
+            "rank": 107,
             "value": 0.0338142470694319,
             "placeDcid": "geoId/0600562"
           },
           {
+            "rank": 108,
+            "value": 0.0337152404821578,
+            "placeDcid": "geoId/0602896"
+          },
+          {
             "rank": 109,
+            "value": 0.0336859511140319,
+            "placeDcid": "geoId/0650916"
+          },
+          {
+            "rank": 110,
             "value": 0.033642473622949,
             "placeDcid": "geoId/0649270"
           },
           {
-            "rank": 110,
-            "value": 0.0335969554617351,
-            "placeDcid": "geoId/0602896"
-          },
-          {
             "rank": 111,
-            "value": 0.0335704637550653,
-            "placeDcid": "geoId/0629504"
-          },
-          {
-            "rank": 112,
             "value": 0.0335564162363612,
             "placeDcid": "geoId/0644000"
           },
           {
-            "rank": 113,
+            "rank": 112,
             "value": 0.0335291485645829,
             "placeDcid": "geoId/0639486"
           },
           {
-            "rank": 114,
+            "rank": 113,
             "value": 0.0334177685854384,
             "placeDcid": "geoId/0632548"
           },
           {
-            "rank": 115,
-            "value": 0.033195020746888,
-            "placeDcid": "geoId/0659500"
-          },
-          {
-            "rank": 116,
+            "rank": 114,
             "value": 0.0330602794786513,
             "placeDcid": "geoId/0685292"
           },
           {
-            "rank": 117,
+            "rank": 115,
+            "value": 0.0329797174737536,
+            "placeDcid": "geoId/0659500"
+          },
+          {
+            "rank": 116,
             "value": 0.0329573818988629,
             "placeDcid": "geoId/0636546"
           },
           {
-            "rank": 118,
-            "value": 0.0327064984527493,
-            "placeDcid": "geoId/0602924"
+            "rank": 117,
+            "value": 0.0328365570940352,
+            "placeDcid": "geoId/0629504"
           },
           {
-            "rank": 119,
+            "rank": 118,
             "value": 0.0326970359240541,
             "placeDcid": "geoId/0623182"
           },
           {
-            "rank": 120,
-            "value": 0.0325948018747337,
-            "placeDcid": "geoId/0636980"
-          },
-          {
-            "rank": 121,
+            "rank": 119,
             "value": 0.0325123507338451,
             "placeDcid": "geoId/0619766"
           },
           {
+            "rank": 120,
+            "value": 0.0323309332203868,
+            "placeDcid": "geoId/0602924"
+          },
+          {
+            "rank": 121,
+            "value": 0.0322037465796674,
+            "placeDcid": "geoId/0636980"
+          },
+          {
             "rank": 122,
-            "value": 0.0321596198790876,
+            "value": 0.0321422366363584,
             "placeDcid": "geoId/0630014"
           },
           {
             "rank": 123,
-            "value": 0.0320891458254786,
-            "placeDcid": "geoId/0619318"
+            "value": 0.0320126782884311,
+            "placeDcid": "geoId/0645246"
           },
           {
             "rank": 124,
-            "value": 0.0319788032214906,
-            "placeDcid": "geoId/0644028"
-          },
-          {
-            "rank": 125,
             "value": 0.0319543136143685,
             "placeDcid": "geoId/0636448"
           },
           {
-            "rank": 126,
-            "value": 0.0319445812403559,
-            "placeDcid": "geoId/0609066"
+            "rank": 125,
+            "value": 0.0318967312096606,
+            "placeDcid": "geoId/0619318"
           },
           {
-            "rank": 127,
+            "rank": 126,
             "value": 0.031825566741068,
             "placeDcid": "geoId/0645022"
           },
           {
+            "rank": 127,
+            "value": 0.0318223443223443,
+            "placeDcid": "geoId/0609066"
+          },
+          {
             "rank": 128,
+            "value": 0.0317825886688162,
+            "placeDcid": "geoId/0633364"
+          },
+          {
+            "rank": 129,
             "value": 0.0317326532175969,
             "placeDcid": "geoId/0669070"
           },
           {
-            "rank": 129,
-            "value": 0.0316030534351145,
-            "placeDcid": "geoId/0633364"
-          },
-          {
             "rank": 130,
-            "value": 0.0315843470614099,
-            "placeDcid": "geoId/0609780"
-          },
-          {
-            "rank": 131,
-            "value": 0.0314494784368675,
-            "placeDcid": "geoId/0645246"
-          },
-          {
-            "rank": 132,
             "value": 0.0313438951106255,
             "placeDcid": "geoId/0608954"
           },
           {
-            "rank": 133,
-            "value": 0.0312187176572388,
+            "rank": 131,
+            "value": 0.03132548697127,
+            "placeDcid": "geoId/0644028"
+          },
+          {
+            "rank": 132,
+            "value": 0.0313058273075287,
             "placeDcid": "geoId/0668364"
           },
           {
+            "rank": 133,
+            "value": 0.0311731520324027,
+            "placeDcid": "geoId/0609780"
+          },
+          {
             "rank": 134,
-            "value": 0.0310759900762657,
-            "placeDcid": "geoId/0614890"
+            "value": 0.0310796595581907,
+            "placeDcid": "geoId/0648816"
           },
           {
             "rank": 135,
-            "value": 0.0310534591194969,
-            "placeDcid": "geoId/0640354"
+            "value": 0.0309820447050202,
+            "placeDcid": "geoId/0614890"
           },
           {
             "rank": 136,
@@ -690,17 +690,17 @@
           },
           {
             "rank": 138,
-            "value": 0.0309038178101079,
-            "placeDcid": "geoId/0648816"
-          },
-          {
-            "rank": 139,
             "value": 0.0308357016113908,
             "placeDcid": "geoId/0628000"
           },
           {
+            "rank": 139,
+            "value": 0.0307722270912455,
+            "placeDcid": "geoId/0640354"
+          },
+          {
             "rank": 140,
-            "value": 0.0303720144935784,
+            "value": 0.0302726619521234,
             "placeDcid": "geoId/0618394"
           },
           {
@@ -720,8 +720,8 @@
           },
           {
             "rank": 144,
-            "value": 0.0300921572315215,
-            "placeDcid": "geoId/0636434"
+            "value": 0.0300624696444422,
+            "placeDcid": "geoId/0628168"
           },
           {
             "rank": 145,
@@ -730,48 +730,48 @@
           },
           {
             "rank": 146,
-            "value": 0.0300543289793088,
-            "placeDcid": "geoId/0609864"
-          },
-          {
-            "rank": 147,
-            "value": 0.0300511508951407,
-            "placeDcid": "geoId/0608310"
-          },
-          {
-            "rank": 148,
             "value": 0.0300414629076548,
             "placeDcid": "geoId/0611530"
           },
           {
-            "rank": 149,
-            "value": 0.0299546091716174,
-            "placeDcid": "geoId/0628168"
+            "rank": 147,
+            "value": 0.0300191611667022,
+            "placeDcid": "geoId/0608310"
           },
           {
-            "rank": 150,
+            "rank": 148,
             "value": 0.0299391880502574,
             "placeDcid": "geoId/0681344"
           },
           {
-            "rank": 151,
-            "value": 0.029850995869358,
+            "rank": 149,
+            "value": 0.0299010000502538,
             "placeDcid": "geoId/0658240"
           },
           {
-            "rank": 152,
+            "rank": 150,
+            "value": 0.0297951582867784,
+            "placeDcid": "geoId/0636434"
+          },
+          {
+            "rank": 151,
             "value": 0.0297716813897397,
             "placeDcid": "geoId/0642202"
           },
           {
+            "rank": 152,
+            "value": 0.0294985250737463,
+            "placeDcid": "geoId/0609864"
+          },
+          {
             "rank": 153,
-            "value": 0.0297711699139427,
-            "placeDcid": "geoId/0631960"
+            "value": 0.0294863099275336,
+            "placeDcid": "geoId/0625380"
           },
           {
             "rank": 154,
-            "value": 0.029476594313894,
-            "placeDcid": "geoId/0641124"
+            "value": 0.0294643647631695,
+            "placeDcid": "geoId/0631960"
           },
           {
             "rank": 155,
@@ -780,18 +780,18 @@
           },
           {
             "rank": 156,
+            "value": 0.0294381016342064,
+            "placeDcid": "geoId/0641124"
+          },
+          {
+            "rank": 157,
             "value": 0.0294202758753738,
             "placeDcid": "geoId/0657456"
           },
           {
-            "rank": 157,
-            "value": 0.0294117647058824,
-            "placeDcid": "geoId/0681134"
-          },
-          {
             "rank": 158,
-            "value": 0.0293053288866813,
-            "placeDcid": "geoId/0625380"
+            "value": 0.029417299128144,
+            "placeDcid": "geoId/0681134"
           },
           {
             "rank": 159,
@@ -810,7 +810,7 @@
           },
           {
             "rank": 162,
-            "value": 0.0288073479612191,
+            "value": 0.028828076039273,
             "placeDcid": "geoId/0665028"
           },
           {
@@ -825,73 +825,73 @@
           },
           {
             "rank": 165,
-            "value": 0.0285134142653476,
+            "value": 0.0286508074318458,
             "placeDcid": "geoId/0639178"
           },
           {
             "rank": 166,
-            "value": 0.0284918514057736,
-            "placeDcid": "geoId/0651560"
-          },
-          {
-            "rank": 167,
-            "value": 0.0284530386740331,
-            "placeDcid": "geoId/0657540"
-          },
-          {
-            "rank": 168,
-            "value": 0.0284504892096315,
-            "placeDcid": "geoId/0632506"
-          },
-          {
-            "rank": 169,
-            "value": 0.0284441745115902,
-            "placeDcid": "geoId/0600674"
-          },
-          {
-            "rank": 170,
-            "value": 0.0284412422687196,
+            "value": 0.0286073561773027,
             "placeDcid": "geoId/0648914"
           },
           {
-            "rank": 171,
+            "rank": 167,
+            "value": 0.0285973355653205,
+            "placeDcid": "geoId/0632506"
+          },
+          {
+            "rank": 168,
+            "value": 0.0284663691951744,
+            "placeDcid": "geoId/0670686"
+          },
+          {
+            "rank": 169,
             "value": 0.0284039245910441,
             "placeDcid": "geoId/0622230"
           },
           {
+            "rank": 170,
+            "value": 0.0283839520059993,
+            "placeDcid": "geoId/0651560"
+          },
+          {
+            "rank": 171,
+            "value": 0.0283781054332458,
+            "placeDcid": "geoId/0600674"
+          },
+          {
             "rank": 172,
-            "value": 0.0283841334254944,
-            "placeDcid": "geoId/0614260"
-          },
-          {
-            "rank": 173,
-            "value": 0.0283196979232222,
-            "placeDcid": "geoId/0620242"
-          },
-          {
-            "rank": 174,
-            "value": 0.0283136710617627,
-            "placeDcid": "geoId/0613756"
-          },
-          {
-            "rank": 175,
-            "value": 0.0282794286652438,
-            "placeDcid": "geoId/0670686"
-          },
-          {
-            "rank": 176,
-            "value": 0.0282440256326559,
-            "placeDcid": "geoId/0602462"
-          },
-          {
-            "rank": 177,
-            "value": 0.0281538001884581,
+            "value": 0.0283354922279793,
             "placeDcid": "geoId/0642524"
           },
           {
-            "rank": 178,
-            "value": 0.0281120164031727,
+            "rank": 173,
+            "value": 0.0282952261988812,
             "placeDcid": "geoId/0613294"
+          },
+          {
+            "rank": 174,
+            "value": 0.0282707387536112,
+            "placeDcid": "geoId/0602462"
+          },
+          {
+            "rank": 175,
+            "value": 0.028262676641729,
+            "placeDcid": "geoId/0613756"
+          },
+          {
+            "rank": 176,
+            "value": 0.0281941989811831,
+            "placeDcid": "geoId/0616742"
+          },
+          {
+            "rank": 177,
+            "value": 0.0281755605232288,
+            "placeDcid": "geoId/0614260"
+          },
+          {
+            "rank": 178,
+            "value": 0.0281677301731996,
+            "placeDcid": "geoId/0657540"
           },
           {
             "rank": 179,
@@ -900,197 +900,197 @@
           },
           {
             "rank": 180,
-            "value": 0.028014792471541,
-            "placeDcid": "geoId/0616742"
-          },
-          {
-            "rank": 181,
-            "value": 0.0278497067061248,
-            "placeDcid": "geoId/0671106"
-          },
-          {
-            "rank": 182,
-            "value": 0.0276935516474631,
+            "value": 0.0277624258501897,
             "placeDcid": "geoId/0662896"
           },
           {
-            "rank": 183,
-            "value": 0.0275310834813499,
-            "placeDcid": "geoId/0603386"
-          },
-          {
-            "rank": 184,
+            "rank": 181,
             "value": 0.0274563194917177,
             "placeDcid": "geoId/0614218"
           },
           {
-            "rank": 185,
-            "value": 0.0274348422496571,
-            "placeDcid": "geoId/0652694"
+            "rank": 182,
+            "value": 0.0274154322352421,
+            "placeDcid": "geoId/0603386"
           },
           {
-            "rank": 186,
-            "value": 0.0274337461712612,
-            "placeDcid": "geoId/0622790"
-          },
-          {
-            "rank": 187,
+            "rank": 183,
             "value": 0.0273324154254048,
             "placeDcid": "geoId/0653322"
           },
           {
-            "rank": 188,
-            "value": 0.027313635310856,
-            "placeDcid": "geoId/0608142"
+            "rank": 184,
+            "value": 0.0273282037675776,
+            "placeDcid": "geoId/0622790"
           },
           {
-            "rank": 189,
+            "rank": 185,
             "value": 0.0272495242029477,
             "placeDcid": "geoId/0673262"
           },
           {
-            "rank": 190,
-            "value": 0.0271622587562545,
+            "rank": 186,
+            "value": 0.0270992955211601,
+            "placeDcid": "geoId/0671106"
+          },
+          {
+            "rank": 187,
+            "value": 0.0270618556701031,
             "placeDcid": "geoId/0675630"
           },
           {
-            "rank": 191,
-            "value": 0.0269955976410001,
-            "placeDcid": "geoId/0642370"
+            "rank": 188,
+            "value": 0.0270317404952912,
+            "placeDcid": "geoId/0652694"
           },
           {
-            "rank": 192,
+            "rank": 189,
             "value": 0.0269817622372175,
             "placeDcid": "geoId/0621712"
           },
           {
-            "rank": 193,
-            "value": 0.026952288218111,
-            "placeDcid": "geoId/0628112"
+            "rank": 190,
+            "value": 0.0268772742308965,
+            "placeDcid": "geoId/0642370"
           },
           {
-            "rank": 194,
-            "value": 0.0268960338589665,
-            "placeDcid": "geoId/0638226"
-          },
-          {
-            "rank": 195,
+            "rank": 191,
             "value": 0.0268249258160237,
             "placeDcid": "geoId/0637692"
           },
           {
-            "rank": 196,
-            "value": 0.0266775363337363,
+            "rank": 192,
+            "value": 0.0267323943661972,
             "placeDcid": "geoId/0645400"
           },
           {
-            "rank": 197,
+            "rank": 193,
+            "value": 0.0267299990686411,
+            "placeDcid": "geoId/0640830"
+          },
+          {
+            "rank": 194,
             "value": 0.026655781926599,
             "placeDcid": "geoId/0651182"
           },
           {
+            "rank": 195,
+            "value": 0.0266457933216055,
+            "placeDcid": "geoId/0608142"
+          },
+          {
+            "rank": 196,
+            "value": 0.0266256252404771,
+            "placeDcid": "geoId/0628112"
+          },
+          {
+            "rank": 197,
+            "value": 0.0265928725701944,
+            "placeDcid": "geoId/0638226"
+          },
+          {
             "rank": 198,
-            "value": 0.0266085666604858,
-            "placeDcid": "geoId/0640830"
+            "value": 0.0265613783201723,
+            "placeDcid": "geoId/0684438"
           },
           {
             "rank": 199,
+            "value": 0.0265551340454913,
+            "placeDcid": "geoId/0656924"
+          },
+          {
+            "rank": 200,
             "value": 0.0264838309733111,
             "placeDcid": "geoId/0669196"
           },
           {
-            "rank": 200,
-            "value": 0.0264365587227716,
-            "placeDcid": "geoId/0603820"
-          },
-          {
             "rank": 201,
-            "value": 0.0263747004666414,
-            "placeDcid": "geoId/0656924"
-          },
-          {
-            "rank": 202,
-            "value": 0.0263532763532764,
-            "placeDcid": "geoId/0684438"
-          },
-          {
-            "rank": 203,
             "value": 0.0263403322158647,
             "placeDcid": "geoId/0680854"
           },
           {
-            "rank": 204,
+            "rank": 202,
             "value": 0.026338600357169,
             "placeDcid": "geoId/0633434"
           },
           {
-            "rank": 205,
+            "rank": 203,
+            "value": 0.0263259526261586,
+            "placeDcid": "geoId/0603820"
+          },
+          {
+            "rank": 204,
             "value": 0.0262486673234457,
             "placeDcid": "geoId/0681204"
           },
           {
-            "rank": 206,
+            "rank": 205,
             "value": 0.0262297943020835,
             "placeDcid": "geoId/0669000"
           },
           {
-            "rank": 207,
+            "rank": 206,
             "value": 0.0261810477463616,
             "placeDcid": "geoId/0656700"
           },
           {
-            "rank": 208,
+            "rank": 207,
             "value": 0.0261545605704271,
             "placeDcid": "geoId/0660018"
           },
           {
-            "rank": 209,
-            "value": 0.0260047281323877,
-            "placeDcid": "geoId/0677392"
+            "rank": 208,
+            "value": 0.0261020881670534,
+            "placeDcid": "geoId/0620242"
           },
           {
-            "rank": 210,
+            "rank": 209,
             "value": 0.0258443536493968,
             "placeDcid": "geoId/0649670"
           },
           {
+            "rank": 210,
+            "value": 0.0256509910610183,
+            "placeDcid": "geoId/0677392"
+          },
+          {
             "rank": 211,
-            "value": 0.0257540283707478,
-            "placeDcid": "geoId/0656112"
+            "value": 0.0256488549618321,
+            "placeDcid": "geoId/0649852"
           },
           {
             "rank": 212,
-            "value": 0.0257070382008859,
+            "value": 0.0255498485447122,
             "placeDcid": "geoId/0684816"
           },
           {
             "rank": 213,
-            "value": 0.02557856272838,
-            "placeDcid": "geoId/0649852"
-          },
-          {
-            "rank": 214,
-            "value": 0.025462962962963,
-            "placeDcid": "geoId/0655856"
-          },
-          {
-            "rank": 215,
             "value": 0.0254259236321461,
             "placeDcid": "geoId/0659451"
           },
           {
-            "rank": 216,
+            "rank": 214,
+            "value": 0.0254237288135593,
+            "placeDcid": "geoId/0656112"
+          },
+          {
+            "rank": 215,
             "value": 0.0253865942950838,
             "placeDcid": "geoId/0662938"
           },
           {
-            "rank": 217,
+            "rank": 216,
             "value": 0.0252552467385139,
             "placeDcid": "geoId/0656000"
           },
           {
+            "rank": 217,
+            "value": 0.0252052701928585,
+            "placeDcid": "geoId/0623126"
+          },
+          {
             "rank": 218,
-            "value": 0.0252363403300753,
+            "value": 0.0251798561151079,
             "placeDcid": "geoId/0630658"
           },
           {
@@ -1105,83 +1105,83 @@
           },
           {
             "rank": 221,
-            "value": 0.025130890052356,
-            "placeDcid": "geoId/0623126"
+            "value": 0.0251436781609195,
+            "placeDcid": "geoId/0655856"
           },
           {
             "rank": 222,
-            "value": 0.0249205759788753,
-            "placeDcid": "geoId/0661068"
-          },
-          {
-            "rank": 223,
             "value": 0.0248978428204885,
             "placeDcid": "geoId/0647766"
           },
           {
+            "rank": 223,
+            "value": 0.0248804867448935,
+            "placeDcid": "geoId/0648648"
+          },
+          {
             "rank": 224,
-            "value": 0.0248084749820445,
-            "placeDcid": "geoId/0600296"
-          },
-          {
-            "rank": 225,
-            "value": 0.0248005867791327,
-            "placeDcid": "geoId/0673108"
-          },
-          {
-            "rank": 226,
             "value": 0.0247911264765197,
             "placeDcid": "geoId/0618100"
           },
           {
+            "rank": 225,
+            "value": 0.0246711869945266,
+            "placeDcid": "geoId/0661068"
+          },
+          {
+            "rank": 226,
+            "value": 0.0246622947144218,
+            "placeDcid": "geoId/0604870"
+          },
+          {
             "rank": 227,
-            "value": 0.0247575771771209,
-            "placeDcid": "geoId/0662546"
+            "value": 0.0246592825561785,
+            "placeDcid": "geoId/0673108"
           },
           {
             "rank": 228,
-            "value": 0.0247527427984651,
-            "placeDcid": "geoId/0648648"
+            "value": 0.0246375460351499,
+            "placeDcid": "geoId/0662546"
           },
           {
             "rank": 229,
-            "value": 0.0247487118844497,
-            "placeDcid": "geoId/0638562"
+            "value": 0.0246286393345217,
+            "placeDcid": "geoId/0600296"
           },
           {
             "rank": 230,
-            "value": 0.0246481388869043,
-            "placeDcid": "geoId/0642006"
-          },
-          {
-            "rank": 231,
             "value": 0.0246142454497683,
             "placeDcid": "geoId/0600884"
           },
           {
+            "rank": 231,
+            "value": 0.0245449884644963,
+            "placeDcid": "geoId/0640256"
+          },
+          {
             "rank": 232,
-            "value": 0.024574827557318,
-            "placeDcid": "geoId/0604870"
-          },
-          {
-            "rank": 233,
-            "value": 0.0245616686819831,
-            "placeDcid": "geoId/0641712"
-          },
-          {
-            "rank": 234,
             "value": 0.0245426331264293,
             "placeDcid": "geoId/0602364"
           },
           {
+            "rank": 233,
+            "value": 0.024508573818486,
+            "placeDcid": "geoId/0638562"
+          },
+          {
+            "rank": 234,
+            "value": 0.0244177310293013,
+            "placeDcid": "geoId/0641712"
+          },
+          {
             "rank": 235,
-            "value": 0.0243437360961037,
-            "placeDcid": "geoId/0640256"
+            "value": 0.0242706614016394,
+            "placeDcid": "geoId/0680000"
           },
           {
             "rank": 236,
-            "value": 0.0242706614016394,
-            "placeDcid": "geoId/0680000"
+            "value": 0.0242479617655328,
+            "placeDcid": "geoId/0642006"
           },
           {
             "rank": 237,
@@ -1190,23 +1190,23 @@
           },
           {
             "rank": 238,
-            "value": 0.024061173832973,
-            "placeDcid": "geoId/0667056"
-          },
-          {
-            "rank": 239,
-            "value": 0.0240409879138203,
-            "placeDcid": "geoId/0650398"
-          },
-          {
-            "rank": 240,
             "value": 0.0240054109194128,
             "placeDcid": "geoId/0641992"
           },
           {
-            "rank": 241,
+            "rank": 239,
             "value": 0.0239825727307407,
             "placeDcid": "geoId/0636000"
+          },
+          {
+            "rank": 240,
+            "value": 0.0239690516072426,
+            "placeDcid": "geoId/0667056"
+          },
+          {
+            "rank": 241,
+            "value": 0.0239524876883559,
+            "placeDcid": "geoId/0650398"
           },
           {
             "rank": 242,
@@ -1215,77 +1215,77 @@
           },
           {
             "rank": 243,
-            "value": 0.0237332962138085,
+            "value": 0.023717614327943,
             "placeDcid": "geoId/0660704"
           },
           {
             "rank": 244,
-            "value": 0.0237200018567516,
-            "placeDcid": "geoId/0687056"
-          },
-          {
-            "rank": 245,
-            "value": 0.0235404071380589,
+            "value": 0.023672462406015,
             "placeDcid": "geoId/0666070"
           },
           {
+            "rank": 245,
+            "value": 0.0236333364166127,
+            "placeDcid": "geoId/0687056"
+          },
+          {
             "rank": 246,
-            "value": 0.0235192886849276,
-            "placeDcid": "geoId/0603204"
-          },
-          {
-            "rank": 247,
-            "value": 0.0234236861772909,
-            "placeDcid": "geoId/0633588"
-          },
-          {
-            "rank": 248,
-            "value": 0.0233948339483395,
+            "value": 0.0234727878563495,
             "placeDcid": "geoId/0611446"
           },
           {
-            "rank": 249,
+            "rank": 247,
+            "value": 0.0234101777175077,
+            "placeDcid": "geoId/0603204"
+          },
+          {
+            "rank": 248,
             "value": 0.0233785220627326,
             "placeDcid": "geoId/0603666"
           },
           {
-            "rank": 250,
-            "value": 0.0232583749972469,
-            "placeDcid": "geoId/0604758"
+            "rank": 249,
+            "value": 0.0233428400152591,
+            "placeDcid": "geoId/0633588"
           },
           {
-            "rank": 251,
+            "rank": 250,
             "value": 0.023088911550228,
             "placeDcid": "geoId/0652526"
           },
           {
-            "rank": 252,
+            "rank": 251,
             "value": 0.0230756240749387,
             "placeDcid": "geoId/0681554"
           },
           {
-            "rank": 253,
+            "rank": 252,
             "value": 0.0229897163867558,
             "placeDcid": "geoId/0668252"
           },
           {
-            "rank": 254,
+            "rank": 253,
             "value": 0.0229763973506638,
             "placeDcid": "geoId/0626000"
           },
           {
+            "rank": 254,
+            "value": 0.0229560682575833,
+            "placeDcid": "geoId/0639290"
+          },
+          {
             "rank": 255,
+            "value": 0.0229011401214155,
+            "placeDcid": "geoId/0601640"
+          },
+          {
+            "rank": 256,
             "value": 0.0228537943158512,
             "placeDcid": "geoId/0659444"
           },
           {
-            "rank": 256,
-            "value": 0.0228503890475721,
-            "placeDcid": "geoId/0601640"
-          },
-          {
             "rank": 257,
-            "value": 0.0228333501225614,
+            "value": 0.0228356504802203,
             "placeDcid": "geoId/0640004"
           },
           {
@@ -1295,28 +1295,28 @@
           },
           {
             "rank": 259,
-            "value": 0.022468098853174,
-            "placeDcid": "geoId/0639290"
+            "value": 0.022399456982861,
+            "placeDcid": "geoId/0604758"
           },
           {
             "rank": 260,
-            "value": 0.0224496917529371,
-            "placeDcid": "geoId/0641152"
-          },
-          {
-            "rank": 261,
-            "value": 0.022433441479042,
-            "placeDcid": "geoId/0621230"
-          },
-          {
-            "rank": 262,
-            "value": 0.0222513089005236,
+            "value": 0.0223749634396022,
             "placeDcid": "geoId/0642468"
           },
           {
-            "rank": 263,
+            "rank": 261,
             "value": 0.0222108758494563,
             "placeDcid": "geoId/0666000"
+          },
+          {
+            "rank": 262,
+            "value": 0.0221779599341173,
+            "placeDcid": "geoId/0641152"
+          },
+          {
+            "rank": 263,
+            "value": 0.022177094413822,
+            "placeDcid": "geoId/0621230"
           },
           {
             "rank": 264,
@@ -1325,93 +1325,93 @@
           },
           {
             "rank": 265,
-            "value": 0.0218410740669365,
+            "value": 0.0219043937636902,
             "placeDcid": "geoId/0654848"
           },
           {
             "rank": 266,
+            "value": 0.0217665615141956,
+            "placeDcid": "geoId/0678092"
+          },
+          {
+            "rank": 267,
             "value": 0.0217263728114017,
             "placeDcid": "geoId/0655156"
           },
           {
-            "rank": 267,
-            "value": 0.021648752788481,
-            "placeDcid": "geoId/0620018"
-          },
-          {
             "rank": 268,
-            "value": 0.021641966596095,
-            "placeDcid": "geoId/0678092"
-          },
-          {
-            "rank": 269,
             "value": 0.021578599897303,
             "placeDcid": "geoId/0657792"
           },
           {
-            "rank": 270,
-            "value": 0.0215597955362113,
-            "placeDcid": "geoId/0619402"
-          },
-          {
-            "rank": 271,
-            "value": 0.021505376344086,
-            "placeDcid": "geoId/0645358"
-          },
-          {
-            "rank": 272,
+            "rank": 269,
             "value": 0.0214410760404208,
             "placeDcid": "geoId/0611194"
           },
           {
-            "rank": 273,
-            "value": 0.0213346908552388,
-            "placeDcid": "geoId/0645778"
+            "rank": 270,
+            "value": 0.0213000367242012,
+            "placeDcid": "geoId/0645358"
           },
           {
-            "rank": 274,
-            "value": 0.0212280951702522,
-            "placeDcid": "geoId/0636084"
+            "rank": 271,
+            "value": 0.0212109141605258,
+            "placeDcid": "geoId/0619402"
           },
           {
-            "rank": 275,
+            "rank": 272,
             "value": 0.0211714890613973,
             "placeDcid": "geoId/0622804"
           },
           {
-            "rank": 276,
-            "value": 0.0210518540404787,
+            "rank": 273,
+            "value": 0.0210565201329885,
             "placeDcid": "geoId/0631393"
           },
           {
-            "rank": 277,
-            "value": 0.0209592145015106,
+            "rank": 274,
+            "value": 0.0209869540555871,
             "placeDcid": "geoId/0649362"
           },
           {
+            "rank": 275,
+            "value": 0.0209726582048132,
+            "placeDcid": "geoId/0645778"
+          },
+          {
+            "rank": 276,
+            "value": 0.0209416725228391,
+            "placeDcid": "geoId/0636084"
+          },
+          {
+            "rank": 277,
+            "value": 0.0209177008491182,
+            "placeDcid": "geoId/0620018"
+          },
+          {
             "rank": 278,
-            "value": 0.0209521283649383,
-            "placeDcid": "geoId/0654274"
+            "value": 0.0209059233449477,
+            "placeDcid": "geoId/0603274"
           },
           {
             "rank": 279,
-            "value": 0.0209335970946884,
-            "placeDcid": "geoId/0646870"
-          },
-          {
-            "rank": 280,
-            "value": 0.0209075473582581,
+            "value": 0.0208430136077,
             "placeDcid": "geoId/0603064"
           },
           {
-            "rank": 281,
+            "rank": 280,
             "value": 0.0208355411117783,
             "placeDcid": "geoId/0616350"
           },
           {
-            "rank": 282,
+            "rank": 281,
             "value": 0.0208114680660438,
             "placeDcid": "geoId/0650258"
+          },
+          {
+            "rank": 282,
+            "value": 0.0208070048745261,
+            "placeDcid": "geoId/0616224"
           },
           {
             "rank": 283,
@@ -1420,348 +1420,348 @@
           },
           {
             "rank": 284,
-            "value": 0.0207281424395429,
-            "placeDcid": "geoId/0603274"
+            "value": 0.0207686449118285,
+            "placeDcid": "geoId/0646870"
           },
           {
             "rank": 285,
-            "value": 0.0206717187570064,
-            "placeDcid": "geoId/0616224"
-          },
-          {
-            "rank": 286,
-            "value": 0.0206445246565738,
-            "placeDcid": "geoId/0673962"
-          },
-          {
-            "rank": 287,
-            "value": 0.0206436068117777,
+            "value": 0.0207325075875646,
             "placeDcid": "geoId/0640032"
           },
           {
-            "rank": 288,
-            "value": 0.020611329220415,
-            "placeDcid": "geoId/0686034"
+            "rank": 286,
+            "value": 0.0207294673314091,
+            "placeDcid": "geoId/0654274"
           },
           {
-            "rank": 289,
-            "value": 0.0206096293730516,
+            "rank": 287,
+            "value": 0.0207155327409646,
+            "placeDcid": "geoId/0673962"
+          },
+          {
+            "rank": 288,
+            "value": 0.0204713573025976,
             "placeDcid": "geoId/0631568"
           },
           {
-            "rank": 290,
-            "value": 0.0204634699408219,
-            "placeDcid": "geoId/0685446"
-          },
-          {
-            "rank": 291,
-            "value": 0.0203981922560156,
+            "rank": 289,
+            "value": 0.0204431386950667,
             "placeDcid": "geoId/0662644"
           },
           {
+            "rank": 290,
+            "value": 0.0204251771571488,
+            "placeDcid": "geoId/0686034"
+          },
+          {
+            "rank": 291,
+            "value": 0.0204200927477495,
+            "placeDcid": "geoId/0673220"
+          },
+          {
             "rank": 292,
-            "value": 0.0203840705178656,
-            "placeDcid": "geoId/0631708"
+            "value": 0.0203880551765954,
+            "placeDcid": "geoId/0668224"
           },
           {
             "rank": 293,
-            "value": 0.0203773128552425,
-            "placeDcid": "geoId/0614274"
-          },
-          {
-            "rank": 294,
             "value": 0.0203445813891433,
             "placeDcid": "geoId/0653980"
           },
           {
-            "rank": 295,
-            "value": 0.0203355363497712,
-            "placeDcid": "geoId/0633056"
-          },
-          {
-            "rank": 296,
-            "value": 0.0202912019826518,
-            "placeDcid": "geoId/0673220"
-          },
-          {
-            "rank": 297,
-            "value": 0.0202521008403361,
+            "rank": 294,
+            "value": 0.020315265952963,
             "placeDcid": "geoId/0670588"
           },
           {
-            "rank": 298,
-            "value": 0.0202484004516372,
-            "placeDcid": "geoId/0668224"
+            "rank": 295,
+            "value": 0.0203045685279188,
+            "placeDcid": "geoId/0685446"
           },
           {
-            "rank": 299,
-            "value": 0.0202139506631121,
+            "rank": 296,
+            "value": 0.0202617138032925,
+            "placeDcid": "geoId/0633056"
+          },
+          {
+            "rank": 297,
+            "value": 0.0202412732740851,
             "placeDcid": "geoId/0620956"
           },
           {
-            "rank": 300,
-            "value": 0.0201795212765957,
-            "placeDcid": "geoId/0665070"
+            "rank": 298,
+            "value": 0.0201807698301387,
+            "placeDcid": "geoId/0631708"
           },
           {
-            "rank": 301,
+            "rank": 299,
+            "value": 0.0201551118549775,
+            "placeDcid": "geoId/0604996"
+          },
+          {
+            "rank": 300,
             "value": 0.0201468031678578,
             "placeDcid": "geoId/0660466"
           },
           {
-            "rank": 302,
-            "value": 0.0200511245045848,
-            "placeDcid": "geoId/0604996"
+            "rank": 301,
+            "value": 0.0201299993367381,
+            "placeDcid": "geoId/0665070"
           },
           {
-            "rank": 303,
-            "value": 0.0200366684127816,
+            "rank": 302,
+            "value": 0.0200734715297822,
             "placeDcid": "geoId/0686300"
           },
           {
-            "rank": 304,
-            "value": 0.0198908842918845,
+            "rank": 303,
+            "value": 0.0199908613205392,
             "placeDcid": "geoId/0614190"
           },
           {
+            "rank": 304,
+            "value": 0.0199337513308884,
+            "placeDcid": "geoId/0614274"
+          },
+          {
             "rank": 305,
-            "value": 0.0198514517218096,
+            "value": 0.0199043148582777,
             "placeDcid": "geoId/0658296"
           },
           {
             "rank": 306,
-            "value": 0.0196857504063572,
-            "placeDcid": "geoId/0672646"
+            "value": 0.0197701149425287,
+            "placeDcid": "geoId/0606560"
           },
           {
             "rank": 307,
-            "value": 0.0195926445122454,
-            "placeDcid": "geoId/0656784"
+            "value": 0.0196839729119639,
+            "placeDcid": "geoId/0672646"
           },
           {
             "rank": 308,
-            "value": 0.0195669188625098,
-            "placeDcid": "geoId/0670770"
+            "value": 0.0196047037056804,
+            "placeDcid": "geoId/0619192"
           },
           {
             "rank": 309,
-            "value": 0.0195647752694733,
+            "value": 0.0196046464234767,
             "placeDcid": "geoId/0666140"
           },
           {
             "rank": 310,
-            "value": 0.0195272353545735,
-            "placeDcid": "geoId/0619192"
+            "value": 0.0195500847499465,
+            "placeDcid": "geoId/0656784"
           },
           {
             "rank": 311,
-            "value": 0.0194846008799497,
-            "placeDcid": "geoId/0625436"
-          },
-          {
-            "rank": 312,
-            "value": 0.0194572834352169,
+            "value": 0.0195052686645243,
             "placeDcid": "geoId/0667042"
           },
           {
-            "rank": 313,
-            "value": 0.0194572785839787,
-            "placeDcid": "geoId/0661026"
-          },
-          {
-            "rank": 314,
-            "value": 0.0193632470675852,
+            "rank": 312,
+            "value": 0.0194102276969018,
             "placeDcid": "geoId/0623616"
           },
           {
-            "rank": 315,
-            "value": 0.0192511398701239,
+            "rank": 313,
+            "value": 0.0193886543902778,
             "placeDcid": "geoId/0619990"
           },
           {
-            "rank": 316,
-            "value": 0.0191432396251673,
+            "rank": 314,
+            "value": 0.0193298969072165,
+            "placeDcid": "geoId/0670770"
+          },
+          {
+            "rank": 315,
+            "value": 0.0191843305607727,
             "placeDcid": "geoId/0616560"
           },
           {
+            "rank": 316,
+            "value": 0.019182320441989,
+            "placeDcid": "geoId/0647486"
+          },
+          {
             "rank": 317,
-            "value": 0.0191252286712124,
+            "value": 0.0191315920811845,
             "placeDcid": "geoId/0602868"
           },
           {
             "rank": 318,
-            "value": 0.0191164163326433,
-            "placeDcid": "geoId/0647486"
+            "value": 0.0189980082733262,
+            "placeDcid": "geoId/0625436"
           },
           {
             "rank": 319,
-            "value": 0.0191016438990507,
+            "value": 0.0189949922293214,
             "placeDcid": "geoId/0630994"
           },
           {
             "rank": 320,
-            "value": 0.0188870531691199,
-            "placeDcid": "geoId/0687042"
+            "value": 0.0189516384610509,
+            "placeDcid": "geoId/0661026"
           },
           {
             "rank": 321,
+            "value": 0.0189006415814115,
+            "placeDcid": "geoId/0643224"
+          },
+          {
+            "rank": 322,
             "value": 0.018878920830332,
             "placeDcid": "geoId/0677000"
           },
           {
-            "rank": 322,
+            "rank": 323,
+            "value": 0.0188333083720234,
+            "placeDcid": "geoId/0687042"
+          },
+          {
+            "rank": 324,
             "value": 0.0188185182598981,
             "placeDcid": "geoId/0660102"
           },
           {
-            "rank": 323,
-            "value": 0.0187502451653395,
+            "rank": 325,
+            "value": 0.0186784416396389,
             "placeDcid": "geoId/0660242"
           },
           {
-            "rank": 324,
-            "value": 0.0187478500171999,
-            "placeDcid": "geoId/0643224"
-          },
-          {
-            "rank": 325,
-            "value": 0.0185770016719301,
-            "placeDcid": "geoId/0639304"
-          },
-          {
             "rank": 326,
-            "value": 0.0185718180991911,
+            "value": 0.0186782046984978,
             "placeDcid": "geoId/0640886"
           },
           {
             "rank": 327,
-            "value": 0.0185105467068446,
-            "placeDcid": "geoId/0606560"
+            "value": 0.0184298892276815,
+            "placeDcid": "geoId/0657526"
           },
           {
             "rank": 328,
-            "value": 0.0184328466098019,
-            "placeDcid": "geoId/0638520"
-          },
-          {
-            "rank": 329,
             "value": 0.0184279656431094,
             "placeDcid": "geoId/0682996"
           },
           {
+            "rank": 329,
+            "value": 0.0183798502382573,
+            "placeDcid": "geoId/0648690"
+          },
+          {
             "rank": 330,
-            "value": 0.0183887758226321,
+            "value": 0.0183494482585098,
             "placeDcid": "geoId/0652582"
           },
           {
             "rank": 331,
-            "value": 0.0183480950642664,
-            "placeDcid": "geoId/0657526"
+            "value": 0.0183176495941384,
+            "placeDcid": "geoId/0638520"
           },
           {
             "rank": 332,
-            "value": 0.0182484426529864,
+            "value": 0.0182317408017573,
             "placeDcid": "geoId/0636294"
           },
           {
             "rank": 333,
-            "value": 0.0181420366487374,
-            "placeDcid": "geoId/0649278"
-          },
-          {
-            "rank": 334,
-            "value": 0.0181002243829469,
+            "value": 0.0181191973644804,
             "placeDcid": "geoId/0672506"
           },
           {
-            "rank": 335,
-            "value": 0.017847260653016,
-            "placeDcid": "geoId/0644826"
-          },
-          {
-            "rank": 336,
-            "value": 0.0178367986328681,
-            "placeDcid": "geoId/0605290"
-          },
-          {
-            "rank": 337,
-            "value": 0.017813470817635,
+            "rank": 334,
+            "value": 0.0179081666555917,
             "placeDcid": "geoId/0670042"
           },
           {
-            "rank": 338,
-            "value": 0.017798286090969,
-            "placeDcid": "geoId/0648690"
-          },
-          {
-            "rank": 339,
-            "value": 0.0177832555682719,
+            "rank": 335,
+            "value": 0.0178466250441748,
             "placeDcid": "geoId/0670742"
           },
           {
-            "rank": 340,
-            "value": 0.017738436171136,
-            "placeDcid": "geoId/0670224"
+            "rank": 336,
+            "value": 0.0178131853376897,
+            "placeDcid": "geoId/0649278"
           },
           {
-            "rank": 341,
-            "value": 0.0176619568115169,
+            "rank": 337,
+            "value": 0.0177709988649262,
+            "placeDcid": "geoId/0605290"
+          },
+          {
+            "rank": 338,
+            "value": 0.0177239741831923,
             "placeDcid": "geoId/0683332"
           },
           {
-            "rank": 342,
-            "value": 0.0176561639163628,
-            "placeDcid": "geoId/0646114"
+            "rank": 339,
+            "value": 0.0176825786805544,
+            "placeDcid": "geoId/0670224"
           },
           {
-            "rank": 343,
+            "rank": 340,
+            "value": 0.0176350065856871,
+            "placeDcid": "geoId/0646492"
+          },
+          {
+            "rank": 341,
             "value": 0.0175979074329725,
             "placeDcid": "geoId/0662364"
           },
           {
-            "rank": 344,
-            "value": 0.017500544622758,
-            "placeDcid": "geoId/0646492"
+            "rank": 342,
+            "value": 0.0175763907025333,
+            "placeDcid": "geoId/0646114"
           },
           {
-            "rank": 345,
-            "value": 0.0174668656192399,
-            "placeDcid": "geoId/0646828"
-          },
-          {
-            "rank": 346,
-            "value": 0.0174382155937572,
+            "rank": 343,
+            "value": 0.0175415304445956,
             "placeDcid": "geoId/0617610"
           },
           {
-            "rank": 347,
-            "value": 0.0174370784668531,
+            "rank": 344,
+            "value": 0.0174053835256021,
+            "placeDcid": "geoId/0644826"
+          },
+          {
+            "rank": 345,
+            "value": 0.0173932685791733,
+            "placeDcid": "geoId/0655520"
+          },
+          {
+            "rank": 346,
+            "value": 0.0173742009506638,
             "placeDcid": "geoId/0664140"
           },
           {
-            "rank": 348,
+            "rank": 347,
             "value": 0.0172916627467214,
             "placeDcid": "geoId/0617918"
           },
           {
+            "rank": 348,
+            "value": 0.0172578267279507,
+            "placeDcid": "geoId/0646828"
+          },
+          {
             "rank": 349,
+            "value": 0.0171755160058041,
+            "placeDcid": "geoId/0617946"
+          },
+          {
+            "rank": 350,
             "value": 0.0171739803632257,
             "placeDcid": "geoId/0613392"
           },
           {
-            "rank": 350,
+            "rank": 351,
             "value": 0.0171562665445648,
             "placeDcid": "geoId/0610046"
           },
           {
-            "rank": 351,
+            "rank": 352,
             "value": 0.0171391767947235,
             "placeDcid": "geoId/0613214"
-          },
-          {
-            "rank": 352,
-            "value": 0.0171025860289564,
-            "placeDcid": "geoId/0617946"
           },
           {
             "rank": 353,
@@ -1770,188 +1770,188 @@
           },
           {
             "rank": 354,
-            "value": 0.0169465294436276,
-            "placeDcid": "geoId/0603302"
-          },
-          {
-            "rank": 355,
-            "value": 0.0168904287570377,
+            "value": 0.0170305676855895,
             "placeDcid": "geoId/0662980"
           },
           {
-            "rank": 356,
-            "value": 0.0168773247959731,
-            "placeDcid": "geoId/0612048"
+            "rank": 355,
+            "value": 0.0168968443792917,
+            "placeDcid": "geoId/0603302"
           },
           {
-            "rank": 357,
-            "value": 0.0168485544706108,
+            "rank": 356,
+            "value": 0.0168324407039021,
             "placeDcid": "geoId/0685586"
           },
           {
+            "rank": 357,
+            "value": 0.0168137173297819,
+            "placeDcid": "geoId/0678148"
+          },
+          {
             "rank": 358,
-            "value": 0.0168077900084674,
+            "value": 0.0167942806379288,
             "placeDcid": "geoId/0616378"
           },
           {
             "rank": 359,
-            "value": 0.0167695160085231,
-            "placeDcid": "geoId/0678148"
+            "value": 0.016777967879022,
+            "placeDcid": "geoId/0612048"
           },
           {
             "rank": 360,
-            "value": 0.0166508987701041,
+            "value": 0.0166951242648454,
             "placeDcid": "geoId/0609892"
           },
           {
             "rank": 361,
-            "value": 0.0166253979483551,
+            "value": 0.01661217637183,
             "placeDcid": "geoId/0656938"
           },
           {
             "rank": 362,
-            "value": 0.0165143498476832,
-            "placeDcid": "geoId/0639220"
-          },
-          {
-            "rank": 363,
-            "value": 0.0164718638878701,
+            "value": 0.0164542848040777,
             "placeDcid": "geoId/0622678"
           },
           {
+            "rank": 363,
+            "value": 0.016321354795165,
+            "placeDcid": "geoId/0617750"
+          },
+          {
             "rank": 364,
-            "value": 0.0164014290354011,
+            "value": 0.0163034705407587,
             "placeDcid": "geoId/0630378"
           },
           {
             "rank": 365,
-            "value": 0.0163006843019099,
-            "placeDcid": "geoId/0617750"
+            "value": 0.0162887054432742,
+            "placeDcid": "geoId/0639220"
           },
           {
             "rank": 366,
-            "value": 0.0162656726533379,
-            "placeDcid": "geoId/0614946"
-          },
-          {
-            "rank": 367,
             "value": 0.0161803028524475,
             "placeDcid": "geoId/0669088"
           },
           {
-            "rank": 368,
-            "value": 0.0161036920659859,
+            "rank": 367,
+            "value": 0.0161353797717434,
             "placeDcid": "geoId/0608758"
           },
           {
-            "rank": 369,
-            "value": 0.0160991200726039,
-            "placeDcid": "geoId/0633308"
-          },
-          {
-            "rank": 370,
+            "rank": 368,
             "value": 0.0160838128965619,
             "placeDcid": "geoId/0624638"
           },
           {
-            "rank": 371,
+            "rank": 369,
             "value": 0.0160820637218163,
             "placeDcid": "geoId/0622020"
           },
           {
-            "rank": 372,
-            "value": 0.0160446459713987,
-            "placeDcid": "geoId/0672576"
-          },
-          {
-            "rank": 373,
+            "rank": 370,
             "value": 0.0160437600522318,
             "placeDcid": "geoId/0672016"
           },
           {
-            "rank": 374,
-            "value": 0.0159974905897114,
-            "placeDcid": "geoId/0654008"
+            "rank": 371,
+            "value": 0.0159275452841974,
+            "placeDcid": "geoId/0633308"
           },
           {
-            "rank": 375,
-            "value": 0.015794189171893,
+            "rank": 372,
+            "value": 0.0158511371467953,
+            "placeDcid": "geoId/0672576"
+          },
+          {
+            "rank": 373,
+            "value": 0.0158270059511595,
             "placeDcid": "geoId/0654806"
           },
           {
-            "rank": 376,
-            "value": 0.0156648874448828,
-            "placeDcid": "geoId/0660984"
+            "rank": 374,
+            "value": 0.0157222404192597,
+            "placeDcid": "geoId/0614946"
           },
           {
-            "rank": 377,
-            "value": 0.0156399852452969,
+            "rank": 375,
+            "value": 0.0156474886518803,
             "placeDcid": "geoId/0605108"
           },
           {
-            "rank": 378,
-            "value": 0.0154142581888247,
-            "placeDcid": "geoId/0683612"
-          },
-          {
-            "rank": 379,
-            "value": 0.0153384926444956,
+            "rank": 376,
+            "value": 0.0153524075366364,
             "placeDcid": "geoId/0647710"
           },
           {
-            "rank": 380,
-            "value": 0.0153104279686558,
+            "rank": 377,
+            "value": 0.0153204911569224,
+            "placeDcid": "geoId/0683612"
+          },
+          {
+            "rank": 378,
+            "value": 0.0153012048192771,
             "placeDcid": "geoId/0624134"
           },
           {
-            "rank": 381,
-            "value": 0.0150798344175044,
+            "rank": 379,
+            "value": 0.0152114390021296,
+            "placeDcid": "geoId/0639304"
+          },
+          {
+            "rank": 380,
+            "value": 0.015120071153276,
             "placeDcid": "geoId/0660900"
           },
           {
-            "rank": 382,
-            "value": 0.0150350957345184,
+            "rank": 381,
+            "value": 0.0150908787727197,
             "placeDcid": "geoId/0609598"
           },
           {
+            "rank": 382,
+            "value": 0.0150888565999776,
+            "placeDcid": "geoId/0660984"
+          },
+          {
             "rank": 383,
-            "value": 0.0149598153895122,
+            "value": 0.0150099800399202,
             "placeDcid": "geoId/0664434"
           },
           {
             "rank": 384,
-            "value": 0.0148253226524255,
-            "placeDcid": "geoId/0668028"
+            "value": 0.0148919602881059,
+            "placeDcid": "geoId/0654008"
           },
           {
             "rank": 385,
-            "value": 0.0147760007946757,
+            "value": 0.0148675662168916,
             "placeDcid": "geoId/0640340"
           },
           {
             "rank": 386,
+            "value": 0.014837703914036,
+            "placeDcid": "geoId/0668028"
+          },
+          {
+            "rank": 387,
             "value": 0.0147537751843236,
             "placeDcid": "geoId/0678582"
           },
           {
-            "rank": 387,
-            "value": 0.014504765851637,
-            "placeDcid": "geoId/0655520"
-          },
-          {
             "rank": 388,
-            "value": 0.0144407830974995,
+            "value": 0.0145132226172503,
             "placeDcid": "geoId/0600394"
           },
           {
             "rank": 389,
-            "value": 0.0144198524480215,
-            "placeDcid": "geoId/0686930"
+            "value": 0.0144814344755768,
+            "placeDcid": "geoId/0644112"
           },
           {
             "rank": 390,
-            "value": 0.0143910484444732,
-            "placeDcid": "geoId/0644112"
+            "value": 0.0143957147639772,
+            "placeDcid": "geoId/0686930"
           },
           {
             "rank": 391,
@@ -1960,43 +1960,43 @@
           },
           {
             "rank": 392,
-            "value": 0.014324562411429,
+            "value": 0.0143037442153976,
             "placeDcid": "geoId/0680994"
           },
           {
             "rank": 393,
-            "value": 0.0140874851328135,
-            "placeDcid": "geoId/0634120"
-          },
-          {
-            "rank": 394,
             "value": 0.0140485115083176,
             "placeDcid": "geoId/0665084"
           },
           {
+            "rank": 394,
+            "value": 0.0138094400711678,
+            "placeDcid": "geoId/0668196"
+          },
+          {
             "rank": 395,
-            "value": 0.0139755766621438,
+            "value": 0.0138069705093834,
             "placeDcid": "geoId/0634904"
           },
           {
             "rank": 396,
-            "value": 0.0139401025272057,
-            "placeDcid": "geoId/0651140"
-          },
-          {
-            "rank": 397,
-            "value": 0.0139362031588727,
+            "value": 0.0137888769725755,
             "placeDcid": "geoId/0634246"
           },
           {
+            "rank": 397,
+            "value": 0.0137772378318298,
+            "placeDcid": "geoId/0634120"
+          },
+          {
             "rank": 398,
-            "value": 0.0138903683504122,
+            "value": 0.013758757491348,
             "placeDcid": "geoId/0641474"
           },
           {
             "rank": 399,
-            "value": 0.0138094400711678,
-            "placeDcid": "geoId/0668196"
+            "value": 0.0136962092427322,
+            "placeDcid": "geoId/0651140"
           },
           {
             "rank": 400,
@@ -2005,73 +2005,73 @@
           },
           {
             "rank": 401,
-            "value": 0.0133516929356512,
-            "placeDcid": "geoId/0653070"
-          },
-          {
-            "rank": 402,
             "value": 0.0132713031556751,
             "placeDcid": "geoId/0636770"
           },
           {
-            "rank": 403,
-            "value": 0.0131734949282045,
+            "rank": 402,
+            "value": 0.013196093956189,
             "placeDcid": "geoId/0623168"
           },
           {
+            "rank": 403,
+            "value": 0.0131400638853935,
+            "placeDcid": "geoId/0653070"
+          },
+          {
             "rank": 404,
-            "value": 0.0130243572395129,
+            "value": 0.0131376898140249,
             "placeDcid": "geoId/0682744"
           },
           {
             "rank": 405,
-            "value": 0.0127803860198226,
+            "value": 0.0128166435282992,
             "placeDcid": "geoId/0658520"
           },
           {
             "rank": 406,
-            "value": 0.0124542124542125,
-            "placeDcid": "geoId/0623910"
-          },
-          {
-            "rank": 407,
-            "value": 0.0124336508398168,
+            "value": 0.012460378183408,
             "placeDcid": "geoId/0685922"
           },
           {
+            "rank": 407,
+            "value": 0.0123456790123457,
+            "placeDcid": "geoId/0623910"
+          },
+          {
             "rank": 408,
-            "value": 0.0122001998667555,
+            "value": 0.0122645458350774,
             "placeDcid": "geoId/0617498"
           },
           {
             "rank": 409,
-            "value": 0.0119755087340176,
+            "value": 0.0119068934646374,
             "placeDcid": "geoId/0610928"
           },
           {
             "rank": 410,
-            "value": 0.0117427275153456,
-            "placeDcid": "geoId/0685012"
-          },
-          {
-            "rank": 411,
-            "value": 0.0117215249822401,
+            "value": 0.0116480865958761,
             "placeDcid": "geoId/0625338"
           },
           {
+            "rank": 411,
+            "value": 0.0115485564304462,
+            "placeDcid": "geoId/0685012"
+          },
+          {
             "rank": 412,
-            "value": 0.0114795139524944,
+            "value": 0.0114119218161952,
             "placeDcid": "geoId/0680588"
           },
           {
             "rank": 413,
-            "value": 0.0113483443708609,
-            "placeDcid": "geoId/0648256"
+            "value": 0.0113966214608613,
+            "placeDcid": "geoId/0659514"
           },
           {
             "rank": 414,
-            "value": 0.0113316458091836,
-            "placeDcid": "geoId/0659514"
+            "value": 0.0113483443708609,
+            "placeDcid": "geoId/0648256"
           },
           {
             "rank": 415,
@@ -2080,52 +2080,52 @@
           },
           {
             "rank": 416,
-            "value": 0.0109951287404315,
+            "value": 0.0110212053571429,
             "placeDcid": "geoId/0603092"
           },
           {
             "rank": 417,
-            "value": 0.0109193147639597,
+            "value": 0.0109493836873853,
             "placeDcid": "geoId/0643280"
           },
           {
             "rank": 418,
-            "value": 0.0107214246774487,
+            "value": 0.0107939992682034,
             "placeDcid": "geoId/0671806"
           },
           {
             "rank": 419,
-            "value": 0.0105860947234934,
-            "placeDcid": "geoId/0649138"
+            "value": 0.0106907894736842,
+            "placeDcid": "geoId/0684606"
           },
           {
             "rank": 420,
+            "value": 0.0105575717584955,
+            "placeDcid": "geoId/0649138"
+          },
+          {
+            "rank": 421,
             "value": 0.0104292111447579,
             "placeDcid": "geoId/0639496"
           },
           {
-            "rank": 421,
-            "value": 0.0101111389654884,
+            "rank": 422,
+            "value": 0.0100140693536373,
             "placeDcid": "geoId/0613882"
           },
           {
-            "rank": 422,
-            "value": 0.00987306064880113,
+            "rank": 423,
+            "value": 0.0098314606741573,
             "placeDcid": "geoId/0624092"
           },
           {
-            "rank": 423,
-            "value": 0.00983730609156262,
-            "placeDcid": "geoId/0684606"
-          },
-          {
             "rank": 424,
-            "value": 0.00972571303682658,
+            "value": 0.0097331583552056,
             "placeDcid": "geoId/0678666"
           },
           {
             "rank": 425,
-            "value": 0.00946535532056496,
+            "value": 0.00952806312341819,
             "placeDcid": "geoId/0655380"
           },
           {
@@ -2135,107 +2135,107 @@
           },
           {
             "rank": 427,
-            "value": 0.00880742680314211,
+            "value": 0.00883582089552239,
             "placeDcid": "geoId/0630392"
           },
           {
             "rank": 428,
-            "value": 0.00873773356633956,
-            "placeDcid": "geoId/0636672"
+            "value": 0.00870457730493654,
+            "placeDcid": "geoId/0600947"
           },
           {
             "rank": 429,
-            "value": 0.00871195843262882,
+            "value": 0.00867535498930169,
             "placeDcid": "geoId/0672520"
           },
           {
             "rank": 430,
-            "value": 0.00865979381443299,
-            "placeDcid": "geoId/0600947"
+            "value": 0.00838385141235651,
+            "placeDcid": "geoId/0636672"
           },
           {
             "rank": 431,
-            "value": 0.00844012145540631,
+            "value": 0.00834775526824799,
             "placeDcid": "geoId/0654232"
           },
           {
             "rank": 432,
-            "value": 0.00835265776617061,
+            "value": 0.00831745320031387,
             "placeDcid": "geoId/0617988"
           },
           {
             "rank": 433,
-            "value": 0.00816326530612245,
-            "placeDcid": "geoId/0631414"
-          },
-          {
-            "rank": 434,
-            "value": 0.00813408922849396,
+            "value": 0.00822276210054195,
             "placeDcid": "geoId/0639259"
           },
           {
-            "rank": 435,
-            "value": 0.00795593635250918,
-            "placeDcid": "geoId/0633518"
+            "rank": 434,
+            "value": 0.0080526103878674,
+            "placeDcid": "geoId/0631414"
           },
           {
-            "rank": 436,
-            "value": 0.00775951258765375,
+            "rank": 435,
+            "value": 0.00769713210559325,
             "placeDcid": "geoId/0649187"
           },
           {
-            "rank": 437,
-            "value": 0.00763179523306329,
+            "rank": 436,
+            "value": 0.00764256319811875,
             "placeDcid": "geoId/0643294"
           },
           {
-            "rank": 438,
-            "value": 0.00746023938350549,
+            "rank": 437,
+            "value": 0.0075046904315197,
             "placeDcid": "geoId/0659587"
           },
           {
-            "rank": 439,
-            "value": 0.007414362494334,
+            "rank": 438,
+            "value": 0.00746001237905984,
             "placeDcid": "geoId/0670280"
           },
           {
+            "rank": 439,
+            "value": 0.00742432895488292,
+            "placeDcid": "geoId/0633518"
+          },
+          {
             "rank": 440,
-            "value": 0.00681877786519801,
+            "value": 0.00681401240499694,
             "placeDcid": "geoId/0633798"
           },
           {
             "rank": 441,
-            "value": 0.00648577101257445,
+            "value": 0.00650384921688346,
             "placeDcid": "geoId/0653476"
           },
           {
             "rank": 442,
-            "value": 0.00524308865586273,
+            "value": 0.00515463917525773,
             "placeDcid": "geoId/0605164"
           },
           {
             "rank": 443,
-            "value": 0.00455886296594261,
+            "value": 0.00459770114942529,
             "placeDcid": "geoId/0609878"
           },
           {
             "rank": 444,
-            "value": 0.00425036390101892,
+            "value": 0.00418242236736565,
             "placeDcid": "geoId/0636280"
           },
           {
             "rank": 445,
-            "value": 0.00368098159509202,
+            "value": 0.00396563119629874,
             "placeDcid": "geoId/0662602"
           },
           {
             "rank": 446,
-            "value": 0.00315005727376861,
+            "value": 0.0031618281115263,
             "placeDcid": "geoId/0648956"
           },
           {
             "rank": 447,
-            "value": 0.00260936300844206,
+            "value": 0.00258505987454856,
             "placeDcid": "geoId/0639122"
           }
         ]
