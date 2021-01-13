@@ -8,7 +8,8 @@
       "2015": 35.8,
       "2016": 36,
       "2017": 36.1,
-      "2018": 36.3
+      "2018": 36.3,
+      "2019": 36.5
     },
     "placeName": "California",
     "provenanceDomain": "census.gov",
@@ -23,7 +24,8 @@
       "2015": 36.8,
       "2016": 36.8,
       "2017": 37,
-      "2018": 37
+      "2018": 37,
+      "2019": 37.1
     },
     "placeName": "Santa Clara County",
     "provenanceDomain": "census.gov",
@@ -38,7 +40,8 @@
       "2015": 35.4,
       "2016": 35,
       "2017": 35,
-      "2018": 34.9
+      "2018": 34.9,
+      "2019": 34.8
     },
     "placeName": "Mountain View",
     "provenanceDomain": "census.gov",
