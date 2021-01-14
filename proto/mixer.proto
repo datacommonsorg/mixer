@@ -643,14 +643,15 @@ service Mixer {
     };
   }
 
-  // Get stat of places by StatisticalVariable. If multiple time series data
-  // are avaialable, the highest ranked one by measurement method and import
-  // will be returned.
-  // This is a newer version of GetStats and returns protobuf field instead of
-  // "payload" of json string.
-  rpc GetStat(GetStatRequest) returns (GetStatResponse) {
+  // Get stat of a set of places and statistical variables.
+  //
+  // If multiple time series data are avaialable, the highest ranked one by
+  // measurement method, scaling factor and import will be returned.
+  // This is a newer version of GetStats() that takes multiple stat vars and
+  // returns protobuf field instead of "payload" of json string.
+  rpc GetStatSetSeries(GetStatSetSeriesRequest) returns (GetStatSetSeriesResponse) {
     option (google.api.http) = {
-      post: "/stat/series/rich"
+      post: "v1/stat/set/series"
       body: "*"
     };
   }

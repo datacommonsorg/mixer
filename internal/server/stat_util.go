@@ -106,6 +106,29 @@ func filterAndRankPb(in *pb.ObsTimeSeries, prop *ObsProp) *pb.SourceSeries {
 	return nil
 }
 
+func getBestSeries(in *pb.ObsTimeSeries) *pb.Series {
+	rawSeries := in.SourceSeries
+	sort.Sort(SeriesByRank(rawSeries))
+	if len(rawSeries) > 0 {
+		return rawSeriesToSeries(rawSeries[0])
+	}
+	return nil
+}
+
+func rawSeriesToSeries(in *pb.SourceSeries) *pb.Series {
+	result := &pb.Series{}
+	result.Val = in.Val
+	result.Metadata = &pb.StatMetadata{
+		ImportName:        in.ImportName,
+		ProvenanceUrl:     in.ProvenanceUrl,
+		MeasurementMethod: in.MeasurementMethod,
+		ObservationPeriod: in.ObservationPeriod,
+		ScalingFactor:     in.ScalingFactor,
+		Unit:              in.Unit,
+	}
+	return result
+}
+
 // triplesToStatsVar converts a Triples cache into a StatisticalVarible object.
 func triplesToStatsVar(
 	statsVarDcid string, triples *TriplesCache) (*StatisticalVariable, error) {
