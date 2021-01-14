@@ -58,6 +58,7 @@ message SourceSeries {
   string provenance_url = 9;
 }
 
+// Represents a time series from a source.
 message Series {
   // Map from date to stat value.
   map<string, double> val = 1;
@@ -66,7 +67,7 @@ message Series {
 }
 
 message SeriesMap {
-  // Map from key to series. The key could be place dcid or stat var dcid.
+  // A wrapper proto for a map of series.
   map<string, Series> data = 1;
 }
 
