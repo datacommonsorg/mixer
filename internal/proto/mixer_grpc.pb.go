@@ -42,12 +42,13 @@ type MixerClient interface {
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
 	GetStats(ctx context.Context, in *GetStatsRequest, opts ...grpc.CallOption) (*GetStatsResponse, error)
-	// Get stat of places by StatisticalVariable. If multiple time series data
-	// are avaialable, the highest ranked one by measurement method and import
-	// will be returned.
-	// This is a newer version of GetStats and returns protobuf field instead of
-	// "payload" of json string.
-	GetStat(ctx context.Context, in *GetStatRequest, opts ...grpc.CallOption) (*GetStatResponse, error)
+	// Get stat of a set of places and statistical variables.
+	//
+	// If multiple time series data are avaialable, the highest ranked one by
+	// measurement method, scaling factor and import will be returned.
+	// This is a newer version of GetStats() that takes multiple stat vars and
+	// returns protobuf field instead of "payload" of json string.
+	GetStatSetSeries(ctx context.Context, in *GetStatSetSeriesRequest, opts ...grpc.CallOption) (*GetStatSetSeriesResponse, error)
 	// Get a single stat value given a place, a statistical variable and a date.
 	// If no date is given, the latest statistical variable will be returned.
 	GetStatValue(ctx context.Context, in *GetStatValueRequest, opts ...grpc.CallOption) (*GetStatValueResponse, error)
@@ -186,9 +187,9 @@ func (c *mixerClient) GetStats(ctx context.Context, in *GetStatsRequest, opts ..
 	return out, nil
 }
 
-func (c *mixerClient) GetStat(ctx context.Context, in *GetStatRequest, opts ...grpc.CallOption) (*GetStatResponse, error) {
-	out := new(GetStatResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStat", in, out, opts...)
+func (c *mixerClient) GetStatSetSeries(ctx context.Context, in *GetStatSetSeriesRequest, opts ...grpc.CallOption) (*GetStatSetSeriesResponse, error) {
+	out := new(GetStatSetSeriesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatSetSeries", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -350,12 +351,13 @@ type MixerServer interface {
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
 	GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error)
-	// Get stat of places by StatisticalVariable. If multiple time series data
-	// are avaialable, the highest ranked one by measurement method and import
-	// will be returned.
-	// This is a newer version of GetStats and returns protobuf field instead of
-	// "payload" of json string.
-	GetStat(context.Context, *GetStatRequest) (*GetStatResponse, error)
+	// Get stat of a set of places and statistical variables.
+	//
+	// If multiple time series data are avaialable, the highest ranked one by
+	// measurement method, scaling factor and import will be returned.
+	// This is a newer version of GetStats() that takes multiple stat vars and
+	// returns protobuf field instead of "payload" of json string.
+	GetStatSetSeries(context.Context, *GetStatSetSeriesRequest) (*GetStatSetSeriesResponse, error)
 	// Get a single stat value given a place, a statistical variable and a date.
 	// If no date is given, the latest statistical variable will be returned.
 	GetStatValue(context.Context, *GetStatValueRequest) (*GetStatValueResponse, error)
@@ -430,8 +432,8 @@ func (*UnimplementedMixerServer) GetPlaceObs(context.Context, *GetPlaceObsReques
 func (*UnimplementedMixerServer) GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStats not implemented")
 }
-func (*UnimplementedMixerServer) GetStat(context.Context, *GetStatRequest) (*GetStatResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStat not implemented")
+func (*UnimplementedMixerServer) GetStatSetSeries(context.Context, *GetStatSetSeriesRequest) (*GetStatSetSeriesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatSetSeries not implemented")
 }
 func (*UnimplementedMixerServer) GetStatValue(context.Context, *GetStatValueRequest) (*GetStatValueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatValue not implemented")
@@ -660,20 +662,20 @@ func _Mixer_GetStats_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetStat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatRequest)
+func _Mixer_GetStatSetSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStatSetSeriesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).GetStat(ctx, in)
+		return srv.(MixerServer).GetStatSetSeries(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetStat",
+		FullMethod: "/datacommons.Mixer/GetStatSetSeries",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStat(ctx, req.(*GetStatRequest))
+		return srv.(MixerServer).GetStatSetSeries(ctx, req.(*GetStatSetSeriesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -975,8 +977,8 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetStats_Handler,
 		},
 		{
-			MethodName: "GetStat",
-			Handler:    _Mixer_GetStat_Handler,
+			MethodName: "GetStatSetSeries",
+			Handler:    _Mixer_GetStatSetSeries_Handler,
 		},
 		{
 			MethodName: "GetStatValue",

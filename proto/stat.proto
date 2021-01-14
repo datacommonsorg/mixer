@@ -58,6 +58,18 @@ message SourceSeries {
   string provenance_url = 9;
 }
 
+// Represents a time series from a source.
+message Series {
+  // Map from date to stat value.
+  map<string, double> val = 1;
+  // Series metadata.
+  StatMetadata metadata = 2;
+}
+
+message SeriesMap {
+  // A wrapper proto for a map of series.
+  map<string, Series> data = 1;
+}
 
 // Represents observation time series data.
 message ObsTimeSeries {
@@ -115,34 +127,22 @@ message GetStatsResponse {
   string payload = 2;
 }
 
-// Request for GetStat API.
+// Request for GetStatSetSeries API.
 // TODO(shifucun): Deprecate GetStats() once all clients are switched to use
 // this API.
-// Request message for GetStat.
-message GetStatRequest {
+// Request message for GetStatSetSeries.
+message GetStatSetSeriesRequest {
   // The dcids of the place.
   repeated string places = 1;
 
-  // The dcid of the StatisticalVariable.
-  string stat_var = 2;
-
-  // (Optional) The measurement method of the observation. If not specified,
-  // stats series with any measurement methods could be returned.
-  string measurement_method = 3;
-
-  // (Optional) The unit of the observation. If not specified, stats series with
-  // any unit could be returned.
-  string unit = 4;
-
-  // (Optional) The observation period of the observation. If not specified,
-  // stats series with any observation period could be returned.
-  string observation_period = 5;
+  // The dcids of the statistical variables.
+  repeated string stat_vars = 2;
 }
 
-// Response of GetStat
-message GetStatResponse {
-  // A map from place dcid to stat series.
-  map<string, SourceSeries> stat = 1;
+// Response of GetStatSetSeries
+message GetStatSetSeriesResponse {
+  // A map from place dcid to series map.
+  map<string, SeriesMap> data = 1;
 }
 
 

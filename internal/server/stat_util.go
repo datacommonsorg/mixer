@@ -59,27 +59,6 @@ func filterSeries(in []*SourceSeries, prop *ObsProp) []*SourceSeries {
 	return result
 }
 
-// Filter a list of source series given the observation properties.
-func filterSeriesPb(in []*pb.SourceSeries, prop *ObsProp) []*pb.SourceSeries {
-	result := []*pb.SourceSeries{}
-	for _, series := range in {
-		if prop.Mmethod != "" && prop.Mmethod != series.MeasurementMethod {
-			continue
-		}
-		if prop.Operiod != "" && prop.Operiod != series.ObservationPeriod {
-			continue
-		}
-		if prop.Unit != "" && prop.Unit != series.Unit {
-			continue
-		}
-		if prop.Sfactor != "" && prop.Sfactor != series.ScalingFactor {
-			continue
-		}
-		result = append(result, series)
-	}
-	return result
-}
-
 func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 	if in == nil {
 		return
@@ -94,16 +73,27 @@ func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 	in.SourceSeries = nil
 }
 
-func filterAndRankPb(in *pb.ObsTimeSeries, prop *ObsProp) *pb.SourceSeries {
-	if in == nil {
-		return nil
-	}
-	series := filterSeriesPb(in.SourceSeries, prop)
-	sort.Sort(SeriesByRank(series))
-	if len(series) > 0 {
-		return series[0]
+func getBestSeries(in *pb.ObsTimeSeries) *pb.Series {
+	rawSeries := in.SourceSeries
+	sort.Sort(SeriesByRank(rawSeries))
+	if len(rawSeries) > 0 {
+		return rawSeriesToSeries(rawSeries[0])
 	}
 	return nil
+}
+
+func rawSeriesToSeries(in *pb.SourceSeries) *pb.Series {
+	result := &pb.Series{}
+	result.Val = in.Val
+	result.Metadata = &pb.StatMetadata{
+		ImportName:        in.ImportName,
+		ProvenanceUrl:     in.ProvenanceUrl,
+		MeasurementMethod: in.MeasurementMethod,
+		ObservationPeriod: in.ObservationPeriod,
+		ScalingFactor:     in.ScalingFactor,
+		Unit:              in.Unit,
+	}
+	return result
 }
 
 // triplesToStatsVar converts a Triples cache into a StatisticalVarible object.
