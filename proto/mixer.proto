@@ -651,8 +651,11 @@ service Mixer {
   // returns protobuf field instead of "payload" of json string.
   rpc GetStatSetSeries(GetStatSetSeriesRequest) returns (GetStatSetSeriesResponse) {
     option (google.api.http) = {
-      post: "v1/stat/set/series"
-      body: "*"
+      get: "/v1/stat/set/series"
+      additional_bindings: {
+        post: "/v1/stat/set/series"
+        body: "*"
+      }
     };
   }
 
