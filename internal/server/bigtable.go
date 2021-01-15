@@ -68,14 +68,21 @@ func readRowFn(
 	}
 }
 
-// bigTableReadRowsParallel reads BigTable rows from multiple Bigtable
+// bigTableReadRowsParallel reads BigTable rows from multiple Bigtables
 // in parallel.
-// As the  size limit for RowSet is 500KB, each table read is also chunked.
 //
-// IMPORTANT: the order of the input bigtable pointers matters. The most
-// important table should come first and the least important table last.
-// When data is present in multiple tables, that from the most important table
-// is selected.
+// Reading multiple rows is chunked as the size limit for RowSet is 500KB.
+//
+// Args:
+// btTables: A list of Cloud BigTable client that is ordered by the importance.
+// 		For the same key, if data is present in multiple tables, the first table
+//		in the list will be used.
+// rowSet: BigTable rowSet containing the row keys.
+// action: A callback function that converts the raw bytes into appropriate
+//		go struct based on the cache content.
+// getToken: A function to get back the indexed token (like place dcid) from
+//		bigtable row key.
+//
 func bigTableReadRowsParallel(
 	ctx context.Context,
 	btTables []*bigtable.Table,
@@ -83,7 +90,7 @@ func bigTableReadRowsParallel(
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error)) (
 	map[string]interface{}, error) {
-	if btTable == nil {
+	if len(btTables) == 0 {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
@@ -106,24 +113,12 @@ func bigTableReadRowsParallel(
 		return nil, nil
 	}
 
-	result := map[string]interface{}{}
-	if getToken == nil {
-		getToken = util.KeyToDcid
-	}
-
-	if btTable == nil {
-		for _, key := range rowList {
-			token, err := getToken(key)
-			if err != nil {
-				return nil, err
-			}
-			result[token] = nil
-		}
-		return result, nil
+	elemChanMap := map[*bigtable.Table](chan chanData){}
+	for _, btTable := range btTables {
+		elemChanMap[btTable] = make(chan chanData, rowSetSize)
 	}
 
 	errs, errCtx := errgroup.WithContext(ctx)
-	elemChan := make(chan chanData, rowSetSize)
 	for i := 0; i <= rowSetSize/util.BtBatchQuerySize; i++ {
 		left := i * util.BtBatchQuerySize
 		right := (i + 1) * util.BtBatchQuerySize
@@ -139,7 +134,7 @@ func bigTableReadRowsParallel(
 		// Read from all the given tables.
 		// The result is sent to the "elemChan" channel.
 		for _, btTable := range btTables {
-			errs.Go(readRowFn(errCtx, btTable, rowSetPart, getToken, action, elemChan))
+			errs.Go(readRowFn(errCtx, btTable, rowSetPart, getToken, action, elemChanMap[btTable]))
 		}
 	}
 
@@ -147,24 +142,18 @@ func bigTableReadRowsParallel(
 	if err != nil {
 		return nil, err
 	}
-	close(elemChan)
-
-	// Result is keyed by the token, then by the bigtable pointer.
-	tmp := map[string]map[*bigtable.Table]interface{}{}
-	for elem := range elemChan {
-		if _, ok := tmp[elem.token]; !ok {
-			tmp[elem.token] = make(map[*bigtable.Table]interface{})
-		}
-		tmp[elem.token][elem.table] = elem.data
+	for _, ch := range elemChanMap {
+		close(ch)
 	}
+
 	result := map[string]interface{}{}
-	for token, tableData := range tmp {
-		// Input table is from most to least important.
-		// If data is found in prefered table, then use it and break.
-		for _, t := range btTables {
-			if data, ok := tableData[t]; ok {
-				result[token] = data
-				break
+	for _, table := range btTables {
+		ch := elemChanMap[table]
+		for elem := range ch {
+			// If date does not exist for this token, added. Otherwise, it is already
+			// add ed from a prefered table.
+			if _, ok := result[elem.token]; !ok {
+				result[elem.token] = elem.data
 			}
 		}
 	}
