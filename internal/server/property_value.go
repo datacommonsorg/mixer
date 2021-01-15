@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	mapset "github.com/deckarep/golang-set"
 	"google.golang.org/grpc/codes"
@@ -125,7 +126,10 @@ func getPropertyValuesHelper(
 			return propVals.Nodes, nil
 		}, nil)
 	for dcid := range branchNodeMap {
-		branchNodes := branchNodeMap[dcid].([]*Node)
+		branchNodes, ok := branchNodeMap[dcid].([]*Node)
+		if !ok {
+			return nil, fmt.Errorf("branch nodes invalid for %s", dcid)
+		}
 		baseNodes, exist := nodeMap[dcid]
 		if !exist {
 			nodeMap[dcid] = branchNodes
@@ -188,7 +192,12 @@ func readPropertyValues(
 	}
 	result := map[string][]*Node{}
 	for dcid, data := range tmp {
-		result[dcid] = data.([]*Node)
+		n, ok := data.([]*Node)
+		if ok {
+			result[dcid] = n
+		} else {
+			result[dcid] = nil
+		}
 	}
 	return result, nil
 }

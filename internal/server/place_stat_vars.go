@@ -67,8 +67,9 @@ func (s *Server) GetPlaceStatVars(
 	resp := pb.GetPlaceStatVarsResponse{Places: map[string]*pb.StatVars{}}
 	for _, dcid := range dcids {
 		resp.Places[dcid] = &pb.StatVars{StatVars: []string{}}
-		if dataMap[dcid] != nil {
-			resp.Places[dcid].StatVars = dataMap[dcid].([]string)
+		v, ok := dataMap[dcid].([]string)
+		if ok {
+			resp.Places[dcid].StatVars = v
 		}
 	}
 	return &resp, nil

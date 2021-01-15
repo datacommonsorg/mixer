@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -150,13 +151,23 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			return nil, err
 		}
 		for dcid, data := range dataMap {
-			resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
+			t, ok := data.([]*Triple)
+			if ok {
+				resultsMap[dcid] = append(resultsMap[dcid], t...)
+			} else {
+				return nil, fmt.Errorf("Invalid cache data for triple list")
+			}
 		}
 		// No data found in base cache, look in branch cache
 		if len(dataMap) == 0 {
 			branchDataMap := s.memcache.ReadParallel(rowList, convertPopTriples, nil)
 			for dcid, data := range branchDataMap {
-				resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
+				t, ok := data.([]*Triple)
+				if ok {
+					resultsMap[dcid] = append(resultsMap[dcid], t...)
+				} else {
+					return nil, fmt.Errorf("Invalid cache data for triple list")
+				}
 			}
 		}
 	}
