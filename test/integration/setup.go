@@ -26,6 +26,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"google.golang.org/grpc"
@@ -74,7 +75,32 @@ func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
+	return newClient(bqClient, btTable, memcache, metadata)
+}
 
+func setupBqOnly() (pb.MixerClient, error) {
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	bqTableID, _ := ioutil.ReadFile(
+		path.Join(path.Dir(filename), "../../deploy/storage/bigquery.version"))
+
+	// BigQuery.
+	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
+	if err != nil {
+		log.Fatalf("failed to create Bigquery client: %v", err)
+	}
+	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)))
+	if err != nil {
+		return nil, err
+	}
+	return newClient(bqClient, nil, nil, metadata)
+}
+
+func newClient(
+	bqClient *bigquery.Client,
+	btTable *bigtable.Table,
+	memcache *server.Memcache,
+	metadata *server.Metadata) (pb.MixerClient, error) {
 	s := server.NewServer(bqClient, btTable, memcache, metadata)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)

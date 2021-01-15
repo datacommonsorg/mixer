@@ -33,6 +33,11 @@ func bigTableReadRowsParallel(
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error)) (
 	map[string]interface{}, error) {
+	if btTable == nil {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
+
 	// Function start
 	var rowSetSize int
 	var rowList bigtable.RowList
