@@ -45,7 +45,7 @@ var (
 	port              = flag.Int("port", 12345, "Port on which to run the server.")
 	useALTS           = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	enableBranchCache = flag.Bool("enable_branch_cache", true, "Whether to use branch cache")
-	sparqlOnly        = flag.Bool("sparql_only", true, "The service only serves sparql query")
+	bigqueryOnly      = flag.Bool("bigquery_only", true, "The service only serves sparql query")
 )
 
 const (
@@ -82,7 +82,7 @@ func main() {
 	}
 
 	var btTable *bigtable.Table
-	if *sparqlOnly {
+	if *bigqueryOnly {
 		btTable = nil
 	} else {
 		// BigTable.
@@ -99,7 +99,7 @@ func main() {
 	}
 
 	memcache := &server.Memcache{}
-	if !*sparqlOnly && *enableBranchCache {
+	if !*bigqueryOnly && *enableBranchCache {
 		// Memcache
 		branchCacheFolder, err := server.ReadBranchCacheFolder(
 			ctx, branchCacheBucket, branchCacheVersionFile)
@@ -117,7 +117,7 @@ func main() {
 	s := server.NewServer(bqClient, btTable, memcache, metadata)
 
 	// Subscribe to cache update
-	if !*sparqlOnly && *enableBranchCache {
+	if !*bigqueryOnly && *enableBranchCache {
 		err = s.SubscribeBranchCacheUpdate(
 			ctx, pubsubProject, branchCacheBucket, subscriberPrefix, pubsubTopic)
 		if err != nil {

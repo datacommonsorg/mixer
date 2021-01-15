@@ -52,6 +52,22 @@ func bigTableReadRowsParallel(
 		return nil, nil
 	}
 
+	result := map[string]interface{}{}
+	if getToken == nil {
+		getToken = util.KeyToDcid
+	}
+
+	if btTable == nil {
+		for _, key := range rowList {
+			token, err := getToken(key)
+			if err != nil {
+				return nil, err
+			}
+			result[token] = nil
+		}
+		return result, nil
+	}
+
 	errs, errCtx := errgroup.WithContext(ctx)
 	elemChan := make(chan chanData, rowSetSize)
 	for i := 0; i <= rowSetSize/util.BtBatchQuerySize; i++ {
@@ -105,7 +121,6 @@ func bigTableReadRowsParallel(
 	}
 	close(elemChan)
 
-	result := map[string]interface{}{}
 	for elem := range elemChan {
 		result[elem.token] = elem.data
 	}
