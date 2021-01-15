@@ -33,6 +33,11 @@ func bigTableReadRowsParallel(
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error)) (
 	map[string]interface{}, error) {
+	if btTable == nil {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
+
 	// Function start
 	var rowSetSize int
 	var rowList bigtable.RowList
@@ -50,6 +55,22 @@ func bigTableReadRowsParallel(
 	}
 	if rowSetSize == 0 {
 		return nil, nil
+	}
+
+	result := map[string]interface{}{}
+	if getToken == nil {
+		getToken = util.KeyToDcid
+	}
+
+	if btTable == nil {
+		for _, key := range rowList {
+			token, err := getToken(key)
+			if err != nil {
+				return nil, err
+			}
+			result[token] = nil
+		}
+		return result, nil
 	}
 
 	errs, errCtx := errgroup.WithContext(ctx)
@@ -73,10 +94,6 @@ func bigTableReadRowsParallel(
 						return true
 					}
 					raw := btRow[util.BtFamily][0].Value
-
-					if getToken == nil {
-						getToken = util.KeyToDcid
-					}
 					token, err := getToken(btRow.Key())
 					if err != nil {
 						return false
@@ -105,7 +122,6 @@ func bigTableReadRowsParallel(
 	}
 	close(elemChan)
 
-	result := map[string]interface{}{}
 	for elem := range elemChan {
 		result[elem.token] = elem.data
 	}

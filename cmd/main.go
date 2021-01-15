@@ -27,6 +27,7 @@ import (
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
+	"cloud.google.com/go/bigtable"
 	"cloud.google.com/go/profiler"
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
@@ -37,13 +38,14 @@ import (
 
 var (
 	bqDataset         = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	btTable           = flag.String("bt_table", "", "DataCommons Bigtable table.")
+	btTableName       = flag.String("bt_table", "", "DataCommons Bigtable table.")
 	btProject         = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
 	btInstance        = flag.String("bt_instance", "", "BigTable instance.")
 	projectID         = flag.String("project_id", "", "The cloud project to run the mixer instance.")
 	port              = flag.Int("port", 12345, "Port on which to run the server.")
 	useALTS           = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	enableBranchCache = flag.Bool("enable_branch_cache", true, "Whether to use branch cache")
+	bigqueryOnly      = flag.Bool("bigquery_only", true, "The service only serves sparql query")
 )
 
 const (
@@ -65,7 +67,7 @@ func main() {
 	if error == nil && credentials.ProjectID != "" {
 		cfg := profiler.Config{
 			Service:        "mixer-service",
-			ServiceVersion: *btTable,
+			ServiceVersion: *btTableName,
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
@@ -79,10 +81,15 @@ func main() {
 		log.Fatalf("Failed to create Bigquery client: %v", err)
 	}
 
-	// BigTable.
-	btTable, err := server.NewBtTable(ctx, *btProject, *btInstance, *btTable)
-	if err != nil {
-		log.Fatalf("Failed to create BigTable client: %v", err)
+	var btTable *bigtable.Table
+	if *bigqueryOnly {
+		btTable = nil
+	} else {
+		// BigTable.
+		btTable, err = server.NewBtTable(ctx, *btProject, *btInstance, *btTableName)
+		if err != nil {
+			log.Fatalf("Failed to create BigTable client: %v", err)
+		}
 	}
 
 	// Metadata.
@@ -92,7 +99,7 @@ func main() {
 	}
 
 	memcache := &server.Memcache{}
-	if *enableBranchCache {
+	if !*bigqueryOnly && *enableBranchCache {
 		// Memcache
 		branchCacheFolder, err := server.ReadBranchCacheFolder(
 			ctx, branchCacheBucket, branchCacheVersionFile)
@@ -110,7 +117,7 @@ func main() {
 	s := server.NewServer(bqClient, btTable, memcache, metadata)
 
 	// Subscribe to cache update
-	if *enableBranchCache {
+	if !*bigqueryOnly && *enableBranchCache {
 		err = s.SubscribeBranchCacheUpdate(
 			ctx, pubsubProject, branchCacheBucket, subscriberPrefix, pubsubTopic)
 		if err != nil {
