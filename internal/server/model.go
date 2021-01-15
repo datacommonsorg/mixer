@@ -15,7 +15,6 @@
 package server
 
 import (
-	"cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/base"
 	"github.com/datacommonsorg/mixer/internal/translator"
 )
@@ -64,9 +63,6 @@ type chanData struct {
 	token string
 	// Data read from Cloud Bigtable
 	data interface{}
-	// The Cloud Bigtable object, used when reading multiple Bigtable concurrently
-	// to differentiate them from the channel data
-	table *bigtable.Table
 }
 
 // RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.

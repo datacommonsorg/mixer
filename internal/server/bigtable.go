@@ -59,7 +59,7 @@ func readRowFn(
 				if err != nil {
 					return false
 				}
-				elemChan <- chanData{token, elem, btTable}
+				elemChan <- chanData{token, elem}
 				return true
 			}); err != nil {
 			return err
@@ -151,7 +151,7 @@ func bigTableReadRowsParallel(
 		ch := elemChanMap[table]
 		for elem := range ch {
 			// If date does not exist for this token, added. Otherwise, it is already
-			// add ed from a prefered table.
+			// added from a prefered table.
 			if _, ok := result[elem.token]; !ok {
 				result[elem.token] = elem.data
 			}
