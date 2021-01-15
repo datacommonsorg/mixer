@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/json"
 
-	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -39,7 +38,7 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 	rowList := buildPropertyLabelKey(dcids)
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, []*bigtable.Table{s.btTable}, rowList,
+		ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propLabels PropLabelCache
 			err := json.Unmarshal(jsonRaw, &propLabels)

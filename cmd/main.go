@@ -27,6 +27,7 @@ import (
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
+	"cloud.google.com/go/bigtable"
 	"cloud.google.com/go/profiler"
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
@@ -107,7 +108,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, btTable, memcache, metadata)
+	s := server.NewServer(bqClient, []*bigtable.Table{btTable}, memcache, metadata)
 
 	// Subscribe to cache update
 	if *enableBranchCache {

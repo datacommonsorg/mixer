@@ -26,6 +26,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"google.golang.org/grpc"
@@ -75,7 +76,7 @@ func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 		return nil, err
 	}
 
-	s := server.NewServer(bqClient, btTable, memcache, metadata)
+	s := server.NewServer(bqClient, []*bigtable.Table{btTable}, memcache, metadata)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)
