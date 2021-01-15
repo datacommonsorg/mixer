@@ -89,10 +89,6 @@ func bigTableReadRowsParallel(
 						return true
 					}
 					raw := btRow[util.BtFamily][0].Value
-
-					if getToken == nil {
-						getToken = util.KeyToDcid
-					}
 					token, err := getToken(btRow.Key())
 					if err != nil {
 						return false
