@@ -19,21 +19,15 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestNoBigTable(t *testing.T) {
 	ctx := context.Background()
 	s := NewServer(nil, nil, nil, nil)
-	resp, err := s.GetLandingPageData(ctx, &pb.GetLandingPageDataRequest{
+	_, err := s.GetLandingPageData(ctx, &pb.GetLandingPageDataRequest{
 		Place: "geoId/06",
 	})
-	if err != nil {
-		t.Errorf("Response got error: %s", err)
-	}
-	expected := &pb.GetLandingPageDataResponse{}
-	if diff := cmp.Diff(&resp, &expected, protocmp.Transform()); diff != "" {
-		t.Errorf("payload got diff: %v", diff)
+	if err.Error() != "rpc error: code = NotFound desc = Bigtable instance is not specified" {
+		t.Errorf("Error invalid: %s", err)
 	}
 }
