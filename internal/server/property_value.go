@@ -174,7 +174,7 @@ func readPropertyValues(
 	btTable *bigtable.Table,
 	rowList bigtable.RowList,
 ) (map[string][]*Node, error) {
-	tmp, err := bigTableReadRowsParallel(ctx, btTable, rowList,
+	tmp, err := bigTableReadRowsParallel(ctx, []*bigtable.Table{btTable}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals PropValueCache
 			err := json.Unmarshal(jsonRaw, &propVals)

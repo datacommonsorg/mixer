@@ -146,7 +146,7 @@ func (m *Memcache) ReadParallel(
 				if err != nil {
 					log.Printf("Unable to process token %s, data %s", token, jsonRaw)
 				}
-				elemChan <- chanData{token, elem}
+				elemChan <- chanData{token, elem, nil}
 			}
 			<-rowKeyChan
 			wg.Done()

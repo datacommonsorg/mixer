@@ -24,11 +24,58 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// bigTableReadRowsParallel reads BigTable rows in parallel,
-// considering the size limit for RowSet is 500KB.
+func readRowFn(
+	errCtx context.Context,
+	btTable *bigtable.Table,
+	rowSetPart bigtable.RowSet,
+	getToken func(string) (string, error),
+	action func(string, []byte) (interface{}, error),
+	elemChan chan chanData,
+) func() error {
+	return func() error {
+		if err := btTable.ReadRows(errCtx, rowSetPart,
+			func(btRow bigtable.Row) bool {
+				if len(btRow[util.BtFamily]) == 0 {
+					return true
+				}
+				raw := btRow[util.BtFamily][0].Value
+
+				if getToken == nil {
+					getToken = util.KeyToDcid
+				}
+				token, err := getToken(btRow.Key())
+				if err != nil {
+					return false
+				}
+
+				jsonRaw, err := util.UnzipAndDecode(string(raw))
+				if err != nil {
+					return false
+				}
+				elem, err := action(token, jsonRaw)
+				if err != nil {
+					return false
+				}
+				elemChan <- chanData{token, elem, btTable}
+				return true
+			}); err != nil {
+			return err
+		}
+		return nil
+	}
+}
+
+// bigTableReadRowsParallel reads BigTable rows from multiple Bigtable
+// in parallel.
+// As the  size limit for RowSet is 500KB, each table read is also chunked.
+//
+// IMPORTANT: the order of the input bigtable pointers matters. The most
+// important table should come first and the least important table last.
+// When data is present in multiple tables, that from the most important table
+// is selected.
 func bigTableReadRowsParallel(
 	ctx context.Context,
-	btTable *bigtable.Table,
+	btTables []*bigtable.Table,
 	rowSet bigtable.RowSet,
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error)) (
@@ -37,7 +84,6 @@ func bigTableReadRowsParallel(
 	var rowSetSize int
 	var rowList bigtable.RowList
 	var rowRangeList bigtable.RowRangeList
-
 	switch v := rowSet.(type) {
 	case bigtable.RowList:
 		rowList = rowSet.(bigtable.RowList)
@@ -66,37 +112,9 @@ func bigTableReadRowsParallel(
 		} else {
 			rowSetPart = rowRangeList[left:right]
 		}
-		errs.Go(func() error {
-			if err := btTable.ReadRows(errCtx, rowSetPart,
-				func(btRow bigtable.Row) bool {
-					if len(btRow[util.BtFamily]) == 0 {
-						return true
-					}
-					raw := btRow[util.BtFamily][0].Value
-
-					if getToken == nil {
-						getToken = util.KeyToDcid
-					}
-					token, err := getToken(btRow.Key())
-					if err != nil {
-						return false
-					}
-
-					jsonRaw, err := util.UnzipAndDecode(string(raw))
-					if err != nil {
-						return false
-					}
-					elem, err := action(token, jsonRaw)
-					if err != nil {
-						return false
-					}
-					elemChan <- chanData{token, elem}
-					return true
-				}); err != nil {
-				return err
-			}
-			return nil
-		})
+		for _, btTable := range btTables {
+			errs.Go(readRowFn(errCtx, btTable, rowSetPart, getToken, action, elemChan))
+		}
 	}
 
 	err := errs.Wait()
@@ -105,9 +123,22 @@ func bigTableReadRowsParallel(
 	}
 	close(elemChan)
 
-	result := map[string]interface{}{}
+	// Result is keyed by the bigtable pointer, then by the token
+	tmp := map[string]map[*bigtable.Table]interface{}{}
 	for elem := range elemChan {
-		result[elem.token] = elem.data
+		if _, ok := tmp[elem.token]; !ok {
+			tmp[elem.token] = make(map[*bigtable.Table]interface{})
+		}
+		tmp[elem.token][elem.table] = elem.data
+	}
+	result := map[string]interface{}{}
+	for token, tableData := range tmp {
+		for _, t := range btTables {
+			if data, ok := tableData[t]; ok {
+				result[token] = data
+				break
+			}
+		}
 	}
 	return result, nil
 }

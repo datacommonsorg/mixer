@@ -232,7 +232,7 @@ func fetchBtData(
 	}
 
 	// Fetch landing page cache data in parallel.
-	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, []*bigtable.Table{s.btTable}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var landingPageData LandingPageData
 

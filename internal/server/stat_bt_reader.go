@@ -32,7 +32,7 @@ func readStats(
 	map[string]map[string]*ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertToObsSeries, tokenFn(keyTokens),
+		ctx, []*bigtable.Table{btTable}, rowList, convertToObsSeries, tokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
@@ -64,7 +64,7 @@ func readStatsPb(
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertToObsSeriesPb, tokenFn(keyTokens),
+		ctx, []*bigtable.Table{btTable}, rowList, convertToObsSeriesPb, tokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
@@ -96,7 +96,7 @@ func readStatCollection(
 	map[string]*pb.ObsCollection, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertToObsCollection,
+		ctx, []*bigtable.Table{btTable}, rowList, convertToObsCollection,
 		func(rowKey string) (string, error) {
 			return keyTokens[rowKey], nil
 		},

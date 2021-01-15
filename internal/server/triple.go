@@ -93,7 +93,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		} {
 			rowList := buildObservedNodeKey(obsDcids, param.predKey)
 			dataMap, err := bigTableReadRowsParallel(
-				ctx, s.btTable, rowList,
+				ctx, []*bigtable.Table{s.btTable}, rowList,
 				func(dcid string, raw []byte) (interface{}, error) {
 					return string(raw), nil
 				}, nil)
@@ -144,7 +144,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	if len(popDcids) > 0 {
 		rowList := buildPopPVKey(popDcids)
 		dataMap, err := bigTableReadRowsParallel(
-			ctx, s.btTable, rowList, convertPopTriples, nil)
+			ctx, []*bigtable.Table{s.btTable}, rowList, convertPopTriples, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -246,7 +246,7 @@ func readTriples(
 	ctx context.Context, btTable *bigtable.Table, rowList bigtable.RowList) (
 	map[string]*TriplesCache, error) {
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTable, rowList, convertTriplesCache, nil)
+		ctx, []*bigtable.Table{btTable}, rowList, convertTriplesCache, nil)
 	if err != nil {
 		return nil, err
 	}
