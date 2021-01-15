@@ -248,7 +248,10 @@ func fetchBtData(
 	// Populate result from landing page cache
 	result := map[string]map[string]*ObsTimeSeries{}
 	for dcid, data := range dataMap {
-		landingPageData := data.(*LandingPageData)
+		landingPageData, ok := data.(*LandingPageData)
+		if !ok {
+			continue
+		}
 		finalData := map[string]*ObsTimeSeries{}
 		for statVarDcid, obsTimeSeries := range landingPageData.Data {
 			obsTimeSeries.filterAndRank(&ObsProp{})

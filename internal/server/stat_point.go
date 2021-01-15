@@ -74,10 +74,9 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		convertToObsSeries,
 		tokenFn(keyTokens))
 	if data, ok := cacheData[place]; ok {
-		if data == nil {
+		obsTimeSeries, ok = data.(*ObsTimeSeries)
+		if !ok {
 			obsTimeSeries = nil
-		} else {
-			obsTimeSeries = data.(*ObsTimeSeries)
 		}
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
@@ -158,8 +157,9 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 		parts := strings.Split(token, "^")
 		place := parts[0]
 		statVar := parts[1]
-		if data != nil {
-			result.Data[statVar].Stat[place] = data.(*pb.PointStat)
+		ps, ok := data.(*pb.PointStat)
+		if ok {
+			result.Data[statVar].Stat[place] = ps
 		}
 	}
 
@@ -251,8 +251,9 @@ func (s *Server) GetStatCollection(
 		},
 	)
 	for token, data := range cacheData {
-		if data != nil {
-			cohorts := data.(*pb.ObsCollection).SourceCohorts
+		collection, ok := data.(*pb.ObsCollection)
+		if ok {
+			cohorts := collection.SourceCohorts
 			sort.Sort(SeriesByRank(cohorts))
 			result.Data[token] = cohorts[0]
 		}

@@ -52,7 +52,13 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 	}
 	result := map[string]*PropLabelCache{}
 	for dcid, data := range dataMap {
-		result[dcid] = data.(*PropLabelCache)
+		pc, ok := data.(*PropLabelCache)
+		if !ok {
+			result[dcid].InLabels = []string{}
+			result[dcid].OutLabels = []string{}
+			continue
+		}
+		result[dcid] = pc
 		// Fill in InLabels / OutLabels with an empty list if not present.
 		if result[dcid].InLabels == nil {
 			result[dcid].InLabels = []string{}

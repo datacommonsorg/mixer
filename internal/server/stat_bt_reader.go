@@ -45,10 +45,11 @@ func readStats(
 		if result[place] == nil {
 			result[place] = map[string]*ObsTimeSeries{}
 		}
-		if data == nil {
-			result[place][statVar] = nil
+		s, ok := data.(*ObsTimeSeries)
+		if ok {
+			result[place][statVar] = s
 		} else {
-			result[place][statVar] = data.(*ObsTimeSeries)
+			result[place][statVar] = nil
 		}
 	}
 	return result, nil
@@ -77,10 +78,11 @@ func readStatsPb(
 		if result[place] == nil {
 			result[place] = map[string]*pb.ObsTimeSeries{}
 		}
-		if data == nil {
-			result[place][statVar] = nil
+		s, ok := data.(*pb.ObsTimeSeries)
+		if ok {
+			result[place][statVar] = s
 		} else {
-			result[place][statVar] = data.(*pb.ObsTimeSeries)
+			result[place][statVar] = nil
 		}
 	}
 	return result, nil
@@ -106,7 +108,12 @@ func readStatCollection(
 	}
 	result := map[string]*pb.ObsCollection{}
 	for token, data := range dataMap {
-		result[token] = data.(*pb.ObsCollection)
+		collection, ok := data.(*pb.ObsCollection)
+		if ok {
+			result[token] = collection
+		} else {
+			result[token] = nil
+		}
 	}
 	return result, nil
 }

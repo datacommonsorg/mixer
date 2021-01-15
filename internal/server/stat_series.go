@@ -77,10 +77,9 @@ func (s *Server) GetStatSeries(
 		tokenFn(keyTokens),
 	)
 	if data, ok := cacheData[place]; ok {
-		if data == nil {
+		obsTimeSeries, ok = data.(*ObsTimeSeries)
+		if !ok {
 			obsTimeSeries = nil
-		} else {
-			obsTimeSeries = data.(*ObsTimeSeries)
 		}
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
@@ -164,10 +163,11 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 		parts := strings.Split(token, "^")
 		place := parts[0]
 		statVar := parts[1]
-		if data == nil {
+		ts, ok := data.(*pb.ObsTimeSeries)
+		if ok {
 			result.PlaceData[place].StatVarData[statVar] = &pb.ObsTimeSeries{}
 		} else {
-			result.PlaceData[place].StatVarData[statVar] = data.(*pb.ObsTimeSeries)
+			result.PlaceData[place].StatVarData[statVar] = ts
 		}
 	}
 
@@ -245,10 +245,11 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	)
 	for token, data := range cacheData {
 		place := strings.Split(token, "^")[0]
-		if data == nil {
-			result[place] = nil
+		ts, ok := data.(*ObsTimeSeries)
+		if ok {
+			result[place] = ts
 		} else {
-			result[place] = data.(*ObsTimeSeries)
+			result[place] = nil
 		}
 	}
 	// For each place, if the data is missing in branch cache, fetch it from the
@@ -346,10 +347,11 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 		parts := strings.Split(token, "^")
 		place := parts[0]
 		statVar := parts[1]
-		if data == nil {
-			result.Data[place].Data[statVar] = nil
+		ts, ok := data.(*pb.ObsTimeSeries)
+		if ok {
+			result.Data[place].Data[statVar] = getBestSeries(ts)
 		} else {
-			result.Data[place].Data[statVar] = getBestSeries(data.(*pb.ObsTimeSeries))
+			result.Data[place].Data[statVar] = nil
 		}
 	}
 

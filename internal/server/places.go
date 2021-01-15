@@ -129,10 +129,11 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 	}
 	results := map[string]*RelatedPlacesInfo{}
 	for statVarDcid, data := range dataMap {
-		if data == nil {
-			results[statVarDcid] = nil
+		info, ok := data.(*RelatedPlacesInfo)
+		if ok {
+			results[statVarDcid] = info
 		} else {
-			results[statVarDcid] = data.(*RelatedPlacesInfo)
+			results[statVarDcid] = nil
 		}
 	}
 	jsonRaw, err := json.Marshal(results)
@@ -182,10 +183,11 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 
 	results := map[string]*pb.RelatedPlacesInfo{}
 	for statVarDcid, data := range dataMap {
-		if data == nil {
-			results[statVarDcid] = nil
+		info, ok := data.(*pb.RelatedPlacesInfo)
+		if ok {
+			results[statVarDcid] = info
 		} else {
-			results[statVarDcid] = data.(*pb.RelatedPlacesInfo)
+			results[statVarDcid] = nil
 		}
 	}
 	return &pb.GetLocationsRankingsResponse{Payload: results}, nil

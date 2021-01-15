@@ -82,16 +82,19 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 		},
 	)
 	for token, data := range cacheData {
-		if data != nil {
-			cohorts := data.(*pb.ObsCollection).SourceCohorts
-			sort.Sort(SeriesByRank(cohorts))
-			dates := []string{}
-			for date := range cohorts[0].Val {
-				dates = append(dates, date)
-			}
-			sort.Strings(dates)
-			result.Data[token] = &pb.DateList{Dates: dates}
+		collection, ok := data.(*pb.ObsCollection)
+		if !ok {
+			continue
 		}
+		cohorts := collection.SourceCohorts
+		sort.Sort(SeriesByRank(cohorts))
+		dates := []string{}
+		for date := range cohorts[0].Val {
+			dates = append(dates, date)
+		}
+		sort.Strings(dates)
+		result.Data[token] = &pb.DateList{Dates: dates}
+
 	}
 	// Get row keys that are not in mem-cache.
 	extraRowList := bigtable.RowList{}

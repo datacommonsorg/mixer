@@ -75,10 +75,11 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		dataMap := s.memcache.ReadParallel(
 			buildTriplesKey(popDcids), convertTriplesCache, nil)
 		for dcid, data := range dataMap {
-			if data == nil {
-				resultsMap[dcid] = nil
+			tc, ok := data.(*TriplesCache)
+			if ok {
+				resultsMap[dcid] = tc.Triples
 			} else {
-				resultsMap[dcid] = data.(*TriplesCache).Triples
+				resultsMap[dcid] = nil
 			}
 		}
 	}
@@ -252,10 +253,11 @@ func readTriples(
 	}
 	result := make(map[string]*TriplesCache)
 	for dcid, data := range dataMap {
-		if data == nil {
-			result[dcid] = nil
+		tc, ok := data.(*TriplesCache)
+		if ok {
+			result[dcid] = tc
 		} else {
-			result[dcid] = data.(*TriplesCache)
+			result[dcid] = nil
 		}
 	}
 	return result, nil
