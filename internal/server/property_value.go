@@ -60,14 +60,14 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 	}
 
 	if inArc {
-		inRes, err = getPropertyValuesHelper(ctx, s.btTable, s.memcache, dcids,
+		inRes, err = getPropertyValuesHelper(ctx, s.btTables, s.memcache, dcids,
 			prop, false)
 		if err != nil {
 			return nil, err
 		}
 	}
 	if outArc {
-		outRes, err = getPropertyValuesHelper(ctx, s.btTable, s.memcache, dcids,
+		outRes, err = getPropertyValuesHelper(ctx, s.btTables, s.memcache, dcids,
 			prop, true)
 		if err != nil {
 			return nil, err
@@ -101,14 +101,14 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 
 func getPropertyValuesHelper(
 	ctx context.Context,
-	btTable *bigtable.Table,
+	btTables []*bigtable.Table,
 	memcache *Memcache,
 	dcids []string,
 	prop string,
 	arcOut bool,
 ) (map[string][]*Node, error) {
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
-	nodeMap, err := readPropertyValues(ctx, btTable, rowList)
+	nodeMap, err := readPropertyValues(ctx, btTables, rowList)
 	if err != nil {
 		return nil, err
 	}
@@ -171,10 +171,10 @@ func trimNodes(nodes []*Node, typ string, limit int) []*Node {
 
 func readPropertyValues(
 	ctx context.Context,
-	btTable *bigtable.Table,
+	btTables []*bigtable.Table,
 	rowList bigtable.RowList,
 ) (map[string][]*Node, error) {
-	tmp, err := bigTableReadRowsParallel(ctx, btTable, rowList,
+	tmp, err := bigTableReadRowsParallel(ctx, btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals PropValueCache
 			err := json.Unmarshal(jsonRaw, &propVals)

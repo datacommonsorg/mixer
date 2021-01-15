@@ -58,7 +58,7 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	triples, err := readTriples(ctx, s.btTables, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +102,7 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 	}
 
 	if len(extraRowList) > 0 {
-		extraData, err := readStatCollection(ctx, s.btTable, extraRowList, keyTokens)
+		extraData, err := readStatCollection(ctx, s.btTables, extraRowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}

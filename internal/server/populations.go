@@ -38,6 +38,10 @@ type PopObs struct {
 // GetPopObs implements API for Mixer.GetPopObs.
 func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	*pb.GetPopObsResponse, error) {
+	if len(s.btTables) == 0 {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
 	dcid := in.GetDcid()
 
 	if dcid == "" {
@@ -56,7 +60,7 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
-	btRow, err := s.btTable.ReadRow(ctx, key)
+	btRow, err := s.btTables[0].ReadRow(ctx, key)
 	if err != nil {
 		log.Print(err)
 	}
@@ -107,6 +111,10 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 // GetPlaceObs implements API for Mixer.GetPlaceObs.
 func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	*pb.GetPlaceObsResponse, error) {
+	if len(s.btTables) == 0 {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
 	if in.GetPlaceType() == "" || in.GetPopulationType() == "" ||
 		in.GetObservationDate() == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
@@ -129,7 +137,7 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
-	btRow, err := s.btTable.ReadRow(ctx, key)
+	btRow, err := s.btTables[0].ReadRow(ctx, key)
 	if err != nil {
 		log.Print(err)
 	}
@@ -213,7 +221,7 @@ func (s *Server) GetPopulations(
 
 	// Query the cache
 	collection := []*PlacePopInfo{}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -266,7 +274,7 @@ func (s *Server) GetObservations(
 	// Query the cache for all keys.
 	collection := []*PopObs{}
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, s.btTable, rowList,
+		ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)

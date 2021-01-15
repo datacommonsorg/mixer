@@ -49,7 +49,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 
 	// Read triples for the statistical variable.
 	triplesRowList := buildTriplesKey([]string{statVar})
-	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	triples, err := readTriples(ctx, s.btTables, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -82,7 +82,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	} else {
 		// If the data is missing in branch cache, fetch it from the base cache in
 		// Bigtable.
-		btData, err := readStats(ctx, s.btTable, rowList, keyTokens)
+		btData, err := readStats(ctx, s.btTables, rowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
@@ -131,7 +131,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	// TODO(shifucun): Merge this with the logic in GetStatAll()
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	triples, err := readTriples(ctx, s.btTables, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -171,7 +171,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 		}
 	}
 	if len(extraRowList) > 0 {
-		extraData, err := readStatsPb(ctx, s.btTable, extraRowList, keyTokens)
+		extraData, err := readStatsPb(ctx, s.btTables, extraRowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
@@ -226,7 +226,7 @@ func (s *Server) GetStatCollection(
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTable, triplesRowList)
+	triples, err := readTriples(ctx, s.btTables, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -266,7 +266,7 @@ func (s *Server) GetStatCollection(
 	}
 
 	if len(extraRowList) > 0 {
-		extraData, err := readStatCollection(ctx, s.btTable, extraRowList, keyTokens)
+		extraData, err := readStatCollection(ctx, s.btTables, extraRowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
