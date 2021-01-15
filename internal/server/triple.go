@@ -62,7 +62,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		allTriplesCache, err := readTriples(ctx, s.btTable, buildTriplesKey(regDcids))
+		allTriplesCache, err := readTriples(ctx, s.btTables, buildTriplesKey(regDcids))
 		if err != nil {
 			return nil, err
 		}
@@ -93,7 +93,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		} {
 			rowList := buildObservedNodeKey(obsDcids, param.predKey)
 			dataMap, err := bigTableReadRowsParallel(
-				ctx, []*bigtable.Table{s.btTable}, rowList,
+				ctx, s.btTables, rowList,
 				func(dcid string, raw []byte) (interface{}, error) {
 					return string(raw), nil
 				}, nil)
@@ -118,7 +118,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 				observedNodes = append(observedNodes, dcid)
 			}
 			nameRowList := buildPropertyValuesKey(observedNodes, "name", true)
-			nameNodes, err := readPropertyValues(ctx, s.btTable, nameRowList)
+			nameNodes, err := readPropertyValues(ctx, s.btTables, nameRowList)
 			if err != nil {
 				return nil, err
 			}
@@ -144,7 +144,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	if len(popDcids) > 0 {
 		rowList := buildPopPVKey(popDcids)
 		dataMap, err := bigTableReadRowsParallel(
-			ctx, []*bigtable.Table{s.btTable}, rowList, convertPopTriples, nil)
+			ctx, s.btTables, rowList, convertPopTriples, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -243,10 +243,10 @@ func applyLimit(
 
 // ReadTriples read triples from Cloud Bigtable for multiple dcids.
 func readTriples(
-	ctx context.Context, btTable *bigtable.Table, rowList bigtable.RowList) (
+	ctx context.Context, btTables []*bigtable.Table, rowList bigtable.RowList) (
 	map[string]*TriplesCache, error) {
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, []*bigtable.Table{btTable}, rowList, convertTriplesCache, nil)
+		ctx, btTables, rowList, convertTriplesCache, nil)
 	if err != nil {
 		return nil, err
 	}

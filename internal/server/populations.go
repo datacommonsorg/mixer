@@ -56,7 +56,7 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
-	btRow, err := s.btTable.ReadRow(ctx, key)
+	btRow, err := s.btTables[0].ReadRow(ctx, key)
 	if err != nil {
 		log.Print(err)
 	}
@@ -129,7 +129,7 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
-	btRow, err := s.btTable.ReadRow(ctx, key)
+	btRow, err := s.btTables[0].ReadRow(ctx, key)
 	if err != nil {
 		log.Print(err)
 	}
@@ -213,7 +213,7 @@ func (s *Server) GetPopulations(
 
 	// Query the cache
 	collection := []*PlacePopInfo{}
-	dataMap, err := bigTableReadRowsParallel(ctx, []*bigtable.Table{s.btTable}, rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -266,7 +266,7 @@ func (s *Server) GetObservations(
 	// Query the cache for all keys.
 	collection := []*PopObs{}
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, []*bigtable.Table{s.btTable}, rowList,
+		ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)

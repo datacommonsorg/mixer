@@ -38,7 +38,7 @@ import (
 // Server holds resources for a mixer server
 type Server struct {
 	bqClient *bigquery.Client
-	btTable  *bigtable.Table
+	btTables []*bigtable.Table
 	memcache *Memcache
 	metadata *Metadata
 }
@@ -152,8 +152,8 @@ func (s *Server) SubscribeBranchCacheUpdate(
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
-	btTable *bigtable.Table,
+	btTables []*bigtable.Table,
 	memcache *Memcache,
 	metadata *Metadata) *Server {
-	return &Server{bqClient, btTable, memcache, metadata}
+	return &Server{bqClient, btTables, memcache, metadata}
 }

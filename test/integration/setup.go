@@ -101,7 +101,7 @@ func newClient(
 	btTable *bigtable.Table,
 	memcache *server.Memcache,
 	metadata *server.Metadata) (pb.MixerClient, error) {
-	s := server.NewServer(bqClient, btTable, memcache, metadata)
+	s := server.NewServer(bqClient, []*bigtable.Table{btTable}, memcache, metadata)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)

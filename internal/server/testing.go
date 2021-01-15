@@ -31,7 +31,7 @@ const (
 )
 
 func setupBigtable(
-	ctx context.Context, data map[string]string) (*bigtable.Table, error) {
+	ctx context.Context, data map[string]string) ([]*bigtable.Table, error) {
 	srv, err := bttest.NewServer("localhost:0")
 	if err != nil {
 		return nil, err
@@ -71,5 +71,5 @@ func setupBigtable(
 			return nil, err
 		}
 	}
-	return client.Open(testTable), err
+	return []*bigtable.Table{client.Open(testTable)}, err
 }

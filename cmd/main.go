@@ -114,7 +114,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, btTable, memcache, metadata)
+	s := server.NewServer(bqClient, []*bigtable.Table{btTable}, memcache, metadata)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly && *enableBranchCache {
