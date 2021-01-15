@@ -24,10 +24,9 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// A functional generator that return a function that is to be used as
-// callback function in Bigtable reads.
-// This utilize the Golang closure so the arguments can be scoped in the
-// returned function.
+// Generates a function to be used as the callback function in Bigtable Read.
+// This utilizes the Golang closure so the arguments can be scoped in the
+// generated function.
 func readRowFn(
 	errCtx context.Context,
 	btTable *bigtable.Table,
