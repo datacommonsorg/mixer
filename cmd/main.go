@@ -81,15 +81,14 @@ func main() {
 		log.Fatalf("Failed to create Bigquery client: %v", err)
 	}
 
-	var btTable *bigtable.Table
-	if *bigqueryOnly {
-		btTable = nil
-	} else {
+	btTables := []*bigtable.Table{}
+	if !*bigqueryOnly {
 		// BigTable.
-		btTable, err = server.NewBtTable(ctx, *btProject, *btInstance, *btTableName)
+		btTable, err := server.NewBtTable(ctx, *btProject, *btInstance, *btTableName)
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
+		btTables = append(btTables, btTable)
 	}
 
 	// Metadata.
@@ -114,7 +113,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, []*bigtable.Table{btTable}, memcache, metadata)
+	s := server.NewServer(bqClient, btTables, memcache, metadata)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly && *enableBranchCache {
