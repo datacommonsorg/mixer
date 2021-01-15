@@ -24,6 +24,10 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// A functional generator that return a function that is to be used as
+// callback function in Bigtable reads.
+// This utilize the Golang closure so the arguments can be scoped in the
+// returned function.
 func readRowFn(
 	errCtx context.Context,
 	btTable *bigtable.Table,
@@ -133,6 +137,8 @@ func bigTableReadRowsParallel(
 		} else {
 			rowSetPart = rowRangeList[left:right]
 		}
+		// Read from all the given tables.
+		// The result is sent to the "elemChan" channel.
 		for _, btTable := range btTables {
 			errs.Go(readRowFn(errCtx, btTable, rowSetPart, getToken, action, elemChan))
 		}
@@ -144,7 +150,7 @@ func bigTableReadRowsParallel(
 	}
 	close(elemChan)
 
-	// Result is keyed by the bigtable pointer, then by the token
+	// Result is keyed by the token, then by the bigtable pointer.
 	tmp := map[string]map[*bigtable.Table]interface{}{}
 	for elem := range elemChan {
 		if _, ok := tmp[elem.token]; !ok {
@@ -154,6 +160,8 @@ func bigTableReadRowsParallel(
 	}
 	result := map[string]interface{}{}
 	for token, tableData := range tmp {
+		// Input table is from most to least important.
+		// If data is found in prefered table, then use it and break.
 		for _, t := range btTables {
 			if data, ok := tableData[t]; ok {
 				result[token] = data
