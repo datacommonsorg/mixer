@@ -45,7 +45,7 @@ var (
 	port              = flag.Int("port", 12345, "Port on which to run the server.")
 	useALTS           = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	enableBranchCache = flag.Bool("enable_branch_cache", true, "Whether to use branch cache")
-	bigqueryOnly      = flag.Bool("bigquery_only", true, "The service only serves sparql query")
+	bigqueryOnly      = flag.Bool("bigquery_only", false, "The service only serves sparql query")
 )
 
 const (
