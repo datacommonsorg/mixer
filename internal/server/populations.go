@@ -213,7 +213,7 @@ func (s *Server) GetPopulations(
 
 	// Query the cache
 	collection := []*PlacePopInfo{}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, []*bigtable.Table{s.btTable}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -266,7 +266,7 @@ func (s *Server) GetObservations(
 	// Query the cache for all keys.
 	collection := []*PopObs{}
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, s.btTable, rowList,
+		ctx, []*bigtable.Table{s.btTable}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)

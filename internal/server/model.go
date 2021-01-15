@@ -15,6 +15,7 @@
 package server
 
 import (
+	"cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/base"
 	"github.com/datacommonsorg/mixer/internal/translator"
 )
@@ -58,10 +59,14 @@ type PropLabelCache struct {
 }
 
 type chanData struct {
-	// token is the identifier of the data when reading multiple BigTable rows
+	// Identifier of the data when reading multiple BigTable rows
 	// concurrently. It could be place dcid, statvar dcid or other "key".
 	token string
-	data  interface{}
+	// Data read from Cloud Bigtable
+	data interface{}
+	// The Cloud Bigtable object, used when reading multiple Bigtable concurrently
+	// to differentiate them from the channel data
+	table *bigtable.Table
 }
 
 // RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.

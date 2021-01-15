@@ -20,6 +20,7 @@ import (
 
 	"encoding/json"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -52,7 +53,7 @@ func (s *Server) GetPlaceStatVars(
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	rowList := buildPlaceStatsVarKey(dcids)
-	dataMap, err := bigTableReadRowsParallel(ctx, s.btTable, rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, []*bigtable.Table{s.btTable}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var data PlaceStatsVar
 			err := json.Unmarshal(jsonRaw, &data)
