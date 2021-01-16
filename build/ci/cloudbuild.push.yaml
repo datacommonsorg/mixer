@@ -62,6 +62,8 @@ steps:
         set -e
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.latest.pb
+        gsutil acl ch -u AllUsers:R gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
+        gsutil acl ch -u AllUsers:R gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.latest.pb
   # Update all the versions.
   - id: update-version
     name: "gcr.io/cloud-builders/git"
