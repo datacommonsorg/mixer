@@ -37,8 +37,9 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 
 	rowList := buildPropertyLabelKey(dcids)
 
+	// Property Labels cache only read from the base cache.
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, s.tables(), rowList,
+		ctx, s.tables()[1:], rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propLabels PropLabelCache
 			err := json.Unmarshal(jsonRaw, &propLabels)

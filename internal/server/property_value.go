@@ -105,7 +105,7 @@ func getPropertyValuesHelper(
 	arcOut bool,
 ) (map[string][]*Node, error) {
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
-	nodeMap, err := readPropertyValues(ctx, btTables, rowList)
+	nodeMap, err := readPropertyValues(ctx, btTables[1:], rowList)
 	if err != nil {
 		return nil, err
 	}
