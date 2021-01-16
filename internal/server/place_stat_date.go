@@ -73,11 +73,11 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatCollectionKey(ancestorPlace, placeType, "", statVarObject)
 
-	extraData, err := readStatCollection(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatCollection(ctx, s.btTables, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
-	for sv, data := range extraData {
+	for sv, data := range cacheData {
 		if data != nil {
 			cohorts := data.SourceCohorts
 			sort.Sort(SeriesByRank(cohorts))

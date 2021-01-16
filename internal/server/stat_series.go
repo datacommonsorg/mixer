@@ -134,11 +134,11 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-	extraData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
-	for place, placeData := range extraData {
+	for place, placeData := range cacheData {
 		for statVar, data := range placeData {
 			result.PlaceData[place].StatVarData[statVar] = data
 		}
@@ -189,12 +189,12 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		map[string]*StatisticalVariable{statsVarDcid: statsVarObject},
 	)
 	result := map[string]*ObsTimeSeries{}
-	extraData, err := readStats(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStats(ctx, s.btTables, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
-	for place := range extraData {
-		result[place] = extraData[place][statsVarDcid]
+	for place := range cacheData {
+		result[place] = cacheData[place][statsVarDcid]
 	}
 
 	// Fill missing place data and result result
@@ -260,11 +260,11 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			result.Data[place].Data[statVar] = nil
 		}
 	}
-	extraData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
-	for place, placeData := range extraData {
+	for place, placeData := range cacheData {
 		for statVar, data := range placeData {
 			result.Data[place].Data[statVar] = getBestSeries(data)
 		}

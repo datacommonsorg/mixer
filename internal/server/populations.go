@@ -69,15 +69,13 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 		branchRaw = btRow[util.BtFamily][0].Value
 	}
 
-	if len(s.btTables) == 2 {
-		btRow, err := s.btTables[1].ReadRow(ctx, key)
-		if err != nil {
-			log.Print(err)
-		}
-		hasBaseData = len(btRow[util.BtFamily]) > 0
-		if hasBaseData {
-			baseRaw = btRow[util.BtFamily][0].Value
-		}
+	btRow, err = s.btTables[1].ReadRow(ctx, key)
+	if err != nil {
+		log.Print(err)
+	}
+	hasBaseData = len(btRow[util.BtFamily]) > 0
+	if hasBaseData {
+		baseRaw = btRow[util.BtFamily][0].Value
 	}
 
 	if !hasBaseData && !hasBranchData {
@@ -154,15 +152,13 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 		branchRaw = btRow[util.BtFamily][0].Value
 	}
 
-	if len(s.btTables) == 2 {
-		btRow, err := s.btTables[1].ReadRow(ctx, key)
-		if err != nil {
-			log.Print(err)
-		}
-		hasBaseData = len(btRow[util.BtFamily]) > 0
-		if hasBaseData {
-			baseRaw = btRow[util.BtFamily][0].Value
-		}
+	btRow, err = s.btTables[1].ReadRow(ctx, key)
+	if err != nil {
+		log.Print(err)
+	}
+	hasBaseData = len(btRow[util.BtFamily]) > 0
+	if hasBaseData {
+		baseRaw = btRow[util.BtFamily][0].Value
 	}
 
 	if !hasBaseData && !hasBranchData {

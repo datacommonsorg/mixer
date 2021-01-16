@@ -129,11 +129,11 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-	extraData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
-	for place, placeData := range extraData {
+	for place, placeData := range cacheData {
 		for statVar, data := range placeData {
 			result.Data[statVar].Stat[place], err = getValueFromBestSourcePb(data, date)
 			if err != nil {
@@ -199,11 +199,11 @@ func (s *Server) GetStatCollection(
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatCollectionKey(
 		parentPlace, childType, date, statVarObject)
-	extraData, err := readStatCollection(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatCollection(ctx, s.btTables, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
-	for sv, data := range extraData {
+	for sv, data := range cacheData {
 		if data != nil {
 			cohorts := data.SourceCohorts
 			sort.Sort(SeriesByRank(cohorts))
