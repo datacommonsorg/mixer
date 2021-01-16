@@ -12,17 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization configuration for base yaml files.
+# Reads in storage versions in current folder.
+# This makes this `kustomization` sharable by other apps (like website) too.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: mixer
-
-resources:
-- ../storage
-- ../mapping
-- deployment.yaml
-- service.yaml
-- namespace.yaml
-- ingress.yaml
+configMapGenerator:
+  - name: schema-mapping
+    files:
+      - base.mcf
+      - weather.mcf

@@ -1,3 +1,4 @@
+#!/bin/bash
 # Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization configuration for base yaml files.
 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+set -e
 
-namespace: mixer
+# Sparql Query
+curl localhost:9090/query?sparql=SELECT%20%3Fname%20WHERE%20%7B%20%3Fstate%20typeOf%20State%20.%20%3Fstate%20dcid%20geoId%2F06%20.%20%3Fstate%20name%20%3Fname%20%7D
+echo ""
 
-resources:
-- ../storage
-- ../mapping
-- deployment.yaml
-- service.yaml
-- namespace.yaml
-- ingress.yaml
+# Property Labels
+curl localhost:9090/node/property-labels?dcids=geoId/05&dcids=geoId/06
+echo ""
