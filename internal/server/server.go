@@ -37,6 +37,8 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
+	// Lock to guard the branch cache client and table update when receive pubsub
+	// triggers for branch cache update.
 	sync.RWMutex
 	bqClient *bigquery.Client
 	btClient *bigtable.Client
