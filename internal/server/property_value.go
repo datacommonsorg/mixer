@@ -60,13 +60,13 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 	}
 
 	if inArc {
-		inRes, err = getPropertyValuesHelper(ctx, s.btTables, dcids, prop, false)
+		inRes, err = getPropertyValuesHelper(ctx, s.tables(), dcids, prop, false)
 		if err != nil {
 			return nil, err
 		}
 	}
 	if outArc {
-		outRes, err = getPropertyValuesHelper(ctx, s.btTables, dcids, prop, true)
+		outRes, err = getPropertyValuesHelper(ctx, s.tables(), dcids, prop, true)
 		if err != nil {
 			return nil, err
 		}

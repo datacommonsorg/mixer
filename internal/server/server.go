@@ -44,7 +44,7 @@ type Server struct {
 	metadata *Metadata
 }
 
-func (s *Server) getBtTables() []*bigtable.Table {
+func (s *Server) tables() []*bigtable.Table {
 	s.RLock()
 	defer s.RUnlock()
 	return s.btTables

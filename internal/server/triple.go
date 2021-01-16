@@ -62,7 +62,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		allTriplesCache, err := readTriples(ctx, s.btTables, buildTriplesKey(regDcids))
+		allTriplesCache, err := readTriples(ctx, s.tables(), buildTriplesKey(regDcids))
 		if err != nil {
 			return nil, err
 		}
@@ -72,7 +72,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	}
 	if len(popDcids) > 0 {
 		dataMap, err := bigTableReadRowsParallel(
-			ctx, s.btTables, buildTriplesKey(popDcids), convertTriplesCache, nil)
+			ctx, s.tables(), buildTriplesKey(popDcids), convertTriplesCache, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -95,7 +95,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		} {
 			rowList := buildObservedNodeKey(obsDcids, param.predKey)
 			dataMap, err := bigTableReadRowsParallel(
-				ctx, s.btTables, rowList,
+				ctx, s.tables(), rowList,
 				func(dcid string, raw []byte) (interface{}, error) {
 					return string(raw), nil
 				}, nil)
@@ -113,7 +113,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 				observedNodes = append(observedNodes, dcid)
 			}
 			nameRowList := buildPropertyValuesKey(observedNodes, "name", true)
-			nameNodes, err := readPropertyValues(ctx, s.btTables, nameRowList)
+			nameNodes, err := readPropertyValues(ctx, s.tables(), nameRowList)
 			if err != nil {
 				return nil, err
 			}
@@ -139,7 +139,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	if len(popDcids) > 0 {
 		rowList := buildPopPVKey(popDcids)
 		dataMap, err := bigTableReadRowsParallel(
-			ctx, s.btTables, rowList, convertPopTriples, nil)
+			ctx, s.tables(), rowList, convertPopTriples, nil)
 		if err != nil {
 			return nil, err
 		}
