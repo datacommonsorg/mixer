@@ -51,9 +51,10 @@ spec:
               cpu: "500m"
           args:
             - --bq_dataset=$(BIG_QUERY)
-            - --bt_table=$(BIG_TABLE)
+            - --base_instance=prophet-cache
+            - --base_table=$(BIG_TABLE)
+            - --branch_instance=prophet-branch-cache
             - --bt_project=google.com:datcom-store-dev
-            - --bt_instance=prophet-cache
             - --project_id=$(PROJECT_ID)
           env:
           - name: PROJECT_ID
@@ -77,11 +78,11 @@ spec:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 5
-          # livenessProbe:
-          #   exec:
-          #     command: ["/bin/grpc_health_probe", "-addr=:12345"]
-          #   periodSeconds: 5
-          #   initialDelaySeconds: 10
+          livenessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:12345"]
+            periodSeconds: 5
+            initialDelaySeconds: 10
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
           args:

@@ -60,15 +60,13 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 	}
 
 	if inArc {
-		inRes, err = getPropertyValuesHelper(ctx, s.btTables, s.memcache, dcids,
-			prop, false)
+		inRes, err = getPropertyValuesHelper(ctx, s.btTables, dcids, prop, false)
 		if err != nil {
 			return nil, err
 		}
 	}
 	if outArc {
-		outRes, err = getPropertyValuesHelper(ctx, s.btTables, s.memcache, dcids,
-			prop, true)
+		outRes, err = getPropertyValuesHelper(ctx, s.btTables, dcids, prop, true)
 		if err != nil {
 			return nil, err
 		}
@@ -102,7 +100,6 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 func getPropertyValuesHelper(
 	ctx context.Context,
 	btTables []*bigtable.Table,
-	memcache *Memcache,
 	dcids []string,
 	prop string,
 	arcOut bool,
@@ -114,18 +111,13 @@ func getPropertyValuesHelper(
 	}
 
 	// Add branch cache data
-	branchNodeMap := memcache.ReadParallel(
-		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var propVals PropValueCache
-			err := json.Unmarshal(jsonRaw, &propVals)
-			if err != nil {
-				return nil, err
-			}
-			return propVals.Nodes, nil
-		}, nil)
+	branchNodeMap, err := readPropertyValues(ctx, btTables[:1], rowList)
+	if err != nil {
+		return nil, err
+	}
+
 	for dcid := range branchNodeMap {
-		branchNodes := branchNodeMap[dcid].([]*Node)
+		branchNodes := branchNodeMap[dcid]
 		baseNodes, exist := nodeMap[dcid]
 		if !exist {
 			nodeMap[dcid] = branchNodes

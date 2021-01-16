@@ -37,23 +37,23 @@ import (
 )
 
 var (
-	bqDataset         = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	btTableName       = flag.String("bt_table", "", "DataCommons Bigtable table.")
-	btProject         = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
-	btInstance        = flag.String("bt_instance", "", "BigTable instance.")
-	projectID         = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	port              = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS           = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
-	enableBranchCache = flag.Bool("enable_branch_cache", true, "Whether to use branch cache")
-	bigqueryOnly      = flag.Bool("bigquery_only", false, "The service only serves sparql query")
+	bqDataset      = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	btProject      = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
+	baseInstance   = flag.String("base_instance", "", "Base cache BigTable instance.")
+	baseTableName  = flag.String("base_table", "", "Base cache Bigtable table.")
+	branchInstance = flag.String("branch_instance", "", "Branch cache BigTable instance.")
+	projectID      = flag.String("project_id", "", "The cloud project to run the mixer instance.")
+	port           = flag.Int("port", 12345, "Port on which to run the server.")
+	useALTS        = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	bigqueryOnly   = flag.Bool("bigquery_only", false, "The service only serves sparql query")
 )
 
 const (
-	branchCacheBucket      = "prophet_cache"
-	branchCacheVersionFile = "latest_branch_cache_version.txt"
-	pubsubProject          = "google.com:datcom-store-dev"
-	pubsubTopic            = "branch-cache-reload"
-	subscriberPrefix       = "mixer-subscriber-"
+	branchCacheVersionBucket = "prophet_cache"
+	branchCacheVersionFile   = "latest_branch_cache_version.txt"
+	pubsubProject            = "google.com:datcom-store-dev"
+	pubsubTopic              = "branch-cache-reload"
+	subscriberPrefix         = "mixer-subscriber-"
 )
 
 func main() {
@@ -67,7 +67,7 @@ func main() {
 	if error == nil && credentials.ProjectID != "" {
 		cfg := profiler.Config{
 			Service:        "mixer-service",
-			ServiceVersion: *btTableName,
+			ServiceVersion: *baseTableName,
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
@@ -82,43 +82,41 @@ func main() {
 	}
 
 	btTables := []*bigtable.Table{}
+	var btClient *bigtable.Client
 	if !*bigqueryOnly {
-		// BigTable.
-		btTable, err := server.NewBtTable(ctx, *btProject, *btInstance, *btTableName)
+		// Base cache
+		_, baseTable, err := server.NewBtTable(ctx, *btProject, *baseInstance, *baseTableName)
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
-		btTables = append(btTables, btTable)
+		branchTableName, err := server.ReadBranchTableName(
+			ctx, branchCacheVersionBucket, branchCacheVersionFile)
+		if err != nil {
+			log.Fatalf("Failed to read branch cache folder: %v", err)
+		}
+		branchClient, branchTable, err := server.NewBtTable(ctx, *btProject, *branchInstance, branchTableName)
+		btClient = branchClient
+		if err != nil {
+			log.Fatalf("Failed to create BigTable client: %v", err)
+		}
+		// Order matters, insert branchTable first so the branch cache data is preferred.
+		btTables = append(btTables, branchTable)
+		btTables = append(btTables, baseTable)
 	}
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset)
+	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchInstance)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
-	memcache := &server.Memcache{}
-	if !*bigqueryOnly && *enableBranchCache {
-		// Memcache
-		branchCacheFolder, err := server.ReadBranchCacheFolder(
-			ctx, branchCacheBucket, branchCacheVersionFile)
-		if err != nil {
-			log.Fatalf("Failed to read branch cache folder: %v", err)
-		}
-		memcache, err = server.NewMemcacheFromGCS(
-			ctx, branchCacheBucket, branchCacheFolder)
-		if err != nil {
-			log.Fatalf("Failed to create memcache from gcs: %v", err)
-		}
-	}
-
 	// Create server object
-	s := server.NewServer(bqClient, btTables, memcache, metadata)
+	s := server.NewServer(bqClient, btClient, btTables, metadata)
 
 	// Subscribe to cache update
-	if !*bigqueryOnly && *enableBranchCache {
+	if !*bigqueryOnly {
 		err = s.SubscribeBranchCacheUpdate(
-			ctx, pubsubProject, branchCacheBucket, subscriberPrefix, pubsubTopic)
+			ctx, pubsubProject, branchCacheVersionBucket, subscriberPrefix, pubsubTopic)
 		if err != nil {
 			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 		}

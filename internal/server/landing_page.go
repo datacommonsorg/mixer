@@ -139,7 +139,7 @@ func getCohort(placeType string, placeDcid string) (string, error) {
 // get the type of a place.
 func getPlaceType(ctx context.Context, s *Server, dcid string) (string, error) {
 	resp, err := getPropertyValuesHelper(
-		ctx, s.btTables, s.memcache, []string{dcid}, "typeOf", true)
+		ctx, s.btTables, []string{dcid}, "typeOf", true)
 	if err != nil {
 		return "", err
 	}
@@ -351,14 +351,14 @@ func getChildPlaces(ctx context.Context, s *Server, placedDcid, placeType string
 	children := []*Node{}
 	// ContainedIn places
 	containedInPlaces, err := getPropertyValuesHelper(
-		ctx, s.btTables, s.memcache, []string{placedDcid}, "containedInPlace", false)
+		ctx, s.btTables, []string{placedDcid}, "containedInPlace", false)
 	if err != nil {
 		return nil, err
 	}
 	children = append(children, containedInPlaces[placedDcid]...)
 	// GeoOverlaps places
 	overlapPlaces, err := getPropertyValuesHelper(
-		ctx, s.btTables, s.memcache, []string{placedDcid}, "geoOverlaps", false)
+		ctx, s.btTables, []string{placedDcid}, "geoOverlaps", false)
 	if err != nil {
 		return nil, err
 	}
@@ -419,7 +419,7 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 	result := []*place{}
 	for {
 		containedInPlaces, err := getPropertyValuesHelper(
-			ctx, s.btTables, s.memcache, []string{dcid}, "containedInPlace", true)
+			ctx, s.btTables, []string{dcid}, "containedInPlace", true)
 		if err != nil {
 			return nil, err
 		}
@@ -463,7 +463,7 @@ func getSimilarPlaces(
 		return []string{}, nil
 	}
 	resp, err := getPropertyValuesHelper(
-		ctx, s.btTables, s.memcache, []string{cohort}, "member", true)
+		ctx, s.btTables, []string{cohort}, "member", true)
 	if err != nil {
 		return nil, err
 	}
@@ -505,7 +505,7 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 	[]string, error) {
 
 	resp, err := getPropertyValuesHelper(
-		ctx, s.btTables, s.memcache, []string{dcid}, "nearbyPlaces", true)
+		ctx, s.btTables, []string{dcid}, "nearbyPlaces", true)
 	if err != nil {
 		return nil, err
 	}

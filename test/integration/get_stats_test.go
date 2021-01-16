@@ -33,12 +33,7 @@ func TestGetStats(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	memcacheData, err := loadMemcache()
-	if err != nil {
-		t.Fatalf("Failed to load memcache %v", err)
-	}
-
-	client, err := setup(server.NewMemcache(memcacheData))
+	client, err := setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

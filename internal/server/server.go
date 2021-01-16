@@ -22,8 +22,8 @@ import (
 	"path"
 	"path/filepath"
 	"runtime"
-	"runtime/debug"
 	"strings"
+	"sync"
 	"time"
 
 	"cloud.google.com/go/bigquery"
@@ -37,14 +37,35 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
+	sync.RWMutex
 	bqClient *bigquery.Client
+	btClient *bigtable.Client
 	btTables []*bigtable.Table
-	memcache *Memcache
 	metadata *Metadata
 }
 
-// ReadBranchCacheFolder reads branch cache folder from GCS.
-func ReadBranchCacheFolder(
+func (s *Server) getBtTables() []*bigtable.Table {
+	s.RLock()
+	defer s.RUnlock()
+	return s.btTables
+}
+
+func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
+	branchClient, branchTable, err := NewBtTable(
+		ctx, s.metadata.BtProject, s.metadata.branchInstance, branchTableName)
+	if err != nil {
+		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
+		return
+	}
+	s.Lock()
+	defer s.Unlock()
+	s.btClient.Close()
+	s.btClient = branchClient
+	s.btTables[0] = branchTable
+}
+
+// ReadBranchTableName reads branch cache folder from GCS.
+func ReadBranchTableName(
 	ctx context.Context, bucket, versionFile string) (string, error) {
 	client, err := storage.NewClient(ctx)
 	if err != nil {
@@ -63,7 +84,7 @@ func ReadBranchCacheFolder(
 }
 
 // NewMetadata initialize the metadata for translator.
-func NewMetadata(bqDataset string) (*Metadata, error) {
+func NewMetadata(bqDataset, btProject, branchInstance string) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -92,18 +113,18 @@ func NewMetadata(bqDataset string) (*Metadata, error) {
 	outArcInfo := map[string]map[string][]translator.OutArcInfo{}
 	inArcInfo := map[string][]translator.InArcInfo{}
 	return &Metadata{
-		mappings, outArcInfo, inArcInfo, subTypeMap, bqDataset}, nil
+		mappings, outArcInfo, inArcInfo, subTypeMap, bqDataset, btProject, branchInstance}, nil
 }
 
 // NewBtTable creates a new bigtable.Table instance.
 func NewBtTable(
 	ctx context.Context, projectID, instanceID, tableID string) (
-	*bigtable.Table, error) {
+	*bigtable.Client, *bigtable.Table, error) {
 	btClient, err := bigtable.NewClient(ctx, projectID, instanceID)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return btClient.Open(tableID), nil
+	return btClient, btClient.Open(tableID), nil
 }
 
 // SubscribeBranchCacheUpdate subscribe server for branch cache update.
@@ -117,7 +138,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	}
 	// Always create a new subscriber with default expiration date of 2 days.
 	subID := subscriberPrefix + util.RandomString()
-	expiration, _ := time.ParseDuration("48h")
+	expiration, _ := time.ParseDuration("1d")
 	sub, err := pubsubClient.CreateSubscription(ctx, subID,
 		pubsub.SubscriptionConfig{
 			Topic:            pubsubClient.Topic(pubsubTopic),
@@ -130,17 +151,10 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	// Start the receiver in a goroutine.
 	go func() {
 		err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
-			gcsFolder := string(msg.Data)
+			branchTableName := string(msg.Data)
 			msg.Ack()
-			fmt.Printf("Subscriber action: reload mem cache from %s\n", string(gcsFolder))
-			s.memcache.Update(map[string][]byte{})
-			debug.FreeOSMemory()
-			cache, err := NewMemcacheFromGCS(ctx, branchCacheBucket, gcsFolder)
-			if err != nil {
-				log.Printf("Load cache data got error %s", err)
-			}
-			s.memcache.Update(cache.data)
-			util.PrintMemUsage()
+			fmt.Printf("Subscriber action: use branch cache %s\n", branchTableName)
+			s.updateBranchTable(ctx, branchTableName)
 		})
 		if err != nil {
 			log.Printf("Cloud pubsub receive: %v", err)
@@ -152,8 +166,13 @@ func (s *Server) SubscribeBranchCacheUpdate(
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
+	btClient *bigtable.Client,
 	btTables []*bigtable.Table,
-	memcache *Memcache,
 	metadata *Metadata) *Server {
-	return &Server{bqClient, btTables, memcache, metadata}
+	s := &Server{}
+	s.bqClient = bqClient
+	s.btClient = btClient
+	s.btTables = btTables
+	s.metadata = metadata
+	return s
 }

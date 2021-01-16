@@ -22,7 +22,6 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -31,12 +30,7 @@ import (
 func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	ctx := context.Background()
 
-	memcacheData, err := loadMemcache()
-	if err != nil {
-		t.Fatalf("Failed to load memcache %v", err)
-	}
-
-	client, err := setup(server.NewMemcache(memcacheData))
+	client, err := setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

@@ -19,13 +19,12 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
 )
 
 func TestGetPlaceStatVars(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, err := setup(server.NewMemcache(map[string][]byte{}))
+	client, err := setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

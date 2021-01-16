@@ -18,6 +18,7 @@ import (
 	"context"
 	"testing"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
@@ -82,12 +83,12 @@ func TestGetPopObs(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btTable, err := setupBigtable(context.Background(), data)
+	btTables, err := setupBigtable(context.Background(), data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil)
+	s := NewServer(nil, nil, btTables, nil)
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
@@ -134,14 +135,14 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
 	}
 	baseData[key] = tableValue
-	btTable, err := setupBigtable(context.Background(), baseData)
+	baseTable, err := setupBigtable(context.Background(), baseData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
 	// branch cache data. Have observation on newer date.
-	branchData := map[string][]byte{}
-	branchCache := []byte(`{
+	branchData := map[string]string{}
+	branchRow := []byte(`{
 		"name": "Santa Clara",
 		"populations": {
 			"dc/p/abcxyz": {
@@ -171,15 +172,18 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 			}
 		}
 	}`)
-	branchCacheValue, err := util.ZipAndEncode(branchCache)
+	branchCacheValue, err := util.ZipAndEncode(branchRow)
 	if err != nil {
-		t.Errorf("util.ZipAndEncode(%+v) = %v", branchCache, err)
+		t.Errorf("util.ZipAndEncode(%+v) = %v", branchRow, err)
 	}
-	branchData[key] = []byte(branchCacheValue)
+	branchData[key] = branchCacheValue
+	branchTable, err := setupBigtable(context.Background(), branchData)
+	if err != nil {
+		t.Errorf("SetupBigtable(...) = %v", err)
+	}
+
 	// Test
-	memcache := Memcache{}
-	memcache.Update(branchData)
-	s := NewServer(nil, btTable, &memcache, nil)
+	s := NewServer(nil, nil, []*bigtable.Table{branchTable[0], baseTable[0]}, nil)
 
 	var (
 		resultProto, expectProto pb.PopObsPlace
@@ -201,7 +205,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 			return
 		}
 	}
-	err = protojson.Unmarshal(branchCache, &expectProto)
+	err = protojson.Unmarshal(branchRow, &expectProto)
 	if err != nil {
 		t.Errorf("Unmarshal branchCache got err %v", err)
 	}
@@ -254,7 +258,7 @@ func TestGetPlaceObs(t *testing.T) {
 	var (
 		resultProto, expectProto pb.PopObsCollection
 	)
-	s := NewServer(nil, btTable, NewMemcache(map[string][]byte{}), nil)
+	s := NewServer(nil, nil, btTable, nil)
 
 	// Base cache only.
 	in := &pb.GetPlaceObsRequest{
@@ -294,14 +298,14 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 
 	// No base data
 	baseData := map[string]string{}
-	btTable, err := setupBigtable(context.Background(), baseData)
+	baseTable, err := setupBigtable(context.Background(), baseData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
 	// branch cache data. Have observation on newer date.
-	branchData := map[string][]byte{}
-	branchCache := []byte(`{
+	branchData := map[string]string{}
+	branchRow := []byte(`{
 		"places":[
 			{
 				"name":"Stony Prairie CDP",
@@ -327,15 +331,19 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 			}
 		]
 	}`)
-	branchCacheValue, err := util.ZipAndEncode(branchCache)
+	branchCacheValue, err := util.ZipAndEncode(branchRow)
 	if err != nil {
-		t.Errorf("util.ZipAndEncode(%+v) = %v", branchCache, err)
+		t.Errorf("util.ZipAndEncode(%+v) = %v", branchRow, err)
 	}
-	branchData[key] = []byte(branchCacheValue)
+	branchData[key] = branchCacheValue
+
+	branchTable, err := setupBigtable(context.Background(), branchData)
+	if err != nil {
+		t.Errorf("SetupBigtable(...) = %v", err)
+	}
+
 	// Test
-	memcache := Memcache{}
-	memcache.Update(branchData)
-	s := NewServer(nil, btTable, &memcache, nil)
+	s := NewServer(nil, nil, []*bigtable.Table{branchTable[0], baseTable[0]}, nil)
 	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",
@@ -358,7 +366,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	if err = protojson.Unmarshal(tmp, &resultProto); err != nil {
 		t.Errorf("Unmarshal result proto got error %v", err)
 	}
-	if err = protojson.Unmarshal(branchCache, &expectProto); err != nil {
+	if err = protojson.Unmarshal(branchRow, &expectProto); err != nil {
 		t.Errorf("Unmarshal expected proto got error %v", err)
 	}
 

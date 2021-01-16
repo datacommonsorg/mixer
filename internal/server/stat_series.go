@@ -18,9 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"sort"
-	"strings"
 
-	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -70,27 +68,11 @@ func (s *Server) GetStatSeries(
 		map[string]*StatisticalVariable{statVar: statVarObject})
 
 	var obsTimeSeries *ObsTimeSeries
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		convertToObsSeries,
-		tokenFn(keyTokens),
-	)
-	if data, ok := cacheData[place]; ok {
-		if data == nil {
-			obsTimeSeries = nil
-		} else {
-			obsTimeSeries = data.(*ObsTimeSeries)
-		}
-	} else {
-		// If the data is missing in branch cache, fetch it from the base cache in
-		// Bigtable.
-		btData, err := readStats(ctx, s.btTables, rowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		obsTimeSeries = btData[place][statVar]
+	btData, err := readStats(ctx, s.btTables, rowList, keyTokens)
+	if err != nil {
+		return nil, err
 	}
+	obsTimeSeries = btData[place][statVar]
 	if obsTimeSeries == nil {
 		return nil, status.Errorf(codes.NotFound,
 			"No data for %s, %s", place, statVar)
@@ -152,41 +134,13 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		convertToObsSeriesPb,
-		tokenFn(keyTokens),
-	)
-
-	for token, data := range cacheData {
-		parts := strings.Split(token, "^")
-		place := parts[0]
-		statVar := parts[1]
-		if data == nil {
-			result.PlaceData[place].StatVarData[statVar] = &pb.ObsTimeSeries{}
-		} else {
-			result.PlaceData[place].StatVarData[statVar] = data.(*pb.ObsTimeSeries)
-		}
+	extraData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	if err != nil {
+		return nil, err
 	}
-
-	// If cache value is not found in memcache, then look up in BigTable
-	extraRowList := bigtable.RowList{}
-	for key, token := range keyTokens {
-		if result.PlaceData[token.place].StatVarData[token.statVar] == nil {
-			extraRowList = append(extraRowList, key)
-		}
-	}
-	if len(extraRowList) > 0 {
-		extraData, err := readStatsPb(ctx, s.btTables, extraRowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		for place, placeData := range extraData {
-			for statVar, data := range placeData {
-				result.PlaceData[place].StatVarData[statVar] = data
-			}
+	for place, placeData := range extraData {
+		for statVar, data := range placeData {
+			result.PlaceData[place].StatVarData[statVar] = data
 		}
 	}
 	return result, nil
@@ -234,42 +188,13 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		placeDcids,
 		map[string]*StatisticalVariable{statsVarDcid: statsVarObject},
 	)
-
 	result := map[string]*ObsTimeSeries{}
-
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		convertToObsSeries,
-		tokenFn(keyTokens),
-	)
-	for token, data := range cacheData {
-		place := strings.Split(token, "^")[0]
-		if data == nil {
-			result[place] = nil
-		} else {
-			result[place] = data.(*ObsTimeSeries)
-		}
+	extraData, err := readStats(ctx, s.btTables, rowList, keyTokens)
+	if err != nil {
+		return nil, err
 	}
-	// For each place, if the data is missing in branch cache, fetch it from the
-	// base cache in Bigtable.
-	if len(result) < len(placeDcids) {
-		extraDcids := []string{}
-		for _, dcid := range placeDcids {
-			if _, ok := result[dcid]; !ok {
-				extraDcids = append(extraDcids, dcid)
-			}
-		}
-		rowList, keyTokens := buildStatsKey(
-			extraDcids,
-			map[string]*StatisticalVariable{statsVarDcid: statsVarObject})
-		extraData, err := readStats(ctx, s.btTables, rowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		for place := range extraData {
-			result[place] = extraData[place][statsVarDcid]
-		}
+	for place := range extraData {
+		result[place] = extraData[place][statsVarDcid]
 	}
 
 	// Fill missing place data and result result
@@ -335,40 +260,13 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			result.Data[place].Data[statVar] = nil
 		}
 	}
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		convertToObsSeriesPb,
-		tokenFn(keyTokens),
-	)
-
-	for token, data := range cacheData {
-		parts := strings.Split(token, "^")
-		place := parts[0]
-		statVar := parts[1]
-		if data == nil {
-			result.Data[place].Data[statVar] = nil
-		} else {
-			result.Data[place].Data[statVar] = getBestSeries(data.(*pb.ObsTimeSeries))
-		}
+	extraData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	if err != nil {
+		return nil, err
 	}
-
-	// If cache value is not found in memcache, then look up in BigTable
-	extraRowList := bigtable.RowList{}
-	for key, token := range keyTokens {
-		if result.Data[token.place].Data[token.statVar] == nil {
-			extraRowList = append(extraRowList, key)
-		}
-	}
-	if len(extraRowList) > 0 {
-		extraData, err := readStatsPb(ctx, s.btTables, extraRowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		for place, placeData := range extraData {
-			for statVar, data := range placeData {
-				result.Data[place].Data[statVar] = getBestSeries(data)
-			}
+	for place, placeData := range extraData {
+		for statVar, data := range placeData {
+			result.Data[place].Data[statVar] = getBestSeries(data)
 		}
 	}
 	return result, nil

@@ -80,7 +80,7 @@ func TestGetPropertyLabels(t *testing.T) {
 		t.Fatalf("NewTestBtStore() = %+v", err)
 	}
 
-	s := NewServer(nil, btTables, nil, nil)
+	s := NewServer(nil, nil, btTables, nil)
 
 	got, err := s.GetPropertyLabels(ctx,
 		&pb.GetPropertyLabelsRequest{

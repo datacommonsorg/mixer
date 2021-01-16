@@ -23,7 +23,6 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -41,13 +40,8 @@ func TestGetPopObs(t *testing.T) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 
-	memcacheData, err := loadMemcache()
-	if err != nil {
-		t.Fatalf("Failed to load memcache %v", err)
-	}
-
 	// This tests merging the branch cache into the final results.
-	client, err := setup(server.NewMemcache(memcacheData))
+	client, err := setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
