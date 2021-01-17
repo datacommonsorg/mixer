@@ -41,10 +41,10 @@ which is compiled using [API Compiler](https://github.com/googleapis/api-compile
 ### Start mixer in minikube
 
 ```bash
-minikube start --memory 6G
+minikube start
 minikube addons enable gcp-auth
 eval $(minikube docker-env)
-kubectl config use-context minikube # This is important
+kubectl config use-context minikube
 skaffold dev --port-forward -n mixer
 ```
 

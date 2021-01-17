@@ -47,7 +47,7 @@ spec:
           imagePullPolicy: Always
           resources:
             limits:
-              memory: "6G"
+              memory: "3G"
               cpu: "500m"
           args:
             - --bq_dataset=$(BIG_QUERY)
