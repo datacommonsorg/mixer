@@ -83,16 +83,16 @@ func TestGetPopObs(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btTables1, err := SetupBigtable(context.Background(), data)
+	btTable1, err := SetupBigtable(context.Background(), data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
-	btTables2, err := SetupBigtable(context.Background(), map[string]string{})
+	btTable2, err := SetupBigtable(context.Background(), map[string]string{})
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s := NewServer(nil, nil, []*bigtable.Table{btTables1[0], btTables2[0]}, nil)
+	s := NewServer(nil, nil, []*bigtable.Table{btTable1, btTable2}, nil)
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
@@ -187,7 +187,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	}
 
 	// Test
-	s := NewServer(nil, nil, []*bigtable.Table{branchTable[0], baseTable[0]}, nil)
+	s := NewServer(nil, nil, []*bigtable.Table{branchTable, baseTable}, nil)
 
 	var (
 		resultProto, expectProto pb.PopObsPlace
@@ -266,7 +266,7 @@ func TestGetPlaceObs(t *testing.T) {
 	var (
 		resultProto, expectProto pb.PopObsCollection
 	)
-	s := NewServer(nil, nil, []*bigtable.Table{btTable1[0], btTable2[0]}, nil)
+	s := NewServer(nil, nil, []*bigtable.Table{btTable1, btTable2}, nil)
 
 	// Base cache only.
 	in := &pb.GetPlaceObsRequest{
@@ -351,7 +351,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	}
 
 	// Test
-	s := NewServer(nil, nil, []*bigtable.Table{branchTable[0], baseTable[0]}, nil)
+	s := NewServer(nil, nil, []*bigtable.Table{branchTable, baseTable}, nil)
 	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",

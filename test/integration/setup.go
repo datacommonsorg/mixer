@@ -143,11 +143,7 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	if err != nil {
 		return nil, err
 	}
-	btTables, err := server.SetupBigtable(ctx, data)
-	if err != nil {
-		return nil, err
-	}
-	return btTables[0], nil
+	return server.SetupBigtable(ctx, data)
 }
 
 func updateGolden(v interface{}, fname string) {

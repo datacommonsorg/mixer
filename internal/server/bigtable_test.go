@@ -28,12 +28,12 @@ func TestReadOneTable(t *testing.T) {
 		"key1": "data1",
 		"key2": "data2",
 	}
-	btTables, err := SetupBigtable(ctx, data)
+	btTable, err := SetupBigtable(ctx, data)
 	if err != nil {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
 	rowList := bigtable.RowList{"key1", "key2"}
-	dataMap, err := bigTableReadRowsParallel(ctx, btTables, rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, []*bigtable.Table{btTable}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -77,7 +77,7 @@ func TestReadTwoTables(t *testing.T) {
 
 	rowList := bigtable.RowList{"key1", "key2"}
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, append(btTable1, btTable2...), rowList,
+		ctx, []*bigtable.Table{btTable1, btTable2}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
