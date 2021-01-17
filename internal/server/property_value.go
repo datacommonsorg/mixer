@@ -104,12 +104,15 @@ func getPropertyValuesHelper(
 	prop string,
 	arcOut bool,
 ) (map[string][]*Node, error) {
+	if len(btTables) == 0 {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
 	nodeMap, err := readPropertyValues(ctx, btTables[1:], rowList)
 	if err != nil {
 		return nil, err
 	}
-
 	// Add branch cache data
 	branchNodeMap, err := readPropertyValues(ctx, btTables[:1], rowList)
 	if err != nil {

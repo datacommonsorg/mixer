@@ -47,11 +47,8 @@ func init() {
 // It needs Application Default Credentials to run locally or need to
 // provide service account credential when running on GCP.
 const (
-	btProject    = "google.com:datcom-store-dev"
-	baseInstance = "prophet-cache"
-	// TODO(shifucun): Use in-memory bigtable for branch cache.
-	branchInstance   = "prophet-test"
-	branchTableName  = "mixer_test_bt"
+	btProject        = "google.com:datcom-store-dev"
+	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
 )
 
@@ -75,8 +72,7 @@ func setup() (pb.MixerClient, error) {
 		return nil, err
 	}
 
-	_, branchTable, err := server.NewBtTable(
-		ctx, btProject, branchInstance, strings.TrimSpace(string(branchTableName)))
+	branchTable, err := createBranchTable(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -137,6 +133,21 @@ func newClient(
 	}
 	client := pb.NewMixerClient(conn)
 	return client, nil
+}
+
+func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
+	_, filename, _, _ := runtime.Caller(0)
+	file, _ := ioutil.ReadFile(path.Join(path.Dir(filename), "memcache.json"))
+	var data map[string]string
+	err := json.Unmarshal(file, &data)
+	if err != nil {
+		return nil, err
+	}
+	btTables, err := server.SetupBigtable(ctx, data)
+	if err != nil {
+		return nil, err
+	}
+	return btTables[0], nil
 }
 
 func updateGolden(v interface{}, fname string) {

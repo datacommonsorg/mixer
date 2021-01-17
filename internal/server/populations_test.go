@@ -83,11 +83,11 @@ func TestGetPopObs(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btTables1, err := setupBigtable(context.Background(), data)
+	btTables1, err := SetupBigtable(context.Background(), data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
-	btTables2, err := setupBigtable(context.Background(), map[string]string{})
+	btTables2, err := SetupBigtable(context.Background(), map[string]string{})
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -139,7 +139,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
 	}
 	baseData[key] = tableValue
-	baseTable, err := setupBigtable(context.Background(), baseData)
+	baseTable, err := SetupBigtable(context.Background(), baseData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -181,7 +181,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", branchRow, err)
 	}
 	branchData[key] = branchCacheValue
-	branchTable, err := setupBigtable(context.Background(), branchData)
+	branchTable, err := SetupBigtable(context.Background(), branchData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -254,11 +254,11 @@ func TestGetPlaceObs(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btTable1, err := setupBigtable(context.Background(), data)
+	btTable1, err := SetupBigtable(context.Background(), data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
-	btTable2, err := setupBigtable(context.Background(), map[string]string{})
+	btTable2, err := SetupBigtable(context.Background(), map[string]string{})
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -306,7 +306,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 
 	// No base data
 	baseData := map[string]string{}
-	baseTable, err := setupBigtable(context.Background(), baseData)
+	baseTable, err := SetupBigtable(context.Background(), baseData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -345,7 +345,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	}
 	branchData[key] = branchCacheValue
 
-	branchTable, err := setupBigtable(context.Background(), branchData)
+	branchTable, err := SetupBigtable(context.Background(), branchData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}

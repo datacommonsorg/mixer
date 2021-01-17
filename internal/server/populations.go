@@ -38,7 +38,7 @@ type PopObs struct {
 // GetPopObs implements API for Mixer.GetPopObs.
 func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	*pb.GetPopObsResponse, error) {
-	if len(s.btTables) == 0 {
+	if len(s.tables()) == 0 {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
@@ -117,7 +117,7 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 // GetPlaceObs implements API for Mixer.GetPlaceObs.
 func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	*pb.GetPlaceObsResponse, error) {
-	if len(s.btTables) == 0 {
+	if len(s.tables()) == 0 {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}

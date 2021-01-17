@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"testing"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
@@ -75,12 +76,16 @@ func TestGetPropertyLabels(t *testing.T) {
 		Payload: string(wantPayloadRaw),
 	}
 
-	btTables, err := setupBigtable(ctx, data)
+	baseTables, err := SetupBigtable(ctx, data)
 	if err != nil {
 		t.Fatalf("NewTestBtStore() = %+v", err)
 	}
+	branchTables, err := SetupBigtable(context.Background(), map[string]string{})
+	if err != nil {
+		t.Errorf("SetupBigtable(...) = %v", err)
+	}
 
-	s := NewServer(nil, nil, btTables, nil)
+	s := NewServer(nil, nil, []*bigtable.Table{branchTables[0], baseTables[0]}, nil)
 
 	got, err := s.GetPropertyLabels(ctx,
 		&pb.GetPropertyLabelsRequest{

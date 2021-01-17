@@ -28,7 +28,7 @@ func TestReadOneTable(t *testing.T) {
 		"key1": "data1",
 		"key2": "data2",
 	}
-	btTables, err := setupBigtable(ctx, data)
+	btTables, err := SetupBigtable(ctx, data)
 	if err != nil {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
@@ -65,12 +65,12 @@ func TestReadTwoTables(t *testing.T) {
 		"key3": "bar3",
 	}
 
-	btTable1, err := setupBigtable(ctx, data1)
+	btTable1, err := SetupBigtable(ctx, data1)
 	if err != nil {
 		t.Errorf("setupBigtable1 got error: %v", err)
 	}
 
-	btTable2, err := setupBigtable(ctx, data2)
+	btTable2, err := SetupBigtable(ctx, data2)
 	if err != nil {
 		t.Errorf("setupBigtable2 got error: %v", err)
 	}

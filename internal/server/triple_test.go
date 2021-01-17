@@ -47,7 +47,7 @@ func TestReadTriple(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btTables, err := setupBigtable(ctx, data)
+	btTables, err := SetupBigtable(ctx, data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}

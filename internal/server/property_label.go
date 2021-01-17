@@ -27,6 +27,10 @@ import (
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
 func (s *Server) GetPropertyLabels(ctx context.Context,
 	in *pb.GetPropertyLabelsRequest) (*pb.GetPropertyLabelsResponse, error) {
+	if len(s.tables()) == 0 {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
