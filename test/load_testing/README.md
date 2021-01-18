@@ -36,10 +36,10 @@ echo $(kubectl get svc locust-master -o jsonpath="{.status.loadBalancer.ingress[
 
 Access the locust UI page at `http://[EXTERNAL_IP]:8089`
 
-Set the `Number of total users to simulate` to 10 and `Spawn rate` to 5 then
+Set the `Number of total users to simulate` to 10 and `Spawn rate` to 10 then
 start the test.
 
 Let test run for about 1min, stop the test. Click on `Download Data`,
 `Download Report` and save it as "{GIT_TAG}-{NUM_USERS}.html".
 
-Repeat the test for `Number of total users to simulate` of 50 and 100.
+Repeat the test for `Number of total users to simulate` of 30 and 100.
