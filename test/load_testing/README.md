@@ -1,8 +1,14 @@
 # Mixer Load Testing
 
-This is performed on staging mixer.
+The load testing uses Locust framework. Locust master and workers are started on
+staging mixer cluster and tested against staging mixer. As of 1/17/2021, staging
+mixer runs on 24 pods.
 
-## Build locust tasks docker image
+## Deploy locust tasks to staging mixer
+
+This is only needed when `docker-image/locust-tastsk/tasks.py` is changed.
+
+Build Docker image
 
 ```bash
 gcloud config set project datcom-ci
@@ -10,7 +16,7 @@ docker build -t gcr.io/datcom-ci/locust-tasks:latest ./docker-image
 docker push gcr.io/datcom-ci/locust-tasks:latest
 ```
 
-## Deploy locust tasks to staging mixer
+Deploy Locust to GKE
 
 ```bash
 gcloud config set project datcom-mixer-staging
