@@ -140,11 +140,13 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	}
 	// Always create a new subscriber with default expiration date of 2 days.
 	subID := subscriberPrefix + util.RandomString()
-	expiration, _ := time.ParseDuration("1d")
+	expiration, _ := time.ParseDuration("36h")
+	retention, _ := time.ParseDuration("24h")
 	sub, err := pubsubClient.CreateSubscription(ctx, subID,
 		pubsub.SubscriptionConfig{
-			Topic:            pubsubClient.Topic(pubsubTopic),
-			ExpirationPolicy: time.Duration(expiration),
+			Topic:             pubsubClient.Topic(pubsubTopic),
+			ExpirationPolicy:  expiration,
+			RetentionDuration: retention,
 		})
 	if err != nil {
 		return err
