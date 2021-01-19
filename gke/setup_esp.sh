@@ -31,6 +31,6 @@ yq w -i endpoints.yaml endpoints[0].target "$IP"
 yq w -i endpoints.yaml endpoints[0].name "$DOMAIN"
 
 ## Deploy ESP configuration
-gsutil cp gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.latest.pb .
+gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb .
 gcloud endpoints services deploy mixer-grpc.latest.pb endpoints.yaml --project $PROJECT_ID
 gcloud services enable $DOMAIN
