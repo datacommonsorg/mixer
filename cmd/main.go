@@ -46,6 +46,7 @@ var (
 	useALTS           = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	enableBranchCache = flag.Bool("enable_branch_cache", true, "Whether to use branch cache")
 	bigqueryOnly      = flag.Bool("bigquery_only", false, "The service only serves sparql query")
+	schemaPath        = flag.String("schema_path", "/translator/mapping", "The director that contains the schema mapping files")
 )
 
 const (
@@ -92,7 +93,7 @@ func main() {
 	}
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset)
+	metadata, err := server.NewMetadata(*bqDataset, *schemaPath)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
