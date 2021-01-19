@@ -104,7 +104,7 @@ type Metadata struct {
 	SubTypeMap     map[string]string
 	Bq             string
 	BtProject      string
-	branchInstance string
+	BranchInstance string
 }
 
 // SourceSeries represents time series data for a particular source.

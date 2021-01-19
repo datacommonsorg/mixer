@@ -54,7 +54,7 @@ func (s *Server) tables() []*bigtable.Table {
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
 	branchClient, branchTable, err := NewBtTable(
-		ctx, s.metadata.BtProject, s.metadata.branchInstance, branchTableName)
+		ctx, s.metadata.BtProject, s.metadata.BranchInstance, branchTableName)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
