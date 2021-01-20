@@ -60,13 +60,13 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 	}
 
 	if inArc {
-		inRes, err = getPropertyValuesHelper(ctx, s.tables(), dcids, prop, false)
+		inRes, err = getPropertyValuesHelper(ctx, s.btTables, dcids, prop, false)
 		if err != nil {
 			return nil, err
 		}
 	}
 	if outArc {
-		outRes, err = getPropertyValuesHelper(ctx, s.tables(), dcids, prop, true)
+		outRes, err = getPropertyValuesHelper(ctx, s.btTables, dcids, prop, true)
 		if err != nil {
 			return nil, err
 		}
@@ -109,12 +109,12 @@ func getPropertyValuesHelper(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
-	nodeMap, err := readPropertyValues(ctx, btTables[1:], rowList)
+	nodeMap, err := readPropertyValues(ctx, []*bigtable.Table{btTables[baseBtIndex]}, rowList)
 	if err != nil {
 		return nil, err
 	}
 	// Add branch cache data
-	branchNodeMap, err := readPropertyValues(ctx, btTables[:1], rowList)
+	branchNodeMap, err := readPropertyValues(ctx, []*bigtable.Table{btTables[branchBtIndex]}, rowList)
 	if err != nil {
 		return nil, err
 	}

@@ -98,13 +98,13 @@ type PlaceStatsVar struct {
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {
-	Mappings       []*base.Mapping
-	OutArcInfo     map[string]map[string][]translator.OutArcInfo
-	InArcInfo      map[string][]translator.InArcInfo
-	SubTypeMap     map[string]string
-	Bq             string
-	BtProject      string
-	BranchInstance string
+	Mappings         []*base.Mapping
+	OutArcInfo       map[string]map[string][]translator.OutArcInfo
+	InArcInfo        map[string][]translator.InArcInfo
+	SubTypeMap       map[string]string
+	Bq               string
+	BtProject        string
+	BranchBtInstance string
 }
 
 // SourceSeries represents time series data for a particular source.

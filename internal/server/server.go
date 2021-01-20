@@ -23,7 +23,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-	"sync"
 	"time"
 
 	"cloud.google.com/go/bigquery"
@@ -37,33 +36,21 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	// Lock to guard the branch cache client and table update when receive pubsub
-	// triggers for branch cache update.
-	sync.RWMutex
-	bqClient *bigquery.Client
-	btClient *bigtable.Client
-	btTables []*bigtable.Table
-	metadata *Metadata
-}
-
-func (s *Server) tables() []*bigtable.Table {
-	s.RLock()
-	defer s.RUnlock()
-	return s.btTables
+	bqClient       *bigquery.Client
+	branchBtClient *bigtable.Client
+	btTables       []*bigtable.Table
+	metadata       *Metadata
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
 	branchClient, branchTable, err := NewBtTable(
-		ctx, s.metadata.BtProject, s.metadata.BranchInstance, branchTableName)
+		ctx, s.metadata.BtProject, s.metadata.BranchBtInstance, branchTableName)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.Lock()
-	defer s.Unlock()
-	s.btClient.Close()
-	s.btClient = branchClient
-	s.btTables[0] = branchTable
+	s.branchBtClient = branchClient
+	s.btTables[branchBtIndex] = branchTable
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.
@@ -170,12 +157,12 @@ func (s *Server) SubscribeBranchCacheUpdate(
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
-	btClient *bigtable.Client,
+	branchBtClient *bigtable.Client,
 	btTables []*bigtable.Table,
 	metadata *Metadata) *Server {
 	s := &Server{}
 	s.bqClient = bqClient
-	s.btClient = btClient
+	s.branchBtClient = branchBtClient
 	s.btTables = btTables
 	s.metadata = metadata
 	return s

@@ -37,15 +37,15 @@ import (
 )
 
 var (
-	bqDataset      = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	btProject      = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
-	baseInstance   = flag.String("base_instance", "", "Base cache BigTable instance.")
-	baseTableName  = flag.String("base_table", "", "Base cache Bigtable table.")
-	branchInstance = flag.String("branch_instance", "", "Branch cache BigTable instance.")
-	projectID      = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	port           = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS        = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
-	bigqueryOnly   = flag.Bool("bigquery_only", false, "The service only serves sparql query")
+	bqDataset        = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	btProject        = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
+	baseBtInstance   = flag.String("base_bt_instance", "", "Base cache BigTable instance.")
+	baseTableName    = flag.String("base_table", "", "Base cache Bigtable table.")
+	branchBtInstance = flag.String("branch_bt_instance", "", "Branch cache BigTable instance.")
+	projectID        = flag.String("project_id", "", "The cloud project to run the mixer instance.")
+	port             = flag.Int("port", 12345, "Port on which to run the server.")
+	useALTS          = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	bigqueryOnly     = flag.Bool("bigquery_only", false, "The service only serves sparql query")
 )
 
 const (
@@ -82,10 +82,10 @@ func main() {
 	}
 
 	btTables := []*bigtable.Table{}
-	var btClient *bigtable.Client
+	var branchBtClient *bigtable.Client
 	if !*bigqueryOnly {
 		// Base cache
-		_, baseTable, err := server.NewBtTable(ctx, *btProject, *baseInstance, *baseTableName)
+		_, baseTable, err := server.NewBtTable(ctx, *btProject, *baseBtInstance, *baseTableName)
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
@@ -94,8 +94,11 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
-		branchClient, branchTable, err := server.NewBtTable(ctx, *btProject, *branchInstance, branchTableName)
-		btClient = branchClient
+		branchClient, branchTable, err := server.NewBtTable(ctx, *btProject, *branchBtInstance, branchTableName)
+
+		// Branch bigtable client to be saved in Server struct. When branch cache
+		// is updated, need to close the client.
+		branchBtClient = branchClient
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
@@ -105,13 +108,13 @@ func main() {
 	}
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchInstance)
+	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchBtInstance)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, btClient, btTables, metadata)
+	s := server.NewServer(bqClient, branchBtClient, btTables, metadata)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly {

@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -27,7 +28,7 @@ import (
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
 func (s *Server) GetPropertyLabels(ctx context.Context,
 	in *pb.GetPropertyLabelsRequest) (*pb.GetPropertyLabelsResponse, error) {
-	if len(s.tables()) == 0 {
+	if len(s.btTables) == 0 {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
@@ -43,7 +44,7 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 
 	// Property Labels cache only read from the base cache.
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, s.tables()[1:], rowList,
+		ctx, []*bigtable.Table{s.btTables[baseBtIndex]}, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propLabels PropLabelCache
 			err := json.Unmarshal(jsonRaw, &propLabels)

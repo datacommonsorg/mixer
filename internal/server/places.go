@@ -44,7 +44,7 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 
 	rowList := buildPlaceInKey(dcids, placeType)
 
-	dataMap, err := bigTableReadRowsParallel(ctx, s.tables(), rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
 		}, nil)
@@ -109,7 +109,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
 		}
 	}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.tables(), rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo RelatedPlacesInfo
 			err := json.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
@@ -161,7 +161,7 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, "*", in.GetPlaceType(), statVarDcid))
 		}
 	}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.tables(), rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, s.btTables, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
 			err := protojson.Unmarshal(jsonRaw, &btRelatedPlacesInfo)

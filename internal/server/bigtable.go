@@ -24,6 +24,11 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const (
+	baseBtIndex   = 1
+	branchBtIndex = 0
+)
+
 // Generates a function to be used as the callback function in Bigtable Read.
 // This utilizes the Golang closure so the arguments can be scoped in the
 // generated function.
