@@ -85,7 +85,7 @@ func TestGetPropertyLabels(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
-	s := NewServer(nil, nil, []*bigtable.Table{branchTable, baseTable}, nil)
+	s := NewServer(nil, []*bigtable.Table{branchTable, baseTable}, nil)
 
 	got, err := s.GetPropertyLabels(ctx,
 		&pb.GetPropertyLabelsRequest{

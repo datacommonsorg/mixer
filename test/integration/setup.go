@@ -82,7 +82,7 @@ func setup() (pb.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newClient(bqClient, nil, []*bigtable.Table{branchTable, baseTable}, metadata)
+	return newClient(bqClient, []*bigtable.Table{branchTable, baseTable}, metadata)
 }
 
 func setupBqOnly() (pb.MixerClient, error) {
@@ -101,15 +101,14 @@ func setupBqOnly() (pb.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newClient(bqClient, nil, []*bigtable.Table{}, metadata)
+	return newClient(bqClient, []*bigtable.Table{}, metadata)
 }
 
 func newClient(
 	bqClient *bigquery.Client,
-	btClient *bigtable.Client,
 	btTables []*bigtable.Table,
 	metadata *server.Metadata) (pb.MixerClient, error) {
-	s := server.NewServer(bqClient, btClient, btTables, metadata)
+	s := server.NewServer(bqClient, btTables, metadata)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)

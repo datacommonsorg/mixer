@@ -24,7 +24,7 @@ import (
 
 func TestNoBigTable(t *testing.T) {
 	ctx := context.Background()
-	s := NewServer(nil, nil, []*bigtable.Table{}, nil)
+	s := NewServer(nil, []*bigtable.Table{}, nil)
 	_, err := s.GetLandingPageData(ctx, &pb.GetLandingPageDataRequest{
 		Place: "geoId/06",
 	})

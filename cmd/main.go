@@ -83,7 +83,6 @@ func main() {
 	}
 
 	btTables := []*bigtable.Table{}
-	var branchBtClient *bigtable.Client
 	if !*bigqueryOnly {
 		// Base cache
 		baseTable, err := server.NewBtTable(ctx, *btProject, *baseBtInstance, *baseTableName)
@@ -112,7 +111,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, branchBtClient, btTables, metadata)
+	s := server.NewServer(bqClient, btTables, metadata)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly {

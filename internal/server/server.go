@@ -154,7 +154,6 @@ func (s *Server) SubscribeBranchCacheUpdate(
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
-	branchBtClient *bigtable.Client,
 	btTables []*bigtable.Table,
 	metadata *Metadata) *Server {
 	return &Server{bqClient, btTables, metadata}
