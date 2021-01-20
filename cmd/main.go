@@ -82,10 +82,11 @@ func main() {
 		log.Fatalf("Failed to create Bigquery client: %v", err)
 	}
 
-	btTables := []*bigtable.Table{}
+	var baseTable *bigtable.Table
+	var branchTable *bigtable.Table
 	if !*bigqueryOnly {
 		// Base cache
-		baseTable, err := server.NewBtTable(ctx, *btProject, *baseBtInstance, *baseTableName)
+		baseTable, err = server.NewBtTable(ctx, *btProject, *baseBtInstance, *baseTableName)
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
@@ -94,14 +95,11 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
-		branchTable, err := server.NewBtTable(ctx, *btProject, *branchBtInstance, branchTableName)
+		branchTable, err = server.NewBtTable(ctx, *btProject, *branchBtInstance, branchTableName)
 
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
-		// Order matters, insert branchTable first so the branch cache data is preferred.
-		btTables = append(btTables, branchTable)
-		btTables = append(btTables, baseTable)
 	}
 
 	// Metadata.
@@ -111,7 +109,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, btTables, metadata)
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly {

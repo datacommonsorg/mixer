@@ -18,15 +18,11 @@ import (
 	"context"
 
 	"cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-)
-
-const (
-	baseBtIndex   = 1
-	branchBtIndex = 0
 )
 
 // Generates a function to be used as the callback function in Bigtable Read.
@@ -78,10 +74,12 @@ func readRowFn(
 //
 // Reading multiple rows is chunked as the size limit for RowSet is 500KB.
 //
+// For the same key, if data is present in both base and branch table, then the
+// data from branch table is preferred.
+//
 // Args:
-// btTables: A list of Cloud BigTable client that is ordered by the importance.
-// 		For the same key, if data is present in multiple tables, the first table
-//		in the list will be used.
+// baseBt: The bigtable that holds the base cache
+// branchBt: The bigtable that holds the branch cache.
 // rowSet: BigTable rowSet containing the row keys.
 // action: A callback function that converts the raw bytes into appropriate
 //		go struct based on the cache content.
@@ -90,12 +88,14 @@ func readRowFn(
 //
 func bigTableReadRowsParallel(
 	ctx context.Context,
-	btTables []*bigtable.Table,
+	store *store.Store,
 	rowSet bigtable.RowSet,
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error)) (
 	map[string]interface{}, error) {
-	if len(btTables) == 0 {
+	baseBt := store.BaseBt()
+	branchBt := store.BranchBt()
+	if baseBt == nil && branchBt == nil {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
@@ -118,10 +118,8 @@ func bigTableReadRowsParallel(
 		return nil, nil
 	}
 
-	elemChanMap := map[*bigtable.Table](chan chanData){}
-	for _, btTable := range btTables {
-		elemChanMap[btTable] = make(chan chanData, rowSetSize)
-	}
+	baseChan := make(chan chanData, rowSetSize)
+	branchChan := make(chan chanData, rowSetSize)
 
 	errs, errCtx := errgroup.WithContext(ctx)
 	for i := 0; i <= rowSetSize/util.BtBatchQuerySize; i++ {
@@ -137,9 +135,11 @@ func bigTableReadRowsParallel(
 			rowSetPart = rowRangeList[left:right]
 		}
 		// Read from all the given tables.
-		// The result is sent to the "elemChan" channel.
-		for _, btTable := range btTables {
-			errs.Go(readRowFn(errCtx, btTable, rowSetPart, getToken, action, elemChanMap[btTable]))
+		if baseBt != nil {
+			errs.Go(readRowFn(errCtx, baseBt, rowSetPart, getToken, action, baseChan))
+		}
+		if branchBt != nil {
+			errs.Go(readRowFn(errCtx, branchBt, rowSetPart, getToken, action, branchChan))
 		}
 	}
 
@@ -147,16 +147,19 @@ func bigTableReadRowsParallel(
 	if err != nil {
 		return nil, err
 	}
-	for _, ch := range elemChanMap {
-		close(ch)
-	}
+	close(baseChan)
+	close(branchChan)
 
 	result := map[string]interface{}{}
-	for _, table := range btTables {
-		ch := elemChanMap[table]
-		for elem := range ch {
-			// If date does not exist for this token, added. Otherwise, it is already
-			// added from a prefered table.
+
+	if branchBt != nil {
+		for elem := range branchChan {
+			result[elem.token] = elem.data
+		}
+	}
+	if baseBt != nil {
+		for elem := range baseChan {
+			// If no data from branch cache, then use the one from base cache.
 			if _, ok := result[elem.token]; !ok {
 				result[elem.token] = elem.data
 			}

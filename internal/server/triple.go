@@ -22,6 +22,7 @@ import (
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -62,7 +63,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		allTriplesCache, err := readTriples(ctx, s.btTables, buildTriplesKey(regDcids))
+		allTriplesCache, err := readTriples(ctx, s.store, buildTriplesKey(regDcids))
 		if err != nil {
 			return nil, err
 		}
@@ -72,7 +73,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	}
 	if len(popDcids) > 0 {
 		dataMap, err := bigTableReadRowsParallel(
-			ctx, s.btTables, buildTriplesKey(popDcids), convertTriplesCache, nil)
+			ctx, s.store, buildTriplesKey(popDcids), convertTriplesCache, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -95,7 +96,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		} {
 			rowList := buildObservedNodeKey(obsDcids, param.predKey)
 			dataMap, err := bigTableReadRowsParallel(
-				ctx, s.btTables, rowList,
+				ctx, s.store, rowList,
 				func(dcid string, raw []byte) (interface{}, error) {
 					return string(raw), nil
 				}, nil)
@@ -113,7 +114,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 				observedNodes = append(observedNodes, dcid)
 			}
 			nameRowList := buildPropertyValuesKey(observedNodes, "name", true)
-			nameNodes, err := readPropertyValues(ctx, s.btTables, nameRowList)
+			nameNodes, err := readPropertyValues(ctx, s.store, nameRowList)
 			if err != nil {
 				return nil, err
 			}
@@ -139,7 +140,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	if len(popDcids) > 0 {
 		rowList := buildPopPVKey(popDcids)
 		dataMap, err := bigTableReadRowsParallel(
-			ctx, s.btTables, rowList, convertPopTriples, nil)
+			ctx, s.store, rowList, convertPopTriples, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -231,10 +232,10 @@ func applyLimit(
 
 // ReadTriples read triples from Cloud Bigtable for multiple dcids.
 func readTriples(
-	ctx context.Context, btTables []*bigtable.Table, rowList bigtable.RowList) (
+	ctx context.Context, store *store.Store, rowList bigtable.RowList) (
 	map[string]*TriplesCache, error) {
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTables, rowList, convertTriplesCache, nil)
+		ctx, store, rowList, convertTriplesCache, nil)
 	if err != nil {
 		return nil, err
 	}

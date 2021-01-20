@@ -30,14 +30,25 @@ import (
 	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/base"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/translator"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
+// Metadata represents the metadata used by the server.
+type Metadata struct {
+	Mappings         []*base.Mapping
+	OutArcInfo       map[string]map[string][]translator.OutArcInfo
+	InArcInfo        map[string][]translator.InArcInfo
+	SubTypeMap       map[string]string
+	Bq               string
+	BtProject        string
+	BranchBtInstance string
+}
+
 // Server holds resources for a mixer server
 type Server struct {
-	bqClient *bigquery.Client
-	btTables []*bigtable.Table
+	store    *store.Store
 	metadata *Metadata
 }
 
@@ -48,7 +59,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.btTables[branchBtIndex] = branchTable
+	s.store.UpdateBranchBt(branchTable)
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.
@@ -154,7 +165,11 @@ func (s *Server) SubscribeBranchCacheUpdate(
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
-	btTables []*bigtable.Table,
+	baseTable *bigtable.Table,
+	branchTable *bigtable.Table,
 	metadata *Metadata) *Server {
-	return &Server{bqClient, btTables, metadata}
+	return &Server{
+		store:    store.NewStore(bqClient, baseTable, branchTable),
+		metadata: metadata,
+	}
 }

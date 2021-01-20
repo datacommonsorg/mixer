@@ -47,7 +47,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 
 	// Read triples for the statistical variable.
 	triplesRowList := buildTriplesKey([]string{statVar})
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		map[string]*StatisticalVariable{statVar: statVarObject})
 
 	var obsTimeSeries *ObsTimeSeries
-	btData, err := readStats(ctx, s.btTables, rowList, keyTokens)
+	btData, err := readStats(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	// TODO(shifucun): Merge this with the logic in GetStatAll()
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +129,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-	cacheData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -183,7 +183,7 @@ func (s *Server) GetStatCollection(
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -199,7 +199,7 @@ func (s *Server) GetStatCollection(
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatCollectionKey(
 		parentPlace, childType, date, statVarObject)
-	cacheData, err := readStatCollection(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}

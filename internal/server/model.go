@@ -14,11 +14,6 @@
 
 package server
 
-import (
-	"github.com/datacommonsorg/mixer/internal/base"
-	"github.com/datacommonsorg/mixer/internal/translator"
-)
-
 // Triple represents a triples entry in the BT triples cache.
 type Triple struct {
 	SubjectID    string   `json:"subjectId,omitempty"`
@@ -94,17 +89,6 @@ type PlacePopInfo struct {
 //PlaceStatsVar contains the place stats var list.
 type PlaceStatsVar struct {
 	StatVarIds []string `json:"statVarIds,omitempty"`
-}
-
-// Metadata represents the metadata used by the server.
-type Metadata struct {
-	Mappings         []*base.Mapping
-	OutArcInfo       map[string]map[string][]translator.OutArcInfo
-	InArcInfo        map[string][]translator.InArcInfo
-	SubTypeMap       map[string]string
-	Bq               string
-	BtProject        string
-	BranchBtInstance string
 }
 
 // SourceSeries represents time series data for a particular source.

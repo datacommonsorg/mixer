@@ -43,7 +43,7 @@ func (s *Server) Search(
 	if in.GetMaxResults() > 0 {
 		qStr += fmt.Sprintf(" LIMIT %d", in.GetMaxResults())
 	}
-	q := s.bqClient.Query(qStr)
+	q := s.store.BqClient.Query(qStr)
 	it, err := q.Read(ctx)
 	if err != nil {
 		return nil, err

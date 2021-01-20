@@ -48,7 +48,7 @@ func (s *Server) Query(
 	out.Rows = []*pb.QueryResponseRow{}
 	n := len(out.Header)
 
-	q := s.bqClient.Query(translation.SQL)
+	q := s.store.BqClient.Query(translation.SQL)
 	it, err := q.Read(ctx)
 	if err != nil {
 		return nil, err

@@ -49,7 +49,7 @@ func (s *Server) GetStatSeries(
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey([]string{statVar})
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ func (s *Server) GetStatSeries(
 		map[string]*StatisticalVariable{statVar: statVarObject})
 
 	var obsTimeSeries *ObsTimeSeries
-	btData, err := readStats(ctx, s.btTables, rowList, keyTokens)
+	btData, err := readStats(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -119,7 +119,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -134,7 +134,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-	cacheData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -170,7 +170,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey([]string{statsVarDcid})
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -189,7 +189,7 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		map[string]*StatisticalVariable{statsVarDcid: statsVarObject},
 	)
 	result := map[string]*ObsTimeSeries{}
-	cacheData, err := readStats(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStats(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -230,7 +230,7 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -260,7 +260,7 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			result.Data[place].Data[statVar] = nil
 		}
 	}
-	cacheData, err := readStatsPb(ctx, s.btTables, rowList, keyTokens)
+	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}

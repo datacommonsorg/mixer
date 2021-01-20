@@ -18,13 +18,12 @@ import (
 	"context"
 	"testing"
 
-	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
 func TestNoBigTable(t *testing.T) {
 	ctx := context.Background()
-	s := NewServer(nil, []*bigtable.Table{}, nil)
+	s := NewServer(nil, nil, nil, nil)
 	_, err := s.GetLandingPageData(ctx, &pb.GetLandingPageDataRequest{
 		Place: "geoId/06",
 	})

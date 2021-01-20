@@ -18,7 +18,6 @@ import (
 	"context"
 	"testing"
 
-	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
@@ -92,7 +91,7 @@ func TestGetPopObs(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	s := NewServer(nil, []*bigtable.Table{btTable1, btTable2}, nil)
+	s := NewServer(nil, btTable1, btTable2, nil)
 	in := &pb.GetPopObsRequest{
 		Dcid: dcid,
 	}
@@ -187,7 +186,7 @@ func TestGetPopObsCacheMerge(t *testing.T) {
 	}
 
 	// Test
-	s := NewServer(nil, []*bigtable.Table{branchTable, baseTable}, nil)
+	s := NewServer(nil, baseTable, branchTable, nil)
 
 	var (
 		resultProto, expectProto pb.PopObsPlace
@@ -266,7 +265,7 @@ func TestGetPlaceObs(t *testing.T) {
 	var (
 		resultProto, expectProto pb.PopObsCollection
 	)
-	s := NewServer(nil, []*bigtable.Table{btTable1, btTable2}, nil)
+	s := NewServer(nil, btTable1, btTable2, nil)
 
 	// Base cache only.
 	in := &pb.GetPlaceObsRequest{
@@ -351,7 +350,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	}
 
 	// Test
-	s := NewServer(nil, []*bigtable.Table{branchTable, baseTable}, nil)
+	s := NewServer(nil, baseTable, branchTable, nil)
 	in := &pb.GetPlaceObsRequest{
 		PlaceType:       "City",
 		PopulationType:  "Person",

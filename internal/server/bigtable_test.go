@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -33,7 +34,8 @@ func TestReadOneTable(t *testing.T) {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
 	rowList := bigtable.RowList{"key1", "key2"}
-	dataMap, err := bigTableReadRowsParallel(ctx, []*bigtable.Table{btTable}, rowList,
+	dataMap, err := bigTableReadRowsParallel(
+		ctx, store.NewStore(nil, btTable, nil), rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -77,7 +79,7 @@ func TestReadTwoTables(t *testing.T) {
 
 	rowList := bigtable.RowList{"key1", "key2"}
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, []*bigtable.Table{btTable1, btTable2}, rowList,
+		ctx, store.NewStore(nil, btTable1, btTable2), rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)

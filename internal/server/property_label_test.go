@@ -19,7 +19,6 @@ import (
 	"encoding/json"
 	"testing"
 
-	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
@@ -85,7 +84,7 @@ func TestGetPropertyLabels(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
-	s := NewServer(nil, []*bigtable.Table{branchTable, baseTable}, nil)
+	s := NewServer(nil, baseTable, branchTable, nil)
 
 	got, err := s.GetPropertyLabels(ctx,
 		&pb.GetPropertyLabelsRequest{
