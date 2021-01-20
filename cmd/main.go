@@ -86,7 +86,7 @@ func main() {
 	var branchBtClient *bigtable.Client
 	if !*bigqueryOnly {
 		// Base cache
-		_, baseTable, err := server.NewBtTable(ctx, *btProject, *baseBtInstance, *baseTableName)
+		baseTable, err := server.NewBtTable(ctx, *btProject, *baseBtInstance, *baseTableName)
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
@@ -95,11 +95,8 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
-		branchClient, branchTable, err := server.NewBtTable(ctx, *btProject, *branchBtInstance, branchTableName)
+		branchTable, err := server.NewBtTable(ctx, *btProject, *branchBtInstance, branchTableName)
 
-		// Branch bigtable client to be saved in Server struct. When branch cache
-		// is updated, need to close the client.
-		branchBtClient = branchClient
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}

@@ -67,7 +67,7 @@ func setup() (pb.MixerClient, error) {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	_, baseTable, err := server.NewBtTable(
+	baseTable, err := server.NewBtTable(
 		ctx, btProject, baseInstance, strings.TrimSpace(string(baseTableName)))
 	if err != nil {
 		return nil, err

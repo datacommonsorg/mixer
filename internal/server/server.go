@@ -36,20 +36,18 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	bqClient       *bigquery.Client
-	branchBtClient *bigtable.Client
-	btTables       []*bigtable.Table
-	metadata       *Metadata
+	bqClient *bigquery.Client
+	btTables []*bigtable.Table
+	metadata *Metadata
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
-	branchClient, branchTable, err := NewBtTable(
+	branchTable, err := NewBtTable(
 		ctx, s.metadata.BtProject, s.metadata.BranchBtInstance, branchTableName)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.branchBtClient = branchClient
 	s.btTables[branchBtIndex] = branchTable
 }
 
@@ -107,12 +105,12 @@ func NewMetadata(bqDataset, btProject, branchInstance, schemaPath string) (*Meta
 // NewBtTable creates a new bigtable.Table instance.
 func NewBtTable(
 	ctx context.Context, projectID, instanceID, tableID string) (
-	*bigtable.Client, *bigtable.Table, error) {
+	*bigtable.Table, error) {
 	btClient, err := bigtable.NewClient(ctx, projectID, instanceID)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	return btClient, btClient.Open(tableID), nil
+	return btClient.Open(tableID), nil
 }
 
 // SubscribeBranchCacheUpdate subscribe server for branch cache update.
@@ -159,10 +157,5 @@ func NewServer(
 	branchBtClient *bigtable.Client,
 	btTables []*bigtable.Table,
 	metadata *Metadata) *Server {
-	s := &Server{}
-	s.bqClient = bqClient
-	s.branchBtClient = branchBtClient
-	s.btTables = btTables
-	s.metadata = metadata
-	return s
+	return &Server{bqClient, btTables, metadata}
 }
