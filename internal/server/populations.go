@@ -113,6 +113,10 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 // GetPlaceObs implements API for Mixer.GetPlaceObs.
 func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	*pb.GetPlaceObsResponse, error) {
+	if s.store.BaseBt() == nil && s.store.BranchBt() == nil {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
 	if in.GetPlaceType() == "" || in.GetPopulationType() == "" ||
 		in.GetObservationDate() == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
