@@ -55,9 +55,9 @@ spec:
               cpu: "500m"
           args:
             - --bq_dataset=$(BIG_QUERY)
-            - --base_instance=prophet-cache
+            - --base_bt_instance=prophet-cache
             - --base_table=$(BIG_TABLE)
-            - --branch_instance=prophet-branch-cache
+            - --branch_bt_instance=prophet-branch-cache
             - --bt_project=google.com:datcom-store-dev
             - --project_id=$(PROJECT_ID)
             - --schema_path=/datacommons/mapping
