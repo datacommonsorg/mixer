@@ -59,6 +59,7 @@ func setup() (pb.MixerClient, error) {
 		path.Join(path.Dir(filename), "../../deploy/storage/bigquery.version"))
 	baseTableName, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../../deploy/storage/bigtable.version"))
+	schemaPath := path.Join(path.Dir(filename), "../../deploy/mapping")
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
@@ -77,7 +78,7 @@ func setup() (pb.MixerClient, error) {
 		return nil, err
 	}
 
-	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "")
+	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath)
 	if err != nil {
 		return nil, err
 	}
@@ -89,13 +90,14 @@ func setupBqOnly() (pb.MixerClient, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../../deploy/storage/bigquery.version"))
+	schemaPath := path.Join(path.Dir(filename), "../../deploy/mapping/")
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
-	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "")
+	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath)
 	if err != nil {
 		return nil, err
 	}

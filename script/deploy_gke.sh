@@ -68,5 +68,5 @@ yq w --style=double $ROOT/esp/endpoints.yaml.tmpl name $DOMAIN > endpoints.yaml
 yq w -i endpoints.yaml title "$API_TITLE"
 yq w -i endpoints.yaml endpoints[0].target "$IP"
 yq w -i endpoints.yaml endpoints[0].name "$DOMAIN"
-gsutil cp gs://artifacts.datcom-ci.appspot.com/mixer-grpc/mixer-grpc.$TAG.pb .
+gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID

@@ -73,14 +73,13 @@ func ReadBranchTableName(
 }
 
 // NewMetadata initialize the metadata for translator.
-func NewMetadata(bqDataset, btProject, branchInstance string) (*Metadata, error) {
+func NewMetadata(bqDataset, btProject, branchInstance, schemaPath string) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
 	if err != nil {
 		return nil, err
 	}
-	schemaPath := path.Join(path.Dir(filename), "../translator/mapping/")
 	files, err := ioutil.ReadDir(schemaPath)
 	if err != nil {
 		return nil, err

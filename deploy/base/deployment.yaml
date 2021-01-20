@@ -41,6 +41,10 @@ spec:
       # This k8s service account binds to the GCP service account, and used
       # for GKE Workload Identity: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
       serviceAccountName: mixer-ksa
+      volumes:
+        - name: schema-mapping
+          configMap:
+            name: schema-mapping
       containers:
         - name: mixer
           image: gcr.io/datcom-ci/datacommons-mixer:latest
@@ -56,6 +60,10 @@ spec:
             - --branch_instance=prophet-branch-cache
             - --bt_project=google.com:datcom-store-dev
             - --project_id=$(PROJECT_ID)
+            - --schema_path=/datacommons/mapping
+          volumeMounts:
+            - name: schema-mapping
+              mountPath: /datacommons/mapping
           env:
           - name: PROJECT_ID
             valueFrom:
