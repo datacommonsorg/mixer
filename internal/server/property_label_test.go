@@ -75,12 +75,16 @@ func TestGetPropertyLabels(t *testing.T) {
 		Payload: string(wantPayloadRaw),
 	}
 
-	btTables, err := setupBigtable(ctx, data)
+	baseTable, err := SetupBigtable(ctx, data)
 	if err != nil {
 		t.Fatalf("NewTestBtStore() = %+v", err)
 	}
+	branchTable, err := SetupBigtable(context.Background(), map[string]string{})
+	if err != nil {
+		t.Errorf("SetupBigtable(...) = %v", err)
+	}
 
-	s := NewServer(nil, btTables, nil, nil)
+	s := NewServer(nil, baseTable, branchTable, nil)
 
 	got, err := s.GetPropertyLabels(ctx,
 		&pb.GetPropertyLabelsRequest{

@@ -20,19 +20,20 @@ import (
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store"
 )
 
 // readStats reads and process BigTable rows in parallel.
 // Consider consolidate this function and bigTableReadRowsParallel.
 func readStats(
 	ctx context.Context,
-	btTables []*bigtable.Table,
+	store *store.Store,
 	rowList bigtable.RowList,
 	keyTokens map[string]*placeStatVar) (
 	map[string]map[string]*ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTables, rowList, convertToObsSeries, tokenFn(keyTokens),
+		ctx, store, rowList, convertToObsSeries, tokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
@@ -58,13 +59,13 @@ func readStats(
 // Consider consolidate this function and bigTableReadRowsParallel.
 func readStatsPb(
 	ctx context.Context,
-	btTables []*bigtable.Table,
+	store *store.Store,
 	rowList bigtable.RowList,
 	keyTokens map[string]*placeStatVar) (
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTables, rowList, convertToObsSeriesPb, tokenFn(keyTokens),
+		ctx, store, rowList, convertToObsSeriesPb, tokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
@@ -90,13 +91,13 @@ func readStatsPb(
 // in parallel.
 func readStatCollection(
 	ctx context.Context,
-	btTables []*bigtable.Table,
+	store *store.Store,
 	rowList bigtable.RowList,
 	keyTokens map[string]string) (
 	map[string]*pb.ObsCollection, error) {
 
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, btTables, rowList, convertToObsCollection,
+		ctx, store, rowList, convertToObsCollection,
 		func(rowKey string) (string, error) {
 			return keyTokens[rowKey], nil
 		},

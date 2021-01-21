@@ -17,9 +17,7 @@ package server
 import (
 	"context"
 	"sort"
-	"strings"
 
-	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -49,7 +47,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 
 	// Read triples for the statistical variable.
 	triplesRowList := buildTriplesKey([]string{statVar})
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -68,26 +66,11 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		map[string]*StatisticalVariable{statVar: statVarObject})
 
 	var obsTimeSeries *ObsTimeSeries
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		convertToObsSeries,
-		tokenFn(keyTokens))
-	if data, ok := cacheData[place]; ok {
-		if data == nil {
-			obsTimeSeries = nil
-		} else {
-			obsTimeSeries = data.(*ObsTimeSeries)
-		}
-	} else {
-		// If the data is missing in branch cache, fetch it from the base cache in
-		// Bigtable.
-		btData, err := readStats(ctx, s.btTables, rowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		obsTimeSeries = btData[place][statVar]
+	btData, err := readStats(ctx, s.store, rowList, keyTokens)
+	if err != nil {
+		return nil, err
 	}
+	obsTimeSeries = btData[place][statVar]
 	if obsTimeSeries == nil {
 		return nil, status.Errorf(
 			codes.NotFound, "No data for %s, %s", place, statVar)
@@ -131,7 +114,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	// TODO(shifucun): Merge this with the logic in GetStatAll()
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -146,41 +129,15 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatsKey(places, statVarObject)
-
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		makeFnConvertToPointStat(date),
-		tokenFn(keyTokens),
-	)
-
-	for token, data := range cacheData {
-		parts := strings.Split(token, "^")
-		place := parts[0]
-		statVar := parts[1]
-		if data != nil {
-			result.Data[statVar].Stat[place] = data.(*pb.PointStat)
-		}
+	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
+	if err != nil {
+		return nil, err
 	}
-
-	// If cache value is not found in memcache, then look up in BigTable
-	extraRowList := bigtable.RowList{}
-	for key, token := range keyTokens {
-		if result.Data[token.statVar].Stat[token.place] == nil {
-			extraRowList = append(extraRowList, key)
-		}
-	}
-	if len(extraRowList) > 0 {
-		extraData, err := readStatsPb(ctx, s.btTables, extraRowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		for place, placeData := range extraData {
-			for statVar, data := range placeData {
-				result.Data[statVar].Stat[place], err = getValueFromBestSourcePb(data, date)
-				if err != nil {
-					return nil, err
-				}
+	for place, placeData := range cacheData {
+		for statVar, data := range placeData {
+			result.Data[statVar].Stat[place], err = getValueFromBestSourcePb(data, date)
+			if err != nil {
+				return nil, err
 			}
 		}
 	}
@@ -226,7 +183,7 @@ func (s *Server) GetStatCollection(
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -242,40 +199,15 @@ func (s *Server) GetStatCollection(
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatCollectionKey(
 		parentPlace, childType, date, statVarObject)
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		convertToObsCollection,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey], nil
-		},
-	)
-	for token, data := range cacheData {
+	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
+	if err != nil {
+		return nil, err
+	}
+	for sv, data := range cacheData {
 		if data != nil {
-			cohorts := data.(*pb.ObsCollection).SourceCohorts
+			cohorts := data.SourceCohorts
 			sort.Sort(SeriesByRank(cohorts))
-			result.Data[token] = cohorts[0]
-		}
-	}
-	// Get row keys that are not in mem-cache.
-	extraRowList := bigtable.RowList{}
-	for key, token := range keyTokens {
-		if result.Data[token] == nil {
-			extraRowList = append(extraRowList, key)
-		}
-	}
-
-	if len(extraRowList) > 0 {
-		extraData, err := readStatCollection(ctx, s.btTables, extraRowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		for sv, data := range extraData {
-			if data != nil {
-				cohorts := data.SourceCohorts
-				sort.Sort(SeriesByRank(cohorts))
-				result.Data[sv] = cohorts[0]
-			}
+			result.Data[sv] = cohorts[0]
 		}
 	}
 	for sv := range result.Data {

@@ -398,6 +398,7 @@ func (x *SourceSeries) GetProvenanceUrl() string {
 	return ""
 }
 
+// Represents a time series from a source.
 type Series struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -460,7 +461,7 @@ type SeriesMap struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Map from key to series. The key could be place dcid or stat var dcid.
+	// A wrapper proto for a map of series.
 	Data map[string]*Series `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

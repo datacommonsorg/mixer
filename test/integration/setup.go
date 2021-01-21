@@ -48,16 +48,16 @@ func init() {
 // provide service account credential when running on GCP.
 const (
 	btProject        = "google.com:datcom-store-dev"
-	btInstance       = "prophet-cache"
+	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
 )
 
-func setup(memcache *server.Memcache) (pb.MixerClient, error) {
+func setup() (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../../deploy/storage/bigquery.version"))
-	btTableID, _ := ioutil.ReadFile(
+	baseTableName, _ := ioutil.ReadFile(
 		path.Join(path.Dir(filename), "../../deploy/storage/bigtable.version"))
 	schemaPath := path.Join(path.Dir(filename), "../../deploy/mapping")
 
@@ -67,16 +67,22 @@ func setup(memcache *server.Memcache) (pb.MixerClient, error) {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	btTable, err := server.NewBtTable(
-		ctx, btProject, btInstance, strings.TrimSpace(string(btTableID)))
+	baseTable, err := server.NewBtTable(
+		ctx, btProject, baseInstance, strings.TrimSpace(string(baseTableName)))
 	if err != nil {
 		return nil, err
 	}
-	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), schemaPath)
+
+	branchTable, err := createBranchTable(ctx)
 	if err != nil {
 		return nil, err
 	}
-	return newClient(bqClient, []*bigtable.Table{btTable}, memcache, metadata)
+
+	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath)
+	if err != nil {
+		return nil, err
+	}
+	return newClient(bqClient, baseTable, branchTable, metadata)
 }
 
 func setupBqOnly() (pb.MixerClient, error) {
@@ -91,19 +97,19 @@ func setupBqOnly() (pb.MixerClient, error) {
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
-	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), schemaPath)
+	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath)
 	if err != nil {
 		return nil, err
 	}
-	return newClient(bqClient, []*bigtable.Table{}, nil, metadata)
+	return newClient(bqClient, nil, nil, metadata)
 }
 
 func newClient(
 	bqClient *bigquery.Client,
-	btTables []*bigtable.Table,
-	memcache *server.Memcache,
+	baseTable *bigtable.Table,
+	branchTable *bigtable.Table,
 	metadata *server.Metadata) (pb.MixerClient, error) {
-	s := server.NewServer(bqClient, btTables, memcache, metadata)
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)
@@ -131,19 +137,15 @@ func newClient(
 	return client, nil
 }
 
-func loadMemcache() (map[string][]byte, error) {
+func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	file, _ := ioutil.ReadFile(path.Join(path.Dir(filename), "memcache.json"))
-	var memcacheTmp map[string]string
-	err := json.Unmarshal(file, &memcacheTmp)
+	var data map[string]string
+	err := json.Unmarshal(file, &data)
 	if err != nil {
 		return nil, err
 	}
-	memcacheData := map[string][]byte{}
-	for dcid, raw := range memcacheTmp {
-		memcacheData[dcid] = []byte(raw)
-	}
-	return memcacheData, nil
+	return server.SetupBigtable(ctx, data)
 }
 
 func updateGolden(v interface{}, fname string) {

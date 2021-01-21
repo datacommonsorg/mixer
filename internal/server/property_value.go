@@ -23,6 +23,7 @@ import (
 	"google.golang.org/grpc/status"
 
 	"cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -60,15 +61,13 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 	}
 
 	if inArc {
-		inRes, err = getPropertyValuesHelper(ctx, s.btTables, s.memcache, dcids,
-			prop, false)
+		inRes, err = getPropertyValuesHelper(ctx, s.store, dcids, prop, false)
 		if err != nil {
 			return nil, err
 		}
 	}
 	if outArc {
-		outRes, err = getPropertyValuesHelper(ctx, s.btTables, s.memcache, dcids,
-			prop, true)
+		outRes, err = getPropertyValuesHelper(ctx, s.store, dcids, prop, true)
 		if err != nil {
 			return nil, err
 		}
@@ -101,31 +100,25 @@ func (s *Server) GetPropertyValues(ctx context.Context,
 
 func getPropertyValuesHelper(
 	ctx context.Context,
-	btTables []*bigtable.Table,
-	memcache *Memcache,
+	store *store.Store,
 	dcids []string,
 	prop string,
 	arcOut bool,
 ) (map[string][]*Node, error) {
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
-	nodeMap, err := readPropertyValues(ctx, btTables, rowList)
+	// Add base cache data
+	nodeMap, err := readPropertyValues(ctx, store, rowList)
+	if err != nil {
+		return nil, err
+	}
+	// Add branch cache data
+	branchNodeMap, err := readPropertyValues(ctx, store, rowList)
 	if err != nil {
 		return nil, err
 	}
 
-	// Add branch cache data
-	branchNodeMap := memcache.ReadParallel(
-		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var propVals PropValueCache
-			err := json.Unmarshal(jsonRaw, &propVals)
-			if err != nil {
-				return nil, err
-			}
-			return propVals.Nodes, nil
-		}, nil)
 	for dcid := range branchNodeMap {
-		branchNodes := branchNodeMap[dcid].([]*Node)
+		branchNodes := branchNodeMap[dcid]
 		baseNodes, exist := nodeMap[dcid]
 		if !exist {
 			nodeMap[dcid] = branchNodes
@@ -171,10 +164,10 @@ func trimNodes(nodes []*Node, typ string, limit int) []*Node {
 
 func readPropertyValues(
 	ctx context.Context,
-	btTables []*bigtable.Table,
+	store *store.Store,
 	rowList bigtable.RowList,
 ) (map[string][]*Node, error) {
-	tmp, err := bigTableReadRowsParallel(ctx, btTables, rowList,
+	tmp, err := bigTableReadRowsParallel(ctx, store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals PropValueCache
 			err := json.Unmarshal(jsonRaw, &propVals)

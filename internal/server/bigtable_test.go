@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -28,12 +29,13 @@ func TestReadOneTable(t *testing.T) {
 		"key1": "data1",
 		"key2": "data2",
 	}
-	btTables, err := setupBigtable(ctx, data)
+	btTable, err := SetupBigtable(ctx, data)
 	if err != nil {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
 	rowList := bigtable.RowList{"key1", "key2"}
-	dataMap, err := bigTableReadRowsParallel(ctx, btTables, rowList,
+	dataMap, err := bigTableReadRowsParallel(
+		ctx, store.NewStore(nil, btTable, nil), rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -65,19 +67,19 @@ func TestReadTwoTables(t *testing.T) {
 		"key3": "bar3",
 	}
 
-	btTable1, err := setupBigtable(ctx, data1)
+	btTable1, err := SetupBigtable(ctx, data1)
 	if err != nil {
 		t.Errorf("setupBigtable1 got error: %v", err)
 	}
 
-	btTable2, err := setupBigtable(ctx, data2)
+	btTable2, err := SetupBigtable(ctx, data2)
 	if err != nil {
 		t.Errorf("setupBigtable2 got error: %v", err)
 	}
 
 	rowList := bigtable.RowList{"key1", "key2"}
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, append(btTable1, btTable2...), rowList,
+		ctx, store.NewStore(nil, btTable1, btTable2), rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)

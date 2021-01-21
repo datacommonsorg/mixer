@@ -38,7 +38,7 @@ type PopObs struct {
 // GetPopObs implements API for Mixer.GetPopObs.
 func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	*pb.GetPopObsResponse, error) {
-	if len(s.btTables) == 0 {
+	if s.store.BaseBt() == nil || s.store.BranchBt() == nil {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
@@ -60,17 +60,23 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
-	btRow, err := s.btTables[0].ReadRow(ctx, key)
+	btRow, err := s.store.BranchBt().ReadRow(ctx, key)
 	if err != nil {
 		log.Print(err)
 	}
+	hasBranchData = len(btRow[util.BtFamily]) > 0
+	if hasBranchData {
+		branchRaw = btRow[util.BtFamily][0].Value
+	}
 
+	btRow, err = s.store.BaseBt().ReadRow(ctx, key)
+	if err != nil {
+		log.Print(err)
+	}
 	hasBaseData = len(btRow[util.BtFamily]) > 0
 	if hasBaseData {
 		baseRaw = btRow[util.BtFamily][0].Value
 	}
-
-	branchRaw, hasBranchData = s.memcache.Read(key)
 
 	if !hasBaseData && !hasBranchData {
 		return &out, nil
@@ -111,7 +117,7 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 // GetPlaceObs implements API for Mixer.GetPlaceObs.
 func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	*pb.GetPlaceObsResponse, error) {
-	if len(s.btTables) == 0 {
+	if s.store.BaseBt() == nil || s.store.BranchBt() == nil {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
@@ -137,17 +143,23 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	var hasBaseData, hasBranchData bool
 	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
-	btRow, err := s.btTables[0].ReadRow(ctx, key)
+	btRow, err := s.store.BranchBt().ReadRow(ctx, key)
 	if err != nil {
 		log.Print(err)
 	}
+	hasBranchData = len(btRow[util.BtFamily]) > 0
+	if hasBranchData {
+		branchRaw = btRow[util.BtFamily][0].Value
+	}
 
+	btRow, err = s.store.BaseBt().ReadRow(ctx, key)
+	if err != nil {
+		log.Print(err)
+	}
 	hasBaseData = len(btRow[util.BtFamily]) > 0
 	if hasBaseData {
 		baseRaw = btRow[util.BtFamily][0].Value
 	}
-
-	branchRaw, hasBranchData = s.memcache.Read(key)
 
 	if !hasBaseData && !hasBranchData {
 		return &out, nil
@@ -221,7 +233,7 @@ func (s *Server) GetPopulations(
 
 	// Query the cache
 	collection := []*PlacePopInfo{}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.btTables, rowList,
+	dataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -274,7 +286,7 @@ func (s *Server) GetObservations(
 	// Query the cache for all keys.
 	collection := []*PopObs{}
 	dataMap, err := bigTableReadRowsParallel(
-		ctx, s.btTables, rowList,
+		ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)

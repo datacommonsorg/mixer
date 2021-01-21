@@ -30,8 +30,9 @@ const (
 	testTable    = "dc"
 )
 
-func setupBigtable(
-	ctx context.Context, data map[string]string) ([]*bigtable.Table, error) {
+// SetupBigtable creates a testing bigtable instance used for testing
+func SetupBigtable(
+	ctx context.Context, data map[string]string) (*bigtable.Table, error) {
 	srv, err := bttest.NewServer("localhost:0")
 	if err != nil {
 		return nil, err
@@ -71,5 +72,5 @@ func setupBigtable(
 			return nil, err
 		}
 	}
-	return []*bigtable.Table{client.Open(testTable)}, err
+	return client.Open(testTable), err
 }

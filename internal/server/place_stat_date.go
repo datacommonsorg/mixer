@@ -20,7 +20,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 
-	"cloud.google.com/go/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -58,7 +57,7 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 
 	// Read triples for statistical variable.
 	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.btTables, triplesRowList)
+	triples, err := readTriples(ctx, s.store, triplesRowList)
 	if err != nil {
 		return nil, err
 	}
@@ -73,52 +72,24 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 	}
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatCollectionKey(ancestorPlace, placeType, "", statVarObject)
-	// Read data from branch in-memory cache first.
-	cacheData := s.memcache.ReadParallel(
-		rowList,
-		convertToObsCollection,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey], nil
-		},
-	)
-	for token, data := range cacheData {
+
+	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
+	if err != nil {
+		return nil, err
+	}
+	for sv, data := range cacheData {
 		if data != nil {
-			cohorts := data.(*pb.ObsCollection).SourceCohorts
+			cohorts := data.SourceCohorts
 			sort.Sort(SeriesByRank(cohorts))
 			dates := []string{}
 			for date := range cohorts[0].Val {
 				dates = append(dates, date)
 			}
 			sort.Strings(dates)
-			result.Data[token] = &pb.DateList{Dates: dates}
-		}
-	}
-	// Get row keys that are not in mem-cache.
-	extraRowList := bigtable.RowList{}
-	for key, token := range keyTokens {
-		if result.Data[token] == nil {
-			extraRowList = append(extraRowList, key)
+			result.Data[sv] = &pb.DateList{Dates: dates}
 		}
 	}
 
-	if len(extraRowList) > 0 {
-		extraData, err := readStatCollection(ctx, s.btTables, extraRowList, keyTokens)
-		if err != nil {
-			return nil, err
-		}
-		for sv, data := range extraData {
-			if data != nil {
-				cohorts := data.SourceCohorts
-				sort.Sort(SeriesByRank(cohorts))
-				dates := []string{}
-				for date := range cohorts[0].Val {
-					dates = append(dates, date)
-				}
-				sort.Strings(dates)
-				result.Data[sv] = &pb.DateList{Dates: dates}
-			}
-		}
-	}
 	for sv := range result.Data {
 		if result.Data[sv] == nil {
 			result.Data[sv] = &pb.DateList{}

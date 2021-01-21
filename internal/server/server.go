@@ -22,7 +22,6 @@ import (
 	"path"
 	"path/filepath"
 	"runtime"
-	"runtime/debug"
 	"strings"
 	"time"
 
@@ -31,20 +30,40 @@ import (
 	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/base"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/translator"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
+// Metadata represents the metadata used by the server.
+type Metadata struct {
+	Mappings         []*base.Mapping
+	OutArcInfo       map[string]map[string][]translator.OutArcInfo
+	InArcInfo        map[string][]translator.InArcInfo
+	SubTypeMap       map[string]string
+	Bq               string
+	BtProject        string
+	BranchBtInstance string
+}
+
 // Server holds resources for a mixer server
 type Server struct {
-	bqClient *bigquery.Client
-	btTables []*bigtable.Table
-	memcache *Memcache
+	store    *store.Store
 	metadata *Metadata
 }
 
-// ReadBranchCacheFolder reads branch cache folder from GCS.
-func ReadBranchCacheFolder(
+func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
+	branchTable, err := NewBtTable(
+		ctx, s.metadata.BtProject, s.metadata.BranchBtInstance, branchTableName)
+	if err != nil {
+		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
+		return
+	}
+	s.store.UpdateBranchBt(branchTable)
+}
+
+// ReadBranchTableName reads branch cache folder from GCS.
+func ReadBranchTableName(
 	ctx context.Context, bucket, versionFile string) (string, error) {
 	client, err := storage.NewClient(ctx)
 	if err != nil {
@@ -63,7 +82,7 @@ func ReadBranchCacheFolder(
 }
 
 // NewMetadata initialize the metadata for translator.
-func NewMetadata(bqDataset, schemaPath string) (*Metadata, error) {
+func NewMetadata(bqDataset, btProject, branchInstance, schemaPath string) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -91,7 +110,7 @@ func NewMetadata(bqDataset, schemaPath string) (*Metadata, error) {
 	outArcInfo := map[string]map[string][]translator.OutArcInfo{}
 	inArcInfo := map[string][]translator.InArcInfo{}
 	return &Metadata{
-		mappings, outArcInfo, inArcInfo, subTypeMap, bqDataset}, nil
+		mappings, outArcInfo, inArcInfo, subTypeMap, bqDataset, btProject, branchInstance}, nil
 }
 
 // NewBtTable creates a new bigtable.Table instance.
@@ -116,11 +135,13 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	}
 	// Always create a new subscriber with default expiration date of 2 days.
 	subID := subscriberPrefix + util.RandomString()
-	expiration, _ := time.ParseDuration("48h")
+	expiration, _ := time.ParseDuration("36h")
+	retention, _ := time.ParseDuration("24h")
 	sub, err := pubsubClient.CreateSubscription(ctx, subID,
 		pubsub.SubscriptionConfig{
-			Topic:            pubsubClient.Topic(pubsubTopic),
-			ExpirationPolicy: time.Duration(expiration),
+			Topic:             pubsubClient.Topic(pubsubTopic),
+			ExpirationPolicy:  expiration,
+			RetentionDuration: retention,
 		})
 	if err != nil {
 		return err
@@ -129,17 +150,10 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	// Start the receiver in a goroutine.
 	go func() {
 		err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
-			gcsFolder := string(msg.Data)
+			branchTableName := string(msg.Data)
 			msg.Ack()
-			fmt.Printf("Subscriber action: reload mem cache from %s\n", string(gcsFolder))
-			s.memcache.Update(map[string][]byte{})
-			debug.FreeOSMemory()
-			cache, err := NewMemcacheFromGCS(ctx, branchCacheBucket, gcsFolder)
-			if err != nil {
-				log.Printf("Load cache data got error %s", err)
-			}
-			s.memcache.Update(cache.data)
-			util.PrintMemUsage()
+			fmt.Printf("Subscriber action: use branch cache %s\n", branchTableName)
+			s.updateBranchTable(ctx, branchTableName)
 		})
 		if err != nil {
 			log.Printf("Cloud pubsub receive: %v", err)
@@ -151,8 +165,11 @@ func (s *Server) SubscribeBranchCacheUpdate(
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
-	btTables []*bigtable.Table,
-	memcache *Memcache,
+	baseTable *bigtable.Table,
+	branchTable *bigtable.Table,
 	metadata *Metadata) *Server {
-	return &Server{bqClient, btTables, memcache, metadata}
+	return &Server{
+		store:    store.NewStore(bqClient, baseTable, branchTable),
+		metadata: metadata,
+	}
 }
