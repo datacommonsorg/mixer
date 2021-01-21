@@ -2,6 +2,8 @@ package util
 
 import (
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 func TestZipAndEndocde(t *testing.T) {
@@ -56,6 +58,23 @@ func TestCheckValidDCIDs(t *testing.T) {
 	} {
 		if got := CheckValidDCIDs(c.dcids); got != c.want {
 			t.Errorf("CheckValidDCIDs(%v) = %v, want %v", c.dcids, got, c.want)
+		}
+	}
+}
+
+func TestMergeDedupe(t *testing.T) {
+	for _, c := range []struct {
+		s1   []string
+		s2   []string
+		want []string
+	}{
+		{[]string{"abc", "geoId/12"}, []string{"abc"}, []string{"abc", "geoId/12"}},
+		{[]string{"a", "bc"}, []string{"a", "bc", "d"}, []string{"a", "bc", "d"}},
+		{[]string{"abc"}, []string{"ef"}, []string{"abc", "ef"}},
+	} {
+		got := MergeDedupe(c.s1, c.s2)
+		if diff := cmp.Diff(got, c.want); diff != "" {
+			t.Errorf("MergeDedupe got diff %+v", diff)
 		}
 	}
 }

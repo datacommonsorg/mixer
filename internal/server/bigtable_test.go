@@ -34,7 +34,7 @@ func TestReadOneTable(t *testing.T) {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
 	rowList := bigtable.RowList{"key1", "key2"}
-	dataMap, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigTableReadRowsParallel(
 		ctx, store.NewStore(nil, btTable, nil), rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -42,7 +42,7 @@ func TestReadOneTable(t *testing.T) {
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
-	for dcid, result := range dataMap {
+	for dcid, result := range baseDataMap {
 		if diff := cmp.Diff(data[dcid], result.(string)); diff != "" {
 			t.Errorf("read rows got diff from table data %+v", diff)
 		}
@@ -61,11 +61,6 @@ func TestReadTwoTables(t *testing.T) {
 		"key2": "bar2",
 		"key3": "bar3",
 	}
-	expected := map[string]string{
-		"key1": "foo1",
-		"key2": "foo2",
-		"key3": "bar3",
-	}
 
 	btTable1, err := SetupBigtable(ctx, data1)
 	if err != nil {
@@ -78,7 +73,7 @@ func TestReadTwoTables(t *testing.T) {
 	}
 
 	rowList := bigtable.RowList{"key1", "key2"}
-	dataMap, err := bigTableReadRowsParallel(
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 		ctx, store.NewStore(nil, btTable1, btTable2), rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -86,8 +81,13 @@ func TestReadTwoTables(t *testing.T) {
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
-	for dcid, result := range dataMap {
-		if diff := cmp.Diff(expected[dcid], result.(string)); diff != "" {
+	for dcid, result := range baseDataMap {
+		if diff := cmp.Diff(data1[dcid], result.(string)); diff != "" {
+			t.Errorf("read rows got diff from table data %+v", diff)
+		}
+	}
+	for dcid, result := range branchDataMap {
+		if diff := cmp.Diff(data2[dcid], result.(string)); diff != "" {
 			t.Errorf("read rows got diff from table data %+v", diff)
 		}
 	}

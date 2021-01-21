@@ -167,7 +167,9 @@ func readPropertyValues(
 	store *store.Store,
 	rowList bigtable.RowList,
 ) (map[string][]*Node, error) {
-	tmp, err := bigTableReadRowsParallel(ctx, store, rowList,
+	// Only read property value from base cache.
+	// Branch cache only contains supplement data but not other properties yet.
+	baseDataMap, _, err := bigTableReadRowsParallel(ctx, store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals PropValueCache
 			err := json.Unmarshal(jsonRaw, &propVals)
@@ -180,7 +182,7 @@ func readPropertyValues(
 		return nil, err
 	}
 	result := map[string][]*Node{}
-	for dcid, data := range tmp {
+	for dcid, data := range baseDataMap {
 		result[dcid] = data.([]*Node)
 	}
 	return result, nil

@@ -285,3 +285,17 @@ func PrintMemUsage() {
 func bToMb(b uint64) uint64 {
 	return b / 1024 / 1024
 }
+
+// MergeDedupe merges two string slices and remove duplicate elements.
+func MergeDedupe(s1 []string, s2 []string) []string {
+	m := map[string]struct{}{}
+	for _, s := range s1 {
+		m[s] = struct{}{}
+	}
+	for _, s := range s2 {
+		if _, ok := m[s]; !ok {
+			s1 = append(s1, s)
+		}
+	}
+	return s1
+}

@@ -232,7 +232,8 @@ func fetchBtData(
 	}
 
 	// Fetch landing page cache data in parallel.
-	dataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	// Landing page cache only exists in base cache
+	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var landingPageData LandingPageData
 
@@ -247,7 +248,7 @@ func fetchBtData(
 	}
 	// Populate result from landing page cache
 	result := map[string]map[string]*ObsTimeSeries{}
-	for dcid, data := range dataMap {
+	for dcid, data := range baseDataMap {
 		landingPageData := data.(*LandingPageData)
 		finalData := map[string]*ObsTimeSeries{}
 		for statVarDcid, obsTimeSeries := range landingPageData.Data {

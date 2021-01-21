@@ -266,7 +266,9 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 	}
 	for place, placeData := range cacheData {
 		for statVar, data := range placeData {
-			result.Data[place].Data[statVar] = getBestSeries(data)
+			if data != nil {
+				result.Data[place].Data[statVar] = getBestSeries(data)
+			}
 		}
 	}
 	return result, nil

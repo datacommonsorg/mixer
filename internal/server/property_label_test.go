@@ -28,11 +28,10 @@ import (
 func TestGetPropertyLabels(t *testing.T) {
 	ctx := context.Background()
 
-	data := map[string]string{}
-	resultMap := map[string]*PropLabelCache{}
 	for _, d := range []struct {
-		dcid   string
-		labels *PropLabelCache
+		dcid        string
+		baseCache   *PropLabelCache
+		branchCache *PropLabelCache
 	}{
 		{
 			"geoId/06",
@@ -40,15 +39,27 @@ func TestGetPropertyLabels(t *testing.T) {
 				InLabels:  []string{"containedIn"},
 				OutLabels: []string{"containedIn", "name", "longitude"},
 			},
+			&PropLabelCache{
+				InLabels:  []string{"containedIn"},
+				OutLabels: []string{"containedIn"},
+			},
 		},
 		{
 			"bio/tiger",
 			&PropLabelCache{
+				InLabels:  []string{},
 				OutLabels: []string{"name", "longitude", "color"},
+			},
+			&PropLabelCache{
+				InLabels:  []string{},
+				OutLabels: []string{},
 			},
 		},
 	} {
-		jsonRaw, err := json.Marshal(d.labels)
+		base := map[string]string{}
+		branch := map[string]string{}
+		resultMap := map[string]*PropLabelCache{}
+		jsonRaw, err := json.Marshal(d.baseCache)
 		if err != nil {
 			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
 		}
@@ -56,45 +67,47 @@ func TestGetPropertyLabels(t *testing.T) {
 		if err != nil {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
-		data[util.BtArcsPrefix+d.dcid] = tableValue
+		base[util.BtArcsPrefix+d.dcid] = tableValue
+		resultMap[d.dcid] = d.baseCache
 
-		if d.labels.InLabels == nil {
-			d.labels.InLabels = []string{}
+		jsonRaw, err = json.Marshal(d.branchCache)
+		if err != nil {
+			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
 		}
-		if d.labels.OutLabels == nil {
-			d.labels.OutLabels = []string{}
+		tableValue, err = util.ZipAndEncode(jsonRaw)
+		if err != nil {
+			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
-		resultMap[d.dcid] = d.labels
-	}
+		branch[util.BtArcsPrefix+d.dcid] = tableValue
+		wantPayloadRaw, err := json.Marshal(resultMap)
+		if err != nil {
+			t.Fatalf("json.Marshal(%+v) = %+v", resultMap, err)
+		}
+		want := &pb.GetPropertyLabelsResponse{
+			Payload: string(wantPayloadRaw),
+		}
 
-	wantPayloadRaw, err := json.Marshal(resultMap)
-	if err != nil {
-		t.Fatalf("json.Marshal(%+v) = %+v", resultMap, err)
-	}
-	want := &pb.GetPropertyLabelsResponse{
-		Payload: string(wantPayloadRaw),
-	}
+		baseTable, err := SetupBigtable(ctx, base)
+		if err != nil {
+			t.Fatalf("NewTestBtStore() = %+v", err)
+		}
+		branchTable, err := SetupBigtable(ctx, branch)
+		if err != nil {
+			t.Errorf("SetupBigtable(...) = %v", err)
+		}
 
-	baseTable, err := SetupBigtable(ctx, data)
-	if err != nil {
-		t.Fatalf("NewTestBtStore() = %+v", err)
-	}
-	branchTable, err := SetupBigtable(context.Background(), map[string]string{})
-	if err != nil {
-		t.Errorf("SetupBigtable(...) = %v", err)
-	}
+		s := NewServer(nil, baseTable, branchTable, nil)
 
-	s := NewServer(nil, baseTable, branchTable, nil)
+		got, err := s.GetPropertyLabels(ctx,
+			&pb.GetPropertyLabelsRequest{
+				Dcids: []string{d.dcid},
+			})
+		if err != nil {
+			t.Fatalf("GetPropertyLabels() = %+v", err)
+		}
 
-	got, err := s.GetPropertyLabels(ctx,
-		&pb.GetPropertyLabelsRequest{
-			Dcids: []string{"geoId/06", "bio/tiger"},
-		})
-	if err != nil {
-		t.Fatalf("GetPropertyLabels() = %+v", err)
-	}
-
-	if !cmp.Equal(got, want, protocmp.Transform()) {
-		t.Errorf("GetPropertyLabels() = %+v, want %+v", got, want)
+		if diff := cmp.Diff(got, want, protocmp.Transform()); diff != "" {
+			t.Errorf("GetPropertyLabels() with diff: %v", diff)
+		}
 	}
 }

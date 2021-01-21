@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"strings"
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -32,24 +31,29 @@ func readStats(
 	keyTokens map[string]*placeStatVar) (
 	map[string]map[string]*ObsTimeSeries, error) {
 
-	dataMap, err := bigTableReadRowsParallel(
+	keyToTokenFn := tokenFn(keyTokens)
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 		ctx, store, rowList, convertToObsSeries, tokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]map[string]*ObsTimeSeries{}
-	for token, data := range dataMap {
-		parts := strings.Split(token, "^")
-		place := parts[0]
-		statVar := parts[1]
-		if result[place] == nil {
-			result[place] = map[string]*ObsTimeSeries{}
+	for _, psv := range keyTokens {
+		if _, ok := result[psv.place]; !ok {
+			result[psv.place] = map[string]*ObsTimeSeries{}
 		}
-		if data == nil {
-			result[place][statVar] = nil
-		} else {
-			result[place][statVar] = data.(*ObsTimeSeries)
+		if _, ok := result[psv.statVar]; !ok {
+			result[psv.place][psv.statVar] = nil
+		}
+	}
+	for _, rowKey := range rowList {
+		token, _ := keyToTokenFn(rowKey)
+		psv := keyTokens[rowKey]
+		if data, ok := branchDataMap[token]; ok {
+			result[psv.place][psv.statVar] = data.(*ObsTimeSeries)
+		} else if data, ok := baseDataMap[token]; ok {
+			result[psv.place][psv.statVar] = data.(*ObsTimeSeries)
 		}
 	}
 	return result, nil
@@ -64,24 +68,30 @@ func readStatsPb(
 	keyTokens map[string]*placeStatVar) (
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
-	dataMap, err := bigTableReadRowsParallel(
-		ctx, store, rowList, convertToObsSeriesPb, tokenFn(keyTokens),
+	keyToTokenFn := tokenFn(keyTokens)
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
+		ctx, store, rowList, convertToObsSeriesPb, keyToTokenFn,
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]map[string]*pb.ObsTimeSeries{}
-	for token, data := range dataMap {
-		parts := strings.Split(token, "^")
-		place := parts[0]
-		statVar := parts[1]
-		if result[place] == nil {
-			result[place] = map[string]*pb.ObsTimeSeries{}
+	for _, psv := range keyTokens {
+		if _, ok := result[psv.place]; !ok {
+			result[psv.place] = map[string]*pb.ObsTimeSeries{}
 		}
-		if data == nil {
-			result[place][statVar] = nil
-		} else {
-			result[place][statVar] = data.(*pb.ObsTimeSeries)
+		if _, ok := result[psv.statVar]; !ok {
+			result[psv.place][psv.statVar] = nil
+		}
+	}
+
+	for _, rowKey := range rowList {
+		token, _ := keyToTokenFn(rowKey)
+		psv := keyTokens[rowKey]
+		if data, ok := branchDataMap[token]; ok {
+			result[psv.place][psv.statVar] = data.(*pb.ObsTimeSeries)
+		} else if data, ok := baseDataMap[token]; ok {
+			result[psv.place][psv.statVar] = data.(*pb.ObsTimeSeries)
 		}
 	}
 	return result, nil
@@ -96,7 +106,7 @@ func readStatCollection(
 	keyTokens map[string]string) (
 	map[string]*pb.ObsCollection, error) {
 
-	dataMap, err := bigTableReadRowsParallel(
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 		ctx, store, rowList, convertToObsCollection,
 		func(rowKey string) (string, error) {
 			return keyTokens[rowKey], nil
@@ -106,8 +116,15 @@ func readStatCollection(
 		return nil, err
 	}
 	result := map[string]*pb.ObsCollection{}
-	for token, data := range dataMap {
-		result[token] = data.(*pb.ObsCollection)
+	for _, rowKey := range rowList {
+		token := keyTokens[rowKey]
+		if data, ok := branchDataMap[token]; ok {
+			result[token] = data.(*pb.ObsCollection)
+		} else if data, ok := baseDataMap[token]; ok {
+			result[token] = data.(*pb.ObsCollection)
+		} else {
+			result[token] = nil
+		}
 	}
 	return result, nil
 }
