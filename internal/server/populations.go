@@ -38,6 +38,10 @@ type PopObs struct {
 // GetPopObs implements API for Mixer.GetPopObs.
 func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 	*pb.GetPopObsResponse, error) {
+	if s.store.BaseBt() == nil || s.store.BranchBt() == nil {
+		return nil, status.Errorf(
+			codes.NotFound, "Bigtable instance is not specified")
+	}
 	dcid := in.GetDcid()
 
 	if dcid == "" {
@@ -113,7 +117,7 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 // GetPlaceObs implements API for Mixer.GetPlaceObs.
 func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	*pb.GetPlaceObsResponse, error) {
-	if s.store.BaseBt() == nil && s.store.BranchBt() == nil {
+	if s.store.BaseBt() == nil || s.store.BranchBt() == nil {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}

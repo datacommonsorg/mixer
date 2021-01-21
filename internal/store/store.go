@@ -26,7 +26,7 @@ type Store struct {
 	BqClient    *bigquery.Client
 	baseTable   *bigtable.Table
 	branchTable *bigtable.Table
-	sync.RWMutex
+	branchLock  sync.RWMutex
 }
 
 // BaseBt is the accessor for base bigtable
@@ -36,15 +36,15 @@ func (st *Store) BaseBt() *bigtable.Table {
 
 // BranchBt is the accessor for branch bigtable
 func (st *Store) BranchBt() *bigtable.Table {
-	st.RLock()
-	defer st.RUnlock()
+	st.branchLock.RLock()
+	defer st.branchLock.RUnlock()
 	return st.branchTable
 }
 
 // UpdateBranchBt updates the branch bigtable
 func (st *Store) UpdateBranchBt(branchTable *bigtable.Table) {
-	st.Lock()
-	defer st.Unlock()
+	st.branchLock.Lock()
+	defer st.branchLock.Unlock()
 	st.branchTable = branchTable
 }
 
