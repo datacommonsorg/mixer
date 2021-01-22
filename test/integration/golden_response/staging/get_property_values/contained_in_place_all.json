@@ -1,0 +1,45 @@
+{
+  "geoId/06085": {
+    "out": [
+      {
+        "dcid": "geoId/06",
+        "name": "California",
+        "provenanceId": "dc/sm3m2w3",
+        "types": [
+          "AdministrativeArea1",
+          "State"
+        ]
+      }
+    ]
+  },
+  "geoId/0647766": {
+    "out": [
+      {
+        "dcid": "zip/95035",
+        "name": "95035",
+        "provenanceId": "dc/sm3m2w3",
+        "types": [
+          "CensusZipCodeTabulationArea"
+        ]
+      },
+      {
+        "dcid": "geoId/06085",
+        "name": "Santa Clara County",
+        "provenanceId": "dc/sm3m2w3",
+        "types": [
+          "AdministrativeArea2",
+          "County"
+        ]
+      },
+      {
+        "dcid": "geoId/06",
+        "name": "California",
+        "provenanceId": "dc/sm3m2w3",
+        "types": [
+          "AdministrativeArea1",
+          "State"
+        ]
+      }
+    ]
+  }
+}
