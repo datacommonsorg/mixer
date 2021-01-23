@@ -1,0 +1,43 @@
+# Copyright 2019 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This cloud build is triggered when there is code change, but can also involve
+# data change.
+
+steps:
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      gsutil cp gs://automation_control/latest_base_cache_version.txt /tmp/bigtable.version
+
+  - name: golang
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        ./script/golden_diff_notify.sh $(head -1 /tmp/bigtable.version)
+        cd tools/send_email
+        go run main.go \
+          --subject="Mixer golden data diff for $(head -1 /tmp/bigtable.version)" \
+          --receiver="datacommons+release@google.com" \
+          --body_file="/tmp/golden-diff.html" \
+          --mime_type="text/html"
+
+options:
+  volumes:
+  - name: tmp
+    path: /tmp
+  machineType: 'N1_HIGHCPU_8'
