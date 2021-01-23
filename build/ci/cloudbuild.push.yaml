@@ -73,6 +73,28 @@ steps:
       - |
         ./script/update_staging_version.sh $SHORT_SHA
 
+  # This is a trigger to push website at website/mixer code HEAD and with the
+  # latest base cache.
+  - name: 'gcr.io/datcom-ci/deploy-tool'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      set -e
+      mkdir src && \
+      git clone https://github.com/datacommonsorg/website.git src && \
+      cd src && \
+      git clone https://github.com/datacommonsorg/mixer.git mixer && \
+      git submodule update --init --recursive && \
+      cd mixer && \
+      git remote set-url origin https://github.com/datacommonsorg/mixer.git && \
+      git pull origin master && \
+      git checkout master && \
+      gsutil cp gs://automation_control/latest_base_cache_version.txt deploy/storage/bigtable.version && \
+      cd ../ && \
+      ./script/deploy_gke.sh autopush us-central1
+      ./script/deploy_gke.sh autopush europe-west2
+
 options:
   volumes:
   - name: go-modules
