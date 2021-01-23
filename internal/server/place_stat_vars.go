@@ -21,6 +21,7 @@ import (
 	"encoding/json"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -52,7 +53,7 @@ func (s *Server) GetPlaceStatVars(
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	rowList := buildPlaceStatsVarKey(dcids)
-	dataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var data PlaceStatsVar
 			err := json.Unmarshal(jsonRaw, &data)
@@ -67,8 +68,12 @@ func (s *Server) GetPlaceStatVars(
 	resp := pb.GetPlaceStatVarsResponse{Places: map[string]*pb.StatVars{}}
 	for _, dcid := range dcids {
 		resp.Places[dcid] = &pb.StatVars{StatVars: []string{}}
-		if dataMap[dcid] != nil {
-			resp.Places[dcid].StatVars = dataMap[dcid].([]string)
+		if baseDataMap[dcid] != nil {
+			resp.Places[dcid].StatVars = baseDataMap[dcid].([]string)
+		}
+		if branchDataMap[dcid] != nil {
+			resp.Places[dcid].StatVars = util.MergeDedupe(
+				resp.Places[dcid].StatVars, baseDataMap[dcid].([]string))
 		}
 	}
 	return &resp, nil

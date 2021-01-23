@@ -233,7 +233,7 @@ func (s *Server) GetPopulations(
 
 	// Query the cache
 	collection := []*PlacePopInfo{}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		}, nil)
@@ -242,8 +242,12 @@ func (s *Server) GetPopulations(
 	}
 	for _, dcid := range dcids {
 		item := &PlacePopInfo{}
-		data, ok := dataMap[dcid]
-		if ok {
+		if data, ok := baseDataMap[dcid]; ok {
+			item = &PlacePopInfo{
+				PlaceID:      dcid,
+				PopulationID: data.(string),
+			}
+		} else if data, ok := branchDataMap[dcid]; ok {
 			item = &PlacePopInfo{
 				PlaceID:      dcid,
 				PopulationID: data.(string),
@@ -285,7 +289,7 @@ func (s *Server) GetObservations(
 
 	// Query the cache for all keys.
 	collection := []*PopObs{}
-	dataMap, err := bigTableReadRowsParallel(
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 		ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -295,7 +299,13 @@ func (s *Server) GetObservations(
 	}
 
 	for _, dcid := range dcids {
-		if obs, ok := dataMap[dcid]; ok {
+		if obs, ok := baseDataMap[dcid]; ok {
+			item := &PopObs{
+				PopulationID:     dcid,
+				ObservationValue: obs.(string),
+			}
+			collection = append(collection, item)
+		} else if obs, ok := branchDataMap[dcid]; ok {
 			item := &PopObs{
 				PopulationID:     dcid,
 				ObservationValue: obs.(string),

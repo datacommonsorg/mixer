@@ -63,6 +63,14 @@ func TestGetPropertyValues(t *testing.T) {
 			0,
 		},
 		{
+			"contained_in_place_all.json",
+			[]string{"geoId/06085", "geoId/0647766"},
+			"containedInPlace",
+			"out",
+			"",
+			0,
+		},
+		{
 			"location.json",
 			[]string{"geoId/05", "geoId/06"},
 			"location",

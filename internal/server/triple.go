@@ -72,16 +72,18 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		}
 	}
 	if len(popDcids) > 0 {
-		dataMap, err := bigTableReadRowsParallel(
+		baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 			ctx, s.store, buildTriplesKey(popDcids), convertTriplesCache, nil)
 		if err != nil {
 			return nil, err
 		}
-		for dcid, data := range dataMap {
-			if data == nil {
-				resultsMap[dcid] = nil
-			} else {
+		for _, dcid := range popDcids {
+			if data, ok := branchDataMap[dcid]; ok {
 				resultsMap[dcid] = data.(*TriplesCache).Triples
+			} else if data, ok := baseDataMap[dcid]; ok {
+				resultsMap[dcid] = data.(*TriplesCache).Triples
+			} else {
+				resultsMap[dcid] = []*Triple{}
 			}
 		}
 	}
@@ -95,7 +97,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			{obsAncestorTypeComparedNode, "comparedNode"},
 		} {
 			rowList := buildObservedNodeKey(obsDcids, param.predKey)
-			dataMap, err := bigTableReadRowsParallel(
+			baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 				ctx, s.store, rowList,
 				func(dcid string, raw []byte) (interface{}, error) {
 					return string(raw), nil
@@ -105,8 +107,12 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			}
 			// Map from observation dcid to observedNode dcid.
 			observedNodeMap := map[string]string{}
-			for dcid, data := range dataMap {
-				observedNodeMap[dcid] = data.(string)
+			for _, dcid := range obsDcids {
+				if data, ok := branchDataMap[dcid]; ok {
+					observedNodeMap[dcid] = data.(string)
+				} else if data, ok := baseDataMap[dcid]; ok {
+					observedNodeMap[dcid] = data.(string)
+				}
 			}
 			// Get the observedNode names.
 			observedNodes := []string{}
@@ -139,13 +145,17 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	// Add PVs for population nodes.
 	if len(popDcids) > 0 {
 		rowList := buildPopPVKey(popDcids)
-		dataMap, err := bigTableReadRowsParallel(
+		baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 			ctx, s.store, rowList, convertPopTriples, nil)
 		if err != nil {
 			return nil, err
 		}
-		for dcid, data := range dataMap {
-			resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
+		for _, dcid := range popDcids {
+			if data, ok := branchDataMap[dcid]; ok {
+				resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
+			} else if data, ok := baseDataMap[dcid]; ok {
+				resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
+			}
 		}
 	}
 
@@ -230,17 +240,20 @@ func applyLimit(
 	return result
 }
 
-// ReadTriples read triples from Cloud Bigtable for multiple dcids.
+// ReadTriples read triples from base cache for multiple dcids.
 func readTriples(
 	ctx context.Context, store *store.Store, rowList bigtable.RowList) (
 	map[string]*TriplesCache, error) {
-	dataMap, err := bigTableReadRowsParallel(
+	// Only use base cache for triples, as branch cache only consists increment
+	// stats. This saves time as the triples list size can get big.
+	// Re-evaluate this if branch cache involves other triples.
+	baseDataMap, _, err := bigTableReadRowsParallel(
 		ctx, store, rowList, convertTriplesCache, nil)
 	if err != nil {
 		return nil, err
 	}
 	result := make(map[string]*TriplesCache)
-	for dcid, data := range dataMap {
+	for dcid, data := range baseDataMap {
 		if data == nil {
 			result[dcid] = nil
 		} else {

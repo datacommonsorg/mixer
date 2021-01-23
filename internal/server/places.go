@@ -44,7 +44,8 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 
 	rowList := buildPlaceInKey(dcids, placeType)
 
-	dataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	// Place relations are from base geo imports. Only trust the base cache.
+	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
 		}, nil)
@@ -53,8 +54,8 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 	}
 	results := []map[string]string{}
 	for _, dcid := range dcids {
-		if dataMap[dcid] != nil {
-			for _, place := range dataMap[dcid].([]string) {
+		if baseDataMap[dcid] != nil {
+			for _, place := range baseDataMap[dcid].([]string) {
 				results = append(results, map[string]string{"dcid": dcid, "place": place})
 			}
 		}
@@ -109,7 +110,8 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
 		}
 	}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	// RelatedPlace cache only exists in base cache
+	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo RelatedPlacesInfo
 			err := json.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
@@ -128,7 +130,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		return nil, err
 	}
 	results := map[string]*RelatedPlacesInfo{}
-	for statVarDcid, data := range dataMap {
+	for statVarDcid, data := range baseDataMap {
 		if data == nil {
 			results[statVarDcid] = nil
 		} else {
@@ -161,7 +163,8 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, "*", in.GetPlaceType(), statVarDcid))
 		}
 	}
-	dataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	// RelatedPlace cache only exists in base cache
+	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
 			err := protojson.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
@@ -181,7 +184,7 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 	}
 
 	results := map[string]*pb.RelatedPlacesInfo{}
-	for statVarDcid, data := range dataMap {
+	for statVarDcid, data := range baseDataMap {
 		if data == nil {
 			results[statVarDcid] = nil
 		} else {

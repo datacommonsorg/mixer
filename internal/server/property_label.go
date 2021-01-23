@@ -37,8 +37,7 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 
 	rowList := buildPropertyLabelKey(dcids)
 
-	// Property Labels cache only read from the base cache.
-	dataMap, err := bigTableReadRowsParallel(
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 		ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propLabels PropLabelCache
@@ -52,22 +51,19 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 		return nil, err
 	}
 	result := map[string]*PropLabelCache{}
-	for dcid, data := range dataMap {
-		result[dcid] = data.(*PropLabelCache)
-		// Fill in InLabels / OutLabels with an empty list if not present.
-		if result[dcid].InLabels == nil {
-			result[dcid].InLabels = []string{}
-		}
-		if result[dcid].OutLabels == nil {
-			result[dcid].OutLabels = []string{}
-		}
-	}
-	// Iterate through all dcids to make sure they are present in result.
 	for _, dcid := range dcids {
-		if _, exists := result[dcid]; !exists {
-			result[dcid] = &PropLabelCache{
-				InLabels:  []string{},
-				OutLabels: []string{},
+		result[dcid] = &PropLabelCache{InLabels: []string{}, OutLabels: []string{}}
+		// Merge cache value from base and branch cache
+		for _, m := range []map[string]interface{}{baseDataMap, branchDataMap} {
+			if data, ok := m[dcid]; ok {
+				if data.(*PropLabelCache).InLabels != nil {
+					result[dcid].InLabels = util.MergeDedupe(
+						result[dcid].InLabels, data.(*PropLabelCache).InLabels)
+				}
+				if data.(*PropLabelCache).OutLabels != nil {
+					result[dcid].OutLabels = util.MergeDedupe(
+						result[dcid].OutLabels, data.(*PropLabelCache).OutLabels)
+				}
 			}
 		}
 	}

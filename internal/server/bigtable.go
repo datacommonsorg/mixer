@@ -69,13 +69,11 @@ func readRowFn(
 	}
 }
 
-// bigTableReadRowsParallel reads BigTable rows from multiple Bigtables
-// in parallel.
+// bigTableReadRowsParallel reads BigTable rows from base Bigtable and branch
+// Bigtable in parallel.
 //
 // Reading multiple rows is chunked as the size limit for RowSet is 500KB.
 //
-// For the same key, if data is present in both base and branch table, then the
-// data from branch table is preferred.
 //
 // Args:
 // baseBt: The bigtable that holds the base cache
@@ -92,11 +90,11 @@ func bigTableReadRowsParallel(
 	rowSet bigtable.RowSet,
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error)) (
-	map[string]interface{}, error) {
+	map[string]interface{}, map[string]interface{}, error) {
 	baseBt := store.BaseBt()
 	branchBt := store.BranchBt()
 	if baseBt == nil && branchBt == nil {
-		return nil, status.Errorf(
+		return nil, nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
 
@@ -112,10 +110,10 @@ func bigTableReadRowsParallel(
 		rowRangeList = rowSet.(bigtable.RowRangeList)
 		rowSetSize = len(rowRangeList)
 	default:
-		return nil, status.Errorf(codes.Internal, "Unsupported RowSet type: %v", v)
+		return nil, nil, status.Errorf(codes.Internal, "Unsupported RowSet type: %v", v)
 	}
 	if rowSetSize == 0 {
-		return nil, nil
+		return nil, nil, nil
 	}
 
 	baseChan := make(chan chanData, rowSetSize)
@@ -145,25 +143,23 @@ func bigTableReadRowsParallel(
 
 	err := errs.Wait()
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	close(baseChan)
 	close(branchChan)
 
-	result := map[string]interface{}{}
+	baseResult := map[string]interface{}{}
+	branchResult := map[string]interface{}{}
 
-	if branchBt != nil {
-		for elem := range branchChan {
-			result[elem.token] = elem.data
-		}
-	}
 	if baseBt != nil {
 		for elem := range baseChan {
-			// If no data from branch cache, then use the one from base cache.
-			if _, ok := result[elem.token]; !ok {
-				result[elem.token] = elem.data
-			}
+			baseResult[elem.token] = elem.data
 		}
 	}
-	return result, nil
+	if branchBt != nil {
+		for elem := range branchChan {
+			branchResult[elem.token] = elem.data
+		}
+	}
+	return baseResult, branchResult, nil
 }
