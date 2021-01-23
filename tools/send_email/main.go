@@ -27,7 +27,10 @@ import (
 )
 
 var (
-	basebt = flag.String("base_bt", "", "Base Bigtable version.")
+	subject  = flag.String("subject", "", "Email subject.")
+	receiver = flag.String("receiver", "", "Email receiver.")
+	bodyFile = flag.String("body_file", "", "Email body content file.")
+	mimeType = flag.String("mime_type", "text/html", "Mime type of the body.")
 )
 
 func main() {
@@ -54,28 +57,28 @@ func main() {
 
 	// Receiver email address.
 	to := []string{
-		"datacommons+release @google.com",
+		*receiver,
 	}
 
 	// smtp server configuration.
 	smtpHost := "smtp.gmail.com"
 	smtpPort := "587"
 
-	diff, err := ioutil.ReadFile("/tmp/golden-diff.html")
+	bodyByte, err := ioutil.ReadFile(*bodyFile)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	subject := fmt.Sprintf("Subject: Mixer golden data diff from %s\n", *basebt)
-	mime := "MIME-version: 1.0;\nContent-Type: text/html;\n\n"
-	content := string(diff)
-	body := subject + mime + content
+	subject := fmt.Sprintf("Subject: %s\n", *subject)
+	mime := fmt.Sprintf("MIME-version: 1.0;\nContent-Type: %s;\n\n", *mimeType)
+	body := string(bodyByte)
+	msg := subject + mime + body
 
 	// Authentication.
 	auth := smtp.PlainAuth("", from, password, smtpHost)
 
 	// Sending email.
-	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, []byte(body))
+	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, []byte(msg))
 	if err != nil {
 		fmt.Println(err)
 		return
