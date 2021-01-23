@@ -28,9 +28,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
 
-echo $BASE_BT_VERSION | tee $ROOT/deploy/storage/bigtable.version
+echo "$BASE_BT_VERSION" | tee "$ROOT/deploy/storage/bigtable.version"
 
-$ROOT/script/update_golden_staging.sh
+"$ROOT/script/update_golden_staging.sh"
 
 # Script to convert terminal colors and attributes to HTML
 # https://github.com/pixelb/scripts/blob/master/scripts/ansi2html.sh
