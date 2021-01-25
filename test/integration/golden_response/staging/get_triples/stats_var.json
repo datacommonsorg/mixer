@@ -53,6 +53,30 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
+      "subjectId": "dc/me61e2819fr9g",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/jzqt6tmmb7p0h",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
       "subjectId": "dc/h00kfxhs73dhc",
       "subjectTypes": [
         "StatisticalVariable"
@@ -125,6 +149,30 @@
       "provenanceId": "dc/6zzrcr2"
     },
     {
+      "subjectId": "dc/1xmcs407enr51",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
+      "subjectId": "dc/06w4nhpt1vz26",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/6zzrcr2"
+    },
+    {
       "subjectId": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
@@ -138,6 +186,18 @@
     },
     {
       "subjectId": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],

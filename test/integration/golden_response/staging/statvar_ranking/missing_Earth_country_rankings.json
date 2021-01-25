@@ -496,13 +496,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Poverty rate",
-    "statsVars": [
-      "Count_Person_BelowPovertyLevelInThePast12Months"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Prescribed drugs (quarterly)",
     "statsVars": [
       "RetailDrugDistribution_DrugDistribution_Oxycodone",
