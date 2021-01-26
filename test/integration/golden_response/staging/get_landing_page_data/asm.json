@@ -812,7 +812,9 @@
           "2021-01-20": 0,
           "2021-01-21": 0,
           "2021-01-22": 0,
-          "2021-01-23": 0
+          "2021-01-23": 0,
+          "2021-01-24": 0,
+          "2021-01-25": 0
         },
         "provenanceDomain": "who.int",
         "provenanceUrl": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/"
@@ -21486,7 +21488,9 @@
           "2021-01-19": 24311264,
           "2021-01-20": 24497499,
           "2021-01-21": 24688129,
-          "2021-01-22": 24880041
+          "2021-01-22": 24880041,
+          "2021-01-23": 25047995,
+          "2021-01-24": 25177522
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -21860,7 +21864,9 @@
           "2021-01-19": 401824,
           "2021-01-20": 406194,
           "2021-01-21": 410336,
-          "2021-01-22": 414070
+          "2021-01-22": 414070,
+          "2021-01-23": 417392,
+          "2021-01-24": 419207
         },
         "provenanceDomain": "nytimes.com",
         "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
