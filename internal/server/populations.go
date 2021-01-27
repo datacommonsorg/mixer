@@ -51,67 +51,40 @@ func (s *Server) GetPopObs(ctx context.Context, in *pb.GetPopObsRequest) (
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs: %s", dcid)
 	}
 
-	out := pb.GetPopObsResponse{}
-
-	key := util.BtPopObsPrefix + dcid
+	rowList := bigtable.RowList{util.BtPopObsPrefix + dcid}
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
+		ctx, s.store, rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			popObsCache := &pb.PopObsPlace{}
+			err := protojson.Unmarshal(jsonRaw, popObsCache)
+			if err != nil {
+				return nil, err
+			}
+			return popObsCache, nil
+		}, nil)
+	if err != nil {
+		return nil, err
+	}
 	baseData := &pb.PopObsPlace{}
-	branchData := &pb.PopObsPlace{}
-	var baseRaw, branchRaw []byte
-	var hasBaseData, hasBranchData bool
-	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
-
-	btRow, err := s.store.BranchBt().ReadRow(ctx, key)
-	if err != nil {
-		log.Print(err)
+	var branchData *pb.PopObsPlace
+	if baseDataMap[dcid] != nil {
+		baseData = baseDataMap[dcid].(*pb.PopObsPlace)
 	}
-	hasBranchData = len(btRow[util.BtFamily]) > 0
-	if hasBranchData {
-		branchRaw = btRow[util.BtFamily][0].Value
+	if branchDataMap[dcid] != nil {
+		branchData = branchDataMap[dcid].(*pb.PopObsPlace)
 	}
-
-	btRow, err = s.store.BaseBt().ReadRow(ctx, key)
-	if err != nil {
-		log.Print(err)
-	}
-	hasBaseData = len(btRow[util.BtFamily]) > 0
-	if hasBaseData {
-		baseRaw = btRow[util.BtFamily][0].Value
-	}
-
-	if !hasBaseData && !hasBranchData {
-		return &out, nil
-	} else if !hasBaseData {
-		out.Payload = string(branchRaw)
-		return &out, nil
-	} else if !hasBranchData {
-		out.Payload = string(baseRaw)
-		return &out, nil
-	} else {
-		if tmp, err := util.UnzipAndDecode(string(baseRaw)); err == nil {
-			err := protojson.Unmarshal(tmp, baseData)
-			if err != nil {
-				return nil, err
-			}
-		}
-		if tmp, err := util.UnzipAndDecode(string(branchRaw)); err == nil {
-			err := protojson.Unmarshal(tmp, branchData)
-			if err != nil {
-				return nil, err
-			}
-		}
-		if baseData.Populations == nil {
-			baseData.Populations = map[string]*pb.PopObsPop{}
-		}
+	if branchData != nil {
 		for k, v := range branchData.Populations {
 			baseData.Populations[k] = v
 		}
-		resStr, err := protojson.Marshal(baseData)
-		if err != nil {
-			return &out, err
-		}
-		out.Payload, err = util.ZipAndEncode([]byte(resStr))
-		return &out, err
 	}
+	resStr, err := protojson.Marshal(baseData)
+	if err != nil {
+		return nil, err
+	}
+	out := pb.GetPopObsResponse{}
+	out.Payload, err = util.ZipAndEncode([]byte(resStr))
+	return &out, err
 }
 
 // GetPlaceObs implements API for Mixer.GetPlaceObs.

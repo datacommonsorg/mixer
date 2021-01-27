@@ -99,7 +99,18 @@ func TestGetPopObs(t *testing.T) {
 	if err != nil {
 		t.Errorf("GetPopObs() got err: %v", err)
 	}
-	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
+	jsonRaw, _ := util.UnzipAndDecode(out.GetPayload())
+	popObsCache := &pb.PopObsPlace{}
+	err = protojson.Unmarshal(jsonRaw, popObsCache)
+	if err != nil {
+		t.Errorf(("Unmarshal json raw failed"))
+	}
+	expectedCache := &pb.PopObsPlace{}
+	err = protojson.Unmarshal(btRow, expectedCache)
+	if err != nil {
+		t.Errorf(("Unmarshal btRow raw failed"))
+	}
+	if diff := cmp.Diff(popObsCache, expectedCache, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff: %v", diff)
 	}
 }
