@@ -37,7 +37,7 @@ spec:
             - name: LOCUST_MODE
               value: master
             - name: TARGET_HOST
-              value: https://mixer.endpoints.datcom-mixer-staging.cloud.goog
+              value: https://staging.api.datacommons.org
           ports:
             - name: loc-master-web
               containerPort: 8089

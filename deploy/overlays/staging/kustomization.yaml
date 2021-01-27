@@ -30,7 +30,7 @@ configMapGenerator:
   namespace: mixer
   literals:
   - projectId=datcom-mixer-staging
-  - serviceName=mixer.endpoints.datcom-mixer-staging.cloud.goog
+  - serviceName=staging.api.datacommons.org
 
 patchesStrategicMerge:
 - |-

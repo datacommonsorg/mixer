@@ -7,13 +7,14 @@ Mixer is deployed to Kubernetes cluster either locally on
 
 * `storage`: BigQuery and Bigtable version config
 * `base`: Base Kubernetes config yaml files.
-* `overlays`: Kubernetes deployment yaml files extending the base yaml files on dev/staging/prod environment.
+* `overlays`: Kubernetes deployment yaml files extending the base yaml files on dev/autopush/staging/prod environment.
 * `gke`: GKE cluster config.
 
 ## Overlays
 
 * `dev`: Yaml patches for local minikube cluster.
-* `staging`: Yaml patches for staging GKE cluster (staging Mixer)
+* `autopush`: Yaml patches for autopush GKE cluster (autopush.api.datacommons.org)
+* `staging`: Yaml patches for staging GKE cluster (staging.api.datacommons.org)
 * `prod`: Yaml patches for prod GKE cluster (prod mixer that serves api.datacommons.org)
 
 ## Generate kubetcl yaml file and deploy

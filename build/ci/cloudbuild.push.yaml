@@ -71,7 +71,7 @@ steps:
     args:
       - -c
       - |
-        ./scripts/update_staging_version.sh $SHORT_SHA
+        ./scripts/update_autopush_version.sh $SHORT_SHA
 
   # This is a trigger to push website at website/mixer code HEAD and with the
   # latest base cache.

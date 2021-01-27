@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-# This script is used to update the current staging mixer version in the
+# This script is used to update the current autopush mixer version in the
 # `deployment`:https://source.cloud.google.com/datcom-ci/deployment repo.
 # This is used by continous deployment process.
 
@@ -34,9 +34,9 @@ git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(
 # Update version file
 git checkout master
 
-echo $VERSION > /tmp/deployment/mixer/staging/version.txt
+echo $VERSION > /tmp/deployment/mixer/autopush/version.txt
 
 # Commit the version file
-git add /tmp/deployment/mixer/staging/*
-git commit -m "Update staging mixer versions at commit https://github.com/datacommonsorg/mixer/commit/$VERSION"
+git add /tmp/deployment/mixer/autopush/*
+git commit -m "Update autopush mixer versions at commit https://github.com/datacommonsorg/mixer/commit/$VERSION"
 git push origin master
