@@ -14,10 +14,10 @@
 
 # Staging Mixer GKE params
 
-project: datcom-mixer-staging
+project: datcom-mixer-autopush
 region: us-central1
-ip: 34.107.161.252
-domain: staging.api.datacommons.org
-api_title: DataCommons API (Staging)
-nodes: 3
+ip: 34.117.145.125
+domain: autopush.api.datacommons.org
+api_title: DataCommons API (Autopush)
+nodes: 1
 store: google.com:datcom-store-dev

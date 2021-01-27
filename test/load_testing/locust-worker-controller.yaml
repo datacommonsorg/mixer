@@ -38,4 +38,4 @@ spec:
             - name: LOCUST_MASTER
               value: locust-master
             - name: TARGET_HOST
-              value: https://mixer.endpoints.datcom-mixer-staging.cloud.goog
+              value: https://staging.api.datacommons.org

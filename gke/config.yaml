@@ -12,12 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Staging Mixer GKE params
 
-project: datcom-mixer-staging
+# This is a yaml template to create gcp/gke configuration.
+# Copy this file to `config.yaml` and use that.
+
+project: datcom-mixer-autopush
+ip: 34.117.145.125
+domain: autopush.api.datacommons.org
+api_title:
 region: us-central1
-ip: 34.107.161.252
-domain: staging.api.datacommons.org
-api_title: DataCommons API (Staging)
-nodes: 3
+nodes: 1
 store: google.com:datcom-store-dev

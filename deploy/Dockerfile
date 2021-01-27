@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Build docker image used in Cloud Build for staging/prod deployment.
+# Build docker image used in Cloud Build for deployment.
 # This image contains "gcloud", "kubectl", "yq", "kustomize"
 
 FROM google/cloud-sdk:slim
