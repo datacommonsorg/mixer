@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Staging Mixer GKE params
+# Autopush Mixer GKE params
 
 project: datcom-mixer-autopush
 region: us-central1
