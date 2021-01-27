@@ -99,7 +99,12 @@ func TestGetPopObs(t *testing.T) {
 	if err != nil {
 		t.Errorf("GetPopObs() got err: %v", err)
 	}
-	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
+	jsonRaw, err := util.UnzipAndDecode(out.GetPayload())
+	popObsCache := &pb.PopObsPlace{}
+	protojson.Unmarshal(jsonRaw, popObsCache)
+	expectedCache := &pb.PopObsPlace{}
+	protojson.Unmarshal(btRow, expectedCache)
+	if diff := cmp.Diff(popObsCache, expectedCache, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPopObs() got diff: %v", diff)
 	}
 }
