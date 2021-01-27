@@ -135,7 +135,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Government expenditures on military (% of GDP)",
+    "title": "Government expenditures on military as a percentage of GDP",
     "statsVars": [
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
     ],
