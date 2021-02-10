@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-# This is a yaml template to create gcp/gke configuration.
-# Copy this file to `config.yaml` and use that.
-
-project:
-ip:
-domain:
-api_title:
-region:
-nodes: 1
-store:
+# Custom mixer only serve SPARQL
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --bigquery_only=true
