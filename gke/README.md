@@ -6,7 +6,19 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
 
 * [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). If working on an existing project, you should have owner/editor role to perform the tasks.
 
-* Make a copy of the `config.yaml.tpl` as `config.yaml`.
+* Verify that yq version 3 is installed
+  * Run:
+  
+  ```bash
+  yq --version
+  ```
+  * If not installed run:
+  
+  ```bash
+  brew install yq@3
+  ```
+
+* Make a copy of the `config.yaml.tpl` as `config.yaml`. We will populate the fields in `config.yaml` as we progress through the walkthrough.
 
   ```bash
   cp config.yaml.tpl config.yaml
@@ -55,8 +67,16 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
 
   * If you see authentication errors, need to contact DataCommons team to complete some of the role binding operations as the service account need access to the Cloud Bigtable and Big Query.
 
+* [Optional]: If creating a private instance of the graph powered by the Data Commons Mixer complete the following steps:
+  * Update `config.yaml`, **store** field to the <Project ID>.
+  * Update `mixer/deploy/base/deployment.yaml`, add `- -- bigquery_only=true` to args.
+  * Upload .csv of private data to Project as a Table in [Google Cloud Project BigQuery](https://console.cloud.google.com/bigquery).
+  * Update `mixer/deploy/storage/bigquery.version` to <Project ID>:<Table Name>
+  * Update `mixer/deploy/mapping/base.mcf` to the tMCF of the schema for your private data.
+
 * Deploy Extensive Service Proxy.
   * Add API title in `config.yaml`, **api_title** field. If omit, the API title would be the same as the domain.
+  * Note: If initiating a private instance of the graph:
   * Run:
 
     ```bash
@@ -68,6 +88,12 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
   ```bash
   ./setup_ssl.sh
   ```
+
+* Enable gcloud API service.
+
+      ```bash
+      gcloud services enable container.googleapis.com
+      ```
 
 * Create the cluster.
   * Add the cluster region in `config.yaml`, **region** field.
@@ -83,3 +109,4 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
 * [Optional] DNS Setup for custom domain
   * This is only needed if you use custom domain (instead of the default domain provided by Cloud Endpoints).
   * [configure the DNS in the domain registrar](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#update-dns).
+  
