@@ -45,3 +45,13 @@ Temporary Items
 # Downloaded tools, e.g. golangci-lint
 bin/
 
+# Kubernetes
+gke/config.yaml
+gke/endpoints.yaml
+
+mixer-grpc.*.pb
+deploy/overlays/**/endpoints.yaml
+deploy/overlays/prod/prod.yaml
+deploy/overlays/staging/staging.yaml
+deploy/overlays/autopush/autopush.yaml
+deploy/overlays/encode/encode.yaml
