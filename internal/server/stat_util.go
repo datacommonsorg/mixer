@@ -67,7 +67,6 @@ func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 	sort.Sort(byRank(series))
 	if len(series) > 0 {
 		in.Data = series[0].Val
-		in.ProvenanceDomain = series[0].ProvenanceDomain
 		in.ProvenanceURL = series[0].ProvenanceURL
 	}
 	in.SourceSeries = nil
