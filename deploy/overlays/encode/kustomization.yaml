@@ -40,3 +40,13 @@ patchesJson6902:
     kind: Deployment
     name: mixer-grpc
   path: patch_bigquery.yaml
+
+
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: mixer-grpc
+  spec:
+    replicas: 12
