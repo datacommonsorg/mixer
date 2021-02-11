@@ -12,12 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+# Custom mixer only serve SPARQL
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --bigquery_only=true
 
-configMapGenerator:
-  - name: schema-mapping
-    files:
-      - base.mcf
-      - weather.mcf
-      - encode.mcf
+- op: remove
+  path: /spec/template/spec/containers/0/env/1/valueFrom
+
+- op: add
+  path: /spec/template/spec/containers/0/env/1/value
+  value: google.com:datcom-store-dev.dc_v3_encode_clustered

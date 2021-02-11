@@ -1,0 +1,33 @@
+Node: E:EncodeBedLine->E1
+typeOf: BedLine
+dcid: C:EncodeBedLine->id
+isPublic: C:EncodeBedLine->is_public
+fromBedFile: E:EncodeBedLine->E2
+chromosome: C:EncodeBedLine->chromosome
+chromosomeStart: C:EncodeBedLine->chromosome_start
+chromosomeEnd: C:EncodeBedLine->chromosome_end
+bedName: C:EncodeBedLine->bed_name
+bedScore: C:EncodeBedLine->bed_score
+chromosomeStrand: C:EncodeBedLine->chromosome_strand
+signalValue: C:EncodeBedLine->signal_value
+pValue: C:EncodeBedLine->p_value
+qValue: C:EncodeBedLine->q_value
+peak: C:EncodeBedLine->peak
+thickStart: C:EncodeBedLine->thick_start
+thickEnd: C:EncodeBedLine->thick_end
+itemRGB: C:EncodeBedLine->item_rgb
+blockCount: C:EncodeBedLine->block_count
+blockSizes: C:EncodeBedLine->block_sizes
+blockStarts: C:EncodeBedLine->block_starts
+provenance: E:EncodeBedLine->E3
+functionalDeps: dcid
+
+Node: E:EncodeBedLine->E2
+typeOf: EncodeBedFile
+dcid: C:EncodeBedLine->from_bed_file
+functionalDeps: dcid
+
+Node: E:EncodeBedLine->E3
+typeOf: Provenance
+dcid: C:EncodeBedLine->prov_id
+functionalDeps: dcid

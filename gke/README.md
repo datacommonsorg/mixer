@@ -7,7 +7,7 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
 * [Create a Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). If working on an existing project, you should have owner/editor role to perform the tasks.
 
 * Install [yq](https://mikefarah.gitbook.io/yq/v/v3.x/). Make sure the version is 3.x
-  
+
   ```bash
   yq --version
   ```
@@ -75,12 +75,6 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
   ./setup_ssl.sh
   ```
 
-* Enable gcloud API service.
-
-      ```bash
-      gcloud services enable container.googleapis.com
-      ```
-
 * Create the cluster.
   * Add the cluster region in `config.yaml`, **region** field.
   * Add the number of nodes in `config.yaml`, **nodes** field.
@@ -95,4 +89,3 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
 * [Optional] DNS Setup for custom domain
   * This is only needed if you use custom domain (instead of the default domain provided by Cloud Endpoints).
   * [configure the DNS in the domain registrar](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#update-dns).
-  
