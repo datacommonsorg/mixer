@@ -24,7 +24,8 @@ SERVICE_ACCOUNT="$NAME@$PROJECT_ID.iam.gserviceaccount.com"
 
 # Self project roles
 declare -a roles=(
-   # service control report for endpoints.
+    "roles/bigquery.jobUser"   # Query BigQuery
+    # service control report for endpoints.
     "roles/endpoints.serviceAgent"
     "roles/cloudtrace.agent"
     # Logging and monitoring
@@ -41,7 +42,7 @@ done
 
 # Data store project roles
 declare -a roles=(
-    "roles/bigquery.user"   # Query BigQuery
+    "roles/bigquery.admin"   # Query BigQuery
     "roles/bigtable.reader" # Query Bigtable
     "roles/storage.objectViewer" # Branch Cache Read
     "roles/pubsub.editor" # Branch Cache subscription
