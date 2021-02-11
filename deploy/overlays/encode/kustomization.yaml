@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Kustomization for encode mixer.
 
-# This is a yaml template to create gcp/gke configuration.
-# Copy this file to `config.yaml` and use that.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
-project: datcom-mixer-autopush
-ip: 34.117.145.125
-domain: autopush.api.datacommons.org
-api_title:
-region: us-central1
-nodes: 1
-store: google.com:datcom-store-dev
+nameSuffix: -encode
+namespace: mixer
+
+bases:
+- ../../base
+
+configMapGenerator:
+- name: mixer-configmap
+  behavior: create
+  literals:
+    - projectId=datcom-mixer-encode
+    - serviceName=encode.api.datacommons.org
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+patchesJson6902:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: mixer-grpc
+  path: patch_bigquery.yaml

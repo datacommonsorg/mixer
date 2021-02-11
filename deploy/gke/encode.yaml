@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+# Staging Mixer GKE params
 
-configMapGenerator:
-  - name: schema-mapping
-    files:
-      - base.mcf
-      - weather.mcf
-      - encode.mcf
+project: datcom-mixer-encode
+region: us-central1
+ip: 34.107.228.109
+domain: encode.api.datacommons.org
+api_title: DataCommons API (Encode)
+nodes: 1
+store: google.com:datcom-store-dev
