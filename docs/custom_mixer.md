@@ -6,6 +6,12 @@ This tutorial lists the steps to set this up.
 
 (TODO: Add more details to the following steps.)
 
+## Fork code
+
+For the [mixer code](https://github.com/datacommonsorg/mixer) to your own repo.
+Then checkout the repo locally. After making changes following the steps below,
+you can commit the changes back to your repo.
+
 ## Create Project
 
 Create a new GCP project and setup billing account.
@@ -13,15 +19,13 @@ Create a new GCP project and setup billing account.
 ## Import Dataset
 
 * Create Bigquery Dataset and import tables from csv files.
-* Create template MCF files (schema mapping) based on the Bigquery dataset.
+* Based on the Bigquery dataset, create a template MCF in [mapping.mcf](../deploy/overlays/custom/mapping.mcf).
 
 ## Setup GKE
 
 * Follow the [instructions](../gke/README.md) to setup the GKE instance.
 
 ## Deployment
-
-* Add the custom template MCF to [mapping.mcf](../deploy/overlays/custom/mapping.mcf).
 
 * Update the bigquery version [file](../deploy/overlays/custom/bigquery.version) to use
   the custom dataset.
