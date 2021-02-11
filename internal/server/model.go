@@ -98,19 +98,17 @@ type SourceSeries struct {
 	MeasurementMethod string             `json:"measurementMethod,omitempty"`
 	ScalingFactor     string             `json:"scalingFactor,omitempty"`
 	Unit              string             `json:"unit,omitempty"`
-	ProvenanceDomain  string             `json:"provenanceDomain,omitempty"`
 	ProvenanceURL     string             `json:"provenanceUrl,omitempty"`
 	Val               map[string]float64 `json:"val,omitempty"`
 }
 
 // ObsTimeSeries repesents multiple time series data.
 type ObsTimeSeries struct {
-	Data             map[string]float64 `json:"data,omitempty"`
-	PlaceName        string             `json:"placeName,omitempty"`
-	PlaceDcid        string             `json:"placeDcid,omitempty"`
-	SourceSeries     []*SourceSeries    `json:"sourceSeries,omitempty"`
-	ProvenanceDomain string             `json:"provenanceDomain,omitempty"`
-	ProvenanceURL    string             `json:"provenanceUrl,omitempty"`
+	Data          map[string]float64 `json:"data,omitempty"`
+	PlaceName     string             `json:"placeName,omitempty"`
+	PlaceDcid     string             `json:"placeDcid,omitempty"`
+	SourceSeries  []*SourceSeries    `json:"sourceSeries,omitempty"`
+	ProvenanceURL string             `json:"provenanceUrl,omitempty"`
 }
 
 // LandingPageData represents the landing page cache data.

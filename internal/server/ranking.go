@@ -79,8 +79,8 @@ func (a SeriesByRank) Less(i, j int) bool {
 	if oi.Unit != oj.Unit {
 		return oi.Unit < oj.Unit
 	}
-	if oi.ProvenanceDomain != oj.ProvenanceDomain {
-		return oi.ProvenanceDomain < oj.ProvenanceDomain
+	if oi.ProvenanceUrl != oj.ProvenanceUrl {
+		return oi.ProvenanceUrl < oj.ProvenanceUrl
 	}
 	return true
 }
@@ -122,8 +122,8 @@ func (a byRank) Less(i, j int) bool {
 	if oi.Unit != oj.Unit {
 		return oi.Unit < oj.Unit
 	}
-	if oi.ProvenanceDomain != oj.ProvenanceDomain {
-		return oi.ProvenanceDomain < oj.ProvenanceDomain
+	if oi.ProvenanceURL != oj.ProvenanceURL {
+		return oi.ProvenanceURL < oj.ProvenanceURL
 	}
 	return true
 }

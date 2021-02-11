@@ -6,7 +6,6 @@
           "2010": 8.8,
           "2016": 7.8
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
@@ -56,7 +55,6 @@
           "2013": 2568.82970799499,
           "2014": 2619.96061573831
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
@@ -106,7 +104,6 @@
           "2013": 1461.07678089719,
           "2014": 1495.54120710984
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
@@ -130,7 +127,6 @@
           "2014": 15.44382,
           "2015": 16.21822
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -154,7 +150,6 @@
           "2014": 5.94848,
           "2015": 6.24106
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
@@ -219,7 +214,6 @@
           "2017": 29283050314.4654,
           "2018": 27766427104.014
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -284,7 +278,6 @@
           "2017": 1.4195266381,
           "2018": 1.4749015474
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
@@ -350,7 +343,6 @@
           "2018": 9001.23424863499,
           "2019": 8717.18627810819
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
@@ -386,7 +378,6 @@
           "2018": 3043390537931.72,
           "2019": 3143422016727.75
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
@@ -422,7 +413,6 @@
           "2018": 14530,
           "2019": 14890
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
@@ -485,7 +475,6 @@
           "2015": 2.46678804837845,
           "2016": 2.24239344567735
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
@@ -536,7 +525,6 @@
           "2018": 2933489276.49,
           "2019": 3295529773.22
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -587,7 +575,6 @@
           "2018": 0.1555829462,
           "2019": 0.1791284343
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
@@ -638,7 +625,6 @@
           "2018": 2253247430.04,
           "2019": 2231583198.17
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
@@ -664,7 +650,6 @@
           "2018": 916824390000,
           "2019": 1187361690000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -690,7 +675,6 @@
           "2018": 48.6254512228,
           "2019": 64.5390134839
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
@@ -702,7 +686,6 @@
           "2004": 1,
           "2011": 1
         },
-        "provenanceDomain": "noaa.gov",
         "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
@@ -768,7 +751,6 @@
           "2018": 12.8,
           "2019": 12.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
@@ -834,7 +816,6 @@
           "2018": 11.2,
           "2019": 10.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
@@ -900,7 +881,6 @@
           "2018": 14.3,
           "2019": 13.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
@@ -956,7 +936,6 @@
           "2018": 2,
           "2019": 2
         },
-        "provenanceDomain": "usgs.gov",
         "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
@@ -1081,7 +1060,6 @@
           "2018": 209469333,
           "2019": 211049527
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {
@@ -1106,7 +1084,6 @@
           "2017": 15365200,
           "2018": 15182000
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15OrMoreYears": {},
@@ -1132,7 +1109,6 @@
           "2017": 16821600,
           "2018": 16439800
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
@@ -1168,7 +1144,6 @@
           "2018": 0.7031400299,
           "2019": 0.7038899994
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
@@ -1195,7 +1170,6 @@
           "2017": 17203500,
           "2018": 17294800
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25OrMoreYears": {},
@@ -1221,7 +1195,6 @@
           "2017": 17161700,
           "2018": 17068600
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25To34Years": {},
@@ -1255,7 +1228,6 @@
           "2017": 17306900,
           "2018": 17296700
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To39Years": {
@@ -1280,7 +1252,6 @@
           "2017": 16402800,
           "2018": 16662000
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To44Years": {},
@@ -1307,7 +1278,6 @@
           "2017": 14500800,
           "2018": 14879000
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To49Years": {
@@ -1332,7 +1302,6 @@
           "2017": 13171000,
           "2018": 13281300
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To54Years": {},
@@ -1358,7 +1327,6 @@
           "2017": 12102400,
           "2018": 12293900
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_55To59Years": {
@@ -1383,7 +1351,6 @@
           "2017": 10463700,
           "2018": 10746100
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_5To17Years": {},
@@ -1409,7 +1376,6 @@
           "2017": 14593300,
           "2018": 14537800
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_60To61Years": {},
@@ -1435,7 +1401,6 @@
           "2017": 8503040,
           "2018": 8797470
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_62To64Years": {},
@@ -1461,7 +1426,6 @@
           "2017": 6572590,
           "2018": 6823730
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_65To74Years": {},
@@ -1487,7 +1451,6 @@
           "2017": 4709480,
           "2018": 4938530
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_75OrMoreYears": {},
@@ -1513,7 +1476,6 @@
           "2017": 3292380,
           "2018": 3376250
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {
@@ -1527,7 +1489,6 @@
           "2014": 3.5326490334,
           "2015": 2.54
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {
@@ -1541,7 +1502,6 @@
           "2014": 2.2096160918,
           "2015": 1.53
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {
@@ -1555,7 +1515,6 @@
           "2014": 4.7786048224,
           "2015": 3.52
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_80OrMoreYears": {
@@ -1580,7 +1539,6 @@
           "2017": 3913380,
           "2018": 4089320
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -1623,7 +1581,6 @@
           "2017": 105641000,
           "2018": 106524000
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
@@ -1661,7 +1618,6 @@
           "2018": 105542232,
           "2019": 106500838
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
@@ -1694,7 +1650,6 @@
           "2017": 101164000,
           "2018": 101971000
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
@@ -1725,7 +1680,6 @@
           "2018": 24.5,
           "2019": 24.7
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
@@ -1791,7 +1745,6 @@
           "2018": 28133826,
           "2019": 27807886
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
@@ -1822,7 +1775,6 @@
           "2017": 14720800,
           "2018": 14787600
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -1831,7 +1783,6 @@
           "1996": 1,
           "2007": 0.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -1840,7 +1791,6 @@
           "1996": 2.6,
           "2007": 1.6
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -1849,7 +1799,6 @@
           "1996": 0.9,
           "2007": 0.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -1858,7 +1807,6 @@
           "1996": 3.1,
           "2007": 2
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -1867,7 +1815,6 @@
           "1996": 1,
           "2007": 0.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -1876,7 +1823,6 @@
           "1996": 2.8,
           "2007": 1.8
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
@@ -1942,7 +1888,6 @@
           "2018": 181335507,
           "2019": 183241641
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
@@ -1955,293 +1900,331 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2019-12-31": 0,
-          "2020-01-01": 0,
-          "2020-01-02": 0,
-          "2020-01-03": 0,
-          "2020-01-04": 0,
-          "2020-01-05": 0,
-          "2020-01-06": 0,
-          "2020-01-07": 0,
-          "2020-01-08": 0,
-          "2020-01-09": 0,
-          "2020-01-10": 0,
-          "2020-01-11": 0,
-          "2020-01-12": 0,
-          "2020-01-13": 0,
-          "2020-01-14": 0,
-          "2020-01-15": 0,
-          "2020-01-16": 0,
-          "2020-01-17": 0,
-          "2020-01-18": 0,
-          "2020-01-19": 0,
-          "2020-01-20": 0,
-          "2020-01-21": 0,
-          "2020-01-22": 0,
-          "2020-01-23": 0,
-          "2020-01-24": 0,
-          "2020-01-25": 0,
-          "2020-01-26": 0,
-          "2020-01-27": 0,
-          "2020-01-28": 0,
-          "2020-01-29": 0,
-          "2020-01-30": 0,
-          "2020-01-31": 0,
-          "2020-02-01": 0,
-          "2020-02-02": 0,
-          "2020-02-03": 0,
-          "2020-02-04": 0,
-          "2020-02-05": 0,
-          "2020-02-06": 0,
-          "2020-02-07": 0,
-          "2020-02-08": 0,
-          "2020-02-09": 0,
-          "2020-02-10": 0,
-          "2020-02-11": 0,
-          "2020-02-12": 0,
-          "2020-02-13": 0,
-          "2020-02-14": 0,
-          "2020-02-15": 0,
-          "2020-02-16": 0,
-          "2020-02-17": 0,
-          "2020-02-18": 0,
-          "2020-02-19": 0,
-          "2020-02-20": 0,
-          "2020-02-21": 0,
-          "2020-02-22": 0,
-          "2020-02-23": 0,
-          "2020-02-24": 0,
-          "2020-02-25": 0,
-          "2020-02-26": 0,
-          "2020-02-27": 0,
-          "2020-02-28": 0,
-          "2020-02-29": 0,
-          "2020-03-01": 0,
-          "2020-03-02": 0,
-          "2020-03-03": 0,
-          "2020-03-04": 0,
-          "2020-03-05": 0,
-          "2020-03-06": 0,
-          "2020-03-07": 0,
-          "2020-03-08": 0,
-          "2020-03-09": 0,
-          "2020-03-10": 0,
-          "2020-03-11": 0,
-          "2020-03-12": 0,
-          "2020-03-13": 0,
-          "2020-03-14": 0,
-          "2020-03-15": 0,
-          "2020-03-16": 0,
-          "2020-03-17": 0,
-          "2020-03-18": 1,
-          "2020-03-19": 4,
-          "2020-03-20": 6,
-          "2020-03-21": 11,
-          "2020-03-22": 18,
-          "2020-03-23": 25,
-          "2020-03-24": 34,
-          "2020-03-25": 46,
-          "2020-03-26": 57,
-          "2020-03-27": 77,
-          "2020-03-28": 92,
-          "2020-03-29": 114,
-          "2020-03-30": 136,
-          "2020-03-31": 159,
-          "2020-04-01": 201,
-          "2020-04-02": 241,
-          "2020-04-03": 299,
-          "2020-04-04": 359,
-          "2020-04-05": 432,
-          "2020-04-06": 486,
-          "2020-04-07": 553,
-          "2020-04-08": 667,
-          "2020-04-09": 800,
-          "2020-04-10": 941,
-          "2020-04-11": 1056,
-          "2020-04-12": 1124,
-          "2020-04-13": 1223,
-          "2020-04-14": 1328,
-          "2020-04-15": 1532,
-          "2020-04-16": 1736,
-          "2020-04-17": 1924,
-          "2020-04-18": 2141,
-          "2020-04-19": 2347,
-          "2020-04-20": 2462,
-          "2020-04-21": 2575,
-          "2020-04-22": 2741,
-          "2020-04-23": 2906,
-          "2020-04-24": 3313,
-          "2020-04-25": 3670,
-          "2020-04-26": 4016,
-          "2020-04-27": 4205,
-          "2020-04-28": 4543,
-          "2020-04-29": 5017,
-          "2020-04-30": 5466,
-          "2020-05-01": 5901,
-          "2020-05-02": 6329,
-          "2020-05-03": 6750,
-          "2020-05-04": 7025,
-          "2020-05-05": 7321,
-          "2020-05-06": 7921,
-          "2020-05-07": 8536,
-          "2020-05-08": 9146,
-          "2020-05-09": 9897,
-          "2020-05-10": 10627,
-          "2020-05-11": 11123,
-          "2020-05-12": 11519,
-          "2020-05-13": 12400,
-          "2020-05-14": 13149,
-          "2020-05-15": 13993,
-          "2020-05-16": 14817,
-          "2020-05-17": 15633,
-          "2020-05-18": 16118,
-          "2020-05-19": 16792,
-          "2020-05-20": 17971,
-          "2020-05-21": 18859,
-          "2020-05-22": 20047,
-          "2020-05-23": 21048,
-          "2020-05-24": 22013,
-          "2020-05-25": 22666,
-          "2020-05-26": 23473,
-          "2020-05-27": 24512,
-          "2020-05-28": 25598,
-          "2020-05-29": 26754,
-          "2020-05-30": 27878,
-          "2020-05-31": 28834,
-          "2020-06-01": 29314,
-          "2020-06-02": 29937,
-          "2020-06-03": 31199,
-          "2020-06-04": 32548,
-          "2020-06-05": 34021,
-          "2020-06-06": 35026,
-          "2020-06-07": 35930,
-          "2020-06-08": 36455,
-          "2020-06-09": 37134,
-          "2020-06-10": 38406,
-          "2020-06-11": 39680,
-          "2020-06-12": 40919,
-          "2020-06-13": 41828,
-          "2020-06-14": 42720,
-          "2020-06-15": 43332,
-          "2020-06-16": 43959,
-          "2020-06-17": 45241,
-          "2020-06-18": 46510,
-          "2020-06-19": 47748,
-          "2020-06-20": 48954,
-          "2020-06-21": 49976,
-          "2020-06-22": 50617,
-          "2020-06-23": 51271,
-          "2020-06-24": 52645,
-          "2020-06-25": 53830,
-          "2020-06-26": 54971,
-          "2020-06-27": 55961,
-          "2020-06-28": 57070,
-          "2020-06-29": 57622,
-          "2020-06-30": 58314,
-          "2020-07-01": 59594,
-          "2020-07-02": 60632,
-          "2020-07-03": 61884,
-          "2020-07-04": 63174,
-          "2020-07-05": 64265,
-          "2020-07-06": 64867,
-          "2020-07-07": 65487,
-          "2020-07-08": 66741,
-          "2020-07-09": 67964,
-          "2020-07-10": 69184,
-          "2020-07-11": 70398,
-          "2020-07-12": 71469,
-          "2020-07-13": 72100,
-          "2020-07-14": 72833,
-          "2020-07-15": 74133,
-          "2020-07-16": 75366,
-          "2020-07-17": 76688,
-          "2020-07-18": 77851,
-          "2020-07-19": 78772,
-          "2020-07-20": 79488,
-          "2020-07-21": 80120,
-          "2020-07-22": 81487,
-          "2020-07-23": 82771,
-          "2020-07-24": 84082,
-          "2020-07-25": 85238,
-          "2020-07-26": 86449,
-          "2020-07-27": 87004,
-          "2020-07-28": 87618,
-          "2020-07-29": 88539,
-          "2020-07-30": 90134,
-          "2020-07-31": 91263,
-          "2020-08-01": 92475,
-          "2020-08-02": 93563,
-          "2020-08-03": 94104,
-          "2020-08-04": 94665,
-          "2020-08-05": 95819,
-          "2020-08-06": 97256,
-          "2020-08-07": 98493,
-          "2020-08-08": 99572,
-          "2020-08-09": 100477,
-          "2020-08-10": 101049,
-          "2020-08-11": 101752,
-          "2020-08-12": 103026,
-          "2020-08-13": 104201,
-          "2020-08-14": 105463,
-          "2020-08-15": 106523,
-          "2020-08-16": 107232,
-          "2020-08-17": 107852,
-          "2020-08-18": 108536,
-          "2020-08-19": 109888,
-          "2020-08-20": 111100,
-          "2020-08-21": 112304,
-          "2020-08-22": 113358,
-          "2020-08-23": 114250,
-          "2020-08-24": 114744,
-          "2020-08-25": 115309,
-          "2020-08-26": 116580,
-          "2020-08-27": 117665,
-          "2020-08-28": 118649,
-          "2020-08-29": 119504,
-          "2020-08-30": 120462,
-          "2020-08-31": 120828,
-          "2020-09-01": 121381,
-          "2020-09-02": 122596,
-          "2020-09-03": 123780,
-          "2020-09-04": 124614,
-          "2020-09-05": 125521,
-          "2020-09-06": 126203,
-          "2020-09-07": 126650,
-          "2020-09-08": 126960,
-          "2020-09-09": 127464,
-          "2020-09-10": 128539,
-          "2020-09-11": 129522,
-          "2020-09-12": 130396,
-          "2020-09-13": 131210,
-          "2020-09-14": 131625,
-          "2020-09-15": 132006,
-          "2020-09-16": 133119,
-          "2020-09-17": 134106,
-          "2020-09-18": 134935,
-          "2020-09-19": 135793,
-          "2020-09-20": 136532,
-          "2020-09-21": 136895,
-          "2020-09-22": 137272,
-          "2020-09-23": 138108,
-          "2020-09-24": 138977,
-          "2020-09-25": 139808,
-          "2020-09-26": 140537,
-          "2020-09-27": 141406,
-          "2020-09-28": 141741,
-          "2020-09-29": 142058,
-          "2020-09-30": 142921,
-          "2020-10-01": 143952,
+          "2020-03-17": 1,
+          "2020-03-18": 3,
+          "2020-03-19": 6,
+          "2020-03-20": 11,
+          "2020-03-21": 15,
+          "2020-03-22": 25,
+          "2020-03-23": 34,
+          "2020-03-24": 46,
+          "2020-03-25": 59,
+          "2020-03-26": 77,
+          "2020-03-27": 92,
+          "2020-03-28": 111,
+          "2020-03-29": 136,
+          "2020-03-30": 159,
+          "2020-03-31": 201,
+          "2020-04-01": 240,
+          "2020-04-02": 324,
+          "2020-04-03": 359,
+          "2020-04-04": 445,
+          "2020-04-05": 486,
+          "2020-04-06": 564,
+          "2020-04-07": 686,
+          "2020-04-08": 819,
+          "2020-04-09": 950,
+          "2020-04-10": 1057,
+          "2020-04-11": 1124,
+          "2020-04-12": 1223,
+          "2020-04-13": 1328,
+          "2020-04-14": 1532,
+          "2020-04-15": 1736,
+          "2020-04-16": 1924,
+          "2020-04-17": 2141,
+          "2020-04-18": 2354,
+          "2020-04-19": 2462,
+          "2020-04-20": 2587,
+          "2020-04-21": 2741,
+          "2020-04-22": 2906,
+          "2020-04-23": 3331,
+          "2020-04-24": 3704,
+          "2020-04-25": 4057,
+          "2020-04-26": 4286,
+          "2020-04-27": 4603,
+          "2020-04-28": 5083,
+          "2020-04-29": 5513,
+          "2020-04-30": 6006,
+          "2020-05-01": 6412,
+          "2020-05-02": 6761,
+          "2020-05-03": 7051,
+          "2020-05-04": 7367,
+          "2020-05-05": 7938,
+          "2020-05-06": 8588,
+          "2020-05-07": 9190,
+          "2020-05-08": 10017,
+          "2020-05-09": 10656,
+          "2020-05-10": 11123,
+          "2020-05-11": 11653,
+          "2020-05-12": 12461,
+          "2020-05-13": 13240,
+          "2020-05-14": 13999,
+          "2020-05-15": 14962,
+          "2020-05-16": 15662,
+          "2020-05-17": 16118,
+          "2020-05-18": 16853,
+          "2020-05-19": 17983,
+          "2020-05-20": 18859,
+          "2020-05-21": 20047,
+          "2020-05-22": 21048,
+          "2020-05-23": 22013,
+          "2020-05-24": 22666,
+          "2020-05-25": 23473,
+          "2020-05-26": 24512,
+          "2020-05-27": 25598,
+          "2020-05-28": 26754,
+          "2020-05-29": 27878,
+          "2020-05-30": 28834,
+          "2020-05-31": 29314,
+          "2020-06-01": 29937,
+          "2020-06-02": 31199,
+          "2020-06-03": 32548,
+          "2020-06-04": 34021,
+          "2020-06-05": 35026,
+          "2020-06-06": 35930,
+          "2020-06-07": 36455,
+          "2020-06-08": 37134,
+          "2020-06-09": 38406,
+          "2020-06-10": 39680,
+          "2020-06-11": 40919,
+          "2020-06-12": 41828,
+          "2020-06-13": 42720,
+          "2020-06-14": 43332,
+          "2020-06-15": 43959,
+          "2020-06-16": 45241,
+          "2020-06-17": 46510,
+          "2020-06-18": 47748,
+          "2020-06-19": 48954,
+          "2020-06-20": 49976,
+          "2020-06-21": 50591,
+          "2020-06-22": 51271,
+          "2020-06-23": 52645,
+          "2020-06-24": 53830,
+          "2020-06-25": 54971,
+          "2020-06-26": 55961,
+          "2020-06-27": 57070,
+          "2020-06-28": 57622,
+          "2020-06-29": 58314,
+          "2020-06-30": 59594,
+          "2020-07-01": 60632,
+          "2020-07-02": 61884,
+          "2020-07-03": 63174,
+          "2020-07-04": 64265,
+          "2020-07-05": 64867,
+          "2020-07-06": 65487,
+          "2020-07-07": 66741,
+          "2020-07-08": 67964,
+          "2020-07-09": 69184,
+          "2020-07-10": 70398,
+          "2020-07-11": 71469,
+          "2020-07-12": 72100,
+          "2020-07-13": 72833,
+          "2020-07-14": 74133,
+          "2020-07-15": 75366,
+          "2020-07-16": 76688,
+          "2020-07-17": 77851,
+          "2020-07-18": 78772,
+          "2020-07-19": 79488,
+          "2020-07-20": 80120,
+          "2020-07-21": 81487,
+          "2020-07-22": 82771,
+          "2020-07-23": 84082,
+          "2020-07-24": 85238,
+          "2020-07-25": 86449,
+          "2020-07-26": 87004,
+          "2020-07-27": 87618,
+          "2020-07-28": 88539,
+          "2020-07-29": 90134,
+          "2020-07-30": 91263,
+          "2020-07-31": 92475,
+          "2020-08-01": 93563,
+          "2020-08-02": 94104,
+          "2020-08-03": 94665,
+          "2020-08-04": 95819,
+          "2020-08-05": 97256,
+          "2020-08-06": 98493,
+          "2020-08-07": 99572,
+          "2020-08-08": 100477,
+          "2020-08-09": 101049,
+          "2020-08-10": 101752,
+          "2020-08-11": 103026,
+          "2020-08-12": 104201,
+          "2020-08-13": 105463,
+          "2020-08-14": 106523,
+          "2020-08-15": 107232,
+          "2020-08-16": 107852,
+          "2020-08-17": 108536,
+          "2020-08-18": 109888,
+          "2020-08-19": 111100,
+          "2020-08-20": 112304,
+          "2020-08-21": 113358,
+          "2020-08-22": 114250,
+          "2020-08-23": 114744,
+          "2020-08-24": 115309,
+          "2020-08-25": 116580,
+          "2020-08-26": 117665,
+          "2020-08-27": 118649,
+          "2020-08-28": 119504,
+          "2020-08-29": 120262,
+          "2020-08-30": 120828,
+          "2020-08-31": 121381,
+          "2020-09-01": 122596,
+          "2020-09-02": 123780,
+          "2020-09-03": 124614,
+          "2020-09-04": 125502,
+          "2020-09-05": 126203,
+          "2020-09-06": 126650,
+          "2020-09-07": 126960,
+          "2020-09-08": 127464,
+          "2020-09-09": 128539,
+          "2020-09-10": 129522,
+          "2020-09-11": 130396,
+          "2020-09-12": 131210,
+          "2020-09-13": 131625,
+          "2020-09-14": 132006,
+          "2020-09-15": 133119,
+          "2020-09-16": 134106,
+          "2020-09-17": 134935,
+          "2020-09-18": 135793,
+          "2020-09-19": 136532,
+          "2020-09-20": 136895,
+          "2020-09-21": 137272,
+          "2020-09-22": 138105,
+          "2020-09-23": 138105,
+          "2020-09-24": 139808,
+          "2020-09-25": 140537,
+          "2020-09-26": 141406,
+          "2020-09-27": 141741,
+          "2020-09-28": 142058,
+          "2020-09-29": 142921,
+          "2020-09-30": 143952,
+          "2020-10-01": 144680,
           "2020-10-02": 144680,
-          "2020-10-03": 145388,
-          "2020-10-04": 145987,
-          "2020-10-05": 146352,
-          "2020-10-06": 146675,
-          "2020-10-07": 147494,
-          "2020-10-08": 148228,
-          "2020-10-09": 148957
+          "2020-10-03": 145987,
+          "2020-10-04": 146352,
+          "2020-10-05": 146675,
+          "2020-10-06": 147494,
+          "2020-10-07": 148228,
+          "2020-10-08": 148957,
+          "2020-10-09": 149639,
+          "2020-10-10": 150198,
+          "2020-10-11": 150488,
+          "2020-10-12": 150689,
+          "2020-10-13": 150998,
+          "2020-10-14": 151747,
+          "2020-10-15": 152460,
+          "2020-10-16": 153214,
+          "2020-10-17": 153675,
+          "2020-10-18": 153675,
+          "2020-10-19": 154176,
+          "2020-10-20": 154837,
+          "2020-10-21": 155403,
+          "2020-10-22": 155900,
+          "2020-10-23": 156471,
+          "2020-10-24": 156903,
+          "2020-10-25": 157134,
+          "2020-10-26": 157397,
+          "2020-10-27": 157946,
+          "2020-10-28": 158456,
+          "2020-10-29": 158969,
+          "2020-10-30": 159477,
+          "2020-10-31": 159884,
+          "2020-11-01": 160074,
+          "2020-11-02": 160253,
+          "2020-11-03": 160496,
+          "2020-11-04": 161106,
+          "2020-11-05": 161106,
+          "2020-11-06": 162015,
+          "2020-11-07": 162269,
+          "2020-11-08": 162397,
+          "2020-11-09": 162628,
+          "2020-11-10": 162802,
+          "2020-11-11": 163368,
+          "2020-11-12": 164281,
+          "2020-11-13": 164737,
+          "2020-11-14": 165658,
+          "2020-11-15": 165798,
+          "2020-11-16": 166014,
+          "2020-11-17": 166699,
+          "2020-11-18": 167455,
+          "2020-11-19": 168061,
+          "2020-11-20": 168613,
+          "2020-11-21": 168989,
+          "2020-11-22": 169183,
+          "2020-11-23": 169485,
+          "2020-11-24": 170115,
+          "2020-11-25": 170769,
+          "2020-11-26": 171460,
+          "2020-11-27": 171974,
+          "2020-11-28": 172561,
+          "2020-11-29": 172833,
+          "2020-11-30": 173120,
+          "2020-12-01": 173817,
+          "2020-12-02": 174515,
+          "2020-12-03": 175270,
+          "2020-12-04": 175964,
+          "2020-12-05": 176628,
+          "2020-12-06": 176941,
+          "2020-12-07": 177317,
+          "2020-12-08": 178159,
+          "2020-12-09": 178995,
+          "2020-12-10": 179765,
+          "2020-12-11": 180437,
+          "2020-12-12": 181123,
+          "2020-12-13": 181402,
+          "2020-12-14": 181835,
+          "2020-12-15": 182799,
+          "2020-12-16": 183735,
+          "2020-12-17": 184827,
+          "2020-12-18": 185650,
+          "2020-12-19": 186356,
+          "2020-12-20": 186764,
+          "2020-12-21": 187291,
+          "2020-12-22": 188259,
+          "2020-12-23": 189220,
+          "2020-12-24": 189982,
+          "2020-12-25": 190488,
+          "2020-12-26": 190795,
+          "2020-12-27": 191139,
+          "2020-12-28": 191570,
+          "2020-12-29": 192681,
+          "2020-12-30": 193875,
+          "2020-12-31": 194949,
+          "2021-01-01": 195411,
+          "2021-01-02": 195725,
+          "2021-01-03": 196018,
+          "2021-01-04": 196561,
+          "2021-01-05": 197732,
+          "2021-01-06": 198974,
+          "2021-01-07": 200498,
+          "2021-01-08": 201460,
+          "2021-01-09": 202631,
+          "2021-01-10": 203100,
+          "2021-01-11": 203580,
+          "2021-01-12": 204690,
+          "2021-01-13": 205964,
+          "2021-01-14": 207095,
+          "2021-01-15": 208246,
+          "2021-01-16": 209296,
+          "2021-01-17": 209847,
+          "2021-01-18": 210299,
+          "2021-01-19": 211491,
+          "2021-01-20": 212831,
+          "2021-01-21": 214147,
+          "2021-01-22": 215243,
+          "2021-01-23": 216445,
+          "2021-01-24": 217037,
+          "2021-01-25": 217664,
+          "2021-01-26": 218878,
+          "2021-01-27": 220161,
+          "2021-01-28": 221547,
+          "2021-01-29": 222666,
+          "2021-01-30": 223945,
+          "2021-01-31": 224504,
+          "2021-02-01": 225099,
+          "2021-02-02": 226309
         },
-        "provenanceDomain": "google.com",
-        "provenanceUrl": "https://research.google.com"
+        "provenanceUrl": "https://ourworldindata.org/coronavirus"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -2305,7 +2288,6 @@
           "2017": 1.739,
           "2018": 1.73
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GiniIndex_EconomicActivity": {
@@ -2345,7 +2327,6 @@
           "2017": 53.3,
           "2018": 53.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
@@ -2410,7 +2391,6 @@
           "2018": 1.31722399870793,
           "2019": 1.13658557200958
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
@@ -2475,7 +2455,6 @@
           "2018": 0.783847578971981,
           "2019": 0.75154842651724
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
@@ -2540,7 +2519,6 @@
           "2017": 75.456,
           "2018": 75.672
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
@@ -2594,7 +2572,6 @@
           "2010": 13,
           "2016": 13.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
@@ -2655,7 +2632,6 @@
           "2013": 7217.52908915495,
           "2014": 7035.48297471676
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
@@ -2717,7 +2693,6 @@
           "2014": 3779.46192078536,
           "2015": 3817.54941455461
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {
@@ -2748,7 +2723,6 @@
           "2018": 2068562200000,
           "2019": 2053033400000
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government": {
@@ -2770,7 +2744,6 @@
           "2015": 10.97799,
           "2016": 10.92541
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -2792,7 +2765,6 @@
           "2015": 4.80518,
           "2016": 4.80093
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
@@ -2857,7 +2829,6 @@
           "2017": 45381722042.225,
           "2018": 49470627810.6299
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -2922,7 +2893,6 @@
           "2017": 1.2341411022,
           "2018": 1.2337687569
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
@@ -2978,7 +2948,6 @@
           "2018": 47810.5076706348,
           "2019": 46445.2491012508
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
@@ -3014,7 +2983,6 @@
           "2018": 4641067663123.44,
           "2019": 4805762870963.44
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
@@ -3050,7 +3018,6 @@
           "2018": 55980,
           "2019": 57810
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
@@ -3082,7 +3049,6 @@
           "2015": 8.90041929882487,
           "2016": 8.84012879430996
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
@@ -3137,7 +3103,6 @@
           "2018": 17024407727.6008,
           "2019": 16474116128.0303
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -3192,7 +3157,6 @@
           "2018": 0.4310468978,
           "2019": 0.428385362
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
@@ -3247,7 +3211,6 @@
           "2018": 24322173787.7839,
           "2019": 24062113415.0434
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
@@ -3298,7 +3261,6 @@
           "2018": 1755172790000,
           "2019": 2098173930000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -3349,7 +3311,6 @@
           "2018": 44.4398300614,
           "2019": 54.5599528083
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
@@ -3412,7 +3373,6 @@
           "2018": 3.3,
           "2019": 3.2
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
@@ -3470,7 +3430,6 @@
           "2018": 3,
           "2019": 2.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
@@ -3528,7 +3487,6 @@
           "2018": 3.5,
           "2019": 3.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
@@ -3583,7 +3541,6 @@
           "2015": 1,
           "2018": 2
         },
-        "provenanceDomain": "usgs.gov",
         "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
@@ -3708,7 +3665,6 @@
           "2018": 82792351,
           "2019": 83019213
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_10To14Years": {
@@ -3774,7 +3730,6 @@
           "2018": 3682765,
           "2019": 3702180
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_15OrMoreYears": {},
@@ -3841,7 +3796,6 @@
           "2018": 4080567,
           "2019": 4003477
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
@@ -3877,7 +3831,6 @@
           "2018": 0.7848699951,
           "2019": 0.7857099915
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
@@ -3945,7 +3898,6 @@
           "2018": 4602514,
           "2019": 4607272
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_25OrMoreYears": {},
@@ -4012,7 +3964,6 @@
           "2018": 5298080,
           "2019": 5193335
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_25To34Years": {},
@@ -4087,7 +4038,6 @@
           "2018": 5290252,
           "2019": 5409029
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_35To39Years": {
@@ -4153,7 +4103,6 @@
           "2018": 5163210,
           "2019": 5237416
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_35To44Years": {},
@@ -4221,7 +4170,6 @@
           "2018": 4788357,
           "2019": 4841738
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_45To49Years": {
@@ -4287,7 +4235,6 @@
           "2018": 5943287,
           "2019": 5584519
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_45To54Years": {},
@@ -4354,7 +4301,6 @@
           "2018": 6968045,
           "2019": 6875948
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_55To59Years": {
@@ -4420,7 +4366,6 @@
           "2018": 6401516,
           "2019": 6598218
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_5To17Years": {},
@@ -4487,7 +4432,6 @@
           "2018": 3642216,
           "2019": 3662238
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_60To61Years": {},
@@ -4554,7 +4498,6 @@
           "2018": 5375053,
           "2019": 5493914
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_62To64Years": {},
@@ -4621,7 +4564,6 @@
           "2018": 4711694,
           "2019": 4808497
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_65To74Years": {},
@@ -4688,7 +4630,6 @@
           "2018": 3611909,
           "2019": 3596545
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_75OrMoreYears": {
@@ -4724,7 +4665,6 @@
           "2018": 9386108,
           "2019": 9478490
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_75To79Years": {
@@ -4790,7 +4730,6 @@
           "2018": 4235423,
           "2019": 4089384
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {},
@@ -4859,7 +4798,6 @@
           "2018": 5150685,
           "2019": 5389106
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -4943,7 +4881,6 @@
           "2018": 41948786,
           "2019": 42052522
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
@@ -4981,7 +4918,6 @@
           "2018": 43560137,
           "2019": 43577709
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
@@ -5055,7 +4991,6 @@
           "2018": 40843565,
           "2019": 40966691
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
@@ -5086,7 +5021,6 @@
           "2018": 234.34,
           "2019": 234.98
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
@@ -5152,7 +5086,6 @@
           "2018": 18809664,
           "2019": 18807964
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
@@ -5224,7 +5157,6 @@
           "2018": 3846778,
           "2019": 3926397
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
@@ -5235,7 +5167,6 @@
         "data": {
           "2004": 0.1
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -5243,7 +5174,6 @@
           "2004": 1,
           "2016": 0.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
@@ -5309,7 +5239,6 @@
           "2018": 64096118,
           "2019": 64324835
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
@@ -5322,293 +5251,339 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2019-12-31": 0,
-          "2020-01-01": 0,
-          "2020-01-02": 0,
-          "2020-01-03": 0,
-          "2020-01-04": 0,
-          "2020-01-05": 0,
-          "2020-01-06": 0,
-          "2020-01-07": 0,
-          "2020-01-08": 0,
-          "2020-01-09": 0,
-          "2020-01-10": 0,
-          "2020-01-11": 0,
-          "2020-01-12": 0,
-          "2020-01-13": 0,
-          "2020-01-14": 0,
-          "2020-01-15": 0,
-          "2020-01-16": 0,
-          "2020-01-17": 0,
-          "2020-01-18": 0,
-          "2020-01-19": 0,
-          "2020-01-20": 0,
-          "2020-01-21": 0,
-          "2020-01-22": 0,
-          "2020-01-23": 0,
-          "2020-01-24": 0,
-          "2020-01-25": 0,
-          "2020-01-26": 0,
-          "2020-01-27": 0,
-          "2020-01-28": 0,
-          "2020-01-29": 0,
-          "2020-01-30": 0,
-          "2020-01-31": 0,
-          "2020-02-01": 0,
-          "2020-02-02": 0,
-          "2020-02-03": 0,
-          "2020-02-04": 0,
-          "2020-02-05": 0,
-          "2020-02-06": 0,
-          "2020-02-07": 0,
-          "2020-02-08": 0,
-          "2020-02-09": 0,
-          "2020-02-10": 0,
-          "2020-02-11": 0,
-          "2020-02-12": 0,
-          "2020-02-13": 0,
-          "2020-02-14": 0,
-          "2020-02-15": 0,
-          "2020-02-16": 0,
-          "2020-02-17": 0,
-          "2020-02-18": 0,
-          "2020-02-19": 0,
-          "2020-02-20": 0,
-          "2020-02-21": 0,
-          "2020-02-22": 0,
-          "2020-02-23": 0,
-          "2020-02-24": 0,
-          "2020-02-25": 0,
-          "2020-02-26": 0,
-          "2020-02-27": 0,
-          "2020-02-28": 0,
-          "2020-02-29": 0,
-          "2020-03-01": 0,
-          "2020-03-02": 0,
-          "2020-03-03": 0,
-          "2020-03-04": 0,
-          "2020-03-05": 0,
-          "2020-03-06": 0,
-          "2020-03-07": 0,
-          "2020-03-08": 0,
-          "2020-03-09": 0,
+          "2020-03-09": 2,
           "2020-03-10": 2,
-          "2020-03-11": 2,
+          "2020-03-11": 3,
           "2020-03-12": 3,
-          "2020-03-13": 5,
-          "2020-03-14": 5,
-          "2020-03-15": 8,
-          "2020-03-16": 12,
-          "2020-03-17": 13,
-          "2020-03-18": 13,
-          "2020-03-19": 13,
-          "2020-03-20": 43,
-          "2020-03-21": 45,
-          "2020-03-22": 67,
-          "2020-03-23": 94,
-          "2020-03-24": 126,
-          "2020-03-25": 149,
-          "2020-03-26": 198,
-          "2020-03-27": 253,
-          "2020-03-28": 325,
-          "2020-03-29": 389,
-          "2020-03-30": 455,
-          "2020-03-31": 583,
-          "2020-04-01": 732,
-          "2020-04-02": 872,
-          "2020-04-03": 1017,
-          "2020-04-04": 1158,
-          "2020-04-05": 1342,
-          "2020-04-06": 1434,
-          "2020-04-07": 1607,
-          "2020-04-08": 1861,
-          "2020-04-09": 2107,
-          "2020-04-10": 2373,
-          "2020-04-11": 2544,
-          "2020-04-12": 2673,
-          "2020-04-13": 2799,
-          "2020-04-14": 2969,
-          "2020-04-15": 3254,
-          "2020-04-16": 3569,
-          "2020-04-17": 3868,
-          "2020-04-18": 4110,
-          "2020-04-19": 4294,
-          "2020-04-20": 4404,
-          "2020-04-21": 4598,
-          "2020-04-22": 4879,
-          "2020-04-23": 5094,
-          "2020-04-24": 5321,
-          "2020-04-25": 5500,
-          "2020-04-26": 5640,
-          "2020-04-27": 5750,
-          "2020-04-28": 5913,
-          "2020-04-29": 6115,
-          "2020-04-30": 6288,
-          "2020-05-01": 6481,
-          "2020-05-02": 6575,
-          "2020-05-03": 6649,
-          "2020-05-04": 6692,
-          "2020-05-05": 6831,
-          "2020-05-06": 6996,
-          "2020-05-07": 7119,
-          "2020-05-08": 7266,
-          "2020-05-09": 7369,
-          "2020-05-10": 7395,
-          "2020-05-11": 7417,
-          "2020-05-12": 7533,
-          "2020-05-13": 7634,
-          "2020-05-14": 7723,
-          "2020-05-15": 7824,
-          "2020-05-16": 7881,
-          "2020-05-17": 7914,
-          "2020-05-18": 7935,
-          "2020-05-19": 8007,
-          "2020-05-20": 8090,
-          "2020-05-21": 8147,
-          "2020-05-22": 8174,
-          "2020-05-23": 8216,
-          "2020-05-24": 8247,
-          "2020-05-25": 8257,
-          "2020-05-26": 8302,
-          "2020-05-27": 8349,
-          "2020-05-28": 8411,
-          "2020-05-29": 8450,
-          "2020-05-30": 8489,
-          "2020-05-31": 8500,
-          "2020-06-01": 8511,
-          "2020-06-02": 8522,
-          "2020-06-03": 8551,
-          "2020-06-04": 8581,
-          "2020-06-05": 8613,
-          "2020-06-06": 8646,
-          "2020-06-07": 8668,
-          "2020-06-08": 8674,
-          "2020-06-09": 8711,
-          "2020-06-10": 8729,
-          "2020-06-11": 8755,
-          "2020-06-12": 8763,
-          "2020-06-13": 8781,
-          "2020-06-14": 8787,
-          "2020-06-15": 8791,
-          "2020-06-16": 8800,
-          "2020-06-17": 8830,
-          "2020-06-18": 8856,
-          "2020-06-19": 8872,
-          "2020-06-20": 8882,
-          "2020-06-21": 8882,
-          "2020-06-22": 8885,
-          "2020-06-23": 8895,
-          "2020-06-24": 8914,
-          "2020-06-25": 8927,
-          "2020-06-26": 8948,
-          "2020-06-27": 8954,
-          "2020-06-28": 8957,
-          "2020-06-29": 8961,
-          "2020-06-30": 8973,
-          "2020-07-01": 8985,
-          "2020-07-02": 8994,
-          "2020-07-03": 9003,
-          "2020-07-04": 9010,
-          "2020-07-05": 9012,
-          "2020-07-06": 9016,
-          "2020-07-07": 9024,
-          "2020-07-08": 9036,
-          "2020-07-09": 9048,
-          "2020-07-10": 9054,
-          "2020-07-11": 9060,
-          "2020-07-12": 9063,
-          "2020-07-13": 9064,
-          "2020-07-14": 9068,
-          "2020-07-15": 9071,
-          "2020-07-16": 9078,
-          "2020-07-17": 9082,
-          "2020-07-18": 9083,
-          "2020-07-19": 9084,
-          "2020-07-20": 9086,
-          "2020-07-21": 9090,
-          "2020-07-22": 9095,
-          "2020-07-23": 9101,
-          "2020-07-24": 9111,
-          "2020-07-25": 9118,
-          "2020-07-26": 9118,
-          "2020-07-27": 9118,
-          "2020-07-28": 9122,
-          "2020-07-29": 9128,
-          "2020-07-30": 9134,
-          "2020-07-31": 9141,
-          "2020-08-01": 9141,
-          "2020-08-02": 9141,
-          "2020-08-03": 9148,
-          "2020-08-04": 9156,
-          "2020-08-05": 9168,
-          "2020-08-06": 9175,
-          "2020-08-07": 9183,
-          "2020-08-08": 9195,
-          "2020-08-09": 9196,
-          "2020-08-10": 9197,
-          "2020-08-11": 9201,
-          "2020-08-12": 9207,
-          "2020-08-13": 9211,
-          "2020-08-14": 9225,
-          "2020-08-15": 9231,
-          "2020-08-16": 9231,
-          "2020-08-17": 9232,
-          "2020-08-18": 9232,
-          "2020-08-19": 9243,
-          "2020-08-20": 9253,
-          "2020-08-21": 9260,
-          "2020-08-22": 9267,
-          "2020-08-23": 9269,
-          "2020-08-24": 9272,
-          "2020-08-25": 9277,
-          "2020-08-26": 9280,
-          "2020-08-27": 9285,
-          "2020-08-28": 9288,
-          "2020-08-29": 9289,
-          "2020-08-30": 9295,
-          "2020-08-31": 9298,
-          "2020-09-01": 9302,
-          "2020-09-02": 9313,
-          "2020-09-03": 9321,
-          "2020-09-04": 9322,
-          "2020-09-05": 9324,
-          "2020-09-06": 9325,
-          "2020-09-07": 9325,
-          "2020-09-08": 9329,
-          "2020-09-09": 9338,
-          "2020-09-10": 9341,
-          "2020-09-11": 9342,
-          "2020-09-12": 9347,
-          "2020-09-13": 9349,
-          "2020-09-14": 9350,
-          "2020-09-15": 9362,
-          "2020-09-16": 9368,
-          "2020-09-17": 9371,
-          "2020-09-18": 9378,
-          "2020-09-19": 9384,
-          "2020-09-20": 9386,
-          "2020-09-21": 9386,
-          "2020-09-22": 9396,
-          "2020-09-23": 9409,
-          "2020-09-24": 9428,
-          "2020-09-25": 9443,
-          "2020-09-26": 9452,
-          "2020-09-27": 9457,
-          "2020-09-28": 9460,
-          "2020-09-29": 9471,
-          "2020-09-30": 9488,
-          "2020-10-01": 9500,
-          "2020-10-02": 9508,
-          "2020-10-03": 9527,
-          "2020-10-04": 9529,
-          "2020-10-05": 9534,
-          "2020-10-06": 9546,
-          "2020-10-07": 9562,
-          "2020-10-08": 9578,
-          "2020-10-09": 9589
+          "2020-03-13": 7,
+          "2020-03-14": 9,
+          "2020-03-15": 11,
+          "2020-03-16": 17,
+          "2020-03-17": 24,
+          "2020-03-18": 28,
+          "2020-03-19": 44,
+          "2020-03-20": 67,
+          "2020-03-21": 84,
+          "2020-03-22": 94,
+          "2020-03-23": 123,
+          "2020-03-24": 157,
+          "2020-03-25": 206,
+          "2020-03-26": 267,
+          "2020-03-27": 342,
+          "2020-03-28": 433,
+          "2020-03-29": 533,
+          "2020-03-30": 645,
+          "2020-03-31": 775,
+          "2020-04-01": 920,
+          "2020-04-02": 1107,
+          "2020-04-03": 1275,
+          "2020-04-04": 1444,
+          "2020-04-05": 1584,
+          "2020-04-06": 1810,
+          "2020-04-07": 2016,
+          "2020-04-08": 2349,
+          "2020-04-09": 2607,
+          "2020-04-10": 2767,
+          "2020-04-11": 2736,
+          "2020-04-12": 3022,
+          "2020-04-13": 3194,
+          "2020-04-14": 3294,
+          "2020-04-15": 3804,
+          "2020-04-16": 4052,
+          "2020-04-17": 4352,
+          "2020-04-18": 4459,
+          "2020-04-19": 4586,
+          "2020-04-20": 4862,
+          "2020-04-21": 5033,
+          "2020-04-22": 5279,
+          "2020-04-23": 5575,
+          "2020-04-24": 5760,
+          "2020-04-25": 5877,
+          "2020-04-26": 5976,
+          "2020-04-27": 6126,
+          "2020-04-28": 6314,
+          "2020-04-29": 6467,
+          "2020-04-30": 6623,
+          "2020-05-01": 6736,
+          "2020-05-02": 6812,
+          "2020-05-03": 6866,
+          "2020-05-04": 6993,
+          "2020-05-05": 6993,
+          "2020-05-06": 7275,
+          "2020-05-07": 7392,
+          "2020-05-08": 7510,
+          "2020-05-09": 7549,
+          "2020-05-10": 7569,
+          "2020-05-11": 7661,
+          "2020-05-12": 7738,
+          "2020-05-13": 7861,
+          "2020-05-14": 7884,
+          "2020-05-15": 7897,
+          "2020-05-16": 7938,
+          "2020-05-17": 7962,
+          "2020-05-18": 8003,
+          "2020-05-19": 8081,
+          "2020-05-20": 8144,
+          "2020-05-21": 8203,
+          "2020-05-22": 8228,
+          "2020-05-23": 8261,
+          "2020-05-24": 8283,
+          "2020-05-25": 8309,
+          "2020-05-26": 8372,
+          "2020-05-27": 8428,
+          "2020-05-28": 8470,
+          "2020-05-29": 8504,
+          "2020-05-30": 8530,
+          "2020-05-31": 8540,
+          "2020-06-01": 8555,
+          "2020-06-02": 8563,
+          "2020-06-03": 8602,
+          "2020-06-04": 8635,
+          "2020-06-05": 8658,
+          "2020-06-06": 8673,
+          "2020-06-07": 8685,
+          "2020-06-08": 8695,
+          "2020-06-09": 8736,
+          "2020-06-10": 8752,
+          "2020-06-11": 8772,
+          "2020-06-12": 8783,
+          "2020-06-13": 8793,
+          "2020-06-14": 8801,
+          "2020-06-15": 8807,
+          "2020-06-16": 8820,
+          "2020-06-17": 8851,
+          "2020-06-18": 8875,
+          "2020-06-19": 8887,
+          "2020-06-20": 8895,
+          "2020-06-21": 8895,
+          "2020-06-22": 8899,
+          "2020-06-23": 8914,
+          "2020-06-24": 8928,
+          "2020-06-25": 8940,
+          "2020-06-26": 8965,
+          "2020-06-27": 8968,
+          "2020-06-28": 8968,
+          "2020-06-29": 8976,
+          "2020-06-30": 8990,
+          "2020-07-01": 8995,
+          "2020-07-02": 9006,
+          "2020-07-03": 9010,
+          "2020-07-04": 9020,
+          "2020-07-05": 9023,
+          "2020-07-06": 9022,
+          "2020-07-07": 9032,
+          "2020-07-08": 9046,
+          "2020-07-09": 9057,
+          "2020-07-10": 9063,
+          "2020-07-11": 9070,
+          "2020-07-12": 9071,
+          "2020-07-13": 9074,
+          "2020-07-14": 9078,
+          "2020-07-15": 9080,
+          "2020-07-16": 9087,
+          "2020-07-17": 9088,
+          "2020-07-18": 9091,
+          "2020-07-19": 9092,
+          "2020-07-20": 9094,
+          "2020-07-21": 9099,
+          "2020-07-22": 9102,
+          "2020-07-23": 9110,
+          "2020-07-24": 9120,
+          "2020-07-25": 9124,
+          "2020-07-26": 9124,
+          "2020-07-27": 9125,
+          "2020-07-28": 9131,
+          "2020-07-29": 9135,
+          "2020-07-30": 9144,
+          "2020-07-31": 9147,
+          "2020-08-01": 9154,
+          "2020-08-02": 9154,
+          "2020-08-03": 9154,
+          "2020-08-04": 9163,
+          "2020-08-05": 9179,
+          "2020-08-06": 9181,
+          "2020-08-07": 9195,
+          "2020-08-08": 9201,
+          "2020-08-09": 9202,
+          "2020-08-10": 9203,
+          "2020-08-11": 9208,
+          "2020-08-12": 9213,
+          "2020-08-13": 9217,
+          "2020-08-14": 9230,
+          "2020-08-15": 9235,
+          "2020-08-16": 9235,
+          "2020-08-17": 9236,
+          "2020-08-18": 9241,
+          "2020-08-19": 9249,
+          "2020-08-20": 9263,
+          "2020-08-21": 9266,
+          "2020-08-22": 9272,
+          "2020-08-23": 9275,
+          "2020-08-24": 9276,
+          "2020-08-25": 9281,
+          "2020-08-26": 9285,
+          "2020-08-27": 9290,
+          "2020-08-28": 9290,
+          "2020-08-29": 9299,
+          "2020-08-30": 9300,
+          "2020-08-31": 9303,
+          "2020-09-01": 9307,
+          "2020-09-02": 9322,
+          "2020-09-03": 9322,
+          "2020-09-04": 9327,
+          "2020-09-05": 9329,
+          "2020-09-06": 9330,
+          "2020-09-07": 9331,
+          "2020-09-08": 9336,
+          "2020-09-09": 9342,
+          "2020-09-10": 9345,
+          "2020-09-11": 9348,
+          "2020-09-12": 9352,
+          "2020-09-13": 9354,
+          "2020-09-14": 9356,
+          "2020-09-15": 9367,
+          "2020-09-16": 9373,
+          "2020-09-17": 9376,
+          "2020-09-18": 9386,
+          "2020-09-19": 9388,
+          "2020-09-20": 9390,
+          "2020-09-21": 9390,
+          "2020-09-22": 9405,
+          "2020-09-23": 9423,
+          "2020-09-24": 9436,
+          "2020-09-25": 9451,
+          "2020-09-26": 9459,
+          "2020-09-27": 9464,
+          "2020-09-28": 9468,
+          "2020-09-29": 9483,
+          "2020-09-30": 9495,
+          "2020-10-01": 9509,
+          "2020-10-02": 9518,
+          "2020-10-03": 9531,
+          "2020-10-04": 9533,
+          "2020-10-05": 9554,
+          "2020-10-06": 9566,
+          "2020-10-07": 9582,
+          "2020-10-08": 9594,
+          "2020-10-09": 9599,
+          "2020-10-10": 9620,
+          "2020-10-11": 9626,
+          "2020-10-12": 9640,
+          "2020-10-13": 9682,
+          "2020-10-14": 9716,
+          "2020-10-15": 9739,
+          "2020-10-16": 9773,
+          "2020-10-17": 9785,
+          "2020-10-18": 9798,
+          "2020-10-19": 9842,
+          "2020-10-20": 9882,
+          "2020-10-21": 9911,
+          "2020-10-22": 9960,
+          "2020-10-23": 9978,
+          "2020-10-24": 10035,
+          "2020-10-25": 10062,
+          "2020-10-26": 10091,
+          "2020-10-27": 10121,
+          "2020-10-28": 10218,
+          "2020-10-29": 10305,
+          "2020-10-30": 10391,
+          "2020-10-31": 10483,
+          "2020-11-01": 10513,
+          "2020-11-02": 10669,
+          "2020-11-03": 10717,
+          "2020-11-04": 10949,
+          "2020-11-05": 11110,
+          "2020-11-06": 11240,
+          "2020-11-07": 11306,
+          "2020-11-08": 11372,
+          "2020-11-09": 11408,
+          "2020-11-10": 11781,
+          "2020-11-11": 11994,
+          "2020-11-12": 12216,
+          "2020-11-13": 12404,
+          "2020-11-14": 12511,
+          "2020-11-15": 12573,
+          "2020-11-16": 12833,
+          "2020-11-17": 13138,
+          "2020-11-18": 13390,
+          "2020-11-19": 13662,
+          "2020-11-20": 13918,
+          "2020-11-21": 14061,
+          "2020-11-22": 14159,
+          "2020-11-23": 14460,
+          "2020-11-24": 14832,
+          "2020-11-25": 15210,
+          "2020-11-26": 15640,
+          "2020-11-27": 16011,
+          "2020-11-28": 16181,
+          "2020-11-29": 16306,
+          "2020-11-30": 16694,
+          "2020-12-01": 17177,
+          "2020-12-02": 17659,
+          "2020-12-03": 18097,
+          "2020-12-04": 18577,
+          "2020-12-05": 18839,
+          "2020-12-06": 18989,
+          "2020-12-07": 19434,
+          "2020-12-08": 20002,
+          "2020-12-09": 20460,
+          "2020-12-10": 21064,
+          "2020-12-11": 21567,
+          "2020-12-12": 21900,
+          "2020-12-13": 22106,
+          "2020-12-14": 22634,
+          "2020-12-15": 23544,
+          "2020-12-16": 24273,
+          "2020-12-17": 25027,
+          "2020-12-18": 25754,
+          "2020-12-19": 26171,
+          "2020-12-20": 26400,
+          "2020-12-21": 27110,
+          "2020-12-22": 28096,
+          "2020-12-23": 28909,
+          "2020-12-24": 29330,
+          "2020-12-25": 29580,
+          "2020-12-26": 29946,
+          "2020-12-27": 30297,
+          "2020-12-28": 31145,
+          "2020-12-29": 32267,
+          "2020-12-30": 33230,
+          "2020-12-31": 33791,
+          "2021-01-01": 34145,
+          "2021-01-02": 34480,
+          "2021-01-03": 34791,
+          "2021-01-04": 35748,
+          "2021-01-05": 36757,
+          "2021-01-06": 37835,
+          "2021-01-07": 38987,
+          "2021-01-08": 40022,
+          "2021-01-09": 40597,
+          "2021-01-10": 40936,
+          "2021-01-11": 41799,
+          "2021-01-12": 42889,
+          "2021-01-13": 44096,
+          "2021-01-14": 45207,
+          "2021-01-15": 45705,
+          "2021-01-16": 46464,
+          "2021-01-17": 46901,
+          "2021-01-18": 47263,
+          "2021-01-19": 48997,
+          "2021-01-20": 50010,
+          "2021-01-21": 50876,
+          "2021-01-22": 51713,
+          "2021-01-23": 51873,
+          "2021-01-24": 52296,
+          "2021-01-25": 53127,
+          "2021-01-26": 53619,
+          "2021-01-27": 54498,
+          "2021-01-28": 55883,
+          "2021-01-29": 56286,
+          "2021-01-30": 57105,
+          "2021-01-31": 57163,
+          "2021-02-01": 58059,
+          "2021-02-02": 58992
         },
-        "provenanceDomain": "google.com",
-        "provenanceUrl": "https://research.google.com"
+        "provenanceUrl": "https://ourworldindata.org/coronavirus"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -5672,7 +5647,6 @@
           "2017": 1.57,
           "2018": 1.57
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GiniIndex_EconomicActivity": {
@@ -5697,7 +5671,6 @@
           "2015": 31.7,
           "2016": 31.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
@@ -5752,7 +5725,6 @@
           "2018": 1.26799523225071,
           "2019": 0.555450887945668
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
@@ -5817,7 +5789,6 @@
           "2018": 0.300526701992065,
           "2019": 0.273451073953555
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
@@ -5882,7 +5853,6 @@
           "2017": 80.9926829268293,
           "2018": 80.8926829268293
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
@@ -6276,7 +6246,6 @@
           "2019-11": 3.2,
           "2019-12": 3.3
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "UnemploymentRate_Person_Female": {
@@ -6629,7 +6598,6 @@
           "2019-11": 2.7,
           "2019-12": 2.8
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       },
       "UnemploymentRate_Person_Male": {
@@ -6982,7 +6950,6 @@
           "2019-11": 3.6,
           "2019-12": 3.7
         },
-        "provenanceDomain": "europa.eu",
         "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
       }
     },
@@ -6992,7 +6959,6 @@
           "2010": 0.4,
           "2016": 0.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
@@ -7042,7 +7008,6 @@
           "2013": 1684.91156120312,
           "2014": 1683.21351829557
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
@@ -7092,7 +7057,6 @@
           "2013": 848.629144352604,
           "2014": 827.497166867788
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
@@ -7105,7 +7069,6 @@
           "2007": 11.20964,
           "2008": 10.9418
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -7134,7 +7097,6 @@
           "2007": 3.68461,
           "2008": 3.76083
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
@@ -7197,7 +7159,6 @@
           "2017": 2765588434.01207,
           "2018": 3109997891.99423
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -7260,7 +7221,6 @@
           "2017": 1.422609271,
           "2018": 1.2470692398
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
@@ -7321,7 +7281,6 @@
           "2018": 2537.1253654904,
           "2019": 3019.20582861756
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
@@ -7357,7 +7316,6 @@
           "2018": 1117149662631.37,
           "2019": 1188354578676.17
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
@@ -7393,7 +7351,6 @@
           "2018": 11350,
           "2019": 11840
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
@@ -7456,7 +7413,6 @@
           "2015": 2.42941973461636,
           "2016": 2.52586286634698
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
@@ -7505,7 +7461,6 @@
           "2018": 25515700000,
           "2019": 26791485235.2
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -7554,7 +7509,6 @@
           "2018": 10.1698815728,
           "2019": 8.836966755
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
@@ -7590,7 +7544,6 @@
           "2017": 270800000,
           "2018": 514500000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
@@ -7610,7 +7563,6 @@
           "2018": 42005550000,
           "2019": 44199850000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -7630,7 +7582,6 @@
           "2018": 16.74229862,
           "2019": 14.5789828969
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
@@ -7701,7 +7652,6 @@
           "2018": 17.9,
           "2019": 17.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
@@ -7767,7 +7717,6 @@
           "2018": 16.7,
           "2019": 16.1
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
@@ -7833,7 +7782,6 @@
           "2018": 19.1,
           "2019": 18.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
@@ -7884,7 +7832,6 @@
           "2016": 1,
           "2017": 1
         },
-        "provenanceDomain": "usgs.gov",
         "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
@@ -8009,7 +7956,6 @@
           "2018": 98423595,
           "2019": 100388073
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {},
@@ -8048,7 +7994,6 @@
           "2018": 0.4934400177,
           "2019": 0.4947499847
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
@@ -8089,7 +8034,6 @@
           "2005": 7.9,
           "2009": 2.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {
@@ -8097,7 +8041,6 @@
           "2005": 4.3,
           "2009": 0.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {
@@ -8105,7 +8048,6 @@
           "2005": 11.5,
           "2009": 4.8
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_80OrMoreYears": {},
@@ -8163,7 +8105,6 @@
           "2018": 30177778,
           "2019": 30828413
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
@@ -8245,7 +8186,6 @@
           "2018": 56392783,
           "2019": 57492249
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
@@ -8265,7 +8205,6 @@
           "2008": 3.6,
           "2014": 4.7
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -8278,7 +8217,6 @@
           "2008": 7.1,
           "2014": 9.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -8291,7 +8229,6 @@
           "2008": 3.9,
           "2014": 4.8
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -8304,7 +8241,6 @@
           "2008": 8.8,
           "2014": 9.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -8318,7 +8254,6 @@
           "2008": 3.8,
           "2014": 4.8
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -8334,7 +8269,6 @@
           "2008": 7.9,
           "2014": 9.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
@@ -8400,7 +8334,6 @@
           "2018": 42030812,
           "2019": 42895824
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
@@ -8413,71 +8346,7 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2019-12-31": 0,
-          "2020-01-01": 0,
-          "2020-01-02": 0,
-          "2020-01-03": 0,
-          "2020-01-04": 0,
-          "2020-01-05": 0,
-          "2020-01-06": 0,
-          "2020-01-07": 0,
-          "2020-01-08": 0,
-          "2020-01-09": 0,
-          "2020-01-10": 0,
-          "2020-01-11": 0,
-          "2020-01-12": 0,
-          "2020-01-13": 0,
-          "2020-01-14": 0,
-          "2020-01-15": 0,
-          "2020-01-16": 0,
-          "2020-01-17": 0,
-          "2020-01-18": 0,
-          "2020-01-19": 0,
-          "2020-01-20": 0,
-          "2020-01-21": 0,
-          "2020-01-22": 0,
-          "2020-01-23": 0,
-          "2020-01-24": 0,
-          "2020-01-25": 0,
-          "2020-01-26": 0,
-          "2020-01-27": 0,
-          "2020-01-28": 0,
-          "2020-01-29": 0,
-          "2020-01-30": 0,
-          "2020-01-31": 0,
-          "2020-02-01": 0,
-          "2020-02-02": 0,
-          "2020-02-03": 0,
-          "2020-02-04": 0,
-          "2020-02-05": 0,
-          "2020-02-06": 0,
-          "2020-02-07": 0,
-          "2020-02-08": 0,
-          "2020-02-09": 0,
-          "2020-02-10": 0,
-          "2020-02-11": 0,
-          "2020-02-12": 0,
-          "2020-02-13": 0,
-          "2020-02-14": 0,
-          "2020-02-15": 0,
-          "2020-02-16": 0,
-          "2020-02-17": 0,
-          "2020-02-18": 0,
-          "2020-02-19": 0,
-          "2020-02-20": 0,
-          "2020-02-21": 0,
-          "2020-02-22": 0,
-          "2020-02-23": 0,
-          "2020-02-24": 0,
-          "2020-02-25": 0,
-          "2020-02-26": 0,
-          "2020-02-27": 0,
-          "2020-02-28": 0,
-          "2020-02-29": 0,
-          "2020-03-01": 0,
-          "2020-03-02": 0,
-          "2020-03-06": 0,
-          "2020-03-07": 0,
+          "2020-03-08": 1,
           "2020-03-09": 1,
           "2020-03-10": 1,
           "2020-03-11": 1,
@@ -8486,216 +8355,331 @@
           "2020-03-14": 2,
           "2020-03-15": 2,
           "2020-03-16": 2,
-          "2020-03-17": 2,
-          "2020-03-18": 4,
+          "2020-03-17": 4,
+          "2020-03-18": 6,
           "2020-03-19": 6,
-          "2020-03-20": 6,
-          "2020-03-21": 7,
-          "2020-03-22": 8,
-          "2020-03-23": 10,
-          "2020-03-24": 14,
-          "2020-03-25": 19,
-          "2020-03-26": 21,
-          "2020-03-27": 21,
-          "2020-03-28": 24,
-          "2020-03-29": 30,
-          "2020-03-30": 36,
-          "2020-03-31": 40,
-          "2020-04-01": 41,
-          "2020-04-02": 46,
-          "2020-04-03": 52,
-          "2020-04-04": 52,
-          "2020-04-05": 66,
-          "2020-04-06": 71,
-          "2020-04-07": 78,
-          "2020-04-08": 85,
-          "2020-04-09": 103,
-          "2020-04-10": 118,
-          "2020-04-11": 135,
-          "2020-04-12": 146,
-          "2020-04-13": 159,
-          "2020-04-14": 164,
-          "2020-04-15": 178,
-          "2020-04-16": 183,
-          "2020-04-17": 196,
-          "2020-04-18": 205,
-          "2020-04-19": 224,
-          "2020-04-20": 239,
-          "2020-04-21": 250,
-          "2020-04-22": 264,
-          "2020-04-23": 264,
-          "2020-04-24": 276,
-          "2020-04-25": 294,
-          "2020-04-26": 307,
-          "2020-04-27": 307,
-          "2020-04-28": 337,
-          "2020-04-29": 359,
-          "2020-04-30": 380,
-          "2020-05-01": 392,
-          "2020-05-02": 406,
-          "2020-05-03": 415,
-          "2020-05-04": 429,
-          "2020-05-05": 436,
-          "2020-05-06": 452,
-          "2020-05-07": 469,
-          "2020-05-08": 482,
-          "2020-05-09": 503,
-          "2020-05-10": 514,
-          "2020-05-11": 525,
-          "2020-05-12": 533,
-          "2020-05-13": 544,
-          "2020-05-14": 556,
-          "2020-05-15": 571,
-          "2020-05-16": 592,
-          "2020-05-17": 612,
-          "2020-05-18": 630,
-          "2020-05-19": 645,
-          "2020-05-20": 659,
-          "2020-05-21": 680,
-          "2020-05-22": 696,
-          "2020-05-23": 707,
-          "2020-05-24": 735,
-          "2020-05-25": 764,
-          "2020-05-26": 783,
-          "2020-05-27": 797,
-          "2020-05-28": 816,
-          "2020-05-29": 845,
-          "2020-05-30": 879,
-          "2020-05-31": 913,
-          "2020-06-01": 959,
-          "2020-06-02": 1005,
-          "2020-06-03": 1052,
-          "2020-06-04": 1088,
-          "2020-06-05": 1126,
-          "2020-06-06": 1166,
-          "2020-06-07": 1198,
-          "2020-06-08": 1237,
-          "2020-06-09": 1271,
-          "2020-06-10": 1306,
-          "2020-06-11": 1342,
-          "2020-06-12": 1377,
-          "2020-06-13": 1422,
-          "2020-06-14": 1484,
-          "2020-06-15": 1575,
-          "2020-06-16": 1672,
-          "2020-06-17": 1766,
-          "2020-06-18": 1850,
-          "2020-06-19": 1938,
-          "2020-06-20": 2017,
-          "2020-06-21": 2106,
-          "2020-06-22": 2193,
-          "2020-06-23": 2278,
-          "2020-06-24": 2365,
-          "2020-06-25": 2450,
-          "2020-06-26": 2533,
-          "2020-06-27": 2620,
-          "2020-06-28": 2708,
-          "2020-06-29": 2789,
-          "2020-06-30": 2872,
-          "2020-07-01": 2953,
-          "2020-07-02": 3034,
-          "2020-07-03": 3120,
-          "2020-07-04": 3201,
-          "2020-07-05": 3280,
-          "2020-07-06": 3343,
-          "2020-07-07": 3422,
-          "2020-07-08": 3489,
-          "2020-07-09": 3564,
-          "2020-07-10": 3617,
-          "2020-07-11": 3702,
-          "2020-07-12": 3769,
-          "2020-07-13": 3858,
-          "2020-07-14": 3935,
-          "2020-07-15": 4008,
-          "2020-07-16": 4067,
-          "2020-07-17": 4120,
-          "2020-07-18": 4188,
-          "2020-07-19": 4251,
-          "2020-07-20": 4302,
-          "2020-07-21": 4352,
-          "2020-07-22": 4399,
-          "2020-07-23": 4440,
-          "2020-07-24": 4480,
-          "2020-07-25": 4518,
-          "2020-07-26": 4558,
-          "2020-07-27": 4606,
-          "2020-07-28": 4652,
-          "2020-07-29": 4691,
-          "2020-07-30": 4728,
-          "2020-07-31": 4774,
-          "2020-08-01": 4805,
-          "2020-08-02": 4834,
-          "2020-08-03": 4865,
-          "2020-08-04": 4888,
-          "2020-08-05": 4912,
-          "2020-08-06": 4930,
-          "2020-08-07": 4951,
-          "2020-08-08": 4971,
-          "2020-08-09": 4992,
-          "2020-08-10": 5009,
-          "2020-08-11": 5035,
-          "2020-08-12": 5059,
-          "2020-08-13": 5085,
-          "2020-08-14": 5107,
-          "2020-08-15": 5124,
-          "2020-08-16": 5141,
-          "2020-08-17": 5160,
-          "2020-08-18": 5173,
-          "2020-08-19": 5173,
-          "2020-08-20": 5197,
-          "2020-08-21": 5212,
-          "2020-08-22": 5231,
-          "2020-08-23": 5243,
-          "2020-08-24": 5243,
-          "2020-08-25": 5280,
-          "2020-08-26": 5298,
-          "2020-08-27": 5317,
-          "2020-08-28": 5342,
-          "2020-08-29": 5362,
-          "2020-08-30": 5376,
-          "2020-08-31": 5399,
-          "2020-09-01": 5421,
-          "2020-09-02": 5440,
-          "2020-09-03": 5461,
-          "2020-09-04": 5479,
-          "2020-09-05": 5495,
-          "2020-09-06": 5511,
-          "2020-09-07": 5530,
-          "2020-09-08": 5541,
-          "2020-09-09": 5560,
-          "2020-09-10": 5577,
-          "2020-09-11": 5590,
-          "2020-09-12": 5607,
-          "2020-09-13": 5627,
-          "2020-09-14": 5648,
-          "2020-09-15": 5661,
-          "2020-09-16": 5679,
-          "2020-09-17": 5696,
-          "2020-09-18": 5715,
-          "2020-09-19": 5733,
-          "2020-09-20": 5750,
-          "2020-09-21": 5770,
-          "2020-09-22": 5787,
-          "2020-09-23": 5806,
-          "2020-09-24": 5822,
-          "2020-09-25": 5835,
-          "2020-09-26": 5853,
-          "2020-09-27": 5869,
-          "2020-09-28": 5883,
-          "2020-09-29": 5901,
-          "2020-09-30": 5914,
-          "2020-10-01": 5930,
-          "2020-10-02": 5946,
-          "2020-10-03": 5956,
-          "2020-10-04": 5970,
-          "2020-10-05": 5981,
-          "2020-10-06": 5990,
-          "2020-10-07": 6001,
-          "2020-10-08": 6010,
-          "2020-10-09": 6017
+          "2020-03-20": 8,
+          "2020-03-21": 10,
+          "2020-03-22": 14,
+          "2020-03-23": 19,
+          "2020-03-24": 20,
+          "2020-03-25": 21,
+          "2020-03-26": 24,
+          "2020-03-27": 30,
+          "2020-03-28": 36,
+          "2020-03-29": 40,
+          "2020-03-30": 41,
+          "2020-03-31": 46,
+          "2020-04-01": 52,
+          "2020-04-02": 58,
+          "2020-04-03": 66,
+          "2020-04-04": 71,
+          "2020-04-05": 78,
+          "2020-04-06": 85,
+          "2020-04-07": 94,
+          "2020-04-08": 103,
+          "2020-04-09": 118,
+          "2020-04-10": 135,
+          "2020-04-11": 146,
+          "2020-04-12": 159,
+          "2020-04-13": 164,
+          "2020-04-14": 178,
+          "2020-04-15": 183,
+          "2020-04-16": 196,
+          "2020-04-17": 205,
+          "2020-04-18": 224,
+          "2020-04-19": 239,
+          "2020-04-20": 250,
+          "2020-04-21": 264,
+          "2020-04-22": 276,
+          "2020-04-23": 287,
+          "2020-04-24": 294,
+          "2020-04-25": 307,
+          "2020-04-26": 317,
+          "2020-04-27": 337,
+          "2020-04-28": 359,
+          "2020-04-29": 380,
+          "2020-04-30": 392,
+          "2020-05-01": 406,
+          "2020-05-02": 415,
+          "2020-05-03": 429,
+          "2020-05-04": 436,
+          "2020-05-05": 452,
+          "2020-05-06": 469,
+          "2020-05-07": 482,
+          "2020-05-08": 503,
+          "2020-05-09": 514,
+          "2020-05-10": 525,
+          "2020-05-11": 533,
+          "2020-05-12": 544,
+          "2020-05-13": 556,
+          "2020-05-14": 571,
+          "2020-05-15": 592,
+          "2020-05-16": 612,
+          "2020-05-17": 630,
+          "2020-05-18": 645,
+          "2020-05-19": 659,
+          "2020-05-20": 680,
+          "2020-05-21": 696,
+          "2020-05-22": 707,
+          "2020-05-23": 735,
+          "2020-05-24": 764,
+          "2020-05-25": 783,
+          "2020-05-26": 797,
+          "2020-05-27": 816,
+          "2020-05-28": 845,
+          "2020-05-29": 879,
+          "2020-05-30": 913,
+          "2020-05-31": 959,
+          "2020-06-01": 1005,
+          "2020-06-02": 1052,
+          "2020-06-03": 1088,
+          "2020-06-04": 1126,
+          "2020-06-05": 1166,
+          "2020-06-06": 1198,
+          "2020-06-07": 1237,
+          "2020-06-08": 1271,
+          "2020-06-09": 1306,
+          "2020-06-10": 1342,
+          "2020-06-11": 1377,
+          "2020-06-12": 1422,
+          "2020-06-13": 1484,
+          "2020-06-14": 1575,
+          "2020-06-15": 1672,
+          "2020-06-16": 1766,
+          "2020-06-17": 1850,
+          "2020-06-18": 1938,
+          "2020-06-19": 2017,
+          "2020-06-20": 2106,
+          "2020-06-21": 2193,
+          "2020-06-22": 2278,
+          "2020-06-23": 2365,
+          "2020-06-24": 2450,
+          "2020-06-25": 2533,
+          "2020-06-26": 2620,
+          "2020-06-27": 2708,
+          "2020-06-28": 2789,
+          "2020-06-29": 2872,
+          "2020-06-30": 2953,
+          "2020-07-01": 3034,
+          "2020-07-02": 3120,
+          "2020-07-03": 3201,
+          "2020-07-04": 3280,
+          "2020-07-05": 3343,
+          "2020-07-06": 3422,
+          "2020-07-07": 3489,
+          "2020-07-08": 3564,
+          "2020-07-09": 3617,
+          "2020-07-10": 3702,
+          "2020-07-11": 3769,
+          "2020-07-12": 3858,
+          "2020-07-13": 3935,
+          "2020-07-14": 4008,
+          "2020-07-15": 4067,
+          "2020-07-16": 4120,
+          "2020-07-17": 4188,
+          "2020-07-18": 4251,
+          "2020-07-19": 4302,
+          "2020-07-20": 4352,
+          "2020-07-21": 4399,
+          "2020-07-22": 4440,
+          "2020-07-23": 4480,
+          "2020-07-24": 4518,
+          "2020-07-25": 4558,
+          "2020-07-26": 4606,
+          "2020-07-27": 4652,
+          "2020-07-28": 4691,
+          "2020-07-29": 4728,
+          "2020-07-30": 4774,
+          "2020-07-31": 4805,
+          "2020-08-01": 4834,
+          "2020-08-02": 4865,
+          "2020-08-03": 4888,
+          "2020-08-04": 4912,
+          "2020-08-05": 4930,
+          "2020-08-06": 4951,
+          "2020-08-07": 4971,
+          "2020-08-08": 4992,
+          "2020-08-09": 5009,
+          "2020-08-10": 5035,
+          "2020-08-11": 5059,
+          "2020-08-12": 5085,
+          "2020-08-13": 5107,
+          "2020-08-14": 5124,
+          "2020-08-15": 5141,
+          "2020-08-16": 5160,
+          "2020-08-17": 5173,
+          "2020-08-18": 5184,
+          "2020-08-19": 5197,
+          "2020-08-20": 5212,
+          "2020-08-21": 5231,
+          "2020-08-22": 5243,
+          "2020-08-23": 5262,
+          "2020-08-24": 5280,
+          "2020-08-25": 5298,
+          "2020-08-26": 5317,
+          "2020-08-27": 5342,
+          "2020-08-28": 5362,
+          "2020-08-29": 5376,
+          "2020-08-30": 5399,
+          "2020-08-31": 5421,
+          "2020-09-01": 5440,
+          "2020-09-02": 5461,
+          "2020-09-03": 5479,
+          "2020-09-04": 5495,
+          "2020-09-05": 5511,
+          "2020-09-06": 5530,
+          "2020-09-07": 5541,
+          "2020-09-08": 5560,
+          "2020-09-09": 5577,
+          "2020-09-10": 5590,
+          "2020-09-11": 5607,
+          "2020-09-12": 5627,
+          "2020-09-13": 5648,
+          "2020-09-14": 5661,
+          "2020-09-15": 5679,
+          "2020-09-16": 5696,
+          "2020-09-17": 5715,
+          "2020-09-18": 5733,
+          "2020-09-19": 5750,
+          "2020-09-20": 5770,
+          "2020-09-21": 5787,
+          "2020-09-22": 5806,
+          "2020-09-23": 5822,
+          "2020-09-24": 5835,
+          "2020-09-25": 5853,
+          "2020-09-26": 5869,
+          "2020-09-27": 5883,
+          "2020-09-28": 5901,
+          "2020-09-29": 5914,
+          "2020-09-30": 5930,
+          "2020-10-01": 5946,
+          "2020-10-02": 5956,
+          "2020-10-03": 5970,
+          "2020-10-04": 5981,
+          "2020-10-05": 5990,
+          "2020-10-06": 6001,
+          "2020-10-07": 6010,
+          "2020-10-08": 6017,
+          "2020-10-09": 6029,
+          "2020-10-10": 6040,
+          "2020-10-11": 6052,
+          "2020-10-12": 6062,
+          "2020-10-13": 6071,
+          "2020-10-14": 6077,
+          "2020-10-15": 6088,
+          "2020-10-16": 6099,
+          "2020-10-17": 6109,
+          "2020-10-18": 6120,
+          "2020-10-19": 6130,
+          "2020-10-20": 6142,
+          "2020-10-21": 6155,
+          "2020-10-22": 6166,
+          "2020-10-23": 6176,
+          "2020-10-24": 6187,
+          "2020-10-25": 6199,
+          "2020-10-26": 6211,
+          "2020-10-27": 6222,
+          "2020-10-28": 6234,
+          "2020-10-29": 6247,
+          "2020-10-30": 6258,
+          "2020-10-31": 6266,
+          "2020-11-01": 6278,
+          "2020-11-02": 6291,
+          "2020-11-03": 6305,
+          "2020-11-04": 6318,
+          "2020-11-05": 6329,
+          "2020-11-06": 6343,
+          "2020-11-07": 6355,
+          "2020-11-08": 6368,
+          "2020-11-09": 6380,
+          "2020-11-10": 6394,
+          "2020-11-11": 6405,
+          "2020-11-12": 6417,
+          "2020-11-13": 6429,
+          "2020-11-14": 6442,
+          "2020-11-15": 6453,
+          "2020-11-16": 6465,
+          "2020-11-17": 6481,
+          "2020-11-18": 6495,
+          "2020-11-19": 6508,
+          "2020-11-20": 6521,
+          "2020-11-21": 6535,
+          "2020-11-22": 6548,
+          "2020-11-23": 6560,
+          "2020-11-24": 6573,
+          "2020-11-25": 6585,
+          "2020-11-26": 6596,
+          "2020-11-27": 6608,
+          "2020-11-28": 6621,
+          "2020-11-29": 6636,
+          "2020-11-30": 6650,
+          "2020-12-01": 6666,
+          "2020-12-02": 6694,
+          "2020-12-03": 6713,
+          "2020-12-04": 6732,
+          "2020-12-05": 6750,
+          "2020-12-06": 6771,
+          "2020-12-07": 6790,
+          "2020-12-08": 6813,
+          "2020-12-09": 6832,
+          "2020-12-10": 6854,
+          "2020-12-11": 6877,
+          "2020-12-12": 6898,
+          "2020-12-13": 6920,
+          "2020-12-14": 6943,
+          "2020-12-15": 6966,
+          "2020-12-16": 6990,
+          "2020-12-17": 7015,
+          "2020-12-18": 7041,
+          "2020-12-19": 7069,
+          "2020-12-20": 7098,
+          "2020-12-21": 7130,
+          "2020-12-22": 7167,
+          "2020-12-23": 7209,
+          "2020-12-24": 7260,
+          "2020-12-25": 7309,
+          "2020-12-26": 7352,
+          "2020-12-27": 7405,
+          "2020-12-28": 7466,
+          "2020-12-29": 7520,
+          "2020-12-30": 7576,
+          "2020-12-31": 7631,
+          "2021-01-01": 7687,
+          "2021-01-02": 7741,
+          "2021-01-03": 7805,
+          "2021-01-04": 7863,
+          "2021-01-05": 7918,
+          "2021-01-06": 7975,
+          "2021-01-07": 8029,
+          "2021-01-08": 8085,
+          "2021-01-09": 8142,
+          "2021-01-10": 8197,
+          "2021-01-11": 8249,
+          "2021-01-12": 8304,
+          "2021-01-13": 8362,
+          "2021-01-14": 8421,
+          "2021-01-15": 8473,
+          "2021-01-16": 8527,
+          "2021-01-17": 8583,
+          "2021-01-18": 8638,
+          "2021-01-19": 8696,
+          "2021-01-20": 8747,
+          "2021-01-21": 8801,
+          "2021-01-22": 8853,
+          "2021-01-23": 8902,
+          "2021-01-24": 8959,
+          "2021-01-25": 9012,
+          "2021-01-26": 9067,
+          "2021-01-27": 9115,
+          "2021-01-28": 9169,
+          "2021-01-29": 9217,
+          "2021-01-30": 9263,
+          "2021-01-31": 9316,
+          "2021-02-01": 9360,
+          "2021-02-02": 9407
         },
-        "provenanceDomain": "google.com",
-        "provenanceUrl": "https://research.google.com"
+        "provenanceUrl": "https://ourworldindata.org/coronavirus"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -8759,7 +8743,6 @@
           "2017": 3.37,
           "2018": 3.326
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GiniIndex_EconomicActivity": {
@@ -8774,7 +8757,6 @@
           "2015": 31.8,
           "2017": 31.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
@@ -8839,7 +8821,6 @@
           "2018": 5.31412103746398,
           "2019": 5.55768388791593
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
@@ -8904,7 +8885,6 @@
           "2018": 2.03326217641077,
           "2019": 1.97628434808829
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
@@ -8969,7 +8949,6 @@
           "2017": 71.656,
           "2018": 71.825
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
@@ -9023,7 +9002,6 @@
           "2010": 11.4,
           "2016": 10.7
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
@@ -9084,7 +9062,6 @@
           "2013": 9089.61977443101,
           "2014": 9026.32104131095
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
@@ -9146,7 +9123,6 @@
           "2014": 4559.89223229927,
           "2015": 4444.72528668103
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
@@ -9179,7 +9155,6 @@
           "2015": 16.37508,
           "2016": 16.82011
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -9222,7 +9197,6 @@
           "2015": 6.34016,
           "2016": 6.44277
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
@@ -9287,7 +9261,6 @@
           "2017": 2328156653.09662,
           "2018": 2262928311.88156
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -9352,7 +9325,6 @@
           "2017": 1.2084632895,
           "2018": 1.1613884018
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
@@ -9418,7 +9390,6 @@
           "2018": 42949.9305849512,
           "2019": 42084.3533748088
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
@@ -9454,7 +9425,6 @@
           "2018": 201990448662.51,
           "2019": 209984738791.131
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
@@ -9490,7 +9460,6 @@
           "2018": 41720,
           "2019": 42710
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
@@ -9553,7 +9522,6 @@
           "2015": 7.59140892573493,
           "2016": 7.32587403051223
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
@@ -9607,7 +9575,6 @@
           "2018": 452514256.39015,
           "2019": 433500782.343737
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -9661,7 +9628,6 @@
           "2018": 0.2176379955,
           "2019": 0.2094927601
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
@@ -9715,7 +9681,6 @@
           "2018": 843732402.346712,
           "2019": 762227926.315988
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
@@ -9756,7 +9721,6 @@
           "2018": 86132630000,
           "2019": 107879780000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -9797,7 +9761,6 @@
           "2018": 41.425728964,
           "2019": 52.133776431
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
@@ -9832,7 +9795,6 @@
           "2017": 1,
           "2018": 2
         },
-        "provenanceDomain": "noaa.gov",
         "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
@@ -9898,7 +9860,6 @@
           "2018": 4.1,
           "2019": 3.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
@@ -9964,7 +9925,6 @@
           "2018": 3.7,
           "2019": 3.6
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
@@ -10030,7 +9990,6 @@
           "2018": 4.4,
           "2019": 4.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
@@ -10118,7 +10077,6 @@
           "2018": 56,
           "2019": 48
         },
-        "provenanceDomain": "usgs.gov",
         "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
@@ -10243,7 +10201,6 @@
           "2018": 4841000,
           "2019": 4917000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {
@@ -10273,7 +10230,6 @@
           "2018": 313470,
           "2019": 322540
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15OrMoreYears": {},
@@ -10304,7 +10260,6 @@
           "2018": 315060,
           "2019": 315410
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
@@ -10340,7 +10295,6 @@
           "2018": 0.8108300018,
           "2019": 0.8121299744
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
@@ -10372,7 +10326,6 @@
           "2018": 339100,
           "2019": 338630
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25OrMoreYears": {},
@@ -10403,7 +10356,6 @@
           "2018": 353360,
           "2019": 359710
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25To34Years": {},
@@ -10442,7 +10394,6 @@
           "2018": 323830,
           "2019": 336760
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To39Years": {
@@ -10472,7 +10423,6 @@
           "2018": 301010,
           "2019": 311160
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To44Years": {},
@@ -10504,7 +10454,6 @@
           "2018": 294550,
           "2019": 294870
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To49Years": {
@@ -10534,7 +10483,6 @@
           "2018": 325800,
           "2019": 325540
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To54Years": {},
@@ -10565,7 +10513,6 @@
           "2018": 312560,
           "2019": 313280
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_55To59Years": {
@@ -10595,7 +10542,6 @@
           "2018": 312220,
           "2019": 316350
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_5To17Years": {},
@@ -10626,7 +10572,6 @@
           "2018": 330220,
           "2019": 329580
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_60To61Years": {},
@@ -10657,7 +10602,6 @@
           "2018": 271240,
           "2019": 279100
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_62To64Years": {},
@@ -10688,7 +10632,6 @@
           "2018": 236400,
           "2019": 240900
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_65To74Years": {},
@@ -10719,7 +10662,6 @@
           "2018": 194220,
           "2019": 204100
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_75OrMoreYears": {},
@@ -10750,7 +10692,6 @@
           "2018": 137550,
           "2019": 143000
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {},
@@ -10783,7 +10724,6 @@
           "2018": 175530,
           "2019": 180770
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -10831,7 +10771,6 @@
           "2018": 2461000,
           "2019": 2497300
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
@@ -10869,7 +10808,6 @@
           "2018": 2721966,
           "2019": 2764798
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
@@ -10907,7 +10845,6 @@
           "2018": 2380000,
           "2019": 2419700
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
@@ -10938,7 +10875,6 @@
           "2018": 18.27,
           "2019": 18.56
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
@@ -11004,7 +10940,6 @@
           "2018": 651695,
           "2019": 658140
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
@@ -11040,7 +10975,6 @@
           "2018": 304890,
           "2019": 305350
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {},
@@ -11112,7 +11046,6 @@
           "2018": 4189305,
           "2019": 4258860
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
@@ -11125,86 +11058,6 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2019-12-31": 0,
-          "2020-01-01": 0,
-          "2020-01-02": 0,
-          "2020-01-03": 0,
-          "2020-01-04": 0,
-          "2020-01-05": 0,
-          "2020-01-06": 0,
-          "2020-01-07": 0,
-          "2020-01-08": 0,
-          "2020-01-09": 0,
-          "2020-01-10": 0,
-          "2020-01-11": 0,
-          "2020-01-12": 0,
-          "2020-01-13": 0,
-          "2020-01-14": 0,
-          "2020-01-15": 0,
-          "2020-01-16": 0,
-          "2020-01-17": 0,
-          "2020-01-18": 0,
-          "2020-01-19": 0,
-          "2020-01-20": 0,
-          "2020-01-21": 0,
-          "2020-01-22": 0,
-          "2020-01-23": 0,
-          "2020-01-24": 0,
-          "2020-01-25": 0,
-          "2020-01-26": 0,
-          "2020-01-27": 0,
-          "2020-01-28": 0,
-          "2020-01-29": 0,
-          "2020-01-30": 0,
-          "2020-01-31": 0,
-          "2020-02-01": 0,
-          "2020-02-02": 0,
-          "2020-02-03": 0,
-          "2020-02-04": 0,
-          "2020-02-05": 0,
-          "2020-02-06": 0,
-          "2020-02-07": 0,
-          "2020-02-08": 0,
-          "2020-02-09": 0,
-          "2020-02-10": 0,
-          "2020-02-11": 0,
-          "2020-02-12": 0,
-          "2020-02-13": 0,
-          "2020-02-14": 0,
-          "2020-02-15": 0,
-          "2020-02-16": 0,
-          "2020-02-17": 0,
-          "2020-02-18": 0,
-          "2020-02-19": 0,
-          "2020-02-20": 0,
-          "2020-02-21": 0,
-          "2020-02-22": 0,
-          "2020-02-23": 0,
-          "2020-02-24": 0,
-          "2020-02-25": 0,
-          "2020-02-26": 0,
-          "2020-02-27": 0,
-          "2020-02-28": 0,
-          "2020-02-29": 0,
-          "2020-03-01": 0,
-          "2020-03-02": 0,
-          "2020-03-04": 0,
-          "2020-03-05": 0,
-          "2020-03-06": 0,
-          "2020-03-07": 0,
-          "2020-03-14": 0,
-          "2020-03-15": 0,
-          "2020-03-18": 0,
-          "2020-03-19": 0,
-          "2020-03-20": 0,
-          "2020-03-21": 0,
-          "2020-03-22": 0,
-          "2020-03-23": 0,
-          "2020-03-24": 0,
-          "2020-03-25": 0,
-          "2020-03-26": 0,
-          "2020-03-27": 0,
-          "2020-03-28": 0,
           "2020-03-29": 1,
           "2020-03-30": 1,
           "2020-03-31": 1,
@@ -11230,19 +11083,19 @@
           "2020-04-20": 12,
           "2020-04-21": 13,
           "2020-04-22": 14,
-          "2020-04-23": 16,
-          "2020-04-24": 17,
+          "2020-04-23": 17,
+          "2020-04-24": 18,
           "2020-04-25": 18,
-          "2020-04-26": 18,
+          "2020-04-26": 19,
           "2020-04-27": 19,
           "2020-04-28": 19,
           "2020-04-29": 19,
           "2020-04-30": 19,
-          "2020-05-01": 19,
+          "2020-05-01": 20,
           "2020-05-02": 20,
           "2020-05-03": 20,
           "2020-05-04": 20,
-          "2020-05-05": 20,
+          "2020-05-05": 21,
           "2020-05-06": 21,
           "2020-05-07": 21,
           "2020-05-08": 21,
@@ -11264,7 +11117,7 @@
           "2020-05-24": 21,
           "2020-05-25": 21,
           "2020-05-26": 21,
-          "2020-05-27": 21,
+          "2020-05-27": 22,
           "2020-05-28": 22,
           "2020-05-29": 22,
           "2020-05-30": 22,
@@ -11364,8 +11217,8 @@
           "2020-09-01": 22,
           "2020-09-02": 22,
           "2020-09-03": 22,
-          "2020-09-04": 22,
-          "2020-09-05": 22,
+          "2020-09-04": 24,
+          "2020-09-05": 24,
           "2020-09-06": 24,
           "2020-09-07": 24,
           "2020-09-08": 24,
@@ -11375,7 +11228,7 @@
           "2020-09-12": 24,
           "2020-09-13": 24,
           "2020-09-14": 24,
-          "2020-09-15": 24,
+          "2020-09-15": 25,
           "2020-09-16": 25,
           "2020-09-17": 25,
           "2020-09-18": 25,
@@ -11399,10 +11252,125 @@
           "2020-10-06": 25,
           "2020-10-07": 25,
           "2020-10-08": 25,
-          "2020-10-09": 25
+          "2020-10-09": 25,
+          "2020-10-10": 25,
+          "2020-10-11": 25,
+          "2020-10-12": 25,
+          "2020-10-13": 25,
+          "2020-10-14": 25,
+          "2020-10-15": 25,
+          "2020-10-16": 25,
+          "2020-10-17": 25,
+          "2020-10-18": 25,
+          "2020-10-19": 25,
+          "2020-10-20": 25,
+          "2020-10-21": 25,
+          "2020-10-22": 25,
+          "2020-10-23": 25,
+          "2020-10-24": 25,
+          "2020-10-25": 25,
+          "2020-10-26": 25,
+          "2020-10-27": 25,
+          "2020-10-28": 25,
+          "2020-10-29": 25,
+          "2020-10-30": 25,
+          "2020-10-31": 25,
+          "2020-11-01": 25,
+          "2020-11-02": 25,
+          "2020-11-03": 25,
+          "2020-11-04": 25,
+          "2020-11-05": 25,
+          "2020-11-06": 25,
+          "2020-11-07": 25,
+          "2020-11-08": 25,
+          "2020-11-09": 25,
+          "2020-11-10": 25,
+          "2020-11-11": 25,
+          "2020-11-12": 25,
+          "2020-11-13": 25,
+          "2020-11-14": 25,
+          "2020-11-15": 25,
+          "2020-11-16": 25,
+          "2020-11-17": 25,
+          "2020-11-18": 25,
+          "2020-11-19": 25,
+          "2020-11-20": 25,
+          "2020-11-21": 25,
+          "2020-11-22": 25,
+          "2020-11-23": 25,
+          "2020-11-24": 25,
+          "2020-11-25": 25,
+          "2020-11-26": 25,
+          "2020-11-27": 25,
+          "2020-11-28": 25,
+          "2020-11-29": 25,
+          "2020-11-30": 25,
+          "2020-12-01": 25,
+          "2020-12-02": 25,
+          "2020-12-03": 25,
+          "2020-12-04": 25,
+          "2020-12-05": 25,
+          "2020-12-06": 25,
+          "2020-12-07": 25,
+          "2020-12-08": 25,
+          "2020-12-09": 25,
+          "2020-12-10": 25,
+          "2020-12-11": 25,
+          "2020-12-12": 25,
+          "2020-12-13": 25,
+          "2020-12-14": 25,
+          "2020-12-15": 25,
+          "2020-12-16": 25,
+          "2020-12-17": 25,
+          "2020-12-18": 25,
+          "2020-12-19": 25,
+          "2020-12-20": 25,
+          "2020-12-21": 25,
+          "2020-12-22": 25,
+          "2020-12-23": 25,
+          "2020-12-24": 25,
+          "2020-12-25": 25,
+          "2020-12-26": 25,
+          "2020-12-27": 25,
+          "2020-12-28": 25,
+          "2020-12-29": 25,
+          "2020-12-30": 25,
+          "2020-12-31": 25,
+          "2021-01-01": 25,
+          "2021-01-02": 25,
+          "2021-01-03": 25,
+          "2021-01-04": 25,
+          "2021-01-05": 25,
+          "2021-01-06": 25,
+          "2021-01-07": 25,
+          "2021-01-08": 25,
+          "2021-01-09": 25,
+          "2021-01-10": 25,
+          "2021-01-11": 25,
+          "2021-01-12": 25,
+          "2021-01-13": 25,
+          "2021-01-14": 25,
+          "2021-01-15": 25,
+          "2021-01-16": 25,
+          "2021-01-17": 25,
+          "2021-01-18": 25,
+          "2021-01-19": 25,
+          "2021-01-20": 25,
+          "2021-01-21": 25,
+          "2021-01-22": 25,
+          "2021-01-23": 25,
+          "2021-01-24": 25,
+          "2021-01-25": 25,
+          "2021-01-26": 25,
+          "2021-01-27": 25,
+          "2021-01-28": 25,
+          "2021-01-29": 25,
+          "2021-01-30": 25,
+          "2021-01-31": 25,
+          "2021-02-01": 25,
+          "2021-02-02": 25
         },
-        "provenanceDomain": "google.com",
-        "provenanceUrl": "https://research.google.com"
+        "provenanceUrl": "https://ourworldindata.org/coronavirus"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -11466,7 +11434,6 @@
           "2017": 1.81,
           "2018": 1.71
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GiniIndex_EconomicActivity": {},
@@ -11522,7 +11489,6 @@
           "2018": 3.11624261537958,
           "2019": 2.81107010182147
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
@@ -11586,7 +11552,6 @@
           "2018": 0.977703457051805,
           "2019": 1.55772774722449
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
@@ -11651,7 +11616,6 @@
           "2017": 81.6585365853659,
           "2018": 81.8585365853659
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
@@ -11705,7 +11669,6 @@
           "2010": 8,
           "2016": 6.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
@@ -11755,7 +11718,6 @@
           "2013": 1301.30371857823,
           "2014": 1345.8795888743
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
@@ -11805,7 +11767,6 @@
           "2013": 684.15409061608,
           "2014": 790.217192157794
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
@@ -11831,7 +11792,6 @@
           "2017": 18.23592,
           "2018": 17.13195
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -11860,7 +11820,6 @@
           "2017": 3.93676,
           "2018": 3.71993
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
@@ -11925,7 +11884,6 @@
           "2017": 2665785313.29571,
           "2018": 2708912280.26713
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -11990,7 +11948,6 @@
           "2017": 1.2421353007,
           "2018": 1.1871449004
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
@@ -12056,7 +12013,6 @@
           "2018": 6941.23584763012,
           "2019": 6977.69578355382
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
@@ -12092,7 +12048,6 @@
           "2018": 398280777380.129,
           "2019": 415827578906.526
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
@@ -12128,7 +12083,6 @@
           "2018": 12450,
           "2019": 12790
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
@@ -12191,7 +12145,6 @@
           "2015": 1.72743190236244,
           "2016": 1.85650131255119
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
@@ -12227,7 +12180,6 @@
           "2018": 3224754054.74744,
           "2019": 3326000000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -12263,7 +12215,6 @@
           "2018": 1.452297725,
           "2019": 1.4661796687
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
@@ -12289,7 +12240,6 @@
           "2003": 116003776.6,
           "2004": 113242790.2
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
@@ -12318,7 +12268,6 @@
           "2018": 93385360000,
           "2019": 98964960000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -12347,7 +12296,6 @@
           "2018": 42.0569580097,
           "2019": 43.6261011027
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
@@ -12418,7 +12366,6 @@
           "2018": 10.7,
           "2019": 10.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
@@ -12484,7 +12431,6 @@
           "2018": 9.6,
           "2019": 9.2
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
@@ -12550,7 +12496,6 @@
           "2018": 11.7,
           "2019": 11.2
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
@@ -12642,7 +12587,6 @@
           "2018": 115,
           "2019": 98
         },
-        "provenanceDomain": "usgs.gov",
         "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
@@ -12767,7 +12711,6 @@
           "2018": 31989256,
           "2019": 32510453
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {
@@ -12794,7 +12737,6 @@
           "2014": 2916310,
           "2015": 2914160
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15OrMoreYears": {},
@@ -12822,7 +12764,6 @@
           "2014": 2889780,
           "2015": 2887530
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
@@ -12858,7 +12799,6 @@
           "2018": 0.8061599731,
           "2019": 0.8108999634
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
@@ -12887,7 +12827,6 @@
           "2014": 2815950,
           "2015": 2828390
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25OrMoreYears": {},
@@ -12915,7 +12854,6 @@
           "2014": 2628320,
           "2015": 2661350
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_25To34Years": {},
@@ -12951,7 +12889,6 @@
           "2014": 2389600,
           "2015": 2411780
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To39Years": {
@@ -12978,7 +12915,6 @@
           "2014": 2221570,
           "2015": 2258370
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_35To44Years": {},
@@ -13007,7 +12943,6 @@
           "2014": 1936260,
           "2015": 1977630
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To49Years": {
@@ -13034,7 +12969,6 @@
           "2014": 1688350,
           "2015": 1725350
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_45To54Years": {},
@@ -13062,7 +12996,6 @@
           "2014": 1443080,
           "2015": 1486310
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_55To59Years": {
@@ -13089,7 +13022,6 @@
           "2014": 1166680,
           "2015": 1205100
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_5To17Years": {},
@@ -13117,7 +13049,6 @@
           "2014": 2930450,
           "2015": 2922740
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_60To61Years": {},
@@ -13145,7 +13076,6 @@
           "2014": 933698,
           "2015": 967702
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_62To64Years": {},
@@ -13173,7 +13103,6 @@
           "2014": 710008,
           "2015": 736059
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_65To74Years": {},
@@ -13201,7 +13130,6 @@
           "2014": 530116,
           "2015": 545659
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_75OrMoreYears": {},
@@ -13229,7 +13157,6 @@
           "2014": 382689,
           "2015": 394230
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years": {
@@ -13240,7 +13167,6 @@
           "2014": 26.10942,
           "2015": 22.5665722357
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {
@@ -13251,7 +13177,6 @@
           "2014": 24.79848,
           "2015": 21.9941019785
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {
@@ -13262,7 +13187,6 @@
           "2014": 27.37085,
           "2015": 23.1219325657
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_80OrMoreYears": {
@@ -13289,7 +13213,6 @@
           "2014": 701254,
           "2015": 367400
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_AmericanIndianOrAlaskaNativeAlone": {},
@@ -13336,7 +13259,6 @@
           "2016": 15716200,
           "2017": 15887000
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Female_BelowPovertyLevelInThePast12Months": {},
@@ -13374,7 +13296,6 @@
           "2018": 18346713,
           "2019": 18864899
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
@@ -13411,7 +13332,6 @@
           "2016": 15772400,
           "2017": 15939100
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Male_BelowPovertyLevelInThePast12Months": {},
@@ -13440,7 +13360,6 @@
           "2016": 24.5,
           "2017": 24.76
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Rural": {
@@ -13506,7 +13425,6 @@
           "2018": 7067386,
           "2019": 7120114
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
@@ -13539,7 +13457,6 @@
           "2014": 2880690,
           "2015": 2861870
         },
-        "provenanceDomain": "oecd.org",
         "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
       },
       "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -13560,7 +13477,6 @@
           "2017": 0,
           "2018": 0.1
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -13581,7 +13497,6 @@
           "2017": 0.4,
           "2018": 0.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -13602,7 +13517,6 @@
           "2017": 0.1,
           "2018": 0.1
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -13623,7 +13537,6 @@
           "2017": 0.7,
           "2018": 0.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -13644,7 +13557,6 @@
           "2017": 0.1,
           "2018": 0.1
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -13665,7 +13577,6 @@
           "2017": 0.5,
           "2018": 0.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
@@ -13731,7 +13642,6 @@
           "2018": 24921870,
           "2019": 25390339
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
@@ -13744,166 +13654,154 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2020-03-07": 0,
-          "2020-03-09": 0,
-          "2020-03-10": 0,
-          "2020-03-11": 0,
-          "2020-03-12": 0,
-          "2020-03-13": 0,
-          "2020-03-14": 0,
-          "2020-03-15": 0,
-          "2020-03-16": 0,
-          "2020-03-17": 0,
-          "2020-03-18": 0,
-          "2020-03-19": 0,
-          "2020-03-20": 2,
-          "2020-03-21": 3,
+          "2020-03-20": 3,
+          "2020-03-21": 5,
           "2020-03-22": 5,
           "2020-03-23": 5,
-          "2020-03-24": 5,
-          "2020-03-25": 7,
-          "2020-03-26": 8,
-          "2020-03-27": 9,
-          "2020-03-28": 11,
-          "2020-03-29": 16,
-          "2020-03-30": 18,
-          "2020-03-31": 24,
-          "2020-04-01": 30,
-          "2020-04-02": 47,
-          "2020-04-03": 55,
-          "2020-04-04": 61,
-          "2020-04-05": 73,
-          "2020-04-06": 83,
-          "2020-04-07": 92,
-          "2020-04-08": 107,
-          "2020-04-09": 121,
-          "2020-04-10": 138,
-          "2020-04-11": 169,
-          "2020-04-12": 181,
-          "2020-04-13": 193,
-          "2020-04-14": 193,
-          "2020-04-15": 230,
-          "2020-04-16": 254,
-          "2020-04-17": 274,
-          "2020-04-18": 300,
-          "2020-04-19": 348,
-          "2020-04-20": 400,
-          "2020-04-21": 445,
-          "2020-04-22": 484,
-          "2020-04-23": 530,
-          "2020-04-24": 572,
-          "2020-04-25": 634,
-          "2020-04-26": 700,
-          "2020-04-27": 728,
-          "2020-04-28": 782,
-          "2020-04-29": 854,
-          "2020-04-30": 943,
-          "2020-05-01": 1051,
-          "2020-05-02": 1124,
-          "2020-05-03": 1200,
-          "2020-05-04": 1286,
-          "2020-05-05": 1344,
-          "2020-05-06": 1444,
-          "2020-05-07": 1533,
-          "2020-05-08": 1627,
-          "2020-05-09": 1714,
-          "2020-05-10": 1814,
-          "2020-05-11": 1889,
-          "2020-05-12": 1961,
-          "2020-05-13": 2057,
-          "2020-05-14": 2169,
-          "2020-05-15": 2267,
-          "2020-05-16": 2393,
-          "2020-05-17": 2523,
-          "2020-05-18": 2648,
-          "2020-05-19": 2789,
-          "2020-05-20": 2914,
-          "2020-05-21": 3024,
-          "2020-05-22": 3148,
-          "2020-05-23": 3244,
-          "2020-05-24": 3373,
-          "2020-05-25": 3456,
-          "2020-05-26": 3629,
-          "2020-05-27": 3788,
-          "2020-05-28": 3983,
-          "2020-05-29": 4099,
-          "2020-05-30": 4230,
-          "2020-05-31": 4371,
-          "2020-06-01": 4506,
-          "2020-06-02": 4634,
-          "2020-06-03": 4634,
-          "2020-06-04": 4894,
-          "2020-06-05": 5031,
-          "2020-06-06": 5162,
-          "2020-06-07": 5301,
-          "2020-06-08": 5465,
-          "2020-06-09": 5571,
-          "2020-06-10": 5738,
-          "2020-06-11": 5903,
-          "2020-06-12": 6109,
+          "2020-03-24": 7,
+          "2020-03-25": 9,
+          "2020-03-26": 9,
+          "2020-03-27": 11,
+          "2020-03-28": 16,
+          "2020-03-29": 18,
+          "2020-03-30": 24,
+          "2020-03-31": 30,
+          "2020-04-01": 38,
+          "2020-04-02": 55,
+          "2020-04-03": 61,
+          "2020-04-04": 73,
+          "2020-04-05": 83,
+          "2020-04-06": 92,
+          "2020-04-07": 107,
+          "2020-04-08": 121,
+          "2020-04-09": 138,
+          "2020-04-10": 169,
+          "2020-04-11": 181,
+          "2020-04-12": 193,
+          "2020-04-13": 216,
+          "2020-04-14": 230,
+          "2020-04-15": 254,
+          "2020-04-16": 274,
+          "2020-04-17": 300,
+          "2020-04-18": 348,
+          "2020-04-19": 400,
+          "2020-04-20": 445,
+          "2020-04-21": 484,
+          "2020-04-22": 530,
+          "2020-04-23": 572,
+          "2020-04-24": 634,
+          "2020-04-25": 700,
+          "2020-04-26": 728,
+          "2020-04-27": 782,
+          "2020-04-28": 854,
+          "2020-04-29": 943,
+          "2020-04-30": 1051,
+          "2020-05-01": 1124,
+          "2020-05-02": 1200,
+          "2020-05-03": 1286,
+          "2020-05-04": 1344,
+          "2020-05-05": 1444,
+          "2020-05-06": 1533,
+          "2020-05-07": 1627,
+          "2020-05-08": 1714,
+          "2020-05-09": 1814,
+          "2020-05-10": 1889,
+          "2020-05-11": 1961,
+          "2020-05-12": 2057,
+          "2020-05-13": 2169,
+          "2020-05-14": 2267,
+          "2020-05-15": 2392,
+          "2020-05-16": 2523,
+          "2020-05-17": 2648,
+          "2020-05-18": 2789,
+          "2020-05-19": 2914,
+          "2020-05-20": 3024,
+          "2020-05-21": 3148,
+          "2020-05-22": 3244,
+          "2020-05-23": 3373,
+          "2020-05-24": 3456,
+          "2020-05-25": 3629,
+          "2020-05-26": 3788,
+          "2020-05-27": 3983,
+          "2020-05-28": 4099,
+          "2020-05-29": 4230,
+          "2020-05-30": 4371,
+          "2020-05-31": 4506,
+          "2020-06-01": 4634,
+          "2020-06-02": 4767,
+          "2020-06-03": 4894,
+          "2020-06-04": 5031,
+          "2020-06-05": 5162,
+          "2020-06-06": 5301,
+          "2020-06-07": 5465,
+          "2020-06-08": 5571,
+          "2020-06-09": 5738,
+          "2020-06-10": 5903,
+          "2020-06-11": 6088,
+          "2020-06-12": 6088,
           "2020-06-13": 6308,
-          "2020-06-14": 6498,
-          "2020-06-15": 6688,
-          "2020-06-16": 6860,
-          "2020-06-17": 7056,
-          "2020-06-18": 7257,
-          "2020-06-19": 7461,
-          "2020-06-20": 7660,
-          "2020-06-21": 7861,
-          "2020-06-22": 8045,
-          "2020-06-23": 8045,
-          "2020-06-24": 8404,
-          "2020-06-25": 8586,
-          "2020-06-26": 8761,
-          "2020-06-27": 8939,
-          "2020-06-28": 9135,
-          "2020-06-29": 9317,
-          "2020-06-30": 9504,
-          "2020-07-01": 9677,
-          "2020-07-02": 9860,
-          "2020-07-03": 10045,
-          "2020-07-04": 10226,
-          "2020-07-05": 10412,
-          "2020-07-06": 10589,
-          "2020-07-07": 10772,
-          "2020-07-08": 10952,
-          "2020-07-09": 11133,
-          "2020-07-10": 11314,
-          "2020-07-11": 11500,
-          "2020-07-12": 11682,
-          "2020-07-13": 11870,
-          "2020-07-14": 12054,
-          "2020-07-15": 12229,
-          "2020-07-16": 12417,
-          "2020-07-17": 12615,
-          "2020-07-18": 12799,
-          "2020-07-19": 12998,
-          "2020-07-20": 13187,
-          "2020-07-21": 13384,
-          "2020-07-22": 13579,
-          "2020-07-23": 13767,
-          "2020-07-24": 17654,
+          "2020-06-14": 6688,
+          "2020-06-15": 6860,
+          "2020-06-16": 7056,
+          "2020-06-17": 7257,
+          "2020-06-18": 7461,
+          "2020-06-19": 7660,
+          "2020-06-20": 7861,
+          "2020-06-21": 8045,
+          "2020-06-22": 8223,
+          "2020-06-23": 8404,
+          "2020-06-24": 8586,
+          "2020-06-25": 8761,
+          "2020-06-26": 8939,
+          "2020-06-27": 9135,
+          "2020-06-28": 9317,
+          "2020-06-29": 9504,
+          "2020-06-30": 9677,
+          "2020-07-01": 9860,
+          "2020-07-02": 10045,
+          "2020-07-03": 10226,
+          "2020-07-04": 10412,
+          "2020-07-05": 10589,
+          "2020-07-06": 10772,
+          "2020-07-07": 10952,
+          "2020-07-08": 11133,
+          "2020-07-09": 11314,
+          "2020-07-10": 11500,
+          "2020-07-11": 11682,
+          "2020-07-12": 11870,
+          "2020-07-13": 12054,
+          "2020-07-14": 12229,
+          "2020-07-15": 12417,
+          "2020-07-16": 12615,
+          "2020-07-17": 12799,
+          "2020-07-18": 12998,
+          "2020-07-19": 13187,
+          "2020-07-20": 13384,
+          "2020-07-21": 13579,
+          "2020-07-22": 13767,
+          "2020-07-23": 17654,
+          "2020-07-24": 17843,
           "2020-07-25": 17843,
-          "2020-07-26": 18030,
-          "2020-07-27": 18229,
-          "2020-07-28": 18418,
-          "2020-07-29": 18612,
+          "2020-07-26": 17843,
+          "2020-07-27": 18418,
+          "2020-07-28": 18612,
+          "2020-07-29": 18816,
           "2020-07-30": 18816,
           "2020-07-31": 19021,
-          "2020-08-01": 19217,
-          "2020-08-02": 19408,
-          "2020-08-03": 19614,
-          "2020-08-04": 19811,
-          "2020-08-05": 20007,
-          "2020-08-06": 20228,
-          "2020-08-07": 20424,
+          "2020-08-01": 19021,
+          "2020-08-02": 19614,
+          "2020-08-03": 19811,
+          "2020-08-04": 20007,
+          "2020-08-05": 20228,
+          "2020-08-06": 20424,
+          "2020-08-07": 20649,
           "2020-08-08": 20649,
-          "2020-08-09": 20844,
-          "2020-08-10": 21072,
-          "2020-08-11": 21276,
+          "2020-08-09": 21072,
+          "2020-08-10": 21276,
+          "2020-08-11": 21501,
           "2020-08-12": 21501,
           "2020-08-13": 21713,
-          "2020-08-14": 25648,
+          "2020-08-14": 25856,
           "2020-08-15": 25856,
           "2020-08-16": 26075,
           "2020-08-17": 26281,
@@ -13923,7 +13821,7 @@
           "2020-08-31": 28788,
           "2020-09-01": 28944,
           "2020-09-02": 29068,
-          "2020-09-03": 29259,
+          "2020-09-03": 29068,
           "2020-09-04": 29405,
           "2020-09-05": 29554,
           "2020-09-06": 29687,
@@ -13933,7 +13831,7 @@
           "2020-09-10": 30236,
           "2020-09-11": 30344,
           "2020-09-12": 30470,
-          "2020-09-13": 30593,
+          "2020-09-13": 30526,
           "2020-09-14": 30710,
           "2020-09-15": 30812,
           "2020-09-16": 30927,
@@ -13942,10 +13840,10 @@
           "2020-09-19": 31283,
           "2020-09-20": 31369,
           "2020-09-21": 31369,
-          "2020-09-22": 31474,
-          "2020-09-23": 31586,
+          "2020-09-22": 31369,
+          "2020-09-23": 31568,
           "2020-09-24": 31870,
-          "2020-09-25": 31938,
+          "2020-09-25": 32037,
           "2020-09-26": 32037,
           "2020-09-27": 32142,
           "2020-09-28": 32262,
@@ -13954,15 +13852,130 @@
           "2020-10-01": 32463,
           "2020-10-02": 32535,
           "2020-10-03": 32609,
-          "2020-10-04": 32665,
+          "2020-10-04": 32609,
           "2020-10-05": 32742,
           "2020-10-06": 32834,
           "2020-10-07": 32914,
           "2020-10-08": 33009,
-          "2020-10-09": 33098
+          "2020-10-09": 33098,
+          "2020-10-10": 33223,
+          "2020-10-11": 33305,
+          "2020-10-12": 33357,
+          "2020-10-13": 33419,
+          "2020-10-14": 33419,
+          "2020-10-15": 33577,
+          "2020-10-16": 33577,
+          "2020-10-17": 33648,
+          "2020-10-18": 33702,
+          "2020-10-19": 33759,
+          "2020-10-20": 33820,
+          "2020-10-21": 33875,
+          "2020-10-22": 33984,
+          "2020-10-23": 33984,
+          "2020-10-24": 34033,
+          "2020-10-25": 34149,
+          "2020-10-26": 34149,
+          "2020-10-27": 34197,
+          "2020-10-28": 34257,
+          "2020-10-29": 34315,
+          "2020-10-30": 34362,
+          "2020-10-31": 34411,
+          "2020-11-01": 34476,
+          "2020-11-02": 34476,
+          "2020-11-03": 34476,
+          "2020-11-04": 34671,
+          "2020-11-05": 34730,
+          "2020-11-06": 34730,
+          "2020-11-07": 34783,
+          "2020-11-08": 34821,
+          "2020-11-09": 34879,
+          "2020-11-10": 34943,
+          "2020-11-11": 34992,
+          "2020-11-12": 35031,
+          "2020-11-13": 35067,
+          "2020-11-14": 35106,
+          "2020-11-15": 35177,
+          "2020-11-16": 35231,
+          "2020-11-17": 35271,
+          "2020-11-18": 35317,
+          "2020-11-19": 35317,
+          "2020-11-20": 35446,
+          "2020-11-21": 35549,
+          "2020-11-22": 35549,
+          "2020-11-23": 35595,
+          "2020-11-24": 35641,
+          "2020-11-25": 35685,
+          "2020-11-26": 35685,
+          "2020-11-27": 35785,
+          "2020-11-28": 35879,
+          "2020-11-29": 35923,
+          "2020-11-30": 35923,
+          "2020-12-01": 35966,
+          "2020-12-02": 35966,
+          "2020-12-03": 36076,
+          "2020-12-04": 36076,
+          "2020-12-05": 36195,
+          "2020-12-06": 36231,
+          "2020-12-07": 36274,
+          "2020-12-08": 36274,
+          "2020-12-09": 36401,
+          "2020-12-10": 36499,
+          "2020-12-11": 36499,
+          "2020-12-12": 36544,
+          "2020-12-13": 36544,
+          "2020-12-14": 36677,
+          "2020-12-15": 36754,
+          "2020-12-16": 36754,
+          "2020-12-17": 36858,
+          "2020-12-18": 36858,
+          "2020-12-19": 36858,
+          "2020-12-20": 37034,
+          "2020-12-21": 37103,
+          "2020-12-22": 37173,
+          "2020-12-23": 37218,
+          "2020-12-24": 37218,
+          "2020-12-25": 37317,
+          "2020-12-26": 37368,
+          "2020-12-27": 37368,
+          "2020-12-28": 37474,
+          "2020-12-29": 37525,
+          "2020-12-30": 37574,
+          "2020-12-31": 37680,
+          "2021-01-01": 37680,
+          "2021-01-02": 37680,
+          "2021-01-03": 37773,
+          "2021-01-04": 37830,
+          "2021-01-05": 37830,
+          "2021-01-06": 37925,
+          "2021-01-07": 37925,
+          "2021-01-08": 38049,
+          "2021-01-09": 38049,
+          "2021-01-10": 38049,
+          "2021-01-11": 38280,
+          "2021-01-12": 38335,
+          "2021-01-13": 38399,
+          "2021-01-14": 38399,
+          "2021-01-15": 38654,
+          "2021-01-16": 38654,
+          "2021-01-17": 38770,
+          "2021-01-18": 38770,
+          "2021-01-19": 38770,
+          "2021-01-20": 39044,
+          "2021-01-21": 39044,
+          "2021-01-22": 39274,
+          "2021-01-23": 39274,
+          "2021-01-24": 39608,
+          "2021-01-25": 39608,
+          "2021-01-26": 40107,
+          "2021-01-27": 40107,
+          "2021-01-28": 40272,
+          "2021-01-29": 40484,
+          "2021-01-30": 40857,
+          "2021-01-31": 41026,
+          "2021-02-01": 41026,
+          "2021-02-02": 41181
         },
-        "provenanceDomain": "google.com",
-        "provenanceUrl": "https://research.google.com"
+        "provenanceUrl": "https://ourworldindata.org/coronavirus"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -14026,7 +14039,6 @@
           "2017": 2.275,
           "2018": 2.254
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GiniIndex_EconomicActivity": {
@@ -14054,7 +14066,6 @@
           "2017": 43.3,
           "2018": 42.8
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
@@ -14119,7 +14130,6 @@
           "2018": 3.97693571755005,
           "2019": 2.1501313906839
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
@@ -14184,7 +14194,6 @@
           "2018": 1.71824651729878,
           "2019": 1.61615719697585
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
@@ -14249,7 +14258,6 @@
           "2017": 76.286,
           "2018": 76.516
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
@@ -14303,7 +14311,6 @@
           "2010": 7.7,
           "2016": 8.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Electricity_PerCapita": {
@@ -14353,7 +14360,6 @@
           "2013": 2514.7590412321,
           "2014": 2538.79638035364
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Consumption_Energy_PerCapita": {
@@ -14403,7 +14409,6 @@
           "2013": 1991.59361369452,
           "2014": 1969.00171876363
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Debt_Government": {},
@@ -14429,7 +14434,6 @@
           "2012": 21.3968,
           "2013": 19.12593
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -14474,7 +14478,6 @@
           "2012": 4.53671,
           "2013": 4.12402
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government": {
@@ -14539,7 +14542,6 @@
           "2017": 6305880241.42222,
           "2018": 6829203403.39174
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -14604,7 +14606,6 @@
           "2017": 1.3685609353,
           "2018": 1.3275133561
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita": {
@@ -14670,7 +14671,6 @@
           "2018": 7295.47561612095,
           "2019": 7806.74221105532
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
@@ -14706,7 +14706,6 @@
           "2018": 1224069353216.63,
           "2019": 1293101727432.67
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
@@ -14742,7 +14741,6 @@
           "2018": 17630,
           "2019": 18570
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Emissions_CarbonDioxide_PerCapita": {
@@ -14805,7 +14803,6 @@
           "2015": 4.13835221791799,
           "2016": 4.11422335752807
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance": {
@@ -14856,7 +14853,6 @@
           "2018": 7466081911.79321,
           "2019": 7076775695.55131
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -14907,7 +14903,6 @@
           "2018": 1.4740126394,
           "2019": 1.301715443
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Remittance_OutwardRemittance": {
@@ -14941,7 +14936,6 @@
           "2018": 4923627285.38676,
           "2019": 5283022254.92145
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock": {
@@ -14978,7 +14972,6 @@
           "2018": 500741030000,
           "2019": 569228320000
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
@@ -15015,7 +15008,6 @@
           "2018": 98.860234323,
           "2019": 104.7049287144
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_CriminalActivities_Arson": {},
@@ -15087,7 +15079,6 @@
           "2018": 3,
           "2019": 1
         },
-        "provenanceDomain": "noaa.gov",
         "provenanceUrl": "https://www.ncdc.noaa.gov/"
       },
       "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
@@ -15153,7 +15144,6 @@
           "2018": 8.1,
           "2019": 7.7
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
@@ -15219,7 +15209,6 @@
           "2018": 7.2,
           "2019": 6.9
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
@@ -15285,7 +15274,6 @@
           "2018": 8.9,
           "2019": 8.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Death_DiseasesOfTheCirculatorySystem": {},
@@ -15316,7 +15304,6 @@
           "2018": 1,
           "2019": 1
         },
-        "provenanceDomain": "usgs.gov",
         "provenanceUrl": "https://earthquake.usgs.gov/"
       },
       "Count_FloodEvent": {},
@@ -15441,7 +15428,6 @@
           "2018": 69428524,
           "2019": 69625582
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_10To14Years": {},
@@ -15480,7 +15466,6 @@
           "2018": 0.7471399689,
           "2019": 0.7470800018
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_16OrMoreYears": {},
@@ -15521,7 +15506,6 @@
           "2005": 15.1,
           "2006": 15.1
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female": {
@@ -15529,7 +15513,6 @@
           "2005": 14.4,
           "2006": 14.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_7To14Years_Male_Employed_AsFractionOf_Count_Person_7To14Years_Male": {
@@ -15537,7 +15520,6 @@
           "2005": 15.7,
           "2006": 15.7
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_80OrMoreYears": {},
@@ -15595,7 +15577,6 @@
           "2018": 38907795,
           "2019": 38989896
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_IncomeOf10000To14999USDollar": {},
@@ -15677,7 +15658,6 @@
           "2018": 34749671,
           "2019": 34330982
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Separated": {},
@@ -15693,7 +15673,6 @@
           "2012": 1.7,
           "2016": 1.6
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -15702,7 +15681,6 @@
           "2012": 6.1,
           "2016": 5.2
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -15711,7 +15689,6 @@
           "2012": 2.8,
           "2016": 1.3
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -15720,7 +15697,6 @@
           "2012": 7.4,
           "2016": 5.5
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -15730,7 +15706,6 @@
           "2012": 2.2,
           "2016": 1.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -15742,7 +15717,6 @@
           "2012": 6.7,
           "2016": 5.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_Urban": {
@@ -15808,7 +15782,6 @@
           "2018": 34678853,
           "2019": 35294600
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Count_Person_WhiteAlone": {},
@@ -15821,73 +15794,19 @@
       "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {},
       "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
         "data": {
-          "2019-12-31": 0,
-          "2020-01-01": 0,
-          "2020-01-02": 0,
-          "2020-01-03": 0,
-          "2020-01-04": 0,
-          "2020-01-05": 0,
-          "2020-01-06": 0,
-          "2020-01-07": 0,
-          "2020-01-08": 0,
-          "2020-01-09": 0,
-          "2020-01-10": 0,
-          "2020-01-11": 0,
-          "2020-01-12": 0,
-          "2020-01-13": 0,
-          "2020-01-14": 0,
-          "2020-01-15": 0,
-          "2020-01-16": 0,
-          "2020-01-17": 0,
-          "2020-01-18": 0,
-          "2020-01-19": 0,
-          "2020-01-20": 0,
-          "2020-01-21": 0,
-          "2020-01-22": 0,
-          "2020-01-23": 0,
-          "2020-01-24": 0,
-          "2020-01-25": 0,
-          "2020-01-26": 0,
-          "2020-01-27": 0,
-          "2020-01-28": 0,
-          "2020-01-29": 0,
-          "2020-01-30": 0,
-          "2020-01-31": 0,
-          "2020-02-01": 0,
-          "2020-02-02": 0,
-          "2020-02-03": 0,
-          "2020-02-04": 0,
-          "2020-02-05": 0,
-          "2020-02-06": 0,
-          "2020-02-07": 0,
-          "2020-02-08": 0,
-          "2020-02-09": 0,
-          "2020-02-10": 0,
-          "2020-02-11": 0,
-          "2020-02-12": 0,
-          "2020-02-13": 0,
-          "2020-02-14": 0,
-          "2020-02-15": 0,
-          "2020-02-16": 0,
-          "2020-02-17": 0,
-          "2020-02-18": 0,
-          "2020-02-19": 0,
-          "2020-02-20": 0,
-          "2020-02-21": 0,
-          "2020-02-22": 0,
-          "2020-02-23": 0,
-          "2020-02-24": 0,
-          "2020-02-25": 0,
-          "2020-02-26": 0,
-          "2020-02-27": 0,
-          "2020-02-28": 0,
-          "2020-02-29": 0,
           "2020-03-01": 1,
           "2020-03-02": 1,
+          "2020-03-03": 1,
+          "2020-03-04": 1,
           "2020-03-05": 1,
+          "2020-03-06": 1,
           "2020-03-07": 1,
+          "2020-03-08": 1,
+          "2020-03-09": 1,
+          "2020-03-10": 1,
           "2020-03-11": 1,
           "2020-03-12": 1,
+          "2020-03-13": 1,
           "2020-03-14": 1,
           "2020-03-15": 1,
           "2020-03-16": 1,
@@ -15902,17 +15821,17 @@
           "2020-03-25": 4,
           "2020-03-26": 4,
           "2020-03-27": 5,
-          "2020-03-28": 5,
-          "2020-03-29": 6,
-          "2020-03-30": 7,
+          "2020-03-28": 6,
+          "2020-03-29": 7,
+          "2020-03-30": 9,
           "2020-03-31": 10,
-          "2020-04-01": 10,
-          "2020-04-02": 12,
-          "2020-04-03": 15,
-          "2020-04-04": 19,
+          "2020-04-01": 12,
+          "2020-04-02": 15,
+          "2020-04-03": 19,
+          "2020-04-04": 20,
           "2020-04-05": 23,
           "2020-04-06": 26,
-          "2020-04-07": 26,
+          "2020-04-07": 27,
           "2020-04-08": 30,
           "2020-04-09": 32,
           "2020-04-10": 33,
@@ -15926,13 +15845,13 @@
           "2020-04-18": 47,
           "2020-04-19": 47,
           "2020-04-20": 47,
-          "2020-04-21": 47,
-          "2020-04-22": 48,
+          "2020-04-21": 48,
+          "2020-04-22": 49,
           "2020-04-23": 50,
           "2020-04-24": 50,
-          "2020-04-25": 50,
+          "2020-04-25": 51,
           "2020-04-26": 51,
-          "2020-04-27": 51,
+          "2020-04-27": 52,
           "2020-04-28": 54,
           "2020-04-29": 54,
           "2020-04-30": 54,
@@ -15941,10 +15860,10 @@
           "2020-05-03": 54,
           "2020-05-04": 54,
           "2020-05-05": 54,
-          "2020-05-06": 54,
+          "2020-05-06": 55,
           "2020-05-07": 55,
           "2020-05-08": 55,
-          "2020-05-09": 55,
+          "2020-05-09": 56,
           "2020-05-10": 56,
           "2020-05-11": 56,
           "2020-05-12": 56,
@@ -15968,7 +15887,7 @@
           "2020-05-30": 57,
           "2020-05-31": 57,
           "2020-06-01": 57,
-          "2020-06-02": 57,
+          "2020-06-02": 58,
           "2020-06-03": 58,
           "2020-06-04": 58,
           "2020-06-05": 58,
@@ -16097,10 +16016,125 @@
           "2020-10-06": 59,
           "2020-10-07": 59,
           "2020-10-08": 59,
-          "2020-10-09": 59
+          "2020-10-09": 59,
+          "2020-10-10": 59,
+          "2020-10-11": 59,
+          "2020-10-12": 59,
+          "2020-10-13": 59,
+          "2020-10-14": 59,
+          "2020-10-15": 59,
+          "2020-10-16": 59,
+          "2020-10-17": 59,
+          "2020-10-18": 59,
+          "2020-10-19": 59,
+          "2020-10-20": 59,
+          "2020-10-21": 59,
+          "2020-10-22": 59,
+          "2020-10-23": 59,
+          "2020-10-24": 59,
+          "2020-10-25": 59,
+          "2020-10-26": 59,
+          "2020-10-27": 59,
+          "2020-10-28": 59,
+          "2020-10-29": 59,
+          "2020-10-30": 59,
+          "2020-10-31": 59,
+          "2020-11-01": 59,
+          "2020-11-02": 59,
+          "2020-11-03": 59,
+          "2020-11-04": 59,
+          "2020-11-05": 60,
+          "2020-11-06": 60,
+          "2020-11-07": 60,
+          "2020-11-08": 60,
+          "2020-11-09": 60,
+          "2020-11-10": 60,
+          "2020-11-11": 60,
+          "2020-11-12": 60,
+          "2020-11-13": 60,
+          "2020-11-14": 60,
+          "2020-11-15": 60,
+          "2020-11-16": 60,
+          "2020-11-17": 60,
+          "2020-11-18": 60,
+          "2020-11-19": 60,
+          "2020-11-20": 60,
+          "2020-11-21": 60,
+          "2020-11-22": 60,
+          "2020-11-23": 60,
+          "2020-11-24": 60,
+          "2020-11-25": 60,
+          "2020-11-26": 60,
+          "2020-11-27": 60,
+          "2020-11-28": 60,
+          "2020-11-29": 60,
+          "2020-11-30": 60,
+          "2020-12-01": 60,
+          "2020-12-02": 60,
+          "2020-12-03": 60,
+          "2020-12-04": 60,
+          "2020-12-05": 60,
+          "2020-12-06": 60,
+          "2020-12-07": 60,
+          "2020-12-08": 60,
+          "2020-12-09": 60,
+          "2020-12-10": 60,
+          "2020-12-11": 60,
+          "2020-12-12": 60,
+          "2020-12-13": 60,
+          "2020-12-14": 60,
+          "2020-12-15": 60,
+          "2020-12-16": 60,
+          "2020-12-17": 60,
+          "2020-12-18": 60,
+          "2020-12-19": 60,
+          "2020-12-20": 60,
+          "2020-12-21": 60,
+          "2020-12-22": 60,
+          "2020-12-23": 60,
+          "2020-12-24": 60,
+          "2020-12-25": 60,
+          "2020-12-26": 60,
+          "2020-12-27": 60,
+          "2020-12-28": 61,
+          "2020-12-29": 61,
+          "2020-12-30": 61,
+          "2020-12-31": 63,
+          "2021-01-01": 64,
+          "2021-01-02": 64,
+          "2021-01-03": 65,
+          "2021-01-04": 65,
+          "2021-01-05": 66,
+          "2021-01-06": 67,
+          "2021-01-07": 67,
+          "2021-01-08": 67,
+          "2021-01-09": 67,
+          "2021-01-10": 67,
+          "2021-01-11": 67,
+          "2021-01-12": 67,
+          "2021-01-13": 67,
+          "2021-01-14": 69,
+          "2021-01-15": 70,
+          "2021-01-16": 70,
+          "2021-01-17": 70,
+          "2021-01-18": 70,
+          "2021-01-19": 71,
+          "2021-01-20": 71,
+          "2021-01-21": 71,
+          "2021-01-22": 71,
+          "2021-01-23": 72,
+          "2021-01-24": 73,
+          "2021-01-25": 75,
+          "2021-01-26": 75,
+          "2021-01-27": 76,
+          "2021-01-28": 76,
+          "2021-01-29": 77,
+          "2021-01-30": 77,
+          "2021-01-31": 77,
+          "2021-02-01": 79,
+          "2021-02-02": 79
         },
-        "provenanceDomain": "google.com",
-        "provenanceUrl": "https://research.google.com"
+        "provenanceUrl": "https://ourworldindata.org/coronavirus"
       },
       "FertilityRate_Person_Female": {
         "data": {
@@ -16164,7 +16198,6 @@
           "2017": 1.532,
           "2018": 1.525
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GiniIndex_EconomicActivity": {
@@ -16194,7 +16227,6 @@
           "2017": 36.5,
           "2018": 36.4
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {
@@ -16259,7 +16291,6 @@
           "2018": 4.15076208786206,
           "2019": 2.35469391059033
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "GrowthRate_Count_Person": {
@@ -16324,7 +16355,6 @@
           "2018": 0.3154482592337,
           "2019": 0.283426556156345
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "LifeExpectancy_Person": {
@@ -16389,7 +16419,6 @@
           "2017": 76.683,
           "2018": 76.931
         },
-        "provenanceDomain": "worldbank.org",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
       },
       "Median_Age_Person": {},
@@ -16533,7 +16562,6 @@
         "data": {
           "2000": 6355144
         },
-        "provenanceDomain": "un.org",
         "provenanceUrl": "http://data.un.org"
       },
       "Count_Person_10To14Years": {},
@@ -16797,7 +16825,6 @@
           "2018": 1746840,
           "2019": 1763742
         },
-        "provenanceDomain": "wikidata.org",
         "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
       },
       "Count_Person_10To14Years": {},
@@ -17061,7 +17088,6 @@
           "2018": 2639226,
           "2019": 2646401
         },
-        "provenanceDomain": "wikidata.org",
         "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
       },
       "Count_Person_10To14Years": {},
@@ -17313,7 +17339,6 @@
         "data": {
           "2018": 1805895
         },
-        "provenanceDomain": "wikipedia.org",
         "provenanceUrl": "https://www.wikipedia.org"
       },
       "Count_Person_10To14Years": {},
@@ -17577,7 +17602,6 @@
           "2018": 1869633,
           "2019": 1874548
         },
-        "provenanceDomain": "wikidata.org",
         "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
       },
       "Count_Person_10To14Years": {},

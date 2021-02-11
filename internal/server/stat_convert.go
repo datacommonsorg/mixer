@@ -62,12 +62,10 @@ func convertToObsSeries(token string, jsonRaw []byte) (
 				MeasurementMethod: source.GetMeasurementMethod(),
 				ScalingFactor:     source.GetScalingFactor(),
 				Unit:              source.GetUnit(),
-				ProvenanceDomain:  source.GetProvenanceDomain(),
 				ProvenanceURL:     source.GetProvenanceUrl(),
 				Val:               source.GetVal(),
 			}
 		}
-		ret.ProvenanceDomain = x.ObsTimeSeries.GetProvenanceDomain()
 		ret.ProvenanceURL = x.ObsTimeSeries.GetProvenanceUrl()
 		return ret, nil
 	case nil:

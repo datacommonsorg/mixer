@@ -12,7 +12,6 @@
       "2019": 36.5
     },
     "placeName": "California",
-    "provenanceDomain": "census.gov",
     "provenanceUrl": "https://www.census.gov/"
   },
   "geoId/06085": {
@@ -28,7 +27,6 @@
       "2019": 37.1
     },
     "placeName": "Santa Clara County",
-    "provenanceDomain": "census.gov",
     "provenanceUrl": "https://www.census.gov/"
   },
   "geoId/0649670": {
@@ -44,7 +42,6 @@
       "2019": 34.8
     },
     "placeName": "Mountain View",
-    "provenanceDomain": "census.gov",
     "provenanceUrl": "https://www.census.gov/"
   }
 }
