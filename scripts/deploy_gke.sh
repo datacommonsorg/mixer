@@ -47,6 +47,13 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
+cd $ROOT
+if [[ $ENV == "autopush" ]]; then
+  # Update bigtable version
+  gsutil cp gs://automation_control/latest_base_cache_version.txt deploy/storage/bigtable.version
+  # TODO(shifucun): also update bigquery version when version file is available.
+fi
+
 PROJECT_ID=$(yq read deploy/gke/$ENV.yaml project)
 REGION=$(yq read deploy/gke/$ENV.yaml region)
 IP=$(yq read deploy/gke/$ENV.yaml ip)
