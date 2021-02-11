@@ -16,10 +16,10 @@
 # This is a yaml template to create gcp/gke configuration.
 # Copy this file to `config.yaml` and use that.
 
-project:
-ip:
-domain:
-api_title:
-region:
+project: <GKE_PROJECT_ID>
+ip: <API_IP>
+domain: <API_DOMAIN>
+api_title: <API_TITLE>
+region: <GKE_REGION
 nodes: 1
-store: google.com:datcom-store-dev
+store: <BIGQUERY_PROJECT_ID>

@@ -18,7 +18,9 @@ Instructions of the initial setup of the GCP project and GKE clusters for deploy
   cp config.yaml.tpl config.yaml
   ```
 
-* Add the GCP project id in `config.yaml`, **project** field.
+* Add the GCP project id used for deployment in `config.yaml`, **project** field.
+
+* Add the GCP project that hosts the Bigquery table in `config.yaml`, **store** field.
 
 * Install [Google Cloud SDK](https://cloud.google.com/sdk/install).
 
