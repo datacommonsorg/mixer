@@ -22,7 +22,7 @@ kind: Kustomization
 nameSuffix: -prod
 
 resources:
-- ../../base
+- ../../datacommons
 
 configMapGenerator:
 - name: mixer-configmap

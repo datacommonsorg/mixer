@@ -21,13 +21,9 @@ Create a new GCP project and setup billing account.
 
 ## Deployment
 
-* Remove all the .mcf files from [mapping](../deploy/mapping) directory and add
-  the custom template MCF files created above in that directory.
+* Add the custom template MCF to [mapping.mcf](../deploy/overlays/custom/mapping.mcf).
 
-* Change the mapping customization [file](../deploy/mapping/kustomization.yaml)
-  to use the custom MCF files.
-
-* Update the bigquery version [file](../deploy/storage/bigquery.version) to use
+* Update the bigquery version [file](../deploy/overlays/custom/bigquery.version) to use
   the custom dataset.
 
 * Deploy mixer to GKE

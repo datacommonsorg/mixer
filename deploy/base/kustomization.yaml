@@ -20,8 +20,6 @@ kind: Kustomization
 namespace: mixer
 
 resources:
-- ../storage
-- ../mapping
 - deployment.yaml
 - service.yaml
 - namespace.yaml

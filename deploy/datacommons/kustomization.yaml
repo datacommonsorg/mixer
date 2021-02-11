@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,31 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization for "autopush" mixer running on GCP `datcom-mixer-autopush` project.
-# - Adds "autopush" suffix to all the resources.
-# - Use replica of 15.
+# Kustomization configuration for base yaml files.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-nameSuffix: -autopush
+namespace: mixer
 
 resources:
-- ../../datacommons
-
-configMapGenerator:
-- name: mixer-configmap
-  behavior: create
-  namespace: mixer
-  literals:
-  - projectId=datcom-mixer-autopush
-  - serviceName=autopush.api.datacommons.org
-
-patchesStrategicMerge:
-- |-
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: mixer-grpc
-  spec:
-    replicas: 15
+- ../storage
+- ../mapping
+- ../base

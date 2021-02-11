@@ -32,6 +32,14 @@ configMapGenerator:
   literals:
     - projectId=<PROJECT_ID>
     - serviceName=<DOMAIN>
+- name: store-configmap
+  behavior: create
+  files:
+  - bigtable.version
+  - bigquery.version
+- name: schema-mapping
+  files:
+    - mapping.mcf
 
 generatorOptions:
   disableNameSuffixHash: true
