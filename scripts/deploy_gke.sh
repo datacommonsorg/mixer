@@ -49,9 +49,9 @@ ROOT="$(dirname "$DIR")"
 
 cd $ROOT
 if [[ $ENV == "autopush" ]]; then
-  # Update bigtable version
+  # Update bigtable and bigquery version
   gsutil cp gs://automation_control/latest_base_cache_version.txt deploy/storage/bigtable.version
-  # TODO(shifucun): also update bigquery version when version file is available.
+  gsutil cp gs://automation_control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
 fi
 
 PROJECT_ID=$(yq read deploy/gke/$ENV.yaml project)
