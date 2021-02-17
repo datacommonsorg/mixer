@@ -110,7 +110,7 @@ func TestQuery(t *testing.T) {
 			 ?observation observedNodeLocation ?place .
 			 ?place typeOf Country .
 			}
-			ORDER BY ASC (?place)
+			ORDER BY ASC (?observation)
 			LIMIT 10`,
 			"statvar-obs.json",
 		},
