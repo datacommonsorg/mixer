@@ -30,8 +30,8 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2017",
-          "value": 8940603,
+          "date": "2019",
+          "value": 8132863,
           "metadata": {
             "importName": "FBIGovCrime_AggCountry",
             "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
