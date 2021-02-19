@@ -47,7 +47,7 @@ func TestCurry(t *testing.T) {
 			WHERE {
 				?o typeOf Observation .
 				?pop typeOf StatisticalPopulation .
-				?place typeOf Place .
+				?place typeOf Country .
 				?o measurementMethod "GoogleKGHumanCurated" .
 				?o measuredProperty count .
 				?o measuredValue ?value .
