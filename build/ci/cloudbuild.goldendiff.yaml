@@ -32,7 +32,7 @@ steps:
         cd tools/send_email
         go run main.go \
           --subject="Mixer golden data diff for $(head -1 /tmp/bigtable.version)" \
-          --receiver="datacommons+release@google.com" \
+          --receiver="datacommons-alerts@google.com" \
           --body_file="/tmp/golden-diff.html" \
           --mime_type="text/html"
 
