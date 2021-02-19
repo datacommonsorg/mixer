@@ -1,0 +1,1374 @@
+{
+  "header": [
+    "?place",
+    "?date",
+    "?value"
+  ],
+  "rows": [
+    {
+      "cells": [
+        {
+          "value": "country/AUT"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "4.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BEL"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "7.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BGR"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "12.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CYP"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "12.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CZE"
+        },
+        {
+          "value": "2019-07"
+        },
+        {
+          "value": "2.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DEU"
+        },
+        {
+          "value": "2016-06"
+        },
+        {
+          "value": "4.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DNK"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "8.3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ECU"
+        },
+        {
+          "value": "2019-03"
+        },
+        {
+          "value": "4.61"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ESP"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "25.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/EST"
+        },
+        {
+          "value": "2012-08"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FIN"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "7.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FRA"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "10.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GBR"
+        },
+        {
+          "value": "2018-06"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GRC"
+        },
+        {
+          "value": "2012-08"
+        },
+        {
+          "value": "25.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/HRV"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "15.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/HUN"
+        },
+        {
+          "value": "2012-08"
+        },
+        {
+          "value": "10.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/IRL"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "15.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ISL"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "6.3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ITA"
+        },
+        {
+          "value": "2019-06"
+        },
+        {
+          "value": "9.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LTU"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "12.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LUX"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "5.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LVA"
+        },
+        {
+          "value": "2012-06"
+        },
+        {
+          "value": "15.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MLT"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "6.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NLD"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NOR"
+        },
+        {
+          "value": "2012-07"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/POL"
+        },
+        {
+          "value": "2019-06"
+        },
+        {
+          "value": "3.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PRI"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "13.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PRT"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "15.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ROU"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "7.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SVK"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "13.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SVN"
+        },
+        {
+          "value": "2012-09"
+        },
+        {
+          "value": "8.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SWE"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "7.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TUR"
+        },
+        {
+          "value": "2012-07"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/USA"
+        },
+        {
+          "value": "2016-06"
+        },
+        {
+          "value": "4.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ZAF"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "29"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/5f6xv41"
+        },
+        {
+          "value": "2017-02"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "dc/tckfqs2"
+        },
+        {
+          "value": "2017"
+        },
+        {
+          "value": "10.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/01"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/02"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "7.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/04"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/05"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "7.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/06"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "10.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/0606308"
+        },
+        {
+          "value": "2013-02"
+        },
+        {
+          "value": "7.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/06095"
+        },
+        {
+          "value": "2012-04-01"
+        },
+        {
+          "value": "10.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/08"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "7.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/09"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/10"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/11001"
+        },
+        {
+          "value": "2018-06"
+        },
+        {
+          "value": "5.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/12"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/13"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/15"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/16"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/17"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/18"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/18143"
+        },
+        {
+          "value": "2011-12-01"
+        },
+        {
+          "value": "10.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/19"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/20"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/21"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/22"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/23"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "7.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/24"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/25"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/26"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "9.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/2622000"
+        },
+        {
+          "value": "2018-07"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/27"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/28"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/29"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/30"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/31"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "3.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/32"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "11.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/33"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/34"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "9.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/3419390"
+        },
+        {
+          "value": "2016-12"
+        },
+        {
+          "value": "6.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/35"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/3502000"
+        },
+        {
+          "value": "2016-11"
+        },
+        {
+          "value": "5.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/35031"
+        },
+        {
+          "value": "2010-11-01"
+        },
+        {
+          "value": "8.8"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/3564930"
+        },
+        {
+          "value": "2015-02"
+        },
+        {
+          "value": "5.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/36"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/37"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "9.3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/38"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "3.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/38019"
+        },
+        {
+          "value": "2008-11-01"
+        },
+        {
+          "value": "2.3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/39"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/40"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/41"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/42"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/44"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "10.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/45"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/46"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "4.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/47"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/48"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/48483"
+        },
+        {
+          "value": "2011-08-01"
+        },
+        {
+          "value": "3.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/49"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/50"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/51"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.7"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/5148968"
+        },
+        {
+          "value": "2009-11-01"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/53"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "8.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/5363000"
+        },
+        {
+          "value": "2015-08"
+        },
+        {
+          "value": "3.3"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/54"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/55"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "6.9"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/56"
+        },
+        {
+          "value": "2012-10"
+        },
+        {
+          "value": "5.2"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "nuts/DE1"
+        },
+        {
+          "value": "2013"
+        },
+        {
+          "value": "4.1"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "nuts/DE144"
+        },
+        {
+          "value": "2012-12"
+        },
+        {
+          "value": "3.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "nuts/SK041"
+        },
+        {
+          "value": "2010"
+        },
+        {
+          "value": "18.6"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "wikidataId/Q208022"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "6.4"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "wikidataId/Q764460"
+        },
+        {
+          "value": "2009"
+        },
+        {
+          "value": "6.4"
+        }
+      ]
+    }
+  ]
+}
