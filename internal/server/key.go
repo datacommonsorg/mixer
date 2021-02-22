@@ -60,6 +60,7 @@ type placeStatVar struct {
 	statVar string
 }
 
+// TODO(shifucun): deprecate this after stat var migration.
 func buildStatsKey(
 	places []string, statVars map[string]*StatisticalVariable) (
 	bigtable.RowList, map[string]*placeStatVar) {
@@ -69,6 +70,21 @@ func buildStatsKey(
 		keySuffix := buildStatsKeySuffix(svObj)
 		for _, place := range places {
 			rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, place, keySuffix)
+			rowList = append(rowList, rowKey)
+			keyToToken[rowKey] = &placeStatVar{place, sv}
+		}
+	}
+	return rowList, keyToToken
+}
+
+func buildStatsKeyNew(
+	places []string, statVars []string) (
+	bigtable.RowList, map[string]*placeStatVar) {
+	rowList := bigtable.RowList{}
+	keyToToken := map[string]*placeStatVar{}
+	for _, sv := range statVars {
+		for _, place := range places {
+			rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, place, sv)
 			rowList = append(rowList, rowKey)
 			keyToToken[rowKey] = &placeStatVar{place, sv}
 		}

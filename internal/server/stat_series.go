@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"sort"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -95,6 +96,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
+	statVarMode := in.GetStatVarMode()
 	if len(places) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: place")
@@ -117,23 +119,29 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 		}
 	}
 
-	// Read triples for statistical variable.
-	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.store, triplesRowList)
-	if err != nil {
-		return nil, err
-	}
-	statVarObject := map[string]*StatisticalVariable{}
-	for statVar, triplesCache := range triples {
-		if triplesCache != nil {
-			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
-			if err != nil {
-				return nil, err
+	var rowList bigtable.RowList
+	var keyTokens map[string]*placeStatVar
+	if statVarMode {
+		rowList, keyTokens = buildStatsKeyNew(places, statVars)
+	} else {
+		// Read triples for statistical variable.
+		triplesRowList := buildTriplesKey(statVars)
+		triples, err := readTriples(ctx, s.store, triplesRowList)
+		if err != nil {
+			return nil, err
+		}
+		statVarObject := map[string]*StatisticalVariable{}
+		for statVar, triplesCache := range triples {
+			if triplesCache != nil {
+				statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
+				if err != nil {
+					return nil, err
+				}
 			}
 		}
+		// Construct BigTable row keys.
+		rowList, keyTokens = buildStatsKey(places, statVarObject)
 	}
-	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatsKey(places, statVarObject)
 	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
