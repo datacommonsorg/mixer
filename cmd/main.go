@@ -104,7 +104,7 @@ func main() {
 	}
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchBtInstance, *schemaPath)
+	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchBtInstance, *schemaPath, *statVarMode)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}

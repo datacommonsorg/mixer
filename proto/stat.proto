@@ -196,8 +196,6 @@ message GetStatAllRequest {
   repeated string places = 1;
   // dcids of the stat var.
   repeated string stat_vars = 2;
-  // whether in stat var mode.
-  bool stat_var_mode = 999;
 }
 
 // Response for GetStatAll service.

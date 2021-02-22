@@ -54,11 +54,10 @@ func TestGetStatAll(t *testing.T) {
 			"result.json",
 		},
 	} {
-		for index, client := range []pb.MixerClient{client, clientStatVar} {
+		for _, client := range []pb.MixerClient{client, clientStatVar} {
 			resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
-				StatVars:    c.statVars,
-				Places:      c.places,
-				StatVarMode: index == 1,
+				StatVars: c.statVars,
+				Places:   c.places,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatAll: %s", err)

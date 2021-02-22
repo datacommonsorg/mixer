@@ -55,17 +55,20 @@ func setup() (pb.MixerClient, error) {
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
-		"google.com:datcom-store-dev")
+		"google.com:datcom-store-dev",
+		false)
 }
 
 func setupStatVar() (pb.MixerClient, error) {
 	return setupInternal(
 		"../../deploy/storage-statvar/bigquery.version",
 		"../../deploy/storage-statvar/bigtable.version",
-		"datcom-store")
+		"datcom-store",
+		true)
 }
 
-func setupInternal(bq, bt, btProject string) (pb.MixerClient, error) {
+func setupInternal(
+	bq, bt, btProject string, statVarMode bool) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
@@ -89,7 +92,7 @@ func setupInternal(bq, bt, btProject string) (pb.MixerClient, error) {
 		return nil, err
 	}
 
-	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath)
+	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath, statVarMode)
 	if err != nil {
 		return nil, err
 	}
@@ -111,7 +114,11 @@ func setupBqOnly() (pb.MixerClient, error) {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 	metadata, err := server.NewMetadata(
-		strings.TrimSpace(string(bqTableID)), "google.com:datcom-store-dev", "", schemaPath)
+		strings.TrimSpace(string(bqTableID)),
+		"google.com:datcom-store-dev",
+		"",
+		schemaPath,
+		false)
 	if err != nil {
 		return nil, err
 	}
