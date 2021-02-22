@@ -12,14 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization configuration for base yaml files.
+# Kustomization for statvar mixer running on GCP `datcom-mixer-statvar` project.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: mixer
+nameSuffix: -statvar
 
 resources:
-- ../storage-statvar
-- ../mapping-statvar
-- ../base
+- ../../datacommons-statvar
+
+configMapGenerator:
+- name: mixer-configmap
+  behavior: create
+  namespace: mixer
+  literals:
+  - projectId=datcom-mixer-statvar
+  - serviceName=statvar.api.datacommons.org
+
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: mixer-grpc
+  spec:
+    replicas: 12
