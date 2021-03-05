@@ -84,7 +84,7 @@ func ReadBranchTableName(
 
 // NewMetadata initialize the metadata for translator.
 func NewMetadata(
-	bqDataset, btProject, branchInstance, schemaPath string, statVarMode bool) (*Metadata, error) {
+	bqDataset, btProject, branchInstance, schemaPath string, svobsMode bool) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -119,7 +119,7 @@ func NewMetadata(
 			bqDataset,
 			btProject,
 			branchInstance,
-			statVarMode},
+			svobsMode},
 		nil
 }
 

@@ -96,7 +96,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
-	statVarMode := s.metadata.StatVarMode
+	svobsMode := s.metadata.StatVarMode
 	if len(places) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: place")
@@ -121,7 +121,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 
 	var rowList bigtable.RowList
 	var keyTokens map[string]*placeStatVar
-	if statVarMode {
+	if svobsMode {
 		rowList, keyTokens = buildStatsKeyNew(places, statVars)
 	} else {
 		// Read triples for statistical variable.

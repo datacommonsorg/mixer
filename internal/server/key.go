@@ -82,11 +82,11 @@ func buildStatsKeyNew(
 	bigtable.RowList, map[string]*placeStatVar) {
 	rowList := bigtable.RowList{}
 	keyToToken := map[string]*placeStatVar{}
-	for _, sv := range statVars {
+	for _, svID := range statVars {
 		for _, place := range places {
-			rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, place, sv)
+			rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, place, svID)
 			rowList = append(rowList, rowKey)
-			keyToToken[rowKey] = &placeStatVar{place, sv}
+			keyToToken[rowKey] = &placeStatVar{place, svID}
 		}
 	}
 	return rowList, keyToToken
