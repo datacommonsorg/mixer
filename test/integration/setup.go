@@ -47,18 +47,34 @@ func init() {
 // It needs Application Default Credentials to run locally or need to
 // provide service account credential when running on GCP.
 const (
-	btProject        = "google.com:datcom-store-dev"
 	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
+	devStore         = "google.com:datcom-store-dev"
+	store            = "datcom-store"
 )
 
 func setup() (pb.MixerClient, error) {
+	return setupInternal(
+		"../../deploy/storage/bigquery.version",
+		"../../deploy/storage/bigtable.version",
+		devStore,
+		false)
+}
+
+func setupStatVar() (pb.MixerClient, error) {
+	return setupInternal(
+		"../../deploy/storage-statvar/bigquery.version",
+		"../../deploy/storage-statvar/bigtable.version",
+		store,
+		true)
+}
+
+func setupInternal(
+	bq, bt, btProject string, svobsMode bool) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	bqTableID, _ := ioutil.ReadFile(
-		path.Join(path.Dir(filename), "../../deploy/storage/bigquery.version"))
-	baseTableName, _ := ioutil.ReadFile(
-		path.Join(path.Dir(filename), "../../deploy/storage/bigtable.version"))
+	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
+	baseTableName, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bt))
 	schemaPath := path.Join(path.Dir(filename), "../../deploy/mapping")
 
 	// BigQuery.
@@ -78,13 +94,16 @@ func setup() (pb.MixerClient, error) {
 		return nil, err
 	}
 
-	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath)
+	metadata, err := server.NewMetadata(
+		strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath, svobsMode)
 	if err != nil {
 		return nil, err
 	}
 	return newClient(bqClient, baseTable, branchTable, metadata)
 }
 
+// TODO(shifucun): this is helper functio to test custom project setup. Leave
+// it to use the old project and migrate to new project later.
 func setupBqOnly() (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
@@ -97,7 +116,12 @@ func setupBqOnly() (pb.MixerClient, error) {
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
-	metadata, err := server.NewMetadata(strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath)
+	metadata, err := server.NewMetadata(
+		strings.TrimSpace(string(bqTableID)),
+		devStore,
+		"",
+		schemaPath,
+		false)
 	if err != nil {
 		return nil, err
 	}

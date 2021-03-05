@@ -44,6 +44,7 @@ type Metadata struct {
 	Bq               string
 	BtProject        string
 	BranchBtInstance string
+	StatVarMode      bool
 }
 
 // Server holds resources for a mixer server
@@ -82,7 +83,8 @@ func ReadBranchTableName(
 }
 
 // NewMetadata initialize the metadata for translator.
-func NewMetadata(bqDataset, btProject, branchInstance, schemaPath string) (*Metadata, error) {
+func NewMetadata(
+	bqDataset, btProject, branchInstance, schemaPath string, svobsMode bool) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -110,7 +112,15 @@ func NewMetadata(bqDataset, btProject, branchInstance, schemaPath string) (*Meta
 	outArcInfo := map[string]map[string][]translator.OutArcInfo{}
 	inArcInfo := map[string][]translator.InArcInfo{}
 	return &Metadata{
-		mappings, outArcInfo, inArcInfo, subTypeMap, bqDataset, btProject, branchInstance}, nil
+			mappings,
+			outArcInfo,
+			inArcInfo,
+			subTypeMap,
+			bqDataset,
+			btProject,
+			branchInstance,
+			svobsMode},
+		nil
 }
 
 // NewBtTable creates a new bigtable.Table instance.

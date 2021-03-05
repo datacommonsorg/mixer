@@ -46,6 +46,7 @@ var (
 	port             = flag.Int("port", 12345, "Port on which to run the server.")
 	useALTS          = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	bigqueryOnly     = flag.Bool("bigquery_only", false, "The service only serves sparql query")
+	svobsMode        = flag.Bool("svobs_mode", false, "Use new storage that is built on top of StatVar instead of StatPop")
 	schemaPath       = flag.String("schema_path", "/translator/mapping", "The director that contains the schema mapping files")
 )
 
@@ -103,7 +104,7 @@ func main() {
 	}
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchBtInstance, *schemaPath)
+	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchBtInstance, *schemaPath, *svobsMode)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}

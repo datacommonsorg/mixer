@@ -35,6 +35,10 @@ func TestGetStatAll(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
+	clientStatVar, err := setupStatVar()
+	if err != nil {
+		t.Fatalf("Failed to set up mixer and client")
+	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "golden_response/staging/get_stat_all")
@@ -50,30 +54,32 @@ func TestGetStatAll(t *testing.T) {
 			"result.json",
 		},
 	} {
-		resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
-		})
-		if err != nil {
-			t.Errorf("could not GetStatAll: %s", err)
-			continue
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateProtoGolden(resp, goldenFile)
-			continue
-		}
-		var expected pb.GetStatAllResponse
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+		for index, client := range []pb.MixerClient{client, clientStatVar} {
+			resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
+				StatVars: c.statVars,
+				Places:   c.places,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatAll: %s", err)
+				continue
+			}
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if index == 0 && generateGolden {
+				updateProtoGolden(resp, goldenFile)
+				continue
+			}
+			var expected pb.GetStatAllResponse
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = protojson.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }
