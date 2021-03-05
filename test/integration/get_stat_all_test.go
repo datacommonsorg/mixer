@@ -54,7 +54,7 @@ func TestGetStatAll(t *testing.T) {
 			"result.json",
 		},
 	} {
-		for _, client := range []pb.MixerClient{client, clientStatVar} {
+		for index, client := range []pb.MixerClient{client, clientStatVar} {
 			resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
 				StatVars: c.statVars,
 				Places:   c.places,
@@ -64,7 +64,7 @@ func TestGetStatAll(t *testing.T) {
 				continue
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
-			if generateGolden {
+			if index == 0 && generateGolden {
 				updateProtoGolden(resp, goldenFile)
 				continue
 			}
