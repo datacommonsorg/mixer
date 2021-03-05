@@ -1,0 +1,3246 @@
+{
+  "header": [
+    "?place",
+    "?date",
+    "?value"
+  ],
+  "rows": [
+    {
+      "cells": [
+        {
+          "value": "country/ABW"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "108141"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/AFG"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "3.222556e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/AGO"
+        },
+        {
+          "value": "2050"
+        },
+        {
+          "value": "4.46e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/AIA"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "15094"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ALB"
+        },
+        {
+          "value": "2020-01"
+        },
+        {
+          "value": "2.845955e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/AND"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "77543"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ANT"
+        },
+        {
+          "value": "2009"
+        },
+        {
+          "value": "227049"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ARE"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "9.8904e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ARG"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "4.4938712e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ARM"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.9569e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ASM"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "69543"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ATG"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "96286"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/AUS"
+        },
+        {
+          "value": "2021"
+        },
+        {
+          "value": "2.57258e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/AUT"
+        },
+        {
+          "value": "2020-10"
+        },
+        {
+          "value": "8.935112e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/AZE"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.0127874e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BDI"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.1865821e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BEL"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.1492641e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BEN"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.1733059e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BES"
+        },
+        {
+          "value": "2020-01-01"
+        },
+        {
+          "value": "25987"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BFA"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.1510181e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BGD"
+        },
+        {
+          "value": "2012-07"
+        },
+        {
+          "value": "1.61083804e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BGR"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "6.951482e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BHR"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.569446e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BHS"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "385637"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BIH"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "3.301e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BLM"
+        },
+        {
+          "value": "2012"
+        },
+        {
+          "value": "9131"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BLR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "9.4084e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BLZ"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "419199"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BMU"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "64700"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BOL"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.1428245e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BRA"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.09469333e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BRB"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "287025"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BRN"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "459500"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BTN"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "754388"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/BWA"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.254068e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CAF"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "4.666368e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CAN"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.8008005e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CCK"
+        },
+        {
+          "value": "2009"
+        },
+        {
+          "value": "596"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CHE"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "8.570146e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CHL"
+        },
+        {
+          "value": "2017"
+        },
+        {
+          "value": "1.7574003e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CHN"
+        },
+        {
+          "value": "2013"
+        },
+        {
+          "value": "1.339724852e+09"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CIV"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.6378274e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CMR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.6545864e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/COD"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "6.7757577e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/COG"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "5.244359e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/COK"
+        },
+        {
+          "value": "2016"
+        },
+        {
+          "value": "17459"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/COL"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "5.0372424e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/COM"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "850688"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CPV"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "543767"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CRI"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "4.999441e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CSK"
+        },
+        {
+          "value": "1993"
+        },
+        {
+          "value": "1.56e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CUB"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.119347e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CUW"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "145619"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CXR"
+        },
+        {
+          "value": "2010"
+        },
+        {
+          "value": "1402"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CYM"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "56729"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CYP"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.189265e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/CZE"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.0707839e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DEU"
+        },
+        {
+          "value": "2020-06-30"
+        },
+        {
+          "value": "8.31e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DJI"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "921804"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DMA"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "71625"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DNK"
+        },
+        {
+          "value": "2013-01-01"
+        },
+        {
+          "value": "5.602628e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DOM"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.0878246e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/DZA"
+        },
+        {
+          "value": "2021"
+        },
+        {
+          "value": "4.47e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ECU"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.7084358e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/EGY"
+        },
+        {
+          "value": "2015"
+        },
+        {
+          "value": "9.1508084e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ERI"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "6.081196e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ESP"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "4.7450795e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/EST"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.32946e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ETH"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "8.4734262e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FIN"
+        },
+        {
+          "value": "2020-12"
+        },
+        {
+          "value": "5.536146e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FJI"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "926276"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FLK"
+        },
+        {
+          "value": "2012"
+        },
+        {
+          "value": "2840"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FRA"
+        },
+        {
+          "value": "2021-02"
+        },
+        {
+          "value": "6.7399e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FRO"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "48863"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/FSM"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "104468"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GAB"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.119275e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GBR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "6.7886004e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GEO"
+        },
+        {
+          "value": "2014"
+        },
+        {
+          "value": "3.713804e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GHA"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.107294e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GIB"
+        },
+        {
+          "value": "2010"
+        },
+        {
+          "value": "29244"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GIN"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.2414293e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GLP"
+        },
+        {
+          "value": "2016"
+        },
+        {
+          "value": "395700"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GMB"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.173999e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GNB"
+        },
+        {
+          "value": "2050"
+        },
+        {
+          "value": "5.3e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GNQ"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.454789e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GRC"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.0724599e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GRD"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "111454"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GRL"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "56840"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GTM"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.7263239e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GUF"
+        },
+        {
+          "value": "2021-01"
+        },
+        {
+          "value": "294071"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GUM"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "182111"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/GUY"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "786391"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/HKG"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "7.0716e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/HND"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "9.587522e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/HRV"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "4.058165e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/HTI"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.1439646e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/HUN"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "9.769526e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/IDN"
+        },
+        {
+          "value": "2012"
+        },
+        {
+          "value": "2.46864191e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/IMN"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "83327"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/IND"
+        },
+        {
+          "value": "2015"
+        },
+        {
+          "value": "1.311050527e+09"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/IRL"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "4.9774e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/IRN"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "8.3183741e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/IRQ"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "3.84336e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ISL"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "364134"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ISR"
+        },
+        {
+          "value": "2021"
+        },
+        {
+          "value": "9.3047e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ITA"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "6.0317116e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/JAM"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.726667e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/JEY"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "97857"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/JOR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.0658123e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/JPN"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "1.27817277e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KAZ"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.87112e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KEN"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "4.7564296e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KGZ"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "6.5866e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KHM"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.5552211e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KIR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "119940"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KNA"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "52441"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KOR"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "5.1709098e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/KWT"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "4.42011e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LAO"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "7.123205e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LBN"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "6.859408e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LBR"
+        },
+        {
+          "value": "2015"
+        },
+        {
+          "value": "5.073296e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LBY"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "6.871287e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LCA"
+        },
+        {
+          "value": "2021"
+        },
+        {
+          "value": "184751"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LIE"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "36304"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LKA"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "2.1803e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LSO"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.108328e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LTU"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.793694e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LUX"
+        },
+        {
+          "value": "2020-01"
+        },
+        {
+          "value": "626108"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/LVA"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.907675e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MAC"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "555731"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MAF"
+        },
+        {
+          "value": "2004-10"
+        },
+        {
+          "value": "33102"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MAR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.711208e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MCO"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "38300"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MDA"
+        },
+        {
+          "value": "2020-01-01"
+        },
+        {
+          "value": "2.640438e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MDG"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.6262313e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MDV"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "379270"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MEX"
+        },
+        {
+          "value": "2012"
+        },
+        {
+          "value": "1.20847477e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MHL"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "58413"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MKD"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "2.077132e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MLI"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.0250833e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MLT"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "514564"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MMR"
+        },
+        {
+          "value": "2012"
+        },
+        {
+          "value": "5.2797319e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MNE"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "621873"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MNG"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.35347e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MNP"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "61174"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MOZ"
+        },
+        {
+          "value": "2050"
+        },
+        {
+          "value": "3.91e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MRT"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "4.403313e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MSR"
+        },
+        {
+          "value": "2008"
+        },
+        {
+          "value": "5900"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MTQ"
+        },
+        {
+          "value": "2016"
+        },
+        {
+          "value": "376480"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MUS"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.265475e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MWI"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.9129952e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MYS"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.273e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/MYT"
+        },
+        {
+          "value": "2020-01"
+        },
+        {
+          "value": "279471"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NAM"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.746745e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NCL"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "249000"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NER"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.3196002e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NFK"
+        },
+        {
+          "value": "2011-07"
+        },
+        {
+          "value": "2169"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NGA"
+        },
+        {
+          "value": "2013-07"
+        },
+        {
+          "value": "1.74507539e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NIC"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "6.486201e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NIU"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1620"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NLD"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.7469635e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NOR"
+        },
+        {
+          "value": "2021"
+        },
+        {
+          "value": "5.391369e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NPL"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.8095714e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NRU"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "10670"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/NZL"
+        },
+        {
+          "value": "2020-05"
+        },
+        {
+          "value": "5.1092e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/OMN"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "4.829473e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PAK"
+        },
+        {
+          "value": "2012"
+        },
+        {
+          "value": "1.79160111e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PAN"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "4.176869e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PCN"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "67"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PER"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.2824358e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PHL"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "9.485203e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PLW"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "17907"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PNG"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "8.935e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/POL"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.8268e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PRI"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "3.193694e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PRK"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.5549604e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PRT"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.0295909e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PRY"
+        },
+        {
+          "value": "2021"
+        },
+        {
+          "value": "7.303e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PSE"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "5.159076e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/PYF"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "273777"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/QAT"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.795484e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/REU"
+        },
+        {
+          "value": "2020-01"
+        },
+        {
+          "value": "859959"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ROU"
+        },
+        {
+          "value": "2020-01-01"
+        },
+        {
+          "value": "1.9317984e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/RUS"
+        },
+        {
+          "value": "2015"
+        },
+        {
+          "value": "1.44096812e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/RWA"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.2374397e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SAU"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "3.4218169e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SCG"
+        },
+        {
+          "value": "2006"
+        },
+        {
+          "value": "1.0832545e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SDN"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "4.1592539e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SEN"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.5854323e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SGP"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "5.7036e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SGS"
+        },
+        {
+          "value": "2006"
+        },
+        {
+          "value": "30"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SHN"
+        },
+        {
+          "value": "2008"
+        },
+        {
+          "value": "5661"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SLB"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "652857"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SLE"
+        },
+        {
+          "value": "2015"
+        },
+        {
+          "value": "8.059155e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SLV"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "6.420746e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SMR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "34232"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SOM"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.5893219e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SPM"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "5888"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SRB"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "7.261e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SSD"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.277825e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/STP"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "211028"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SUN"
+        },
+        {
+          "value": "1991-07"
+        },
+        {
+          "value": "2.93047571e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SUR"
+        },
+        {
+          "value": "2018-07"
+        },
+        {
+          "value": "575990"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SVK"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "5.46406e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SVN"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.111461e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SWE"
+        },
+        {
+          "value": "2020-11"
+        },
+        {
+          "value": "1.0380245e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SWZ"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.136281e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SXM"
+        },
+        {
+          "value": "2010"
+        },
+        {
+          "value": "37429"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SYC"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "98462"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/SYR"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.7500657e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TCA"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "39184"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TCD"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.6244513e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TGO"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "8.608444e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/THA"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "6.6558935e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TJK"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "9.537645e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TKL"
+        },
+        {
+          "value": "2011-10"
+        },
+        {
+          "value": "1411"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TKM"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "6.031187e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TLS"
+        },
+        {
+          "value": "2050"
+        },
+        {
+          "value": "3.5e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TON"
+        },
+        {
+          "value": "2016"
+        },
+        {
+          "value": "100651"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TTO"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.366725e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TUN"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.170837e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TUR"
+        },
+        {
+          "value": "2020-12-31"
+        },
+        {
+          "value": "8.3614362e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TUV"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "11646"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TWN"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "2.3568378e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/TZA"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "5.6313438e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/UGA"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "4.2729036e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/UKR"
+        },
+        {
+          "value": "2021-01"
+        },
+        {
+          "value": "4.1588354e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/UMI"
+        },
+        {
+          "value": "2009"
+        },
+        {
+          "value": "300"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/URY"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "3.518552e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/USA"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "3.11591917e+08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/UZB"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "3.45889e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/VAT"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "825"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/VCT"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "110211"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/VEN"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "2.9278e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/VGB"
+        },
+        {
+          "value": "2010"
+        },
+        {
+          "value": "28054"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/VIR"
+        },
+        {
+          "value": "2011"
+        },
+        {
+          "value": "109666"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/VNM"
+        },
+        {
+          "value": "2012"
+        },
+        {
+          "value": "9.0388e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/VUT"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "307815"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/WLF"
+        },
+        {
+          "value": "2009-07"
+        },
+        {
+          "value": "15289"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/WSM"
+        },
+        {
+          "value": "2020-10"
+        },
+        {
+          "value": "202506"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/XKS"
+        },
+        {
+          "value": "2020"
+        },
+        {
+          "value": "1.87316e+06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/YEM"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "2.8498683e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/YUG"
+        },
+        {
+          "value": "1991"
+        },
+        {
+          "value": "2.3229846e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ZAF"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "5.962235e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ZMB"
+        },
+        {
+          "value": "2018"
+        },
+        {
+          "value": "1.7351708e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "country/ZWE"
+        },
+        {
+          "value": "2019"
+        },
+        {
+          "value": "1.4215809e+07"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "wikidataId/Q23681"
+        },
+        {
+          "value": "2017"
+        },
+        {
+          "value": "326000"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "wikidataId/Q244165"
+        },
+        {
+          "value": "2015"
+        },
+        {
+          "value": "150932"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "wikidataId/Q29999"
+        },
+        {
+          "value": "2019-11-01"
+        },
+        {
+          "value": "1.7737438e+07"
+        }
+      ]
+    }
+  ]
+}

@@ -223,6 +223,34 @@
     {
       "cells": [
         {
+          "value": "USC_AmericanIndianAndAlaskaNativeAlone"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "USC_AsianAlone"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "USC_BlackOrAfricanAmericanAlone"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "USC_HispanicOrLatinoRace"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
           "value": "USC_RacialMinority"
         }
       ]
@@ -231,6 +259,13 @@
       "cells": [
         {
           "value": "USC_RacialNonMinority"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "USC_WhiteAloneNotHispanicOrLatino"
         }
       ]
     },
