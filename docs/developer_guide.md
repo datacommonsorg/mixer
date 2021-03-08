@@ -91,10 +91,10 @@ protoc \
 ```
 
 Run the following code to start mixer gRPC server
+TODO(shifucun): change store_project to `datcom-store`
 
 ```bash
-# cd into repo root directory
-
+# In repo root directory
 go run cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --store_project=google.com:datcom-store-dev \
