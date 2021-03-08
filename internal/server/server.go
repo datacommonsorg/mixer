@@ -44,7 +44,7 @@ type Metadata struct {
 	Bq               string
 	BtProject        string
 	BranchBtInstance string
-	StatVarMode      bool
+	SvObsMode        bool
 }
 
 // Server holds resources for a mixer server
@@ -84,7 +84,7 @@ func ReadBranchTableName(
 
 // NewMetadata initialize the metadata for translator.
 func NewMetadata(
-	bqDataset, btProject, branchInstance, schemaPath string, svobsMode bool) (*Metadata, error) {
+	bqDataset, storeProject, branchInstance, schemaPath string, svobsMode bool) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := translator.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -117,7 +117,7 @@ func NewMetadata(
 			inArcInfo,
 			subTypeMap,
 			bqDataset,
-			btProject,
+			storeProject,
 			branchInstance,
 			svobsMode},
 		nil

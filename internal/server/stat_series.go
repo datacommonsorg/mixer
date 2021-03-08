@@ -96,7 +96,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
-	svobsMode := s.metadata.StatVarMode
+	svobsMode := s.metadata.SvObsMode
 	if len(places) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: place")

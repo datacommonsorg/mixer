@@ -18,8 +18,8 @@
   value: --bigquery_only=true
 
 - op: remove
-  path: /spec/template/spec/containers/0/env/1/valueFrom
+  path: /spec/template/spec/containers/0/env/3/valueFrom
 
 - op: add
-  path: /spec/template/spec/containers/0/env/1/value
+  path: /spec/template/spec/containers/0/env/3/value
   value: google.com:datcom-store-dev.dc_v3_encode_clustered

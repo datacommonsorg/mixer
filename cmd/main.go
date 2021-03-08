@@ -37,25 +37,23 @@ import (
 )
 
 var (
-	bqDataset        = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	btProject        = flag.String("bt_project", "", "GCP project containing the BigTable instance.")
-	baseBtInstance   = flag.String("base_bt_instance", "", "Base cache BigTable instance.")
-	baseTableName    = flag.String("base_table", "", "Base cache Bigtable table.")
-	branchBtInstance = flag.String("branch_bt_instance", "", "Branch cache BigTable instance.")
-	projectID        = flag.String("project_id", "", "The cloud project to run the mixer instance.")
-	port             = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS          = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
-	bigqueryOnly     = flag.Bool("bigquery_only", false, "The service only serves sparql query")
-	svobsMode        = flag.Bool("svobs_mode", false, "Use new storage that is built on top of StatVar instead of StatPop")
-	schemaPath       = flag.String("schema_path", "/translator/mapping", "The director that contains the schema mapping files")
+	mixerProject  = flag.String("mixer_project", "", "The cloud project to run the mixer instance.")
+	storeProject  = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
+	bqDataset     = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	baseTableName = flag.String("base_table", "", "Base cache Bigtable table.")
+	port          = flag.Int("port", 12345, "Port on which to run the server.")
+	useALTS       = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	bigqueryOnly  = flag.Bool("bigquery_only", false, "The service only serves sparql query")
+	svobsMode     = flag.Bool("svobs_mode", false, "Use new storage that is built on top of StatVar/StatVarObs instead of StatPop/Obs")
+	schemaPath    = flag.String("schema_path", "/translator/mapping", "The directory that contains the schema mapping files")
 )
 
 const (
-	branchCacheVersionBucket = "prophet_cache"
-	branchCacheVersionFile   = "latest_branch_cache_version.txt"
-	pubsubProject            = "google.com:datcom-store-dev"
-	pubsubTopic              = "branch-cache-reload"
-	subscriberPrefix         = "mixer-subscriber-"
+	baseBtInstance         = "prophet-cache"
+	branchBtInstance       = "prophet-branch-cache"
+	branchCacheVersionFile = "latest_branch_cache_version.txt"
+	pubsubTopic            = "branch-cache-reload"
+	subscriberPrefix       = "mixer-subscriber-"
 )
 
 func main() {
@@ -77,8 +75,15 @@ func main() {
 		}
 	}
 
+	var branchCacheVersionBucket string
+	if *svobsMode {
+		branchCacheVersionBucket = "datcom-control"
+	} else {
+		branchCacheVersionBucket = "prophet_cache"
+	}
+
 	// BigQuery.
-	bqClient, err := bigquery.NewClient(ctx, *projectID)
+	bqClient, err := bigquery.NewClient(ctx, *mixerProject)
 	if err != nil {
 		log.Fatalf("Failed to create Bigquery client: %v", err)
 	}
@@ -87,7 +92,7 @@ func main() {
 	var branchTable *bigtable.Table
 	if !*bigqueryOnly {
 		// Base cache
-		baseTable, err = server.NewBtTable(ctx, *btProject, *baseBtInstance, *baseTableName)
+		baseTable, err = server.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
@@ -96,7 +101,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
-		branchTable, err = server.NewBtTable(ctx, *btProject, *branchBtInstance, branchTableName)
+		branchTable, err = server.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
 
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
@@ -104,7 +109,7 @@ func main() {
 	}
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset, *btProject, *branchBtInstance, *schemaPath, *svobsMode)
+	metadata, err := server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath, *svobsMode)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
@@ -115,7 +120,7 @@ func main() {
 	// Subscribe to cache update
 	if !*bigqueryOnly {
 		err = s.SubscribeBranchCacheUpdate(
-			ctx, pubsubProject, branchCacheVersionBucket, subscriberPrefix, pubsubTopic)
+			ctx, *storeProject, branchCacheVersionBucket, subscriberPrefix, pubsubTopic)
 		if err != nil {
 			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 		}
