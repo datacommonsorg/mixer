@@ -17,10 +17,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-nameSuffix: -statvar
+nameSuffix: -svobs
 
 resources:
-- ../../datacommons-statvar
+- ../../datacommons-svobs
 
 configMapGenerator:
 - name: mixer-configmap
@@ -28,7 +28,7 @@ configMapGenerator:
   namespace: mixer
   literals:
   - mixerProject=datcom-mixer-statvar
-  - serviceName=statvar.api.datacommons.org
+  - serviceName=mixer.endpoints.datcom-mixer-statvar.cloud.goog
 
 patchesStrategicMerge:
 - |-
@@ -38,3 +38,15 @@ patchesStrategicMerge:
     name: mixer-grpc
   spec:
     replicas: 12
+
+# Set svobs_mode flag
+patchesJson6902:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: mixer-grpc
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/args/0
+      value: --svobs_mode=true
