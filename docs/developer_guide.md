@@ -96,14 +96,11 @@ Run the following code to start mixer gRPC server
 # cd into repo root directory
 
 go run cmd/main.go \
+    --mixer_project=datcom-mixer-staging \
+    --store_project=google.com:datcom-store-dev \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --bt_table=$(head -1 deploy/storage/bigtable.version) \
-    --bt_project=google.com:datcom-store-dev \
-    --bt_instance=prophet-cache \
-    --project_id=datcom-mixer-staging
-
-# In a new shell
-cd examples && go run main.go
+    --base_table=$(head -1 deploy/storage/bigtable.version) \
+    --schema_path=$PWD/deploy/mapping/
 ```
 
 ### Run Tests (Go)

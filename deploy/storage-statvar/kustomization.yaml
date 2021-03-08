@@ -24,3 +24,4 @@ configMapGenerator:
   files:
   - bigtable.version
   - bigquery.version
+  - store.project

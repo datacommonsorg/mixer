@@ -27,7 +27,7 @@ configMapGenerator:
   behavior: create
   namespace: mixer
   literals:
-  - projectId=datcom-mixer-statvar
+  - mixerProject=datcom-mixer-statvar
   - serviceName=statvar.api.datacommons.org
 
 patchesStrategicMerge:

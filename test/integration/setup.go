@@ -70,7 +70,7 @@ func setupStatVar() (pb.MixerClient, error) {
 }
 
 func setupInternal(
-	bq, bt, btProject string, svobsMode bool) (pb.MixerClient, error) {
+	bq, bt, storeProject string, svobsMode bool) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
@@ -84,7 +84,7 @@ func setupInternal(
 	}
 
 	baseTable, err := server.NewBtTable(
-		ctx, btProject, baseInstance, strings.TrimSpace(string(baseTableName)))
+		ctx, storeProject, baseInstance, strings.TrimSpace(string(baseTableName)))
 	if err != nil {
 		return nil, err
 	}
@@ -95,7 +95,7 @@ func setupInternal(
 	}
 
 	metadata, err := server.NewMetadata(
-		strings.TrimSpace(string(bqTableID)), btProject, "", schemaPath, svobsMode)
+		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath, svobsMode)
 	if err != nil {
 		return nil, err
 	}

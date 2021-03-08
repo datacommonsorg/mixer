@@ -27,13 +27,14 @@ configMapGenerator:
 - name: mixer-configmap
   behavior: create
   literals:
-    - projectId=<PROJECT_ID>
+    - mixerProject=<PROJECT_ID>
     - serviceName=<DOMAIN>
 - name: store-configmap
   behavior: create
   files:
   - bigtable.version
   - bigquery.version
+  - store.project
 - name: schema-mapping
   files:
     - mapping.mcf

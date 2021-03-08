@@ -18,9 +18,9 @@
 #
 # Usage:
 #
-# ./deploy_key.sh <"prod"|"staging"|"autopush"> <commit_hash>
+# ./deploy_key.sh <"prod"|"staging"|"autopush"|"encode"> <commit_hash>
 #
-# First argument is either "prod" or "staging" or "autopush".
+# First argument is either "prod" or "staging" or "autopush" or "encode".
 # (Optional) second argument is the git commit hash of the mixer repo.
 #
 # !!! WARNING: Run this script in a clean Git checkout at the desired commit.

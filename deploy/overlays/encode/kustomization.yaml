@@ -27,7 +27,7 @@ configMapGenerator:
 - name: mixer-configmap
   behavior: create
   literals:
-    - projectId=datcom-mixer-encode
+    - mixerProject=datcom-mixer-encode
     - serviceName=encode.api.datacommons.org
 
 generatorOptions:

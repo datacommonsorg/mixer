@@ -29,7 +29,7 @@ configMapGenerator:
   behavior: create
   namespace: mixer
   literals:
-  - projectId=datcom-mixer
+  - mixerProject=datcom-mixer
   - serviceName=api.datacommons.org
 
 patchesStrategicMerge:
