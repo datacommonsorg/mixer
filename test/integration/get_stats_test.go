@@ -37,6 +37,10 @@ func TestGetStats(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
+	clientStatVar, err := setupStatVar()
+	if err != nil {
+		t.Fatalf("Failed to set up mixer and client")
+	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "golden_response/staging/get_stats")
@@ -47,14 +51,12 @@ func TestGetStats(t *testing.T) {
 		mmethod      string
 		goldenFile   string
 		partialMatch bool
-		wantErr      bool
 	}{
 		{
 			"Count_Person",
 			[]string{"country/USA", "geoId/06", "geoId/06085", "geoId/0649670"},
 			"",
 			"census_pep.json",
-			false,
 			false,
 		},
 		{
@@ -63,7 +65,6 @@ func TestGetStats(t *testing.T) {
 			"",
 			"nyt_covid_cases.json",
 			true,
-			false,
 		},
 		{
 			"Count_Person",
@@ -71,14 +72,12 @@ func TestGetStats(t *testing.T) {
 			"CensusACS5yrSurvey",
 			"census_acs.json",
 			true,
-			false,
 		},
 		{
 			"Count_CriminalActivities_CombinedCrime",
 			[]string{"geoId/06", "geoId/0649670"},
 			"",
 			"total_crimes.json",
-			false,
 			false,
 		},
 		{
@@ -87,14 +86,12 @@ func TestGetStats(t *testing.T) {
 			"",
 			"median_age.json",
 			false,
-			false,
 		},
 		{
 			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 			[]string{"country/USA"},
 			"",
 			"gdp.json",
-			false,
 			false,
 		},
 		{
@@ -104,79 +101,66 @@ func TestGetStats(t *testing.T) {
 			"",
 			"internet_user.json",
 			false,
-			false,
-		},
-		{
-			"BadStatsVar",
-			[]string{"geoId/06"},
-			"",
-			"",
-			false,
-			true,
 		},
 	} {
-		resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
-			StatsVar:          c.statsVar,
-			Place:             c.place,
-			MeasurementMethod: c.mmethod,
-		})
-		if c.wantErr {
-			if err == nil {
-				t.Errorf("Expect GetStats to error out but it succeed")
+		for index, client := range []pb.MixerClient{client, clientStatVar} {
+			resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
+				StatsVar:          c.statsVar,
+				Place:             c.place,
+				MeasurementMethod: c.mmethod,
+			})
+			if err != nil {
+				t.Errorf("could not GetStats: %s", err)
+				continue
 			}
-			continue
-		}
-		if err != nil {
-			t.Errorf("could not GetStats: %s", err)
-			continue
-		}
-		var result map[string]*server.ObsTimeSeries
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateGolden(result, goldenFile)
-			continue
-		}
+			var result map[string]*server.ObsTimeSeries
+			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+			if err != nil {
+				t.Errorf("Can not Unmarshal payload")
+				continue
+			}
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if index == 0 && generateGolden {
+				updateGolden(result, goldenFile)
+				continue
+			}
 
-		var expected map[string]*server.ObsTimeSeries
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
-		if c.partialMatch {
-			for geo := range expected {
-				for date := range expected[geo].Data {
-					if result[geo] == nil {
-						t.Fatalf("result does not have data for geo %s", geo)
-					}
-					got := result[geo].Data[date]
-					want := expected[geo].Data[date]
-					if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
-						// Allow approximate match for NYT covid data.
-						if math.Abs(float64(got)/float64(want)-1) > 0.05 {
-							t.Errorf(
-								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
-							continue
+			var expected map[string]*server.ObsTimeSeries
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+			if c.partialMatch {
+				for geo := range expected {
+					for date := range expected[geo].Data {
+						if result[geo] == nil {
+							t.Fatalf("result does not have data for geo %s", geo)
 						}
-					} else {
-						if want != got {
-							t.Errorf(
-								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
-							continue
+						got := result[geo].Data[date]
+						want := expected[geo].Data[date]
+						if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
+							// Allow approximate match for NYT covid data.
+							if math.Abs(float64(got)/float64(want)-1) > 0.05 {
+								t.Errorf(
+									"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+								continue
+							}
+						} else {
+							if want != got {
+								t.Errorf(
+									"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+								continue
+							}
 						}
 					}
 				}
-			}
-		} else {
-			if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
-				continue
+			} else {
+				if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
+					t.Errorf("payload got diff: %v", diff)
+					continue
+				}
 			}
 		}
 	}
