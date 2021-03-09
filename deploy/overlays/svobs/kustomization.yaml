@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization for statvar mixer running on GCP `datcom-mixer-statvar` project.
+# Kustomization for svobs mixer running on GCP `datcom-mixer-statvar` project.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -39,7 +39,7 @@ patchesStrategicMerge:
   spec:
     replicas: 12
 
-# Set svobs_mode flag
+# Patch mixer argument, to add the svobs_mode flag
 patchesJson6902:
 - target:
     group: apps
