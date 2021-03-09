@@ -36,6 +36,10 @@ func TestGetStatSetSeries(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
+	clientStatVar, err := setupStatVar()
+	if err != nil {
+		t.Fatalf("Failed to set up mixer and client")
+	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "golden_response/staging/get_stat_set_series")
@@ -66,57 +70,60 @@ func TestGetStatSetSeries(t *testing.T) {
 			true,
 		},
 	} {
-		resp, err := client.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
-		})
-		if err != nil {
-			t.Errorf("could not GetStatSetSeries: %s", err)
-			continue
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateProtoGolden(resp, goldenFile)
-			continue
-		}
+		for index, client := range []pb.MixerClient{client, clientStatVar} {
+			resp, err := client.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
+				StatVars: c.statVars,
+				Places:   c.places,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatSetSeries: %s", err)
+				continue
+			}
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			isPopObsMode := (index == 0)
+			if isPopObsMode && generateGolden {
+				updateProtoGolden(resp, goldenFile)
+				continue
+			}
 
-		var expected pb.GetStatSetSeriesResponse
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
-		if c.partialMatch {
-			for geo, geoData := range expected.Data {
-				for sv, svData := range geoData.Data {
-					for date := range svData.Val {
-						if resp.Data[geo].Data[sv].Val == nil {
-							t.Fatalf("result does not have data for geo %s and sv %s", geo, sv)
-						}
-						got := resp.Data[geo].Data[sv].Val[date]
-						want := svData.Val[date]
-						if sv == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
-							// Allow approximate match for NYT covid data.
-							if math.Abs(float64(got)/float64(want)-1) > 0.05 {
-								t.Errorf(
-									"%s, %s, %s want: %f, got: %f", sv, geo, date, want, got)
-								continue
+			var expected pb.GetStatSetSeriesResponse
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = protojson.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+			if c.partialMatch {
+				for geo, geoData := range expected.Data {
+					for sv, svData := range geoData.Data {
+						for date := range svData.Val {
+							if resp.Data[geo].Data[sv].Val == nil {
+								t.Fatalf("result does not have data for geo %s and sv %s", geo, sv)
 							}
-						} else {
-							if want != got {
-								t.Errorf(
-									"%s, %s, %s want: %f, got: %f", sv, geo, date, want, got)
-								continue
+							got := resp.Data[geo].Data[sv].Val[date]
+							want := svData.Val[date]
+							if sv == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
+								// Allow approximate match for NYT covid data.
+								if math.Abs(float64(got)/float64(want)-1) > 0.05 {
+									t.Errorf(
+										"%s, %s, %s want: %f, got: %f", sv, geo, date, want, got)
+									continue
+								}
+							} else {
+								if want != got {
+									t.Errorf(
+										"%s, %s, %s want: %f, got: %f", sv, geo, date, want, got)
+									continue
+								}
 							}
 						}
 					}
 				}
-			}
-		} else {
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
-				continue
+			} else {
+				if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+					t.Errorf("payload got diff: %v", diff)
+					continue
+				}
 			}
 		}
 	}

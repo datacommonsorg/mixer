@@ -77,7 +77,7 @@ func buildStatsKey(
 	return rowList, keyToToken
 }
 
-func buildStatsKeyNew(
+func buildStatsKeySvObs(
 	places []string, statVars []string) (
 	bigtable.RowList, map[string]*placeStatVar) {
 	rowList := bigtable.RowList{}
@@ -118,6 +118,24 @@ func buildStatCollectionKey(
 		for _, cprop := range cprops {
 			rowKey += fmt.Sprintf("^%s^%s", cprop, svObj.PVs[cprop])
 		}
+		rowList = append(rowList, rowKey)
+		keyToToken[rowKey] = sv
+	}
+	return rowList, keyToToken
+}
+
+func buildStatCollectionKeySvObs(parentPlace, childType, date string, statVars []string) (
+	bigtable.RowList, map[string]string) {
+
+	rowList := bigtable.RowList{}
+	keyToToken := map[string]string{}
+	for _, sv := range statVars {
+		rowKey := strings.Join([]string{
+			util.BtChartDataPrefix + parentPlace,
+			childType,
+			sv,
+			date,
+		}, "^")
 		rowList = append(rowList, rowKey)
 		keyToToken[rowKey] = sv
 	}

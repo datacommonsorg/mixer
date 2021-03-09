@@ -18,6 +18,7 @@ import (
 	"context"
 	"sort"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -29,6 +30,8 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	*pb.GetStatValueResponse, error) {
 	place := in.GetPlace()
 	statVar := in.GetStatVar()
+	svobsMode := s.metadata.SvObsMode
+
 	if place == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: place")
@@ -45,25 +48,31 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		Sfactor: in.GetScalingFactor(),
 	}
 
-	// Read triples for the statistical variable.
-	triplesRowList := buildTriplesKey([]string{statVar})
-	triples, err := readTriples(ctx, s.store, triplesRowList)
-	if err != nil {
-		return nil, err
+	var rowList bigtable.RowList
+	var keyTokens map[string]*placeStatVar
+	if svobsMode {
+		rowList, keyTokens = buildStatsKeySvObs([]string{place}, []string{statVar})
+	} else {
+		// Read triples for the statistical variable.
+		triplesRowList := buildTriplesKey([]string{statVar})
+		triples, err := readTriples(ctx, s.store, triplesRowList)
+		if err != nil {
+			return nil, err
+		}
+		// Get the StatisticalVariable
+		if triples[statVar] == nil {
+			return nil, status.Errorf(codes.NotFound,
+				"No statistical variable found for %s", statVar)
+		}
+		statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
+		if err != nil {
+			return nil, err
+		}
+		// Construct BigTable row keys.
+		rowList, keyTokens = buildStatsKey(
+			[]string{place},
+			map[string]*StatisticalVariable{statVar: statVarObject})
 	}
-	// Get the StatisticalVariable
-	if triples[statVar] == nil {
-		return nil, status.Errorf(codes.NotFound,
-			"No statistical variable found for %s", statVar)
-	}
-	statVarObject, err := triplesToStatsVar(statVar, triples[statVar])
-	if err != nil {
-		return nil, err
-	}
-	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatsKey(
-		[]string{place},
-		map[string]*StatisticalVariable{statVar: statVarObject})
 
 	var obsTimeSeries *ObsTimeSeries
 	btData, err := readStats(ctx, s.store, rowList, keyTokens)
@@ -90,6 +99,8 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
 	date := in.GetDate()
+	svobsMode := s.metadata.SvObsMode
+
 	if len(places) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: places")
@@ -111,24 +122,31 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 			result.Data[statVar].Stat[place] = nil
 		}
 	}
-	// TODO(shifucun): Merge this with the logic in GetStatAll()
-	// Read triples for statistical variable.
-	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.store, triplesRowList)
-	if err != nil {
-		return nil, err
-	}
-	statVarObject := map[string]*StatisticalVariable{}
-	for statVar, triplesCache := range triples {
-		if triplesCache != nil {
-			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
-			if err != nil {
-				return nil, err
+
+	var rowList bigtable.RowList
+	var keyTokens map[string]*placeStatVar
+	if svobsMode {
+		rowList, keyTokens = buildStatsKeySvObs(places, statVars)
+	} else {
+		// TODO(shifucun): Merge this with the logic in GetStatAll()
+		// Read triples for statistical variable.
+		triplesRowList := buildTriplesKey(statVars)
+		triples, err := readTriples(ctx, s.store, triplesRowList)
+		if err != nil {
+			return nil, err
+		}
+		statVarObject := map[string]*StatisticalVariable{}
+		for statVar, triplesCache := range triples {
+			if triplesCache != nil {
+				statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
+				if err != nil {
+					return nil, err
+				}
 			}
 		}
+		// Construct BigTable row keys.
+		rowList, keyTokens = buildStatsKey(places, statVarObject)
 	}
-	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatsKey(places, statVarObject)
 	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -156,6 +174,8 @@ func (s *Server) GetStatCollection(
 	statVars := in.GetStatVars()
 	childType := in.GetChildType()
 	date := in.GetDate()
+	svobsMode := s.metadata.SvObsMode
+
 	if parentPlace == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: parent_place")
@@ -183,24 +203,30 @@ func (s *Server) GetStatCollection(
 		result.Data[sv] = nil
 	}
 
-	// Read triples for statistical variable.
-	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.store, triplesRowList)
-	if err != nil {
-		return nil, err
-	}
-	statVarObject := map[string]*StatisticalVariable{}
-	for statVar, triplesCache := range triples {
-		if triplesCache != nil {
-			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
-			if err != nil {
-				return nil, err
+	var rowList bigtable.RowList
+	var keyTokens map[string]string
+	if svobsMode {
+		rowList, keyTokens = buildStatCollectionKeySvObs(parentPlace, childType, date, statVars)
+	} else {
+		// Read triples for statistical variable.
+		triplesRowList := buildTriplesKey(statVars)
+		triples, err := readTriples(ctx, s.store, triplesRowList)
+		if err != nil {
+			return nil, err
+		}
+		statVarObject := map[string]*StatisticalVariable{}
+		for statVar, triplesCache := range triples {
+			if triplesCache != nil {
+				statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
+				if err != nil {
+					return nil, err
+				}
 			}
 		}
+		// Construct BigTable row keys.
+		rowList, keyTokens = buildStatCollectionKey(
+			parentPlace, childType, date, statVarObject)
 	}
-	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatCollectionKey(
-		parentPlace, childType, date, statVarObject)
 	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
