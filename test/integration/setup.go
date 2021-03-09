@@ -63,8 +63,8 @@ func setup() (pb.MixerClient, error) {
 
 func setupStatVar() (pb.MixerClient, error) {
 	return setupInternal(
-		"../../deploy/storage-statvar/bigquery.version",
-		"../../deploy/storage-statvar/bigtable.version",
+		"../../deploy/storage-svobs/bigquery.version",
+		"../../deploy/storage-svobs/bigtable.version",
 		store,
 		true)
 }

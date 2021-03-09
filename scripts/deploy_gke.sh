@@ -33,8 +33,8 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" ]]; then
-  echo "First argument should be 'staging' or 'prod' 'autopush' or 'encode'"
+if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "svobs" ]]; then
+  echo "First argument should be 'staging' or 'prod' 'autopush' or 'encode' or 'svobs'"
   exit
 fi
 
