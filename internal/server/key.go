@@ -77,7 +77,7 @@ func buildStatsKey(
 	return rowList, keyToToken
 }
 
-func buildStatsKeyNew(
+func buildStatsKeySvObs(
 	places []string, statVars []string) (
 	bigtable.RowList, map[string]*placeStatVar) {
 	rowList := bigtable.RowList{}
@@ -124,7 +124,7 @@ func buildStatCollectionKey(
 	return rowList, keyToToken
 }
 
-func buildStatCollectionKeyNew(parentPlace, childType, date string, statVars []string) (
+func buildStatCollectionKeySvObs(parentPlace, childType, date string, statVars []string) (
 	bigtable.RowList, map[string]string) {
 
 	rowList := bigtable.RowList{}

@@ -85,7 +85,8 @@ func TestGetStatCollection(t *testing.T) {
 				continue
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
-			if index == 0 && generateGolden {
+			isPopObsMode := (index == 0)
+			if isPopObsMode && generateGolden {
 				updateGolden(resp, goldenFile)
 				continue
 			}

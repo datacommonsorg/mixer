@@ -51,7 +51,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	var rowList bigtable.RowList
 	var keyTokens map[string]*placeStatVar
 	if svobsMode {
-		rowList, keyTokens = buildStatsKeyNew([]string{place}, []string{statVar})
+		rowList, keyTokens = buildStatsKeySvObs([]string{place}, []string{statVar})
 	} else {
 		// Read triples for the statistical variable.
 		triplesRowList := buildTriplesKey([]string{statVar})
@@ -126,7 +126,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	var rowList bigtable.RowList
 	var keyTokens map[string]*placeStatVar
 	if svobsMode {
-		rowList, keyTokens = buildStatsKeyNew(places, statVars)
+		rowList, keyTokens = buildStatsKeySvObs(places, statVars)
 	} else {
 		// TODO(shifucun): Merge this with the logic in GetStatAll()
 		// Read triples for statistical variable.
@@ -206,7 +206,7 @@ func (s *Server) GetStatCollection(
 	var rowList bigtable.RowList
 	var keyTokens map[string]string
 	if svobsMode {
-		rowList, keyTokens = buildStatCollectionKeyNew(parentPlace, childType, date, statVars)
+		rowList, keyTokens = buildStatCollectionKeySvObs(parentPlace, childType, date, statVars)
 	} else {
 		// Read triples for statistical variable.
 		triplesRowList := buildTriplesKey(statVars)
