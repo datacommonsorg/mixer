@@ -101,6 +101,8 @@ go run cmd/main.go \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_table=$(head -1 deploy/storage/bigtable.version) \
     --schema_path=$PWD/deploy/mapping/
+
+go run examples/main.go
 ```
 
 ### Run Tests (Go)

@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization for statvar mixer running on GCP `datcom-mixer-statvar` project.
+# Kustomization for svobs mixer running on GCP `datcom-mixer-statvar` project.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-nameSuffix: -statvar
+nameSuffix: -svobs
 
 resources:
-- ../../datacommons-statvar
+- ../../datacommons-svobs
 
 configMapGenerator:
 - name: mixer-configmap
@@ -28,7 +28,7 @@ configMapGenerator:
   namespace: mixer
   literals:
   - mixerProject=datcom-mixer-statvar
-  - serviceName=statvar.api.datacommons.org
+  - serviceName=mixer.endpoints.datcom-mixer-statvar.cloud.goog
 
 patchesStrategicMerge:
 - |-
@@ -38,3 +38,15 @@ patchesStrategicMerge:
     name: mixer-grpc
   spec:
     replicas: 12
+
+# Patch mixer argument, to add the svobs_mode flag
+patchesJson6902:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: mixer-grpc
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/args/0
+      value: --svobs_mode=true
