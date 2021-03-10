@@ -89,6 +89,88 @@ dcid: C:Observation->prov_id
 functionalDeps: dcid
 
 
+Node: E:StatisticalVariable->E1
+typeOf: StatisticalVariable
+dcid: C:StatisticalVariable->id
+provenance: E:StatisticalVariable->E2
+populationType: C:StatisticalVariable->population_type
+measuredProperty: C:StatisticalVariable->measured_prop
+statType: C:StatisticalVariable->stat_type
+measurementQualifier: C:StatisticalVariable->measurement_qualifier
+measurementDenominator: E:StatisticalVariable->E3
+p1: C:StatisticalVariable->p1
+v1: C:StatisticalVariable->v1
+p2: C:StatisticalVariable->p2
+v2: C:StatisticalVariable->v2
+p3: C:StatisticalVariable->p3
+v3: C:StatisticalVariable->v3
+p4: C:StatisticalVariable->p4
+v4: C:StatisticalVariable->v4
+p5: C:StatisticalVariable->p5
+v5: C:StatisticalVariable->v5
+p6: C:StatisticalVariable->p6
+v6: C:StatisticalVariable->v6
+p7: C:StatisticalVariable->p7
+v7: C:StatisticalVariable->v7
+p8: C:StatisticalVariable->p8
+v8: C:StatisticalVariable->v8
+p9: C:StatisticalVariable->p9
+v9: C:StatisticalVariable->v9
+p10: C:StatisticalVariable->p10
+v10: C:StatisticalVariable->v10
+numConstraints: C:StatisticalVariable->num_constraints
+functionalDeps: dcid
+
+Node: E:StatisticalVariable->E2
+typeOf: Provenance
+dcid: C:StatisticalVariable->prov_id
+functionalDeps: dcid
+
+Node: E:StatisticalVariable->E3
+typeOf: StatisticalVariable
+typeOf: Property
+dcid: C:StatisticalVariable->measurement_denominator
+functionalDeps: dcid
+
+
+Node: E:StatVarObservation->E1
+typeOf: StatVarObservation
+dcid: C:StatVarObservation->id
+observationAbout: E:StatVarObservation->E2
+variableMeasured: E:StatVarObservation->E3
+value: C:StatVarObservation->value
+observationDate: C:StatVarObservation->observation_date
+observationPeriod: C:StatVarObservation->observation_period
+measurementMethod: C:StatVarObservation->measurement_method
+unit: C:StatVarObservation->unit
+scalingFactor: C:StatVarObservation->scaling_factor
+samplePopulation: C:StatVarObservation->sample_population
+location: E:StatVarObservation->E4
+provenance: E:StatVarObservation->E5
+functionalDeps: dcid
+
+Node: E:StatVarObservation->E2
+typeOf: Place
+dcid: C:StatVarObservation->observation_about
+functionalDeps: dcid
+
+Node: E:StatVarObservation->E3
+typeOf: StatisticalVariable
+typeOf: Property
+dcid: C:StatVarObservation->variable_measured
+functionalDeps: dcid
+
+Node: E:StatVarObservation->E4
+typeOf: GeoCoordinates
+dcid: C:StatVarObservation->location
+functionalDeps: dcid
+
+Node: E:StatVarObservation->E5
+typeOf: Provenance
+dcid: C:StatVarObservation->prov_id
+functionalDeps: dcid
+
+
 Node: E:Place->E1
 typeOf: Place
 subType: C:Place->type
@@ -349,20 +431,3 @@ minValue: C:MonthlyWeather->humidity_pct_min
 meanValue: C:MonthlyWeather->humidity_pct_mean
 maxValue: C:MonthlyWeather->humidity_pct_max
 functionalDeps: observedNode, observationDate, observationPeriod
-
-Node: E:ObsStatVarPlace->E1
-typeOf: Observation
-dcid: C:ObsStatVarPlace->id
-statisticalVariable: E:ObsStatVarPlace->E2
-observedNodeLocation: E:ObsStatVarPlace->E3
-functionalDeps: dcid
-
-Node: E:ObsStatVarPlace->E2
-typeOf: StatisticalVariable
-dcid: C:ObsStatVarPlace->stat_var_id
-functionalDeps: dcid
-
-Node: E:ObsStatVarPlace->E3
-typeOf: Place
-dcid: C:ObsStatVarPlace->place_id
-functionalDeps: dcid

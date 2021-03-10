@@ -427,13 +427,14 @@ func TestTranslate(t *testing.T) {
 			"CollegeObservation",
 			false,
 			`SELECT ?dcid,
-				typeOf ?parent Observation,
-				dcid ?child dc/zkelys3,
-				dcid ?parent ?dcid,
-				observedNode ?parent ?child`,
+				typeOf ?o StatVarObservation,
+				dcid ?place dc/zkelys3,
+				dcid ?o ?dcid,
+				observationAbout ?o ?place`,
 
-			"SELECT _dc_v3_Observation_0.id AS dcid FROM `dc_v3.Observation` AS _dc_v3_Observation_0 " +
-				"WHERE _dc_v3_Observation_0.observed_node_key = \"dc/zkelys3\"",
+			"SELECT _dc_v3_StatVarObservation_0.id AS dcid " +
+				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0 " +
+				"WHERE _dc_v3_StatVarObservation_0.observation_about = \"dc/zkelys3\"",
 			emptyProv,
 		},
 
@@ -527,21 +528,23 @@ func TestTranslate(t *testing.T) {
 			emptyProv,
 		},
 		{
-			"ObservationObservedNodeKey",
-			true,
-			`SELECT ?parentDcid ?dcid ?measuredProperty,
-				typeOf ?node StatisticalPopulation,
-				dcid ?node dc/p/zcerrzm76y0bh,
-				dcid ?node ?parentDcid,
-				typeOf ?o Observation,
-				observedNode ?o ?node,
-				dcid ?o ?dcid,
-				measuredProperty ?o ?measuredProperty`,
+			"ObservationStatVarProp",
+			false,
+			`SELECT ?measuredProperty ?statType,
+				typeOf ?o StatVarObservation,
+				typeOf ?sv StatisticalVariable,
+				dcid ?o dc/o/xyz,
+				variableMeasured ?o ?sv,
+				measuredProperty ?sv ?measuredProperty,
+				statType ?sv ?statType`,
 
-			"SELECT _dc_v3_Observation_1.observed_node_key AS parentDcid, _dc_v3_Observation_1.id AS dcid, " +
-				"_dc_v3_Observation_1.measured_prop AS measuredProperty, _dc_v3_Observation_1.prov_id AS prov0 " +
-				"FROM `dc_v3.Observation` AS _dc_v3_Observation_1 WHERE _dc_v3_Observation_1.observed_node_key = \"dc/p/zcerrzm76y0bh\"",
-			map[int][]int{3: {0, 1, 2}},
+			"SELECT _dc_v3_StatisticalVariable_1.measured_prop AS measuredProperty, " +
+				"_dc_v3_StatisticalVariable_1.stat_type AS statType " +
+				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0 " +
+				"JOIN `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_1 " +
+				"ON _dc_v3_StatVarObservation_0.variable_measured = _dc_v3_StatisticalVariable_1.id " +
+				"WHERE _dc_v3_StatVarObservation_0.id = \"dc/o/xyz\"",
+			emptyProv,
 		},
 		{
 			"ObservationCommuteZone",
@@ -564,47 +567,38 @@ func TestTranslate(t *testing.T) {
 			"StateCountyPopObs",
 			false,
 			`SELECT ?countyDcid ?countyName ?hasMom,
-        		typeOf ?state Place,
-				subType ?state State,
-				typeOf ?county Place,
-				subType ?county County,
+        typeOf ?state State,
+				typeOf ?county County,
 				dcid ?state dc/y5gtcw1,
 				containedInPlace ?county ?state,
 				dcid ?county ?countyDcid,
 				name ?county ?countyName,
-				childhoodLocation ?pop ?county,
-				typeOf ?pop StatisticalPopulation,
-				p1 ?pop gender,
-				v1 ?pop Male,
-				p2 ?pop parentIncome,
-				v2 ?pop Percentile10,
-				numConstraints ?pop 2,
-				observedNode ?obs ?pop,
-				typeOf ?obs Observation,
-				measuredProperty ?obs opportunity_atlas_has_mom,
-				measuredValue ?obs ?hasMom,
-				endTime ?obs 1388534400000000,
-				duration ?obs P1Y`,
+				typeOf ?sv StatisticalVariable,
+				observationAbout ?sv ?county,
+				p1 ?sv gender,
+				v1 ?sv Male,
+				p2 ?sv parentIncome,
+				v2 ?sv Percentile10,
+				numConstraints ?sv 2,
+				measuredProperty ?sv opportunity_atlas_has_mom,
+				typeOf ?obs StatVarObservation,
+				value ?obs ?hasMom,
+				observationPeriod ?obs P1Y`,
 
-			"SELECT _dc_v3_Place_1.id AS countyDcid, _dc_v3_Place_1.name AS countyName, " +
-				"_dc_v3_Observation_3.measured_value AS hasMom FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_2 " +
-				"JOIN `dc_v3.Observation` AS _dc_v3_Observation_3 " +
-				"ON _dc_v3_StatisticalPopulation_2.id = _dc_v3_Observation_3.observed_node_key " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_Observation_3.observed_node_key = _dc_v3_Triple_1.subject_id " +
+			"SELECT _dc_v3_Place_1.id AS countyDcid, " +
+				"_dc_v3_Place_1.name AS countyName, " +
+				"_dc_v3_StatVarObservation_3.value AS hasMom " +
+				"FROM `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_2 " +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_StatisticalVariable_2.id = _dc_v3_Triple_1.subject_id " +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_1 ON _dc_v3_Triple_1.object_id = _dc_v3_Place_1.id " +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0 ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id " +
-				"WHERE _dc_v3_Observation_3.duration = \"P1Y\" " +
-				"AND _dc_v3_Observation_3.end_time_us = 1388534400000000 " +
-				"AND _dc_v3_Observation_3.measured_prop = \"opportunity_atlas_has_mom\" " +
-				"AND _dc_v3_Place_1.type = \"County\" " +
-				"AND _dc_v3_StatisticalPopulation_2.c1.p = \"gender\" " +
-				"AND _dc_v3_StatisticalPopulation_2.c1.v = \"Male\" " +
-				"AND _dc_v3_StatisticalPopulation_2.c2.p = \"parentIncome\" " +
-				"AND _dc_v3_StatisticalPopulation_2.c2.v = \"Percentile10\" " +
-				"AND _dc_v3_StatisticalPopulation_2.num_constraints = 2 " +
-				"AND _dc_v3_Triple_0.object_id = \"dc/y5gtcw1\" " +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\" " +
-				"AND _dc_v3_Triple_1.predicate = \"childhoodLocation\"",
+				"WHERE _dc_v3_Place_1.type = \"County\" " +
+				"AND _dc_v3_StatVarObservation_3.observation_period = \"P1Y\" " +
+				"AND _dc_v3_StatisticalVariable_2.measured_prop = \"opportunity_atlas_has_mom\" " +
+				"AND _dc_v3_StatisticalVariable_2.num_constraints = 2 AND _dc_v3_StatisticalVariable_2.p1 = \"gender\" " +
+				"AND _dc_v3_StatisticalVariable_2.p2 = \"parentIncome\" AND _dc_v3_StatisticalVariable_2.v1 = \"Male\" " +
+				"AND _dc_v3_StatisticalVariable_2.v2 = \"Percentile10\" AND _dc_v3_Triple_0.object_id = \"dc/y5gtcw1\" " +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\" AND _dc_v3_Triple_1.predicate = \"observationAbout\"",
 			emptyProv,
 		},
 		{
@@ -1082,41 +1076,22 @@ func TestStatVarObs(t *testing.T) {
 		wantSQL  string
 	}{
 		{
-			"country-gdp",
-			`
-				SELECT ?observation
-				WHERE {
-				 ?observation typeOf Observation .
-				 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
-				 ?observation observedNode ?population .
-				 ?population typeOf StatisticalPopulation .
-				 ?population location ?place .
-				 ?place typeOf Country .
-				}
-				`,
-			"SELECT _dc_v3_ObsStatVarPlace_0.id AS observation FROM `dc_v3.ObsStatVarPlace` AS _dc_v3_ObsStatVarPlace_0 " +
-				"JOIN `dc_v3.Observation` AS _dc_v3_Observation_0 ON _dc_v3_ObsStatVarPlace_0.id = _dc_v3_Observation_0.id " +
-				"JOIN `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1 ON _dc_v3_Observation_0.observed_node_key = _dc_v3_StatisticalPopulation_1.id " +
-				"JOIN `dc_v3.Place` AS _dc_v3_Place_2 ON _dc_v3_StatisticalPopulation_1.place_key = _dc_v3_Place_2.id " +
-				"WHERE _dc_v3_ObsStatVarPlace_0.stat_var_id = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\" " +
-				"AND _dc_v3_Place_2.type = \"Country\"",
-		},
-		{
 			"country-gdp-place",
 			`
 				SELECT ?observation ?place
 				WHERE {
-				 ?observation typeOf Observation .
-				 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
-				 ?observation observedNodeLocation ?place .
+				 ?observation typeOf StatVarObservation .
+				 ?observation variableMeasured Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
+				 ?observation observationAbout ?place .
 				 ?place typeOf Country .
 				}
 				`,
-			"SELECT _dc_v3_ObsStatVarPlace_0.id AS observation, _dc_v3_ObsStatVarPlace_0.place_id AS place " +
-				"FROM `dc_v3.ObsStatVarPlace` AS _dc_v3_ObsStatVarPlace_0 " +
-				"JOIN `dc_v3.Place` AS _dc_v3_Place_1 ON _dc_v3_ObsStatVarPlace_0.place_id = _dc_v3_Place_1.id " +
-				"WHERE _dc_v3_ObsStatVarPlace_0.stat_var_id = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\" " +
-				"AND _dc_v3_Place_1.type = \"Country\"",
+			"SELECT _dc_v3_StatVarObservation_0.id AS observation, _dc_v3_Place_1.id AS place " +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_1 " +
+				"JOIN `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0 " +
+				"ON _dc_v3_Place_1.id = _dc_v3_StatVarObservation_0.observation_about " +
+				"WHERE _dc_v3_Place_1.type = \"Country\" " +
+				"AND _dc_v3_StatVarObservation_0.variable_measured = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\"",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
