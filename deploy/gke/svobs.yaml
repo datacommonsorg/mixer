@@ -18,6 +18,6 @@ project: datcom-mixer-statvar
 region: us-central1
 ip: 34.102.211.233
 domain: mixer.endpoints.datcom-mixer-statvar.cloud.goog
-api_title: DataCommons API (StatVar)
+api_title: DataCommons API (SvObs)
 nodes: 1
 store: datcom-store
