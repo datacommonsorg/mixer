@@ -57,6 +57,7 @@ func setup() (pb.MixerClient, error) {
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
+		"../../deploy/mapping",
 		devStore,
 		false)
 }
@@ -65,17 +66,18 @@ func setupStatVar() (pb.MixerClient, error) {
 	return setupInternal(
 		"../../deploy/storage-svobs/bigquery.version",
 		"../../deploy/storage-svobs/bigtable.version",
+		"../../deploy/mapping-svobs",
 		store,
 		true)
 }
 
 func setupInternal(
-	bq, bt, storeProject string, svobsMode bool) (pb.MixerClient, error) {
+	bq, bt, mcfPath, storeProject string, svobsMode bool) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
 	baseTableName, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bt))
-	schemaPath := path.Join(path.Dir(filename), "../../deploy/mapping")
+	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)

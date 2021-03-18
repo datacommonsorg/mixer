@@ -320,6 +320,8 @@ func TestGetProvColumn(t *testing.T) {
 		"`dc_v3.Provenance`":            "C:Provenance->prov_id",
 		"`dc_v3.MonthlyWeather`":        "C:MonthlyWeather->prov_id",
 		"`dc_v3.PlaceExt`":              "C:PlaceExt->prov_id",
+		"`dc_v3.StatisticalVariable`":   "C:StatisticalVariable->prov_id",
+		"`dc_v3.StatVarObservation`":    "C:StatVarObservation->prov_id",
 	}
 
 	wantResult := map[string]base.Column{}
