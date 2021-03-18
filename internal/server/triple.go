@@ -17,6 +17,8 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -33,11 +35,30 @@ const (
 	obsAncestorTypeComparedNode = "1"
 )
 
+type Prop struct {
+	name  string
+	isObj bool
+}
+
+var obsProps = []Prop{
+	{"observationAbout", true},
+	{"variableMeasured", true},
+	{"value", false},
+	{"observationDate", false},
+	{"observationPeriod", false},
+	{"measurementMethod", true},
+	{"unit", true},
+	{"scalingFactor", false},
+	{"samplePopulation", true},
+	{"location", true},
+}
+
 // GetTriples implements API for Mixer.GetTriples.
 func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	*pb.GetTriplesResponse, error) {
 	dcids := in.GetDcids()
 	limit := in.GetLimit()
+	svobsMode := s.metadata.SvObsMode
 
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing argument: dcids")
@@ -90,54 +111,125 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 
 	// Observation DCIDs.
 	if len(obsDcids) > 0 {
-		for _, param := range []struct {
-			predKey, pred string
-		}{
-			{obsAncestorTypeObservedNode, "observedNode"},
-			{obsAncestorTypeComparedNode, "comparedNode"},
-		} {
-			rowList := buildObservedNodeKey(obsDcids, param.predKey)
-			baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-				ctx, s.store, rowList,
-				func(dcid string, raw []byte) (interface{}, error) {
-					return string(raw), nil
-				}, nil)
-			if err != nil {
-				return nil, err
-			}
-			// Map from observation dcid to observedNode dcid.
-			observedNodeMap := map[string]string{}
+		if svobsMode {
+			dcidList := ""
 			for _, dcid := range obsDcids {
-				if data, ok := branchDataMap[dcid]; ok {
-					observedNodeMap[dcid] = data.(string)
-				} else if data, ok := baseDataMap[dcid]; ok {
-					observedNodeMap[dcid] = data.(string)
+				dcidList += fmt.Sprintf("\"%s\" ", dcid)
+			}
+			selectStatment := "SELECT ?o ?provenance "
+			tripleStatment := "?o typeOf StatVarObservation . ?o provenance ?provenance . "
+			for _, prop := range obsProps {
+				selectStatment += fmt.Sprintf("?%s ", prop.name)
+				tripleStatment += fmt.Sprintf("?o %s ?%s . ", prop.name, prop.name)
+			}
+			tripleStatment += fmt.Sprintf("?o dcid (%s)", dcidList)
+			sparql := fmt.Sprintf(
+				`%s
+				WHERE {
+					%s
 				}
-			}
-			// Get the observedNode names.
-			observedNodes := []string{}
-			for _, dcid := range observedNodeMap {
-				observedNodes = append(observedNodes, dcid)
-			}
-			nameRowList := buildPropertyValuesKey(observedNodes, "name", true)
-			nameNodes, err := readPropertyValues(ctx, s.store, nameRowList)
+				`, selectStatment, tripleStatment,
+			)
+			resp, err := s.Query(ctx, &pb.QueryRequest{Sparql: sparql})
 			if err != nil {
 				return nil, err
 			}
-			for dcid, observedNode := range observedNodeMap {
-				if _, exist := resultsMap[dcid]; !exist {
-					resultsMap[dcid] = []*Triple{}
+			for _, row := range resp.GetRows() {
+				dcid := row.GetCells()[0].Value
+				prov := row.GetCells()[1].Value
+				objDcids := []string{}
+				objTriples := map[string]*Triple{}
+				for i, prop := range obsProps {
+					if row.GetCells()[i+2].Value != "" {
+						if prop.isObj {
+							// The object is a node; need to fetch the name.
+							objDcid := row.GetCells()[i+2].Value
+							objDcids = append(objDcids, objDcid)
+							objTriples[objDcid] = &Triple{
+								SubjectID:    dcid,
+								Predicate:    prop.name,
+								ObjectID:     objDcid,
+								ProvenanceID: prov,
+							}
+						} else {
+							resultsMap[dcid] = append(resultsMap[dcid], &Triple{
+								SubjectID:    dcid,
+								Predicate:    prop.name,
+								ObjectValue:  row.GetCells()[i+2].Value,
+								ProvenanceID: prov,
+							})
+						}
+					}
 				}
-				name := observedNode
-				if len(nameNodes[observedNode]) > 0 {
-					name = nameNodes[observedNode][0].Value
+				nameNodes, err := getPropertyValuesHelper(ctx, s.store, objDcids, "name", true)
+				if err != nil {
+					return nil, err
 				}
-				resultsMap[dcid] = append(resultsMap[dcid], &Triple{
-					SubjectID:  dcid,
-					Predicate:  param.pred,
-					ObjectID:   observedNode,
-					ObjectName: name,
-				})
+				for prop, nodes := range nameNodes {
+					if len(nodes) > 0 {
+						objTriples[prop].ObjectName = nodes[0].Value
+					}
+				}
+				// Sort the triples to get determinisic result.
+				keys := make([]string, 0)
+				for k := range objTriples {
+					keys = append(keys, k)
+				}
+				sort.Strings(keys)
+				for _, key := range keys {
+					resultsMap[dcid] = append(resultsMap[dcid], objTriples[key])
+				}
+			}
+		} else {
+			for _, param := range []struct {
+				predKey, pred string
+			}{
+				{obsAncestorTypeObservedNode, "observedNode"},
+				{obsAncestorTypeComparedNode, "comparedNode"},
+			} {
+				rowList := buildObservedNodeKey(obsDcids, param.predKey)
+				baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
+					ctx, s.store, rowList,
+					func(dcid string, raw []byte) (interface{}, error) {
+						return string(raw), nil
+					}, nil)
+				if err != nil {
+					return nil, err
+				}
+				// Map from observation dcid to observedNode dcid.
+				observedNodeMap := map[string]string{}
+				for _, dcid := range obsDcids {
+					if data, ok := branchDataMap[dcid]; ok {
+						observedNodeMap[dcid] = data.(string)
+					} else if data, ok := baseDataMap[dcid]; ok {
+						observedNodeMap[dcid] = data.(string)
+					}
+				}
+				// Get the observedNode names.
+				observedNodes := []string{}
+				for _, dcid := range observedNodeMap {
+					observedNodes = append(observedNodes, dcid)
+				}
+				nameRowList := buildPropertyValuesKey(observedNodes, "name", true)
+				nameNodes, err := readPropertyValues(ctx, s.store, nameRowList)
+				if err != nil {
+					return nil, err
+				}
+				for dcid, observedNode := range observedNodeMap {
+					if _, exist := resultsMap[dcid]; !exist {
+						resultsMap[dcid] = []*Triple{}
+					}
+					name := observedNode
+					if len(nameNodes[observedNode]) > 0 {
+						name = nameNodes[observedNode][0].Value
+					}
+					resultsMap[dcid] = append(resultsMap[dcid], &Triple{
+						SubjectID:  dcid,
+						Predicate:  param.pred,
+						ObjectID:   observedNode,
+						ObjectName: name,
+					})
+				}
 			}
 		}
 	}
