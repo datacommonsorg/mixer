@@ -81,8 +81,10 @@ func TestGetStatSetSeries(t *testing.T) {
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			isPopObsMode := (index == 0)
-			if isPopObsMode && generateGolden {
-				updateProtoGolden(resp, goldenFile)
+			if generateGolden {
+				if isPopObsMode {
+					updateProtoGolden(resp, goldenFile)
+				}
 				continue
 			}
 
