@@ -20,7 +20,7 @@
 set -e
 
 BASE_BT_VERSION=$1
-SVOBS_BASE_BT_VErSION=$2
+SVOBS_BASE_BT_VERSION=$2
 
 apt-get update -y
 apt-get install -y gawk
@@ -30,7 +30,7 @@ ROOT="$(dirname "$DIR")"
 
 
 echo "$BASE_BT_VERSION" | tee "$ROOT/deploy/storage/bigtable.version"
-echo "$SVOBS_BASE_BT_VErSION" | tee "$ROOT/deploy/storage-svobs/bigtable.version"
+echo "$SVOBS_BASE_BT_VERSION" | tee "$ROOT/deploy/storage-svobs/bigtable.version"
 
 "$ROOT/scripts/update_golden_staging.sh"
 
