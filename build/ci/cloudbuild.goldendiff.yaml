@@ -17,27 +17,28 @@
 
 steps:
   - name: gcr.io/cloud-builders/gcloud
-    entrypoint: 'bash'
+    entrypoint: "bash"
     args:
-    - '-c'
-    - |
-      gsutil cp gs://automation_control/latest_base_cache_version.txt /tmp/bigtable.version
+      - "-c"
+      - |
+        gsutil cp gs://automation_control/latest_base_cache_version.txt /tmp/bigtable.version
+        gsutil cp gs://datcom-control/latest_base_cache_version.txt /tmp/bigtable-svobs.version
 
   - name: golang
     entrypoint: "bash"
     args:
       - -c
       - |
-        ./scripts/golden_diff_notify.sh $(head -1 /tmp/bigtable.version)
+        ./scripts/golden_diff_notify.sh $(head -1 /tmp/bigtable.version) $(head -1 /tmp/bigtable-svobs.version)
         cd tools/send_email
         go run main.go \
-          --subject="Mixer golden data diff for $(head -1 /tmp/bigtable.version)" \
+          --subject="Mixer golden data diff for $(head -1 /tmp/bigtable.version);$(head -1 /tmp/bigtable-svobs.version)" \
           --receiver="datacommons-alerts@google.com" \
           --body_file="/tmp/golden-diff.html" \
           --mime_type="text/html"
 
 options:
   volumes:
-  - name: tmp
-    path: /tmp
-  machineType: 'N1_HIGHCPU_8'
+    - name: tmp
+      path: /tmp
+  machineType: "N1_HIGHCPU_8"
