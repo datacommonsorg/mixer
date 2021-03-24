@@ -244,7 +244,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	// Observation DCIDs.
 	if len(obsDcids) > 0 {
 		var err error
-		obsResult := map[string][]*Triple{}
+		var obsResult map[string][]*Triple
 		if svobsMode {
 			obsResult, err = getObsTriplesSvObs(ctx, s, obsDcids)
 			if err != nil {
