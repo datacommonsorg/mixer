@@ -332,12 +332,12 @@
           {
             "rank": 7,
             "value": 50.5,
-            "placeDcid": "geoId/06005"
+            "placeDcid": "geoId/06057"
           },
           {
             "rank": 8,
             "value": 50.5,
-            "placeDcid": "geoId/06057"
+            "placeDcid": "geoId/06005"
           },
           {
             "rank": 9,
@@ -407,12 +407,12 @@
           {
             "rank": 22,
             "value": 39.7,
-            "placeDcid": "geoId/06081"
+            "placeDcid": "geoId/06013"
           },
           {
             "rank": 23,
             "value": 39.7,
-            "placeDcid": "geoId/06013"
+            "placeDcid": "geoId/06081"
           },
           {
             "rank": 24,
@@ -437,12 +437,12 @@
           {
             "rank": 28,
             "value": 38.1,
-            "placeDcid": "geoId/06111"
+            "placeDcid": "geoId/06059"
           },
           {
             "rank": 29,
             "value": 38.1,
-            "placeDcid": "geoId/06059"
+            "placeDcid": "geoId/06111"
           },
           {
             "rank": 30,
@@ -502,12 +502,12 @@
           {
             "rank": 41,
             "value": 35.7,
-            "placeDcid": "geoId/06069"
+            "placeDcid": "geoId/06101"
           },
           {
             "rank": 42,
             "value": 35.7,
-            "placeDcid": "geoId/06101"
+            "placeDcid": "geoId/06069"
           },
           {
             "rank": 43,
@@ -532,12 +532,12 @@
           {
             "rank": 47,
             "value": 34.1,
-            "placeDcid": "geoId/06039"
+            "placeDcid": "geoId/06099"
           },
           {
             "rank": 48,
             "value": 34.1,
-            "placeDcid": "geoId/06099"
+            "placeDcid": "geoId/06039"
           },
           {
             "rank": 49,
@@ -582,12 +582,12 @@
           {
             "rank": 57,
             "value": 31,
-            "placeDcid": "geoId/06113"
+            "placeDcid": "geoId/06107"
           },
           {
             "rank": 58,
             "value": 31,
-            "placeDcid": "geoId/06107"
+            "placeDcid": "geoId/06113"
           }
         ]
       }

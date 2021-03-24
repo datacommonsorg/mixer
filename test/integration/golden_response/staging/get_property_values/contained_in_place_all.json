@@ -4,7 +4,7 @@
       {
         "dcid": "geoId/06",
         "name": "California",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "AdministrativeArea1",
           "State"
@@ -17,7 +17,7 @@
       {
         "dcid": "zip/95035",
         "name": "95035",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "CensusZipCodeTabulationArea"
         ]
@@ -25,7 +25,7 @@
       {
         "dcid": "geoId/06085",
         "name": "Santa Clara County",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "AdministrativeArea2",
           "County"
@@ -34,7 +34,7 @@
       {
         "dcid": "geoId/06",
         "name": "California",
-        "provenanceId": "dc/sm3m2w3",
+        "provenanceId": "dc/5n63hr1",
         "types": [
           "AdministrativeArea1",
           "State"
