@@ -35,12 +35,12 @@ const (
 	obsAncestorTypeComparedNode = "1"
 )
 
-type Prop struct {
+type prop struct {
 	name  string
 	isObj bool
 }
 
-var obsProps = []Prop{
+var obsProps = []prop{
 	{"observationAbout", true},
 	{"variableMeasured", true},
 	{"value", false},
