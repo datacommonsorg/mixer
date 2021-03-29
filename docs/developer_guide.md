@@ -9,20 +9,22 @@ port forwarding.
 
 ## Prerequisit
 
-* Contact DataCommons team to get data access to Cloud Bigtable and BigQuery.
+- Contact DataCommons team to get data access to Cloud Bigtable and BigQuery.
 
-* Install the following tools to develop mixer locally (with Docker):
-  * [`Docker`](https://www.docker.com/products/docker-desktop)
-  * [`Minikube`](https://minikube.sigs.k8s.io/docs/start/)
-  * [`Skaffold`](https://skaffold.dev/docs/install/)
-  * [`gcloud`](https://cloud.google.com/sdk/docs/install)
-  * [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- Install the following tools to develop mixer locally (with Docker):
 
-* If you prefer to do it locally without Docker, then need to install the following:
-  * [`Golang`](https://golang.org/doc/install)
-  * [`protoc`](http://google.github.io/proto-lens/installing-protoc.html)
+  - [`Docker`](https://www.docker.com/products/docker-desktop)
+  - [`Minikube`](https://minikube.sigs.k8s.io/docs/start/)
+  - [`Skaffold`](https://skaffold.dev/docs/install/)
+  - [`gcloud`](https://cloud.google.com/sdk/docs/install)
+  - [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-* Authenticate to GCP
+- If you prefer to do it locally without Docker, then need to install the following:
+
+  - [`Golang`](https://golang.org/doc/install)
+  - [`protoc`](http://google.github.io/proto-lens/installing-protoc.html)
+
+- Authenticate to GCP
 
   ```bash
   gcloud components update
@@ -75,7 +77,7 @@ After code edit, the container images are automatically rebuilt and re-deployed 
 **NOTE** This can only develop and test the gRPC server. Since the [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
 brought up here, can not test the REST API.
 
-### Start mixer as a gRPC server
+### Generate Go proto files
 
 Run the following code to generate Go proto files.
 
@@ -89,6 +91,8 @@ protoc \
   --go-grpc_opt=requireUnimplementedServers=false \
   proto/*.proto
 ```
+
+### Start mixer as a gRPC server
 
 Run the following code to start mixer gRPC server
 TODO(shifucun): change store_project to `datcom-store`
