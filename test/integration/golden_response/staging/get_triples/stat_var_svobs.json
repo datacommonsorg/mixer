@@ -41,6 +41,16 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Count_Person",
+      "predicate": "memberOf",
+      "objectId": "dc/g/Count_Person",
+      "objectName": "Count Of Person",
+      "objectTypes": [
+        "StatVarGroup"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "dc/vec47kj93z2m6",
       "subjectTypes": [
         "StatisticalVariable"
@@ -389,6 +399,16 @@
       "objectName": "Person",
       "objectTypes": [
         "Class"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "predicate": "memberOf",
+      "objectId": "dc/g/Count_Person_Gender",
+      "objectName": "Count Of Person By Gender",
+      "objectTypes": [
+        "StatVarGroup"
       ],
       "provenanceId": "dc/d7tbsb1"
     },
