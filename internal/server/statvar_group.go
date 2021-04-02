@@ -25,6 +25,30 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+func checkValid(
+	svgResp *pb.StatVarGroups, svgID string, validSVG map[string]struct{}) bool {
+	// Already checked
+	if _, ok := validSVG[svgID]; ok {
+		return true
+	}
+	svChildren := svgResp.StatVarGroups[svgID].ChildStatVars
+	svgChildren := svgResp.StatVarGroups[svgID].ChildStatVarGroups
+	// If there are non-empty sv chldren, then this svg is valid
+	if len(svChildren) > 0 {
+		validSVG[svgID] = struct{}{}
+		return true
+	}
+	// Recursively check child svg, if there is any valid svg child, then this
+	// is valid too
+	for _, svgChild := range svgChildren {
+		if checkValid(svgResp, svgChild.Id, validSVG) {
+			validSVG[svgID] = struct{}{}
+			return true
+		}
+	}
+	return false
+}
+
 func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	// Build set for all the SV.
 	validSV := map[string]struct{}{}
@@ -45,35 +69,13 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	}
 
 	// Step 2: recursively check if a stat var group is valid. A stat var group
-	// is valid if it has any grand children with non-empty stat vars.
+	// is valid if it has any descendent stat var group with non-empty stat vars
 
 	// All the svg with valid sv for this place
 	validSVG := map[string]struct{}{}
-	var checkValid func(string) bool
-	checkValid = func(svgID string) bool {
-		// Already checked
-		if _, ok := validSVG[svgID]; ok {
-			return true
-		}
-		svChildren := svgResp.StatVarGroups[svgID].ChildStatVars
-		svgChildren := svgResp.StatVarGroups[svgID].ChildStatVarGroups
-		// If there are non-empty sv chldren, then this svg is valid
-		if len(svChildren) > 0 {
-			validSVG[svgID] = struct{}{}
-			return true
-		}
-		// Recursively check child svg, if there is any valid svg child, then this
-		// is valid too
-		for _, svgChild := range svgChildren {
-			if checkValid(svgChild.Id) {
-				validSVG[svgID] = struct{}{}
-				return true
-			}
-		}
-		return false
-	}
+
 	for svgID := range svgResp.StatVarGroups {
-		checkValid(svgID)
+		checkValid(svgResp, svgID, validSVG)
 	}
 
 	// Step3: another iteration to only keep valid svg
