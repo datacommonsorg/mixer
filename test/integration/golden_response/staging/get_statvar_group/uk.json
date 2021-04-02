@@ -46,6 +46,10 @@
         {
           "id": "dc/g/Amount_EconomicActivity_ActivitySource_Isic",
           "specializedEntity": "Isic"
+        },
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Remunerator",
+          "specializedEntity": "Remunerator"
         }
       ]
     },
@@ -1087,6 +1091,10 @@
         {
           "id": "dc/g/CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage",
           "specializedEntity": "CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage"
+        },
+        {
+          "id": "dc/g/Count_BirthEvent",
+          "specializedEntity": "Count_BirthEvent"
         },
         {
           "id": "dc/g/Count_CycloneEvent",

@@ -24,56 +24,102 @@ import (
 
 func TestFilter(t *testing.T) {
 
-	placeSVs := []string{"sv1", "sv21", "sv91"}
-	input := &pb.StatVarGroups{
-		StatVarGroups: map[string]*pb.StatVarGroupNode{
-			"svg1": {
-				ChildStatVars: []string{"sv1", "sv2"},
-				ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
-					{Id: "svg2"},
-					{Id: "svg3"},
+	for _, c := range []struct {
+		input *pb.StatVarGroups
+		want  *pb.StatVarGroups
+		svs   []string
+	}{
+		{
+			&pb.StatVarGroups{
+				StatVarGroups: map[string]*pb.StatVarGroupNode{
+					"svgX": {
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svgY"},
+						},
+					},
+					"svgY": {
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svgZ"},
+						},
+					},
+					"svgZ": {
+						ChildStatVars: []string{"sv1", "sv2"},
+					},
 				},
 			},
-			"svg2": {
-				ChildStatVars: []string{"sv21", "sv22"},
-				ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
-					{Id: "svg5"},
-					{Id: "svg6"},
+			&pb.StatVarGroups{
+				StatVarGroups: map[string]*pb.StatVarGroupNode{
+					"svgX": {
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svgY"},
+						},
+					},
+					"svgY": {
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svgZ"},
+						},
+					},
+					"svgZ": {
+						ChildStatVars: []string{"sv1", "sv2"},
+					},
 				},
 			},
-			"svg8": {
-				ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
-					{Id: "svg9"},
-				},
-			},
-			"svg9": {
-				ChildStatVars: []string{"sv91", "sv92"},
-			},
+			[]string{"sv1", "sv2"},
 		},
-	}
-	want := &pb.StatVarGroups{
-		StatVarGroups: map[string]*pb.StatVarGroupNode{
-			"svg1": {
-				ChildStatVars: []string{"sv1"},
-				ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
-					{Id: "svg2"},
+		{
+			&pb.StatVarGroups{
+				StatVarGroups: map[string]*pb.StatVarGroupNode{
+					"svg1": {
+						ChildStatVars: []string{"sv1", "sv2"},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svg2"},
+							{Id: "svg3"},
+						},
+					},
+					"svg2": {
+						ChildStatVars: []string{"sv21", "sv22"},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svg5"},
+							{Id: "svg6"},
+						},
+					},
+					"svg8": {
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svg9"},
+						},
+					},
+					"svg9": {
+						ChildStatVars: []string{"sv91", "sv92"},
+					},
 				},
 			},
-			"svg2": {
-				ChildStatVars: []string{"sv21"},
-			},
-			"svg8": {
-				ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
-					{Id: "svg9"},
+			&pb.StatVarGroups{
+				StatVarGroups: map[string]*pb.StatVarGroupNode{
+					"svg1": {
+						ChildStatVars: []string{"sv1"},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svg2"},
+						},
+					},
+					"svg2": {
+						ChildStatVars: []string{"sv21"},
+					},
+					"svg8": {
+						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+							{Id: "svg9"},
+						},
+					},
+					"svg9": {
+						ChildStatVars: []string{"sv91"},
+					},
 				},
 			},
-			"svg9": {
-				ChildStatVars: []string{"sv91"},
-			},
+			[]string{"sv1", "sv21", "sv91"},
 		},
-	}
-	got := filterSVG(input, placeSVs)
-	if diff := cmp.Diff(got, want, protocmp.Transform()); diff != "" {
-		t.Errorf("filterSVG() got diff %v", diff)
+	} {
+		got := filterSVG(c.input, c.svs)
+		if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
+			t.Errorf("filterSVG() got diff %v", diff)
+		}
 	}
 }

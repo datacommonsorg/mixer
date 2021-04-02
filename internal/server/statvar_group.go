@@ -66,6 +66,7 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 		// is valid too
 		for _, svgChild := range svgChildren {
 			if checkValid(svgChild.Id) {
+				validSVG[svgID] = struct{}{}
 				return true
 			}
 		}
