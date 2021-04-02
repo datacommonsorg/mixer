@@ -17,7 +17,6 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"log"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -72,7 +71,6 @@ func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
 	*pb.StatVarGroups, error) {
 	place := in.GetPlace()
-	log.Println(place)
 	svobsMode := s.metadata.SvObsMode
 
 	if !svobsMode {
@@ -96,23 +94,26 @@ func (s *Server) GetStatVarGroup(
 		return nil, err
 	}
 
-	// Read place statvars
-	if len(svgResp.StatVarGroups) > 0 {
-		row, err := s.store.BaseBt().ReadRow(ctx, util.BtPlaceStatsVarPrefix+place)
-		if err != nil {
-			return nil, err
-		}
-		raw := row[util.BtFamily][0].Value
-		jsonRaw, err := util.UnzipAndDecode(string(raw))
-		if err != nil {
-			return nil, err
-		}
-		var sv PlaceStatsVar
-		err = json.Unmarshal(jsonRaw, &sv)
-		if err != nil {
-			return nil, err
-		}
-		svgResp = filterSVG(svgResp, sv.StatVarIds)
+	if len(svgResp.StatVarGroups) == 0 {
+		// Return for empty result
+		return svgResp, nil
 	}
+
+	// Read place statvars
+	row, err = s.store.BaseBt().ReadRow(ctx, util.BtPlaceStatsVarPrefix+place)
+	if err != nil {
+		return nil, err
+	}
+	raw = row[util.BtFamily][0].Value
+	jsonRaw, err = util.UnzipAndDecode(string(raw))
+	if err != nil {
+		return nil, err
+	}
+	var sv PlaceStatsVar
+	err = json.Unmarshal(jsonRaw, &sv)
+	if err != nil {
+		return nil, err
+	}
+	svgResp = filterSVG(svgResp, sv.StatVarIds)
 	return svgResp, nil
 }
