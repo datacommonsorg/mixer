@@ -25,7 +25,8 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-func checkValid(
+// Note this function modifies validSVG inside.
+func markValidSVG(
 	svgResp *pb.StatVarGroups, svgID string, validSVG map[string]struct{}) bool {
 	// Already checked
 	if _, ok := validSVG[svgID]; ok {
@@ -41,7 +42,7 @@ func checkValid(
 	// Recursively check child svg, if there is any valid svg child, then this
 	// is valid too
 	for _, svgChild := range svgChildren {
-		if checkValid(svgResp, svgChild.Id, validSVG) {
+		if markValidSVG(svgResp, svgChild.Id, validSVG) {
 			validSVG[svgID] = struct{}{}
 			return true
 		}
@@ -75,7 +76,7 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	validSVG := map[string]struct{}{}
 
 	for svgID := range svgResp.StatVarGroups {
-		checkValid(svgResp, svgID, validSVG)
+		markValidSVG(svgResp, svgID, validSVG)
 	}
 
 	// Step3: another iteration to only keep valid svg
