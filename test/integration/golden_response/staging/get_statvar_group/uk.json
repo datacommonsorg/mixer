@@ -46,14 +46,6 @@
         {
           "id": "dc/g/Amount_EconomicActivity_ActivitySource_Isic",
           "specializedEntity": "Isic"
-        },
-        {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Naics",
-          "specializedEntity": "Naics"
-        },
-        {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Remunerator",
-          "specializedEntity": "Remunerator"
         }
       ]
     },
@@ -158,10 +150,6 @@
       "absoluteName": "Count Of BirthEvent",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_BirthEvent_Gender",
-          "specializedEntity": "Gender"
-        },
-        {
           "id": "dc/g/Count_BirthEvent_MedicalStatus",
           "specializedEntity": "MedicalStatus"
         }
@@ -171,12 +159,6 @@
       "absoluteName": "Count Of BirthEvent By MedicalStatus",
       "childStatVars": [
         "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_BirthEvent_Gender_MedicalStatus",
-          "specializedEntity": "Gender"
-        }
       ]
     },
     "dc/g/Count_CriminalActivities_CrimeType": {
@@ -266,18 +248,6 @@
         {
           "id": "dc/g/Count_MortalityEvent_Gender",
           "specializedEntity": "Gender"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_MedicareType",
-          "specializedEntity": "MedicareType"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_Race",
-          "specializedEntity": "Race"
         }
       ]
     },
@@ -311,16 +281,8 @@
       ],
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath",
-          "specializedEntity": "CauseOfDeath"
-        },
-        {
           "id": "dc/g/Count_MortalityEvent_Age_Gender",
           "specializedEntity": "Gender"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_Age_Race",
-          "specializedEntity": "Race"
         }
       ]
     },
@@ -371,16 +333,6 @@
         "Count_Death_Upto14Years_Male_AsAFractionOf_Count_Person_Upto14Years_Male",
         "Count_Death_Upto4Years_Female",
         "Count_Death_Upto4Years_Male"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath_Gender",
-          "specializedEntity": "CauseOfDeath"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_Age_Gender_Race",
-          "specializedEntity": "Race"
-        }
       ]
     },
     "dc/g/Count_MortalityEvent_CauseOfDeath": {
@@ -390,20 +342,8 @@
       ],
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath",
-          "specializedEntity": "Age"
-        },
-        {
           "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender",
           "specializedEntity": "Gender"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Race",
-          "specializedEntity": "Race"
         }
       ]
     },
@@ -412,20 +352,6 @@
       "childStatVars": [
         "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
         "Count_Death_IntentionalSelfHarm_Male_AsFractionOf_Count_Person_Male"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath_Gender",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender_Race",
-          "specializedEntity": "Race"
-        }
       ]
     },
     "dc/g/Count_MortalityEvent_Gender": {
@@ -446,14 +372,6 @@
         {
           "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender",
           "specializedEntity": "CauseOfDeath"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_Gender_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_Gender_Race",
-          "specializedEntity": "Race"
         }
       ]
     },
@@ -470,18 +388,6 @@
           "specializedEntity": "Age"
         },
         {
-          "id": "dc/g/Count_Person_Citizenship",
-          "specializedEntity": "Citizenship"
-        },
-        {
-          "id": "dc/g/Count_Person_DisabilityStatus",
-          "specializedEntity": "DisabilityStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Employment",
-          "specializedEntity": "Employment"
-        },
-        {
           "id": "dc/g/Count_Person_EmploymentStatus",
           "specializedEntity": "EmploymentStatus"
         },
@@ -490,52 +396,16 @@
           "specializedEntity": "Gender"
         },
         {
-          "id": "dc/g/Count_Person_HouseholdType",
-          "specializedEntity": "HouseholdType"
-        },
-        {
-          "id": "dc/g/Count_Person_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
           "id": "dc/g/Count_Person_IsInternetUser",
           "specializedEntity": "IsInternetUser"
-        },
-        {
-          "id": "dc/g/Count_Person_LiteracyStatus",
-          "specializedEntity": "LiteracyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_PlaceOfBirth",
-          "specializedEntity": "PlaceOfBirth"
         },
         {
           "id": "dc/g/Count_Person_PlaceOfResidenceClassification",
           "specializedEntity": "PlaceOfResidenceClassification"
         },
         {
-          "id": "dc/g/Count_Person_PovertyStatus",
-          "specializedEntity": "PovertyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Race",
-          "specializedEntity": "Race"
-        },
-        {
           "id": "dc/g/Count_Person_ResidenceCharacteristic",
           "specializedEntity": "ResidenceCharacteristic"
-        },
-        {
-          "id": "dc/g/Count_Person_ResidenceType",
-          "specializedEntity": "ResidenceType"
-        },
-        {
-          "id": "dc/g/Count_Person_SocialCategory",
-          "specializedEntity": "SocialCategory"
-        },
-        {
-          "id": "dc/g/Count_Person_WorkerStatus",
-          "specializedEntity": "WorkerStatus"
         }
       ]
     },
@@ -670,32 +540,12 @@
       ],
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_Person_Age_ArmedForcesStatus",
-          "specializedEntity": "ArmedForcesStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_DisabilityStatus",
-          "specializedEntity": "DisabilityStatus"
-        },
-        {
           "id": "dc/g/Count_Person_Age_EducationalAttainment",
           "specializedEntity": "EducationalAttainment"
         },
         {
-          "id": "dc/g/Count_Person_Age_Employment",
-          "specializedEntity": "Employment"
-        },
-        {
           "id": "dc/g/Count_Person_Age_EmploymentStatus",
           "specializedEntity": "EmploymentStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_EnrollmentStatus",
-          "specializedEntity": "EnrollmentStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_FamilyIncome",
-          "specializedEntity": "FamilyIncome"
         },
         {
           "id": "dc/g/Count_Person_Age_Gender",
@@ -706,72 +556,8 @@
           "specializedEntity": "HealthBehavior"
         },
         {
-          "id": "dc/g/Count_Person_Age_HealthInsurance",
-          "specializedEntity": "HealthInsurance"
-        },
-        {
           "id": "dc/g/Count_Person_Age_HealthOutcome",
           "specializedEntity": "HealthOutcome"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_HouseholdType",
-          "specializedEntity": "HouseholdType"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_IncomeStatus",
-          "specializedEntity": "IncomeStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_LanguageSpokenAtHome",
-          "specializedEntity": "LanguageSpokenAtHome"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_MaritalStatus",
-          "specializedEntity": "MaritalStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_MedicalCondition",
-          "specializedEntity": "MedicalCondition"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Nativity",
-          "specializedEntity": "Nativity"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_PlaceOfBirth",
-          "specializedEntity": "PlaceOfBirth"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_PlaceOfResidenceClassification",
-          "specializedEntity": "PlaceOfResidenceClassification"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_PovertyStatus",
-          "specializedEntity": "PovertyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Race",
-          "specializedEntity": "Race"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_ResidenceType",
-          "specializedEntity": "ResidenceType"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_ResidentStatus",
-          "specializedEntity": "ResidentStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_SchoolEnrollment",
-          "specializedEntity": "SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_SocialCategory",
-          "specializedEntity": "SocialCategory"
         }
       ]
     },
@@ -801,12 +587,6 @@
         "Count_Person_25OrMoreYears_Male_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Male",
         "Count_Person_25OrMoreYears_Male_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
         "Count_Person_25OrMoreYears_Male_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Male"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_EducationalAttainment_Gender_Race",
-          "specializedEntity": "Race"
-        }
       ]
     },
     "dc/g/Count_Person_Age_EmploymentStatus": {
@@ -818,10 +598,6 @@
         {
           "id": "dc/g/Count_Person_Age_EmploymentStatus_Gender",
           "specializedEntity": "Gender"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Employment_EmploymentStatus",
-          "specializedEntity": "Employment"
         }
       ]
     },
@@ -831,16 +607,6 @@
         "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce",
         "Count_Person_15To64Years_Female_InLaborForce_AsFractionOf_Count_Person_15To64Years_Female",
         "Count_Person_15To64Years_Male_InLaborForce_AsFractionOf_Count_Person_15To64Years_Male"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_ArmedForcesStatus_EmploymentStatus_Gender",
-          "specializedEntity": "ArmedForcesStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Employment_EmploymentStatus_Gender",
-          "specializedEntity": "Employment"
-        }
       ]
     },
     "dc/g/Count_Person_Age_Gender": {
@@ -1099,14 +865,6 @@
       ],
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_Person_Age_ArmedForcesStatus_Gender",
-          "specializedEntity": "ArmedForcesStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_CollegeOrGraduateSchoolEnrollment_Gender",
-          "specializedEntity": "CollegeOrGraduateSchoolEnrollment"
-        },
-        {
           "id": "dc/g/Count_Person_Age_EducationalAttainment_Gender",
           "specializedEntity": "EducationalAttainment"
         },
@@ -1115,64 +873,8 @@
           "specializedEntity": "EmploymentStatus"
         },
         {
-          "id": "dc/g/Count_Person_Age_Employment_Gender",
-          "specializedEntity": "Employment"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_EnrollmentStatus_Gender",
-          "specializedEntity": "EnrollmentStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_FamilyIncome_Gender",
-          "specializedEntity": "FamilyIncome"
-        },
-        {
           "id": "dc/g/Count_Person_Age_Gender_HealthBehavior",
           "specializedEntity": "HealthBehavior"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_HealthInsurance",
-          "specializedEntity": "HealthInsurance"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_HouseholdType",
-          "specializedEntity": "HouseholdType"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_MaritalStatus",
-          "specializedEntity": "MaritalStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_MedicalCondition",
-          "specializedEntity": "MedicalCondition"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_PlaceOfResidenceClassification",
-          "specializedEntity": "PlaceOfResidenceClassification"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_PovertyStatus",
-          "specializedEntity": "PovertyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_Race",
-          "specializedEntity": "Race"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_SchoolEnrollment",
-          "specializedEntity": "SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_SocialCategory",
-          "specializedEntity": "SocialCategory"
-        },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_WorkExperience",
-          "specializedEntity": "WorkExperience"
         }
       ]
     },
@@ -1223,38 +925,6 @@
         {
           "id": "dc/g/Count_Person_Age_Gender",
           "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_HouseholdType",
-          "specializedEntity": "HouseholdType"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_Institutionalization",
-          "specializedEntity": "Institutionalization"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_LiteracyStatus",
-          "specializedEntity": "LiteracyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_PlaceOfResidenceClassification",
-          "specializedEntity": "PlaceOfResidenceClassification"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_PovertyStatus",
-          "specializedEntity": "PovertyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_Race",
-          "specializedEntity": "Race"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_SocialCategory",
-          "specializedEntity": "SocialCategory"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_WorkerStatus",
-          "specializedEntity": "WorkerStatus"
         }
       ]
     },
@@ -1269,36 +939,6 @@
       "childStatVars": [
         "Count_Person_Rural",
         "Count_Person_Urban"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_PlaceOfResidenceClassification",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender_PlaceOfResidenceClassification",
-          "specializedEntity": "Gender"
-        },
-        {
-          "id": "dc/g/Count_Person_HouseholdType_PlaceOfResidenceClassification",
-          "specializedEntity": "HouseholdType"
-        },
-        {
-          "id": "dc/g/Count_Person_LiteracyStatus_PlaceOfResidenceClassification",
-          "specializedEntity": "LiteracyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_PlaceOfResidenceClassification_PovertyStatus",
-          "specializedEntity": "PovertyStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_PlaceOfResidenceClassification_SocialCategory",
-          "specializedEntity": "SocialCategory"
-        },
-        {
-          "id": "dc/g/Count_Person_PlaceOfResidenceClassification_WorkerStatus",
-          "specializedEntity": "WorkerStatus"
-        }
       ]
     },
     "dc/g/Count_Person_ResidenceCharacteristic": {
@@ -1373,10 +1013,6 @@
         {
           "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition_MedicalTestingMethod",
           "specializedEntity": "MedicalTestingMethod"
-        },
-        {
-          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition_TestResult",
-          "specializedEntity": "TestResult"
         }
       ]
     },
@@ -1396,52 +1032,12 @@
       "absoluteName": "Demographics",
       "childStatVarGroups": [
         {
-          "id": "dc/g/AcceptanceRate_Person_EnrollmentLevel",
-          "specializedEntity": "AcceptanceRate_Person_EnrollmentLevel"
-        },
-        {
-          "id": "dc/g/Age_Person",
-          "specializedEntity": "Age_Person"
-        },
-        {
-          "id": "dc/g/CommuteTime_Person_Age_Employment_EmploymentStatus_PlaceOfWork",
-          "specializedEntity": "CommuteTime_Person_Age_Employment_EmploymentStatus_PlaceOfWork"
-        },
-        {
           "id": "dc/g/Count_Person",
           "specializedEntity": "Count_Person"
         },
         {
-          "id": "dc/g/CumulativeCount_Person_HealthPrevention",
-          "specializedEntity": "CumulativeCount_Person_HealthPrevention"
-        },
-        {
-          "id": "dc/g/Enrollment_Person_EnrollmentLevel",
-          "specializedEntity": "Enrollment_Person_EnrollmentLevel"
-        },
-        {
           "id": "dc/g/FertilityRate_Person_Gender",
           "specializedEntity": "FertilityRate_Person_Gender"
-        },
-        {
-          "id": "dc/g/GenderIncomeInequality_Person_Age_IncomeStatus",
-          "specializedEntity": "GenderIncomeInequality_Person_Age_IncomeStatus"
-        },
-        {
-          "id": "dc/g/GraduationRate_Person_EnrollmentLevel",
-          "specializedEntity": "GraduationRate_Person_EnrollmentLevel"
-        },
-        {
-          "id": "dc/g/Income_Person_Age_IncomeStatus",
-          "specializedEntity": "Income_Person_Age_IncomeStatus"
-        },
-        {
-          "id": "dc/g/IncrementalCount_Person",
-          "specializedEntity": "IncrementalCount_Person"
-        },
-        {
-          "id": "dc/g/InsuredUnemploymentRate_Person_UnemploymentInsuranceStatus",
-          "specializedEntity": "InsuredUnemploymentRate_Person_UnemploymentInsuranceStatus"
         },
         {
           "id": "dc/g/LifeExpectancy_Person",
@@ -1452,56 +1048,8 @@
           "specializedEntity": "MortalityRate_Person_Age"
         },
         {
-          "id": "dc/g/NetPrice_Person_EnrollmentLevel",
-          "specializedEntity": "NetPrice_Person_EnrollmentLevel"
-        },
-        {
-          "id": "dc/g/Percent_Person_Age_HealthBehavior",
-          "specializedEntity": "Percent_Person_Age_HealthBehavior"
-        },
-        {
-          "id": "dc/g/Percent_Person_Age_HealthInsurance",
-          "specializedEntity": "Percent_Person_Age_HealthInsurance"
-        },
-        {
-          "id": "dc/g/Percent_Person_Age_HealthOutcome",
-          "specializedEntity": "Percent_Person_Age_HealthOutcome"
-        },
-        {
-          "id": "dc/g/Percent_Person_Age_HealthPrevention",
-          "specializedEntity": "Percent_Person_Age_HealthPrevention"
-        },
-        {
-          "id": "dc/g/Percentage_Person_EducationStatus_Gender",
-          "specializedEntity": "Percentage_Person_EducationStatus_Gender"
-        },
-        {
-          "id": "dc/g/Percentage_Person_EducationStatus_Race",
-          "specializedEntity": "Percentage_Person_EducationStatus_Race"
-        },
-        {
-          "id": "dc/g/Percentage_Person_EmploymentStatus_Race",
-          "specializedEntity": "Percentage_Person_EmploymentStatus_Race"
-        },
-        {
-          "id": "dc/g/Percentage_Person_Gender_PovertyStatus",
-          "specializedEntity": "Percentage_Person_Gender_PovertyStatus"
-        },
-        {
-          "id": "dc/g/PovertyLine_Person_PlaceOfResidenceClassification",
-          "specializedEntity": "PovertyLine_Person_PlaceOfResidenceClassification"
-        },
-        {
-          "id": "dc/g/Tuition_Person_EnrollmentLevel_StudentType",
-          "specializedEntity": "Tuition_Person_EnrollmentLevel_StudentType"
-        },
-        {
           "id": "dc/g/UnemploymentRate_Person",
           "specializedEntity": "UnemploymentRate_Person"
-        },
-        {
-          "id": "dc/g/WagesMonthly_Person",
-          "specializedEntity": "WagesMonthly_Person"
         }
       ]
     },
@@ -1511,10 +1059,6 @@
         {
           "id": "dc/g/Amount_Consumption_ConsumedThing",
           "specializedEntity": "Amount_Consumption_ConsumedThing"
-        },
-        {
-          "id": "dc/g/Amount_Consumption_ProducedThing",
-          "specializedEntity": "Amount_Consumption_ProducedThing"
         },
         {
           "id": "dc/g/Amount_Debt_Debtor",
@@ -1545,332 +1089,16 @@
           "specializedEntity": "CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage"
         },
         {
-          "id": "dc/g/CohortScaleAchievement_Student",
-          "specializedEntity": "CohortScaleAchievement_Student"
-        },
-        {
-          "id": "dc/g/ConsumerPriceIndex_ConsumerGoodsAndServices_Consumer",
-          "specializedEntity": "ConsumerPriceIndex_ConsumerGoodsAndServices_Consumer"
-        },
-        {
-          "id": "dc/g/Count_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment",
-          "specializedEntity": "Count_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Count_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment",
-          "specializedEntity": "Count_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Count_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment",
-          "specializedEntity": "Count_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Count_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment",
-          "specializedEntity": "Count_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment"
-        },
-        {
-          "id": "dc/g/Count_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus",
-          "specializedEntity": "Count_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus"
-        },
-        {
-          "id": "dc/g/Count_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject",
-          "specializedEntity": "Count_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject"
-        },
-        {
-          "id": "dc/g/Count_AstronomicalLowTideEvent",
-          "specializedEntity": "Count_AstronomicalLowTideEvent"
-        },
-        {
-          "id": "dc/g/Count_AvalancheEvent",
-          "specializedEntity": "Count_AvalancheEvent"
-        },
-        {
-          "id": "dc/g/Count_BirthEvent",
-          "specializedEntity": "Count_BirthEvent"
-        },
-        {
-          "id": "dc/g/Count_BlizzardEvent",
-          "specializedEntity": "Count_BlizzardEvent"
-        },
-        {
-          "id": "dc/g/Count_CoastalFloodEvent",
-          "specializedEntity": "Count_CoastalFloodEvent"
-        },
-        {
-          "id": "dc/g/Count_ColdWindChillEvent",
-          "specializedEntity": "Count_ColdWindChillEvent"
-        },
-        {
           "id": "dc/g/Count_CycloneEvent",
           "specializedEntity": "Count_CycloneEvent"
-        },
-        {
-          "id": "dc/g/Count_DebrisFlowEvent",
-          "specializedEntity": "Count_DebrisFlowEvent"
-        },
-        {
-          "id": "dc/g/Count_DenseFogEvent",
-          "specializedEntity": "Count_DenseFogEvent"
-        },
-        {
-          "id": "dc/g/Count_DenseSmokeEvent",
-          "specializedEntity": "Count_DenseSmokeEvent"
-        },
-        {
-          "id": "dc/g/Count_DroughtEvent",
-          "specializedEntity": "Count_DroughtEvent"
-        },
-        {
-          "id": "dc/g/Count_DustDevilEvent",
-          "specializedEntity": "Count_DustDevilEvent"
-        },
-        {
-          "id": "dc/g/Count_DustStormEvent",
-          "specializedEntity": "Count_DustStormEvent"
         },
         {
           "id": "dc/g/Count_EarthquakeEvent",
           "specializedEntity": "Count_EarthquakeEvent"
         },
         {
-          "id": "dc/g/Count_ExcessiveHeatEvent",
-          "specializedEntity": "Count_ExcessiveHeatEvent"
-        },
-        {
-          "id": "dc/g/Count_ExtremeColdWindChillEvent",
-          "specializedEntity": "Count_ExtremeColdWindChillEvent"
-        },
-        {
-          "id": "dc/g/Count_Faculty_FacultyType",
-          "specializedEntity": "Count_Faculty_FacultyType"
-        },
-        {
-          "id": "dc/g/Count_FlashFloodEvent",
-          "specializedEntity": "Count_FlashFloodEvent"
-        },
-        {
-          "id": "dc/g/Count_FloodEvent",
-          "specializedEntity": "Count_FloodEvent"
-        },
-        {
-          "id": "dc/g/Count_FreezingFogEvent",
-          "specializedEntity": "Count_FreezingFogEvent"
-        },
-        {
-          "id": "dc/g/Count_FrostFreezeEvent",
-          "specializedEntity": "Count_FrostFreezeEvent"
-        },
-        {
-          "id": "dc/g/Count_FunnelCloudEvent",
-          "specializedEntity": "Count_FunnelCloudEvent"
-        },
-        {
-          "id": "dc/g/Count_HailEvent",
-          "specializedEntity": "Count_HailEvent"
-        },
-        {
-          "id": "dc/g/Count_HeatEvent",
-          "specializedEntity": "Count_HeatEvent"
-        },
-        {
-          "id": "dc/g/Count_HeavyRainEvent",
-          "specializedEntity": "Count_HeavyRainEvent"
-        },
-        {
-          "id": "dc/g/Count_HeavySnowEvent",
-          "specializedEntity": "Count_HeavySnowEvent"
-        },
-        {
-          "id": "dc/g/Count_HighSurfEvent",
-          "specializedEntity": "Count_HighSurfEvent"
-        },
-        {
-          "id": "dc/g/Count_HighWindEvent",
-          "specializedEntity": "Count_HighWindEvent"
-        },
-        {
-          "id": "dc/g/Count_HurricaneEvent",
-          "specializedEntity": "Count_HurricaneEvent"
-        },
-        {
-          "id": "dc/g/Count_HurricaneTyphoonEvent",
-          "specializedEntity": "Count_HurricaneTyphoonEvent"
-        },
-        {
-          "id": "dc/g/Count_IceStormEvent",
-          "specializedEntity": "Count_IceStormEvent"
-        },
-        {
-          "id": "dc/g/Count_IncarcerationEvent_EventType_Institutionalization_MaxPrisonSentence_PrisonSentenceStatus",
-          "specializedEntity": "Count_IncarcerationEvent_EventType_Institutionalization_MaxPrisonSentence_PrisonSentenceStatus"
-        },
-        {
-          "id": "dc/g/Count_JobPosting_Naics",
-          "specializedEntity": "Count_JobPosting_Naics"
-        },
-        {
-          "id": "dc/g/Count_LakeEffectSnowEvent",
-          "specializedEntity": "Count_LakeEffectSnowEvent"
-        },
-        {
-          "id": "dc/g/Count_LakeshoreFloodEvent",
-          "specializedEntity": "Count_LakeshoreFloodEvent"
-        },
-        {
-          "id": "dc/g/Count_LandslideEvent",
-          "specializedEntity": "Count_LandslideEvent"
-        },
-        {
-          "id": "dc/g/Count_LightningEvent",
-          "specializedEntity": "Count_LightningEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineDenseFogEvent",
-          "specializedEntity": "Count_MarineDenseFogEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineHailEvent",
-          "specializedEntity": "Count_MarineHailEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineHighWindEvent",
-          "specializedEntity": "Count_MarineHighWindEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineHurricaneTyphoonEvent",
-          "specializedEntity": "Count_MarineHurricaneTyphoonEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineLightningEvent",
-          "specializedEntity": "Count_MarineLightningEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineStrongWindEvent",
-          "specializedEntity": "Count_MarineStrongWindEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineThunderstormWindEvent",
-          "specializedEntity": "Count_MarineThunderstormWindEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineTropicalDepressionEvent",
-          "specializedEntity": "Count_MarineTropicalDepressionEvent"
-        },
-        {
-          "id": "dc/g/Count_MarineTropicalStormEvent",
-          "specializedEntity": "Count_MarineTropicalStormEvent"
-        },
-        {
-          "id": "dc/g/Count_MedicalProcedure_MedicalCode_PatientRace",
-          "specializedEntity": "Count_MedicalProcedure_MedicalCode_PatientRace"
-        },
-        {
-          "id": "dc/g/Count_MedicalProcedure_MedicalEventEnum_PatientRace",
-          "specializedEntity": "Count_MedicalProcedure_MedicalEventEnum_PatientRace"
-        },
-        {
-          "id": "dc/g/Count_MedicalTest_MedicalCondition_TestResult",
-          "specializedEntity": "Count_MedicalTest_MedicalCondition_TestResult"
-        },
-        {
-          "id": "dc/g/Count_MedicareEnrollee",
-          "specializedEntity": "Count_MedicareEnrollee"
-        },
-        {
           "id": "dc/g/Count_Product_ProductType",
           "specializedEntity": "Count_Product_ProductType"
-        },
-        {
-          "id": "dc/g/Count_RipCurrentEvent",
-          "specializedEntity": "Count_RipCurrentEvent"
-        },
-        {
-          "id": "dc/g/Count_School",
-          "specializedEntity": "Count_School"
-        },
-        {
-          "id": "dc/g/Count_SeicheEvent",
-          "specializedEntity": "Count_SeicheEvent"
-        },
-        {
-          "id": "dc/g/Count_SleetEvent",
-          "specializedEntity": "Count_SleetEvent"
-        },
-        {
-          "id": "dc/g/Count_SneakerwaveEvent",
-          "specializedEntity": "Count_SneakerwaveEvent"
-        },
-        {
-          "id": "dc/g/Count_StormSurgeTideEvent",
-          "specializedEntity": "Count_StormSurgeTideEvent"
-        },
-        {
-          "id": "dc/g/Count_StrongWindEvent",
-          "specializedEntity": "Count_StrongWindEvent"
-        },
-        {
-          "id": "dc/g/Count_Student",
-          "specializedEntity": "Count_Student"
-        },
-        {
-          "id": "dc/g/Count_Teacher",
-          "specializedEntity": "Count_Teacher"
-        },
-        {
-          "id": "dc/g/Count_ThunderstormWindEvent",
-          "specializedEntity": "Count_ThunderstormWindEvent"
-        },
-        {
-          "id": "dc/g/Count_TornadoEvent",
-          "specializedEntity": "Count_TornadoEvent"
-        },
-        {
-          "id": "dc/g/Count_TropicalDepressionEvent",
-          "specializedEntity": "Count_TropicalDepressionEvent"
-        },
-        {
-          "id": "dc/g/Count_TropicalStormEvent",
-          "specializedEntity": "Count_TropicalStormEvent"
-        },
-        {
-          "id": "dc/g/Count_TsunamiEvent",
-          "specializedEntity": "Count_TsunamiEvent"
-        },
-        {
-          "id": "dc/g/Count_USCEstablishment",
-          "specializedEntity": "Count_USCEstablishment"
-        },
-        {
-          "id": "dc/g/Count_USCWorker",
-          "specializedEntity": "Count_USCWorker"
-        },
-        {
-          "id": "dc/g/Count_UnemploymentInsuranceClaim_BenefitProgram",
-          "specializedEntity": "Count_UnemploymentInsuranceClaim_BenefitProgram"
-        },
-        {
-          "id": "dc/g/Count_VolcanicAshfallEvent",
-          "specializedEntity": "Count_VolcanicAshfallEvent"
-        },
-        {
-          "id": "dc/g/Count_WaterspoutEvent",
-          "specializedEntity": "Count_WaterspoutEvent"
-        },
-        {
-          "id": "dc/g/Count_WildfireEvent",
-          "specializedEntity": "Count_WildfireEvent"
-        },
-        {
-          "id": "dc/g/Count_WildlandFireEvent",
-          "specializedEntity": "Count_WildlandFireEvent"
-        },
-        {
-          "id": "dc/g/Count_WinterStormEvent",
-          "specializedEntity": "Count_WinterStormEvent"
-        },
-        {
-          "id": "dc/g/Count_WinterWeatherEvent",
-          "specializedEntity": "Count_WinterWeatherEvent"
         },
         {
           "id": "dc/g/Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy",
@@ -1901,10 +1129,6 @@
           "specializedEntity": "CumulativeCount_Vaccine_MedicalCondition_VaccineStatus"
         },
         {
-          "id": "dc/g/GradeCohortScaleAchievement_Student",
-          "specializedEntity": "GradeCohortScaleAchievement_Student"
-        },
-        {
           "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition",
           "specializedEntity": "IncrementalCount_MedicalTest_MedicalCondition"
         },
@@ -1913,104 +1137,8 @@
           "specializedEntity": "IncrementalCount_Vaccine_MedicalCondition_VaccineStatus"
         },
         {
-          "id": "dc/g/InterestRate_TreasuryBill_Maturity",
-          "specializedEntity": "InterestRate_TreasuryBill_Maturity"
-        },
-        {
-          "id": "dc/g/InterestRate_TreasuryBond_Maturity",
-          "specializedEntity": "InterestRate_TreasuryBond_Maturity"
-        },
-        {
-          "id": "dc/g/InterestRate_TreasuryNote_Maturity",
-          "specializedEntity": "InterestRate_TreasuryNote_Maturity"
-        },
-        {
-          "id": "dc/g/MothersAge_BirthEvent",
-          "specializedEntity": "MothersAge_BirthEvent"
-        },
-        {
-          "id": "dc/g/NaepTestScoreScaleAchievement_Student_SchoolGradeLevel_SchoolSubject",
-          "specializedEntity": "NaepTestScoreScaleAchievement_Student_SchoolGradeLevel_SchoolSubject"
-        },
-        {
-          "id": "dc/g/Percent_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment",
-          "specializedEntity": "Percent_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Percent_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment",
-          "specializedEntity": "Percent_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Percent_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment",
-          "specializedEntity": "Percent_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment"
-        },
-        {
-          "id": "dc/g/Percent_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment",
-          "specializedEntity": "Percent_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment"
-        },
-        {
-          "id": "dc/g/Percent_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus",
-          "specializedEntity": "Percent_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus"
-        },
-        {
-          "id": "dc/g/Percentage_Student_LunchEligiblity_SchoolGradeLevel",
-          "specializedEntity": "Percentage_Student_LunchEligiblity_SchoolGradeLevel"
-        },
-        {
-          "id": "dc/g/Percentage_Student_Race_SchoolGradeLevel",
-          "specializedEntity": "Percentage_Student_Race_SchoolGradeLevel"
-        },
-        {
           "id": "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType",
           "specializedEntity": "PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType"
-        },
-        {
-          "id": "dc/g/Price_MedicareEnrollee",
-          "specializedEntity": "Price_MedicareEnrollee"
-        },
-        {
-          "id": "dc/g/ReceiptsBillingsOrSales_USCEstablishment_Naics_PayrollStatus",
-          "specializedEntity": "ReceiptsBillingsOrSales_USCEstablishment_Naics_PayrollStatus"
-        },
-        {
-          "id": "dc/g/ReceiptsOrRevenue_USCEstablishment_Naics_PayrollStatus",
-          "specializedEntity": "ReceiptsOrRevenue_USCEstablishment_Naics_PayrollStatus"
-        },
-        {
-          "id": "dc/g/Receipts_USCEstablishment_Naics_PayrollStatus",
-          "specializedEntity": "Receipts_USCEstablishment_Naics_PayrollStatus"
-        },
-        {
-          "id": "dc/g/RetailDrugDistribution_DrugDistribution_DrugPrescribed",
-          "specializedEntity": "RetailDrugDistribution_DrugDistribution_DrugPrescribed"
-        },
-        {
-          "id": "dc/g/Revenue_USCEstablishment_Naics_PayrollStatus",
-          "specializedEntity": "Revenue_USCEstablishment_Naics_PayrollStatus"
-        },
-        {
-          "id": "dc/g/Sales_USCEstablishment_Naics_PayrollStatus",
-          "specializedEntity": "Sales_USCEstablishment_Naics_PayrollStatus"
-        },
-        {
-          "id": "dc/g/ScaledScore_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject",
-          "specializedEntity": "ScaledScore_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject"
-        },
-        {
-          "id": "dc/g/ShipmentsOrReceipts_USCEstablishment_Naics_PayrollStatus",
-          "specializedEntity": "ShipmentsOrReceipts_USCEstablishment_Naics_PayrollStatus"
-        },
-        {
-          "id": "dc/g/StateReferencedAchievement_Student_SchoolGradeLevel_SchoolSubject",
-          "specializedEntity": "StateReferencedAchievement_Student_SchoolGradeLevel_SchoolSubject"
-        },
-        {
-          "id": "dc/g/StudentTeacherRatio_Student",
-          "specializedEntity": "StudentTeacherRatio_Student"
-        },
-        {
-          "id": "dc/g/WagesAnnual_USCEstablishment",
-          "specializedEntity": "WagesAnnual_USCEstablishment"
         }
       ]
     },
@@ -2044,10 +1172,6 @@
         {
           "id": "dc/g/CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus",
           "specializedEntity": "CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus"
-        },
-        {
-          "id": "dc/g/DaysSinceLastReportedCase_MedicalConditionIncident_IncidentType_MedicalStatus",
-          "specializedEntity": "DaysSinceLastReportedCase_MedicalConditionIncident_IncidentType_MedicalStatus"
         },
         {
           "id": "dc/g/GiniIndex_EconomicActivity",
