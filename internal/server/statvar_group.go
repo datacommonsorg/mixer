@@ -67,7 +67,7 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	return svgResp
 }
 
-// GetStatVarGroupRequest implements API for Mixer.GetStatVarGroupRequest.
+// GetStatVarGroup implements API for Mixer.GetStatVarGroupRequest.
 func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
 	*pb.StatVarGroups, error) {
