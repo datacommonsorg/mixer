@@ -27,34 +27,59 @@ import (
 
 func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	// Build set for all the SV.
-	svSet := map[string]struct{}{}
+	validSV := map[string]struct{}{}
 	for _, sv := range placeSVs {
-		svSet[sv] = struct{}{}
+		validSV[sv] = struct{}{}
 	}
 
-	// All the svg with valid sv for this place
-	svgSet := map[string]struct{}{}
-
-	// Iterate over stat var group, and only keep children with valid stat vars
-	// for this place.
-	for svgID, svgData := range svgResp.StatVarGroups {
+	// Step 1: iterate over stat var group, and only keep stat var children with valid
+	// stat vars for this place.
+	for _, svgData := range svgResp.StatVarGroups {
 		filteredChildren := []string{}
 		for _, child := range svgData.ChildStatVars {
-			if _, ok := svSet[child]; ok {
+			if _, ok := validSV[child]; ok {
 				filteredChildren = append(filteredChildren, child)
 			}
 		}
 		svgData.ChildStatVars = filteredChildren
-		if len(filteredChildren) > 0 {
-			svgSet[svgID] = struct{}{}
-		}
 	}
 
-	// Another iteration to remove SVG without svg children nor sv children
+	// Step 2: recursively check if a stat var group is valid. A stat var group
+	// is valid if it has any grand children with non-empty stat vars.
+
+	// All the svg with valid sv for this place
+	validSVG := map[string]struct{}{}
+	var checkValid func(string) bool
+	checkValid = func(svgID string) bool {
+		// Already checked
+		if _, ok := validSVG[svgID]; ok {
+			return true
+		}
+		svChildren := svgResp.StatVarGroups[svgID].ChildStatVars
+		svgChildren := svgResp.StatVarGroups[svgID].ChildStatVarGroups
+		// If there are non-empty sv chldren, then this svg is valid
+		if len(svChildren) > 0 {
+			validSVG[svgID] = struct{}{}
+			return true
+		}
+		// Recursively check child svg, if there is any valid svg child, then this
+		// is valid too
+		for _, svgChild := range svgChildren {
+			if checkValid(svgChild.Id) {
+				return true
+			}
+		}
+		return false
+	}
+	for svgID := range svgResp.StatVarGroups {
+		checkValid(svgID)
+	}
+
+	// Step3: another iteration to only keep valid svg
 	for svgID, svgData := range svgResp.StatVarGroups {
 		filteredChildren := []*pb.StatVarGroupNode_Child{}
 		for _, c := range svgData.ChildStatVarGroups {
-			if _, ok := svgSet[c.Id]; ok {
+			if _, ok := validSVG[c.Id]; ok {
 				filteredChildren = append(filteredChildren, c)
 			}
 		}
