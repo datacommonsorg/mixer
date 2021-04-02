@@ -26,6 +26,47 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
+	// Build set for all the SV.
+	svSet := map[string]struct{}{}
+	for _, sv := range placeSVs {
+		svSet[sv] = struct{}{}
+	}
+
+	// All the svg with valid sv for this place
+	svgSet := map[string]struct{}{}
+
+	// Iterate over stat var group, and only keep children with valid stat vars
+	// for this place.
+	for svgID, svgData := range svgResp.StatVarGroups {
+		filteredChildren := []string{}
+		for _, child := range svgData.ChildStatVars {
+			if _, ok := svSet[child]; ok {
+				filteredChildren = append(filteredChildren, child)
+			}
+		}
+		svgData.ChildStatVars = filteredChildren
+		if len(filteredChildren) > 0 {
+			svgSet[svgID] = struct{}{}
+		}
+	}
+
+	// Another iteration to remove SVG without svg children nor sv children
+	for svgID, svgData := range svgResp.StatVarGroups {
+		filteredChildren := []*pb.StatVarGroupNode_Child{}
+		for _, c := range svgData.ChildStatVarGroups {
+			if _, ok := svgSet[c.Id]; ok {
+				filteredChildren = append(filteredChildren, c)
+			}
+		}
+		svgData.ChildStatVarGroups = filteredChildren
+		if len(svgData.ChildStatVars) == 0 && len(svgData.ChildStatVarGroups) == 0 {
+			delete(svgResp.StatVarGroups, svgID)
+		}
+	}
+	return svgResp
+}
+
 // GetStatVarGroupRequest implements API for Mixer.GetStatVarGroupRequest.
 func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
@@ -71,43 +112,7 @@ func (s *Server) GetStatVarGroup(
 		if err != nil {
 			return nil, err
 		}
-		// Build set for all the SV.
-		svSet := map[string]struct{}{}
-		for _, sv := range sv.StatVarIds {
-			svSet[sv] = struct{}{}
-		}
-
-		// All the svg with valid sv for this place
-		svgSet := map[string]struct{}{}
-
-		// Iterate over stat var group, and only keep children with valid stat vars
-		// for this place.
-		for svgID, svgData := range svgResp.StatVarGroups {
-			filteredChildren := []string{}
-			for _, child := range svgData.ChildStatVars {
-				if _, ok := svSet[child]; ok {
-					filteredChildren = append(filteredChildren, child)
-				}
-			}
-			svgData.ChildStatVars = filteredChildren
-			if len(filteredChildren) > 0 {
-				svgSet[svgID] = struct{}{}
-			}
-		}
-
-		// Another iteration to remove SVG without svg children nor sv children
-		for svgID, svgData := range svgResp.StatVarGroups {
-			keep := false
-			for _, child := range svgData.ChildStatVarGroups {
-				if _, ok := svgSet[child.Id]; ok {
-					keep = true
-					break
-				}
-			}
-			if len(svgData.ChildStatVars) == 0 && !keep {
-				delete(svgResp.StatVarGroups, svgID)
-			}
-		}
+		svgResp = filterSVG(svgResp, sv.StatVarIds)
 	}
 	return svgResp, nil
 }
