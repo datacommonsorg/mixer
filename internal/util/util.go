@@ -34,6 +34,8 @@ import (
 const (
 	// BtPlaceStatsVarPrefix for place to statsvar list cache.
 	BtPlaceStatsVarPrefix = "d/0/"
+	// BtStatVarGroupPrefix for statvar group cache.
+	BtStatVarGroup = "d/1"
 	// BtPopObsPrefix for internal pop obs cache.
 	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.

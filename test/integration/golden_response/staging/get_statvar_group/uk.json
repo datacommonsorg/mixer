@@ -1,0 +1,2494 @@
+{
+  "statVarGroups": {
+    "dc/g/Amount_Consumption_ConsumedThing": {
+      "absoluteName": "Amount Of Consumption By ConsumedThing",
+      "childStatVars": [
+        "Amount_Consumption_Electricity_PerCapita",
+        "Amount_Consumption_Energy_PerCapita",
+        "Amount_Consumption_RenewableEnergy_AsFractionOf_Amount_Consumption_Energy"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_Consumption_ConsumedThing_ConsumerAge",
+          "specializedEntity": "ConsumerAge"
+        }
+      ]
+    },
+    "dc/g/Amount_Consumption_ConsumedThing_ConsumerAge": {
+      "absoluteName": "Amount Of Consumption By ConsumedThing, ConsumerAge",
+      "childStatVars": [
+        "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
+      ]
+    },
+    "dc/g/Amount_Debt_Debtor": {
+      "absoluteName": "Amount Of Debt By Debtor",
+      "childStatVars": [
+        "Amount_Debt_Government",
+        "Amount_Debt_Government_AsAFractionOfGrossDomesticProduction"
+      ]
+    },
+    "dc/g/Amount_EconomicActivity_ActivitySource": {
+      "absoluteName": "Amount Of EconomicActivity By ActivitySource",
+      "childStatVars": [
+        "Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+        "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
+        "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita",
+        "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity",
+        "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+        "Amount_EconomicActivity_GrossValueAdded_RealValue",
+        "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType",
+          "specializedEntity": "ExpenditureType"
+        },
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Isic",
+          "specializedEntity": "Isic"
+        },
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Naics",
+          "specializedEntity": "Naics"
+        },
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Remunerator",
+          "specializedEntity": "Remunerator"
+        }
+      ]
+    },
+    "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType": {
+      "absoluteName": "Amount Of EconomicActivity By ActivitySource, ExpenditureType",
+      "childStatVars": [
+        "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Expensor",
+          "specializedEntity": "Expensor"
+        },
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Remunerator",
+          "specializedEntity": "Remunerator"
+        }
+      ]
+    },
+    "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Expensor": {
+      "absoluteName": "Amount Of EconomicActivity By ActivitySource, ExpenditureType, Expensor",
+      "childStatVars": [
+        "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government",
+        "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+        "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government",
+        "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+      ]
+    },
+    "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Remunerator": {
+      "absoluteName": "Amount Of EconomicActivity By ActivitySource, ExpenditureType, Remunerator",
+      "childStatVars": [
+        "Amount_EconomicActivity_ExpenditureActivity_TertiaryEducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government"
+      ]
+    },
+    "dc/g/Amount_EconomicActivity_ActivitySource_Isic": {
+      "absoluteName": "Amount Of EconomicActivity By ActivitySource, Isic",
+      "childStatVars": [
+        "Amount_EconomicActivity_GrossValueAdded_ISICAgricultureHuntingForestryFishing_RealValue",
+        "Amount_EconomicActivity_GrossValueAdded_ISICConstruction_RealValue",
+        "Amount_EconomicActivity_GrossValueAdded_ISICManufacturing_RealValue",
+        "Amount_EconomicActivity_GrossValueAdded_ISICMiningManufacturingUtilities_RealValue",
+        "Amount_EconomicActivity_GrossValueAdded_ISICOtherActivities_RealValue",
+        "Amount_EconomicActivity_GrossValueAdded_ISICTransportStorageCommunications_RealValue",
+        "Amount_EconomicActivity_GrossValueAdded_ISICWholesaleRetailTradeRestaurantsHotels_RealValue"
+      ]
+    },
+    "dc/g/Amount_EconomicActivity_ActivitySource_Remunerator": {
+      "absoluteName": "Amount Of EconomicActivity By ActivitySource, Remunerator",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Remunerator",
+          "specializedEntity": "ExpenditureType"
+        }
+      ]
+    },
+    "dc/g/Amount_Emissions_EmittedThing": {
+      "absoluteName": "Amount Of Emissions By EmittedThing",
+      "childStatVars": [
+        "Amount_Emissions_CarbonDioxide_PerCapita"
+      ]
+    },
+    "dc/g/Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType": {
+      "absoluteName": "Amount Of Legislation By Category, Expenditure, LegislationPassedBy, PolicyType",
+      "childStatVars": [
+        "dc/58e1nwlf3b4",
+        "dc/mfbw50jgv3mpf",
+        "dc/p4sh1gklv5mkf",
+        "dc/sgk2bt9k2wrqh"
+      ]
+    },
+    "dc/g/Amount_Production_ProducedThing": {
+      "absoluteName": "Amount Of Production By ProducedThing",
+      "childStatVars": [
+        "Amount_Production_ElectricityFromNuclearSources_AsFractionOf_Amount_Production_Energy",
+        "Amount_Production_ElectricityFromOilGasOrCoalSources_AsFractionOf_Amount_Production_Energy"
+      ]
+    },
+    "dc/g/Amount_Remittance_TransferType": {
+      "absoluteName": "Amount Of Remittance By TransferType",
+      "childStatVars": [
+        "Amount_Remittance_InwardRemittance",
+        "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+        "Amount_Remittance_OutwardRemittance"
+      ]
+    },
+    "dc/g/Amount_Stock": {
+      "absoluteName": "Amount Of Stock",
+      "childStatVars": [
+        "Amount_Stock",
+        "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+      ]
+    },
+    "dc/g/CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage": {
+      "absoluteName": "CampaignExtent Of PublicInformationCampaign By Category, Organizer, SpatialCoverage",
+      "childStatVars": [
+        "dc/lmg7sdbp5jyff",
+        "dc/tchxrqdwfp02f",
+        "dc/z6jy58c28k7zh"
+      ]
+    },
+    "dc/g/Count_BirthEvent": {
+      "absoluteName": "Count Of BirthEvent",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_BirthEvent_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_BirthEvent_MedicalStatus",
+          "specializedEntity": "MedicalStatus"
+        }
+      ]
+    },
+    "dc/g/Count_BirthEvent_MedicalStatus": {
+      "absoluteName": "Count Of BirthEvent By MedicalStatus",
+      "childStatVars": [
+        "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_BirthEvent_Gender_MedicalStatus",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/Count_CriminalActivities_CrimeType": {
+      "absoluteName": "Count Of CriminalActivities By CrimeType",
+      "childStatVars": [
+        "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_CriminalActivities_CrimeType_Gender",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/Count_CriminalActivities_CrimeType_Gender": {
+      "absoluteName": "Count Of CriminalActivities By CrimeType, Gender",
+      "childStatVars": [
+        "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
+        "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male"
+      ]
+    },
+    "dc/g/Count_CycloneEvent": {
+      "absoluteName": "Count Of CycloneEvent",
+      "childStatVars": [
+        "Count_CycloneEvent"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_CycloneEvent_MaxClassification",
+          "specializedEntity": "MaxClassification"
+        }
+      ]
+    },
+    "dc/g/Count_CycloneEvent_MaxClassification": {
+      "absoluteName": "Count Of CycloneEvent By MaxClassification",
+      "childStatVars": [
+        "Count_CycloneEvent_TropicalDisturbance",
+        "Count_CycloneEvent_TropicalStorm"
+      ]
+    },
+    "dc/g/Count_EarthquakeEvent": {
+      "absoluteName": "Count Of EarthquakeEvent",
+      "childStatVars": [
+        "Count_EarthquakeEvent"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_EarthquakeEvent_Magnitude",
+          "specializedEntity": "Magnitude"
+        }
+      ]
+    },
+    "dc/g/Count_EarthquakeEvent_Magnitude": {
+      "absoluteName": "Count Of EarthquakeEvent By Magnitude",
+      "childStatVars": [
+        "Count_EarthquakeEvent_M3Onwards",
+        "Count_EarthquakeEvent_M3To4",
+        "Count_EarthquakeEvent_M4Onwards",
+        "Count_EarthquakeEvent_M4To5",
+        "Count_EarthquakeEvent_M5Onwards",
+        "Count_EarthquakeEvent_M5To6"
+      ]
+    },
+    "dc/g/Count_MedicalConditionIncident_IncidentType_MedicalStatus": {
+      "absoluteName": "Count Of MedicalConditionIncident By IncidentType, MedicalStatus",
+      "childStatVars": [
+        "Count_MedicalConditionIncident_COVID_19_PatientHospitalized",
+        "Count_MedicalConditionIncident_COVID_19_PatientInICU"
+      ]
+    },
+    "dc/g/Count_MortalityEvent": {
+      "absoluteName": "Count Of MortalityEvent",
+      "childStatVars": [
+        "Count_Death",
+        "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
+        "Count_Death_AsAFractionOfCount_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_MortalityEvent_Age",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_CauseOfDeath",
+          "specializedEntity": "CauseOfDeath"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_MedicareType",
+          "specializedEntity": "MedicareType"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Race",
+          "specializedEntity": "Race"
+        }
+      ]
+    },
+    "dc/g/Count_MortalityEvent_Age": {
+      "absoluteName": "Count Of MortalityEvent By Age",
+      "childStatVars": [
+        "Count_Death_0Years",
+        "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth",
+        "Count_Death_10To14Years",
+        "Count_Death_15To19Years",
+        "Count_Death_15To64Years",
+        "Count_Death_20To24Years",
+        "Count_Death_25To29Years",
+        "Count_Death_30To34Years",
+        "Count_Death_35To39Years",
+        "Count_Death_40To44Years",
+        "Count_Death_45To49Years",
+        "Count_Death_50To54Years",
+        "Count_Death_55To59Years",
+        "Count_Death_5To9Years",
+        "Count_Death_60To64Years",
+        "Count_Death_65OrMoreYears",
+        "Count_Death_65To69Years",
+        "Count_Death_70To74Years",
+        "Count_Death_75To79Years",
+        "Count_Death_80OrMoreYears",
+        "Count_Death_LessThan1Year_AsAFractionOf_Count_BirthEvent",
+        "Count_Death_Upto14Years",
+        "Count_Death_Upto14Years_AsAFractionOf_Count_Person_Upto14Years",
+        "Count_Death_Upto4Years"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath",
+          "specializedEntity": "CauseOfDeath"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_Race",
+          "specializedEntity": "Race"
+        }
+      ]
+    },
+    "dc/g/Count_MortalityEvent_Age_Gender": {
+      "absoluteName": "Count Of MortalityEvent By Age, Gender",
+      "childStatVars": [
+        "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female",
+        "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
+        "Count_Death_10To14Years_Female",
+        "Count_Death_10To14Years_Male",
+        "Count_Death_15To19Years_Female",
+        "Count_Death_15To19Years_Male",
+        "Count_Death_15To64Years_Female",
+        "Count_Death_15To64Years_Male",
+        "Count_Death_20To24Years_Female",
+        "Count_Death_20To24Years_Male",
+        "Count_Death_25To29Years_Female",
+        "Count_Death_25To29Years_Male",
+        "Count_Death_30To34Years_Female",
+        "Count_Death_30To34Years_Male",
+        "Count_Death_35To39Years_Female",
+        "Count_Death_35To39Years_Male",
+        "Count_Death_40To44Years_Female",
+        "Count_Death_40To44Years_Male",
+        "Count_Death_45To49Years_Female",
+        "Count_Death_45To49Years_Male",
+        "Count_Death_50To54Years_Female",
+        "Count_Death_50To54Years_Male",
+        "Count_Death_55To59Years_Female",
+        "Count_Death_55To59Years_Male",
+        "Count_Death_5To9Years_Female",
+        "Count_Death_5To9Years_Male",
+        "Count_Death_60To64Years_Female",
+        "Count_Death_60To64Years_Male",
+        "Count_Death_65OrMoreYears_Female",
+        "Count_Death_65OrMoreYears_Male",
+        "Count_Death_65To69Years_Female",
+        "Count_Death_65To69Years_Male",
+        "Count_Death_70To74Years_Female",
+        "Count_Death_70To74Years_Male",
+        "Count_Death_75To79Years_Female",
+        "Count_Death_75To79Years_Male",
+        "Count_Death_80OrMoreYears_Female",
+        "Count_Death_80OrMoreYears_Male",
+        "Count_Death_Upto14Years_Female",
+        "Count_Death_Upto14Years_Female_AsAFractionOf_Count_Person_Upto14Years_Female",
+        "Count_Death_Upto14Years_Male",
+        "Count_Death_Upto14Years_Male_AsAFractionOf_Count_Person_Upto14Years_Male",
+        "Count_Death_Upto4Years_Female",
+        "Count_Death_Upto4Years_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath_Gender",
+          "specializedEntity": "CauseOfDeath"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_Gender_Race",
+          "specializedEntity": "Race"
+        }
+      ]
+    },
+    "dc/g/Count_MortalityEvent_CauseOfDeath": {
+      "absoluteName": "Count Of MortalityEvent By CauseOfDeath",
+      "childStatVars": [
+        "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Race",
+          "specializedEntity": "Race"
+        }
+      ]
+    },
+    "dc/g/Count_MortalityEvent_CauseOfDeath_Gender": {
+      "absoluteName": "Count Of MortalityEvent By CauseOfDeath, Gender",
+      "childStatVars": [
+        "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
+        "Count_Death_IntentionalSelfHarm_Male_AsFractionOf_Count_Person_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_CauseOfDeath_Gender",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender_Race",
+          "specializedEntity": "Race"
+        }
+      ]
+    },
+    "dc/g/Count_MortalityEvent_Gender": {
+      "absoluteName": "Count Of MortalityEvent By Gender",
+      "childStatVars": [
+        "Count_Death_Female",
+        "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
+        "Count_Death_Female_AsAFractionOf_Count_Person_Female",
+        "Count_Death_Male",
+        "Count_Death_Male_AgeAdjusted_AsAFractionOf_Count_Person_Male",
+        "Count_Death_Male_AsAFractionOf_Count_Person_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_MortalityEvent_Age_Gender",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender",
+          "specializedEntity": "CauseOfDeath"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Gender_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent_Gender_Race",
+          "specializedEntity": "Race"
+        }
+      ]
+    },
+    "dc/g/Count_Person": {
+      "absoluteName": "Count Of Person",
+      "childStatVars": [
+        "Count_Person",
+        "Count_Person_PerArea",
+        "GrowthRate_Count_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_Person_Citizenship",
+          "specializedEntity": "Citizenship"
+        },
+        {
+          "id": "dc/g/Count_Person_DisabilityStatus",
+          "specializedEntity": "DisabilityStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Employment",
+          "specializedEntity": "Employment"
+        },
+        {
+          "id": "dc/g/Count_Person_EmploymentStatus",
+          "specializedEntity": "EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_Person_HouseholdType",
+          "specializedEntity": "HouseholdType"
+        },
+        {
+          "id": "dc/g/Count_Person_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_Person_IsInternetUser",
+          "specializedEntity": "IsInternetUser"
+        },
+        {
+          "id": "dc/g/Count_Person_LiteracyStatus",
+          "specializedEntity": "LiteracyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_PlaceOfBirth",
+          "specializedEntity": "PlaceOfBirth"
+        },
+        {
+          "id": "dc/g/Count_Person_PlaceOfResidenceClassification",
+          "specializedEntity": "PlaceOfResidenceClassification"
+        },
+        {
+          "id": "dc/g/Count_Person_PovertyStatus",
+          "specializedEntity": "PovertyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Race",
+          "specializedEntity": "Race"
+        },
+        {
+          "id": "dc/g/Count_Person_ResidenceCharacteristic",
+          "specializedEntity": "ResidenceCharacteristic"
+        },
+        {
+          "id": "dc/g/Count_Person_ResidenceType",
+          "specializedEntity": "ResidenceType"
+        },
+        {
+          "id": "dc/g/Count_Person_SocialCategory",
+          "specializedEntity": "SocialCategory"
+        },
+        {
+          "id": "dc/g/Count_Person_WorkerStatus",
+          "specializedEntity": "WorkerStatus"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age": {
+      "absoluteName": "Count Of Person By Age",
+      "childStatVars": [
+        "Count_Person_0Years",
+        "Count_Person_10To14Years",
+        "Count_Person_10Years",
+        "Count_Person_11Years",
+        "Count_Person_12Years",
+        "Count_Person_13Years",
+        "Count_Person_14Years",
+        "Count_Person_15To19Years",
+        "Count_Person_15To64Years",
+        "Count_Person_15Years",
+        "Count_Person_16Years",
+        "Count_Person_17Years",
+        "Count_Person_18Years",
+        "Count_Person_19Years",
+        "Count_Person_1Years",
+        "Count_Person_20To24Years",
+        "Count_Person_20Years",
+        "Count_Person_21Years",
+        "Count_Person_22Years",
+        "Count_Person_23Years",
+        "Count_Person_24Years",
+        "Count_Person_25To29Years",
+        "Count_Person_25Years",
+        "Count_Person_26Years",
+        "Count_Person_27Years",
+        "Count_Person_28Years",
+        "Count_Person_29Years",
+        "Count_Person_2Years",
+        "Count_Person_30To34Years",
+        "Count_Person_30Years",
+        "Count_Person_31Years",
+        "Count_Person_32Years",
+        "Count_Person_33Years",
+        "Count_Person_34Years",
+        "Count_Person_35To39Years",
+        "Count_Person_35Years",
+        "Count_Person_36Years",
+        "Count_Person_37Years",
+        "Count_Person_38Years",
+        "Count_Person_39Years",
+        "Count_Person_3Years",
+        "Count_Person_40To44Years",
+        "Count_Person_40Years",
+        "Count_Person_41Years",
+        "Count_Person_42Years",
+        "Count_Person_43Years",
+        "Count_Person_44Years",
+        "Count_Person_45To49Years",
+        "Count_Person_45Years",
+        "Count_Person_46Years",
+        "Count_Person_47Years",
+        "Count_Person_48Years",
+        "Count_Person_49Years",
+        "Count_Person_4Years",
+        "Count_Person_50To54Years",
+        "Count_Person_50Years",
+        "Count_Person_51Years",
+        "Count_Person_52Years",
+        "Count_Person_53Years",
+        "Count_Person_54Years",
+        "Count_Person_55To59Years",
+        "Count_Person_55Years",
+        "Count_Person_56Years",
+        "Count_Person_57Years",
+        "Count_Person_58Years",
+        "Count_Person_59Years",
+        "Count_Person_5To9Years",
+        "Count_Person_5Years",
+        "Count_Person_60To64Years",
+        "Count_Person_60Years",
+        "Count_Person_61Years",
+        "Count_Person_62Years",
+        "Count_Person_63Years",
+        "Count_Person_64Years",
+        "Count_Person_65OrMoreYears",
+        "Count_Person_65To69Years",
+        "Count_Person_65Years",
+        "Count_Person_66Years",
+        "Count_Person_67Years",
+        "Count_Person_68Years",
+        "Count_Person_69Years",
+        "Count_Person_6Years",
+        "Count_Person_70To74Years",
+        "Count_Person_70Years",
+        "Count_Person_71Years",
+        "Count_Person_72Years",
+        "Count_Person_73Years",
+        "Count_Person_74Years",
+        "Count_Person_75OrMoreYears",
+        "Count_Person_75To79Years",
+        "Count_Person_75Years",
+        "Count_Person_76Years",
+        "Count_Person_77Years",
+        "Count_Person_78Years",
+        "Count_Person_79Years",
+        "Count_Person_7Years",
+        "Count_Person_80OrMoreYears",
+        "Count_Person_80To84Years",
+        "Count_Person_80Years",
+        "Count_Person_81Years",
+        "Count_Person_82Years",
+        "Count_Person_83Years",
+        "Count_Person_84Years",
+        "Count_Person_85OrMoreYears",
+        "Count_Person_85To89Years",
+        "Count_Person_85Years",
+        "Count_Person_86Years",
+        "Count_Person_87Years",
+        "Count_Person_88Years",
+        "Count_Person_89Years",
+        "Count_Person_8Years",
+        "Count_Person_90OrMoreYears",
+        "Count_Person_90Years",
+        "Count_Person_91Years",
+        "Count_Person_92Years",
+        "Count_Person_93Years",
+        "Count_Person_94Years",
+        "Count_Person_95Years",
+        "Count_Person_96Years",
+        "Count_Person_97Years",
+        "Count_Person_98Years",
+        "Count_Person_99Years",
+        "Count_Person_9Years",
+        "Count_Person_Upto14Years",
+        "Count_Person_Upto4Years"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_ArmedForcesStatus",
+          "specializedEntity": "ArmedForcesStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_DisabilityStatus",
+          "specializedEntity": "DisabilityStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_EducationalAttainment",
+          "specializedEntity": "EducationalAttainment"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Employment",
+          "specializedEntity": "Employment"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_EmploymentStatus",
+          "specializedEntity": "EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_EnrollmentStatus",
+          "specializedEntity": "EnrollmentStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_FamilyIncome",
+          "specializedEntity": "FamilyIncome"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_HealthBehavior",
+          "specializedEntity": "HealthBehavior"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_HealthInsurance",
+          "specializedEntity": "HealthInsurance"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_HealthOutcome",
+          "specializedEntity": "HealthOutcome"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_HouseholdType",
+          "specializedEntity": "HouseholdType"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_IncomeStatus",
+          "specializedEntity": "IncomeStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_LanguageSpokenAtHome",
+          "specializedEntity": "LanguageSpokenAtHome"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_MaritalStatus",
+          "specializedEntity": "MaritalStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_MedicalCondition",
+          "specializedEntity": "MedicalCondition"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Nativity",
+          "specializedEntity": "Nativity"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_PlaceOfBirth",
+          "specializedEntity": "PlaceOfBirth"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_PlaceOfResidenceClassification",
+          "specializedEntity": "PlaceOfResidenceClassification"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_PovertyStatus",
+          "specializedEntity": "PovertyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Race",
+          "specializedEntity": "Race"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_ResidenceType",
+          "specializedEntity": "ResidenceType"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_ResidentStatus",
+          "specializedEntity": "ResidentStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_SchoolEnrollment",
+          "specializedEntity": "SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_SocialCategory",
+          "specializedEntity": "SocialCategory"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age_EducationalAttainment": {
+      "absoluteName": "Count Of Person By Age, EducationalAttainment",
+      "childStatVars": [
+        "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
+        "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears",
+        "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
+        "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_EducationalAttainment_Gender",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age_EducationalAttainment_Gender": {
+      "absoluteName": "Count Of Person By Age, EducationalAttainment, Gender",
+      "childStatVars": [
+        "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Male_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
+        "Count_Person_25OrMoreYears_Male_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Male",
+        "Count_Person_25OrMoreYears_Male_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
+        "Count_Person_25OrMoreYears_Male_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_EducationalAttainment_Gender_Race",
+          "specializedEntity": "Race"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age_EmploymentStatus": {
+      "absoluteName": "Count Of Person By Age, EmploymentStatus",
+      "childStatVars": [
+        "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_EmploymentStatus_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Employment_EmploymentStatus",
+          "specializedEntity": "Employment"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age_EmploymentStatus_Gender": {
+      "absoluteName": "Count Of Person By Age, EmploymentStatus, Gender",
+      "childStatVars": [
+        "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce",
+        "Count_Person_15To64Years_Female_InLaborForce_AsFractionOf_Count_Person_15To64Years_Female",
+        "Count_Person_15To64Years_Male_InLaborForce_AsFractionOf_Count_Person_15To64Years_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_ArmedForcesStatus_EmploymentStatus_Gender",
+          "specializedEntity": "ArmedForcesStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Employment_EmploymentStatus_Gender",
+          "specializedEntity": "Employment"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age_Gender": {
+      "absoluteName": "Count Of Person By Age, Gender",
+      "childStatVars": [
+        "Count_Person_0Years_Female",
+        "Count_Person_0Years_Male",
+        "Count_Person_10To14Years_Female",
+        "Count_Person_10To14Years_Male",
+        "Count_Person_10Years_Female",
+        "Count_Person_10Years_Male",
+        "Count_Person_11Years_Female",
+        "Count_Person_11Years_Male",
+        "Count_Person_12Years_Female",
+        "Count_Person_12Years_Male",
+        "Count_Person_13Years_Female",
+        "Count_Person_13Years_Male",
+        "Count_Person_14Years_Female",
+        "Count_Person_14Years_Male",
+        "Count_Person_15To19Years_Female",
+        "Count_Person_15To19Years_Male",
+        "Count_Person_15To64Years_Female",
+        "Count_Person_15To64Years_Male",
+        "Count_Person_15Years_Female",
+        "Count_Person_15Years_Male",
+        "Count_Person_16Years_Female",
+        "Count_Person_16Years_Male",
+        "Count_Person_17Years_Female",
+        "Count_Person_17Years_Male",
+        "Count_Person_18Years_Female",
+        "Count_Person_18Years_Male",
+        "Count_Person_19Years_Female",
+        "Count_Person_19Years_Male",
+        "Count_Person_1Years_Female",
+        "Count_Person_1Years_Male",
+        "Count_Person_20To24Years_Female",
+        "Count_Person_20To24Years_Male",
+        "Count_Person_20Years_Female",
+        "Count_Person_20Years_Male",
+        "Count_Person_21Years_Female",
+        "Count_Person_21Years_Male",
+        "Count_Person_22Years_Female",
+        "Count_Person_22Years_Male",
+        "Count_Person_23Years_Female",
+        "Count_Person_23Years_Male",
+        "Count_Person_24Years_Female",
+        "Count_Person_24Years_Male",
+        "Count_Person_25To29Years_Female",
+        "Count_Person_25To29Years_Male",
+        "Count_Person_25Years_Female",
+        "Count_Person_25Years_Male",
+        "Count_Person_26Years_Female",
+        "Count_Person_26Years_Male",
+        "Count_Person_27Years_Female",
+        "Count_Person_27Years_Male",
+        "Count_Person_28Years_Female",
+        "Count_Person_28Years_Male",
+        "Count_Person_29Years_Female",
+        "Count_Person_29Years_Male",
+        "Count_Person_2Years_Female",
+        "Count_Person_2Years_Male",
+        "Count_Person_30To34Years_Female",
+        "Count_Person_30To34Years_Male",
+        "Count_Person_30Years_Female",
+        "Count_Person_30Years_Male",
+        "Count_Person_31Years_Female",
+        "Count_Person_31Years_Male",
+        "Count_Person_32Years_Female",
+        "Count_Person_32Years_Male",
+        "Count_Person_33Years_Female",
+        "Count_Person_33Years_Male",
+        "Count_Person_34Years_Female",
+        "Count_Person_34Years_Male",
+        "Count_Person_35To39Years_Female",
+        "Count_Person_35To39Years_Male",
+        "Count_Person_35Years_Female",
+        "Count_Person_35Years_Male",
+        "Count_Person_36Years_Female",
+        "Count_Person_36Years_Male",
+        "Count_Person_37Years_Female",
+        "Count_Person_37Years_Male",
+        "Count_Person_38Years_Female",
+        "Count_Person_38Years_Male",
+        "Count_Person_39Years_Female",
+        "Count_Person_39Years_Male",
+        "Count_Person_3Years_Female",
+        "Count_Person_3Years_Male",
+        "Count_Person_40To44Years_Female",
+        "Count_Person_40To44Years_Male",
+        "Count_Person_40Years_Female",
+        "Count_Person_40Years_Male",
+        "Count_Person_41Years_Female",
+        "Count_Person_41Years_Male",
+        "Count_Person_42Years_Female",
+        "Count_Person_42Years_Male",
+        "Count_Person_43Years_Female",
+        "Count_Person_43Years_Male",
+        "Count_Person_44Years_Female",
+        "Count_Person_44Years_Male",
+        "Count_Person_45To49Years_Female",
+        "Count_Person_45To49Years_Male",
+        "Count_Person_45Years_Female",
+        "Count_Person_45Years_Male",
+        "Count_Person_46Years_Female",
+        "Count_Person_46Years_Male",
+        "Count_Person_47Years_Female",
+        "Count_Person_47Years_Male",
+        "Count_Person_48Years_Female",
+        "Count_Person_48Years_Male",
+        "Count_Person_49Years_Female",
+        "Count_Person_49Years_Male",
+        "Count_Person_4Years_Female",
+        "Count_Person_4Years_Male",
+        "Count_Person_50To54Years_Female",
+        "Count_Person_50To54Years_Male",
+        "Count_Person_50Years_Female",
+        "Count_Person_50Years_Male",
+        "Count_Person_51Years_Female",
+        "Count_Person_51Years_Male",
+        "Count_Person_52Years_Female",
+        "Count_Person_52Years_Male",
+        "Count_Person_53Years_Female",
+        "Count_Person_53Years_Male",
+        "Count_Person_54Years_Female",
+        "Count_Person_54Years_Male",
+        "Count_Person_55To59Years_Female",
+        "Count_Person_55To59Years_Male",
+        "Count_Person_55Years_Female",
+        "Count_Person_55Years_Male",
+        "Count_Person_56Years_Female",
+        "Count_Person_56Years_Male",
+        "Count_Person_57Years_Female",
+        "Count_Person_57Years_Male",
+        "Count_Person_58Years_Female",
+        "Count_Person_58Years_Male",
+        "Count_Person_59Years_Female",
+        "Count_Person_59Years_Male",
+        "Count_Person_5To9Years_Female",
+        "Count_Person_5To9Years_Male",
+        "Count_Person_5Years_Female",
+        "Count_Person_5Years_Male",
+        "Count_Person_60To64Years_Female",
+        "Count_Person_60To64Years_Male",
+        "Count_Person_60Years_Female",
+        "Count_Person_60Years_Male",
+        "Count_Person_61Years_Female",
+        "Count_Person_61Years_Male",
+        "Count_Person_62Years_Female",
+        "Count_Person_62Years_Male",
+        "Count_Person_63Years_Female",
+        "Count_Person_63Years_Male",
+        "Count_Person_64Years_Female",
+        "Count_Person_64Years_Male",
+        "Count_Person_65OrMoreYears_Female",
+        "Count_Person_65OrMoreYears_Male",
+        "Count_Person_65To69Years_Female",
+        "Count_Person_65To69Years_Male",
+        "Count_Person_65Years_Female",
+        "Count_Person_65Years_Male",
+        "Count_Person_66Years_Female",
+        "Count_Person_66Years_Male",
+        "Count_Person_67Years_Female",
+        "Count_Person_67Years_Male",
+        "Count_Person_68Years_Female",
+        "Count_Person_68Years_Male",
+        "Count_Person_69Years_Female",
+        "Count_Person_69Years_Male",
+        "Count_Person_6Years_Female",
+        "Count_Person_6Years_Male",
+        "Count_Person_70To74Years_Female",
+        "Count_Person_70To74Years_Male",
+        "Count_Person_70Years_Female",
+        "Count_Person_70Years_Male",
+        "Count_Person_71Years_Female",
+        "Count_Person_71Years_Male",
+        "Count_Person_72Years_Female",
+        "Count_Person_72Years_Male",
+        "Count_Person_73Years_Female",
+        "Count_Person_73Years_Male",
+        "Count_Person_74Years_Female",
+        "Count_Person_74Years_Male",
+        "Count_Person_75OrMoreYears_Female",
+        "Count_Person_75OrMoreYears_Male",
+        "Count_Person_75To79Years_Female",
+        "Count_Person_75To79Years_Male",
+        "Count_Person_75Years_Female",
+        "Count_Person_75Years_Male",
+        "Count_Person_76Years_Female",
+        "Count_Person_76Years_Male",
+        "Count_Person_77Years_Female",
+        "Count_Person_77Years_Male",
+        "Count_Person_78Years_Female",
+        "Count_Person_78Years_Male",
+        "Count_Person_79Years_Female",
+        "Count_Person_79Years_Male",
+        "Count_Person_7Years_Female",
+        "Count_Person_7Years_Male",
+        "Count_Person_80OrMoreYears_Female",
+        "Count_Person_80OrMoreYears_Male",
+        "Count_Person_80To84Years_Female",
+        "Count_Person_80To84Years_Male",
+        "Count_Person_80Years_Female",
+        "Count_Person_80Years_Male",
+        "Count_Person_81Years_Female",
+        "Count_Person_81Years_Male",
+        "Count_Person_82Years_Female",
+        "Count_Person_82Years_Male",
+        "Count_Person_83Years_Female",
+        "Count_Person_83Years_Male",
+        "Count_Person_84Years_Female",
+        "Count_Person_84Years_Male",
+        "Count_Person_85OrMoreYears_Female",
+        "Count_Person_85OrMoreYears_Male",
+        "Count_Person_85To89Years_Female",
+        "Count_Person_85To89Years_Male",
+        "Count_Person_85Years_Female",
+        "Count_Person_85Years_Male",
+        "Count_Person_86Years_Female",
+        "Count_Person_86Years_Male",
+        "Count_Person_87Years_Female",
+        "Count_Person_87Years_Male",
+        "Count_Person_88Years_Female",
+        "Count_Person_88Years_Male",
+        "Count_Person_89Years_Female",
+        "Count_Person_89Years_Male",
+        "Count_Person_8Years_Female",
+        "Count_Person_8Years_Male",
+        "Count_Person_90OrMoreYears_Female",
+        "Count_Person_90OrMoreYears_Male",
+        "Count_Person_90Years_Female",
+        "Count_Person_90Years_Male",
+        "Count_Person_91Years_Female",
+        "Count_Person_91Years_Male",
+        "Count_Person_92Years_Female",
+        "Count_Person_92Years_Male",
+        "Count_Person_93Years_Female",
+        "Count_Person_93Years_Male",
+        "Count_Person_94Years_Female",
+        "Count_Person_94Years_Male",
+        "Count_Person_95Years_Female",
+        "Count_Person_95Years_Male",
+        "Count_Person_96Years_Female",
+        "Count_Person_96Years_Male",
+        "Count_Person_97Years_Female",
+        "Count_Person_97Years_Male",
+        "Count_Person_98Years_Female",
+        "Count_Person_98Years_Male",
+        "Count_Person_99Years_Female",
+        "Count_Person_99Years_Male",
+        "Count_Person_9Years_Female",
+        "Count_Person_9Years_Male",
+        "Count_Person_Upto14Years_Female",
+        "Count_Person_Upto14Years_Male",
+        "Count_Person_Upto4Years_Female",
+        "Count_Person_Upto4Years_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_ArmedForcesStatus_Gender",
+          "specializedEntity": "ArmedForcesStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_CollegeOrGraduateSchoolEnrollment_Gender",
+          "specializedEntity": "CollegeOrGraduateSchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_EducationalAttainment_Gender",
+          "specializedEntity": "EducationalAttainment"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_EmploymentStatus_Gender",
+          "specializedEntity": "EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Employment_Gender",
+          "specializedEntity": "Employment"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_EnrollmentStatus_Gender",
+          "specializedEntity": "EnrollmentStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_FamilyIncome_Gender",
+          "specializedEntity": "FamilyIncome"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_HealthBehavior",
+          "specializedEntity": "HealthBehavior"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_HealthInsurance",
+          "specializedEntity": "HealthInsurance"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_HouseholdType",
+          "specializedEntity": "HouseholdType"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_MaritalStatus",
+          "specializedEntity": "MaritalStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_MedicalCondition",
+          "specializedEntity": "MedicalCondition"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_PlaceOfResidenceClassification",
+          "specializedEntity": "PlaceOfResidenceClassification"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_PovertyStatus",
+          "specializedEntity": "PovertyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_Race",
+          "specializedEntity": "Race"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_SchoolEnrollment",
+          "specializedEntity": "SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_SocialCategory",
+          "specializedEntity": "SocialCategory"
+        },
+        {
+          "id": "dc/g/Count_Person_Age_Gender_WorkExperience",
+          "specializedEntity": "WorkExperience"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age_Gender_HealthBehavior": {
+      "absoluteName": "Count Of Person By Age, Gender, HealthBehavior",
+      "childStatVars": [
+        "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female",
+        "Count_Person_15OrMoreYears_Male_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Male"
+      ]
+    },
+    "dc/g/Count_Person_Age_HealthBehavior": {
+      "absoluteName": "Count Of Person By Age, HealthBehavior",
+      "childStatVars": [
+        "Count_Person_15OrMoreYears_Smoking_AsFractionOf_Count_Person_15OrMoreYears"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_Gender_HealthBehavior",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Age_HealthOutcome": {
+      "absoluteName": "Count Of Person By Age, HealthOutcome",
+      "childStatVars": [
+        "Count_Person_20To79Years_Diabetes_AsFractionOf_Count_Person_20To79Years"
+      ]
+    },
+    "dc/g/Count_Person_EmploymentStatus": {
+      "absoluteName": "Count Of Person By EmploymentStatus",
+      "childStatVars": [
+        "Count_Person_InLaborForce"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_EmploymentStatus",
+          "specializedEntity": "Age"
+        }
+      ]
+    },
+    "dc/g/Count_Person_Gender": {
+      "absoluteName": "Count Of Person By Gender",
+      "childStatVars": [
+        "Count_Person_Female",
+        "Count_Person_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_Gender",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_HouseholdType",
+          "specializedEntity": "HouseholdType"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_Institutionalization",
+          "specializedEntity": "Institutionalization"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_LiteracyStatus",
+          "specializedEntity": "LiteracyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_PlaceOfResidenceClassification",
+          "specializedEntity": "PlaceOfResidenceClassification"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_PovertyStatus",
+          "specializedEntity": "PovertyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_Race",
+          "specializedEntity": "Race"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_SocialCategory",
+          "specializedEntity": "SocialCategory"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_WorkerStatus",
+          "specializedEntity": "WorkerStatus"
+        }
+      ]
+    },
+    "dc/g/Count_Person_IsInternetUser": {
+      "absoluteName": "Count Of Person By IsInternetUser",
+      "childStatVars": [
+        "Count_Person_IsInternetUser_PerCapita"
+      ]
+    },
+    "dc/g/Count_Person_PlaceOfResidenceClassification": {
+      "absoluteName": "Count Of Person By PlaceOfResidenceClassification",
+      "childStatVars": [
+        "Count_Person_Rural",
+        "Count_Person_Urban"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person_Age_PlaceOfResidenceClassification",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_Person_Gender_PlaceOfResidenceClassification",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Count_Person_HouseholdType_PlaceOfResidenceClassification",
+          "specializedEntity": "HouseholdType"
+        },
+        {
+          "id": "dc/g/Count_Person_LiteracyStatus_PlaceOfResidenceClassification",
+          "specializedEntity": "LiteracyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_PlaceOfResidenceClassification_PovertyStatus",
+          "specializedEntity": "PovertyStatus"
+        },
+        {
+          "id": "dc/g/Count_Person_PlaceOfResidenceClassification_SocialCategory",
+          "specializedEntity": "SocialCategory"
+        },
+        {
+          "id": "dc/g/Count_Person_PlaceOfResidenceClassification_WorkerStatus",
+          "specializedEntity": "WorkerStatus"
+        }
+      ]
+    },
+    "dc/g/Count_Person_ResidenceCharacteristic": {
+      "absoluteName": "Count Of Person By ResidenceCharacteristic",
+      "childStatVars": [
+        "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person"
+      ]
+    },
+    "dc/g/Count_Product_ProductType": {
+      "absoluteName": "Count Of Product By ProductType",
+      "childStatVars": [
+        "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person"
+      ]
+    },
+    "dc/g/Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy": {
+      "absoluteName": "Covid19ContainmentAndHealthIndex Of Legislation By Category, LegislationPassedBy",
+      "childStatVars": [
+        "dc/epjwwz8pd436f"
+      ]
+    },
+    "dc/g/Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy": {
+      "absoluteName": "Covid19EconomicSupportIndex Of Legislation By Category, LegislationPassedBy",
+      "childStatVars": [
+        "dc/fj0rg1pn1y9sc"
+      ]
+    },
+    "dc/g/Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory": {
+      "absoluteName": "Covid19MobilityTrend Of PlaceVisitEvent By PlaceCategory",
+      "childStatVars": [
+        "dc/0ny9m7k0lzmn5",
+        "dc/7fmnve6yyc508",
+        "dc/n9rqwq8d3lcx3",
+        "dc/p49ghylpwz93f",
+        "dc/qdbhwwr88yhl7",
+        "dc/tbbjnf9bk96yh"
+      ]
+    },
+    "dc/g/Covid19ResponseIndex_Legislation_Category_LegislationPassedBy": {
+      "absoluteName": "Covid19ResponseIndex Of Legislation By Category, LegislationPassedBy",
+      "childStatVars": [
+        "dc/qjr6rytbrb8cc"
+      ]
+    },
+    "dc/g/Covid19StringencyIndex_Legislation_Category_LegislationPassedBy": {
+      "absoluteName": "Covid19StringencyIndex Of Legislation By Category, LegislationPassedBy",
+      "childStatVars": [
+        "dc/8b9tx5t0pkvvd"
+      ]
+    },
+    "dc/g/Crime": {
+      "absoluteName": "Crime",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_CriminalActivities_CrimeType",
+          "specializedEntity": "Count_CriminalActivities_CrimeType"
+        }
+      ]
+    },
+    "dc/g/CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus": {
+      "absoluteName": "CumulativeCount Of MedicalConditionIncident By IncidentType, MedicalStatus",
+      "childStatVars": [
+        "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
+        "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
+      ]
+    },
+    "dc/g/CumulativeCount_MedicalTest_MedicalCondition": {
+      "absoluteName": "CumulativeCount Of MedicalTest By MedicalCondition",
+      "childStatVars": [
+        "CumulativeCount_MedicalTest_ConditionCOVID_19"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition_MedicalTestingMethod",
+          "specializedEntity": "MedicalTestingMethod"
+        },
+        {
+          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition_TestResult",
+          "specializedEntity": "TestResult"
+        }
+      ]
+    },
+    "dc/g/CumulativeCount_MedicalTest_MedicalCondition_MedicalTestingMethod": {
+      "absoluteName": "CumulativeCount Of MedicalTest By MedicalCondition, MedicalTestingMethod",
+      "childStatVars": [
+        "CumulativeCount_MedicalTest_COVID_19_PCR"
+      ]
+    },
+    "dc/g/CumulativeCount_Vaccine_MedicalCondition_VaccineStatus": {
+      "absoluteName": "CumulativeCount Of Vaccine By MedicalCondition, VaccineStatus",
+      "childStatVars": [
+        "CumulativeCount_Vaccine_COVID_19_Administered"
+      ]
+    },
+    "dc/g/Demographics": {
+      "absoluteName": "Demographics",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/AcceptanceRate_Person_EnrollmentLevel",
+          "specializedEntity": "AcceptanceRate_Person_EnrollmentLevel"
+        },
+        {
+          "id": "dc/g/Age_Person",
+          "specializedEntity": "Age_Person"
+        },
+        {
+          "id": "dc/g/CommuteTime_Person_Age_Employment_EmploymentStatus_PlaceOfWork",
+          "specializedEntity": "CommuteTime_Person_Age_Employment_EmploymentStatus_PlaceOfWork"
+        },
+        {
+          "id": "dc/g/Count_Person",
+          "specializedEntity": "Count_Person"
+        },
+        {
+          "id": "dc/g/CumulativeCount_Person_HealthPrevention",
+          "specializedEntity": "CumulativeCount_Person_HealthPrevention"
+        },
+        {
+          "id": "dc/g/Enrollment_Person_EnrollmentLevel",
+          "specializedEntity": "Enrollment_Person_EnrollmentLevel"
+        },
+        {
+          "id": "dc/g/FertilityRate_Person_Gender",
+          "specializedEntity": "FertilityRate_Person_Gender"
+        },
+        {
+          "id": "dc/g/GenderIncomeInequality_Person_Age_IncomeStatus",
+          "specializedEntity": "GenderIncomeInequality_Person_Age_IncomeStatus"
+        },
+        {
+          "id": "dc/g/GraduationRate_Person_EnrollmentLevel",
+          "specializedEntity": "GraduationRate_Person_EnrollmentLevel"
+        },
+        {
+          "id": "dc/g/Income_Person_Age_IncomeStatus",
+          "specializedEntity": "Income_Person_Age_IncomeStatus"
+        },
+        {
+          "id": "dc/g/IncrementalCount_Person",
+          "specializedEntity": "IncrementalCount_Person"
+        },
+        {
+          "id": "dc/g/InsuredUnemploymentRate_Person_UnemploymentInsuranceStatus",
+          "specializedEntity": "InsuredUnemploymentRate_Person_UnemploymentInsuranceStatus"
+        },
+        {
+          "id": "dc/g/LifeExpectancy_Person",
+          "specializedEntity": "LifeExpectancy_Person"
+        },
+        {
+          "id": "dc/g/MortalityRate_Person_Age",
+          "specializedEntity": "MortalityRate_Person_Age"
+        },
+        {
+          "id": "dc/g/NetPrice_Person_EnrollmentLevel",
+          "specializedEntity": "NetPrice_Person_EnrollmentLevel"
+        },
+        {
+          "id": "dc/g/Percent_Person_Age_HealthBehavior",
+          "specializedEntity": "Percent_Person_Age_HealthBehavior"
+        },
+        {
+          "id": "dc/g/Percent_Person_Age_HealthInsurance",
+          "specializedEntity": "Percent_Person_Age_HealthInsurance"
+        },
+        {
+          "id": "dc/g/Percent_Person_Age_HealthOutcome",
+          "specializedEntity": "Percent_Person_Age_HealthOutcome"
+        },
+        {
+          "id": "dc/g/Percent_Person_Age_HealthPrevention",
+          "specializedEntity": "Percent_Person_Age_HealthPrevention"
+        },
+        {
+          "id": "dc/g/Percentage_Person_EducationStatus_Gender",
+          "specializedEntity": "Percentage_Person_EducationStatus_Gender"
+        },
+        {
+          "id": "dc/g/Percentage_Person_EducationStatus_Race",
+          "specializedEntity": "Percentage_Person_EducationStatus_Race"
+        },
+        {
+          "id": "dc/g/Percentage_Person_EmploymentStatus_Race",
+          "specializedEntity": "Percentage_Person_EmploymentStatus_Race"
+        },
+        {
+          "id": "dc/g/Percentage_Person_Gender_PovertyStatus",
+          "specializedEntity": "Percentage_Person_Gender_PovertyStatus"
+        },
+        {
+          "id": "dc/g/PovertyLine_Person_PlaceOfResidenceClassification",
+          "specializedEntity": "PovertyLine_Person_PlaceOfResidenceClassification"
+        },
+        {
+          "id": "dc/g/Tuition_Person_EnrollmentLevel_StudentType",
+          "specializedEntity": "Tuition_Person_EnrollmentLevel_StudentType"
+        },
+        {
+          "id": "dc/g/UnemploymentRate_Person",
+          "specializedEntity": "UnemploymentRate_Person"
+        },
+        {
+          "id": "dc/g/WagesMonthly_Person",
+          "specializedEntity": "WagesMonthly_Person"
+        }
+      ]
+    },
+    "dc/g/Environment": {
+      "absoluteName": "Environment",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_Consumption_ConsumedThing",
+          "specializedEntity": "Amount_Consumption_ConsumedThing"
+        },
+        {
+          "id": "dc/g/Amount_Consumption_ProducedThing",
+          "specializedEntity": "Amount_Consumption_ProducedThing"
+        },
+        {
+          "id": "dc/g/Amount_Debt_Debtor",
+          "specializedEntity": "Amount_Debt_Debtor"
+        },
+        {
+          "id": "dc/g/Amount_Emissions_EmittedThing",
+          "specializedEntity": "Amount_Emissions_EmittedThing"
+        },
+        {
+          "id": "dc/g/Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType",
+          "specializedEntity": "Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType"
+        },
+        {
+          "id": "dc/g/Amount_Production_ProducedThing",
+          "specializedEntity": "Amount_Production_ProducedThing"
+        },
+        {
+          "id": "dc/g/Amount_Remittance_TransferType",
+          "specializedEntity": "Amount_Remittance_TransferType"
+        },
+        {
+          "id": "dc/g/Amount_Stock",
+          "specializedEntity": "Amount_Stock"
+        },
+        {
+          "id": "dc/g/CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage",
+          "specializedEntity": "CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage"
+        },
+        {
+          "id": "dc/g/CohortScaleAchievement_Student",
+          "specializedEntity": "CohortScaleAchievement_Student"
+        },
+        {
+          "id": "dc/g/ConsumerPriceIndex_ConsumerGoodsAndServices_Consumer",
+          "specializedEntity": "ConsumerPriceIndex_ConsumerGoodsAndServices_Consumer"
+        },
+        {
+          "id": "dc/g/Count_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment",
+          "specializedEntity": "Count_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Count_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment",
+          "specializedEntity": "Count_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Count_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment",
+          "specializedEntity": "Count_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Count_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment",
+          "specializedEntity": "Count_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment"
+        },
+        {
+          "id": "dc/g/Count_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus",
+          "specializedEntity": "Count_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Count_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject",
+          "specializedEntity": "Count_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject"
+        },
+        {
+          "id": "dc/g/Count_AstronomicalLowTideEvent",
+          "specializedEntity": "Count_AstronomicalLowTideEvent"
+        },
+        {
+          "id": "dc/g/Count_AvalancheEvent",
+          "specializedEntity": "Count_AvalancheEvent"
+        },
+        {
+          "id": "dc/g/Count_BirthEvent",
+          "specializedEntity": "Count_BirthEvent"
+        },
+        {
+          "id": "dc/g/Count_BlizzardEvent",
+          "specializedEntity": "Count_BlizzardEvent"
+        },
+        {
+          "id": "dc/g/Count_CoastalFloodEvent",
+          "specializedEntity": "Count_CoastalFloodEvent"
+        },
+        {
+          "id": "dc/g/Count_ColdWindChillEvent",
+          "specializedEntity": "Count_ColdWindChillEvent"
+        },
+        {
+          "id": "dc/g/Count_CycloneEvent",
+          "specializedEntity": "Count_CycloneEvent"
+        },
+        {
+          "id": "dc/g/Count_DebrisFlowEvent",
+          "specializedEntity": "Count_DebrisFlowEvent"
+        },
+        {
+          "id": "dc/g/Count_DenseFogEvent",
+          "specializedEntity": "Count_DenseFogEvent"
+        },
+        {
+          "id": "dc/g/Count_DenseSmokeEvent",
+          "specializedEntity": "Count_DenseSmokeEvent"
+        },
+        {
+          "id": "dc/g/Count_DroughtEvent",
+          "specializedEntity": "Count_DroughtEvent"
+        },
+        {
+          "id": "dc/g/Count_DustDevilEvent",
+          "specializedEntity": "Count_DustDevilEvent"
+        },
+        {
+          "id": "dc/g/Count_DustStormEvent",
+          "specializedEntity": "Count_DustStormEvent"
+        },
+        {
+          "id": "dc/g/Count_EarthquakeEvent",
+          "specializedEntity": "Count_EarthquakeEvent"
+        },
+        {
+          "id": "dc/g/Count_ExcessiveHeatEvent",
+          "specializedEntity": "Count_ExcessiveHeatEvent"
+        },
+        {
+          "id": "dc/g/Count_ExtremeColdWindChillEvent",
+          "specializedEntity": "Count_ExtremeColdWindChillEvent"
+        },
+        {
+          "id": "dc/g/Count_Faculty_FacultyType",
+          "specializedEntity": "Count_Faculty_FacultyType"
+        },
+        {
+          "id": "dc/g/Count_FlashFloodEvent",
+          "specializedEntity": "Count_FlashFloodEvent"
+        },
+        {
+          "id": "dc/g/Count_FloodEvent",
+          "specializedEntity": "Count_FloodEvent"
+        },
+        {
+          "id": "dc/g/Count_FreezingFogEvent",
+          "specializedEntity": "Count_FreezingFogEvent"
+        },
+        {
+          "id": "dc/g/Count_FrostFreezeEvent",
+          "specializedEntity": "Count_FrostFreezeEvent"
+        },
+        {
+          "id": "dc/g/Count_FunnelCloudEvent",
+          "specializedEntity": "Count_FunnelCloudEvent"
+        },
+        {
+          "id": "dc/g/Count_HailEvent",
+          "specializedEntity": "Count_HailEvent"
+        },
+        {
+          "id": "dc/g/Count_HeatEvent",
+          "specializedEntity": "Count_HeatEvent"
+        },
+        {
+          "id": "dc/g/Count_HeavyRainEvent",
+          "specializedEntity": "Count_HeavyRainEvent"
+        },
+        {
+          "id": "dc/g/Count_HeavySnowEvent",
+          "specializedEntity": "Count_HeavySnowEvent"
+        },
+        {
+          "id": "dc/g/Count_HighSurfEvent",
+          "specializedEntity": "Count_HighSurfEvent"
+        },
+        {
+          "id": "dc/g/Count_HighWindEvent",
+          "specializedEntity": "Count_HighWindEvent"
+        },
+        {
+          "id": "dc/g/Count_HurricaneEvent",
+          "specializedEntity": "Count_HurricaneEvent"
+        },
+        {
+          "id": "dc/g/Count_HurricaneTyphoonEvent",
+          "specializedEntity": "Count_HurricaneTyphoonEvent"
+        },
+        {
+          "id": "dc/g/Count_IceStormEvent",
+          "specializedEntity": "Count_IceStormEvent"
+        },
+        {
+          "id": "dc/g/Count_IncarcerationEvent_EventType_Institutionalization_MaxPrisonSentence_PrisonSentenceStatus",
+          "specializedEntity": "Count_IncarcerationEvent_EventType_Institutionalization_MaxPrisonSentence_PrisonSentenceStatus"
+        },
+        {
+          "id": "dc/g/Count_JobPosting_Naics",
+          "specializedEntity": "Count_JobPosting_Naics"
+        },
+        {
+          "id": "dc/g/Count_LakeEffectSnowEvent",
+          "specializedEntity": "Count_LakeEffectSnowEvent"
+        },
+        {
+          "id": "dc/g/Count_LakeshoreFloodEvent",
+          "specializedEntity": "Count_LakeshoreFloodEvent"
+        },
+        {
+          "id": "dc/g/Count_LandslideEvent",
+          "specializedEntity": "Count_LandslideEvent"
+        },
+        {
+          "id": "dc/g/Count_LightningEvent",
+          "specializedEntity": "Count_LightningEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineDenseFogEvent",
+          "specializedEntity": "Count_MarineDenseFogEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineHailEvent",
+          "specializedEntity": "Count_MarineHailEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineHighWindEvent",
+          "specializedEntity": "Count_MarineHighWindEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineHurricaneTyphoonEvent",
+          "specializedEntity": "Count_MarineHurricaneTyphoonEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineLightningEvent",
+          "specializedEntity": "Count_MarineLightningEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineStrongWindEvent",
+          "specializedEntity": "Count_MarineStrongWindEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineThunderstormWindEvent",
+          "specializedEntity": "Count_MarineThunderstormWindEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineTropicalDepressionEvent",
+          "specializedEntity": "Count_MarineTropicalDepressionEvent"
+        },
+        {
+          "id": "dc/g/Count_MarineTropicalStormEvent",
+          "specializedEntity": "Count_MarineTropicalStormEvent"
+        },
+        {
+          "id": "dc/g/Count_MedicalProcedure_MedicalCode_PatientRace",
+          "specializedEntity": "Count_MedicalProcedure_MedicalCode_PatientRace"
+        },
+        {
+          "id": "dc/g/Count_MedicalProcedure_MedicalEventEnum_PatientRace",
+          "specializedEntity": "Count_MedicalProcedure_MedicalEventEnum_PatientRace"
+        },
+        {
+          "id": "dc/g/Count_MedicalTest_MedicalCondition_TestResult",
+          "specializedEntity": "Count_MedicalTest_MedicalCondition_TestResult"
+        },
+        {
+          "id": "dc/g/Count_MedicareEnrollee",
+          "specializedEntity": "Count_MedicareEnrollee"
+        },
+        {
+          "id": "dc/g/Count_Product_ProductType",
+          "specializedEntity": "Count_Product_ProductType"
+        },
+        {
+          "id": "dc/g/Count_RipCurrentEvent",
+          "specializedEntity": "Count_RipCurrentEvent"
+        },
+        {
+          "id": "dc/g/Count_School",
+          "specializedEntity": "Count_School"
+        },
+        {
+          "id": "dc/g/Count_SeicheEvent",
+          "specializedEntity": "Count_SeicheEvent"
+        },
+        {
+          "id": "dc/g/Count_SleetEvent",
+          "specializedEntity": "Count_SleetEvent"
+        },
+        {
+          "id": "dc/g/Count_SneakerwaveEvent",
+          "specializedEntity": "Count_SneakerwaveEvent"
+        },
+        {
+          "id": "dc/g/Count_StormSurgeTideEvent",
+          "specializedEntity": "Count_StormSurgeTideEvent"
+        },
+        {
+          "id": "dc/g/Count_StrongWindEvent",
+          "specializedEntity": "Count_StrongWindEvent"
+        },
+        {
+          "id": "dc/g/Count_Student",
+          "specializedEntity": "Count_Student"
+        },
+        {
+          "id": "dc/g/Count_Teacher",
+          "specializedEntity": "Count_Teacher"
+        },
+        {
+          "id": "dc/g/Count_ThunderstormWindEvent",
+          "specializedEntity": "Count_ThunderstormWindEvent"
+        },
+        {
+          "id": "dc/g/Count_TornadoEvent",
+          "specializedEntity": "Count_TornadoEvent"
+        },
+        {
+          "id": "dc/g/Count_TropicalDepressionEvent",
+          "specializedEntity": "Count_TropicalDepressionEvent"
+        },
+        {
+          "id": "dc/g/Count_TropicalStormEvent",
+          "specializedEntity": "Count_TropicalStormEvent"
+        },
+        {
+          "id": "dc/g/Count_TsunamiEvent",
+          "specializedEntity": "Count_TsunamiEvent"
+        },
+        {
+          "id": "dc/g/Count_USCEstablishment",
+          "specializedEntity": "Count_USCEstablishment"
+        },
+        {
+          "id": "dc/g/Count_USCWorker",
+          "specializedEntity": "Count_USCWorker"
+        },
+        {
+          "id": "dc/g/Count_UnemploymentInsuranceClaim_BenefitProgram",
+          "specializedEntity": "Count_UnemploymentInsuranceClaim_BenefitProgram"
+        },
+        {
+          "id": "dc/g/Count_VolcanicAshfallEvent",
+          "specializedEntity": "Count_VolcanicAshfallEvent"
+        },
+        {
+          "id": "dc/g/Count_WaterspoutEvent",
+          "specializedEntity": "Count_WaterspoutEvent"
+        },
+        {
+          "id": "dc/g/Count_WildfireEvent",
+          "specializedEntity": "Count_WildfireEvent"
+        },
+        {
+          "id": "dc/g/Count_WildlandFireEvent",
+          "specializedEntity": "Count_WildlandFireEvent"
+        },
+        {
+          "id": "dc/g/Count_WinterStormEvent",
+          "specializedEntity": "Count_WinterStormEvent"
+        },
+        {
+          "id": "dc/g/Count_WinterWeatherEvent",
+          "specializedEntity": "Count_WinterWeatherEvent"
+        },
+        {
+          "id": "dc/g/Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory",
+          "specializedEntity": "Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory"
+        },
+        {
+          "id": "dc/g/Covid19ResponseIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19ResponseIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/Covid19StringencyIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19StringencyIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition",
+          "specializedEntity": "CumulativeCount_MedicalTest_MedicalCondition"
+        },
+        {
+          "id": "dc/g/CumulativeCount_Vaccine_MedicalCondition_VaccineStatus",
+          "specializedEntity": "CumulativeCount_Vaccine_MedicalCondition_VaccineStatus"
+        },
+        {
+          "id": "dc/g/GradeCohortScaleAchievement_Student",
+          "specializedEntity": "GradeCohortScaleAchievement_Student"
+        },
+        {
+          "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition",
+          "specializedEntity": "IncrementalCount_MedicalTest_MedicalCondition"
+        },
+        {
+          "id": "dc/g/IncrementalCount_Vaccine_MedicalCondition_VaccineStatus",
+          "specializedEntity": "IncrementalCount_Vaccine_MedicalCondition_VaccineStatus"
+        },
+        {
+          "id": "dc/g/InterestRate_TreasuryBill_Maturity",
+          "specializedEntity": "InterestRate_TreasuryBill_Maturity"
+        },
+        {
+          "id": "dc/g/InterestRate_TreasuryBond_Maturity",
+          "specializedEntity": "InterestRate_TreasuryBond_Maturity"
+        },
+        {
+          "id": "dc/g/InterestRate_TreasuryNote_Maturity",
+          "specializedEntity": "InterestRate_TreasuryNote_Maturity"
+        },
+        {
+          "id": "dc/g/MothersAge_BirthEvent",
+          "specializedEntity": "MothersAge_BirthEvent"
+        },
+        {
+          "id": "dc/g/NaepTestScoreScaleAchievement_Student_SchoolGradeLevel_SchoolSubject",
+          "specializedEntity": "NaepTestScoreScaleAchievement_Student_SchoolGradeLevel_SchoolSubject"
+        },
+        {
+          "id": "dc/g/Percent_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment",
+          "specializedEntity": "Percent_ACSEDChild_Age_LanguageSpokenAtHome_SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Percent_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment",
+          "specializedEntity": "Percent_ACSEDChild_ArmedForcesStatus_DisabilityStatus_Institutionalization_SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Percent_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment",
+          "specializedEntity": "Percent_ACSEDChild_ArmedForcesStatus_HealthInsurance_Institutionalization_SchoolEnrollment"
+        },
+        {
+          "id": "dc/g/Percent_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment",
+          "specializedEntity": "Percent_ACSEDParent_Age_ChildSchoolEnrollment_EducationalAttainment"
+        },
+        {
+          "id": "dc/g/Percent_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus",
+          "specializedEntity": "Percent_ACSEDParent_Age_ChildSchoolEnrollment_EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Percentage_Student_LunchEligiblity_SchoolGradeLevel",
+          "specializedEntity": "Percentage_Student_LunchEligiblity_SchoolGradeLevel"
+        },
+        {
+          "id": "dc/g/Percentage_Student_Race_SchoolGradeLevel",
+          "specializedEntity": "Percentage_Student_Race_SchoolGradeLevel"
+        },
+        {
+          "id": "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType",
+          "specializedEntity": "PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType"
+        },
+        {
+          "id": "dc/g/Price_MedicareEnrollee",
+          "specializedEntity": "Price_MedicareEnrollee"
+        },
+        {
+          "id": "dc/g/ReceiptsBillingsOrSales_USCEstablishment_Naics_PayrollStatus",
+          "specializedEntity": "ReceiptsBillingsOrSales_USCEstablishment_Naics_PayrollStatus"
+        },
+        {
+          "id": "dc/g/ReceiptsOrRevenue_USCEstablishment_Naics_PayrollStatus",
+          "specializedEntity": "ReceiptsOrRevenue_USCEstablishment_Naics_PayrollStatus"
+        },
+        {
+          "id": "dc/g/Receipts_USCEstablishment_Naics_PayrollStatus",
+          "specializedEntity": "Receipts_USCEstablishment_Naics_PayrollStatus"
+        },
+        {
+          "id": "dc/g/RetailDrugDistribution_DrugDistribution_DrugPrescribed",
+          "specializedEntity": "RetailDrugDistribution_DrugDistribution_DrugPrescribed"
+        },
+        {
+          "id": "dc/g/Revenue_USCEstablishment_Naics_PayrollStatus",
+          "specializedEntity": "Revenue_USCEstablishment_Naics_PayrollStatus"
+        },
+        {
+          "id": "dc/g/Sales_USCEstablishment_Naics_PayrollStatus",
+          "specializedEntity": "Sales_USCEstablishment_Naics_PayrollStatus"
+        },
+        {
+          "id": "dc/g/ScaledScore_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject",
+          "specializedEntity": "ScaledScore_AcademicAssessmentEvent_AssessmentType_SchoolGradeLevel_SchoolSubject"
+        },
+        {
+          "id": "dc/g/ShipmentsOrReceipts_USCEstablishment_Naics_PayrollStatus",
+          "specializedEntity": "ShipmentsOrReceipts_USCEstablishment_Naics_PayrollStatus"
+        },
+        {
+          "id": "dc/g/StateReferencedAchievement_Student_SchoolGradeLevel_SchoolSubject",
+          "specializedEntity": "StateReferencedAchievement_Student_SchoolGradeLevel_SchoolSubject"
+        },
+        {
+          "id": "dc/g/StudentTeacherRatio_Student",
+          "specializedEntity": "StudentTeacherRatio_Student"
+        },
+        {
+          "id": "dc/g/WagesAnnual_USCEstablishment",
+          "specializedEntity": "WagesAnnual_USCEstablishment"
+        }
+      ]
+    },
+    "dc/g/FertilityRate_Person_Gender": {
+      "absoluteName": "FertilityRate Of Person By Gender",
+      "childStatVars": [
+        "FertilityRate_Person_Female"
+      ]
+    },
+    "dc/g/GiniIndex_EconomicActivity": {
+      "absoluteName": "GiniIndex Of EconomicActivity",
+      "childStatVars": [
+        "GiniIndex_EconomicActivity"
+      ]
+    },
+    "dc/g/Health": {
+      "absoluteName": "Health",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource",
+          "specializedEntity": "Amount_EconomicActivity_ActivitySource"
+        },
+        {
+          "id": "dc/g/Count_MedicalConditionIncident_IncidentType_MedicalStatus",
+          "specializedEntity": "Count_MedicalConditionIncident_IncidentType_MedicalStatus"
+        },
+        {
+          "id": "dc/g/Count_MortalityEvent",
+          "specializedEntity": "Count_MortalityEvent"
+        },
+        {
+          "id": "dc/g/CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus",
+          "specializedEntity": "CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus"
+        },
+        {
+          "id": "dc/g/DaysSinceLastReportedCase_MedicalConditionIncident_IncidentType_MedicalStatus",
+          "specializedEntity": "DaysSinceLastReportedCase_MedicalConditionIncident_IncidentType_MedicalStatus"
+        },
+        {
+          "id": "dc/g/GiniIndex_EconomicActivity",
+          "specializedEntity": "GiniIndex_EconomicActivity"
+        },
+        {
+          "id": "dc/g/IncrementalCount_MedicalConditionIncident_IncidentType_MedicalStatus",
+          "specializedEntity": "IncrementalCount_MedicalConditionIncident_IncidentType_MedicalStatus"
+        }
+      ]
+    },
+    "dc/g/IncrementalCount_MedicalConditionIncident_IncidentType_MedicalStatus": {
+      "absoluteName": "IncrementalCount Of MedicalConditionIncident By IncidentType, MedicalStatus",
+      "childStatVars": [
+        "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
+        "IncrementalCount_MedicalConditionIncident_COVID_19_PatientDeceased"
+      ]
+    },
+    "dc/g/IncrementalCount_MedicalTest_MedicalCondition": {
+      "absoluteName": "IncrementalCount Of MedicalTest By MedicalCondition",
+      "childStatVars": [
+        "IncrementalCount_MedicalTest_ConditionCOVID_19"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition_MedicalTestingMethod",
+          "specializedEntity": "MedicalTestingMethod"
+        }
+      ]
+    },
+    "dc/g/IncrementalCount_MedicalTest_MedicalCondition_MedicalTestingMethod": {
+      "absoluteName": "IncrementalCount Of MedicalTest By MedicalCondition, MedicalTestingMethod",
+      "childStatVars": [
+        "IncrementalCount_MedicalTest_COVID_19_PCR"
+      ]
+    },
+    "dc/g/IncrementalCount_Vaccine_MedicalCondition_VaccineStatus": {
+      "absoluteName": "IncrementalCount Of Vaccine By MedicalCondition, VaccineStatus",
+      "childStatVars": [
+        "IncrementalCount_Vaccine_COVID_19_Administered"
+      ]
+    },
+    "dc/g/LifeExpectancy_Person": {
+      "absoluteName": "LifeExpectancy Of Person",
+      "childStatVars": [
+        "LifeExpectancy_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/LifeExpectancy_Person_Age",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/LifeExpectancy_Person_Gender",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/LifeExpectancy_Person_Age": {
+      "absoluteName": "LifeExpectancy Of Person By Age",
+      "childStatVars": [
+        "LifeExpectancy_Person_10Years",
+        "LifeExpectancy_Person_11Years",
+        "LifeExpectancy_Person_12Years",
+        "LifeExpectancy_Person_13Years",
+        "LifeExpectancy_Person_14Years",
+        "LifeExpectancy_Person_15Years",
+        "LifeExpectancy_Person_16Years",
+        "LifeExpectancy_Person_17Years",
+        "LifeExpectancy_Person_18Years",
+        "LifeExpectancy_Person_19Years",
+        "LifeExpectancy_Person_1Years",
+        "LifeExpectancy_Person_20Years",
+        "LifeExpectancy_Person_21Years",
+        "LifeExpectancy_Person_22Years",
+        "LifeExpectancy_Person_23Years",
+        "LifeExpectancy_Person_24Years",
+        "LifeExpectancy_Person_25Years",
+        "LifeExpectancy_Person_26Years",
+        "LifeExpectancy_Person_27Years",
+        "LifeExpectancy_Person_28Years",
+        "LifeExpectancy_Person_29Years",
+        "LifeExpectancy_Person_2Years",
+        "LifeExpectancy_Person_30Years",
+        "LifeExpectancy_Person_31Years",
+        "LifeExpectancy_Person_32Years",
+        "LifeExpectancy_Person_33Years",
+        "LifeExpectancy_Person_34Years",
+        "LifeExpectancy_Person_35Years",
+        "LifeExpectancy_Person_36Years",
+        "LifeExpectancy_Person_37Years",
+        "LifeExpectancy_Person_38Years",
+        "LifeExpectancy_Person_39Years",
+        "LifeExpectancy_Person_3Years",
+        "LifeExpectancy_Person_40Years",
+        "LifeExpectancy_Person_41Years",
+        "LifeExpectancy_Person_42Years",
+        "LifeExpectancy_Person_43Years",
+        "LifeExpectancy_Person_44Years",
+        "LifeExpectancy_Person_45Years",
+        "LifeExpectancy_Person_46Years",
+        "LifeExpectancy_Person_47Years",
+        "LifeExpectancy_Person_48Years",
+        "LifeExpectancy_Person_49Years",
+        "LifeExpectancy_Person_4Years",
+        "LifeExpectancy_Person_50Years",
+        "LifeExpectancy_Person_51Years",
+        "LifeExpectancy_Person_52Years",
+        "LifeExpectancy_Person_53Years",
+        "LifeExpectancy_Person_54Years",
+        "LifeExpectancy_Person_55Years",
+        "LifeExpectancy_Person_56Years",
+        "LifeExpectancy_Person_57Years",
+        "LifeExpectancy_Person_58Years",
+        "LifeExpectancy_Person_59Years",
+        "LifeExpectancy_Person_5Years",
+        "LifeExpectancy_Person_60Years",
+        "LifeExpectancy_Person_61Years",
+        "LifeExpectancy_Person_62Years",
+        "LifeExpectancy_Person_63Years",
+        "LifeExpectancy_Person_64Years",
+        "LifeExpectancy_Person_65Years",
+        "LifeExpectancy_Person_66Years",
+        "LifeExpectancy_Person_67Years",
+        "LifeExpectancy_Person_68Years",
+        "LifeExpectancy_Person_69Years",
+        "LifeExpectancy_Person_6Years",
+        "LifeExpectancy_Person_70Years",
+        "LifeExpectancy_Person_71Years",
+        "LifeExpectancy_Person_72Years",
+        "LifeExpectancy_Person_73Years",
+        "LifeExpectancy_Person_74Years",
+        "LifeExpectancy_Person_75Years",
+        "LifeExpectancy_Person_76Years",
+        "LifeExpectancy_Person_77Years",
+        "LifeExpectancy_Person_78Years",
+        "LifeExpectancy_Person_79Years",
+        "LifeExpectancy_Person_7Years",
+        "LifeExpectancy_Person_80Years",
+        "LifeExpectancy_Person_81Years",
+        "LifeExpectancy_Person_82Years",
+        "LifeExpectancy_Person_83Years",
+        "LifeExpectancy_Person_84Years",
+        "LifeExpectancy_Person_85OrMoreYears",
+        "LifeExpectancy_Person_8Years",
+        "LifeExpectancy_Person_9Years",
+        "LifeExpectancy_Person_Upto1Years"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/LifeExpectancy_Person_Age_Gender",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/LifeExpectancy_Person_Age_Gender": {
+      "absoluteName": "LifeExpectancy Of Person By Age, Gender",
+      "childStatVars": [
+        "LifeExpectancy_Person_10Years_Female",
+        "LifeExpectancy_Person_10Years_Male",
+        "LifeExpectancy_Person_11Years_Female",
+        "LifeExpectancy_Person_11Years_Male",
+        "LifeExpectancy_Person_12Years_Female",
+        "LifeExpectancy_Person_12Years_Male",
+        "LifeExpectancy_Person_13Years_Female",
+        "LifeExpectancy_Person_13Years_Male",
+        "LifeExpectancy_Person_14Years_Female",
+        "LifeExpectancy_Person_14Years_Male",
+        "LifeExpectancy_Person_15Years_Female",
+        "LifeExpectancy_Person_15Years_Male",
+        "LifeExpectancy_Person_16Years_Female",
+        "LifeExpectancy_Person_16Years_Male",
+        "LifeExpectancy_Person_17Years_Female",
+        "LifeExpectancy_Person_17Years_Male",
+        "LifeExpectancy_Person_18Years_Female",
+        "LifeExpectancy_Person_18Years_Male",
+        "LifeExpectancy_Person_19Years_Female",
+        "LifeExpectancy_Person_19Years_Male",
+        "LifeExpectancy_Person_1Years_Female",
+        "LifeExpectancy_Person_1Years_Male",
+        "LifeExpectancy_Person_20Years_Female",
+        "LifeExpectancy_Person_20Years_Male",
+        "LifeExpectancy_Person_21Years_Female",
+        "LifeExpectancy_Person_21Years_Male",
+        "LifeExpectancy_Person_22Years_Female",
+        "LifeExpectancy_Person_22Years_Male",
+        "LifeExpectancy_Person_23Years_Female",
+        "LifeExpectancy_Person_23Years_Male",
+        "LifeExpectancy_Person_24Years_Female",
+        "LifeExpectancy_Person_24Years_Male",
+        "LifeExpectancy_Person_25Years_Female",
+        "LifeExpectancy_Person_25Years_Male",
+        "LifeExpectancy_Person_26Years_Female",
+        "LifeExpectancy_Person_26Years_Male",
+        "LifeExpectancy_Person_27Years_Female",
+        "LifeExpectancy_Person_27Years_Male",
+        "LifeExpectancy_Person_28Years_Female",
+        "LifeExpectancy_Person_28Years_Male",
+        "LifeExpectancy_Person_29Years_Female",
+        "LifeExpectancy_Person_29Years_Male",
+        "LifeExpectancy_Person_2Years_Female",
+        "LifeExpectancy_Person_2Years_Male",
+        "LifeExpectancy_Person_30Years_Female",
+        "LifeExpectancy_Person_30Years_Male",
+        "LifeExpectancy_Person_31Years_Female",
+        "LifeExpectancy_Person_31Years_Male",
+        "LifeExpectancy_Person_32Years_Female",
+        "LifeExpectancy_Person_32Years_Male",
+        "LifeExpectancy_Person_33Years_Female",
+        "LifeExpectancy_Person_33Years_Male",
+        "LifeExpectancy_Person_34Years_Female",
+        "LifeExpectancy_Person_34Years_Male",
+        "LifeExpectancy_Person_35Years_Female",
+        "LifeExpectancy_Person_35Years_Male",
+        "LifeExpectancy_Person_36Years_Female",
+        "LifeExpectancy_Person_36Years_Male",
+        "LifeExpectancy_Person_37Years_Female",
+        "LifeExpectancy_Person_37Years_Male",
+        "LifeExpectancy_Person_38Years_Female",
+        "LifeExpectancy_Person_38Years_Male",
+        "LifeExpectancy_Person_39Years_Female",
+        "LifeExpectancy_Person_39Years_Male",
+        "LifeExpectancy_Person_3Years_Female",
+        "LifeExpectancy_Person_3Years_Male",
+        "LifeExpectancy_Person_40Years_Female",
+        "LifeExpectancy_Person_40Years_Male",
+        "LifeExpectancy_Person_41Years_Female",
+        "LifeExpectancy_Person_41Years_Male",
+        "LifeExpectancy_Person_42Years_Female",
+        "LifeExpectancy_Person_42Years_Male",
+        "LifeExpectancy_Person_43Years_Female",
+        "LifeExpectancy_Person_43Years_Male",
+        "LifeExpectancy_Person_44Years_Female",
+        "LifeExpectancy_Person_44Years_Male",
+        "LifeExpectancy_Person_45Years_Female",
+        "LifeExpectancy_Person_45Years_Male",
+        "LifeExpectancy_Person_46Years_Female",
+        "LifeExpectancy_Person_46Years_Male",
+        "LifeExpectancy_Person_47Years_Female",
+        "LifeExpectancy_Person_47Years_Male",
+        "LifeExpectancy_Person_48Years_Female",
+        "LifeExpectancy_Person_48Years_Male",
+        "LifeExpectancy_Person_49Years_Female",
+        "LifeExpectancy_Person_49Years_Male",
+        "LifeExpectancy_Person_4Years_Female",
+        "LifeExpectancy_Person_4Years_Male",
+        "LifeExpectancy_Person_50Years_Female",
+        "LifeExpectancy_Person_50Years_Male",
+        "LifeExpectancy_Person_51Years_Female",
+        "LifeExpectancy_Person_51Years_Male",
+        "LifeExpectancy_Person_52Years_Female",
+        "LifeExpectancy_Person_52Years_Male",
+        "LifeExpectancy_Person_53Years_Female",
+        "LifeExpectancy_Person_53Years_Male",
+        "LifeExpectancy_Person_54Years_Female",
+        "LifeExpectancy_Person_54Years_Male",
+        "LifeExpectancy_Person_55Years_Female",
+        "LifeExpectancy_Person_55Years_Male",
+        "LifeExpectancy_Person_56Years_Female",
+        "LifeExpectancy_Person_56Years_Male",
+        "LifeExpectancy_Person_57Years_Female",
+        "LifeExpectancy_Person_57Years_Male",
+        "LifeExpectancy_Person_58Years_Female",
+        "LifeExpectancy_Person_58Years_Male",
+        "LifeExpectancy_Person_59Years_Female",
+        "LifeExpectancy_Person_59Years_Male",
+        "LifeExpectancy_Person_5Years_Female",
+        "LifeExpectancy_Person_5Years_Male",
+        "LifeExpectancy_Person_60Years_Female",
+        "LifeExpectancy_Person_60Years_Male",
+        "LifeExpectancy_Person_61Years_Female",
+        "LifeExpectancy_Person_61Years_Male",
+        "LifeExpectancy_Person_62Years_Female",
+        "LifeExpectancy_Person_62Years_Male",
+        "LifeExpectancy_Person_63Years_Female",
+        "LifeExpectancy_Person_63Years_Male",
+        "LifeExpectancy_Person_64Years_Female",
+        "LifeExpectancy_Person_64Years_Male",
+        "LifeExpectancy_Person_65Years_Female",
+        "LifeExpectancy_Person_65Years_Male",
+        "LifeExpectancy_Person_66Years_Female",
+        "LifeExpectancy_Person_66Years_Male",
+        "LifeExpectancy_Person_67Years_Female",
+        "LifeExpectancy_Person_67Years_Male",
+        "LifeExpectancy_Person_68Years_Female",
+        "LifeExpectancy_Person_68Years_Male",
+        "LifeExpectancy_Person_69Years_Female",
+        "LifeExpectancy_Person_69Years_Male",
+        "LifeExpectancy_Person_6Years_Female",
+        "LifeExpectancy_Person_6Years_Male",
+        "LifeExpectancy_Person_70Years_Female",
+        "LifeExpectancy_Person_70Years_Male",
+        "LifeExpectancy_Person_71Years_Female",
+        "LifeExpectancy_Person_71Years_Male",
+        "LifeExpectancy_Person_72Years_Female",
+        "LifeExpectancy_Person_72Years_Male",
+        "LifeExpectancy_Person_73Years_Female",
+        "LifeExpectancy_Person_73Years_Male",
+        "LifeExpectancy_Person_74Years_Female",
+        "LifeExpectancy_Person_74Years_Male",
+        "LifeExpectancy_Person_75Years_Female",
+        "LifeExpectancy_Person_75Years_Male",
+        "LifeExpectancy_Person_76Years_Female",
+        "LifeExpectancy_Person_76Years_Male",
+        "LifeExpectancy_Person_77Years_Female",
+        "LifeExpectancy_Person_77Years_Male",
+        "LifeExpectancy_Person_78Years_Female",
+        "LifeExpectancy_Person_78Years_Male",
+        "LifeExpectancy_Person_79Years_Female",
+        "LifeExpectancy_Person_79Years_Male",
+        "LifeExpectancy_Person_7Years_Female",
+        "LifeExpectancy_Person_7Years_Male",
+        "LifeExpectancy_Person_80Years_Female",
+        "LifeExpectancy_Person_80Years_Male",
+        "LifeExpectancy_Person_81Years_Female",
+        "LifeExpectancy_Person_81Years_Male",
+        "LifeExpectancy_Person_82Years_Female",
+        "LifeExpectancy_Person_82Years_Male",
+        "LifeExpectancy_Person_83Years_Female",
+        "LifeExpectancy_Person_83Years_Male",
+        "LifeExpectancy_Person_84Years_Female",
+        "LifeExpectancy_Person_84Years_Male",
+        "LifeExpectancy_Person_85OrMoreYears_Female",
+        "LifeExpectancy_Person_85OrMoreYears_Male",
+        "LifeExpectancy_Person_8Years_Female",
+        "LifeExpectancy_Person_8Years_Male",
+        "LifeExpectancy_Person_9Years_Female",
+        "LifeExpectancy_Person_9Years_Male",
+        "LifeExpectancy_Person_Upto1Years_Female",
+        "LifeExpectancy_Person_Upto1Years_Male"
+      ]
+    },
+    "dc/g/LifeExpectancy_Person_Gender": {
+      "absoluteName": "LifeExpectancy Of Person By Gender",
+      "childStatVars": [
+        "LifeExpectancy_Person_Female",
+        "LifeExpectancy_Person_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/LifeExpectancy_Person_Age_Gender",
+          "specializedEntity": "Age"
+        }
+      ]
+    },
+    "dc/g/MortalityRate_Person_Age": {
+      "absoluteName": "MortalityRate Of Person By Age",
+      "childStatVars": [
+        "MortalityRate_Person_Upto4Years_AsFractionOf_Count_BirthEvent_LiveBirth"
+      ]
+    },
+    "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType": {
+      "absoluteName": "PolicyExtent Of Legislation By Category, LegislationPassedBy, PolicyType",
+      "childStatVars": [
+        "dc/4eg7509rc5qsf",
+        "dc/k6718pj7zm3w3",
+        "dc/sp757cedbv057",
+        "dc/zl73qp466bs28"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage",
+          "specializedEntity": "SpatialCoverage"
+        }
+      ]
+    },
+    "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage": {
+      "absoluteName": "PolicyExtent Of Legislation By Category, LegislationPassedBy, PolicyType, SpatialCoverage",
+      "childStatVars": [
+        "dc/4c6jn5rz7gel7",
+        "dc/5rm8q9w0ktg15",
+        "dc/cbyv2dhmtlp6",
+        "dc/cmf4pw2gpn1pf",
+        "dc/ehx7mbn98glvd",
+        "dc/gd1dnw2qqvex8",
+        "dc/gwh28ge42vved",
+        "dc/m6dc1gf715hh6",
+        "dc/mje8p4h6802v3",
+        "dc/mmw8xlxhcg3f7",
+        "dc/nghthld2vg2j1",
+        "dc/qbxt2mfr528y6",
+        "dc/qx5qb5cbem785",
+        "dc/qz7xe3jx2sfc8",
+        "dc/rmlel1n5en28h",
+        "dc/t3tn162x3hc32",
+        "dc/tqkqfxys6heeb",
+        "dc/wjecmxzfw6j27",
+        "dc/wye626mejjnh3",
+        "dc/z2mrynz0z0np6"
+      ]
+    },
+    "dc/g/UnemploymentRate_Person": {
+      "absoluteName": "UnemploymentRate Of Person",
+      "childStatVars": [
+        "UnemploymentRate_Person"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/UnemploymentRate_Person_Age",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/UnemploymentRate_Person_Gender",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/UnemploymentRate_Person_Age": {
+      "absoluteName": "UnemploymentRate Of Person By Age",
+      "childStatVars": [
+        "UnemploymentRate_Person_25To74Years",
+        "UnemploymentRate_Person_Upto25Years"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/UnemploymentRate_Person_Age_Gender",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/UnemploymentRate_Person_Age_Gender": {
+      "absoluteName": "UnemploymentRate Of Person By Age, Gender",
+      "childStatVars": [
+        "UnemploymentRate_Person_25To74Years_Female",
+        "UnemploymentRate_Person_25To74Years_Male",
+        "UnemploymentRate_Person_Upto25Years_Female",
+        "UnemploymentRate_Person_Upto25Years_Male"
+      ]
+    },
+    "dc/g/UnemploymentRate_Person_Gender": {
+      "absoluteName": "UnemploymentRate Of Person By Gender",
+      "childStatVars": [
+        "UnemploymentRate_Person_Female",
+        "UnemploymentRate_Person_Male"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/UnemploymentRate_Person_Age_Gender",
+          "specializedEntity": "Age"
+        }
+      ]
+    }
+  }
+}
