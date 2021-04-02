@@ -16,8 +16,7 @@
 
 # Useful BT prefix:
 
-# "d/f/country/AUT^count^measured^^^Person^gender^Male"
-# "d/f/country/AUT^count^measured^Count_Person_25To64Years^^Person^age^Years25To64^educationalAttainment^LessThanPrimaryEducation&PrimaryEducation&LowerSecondaryEducation"
+# "d/0/country/USA"
 
 export BT=$(head -1 ../deploy/storage-svobs/bigtable.version)
 export PROJECT=datcom-store
