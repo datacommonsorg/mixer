@@ -226,8 +226,8 @@
         "Count_EarthquakeEvent_M5To6"
       ]
     },
-    "dc/g/Count_MedicalConditionIncident_IncidentType_MedicalStatus": {
-      "absoluteName": "Count Of MedicalConditionIncident By IncidentType, MedicalStatus",
+    "dc/g/Count_MedicalConditionIncident_MedicalStatus": {
+      "absoluteName": "Count Of MedicalConditionIncident By MedicalStatus",
       "childStatVars": [
         "Count_MedicalConditionIncident_COVID_19_PatientHospitalized",
         "Count_MedicalConditionIncident_COVID_19_PatientInICU"
@@ -383,6 +383,7 @@
       "absoluteName": "Count Of Person",
       "childStatVars": [
         "Count_Person",
+        "Count_Person_InLaborForce",
         "Count_Person_PerArea",
         "GrowthRate_Count_Person"
       ],
@@ -392,8 +393,8 @@
           "specializedEntity": "Age"
         },
         {
-          "id": "dc/g/Count_Person_EmploymentStatus",
-          "specializedEntity": "EmploymentStatus"
+          "id": "dc/g/Count_Person_EducationalAttainment",
+          "specializedEntity": "EducationalAttainment"
         },
         {
           "id": "dc/g/Count_Person_Gender",
@@ -544,10 +545,6 @@
       ],
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_Person_Age_EducationalAttainment",
-          "specializedEntity": "EducationalAttainment"
-        },
-        {
           "id": "dc/g/Count_Person_Age_EmploymentStatus",
           "specializedEntity": "EmploymentStatus"
         },
@@ -563,34 +560,6 @@
           "id": "dc/g/Count_Person_Age_HealthOutcome",
           "specializedEntity": "HealthOutcome"
         }
-      ]
-    },
-    "dc/g/Count_Person_Age_EducationalAttainment": {
-      "absoluteName": "Count Of Person By Age, EducationalAttainment",
-      "childStatVars": [
-        "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
-        "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears",
-        "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
-        "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_EducationalAttainment_Gender",
-          "specializedEntity": "Gender"
-        }
-      ]
-    },
-    "dc/g/Count_Person_Age_EducationalAttainment_Gender": {
-      "absoluteName": "Count Of Person By Age, EducationalAttainment, Gender",
-      "childStatVars": [
-        "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
-        "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female",
-        "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
-        "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female",
-        "Count_Person_25OrMoreYears_Male_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
-        "Count_Person_25OrMoreYears_Male_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Male",
-        "Count_Person_25OrMoreYears_Male_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
-        "Count_Person_25OrMoreYears_Male_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Male"
       ]
     },
     "dc/g/Count_Person_Age_EmploymentStatus": {
@@ -869,10 +838,6 @@
       ],
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_Person_Age_EducationalAttainment_Gender",
-          "specializedEntity": "EducationalAttainment"
-        },
-        {
           "id": "dc/g/Count_Person_Age_EmploymentStatus_Gender",
           "specializedEntity": "EmploymentStatus"
         },
@@ -907,16 +872,32 @@
         "Count_Person_20To79Years_Diabetes_AsFractionOf_Count_Person_20To79Years"
       ]
     },
-    "dc/g/Count_Person_EmploymentStatus": {
-      "absoluteName": "Count Of Person By EmploymentStatus",
+    "dc/g/Count_Person_EducationalAttainment": {
+      "absoluteName": "Count Of Person By EducationalAttainment",
       "childStatVars": [
-        "Count_Person_InLaborForce"
+        "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
+        "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears",
+        "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
+        "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
       ],
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_Person_Age_EmploymentStatus",
-          "specializedEntity": "Age"
+          "id": "dc/g/Count_Person_EducationalAttainment_Gender",
+          "specializedEntity": "Gender"
         }
+      ]
+    },
+    "dc/g/Count_Person_EducationalAttainment_Gender": {
+      "absoluteName": "Count Of Person By EducationalAttainment, Gender",
+      "childStatVars": [
+        "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female",
+        "Count_Person_25OrMoreYears_Male_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
+        "Count_Person_25OrMoreYears_Male_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Male",
+        "Count_Person_25OrMoreYears_Male_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
+        "Count_Person_25OrMoreYears_Male_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Male"
       ]
     },
     "dc/g/Count_Person_Gender": {
@@ -929,6 +910,10 @@
         {
           "id": "dc/g/Count_Person_Age_Gender",
           "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Count_Person_EducationalAttainment_Gender",
+          "specializedEntity": "EducationalAttainment"
         }
       ]
     },
@@ -1001,8 +986,8 @@
         }
       ]
     },
-    "dc/g/CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus": {
-      "absoluteName": "CumulativeCount Of MedicalConditionIncident By IncidentType, MedicalStatus",
+    "dc/g/CumulativeCount_MedicalConditionIncident_MedicalStatus": {
+      "absoluteName": "CumulativeCount Of MedicalConditionIncident By MedicalStatus",
       "childStatVars": [
         "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
         "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
@@ -1036,117 +1021,38 @@
       "absoluteName": "Demographics",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Count_Person",
-          "specializedEntity": "Count_Person"
-        },
-        {
-          "id": "dc/g/FertilityRate_Person_Gender",
-          "specializedEntity": "FertilityRate_Person_Gender"
-        },
-        {
-          "id": "dc/g/LifeExpectancy_Person",
-          "specializedEntity": "LifeExpectancy_Person"
-        },
-        {
-          "id": "dc/g/MortalityRate_Person_Age",
-          "specializedEntity": "MortalityRate_Person_Age"
-        },
-        {
-          "id": "dc/g/UnemploymentRate_Person",
-          "specializedEntity": "UnemploymentRate_Person"
-        }
-      ]
-    },
-    "dc/g/Environment": {
-      "absoluteName": "Environment",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Amount_Consumption_ConsumedThing",
-          "specializedEntity": "Amount_Consumption_ConsumedThing"
-        },
-        {
-          "id": "dc/g/Amount_Debt_Debtor",
-          "specializedEntity": "Amount_Debt_Debtor"
-        },
-        {
-          "id": "dc/g/Amount_Emissions_EmittedThing",
-          "specializedEntity": "Amount_Emissions_EmittedThing"
-        },
-        {
-          "id": "dc/g/Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType",
-          "specializedEntity": "Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType"
-        },
-        {
-          "id": "dc/g/Amount_Production_ProducedThing",
-          "specializedEntity": "Amount_Production_ProducedThing"
-        },
-        {
-          "id": "dc/g/Amount_Remittance_TransferType",
-          "specializedEntity": "Amount_Remittance_TransferType"
-        },
-        {
-          "id": "dc/g/Amount_Stock",
-          "specializedEntity": "Amount_Stock"
-        },
-        {
-          "id": "dc/g/CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage",
-          "specializedEntity": "CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage"
-        },
-        {
           "id": "dc/g/Count_BirthEvent",
           "specializedEntity": "Count_BirthEvent"
         },
         {
-          "id": "dc/g/Count_CycloneEvent",
-          "specializedEntity": "Count_CycloneEvent"
+          "id": "dc/g/Count_Person",
+          "specializedEntity": "Count_Person"
         },
         {
-          "id": "dc/g/Count_EarthquakeEvent",
-          "specializedEntity": "Count_EarthquakeEvent"
+          "id": "dc/g/LifeExpectancy_Person",
+          "specializedEntity": "LifeExpectancy_Person"
+        }
+      ]
+    },
+    "dc/g/Economics": {
+      "absoluteName": "Economics",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_EconomicActivity_ActivitySource",
+          "specializedEntity": "Amount_EconomicActivity_ActivitySource"
+        }
+      ]
+    },
+    "dc/g/Employment": {
+      "absoluteName": "Employment",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Count_Person",
+          "specializedEntity": "Count_Person"
         },
         {
-          "id": "dc/g/Count_Product_ProductType",
-          "specializedEntity": "Count_Product_ProductType"
-        },
-        {
-          "id": "dc/g/Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory",
-          "specializedEntity": "Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory"
-        },
-        {
-          "id": "dc/g/Covid19ResponseIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19ResponseIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/Covid19StringencyIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19StringencyIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition",
-          "specializedEntity": "CumulativeCount_MedicalTest_MedicalCondition"
-        },
-        {
-          "id": "dc/g/CumulativeCount_Vaccine_MedicalCondition_VaccineStatus",
-          "specializedEntity": "CumulativeCount_Vaccine_MedicalCondition_VaccineStatus"
-        },
-        {
-          "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition",
-          "specializedEntity": "IncrementalCount_MedicalTest_MedicalCondition"
-        },
-        {
-          "id": "dc/g/IncrementalCount_Vaccine_MedicalCondition_VaccineStatus",
-          "specializedEntity": "IncrementalCount_Vaccine_MedicalCondition_VaccineStatus"
-        },
-        {
-          "id": "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType",
-          "specializedEntity": "PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType"
+          "id": "dc/g/UnemploymentRate_Person",
+          "specializedEntity": "UnemploymentRate_Person"
         }
       ]
     },
@@ -1166,33 +1072,13 @@
       "absoluteName": "Health",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource",
-          "specializedEntity": "Amount_EconomicActivity_ActivitySource"
-        },
-        {
-          "id": "dc/g/Count_MedicalConditionIncident_IncidentType_MedicalStatus",
-          "specializedEntity": "Count_MedicalConditionIncident_IncidentType_MedicalStatus"
-        },
-        {
           "id": "dc/g/Count_MortalityEvent",
           "specializedEntity": "Count_MortalityEvent"
-        },
-        {
-          "id": "dc/g/CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus",
-          "specializedEntity": "CumulativeCount_MedicalConditionIncident_IncidentType_MedicalStatus"
-        },
-        {
-          "id": "dc/g/GiniIndex_EconomicActivity",
-          "specializedEntity": "GiniIndex_EconomicActivity"
-        },
-        {
-          "id": "dc/g/IncrementalCount_MedicalConditionIncident_IncidentType_MedicalStatus",
-          "specializedEntity": "IncrementalCount_MedicalConditionIncident_IncidentType_MedicalStatus"
         }
       ]
     },
-    "dc/g/IncrementalCount_MedicalConditionIncident_IncidentType_MedicalStatus": {
-      "absoluteName": "IncrementalCount Of MedicalConditionIncident By IncidentType, MedicalStatus",
+    "dc/g/IncrementalCount_MedicalConditionIncident_MedicalStatus": {
+      "absoluteName": "IncrementalCount Of MedicalConditionIncident By MedicalStatus",
       "childStatVars": [
         "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
         "IncrementalCount_MedicalConditionIncident_COVID_19_PatientDeceased"
@@ -1525,25 +1411,95 @@
         }
       ]
     },
+    "dc/g/Miscellaneous": {
+      "absoluteName": "Miscellaneous",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_Consumption_ConsumedThing",
+          "specializedEntity": "Amount_Consumption_ConsumedThing"
+        },
+        {
+          "id": "dc/g/Amount_Debt_Debtor",
+          "specializedEntity": "Amount_Debt_Debtor"
+        },
+        {
+          "id": "dc/g/Amount_Emissions_EmittedThing",
+          "specializedEntity": "Amount_Emissions_EmittedThing"
+        },
+        {
+          "id": "dc/g/Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType",
+          "specializedEntity": "Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType"
+        },
+        {
+          "id": "dc/g/Amount_Production_ProducedThing",
+          "specializedEntity": "Amount_Production_ProducedThing"
+        },
+        {
+          "id": "dc/g/Amount_Remittance_TransferType",
+          "specializedEntity": "Amount_Remittance_TransferType"
+        },
+        {
+          "id": "dc/g/Amount_Stock",
+          "specializedEntity": "Amount_Stock"
+        },
+        {
+          "id": "dc/g/CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage",
+          "specializedEntity": "CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage"
+        },
+        {
+          "id": "dc/g/Count_Product_ProductType",
+          "specializedEntity": "Count_Product_ProductType"
+        },
+        {
+          "id": "dc/g/Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/Covid19ResponseIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19ResponseIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/Covid19StringencyIndex_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Covid19StringencyIndex_Legislation_Category_LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition",
+          "specializedEntity": "CumulativeCount_MedicalTest_MedicalCondition"
+        },
+        {
+          "id": "dc/g/CumulativeCount_Vaccine_MedicalCondition_VaccineStatus",
+          "specializedEntity": "CumulativeCount_Vaccine_MedicalCondition_VaccineStatus"
+        },
+        {
+          "id": "dc/g/FertilityRate_Person_Gender",
+          "specializedEntity": "FertilityRate_Person_Gender"
+        },
+        {
+          "id": "dc/g/GiniIndex_EconomicActivity",
+          "specializedEntity": "GiniIndex_EconomicActivity"
+        },
+        {
+          "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition",
+          "specializedEntity": "IncrementalCount_MedicalTest_MedicalCondition"
+        },
+        {
+          "id": "dc/g/IncrementalCount_Vaccine_MedicalCondition_VaccineStatus",
+          "specializedEntity": "IncrementalCount_Vaccine_MedicalCondition_VaccineStatus"
+        },
+        {
+          "id": "dc/g/MortalityRate_Person_Age",
+          "specializedEntity": "MortalityRate_Person_Age"
+        }
+      ]
+    },
     "dc/g/MortalityRate_Person_Age": {
       "absoluteName": "MortalityRate Of Person By Age",
       "childStatVars": [
         "MortalityRate_Person_Upto4Years_AsFractionOf_Count_BirthEvent_LiveBirth"
-      ]
-    },
-    "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType": {
-      "absoluteName": "PolicyExtent Of Legislation By Category, LegislationPassedBy, PolicyType",
-      "childStatVars": [
-        "dc/4eg7509rc5qsf",
-        "dc/k6718pj7zm3w3",
-        "dc/sp757cedbv057",
-        "dc/zl73qp466bs28"
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage",
-          "specializedEntity": "SpatialCoverage"
-        }
       ]
     },
     "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage": {
@@ -1569,6 +1525,21 @@
         "dc/wjecmxzfw6j27",
         "dc/wye626mejjnh3",
         "dc/z2mrynz0z0np6"
+      ]
+    },
+    "dc/g/PolicyExtent_Legislation_PolicyType": {
+      "absoluteName": "PolicyExtent Of Legislation By PolicyType",
+      "childStatVars": [
+        "dc/4eg7509rc5qsf",
+        "dc/k6718pj7zm3w3",
+        "dc/sp757cedbv057",
+        "dc/zl73qp466bs28"
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage",
+          "specializedEntity": "Category_LegislationPassedBy_SpatialCoverage"
+        }
       ]
     },
     "dc/g/UnemploymentRate_Person": {
