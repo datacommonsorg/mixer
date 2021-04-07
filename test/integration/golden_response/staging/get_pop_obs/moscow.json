@@ -10775,6 +10775,18 @@
           ]
         },
         {
+          "id": "dc/o/0t4j7ybrbyd25",
+          "type": "Observation",
+          "measured_prop": "count",
+          "measured_value": 11979529,
+          "measurement_method": "HumanCuratedStats",
+          "provenance_id": "dc/97m6fj1",
+          "observation_date": "2013",
+          "stat_var_ids": [
+            "Count_Person"
+          ]
+        },
+        {
           "id": "dc/o/1gfxsy1n41lcg",
           "type": "Observation",
           "measured_prop": "count",
