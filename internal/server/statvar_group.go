@@ -60,9 +60,9 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	// Step 1: iterate over stat var group, and only keep stat var children with valid
 	// stat vars for this place.
 	for _, svgData := range svgResp.StatVarGroups {
-		filteredChildren := []string{}
+		filteredChildren := []*pb.StatVarGroupNode_ChildSV{}
 		for _, child := range svgData.ChildStatVars {
-			if _, ok := validSV[child]; ok {
+			if _, ok := validSV[child.Id]; ok {
 				filteredChildren = append(filteredChildren, child)
 			}
 		}
@@ -81,7 +81,7 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 
 	// Step3: another iteration to only keep valid svg
 	for svgID, svgData := range svgResp.StatVarGroups {
-		filteredChildren := []*pb.StatVarGroupNode_Child{}
+		filteredChildren := []*pb.StatVarGroupNode_ChildSVG{}
 		for _, c := range svgData.ChildStatVarGroups {
 			if _, ok := validSVG[c.Id]; ok {
 				filteredChildren = append(filteredChildren, c)
@@ -123,8 +123,13 @@ func (s *Server) GetStatVarGroup(
 		return nil, err
 	}
 
+	// Return empty result
 	if len(svgResp.StatVarGroups) == 0 {
-		// Return for empty result
+		return svgResp, nil
+	}
+
+	// If place is not specified, return the entire svg map without filtering
+	if place == "" {
 		return svgResp, nil
 	}
 

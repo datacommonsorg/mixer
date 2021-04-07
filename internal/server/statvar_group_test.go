@@ -33,34 +33,52 @@ func TestFilter(t *testing.T) {
 			&pb.StatVarGroups{
 				StatVarGroups: map[string]*pb.StatVarGroupNode{
 					"svgX": {
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svgY"},
 						},
 					},
 					"svgY": {
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svgZ"},
 						},
 					},
 					"svgZ": {
-						ChildStatVars: []string{"sv1", "sv2"},
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv1",
+								SearchName: "Name 1",
+							},
+							{
+								Id:         "sv2",
+								SearchName: "Name 2",
+							},
+						},
 					},
 				},
 			},
 			&pb.StatVarGroups{
 				StatVarGroups: map[string]*pb.StatVarGroupNode{
 					"svgX": {
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svgY"},
 						},
 					},
 					"svgY": {
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svgZ"},
 						},
 					},
 					"svgZ": {
-						ChildStatVars: []string{"sv1", "sv2"},
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv1",
+								SearchName: "Name 1",
+							},
+							{
+								Id:         "sv2",
+								SearchName: "Name 2",
+							},
+						},
 					},
 				},
 			},
@@ -70,47 +88,89 @@ func TestFilter(t *testing.T) {
 			&pb.StatVarGroups{
 				StatVarGroups: map[string]*pb.StatVarGroupNode{
 					"svg1": {
-						ChildStatVars: []string{"sv1", "sv2"},
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv1",
+								SearchName: "Name 1",
+							},
+							{
+								Id:         "sv2",
+								SearchName: "Name 2",
+							},
+						},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svg2"},
 							{Id: "svg3"},
 						},
 					},
 					"svg2": {
-						ChildStatVars: []string{"sv21", "sv22"},
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv21",
+								SearchName: "Name 21",
+							},
+							{
+								Id:         "sv22",
+								SearchName: "Name 22",
+							},
+						},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svg5"},
 							{Id: "svg6"},
 						},
 					},
 					"svg8": {
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svg9"},
 						},
 					},
 					"svg9": {
-						ChildStatVars: []string{"sv91", "sv92"},
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv91",
+								SearchName: "Name 91",
+							},
+							{
+								Id:         "sv92",
+								SearchName: "Name 92",
+							},
+						},
 					},
 				},
 			},
 			&pb.StatVarGroups{
 				StatVarGroups: map[string]*pb.StatVarGroupNode{
 					"svg1": {
-						ChildStatVars: []string{"sv1"},
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv1",
+								SearchName: "Name 1",
+							},
+						},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svg2"},
 						},
 					},
 					"svg2": {
-						ChildStatVars: []string{"sv21"},
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv21",
+								SearchName: "Name 21",
+							},
+						},
 					},
 					"svg8": {
-						ChildStatVarGroups: []*pb.StatVarGroupNode_Child{
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "svg9"},
 						},
 					},
 					"svg9": {
-						ChildStatVars: []string{"sv91"},
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{
+								Id:         "sv91",
+								SearchName: "Name 91",
+							},
+						},
 					},
 				},
 			},
