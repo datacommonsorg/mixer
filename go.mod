@@ -21,6 +21,7 @@ require (
 	google.golang.org/api v0.24.0
 	google.golang.org/genproto v0.0.0-20200515170657-fc4c6c6a6587
 	google.golang.org/grpc v1.33.1
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v0.0.0-20200824180931-410880dd7d91 // indirect
 	google.golang.org/protobuf v1.23.0
 	honnef.co/go/tools v0.0.1-2020.1.5 // indirect
 
