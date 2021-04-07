@@ -368,7 +368,7 @@ message StatVarGroups {
 }
 
 message StatVarGroupNode {
-  message Child {
+  message ChildSVG {
     // StatVarGroup ID.
     string id = 1;
     // The specialized entity of the child StatVarGroup relative to the parent.
@@ -376,13 +376,22 @@ message StatVarGroupNode {
     string specialized_entity = 2;
   }
 
+  message ChildSV {
+    // StatVar ID.
+    string id = 1;
+    // Name suitable for search.
+    string search_name = 2;
+    // Name suitable for display in tree.
+    string display_name = 3;
+  }
+
   // Absolute name of StatVarGroup. Typically used only for root nodes.
   string absolute_name = 1;
   // List of children StatVar IDs directly attached to this group. If there are
   // auto-generated and curated IDs for a StatVar, we'll prefer the curated.
-  repeated string child_stat_vars = 2;
+  repeated ChildSV child_stat_vars = 2;
   // List of children StatVarGroups that are immediate specializations.
-  repeated Child child_stat_var_groups = 3;
+  repeated ChildSVG child_stat_var_groups = 3;
 }
 
 message GetStatVarGroupRequest {
