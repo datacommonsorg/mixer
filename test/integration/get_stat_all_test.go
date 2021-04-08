@@ -70,6 +70,7 @@ func TestGetStatAll(t *testing.T) {
 			}
 			if generateGolden {
 				updateProtoGolden(resp, goldenFile)
+				continue
 			}
 			var expected pb.GetStatAllResponse
 			file, _ := ioutil.ReadFile(goldenFile)
