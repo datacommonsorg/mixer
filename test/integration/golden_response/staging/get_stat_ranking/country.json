@@ -285,7 +285,7 @@
           },
           {
             "rank": 57,
-            "value": 23568378,
+            "value": 23593794,
             "placeDcid": "country/TWN"
           },
           {
@@ -335,18 +335,18 @@
           },
           {
             "rank": 67,
-            "value": 17737438,
-            "placeDcid": "wikidataId/Q29999"
-          },
-          {
-            "rank": 68,
             "value": 17373662,
             "placeDcid": "country/ECU"
           },
           {
-            "rank": 69,
+            "rank": 68,
             "value": 17282200,
             "placeDcid": "country/NLD"
+          },
+          {
+            "rank": 69,
+            "value": 17100715,
+            "placeDcid": "wikidataId/Q29999"
           },
           {
             "rank": 70,
@@ -775,7 +775,7 @@
           },
           {
             "rank": 155,
-            "value": 1873160,
+            "value": 1883018,
             "placeDcid": "country/XKS"
           },
           {
@@ -830,7 +830,7 @@
           },
           {
             "rank": 166,
-            "value": 859959,
+            "value": 866506,
             "placeDcid": "country/REU"
           },
           {
@@ -905,13 +905,13 @@
           },
           {
             "rank": 181,
-            "value": 395700,
-            "placeDcid": "country/GLP"
+            "value": 390353,
+            "placeDcid": "country/BLZ"
           },
           {
             "rank": 182,
-            "value": 390353,
-            "placeDcid": "country/BLZ"
+            "value": 390253,
+            "placeDcid": "country/GLP"
           },
           {
             "rank": 183,
@@ -920,7 +920,7 @@
           },
           {
             "rank": 184,
-            "value": 376480,
+            "value": 372594,
             "placeDcid": "country/MTQ"
           },
           {
@@ -930,7 +930,7 @@
           },
           {
             "rank": 186,
-            "value": 326000,
+            "value": 313626,
             "placeDcid": "wikidataId/Q23681"
           },
           {
@@ -940,18 +940,18 @@
           },
           {
             "rank": 188,
-            "value": 294071,
-            "placeDcid": "country/GUF"
-          },
-          {
-            "rank": 189,
             "value": 287800,
             "placeDcid": "country/NCL"
           },
           {
-            "rank": 190,
+            "rank": 189,
             "value": 287025,
             "placeDcid": "country/BRB"
+          },
+          {
+            "rank": 190,
+            "value": 282731,
+            "placeDcid": "country/GUF"
           },
           {
             "rank": 191,
@@ -1000,7 +1000,7 @@
           },
           {
             "rank": 200,
-            "value": 150932,
+            "value": 146600,
             "placeDcid": "wikidataId/Q244165"
           },
           {
@@ -1155,7 +1155,7 @@
           },
           {
             "rank": 231,
-            "value": 25987,
+            "value": 25019,
             "placeDcid": "country/BES"
           },
           {
@@ -1165,7 +1165,7 @@
           },
           {
             "rank": 233,
-            "value": 17459,
+            "value": 17434,
             "placeDcid": "country/COK"
           },
           {
@@ -1225,7 +1225,7 @@
           },
           {
             "rank": 245,
-            "value": 1620,
+            "value": 1612,
             "placeDcid": "country/NIU"
           },
           {

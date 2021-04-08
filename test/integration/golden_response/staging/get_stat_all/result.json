@@ -238,15 +238,6 @@
             },
             {
               "val": {
-                "2011": 311591917
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "KGHumanCurated",
-              "provenanceDomain": "google.com",
-              "provenanceUrl": "https://google.com"
-            },
-            {
-              "val": {
                 "1900": 76094000,
                 "1901": 77584000,
                 "1902": 79163000,
@@ -532,15 +523,6 @@
             },
             {
               "val": {
-                "2011": 37691912
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "KGHumanCurated",
-              "provenanceDomain": "google.com",
-              "provenanceUrl": "https://google.com"
-            },
-            {
-              "val": {
                 "1900": 1490000,
                 "1901": 1550000,
                 "1902": 1623000,
@@ -752,15 +734,6 @@
               "importName": "WikidataPopulation",
               "provenanceDomain": "wikidata.org",
               "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
-            },
-            {
-              "val": {
-                "2013": 77846
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "KGHumanCurated",
-              "provenanceDomain": "google.com",
-              "provenanceUrl": "https://google.com"
             },
             {
               "val": {
