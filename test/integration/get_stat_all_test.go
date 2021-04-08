@@ -65,11 +65,11 @@ func TestGetStatAll(t *testing.T) {
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			isPopObsMode := (index == 0)
+			if isPopObsMode {
+				goldenFile += ".popobs"
+			}
 			if generateGolden {
-				if isPopObsMode {
-					updateProtoGolden(resp, goldenFile)
-				}
-				continue
+				updateProtoGolden(resp, goldenFile)
 			}
 			var expected pb.GetStatAllResponse
 			file, _ := ioutil.ReadFile(goldenFile)
