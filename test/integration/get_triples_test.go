@@ -35,11 +35,6 @@ func TestGetTriples(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-	clientStatVar, err := setupStatVar()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "golden_response/staging/get_triples")
@@ -50,7 +45,6 @@ func TestGetTriples(t *testing.T) {
 		partialMatch bool
 		limit        int32
 		count        []int
-		mode         Mode
 	}{
 		{
 			[]string{"State", "Country"},
@@ -58,7 +52,6 @@ func TestGetTriples(t *testing.T) {
 			false,
 			-1,
 			nil,
-			General,
 		},
 		{
 			[]string{"zip/00603"},
@@ -66,7 +59,6 @@ func TestGetTriples(t *testing.T) {
 			true,
 			-1,
 			nil,
-			General,
 		},
 		{
 			[]string{"dc/p/7c8egrk3ypkl5"},
@@ -74,7 +66,6 @@ func TestGetTriples(t *testing.T) {
 			true,
 			-1,
 			nil,
-			PopObs,
 		},
 		{
 			[]string{
@@ -87,22 +78,6 @@ func TestGetTriples(t *testing.T) {
 			false,
 			-1,
 			nil,
-			PopObs,
-		},
-		{
-			[]string{
-				"dc/o/w2z8nx9y43k97", // LifeExpectancy_Person_Female
-				"dc/o/mc1g2ew9yegq8", // Amount_Consumption_Energy_PerCapita<>
-				"dc/o/28b93wpnlkjgc", // Amount_EconomicActivity_GrossDomesticProduction_Nominal<>
-				"dc/o/88cs3xqnmpp55", // Count_Person<CensusPEPSurvey>
-				"dc/o/23gt9k7fql176", // Count_Person<dcAggregate/CensusACS5yrSurvey>
-				"dc/o/kyv7dxe4s18eh", // Count_Person<>
-			},
-			"observation_svobs.json",
-			false,
-			-1,
-			nil,
-			SvObs,
 		},
 		{
 			[]string{"Count_Person", "Count_Person_Female"},
@@ -110,15 +85,6 @@ func TestGetTriples(t *testing.T) {
 			false,
 			-1,
 			nil,
-			PopObs,
-		},
-		{
-			[]string{"Count_Person", "Count_Person_Female"},
-			"stat_var_svobs.json",
-			false,
-			-1,
-			nil,
-			SvObs,
 		},
 		{
 			[]string{"City", "County"},
@@ -126,63 +92,51 @@ func TestGetTriples(t *testing.T) {
 			false,
 			5,
 			[]int{5, 5},
-			General,
 		},
 	} {
-		for index, client := range []pb.MixerClient{client, clientStatVar} {
-			isPopObsMode := (index == 0)
+		req := &pb.GetTriplesRequest{Dcids: c.dcids}
+		if c.limit > 0 {
+			req.Limit = c.limit
+		}
+		resp, err := client.GetTriples(ctx, req)
+		if err != nil {
+			t.Errorf("could not GetTriples: %s", err)
+			continue
+		}
+		var result map[string][]*server.Triple
+		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+		if err != nil {
+			t.Errorf("Can not Unmarshal payload")
+			continue
+		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden && c.goldenFile != "" {
+			updateGolden(result, goldenFile)
+			continue
+		}
 
-			if isPopObsMode && c.mode == SvObs {
-				continue
-			}
-			if !isPopObsMode && c.mode == PopObs {
-				continue
-			}
-
-			req := &pb.GetTriplesRequest{Dcids: c.dcids}
-			if c.limit > 0 {
-				req.Limit = c.limit
-			}
-			resp, err := client.GetTriples(ctx, req)
-			if err != nil {
-				t.Errorf("could not GetTriples: %s", err)
-				continue
-			}
-			var result map[string][]*server.Triple
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
-				t.Errorf("Can not Unmarshal payload")
-				continue
-			}
-			goldenFile := path.Join(goldenPath, c.goldenFile)
-			if generateGolden && c.goldenFile != "" {
-				updateGolden(result, goldenFile)
-				continue
-			}
-
-			if c.limit > 0 {
-				for idx, place := range c.dcids {
-					count := len(result[place])
-					if count < c.count[idx] {
-						t.Errorf(
-							"Len of triples for %s expect %d, got %d",
-							place, c.count[idx], count)
-					}
+		if c.limit > 0 {
+			for idx, place := range c.dcids {
+				count := len(result[place])
+				if count < c.count[idx] {
+					t.Errorf(
+						"Len of triples for %s expect %d, got %d",
+						place, c.count[idx], count)
 				}
-				continue
 			}
+			continue
+		}
 
-			var expected map[string][]*server.Triple
-			file, _ := ioutil.ReadFile(goldenFile)
-			err = json.Unmarshal(file, &expected)
-			if err != nil {
-				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-				continue
-			}
-			if diff := cmp.Diff(result, expected); diff != "" {
-				t.Errorf("payload from %s got diff: %v", goldenFile, diff)
-				continue
-			}
+		var expected map[string][]*server.Triple
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = json.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+			continue
+		}
+		if diff := cmp.Diff(result, expected); diff != "" {
+			t.Errorf("payload got diff: %v", diff)
+			continue
 		}
 	}
 }
