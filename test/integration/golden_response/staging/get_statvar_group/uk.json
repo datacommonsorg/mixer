@@ -3334,6 +3334,10 @@
         {
           "id": "dc/g/Amount_EconomicActivity_ActivitySource",
           "specializedEntity": "Amount_EconomicActivity_ActivitySource"
+        },
+        {
+          "id": "dc/g/GiniIndex_EconomicActivity",
+          "specializedEntity": "GiniIndex_EconomicActivity"
         }
       ]
     },
@@ -3359,13 +3363,30 @@
         }
       ]
     },
-    "dc/g/FertilityRate_Person_Gender": {
-      "absoluteName": "FertilityRate Of Person By Gender",
+    "dc/g/Environment": {
+      "absoluteName": "Environment",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Amount_Consumption_ConsumedThing",
+          "specializedEntity": "Amount_Consumption_ConsumedThing"
+        },
+        {
+          "id": "dc/g/Amount_Emissions_EmittedThing",
+          "specializedEntity": "Amount_Emissions_EmittedThing"
+        },
+        {
+          "id": "dc/g/Amount_Production_ProducedThing",
+          "specializedEntity": "Amount_Production_ProducedThing"
+        }
+      ]
+    },
+    "dc/g/FertilityRate_Person": {
+      "absoluteName": "FertilityRate Of Person",
       "childStatVars": [
         {
           "id": "FertilityRate_Person_Female",
-          "searchName": "Fertility Rate Of Person With Gender Female",
-          "displayName": "FertilityRate Of Female"
+          "searchName": "Fertility Rate Of Person",
+          "displayName": "FertilityRate Of Person"
         }
       ]
     },
@@ -3385,6 +3406,14 @@
         {
           "id": "dc/g/Count_MortalityEvent",
           "specializedEntity": "Count_MortalityEvent"
+        },
+        {
+          "id": "dc/g/FertilityRate_Person",
+          "specializedEntity": "FertilityRate_Person"
+        },
+        {
+          "id": "dc/g/LifeExpectancy_Person",
+          "specializedEntity": "LifeExpectancy_Person"
         }
       ]
     },
@@ -4790,24 +4819,12 @@
       "absoluteName": "Miscellaneous",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Amount_Consumption_ConsumedThing",
-          "specializedEntity": "Amount_Consumption_ConsumedThing"
-        },
-        {
           "id": "dc/g/Amount_Debt_Debtor",
           "specializedEntity": "Amount_Debt_Debtor"
         },
         {
-          "id": "dc/g/Amount_Emissions_EmittedThing",
-          "specializedEntity": "Amount_Emissions_EmittedThing"
-        },
-        {
           "id": "dc/g/Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType",
           "specializedEntity": "Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType"
-        },
-        {
-          "id": "dc/g/Amount_Production_ProducedThing",
-          "specializedEntity": "Amount_Production_ProducedThing"
         },
         {
           "id": "dc/g/Amount_Remittance_TransferType",
@@ -4848,14 +4865,6 @@
         {
           "id": "dc/g/CumulativeCount_Vaccine_MedicalCondition_VaccineStatus",
           "specializedEntity": "CumulativeCount_Vaccine_MedicalCondition_VaccineStatus"
-        },
-        {
-          "id": "dc/g/FertilityRate_Person_Gender",
-          "specializedEntity": "FertilityRate_Person_Gender"
-        },
-        {
-          "id": "dc/g/GiniIndex_EconomicActivity",
-          "specializedEntity": "GiniIndex_EconomicActivity"
         },
         {
           "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition",
