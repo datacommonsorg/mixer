@@ -33,10 +33,10 @@ steps:
           --go-grpc_opt=requireUnimplementedServers=false \
           proto/*.proto
   # Run tests
-  - id: test
-    name: golang
-    env: ["GO111MODULE=on"]
-    args: ["go", "test", "./..."]
+  # - id: test
+  #   name: golang
+  #   env: ["GO111MODULE=on"]
+  #   args: ["go", "test", "./..."]
 
   # Push mixer server image to container registry
   - id: push-image
