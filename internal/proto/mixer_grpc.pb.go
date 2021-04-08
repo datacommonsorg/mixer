@@ -87,6 +87,8 @@ type MixerClient interface {
 	// Given ancestor place, child place type and stat vars, return the dates that have
 	// data for each stat var across all child places.
 	GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetPlaceStatDateWithinPlaceResponse, error)
+	// Given a place, get the statvar group for stat vars that have data for it.
+	GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRequest, opts ...grpc.CallOption) (*StatVarGroups, error)
 }
 
 type mixerClient struct {
@@ -322,6 +324,15 @@ func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPl
 	return out, nil
 }
 
+func (c *mixerClient) GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRequest, opts ...grpc.CallOption) (*StatVarGroups, error) {
+	out := new(StatVarGroups)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarGroup", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -396,6 +407,8 @@ type MixerServer interface {
 	// Given ancestor place, child place type and stat vars, return the dates that have
 	// data for each stat var across all child places.
 	GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error)
+	// Given a place, get the statvar group for stat vars that have data for it.
+	GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -476,6 +489,9 @@ func (*UnimplementedMixerServer) GetPlaceStatVarsUnion(context.Context, *GetPlac
 }
 func (*UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatDateWithinPlace not implemented")
+}
+func (*UnimplementedMixerServer) GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarGroup not implemented")
 }
 
 func RegisterMixerServer(s *grpc.Server, srv MixerServer) {
@@ -932,6 +948,24 @@ func _Mixer_GetPlaceStatDateWithinPlace_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_GetStatVarGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStatVarGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetStatVarGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/GetStatVarGroup",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetStatVarGroup(ctx, req.(*GetStatVarGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Mixer_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
@@ -1035,6 +1069,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlaceStatDateWithinPlace",
 			Handler:    _Mixer_GetPlaceStatDateWithinPlace_Handler,
+		},
+		{
+			MethodName: "GetStatVarGroup",
+			Handler:    _Mixer_GetStatVarGroup_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

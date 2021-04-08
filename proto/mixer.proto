@@ -362,6 +362,42 @@ message GetPlaceStatVarsUnionResponse {
   StatVars stat_vars = 1;
 }
 
+message StatVarGroups {
+  // Key is StatVarGroup ID.
+  map<string, StatVarGroupNode> stat_var_groups = 1;
+}
+
+message StatVarGroupNode {
+  message ChildSVG {
+    // StatVarGroup ID.
+    string id = 1;
+    // The specialized entity of the child StatVarGroup relative to the parent.
+    // This can be used for naming when the child appears in the hierarchy.
+    string specialized_entity = 2;
+  }
+
+  message ChildSV {
+    // StatVar ID.
+    string id = 1;
+    // Name suitable for search.
+    string search_name = 2;
+    // Name suitable for display in tree.
+    string display_name = 3;
+  }
+
+  // Absolute name of StatVarGroup. Typically used only for root nodes.
+  string absolute_name = 1;
+  // List of children StatVar IDs directly attached to this group. If there are
+  // auto-generated and curated IDs for a StatVar, we'll prefer the curated.
+  repeated ChildSV child_stat_vars = 2;
+  // List of children StatVarGroups that are immediate specializations.
+  repeated ChildSVG child_stat_var_groups = 3;
+}
+
+message GetStatVarGroupRequest {
+  string place = 1;
+}
+
 // TODO(wsws): Refactor all these "won't persist to cache" fields across caches
 // into a single TemporaryFields message, and clear just that "tmp_data" field
 // before persistence.
@@ -786,6 +822,18 @@ service Mixer {
       get: "/place/stat/date/within-place"
       additional_bindings: {
         post: "/place/stat/date/within-place"
+        body: "*"
+      }
+    };
+  }
+
+  // Given a place, get the statvar group for stat vars that have data for it.
+  rpc GetStatVarGroup(GetStatVarGroupRequest)
+      returns (StatVarGroups) {
+    option (google.api.http) = {
+      get: "/place/stat-var-group"
+      additional_bindings: {
+        post: "/place/stat-var-group"
         body: "*"
       }
     };

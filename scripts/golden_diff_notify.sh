@@ -17,8 +17,6 @@
 
 # Send golden diff email for a new Bigtable cache.
 
-set -e
-
 BASE_BT_VERSION=$1
 SVOBS_BASE_BT_VERSION=$2
 
@@ -32,11 +30,14 @@ ROOT="$(dirname "$DIR")"
 echo "$BASE_BT_VERSION" | tee "$ROOT/deploy/storage/bigtable.version"
 echo "$SVOBS_BASE_BT_VERSION" | tee "$ROOT/deploy/storage-svobs/bigtable.version"
 
-"$ROOT/scripts/update_golden_staging.sh"
-
 # Script to convert terminal colors and attributes to HTML
 # https://github.com/pixelb/scripts/blob/master/scripts/ansi2html.sh
 wget "http://www.pixelbeat.org/scripts/ansi2html.sh" -O /tmp/ansi2html.sh
 chmod +x /tmp/ansi2html.sh
 
-git diff | /tmp/ansi2html.sh > /tmp/golden-diff.html
+
+"$ROOT/scripts/update_golden_staging.sh" | /tmp/ansi2html.sh > /tmp/golden-diff.html
+
+if ! grep -Fxq "FAIL" /tmp/golden-diff.html; then
+  git diff | /tmp/ansi2html.sh > /tmp/golden-diff.html
+fi
