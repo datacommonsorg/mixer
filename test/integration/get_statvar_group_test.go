@@ -67,6 +67,15 @@ func TestGetStatVarGroup(t *testing.T) {
 			t.Errorf("could not GetStatVarGroup: %s", err)
 			continue
 		}
+
+		if c.checkCount {
+			num := len(resp.StatVarGroups)
+			if num < 100 {
+				t.Errorf("Too few stat var groups: %d", num)
+			}
+			continue
+		}
+
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 
 		if generateGolden {
@@ -82,13 +91,6 @@ func TestGetStatVarGroup(t *testing.T) {
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file")
 			continue
-		}
-
-		if c.checkCount {
-			num := len(resp.StatVarGroups)
-			if num < 100 {
-				t.Errorf("Too few stat var groups: %d", num)
-			}
 		}
 
 		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
