@@ -107,47 +107,51 @@ func (s *Server) GetStatVarGroup(
 			"GetStatVarGroup is not implemented for PopObs mode")
 	}
 
+	var sv PlaceStatsVar
+	svgResp := &pb.StatVarGroups{}
+
+	// Only read place stat vars when the place is provided.
+	// User can provide any arbitrary dcid, which might not be associated with
+	// stat vars. In this case, an empty response is returned.
+	if place != "" {
+		row, err := s.store.BaseBt().ReadRow(ctx, util.BtPlaceStatsVarPrefix+place)
+		if err != nil {
+			return nil, err
+		}
+		if len(row[util.BtFamily]) == 0 {
+			return svgResp, nil
+		}
+		raw := row[util.BtFamily][0].Value
+		jsonRaw, err := util.UnzipAndDecode(string(raw))
+		if err != nil {
+			return nil, err
+		}
+		err = json.Unmarshal(jsonRaw, &sv)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	// Read stat var group cache data
 	row, err := s.store.BaseBt().ReadRow(ctx, util.BtStatVarGroup)
 	if err != nil {
 		return nil, err
+	}
+	if len(row[util.BtFamily]) == 0 {
+		return nil, status.Errorf(codes.NotFound, "Stat Var Group not found in cache")
 	}
 	raw := row[util.BtFamily][0].Value
 	jsonRaw, err := util.UnzipAndDecode(string(raw))
 	if err != nil {
 		return nil, err
 	}
-	svgResp := &pb.StatVarGroups{}
 	err = protojson.Unmarshal(jsonRaw, svgResp)
 	if err != nil {
 		return nil, err
 	}
 
-	// Return empty result
-	if len(svgResp.StatVarGroups) == 0 {
-		return svgResp, nil
+	if place != "" {
+		svgResp = filterSVG(svgResp, sv.StatVarIds)
 	}
-
-	// If place is not specified, return the entire svg map without filtering
-	if place == "" {
-		return svgResp, nil
-	}
-
-	// Read place statvars
-	row, err = s.store.BaseBt().ReadRow(ctx, util.BtPlaceStatsVarPrefix+place)
-	if err != nil {
-		return nil, err
-	}
-	raw = row[util.BtFamily][0].Value
-	jsonRaw, err = util.UnzipAndDecode(string(raw))
-	if err != nil {
-		return nil, err
-	}
-	var sv PlaceStatsVar
-	err = json.Unmarshal(jsonRaw, &sv)
-	if err != nil {
-		return nil, err
-	}
-	svgResp = filterSVG(svgResp, sv.StatVarIds)
 	return svgResp, nil
 }

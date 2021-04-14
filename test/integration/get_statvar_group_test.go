@@ -42,10 +42,22 @@ func TestGetStatVarGroup(t *testing.T) {
 	for _, c := range []struct {
 		place      string
 		goldenFile string
+		checkCount bool
 	}{
 		{
 			"country/GBR",
 			"uk.json",
+			false,
+		},
+		{
+			"badDcid",
+			"empty.json",
+			false,
+		},
+		{
+			"",
+			"",
+			true,
 		},
 	} {
 		resp, err := client.GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{
@@ -56,8 +68,11 @@ func TestGetStatVarGroup(t *testing.T) {
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
+
 		if generateGolden {
-			updateProtoGolden(resp, goldenFile)
+			if !c.checkCount {
+				updateProtoGolden(resp, goldenFile)
+			}
 			continue
 		}
 
@@ -67,6 +82,13 @@ func TestGetStatVarGroup(t *testing.T) {
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file")
 			continue
+		}
+
+		if c.checkCount {
+			num := len(resp.StatVarGroups)
+			if num < 100 {
+				t.Errorf("Too few stat var groups: %d", num)
+			}
 		}
 
 		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
