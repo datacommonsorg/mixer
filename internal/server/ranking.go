@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Sourcer ranking is based on the following criteria in order:
+// Source ranking is based on the following criteria in order:
 // 1. More trusted source ranks higher
 // 2. Latest data ranks higher
 // 3. More data ranks higher
@@ -20,8 +20,6 @@
 package server
 
 import (
-	"sort"
-
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
@@ -45,10 +43,13 @@ var StatsRanking = map[RankKey]int{
 	{"EurostatData", ""}:                                                  1, // Unemployment Rate
 	{"NYT_COVID19", "NYT_COVID19_GitHub"}:                                 0, // Covid
 	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
+	{"WikidataPopulation", "WikidataPopulation"}:                          1001,
 }
 
-// LowestRank is the lowest ranking score.
-const LowestRank = 100
+// BaseRank is the base ranking score for sources. If a source is prefered, it
+// should be given a score lower than BaseRank in StatsRanking. If a source is not
+// prefered, it should be given a score higher than BaseRank in StatsRanking
+const BaseRank = 100
 
 // SeriesByRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
@@ -65,32 +66,32 @@ func (a SeriesByRank) Less(i, j int) bool {
 	keyi := RankKey{Prov: oi.ImportName, Mmethod: oi.MeasurementMethod}
 	scorei, ok := StatsRanking[keyi]
 	if !ok {
-		scorei = LowestRank
+		scorei = BaseRank
 	}
 	oj := a[j]
 	keyj := RankKey{Prov: oj.ImportName, Mmethod: oj.MeasurementMethod}
 	scorej, ok := StatsRanking[keyj]
 	if !ok {
-		scorej = LowestRank
+		scorej = BaseRank
 	}
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
 	}
 
-	datesi := []string{}
+	latesti := ""
 	for date := range a[i].Val {
-		datesi = append(datesi, date)
+		if date > latesti {
+			latesti = date
+		}
 	}
-	sort.Strings(datesi)
-	latesti := datesi[len(datesi)-1]
 
-	datesj := []string{}
+	latestj := ""
 	for date := range a[j].Val {
-		datesj = append(datesj, date)
+		if date > latestj {
+			latestj = date
+		}
 	}
-	sort.Strings(datesj)
-	latestj := datesj[len(datesj)-1]
 
 	// Series with latest data is ranked higher
 	if latesti != latestj {
@@ -98,8 +99,8 @@ func (a SeriesByRank) Less(i, j int) bool {
 	}
 
 	// Series with more data is ranked higher
-	if len(datesi) != len(datesj) {
-		return len(datesi) > len(datesj)
+	if len(a[i].Val) != len(a[j].Val) {
+		return len(a[i].Val) > len(a[j].Val)
 	}
 
 	// Compare other fields to get consistent ranking.
@@ -131,32 +132,32 @@ func (a byRank) Less(i, j int) bool {
 	keyi := RankKey{oi.ImportName, oi.MeasurementMethod}
 	scorei, ok := StatsRanking[keyi]
 	if !ok {
-		scorei = LowestRank
+		scorei = BaseRank
 	}
 	oj := a[j]
 	keyj := RankKey{oj.ImportName, oj.MeasurementMethod}
 	scorej, ok := StatsRanking[keyj]
 	if !ok {
-		scorej = LowestRank
+		scorej = BaseRank
 	}
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
 	}
 
-	datesi := []string{}
+	latesti := ""
 	for date := range a[i].Val {
-		datesi = append(datesi, date)
+		if date > latesti {
+			latesti = date
+		}
 	}
-	sort.Strings(datesi)
-	latesti := datesi[len(datesi)-1]
 
-	datesj := []string{}
+	latestj := ""
 	for date := range a[j].Val {
-		datesj = append(datesj, date)
+		if date > latestj {
+			latestj = date
+		}
 	}
-	sort.Strings(datesj)
-	latestj := datesj[len(datesj)-1]
 
 	// Series with latest data is ranked higher
 	if latesti != latestj {
@@ -164,8 +165,8 @@ func (a byRank) Less(i, j int) bool {
 	}
 
 	// Series with more data is ranked higher
-	if len(datesi) != len(datesj) {
-		return len(datesi) > len(datesj)
+	if len(a[i].Val) != len(a[j].Val) {
+		return len(a[i].Val) > len(a[j].Val)
 	}
 
 	// Compare other fields to get consistent ranking.

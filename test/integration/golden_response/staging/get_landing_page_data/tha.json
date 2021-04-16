@@ -16920,22 +16920,9 @@
       "Count_HousingUnit_RenterOccupied": {},
       "Count_Person": {
         "data": {
-          "1919-04-01": 437294,
-          "1929-07-16": 713384,
-          "1937-05-23": 890453,
-          "1947-04-26": 1178881,
-          "1960-04-25": 2136435,
-          "1970-04-01": 3077361,
-          "1980-04-01": 4697071,
-          "1990-04-01": 5882411,
-          "2000-04-01": 6355144,
-          "2010-07-01": 8280925,
-          "2012": 5674843,
-          "2016": 5696409,
-          "2017": 5686646,
-          "2019": 5676648
+          "2000": 6355144
         },
-        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+        "provenanceUrl": "http://data.un.org"
       },
       "Count_Person_10To14Years": {},
       "Count_Person_15OrMoreYears": {},
@@ -17184,21 +17171,9 @@
       "Count_HousingUnit_RenterOccupied": {},
       "Count_Person": {
         "data": {
-          "1937-05-23": 543846,
-          "1947-04-26": 535664,
-          "1960-04-25": 798483,
-          "1970-04-01": 1026450,
-          "1980-04-01": 1154850,
-          "1990-04-01": 1367183,
-          "2000-04-01": 1500127,
-          "2010-07-01": 1737041,
-          "2015": 1678284,
-          "2016": 1728242,
-          "2017": 1735762,
-          "2018": 1746840,
-          "2019": 1763742
+          "2018": 1763742
         },
-        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+        "provenanceUrl": "https://www.wikipedia.org"
       },
       "Count_Person_10To14Years": {},
       "Count_Person_15OrMoreYears": {},
@@ -17447,21 +17422,9 @@
       "Count_HousingUnit_RenterOccupied": {},
       "Count_Person": {
         "data": {
-          "1937-05-23": 598503,
-          "1947-04-26": 731722,
-          "1960-04-25": 1094774,
-          "1970-04-01": 1493955,
-          "1980-04-01": 1948287,
-          "1990-04-01": 2375476,
-          "2000-04-01": 2556260,
-          "2010-07-01": 2525987,
-          "2015": 2620517,
-          "2016": 2628818,
-          "2017": 2631435,
-          "2018": 2639226,
-          "2019": 2646401
+          "2018": 2646401
         },
-        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+        "provenanceUrl": "https://www.wikipedia.org"
       },
       "Count_Person_10To14Years": {},
       "Count_Person_15OrMoreYears": {},
@@ -17961,21 +17924,9 @@
       "Count_HousingUnit_RenterOccupied": {},
       "Count_Person": {
         "data": {
-          "1937-05-23": 744836,
-          "1947-04-26": 856373,
-          "1960-04-25": 743527,
-          "1970-04-01": 1006481,
-          "1980-04-01": 1496197,
-          "1990-04-01": 1542497,
-          "2000-04-01": 1691441,
-          "2010-07-01": 1746793,
-          "2015": 1844669,
-          "2016": 1857429,
-          "2017": 1862965,
-          "2018": 1869633,
-          "2019": 1874548
+          "2018": 1874548
         },
-        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+        "provenanceUrl": "https://www.wikipedia.org"
       },
       "Count_Person_10To14Years": {},
       "Count_Person_15OrMoreYears": {},
@@ -18136,7 +18087,7 @@
       {
         "dcid": "wikidataId/Q1861",
         "name": "Bangkok",
-        "pop": 5676648
+        "pop": 6355144
       },
       {
         "dcid": "wikidataId/Q271737",
@@ -18196,7 +18147,7 @@
       {
         "dcid": "wikidataId/Q271529",
         "name": "Samut Prakan",
-        "pop": 1326608
+        "pop": 1344875
       },
       {
         "dcid": "wikidataId/Q625463",
@@ -18214,14 +18165,14 @@
         "pop": 1246295
       },
       {
+        "dcid": "wikidataId/Q459748",
+        "name": "Pathum Thani",
+        "pop": 1163604
+      },
+      {
         "dcid": "wikidataId/Q382125",
         "name": "Sakon Nakhon",
         "pop": 1152282
-      },
-      {
-        "dcid": "wikidataId/Q459748",
-        "name": "Pathum Thani",
-        "pop": 1146092
       },
       {
         "dcid": "wikidataId/Q275377",
@@ -18256,7 +18207,7 @@
       {
         "dcid": "wikidataId/Q334841",
         "name": "Nakhon Pathom",
-        "pop": 917053
+        "pop": 920030
       },
       {
         "dcid": "wikidataId/Q275740",
@@ -18271,7 +18222,7 @@
       {
         "dcid": "wikidataId/Q275781",
         "name": "Phitsanulok",
-        "pop": 866891
+        "pop": 865247
       },
       {
         "dcid": "wikidataId/Q272247",
@@ -18351,7 +18302,7 @@
       {
         "dcid": "wikidataId/Q334686",
         "name": "Samut Sakhon",
-        "pop": 577964
+        "pop": 584703
       },
       {
         "dcid": "wikidataId/Q381889",
@@ -18446,7 +18397,7 @@
       {
         "dcid": "wikidataId/Q182565",
         "name": "Phuket",
-        "pop": 410211
+        "pop": 416582
       },
       {
         "dcid": "wikidataId/Q240540",
@@ -18501,7 +18452,7 @@
       {
         "dcid": "wikidataId/Q241884",
         "name": "Trat",
-        "pop": 229914
+        "pop": 229958
       },
       {
         "dcid": "wikidataId/Q334836",
