@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Sourcer ranking is based on the following criteria in order:
+// 1. More trusted source ranks higher
+// 2. Latest data ranks higher
+// 3. More data ranks higher
+
 package server
 
 import (
@@ -73,7 +78,6 @@ func (a SeriesByRank) Less(i, j int) bool {
 		return scorei < scorej
 	}
 
-	// Rank higher series with latest data
 	datesi := []string{}
 	for date := range a[i].Val {
 		datesi = append(datesi, date)
@@ -88,10 +92,12 @@ func (a SeriesByRank) Less(i, j int) bool {
 	sort.Strings(datesj)
 	latestj := datesj[len(datesj)-1]
 
+	// Series with latest data is ranked higher
 	if latesti != latestj {
 		return latesti > latestj
 	}
 
+	// Series with more data is ranked higher
 	if len(datesi) != len(datesj) {
 		return len(datesi) > len(datesj)
 	}
@@ -138,7 +144,6 @@ func (a byRank) Less(i, j int) bool {
 		return scorei < scorej
 	}
 
-	// Rank higher series with latest data
 	datesi := []string{}
 	for date := range a[i].Val {
 		datesi = append(datesi, date)
@@ -153,10 +158,12 @@ func (a byRank) Less(i, j int) bool {
 	sort.Strings(datesj)
 	latestj := datesj[len(datesj)-1]
 
+	// Series with latest data is ranked higher
 	if latesti != latestj {
 		return latesti > latestj
 	}
 
+	// Series with more data is ranked higher
 	if len(datesi) != len(datesj) {
 		return len(datesi) > len(datesj)
 	}
