@@ -16920,9 +16920,22 @@
       "Count_HousingUnit_RenterOccupied": {},
       "Count_Person": {
         "data": {
-          "2000": 6355144
+          "1919-04-01": 437294,
+          "1929-07-16": 713384,
+          "1937-05-23": 890453,
+          "1947-04-26": 1178881,
+          "1960-04-25": 2136435,
+          "1970-04-01": 3077361,
+          "1980-04-01": 4697071,
+          "1990-04-01": 5882411,
+          "2000-04-01": 6355144,
+          "2010-07-01": 8280925,
+          "2012": 5674843,
+          "2016": 5696409,
+          "2017": 5686646,
+          "2019": 5676648
         },
-        "provenanceUrl": "http://data.un.org"
+        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
       },
       "Count_Person_10To14Years": {},
       "Count_Person_15OrMoreYears": {},
@@ -18123,7 +18136,7 @@
       {
         "dcid": "wikidataId/Q1861",
         "name": "Bangkok",
-        "pop": 6355144
+        "pop": 5676648
       },
       {
         "dcid": "wikidataId/Q271737",

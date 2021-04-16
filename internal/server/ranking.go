@@ -14,7 +14,11 @@
 
 package server
 
-import pb "github.com/datacommonsorg/mixer/internal/proto"
+import (
+	"sort"
+
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+)
 
 // RankKey represents keys used for ranking.
 type RankKey struct {
@@ -43,9 +47,8 @@ const LowestRank = 100
 
 // SeriesByRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
-// protobuf version of byRank.
-// TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
-// decision, so the ranking is deterministic.
+//
+// This is the protobuf version of byRank.
 type SeriesByRank []*pb.SourceSeries
 
 func (a SeriesByRank) Len() int { return len(a) }
@@ -69,6 +72,30 @@ func (a SeriesByRank) Less(i, j int) bool {
 	if scorei != scorej {
 		return scorei < scorej
 	}
+
+	// Rank higher series with latest data
+	datesi := []string{}
+	for date := range a[i].Val {
+		datesi = append(datesi, date)
+	}
+	sort.Strings(datesi)
+	latesti := datesi[len(datesi)-1]
+
+	datesj := []string{}
+	for date := range a[j].Val {
+		datesj = append(datesj, date)
+	}
+	sort.Strings(datesj)
+	latestj := datesj[len(datesj)-1]
+
+	if latesti != latestj {
+		return latesti > latestj
+	}
+
+	if len(datesi) != len(datesj) {
+		return len(datesi) > len(datesj)
+	}
+
 	// Compare other fields to get consistent ranking.
 	if oi.ObservationPeriod != oj.ObservationPeriod {
 		return oi.ObservationPeriod < oj.ObservationPeriod
@@ -85,8 +112,6 @@ func (a SeriesByRank) Less(i, j int) bool {
 	return true
 }
 
-// TODO(shifucun): add observationPeriod, unit, scalingFactor to ranking
-// decision, so the ranking is deterministic.
 // byRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
 type byRank []*SourceSeries
@@ -112,6 +137,30 @@ func (a byRank) Less(i, j int) bool {
 	if scorei != scorej {
 		return scorei < scorej
 	}
+
+	// Rank higher series with latest data
+	datesi := []string{}
+	for date := range a[i].Val {
+		datesi = append(datesi, date)
+	}
+	sort.Strings(datesi)
+	latesti := datesi[len(datesi)-1]
+
+	datesj := []string{}
+	for date := range a[j].Val {
+		datesj = append(datesj, date)
+	}
+	sort.Strings(datesj)
+	latestj := datesj[len(datesj)-1]
+
+	if latesti != latestj {
+		return latesti > latestj
+	}
+
+	if len(datesi) != len(datesj) {
+		return len(datesi) > len(datesj)
+	}
+
 	// Compare other fields to get consistent ranking.
 	if oi.ObservationPeriod != oj.ObservationPeriod {
 		return oi.ObservationPeriod < oj.ObservationPeriod
