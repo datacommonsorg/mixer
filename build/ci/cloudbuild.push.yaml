@@ -32,11 +32,6 @@ steps:
           --go-grpc_out=internal \
           --go-grpc_opt=requireUnimplementedServers=false \
           proto/*.proto
-  # Run tests
-  # - id: test
-  #   name: golang
-  #   env: ["GO111MODULE=on"]
-  #   args: ["go", "test", "./..."]
 
   # Push mixer server image to container registry
   - id: push-image
@@ -52,6 +47,7 @@ steps:
           .
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
         docker push gcr.io/datcom-ci/datacommons-mixer:latest
+
   # Push the grpc descriptor to gcs.
   - id: push-grpc-descriptor
     name: gcr.io/cloud-builders/gsutil
@@ -64,6 +60,7 @@ steps:
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
+
   # Update all the versions.
   - id: update-version
     name: "gcr.io/cloud-builders/git"
@@ -75,6 +72,6 @@ steps:
 
 options:
   volumes:
-  - name: go-modules
-    path: /go
-  machineType: 'N1_HIGHCPU_8'
+    - name: go-modules
+      path: /go
+  machineType: "N1_HIGHCPU_8"

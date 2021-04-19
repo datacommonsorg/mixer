@@ -1,5 +1,5 @@
-#!/bin/bash
-# Copyright 2019 Google LLC
+  #!/bin/bash
+# Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,14 @@
 # limitations under the License.
 
 
-# Push the Docker image used for deployment to Container Registry
+# Push docker image and grpc descriptor from local build
 
-set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT="$(dirname "$DIR")"
 
-docker build -t gcr.io/datcom-ci/deploy-tool:latest -f deploy/Dockerfile .
-docker push gcr.io/datcom-ci/deploy-tool:latest
+cd $ROOT
+
+TAG=$(git rev-parse --short HEAD)
+
+cloud-build-local --config=build/ci/cloudbuild.push.yaml --dryrun=false \
+--substitutions SHORT_SHA=$TAG
