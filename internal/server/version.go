@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"fmt"
 	"os"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -26,14 +25,10 @@ import (
 func (s *Server) GetVersion(ctx context.Context,
 	in *pb.GetVersionRequest) (*pb.GetVersionResponse, error) {
 
-	store := os.Getenv("STORE_PROJECT")
-	bigQuery := os.Getenv("BIG_QUERY")
-	bigTable := os.Getenv("BIG_TABLE")
-	mixer := os.Getenv("MIXER_HASH")
-
-	text := fmt.Sprintf(
-		"store:%s\nmixer:%s\nbigquery:%s\nbigtable:%s",
-		store, mixer, bigQuery, bigTable)
-	out := pb.GetVersionResponse{Info: text}
-	return &out, nil
+	return &pb.GetVersionResponse{
+		Store:    os.Getenv("STORE_PROJECT"),
+		BigQuery: os.Getenv("BIG_QUERY"),
+		BigTable: os.Getenv("BIG_TABLE"),
+		GitHash:  os.Getenv("MIXER_HASH"),
+	}, nil
 }

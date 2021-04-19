@@ -304,8 +304,14 @@ message GetVersionRequest {
 
 // Get version response.
 message GetVersionResponse {
-  // Version information in plain text.
-  string info = 1;
+  // Store project
+  string store = 1;
+  // Big Query dataset
+  string big_query = 2;
+  // Bigtable instance
+  string big_table = 3;
+  // Github commit hash
+  string git_hash = 4;
 }
 
 // Wrapper for all entities returned from search which belong to a single type.
