@@ -298,6 +298,22 @@ message SearchResponse {
   repeated SearchResultSection section = 1;
 }
 
+// Etmpty request to get version information.
+message GetVersionRequest {
+}
+
+// Get version response.
+message GetVersionResponse {
+  // Store project
+  string store = 1;
+  // Big Query dataset
+  string big_query = 2;
+  // Bigtable instance
+  string big_table = 3;
+  // Github commit hash
+  string git_hash = 4;
+}
+
 // Wrapper for all entities returned from search which belong to a single type.
 message SearchResultSection {
   // Type of entities in this section.
@@ -778,6 +794,13 @@ service Mixer {
   rpc Search(SearchRequest) returns (SearchResponse) {
     option (google.api.http) = {
       get: "/search"
+    };
+  }
+
+  // Retrieves the version metadata.
+  rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {
+    option (google.api.http) = {
+      get: "/version"
     };
   }
 
