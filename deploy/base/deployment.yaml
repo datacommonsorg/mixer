@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 # Mixer Kubernetes Deployment config. (https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 # This is to be extended by the dev/autopush/staging/prod overlay.
 # The deployment contains grpc mixer container and esp container that transcodes grpc to JSON.
@@ -24,15 +23,15 @@ metadata:
 spec:
   replicas: 1
   strategy:
-      type: RollingUpdate
-      rollingUpdate:
-        # maximum number of Pods that can be created over the desired number of Pods
-        maxSurge: 1
-        # maximum number of Pods that can be unavailable during the update process
-        maxUnavailable: 25%
+    type: RollingUpdate
+    rollingUpdate:
+      # maximum number of Pods that can be created over the desired number of Pods
+      maxSurge: 1
+      # maximum number of Pods that can be unavailable during the update process
+      maxUnavailable: 25%
   selector:
-      matchLabels:
-        app: mixer-grpc
+    matchLabels:
+      app: mixer-grpc
   template:
     metadata:
       labels:
@@ -63,26 +62,31 @@ spec:
             - name: schema-mapping
               mountPath: /datacommons/mapping
           env:
-          - name: MIXER_PROJECT
-            valueFrom:
-              configMapKeyRef:
-                name: mixer-configmap
-                key: mixerProject
-          - name: STORE_PROJECT
-            valueFrom:
-              configMapKeyRef:
-                name: store-configmap
-                key: store.project
-          - name: BIG_QUERY
-            valueFrom:
-              configMapKeyRef:
-                name: store-configmap
-                key: bigquery.version
-          - name: BIG_TABLE
-            valueFrom:
-              configMapKeyRef:
-                name: store-configmap
-                key: bigtable.version
+            - name: MIXER_PROJECT
+              valueFrom:
+                configMapKeyRef:
+                  name: mixer-configmap
+                  key: mixerProject
+            - name: STORE_PROJECT
+              valueFrom:
+                configMapKeyRef:
+                  name: store-configmap
+                  key: store.project
+            - name: BIG_QUERY
+              valueFrom:
+                configMapKeyRef:
+                  name: store-configmap
+                  key: bigquery.version
+            - name: BIG_TABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: store-configmap
+                  key: bigtable.version
+            - name: MIXER_HASH
+              valueFrom:
+                configMapKeyRef:
+                  name: githash-configmap
+                  key: mixer_hash.txt
           ports:
             - containerPort: 12345
           readinessProbe:
@@ -104,11 +108,11 @@ spec:
             - --rollout_strategy=managed
             - --healthz=healthz
           env:
-          - name: SERVICE_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: mixer-configmap
-                key: serviceName
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mixer-configmap
+                  key: serviceName
           resources:
             limits:
               memory: "0.5G"
