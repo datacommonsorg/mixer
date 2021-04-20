@@ -19,9 +19,9 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-cd $ROOT
+cd "$ROOT"
 
 TAG=$(git rev-parse --short HEAD)
 
 cloud-build-local --config=build/ci/cloudbuild.push.yaml --dryrun=false \
---substitutions SHORT_SHA=$TAG
+--substitutions SHORT_SHA="$TAG"
