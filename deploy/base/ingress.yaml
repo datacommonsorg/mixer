@@ -22,12 +22,12 @@ metadata:
   name: mixer-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: mixer-ip
-    networking.gke.io/managed-certificates: mixer-certificate
+    ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate
 spec:
   rules:
-  -  http:
-      paths:
-      - path: /*
-        backend:
-          serviceName: mixer-service
-          servicePort: 80
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: mixer-service
+              servicePort: 80

@@ -22,21 +22,28 @@ kind: Kustomization
 nameSuffix: -prod
 
 resources:
-- ../../datacommons
+  - ../../datacommons
 
 configMapGenerator:
-- name: mixer-configmap
-  behavior: create
-  namespace: mixer
-  literals:
-  - mixerProject=datcom-mixer
-  - serviceName=api.datacommons.org
+  - name: mixer-configmap
+    behavior: create
+    namespace: mixer
+    literals:
+      - mixerProject=datcom-mixer
+      - serviceName=api.datacommons.org
 
 patchesStrategicMerge:
-- |-
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: mixer-grpc
-  spec:
-    replicas: 60
+  - |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: mixer-grpc
+    spec:
+      replicas: 60
+  - |-
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: mixer-ingress
+      annotations:
+        ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate,multi-domain
