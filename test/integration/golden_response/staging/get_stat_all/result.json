@@ -142,15 +142,6 @@
             },
             {
               "val": {
-                "2011": 311591917
-              },
-              "measurementMethod": "GoogleKGHumanCurated",
-              "importName": "WikipediaAndHumanCurated",
-              "provenanceDomain": "wikipedia.org",
-              "provenanceUrl": "https://www.wikipedia.org"
-            },
-            {
-              "val": {
                 "1790": 3929214,
                 "1800": 5308483,
                 "1810": 7239881,
@@ -235,6 +226,15 @@
               "importName": "OECDRegionalDemography",
               "provenanceDomain": "oecd.org",
               "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
+            },
+            {
+              "val": {
+                "2011": 311591917
+              },
+              "measurementMethod": "HumanCuratedStats",
+              "importName": "KGHumanCurated",
+              "provenanceDomain": "google.com",
+              "provenanceUrl": "https://google.com"
             },
             {
               "val": {
@@ -435,15 +435,6 @@
           "sourceSeries": [
             {
               "val": {
-                "2011": 37691912
-              },
-              "measurementMethod": "GoogleKGHumanCurated",
-              "importName": "WikipediaAndHumanCurated",
-              "provenanceDomain": "wikipedia.org",
-              "provenanceUrl": "https://www.wikipedia.org"
-            },
-            {
-              "val": {
                 "1850": 92597,
                 "1860": 379994,
                 "1870": 560247,
@@ -520,6 +511,15 @@
               "importName": "OECDRegionalDemography",
               "provenanceDomain": "oecd.org",
               "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
+            },
+            {
+              "val": {
+                "2011": 37691912
+              },
+              "measurementMethod": "HumanCuratedStats",
+              "importName": "KGHumanCurated",
+              "provenanceDomain": "google.com",
+              "provenanceUrl": "https://google.com"
             },
             {
               "val": {
@@ -719,21 +719,21 @@
           "sourceSeries": [
             {
               "val": {
-                "2013": 77846
-              },
-              "measurementMethod": "GoogleKGHumanCurated",
-              "importName": "WikipediaAndHumanCurated",
-              "provenanceDomain": "wikipedia.org",
-              "provenanceUrl": "https://www.wikipedia.org"
-            },
-            {
-              "val": {
                 "2010": 74066
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
               "provenanceDomain": "wikidata.org",
               "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+            },
+            {
+              "val": {
+                "2013": 77846
+              },
+              "measurementMethod": "HumanCuratedStats",
+              "importName": "KGHumanCurated",
+              "provenanceDomain": "google.com",
+              "provenanceUrl": "https://google.com"
             },
             {
               "val": {
