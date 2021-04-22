@@ -22,7 +22,7 @@ kind: Kustomization
 nameSuffix: -staging
 
 resources:
-  - ../../datacommons
+  - ../../datacommons-svobs
 
 configMapGenerator:
   - name: mixer-configmap
@@ -47,3 +47,15 @@ patchesStrategicMerge:
       name: mixer-ingress
       annotations:
         ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate,multi-domain
+
+# Patch mixer argument, to add the svobs_mode flag
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: mixer-grpc
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/args/0
+        value: --svobs_mode=true
