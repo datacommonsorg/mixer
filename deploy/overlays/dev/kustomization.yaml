@@ -26,28 +26,37 @@ nameSuffix: -dev
 namespace: mixer
 
 bases:
-- ../../datacommons
+  - ../../datacommons-svobs
 
 resources:
-- serviceaccount.yaml
+  - serviceaccount.yaml
 
 configMapGenerator:
-- name: mixer-configmap
-  behavior: create
-  literals:
-    - mixerProject=datcom-mixer-dev
-    - serviceName=
+  - name: mixer-configmap
+    behavior: create
+    literals:
+      - mixerProject=datcom-mixer-dev
+      - serviceName=
 
 generatorOptions:
   disableNameSuffixHash: true
 
 patchesStrategicMerge:
-- patch_deployment.yaml
+  - patch_deployment.yaml
 
 patchesJson6902:
-- target:
-    group: apps
-    version: v1
-    kind: Deployment
-    name: mixer-grpc
-  path: patch_esp.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: mixer-grpc
+    path: patch_esp.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: mixer-grpc
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/args/0
+        value: --svobs_mode=true
