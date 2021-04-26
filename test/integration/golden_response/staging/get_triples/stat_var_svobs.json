@@ -43,8 +43,8 @@
     {
       "subjectId": "Count_Person",
       "predicate": "memberOf",
-      "objectId": "dc/g/Count_Person",
-      "objectName": "Count Of Person",
+      "objectId": "dc/g/Variables_Demographics",
+      "objectName": "Variables Of Person",
       "objectTypes": [
         "StatVarGroup"
       ],
@@ -405,8 +405,8 @@
     {
       "subjectId": "Count_Person_Female",
       "predicate": "memberOf",
-      "objectId": "dc/g/Count_Person_Gender",
-      "objectName": "Count Of Person By Gender",
+      "objectId": "dc/g/Variables_Person_Gender",
+      "objectName": "Variables Of Person By Gender",
       "objectTypes": [
         "StatVarGroup"
       ],

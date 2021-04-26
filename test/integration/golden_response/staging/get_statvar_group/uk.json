@@ -1,33 +1,55 @@
 {
   "statVarGroups": {
-    "dc/g/Amount_Consumption_ConsumedThing": {
-      "absoluteName": "Amount Of Consumption By ConsumedThing",
-      "childStatVars": [
-        {
-          "id": "Amount_Consumption_Electricity_PerCapita",
-          "searchName": "Amount Of Consumption With Consumed Thing Electricity As Fraction Of Per Capita",
-          "displayName": "Amount Of Electricity As Fraction Of PerCapita"
-        },
-        {
-          "id": "Amount_Consumption_Energy_PerCapita",
-          "searchName": "Amount Of Consumption With Consumed Thing Energy As Fraction Of Per Capita",
-          "displayName": "Amount Of Energy As Fraction Of PerCapita"
-        },
-        {
-          "id": "Amount_Consumption_RenewableEnergy_AsFractionOf_Amount_Consumption_Energy",
-          "searchName": "Amount Of Consumption With Consumed Thing Renewable Energy As Fraction Of Amount Consumption Energy",
-          "displayName": "Amount Of RenewableEnergy As Fraction Of Amount Consumption Energy"
-        }
-      ],
+    "dc/g/BirthEvent": {
+      "absoluteName": "BirthEvent",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Amount_Consumption_ConsumedThing_ConsumerAge",
-          "specializedEntity": "ConsumerAge"
+          "id": "dc/g/BirthEvent_MedicalStatus",
+          "specializedEntity": "MedicalStatus"
         }
       ]
     },
-    "dc/g/Amount_Consumption_ConsumedThing_ConsumerAge": {
-      "absoluteName": "Amount Of Consumption By ConsumedThing, ConsumerAge",
+    "dc/g/BirthEvent_MedicalStatus": {
+      "absoluteName": "BirthEvent By MedicalStatus",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_BirthEvent_MedicalStatus",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/COVID-19": {
+      "absoluteName": "COVID-19",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Legislation_PolicyType",
+          "specializedEntity": "Legislation, PolicyType"
+        },
+        {
+          "id": "dc/g/MedicalConditionIncident_MedicalStatus",
+          "specializedEntity": "MedicalConditionIncident, MedicalStatus"
+        },
+        {
+          "id": "dc/g/PlaceVisitEvent_PlaceCategory",
+          "specializedEntity": "PlaceVisitEvent, PlaceCategory"
+        }
+      ]
+    },
+    "dc/g/Consumption_ConsumedThing": {
+      "absoluteName": "Consumption By ConsumedThing",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Consumption_ConsumedThing_ConsumerAge",
+          "specializedEntity": "ConsumerAge"
+        },
+        {
+          "id": "dc/g/Variables_Consumption_ConsumedThing",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Consumption_ConsumedThing_ConsumerAge": {
+      "absoluteName": "Consumption By ConsumedThing, ConsumerAge",
       "childStatVars": [
         {
           "id": "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears",
@@ -36,8 +58,82 @@
         }
       ]
     },
-    "dc/g/Amount_Debt_Debtor": {
-      "absoluteName": "Amount Of Debt By Debtor",
+    "dc/g/Crime": {
+      "absoluteName": "Crime",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/CriminalActivities",
+          "specializedEntity": "CriminalActivities"
+        }
+      ]
+    },
+    "dc/g/CriminalActivities": {
+      "absoluteName": "CriminalActivities",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/CriminalActivities_CrimeType",
+          "specializedEntity": "CrimeType"
+        }
+      ]
+    },
+    "dc/g/CriminalActivities_CrimeType": {
+      "absoluteName": "CriminalActivities By CrimeType",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/CriminalActivities_CrimeType_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_CriminalActivities_CrimeType",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/CriminalActivities_CrimeType_Gender": {
+      "absoluteName": "CriminalActivities By CrimeType, Gender",
+      "childStatVars": [
+        {
+          "id": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
+          "searchName": "Count Of Criminal Activities With Crime Type Murder And Non Negligent Manslaughter, Gender Female As Fraction Of Count Person Female",
+          "displayName": "Count Of MurderAndNonNegligentManslaughter, Female As Fraction Of Count Person Female"
+        },
+        {
+          "id": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male",
+          "searchName": "Count Of Criminal Activities With Crime Type Murder And Non Negligent Manslaughter, Gender Male As Fraction Of Count Person Male",
+          "displayName": "Count Of MurderAndNonNegligentManslaughter, Male As Fraction Of Count Person Male"
+        }
+      ]
+    },
+    "dc/g/CycloneEvent": {
+      "absoluteName": "CycloneEvent",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/CycloneEvent_MaxClassification",
+          "specializedEntity": "MaxClassification"
+        },
+        {
+          "id": "dc/g/Variables_CycloneEvent",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/CycloneEvent_MaxClassification": {
+      "absoluteName": "CycloneEvent By MaxClassification",
+      "childStatVars": [
+        {
+          "id": "Count_CycloneEvent_TropicalDisturbance",
+          "searchName": "Count Of Cyclone Event With Max Classification Tropical Disturbance",
+          "displayName": "Count Of TropicalDisturbance"
+        },
+        {
+          "id": "Count_CycloneEvent_TropicalStorm",
+          "searchName": "Count Of Cyclone Event With Max Classification Tropical Storm",
+          "displayName": "Count Of TropicalStorm"
+        }
+      ]
+    },
+    "dc/g/Debt_Debtor": {
+      "absoluteName": "Debt By Debtor",
       "childStatVars": [
         {
           "id": "Amount_Debt_Government",
@@ -51,82 +147,145 @@
         }
       ]
     },
-    "dc/g/Amount_EconomicActivity_ActivitySource": {
-      "absoluteName": "Amount Of EconomicActivity By ActivitySource",
-      "childStatVars": [
-        {
-          "id": "Amount_EconomicActivity_GrossDomesticProduction_Nominal",
-          "searchName": "Nominal Amount Of Economic Activity With Activity Source Gross Domestic Production",
-          "displayName": "Nominal Amount Of GrossDomesticProduction"
-        },
-        {
-          "id": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
-          "searchName": "Nominal Amount Of Economic Activity With Activity Source Gross Domestic Production As Fraction Of Count Person",
-          "displayName": "Nominal Amount Of GrossDomesticProduction As Fraction Of Count Person"
-        },
-        {
-          "id": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita",
-          "searchName": "Nominal Amount Of Economic Activity With Activity Source Gross Domestic Production As Fraction Of Per Capita",
-          "displayName": "Nominal Amount Of GrossDomesticProduction As Fraction Of PerCapita"
-        },
-        {
-          "id": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity",
-          "searchName": "Purchasing Power Parity Amount Of Economic Activity With Activity Source Gross National Income",
-          "displayName": "PurchasingPowerParity Amount Of GrossNationalIncome"
-        },
-        {
-          "id": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-          "searchName": "Purchasing Power Parity Amount Of Economic Activity With Activity Source Gross National Income As Fraction Of Per Capita",
-          "displayName": "PurchasingPowerParity Amount Of GrossNationalIncome As Fraction Of PerCapita"
-        },
-        {
-          "id": "Amount_EconomicActivity_GrossValueAdded_RealValue",
-          "searchName": "Real Value Amount Of Economic Activity With Activity Source Gross Value Added",
-          "displayName": "RealValue Amount Of GrossValueAdded"
-        },
-        {
-          "id": "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction",
-          "searchName": "Growth Rate Amount Of Economic Activity With Activity Source Gross Domestic Production",
-          "displayName": "GrowthRate Amount Of GrossDomesticProduction"
-        }
-      ],
+    "dc/g/Demographics": {
+      "absoluteName": "Demographics",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType",
+          "id": "dc/g/BirthEvent",
+          "specializedEntity": "BirthEvent"
+        },
+        {
+          "id": "dc/g/Person_Age",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Person_EducationalAttainment",
+          "specializedEntity": "EducationalAttainment"
+        },
+        {
+          "id": "dc/g/Person_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_Demographics",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Disasters": {
+      "absoluteName": "Disasters",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/CycloneEvent",
+          "specializedEntity": "CycloneEvent"
+        },
+        {
+          "id": "dc/g/EarthquakeEvent",
+          "specializedEntity": "EarthquakeEvent"
+        }
+      ]
+    },
+    "dc/g/EarthquakeEvent": {
+      "absoluteName": "EarthquakeEvent",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/EarthquakeEvent_Magnitude",
+          "specializedEntity": "Magnitude"
+        },
+        {
+          "id": "dc/g/Variables_EarthquakeEvent",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/EarthquakeEvent_Magnitude": {
+      "absoluteName": "EarthquakeEvent By Magnitude",
+      "childStatVars": [
+        {
+          "id": "Count_EarthquakeEvent_M3Onwards",
+          "searchName": "Count Of Earthquake Event With Magnitude M 3 Onwards",
+          "displayName": "Count Of M3Onwards"
+        },
+        {
+          "id": "Count_EarthquakeEvent_M3To4",
+          "searchName": "Count Of Earthquake Event With Magnitude M 3 To 4",
+          "displayName": "Count Of M3To4"
+        },
+        {
+          "id": "Count_EarthquakeEvent_M4Onwards",
+          "searchName": "Count Of Earthquake Event With Magnitude M 4 Onwards",
+          "displayName": "Count Of M4Onwards"
+        },
+        {
+          "id": "Count_EarthquakeEvent_M4To5",
+          "searchName": "Count Of Earthquake Event With Magnitude M 4 To 5",
+          "displayName": "Count Of M4To5"
+        },
+        {
+          "id": "Count_EarthquakeEvent_M5Onwards",
+          "searchName": "Count Of Earthquake Event With Magnitude M 5 Onwards",
+          "displayName": "Count Of M5Onwards"
+        },
+        {
+          "id": "Count_EarthquakeEvent_M5To6",
+          "searchName": "Count Of Earthquake Event With Magnitude M 5 To 6",
+          "displayName": "Count Of M5To6"
+        }
+      ]
+    },
+    "dc/g/EconomicActivity": {
+      "absoluteName": "EconomicActivity",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/EconomicActivity_ActivitySource",
+          "specializedEntity": "ActivitySource"
+        },
+        {
+          "id": "dc/g/Variables_EconomicActivity",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/EconomicActivity_ActivitySource": {
+      "absoluteName": "EconomicActivity By ActivitySource",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/EconomicActivity_ActivitySource_ExpenditureType",
           "specializedEntity": "ExpenditureType"
         },
         {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Isic",
+          "id": "dc/g/EconomicActivity_ActivitySource_Isic",
           "specializedEntity": "Isic"
         },
         {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_Remunerator",
+          "id": "dc/g/EconomicActivity_ActivitySource_Remunerator",
           "specializedEntity": "Remunerator"
+        },
+        {
+          "id": "dc/g/Variables_EconomicActivity_ActivitySource",
+          "specializedEntity": "Variables"
         }
       ]
     },
-    "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType": {
-      "absoluteName": "Amount Of EconomicActivity By ActivitySource, ExpenditureType",
-      "childStatVars": [
-        {
-          "id": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
-          "searchName": "Amount Of Economic Activity With Activity Source Expenditure Activity, Expenditure Type Healthcare Expenditure As Fraction Of Count Person",
-          "displayName": "Amount Of ExpenditureActivity, HealthcareExpenditure As Fraction Of Count Person"
-        }
-      ],
+    "dc/g/EconomicActivity_ActivitySource_ExpenditureType": {
+      "absoluteName": "EconomicActivity By ActivitySource, ExpenditureType",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Expensor",
+          "id": "dc/g/EconomicActivity_ActivitySource_ExpenditureType_Expensor",
           "specializedEntity": "Expensor"
         },
         {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Remunerator",
+          "id": "dc/g/EconomicActivity_ActivitySource_ExpenditureType_Remunerator",
           "specializedEntity": "Remunerator"
+        },
+        {
+          "id": "dc/g/Variables_EconomicActivity_ActivitySource_ExpenditureType",
+          "specializedEntity": "Variables"
         }
       ]
     },
-    "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Expensor": {
-      "absoluteName": "Amount Of EconomicActivity By ActivitySource, ExpenditureType, Expensor",
+    "dc/g/EconomicActivity_ActivitySource_ExpenditureType_Expensor": {
+      "absoluteName": "EconomicActivity By ActivitySource, ExpenditureType, Expensor",
       "childStatVars": [
         {
           "id": "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government",
@@ -150,8 +309,8 @@
         }
       ]
     },
-    "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Remunerator": {
-      "absoluteName": "Amount Of EconomicActivity By ActivitySource, ExpenditureType, Remunerator",
+    "dc/g/EconomicActivity_ActivitySource_ExpenditureType_Remunerator": {
+      "absoluteName": "EconomicActivity By ActivitySource, ExpenditureType, Remunerator",
       "childStatVars": [
         {
           "id": "Amount_EconomicActivity_ExpenditureActivity_TertiaryEducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government",
@@ -160,8 +319,8 @@
         }
       ]
     },
-    "dc/g/Amount_EconomicActivity_ActivitySource_Isic": {
-      "absoluteName": "Amount Of EconomicActivity By ActivitySource, Isic",
+    "dc/g/EconomicActivity_ActivitySource_Isic": {
+      "absoluteName": "EconomicActivity By ActivitySource, Isic",
       "childStatVars": [
         {
           "id": "Amount_EconomicActivity_GrossValueAdded_ISICAgricultureHuntingForestryFishing_RealValue",
@@ -200,27 +359,94 @@
         }
       ]
     },
-    "dc/g/Amount_EconomicActivity_ActivitySource_Remunerator": {
-      "absoluteName": "Amount Of EconomicActivity By ActivitySource, Remunerator",
+    "dc/g/EconomicActivity_ActivitySource_Remunerator": {
+      "absoluteName": "EconomicActivity By ActivitySource, Remunerator",
       "childStatVarGroups": [
         {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource_ExpenditureType_Remunerator",
+          "id": "dc/g/EconomicActivity_ActivitySource_ExpenditureType_Remunerator",
           "specializedEntity": "ExpenditureType"
         }
       ]
     },
-    "dc/g/Amount_Emissions_EmittedThing": {
-      "absoluteName": "Amount Of Emissions By EmittedThing",
-      "childStatVars": [
+    "dc/g/Economics": {
+      "absoluteName": "Economics",
+      "childStatVarGroups": [
         {
-          "id": "Amount_Emissions_CarbonDioxide_PerCapita",
-          "searchName": "Amount Of Emissions With Emitted Thing Carbon Dioxide As Fraction Of Per Capita",
-          "displayName": "Amount Of CarbonDioxide As Fraction Of PerCapita"
+          "id": "dc/g/Consumption_ConsumedThing",
+          "specializedEntity": "Consumption, ConsumedThing"
+        },
+        {
+          "id": "dc/g/EconomicActivity",
+          "specializedEntity": "EconomicActivity"
+        },
+        {
+          "id": "dc/g/Production_ProducedThing",
+          "specializedEntity": "Production, ProducedThing"
         }
       ]
     },
-    "dc/g/Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType": {
-      "absoluteName": "Amount Of Legislation By Category, Expenditure, LegislationPassedBy, PolicyType",
+    "dc/g/Education": {
+      "absoluteName": "Education",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_EducationalAttainment",
+          "specializedEntity": "EducationalAttainment"
+        }
+      ]
+    },
+    "dc/g/Employment": {
+      "absoluteName": "Employment",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_EmploymentStatus",
+          "specializedEntity": "EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Variables_Employment",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Environment": {
+      "absoluteName": "Environment",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Consumption_ConsumedThing",
+          "specializedEntity": "Consumption, ConsumedThing"
+        },
+        {
+          "id": "dc/g/Production_ProducedThing",
+          "specializedEntity": "Production, ProducedThing"
+        },
+        {
+          "id": "dc/g/Variables_Environment",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Health": {
+      "absoluteName": "Health",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/MortalityEvent",
+          "specializedEntity": "MortalityEvent"
+        },
+        {
+          "id": "dc/g/Person_HealthBehavior",
+          "specializedEntity": "HealthBehavior"
+        },
+        {
+          "id": "dc/g/Person_HealthOutcome",
+          "specializedEntity": "HealthOutcome"
+        },
+        {
+          "id": "dc/g/Variables_Health",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Legislation_Category_Expenditure_LegislationPassedBy_PolicyType": {
+      "absoluteName": "Legislation By Category, Expenditure, LegislationPassedBy, PolicyType",
       "childStatVars": [
         {
           "id": "dc/58e1nwlf3b4",
@@ -244,8 +470,547 @@
         }
       ]
     },
-    "dc/g/Amount_Production_ProducedThing": {
-      "absoluteName": "Amount Of Production By ProducedThing",
+    "dc/g/Legislation_Category_LegislationPassedBy": {
+      "absoluteName": "Legislation By Category, LegislationPassedBy",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Legislation_Category_Expenditure_LegislationPassedBy_PolicyType",
+          "specializedEntity": "Expenditure, PolicyType"
+        },
+        {
+          "id": "dc/g/Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage",
+          "specializedEntity": "PolicyType, SpatialCoverage"
+        },
+        {
+          "id": "dc/g/Variables_Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage": {
+      "absoluteName": "Legislation By Category, LegislationPassedBy, PolicyType, SpatialCoverage",
+      "childStatVars": [
+        {
+          "id": "dc/4c6jn5rz7gel7",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/5rm8q9w0ktg15",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/cbyv2dhmtlp6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/cmf4pw2gpn1pf",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/ehx7mbn98glvd",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Public Transit Closure, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PublicTransitClosure, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/gd1dnw2qqvex8",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/gwh28ge42vved",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/m6dc1gf715hh6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/mje8p4h6802v3",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/mmw8xlxhcg3f7",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/nghthld2vg2j1",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/qbxt2mfr528y6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/qx5qb5cbem785",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/qz7xe3jx2sfc8",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Public Transit Closure, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PublicTransitClosure, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/rmlel1n5en28h",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/t3tn162x3hc32",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/tqkqfxys6heeb",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/wjecmxzfw6j27",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/wye626mejjnh3",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/z2mrynz0z0np6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, SelectedAdministrativeAreas"
+        }
+      ]
+    },
+    "dc/g/Legislation_PolicyType": {
+      "absoluteName": "Legislation By PolicyType",
+      "childStatVars": [
+        {
+          "id": "dc/4eg7509rc5qsf",
+          "searchName": "Policy Extent Of Legislation With Policy Type Debt Or Contract Relief",
+          "displayName": "PolicyExtent Of DebtOrContractRelief"
+        },
+        {
+          "id": "dc/k6718pj7zm3w3",
+          "searchName": "Policy Extent Of Legislation With Policy Type International Travel Restriction",
+          "displayName": "PolicyExtent Of InternationalTravelRestriction"
+        },
+        {
+          "id": "dc/sp757cedbv057",
+          "searchName": "Policy Extent Of Legislation With Policy Type Testing Eligibility",
+          "displayName": "PolicyExtent Of TestingEligibility"
+        },
+        {
+          "id": "dc/zl73qp466bs28",
+          "searchName": "Policy Extent Of Legislation With Policy Type Contact Tracing",
+          "displayName": "PolicyExtent Of ContactTracing"
+        }
+      ]
+    },
+    "dc/g/MedicalConditionIncident_MedicalStatus": {
+      "absoluteName": "MedicalConditionIncident By MedicalStatus",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_MedicalConditionIncident_MedicalStatus",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MedicalTest_MedicalCondition": {
+      "absoluteName": "MedicalTest By MedicalCondition",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/MedicalTest_MedicalCondition_MedicalTestingMethod",
+          "specializedEntity": "MedicalTestingMethod"
+        },
+        {
+          "id": "dc/g/Variables_MedicalTest_MedicalCondition",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MedicalTest_MedicalCondition_MedicalTestingMethod": {
+      "absoluteName": "MedicalTest By MedicalCondition, MedicalTestingMethod",
+      "childStatVars": [
+        {
+          "id": "CumulativeCount_MedicalTest_COVID_19_PCR",
+          "searchName": "Cumulative Count Of Medical Test With Medical Condition COVID_19, Medical Testing Method COVID 19 PCRTest",
+          "displayName": "CumulativeCount Of COVID_19, COVID19PCRTest"
+        },
+        {
+          "id": "IncrementalCount_MedicalTest_COVID_19_PCR",
+          "searchName": "Incremental Count Of Medical Test With Medical Condition COVID_19, Medical Testing Method COVID 19 PCRTest",
+          "displayName": "IncrementalCount Of COVID_19, COVID19PCRTest"
+        }
+      ]
+    },
+    "dc/g/Miscellaneous": {
+      "absoluteName": "Miscellaneous",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Debt_Debtor",
+          "specializedEntity": "Debt, Debtor"
+        },
+        {
+          "id": "dc/g/Legislation_Category_LegislationPassedBy",
+          "specializedEntity": "Legislation, Category, LegislationPassedBy"
+        },
+        {
+          "id": "dc/g/MedicalTest_MedicalCondition",
+          "specializedEntity": "MedicalTest, MedicalCondition"
+        },
+        {
+          "id": "dc/g/Person_PlaceOfResidenceClassification",
+          "specializedEntity": "PlaceOfResidenceClassification"
+        },
+        {
+          "id": "dc/g/PublicInformationCampaign_Category_Organizer_SpatialCoverage",
+          "specializedEntity": "PublicInformationCampaign, Category, Organizer, SpatialCoverage"
+        },
+        {
+          "id": "dc/g/Remittance_TransferType",
+          "specializedEntity": "Remittance, TransferType"
+        },
+        {
+          "id": "dc/g/Stock",
+          "specializedEntity": "Stock"
+        },
+        {
+          "id": "dc/g/Vaccine_MedicalCondition_VaccineStatus",
+          "specializedEntity": "Vaccine, MedicalCondition, VaccineStatus"
+        },
+        {
+          "id": "dc/g/Variables_Miscellaneous",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MortalityEvent": {
+      "absoluteName": "MortalityEvent",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/MortalityEvent_Age",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/MortalityEvent_CauseOfDeath",
+          "specializedEntity": "CauseOfDeath"
+        },
+        {
+          "id": "dc/g/MortalityEvent_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_MortalityEvent",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MortalityEvent_Age": {
+      "absoluteName": "MortalityEvent By Age",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/MortalityEvent_Age_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_MortalityEvent_Age",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MortalityEvent_Age_Gender": {
+      "absoluteName": "MortalityEvent By Age, Gender",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_MortalityEvent_Age_Gender",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MortalityEvent_CauseOfDeath": {
+      "absoluteName": "MortalityEvent By CauseOfDeath",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/MortalityEvent_CauseOfDeath_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_MortalityEvent_CauseOfDeath",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MortalityEvent_CauseOfDeath_Gender": {
+      "absoluteName": "MortalityEvent By CauseOfDeath, Gender",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_MortalityEvent_CauseOfDeath_Gender",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/MortalityEvent_Gender": {
+      "absoluteName": "MortalityEvent By Gender",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/MortalityEvent_Age_Gender",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/MortalityEvent_CauseOfDeath_Gender",
+          "specializedEntity": "CauseOfDeath"
+        },
+        {
+          "id": "dc/g/Variables_MortalityEvent_Gender",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Age": {
+      "absoluteName": "Person By Age",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_EmploymentStatus",
+          "specializedEntity": "EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Person_Age_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Person_Age_HealthBehavior",
+          "specializedEntity": "HealthBehavior"
+        },
+        {
+          "id": "dc/g/Person_Age_HealthOutcome",
+          "specializedEntity": "HealthOutcome"
+        },
+        {
+          "id": "dc/g/Variables_Person_Age",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Age_EmploymentStatus": {
+      "absoluteName": "Person By Age, EmploymentStatus",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_EmploymentStatus_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_Person_Age_EmploymentStatus",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Age_EmploymentStatus_Gender": {
+      "absoluteName": "Person By Age, EmploymentStatus, Gender",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_Person_Age_EmploymentStatus_Gender",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Age_Gender": {
+      "absoluteName": "Person By Age, Gender",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_EmploymentStatus_Gender",
+          "specializedEntity": "EmploymentStatus"
+        },
+        {
+          "id": "dc/g/Person_Age_Gender_HealthBehavior",
+          "specializedEntity": "HealthBehavior"
+        },
+        {
+          "id": "dc/g/Variables_Person_Age_Gender",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Age_Gender_HealthBehavior": {
+      "absoluteName": "Person By Age, Gender, HealthBehavior",
+      "childStatVars": [
+        {
+          "id": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female",
+          "searchName": "Count Of Person With Age Years 15 Onwards, Gender Female, Health Behavior Smoking As Fraction Of Count Person 15 Or More Years Female",
+          "displayName": "Count Of Years15Onwards, Female, Smoking As Fraction Of Count Person 15OrMoreYears Female"
+        },
+        {
+          "id": "Count_Person_15OrMoreYears_Male_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Male",
+          "searchName": "Count Of Person With Age Years 15 Onwards, Gender Male, Health Behavior Smoking As Fraction Of Count Person 15 Or More Years Male",
+          "displayName": "Count Of Years15Onwards, Male, Smoking As Fraction Of Count Person 15OrMoreYears Male"
+        }
+      ]
+    },
+    "dc/g/Person_Age_HealthBehavior": {
+      "absoluteName": "Person By Age, HealthBehavior",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_Gender_HealthBehavior",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_Person_Age_HealthBehavior",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Age_HealthOutcome": {
+      "absoluteName": "Person By Age, HealthOutcome",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_Person_Age_HealthOutcome",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_EducationalAttainment": {
+      "absoluteName": "Person By EducationalAttainment",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_EducationalAttainment_Gender",
+          "specializedEntity": "Gender"
+        },
+        {
+          "id": "dc/g/Variables_Person_EducationalAttainment",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_EducationalAttainment_Gender": {
+      "absoluteName": "Person By EducationalAttainment, Gender",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_Person_EducationalAttainment_Gender",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_EmploymentStatus": {
+      "absoluteName": "Person By EmploymentStatus",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_EmploymentStatus",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Variables_Person_EmploymentStatus",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Gender": {
+      "absoluteName": "Person By Gender",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_Gender",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Person_EducationalAttainment_Gender",
+          "specializedEntity": "EducationalAttainment"
+        },
+        {
+          "id": "dc/g/Person_Gender_HealthBehavior",
+          "specializedEntity": "HealthBehavior"
+        },
+        {
+          "id": "dc/g/Variables_Person_Gender",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/Person_Gender_HealthBehavior": {
+      "absoluteName": "Person By Gender, HealthBehavior",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_Gender_HealthBehavior",
+          "specializedEntity": "Age"
+        }
+      ]
+    },
+    "dc/g/Person_HealthBehavior": {
+      "absoluteName": "Person By HealthBehavior",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_HealthBehavior",
+          "specializedEntity": "Age"
+        },
+        {
+          "id": "dc/g/Person_Gender_HealthBehavior",
+          "specializedEntity": "Gender"
+        }
+      ]
+    },
+    "dc/g/Person_HealthOutcome": {
+      "absoluteName": "Person By HealthOutcome",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_Age_HealthOutcome",
+          "specializedEntity": "Age"
+        }
+      ]
+    },
+    "dc/g/Person_PlaceOfResidenceClassification": {
+      "absoluteName": "Person By PlaceOfResidenceClassification",
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Variables_Person_PlaceOfResidenceClassification",
+          "specializedEntity": "Variables"
+        }
+      ]
+    },
+    "dc/g/PlaceVisitEvent_PlaceCategory": {
+      "absoluteName": "PlaceVisitEvent By PlaceCategory",
+      "childStatVars": [
+        {
+          "id": "dc/0ny9m7k0lzmn5",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Local Business",
+          "displayName": "Covid19MobilityTrend Of LocalBusiness"
+        },
+        {
+          "id": "dc/7fmnve6yyc508",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Residence",
+          "displayName": "Covid19MobilityTrend Of Residence"
+        },
+        {
+          "id": "dc/n9rqwq8d3lcx3",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Grocery Store\u0026Pharmacy",
+          "displayName": "Covid19MobilityTrend Of GroceryStore\u0026Pharmacy"
+        },
+        {
+          "id": "dc/p49ghylpwz93f",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Park",
+          "displayName": "Covid19MobilityTrend Of Park"
+        },
+        {
+          "id": "dc/qdbhwwr88yhl7",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Transport Hub",
+          "displayName": "Covid19MobilityTrend Of TransportHub"
+        },
+        {
+          "id": "dc/tbbjnf9bk96yh",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Workplace",
+          "displayName": "Covid19MobilityTrend Of Workplace"
+        }
+      ]
+    },
+    "dc/g/Production_ProducedThing": {
+      "absoluteName": "Production By ProducedThing",
       "childStatVars": [
         {
           "id": "Amount_Production_ElectricityFromNuclearSources_AsFractionOf_Amount_Production_Energy",
@@ -259,68 +1024,8 @@
         }
       ]
     },
-    "dc/g/Amount_Remittance_TransferType": {
-      "absoluteName": "Amount Of Remittance By TransferType",
-      "childStatVars": [
-        {
-          "id": "Amount_Remittance_InwardRemittance",
-          "searchName": "Amount Of Remittance With Transfer Type Inward Remittance",
-          "displayName": "Amount Of InwardRemittance"
-        },
-        {
-          "id": "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
-          "searchName": "Amount Of Remittance With Transfer Type Inward Remittance As Fraction Of Amount Economic Activity Gross Domestic Production Nominal",
-          "displayName": "Amount Of InwardRemittance As Fraction Of Amount EconomicActivity GrossDomesticProduction Nominal"
-        },
-        {
-          "id": "Amount_Remittance_OutwardRemittance",
-          "searchName": "Amount Of Remittance With Transfer Type Outward Remittance",
-          "displayName": "Amount Of OutwardRemittance"
-        }
-      ]
-    },
-    "dc/g/Amount_Stock": {
-      "absoluteName": "Amount Of Stock",
-      "childStatVars": [
-        {
-          "id": "Amount_Stock",
-          "searchName": "Amount Of Stock",
-          "displayName": "Amount Of Stock"
-        },
-        {
-          "id": "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
-          "searchName": "Amount Of Stock As Fraction Of Amount Economic Activity Gross Domestic Production Nominal",
-          "displayName": "Amount Of Stock As Fraction Of Amount EconomicActivity GrossDomesticProduction Nominal"
-        }
-      ]
-    },
-    "dc/g/COVID-19": {
-      "absoluteName": "COVID-19",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MedicalConditionIncident_MedicalStatus",
-          "specializedEntity": "Count_MedicalConditionIncident_MedicalStatus"
-        },
-        {
-          "id": "dc/g/Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory",
-          "specializedEntity": "Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory"
-        },
-        {
-          "id": "dc/g/CumulativeCount_MedicalConditionIncident_MedicalStatus",
-          "specializedEntity": "CumulativeCount_MedicalConditionIncident_MedicalStatus"
-        },
-        {
-          "id": "dc/g/IncrementalCount_MedicalConditionIncident_MedicalStatus",
-          "specializedEntity": "IncrementalCount_MedicalConditionIncident_MedicalStatus"
-        },
-        {
-          "id": "dc/g/PolicyExtent_Legislation_PolicyType",
-          "specializedEntity": "PolicyExtent_Legislation_PolicyType"
-        }
-      ]
-    },
-    "dc/g/CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage": {
-      "absoluteName": "CampaignExtent Of PublicInformationCampaign By Category, Organizer, SpatialCoverage",
+    "dc/g/PublicInformationCampaign_Category_Organizer_SpatialCoverage": {
+      "absoluteName": "PublicInformationCampaign By Category, Organizer, SpatialCoverage",
       "childStatVars": [
         {
           "id": "dc/lmg7sdbp5jyff",
@@ -339,17 +1044,57 @@
         }
       ]
     },
-    "dc/g/Count_BirthEvent": {
-      "absoluteName": "Count Of BirthEvent",
-      "childStatVarGroups": [
+    "dc/g/Remittance_TransferType": {
+      "absoluteName": "Remittance By TransferType",
+      "childStatVars": [
         {
-          "id": "dc/g/Count_BirthEvent_MedicalStatus",
-          "specializedEntity": "MedicalStatus"
+          "id": "Amount_Remittance_InwardRemittance",
+          "searchName": "Amount Of Remittance With Transfer Type Inward Remittance",
+          "displayName": "Amount Of InwardRemittance"
+        },
+        {
+          "id": "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+          "searchName": "Amount Of Remittance With Transfer Type Inward Remittance As Fraction Of Amount Economic Activity Gross Domestic Production Nominal",
+          "displayName": "Amount Of InwardRemittance As Fraction Of Amount EconomicActivity GrossDomesticProduction Nominal"
+        },
+        {
+          "id": "Amount_Remittance_OutwardRemittance",
+          "searchName": "Amount Of Remittance With Transfer Type Outward Remittance",
+          "displayName": "Amount Of OutwardRemittance"
         }
       ]
     },
-    "dc/g/Count_BirthEvent_MedicalStatus": {
-      "absoluteName": "Count Of BirthEvent By MedicalStatus",
+    "dc/g/Stock": {
+      "absoluteName": "Stock",
+      "childStatVars": [
+        {
+          "id": "Amount_Stock",
+          "searchName": "Amount Of Stock",
+          "displayName": "Amount Of Stock"
+        },
+        {
+          "id": "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+          "searchName": "Amount Of Stock As Fraction Of Amount Economic Activity Gross Domestic Production Nominal",
+          "displayName": "Amount Of Stock As Fraction Of Amount EconomicActivity GrossDomesticProduction Nominal"
+        }
+      ]
+    },
+    "dc/g/Vaccine_MedicalCondition_VaccineStatus": {
+      "absoluteName": "Vaccine By MedicalCondition, VaccineStatus",
+      "childStatVars": [
+        {
+          "id": "CumulativeCount_Vaccine_COVID_19_Administered",
+          "searchName": "Cumulative Count Of Vaccine With Medical Condition COVID_19, Vaccine Status Vaccine Administered",
+          "displayName": "CumulativeCount Of COVID_19, VaccineAdministered"
+        },
+        {
+          "id": "IncrementalCount_Vaccine_COVID_19_Administered",
+          "searchName": "Incremental Count Of Vaccine With Medical Condition COVID_19, Vaccine Status Vaccine Administered",
+          "displayName": "IncrementalCount Of COVID_19, VaccineAdministered"
+        }
+      ]
+    },
+    "dc/g/Variables_BirthEvent_MedicalStatus": {
       "childStatVars": [
         {
           "id": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
@@ -358,130 +1103,195 @@
         }
       ]
     },
-    "dc/g/Count_CriminalActivities": {
-      "absoluteName": "Count Of CriminalActivities",
-      "childStatVarGroups": [
+    "dc/g/Variables_Consumption_ConsumedThing": {
+      "childStatVars": [
         {
-          "id": "dc/g/Count_CriminalActivities_CrimeType",
-          "specializedEntity": "CrimeType"
+          "id": "Amount_Consumption_Electricity_PerCapita",
+          "searchName": "Amount Of Consumption With Consumed Thing Electricity As Fraction Of Per Capita",
+          "displayName": "Amount Of Electricity As Fraction Of PerCapita"
+        },
+        {
+          "id": "Amount_Consumption_Energy_PerCapita",
+          "searchName": "Amount Of Consumption With Consumed Thing Energy As Fraction Of Per Capita",
+          "displayName": "Amount Of Energy As Fraction Of PerCapita"
+        },
+        {
+          "id": "Amount_Consumption_RenewableEnergy_AsFractionOf_Amount_Consumption_Energy",
+          "searchName": "Amount Of Consumption With Consumed Thing Renewable Energy As Fraction Of Amount Consumption Energy",
+          "displayName": "Amount Of RenewableEnergy As Fraction Of Amount Consumption Energy"
         }
       ]
     },
-    "dc/g/Count_CriminalActivities_CrimeType": {
-      "absoluteName": "Count Of CriminalActivities By CrimeType",
+    "dc/g/Variables_CriminalActivities_CrimeType": {
       "childStatVars": [
         {
           "id": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
           "searchName": "Count Of Criminal Activities With Crime Type Murder And Non Negligent Manslaughter As Fraction Of Count Person",
           "displayName": "Count Of MurderAndNonNegligentManslaughter As Fraction Of Count Person"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_CriminalActivities_CrimeType_Gender",
-          "specializedEntity": "Gender"
-        }
       ]
     },
-    "dc/g/Count_CriminalActivities_CrimeType_Gender": {
-      "absoluteName": "Count Of CriminalActivities By CrimeType, Gender",
-      "childStatVars": [
-        {
-          "id": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
-          "searchName": "Count Of Criminal Activities With Crime Type Murder And Non Negligent Manslaughter, Gender Female As Fraction Of Count Person Female",
-          "displayName": "Count Of MurderAndNonNegligentManslaughter, Female As Fraction Of Count Person Female"
-        },
-        {
-          "id": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male",
-          "searchName": "Count Of Criminal Activities With Crime Type Murder And Non Negligent Manslaughter, Gender Male As Fraction Of Count Person Male",
-          "displayName": "Count Of MurderAndNonNegligentManslaughter, Male As Fraction Of Count Person Male"
-        }
-      ]
-    },
-    "dc/g/Count_CycloneEvent": {
-      "absoluteName": "Count Of CycloneEvent",
+    "dc/g/Variables_CycloneEvent": {
       "childStatVars": [
         {
           "id": "Count_CycloneEvent",
           "searchName": "Count Of Cyclone Event",
           "displayName": "Count Of CycloneEvent"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_CycloneEvent_MaxClassification",
-          "specializedEntity": "MaxClassification"
-        }
       ]
     },
-    "dc/g/Count_CycloneEvent_MaxClassification": {
-      "absoluteName": "Count Of CycloneEvent By MaxClassification",
+    "dc/g/Variables_Demographics": {
       "childStatVars": [
         {
-          "id": "Count_CycloneEvent_TropicalDisturbance",
-          "searchName": "Count Of Cyclone Event With Max Classification Tropical Disturbance",
-          "displayName": "Count Of TropicalDisturbance"
+          "id": "Count_Person",
+          "searchName": "Count Of Person",
+          "displayName": "Count Of Person"
         },
         {
-          "id": "Count_CycloneEvent_TropicalStorm",
-          "searchName": "Count Of Cyclone Event With Max Classification Tropical Storm",
-          "displayName": "Count Of TropicalStorm"
+          "id": "Count_Person_IsInternetUser_PerCapita",
+          "searchName": "Count Of Person With Is Internet User True As Fraction Of Per Capita",
+          "displayName": "Count Of True As Fraction Of PerCapita"
+        },
+        {
+          "id": "Count_Person_PerArea",
+          "searchName": "Count Of Person As Fraction Of Area",
+          "displayName": "Count Of Person As Fraction Of Area"
+        },
+        {
+          "id": "GrowthRate_Count_Person",
+          "searchName": "Growth Rate Count Of Person",
+          "displayName": "GrowthRate Count Of Person"
+        },
+        {
+          "id": "LifeExpectancy_Person",
+          "searchName": "Life Expectancy Of Person",
+          "displayName": "LifeExpectancy Of Person"
         }
       ]
     },
-    "dc/g/Count_EarthquakeEvent": {
-      "absoluteName": "Count Of EarthquakeEvent",
+    "dc/g/Variables_EarthquakeEvent": {
       "childStatVars": [
         {
           "id": "Count_EarthquakeEvent",
           "searchName": "Count Of Earthquake Event",
           "displayName": "Count Of EarthquakeEvent"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_EarthquakeEvent_Magnitude",
-          "specializedEntity": "Magnitude"
-        }
       ]
     },
-    "dc/g/Count_EarthquakeEvent_Magnitude": {
-      "absoluteName": "Count Of EarthquakeEvent By Magnitude",
+    "dc/g/Variables_EconomicActivity": {
       "childStatVars": [
         {
-          "id": "Count_EarthquakeEvent_M3Onwards",
-          "searchName": "Count Of Earthquake Event With Magnitude M 3 Onwards",
-          "displayName": "Count Of M3Onwards"
-        },
-        {
-          "id": "Count_EarthquakeEvent_M3To4",
-          "searchName": "Count Of Earthquake Event With Magnitude M 3 To 4",
-          "displayName": "Count Of M3To4"
-        },
-        {
-          "id": "Count_EarthquakeEvent_M4Onwards",
-          "searchName": "Count Of Earthquake Event With Magnitude M 4 Onwards",
-          "displayName": "Count Of M4Onwards"
-        },
-        {
-          "id": "Count_EarthquakeEvent_M4To5",
-          "searchName": "Count Of Earthquake Event With Magnitude M 4 To 5",
-          "displayName": "Count Of M4To5"
-        },
-        {
-          "id": "Count_EarthquakeEvent_M5Onwards",
-          "searchName": "Count Of Earthquake Event With Magnitude M 5 Onwards",
-          "displayName": "Count Of M5Onwards"
-        },
-        {
-          "id": "Count_EarthquakeEvent_M5To6",
-          "searchName": "Count Of Earthquake Event With Magnitude M 5 To 6",
-          "displayName": "Count Of M5To6"
+          "id": "GiniIndex_EconomicActivity",
+          "searchName": "Gini Index Of Economic Activity",
+          "displayName": "GiniIndex Of EconomicActivity"
         }
       ]
     },
-    "dc/g/Count_MedicalConditionIncident_MedicalStatus": {
-      "absoluteName": "Count Of MedicalConditionIncident By MedicalStatus",
+    "dc/g/Variables_EconomicActivity_ActivitySource": {
+      "childStatVars": [
+        {
+          "id": "Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+          "searchName": "Nominal Amount Of Economic Activity With Activity Source Gross Domestic Production",
+          "displayName": "Nominal Amount Of GrossDomesticProduction"
+        },
+        {
+          "id": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
+          "searchName": "Nominal Amount Of Economic Activity With Activity Source Gross Domestic Production As Fraction Of Count Person",
+          "displayName": "Nominal Amount Of GrossDomesticProduction As Fraction Of Count Person"
+        },
+        {
+          "id": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita",
+          "searchName": "Nominal Amount Of Economic Activity With Activity Source Gross Domestic Production As Fraction Of Per Capita",
+          "displayName": "Nominal Amount Of GrossDomesticProduction As Fraction Of PerCapita"
+        },
+        {
+          "id": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity",
+          "searchName": "Purchasing Power Parity Amount Of Economic Activity With Activity Source Gross National Income",
+          "displayName": "PurchasingPowerParity Amount Of GrossNationalIncome"
+        },
+        {
+          "id": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+          "searchName": "Purchasing Power Parity Amount Of Economic Activity With Activity Source Gross National Income As Fraction Of Per Capita",
+          "displayName": "PurchasingPowerParity Amount Of GrossNationalIncome As Fraction Of PerCapita"
+        },
+        {
+          "id": "Amount_EconomicActivity_GrossValueAdded_RealValue",
+          "searchName": "Real Value Amount Of Economic Activity With Activity Source Gross Value Added",
+          "displayName": "RealValue Amount Of GrossValueAdded"
+        },
+        {
+          "id": "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction",
+          "searchName": "Growth Rate Amount Of Economic Activity With Activity Source Gross Domestic Production",
+          "displayName": "GrowthRate Amount Of GrossDomesticProduction"
+        }
+      ]
+    },
+    "dc/g/Variables_EconomicActivity_ActivitySource_ExpenditureType": {
+      "childStatVars": [
+        {
+          "id": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
+          "searchName": "Amount Of Economic Activity With Activity Source Expenditure Activity, Expenditure Type Healthcare Expenditure As Fraction Of Count Person",
+          "displayName": "Amount Of ExpenditureActivity, HealthcareExpenditure As Fraction Of Count Person"
+        }
+      ]
+    },
+    "dc/g/Variables_Employment": {
+      "childStatVars": [
+        {
+          "id": "UnemploymentRate_Person",
+          "searchName": "Unemployment Rate Of Person",
+          "displayName": "UnemploymentRate Of Person"
+        }
+      ]
+    },
+    "dc/g/Variables_Environment": {
+      "childStatVars": [
+        {
+          "id": "Amount_Emissions_CarbonDioxide_PerCapita",
+          "searchName": "Amount Of Emissions With Emitted Thing Carbon Dioxide As Fraction Of Per Capita",
+          "displayName": "Amount Of CarbonDioxide As Fraction Of PerCapita"
+        }
+      ]
+    },
+    "dc/g/Variables_Health": {
+      "childStatVars": [
+        {
+          "id": "FertilityRate_Person_Female",
+          "searchName": "Fertility Rate Of Person",
+          "displayName": "FertilityRate Of Person"
+        },
+        {
+          "id": "LifeExpectancy_Person",
+          "searchName": "Life Expectancy Of Person",
+          "displayName": "LifeExpectancy Of Person"
+        }
+      ]
+    },
+    "dc/g/Variables_Legislation_Category_LegislationPassedBy": {
+      "childStatVars": [
+        {
+          "id": "dc/8b9tx5t0pkvvd",
+          "searchName": "Covid 19 Stringency Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19StringencyIndex Of COVID19Pandemic, GovernmentOrganization"
+        },
+        {
+          "id": "dc/epjwwz8pd436f",
+          "searchName": "Covid 19 Containment And Health Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19ContainmentAndHealthIndex Of COVID19Pandemic, GovernmentOrganization"
+        },
+        {
+          "id": "dc/fj0rg1pn1y9sc",
+          "searchName": "Covid 19 Economic Support Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19EconomicSupportIndex Of COVID19Pandemic, GovernmentOrganization"
+        },
+        {
+          "id": "dc/qjr6rytbrb8cc",
+          "searchName": "Covid 19 Response Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19ResponseIndex Of COVID19Pandemic, GovernmentOrganization"
+        }
+      ]
+    },
+    "dc/g/Variables_MedicalConditionIncident_MedicalStatus": {
       "childStatVars": [
         {
           "id": "Count_MedicalConditionIncident_COVID_19_PatientHospitalized",
@@ -492,11 +1302,58 @@
           "id": "Count_MedicalConditionIncident_COVID_19_PatientInICU",
           "searchName": "Count Of Medical Condition Incident With Medical Status Patient In ICU",
           "displayName": "Count Of PatientInICU"
+        },
+        {
+          "id": "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
+          "searchName": "Cumulative Count Of Medical Condition Incident With Medical Status Confirmed Case",
+          "displayName": "CumulativeCount Of ConfirmedCase"
+        },
+        {
+          "id": "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased",
+          "searchName": "Cumulative Count Of Medical Condition Incident With Medical Status Patient Deceased",
+          "displayName": "CumulativeCount Of PatientDeceased"
+        },
+        {
+          "id": "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
+          "searchName": "Incremental Count Of Medical Condition Incident With Medical Status Confirmed Case",
+          "displayName": "IncrementalCount Of ConfirmedCase"
+        },
+        {
+          "id": "IncrementalCount_MedicalConditionIncident_COVID_19_PatientDeceased",
+          "searchName": "Incremental Count Of Medical Condition Incident With Medical Status Patient Deceased",
+          "displayName": "IncrementalCount Of PatientDeceased"
         }
       ]
     },
-    "dc/g/Count_MortalityEvent": {
-      "absoluteName": "Count Of MortalityEvent",
+    "dc/g/Variables_MedicalTest_MedicalCondition": {
+      "childStatVars": [
+        {
+          "id": "CumulativeCount_MedicalTest_ConditionCOVID_19",
+          "searchName": "Cumulative Count Of Medical Test With Medical Condition COVID_19",
+          "displayName": "CumulativeCount Of COVID_19"
+        },
+        {
+          "id": "IncrementalCount_MedicalTest_ConditionCOVID_19",
+          "searchName": "Incremental Count Of Medical Test With Medical Condition COVID_19",
+          "displayName": "IncrementalCount Of COVID_19"
+        }
+      ]
+    },
+    "dc/g/Variables_Miscellaneous": {
+      "childStatVars": [
+        {
+          "id": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
+          "searchName": "Count Of Person With Residence Characteristic Less Than 5 Meters Above Sea Level As Fraction Of Count Person",
+          "displayName": "Count Of LessThan5MetersAboveSeaLevel As Fraction Of Count Person"
+        },
+        {
+          "id": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+          "searchName": "Count Of Product With Product Type Mobile Cellular Subscription As Fraction Of Count Person",
+          "displayName": "Count Of MobileCellularSubscription As Fraction Of Count Person"
+        }
+      ]
+    },
+    "dc/g/Variables_MortalityEvent": {
       "childStatVars": [
         {
           "id": "Count_Death",
@@ -513,24 +1370,9 @@
           "searchName": "Count Of Mortality Event As Fraction Of Count Person",
           "displayName": "Count Of MortalityEvent As Fraction Of Count Person"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MortalityEvent_Age",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_CauseOfDeath",
-          "specializedEntity": "CauseOfDeath"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_Gender",
-          "specializedEntity": "Gender"
-        }
       ]
     },
-    "dc/g/Count_MortalityEvent_Age": {
-      "absoluteName": "Count Of MortalityEvent By Age",
+    "dc/g/Variables_MortalityEvent_Age": {
       "childStatVars": [
         {
           "id": "Count_Death_0Years",
@@ -652,16 +1494,9 @@
           "searchName": "Count Of Mortality Event With Age Years Upto 4",
           "displayName": "Count Of YearsUpto4"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MortalityEvent_Age_Gender",
-          "specializedEntity": "Gender"
-        }
       ]
     },
-    "dc/g/Count_MortalityEvent_Age_Gender": {
-      "absoluteName": "Count Of MortalityEvent By Age, Gender",
+    "dc/g/Variables_MortalityEvent_Age_Gender": {
       "childStatVars": [
         {
           "id": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female",
@@ -885,24 +1720,16 @@
         }
       ]
     },
-    "dc/g/Count_MortalityEvent_CauseOfDeath": {
-      "absoluteName": "Count Of MortalityEvent By CauseOfDeath",
+    "dc/g/Variables_MortalityEvent_CauseOfDeath": {
       "childStatVars": [
         {
           "id": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
           "searchName": "Count Of Mortality Event With Cause Of Death ICD 10/X 60-X 84 As Fraction Of Count Person",
           "displayName": "Count Of ICD10/X60-X84 As Fraction Of Count Person"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender",
-          "specializedEntity": "Gender"
-        }
       ]
     },
-    "dc/g/Count_MortalityEvent_CauseOfDeath_Gender": {
-      "absoluteName": "Count Of MortalityEvent By CauseOfDeath, Gender",
+    "dc/g/Variables_MortalityEvent_CauseOfDeath_Gender": {
       "childStatVars": [
         {
           "id": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
@@ -916,8 +1743,7 @@
         }
       ]
     },
-    "dc/g/Count_MortalityEvent_Gender": {
-      "absoluteName": "Count Of MortalityEvent By Gender",
+    "dc/g/Variables_MortalityEvent_Gender": {
       "childStatVars": [
         {
           "id": "Count_Death_Female",
@@ -949,70 +1775,9 @@
           "searchName": "Count Of Mortality Event With Gender Male As Fraction Of Count Person Male",
           "displayName": "Count Of Male As Fraction Of Count Person Male"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MortalityEvent_Age_Gender",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/Count_MortalityEvent_CauseOfDeath_Gender",
-          "specializedEntity": "CauseOfDeath"
-        }
       ]
     },
-    "dc/g/Count_Person": {
-      "absoluteName": "Count Of Person",
-      "childStatVars": [
-        {
-          "id": "Count_Person",
-          "searchName": "Count Of Person",
-          "displayName": "Count Of Person"
-        },
-        {
-          "id": "Count_Person_PerArea",
-          "searchName": "Count Of Person As Fraction Of Area",
-          "displayName": "Count Of Person As Fraction Of Area"
-        },
-        {
-          "id": "GrowthRate_Count_Person",
-          "searchName": "Growth Rate Count Of Person",
-          "displayName": "GrowthRate Count Of Person"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/Count_Person_EducationalAttainment",
-          "specializedEntity": "EducationalAttainment"
-        },
-        {
-          "id": "dc/g/Count_Person_EmploymentStatus",
-          "specializedEntity": "EmploymentStatus"
-        },
-        {
-          "id": "dc/g/Count_Person_Gender",
-          "specializedEntity": "Gender"
-        },
-        {
-          "id": "dc/g/Count_Person_IsInternetUser",
-          "specializedEntity": "IsInternetUser"
-        },
-        {
-          "id": "dc/g/Count_Person_PlaceOfResidenceClassification",
-          "specializedEntity": "PlaceOfResidenceClassification"
-        },
-        {
-          "id": "dc/g/Count_Person_ResidenceCharacteristic",
-          "specializedEntity": "ResidenceCharacteristic"
-        }
-      ]
-    },
-    "dc/g/Count_Person_Age": {
-      "absoluteName": "Count Of Person By Age",
+    "dc/g/Variables_Person_Age": {
       "childStatVars": [
         {
           "id": "Count_Person_0Years",
@@ -1638,45 +2403,464 @@
           "id": "Count_Person_Upto4Years",
           "searchName": "Count Of Person With Age Years Upto 4",
           "displayName": "Count Of YearsUpto4"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_EmploymentStatus",
-          "specializedEntity": "EmploymentStatus"
         },
         {
-          "id": "dc/g/Count_Person_Age_Gender",
-          "specializedEntity": "Gender"
+          "id": "LifeExpectancy_Person_10Years",
+          "searchName": "Life Expectancy Of Person With Age Years 10",
+          "displayName": "LifeExpectancy Of Years10"
         },
         {
-          "id": "dc/g/Count_Person_Age_HealthBehavior",
-          "specializedEntity": "HealthBehavior"
+          "id": "LifeExpectancy_Person_11Years",
+          "searchName": "Life Expectancy Of Person With Age Years 11",
+          "displayName": "LifeExpectancy Of Years11"
         },
         {
-          "id": "dc/g/Count_Person_Age_HealthOutcome",
-          "specializedEntity": "HealthOutcome"
+          "id": "LifeExpectancy_Person_12Years",
+          "searchName": "Life Expectancy Of Person With Age Years 12",
+          "displayName": "LifeExpectancy Of Years12"
+        },
+        {
+          "id": "LifeExpectancy_Person_13Years",
+          "searchName": "Life Expectancy Of Person With Age Years 13",
+          "displayName": "LifeExpectancy Of Years13"
+        },
+        {
+          "id": "LifeExpectancy_Person_14Years",
+          "searchName": "Life Expectancy Of Person With Age Years 14",
+          "displayName": "LifeExpectancy Of Years14"
+        },
+        {
+          "id": "LifeExpectancy_Person_15Years",
+          "searchName": "Life Expectancy Of Person With Age Years 15",
+          "displayName": "LifeExpectancy Of Years15"
+        },
+        {
+          "id": "LifeExpectancy_Person_16Years",
+          "searchName": "Life Expectancy Of Person With Age Years 16",
+          "displayName": "LifeExpectancy Of Years16"
+        },
+        {
+          "id": "LifeExpectancy_Person_17Years",
+          "searchName": "Life Expectancy Of Person With Age Years 17",
+          "displayName": "LifeExpectancy Of Years17"
+        },
+        {
+          "id": "LifeExpectancy_Person_18Years",
+          "searchName": "Life Expectancy Of Person With Age Years 18",
+          "displayName": "LifeExpectancy Of Years18"
+        },
+        {
+          "id": "LifeExpectancy_Person_19Years",
+          "searchName": "Life Expectancy Of Person With Age Years 19",
+          "displayName": "LifeExpectancy Of Years19"
+        },
+        {
+          "id": "LifeExpectancy_Person_1Years",
+          "searchName": "Life Expectancy Of Person With Age Years 1",
+          "displayName": "LifeExpectancy Of Years1"
+        },
+        {
+          "id": "LifeExpectancy_Person_20Years",
+          "searchName": "Life Expectancy Of Person With Age Years 20",
+          "displayName": "LifeExpectancy Of Years20"
+        },
+        {
+          "id": "LifeExpectancy_Person_21Years",
+          "searchName": "Life Expectancy Of Person With Age Years 21",
+          "displayName": "LifeExpectancy Of Years21"
+        },
+        {
+          "id": "LifeExpectancy_Person_22Years",
+          "searchName": "Life Expectancy Of Person With Age Years 22",
+          "displayName": "LifeExpectancy Of Years22"
+        },
+        {
+          "id": "LifeExpectancy_Person_23Years",
+          "searchName": "Life Expectancy Of Person With Age Years 23",
+          "displayName": "LifeExpectancy Of Years23"
+        },
+        {
+          "id": "LifeExpectancy_Person_24Years",
+          "searchName": "Life Expectancy Of Person With Age Years 24",
+          "displayName": "LifeExpectancy Of Years24"
+        },
+        {
+          "id": "LifeExpectancy_Person_25Years",
+          "searchName": "Life Expectancy Of Person With Age Years 25",
+          "displayName": "LifeExpectancy Of Years25"
+        },
+        {
+          "id": "LifeExpectancy_Person_26Years",
+          "searchName": "Life Expectancy Of Person With Age Years 26",
+          "displayName": "LifeExpectancy Of Years26"
+        },
+        {
+          "id": "LifeExpectancy_Person_27Years",
+          "searchName": "Life Expectancy Of Person With Age Years 27",
+          "displayName": "LifeExpectancy Of Years27"
+        },
+        {
+          "id": "LifeExpectancy_Person_28Years",
+          "searchName": "Life Expectancy Of Person With Age Years 28",
+          "displayName": "LifeExpectancy Of Years28"
+        },
+        {
+          "id": "LifeExpectancy_Person_29Years",
+          "searchName": "Life Expectancy Of Person With Age Years 29",
+          "displayName": "LifeExpectancy Of Years29"
+        },
+        {
+          "id": "LifeExpectancy_Person_2Years",
+          "searchName": "Life Expectancy Of Person With Age Years 2",
+          "displayName": "LifeExpectancy Of Years2"
+        },
+        {
+          "id": "LifeExpectancy_Person_30Years",
+          "searchName": "Life Expectancy Of Person With Age Years 30",
+          "displayName": "LifeExpectancy Of Years30"
+        },
+        {
+          "id": "LifeExpectancy_Person_31Years",
+          "searchName": "Life Expectancy Of Person With Age Years 31",
+          "displayName": "LifeExpectancy Of Years31"
+        },
+        {
+          "id": "LifeExpectancy_Person_32Years",
+          "searchName": "Life Expectancy Of Person With Age Years 32",
+          "displayName": "LifeExpectancy Of Years32"
+        },
+        {
+          "id": "LifeExpectancy_Person_33Years",
+          "searchName": "Life Expectancy Of Person With Age Years 33",
+          "displayName": "LifeExpectancy Of Years33"
+        },
+        {
+          "id": "LifeExpectancy_Person_34Years",
+          "searchName": "Life Expectancy Of Person With Age Years 34",
+          "displayName": "LifeExpectancy Of Years34"
+        },
+        {
+          "id": "LifeExpectancy_Person_35Years",
+          "searchName": "Life Expectancy Of Person With Age Years 35",
+          "displayName": "LifeExpectancy Of Years35"
+        },
+        {
+          "id": "LifeExpectancy_Person_36Years",
+          "searchName": "Life Expectancy Of Person With Age Years 36",
+          "displayName": "LifeExpectancy Of Years36"
+        },
+        {
+          "id": "LifeExpectancy_Person_37Years",
+          "searchName": "Life Expectancy Of Person With Age Years 37",
+          "displayName": "LifeExpectancy Of Years37"
+        },
+        {
+          "id": "LifeExpectancy_Person_38Years",
+          "searchName": "Life Expectancy Of Person With Age Years 38",
+          "displayName": "LifeExpectancy Of Years38"
+        },
+        {
+          "id": "LifeExpectancy_Person_39Years",
+          "searchName": "Life Expectancy Of Person With Age Years 39",
+          "displayName": "LifeExpectancy Of Years39"
+        },
+        {
+          "id": "LifeExpectancy_Person_3Years",
+          "searchName": "Life Expectancy Of Person With Age Years 3",
+          "displayName": "LifeExpectancy Of Years3"
+        },
+        {
+          "id": "LifeExpectancy_Person_40Years",
+          "searchName": "Life Expectancy Of Person With Age Years 40",
+          "displayName": "LifeExpectancy Of Years40"
+        },
+        {
+          "id": "LifeExpectancy_Person_41Years",
+          "searchName": "Life Expectancy Of Person With Age Years 41",
+          "displayName": "LifeExpectancy Of Years41"
+        },
+        {
+          "id": "LifeExpectancy_Person_42Years",
+          "searchName": "Life Expectancy Of Person With Age Years 42",
+          "displayName": "LifeExpectancy Of Years42"
+        },
+        {
+          "id": "LifeExpectancy_Person_43Years",
+          "searchName": "Life Expectancy Of Person With Age Years 43",
+          "displayName": "LifeExpectancy Of Years43"
+        },
+        {
+          "id": "LifeExpectancy_Person_44Years",
+          "searchName": "Life Expectancy Of Person With Age Years 44",
+          "displayName": "LifeExpectancy Of Years44"
+        },
+        {
+          "id": "LifeExpectancy_Person_45Years",
+          "searchName": "Life Expectancy Of Person With Age Years 45",
+          "displayName": "LifeExpectancy Of Years45"
+        },
+        {
+          "id": "LifeExpectancy_Person_46Years",
+          "searchName": "Life Expectancy Of Person With Age Years 46",
+          "displayName": "LifeExpectancy Of Years46"
+        },
+        {
+          "id": "LifeExpectancy_Person_47Years",
+          "searchName": "Life Expectancy Of Person With Age Years 47",
+          "displayName": "LifeExpectancy Of Years47"
+        },
+        {
+          "id": "LifeExpectancy_Person_48Years",
+          "searchName": "Life Expectancy Of Person With Age Years 48",
+          "displayName": "LifeExpectancy Of Years48"
+        },
+        {
+          "id": "LifeExpectancy_Person_49Years",
+          "searchName": "Life Expectancy Of Person With Age Years 49",
+          "displayName": "LifeExpectancy Of Years49"
+        },
+        {
+          "id": "LifeExpectancy_Person_4Years",
+          "searchName": "Life Expectancy Of Person With Age Years 4",
+          "displayName": "LifeExpectancy Of Years4"
+        },
+        {
+          "id": "LifeExpectancy_Person_50Years",
+          "searchName": "Life Expectancy Of Person With Age Years 50",
+          "displayName": "LifeExpectancy Of Years50"
+        },
+        {
+          "id": "LifeExpectancy_Person_51Years",
+          "searchName": "Life Expectancy Of Person With Age Years 51",
+          "displayName": "LifeExpectancy Of Years51"
+        },
+        {
+          "id": "LifeExpectancy_Person_52Years",
+          "searchName": "Life Expectancy Of Person With Age Years 52",
+          "displayName": "LifeExpectancy Of Years52"
+        },
+        {
+          "id": "LifeExpectancy_Person_53Years",
+          "searchName": "Life Expectancy Of Person With Age Years 53",
+          "displayName": "LifeExpectancy Of Years53"
+        },
+        {
+          "id": "LifeExpectancy_Person_54Years",
+          "searchName": "Life Expectancy Of Person With Age Years 54",
+          "displayName": "LifeExpectancy Of Years54"
+        },
+        {
+          "id": "LifeExpectancy_Person_55Years",
+          "searchName": "Life Expectancy Of Person With Age Years 55",
+          "displayName": "LifeExpectancy Of Years55"
+        },
+        {
+          "id": "LifeExpectancy_Person_56Years",
+          "searchName": "Life Expectancy Of Person With Age Years 56",
+          "displayName": "LifeExpectancy Of Years56"
+        },
+        {
+          "id": "LifeExpectancy_Person_57Years",
+          "searchName": "Life Expectancy Of Person With Age Years 57",
+          "displayName": "LifeExpectancy Of Years57"
+        },
+        {
+          "id": "LifeExpectancy_Person_58Years",
+          "searchName": "Life Expectancy Of Person With Age Years 58",
+          "displayName": "LifeExpectancy Of Years58"
+        },
+        {
+          "id": "LifeExpectancy_Person_59Years",
+          "searchName": "Life Expectancy Of Person With Age Years 59",
+          "displayName": "LifeExpectancy Of Years59"
+        },
+        {
+          "id": "LifeExpectancy_Person_5Years",
+          "searchName": "Life Expectancy Of Person With Age Years 5",
+          "displayName": "LifeExpectancy Of Years5"
+        },
+        {
+          "id": "LifeExpectancy_Person_60Years",
+          "searchName": "Life Expectancy Of Person With Age Years 60",
+          "displayName": "LifeExpectancy Of Years60"
+        },
+        {
+          "id": "LifeExpectancy_Person_61Years",
+          "searchName": "Life Expectancy Of Person With Age Years 61",
+          "displayName": "LifeExpectancy Of Years61"
+        },
+        {
+          "id": "LifeExpectancy_Person_62Years",
+          "searchName": "Life Expectancy Of Person With Age Years 62",
+          "displayName": "LifeExpectancy Of Years62"
+        },
+        {
+          "id": "LifeExpectancy_Person_63Years",
+          "searchName": "Life Expectancy Of Person With Age Years 63",
+          "displayName": "LifeExpectancy Of Years63"
+        },
+        {
+          "id": "LifeExpectancy_Person_64Years",
+          "searchName": "Life Expectancy Of Person With Age Years 64",
+          "displayName": "LifeExpectancy Of Years64"
+        },
+        {
+          "id": "LifeExpectancy_Person_65Years",
+          "searchName": "Life Expectancy Of Person With Age Years 65",
+          "displayName": "LifeExpectancy Of Years65"
+        },
+        {
+          "id": "LifeExpectancy_Person_66Years",
+          "searchName": "Life Expectancy Of Person With Age Years 66",
+          "displayName": "LifeExpectancy Of Years66"
+        },
+        {
+          "id": "LifeExpectancy_Person_67Years",
+          "searchName": "Life Expectancy Of Person With Age Years 67",
+          "displayName": "LifeExpectancy Of Years67"
+        },
+        {
+          "id": "LifeExpectancy_Person_68Years",
+          "searchName": "Life Expectancy Of Person With Age Years 68",
+          "displayName": "LifeExpectancy Of Years68"
+        },
+        {
+          "id": "LifeExpectancy_Person_69Years",
+          "searchName": "Life Expectancy Of Person With Age Years 69",
+          "displayName": "LifeExpectancy Of Years69"
+        },
+        {
+          "id": "LifeExpectancy_Person_6Years",
+          "searchName": "Life Expectancy Of Person With Age Years 6",
+          "displayName": "LifeExpectancy Of Years6"
+        },
+        {
+          "id": "LifeExpectancy_Person_70Years",
+          "searchName": "Life Expectancy Of Person With Age Years 70",
+          "displayName": "LifeExpectancy Of Years70"
+        },
+        {
+          "id": "LifeExpectancy_Person_71Years",
+          "searchName": "Life Expectancy Of Person With Age Years 71",
+          "displayName": "LifeExpectancy Of Years71"
+        },
+        {
+          "id": "LifeExpectancy_Person_72Years",
+          "searchName": "Life Expectancy Of Person With Age Years 72",
+          "displayName": "LifeExpectancy Of Years72"
+        },
+        {
+          "id": "LifeExpectancy_Person_73Years",
+          "searchName": "Life Expectancy Of Person With Age Years 73",
+          "displayName": "LifeExpectancy Of Years73"
+        },
+        {
+          "id": "LifeExpectancy_Person_74Years",
+          "searchName": "Life Expectancy Of Person With Age Years 74",
+          "displayName": "LifeExpectancy Of Years74"
+        },
+        {
+          "id": "LifeExpectancy_Person_75Years",
+          "searchName": "Life Expectancy Of Person With Age Years 75",
+          "displayName": "LifeExpectancy Of Years75"
+        },
+        {
+          "id": "LifeExpectancy_Person_76Years",
+          "searchName": "Life Expectancy Of Person With Age Years 76",
+          "displayName": "LifeExpectancy Of Years76"
+        },
+        {
+          "id": "LifeExpectancy_Person_77Years",
+          "searchName": "Life Expectancy Of Person With Age Years 77",
+          "displayName": "LifeExpectancy Of Years77"
+        },
+        {
+          "id": "LifeExpectancy_Person_78Years",
+          "searchName": "Life Expectancy Of Person With Age Years 78",
+          "displayName": "LifeExpectancy Of Years78"
+        },
+        {
+          "id": "LifeExpectancy_Person_79Years",
+          "searchName": "Life Expectancy Of Person With Age Years 79",
+          "displayName": "LifeExpectancy Of Years79"
+        },
+        {
+          "id": "LifeExpectancy_Person_7Years",
+          "searchName": "Life Expectancy Of Person With Age Years 7",
+          "displayName": "LifeExpectancy Of Years7"
+        },
+        {
+          "id": "LifeExpectancy_Person_80Years",
+          "searchName": "Life Expectancy Of Person With Age Years 80",
+          "displayName": "LifeExpectancy Of Years80"
+        },
+        {
+          "id": "LifeExpectancy_Person_81Years",
+          "searchName": "Life Expectancy Of Person With Age Years 81",
+          "displayName": "LifeExpectancy Of Years81"
+        },
+        {
+          "id": "LifeExpectancy_Person_82Years",
+          "searchName": "Life Expectancy Of Person With Age Years 82",
+          "displayName": "LifeExpectancy Of Years82"
+        },
+        {
+          "id": "LifeExpectancy_Person_83Years",
+          "searchName": "Life Expectancy Of Person With Age Years 83",
+          "displayName": "LifeExpectancy Of Years83"
+        },
+        {
+          "id": "LifeExpectancy_Person_84Years",
+          "searchName": "Life Expectancy Of Person With Age Years 84",
+          "displayName": "LifeExpectancy Of Years84"
+        },
+        {
+          "id": "LifeExpectancy_Person_85OrMoreYears",
+          "searchName": "Life Expectancy Of Person With Age Years 85 Onwards",
+          "displayName": "LifeExpectancy Of Years85Onwards"
+        },
+        {
+          "id": "LifeExpectancy_Person_8Years",
+          "searchName": "Life Expectancy Of Person With Age Years 8",
+          "displayName": "LifeExpectancy Of Years8"
+        },
+        {
+          "id": "LifeExpectancy_Person_9Years",
+          "searchName": "Life Expectancy Of Person With Age Years 9",
+          "displayName": "LifeExpectancy Of Years9"
+        },
+        {
+          "id": "LifeExpectancy_Person_Upto1Years",
+          "searchName": "Life Expectancy Of Person With Age Years Upto 1",
+          "displayName": "LifeExpectancy Of YearsUpto1"
+        },
+        {
+          "id": "MortalityRate_Person_Upto4Years_AsFractionOf_Count_BirthEvent_LiveBirth",
+          "searchName": "Mortality Rate Of Person With Age Years Upto 4 As Fraction Of Count Birth Event Live Birth",
+          "displayName": "MortalityRate Of YearsUpto4 As Fraction Of Count BirthEvent LiveBirth"
+        },
+        {
+          "id": "UnemploymentRate_Person_25To74Years",
+          "searchName": "Unemployment Rate Of Person With Age Years 25 To 74",
+          "displayName": "UnemploymentRate Of Years25To74"
+        },
+        {
+          "id": "UnemploymentRate_Person_Upto25Years",
+          "searchName": "Unemployment Rate Of Person With Age Years Upto 25",
+          "displayName": "UnemploymentRate Of YearsUpto25"
         }
       ]
     },
-    "dc/g/Count_Person_Age_EmploymentStatus": {
-      "absoluteName": "Count Of Person By Age, EmploymentStatus",
+    "dc/g/Variables_Person_Age_EmploymentStatus": {
       "childStatVars": [
         {
           "id": "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years",
           "searchName": "Count Of Person With Age Years 15 To 64, Employment Status BLS_In Labor Force As Fraction Of Count Person 15 To 64 Years",
           "displayName": "Count Of Years15To64, BLS_InLaborForce As Fraction Of Count Person 15To64Years"
         }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_EmploymentStatus_Gender",
-          "specializedEntity": "Gender"
-        }
       ]
     },
-    "dc/g/Count_Person_Age_EmploymentStatus_Gender": {
-      "absoluteName": "Count Of Person By Age, EmploymentStatus, Gender",
+    "dc/g/Variables_Person_Age_EmploymentStatus_Gender": {
       "childStatVars": [
         {
           "id": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce",
@@ -1695,8 +2879,7 @@
         }
       ]
     },
-    "dc/g/Count_Person_Age_Gender": {
-      "absoluteName": "Count Of Person By Age, Gender",
+    "dc/g/Variables_Person_Age_Gender": {
       "childStatVars": [
         {
           "id": "Count_Person_0Years_Female",
@@ -2947,999 +4130,7 @@
           "id": "Count_Person_Upto4Years_Male",
           "searchName": "Count Of Person With Age Years Upto 4, Gender Male",
           "displayName": "Count Of YearsUpto4, Male"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_EmploymentStatus_Gender",
-          "specializedEntity": "EmploymentStatus"
         },
-        {
-          "id": "dc/g/Count_Person_Age_Gender_HealthBehavior",
-          "specializedEntity": "HealthBehavior"
-        }
-      ]
-    },
-    "dc/g/Count_Person_Age_Gender_HealthBehavior": {
-      "absoluteName": "Count Of Person By Age, Gender, HealthBehavior",
-      "childStatVars": [
-        {
-          "id": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female",
-          "searchName": "Count Of Person With Age Years 15 Onwards, Gender Female, Health Behavior Smoking As Fraction Of Count Person 15 Or More Years Female",
-          "displayName": "Count Of Years15Onwards, Female, Smoking As Fraction Of Count Person 15OrMoreYears Female"
-        },
-        {
-          "id": "Count_Person_15OrMoreYears_Male_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Male",
-          "searchName": "Count Of Person With Age Years 15 Onwards, Gender Male, Health Behavior Smoking As Fraction Of Count Person 15 Or More Years Male",
-          "displayName": "Count Of Years15Onwards, Male, Smoking As Fraction Of Count Person 15OrMoreYears Male"
-        }
-      ]
-    },
-    "dc/g/Count_Person_Age_HealthBehavior": {
-      "absoluteName": "Count Of Person By Age, HealthBehavior",
-      "childStatVars": [
-        {
-          "id": "Count_Person_15OrMoreYears_Smoking_AsFractionOf_Count_Person_15OrMoreYears",
-          "searchName": "Count Of Person With Age Years 15 Onwards, Health Behavior Smoking As Fraction Of Count Person 15 Or More Years",
-          "displayName": "Count Of Years15Onwards, Smoking As Fraction Of Count Person 15OrMoreYears"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_Gender_HealthBehavior",
-          "specializedEntity": "Gender"
-        }
-      ]
-    },
-    "dc/g/Count_Person_Age_HealthOutcome": {
-      "absoluteName": "Count Of Person By Age, HealthOutcome",
-      "childStatVars": [
-        {
-          "id": "Count_Person_20To79Years_Diabetes_AsFractionOf_Count_Person_20To79Years",
-          "searchName": "Count Of Person With Age Years 20 To 79, Health Outcome Diabetes As Fraction Of Count Person 20 To 79 Years",
-          "displayName": "Count Of Years20To79, Diabetes As Fraction Of Count Person 20To79Years"
-        }
-      ]
-    },
-    "dc/g/Count_Person_EducationalAttainment": {
-      "absoluteName": "Count Of Person By EducationalAttainment",
-      "childStatVars": [
-        {
-          "id": "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
-          "searchName": "Count Of Person With Educational Attainment Bachelors Degree Or Higher As Fraction Of Count Person 25 Or More Years",
-          "displayName": "Count Of BachelorsDegreeOrHigher As Fraction Of Count Person 25OrMoreYears"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears",
-          "searchName": "Count Of Person With Educational Attainment Doctorate Degree As Fraction Of Count Person 25 Or More Years",
-          "displayName": "Count Of DoctorateDegree As Fraction Of Count Person 25OrMoreYears"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
-          "searchName": "Count Of Person With Educational Attainment Masters Degree Or Higher As Fraction Of Count Person 25 Or More Years",
-          "displayName": "Count Of MastersDegreeOrHigher As Fraction Of Count Person 25OrMoreYears"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears",
-          "searchName": "Count Of Person With Educational Attainment Tertiary Education As Fraction Of Count Person 25 Or More Years",
-          "displayName": "Count Of TertiaryEducation As Fraction Of Count Person 25OrMoreYears"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_EducationalAttainment_Gender",
-          "specializedEntity": "Gender"
-        }
-      ]
-    },
-    "dc/g/Count_Person_EducationalAttainment_Gender": {
-      "absoluteName": "Count Of Person By EducationalAttainment, Gender",
-      "childStatVars": [
-        {
-          "id": "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
-          "searchName": "Count Of Person With Educational Attainment Bachelors Degree Or Higher, Gender Female As Fraction Of Count Person 25 Or More Years Female",
-          "displayName": "Count Of BachelorsDegreeOrHigher, Female As Fraction Of Count Person 25OrMoreYears Female"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female",
-          "searchName": "Count Of Person With Educational Attainment Doctorate Degree, Gender Female As Fraction Of Count Person 25 Or More Years Female",
-          "displayName": "Count Of DoctorateDegree, Female As Fraction Of Count Person 25OrMoreYears Female"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
-          "searchName": "Count Of Person With Educational Attainment Masters Degree Or Higher, Gender Female As Fraction Of Count Person 25 Or More Years Female",
-          "displayName": "Count Of MastersDegreeOrHigher, Female As Fraction Of Count Person 25OrMoreYears Female"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female",
-          "searchName": "Count Of Person With Educational Attainment Tertiary Education, Gender Female As Fraction Of Count Person 25 Or More Years Female",
-          "displayName": "Count Of TertiaryEducation, Female As Fraction Of Count Person 25OrMoreYears Female"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_Male_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
-          "searchName": "Count Of Person With Educational Attainment Bachelors Degree Or Higher, Gender Male As Fraction Of Count Person 25 Or More Years Male",
-          "displayName": "Count Of BachelorsDegreeOrHigher, Male As Fraction Of Count Person 25OrMoreYears Male"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_Male_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Male",
-          "searchName": "Count Of Person With Educational Attainment Doctorate Degree, Gender Male As Fraction Of Count Person 25 Or More Years Male",
-          "displayName": "Count Of DoctorateDegree, Male As Fraction Of Count Person 25OrMoreYears Male"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_Male_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
-          "searchName": "Count Of Person With Educational Attainment Masters Degree Or Higher, Gender Male As Fraction Of Count Person 25 Or More Years Male",
-          "displayName": "Count Of MastersDegreeOrHigher, Male As Fraction Of Count Person 25OrMoreYears Male"
-        },
-        {
-          "id": "Count_Person_25OrMoreYears_Male_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Male",
-          "searchName": "Count Of Person With Educational Attainment Tertiary Education, Gender Male As Fraction Of Count Person 25 Or More Years Male",
-          "displayName": "Count Of TertiaryEducation, Male As Fraction Of Count Person 25OrMoreYears Male"
-        }
-      ]
-    },
-    "dc/g/Count_Person_EmploymentStatus": {
-      "absoluteName": "Count Of Person By EmploymentStatus",
-      "childStatVars": [
-        {
-          "id": "Count_Person_InLaborForce",
-          "searchName": "Count Of Person With Employment Status BLS_In Labor Force",
-          "displayName": "Count Of BLS_InLaborForce"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_EmploymentStatus",
-          "specializedEntity": "Age"
-        }
-      ]
-    },
-    "dc/g/Count_Person_Gender": {
-      "absoluteName": "Count Of Person By Gender",
-      "childStatVars": [
-        {
-          "id": "Count_Person_Female",
-          "searchName": "Count Of Person With Gender Female",
-          "displayName": "Count Of Female"
-        },
-        {
-          "id": "Count_Person_Male",
-          "searchName": "Count Of Person With Gender Male",
-          "displayName": "Count Of Male"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_Age_Gender",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/Count_Person_EducationalAttainment_Gender",
-          "specializedEntity": "EducationalAttainment"
-        }
-      ]
-    },
-    "dc/g/Count_Person_IsInternetUser": {
-      "absoluteName": "Count Of Person By IsInternetUser",
-      "childStatVars": [
-        {
-          "id": "Count_Person_IsInternetUser_PerCapita",
-          "searchName": "Count Of Person With Is Internet User True As Fraction Of Per Capita",
-          "displayName": "Count Of True As Fraction Of PerCapita"
-        }
-      ]
-    },
-    "dc/g/Count_Person_PlaceOfResidenceClassification": {
-      "absoluteName": "Count Of Person By PlaceOfResidenceClassification",
-      "childStatVars": [
-        {
-          "id": "Count_Person_Rural",
-          "searchName": "Count Of Person With Place Of Residence Classification Rural",
-          "displayName": "Count Of Rural"
-        },
-        {
-          "id": "Count_Person_Urban",
-          "searchName": "Count Of Person With Place Of Residence Classification Urban",
-          "displayName": "Count Of Urban"
-        }
-      ]
-    },
-    "dc/g/Count_Person_ResidenceCharacteristic": {
-      "absoluteName": "Count Of Person By ResidenceCharacteristic",
-      "childStatVars": [
-        {
-          "id": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
-          "searchName": "Count Of Person With Residence Characteristic Less Than 5 Meters Above Sea Level As Fraction Of Count Person",
-          "displayName": "Count Of LessThan5MetersAboveSeaLevel As Fraction Of Count Person"
-        }
-      ]
-    },
-    "dc/g/Count_Product_ProductType": {
-      "absoluteName": "Count Of Product By ProductType",
-      "childStatVars": [
-        {
-          "id": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
-          "searchName": "Count Of Product With Product Type Mobile Cellular Subscription As Fraction Of Count Person",
-          "displayName": "Count Of MobileCellularSubscription As Fraction Of Count Person"
-        }
-      ]
-    },
-    "dc/g/Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy": {
-      "absoluteName": "Covid19ContainmentAndHealthIndex Of Legislation By Category, LegislationPassedBy",
-      "childStatVars": [
-        {
-          "id": "dc/epjwwz8pd436f",
-          "searchName": "Covid 19 Containment And Health Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
-          "displayName": "Covid19ContainmentAndHealthIndex Of COVID19Pandemic, GovernmentOrganization"
-        }
-      ]
-    },
-    "dc/g/Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy": {
-      "absoluteName": "Covid19EconomicSupportIndex Of Legislation By Category, LegislationPassedBy",
-      "childStatVars": [
-        {
-          "id": "dc/fj0rg1pn1y9sc",
-          "searchName": "Covid 19 Economic Support Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
-          "displayName": "Covid19EconomicSupportIndex Of COVID19Pandemic, GovernmentOrganization"
-        }
-      ]
-    },
-    "dc/g/Covid19MobilityTrend_PlaceVisitEvent_PlaceCategory": {
-      "absoluteName": "Covid19MobilityTrend Of PlaceVisitEvent By PlaceCategory",
-      "childStatVars": [
-        {
-          "id": "dc/0ny9m7k0lzmn5",
-          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Local Business",
-          "displayName": "Covid19MobilityTrend Of LocalBusiness"
-        },
-        {
-          "id": "dc/7fmnve6yyc508",
-          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Residence",
-          "displayName": "Covid19MobilityTrend Of Residence"
-        },
-        {
-          "id": "dc/n9rqwq8d3lcx3",
-          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Grocery Store\u0026Pharmacy",
-          "displayName": "Covid19MobilityTrend Of GroceryStore\u0026Pharmacy"
-        },
-        {
-          "id": "dc/p49ghylpwz93f",
-          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Park",
-          "displayName": "Covid19MobilityTrend Of Park"
-        },
-        {
-          "id": "dc/qdbhwwr88yhl7",
-          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Transport Hub",
-          "displayName": "Covid19MobilityTrend Of TransportHub"
-        },
-        {
-          "id": "dc/tbbjnf9bk96yh",
-          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Workplace",
-          "displayName": "Covid19MobilityTrend Of Workplace"
-        }
-      ]
-    },
-    "dc/g/Covid19ResponseIndex_Legislation_Category_LegislationPassedBy": {
-      "absoluteName": "Covid19ResponseIndex Of Legislation By Category, LegislationPassedBy",
-      "childStatVars": [
-        {
-          "id": "dc/qjr6rytbrb8cc",
-          "searchName": "Covid 19 Response Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
-          "displayName": "Covid19ResponseIndex Of COVID19Pandemic, GovernmentOrganization"
-        }
-      ]
-    },
-    "dc/g/Covid19StringencyIndex_Legislation_Category_LegislationPassedBy": {
-      "absoluteName": "Covid19StringencyIndex Of Legislation By Category, LegislationPassedBy",
-      "childStatVars": [
-        {
-          "id": "dc/8b9tx5t0pkvvd",
-          "searchName": "Covid 19 Stringency Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
-          "displayName": "Covid19StringencyIndex Of COVID19Pandemic, GovernmentOrganization"
-        }
-      ]
-    },
-    "dc/g/Crime": {
-      "absoluteName": "Crime",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_CriminalActivities",
-          "specializedEntity": "Count_CriminalActivities"
-        }
-      ]
-    },
-    "dc/g/CumulativeCount_MedicalConditionIncident_MedicalStatus": {
-      "absoluteName": "CumulativeCount Of MedicalConditionIncident By MedicalStatus",
-      "childStatVars": [
-        {
-          "id": "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
-          "searchName": "Cumulative Count Of Medical Condition Incident With Medical Status Confirmed Case",
-          "displayName": "CumulativeCount Of ConfirmedCase"
-        },
-        {
-          "id": "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased",
-          "searchName": "Cumulative Count Of Medical Condition Incident With Medical Status Patient Deceased",
-          "displayName": "CumulativeCount Of PatientDeceased"
-        }
-      ]
-    },
-    "dc/g/CumulativeCount_MedicalTest_MedicalCondition": {
-      "absoluteName": "CumulativeCount Of MedicalTest By MedicalCondition",
-      "childStatVars": [
-        {
-          "id": "CumulativeCount_MedicalTest_ConditionCOVID_19",
-          "searchName": "Cumulative Count Of Medical Test With Medical Condition COVID_19",
-          "displayName": "CumulativeCount Of COVID_19"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition_MedicalTestingMethod",
-          "specializedEntity": "MedicalTestingMethod"
-        }
-      ]
-    },
-    "dc/g/CumulativeCount_MedicalTest_MedicalCondition_MedicalTestingMethod": {
-      "absoluteName": "CumulativeCount Of MedicalTest By MedicalCondition, MedicalTestingMethod",
-      "childStatVars": [
-        {
-          "id": "CumulativeCount_MedicalTest_COVID_19_PCR",
-          "searchName": "Cumulative Count Of Medical Test With Medical Condition COVID_19, Medical Testing Method COVID 19 PCRTest",
-          "displayName": "CumulativeCount Of COVID_19, COVID19PCRTest"
-        }
-      ]
-    },
-    "dc/g/CumulativeCount_Vaccine_MedicalCondition_VaccineStatus": {
-      "absoluteName": "CumulativeCount Of Vaccine By MedicalCondition, VaccineStatus",
-      "childStatVars": [
-        {
-          "id": "CumulativeCount_Vaccine_COVID_19_Administered",
-          "searchName": "Cumulative Count Of Vaccine With Medical Condition COVID_19, Vaccine Status Vaccine Administered",
-          "displayName": "CumulativeCount Of COVID_19, VaccineAdministered"
-        }
-      ]
-    },
-    "dc/g/Demographics": {
-      "absoluteName": "Demographics",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_BirthEvent",
-          "specializedEntity": "Count_BirthEvent"
-        },
-        {
-          "id": "dc/g/Count_Person",
-          "specializedEntity": "Count_Person"
-        },
-        {
-          "id": "dc/g/LifeExpectancy_Person",
-          "specializedEntity": "LifeExpectancy_Person"
-        }
-      ]
-    },
-    "dc/g/Disasters": {
-      "absoluteName": "Disasters",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_CycloneEvent",
-          "specializedEntity": "Count_CycloneEvent"
-        },
-        {
-          "id": "dc/g/Count_EarthquakeEvent",
-          "specializedEntity": "Count_EarthquakeEvent"
-        }
-      ]
-    },
-    "dc/g/Economics": {
-      "absoluteName": "Economics",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Amount_Consumption_ConsumedThing",
-          "specializedEntity": "Amount_Consumption_ConsumedThing"
-        },
-        {
-          "id": "dc/g/Amount_EconomicActivity_ActivitySource",
-          "specializedEntity": "Amount_EconomicActivity_ActivitySource"
-        },
-        {
-          "id": "dc/g/Amount_Production_ProducedThing",
-          "specializedEntity": "Amount_Production_ProducedThing"
-        },
-        {
-          "id": "dc/g/GiniIndex_EconomicActivity",
-          "specializedEntity": "GiniIndex_EconomicActivity"
-        }
-      ]
-    },
-    "dc/g/Education": {
-      "absoluteName": "Education",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_EducationalAttainment",
-          "specializedEntity": "Count_Person_EducationalAttainment"
-        }
-      ]
-    },
-    "dc/g/Employment": {
-      "absoluteName": "Employment",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_Person_EmploymentStatus",
-          "specializedEntity": "Count_Person_EmploymentStatus"
-        },
-        {
-          "id": "dc/g/UnemploymentRate_Person",
-          "specializedEntity": "UnemploymentRate_Person"
-        }
-      ]
-    },
-    "dc/g/Environment": {
-      "absoluteName": "Environment",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Amount_Consumption_ConsumedThing",
-          "specializedEntity": "Amount_Consumption_ConsumedThing"
-        },
-        {
-          "id": "dc/g/Amount_Emissions_EmittedThing",
-          "specializedEntity": "Amount_Emissions_EmittedThing"
-        },
-        {
-          "id": "dc/g/Amount_Production_ProducedThing",
-          "specializedEntity": "Amount_Production_ProducedThing"
-        }
-      ]
-    },
-    "dc/g/FertilityRate_Person": {
-      "absoluteName": "FertilityRate Of Person",
-      "childStatVars": [
-        {
-          "id": "FertilityRate_Person_Female",
-          "searchName": "Fertility Rate Of Person",
-          "displayName": "FertilityRate Of Person"
-        }
-      ]
-    },
-    "dc/g/GiniIndex_EconomicActivity": {
-      "absoluteName": "GiniIndex Of EconomicActivity",
-      "childStatVars": [
-        {
-          "id": "GiniIndex_EconomicActivity",
-          "searchName": "Gini Index Of Economic Activity",
-          "displayName": "GiniIndex Of EconomicActivity"
-        }
-      ]
-    },
-    "dc/g/Health": {
-      "absoluteName": "Health",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Count_MortalityEvent",
-          "specializedEntity": "Count_MortalityEvent"
-        },
-        {
-          "id": "dc/g/FertilityRate_Person",
-          "specializedEntity": "FertilityRate_Person"
-        },
-        {
-          "id": "dc/g/LifeExpectancy_Person",
-          "specializedEntity": "LifeExpectancy_Person"
-        }
-      ]
-    },
-    "dc/g/IncrementalCount_MedicalConditionIncident_MedicalStatus": {
-      "absoluteName": "IncrementalCount Of MedicalConditionIncident By MedicalStatus",
-      "childStatVars": [
-        {
-          "id": "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedCase",
-          "searchName": "Incremental Count Of Medical Condition Incident With Medical Status Confirmed Case",
-          "displayName": "IncrementalCount Of ConfirmedCase"
-        },
-        {
-          "id": "IncrementalCount_MedicalConditionIncident_COVID_19_PatientDeceased",
-          "searchName": "Incremental Count Of Medical Condition Incident With Medical Status Patient Deceased",
-          "displayName": "IncrementalCount Of PatientDeceased"
-        }
-      ]
-    },
-    "dc/g/IncrementalCount_MedicalTest_MedicalCondition": {
-      "absoluteName": "IncrementalCount Of MedicalTest By MedicalCondition",
-      "childStatVars": [
-        {
-          "id": "IncrementalCount_MedicalTest_ConditionCOVID_19",
-          "searchName": "Incremental Count Of Medical Test With Medical Condition COVID_19",
-          "displayName": "IncrementalCount Of COVID_19"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition_MedicalTestingMethod",
-          "specializedEntity": "MedicalTestingMethod"
-        }
-      ]
-    },
-    "dc/g/IncrementalCount_MedicalTest_MedicalCondition_MedicalTestingMethod": {
-      "absoluteName": "IncrementalCount Of MedicalTest By MedicalCondition, MedicalTestingMethod",
-      "childStatVars": [
-        {
-          "id": "IncrementalCount_MedicalTest_COVID_19_PCR",
-          "searchName": "Incremental Count Of Medical Test With Medical Condition COVID_19, Medical Testing Method COVID 19 PCRTest",
-          "displayName": "IncrementalCount Of COVID_19, COVID19PCRTest"
-        }
-      ]
-    },
-    "dc/g/IncrementalCount_Vaccine_MedicalCondition_VaccineStatus": {
-      "absoluteName": "IncrementalCount Of Vaccine By MedicalCondition, VaccineStatus",
-      "childStatVars": [
-        {
-          "id": "IncrementalCount_Vaccine_COVID_19_Administered",
-          "searchName": "Incremental Count Of Vaccine With Medical Condition COVID_19, Vaccine Status Vaccine Administered",
-          "displayName": "IncrementalCount Of COVID_19, VaccineAdministered"
-        }
-      ]
-    },
-    "dc/g/LifeExpectancy_Person": {
-      "absoluteName": "LifeExpectancy Of Person",
-      "childStatVars": [
-        {
-          "id": "LifeExpectancy_Person",
-          "searchName": "Life Expectancy Of Person",
-          "displayName": "LifeExpectancy Of Person"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/LifeExpectancy_Person_Age",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/LifeExpectancy_Person_Gender",
-          "specializedEntity": "Gender"
-        }
-      ]
-    },
-    "dc/g/LifeExpectancy_Person_Age": {
-      "absoluteName": "LifeExpectancy Of Person By Age",
-      "childStatVars": [
-        {
-          "id": "LifeExpectancy_Person_10Years",
-          "searchName": "Life Expectancy Of Person With Age Years 10",
-          "displayName": "LifeExpectancy Of Years10"
-        },
-        {
-          "id": "LifeExpectancy_Person_11Years",
-          "searchName": "Life Expectancy Of Person With Age Years 11",
-          "displayName": "LifeExpectancy Of Years11"
-        },
-        {
-          "id": "LifeExpectancy_Person_12Years",
-          "searchName": "Life Expectancy Of Person With Age Years 12",
-          "displayName": "LifeExpectancy Of Years12"
-        },
-        {
-          "id": "LifeExpectancy_Person_13Years",
-          "searchName": "Life Expectancy Of Person With Age Years 13",
-          "displayName": "LifeExpectancy Of Years13"
-        },
-        {
-          "id": "LifeExpectancy_Person_14Years",
-          "searchName": "Life Expectancy Of Person With Age Years 14",
-          "displayName": "LifeExpectancy Of Years14"
-        },
-        {
-          "id": "LifeExpectancy_Person_15Years",
-          "searchName": "Life Expectancy Of Person With Age Years 15",
-          "displayName": "LifeExpectancy Of Years15"
-        },
-        {
-          "id": "LifeExpectancy_Person_16Years",
-          "searchName": "Life Expectancy Of Person With Age Years 16",
-          "displayName": "LifeExpectancy Of Years16"
-        },
-        {
-          "id": "LifeExpectancy_Person_17Years",
-          "searchName": "Life Expectancy Of Person With Age Years 17",
-          "displayName": "LifeExpectancy Of Years17"
-        },
-        {
-          "id": "LifeExpectancy_Person_18Years",
-          "searchName": "Life Expectancy Of Person With Age Years 18",
-          "displayName": "LifeExpectancy Of Years18"
-        },
-        {
-          "id": "LifeExpectancy_Person_19Years",
-          "searchName": "Life Expectancy Of Person With Age Years 19",
-          "displayName": "LifeExpectancy Of Years19"
-        },
-        {
-          "id": "LifeExpectancy_Person_1Years",
-          "searchName": "Life Expectancy Of Person With Age Years 1",
-          "displayName": "LifeExpectancy Of Years1"
-        },
-        {
-          "id": "LifeExpectancy_Person_20Years",
-          "searchName": "Life Expectancy Of Person With Age Years 20",
-          "displayName": "LifeExpectancy Of Years20"
-        },
-        {
-          "id": "LifeExpectancy_Person_21Years",
-          "searchName": "Life Expectancy Of Person With Age Years 21",
-          "displayName": "LifeExpectancy Of Years21"
-        },
-        {
-          "id": "LifeExpectancy_Person_22Years",
-          "searchName": "Life Expectancy Of Person With Age Years 22",
-          "displayName": "LifeExpectancy Of Years22"
-        },
-        {
-          "id": "LifeExpectancy_Person_23Years",
-          "searchName": "Life Expectancy Of Person With Age Years 23",
-          "displayName": "LifeExpectancy Of Years23"
-        },
-        {
-          "id": "LifeExpectancy_Person_24Years",
-          "searchName": "Life Expectancy Of Person With Age Years 24",
-          "displayName": "LifeExpectancy Of Years24"
-        },
-        {
-          "id": "LifeExpectancy_Person_25Years",
-          "searchName": "Life Expectancy Of Person With Age Years 25",
-          "displayName": "LifeExpectancy Of Years25"
-        },
-        {
-          "id": "LifeExpectancy_Person_26Years",
-          "searchName": "Life Expectancy Of Person With Age Years 26",
-          "displayName": "LifeExpectancy Of Years26"
-        },
-        {
-          "id": "LifeExpectancy_Person_27Years",
-          "searchName": "Life Expectancy Of Person With Age Years 27",
-          "displayName": "LifeExpectancy Of Years27"
-        },
-        {
-          "id": "LifeExpectancy_Person_28Years",
-          "searchName": "Life Expectancy Of Person With Age Years 28",
-          "displayName": "LifeExpectancy Of Years28"
-        },
-        {
-          "id": "LifeExpectancy_Person_29Years",
-          "searchName": "Life Expectancy Of Person With Age Years 29",
-          "displayName": "LifeExpectancy Of Years29"
-        },
-        {
-          "id": "LifeExpectancy_Person_2Years",
-          "searchName": "Life Expectancy Of Person With Age Years 2",
-          "displayName": "LifeExpectancy Of Years2"
-        },
-        {
-          "id": "LifeExpectancy_Person_30Years",
-          "searchName": "Life Expectancy Of Person With Age Years 30",
-          "displayName": "LifeExpectancy Of Years30"
-        },
-        {
-          "id": "LifeExpectancy_Person_31Years",
-          "searchName": "Life Expectancy Of Person With Age Years 31",
-          "displayName": "LifeExpectancy Of Years31"
-        },
-        {
-          "id": "LifeExpectancy_Person_32Years",
-          "searchName": "Life Expectancy Of Person With Age Years 32",
-          "displayName": "LifeExpectancy Of Years32"
-        },
-        {
-          "id": "LifeExpectancy_Person_33Years",
-          "searchName": "Life Expectancy Of Person With Age Years 33",
-          "displayName": "LifeExpectancy Of Years33"
-        },
-        {
-          "id": "LifeExpectancy_Person_34Years",
-          "searchName": "Life Expectancy Of Person With Age Years 34",
-          "displayName": "LifeExpectancy Of Years34"
-        },
-        {
-          "id": "LifeExpectancy_Person_35Years",
-          "searchName": "Life Expectancy Of Person With Age Years 35",
-          "displayName": "LifeExpectancy Of Years35"
-        },
-        {
-          "id": "LifeExpectancy_Person_36Years",
-          "searchName": "Life Expectancy Of Person With Age Years 36",
-          "displayName": "LifeExpectancy Of Years36"
-        },
-        {
-          "id": "LifeExpectancy_Person_37Years",
-          "searchName": "Life Expectancy Of Person With Age Years 37",
-          "displayName": "LifeExpectancy Of Years37"
-        },
-        {
-          "id": "LifeExpectancy_Person_38Years",
-          "searchName": "Life Expectancy Of Person With Age Years 38",
-          "displayName": "LifeExpectancy Of Years38"
-        },
-        {
-          "id": "LifeExpectancy_Person_39Years",
-          "searchName": "Life Expectancy Of Person With Age Years 39",
-          "displayName": "LifeExpectancy Of Years39"
-        },
-        {
-          "id": "LifeExpectancy_Person_3Years",
-          "searchName": "Life Expectancy Of Person With Age Years 3",
-          "displayName": "LifeExpectancy Of Years3"
-        },
-        {
-          "id": "LifeExpectancy_Person_40Years",
-          "searchName": "Life Expectancy Of Person With Age Years 40",
-          "displayName": "LifeExpectancy Of Years40"
-        },
-        {
-          "id": "LifeExpectancy_Person_41Years",
-          "searchName": "Life Expectancy Of Person With Age Years 41",
-          "displayName": "LifeExpectancy Of Years41"
-        },
-        {
-          "id": "LifeExpectancy_Person_42Years",
-          "searchName": "Life Expectancy Of Person With Age Years 42",
-          "displayName": "LifeExpectancy Of Years42"
-        },
-        {
-          "id": "LifeExpectancy_Person_43Years",
-          "searchName": "Life Expectancy Of Person With Age Years 43",
-          "displayName": "LifeExpectancy Of Years43"
-        },
-        {
-          "id": "LifeExpectancy_Person_44Years",
-          "searchName": "Life Expectancy Of Person With Age Years 44",
-          "displayName": "LifeExpectancy Of Years44"
-        },
-        {
-          "id": "LifeExpectancy_Person_45Years",
-          "searchName": "Life Expectancy Of Person With Age Years 45",
-          "displayName": "LifeExpectancy Of Years45"
-        },
-        {
-          "id": "LifeExpectancy_Person_46Years",
-          "searchName": "Life Expectancy Of Person With Age Years 46",
-          "displayName": "LifeExpectancy Of Years46"
-        },
-        {
-          "id": "LifeExpectancy_Person_47Years",
-          "searchName": "Life Expectancy Of Person With Age Years 47",
-          "displayName": "LifeExpectancy Of Years47"
-        },
-        {
-          "id": "LifeExpectancy_Person_48Years",
-          "searchName": "Life Expectancy Of Person With Age Years 48",
-          "displayName": "LifeExpectancy Of Years48"
-        },
-        {
-          "id": "LifeExpectancy_Person_49Years",
-          "searchName": "Life Expectancy Of Person With Age Years 49",
-          "displayName": "LifeExpectancy Of Years49"
-        },
-        {
-          "id": "LifeExpectancy_Person_4Years",
-          "searchName": "Life Expectancy Of Person With Age Years 4",
-          "displayName": "LifeExpectancy Of Years4"
-        },
-        {
-          "id": "LifeExpectancy_Person_50Years",
-          "searchName": "Life Expectancy Of Person With Age Years 50",
-          "displayName": "LifeExpectancy Of Years50"
-        },
-        {
-          "id": "LifeExpectancy_Person_51Years",
-          "searchName": "Life Expectancy Of Person With Age Years 51",
-          "displayName": "LifeExpectancy Of Years51"
-        },
-        {
-          "id": "LifeExpectancy_Person_52Years",
-          "searchName": "Life Expectancy Of Person With Age Years 52",
-          "displayName": "LifeExpectancy Of Years52"
-        },
-        {
-          "id": "LifeExpectancy_Person_53Years",
-          "searchName": "Life Expectancy Of Person With Age Years 53",
-          "displayName": "LifeExpectancy Of Years53"
-        },
-        {
-          "id": "LifeExpectancy_Person_54Years",
-          "searchName": "Life Expectancy Of Person With Age Years 54",
-          "displayName": "LifeExpectancy Of Years54"
-        },
-        {
-          "id": "LifeExpectancy_Person_55Years",
-          "searchName": "Life Expectancy Of Person With Age Years 55",
-          "displayName": "LifeExpectancy Of Years55"
-        },
-        {
-          "id": "LifeExpectancy_Person_56Years",
-          "searchName": "Life Expectancy Of Person With Age Years 56",
-          "displayName": "LifeExpectancy Of Years56"
-        },
-        {
-          "id": "LifeExpectancy_Person_57Years",
-          "searchName": "Life Expectancy Of Person With Age Years 57",
-          "displayName": "LifeExpectancy Of Years57"
-        },
-        {
-          "id": "LifeExpectancy_Person_58Years",
-          "searchName": "Life Expectancy Of Person With Age Years 58",
-          "displayName": "LifeExpectancy Of Years58"
-        },
-        {
-          "id": "LifeExpectancy_Person_59Years",
-          "searchName": "Life Expectancy Of Person With Age Years 59",
-          "displayName": "LifeExpectancy Of Years59"
-        },
-        {
-          "id": "LifeExpectancy_Person_5Years",
-          "searchName": "Life Expectancy Of Person With Age Years 5",
-          "displayName": "LifeExpectancy Of Years5"
-        },
-        {
-          "id": "LifeExpectancy_Person_60Years",
-          "searchName": "Life Expectancy Of Person With Age Years 60",
-          "displayName": "LifeExpectancy Of Years60"
-        },
-        {
-          "id": "LifeExpectancy_Person_61Years",
-          "searchName": "Life Expectancy Of Person With Age Years 61",
-          "displayName": "LifeExpectancy Of Years61"
-        },
-        {
-          "id": "LifeExpectancy_Person_62Years",
-          "searchName": "Life Expectancy Of Person With Age Years 62",
-          "displayName": "LifeExpectancy Of Years62"
-        },
-        {
-          "id": "LifeExpectancy_Person_63Years",
-          "searchName": "Life Expectancy Of Person With Age Years 63",
-          "displayName": "LifeExpectancy Of Years63"
-        },
-        {
-          "id": "LifeExpectancy_Person_64Years",
-          "searchName": "Life Expectancy Of Person With Age Years 64",
-          "displayName": "LifeExpectancy Of Years64"
-        },
-        {
-          "id": "LifeExpectancy_Person_65Years",
-          "searchName": "Life Expectancy Of Person With Age Years 65",
-          "displayName": "LifeExpectancy Of Years65"
-        },
-        {
-          "id": "LifeExpectancy_Person_66Years",
-          "searchName": "Life Expectancy Of Person With Age Years 66",
-          "displayName": "LifeExpectancy Of Years66"
-        },
-        {
-          "id": "LifeExpectancy_Person_67Years",
-          "searchName": "Life Expectancy Of Person With Age Years 67",
-          "displayName": "LifeExpectancy Of Years67"
-        },
-        {
-          "id": "LifeExpectancy_Person_68Years",
-          "searchName": "Life Expectancy Of Person With Age Years 68",
-          "displayName": "LifeExpectancy Of Years68"
-        },
-        {
-          "id": "LifeExpectancy_Person_69Years",
-          "searchName": "Life Expectancy Of Person With Age Years 69",
-          "displayName": "LifeExpectancy Of Years69"
-        },
-        {
-          "id": "LifeExpectancy_Person_6Years",
-          "searchName": "Life Expectancy Of Person With Age Years 6",
-          "displayName": "LifeExpectancy Of Years6"
-        },
-        {
-          "id": "LifeExpectancy_Person_70Years",
-          "searchName": "Life Expectancy Of Person With Age Years 70",
-          "displayName": "LifeExpectancy Of Years70"
-        },
-        {
-          "id": "LifeExpectancy_Person_71Years",
-          "searchName": "Life Expectancy Of Person With Age Years 71",
-          "displayName": "LifeExpectancy Of Years71"
-        },
-        {
-          "id": "LifeExpectancy_Person_72Years",
-          "searchName": "Life Expectancy Of Person With Age Years 72",
-          "displayName": "LifeExpectancy Of Years72"
-        },
-        {
-          "id": "LifeExpectancy_Person_73Years",
-          "searchName": "Life Expectancy Of Person With Age Years 73",
-          "displayName": "LifeExpectancy Of Years73"
-        },
-        {
-          "id": "LifeExpectancy_Person_74Years",
-          "searchName": "Life Expectancy Of Person With Age Years 74",
-          "displayName": "LifeExpectancy Of Years74"
-        },
-        {
-          "id": "LifeExpectancy_Person_75Years",
-          "searchName": "Life Expectancy Of Person With Age Years 75",
-          "displayName": "LifeExpectancy Of Years75"
-        },
-        {
-          "id": "LifeExpectancy_Person_76Years",
-          "searchName": "Life Expectancy Of Person With Age Years 76",
-          "displayName": "LifeExpectancy Of Years76"
-        },
-        {
-          "id": "LifeExpectancy_Person_77Years",
-          "searchName": "Life Expectancy Of Person With Age Years 77",
-          "displayName": "LifeExpectancy Of Years77"
-        },
-        {
-          "id": "LifeExpectancy_Person_78Years",
-          "searchName": "Life Expectancy Of Person With Age Years 78",
-          "displayName": "LifeExpectancy Of Years78"
-        },
-        {
-          "id": "LifeExpectancy_Person_79Years",
-          "searchName": "Life Expectancy Of Person With Age Years 79",
-          "displayName": "LifeExpectancy Of Years79"
-        },
-        {
-          "id": "LifeExpectancy_Person_7Years",
-          "searchName": "Life Expectancy Of Person With Age Years 7",
-          "displayName": "LifeExpectancy Of Years7"
-        },
-        {
-          "id": "LifeExpectancy_Person_80Years",
-          "searchName": "Life Expectancy Of Person With Age Years 80",
-          "displayName": "LifeExpectancy Of Years80"
-        },
-        {
-          "id": "LifeExpectancy_Person_81Years",
-          "searchName": "Life Expectancy Of Person With Age Years 81",
-          "displayName": "LifeExpectancy Of Years81"
-        },
-        {
-          "id": "LifeExpectancy_Person_82Years",
-          "searchName": "Life Expectancy Of Person With Age Years 82",
-          "displayName": "LifeExpectancy Of Years82"
-        },
-        {
-          "id": "LifeExpectancy_Person_83Years",
-          "searchName": "Life Expectancy Of Person With Age Years 83",
-          "displayName": "LifeExpectancy Of Years83"
-        },
-        {
-          "id": "LifeExpectancy_Person_84Years",
-          "searchName": "Life Expectancy Of Person With Age Years 84",
-          "displayName": "LifeExpectancy Of Years84"
-        },
-        {
-          "id": "LifeExpectancy_Person_85OrMoreYears",
-          "searchName": "Life Expectancy Of Person With Age Years 85 Onwards",
-          "displayName": "LifeExpectancy Of Years85Onwards"
-        },
-        {
-          "id": "LifeExpectancy_Person_8Years",
-          "searchName": "Life Expectancy Of Person With Age Years 8",
-          "displayName": "LifeExpectancy Of Years8"
-        },
-        {
-          "id": "LifeExpectancy_Person_9Years",
-          "searchName": "Life Expectancy Of Person With Age Years 9",
-          "displayName": "LifeExpectancy Of Years9"
-        },
-        {
-          "id": "LifeExpectancy_Person_Upto1Years",
-          "searchName": "Life Expectancy Of Person With Age Years Upto 1",
-          "displayName": "LifeExpectancy Of YearsUpto1"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/LifeExpectancy_Person_Age_Gender",
-          "specializedEntity": "Gender"
-        }
-      ]
-    },
-    "dc/g/LifeExpectancy_Person_Age_Gender": {
-      "absoluteName": "LifeExpectancy Of Person By Age, Gender",
-      "childStatVars": [
         {
           "id": "LifeExpectancy_Person_10Years_Female",
           "searchName": "Life Expectancy Of Person With Age Years 10, Gender Female",
@@ -4799,285 +4990,7 @@
           "id": "LifeExpectancy_Person_Upto1Years_Male",
           "searchName": "Life Expectancy Of Person With Age Years Upto 1, Gender Male",
           "displayName": "LifeExpectancy Of YearsUpto1, Male"
-        }
-      ]
-    },
-    "dc/g/LifeExpectancy_Person_Gender": {
-      "absoluteName": "LifeExpectancy Of Person By Gender",
-      "childStatVars": [
-        {
-          "id": "LifeExpectancy_Person_Female",
-          "searchName": "Life Expectancy Of Person With Gender Female",
-          "displayName": "LifeExpectancy Of Female"
         },
-        {
-          "id": "LifeExpectancy_Person_Male",
-          "searchName": "Life Expectancy Of Person With Gender Male",
-          "displayName": "LifeExpectancy Of Male"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/LifeExpectancy_Person_Age_Gender",
-          "specializedEntity": "Age"
-        }
-      ]
-    },
-    "dc/g/Miscellaneous": {
-      "absoluteName": "Miscellaneous",
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Amount_Debt_Debtor",
-          "specializedEntity": "Amount_Debt_Debtor"
-        },
-        {
-          "id": "dc/g/Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType",
-          "specializedEntity": "Amount_Legislation_Category_Expenditure_LegislationPassedBy_PolicyType"
-        },
-        {
-          "id": "dc/g/Amount_Remittance_TransferType",
-          "specializedEntity": "Amount_Remittance_TransferType"
-        },
-        {
-          "id": "dc/g/Amount_Stock",
-          "specializedEntity": "Amount_Stock"
-        },
-        {
-          "id": "dc/g/CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage",
-          "specializedEntity": "CampaignExtent_PublicInformationCampaign_Category_Organizer_SpatialCoverage"
-        },
-        {
-          "id": "dc/g/Count_Product_ProductType",
-          "specializedEntity": "Count_Product_ProductType"
-        },
-        {
-          "id": "dc/g/Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19ContainmentAndHealthIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19EconomicSupportIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/Covid19ResponseIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19ResponseIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/Covid19StringencyIndex_Legislation_Category_LegislationPassedBy",
-          "specializedEntity": "Covid19StringencyIndex_Legislation_Category_LegislationPassedBy"
-        },
-        {
-          "id": "dc/g/CumulativeCount_MedicalTest_MedicalCondition",
-          "specializedEntity": "CumulativeCount_MedicalTest_MedicalCondition"
-        },
-        {
-          "id": "dc/g/CumulativeCount_Vaccine_MedicalCondition_VaccineStatus",
-          "specializedEntity": "CumulativeCount_Vaccine_MedicalCondition_VaccineStatus"
-        },
-        {
-          "id": "dc/g/IncrementalCount_MedicalTest_MedicalCondition",
-          "specializedEntity": "IncrementalCount_MedicalTest_MedicalCondition"
-        },
-        {
-          "id": "dc/g/IncrementalCount_Vaccine_MedicalCondition_VaccineStatus",
-          "specializedEntity": "IncrementalCount_Vaccine_MedicalCondition_VaccineStatus"
-        },
-        {
-          "id": "dc/g/MortalityRate_Person_Age",
-          "specializedEntity": "MortalityRate_Person_Age"
-        }
-      ]
-    },
-    "dc/g/MortalityRate_Person_Age": {
-      "absoluteName": "MortalityRate Of Person By Age",
-      "childStatVars": [
-        {
-          "id": "MortalityRate_Person_Upto4Years_AsFractionOf_Count_BirthEvent_LiveBirth",
-          "searchName": "Mortality Rate Of Person With Age Years Upto 4 As Fraction Of Count Birth Event Live Birth",
-          "displayName": "MortalityRate Of YearsUpto4 As Fraction Of Count BirthEvent LiveBirth"
-        }
-      ]
-    },
-    "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage": {
-      "absoluteName": "PolicyExtent Of Legislation By Category, LegislationPassedBy, PolicyType, SpatialCoverage",
-      "childStatVars": [
-        {
-          "id": "dc/4c6jn5rz7gel7",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage Selected Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, SelectedAdministrativeAreas"
-        },
-        {
-          "id": "dc/5rm8q9w0ktg15",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage Selected Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, SelectedAdministrativeAreas"
-        },
-        {
-          "id": "dc/cbyv2dhmtlp6",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage Selected Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, SelectedAdministrativeAreas"
-        },
-        {
-          "id": "dc/cmf4pw2gpn1pf",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage All Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, AllAdministrativeAreas"
-        },
-        {
-          "id": "dc/ehx7mbn98glvd",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Public Transit Closure, Spatial Coverage Spatial Coverage Unknown",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PublicTransitClosure, SpatialCoverageUnknown"
-        },
-        {
-          "id": "dc/gd1dnw2qqvex8",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage Spatial Coverage Unknown",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, SpatialCoverageUnknown"
-        },
-        {
-          "id": "dc/gwh28ge42vved",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage Spatial Coverage Unknown",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, SpatialCoverageUnknown"
-        },
-        {
-          "id": "dc/m6dc1gf715hh6",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage Spatial Coverage Unknown",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, SpatialCoverageUnknown"
-        },
-        {
-          "id": "dc/mje8p4h6802v3",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage All Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, AllAdministrativeAreas"
-        },
-        {
-          "id": "dc/mmw8xlxhcg3f7",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage Spatial Coverage Unknown",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, SpatialCoverageUnknown"
-        },
-        {
-          "id": "dc/nghthld2vg2j1",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage All Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, AllAdministrativeAreas"
-        },
-        {
-          "id": "dc/qbxt2mfr528y6",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage All Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, AllAdministrativeAreas"
-        },
-        {
-          "id": "dc/qx5qb5cbem785",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage Spatial Coverage Unknown",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, SpatialCoverageUnknown"
-        },
-        {
-          "id": "dc/qz7xe3jx2sfc8",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Public Transit Closure, Spatial Coverage All Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PublicTransitClosure, AllAdministrativeAreas"
-        },
-        {
-          "id": "dc/rmlel1n5en28h",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage All Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, AllAdministrativeAreas"
-        },
-        {
-          "id": "dc/t3tn162x3hc32",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage Selected Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, SelectedAdministrativeAreas"
-        },
-        {
-          "id": "dc/tqkqfxys6heeb",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage All Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, AllAdministrativeAreas"
-        },
-        {
-          "id": "dc/wjecmxzfw6j27",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage Spatial Coverage Unknown",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, SpatialCoverageUnknown"
-        },
-        {
-          "id": "dc/wye626mejjnh3",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage Selected Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, SelectedAdministrativeAreas"
-        },
-        {
-          "id": "dc/z2mrynz0z0np6",
-          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage Selected Administrative Areas",
-          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, SelectedAdministrativeAreas"
-        }
-      ]
-    },
-    "dc/g/PolicyExtent_Legislation_PolicyType": {
-      "absoluteName": "PolicyExtent Of Legislation By PolicyType",
-      "childStatVars": [
-        {
-          "id": "dc/4eg7509rc5qsf",
-          "searchName": "Policy Extent Of Legislation With Policy Type Debt Or Contract Relief",
-          "displayName": "PolicyExtent Of DebtOrContractRelief"
-        },
-        {
-          "id": "dc/k6718pj7zm3w3",
-          "searchName": "Policy Extent Of Legislation With Policy Type International Travel Restriction",
-          "displayName": "PolicyExtent Of InternationalTravelRestriction"
-        },
-        {
-          "id": "dc/sp757cedbv057",
-          "searchName": "Policy Extent Of Legislation With Policy Type Testing Eligibility",
-          "displayName": "PolicyExtent Of TestingEligibility"
-        },
-        {
-          "id": "dc/zl73qp466bs28",
-          "searchName": "Policy Extent Of Legislation With Policy Type Contact Tracing",
-          "displayName": "PolicyExtent Of ContactTracing"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/PolicyExtent_Legislation_Category_LegislationPassedBy_PolicyType_SpatialCoverage",
-          "specializedEntity": "Category_LegislationPassedBy_SpatialCoverage"
-        }
-      ]
-    },
-    "dc/g/UnemploymentRate_Person": {
-      "absoluteName": "UnemploymentRate Of Person",
-      "childStatVars": [
-        {
-          "id": "UnemploymentRate_Person",
-          "searchName": "Unemployment Rate Of Person",
-          "displayName": "UnemploymentRate Of Person"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/UnemploymentRate_Person_Age",
-          "specializedEntity": "Age"
-        },
-        {
-          "id": "dc/g/UnemploymentRate_Person_Gender",
-          "specializedEntity": "Gender"
-        }
-      ]
-    },
-    "dc/g/UnemploymentRate_Person_Age": {
-      "absoluteName": "UnemploymentRate Of Person By Age",
-      "childStatVars": [
-        {
-          "id": "UnemploymentRate_Person_25To74Years",
-          "searchName": "Unemployment Rate Of Person With Age Years 25 To 74",
-          "displayName": "UnemploymentRate Of Years25To74"
-        },
-        {
-          "id": "UnemploymentRate_Person_Upto25Years",
-          "searchName": "Unemployment Rate Of Person With Age Years Upto 25",
-          "displayName": "UnemploymentRate Of YearsUpto25"
-        }
-      ],
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/UnemploymentRate_Person_Age_Gender",
-          "specializedEntity": "Gender"
-        }
-      ]
-    },
-    "dc/g/UnemploymentRate_Person_Age_Gender": {
-      "absoluteName": "UnemploymentRate Of Person By Age, Gender",
-      "childStatVars": [
         {
           "id": "UnemploymentRate_Person_25To74Years_Female",
           "searchName": "Unemployment Rate Of Person With Age Years 25 To 74, Gender Female",
@@ -5100,9 +5013,123 @@
         }
       ]
     },
-    "dc/g/UnemploymentRate_Person_Gender": {
-      "absoluteName": "UnemploymentRate Of Person By Gender",
+    "dc/g/Variables_Person_Age_HealthBehavior": {
       "childStatVars": [
+        {
+          "id": "Count_Person_15OrMoreYears_Smoking_AsFractionOf_Count_Person_15OrMoreYears",
+          "searchName": "Count Of Person With Age Years 15 Onwards, Health Behavior Smoking As Fraction Of Count Person 15 Or More Years",
+          "displayName": "Count Of Years15Onwards, Smoking As Fraction Of Count Person 15OrMoreYears"
+        }
+      ]
+    },
+    "dc/g/Variables_Person_Age_HealthOutcome": {
+      "childStatVars": [
+        {
+          "id": "Count_Person_20To79Years_Diabetes_AsFractionOf_Count_Person_20To79Years",
+          "searchName": "Count Of Person With Age Years 20 To 79, Health Outcome Diabetes As Fraction Of Count Person 20 To 79 Years",
+          "displayName": "Count Of Years20To79, Diabetes As Fraction Of Count Person 20To79Years"
+        }
+      ]
+    },
+    "dc/g/Variables_Person_EducationalAttainment": {
+      "childStatVars": [
+        {
+          "id": "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
+          "searchName": "Count Of Person With Educational Attainment Bachelors Degree Or Higher As Fraction Of Count Person 25 Or More Years",
+          "displayName": "Count Of BachelorsDegreeOrHigher As Fraction Of Count Person 25OrMoreYears"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears",
+          "searchName": "Count Of Person With Educational Attainment Doctorate Degree As Fraction Of Count Person 25 Or More Years",
+          "displayName": "Count Of DoctorateDegree As Fraction Of Count Person 25OrMoreYears"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears",
+          "searchName": "Count Of Person With Educational Attainment Masters Degree Or Higher As Fraction Of Count Person 25 Or More Years",
+          "displayName": "Count Of MastersDegreeOrHigher As Fraction Of Count Person 25OrMoreYears"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears",
+          "searchName": "Count Of Person With Educational Attainment Tertiary Education As Fraction Of Count Person 25 Or More Years",
+          "displayName": "Count Of TertiaryEducation As Fraction Of Count Person 25OrMoreYears"
+        }
+      ]
+    },
+    "dc/g/Variables_Person_EducationalAttainment_Gender": {
+      "childStatVars": [
+        {
+          "id": "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
+          "searchName": "Count Of Person With Educational Attainment Bachelors Degree Or Higher, Gender Female As Fraction Of Count Person 25 Or More Years Female",
+          "displayName": "Count Of BachelorsDegreeOrHigher, Female As Fraction Of Count Person 25OrMoreYears Female"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female",
+          "searchName": "Count Of Person With Educational Attainment Doctorate Degree, Gender Female As Fraction Of Count Person 25 Or More Years Female",
+          "displayName": "Count Of DoctorateDegree, Female As Fraction Of Count Person 25OrMoreYears Female"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female",
+          "searchName": "Count Of Person With Educational Attainment Masters Degree Or Higher, Gender Female As Fraction Of Count Person 25 Or More Years Female",
+          "displayName": "Count Of MastersDegreeOrHigher, Female As Fraction Of Count Person 25OrMoreYears Female"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female",
+          "searchName": "Count Of Person With Educational Attainment Tertiary Education, Gender Female As Fraction Of Count Person 25 Or More Years Female",
+          "displayName": "Count Of TertiaryEducation, Female As Fraction Of Count Person 25OrMoreYears Female"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_Male_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
+          "searchName": "Count Of Person With Educational Attainment Bachelors Degree Or Higher, Gender Male As Fraction Of Count Person 25 Or More Years Male",
+          "displayName": "Count Of BachelorsDegreeOrHigher, Male As Fraction Of Count Person 25OrMoreYears Male"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_Male_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Male",
+          "searchName": "Count Of Person With Educational Attainment Doctorate Degree, Gender Male As Fraction Of Count Person 25 Or More Years Male",
+          "displayName": "Count Of DoctorateDegree, Male As Fraction Of Count Person 25OrMoreYears Male"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_Male_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Male",
+          "searchName": "Count Of Person With Educational Attainment Masters Degree Or Higher, Gender Male As Fraction Of Count Person 25 Or More Years Male",
+          "displayName": "Count Of MastersDegreeOrHigher, Male As Fraction Of Count Person 25OrMoreYears Male"
+        },
+        {
+          "id": "Count_Person_25OrMoreYears_Male_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Male",
+          "searchName": "Count Of Person With Educational Attainment Tertiary Education, Gender Male As Fraction Of Count Person 25 Or More Years Male",
+          "displayName": "Count Of TertiaryEducation, Male As Fraction Of Count Person 25OrMoreYears Male"
+        }
+      ]
+    },
+    "dc/g/Variables_Person_EmploymentStatus": {
+      "childStatVars": [
+        {
+          "id": "Count_Person_InLaborForce",
+          "searchName": "Count Of Person With Employment Status BLS_In Labor Force",
+          "displayName": "Count Of BLS_InLaborForce"
+        }
+      ]
+    },
+    "dc/g/Variables_Person_Gender": {
+      "childStatVars": [
+        {
+          "id": "Count_Person_Female",
+          "searchName": "Count Of Person With Gender Female",
+          "displayName": "Count Of Female"
+        },
+        {
+          "id": "Count_Person_Male",
+          "searchName": "Count Of Person With Gender Male",
+          "displayName": "Count Of Male"
+        },
+        {
+          "id": "LifeExpectancy_Person_Female",
+          "searchName": "Life Expectancy Of Person With Gender Female",
+          "displayName": "LifeExpectancy Of Female"
+        },
+        {
+          "id": "LifeExpectancy_Person_Male",
+          "searchName": "Life Expectancy Of Person With Gender Male",
+          "displayName": "LifeExpectancy Of Male"
+        },
         {
           "id": "UnemploymentRate_Person_Female",
           "searchName": "Unemployment Rate Of Person With Gender Female",
@@ -5113,11 +5140,19 @@
           "searchName": "Unemployment Rate Of Person With Gender Male",
           "displayName": "UnemploymentRate Of Male"
         }
-      ],
-      "childStatVarGroups": [
+      ]
+    },
+    "dc/g/Variables_Person_PlaceOfResidenceClassification": {
+      "childStatVars": [
         {
-          "id": "dc/g/UnemploymentRate_Person_Age_Gender",
-          "specializedEntity": "Age"
+          "id": "Count_Person_Rural",
+          "searchName": "Count Of Person With Place Of Residence Classification Rural",
+          "displayName": "Count Of Rural"
+        },
+        {
+          "id": "Count_Person_Urban",
+          "searchName": "Count Of Person With Place Of Residence Classification Urban",
+          "displayName": "Count Of Urban"
         }
       ]
     }
