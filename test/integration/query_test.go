@@ -27,8 +27,6 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-type Mode int
-
 func TestQuery(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
@@ -86,20 +84,6 @@ func TestQuery(t *testing.T) {
 				?state name ?name
 			}`,
 			"name.json",
-		},
-		{
-			`SELECT ?place ?value
-			WHERE {
-			 ?observation typeOf Observation .
-			 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
-			 ?observation observedNodeLocation ?place .
-			 ?observation observationDate "2000" .
-			 ?observation measuredValue ?value .
-			 ?place typeOf Country .
-			}
-			ORDER BY ASC (?place)
-			LIMIT 10`,
-			"statvar-obs.json",
 		},
 		{
 			`SELECT ?place ?value

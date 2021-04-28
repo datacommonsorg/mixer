@@ -16,7 +16,6 @@ package server
 
 import (
 	"fmt"
-	"sort"
 	"strings"
 
 	"cloud.google.com/go/bigtable"
@@ -26,25 +25,6 @@ import (
 var propValkeyPrefix = map[bool]string{
 	true:  util.BtOutPropValPrefix,
 	false: util.BtInPropValPrefix,
-}
-
-func buildStatsKeySuffix(statsVar *StatisticalVariable) string {
-	keySuffix := strings.Join([]string{
-		statsVar.MeasuredProp,
-		statsVar.StatType,
-		statsVar.MeasurementDenominator,
-		statsVar.MeasurementQualifier,
-		statsVar.PopType},
-		"^")
-	var cprops []string
-	for cprop := range statsVar.PVs {
-		cprops = append(cprops, cprop)
-	}
-	sort.Strings(cprops)
-	for _, cprop := range cprops {
-		keySuffix += fmt.Sprintf("^%s^%s", cprop, statsVar.PVs[cprop])
-	}
-	return keySuffix
 }
 
 func buildTriplesKey(dcids []string) bigtable.RowList {
@@ -107,23 +87,6 @@ func buildPropertyLabelKey(dcids []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtArcsPrefix, dcid))
-	}
-	return rowList
-}
-
-func buildObservedNodeKey(dcids []string, pred string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(rowList,
-			fmt.Sprintf("%s%s^%s", util.BtObsAncestorPrefix, dcid, pred))
-	}
-	return rowList
-}
-
-func buildPopPVKey(dcids []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtPopPVPrefix, dcid))
 	}
 	return rowList
 }

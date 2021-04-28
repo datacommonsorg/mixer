@@ -62,13 +62,6 @@ func TestGetTriples(t *testing.T) {
 			nil,
 		},
 		{
-			[]string{"dc/p/7c8egrk3ypkl5"},
-			"pop.json",
-			true,
-			-1,
-			nil,
-		},
-		{
 			[]string{
 				"dc/o/w2z8nx9y43k97", // LifeExpectancy_Person_Female
 				"dc/o/mc1g2ew9yegq8", // Amount_Consumption_Energy_PerCapita<>

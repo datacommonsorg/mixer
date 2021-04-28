@@ -19,7 +19,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
-	"strconv"
 	"strings"
 
 	"cloud.google.com/go/bigtable"
@@ -28,11 +27,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-)
-
-const (
-	obsAncestorTypeObservedNode = "0"
-	obsAncestorTypeComparedNode = "1"
 )
 
 type prop struct {
@@ -141,16 +135,13 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
-	// Need to fetch addtional information for observation and population node.
-	var regDcids, obsDcids, popDcids []string
+	// Need to fetch addtional information for observation node.
+	var regDcids, obsDcids []string
 	for _, dcid := range dcids {
 		if strings.HasPrefix(dcid, "dc/o/") {
 			obsDcids = append(obsDcids, dcid)
 		} else {
 			regDcids = append(regDcids, dcid)
-			if strings.HasPrefix(dcid, "dc/p/") {
-				popDcids = append(popDcids, dcid)
-			}
 		}
 	}
 
@@ -166,22 +157,6 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 			resultsMap[dcid] = applyLimit(dcid, allTriplesCache[dcid].Triples, limit)
 		}
 	}
-	if len(popDcids) > 0 {
-		baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-			ctx, s.store, buildTriplesKey(popDcids), convertTriplesCache, nil)
-		if err != nil {
-			return nil, err
-		}
-		for _, dcid := range popDcids {
-			if data, ok := branchDataMap[dcid]; ok {
-				resultsMap[dcid] = data.(*TriplesCache).Triples
-			} else if data, ok := baseDataMap[dcid]; ok {
-				resultsMap[dcid] = data.(*TriplesCache).Triples
-			} else {
-				resultsMap[dcid] = []*Triple{}
-			}
-		}
-	}
 
 	// Observation DCIDs.
 	if len(obsDcids) > 0 {
@@ -191,23 +166,6 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		}
 		for k, v := range obsResult {
 			resultsMap[k] = append(resultsMap[k], v...)
-		}
-	}
-
-	// Add PVs for population nodes.
-	if len(popDcids) > 0 {
-		rowList := buildPopPVKey(popDcids)
-		baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-			ctx, s.store, rowList, convertPopTriples, nil)
-		if err != nil {
-			return nil, err
-		}
-		for _, dcid := range popDcids {
-			if data, ok := branchDataMap[dcid]; ok {
-				resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
-			} else if data, ok := baseDataMap[dcid]; ok {
-				resultsMap[dcid] = append(resultsMap[dcid], data.([]*Triple)...)
-			}
 		}
 	}
 
@@ -226,28 +184,6 @@ func convertTriplesCache(dcid string, jsonRaw []byte) (interface{}, error) {
 		return nil, err
 	}
 	return &triples, nil
-}
-
-func convertPopTriples(dcid string, jsonRaw []byte) (interface{}, error) {
-	jsonVal := string(jsonRaw)
-	parts := strings.Split(jsonVal, "^")
-	if len(parts) == 0 || len(parts)%2 != 0 {
-		return nil, status.Errorf(codes.Internal, "Wrong number of PVs: %v", jsonVal)
-	}
-	triples := []*Triple{}
-	triples = append(triples, &Triple{
-		SubjectID:   dcid,
-		Predicate:   "numConstraints",
-		ObjectValue: strconv.Itoa(len(parts) / 2),
-	})
-	for i := 0; i < len(parts); i = i + 2 {
-		triples = append(triples, &Triple{
-			SubjectID: dcid,
-			Predicate: parts[i],
-			ObjectID:  parts[i+1],
-		})
-	}
-	return triples, nil
 }
 
 func applyLimit(

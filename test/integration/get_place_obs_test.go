@@ -24,6 +24,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetPlaceObs(t *testing.T) {
@@ -73,14 +74,14 @@ func TestGetPlaceObs(t *testing.T) {
 			continue
 		}
 
-		var expected *pb.SVOCollection
+		var expected pb.SVOCollection
 		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, expected)
+		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff != "" {
+		if diff := cmp.Diff(result, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
