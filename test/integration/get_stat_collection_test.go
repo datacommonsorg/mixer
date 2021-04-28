@@ -47,18 +47,18 @@ func TestGetStatCollection(t *testing.T) {
 		statVar     []string
 		goldenFile  string
 	}{
-		{
-			"geoId/06",
-			"County",
-			"",
-			[]string{"Count_Person", "Median_Age_Person"},
-			"CA_County.json",
-		},
+		// {
+		// 	"geoId/06",
+		// 	"County",
+		// 	"",
+		// 	[]string{"Count_Person", "Median_Age_Person"},
+		// 	"CA_County.json",
+		// },
 		{
 			"country/USA",
 			"State",
 			"",
-			[]string{"Count_Person", "Median_Age_Person"},
+			[]string{"Count_Person"},
 			"US_State.json",
 		},
 		{

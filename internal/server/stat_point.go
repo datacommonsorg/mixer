@@ -219,38 +219,39 @@ func (s *Server) GetStatCollection(
 			return nil, err
 		}
 		for sv, data := range statCache {
-			if data != nil {
-				for _, date := range sv2dates[sv] {
-					// Only process when the query date is used for this stat var.
-					if date != queryDate {
-						continue
+			if data == nil {
+				continue
+			}
+			for _, date := range sv2dates[sv] {
+				// Only process when the query date is used for this stat var.
+				if date != queryDate {
+					continue
+				}
+				cohorts := data.SourceCohorts
+				sort.Sort(SeriesByRank(cohorts))
+				// Iterate from the ranked order and find the source with most places.
+				maxSize := 0
+				var usedCohort *pb.SourceSeries
+				for _, cohort := range cohorts {
+					currSize := len(cohort.Val)
+					if currSize > maxSize {
+						maxSize = currSize
+						usedCohort = cohort
 					}
-					cohorts := data.SourceCohorts
-					sort.Sort(SeriesByRank(cohorts))
-					// Iterate from the ranked order and find the source with most places.
-					maxSize := 0
-					var usedCohort *pb.SourceSeries
-					for _, cohort := range cohorts {
-						currSize := len(cohort.Val)
-						if currSize > maxSize {
-							maxSize = currSize
-							usedCohort = cohort
-						}
-					}
-					// Add the cohort to result
-					if result.Data[sv].Val == nil {
-						result.Data[sv] = usedCohort
-					} else {
-						// If the result is populated already, then a latest observation
-						// has been added. For this cohort (with an older date), only need
-						// to add the places that is not present yet.
+				}
+				// Add the cohort to result
+				if result.Data[sv].Val == nil {
+					result.Data[sv] = usedCohort
+				} else {
+					// If the result is populated already, then a latest observation
+					// has been added. For this cohort (with an older date), only need
+					// to add the places that is not present yet.
 
-						// TODO(boxu): In this case, the result contains multiple sources,
-						// need to reflect this in the result.
-						for place := range usedCohort.Val {
-							if val, ok := result.Data[sv].Val[place]; !ok {
-								result.Data[sv].Val[place] = val
-							}
+					// TODO(boxu): In this case, the result contains multiple sources,
+					// need to reflect this in the result.
+					for place, val := range usedCohort.Val {
+						if _, ok := result.Data[sv].Val[place]; !ok {
+							result.Data[sv].Val[place] = val
 						}
 					}
 				}
