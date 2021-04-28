@@ -47,7 +47,7 @@ func TestSparql(t *testing.T) {
 			BASE <http://schema.org/>
 			SELECT  ?date ?unemployment
 			WHERE {
-				?o typeOf Observation .
+				?o typeOf StatVarObservation .
 				?o observationDate ?date .
 				?o observationAbout geoId/06 .
 				?o measurementMethod BLSSeasonallyUnadjusted .

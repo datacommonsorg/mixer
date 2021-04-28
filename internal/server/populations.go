@@ -17,7 +17,7 @@ package server
 import (
 	"context"
 	"fmt"
-	"log"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -28,82 +28,73 @@ import (
 
 // GetPlaceObs implements API for Mixer.GetPlaceObs.
 func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
-	*pb.GetPlaceObsResponse, error) {
+	*pb.SVOCollection, error) {
 	if s.store.BaseBt() == nil || s.store.BranchBt() == nil {
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
 	if in.GetPlaceType() == "" || in.GetStatVar() == "" ||
-		in.GetObservationDate() == "" {
+		in.GetDate() == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
 	}
 
 	key := fmt.Sprintf("%s%s^%s^%s", util.BtPlaceObsPrefix, in.GetPlaceType(),
-		in.GetStatVar(), in.GetObservationDate())
-	out := pb.GetPlaceObsResponse{}
+		in.GetStatVar(), in.GetDate())
 
 	// TODO(boxu): abstract out the common logic for handling cache merging.
-	baseData := &pb.PopObsCollection{}
-	branchData := &pb.PopObsCollection{}
+	baseData := &pb.SVOCollection{}
+	branchData := &pb.SVOCollection{}
 	var baseRaw, branchRaw []byte
 	var hasBaseData, hasBranchData bool
-	out.Payload, _ = util.ZipAndEncode([]byte("{}"))
 
 	btRow, err := s.store.BranchBt().ReadRow(ctx, key)
 	if err != nil {
-		log.Print(err)
+		return nil, err
 	}
 	hasBranchData = len(btRow[util.BtFamily]) > 0
 	if hasBranchData {
 		branchRaw = btRow[util.BtFamily][0].Value
-	}
-
-	btRow, err = s.store.BaseBt().ReadRow(ctx, key)
-	if err != nil {
-		log.Print(err)
-	}
-	hasBaseData = len(btRow[util.BtFamily]) > 0
-	if hasBaseData {
-		baseRaw = btRow[util.BtFamily][0].Value
-	}
-
-	if !hasBaseData && !hasBranchData {
-		return &out, nil
-	} else if !hasBaseData {
-		out.Payload = string(branchRaw)
-		return &out, nil
-	} else if !hasBranchData {
-		out.Payload = string(baseRaw)
-		return &out, nil
-	} else {
-		if tmp, err := util.UnzipAndDecode(string(baseRaw)); err == nil {
-			err := protojson.Unmarshal(tmp, baseData)
-			if err != nil {
-				return nil, err
-			}
-		}
 		if tmp, err := util.UnzipAndDecode(string(branchRaw)); err == nil {
 			err := protojson.Unmarshal(tmp, branchData)
 			if err != nil {
 				return nil, err
 			}
 		}
-		dataMap := map[string]*pb.PopObsPlace{}
-		for _, data := range baseData.Places {
-			dataMap[data.Place] = data
-		}
-		for _, data := range branchData.Places {
-			dataMap[data.Place] = data
-		}
-		res := &pb.PopObsCollection{}
-		for _, v := range dataMap {
-			res.Places = append(res.Places, v)
-		}
-		resBytes, err := protojson.Marshal(res)
-		if err != nil {
-			return &out, err
-		}
-		out.Payload, err = util.ZipAndEncode(resBytes)
-		return &out, err
 	}
+
+	btRow, err = s.store.BaseBt().ReadRow(ctx, key)
+	if err != nil {
+		return nil, err
+	}
+	hasBaseData = len(btRow[util.BtFamily]) > 0
+	if hasBaseData {
+		baseRaw = btRow[util.BtFamily][0].Value
+		if tmp, err := util.UnzipAndDecode(string(baseRaw)); err == nil {
+			err := protojson.Unmarshal(tmp, baseData)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	dataMap := map[string]*pb.SVOPlace{}
+	for _, data := range baseData.Places {
+		dataMap[data.Dcid] = data
+	}
+	if hasBranchData {
+		for _, data := range branchData.Places {
+			dataMap[data.Dcid] = data
+		}
+	}
+
+	places := []string{}
+	for place := range dataMap {
+		places = append(places, place)
+	}
+	sort.Strings(places)
+
+	res := &pb.SVOCollection{}
+	for _, place := range places {
+		res.Places = append(res.Places, dataMap[place])
+	}
+	return res, err
 }

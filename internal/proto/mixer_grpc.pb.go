@@ -29,7 +29,7 @@ type MixerClient interface {
 	GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, opts ...grpc.CallOption) (*GetPlacesInResponse, error)
 	// Get observation data for a list of places, given place type, population
 	// type, and population constraining properties.
-	GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, opts ...grpc.CallOption) (*GetPlaceObsResponse, error)
+	GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, opts ...grpc.CallOption) (*SVOCollection, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
@@ -138,8 +138,8 @@ func (c *mixerClient) GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, o
 	return out, nil
 }
 
-func (c *mixerClient) GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, opts ...grpc.CallOption) (*GetPlaceObsResponse, error) {
-	out := new(GetPlaceObsResponse)
+func (c *mixerClient) GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, opts ...grpc.CallOption) (*SVOCollection, error) {
+	out := new(SVOCollection)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceObs", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -325,7 +325,7 @@ type MixerServer interface {
 	GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error)
 	// Get observation data for a list of places, given place type, population
 	// type, and population constraining properties.
-	GetPlaceObs(context.Context, *GetPlaceObsRequest) (*GetPlaceObsResponse, error)
+	GetPlaceObs(context.Context, *GetPlaceObsRequest) (*SVOCollection, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
@@ -400,7 +400,7 @@ func (*UnimplementedMixerServer) GetTriples(context.Context, *GetTriplesRequest)
 func (*UnimplementedMixerServer) GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlacesIn not implemented")
 }
-func (*UnimplementedMixerServer) GetPlaceObs(context.Context, *GetPlaceObsRequest) (*GetPlaceObsResponse, error) {
+func (*UnimplementedMixerServer) GetPlaceObs(context.Context, *GetPlaceObsRequest) (*SVOCollection, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceObs not implemented")
 }
 func (*UnimplementedMixerServer) GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error) {

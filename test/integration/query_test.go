@@ -75,24 +75,6 @@ func TestQuery(t *testing.T) {
 			"weather2.json",
 		},
 		{
-			`
-			BASE <http://schema.org/>
-			SELECT  ?pop ?Unemployment
-			WHERE {
-				?pop typeOf StatisticalPopulation .
-				?o typeOf Observation .
-				?pop dcid ("dc/p/qep2q2lcc3rcc" "dc/p/gmw3cn8tmsnth" "dc/p/92cxc027krdcd") .
-				?o measuredProperty unemploymentRate .
-				?o measurementMethod BLSSeasonallyUnadjusted .
-				?o observationPeriod P1Y .
-				?o observedNode ?pop .
-				?o measuredValue ?Unemployment
-			}
-			ORDER BY DESC(?Unemployment)
-			LIMIT 10`,
-			"unemployment.json",
-		},
-		{
 			`SELECT ?a WHERE {?a typeOf RaceCodeEnum} ORDER BY ASC(?a)`,
 			"race_code_enum.json",
 		},
