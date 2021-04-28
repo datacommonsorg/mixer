@@ -45,20 +45,19 @@ func TestSparql(t *testing.T) {
 		{
 			`
 			BASE <http://schema.org/>
-			SELECT  ?pop ?Unemployment
+			SELECT  ?date ?unemployment
 			WHERE {
-				?pop typeOf StatisticalPopulation .
 				?o typeOf Observation .
-				?pop dcid ("dc/p/qep2q2lcc3rcc" "dc/p/gmw3cn8tmsnth" "dc/p/92cxc027krdcd") .
-				?o measuredProperty unemploymentRate .
+				?o observationDate ?date .
+				?o observationAbout geoId/06 .
 				?o measurementMethod BLSSeasonallyUnadjusted .
 				?o observationPeriod P1Y .
-				?o observedNode ?pop .
-				?o measuredValue ?Unemployment
+				?o variableMeasured UnemploymentRate_Person .
+				?o value ?unemployment
 			}
-			ORDER BY DESC(?Unemployment)
+			ORDER BY DESC(?date)
 			LIMIT 10`,
-			"unemployment.json",
+			"bq_only.json",
 		},
 	} {
 		req := &pb.QueryRequest{Sparql: c.sparql}
@@ -68,6 +67,11 @@ func TestSparql(t *testing.T) {
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(resp, goldenFile)
+			continue
+		}
+
 		var expected pb.QueryResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		if err := protojson.Unmarshal(file, &expected); err != nil {

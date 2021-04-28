@@ -49,7 +49,6 @@ func init() {
 const (
 	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
-	devStore         = "google.com:datcom-store-dev"
 	store            = "datcom-store"
 )
 
@@ -58,21 +57,11 @@ func setup() (pb.MixerClient, error) {
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
 		"../../deploy/mapping",
-		devStore,
-		false)
-}
-
-func setupStatVar() (pb.MixerClient, error) {
-	return setupInternal(
-		"../../deploy/storage-svobs/bigquery.version",
-		"../../deploy/storage-svobs/bigtable.version",
-		"../../deploy/mapping-svobs",
-		store,
-		true)
+		store)
 }
 
 func setupInternal(
-	bq, bt, mcfPath, storeProject string, svobsMode bool) (pb.MixerClient, error) {
+	bq, bt, mcfPath, storeProject string) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
@@ -97,7 +86,7 @@ func setupInternal(
 	}
 
 	metadata, err := server.NewMetadata(
-		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath, svobsMode)
+		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath)
 	if err != nil {
 		return nil, err
 	}
@@ -120,10 +109,9 @@ func setupBqOnly() (pb.MixerClient, error) {
 	}
 	metadata, err := server.NewMetadata(
 		strings.TrimSpace(string(bqTableID)),
-		devStore,
+		store,
 		"",
-		schemaPath,
-		false)
+		schemaPath)
 	if err != nil {
 		return nil, err
 	}

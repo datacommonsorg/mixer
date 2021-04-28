@@ -20,6 +20,6 @@ kind: Kustomization
 namespace: mixer
 
 resources:
-- ../storage
-- ../mapping
-- ../base
+  - ../storage
+  - ../mapping
+  - ../base

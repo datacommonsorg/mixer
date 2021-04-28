@@ -33,8 +33,8 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "svobs" ]]; then
-  echo "First argument should be 'staging' or 'prod' 'autopush' or 'encode' or 'svobs'"
+if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" ]]; then
+  echo "First argument should be 'staging' or 'prod' 'autopush' or 'encode'"
   exit
 fi
 
@@ -51,16 +51,11 @@ cd "$ROOT/deploy/git"
 echo -n "$TAG" > mixer_hash.txt
 
 cd $ROOT
+
 if [[ $ENV == "autopush" ]]; then
   # Update bigtable and bigquery version
-  gsutil cp gs://automation_control/latest_base_cache_version.txt deploy/storage/bigtable.version
-  gsutil cp gs://automation_control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
-fi
-
-if [[ $ENV == "svobs" ]]; then
-  # Update bigtable and bigquery version
-  gsutil cp gs://datcom-control/latest_base_cache_version.txt deploy/storage-svobs/bigtable.version
-  gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage-svobs/bigquery.version
+  gsutil cp gs://datcom-control/latest_base_cache_version.txt deploy/storage/bigtable.version
+  gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
 fi
 
 PROJECT_ID=$(yq read deploy/gke/$ENV.yaml project)

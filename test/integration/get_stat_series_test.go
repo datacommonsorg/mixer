@@ -35,10 +35,6 @@ func TestGetStatSeries(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-	clientStatVar, err := setupStatVar()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "golden_response/staging/get_stat_series")
@@ -93,42 +89,37 @@ func TestGetStatSeries(t *testing.T) {
 			true,
 		},
 	} {
-		for index, client := range []pb.MixerClient{client, clientStatVar} {
-			resp, err := client.GetStatSeries(ctx, &pb.GetStatSeriesRequest{
-				StatVar:           c.statVar,
-				Place:             c.place,
-				MeasurementMethod: c.mmethod,
-			})
-			if c.wantErr {
-				if err == nil {
-					t.Errorf("Expect GetStatSeries to error out but it succeed")
-				}
-				continue
+		resp, err := client.GetStatSeries(ctx, &pb.GetStatSeriesRequest{
+			StatVar:           c.statVar,
+			Place:             c.place,
+			MeasurementMethod: c.mmethod,
+		})
+		if c.wantErr {
+			if err == nil {
+				t.Errorf("Expect GetStatSeries to error out but it succeed")
 			}
-			if err != nil {
-				t.Errorf("could not GetStatSeries: %s", err)
-				continue
-			}
-			goldenFile := path.Join(goldenPath, c.goldenFile)
-			isPopObsMode := (index == 0)
-			if generateGolden {
-				if isPopObsMode {
-					updateGolden(resp, goldenFile)
-				}
-				continue
-			}
-			var expected pb.GetStatSeriesResponse
-			file, _ := ioutil.ReadFile(goldenFile)
-			err = protojson.Unmarshal(file, &expected)
-			if err != nil {
-				t.Errorf("Can not Unmarshal golden file")
-				continue
-			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("could not GetStatSeries: %s", err)
+			continue
+		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(resp, goldenFile)
+			continue
+		}
+		var expected pb.GetStatSeriesResponse
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = protojson.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file")
+			continue
+		}
 
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
-				continue
-			}
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+			t.Errorf("payload got diff: %v", diff)
+			continue
 		}
 	}
 }

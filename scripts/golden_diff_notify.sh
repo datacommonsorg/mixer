@@ -18,7 +18,6 @@
 # Send golden diff email for a new Bigtable cache.
 
 BASE_BT_VERSION=$1
-SVOBS_BASE_BT_VERSION=$2
 
 apt-get update -y
 apt-get install -y gawk
@@ -28,7 +27,6 @@ ROOT="$(dirname "$DIR")"
 
 
 echo "$BASE_BT_VERSION" | tee "$ROOT/deploy/storage/bigtable.version"
-echo "$SVOBS_BASE_BT_VERSION" | tee "$ROOT/deploy/storage-svobs/bigtable.version"
 
 # Script to convert terminal colors and attributes to HTML
 # https://github.com/pixelb/scripts/blob/master/scripts/ansi2html.sh

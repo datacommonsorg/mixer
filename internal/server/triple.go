@@ -53,7 +53,7 @@ var obsProps = []prop{
 	{"location", true},
 }
 
-func getObsTriplesSvObs(
+func getObsTriples(
 	ctx context.Context, s *Server, obsDcids []string) (map[string][]*Triple, error) {
 	dcidList := ""
 	for _, dcid := range obsDcids {
@@ -128,69 +128,11 @@ func getObsTriplesSvObs(
 	return result, nil
 }
 
-func getObsTriplesPopObs(
-	ctx context.Context, s *Server, obsDcids []string) (map[string][]*Triple, error) {
-	result := map[string][]*Triple{}
-	for _, param := range []struct {
-		predKey, pred string
-	}{
-		{obsAncestorTypeObservedNode, "observedNode"},
-		{obsAncestorTypeComparedNode, "comparedNode"},
-	} {
-		rowList := buildObservedNodeKey(obsDcids, param.predKey)
-		baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-			ctx, s.store, rowList,
-			func(dcid string, raw []byte) (interface{}, error) {
-				return string(raw), nil
-			}, nil)
-		if err != nil {
-			return nil, err
-		}
-		// Map from observation dcid to observedNode dcid.
-		observedNodeMap := map[string]string{}
-		for _, dcid := range obsDcids {
-			if data, ok := branchDataMap[dcid]; ok {
-				observedNodeMap[dcid] = data.(string)
-			} else if data, ok := baseDataMap[dcid]; ok {
-				observedNodeMap[dcid] = data.(string)
-			}
-		}
-		// Get the observedNode names.
-		observedNodes := []string{}
-		for _, dcid := range observedNodeMap {
-			observedNodes = append(observedNodes, dcid)
-		}
-		nameRowList := buildPropertyValuesKey(observedNodes, "name", true)
-		nameNodes, err := readPropertyValues(ctx, s.store, nameRowList)
-		if err != nil {
-			return nil, err
-		}
-
-		for dcid, observedNode := range observedNodeMap {
-			if _, exist := result[dcid]; !exist {
-				result[dcid] = []*Triple{}
-			}
-			name := observedNode
-			if len(nameNodes[observedNode]) > 0 {
-				name = nameNodes[observedNode][0].Value
-			}
-			result[dcid] = append(result[dcid], &Triple{
-				SubjectID:  dcid,
-				Predicate:  param.pred,
-				ObjectID:   observedNode,
-				ObjectName: name,
-			})
-		}
-	}
-	return result, nil
-}
-
 // GetTriples implements API for Mixer.GetTriples.
 func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 	*pb.GetTriplesResponse, error) {
 	dcids := in.GetDcids()
 	limit := in.GetLimit()
-	svobsMode := s.metadata.SvObsMode
 
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing argument: dcids")
@@ -243,18 +185,9 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 
 	// Observation DCIDs.
 	if len(obsDcids) > 0 {
-		var err error
-		var obsResult map[string][]*Triple
-		if svobsMode {
-			obsResult, err = getObsTriplesSvObs(ctx, s, obsDcids)
-			if err != nil {
-				return nil, err
-			}
-		} else {
-			obsResult, err = getObsTriplesPopObs(ctx, s, obsDcids)
-			if err != nil {
-				return nil, err
-			}
+		obsResult, err := getObsTriples(ctx, s, obsDcids)
+		if err != nil {
+			return nil, err
 		}
 		for k, v := range obsResult {
 			resultsMap[k] = append(resultsMap[k], v...)

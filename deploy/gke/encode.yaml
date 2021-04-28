@@ -20,4 +20,4 @@ ip: 34.107.228.109
 domain: encode.api.datacommons.org
 api_title: DataCommons API (Encode)
 nodes: 1
-store: google.com:datcom-store-dev
+store: datcom-store

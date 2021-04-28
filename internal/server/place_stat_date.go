@@ -55,23 +55,8 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 		result.Data[sv] = nil
 	}
 
-	// Read triples for statistical variable.
-	triplesRowList := buildTriplesKey(statVars)
-	triples, err := readTriples(ctx, s.store, triplesRowList)
-	if err != nil {
-		return nil, err
-	}
-	statVarObject := map[string]*StatisticalVariable{}
-	for statVar, triplesCache := range triples {
-		if triplesCache != nil {
-			statVarObject[statVar], err = triplesToStatsVar(statVar, triplesCache)
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
 	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatCollectionKey(ancestorPlace, placeType, "", statVarObject)
+	rowList, keyTokens := buildStatCollectionKey(ancestorPlace, placeType, "", statVars)
 
 	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {

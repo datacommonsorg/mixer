@@ -100,12 +100,6 @@ func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
 	*pb.StatVarGroups, error) {
 	place := in.GetPlace()
-	svobsMode := s.metadata.SvObsMode
-
-	if !svobsMode {
-		return nil, status.Errorf(codes.NotFound,
-			"GetStatVarGroup is not implemented for PopObs mode")
-	}
 
 	var sv PlaceStatsVar
 	svgResp := &pb.StatVarGroups{}

@@ -123,18 +123,6 @@ message GetTriplesResponse {
   string payload = 1;
 }
 
-// Request to get all population/observation information for a place.
-message GetPopObsRequest {
-  // DCID of a place.
-  string dcid = 1;
-}
-
-// Response of GetPopObs.
-message GetPopObsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
 // Represents a property value pair.
 message PropertyValue {
   // The property schema
@@ -149,65 +137,15 @@ message GetPlaceObsRequest {
   // The type of the place.
   string place_type = 1;
 
-  // The type of the Statistical population.
-  string population_type = 2;
-
-  // A list of constraining property values that defines the population.
-  repeated PropertyValue pvs = 3;
+  // The stat var dcid.
+  string stat_var = 2;
 
   // Observation date.
-  string observation_date = 4;
+  string observation_date = 3;
 }
 
 // Response of GetPlaceObs.
 message GetPlaceObsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
-// Request to get certain population for a set of places.
-message GetPopulationsRequest {
-  // DCIDs for a list of places.
-  repeated string dcids = 1;
-
-  // Population type.
-  string population_type = 2;
-
-  // A list of constraining property values that define the population.
-  repeated PropertyValue pvs = 3;
-}
-
-// Response of GetPopulation.
-message GetPopulationsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
-// Request to get observation given a list of population and observation
-// properties.
-message GetObservationsRequest {
-  // Population for a list of populations.
-  repeated string dcids = 1;
-
-  // The measured property of the observation.
-  string measured_property = 2;
-
-  // The observation date.
-  string observation_date = 3;
-
-  // The statistics type, like "measured_value", "median_value", etc...
-  // TODO: Change the variable name to 'stat_type' to be consistent.
-  string stats_type = 4;
-
-  // (Optional) Observation period like "P1Y", "P3M" etc...
-  string observation_period = 5;
-
-  // (Opitonal) Measurement method used to get the observation.
-  string measurement_method = 6;
-}
-
-// Response of GetObservation request.
-message GetObservationsResponse {
   // The JSON payload.
   string payload = 1;
 }
@@ -413,10 +351,6 @@ message StatVarGroupNode {
 message GetStatVarGroupRequest {
   string place = 1;
 }
-
-// TODO(wsws): Refactor all these "won't persist to cache" fields across caches
-// into a single TemporaryFields message, and clear just that "tmp_data" field
-// before persistence.
 
 // PopObsObservation holds information for an observation for the
 // Population-Observation knowledge graph..
@@ -639,25 +573,6 @@ service Mixer {
     };
   }
 
-  // Get populations for a list of places, given the population type and
-  // constraining property values.
-  rpc GetPopulations(GetPopulationsRequest) returns (GetPopulationsResponse) {
-    option (google.api.http) = {
-      post: "/node/populations"
-      body: "*"
-    };
-  }
-
-  // Get observations for a list of population, given the observation
-  // constraints.
-  rpc GetObservations(GetObservationsRequest)
-      returns (GetObservationsResponse) {
-    option (google.api.http) = {
-      post: "/node/observations"
-      body: "*"
-    };
-  }
-
   // Get places contained in parent places.
   rpc GetPlacesIn(GetPlacesInRequest) returns (GetPlacesInResponse) {
     option (google.api.http) = {
@@ -666,13 +581,6 @@ service Mixer {
         post: "/node/places-in"
         body: "*"
       }
-    };
-  }
-
-  // Get population and observation data for a place.
-  rpc GetPopObs(GetPopObsRequest) returns (GetPopObsResponse) {
-    option (google.api.http) = {
-      get: "/bulk/pop-obs"
     };
   }
 

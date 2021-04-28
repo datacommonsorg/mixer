@@ -37,10 +37,6 @@ func TestGetStats(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-	clientStatVar, err := setupStatVar()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "golden_response/staging/get_stats")
@@ -103,68 +99,62 @@ func TestGetStats(t *testing.T) {
 			false,
 		},
 	} {
-		for index, client := range []pb.MixerClient{client, clientStatVar} {
-			resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
-				StatsVar:          c.statsVar,
-				Place:             c.place,
-				MeasurementMethod: c.mmethod,
-			})
-			if err != nil {
-				t.Errorf("could not GetStats: %s", err)
-				continue
-			}
-			var result map[string]*server.ObsTimeSeries
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
-				t.Errorf("Can not Unmarshal payload")
-				continue
-			}
-			goldenFile := path.Join(goldenPath, c.goldenFile)
-			isPopObsMode := (index == 0)
-			if isPopObsMode {
-				goldenFile += ".popobs"
-			}
-			if generateGolden {
-				updateGolden(result, goldenFile)
-				continue
-			}
+		resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
+			StatsVar:          c.statsVar,
+			Place:             c.place,
+			MeasurementMethod: c.mmethod,
+		})
+		if err != nil {
+			t.Errorf("could not GetStats: %s", err)
+			continue
+		}
+		var result map[string]*server.ObsTimeSeries
+		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+		if err != nil {
+			t.Errorf("Can not Unmarshal payload")
+			continue
+		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(result, goldenFile)
+			continue
+		}
 
-			var expected map[string]*server.ObsTimeSeries
-			file, _ := ioutil.ReadFile(goldenFile)
-			err = json.Unmarshal(file, &expected)
-			if err != nil {
-				t.Errorf("Can not Unmarshal golden file " + goldenFile + "\n" + err.Error())
-				continue
-			}
-			if c.partialMatch {
-				for geo := range expected {
-					for date := range expected[geo].Data {
-						if result[geo] == nil {
-							t.Fatalf("result does not have data for geo %s", geo)
+		var expected map[string]*server.ObsTimeSeries
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = json.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file " + goldenFile + "\n" + err.Error())
+			continue
+		}
+		if c.partialMatch {
+			for geo := range expected {
+				for date := range expected[geo].Data {
+					if result[geo] == nil {
+						t.Fatalf("result does not have data for geo %s", geo)
+					}
+					got := result[geo].Data[date]
+					want := expected[geo].Data[date]
+					if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
+						// Allow approximate match for NYT covid data.
+						if math.Abs(float64(got)/float64(want)-1) > 0.05 {
+							t.Errorf(
+								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+							continue
 						}
-						got := result[geo].Data[date]
-						want := expected[geo].Data[date]
-						if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
-							// Allow approximate match for NYT covid data.
-							if math.Abs(float64(got)/float64(want)-1) > 0.05 {
-								t.Errorf(
-									"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
-								continue
-							}
-						} else {
-							if want != got {
-								t.Errorf(
-									"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
-								continue
-							}
+					} else {
+						if want != got {
+							t.Errorf(
+								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+							continue
 						}
 					}
 				}
-			} else {
-				if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
-					t.Errorf("payload got diff: %v", diff)
-					continue
-				}
+			}
+		} else {
+			if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
 			}
 		}
 	}
