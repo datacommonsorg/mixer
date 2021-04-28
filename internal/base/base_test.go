@@ -177,8 +177,8 @@ func TestTableAlias(t *testing.T) {
 			"_dc_store_Place_0",
 		},
 		{
-			Table{Name: "`google.com:datcom-store-dev.dc_store_v3.Place`", ID: "1"},
-			"_google_com_datcom_store_dev_dc_store_v3_Place_1",
+			Table{Name: "`datcom-store.dc_kg_latest.Place`", ID: "1"},
+			"_datcom_store_dc_kg_latest_Place_1",
 		},
 	} {
 		if diff := deep.Equal(c.want, c.table.Alias()); diff != nil {
