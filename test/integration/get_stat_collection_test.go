@@ -31,7 +31,7 @@ func TestGetStatCollection(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, err := setup()
+	client, err := setupStatVar()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -47,6 +47,20 @@ func TestGetStatCollection(t *testing.T) {
 		statVar     []string
 		goldenFile  string
 	}{
+		{
+			"geoId/06",
+			"County",
+			"",
+			[]string{"Count_Person", "Median_Age_Person"},
+			"CA_County.json",
+		},
+		{
+			"country/USA",
+			"State",
+			"",
+			[]string{"Count_Person", "Median_Age_Person"},
+			"US_State.json",
+		},
 		{
 			"geoId/06",
 			"County",

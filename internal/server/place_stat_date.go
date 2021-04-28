@@ -55,8 +55,13 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 		result.Data[sv] = nil
 	}
 
+<<<<<<< HEAD
 	// Construct BigTable row keys.
 	rowList, keyTokens := buildStatCollectionKey(ancestorPlace, placeType, "", statVars)
+=======
+	rowList, keyTokens := buildStatCollectionKeySvObs(
+		ancestorPlace, placeType, "", statVars)
+>>>>>>> 2f6c253 ([GetStatCollection] get the latest observation when date is not provided)
 
 	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {
