@@ -144,17 +144,24 @@ func (s *Server) GetStatCollection(
 
 	// Initialize result.
 	result := &pb.GetStatCollectionResponse{
-		Data: make(map[string]*pb.SourceSeries),
+		Data: make(map[string]*pb.PlacePointStat),
 	}
+	// A map from statvar to import name to StatMetadata
+	sv2Meta := map[string]map[string]*pb.StatMetadata{}
+
 	// Initialize with nil to help check if data is in mem-cache. The nil field
 	// will be populated with empty pb.ObsCollection struct in the end.
 	for _, sv := range statVars {
-		result.Data[sv] = &pb.SourceSeries{}
+		result.Data[sv] = &pb.PlacePointStat{Stat: map[string]*pb.PointStat{}}
+		sv2Meta[sv] = map[string]*pb.StatMetadata{}
 	}
 
 	// Mapping from stat var to a list of dates. Need to fetch cache data for any
 	// <sv, date> pair.
 	sv2dates := map[string][]string{}
+
+	// A set of dates to query for
+	dateSet := map[string]struct{}{}
 
 	// If date is not given, get the latest dates and use them to fetch
 	// stats.
@@ -167,53 +174,60 @@ func (s *Server) GetStatCollection(
 		// Two dates are computed here. One is the latest date from all sources and
 		// the other is the date corresponding to the most place entries.
 		for sv, data := range dateCache {
+			if data == nil {
+				continue
+			}
 			latestDate := dateCount{}
 			mostCount := dateCount{}
-			if data != nil {
-				for _, cohort := range data.SourceCohorts {
-					for date, c := range cohort.Val {
-						count := int(c)
-						if count > mostCount.count || (count == mostCount.count && date > mostCount.date) {
-							mostCount = dateCount{date, count}
-						}
-						if date > latestDate.date || (date == latestDate.date && count >= latestDate.count) {
-							latestDate = dateCount{date, count}
-						}
+			for _, cohort := range data.SourceCohorts {
+				for date, c := range cohort.Val {
+					count := int(c)
+					if count > mostCount.count || (count == mostCount.count && date > mostCount.date) {
+						mostCount = dateCount{date, count}
+					}
+					if date > latestDate.date || (date == latestDate.date && count >= latestDate.count) {
+						latestDate = dateCount{date, count}
 					}
 				}
 			}
-			// Lastest date is always needed.
+			// Latest date is always needed.
 			sv2dates[sv] = []string{latestDate.date}
+			dateSet[latestDate.date] = struct{}{}
+
 			// The date with most place count is needed too.
 			if mostCount.count > latestDate.count {
 				sv2dates[sv] = append(sv2dates[sv], mostCount.date)
+				dateSet[mostCount.date] = struct{}{}
 			}
 		}
 	} else {
+		dateSet[date] = struct{}{}
 		for _, sv := range statVars {
 			sv2dates[sv] = []string{date}
 		}
 	}
 
-	// Get a reverse sorted date list like: [2019, 2017, 2016-01]
-	dateSet := map[string]struct{}{}
-	for _, dates := range sv2dates {
-		for _, date := range dates {
-			dateSet[date] = struct{}{}
-		}
-	}
 	dateList := []string{}
 	for date := range dateSet {
 		dateList = append(dateList, date)
 	}
-	sort.Sort(sort.Reverse(sort.StringSlice(dateList)))
+	sort.Strings(dateList)
 
-	// Query the cache from the most recent date. The order is important as the
-	// source with older date is only used when it has better place coverage.
+	// Query the cache from older to newer date. The newer stat, when present,
+	// can override the older stat.
 	// TODO(shifucun): Parallel the BT query.
 	for _, queryDate := range dateList {
+		// Get the StatVars that has data for this date.
+		queryStatVars := []string{}
+		for sv, dates := range sv2dates {
+			for _, date := range dates {
+				if date == queryDate {
+					queryStatVars = append(queryStatVars, sv)
+				}
+			}
+		}
 		rowList, keyTokens := buildStatCollectionKey(
-			parentPlace, childType, queryDate, statVars)
+			parentPlace, childType, queryDate, queryStatVars)
 		statCache, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 		if err != nil {
 			return nil, err
@@ -222,40 +236,34 @@ func (s *Server) GetStatCollection(
 			if data == nil {
 				continue
 			}
-			for _, date := range sv2dates[sv] {
-				// Only process when the query date is used for this stat var.
-				if date != queryDate {
-					continue
-				}
-				cohorts := data.SourceCohorts
-				sort.Sort(SeriesByRank(cohorts))
-				// Iterate from the ranked order and find the source with most places.
-				maxSize := 0
-				var usedCohort *pb.SourceSeries
-				for _, cohort := range cohorts {
-					currSize := len(cohort.Val)
-					if currSize > maxSize {
-						maxSize = currSize
-						usedCohort = cohort
-					}
-				}
-				// Add the cohort to result
-				if result.Data[sv].Val == nil {
-					result.Data[sv] = usedCohort
-				} else {
-					// If the result is populated already, then a latest observation
-					// has been added. For this cohort (with an older date), only need
-					// to add the places that is not present yet.
+			cohorts := data.SourceCohorts
+			sort.Sort(CohortByRank(cohorts))
+			cohort := cohorts[0]
 
-					// TODO(boxu): In this case, the result contains multiple sources,
-					// need to reflect this in the result.
-					for place, val := range usedCohort.Val {
-						if _, ok := result.Data[sv].Val[place]; !ok {
-							result.Data[sv].Val[place] = val
-						}
-					}
+			// Add the cohort to result.
+			for place, val := range cohort.Val {
+				result.Data[sv].Stat[place] = &pb.PointStat{Date: queryDate, Value: val}
+			}
+			if _, ok := sv2Meta[sv][cohort.ImportName]; !ok {
+				sv2Meta[sv][cohort.ImportName] = &pb.StatMetadata{
+					ImportName:        cohort.ImportName,
+					ProvenanceUrl:     cohort.ProvenanceUrl,
+					MeasurementMethod: cohort.MeasurementMethod,
+					ObservationPeriod: cohort.ObservationPeriod,
+					ScalingFactor:     cohort.ScalingFactor,
+					Unit:              cohort.Unit,
 				}
 			}
+		}
+	}
+	for sv := range sv2Meta {
+		imports := []string{}
+		for imp := range sv2Meta[sv] {
+			imports = append(imports, imp)
+		}
+		sort.Strings(imports)
+		for _, imp := range imports {
+			result.Data[sv].Metadata = append(result.Data[sv].Metadata, sv2Meta[sv][imp])
 		}
 	}
 	return result, nil

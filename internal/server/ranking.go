@@ -51,8 +51,58 @@ var StatsRanking = map[RankKey]int{
 // prefered, it should be given a score higher than BaseRank in StatsRanking
 const BaseRank = 100
 
+// CohortByRank implements sort.Interface for []*SourceSeries based on
+// the rank score. Each source series data is keyed by the place dcid.
+//
+// Note this has the same data type as SeriesByRank but is used to compare
+// cohort instead of time series.
+type CohortByRank []*pb.SourceSeries
+
+func (a CohortByRank) Len() int { return len(a) }
+
+func (a CohortByRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+
+func (a CohortByRank) Less(i, j int) bool {
+	oi := a[i]
+	keyi := RankKey{Prov: oi.ImportName, Mmethod: oi.MeasurementMethod}
+	scorei, ok := StatsRanking[keyi]
+	if !ok {
+		scorei = BaseRank
+	}
+	oj := a[j]
+	keyj := RankKey{Prov: oj.ImportName, Mmethod: oj.MeasurementMethod}
+	scorej, ok := StatsRanking[keyj]
+	if !ok {
+		scorej = BaseRank
+	}
+	// Higher score value means lower rank.
+	if scorei != scorej {
+		return scorei < scorej
+	}
+
+	// Cohort with more place coverage is ranked higher
+	if len(a[i].Val) != len(a[j].Val) {
+		return len(a[i].Val) > len(a[j].Val)
+	}
+
+	// Compare other fields to get consistent ranking.
+	if oi.ObservationPeriod != oj.ObservationPeriod {
+		return oi.ObservationPeriod < oj.ObservationPeriod
+	}
+	if oi.ScalingFactor != oj.ScalingFactor {
+		return oi.ScalingFactor < oj.ScalingFactor
+	}
+	if oi.Unit != oj.Unit {
+		return oi.Unit < oj.Unit
+	}
+	if oi.ProvenanceUrl != oj.ProvenanceUrl {
+		return oi.ProvenanceUrl < oj.ProvenanceUrl
+	}
+	return true
+}
+
 // SeriesByRank implements sort.Interface for []*SourceSeries based on
-// the rank score.
+// the rank score. Each source series data is keyed by the observation date.
 //
 // This is the protobuf version of byRank.
 type SeriesByRank []*pb.SourceSeries

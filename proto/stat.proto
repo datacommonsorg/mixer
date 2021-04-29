@@ -40,6 +40,7 @@ message PointStat {
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
+  repeated StatMetadata metadata = 2;
 }
 
 message DateList {
@@ -262,7 +263,7 @@ message GetStatCollectionRequest {
 
 // Response for GetStatCollection service.
 message GetStatCollectionResponse {
-  map<string, SourceSeries> data = 1;
+  map<string, PlacePointStat> data = 1;
 }
 
 

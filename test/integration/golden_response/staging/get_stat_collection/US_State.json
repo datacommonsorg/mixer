@@ -1,64 +1,220 @@
 {
   "data": {
     "Count_Person": {
-      "val": {
-        "geoId/01": 4876250,
-        "geoId/02": 737068,
-        "geoId/04": 7050299,
-        "geoId/05": 2999370,
-        "geoId/06": 39283497,
-        "geoId/08": 5610349,
-        "geoId/09": 3575074,
-        "geoId/10": 957248,
-        "geoId/11": 692683,
-        "geoId/12": 20901636,
-        "geoId/13": 10403847,
-        "geoId/15": 1422094,
-        "geoId/16": 1717750,
-        "geoId/17": 12770631,
-        "geoId/18": 6665703,
-        "geoId/19": 3139508,
-        "geoId/20": 2910652,
-        "geoId/21": 4449052,
-        "geoId/22": 4664362,
-        "geoId/23": 1335492,
-        "geoId/24": 6018848,
-        "geoId/25": 6850553,
-        "geoId/26": 9965265,
-        "geoId/27": 5563378,
-        "geoId/28": 2984418,
-        "geoId/29": 6104910,
-        "geoId/30": 1050649,
-        "geoId/31": 1914571,
-        "geoId/32": 2972382,
-        "geoId/33": 1348124,
-        "geoId/34": 8878503,
-        "geoId/35": 2092454,
-        "geoId/36": 19572319,
-        "geoId/37": 10264876,
-        "geoId/38": 756717,
-        "geoId/39": 11655397,
-        "geoId/40": 3932870,
-        "geoId/41": 4129803,
-        "geoId/42": 12791530,
-        "geoId/44": 1057231,
-        "geoId/45": 5020806,
-        "geoId/46": 870638,
-        "geoId/47": 6709356,
-        "geoId/48": 28995881,
-        "geoId/49": 3096848,
-        "geoId/50": 624313,
-        "geoId/51": 8454463,
-        "geoId/53": 7404107,
-        "geoId/54": 1817305,
-        "geoId/55": 5790716,
-        "geoId/56": 581024,
-        "geoId/72": 3318447
+      "stat": {
+        "geoId/01": {
+          "date": "2019",
+          "value": 4903185
+        },
+        "geoId/02": {
+          "date": "2019",
+          "value": 731545
+        },
+        "geoId/04": {
+          "date": "2019",
+          "value": 7278717
+        },
+        "geoId/05": {
+          "date": "2019",
+          "value": 3017804
+        },
+        "geoId/06": {
+          "date": "2019",
+          "value": 39512223
+        },
+        "geoId/08": {
+          "date": "2019",
+          "value": 5758736
+        },
+        "geoId/09": {
+          "date": "2019",
+          "value": 3565287
+        },
+        "geoId/10": {
+          "date": "2019",
+          "value": 973764
+        },
+        "geoId/12": {
+          "date": "2019",
+          "value": 21477737
+        },
+        "geoId/13": {
+          "date": "2019",
+          "value": 10617423
+        },
+        "geoId/15": {
+          "date": "2019",
+          "value": 1415872
+        },
+        "geoId/16": {
+          "date": "2019",
+          "value": 1787065
+        },
+        "geoId/17": {
+          "date": "2019",
+          "value": 12671821
+        },
+        "geoId/18": {
+          "date": "2019",
+          "value": 6732219
+        },
+        "geoId/19": {
+          "date": "2019",
+          "value": 3155070
+        },
+        "geoId/20": {
+          "date": "2019",
+          "value": 2913314
+        },
+        "geoId/21": {
+          "date": "2019",
+          "value": 4467673
+        },
+        "geoId/22": {
+          "date": "2019",
+          "value": 4648794
+        },
+        "geoId/23": {
+          "date": "2019",
+          "value": 1344212
+        },
+        "geoId/24": {
+          "date": "2019",
+          "value": 6045680
+        },
+        "geoId/25": {
+          "date": "2019",
+          "value": 6892503
+        },
+        "geoId/26": {
+          "date": "2019",
+          "value": 9986857
+        },
+        "geoId/27": {
+          "date": "2019",
+          "value": 5639632
+        },
+        "geoId/28": {
+          "date": "2019",
+          "value": 2976149
+        },
+        "geoId/29": {
+          "date": "2019",
+          "value": 6137428
+        },
+        "geoId/30": {
+          "date": "2019",
+          "value": 1068778
+        },
+        "geoId/31": {
+          "date": "2019",
+          "value": 1934408
+        },
+        "geoId/32": {
+          "date": "2019",
+          "value": 3080156
+        },
+        "geoId/33": {
+          "date": "2019",
+          "value": 1359711
+        },
+        "geoId/34": {
+          "date": "2019",
+          "value": 8882190
+        },
+        "geoId/35": {
+          "date": "2019",
+          "value": 2096829
+        },
+        "geoId/36": {
+          "date": "2019",
+          "value": 19453561
+        },
+        "geoId/37": {
+          "date": "2019",
+          "value": 10488084
+        },
+        "geoId/38": {
+          "date": "2019",
+          "value": 762062
+        },
+        "geoId/39": {
+          "date": "2019",
+          "value": 11689100
+        },
+        "geoId/40": {
+          "date": "2019",
+          "value": 3956971
+        },
+        "geoId/41": {
+          "date": "2019",
+          "value": 4217737
+        },
+        "geoId/42": {
+          "date": "2019",
+          "value": 12801989
+        },
+        "geoId/44": {
+          "date": "2019",
+          "value": 1059361
+        },
+        "geoId/45": {
+          "date": "2019",
+          "value": 5148714
+        },
+        "geoId/46": {
+          "date": "2019",
+          "value": 884659
+        },
+        "geoId/47": {
+          "date": "2019",
+          "value": 6829174
+        },
+        "geoId/48": {
+          "date": "2020",
+          "value": 28995881
+        },
+        "geoId/49": {
+          "date": "2019",
+          "value": 3205958
+        },
+        "geoId/50": {
+          "date": "2019",
+          "value": 623989
+        },
+        "geoId/51": {
+          "date": "2019",
+          "value": 8535519
+        },
+        "geoId/53": {
+          "date": "2019",
+          "value": 7614893
+        },
+        "geoId/54": {
+          "date": "2019",
+          "value": 1792147
+        },
+        "geoId/55": {
+          "date": "2019",
+          "value": 5822434
+        },
+        "geoId/56": {
+          "date": "2019",
+          "value": 578759
+        }
       },
-      "measurement_method": "WikidataPopulation",
-      "import_name": "WikidataPopulation",
-      "provenance_domain": "wikidata.org",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+      "metadata": [
+        {
+          "import_name": "CensusPEP",
+          "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+          "measurement_method": "CensusPEPSurvey"
+        },
+        {
+          "import_name": "WikidataPopulation",
+          "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+          "measurement_method": "WikidataPopulation"
+        }
+      ]
     }
   }
 }
