@@ -242,7 +242,13 @@ func (s *Server) GetStatCollection(
 
 			// Add the cohort to result.
 			for place, val := range cohort.Val {
-				result.Data[sv].Stat[place] = &pb.PointStat{Date: queryDate, Value: val}
+				result.Data[sv].Stat[place] = &pb.PointStat{
+					Date:  queryDate,
+					Value: val,
+					Metadata: &pb.StatMetadata{
+						ImportName: cohort.ImportName,
+					},
+				}
 			}
 			if _, ok := sv2Meta[sv][cohort.ImportName]; !ok {
 				sv2Meta[sv][cohort.ImportName] = &pb.StatMetadata{
