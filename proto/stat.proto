@@ -40,6 +40,8 @@ message PointStat {
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
+  // Keyed by import name.
+  map<string, StatMetadata> metadata = 2;
 }
 
 message DateList {
@@ -252,15 +254,17 @@ message GetStatCollectionRequest {
   string parent_place = 1;
   // Child place type.
   string child_type = 2;
-  // Date for the stat in ISO format.
-  string date = 3;
   // Dcid of the stat var.
-  repeated string stat_vars = 4;
+  repeated string stat_vars = 3;
+  // [Optional] Date for the stat in ISO format.
+  // If the date is not given, then the latest observation for each place is
+  // returned, where they could be from different sources.
+  string date = 4;
 }
 
 // Response for GetStatCollection service.
 message GetStatCollectionResponse {
-  map<string, SourceSeries> data = 1;
+  map<string, PlacePointStat> data = 1;
 }
 
 

@@ -23,6 +23,11 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+type dateCount struct {
+	date  string
+	count int
+}
+
 // GetStatValue implements API for Mixer.GetStatValue.
 // Endpoint: /stat (/stat/value)
 func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
@@ -132,10 +137,6 @@ func (s *Server) GetStatCollection(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: stat_vars")
 	}
-	if date == "" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: date")
-	}
 	if childType == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: child_type")
@@ -143,30 +144,135 @@ func (s *Server) GetStatCollection(
 
 	// Initialize result.
 	result := &pb.GetStatCollectionResponse{
-		Data: make(map[string]*pb.SourceSeries),
+		Data: make(map[string]*pb.PlacePointStat),
 	}
-	// Initialize with nil to help check if data is in mem-cache. The nil field
-	// will be populated with empty pb.ObsCollection struct in the end.
+	// A map from statvar to import name to StatMetadata
+	sv2Meta := map[string]map[string]*pb.StatMetadata{}
+
 	for _, sv := range statVars {
-		result.Data[sv] = nil
+		result.Data[sv] = &pb.PlacePointStat{Stat: map[string]*pb.PointStat{}}
+		sv2Meta[sv] = map[string]*pb.StatMetadata{}
 	}
 
-	rowList, keyTokens := buildStatCollectionKey(parentPlace, childType, date, statVars)
-	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
-	if err != nil {
-		return nil, err
+	// Mapping from stat var to a list of dates. Need to fetch cache data for any
+	// <sv, date> pair.
+	sv2dates := map[string][]string{}
+
+	// A set of dates to query for
+	dateSet := map[string]struct{}{}
+
+	// If date is not given, get the latest dates and use them to fetch
+	// stats.
+	if date == "" {
+		rowList, keyTokens := buildStatCollectionKey(parentPlace, childType, "", statVars)
+		dateCache, err := readStatCollection(ctx, s.store, rowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		// Two dates are computed here. One is the latest date from all sources and
+		// the other is the date corresponding to the most place entries.
+		for sv, data := range dateCache {
+			if data == nil {
+				continue
+			}
+			// TODO(shifucun): After measurement method is cleaned up, all the cohorts
+			// should be grouped based on StatVarObs prorperties. Each group can be
+			// merged, and the count should be considered within each group.
+			latestDate := dateCount{}
+			mostCount := dateCount{}
+			for _, cohort := range data.SourceCohorts {
+				for date, c := range cohort.Val {
+					count := int(c)
+					if count > mostCount.count || (count == mostCount.count && date > mostCount.date) {
+						mostCount = dateCount{date, count}
+					}
+					if date > latestDate.date || (date == latestDate.date && count >= latestDate.count) {
+						latestDate = dateCount{date, count}
+					}
+				}
+			}
+			// Latest date is always needed.
+			sv2dates[sv] = []string{latestDate.date}
+			dateSet[latestDate.date] = struct{}{}
+
+			// The date with most place count is needed too.
+			if mostCount.count > latestDate.count {
+				sv2dates[sv] = append(sv2dates[sv], mostCount.date)
+				dateSet[mostCount.date] = struct{}{}
+			}
+		}
+	} else {
+		dateSet[date] = struct{}{}
+		for _, sv := range statVars {
+			sv2dates[sv] = []string{date}
+		}
 	}
-	for sv, data := range cacheData {
-		if data != nil {
+
+	dateList := []string{}
+	for date := range dateSet {
+		dateList = append(dateList, date)
+	}
+	sort.Strings(dateList)
+
+	// Query the cache from older to newer date. The newer stat, when present,
+	// can override the older stat.
+	// TODO(shifucun): Parallel the BT query.
+	for _, queryDate := range dateList {
+		// Get the StatVars that has data for this date.
+		queryStatVars := []string{}
+		for sv, dates := range sv2dates {
+			for _, date := range dates {
+				if date == queryDate {
+					queryStatVars = append(queryStatVars, sv)
+				}
+			}
+		}
+		rowList, keyTokens := buildStatCollectionKey(
+			parentPlace, childType, queryDate, queryStatVars)
+		statCache, err := readStatCollection(ctx, s.store, rowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		for sv, data := range statCache {
+			if data == nil || len(data.SourceCohorts) == 0 {
+				continue
+			}
 			cohorts := data.SourceCohorts
-			sort.Sort(SeriesByRank(cohorts))
-			result.Data[sv] = cohorts[0]
+			sort.Sort(CohortByRank(cohorts))
+
+			// Pick the highest ranked cohort from different sources for THIS date.
+			//
+			// NOTE: For Count_Person_Employed (and some other stat var), there are
+			// two source cohorts with different measurement method that are not
+			// compatible (BLSSeasonallyUnadjusted, BLSSeasonallyAdjusted). The logic
+			// here will deterministically pick one cohort for the current date. Since
+			// these observation have same place and date coverage, only the latest
+			// date is processed, hence no need to worry about merging.
+			cohort := cohorts[0]
+
+			// Add the cohort to result.
+			for place, val := range cohort.Val {
+				result.Data[sv].Stat[place] = &pb.PointStat{
+					Date:  queryDate,
+					Value: val,
+					Metadata: &pb.StatMetadata{
+						ImportName: cohort.ImportName,
+					},
+				}
+			}
+			if _, ok := sv2Meta[sv][cohort.ImportName]; !ok {
+				sv2Meta[sv][cohort.ImportName] = &pb.StatMetadata{
+					ProvenanceUrl:     cohort.ProvenanceUrl,
+					MeasurementMethod: cohort.MeasurementMethod,
+					ObservationPeriod: cohort.ObservationPeriod,
+					ScalingFactor:     cohort.ScalingFactor,
+					Unit:              cohort.Unit,
+				}
+			}
 		}
 	}
-	for sv := range result.Data {
-		if result.Data[sv] == nil {
-			result.Data[sv] = &pb.SourceSeries{}
-		}
+	for sv := range sv2Meta {
+		result.Data[sv].Metadata = sv2Meta[sv]
 	}
 	return result, nil
 }

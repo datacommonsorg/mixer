@@ -1,0 +1,743 @@
+{
+  "data": {
+    "Count_Person": {
+      "stat": {
+        "geoId/01": {
+          "date": "2019",
+          "value": 4903185,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/02": {
+          "date": "2019",
+          "value": 731545,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/04": {
+          "date": "2019",
+          "value": 7278717,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/05": {
+          "date": "2019",
+          "value": 3017804,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/06": {
+          "date": "2019",
+          "value": 39512223,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/08": {
+          "date": "2019",
+          "value": 5758736,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/09": {
+          "date": "2019",
+          "value": 3565287,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/10": {
+          "date": "2019",
+          "value": 973764,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/12": {
+          "date": "2019",
+          "value": 21477737,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/13": {
+          "date": "2019",
+          "value": 10617423,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/15": {
+          "date": "2019",
+          "value": 1415872,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/16": {
+          "date": "2019",
+          "value": 1787065,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/17": {
+          "date": "2019",
+          "value": 12671821,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/18": {
+          "date": "2019",
+          "value": 6732219,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/19": {
+          "date": "2019",
+          "value": 3155070,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/20": {
+          "date": "2019",
+          "value": 2913314,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/21": {
+          "date": "2019",
+          "value": 4467673,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/22": {
+          "date": "2019",
+          "value": 4648794,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/23": {
+          "date": "2019",
+          "value": 1344212,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/24": {
+          "date": "2019",
+          "value": 6045680,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/25": {
+          "date": "2019",
+          "value": 6892503,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/26": {
+          "date": "2019",
+          "value": 9986857,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/27": {
+          "date": "2019",
+          "value": 5639632,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/28": {
+          "date": "2019",
+          "value": 2976149,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/29": {
+          "date": "2019",
+          "value": 6137428,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/30": {
+          "date": "2019",
+          "value": 1068778,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/31": {
+          "date": "2019",
+          "value": 1934408,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/32": {
+          "date": "2019",
+          "value": 3080156,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/33": {
+          "date": "2019",
+          "value": 1359711,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/34": {
+          "date": "2019",
+          "value": 8882190,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/35": {
+          "date": "2019",
+          "value": 2096829,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/36": {
+          "date": "2019",
+          "value": 19453561,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/37": {
+          "date": "2019",
+          "value": 10488084,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/38": {
+          "date": "2019",
+          "value": 762062,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/39": {
+          "date": "2019",
+          "value": 11689100,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/40": {
+          "date": "2019",
+          "value": 3956971,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/41": {
+          "date": "2019",
+          "value": 4217737,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/42": {
+          "date": "2019",
+          "value": 12801989,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/44": {
+          "date": "2019",
+          "value": 1059361,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/45": {
+          "date": "2019",
+          "value": 5148714,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/46": {
+          "date": "2019",
+          "value": 884659,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/47": {
+          "date": "2019",
+          "value": 6829174,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/48": {
+          "date": "2020",
+          "value": 28995881,
+          "metadata": {
+            "import_name": "WikidataPopulation"
+          }
+        },
+        "geoId/49": {
+          "date": "2019",
+          "value": 3205958,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/50": {
+          "date": "2019",
+          "value": 623989,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/51": {
+          "date": "2019",
+          "value": 8535519,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/53": {
+          "date": "2019",
+          "value": 7614893,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/54": {
+          "date": "2019",
+          "value": 1792147,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/55": {
+          "date": "2019",
+          "value": 5822434,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "geoId/56": {
+          "date": "2019",
+          "value": 578759,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        }
+      },
+      "metadata": {
+        "CensusPEP": {
+          "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+          "measurement_method": "CensusPEPSurvey"
+        },
+        "WikidataPopulation": {
+          "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+          "measurement_method": "WikidataPopulation"
+        }
+      }
+    },
+    "Count_Person_Employed": {
+      "stat": {
+        "geoId/01": {
+          "date": "2020-08",
+          "value": 2125671,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/02": {
+          "date": "2020-08",
+          "value": 313807,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/04": {
+          "date": "2020-08",
+          "value": 3198999,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/05": {
+          "date": "2020-08",
+          "value": 1246448,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/06": {
+          "date": "2020-08",
+          "value": 16557613,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/08": {
+          "date": "2020-08",
+          "value": 2895154,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/09": {
+          "date": "2020-08",
+          "value": 1724079,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/10": {
+          "date": "2020-08",
+          "value": 458088,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/11": {
+          "date": "2020-08",
+          "value": 360045,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/12": {
+          "date": "2020-08",
+          "value": 9357709,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/13": {
+          "date": "2020-08",
+          "value": 4607587,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/15": {
+          "date": "2020-08",
+          "value": 557333,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/16": {
+          "date": "2020-08",
+          "value": 864960,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/17": {
+          "date": "2020-08",
+          "value": 5657729,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/18": {
+          "date": "2020-08",
+          "value": 3147142,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/19": {
+          "date": "2020-08",
+          "value": 1524029,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/20": {
+          "date": "2020-08",
+          "value": 1388689,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/21": {
+          "date": "2020-08",
+          "value": 1854589,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/22": {
+          "date": "2020-08",
+          "value": 1936697,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/23": {
+          "date": "2020-08",
+          "value": 651341,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/24": {
+          "date": "2020-08",
+          "value": 3029386,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/25": {
+          "date": "2020-08",
+          "value": 3181581,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/26": {
+          "date": "2020-08",
+          "value": 4501659,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/27": {
+          "date": "2020-08",
+          "value": 2898036,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/28": {
+          "date": "2020-08",
+          "value": 1140988,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/29": {
+          "date": "2020-08",
+          "value": 2849617,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/30": {
+          "date": "2020-08",
+          "value": 509443,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/31": {
+          "date": "2020-08",
+          "value": 1000186,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/32": {
+          "date": "2020-08",
+          "value": 1296486,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/33": {
+          "date": "2020-08",
+          "value": 697979,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/34": {
+          "date": "2020-08",
+          "value": 4085596,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/35": {
+          "date": "2020-08",
+          "value": 790410,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/36": {
+          "date": "2020-08",
+          "value": 8321532,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/37": {
+          "date": "2020-08",
+          "value": 4485131,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/38": {
+          "date": "2020-08",
+          "value": 384179,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/39": {
+          "date": "2020-08",
+          "value": 5276720,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/40": {
+          "date": "2020-08",
+          "value": 1722225,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/41": {
+          "date": "2020-08",
+          "value": 1911101,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/42": {
+          "date": "2020-08",
+          "value": 5673016,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/44": {
+          "date": "2020-08",
+          "value": 475467,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/45": {
+          "date": "2020-08",
+          "value": 2268162,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/46": {
+          "date": "2020-08",
+          "value": 441549,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/47": {
+          "date": "2020-08",
+          "value": 3092373,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/48": {
+          "date": "2020-08",
+          "value": 13329260,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/49": {
+          "date": "2020-08",
+          "value": 1559382,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/50": {
+          "date": "2020-08",
+          "value": 312036,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/51": {
+          "date": "2020-08",
+          "value": 4073362,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/53": {
+          "date": "2020-08",
+          "value": 3630085,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/54": {
+          "date": "2020-08",
+          "value": 705328,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/55": {
+          "date": "2020-08",
+          "value": 2876913,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/56": {
+          "date": "2020-08",
+          "value": 277249,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        },
+        "geoId/72": {
+          "date": "2020-08",
+          "value": 960458,
+          "metadata": {
+            "import_name": "BLS_LAUS"
+          }
+        }
+      },
+      "metadata": {
+        "BLS_LAUS": {
+          "provenance_url": "https://www.bls.gov/lau/",
+          "measurement_method": "BLSSeasonallyUnadjusted",
+          "observation_period": "P1M"
+        }
+      }
+    }
+  }
+}
