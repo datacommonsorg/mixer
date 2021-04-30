@@ -353,18 +353,16 @@
           }
         }
       },
-      "metadata": [
-        {
-          "import_name": "CensusPEP",
+      "metadata": {
+        "CensusPEP": {
           "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
           "measurement_method": "CensusPEPSurvey"
         },
-        {
-          "import_name": "WikidataPopulation",
+        "WikidataPopulation": {
           "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
           "measurement_method": "WikidataPopulation"
         }
-      ]
+      }
     }
   }
 }

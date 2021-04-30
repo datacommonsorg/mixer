@@ -304,13 +304,12 @@
           }
         }
       },
-      "metadata": [
-        {
-          "import_name": "CensusPEP",
+      "metadata": {
+        "CensusPEP": {
           "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
           "measurement_method": "CensusPEPSurvey"
         }
-      ]
+      }
     },
     "Median_Age_Person": {
       "stat": {
@@ -721,14 +720,13 @@
           }
         }
       },
-      "metadata": [
-        {
-          "import_name": "CensusACS5YearSurvey",
+      "metadata": {
+        "CensusACS5YearSurvey": {
           "provenance_url": "https://www.census.gov/",
           "measurement_method": "CensusACS5yrSurvey",
           "unit": "Year"
         }
-      ]
+      }
     }
   }
 }

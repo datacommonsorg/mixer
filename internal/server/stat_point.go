@@ -252,7 +252,6 @@ func (s *Server) GetStatCollection(
 			}
 			if _, ok := sv2Meta[sv][cohort.ImportName]; !ok {
 				sv2Meta[sv][cohort.ImportName] = &pb.StatMetadata{
-					ImportName:        cohort.ImportName,
 					ProvenanceUrl:     cohort.ProvenanceUrl,
 					MeasurementMethod: cohort.MeasurementMethod,
 					ObservationPeriod: cohort.ObservationPeriod,
@@ -263,14 +262,7 @@ func (s *Server) GetStatCollection(
 		}
 	}
 	for sv := range sv2Meta {
-		imports := []string{}
-		for imp := range sv2Meta[sv] {
-			imports = append(imports, imp)
-		}
-		sort.Strings(imports)
-		for _, imp := range imports {
-			result.Data[sv].Metadata = append(result.Data[sv].Metadata, sv2Meta[sv][imp])
-		}
+		result.Data[sv].Metadata = sv2Meta[sv]
 	}
 	return result, nil
 }

@@ -198,15 +198,12 @@ func TestGetStatCollection(t *testing.T) {
 						}
 					}
 				},
-				"metadata": [
-					{
-						"import_name": "source1"
-					},
-					{
-						"import_name": "source3",
+				"metadata": {
+					"source1": {},
+					"source3": {
 						"measurement_method": "mmethod3"
 					}
-				]
+				}
 			},
 			"Median_Age_Person": {
 				"stat": {
@@ -253,11 +250,9 @@ func TestGetStatCollection(t *testing.T) {
 						}
 					}
 				},
-				"metadata": [
-					{
-						"import_name": "source1"
-					}
-				]
+				"metadata": {
+					"source1": {}
+				}
 			}
 		}
 	}`)

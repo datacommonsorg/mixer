@@ -40,7 +40,7 @@ message PointStat {
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
-  repeated StatMetadata metadata = 2;
+  map<string, StatMetadata> metadata = 2;
 }
 
 message DateList {
