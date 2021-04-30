@@ -26,6 +26,26 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+var migrationMSG = `
+Missing argument: statVar
+
+==== DEPRECATION NOTICE ====
+
+The old /bulk/place-obs API has been deprecated in favor of a new data model
+based on Statistical Variables: https://docs.datacommons.org/statistical_variables.html.
+
+Please migrate your API to use the new model. Example request:
+
+curl --request POST \
+  --url https://api.datacommons.org/bulk/place-obs \
+  --header 'content-type: application/json' \
+  --data '{
+		"placeType": "State",
+		"statVar": "Count_Person",
+		"date": "2015",
+	}'
+`
+
 // GetPlaceObs implements API for Mixer.GetPlaceObs.
 func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 	*pb.SVOCollection, error) {
@@ -33,9 +53,14 @@ func (s *Server) GetPlaceObs(ctx context.Context, in *pb.GetPlaceObsRequest) (
 		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
-	if in.GetPlaceType() == "" || in.GetStatVar() == "" ||
-		in.GetDate() == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments")
+	if in.GetPlaceType() == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing argument: placeType")
+	}
+	if in.GetDate() == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing argument: date")
+	}
+	if in.GetStatVar() == "" {
+		return nil, status.Errorf(codes.InvalidArgument, migrationMSG)
 	}
 
 	key := fmt.Sprintf("%s%s^%s^%s", util.BtPlaceObsPrefix, in.GetPlaceType(),
