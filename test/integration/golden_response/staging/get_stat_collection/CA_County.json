@@ -3,393 +3,302 @@
     "Count_Person": {
       "stat": {
         "geoId/06001": {
-          "date": "2016",
-          "value": 1650950,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06003": {
-          "date": "2016",
-          "value": 1057,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06005": {
-          "date": "2016",
-          "value": 37438,
+          "date": "2019",
+          "value": 1671329,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06007": {
-          "date": "2016",
-          "value": 226231,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06009": {
-          "date": "2016",
-          "value": 45303,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06011": {
-          "date": "2016",
-          "value": 21553,
+          "date": "2019",
+          "value": 219186,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06013": {
-          "date": "2016",
-          "value": 1137268,
+          "date": "2019",
+          "value": 1153526,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06015": {
-          "date": "2016",
-          "value": 27382,
+          "date": "2019",
+          "value": 27812,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06017": {
-          "date": "2016",
-          "value": 185976,
+          "date": "2019",
+          "value": 192843,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06019": {
-          "date": "2016",
-          "value": 976830,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06021": {
-          "date": "2016",
-          "value": 27851,
+          "date": "2019",
+          "value": 999101,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06023": {
-          "date": "2016",
-          "value": 136290,
+          "date": "2019",
+          "value": 135558,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06025": {
-          "date": "2016",
-          "value": 180179,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06027": {
-          "date": "2016",
-          "value": 17996,
+          "date": "2019",
+          "value": 181215,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06029": {
-          "date": "2016",
-          "value": 880856,
+          "date": "2019",
+          "value": 900202,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06031": {
-          "date": "2016",
-          "value": 149382,
+          "date": "2019",
+          "value": 152940,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06033": {
-          "date": "2016",
-          "value": 63903,
+          "date": "2019",
+          "value": 64386,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06035": {
-          "date": "2016",
-          "value": 30721,
+          "date": "2019",
+          "value": 30573,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06037": {
-          "date": "2016",
-          "value": 10105708,
+          "date": "2019",
+          "value": 10039107,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06039": {
-          "date": "2016",
-          "value": 153956,
+          "date": "2019",
+          "value": 157327,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06041": {
-          "date": "2016",
-          "value": 260562,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06043": {
-          "date": "2016",
-          "value": 17455,
+          "date": "2019",
+          "value": 258826,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06045": {
-          "date": "2016",
-          "value": 87285,
+          "date": "2019",
+          "value": 86749,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06047": {
-          "date": "2016",
-          "value": 267628,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06049": {
-          "date": "2016",
-          "value": 8935,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06051": {
-          "date": "2016",
-          "value": 14202,
+          "date": "2019",
+          "value": 277680,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06053": {
-          "date": "2016",
-          "value": 433953,
+          "date": "2019",
+          "value": 434061,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06055": {
-          "date": "2016",
-          "value": 140840,
+          "date": "2019",
+          "value": 137744,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06057": {
-          "date": "2016",
-          "value": 98913,
+          "date": "2019",
+          "value": 99755,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06059": {
-          "date": "2016",
-          "value": 3164986,
+          "date": "2019",
+          "value": 3175692,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06061": {
-          "date": "2016",
-          "value": 378943,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06063": {
-          "date": "2016",
-          "value": 18772,
+          "date": "2019",
+          "value": 398329,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06065": {
-          "date": "2016",
-          "value": 2380081,
+          "date": "2019",
+          "value": 2470546,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06067": {
-          "date": "2016",
-          "value": 1510987,
+          "date": "2019",
+          "value": 1552058,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06069": {
-          "date": "2016",
-          "value": 59225,
+          "date": "2019",
+          "value": 62808,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06071": {
-          "date": "2016",
-          "value": 2131960,
+          "date": "2019",
+          "value": 2180085,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06073": {
-          "date": "2016",
-          "value": 3306089,
+          "date": "2019",
+          "value": 3338330,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06077": {
-          "date": "2016",
-          "value": 732809,
+          "date": "2019",
+          "value": 762148,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06079": {
-          "date": "2016",
-          "value": 281803,
+          "date": "2019",
+          "value": 283111,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06083": {
-          "date": "2016",
-          "value": 444340,
+          "date": "2019",
+          "value": 446499,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06085": {
-          "date": "2016",
-          "value": 1928368,
+          "date": "2019",
+          "value": 1927852,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06087": {
-          "date": "2016",
-          "value": 274396,
+          "date": "2019",
+          "value": 273213,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06089": {
-          "date": "2016",
-          "value": 178571,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06091": {
-          "date": "2016",
-          "value": 2957,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06093": {
-          "date": "2016",
-          "value": 43479,
+          "date": "2019",
+          "value": 180080,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06095": {
-          "date": "2016",
-          "value": 438858,
+          "date": "2019",
+          "value": 447643,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06097": {
-          "date": "2016",
-          "value": 502547,
+          "date": "2019",
+          "value": 494336,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06099": {
-          "date": "2016",
-          "value": 539255,
+          "date": "2019",
+          "value": 550660,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06101": {
-          "date": "2016",
-          "value": 95742,
+          "date": "2019",
+          "value": 96971,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06103": {
-          "date": "2016",
-          "value": 63453,
-          "metadata": {
-            "import_name": "CensusPEP"
-          }
-        },
-        "geoId/06105": {
-          "date": "2016",
-          "value": 12830,
+          "date": "2019",
+          "value": 65084,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06107": {
-          "date": "2016",
-          "value": 459235,
+          "date": "2019",
+          "value": 466195,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06109": {
-          "date": "2016",
-          "value": 53770,
+          "date": "2019",
+          "value": 54478,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06111": {
-          "date": "2016",
-          "value": 847323,
+          "date": "2019",
+          "value": 846006,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06113": {
-          "date": "2016",
-          "value": 215627,
+          "date": "2019",
+          "value": 220500,
           "metadata": {
             "import_name": "CensusPEP"
           }
         },
         "geoId/06115": {
-          "date": "2016",
-          "value": 74952,
+          "date": "2019",
+          "value": 78668,
           "metadata": {
             "import_name": "CensusPEP"
           }
@@ -405,407 +314,407 @@
     "Median_Age_Person": {
       "stat": {
         "geoId/06001": {
-          "date": "2016",
-          "value": 37.2,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06003": {
-          "date": "2016",
-          "value": 42.8,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06005": {
-          "date": "2016",
-          "value": 50.3,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06007": {
-          "date": "2016",
-          "value": 36.9,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06009": {
-          "date": "2016",
-          "value": 51.2,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06011": {
-          "date": "2016",
-          "value": 34.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06013": {
-          "date": "2016",
-          "value": 39.1,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06015": {
-          "date": "2016",
-          "value": 38.1,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06017": {
-          "date": "2016",
-          "value": 45.2,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06019": {
-          "date": "2016",
-          "value": 31.6,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06021": {
-          "date": "2016",
-          "value": 36.9,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06023": {
-          "date": "2016",
+          "date": "2019",
           "value": 37.6,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06025": {
-          "date": "2016",
-          "value": 32.2,
+        "geoId/06003": {
+          "date": "2019",
+          "value": 52.2,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06027": {
-          "date": "2016",
-          "value": 45.4,
+        "geoId/06005": {
+          "date": "2019",
+          "value": 50.5,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06029": {
-          "date": "2016",
-          "value": 31.2,
+        "geoId/06007": {
+          "date": "2019",
+          "value": 37.1,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06031": {
-          "date": "2016",
-          "value": 31.4,
+        "geoId/06009": {
+          "date": "2019",
+          "value": 52,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06033": {
-          "date": "2016",
-          "value": 45.8,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06035": {
-          "date": "2016",
-          "value": 36.4,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06037": {
-          "date": "2016",
-          "value": 35.8,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06039": {
-          "date": "2016",
-          "value": 33.5,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06041": {
-          "date": "2016",
-          "value": 45.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06043": {
-          "date": "2016",
-          "value": 50.6,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06045": {
-          "date": "2016",
-          "value": 42.3,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06047": {
-          "date": "2016",
-          "value": 30.6,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06049": {
-          "date": "2016",
-          "value": 47.1,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06051": {
-          "date": "2016",
-          "value": 38.9,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06053": {
-          "date": "2016",
-          "value": 33.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06055": {
-          "date": "2016",
-          "value": 40.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06057": {
-          "date": "2016",
-          "value": 49.5,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06059": {
-          "date": "2016",
-          "value": 37.3,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06061": {
-          "date": "2016",
-          "value": 41.5,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06063": {
-          "date": "2016",
-          "value": 51.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06065": {
-          "date": "2016",
-          "value": 34.8,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06067": {
-          "date": "2016",
-          "value": 35.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06069": {
-          "date": "2016",
-          "value": 35.1,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06071": {
-          "date": "2016",
-          "value": 32.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06073": {
-          "date": "2016",
+        "geoId/06011": {
+          "date": "2019",
           "value": 35.3,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06075": {
-          "date": "2016",
-          "value": 38.4,
+        "geoId/06013": {
+          "date": "2019",
+          "value": 39.7,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06077": {
-          "date": "2016",
-          "value": 33.7,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06079": {
-          "date": "2016",
-          "value": 39,
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey"
-          }
-        },
-        "geoId/06081": {
-          "date": "2016",
+        "geoId/06015": {
+          "date": "2019",
           "value": 39.5,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06083": {
-          "date": "2016",
-          "value": 33.7,
+        "geoId/06017": {
+          "date": "2019",
+          "value": 45.9,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06085": {
-          "date": "2016",
-          "value": 36.8,
+        "geoId/06019": {
+          "date": "2019",
+          "value": 32.2,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06087": {
-          "date": "2016",
-          "value": 37,
+        "geoId/06021": {
+          "date": "2019",
+          "value": 36.4,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06089": {
-          "date": "2016",
-          "value": 42.3,
+        "geoId/06023": {
+          "date": "2019",
+          "value": 38.4,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06091": {
-          "date": "2016",
-          "value": 55.2,
+        "geoId/06025": {
+          "date": "2019",
+          "value": 32.4,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06093": {
-          "date": "2016",
-          "value": 47.9,
+        "geoId/06027": {
+          "date": "2019",
+          "value": 45.8,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06095": {
-          "date": "2016",
-          "value": 37.5,
+        "geoId/06029": {
+          "date": "2019",
+          "value": 31.6,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06097": {
-          "date": "2016",
-          "value": 41.2,
+        "geoId/06031": {
+          "date": "2019",
+          "value": 31.8,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06099": {
-          "date": "2016",
-          "value": 33.8,
+        "geoId/06033": {
+          "date": "2019",
+          "value": 45.6,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
-        "geoId/06101": {
-          "date": "2016",
+        "geoId/06035": {
+          "date": "2019",
+          "value": 36.6,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06037": {
+          "date": "2019",
+          "value": 36.5,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06039": {
+          "date": "2019",
+          "value": 34.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06041": {
+          "date": "2019",
+          "value": 46.8,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06043": {
+          "date": "2019",
+          "value": 51.7,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06045": {
+          "date": "2019",
+          "value": 43.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06047": {
+          "date": "2019",
+          "value": 31.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06049": {
+          "date": "2019",
+          "value": 47.8,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06051": {
+          "date": "2019",
+          "value": 37.7,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06053": {
+          "date": "2019",
+          "value": 34.4,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06055": {
+          "date": "2019",
+          "value": 41.3,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06057": {
+          "date": "2019",
+          "value": 50.5,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06059": {
+          "date": "2019",
+          "value": 38.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06061": {
+          "date": "2019",
+          "value": 42,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06063": {
+          "date": "2019",
+          "value": 52.3,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06065": {
+          "date": "2019",
           "value": 35.6,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
+        "geoId/06067": {
+          "date": "2019",
+          "value": 36.2,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06069": {
+          "date": "2019",
+          "value": 35.7,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06071": {
+          "date": "2019",
+          "value": 33.3,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06073": {
+          "date": "2019",
+          "value": 35.8,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06075": {
+          "date": "2019",
+          "value": 38.2,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06077": {
+          "date": "2019",
+          "value": 34.3,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06079": {
+          "date": "2019",
+          "value": 39.2,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06081": {
+          "date": "2019",
+          "value": 39.7,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06083": {
+          "date": "2019",
+          "value": 33.8,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06085": {
+          "date": "2019",
+          "value": 37.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06087": {
+          "date": "2019",
+          "value": 37.8,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06089": {
+          "date": "2019",
+          "value": 41.5,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06091": {
+          "date": "2019",
+          "value": 54.8,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06093": {
+          "date": "2019",
+          "value": 47.8,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06095": {
+          "date": "2019",
+          "value": 38.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06097": {
+          "date": "2019",
+          "value": 42.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06099": {
+          "date": "2019",
+          "value": 34.1,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
+        "geoId/06101": {
+          "date": "2019",
+          "value": 35.7,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
         "geoId/06103": {
-          "date": "2016",
-          "value": 40.6,
+          "date": "2019",
+          "value": 41,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
         "geoId/06105": {
-          "date": "2016",
-          "value": 50.6,
+          "date": "2019",
+          "value": 52.5,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
         "geoId/06107": {
-          "date": "2016",
-          "value": 30.4,
+          "date": "2019",
+          "value": 31,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
         "geoId/06109": {
-          "date": "2016",
-          "value": 48.2,
+          "date": "2019",
+          "value": 48.4,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
         "geoId/06111": {
-          "date": "2016",
-          "value": 37.3,
+          "date": "2019",
+          "value": 38.1,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
         "geoId/06113": {
-          "date": "2016",
-          "value": 30.9,
+          "date": "2019",
+          "value": 31,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }
         },
         "geoId/06115": {
-          "date": "2016",
-          "value": 32.2,
+          "date": "2019",
+          "value": 32.8,
           "metadata": {
             "import_name": "CensusACS5YearSurvey"
           }

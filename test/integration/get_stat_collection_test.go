@@ -50,6 +50,20 @@ func TestGetStatCollection(t *testing.T) {
 		{
 			"geoId/06",
 			"County",
+			"",
+			[]string{"Count_Person", "Median_Age_Person"},
+			"CA_County.json",
+		},
+		{
+			"country/USA",
+			"State",
+			"",
+			[]string{"Count_Person", "Count_Person_Employed"},
+			"US_State.json",
+		},
+		{
+			"geoId/06",
+			"County",
 			"2016",
 			[]string{"Count_Person", "Median_Age_Person"},
 			"CA_County_2016.json",
