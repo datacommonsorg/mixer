@@ -38,14 +38,16 @@ if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "enco
   exit
 fi
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT="$(dirname "$DIR")"
 
 TAG=$(git rev-parse --short HEAD)
 if [[ $2 != "" ]]; then
   TAG=$2
+  cd "$ROOT"
+  # This is important to get the correct BT and BQ version
+  git checkout "$TAG"
 fi
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ROOT="$(dirname "$DIR")"
 
 cd "$ROOT/deploy/git"
 echo -n "$TAG" > mixer_hash.txt
