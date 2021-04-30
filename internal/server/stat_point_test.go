@@ -157,27 +157,45 @@ func TestGetStatCollection(t *testing.T) {
 				"stat": {
 					"geoId/02": {
 						"date": "2018",
-						"value": 735139
+						"value": 735139,
+						"metadata": {
+							"import_name": "source3"
+						}
 					},
 					"geoId/04": {
 						"date": "2018",
-						"value": 7158024
+						"value": 7158024,
+						"metadata": {
+							"import_name": "source3"
+						}
 					},
 					"geoId/05": {
 						"date": "2018",
-						"value": 3009733
+						"value": 3009733,
+						"metadata": {
+							"import_name": "source3"
+						}
 					},
 					"geoId/06": {
 						"date": "2018",
-						"value": 39461588
+						"value": 39461588,
+						"metadata": {
+							"import_name": "source3"
+						}
 					},
 					"geoId/08": {
 						"date": "2018",
-						"value": 5691287
+						"value": 5691287,
+						"metadata": {
+							"import_name": "source3"
+						}
 					},
 					"geoId/37": {
 						"date": "2019",
-						"value": 11383620
+						"value": 11383620,
+						"metadata": {
+							"import_name": "source1"
+						}
 					}
 				},
 				"metadata": [
@@ -194,27 +212,45 @@ func TestGetStatCollection(t *testing.T) {
 				"stat": {
 					"geoId/01": {
 						"date": "2018",
-						"value": 38.9
+						"value": 38.9,
+						"metadata": {
+							"import_name": "source1"
+						}
 					},
 					"geoId/02": {
 						"date": "2018",
-						"value": 34
+						"value": 34,
+						"metadata": {
+							"import_name": "source1"
+						}
 					},
 					"geoId/04": {
 						"date": "2018",
-						"value": 37.4
+						"value": 37.4,
+						"metadata": {
+							"import_name": "source1"
+						}
 					},
 					"geoId/05": {
 						"date": "2018",
-						"value": 37.9
+						"value": 37.9,
+						"metadata": {
+							"import_name": "source1"
+						}
 					},
 					"geoId/06": {
 						"date": "2018",
-						"value": 36.3
+						"value": 36.3,
+						"metadata": {
+							"import_name": "source1"
+						}
 					},
 					"geoId/08": {
 						"date": "2018",
-						"value": 36.6
+						"value": 36.6,
+						"metadata": {
+							"import_name": "source1"
+						}
 					}
 				},
 				"metadata": [
