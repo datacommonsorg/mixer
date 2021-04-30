@@ -31,7 +31,7 @@ func TestGetStatCollection(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, err := setupStatVar()
+	client, err := setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -58,7 +58,7 @@ func TestGetStatCollection(t *testing.T) {
 			"country/USA",
 			"State",
 			"",
-			[]string{"Count_Person"},
+			[]string{"Count_Person", "Count_Person_Employed"},
 			"US_State.json",
 		},
 		{

@@ -30,7 +30,7 @@ import (
 func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	ctx := context.Background()
 
-	client, err := setupStatVar()
+	client, err := setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

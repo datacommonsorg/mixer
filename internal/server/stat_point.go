@@ -149,8 +149,6 @@ func (s *Server) GetStatCollection(
 	// A map from statvar to import name to StatMetadata
 	sv2Meta := map[string]map[string]*pb.StatMetadata{}
 
-	// Initialize with nil to help check if data is in mem-cache. The nil field
-	// will be populated with empty pb.ObsCollection struct in the end.
 	for _, sv := range statVars {
 		result.Data[sv] = &pb.PlacePointStat{Stat: map[string]*pb.PointStat{}}
 		sv2Meta[sv] = map[string]*pb.StatMetadata{}
@@ -177,6 +175,9 @@ func (s *Server) GetStatCollection(
 			if data == nil {
 				continue
 			}
+			// TODO(shifucun): After measurement method is cleaned up, all the cohorts
+			// should be grouped based on StatVarObs prorperties. Each group can be
+			// merged, and the count should be considered within each group.
 			latestDate := dateCount{}
 			mostCount := dateCount{}
 			for _, cohort := range data.SourceCohorts {
@@ -238,6 +239,15 @@ func (s *Server) GetStatCollection(
 			}
 			cohorts := data.SourceCohorts
 			sort.Sort(CohortByRank(cohorts))
+
+			// Pick the highest ranked cohort from different sources for THIS date.
+			//
+			// NOTE: For Count_Person_Employed (and some other stat var), there are
+			// two source cohorts with different measurement method that are not
+			// compatible (BLSSeasonallyUnadjusted, BLSSeasonallyAdjusted). The logic
+			// here will deterministically pick one cohort for the current date. Since
+			// these observation have same place and date coverage, only the latest
+			// date is processed, hence no need to worry about merging.
 			cohort := cohorts[0]
 
 			// Add the cohort to result.

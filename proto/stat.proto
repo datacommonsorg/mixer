@@ -40,6 +40,7 @@ message PointStat {
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
+  // Keyed by import name.
   map<string, StatMetadata> metadata = 2;
 }
 
