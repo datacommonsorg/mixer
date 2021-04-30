@@ -123,18 +123,6 @@ message GetTriplesResponse {
   string payload = 1;
 }
 
-// Request to get all population/observation information for a place.
-message GetPopObsRequest {
-  // DCID of a place.
-  string dcid = 1;
-}
-
-// Response of GetPopObs.
-message GetPopObsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
 // Represents a property value pair.
 message PropertyValue {
   // The property schema
@@ -149,67 +137,11 @@ message GetPlaceObsRequest {
   // The type of the place.
   string place_type = 1;
 
-  // The type of the Statistical population.
-  string population_type = 2;
-
-  // A list of constraining property values that defines the population.
-  repeated PropertyValue pvs = 3;
+  // The stat var dcid.
+  string stat_var = 2;
 
   // Observation date.
-  string observation_date = 4;
-}
-
-// Response of GetPlaceObs.
-message GetPlaceObsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
-// Request to get certain population for a set of places.
-message GetPopulationsRequest {
-  // DCIDs for a list of places.
-  repeated string dcids = 1;
-
-  // Population type.
-  string population_type = 2;
-
-  // A list of constraining property values that define the population.
-  repeated PropertyValue pvs = 3;
-}
-
-// Response of GetPopulation.
-message GetPopulationsResponse {
-  // The JSON payload.
-  string payload = 1;
-}
-
-// Request to get observation given a list of population and observation
-// properties.
-message GetObservationsRequest {
-  // Population for a list of populations.
-  repeated string dcids = 1;
-
-  // The measured property of the observation.
-  string measured_property = 2;
-
-  // The observation date.
-  string observation_date = 3;
-
-  // The statistics type, like "measured_value", "median_value", etc...
-  // TODO: Change the variable name to 'stat_type' to be consistent.
-  string stats_type = 4;
-
-  // (Optional) Observation period like "P1Y", "P3M" etc...
-  string observation_period = 5;
-
-  // (Opitonal) Measurement method used to get the observation.
-  string measurement_method = 6;
-}
-
-// Response of GetObservation request.
-message GetObservationsResponse {
-  // The JSON payload.
-  string payload = 1;
+  string date = 3;
 }
 
 // Request to get places that are contained in parent places.
@@ -414,85 +346,58 @@ message GetStatVarGroupRequest {
   string place = 1;
 }
 
-// TODO(wsws): Refactor all these "won't persist to cache" fields across caches
-// into a single TemporaryFields message, and clear just that "tmp_data" field
-// before persistence.
-
-// PopObsObservation holds information for an observation for the
-// Population-Observation knowledge graph..
-message PopObsObservation {
-  reserved 21;
-  string id = 1;
-  string type = 2;
-  string measured_prop = 3;
-  double min_value = 4;
-  double max_value = 5;
-  double mean_value = 6;
-  double median_value = 7;
-  double measured_value = 8;
-  double sample_size = 9;
-  double margin_of_error = 10;
-  double std_error = 11;
-  double mean_std_error = 12;
-  double sum_value = 13;
-  double percentile10 = 14;
-  double percentile25 = 15;
-  double percentile75 = 16;
-  double percentile90 = 17;
-  string unit = 18;
-  string measurement_method = 19;
-  string provenance_id = 20;
-  string observation_date = 22;
-  string observation_period = 23;
-  string measurement_result = 24;
-  double growth_rate = 25;
-  string observed_node = 26;  // Won't persist to cache.
-  string comparison_operator = 27;
-  double std_deviation_value = 28;
-  string measurement_denominator = 29;
-  string measurement_qualifier = 30;
-  string scaling_factor = 31;
-  repeated string measurement_variable = 32;
-  string stat_type = 33;              // Won't persist to cache.
-  repeated string stat_var_ids = 34;  // Only set for PopObs cache.
-}
-
-// PopObsPop holds information for a statistical population for the
-// Population-Observation knowledge graph.
-message PopObsPop {
-  reserved 3, 4, 7;
-  string pop_type = 1;
-  int32 num_constraints = 2;
-  repeated PopObsObservation observations = 5;
-  string provenance_id = 6;
-  map<string, string> property_values = 8;
-  string place_id = 9;  // Won't persist to cache.
-  string pop_id = 10;
-  string childhood_location = 11;  // Won't persist to cache.
-  // Observations whose comparedNode is this population.
-  repeated PopObsObservation compared_observations = 12;
-}
-
-// PopObsPlace holds information for a place for the Population-Observation
-// knowledge graph.
-message PopObsPlace {
+// SVOPlace holds basic information about a DC place along with its associated
+// StatVarObservations.
+//
+// NOTE: Equivalent to legacy PopObsPlace.
+message SVOPlace {
   string name = 1;
   string type = 2;
-  map<string, PopObsPop> populations = 3;
-  string place = 4;  // Place DCID.
-  double latitude = 5;
-  double longitude = 6;
-  string kml_coordinates = 7;
-  // Populations whose childhood location is this place.
-  map<string, PopObsPop> childhood_location_populations = 8;
-  repeated PopObsObservation observations = 9;
-  string mid = 10;                           // Won't persist to cache.
-  repeated string contained_in_places = 11;  // Won't persist to cache.
+  string dcid = 3;
+  // All StatVarObservations associated with the place.
+  repeated SVOObservation observations = 4;
+  string provenance_id = 5;
+
+  // Not persisted in cache.
+  message Temp {
+    repeated string child_places = 2;
+    repeated string mids = 3;
+    reserved 1;
+  }
+  Temp temp = 6;
 }
 
-// PopObsCollection holds information for multiple PopObsPlace instances.
-message PopObsCollection {
-  repeated PopObsPlace places = 1;
+// Stores a StatVarObservation node.
+//
+// NOTE: Equivalent to legacy PopObsObservation.
+message SVOObservation {
+  string dcid = 1;
+  string observation_date = 2;
+  string observation_period = 3;
+  string measurement_method = 4;
+  string unit = 5;
+  string scaling_factor = 6;
+  string provenance_id = 7;
+
+  oneof val {
+    // Represents value for statType == "measurementResult"
+    string str_value = 8;
+    // Represents value for statType != "measurementResult"
+    double dbl_value = 9;
+  }
+
+  // Not persisted in cache.
+  message Temp {
+    string observation_about = 1;
+    string variable_measured = 2;
+    string import_name = 3;
+  }
+  Temp temp = 10;
+}
+
+// SVOCollection holds information for multiple SVOPlace instances.
+message SVOCollection {
+  repeated SVOPlace places = 1;
 }
 
 // Basic info for an entity (subject or object).
@@ -639,25 +544,6 @@ service Mixer {
     };
   }
 
-  // Get populations for a list of places, given the population type and
-  // constraining property values.
-  rpc GetPopulations(GetPopulationsRequest) returns (GetPopulationsResponse) {
-    option (google.api.http) = {
-      post: "/node/populations"
-      body: "*"
-    };
-  }
-
-  // Get observations for a list of population, given the observation
-  // constraints.
-  rpc GetObservations(GetObservationsRequest)
-      returns (GetObservationsResponse) {
-    option (google.api.http) = {
-      post: "/node/observations"
-      body: "*"
-    };
-  }
-
   // Get places contained in parent places.
   rpc GetPlacesIn(GetPlacesInRequest) returns (GetPlacesInResponse) {
     option (google.api.http) = {
@@ -669,16 +555,9 @@ service Mixer {
     };
   }
 
-  // Get population and observation data for a place.
-  rpc GetPopObs(GetPopObsRequest) returns (GetPopObsResponse) {
-    option (google.api.http) = {
-      get: "/bulk/pop-obs"
-    };
-  }
-
   // Get observation data for a list of places, given place type, population
   // type, and population constraining properties.
-  rpc GetPlaceObs(GetPlaceObsRequest) returns (GetPlaceObsResponse) {
+  rpc GetPlaceObs(GetPlaceObsRequest) returns (SVOCollection) {
     option (google.api.http) = {
       post: "/bulk/place-obs"
       body: "*"

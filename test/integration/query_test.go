@@ -27,22 +27,10 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-type Mode int
-
-const (
-	PopObs Mode = iota
-	SvObs
-	General
-)
-
 func TestQuery(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 	client, err := setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	clientStatVar, err := setupStatVar()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -54,7 +42,6 @@ func TestQuery(t *testing.T) {
 	for _, c := range []struct {
 		sparql     string
 		goldenFile string
-		mode       Mode
 	}{
 		{
 			`BASE <http://schema.org/>
@@ -69,7 +56,6 @@ func TestQuery(t *testing.T) {
 			}
 			LIMIT 10`,
 			"weather1.json",
-			PopObs,
 		},
 		{
 			`
@@ -85,31 +71,10 @@ func TestQuery(t *testing.T) {
 			ORDER BY ASC(?date)
 			`,
 			"weather2.json",
-			PopObs,
-		},
-		{
-			`
-			BASE <http://schema.org/>
-			SELECT  ?pop ?Unemployment
-			WHERE {
-				?pop typeOf StatisticalPopulation .
-				?o typeOf Observation .
-				?pop dcid ("dc/p/qep2q2lcc3rcc" "dc/p/gmw3cn8tmsnth" "dc/p/92cxc027krdcd") .
-				?o measuredProperty unemploymentRate .
-				?o measurementMethod BLSSeasonallyUnadjusted .
-				?o observationPeriod P1Y .
-				?o observedNode ?pop .
-				?o measuredValue ?Unemployment
-			}
-			ORDER BY DESC(?Unemployment)
-			LIMIT 10`,
-			"unemployment.json",
-			PopObs,
 		},
 		{
 			`SELECT ?a WHERE {?a typeOf RaceCodeEnum} ORDER BY ASC(?a)`,
 			"race_code_enum.json",
-			General,
 		},
 		{
 			`SELECT ?name
@@ -119,22 +84,6 @@ func TestQuery(t *testing.T) {
 				?state name ?name
 			}`,
 			"name.json",
-			General,
-		},
-		{
-			`SELECT ?place ?value
-			WHERE {
-			 ?observation typeOf Observation .
-			 ?observation statisticalVariable Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita .
-			 ?observation observedNodeLocation ?place .
-			 ?observation observationDate "2000" .
-			 ?observation measuredValue ?value .
-			 ?place typeOf Country .
-			}
-			ORDER BY ASC (?place)
-			LIMIT 10`,
-			"statvar-obs.json",
-			PopObs,
 		},
 		{
 			`SELECT ?place ?value
@@ -149,44 +98,30 @@ func TestQuery(t *testing.T) {
 			ORDER BY ASC (?place)
 			LIMIT 10`,
 			"statvar-obs.json",
-			SvObs,
 		},
 	} {
-		for index, client := range []pb.MixerClient{client, clientStatVar} {
-			isPopObsMode := (index == 0)
+		req := &pb.QueryRequest{Sparql: c.sparql}
+		resp, err := client.Query(ctx, req)
+		if err != nil {
+			t.Errorf("could not Query: %v", err)
+			continue
+		}
 
-			if isPopObsMode && c.mode == SvObs {
-				continue
-			}
-			if !isPopObsMode && c.mode == PopObs {
-				continue
-			}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(resp, goldenFile)
+			continue
+		}
 
-			req := &pb.QueryRequest{Sparql: c.sparql}
-			resp, err := client.Query(ctx, req)
-			if err != nil {
-				t.Errorf("could not Query: %v", err)
-				continue
-			}
-
-			goldenFile := path.Join(goldenPath, c.goldenFile)
-			if generateGolden {
-				if !(c.mode == General && !isPopObsMode) {
-					updateGolden(resp, goldenFile)
-					continue
-				}
-			}
-
-			var expected pb.QueryResponse
-			file, _ := ioutil.ReadFile(goldenFile)
-			if err := protojson.Unmarshal(file, &expected); err != nil {
-				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-				continue
-			}
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
-				continue
-			}
+		var expected pb.QueryResponse
+		file, _ := ioutil.ReadFile(goldenFile)
+		if err := protojson.Unmarshal(file, &expected); err != nil {
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+			continue
+		}
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+			t.Errorf("payload got diff: %v", diff)
+			continue
 		}
 	}
 }

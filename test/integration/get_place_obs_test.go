@@ -19,82 +19,69 @@ import (
 	"io/ioutil"
 	"path"
 	"runtime"
-	"sort"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-type byID []*pb.PopObsObservation
-
-func (a byID) Len() int           { return len(a) }
-func (a byID) Less(i, j int) bool { return a[i].GetId() < a[j].GetId() }
-func (a byID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-
-func TestGetPopObs(t *testing.T) {
+func TestGetPlaceObs(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	_, filename, _, _ := runtime.Caller(0)
-
-	// This tests merging the branch cache into the final results.
 	client, err := setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-
+	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_pop_obs")
+		path.Dir(filename), "golden_response/staging/get_place_obs")
+
 	for _, c := range []struct {
-		dcid       string
+		placeType  string
+		statVar    string
+		date       string
 		goldenFile string
 	}{
 		{
-			"wikidataId/Q649",
-			"moscow.json",
+			"State",
+			"Count_Person",
+			"2019",
+			"state.json",
 		},
 		{
-			"Class",
-			"empty.json",
+			"County",
+			"Count_Person_Male",
+			"2018",
+			"county.json",
 		},
 	} {
-		resp, err := client.GetPopObs(ctx, &pb.GetPopObsRequest{
-			Dcid: c.dcid,
-		})
+		req := &pb.GetPlaceObsRequest{
+			PlaceType: c.placeType,
+			StatVar:   c.statVar,
+			Date:      c.date,
+		}
+		result, err := client.GetPlaceObs(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetPopObs: %s", err)
-			continue
-		}
-		jsonRaw, err := util.UnzipAndDecode(resp.GetPayload())
-		if err != nil {
-			t.Errorf("could not UnzipAndDecode: %s", err)
-		}
-		var result pb.PopObsPlace
-		err = protojson.Unmarshal(jsonRaw, &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal raw json %v", err)
-			continue
-		}
-		for _, popObsPop := range result.Populations {
-			sort.Sort(byID(popObsPop.GetObservations()))
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if generateGolden {
-			updateGolden(&result, goldenFile)
-			continue
-		}
-		var expected pb.PopObsPlace
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %v", err)
+			t.Errorf("could not GetPlaceObs: %s", err)
 			continue
 		}
 
-		if diff := cmp.Diff(&result, &expected, protocmp.Transform()); diff != "" {
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateProtoGolden(result, goldenFile)
+			continue
+		}
+
+		var expected pb.SVOCollection
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = protojson.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+			continue
+		}
+		if diff := cmp.Diff(result, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

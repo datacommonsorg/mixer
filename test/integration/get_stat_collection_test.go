@@ -35,10 +35,6 @@ func TestGetStatCollection(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-	clientStatVar, err := setupStatVar()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
 
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
@@ -73,37 +69,32 @@ func TestGetStatCollection(t *testing.T) {
 			"USA_City_2016.json",
 		},
 	} {
-		for index, client := range []pb.MixerClient{client, clientStatVar} {
-			resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{
-				ParentPlace: c.parentPlace,
-				ChildType:   c.childType,
-				StatVars:    c.statVar,
-				Date:        c.date,
-			})
-			if err != nil {
-				t.Errorf("could not GetStatCollections: %s", err)
-				continue
-			}
-			goldenFile := path.Join(goldenPath, c.goldenFile)
-			isPopObsMode := (index == 0)
-			if generateGolden {
-				if isPopObsMode {
-					updateGolden(resp, goldenFile)
-				}
-				continue
-			}
-			var expected pb.GetStatCollectionResponse
-			file, _ := ioutil.ReadFile(goldenFile)
-			err = protojson.Unmarshal(file, &expected)
-			if err != nil {
-				t.Errorf("Can not Unmarshal golden file")
-				continue
-			}
+		resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{
+			ParentPlace: c.parentPlace,
+			ChildType:   c.childType,
+			StatVars:    c.statVar,
+			Date:        c.date,
+		})
+		if err != nil {
+			t.Errorf("could not GetStatCollections: %s", err)
+			continue
+		}
+		goldenFile := path.Join(goldenPath, c.goldenFile)
+		if generateGolden {
+			updateGolden(resp, goldenFile)
+			continue
+		}
+		var expected pb.GetStatCollectionResponse
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = protojson.Unmarshal(file, &expected)
+		if err != nil {
+			t.Errorf("Can not Unmarshal golden file")
+			continue
+		}
 
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
-				continue
-			}
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+			t.Errorf("payload got diff: %v", diff)
+			continue
 		}
 	}
 }

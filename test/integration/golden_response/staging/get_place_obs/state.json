@@ -1,0 +1,1211 @@
+{
+  "places": [
+    {
+      "name": "Alabama",
+      "dcid": "geoId/01",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 4903190
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 4903185
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 4876250
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 4903185
+        }
+      ]
+    },
+    {
+      "name": "Alaska",
+      "dcid": "geoId/02",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 731545
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 731545
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 737068
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 731545
+        }
+      ]
+    },
+    {
+      "name": "Arizona",
+      "dcid": "geoId/04",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 7278720
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 7278717
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 7050299
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 7278717
+        }
+      ]
+    },
+    {
+      "name": "Arkansas",
+      "dcid": "geoId/05",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 3017800
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 3017804
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 2999370
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 3017804
+        }
+      ]
+    },
+    {
+      "name": "California",
+      "dcid": "geoId/06",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 39512200
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 39512223
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 39283497
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 39512223
+        }
+      ]
+    },
+    {
+      "name": "Colorado",
+      "dcid": "geoId/08",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 5758740
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 5758736
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 5610349
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 5758736
+        }
+      ]
+    },
+    {
+      "name": "Connecticut",
+      "dcid": "geoId/09",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 3565290
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 3565287
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 3575074
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 3565287
+        }
+      ]
+    },
+    {
+      "name": "Delaware",
+      "dcid": "geoId/10",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 973764
+        },
+        {
+          "measurementMethod": "HumanCuratedStats",
+          "dblValue": 973764
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 973764
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 957248
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 973764
+        }
+      ]
+    },
+    {
+      "name": "District of Columbia",
+      "dcid": "geoId/11",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 705749
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 692683
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 705749
+        }
+      ]
+    },
+    {
+      "name": "Florida",
+      "dcid": "geoId/12",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 21477700
+        },
+        {
+          "measurementMethod": "HumanCuratedStats",
+          "dblValue": 21477737
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 21477737
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 20901636
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 21477737
+        }
+      ]
+    },
+    {
+      "name": "Georgia",
+      "dcid": "geoId/13",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 10617400
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 10617423
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 10403847
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 10617423
+        }
+      ]
+    },
+    {
+      "name": "Hawaii",
+      "dcid": "geoId/15",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1415870
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1415872
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1422094
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1415872
+        }
+      ]
+    },
+    {
+      "name": "Idaho",
+      "dcid": "geoId/16",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1787070
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1787065
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1717750
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1787065
+        }
+      ]
+    },
+    {
+      "name": "Illinois",
+      "dcid": "geoId/17",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 12671800
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 12671821
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 12770631
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 12671821
+        }
+      ]
+    },
+    {
+      "name": "Indiana",
+      "dcid": "geoId/18",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 6732220
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 6732219
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 6665703
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 6732219
+        }
+      ]
+    },
+    {
+      "name": "Iowa",
+      "dcid": "geoId/19",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 3155070
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 3155070
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 3139508
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 3155070
+        }
+      ]
+    },
+    {
+      "name": "Kansas",
+      "dcid": "geoId/20",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 2913310
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 2913314
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 2910652
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 2913314
+        }
+      ]
+    },
+    {
+      "name": "Kentucky",
+      "dcid": "geoId/21",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 4467670
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 4467673
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 4449052
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 4467673
+        }
+      ]
+    },
+    {
+      "name": "Louisiana",
+      "dcid": "geoId/22",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 4648790
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 4648794
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 4664362
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 4648794
+        }
+      ]
+    },
+    {
+      "name": "Maine",
+      "dcid": "geoId/23",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1344210
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1344212
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1335492
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1344212
+        }
+      ]
+    },
+    {
+      "name": "Maryland",
+      "dcid": "geoId/24",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 6045680
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 6045680
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 6018848
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 6045680
+        }
+      ]
+    },
+    {
+      "name": "Massachusetts",
+      "dcid": "geoId/25",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 6892500
+        },
+        {
+          "measurementMethod": "HumanCuratedStats",
+          "dblValue": 6892503
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 6892503
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 6850553
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 6892503
+        }
+      ]
+    },
+    {
+      "name": "Michigan",
+      "dcid": "geoId/26",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 9986860
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 9986857
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 9965265
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 9986857
+        }
+      ]
+    },
+    {
+      "name": "Minnesota",
+      "dcid": "geoId/27",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 5639630
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 5639632
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 5563378
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 5639632
+        }
+      ]
+    },
+    {
+      "name": "Mississippi",
+      "dcid": "geoId/28",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 2976150
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 2976149
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 2984418
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 2976149
+        }
+      ]
+    },
+    {
+      "name": "Missouri",
+      "dcid": "geoId/29",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 6137430
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 6137428
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 6104910
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 6137428
+        }
+      ]
+    },
+    {
+      "name": "Montana",
+      "dcid": "geoId/30",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1068780
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1068778
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1050649
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1068778
+        }
+      ]
+    },
+    {
+      "name": "Nebraska",
+      "dcid": "geoId/31",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1934410
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1934408
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1914571
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1934408
+        }
+      ]
+    },
+    {
+      "name": "Nevada",
+      "dcid": "geoId/32",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 3080160
+        },
+        {
+          "measurementMethod": "HumanCuratedStats",
+          "dblValue": 3080156
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 3080156
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 2972382
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 3080156
+        }
+      ]
+    },
+    {
+      "name": "New Hampshire",
+      "dcid": "geoId/33",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1359710
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1359711
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1348124
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1359711
+        }
+      ]
+    },
+    {
+      "name": "New Jersey",
+      "dcid": "geoId/34",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 8882190
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 8882190
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 8878503
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 8882190
+        }
+      ]
+    },
+    {
+      "name": "New Mexico",
+      "dcid": "geoId/35",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 2096830
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 2096829
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 2092454
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 2096829
+        }
+      ]
+    },
+    {
+      "name": "New York",
+      "dcid": "geoId/36",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 19453600
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 19453561
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 19572319
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 19453561
+        }
+      ]
+    },
+    {
+      "name": "North Carolina",
+      "dcid": "geoId/37",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 10488100
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 10488084
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 10264876
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 10488084
+        }
+      ]
+    },
+    {
+      "name": "North Dakota",
+      "dcid": "geoId/38",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 762062
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 762062
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 756717
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 762062
+        }
+      ]
+    },
+    {
+      "name": "Ohio",
+      "dcid": "geoId/39",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 11689100
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 11689100
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 11655397
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 11689100
+        }
+      ]
+    },
+    {
+      "name": "Oklahoma",
+      "dcid": "geoId/40",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 3956970
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 3956971
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 3932870
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 3956971
+        }
+      ]
+    },
+    {
+      "name": "Oregon",
+      "dcid": "geoId/41",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 4217740
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 4217737
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 4129803
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 4217737
+        }
+      ]
+    },
+    {
+      "name": "Pennsylvania",
+      "dcid": "geoId/42",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 12802000
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 12801989
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 12791530
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 12801989
+        }
+      ]
+    },
+    {
+      "name": "Rhode Island",
+      "dcid": "geoId/44",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1059360
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1059361
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1057231
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1059361
+        }
+      ]
+    },
+    {
+      "name": "South Carolina",
+      "dcid": "geoId/45",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 5148710
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 5148714
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 5020806
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 5148714
+        }
+      ]
+    },
+    {
+      "name": "South Dakota",
+      "dcid": "geoId/46",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 884659
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 884659
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 870638
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 884659
+        }
+      ]
+    },
+    {
+      "name": "Tennessee",
+      "dcid": "geoId/47",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 6829170
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 6829174
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 6709356
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 6829174
+        }
+      ]
+    },
+    {
+      "name": "Texas",
+      "dcid": "geoId/48",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 28995900
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 28995881
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 28260856
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 28995881
+        }
+      ]
+    },
+    {
+      "name": "Utah",
+      "dcid": "geoId/49",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 3205960
+        },
+        {
+          "measurementMethod": "HumanCuratedStats",
+          "dblValue": 3205958
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 3205958
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 3096848
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 3205958
+        }
+      ]
+    },
+    {
+      "name": "Vermont",
+      "dcid": "geoId/50",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 623989
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 623989
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 624313
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 623989
+        }
+      ]
+    },
+    {
+      "name": "Virginia",
+      "dcid": "geoId/51",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 8535520
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 8535519
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 8454463
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 8535519
+        }
+      ]
+    },
+    {
+      "name": "Washington",
+      "dcid": "geoId/53",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 7614890
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 7614893
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 7404107
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 7614893
+        }
+      ]
+    },
+    {
+      "name": "West Virginia",
+      "dcid": "geoId/54",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 1792150
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 1792147
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 1817305
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 1792147
+        }
+      ]
+    },
+    {
+      "name": "Wisconsin",
+      "dcid": "geoId/55",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 5822430
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 5822434
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 5790716
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 5822434
+        }
+      ]
+    },
+    {
+      "name": "Wyoming",
+      "dcid": "geoId/56",
+      "observations": [
+        {
+          "observationPeriod": "P1Y",
+          "measurementMethod": "OECDRegionalStatistics",
+          "dblValue": 578759
+        },
+        {
+          "measurementMethod": "HumanCuratedStats",
+          "dblValue": 578759
+        },
+        {
+          "measurementMethod": "CensusPEPSurvey",
+          "dblValue": 578759
+        },
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 581024
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 578759
+        }
+      ]
+    },
+    {
+      "name": "Puerto Rico",
+      "dcid": "geoId/72",
+      "observations": [
+        {
+          "measurementMethod": "CensusACS5yrSurvey",
+          "dblValue": 3318447
+        },
+        {
+          "measurementMethod": "CensusACS1yrSurvey",
+          "dblValue": 3193694
+        }
+      ]
+    }
+  ]
+}

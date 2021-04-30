@@ -1,7 +1,6 @@
 Node: E:EncodeBedLine->E1
 typeOf: BedLine
 dcid: C:EncodeBedLine->id
-isPublic: C:EncodeBedLine->is_public
 fromBedFile: E:EncodeBedLine->E2
 chromosome: C:EncodeBedLine->chromosome
 chromosomeStart: C:EncodeBedLine->chromosome_start

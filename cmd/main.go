@@ -44,16 +44,16 @@ var (
 	port          = flag.Int("port", 12345, "Port on which to run the server.")
 	useALTS       = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	bigqueryOnly  = flag.Bool("bigquery_only", false, "The service only serves sparql query")
-	svobsMode     = flag.Bool("svobs_mode", false, "Use new storage that is built on top of StatVar/StatVarObs instead of StatPop/Obs")
 	schemaPath    = flag.String("schema_path", "/translator/mapping", "The directory that contains the schema mapping files")
 )
 
 const (
-	baseBtInstance         = "prophet-cache"
-	branchBtInstance       = "prophet-branch-cache"
-	branchCacheVersionFile = "latest_branch_cache_version.txt"
-	pubsubTopic            = "branch-cache-reload"
-	subscriberPrefix       = "mixer-subscriber-"
+	baseBtInstance           = "prophet-cache"
+	branchBtInstance         = "prophet-branch-cache"
+	branchCacheVersionFile   = "latest_branch_cache_version.txt"
+	pubsubTopic              = "branch-cache-reload"
+	subscriberPrefix         = "mixer-subscriber-"
+	branchCacheVersionBucket = "datcom-control"
 )
 
 func main() {
@@ -73,13 +73,6 @@ func main() {
 		if err != nil {
 			log.Printf("Failed to start profiler: %v", err)
 		}
-	}
-
-	var branchCacheVersionBucket string
-	if *svobsMode {
-		branchCacheVersionBucket = "datcom-control"
-	} else {
-		branchCacheVersionBucket = "prophet_cache"
 	}
 
 	// BigQuery.
@@ -109,7 +102,7 @@ func main() {
 	}
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath, *svobsMode)
+	metadata, err := server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}

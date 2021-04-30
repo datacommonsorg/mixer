@@ -25,235 +25,30 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetPopObs(t *testing.T) {
-	data := map[string]string{}
-	dcid := "geoId/06"
-	key := util.BtPopObsPrefix + dcid
-	btRow := []byte(`{
-		"name": "Santa Clara",
-		"populations": {
-			"dc/p/zzlmxxtp1el87": {
-				"popType": "Household",
-				"numConstraints": 3,
-				"propertyValues": {
-					"householderAge": "Years45To64",
-					"householderRace": "AsianAlone",
-					"income": "USDollar35000To39999"
-				},
-				"observations": [
-					{
-						"marginOfError": 274,
-						"measuredProp": "count",
-						"measuredValue": 1352,
-						"measurementMethod": "CensusACS5yrSurvey",
-						"observationDate": "2017"
-					},
-					{
-						"marginOfError": 226,
-						"measuredProp": "count",
-						"measuredValue": 1388,
-						"measurementMethod": "CensusACS5yrSurvey",
-						"observationDate": "2013"
-					}
-				]
-			}
-		},
-		"observations": [
-			{
-				"meanValue": 4.1583,
-				"measuredProp": "particulateMatter25",
-				"measurementMethod": "CDCHealthTracking",
-				"observationDate": "2014-04-04",
-				"observedNode": "geoId/06085"
-			},
-			{
-				"meanValue": 9.4461,
-				"measuredProp": "particulateMatter25",
-				"measurementMethod": "CDCHealthTracking",
-				"observationDate": "2014-03-20",
-				"observedNode": "geoId/06085"
-			}
-		]
-	}`)
-
-	tableValue, err := util.ZipAndEncode(btRow)
-	if err != nil {
-		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
-	}
-	data[key] = tableValue
-	// Setup bigtable
-	btTable1, err := SetupBigtable(context.Background(), data)
-	if err != nil {
-		t.Errorf("SetupBigtable(...) = %v", err)
-	}
-	btTable2, err := SetupBigtable(context.Background(), map[string]string{})
-	if err != nil {
-		t.Errorf("SetupBigtable(...) = %v", err)
-	}
-	// Test
-	s := NewServer(nil, btTable1, btTable2, nil)
-	in := &pb.GetPopObsRequest{
-		Dcid: dcid,
-	}
-	out, err := s.GetPopObs(context.Background(), in)
-	if err != nil {
-		t.Errorf("GetPopObs() got err: %v", err)
-	}
-	jsonRaw, _ := util.UnzipAndDecode(out.GetPayload())
-	popObsCache := &pb.PopObsPlace{}
-	err = protojson.Unmarshal(jsonRaw, popObsCache)
-	if err != nil {
-		t.Errorf(("Unmarshal json raw failed"))
-	}
-	expectedCache := &pb.PopObsPlace{}
-	err = protojson.Unmarshal(btRow, expectedCache)
-	if err != nil {
-		t.Errorf(("Unmarshal btRow raw failed"))
-	}
-	if diff := cmp.Diff(popObsCache, expectedCache, protocmp.Transform()); diff != "" {
-		t.Errorf("GetPopObs() got diff: %v", diff)
-	}
-}
-
-func TestGetPopObsCacheMerge(t *testing.T) {
-	dcid := "geoId/06"
-	key := util.BtPopObsPrefix + dcid
-
-	// Setup bigtable
-	baseData := map[string]string{}
-	btRow := []byte(`{
-		"name": "Santa Clara",
-		"populations": {
-			"dc/p/abcxyz": {
-				"popType": "Household",
-				"numConstraints": 3,
-				"propertyValues": {
-					"householderAge": "Years45To64",
-					"householderRace": "AsianAlone",
-					"income": "USDollar35000To39999"
-				},
-				"observations": [
-					{
-						"marginOfError": 226,
-						"measuredProp": "count",
-						"measuredValue": 1388,
-						"measurementMethod": "CensusACS5yrSurvey",
-						"observationDate": "2013"
-					}
-				]
-			}
-		}
-	}`)
-	tableValue, err := util.ZipAndEncode(btRow)
-	if err != nil {
-		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
-	}
-	baseData[key] = tableValue
-	baseTable, err := SetupBigtable(context.Background(), baseData)
-	if err != nil {
-		t.Errorf("SetupBigtable(...) = %v", err)
-	}
-
-	// branch cache data. Have observation on newer date.
-	branchData := map[string]string{}
-	branchRow := []byte(`{
-		"name": "Santa Clara",
-		"populations": {
-			"dc/p/abcxyz": {
-				"popType": "Household",
-				"numConstraints": 3,
-				"propertyValues": {
-					"householderAge": "Years45To64",
-					"householderRace": "AsianAlone",
-					"income": "USDollar35000To39999"
-				},
-				"observations": [
-					{
-						"marginOfError": 274,
-						"measuredProp": "count",
-						"measuredValue": 1352,
-						"measurementMethod": "CensusACS5yrSurvey",
-						"observationDate": "2017"
-					},
-					{
-						"marginOfError": 226,
-						"measuredProp": "count",
-						"measuredValue": 1388,
-						"measurementMethod": "CensusACS5yrSurvey",
-						"observationDate": "2013"
-					}
-				]
-			}
-		}
-	}`)
-	branchCacheValue, err := util.ZipAndEncode(branchRow)
-	if err != nil {
-		t.Errorf("util.ZipAndEncode(%+v) = %v", branchRow, err)
-	}
-	branchData[key] = branchCacheValue
-	branchTable, err := SetupBigtable(context.Background(), branchData)
-	if err != nil {
-		t.Errorf("SetupBigtable(...) = %v", err)
-	}
-
-	// Test
-	s := NewServer(nil, baseTable, branchTable, nil)
-
-	var (
-		resultProto, expectProto pb.PopObsPlace
-	)
-
-	// Merge base cache and branch cache.
-	in := &pb.GetPopObsRequest{
-		Dcid: dcid,
-	}
-	out, err := s.GetPopObs(context.Background(), in)
-	if err != nil {
-		t.Errorf("GetPopObs() got error %v", err)
-	}
-
-	if tmp, err := util.UnzipAndDecode(out.GetPayload()); err == nil {
-		err = protojson.Unmarshal(tmp, &resultProto)
-		if err != nil {
-			t.Errorf("Unmarshal result got error %v", err)
-			return
-		}
-	}
-	err = protojson.Unmarshal(branchRow, &expectProto)
-	if err != nil {
-		t.Errorf("Unmarshal branchCache got err %v", err)
-	}
-	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
-		t.Errorf("GetPopObs() got diff %+v", diff)
-	}
-}
-
 func TestGetPlaceObs(t *testing.T) {
 	data := map[string]string{}
-	key := util.BtPlaceObsPrefix + "City^2013^Person^gender^Male"
+	key := util.BtPlaceObsPrefix + "City^Count_Person_Male^2013"
 	btRow := []byte(`{
-		"places":[
+		"places": [
 			{
-				"name":"Stony Prairie CDP",
-				"observations":[
+				"name": "Webster County",
+				"dcid": "geoId/12345",
+				"observations": [
 					{
-						"measuredProp":"count",
-						"measuredValue":5000,
-						"measurementMethod":"CensusACS5yrSurvey"
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 4199
 					}
-				],
-				"place":"geoId/3974832"
+				]
 			},
 			{
-				"name":"Americus",
-				"observations":[
+				"name": "Nobles County",
+				"dcid": "geoId/22222",
+				"observations": [
 					{
-						"measuredProp":"count",
-						"measuredValue":6000,
-						"measurementMethod":"CensusACS5yrSurvey"
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 11236
 					}
-				],
-				"place":"geoId/2001675"
+				]
 			}
 		]
 	}`)
@@ -273,79 +68,94 @@ func TestGetPlaceObs(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
-	var (
-		resultProto, expectProto pb.PopObsCollection
-	)
 	s := NewServer(nil, btTable1, btTable2, nil)
 
 	// Base cache only.
-	in := &pb.GetPlaceObsRequest{
-		PlaceType:       "City",
-		PopulationType:  "Person",
-		ObservationDate: "2013",
-		Pvs: []*pb.PropertyValue{
-			{Property: "gender", Value: "Male"},
-		},
+	req := &pb.GetPlaceObsRequest{
+		PlaceType: "City",
+		StatVar:   "Count_Person_Male",
+		Date:      "2013",
 	}
-	out, err := s.GetPlaceObs(context.Background(), in)
+	result, err := s.GetPlaceObs(context.Background(), req)
 	if err != nil {
 		t.Errorf("GetPlaceObs get error %v", err)
 	}
 
-	if diff := cmp.Diff(out.GetPayload(), tableValue); diff != "" {
-		t.Errorf("GetPlaceObs() got diff: %v", diff)
-	}
-	tmp, err := util.UnzipAndDecode(out.GetPayload())
+	var expected pb.SVOCollection
+	err = protojson.Unmarshal(btRow, &expected)
 	if err != nil {
-		t.Errorf("UnzipAndDecode got error %v", err)
-	}
-	if err = protojson.Unmarshal(tmp, &resultProto); err != nil {
-		t.Errorf("Unmarshal result proto got error %v", err)
-	}
-	if err = protojson.Unmarshal(btRow, &expectProto); err != nil {
-		t.Errorf("Unmarshal expected proto got error %v", err)
+		t.Errorf("Unmarshell expected got error %v", err)
+		return
 	}
 
-	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
+	if diff := cmp.Diff(result, &expected, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPlaceObs() got diff %+v", diff)
 	}
 }
 
 func TestGetPlaceObsCacheMerge(t *testing.T) {
-	key := util.BtPlaceObsPrefix + "City^2013^Person^gender^Male"
+	key := util.BtPlaceObsPrefix + "City^Count_Person_Male^2013"
 
 	// No base data
 	baseData := map[string]string{}
+	baseRow := []byte(`{
+		"places": [
+			{
+				"name": "Webster County",
+				"dcid": "geoId/12345",
+				"observations": [
+					{
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 4199
+					}
+				]
+			},
+			{
+				"name": "Nobles County",
+				"dcid": "geoId/20000",
+				"observations": [
+					{
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 11236
+					}
+				]
+			}
+		]
+	}`)
+	baseValue, err := util.ZipAndEncode(baseRow)
+	if err != nil {
+		t.Errorf("util.ZipAndEncode(%+v) = %v", baseRow, err)
+	}
+	baseData[key] = baseValue
+
 	baseTable, err := SetupBigtable(context.Background(), baseData)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
-	// branch cache data. Have observation on newer date.
+	// branch cache data. Have observation on more entries.
 	branchData := map[string]string{}
 	branchRow := []byte(`{
-		"places":[
+		"places": [
 			{
-				"name":"Stony Prairie CDP",
-				"observations":[
+				"name": "Lincoln Parish",
+				"dcid": "geoId/22049",
+				"observations": [
 					{
-						"measuredProp":"count",
-						"measuredValue":5000,
-						"measurementMethod":"CensusACS5yrSurvey"
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 23041
 					}
-				],
-				"place":"geoId/3974832"
+				]
 			},
 			{
-				"name":"Americus",
-				"observations":[
+				"name": "Jackson Parish",
+				"dcid": "geoId/22061",
+				"observations": [
 					{
-						"measuredProp":"count",
-						"measuredValue":6000,
-						"measurementMethod":"CensusACS5yrSurvey"
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 8080
 					}
-				],
-				"place":"geoId/2001675"
+				]
 			}
 		]
 	}`)
@@ -362,57 +172,70 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 
 	// Test
 	s := NewServer(nil, baseTable, branchTable, nil)
-	in := &pb.GetPlaceObsRequest{
-		PlaceType:       "City",
-		PopulationType:  "Person",
-		ObservationDate: "2013",
-		Pvs: []*pb.PropertyValue{
-			{Property: "gender", Value: "Male"},
-		},
+	req := &pb.GetPlaceObsRequest{
+		PlaceType: "City",
+		StatVar:   "Count_Person_Male",
+		Date:      "2013",
 	}
-	out, err := s.GetPlaceObs(context.Background(), in)
+	result, err := s.GetPlaceObs(context.Background(), req)
 	if err != nil {
 		t.Errorf("GetPlaceObs got err %v", err)
 		return
 	}
 
-	var resultProto, expectProto pb.PopObsCollection
-	tmp, err := util.UnzipAndDecode(out.GetPayload())
+	expectedByte := []byte(`{
+  	"places": [
+			{
+				"name": "Webster County",
+				"dcid": "geoId/12345",
+				"observations": [
+					{
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 4199
+					}
+				]
+			},
+			{
+				"name": "Nobles County",
+				"dcid": "geoId/20000",
+				"observations": [
+					{
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 11236
+					}
+				]
+			},
+			{
+				"name": "Lincoln Parish",
+				"dcid": "geoId/22049",
+				"observations": [
+					{
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 23041
+					}
+				]
+			},
+			{
+				"name": "Jackson Parish",
+				"dcid": "geoId/22061",
+				"observations": [
+					{
+						"measurementMethod": "CensusACS5yrSurvey",
+						"dblValue": 8080
+					}
+				]
+			}
+		]
+	}`)
+
+	var expected pb.SVOCollection
+	err = protojson.Unmarshal(expectedByte, &expected)
 	if err != nil {
-		t.Errorf("UnzipAndDecode got err %v", err)
-	}
-	if err = protojson.Unmarshal(tmp, &resultProto); err != nil {
-		t.Errorf("Unmarshal result proto got error %v", err)
-	}
-	if err = protojson.Unmarshal(branchRow, &expectProto); err != nil {
-		t.Errorf("Unmarshal expected proto got error %v", err)
+		t.Errorf("Unmarshell expected got error %v", err)
+		return
 	}
 
-	if diff := cmp.Diff(&resultProto, &expectProto, protocmp.Transform()); diff != "" {
+	if diff := cmp.Diff(result, &expected, protocmp.Transform()); diff != "" {
 		t.Errorf("GetPlaceObs() got diff %+v", diff)
-	}
-}
-
-func TestIsterateSortPVs(t *testing.T) {
-	var pvs = []*pb.PropertyValue{
-		{
-			Property: "gender",
-			Value:    "Male",
-		},
-		{
-			Property: "age",
-			Value:    "Years85Onwards",
-		},
-	}
-	got := "^populationType"
-	if len(pvs) > 0 {
-		iterateSortPVs(pvs, func(i int, p, v string) {
-			got += ("^" + p + "^" + v)
-		})
-	}
-
-	want := "^populationType^age^Years85Onwards^gender^Male"
-	if got != want {
-		t.Errorf("iterateSortPVs() = %s, want %s", got, want)
 	}
 }

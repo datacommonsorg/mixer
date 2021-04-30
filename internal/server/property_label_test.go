@@ -25,7 +25,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetPropertyLabels(t *testing.T) {
+func TestMerge(t *testing.T) {
 	ctx := context.Background()
 
 	for _, d := range []struct {

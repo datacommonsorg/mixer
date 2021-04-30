@@ -18,7 +18,7 @@
 
 # "d/0/country/USA"
 
-export BT=$(head -1 ../deploy/storage-svobs/bigtable.version)
+export BT=$(head -1 ../deploy/storage/bigtable.version)
 export PROJECT=datcom-store
 echo "$BT"
 echo "$PROJECT"

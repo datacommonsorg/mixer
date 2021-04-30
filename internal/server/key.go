@@ -16,7 +16,6 @@ package server
 
 import (
 	"fmt"
-	"sort"
 	"strings"
 
 	"cloud.google.com/go/bigtable"
@@ -26,25 +25,6 @@ import (
 var propValkeyPrefix = map[bool]string{
 	true:  util.BtOutPropValPrefix,
 	false: util.BtInPropValPrefix,
-}
-
-func buildStatsKeySuffix(statsVar *StatisticalVariable) string {
-	keySuffix := strings.Join([]string{
-		statsVar.MeasuredProp,
-		statsVar.StatType,
-		statsVar.MeasurementDenominator,
-		statsVar.MeasurementQualifier,
-		statsVar.PopType},
-		"^")
-	var cprops []string
-	for cprop := range statsVar.PVs {
-		cprops = append(cprops, cprop)
-	}
-	sort.Strings(cprops)
-	for _, cprop := range cprops {
-		keySuffix += fmt.Sprintf("^%s^%s", cprop, statsVar.PVs[cprop])
-	}
-	return keySuffix
 }
 
 func buildTriplesKey(dcids []string) bigtable.RowList {
@@ -60,24 +40,7 @@ type placeStatVar struct {
 	statVar string
 }
 
-// TODO(shifucun): deprecate this after stat var migration.
 func buildStatsKey(
-	places []string, statVars map[string]*StatisticalVariable) (
-	bigtable.RowList, map[string]*placeStatVar) {
-	rowList := bigtable.RowList{}
-	keyToToken := map[string]*placeStatVar{}
-	for sv, svObj := range statVars {
-		keySuffix := buildStatsKeySuffix(svObj)
-		for _, place := range places {
-			rowKey := fmt.Sprintf("%s%s^%s", util.BtChartDataPrefix, place, keySuffix)
-			rowList = append(rowList, rowKey)
-			keyToToken[rowKey] = &placeStatVar{place, sv}
-		}
-	}
-	return rowList, keyToToken
-}
-
-func buildStatsKeySvObs(
 	places []string, statVars []string) (
 	bigtable.RowList, map[string]*placeStatVar) {
 	rowList := bigtable.RowList{}
@@ -92,39 +55,7 @@ func buildStatsKeySvObs(
 	return rowList, keyToToken
 }
 
-func buildStatCollectionKey(
-	parentPlace, childType, date string,
-	statVars map[string]*StatisticalVariable) (
-	bigtable.RowList, map[string]string) {
-
-	rowList := bigtable.RowList{}
-	keyToToken := map[string]string{}
-	for sv, svObj := range statVars {
-		rowKey := strings.Join([]string{
-			util.BtChartDataPrefix + parentPlace,
-			childType,
-			svObj.MeasuredProp,
-			svObj.StatType,
-			svObj.MeasurementDenominator,
-			svObj.MeasurementQualifier,
-			date,
-			svObj.PopType,
-		}, "^")
-		cprops := []string{}
-		for cprop := range svObj.PVs {
-			cprops = append(cprops, cprop)
-		}
-		sort.Strings(cprops)
-		for _, cprop := range cprops {
-			rowKey += fmt.Sprintf("^%s^%s", cprop, svObj.PVs[cprop])
-		}
-		rowList = append(rowList, rowKey)
-		keyToToken[rowKey] = sv
-	}
-	return rowList, keyToToken
-}
-
-func buildStatCollectionKeySvObs(parentPlace, childType, date string, statVars []string) (
+func buildStatCollectionKey(parentPlace, childType, date string, statVars []string) (
 	bigtable.RowList, map[string]string) {
 
 	rowList := bigtable.RowList{}
@@ -156,23 +87,6 @@ func buildPropertyLabelKey(dcids []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtArcsPrefix, dcid))
-	}
-	return rowList
-}
-
-func buildObservedNodeKey(dcids []string, pred string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(rowList,
-			fmt.Sprintf("%s%s^%s", util.BtObsAncestorPrefix, dcid, pred))
-	}
-	return rowList
-}
-
-func buildPopPVKey(dcids []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtPopPVPrefix, dcid))
 	}
 	return rowList
 }
