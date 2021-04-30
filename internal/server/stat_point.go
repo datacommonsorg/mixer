@@ -234,7 +234,7 @@ func (s *Server) GetStatCollection(
 			return nil, err
 		}
 		for sv, data := range statCache {
-			if data == nil {
+			if data == nil || len(data.SourceCohorts) == 0 {
 				continue
 			}
 			cohorts := data.SourceCohorts
