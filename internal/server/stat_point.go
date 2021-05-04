@@ -23,11 +23,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type dateCount struct {
-	date  string
-	count int
-}
-
 // GetStatValue implements API for Mixer.GetStatValue.
 // Endpoint: /stat (/stat/value)
 func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
