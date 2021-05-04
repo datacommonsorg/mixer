@@ -6,24 +6,26 @@
           "date": "2010",
           "value": 36760,
           "metadata": {
-            "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-            "observationPeriod": "P1Y",
-            "unit": "InternationalDollar"
+            "importName": "WorldDevelopmentIndicators"
           }
         },
         "country/USA": {
           "date": "2010",
           "value": 48900,
           "metadata": {
-            "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-            "observationPeriod": "P1Y",
-            "unit": "InternationalDollar"
+            "importName": "WorldDevelopmentIndicators"
           }
         },
         "geoId/06": {},
         "geoId/0649670": {}
+      },
+      "metadata": {
+        "WorldDevelopmentIndicators": {
+          "importName": "WorldDevelopmentIndicators",
+          "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+          "observationPeriod": "P1Y",
+          "unit": "InternationalDollar"
+        }
       }
     },
     "Count_CriminalActivities_CombinedCrime": {
@@ -33,28 +35,34 @@
           "date": "2010",
           "value": 10292375,
           "metadata": {
-            "importName": "FBIGovCrime_AggCountry",
-            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "importName": "FBIGovCrime_AggCountry"
           }
         },
         "geoId/06": {
           "date": "2010",
           "value": 1146072,
           "metadata": {
-            "importName": "FBIGovCrime",
-            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "importName": "FBIGovCrime"
           }
         },
         "geoId/0649670": {
           "date": "2010",
           "value": 1633,
           "metadata": {
-            "importName": "FBIGovCrime",
-            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "importName": "FBIGovCrime"
           }
+        }
+      },
+      "metadata": {
+        "FBIGovCrime": {
+          "importName": "FBIGovCrime",
+          "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+          "observationPeriod": "P1Y"
+        },
+        "FBIGovCrime_AggCountry": {
+          "importName": "FBIGovCrime_AggCountry",
+          "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+          "observationPeriod": "P1Y"
         }
       }
     },
@@ -64,37 +72,41 @@
           "date": "2010",
           "value": 64658856,
           "metadata": {
-            "importName": "EurostatData",
-            "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
-            "measurementMethod": "EurostatRegionalPopulationData"
+            "importName": "EurostatData"
           }
         },
         "country/USA": {
           "date": "2010",
           "value": 309326085,
           "metadata": {
-            "importName": "CensusPEP",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
-            "measurementMethod": "CensusPEPSurvey"
+            "importName": "CensusPEP"
           }
         },
         "geoId/06": {
           "date": "2010",
           "value": 37266600,
           "metadata": {
-            "importName": "CensusPEP",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
-            "measurementMethod": "CensusPEPSurvey"
+            "importName": "CensusPEP"
           }
         },
         "geoId/0649670": {
           "date": "2010",
           "value": 74227,
           "metadata": {
-            "importName": "CensusPEP",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
-            "measurementMethod": "CensusPEPSurvey"
+            "importName": "CensusPEP"
           }
+        }
+      },
+      "metadata": {
+        "CensusPEP": {
+          "importName": "CensusPEP",
+          "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+          "measurementMethod": "CensusPEPSurvey"
+        },
+        "EurostatData": {
+          "importName": "EurostatData",
+          "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
+          "measurementMethod": "EurostatRegionalPopulationData"
         }
       }
     }

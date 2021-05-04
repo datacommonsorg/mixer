@@ -58,6 +58,13 @@
             "import_name": "CensusPEP"
           }
         },
+        "geoId/11": {
+          "date": "2019",
+          "value": 692683,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
+        },
         "geoId/12": {
           "date": "2019",
           "value": 21477737,
@@ -351,14 +358,28 @@
           "metadata": {
             "import_name": "CensusPEP"
           }
+        },
+        "geoId/72": {
+          "date": "2019",
+          "value": 3318447,
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey"
+          }
         }
       },
       "metadata": {
+        "CensusACS5YearSurvey": {
+          "import_name": "CensusACS5YearSurvey",
+          "provenance_url": "https://www.census.gov/",
+          "measurement_method": "CensusACS5yrSurvey"
+        },
         "CensusPEP": {
+          "import_name": "CensusPEP",
           "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
           "measurement_method": "CensusPEPSurvey"
         },
         "WikidataPopulation": {
+          "import_name": "WikidataPopulation",
           "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
           "measurement_method": "WikidataPopulation"
         }
@@ -733,6 +754,7 @@
       },
       "metadata": {
         "BLS_LAUS": {
+          "import_name": "BLS_LAUS",
           "provenance_url": "https://www.bls.gov/lau/",
           "measurement_method": "BLSSeasonallyUnadjusted",
           "observation_period": "P1M"

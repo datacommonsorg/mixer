@@ -52,7 +52,7 @@ type MixerClient interface {
 	GetStatAll(ctx context.Context, in *GetStatAllRequest, opts ...grpc.CallOption) (*GetStatAllResponse, error)
 	// Get the stat value for children places of certain place type at a given
 	// date.
-	GetStatCollection(ctx context.Context, in *GetStatCollectionRequest, opts ...grpc.CallOption) (*GetStatCollectionResponse, error)
+	GetStatSetWithinPlace(ctx context.Context, in *GetStatSetWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatSetResponse, error)
 	// Get the stat value for given places and stat vars. If date is not given,
 	// then the latest value for each <place, stat var> is returned.
 	GetStatSet(ctx context.Context, in *GetStatSetRequest, opts ...grpc.CallOption) (*GetStatSetResponse, error)
@@ -192,9 +192,9 @@ func (c *mixerClient) GetStatAll(ctx context.Context, in *GetStatAllRequest, opt
 	return out, nil
 }
 
-func (c *mixerClient) GetStatCollection(ctx context.Context, in *GetStatCollectionRequest, opts ...grpc.CallOption) (*GetStatCollectionResponse, error) {
-	out := new(GetStatCollectionResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatCollection", in, out, opts...)
+func (c *mixerClient) GetStatSetWithinPlace(ctx context.Context, in *GetStatSetWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatSetResponse, error) {
+	out := new(GetStatSetResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatSetWithinPlace", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -348,7 +348,7 @@ type MixerServer interface {
 	GetStatAll(context.Context, *GetStatAllRequest) (*GetStatAllResponse, error)
 	// Get the stat value for children places of certain place type at a given
 	// date.
-	GetStatCollection(context.Context, *GetStatCollectionRequest) (*GetStatCollectionResponse, error)
+	GetStatSetWithinPlace(context.Context, *GetStatSetWithinPlaceRequest) (*GetStatSetResponse, error)
 	// Get the stat value for given places and stat vars. If date is not given,
 	// then the latest value for each <place, stat var> is returned.
 	GetStatSet(context.Context, *GetStatSetRequest) (*GetStatSetResponse, error)
@@ -418,8 +418,8 @@ func (*UnimplementedMixerServer) GetStatSeries(context.Context, *GetStatSeriesRe
 func (*UnimplementedMixerServer) GetStatAll(context.Context, *GetStatAllRequest) (*GetStatAllResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatAll not implemented")
 }
-func (*UnimplementedMixerServer) GetStatCollection(context.Context, *GetStatCollectionRequest) (*GetStatCollectionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatCollection not implemented")
+func (*UnimplementedMixerServer) GetStatSetWithinPlace(context.Context, *GetStatSetWithinPlaceRequest) (*GetStatSetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatSetWithinPlace not implemented")
 }
 func (*UnimplementedMixerServer) GetStatSet(context.Context, *GetStatSetRequest) (*GetStatSetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatSet not implemented")
@@ -660,20 +660,20 @@ func _Mixer_GetStatAll_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetStatCollection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatCollectionRequest)
+func _Mixer_GetStatSetWithinPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStatSetWithinPlaceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).GetStatCollection(ctx, in)
+		return srv.(MixerServer).GetStatSetWithinPlace(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetStatCollection",
+		FullMethod: "/datacommons.Mixer/GetStatSetWithinPlace",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatCollection(ctx, req.(*GetStatCollectionRequest))
+		return srv.(MixerServer).GetStatSetWithinPlace(ctx, req.(*GetStatSetWithinPlaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -943,8 +943,8 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetStatAll_Handler,
 		},
 		{
-			MethodName: "GetStatCollection",
-			Handler:    _Mixer_GetStatCollection_Handler,
+			MethodName: "GetStatSetWithinPlace",
+			Handler:    _Mixer_GetStatSetWithinPlace_Handler,
 		},
 		{
 			MethodName: "GetStatSet",

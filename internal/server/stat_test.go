@@ -15,7 +15,6 @@
 package server
 
 import (
-	"encoding/json"
 	"sort"
 	"testing"
 
@@ -170,69 +169,6 @@ const populationJSON = `{
     }
   ]
 }`
-
-func TestTriplesToStatsVar(t *testing.T) {
-	var covidStatsVarTriples TriplesCache
-	var populationStatsVarTriples TriplesCache
-	err := json.Unmarshal([]byte(covidJSON), &covidStatsVarTriples)
-	if err != nil {
-		t.Errorf("Unmarshal got err %v", err)
-		return
-	}
-	err = json.Unmarshal([]byte(populationJSON), &populationStatsVarTriples)
-	if err != nil {
-		t.Errorf("Unmarshal got err %v", err)
-		return
-	}
-	for _, c := range []struct {
-		statsVar     string
-		triples      *TriplesCache
-		wantStatsVar *StatisticalVariable
-		wantErr      bool
-	}{
-		{
-			"Covid19CumulativeCases",
-			&covidStatsVarTriples,
-			&StatisticalVariable{
-				PopType: "MedicalConditionIncident",
-				PVs: map[string]string{
-					"incidentType":  "COVID_19",
-					"medicalStatus": "ConfirmedOrProbableCase",
-				},
-				MeasuredProp:      "cumulativeCount",
-				MeasurementMethod: "COVID19",
-				StatType:          "measured",
-			},
-			false,
-		},
-		{
-			"TotalPopulation",
-			&populationStatsVarTriples,
-			&StatisticalVariable{
-				PopType:           "Person",
-				MeasuredProp:      "count",
-				MeasurementMethod: "CensusACS5yrSurvey",
-				StatType:          "measured",
-			},
-			false,
-		},
-	} {
-		gotStatsVar, err := triplesToStatsVar(c.statsVar, c.triples)
-		if c.wantErr {
-			if err == nil {
-				t.Errorf("triplesToStatsVar want error for triples %v", c.triples)
-			}
-			continue
-		}
-		if err != nil {
-			t.Errorf("triplesToStatsVar(%v) = %v", c.triples, err)
-			continue
-		}
-		if diff := cmp.Diff(gotStatsVar, c.wantStatsVar); diff != "" {
-			t.Errorf("triplesToStatsVar() got diff %+v", diff)
-		}
-	}
-}
 
 func TestFilterAndRank(t *testing.T) {
 	for _, c := range []struct {

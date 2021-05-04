@@ -27,7 +27,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetStatCollection(t *testing.T) {
+func TestGetStatSetWithinPlace(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
@@ -38,7 +38,7 @@ func TestGetStatCollection(t *testing.T) {
 
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_stat_collection")
+		path.Dir(filename), "golden_response/staging/get_stat_set_within_place")
 
 	for _, c := range []struct {
 		parentPlace string
@@ -76,21 +76,21 @@ func TestGetStatCollection(t *testing.T) {
 			"USA_County_2016.json",
 		},
 		{
-			"country/USA",
-			"City",
+			"country/FRA",
+			"AdministrativeArea2",
 			"2016",
 			[]string{"Count_Person"},
-			"USA_City_2016.json",
+			"FRA_AA2_2016.json",
 		},
 	} {
-		resp, err := client.GetStatCollection(ctx, &pb.GetStatCollectionRequest{
+		resp, err := client.GetStatSetWithinPlace(ctx, &pb.GetStatSetWithinPlaceRequest{
 			ParentPlace: c.parentPlace,
 			ChildType:   c.childType,
 			StatVars:    c.statVar,
 			Date:        c.date,
 		})
 		if err != nil {
-			t.Errorf("could not GetStatCollections: %s", err)
+			t.Errorf("could not GetStatSetWithinPlace: %s", err)
 			continue
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
@@ -98,7 +98,7 @@ func TestGetStatCollection(t *testing.T) {
 			updateGolden(resp, goldenFile)
 			continue
 		}
-		var expected pb.GetStatCollectionResponse
+		var expected pb.GetStatSetResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = protojson.Unmarshal(file, &expected)
 		if err != nil {

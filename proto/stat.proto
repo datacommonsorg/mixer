@@ -249,7 +249,7 @@ message GetStatAllResponse {
   map<string, PlaceStat> place_data = 1;
 }
 
-message GetStatCollectionRequest {
+message GetStatSetWithinPlaceRequest {
   // Parent place dcid.
   string parent_place = 1;
   // Child place type.
@@ -261,12 +261,6 @@ message GetStatCollectionRequest {
   // returned, where they could be from different sources.
   string date = 4;
 }
-
-// Response for GetStatCollection service.
-message GetStatCollectionResponse {
-  map<string, PlacePointStat> data = 1;
-}
-
 
 message GetStatSetRequest {
   // A list of place DCIDs.

@@ -55,7 +55,7 @@ func buildStatsKey(
 	return rowList, keyToToken
 }
 
-func buildStatCollectionKey(parentPlace, childType, date string, statVars []string) (
+func buildStatSetWithinPlaceKey(parentPlace, childType, date string, statVars []string) (
 	bigtable.RowList, map[string]string) {
 
 	rowList := bigtable.RowList{}
