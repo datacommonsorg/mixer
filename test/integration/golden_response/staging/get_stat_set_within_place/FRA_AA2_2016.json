@@ -1,0 +1,1010 @@
+{
+  "data": {
+    "Count_Person": {
+      "stat": {
+        "country/GLP": {
+          "date": "2016",
+          "value": 395700,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/GUF": {},
+        "country/MTQ": {
+          "date": "2016",
+          "value": 376480,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/MYT": {
+          "date": "2016",
+          "value": 240987,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "country/REU": {},
+        "nuts/FR101": {
+          "date": "2016",
+          "value": 2190327,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR102": {
+          "date": "2016",
+          "value": 1397665,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR103": {
+          "date": "2016",
+          "value": 1431808,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR104": {
+          "date": "2016",
+          "value": 1287330,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR105": {
+          "date": "2016",
+          "value": 1603268,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR106": {
+          "date": "2016",
+          "value": 1606660,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR107": {
+          "date": "2016",
+          "value": 1378151,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR108": {
+          "date": "2016",
+          "value": 1221923,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "nuts/FR211": {
+          "date": "2016",
+          "value": 275371,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR212": {
+          "date": "2016",
+          "value": 308910,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR213": {
+          "date": "2016",
+          "value": 570883,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR214": {
+          "date": "2016",
+          "value": 178084,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR221": {
+          "date": "2016",
+          "value": 536136,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR222": {
+          "date": "2016",
+          "value": 823542,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR223": {
+          "date": "2016",
+          "value": 572744,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR231": {
+          "date": "2016",
+          "value": 602825,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR232": {
+          "date": "2016",
+          "value": 1255755,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR241": {
+          "date": "2016",
+          "value": 307110,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR242": {
+          "date": "2016",
+          "value": 433929,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR243": {
+          "date": "2016",
+          "value": 223505,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR244": {
+          "date": "2016",
+          "value": 606223,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR245": {
+          "date": "2016",
+          "value": 332769,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR246": {
+          "date": "2016",
+          "value": 674330,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR251": {
+          "date": "2016",
+          "value": 693679,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR252": {
+          "date": "2016",
+          "value": 498362,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR253": {
+          "date": "2016",
+          "value": 285308,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR261": {
+          "date": "2016",
+          "value": 533213,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR262": {
+          "date": "2016",
+          "value": 209161,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR263": {
+          "date": "2016",
+          "value": 555023,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR264": {
+          "date": "2016",
+          "value": 340544,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR301": {
+          "date": "2016",
+          "value": 2603723,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR302": {
+          "date": "2016",
+          "value": 1470725,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR411": {
+          "date": "2016",
+          "value": 733821,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR412": {
+          "date": "2016",
+          "value": 189055,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR431": {
+          "date": "2016",
+          "value": 538549,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR432": {
+          "date": "2016",
+          "value": 260517,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR433": {
+          "date": "2016",
+          "value": 237242,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR434": {
+          "date": "2016",
+          "value": 144089,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR511": {
+          "date": "2016",
+          "value": 1380852,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR512": {
+          "date": "2016",
+          "value": 810934,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR513": {
+          "date": "2016",
+          "value": 307688,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR514": {
+          "date": "2016",
+          "value": 567561,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR515": {
+          "date": "2016",
+          "value": 670597,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR521": {
+          "date": "2016",
+          "value": 598953,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR522": {
+          "date": "2016",
+          "value": 908249,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR523": {
+          "date": "2016",
+          "value": 1051779,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR524": {
+          "date": "2016",
+          "value": 747548,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR531": {
+          "date": "2016",
+          "value": 353288,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR532": {
+          "date": "2016",
+          "value": 642191,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR533": {
+          "date": "2016",
+          "value": 374743,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR534": {
+          "date": "2016",
+          "value": 436069,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR611": {
+          "date": "2016",
+          "value": 414789,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR612": {
+          "date": "2016",
+          "value": 1566679,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR613": {
+          "date": "2016",
+          "value": 405010,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR615": {
+          "date": "2016",
+          "value": 673986,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR621": {
+          "date": "2016",
+          "value": 153067,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR622": {
+          "date": "2016",
+          "value": 278697,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR623": {
+          "date": "2016",
+          "value": 1348183,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR624": {
+          "date": "2016",
+          "value": 190664,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR625": {
+          "date": "2016",
+          "value": 173347,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR626": {
+          "date": "2016",
+          "value": 227829,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR627": {
+          "date": "2016",
+          "value": 386448,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR628": {
+          "date": "2016",
+          "value": 256897,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR631": {
+          "date": "2016",
+          "value": 241535,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR632": {
+          "date": "2016",
+          "value": 119502,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR633": {
+          "date": "2016",
+          "value": 374978,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR711": {
+          "date": "2016",
+          "value": 638425,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR712": {
+          "date": "2016",
+          "value": 325157,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR713": {
+          "date": "2016",
+          "value": 508006,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR714": {
+          "date": "2016",
+          "value": 1252912,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR715": {
+          "date": "2016",
+          "value": 761997,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR717": {
+          "date": "2016",
+          "value": 429681,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR718": {
+          "date": "2016",
+          "value": 801416,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR721": {
+          "date": "2016",
+          "value": 339384,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR722": {
+          "date": "2016",
+          "value": 145969,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR723": {
+          "date": "2016",
+          "value": 227339,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR724": {
+          "date": "2016",
+          "value": 650700,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR811": {
+          "date": "2016",
+          "value": 368025,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR812": {
+          "date": "2016",
+          "value": 742006,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR813": {
+          "date": "2016",
+          "value": 1132481,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR814": {
+          "date": "2016",
+          "value": 76422,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR815": {
+          "date": "2016",
+          "value": 474369,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR821": {
+          "date": "2016",
+          "value": 162565,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR822": {
+          "date": "2016",
+          "value": 141107,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR823": {
+          "date": "2016",
+          "value": 1083704,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR824": {
+          "date": "2016",
+          "value": 2019717,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR825": {
+          "date": "2016",
+          "value": 1055821,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR826": {
+          "date": "2016",
+          "value": 559014,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR831": {
+          "date": "2016",
+          "value": 154303,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FR832": {
+          "date": "2016",
+          "value": 176152,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "nuts/FRI14": {
+          "date": "2016",
+          "value": 332833,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "wikidataId/Q1115786": {},
+        "wikidataId/Q1116153": {},
+        "wikidataId/Q1116542": {},
+        "wikidataId/Q1116591": {},
+        "wikidataId/Q132224": {},
+        "wikidataId/Q134680": {},
+        "wikidataId/Q139174": {},
+        "wikidataId/Q14812": {},
+        "wikidataId/Q163104": {},
+        "wikidataId/Q165750": {},
+        "wikidataId/Q175478": {},
+        "wikidataId/Q180843": {},
+        "wikidataId/Q18114": {},
+        "wikidataId/Q18914778": {},
+        "wikidataId/Q201008": {},
+        "wikidataId/Q205854": {},
+        "wikidataId/Q212673": {},
+        "wikidataId/Q258745": {},
+        "wikidataId/Q262723": {},
+        "wikidataId/Q263441": {},
+        "wikidataId/Q268470": {},
+        "wikidataId/Q27729487": {},
+        "wikidataId/Q27729489": {},
+        "wikidataId/Q27729491": {},
+        "wikidataId/Q27729492": {},
+        "wikidataId/Q282593": {},
+        "wikidataId/Q284277": {},
+        "wikidataId/Q28476540": {},
+        "wikidataId/Q2863671": {},
+        "wikidataId/Q2863801": {},
+        "wikidataId/Q2863958": {},
+        "wikidataId/Q302457": {},
+        "wikidataId/Q33662520": {},
+        "wikidataId/Q33664557": {},
+        "wikidataId/Q33713745": {},
+        "wikidataId/Q370557": {},
+        "wikidataId/Q372942": {},
+        "wikidataId/Q374101": {},
+        "wikidataId/Q376598": {},
+        "wikidataId/Q385728": {},
+        "wikidataId/Q511613": {},
+        "wikidataId/Q512664": {},
+        "wikidataId/Q515493": {},
+        "wikidataId/Q517570": {},
+        "wikidataId/Q518212": {},
+        "wikidataId/Q520913": {},
+        "wikidataId/Q526829": {},
+        "wikidataId/Q534383": {},
+        "wikidataId/Q535140": {},
+        "wikidataId/Q537277": {},
+        "wikidataId/Q539378": {},
+        "wikidataId/Q543784": {},
+        "wikidataId/Q545946": {},
+        "wikidataId/Q547847": {},
+        "wikidataId/Q549111": {},
+        "wikidataId/Q56043111": {},
+        "wikidataId/Q571456": {},
+        "wikidataId/Q572094": {},
+        "wikidataId/Q580284": {},
+        "wikidataId/Q582305": {},
+        "wikidataId/Q584641": {},
+        "wikidataId/Q585013": {},
+        "wikidataId/Q585380": {},
+        "wikidataId/Q586597": {},
+        "wikidataId/Q588823": {},
+        "wikidataId/Q589467": {},
+        "wikidataId/Q596603": {},
+        "wikidataId/Q596974": {},
+        "wikidataId/Q597652": {},
+        "wikidataId/Q599886": {},
+        "wikidataId/Q600345": {},
+        "wikidataId/Q600838": {},
+        "wikidataId/Q608267": {},
+        "wikidataId/Q612145": {},
+        "wikidataId/Q612189": {},
+        "wikidataId/Q616226": {},
+        "wikidataId/Q629410": {},
+        "wikidataId/Q630159": {},
+        "wikidataId/Q633970": {},
+        "wikidataId/Q639304": {},
+        "wikidataId/Q641167": {},
+        "wikidataId/Q642854": {},
+        "wikidataId/Q652833": {},
+        "wikidataId/Q653514": {},
+        "wikidataId/Q654357": {},
+        "wikidataId/Q659331": {},
+        "wikidataId/Q662088": {},
+        "wikidataId/Q665242": {},
+        "wikidataId/Q667555": {},
+        "wikidataId/Q669222": {},
+        "wikidataId/Q669556": {},
+        "wikidataId/Q669949": {},
+        "wikidataId/Q672744": {},
+        "wikidataId/Q681862": {},
+        "wikidataId/Q682085": {},
+        "wikidataId/Q692903": {},
+        "wikidataId/Q700351": {},
+        "wikidataId/Q700354": {},
+        "wikidataId/Q700364": {},
+        "wikidataId/Q700367": {},
+        "wikidataId/Q700375": {},
+        "wikidataId/Q700379": {},
+        "wikidataId/Q700385": {},
+        "wikidataId/Q700396": {},
+        "wikidataId/Q700401": {},
+        "wikidataId/Q700410": {},
+        "wikidataId/Q700420": {},
+        "wikidataId/Q700427": {},
+        "wikidataId/Q700433": {},
+        "wikidataId/Q700438": {},
+        "wikidataId/Q700451": {},
+        "wikidataId/Q700461": {},
+        "wikidataId/Q700464": {},
+        "wikidataId/Q700472": {},
+        "wikidataId/Q700484": {},
+        "wikidataId/Q700495": {},
+        "wikidataId/Q700507": {},
+        "wikidataId/Q700509": {},
+        "wikidataId/Q700521": {},
+        "wikidataId/Q700534": {},
+        "wikidataId/Q700536": {},
+        "wikidataId/Q700546": {},
+        "wikidataId/Q700549": {},
+        "wikidataId/Q700557": {},
+        "wikidataId/Q700574": {},
+        "wikidataId/Q700581": {},
+        "wikidataId/Q700586": {},
+        "wikidataId/Q700595": {},
+        "wikidataId/Q700609": {},
+        "wikidataId/Q700637": {},
+        "wikidataId/Q700647": {},
+        "wikidataId/Q700649": {},
+        "wikidataId/Q700660": {},
+        "wikidataId/Q700664": {},
+        "wikidataId/Q700678": {},
+        "wikidataId/Q700686": {},
+        "wikidataId/Q700697": {},
+        "wikidataId/Q700712": {},
+        "wikidataId/Q700721": {},
+        "wikidataId/Q700723": {},
+        "wikidataId/Q700737": {},
+        "wikidataId/Q700744": {},
+        "wikidataId/Q700748": {},
+        "wikidataId/Q700755": {},
+        "wikidataId/Q700768": {},
+        "wikidataId/Q700778": {},
+        "wikidataId/Q700794": {},
+        "wikidataId/Q700795": {},
+        "wikidataId/Q700809": {},
+        "wikidataId/Q700811": {},
+        "wikidataId/Q700823": {},
+        "wikidataId/Q700826": {},
+        "wikidataId/Q700832": {},
+        "wikidataId/Q700839": {},
+        "wikidataId/Q700845": {},
+        "wikidataId/Q700861": {},
+        "wikidataId/Q700869": {},
+        "wikidataId/Q700882": {},
+        "wikidataId/Q700884": {},
+        "wikidataId/Q700900": {},
+        "wikidataId/Q700901": {},
+        "wikidataId/Q700914": {},
+        "wikidataId/Q700916": {},
+        "wikidataId/Q700965": {},
+        "wikidataId/Q700981": {},
+        "wikidataId/Q700994": {},
+        "wikidataId/Q700998": {},
+        "wikidataId/Q701005": {},
+        "wikidataId/Q701009": {},
+        "wikidataId/Q701022": {},
+        "wikidataId/Q701034": {},
+        "wikidataId/Q701038": {},
+        "wikidataId/Q701044": {},
+        "wikidataId/Q701047": {},
+        "wikidataId/Q701061": {},
+        "wikidataId/Q701072": {},
+        "wikidataId/Q701082": {},
+        "wikidataId/Q701083": {},
+        "wikidataId/Q701097": {},
+        "wikidataId/Q701110": {},
+        "wikidataId/Q701131": {},
+        "wikidataId/Q701143": {},
+        "wikidataId/Q701144": {},
+        "wikidataId/Q701155": {},
+        "wikidataId/Q701164": {},
+        "wikidataId/Q701177": {},
+        "wikidataId/Q701190": {},
+        "wikidataId/Q701213": {},
+        "wikidataId/Q701222": {},
+        "wikidataId/Q701227": {},
+        "wikidataId/Q701238": {},
+        "wikidataId/Q701242": {},
+        "wikidataId/Q701253": {},
+        "wikidataId/Q701268": {},
+        "wikidataId/Q701309": {},
+        "wikidataId/Q701315": {},
+        "wikidataId/Q701325": {},
+        "wikidataId/Q701341": {},
+        "wikidataId/Q701349": {},
+        "wikidataId/Q701368": {},
+        "wikidataId/Q701370": {},
+        "wikidataId/Q701385": {},
+        "wikidataId/Q701386": {},
+        "wikidataId/Q701396": {},
+        "wikidataId/Q701410": {},
+        "wikidataId/Q701417": {},
+        "wikidataId/Q701422": {},
+        "wikidataId/Q701430": {},
+        "wikidataId/Q701434": {},
+        "wikidataId/Q701439": {},
+        "wikidataId/Q701446": {},
+        "wikidataId/Q701452": {},
+        "wikidataId/Q701465": {},
+        "wikidataId/Q701467": {},
+        "wikidataId/Q701477": {},
+        "wikidataId/Q701481": {},
+        "wikidataId/Q701510": {},
+        "wikidataId/Q701530": {},
+        "wikidataId/Q701531": {},
+        "wikidataId/Q701543": {},
+        "wikidataId/Q701546": {},
+        "wikidataId/Q701562": {},
+        "wikidataId/Q701568": {},
+        "wikidataId/Q701572": {},
+        "wikidataId/Q701604": {},
+        "wikidataId/Q701616": {},
+        "wikidataId/Q701638": {},
+        "wikidataId/Q701646": {},
+        "wikidataId/Q701652": {},
+        "wikidataId/Q701660": {},
+        "wikidataId/Q701687": {},
+        "wikidataId/Q701708": {},
+        "wikidataId/Q701711": {},
+        "wikidataId/Q701744": {},
+        "wikidataId/Q701749": {},
+        "wikidataId/Q701760": {},
+        "wikidataId/Q701773": {},
+        "wikidataId/Q701776": {},
+        "wikidataId/Q701790": {},
+        "wikidataId/Q701791": {},
+        "wikidataId/Q701804": {},
+        "wikidataId/Q701806": {},
+        "wikidataId/Q701822": {},
+        "wikidataId/Q701834": {},
+        "wikidataId/Q701851": {},
+        "wikidataId/Q701861": {},
+        "wikidataId/Q701873": {},
+        "wikidataId/Q701903": {},
+        "wikidataId/Q701933": {},
+        "wikidataId/Q701950": {},
+        "wikidataId/Q701961": {},
+        "wikidataId/Q701978": {},
+        "wikidataId/Q701995": {},
+        "wikidataId/Q702009": {},
+        "wikidataId/Q702013": {},
+        "wikidataId/Q702025": {},
+        "wikidataId/Q702045": {},
+        "wikidataId/Q702051": {},
+        "wikidataId/Q702066": {},
+        "wikidataId/Q702083": {},
+        "wikidataId/Q702093": {},
+        "wikidataId/Q702112": {},
+        "wikidataId/Q702122": {},
+        "wikidataId/Q702130": {},
+        "wikidataId/Q702145": {},
+        "wikidataId/Q702153": {},
+        "wikidataId/Q702161": {},
+        "wikidataId/Q702168": {},
+        "wikidataId/Q702180": {},
+        "wikidataId/Q702181": {},
+        "wikidataId/Q702196": {},
+        "wikidataId/Q702199": {},
+        "wikidataId/Q702214": {},
+        "wikidataId/Q702225": {},
+        "wikidataId/Q702227": {},
+        "wikidataId/Q702245": {},
+        "wikidataId/Q702279": {},
+        "wikidataId/Q702330": {},
+        "wikidataId/Q702334": {},
+        "wikidataId/Q702350": {},
+        "wikidataId/Q702364": {},
+        "wikidataId/Q702367": {},
+        "wikidataId/Q702381": {},
+        "wikidataId/Q702395": {},
+        "wikidataId/Q702409": {},
+        "wikidataId/Q702426": {},
+        "wikidataId/Q702429": {},
+        "wikidataId/Q702441": {},
+        "wikidataId/Q702444": {},
+        "wikidataId/Q702457": {},
+        "wikidataId/Q702466": {},
+        "wikidataId/Q702471": {},
+        "wikidataId/Q702491": {},
+        "wikidataId/Q702496": {},
+        "wikidataId/Q702514": {},
+        "wikidataId/Q702522": {},
+        "wikidataId/Q702534": {},
+        "wikidataId/Q702552": {},
+        "wikidataId/Q702577": {},
+        "wikidataId/Q702591": {},
+        "wikidataId/Q702629": {},
+        "wikidataId/Q702642": {},
+        "wikidataId/Q702655": {},
+        "wikidataId/Q702657": {},
+        "wikidataId/Q702671": {},
+        "wikidataId/Q702672": {},
+        "wikidataId/Q702689": {},
+        "wikidataId/Q702697": {},
+        "wikidataId/Q702702": {},
+        "wikidataId/Q702713": {},
+        "wikidataId/Q702723": {},
+        "wikidataId/Q702745": {},
+        "wikidataId/Q702750": {},
+        "wikidataId/Q702763": {},
+        "wikidataId/Q702768": {},
+        "wikidataId/Q702787": {},
+        "wikidataId/Q702790": {},
+        "wikidataId/Q702799": {},
+        "wikidataId/Q702812": {},
+        "wikidataId/Q702836": {},
+        "wikidataId/Q702852": {},
+        "wikidataId/Q702862": {},
+        "wikidataId/Q702864": {},
+        "wikidataId/Q702873": {},
+        "wikidataId/Q93949": {},
+        "wikidataId/Q940292": {}
+      },
+      "metadata": {
+        "EurostatData": {
+          "import_name": "EurostatData",
+          "provenance_url": "https://ec.europa.eu/eurostat/data/database"
+        },
+        "FranceINSEE": {
+          "import_name": "FranceINSEE",
+          "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+          "measurement_method": "FranceINSEE"
+        },
+        "WikipediaStatsData": {
+          "import_name": "WikipediaStatsData",
+          "provenance_url": "https://www.wikipedia.org",
+          "measurement_method": "Wikipedia"
+        }
+      }
+    }
+  }
+}

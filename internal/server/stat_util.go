@@ -16,7 +16,6 @@ package server
 
 import (
 	"sort"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
@@ -95,57 +94,6 @@ func rawSeriesToSeries(in *pb.SourceSeries) *pb.Series {
 	return result
 }
 
-// triplesToStatsVar converts a Triples cache into a StatisticalVarible object.
-func triplesToStatsVar(
-	statsVarDcid string, triples *TriplesCache) (*StatisticalVariable, error) {
-	// Get constraint properties.
-	propValMap := map[string]string{}
-	for _, t := range triples.Triples {
-		if t.Predicate == "constraintProperties" {
-			propValMap[t.ObjectID] = ""
-		}
-	}
-	statsVar := StatisticalVariable{}
-	// Populate the field.
-	for _, t := range triples.Triples {
-		if t.SubjectID != statsVarDcid {
-			continue
-		}
-		object := t.ObjectID
-		switch t.Predicate {
-		case "typeOf":
-			if object != "StatisticalVariable" {
-				return nil, status.Errorf(
-					codes.Internal, "%s is not a StatisticalVariable", t.SubjectID)
-			}
-		case "statType":
-			statsVar.StatType = strings.Replace(object, "Value", "", 1)
-		case "populationType":
-			statsVar.PopType = object
-		case "measurementMethod":
-			statsVar.MeasurementMethod = object
-		case "measuredProperty":
-			statsVar.MeasuredProp = object
-		case "measurementDenominator":
-			statsVar.MeasurementDenominator = object
-		case "measurementQualifier":
-			statsVar.MeasurementQualifier = object
-		case "scalingFactor":
-			statsVar.ScalingFactor = object
-		case "unit":
-			statsVar.Unit = object
-		default:
-			if _, ok := propValMap[t.Predicate]; ok {
-				if statsVar.PVs == nil {
-					statsVar.PVs = map[string]string{}
-				}
-				statsVar.PVs[t.Predicate] = object
-			}
-		}
-	}
-	return &statsVar, nil
-}
-
 // getValueFromBestSource get the stat value from top ranked source series.
 //
 // When date is given, it get the value from the highest ranked source series
@@ -189,56 +137,73 @@ func getValueFromBestSource(in *ObsTimeSeries, date string) (float64, error) {
 // When date is given, it get the value from the highest ranked source series
 // that has the date.
 //
-// When date is not given, it get the latest value from the highest ranked
-// source series.
-func getValueFromBestSourcePb(in *pb.ObsTimeSeries, date string) (*pb.PointStat, error) {
+// When date is not given, it get the latest value from all the source series.
+// If two sources has the same latest date, the highest ranked source is preferred.
+func getValueFromBestSourcePb(
+	in *pb.ObsTimeSeries, date string) (*pb.PointStat, *pb.StatMetadata) {
 	if in == nil {
-		return nil, status.Error(codes.Internal, "Nil obs time series for getValueFromBestSourcePb()")
+		return nil, nil
 	}
 	sourceSeries := in.SourceSeries
 	sort.Sort(SeriesByRank(sourceSeries))
+
+	// Date is given, get the value from highest ranked source that has this date.
 	if date != "" {
 		for _, series := range sourceSeries {
 			if value, ok := series.Val[date]; ok {
 				return &pb.PointStat{
-					Date:  date,
-					Value: value,
-					Metadata: &pb.StatMetadata{
+						Date:  date,
+						Value: value,
+						Metadata: &pb.StatMetadata{
+							// Each ImportName should indicate a specific source. Now this is
+							// not strictly true as the MeasurementMethod encodes source information
+							// as well.
+							// As the source is sorted deterministically, even when an ImportName
+							// contains multiple sources, the top ranked one is picked. So
+							// using ImportName as key still works.
+							ImportName: series.ImportName,
+						},
+					},
+					&pb.StatMetadata{
 						ImportName:        series.ImportName,
 						ProvenanceUrl:     series.ProvenanceUrl,
 						MeasurementMethod: series.MeasurementMethod,
 						ObservationPeriod: series.ObservationPeriod,
 						ScalingFactor:     series.ScalingFactor,
 						Unit:              series.Unit,
-					},
-				}, nil
+					}
 			}
 		}
-		return nil, status.Errorf(codes.NotFound, "No data found for date %s", date)
+		return nil, nil
 	}
+	// Date is not given, get the latest value from all sources.
 	latestDate := ""
-	result := &pb.PointStat{}
-	series := sourceSeries[0]
-	for date, value := range series.Val {
-		if date > latestDate {
-			latestDate = date
-			result = &pb.PointStat{
-				Date:  date,
-				Value: value,
-				Metadata: &pb.StatMetadata{
+	var ps *pb.PointStat
+	var meta *pb.StatMetadata
+	for _, series := range sourceSeries {
+		for date, value := range series.Val {
+			if date > latestDate {
+				latestDate = date
+				ps = &pb.PointStat{
+					Date:  date,
+					Value: value,
+					Metadata: &pb.StatMetadata{
+						ImportName: series.ImportName,
+					},
+				}
+				meta = &pb.StatMetadata{
 					ImportName:        series.ImportName,
 					ProvenanceUrl:     series.ProvenanceUrl,
 					MeasurementMethod: series.MeasurementMethod,
 					ObservationPeriod: series.ObservationPeriod,
 					ScalingFactor:     series.ScalingFactor,
 					Unit:              series.Unit,
-				},
+				}
 			}
 		}
 	}
 	if latestDate == "" {
-		return nil, status.Errorf(codes.NotFound,
-			"No stat data found for %s", in.PlaceDcid)
+		return nil, nil
 	}
-	return result, nil
+	return ps, meta
 }

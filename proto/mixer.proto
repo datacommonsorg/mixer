@@ -484,19 +484,6 @@ message RelatedPlacesInfo {
   reserved 4, 5, 6;
 }
 
-// A statistical variable contains key info of population and observation.
-message StatisticalVariable {
-  string pop_type = 1;
-  map<string, string> pvs = 2;
-  string measured_prop = 3;
-  string measurement_method = 4;
-  string measurement_denominator = 5;
-  string measurement_qualifier = 6;
-  string scaling_factor = 7;
-  string unit = 8;
-  string stat_type = 9;
-}
-
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -619,9 +606,9 @@ service Mixer {
 
   // Get the stat value for children places of certain place type at a given
   // date.
-  rpc GetStatCollection(GetStatCollectionRequest) returns (GetStatCollectionResponse) {
+  rpc GetStatSetWithinPlace(GetStatSetWithinPlaceRequest) returns (GetStatSetResponse) {
     option (google.api.http) = {
-      get: "/stat/collection"
+      get: "/stat/set/within-place"
       body: "*"
     };
   }

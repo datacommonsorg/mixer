@@ -56,7 +56,7 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 	}
 
 	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatCollectionKey(ancestorPlace, placeType, "", statVars)
+	rowList, keyTokens := buildStatSetWithinPlaceKey(ancestorPlace, placeType, "", statVars)
 
 	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {
