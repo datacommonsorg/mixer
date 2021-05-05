@@ -546,8 +546,11 @@ service Mixer {
   // type, and population constraining properties.
   rpc GetPlaceObs(GetPlaceObsRequest) returns (SVOCollection) {
     option (google.api.http) = {
-      post: "/bulk/place-obs"
-      body: "*"
+      get: "bulk/place-obs"
+      additional_bindings: {
+        post: "/bulk/place-obs"
+        body: "*"
+      }
     };
   }
 
@@ -556,8 +559,11 @@ service Mixer {
   // will be returned.
   rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {
     option (google.api.http) = {
-      post: "/bulk/stats"
-      body: "*"
+      get: "/bulk/stats"
+      additional_bindings: {
+        post: "/bulk/stats"
+        body: "*"
+      }
     };
   }
 
@@ -582,7 +588,10 @@ service Mixer {
   rpc GetStatValue(GetStatValueRequest) returns (GetStatValueResponse) {
     option (google.api.http) = {
       get: "/stat/value"
-      body: "*"
+      additional_bindings: {
+        post: "/stat/value"
+        body: "*"
+      }
     };
   }
 
@@ -591,7 +600,10 @@ service Mixer {
   rpc GetStatSeries(GetStatSeriesRequest) returns (GetStatSeriesResponse) {
     option (google.api.http) = {
       get: "/stat/series"
-      body: "*"
+      additional_bindings: {
+        post: "/stat/series"
+        body: "*"
+      }
     };
   }
 
@@ -599,8 +611,11 @@ service Mixer {
   // variables.
   rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
     option (google.api.http) = {
-      post: "/stat/all"
-      body: "*"
+      get: "/stat/all"
+      additional_bindings: {
+        post: "/stat/all"
+        body: "*"
+      }
     };
   }
 
@@ -609,7 +624,10 @@ service Mixer {
   rpc GetStatSetWithinPlace(GetStatSetWithinPlaceRequest) returns (GetStatSetResponse) {
     option (google.api.http) = {
       get: "/stat/set/within-place"
-      body: "*"
+      additional_bindings: {
+        post: "/stat/set/within-place"
+        body: "*"
+      }
     };
   }
 
@@ -617,8 +635,11 @@ service Mixer {
   // then the latest value for each <place, stat var> is returned.
   rpc GetStatSet(GetStatSetRequest) returns (GetStatSetResponse) {
     option (google.api.http) = {
-      post: "/stat/set"
-      body: "*"
+      get: "/stat/set"
+      additional_bindings: {
+        post: "/stat/set"
+        body: "*"
+      }
     };
   }
 
@@ -627,7 +648,10 @@ service Mixer {
       returns (GetLocationsRankingsResponse) {
     option (google.api.http) = {
       get: "/node/ranking-locations"
-      body: "*"
+      additional_bindings: {
+        post: "/node/ranking-locations"
+        body: "*"
+      }
     };
   }
 
@@ -635,24 +659,33 @@ service Mixer {
   rpc GetRelatedLocations(GetRelatedLocationsRequest)
       returns (GetRelatedLocationsResponse) {
     option (google.api.http) = {
-      post: "/node/related-locations"
-      body: "*"
+      get: "/node/related-locations"
+      additional_bindings: {
+        post: "/node/related-locations"
+        body: "*"
+      }
     };
   }
 
   // Get landing page info for a place.
   rpc GetLandingPageData(GetLandingPageDataRequest) returns (GetLandingPageDataResponse) {
     option (google.api.http) = {
-      post: "/landing-page"
-      body: "*"
+      get: "/landing-page"
+      additional_bindings: {
+        post: "/landing-page"
+        body: "*"
+      }
     };
   }
 
   // Translate Sparql Query into translation results.
   rpc Translate(TranslateRequest) returns (TranslateResponse) {
     option (google.api.http) = {
-      post: "/translate"
-      body: "*"
+      get: "/translate"
+      additional_bindings: {
+        post: "/translate"
+        body: "*"
+      }
     };
   }
 
@@ -676,6 +709,10 @@ service Mixer {
       returns (GetPlaceStatsVarResponse) {
     option (google.api.http) = {
       get: "/place/stats-var"
+      additional_bindings: {
+        post: "/place/stats-var"
+        body: "*"
+      }
     };
   }
 
@@ -698,8 +735,11 @@ service Mixer {
   rpc GetPlaceStatVarsUnion(GetPlaceStatVarsUnionRequest)
       returns (GetPlaceStatVarsUnionResponse) {
     option (google.api.http) = {
-      post: "/place/stat-vars/union"
-      body: "*"
+      get: "/place/stat-vars/union"
+      additional_bindings: {
+        post: "/place/stat-vars/union"
+        body: "*"
+      }
     };
   }
 
