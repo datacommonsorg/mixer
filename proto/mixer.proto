@@ -546,7 +546,7 @@ service Mixer {
   // type, and population constraining properties.
   rpc GetPlaceObs(GetPlaceObsRequest) returns (SVOCollection) {
     option (google.api.http) = {
-      get: "bulk/place-obs"
+      get: "/bulk/place-obs"
       additional_bindings: {
         post: "/bulk/place-obs"
         body: "*"
