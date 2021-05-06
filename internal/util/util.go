@@ -36,26 +36,16 @@ const (
 	BtPlaceStatsVarPrefix = "d/0/"
 	// BtStatVarGroup is the key for statvar group cache.
 	BtStatVarGroup = "d/1"
-	// BtPopObsPrefix for internal pop obs cache.
-	BtPopObsPrefix = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
 	// BtLandingPagePrefix for place landing page cache.
 	BtLandingPagePrefix = "d/4/"
-	// BtObsAncestorPrefix for the ancestor node of Bigtable.
-	BtObsAncestorPrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.
 	BtTriplesPrefix = "d/7/"
 	// BtArcsPrefix for internal arcs cache.
 	BtArcsPrefix = "d/9/"
-	// BtPopPrefix for population cache.
-	BtPopPrefix = "d/a/"
-	// BtObsPrefix for observation cache.
-	BtObsPrefix = "d/b/"
 	// BtPlacesInPrefix for GetPlacesIn cache.
 	BtPlacesInPrefix = "d/c/"
-	// BtPopPVPrefix for population PVs.
-	BtPopPVPrefix = "d/d/"
 	// BtChartDataPrefix for chart data.
 	BtChartDataPrefix = "d/f/"
 	// BtInPropValPrefix for in-arc prop value.

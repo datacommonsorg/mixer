@@ -38,7 +38,7 @@ func TestGetStatSetSeries(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_stat_set_series")
+		path.Dir(filename), "golden_response/get_stat_set_series")
 
 	for _, c := range []struct {
 		statVars     []string

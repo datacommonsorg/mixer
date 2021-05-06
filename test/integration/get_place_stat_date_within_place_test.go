@@ -36,7 +36,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_place_stat_date_within_place")
+		path.Dir(filename), "golden_response/get_place_stat_date_within_place")
 
 	for _, c := range []struct {
 		ancestorPlace string

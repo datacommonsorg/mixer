@@ -93,7 +93,7 @@ func TestChartConfigRankings(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename),
-		"golden_response/staging/statvar_ranking",
+		"golden_response/statvar_ranking",
 	)
 	for _, c := range []struct {
 		placeType   string

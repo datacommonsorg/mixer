@@ -36,7 +36,7 @@ func TestGetPlaceObs(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_place_obs")
+		path.Dir(filename), "golden_response/get_place_obs")
 
 	for _, c := range []struct {
 		placeType  string

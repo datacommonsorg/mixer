@@ -93,8 +93,6 @@ func setupInternal(
 	return newClient(bqClient, baseTable, branchTable, metadata)
 }
 
-// TODO(shifucun): this is helper functio to test custom project setup. Leave
-// it to use the old project and migrate to new project later.
 func setupBqOnly() (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
