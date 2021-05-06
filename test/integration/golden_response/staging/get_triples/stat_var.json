@@ -8,7 +8,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
@@ -18,17 +18,17 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
-      "objectName": "https://www.datacommons.org",
+      "objectId": "dc/kyzlg31",
+      "objectName": "https://www.census.gov/",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
@@ -38,7 +38,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
@@ -48,7 +48,7 @@
       "objectTypes": [
         "StatVarGroup"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "dc/vec47kj93z2m6",
@@ -288,7 +288,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/yd4sfb"
     },
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
@@ -300,7 +300,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/yd4sfb"
     },
     {
       "subjectId": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
@@ -322,43 +322,43 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
       "predicate": "censusACSTableId",
       "objectValue": "B26108",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
       "predicate": "censusACSTableId",
       "objectValue": "B06001",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
       "predicate": "censusACSTableId",
       "objectValue": "B05001",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
       "predicate": "censusACSTableId",
       "objectValue": "B02001",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
       "predicate": "censusACSTableId",
       "objectValue": "B01003",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person",
       "predicate": "censusACSTableId",
       "objectValue": "B01001",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     }
   ],
   "Count_Person_Female": [
@@ -370,7 +370,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -380,17 +380,17 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person_Female",
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
-      "objectName": "https://www.datacommons.org",
+      "objectId": "dc/kyzlg31",
+      "objectName": "https://www.census.gov/",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -400,7 +400,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -410,7 +410,7 @@
       "objectTypes": [
         "StatVarGroup"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "dc/yhbqx0489qcc",
@@ -482,7 +482,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/mm0nww3"
     },
     {
       "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
@@ -494,7 +494,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/mm0nww3"
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
@@ -506,7 +506,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/jccrh82"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -516,7 +516,7 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -526,7 +526,7 @@
       "objectTypes": [
         "GenderType"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -536,13 +536,13 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     },
     {
       "subjectId": "Count_Person_Female",
       "predicate": "censusACSTableId",
       "objectValue": "B01001",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/kyzlg31"
     }
   ]
 }
