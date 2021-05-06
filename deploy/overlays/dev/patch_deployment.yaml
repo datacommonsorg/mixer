@@ -18,40 +18,37 @@ metadata:
   name: mixer-grpc
 spec:
   selector:
-      matchLabels:
-        app: mixer-grpc
+    matchLabels:
+      app: mixer-grpc
   template:
     spec:
       volumes:
         - name: mixer-grpc-json
           emptyDir: {}
       containers:
-      - name: mixer
-        image: datacommons/mixer
-        imagePullPolicy: Never
-        resources:
-          limits:
-            memory: "1G"
-      - name: esp
-        volumeMounts:
-          - mountPath: /esp
-            name: mixer-grpc-json
-      - name: api-compiler
-        image: datacommons/api-compiler
-        imagePullPolicy: Never
-        command: ["/bin/sh"]
-        args:
-          - "-c"
-          - >
-            cp /output/mixer-grpc.json /esp/ &&
-            while true; do
-              echo "api-compiler running"
-              sleep 3600;
-            done
-        volumeMounts:
-          - name: mixer-grpc-json
-            mountPath: /esp
-        readinessProbe:
-          exec:
-            command: ["ls", "/esp/mixer-grpc.json"]
-          periodSeconds: 1
+        - name: mixer
+          image: datacommons/mixer
+          imagePullPolicy: Never
+        - name: esp
+          volumeMounts:
+            - mountPath: /esp
+              name: mixer-grpc-json
+        - name: api-compiler
+          image: datacommons/api-compiler
+          imagePullPolicy: Never
+          command: ["/bin/sh"]
+          args:
+            - "-c"
+            - >
+              cp /output/mixer-grpc.json /esp/ &&
+              while true; do
+                echo "api-compiler running"
+                sleep 3600;
+              done
+          volumeMounts:
+            - name: mixer-grpc-json
+              mountPath: /esp
+          readinessProbe:
+            exec:
+              command: ["ls", "/esp/mixer-grpc.json"]
+            periodSeconds: 1
