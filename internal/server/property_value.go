@@ -105,7 +105,9 @@ func getPropertyValuesHelper(
 	arcOut bool,
 ) (map[string][]*Node, error) {
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
-	// Add base cache data
+	// Only use base cache data for property value.
+	// TODO(shifucun): perform a systematic check on current cache data and see
+	// if this is still true.
 	return readPropertyValues(ctx, store, rowList)
 }
 
