@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/json"
 
-	mapset "github.com/deckarep/golang-set"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
@@ -106,37 +105,12 @@ func getPropertyValuesHelper(
 	arcOut bool,
 ) (map[string][]*Node, error) {
 	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
-	// Add base cache data
-	nodeMap, err := readPropertyValues(ctx, store, rowList)
-	if err != nil {
-		return nil, err
-	}
-	// Add branch cache data
-	branchNodeMap, err := readPropertyValues(ctx, store, rowList)
-	if err != nil {
-		return nil, err
-	}
-
-	for dcid := range branchNodeMap {
-		branchNodes := branchNodeMap[dcid]
-		baseNodes, exist := nodeMap[dcid]
-		if !exist {
-			nodeMap[dcid] = branchNodes
-		} else if len(branchNodes) > 0 {
-			// Merge branch cache into base cache.
-			itemKeys := mapset.NewSet()
-			for _, n := range baseNodes {
-				itemKeys.Add(n.Dcid + n.Value)
-			}
-			for _, n := range branchNodes {
-				if itemKeys.Contains(n.Dcid + n.Value) {
-					continue
-				}
-				nodeMap[dcid] = append(nodeMap[dcid], n)
-			}
-		}
-	}
-	return nodeMap, nil
+	// Current branch cache is targeted on new stats (without addition of schema etc),
+	// so only use base cache data for property value.
+	//
+	// TODO(shifucun): perform a systematic check on current cache data and see
+	// if this is still true.
+	return readPropertyValues(ctx, store, rowList)
 }
 
 func trimNodes(nodes []*Node, typ string, limit int) []*Node {
