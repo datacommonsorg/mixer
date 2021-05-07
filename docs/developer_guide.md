@@ -95,13 +95,12 @@ protoc \
 ### Start mixer as a gRPC server
 
 Run the following code to start mixer gRPC server
-TODO(shifucun): change store_project to `datcom-store`
 
 ```bash
 # In repo root directory
 go run cmd/main.go \
     --mixer_project=datcom-mixer-staging \
-    --store_project=google.com:datcom-store-dev \
+    --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_table=$(head -1 deploy/storage/bigtable.version) \
     --schema_path=$PWD/deploy/mapping/

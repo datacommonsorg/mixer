@@ -37,7 +37,7 @@ func TestGetStatVarGroup(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_statvar_group")
+		path.Dir(filename), "golden_response/get_statvar_group")
 
 	for _, c := range []struct {
 		place      string

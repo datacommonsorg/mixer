@@ -36,7 +36,7 @@ func TestGetPropertyLabels(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/staging/get_property_labels")
+		path.Dir(filename), "golden_response/get_property_labels")
 
 	for _, c := range []struct {
 		goldenFile string
