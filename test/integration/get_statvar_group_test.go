@@ -40,28 +40,28 @@ func TestGetStatVarGroup(t *testing.T) {
 		path.Dir(filename), "golden_response/get_statvar_group")
 
 	for _, c := range []struct {
-		place      string
+		places     []string
 		goldenFile string
 		checkCount bool
 	}{
 		{
-			"country/GBR",
+			[]string{"country/GBR"},
 			"uk.json",
 			false,
 		},
 		{
-			"badDcid",
+			[]string{"badDcid"},
 			"empty.json",
 			false,
 		},
 		{
-			"",
+			[]string{},
 			"",
 			true,
 		},
 	} {
 		resp, err := client.GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{
-			Place: c.place,
+			Places: c.places,
 		})
 		if err != nil {
 			t.Errorf("could not GetStatVarGroup: %s", err)

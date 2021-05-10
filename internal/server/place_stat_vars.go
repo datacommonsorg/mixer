@@ -97,14 +97,21 @@ func (s *Server) GetPlaceStatVarsUnion(
 	*pb.GetPlaceStatVarsUnionResponse, error) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
+		return nil, status.Error(
+			codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	resp, err := s.GetPlaceStatVars(ctx, &pb.GetPlaceStatVarsRequest{Dcids: dcids})
 	if err != nil {
 		return nil, err
 	}
 	places := resp.GetPlaces()
-	// Get union of the statvars for each place.
+
+	// For single place, return directly.
+	if len(dcids[0]) == 1 {
+		return &pb.GetPlaceStatVarsUnionResponse{StatVars: places[dcids[0]]}, nil
+	}
+
+	// Get union of the statvars for multiple places.
 	set := map[string]bool{}
 	for _, statVars := range places {
 		for _, dcid := range statVars.GetStatVars() {

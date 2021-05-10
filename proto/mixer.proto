@@ -343,7 +343,8 @@ message StatVarGroupNode {
 }
 
 message GetStatVarGroupRequest {
-  string place = 1;
+  repeated string places = 2;
+  reserved 1;
 }
 
 // SVOPlace holds basic information about a DC place along with its associated
