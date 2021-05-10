@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"encoding/json"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -99,31 +98,21 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
 	*pb.StatVarGroups, error) {
-	place := in.GetPlace()
+	places := in.GetPlaces()
 
-	var sv PlaceStatsVar
+	var statVars []string
 	svgResp := &pb.StatVarGroups{}
 
 	// Only read place stat vars when the place is provided.
 	// User can provide any arbitrary dcid, which might not be associated with
 	// stat vars. In this case, an empty response is returned.
-	if place != "" {
-		row, err := s.store.BaseBt().ReadRow(ctx, util.BtPlaceStatsVarPrefix+place)
+	if len(places) > 0 {
+		svUnionResp, err := s.GetPlaceStatVarsUnion(
+			ctx, &pb.GetPlaceStatVarsUnionRequest{Dcids: places})
 		if err != nil {
 			return nil, err
 		}
-		if len(row[util.BtFamily]) == 0 {
-			return svgResp, nil
-		}
-		raw := row[util.BtFamily][0].Value
-		jsonRaw, err := util.UnzipAndDecode(string(raw))
-		if err != nil {
-			return nil, err
-		}
-		err = json.Unmarshal(jsonRaw, &sv)
-		if err != nil {
-			return nil, err
-		}
+		statVars = svUnionResp.StatVars.StatVars
 	}
 
 	// Read stat var group cache data
@@ -144,8 +133,8 @@ func (s *Server) GetStatVarGroup(
 		return nil, err
 	}
 
-	if place != "" {
-		svgResp = filterSVG(svgResp, sv.StatVarIds)
+	if len(places) > 0 {
+		svgResp = filterSVG(svgResp, statVars)
 	}
 	return svgResp, nil
 }
