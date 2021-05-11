@@ -43,7 +43,7 @@ which is compiled using [API Compiler](https://github.com/googleapis/api-compile
 ### Start mixer in minikube
 
 ```bash
-minikube start
+minikube start --memory=6G
 minikube addons enable gcp-auth
 eval $(minikube docker-env)
 kubectl config use-context minikube
