@@ -16,7 +16,9 @@ package server
 
 import (
 	"context"
+	"log"
 	"strings"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
@@ -69,6 +71,7 @@ func getStatSet(
 	ctx context.Context, s *Server, places []string, statVars []string, date string) (
 	*pb.GetStatSetResponse, error) {
 	// Initialize result with stat vars and place dcids.
+	ts := time.Now()
 	result := &pb.GetStatSetResponse{
 		Data: make(map[string]*pb.PlacePointStat),
 	}
@@ -98,6 +101,8 @@ func getStatSet(
 			}
 		}
 	}
+	log.Printf("getStatSet() completed for %d places, %d stat vars, in %s seconds",
+		len(places), len(statVars), time.Now().Sub(ts))
 	return result, nil
 }
 
@@ -130,6 +135,13 @@ func (s *Server) GetStatSetWithinPlace(
 	childType := in.GetChildType()
 	date := in.GetDate()
 
+	log.Printf(
+		"GetStatSetWithinPlace: parentPlace: %s, statVars: %v, childType: %s, date: %s",
+		parentPlace,
+		statVars,
+		childType,
+		date,
+	)
 	if parentPlace == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: parent_place")
