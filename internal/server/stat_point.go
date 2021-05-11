@@ -102,7 +102,7 @@ func getStatSet(
 		}
 	}
 	log.Printf("getStatSet() completed for %d places, %d stat vars, in %s seconds",
-		len(places), len(statVars), time.Now().Sub(ts))
+		len(places), len(statVars), time.Since(ts))
 	return result, nil
 }
 
