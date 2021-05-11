@@ -51,7 +51,7 @@ spec:
           resources:
             limits:
               memory: "3G"
-              cpu: "500m"
+              cpu: "1000m"
           args:
             - --mixer_project=$(MIXER_PROJECT)
             - --store_project=$(STORE_PROJECT)
