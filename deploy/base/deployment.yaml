@@ -52,6 +52,9 @@ spec:
             limits:
               memory: "3G"
               cpu: "1000m"
+            requests:
+              memory: "3G"
+              cpu: "1000m"
           args:
             - --mixer_project=$(MIXER_PROJECT)
             - --store_project=$(STORE_PROJECT)
@@ -116,7 +119,10 @@ spec:
           resources:
             limits:
               memory: "0.5G"
-              cpu: "100m"
+              cpu: "200m"
+            requests:
+              memory: "0.5G"
+              cpu: "200m"
           readinessProbe:
             httpGet:
               path: /healthz

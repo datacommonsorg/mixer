@@ -39,7 +39,7 @@ patchesStrategicMerge:
     metadata:
       name: mixer-grpc
     spec:
-      replicas: 10
+      replicas: 8
   - |-
     apiVersion: extensions/v1beta1
     kind: Ingress
