@@ -79,11 +79,17 @@ brought up here, can not test the REST API.
 
 ### Generate Go proto files
 
-Run the following code to generate Go proto files.
+Install the following packages as a one-time action.
 
 ```bash
+cd ~/   # Be sure there is no go.mod in the local directory
 go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
 go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
+```
+
+Run the following command to generate Go proto files.
+
+```bash
 protoc \
   --proto_path=proto \
   --go_out=internal \
