@@ -1,8 +1,12 @@
 #!/bin/bash
+#
+# A helper script to update the storage versions and prepare a commit for
+# release.
+#
 
-DIR=$(dirname $0)
+DIR=$(dirname "$0")
 
-cd $DIR/..
+cd "$DIR"/..
 VERSION=
 
 function update_version() {
@@ -15,7 +19,7 @@ function update_version() {
   BQ=$(curl https://autopush.datacommons.org/version 2>/dev/null | awk '{ if ($1~/^datcom-store/) print $1; }')
   printf "$BQ" > deploy/storage/bigquery.version
 
-  VERSION=$(echo $BT | sed 's/borgcron_//')
+  VERSION="${BT//borgcron_/}"
 }
 
 function update_proto() {
