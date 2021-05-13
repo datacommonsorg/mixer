@@ -7,7 +7,7 @@ found [here](../deploy/README.md).
 Local development uses [Skaffold](https://skaffold.dev) to manage the build, deploy and
 port forwarding.
 
-## Prerequisit
+## Prerequisite
 
 - Contact DataCommons team to get data access to Cloud Bigtable and BigQuery.
 

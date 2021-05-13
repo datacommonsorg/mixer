@@ -45,7 +45,7 @@ function update_golden() {
 
 function commit() {
   echo ""
-  echo "==== Commiting the change ===="
+  echo "==== Committing the change ===="
   git commit -a -m "Data Release: $VERSION"
 }
 
