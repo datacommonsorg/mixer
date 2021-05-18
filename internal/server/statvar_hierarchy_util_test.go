@@ -47,12 +47,12 @@ func TestGetParentMapping(t *testing.T) {
 				"svgZ": {
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
-							Id:         "sv1",
-							SearchName: "Name 1",
-						},
-						{
 							Id:         "sv2",
 							SearchName: "Name 2",
+						},
+						{
+							Id:         "sv3",
+							SearchName: "Name 3",
 						},
 					},
 				},
@@ -62,6 +62,7 @@ func TestGetParentMapping(t *testing.T) {
 				"svgZ": "svgY",
 				"sv1":  "svgY",
 				"sv2":  "svgZ",
+				"sv3":  "svgZ",
 			},
 		},
 	} {

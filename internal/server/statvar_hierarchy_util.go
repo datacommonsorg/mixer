@@ -33,7 +33,7 @@ type RankingInfo struct {
 	RankingName string
 }
 
-// Gets the raw svg mapping.
+// GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.StatVarGroupNode, error) {
 	svgResp := &pb.StatVarGroups{}
 	row, err := baseTable.ReadRow(ctx, util.BtStatVarGroup)
@@ -55,7 +55,7 @@ func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.S
 	return svgResp.StatVarGroups, nil
 }
 
-// Gets the mapping of svg/sv id to the parent svg for that svg/sv.
+// GetParentSvgMap gets the mapping of svg/sv id to the parent svg for that svg/sv.
 func GetParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string]string {
 	parentSvgMap := map[string]string{}
 	for svgID, svgData := range rawSvg {
@@ -73,11 +73,11 @@ func GetParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string]string {
 	return parentSvgMap
 }
 
-func updateSearchIndex(tokenString string, index map[string]map[string]RankingInfo, nodeId string) {
+func updateSearchIndex(tokenString string, index map[string]map[string]RankingInfo, nodeID string) {
 	processedTokenString := strings.ToLower(tokenString)
 	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
 	tokenList := strings.Fields(processedTokenString)
-	approxNumPv := len(strings.Split(nodeId, "_"))
+	approxNumPv := len(strings.Split(nodeID, "_"))
 	if approxNumPv == 1 {
 		// when approxNumPv is 1, most likely a non human curated PV and we want them
 		// ranked lower (less approxNumPv, higher ranking)
@@ -88,16 +88,16 @@ func updateSearchIndex(tokenString string, index map[string]map[string]RankingIn
 		if _, ok := index[token]; !ok {
 			index[token] = map[string]RankingInfo{}
 		}
-		index[token][nodeId] = rankingInfo
+		index[token][nodeID] = rankingInfo
 	}
 }
 
-// Gets the search index for the stat var hierarchy.
+// GetSearchIndex gets the search index for the stat var hierarchy.
 func GetSearchIndex(rawSvg map[string]*pb.StatVarGroupNode) map[string]map[string]RankingInfo {
 	searchIndex := map[string]map[string]RankingInfo{}
-	for svgId, svgData := range rawSvg {
+	for svgID, svgData := range rawSvg {
 		tokenString := svgData.AbsoluteName
-		updateSearchIndex(tokenString, searchIndex, svgId)
+		updateSearchIndex(tokenString, searchIndex, svgID)
 		for _, svData := range svgData.ChildStatVars {
 			svTokenString := svData.SearchName
 			updateSearchIndex(svTokenString, searchIndex, svData.Id)
