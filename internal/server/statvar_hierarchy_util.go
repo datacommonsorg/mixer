@@ -26,11 +26,14 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+// RankingInfo holds the ranking information for each stat var hierarchy search
+// result.
 type RankingInfo struct {
 	ApproxNumPv int
 	RankingName string
 }
 
+// Gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.StatVarGroupNode, error) {
 	svgResp := &pb.StatVarGroups{}
 	row, err := baseTable.ReadRow(ctx, util.BtStatVarGroup)
@@ -52,17 +55,18 @@ func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.S
 	return svgResp.StatVarGroups, nil
 }
 
+// Gets the mapping of svg/sv id to the parent svg for that svg/sv.
 func GetParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string]string {
 	parentSvgMap := map[string]string{}
-	for svgId, svgData := range rawSvg {
+	for svgID, svgData := range rawSvg {
 		for _, childSvg := range svgData.ChildStatVarGroups {
 			if _, ok := parentSvgMap[childSvg.Id]; !ok {
-				parentSvgMap[childSvg.Id] = svgId
+				parentSvgMap[childSvg.Id] = svgID
 			}
 		}
 		for _, childSv := range svgData.ChildStatVars {
 			if _, ok := parentSvgMap[childSv.Id]; !ok {
-				parentSvgMap[childSv.Id] = svgId
+				parentSvgMap[childSv.Id] = svgID
 			}
 		}
 	}
@@ -88,6 +92,7 @@ func updateSearchIndex(tokenString string, index map[string]map[string]RankingIn
 	}
 }
 
+// Gets the search index for the stat var hierarchy.
 func GetSearchIndex(rawSvg map[string]*pb.StatVarGroupNode) map[string]map[string]RankingInfo {
 	searchIndex := map[string]map[string]RankingInfo{}
 	for svgId, svgData := range rawSvg {

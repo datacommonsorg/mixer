@@ -91,7 +91,7 @@ func setupInternal(
 		return nil, err
 	}
 
-	cache, err := server.NewCache(baseTable, ctx)
+	cache, err := server.NewCache(ctx, baseTable)
 	if err != nil {
 		return nil, err
 	}

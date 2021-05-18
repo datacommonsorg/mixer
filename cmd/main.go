@@ -102,7 +102,7 @@ func main() {
 		}
 
 		// Cache.
-		cache, err = server.NewCache(baseTable, ctx)
+		cache, err = server.NewCache(ctx, baseTable)
 		if err != nil {
 			log.Fatalf("Failed to create cache: %v", err)
 		}

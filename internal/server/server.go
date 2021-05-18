@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
+// Cache holds cached data for the mixer server.
 type Cache struct {
 	ParentSvgMap   map[string]string
 	RawSvg         map[string]*pb.StatVarGroupNode
@@ -180,7 +181,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 }
 
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(baseTable *bigtable.Table, ctx context.Context) (*Cache, error) {
+func NewCache(ctx context.Context, baseTable *bigtable.Table) (*Cache, error) {
 	rawSvg, err := GetRawSvg(ctx, baseTable)
 	if err != nil {
 		return nil, err
