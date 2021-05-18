@@ -30,10 +30,17 @@ import (
 	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/base"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/translator"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
+
+type Cache struct {
+	ParentSvgMap   map[string]string
+	RawSvg         map[string]*pb.StatVarGroupNode
+	SvgSearchIndex map[string]map[string]RankingInfo
+}
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {
@@ -50,6 +57,7 @@ type Metadata struct {
 type Server struct {
 	store    *store.Store
 	metadata *Metadata
+	cache    *Cache
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
@@ -171,14 +179,31 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	return nil
 }
 
+// NewCache initializes the cache for stat var hierarchy.
+func NewCache(baseTable *bigtable.Table, ctx context.Context) (*Cache, error) {
+	rawSvg, err := GetRawSvg(ctx, baseTable)
+	if err != nil {
+		return nil, err
+	}
+	parentSvgMap := GetParentSvgMap(rawSvg)
+	searchIndex := GetSearchIndex(rawSvg)
+	return &Cache{
+		ParentSvgMap:   parentSvgMap,
+		RawSvg:         rawSvg,
+		SvgSearchIndex: searchIndex,
+	}, nil
+}
+
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table,
-	metadata *Metadata) *Server {
+	metadata *Metadata,
+	cache *Cache) *Server {
 	return &Server{
 		store:    store.NewStore(bqClient, baseTable, branchTable),
 		metadata: metadata,
+		cache:    cache,
 	}
 }
