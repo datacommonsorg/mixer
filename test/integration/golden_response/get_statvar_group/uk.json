@@ -1358,6 +1358,211 @@
           "id": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
           "searchName": "Count Of Product With Product Type Mobile Cellular Subscription As Fraction Of Count Person",
           "displayName": "Count Of MobileCellularSubscription As Fraction Of Count Person"
+        },
+        {
+          "id": "dc/0ny9m7k0lzmn5",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Local Business",
+          "displayName": "Covid19MobilityTrend Of LocalBusiness"
+        },
+        {
+          "id": "dc/4c6jn5rz7gel7",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/4eg7509rc5qsf",
+          "searchName": "Policy Extent Of Legislation With Policy Type Debt Or Contract Relief",
+          "displayName": "PolicyExtent Of DebtOrContractRelief"
+        },
+        {
+          "id": "dc/58e1nwlf3b4",
+          "searchName": "Amount Of Legislation With Category COVID 19 Pandemic, Expenditure International Aid Expenditure, Legislation Passed By Government Organization, Policy Type Short Term Spending",
+          "displayName": "Amount Of COVID19Pandemic, InternationalAidExpenditure, GovernmentOrganization, ShortTermSpending"
+        },
+        {
+          "id": "dc/5rm8q9w0ktg15",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/7fmnve6yyc508",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Residence",
+          "displayName": "Covid19MobilityTrend Of Residence"
+        },
+        {
+          "id": "dc/8b9tx5t0pkvvd",
+          "searchName": "Covid 19 Stringency Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19StringencyIndex Of COVID19Pandemic, GovernmentOrganization"
+        },
+        {
+          "id": "dc/cbyv2dhmtlp6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/cmf4pw2gpn1pf",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/ehx7mbn98glvd",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Public Transit Closure, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PublicTransitClosure, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/epjwwz8pd436f",
+          "searchName": "Covid 19 Containment And Health Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19ContainmentAndHealthIndex Of COVID19Pandemic, GovernmentOrganization"
+        },
+        {
+          "id": "dc/fj0rg1pn1y9sc",
+          "searchName": "Covid 19 Economic Support Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19EconomicSupportIndex Of COVID19Pandemic, GovernmentOrganization"
+        },
+        {
+          "id": "dc/gd1dnw2qqvex8",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/gwh28ge42vved",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/k6718pj7zm3w3",
+          "searchName": "Policy Extent Of Legislation With Policy Type International Travel Restriction",
+          "displayName": "PolicyExtent Of InternationalTravelRestriction"
+        },
+        {
+          "id": "dc/lmg7sdbp5jyff",
+          "searchName": "Campaign Extent Of Public Information Campaign With Category COVID 19 Pandemic, Organizer Government Organization, Spatial Coverage All Administrative Areas",
+          "displayName": "CampaignExtent Of COVID19Pandemic, GovernmentOrganization, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/m6dc1gf715hh6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/mfbw50jgv3mpf",
+          "searchName": "Amount Of Legislation With Category COVID 19 Pandemic, Expenditure Vaccine Expenditure, Legislation Passed By Government Organization, Policy Type Short Term Spending",
+          "displayName": "Amount Of COVID19Pandemic, VaccineExpenditure, GovernmentOrganization, ShortTermSpending"
+        },
+        {
+          "id": "dc/mje8p4h6802v3",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/mmw8xlxhcg3f7",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/n9rqwq8d3lcx3",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Grocery Store\u0026Pharmacy",
+          "displayName": "Covid19MobilityTrend Of GroceryStore\u0026Pharmacy"
+        },
+        {
+          "id": "dc/nghthld2vg2j1",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/p49ghylpwz93f",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Park",
+          "displayName": "Covid19MobilityTrend Of Park"
+        },
+        {
+          "id": "dc/p4sh1gklv5mkf",
+          "searchName": "Amount Of Legislation With Category COVID 19 Pandemic, Expenditure Healthcare Expenditure, Legislation Passed By Government Organization, Policy Type Short Term Spending",
+          "displayName": "Amount Of COVID19Pandemic, HealthcareExpenditure, GovernmentOrganization, ShortTermSpending"
+        },
+        {
+          "id": "dc/qbxt2mfr528y6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/qdbhwwr88yhl7",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Transport Hub",
+          "displayName": "Covid19MobilityTrend Of TransportHub"
+        },
+        {
+          "id": "dc/qjr6rytbrb8cc",
+          "searchName": "Covid 19 Response Index Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization",
+          "displayName": "Covid19ResponseIndex Of COVID19Pandemic, GovernmentOrganization"
+        },
+        {
+          "id": "dc/qx5qb5cbem785",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Workplace Closure, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, WorkplaceClosure, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/qz7xe3jx2sfc8",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Public Transit Closure, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PublicTransitClosure, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/rmlel1n5en28h",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Internal Movement Restriction, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, InternalMovementRestriction, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/sgk2bt9k2wrqh",
+          "searchName": "Amount Of Legislation With Category COVID 19 Pandemic, Expenditure Economic Stimulus Expenditure, Legislation Passed By Government Organization, Policy Type Short Term Spending",
+          "displayName": "Amount Of COVID19Pandemic, EconomicStimulusExpenditure, GovernmentOrganization, ShortTermSpending"
+        },
+        {
+          "id": "dc/sp757cedbv057",
+          "searchName": "Policy Extent Of Legislation With Policy Type Testing Eligibility",
+          "displayName": "PolicyExtent Of TestingEligibility"
+        },
+        {
+          "id": "dc/t3tn162x3hc32",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Private Gathering Restriction, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, PrivateGatheringRestriction, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/tbbjnf9bk96yh",
+          "searchName": "Covid 19 Mobility Trend Of Place Visit Event With Place Category Workplace",
+          "displayName": "Covid19MobilityTrend Of Workplace"
+        },
+        {
+          "id": "dc/tchxrqdwfp02f",
+          "searchName": "Campaign Extent Of Public Information Campaign With Category COVID 19 Pandemic, Organizer Government Organization, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "CampaignExtent Of COVID19Pandemic, GovernmentOrganization, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/tqkqfxys6heeb",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage All Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, AllAdministrativeAreas"
+        },
+        {
+          "id": "dc/wjecmxzfw6j27",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type School Closure, Spatial Coverage Spatial Coverage Unknown",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, SchoolClosure, SpatialCoverageUnknown"
+        },
+        {
+          "id": "dc/wye626mejjnh3",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Stay At Home Requirement, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, StayAtHomeRequirement, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/z2mrynz0z0np6",
+          "searchName": "Policy Extent Of Legislation With Category COVID 19 Pandemic, Legislation Passed By Government Organization, Policy Type Income Support, Spatial Coverage Selected Administrative Areas",
+          "displayName": "PolicyExtent Of COVID19Pandemic, GovernmentOrganization, IncomeSupport, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/z6jy58c28k7zh",
+          "searchName": "Campaign Extent Of Public Information Campaign With Category COVID 19 Pandemic, Organizer Government Organization, Spatial Coverage Selected Administrative Areas",
+          "displayName": "CampaignExtent Of COVID19Pandemic, GovernmentOrganization, SelectedAdministrativeAreas"
+        },
+        {
+          "id": "dc/zl73qp466bs28",
+          "searchName": "Policy Extent Of Legislation With Policy Type Contact Tracing",
+          "displayName": "PolicyExtent Of ContactTracing"
         }
       ]
     },
