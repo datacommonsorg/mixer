@@ -24,13 +24,14 @@ import (
 func TestGetParentMapping(t *testing.T) {
 	for _, c := range []struct {
 		input map[string]*pb.StatVarGroupNode
-		want  map[string]string
+		want  map[string][]string
 	}{
 		{
 			map[string]*pb.StatVarGroupNode{
 				"svgX": {
 					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 						{Id: "svgY"},
+						{Id: "svgZ"},
 					},
 				},
 				"svgY": {
@@ -47,22 +48,21 @@ func TestGetParentMapping(t *testing.T) {
 				"svgZ": {
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
-							Id:         "sv2",
-							SearchName: "Name 2",
+							Id:         "sv1",
+							SearchName: "Name 1",
 						},
 						{
-							Id:         "sv3",
-							SearchName: "Name 3",
+							Id:         "sv2",
+							SearchName: "Name 2",
 						},
 					},
 				},
 			},
-			map[string]string{
-				"svgY": "svgX",
-				"svgZ": "svgY",
-				"sv1":  "svgY",
-				"sv2":  "svgZ",
-				"sv3":  "svgZ",
+			map[string][]string{
+				"svgY": []string{"svgX"},
+				"svgZ": []string{"svgX", "svgY"},
+				"sv1":  []string{"svgY", "svgZ"},
+				"sv2":  []string{"svgZ"},
 			},
 		},
 	} {

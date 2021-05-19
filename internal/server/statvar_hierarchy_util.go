@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"sort"
 	"strings"
 
 	"cloud.google.com/go/bigtable"
@@ -29,9 +30,16 @@ import (
 // RankingInfo holds the ranking information for each stat var hierarchy search
 // result.
 type RankingInfo struct {
+	// ApproxNumPv is an estimate of the number of PVs in the sv/svg.
 	ApproxNumPv int
+	// RankingName is the name we will be using to rank this sv/svg against other
+	// sv/svg.
 	RankingName string
 }
+
+// we want non human curated stat vars to be ranked last, so set their number of
+// PVs to a number greater than max number of PVs for a human curated stat var.
+const NonHumanCuratedNumPv = 30
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.StatVarGroupNode, error) {
@@ -56,19 +64,24 @@ func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.S
 }
 
 // GetParentSvgMap gets the mapping of svg/sv id to the parent svg for that svg/sv.
-func GetParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string]string {
-	parentSvgMap := map[string]string{}
+func GetParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]string {
+	parentSvgMap := map[string][]string{}
 	for svgID, svgData := range rawSvg {
 		for _, childSvg := range svgData.ChildStatVarGroups {
 			if _, ok := parentSvgMap[childSvg.Id]; !ok {
-				parentSvgMap[childSvg.Id] = svgID
+				parentSvgMap[childSvg.Id] = []string{}
 			}
+			parentSvgMap[childSvg.Id] = append(parentSvgMap[childSvg.Id], svgID)
 		}
 		for _, childSv := range svgData.ChildStatVars {
 			if _, ok := parentSvgMap[childSv.Id]; !ok {
-				parentSvgMap[childSv.Id] = svgID
+				parentSvgMap[childSv.Id] = []string{}
 			}
+			parentSvgMap[childSv.Id] = append(parentSvgMap[childSv.Id], svgID)
 		}
+	}
+	for _, parentSvgList := range parentSvgMap {
+		sort.Strings(parentSvgList)
 	}
 	return parentSvgMap
 }
@@ -79,9 +92,8 @@ func updateSearchIndex(tokenString string, index map[string]map[string]RankingIn
 	tokenList := strings.Fields(processedTokenString)
 	approxNumPv := len(strings.Split(nodeID, "_"))
 	if approxNumPv == 1 {
-		// when approxNumPv is 1, most likely a non human curated PV and we want them
-		// ranked lower (less approxNumPv, higher ranking)
-		approxNumPv = 30
+		// when approxNumPv is 1, most likely a non human curated PV
+		approxNumPv = NonHumanCuratedNumPv
 	}
 	rankingInfo := RankingInfo{approxNumPv, tokenString}
 	for _, token := range tokenList {
@@ -94,6 +106,7 @@ func updateSearchIndex(tokenString string, index map[string]map[string]RankingIn
 
 // GetSearchIndex gets the search index for the stat var hierarchy.
 func GetSearchIndex(rawSvg map[string]*pb.StatVarGroupNode) map[string]map[string]RankingInfo {
+	// map of token to map of sv/svg id to ranking information.
 	searchIndex := map[string]map[string]RankingInfo{}
 	for svgID, svgData := range rawSvg {
 		tokenString := svgData.AbsoluteName
