@@ -90,6 +90,7 @@ go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-41088
 Run the following command to generate Go proto files.
 
 ```bash
+# In repo root directory
 protoc \
   --proto_path=proto \
   --go_out=internal \
