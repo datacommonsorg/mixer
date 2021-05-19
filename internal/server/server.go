@@ -30,10 +30,23 @@ import (
 	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/base"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/translator"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
+
+// Cache holds cached data for the mixer server.
+type Cache struct {
+	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted
+	// alphabetically.
+	ParentSvg map[string][]string
+	// SvgInfo is a map of svg id to its information.
+	SvgInfo map[string]*pb.StatVarGroupNode
+	// SvgSearchIndex is a map of token to a map of sv/svg Id to its ranking
+	// information.
+	SvgSearchIndex map[string]map[string]RankingInfo
+}
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {
@@ -50,6 +63,7 @@ type Metadata struct {
 type Server struct {
 	store    *store.Store
 	metadata *Metadata
+	cache    *Cache
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
@@ -171,14 +185,31 @@ func (s *Server) SubscribeBranchCacheUpdate(
 	return nil
 }
 
+// NewCache initializes the cache for stat var hierarchy.
+func NewCache(ctx context.Context, baseTable *bigtable.Table) (*Cache, error) {
+	rawSvg, err := GetRawSvg(ctx, baseTable)
+	if err != nil {
+		return nil, err
+	}
+	parentSvgMap := GetParentSvgMap(rawSvg)
+	searchIndex := GetSearchIndex(rawSvg)
+	return &Cache{
+		ParentSvg:      parentSvgMap,
+		SvgInfo:        rawSvg,
+		SvgSearchIndex: searchIndex,
+	}, nil
+}
+
 // NewServer creates a new server instance.
 func NewServer(
 	bqClient *bigquery.Client,
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table,
-	metadata *Metadata) *Server {
+	metadata *Metadata,
+	cache *Cache) *Server {
 	return &Server{
 		store:    store.NewStore(bqClient, baseTable, branchTable),
 		metadata: metadata,
+		cache:    cache,
 	}
 }

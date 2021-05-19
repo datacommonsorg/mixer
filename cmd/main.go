@@ -83,6 +83,7 @@ func main() {
 
 	var baseTable *bigtable.Table
 	var branchTable *bigtable.Table
+	var cache *server.Cache
 	if !*bigqueryOnly {
 		// Base cache
 		baseTable, err = server.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)
@@ -99,6 +100,12 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
+
+		// Cache.
+		cache, err = server.NewCache(ctx, baseTable)
+		if err != nil {
+			log.Fatalf("Failed to create cache: %v", err)
+		}
 	}
 
 	// Metadata.
@@ -108,7 +115,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata)
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly {

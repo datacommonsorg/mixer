@@ -90,7 +90,12 @@ func setupInternal(
 	if err != nil {
 		return nil, err
 	}
-	return newClient(bqClient, baseTable, branchTable, metadata)
+
+	cache, err := server.NewCache(ctx, baseTable)
+	if err != nil {
+		return nil, err
+	}
+	return newClient(bqClient, baseTable, branchTable, metadata, cache)
 }
 
 func setupBqOnly() (pb.MixerClient, error) {
@@ -113,15 +118,16 @@ func setupBqOnly() (pb.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newClient(bqClient, nil, nil, metadata)
+	return newClient(bqClient, nil, nil, metadata, nil)
 }
 
 func newClient(
 	bqClient *bigquery.Client,
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table,
-	metadata *server.Metadata) (pb.MixerClient, error) {
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata)
+	metadata *server.Metadata,
+	cache *server.Cache) (pb.MixerClient, error) {
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)
