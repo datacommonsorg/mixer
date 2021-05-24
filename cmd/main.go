@@ -135,7 +135,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to delete subscriber: %v", err)
 			}
-			log.Printf("Delete subscriber: %v", sub)
+			log.Printf("Deleted subscriber: %v", sub)
 			os.Exit(1)
 		}()
 	}
