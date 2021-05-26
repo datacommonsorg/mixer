@@ -127,6 +127,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 		}
+		// Create a go routine to check server shutdown and delete the subscriber.
 		c := make(chan os.Signal, 1)
 		signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
 		go func() {
