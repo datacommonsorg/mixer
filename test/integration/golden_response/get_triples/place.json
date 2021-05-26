@@ -143,6 +143,36 @@
     {
       "subjectId": "zip/00603",
       "predicate": "geoOverlaps",
+      "objectId": "geoId/72005401302",
+      "objectName": "Census Tract 4013.02, Aguadilla Municipio, Puerto Rico",
+      "objectTypes": [
+        "CensusTract"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/00603",
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/72005400300",
+      "objectName": "Census Tract 4003, Aguadilla Municipio, Puerto Rico",
+      "objectTypes": [
+        "CensusTract"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/00603",
+      "predicate": "geoOverlaps",
+      "objectId": "geoId/72005400100",
+      "objectName": "Census Tract 4001, Aguadilla Municipio, Puerto Rico",
+      "objectTypes": [
+        "CensusTract"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "zip/00603",
+      "predicate": "geoOverlaps",
       "objectId": "geoId/7200516225",
       "objectName": "Ceiba Alta",
       "objectTypes": [
@@ -189,6 +219,48 @@
       "subjectName": "Maleza Alta",
       "subjectTypes": [
         "CensusCountyDivision"
+      ],
+      "predicate": "geoOverlaps",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005401302",
+      "subjectName": "Census Tract 4013.02, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "geoOverlaps",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400300",
+      "subjectName": "Census Tract 4003, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "geoOverlaps",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400100",
+      "subjectName": "Census Tract 4001, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
       ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
@@ -334,6 +406,188 @@
       "subjectName": "Palmar",
       "subjectTypes": [
         "CensusCountyDivision"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005401402",
+      "subjectName": "Census Tract 4014.02, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005401401",
+      "subjectName": "Census Tract 4014.01, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005401301",
+      "subjectName": "Census Tract 4013.01, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005401200",
+      "subjectName": "Census Tract 4012, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005401100",
+      "subjectName": "Census Tract 4011, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005401000",
+      "subjectName": "Census Tract 4010, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400900",
+      "subjectName": "Census Tract 4009, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400800",
+      "subjectName": "Census Tract 4008, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400700",
+      "subjectName": "Census Tract 4007, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400600",
+      "subjectName": "Census Tract 4006, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400502",
+      "subjectName": "Census Tract 4005.02, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400501",
+      "subjectName": "Census Tract 4005.01, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/72005400400",
+      "subjectName": "Census Tract 4004, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
       ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
