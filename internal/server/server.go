@@ -150,11 +150,11 @@ func NewBtTable(
 // SubscribeBranchCacheUpdate subscribe server for branch cache update.
 func (s *Server) SubscribeBranchCacheUpdate(
 	ctx context.Context, pubsubProjectID, branchCacheBucket, subscriberPrefix,
-	pubsubTopic string) error {
+	pubsubTopic string) (*pubsub.Subscription, error) {
 	// Cloud PubSub receiver when branch cache is updated.
 	pubsubClient, err := pubsub.NewClient(ctx, pubsubProjectID)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	// Always create a new subscriber with default expiration date of 2 days.
 	subID := subscriberPrefix + util.RandomString()
@@ -167,7 +167,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 			RetentionDuration: retention,
 		})
 	if err != nil {
-		return err
+		return nil, err
 	}
 	fmt.Printf("Subscriber ID: %s\n", subID)
 	// Start the receiver in a goroutine.
@@ -182,7 +182,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 			log.Printf("Cloud pubsub receive: %v", err)
 		}
 	}()
-	return nil
+	return sub, nil
 }
 
 // NewCache initializes the cache for stat var hierarchy.

@@ -20,6 +20,9 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/datacommonsorg/mixer/internal/healthcheck"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -119,11 +122,23 @@ func main() {
 
 	// Subscribe to cache update
 	if !*bigqueryOnly {
-		err = s.SubscribeBranchCacheUpdate(
+		sub, err := s.SubscribeBranchCacheUpdate(
 			ctx, *storeProject, branchCacheVersionBucket, subscriberPrefix, pubsubTopic)
 		if err != nil {
 			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 		}
+		// Create a go routine to check server shutdown and delete the subscriber.
+		c := make(chan os.Signal, 1)
+		signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
+		go func() {
+			<-c
+			err := sub.Delete(ctx)
+			if err != nil {
+				log.Fatalf("Failed to delete subscriber: %v", err)
+			}
+			log.Printf("Deleted subscriber: %v", sub)
+			os.Exit(1)
+		}()
 	}
 
 	opts := []grpc.ServerOption{}

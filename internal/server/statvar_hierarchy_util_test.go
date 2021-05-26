@@ -59,10 +59,10 @@ func TestGetParentMapping(t *testing.T) {
 				},
 			},
 			map[string][]string{
-				"svgY": []string{"svgX"},
-				"svgZ": []string{"svgX", "svgY"},
-				"sv1":  []string{"svgY", "svgZ"},
-				"sv2":  []string{"svgZ"},
+				"svgY": {"svgX"},
+				"svgZ": {"svgX", "svgY"},
+				"sv1":  {"svgY", "svgZ"},
+				"sv2":  {"svgZ"},
 			},
 		},
 	} {
