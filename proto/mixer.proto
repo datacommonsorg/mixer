@@ -305,12 +305,13 @@ message GetPlaceStatVarsUnionRequest {
   repeated string dcids = 1;
 }
 
+// TODO(shifucun): remove this when GetPlaceStatVarsUnionV1 is live.
 // Response message for GetPlaceStatVarsUnion API.
 message GetPlaceStatVarsUnionResponse {
   StatVars stat_vars = 1;
 }
 
-// Response message for GetPlaceStatVarsUnion API.
+// Response message for GetPlaceStatVarsUnionV1 API.
 message GetPlaceStatVarsUnionResponseV1 {
   repeated string stat_vars = 1;
 }

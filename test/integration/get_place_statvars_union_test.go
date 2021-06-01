@@ -49,7 +49,7 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 			continue
 		}
 		if len(resp.StatVars) < c.minCount {
-			t.Errorf("Less than %d stats vars", c.minCount)
+			t.Errorf("Less than %d stat vars", c.minCount)
 		}
 		statsVarSet := map[string]bool{}
 		for _, statsVar := range resp.StatVars {
@@ -57,7 +57,7 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 		}
 		for _, statsVar := range c.want {
 			if _, ok := statsVarSet[statsVar]; !ok {
-				t.Errorf("%s is not in the stats var union", statsVar)
+				t.Errorf("%s is not in the stat vars union", statsVar)
 				continue
 			}
 		}
