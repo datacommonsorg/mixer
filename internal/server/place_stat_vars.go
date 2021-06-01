@@ -125,6 +125,7 @@ func (s *Server) GetPlaceStatVarsUnion(
 	}, nil
 }
 
+// GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
 func (s *Server) GetPlaceStatVarsUnionV1(
 	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
 	*pb.GetPlaceStatVarsUnionResponseV1, error) {
