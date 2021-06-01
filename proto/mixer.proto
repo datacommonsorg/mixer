@@ -310,6 +310,11 @@ message GetPlaceStatVarsUnionResponse {
   StatVars stat_vars = 1;
 }
 
+// Response message for GetPlaceStatVarsUnion API.
+message GetPlaceStatVarsUnionResponseV1 {
+  repeated string stat_vars = 1;
+}
+
 message StatVarGroups {
   // Key is StatVarGroup ID.
   map<string, StatVarGroupNode> stat_var_groups = 1;
@@ -733,6 +738,17 @@ service Mixer {
 
   // Given a list of place dcids, returns the union of available
   // statistical variables for the places.
+  rpc GetPlaceStatVarsUnionV1(GetPlaceStatVarsUnionRequest)
+      returns (GetPlaceStatVarsUnionResponseV1) {
+    option (google.api.http) = {
+      get: "/v1/place/stat-vars/union"
+      additional_bindings: {
+        post: "/v1/place/stat-vars/union"
+        body: "*"
+      }
+    };
+  }
+  // TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnion is live
   rpc GetPlaceStatVarsUnion(GetPlaceStatVarsUnionRequest)
       returns (GetPlaceStatVarsUnionResponse) {
     option (google.api.http) = {
