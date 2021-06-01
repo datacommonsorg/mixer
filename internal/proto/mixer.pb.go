@@ -2035,6 +2035,54 @@ func (x *GetPlaceStatVarsUnionResponse) GetStatVars() *StatVars {
 	return nil
 }
 
+// Response message for GetPlaceStatVarsUnion API.
+type GetPlaceStatVarsUnionResponseV1 struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StatVars []string `protobuf:"bytes,1,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
+}
+
+func (x *GetPlaceStatVarsUnionResponseV1) Reset() {
+	*x = GetPlaceStatVarsUnionResponseV1{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_mixer_proto_msgTypes[36]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetPlaceStatVarsUnionResponseV1) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPlaceStatVarsUnionResponseV1) ProtoMessage() {}
+
+func (x *GetPlaceStatVarsUnionResponseV1) ProtoReflect() protoreflect.Message {
+	mi := &file_mixer_proto_msgTypes[36]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPlaceStatVarsUnionResponseV1.ProtoReflect.Descriptor instead.
+func (*GetPlaceStatVarsUnionResponseV1) Descriptor() ([]byte, []int) {
+	return file_mixer_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *GetPlaceStatVarsUnionResponseV1) GetStatVars() []string {
+	if x != nil {
+		return x.StatVars
+	}
+	return nil
+}
+
 type StatVarGroups struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2047,7 +2095,7 @@ type StatVarGroups struct {
 func (x *StatVarGroups) Reset() {
 	*x = StatVarGroups{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[36]
+		mi := &file_mixer_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2060,7 +2108,7 @@ func (x *StatVarGroups) String() string {
 func (*StatVarGroups) ProtoMessage() {}
 
 func (x *StatVarGroups) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[36]
+	mi := &file_mixer_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2073,7 +2121,7 @@ func (x *StatVarGroups) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatVarGroups.ProtoReflect.Descriptor instead.
 func (*StatVarGroups) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{36}
+	return file_mixer_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *StatVarGroups) GetStatVarGroups() map[string]*StatVarGroupNode {
@@ -2100,7 +2148,7 @@ type StatVarGroupNode struct {
 func (x *StatVarGroupNode) Reset() {
 	*x = StatVarGroupNode{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[37]
+		mi := &file_mixer_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2113,7 +2161,7 @@ func (x *StatVarGroupNode) String() string {
 func (*StatVarGroupNode) ProtoMessage() {}
 
 func (x *StatVarGroupNode) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[37]
+	mi := &file_mixer_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2126,7 +2174,7 @@ func (x *StatVarGroupNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatVarGroupNode.ProtoReflect.Descriptor instead.
 func (*StatVarGroupNode) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{37}
+	return file_mixer_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *StatVarGroupNode) GetAbsoluteName() string {
@@ -2161,7 +2209,7 @@ type GetStatVarGroupRequest struct {
 func (x *GetStatVarGroupRequest) Reset() {
 	*x = GetStatVarGroupRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[38]
+		mi := &file_mixer_proto_msgTypes[39]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2174,7 +2222,7 @@ func (x *GetStatVarGroupRequest) String() string {
 func (*GetStatVarGroupRequest) ProtoMessage() {}
 
 func (x *GetStatVarGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[38]
+	mi := &file_mixer_proto_msgTypes[39]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2187,7 +2235,7 @@ func (x *GetStatVarGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatVarGroupRequest.ProtoReflect.Descriptor instead.
 func (*GetStatVarGroupRequest) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{38}
+	return file_mixer_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *GetStatVarGroupRequest) GetPlaces() []string {
@@ -2218,7 +2266,7 @@ type SVOPlace struct {
 func (x *SVOPlace) Reset() {
 	*x = SVOPlace{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[39]
+		mi := &file_mixer_proto_msgTypes[40]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2231,7 +2279,7 @@ func (x *SVOPlace) String() string {
 func (*SVOPlace) ProtoMessage() {}
 
 func (x *SVOPlace) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[39]
+	mi := &file_mixer_proto_msgTypes[40]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2244,7 +2292,7 @@ func (x *SVOPlace) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SVOPlace.ProtoReflect.Descriptor instead.
 func (*SVOPlace) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{39}
+	return file_mixer_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *SVOPlace) GetName() string {
@@ -2314,7 +2362,7 @@ type SVOObservation struct {
 func (x *SVOObservation) Reset() {
 	*x = SVOObservation{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[40]
+		mi := &file_mixer_proto_msgTypes[41]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2327,7 +2375,7 @@ func (x *SVOObservation) String() string {
 func (*SVOObservation) ProtoMessage() {}
 
 func (x *SVOObservation) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[40]
+	mi := &file_mixer_proto_msgTypes[41]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2340,7 +2388,7 @@ func (x *SVOObservation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SVOObservation.ProtoReflect.Descriptor instead.
 func (*SVOObservation) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{40}
+	return file_mixer_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *SVOObservation) GetDcid() string {
@@ -2450,7 +2498,7 @@ type SVOCollection struct {
 func (x *SVOCollection) Reset() {
 	*x = SVOCollection{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[41]
+		mi := &file_mixer_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2463,7 +2511,7 @@ func (x *SVOCollection) String() string {
 func (*SVOCollection) ProtoMessage() {}
 
 func (x *SVOCollection) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[41]
+	mi := &file_mixer_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2476,7 +2524,7 @@ func (x *SVOCollection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SVOCollection.ProtoReflect.Descriptor instead.
 func (*SVOCollection) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{41}
+	return file_mixer_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *SVOCollection) GetPlaces() []*SVOPlace {
@@ -2502,7 +2550,7 @@ type EntityInfo struct {
 func (x *EntityInfo) Reset() {
 	*x = EntityInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[42]
+		mi := &file_mixer_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2515,7 +2563,7 @@ func (x *EntityInfo) String() string {
 func (*EntityInfo) ProtoMessage() {}
 
 func (x *EntityInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[42]
+	mi := &file_mixer_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2528,7 +2576,7 @@ func (x *EntityInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EntityInfo.ProtoReflect.Descriptor instead.
 func (*EntityInfo) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{42}
+	return file_mixer_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *EntityInfo) GetName() string {
@@ -2579,7 +2627,7 @@ type EntityInfoCollection struct {
 func (x *EntityInfoCollection) Reset() {
 	*x = EntityInfoCollection{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[43]
+		mi := &file_mixer_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2592,7 +2640,7 @@ func (x *EntityInfoCollection) String() string {
 func (*EntityInfoCollection) ProtoMessage() {}
 
 func (x *EntityInfoCollection) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[43]
+	mi := &file_mixer_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2605,7 +2653,7 @@ func (x *EntityInfoCollection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EntityInfoCollection.ProtoReflect.Descriptor instead.
 func (*EntityInfoCollection) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{43}
+	return file_mixer_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *EntityInfoCollection) GetEntities() []*EntityInfo {
@@ -2637,7 +2685,7 @@ type ContainedInPlaceRelation struct {
 func (x *ContainedInPlaceRelation) Reset() {
 	*x = ContainedInPlaceRelation{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[44]
+		mi := &file_mixer_proto_msgTypes[45]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2650,7 +2698,7 @@ func (x *ContainedInPlaceRelation) String() string {
 func (*ContainedInPlaceRelation) ProtoMessage() {}
 
 func (x *ContainedInPlaceRelation) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[44]
+	mi := &file_mixer_proto_msgTypes[45]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2663,7 +2711,7 @@ func (x *ContainedInPlaceRelation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ContainedInPlaceRelation.ProtoReflect.Descriptor instead.
 func (*ContainedInPlaceRelation) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{44}
+	return file_mixer_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ContainedInPlaceRelation) GetParentId() string {
@@ -2714,7 +2762,7 @@ type Triple struct {
 func (x *Triple) Reset() {
 	*x = Triple{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[45]
+		mi := &file_mixer_proto_msgTypes[46]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2727,7 +2775,7 @@ func (x *Triple) String() string {
 func (*Triple) ProtoMessage() {}
 
 func (x *Triple) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[45]
+	mi := &file_mixer_proto_msgTypes[46]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2740,7 +2788,7 @@ func (x *Triple) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Triple.ProtoReflect.Descriptor instead.
 func (*Triple) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{45}
+	return file_mixer_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *Triple) GetSubjectId() string {
@@ -2819,7 +2867,7 @@ type Triples struct {
 func (x *Triples) Reset() {
 	*x = Triples{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[46]
+		mi := &file_mixer_proto_msgTypes[47]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2832,7 +2880,7 @@ func (x *Triples) String() string {
 func (*Triples) ProtoMessage() {}
 
 func (x *Triples) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[46]
+	mi := &file_mixer_proto_msgTypes[47]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2845,7 +2893,7 @@ func (x *Triples) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Triples.ProtoReflect.Descriptor instead.
 func (*Triples) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{46}
+	return file_mixer_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *Triples) GetTriples() []*Triple {
@@ -2877,7 +2925,7 @@ type ProvenanceInfo struct {
 func (x *ProvenanceInfo) Reset() {
 	*x = ProvenanceInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[47]
+		mi := &file_mixer_proto_msgTypes[48]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2890,7 +2938,7 @@ func (x *ProvenanceInfo) String() string {
 func (*ProvenanceInfo) ProtoMessage() {}
 
 func (x *ProvenanceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[47]
+	mi := &file_mixer_proto_msgTypes[48]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2903,7 +2951,7 @@ func (x *ProvenanceInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProvenanceInfo.ProtoReflect.Descriptor instead.
 func (*ProvenanceInfo) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{47}
+	return file_mixer_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ProvenanceInfo) GetProvenanceId() string {
@@ -2939,7 +2987,7 @@ type Provenances struct {
 func (x *Provenances) Reset() {
 	*x = Provenances{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[48]
+		mi := &file_mixer_proto_msgTypes[49]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2952,7 +3000,7 @@ func (x *Provenances) String() string {
 func (*Provenances) ProtoMessage() {}
 
 func (x *Provenances) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[48]
+	mi := &file_mixer_proto_msgTypes[49]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2965,7 +3013,7 @@ func (x *Provenances) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Provenances.ProtoReflect.Descriptor instead.
 func (*Provenances) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{48}
+	return file_mixer_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *Provenances) GetProvenances() []*ProvenanceInfo {
@@ -2988,7 +3036,7 @@ type PropertyLabels struct {
 func (x *PropertyLabels) Reset() {
 	*x = PropertyLabels{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[49]
+		mi := &file_mixer_proto_msgTypes[50]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3001,7 +3049,7 @@ func (x *PropertyLabels) String() string {
 func (*PropertyLabels) ProtoMessage() {}
 
 func (x *PropertyLabels) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[49]
+	mi := &file_mixer_proto_msgTypes[50]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3014,7 +3062,7 @@ func (x *PropertyLabels) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropertyLabels.ProtoReflect.Descriptor instead.
 func (*PropertyLabels) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{49}
+	return file_mixer_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *PropertyLabels) GetInLabels() []string {
@@ -3050,7 +3098,7 @@ type RelatedPlacesInfo struct {
 func (x *RelatedPlacesInfo) Reset() {
 	*x = RelatedPlacesInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[50]
+		mi := &file_mixer_proto_msgTypes[51]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3063,7 +3111,7 @@ func (x *RelatedPlacesInfo) String() string {
 func (*RelatedPlacesInfo) ProtoMessage() {}
 
 func (x *RelatedPlacesInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[50]
+	mi := &file_mixer_proto_msgTypes[51]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3076,7 +3124,7 @@ func (x *RelatedPlacesInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelatedPlacesInfo.ProtoReflect.Descriptor instead.
 func (*RelatedPlacesInfo) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{50}
+	return file_mixer_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *RelatedPlacesInfo) GetRelatedPlaces() []string {
@@ -3136,7 +3184,7 @@ type StatVarGroupNode_ChildSVG struct {
 func (x *StatVarGroupNode_ChildSVG) Reset() {
 	*x = StatVarGroupNode_ChildSVG{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[55]
+		mi := &file_mixer_proto_msgTypes[56]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3149,7 +3197,7 @@ func (x *StatVarGroupNode_ChildSVG) String() string {
 func (*StatVarGroupNode_ChildSVG) ProtoMessage() {}
 
 func (x *StatVarGroupNode_ChildSVG) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[55]
+	mi := &file_mixer_proto_msgTypes[56]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3162,7 +3210,7 @@ func (x *StatVarGroupNode_ChildSVG) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatVarGroupNode_ChildSVG.ProtoReflect.Descriptor instead.
 func (*StatVarGroupNode_ChildSVG) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{37, 0}
+	return file_mixer_proto_rawDescGZIP(), []int{38, 0}
 }
 
 func (x *StatVarGroupNode_ChildSVG) GetId() string {
@@ -3195,7 +3243,7 @@ type StatVarGroupNode_ChildSV struct {
 func (x *StatVarGroupNode_ChildSV) Reset() {
 	*x = StatVarGroupNode_ChildSV{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[56]
+		mi := &file_mixer_proto_msgTypes[57]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3208,7 +3256,7 @@ func (x *StatVarGroupNode_ChildSV) String() string {
 func (*StatVarGroupNode_ChildSV) ProtoMessage() {}
 
 func (x *StatVarGroupNode_ChildSV) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[56]
+	mi := &file_mixer_proto_msgTypes[57]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3221,7 +3269,7 @@ func (x *StatVarGroupNode_ChildSV) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatVarGroupNode_ChildSV.ProtoReflect.Descriptor instead.
 func (*StatVarGroupNode_ChildSV) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{37, 1}
+	return file_mixer_proto_rawDescGZIP(), []int{38, 1}
 }
 
 func (x *StatVarGroupNode_ChildSV) GetId() string {
@@ -3258,7 +3306,7 @@ type SVOPlace_Temp struct {
 func (x *SVOPlace_Temp) Reset() {
 	*x = SVOPlace_Temp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[57]
+		mi := &file_mixer_proto_msgTypes[58]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3271,7 +3319,7 @@ func (x *SVOPlace_Temp) String() string {
 func (*SVOPlace_Temp) ProtoMessage() {}
 
 func (x *SVOPlace_Temp) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[57]
+	mi := &file_mixer_proto_msgTypes[58]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3284,7 +3332,7 @@ func (x *SVOPlace_Temp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SVOPlace_Temp.ProtoReflect.Descriptor instead.
 func (*SVOPlace_Temp) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{39, 0}
+	return file_mixer_proto_rawDescGZIP(), []int{40, 0}
 }
 
 func (x *SVOPlace_Temp) GetChildPlaces() []string {
@@ -3315,7 +3363,7 @@ type SVOObservation_Temp struct {
 func (x *SVOObservation_Temp) Reset() {
 	*x = SVOObservation_Temp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[58]
+		mi := &file_mixer_proto_msgTypes[59]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3328,7 +3376,7 @@ func (x *SVOObservation_Temp) String() string {
 func (*SVOObservation_Temp) ProtoMessage() {}
 
 func (x *SVOObservation_Temp) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[58]
+	mi := &file_mixer_proto_msgTypes[59]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3341,7 +3389,7 @@ func (x *SVOObservation_Temp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SVOObservation_Temp.ProtoReflect.Descriptor instead.
 func (*SVOObservation_Temp) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{40, 0}
+	return file_mixer_proto_rawDescGZIP(), []int{41, 0}
 }
 
 func (x *SVOObservation_Temp) GetObservationAbout() string {
@@ -3376,7 +3424,7 @@ type RelatedPlacesInfo_Ranking struct {
 func (x *RelatedPlacesInfo_Ranking) Reset() {
 	*x = RelatedPlacesInfo_Ranking{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[59]
+		mi := &file_mixer_proto_msgTypes[60]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3389,7 +3437,7 @@ func (x *RelatedPlacesInfo_Ranking) String() string {
 func (*RelatedPlacesInfo_Ranking) ProtoMessage() {}
 
 func (x *RelatedPlacesInfo_Ranking) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[59]
+	mi := &file_mixer_proto_msgTypes[60]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3402,7 +3450,7 @@ func (x *RelatedPlacesInfo_Ranking) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelatedPlacesInfo_Ranking.ProtoReflect.Descriptor instead.
 func (*RelatedPlacesInfo_Ranking) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{50, 0}
+	return file_mixer_proto_rawDescGZIP(), []int{51, 0}
 }
 
 func (x *RelatedPlacesInfo_Ranking) GetInfo() []*RelatedPlacesInfo_Ranking_RankInfo {
@@ -3425,7 +3473,7 @@ type RelatedPlacesInfo_Ranking_RankInfo struct {
 func (x *RelatedPlacesInfo_Ranking_RankInfo) Reset() {
 	*x = RelatedPlacesInfo_Ranking_RankInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mixer_proto_msgTypes[60]
+		mi := &file_mixer_proto_msgTypes[61]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3438,7 +3486,7 @@ func (x *RelatedPlacesInfo_Ranking_RankInfo) String() string {
 func (*RelatedPlacesInfo_Ranking_RankInfo) ProtoMessage() {}
 
 func (x *RelatedPlacesInfo_Ranking_RankInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_mixer_proto_msgTypes[60]
+	mi := &file_mixer_proto_msgTypes[61]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3451,7 +3499,7 @@ func (x *RelatedPlacesInfo_Ranking_RankInfo) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use RelatedPlacesInfo_Ranking_RankInfo.ProtoReflect.Descriptor instead.
 func (*RelatedPlacesInfo_Ranking_RankInfo) Descriptor() ([]byte, []int) {
-	return file_mixer_proto_rawDescGZIP(), []int{50, 0, 0}
+	return file_mixer_proto_rawDescGZIP(), []int{51, 0, 0}
 }
 
 func (x *RelatedPlacesInfo_Ranking_RankInfo) GetRank() int32 {
@@ -3675,6 +3723,10 @@ var file_mixer_proto_rawDesc = []byte{
 	0x09, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53,
 	0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x52, 0x08, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72,
+	0x73, 0x22, 0x3e, 0x0a, 0x1f, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61,
+	0x74, 0x56, 0x61, 0x72, 0x73, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x56, 0x31, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61, 0x72,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72,
 	0x73, 0x22, 0xc7, 0x01, 0x0a, 0x0d, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x47, 0x72, 0x6f,
 	0x75, 0x70, 0x73, 0x12, 0x55, 0x0a, 0x0f, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x5f,
 	0x67, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x64,
@@ -3872,7 +3924,7 @@ var file_mixer_proto_rawDesc = []byte{
 	0x75, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x5f, 0x64, 0x63, 0x69, 0x64,
 	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x44, 0x63, 0x69,
 	0x64, 0x4a, 0x04, 0x08, 0x04, 0x10, 0x05, 0x4a, 0x04, 0x08, 0x05, 0x10, 0x06, 0x4a, 0x04, 0x08,
-	0x06, 0x10, 0x07, 0x32, 0xe9, 0x19, 0x0a, 0x05, 0x4d, 0x69, 0x78, 0x65, 0x72, 0x12, 0x5b, 0x0a,
+	0x06, 0x10, 0x07, 0x32, 0xa1, 0x1b, 0x0a, 0x05, 0x4d, 0x69, 0x78, 0x65, 0x72, 0x12, 0x5b, 0x0a,
 	0x05, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x19, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d,
 	0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x1a, 0x1a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
@@ -4046,41 +4098,52 @@ var file_mixer_proto_rawDesc = []byte{
 	0x73, 0x65, 0x22, 0x2f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x29, 0x12, 0x10, 0x2f, 0x70, 0x6c, 0x61,
 	0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x73, 0x5a, 0x15, 0x22, 0x10,
 	0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x73,
-	0x3a, 0x01, 0x2a, 0x12, 0xab, 0x01, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65,
-	0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x12, 0x29, 0x2e,
-	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50,
-	0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x55, 0x6e, 0x69, 0x6f,
-	0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53,
-	0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x3b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x35, 0x12, 0x16, 0x2f, 0x70,
-	0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x73, 0x2f, 0x75,
-	0x6e, 0x69, 0x6f, 0x6e, 0x5a, 0x1b, 0x22, 0x16, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73,
-	0x74, 0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x73, 0x2f, 0x75, 0x6e, 0x69, 0x6f, 0x6e, 0x3a, 0x01,
-	0x2a, 0x12, 0xcb, 0x01, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74,
-	0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c, 0x61, 0x63,
-	0x65, 0x12, 0x2f, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
-	0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65,
-	0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x30, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
-	0x2e, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74,
-	0x65, 0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x49, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x43, 0x12, 0x1d, 0x2f, 0x70,
-	0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2f, 0x64, 0x61, 0x74, 0x65, 0x2f, 0x77,
-	0x69, 0x74, 0x68, 0x69, 0x6e, 0x2d, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x5a, 0x22, 0x22, 0x1d, 0x2f,
-	0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2f, 0x64, 0x61, 0x74, 0x65, 0x2f,
-	0x77, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x2d, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x3a, 0x01, 0x2a, 0x12,
-	0x8d, 0x01, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x47, 0x72,
-	0x6f, 0x75, 0x70, 0x12, 0x23, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x73, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x47, 0x72, 0x6f, 0x75,
-	0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x47, 0x72,
-	0x6f, 0x75, 0x70, 0x73, 0x22, 0x39, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x33, 0x12, 0x15, 0x2f, 0x70,
-	0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x2d, 0x67, 0x72,
-	0x6f, 0x75, 0x70, 0x5a, 0x1a, 0x22, 0x15, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74,
-	0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x2d, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x3a, 0x01, 0x2a, 0x42,
-	0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x3a, 0x01, 0x2a, 0x12, 0xb5, 0x01, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65,
+	0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x56, 0x31, 0x12,
+	0x29, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65,
+	0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x55, 0x6e,
+	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2c, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63,
+	0x65, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x56, 0x31, 0x22, 0x41, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x3b,
+	0x12, 0x19, 0x2f, 0x76, 0x31, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74,
+	0x2d, 0x76, 0x61, 0x72, 0x73, 0x2f, 0x75, 0x6e, 0x69, 0x6f, 0x6e, 0x5a, 0x1e, 0x22, 0x19, 0x2f,
+	0x76, 0x31, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2d, 0x76, 0x61,
+	0x72, 0x73, 0x2f, 0x75, 0x6e, 0x69, 0x6f, 0x6e, 0x3a, 0x01, 0x2a, 0x12, 0xab, 0x01, 0x0a, 0x15,
+	0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73,
+	0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x12, 0x29, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74,
+	0x56, 0x61, 0x72, 0x73, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x2a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47,
+	0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x55,
+	0x6e, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x3b, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x35, 0x12, 0x16, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61,
+	0x74, 0x2d, 0x76, 0x61, 0x72, 0x73, 0x2f, 0x75, 0x6e, 0x69, 0x6f, 0x6e, 0x5a, 0x1b, 0x22, 0x16,
+	0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x73,
+	0x2f, 0x75, 0x6e, 0x69, 0x6f, 0x6e, 0x3a, 0x01, 0x2a, 0x12, 0xcb, 0x01, 0x0a, 0x1b, 0x47, 0x65,
+	0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x57, 0x69,
+	0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x12, 0x2f, 0x2e, 0x64, 0x61, 0x74, 0x61,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65,
+	0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c,
+	0x61, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x30, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63,
+	0x65, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50,
+	0x6c, 0x61, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x49, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x43, 0x12, 0x1d, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61,
+	0x74, 0x2f, 0x64, 0x61, 0x74, 0x65, 0x2f, 0x77, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x2d, 0x70, 0x6c,
+	0x61, 0x63, 0x65, 0x5a, 0x22, 0x22, 0x1d, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74,
+	0x61, 0x74, 0x2f, 0x64, 0x61, 0x74, 0x65, 0x2f, 0x77, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x2d, 0x70,
+	0x6c, 0x61, 0x63, 0x65, 0x3a, 0x01, 0x2a, 0x12, 0x8d, 0x01, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x53,
+	0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x23, 0x2e, 0x64, 0x61,
+	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61,
+	0x74, 0x56, 0x61, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x1a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53,
+	0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x22, 0x39, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x33, 0x12, 0x15, 0x2f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61,
+	0x74, 0x2d, 0x76, 0x61, 0x72, 0x2d, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5a, 0x1a, 0x22, 0x15, 0x2f,
+	0x70, 0x6c, 0x61, 0x63, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x2d, 0x76, 0x61, 0x72, 0x2d, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x3a, 0x01, 0x2a, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -4095,7 +4158,7 @@ func file_mixer_proto_rawDescGZIP() []byte {
 	return file_mixer_proto_rawDescData
 }
 
-var file_mixer_proto_msgTypes = make([]protoimpl.MessageInfo, 61)
+var file_mixer_proto_msgTypes = make([]protoimpl.MessageInfo, 62)
 var file_mixer_proto_goTypes = []interface{}{
 	(*QueryRequest)(nil),                        // 0: datacommons.QueryRequest
 	(*QueryResponseCell)(nil),                   // 1: datacommons.QueryResponseCell
@@ -4133,87 +4196,88 @@ var file_mixer_proto_goTypes = []interface{}{
 	(*GetPlaceStatVarsResponse)(nil),            // 33: datacommons.GetPlaceStatVarsResponse
 	(*GetPlaceStatVarsUnionRequest)(nil),        // 34: datacommons.GetPlaceStatVarsUnionRequest
 	(*GetPlaceStatVarsUnionResponse)(nil),       // 35: datacommons.GetPlaceStatVarsUnionResponse
-	(*StatVarGroups)(nil),                       // 36: datacommons.StatVarGroups
-	(*StatVarGroupNode)(nil),                    // 37: datacommons.StatVarGroupNode
-	(*GetStatVarGroupRequest)(nil),              // 38: datacommons.GetStatVarGroupRequest
-	(*SVOPlace)(nil),                            // 39: datacommons.SVOPlace
-	(*SVOObservation)(nil),                      // 40: datacommons.SVOObservation
-	(*SVOCollection)(nil),                       // 41: datacommons.SVOCollection
-	(*EntityInfo)(nil),                          // 42: datacommons.EntityInfo
-	(*EntityInfoCollection)(nil),                // 43: datacommons.EntityInfoCollection
-	(*ContainedInPlaceRelation)(nil),            // 44: datacommons.ContainedInPlaceRelation
-	(*Triple)(nil),                              // 45: datacommons.Triple
-	(*Triples)(nil),                             // 46: datacommons.Triples
-	(*ProvenanceInfo)(nil),                      // 47: datacommons.ProvenanceInfo
-	(*Provenances)(nil),                         // 48: datacommons.Provenances
-	(*PropertyLabels)(nil),                      // 49: datacommons.PropertyLabels
-	(*RelatedPlacesInfo)(nil),                   // 50: datacommons.RelatedPlacesInfo
-	nil,                                         // 51: datacommons.GetLocationsRankingsResponse.PayloadEntry
-	nil,                                         // 52: datacommons.GetPlaceStatsVarResponse.PlacesEntry
-	nil,                                         // 53: datacommons.GetPlaceStatVarsResponse.PlacesEntry
-	nil,                                         // 54: datacommons.StatVarGroups.StatVarGroupsEntry
-	(*StatVarGroupNode_ChildSVG)(nil),           // 55: datacommons.StatVarGroupNode.ChildSVG
-	(*StatVarGroupNode_ChildSV)(nil),            // 56: datacommons.StatVarGroupNode.ChildSV
-	(*SVOPlace_Temp)(nil),                       // 57: datacommons.SVOPlace.Temp
-	(*SVOObservation_Temp)(nil),                 // 58: datacommons.SVOObservation.Temp
-	(*RelatedPlacesInfo_Ranking)(nil),           // 59: datacommons.RelatedPlacesInfo.Ranking
-	(*RelatedPlacesInfo_Ranking_RankInfo)(nil),  // 60: datacommons.RelatedPlacesInfo.Ranking.RankInfo
-	(*GetStatsRequest)(nil),                     // 61: datacommons.GetStatsRequest
-	(*GetStatSetSeriesRequest)(nil),             // 62: datacommons.GetStatSetSeriesRequest
-	(*GetStatValueRequest)(nil),                 // 63: datacommons.GetStatValueRequest
-	(*GetStatSeriesRequest)(nil),                // 64: datacommons.GetStatSeriesRequest
-	(*GetStatAllRequest)(nil),                   // 65: datacommons.GetStatAllRequest
-	(*GetStatSetWithinPlaceRequest)(nil),        // 66: datacommons.GetStatSetWithinPlaceRequest
-	(*GetStatSetRequest)(nil),                   // 67: datacommons.GetStatSetRequest
-	(*GetPlaceStatDateWithinPlaceRequest)(nil),  // 68: datacommons.GetPlaceStatDateWithinPlaceRequest
-	(*GetStatsResponse)(nil),                    // 69: datacommons.GetStatsResponse
-	(*GetStatSetSeriesResponse)(nil),            // 70: datacommons.GetStatSetSeriesResponse
-	(*GetStatValueResponse)(nil),                // 71: datacommons.GetStatValueResponse
-	(*GetStatSeriesResponse)(nil),               // 72: datacommons.GetStatSeriesResponse
-	(*GetStatAllResponse)(nil),                  // 73: datacommons.GetStatAllResponse
-	(*GetStatSetResponse)(nil),                  // 74: datacommons.GetStatSetResponse
-	(*GetPlaceStatDateWithinPlaceResponse)(nil), // 75: datacommons.GetPlaceStatDateWithinPlaceResponse
+	(*GetPlaceStatVarsUnionResponseV1)(nil),     // 36: datacommons.GetPlaceStatVarsUnionResponseV1
+	(*StatVarGroups)(nil),                       // 37: datacommons.StatVarGroups
+	(*StatVarGroupNode)(nil),                    // 38: datacommons.StatVarGroupNode
+	(*GetStatVarGroupRequest)(nil),              // 39: datacommons.GetStatVarGroupRequest
+	(*SVOPlace)(nil),                            // 40: datacommons.SVOPlace
+	(*SVOObservation)(nil),                      // 41: datacommons.SVOObservation
+	(*SVOCollection)(nil),                       // 42: datacommons.SVOCollection
+	(*EntityInfo)(nil),                          // 43: datacommons.EntityInfo
+	(*EntityInfoCollection)(nil),                // 44: datacommons.EntityInfoCollection
+	(*ContainedInPlaceRelation)(nil),            // 45: datacommons.ContainedInPlaceRelation
+	(*Triple)(nil),                              // 46: datacommons.Triple
+	(*Triples)(nil),                             // 47: datacommons.Triples
+	(*ProvenanceInfo)(nil),                      // 48: datacommons.ProvenanceInfo
+	(*Provenances)(nil),                         // 49: datacommons.Provenances
+	(*PropertyLabels)(nil),                      // 50: datacommons.PropertyLabels
+	(*RelatedPlacesInfo)(nil),                   // 51: datacommons.RelatedPlacesInfo
+	nil,                                         // 52: datacommons.GetLocationsRankingsResponse.PayloadEntry
+	nil,                                         // 53: datacommons.GetPlaceStatsVarResponse.PlacesEntry
+	nil,                                         // 54: datacommons.GetPlaceStatVarsResponse.PlacesEntry
+	nil,                                         // 55: datacommons.StatVarGroups.StatVarGroupsEntry
+	(*StatVarGroupNode_ChildSVG)(nil),           // 56: datacommons.StatVarGroupNode.ChildSVG
+	(*StatVarGroupNode_ChildSV)(nil),            // 57: datacommons.StatVarGroupNode.ChildSV
+	(*SVOPlace_Temp)(nil),                       // 58: datacommons.SVOPlace.Temp
+	(*SVOObservation_Temp)(nil),                 // 59: datacommons.SVOObservation.Temp
+	(*RelatedPlacesInfo_Ranking)(nil),           // 60: datacommons.RelatedPlacesInfo.Ranking
+	(*RelatedPlacesInfo_Ranking_RankInfo)(nil),  // 61: datacommons.RelatedPlacesInfo.Ranking.RankInfo
+	(*GetStatsRequest)(nil),                     // 62: datacommons.GetStatsRequest
+	(*GetStatSetSeriesRequest)(nil),             // 63: datacommons.GetStatSetSeriesRequest
+	(*GetStatValueRequest)(nil),                 // 64: datacommons.GetStatValueRequest
+	(*GetStatSeriesRequest)(nil),                // 65: datacommons.GetStatSeriesRequest
+	(*GetStatAllRequest)(nil),                   // 66: datacommons.GetStatAllRequest
+	(*GetStatSetWithinPlaceRequest)(nil),        // 67: datacommons.GetStatSetWithinPlaceRequest
+	(*GetStatSetRequest)(nil),                   // 68: datacommons.GetStatSetRequest
+	(*GetPlaceStatDateWithinPlaceRequest)(nil),  // 69: datacommons.GetPlaceStatDateWithinPlaceRequest
+	(*GetStatsResponse)(nil),                    // 70: datacommons.GetStatsResponse
+	(*GetStatSetSeriesResponse)(nil),            // 71: datacommons.GetStatSetSeriesResponse
+	(*GetStatValueResponse)(nil),                // 72: datacommons.GetStatValueResponse
+	(*GetStatSeriesResponse)(nil),               // 73: datacommons.GetStatSeriesResponse
+	(*GetStatAllResponse)(nil),                  // 74: datacommons.GetStatAllResponse
+	(*GetStatSetResponse)(nil),                  // 75: datacommons.GetStatSetResponse
+	(*GetPlaceStatDateWithinPlaceResponse)(nil), // 76: datacommons.GetPlaceStatDateWithinPlaceResponse
 }
 var file_mixer_proto_depIdxs = []int32{
 	1,  // 0: datacommons.QueryResponseRow.cells:type_name -> datacommons.QueryResponseCell
 	2,  // 1: datacommons.QueryResponse.rows:type_name -> datacommons.QueryResponseRow
-	51, // 2: datacommons.GetLocationsRankingsResponse.payload:type_name -> datacommons.GetLocationsRankingsResponse.PayloadEntry
+	52, // 2: datacommons.GetLocationsRankingsResponse.payload:type_name -> datacommons.GetLocationsRankingsResponse.PayloadEntry
 	26, // 3: datacommons.SearchResponse.section:type_name -> datacommons.SearchResultSection
 	27, // 4: datacommons.SearchResultSection.entity:type_name -> datacommons.SearchEntityResult
-	52, // 5: datacommons.GetPlaceStatsVarResponse.places:type_name -> datacommons.GetPlaceStatsVarResponse.PlacesEntry
-	53, // 6: datacommons.GetPlaceStatVarsResponse.places:type_name -> datacommons.GetPlaceStatVarsResponse.PlacesEntry
+	53, // 5: datacommons.GetPlaceStatsVarResponse.places:type_name -> datacommons.GetPlaceStatsVarResponse.PlacesEntry
+	54, // 6: datacommons.GetPlaceStatVarsResponse.places:type_name -> datacommons.GetPlaceStatVarsResponse.PlacesEntry
 	31, // 7: datacommons.GetPlaceStatVarsUnionResponse.stat_vars:type_name -> datacommons.StatVars
-	54, // 8: datacommons.StatVarGroups.stat_var_groups:type_name -> datacommons.StatVarGroups.StatVarGroupsEntry
-	56, // 9: datacommons.StatVarGroupNode.child_stat_vars:type_name -> datacommons.StatVarGroupNode.ChildSV
-	55, // 10: datacommons.StatVarGroupNode.child_stat_var_groups:type_name -> datacommons.StatVarGroupNode.ChildSVG
-	40, // 11: datacommons.SVOPlace.observations:type_name -> datacommons.SVOObservation
-	57, // 12: datacommons.SVOPlace.temp:type_name -> datacommons.SVOPlace.Temp
-	58, // 13: datacommons.SVOObservation.temp:type_name -> datacommons.SVOObservation.Temp
-	39, // 14: datacommons.SVOCollection.places:type_name -> datacommons.SVOPlace
-	42, // 15: datacommons.EntityInfoCollection.entities:type_name -> datacommons.EntityInfo
-	45, // 16: datacommons.Triples.triples:type_name -> datacommons.Triple
-	47, // 17: datacommons.Provenances.provenances:type_name -> datacommons.ProvenanceInfo
-	59, // 18: datacommons.RelatedPlacesInfo.rank_all:type_name -> datacommons.RelatedPlacesInfo.Ranking
-	59, // 19: datacommons.RelatedPlacesInfo.rank_top_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
-	59, // 20: datacommons.RelatedPlacesInfo.rank_bottom_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
-	50, // 21: datacommons.GetLocationsRankingsResponse.PayloadEntry.value:type_name -> datacommons.RelatedPlacesInfo
+	55, // 8: datacommons.StatVarGroups.stat_var_groups:type_name -> datacommons.StatVarGroups.StatVarGroupsEntry
+	57, // 9: datacommons.StatVarGroupNode.child_stat_vars:type_name -> datacommons.StatVarGroupNode.ChildSV
+	56, // 10: datacommons.StatVarGroupNode.child_stat_var_groups:type_name -> datacommons.StatVarGroupNode.ChildSVG
+	41, // 11: datacommons.SVOPlace.observations:type_name -> datacommons.SVOObservation
+	58, // 12: datacommons.SVOPlace.temp:type_name -> datacommons.SVOPlace.Temp
+	59, // 13: datacommons.SVOObservation.temp:type_name -> datacommons.SVOObservation.Temp
+	40, // 14: datacommons.SVOCollection.places:type_name -> datacommons.SVOPlace
+	43, // 15: datacommons.EntityInfoCollection.entities:type_name -> datacommons.EntityInfo
+	46, // 16: datacommons.Triples.triples:type_name -> datacommons.Triple
+	48, // 17: datacommons.Provenances.provenances:type_name -> datacommons.ProvenanceInfo
+	60, // 18: datacommons.RelatedPlacesInfo.rank_all:type_name -> datacommons.RelatedPlacesInfo.Ranking
+	60, // 19: datacommons.RelatedPlacesInfo.rank_top_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
+	60, // 20: datacommons.RelatedPlacesInfo.rank_bottom_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
+	51, // 21: datacommons.GetLocationsRankingsResponse.PayloadEntry.value:type_name -> datacommons.RelatedPlacesInfo
 	28, // 22: datacommons.GetPlaceStatsVarResponse.PlacesEntry.value:type_name -> datacommons.StatsVars
 	31, // 23: datacommons.GetPlaceStatVarsResponse.PlacesEntry.value:type_name -> datacommons.StatVars
-	37, // 24: datacommons.StatVarGroups.StatVarGroupsEntry.value:type_name -> datacommons.StatVarGroupNode
-	60, // 25: datacommons.RelatedPlacesInfo.Ranking.info:type_name -> datacommons.RelatedPlacesInfo.Ranking.RankInfo
+	38, // 24: datacommons.StatVarGroups.StatVarGroupsEntry.value:type_name -> datacommons.StatVarGroupNode
+	61, // 25: datacommons.RelatedPlacesInfo.Ranking.info:type_name -> datacommons.RelatedPlacesInfo.Ranking.RankInfo
 	0,  // 26: datacommons.Mixer.Query:input_type -> datacommons.QueryRequest
 	6,  // 27: datacommons.Mixer.GetPropertyLabels:input_type -> datacommons.GetPropertyLabelsRequest
 	8,  // 28: datacommons.Mixer.GetPropertyValues:input_type -> datacommons.GetPropertyValuesRequest
 	10, // 29: datacommons.Mixer.GetTriples:input_type -> datacommons.GetTriplesRequest
 	14, // 30: datacommons.Mixer.GetPlacesIn:input_type -> datacommons.GetPlacesInRequest
 	13, // 31: datacommons.Mixer.GetPlaceObs:input_type -> datacommons.GetPlaceObsRequest
-	61, // 32: datacommons.Mixer.GetStats:input_type -> datacommons.GetStatsRequest
-	62, // 33: datacommons.Mixer.GetStatSetSeries:input_type -> datacommons.GetStatSetSeriesRequest
-	63, // 34: datacommons.Mixer.GetStatValue:input_type -> datacommons.GetStatValueRequest
-	64, // 35: datacommons.Mixer.GetStatSeries:input_type -> datacommons.GetStatSeriesRequest
-	65, // 36: datacommons.Mixer.GetStatAll:input_type -> datacommons.GetStatAllRequest
-	66, // 37: datacommons.Mixer.GetStatSetWithinPlace:input_type -> datacommons.GetStatSetWithinPlaceRequest
-	67, // 38: datacommons.Mixer.GetStatSet:input_type -> datacommons.GetStatSetRequest
+	62, // 32: datacommons.Mixer.GetStats:input_type -> datacommons.GetStatsRequest
+	63, // 33: datacommons.Mixer.GetStatSetSeries:input_type -> datacommons.GetStatSetSeriesRequest
+	64, // 34: datacommons.Mixer.GetStatValue:input_type -> datacommons.GetStatValueRequest
+	65, // 35: datacommons.Mixer.GetStatSeries:input_type -> datacommons.GetStatSeriesRequest
+	66, // 36: datacommons.Mixer.GetStatAll:input_type -> datacommons.GetStatAllRequest
+	67, // 37: datacommons.Mixer.GetStatSetWithinPlace:input_type -> datacommons.GetStatSetWithinPlaceRequest
+	68, // 38: datacommons.Mixer.GetStatSet:input_type -> datacommons.GetStatSetRequest
 	17, // 39: datacommons.Mixer.GetLocationsRankings:input_type -> datacommons.GetLocationsRankingsRequest
 	16, // 40: datacommons.Mixer.GetRelatedLocations:input_type -> datacommons.GetRelatedLocationsRequest
 	20, // 41: datacommons.Mixer.GetLandingPageData:input_type -> datacommons.GetLandingPageDataRequest
@@ -4222,35 +4286,37 @@ var file_mixer_proto_depIdxs = []int32{
 	24, // 44: datacommons.Mixer.GetVersion:input_type -> datacommons.GetVersionRequest
 	29, // 45: datacommons.Mixer.GetPlaceStatsVar:input_type -> datacommons.GetPlaceStatsVarRequest
 	32, // 46: datacommons.Mixer.GetPlaceStatVars:input_type -> datacommons.GetPlaceStatVarsRequest
-	34, // 47: datacommons.Mixer.GetPlaceStatVarsUnion:input_type -> datacommons.GetPlaceStatVarsUnionRequest
-	68, // 48: datacommons.Mixer.GetPlaceStatDateWithinPlace:input_type -> datacommons.GetPlaceStatDateWithinPlaceRequest
-	38, // 49: datacommons.Mixer.GetStatVarGroup:input_type -> datacommons.GetStatVarGroupRequest
-	3,  // 50: datacommons.Mixer.Query:output_type -> datacommons.QueryResponse
-	7,  // 51: datacommons.Mixer.GetPropertyLabels:output_type -> datacommons.GetPropertyLabelsResponse
-	9,  // 52: datacommons.Mixer.GetPropertyValues:output_type -> datacommons.GetPropertyValuesResponse
-	11, // 53: datacommons.Mixer.GetTriples:output_type -> datacommons.GetTriplesResponse
-	15, // 54: datacommons.Mixer.GetPlacesIn:output_type -> datacommons.GetPlacesInResponse
-	41, // 55: datacommons.Mixer.GetPlaceObs:output_type -> datacommons.SVOCollection
-	69, // 56: datacommons.Mixer.GetStats:output_type -> datacommons.GetStatsResponse
-	70, // 57: datacommons.Mixer.GetStatSetSeries:output_type -> datacommons.GetStatSetSeriesResponse
-	71, // 58: datacommons.Mixer.GetStatValue:output_type -> datacommons.GetStatValueResponse
-	72, // 59: datacommons.Mixer.GetStatSeries:output_type -> datacommons.GetStatSeriesResponse
-	73, // 60: datacommons.Mixer.GetStatAll:output_type -> datacommons.GetStatAllResponse
-	74, // 61: datacommons.Mixer.GetStatSetWithinPlace:output_type -> datacommons.GetStatSetResponse
-	74, // 62: datacommons.Mixer.GetStatSet:output_type -> datacommons.GetStatSetResponse
-	18, // 63: datacommons.Mixer.GetLocationsRankings:output_type -> datacommons.GetLocationsRankingsResponse
-	19, // 64: datacommons.Mixer.GetRelatedLocations:output_type -> datacommons.GetRelatedLocationsResponse
-	21, // 65: datacommons.Mixer.GetLandingPageData:output_type -> datacommons.GetLandingPageDataResponse
-	5,  // 66: datacommons.Mixer.Translate:output_type -> datacommons.TranslateResponse
-	23, // 67: datacommons.Mixer.Search:output_type -> datacommons.SearchResponse
-	25, // 68: datacommons.Mixer.GetVersion:output_type -> datacommons.GetVersionResponse
-	30, // 69: datacommons.Mixer.GetPlaceStatsVar:output_type -> datacommons.GetPlaceStatsVarResponse
-	33, // 70: datacommons.Mixer.GetPlaceStatVars:output_type -> datacommons.GetPlaceStatVarsResponse
-	35, // 71: datacommons.Mixer.GetPlaceStatVarsUnion:output_type -> datacommons.GetPlaceStatVarsUnionResponse
-	75, // 72: datacommons.Mixer.GetPlaceStatDateWithinPlace:output_type -> datacommons.GetPlaceStatDateWithinPlaceResponse
-	36, // 73: datacommons.Mixer.GetStatVarGroup:output_type -> datacommons.StatVarGroups
-	50, // [50:74] is the sub-list for method output_type
-	26, // [26:50] is the sub-list for method input_type
+	34, // 47: datacommons.Mixer.GetPlaceStatVarsUnionV1:input_type -> datacommons.GetPlaceStatVarsUnionRequest
+	34, // 48: datacommons.Mixer.GetPlaceStatVarsUnion:input_type -> datacommons.GetPlaceStatVarsUnionRequest
+	69, // 49: datacommons.Mixer.GetPlaceStatDateWithinPlace:input_type -> datacommons.GetPlaceStatDateWithinPlaceRequest
+	39, // 50: datacommons.Mixer.GetStatVarGroup:input_type -> datacommons.GetStatVarGroupRequest
+	3,  // 51: datacommons.Mixer.Query:output_type -> datacommons.QueryResponse
+	7,  // 52: datacommons.Mixer.GetPropertyLabels:output_type -> datacommons.GetPropertyLabelsResponse
+	9,  // 53: datacommons.Mixer.GetPropertyValues:output_type -> datacommons.GetPropertyValuesResponse
+	11, // 54: datacommons.Mixer.GetTriples:output_type -> datacommons.GetTriplesResponse
+	15, // 55: datacommons.Mixer.GetPlacesIn:output_type -> datacommons.GetPlacesInResponse
+	42, // 56: datacommons.Mixer.GetPlaceObs:output_type -> datacommons.SVOCollection
+	70, // 57: datacommons.Mixer.GetStats:output_type -> datacommons.GetStatsResponse
+	71, // 58: datacommons.Mixer.GetStatSetSeries:output_type -> datacommons.GetStatSetSeriesResponse
+	72, // 59: datacommons.Mixer.GetStatValue:output_type -> datacommons.GetStatValueResponse
+	73, // 60: datacommons.Mixer.GetStatSeries:output_type -> datacommons.GetStatSeriesResponse
+	74, // 61: datacommons.Mixer.GetStatAll:output_type -> datacommons.GetStatAllResponse
+	75, // 62: datacommons.Mixer.GetStatSetWithinPlace:output_type -> datacommons.GetStatSetResponse
+	75, // 63: datacommons.Mixer.GetStatSet:output_type -> datacommons.GetStatSetResponse
+	18, // 64: datacommons.Mixer.GetLocationsRankings:output_type -> datacommons.GetLocationsRankingsResponse
+	19, // 65: datacommons.Mixer.GetRelatedLocations:output_type -> datacommons.GetRelatedLocationsResponse
+	21, // 66: datacommons.Mixer.GetLandingPageData:output_type -> datacommons.GetLandingPageDataResponse
+	5,  // 67: datacommons.Mixer.Translate:output_type -> datacommons.TranslateResponse
+	23, // 68: datacommons.Mixer.Search:output_type -> datacommons.SearchResponse
+	25, // 69: datacommons.Mixer.GetVersion:output_type -> datacommons.GetVersionResponse
+	30, // 70: datacommons.Mixer.GetPlaceStatsVar:output_type -> datacommons.GetPlaceStatsVarResponse
+	33, // 71: datacommons.Mixer.GetPlaceStatVars:output_type -> datacommons.GetPlaceStatVarsResponse
+	36, // 72: datacommons.Mixer.GetPlaceStatVarsUnionV1:output_type -> datacommons.GetPlaceStatVarsUnionResponseV1
+	35, // 73: datacommons.Mixer.GetPlaceStatVarsUnion:output_type -> datacommons.GetPlaceStatVarsUnionResponse
+	76, // 74: datacommons.Mixer.GetPlaceStatDateWithinPlace:output_type -> datacommons.GetPlaceStatDateWithinPlaceResponse
+	37, // 75: datacommons.Mixer.GetStatVarGroup:output_type -> datacommons.StatVarGroups
+	51, // [51:76] is the sub-list for method output_type
+	26, // [26:51] is the sub-list for method input_type
 	26, // [26:26] is the sub-list for extension type_name
 	26, // [26:26] is the sub-list for extension extendee
 	0,  // [0:26] is the sub-list for field type_name
@@ -4696,7 +4762,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatVarGroups); i {
+			switch v := v.(*GetPlaceStatVarsUnionResponseV1); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4708,7 +4774,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatVarGroupNode); i {
+			switch v := v.(*StatVarGroups); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4720,7 +4786,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatVarGroupRequest); i {
+			switch v := v.(*StatVarGroupNode); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4732,7 +4798,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SVOPlace); i {
+			switch v := v.(*GetStatVarGroupRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4744,7 +4810,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SVOObservation); i {
+			switch v := v.(*SVOPlace); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4756,7 +4822,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SVOCollection); i {
+			switch v := v.(*SVOObservation); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4768,7 +4834,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EntityInfo); i {
+			switch v := v.(*SVOCollection); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4780,7 +4846,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EntityInfoCollection); i {
+			switch v := v.(*EntityInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4792,7 +4858,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ContainedInPlaceRelation); i {
+			switch v := v.(*EntityInfoCollection); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4804,7 +4870,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Triple); i {
+			switch v := v.(*ContainedInPlaceRelation); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4816,7 +4882,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Triples); i {
+			switch v := v.(*Triple); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4828,7 +4894,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProvenanceInfo); i {
+			switch v := v.(*Triples); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4840,7 +4906,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Provenances); i {
+			switch v := v.(*ProvenanceInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4852,7 +4918,7 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropertyLabels); i {
+			switch v := v.(*Provenances); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4864,6 +4930,18 @@ func file_mixer_proto_init() {
 			}
 		}
 		file_mixer_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PropertyLabels); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_mixer_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RelatedPlacesInfo); i {
 			case 0:
 				return &v.state
@@ -4875,7 +4953,7 @@ func file_mixer_proto_init() {
 				return nil
 			}
 		}
-		file_mixer_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
+		file_mixer_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarGroupNode_ChildSVG); i {
 			case 0:
 				return &v.state
@@ -4887,7 +4965,7 @@ func file_mixer_proto_init() {
 				return nil
 			}
 		}
-		file_mixer_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
+		file_mixer_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarGroupNode_ChildSV); i {
 			case 0:
 				return &v.state
@@ -4899,7 +4977,7 @@ func file_mixer_proto_init() {
 				return nil
 			}
 		}
-		file_mixer_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
+		file_mixer_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SVOPlace_Temp); i {
 			case 0:
 				return &v.state
@@ -4911,7 +4989,7 @@ func file_mixer_proto_init() {
 				return nil
 			}
 		}
-		file_mixer_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
+		file_mixer_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SVOObservation_Temp); i {
 			case 0:
 				return &v.state
@@ -4923,7 +5001,7 @@ func file_mixer_proto_init() {
 				return nil
 			}
 		}
-		file_mixer_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
+		file_mixer_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RelatedPlacesInfo_Ranking); i {
 			case 0:
 				return &v.state
@@ -4935,7 +5013,7 @@ func file_mixer_proto_init() {
 				return nil
 			}
 		}
-		file_mixer_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
+		file_mixer_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RelatedPlacesInfo_Ranking_RankInfo); i {
 			case 0:
 				return &v.state
@@ -4948,7 +5026,7 @@ func file_mixer_proto_init() {
 			}
 		}
 	}
-	file_mixer_proto_msgTypes[40].OneofWrappers = []interface{}{
+	file_mixer_proto_msgTypes[41].OneofWrappers = []interface{}{
 		(*SVOObservation_StrValue)(nil),
 		(*SVOObservation_DblValue)(nil),
 	}
@@ -4958,7 +5036,7 @@ func file_mixer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_mixer_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   61,
+			NumMessages:   62,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

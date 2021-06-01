@@ -98,7 +98,7 @@ func (s *Server) GetPlaceStatVarsUnion(
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
 		return nil, status.Error(
-			codes.InvalidArgument, "Missing required arguments: dcid")
+			codes.InvalidArgument, "Missing required arguments: dcids")
 	}
 	resp, err := s.GetPlaceStatVars(ctx, &pb.GetPlaceStatVarsRequest{Dcids: dcids})
 	if err != nil {
@@ -122,5 +122,18 @@ func (s *Server) GetPlaceStatVarsUnion(
 		StatVars: &pb.StatVars{
 			StatVars: keysToSlice(set),
 		},
+	}, nil
+}
+
+// GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
+func (s *Server) GetPlaceStatVarsUnionV1(
+	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
+	*pb.GetPlaceStatVarsUnionResponseV1, error) {
+	resp, err := s.GetPlaceStatVarsUnion(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.GetPlaceStatVarsUnionResponseV1{
+		StatVars: resp.StatVars.StatVars,
 	}, nil
 }

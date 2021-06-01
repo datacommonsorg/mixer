@@ -305,9 +305,15 @@ message GetPlaceStatVarsUnionRequest {
   repeated string dcids = 1;
 }
 
+// TODO(shifucun): remove this when GetPlaceStatVarsUnionV1 is live.
 // Response message for GetPlaceStatVarsUnion API.
 message GetPlaceStatVarsUnionResponse {
   StatVars stat_vars = 1;
+}
+
+// Response message for GetPlaceStatVarsUnionV1 API.
+message GetPlaceStatVarsUnionResponseV1 {
+  repeated string stat_vars = 1;
 }
 
 message StatVarGroups {
@@ -733,6 +739,17 @@ service Mixer {
 
   // Given a list of place dcids, returns the union of available
   // statistical variables for the places.
+  rpc GetPlaceStatVarsUnionV1(GetPlaceStatVarsUnionRequest)
+      returns (GetPlaceStatVarsUnionResponseV1) {
+    option (google.api.http) = {
+      get: "/v1/place/stat-vars/union"
+      additional_bindings: {
+        post: "/v1/place/stat-vars/union"
+        body: "*"
+      }
+    };
+  }
+  // TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnion is live
   rpc GetPlaceStatVarsUnion(GetPlaceStatVarsUnionRequest)
       returns (GetPlaceStatVarsUnionResponse) {
     option (google.api.http) = {
