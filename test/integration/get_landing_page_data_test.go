@@ -53,13 +53,13 @@ func TestGetLandingPageData(t *testing.T) {
 			"tha.json",
 			"country/THA",
 			1,
-			[]string{"Amount_Stock", "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"},
+			[]string{},
 		},
 		{
 			"county.json",
 			"geoId/06085",
 			1,
-			[]string{},
+			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
 		},
 		{
 			"city.json",
@@ -71,7 +71,7 @@ func TestGetLandingPageData(t *testing.T) {
 			"zuid-nederland.json",
 			"nuts/NL4",
 			1,
-			[]string{"Count_Person"},
+			[]string{},
 		},
 	} {
 		req := &pb.GetLandingPageDataRequest{

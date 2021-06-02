@@ -1923,6 +1923,16 @@
             "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 11514062
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 18810699,
@@ -12384,6 +12394,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 969601
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 1582291,
@@ -20976,6 +20996,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 25411
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 42032,
@@ -26264,6 +26294,16 @@
             "2017": 50943,
             "2018": 50953,
             "2019": 51483
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 30222
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -31619,6 +31659,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 29131
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 54554,
@@ -36865,6 +36915,16 @@
             "2017": 74492,
             "2018": 76493,
             "2019": 77439
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 55414
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -42157,6 +42217,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 13599
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 23721,
@@ -47427,6 +47497,16 @@
             "2017": 18443,
             "2018": 18535,
             "2019": 18498
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 8668
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -52724,6 +52804,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 37996
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 60555,
@@ -57956,6 +58046,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 1218
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 2444,
@@ -61956,6 +62056,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 1062
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 1978,
@@ -65948,6 +66058,16 @@
             "2017": 35881,
             "2018": 35631,
             "2019": 35831
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 20796
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -69958,6 +70078,16 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 2934
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_HousingUnit_2000To2009DateBuilt": {
           "val": {
             "2012": 5090,
@@ -73953,6 +74083,16 @@
             "2017": 6050,
             "2018": 6214,
             "2019": 6566
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 2226
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -78025,6 +78165,16 @@
             "2017": 127714,
             "2018": 127936,
             "2019": 132568
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 87413
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -83346,6 +83496,16 @@
             "2017": 80271,
             "2018": 79772,
             "2019": 79390
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 57201
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -88692,6 +88852,16 @@
             "2017": 123377,
             "2018": 123209,
             "2019": 123124
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_HousingUnit_2000To2004DateBuilt": {
+          "val": {
+            "2011": 68972
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
