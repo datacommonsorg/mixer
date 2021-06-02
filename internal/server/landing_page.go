@@ -267,14 +267,17 @@ func fetchBtData(
 		if err != nil {
 			return nil, err
 		}
+		// Add addtional data to the cache result
 		for place, seriesMap := range resp.Data {
 			for statVar, series := range seriesMap.Data {
-				if result[place] != nil {
-					result[place].Data[statVar] = series
+				if result[place] == nil {
+					result[place] = &pb.StatVarSeries{}
 				}
+				result[place].Data[statVar] = series
 			}
 		}
 	}
+	// Delete the empty entries. This will be moved to cache generation.
 	for _, statVarSeries := range result {
 		for statVar, series := range statVarSeries.Data {
 			if series == nil {
