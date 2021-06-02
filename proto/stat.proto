@@ -98,8 +98,23 @@ message ChartStore {
   }
 }
 
+// TODO(shifucun): deprecate this and use StatVarSeries when migrating
+// /stat/all to v1.
 message PlaceStat {
+  // Key is stat var dcid.
   map<string, ObsTimeSeries> stat_var_data = 3;
+}
+
+// This is effectively the same proto as PlaceStat with different field name.
+// This is used to match the landing page cache data.
+message StatVarObsSeries {
+  // Key is stat var dcid.
+  map<string, ObsTimeSeries> data = 3;
+}
+
+message StatVarSeries {
+  // Key is stat var dcid.
+  map<string, Series> data = 3;
 }
 
 // Request message for GetStats.

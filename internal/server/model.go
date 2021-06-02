@@ -110,25 +110,3 @@ type ObsTimeSeries struct {
 	SourceSeries  []*SourceSeries    `json:"sourceSeries,omitempty"`
 	ProvenanceURL string             `json:"provenanceUrl,omitempty"`
 }
-
-// LandingPageData represents the landing page cache data.
-type LandingPageData struct {
-	Data map[string]*ObsTimeSeries `json:"data,omitempty"`
-}
-
-type place struct {
-	Dcid string `json:"dcid,omitempty"`
-	Name string `json:"name,omitempty"`
-	Pop  int32  `json:"pop,omitempty"`
-}
-
-// LandingPageResponse represents all the data needed for rendering landing page.
-type LandingPageResponse struct {
-	Data            map[string]map[string]*ObsTimeSeries `json:"data,omitempty"`
-	AllChildPlaces  map[string][]*place                  `json:"allChildPlaces,omitempty"`
-	ChildPlacesType string                               `json:"childPlacesType,omitempty"`
-	ChildPlaces     []string                             `json:"childPlaces,omitempty"`
-	ParentPlaces    []string                             `json:"parentPlaces,omitempty"`
-	SimilarPlaces   []string                             `json:"similarPlaces,omitempty"`
-	NearbyPlaces    []string                             `json:"nearbyPlaces,omitempty"`
-}

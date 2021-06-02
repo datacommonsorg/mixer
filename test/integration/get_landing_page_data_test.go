@@ -22,7 +22,6 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -85,20 +84,14 @@ func TestGetLandingPageData(t *testing.T) {
 			t.Errorf("could not GetLandingPageData: %s", err)
 			continue
 		}
-		var result server.LandingPageResponse
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile, true /* shared */)
+			updateProtoGolden(resp, goldenFile, true /* shared */)
 			continue
 		}
 
-		var expected server.LandingPageResponse
+		var expected pb.GetLandingPageResponse
 		bytes, err := readJSONShard(goldenPath, c.goldenFile)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
@@ -109,7 +102,7 @@ func TestGetLandingPageData(t *testing.T) {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(&result, &expected); diff != "" {
+		if diff := cmp.Diff(&resp, &expected); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
