@@ -17,7 +17,6 @@ package integration
 import (
 	"context"
 	"encoding/json"
-	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
@@ -100,8 +99,12 @@ func TestGetLandingPageData(t *testing.T) {
 		}
 
 		var expected server.LandingPageResponse
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
+		bytes, err := readJsonShard(goldenPath, c.goldenFile)
+		if err != nil {
+			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
+			continue
+		}
+		err = json.Unmarshal(bytes, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue

@@ -19,10 +19,12 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"io/fs"
 	"io/ioutil"
 	"log"
 	"net"
 	"path"
+	"path/filepath"
 	"runtime"
 	"strings"
 
@@ -226,4 +228,31 @@ func writeJsonShard(jsonByte []byte, fname string) {
 			break
 		}
 	}
+}
+
+func find(path, fname string) []string {
+	var result []string
+	filepath.WalkDir(path, func(s string, d fs.DirEntry, e error) error {
+		if e != nil {
+			return e
+		}
+		if strings.Contains(s, fname) {
+			result = append(result, s)
+		}
+		return nil
+	})
+	return result
+}
+
+func readJsonShard(path, fname string) ([]byte, error) {
+	fileNames := find(path, fname)
+	allBytes := []byte{}
+	for _, name := range fileNames {
+		bytes, err := ioutil.ReadFile(name)
+		if err != nil {
+			return nil, err
+		}
+		allBytes = append(allBytes, bytes...)
+	}
+	return allBytes, nil
 }
