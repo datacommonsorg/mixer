@@ -18,10 +18,13 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
+	"fmt"
+	"io/fs"
 	"io/ioutil"
 	"log"
 	"net"
 	"path"
+	"path/filepath"
 	"runtime"
 	"strings"
 
@@ -50,6 +53,7 @@ const (
 	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
 	store            = "datcom-store"
+	lineLimit        = 10000
 )
 
 func setup() (pb.MixerClient, error) {
@@ -166,15 +170,22 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	return server.SetupBigtable(ctx, data)
 }
 
-func updateGolden(v interface{}, fname string) {
+func updateGolden(v interface{}, fname string, shard ...bool) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
-	err := ioutil.WriteFile(fname, jsonByte, 0644)
+	var err error
+	if len(shard) == 1 && shard[0] {
+		err = writeJSONShard(jsonByte, fname)
+	} else {
+		err = ioutil.WriteFile(fname, jsonByte, 0644)
+	}
 	if err != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
 }
 
-func updateProtoGolden(resp protoreflect.ProtoMessage, fname string) {
+func updateProtoGolden(
+	resp protoreflect.ProtoMessage, fname string, shard ...bool) {
+	var err error
 	marshaller := protojson.MarshalOptions{Indent: ""}
 	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
 	// Use encoding/json to get stable output.
@@ -189,8 +200,66 @@ func updateProtoGolden(resp protoreflect.ProtoMessage, fname string) {
 		log.Printf("could not write golden files to %s", fname)
 		return
 	}
-	err = ioutil.WriteFile(fname, jsonByte, 0644)
+	if len(shard) == 1 && shard[0] {
+		err = writeJSONShard(jsonByte, fname)
+	} else {
+		err = ioutil.WriteFile(fname, jsonByte, 0644)
+	}
 	if err != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
+}
+
+func writeJSONShard(jsonByte []byte, fname string) error {
+	jsonLines := strings.Split(string(jsonByte), "\n")
+	for i := 0; ; i++ {
+		start := i * lineLimit
+		end := (i + 1) * lineLimit
+		if end > len(jsonLines) {
+			end = len(jsonLines)
+		}
+		err := ioutil.WriteFile(
+			fmt.Sprintf("%s.%03d", fname, i),
+			[]byte(strings.Join(jsonLines[start:end], "\n")),
+			0644,
+		)
+		if err != nil {
+			return err
+		}
+		if end == len(jsonLines) {
+			break
+		}
+	}
+	return nil
+}
+
+func find(path, fname string) ([]string, error) {
+	var result []string
+	// WalkDir outputs is lexically sorted
+	err := filepath.WalkDir(path, func(s string, d fs.DirEntry, e error) error { //nolint
+		if e != nil {
+			return e
+		}
+		if strings.Contains(s, fname) {
+			result = append(result, s)
+		}
+		return nil
+	})
+	return result, err
+}
+
+func readJSONShard(path, fname string) ([]byte, error) {
+	fileNames, err := find(path, fname)
+	if err != nil {
+		return nil, err
+	}
+	allBytes := []byte{}
+	for _, name := range fileNames {
+		bytes, err := ioutil.ReadFile(name)
+		if err != nil {
+			return nil, err
+		}
+		allBytes = append(allBytes, bytes...)
+	}
+	return allBytes, nil
 }

@@ -23,7 +23,7 @@
 
 # =========  protoc stage ==========
 
-FROM golang:1.15 AS go-protoc
+FROM golang:1.16 AS go-protoc
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -73,7 +73,7 @@ ENTRYPOINT ["/go/bin/mixer"]
 FROM base as test
 WORKDIR /mixer
 # Golint
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.27.0
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.33.0
 RUN ./bin/golangci-lint run --timeout=600s
 # Test
 COPY test/ test
