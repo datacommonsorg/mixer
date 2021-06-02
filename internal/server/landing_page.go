@@ -258,7 +258,7 @@ func fetchBtData(
 		result[dcid] = finalData
 	}
 
-	// Fetch addtioinal stats as requested.
+	// Fetch additional stats as requested.
 	if len(statVars) > 0 {
 		resp, err := s.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
 			Places:   places,
@@ -267,11 +267,11 @@ func fetchBtData(
 		if err != nil {
 			return nil, err
 		}
-		// Add addtional data to the cache result
+		// Add additional data to the cache result
 		for place, seriesMap := range resp.Data {
 			for statVar, series := range seriesMap.Data {
 				if result[place] == nil {
-					result[place] = &pb.StatVarSeries{}
+					result[place] = &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 				}
 				result[place].Data[statVar] = series
 			}
@@ -523,7 +523,7 @@ func (s *Server) GetLandingPageData(
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	seed := in.GetSeed()
-	statVars := in.GetStatVars()
+	extraStatVars := in.GetExtraStatVars()
 
 	placeType, err := getPlaceType(ctx, s, placeDcid)
 	if err != nil {
@@ -605,7 +605,7 @@ func (s *Server) GetLandingPageData(
 		}
 		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
-	statData, err := fetchBtData(ctx, s, allPlaces, statVars)
+	statData, err := fetchBtData(ctx, s, allPlaces, extraStatVars)
 	if err != nil {
 		return nil, err
 	}

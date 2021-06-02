@@ -135,7 +135,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
-	// Need to fetch addtional information for observation node.
+	// Need to fetch additional information for observation node.
 	var regDcids, obsDcids []string
 	for _, dcid := range dcids {
 		if strings.HasPrefix(dcid, "dc/o/") {

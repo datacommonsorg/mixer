@@ -109,12 +109,15 @@ message PlaceStat {
 // This is used to match the landing page cache data.
 message StatVarObsSeries {
   // Key is stat var dcid.
-  map<string, ObsTimeSeries> data = 3;
+  map<string, ObsTimeSeries> data = 1;
 }
 
+// Hold mapping from stat var id to Series struct. This is different from StatVarObsSeries
+// that the "Series" is processed time series with metadata while "ObsTimeSeries"
+// is the raw series from cache.
 message StatVarSeries {
   // Key is stat var dcid.
-  map<string, Series> data = 3;
+  map<string, Series> data = 1;
 }
 
 // Request message for GetStats.
