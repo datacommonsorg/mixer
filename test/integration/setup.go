@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net"
@@ -50,6 +51,7 @@ const (
 	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
 	store            = "datcom-store"
+	lineLimit        = 10000
 )
 
 func setup() (pb.MixerClient, error) {
@@ -166,15 +168,20 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	return server.SetupBigtable(ctx, data)
 }
 
-func updateGolden(v interface{}, fname string) {
+func updateGolden(v interface{}, fname string, shard ...bool) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
-	err := ioutil.WriteFile(fname, jsonByte, 0644)
-	if err != nil {
-		log.Printf("could not write golden files to %s", fname)
+	if len(shard) == 1 && shard[0] {
+		writeJsonShard(jsonByte, fname)
+	} else {
+		err := ioutil.WriteFile(fname, jsonByte, 0644)
+		if err != nil {
+			log.Printf("could not write golden files to %s", fname)
+		}
 	}
 }
 
-func updateProtoGolden(resp protoreflect.ProtoMessage, fname string) {
+func updateProtoGolden(
+	resp protoreflect.ProtoMessage, fname string, shard ...bool) {
 	marshaller := protojson.MarshalOptions{Indent: ""}
 	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
 	// Use encoding/json to get stable output.
@@ -189,8 +196,34 @@ func updateProtoGolden(resp protoreflect.ProtoMessage, fname string) {
 		log.Printf("could not write golden files to %s", fname)
 		return
 	}
-	err = ioutil.WriteFile(fname, jsonByte, 0644)
-	if err != nil {
-		log.Printf("could not write golden files to %s", fname)
+	if len(shard) == 1 && shard[0] {
+		writeJsonShard(jsonByte, fname)
+	} else {
+		err = ioutil.WriteFile(fname, jsonByte, 0644)
+		if err != nil {
+			log.Printf("could not write golden files to %s", fname)
+		}
+	}
+}
+
+func writeJsonShard(jsonByte []byte, fname string) {
+	jsonLines := strings.Split(string(jsonByte), "\n")
+	for i := 0; ; i++ {
+		start := i * lineLimit
+		end := (i + 1) * lineLimit
+		if end > len(jsonLines) {
+			end = len(jsonLines)
+		}
+		err := ioutil.WriteFile(
+			fmt.Sprintf("%s.%03d", fname, i),
+			[]byte(strings.Join(jsonLines[start:end], "\n")),
+			0644,
+		)
+		if err != nil {
+			log.Printf("could not write golden files to %s", fname)
+		}
+		if end == len(jsonLines) {
+			break
+		}
 	}
 }
