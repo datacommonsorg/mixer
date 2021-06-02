@@ -61,7 +61,7 @@ type MixerClient interface {
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error)
 	// Get landing page info for a place.
-	GetLandingPageData(ctx context.Context, in *GetLandingPageDataRequest, opts ...grpc.CallOption) (*GetLandingPageResponse, error)
+	GetLandingPageData(ctx context.Context, in *GetLandingPageDataRequest, opts ...grpc.CallOption) (*GetLandingPageDataResponse, error)
 	// Translate Sparql Query into translation results.
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -230,8 +230,8 @@ func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *GetRelatedLoc
 	return out, nil
 }
 
-func (c *mixerClient) GetLandingPageData(ctx context.Context, in *GetLandingPageDataRequest, opts ...grpc.CallOption) (*GetLandingPageResponse, error) {
-	out := new(GetLandingPageResponse)
+func (c *mixerClient) GetLandingPageData(ctx context.Context, in *GetLandingPageDataRequest, opts ...grpc.CallOption) (*GetLandingPageDataResponse, error) {
+	out := new(GetLandingPageDataResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetLandingPageData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -368,7 +368,7 @@ type MixerServer interface {
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error)
 	// Get landing page info for a place.
-	GetLandingPageData(context.Context, *GetLandingPageDataRequest) (*GetLandingPageResponse, error)
+	GetLandingPageData(context.Context, *GetLandingPageDataRequest) (*GetLandingPageDataResponse, error)
 	// Translate Sparql Query into translation results.
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -443,7 +443,7 @@ func (*UnimplementedMixerServer) GetLocationsRankings(context.Context, *GetLocat
 func (*UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedLocations not implemented")
 }
-func (*UnimplementedMixerServer) GetLandingPageData(context.Context, *GetLandingPageDataRequest) (*GetLandingPageResponse, error) {
+func (*UnimplementedMixerServer) GetLandingPageData(context.Context, *GetLandingPageDataRequest) (*GetLandingPageDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLandingPageData not implemented")
 }
 func (*UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (*TranslateResponse, error) {

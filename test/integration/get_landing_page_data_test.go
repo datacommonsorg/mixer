@@ -91,6 +91,7 @@ func TestGetLandingPageData(t *testing.T) {
 			continue
 		}
 
+<<<<<<< HEAD
 		var expected pb.GetLandingPageResponse
 		bytes, err := readJSONShard(goldenPath, c.goldenFile)
 		if err != nil {
@@ -98,6 +99,11 @@ func TestGetLandingPageData(t *testing.T) {
 			continue
 		}
 		err = json.Unmarshal(bytes, &expected)
+=======
+		var expected pb.GetLandingPageDataResponse
+		file, _ := ioutil.ReadFile(goldenFile)
+		err = json.Unmarshal(file, &expected)
+>>>>>>> 2263039 (naming)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue

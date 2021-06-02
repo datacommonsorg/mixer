@@ -221,7 +221,7 @@ message GetLandingPageDataRequest {
 }
 
 // Response to get landing page info for a place.
-message GetLandingPageResponse {
+message GetLandingPageDataResponse {
   // Keyed by place dcid.
   map<string, StatVarSeries> data = 1;
   map<string, Places> all_child_places = 2;
@@ -695,7 +695,7 @@ service Mixer {
   }
 
   // Get landing page info for a place.
-  rpc GetLandingPageData(GetLandingPageDataRequest) returns (GetLandingPageResponse) {
+  rpc GetLandingPageData(GetLandingPageDataRequest) returns (GetLandingPageDataResponse) {
     option (google.api.http) = {
       get: "/landing-page"
       additional_bindings: {

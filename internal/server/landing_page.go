@@ -513,7 +513,7 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 // those again.
 func (s *Server) GetLandingPageData(
 	ctx context.Context, in *pb.GetLandingPageDataRequest) (
-	*pb.GetLandingPageResponse, error) {
+	*pb.GetLandingPageDataResponse, error) {
 
 	placeDcid := in.GetPlace()
 	if placeDcid == "" {
@@ -575,7 +575,7 @@ func (s *Server) GetLandingPageData(
 	close(allChildPlaceChan)
 	close(relatedPlaceChan)
 
-	resp := pb.GetLandingPageResponse{}
+	resp := pb.GetLandingPageDataResponse{}
 
 	allChildPlaces := map[string]*pb.Places{}
 	for tmp := range allChildPlaceChan {
