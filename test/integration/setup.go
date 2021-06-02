@@ -230,9 +230,9 @@ func writeJsonShard(jsonByte []byte, fname string) {
 	}
 }
 
-func find(path, fname string) []string {
+func find(path, fname string) ([]string, error) {
 	var result []string
-	filepath.WalkDir(path, func(s string, d fs.DirEntry, e error) error {
+	err := filepath.WalkDir(path, func(s string, d fs.DirEntry, e error) error {
 		if e != nil {
 			return e
 		}
@@ -241,11 +241,14 @@ func find(path, fname string) []string {
 		}
 		return nil
 	})
-	return result
+	return result, err
 }
 
 func readJsonShard(path, fname string) ([]byte, error) {
-	fileNames := find(path, fname)
+	fileNames, err := find(path, fname)
+	if err != nil {
+		return nil, err
+	}
 	allBytes := []byte{}
 	for _, name := range fileNames {
 		bytes, err := ioutil.ReadFile(name)
