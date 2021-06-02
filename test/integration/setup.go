@@ -172,18 +172,20 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 
 func updateGolden(v interface{}, fname string, shard ...bool) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
+	var err error
 	if len(shard) == 1 && shard[0] {
-		writeJsonShard(jsonByte, fname)
+		err = writeJsonShard(jsonByte, fname)
 	} else {
-		err := ioutil.WriteFile(fname, jsonByte, 0644)
-		if err != nil {
-			log.Printf("could not write golden files to %s", fname)
-		}
+		err = ioutil.WriteFile(fname, jsonByte, 0644)
+	}
+	if err != nil {
+		log.Printf("could not write golden files to %s", fname)
 	}
 }
 
 func updateProtoGolden(
 	resp protoreflect.ProtoMessage, fname string, shard ...bool) {
+	var err error
 	marshaller := protojson.MarshalOptions{Indent: ""}
 	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
 	// Use encoding/json to get stable output.
@@ -199,16 +201,16 @@ func updateProtoGolden(
 		return
 	}
 	if len(shard) == 1 && shard[0] {
-		writeJsonShard(jsonByte, fname)
+		err = writeJsonShard(jsonByte, fname)
 	} else {
 		err = ioutil.WriteFile(fname, jsonByte, 0644)
-		if err != nil {
-			log.Printf("could not write golden files to %s", fname)
-		}
+	}
+	if err != nil {
+		log.Printf("could not write golden files to %s", fname)
 	}
 }
 
-func writeJsonShard(jsonByte []byte, fname string) {
+func writeJsonShard(jsonByte []byte, fname string) error {
 	jsonLines := strings.Split(string(jsonByte), "\n")
 	for i := 0; ; i++ {
 		start := i * lineLimit
@@ -222,12 +224,13 @@ func writeJsonShard(jsonByte []byte, fname string) {
 			0644,
 		)
 		if err != nil {
-			log.Printf("could not write golden files to %s", fname)
+			return err
 		}
 		if end == len(jsonLines) {
 			break
 		}
 	}
+	return nil
 }
 
 func find(path, fname string) ([]string, error) {
