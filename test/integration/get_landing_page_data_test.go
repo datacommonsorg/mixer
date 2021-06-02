@@ -99,7 +99,7 @@ func TestGetLandingPageData(t *testing.T) {
 		}
 
 		var expected server.LandingPageResponse
-		bytes, err := readJsonShard(goldenPath, c.goldenFile)
+		bytes, err := readJSONShard(goldenPath, c.goldenFile)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
 			continue

@@ -23,7 +23,7 @@
 
 # =========  protoc stage ==========
 
-FROM golang:1.15 AS go-protoc
+FROM golang:1.16 AS go-protoc
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \

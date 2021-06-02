@@ -174,7 +174,7 @@ func updateGolden(v interface{}, fname string, shard ...bool) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
 	var err error
 	if len(shard) == 1 && shard[0] {
-		err = writeJsonShard(jsonByte, fname)
+		err = writeJSONShard(jsonByte, fname)
 	} else {
 		err = ioutil.WriteFile(fname, jsonByte, 0644)
 	}
@@ -201,7 +201,7 @@ func updateProtoGolden(
 		return
 	}
 	if len(shard) == 1 && shard[0] {
-		err = writeJsonShard(jsonByte, fname)
+		err = writeJSONShard(jsonByte, fname)
 	} else {
 		err = ioutil.WriteFile(fname, jsonByte, 0644)
 	}
@@ -210,7 +210,7 @@ func updateProtoGolden(
 	}
 }
 
-func writeJsonShard(jsonByte []byte, fname string) error {
+func writeJSONShard(jsonByte []byte, fname string) error {
 	jsonLines := strings.Split(string(jsonByte), "\n")
 	for i := 0; ; i++ {
 		start := i * lineLimit
@@ -248,7 +248,7 @@ func find(path, fname string) ([]string, error) {
 	return result, err
 }
 
-func readJsonShard(path, fname string) ([]byte, error) {
+func readJSONShard(path, fname string) ([]byte, error) {
 	fileNames, err := find(path, fname)
 	if err != nil {
 		return nil, err
