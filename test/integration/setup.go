@@ -235,7 +235,8 @@ func writeJsonShard(jsonByte []byte, fname string) error {
 
 func find(path, fname string) ([]string, error) {
 	var result []string
-	err := filepath.WalkDir(path, func(s string, d fs.DirEntry, e error) error {
+	// WalkDir outputs is lexically sorted
+	err := filepath.WalkDir(path, func(s string, d fs.DirEntry, e error) error { //nolint
 		if e != nil {
 			return e
 		}

@@ -94,7 +94,7 @@ func TestGetLandingPageData(t *testing.T) {
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile, true)
+			updateGolden(result, goldenFile, true /* shared */)
 			continue
 		}
 
