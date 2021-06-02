@@ -582,7 +582,6 @@ func (s *Server) GetLandingPageData(
 		for k, places := range tmp {
 			allChildPlaces[k] = &pb.Places{Places: places}
 		}
-		break
 	}
 	resp.AllChildPlaces = allChildPlaces
 	resp.ChildPlacesType = filteredChildPlaceType
