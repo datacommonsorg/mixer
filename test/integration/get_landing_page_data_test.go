@@ -16,8 +16,6 @@ package integration
 
 import (
 	"context"
-	"encoding/json"
-	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
@@ -88,9 +86,8 @@ func TestGetLandingPageData(t *testing.T) {
 			continue
 		}
 
-		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateProtoGolden(resp, goldenFile, true /* shared */)
+			updateProtoGolden(resp, goldenPath, c.goldenFile, true /* shared */)
 			continue
 		}
 
@@ -100,9 +97,7 @@ func TestGetLandingPageData(t *testing.T) {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		err = json.Unmarshal(bytes, &expected)
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
+		err = protojson.Unmarshal(bytes, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue

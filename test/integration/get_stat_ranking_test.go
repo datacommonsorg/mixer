@@ -90,7 +90,7 @@ func TestGetLocationsRankings(t *testing.T) {
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateProtoGolden(response, goldenFile)
+			updateProtoGolden(response, goldenPath, c.goldenFile)
 			continue
 		}
 

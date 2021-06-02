@@ -23,6 +23,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net"
+	"os"
 	"path"
 	"path/filepath"
 	"runtime"
@@ -170,21 +171,25 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	return server.SetupBigtable(ctx, data)
 }
 
-func updateGolden(v interface{}, fname string, shard ...bool) {
+func updateGolden(v interface{}, root, fname string, shard ...bool) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
 	var err error
 	if len(shard) == 1 && shard[0] {
-		err = writeJSONShard(jsonByte, fname)
+		newFiles, err := writeJSONShard(jsonByte, root, fname)
+		if err != nil {
+			log.Printf("could not write golden files to %s", fname)
+		}
+		deleteOldFiles(root, fname, newFiles)
 	} else {
 		err = ioutil.WriteFile(fname, jsonByte, 0644)
-	}
-	if err != nil {
-		log.Printf("could not write golden files to %s", fname)
+		if err != nil {
+			log.Printf("could not write golden files to %s", fname)
+		}
 	}
 }
 
 func updateProtoGolden(
-	resp protoreflect.ProtoMessage, fname string, shard ...bool) {
+	resp protoreflect.ProtoMessage, root string, fname string, shard ...bool) {
 	var err error
 	marshaller := protojson.MarshalOptions{Indent: ""}
 	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
@@ -201,7 +206,12 @@ func updateProtoGolden(
 		return
 	}
 	if len(shard) == 1 && shard[0] {
-		err = writeJSONShard(jsonByte, fname)
+		newFiles, err := writeJSONShard(jsonByte, root, fname)
+		if err != nil {
+			log.Printf("could not write golden files to %s", fname)
+			return
+		}
+		deleteOldFiles(root, fname, newFiles)
 	} else {
 		err = ioutil.WriteFile(fname, jsonByte, 0644)
 	}
@@ -210,7 +220,8 @@ func updateProtoGolden(
 	}
 }
 
-func writeJSONShard(jsonByte []byte, fname string) error {
+func writeJSONShard(jsonByte []byte, root string, fname string) ([]string, error) {
+	result := []string{}
 	jsonLines := strings.Split(string(jsonByte), "\n")
 	for i := 0; ; i++ {
 		start := i * lineLimit
@@ -218,19 +229,21 @@ func writeJSONShard(jsonByte []byte, fname string) error {
 		if end > len(jsonLines) {
 			end = len(jsonLines)
 		}
+		name := path.Join(root, fmt.Sprintf("%s.%03d", fname, i))
 		err := ioutil.WriteFile(
-			fmt.Sprintf("%s.%03d", fname, i),
+			name,
 			[]byte(strings.Join(jsonLines[start:end], "\n")),
 			0644,
 		)
 		if err != nil {
-			return err
+			return nil, err
 		}
+		result = append(result, name)
 		if end == len(jsonLines) {
 			break
 		}
 	}
-	return nil
+	return result, nil
 }
 
 func find(path, fname string) ([]string, error) {
@@ -262,4 +275,25 @@ func readJSONShard(path, fname string) ([]byte, error) {
 		allBytes = append(allBytes, bytes...)
 	}
 	return allBytes, nil
+}
+
+func deleteOldFiles(root, fname string, newFiles []string) {
+	oldFiles, err := find(root, fname)
+	if err != nil {
+		log.Printf("could not find existing files for %s", fname)
+		return
+	}
+	newFileSet := map[string]struct{}{}
+	for _, newFile := range newFiles {
+		newFileSet[newFile] = struct{}{}
+	}
+	for _, oldFile := range oldFiles {
+		if _, ok := newFileSet[oldFile]; !ok {
+			err := os.Remove(oldFile)
+			if err != nil {
+				log.Printf("Could not delete old file %v", err)
+				return
+			}
+		}
+	}
 }

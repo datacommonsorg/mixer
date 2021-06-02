@@ -107,7 +107,7 @@ func TestGetTriples(t *testing.T) {
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden && c.goldenFile != "" {
-			updateGolden(result, goldenFile)
+			updateGolden(result, goldenPath, c.goldenFile)
 			continue
 		}
 

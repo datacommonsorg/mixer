@@ -80,7 +80,7 @@ func TestGetStatVarGroup(t *testing.T) {
 
 		if generateGolden {
 			if !c.checkCount {
-				updateProtoGolden(resp, goldenFile)
+				updateProtoGolden(resp, goldenPath, c.goldenFile)
 			}
 			continue
 		}

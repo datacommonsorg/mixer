@@ -60,7 +60,7 @@ func TestGetStatAll(t *testing.T) {
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateProtoGolden(resp, goldenFile)
+			updateProtoGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 		var expected pb.GetStatAllResponse
