@@ -523,7 +523,7 @@ func (s *Server) GetLandingPageData(
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	seed := in.GetSeed()
-	extraStatVars := in.GetExtraStatVars()
+	newStatVars := in.GetNewStatVars()
 
 	placeType, err := getPlaceType(ctx, s, placeDcid)
 	if err != nil {
@@ -605,7 +605,7 @@ func (s *Server) GetLandingPageData(
 		}
 		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
-	statData, err := fetchBtData(ctx, s, allPlaces, extraStatVars)
+	statData, err := fetchBtData(ctx, s, allPlaces, newStatVars)
 	if err != nil {
 		return nil, err
 	}

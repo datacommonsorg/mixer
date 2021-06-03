@@ -215,7 +215,7 @@ message GetLandingPageDataRequest {
   // data in cache. This is to be used in local development, where new chart is
   // added to chart config but data is not added to cache (delay from cache
   // build).
-  repeated string extra_stat_vars = 4;
+  repeated string new_stat_vars = 4;
   // Seed value for random selection. Used by test to get deterministic result.
   int64 seed = 3;
 

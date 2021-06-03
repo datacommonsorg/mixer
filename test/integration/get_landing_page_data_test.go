@@ -76,9 +76,9 @@ func TestGetLandingPageData(t *testing.T) {
 		},
 	} {
 		req := &pb.GetLandingPageDataRequest{
-			Place:         c.place,
-			ExtraStatVars: c.statVars,
-			Seed:          c.seed,
+			Place:       c.place,
+			NewStatVars: c.statVars,
+			Seed:        c.seed,
 		}
 		resp, err := client.GetLandingPageData(ctx, req)
 		if err != nil {
