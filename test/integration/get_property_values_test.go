@@ -111,7 +111,7 @@ func TestGetPropertyValues(t *testing.T) {
 		}
 
 		if generateGolden {
-			updateGolden(result, goldenFile)
+			updateGolden(result, goldenPath, c.goldenFile)
 			continue
 		}
 

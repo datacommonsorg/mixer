@@ -185,7 +185,7 @@ func TestChartConfigRankings(t *testing.T) {
 
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if generateGolden {
-				updateGolden(missingRankings, goldenFile)
+				updateGolden(missingRankings, goldenPath, c.goldenFile)
 			}
 
 			var expected []Chart

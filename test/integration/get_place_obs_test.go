@@ -70,7 +70,7 @@ func TestGetPlaceObs(t *testing.T) {
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateProtoGolden(result, goldenFile)
+			updateProtoGolden(result, goldenPath, c.goldenFile)
 			continue
 		}
 

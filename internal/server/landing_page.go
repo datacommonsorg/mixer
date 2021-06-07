@@ -31,6 +31,7 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 const (
@@ -213,7 +214,7 @@ func getLatestPop(ctx context.Context, s *Server, placeDcids []string) (
 	return result, nil
 }
 
-func getDcids(places []*place) []string {
+func getDcids(places []*pb.Place) []string {
 	result := []string{}
 	for _, dcid := range places {
 		result = append(result, dcid.Dcid)
@@ -224,7 +225,7 @@ func getDcids(places []*place) []string {
 // Fetch landing page cache data for a list of places.
 func fetchBtData(
 	ctx context.Context, s *Server, places []string, statVars []string) (
-	map[string]map[string]*ObsTimeSeries, error) {
+	map[string]*pb.StatVarSeries, error) {
 	rowList := bigtable.RowList{}
 	for _, dcid := range places {
 		rowList = append(rowList, fmt.Sprintf(
@@ -235,9 +236,9 @@ func fetchBtData(
 	// Landing page cache only exists in base cache
 	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var landingPageData LandingPageData
+			var landingPageData pb.StatVarObsSeries
 
-			err := json.Unmarshal(jsonRaw, &landingPageData)
+			err := protojson.Unmarshal(jsonRaw, &landingPageData)
 			if err != nil {
 				return nil, err
 			}
@@ -247,70 +248,40 @@ func fetchBtData(
 		return nil, err
 	}
 	// Populate result from landing page cache
-	result := map[string]map[string]*ObsTimeSeries{}
+	result := map[string]*pb.StatVarSeries{}
 	for dcid, data := range baseDataMap {
-		landingPageData := data.(*LandingPageData)
-		finalData := map[string]*ObsTimeSeries{}
+		landingPageData := data.(*pb.StatVarObsSeries)
+		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 		for statVarDcid, obsTimeSeries := range landingPageData.Data {
-			obsTimeSeries.filterAndRank(&ObsProp{})
-			finalData[statVarDcid] = obsTimeSeries
+			finalData.Data[statVarDcid] = getBestSeries(obsTimeSeries)
 		}
 		result[dcid] = finalData
 	}
 
-	// The landing page cache may depends on out dated chart config. Fetch stats
-	// that are not included in the landing page cache.
-	gotStatVars := map[string]struct{}{}
-	for statVar := range result[places[0]] {
-		gotStatVars[statVar] = struct{}{}
-	}
-	missingStatVars := []string{}
-	for _, statVar := range statVars {
-		if _, ok := gotStatVars[statVar]; !ok {
-			missingStatVars = append(missingStatVars, statVar)
-		}
-	}
-	if len(missingStatVars) > 0 {
-		type svData struct {
-			sv   string
-			data map[string]*ObsTimeSeries
-		}
-		errs, errCtx := errgroup.WithContext(ctx)
-		dataChan := make(chan svData, len(missingStatVars))
-		for _, statVar := range missingStatVars {
-			statVar := statVar
-			errs.Go(func() error {
-				resp, err := s.GetStats(errCtx, &pb.GetStatsRequest{
-					Place:    places,
-					StatsVar: statVar,
-				})
-				if err != nil {
-					return err
-				}
-				var tmp map[string]*ObsTimeSeries
-				err = json.Unmarshal([]byte(resp.Payload), &tmp)
-				if err != nil {
-					return err
-				}
-				dataChan <- svData{sv: statVar, data: tmp}
-				return nil
-			})
-		}
-		err := errs.Wait()
+	// Fetch additional stats as requested.
+	if len(statVars) > 0 {
+		resp, err := s.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
+			Places:   places,
+			StatVars: statVars,
+		})
 		if err != nil {
 			return nil, err
 		}
-		close(dataChan)
-		for item := range dataChan {
-			statVar := item.sv
-			for place := range item.data {
-				if result[place] != nil {
-					result[place][statVar] = item.data[place]
-					if result[place][statVar] == nil {
-						result[place][statVar] = &ObsTimeSeries{}
-					}
-					result[place][statVar].PlaceName = ""
+		// Add additional data to the cache result
+		for place, seriesMap := range resp.Data {
+			for statVar, series := range seriesMap.Data {
+				if result[place] == nil {
+					result[place] = &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 				}
+				result[place].Data[statVar] = series
+			}
+		}
+	}
+	// Delete the empty entries. This will be moved to cache generation.
+	for _, statVarSeries := range result {
+		for statVar, series := range statVarSeries.Data {
+			if series == nil {
+				delete(statVarSeries.Data, statVar)
 			}
 		}
 	}
@@ -319,9 +290,9 @@ func fetchBtData(
 
 // Pick child places with the largest average population.
 // Returns a tuple of child place type, and list of child places.
-func filterChildPlaces(childPlaces map[string][]*place) (string, []*place) {
+func filterChildPlaces(childPlaces map[string][]*pb.Place) (string, []*pb.Place) {
 	var maxCount int
-	var resultPlaces []*place
+	var resultPlaces []*pb.Place
 	var resultType string
 
 	// Sort child types to get stable result.
@@ -348,7 +319,7 @@ func filterChildPlaces(childPlaces map[string][]*place) (string, []*place) {
 // Get child places by types.
 // The place under each type is sorted by the population.
 func getChildPlaces(ctx context.Context, s *Server, placedDcid, placeType string) (
-	map[string][]*place, error) {
+	map[string][]*pb.Place, error) {
 	children := []*Node{}
 	// ContainedIn places
 	containedInPlaces, err := getPropertyValuesHelper(
@@ -370,12 +341,12 @@ func getChildPlaces(ctx context.Context, s *Server, placedDcid, placeType string
 		wantedTypes = allWantedPlaceTypes
 	}
 	// Populate result
-	result := map[string][]*place{}
+	result := map[string][]*pb.Place{}
 	for _, child := range children {
 		childTypes := trimTypes(child.Types)
 		for _, childType := range childTypes {
 			if _, ok := wantedTypes[childType]; ok {
-				result[childType] = append(result[childType], &place{
+				result[childType] = append(result[childType], &pb.Place{
 					Dcid: child.Dcid,
 					Name: child.Name,
 				})
@@ -410,14 +381,13 @@ func getChildPlaces(ctx context.Context, s *Server, placedDcid, placeType string
 			})
 		}
 	}
-
 	return result, nil
 }
 
 // Get parent places up to continent level.
 func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 	[]string, error) {
-	result := []*place{}
+	result := []*pb.Place{}
 	for {
 		containedInPlaces, err := getPropertyValuesHelper(
 			ctx, s.store, []string{dcid}, "containedInPlace", true)
@@ -435,7 +405,7 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 			if parent.Types[0] == "CensusZipCodeTabulationArea" {
 				continue
 			}
-			result = append(result, &place{
+			result = append(result, &pb.Place{
 				Dcid: parent.Dcid,
 				Name: parent.Name,
 			})
@@ -468,10 +438,10 @@ func getSimilarPlaces(
 	if err != nil {
 		return nil, err
 	}
-	places := []*place{}
+	places := []*pb.Place{}
 	for _, node := range resp[cohort] {
 		if node.Dcid != placeDcid {
-			places = append(places, &place{
+			places = append(places, &pb.Place{
 				Dcid: node.Dcid,
 				Name: node.Name,
 			})
@@ -490,7 +460,7 @@ func getSimilarPlaces(
 	rand.Shuffle(len(places), func(i, j int) {
 		places[i], places[j] = places[j], places[i]
 	})
-	result := []*place{}
+	result := []*pb.Place{}
 	for _, place := range places {
 		result = append(result, place)
 		if len(result) == maxSimilarPlace {
@@ -519,10 +489,10 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 	if err != nil {
 		return nil, err
 	}
-	result := []*place{}
+	result := []*pb.Place{}
 	for dcid, pop := range placePop {
 		if pop > minPopulation {
-			result = append(result, &place{
+			result = append(result, &pb.Place{
 				Dcid: dcid,
 				Pop:  pop,
 			})
@@ -553,7 +523,7 @@ func (s *Server) GetLandingPageData(
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	seed := in.GetSeed()
-	statVars := in.GetStatVars()
+	newStatVars := in.GetNewStatVars()
 
 	placeType, err := getPlaceType(ctx, s, placeDcid)
 	if err != nil {
@@ -563,7 +533,7 @@ func (s *Server) GetLandingPageData(
 	// Fetch child and prarent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
 	relatedPlaceChan := make(chan *relatedPlace, 4)
-	allChildPlaceChan := make(chan map[string][]*place, 1)
+	allChildPlaceChan := make(chan map[string][]*pb.Place, 1)
 	var filteredChildPlaceType string
 	errs.Go(func() error {
 		childPlaces, err := getChildPlaces(errCtx, s, placeDcid, placeType)
@@ -608,41 +578,37 @@ func (s *Server) GetLandingPageData(
 	close(allChildPlaceChan)
 	close(relatedPlaceChan)
 
-	payload := LandingPageResponse{}
+	resp := pb.GetLandingPageDataResponse{}
 
-	var allChildPlaces map[string][]*place
+	allChildPlaces := map[string]*pb.Places{}
 	for tmp := range allChildPlaceChan {
-		allChildPlaces = tmp
-		break
+		for k, places := range tmp {
+			allChildPlaces[k] = &pb.Places{Places: places}
+		}
 	}
-	payload.AllChildPlaces = allChildPlaces
-	payload.ChildPlacesType = filteredChildPlaceType
+	resp.AllChildPlaces = allChildPlaces
+	resp.ChildPlacesType = filteredChildPlaceType
 
 	// Fetch the landing page stats data for all places.
 	allPlaces := []string{placeDcid}
 	for relatedPlace := range relatedPlaceChan {
 		switch relatedPlace.category {
 		case childEnum:
-			payload.ChildPlaces = relatedPlace.places
+			resp.ChildPlaces = relatedPlace.places
 		case parentEnum:
-			payload.ParentPlaces = relatedPlace.places
+			resp.ParentPlaces = relatedPlace.places
 		case similarEnum:
-			payload.SimilarPlaces = relatedPlace.places
+			resp.SimilarPlaces = relatedPlace.places
 		case nearbyEnum:
-			payload.NearbyPlaces = relatedPlace.places
+			resp.NearbyPlaces = relatedPlace.places
 		default:
 		}
 		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
-	statData, err := fetchBtData(ctx, s, allPlaces, statVars)
+	statData, err := fetchBtData(ctx, s, allPlaces, newStatVars)
 	if err != nil {
 		return nil, err
 	}
-	payload.Data = statData
-	jsonRaw, err := json.Marshal(payload)
-	if err != nil {
-		return nil, err
-	}
-
-	return &pb.GetLandingPageDataResponse{Payload: string(jsonRaw)}, nil
+	resp.StatVarSeries = statData
+	return &resp, nil
 }

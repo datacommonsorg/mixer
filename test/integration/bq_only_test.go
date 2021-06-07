@@ -68,7 +68,7 @@ func TestSparql(t *testing.T) {
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(resp, goldenFile)
+			updateGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 

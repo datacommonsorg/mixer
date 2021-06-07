@@ -76,7 +76,7 @@ func TestGetPlacesIn(t *testing.T) {
 
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile)
+			updateGolden(result, goldenPath, c.goldenFile)
 			continue
 		}
 

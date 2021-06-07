@@ -16,14 +16,14 @@ package integration
 
 import (
 	"context"
-	"encoding/json"
 	"path"
 	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 // TestGetLandingPageData tests GetLandingPageData.
@@ -54,13 +54,13 @@ func TestGetLandingPageData(t *testing.T) {
 			"tha.json",
 			"country/THA",
 			1,
-			[]string{"Amount_Stock", "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"},
+			[]string{},
 		},
 		{
 			"county.json",
 			"geoId/06085",
 			1,
-			[]string{},
+			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
 		},
 		{
 			"city.json",
@@ -72,44 +72,37 @@ func TestGetLandingPageData(t *testing.T) {
 			"zuid-nederland.json",
 			"nuts/NL4",
 			1,
-			[]string{"Count_Person"},
+			[]string{},
 		},
 	} {
 		req := &pb.GetLandingPageDataRequest{
-			Place:    c.place,
-			StatVars: c.statVars,
-			Seed:     c.seed,
+			Place:       c.place,
+			NewStatVars: c.statVars,
+			Seed:        c.seed,
 		}
 		resp, err := client.GetLandingPageData(ctx, req)
 		if err != nil {
 			t.Errorf("could not GetLandingPageData: %s", err)
 			continue
 		}
-		var result server.LandingPageResponse
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
 
-		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
-			updateGolden(result, goldenFile, true /* shared */)
+			updateProtoGolden(resp, goldenPath, c.goldenFile, true /* shared */)
 			continue
 		}
 
-		var expected server.LandingPageResponse
+		var expected pb.GetLandingPageDataResponse
 		bytes, err := readJSONShard(goldenPath, c.goldenFile)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		err = json.Unmarshal(bytes, &expected)
+		err = protojson.Unmarshal(bytes, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(&result, &expected); diff != "" {
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}
