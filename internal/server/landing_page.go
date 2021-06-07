@@ -609,6 +609,6 @@ func (s *Server) GetLandingPageData(
 	if err != nil {
 		return nil, err
 	}
-	resp.Data = statData
+	resp.StatVarSeries = statData
 	return &resp, nil
 }

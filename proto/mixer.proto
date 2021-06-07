@@ -225,7 +225,7 @@ message GetLandingPageDataRequest {
 // Response to get landing page info for a place.
 message GetLandingPageDataResponse {
   // Keyed by place dcid.
-  map<string, StatVarSeries> data = 1;
+  map<string, StatVarSeries> stat_var_series = 1;
   map<string, Places> all_child_places = 2;
   string child_places_type = 3;
   repeated string child_places = 4;

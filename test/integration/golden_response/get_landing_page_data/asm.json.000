@@ -1,5 +1,5 @@
 {
-  "data": {
+  "statVarSeries": {
     "country/ASM": {
       "data": {
         "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal": {
