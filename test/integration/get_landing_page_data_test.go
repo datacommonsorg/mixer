@@ -47,7 +47,7 @@ func TestGetLandingPageData(t *testing.T) {
 		samplingExclude []string
 	}{
 		{
-			"asm.json",
+			"asm.sample.json",
 			"country/ASM",
 			1,
 			[]string{},
@@ -55,7 +55,7 @@ func TestGetLandingPageData(t *testing.T) {
 			[]string{},
 		},
 		{
-			"tha.json",
+			"tha.sample.json",
 			"country/THA",
 			1,
 			[]string{},
@@ -63,7 +63,7 @@ func TestGetLandingPageData(t *testing.T) {
 			[]string{"country/USA"},
 		},
 		{
-			"county.json",
+			"county.sample.json",
 			"geoId/06085",
 			1,
 			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
@@ -71,7 +71,7 @@ func TestGetLandingPageData(t *testing.T) {
 			[]string{"country/USA"},
 		},
 		{
-			"city.json",
+			"city.sample.json",
 			"geoId/0656938",
 			1,
 			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
@@ -79,7 +79,7 @@ func TestGetLandingPageData(t *testing.T) {
 			[]string{"country/USA"},
 		},
 		{
-			"zuid-nederland.json",
+			"zuid-nederland.sample.json",
 			"nuts/NL4",
 			1,
 			[]string{},
