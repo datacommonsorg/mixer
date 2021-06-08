@@ -16,14 +16,12 @@ package integration
 
 import (
 	"context"
-	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -66,15 +64,13 @@ func TestSparql(t *testing.T) {
 			t.Errorf("could not Query: %v", err)
 			continue
 		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
 			updateGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 
 		var expected pb.QueryResponse
-		file, _ := ioutil.ReadFile(goldenFile)
-		if err := protojson.Unmarshal(file, &expected); err != nil {
+		if err := readJSON(goldenPath, c.goldenFile, &expected); err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}

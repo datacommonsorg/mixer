@@ -23,7 +23,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -115,18 +114,13 @@ func TestGetLandingPageData(t *testing.T) {
 			continue
 		}
 
-		expected := &pb.GetLandingPageDataResponse{}
-		bytes, err := readJSON(goldenPath, c.goldenFile)
+		var expected pb.GetLandingPageDataResponse
+		err = readJSON(goldenPath, c.goldenFile, &expected)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		err = protojson.Unmarshal(bytes, expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(resp, expected, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
 			continue
 		}

@@ -168,7 +168,7 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 
 func updateGolden(v interface{}, root, fname string, shard ...bool) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
-	if ioutil.WriteFile(fname, jsonByte, 0644) != nil {
+	if ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644) != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
 }
@@ -177,7 +177,8 @@ func updateProtoGolden(
 	resp protoreflect.ProtoMessage, root string, fname string) {
 	var err error
 	marshaller := protojson.MarshalOptions{Indent: ""}
-	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
+	// protojson don't and won't make stable output:
+	// https://github.com/golang/protobuf/issues/1082
 	// Use encoding/json to get stable output.
 	data, err := marshaller.Marshal(resp)
 	if err != nil {
@@ -196,10 +197,14 @@ func updateProtoGolden(
 	}
 }
 
-func readJSON(dir, fname string) ([]byte, error) {
+func readJSON(dir, fname string, resp protoreflect.ProtoMessage) error {
 	bytes, err := ioutil.ReadFile(path.Join(dir, fname))
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return bytes, nil
+	err = protojson.Unmarshal(bytes, resp)
+	if err != nil {
+		return err
+	}
+	return nil
 }
