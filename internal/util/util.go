@@ -310,14 +310,14 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 	pr := m.ProtoReflect()
 	pr.Range(func(fd protoreflect.FieldDescriptor, value protoreflect.Value) bool {
 		fieldName := fd.JSONName()
-		// Excluded fields or map keys
+
+		// Clear the excluded fields
 		for _, ex := range strategy.Exclude {
 			if ex == fieldName {
 				pr.Clear(fd)
-				break
+				return true
 			}
 		}
-		// Clear the excluded fields
 
 		// If a field is not in the sampling strategy, keep it.
 		strat, ok := strategy.Children[fieldName]
@@ -340,7 +340,7 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 			// Get all the keys
 			allKeys := []string{}
 			oldMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
-				// Add non-excluded keys
+				// Excluded keys
 				for _, ex := range strat.Exclude {
 					if ex == k.String() {
 						return true
