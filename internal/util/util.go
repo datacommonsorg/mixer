@@ -304,6 +304,8 @@ func MergeDedupe(s1 []string, s2 []string) []string {
 	return s1
 }
 
+// Sample samples a protobuf message based on the sampling strategy.
+// The output is deterministic given the same strategy.
 func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 	pr := m.ProtoReflect()
 	pr.Range(func(fd protoreflect.FieldDescriptor, value protoreflect.Value) bool {

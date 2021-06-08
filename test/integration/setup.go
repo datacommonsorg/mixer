@@ -50,7 +50,6 @@ const (
 	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
 	store            = "datcom-store"
-	lineLimit        = 10000
 )
 
 func setup() (pb.MixerClient, error) {
@@ -169,9 +168,7 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 
 func updateGolden(v interface{}, root, fname string, shard ...bool) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
-	var err error
-	err = ioutil.WriteFile(fname, jsonByte, 0644)
-	if err != nil {
+	if ioutil.WriteFile(fname, jsonByte, 0644) != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
 }
