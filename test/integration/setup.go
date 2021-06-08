@@ -166,7 +166,7 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	return server.SetupBigtable(ctx, data)
 }
 
-func updateGolden(v interface{}, root, fname string, shard ...bool) {
+func updateGolden(v interface{}, root, fname string) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
 	if ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644) != nil {
 		log.Printf("could not write golden files to %s", fname)
