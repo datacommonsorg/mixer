@@ -90,6 +90,8 @@ type TypePair struct {
 	Parent string
 }
 
+// SamplingStrategy represents the config to use for sampling golden response
+// Json.
 type SamplingStrategy struct {
 	// Sampling ratio for list and map.
 	Ratio float32
