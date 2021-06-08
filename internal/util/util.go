@@ -24,11 +24,14 @@ import (
 	"math/rand"
 	"regexp"
 	"runtime"
+	"sort"
 	"strings"
 	"time"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
 const (
@@ -85,6 +88,15 @@ type typeInfo struct {
 type TypePair struct {
 	Child  string
 	Parent string
+}
+
+type SamplingStrategy struct {
+	// Sampling ratio for list and map.
+	Ratio float32
+	// Sampling strategy for the child fields.
+	Children map[string]*SamplingStrategy
+	// Proto fields or map keys to exclude.
+	Exclude []string
 }
 
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64
@@ -290,4 +302,72 @@ func MergeDedupe(s1 []string, s2 []string) []string {
 		}
 	}
 	return s1
+}
+
+func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
+	pr := m.ProtoReflect()
+	pr.Range(func(fd protoreflect.FieldDescriptor, value protoreflect.Value) bool {
+		fieldName := fd.JSONName()
+		// Excluded fields or map keys
+		for _, ex := range strategy.Exclude {
+			if ex == fieldName {
+				pr.Clear(fd)
+				break
+			}
+		}
+		// Clear the excluded fields
+
+		// If a field is not in the sampling strategy, keep it.
+		strat, ok := strategy.Children[fieldName]
+		if !ok {
+			return true
+		}
+		// Note, map[string]proto.Message is treated as protoreflect.MessageKind,
+		// So here need to check field and list first.
+		if fd.IsList() {
+			// Sampmle list.
+			oldList := value.List()
+			inc := int(1 / strat.Ratio)
+			var newList protoreflect.List
+			for i := 0; i < oldList.Len(); i += inc {
+				newList.Append(oldList.Get(i))
+			}
+			pr.Set(fd, protoreflect.ValueOfList(newList))
+		} else if fd.IsMap() {
+			oldMap := value.Map()
+			// Get all the keys
+			allKeys := []string{}
+			oldMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+				// Add non-excluded keys
+				for _, ex := range strat.Exclude {
+					if ex == k.String() {
+						return true
+					}
+				}
+				allKeys = append(allKeys, k.String())
+				return true
+			})
+			// Sort the keys
+			sort.Strings(allKeys)
+			// Sample keys
+			sampleKeys := map[string]struct{}{}
+			inc := int(1 / strat.Ratio)
+			for i := 0; i < len(allKeys); i += inc {
+				sampleKeys[allKeys[i]] = struct{}{}
+			}
+			// Clear un-sampled entries
+			oldMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+				if _, ok := sampleKeys[k.String()]; !ok {
+					oldMap.Clear(k)
+				}
+				return true
+			})
+			// Set the map
+			pr.Set(fd, protoreflect.ValueOfMap(oldMap))
+		} else if fd.Kind() == protoreflect.MessageKind {
+			Sample(value.Message().Interface(), strat)
+		}
+		return true
+	})
+	return m
 }

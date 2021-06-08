@@ -3,7 +3,10 @@ package util
 import (
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestZipAndEndocde(t *testing.T) {
@@ -77,4 +80,87 @@ func TestMergeDedupe(t *testing.T) {
 			t.Errorf("MergeDedupe got diff %+v", diff)
 		}
 	}
+}
+
+func TestSampleJson(t *testing.T) {
+	for _, c := range []struct {
+		input    protoreflect.ProtoMessage
+		expected protoreflect.ProtoMessage
+		strategy *SamplingStrategy
+	}{
+		{
+			&pb.GetLandingPageDataResponse{
+				ChildPlacesType: "Country",
+				ChildPlaces: []string{
+					"geoId/12345",
+					"geoId/54321",
+				},
+				StatVarSeries: map[string]*pb.StatVarSeries{
+					"country/USA": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2015": 1000,
+									"2016": 2000,
+								},
+							},
+						},
+					},
+					"geoId/06": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2019": 300,
+									"2020": 400,
+								},
+							},
+						},
+					},
+					"geoId/16": {
+						Data: map[string]*pb.Series{
+							"stat-var-2": {
+								Val: map[string]float64{
+									"2019": 350,
+									"2020": 450,
+								},
+							},
+						},
+					},
+				},
+			},
+			&pb.GetLandingPageDataResponse{
+				ChildPlacesType: "Country",
+				ChildPlaces: []string{
+					"geoId/12345",
+					"geoId/54321",
+				},
+				StatVarSeries: map[string]*pb.StatVarSeries{
+					"geoId/06": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2019": 300,
+									"2020": 400,
+								},
+							},
+						},
+					},
+				},
+			},
+			&SamplingStrategy{
+				Children: map[string]*SamplingStrategy{
+					"statVarSeries": {
+						Ratio:   0.5,
+						Exclude: []string{"country/USA"},
+					},
+				},
+			},
+		},
+	} {
+		got := Sample(c.input, c.strategy)
+		if diff := cmp.Diff(got, c.expected, protocmp.Transform()); diff != "" {
+			t.Errorf("Sample got diff %+v", diff)
+		}
+	}
+
 }

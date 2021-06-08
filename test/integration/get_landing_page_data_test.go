@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -39,15 +40,19 @@ func TestGetLandingPageData(t *testing.T) {
 		path.Dir(filename), "golden_response/get_landing_page_data")
 
 	for _, c := range []struct {
-		goldenFile string
-		place      string
-		seed       int64
-		statVars   []string
+		goldenFile      string
+		place           string
+		seed            int64
+		statVars        []string
+		samplingRatio   float32
+		samplingExclude []string
 	}{
 		{
 			"asm.json",
 			"country/ASM",
 			1,
+			[]string{},
+			0.3,
 			[]string{},
 		},
 		{
@@ -55,26 +60,43 @@ func TestGetLandingPageData(t *testing.T) {
 			"country/THA",
 			1,
 			[]string{},
+			0.3,
+			[]string{"country/USA"},
 		},
 		{
 			"county.json",
 			"geoId/06085",
 			1,
 			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
+			0.1,
+			[]string{"country/USA"},
 		},
 		{
 			"city.json",
 			"geoId/0656938",
 			1,
 			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
+			0.1,
+			[]string{"country/USA"},
 		},
 		{
 			"zuid-nederland.json",
 			"nuts/NL4",
 			1,
 			[]string{},
+			0.5,
+			[]string{"country/USA"},
 		},
 	} {
+		strategy := &util.SamplingStrategy{
+			Children: map[string]*util.SamplingStrategy{
+				"statVarSeries": {
+					Ratio:   c.samplingRatio,
+					Exclude: c.samplingExclude,
+				},
+			},
+		}
+
 		req := &pb.GetLandingPageDataRequest{
 			Place:       c.place,
 			NewStatVars: c.statVars,
@@ -86,24 +108,26 @@ func TestGetLandingPageData(t *testing.T) {
 			continue
 		}
 
+		resp = util.Sample(resp, strategy).(*pb.GetLandingPageDataResponse)
+
 		if generateGolden {
-			updateProtoGolden(resp, goldenPath, c.goldenFile, true /* shared */)
+			updateProtoGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 
-		var expected pb.GetLandingPageDataResponse
-		bytes, err := readJSONShard(goldenPath, c.goldenFile)
+		expected := &pb.GetLandingPageDataResponse{}
+		bytes, err := readJSON(goldenPath, c.goldenFile)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		err = protojson.Unmarshal(bytes, &expected)
+		err = protojson.Unmarshal(bytes, expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
+		if diff := cmp.Diff(resp, expected, protocmp.Transform()); diff != "" {
+			t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
 			continue
 		}
 	}
