@@ -43,7 +43,7 @@ func TestGetLandingPageData(t *testing.T) {
 		place           string
 		seed            int64
 		statVars        []string
-		samplingRatio   float32
+		sampleEvery     int
 		samplingExclude []string
 	}{
 		{
@@ -51,7 +51,7 @@ func TestGetLandingPageData(t *testing.T) {
 			"country/ASM",
 			1,
 			[]string{},
-			0.3,
+			3,
 			[]string{},
 		},
 		{
@@ -59,7 +59,7 @@ func TestGetLandingPageData(t *testing.T) {
 			"country/THA",
 			1,
 			[]string{},
-			0.3,
+			3,
 			[]string{"country/USA"},
 		},
 		{
@@ -67,7 +67,7 @@ func TestGetLandingPageData(t *testing.T) {
 			"geoId/06085",
 			1,
 			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
-			0.1,
+			10,
 			[]string{"country/USA"},
 		},
 		{
@@ -75,7 +75,7 @@ func TestGetLandingPageData(t *testing.T) {
 			"geoId/0656938",
 			1,
 			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
-			0.1,
+			10,
 			[]string{"country/USA"},
 		},
 		{
@@ -83,15 +83,15 @@ func TestGetLandingPageData(t *testing.T) {
 			"nuts/NL4",
 			1,
 			[]string{},
-			0.5,
+			2,
 			[]string{"country/USA"},
 		},
 	} {
 		strategy := &util.SamplingStrategy{
 			Children: map[string]*util.SamplingStrategy{
 				"statVarSeries": {
-					Ratio:   c.samplingRatio,
-					Exclude: c.samplingExclude,
+					SampleEvery: c.sampleEvery,
+					Exclude:     c.samplingExclude,
 				},
 			},
 		}

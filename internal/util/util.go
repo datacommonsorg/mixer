@@ -93,11 +93,12 @@ type TypePair struct {
 // SamplingStrategy represents the config to use for sampling golden response
 // Json.
 type SamplingStrategy struct {
-	// Sampling ratio for list and map.
-	Ratio float32
+	// Sampling interval. A value of 3 indicates sampling one out of
+	// every 3 items.
+	SampleEvery int
 	// Sampling strategy for the child fields.
 	Children map[string]*SamplingStrategy
-	// Proto fields or map keys to exclude.
+	// Proto fields or map keys that are not sampled at all.
 	Exclude []string
 }
 
@@ -306,7 +307,7 @@ func MergeDedupe(s1 []string, s2 []string) []string {
 	return s1
 }
 
-// Sample samples a protobuf message based on the sampling strategy.
+// Sample constructs a sampled protobuf message based on the sampling strategy.
 // The output is deterministic given the same strategy.
 func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 	pr := m.ProtoReflect()
@@ -329,11 +330,10 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 		// Note, map[string]proto.Message is treated as protoreflect.MessageKind,
 		// So here need to check field and list first.
 		if fd.IsList() {
-			// Sampmle list.
+			// Sample list.
 			oldList := value.List()
-			inc := int(1 / strat.Ratio)
 			var newList protoreflect.List
-			for i := 0; i < oldList.Len(); i += inc {
+			for i := 0; i < oldList.Len(); i += strat.SampleEvery {
 				newList.Append(oldList.Get(i))
 			}
 			pr.Set(fd, protoreflect.ValueOfList(newList))
@@ -355,8 +355,7 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 			sort.Strings(allKeys)
 			// Sample keys
 			sampleKeys := map[string]struct{}{}
-			inc := int(1 / strat.Ratio)
-			for i := 0; i < len(allKeys); i += inc {
+			for i := 0; i < len(allKeys); i += strat.SampleEvery {
 				sampleKeys[allKeys[i]] = struct{}{}
 			}
 			// Clear un-sampled entries

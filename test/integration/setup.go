@@ -177,7 +177,7 @@ func updateProtoGolden(
 	resp protoreflect.ProtoMessage, root string, fname string) {
 	var err error
 	marshaller := protojson.MarshalOptions{Indent: ""}
-	// protojson don't and won't make stable output:
+	// protojson doesn't and won't make stable output:
 	// https://github.com/golang/protobuf/issues/1082
 	// Use encoding/json to get stable output.
 	data, err := marshaller.Marshal(resp)

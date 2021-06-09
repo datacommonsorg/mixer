@@ -150,8 +150,8 @@ func TestSampleJson(t *testing.T) {
 			&SamplingStrategy{
 				Children: map[string]*SamplingStrategy{
 					"statVarSeries": {
-						Ratio:   0.5,
-						Exclude: []string{"country/USA"},
+						SampleEvery: 2,
+						Exclude:     []string{"country/USA"},
 					},
 				},
 			},
