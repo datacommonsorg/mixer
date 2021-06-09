@@ -88,9 +88,9 @@ func readStatsPb(
 	for _, rowKey := range rowList {
 		token, _ := keyToTokenFn(rowKey)
 		psv := keyTokens[rowKey]
-		if data, ok := branchDataMap[token]; ok {
+		if data, ok := branchDataMap[token]; ok && data != nil {
 			result[psv.place][psv.statVar] = data.(*pb.ObsTimeSeries)
-		} else if data, ok := baseDataMap[token]; ok {
+		} else if data, ok := baseDataMap[token]; ok && data != nil {
 			result[psv.place][psv.statVar] = data.(*pb.ObsTimeSeries)
 		}
 	}
@@ -118,9 +118,9 @@ func readStatCollection(
 	result := map[string]*pb.ObsCollection{}
 	for _, rowKey := range rowList {
 		token := keyTokens[rowKey]
-		if data, ok := branchDataMap[token]; ok {
+		if data, ok := branchDataMap[token]; ok && data != nil {
 			result[token] = data.(*pb.ObsCollection)
-		} else if data, ok := baseDataMap[token]; ok {
+		} else if data, ok := baseDataMap[token]; ok && data != nil {
 			result[token] = data.(*pb.ObsCollection)
 		} else {
 			result[token] = nil

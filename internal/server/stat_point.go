@@ -165,7 +165,11 @@ func (s *Server) GetStatSetWithinPlace(
 	if err != nil {
 		return nil, err
 	}
+	if baseDataMap[parentPlace] == nil {
+		return &pb.GetStatSetResponse{
+			Data: make(map[string]*pb.PlacePointStat),
+		}, nil
+	}
 	childPlaces := baseDataMap[parentPlace].([]string)
-
 	return getStatSet(ctx, s, childPlaces, statVars, date)
 }

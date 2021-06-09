@@ -157,7 +157,9 @@ func readPropertyValues(
 	}
 	result := map[string][]*Node{}
 	for dcid, data := range baseDataMap {
-		result[dcid] = data.([]*Node)
+		if data != nil {
+			result[dcid] = data.([]*Node)
+		}
 	}
 	return result, nil
 }
