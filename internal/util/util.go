@@ -91,10 +91,16 @@ type TypePair struct {
 	Parent string
 }
 
-// SamplingStrategy represents the config to use for sampling golden response
-// Json.
+// SamplingStrategy represents the strategy to sample a JSON object.
+//
+// Sampling is performed uniform acroos the items for list, or the keys for
+// map.For example, when MaxSample=4, sampling of [1,2,3,4,5,6,7,8,9]
+// would give [3,5,7,9]
 type SamplingStrategy struct {
-	// Maximum number of samples. -1 means sample all.
+	// Maximum number of samples.
+	//
+	// -1 means sample all the data. A positive integer indicates the maximum
+	// number of samples.
 	MaxSample int
 	// Sampling strategy for the child fields.
 	Children map[string]*SamplingStrategy
