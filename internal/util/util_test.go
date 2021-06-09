@@ -82,7 +82,7 @@ func TestMergeDedupe(t *testing.T) {
 	}
 }
 
-func TestSampleJson(t *testing.T) {
+func TestSample(t *testing.T) {
 	for _, c := range []struct {
 		input    protoreflect.ProtoMessage
 		expected protoreflect.ProtoMessage
@@ -100,8 +100,12 @@ func TestSampleJson(t *testing.T) {
 						Data: map[string]*pb.Series{
 							"stat-var-1": {
 								Val: map[string]float64{
-									"2015": 1000,
-									"2016": 2000,
+									"2011": 1010,
+									"2012": 1020,
+									"2013": 1030,
+									"2014": 1040,
+									"2015": 1050,
+									"2016": 1060,
 								},
 							},
 						},
@@ -110,13 +114,14 @@ func TestSampleJson(t *testing.T) {
 						Data: map[string]*pb.Series{
 							"stat-var-1": {
 								Val: map[string]float64{
-									"2019": 300,
-									"2020": 400,
+									"2018": 300,
+									"2019": 400,
+									"2020": 500,
 								},
 							},
 						},
 					},
-					"geoId/16": {
+					"geoId/11": {
 						Data: map[string]*pb.Series{
 							"stat-var-2": {
 								Val: map[string]float64{
@@ -135,12 +140,34 @@ func TestSampleJson(t *testing.T) {
 					"geoId/54321",
 				},
 				StatVarSeries: map[string]*pb.StatVarSeries{
+					"country/USA": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2012": 1020,
+									"2014": 1040,
+									"2016": 1060,
+								},
+							},
+						},
+					},
 					"geoId/06": {
 						Data: map[string]*pb.Series{
 							"stat-var-1": {
 								Val: map[string]float64{
-									"2019": 300,
-									"2020": 400,
+									"2018": 300,
+									"2019": 400,
+									"2020": 500,
+								},
+							},
+						},
+					},
+					"geoId/11": {
+						Data: map[string]*pb.Series{
+							"stat-var-2": {
+								Val: map[string]float64{
+									"2019": 350,
+									"2020": 450,
 								},
 							},
 						},
@@ -150,8 +177,17 @@ func TestSampleJson(t *testing.T) {
 			&SamplingStrategy{
 				Children: map[string]*SamplingStrategy{
 					"statVarSeries": {
-						SampleEvery: 2,
-						Exclude:     []string{"country/USA"},
+						MaxSample: -1,
+						Children: map[string]*SamplingStrategy{
+							"data": {
+								MaxSample: -1,
+								Children: map[string]*SamplingStrategy{
+									"val": {
+										MaxSample: 3,
+									},
+								},
+							},
+						},
 					},
 				},
 			},

@@ -21,6 +21,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"math/rand"
 	"regexp"
 	"runtime"
@@ -93,9 +94,8 @@ type TypePair struct {
 // SamplingStrategy represents the config to use for sampling golden response
 // Json.
 type SamplingStrategy struct {
-	// Sampling interval. A value of 3 indicates sampling one out of
-	// every 3 items.
-	SampleEvery int
+	// Maximum number of samples. -1 means sample all.
+	MaxSample int
 	// Sampling strategy for the child fields.
 	Children map[string]*SamplingStrategy
 	// Proto fields or map keys that are not sampled at all.
@@ -332,16 +332,31 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 		if fd.IsList() {
 			// Sample list.
 			oldList := value.List()
+			length := oldList.Len()
 			var newList protoreflect.List
-			for i := 0; i < oldList.Len(); i += strat.SampleEvery {
-				newList.Append(oldList.Get(i))
+
+			maxSample := strat.MaxSample
+			if strat.MaxSample == -1 || strat.MaxSample > length {
+				maxSample = length
+			}
+			inc := 1
+			if length > maxSample {
+				inc = int(math.Ceil(float64(length) / float64(maxSample)))
+			}
+			// Get the latest data first
+			for i := 0; i < maxSample; i++ {
+				ind := length - 1 - i*inc
+				if ind < 0 {
+					break
+				}
+				newList.Append(oldList.Get(ind))
 			}
 			pr.Set(fd, protoreflect.ValueOfList(newList))
 		} else if fd.IsMap() {
-			oldMap := value.Map()
+			currMap := value.Map()
 			// Get all the keys
 			allKeys := []string{}
-			oldMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+			currMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
 				// Excluded keys
 				for _, ex := range strat.Exclude {
 					if ex == k.String() {
@@ -355,18 +370,40 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 			sort.Strings(allKeys)
 			// Sample keys
 			sampleKeys := map[string]struct{}{}
-			for i := 0; i < len(allKeys); i += strat.SampleEvery {
-				sampleKeys[allKeys[i]] = struct{}{}
+
+			maxSample := strat.MaxSample
+			if strat.MaxSample == -1 || strat.MaxSample > len(allKeys) {
+				maxSample = len(allKeys)
+			}
+			inc := 1
+			if len(allKeys) > maxSample {
+				inc = int(math.Ceil(float64(len(allKeys)) / float64(maxSample)))
+			}
+			for i := 0; i < maxSample; i++ {
+				ind := len(allKeys) - 1 - i*inc
+				if ind < 0 {
+					break
+				}
+				sampleKeys[allKeys[ind]] = struct{}{}
 			}
 			// Clear un-sampled entries
-			oldMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+			currMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
 				if _, ok := sampleKeys[k.String()]; !ok {
-					oldMap.Clear(k)
+					currMap.Clear(k)
 				}
 				return true
 			})
+			// If there are children strategy in a map, then apply this strategy to
+			// each value of the map.
+			if len(strat.Children) > 0 {
+				currMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+					Sample(v.Message().Interface(), strat)
+					return true
+				})
+			}
+
 			// Set the map
-			pr.Set(fd, protoreflect.ValueOfMap(oldMap))
+			pr.Set(fd, protoreflect.ValueOfMap(currMap))
 		} else if fd.Kind() == protoreflect.MessageKind {
 			Sample(value.Message().Interface(), strat)
 		}

@@ -26,6 +26,26 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+func buildStrategy(maxPlace, maxSeries int) *util.SamplingStrategy {
+	return &util.SamplingStrategy{
+		Children: map[string]*util.SamplingStrategy{
+			"statVarSeries": {
+				MaxSample: maxPlace,
+				Children: map[string]*util.SamplingStrategy{
+					"data": {
+						MaxSample: -1,
+						Children: map[string]*util.SamplingStrategy{
+							"val": {
+								MaxSample: maxSeries,
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
 // TestGetLandingPageData tests GetLandingPageData.
 func TestGetLandingPageData(t *testing.T) {
 	t.Parallel()
@@ -39,63 +59,54 @@ func TestGetLandingPageData(t *testing.T) {
 		path.Dir(filename), "golden_response/get_landing_page_data")
 
 	for _, c := range []struct {
-		goldenFile      string
-		place           string
-		seed            int64
-		statVars        []string
-		sampleEvery     int
-		samplingExclude []string
+		goldenFile string
+		place      string
+		seed       int64
+		statVars   []string
+		maxPlace   int
+		maxSeries  int
 	}{
 		{
 			"asm.sample.json",
 			"country/ASM",
 			1,
 			[]string{},
-			3,
-			[]string{},
+			5,
+			5,
 		},
 		{
 			"tha.sample.json",
 			"country/THA",
 			1,
 			[]string{},
-			3,
-			[]string{"country/USA"},
+			5,
+			5,
 		},
 		{
 			"county.sample.json",
 			"geoId/06085",
 			1,
 			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
-			10,
-			[]string{"country/USA"},
+			5,
+			5,
 		},
 		{
 			"city.sample.json",
 			"geoId/0656938",
 			1,
 			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
-			10,
-			[]string{"country/USA"},
+			5,
+			5,
 		},
 		{
 			"zuid-nederland.sample.json",
 			"nuts/NL4",
 			1,
 			[]string{},
-			2,
-			[]string{"country/USA"},
+			5,
+			5,
 		},
 	} {
-		strategy := &util.SamplingStrategy{
-			Children: map[string]*util.SamplingStrategy{
-				"statVarSeries": {
-					SampleEvery: c.sampleEvery,
-					Exclude:     c.samplingExclude,
-				},
-			},
-		}
-
 		req := &pb.GetLandingPageDataRequest{
 			Place:       c.place,
 			NewStatVars: c.statVars,
@@ -107,7 +118,9 @@ func TestGetLandingPageData(t *testing.T) {
 			continue
 		}
 
-		resp = util.Sample(resp, strategy).(*pb.GetLandingPageDataResponse)
+		resp = util.Sample(
+			resp,
+			buildStrategy(c.maxPlace, c.maxSeries)).(*pb.GetLandingPageDataResponse)
 
 		if generateGolden {
 			updateProtoGolden(resp, goldenPath, c.goldenFile)
