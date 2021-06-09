@@ -250,6 +250,9 @@ func fetchBtData(
 	// Populate result from landing page cache
 	result := map[string]*pb.StatVarSeries{}
 	for dcid, data := range baseDataMap {
+		if data == nil {
+			continue
+		}
 		landingPageData := data.(*pb.StatVarObsSeries)
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 		for statVarDcid, obsTimeSeries := range landingPageData.Data {
