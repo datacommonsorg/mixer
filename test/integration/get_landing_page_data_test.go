@@ -26,21 +26,11 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func buildStrategy(maxPlace, maxSeries int) *util.SamplingStrategy {
+func buildStrategy(maxPlace int) *util.SamplingStrategy {
 	return &util.SamplingStrategy{
 		Children: map[string]*util.SamplingStrategy{
 			"statVarSeries": {
 				MaxSample: maxPlace,
-				Children: map[string]*util.SamplingStrategy{
-					"data": {
-						MaxSample: -1,
-						Children: map[string]*util.SamplingStrategy{
-							"val": {
-								MaxSample: maxSeries,
-							},
-						},
-					},
-				},
 			},
 		},
 	}
@@ -64,15 +54,13 @@ func TestGetLandingPageData(t *testing.T) {
 		seed       int64
 		statVars   []string
 		maxPlace   int
-		maxSeries  int
 	}{
 		{
 			"asm.sample.json",
 			"country/ASM",
 			1,
 			[]string{},
-			5,
-			5,
+			3,
 		},
 		{
 			"tha.sample.json",
@@ -80,30 +68,26 @@ func TestGetLandingPageData(t *testing.T) {
 			1,
 			[]string{},
 			5,
-			5,
 		},
 		{
 			"county.sample.json",
 			"geoId/06085",
 			1,
 			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
-			5,
-			5,
+			3,
 		},
 		{
 			"city.sample.json",
 			"geoId/0656938",
 			1,
 			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
-			5,
-			5,
+			3,
 		},
 		{
 			"zuid-nederland.sample.json",
 			"nuts/NL4",
 			1,
 			[]string{},
-			5,
 			5,
 		},
 	} {
@@ -120,7 +104,7 @@ func TestGetLandingPageData(t *testing.T) {
 
 		resp = util.Sample(
 			resp,
-			buildStrategy(c.maxPlace, c.maxSeries)).(*pb.GetLandingPageDataResponse)
+			buildStrategy(c.maxPlace)).(*pb.GetLandingPageDataResponse)
 
 		if generateGolden {
 			updateProtoGolden(resp, goldenPath, c.goldenFile)
