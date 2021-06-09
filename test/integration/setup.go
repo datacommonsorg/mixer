@@ -18,14 +18,10 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
-	"fmt"
-	"io/fs"
 	"io/ioutil"
 	"log"
 	"net"
-	"os"
 	"path"
-	"path/filepath"
 	"runtime"
 	"strings"
 
@@ -54,7 +50,6 @@ const (
 	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
 	store            = "datcom-store"
-	lineLimit        = 10000
 )
 
 func setup() (pb.MixerClient, error) {
@@ -171,28 +166,19 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	return server.SetupBigtable(ctx, data)
 }
 
-func updateGolden(v interface{}, root, fname string, shard ...bool) {
+func updateGolden(v interface{}, root, fname string) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
-	var err error
-	if len(shard) == 1 && shard[0] {
-		newFiles, err := writeJSONShard(jsonByte, root, fname)
-		if err != nil {
-			log.Printf("could not write golden files to %s", fname)
-		}
-		deleteOldFiles(root, fname, newFiles)
-	} else {
-		err = ioutil.WriteFile(fname, jsonByte, 0644)
-		if err != nil {
-			log.Printf("could not write golden files to %s", fname)
-		}
+	if ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644) != nil {
+		log.Printf("could not write golden files to %s", fname)
 	}
 }
 
 func updateProtoGolden(
-	resp protoreflect.ProtoMessage, root string, fname string, shard ...bool) {
+	resp protoreflect.ProtoMessage, root string, fname string) {
 	var err error
 	marshaller := protojson.MarshalOptions{Indent: ""}
-	// protojson don't and won't make stable output: https://github.com/golang/protobuf/issues/1082
+	// protojson doesn't and won't make stable output:
+	// https://github.com/golang/protobuf/issues/1082
 	// Use encoding/json to get stable output.
 	data, err := marshaller.Marshal(resp)
 	if err != nil {
@@ -205,95 +191,20 @@ func updateProtoGolden(
 		log.Printf("could not write golden files to %s", fname)
 		return
 	}
-	if len(shard) == 1 && shard[0] {
-		newFiles, err := writeJSONShard(jsonByte, root, fname)
-		if err != nil {
-			log.Printf("could not write golden files to %s", fname)
-			return
-		}
-		deleteOldFiles(root, fname, newFiles)
-	} else {
-		err = ioutil.WriteFile(fname, jsonByte, 0644)
-	}
+	err = ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644)
 	if err != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
 }
 
-func writeJSONShard(jsonByte []byte, root string, fname string) ([]string, error) {
-	result := []string{}
-	jsonLines := strings.Split(string(jsonByte), "\n")
-	for i := 0; ; i++ {
-		start := i * lineLimit
-		end := (i + 1) * lineLimit
-		if end > len(jsonLines) {
-			end = len(jsonLines)
-		}
-		name := path.Join(root, fmt.Sprintf("%s.%03d", fname, i))
-		err := ioutil.WriteFile(
-			name,
-			[]byte(strings.Join(jsonLines[start:end], "\n")),
-			0644,
-		)
-		if err != nil {
-			return nil, err
-		}
-		result = append(result, name)
-		if end == len(jsonLines) {
-			break
-		}
-	}
-	return result, nil
-}
-
-func find(path, fname string) ([]string, error) {
-	var result []string
-	// WalkDir outputs is lexically sorted
-	err := filepath.WalkDir(path, func(s string, d fs.DirEntry, e error) error { //nolint
-		if e != nil {
-			return e
-		}
-		if strings.Contains(s, fname) {
-			result = append(result, s)
-		}
-		return nil
-	})
-	return result, err
-}
-
-func readJSONShard(path, fname string) ([]byte, error) {
-	fileNames, err := find(path, fname)
+func readJSON(dir, fname string, resp protoreflect.ProtoMessage) error {
+	bytes, err := ioutil.ReadFile(path.Join(dir, fname))
 	if err != nil {
-		return nil, err
+		return err
 	}
-	allBytes := []byte{}
-	for _, name := range fileNames {
-		bytes, err := ioutil.ReadFile(name)
-		if err != nil {
-			return nil, err
-		}
-		allBytes = append(allBytes, bytes...)
-	}
-	return allBytes, nil
-}
-
-func deleteOldFiles(root, fname string, newFiles []string) {
-	oldFiles, err := find(root, fname)
+	err = protojson.Unmarshal(bytes, resp)
 	if err != nil {
-		log.Printf("could not find existing files for %s", fname)
-		return
+		return err
 	}
-	newFileSet := map[string]struct{}{}
-	for _, newFile := range newFiles {
-		newFileSet[newFile] = struct{}{}
-	}
-	for _, oldFile := range oldFiles {
-		if _, ok := newFileSet[oldFile]; !ok {
-			err := os.Remove(oldFile)
-			if err != nil {
-				log.Printf("Could not delete old file %v", err)
-				return
-			}
-		}
-	}
+	return nil
 }

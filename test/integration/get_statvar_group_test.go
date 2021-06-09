@@ -16,14 +16,12 @@ package integration
 
 import (
 	"context"
-	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -76,8 +74,6 @@ func TestGetStatVarGroup(t *testing.T) {
 			continue
 		}
 
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-
 		if generateGolden {
 			if !c.checkCount {
 				updateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -86,9 +82,7 @@ func TestGetStatVarGroup(t *testing.T) {
 		}
 
 		var expected pb.StatVarGroups
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
-		if err != nil {
+		if err = readJSON(goldenPath, c.goldenFile, &expected); err != nil {
 			t.Errorf("Can not Unmarshal golden file")
 			continue
 		}

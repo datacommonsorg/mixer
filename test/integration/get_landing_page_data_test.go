@@ -21,10 +21,20 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
+
+func buildStrategy(maxPlace int) *util.SamplingStrategy {
+	return &util.SamplingStrategy{
+		Children: map[string]*util.SamplingStrategy{
+			"statVarSeries": {
+				MaxSample: maxPlace,
+			},
+		},
+	}
+}
 
 // TestGetLandingPageData tests GetLandingPageData.
 func TestGetLandingPageData(t *testing.T) {
@@ -43,36 +53,42 @@ func TestGetLandingPageData(t *testing.T) {
 		place      string
 		seed       int64
 		statVars   []string
+		maxPlace   int
 	}{
 		{
-			"asm.json",
+			"asm.sample.json",
 			"country/ASM",
 			1,
 			[]string{},
+			3,
 		},
 		{
-			"tha.json",
+			"tha.sample.json",
 			"country/THA",
 			1,
 			[]string{},
+			5,
 		},
 		{
-			"county.json",
+			"county.sample.json",
 			"geoId/06085",
 			1,
 			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
+			3,
 		},
 		{
-			"city.json",
+			"city.sample.json",
 			"geoId/0656938",
 			1,
 			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
+			3,
 		},
 		{
-			"zuid-nederland.json",
+			"zuid-nederland.sample.json",
 			"nuts/NL4",
 			1,
 			[]string{},
+			5,
 		},
 	} {
 		req := &pb.GetLandingPageDataRequest{
@@ -86,24 +102,23 @@ func TestGetLandingPageData(t *testing.T) {
 			continue
 		}
 
+		resp = util.Sample(
+			resp,
+			buildStrategy(c.maxPlace)).(*pb.GetLandingPageDataResponse)
+
 		if generateGolden {
-			updateProtoGolden(resp, goldenPath, c.goldenFile, true /* shared */)
+			updateProtoGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 
 		var expected pb.GetLandingPageDataResponse
-		bytes, err := readJSONShard(goldenPath, c.goldenFile)
+		err = readJSON(goldenPath, c.goldenFile, &expected)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		err = protojson.Unmarshal(bytes, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
 		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
+			t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
 			continue
 		}
 	}

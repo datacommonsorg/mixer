@@ -21,14 +21,18 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"math/rand"
 	"regexp"
 	"runtime"
+	"sort"
 	"strings"
 	"time"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
 const (
@@ -85,6 +89,23 @@ type typeInfo struct {
 type TypePair struct {
 	Child  string
 	Parent string
+}
+
+// SamplingStrategy represents the strategy to sample a JSON object.
+//
+// Sampling is performed uniform acroos the items for list, or the keys for
+// map.For example, when MaxSample=4, sampling of [1,2,3,4,5,6,7,8,9]
+// would give [3,5,7,9]
+type SamplingStrategy struct {
+	// Maximum number of samples.
+	//
+	// -1 means sample all the data. A positive integer indicates the maximum
+	// number of samples.
+	MaxSample int
+	// Sampling strategy for the child fields.
+	Children map[string]*SamplingStrategy
+	// Proto fields or map keys that are not sampled at all.
+	Exclude []string
 }
 
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64
@@ -290,4 +311,109 @@ func MergeDedupe(s1 []string, s2 []string) []string {
 		}
 	}
 	return s1
+}
+
+// Sample constructs a sampled protobuf message based on the sampling strategy.
+// The output is deterministic given the same strategy.
+func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
+	pr := m.ProtoReflect()
+	pr.Range(func(fd protoreflect.FieldDescriptor, value protoreflect.Value) bool {
+		fieldName := fd.JSONName()
+
+		// Clear the excluded fields
+		for _, ex := range strategy.Exclude {
+			if ex == fieldName {
+				pr.Clear(fd)
+				return true
+			}
+		}
+
+		// If a field is not in the sampling strategy, keep it.
+		strat, ok := strategy.Children[fieldName]
+		if !ok {
+			return true
+		}
+		// Note, map[string]proto.Message is treated as protoreflect.MessageKind,
+		// So here need to check field and list first.
+		if fd.IsList() {
+			// Sample list.
+			oldList := value.List()
+			length := oldList.Len()
+			var newList protoreflect.List
+
+			maxSample := strat.MaxSample
+			if strat.MaxSample == -1 || strat.MaxSample > length {
+				maxSample = length
+			}
+			inc := 1
+			if length > maxSample {
+				inc = int(math.Ceil(float64(length) / float64(maxSample)))
+			}
+			// Get the latest data first
+			for i := 0; i < maxSample; i++ {
+				ind := length - 1 - i*inc
+				if ind < 0 {
+					break
+				}
+				newList.Append(oldList.Get(ind))
+			}
+			pr.Set(fd, protoreflect.ValueOfList(newList))
+		} else if fd.IsMap() {
+			currMap := value.Map()
+			// Get all the keys
+			allKeys := []string{}
+			currMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+				// Excluded keys
+				for _, ex := range strat.Exclude {
+					if ex == k.String() {
+						return true
+					}
+				}
+				allKeys = append(allKeys, k.String())
+				return true
+			})
+			// Sort the keys
+			sort.Strings(allKeys)
+			// Sample keys
+			sampleKeys := map[string]struct{}{}
+
+			maxSample := strat.MaxSample
+			if strat.MaxSample == -1 || strat.MaxSample > len(allKeys) {
+				maxSample = len(allKeys)
+			}
+			inc := 1
+			if len(allKeys) > maxSample {
+				inc = int(math.Ceil(float64(len(allKeys)) / float64(maxSample)))
+			}
+			for i := 0; i < maxSample; i++ {
+				ind := len(allKeys) - 1 - i*inc
+				if ind < 0 {
+					break
+				}
+				sampleKeys[allKeys[ind]] = struct{}{}
+			}
+			// Clear un-sampled entries
+			currMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+				if _, ok := sampleKeys[k.String()]; !ok {
+					currMap.Clear(k)
+				}
+				return true
+			})
+			// If there are children strategy in a map, then apply this strategy to
+			// each value of the map.
+			if len(strat.Children) > 0 {
+				currMap.Range(func(k protoreflect.MapKey, v protoreflect.Value) bool {
+					Sample(v.Message().Interface(), strat)
+					return true
+				})
+			}
+
+			// Set the map
+			pr.Set(fd, protoreflect.ValueOfMap(currMap))
+		} else if fd.Kind() == protoreflect.MessageKind {
+			Sample(value.Message().Interface(), strat)
+		}
+		return true
+	})
+	return m
 }

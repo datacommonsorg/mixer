@@ -16,14 +16,12 @@ package integration
 
 import (
 	"context"
-	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -68,17 +66,14 @@ func TestGetPlaceObs(t *testing.T) {
 			continue
 		}
 
-		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if generateGolden {
 			updateProtoGolden(result, goldenPath, c.goldenFile)
 			continue
 		}
 
 		var expected pb.SVOCollection
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+		if err := readJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
 		if diff := cmp.Diff(result, &expected, protocmp.Transform()); diff != "" {

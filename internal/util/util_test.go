@@ -3,7 +3,10 @@ package util
 import (
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestZipAndEndocde(t *testing.T) {
@@ -77,4 +80,123 @@ func TestMergeDedupe(t *testing.T) {
 			t.Errorf("MergeDedupe got diff %+v", diff)
 		}
 	}
+}
+
+func TestSample(t *testing.T) {
+	for _, c := range []struct {
+		input    protoreflect.ProtoMessage
+		expected protoreflect.ProtoMessage
+		strategy *SamplingStrategy
+	}{
+		{
+			&pb.GetLandingPageDataResponse{
+				ChildPlacesType: "Country",
+				ChildPlaces: []string{
+					"geoId/12345",
+					"geoId/54321",
+				},
+				StatVarSeries: map[string]*pb.StatVarSeries{
+					"country/USA": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2011": 1010,
+									"2012": 1020,
+									"2013": 1030,
+									"2014": 1040,
+									"2015": 1050,
+									"2016": 1060,
+								},
+							},
+						},
+					},
+					"geoId/06": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2018": 300,
+									"2019": 400,
+									"2020": 500,
+								},
+							},
+						},
+					},
+					"geoId/11": {
+						Data: map[string]*pb.Series{
+							"stat-var-2": {
+								Val: map[string]float64{
+									"2019": 350,
+									"2020": 450,
+								},
+							},
+						},
+					},
+				},
+			},
+			&pb.GetLandingPageDataResponse{
+				ChildPlacesType: "Country",
+				ChildPlaces: []string{
+					"geoId/12345",
+					"geoId/54321",
+				},
+				StatVarSeries: map[string]*pb.StatVarSeries{
+					"country/USA": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2012": 1020,
+									"2014": 1040,
+									"2016": 1060,
+								},
+							},
+						},
+					},
+					"geoId/06": {
+						Data: map[string]*pb.Series{
+							"stat-var-1": {
+								Val: map[string]float64{
+									"2018": 300,
+									"2019": 400,
+									"2020": 500,
+								},
+							},
+						},
+					},
+					"geoId/11": {
+						Data: map[string]*pb.Series{
+							"stat-var-2": {
+								Val: map[string]float64{
+									"2019": 350,
+									"2020": 450,
+								},
+							},
+						},
+					},
+				},
+			},
+			&SamplingStrategy{
+				Children: map[string]*SamplingStrategy{
+					"statVarSeries": {
+						MaxSample: -1,
+						Children: map[string]*SamplingStrategy{
+							"data": {
+								MaxSample: -1,
+								Children: map[string]*SamplingStrategy{
+									"val": {
+										MaxSample: 3,
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	} {
+		got := Sample(c.input, c.strategy)
+		if diff := cmp.Diff(got, c.expected, protocmp.Transform()); diff != "" {
+			t.Errorf("Sample got diff %+v", diff)
+		}
+	}
+
 }
