@@ -18,9 +18,9 @@
 #
 # Usage:
 #
-# ./deploy_key.sh <"prod"|"staging"|"autopush"|"encode"> <commit_hash>
+# ./deploy_key.sh <"prod"|"staging"|"autopush"|"encode"|"dev"> <commit_hash>
 #
-# First argument is either "prod" or "staging" or "autopush" or "encode".
+# First argument is either "prod" or "staging" or "autopush" or "encode" or "dev".
 # (Optional) second argument is the git commit hash of the mixer repo.
 #
 # !!! WARNING: Run this script in a clean Git checkout at the desired commit.
@@ -33,8 +33,8 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" ]]; then
-  echo "First argument should be 'staging' or 'prod' 'autopush' or 'encode'"
+if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" ]]; then
+  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev'"
   exit
 fi
 

@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,38 +12,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Kustomization for dev mixer running on GCP `datcom-mixer-dev` project.
-# - Adds "dev" suffix to all the resources.
-# - Use replica of 8.
+# Kustomization for local mixer in local Minikube environment.
+# - Adds "local" suffix to all the resources
+# - Use "serviceaccount.yaml" to create service account explicitly.
+#   Note the GKE cluster service account is created once at cluster creation time.
+# - Patch deployment with "api-compiler" image that can updates the gRPC config on code change.
+# - Update the esp startup options for local container.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-nameSuffix: -dev
+nameSuffix: -local
+namespace: mixer
+
+bases:
+  - ../../datacommons
 
 resources:
-  - ../../datacommons
+  - serviceaccount.yaml
 
 configMapGenerator:
   - name: mixer-configmap
     behavior: create
-    namespace: mixer
     literals:
       - mixerProject=datcom-mixer-dev-316822
-      - serviceName=dev.api.datacommons.org
+      - serviceName=
+
+generatorOptions:
+  disableNameSuffixHash: true
 
 patchesStrategicMerge:
-  - |-
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
+  - patch_deployment.yaml
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
       name: mixer-grpc
-    spec:
-      replicas: 8
-  - |-
-    apiVersion: extensions/v1beta1
-    kind: Ingress
-    metadata:
-      name: mixer-ingress
-      annotations:
-        ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate
+    path: patch_esp.yaml
