@@ -38,10 +38,10 @@ deploy:
   kubeContext: minikube
   kustomize:
     paths:
-    - deploy/overlays/dev
+    - deploy/overlays/local
 portForward:
 - resourceType: service
-  resourceName: mixer-service-dev
+  resourceName: mixer-service-local
   namespace: mixer
   port: 80
   localPort: 9090
