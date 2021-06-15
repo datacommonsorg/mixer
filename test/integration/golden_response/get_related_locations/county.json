@@ -1,18 +1,1 @@
-{
-  "Count_Person": {
-    "rankFromTop": 18,
-    "rankFromBottom": 3172
-  },
-  "Median_Age_Person": {
-    "rankFromTop": 2583,
-    "rankFromBottom": 603
-  },
-  "Median_Income_Person": {
-    "rankFromTop": 22,
-    "rankFromBottom": 3164
-  },
-  "UnemploymentRate_Person": {
-    "rankFromTop": 1691,
-    "rankFromBottom": 1495
-  }
-}
+{}
