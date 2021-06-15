@@ -85,6 +85,9 @@ type MixerClient interface {
 	GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetPlaceStatDateWithinPlaceResponse, error)
 	// Given a place, get the statvar group for stat vars that have data for it.
 	GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRequest, opts ...grpc.CallOption) (*StatVarGroups, error)
+	// Get the stat var group node info. The children stat var and stat var group
+	// should have data for at least one of the give places.
+	GetStatVarGroupNode(ctx context.Context, in *GetStatVarGroupNodeRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error)
 }
 
 type mixerClient struct {
@@ -320,6 +323,15 @@ func (c *mixerClient) GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRe
 	return out, nil
 }
 
+func (c *mixerClient) GetStatVarGroupNode(ctx context.Context, in *GetStatVarGroupNodeRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error) {
+	out := new(StatVarGroupNode)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarGroupNode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -392,6 +404,9 @@ type MixerServer interface {
 	GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error)
 	// Given a place, get the statvar group for stat vars that have data for it.
 	GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error)
+	// Get the stat var group node info. The children stat var and stat var group
+	// should have data for at least one of the give places.
+	GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -472,6 +487,9 @@ func (*UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *G
 }
 func (*UnimplementedMixerServer) GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarGroup not implemented")
+}
+func (*UnimplementedMixerServer) GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarGroupNode not implemented")
 }
 
 func RegisterMixerServer(s *grpc.Server, srv MixerServer) {
@@ -928,6 +946,24 @@ func _Mixer_GetStatVarGroup_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_GetStatVarGroupNode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStatVarGroupNodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetStatVarGroupNode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/GetStatVarGroupNode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetStatVarGroupNode(ctx, req.(*GetStatVarGroupNodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Mixer_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
@@ -1031,6 +1067,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatVarGroup",
 			Handler:    _Mixer_GetStatVarGroup_Handler,
+		},
+		{
+			MethodName: "GetStatVarGroupNode",
+			Handler:    _Mixer_GetStatVarGroupNode_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
