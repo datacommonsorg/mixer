@@ -18,6 +18,7 @@ import (
 	"context"
 	"log"
 	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -237,7 +238,7 @@ func fetchStatVarNames(ctx context.Context, s *Server, statVars []string) (
 			}
 			name += pv[p]
 		}
-		result[sv] = name
+		result[sv] = strings.Title(name)
 	}
 	return result, nil
 }
