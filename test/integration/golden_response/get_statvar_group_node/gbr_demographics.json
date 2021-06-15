@@ -1,0 +1,61 @@
+{
+  "absoluteName": "Demographics",
+  "childStatVarGroups": [
+    {
+      "id": "dc/g/Variables_Demographics",
+      "displayName": "Variables Of Person"
+    },
+    {
+      "id": "dc/g/Person_VeteranStatus",
+      "displayName": "Person By VeteranStatus"
+    },
+    {
+      "id": "dc/g/Person_Race",
+      "displayName": "Person By Race"
+    },
+    {
+      "id": "dc/g/Person_PovertyStatus",
+      "displayName": "Person By PovertyStatus"
+    },
+    {
+      "id": "dc/g/Person_PlaceOfBirth",
+      "displayName": "Person By PlaceOfBirth"
+    },
+    {
+      "id": "dc/g/Person_Nativity",
+      "displayName": "Person By Nativity"
+    },
+    {
+      "id": "dc/g/Person_MaritalStatus",
+      "displayName": "Person By MaritalStatus"
+    },
+    {
+      "id": "dc/g/Person_LevelOfSchool",
+      "displayName": "Person By LevelOfSchool"
+    },
+    {
+      "id": "dc/g/Person_Income",
+      "displayName": "Person By Income"
+    },
+    {
+      "id": "dc/g/Person_Gender",
+      "displayName": "Person By Gender"
+    },
+    {
+      "id": "dc/g/Person_EducationalAttainment",
+      "displayName": "Person By EducationalAttainment"
+    },
+    {
+      "id": "dc/g/Person_Citizenship",
+      "displayName": "Person By Citizenship"
+    },
+    {
+      "id": "dc/g/Person_Age",
+      "displayName": "Person By Age"
+    },
+    {
+      "id": "dc/g/BirthEvent",
+      "displayName": "BirthEvent"
+    }
+  ]
+}

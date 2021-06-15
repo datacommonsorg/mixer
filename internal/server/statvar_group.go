@@ -16,6 +16,9 @@ package server
 
 import (
 	"context"
+	"log"
+	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -137,4 +140,105 @@ func (s *Server) GetStatVarGroup(
 		svgResp = filterSVG(svgResp, statVars)
 	}
 	return svgResp, nil
+}
+
+// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNodeRequest.
+func (s *Server) GetStatVarGroupNode(
+	ctx context.Context, in *pb.GetStatVarGroupNodeRequest) (
+	*pb.StatVarGroupNode, error) {
+	places := in.GetPlaces()
+	svg := in.GetStatVarGroup()
+
+	if svg == "" {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "Missing required argument: stat_var_group")
+	}
+
+	triples, err := readTriples(ctx, s.store, buildTriplesKey([]string{svg}))
+	if err != nil {
+		return nil, err
+	}
+
+	result := &pb.StatVarGroupNode{}
+	childStatVars := []string{}
+
+	// Go through triples and populate result fields.
+	for _, t := range triples[svg].Triples {
+		if t.SubjectID == svg {
+			// SVG is subject
+			if t.Predicate == "specializationOf" {
+				// Parent SVG
+				result.ParentStatVarGroups = append(result.ParentStatVarGroups, t.ObjectID)
+			} else if t.Predicate == "name" {
+				result.AbsoluteName = t.ObjectValue
+			}
+		} else {
+			// SVG is object
+			if t.Predicate == "specializationOf" {
+				// Children SVG
+				result.ChildStatVarGroups = append(result.ChildStatVarGroups,
+					&pb.StatVarGroupNode_ChildSVG{
+						Id:          t.SubjectID,
+						DisplayName: t.SubjectName,
+					})
+			} else if t.Predicate == "memberOf" {
+				// Children SV
+				result.ChildStatVars = append(result.ChildStatVars,
+					&pb.StatVarGroupNode_ChildSV{
+						Id: t.SubjectID,
+					})
+				childStatVars = append(childStatVars, t.SubjectID)
+			}
+		}
+	}
+	// TODO(shifucun): Filter sv and svg given place information
+	log.Println(places)
+
+	// Fetch the child stat var triples and construct the names.
+	if len(childStatVars) > 0 {
+		statVarNames, err := fetchStatVarNames(ctx, s, childStatVars)
+		if err != nil {
+			return nil, err
+		}
+		for _, c := range result.ChildStatVars {
+			c.DisplayName = statVarNames[c.Id]
+		}
+	}
+	return result, nil
+}
+
+func fetchStatVarNames(ctx context.Context, s *Server, statVars []string) (
+	map[string]string, error) {
+	triples, err := readTriples(ctx, s.store, buildTriplesKey(statVars))
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]string{}
+	for sv, data := range triples {
+		// Names are built as:
+		// measurement proptery + constraint value 1 + constraint value 2 + ...
+		var name string
+		pv := map[string]string{}
+		cpv := []string{}
+		for _, t := range data.Triples {
+			if t.Predicate == "measuredProperty" {
+				name = t.ObjectName + " of"
+			} else if t.Predicate == "constraintProperties" {
+				cpv = append(cpv, t.ObjectID)
+			} else {
+				pv[t.Predicate] = t.ObjectID
+			}
+		}
+		sort.Strings(cpv)
+		for i, p := range cpv {
+			if i == 0 {
+				name += " "
+			} else {
+				name += ", "
+			}
+			name += pv[p]
+		}
+		result[sv] = strings.Title(name)
+	}
+	return result, nil
 }

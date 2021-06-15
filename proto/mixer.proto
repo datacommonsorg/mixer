@@ -350,6 +350,8 @@ message StatVarGroupNode {
     // The specialized entity of the child StatVarGroup relative to the parent.
     // This can be used for naming when the child appears in the hierarchy.
     string specialized_entity = 2;
+    // Name suitable for display in tree.
+    string display_name = 3;
   }
 
   message ChildSV {
@@ -368,11 +370,22 @@ message StatVarGroupNode {
   repeated ChildSV child_stat_vars = 2;
   // List of children StatVarGroups that are immediate specializations.
   repeated ChildSVG child_stat_var_groups = 3;
+  // List of parent StatVarGroup IDs.
+  repeated string parent_stat_var_groups = 4;
 }
 
 message GetStatVarGroupRequest {
   repeated string places = 2;
   reserved 1;
+}
+
+message GetStatVarGroupNodeRequest {
+  // The stat var or stat var group ID to query for.
+  string stat_var_group = 1;
+  // The places that the stat var group is associated with. The response should
+  // only contain the children stat var (group) if it has data for at least one
+  // of the places.
+  repeated string places = 2;
 }
 
 // SVOPlace holds basic information about a DC place along with its associated
@@ -803,6 +816,19 @@ service Mixer {
       get: "/place/stat-var-group"
       additional_bindings: {
         post: "/place/stat-var-group"
+        body: "*"
+      }
+    };
+  }
+
+  // Get the stat var group node info. The children stat var and stat var group
+  // should have data for at least one of the give places.
+  rpc GetStatVarGroupNode(GetStatVarGroupNodeRequest)
+      returns (StatVarGroupNode) {
+    option (google.api.http) = {
+      get: "/place/stat-var-group-node"
+      additional_bindings: {
+        post: "/place/stat-var-group-node"
         body: "*"
       }
     };
