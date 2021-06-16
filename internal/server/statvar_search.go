@@ -62,7 +62,8 @@ func searchTokens(tokens []string, index *SearchIndex) ([]string, []string) {
 			svList = append(svList, sv)
 		}
 	}
-	// Sort stat vars by ID then by number of PV
+	// Sort stat vars by number of PV; If two stat vars have same number of PV,
+	// then order alphabetically.
 	sort.Strings(svList)
 	sort.SliceStable(svList, func(i, j int) bool {
 		ranking := index.ranking
