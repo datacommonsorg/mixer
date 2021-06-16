@@ -526,6 +526,20 @@ message RelatedPlacesInfo {
   reserved 4, 5, 6;
 }
 
+message GetStatVarPathRequest {
+  // DCID of a stat var or a stat var group
+  string id = 1;
+}
+
+message GetStatVarPathResponse {
+  // A list of stat var (stat var group) DCIDs from the queried node to the
+  // root of stat var hierarchy.
+  // This is one path out of many possible paths in the hierarchy. When there
+  // are multiple nodes to select at given level, the first one in
+  // alphabetical sorted order is selected.
+  repeated string path = 1;
+}
+
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -829,6 +843,19 @@ service Mixer {
       get: "/place/stat-var-group-node"
       additional_bindings: {
         post: "/place/stat-var-group-node"
+        body: "*"
+      }
+    };
+  }
+
+  // Get the path from a stat var or a stat var group path to the root
+  // of stat var hierarchy
+  rpc GetStatVarPath(GetStatVarPathRequest)
+      returns (GetStatVarPathResponse) {
+    option (google.api.http) = {
+      get: "/stat-var/path"
+      additional_bindings: {
+        post: "/stat-var/path"
         body: "*"
       }
     };

@@ -102,7 +102,7 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	return svgResp
 }
 
-// GetStatVarGroup implements API for Mixer.GetStatVarGroupRequest.
+// GetStatVarGroup implements API for Mixer.GetStatVarGroup.
 func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
 	*pb.StatVarGroups, error) {
@@ -147,7 +147,7 @@ func (s *Server) GetStatVarGroup(
 	return svgResp, nil
 }
 
-// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNodeRequest.
+// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNode.
 func (s *Server) GetStatVarGroupNode(
 	ctx context.Context, in *pb.GetStatVarGroupNodeRequest) (
 	*pb.StatVarGroupNode, error) {
@@ -247,6 +247,30 @@ func fetchStatVarNames(ctx context.Context, s *Server, statVars []string) (
 		result[sv] = strings.Title(name)
 	}
 	return result, nil
+}
+
+// GetStatVarPath implements API for Mixer.GetStatVarPath.
+func (s *Server) GetStatVarPath(
+	ctx context.Context, in *pb.GetStatVarPathRequest) (
+	*pb.GetStatVarPathResponse, error) {
+	id := in.GetId()
+	if id == "" {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "Missing required argument: id")
+	}
+	path := []string{id}
+	curr := id
+	for {
+		if parents, ok := s.cache.ParentSvg[curr]; ok {
+			curr = parents[0]
+			path = append(path, curr)
+		} else {
+			break
+		}
+	}
+	return &pb.GetStatVarPathResponse{
+		Path: path,
+	}, nil
 }
 
 func isBasicPopulationType(t string) bool {

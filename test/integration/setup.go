@@ -52,16 +52,19 @@ const (
 	store            = "datcom-store"
 )
 
-func setup() (pb.MixerClient, error) {
+func setup(option ...bool) (pb.MixerClient, error) {
+	useCache := len(option) > 0
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
 		"../../deploy/mapping",
-		store)
+		store,
+		useCache,
+	)
 }
 
 func setupInternal(
-	bq, bt, mcfPath, storeProject string) (pb.MixerClient, error) {
+	bq, bt, mcfPath, storeProject string, useCache bool) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
@@ -90,10 +93,14 @@ func setupInternal(
 	if err != nil {
 		return nil, err
 	}
-
-	cache, err := server.NewCache(ctx, baseTable)
-	if err != nil {
-		return nil, err
+	var cache *server.Cache
+	if useCache {
+		cache, err = server.NewCache(ctx, baseTable)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		cache = &server.Cache{}
 	}
 	return newClient(bqClient, baseTable, branchTable, metadata, cache)
 }
