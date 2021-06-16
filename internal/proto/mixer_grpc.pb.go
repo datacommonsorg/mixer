@@ -88,7 +88,8 @@ type MixerClient interface {
 	// Get the stat var group node info. The children stat var and stat var group
 	// should have data for at least one of the give places.
 	GetStatVarGroupNode(ctx context.Context, in *GetStatVarGroupNodeRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error)
-	// Get the stat var (group) path in the stat var group hierarchy.
+	// Get the path from a stat var or a stat var group path to the root
+	// of stat var hierarchy
 	GetStatVarPath(ctx context.Context, in *GetStatVarPathRequest, opts ...grpc.CallOption) (*GetStatVarPathResponse, error)
 }
 
@@ -418,7 +419,8 @@ type MixerServer interface {
 	// Get the stat var group node info. The children stat var and stat var group
 	// should have data for at least one of the give places.
 	GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error)
-	// Get the stat var (group) path in the stat var group hierarchy.
+	// Get the path from a stat var or a stat var group path to the root
+	// of stat var hierarchy
 	GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error)
 }
 

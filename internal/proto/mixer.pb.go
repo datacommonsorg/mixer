@@ -3405,7 +3405,7 @@ type GetStatVarPathRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// DCID of the stat var (group)
+	// DCID of a stat var or a stat var group
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
@@ -3453,7 +3453,11 @@ type GetStatVarPathResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A list of DCIDs from the queried stat var to the root of stat var hierarchy.
+	// A list of stat var (stat var group) DCIDs from the queried node to the
+	// root of stat var hierarchy.
+	// This is one path out of many possible paths in the hierarchy. When there
+	// are multiple nodes to select at given level, the first one in
+	// alphabetical sorted order is selected.
 	Path []string `protobuf:"bytes,1,rep,name=path,proto3" json:"path,omitempty"`
 }
 
