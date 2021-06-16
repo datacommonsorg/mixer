@@ -67,7 +67,7 @@ func searchTokens(
 		}
 	}
 	// Sort stat vars by number of PV; If two stat vars have same number of PV,
-	// then order alphabetically.
+	// then order by the stat var (group) name.
 	sort.SliceStable(svList, func(i, j int) bool {
 		ranking := index.ranking
 		ri := ranking[svList[i].Dcid]
