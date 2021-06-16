@@ -48,10 +48,10 @@ func searchTokens(tokens []string, index *SearchIndex) ([]string, []string) {
 	svgCount := map[string]int{}
 	for _, token := range tokens {
 		for sv := range index.token2sv[token] {
-			svCount[sv] += 1
+			svCount[sv]++
 		}
 		for svg := range index.token2svg[token] {
-			svgCount[svg] += 1
+			svgCount[svg]++
 		}
 	}
 
