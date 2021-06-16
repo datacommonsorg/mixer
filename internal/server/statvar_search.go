@@ -34,8 +34,8 @@ func (s *Server) SearchStatVar(
 	if query == "" {
 		return result, nil
 	}
-	tokens := strings.Split(
-		strings.Replace(strings.ToLower(query), ",", " ", -1), " ")
+	tokens := strings.Fields(
+		strings.Replace(strings.ToLower(query), ",", " ", -1))
 	svList, svgList := searchTokens(tokens, s.cache.SvgSearchIndex)
 	result.StatVars = svList
 	result.StatVarGroups = svgList
