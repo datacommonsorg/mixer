@@ -39,19 +39,23 @@ func TestSearchStatVar(t *testing.T) {
 
 	for _, c := range []struct {
 		query      string
+		places     []string
 		goldenFile string
 	}{
 		{
 			"Asian , age",
+			[]string{"country/THA"},
 			"asian_age.json",
 		},
 		{
 			"crime",
+			[]string{},
 			"crime.json",
 		},
 	} {
 		resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
-			Query: c.query,
+			Query:  c.query,
+			Places: c.places,
 		})
 		if err != nil {
 			t.Errorf("could not SearchStatVar: %s", err)

@@ -16,11 +16,11 @@ package server
 
 import (
 	"context"
-	"log"
 	"sort"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -165,8 +165,7 @@ func (s *Server) GetStatVarGroupNode(
 	}
 
 	result := &pb.StatVarGroupNode{}
-	childStatVars := []string{}
-
+	allIDs := []string{}
 	// Go through triples and populate result fields.
 	for _, t := range triples[svg].Triples {
 		if t.SubjectID == svg {
@@ -174,6 +173,7 @@ func (s *Server) GetStatVarGroupNode(
 			if t.Predicate == "specializationOf" {
 				// Parent SVG
 				result.ParentStatVarGroups = append(result.ParentStatVarGroups, t.ObjectID)
+				allIDs = append(allIDs, t.ObjectID)
 			} else if t.Predicate == "name" {
 				result.AbsoluteName = t.ObjectValue
 			}
@@ -187,18 +187,49 @@ func (s *Server) GetStatVarGroupNode(
 						DisplayName:       t.SubjectName,
 						SpecializedEntity: computeSpecializedEntity(svg, t.SubjectID),
 					})
+				allIDs = append(allIDs, t.SubjectID)
 			} else if t.Predicate == "memberOf" {
 				// Children SV
 				result.ChildStatVars = append(result.ChildStatVars,
 					&pb.StatVarGroupNode_ChildSV{
 						Id: t.SubjectID,
 					})
-				childStatVars = append(childStatVars, t.SubjectID)
+				allIDs = append(allIDs, t.SubjectID)
 			}
 		}
 	}
-	// TODO(shifucun): Filter sv and svg given place information
-	log.Println(places)
+
+	// Check if stat data exists for given places
+	statExistence, err := checkStatExistence(ctx, s.store, allIDs, places)
+	if err != nil {
+		return nil, err
+	}
+	// Filter parent stat var groups
+	filteredParentStatVarGroups := []string{}
+	for _, item := range result.ParentStatVarGroups {
+		if c, ok := statExistence[item]; ok && c == len(places) {
+			filteredParentStatVarGroups = append(filteredParentStatVarGroups, item)
+		}
+	}
+	result.ParentStatVarGroups = filteredParentStatVarGroups
+	// Filter child stat var groups
+	filteredChildStatVarGroups := []*pb.StatVarGroupNode_ChildSVG{}
+	for _, item := range result.ChildStatVarGroups {
+		if c, ok := statExistence[item.Id]; ok && c == len(places) {
+			filteredChildStatVarGroups = append(filteredChildStatVarGroups, item)
+		}
+	}
+	result.ChildStatVarGroups = filteredChildStatVarGroups
+	// Filter child stat vars
+	filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
+	childStatVars := []string{}
+	for _, item := range result.ChildStatVars {
+		if c, ok := statExistence[item.Id]; ok && c == len(places) {
+			filteredChildStatVars = append(filteredChildStatVars, item)
+			childStatVars = append(childStatVars, item.Id)
+		}
+	}
+	result.ChildStatVars = filteredChildStatVars
 
 	// Fetch the child stat var triples and construct the names.
 	if len(childStatVars) > 0 {
@@ -311,4 +342,37 @@ func computeSpecializedEntity(parentSvg string, childSvg string) string {
 		result = parentPieces
 	}
 	return strings.Join(result, ", ")
+}
+
+// Check if places have data for stat vars and stat var groups
+// Returns a map from stat var to the number of places that has data.
+func checkStatExistence(
+	ctx context.Context,
+	store *store.Store,
+	svOrSvgs []string,
+	places []string) (map[string]int, error) {
+	rowList, keyTokens := buildStatExistenceKey(places, svOrSvgs)
+	keyToTokenFn := tokenFn(keyTokens)
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx, store, rowList, func(string, []byte) (interface{}, error) {
+			// If exist, BT read returns an empty struct. Here just return nil to
+			// indicate the existence of the key.
+			return nil, nil
+		}, keyToTokenFn,
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]int{}
+	for _, rowKey := range rowList {
+		placeSv := keyTokens[rowKey]
+		token, _ := keyToTokenFn(rowKey)
+		if _, ok := baseDataMap[token]; ok {
+			result[placeSv.statVar]++
+		} else {
+			// TODO(shifucun): remove the else part once cache is build.
+			result[placeSv.statVar]++
+		}
+	}
+	return result, nil
 }
