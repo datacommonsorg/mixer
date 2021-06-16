@@ -37,6 +37,7 @@ type RankingInfo struct {
 	RankingName string
 }
 
+// SearchIndex holds the index for searching stat var (group).
 type SearchIndex struct {
 	token2sv  map[string]map[string]struct{}
 	token2svg map[string]map[string]struct{}
