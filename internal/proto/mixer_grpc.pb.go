@@ -88,6 +88,8 @@ type MixerClient interface {
 	// Get the stat var group node info. The children stat var and stat var group
 	// should have data for at least one of the give places.
 	GetStatVarGroupNode(ctx context.Context, in *GetStatVarGroupNodeRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error)
+	// Get the stat var (group) path in the stat var group hierarchy.
+	GetStatVarPath(ctx context.Context, in *GetStatVarPathRequest, opts ...grpc.CallOption) (*GetStatVarPathResponse, error)
 }
 
 type mixerClient struct {
@@ -332,6 +334,15 @@ func (c *mixerClient) GetStatVarGroupNode(ctx context.Context, in *GetStatVarGro
 	return out, nil
 }
 
+func (c *mixerClient) GetStatVarPath(ctx context.Context, in *GetStatVarPathRequest, opts ...grpc.CallOption) (*GetStatVarPathResponse, error) {
+	out := new(GetStatVarPathResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarPath", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -407,6 +418,8 @@ type MixerServer interface {
 	// Get the stat var group node info. The children stat var and stat var group
 	// should have data for at least one of the give places.
 	GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error)
+	// Get the stat var (group) path in the stat var group hierarchy.
+	GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -490,6 +503,9 @@ func (*UnimplementedMixerServer) GetStatVarGroup(context.Context, *GetStatVarGro
 }
 func (*UnimplementedMixerServer) GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarGroupNode not implemented")
+}
+func (*UnimplementedMixerServer) GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarPath not implemented")
 }
 
 func RegisterMixerServer(s *grpc.Server, srv MixerServer) {
@@ -964,6 +980,24 @@ func _Mixer_GetStatVarGroupNode_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_GetStatVarPath_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStatVarPathRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetStatVarPath(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/GetStatVarPath",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetStatVarPath(ctx, req.(*GetStatVarPathRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Mixer_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
@@ -1071,6 +1105,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatVarGroupNode",
 			Handler:    _Mixer_GetStatVarGroupNode_Handler,
+		},
+		{
+			MethodName: "GetStatVarPath",
+			Handler:    _Mixer_GetStatVarPath_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

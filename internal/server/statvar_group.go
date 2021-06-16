@@ -242,3 +242,51 @@ func fetchStatVarNames(ctx context.Context, s *Server, statVars []string) (
 	}
 	return result, nil
 }
+
+func (s *Server) GetStatVarPath(
+	ctx context.Context, in *pb.GetStatVarPathRequest) (
+	*pb.GetStatVarPathResponse, error) {
+	id := in.GetId()
+	if id == "" {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "Missing required argument: id")
+	}
+	path := []string{id}
+
+	// Read triples of the queried node
+	triples, err := readTriples(ctx, s.store, buildTriplesKey([]string{id}))
+	if err != nil {
+		return nil, err
+	}
+	parent := ""
+	for _, t := range triples[id].Triples {
+		if t.Predicate == "memberOf" || t.Predicate == "specializationOf" {
+			parent = t.ObjectID
+			break
+		}
+	}
+	// Already at root.
+	if parent == "" {
+		return &pb.GetStatVarPathResponse{
+			Path: path,
+		}, nil
+	}
+
+	curr := parent
+	for {
+		nodeMap, err := getPropertyValuesHelper(
+			ctx, s.store, []string{curr}, "specializationOf", true)
+		if err != nil {
+			return nil, err
+		}
+		if len(nodeMap[curr]) == 0 {
+			break
+		}
+		// Pick a random parent node.
+		curr = nodeMap[curr][0].Dcid
+		path = append(path, curr)
+	}
+	return &pb.GetStatVarPathResponse{
+		Path: path,
+	}, nil
+}
