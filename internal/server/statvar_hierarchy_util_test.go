@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/go-test/deep"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -66,17 +67,17 @@ func TestGetParentMapping(t *testing.T) {
 			},
 		},
 	} {
-		got := GetParentSvgMap(c.input)
+		got := BuildParentSvgMap(c.input)
 		if diff := cmp.Diff(got, c.want); diff != "" {
 			t.Errorf("GetParentSvgMap got diff %v", diff)
 		}
 	}
 }
 
-func TestGetSearchIndex(t *testing.T) {
+func TestBuildSearchIndex(t *testing.T) {
 	for _, c := range []struct {
 		input map[string]*pb.StatVarGroupNode
-		want  map[string]map[string]RankingInfo
+		want  *SearchIndex
 	}{
 		{
 			map[string]*pb.StatVarGroupNode{
@@ -114,8 +115,36 @@ func TestGetSearchIndex(t *testing.T) {
 					},
 				},
 			},
-			map[string]map[string]RankingInfo{
-				"token1": {
+			&SearchIndex{
+				token2sv: map[string]map[string]struct{}{
+					"token1": {
+						"sv_1_1": {},
+					},
+					"token2": {
+						"sv_3": {},
+					},
+					"token3": {
+						"sv_1_1": {},
+						"sv_1_2": {},
+					},
+					"token4": {
+						"sv_1_2": {},
+						"sv3":    {},
+					},
+				},
+				token2svg: map[string]map[string]struct{}{
+					"token1": {
+						"group_1": {},
+					},
+					"token2": {
+						"group_1":   {},
+						"group_3_1": {},
+					},
+					"token4": {
+						"group_3_1": {},
+					},
+				},
+				ranking: map[string]*RankingInfo{
 					"group_1": {
 						ApproxNumPv: 2,
 						RankingName: "token1 token2",
@@ -123,12 +152,6 @@ func TestGetSearchIndex(t *testing.T) {
 					"sv_1_1": {
 						ApproxNumPv: 3,
 						RankingName: "token1 token3",
-					},
-				},
-				"token2": {
-					"group_1": {
-						ApproxNumPv: 2,
-						RankingName: "token1 token2",
 					},
 					"group_3_1": {
 						ApproxNumPv: 3,
@@ -138,25 +161,9 @@ func TestGetSearchIndex(t *testing.T) {
 						ApproxNumPv: 2,
 						RankingName: "token2",
 					},
-				},
-				"token3": {
-					"sv_1_1": {
-						ApproxNumPv: 3,
-						RankingName: "token1 token3",
-					},
 					"sv_1_2": {
 						ApproxNumPv: 3,
 						RankingName: "token3, token4",
-					},
-				},
-				"token4": {
-					"sv_1_2": {
-						ApproxNumPv: 3,
-						RankingName: "token3, token4",
-					},
-					"group_3_1": {
-						ApproxNumPv: 3,
-						RankingName: "token2, token4",
 					},
 					"sv3": {
 						ApproxNumPv: 30,
@@ -166,9 +173,9 @@ func TestGetSearchIndex(t *testing.T) {
 			},
 		},
 	} {
-		got := GetSearchIndex(c.input)
-		if diff := cmp.Diff(got, c.want); diff != "" {
-			t.Errorf("GetSearchIndex got diff %v", diff)
+		got := BuildStatVarSearchIndex(c.input)
+		if diff := deep.Equal(got, c.want); diff != nil {
+			t.Errorf("GetStatVarSearchIndex got diff %v", diff)
 		}
 	}
 }

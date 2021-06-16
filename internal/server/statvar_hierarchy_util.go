@@ -37,12 +37,20 @@ type RankingInfo struct {
 	RankingName string
 }
 
+// SearchIndex holds the index for searching stat var (group).
+type SearchIndex struct {
+	token2sv  map[string]map[string]struct{}
+	token2svg map[string]map[string]struct{}
+	ranking   map[string]*RankingInfo
+}
+
 // we want non human curated stat vars to be ranked last, so set their number of
 // PVs to a number greater than max number of PVs for a human curated stat var.
-const NonHumanCuratedNumPv = 30
+const nonHumanCuratedNumPv = 30
 
 // GetRawSvg gets the raw svg mapping.
-func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.StatVarGroupNode, error) {
+func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (
+	map[string]*pb.StatVarGroupNode, error) {
 	svgResp := &pb.StatVarGroups{}
 	row, err := baseTable.ReadRow(ctx, util.BtStatVarGroup)
 	if err != nil {
@@ -63,8 +71,8 @@ func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (map[string]*pb.S
 	return svgResp.StatVarGroups, nil
 }
 
-// GetParentSvgMap gets the mapping of svg/sv id to the parent svg for that svg/sv.
-func GetParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]string {
+// BuildParentSvgMap gets the mapping of svg/sv id to the parent svg for that svg/sv.
+func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]string {
 	parentSvgMap := map[string][]string{}
 	for svgID, svgData := range rawSvg {
 		for _, childSvg := range svgData.ChildStatVarGroups {
@@ -86,34 +94,50 @@ func GetParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]string
 	return parentSvgMap
 }
 
-func updateSearchIndex(tokenString string, index map[string]map[string]RankingInfo, nodeID string) {
-	processedTokenString := strings.ToLower(tokenString)
+// Update search index, given a stat var (group) node ID and string.
+func (index *SearchIndex) update(
+	nodeID string, nodeString string, isSvg bool) {
+	processedTokenString := strings.ToLower(nodeString)
 	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
 	tokenList := strings.Fields(processedTokenString)
 	approxNumPv := len(strings.Split(nodeID, "_"))
 	if approxNumPv == 1 {
 		// when approxNumPv is 1, most likely a non human curated PV
-		approxNumPv = NonHumanCuratedNumPv
+		approxNumPv = nonHumanCuratedNumPv
 	}
-	rankingInfo := RankingInfo{approxNumPv, tokenString}
+	// Ranking info is only dependent on a stat var (group).
+	index.ranking[nodeID] = &RankingInfo{approxNumPv, nodeString}
+	// Populate token to stat var map.
 	for _, token := range tokenList {
-		if _, ok := index[token]; !ok {
-			index[token] = map[string]RankingInfo{}
+		if isSvg {
+			if index.token2svg[token] == nil {
+				index.token2svg[token] = map[string]struct{}{}
+			}
+			index.token2svg[token][nodeID] = struct{}{}
+		} else {
+			if index.token2sv[token] == nil {
+				index.token2sv[token] = map[string]struct{}{}
+			}
+			index.token2sv[token][nodeID] = struct{}{}
 		}
-		index[token][nodeID] = rankingInfo
 	}
 }
 
-// GetSearchIndex gets the search index for the stat var hierarchy.
-func GetSearchIndex(rawSvg map[string]*pb.StatVarGroupNode) map[string]map[string]RankingInfo {
+// BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
+func BuildStatVarSearchIndex(
+	rawSvg map[string]*pb.StatVarGroupNode) *SearchIndex {
 	// map of token to map of sv/svg id to ranking information.
-	searchIndex := map[string]map[string]RankingInfo{}
+	searchIndex := &SearchIndex{
+		token2sv:  map[string]map[string]struct{}{},
+		token2svg: map[string]map[string]struct{}{},
+		ranking:   map[string]*RankingInfo{},
+	}
 	for svgID, svgData := range rawSvg {
 		tokenString := svgData.AbsoluteName
-		updateSearchIndex(tokenString, searchIndex, svgID)
+		searchIndex.update(svgID, tokenString, true /* isSvg */)
 		for _, svData := range svgData.ChildStatVars {
 			svTokenString := svData.SearchName
-			updateSearchIndex(svTokenString, searchIndex, svData.Id)
+			searchIndex.update(svData.Id, svTokenString, false /* isSvg */)
 		}
 	}
 	return searchIndex
