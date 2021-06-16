@@ -38,8 +38,9 @@ type RankingInfo struct {
 }
 
 type SearchIndex struct {
-	token2sv   map[string]map[string]struct{}
-	sv2ranking map[string]*RankingInfo
+	token2sv  map[string]map[string]struct{}
+	token2svg map[string]map[string]struct{}
+	ranking   map[string]*RankingInfo
 }
 
 // we want non human curated stat vars to be ranked last, so set their number of
@@ -94,7 +95,7 @@ func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]stri
 
 // Update search index, given a stat var (group) node ID and string.
 func (index *SearchIndex) update(
-	nodeID string, nodeString string) {
+	nodeID string, nodeString string, isSvg bool) {
 	processedTokenString := strings.ToLower(nodeString)
 	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
 	tokenList := strings.Fields(processedTokenString)
@@ -104,13 +105,20 @@ func (index *SearchIndex) update(
 		approxNumPv = nonHumanCuratedNumPv
 	}
 	// Ranking info is only dependent on a stat var (group).
-	index.sv2ranking[nodeID] = &RankingInfo{approxNumPv, nodeString}
+	index.ranking[nodeID] = &RankingInfo{approxNumPv, nodeString}
 	// Populate token to stat var map.
 	for _, token := range tokenList {
-		if index.token2sv[token] == nil {
-			index.token2sv[token] = map[string]struct{}{}
+		if isSvg {
+			if index.token2svg[token] == nil {
+				index.token2svg[token] = map[string]struct{}{}
+			}
+			index.token2svg[token][nodeID] = struct{}{}
+		} else {
+			if index.token2sv[token] == nil {
+				index.token2sv[token] = map[string]struct{}{}
+			}
+			index.token2sv[token][nodeID] = struct{}{}
 		}
-		index.token2sv[token][nodeID] = struct{}{}
 	}
 }
 
@@ -119,15 +127,16 @@ func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode) *SearchIndex {
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &SearchIndex{
-		token2sv:   map[string]map[string]struct{}{},
-		sv2ranking: map[string]*RankingInfo{},
+		token2sv:  map[string]map[string]struct{}{},
+		token2svg: map[string]map[string]struct{}{},
+		ranking:   map[string]*RankingInfo{},
 	}
 	for svgID, svgData := range rawSvg {
 		tokenString := svgData.AbsoluteName
-		searchIndex.update(svgID, tokenString)
+		searchIndex.update(svgID, tokenString, true /* isSvg */)
 		for _, svData := range svgData.ChildStatVars {
 			svTokenString := svData.SearchName
-			searchIndex.update(svData.Id, svTokenString)
+			searchIndex.update(svData.Id, svTokenString, false /* isSvg */)
 		}
 	}
 	return searchIndex

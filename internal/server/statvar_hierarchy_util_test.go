@@ -118,25 +118,33 @@ func TestBuildSearchIndex(t *testing.T) {
 			&SearchIndex{
 				token2sv: map[string]map[string]struct{}{
 					"token1": {
-						"group_1": {},
-						"sv_1_1":  {},
+						"sv_1_1": {},
 					},
 					"token2": {
-						"group_1":   {},
-						"group_3_1": {},
-						"sv_3":      {},
+						"sv_3": {},
 					},
 					"token3": {
 						"sv_1_1": {},
 						"sv_1_2": {},
 					},
 					"token4": {
-						"sv_1_2":    {},
-						"group_3_1": {},
-						"sv3":       {},
+						"sv_1_2": {},
+						"sv3":    {},
 					},
 				},
-				sv2ranking: map[string]*RankingInfo{
+				token2svg: map[string]map[string]struct{}{
+					"token1": {
+						"group_1": {},
+					},
+					"token2": {
+						"group_1":   {},
+						"group_3_1": {},
+					},
+					"token4": {
+						"group_3_1": {},
+					},
+				},
+				ranking: map[string]*RankingInfo{
 					"group_1": {
 						ApproxNumPv: 2,
 						RankingName: "token1 token2",
