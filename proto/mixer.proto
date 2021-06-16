@@ -832,6 +832,13 @@ service Mixer {
         post: "/place/stat-var-group"
         body: "*"
       }
+      additional_bindings: {
+        get: "/stat-var/group/all"
+      }
+      additional_bindings: {
+        post: "/stat-var/group/all"
+        body: "*"
+      }
     };
   }
 
@@ -840,9 +847,9 @@ service Mixer {
   rpc GetStatVarGroupNode(GetStatVarGroupNodeRequest)
       returns (StatVarGroupNode) {
     option (google.api.http) = {
-      get: "/place/stat-var-group-node"
+      get: "/stat-var/group"
       additional_bindings: {
-        post: "/place/stat-var-group-node"
+        post: "/stat-var/group"
         body: "*"
       }
     };
