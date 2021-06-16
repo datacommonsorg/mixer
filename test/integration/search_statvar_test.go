@@ -42,8 +42,8 @@ func TestSearchStatVar(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			"Asian",
-			"asian.json",
+			"Asian age",
+			"asian_age.json",
 		},
 		{
 			"crime",
