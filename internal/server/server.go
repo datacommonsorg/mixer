@@ -38,14 +38,11 @@ import (
 
 // Cache holds cached data for the mixer server.
 type Cache struct {
-	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted
-	// alphabetically.
+	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
 	ParentSvg map[string][]string
 	// SvgInfo is a map of svg id to its information.
-	SvgInfo map[string]*pb.StatVarGroupNode
-	// SvgSearchIndex is a map of token to a map of sv/svg Id to its ranking
-	// information.
-	SvgSearchIndex map[string]map[string]RankingInfo
+	SvgInfo        map[string]*pb.StatVarGroupNode
+	SvgSearchIndex *SearchIndex
 }
 
 // Metadata represents the metadata used by the server.
@@ -191,8 +188,8 @@ func NewCache(ctx context.Context, baseTable *bigtable.Table) (*Cache, error) {
 	if err != nil {
 		return nil, err
 	}
-	parentSvgMap := GetParentSvgMap(rawSvg)
-	searchIndex := GetSearchIndex(rawSvg)
+	parentSvgMap := BuildParentSvgMap(rawSvg)
+	searchIndex := BuildStatVarSearchIndex(rawSvg)
 	return &Cache{
 		ParentSvg:      parentSvgMap,
 		SvgInfo:        rawSvg,
