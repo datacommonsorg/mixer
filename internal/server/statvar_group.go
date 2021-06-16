@@ -27,6 +27,11 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+const (
+	autoGenSvgIDPrefix = "dc/g/"
+	svgDelimiter       = "_"
+)
+
 // Note this function modifies validSVG inside.
 func markValidSVG(
 	svgResp *pb.StatVarGroups, svgID string, validSVG map[string]struct{}) bool {
@@ -97,7 +102,7 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	return svgResp
 }
 
-// GetStatVarGroup implements API for Mixer.GetStatVarGroupRequest.
+// GetStatVarGroup implements API for Mixer.GetStatVarGroup.
 func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
 	*pb.StatVarGroups, error) {
@@ -142,7 +147,7 @@ func (s *Server) GetStatVarGroup(
 	return svgResp, nil
 }
 
-// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNodeRequest.
+// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNode.
 func (s *Server) GetStatVarGroupNode(
 	ctx context.Context, in *pb.GetStatVarGroupNodeRequest) (
 	*pb.StatVarGroupNode, error) {
@@ -178,8 +183,9 @@ func (s *Server) GetStatVarGroupNode(
 				// Children SVG
 				result.ChildStatVarGroups = append(result.ChildStatVarGroups,
 					&pb.StatVarGroupNode_ChildSVG{
-						Id:          t.SubjectID,
-						DisplayName: t.SubjectName,
+						Id:                t.SubjectID,
+						DisplayName:       t.SubjectName,
+						SpecializedEntity: computeSpecializedEntity(svg, t.SubjectID),
 					})
 			} else if t.Predicate == "memberOf" {
 				// Children SV
@@ -241,4 +247,68 @@ func fetchStatVarNames(ctx context.Context, s *Server, statVars []string) (
 		result[sv] = strings.Title(name)
 	}
 	return result, nil
+}
+
+// GetStatVarPath implements API for Mixer.GetStatVarPath.
+func (s *Server) GetStatVarPath(
+	ctx context.Context, in *pb.GetStatVarPathRequest) (
+	*pb.GetStatVarPathResponse, error) {
+	id := in.GetId()
+	if id == "" {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "Missing required argument: id")
+	}
+	path := []string{id}
+	curr := id
+	for {
+		if parents, ok := s.cache.ParentSvg[curr]; ok {
+			curr = parents[0]
+			path = append(path, curr)
+		} else {
+			break
+		}
+	}
+	return &pb.GetStatVarPathResponse{
+		Path: path,
+	}, nil
+}
+
+func isBasicPopulationType(t string) bool {
+	// Household and HousingUnit are included here because they have corresponding
+	// verticals.
+	return t == "Person" || t == "Household" || t == "HousingUnit" ||
+		t == "Thing"
+}
+
+func computeSpecializedEntity(parentSvg string, childSvg string) string {
+	// We compute this only for auto-generated IDs.
+	if !strings.HasPrefix(parentSvg, autoGenSvgIDPrefix) ||
+		!strings.HasPrefix(childSvg, autoGenSvgIDPrefix) {
+		return ""
+	}
+	parentPieces := strings.Split(
+		strings.TrimPrefix(parentSvg, autoGenSvgIDPrefix), svgDelimiter)
+	parentSet := map[string]struct{}{}
+	for _, p := range parentPieces {
+		parentSet[p] = struct{}{}
+	}
+
+	childPieces := strings.Split(
+		strings.TrimPrefix(childSvg, autoGenSvgIDPrefix), svgDelimiter)
+	result := []string{}
+	for _, c := range childPieces {
+		if isBasicPopulationType(c) {
+			continue
+		}
+		if _, ok := parentSet[c]; ok {
+			continue
+		}
+		result = append(result, c)
+	}
+	if len(result) == 0 {
+		// Edge case: certain SVGs (e.g., Person_Employment) match the parent
+		// (Employment) after stripping Person from the name.
+		result = parentPieces
+	}
+	return strings.Join(result, ", ")
 }
