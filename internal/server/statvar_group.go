@@ -97,7 +97,7 @@ func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
 	return svgResp
 }
 
-// GetStatVarGroup implements API for Mixer.GetStatVarGroupRequest.
+// GetStatVarGroup implements API for Mixer.GetStatVarGroup.
 func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest) (
 	*pb.StatVarGroups, error) {
@@ -142,7 +142,7 @@ func (s *Server) GetStatVarGroup(
 	return svgResp, nil
 }
 
-// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNodeRequest.
+// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNode.
 func (s *Server) GetStatVarGroupNode(
 	ctx context.Context, in *pb.GetStatVarGroupNodeRequest) (
 	*pb.StatVarGroupNode, error) {
@@ -243,6 +243,7 @@ func fetchStatVarNames(ctx context.Context, s *Server, statVars []string) (
 	return result, nil
 }
 
+// GetStatVarPath implements API for Mixer.GetStatVarPath.
 func (s *Server) GetStatVarPath(
 	ctx context.Context, in *pb.GetStatVarPathRequest) (
 	*pb.GetStatVarPathResponse, error) {
