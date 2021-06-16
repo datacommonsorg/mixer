@@ -26,7 +26,7 @@ func TestGetStatVarPath(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, err := setup()
+	client, err := setup(true)
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -37,16 +37,20 @@ func TestGetStatVarPath(t *testing.T) {
 	}{
 		{
 			"Count_Person",
-			[]string{"Count_Person", "dc/g/Demographics"},
+			[]string{
+				"Count_Person",
+				"dc/g/Variables_Demographics",
+				"dc/g/Demographics",
+			},
 		},
 		{
 			"dc/g/Person_Age_ArmedForcesStatus_Employment_EmploymentStatus",
 			[]string{
 				"dc/g/Person_Age_ArmedForcesStatus_Employment_EmploymentStatus",
 				"dc/g/Person_Age_Employment_EmploymentStatus",
-				"dc/g/Person_Age_EmploymentStatus",
-				"dc/g/Person_EmploymentStatus",
-				"dc/g/Employment",
+				"dc/g/Person_Age_Employment",
+				"dc/g/Person_Age",
+				"dc/g/Demographics",
 			},
 		},
 	} {

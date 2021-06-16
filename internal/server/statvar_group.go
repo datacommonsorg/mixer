@@ -253,39 +253,14 @@ func (s *Server) GetStatVarPath(
 			codes.InvalidArgument, "Missing required argument: id")
 	}
 	path := []string{id}
-
-	// Read triples of the queried node
-	triples, err := readTriples(ctx, s.store, buildTriplesKey([]string{id}))
-	if err != nil {
-		return nil, err
-	}
-	parent := ""
-	for _, t := range triples[id].Triples {
-		if t.Predicate == "memberOf" || t.Predicate == "specializationOf" {
-			parent = t.ObjectID
-			break
-		}
-	}
-	// Already at root.
-	if parent == "" {
-		return &pb.GetStatVarPathResponse{
-			Path: path,
-		}, nil
-	}
-
-	curr := parent
+	curr := id
 	for {
-		nodeMap, err := getPropertyValuesHelper(
-			ctx, s.store, []string{curr}, "specializationOf", true)
-		if err != nil {
-			return nil, err
-		}
-		if len(nodeMap[curr]) == 0 {
+		if parents, ok := s.cache.ParentSvg[curr]; ok {
+			curr = parents[0]
+			path = append(path, curr)
+		} else {
 			break
 		}
-		// Pick a random parent node.
-		curr = nodeMap[curr][0].Dcid
-		path = append(path, curr)
 	}
 	return &pb.GetStatVarPathResponse{
 		Path: path,
