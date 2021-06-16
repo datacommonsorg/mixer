@@ -263,14 +263,14 @@ func computeSpecializedEntity(parentSvg string, childSvg string) string {
 		return ""
 	}
 	parentPieces := strings.Split(
-		strings.TrimLeft(parentSvg, autoGenSvgIDPrefix), svgDelimiter)
+		strings.TrimPrefix(parentSvg, autoGenSvgIDPrefix), svgDelimiter)
 	parentSet := map[string]struct{}{}
 	for _, p := range parentPieces {
 		parentSet[p] = struct{}{}
 	}
 
 	childPieces := strings.Split(
-		strings.TrimLeft(childSvg, autoGenSvgIDPrefix), svgDelimiter)
+		strings.TrimPrefix(childSvg, autoGenSvgIDPrefix), svgDelimiter)
 	result := []string{}
 	for _, c := range childPieces {
 		if isBasicPopulationType(c) {
