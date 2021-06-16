@@ -1,0 +1,20 @@
+{
+  "statVars": [
+    "Count_CriminalActivities_AggravatedAssault",
+    "Count_CriminalActivities_Arson",
+    "Count_CriminalActivities_Burglary",
+    "Count_CriminalActivities_ForcibleRape",
+    "Count_CriminalActivities_LarcenyTheft",
+    "Count_CriminalActivities_MotorVehicleTheft",
+    "Count_CriminalActivities_MurderAndNonNegligentManslaughter",
+    "Count_CriminalActivities_PropertyCrime",
+    "Count_CriminalActivities_Robbery",
+    "Count_CriminalActivities_ViolentCrime",
+    "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+    "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
+    "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male"
+  ],
+  "statVarGroups": [
+    "dc/g/Crime"
+  ]
+}

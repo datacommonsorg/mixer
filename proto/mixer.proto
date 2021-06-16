@@ -540,6 +540,18 @@ message GetStatVarPathResponse {
   repeated string path = 1;
 }
 
+message SearchStatVarRequest {
+  // Query string
+  string query = 1;
+}
+
+message SearchStatVarResponse {
+  // A list of stat vars ranked by relevance.
+  repeated string stat_vars = 1;
+  // A list of stat var groups ranked by relevance.
+  repeated string stat_var_groups = 2;
+}
+
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -863,6 +875,18 @@ service Mixer {
       get: "/stat-var/path"
       additional_bindings: {
         post: "/stat-var/path"
+        body: "*"
+      }
+    };
+  }
+
+  // Search stat var and stat var groups.
+  rpc SearchStatVar(SearchStatVarRequest)
+      returns (SearchStatVarResponse) {
+    option (google.api.http) = {
+      get: "/stat-var/search"
+      additional_bindings: {
+        post: "/stat-var/search"
         body: "*"
       }
     };

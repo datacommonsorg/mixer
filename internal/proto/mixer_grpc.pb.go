@@ -91,6 +91,8 @@ type MixerClient interface {
 	// Get the path from a stat var or a stat var group path to the root
 	// of stat var hierarchy
 	GetStatVarPath(ctx context.Context, in *GetStatVarPathRequest, opts ...grpc.CallOption) (*GetStatVarPathResponse, error)
+	// Search stat var and stat var groups.
+	SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error)
 }
 
 type mixerClient struct {
@@ -344,6 +346,15 @@ func (c *mixerClient) GetStatVarPath(ctx context.Context, in *GetStatVarPathRequ
 	return out, nil
 }
 
+func (c *mixerClient) SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error) {
+	out := new(SearchStatVarResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/SearchStatVar", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -422,6 +433,8 @@ type MixerServer interface {
 	// Get the path from a stat var or a stat var group path to the root
 	// of stat var hierarchy
 	GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error)
+	// Search stat var and stat var groups.
+	SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -508,6 +521,9 @@ func (*UnimplementedMixerServer) GetStatVarGroupNode(context.Context, *GetStatVa
 }
 func (*UnimplementedMixerServer) GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarPath not implemented")
+}
+func (*UnimplementedMixerServer) SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
 }
 
 func RegisterMixerServer(s *grpc.Server, srv MixerServer) {
@@ -1000,6 +1016,24 @@ func _Mixer_GetStatVarPath_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchStatVarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).SearchStatVar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/SearchStatVar",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).SearchStatVar(ctx, req.(*SearchStatVarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Mixer_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
@@ -1111,6 +1145,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatVarPath",
 			Handler:    _Mixer_GetStatVarPath_Handler,
+		},
+		{
+			MethodName: "SearchStatVar",
+			Handler:    _Mixer_SearchStatVar_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
