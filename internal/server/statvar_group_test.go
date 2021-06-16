@@ -23,7 +23,6 @@ import (
 )
 
 func TestFilter(t *testing.T) {
-
 	for _, c := range []struct {
 		input *pb.StatVarGroups
 		want  *pb.StatVarGroups
@@ -182,4 +181,34 @@ func TestFilter(t *testing.T) {
 			t.Errorf("filterSVG() got diff %v", diff)
 		}
 	}
+}
+
+func TestComputeSpecializedEntity(t *testing.T) {
+	for _, c := range []struct {
+		parent string
+		child  string
+		want   string
+	}{
+		{
+			"dc/g/Employment",
+			"dc/g/Person_Employment",
+			"Employment",
+		},
+		{
+			"dc/g/Person_Age_Gender",
+			"dc/g/Variables_Person_Age_Gender",
+			"Variables",
+		},
+		{
+			"dc/g/Person_Age",
+			"dc/g/Person_Age_Gender",
+			"Gender",
+		},
+	} {
+		got := computeSpecializedEntity(c.parent, c.child)
+		if diff := cmp.Diff(got, c.want); diff != "" {
+			t.Errorf("computeSpecializedEntity() got diff %v", diff)
+		}
+	}
+
 }
