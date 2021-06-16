@@ -17,15 +17,17 @@ package server
 import (
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestSearchTokens(t *testing.T) {
 	for _, c := range []struct {
 		tokens  []string
 		index   *SearchIndex
-		wantSv  []string
-		wantSvg []string
+		wantSv  []*pb.EntityInfo
+		wantSvg []*pb.EntityInfo
 	}{
 		{
 			tokens: []string{"token1"},
@@ -56,11 +58,21 @@ func TestSearchTokens(t *testing.T) {
 					},
 				},
 			},
-			wantSv: []string{
-				"sv_1_2",
+			wantSv: []*pb.EntityInfo{
+				{
+					Dcid: "sv_1_2",
+					Name: "token1 token3 token4",
+				},
 			},
-			wantSvg: []string{
-				"group_1", "group_31",
+			wantSvg: []*pb.EntityInfo{
+				{
+					Dcid: "group_1",
+					Name: "token1 token2",
+				},
+				{
+					Dcid: "group_31",
+					Name: "token1 token5 token6",
+				},
 			},
 		},
 		{
@@ -106,17 +118,20 @@ func TestSearchTokens(t *testing.T) {
 					},
 				},
 			},
-			wantSv: []string{
-				"sv_1_2",
+			wantSv: []*pb.EntityInfo{
+				{
+					Dcid: "sv_1_2",
+					Name: "token2 token3 token4",
+				},
 			},
-			wantSvg: []string{},
+			wantSvg: []*pb.EntityInfo{},
 		},
 	} {
 		sv, svg := searchTokens(c.tokens, c.index)
-		if diff := cmp.Diff(sv, c.wantSv); diff != "" {
+		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var list got diff %v", diff)
 		}
-		if diff := cmp.Diff(svg, c.wantSvg); diff != "" {
+		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var group list got diff %v", diff)
 		}
 	}

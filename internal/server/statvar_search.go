@@ -28,8 +28,8 @@ func (s *Server) SearchStatVar(
 	*pb.SearchStatVarResponse, error) {
 	query := in.GetQuery()
 	result := &pb.SearchStatVarResponse{
-		StatVars:      []string{},
-		StatVarGroups: []string{},
+		StatVars:      []*pb.EntityInfo{},
+		StatVarGroups: []*pb.EntityInfo{},
 	}
 	if query == "" {
 		return result, nil
@@ -43,7 +43,8 @@ func (s *Server) SearchStatVar(
 	return result, nil
 }
 
-func searchTokens(tokens []string, index *SearchIndex) ([]string, []string) {
+func searchTokens(
+	tokens []string, index *SearchIndex) ([]*pb.EntityInfo, []*pb.EntityInfo) {
 	svCount := map[string]int{}
 	svgCount := map[string]int{}
 	for _, token := range tokens {
@@ -56,31 +57,46 @@ func searchTokens(tokens []string, index *SearchIndex) ([]string, []string) {
 	}
 
 	// Only select sv and svg that matches all the tokens
-	svList := []string{}
+	svList := []*pb.EntityInfo{}
 	for sv, c := range svCount {
 		if c == len(tokens) {
-			svList = append(svList, sv)
+			svList = append(svList, &pb.EntityInfo{
+				Dcid: sv,
+				Name: index.ranking[sv].RankingName,
+			})
 		}
 	}
 	// Sort stat vars by number of PV; If two stat vars have same number of PV,
 	// then order alphabetically.
-	sort.Strings(svList)
 	sort.SliceStable(svList, func(i, j int) bool {
 		ranking := index.ranking
-		return ranking[svList[i]].ApproxNumPv < ranking[svList[j]].ApproxNumPv
+		ri := ranking[svList[i].Dcid]
+		rj := ranking[svList[j].Dcid]
+		if ri.ApproxNumPv == rj.ApproxNumPv {
+			return ri.RankingName < rj.RankingName
+		} else {
+			return ri.ApproxNumPv < rj.ApproxNumPv
+		}
 	})
 
-	svgList := []string{}
+	svgList := []*pb.EntityInfo{}
 	for svg, c := range svgCount {
 		if c == len(tokens) {
-			svgList = append(svgList, svg)
+			svgList = append(svgList, &pb.EntityInfo{
+				Dcid: svg,
+				Name: index.ranking[svg].RankingName,
+			})
 		}
 	}
-	// Sort stat var groups by ID then by number of PV
-	sort.Strings(svgList)
 	sort.SliceStable(svgList, func(i, j int) bool {
 		ranking := index.ranking
-		return ranking[svgList[i]].ApproxNumPv < ranking[svgList[j]].ApproxNumPv
+		ri := ranking[svgList[i].Dcid]
+		rj := ranking[svgList[j].Dcid]
+		if ri.ApproxNumPv == rj.ApproxNumPv {
+			return ri.RankingName < rj.RankingName
+		} else {
+			return ri.ApproxNumPv < rj.ApproxNumPv
+		}
 	})
 	return svList, svgList
 }
