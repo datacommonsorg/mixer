@@ -165,71 +165,90 @@ func (s *Server) GetStatVarGroupNode(
 	}
 
 	result := &pb.StatVarGroupNode{}
-	allIDs := []string{}
-	// Go through triples and populate result fields.
-	for _, t := range triples[svg].Triples {
-		if t.SubjectID == svg {
-			// SVG is subject
-			if t.Predicate == "specializationOf" {
-				// Parent SVG
-				result.ParentStatVarGroups = append(result.ParentStatVarGroups, t.ObjectID)
-				allIDs = append(allIDs, t.ObjectID)
-			} else if t.Predicate == "name" {
-				result.AbsoluteName = t.ObjectValue
-			}
-		} else {
-			// SVG is object
-			if t.Predicate == "specializationOf" {
-				// Children SVG
-				result.ChildStatVarGroups = append(result.ChildStatVarGroups,
-					&pb.StatVarGroupNode_ChildSVG{
-						Id:                t.SubjectID,
-						DisplayName:       t.SubjectName,
-						SpecializedEntity: computeSpecializedEntity(svg, t.SubjectID),
-					})
-				allIDs = append(allIDs, t.SubjectID)
-			} else if t.Predicate == "memberOf" {
-				// Children SV
-				result.ChildStatVars = append(result.ChildStatVars,
-					&pb.StatVarGroupNode_ChildSV{
-						Id:          t.SubjectID,
-						DisplayName: t.SubjectName,
-					})
-				allIDs = append(allIDs, t.SubjectID)
+	if in.GetReadFromTriples() {
+		// Go through triples and populate result fields.
+		for _, t := range triples[svg].Triples {
+			if t.SubjectID == svg {
+				// SVG is subject
+				if t.Predicate == "specializationOf" {
+					// Parent SVG
+					result.ParentStatVarGroups = append(result.ParentStatVarGroups, t.ObjectID)
+				} else if t.Predicate == "name" {
+					result.AbsoluteName = t.ObjectValue
+				}
+			} else {
+				// SVG is object
+				if t.Predicate == "specializationOf" {
+					// Children SVG
+					result.ChildStatVarGroups = append(result.ChildStatVarGroups,
+						&pb.StatVarGroupNode_ChildSVG{
+							Id:                t.SubjectID,
+							DisplayName:       t.SubjectName,
+							SpecializedEntity: computeSpecializedEntity(svg, t.SubjectID),
+						})
+				} else if t.Predicate == "memberOf" {
+					// Children SV
+					result.ChildStatVars = append(result.ChildStatVars,
+						&pb.StatVarGroupNode_ChildSV{
+							Id:          t.SubjectID,
+							DisplayName: t.SubjectName,
+						})
+				}
 			}
 		}
+	} else {
+		result = s.cache.SvgInfo[svg]
+		for _, item := range result.ChildStatVarGroups {
+			item.DisplayName = s.cache.SvgInfo[item.Id].AbsoluteName
+		}
+		result.ParentStatVarGroups = s.cache.ParentSvg[svg]
 	}
+
+	// Get the stat var and stat var group IDs to check if they are valid for
+	// given places.
+	allIDs := []string{}
+	for _, item := range result.ChildStatVarGroups {
+		allIDs = append(allIDs, item.Id)
+	}
+	for _, item := range result.ChildStatVars {
+		allIDs = append(allIDs, item.Id)
+	}
+	allIDs = append(allIDs, result.ParentStatVarGroups...)
 
 	// Check if stat data exists for given places
 	statExistence, err := checkStatExistence(ctx, s.store, allIDs, places)
 	if err != nil {
 		return nil, err
 	}
+
+	// Filter result based on places
 	// TODO(shifucun): Find a generic way to do the filtering here.
 	// Filter parent stat var groups
-	filteredParentStatVarGroups := []string{}
-	for _, item := range result.ParentStatVarGroups {
-		if c, ok := statExistence[item]; ok && c == len(places) {
-			filteredParentStatVarGroups = append(filteredParentStatVarGroups, item)
+	if len(places) > 0 {
+		filteredParentStatVarGroups := []string{}
+		for _, item := range result.ParentStatVarGroups {
+			if c, ok := statExistence[item]; ok && c == len(places) {
+				filteredParentStatVarGroups = append(filteredParentStatVarGroups, item)
+			}
 		}
-	}
-	result.ParentStatVarGroups = filteredParentStatVarGroups
-	// Filter child stat var groups
-	filteredChildStatVarGroups := []*pb.StatVarGroupNode_ChildSVG{}
-	for _, item := range result.ChildStatVarGroups {
-		if c, ok := statExistence[item.Id]; ok && c == len(places) {
-			filteredChildStatVarGroups = append(filteredChildStatVarGroups, item)
+		result.ParentStatVarGroups = filteredParentStatVarGroups
+		// Filter child stat var groups
+		filteredChildStatVarGroups := []*pb.StatVarGroupNode_ChildSVG{}
+		for _, item := range result.ChildStatVarGroups {
+			if c, ok := statExistence[item.Id]; ok && c == len(places) {
+				filteredChildStatVarGroups = append(filteredChildStatVarGroups, item)
+			}
 		}
-	}
-	result.ChildStatVarGroups = filteredChildStatVarGroups
-	// Filter child stat vars
-	filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
-	for _, item := range result.ChildStatVars {
-		if c, ok := statExistence[item.Id]; ok && c == len(places) {
-			filteredChildStatVars = append(filteredChildStatVars, item)
+		result.ChildStatVarGroups = filteredChildStatVarGroups
+		// Filter child stat vars
+		filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
+		for _, item := range result.ChildStatVars {
+			if c, ok := statExistence[item.Id]; ok && c == len(places) {
+				filteredChildStatVars = append(filteredChildStatVars, item)
+			}
 		}
+		result.ChildStatVars = filteredChildStatVars
 	}
-	result.ChildStatVars = filteredChildStatVars
 	return result, nil
 }
 

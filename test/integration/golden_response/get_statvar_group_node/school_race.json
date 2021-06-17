@@ -2,692 +2,863 @@
   "absoluteName": "Person By DetailedLevelOfSchool, Race",
   "childStatVars": [
     {
-      "id": "dc/zxgqmcexf910g",
-      "displayName": "Count Of EnrolledInGrade6, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/zvr6djt1p9gj3",
-      "displayName": "Count Of MiddleSchool, HispanicOrLatino"
-    },
-    {
-      "id": "dc/zv5g19y8dl9r1",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/zmp6qzgzp7ly2",
-      "displayName": "Count Of GraduateOrProfessionalSchool, AsianAlone"
-    },
-    {
-      "id": "dc/z89e0y0bvfhq2",
-      "displayName": "Count Of EnrolledInGrade9, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/ykmg1pn1ee421",
-      "displayName": "Count Of EnrolledInGrade6, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/yc8bfetcz1d92",
-      "displayName": "Count Of EnrolledInGrade2, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/y5t5r8bkr80p6",
-      "displayName": "Count Of EnrolledInGrade12, WhiteAlone"
-    },
-    {
-      "id": "dc/xzq5kcxgn5xj3",
-      "displayName": "Count Of EnrolledInGrade2, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/xnmh7xgwghej",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, HispanicOrLatino"
-    },
-    {
-      "id": "dc/xjj3rf2hbvttc",
-      "displayName": "Count Of EnrolledInGrade4, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/xeb8jg49cry4b",
-      "displayName": "Count Of EnrolledInGrade5, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/xe4nwk6z1w4ld",
-      "displayName": "Count Of EnrolledInGrade5, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/xc7ms0v0r7vy5",
-      "displayName": "Count Of EnrolledInGrade1, AsianAlone"
-    },
-    {
-      "id": "dc/xc49pjeynx3s1",
-      "displayName": "Count Of EnrolledInGrade9, WhiteAlone"
-    },
-    {
-      "id": "dc/x9e7150515yt7",
-      "displayName": "Count Of PrimarySchool, AsianAlone"
-    },
-    {
-      "id": "dc/x1fkr624fq691",
-      "displayName": "Count Of EnrolledInGrade1, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/wzbz28yp0r0z7",
-      "displayName": "Count Of EnrolledInGrade5, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/wyxmw2dy6t2xh",
-      "displayName": "Count Of GraduateOrProfessionalSchool, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/wk2vjrzfgyq5d",
-      "displayName": "Count Of PrimarySchool, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/wjtdrd9wq4m2g",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/w56by78w2crr2",
-      "displayName": "Count Of EnrolledInGrade5, HispanicOrLatino"
-    },
-    {
-      "id": "dc/w0empn05hck9",
-      "displayName": "Count Of EnrolledInGrade10, HispanicOrLatino"
-    },
-    {
-      "id": "dc/vdc20m1xr96k",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/tr1xqzhtb8fr6",
-      "displayName": "Count Of EnrolledInGrade3, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/tgvpcmdbx6jn5",
-      "displayName": "Count Of EnrolledInGrade8, WhiteAlone"
-    },
-    {
-      "id": "dc/t3qdrccyvv92d",
-      "displayName": "Count Of EnrolledInGrade7, AsianAlone"
-    },
-    {
-      "id": "dc/t2tfpx3f19px",
-      "displayName": "Count Of EnrolledInGrade9, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/szdmyn5skvqjb",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/sp5k1jygkt21",
-      "displayName": "Count Of EnrolledInGrade7, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/smytzhn5chpq7",
-      "displayName": "Count Of EnrolledInGrade4, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/sm77lg8njsrzh",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/slbyzbleg76rg",
-      "displayName": "Count Of EnrolledInGrade9, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/sdc1bw2pxc46g",
-      "displayName": "Count Of EnrolledInGrade3, HispanicOrLatino"
-    },
-    {
-      "id": "dc/s7ce9rqnnxx2",
-      "displayName": "Count Of EnrolledInGrade6, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/rysbtdzyxtzwg",
-      "displayName": "Count Of EnrolledInGrade7, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/rxtjbe97rt917",
-      "displayName": "Count Of EnrolledInGrade9, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/rvw3m8tnk9rzg",
-      "displayName": "Count Of EnrolledInGrade1, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/rrp56w0hvs6x6",
-      "displayName": "Count Of EnrolledInGrade8, HispanicOrLatino"
-    },
-    {
-      "id": "dc/rlxhqz8mgxf07",
-      "displayName": "Count Of EnrolledInGrade4, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/rfkwl069m93jh",
-      "displayName": "Count Of EnrolledInGrade5, WhiteAlone"
-    },
-    {
-      "id": "dc/rctprrbmyt4k5",
-      "displayName": "Count Of EnrolledInGrade11, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/r8224e56gqm86",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, AsianAlone"
-    },
-    {
-      "id": "dc/r7xqdm2s9r7d7",
-      "displayName": "Count Of EnrolledInGrade6, WhiteAlone"
-    },
-    {
-      "id": "dc/qvf1yrhwzp8rd",
-      "displayName": "Count Of MiddleSchool, WhiteAlone"
-    },
-    {
-      "id": "dc/qt5n8lwm3efcc",
-      "displayName": "Count Of EnrolledInGrade11, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/qnphlls92tvs9",
-      "displayName": "Count Of EnrolledInKindergarten, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/q420sgnxr70cg",
-      "displayName": "Count Of EnrolledInGrade3, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/psvlr9qyj0gmb",
-      "displayName": "Count Of EnrolledInGrade7, WhiteAlone"
-    },
-    {
-      "id": "dc/pf5dpsj6zfm9g",
-      "displayName": "Count Of EnrolledInGrade5, AsianAlone"
-    },
-    {
-      "id": "dc/pexzqq68dnek5",
-      "displayName": "Count Of EnrolledInGrade12, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/p4jzvj8q1lnmd",
-      "displayName": "Count Of PrimarySchool, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/p3vqwthpjtdw",
-      "displayName": "Count Of GraduateOrProfessionalSchool, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/p0yjn8heys192",
-      "displayName": "Count Of EnrolledInGrade5, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/nt9cq96phw6nf",
-      "displayName": "Count Of EnrolledInKindergarten, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/ns1rqx6wy9909",
-      "displayName": "Count Of EnrolledInKindergarten, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/nkhxr3btprred",
-      "displayName": "Count Of EnrolledInGrade8, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/njgzb8knf11n8",
-      "displayName": "Count Of MiddleSchool, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/nhmjhp72kjr48",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, AsianAlone"
-    },
-    {
-      "id": "dc/nc36cwd39pqyb",
-      "displayName": "Count Of EnrolledInGrade6, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/mwbmxs2q9zcgd",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/mgewrrcbsg5mc",
-      "displayName": "Count Of EnrolledInGrade8, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/m18kt4h10rhv9",
-      "displayName": "Count Of EnrolledInGrade9, HispanicOrLatino"
-    },
-    {
-      "id": "dc/lv94fnc9rnzg7",
-      "displayName": "Count Of EnrolledInGrade1, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/lp45rhhvvsyz3",
-      "displayName": "Count Of EnrolledInGrade10, AsianAlone"
-    },
-    {
-      "id": "dc/lkfgpz9cz0x93",
-      "displayName": "Count Of EnrolledInGrade10, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/lh2p6deyhh1w8",
-      "displayName": "Count Of EnrolledInGrade12, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/lex5l1z3xb019",
-      "displayName": "Count Of EnrolledInGrade4, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/kz9r60zp6s32b",
-      "displayName": "Count Of GraduateOrProfessionalSchool, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/kxzpmb82rnn12",
-      "displayName": "Count Of EnrolledInGrade3, AsianAlone"
-    },
-    {
-      "id": "dc/k7gzvt7h4p1t2",
-      "displayName": "Count Of EnrolledInGrade5, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/jhjdplbeg26k1",
-      "displayName": "Count Of PrimarySchool, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/jbj3e09w9hsl8",
-      "displayName": "Count Of EnrolledInGrade8, AsianAlone"
-    },
-    {
-      "id": "dc/j8708n21vjn7g",
-      "displayName": "Count Of EnrolledInGrade3, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/hq6fekrv02763",
-      "displayName": "Count Of EnrolledInGrade2, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/hpzt7l9dxswp7",
-      "displayName": "Count Of EnrolledInGrade11, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/hcte4krdb6g3h",
-      "displayName": "Count Of EnrolledInGrade4, AsianAlone"
-    },
-    {
-      "id": "dc/h8p2m5rx43j3b",
-      "displayName": "Count Of GraduateOrProfessionalSchool, WhiteAlone"
-    },
-    {
-      "id": "dc/h8hnx87sjgvhf",
-      "displayName": "Count Of EnrolledInGrade11, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/h7dltj3mrq778",
-      "displayName": "Count Of EnrolledInGrade11, WhiteAlone"
-    },
-    {
-      "id": "dc/h0lc69wwsbhy5",
-      "displayName": "Count Of EnrolledInGrade4, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/gr3zem8shyhbf",
-      "displayName": "Count Of EnrolledInKindergarten, WhiteAlone"
-    },
-    {
-      "id": "dc/ghqs0gz0cvgx1",
-      "displayName": "Count Of EnrolledInGrade3, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/gcsgte71jdvl2",
-      "displayName": "Count Of EnrolledInGrade11, HispanicOrLatino"
-    },
-    {
-      "id": "dc/g8537zqf45wl3",
-      "displayName": "Count Of HighSchool, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/g4fthg3t3y5td",
-      "displayName": "Count Of MiddleSchool, AsianAlone"
-    },
-    {
-      "id": "dc/fwwm465nrweyb",
-      "displayName": "Count Of EnrolledInGrade8, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/fpkjrc19wfr82",
-      "displayName": "Count Of EnrolledInGrade6, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/fmx7fkrpd3jl2",
-      "displayName": "Count Of GraduateOrProfessionalSchool, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/fh4td3znm3l4g",
-      "displayName": "Count Of HighSchool, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/f2fq3grswrtbh",
-      "displayName": "Count Of EnrolledInGrade12, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/f1mn2c36kz0mc",
-      "displayName": "Count Of EnrolledInGrade10, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/epw963xktppx9",
-      "displayName": "Count Of EnrolledInGrade8, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/env3140jqssg8",
-      "displayName": "Count Of PrimarySchool, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/ej9175h5g52n4",
-      "displayName": "Count Of EnrolledInGrade10, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/edpnrsy7glfzf",
-      "displayName": "Count Of EnrolledInGrade12, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/e4y4hqq6mjfsh",
-      "displayName": "Count Of PrimarySchool, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/e2szvml8jkld8",
-      "displayName": "Count Of MiddleSchool, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/dzfdgrtcv5h7",
-      "displayName": "Count Of HighSchool, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/dxsxcw009pdm4",
-      "displayName": "Count Of HighSchool, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/dtrqvdzyqzek7",
-      "displayName": "Count Of EnrolledInGrade1, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/deh75ckkkc8w3",
-      "displayName": "Count Of EnrolledInGrade6, AsianAlone"
-    },
-    {
-      "id": "dc/d5g4tqgqlx6s2",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/cmspqtw32e039",
-      "displayName": "Count Of EnrolledInGrade8, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/cl02rz75lby1c",
-      "displayName": "Count Of EnrolledInGrade1, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/cgsr3vgj7xv33",
-      "displayName": "Count Of EnrolledInGrade3, WhiteAlone"
-    },
-    {
-      "id": "dc/cc8wk2n0ywd9",
-      "displayName": "Count Of HighSchool, HispanicOrLatino"
-    },
-    {
-      "id": "dc/c75qlm98pmcb2",
-      "displayName": "Count Of MiddleSchool, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/c6n2z7vh9sy31",
-      "displayName": "Count Of EnrolledInKindergarten, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/c57vzg7l74577",
-      "displayName": "Count Of MiddleSchool, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/c2nl10sz5wmw3",
-      "displayName": "Count Of EnrolledInGrade1, WhiteAlone"
-    },
-    {
-      "id": "dc/bzb64xknj90x",
-      "displayName": "Count Of EnrolledInGrade7, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/bf85zc6wypd2h",
-      "displayName": "Count Of PrimarySchool, WhiteAlone"
-    },
-    {
-      "id": "dc/b6h698m2vmdcc",
-      "displayName": "Count Of PrimarySchool, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/b3nmcj3w1lhed",
-      "displayName": "Count Of MiddleSchool, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/9q73ecfhmd0y9",
-      "displayName": "Count Of HighSchool, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/9pxfcgnmpb4ld",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/9cqv67nn7pn1b",
-      "displayName": "Count Of GraduateOrProfessionalSchool, HispanicOrLatino"
-    },
-    {
-      "id": "dc/98kjs8sqg8dc6",
-      "displayName": "Count Of EnrolledInGrade10, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/8xbzew3hh3zj2",
-      "displayName": "Count Of EnrolledInGrade4, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/89kqjl3ky5cgh",
-      "displayName": "Count Of EnrolledInGrade10, WhiteAlone"
-    },
-    {
-      "id": "dc/8276gss3d3q82",
-      "displayName": "Count Of EnrolledInGrade7, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/7ssfc4pnxyqvd",
-      "displayName": "Count Of EnrolledInGrade8, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/7s7lp7ttmp3k3",
-      "displayName": "Count Of EnrolledInGrade12, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/7g77dy8hfb1rg",
-      "displayName": "Count Of EnrolledInKindergarten, HispanicOrLatino"
-    },
-    {
-      "id": "dc/7fdfhnnjr5sh8",
-      "displayName": "Count Of GraduateOrProfessionalSchool, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/7b1kt6jvs29m5",
-      "displayName": "Count Of EnrolledInGrade7, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/7645ck4vrj3z4",
-      "displayName": "Count Of EnrolledInGrade2, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/708rvcfph3j43",
-      "displayName": "Count Of EnrolledInGrade7, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/6zbb7s5nx6rxb",
-      "displayName": "Count Of MiddleSchool, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/6m11q7bk4qge",
-      "displayName": "Count Of EnrolledInGrade1, HispanicOrLatino"
-    },
-    {
-      "id": "dc/6dsh2c30wcptc",
-      "displayName": "Count Of EnrolledInGrade6, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/68rek3hyfvw3d",
-      "displayName": "Count Of EnrolledInGrade9, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/68cg2z97cpl7d",
-      "displayName": "Count Of PrimarySchool, HispanicOrLatino"
-    },
-    {
-      "id": "dc/5rk9h9zvbyz5",
-      "displayName": "Count Of EnrolledInGrade12, HispanicOrLatino"
-    },
-    {
-      "id": "dc/5ergd75hbfbs2",
-      "displayName": "Count Of EnrolledInGrade3, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/5bv5566pj35v7",
-      "displayName": "Count Of EnrolledInGrade2, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/59tb0nkn0nfrg",
-      "displayName": "Count Of EnrolledInGrade10, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/55d9n710f1l43",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, WhiteAlone"
-    },
-    {
-      "id": "dc/556pqlh586bmc",
-      "displayName": "Count Of EnrolledInKindergarten, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/52zwp6khpmd86",
-      "displayName": "Count Of EnrolledInGrade3, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/50yq5l3ek70t7",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/4wkzsq23w6reb",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/4qbgpy1bdq9ng",
-      "displayName": "Count Of EnrolledInGrade1, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/4hzyqndyzntm",
-      "displayName": "Count Of HighSchool, WhiteAlone"
-    },
-    {
-      "id": "dc/4crqk0tzg7h4g",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/4bc2hks7w5r0g",
-      "displayName": "Count Of EnrolledInGrade9, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/4737stmx46bnb",
-      "displayName": "Count Of EnrolledInGrade9, AsianAlone"
-    },
-    {
-      "id": "dc/4601s3h4zgkvh",
-      "displayName": "Count Of EnrolledInGrade11, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/43gm4rs97v1sh",
-      "displayName": "Count Of EnrolledInGrade10, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/3z6z9w930dl7b",
-      "displayName": "Count Of GraduateOrProfessionalSchool, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/3s0q1pjxf4d56",
-      "displayName": "Count Of EnrolledInGrade7, HispanicOrLatino"
-    },
-    {
-      "id": "dc/3n8g9we5yv7th",
-      "displayName": "Count Of EnrolledInKindergarten, TwoOrMoreRaces"
-    },
-    {
-      "id": "dc/3lvepgjsreml3",
-      "displayName": "Count Of EnrolledInGrade4, WhiteAlone"
-    },
-    {
-      "id": "dc/3kex5wnwcehj6",
-      "displayName": "Count Of EnrolledInGrade4, HispanicOrLatino"
-    },
-    {
-      "id": "dc/3fl8y8x4gslwg",
-      "displayName": "Count Of EnrolledInGrade12, AsianAlone"
-    },
-    {
-      "id": "dc/3bg4r46ly61q9",
-      "displayName": "Count Of HighSchool, BlackOrAfricanAmericanAlone"
-    },
-    {
-      "id": "dc/2hlbd99ffpke",
-      "displayName": "Count Of EnrolledInNurserySchoolPreschool, WhiteAlone"
-    },
-    {
-      "id": "dc/1yyzpv9wsld34",
-      "displayName": "Count Of EnrolledInGrade11, WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "id": "dc/1wynb0rv84jy9",
-      "displayName": "Count Of EnrolledInGrade2, HispanicOrLatino"
-    },
-    {
-      "id": "dc/1v84c9j8gg1g6",
-      "displayName": "Count Of EnrolledInGrade6, HispanicOrLatino"
-    },
-    {
-      "id": "dc/1t989xd1tn701",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "id": "dc/1m3fjkmrezthf",
-      "displayName": "Count Of EnrolledInGrade11, AsianAlone"
-    },
-    {
-      "id": "dc/1kt512ynvpmc2",
-      "displayName": "Count Of HighSchool, AsianAlone"
-    },
-    {
-      "id": "dc/1c4zcyw02n71g",
-      "displayName": "Count Of EnrolledInKindergarten, AsianAlone"
-    },
-    {
-      "id": "dc/1b6dcdtx5ytqc",
-      "displayName": "Count Of EnrolledInGrade2, WhiteAlone"
-    },
-    {
-      "id": "dc/15v2cx47svlb8",
-      "displayName": "Count Of EnrolledInGrade2, AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "id": "dc/0lr57b7391w12",
-      "displayName": "Count Of EnrolledInGrade5, SomeOtherRaceAlone"
-    },
-    {
-      "id": "dc/0jtctjm33mgh1",
-      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, HispanicOrLatino"
+      "id": "dc/03z5xvp7fbdc2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade2, AsianAlone"
     },
     {
       "id": "dc/0jbhkc9vzh3kc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race American Indian Or Alaska Native Alone",
       "displayName": "Count Of EnrolledInGrade12, AmericanIndianOrAlaskaNativeAlone"
     },
     {
-      "id": "dc/03z5xvp7fbdc2",
-      "displayName": "Count Of EnrolledInGrade2, AsianAlone"
+      "id": "dc/0jtctjm33mgh1",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, HispanicOrLatino"
+    },
+    {
+      "id": "dc/0lr57b7391w12",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade5, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/15v2cx47svlb8",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade2, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/1b6dcdtx5ytqc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade2, WhiteAlone"
+    },
+    {
+      "id": "dc/1c4zcyw02n71g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race Asian Alone",
+      "displayName": "Count Of EnrolledInKindergarten, AsianAlone"
+    },
+    {
+      "id": "dc/1kt512ynvpmc2",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race Asian Alone",
+      "displayName": "Count Of HighSchool, AsianAlone"
+    },
+    {
+      "id": "dc/1m3fjkmrezthf",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade11, AsianAlone"
+    },
+    {
+      "id": "dc/1t989xd1tn701",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/1v84c9j8gg1g6",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade6, HispanicOrLatino"
+    },
+    {
+      "id": "dc/1wynb0rv84jy9",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade2, HispanicOrLatino"
+    },
+    {
+      "id": "dc/1yyzpv9wsld34",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade11, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/2hlbd99ffpke",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race White Alone",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, WhiteAlone"
+    },
+    {
+      "id": "dc/3bg4r46ly61q9",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race Black Or African American Alone",
+      "displayName": "Count Of HighSchool, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/3fl8y8x4gslwg",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade12, AsianAlone"
+    },
+    {
+      "id": "dc/3kex5wnwcehj6",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade4, HispanicOrLatino"
+    },
+    {
+      "id": "dc/3lvepgjsreml3",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade4, WhiteAlone"
+    },
+    {
+      "id": "dc/3n8g9we5yv7th",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInKindergarten, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/3s0q1pjxf4d56",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade7, HispanicOrLatino"
+    },
+    {
+      "id": "dc/3z6z9w930dl7b",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race Black Or African American Alone",
+      "displayName": "Count Of GraduateOrProfessionalSchool, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/43gm4rs97v1sh",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade10, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/4601s3h4zgkvh",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade11, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/4737stmx46bnb",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade9, AsianAlone"
+    },
+    {
+      "id": "dc/4bc2hks7w5r0g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade9, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/4crqk0tzg7h4g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/4hzyqndyzntm",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race White Alone",
+      "displayName": "Count Of HighSchool, WhiteAlone"
+    },
+    {
+      "id": "dc/4qbgpy1bdq9ng",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade1, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/4wkzsq23w6reb",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/50yq5l3ek70t7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/52zwp6khpmd86",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade3, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/556pqlh586bmc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInKindergarten, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/55d9n710f1l43",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race White Alone",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, WhiteAlone"
+    },
+    {
+      "id": "dc/59tb0nkn0nfrg",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade10, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/5bv5566pj35v7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade2, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/5ergd75hbfbs2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade3, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/5rk9h9zvbyz5",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade12, HispanicOrLatino"
+    },
+    {
+      "id": "dc/68cg2z97cpl7d",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race Hispanic Or Latino",
+      "displayName": "Count Of PrimarySchool, HispanicOrLatino"
+    },
+    {
+      "id": "dc/68rek3hyfvw3d",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade9, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/6dsh2c30wcptc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade6, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/6m11q7bk4qge",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade1, HispanicOrLatino"
+    },
+    {
+      "id": "dc/6zbb7s5nx6rxb",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race Some Other Race Alone",
+      "displayName": "Count Of MiddleSchool, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/708rvcfph3j43",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade7, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/7645ck4vrj3z4",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade2, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/7b1kt6jvs29m5",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade7, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/7fdfhnnjr5sh8",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of GraduateOrProfessionalSchool, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/7g77dy8hfb1rg",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInKindergarten, HispanicOrLatino"
+    },
+    {
+      "id": "dc/7s7lp7ttmp3k3",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade12, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/7ssfc4pnxyqvd",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade8, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/8276gss3d3q82",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade7, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/89kqjl3ky5cgh",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade10, WhiteAlone"
+    },
+    {
+      "id": "dc/8xbzew3hh3zj2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade4, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/98kjs8sqg8dc6",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade10, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/9cqv67nn7pn1b",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race Hispanic Or Latino",
+      "displayName": "Count Of GraduateOrProfessionalSchool, HispanicOrLatino"
+    },
+    {
+      "id": "dc/9pxfcgnmpb4ld",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/9q73ecfhmd0y9",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race Some Other Race Alone",
+      "displayName": "Count Of HighSchool, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/b3nmcj3w1lhed",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race Two Or More Races",
+      "displayName": "Count Of MiddleSchool, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/b6h698m2vmdcc",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of PrimarySchool, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/bf85zc6wypd2h",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race White Alone",
+      "displayName": "Count Of PrimarySchool, WhiteAlone"
+    },
+    {
+      "id": "dc/bzb64xknj90x",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade7, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/c2nl10sz5wmw3",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade1, WhiteAlone"
+    },
+    {
+      "id": "dc/c57vzg7l74577",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of MiddleSchool, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/c6n2z7vh9sy31",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInKindergarten, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/c75qlm98pmcb2",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of MiddleSchool, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/cc8wk2n0ywd9",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race Hispanic Or Latino",
+      "displayName": "Count Of HighSchool, HispanicOrLatino"
+    },
+    {
+      "id": "dc/cgsr3vgj7xv33",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade3, WhiteAlone"
+    },
+    {
+      "id": "dc/cl02rz75lby1c",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade1, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/cmspqtw32e039",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade8, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/d5g4tqgqlx6s2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/deh75ckkkc8w3",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade6, AsianAlone"
+    },
+    {
+      "id": "dc/dtrqvdzyqzek7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade1, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/dxsxcw009pdm4",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of HighSchool, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/dzfdgrtcv5h7",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of HighSchool, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/e2szvml8jkld8",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race Black Or African American Alone",
+      "displayName": "Count Of MiddleSchool, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/e4y4hqq6mjfsh",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race Black Or African American Alone",
+      "displayName": "Count Of PrimarySchool, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/edpnrsy7glfzf",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade12, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/ej9175h5g52n4",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade10, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/env3140jqssg8",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race Some Other Race Alone",
+      "displayName": "Count Of PrimarySchool, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/epw963xktppx9",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade8, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/f1mn2c36kz0mc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade10, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/f2fq3grswrtbh",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade12, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/fh4td3znm3l4g",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of HighSchool, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/fmx7fkrpd3jl2",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of GraduateOrProfessionalSchool, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/fpkjrc19wfr82",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade6, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/fwwm465nrweyb",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade8, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/g4fthg3t3y5td",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race Asian Alone",
+      "displayName": "Count Of MiddleSchool, AsianAlone"
+    },
+    {
+      "id": "dc/g8537zqf45wl3",
+      "searchName": "Count Of Person With Detailed Level Of School High School, Race Two Or More Races",
+      "displayName": "Count Of HighSchool, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/gcsgte71jdvl2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade11, HispanicOrLatino"
+    },
+    {
+      "id": "dc/ghqs0gz0cvgx1",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade3, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/gr3zem8shyhbf",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race White Alone",
+      "displayName": "Count Of EnrolledInKindergarten, WhiteAlone"
+    },
+    {
+      "id": "dc/h0lc69wwsbhy5",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade4, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/h7dltj3mrq778",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade11, WhiteAlone"
+    },
+    {
+      "id": "dc/h8hnx87sjgvhf",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade11, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/h8p2m5rx43j3b",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race White Alone",
+      "displayName": "Count Of GraduateOrProfessionalSchool, WhiteAlone"
+    },
+    {
+      "id": "dc/hcte4krdb6g3h",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade4, AsianAlone"
+    },
+    {
+      "id": "dc/hpzt7l9dxswp7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade11, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/hq6fekrv02763",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade2, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/j8708n21vjn7g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade3, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/jbj3e09w9hsl8",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade8, AsianAlone"
+    },
+    {
+      "id": "dc/jhjdplbeg26k1",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race Two Or More Races",
+      "displayName": "Count Of PrimarySchool, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/k7gzvt7h4p1t2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade5, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/kxzpmb82rnn12",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade3, AsianAlone"
+    },
+    {
+      "id": "dc/kz9r60zp6s32b",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race Two Or More Races",
+      "displayName": "Count Of GraduateOrProfessionalSchool, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/lex5l1z3xb019",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade4, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/lh2p6deyhh1w8",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade12, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/lkfgpz9cz0x93",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade10, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/lp45rhhvvsyz3",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade10, AsianAlone"
+    },
+    {
+      "id": "dc/lv94fnc9rnzg7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade1, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/m18kt4h10rhv9",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade9, HispanicOrLatino"
+    },
+    {
+      "id": "dc/mgewrrcbsg5mc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade8, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/mwbmxs2q9zcgd",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/nc36cwd39pqyb",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade6, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/nhmjhp72kjr48",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race Asian Alone",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, AsianAlone"
+    },
+    {
+      "id": "dc/njgzb8knf11n8",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of MiddleSchool, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/nkhxr3btprred",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade8, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/ns1rqx6wy9909",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInKindergarten, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/nt9cq96phw6nf",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInKindergarten, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/p0yjn8heys192",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade5, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/p3vqwthpjtdw",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race Some Other Race Alone",
+      "displayName": "Count Of GraduateOrProfessionalSchool, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/p4jzvj8q1lnmd",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of PrimarySchool, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/pexzqq68dnek5",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade12, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/pf5dpsj6zfm9g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade5, AsianAlone"
+    },
+    {
+      "id": "dc/psvlr9qyj0gmb",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade7, WhiteAlone"
+    },
+    {
+      "id": "dc/q420sgnxr70cg",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade3, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/qnphlls92tvs9",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Kindergarten, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInKindergarten, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/qt5n8lwm3efcc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade11, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/qvf1yrhwzp8rd",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race White Alone",
+      "displayName": "Count Of MiddleSchool, WhiteAlone"
+    },
+    {
+      "id": "dc/r7xqdm2s9r7d7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade6, WhiteAlone"
+    },
+    {
+      "id": "dc/r8224e56gqm86",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race Asian Alone",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, AsianAlone"
+    },
+    {
+      "id": "dc/rctprrbmyt4k5",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 11, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade11, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/rfkwl069m93jh",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade5, WhiteAlone"
+    },
+    {
+      "id": "dc/rlxhqz8mgxf07",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade4, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/rrp56w0hvs6x6",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade8, HispanicOrLatino"
+    },
+    {
+      "id": "dc/rvw3m8tnk9rzg",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade1, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/rxtjbe97rt917",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade9, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/rysbtdzyxtzwg",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade7, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/s7ce9rqnnxx2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade6, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/sdc1bw2pxc46g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade3, HispanicOrLatino"
+    },
+    {
+      "id": "dc/slbyzbleg76rg",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade9, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/sm77lg8njsrzh",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/smytzhn5chpq7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade4, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/sp5k1jygkt21",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInGrade7, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/szdmyn5skvqjb",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/t2tfpx3f19px",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade9, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/t3qdrccyvv92d",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 7, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade7, AsianAlone"
+    },
+    {
+      "id": "dc/tgvpcmdbx6jn5",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 8, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade8, WhiteAlone"
+    },
+    {
+      "id": "dc/tr1xqzhtb8fr6",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 3, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade3, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/vdc20m1xr96k",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/w0empn05hck9",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 10, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade10, HispanicOrLatino"
+    },
+    {
+      "id": "dc/w56by78w2crr2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade5, HispanicOrLatino"
+    },
+    {
+      "id": "dc/wjtdrd9wq4m2g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/wk2vjrzfgyq5d",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of PrimarySchool, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/wyxmw2dy6t2xh",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of GraduateOrProfessionalSchool, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/wzbz28yp0r0z7",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade5, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/x1fkr624fq691",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race American Indian Or Alaska Native Alone",
+      "displayName": "Count Of EnrolledInGrade1, AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "id": "dc/x9e7150515yt7",
+      "searchName": "Count Of Person With Detailed Level Of School Primary School, Race Asian Alone",
+      "displayName": "Count Of PrimarySchool, AsianAlone"
+    },
+    {
+      "id": "dc/xc49pjeynx3s1",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade9, WhiteAlone"
+    },
+    {
+      "id": "dc/xc7ms0v0r7vy5",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 1, Race Asian Alone",
+      "displayName": "Count Of EnrolledInGrade1, AsianAlone"
+    },
+    {
+      "id": "dc/xe4nwk6z1w4ld",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade5, BlackOrAfricanAmericanAlone"
+    },
+    {
+      "id": "dc/xeb8jg49cry4b",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 5, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade5, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/xjj3rf2hbvttc",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 4, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade4, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/xnmh7xgwghej",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Nursery School Preschool, Race Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInNurserySchoolPreschool, HispanicOrLatino"
+    },
+    {
+      "id": "dc/xzq5kcxgn5xj3",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade2, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/y5t5r8bkr80p6",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 12, Race White Alone",
+      "displayName": "Count Of EnrolledInGrade12, WhiteAlone"
+    },
+    {
+      "id": "dc/yc8bfetcz1d92",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 2, Race Some Other Race Alone",
+      "displayName": "Count Of EnrolledInGrade2, SomeOtherRaceAlone"
+    },
+    {
+      "id": "dc/ykmg1pn1ee421",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race Native Hawaiian Or Other Pacific Islander Alone",
+      "displayName": "Count Of EnrolledInGrade6, NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "id": "dc/z89e0y0bvfhq2",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 9, Race White Alone Not Hispanic Or Latino",
+      "displayName": "Count Of EnrolledInGrade9, WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "id": "dc/zmp6qzgzp7ly2",
+      "searchName": "Count Of Person With Detailed Level Of School Graduate Or Professional School, Race Asian Alone",
+      "displayName": "Count Of GraduateOrProfessionalSchool, AsianAlone"
+    },
+    {
+      "id": "dc/zv5g19y8dl9r1",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In College Undergraduate Years, Race Two Or More Races",
+      "displayName": "Count Of EnrolledInCollegeUndergraduateYears, TwoOrMoreRaces"
+    },
+    {
+      "id": "dc/zvr6djt1p9gj3",
+      "searchName": "Count Of Person With Detailed Level Of School Middle School, Race Hispanic Or Latino",
+      "displayName": "Count Of MiddleSchool, HispanicOrLatino"
+    },
+    {
+      "id": "dc/zxgqmcexf910g",
+      "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race Black Or African American Alone",
+      "displayName": "Count Of EnrolledInGrade6, BlackOrAfricanAmericanAlone"
     }
   ],
   "parentStatVarGroups": [
-    "dc/g/Person_Race",
-    "dc/g/Person_DetailedLevelOfSchool"
+    "dc/g/Person_DetailedLevelOfSchool",
+    "dc/g/Person_Race"
   ]
 }
