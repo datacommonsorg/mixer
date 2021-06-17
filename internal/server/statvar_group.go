@@ -28,6 +28,7 @@ import (
 )
 
 const (
+	svgRoot            = "dc/g/Root"
 	autoGenSvgIDPrefix = "dc/g/"
 	svgDelimiter       = "_"
 )
@@ -295,6 +296,9 @@ func (s *Server) GetStatVarPath(
 	for {
 		if parents, ok := s.cache.ParentSvg[curr]; ok {
 			curr = parents[0]
+			if curr == svgRoot {
+				break
+			}
 			path = append(path, curr)
 		} else {
 			break
