@@ -42,6 +42,12 @@
     },
     {
       "subjectId": "Count_Person",
+      "predicate": "name",
+      "objectValue": "Count Of Person",
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person",
       "predicate": "memberOf",
       "objectId": "dc/g/Variables_Demographics",
       "objectName": "Variables Of Person",
@@ -57,6 +63,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -69,6 +76,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -81,6 +89,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -93,6 +102,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -105,6 +115,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -117,6 +128,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -129,6 +141,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -141,6 +154,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -153,6 +167,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -165,6 +180,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -177,6 +193,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -184,11 +201,13 @@
     },
     {
       "subjectId": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+      "subjectName": "Count Of MobileCellularSubscription As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -196,11 +215,13 @@
     },
     {
       "subjectId": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
+      "subjectName": "Count Of LessThan5MetersAboveSeaLevel As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -208,11 +229,13 @@
     },
     {
       "subjectId": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person",
+      "subjectName": "Count Of BelowPovertyLevelInThePast12Months As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -220,11 +243,13 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
+      "subjectName": "Count Of ICD10/X60-X84 As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -232,11 +257,13 @@
     },
     {
       "subjectId": "Count_Death_AsAFractionOfCount_Person",
+      "subjectName": "Count Of MortalityEvent As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -244,11 +271,13 @@
     },
     {
       "subjectId": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
+      "subjectName": "AgeAdjusted Count Of MortalityEvent As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -256,11 +285,13 @@
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+      "subjectName": "Count Of MurderAndNonNegligentManslaughter As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -268,11 +299,13 @@
     },
     {
       "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
+      "subjectName": "Count Of LiveBirth As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -280,11 +313,13 @@
     },
     {
       "subjectId": "Count_BirthEvent_AsAFractionOfCount_Person",
+      "subjectName": "Count Of BirthEvent As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -292,11 +327,13 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
+      "subjectName": "Nominal Amount Of GrossDomesticProduction As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -304,11 +341,13 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
+      "subjectName": "Amount Of ExpenditureActivity, HealthcareExpenditure As Fraction Of Count Person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -404,6 +443,12 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "predicate": "name",
+      "objectValue": "Count Of Female",
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
       "predicate": "memberOf",
       "objectId": "dc/g/Variables_Person_Gender",
       "objectName": "Variables Of Person By Gender",
@@ -419,6 +464,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -431,6 +477,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -443,6 +490,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -455,6 +503,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -462,11 +511,13 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
+      "subjectName": "Count Of ICD10/X60-X84, Female As Fraction Of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -474,11 +525,13 @@
     },
     {
       "subjectId": "Count_Death_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count Of Female As Fraction Of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -486,11 +539,13 @@
     },
     {
       "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
+      "subjectName": "AgeAdjusted Count Of Female As Fraction Of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -498,11 +553,13 @@
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
+      "subjectName": "Count Of MurderAndNonNegligentManslaughter, Female As Fraction Of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
+      "objectName": "Count Of Female",
       "objectTypes": [
         "StatisticalVariable"
       ],

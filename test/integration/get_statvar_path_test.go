@@ -41,6 +41,7 @@ func TestGetStatVarPath(t *testing.T) {
 				"Count_Person",
 				"dc/g/Variables_Demographics",
 				"dc/g/Demographics",
+				"dc/g/Root",
 			},
 		},
 		{
@@ -51,6 +52,7 @@ func TestGetStatVarPath(t *testing.T) {
 				"dc/g/Person_Age_Employment",
 				"dc/g/Person_Age",
 				"dc/g/Demographics",
+				"dc/g/Root",
 			},
 		},
 	} {
