@@ -224,11 +224,9 @@ func (s *Server) GetStatVarGroupNode(
 	result.ChildStatVarGroups = filteredChildStatVarGroups
 	// Filter child stat vars
 	filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
-	childStatVars := []string{}
 	for _, item := range result.ChildStatVars {
 		if c, ok := statExistence[item.Id]; ok && c == len(places) {
 			filteredChildStatVars = append(filteredChildStatVars, item)
-			childStatVars = append(childStatVars, item.Id)
 		}
 	}
 	result.ChildStatVars = filteredChildStatVars
