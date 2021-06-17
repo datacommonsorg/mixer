@@ -73,6 +73,21 @@ func buildStatSetWithinPlaceKey(parentPlace, childType, date string, statVars []
 	return rowList, keyToToken
 }
 
+func buildStatExistenceKey(
+	places []string, statVars []string) (
+	bigtable.RowList, map[string]*placeStatVar) {
+	rowList := bigtable.RowList{}
+	keyToToken := map[string]*placeStatVar{}
+	for _, sv := range statVars {
+		for _, place := range places {
+			rowKey := fmt.Sprintf("%s%s^%s", util.BtSVAndSVGExistence, place, sv)
+			rowList = append(rowList, rowKey)
+			keyToToken[rowKey] = &placeStatVar{place, sv}
+		}
+	}
+	return rowList, keyToToken
+}
+
 func buildPropertyValuesKey(
 	dcids []string, prop string, arcOut bool) bigtable.RowList {
 	rowList := bigtable.RowList{}
