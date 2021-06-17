@@ -856,5 +856,9 @@
       "searchName": "Count Of Person With Detailed Level Of School Enrolled In Grade 6, Race Black Or African American Alone",
       "displayName": "Count Of EnrolledInGrade6, BlackOrAfricanAmericanAlone"
     }
+  ],
+  "parentStatVarGroups": [
+    "dc/g/Person_DetailedLevelOfSchool",
+    "dc/g/Person_Race"
   ]
 }

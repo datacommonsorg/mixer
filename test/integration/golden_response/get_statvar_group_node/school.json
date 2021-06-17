@@ -3,11 +3,15 @@
   "childStatVarGroups": [
     {
       "id": "dc/g/Person_DetailedLevelOfSchool_Race",
-      "specializedEntity": "Race"
+      "specializedEntity": "Race",
+      "displayName": "Person By DetailedLevelOfSchool, Race"
     },
     {
       "id": "dc/g/Variables_Person_DetailedLevelOfSchool",
       "specializedEntity": "Variables"
     }
+  ],
+  "parentStatVarGroups": [
+    "dc/g/Education"
   ]
 }

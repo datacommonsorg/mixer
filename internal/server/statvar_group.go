@@ -198,6 +198,10 @@ func (s *Server) GetStatVarGroupNode(
 		}
 	} else {
 		result = s.cache.SvgInfo[svg]
+		for _, item := range result.ChildStatVarGroups {
+			item.DisplayName = s.cache.SvgInfo[item.Id].AbsoluteName
+		}
+		result.ParentStatVarGroups = s.cache.ParentSvg[svg]
 	}
 
 	// Get the stat var and stat var group IDs to check if they are valid for
