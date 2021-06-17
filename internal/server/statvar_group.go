@@ -202,7 +202,9 @@ func (s *Server) GetStatVarGroupNode(
 			}
 		}
 	} else {
-		result = s.cache.SvgInfo[svg]
+		if r, ok := s.cache.SvgInfo[svg]; ok {
+			result = r
+		}
 		for _, item := range result.ChildStatVarGroups {
 			item.DisplayName = s.cache.SvgInfo[item.Id].AbsoluteName
 		}
