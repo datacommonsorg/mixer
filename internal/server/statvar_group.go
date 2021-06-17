@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"sort"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -193,7 +192,8 @@ func (s *Server) GetStatVarGroupNode(
 				// Children SV
 				result.ChildStatVars = append(result.ChildStatVars,
 					&pb.StatVarGroupNode_ChildSV{
-						Id: t.SubjectID,
+						Id:          t.SubjectID,
+						DisplayName: t.SubjectName,
 					})
 				allIDs = append(allIDs, t.SubjectID)
 			}
@@ -224,61 +224,12 @@ func (s *Server) GetStatVarGroupNode(
 	result.ChildStatVarGroups = filteredChildStatVarGroups
 	// Filter child stat vars
 	filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
-	childStatVars := []string{}
 	for _, item := range result.ChildStatVars {
 		if c, ok := statExistence[item.Id]; ok && c == len(places) {
 			filteredChildStatVars = append(filteredChildStatVars, item)
-			childStatVars = append(childStatVars, item.Id)
 		}
 	}
 	result.ChildStatVars = filteredChildStatVars
-
-	// Fetch the child stat var triples and construct the names.
-	if len(childStatVars) > 0 {
-		statVarNames, err := fetchStatVarNames(ctx, s, childStatVars)
-		if err != nil {
-			return nil, err
-		}
-		for _, c := range result.ChildStatVars {
-			c.DisplayName = statVarNames[c.Id]
-		}
-	}
-	return result, nil
-}
-
-func fetchStatVarNames(ctx context.Context, s *Server, statVars []string) (
-	map[string]string, error) {
-	triples, err := readTriples(ctx, s.store, buildTriplesKey(statVars))
-	if err != nil {
-		return nil, err
-	}
-	result := map[string]string{}
-	for sv, data := range triples {
-		// Names are built as:
-		// measurement proptery + constraint value 1 + constraint value 2 + ...
-		var name string
-		pv := map[string]string{}
-		cpv := []string{}
-		for _, t := range data.Triples {
-			if t.Predicate == "measuredProperty" {
-				name = t.ObjectName + " of"
-			} else if t.Predicate == "constraintProperties" {
-				cpv = append(cpv, t.ObjectID)
-			} else {
-				pv[t.Predicate] = t.ObjectID
-			}
-		}
-		sort.Strings(cpv)
-		for i, p := range cpv {
-			if i == 0 {
-				name += " "
-			} else {
-				name += ", "
-			}
-			name += pv[p]
-		}
-		result[sv] = strings.Title(name)
-	}
 	return result, nil
 }
 
