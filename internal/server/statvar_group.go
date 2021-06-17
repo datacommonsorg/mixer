@@ -220,31 +220,35 @@ func (s *Server) GetStatVarGroupNode(
 	if err != nil {
 		return nil, err
 	}
+
+	// Filter result based on places
 	// TODO(shifucun): Find a generic way to do the filtering here.
 	// Filter parent stat var groups
-	filteredParentStatVarGroups := []string{}
-	for _, item := range result.ParentStatVarGroups {
-		if c, ok := statExistence[item]; ok && c == len(places) {
-			filteredParentStatVarGroups = append(filteredParentStatVarGroups, item)
+	if len(places) > 0 {
+		filteredParentStatVarGroups := []string{}
+		for _, item := range result.ParentStatVarGroups {
+			if c, ok := statExistence[item]; ok && c == len(places) {
+				filteredParentStatVarGroups = append(filteredParentStatVarGroups, item)
+			}
 		}
-	}
-	result.ParentStatVarGroups = filteredParentStatVarGroups
-	// Filter child stat var groups
-	filteredChildStatVarGroups := []*pb.StatVarGroupNode_ChildSVG{}
-	for _, item := range result.ChildStatVarGroups {
-		if c, ok := statExistence[item.Id]; ok && c == len(places) {
-			filteredChildStatVarGroups = append(filteredChildStatVarGroups, item)
+		result.ParentStatVarGroups = filteredParentStatVarGroups
+		// Filter child stat var groups
+		filteredChildStatVarGroups := []*pb.StatVarGroupNode_ChildSVG{}
+		for _, item := range result.ChildStatVarGroups {
+			if c, ok := statExistence[item.Id]; ok && c == len(places) {
+				filteredChildStatVarGroups = append(filteredChildStatVarGroups, item)
+			}
 		}
-	}
-	result.ChildStatVarGroups = filteredChildStatVarGroups
-	// Filter child stat vars
-	filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
-	for _, item := range result.ChildStatVars {
-		if c, ok := statExistence[item.Id]; ok && c == len(places) {
-			filteredChildStatVars = append(filteredChildStatVars, item)
+		result.ChildStatVarGroups = filteredChildStatVarGroups
+		// Filter child stat vars
+		filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
+		for _, item := range result.ChildStatVars {
+			if c, ok := statExistence[item.Id]; ok && c == len(places) {
+				filteredChildStatVars = append(filteredChildStatVars, item)
+			}
 		}
+		result.ChildStatVars = filteredChildStatVars
 	}
-	result.ChildStatVars = filteredChildStatVars
 	return result, nil
 }
 
