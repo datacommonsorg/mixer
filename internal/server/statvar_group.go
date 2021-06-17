@@ -159,18 +159,18 @@ func (s *Server) GetStatVarGroupNode(
 			codes.InvalidArgument, "Missing required argument: stat_var_group")
 	}
 
-	triples, err := readTriples(ctx, s.store, buildTriplesKey([]string{svg}))
-	if err != nil {
-		return nil, err
-	}
-
-	if _, ok := triples[svg]; !ok {
-		return nil, status.Errorf(
-			codes.Internal, "No triples for stat var group: %s", svg)
-	}
-
 	result := &pb.StatVarGroupNode{}
+
 	if in.GetReadFromTriples() {
+		triples, err := readTriples(ctx, s.store, buildTriplesKey([]string{svg}))
+		if err != nil {
+			return nil, err
+		}
+
+		if _, ok := triples[svg]; !ok {
+			return nil, status.Errorf(
+				codes.Internal, "No triples for stat var group: %s", svg)
+		}
 		// Go through triples and populate result fields.
 		for _, t := range triples[svg].Triples {
 			if t.SubjectID == svg {
@@ -209,27 +209,25 @@ func (s *Server) GetStatVarGroupNode(
 		result.ParentStatVarGroups = s.cache.ParentSvg[svg]
 	}
 
-	// Get the stat var and stat var group IDs to check if they are valid for
-	// given places.
-	allIDs := []string{}
-	for _, item := range result.ChildStatVarGroups {
-		allIDs = append(allIDs, item.Id)
-	}
-	for _, item := range result.ChildStatVars {
-		allIDs = append(allIDs, item.Id)
-	}
-	allIDs = append(allIDs, result.ParentStatVarGroups...)
-
-	// Check if stat data exists for given places
-	statExistence, err := checkStatExistence(ctx, s.store, allIDs, places)
-	if err != nil {
-		return nil, err
-	}
-
 	// Filter result based on places
 	// TODO(shifucun): Find a generic way to do the filtering here.
 	// Filter parent stat var groups
 	if len(places) > 0 {
+		// Get the stat var and stat var group IDs to check if they are valid for
+		// given places.
+		allIDs := []string{}
+		for _, item := range result.ChildStatVarGroups {
+			allIDs = append(allIDs, item.Id)
+		}
+		for _, item := range result.ChildStatVars {
+			allIDs = append(allIDs, item.Id)
+		}
+		allIDs = append(allIDs, result.ParentStatVarGroups...)
+		// Check if stat data exists for given places
+		statExistence, err := checkStatExistence(ctx, s.store, allIDs, places)
+		if err != nil {
+			return nil, err
+		}
 		filteredParentStatVarGroups := []string{}
 		for _, item := range result.ParentStatVarGroups {
 			if c, ok := statExistence[item]; ok && c == len(places) {
