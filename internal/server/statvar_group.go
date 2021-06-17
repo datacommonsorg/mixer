@@ -204,6 +204,7 @@ func (s *Server) GetStatVarGroupNode(
 	if err != nil {
 		return nil, err
 	}
+	// TODO(shifucun): Find a generic way to do the filtering here.
 	// Filter parent stat var groups
 	filteredParentStatVarGroups := []string{}
 	for _, item := range result.ParentStatVarGroups {

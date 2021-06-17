@@ -47,24 +47,22 @@ func (s *Server) SearchStatVar(
 		if err != nil {
 			return nil, err
 		}
-		filteredSvList := []string{}
-		for _, sv := range svList {
-			if c, ok := statExistence[sv]; ok && c == len(places) {
-				filteredSvList = append(filteredSvList, sv)
-			}
-		}
-		svList = filteredSvList
-		filteredSvgList := []string{}
-		for _, svg := range svgList {
-			if c, ok := statExistence[svg]; ok && c == len(places) {
-				filteredSvgList = append(filteredSvgList, svg)
-			}
-		}
-		svgList = filteredSvgList
+		svList = filter(svList, statExistence, len(places))
+		svgList = filter(svgList, statExistence, len(places))
 	}
 	result.StatVars = svList
 	result.StatVarGroups = svgList
 	return result, nil
+}
+
+func filter(ids []string, countMap map[string]int, numPlaces int) []string {
+	filteredIDs := []string{}
+	for _, svg := range ids {
+		if c, ok := countMap[svg]; ok && c == numPlaces {
+			filteredIDs = append(filteredIDs, svg)
+		}
+	}
+	return filteredIDs
 }
 
 func searchTokens(tokens []string, index *SearchIndex) ([]string, []string) {
