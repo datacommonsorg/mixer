@@ -2,32 +2,24 @@
   "absoluteName": "Demographics",
   "childStatVarGroups": [
     {
-      "id": "dc/g/Variables_Demographics",
-      "specializedEntity": "Variables",
-      "displayName": "Variables Of Person"
-    },
-    {
-      "id": "dc/g/Person_Gender",
-      "specializedEntity": "Gender",
-      "displayName": "Person By Gender"
-    },
-    {
-      "id": "dc/g/Person_EducationalAttainment",
-      "specializedEntity": "EducationalAttainment",
-      "displayName": "Person By EducationalAttainment"
+      "id": "dc/g/BirthEvent",
+      "specializedEntity": "BirthEvent"
     },
     {
       "id": "dc/g/Person_Age",
-      "specializedEntity": "Age",
-      "displayName": "Person By Age"
+      "specializedEntity": "Age"
     },
     {
-      "id": "dc/g/BirthEvent",
-      "specializedEntity": "BirthEvent",
-      "displayName": "BirthEvent"
+      "id": "dc/g/Person_EducationalAttainment",
+      "specializedEntity": "EducationalAttainment"
+    },
+    {
+      "id": "dc/g/Person_Gender",
+      "specializedEntity": "Gender"
+    },
+    {
+      "id": "dc/g/Variables_Demographics",
+      "specializedEntity": "Variables"
     }
-  ],
-  "parentStatVarGroups": [
-    "dc/g/Root"
   ]
 }

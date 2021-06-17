@@ -2,17 +2,12 @@
   "absoluteName": "Person By DetailedLevelOfSchool",
   "childStatVarGroups": [
     {
-      "id": "dc/g/Variables_Person_DetailedLevelOfSchool",
-      "specializedEntity": "Variables",
-      "displayName": "Variables Of Person By DetailedLevelOfSchool"
+      "id": "dc/g/Person_DetailedLevelOfSchool_Race",
+      "specializedEntity": "Race"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool_Race",
-      "specializedEntity": "Race",
-      "displayName": "Person By DetailedLevelOfSchool, Race"
+      "id": "dc/g/Variables_Person_DetailedLevelOfSchool",
+      "specializedEntity": "Variables"
     }
-  ],
-  "parentStatVarGroups": [
-    "dc/g/Education"
   ]
 }
