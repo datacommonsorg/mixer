@@ -71,5 +71,8 @@
       "specializedEntity": "BirthEvent",
       "displayName": "BirthEvent"
     }
+  ],
+  "parentStatVarGroups": [
+    "dc/g/Root"
   ]
 }

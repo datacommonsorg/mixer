@@ -16,6 +16,7 @@
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "provenanceId": "dc/qmsyx4"
     },
     {
@@ -55,6 +56,7 @@
       "subjectId": "dc/o/28b93wpnlkjgc",
       "predicate": "variableMeasured",
       "objectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+      "objectName": "Nominal Amount Of GrossDomesticProduction",
       "provenanceId": "dc/jccrh82"
     },
     {
@@ -95,6 +97,7 @@
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "provenanceId": "dc/ks7tgs3"
     },
     {
@@ -128,6 +131,7 @@
       "subjectId": "dc/o/kyv7dxe4s18eh",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
+      "objectName": "Count Of Person",
       "provenanceId": "dc/jccrh82"
     },
     {
@@ -161,6 +165,7 @@
       "subjectId": "dc/o/mc1g2ew9yegq8",
       "predicate": "variableMeasured",
       "objectId": "Amount_Consumption_Energy_PerCapita",
+      "objectName": "Amount Of Energy As Fraction Of PerCapita",
       "provenanceId": "dc/jccrh82"
     },
     {
