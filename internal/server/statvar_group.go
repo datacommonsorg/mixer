@@ -164,6 +164,11 @@ func (s *Server) GetStatVarGroupNode(
 		return nil, err
 	}
 
+	if _, ok := triples[svg]; !ok {
+		return nil, status.Errorf(
+			codes.Internal, "No triples for stat var group: %s", svg)
+	}
+
 	result := &pb.StatVarGroupNode{}
 	if in.GetReadFromTriples() {
 		// Go through triples and populate result fields.
