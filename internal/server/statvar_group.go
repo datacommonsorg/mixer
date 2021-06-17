@@ -370,9 +370,6 @@ func checkStatExistence(
 		token, _ := keyToTokenFn(rowKey)
 		if _, ok := baseDataMap[token]; ok {
 			result[placeSv.statVar]++
-		} else {
-			// TODO(shifucun): remove the else part once cache is build.
-			result[placeSv.statVar]++
 		}
 	}
 	return result, nil

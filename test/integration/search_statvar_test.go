@@ -44,7 +44,7 @@ func TestSearchStatVar(t *testing.T) {
 	}{
 		{
 			"Asian , age",
-			[]string{"country/THA"},
+			[]string{"geoId/06"},
 			"asian_age.json",
 		},
 		{
