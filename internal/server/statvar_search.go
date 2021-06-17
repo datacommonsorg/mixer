@@ -27,6 +27,8 @@ func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest) (
 	*pb.SearchStatVarResponse, error) {
 	query := in.GetQuery()
+	places := in.GetPlaces()
+
 	result := &pb.SearchStatVarResponse{
 		StatVars:      []*pb.EntityInfo{},
 		StatVarGroups: []*pb.EntityInfo{},
@@ -37,10 +39,34 @@ func (s *Server) SearchStatVar(
 	tokens := strings.Fields(
 		strings.Replace(strings.ToLower(query), ",", " ", -1))
 	svList, svgList := searchTokens(tokens, s.cache.SvgSearchIndex)
+
+	// Filter the stat var and stat var group by places.
+	if len(places) > 0 {
+		ids := []string{}
+		for _, item := range append(svList, svgList...) {
+			ids = append(ids, item.Dcid)
+		}
+		statExistence, err := checkStatExistence(ctx, s.store, ids, places)
+		if err != nil {
+			return nil, err
+		}
+		svList = filter(svList, statExistence, len(places))
+		svgList = filter(svgList, statExistence, len(places))
+	}
 	result.StatVars = svList
 	result.StatVarGroups = svgList
-
 	return result, nil
+}
+
+func filter(
+	nodes []*pb.EntityInfo, countMap map[string]int, numPlaces int) []*pb.EntityInfo {
+	result := []*pb.EntityInfo{}
+	for _, node := range nodes {
+		if c, ok := countMap[node.Dcid]; ok && c == numPlaces {
+			result = append(result, node)
+		}
+	}
+	return result
 }
 
 func searchTokens(

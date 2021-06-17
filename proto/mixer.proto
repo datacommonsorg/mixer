@@ -543,6 +543,8 @@ message GetStatVarPathResponse {
 message SearchStatVarRequest {
   // Query string
   string query = 1;
+  // Places where the stat var and stat var groups are associated with.
+  repeated string places = 2;
 }
 
 message SearchStatVarResponse {

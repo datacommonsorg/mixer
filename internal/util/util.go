@@ -40,6 +40,8 @@ const (
 	BtPlaceStatsVarPrefix = "d/0/"
 	// BtStatVarGroup is the key for statvar group cache.
 	BtStatVarGroup = "d/1"
+	// BtSVAndSVGExistence is the key for stat var and stat var group existence cache.
+	BtSVAndSVGExistence = "d/2"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
 	// BtLandingPagePrefix for place landing page cache.
