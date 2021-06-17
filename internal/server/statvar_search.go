@@ -100,9 +100,8 @@ func searchTokens(
 		rj := ranking[svList[j].Dcid]
 		if ri.ApproxNumPv == rj.ApproxNumPv {
 			return ri.RankingName < rj.RankingName
-		} else {
-			return ri.ApproxNumPv < rj.ApproxNumPv
 		}
+		return ri.ApproxNumPv < rj.ApproxNumPv
 	})
 
 	svgList := []*pb.EntityInfo{}
