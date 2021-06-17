@@ -30,8 +30,8 @@ func (s *Server) SearchStatVar(
 	places := in.GetPlaces()
 
 	result := &pb.SearchStatVarResponse{
-		StatVars:      []string{},
-		StatVarGroups: []string{},
+		StatVars:      []*pb.EntityInfo{},
+		StatVarGroups: []*pb.EntityInfo{},
 	}
 	if query == "" {
 		return result, nil
@@ -42,8 +42,11 @@ func (s *Server) SearchStatVar(
 
 	// Filter the stat var and stat var group by places.
 	if len(places) > 0 {
-		statExistence, err := checkStatExistence(
-			ctx, s.store, append(svList, svgList...), places)
+		ids := []string{}
+		for _, item := range append(svList, svgList...) {
+			ids = append(ids, item.Dcid)
+		}
+		statExistence, err := checkStatExistence(ctx, s.store, ids, places)
 		if err != nil {
 			return nil, err
 		}
@@ -55,17 +58,19 @@ func (s *Server) SearchStatVar(
 	return result, nil
 }
 
-func filter(ids []string, countMap map[string]int, numPlaces int) []string {
-	filteredIDs := []string{}
-	for _, svg := range ids {
-		if c, ok := countMap[svg]; ok && c == numPlaces {
-			filteredIDs = append(filteredIDs, svg)
+func filter(
+	nodes []*pb.EntityInfo, countMap map[string]int, numPlaces int) []*pb.EntityInfo {
+	result := []*pb.EntityInfo{}
+	for _, node := range nodes {
+		if c, ok := countMap[node.Dcid]; ok && c == numPlaces {
+			result = append(result, node)
 		}
 	}
-	return filteredIDs
+	return result
 }
 
-func searchTokens(tokens []string, index *SearchIndex) ([]string, []string) {
+func searchTokens(
+	tokens []string, index *SearchIndex) ([]*pb.EntityInfo, []*pb.EntityInfo) {
 	svCount := map[string]int{}
 	svgCount := map[string]int{}
 	for _, token := range tokens {
@@ -78,31 +83,44 @@ func searchTokens(tokens []string, index *SearchIndex) ([]string, []string) {
 	}
 
 	// Only select sv and svg that matches all the tokens
-	svList := []string{}
+	svList := []*pb.EntityInfo{}
 	for sv, c := range svCount {
 		if c == len(tokens) {
-			svList = append(svList, sv)
+			svList = append(svList, &pb.EntityInfo{
+				Dcid: sv,
+				Name: index.ranking[sv].RankingName,
+			})
 		}
 	}
 	// Sort stat vars by number of PV; If two stat vars have same number of PV,
-	// then order alphabetically.
-	sort.Strings(svList)
+	// then order by the stat var (group) name.
 	sort.SliceStable(svList, func(i, j int) bool {
 		ranking := index.ranking
-		return ranking[svList[i]].ApproxNumPv < ranking[svList[j]].ApproxNumPv
+		ri := ranking[svList[i].Dcid]
+		rj := ranking[svList[j].Dcid]
+		if ri.ApproxNumPv == rj.ApproxNumPv {
+			return ri.RankingName < rj.RankingName
+		}
+		return ri.ApproxNumPv < rj.ApproxNumPv
 	})
 
-	svgList := []string{}
+	svgList := []*pb.EntityInfo{}
 	for svg, c := range svgCount {
 		if c == len(tokens) {
-			svgList = append(svgList, svg)
+			svgList = append(svgList, &pb.EntityInfo{
+				Dcid: svg,
+				Name: index.ranking[svg].RankingName,
+			})
 		}
 	}
-	// Sort stat var groups by ID then by number of PV
-	sort.Strings(svgList)
 	sort.SliceStable(svgList, func(i, j int) bool {
 		ranking := index.ranking
-		return ranking[svgList[i]].ApproxNumPv < ranking[svgList[j]].ApproxNumPv
+		ri := ranking[svgList[i].Dcid]
+		rj := ranking[svgList[j].Dcid]
+		if ri.ApproxNumPv == rj.ApproxNumPv {
+			return ri.RankingName < rj.RankingName
+		}
+		return ri.ApproxNumPv < rj.ApproxNumPv
 	})
 	return svList, svgList
 }

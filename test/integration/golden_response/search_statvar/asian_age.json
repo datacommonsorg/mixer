@@ -1,197 +1,776 @@
 {
   "statVars": [
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone",
-    "Count_Person_15OrMoreYears_AsianAlone",
-    "Count_Person_16OrMoreYears_AsianAlone",
-    "Count_Person_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_25OrMoreYears_AsianAlone",
-    "Count_Person_3OrMoreYears_AsianAlone",
-    "Count_Person_5OrMoreYears_AsianAlone",
-    "Count_Person_5OrMoreYears_OtherAsianLanguagesSpokenAtHome",
-    "Count_Person_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Median_Age_Person_AsianAlone",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar",
-    "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar",
-    "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar",
-    "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar",
-    "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar",
-    "Count_Person_10To14Years_Female_AsianAlone",
-    "Count_Person_10To14Years_Male_AsianAlone",
-    "Count_Person_15OrMoreYears_Female_AsianAlone",
-    "Count_Person_15OrMoreYears_Male_AsianAlone",
-    "Count_Person_15To17Years_Female_AsianAlone",
-    "Count_Person_15To17Years_Male_AsianAlone",
-    "Count_Person_16OrMoreYears_Female_AsianAlone",
-    "Count_Person_16OrMoreYears_Male_AsianAlone",
-    "Count_Person_18To19Years_Female_AsianAlone",
-    "Count_Person_18To19Years_Male_AsianAlone",
-    "Count_Person_20To24Years_Female_AsianAlone",
-    "Count_Person_20To24Years_Male_AsianAlone",
-    "Count_Person_25OrMoreYears_Female_AsianAlone",
-    "Count_Person_25OrMoreYears_Male_AsianAlone",
-    "Count_Person_25To29Years_Female_AsianAlone",
-    "Count_Person_25To29Years_Male_AsianAlone",
-    "Count_Person_30To34Years_Female_AsianAlone",
-    "Count_Person_30To34Years_Male_AsianAlone",
-    "Count_Person_35To44Years_Female_AsianAlone",
-    "Count_Person_35To44Years_Male_AsianAlone",
-    "Count_Person_45To54Years_Female_AsianAlone",
-    "Count_Person_45To54Years_Male_AsianAlone",
-    "Count_Person_55To64Years_Female_AsianAlone",
-    "Count_Person_55To64Years_Male_AsianAlone",
-    "Count_Person_5To9Years_Female_AsianAlone",
-    "Count_Person_5To9Years_Male_AsianAlone",
-    "Count_Person_65To74Years_Female_AsianAlone",
-    "Count_Person_65To74Years_Male_AsianAlone",
-    "Count_Person_75To84Years_Female_AsianAlone",
-    "Count_Person_75To84Years_Male_AsianAlone",
-    "Count_Person_85OrMoreYears_Female_AsianAlone",
-    "Count_Person_85OrMoreYears_Male_AsianAlone",
-    "Count_Person_SpeakEnglishLessThanVeryWell_5OrMoreYears_OtherAsianLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishNotAtAll_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishNotAtAll_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishNotAtAll_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishNotWell_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishNotWell_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishNotWell_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishVeryWell_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishVeryWell_5OrMoreYears_OtherAsianLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishVeryWell_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishVeryWell_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishWell_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishWell_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_SpeakEnglishWell_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome",
-    "Count_Person_Upto5Years_Female_AsianAlone",
-    "Count_Person_Upto5Years_Male_AsianAlone",
-    "Median_Age_Person_Female_AsianAlone",
-    "Median_Age_Person_Male_AsianAlone",
-    "dc/0qhqp1tgnztwd",
-    "dc/1gg13d5xqhv59",
-    "dc/1yg7w4tbpnfe3",
-    "dc/22mky0c96b6zf",
-    "dc/2gdzdkpg073x7",
-    "dc/355zpml8fd6bd",
-    "dc/44g2q4kk66neb",
-    "dc/5rqz411mrflhc",
-    "dc/60q44n862y9s2",
-    "dc/63l8m5wsvrmld",
-    "dc/63vw5ljptfq5f",
-    "dc/6xcqpvpkj3de9",
-    "dc/705hte24nrwx1",
-    "dc/780sjp4pvsphf",
-    "dc/79tmx3we1meh2",
-    "dc/7gr5sl43byq49",
-    "dc/7qz6rn09042gh",
-    "dc/7xsr4ys0p8bv6",
-    "dc/bd4hmplnj7fp7",
-    "dc/bvf0mxx179qs1",
-    "dc/ebjmh3z7dy35c",
-    "dc/evlpf9rrwrf73",
-    "dc/f2ch6j51vhbxd",
-    "dc/f5dx84w6q5tk",
-    "dc/fx93f3wpy7m84",
-    "dc/fytw2rfgjpqkb",
-    "dc/glz8hy0n5kjkf",
-    "dc/gqq5ygpe75z26",
-    "dc/h7drslkymwle7",
-    "dc/hbjpktjq7dp28",
-    "dc/hr76ntw8j20m1",
-    "dc/hxb0y9n7fksrh",
-    "dc/hypdmb4mcrem4",
-    "dc/j18hp4bgrxf9g",
-    "dc/k0q6v29zkhmg5",
-    "dc/k2j3bdltyd8ed",
-    "dc/k89b95yr8wsed",
-    "dc/kdwh9l807pyj8",
-    "dc/krt5vs3bzbmh7",
-    "dc/mn9gj5kg0vlr7",
-    "dc/np7ylzphjw6b8",
-    "dc/nqp4kml3hs8bf",
-    "dc/nvl8dxz9gdyy7",
-    "dc/nxq23yfnj29j2",
-    "dc/p4qq729nx2gj3",
-    "dc/p94z3sfc58yr7",
-    "dc/pkpgybr5blg85",
-    "dc/q09lbm22p0js9",
-    "dc/r1f1183fd4sf6",
-    "dc/rnjlc2rj56bl5",
-    "dc/sfy26nv2dmpm2",
-    "dc/sjmjhbk6t5ss6",
-    "dc/tyeljgmemlp68",
-    "dc/vt4tcj5b2ks69",
-    "dc/wevd0retyd12",
-    "dc/whpsqxetshz5b",
-    "dc/wxv7zrk4nl6yc",
-    "dc/xjgevxgte0nr3",
-    "dc/xkmq4c054vzw",
-    "dc/xrzd5lseb238g",
-    "dc/xvxcntwxxcv7b",
-    "dc/y68ejvydp4yp",
-    "dc/yhl2jzsjdkexb",
-    "dc/yz542hf5h1zt7",
-    "dc/zdgfpkhrh137b"
+    {
+      "name": "Count Of Years15Onwards, AsianAlone",
+      "dcid": "Count_Person_15OrMoreYears_AsianAlone"
+    },
+    {
+      "name": "Count Of Years16Onwards, AsianAlone",
+      "dcid": "Count_Person_16OrMoreYears_AsianAlone"
+    },
+    {
+      "name": "Count Of Years18To64, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of Years25Onwards, AsianAlone",
+      "dcid": "Count_Person_25OrMoreYears_AsianAlone"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone"
+    },
+    {
+      "name": "Count Of Years3Onwards, AsianAlone",
+      "dcid": "Count_Person_3OrMoreYears_AsianAlone"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone"
+    },
+    {
+      "name": "Count Of Years5Onwards, AsianAlone",
+      "dcid": "Count_Person_5OrMoreYears_AsianAlone"
+    },
+    {
+      "name": "Count Of Years5Onwards, OtherAsianLanguages",
+      "dcid": "Count_Person_5OrMoreYears_OtherAsianLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of Years5To17, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone"
+    },
+    {
+      "name": "Median Age Of AsianAlone",
+      "dcid": "Median_Age_Person_AsianAlone"
+    },
+    {
+      "name": "Count Of SpeakEnglishLessThanVeryWell, Years5Onwards, OtherAsianLanguages",
+      "dcid": "Count_Person_SpeakEnglishLessThanVeryWell_5OrMoreYears_OtherAsianLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishNotAtAll, Years18To64, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishNotAtAll_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishNotAtAll, Years5To17, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishNotAtAll_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishNotAtAll, Years65Onwards, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishNotAtAll_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishNotWell, Years18To64, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishNotWell_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishNotWell, Years5To17, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishNotWell_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishNotWell, Years65Onwards, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishNotWell_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishVeryWell, Years18To64, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishVeryWell_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishVeryWell, Years5Onwards, OtherAsianLanguages",
+      "dcid": "Count_Person_SpeakEnglishVeryWell_5OrMoreYears_OtherAsianLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishVeryWell, Years5To17, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishVeryWell_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishVeryWell, Years65Onwards, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishVeryWell_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishWell, Years18To64, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishWell_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishWell, Years5To17, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishWell_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of SpeakEnglishWell, Years65Onwards, AsianAndPacificIslandLanguages",
+      "dcid": "Count_Person_SpeakEnglishWell_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Count Of Years10To14, Female, AsianAlone",
+      "dcid": "Count_Person_10To14Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years10To14, Male, AsianAlone",
+      "dcid": "Count_Person_10To14Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years15Onwards, Female, AsianAlone",
+      "dcid": "Count_Person_15OrMoreYears_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years15Onwards, Male, AsianAlone",
+      "dcid": "Count_Person_15OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years15To17, Female, AsianAlone",
+      "dcid": "Count_Person_15To17Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years15To17, Male, AsianAlone",
+      "dcid": "Count_Person_15To17Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years16Onwards, Female, AsianAlone",
+      "dcid": "Count_Person_16OrMoreYears_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years16Onwards, Male, AsianAlone",
+      "dcid": "Count_Person_16OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years18To19, Female, AsianAlone",
+      "dcid": "Count_Person_18To19Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years18To19, Male, AsianAlone",
+      "dcid": "Count_Person_18To19Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years20To24, Female, AsianAlone",
+      "dcid": "Count_Person_20To24Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years20To24, Male, AsianAlone",
+      "dcid": "Count_Person_20To24Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years25Onwards, Female, AsianAlone",
+      "dcid": "Count_Person_25OrMoreYears_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years25Onwards, Male, AsianAlone",
+      "dcid": "Count_Person_25OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years25To29, Female, AsianAlone",
+      "dcid": "Count_Person_25To29Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years25To29, Male, AsianAlone",
+      "dcid": "Count_Person_25To29Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of Years25To44, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
+    },
+    {
+      "name": "Count Of Years30To34, Female, AsianAlone",
+      "dcid": "Count_Person_30To34Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years30To34, Male, AsianAlone",
+      "dcid": "Count_Person_30To34Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years35To44, Female, AsianAlone",
+      "dcid": "Count_Person_35To44Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years35To44, Male, AsianAlone",
+      "dcid": "Count_Person_35To44Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years45To54, Female, AsianAlone",
+      "dcid": "Count_Person_45To54Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years45To54, Male, AsianAlone",
+      "dcid": "Count_Person_45To54Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of Years45To64, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
+    },
+    {
+      "name": "Count Of Years55To64, Female, AsianAlone",
+      "dcid": "Count_Person_55To64Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years55To64, Male, AsianAlone",
+      "dcid": "Count_Person_55To64Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years5To9, Female, AsianAlone",
+      "dcid": "Count_Person_5To9Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years5To9, Male, AsianAlone",
+      "dcid": "Count_Person_5To9Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of Years65Onwards, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
+    },
+    {
+      "name": "Count Of Years65To74, Female, AsianAlone",
+      "dcid": "Count_Person_65To74Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years65To74, Male, AsianAlone",
+      "dcid": "Count_Person_65To74Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years75To84, Female, AsianAlone",
+      "dcid": "Count_Person_75To84Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years75To84, Male, AsianAlone",
+      "dcid": "Count_Person_75To84Years_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years85Onwards, Female, AsianAlone",
+      "dcid": "Count_Person_85OrMoreYears_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of Years85Onwards, Male, AsianAlone",
+      "dcid": "Count_Person_85OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto25, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
+    },
+    {
+      "name": "Count Of YearsUpto5, Female, AsianAlone",
+      "dcid": "Count_Person_Upto5Years_Female_AsianAlone"
+    },
+    {
+      "name": "Count Of YearsUpto5, Male, AsianAlone",
+      "dcid": "Count_Person_Upto5Years_Male_AsianAlone"
+    },
+    {
+      "name": "Median Age Of Female, AsianAlone",
+      "dcid": "Median_Age_Person_Female_AsianAlone"
+    },
+    {
+      "name": "Median Age Of Male, AsianAlone",
+      "dcid": "Median_Age_Person_Male_AsianAlone"
+    },
+    {
+      "name": "Count Of Years12To14, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/ebjmh3z7dy35c"
+    },
+    {
+      "name": "Count Of Years12To14, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/bd4hmplnj7fp7"
+    },
+    {
+      "name": "Count Of Years12To14, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/f2ch6j51vhbxd"
+    },
+    {
+      "name": "Count Of Years12To14, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/p94z3sfc58yr7"
+    },
+    {
+      "name": "Count Of Years15, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/whpsqxetshz5b"
+    },
+    {
+      "name": "Count Of Years15, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/tyeljgmemlp68"
+    },
+    {
+      "name": "Count Of Years15, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/krt5vs3bzbmh7"
+    },
+    {
+      "name": "Count Of Years15, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/k2j3bdltyd8ed"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, AsianAlone",
+      "dcid": "dc/xjgevxgte0nr3"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Female, AsianAlone",
+      "dcid": "dc/1gg13d5xqhv59"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Female, SOCv2018/highLevelAggregation-1, AsianAlone",
+      "dcid": "dc/yhl2jzsjdkexb"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Female, SOCv2018/highLevelAggregation-2, AsianAlone",
+      "dcid": "dc/nvl8dxz9gdyy7"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Female, SOCv2018/highLevelAggregation-3, AsianAlone",
+      "dcid": "dc/fx93f3wpy7m84"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Female, SOCv2018/highLevelAggregation-4, AsianAlone",
+      "dcid": "dc/evlpf9rrwrf73"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Female, SOCv2018/highLevelAggregation-5, AsianAlone",
+      "dcid": "dc/bvf0mxx179qs1"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Male, AsianAlone",
+      "dcid": "dc/hr76ntw8j20m1"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Male, SOCv2018/highLevelAggregation-1, AsianAlone",
+      "dcid": "dc/nxq23yfnj29j2"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Male, SOCv2018/highLevelAggregation-2, AsianAlone",
+      "dcid": "dc/hxb0y9n7fksrh"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Male, SOCv2018/highLevelAggregation-3, AsianAlone",
+      "dcid": "dc/780sjp4pvsphf"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Male, SOCv2018/highLevelAggregation-4, AsianAlone",
+      "dcid": "dc/60q44n862y9s2"
+    },
+    {
+      "name": "Count Of Years16Onwards, Civilian, BLS_Employed, BLS_InLaborForce, Male, SOCv2018/highLevelAggregation-5, AsianAlone",
+      "dcid": "dc/sfy26nv2dmpm2"
+    },
+    {
+      "name": "Count Of Years16To17, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/xkmq4c054vzw"
+    },
+    {
+      "name": "Count Of Years16To17, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/5rqz411mrflhc"
+    },
+    {
+      "name": "Count Of Years16To17, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/mn9gj5kg0vlr7"
+    },
+    {
+      "name": "Count Of Years16To17, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/f5dx84w6q5tk"
+    },
+    {
+      "name": "Count Of Years18To24, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/wevd0retyd12"
+    },
+    {
+      "name": "Count Of Years18To24, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/rnjlc2rj56bl5"
+    },
+    {
+      "name": "Count Of Years18To24, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/nqp4kml3hs8bf"
+    },
+    {
+      "name": "Count Of Years18To24, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/kdwh9l807pyj8"
+    },
+    {
+      "name": "Count Of Years25To34, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/hypdmb4mcrem4"
+    },
+    {
+      "name": "Count Of Years25To34, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/6xcqpvpkj3de9"
+    },
+    {
+      "name": "Count Of Years25To34, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/k0q6v29zkhmg5"
+    },
+    {
+      "name": "Count Of Years25To34, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/p4qq729nx2gj3"
+    },
+    {
+      "name": "Count Of Years35To44, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/355zpml8fd6bd"
+    },
+    {
+      "name": "Count Of Years35To44, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/j18hp4bgrxf9g"
+    },
+    {
+      "name": "Count Of Years35To44, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/44g2q4kk66neb"
+    },
+    {
+      "name": "Count Of Years35To44, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/7qz6rn09042gh"
+    },
+    {
+      "name": "Count Of Years45To54, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/k89b95yr8wsed"
+    },
+    {
+      "name": "Count Of Years45To54, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/63vw5ljptfq5f"
+    },
+    {
+      "name": "Count Of Years45To54, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/yz542hf5h1zt7"
+    },
+    {
+      "name": "Count Of Years45To54, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/1yg7w4tbpnfe3"
+    },
+    {
+      "name": "Count Of Years5, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/fytw2rfgjpqkb"
+    },
+    {
+      "name": "Count Of Years5, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/hbjpktjq7dp28"
+    },
+    {
+      "name": "Count Of Years5, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/q09lbm22p0js9"
+    },
+    {
+      "name": "Count Of Years5, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/xrzd5lseb238g"
+    },
+    {
+      "name": "Count Of Years55To64, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/r1f1183fd4sf6"
+    },
+    {
+      "name": "Count Of Years55To64, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/pkpgybr5blg85"
+    },
+    {
+      "name": "Count Of Years55To64, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/y68ejvydp4yp"
+    },
+    {
+      "name": "Count Of Years55To64, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/63l8m5wsvrmld"
+    },
+    {
+      "name": "Count Of Years65To74, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/gqq5ygpe75z26"
+    },
+    {
+      "name": "Count Of Years65To74, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/7gr5sl43byq49"
+    },
+    {
+      "name": "Count Of Years65To74, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/vt4tcj5b2ks69"
+    },
+    {
+      "name": "Count Of Years65To74, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/zdgfpkhrh137b"
+    },
+    {
+      "name": "Count Of Years6To11, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/wxv7zrk4nl6yc"
+    },
+    {
+      "name": "Count Of Years6To11, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/705hte24nrwx1"
+    },
+    {
+      "name": "Count Of Years6To11, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/h7drslkymwle7"
+    },
+    {
+      "name": "Count Of Years6To11, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/sjmjhbk6t5ss6"
+    },
+    {
+      "name": "Count Of Years75Onwards, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/7xsr4ys0p8bv6"
+    },
+    {
+      "name": "Count Of Years75Onwards, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/79tmx3we1meh2"
+    },
+    {
+      "name": "Count Of Years75Onwards, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/xvxcntwxxcv7b"
+    },
+    {
+      "name": "Count Of Years75Onwards, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/2gdzdkpg073x7"
+    },
+    {
+      "name": "Count Of YearsUpto5, Female, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/0qhqp1tgnztwd"
+    },
+    {
+      "name": "Count Of YearsUpto5, Female, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/np7ylzphjw6b8"
+    },
+    {
+      "name": "Count Of YearsUpto5, Male, AbovePovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/glz8hy0n5kjkf"
+    },
+    {
+      "name": "Count Of YearsUpto5, Male, BelowPovertyLevelInThePast12Months, AsianAlone",
+      "dcid": "dc/22mky0c96b6zf"
+    }
   ]
 }

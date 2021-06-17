@@ -96,7 +96,7 @@ func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]stri
 
 // Update search index, given a stat var (group) node ID and string.
 func (index *SearchIndex) update(
-	nodeID string, nodeString string, isSvg bool) {
+	nodeID string, nodeString string, displayName string, isSvg bool) {
 	processedTokenString := strings.ToLower(nodeString)
 	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
 	tokenList := strings.Fields(processedTokenString)
@@ -106,7 +106,7 @@ func (index *SearchIndex) update(
 		approxNumPv = nonHumanCuratedNumPv
 	}
 	// Ranking info is only dependent on a stat var (group).
-	index.ranking[nodeID] = &RankingInfo{approxNumPv, nodeString}
+	index.ranking[nodeID] = &RankingInfo{approxNumPv, displayName}
 	// Populate token to stat var map.
 	for _, token := range tokenList {
 		if isSvg {
@@ -134,10 +134,10 @@ func BuildStatVarSearchIndex(
 	}
 	for svgID, svgData := range rawSvg {
 		tokenString := svgData.AbsoluteName
-		searchIndex.update(svgID, tokenString, true /* isSvg */)
+		searchIndex.update(svgID, tokenString, tokenString, true /* isSvg */)
 		for _, svData := range svgData.ChildStatVars {
 			svTokenString := svData.SearchName
-			searchIndex.update(svData.Id, svTokenString, false /* isSvg */)
+			searchIndex.update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */)
 		}
 	}
 	return searchIndex

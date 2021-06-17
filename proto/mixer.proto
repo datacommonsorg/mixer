@@ -549,9 +549,9 @@ message SearchStatVarRequest {
 
 message SearchStatVarResponse {
   // A list of stat vars ranked by relevance.
-  repeated string stat_vars = 1;
+  repeated EntityInfo stat_vars = 1;
   // A list of stat var groups ranked by relevance.
-  repeated string stat_var_groups = 2;
+  repeated EntityInfo stat_var_groups = 2;
 }
 
 service Mixer {
