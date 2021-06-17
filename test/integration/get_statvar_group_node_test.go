@@ -43,19 +43,19 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			[]string{"country/GBR"},
+			[]string{"country/USA"},
 			"dc/g/Person_DetailedLevelOfSchool",
-			"gbr_school.json",
+			"school.json",
 		},
 		{
-			[]string{"country/GBR"},
+			[]string{"country/USA"},
 			"dc/g/Person_DetailedLevelOfSchool_Race",
-			"gbr_school_race.json",
+			"school_race.json",
 		},
 		{
 			[]string{"country/GBR"},
 			"dc/g/Demographics",
-			"gbr_demographics.json",
+			"demographics.json",
 		},
 	} {
 		resp, err := client.GetStatVarGroupNode(ctx, &pb.GetStatVarGroupNodeRequest{
