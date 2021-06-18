@@ -55,6 +55,7 @@ func (s *Server) SearchStatVar(
 		svList = filter(svList, statExistence, len(places))
 		svgList = filter(svgList, statExistence, len(places))
 	}
+	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svList) > maxNumResult {
 		svList = svList[0:maxNumResult]
 	}
