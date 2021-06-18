@@ -1,6 +1,22 @@
 {
   "statVars": [
     {
+      "name": "Count Of Household Years25To44, AsianAlone",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone"
+    },
+    {
       "name": "Count Of Years15Onwards, AsianAlone",
       "dcid": "Count_Person_15OrMoreYears_AsianAlone"
     },
@@ -17,16 +33,8 @@
       "dcid": "Count_Person_25OrMoreYears_AsianAlone"
     },
     {
-      "name": "Count Of Years25To44, AsianAlone",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone"
-    },
-    {
       "name": "Count Of Years3Onwards, AsianAlone",
       "dcid": "Count_Person_3OrMoreYears_AsianAlone"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone"
     },
     {
       "name": "Count Of Years5Onwards, AsianAlone",
@@ -41,20 +49,268 @@
       "dcid": "Count_Person_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome"
     },
     {
-      "name": "Count Of Years65Onwards, AsianAlone",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone"
-    },
-    {
       "name": "Count Of Years65Onwards, AsianAndPacificIslandLanguages",
       "dcid": "Count_Person_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome"
     },
     {
-      "name": "Count Of YearsUpto25, AsianAlone",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone"
-    },
-    {
       "name": "Median Age Of AsianAlone",
       "dcid": "Median_Age_Person_AsianAlone"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of Household Years25To44, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of Household Years45To64, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of Household Years65Onwards, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar100000To124999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar10000To14999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar125000To149999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar150000To199999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar15000To19999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar200000Onwards",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar20000To24999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar25000To29999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar30000To34999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar35000To39999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar40000To44999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar45000To49999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar50000To59999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar60000To74999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollar75000To99999",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
+    },
+    {
+      "name": "Count Of Household YearsUpto25, AsianAlone, USDollarUpto10000",
+      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
     },
     {
       "name": "Count Of SpeakEnglishLessThanVeryWell, Years5Onwards, OtherAsianLanguages",
@@ -177,70 +433,6 @@
       "dcid": "Count_Person_25To29Years_Male_AsianAlone"
     },
     {
-      "name": "Count Of Years25To44, AsianAlone, USDollar100000To124999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar10000To14999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar125000To149999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar150000To199999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar15000To19999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar200000Onwards",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar20000To24999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar25000To29999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar30000To34999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar35000To39999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar40000To44999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar45000To49999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar50000To59999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar60000To74999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollar75000To99999",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
-    },
-    {
-      "name": "Count Of Years25To44, AsianAlone, USDollarUpto10000",
-      "dcid": "Count_Household_HouseholderAge25To44Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
-    },
-    {
       "name": "Count Of Years30To34, Female, AsianAlone",
       "dcid": "Count_Person_30To34Years_Female_AsianAlone"
     },
@@ -265,70 +457,6 @@
       "dcid": "Count_Person_45To54Years_Male_AsianAlone"
     },
     {
-      "name": "Count Of Years45To64, AsianAlone, USDollar100000To124999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar10000To14999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar125000To149999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar150000To199999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar15000To19999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar200000Onwards",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar20000To24999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar25000To29999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar30000To34999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar35000To39999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar40000To44999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar45000To49999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar50000To59999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar60000To74999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollar75000To99999",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
-    },
-    {
-      "name": "Count Of Years45To64, AsianAlone, USDollarUpto10000",
-      "dcid": "Count_Household_HouseholderAge45To64Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
-    },
-    {
       "name": "Count Of Years55To64, Female, AsianAlone",
       "dcid": "Count_Person_55To64Years_Female_AsianAlone"
     },
@@ -343,70 +471,6 @@
     {
       "name": "Count Of Years5To9, Male, AsianAlone",
       "dcid": "Count_Person_5To9Years_Male_AsianAlone"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar100000To124999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar10000To14999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar125000To149999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar150000To199999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar15000To19999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar200000Onwards",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar20000To24999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar25000To29999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar30000To34999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar35000To39999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar40000To44999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar45000To49999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar50000To59999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar60000To74999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollar75000To99999",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
-    },
-    {
-      "name": "Count Of Years65Onwards, AsianAlone, USDollarUpto10000",
-      "dcid": "Count_Household_HouseholderAge65OrMoreYears_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
     },
     {
       "name": "Count Of Years65To74, Female, AsianAlone",
@@ -431,70 +495,6 @@
     {
       "name": "Count Of Years85Onwards, Male, AsianAlone",
       "dcid": "Count_Person_85OrMoreYears_Male_AsianAlone"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar100000To124999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf100000To124999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar10000To14999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf10000To14999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar125000To149999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf125000To149999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar150000To199999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf150000To199999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar15000To19999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf15000To19999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar200000Onwards",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf200000OrMoreUSDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar20000To24999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf20000To24999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar25000To29999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf25000To29999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar30000To34999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf30000To34999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar35000To39999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf35000To39999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar40000To44999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf40000To44999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar45000To49999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf45000To49999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar50000To59999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf50000To59999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar60000To74999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf60000To74999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollar75000To99999",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOf75000To99999USDollar"
-    },
-    {
-      "name": "Count Of YearsUpto25, AsianAlone, USDollarUpto10000",
-      "dcid": "Count_Household_HouseholderAgeUpto25Years_HouseholderRaceAsianAlone_IncomeOfUpto10000USDollar"
     },
     {
       "name": "Count Of YearsUpto5, Female, AsianAlone",

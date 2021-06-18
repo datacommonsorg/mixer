@@ -49,7 +49,7 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		},
 		{
 			[]string{"country/USA"},
-			"dc/g/Person_DetailedLevelOfSchool_Race",
+			"dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race",
 			"school_race.json",
 		},
 		{
