@@ -22,6 +22,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
+const maxNumResult = 1000
+
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest) (
@@ -52,6 +54,13 @@ func (s *Server) SearchStatVar(
 		}
 		svList = filter(svList, statExistence, len(places))
 		svgList = filter(svgList, statExistence, len(places))
+	}
+	// TODO(shifucun): return the total number of result for client to consume.
+	if len(svList) > maxNumResult {
+		svList = svList[0:maxNumResult]
+	}
+	if len(svgList) > maxNumResult {
+		svgList = svgList[0:maxNumResult]
 	}
 	result.StatVars = svList
 	result.StatVarGroups = svgList
@@ -92,6 +101,7 @@ func searchTokens(
 			})
 		}
 	}
+
 	// Sort stat vars by number of PV; If two stat vars have same number of PV,
 	// then order by the stat var (group) name.
 	sort.SliceStable(svList, func(i, j int) bool {
@@ -99,6 +109,9 @@ func searchTokens(
 		ri := ranking[svList[i].Dcid]
 		rj := ranking[svList[j].Dcid]
 		if ri.ApproxNumPv == rj.ApproxNumPv {
+			if ri.RankingName == rj.RankingName {
+				return svList[i].Dcid < svList[j].Dcid
+			}
 			return ri.RankingName < rj.RankingName
 		}
 		return ri.ApproxNumPv < rj.ApproxNumPv
