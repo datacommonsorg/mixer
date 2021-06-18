@@ -48,7 +48,7 @@
     },
     {
       "id": "dc/g/Household",
-      "specializedEntity": "Root",
+      "specializedEntity": "Household",
       "displayName": "Household"
     },
     {

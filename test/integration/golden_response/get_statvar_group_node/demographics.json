@@ -1,5 +1,32 @@
 {
   "absoluteName": "Demographics",
+  "childStatVars": [
+    {
+      "id": "Count_Person",
+      "searchName": "Count Of Person",
+      "displayName": "Count Of Person"
+    },
+    {
+      "id": "Count_Person_IsInternetUser_PerCapita",
+      "searchName": "Count Of Person With Is Internet User True As Fraction Of Per Capita",
+      "displayName": "Count Of True As Fraction Of PerCapita"
+    },
+    {
+      "id": "Count_Person_PerArea",
+      "searchName": "Count Of Person As Fraction Of Area",
+      "displayName": "Count Of Person As Fraction Of Area"
+    },
+    {
+      "id": "GrowthRate_Count_Person",
+      "searchName": "Growth Rate Count Of Person",
+      "displayName": "GrowthRate Count Of Person"
+    },
+    {
+      "id": "LifeExpectancy_Person",
+      "searchName": "Life Expectancy Of Person",
+      "displayName": "LifeExpectancy Of Person"
+    }
+  ],
   "childStatVarGroups": [
     {
       "id": "dc/g/BirthEvent",
@@ -20,10 +47,6 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person By Gender"
-    },
-    {
-      "id": "dc/g/Variables_Demographics",
-      "specializedEntity": "Variables"
     }
   ],
   "parentStatVarGroups": [

@@ -16,10 +16,13 @@ package integration
 
 import (
 	"context"
+	"path"
+	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetStatVarPath(t *testing.T) {
@@ -30,28 +33,21 @@ func TestGetStatVarPath(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "golden_response/get_statvar_path")
 
 	for _, c := range []struct {
-		id   string
-		want []string
+		id         string
+		goldenFile string
 	}{
 		{
 			"Count_Person",
-			[]string{
-				"Count_Person",
-				"dc/g/Variables_Demographics",
-				"dc/g/Demographics",
-			},
+			"person.json",
 		},
 		{
-			"dc/g/Person_Age_ArmedForcesStatus_Employment_EmploymentStatus",
-			[]string{
-				"dc/g/Person_Age_ArmedForcesStatus_Employment_EmploymentStatus",
-				"dc/g/Person_Age_Employment_EmploymentStatus",
-				"dc/g/Person_Age_Employment",
-				"dc/g/Person_Age",
-				"dc/g/Demographics",
-			},
+			"dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10",
+			"school.json",
 		},
 	} {
 		resp, err := client.GetStatVarPath(ctx, &pb.GetStatVarPathRequest{
@@ -61,8 +57,18 @@ func TestGetStatVarPath(t *testing.T) {
 			t.Errorf("could not GetStatVarPath: %s", err)
 			continue
 		}
+		if generateGolden {
+			updateProtoGolden(resp, goldenPath, c.goldenFile)
+			continue
+		}
 
-		if diff := cmp.Diff(resp.Path, c.want); diff != "" {
+		var expected pb.StatVarGroups
+		if err = readJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			t.Errorf("Can not Unmarshal golden file")
+			continue
+		}
+
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("GetStatVarPath got diff: %v", diff)
 			continue
 		}

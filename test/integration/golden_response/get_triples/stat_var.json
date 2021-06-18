@@ -49,8 +49,8 @@
     {
       "subjectId": "Count_Person",
       "predicate": "memberOf",
-      "objectId": "dc/g/Variables_Demographics",
-      "objectName": "Variables Of Person",
+      "objectId": "dc/g/Demographics",
+      "objectName": "Demographics",
       "objectTypes": [
         "StatVarGroup"
       ],
@@ -450,8 +450,8 @@
     {
       "subjectId": "Count_Person_Female",
       "predicate": "memberOf",
-      "objectId": "dc/g/Variables_Person_Gender",
-      "objectName": "Variables Of Person By Gender",
+      "objectId": "dc/g/Person_Gender-Female",
+      "objectName": "Person By Gender = Female",
       "objectTypes": [
         "StatVarGroup"
       ],
