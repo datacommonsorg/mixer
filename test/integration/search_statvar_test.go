@@ -52,6 +52,11 @@ func TestSearchStatVar(t *testing.T) {
 			[]string{},
 			"crime.json",
 		},
+		{
+			"female",
+			[]string{},
+			"female.json",
+		},
 	} {
 		resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 			Query:  c.query,

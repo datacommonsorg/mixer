@@ -22,6 +22,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
+const maxNumResult = 1000
+
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest) (
@@ -52,6 +54,12 @@ func (s *Server) SearchStatVar(
 		}
 		svList = filter(svList, statExistence, len(places))
 		svgList = filter(svgList, statExistence, len(places))
+	}
+	if len(svList) > maxNumResult {
+		svList = svList[0:maxNumResult]
+	}
+	if len(svgList) > maxNumResult {
+		svgList = svgList[0:maxNumResult]
 	}
 	result.StatVars = svList
 	result.StatVarGroups = svgList
