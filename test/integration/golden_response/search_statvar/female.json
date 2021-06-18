@@ -10,11 +10,11 @@
     },
     {
       "name": "Count Of Female",
-      "dcid": "Count_Student_Female"
+      "dcid": "Count_Person_Female"
     },
     {
       "name": "Count Of Female",
-      "dcid": "Count_Person_Female"
+      "dcid": "Count_Student_Female"
     },
     {
       "name": "Count Of Female, NowMarried",
@@ -214,11 +214,11 @@
     },
     {
       "name": "Count Of Female, TwoOrMoreRaces",
-      "dcid": "Count_Student_Female_TwoOrMoreRaces"
+      "dcid": "Count_Person_Female_TwoOrMoreRaces"
     },
     {
       "name": "Count Of Female, TwoOrMoreRaces",
-      "dcid": "Count_Person_Female_TwoOrMoreRaces"
+      "dcid": "Count_Student_Female_TwoOrMoreRaces"
     },
     {
       "name": "Count Of Female, Urban",
@@ -330,11 +330,11 @@
     },
     {
       "name": "Count Of Years10To14, Female",
-      "dcid": "Count_Person_10To14Years_Female"
+      "dcid": "Count_Death_10To14Years_Female"
     },
     {
       "name": "Count Of Years10To14, Female",
-      "dcid": "Count_Death_10To14Years_Female"
+      "dcid": "Count_Person_10To14Years_Female"
     },
     {
       "name": "Count Of Years11, Female",
@@ -378,11 +378,11 @@
     },
     {
       "name": "Count Of Years15To64, Female",
-      "dcid": "Count_Person_15To64Years_Female"
+      "dcid": "Count_Death_15To64Years_Female"
     },
     {
       "name": "Count Of Years15To64, Female",
-      "dcid": "Count_Death_15To64Years_Female"
+      "dcid": "Count_Person_15To64Years_Female"
     },
     {
       "name": "Count Of Years16, Female",
@@ -482,11 +482,11 @@
     },
     {
       "name": "Count Of Years25To29, Female",
-      "dcid": "Count_Person_25To29Years_Female"
+      "dcid": "Count_Death_25To29Years_Female"
     },
     {
       "name": "Count Of Years25To29, Female",
-      "dcid": "Count_Death_25To29Years_Female"
+      "dcid": "Count_Person_25To29Years_Female"
     },
     {
       "name": "Count Of Years25To34, Female",
@@ -522,11 +522,11 @@
     },
     {
       "name": "Count Of Years30To34, Female",
-      "dcid": "Count_Person_30To34Years_Female"
+      "dcid": "Count_Death_30To34Years_Female"
     },
     {
       "name": "Count Of Years30To34, Female",
-      "dcid": "Count_Death_30To34Years_Female"
+      "dcid": "Count_Person_30To34Years_Female"
     },
     {
       "name": "Count Of Years31, Female",
@@ -550,11 +550,11 @@
     },
     {
       "name": "Count Of Years35To39, Female",
-      "dcid": "Count_Person_35To39Years_Female"
+      "dcid": "Count_Death_35To39Years_Female"
     },
     {
       "name": "Count Of Years35To39, Female",
-      "dcid": "Count_Death_35To39Years_Female"
+      "dcid": "Count_Person_35To39Years_Female"
     },
     {
       "name": "Count Of Years35To44, Female",
@@ -634,11 +634,11 @@
     },
     {
       "name": "Count Of Years45To54, Female",
-      "dcid": "Count_Person_45To54Years_Female"
+      "dcid": "Count_Death_45To54Years_Female"
     },
     {
       "name": "Count Of Years45To54, Female",
-      "dcid": "Count_Death_45To54Years_Female"
+      "dcid": "Count_Person_45To54Years_Female"
     },
     {
       "name": "Count Of Years45To64, Female",
@@ -670,11 +670,11 @@
     },
     {
       "name": "Count Of Years50To54, Female",
-      "dcid": "Count_Person_50To54Years_Female"
+      "dcid": "Count_Death_50To54Years_Female"
     },
     {
       "name": "Count Of Years50To54, Female",
-      "dcid": "Count_Death_50To54Years_Female"
+      "dcid": "Count_Person_50To54Years_Female"
     },
     {
       "name": "Count Of Years50To64, Female",
@@ -702,11 +702,11 @@
     },
     {
       "name": "Count Of Years55To59, Female",
-      "dcid": "Count_Person_55To59Years_Female"
+      "dcid": "Count_Death_55To59Years_Female"
     },
     {
       "name": "Count Of Years55To59, Female",
-      "dcid": "Count_Death_55To59Years_Female"
+      "dcid": "Count_Person_55To59Years_Female"
     },
     {
       "name": "Count Of Years55To64, Female",
@@ -798,11 +798,11 @@
     },
     {
       "name": "Count Of Years65To69, Female",
-      "dcid": "Count_Person_65To69Years_Female"
+      "dcid": "Count_Death_65To69Years_Female"
     },
     {
       "name": "Count Of Years65To69, Female",
-      "dcid": "Count_Death_65To69Years_Female"
+      "dcid": "Count_Person_65To69Years_Female"
     },
     {
       "name": "Count Of Years65To74, Female",
@@ -910,11 +910,11 @@
     },
     {
       "name": "Count Of Years80Onwards, Female",
-      "dcid": "Count_Person_80OrMoreYears_Female"
+      "dcid": "Count_Death_80OrMoreYears_Female"
     },
     {
       "name": "Count Of Years80Onwards, Female",
-      "dcid": "Count_Death_80OrMoreYears_Female"
+      "dcid": "Count_Person_80OrMoreYears_Female"
     },
     {
       "name": "Count Of Years80To84, Female",
