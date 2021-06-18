@@ -62,6 +62,11 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			"dc/g/Root",
 			"root.json",
 		},
+		{
+			[]string{"geoId/0649670"},
+			"dc/g/Person_Citizenship-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
+			"citizenship.json",
+		},
 	} {
 		resp, err := client.GetStatVarGroupNode(ctx, &pb.GetStatVarGroupNodeRequest{
 			Places:       c.places,
