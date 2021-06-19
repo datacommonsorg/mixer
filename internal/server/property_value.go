@@ -156,7 +156,7 @@ func readPropertyValues(
 			return propVals.Nodes, nil
 		},
 		nil,
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

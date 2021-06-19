@@ -33,7 +33,7 @@ func readStats(
 
 	keyToTokenFn := tokenFn(keyTokens)
 	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-		ctx, store, rowList, convertToObsSeries, tokenFn(keyTokens), true,
+		ctx, store, rowList, convertToObsSeries, tokenFn(keyTokens), true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -70,7 +70,7 @@ func readStatsPb(
 
 	keyToTokenFn := tokenFn(keyTokens)
 	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-		ctx, store, rowList, convertToObsSeriesPb, keyToTokenFn, true,
+		ctx, store, rowList, convertToObsSeriesPb, keyToTokenFn, true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -114,7 +114,7 @@ func readStatCollection(
 		func(rowKey string) (string, error) {
 			return keyTokens[rowKey], nil
 		},
-		true,
+		true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

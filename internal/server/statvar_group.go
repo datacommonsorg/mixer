@@ -343,7 +343,7 @@ func checkStatExistence(
 			return nil, nil
 		},
 		keyToTokenFn,
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

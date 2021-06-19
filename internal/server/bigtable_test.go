@@ -42,7 +42,7 @@ func TestReadOneTable(t *testing.T) {
 			return string(jsonRaw), nil
 		},
 		nil,
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
@@ -86,7 +86,7 @@ func TestReadTwoTables(t *testing.T) {
 			return string(jsonRaw), nil
 		},
 		nil,
-		true,
+		true, /* readBranch */
 	)
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)

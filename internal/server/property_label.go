@@ -50,7 +50,7 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 			return &propLabels, nil
 		},
 		nil,
-		true,
+		true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

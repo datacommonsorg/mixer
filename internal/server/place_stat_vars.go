@@ -66,7 +66,7 @@ func (s *Server) GetPlaceStatVars(
 			return data.StatVarIds, nil
 		},
 		nil,
-		true,
+		true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

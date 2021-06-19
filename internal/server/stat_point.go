@@ -166,7 +166,7 @@ func (s *Server) GetStatSetWithinPlace(
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

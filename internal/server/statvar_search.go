@@ -48,7 +48,7 @@ func (s *Server) SearchStatVar(
 
 	// Filter the stat var and stat var group by places.
 	if len(places) > 0 {
-		// Will read from stat existence cache, and can take several seconds when
+		// Read from stat existence cache, which can take several seconds when
 		// there are a lot of ids. So pre-prune the ids, as the result will be
 		// filtered anyway.
 		ids := []string{}

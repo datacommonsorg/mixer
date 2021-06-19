@@ -53,7 +53,7 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -137,7 +137,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 			}
 			return parts[len(parts)-1], nil
 		},
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -197,7 +197,7 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 			}
 			return parts[len(parts)-1], nil
 		},
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

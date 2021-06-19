@@ -247,7 +247,7 @@ func fetchBtData(
 			return &landingPageData, nil
 		},
 		nil,
-		false,
+		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
