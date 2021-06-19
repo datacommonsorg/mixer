@@ -89,8 +89,11 @@ func bigTableReadRowsParallel(
 	store *store.Store,
 	rowSet bigtable.RowSet,
 	action func(string, []byte) (interface{}, error),
-	getToken func(string) (string, error)) (
-	map[string]interface{}, map[string]interface{}, error) {
+	getToken func(string) (string, error),
+	readBranch bool,
+) (
+	map[string]interface{}, map[string]interface{}, error,
+) {
 	baseBt := store.BaseBt()
 	branchBt := store.BranchBt()
 	if baseBt == nil && branchBt == nil {
@@ -110,7 +113,8 @@ func bigTableReadRowsParallel(
 		rowRangeList = rowSet.(bigtable.RowRangeList)
 		rowSetSize = len(rowRangeList)
 	default:
-		return nil, nil, status.Errorf(codes.Internal, "Unsupported RowSet type: %v", v)
+		return nil, nil, status.Errorf(
+			codes.Internal, "Unsupported RowSet type: %v", v)
 	}
 	if rowSetSize == 0 {
 		return nil, nil, nil
@@ -136,11 +140,10 @@ func bigTableReadRowsParallel(
 		if baseBt != nil {
 			errs.Go(readRowFn(errCtx, baseBt, rowSetPart, getToken, action, baseChan))
 		}
-		if branchBt != nil {
+		if readBranch && branchBt != nil {
 			errs.Go(readRowFn(errCtx, branchBt, rowSetPart, getToken, action, branchChan))
 		}
 	}
-
 	err := errs.Wait()
 	if err != nil {
 		return nil, nil, err
@@ -149,16 +152,18 @@ func bigTableReadRowsParallel(
 	close(branchChan)
 
 	baseResult := map[string]interface{}{}
-	branchResult := map[string]interface{}{}
-
 	if baseBt != nil {
 		for elem := range baseChan {
 			baseResult[elem.token] = elem.data
 		}
 	}
-	if branchBt != nil {
-		for elem := range branchChan {
-			branchResult[elem.token] = elem.data
+
+	branchResult := map[string]interface{}{}
+	if readBranch {
+		if branchBt != nil {
+			for elem := range branchChan {
+				branchResult[elem.token] = elem.data
+			}
 		}
 	}
 	return baseResult, branchResult, nil

@@ -38,7 +38,9 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 	rowList := buildPropertyLabelKey(dcids)
 
 	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-		ctx, s.store, rowList,
+		ctx,
+		s.store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propLabels PropLabelCache
 			err := json.Unmarshal(jsonRaw, &propLabels)
@@ -46,7 +48,10 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 				return nil, err
 			}
 			return &propLabels, nil
-		}, nil)
+		},
+		nil,
+		true,
+	)
 	if err != nil {
 		return nil, err
 	}

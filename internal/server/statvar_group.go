@@ -334,11 +334,16 @@ func checkStatExistence(
 	rowList, keyTokens := buildStatExistenceKey(places, svOrSvgs)
 	keyToTokenFn := tokenFn(keyTokens)
 	baseDataMap, _, err := bigTableReadRowsParallel(
-		ctx, store, rowList, func(string, []byte) (interface{}, error) {
+		ctx,
+		store,
+		rowList,
+		func(string, []byte) (interface{}, error) {
 			// If exist, BT read returns an empty struct. Here just return nil to
 			// indicate the existence of the key.
 			return nil, nil
-		}, keyToTokenFn,
+		},
+		keyToTokenFn,
+		false,
 	)
 	if err != nil {
 		return nil, err

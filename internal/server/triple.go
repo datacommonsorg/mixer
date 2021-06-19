@@ -236,7 +236,7 @@ func readTriples(
 	// stats. This saves time as the triples list size can get big.
 	// Re-evaluate this if branch cache involves other triples.
 	baseDataMap, _, err := bigTableReadRowsParallel(
-		ctx, store, rowList, convertTriplesCache, nil)
+		ctx, store, rowList, convertTriplesCache, nil, false)
 	if err != nil {
 		return nil, err
 	}

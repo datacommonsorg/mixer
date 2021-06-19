@@ -53,7 +53,10 @@ func (s *Server) GetPlaceStatVars(
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	rowList := buildPlaceStatsVarKey(dcids)
-	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var data PlaceStatsVar
 			err := json.Unmarshal(jsonRaw, &data)
@@ -61,7 +64,10 @@ func (s *Server) GetPlaceStatVars(
 				return nil, err
 			}
 			return data.StatVarIds, nil
-		}, nil)
+		},
+		nil,
+		true,
+	)
 	if err != nil {
 		return nil, err
 	}

@@ -143,7 +143,10 @@ func readPropertyValues(
 ) (map[string][]*Node, error) {
 	// Only read property value from base cache.
 	// Branch cache only contains supplement data but not other properties yet.
-	baseDataMap, _, err := bigTableReadRowsParallel(ctx, store, rowList,
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals PropValueCache
 			err := json.Unmarshal(jsonRaw, &propVals)
@@ -151,7 +154,10 @@ func readPropertyValues(
 				return nil, err
 			}
 			return propVals.Nodes, nil
-		}, nil)
+		},
+		nil,
+		false,
+	)
 	if err != nil {
 		return nil, err
 	}
