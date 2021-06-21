@@ -45,10 +45,16 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 	rowList := buildPlaceInKey(dcids, placeType)
 
 	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
-		}, nil)
+		},
+		nil,
+		false, /* readBranch */
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -111,7 +117,10 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		}
 	}
 	// RelatedPlace cache only exists in base cache
-	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo RelatedPlacesInfo
 			err := json.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
@@ -119,13 +128,17 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 				return nil, err
 			}
 			return &btRelatedPlacesInfo, nil
-		}, func(key string) (string, error) {
+		},
+		func(key string) (string, error) {
 			parts := strings.Split(key, "^")
 			if len(parts) <= 1 {
-				return "", status.Errorf(codes.Internal, "Invalid bigtable row key %s", key)
+				return "", status.Errorf(
+					codes.Internal, "Invalid bigtable row key %s", key)
 			}
 			return parts[len(parts)-1], nil
-		})
+		},
+		false, /* readBranch */
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -164,7 +177,10 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 		}
 	}
 	// RelatedPlace cache only exists in base cache
-	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
 			err := protojson.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
@@ -172,13 +188,17 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 				return nil, err
 			}
 			return &btRelatedPlacesInfo, nil
-		}, func(key string) (string, error) {
+		},
+		func(key string) (string, error) {
 			parts := strings.Split(key, "^")
 			if len(parts) <= 1 {
-				return "", status.Errorf(codes.Internal, "Invalid bigtable row key %s", key)
+				return "", status.Errorf(
+					codes.Internal, "Invalid bigtable row key %s", key)
 			}
 			return parts[len(parts)-1], nil
-		})
+		},
+		false, /* readBranch */
+	)
 	if err != nil {
 		return nil, err
 	}

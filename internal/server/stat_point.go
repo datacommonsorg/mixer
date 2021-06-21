@@ -158,10 +158,16 @@ func (s *Server) GetStatSetWithinPlace(
 	// Get all the child places
 	rowList := buildPlaceInKey([]string{parentPlace}, childType)
 	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
-		}, nil)
+		},
+		nil,
+		false, /* readBranch */
+	)
 	if err != nil {
 		return nil, err
 	}

@@ -234,16 +234,21 @@ func fetchBtData(
 
 	// Fetch landing page cache data in parallel.
 	// Landing page cache only exists in base cache
-	baseDataMap, _, err := bigTableReadRowsParallel(ctx, s.store, rowList,
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var landingPageData pb.StatVarObsSeries
-
 			err := protojson.Unmarshal(jsonRaw, &landingPageData)
 			if err != nil {
 				return nil, err
 			}
 			return &landingPageData, nil
-		}, nil)
+		},
+		nil,
+		false, /* readBranch */
+	)
 	if err != nil {
 		return nil, err
 	}

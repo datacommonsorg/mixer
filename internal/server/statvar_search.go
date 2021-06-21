@@ -22,12 +22,16 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
-const maxNumResult = 1000
+const (
+	maxFilteredIds = 3000 // Twice of maxResult to give buffer for place filter.
+	maxResult      = 1000
+)
 
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest) (
-	*pb.SearchStatVarResponse, error) {
+	*pb.SearchStatVarResponse, error,
+) {
 	query := in.GetQuery()
 	places := in.GetPlaces()
 
@@ -44,10 +48,20 @@ func (s *Server) SearchStatVar(
 
 	// Filter the stat var and stat var group by places.
 	if len(places) > 0 {
+		// Read from stat existence cache, which can take several seconds when
+		// there are a lot of ids. So pre-prune the ids, as the result will be
+		// filtered anyway.
 		ids := []string{}
+		if len(svList) > maxFilteredIds {
+			svList = svList[0:maxFilteredIds]
+		}
+		if len(svgList) > maxFilteredIds {
+			svgList = svgList[0:maxFilteredIds]
+		}
 		for _, item := range append(svList, svgList...) {
 			ids = append(ids, item.Dcid)
 		}
+
 		statExistence, err := checkStatExistence(ctx, s.store, ids, places)
 		if err != nil {
 			return nil, err
@@ -56,11 +70,11 @@ func (s *Server) SearchStatVar(
 		svgList = filter(svgList, statExistence, len(places))
 	}
 	// TODO(shifucun): return the total number of result for client to consume.
-	if len(svList) > maxNumResult {
-		svList = svList[0:maxNumResult]
+	if len(svList) > maxResult {
+		svList = svList[0:maxResult]
 	}
-	if len(svgList) > maxNumResult {
-		svgList = svgList[0:maxNumResult]
+	if len(svgList) > maxResult {
+		svgList = svgList[0:maxResult]
 	}
 	result.StatVars = svList
 	result.StatVarGroups = svgList

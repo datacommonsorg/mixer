@@ -35,10 +35,15 @@ func TestReadOneTable(t *testing.T) {
 	}
 	rowList := bigtable.RowList{"key1", "key2"}
 	baseDataMap, _, err := bigTableReadRowsParallel(
-		ctx, store.NewStore(nil, btTable, nil), rowList,
+		ctx,
+		store.NewStore(nil, btTable, nil),
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
-		}, nil)
+		},
+		nil,
+		false, /* readBranch */
+	)
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
@@ -74,10 +79,15 @@ func TestReadTwoTables(t *testing.T) {
 
 	rowList := bigtable.RowList{"key1", "key2"}
 	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
-		ctx, store.NewStore(nil, btTable1, btTable2), rowList,
+		ctx,
+		store.NewStore(nil, btTable1, btTable2),
+		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
-		}, nil)
+		},
+		nil,
+		true, /* readBranch */
+	)
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
