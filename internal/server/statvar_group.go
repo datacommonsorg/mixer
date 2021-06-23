@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -27,9 +26,7 @@ import (
 )
 
 const (
-	svgRoot            = "dc/g/Root"
-	autoGenSvgIDPrefix = "dc/g/"
-	svgDelimiter       = "_"
+	svgRoot = "dc/g/Root"
 )
 
 // Note this function modifies validSVG inside.
@@ -189,7 +186,7 @@ func (s *Server) GetStatVarGroupNode(
 						&pb.StatVarGroupNode_ChildSVG{
 							Id:                t.SubjectID,
 							DisplayName:       t.SubjectName,
-							SpecializedEntity: computeSpecializedEntity(svg, t.SubjectID),
+							SpecializedEntity: t.SubjectName,
 						})
 				} else if t.Predicate == "memberOf" {
 					// Children SV
@@ -282,46 +279,6 @@ func (s *Server) GetStatVarPath(
 	return &pb.GetStatVarPathResponse{
 		Path: path,
 	}, nil
-}
-
-func isBasicPopulationType(t string) bool {
-	// Household and HousingUnit are included here because they have corresponding
-	// verticals.
-	return t == "Person" || t == "Household" || t == "HousingUnit" ||
-		t == "Thing"
-}
-
-func computeSpecializedEntity(parentSvg string, childSvg string) string {
-	// We compute this only for auto-generated IDs.
-	if !strings.HasPrefix(parentSvg, autoGenSvgIDPrefix) ||
-		!strings.HasPrefix(childSvg, autoGenSvgIDPrefix) {
-		return ""
-	}
-	parentPieces := strings.Split(
-		strings.TrimPrefix(parentSvg, autoGenSvgIDPrefix), svgDelimiter)
-	parentSet := map[string]struct{}{}
-	for _, p := range parentPieces {
-		parentSet[p] = struct{}{}
-	}
-
-	childPieces := strings.Split(
-		strings.TrimPrefix(childSvg, autoGenSvgIDPrefix), svgDelimiter)
-	result := []string{}
-	for _, c := range childPieces {
-		if isBasicPopulationType(c) {
-			continue
-		}
-		if _, ok := parentSet[c]; ok {
-			continue
-		}
-		result = append(result, c)
-	}
-	if len(result) == 0 {
-		// Edge case: certain SVGs (e.g., Person_Employment) match the parent
-		// (Employment) after stripping Person from the name.
-		result = parentPieces
-	}
-	return strings.Join(result, ", ")
 }
 
 // Check if places have data for stat vars and stat var groups
