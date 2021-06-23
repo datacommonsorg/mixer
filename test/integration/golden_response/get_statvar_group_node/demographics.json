@@ -3,50 +3,55 @@
   "childStatVars": [
     {
       "id": "Count_Person",
-      "searchName": "Count Of Person",
-      "displayName": "Count Of Person"
+      "searchName": "Count of Person",
+      "displayName": "Population"
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
-      "searchName": "Count Of Person With Is Internet User True As Fraction Of Per Capita",
-      "displayName": "Count Of True As Fraction Of PerCapita"
+      "searchName": "Count of Person With is Internet User True as Fraction of Per Capita",
+      "displayName": "Is Internet User as Fraction of Per Capita"
     },
     {
       "id": "Count_Person_PerArea",
-      "searchName": "Count Of Person As Fraction Of Area",
-      "displayName": "Count Of Person As Fraction Of Area"
+      "searchName": "Count of Person as Fraction of Area",
+      "displayName": "Population as Fraction of Area"
+    },
+    {
+      "id": "FertilityRate_Person_Female",
+      "searchName": "Fertility Rate of Person",
+      "displayName": "Fertility Rate"
     },
     {
       "id": "GrowthRate_Count_Person",
-      "searchName": "Growth Rate Count Of Person",
-      "displayName": "GrowthRate Count Of Person"
+      "searchName": "Growth Rate Count of Person",
+      "displayName": "Growth Rate Count"
     },
     {
       "id": "LifeExpectancy_Person",
-      "searchName": "Life Expectancy Of Person",
-      "displayName": "LifeExpectancy Of Person"
+      "searchName": "Life Expectancy of Person",
+      "displayName": "Life Expectancy"
     }
   ],
   "childStatVarGroups": [
     {
       "id": "dc/g/BirthEvent",
-      "specializedEntity": "BirthEvent",
+      "specializedEntity": "Birth Event",
       "displayName": "BirthEvent"
     },
     {
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
-      "displayName": "Person By Age"
+      "displayName": "Person by Age"
     },
     {
       "id": "dc/g/Person_EducationalAttainment",
-      "specializedEntity": "EducationalAttainment",
-      "displayName": "Person By EducationalAttainment"
+      "specializedEntity": "Educational Attainment",
+      "displayName": "Person by Educational Attainment"
     },
     {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
-      "displayName": "Person By Gender"
+      "displayName": "Person by Gender"
     }
   ],
   "parentStatVarGroups": [

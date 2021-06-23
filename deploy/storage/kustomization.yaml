@@ -25,3 +25,4 @@ configMapGenerator:
   - bigtable.version
   - bigquery.version
   - store.project
+  - bounce.config
