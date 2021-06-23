@@ -4844,11 +4844,11 @@
     },
     {
       "name": "Person by Gender = Female, Has Occupation = Service Occupations",
-      "dcid": "dc/g/Person_Gender-Female_HasOccupation-SOCv2018/intermediateAggregation5"
+      "dcid": "dc/g/Person_Gender-Female_HasOccupation-SOCv2018/highLevelAggregation2"
     },
     {
       "name": "Person by Gender = Female, Has Occupation = Service Occupations",
-      "dcid": "dc/g/Person_Gender-Female_HasOccupation-SOCv2018/highLevelAggregation2"
+      "dcid": "dc/g/Person_Gender-Female_HasOccupation-SOCv2018/intermediateAggregation5"
     },
     {
       "name": "Person by Gender = Female, Health Behavior",

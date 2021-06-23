@@ -145,6 +145,9 @@ func searchTokens(
 		ri := ranking[svgList[i].Dcid]
 		rj := ranking[svgList[j].Dcid]
 		if ri.ApproxNumPv == rj.ApproxNumPv {
+			if ri.RankingName == rj.RankingName {
+				return svgList[i].Dcid < svgList[j].Dcid
+			}
 			return ri.RankingName < rj.RankingName
 		}
 		return ri.ApproxNumPv < rj.ApproxNumPv
