@@ -90,6 +90,11 @@ spec:
                 configMapKeyRef:
                   name: githash-configmap
                   key: mixer_hash.txt
+            - name: BOUNCE
+              valueFrom:
+                configMapKeyRef:
+                  name: store-configmap
+                  key: bounce.config
           ports:
             - containerPort: 12345
           readinessProbe:
