@@ -7531,18 +7531,6 @@
       "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_Race-WhiteAlone"
     },
     {
-      "name": "Person by Age = 18 Years or More, Gender = Female, Veteran Status",
-      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_VeteranStatus"
-    },
-    {
-      "name": "Person by Age = 18 Years or More, Gender = Female, Veteran Status = Non Veteran",
-      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_VeteranStatus-Nonveteran"
-    },
-    {
-      "name": "Person by Age = 18 Years or More, Gender = Female, Veteran Status = Veteran",
-      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_VeteranStatus-Veteran"
-    },
-    {
       "name": "Person by Age = 19 - 25 Years, Armed Forces Status = Civilian, Gender = Female",
       "dcid": "dc/g/Person_Age-Years19To25_ArmedForcesStatus-Civilian_Gender-Female"
     },
@@ -8001,6 +7989,18 @@
     {
       "name": "Person by Age = 25 - 34 Years, Gender = Female, School Enrollment = Enrolled in Private School",
       "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_SchoolEnrollment-EnrolledInPrivateSchool"
+    },
+    {
+      "name": "Person by Age = 25 - 34 Years, Gender = Female, School Enrollment = Enrolled in Public School",
+      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_SchoolEnrollment-EnrolledInPublicSchool"
+    },
+    {
+      "name": "Person by Age = 25 - 34 Years, Gender = Female, School Enrollment = Not Enrolled in School",
+      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_SchoolEnrollment-NotEnrolledInSchool"
+    },
+    {
+      "name": "Person by Age = 25 Years or More, Gender = Female, Race",
+      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race"
     }
   ]
 }
