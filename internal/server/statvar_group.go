@@ -24,6 +24,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -203,7 +204,8 @@ func (s *Server) GetStatVarGroupNode(
 		}
 	} else {
 		if r, ok := s.cache.SvgInfo[svg]; ok {
-			result = r
+			// Clone into result, otherwise the server cache is modified.
+			result = proto.Clone(r).(*pb.StatVarGroupNode)
 		}
 		for _, item := range result.ChildStatVarGroups {
 			item.DisplayName = s.cache.SvgInfo[item.Id].AbsoluteName
