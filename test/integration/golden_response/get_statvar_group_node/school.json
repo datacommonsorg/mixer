@@ -1,100 +1,100 @@
 {
-  "absoluteName": "Person by Detailed Level of School",
+  "absoluteName": "Person With Detailed Level of School",
   "childStatVarGroups": [
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInCollegeUndergraduateYears",
       "specializedEntity": "Enrolled in College Undergraduate Years",
-      "displayName": "Person by Detailed Level of School = Enrolled in College Undergraduate Years"
+      "displayName": "Person With Detailed Level of School = Enrolled in College Undergraduate Years"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade1",
       "specializedEntity": "1 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 1 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 1 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10",
       "specializedEntity": "10 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade11",
       "specializedEntity": "11 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 11 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 11 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade12",
       "specializedEntity": "12 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 12 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 12 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade2",
       "specializedEntity": "2 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 2 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 2 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade3",
       "specializedEntity": "3 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 3 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 3 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade4",
       "specializedEntity": "4 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 4 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 4 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade5",
       "specializedEntity": "5 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 5 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 5 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade6",
       "specializedEntity": "6 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 6 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 6 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade7",
       "specializedEntity": "7 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 7 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 7 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade8",
       "specializedEntity": "8 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 8 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 8 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade9",
       "specializedEntity": "9 Enrolled in Grade",
-      "displayName": "Person by Detailed Level of School = 9 Enrolled in Grade"
+      "displayName": "Person With Detailed Level of School = 9 Enrolled in Grade"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInKindergarten",
       "specializedEntity": "Enrolled in Kindergarten",
-      "displayName": "Person by Detailed Level of School = Enrolled in Kindergarten"
+      "displayName": "Person With Detailed Level of School = Enrolled in Kindergarten"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInNurserySchoolPreschool",
       "specializedEntity": "Enrolled in Nursery School Preschool",
-      "displayName": "Person by Detailed Level of School = Enrolled in Nursery School Preschool"
+      "displayName": "Person With Detailed Level of School = Enrolled in Nursery School Preschool"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-GraduateOrProfessionalSchool",
       "specializedEntity": "Graduate or Professional School",
-      "displayName": "Person by Detailed Level of School = Graduate or Professional School"
+      "displayName": "Person With Detailed Level of School = Graduate or Professional School"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-HighSchool",
       "specializedEntity": "High School",
-      "displayName": "Person by Detailed Level of School = High School"
+      "displayName": "Person With Detailed Level of School = High School"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-MiddleSchool",
       "specializedEntity": "Middle School",
-      "displayName": "Person by Detailed Level of School = Middle School"
+      "displayName": "Person With Detailed Level of School = Middle School"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-PrimarySchool",
       "specializedEntity": "Primary School",
-      "displayName": "Person by Detailed Level of School = Primary School"
+      "displayName": "Person With Detailed Level of School = Primary School"
     }
   ],
   "parentStatVarGroups": [

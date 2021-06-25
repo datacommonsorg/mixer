@@ -154,7 +154,7 @@ func newClient(
 	conn, err := grpc.Dial(
 		lis.Addr().String(),
 		grpc.WithInsecure(),
-		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)))
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(200000000 /* 100M */)))
 	if err != nil {
 		return nil, err
 	}
