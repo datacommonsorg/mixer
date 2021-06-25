@@ -1,50 +1,50 @@
 {
-  "absoluteName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race",
+  "absoluteName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race",
   "childStatVarGroups": [
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-AmericanIndianOrAlaskaNativeAlone",
       "specializedEntity": "American Indian or Alaska Native Alone",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = American Indian or Alaska Native Alone"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = American Indian or Alaska Native Alone"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-AsianAlone",
       "specializedEntity": "Asian Alone",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = Asian Alone"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Asian Alone"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-BlackOrAfricanAmericanAlone",
       "specializedEntity": "Black or African American Alone",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = Black or African American Alone"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Black or African American Alone"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-HispanicOrLatino",
       "specializedEntity": "Hispanic or Latino",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = Hispanic or Latino"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Hispanic or Latino"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-NativeHawaiianOrOtherPacificIslanderAlone",
       "specializedEntity": "Native Hawaiian or Other Pacific Islander Alone",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = Native Hawaiian or Other Pacific Islander Alone"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Native Hawaiian or Other Pacific Islander Alone"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-SomeOtherRaceAlone",
       "specializedEntity": "Some Other Race Alone",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = Some Other Race Alone"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Some Other Race Alone"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-TwoOrMoreRaces",
       "specializedEntity": "Two or More Races",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = Two or More Races"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Two or More Races"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-WhiteAlone",
       "specializedEntity": "White Alone",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = White Alone"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = White Alone"
     },
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-WhiteAloneNotHispanicOrLatino",
       "specializedEntity": "White Alone Not Hispanic or Latino",
-      "displayName": "Person by Detailed Level of School = 10 Enrolled in Grade, Race = White Alone Not Hispanic or Latino"
+      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = White Alone Not Hispanic or Latino"
     }
   ],
   "parentStatVarGroups": [
