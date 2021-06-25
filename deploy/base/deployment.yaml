@@ -100,12 +100,12 @@ spec:
           readinessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
-            periodSeconds: 5
+            periodSeconds: 10
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
-            periodSeconds: 5
-            initialDelaySeconds: 5
+            periodSeconds: 10
+            initialDelaySeconds: 10
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
           args:
