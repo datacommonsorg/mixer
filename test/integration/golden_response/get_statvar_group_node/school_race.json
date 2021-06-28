@@ -49,5 +49,6 @@
   ],
   "parentStatVarGroups": [
     "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10"
-  ]
+  ],
+  "numDescendentStatVars": 9
 }

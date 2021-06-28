@@ -34,22 +34,28 @@
   ],
   "childStatVarGroups": [
     {
+      "id": "dc/g/BirthEvent",
+      "specializedEntity": "Birth Event",
+      "displayName": "BirthEvent"
+    },
+    {
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
-      "displayName": "Person With Age"
+      "displayName": "Person by Age"
     },
     {
       "id": "dc/g/Person_EducationalAttainment",
       "specializedEntity": "Educational Attainment",
-      "displayName": "Person With Educational Attainment"
+      "displayName": "Person by Educational Attainment"
     },
     {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
-      "displayName": "Person With Gender"
+      "displayName": "Person by Gender"
     }
   ],
   "parentStatVarGroups": [
     "dc/g/Root"
-  ]
+  ],
+  "numDescendentStatVars": 7760
 }

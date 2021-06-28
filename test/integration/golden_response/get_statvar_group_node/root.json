@@ -66,5 +66,6 @@
       "specializedEntity": "Miscellaneous",
       "displayName": "Miscellaneous"
     }
-  ]
+  ],
+  "numDescendentStatVars": 64497
 }
