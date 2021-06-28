@@ -5051,87 +5051,87 @@
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Widowed"
     },
     {
-      "name": "Person With Gender = Female, Naics",
+      "name": "Person With Gender = Female, NAICS",
       "dcid": "dc/g/Person_Gender-Female_Naics"
     },
     {
-      "name": "Person With Gender = Female, Naics = Accommodation And Food Services",
+      "name": "Person With Gender = Female, NAICS = Accommodation And Food Services",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/72"
     },
     {
-      "name": "Person With Gender = Female, Naics = Administrative And Support And Waste Management Services",
+      "name": "Person With Gender = Female, NAICS = Administrative And Support And Waste Management Services",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/56"
     },
     {
-      "name": "Person With Gender = Female, Naics = Agriculture, Forestry, Fishing And Hunting",
+      "name": "Person With Gender = Female, NAICS = Agriculture, Forestry, Fishing And Hunting",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/11"
     },
     {
-      "name": "Person With Gender = Female, Naics = Arts, Entertainment, And Recreation",
+      "name": "Person With Gender = Female, NAICS = Arts, Entertainment, And Recreation",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/71"
     },
     {
-      "name": "Person With Gender = Female, Naics = Construction",
+      "name": "Person With Gender = Female, NAICS = Construction",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/23"
     },
     {
-      "name": "Person With Gender = Female, Naics = Educational Services",
+      "name": "Person With Gender = Female, NAICS = Educational Services",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/61"
     },
     {
-      "name": "Person With Gender = Female, Naics = Finance And Insurance",
+      "name": "Person With Gender = Female, NAICS = Finance And Insurance",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/52"
     },
     {
-      "name": "Person With Gender = Female, Naics = Health Care And Social Assistance",
+      "name": "Person With Gender = Female, NAICS = Health Care And Social Assistance",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/62"
     },
     {
-      "name": "Person With Gender = Female, Naics = Information",
+      "name": "Person With Gender = Female, NAICS = Information",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/51"
     },
     {
-      "name": "Person With Gender = Female, Naics = Management of Companies And Enterprises",
+      "name": "Person With Gender = Female, NAICS = Management of Companies And Enterprises",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/55"
     },
     {
-      "name": "Person With Gender = Female, Naics = Manufacturing",
+      "name": "Person With Gender = Female, NAICS = Manufacturing",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/3133"
     },
     {
-      "name": "Person With Gender = Female, Naics = Mining, Quarrying, And Oil And Gas Extraction",
+      "name": "Person With Gender = Female, NAICS = Mining, Quarrying, And Oil And Gas Extraction",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/21"
     },
     {
-      "name": "Person With Gender = Female, Naics = Other Services, Except Public Administration",
+      "name": "Person With Gender = Female, NAICS = Other Services, Except Public Administration",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/81"
     },
     {
-      "name": "Person With Gender = Female, Naics = Professional, Scientific, And Technical Services",
+      "name": "Person With Gender = Female, NAICS = Professional, Scientific, And Technical Services",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/54"
     },
     {
-      "name": "Person With Gender = Female, Naics = Public Administration",
+      "name": "Person With Gender = Female, NAICS = Public Administration",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/92"
     },
     {
-      "name": "Person With Gender = Female, Naics = Real Estate And Rental And Leasing",
+      "name": "Person With Gender = Female, NAICS = Real Estate And Rental And Leasing",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/53"
     },
     {
-      "name": "Person With Gender = Female, Naics = Retail Trade",
+      "name": "Person With Gender = Female, NAICS = Retail Trade",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/4445"
     },
     {
-      "name": "Person With Gender = Female, Naics = Transportation And Warehousing",
+      "name": "Person With Gender = Female, NAICS = Transportation And Warehousing",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/4849"
     },
     {
-      "name": "Person With Gender = Female, Naics = Utilities",
+      "name": "Person With Gender = Female, NAICS = Utilities",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/22"
     },
     {
-      "name": "Person With Gender = Female, Naics = Wholesale Trade",
+      "name": "Person With Gender = Female, NAICS = Wholesale Trade",
       "dcid": "dc/g/Person_Gender-Female_Naics-NAICS/42"
     },
     {
@@ -7127,87 +7127,87 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Income-USDollar75000To99999"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Accommodation And Food Services",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Accommodation And Food Services",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/72"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Administrative And Support And Waste Management Services",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Administrative And Support And Waste Management Services",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/56"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Agriculture, Forestry, Fishing And Hunting",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Agriculture, Forestry, Fishing And Hunting",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/11"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Arts, Entertainment, And Recreation",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Arts, Entertainment, And Recreation",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/71"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Construction",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Construction",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/23"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Educational Services",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Educational Services",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/61"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Finance And Insurance",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Finance And Insurance",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/52"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Health Care And Social Assistance",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Health Care And Social Assistance",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/62"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Information",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Information",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/51"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Management of Companies And Enterprises",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Management of Companies And Enterprises",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/55"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Manufacturing",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Manufacturing",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/3133"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Mining, Quarrying, And Oil And Gas Extraction",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Mining, Quarrying, And Oil And Gas Extraction",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/21"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Other Services, Except Public Administration",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Other Services, Except Public Administration",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/81"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Professional, Scientific, And Technical Services",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Professional, Scientific, And Technical Services",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/54"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Public Administration",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Public Administration",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/92"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Real Estate And Rental And Leasing",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Real Estate And Rental And Leasing",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/53"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Retail Trade",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Retail Trade",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/4445"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Transportation And Warehousing",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Transportation And Warehousing",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/4849"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Utilities",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Utilities",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/22"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Naics = Wholesale Trade",
+      "name": "Person With Age = 16 Years or More, Gender = Female, NAICS = Wholesale Trade",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Naics-NAICS/42"
     },
     {

@@ -55,12 +55,12 @@
   ],
   "statVarGroups": [
     {
-      "name": "CriminalActivities With Crime Type",
-      "dcid": "dc/g/CriminalActivities_CrimeType"
-    },
-    {
       "name": "CriminalActivities With Crime Type = Murder And Non Negligent Manslaughter",
       "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter"
+    },
+    {
+      "name": "CriminalActivities by Crime Type",
+      "dcid": "dc/g/CriminalActivities_CrimeType"
     },
     {
       "name": "CriminalActivities With Crime Type = Murder And Non Negligent Manslaughter, Gender",

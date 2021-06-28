@@ -1,5 +1,5 @@
 {
-  "absoluteName": "Person With Detailed Level of School",
+  "absoluteName": "Person by Detailed Level of School",
   "childStatVarGroups": [
     {
       "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInCollegeUndergraduateYears",
@@ -99,5 +99,6 @@
   ],
   "parentStatVarGroups": [
     "dc/g/Education"
-  ]
+  ],
+  "numDescendentStatVars": 190
 }

@@ -372,6 +372,8 @@ message StatVarGroupNode {
   repeated ChildSVG child_stat_var_groups = 3;
   // List of parent StatVarGroup IDs.
   repeated string parent_stat_var_groups = 4;
+    // Number of unique descendent stat-vars.
+  int32 num_descendent_stat_vars = 5;
 }
 
 message GetStatVarGroupRequest {
