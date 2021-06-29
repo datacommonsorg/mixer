@@ -31,7 +31,6 @@ const (
 	svgRoot            = "dc/g/Root"
 	autoGenSvgIDPrefix = "dc/g/"
 	svgDelimiter       = "_"
-	maxInt             = int32(^uint32(0) >> 1)
 )
 
 // Note this function modifies validSVG inside.
@@ -210,6 +209,7 @@ func (s *Server) GetStatVarGroupNode(
 		}
 		for _, item := range result.ChildStatVarGroups {
 			item.DisplayName = s.cache.SvgInfo[item.Id].AbsoluteName
+			item.NumDescendentStatVars = s.cache.SvgInfo[item.Id].NumDescendentStatVars
 		}
 		result.ParentStatVarGroups = s.cache.ParentSvg[svg]
 	}
@@ -232,26 +232,27 @@ func (s *Server) GetStatVarGroupNode(
 			return nil, err
 		}
 		// Count for current node.
-		result.NumDescendentStatVars = 0
 		if existence, ok := statVarCount[svg]; ok && len(existence) == len(places) {
-			result.NumDescendentStatVars = maxInt
 			for _, count := range existence {
 				// Use the smallest count among all places.
 				if count < result.NumDescendentStatVars {
 					result.NumDescendentStatVars = count
 				}
 			}
+		} else {
+			result.NumDescendentStatVars = 0
 		}
 		// Filter child stat var groups
 		for _, item := range result.ChildStatVarGroups {
 			if existence, ok := statVarCount[item.Id]; ok && len(existence) == len(places) {
-				item.NumDescendentStatVars = maxInt
 				for _, count := range existence {
 					// Use the largest count among all places
 					if count < item.NumDescendentStatVars {
 						item.NumDescendentStatVars = count
 					}
 				}
+			} else {
+				item.NumDescendentStatVars = 0
 			}
 		}
 		// Filter child stat vars
