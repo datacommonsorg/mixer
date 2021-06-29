@@ -64,6 +64,12 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			"dc/g/Root",
 			"root_mtv.json",
 		},
+		// Run this first to test the server cache is not modified.
+		{
+			[]string{"geoId/0649670", "country/JPN"},
+			"dc/g/Root",
+			"root_mtv_jpn.json",
+		},
 		{
 			[]string{},
 			"dc/g/Root",

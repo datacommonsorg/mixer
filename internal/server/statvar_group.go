@@ -31,6 +31,7 @@ const (
 	svgRoot            = "dc/g/Root"
 	autoGenSvgIDPrefix = "dc/g/"
 	svgDelimiter       = "_"
+	maxInt             = int32(^uint32(0) >> 1)
 )
 
 // Note this function modifies validSVG inside.
@@ -214,8 +215,6 @@ func (s *Server) GetStatVarGroupNode(
 	}
 
 	// Filter result based on places
-	// TODO(shifucun): Find a generic way to do the filtering here.
-	// Filter parent stat var groups
 	if len(places) > 0 {
 		// Get the stat var and stat var group IDs to check if they are valid for
 		// given places.
@@ -234,20 +233,22 @@ func (s *Server) GetStatVarGroupNode(
 		}
 		// Count for current node.
 		result.NumDescendentStatVars = 0
-		if existence, ok := statVarCount[svg]; ok && len(existence) > 0 {
+		if existence, ok := statVarCount[svg]; ok && len(existence) == len(places) {
+			result.NumDescendentStatVars = maxInt
 			for _, count := range existence {
-				// Use the largest count among all places
-				if count > result.NumDescendentStatVars {
+				// Use the smallest count among all places.
+				if count < result.NumDescendentStatVars {
 					result.NumDescendentStatVars = count
 				}
 			}
 		}
 		// Filter child stat var groups
 		for _, item := range result.ChildStatVarGroups {
-			if existence, ok := statVarCount[item.Id]; ok && len(existence) > 0 {
+			if existence, ok := statVarCount[item.Id]; ok && len(existence) == len(places) {
+				item.NumDescendentStatVars = maxInt
 				for _, count := range existence {
 					// Use the largest count among all places
-					if count > item.NumDescendentStatVars {
+					if count < item.NumDescendentStatVars {
 						item.NumDescendentStatVars = count
 					}
 				}
@@ -255,7 +256,7 @@ func (s *Server) GetStatVarGroupNode(
 		}
 		// Filter child stat vars
 		for _, item := range result.ChildStatVars {
-			if existence, ok := statVarCount[item.Id]; ok && len(existence) > 0 {
+			if existence, ok := statVarCount[item.Id]; ok && len(existence) == len(places) {
 				item.HasData = true
 			}
 		}
