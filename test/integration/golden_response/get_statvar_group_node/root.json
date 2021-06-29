@@ -4,42 +4,50 @@
     {
       "id": "dc/g/COVID-19",
       "specializedEntity": "COVID-19",
-      "displayName": "COVID-19"
+      "displayName": "COVID-19",
+      "numDescendentStatVars": 103
     },
     {
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
-      "displayName": "Crime"
+      "displayName": "Crime",
+      "numDescendentStatVars": 221
     },
     {
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
-      "displayName": "Demographics"
+      "displayName": "Demographics",
+      "numDescendentStatVars": 7875
     },
     {
       "id": "dc/g/Disasters",
       "specializedEntity": "Disasters",
-      "displayName": "Disasters"
+      "displayName": "Disasters",
+      "numDescendentStatVars": 76
     },
     {
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
-      "displayName": "Economics"
+      "displayName": "Economics",
+      "numDescendentStatVars": 108
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
-      "displayName": "Education"
+      "displayName": "Education",
+      "numDescendentStatVars": 2349
     },
     {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
-      "displayName": "Employment"
+      "displayName": "Employment",
+      "numDescendentStatVars": 45928
     },
     {
       "id": "dc/g/Energy",
       "specializedEntity": "Energy",
-      "displayName": "Energy"
+      "displayName": "Energy",
+      "numDescendentStatVars": 7155
     },
     {
       "id": "dc/g/Environment",
@@ -49,22 +57,26 @@
     {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
-      "displayName": "Health"
+      "displayName": "Health",
+      "numDescendentStatVars": 3809
     },
     {
       "id": "dc/g/Household",
       "specializedEntity": "Household",
-      "displayName": "Household"
+      "displayName": "Household",
+      "numDescendentStatVars": 2756
     },
     {
       "id": "dc/g/Housing",
       "specializedEntity": "Housing",
-      "displayName": "Housing"
+      "displayName": "Housing",
+      "numDescendentStatVars": 140
     },
     {
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
-      "displayName": "Miscellaneous"
+      "displayName": "Miscellaneous",
+      "numDescendentStatVars": 568
     }
   ],
   "numDescendentStatVars": 64497
