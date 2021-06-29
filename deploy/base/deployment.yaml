@@ -90,11 +90,10 @@ spec:
                 configMapKeyRef:
                   name: githash-configmap
                   key: mixer_hash.txt
+            # A dummy config used to bounce the server without any docker image
+            # or data config change.
             - name: BOUNCE
-              valueFrom:
-                configMapKeyRef:
-                  name: store-configmap
-                  key: bounce.config
+              value: "dummy"
           ports:
             - containerPort: 12345
           readinessProbe:
