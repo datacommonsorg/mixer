@@ -43,11 +43,6 @@ func TestGetStatVarGroup(t *testing.T) {
 		checkCount bool
 	}{
 		{
-			[]string{"country/GBR"},
-			"uk.json",
-			false,
-		},
-		{
 			[]string{"badDcid"},
 			"empty.json",
 			false,

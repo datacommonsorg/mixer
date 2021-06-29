@@ -1,54 +1,53 @@
 {
-  "absoluteName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race",
+  "absoluteName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race",
   "childStatVarGroups": [
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-AmericanIndianOrAlaskaNativeAlone",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-AmericanIndianOrAlaskaNativeAlone",
       "specializedEntity": "American Indian or Alaska Native Alone",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = American Indian or Alaska Native Alone"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = American Indian or Alaska Native Alone"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-AsianAlone",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-AsianAlone",
       "specializedEntity": "Asian Alone",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Asian Alone"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = Asian Alone"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-BlackOrAfricanAmericanAlone",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-BlackOrAfricanAmericanAlone",
       "specializedEntity": "Black or African American Alone",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Black or African American Alone"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = Black or African American Alone"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-HispanicOrLatino",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-HispanicOrLatino",
       "specializedEntity": "Hispanic or Latino",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Hispanic or Latino"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = Hispanic or Latino"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-NativeHawaiianOrOtherPacificIslanderAlone",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-NativeHawaiianOrOtherPacificIslanderAlone",
       "specializedEntity": "Native Hawaiian or Other Pacific Islander Alone",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Native Hawaiian or Other Pacific Islander Alone"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = Native Hawaiian or Other Pacific Islander Alone"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-SomeOtherRaceAlone",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-SomeOtherRaceAlone",
       "specializedEntity": "Some Other Race Alone",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Some Other Race Alone"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = Some Other Race Alone"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-TwoOrMoreRaces",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-TwoOrMoreRaces",
       "specializedEntity": "Two or More Races",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = Two or More Races"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = Two or More Races"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-WhiteAlone",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-WhiteAlone",
       "specializedEntity": "White Alone",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = White Alone"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = White Alone"
     },
     {
-      "id": "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race-WhiteAloneNotHispanicOrLatino",
+      "id": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race-WhiteAloneNotHispanicOrLatino",
       "specializedEntity": "White Alone Not Hispanic or Latino",
-      "displayName": "Person With Detailed Level of School = 10 Enrolled in Grade, Race = White Alone Not Hispanic or Latino"
+      "displayName": "Person With Enrollment Level = Enrolled in College Undergraduate Years, Race = White Alone Not Hispanic or Latino"
     }
   ],
   "parentStatVarGroups": [
-    "dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10"
-  ],
-  "numDescendentStatVars": 9
+    "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears"
+  ]
 }

@@ -42,14 +42,15 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		svg        string
 		goldenFile string
 	}{
+		// TODO(shifucun): edit the test case below
 		{
 			[]string{"country/USA"},
-			"dc/g/Person_DetailedLevelOfSchool",
+			"dc/g/Person_EducationalAttainment",
 			"school.json",
 		},
 		{
 			[]string{"country/USA"},
-			"dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10_Race",
+			"dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race",
 			"school_race.json",
 		},
 		{
@@ -70,7 +71,7 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		},
 		{
 			[]string{"geoId/0649670"},
-			"dc/g/Person_Citizenship-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
+			"dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
 			"citizenship.json",
 		},
 	} {

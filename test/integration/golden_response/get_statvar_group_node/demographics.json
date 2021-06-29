@@ -4,58 +4,183 @@
     {
       "id": "Count_Person",
       "searchName": "Count of Person",
-      "displayName": "Population"
+      "displayName": "Population",
+      "hasData": true
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
       "searchName": "Count of Person With is Internet User True as Fraction of Per Capita",
-      "displayName": "Is Internet User as Fraction of Per Capita"
+      "displayName": "Is Internet User Population as Fraction of Per Capita",
+      "hasData": true
     },
     {
       "id": "Count_Person_PerArea",
       "searchName": "Count of Person as Fraction of Area",
-      "displayName": "Population as Fraction of Area"
+      "displayName": "Population as Fraction of Area",
+      "hasData": true
+    },
+    {
+      "id": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
+      "searchName": "Count of Person With Residence Characteristic Less Than 5 Meters Above Sea Level as Fraction of Count Person",
+      "displayName": "Less Than 5 Meters Above Sea Level Population as Fraction of Count Person",
+      "hasData": true
     },
     {
       "id": "FertilityRate_Person_Female",
       "searchName": "Fertility Rate of Person",
-      "displayName": "Fertility Rate"
+      "displayName": "Fertility Rate",
+      "hasData": true
     },
     {
       "id": "GrowthRate_Count_Person",
       "searchName": "Growth Rate Count of Person",
-      "displayName": "Growth Rate Count"
+      "displayName": "Growth Rate Population",
+      "hasData": true
+    },
+    {
+      "id": "IncrementalCount_Person",
+      "searchName": "Incremental Count of Person",
+      "displayName": "Incremental Count"
     },
     {
       "id": "LifeExpectancy_Person",
       "searchName": "Life Expectancy of Person",
-      "displayName": "Life Expectancy"
+      "displayName": "Life Expectancy",
+      "hasData": true
+    },
+    {
+      "id": "Median_Age_Person",
+      "searchName": "Median Age of Person",
+      "displayName": "Median Age"
+    },
+    {
+      "id": "Median_Income_Person",
+      "searchName": "Median Income of Person",
+      "displayName": "Median Income"
     }
   ],
   "childStatVarGroups": [
     {
-      "id": "dc/g/BirthEvent",
-      "specializedEntity": "Birth Event",
-      "displayName": "BirthEvent"
+      "id": "dc/g/Child",
+      "specializedEntity": "Child",
+      "displayName": "Child"
+    },
+    {
+      "id": "dc/g/ImmigrationAndCitizenship",
+      "specializedEntity": "Immigration And Citizenship",
+      "displayName": "Immigration and Citizenship"
+    },
+    {
+      "id": "dc/g/Language",
+      "specializedEntity": "Language",
+      "displayName": "Language"
+    },
+    {
+      "id": "dc/g/Parent",
+      "specializedEntity": "Parent",
+      "displayName": "Parent"
     },
     {
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
-      "displayName": "Person by Age"
+      "displayName": "Person by Age",
+      "numDescendentStatVars": 648
     },
     {
-      "id": "dc/g/Person_EducationalAttainment",
-      "specializedEntity": "Educational Attainment",
-      "displayName": "Person by Educational Attainment"
+      "id": "dc/g/Person_ArmedForcesStatus",
+      "specializedEntity": "Armed Forces Status",
+      "displayName": "Person by Armed Forces Status"
+    },
+    {
+      "id": "dc/g/Person_DisabilityStatus",
+      "specializedEntity": "Disability Status",
+      "displayName": "Person by Disability Status"
     },
     {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
-      "displayName": "Person by Gender"
+      "displayName": "Person by Gender",
+      "numDescendentStatVars": 445
+    },
+    {
+      "id": "dc/g/Person_HealthInsurance",
+      "specializedEntity": "Health Insurance",
+      "displayName": "Person by Health Insurance"
+    },
+    {
+      "id": "dc/g/Person_Income",
+      "specializedEntity": "Income",
+      "displayName": "Person by Income"
+    },
+    {
+      "id": "dc/g/Person_IncomeStatus",
+      "specializedEntity": "Income Status",
+      "displayName": "Person by Income Status"
+    },
+    {
+      "id": "dc/g/Person_LiteracyStatus",
+      "specializedEntity": "Literacy Status",
+      "displayName": "Person by Literacy Status"
+    },
+    {
+      "id": "dc/g/Person_MaritalStatus",
+      "specializedEntity": "Marital Status",
+      "displayName": "Person by Marital Status"
+    },
+    {
+      "id": "dc/g/Person_PeriodOfMilitaryService",
+      "specializedEntity": "Period of Military Service",
+      "displayName": "Person by Period of Military Service"
+    },
+    {
+      "id": "dc/g/Person_PlaceOfResidenceClassification",
+      "specializedEntity": "Place of Residence Classification",
+      "displayName": "Person by Place of Residence Classification",
+      "numDescendentStatVars": 2
+    },
+    {
+      "id": "dc/g/Person_PovertyStatus",
+      "specializedEntity": "Poverty Status",
+      "displayName": "Person by Poverty Status"
+    },
+    {
+      "id": "dc/g/Person_Race",
+      "specializedEntity": "Race",
+      "displayName": "Person by Race"
+    },
+    {
+      "id": "dc/g/Person_ResidenceType",
+      "specializedEntity": "Residence Type",
+      "displayName": "Person by Residence Type"
+    },
+    {
+      "id": "dc/g/Person_ResidentStatus",
+      "specializedEntity": "Resident Status",
+      "displayName": "Person by Resident Status"
+    },
+    {
+      "id": "dc/g/Person_SocialCategory",
+      "specializedEntity": "Social Category",
+      "displayName": "Person by Social Category"
+    },
+    {
+      "id": "dc/g/Person_SpouseAbsentReason",
+      "specializedEntity": "Spouse Absent Reason",
+      "displayName": "Person by Spouse Absent Reason"
+    },
+    {
+      "id": "dc/g/Person_SpousePresent",
+      "specializedEntity": "Spouse Present",
+      "displayName": "Person by Spouse Present"
+    },
+    {
+      "id": "dc/g/Work",
+      "specializedEntity": "Work",
+      "displayName": "Work"
     }
   ],
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 7760
+  "numDescendentStatVars": 673
 }

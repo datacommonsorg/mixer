@@ -352,6 +352,8 @@ message StatVarGroupNode {
     string specialized_entity = 2;
     // Name suitable for display in tree.
     string display_name = 3;
+    // Number of unique descendent stat-vars.
+    int32 num_descendent_stat_vars = 4;
   }
 
   message ChildSV {
@@ -361,6 +363,8 @@ message StatVarGroupNode {
     string search_name = 2;
     // Name suitable for display in tree.
     string display_name = 3;
+    // Whether there is a data for this stat var
+    bool has_data = 4;
   }
 
   // Absolute name of StatVarGroup. Typically used only for root nodes.
@@ -528,6 +532,11 @@ message RelatedPlacesInfo {
   Ranking rank_bottom_1000 = 9;
 
   reserved 4, 5, 6;
+}
+
+message PlaceStatVarExistence {
+  // Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
+  int32 num_descendent_stat_vars = 1;
 }
 
 message GetStatVarPathRequest {
