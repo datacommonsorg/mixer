@@ -40,11 +40,11 @@ patchesStrategicMerge:
       name: mixer-grpc
     spec:
       replicas: 8
-    strategy:
-      type: RollingUpdate
-      rollingUpdate:
-        maxSurge: 3
-        maxUnavailable: 75%
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 3
+          maxUnavailable: 75%
   - |-
     apiVersion: extensions/v1beta1
     kind: Ingress
