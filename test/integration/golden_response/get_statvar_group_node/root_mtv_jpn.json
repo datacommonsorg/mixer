@@ -9,12 +9,14 @@
     {
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
-      "displayName": "Crime"
+      "displayName": "Crime",
+      "numDescendentStatVars": 3
     },
     {
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
-      "displayName": "Demographics"
+      "displayName": "Demographics",
+      "numDescendentStatVars": 92
     },
     {
       "id": "dc/g/Disasters",
@@ -24,17 +26,20 @@
     {
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
-      "displayName": "Economics"
+      "displayName": "Economics",
+      "numDescendentStatVars": 25
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
-      "displayName": "Education"
+      "displayName": "Education",
+      "numDescendentStatVars": 6
     },
     {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
-      "displayName": "Employment"
+      "displayName": "Employment",
+      "numDescendentStatVars": 6
     },
     {
       "id": "dc/g/Energy",
@@ -49,7 +54,8 @@
     {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
-      "displayName": "Health"
+      "displayName": "Health",
+      "numDescendentStatVars": 90
     },
     {
       "id": "dc/g/Household",
@@ -64,8 +70,9 @@
     {
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
-      "displayName": "Miscellaneous"
+      "displayName": "Miscellaneous",
+      "numDescendentStatVars": 64
     }
   ],
-  "numDescendentStatVars": 64497
+  "numDescendentStatVars": 682
 }

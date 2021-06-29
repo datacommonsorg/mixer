@@ -31,6 +31,7 @@ const (
 	svgRoot            = "dc/g/Root"
 	autoGenSvgIDPrefix = "dc/g/"
 	svgDelimiter       = "_"
+	maxInt             = int32(^uint32(0) >> 1)
 )
 
 // Note this function modifies validSVG inside.
@@ -214,12 +215,10 @@ func (s *Server) GetStatVarGroupNode(
 	}
 
 	// Filter result based on places
-	// TODO(shifucun): Find a generic way to do the filtering here.
-	// Filter parent stat var groups
 	if len(places) > 0 {
 		// Get the stat var and stat var group IDs to check if they are valid for
 		// given places.
-		allIDs := []string{}
+		allIDs := []string{svg}
 		for _, item := range result.ChildStatVarGroups {
 			allIDs = append(allIDs, item.Id)
 		}
@@ -228,33 +227,39 @@ func (s *Server) GetStatVarGroupNode(
 		}
 		allIDs = append(allIDs, result.ParentStatVarGroups...)
 		// Check if stat data exists for given places
-		statExistence, err := checkStatExistence(ctx, s.store, allIDs, places)
+		statVarCount, err := countStatVar(ctx, s.store, allIDs, places)
 		if err != nil {
 			return nil, err
 		}
-		filteredParentStatVarGroups := []string{}
-		for _, item := range result.ParentStatVarGroups {
-			if c, ok := statExistence[item]; ok && c == len(places) {
-				filteredParentStatVarGroups = append(filteredParentStatVarGroups, item)
+		// Count for current node.
+		result.NumDescendentStatVars = 0
+		if existence, ok := statVarCount[svg]; ok && len(existence) == len(places) {
+			result.NumDescendentStatVars = maxInt
+			for _, count := range existence {
+				// Use the smallest count among all places.
+				if count < result.NumDescendentStatVars {
+					result.NumDescendentStatVars = count
+				}
 			}
 		}
-		result.ParentStatVarGroups = filteredParentStatVarGroups
 		// Filter child stat var groups
-		filteredChildStatVarGroups := []*pb.StatVarGroupNode_ChildSVG{}
 		for _, item := range result.ChildStatVarGroups {
-			if c, ok := statExistence[item.Id]; ok && c == len(places) {
-				filteredChildStatVarGroups = append(filteredChildStatVarGroups, item)
+			if existence, ok := statVarCount[item.Id]; ok && len(existence) == len(places) {
+				item.NumDescendentStatVars = maxInt
+				for _, count := range existence {
+					// Use the largest count among all places
+					if count < item.NumDescendentStatVars {
+						item.NumDescendentStatVars = count
+					}
+				}
 			}
 		}
-		result.ChildStatVarGroups = filteredChildStatVarGroups
 		// Filter child stat vars
-		filteredChildStatVars := []*pb.StatVarGroupNode_ChildSV{}
 		for _, item := range result.ChildStatVars {
-			if c, ok := statExistence[item.Id]; ok && c == len(places) {
-				filteredChildStatVars = append(filteredChildStatVars, item)
+			if existence, ok := statVarCount[item.Id]; ok && len(existence) == len(places) {
+				item.HasData = true
 			}
 		}
-		result.ChildStatVars = filteredChildStatVars
 	}
 	return result, nil
 }
@@ -327,22 +332,27 @@ func computeSpecializedEntity(parentSvg string, childSvg string) string {
 }
 
 // Check if places have data for stat vars and stat var groups
-// Returns a map from stat var to the number of places that has data.
-func checkStatExistence(
+// Returns a two level map from stat var dcid to place dcid to the number of
+// stat vars with data. For a given stat var, if a place has no data, it will
+// not show up in the second level map.
+func countStatVar(
 	ctx context.Context,
 	store *store.Store,
 	svOrSvgs []string,
-	places []string) (map[string]int, error) {
+	places []string) (map[string]map[string]int32, error) {
 	rowList, keyTokens := buildStatExistenceKey(places, svOrSvgs)
 	keyToTokenFn := tokenFn(keyTokens)
 	baseDataMap, _, err := bigTableReadRowsParallel(
 		ctx,
 		store,
 		rowList,
-		func(string, []byte) (interface{}, error) {
-			// If exist, BT read returns an empty struct. Here just return nil to
-			// indicate the existence of the key.
-			return nil, nil
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var statVarExistence pb.PlaceStatVarExistence
+			err := protojson.Unmarshal(jsonRaw, &statVarExistence)
+			if err != nil {
+				return nil, err
+			}
+			return &statVarExistence, nil
 		},
 		keyToTokenFn,
 		false, /* readBranch */
@@ -350,12 +360,18 @@ func checkStatExistence(
 	if err != nil {
 		return nil, err
 	}
-	result := map[string]int{}
+	// Initialize result
+	result := map[string]map[string]int32{}
+	for _, id := range svOrSvgs {
+		result[id] = map[string]int32{}
+	}
+	// Populate the count
 	for _, rowKey := range rowList {
 		placeSv := keyTokens[rowKey]
 		token, _ := keyToTokenFn(rowKey)
-		if _, ok := baseDataMap[token]; ok {
-			result[placeSv.statVar]++
+		if data, ok := baseDataMap[token]; ok {
+			c := data.(*pb.PlaceStatVarExistence)
+			result[placeSv.statVar][placeSv.place] = c.NumDescendentStatVars
 		}
 	}
 	return result, nil

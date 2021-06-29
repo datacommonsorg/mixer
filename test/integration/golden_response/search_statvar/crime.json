@@ -1,55 +1,55 @@
 {
   "statVars": [
     {
-      "name": "Aggravated Assault",
+      "name": "Count of Aggravated Assault",
       "dcid": "Count_CriminalActivities_AggravatedAssault"
     },
     {
-      "name": "Arson",
+      "name": "Count of Arson",
       "dcid": "Count_CriminalActivities_Arson"
     },
     {
-      "name": "Burglary",
+      "name": "Count of Burglary",
       "dcid": "Count_CriminalActivities_Burglary"
     },
     {
-      "name": "Forcible Rape",
+      "name": "Count of Forcible Rape",
       "dcid": "Count_CriminalActivities_ForcibleRape"
     },
     {
-      "name": "Larceny Theft",
+      "name": "Count of Larceny Theft",
       "dcid": "Count_CriminalActivities_LarcenyTheft"
     },
     {
-      "name": "Motor Vehicle Theft",
+      "name": "Count of Motor Vehicle Theft",
       "dcid": "Count_CriminalActivities_MotorVehicleTheft"
     },
     {
-      "name": "Murder And Non Negligent Manslaughter",
+      "name": "Count of Murder And Non Negligent Manslaughter",
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter"
     },
     {
-      "name": "Property",
+      "name": "Count of Property",
       "dcid": "Count_CriminalActivities_PropertyCrime"
     },
     {
-      "name": "Robbery",
+      "name": "Count of Robbery",
       "dcid": "Count_CriminalActivities_Robbery"
     },
     {
-      "name": "Violent",
+      "name": "Count of Violent",
       "dcid": "Count_CriminalActivities_ViolentCrime"
     },
     {
-      "name": "Murder And Non Negligent Manslaughter as Fraction of Count Person",
+      "name": "Count of Murder And Non Negligent Manslaughter as Fraction of Count Person",
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person"
     },
     {
-      "name": "Murder And Non Negligent Manslaughter, Female as Fraction of Count Person Female",
+      "name": "Count of Murder And Non Negligent Manslaughter, Female as Fraction of Count Person Female",
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female"
     },
     {
-      "name": "Murder And Non Negligent Manslaughter, Male as Fraction of Count Person Male",
+      "name": "Count of Murder And Non Negligent Manslaughter, Male as Fraction of Count Person Male",
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male"
     }
   ],

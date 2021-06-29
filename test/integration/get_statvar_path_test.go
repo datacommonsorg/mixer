@@ -46,7 +46,7 @@ func TestGetStatVarPath(t *testing.T) {
 			"person.json",
 		},
 		{
-			"dc/g/Person_DetailedLevelOfSchool-EnrolledInGrade10",
+			"dc/g/Person_EducationalAttainment",
 			"school.json",
 		},
 	} {

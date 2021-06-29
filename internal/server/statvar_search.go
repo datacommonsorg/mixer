@@ -62,12 +62,12 @@ func (s *Server) SearchStatVar(
 			ids = append(ids, item.Dcid)
 		}
 
-		statExistence, err := checkStatExistence(ctx, s.store, ids, places)
+		statVarCount, err := countStatVar(ctx, s.store, ids, places)
 		if err != nil {
 			return nil, err
 		}
-		svList = filter(svList, statExistence, len(places))
-		svgList = filter(svgList, statExistence, len(places))
+		svList = filter(svList, statVarCount, len(places))
+		svgList = filter(svgList, statVarCount, len(places))
 	}
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svList) > maxResult {
@@ -82,10 +82,12 @@ func (s *Server) SearchStatVar(
 }
 
 func filter(
-	nodes []*pb.EntityInfo, countMap map[string]int, numPlaces int) []*pb.EntityInfo {
+	nodes []*pb.EntityInfo,
+	countMap map[string]map[string]int32,
+	numPlaces int) []*pb.EntityInfo {
 	result := []*pb.EntityInfo{}
 	for _, node := range nodes {
-		if c, ok := countMap[node.Dcid]; ok && c == numPlaces {
+		if existence, ok := countMap[node.Dcid]; ok && len(existence) == numPlaces {
 			result = append(result, node)
 		}
 	}
