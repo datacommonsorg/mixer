@@ -1419,7 +1419,7 @@
           "specializedEntity": "Production, Produced Thing"
         }
       ],
-      "numDescendentStatVars": 19707
+      "numDescendentStatVars": 19708
     },
     "dc/g/Education": {
       "absoluteName": "Education",
@@ -1461,7 +1461,13 @@
           "displayName": "Unemployment Rate"
         }
       ],
-      "numDescendentStatVars": 45825
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/Person_EmploymentStatus",
+          "specializedEntity": "Employment Status"
+        }
+      ],
+      "numDescendentStatVars": 46097
     },
     "dc/g/Energy": {
       "absoluteName": "Energy",
@@ -6682,10 +6688,6 @@
           "specializedEntity": "Legislation"
         },
         {
-          "id": "dc/g/Person_EmploymentStatus",
-          "specializedEntity": "Employment Status"
-        },
-        {
           "id": "dc/g/Person_PlaceOfResidenceClassification",
           "specializedEntity": "Place of Residence Classification"
         },
@@ -6706,7 +6708,7 @@
           "specializedEntity": "Stock"
         }
       ],
-      "numDescendentStatVars": 2628
+      "numDescendentStatVars": 217523
     },
     "dc/g/MortalityEvent": {
       "absoluteName": "MortalityEvent",
@@ -19527,7 +19529,7 @@
           "specializedEntity": "Miscellaneous"
         }
       ],
-      "numDescendentStatVars": 64497
+      "numDescendentStatVars": 280138
     },
     "dc/g/Stock": {
       "absoluteName": "Stock",
