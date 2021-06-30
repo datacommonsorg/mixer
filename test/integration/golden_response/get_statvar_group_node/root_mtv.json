@@ -47,11 +47,6 @@
       "displayName": "Energy"
     },
     {
-      "id": "dc/g/Environment",
-      "specializedEntity": "Environment",
-      "displayName": "Environment"
-    },
-    {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
@@ -73,7 +68,7 @@
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
       "displayName": "Miscellaneous",
-      "numDescendentStatVars": 203
+      "numDescendentStatVars": 51
     }
   ],
   "numDescendentStatVars": 7225

@@ -12,9 +12,9 @@
       "displayName": "Person With Citizenship Status = Not A US Citizen, Correctional Facility Operator = State Operated\u0026Federally Operated\u0026Privately Operated, Institutionalization"
     },
     {
-      "id": "dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated\u0026FederallyOperated\u0026PrivatelyOperated_PrisonSentence",
-      "specializedEntity": "Prison Sentence",
-      "displayName": "Person With Citizenship Status = Not A US Citizen, Correctional Facility Operator = State Operated\u0026Federally Operated\u0026Privately Operated, Prison Sentence"
+      "id": "dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated\u0026FederallyOperated\u0026PrivatelyOperated_PrisonSentenceDuration",
+      "specializedEntity": "Prison Sentence Duration",
+      "displayName": "Person With Citizenship Status = Not A US Citizen, Correctional Facility Operator = State Operated\u0026Federally Operated\u0026Privately Operated, Prison Sentence Duration"
     },
     {
       "id": "dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated\u0026FederallyOperated\u0026PrivatelyOperated_PrisonSentenceStatus",

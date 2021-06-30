@@ -42,7 +42,6 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		svg        string
 		goldenFile string
 	}{
-		// TODO(shifucun): edit the test case below
 		{
 			[]string{"country/USA"},
 			"dc/g/Person_EducationalAttainment",
@@ -56,7 +55,7 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		{
 			[]string{"country/GBR"},
 			"dc/g/Demographics",
-			"demographics.json",
+			"demographics_gbr.json",
 		},
 		// Run this first to test the server cache is not modified.
 		{
@@ -74,6 +73,11 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			[]string{},
 			"dc/g/Root",
 			"root.json",
+		},
+		{
+			[]string{},
+			"dc/g/Demographics",
+			"demographics.json",
 		},
 		{
 			[]string{"geoId/0649670"},
