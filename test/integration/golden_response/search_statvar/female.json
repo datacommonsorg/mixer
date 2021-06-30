@@ -545,11 +545,11 @@
       "dcid": "Count_Person_10To14Years_Female_WhiteAlone"
     },
     {
-      "name": "10 Th Grade, Female Population",
+      "name": "10Th Grade, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
     },
     {
-      "name": "11 Th Grade, Female Population",
+      "name": "11Th Grade, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainment11ThGrade_Female"
     },
     {
@@ -561,7 +561,7 @@
       "dcid": "Count_Person_12To14Years_Female_BelowPovertyLevelInThePast12Months"
     },
     {
-      "name": "12 Th Grade No Diploma, Female Population",
+      "name": "12Th Grade No Diploma, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainment12ThGradeNoDiploma_Female"
     },
     {
@@ -773,7 +773,7 @@
       "dcid": "Count_Person_18To19Years_Female_WhiteAlone"
     },
     {
-      "name": "18 - 24 Years, 9 Th To 12 Th Grade No Diploma, Female Population",
+      "name": "18 - 24 Years, 9Th To 12Th Grade No Diploma, Female Population",
       "dcid": "Count_Person_18To24Years_EducationalAttainment9ThTo12ThGradeNoDiploma_Female"
     },
     {
@@ -813,7 +813,7 @@
       "dcid": "Count_Person_18To24Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
     },
     {
-      "name": "18 - 24 Years, Less Than 9 Th Grade, Female Population",
+      "name": "18 - 24 Years, Less Than 9Th Grade, Female Population",
       "dcid": "Count_Person_18To24Years_EducationalAttainmentLessThan9ThGrade_Female"
     },
     {
@@ -1017,7 +1017,7 @@
       "dcid": "Count_Person_25To29Years_InLaborForce_Female"
     },
     {
-      "name": "25 - 34 Years, 9 Th To 12 Th Grade No Diploma, Female Population",
+      "name": "25 - 34 Years, 9Th To 12Th Grade No Diploma, Female Population",
       "dcid": "Count_Person_25To34Years_EducationalAttainment9ThTo12ThGradeNoDiploma_Female"
     },
     {
@@ -1069,7 +1069,7 @@
       "dcid": "Count_Person_25To34Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
     },
     {
-      "name": "25 - 34 Years, Less Than 9 Th Grade, Female Population",
+      "name": "25 - 34 Years, Less Than 9Th Grade, Female Population",
       "dcid": "Count_Person_25To34Years_EducationalAttainmentLessThan9ThGrade_Female"
     },
     {
@@ -1173,7 +1173,7 @@
       "dcid": "Count_Person_30To34Years_InLaborForce_Female"
     },
     {
-      "name": "35 - 44 Years, 9 Th To 12 Th Grade No Diploma, Female Population",
+      "name": "35 - 44 Years, 9Th To 12Th Grade No Diploma, Female Population",
       "dcid": "Count_Person_35To44Years_EducationalAttainment9ThTo12ThGradeNoDiploma_Female"
     },
     {
@@ -1241,7 +1241,7 @@
       "dcid": "Count_Person_35To44Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
     },
     {
-      "name": "35 - 44 Years, Less Than 9 Th Grade, Female Population",
+      "name": "35 - 44 Years, Less Than 9Th Grade, Female Population",
       "dcid": "Count_Person_35To44Years_EducationalAttainmentLessThan9ThGrade_Female"
     },
     {
@@ -1377,7 +1377,7 @@
       "dcid": "Count_Person_45To54Years_InLaborForce_Female"
     },
     {
-      "name": "45 - 64 Years, 9 Th To 12 Th Grade No Diploma, Female Population",
+      "name": "45 - 64 Years, 9Th To 12Th Grade No Diploma, Female Population",
       "dcid": "Count_Person_45To64Years_EducationalAttainment9ThTo12ThGradeNoDiploma_Female"
     },
     {
@@ -1401,7 +1401,7 @@
       "dcid": "Count_Person_45To64Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
     },
     {
-      "name": "45 - 64 Years, Less Than 9 Th Grade, Female Population",
+      "name": "45 - 64 Years, Less Than 9Th Grade, Female Population",
       "dcid": "Count_Person_45To64Years_EducationalAttainmentLessThan9ThGrade_Female"
     },
     {
@@ -1455,10 +1455,6 @@
     {
       "name": "5 - 9 Years, Female, White Alone Population",
       "dcid": "Count_Person_5To9Years_Female_WhiteAlone"
-    },
-    {
-      "name": "5 Th And 6 Th Grade, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainment5ThAnd6ThGrade_Female"
     },
     {
       "name": "5 Years or Less, Female, Above Poverty Level in The Past 12 Months Population",
@@ -1601,6 +1597,10 @@
       "dcid": "Count_Person_55To64Years_Female_WhiteAlone"
     },
     {
+      "name": "5Th And 6Th Grade, Female Population",
+      "dcid": "Count_Person_25OrMoreYears_EducationalAttainment5ThAnd6ThGrade_Female"
+    },
+    {
       "name": "6 - 11 Years, Female, Above Poverty Level in The Past 12 Months Population",
       "dcid": "Count_Person_6To11Years_Female_AbovePovertyLevelInThePast12Months"
     },
@@ -1721,7 +1721,7 @@
       "dcid": "Count_Person_65To74Years_Female_WhiteAlone"
     },
     {
-      "name": "65 Years or More, 9 Th To 12 Th Grade No Diploma, Female Population",
+      "name": "65 Years or More, 9Th To 12Th Grade No Diploma, Female Population",
       "dcid": "Count_Person_65OrMoreYears_EducationalAttainment9ThTo12ThGradeNoDiploma_Female"
     },
     {
@@ -1745,16 +1745,12 @@
       "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
     },
     {
-      "name": "65 Years or More, Less Than 9 Th Grade, Female Population",
+      "name": "65 Years or More, Less Than 9Th Grade, Female Population",
       "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentLessThan9ThGrade_Female"
     },
     {
       "name": "65 Years or More, Some College No Degree, Female Population",
       "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentSomeCollegeNoDegree_Female"
-    },
-    {
-      "name": "7 Th And 8 Th Grade, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainment7ThAnd8ThGrade_Female"
     },
     {
       "name": "70 - 74 Years, Not in Labor Force, Female Population",
@@ -1821,6 +1817,10 @@
       "dcid": "Count_Person_75OrMoreYears_InLaborForce_Female"
     },
     {
+      "name": "7Th And 8Th Grade, Female Population",
+      "dcid": "Count_Person_25OrMoreYears_EducationalAttainment7ThAnd8ThGrade_Female"
+    },
+    {
       "name": "85 Years or More, Female, American Indian or Alaska Native Alone Population",
       "dcid": "Count_Person_85OrMoreYears_Female_AmericanIndianOrAlaskaNativeAlone"
     },
@@ -1857,7 +1857,7 @@
       "dcid": "Count_Person_85OrMoreYears_Female_WhiteAlone"
     },
     {
-      "name": "9 Th Grade, Female Population",
+      "name": "9Th Grade, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
     },
     {
@@ -2937,7 +2937,7 @@
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
     },
     {
-      "name": "Nursery To 4 Th Grade, Female Population",
+      "name": "Nursery To 4Th Grade, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNurseryTo4ThGrade_Female"
     },
     {
@@ -4551,31 +4551,31 @@
       "dcid": "dc/g/Person_ArmedForcesStatus_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = 10 Th Grade, Gender = Female",
+      "name": "Person With Educational Attainment = 10Th Grade, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-10ThGrade_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = 11 Th Grade, Gender = Female",
+      "name": "Person With Educational Attainment = 11Th Grade, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-11ThGrade_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = 12 Th Grade No Diploma, Gender = Female",
+      "name": "Person With Educational Attainment = 12Th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-12ThGradeNoDiploma_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = 5 Th And 6 Th Grade, Gender = Female",
+      "name": "Person With Educational Attainment = 5Th And 6Th Grade, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-5ThAnd6ThGrade_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = 7 Th And 8 Th Grade, Gender = Female",
+      "name": "Person With Educational Attainment = 7Th And 8Th Grade, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-7ThAnd8ThGrade_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = 9 Th Grade, Gender = Female",
+      "name": "Person With Educational Attainment = 9Th Grade, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-9ThGrade_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = 9 Th To 12 Th Grade No Diploma, Gender = Female",
+      "name": "Person With Educational Attainment = 9Th To 12Th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
     {
@@ -4607,7 +4607,7 @@
       "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = Less Than 9 Th Grade, Gender = Female",
+      "name": "Person With Educational Attainment = Less Than 9Th Grade, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-LessThan9ThGrade_Gender-Female"
     },
     {
@@ -4627,7 +4627,7 @@
       "dcid": "dc/g/Person_EducationalAttainment-NoSchoolingCompleted_Gender-Female"
     },
     {
-      "name": "Person With Educational Attainment = Nursery To 4 Th Grade, Gender = Female",
+      "name": "Person With Educational Attainment = Nursery To 4Th Grade, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-NurseryTo4ThGrade_Gender-Female"
     },
     {
@@ -6847,7 +6847,7 @@
       "dcid": "dc/g/Person_Age-Years18To24_ArmedForcesStatus_Gender-Female"
     },
     {
-      "name": "Person With Age = 18 - 24 Years, Educational Attainment = 9 Th To 12 Th Grade No Diploma, Gender = Female",
+      "name": "Person With Age = 18 - 24 Years, Educational Attainment = 9Th To 12Th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_Age-Years18To24_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
     {
@@ -6875,7 +6875,7 @@
       "dcid": "dc/g/Person_Age-Years18To24_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
     },
     {
-      "name": "Person With Age = 18 - 24 Years, Educational Attainment = Less Than 9 Th Grade, Gender = Female",
+      "name": "Person With Age = 18 - 24 Years, Educational Attainment = Less Than 9Th Grade, Gender = Female",
       "dcid": "dc/g/Person_Age-Years18To24_EducationalAttainment-LessThan9ThGrade_Gender-Female"
     },
     {
@@ -7327,7 +7327,7 @@
       "dcid": "dc/g/Person_Age-Years25To34_ArmedForcesStatus_Gender-Female"
     },
     {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment = 9 Th To 12 Th Grade No Diploma, Gender = Female",
+      "name": "Person With Age = 25 - 34 Years, Educational Attainment = 9Th To 12Th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
     {
@@ -7355,7 +7355,7 @@
       "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
     },
     {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment = Less Than 9 Th Grade, Gender = Female",
+      "name": "Person With Age = 25 - 34 Years, Educational Attainment = Less Than 9Th Grade, Gender = Female",
       "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-LessThan9ThGrade_Gender-Female"
     },
     {
@@ -7627,7 +7627,7 @@
       "dcid": "dc/g/Person_Age-Years35To44_ArmedForcesStatus_Gender-Female"
     },
     {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = 9 Th To 12 Th Grade No Diploma, Gender = Female",
+      "name": "Person With Age = 35 - 44 Years, Educational Attainment = 9Th To 12Th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
     {
@@ -7655,7 +7655,7 @@
       "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
     },
     {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = Less Than 9 Th Grade, Gender = Female",
+      "name": "Person With Age = 35 - 44 Years, Educational Attainment = Less Than 9Th Grade, Gender = Female",
       "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-LessThan9ThGrade_Gender-Female"
     },
     {
@@ -7963,7 +7963,7 @@
       "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = 9 Th To 12 Th Grade No Diploma, Gender = Female",
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = 9Th To 12Th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
     {
@@ -7991,7 +7991,7 @@
       "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
     },
     {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Less Than 9 Th Grade, Gender = Female",
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Less Than 9Th Grade, Gender = Female",
       "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-LessThan9ThGrade_Gender-Female"
     },
     {

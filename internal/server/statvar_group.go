@@ -211,6 +211,9 @@ func (s *Server) GetStatVarGroupNode(
 			item.DisplayName = s.cache.SvgInfo[item.Id].AbsoluteName
 			item.NumDescendentStatVars = s.cache.SvgInfo[item.Id].NumDescendentStatVars
 		}
+		for _, item := range result.ChildStatVars {
+			item.HasData = true
+		}
 		result.ParentStatVarGroups = s.cache.ParentSvg[svg]
 	}
 
@@ -257,8 +260,8 @@ func (s *Server) GetStatVarGroupNode(
 		}
 		// Filter child stat vars
 		for _, item := range result.ChildStatVars {
-			if existence, ok := statVarCount[item.Id]; ok && len(existence) == len(places) {
-				item.HasData = true
+			if existence, ok := statVarCount[item.Id]; !ok || len(existence) != len(places) {
+				item.HasData = false
 			}
 		}
 	}

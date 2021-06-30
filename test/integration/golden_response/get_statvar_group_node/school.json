@@ -3,50 +3,50 @@
   "childStatVars": [
     {
       "id": "Count_Person_EducationalAttainment1StGrade",
-      "searchName": "Count of Person With Educational Attainment 1 St Grade",
-      "displayName": "1 St Grade Population",
+      "searchName": "Count of Person With Educational Attainment 1St Grade",
+      "displayName": "1St Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment2NdGrade",
-      "searchName": "Count of Person With Educational Attainment 2 Nd Grade",
-      "displayName": "2 Nd Grade Population",
+      "searchName": "Count of Person With Educational Attainment 2Nd Grade",
+      "displayName": "2Nd Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment3RdGrade",
-      "searchName": "Count of Person With Educational Attainment 3 Rd Grade",
-      "displayName": "3 Rd Grade Population",
+      "searchName": "Count of Person With Educational Attainment 3Rd Grade",
+      "displayName": "3Rd Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment4ThGrade",
-      "searchName": "Count of Person With Educational Attainment 4 Th Grade",
-      "displayName": "4 Th Grade Population",
+      "searchName": "Count of Person With Educational Attainment 4Th Grade",
+      "displayName": "4Th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment5ThGrade",
-      "searchName": "Count of Person With Educational Attainment 5 Th Grade",
-      "displayName": "5 Th Grade Population",
+      "searchName": "Count of Person With Educational Attainment 5Th Grade",
+      "displayName": "5Th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment6ThGrade",
-      "searchName": "Count of Person With Educational Attainment 6 Th Grade",
-      "displayName": "6 Th Grade Population",
+      "searchName": "Count of Person With Educational Attainment 6Th Grade",
+      "displayName": "6Th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment7ThGrade",
-      "searchName": "Count of Person With Educational Attainment 7 Th Grade",
-      "displayName": "7 Th Grade Population",
+      "searchName": "Count of Person With Educational Attainment 7Th Grade",
+      "displayName": "7Th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment8ThGrade",
-      "searchName": "Count of Person With Educational Attainment 8 Th Grade",
-      "displayName": "8 Th Grade Population",
+      "searchName": "Count of Person With Educational Attainment 8Th Grade",
+      "displayName": "8Th Grade Population",
       "hasData": true
     },
     {
@@ -83,44 +83,44 @@
   "childStatVarGroups": [
     {
       "id": "dc/g/Person_EducationalAttainment-10ThGrade",
-      "specializedEntity": "10 Th Grade",
-      "displayName": "Person With Educational Attainment = 10 Th Grade",
+      "specializedEntity": "10Th Grade",
+      "displayName": "Person With Educational Attainment = 10Th Grade",
       "numDescendentStatVars": 3
     },
     {
       "id": "dc/g/Person_EducationalAttainment-11ThGrade",
-      "specializedEntity": "11 Th Grade",
-      "displayName": "Person With Educational Attainment = 11 Th Grade",
+      "specializedEntity": "11Th Grade",
+      "displayName": "Person With Educational Attainment = 11Th Grade",
       "numDescendentStatVars": 3
     },
     {
       "id": "dc/g/Person_EducationalAttainment-12ThGradeNoDiploma",
-      "specializedEntity": "12 Th Grade No Diploma",
-      "displayName": "Person With Educational Attainment = 12 Th Grade No Diploma",
+      "specializedEntity": "12Th Grade No Diploma",
+      "displayName": "Person With Educational Attainment = 12Th Grade No Diploma",
       "numDescendentStatVars": 3
     },
     {
       "id": "dc/g/Person_EducationalAttainment-5ThAnd6ThGrade",
-      "specializedEntity": "5 Th And 6 Th Grade",
-      "displayName": "Person With Educational Attainment = 5 Th And 6 Th Grade",
+      "specializedEntity": "5Th And 6Th Grade",
+      "displayName": "Person With Educational Attainment = 5Th And 6Th Grade",
       "numDescendentStatVars": 2
     },
     {
       "id": "dc/g/Person_EducationalAttainment-7ThAnd8ThGrade",
-      "specializedEntity": "7 Th And 8 Th Grade",
-      "displayName": "Person With Educational Attainment = 7 Th And 8 Th Grade",
+      "specializedEntity": "7Th And 8Th Grade",
+      "displayName": "Person With Educational Attainment = 7Th And 8Th Grade",
       "numDescendentStatVars": 2
     },
     {
       "id": "dc/g/Person_EducationalAttainment-9ThGrade",
-      "specializedEntity": "9 Th Grade",
-      "displayName": "Person With Educational Attainment = 9 Th Grade",
+      "specializedEntity": "9Th Grade",
+      "displayName": "Person With Educational Attainment = 9Th Grade",
       "numDescendentStatVars": 3
     },
     {
       "id": "dc/g/Person_EducationalAttainment-9ThTo12ThGradeNoDiploma",
-      "specializedEntity": "9 Th To 12 Th Grade No Diploma",
-      "displayName": "Person With Educational Attainment = 9 Th To 12 Th Grade No Diploma",
+      "specializedEntity": "9Th To 12Th Grade No Diploma",
+      "displayName": "Person With Educational Attainment = 9Th To 12Th Grade No Diploma",
       "numDescendentStatVars": 10
     },
     {
@@ -167,8 +167,8 @@
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThan9ThGrade",
-      "specializedEntity": "Less Than 9 Th Grade",
-      "displayName": "Person With Educational Attainment = Less Than 9 Th Grade",
+      "specializedEntity": "Less Than 9Th Grade",
+      "displayName": "Person With Educational Attainment = Less Than 9Th Grade",
       "numDescendentStatVars": 10
     },
     {
@@ -207,8 +207,8 @@
     },
     {
       "id": "dc/g/Person_EducationalAttainment-NurseryTo4ThGrade",
-      "specializedEntity": "Nursery To 4 Th Grade",
-      "displayName": "Person With Educational Attainment = Nursery To 4 Th Grade",
+      "specializedEntity": "Nursery To 4Th Grade",
+      "displayName": "Person With Educational Attainment = Nursery To 4Th Grade",
       "numDescendentStatVars": 2
     },
     {

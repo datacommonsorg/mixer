@@ -34,8 +34,7 @@
     {
       "id": "IncrementalCount_Person",
       "searchName": "Incremental Count of Person",
-      "displayName": "Incremental Count",
-      "hasData": true
+      "displayName": "Incremental Count"
     },
     {
       "id": "LifeExpectancy_Person",
@@ -46,134 +45,115 @@
     {
       "id": "Median_Age_Person",
       "searchName": "Median Age of Person",
-      "displayName": "Median Age",
-      "hasData": true
+      "displayName": "Median Age"
     },
     {
       "id": "Median_Income_Person",
       "searchName": "Median Income of Person",
-      "displayName": "Median Income",
-      "hasData": true
+      "displayName": "Median Income"
     }
   ],
   "childStatVarGroups": [
     {
       "id": "dc/g/Births",
       "specializedEntity": "Births",
-      "displayName": "Births",
-      "numDescendentStatVars": 10
+      "displayName": "Births"
     },
     {
       "id": "dc/g/Commute",
       "specializedEntity": "Commute",
-      "displayName": "Commute",
-      "numDescendentStatVars": 65
+      "displayName": "Commute"
     },
     {
       "id": "dc/g/ImmigrationAndCitizenship",
       "specializedEntity": "Immigration And Citizenship",
-      "displayName": "Immigration and Citizenship",
-      "numDescendentStatVars": 279
+      "displayName": "Immigration and Citizenship"
     },
     {
       "id": "dc/g/Language",
       "specializedEntity": "Language",
-      "displayName": "Language",
-      "numDescendentStatVars": 391
+      "displayName": "Language"
     },
     {
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 5076
+      "numDescendentStatVars": 648
     },
     {
       "id": "dc/g/Person_ArmedForcesStatus",
       "specializedEntity": "Armed Forces Status",
-      "displayName": "Person by Armed Forces Status",
-      "numDescendentStatVars": 682
+      "displayName": "Person by Armed Forces Status"
     },
     {
       "id": "dc/g/Person_DisabilityStatus",
       "specializedEntity": "Disability Status",
-      "displayName": "Person by Disability Status",
-      "numDescendentStatVars": 108
+      "displayName": "Person by Disability Status"
     },
     {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 5411
+      "numDescendentStatVars": 445
     },
     {
       "id": "dc/g/Person_HealthInsurance",
       "specializedEntity": "Health Insurance",
-      "displayName": "Person by Health Insurance",
-      "numDescendentStatVars": 1722
+      "displayName": "Person by Health Insurance"
     },
     {
       "id": "dc/g/Person_HouseholdIncome",
       "specializedEntity": "Household Income",
-      "displayName": "Person by Household Income",
-      "numDescendentStatVars": 25
+      "displayName": "Person by Household Income"
     },
     {
       "id": "dc/g/Person_HouseholdType",
       "specializedEntity": "Household Type",
-      "displayName": "Person by Household Type",
-      "numDescendentStatVars": 252
+      "displayName": "Person by Household Type"
     },
     {
       "id": "dc/g/Person_Income",
       "specializedEntity": "Income",
-      "displayName": "Person by Income",
-      "numDescendentStatVars": 880
+      "displayName": "Person by Income"
     },
     {
       "id": "dc/g/Person_IncomeStatus",
       "specializedEntity": "Income Status",
-      "displayName": "Person by Income Status",
-      "numDescendentStatVars": 340
+      "displayName": "Person by Income Status"
     },
     {
       "id": "dc/g/Person_LiteracyStatus",
       "specializedEntity": "Literacy Status",
-      "displayName": "Person by Literacy Status",
-      "numDescendentStatVars": 72
+      "displayName": "Person by Literacy Status"
     },
     {
       "id": "dc/g/Person_MaritalStatus",
       "specializedEntity": "Marital Status",
-      "displayName": "Person by Marital Status",
-      "numDescendentStatVars": 131
+      "displayName": "Person by Marital Status"
     },
     {
       "id": "dc/g/Person_PeriodOfMilitaryService",
       "specializedEntity": "Period of Military Service",
-      "displayName": "Person by Period of Military Service",
-      "numDescendentStatVars": 15
+      "displayName": "Person by Period of Military Service"
     },
     {
       "id": "dc/g/Person_PovertyStatus",
       "specializedEntity": "Poverty Status",
-      "displayName": "Person by Poverty Status",
-      "numDescendentStatVars": 601
+      "displayName": "Person by Poverty Status"
     },
     {
       "id": "dc/g/Person_Race",
       "specializedEntity": "Race",
-      "displayName": "Person by Race",
-      "numDescendentStatVars": 3716
+      "displayName": "Person by Race"
     },
     {
       "id": "dc/g/Residence",
       "specializedEntity": "Residence",
-      "displayName": "Residence",
-      "numDescendentStatVars": 784
+      "displayName": "Residence"
     }
   ],
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 7821
+  "numDescendentStatVars": 673
 }
