@@ -87,7 +87,7 @@ func filter(
 	numPlaces int) []*pb.EntityInfo {
 	result := []*pb.EntityInfo{}
 	for _, node := range nodes {
-		if existence := countMap[node.Dcid]; len(existence) > 0 {
+		if existence, ok := countMap[node.Dcid]; ok && len(existence) > 0 {
 			result = append(result, node)
 		}
 	}
