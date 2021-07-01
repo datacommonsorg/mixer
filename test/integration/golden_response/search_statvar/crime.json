@@ -55,31 +55,31 @@
   ],
   "statVarGroups": [
     {
-      "name": "CriminalActivities With Crime Type = Murder And Non Negligent Manslaughter",
+      "name": "Criminal Activities With Crime Type = Murder And Non Negligent Manslaughter",
       "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter"
     },
     {
-      "name": "CriminalActivities by Crime Type",
+      "name": "Criminal Activities by Crime Type",
       "dcid": "dc/g/CriminalActivities_CrimeType"
     },
     {
-      "name": "CriminalActivities With Crime Type = Murder And Non Negligent Manslaughter, Gender",
+      "name": "Criminal Activities With Crime Type = Murder And Non Negligent Manslaughter, Gender",
       "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter_Gender"
     },
     {
-      "name": "CriminalActivities With Crime Type = Murder And Non Negligent Manslaughter, Gender = Female",
+      "name": "Criminal Activities With Crime Type = Murder And Non Negligent Manslaughter, Gender = Female",
       "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter_Gender-Female"
     },
     {
-      "name": "CriminalActivities With Crime Type = Murder And Non Negligent Manslaughter, Gender = Male",
+      "name": "Criminal Activities With Crime Type = Murder And Non Negligent Manslaughter, Gender = Male",
       "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter_Gender-Male"
     },
     {
-      "name": "CriminalActivities With Crime Type, Gender = Female",
+      "name": "Criminal Activities With Crime Type, Gender = Female",
       "dcid": "dc/g/CriminalActivities_CrimeType_Gender-Female"
     },
     {
-      "name": "CriminalActivities With Crime Type, Gender = Male",
+      "name": "Criminal Activities With Crime Type, Gender = Male",
       "dcid": "dc/g/CriminalActivities_CrimeType_Gender-Male"
     },
     {

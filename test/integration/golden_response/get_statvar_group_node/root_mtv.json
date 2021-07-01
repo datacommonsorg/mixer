@@ -27,7 +27,7 @@
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
       "displayName": "Economics",
-      "numDescendentStatVars": 108
+      "numDescendentStatVars": 1914
     },
     {
       "id": "dc/g/Education",
@@ -68,7 +68,7 @@
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
       "displayName": "Miscellaneous",
-      "numDescendentStatVars": 51
+      "numDescendentStatVars": 203
     }
   ],
   "numDescendentStatVars": 7225
