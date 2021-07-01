@@ -65,6 +65,11 @@
       "numDescendentStatVars": 121
     },
     {
+      "id": "dc/g/MilitaryService",
+      "specializedEntity": "MilitaryService",
+      "displayName": "Military Service"
+    },
+    {
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
       "displayName": "Miscellaneous",

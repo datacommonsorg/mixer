@@ -4,7 +4,8 @@
     {
       "id": "dc/g/COVID-19",
       "specializedEntity": "COVID-19",
-      "displayName": "COVID-19"
+      "displayName": "COVID-19",
+      "numDescendentStatVars": 41
     },
     {
       "id": "dc/g/Crime",
@@ -21,7 +22,8 @@
     {
       "id": "dc/g/Disasters",
       "specializedEntity": "Disasters",
-      "displayName": "Disasters"
+      "displayName": "Disasters",
+      "numDescendentStatVars": 16
     },
     {
       "id": "dc/g/Economics",
@@ -44,7 +46,8 @@
     {
       "id": "dc/g/Energy",
       "specializedEntity": "Energy",
-      "displayName": "Energy"
+      "displayName": "Energy",
+      "numDescendentStatVars": 407
     },
     {
       "id": "dc/g/Health",
@@ -55,12 +58,19 @@
     {
       "id": "dc/g/Household",
       "specializedEntity": "Household",
-      "displayName": "Household"
+      "displayName": "Household",
+      "numDescendentStatVars": 860
     },
     {
       "id": "dc/g/Housing",
       "specializedEntity": "Housing",
-      "displayName": "Housing"
+      "displayName": "Housing",
+      "numDescendentStatVars": 121
+    },
+    {
+      "id": "dc/g/MilitaryService",
+      "specializedEntity": "MilitaryService",
+      "displayName": "Military Service"
     },
     {
       "id": "dc/g/Miscellaneous",

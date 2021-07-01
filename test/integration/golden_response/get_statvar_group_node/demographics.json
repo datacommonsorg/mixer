@@ -9,14 +9,14 @@
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
-      "searchName": "Count of Person With is Internet User True as Fraction of Per Capita",
-      "displayName": "Is Internet User Population as Fraction of Per Capita",
+      "searchName": "Percent of Internet Users",
+      "displayName": "Percent of Internet Users",
       "hasData": true
     },
     {
       "id": "Count_Person_PerArea",
-      "searchName": "Count of Person as Fraction of Area",
-      "displayName": "Population as Fraction of Area",
+      "searchName": "Population Density",
+      "displayName": "Population Density",
       "hasData": true
     },
     {
@@ -27,14 +27,14 @@
     },
     {
       "id": "GrowthRate_Count_Person",
-      "searchName": "Growth Rate Count of Person",
-      "displayName": "Growth Rate Population",
+      "searchName": "Population Growth Rate",
+      "displayName": "Population Growth Rate",
       "hasData": true
     },
     {
       "id": "IncrementalCount_Person",
-      "searchName": "Incremental Count of Person",
-      "displayName": "Incremental Count",
+      "searchName": "Population Change",
+      "displayName": "Population Change",
       "hasData": true
     },
     {
@@ -86,12 +86,6 @@
       "specializedEntity": "Age",
       "displayName": "Person by Age",
       "numDescendentStatVars": 5076
-    },
-    {
-      "id": "dc/g/Person_ArmedForcesStatus",
-      "specializedEntity": "Armed Forces Status",
-      "displayName": "Person by Armed Forces Status",
-      "numDescendentStatVars": 682
     },
     {
       "id": "dc/g/Person_DisabilityStatus",
@@ -148,12 +142,6 @@
       "numDescendentStatVars": 131
     },
     {
-      "id": "dc/g/Person_PeriodOfMilitaryService",
-      "specializedEntity": "Period of Military Service",
-      "displayName": "Person by Period of Military Service",
-      "numDescendentStatVars": 15
-    },
-    {
       "id": "dc/g/Person_PovertyStatus",
       "specializedEntity": "Poverty Status",
       "displayName": "Person by Poverty Status",
@@ -175,5 +163,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 7821
+  "numDescendentStatVars": 7818
 }

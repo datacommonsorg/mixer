@@ -5,7 +5,7 @@
       "id": "dc/g/COVID-19",
       "specializedEntity": "COVID-19",
       "displayName": "COVID-19",
-      "numDescendentStatVars": 103
+      "numDescendentStatVars": 102
     },
     {
       "id": "dc/g/Crime",
@@ -17,7 +17,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 7821
+      "numDescendentStatVars": 7818
     },
     {
       "id": "dc/g/Disasters",
@@ -66,6 +66,12 @@
       "specializedEntity": "Housing",
       "displayName": "Housing",
       "numDescendentStatVars": 140
+    },
+    {
+      "id": "dc/g/MilitaryService",
+      "specializedEntity": "MilitaryService",
+      "displayName": "Military Service",
+      "numDescendentStatVars": 682
     },
     {
       "id": "dc/g/Miscellaneous",

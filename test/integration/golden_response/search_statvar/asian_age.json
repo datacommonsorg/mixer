@@ -1955,14 +1955,6 @@
       "dcid": "dc/g/Person_Age-Years16To17_PovertyStatus_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 16 Years or More, Employment Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Race-AsianAlone"
     },
@@ -2343,10 +2335,6 @@
       "dcid": "dc/g/Person_Age-Years5_PovertyStatus_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Armed Forces Status = Civilian, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_ArmedForcesStatus-Civilian_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age, Gender = Female, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_Gender-Female_Race-AsianAlone"
     },
@@ -2425,34 +2413,6 @@
     {
       "name": "Person With Age = 16 - 17 Years, Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16To17_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Employment Status, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_EmploymentStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Employment, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_Employment_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_Gender-Male_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Gender, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_Gender_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus_Gender-Male_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Race = Asian Alone",
@@ -2823,14 +2783,6 @@
       "dcid": "dc/g/Person_Age-Years5_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Armed Forces Status = Civilian, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_ArmedForcesStatus-Civilian_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Armed Forces Status = Civilian, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_ArmedForcesStatus-Civilian_Gender-Male_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
     },
@@ -2845,22 +2797,6 @@
     {
       "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Employment Status, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_EmploymentStatus_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Employment Status, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_EmploymentStatus_Gender-Male_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Employment, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_Employment_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Armed Forces Status = Civilian, Employment, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_ArmedForcesStatus-Civilian_Employment_Gender-Male_Race-AsianAlone"
     }
   ]
 }
