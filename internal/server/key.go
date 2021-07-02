@@ -123,3 +123,11 @@ func buildPlaceStatsVarKey(dcids []string) bigtable.RowList {
 	}
 	return rowList
 }
+
+func buildStatVarSummaryKey(statVars []string) bigtable.RowList {
+	rowList := bigtable.RowList{}
+	for _, sv := range statVars {
+		rowList = append(rowList, fmt.Sprintf("%s%s", util.BtStatVarSummary, sv))
+	}
+	return rowList
+}

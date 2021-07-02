@@ -380,3 +380,58 @@ func countStatVar(
 	}
 	return result, nil
 }
+
+// GetStatVarSummary implements API for Mixer.GetStatVarSummary.
+func (s *Server) GetStatVarSummary(
+	ctx context.Context, in *pb.GetStatVarSummaryRequest) (
+	*pb.GetStatVarSummaryResponse, error) {
+	sv := in.GetStatVars()
+	rowList := buildStatVarSummaryKey(sv)
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var statVarSummary pb.StatVarSummary
+			err := protojson.Unmarshal(jsonRaw, &statVarSummary)
+			if err != nil {
+				return nil, err
+			}
+			return &statVarSummary, nil
+		},
+		nil,
+		false, /* readBranch */
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := &pb.GetStatVarSummaryResponse{}
+	result.StatVarSummary = map[string]*pb.StatVarSummary{}
+	for dcid, data := range baseDataMap {
+		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
+	}
+	return result, nil
+}
+
+// FilterStatVar implements API for Mixer.FilterStatVar.
+func (s *Server) FilterStatVar(
+	ctx context.Context, in *pb.FilterStatVarRequest) (
+	*pb.FilterStatVarResponse, error) {
+	places := in.GetPlaces()
+	statVars := in.GetStatVars()
+	result := &pb.FilterStatVarResponse{}
+	if len(places) > 0 {
+		statVarCount, err := countStatVar(ctx, s.store, statVars, places)
+		if err != nil {
+			return nil, err
+		}
+		for _, sv := range statVars {
+			if existence, ok := statVarCount[sv]; ok && len(existence) > 0 {
+				result.StatVars = append(result.StatVars, sv)
+			}
+		}
+	} else {
+		result.StatVars = statVars
+	}
+	return result, nil
+}
