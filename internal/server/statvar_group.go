@@ -235,32 +235,30 @@ func (s *Server) GetStatVarGroupNode(
 			return nil, err
 		}
 		// Count for current node.
-		if existence, ok := statVarCount[svg]; ok && len(existence) == len(places) {
+		result.NumDescendentStatVars = 0
+		if existence, ok := statVarCount[svg]; ok && len(existence) > 0 {
 			for _, count := range existence {
-				// Use the smallest count among all places.
-				if count < result.NumDescendentStatVars {
+				// Use the largest count among all places.
+				if count > result.NumDescendentStatVars {
 					result.NumDescendentStatVars = count
 				}
 			}
-		} else {
-			result.NumDescendentStatVars = 0
 		}
 		// Filter child stat var groups
 		for _, item := range result.ChildStatVarGroups {
-			if existence, ok := statVarCount[item.Id]; ok && len(existence) == len(places) {
+			item.NumDescendentStatVars = 0
+			if existence, ok := statVarCount[item.Id]; ok && len(existence) > 0 {
 				for _, count := range existence {
 					// Use the largest count among all places
-					if count < item.NumDescendentStatVars {
+					if count > item.NumDescendentStatVars {
 						item.NumDescendentStatVars = count
 					}
 				}
-			} else {
-				item.NumDescendentStatVars = 0
 			}
 		}
 		// Filter child stat vars
 		for _, item := range result.ChildStatVars {
-			if existence, ok := statVarCount[item.Id]; !ok || len(existence) != len(places) {
+			if existence, ok := statVarCount[item.Id]; !ok || len(existence) == 0 {
 				item.HasData = false
 			}
 		}

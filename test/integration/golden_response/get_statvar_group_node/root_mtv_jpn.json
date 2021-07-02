@@ -4,70 +4,80 @@
     {
       "id": "dc/g/COVID-19",
       "specializedEntity": "COVID-19",
-      "displayName": "COVID-19"
+      "displayName": "COVID-19",
+      "numDescendentStatVars": 41
     },
     {
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
       "displayName": "Crime",
-      "numDescendentStatVars": 3
+      "numDescendentStatVars": 149
     },
     {
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 92
+      "numDescendentStatVars": 4192
     },
     {
       "id": "dc/g/Disasters",
       "specializedEntity": "Disasters",
-      "displayName": "Disasters"
+      "displayName": "Disasters",
+      "numDescendentStatVars": 16
     },
     {
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
       "displayName": "Economics",
-      "numDescendentStatVars": 25
+      "numDescendentStatVars": 1914
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "numDescendentStatVars": 6
+      "numDescendentStatVars": 572
     },
     {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
       "displayName": "Employment",
-      "numDescendentStatVars": 6
+      "numDescendentStatVars": 3430
     },
     {
       "id": "dc/g/Energy",
       "specializedEntity": "Energy",
-      "displayName": "Energy"
+      "displayName": "Energy",
+      "numDescendentStatVars": 407
     },
     {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "numDescendentStatVars": 90
+      "numDescendentStatVars": 285
     },
     {
       "id": "dc/g/Household",
       "specializedEntity": "Household",
-      "displayName": "Household"
+      "displayName": "Household",
+      "numDescendentStatVars": 860
     },
     {
       "id": "dc/g/Housing",
       "specializedEntity": "Housing",
-      "displayName": "Housing"
+      "displayName": "Housing",
+      "numDescendentStatVars": 121
+    },
+    {
+      "id": "dc/g/MilitaryService",
+      "specializedEntity": "MilitaryService",
+      "displayName": "Military Service"
     },
     {
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
       "displayName": "Miscellaneous",
-      "numDescendentStatVars": 51
+      "numDescendentStatVars": 203
     }
   ],
-  "numDescendentStatVars": 682
+  "numDescendentStatVars": 7225
 }
