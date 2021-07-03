@@ -147,7 +147,7 @@
             "1909": 1
           },
           "metadata": {
-            "importName": "EarthquakeUSGS",
+            "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
             "measurementMethod": "DataCommonsAggregate"
           }
@@ -165,7 +165,7 @@
             "2019": 16
           },
           "metadata": {
-            "importName": "StormNOAA",
+            "importName": "StormNOAA_Agg",
             "provenanceUrl": "https://www.ncdc.noaa.gov/",
             "measurementMethod": "DataCommonsAggregate"
           }
@@ -2310,7 +2310,8 @@
             "2021-01": 649341,
             "2021-02": 659398,
             "2021-03": 655936,
-            "2021-04": 650468
+            "2021-04": 650096,
+            "2021-05": 655122
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -2768,7 +2769,8 @@
             "2021-01": 706871,
             "2021-02": 714084,
             "2021-03": 707568,
-            "2021-04": 700772
+            "2021-04": 699836,
+            "2021-05": 703028
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -3202,7 +3204,7 @@
             "2016": 2
           },
           "metadata": {
-            "importName": "StormNOAA",
+            "importName": "StormNOAA_Agg",
             "provenanceUrl": "https://www.ncdc.noaa.gov/",
             "measurementMethod": "DataCommonsAggregate"
           }
@@ -3221,7 +3223,7 @@
             "2017": 1
           },
           "metadata": {
-            "importName": "StormNOAA",
+            "importName": "StormNOAA_Agg",
             "provenanceUrl": "https://www.ncdc.noaa.gov/",
             "measurementMethod": "DataCommonsAggregate"
           }
@@ -3237,7 +3239,7 @@
             "2018": 2
           },
           "metadata": {
-            "importName": "FireFAMWEB",
+            "importName": "FireFAMWEB_Agg",
             "provenanceUrl": "https://fam.nwcg.gov/fam-web/",
             "measurementMethod": "DataCommonsAggregate"
           }
@@ -3736,7 +3738,10 @@
             "2021-06-24": 108012,
             "2021-06-25": 108084,
             "2021-06-26": 108084,
-            "2021-06-27": 108178
+            "2021-06-27": 108178,
+            "2021-06-28": 108410,
+            "2021-06-29": 108504,
+            "2021-06-30": 108570
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -4238,7 +4243,10 @@
             "2021-06-24": 1738,
             "2021-06-25": 1738,
             "2021-06-26": 1738,
-            "2021-06-27": 1738
+            "2021-06-27": 1738,
+            "2021-06-28": 1740,
+            "2021-06-29": 1742,
+            "2021-06-30": 1743
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -5350,7 +5358,8 @@
             "2021-01": 8.1,
             "2021-02": 7.7,
             "2021-03": 7.3,
-            "2021-04": 7.2
+            "2021-04": 7.1,
+            "2021-05": 6.8
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -7576,7 +7585,8 @@
             "2021-01": 497008,
             "2021-02": 506508,
             "2021-03": 503894,
-            "2021-04": 500639
+            "2021-04": 500423,
+            "2021-05": 505491
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -8034,7 +8044,8 @@
             "2021-01": 530886,
             "2021-02": 538297,
             "2021-03": 533511,
-            "2021-04": 529948
+            "2021-04": 529389,
+            "2021-05": 533530
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -9369,7 +9380,8 @@
             "2021-01": 6.4,
             "2021-02": 5.9,
             "2021-03": 5.6,
-            "2021-04": 5.5
+            "2021-04": 5.5,
+            "2021-05": 5.3
           },
           "metadata": {
             "importName": "BLS_LAUS",

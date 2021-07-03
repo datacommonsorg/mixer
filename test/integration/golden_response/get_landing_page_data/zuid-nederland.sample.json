@@ -1155,7 +1155,7 @@
             "2019": 1
           },
           "metadata": {
-            "importName": "EarthquakeUSGS",
+            "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
             "measurementMethod": "DataCommonsAggregate"
           }
@@ -3371,7 +3371,10 @@
             "2021-06-25": 17735,
             "2021-06-26": 17740,
             "2021-06-27": 17740,
-            "2021-06-28": 17741
+            "2021-06-28": 17741,
+            "2021-06-29": 17741,
+            "2021-06-30": 17745,
+            "2021-07-01": 17745
           },
           "metadata": {
             "importName": "WHO_COVID19",

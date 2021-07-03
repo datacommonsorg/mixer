@@ -41,7 +41,7 @@
       "dcid": "Count_CriminalActivities_ViolentCrime"
     },
     {
-      "name": "Count of Murder And Non Negligent Manslaughter as Fraction of Count Person",
+      "name": "Count of Murder And Non Negligent Manslaughter Per Capita",
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person"
     },
     {
