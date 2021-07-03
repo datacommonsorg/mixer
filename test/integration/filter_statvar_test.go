@@ -35,7 +35,7 @@ func TestFilterStatVar(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/get_statvar_summary")
+		path.Dir(filename), "golden_response/filter_statvar")
 
 	for _, c := range []struct {
 		svs        []string
