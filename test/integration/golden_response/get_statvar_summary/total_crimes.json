@@ -1,0 +1,88 @@
+{
+  "statVarSummary": {
+    "Count_CriminalActivities_CombinedCrime": {
+      "placeTypeSummary": {
+        "City": {
+          "numPlaces": "8807",
+          "topPlaces": [
+            {
+              "dcid": "geoId/3651000",
+              "name": "New York",
+              "personCount": "8550971"
+            },
+            {
+              "dcid": "geoId/0644000",
+              "name": "Los Angeles",
+              "personCount": "3966936"
+            },
+            {
+              "dcid": "geoId/1714000",
+              "name": "Chicago",
+              "personCount": "2709534"
+            }
+          ]
+        },
+        "Country": {
+          "numPlaces": "1",
+          "topPlaces": [
+            {
+              "dcid": "country/USA",
+              "name": "United States",
+              "personCount": "328016242"
+            }
+          ]
+        },
+        "County": {
+          "numPlaces": "1",
+          "topPlaces": [
+            {
+              "dcid": "geoId/34007",
+              "name": "Camden County",
+              "personCount": "506471"
+            }
+          ]
+        },
+        "State": {
+          "numPlaces": "50",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06",
+              "name": "California",
+              "personCount": "39512200"
+            },
+            {
+              "dcid": "geoId/48",
+              "name": "Texas",
+              "personCount": "28995881"
+            },
+            {
+              "dcid": "geoId/12",
+              "name": "Florida",
+              "personCount": "21477700"
+            }
+          ]
+        },
+        "CensusCountyDivision": {
+          "numPlaces": "1327",
+          "topPlaces": [
+            {
+              "dcid": "geoId/1500390810",
+              "name": "Honolulu CCD",
+              "personCount": "400317"
+            },
+            {
+              "dcid": "geoId/3608760510",
+              "name": "Ramapo",
+              "personCount": "135560"
+            },
+            {
+              "dcid": "geoId/3602902000",
+              "name": "Amherst",
+              "personCount": "125509"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

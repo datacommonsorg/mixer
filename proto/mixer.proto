@@ -567,6 +567,31 @@ message SearchStatVarResponse {
   repeated EntityInfo stat_var_groups = 2;
 }
 
+message StatVarSummary {
+  message Place {
+    string dcid = 1;
+    string name = 2;
+    int64 person_count = 3;
+  }
+  message PlaceTypeSummary {
+    // Number of places with stats for this stat var
+    int64 num_places = 1;
+    // List of example places that have stats for this stat var
+    repeated Place top_places = 2;
+  }
+  // Key is type of place
+  map<string, PlaceTypeSummary> place_type_summary = 1;
+}
+
+message GetStatVarSummaryRequest {
+  // A list of stat var dcids
+  repeated string stat_vars = 1;
+}
+
+message GetStatVarSummaryResponse {
+  map<string, StatVarSummary> stat_var_summary = 1;
+}
+
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -905,5 +930,17 @@ service Mixer {
         body: "*"
       }
     };
+  }
+
+  // Given a list of stat vars, get their summaries.
+  rpc GetStatVarSummary(GetStatVarSummaryRequest)
+      returns (GetStatVarSummaryResponse) {
+    option (google.api.http) = {
+      get: "/stat-var/summary"
+      additional_bindings: {
+        post: "/stat-var/summary"
+        body: "*"
+      }
+    };    
   }
 }

@@ -1,0 +1,811 @@
+{
+  "statVarSummary": {
+    "Count_Person_Female": {
+      "placeTypeSummary": {
+        "EurostatNUTS1": {
+          "numPlaces": "123",
+          "topPlaces": [
+            {
+              "dcid": "nuts/DEA",
+              "name": "Nordrhein-Westfalen",
+              "personCount": "17932651"
+            },
+            {
+              "dcid": "nuts/ITC",
+              "name": "Nord-Ovest",
+              "personCount": "16093286"
+            },
+            {
+              "dcid": "nuts/TR1",
+              "name": "Istanbul",
+              "personCount": "15067724"
+            }
+          ]
+        },
+        "State": {
+          "numPlaces": "52",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06",
+              "name": "California",
+              "personCount": "39512200"
+            },
+            {
+              "dcid": "geoId/48",
+              "name": "Texas",
+              "personCount": "28995881"
+            },
+            {
+              "dcid": "geoId/12",
+              "name": "Florida",
+              "personCount": "21477700"
+            }
+          ]
+        },
+        "AdministrativeArea1": {
+          "numPlaces": "362",
+          "topPlaces": [
+            {
+              "dcid": "wikidataId/Q1498",
+              "name": "Uttar Pradesh",
+              "personCount": "214671000"
+            },
+            {
+              "dcid": "wikidataId/Q1191",
+              "name": "Maharashtra",
+              "personCount": "118652000"
+            },
+            {
+              "dcid": "wikidataId/Q15175",
+              "name": "Guangdong",
+              "personCount": "113460000"
+            }
+          ]
+        },
+        "AdministrativeArea2": {
+          "numPlaces": "764",
+          "topPlaces": [
+            {
+              "dcid": "wikidataId/Q943099",
+              "name": "Thane district",
+              "personCount": "11060148"
+            },
+            {
+              "dcid": "wikidataId/Q338425",
+              "name": "North 24 Parganas district",
+              "personCount": "10009781"
+            },
+            {
+              "dcid": "wikidataId/Q806463",
+              "name": "Bangalore Urban district",
+              "personCount": "9621551"
+            }
+          ]
+        },
+        "CensusCoreBasedStatisticalArea": {
+          "numPlaces": "933",
+          "topPlaces": [
+            {
+              "dcid": "geoId/C35620",
+              "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area",
+              "personCount": "19990592"
+            },
+            {
+              "dcid": "geoId/C31080",
+              "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area",
+              "personCount": "13262234"
+            },
+            {
+              "dcid": "geoId/C16980",
+              "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area",
+              "personCount": "9536428"
+            }
+          ]
+        },
+        "HighSchoolDistrict": {
+          "numPlaces": "132",
+          "topPlaces": [
+            {
+              "dcid": "geoId/sch0606034",
+              "name": "Perris Union High School District (9-12)",
+              "personCount": "139244"
+            },
+            {
+              "dcid": "geoId/sch4747149",
+              "name": "Rutherford County School District in Murfreesboro",
+              "personCount": "136577"
+            },
+            {
+              "dcid": "geoId/sch0606019",
+              "name": "Santa Barbara Unified School District (7-12)",
+              "personCount": "105638"
+            }
+          ]
+        },
+        "Place": {
+          "numPlaces": "172",
+          "topPlaces": [
+            {
+              "dcid": "wikidataId/Q1180",
+              "personCount": "12289000"
+            },
+            {
+              "dcid": "geoId/sch4702940",
+              "personCount": "650932"
+            },
+            {
+              "dcid": "wikidataId/Q2760659",
+              "name": "Dadra",
+              "personCount": "414000"
+            }
+          ]
+        },
+        "StateComponent": {
+          "numPlaces": "550",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06A0",
+              "name": "California -- In metropolitan or micropolitan statistical area",
+              "personCount": "39012603"
+            },
+            {
+              "dcid": "geoId/06C0",
+              "name": "California -- In metropolitan statistical area",
+              "personCount": "38449730"
+            },
+            {
+              "dcid": "geoId/06U",
+              "name": "California -- Urban",
+              "personCount": "37275428"
+            }
+          ]
+        },
+        "AdministrativeArea3": {
+          "numPlaces": "29",
+          "topPlaces": [
+            {
+              "dcid": "wikidataId/Q1143712",
+              "name": "Kanagawa-ku",
+              "personCount": "9177000"
+            },
+            {
+              "dcid": "wikidataId/Q50811",
+              "name": "Regional Municipality of Peel",
+              "personCount": "1541990"
+            },
+            {
+              "dcid": "wikidataId/Q18458",
+              "name": "Regional Municipality of York",
+              "personCount": "1181490"
+            }
+          ]
+        },
+        "CensusCountyDivision": {
+          "numPlaces": "36798",
+          "topPlaces": [
+            {
+              "dcid": "geoId/4820191835",
+              "name": "Houston CCD",
+              "personCount": "3433961"
+            },
+            {
+              "dcid": "geoId/0401392601",
+              "name": "Phoenix CCD",
+              "personCount": "3347177"
+            },
+            {
+              "dcid": "geoId/1703114000",
+              "name": "Chicago",
+              "personCount": "2709534"
+            }
+          ]
+        },
+        "City": {
+          "numPlaces": "29954",
+          "topPlaces": [
+            {
+              "dcid": "wikidataId/Q1353",
+              "name": "Delhi",
+              "personCount": "26495000"
+            },
+            {
+              "dcid": "wikidataId/Q8686",
+              "name": "Shanghai",
+              "personCount": "26317000"
+            },
+            {
+              "dcid": "wikidataId/Q11736",
+              "name": "Tianjin",
+              "personCount": "15600000"
+            }
+          ]
+        },
+        "Country": {
+          "numPlaces": "66",
+          "topPlaces": [
+            {
+              "dcid": "country/CHN",
+              "name": "China",
+              "personCount": "1397715000"
+            },
+            {
+              "dcid": "country/IND",
+              "name": "India",
+              "personCount": "1366417754"
+            },
+            {
+              "dcid": "country/USA",
+              "name": "United States",
+              "personCount": "328016242"
+            }
+          ]
+        },
+        "ElementarySchoolDistrict": {
+          "numPlaces": "275",
+          "topPlaces": [
+            {
+              "dcid": "geoId/sch0637380",
+              "name": "South Bay Union School District",
+              "personCount": "81130"
+            },
+            {
+              "dcid": "geoId/sch0635590",
+              "name": "Santa Cruz City Elementary School District",
+              "personCount": "66684"
+            },
+            {
+              "dcid": "geoId/sch0637290",
+              "name": "Soquel Elementary School District",
+              "personCount": "27614"
+            }
+          ]
+        },
+        "EurostatNUTS3": {
+          "numPlaces": "1390",
+          "topPlaces": [
+            {
+              "dcid": "nuts/TR100",
+              "name": "Istanbul",
+              "personCount": "15067724"
+            },
+            {
+              "dcid": "nuts/ES300",
+              "name": "Madrid",
+              "personCount": "6641649"
+            },
+            {
+              "dcid": "nuts/ES511",
+              "name": "Barcelona",
+              "personCount": "5575204"
+            }
+          ]
+        },
+        "SchoolDistrict": {
+          "numPlaces": "13277",
+          "topPlaces": [
+            {
+              "dcid": "geoId/sch3620580",
+              "name": "New York City Department Of Education",
+              "personCount": "8419316"
+            },
+            {
+              "dcid": "geoId/sch0622710",
+              "name": "Los Angeles Unified School District",
+              "personCount": "4723575"
+            },
+            {
+              "dcid": "geoId/sch7200030",
+              "name": "Puerto Rico Department of Education",
+              "personCount": "3318447"
+            }
+          ]
+        },
+        "AdministrativeArea": {
+          "numPlaces": "48",
+          "topPlaces": [
+            {
+              "dcid": "wikidataId/Q173121",
+              "name": "Santiago de Querétaro",
+              "personCount": "1049777"
+            },
+            {
+              "dcid": "wikidataId/Q1973593",
+              "name": "Waikato District",
+              "personCount": "482100"
+            },
+            {
+              "dcid": "wikidataId/Q550219",
+              "name": "Capital Regional District",
+              "personCount": "418511"
+            }
+          ]
+        },
+        "CensusTract": {
+          "numPlaces": "74014",
+          "topPlaces": [
+            {
+              "dcid": "geoId/48157673101",
+              "name": "Census Tract 6731.01, Fort Bend County, Texas",
+              "personCount": "72041"
+            },
+            {
+              "dcid": "geoId/48157672900",
+              "name": "Census Tract 6729, Fort Bend County, Texas",
+              "personCount": "59947"
+            },
+            {
+              "dcid": "geoId/48039660602",
+              "name": "Census Tract 6606.02, Brazoria County, Texas",
+              "personCount": "49119"
+            }
+          ]
+        },
+        "CensusZipCodeTabulationArea": {
+          "numPlaces": "32989",
+          "topPlaces": [
+            {
+              "dcid": "zip/77449",
+              "name": "77449",
+              "personCount": "122814"
+            },
+            {
+              "dcid": "zip/77494",
+              "name": "77494",
+              "personCount": "114989"
+            },
+            {
+              "dcid": "zip/11368",
+              "name": "11368",
+              "personCount": "112425"
+            }
+          ]
+        },
+        "CongressionalDistrict": {
+          "numPlaces": "452",
+          "topPlaces": [
+            {
+              "dcid": "geoId/7298",
+              "name": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico",
+              "personCount": "3318447"
+            },
+            {
+              "dcid": "geoId/3000",
+              "name": "Congressional District (at Large) (113th Congress), Montana",
+              "personCount": "1050649"
+            },
+            {
+              "dcid": "geoId/1000",
+              "name": "Congressional District (at Large) (113th Congress), Delaware",
+              "personCount": "957248"
+            }
+          ]
+        },
+        "County": {
+          "numPlaces": "3222",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06037",
+              "name": "Los Angeles County",
+              "personCount": "10039107"
+            },
+            {
+              "dcid": "geoId/17031",
+              "name": "Cook County",
+              "personCount": "5150233"
+            },
+            {
+              "dcid": "geoId/48201",
+              "name": "Harris County",
+              "personCount": "4713325"
+            }
+          ]
+        },
+        "EurostatNUTS2": {
+          "numPlaces": "328",
+          "topPlaces": [
+            {
+              "dcid": "nuts/TR10",
+              "name": "Istanbul",
+              "personCount": "15067724"
+            },
+            {
+              "dcid": "nuts/FR10",
+              "name": "Ile-de-France",
+              "personCount": "12244807"
+            },
+            {
+              "dcid": "nuts/ITC4",
+              "name": "Lombardia",
+              "personCount": "10060574"
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person_Female_AsianAlone": {
+      "placeTypeSummary": {
+        "CensusTract": {
+          "numPlaces": "74014",
+          "topPlaces": [
+            {
+              "dcid": "geoId/48157673101",
+              "name": "Census Tract 6731.01, Fort Bend County, Texas",
+              "personCount": "72041"
+            },
+            {
+              "dcid": "geoId/48157672900",
+              "name": "Census Tract 6729, Fort Bend County, Texas",
+              "personCount": "59947"
+            },
+            {
+              "dcid": "geoId/48039660602",
+              "name": "Census Tract 6606.02, Brazoria County, Texas",
+              "personCount": "49119"
+            }
+          ]
+        },
+        "City": {
+          "numPlaces": "29678",
+          "topPlaces": [
+            {
+              "dcid": "geoId/3651000",
+              "name": "New York",
+              "personCount": "8550971"
+            },
+            {
+              "dcid": "geoId/0644000",
+              "name": "Los Angeles",
+              "personCount": "3966936"
+            },
+            {
+              "dcid": "geoId/1714000",
+              "name": "Chicago",
+              "personCount": "2709534"
+            }
+          ]
+        },
+        "County": {
+          "numPlaces": "3222",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06037",
+              "name": "Los Angeles County",
+              "personCount": "10039107"
+            },
+            {
+              "dcid": "geoId/17031",
+              "name": "Cook County",
+              "personCount": "5150233"
+            },
+            {
+              "dcid": "geoId/48201",
+              "name": "Harris County",
+              "personCount": "4713325"
+            }
+          ]
+        },
+        "ElementarySchoolDistrict": {
+          "numPlaces": "275",
+          "topPlaces": [
+            {
+              "dcid": "geoId/sch0637380",
+              "name": "South Bay Union School District",
+              "personCount": "81130"
+            },
+            {
+              "dcid": "geoId/sch0635590",
+              "name": "Santa Cruz City Elementary School District",
+              "personCount": "66684"
+            },
+            {
+              "dcid": "geoId/sch0637290",
+              "name": "Soquel Elementary School District",
+              "personCount": "27614"
+            }
+          ]
+        },
+        "State": {
+          "numPlaces": "52",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06",
+              "name": "California",
+              "personCount": "39512200"
+            },
+            {
+              "dcid": "geoId/48",
+              "name": "Texas",
+              "personCount": "28995881"
+            },
+            {
+              "dcid": "geoId/12",
+              "name": "Florida",
+              "personCount": "21477700"
+            }
+          ]
+        },
+        "CongressionalDistrict": {
+          "numPlaces": "452",
+          "topPlaces": [
+            {
+              "dcid": "geoId/7298",
+              "name": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico",
+              "personCount": "3318447"
+            },
+            {
+              "dcid": "geoId/3000",
+              "name": "Congressional District (at Large) (113th Congress), Montana",
+              "personCount": "1050649"
+            },
+            {
+              "dcid": "geoId/1000",
+              "name": "Congressional District (at Large) (113th Congress), Delaware",
+              "personCount": "957248"
+            }
+          ]
+        },
+        "Country": {
+          "numPlaces": "1",
+          "topPlaces": [
+            {
+              "dcid": "country/USA",
+              "name": "United States",
+              "personCount": "328016242"
+            }
+          ]
+        },
+        "Place": {
+          "numPlaces": "164",
+          "topPlaces": [
+            {
+              "dcid": "geoId/sch4702940",
+              "personCount": "650932"
+            },
+            {
+              "dcid": "geoId/sch4703810",
+              "personCount": "281987"
+            },
+            {
+              "dcid": "geoId/sch4833060",
+              "personCount": "52482"
+            }
+          ]
+        },
+        "CensusCoreBasedStatisticalArea": {
+          "numPlaces": "933",
+          "topPlaces": [
+            {
+              "dcid": "geoId/C35620",
+              "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area",
+              "personCount": "19990592"
+            },
+            {
+              "dcid": "geoId/C31080",
+              "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area",
+              "personCount": "13262234"
+            },
+            {
+              "dcid": "geoId/C16980",
+              "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area",
+              "personCount": "9536428"
+            }
+          ]
+        },
+        "HighSchoolDistrict": {
+          "numPlaces": "132",
+          "topPlaces": [
+            {
+              "dcid": "geoId/sch0606034",
+              "name": "Perris Union High School District (9-12)",
+              "personCount": "139244"
+            },
+            {
+              "dcid": "geoId/sch4747149",
+              "name": "Rutherford County School District in Murfreesboro",
+              "personCount": "136577"
+            },
+            {
+              "dcid": "geoId/sch0606019",
+              "name": "Santa Barbara Unified School District (7-12)",
+              "personCount": "105638"
+            }
+          ]
+        },
+        "SchoolDistrict": {
+          "numPlaces": "13277",
+          "topPlaces": [
+            {
+              "dcid": "geoId/sch3620580",
+              "name": "New York City Department Of Education",
+              "personCount": "8419316"
+            },
+            {
+              "dcid": "geoId/sch0622710",
+              "name": "Los Angeles Unified School District",
+              "personCount": "4723575"
+            },
+            {
+              "dcid": "geoId/sch7200030",
+              "name": "Puerto Rico Department of Education",
+              "personCount": "3318447"
+            }
+          ]
+        },
+        "CensusCountyDivision": {
+          "numPlaces": "36798",
+          "topPlaces": [
+            {
+              "dcid": "geoId/4820191835",
+              "name": "Houston CCD",
+              "personCount": "3433961"
+            },
+            {
+              "dcid": "geoId/0401392601",
+              "name": "Phoenix CCD",
+              "personCount": "3347177"
+            },
+            {
+              "dcid": "geoId/1703114000",
+              "name": "Chicago",
+              "personCount": "2709534"
+            }
+          ]
+        },
+        "CensusZipCodeTabulationArea": {
+          "numPlaces": "32989",
+          "topPlaces": [
+            {
+              "dcid": "zip/77449",
+              "name": "77449",
+              "personCount": "122814"
+            },
+            {
+              "dcid": "zip/77494",
+              "name": "77494",
+              "personCount": "114989"
+            },
+            {
+              "dcid": "zip/11368",
+              "name": "11368",
+              "personCount": "112425"
+            }
+          ]
+        },
+        "StateComponent": {
+          "numPlaces": "550",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06A0",
+              "name": "California -- In metropolitan or micropolitan statistical area",
+              "personCount": "39012603"
+            },
+            {
+              "dcid": "geoId/06C0",
+              "name": "California -- In metropolitan statistical area",
+              "personCount": "38449730"
+            },
+            {
+              "dcid": "geoId/06U",
+              "name": "California -- Urban",
+              "personCount": "37275428"
+            }
+          ]
+        }
+      }
+    },
+    "FertilityRate_Person_Female": {
+      "placeTypeSummary": {
+        "City": {
+          "numPlaces": "140",
+          "topPlaces": [
+            {
+              "dcid": "nuts/DE3",
+              "name": "Berlin",
+              "personCount": "3644826"
+            },
+            {
+              "dcid": "nuts/FR101",
+              "name": "Paris",
+              "personCount": "2160928"
+            },
+            {
+              "dcid": "nuts/AT13",
+              "name": "Vienna",
+              "personCount": "1897491"
+            }
+          ]
+        },
+        "Country": {
+          "numPlaces": "206",
+          "topPlaces": [
+            {
+              "dcid": "country/CHN",
+              "name": "China",
+              "personCount": "1397715000"
+            },
+            {
+              "dcid": "country/IND",
+              "name": "India",
+              "personCount": "1366417754"
+            },
+            {
+              "dcid": "country/USA",
+              "name": "United States",
+              "personCount": "328016242"
+            }
+          ]
+        },
+        "EurostatNUTS1": {
+          "numPlaces": "123",
+          "topPlaces": [
+            {
+              "dcid": "nuts/DEA",
+              "name": "Nordrhein-Westfalen",
+              "personCount": "17932651"
+            },
+            {
+              "dcid": "nuts/ITC",
+              "name": "Nord-Ovest",
+              "personCount": "16093286"
+            },
+            {
+              "dcid": "nuts/TR1",
+              "name": "Istanbul",
+              "personCount": "15067724"
+            }
+          ]
+        },
+        "EurostatNUTS2": {
+          "numPlaces": "328",
+          "topPlaces": [
+            {
+              "dcid": "nuts/TR10",
+              "name": "Istanbul",
+              "personCount": "15067724"
+            },
+            {
+              "dcid": "nuts/FR10",
+              "name": "Ile-de-France",
+              "personCount": "12244807"
+            },
+            {
+              "dcid": "nuts/ITC4",
+              "name": "Lombardia",
+              "personCount": "10060574"
+            }
+          ]
+        },
+        "EurostatNUTS3": {
+          "numPlaces": "1390",
+          "topPlaces": [
+            {
+              "dcid": "nuts/TR100",
+              "name": "Istanbul",
+              "personCount": "15067724"
+            },
+            {
+              "dcid": "nuts/ES300",
+              "name": "Madrid",
+              "personCount": "6641649"
+            },
+            {
+              "dcid": "nuts/ES511",
+              "name": "Barcelona",
+              "personCount": "5575204"
+            }
+          ]
+        },
+        "Place": {
+          "numPlaces": "1",
+          "topPlaces": [
+            {
+              "dcid": "Earth",
+              "name": "Earth",
+              "personCount": "7673533974"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

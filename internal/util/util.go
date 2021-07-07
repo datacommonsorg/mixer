@@ -50,6 +50,8 @@ const (
 	BtTriplesPrefix = "d/7/"
 	// BtArcsPrefix for internal arcs cache.
 	BtArcsPrefix = "d/9/"
+	// BtStatVarSummary for stat var summary cache.
+	BtStatVarSummary = "d/a/"
 	// BtPlacesInPrefix for GetPlacesIn cache.
 	BtPlacesInPrefix = "d/c/"
 	// BtChartDataPrefix for chart data.

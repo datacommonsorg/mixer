@@ -378,3 +378,36 @@ func countStatVar(
 	}
 	return result, nil
 }
+
+// GetStatVarSummary implements API for Mixer.GetStatVarSummary.
+func (s *Server) GetStatVarSummary(
+	ctx context.Context, in *pb.GetStatVarSummaryRequest) (
+	*pb.GetStatVarSummaryResponse, error) {
+	sv := in.GetStatVars()
+	rowList := buildStatVarSummaryKey(sv)
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var statVarSummary pb.StatVarSummary
+			err := protojson.Unmarshal(jsonRaw, &statVarSummary)
+			if err != nil {
+				return nil, err
+			}
+			return &statVarSummary, nil
+		},
+		nil,
+		false, /* readBranch */
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := &pb.GetStatVarSummaryResponse{
+		StatVarSummary: map[string]*pb.StatVarSummary{},
+	}
+	for dcid, data := range baseDataMap {
+		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
+	}
+	return result, nil
+}
