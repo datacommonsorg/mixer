@@ -7,6 +7,11 @@
       "displayName": "COVID-19"
     },
     {
+      "id": "dc/g/Climate",
+      "specializedEntity": "Climate",
+      "displayName": "Climate"
+    },
+    {
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
       "displayName": "Crime",
@@ -16,24 +21,18 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 4192
-    },
-    {
-      "id": "dc/g/Disasters",
-      "specializedEntity": "Disasters",
-      "displayName": "Disasters"
+      "numDescendentStatVars": 4151
     },
     {
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
-      "displayName": "Economics",
-      "numDescendentStatVars": 1914
+      "displayName": "Economics"
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "numDescendentStatVars": 572
+      "numDescendentStatVars": 602
     },
     {
       "id": "dc/g/Employment",
@@ -50,30 +49,30 @@
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "numDescendentStatVars": 285
+      "numDescendentStatVars": 286
     },
     {
       "id": "dc/g/Household",
       "specializedEntity": "Household",
       "displayName": "Household",
-      "numDescendentStatVars": 860
+      "numDescendentStatVars": 924
     },
     {
       "id": "dc/g/Housing",
       "specializedEntity": "Housing",
       "displayName": "Housing",
-      "numDescendentStatVars": 121
+      "numDescendentStatVars": 136
     },
     {
       "id": "dc/g/MilitaryService",
-      "specializedEntity": "MilitaryService",
-      "displayName": "Military Service"
+      "specializedEntity": "Military Service",
+      "displayName": "Military Service",
+      "numDescendentStatVars": 677
     },
     {
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
-      "displayName": "Miscellaneous",
-      "numDescendentStatVars": 203
+      "displayName": "Miscellaneous"
     }
   ],
   "numDescendentStatVars": 7225

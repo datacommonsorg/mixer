@@ -19,6 +19,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mixer-service
+  annotations:
+    # Refers to the backend config from backendconfig.yaml.
+    # This is to get longer timeout for the Cloud Load Balancer.
+    cloud.google.com/backend-config: '{"ports": {"8081":"backendconfig"}}'
 spec:
   type: NodePort
   ports:
