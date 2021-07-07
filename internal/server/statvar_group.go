@@ -403,33 +403,11 @@ func (s *Server) GetStatVarSummary(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.GetStatVarSummaryResponse{}
-	result.StatVarSummary = map[string]*pb.StatVarSummary{}
+	result := &pb.GetStatVarSummaryResponse{
+		StatVarSummary: map[string]*pb.StatVarSummary{},
+	}
 	for dcid, data := range baseDataMap {
 		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
-	}
-	return result, nil
-}
-
-// FilterStatVar implements API for Mixer.FilterStatVar.
-func (s *Server) FilterStatVar(
-	ctx context.Context, in *pb.FilterStatVarRequest) (
-	*pb.FilterStatVarResponse, error) {
-	places := in.GetPlaces()
-	statVars := in.GetStatVars()
-	result := &pb.FilterStatVarResponse{}
-	if len(places) > 0 {
-		statVarCount, err := countStatVar(ctx, s.store, statVars, places)
-		if err != nil {
-			return nil, err
-		}
-		for _, sv := range statVars {
-			if existence, ok := statVarCount[sv]; ok && len(existence) > 0 {
-				result.StatVars = append(result.StatVars, sv)
-			}
-		}
-	} else {
-		result.StatVars = statVars
 	}
 	return result, nil
 }

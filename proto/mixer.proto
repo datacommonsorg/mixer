@@ -569,18 +569,18 @@ message SearchStatVarResponse {
 
 message StatVarSummary {
   message Place {
-      string dcid = 1;
-      string name = 2;
-      int64 person_count = 3;
-    }
-    message PlaceTypeSummary {
-      // Number of places with stats for this stat var
-      int64 num_places = 1;
-      // List of example places that have stats for this stat var
-      repeated Place top_places = 2;
-    }
-    // Key is type of place
-    map<string, PlaceTypeSummary> place_type_summary = 1;
+    string dcid = 1;
+    string name = 2;
+    int64 person_count = 3;
+  }
+  message PlaceTypeSummary {
+    // Number of places with stats for this stat var
+    int64 num_places = 1;
+    // List of example places that have stats for this stat var
+    repeated Place top_places = 2;
+  }
+  // Key is type of place
+  map<string, PlaceTypeSummary> place_type_summary = 1;
 }
 
 message GetStatVarSummaryRequest {
@@ -590,18 +590,6 @@ message GetStatVarSummaryRequest {
 
 message GetStatVarSummaryResponse {
   map<string, StatVarSummary> stat_var_summary = 1;
-}
-
-message FilterStatVarRequest {
-  // A list of stat var dcids
-  repeated string stat_vars = 1;
-  // A list of place dcids
-  repeated string places = 2;
-}
-
-message FilterStatVarResponse {
-  // list of stat var dcids
-  repeated string stat_vars = 1;
 }
 
 service Mixer {
@@ -954,18 +942,5 @@ service Mixer {
         body: "*"
       }
     };    
-  }
-
-  // Given a list of places and list of stat vars, filter the stat vars that
-  // have data for any of the places.
-  rpc FilterStatVar(FilterStatVarRequest)
-      returns (FilterStatVarResponse) {
-    option (google.api.http) = {
-      get: "/stat-var/filter"
-      additional_bindings: {
-        post: "/stat-var/filter"
-        body: "*"
-      }
-    };  
   }
 }

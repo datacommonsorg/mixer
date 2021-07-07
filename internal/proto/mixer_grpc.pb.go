@@ -95,9 +95,6 @@ type MixerClient interface {
 	SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
 	GetStatVarSummary(ctx context.Context, in *GetStatVarSummaryRequest, opts ...grpc.CallOption) (*GetStatVarSummaryResponse, error)
-	// Given a list of places and list of stat vars, filter the stat vars that
-	// have data for any of the places.
-	FilterStatVar(ctx context.Context, in *FilterStatVarRequest, opts ...grpc.CallOption) (*FilterStatVarResponse, error)
 }
 
 type mixerClient struct {
@@ -369,15 +366,6 @@ func (c *mixerClient) GetStatVarSummary(ctx context.Context, in *GetStatVarSumma
 	return out, nil
 }
 
-func (c *mixerClient) FilterStatVar(ctx context.Context, in *FilterStatVarRequest, opts ...grpc.CallOption) (*FilterStatVarResponse, error) {
-	out := new(FilterStatVarResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/FilterStatVar", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -460,9 +448,6 @@ type MixerServer interface {
 	SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
 	GetStatVarSummary(context.Context, *GetStatVarSummaryRequest) (*GetStatVarSummaryResponse, error)
-	// Given a list of places and list of stat vars, filter the stat vars that
-	// have data for any of the places.
-	FilterStatVar(context.Context, *FilterStatVarRequest) (*FilterStatVarResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -555,9 +540,6 @@ func (*UnimplementedMixerServer) SearchStatVar(context.Context, *SearchStatVarRe
 }
 func (*UnimplementedMixerServer) GetStatVarSummary(context.Context, *GetStatVarSummaryRequest) (*GetStatVarSummaryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarSummary not implemented")
-}
-func (*UnimplementedMixerServer) FilterStatVar(context.Context, *FilterStatVarRequest) (*FilterStatVarResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FilterStatVar not implemented")
 }
 
 func RegisterMixerServer(s *grpc.Server, srv MixerServer) {
@@ -1086,24 +1068,6 @@ func _Mixer_GetStatVarSummary_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_FilterStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FilterStatVarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).FilterStatVar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/FilterStatVar",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).FilterStatVar(ctx, req.(*FilterStatVarRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _Mixer_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
@@ -1223,10 +1187,6 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatVarSummary",
 			Handler:    _Mixer_GetStatVarSummary_Handler,
-		},
-		{
-			MethodName: "FilterStatVar",
-			Handler:    _Mixer_FilterStatVar_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
