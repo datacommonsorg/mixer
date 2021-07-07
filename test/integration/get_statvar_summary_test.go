@@ -43,7 +43,7 @@ func TestGetStatVarSummary(t *testing.T) {
 	}{
 		{
 			[]string{"Count_CriminalActivities_CombinedCrime"},
-			"total_crime.json",
+			"total_crimes.json",
 		},
 		{
 			[]string{"Count_Person_Female", "Count_Person_Female_AsianAlone", "FertilityRate_Person_Female"},
