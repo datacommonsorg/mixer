@@ -12,12 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# Config to set the GCP load balancer timeout to enable long running Sparql
+# queries.
+
 apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: backendconfig
   namespace: mixer
 spec:
-  timeoutSec: 120
+  timeoutSec: 600
   connectionDraining:
-    drainingTimeoutSec: 120
+    drainingTimeoutSec: 600
