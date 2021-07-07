@@ -201,7 +201,7 @@
     },
     {
       "subjectId": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
-      "subjectName": "Mobile Cellular Subscription as Fraction of Count Person",
+      "subjectName": "Mobile Subscriptions Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -215,7 +215,7 @@
     },
     {
       "subjectId": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
-      "subjectName": "Less Than 5 Meters Above Sea Level as Fraction of Count Person",
+      "subjectName": "Percent of Population Living in Areas Below 5 Meters Elevation",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -229,7 +229,7 @@
     },
     {
       "subjectId": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person",
-      "subjectName": "Below Poverty Level in The Past 12 Months as Fraction of Count Person",
+      "subjectName": "Below Poverty Level in The Past 12 Months Population Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -243,7 +243,7 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
-      "subjectName": "X 60-X 84 (Intentional Self-harm) as Fraction of Count Person",
+      "subjectName": "Count of X 60-X 84 (Intentional Self-harm) Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -257,7 +257,7 @@
     },
     {
       "subjectId": "Count_Death_AsAFractionOfCount_Person",
-      "subjectName": "Mortality Event as Fraction of Count Person",
+      "subjectName": "Count of Mortality Event Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -271,7 +271,7 @@
     },
     {
       "subjectId": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
-      "subjectName": "Age Adjusted Mortality Event as Fraction of Count Person",
+      "subjectName": "Age Adjusted Count of Mortality Event Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -285,7 +285,7 @@
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
-      "subjectName": "Murder And Non Negligent Manslaughter as Fraction of Count Person",
+      "subjectName": "Count of Murder And Non Negligent Manslaughter Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -299,7 +299,7 @@
     },
     {
       "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
-      "subjectName": "Live Birth as Fraction of Count Person",
+      "subjectName": "Count of Live Birth Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -313,7 +313,7 @@
     },
     {
       "subjectId": "Count_BirthEvent_AsAFractionOfCount_Person",
-      "subjectName": "Birth Event as Fraction of Count Person",
+      "subjectName": "Count of Births Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -327,7 +327,7 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
-      "subjectName": "Nominal Amount of Gross Domestic Production as Fraction of Count Person",
+      "subjectName": "Nominal Amount of Gross Domestic Production Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -341,7 +341,7 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
-      "subjectName": "Amount of Expenditure Activity, Healthcare Expenditure as Fraction of Count Person",
+      "subjectName": "Amount of Expenditure Activity, Healthcare Expenditure Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -444,7 +444,7 @@
     {
       "subjectId": "Count_Person_Female",
       "predicate": "name",
-      "objectValue": "Female",
+      "objectValue": "Female Population",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -464,7 +464,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -477,7 +477,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -490,7 +490,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -503,7 +503,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -511,13 +511,13 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
-      "subjectName": "X 60-X 84 (Intentional Self-harm), Female as Fraction of Count Person Female",
+      "subjectName": "Count of X 60-X 84 (Intentional Self-harm), Female as Fraction of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -525,13 +525,13 @@
     },
     {
       "subjectId": "Count_Death_Female_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Female as Fraction of Count Person Female",
+      "subjectName": "Count of Female as Fraction of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -539,13 +539,13 @@
     },
     {
       "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Age Adjusted Female as Fraction of Count Person Female",
+      "subjectName": "Age Adjusted Count of Female as Fraction of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -553,13 +553,13 @@
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
-      "subjectName": "Murder And Non Negligent Manslaughter, Female as Fraction of Count Person Female",
+      "subjectName": "Count of Murder And Non Negligent Manslaughter, Female as Fraction of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
-      "objectName": "Female",
+      "objectName": "Female Population",
       "objectTypes": [
         "StatisticalVariable"
       ],
