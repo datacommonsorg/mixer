@@ -6527,6 +6527,14 @@
       "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
     },
     {
+      "name": "Person With Age = 10 - 14 Years, Gender = Female, Type of School = Private School",
+      "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_TypeOfSchool-PrivateSchool"
+    },
+    {
+      "name": "Person With Age = 10 - 14 Years, Gender = Female, Type of School = Public School",
+      "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_TypeOfSchool-PublicSchool"
+    },
+    {
       "name": "Person With Age = 12 - 14 Years, Gender = Female, Poverty Status",
       "dcid": "dc/g/Person_Age-Years12To14_Gender-Female_PovertyStatus"
     },
@@ -6641,6 +6649,14 @@
     {
       "name": "Person With Age = 15 - 17 Years, Gender = Female, Type of School = Not Enrolled in School",
       "dcid": "dc/g/Person_Age-Years15To17_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
+    },
+    {
+      "name": "Person With Age = 15 - 17 Years, Gender = Female, Type of School = Private School",
+      "dcid": "dc/g/Person_Age-Years15To17_Gender-Female_TypeOfSchool-PrivateSchool"
+    },
+    {
+      "name": "Person With Age = 15 - 17 Years, Gender = Female, Type of School = Public School",
+      "dcid": "dc/g/Person_Age-Years15To17_Gender-Female_TypeOfSchool-PublicSchool"
     },
     {
       "name": "Person With Age = 15 - 64 Years, Employment Status = in Labor Force, Gender = Female",
@@ -7219,6 +7235,14 @@
       "dcid": "dc/g/Person_Age-Years18To19_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
     },
     {
+      "name": "Person With Age = 18 - 19 Years, Gender = Female, Type of School = Private School",
+      "dcid": "dc/g/Person_Age-Years18To19_Gender-Female_TypeOfSchool-PrivateSchool"
+    },
+    {
+      "name": "Person With Age = 18 - 19 Years, Gender = Female, Type of School = Public School",
+      "dcid": "dc/g/Person_Age-Years18To19_Gender-Female_TypeOfSchool-PublicSchool"
+    },
+    {
       "name": "Person With Age = 18 - 24 Years, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_Age-Years18To24_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
@@ -7571,6 +7595,14 @@
       "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
     },
     {
+      "name": "Person With Age = 20 - 24 Years, Gender = Female, Type of School = Private School",
+      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_TypeOfSchool-PrivateSchool"
+    },
+    {
+      "name": "Person With Age = 20 - 24 Years, Gender = Female, Type of School = Public School",
+      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_TypeOfSchool-PublicSchool"
+    },
+    {
       "name": "Person With Age = 21 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -7887,6 +7919,14 @@
       "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
     },
     {
+      "name": "Person With Age = 25 - 34 Years, Gender = Female, Type of School = Private School",
+      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-PrivateSchool"
+    },
+    {
+      "name": "Person With Age = 25 - 34 Years, Gender = Female, Type of School = Public School",
+      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-PublicSchool"
+    },
+    {
       "name": "Person With Age = 25 - 34 Years, Military Status = Civilian, Gender = Female",
       "dcid": "dc/g/Person_Age-Years25To34_MilitaryStatus-Civilian_Gender-Female"
     },
@@ -7961,46 +8001,6 @@
     {
       "name": "Person With Age = 26 - 34 Years, Gender = Female, Health Insurance = With Public Health Insurance",
       "dcid": "dc/g/Person_Age-Years26To34_Gender-Female_HealthInsurance-WithPublicHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 26 - 34 Years, Gender = Female, Institutionalization",
-      "dcid": "dc/g/Person_Age-Years26To34_Gender-Female_Institutionalization"
-    },
-    {
-      "name": "Person With Age = 26 - 34 Years, Gender = Female, Institutionalization = Non Institutionalized",
-      "dcid": "dc/g/Person_Age-Years26To34_Gender-Female_Institutionalization-NonInstitutionalized"
-    },
-    {
-      "name": "Person With Age = 26 - 34 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years26To34_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 26 - 34 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years26To34_MilitaryStatus_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 3 - 4 Years, Gender = Female, Type of School",
-      "dcid": "dc/g/Person_Age-Years3To4_Gender-Female_TypeOfSchool"
-    },
-    {
-      "name": "Person With Age = 3 - 4 Years, Gender = Female, Type of School = Not Enrolled in School",
-      "dcid": "dc/g/Person_Age-Years3To4_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Employment = Employed, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years30To34_Employment-Employed_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Employment = Unemployed, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years30To34_Employment-Unemployed_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Employment Status = Not in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years30To34_EmploymentStatus-NotInLaborForce_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Employment Status = in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years30To34_EmploymentStatus-InLaborForce_Gender-Female"
     }
   ]
 }

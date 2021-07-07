@@ -10,7 +10,8 @@
     {
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
-      "displayName": "Climate"
+      "displayName": "Climate",
+      "numDescendentStatVars": 17
     },
     {
       "id": "dc/g/Crime",
@@ -22,7 +23,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 4147
+      "numDescendentStatVars": 4151
     },
     {
       "id": "dc/g/Economics",
@@ -46,7 +47,7 @@
       "id": "dc/g/Energy",
       "specializedEntity": "Energy",
       "displayName": "Energy",
-      "numDescendentStatVars": 409
+      "numDescendentStatVars": 408
     },
     {
       "id": "dc/g/Health",
@@ -76,7 +77,7 @@
       "id": "dc/g/Miscellaneous",
       "specializedEntity": "Miscellaneous",
       "displayName": "Miscellaneous",
-      "numDescendentStatVars": 146
+      "numDescendentStatVars": 4
     }
   ],
   "numDescendentStatVars": 7225
