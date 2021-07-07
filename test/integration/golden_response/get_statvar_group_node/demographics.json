@@ -85,7 +85,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 5076
+      "numDescendentStatVars": 4886
     },
     {
       "id": "dc/g/Person_DisabilityStatus",
