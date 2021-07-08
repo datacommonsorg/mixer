@@ -23,7 +23,6 @@
     }
   ],
   "parentStatVarGroups": [
-    "dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator",
     "dc/g/Person_CitizenshipStatus_CorrectionalFacilityOperator-StateOperated\u0026FederallyOperated\u0026PrivatelyOperated"
   ]
 }
