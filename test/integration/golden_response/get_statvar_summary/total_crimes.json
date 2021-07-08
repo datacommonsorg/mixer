@@ -2,6 +2,26 @@
   "statVarSummary": {
     "Count_CriminalActivities_CombinedCrime": {
       "placeTypeSummary": {
+        "CensusCountyDivision": {
+          "numPlaces": "1327",
+          "topPlaces": [
+            {
+              "dcid": "geoId/1500390810",
+              "name": "Honolulu CCD",
+              "personCount": "400317"
+            },
+            {
+              "dcid": "geoId/3608760510",
+              "name": "Ramapo",
+              "personCount": "135560"
+            },
+            {
+              "dcid": "geoId/3602902000",
+              "name": "Amherst",
+              "personCount": "125509"
+            }
+          ]
+        },
         "City": {
           "numPlaces": "8807",
           "topPlaces": [
@@ -59,26 +79,6 @@
               "dcid": "geoId/12",
               "name": "Florida",
               "personCount": "21477700"
-            }
-          ]
-        },
-        "CensusCountyDivision": {
-          "numPlaces": "1327",
-          "topPlaces": [
-            {
-              "dcid": "geoId/1500390810",
-              "name": "Honolulu CCD",
-              "personCount": "400317"
-            },
-            {
-              "dcid": "geoId/3608760510",
-              "name": "Ramapo",
-              "personCount": "135560"
-            },
-            {
-              "dcid": "geoId/3602902000",
-              "name": "Amherst",
-              "personCount": "125509"
             }
           ]
         }
