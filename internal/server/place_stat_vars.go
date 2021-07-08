@@ -137,6 +137,10 @@ func (s *Server) GetPlaceStatVarsUnionV1(
 	*pb.GetPlaceStatVarsUnionResponseV1, error) {
 	statVars := in.GetStatVars()
 	dcids := in.GetDcids()
+	// When given a list of stat vars to filter for, we can use the existence
+	// cache instead to check the existence of each stat var for the list of
+	// places. This is faster than getting all the stat vars for each place and
+	// then filtering.
 	if len(statVars) > 0 && len(dcids) > 0 {
 		statVarCount, err := countStatVar(ctx, s.store, statVars, dcids)
 		if err != nil {
