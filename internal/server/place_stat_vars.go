@@ -135,6 +135,21 @@ func (s *Server) GetPlaceStatVarsUnion(
 func (s *Server) GetPlaceStatVarsUnionV1(
 	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
 	*pb.GetPlaceStatVarsUnionResponseV1, error) {
+	statVars := in.GetStatVars()
+	dcids := in.GetDcids()
+	if len(statVars) > 0 && len(dcids) > 0 {
+		statVarCount, err := countStatVar(ctx, s.store, statVars, dcids)
+		if err != nil {
+			return nil, err
+		}
+		result := &pb.GetPlaceStatVarsUnionResponseV1{}
+		for _, sv := range statVars {
+			if existence, ok := statVarCount[sv]; ok && len(existence) > 0 {
+				result.StatVars = append(result.StatVars, sv)
+			}
+		}
+		return result, nil
+	}
 	resp, err := s.GetPlaceStatVarsUnion(ctx, in)
 	if err != nil {
 		return nil, err

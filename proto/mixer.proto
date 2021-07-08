@@ -325,6 +325,8 @@ message GetPlaceStatVarsResponse {
 message GetPlaceStatVarsUnionRequest {
   // DCIDs of the places.
   repeated string dcids = 1;
+  // (optional) DCID of stat vars to filter for
+  repeated string stat_vars = 2;
 }
 
 // TODO(shifucun): remove this when GetPlaceStatVarsUnionV1 is live.
@@ -850,7 +852,7 @@ service Mixer {
       }
     };
   }
-  // TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnion is live
+  // TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnionV1 is live
   rpc GetPlaceStatVarsUnion(GetPlaceStatVarsUnionRequest)
       returns (GetPlaceStatVarsUnionResponse) {
     option (google.api.http) = {
