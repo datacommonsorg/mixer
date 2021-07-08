@@ -3,7 +3,7 @@
   "childStatVars": [
     {
       "id": "Count_Person",
-      "searchName": "Count of Person",
+      "searchName": "Population Count of Person",
       "displayName": "Population",
       "hasData": true
     },

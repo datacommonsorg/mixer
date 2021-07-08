@@ -3,7 +3,7 @@
   "childStatVars": [
     {
       "id": "Count_Person",
-      "searchName": "Count of Person",
+      "searchName": "Population Count of Person",
       "displayName": "Population",
       "hasData": true
     },
@@ -73,7 +73,7 @@
       "id": "dc/g/ImmigrationAndCitizenship",
       "specializedEntity": "Immigration And Citizenship",
       "displayName": "Immigration and Citizenship",
-      "numDescendentStatVars": 279
+      "numDescendentStatVars": 267
     },
     {
       "id": "dc/g/Language",
@@ -85,7 +85,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 4886
+      "numDescendentStatVars": 4702
     },
     {
       "id": "dc/g/Person_DisabilityStatus",
@@ -97,7 +97,7 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 5411
+      "numDescendentStatVars": 5387
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -127,7 +127,7 @@
       "id": "dc/g/Person_IncomeStatus",
       "specializedEntity": "Income Status",
       "displayName": "Person by Income Status",
-      "numDescendentStatVars": 340
+      "numDescendentStatVars": 260
     },
     {
       "id": "dc/g/Person_LiteracyStatus",
@@ -163,5 +163,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 7818
+  "numDescendentStatVars": 7775
 }
