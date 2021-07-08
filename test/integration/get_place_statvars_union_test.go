@@ -30,18 +30,37 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 	}
 
 	for _, c := range []struct {
-		dcids    []string
-		want     []string
-		minCount int
+		dcids          []string
+		statVars       []string
+		want           []string
+		shouldBeAbsent []string
+		minCount       int
 	}{
 		{
 			[]string{"geoId/06085", "country/JPN"},
+			[]string{},
 			[]string{"Count_Person", "GiniIndex_EconomicActivity"},
+			[]string{},
 			1000,
+		},
+		{
+			[]string{"geoId/06", "country/USA"},
+			[]string{"Median_Income_Person", "Median_Age_Person", "IncrementalCount_Person", "FertilityRate_Person_Female"},
+			[]string{"Median_Age_Person", "Median_Income_Person", "FertilityRate_Person_Female"},
+			[]string{"IncrementalCount_Person"},
+			3,
+		},
+		{
+			[]string{"geoId/06"},
+			[]string{"Median_Income_Person", "Median_Age_Person", "IncrementalCount_Person", "FertilityRate_Person_Female"},
+			[]string{"Median_Age_Person", "Median_Income_Person"},
+			[]string{"IncrementalCount_Person", "FertilityRate_Person_Female"},
+			2,
 		},
 	} {
 		req := &pb.GetPlaceStatVarsUnionRequest{
-			Dcids: c.dcids,
+			Dcids:    c.dcids,
+			StatVars: c.statVars,
 		}
 		resp, err := client.GetPlaceStatVarsUnionV1(ctx, req)
 		if err != nil {
@@ -58,6 +77,12 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 		for _, statsVar := range c.want {
 			if _, ok := statsVarSet[statsVar]; !ok {
 				t.Errorf("%s is not in the stat vars union", statsVar)
+				continue
+			}
+		}
+		for _, statsVar := range c.shouldBeAbsent {
+			if _, ok := statsVarSet[statsVar]; ok {
+				t.Errorf("%s should not be in the stat vars union", statsVar)
 				continue
 			}
 		}
