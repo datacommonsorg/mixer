@@ -1037,12 +1037,38 @@ func TestSparql(t *testing.T) {
 			"adminarea1",
 			`
 			SELECT ?name
-      WHERE {
-      	?state typeOf AdministrativeArea1 .
-        ?state name ?name .
-      }
+		  WHERE {
+		  	?state typeOf AdministrativeArea1 .
+		    ?state name ?name .
+		  }
 			`,
 			"SELECT _dc_v3_Place_0.name AS name FROM `dc_v3.Place` AS _dc_v3_Place_0 WHERE _dc_v3_Place_0.type = \"AdministrativeArea1\"",
+		},
+		{
+			"bio",
+			`
+			SELECT distinct ?d
+			WHERE {
+				?ccdt typeOf ChemicalCompoundDiseaseTreatment .
+				?ccdt compoundID ?c .
+				?ccdt diseaseID ?dis .
+				?dis commonName ?d .
+				?c drugName "Prednisone" .
+			}
+			LIMIT 100
+			`,
+			"SELECT _dc_v3_Triple_3.object_value AS d FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id " +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id " +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4 ON _dc_v3_Triple_1.object_id = _dc_v3_Triple_4.subject_id " +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3 ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_3.subject_id " +
+				"WHERE _dc_v3_Triple_0.object_id = \"ChemicalCompoundDiseaseTreatment\" " +
+				"AND _dc_v3_Triple_0.predicate = \"typeOf\" " +
+				"AND _dc_v3_Triple_1.predicate = \"compoundID\" " +
+				"AND _dc_v3_Triple_2.predicate = \"diseaseID\" " +
+				"AND _dc_v3_Triple_3.predicate = \"commonName\" " +
+				"AND _dc_v3_Triple_4.object_value = \"Prednisone\" " +
+				"AND _dc_v3_Triple_4.predicate = \"drugName\"",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
