@@ -771,9 +771,19 @@ func getSQL(
 			}
 			futureTables = append(futureTables, otherCol.Table)
 		}
-		for _, v := range futureTables {
-			if _, ok := joinConstraints[v]; ok {
-				currTable = v
+
+		if len(futureTables) > 0 {
+			for _, v := range futureTables {
+				if _, ok := joinConstraints[v]; ok {
+					currTable = v
+					break
+				}
+			}
+		} else {
+			// It's possible future tables have all matched and become empty.
+			// In this case, pick currTable from joinConstraints.
+			for t := range joinConstraints {
+				currTable = t
 				break
 			}
 		}
