@@ -4671,10 +4671,6 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
-      "name": "Person With Enrollment Level, Gender = Female",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
-    },
-    {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -4700,35 +4696,7 @@
     },
     {
       "name": "Person With Gender = Female, Enrollment Level",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel-EnrolledInCollegeUndergraduateYears"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 1 To Grade 4",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel-EnrolledInGrade1ToGrade4"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 5 To Grade 8",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel-EnrolledInGrade5ToGrade8"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 9 To Grade 12",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel-EnrolledInGrade9ToGrade12"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Graduate or Professional School",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel-EnrolledInGraduateOrProfessionalSchool"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Kindergarten",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel-EnrolledInKindergarten"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Nursery School Preschool",
-      "dcid": "dc/g/Person_Gender-Female_EnrollmentLevel-EnrolledInNurserySchoolPreschool"
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Health Behavior",
@@ -5133,18 +5101,6 @@
     {
       "name": "Person With Gender = Female, Veteran Status = Veteran",
       "dcid": "dc/g/Person_Gender-Female_VeteranStatus-Veteran"
-    },
-    {
-      "name": "Person With Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Military Status = in Armed Forces, Gender = Female",
-      "dcid": "dc/g/Person_MilitaryStatus-InArmedForces_Gender-Female"
-    },
-    {
-      "name": "Person With Military Status, Gender = Female",
-      "dcid": "dc/g/Person_MilitaryStatus_Gender-Female"
     },
     {
       "name": "Mortality Event With Age = 1 - 4 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female",
@@ -6695,18 +6651,6 @@
       "dcid": "dc/g/Person_Age-Years16To19_EmploymentStatus_Gender-Female"
     },
     {
-      "name": "Person With Age = 16 - 19 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16To19_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 16 - 19 Years, Military Status = in Armed Forces, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16To19_MilitaryStatus-InArmedForces_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 16 - 19 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16To19_MilitaryStatus_Gender-Female"
-    },
-    {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female"
     },
@@ -6881,14 +6825,6 @@
     {
       "name": "Person With Age = 16 Years or More, Gender = Female, Race = White Alone Not Hispanic or Latino",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16Onwards_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16Onwards_MilitaryStatus_Gender-Female"
     },
     {
       "name": "Person With Age = 18 - 19 Years, Gender = Female, Race",
@@ -7091,14 +7027,6 @@
       "dcid": "dc/g/Person_Age-Years18To24_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "Person With Age = 18 - 24 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years18To24_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 18 - 24 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years18To24_MilitaryStatus_Gender-Female"
-    },
-    {
       "name": "Person With Age = 18 - 34 Years, Gender = Female, Veteran Status",
       "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_VeteranStatus"
     },
@@ -7109,14 +7037,6 @@
     {
       "name": "Person With Age = 18 - 34 Years, Gender = Female, Veteran Status = Veteran",
       "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_VeteranStatus-Veteran"
-    },
-    {
-      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 18 - 34 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus_Gender-Female"
     },
     {
       "name": "Person With Age = 18 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
@@ -7207,14 +7127,6 @@
       "dcid": "dc/g/Person_Age-Years19To25_Gender-Female_Institutionalization-NonInstitutionalized"
     },
     {
-      "name": "Person With Age = 19 - 25 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years19To25_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 19 - 25 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years19To25_MilitaryStatus_Gender-Female"
-    },
-    {
       "name": "Person With Age = 20 - 21 Years, Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years20To21_EmploymentStatus-NotInLaborForce_Gender-Female"
     },
@@ -7225,18 +7137,6 @@
     {
       "name": "Person With Age = 20 - 21 Years, Employment Status, Gender = Female",
       "dcid": "dc/g/Person_Age-Years20To21_EmploymentStatus_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 20 - 21 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years20To21_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 20 - 21 Years, Military Status = in Armed Forces, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years20To21_MilitaryStatus-InArmedForces_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 20 - 21 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years20To21_MilitaryStatus_Gender-Female"
     },
     {
       "name": "Person With Age = 20 - 24 Years, Gender = Female, Race",
@@ -7359,18 +7259,6 @@
       "dcid": "dc/g/Person_Age-Years22To24_EmploymentStatus_Gender-Female"
     },
     {
-      "name": "Person With Age = 22 - 24 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years22To24_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 22 - 24 Years, Military Status = in Armed Forces, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years22To24_MilitaryStatus-InArmedForces_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 22 - 24 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years22To24_MilitaryStatus_Gender-Female"
-    },
-    {
       "name": "Person With Age = 25 - 29 Years, Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years25To29_EmploymentStatus-NotInLaborForce_Gender-Female"
     },
@@ -7421,18 +7309,6 @@
     {
       "name": "Person With Age = 25 - 29 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
       "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 25 - 29 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To29_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 29 Years, Military Status = in Armed Forces, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To29_MilitaryStatus-InArmedForces_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 29 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To29_MilitaryStatus_Gender-Female"
     },
     {
       "name": "Person With Age = 25 - 34 Years, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
@@ -7595,14 +7471,6 @@
       "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-PublicSchool"
     },
     {
-      "name": "Person With Age = 25 - 34 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_MilitaryStatus_Gender-Female"
-    },
-    {
       "name": "Person With Age = 25 Years or More, Gender = Female, Race",
       "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race"
     },
@@ -7679,14 +7547,6 @@
       "dcid": "dc/g/Person_Age-Years26To34_Gender-Female_Institutionalization-NonInstitutionalized"
     },
     {
-      "name": "Person With Age = 26 - 34 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years26To34_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 26 - 34 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years26To34_MilitaryStatus_Gender-Female"
-    },
-    {
       "name": "Person With Age = 3 - 4 Years, Gender = Female, Type of School",
       "dcid": "dc/g/Person_Age-Years3To4_Gender-Female_TypeOfSchool"
     },
@@ -7753,18 +7613,6 @@
     {
       "name": "Person With Age = 30 - 34 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
       "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years30To34_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Military Status = in Armed Forces, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years30To34_MilitaryStatus-InArmedForces_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years30To34_MilitaryStatus_Gender-Female"
     },
     {
       "name": "Person With Age = 35 - 44 Years, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
@@ -7907,18 +7755,6 @@
       "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "Person With Age = 35 - 44 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Military Status = in Armed Forces, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_MilitaryStatus-InArmedForces_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_MilitaryStatus_Gender-Female"
-    },
-    {
       "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status",
       "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_VeteranStatus"
     },
@@ -7929,14 +7765,6 @@
     {
       "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status = Veteran",
       "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_VeteranStatus-Veteran"
-    },
-    {
-      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus-Civilian_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 54 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus_Gender-Female"
     },
     {
       "name": "Person With Age = 35 Years or More, Enrollment Level = Enrolled in Private College or Graduate School, Gender = Female",
@@ -8001,6 +7829,178 @@
     {
       "name": "Person With Age = 40 - 64 Years, Gender = Female, Health Insurance = No Health Insurance",
       "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_HealthInsurance-NoHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 40 - 64 Years, Gender = Female, Health Insurance = With Health Insurance",
+      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_HealthInsurance-WithHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race",
+      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race"
+    },
+    {
+      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race = Black or African American Alone",
+      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race-BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race = Hispanic or Latino",
+      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race-HispanicOrLatino"
+    },
+    {
+      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race = White Alone",
+      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race-WhiteAlone"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Employment Status = Not in Labor Force, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To54_EmploymentStatus-NotInLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Employment Status = in Labor Force, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To54_EmploymentStatus-InLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Employment Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To54_EmploymentStatus_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = No Health Insurance",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-NoHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = No Private Health Insurance",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-NoPrivateHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = No Public Health Insurance",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-NoPublicHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = With Health Insurance",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-WithHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = With Private Health Insurance",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = With Public Health Insurance",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-WithPublicHealthInsurance"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Institutionalization",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Institutionalization"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Institutionalization = Non Institutionalized",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = American Indian or Alaska Native Alone",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Black or African American Alone",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Hispanic or Latino",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-HispanicOrLatino"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Some Other Race Alone",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-SomeOtherRaceAlone"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Two or More Races",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-TwoOrMoreRaces"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = White Alone",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-WhiteAlone"
+    },
+    {
+      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
+      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Associates Degree, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-AssociatesDegree_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Bachelors Degree, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-BachelorsDegree_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Graduate or Professional Degree, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = High School Graduate Ged or Alternative, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Less Than 9th Grade, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-LessThan9ThGrade_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Some College No Degree, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-SomeCollegeNoDegree_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 45 - 64 Years, Educational Attainment, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 5 - 9 Years, Gender = Female, Race",
+      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Race"
+    },
+    {
+      "name": "Person With Age = 5 - 9 Years, Gender = Female, Race = American Indian or Alaska Native Alone",
+      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Person With Age = 5 - 9 Years, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Race-AsianAlone"
     }
   ]
 }

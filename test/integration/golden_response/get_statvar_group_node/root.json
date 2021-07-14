@@ -2,28 +2,58 @@
   "absoluteName": "Data Commons Variables",
   "childStatVarGroups": [
     {
+      "id": "dc/g/Demographics",
+      "specializedEntity": "Demographics",
+      "displayName": "Demographics",
+      "numDescendentStatVars": 7724
+    },
+    {
+      "id": "dc/g/Household",
+      "specializedEntity": "Household",
+      "displayName": "Household",
+      "numDescendentStatVars": 948
+    },
+    {
+      "id": "dc/g/Housing",
+      "specializedEntity": "Housing",
+      "displayName": "Housing",
+      "numDescendentStatVars": 140
+    },
+    {
       "id": "dc/g/COVID-19",
       "specializedEntity": "COVID-19",
       "displayName": "COVID-19",
-      "numDescendentStatVars": 114
+      "numDescendentStatVars": 102
+    },
+    {
+      "id": "dc/g/Employment",
+      "specializedEntity": "Employment",
+      "displayName": "Employment",
+      "numDescendentStatVars": 1759
+    },
+    {
+      "id": "dc/g/Health",
+      "specializedEntity": "Health",
+      "displayName": "Health",
+      "numDescendentStatVars": 3810
     },
     {
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": 96
+      "numDescendentStatVars": 99
+    },
+    {
+      "id": "dc/g/Energy",
+      "specializedEntity": "Energy",
+      "displayName": "Energy",
+      "numDescendentStatVars": 7701
     },
     {
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
       "displayName": "Crime",
       "numDescendentStatVars": 182
-    },
-    {
-      "id": "dc/g/Demographics",
-      "specializedEntity": "Demographics",
-      "displayName": "Demographics",
-      "numDescendentStatVars": 7775
     },
     {
       "id": "dc/g/Economics",
@@ -38,47 +68,17 @@
       "numDescendentStatVars": 2349
     },
     {
-      "id": "dc/g/Employment",
-      "specializedEntity": "Employment",
-      "displayName": "Employment",
-      "numDescendentStatVars": 45928
-    },
-    {
-      "id": "dc/g/Energy",
-      "specializedEntity": "Energy",
-      "displayName": "Energy",
-      "numDescendentStatVars": 7701
-    },
-    {
-      "id": "dc/g/Health",
-      "specializedEntity": "Health",
-      "displayName": "Health",
-      "numDescendentStatVars": 3810
-    },
-    {
-      "id": "dc/g/Household",
-      "specializedEntity": "Household",
-      "displayName": "Household",
-      "numDescendentStatVars": 948
-    },
-    {
-      "id": "dc/g/Housing",
-      "specializedEntity": "Housing",
-      "displayName": "Housing",
-      "numDescendentStatVars": 136
-    },
-    {
       "id": "dc/g/MilitaryService",
       "specializedEntity": "Military Service",
       "displayName": "Military Service",
-      "numDescendentStatVars": 642
+      "numDescendentStatVars": 552
     },
     {
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": 51
+      "numDescendentStatVars": 47
     }
   ],
-  "numDescendentStatVars": 64494
+  "numDescendentStatVars": 64497
 }

@@ -2,39 +2,15 @@
   "absoluteName": "Demographics",
   "childStatVars": [
     {
-      "id": "Count_Person",
-      "searchName": "Population Count of Person",
-      "displayName": "Population",
-      "hasData": true
-    },
-    {
-      "id": "Count_Person_IsInternetUser_PerCapita",
-      "searchName": "Percent of Internet Users",
-      "displayName": "Percent of Internet Users",
-      "hasData": true
-    },
-    {
-      "id": "Count_Person_PerArea",
-      "searchName": "Population Density",
-      "displayName": "Population Density",
-      "hasData": true
-    },
-    {
       "id": "FertilityRate_Person_Female",
       "searchName": "Fertility Rate of Person",
       "displayName": "Fertility Rate",
       "hasData": true
     },
     {
-      "id": "GrowthRate_Count_Person",
-      "searchName": "Population Growth Rate",
-      "displayName": "Population Growth Rate",
-      "hasData": true
-    },
-    {
-      "id": "IncrementalCount_Person",
-      "searchName": "Population Change",
-      "displayName": "Population Change"
+      "id": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
+      "searchName": "Gender Income Inequality of Person",
+      "displayName": "Gender Income Inequality"
     },
     {
       "id": "LifeExpectancy_Person",
@@ -51,9 +27,44 @@
       "id": "Median_Income_Person",
       "searchName": "Median Income of Person",
       "displayName": "Median Income"
+    },
+    {
+      "id": "Count_Person_IsInternetUser_PerCapita",
+      "searchName": "Percent of Internet Users",
+      "displayName": "Percent of Internet Users",
+      "hasData": true
+    },
+    {
+      "id": "Count_Person",
+      "searchName": "Population Count of Person",
+      "displayName": "Population",
+      "hasData": true
+    },
+    {
+      "id": "IncrementalCount_Person",
+      "searchName": "Population Change",
+      "displayName": "Population Change"
+    },
+    {
+      "id": "Count_Person_PerArea",
+      "searchName": "Population Density",
+      "displayName": "Population Density",
+      "hasData": true
+    },
+    {
+      "id": "GrowthRate_Count_Person",
+      "searchName": "Population Growth Rate",
+      "displayName": "Population Growth Rate",
+      "hasData": true
     }
   ],
   "childStatVarGroups": [
+    {
+      "id": "dc/g/Person_Age",
+      "specializedEntity": "Age",
+      "displayName": "Person by Age",
+      "numDescendentStatVars": 648
+    },
     {
       "id": "dc/g/Births",
       "specializedEntity": "Births",
@@ -64,22 +75,6 @@
       "id": "dc/g/Commute",
       "specializedEntity": "Commute",
       "displayName": "Commute"
-    },
-    {
-      "id": "dc/g/ImmigrationAndCitizenship",
-      "specializedEntity": "Immigration And Citizenship",
-      "displayName": "Immigration and Citizenship"
-    },
-    {
-      "id": "dc/g/Language",
-      "specializedEntity": "Language",
-      "displayName": "Language"
-    },
-    {
-      "id": "dc/g/Person_Age",
-      "specializedEntity": "Age",
-      "displayName": "Person by Age",
-      "numDescendentStatVars": 648
     },
     {
       "id": "dc/g/Person_DisabilityStatus",
@@ -108,6 +103,11 @@
       "displayName": "Person by Household Type"
     },
     {
+      "id": "dc/g/ImmigrationAndCitizenship",
+      "specializedEntity": "Immigration And Citizenship",
+      "displayName": "Immigration and Citizenship"
+    },
+    {
       "id": "dc/g/Person_Income",
       "specializedEntity": "Income",
       "displayName": "Person by Income"
@@ -116,6 +116,11 @@
       "id": "dc/g/Person_IncomeStatus",
       "specializedEntity": "Income Status",
       "displayName": "Person by Income Status"
+    },
+    {
+      "id": "dc/g/Language",
+      "specializedEntity": "Language",
+      "displayName": "Language"
     },
     {
       "id": "dc/g/Person_LiteracyStatus",

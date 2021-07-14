@@ -2,54 +2,10 @@
   "absoluteName": "Data Commons Variables",
   "childStatVarGroups": [
     {
-      "id": "dc/g/COVID-19",
-      "specializedEntity": "COVID-19",
-      "displayName": "COVID-19"
-    },
-    {
-      "id": "dc/g/Climate",
-      "specializedEntity": "Climate",
-      "displayName": "Climate"
-    },
-    {
-      "id": "dc/g/Crime",
-      "specializedEntity": "Crime",
-      "displayName": "Crime",
-      "numDescendentStatVars": 149
-    },
-    {
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
       "numDescendentStatVars": 4151
-    },
-    {
-      "id": "dc/g/Economics",
-      "specializedEntity": "Economics",
-      "displayName": "Economics"
-    },
-    {
-      "id": "dc/g/Education",
-      "specializedEntity": "Education",
-      "displayName": "Education",
-      "numDescendentStatVars": 602
-    },
-    {
-      "id": "dc/g/Employment",
-      "specializedEntity": "Employment",
-      "displayName": "Employment",
-      "numDescendentStatVars": 3430
-    },
-    {
-      "id": "dc/g/Energy",
-      "specializedEntity": "Energy",
-      "displayName": "Energy"
-    },
-    {
-      "id": "dc/g/Health",
-      "specializedEntity": "Health",
-      "displayName": "Health",
-      "numDescendentStatVars": 286
     },
     {
       "id": "dc/g/Household",
@@ -62,6 +18,50 @@
       "specializedEntity": "Housing",
       "displayName": "Housing",
       "numDescendentStatVars": 136
+    },
+    {
+      "id": "dc/g/COVID-19",
+      "specializedEntity": "COVID-19",
+      "displayName": "COVID-19"
+    },
+    {
+      "id": "dc/g/Employment",
+      "specializedEntity": "Employment",
+      "displayName": "Employment",
+      "numDescendentStatVars": 1759
+    },
+    {
+      "id": "dc/g/Health",
+      "specializedEntity": "Health",
+      "displayName": "Health",
+      "numDescendentStatVars": 286
+    },
+    {
+      "id": "dc/g/Climate",
+      "specializedEntity": "Climate",
+      "displayName": "Climate"
+    },
+    {
+      "id": "dc/g/Energy",
+      "specializedEntity": "Energy",
+      "displayName": "Energy"
+    },
+    {
+      "id": "dc/g/Crime",
+      "specializedEntity": "Crime",
+      "displayName": "Crime",
+      "numDescendentStatVars": 149
+    },
+    {
+      "id": "dc/g/Economics",
+      "specializedEntity": "Economics",
+      "displayName": "Economics"
+    },
+    {
+      "id": "dc/g/Education",
+      "specializedEntity": "Education",
+      "displayName": "Education",
+      "numDescendentStatVars": 602
     },
     {
       "id": "dc/g/MilitaryService",
