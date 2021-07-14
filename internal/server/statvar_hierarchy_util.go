@@ -48,6 +48,7 @@ type SearchIndex struct {
 // PVs to a number greater than max number of PVs for a human curated stat var.
 const nonHumanCuratedNumPv = 30
 
+// This should be synced with the list of blocklisted SVGs in the website repo
 var blocklistedSvgIds = []string{"dc/g/Person_EmploymentStatus", "dc/g/Establishment", "dc/g/Person_Industry"}
 
 // GetRawSvg gets the raw svg mapping.
@@ -131,8 +132,7 @@ func getIgnoredSVGHelper(
 	rawSvg map[string]*pb.StatVarGroupNode,
 	svgID string) {
 	ignoredSvg[svgID] = ""
-	svgData, ok := rawSvg[svgID]
-	if ok {
+	if svgData, ok := rawSvg[svgID]; ok {
 		for _, svData := range svgData.ChildStatVarGroups {
 			getIgnoredSVGHelper(ignoredSvg, rawSvg, svData.Id)
 		}
