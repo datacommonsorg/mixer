@@ -211,9 +211,6 @@ func (s *Server) GetStatVarGroupNode(
 		for _, item := range result.ChildStatVarGroups {
 			item.DisplayName = s.cache.SvgInfo[item.Id].AbsoluteName
 			item.NumDescendentStatVars = s.cache.SvgInfo[item.Id].NumDescendentStatVars
-			if item.Id == "dc/g/Employment" {
-				item.NumDescendentStatVars = employmentNumDescendents
-			}
 		}
 		for _, item := range result.ChildStatVars {
 			item.HasData = true
@@ -258,9 +255,6 @@ func (s *Server) GetStatVarGroupNode(
 						item.NumDescendentStatVars = count
 					}
 				}
-			}
-			if item.Id == "dc/g/Employment" && item.NumDescendentStatVars > employmentNumDescendents {
-				item.NumDescendentStatVars = employmentNumDescendents
 			}
 		}
 		// Filter child stat vars

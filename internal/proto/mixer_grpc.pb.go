@@ -78,7 +78,7 @@ type MixerClient interface {
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
 	GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponseV1, error)
-	// TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnion is live
+	// TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnionV1 is live
 	GetPlaceStatVarsUnion(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that have
 	// data for each stat var across all child places.
@@ -431,7 +431,7 @@ type MixerServer interface {
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
 	GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponseV1, error)
-	// TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnion is live
+	// TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnionV1 is live
 	GetPlaceStatVarsUnion(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that have
 	// data for each stat var across all child places.

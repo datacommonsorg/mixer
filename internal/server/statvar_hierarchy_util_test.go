@@ -76,15 +76,16 @@ func TestGetParentMapping(t *testing.T) {
 
 func TestBuildSearchIndex(t *testing.T) {
 	for _, c := range []struct {
-		input map[string]*pb.StatVarGroupNode
-		want  *SearchIndex
+		input         map[string]*pb.StatVarGroupNode
+		want          *SearchIndex
+		blocklistWant *SearchIndex
 	}{
 		{
 			map[string]*pb.StatVarGroupNode{
 				"group_1": {
 					AbsoluteName: "token1 token2",
 					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
-						{Id: "group_3_1"},
+						{Id: "dc/g/Person_EmploymentStatus"},
 					},
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
@@ -99,7 +100,7 @@ func TestBuildSearchIndex(t *testing.T) {
 						},
 					},
 				},
-				"group_3_1": {
+				"dc/g/Person_EmploymentStatus": {
 					AbsoluteName: "token2, token4",
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
@@ -137,11 +138,11 @@ func TestBuildSearchIndex(t *testing.T) {
 						"group_1": {},
 					},
 					"token2": {
-						"group_1":   {},
-						"group_3_1": {},
+						"group_1":                      {},
+						"dc/g/Person_EmploymentStatus": {},
 					},
 					"token4": {
-						"group_3_1": {},
+						"dc/g/Person_EmploymentStatus": {},
 					},
 				},
 				ranking: map[string]*RankingInfo{
@@ -153,7 +154,7 @@ func TestBuildSearchIndex(t *testing.T) {
 						ApproxNumPv: 3,
 						RankingName: "token1 token3",
 					},
-					"group_3_1": {
+					"dc/g/Person_EmploymentStatus": {
 						ApproxNumPv: 3,
 						RankingName: "token2, token4",
 					},
@@ -171,10 +172,50 @@ func TestBuildSearchIndex(t *testing.T) {
 					},
 				},
 			},
+			&SearchIndex{
+				token2sv: map[string]map[string]struct{}{
+					"token1": {
+						"sv_1_1": {},
+					},
+					"token3": {
+						"sv_1_1": {},
+						"sv_1_2": {},
+					},
+					"token4": {
+						"sv_1_2": {},
+					},
+				},
+				token2svg: map[string]map[string]struct{}{
+					"token1": {
+						"group_1": {},
+					},
+					"token2": {
+						"group_1": {},
+					},
+				},
+				ranking: map[string]*RankingInfo{
+					"group_1": {
+						ApproxNumPv: 2,
+						RankingName: "token1 token2",
+					},
+					"sv_1_1": {
+						ApproxNumPv: 3,
+						RankingName: "token1 token3",
+					},
+					"sv_1_2": {
+						ApproxNumPv: 3,
+						RankingName: "token3, token4",
+					},
+				},
+			},
 		},
 	} {
-		got := BuildStatVarSearchIndex(c.input)
+		got := BuildStatVarSearchIndex(c.input, false)
 		if diff := deep.Equal(got, c.want); diff != nil {
+			t.Errorf("GetStatVarSearchIndex got diff %v", diff)
+		}
+		blocklistGot := BuildStatVarSearchIndex(c.input, true)
+		if diff := deep.Equal(blocklistGot, c.want); diff != nil {
 			t.Errorf("GetStatVarSearchIndex got diff %v", diff)
 		}
 	}

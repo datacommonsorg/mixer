@@ -38,29 +38,46 @@ func TestSearchStatVar(t *testing.T) {
 		path.Dir(filename), "golden_response/search_statvar")
 
 	for _, c := range []struct {
-		query      string
-		places     []string
-		goldenFile string
+		query           string
+		places          []string
+		enableBlocklist bool
+		goldenFile      string
 	}{
 		{
 			"Asian , age",
 			[]string{"geoId/06"},
+			false,
 			"asian_age.json",
 		},
 		{
 			"crime",
 			[]string{},
+			false,
 			"crime.json",
 		},
 		{
 			"female",
 			[]string{"country/USA"},
+			false,
 			"female.json",
+		},
+		{
+			"employed 16",
+			[]string{"country/USA"},
+			true,
+			"employed_16_blocklist.json",
+		},
+		{
+			"employed 16",
+			[]string{"country/USA"},
+			false,
+			"employed_16.json",
 		},
 	} {
 		resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
-			Query:  c.query,
-			Places: c.places,
+			Query:           c.query,
+			Places:          c.places,
+			EnableBlocklist: c.enableBlocklist,
 		})
 		if err != nil {
 			t.Errorf("could not SearchStatVar: %s", err)

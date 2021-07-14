@@ -560,6 +560,8 @@ message SearchStatVarRequest {
   string query = 1;
   // Places where the stat var and stat var groups are associated with.
   repeated string places = 2;
+  // Whether to blocklist the search results.
+  bool enable_blocklist = 3;
 }
 
 message SearchStatVarResponse {

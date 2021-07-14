@@ -34,6 +34,7 @@ func (s *Server) SearchStatVar(
 ) {
 	query := in.GetQuery()
 	places := in.GetPlaces()
+	blocklist := in.GetEnableBlocklist()
 
 	result := &pb.SearchStatVarResponse{
 		StatVars:      []*pb.EntityInfo{},
@@ -44,7 +45,11 @@ func (s *Server) SearchStatVar(
 	}
 	tokens := strings.Fields(
 		strings.Replace(strings.ToLower(query), ",", " ", -1))
-	svList, svgList := searchTokens(tokens, s.cache.SvgSearchIndex)
+	searchIndex := s.cache.SvgSearchIndex
+	if blocklist {
+		searchIndex = s.cache.BlocklistedSvgSearchIndex
+	}
+	svList, svgList := searchTokens(tokens, searchIndex)
 
 	// Filter the stat var and stat var group by places.
 	if len(places) > 0 {
