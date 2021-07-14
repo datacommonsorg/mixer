@@ -48,6 +48,9 @@ type SearchIndex struct {
 // PVs to a number greater than max number of PVs for a human curated stat var.
 const nonHumanCuratedNumPv = 30
 
+// This should be synced with the list of blocklisted SVGs in the website repo
+var blocklistedSvgIds = []string{"dc/g/Person_EmploymentStatus", "dc/g/Establishment", "dc/g/Person_Industry"}
+
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (
 	map[string]*pb.StatVarGroupNode, error) {
@@ -123,16 +126,39 @@ func (index *SearchIndex) update(
 	}
 }
 
+// Helper to build a set of ignored SVGs.
+func getIgnoredSVGHelper(
+	ignoredSvg map[string]string,
+	rawSvg map[string]*pb.StatVarGroupNode,
+	svgID string) {
+	ignoredSvg[svgID] = ""
+	if svgData, ok := rawSvg[svgID]; ok {
+		for _, svData := range svgData.ChildStatVarGroups {
+			getIgnoredSVGHelper(ignoredSvg, rawSvg, svData.Id)
+		}
+	}
+}
+
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
-	rawSvg map[string]*pb.StatVarGroupNode) *SearchIndex {
+	rawSvg map[string]*pb.StatVarGroupNode,
+	blocklist bool) *SearchIndex {
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &SearchIndex{
 		token2sv:  map[string]map[string]struct{}{},
 		token2svg: map[string]map[string]struct{}{},
 		ranking:   map[string]*RankingInfo{},
 	}
+	ignoredSVG := map[string]string{}
+	if blocklist {
+		for _, svgID := range blocklistedSvgIds {
+			getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
+		}
+	}
 	for svgID, svgData := range rawSvg {
+		if _, ok := ignoredSVG[svgID]; ok {
+			continue
+		}
 		tokenString := svgData.AbsoluteName
 		searchIndex.update(svgID, tokenString, tokenString, true /* isSvg */)
 		for _, svData := range svgData.ChildStatVars {

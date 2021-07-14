@@ -41,8 +41,9 @@ type Cache struct {
 	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
 	ParentSvg map[string][]string
 	// SvgInfo is a map of svg id to its information.
-	SvgInfo        map[string]*pb.StatVarGroupNode
-	SvgSearchIndex *SearchIndex
+	SvgInfo                   map[string]*pb.StatVarGroupNode
+	SvgSearchIndex            *SearchIndex
+	BlocklistedSvgSearchIndex *SearchIndex
 }
 
 // Metadata represents the metadata used by the server.
@@ -189,11 +190,14 @@ func NewCache(ctx context.Context, baseTable *bigtable.Table) (*Cache, error) {
 		return nil, err
 	}
 	parentSvgMap := BuildParentSvgMap(rawSvg)
-	searchIndex := BuildStatVarSearchIndex(rawSvg)
+	searchIndex := BuildStatVarSearchIndex(rawSvg, false)
+	blocklistedSearchIndex := BuildStatVarSearchIndex(rawSvg, true)
+
 	return &Cache{
-		ParentSvg:      parentSvgMap,
-		SvgInfo:        rawSvg,
-		SvgSearchIndex: searchIndex,
+		ParentSvg:                 parentSvgMap,
+		SvgInfo:                   rawSvg,
+		SvgSearchIndex:            searchIndex,
+		BlocklistedSvgSearchIndex: blocklistedSearchIndex,
 	}, nil
 }
 
