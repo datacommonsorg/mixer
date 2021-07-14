@@ -129,9 +129,9 @@ func (index *SearchIndex) update(
 func getIgnoredSVGHelper(
 	ignoredSvg map[string]string,
 	rawSvg map[string]*pb.StatVarGroupNode,
-	svgId string) {
-	ignoredSvg[svgId] = ""
-	svgData, ok := rawSvg[svgId]
+	svgID string) {
+	ignoredSvg[svgID] = ""
+	svgData, ok := rawSvg[svgID]
 	if ok {
 		for _, svData := range svgData.ChildStatVarGroups {
 			getIgnoredSVGHelper(ignoredSvg, rawSvg, svData.Id)

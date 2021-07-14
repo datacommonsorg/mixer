@@ -28,10 +28,9 @@ import (
 )
 
 const (
-	svgRoot                  = "dc/g/Root"
-	autoGenSvgIDPrefix       = "dc/g/"
-	svgDelimiter             = "_"
-	employmentNumDescendents = 1759
+	svgRoot            = "dc/g/Root"
+	autoGenSvgIDPrefix = "dc/g/"
+	svgDelimiter       = "_"
 )
 
 // Note this function modifies validSVG inside.
