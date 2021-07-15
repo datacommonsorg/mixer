@@ -1,136 +1,790 @@
 {
   "statVars": [
     {
-      "name": "Accommodation And Food Services Population",
+      "name": "Accommodation And Food Services (NAICS/72) Population",
       "dcid": "Count_Worker_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Total of Accommodation And Food Services",
+      "name": "Wages Total of Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesTotal_Worker_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Count of Accommodation And Food Services (Adjusted)",
+      "name": "Count of Accommodation And Food Services (NAICS/72) (Adjusted)",
       "dcid": "Count_JobPosting_NAICSAccommodationFoodServices_Adjusted"
     },
     {
-      "name": "Count of Accommodation And Food Services (Unadjusted)",
+      "name": "Count of Accommodation And Food Services (NAICS/72) (Unadjusted)",
       "dcid": "Count_JobPosting_NAICSAccommodationFoodServices_Unadjusted"
     },
     {
-      "name": "Federal Government Owned, Accommodation And Food Services Population",
+      "name": "Federal Government Owned, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "Count_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Local Government Owned, Accommodation And Food Services Population",
+      "name": "Local Government Owned, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "Count_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Privately Owned, Accommodation And Food Services Population",
+      "name": "Privately Owned, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "Count_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "State Government Owned, Accommodation And Food Services Population",
+      "name": "State Government Owned, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "Count_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Annual of Federal Government Owned, Accommodation And Food Services",
+      "name": "Wages Annual of Federal Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesAnnual_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Annual of Local Government Owned, Accommodation And Food Services",
+      "name": "Wages Annual of Local Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesAnnual_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Annual of Privately Owned, Accommodation And Food Services",
+      "name": "Wages Annual of Privately Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesAnnual_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Annual of State Government Owned, Accommodation And Food Services",
+      "name": "Wages Annual of State Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesAnnual_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Total of Federal Government Owned, Accommodation And Food Services",
+      "name": "Wages Total of Federal Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesTotal_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Total of Local Government Owned, Accommodation And Food Services",
+      "name": "Wages Total of Local Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesTotal_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Total of Privately Owned, Accommodation And Food Services",
+      "name": "Wages Total of Privately Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesTotal_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Total of State Government Owned, Accommodation And Food Services",
+      "name": "Wages Total of State Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesTotal_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Weekly of Federal Government Owned, Accommodation And Food Services",
+      "name": "Wages Weekly of Federal Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesWeekly_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Weekly of Local Government Owned, Accommodation And Food Services",
+      "name": "Wages Weekly of Local Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesWeekly_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Weekly of Privately Owned, Accommodation And Food Services",
+      "name": "Wages Weekly of Privately Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesWeekly_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Wages Weekly of State Government Owned, Accommodation And Food Services",
+      "name": "Wages Weekly of State Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "WagesWeekly_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Amount of Gross Domestic Production, Accommodation And Food Services (Real Value)",
+      "name": "Amount of Gross Domestic Production, Accommodation And Food Services (NAICS/72) (Real Value)",
       "dcid": "Amount_EconomicActivity_GrossDomesticProduction_NAICSAccommodationFoodServices_RealValue"
     },
     {
-      "name": "Hire, Accommodation And Food Services Population (Adjusted)",
+      "name": "Hire, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
       "dcid": "Count_Worker_Hire_NAICSAccommodationFoodServices_Adjusted"
     },
     {
-      "name": "Hire, Accommodation And Food Services Population (Unadjusted)",
+      "name": "Hire, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
       "dcid": "Count_Worker_Hire_NAICSAccommodationFoodServices_Unadjusted"
     },
     {
-      "name": "Involuntary Separation, Accommodation And Food Services Population (Adjusted)",
+      "name": "Involuntary Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
       "dcid": "Count_Worker_InvoluntarySeparation_NAICSAccommodationFoodServices_Adjusted"
     },
     {
-      "name": "Involuntary Separation, Accommodation And Food Services Population (Unadjusted)",
+      "name": "Involuntary Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
       "dcid": "Count_Worker_InvoluntarySeparation_NAICSAccommodationFoodServices_Unadjusted"
     },
     {
-      "name": "Other Separation, Accommodation And Food Services Population (Adjusted)",
+      "name": "Other Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
       "dcid": "Count_Worker_OtherSeparation_NAICSAccommodationFoodServices_Adjusted"
     },
     {
-      "name": "Other Separation, Accommodation And Food Services Population (Unadjusted)",
+      "name": "Other Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
       "dcid": "Count_Worker_OtherSeparation_NAICSAccommodationFoodServices_Unadjusted"
     },
     {
-      "name": "Separation, Accommodation And Food Services Population (Adjusted)",
+      "name": "Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
       "dcid": "Count_Worker_Separation_NAICSAccommodationFoodServices_Adjusted"
     },
     {
-      "name": "Separation, Accommodation And Food Services Population (Unadjusted)",
+      "name": "Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
       "dcid": "Count_Worker_Separation_NAICSAccommodationFoodServices_Unadjusted"
     },
     {
-      "name": "Voluntary Separation, Accommodation And Food Services Population (Adjusted)",
+      "name": "Voluntary Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
       "dcid": "Count_Worker_VoluntarySeparation_NAICSAccommodationFoodServices_Adjusted"
     },
     {
-      "name": "Voluntary Separation, Accommodation And Food Services Population (Unadjusted)",
+      "name": "Voluntary Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
       "dcid": "Count_Worker_VoluntarySeparation_NAICSAccommodationFoodServices_Unadjusted"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "dc/rydmsxhz7pxh1"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Male, Accommodation And Food Services Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Male, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "dc/pn22zf92qr31f"
+    }
+  ],
+  "statVarGroups": [
+    {
+      "name": "Economic Activity With Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/EconomicActivity_Industry-NAICS/72"
+    },
+    {
+      "name": "Job Posting With Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/JobPosting_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72"
+    },
+    {
+      "name": "Economic Activity With Activity Source = Gross Domestic Production, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/EconomicActivity_ActivitySource-GrossDomesticProduction_Industry-NAICS/72"
+    },
+    {
+      "name": "Economic Activity With Activity Source, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/EconomicActivity_ActivitySource_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Establishment Ownership = Federal Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Establishment Ownership = Local Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EstablishmentOwnership-LocalGovernmentOwned_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Establishment Ownership = Privately Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Establishment Ownership = State Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EstablishmentOwnership-StateGovernmentOwned_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Establishment Ownership, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Job Change Event = Hire, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-Hire"
+    },
+    {
+      "name": "Person With Job Change Event = Involuntary Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-InvoluntarySeparation"
+    },
+    {
+      "name": "Person With Job Change Event = Other Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-OtherSeparation"
+    },
+    {
+      "name": "Person With Job Change Event = Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-Separation"
+    },
+    {
+      "name": "Person With Job Change Event = Voluntary Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-VoluntarySeparation"
+    },
+    {
+      "name": "Person With Job Change Event, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status = Employed, Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Employment Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
     }
   ]
 }
