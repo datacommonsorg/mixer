@@ -243,7 +243,7 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
-      "subjectName": "Count of X 60-X 84 (Intentional Self-harm) Per Capita",
+      "subjectName": "Count of X60-X84 (Intentional Self-harm) Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -271,7 +271,7 @@
     },
     {
       "subjectId": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
-      "subjectName": "Age Adjusted Count of Mortality Event Per Capita",
+      "subjectName": "Count of Mortality Event Per Capita (Age Adjusted)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -327,7 +327,7 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
-      "subjectName": "Nominal Amount of Gross Domestic Production Per Capita",
+      "subjectName": "Amount of Gross Domestic Production Per Capita (Nominal)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -511,7 +511,7 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
-      "subjectName": "Count of X 60-X 84 (Intentional Self-harm), Female as Fraction of Count Person Female",
+      "subjectName": "Count of X60-X84 (Intentional Self-harm), Female as Fraction of Count Person Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -539,7 +539,7 @@
     },
     {
       "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Age Adjusted Count of Female as Fraction of Count Person Female",
+      "subjectName": "Count of Female as Fraction of Count Person Female (Age Adjusted)",
       "subjectTypes": [
         "StatisticalVariable"
       ],

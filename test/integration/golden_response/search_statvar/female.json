@@ -53,6 +53,10 @@
       "dcid": "Count_Person_16To19Years_Female"
     },
     {
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female Population",
+      "dcid": "Count_Person_Female_Employed"
+    },
+    {
       "name": "16 Years or More, Female Population",
       "dcid": "Count_Person_16OrMoreYears_Female"
     },
@@ -3189,19 +3193,15 @@
       "dcid": "dc/173smewzddlb"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female Population",
-      "dcid": "dc/y0168q5nvhgbg"
-    },
-    {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "dc/rydmsxhz7pxh1"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Administrative And Support And Waste Management Services Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Administrative And Support And Waste Management Services (NAICS/56) Population",
       "dcid": "dc/ff2f4my72zx0c"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Agriculture, Forestry, Fishing And Hunting Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Agriculture, Forestry, Fishing And Hunting (NAICS/11) Population",
       "dcid": "dc/scgpgdxgx9tr1"
     },
     {
@@ -3217,7 +3217,7 @@
       "dcid": "dc/hgg3e8x9yvx9d"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Arts, Entertainment, And Recreation Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Arts, Entertainment, And Recreation (NAICS/71) Population",
       "dcid": "dc/9hrltcsyj2mcb"
     },
     {
@@ -3249,12 +3249,12 @@
       "dcid": "dc/m9qm6y12bcycd"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Construction And Extraction Occupations Population",
-      "dcid": "dc/epv7s4v9qhlx2"
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Construction (NAICS/23) Population",
+      "dcid": "dc/1h1rnmvtj706b"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Construction Population",
-      "dcid": "dc/1h1rnmvtj706b"
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Construction And Extraction Occupations Population",
+      "dcid": "dc/epv7s4v9qhlx2"
     },
     {
       "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Education, Legal, Community Service, Arts, And Media Occupations Population",
@@ -3265,7 +3265,7 @@
       "dcid": "dc/rlg7eme5ncf05"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Educational Services Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Educational Services (NAICS/61) Population",
       "dcid": "dc/1wr6sspk9nrjc"
     },
     {
@@ -3273,7 +3273,7 @@
       "dcid": "dc/rzm3j1689x12b"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Finance And Insurance Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Finance And Insurance (NAICS/52) Population",
       "dcid": "dc/e7yf34hemnde9"
     },
     {
@@ -3281,7 +3281,7 @@
       "dcid": "dc/fe9heveckd5d"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Health Care And Social Assistance Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Health Care And Social Assistance (NAICS/62) Population",
       "dcid": "dc/nmd0vjps6psb2"
     },
     {
@@ -3301,7 +3301,7 @@
       "dcid": "dc/g0j9sf4efvqy4"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Information Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Information (NAICS/51) Population",
       "dcid": "dc/c9yj0kkxpf8ff"
     },
     {
@@ -3321,7 +3321,7 @@
       "dcid": "dc/bd729fxzst7q7"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Management of Companies And Enterprises Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Management of Companies And Enterprises (NAICS/55) Population",
       "dcid": "dc/zt2qhhtnjm4qh"
     },
     {
@@ -3369,11 +3369,11 @@
       "dcid": "dc/7n0tgyyq6mg06"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Manufacturing Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Manufacturing (NAICS/31-33) Population",
       "dcid": "dc/xsqgzwf1h8f33"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Mining, Quarrying, And Oil And Gas Extraction Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Mining, Quarrying, And Oil And Gas Extraction (NAICS/21) Population",
       "dcid": "dc/jcq9116jwjvs3"
     },
     {
@@ -3425,7 +3425,7 @@
       "dcid": "dc/9vlf8t9rj98z8"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Other Services, Except Public Administration Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Other Services, Except Public Administration (NAICS/81) Population",
       "dcid": "dc/cyc1f26msdct4"
     },
     {
@@ -3477,7 +3477,7 @@
       "dcid": "dc/dkpl66n2q0wvc"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Professional, Scientific, And Technical Services Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Professional, Scientific, And Technical Services (NAICS/54) Population",
       "dcid": "dc/lc629dk4yeg4b"
     },
     {
@@ -3485,15 +3485,15 @@
       "dcid": "dc/6rdm6w7t0e5ph"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Public Administration Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Public Administration (NAICS/92) Population",
       "dcid": "dc/ylj424exymm1b"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Real Estate And Rental And Leasing Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Real Estate And Rental And Leasing (NAICS/53) Population",
       "dcid": "dc/l292my8mjkns"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Retail Trade Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Retail Trade (NAICS/44-45) Population",
       "dcid": "dc/qcfd17k1c3vm9"
     },
     {
@@ -3585,7 +3585,7 @@
       "dcid": "dc/swl90jl2kl91h"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Transportation And Warehousing Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Transportation And Warehousing (NAICS/48-49) Population",
       "dcid": "dc/cq266pvtkbll4"
     },
     {
@@ -3593,7 +3593,7 @@
       "dcid": "dc/lzjd2mw73q8rg"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Utilities Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Utilities (NAICS/22) Population",
       "dcid": "dc/ewhc3j80tx5z1"
     },
     {
@@ -3605,7 +3605,7 @@
       "dcid": "dc/6jx6c3p8p1r14"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Wholesale Trade Population",
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Wholesale Trade (NAICS/42) Population",
       "dcid": "dc/v2q0shf60bejd"
     },
     {
@@ -4647,8 +4647,16 @@
       "dcid": "dc/g/Person_EducationalAttainment_Gender-Female"
     },
     {
+      "name": "Person With Employment Status = Employed, Gender = Female",
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Female"
+    },
+    {
       "name": "Person With Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_EmploymentStatus-NotInLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Employment Status = Unemployed, Gender = Female",
+      "dcid": "dc/g/Person_EmploymentStatus-Unemployed_Gender-Female"
     },
     {
       "name": "Person With Employment Status = in Labor Force, Gender = Female",
@@ -4669,6 +4677,10 @@
     {
       "name": "Person With Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female",
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
+    },
+    {
+      "name": "Person With Enrollment Level, Gender = Female",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
@@ -4695,8 +4707,32 @@
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
     },
     {
-      "name": "Person With Gender = Female, Enrollment Level",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
+      "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 1 To Grade 4",
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade1ToGrade4_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 5 To Grade 8",
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade5ToGrade8_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 9 To Grade 12",
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade9ToGrade12_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Graduate or Professional School",
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGraduateOrProfessionalSchool_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Kindergarten",
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInKindergarten_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Nursery School Preschool",
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInNurserySchoolPreschool_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Health Behavior",
@@ -4829,6 +4865,90 @@
     {
       "name": "Person With Gender = Female, Income Status = With Income",
       "dcid": "dc/g/Person_Gender-Female_IncomeStatus-WithIncome"
+    },
+    {
+      "name": "Person With Gender = Female, Industry",
+      "dcid": "dc/g/Person_Gender-Female_Industry"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Administrative And Support And Waste Management Services (NAICS/56)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/56"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Agriculture, Forestry, Fishing And Hunting (NAICS/11)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/11"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Arts, Entertainment, And Recreation (NAICS/71)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/71"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Construction (NAICS/23)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/23"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Educational Services (NAICS/61)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/61"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Finance And Insurance (NAICS/52)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/52"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Health Care And Social Assistance (NAICS/62)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/62"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Information (NAICS/51)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/51"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Management of Companies And Enterprises (NAICS/55)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/55"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Manufacturing (NAICS/31-33)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/3133"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Mining, Quarrying, And Oil And Gas Extraction (NAICS/21)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/21"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Other Services, Except Public Administration (NAICS/81)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/81"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Professional, Scientific, And Technical Services (NAICS/54)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/54"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Public Administration (NAICS/92)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/92"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Real Estate And Rental And Leasing (NAICS/53)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/53"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Retail Trade (NAICS/44-45)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/4445"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Transportation And Warehousing (NAICS/48-49)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/4849"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Utilities (NAICS/22)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/22"
+    },
+    {
+      "name": "Person With Gender = Female, Industry = Wholesale Trade (NAICS/42)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/42"
     },
     {
       "name": "Person With Gender = Female, Institutionalization",
@@ -5101,6 +5221,30 @@
     {
       "name": "Person With Gender = Female, Veteran Status = Veteran",
       "dcid": "dc/g/Person_Gender-Female_VeteranStatus-Veteran"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = Not Worked Full Time",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-NotWorkedFullTime"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = Worked Full Time",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-WorkedFullTime"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = in Armed Forces, Gender = Female",
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-InArmedForces"
+    },
+    {
+      "name": "Person With Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus"
     },
     {
       "name": "Mortality Event With Age = 1 - 4 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female",
@@ -6639,8 +6783,16 @@
       "dcid": "dc/g/Person_Age-Years16To17_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Person With Age = 16 - 19 Years, Employment Status = Employed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16To19_EmploymentStatus-Employed_Gender-Female"
+    },
+    {
       "name": "Person With Age = 16 - 19 Years, Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years16To19_EmploymentStatus-NotInLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 - 19 Years, Employment Status = Unemployed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16To19_EmploymentStatus-Unemployed_Gender-Female"
     },
     {
       "name": "Person With Age = 16 - 19 Years, Employment Status = in Labor Force, Gender = Female",
@@ -6651,12 +6803,112 @@
       "dcid": "dc/g/Person_Age-Years16To19_EmploymentStatus_Gender-Female"
     },
     {
+      "name": "Person With Age = 16 - 19 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16To19_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 - 19 Years, Military Status = in Armed Forces, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16To19_Gender-Female_MilitaryStatus-InArmedForces"
+    },
+    {
+      "name": "Person With Age = 16 - 19 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16To19_Gender-Female_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Administrative And Support And Waste Management Services (NAICS/56)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/56"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Agriculture, Forestry, Fishing And Hunting (NAICS/11)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/11"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Arts, Entertainment, And Recreation (NAICS/71)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/71"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Construction (NAICS/23)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/23"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Educational Services (NAICS/61)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/61"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Finance And Insurance (NAICS/52)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/52"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Health Care And Social Assistance (NAICS/62)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/62"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Information (NAICS/51)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/51"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Management of Companies And Enterprises (NAICS/55)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/55"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Manufacturing (NAICS/31-33)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/3133"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Mining, Quarrying, And Oil And Gas Extraction (NAICS/21)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/21"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Other Services, Except Public Administration (NAICS/81)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/81"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Professional, Scientific, And Technical Services (NAICS/54)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/54"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Public Administration (NAICS/92)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/92"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Real Estate And Rental And Leasing (NAICS/53)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/53"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Retail Trade (NAICS/44-45)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/4445"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Transportation And Warehousing (NAICS/48-49)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/4849"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Utilities (NAICS/22)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/22"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Industry = Wholesale Trade (NAICS/42)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry-NAICS/42"
     },
     {
       "name": "Person With Age = 16 Years or More, Gender = Female, Occupation",
@@ -7027,6 +7279,14 @@
       "dcid": "dc/g/Person_Age-Years18To24_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Person With Age = 18 - 24 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years18To24_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 18 - 24 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years18To24_Gender-Female_MilitaryStatus"
+    },
+    {
       "name": "Person With Age = 18 - 34 Years, Gender = Female, Veteran Status",
       "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_VeteranStatus"
     },
@@ -7037,6 +7297,14 @@
     {
       "name": "Person With Age = 18 - 34 Years, Gender = Female, Veteran Status = Veteran",
       "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_VeteranStatus-Veteran"
+    },
+    {
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 18 - 34 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_MilitaryStatus"
     },
     {
       "name": "Person With Age = 18 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
@@ -7127,8 +7395,24 @@
       "dcid": "dc/g/Person_Age-Years19To25_Gender-Female_Institutionalization-NonInstitutionalized"
     },
     {
+      "name": "Person With Age = 19 - 25 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years19To25_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 19 - 25 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years19To25_Gender-Female_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 20 - 21 Years, Employment Status = Employed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years20To21_EmploymentStatus-Employed_Gender-Female"
+    },
+    {
       "name": "Person With Age = 20 - 21 Years, Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years20To21_EmploymentStatus-NotInLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 20 - 21 Years, Employment Status = Unemployed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years20To21_EmploymentStatus-Unemployed_Gender-Female"
     },
     {
       "name": "Person With Age = 20 - 21 Years, Employment Status = in Labor Force, Gender = Female",
@@ -7137,6 +7421,18 @@
     {
       "name": "Person With Age = 20 - 21 Years, Employment Status, Gender = Female",
       "dcid": "dc/g/Person_Age-Years20To21_EmploymentStatus_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 20 - 21 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years20To21_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 20 - 21 Years, Military Status = in Armed Forces, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years20To21_Gender-Female_MilitaryStatus-InArmedForces"
+    },
+    {
+      "name": "Person With Age = 20 - 21 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years20To21_Gender-Female_MilitaryStatus"
     },
     {
       "name": "Person With Age = 20 - 24 Years, Gender = Female, Race",
@@ -7247,8 +7543,16 @@
       "dcid": "dc/g/Person_Age-Years21To64_Gender-Female_Race-WhiteAlone"
     },
     {
+      "name": "Person With Age = 22 - 24 Years, Employment Status = Employed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years22To24_EmploymentStatus-Employed_Gender-Female"
+    },
+    {
       "name": "Person With Age = 22 - 24 Years, Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years22To24_EmploymentStatus-NotInLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 22 - 24 Years, Employment Status = Unemployed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years22To24_EmploymentStatus-Unemployed_Gender-Female"
     },
     {
       "name": "Person With Age = 22 - 24 Years, Employment Status = in Labor Force, Gender = Female",
@@ -7259,8 +7563,28 @@
       "dcid": "dc/g/Person_Age-Years22To24_EmploymentStatus_Gender-Female"
     },
     {
+      "name": "Person With Age = 22 - 24 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years22To24_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 22 - 24 Years, Military Status = in Armed Forces, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years22To24_Gender-Female_MilitaryStatus-InArmedForces"
+    },
+    {
+      "name": "Person With Age = 22 - 24 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years22To24_Gender-Female_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 25 - 29 Years, Employment Status = Employed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To29_EmploymentStatus-Employed_Gender-Female"
+    },
+    {
       "name": "Person With Age = 25 - 29 Years, Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years25To29_EmploymentStatus-NotInLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 25 - 29 Years, Employment Status = Unemployed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To29_EmploymentStatus-Unemployed_Gender-Female"
     },
     {
       "name": "Person With Age = 25 - 29 Years, Employment Status = in Labor Force, Gender = Female",
@@ -7309,6 +7633,18 @@
     {
       "name": "Person With Age = 25 - 29 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
       "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Person With Age = 25 - 29 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 25 - 29 Years, Military Status = in Armed Forces, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_MilitaryStatus-InArmedForces"
+    },
+    {
+      "name": "Person With Age = 25 - 29 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_MilitaryStatus"
     },
     {
       "name": "Person With Age = 25 - 34 Years, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
@@ -7471,6 +7807,14 @@
       "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-PublicSchool"
     },
     {
+      "name": "Person With Age = 25 - 34 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 25 - 34 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_MilitaryStatus"
+    },
+    {
       "name": "Person With Age = 25 Years or More, Gender = Female, Race",
       "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race"
     },
@@ -7547,6 +7891,14 @@
       "dcid": "dc/g/Person_Age-Years26To34_Gender-Female_Institutionalization-NonInstitutionalized"
     },
     {
+      "name": "Person With Age = 26 - 34 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years26To34_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 26 - 34 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years26To34_Gender-Female_MilitaryStatus"
+    },
+    {
       "name": "Person With Age = 3 - 4 Years, Gender = Female, Type of School",
       "dcid": "dc/g/Person_Age-Years3To4_Gender-Female_TypeOfSchool"
     },
@@ -7563,8 +7915,16 @@
       "dcid": "dc/g/Person_Age-Years3To4_Gender-Female_TypeOfSchool-PublicSchool"
     },
     {
+      "name": "Person With Age = 30 - 34 Years, Employment Status = Employed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years30To34_EmploymentStatus-Employed_Gender-Female"
+    },
+    {
       "name": "Person With Age = 30 - 34 Years, Employment Status = Not in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age-Years30To34_EmploymentStatus-NotInLaborForce_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 30 - 34 Years, Employment Status = Unemployed, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years30To34_EmploymentStatus-Unemployed_Gender-Female"
     },
     {
       "name": "Person With Age = 30 - 34 Years, Employment Status = in Labor Force, Gender = Female",
@@ -7615,6 +7975,18 @@
       "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Person With Age = 30 - 34 Years, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 30 - 34 Years, Military Status = in Armed Forces, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_MilitaryStatus-InArmedForces"
+    },
+    {
+      "name": "Person With Age = 30 - 34 Years, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_MilitaryStatus"
+    },
+    {
       "name": "Person With Age = 35 - 44 Years, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
@@ -7629,378 +8001,6 @@
     {
       "name": "Person With Age = 35 - 44 Years, Educational Attainment = Bachelors Degree, Gender = Female",
       "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-BachelorsDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = Graduate or Professional Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = High School Graduate Ged or Alternative, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = Less Than 9th Grade, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-LessThan9ThGrade_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = Some College No Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-SomeCollegeNoDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Employment Status = Not in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EmploymentStatus-NotInLaborForce_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Employment Status = in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EmploymentStatus-InLaborForce_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Employment Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EmploymentStatus_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Health Insurance",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_HealthInsurance"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Health Insurance = No Health Insurance",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_HealthInsurance-NoHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Health Insurance = No Private Health Insurance",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_HealthInsurance-NoPrivateHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Health Insurance = No Public Health Insurance",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_HealthInsurance-NoPublicHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Health Insurance = With Health Insurance",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_HealthInsurance-WithHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Health Insurance = With Private Health Insurance",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_HealthInsurance-WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Health Insurance = With Public Health Insurance",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_HealthInsurance-WithPublicHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Institutionalization",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Institutionalization"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Institutionalization = Non Institutionalized",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Institutionalization-NonInstitutionalized"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Poverty Status",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_PovertyStatus"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = Black or African American Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = Some Other Race Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-SomeOtherRaceAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = Two or More Races",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-TwoOrMoreRaces"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = White Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-WhiteAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status",
-      "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_VeteranStatus"
-    },
-    {
-      "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status = Non Veteran",
-      "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_VeteranStatus-Nonveteran"
-    },
-    {
-      "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status = Veteran",
-      "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_VeteranStatus-Veteran"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Enrollment Level = Enrolled in Private College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35Onwards_EnrollmentLevel-EnrolledInPrivateCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Enrollment Level = Enrolled in Public College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35Onwards_EnrollmentLevel-EnrolledInPublicCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35Onwards_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Enrollment Level, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35Onwards_EnrollmentLevel_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Gender = Female, Type of School",
-      "dcid": "dc/g/Person_Age-Years35Onwards_Gender-Female_TypeOfSchool"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Gender = Female, Type of School = Not Enrolled in School",
-      "dcid": "dc/g/Person_Age-Years35Onwards_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Gender = Female, Type of School = Private School",
-      "dcid": "dc/g/Person_Age-Years35Onwards_Gender-Female_TypeOfSchool-PrivateSchool"
-    },
-    {
-      "name": "Person With Age = 35 Years or More, Gender = Female, Type of School = Public School",
-      "dcid": "dc/g/Person_Age-Years35Onwards_Gender-Female_TypeOfSchool-PublicSchool"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Family Income, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Gender = Female, Health Insurance",
-      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_HealthInsurance"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Gender = Female, Health Insurance = No Health Insurance",
-      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_HealthInsurance-NoHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Gender = Female, Health Insurance = With Health Insurance",
-      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_HealthInsurance-WithHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race",
-      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race = Black or African American Alone",
-      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race = Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 40 - 64 Years, Gender = Female, Race = White Alone",
-      "dcid": "dc/g/Person_Age-Years40To64_Gender-Female_Race-WhiteAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Employment Status = Not in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To54_EmploymentStatus-NotInLaborForce_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Employment Status = in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To54_EmploymentStatus-InLaborForce_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Employment Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To54_EmploymentStatus_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = No Health Insurance",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-NoHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = No Private Health Insurance",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-NoPrivateHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = No Public Health Insurance",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-NoPublicHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = With Health Insurance",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-WithHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = With Private Health Insurance",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Health Insurance = With Public Health Insurance",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_HealthInsurance-WithPublicHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Institutionalization",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Institutionalization"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Institutionalization = Non Institutionalized",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Institutionalization-NonInstitutionalized"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Black or African American Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Some Other Race Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-SomeOtherRaceAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = Two or More Races",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-TwoOrMoreRaces"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = White Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-WhiteAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Associates Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-AssociatesDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Bachelors Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-BachelorsDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Graduate or Professional Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = High School Graduate Ged or Alternative, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Less Than 9th Grade, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-LessThan9ThGrade_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment = Some College No Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment-SomeCollegeNoDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 45 - 64 Years, Educational Attainment, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years45To64_EducationalAttainment_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 5 - 9 Years, Gender = Female, Race",
-      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Race"
-    },
-    {
-      "name": "Person With Age = 5 - 9 Years, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Person With Age = 5 - 9 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Race-AsianAlone"
     }
   ]
 }

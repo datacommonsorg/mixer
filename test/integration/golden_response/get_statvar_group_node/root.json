@@ -5,7 +5,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 7724
+      "numDescendentStatVars": 7739
     },
     {
       "id": "dc/g/Household",
@@ -23,25 +23,25 @@
       "id": "dc/g/COVID-19",
       "specializedEntity": "COVID-19",
       "displayName": "COVID-19",
-      "numDescendentStatVars": 102
+      "numDescendentStatVars": 66
     },
     {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
       "displayName": "Employment",
-      "numDescendentStatVars": 45928
+      "numDescendentStatVars": 36878
     },
     {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "numDescendentStatVars": 3810
+      "numDescendentStatVars": 3819
     },
     {
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": 99
+      "numDescendentStatVars": 77
     },
     {
       "id": "dc/g/Energy",
@@ -53,13 +53,13 @@
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
       "displayName": "Crime",
-      "numDescendentStatVars": 182
+      "numDescendentStatVars": 128
     },
     {
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
       "displayName": "Economics",
-      "numDescendentStatVars": 108
+      "numDescendentStatVars": 86
     },
     {
       "id": "dc/g/Education",
@@ -71,14 +71,14 @@
       "id": "dc/g/MilitaryService",
       "specializedEntity": "Military Service",
       "displayName": "Military Service",
-      "numDescendentStatVars": 552
+      "numDescendentStatVars": 476
     },
     {
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": 47
+      "numDescendentStatVars": 76
     }
   ],
-  "numDescendentStatVars": 64497
+  "numDescendentStatVars": 55408
 }
