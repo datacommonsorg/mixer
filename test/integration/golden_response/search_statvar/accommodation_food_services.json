@@ -1,0 +1,164 @@
+{
+  "statVars": [
+    {
+      "name": "Accommodation And Food Services Population",
+      "dcid": "Count_Worker_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Total of Accommodation And Food Services",
+      "dcid": "WagesTotal_Worker_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Count of Accommodation And Food Services",
+      "dcid": "Count_Establishment_NAICSAccommodationFoodServices_WithPayroll"
+    },
+    {
+      "name": "Count of Accommodation And Food Services (Adjusted)",
+      "dcid": "Count_JobPosting_NAICSAccommodationFoodServices_Adjusted"
+    },
+    {
+      "name": "Count of Accommodation And Food Services (Unadjusted)",
+      "dcid": "Count_JobPosting_NAICSAccommodationFoodServices_Unadjusted"
+    },
+    {
+      "name": "Count of Federal Government Owned, Accommodation And Food Services",
+      "dcid": "Count_Establishment_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Count of Local Government Owned, Accommodation And Food Services",
+      "dcid": "Count_Establishment_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Count of Privately Owned, Accommodation And Food Services",
+      "dcid": "Count_Establishment_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Count of State Government Owned, Accommodation And Food Services",
+      "dcid": "Count_Establishment_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Federal Government Owned, Accommodation And Food Services Population",
+      "dcid": "Count_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Local Government Owned, Accommodation And Food Services Population",
+      "dcid": "Count_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Privately Owned, Accommodation And Food Services Population",
+      "dcid": "Count_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Sales of Accommodation And Food Services, With Payroll",
+      "dcid": "Sales_Establishment_NAICSAccommodationFoodServices_WithPayroll"
+    },
+    {
+      "name": "State Government Owned, Accommodation And Food Services Population",
+      "dcid": "Count_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Annual of Federal Government Owned, Accommodation And Food Services",
+      "dcid": "WagesAnnual_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Annual of Local Government Owned, Accommodation And Food Services",
+      "dcid": "WagesAnnual_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Annual of Privately Owned, Accommodation And Food Services",
+      "dcid": "WagesAnnual_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Annual of State Government Owned, Accommodation And Food Services",
+      "dcid": "WagesAnnual_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Total of Federal Government Owned, Accommodation And Food Services",
+      "dcid": "WagesTotal_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Total of Local Government Owned, Accommodation And Food Services",
+      "dcid": "WagesTotal_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Total of Privately Owned, Accommodation And Food Services",
+      "dcid": "WagesTotal_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Total of State Government Owned, Accommodation And Food Services",
+      "dcid": "WagesTotal_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Weekly of Federal Government Owned, Accommodation And Food Services",
+      "dcid": "WagesWeekly_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Weekly of Local Government Owned, Accommodation And Food Services",
+      "dcid": "WagesWeekly_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Weekly of Privately Owned, Accommodation And Food Services",
+      "dcid": "WagesWeekly_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Wages Weekly of State Government Owned, Accommodation And Food Services",
+      "dcid": "WagesWeekly_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Amount of Gross Domestic Production, Accommodation And Food Services (Real Value)",
+      "dcid": "Amount_EconomicActivity_GrossDomesticProduction_NAICSAccommodationFoodServices_RealValue"
+    },
+    {
+      "name": "Hire, Accommodation And Food Services Population (Adjusted)",
+      "dcid": "Count_Worker_Hire_NAICSAccommodationFoodServices_Adjusted"
+    },
+    {
+      "name": "Hire, Accommodation And Food Services Population (Unadjusted)",
+      "dcid": "Count_Worker_Hire_NAICSAccommodationFoodServices_Unadjusted"
+    },
+    {
+      "name": "Involuntary Separation, Accommodation And Food Services Population (Adjusted)",
+      "dcid": "Count_Worker_InvoluntarySeparation_NAICSAccommodationFoodServices_Adjusted"
+    },
+    {
+      "name": "Involuntary Separation, Accommodation And Food Services Population (Unadjusted)",
+      "dcid": "Count_Worker_InvoluntarySeparation_NAICSAccommodationFoodServices_Unadjusted"
+    },
+    {
+      "name": "Other Separation, Accommodation And Food Services Population (Adjusted)",
+      "dcid": "Count_Worker_OtherSeparation_NAICSAccommodationFoodServices_Adjusted"
+    },
+    {
+      "name": "Other Separation, Accommodation And Food Services Population (Unadjusted)",
+      "dcid": "Count_Worker_OtherSeparation_NAICSAccommodationFoodServices_Unadjusted"
+    },
+    {
+      "name": "Separation, Accommodation And Food Services Population (Adjusted)",
+      "dcid": "Count_Worker_Separation_NAICSAccommodationFoodServices_Adjusted"
+    },
+    {
+      "name": "Separation, Accommodation And Food Services Population (Unadjusted)",
+      "dcid": "Count_Worker_Separation_NAICSAccommodationFoodServices_Unadjusted"
+    },
+    {
+      "name": "Voluntary Separation, Accommodation And Food Services Population (Adjusted)",
+      "dcid": "Count_Worker_VoluntarySeparation_NAICSAccommodationFoodServices_Adjusted"
+    },
+    {
+      "name": "Voluntary Separation, Accommodation And Food Services Population (Unadjusted)",
+      "dcid": "Count_Worker_VoluntarySeparation_NAICSAccommodationFoodServices_Unadjusted"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services Population",
+      "dcid": "dc/rydmsxhz7pxh1"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, in Labor Force, Male, Accommodation And Food Services Population",
+      "dcid": "dc/pn22zf92qr31f"
+    },
+    {
+      "name": "Count of Accommodation And Food Services",
+      "dcid": "dc/w8gp902jnk426"
+    }
+  ]
+}

@@ -62,16 +62,16 @@ func TestSearchStatVar(t *testing.T) {
 			"female.json",
 		},
 		{
-			"employed 16",
+			"accommodation food services",
 			[]string{"country/USA"},
 			true,
-			"employed_16_blocklist.json",
+			"accommodation_food_services_blocklist.json",
 		},
 		{
-			"employed 16",
+			"accommodation food services",
 			[]string{"country/USA"},
 			false,
-			"employed_16.json",
+			"accommodation_food_services.json",
 		},
 	} {
 		resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{

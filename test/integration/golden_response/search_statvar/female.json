@@ -3999,6 +3999,10 @@
     {
       "name": "20 - 21 Years, Civilian, Unemployed, in Labor Force, Female Population",
       "dcid": "dc/prnecsckhxz07"
+    },
+    {
+      "name": "20 - 21 Years, Civilian, in Labor Force, Female Population",
+      "dcid": "dc/9qq6mj8r4xjyc"
     }
   ],
   "statVarGroups": [
