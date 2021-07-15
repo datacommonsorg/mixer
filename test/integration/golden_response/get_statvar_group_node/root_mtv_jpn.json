@@ -5,7 +5,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 4151
+      "numDescendentStatVars": 4102
     },
     {
       "id": "dc/g/Household",
@@ -29,13 +29,13 @@
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
       "displayName": "Employment",
-      "numDescendentStatVars": 3430
+      "numDescendentStatVars": 3029
     },
     {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "numDescendentStatVars": 286
+      "numDescendentStatVars": 296
     },
     {
       "id": "dc/g/Climate",
@@ -53,7 +53,7 @@
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
       "displayName": "Crime",
-      "numDescendentStatVars": 149
+      "numDescendentStatVars": 56
     },
     {
       "id": "dc/g/Economics",
@@ -71,13 +71,14 @@
       "id": "dc/g/MilitaryService",
       "specializedEntity": "Military Service",
       "displayName": "Military Service",
-      "numDescendentStatVars": 677
+      "numDescendentStatVars": 475
     },
     {
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
-      "displayName": "Uncategorized"
+      "displayName": "Uncategorized",
+      "numDescendentStatVars": 4
     }
   ],
-  "numDescendentStatVars": 7225
+  "numDescendentStatVars": 6837
 }

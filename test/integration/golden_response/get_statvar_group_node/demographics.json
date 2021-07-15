@@ -70,6 +70,12 @@
       "numDescendentStatVars": 4613
     },
     {
+      "id": "dc/g/Births",
+      "specializedEntity": "Births",
+      "displayName": "Births",
+      "numDescendentStatVars": 10
+    },
+    {
       "id": "dc/g/Commute",
       "specializedEntity": "Commute",
       "displayName": "Commute",
@@ -163,5 +169,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 7729
+  "numDescendentStatVars": 7739
 }

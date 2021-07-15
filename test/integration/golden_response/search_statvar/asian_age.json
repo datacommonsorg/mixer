@@ -1823,6 +1823,342 @@
       "dcid": "dc/g/Person_Age_Race-AsianAlone"
     },
     {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 10,000 - 14,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar10000To14999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 10,000 USD or Less",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollarUpto10000_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 100,000 - 124,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar100000To124999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 125,000 - 149,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar125000To149999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 15,000 - 19,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar15000To19999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 150,000 - 199,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar150000To199999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 20,000 - 24,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar20000To24999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 200,000 USD or More",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar200000Onwards_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 25,000 - 29,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar25000To29999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 30,000 - 34,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar30000To34999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 35,000 - 39,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar35000To39999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 40,000 - 44,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar40000To44999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 45,000 - 49,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar45000To49999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 50,000 - 59,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar50000To59999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 60,000 - 74,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar60000To74999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 75,000 - 99,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar75000To99999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 10,000 - 14,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar10000To14999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 10,000 USD or Less",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollarUpto10000_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 100,000 - 124,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar100000To124999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 125,000 - 149,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar125000To149999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 15,000 - 19,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar15000To19999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 150,000 - 199,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar150000To199999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 20,000 - 24,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar20000To24999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 200,000 USD or More",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar200000Onwards_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 25,000 - 29,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar25000To29999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 30,000 - 34,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar30000To34999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 35,000 - 39,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar35000To39999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 40,000 - 44,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar40000To44999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 45,000 - 49,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar45000To49999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 50,000 - 59,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar50000To59999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 60,000 - 74,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar60000To74999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 75,000 - 99,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar75000To99999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 10,000 - 14,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar10000To14999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 10,000 USD or Less",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollarUpto10000_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 100,000 - 124,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar100000To124999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 125,000 - 149,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar125000To149999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 15,000 - 19,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar15000To19999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 150,000 - 199,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar150000To199999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 20,000 - 24,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar20000To24999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 200,000 USD or More",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar200000Onwards_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 25,000 - 29,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar25000To29999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 30,000 - 34,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar30000To34999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 35,000 - 39,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar35000To39999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 40,000 - 44,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar40000To44999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 45,000 - 49,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar45000To49999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 50,000 - 59,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar50000To59999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 60,000 - 74,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar60000To74999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 75,000 - 99,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar75000To99999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 10,000 - 14,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar10000To14999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 10,000 USD or Less",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollarUpto10000_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 100,000 - 124,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar100000To124999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 125,000 - 149,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar125000To149999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 15,000 - 19,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar15000To19999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 150,000 - 199,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar150000To199999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 20,000 - 24,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar20000To24999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 200,000 USD or More",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar200000Onwards_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 25,000 - 29,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar25000To29999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 30,000 - 34,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar30000To34999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 35,000 - 39,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar35000To39999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 40,000 - 44,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar40000To44999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 45,000 - 49,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar45000To49999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 50,000 - 59,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar50000To59999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 60,000 - 74,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar60000To74999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 75,000 - 99,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar75000To99999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 10,000 - 14,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar10000To14999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 10,000 USD or Less",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollarUpto10000_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 100,000 - 124,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar100000To124999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 125,000 - 149,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar125000To149999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 15,000 - 19,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar15000To19999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 150,000 - 199,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar150000To199999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 20,000 - 24,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar20000To24999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 200,000 USD or More",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar200000Onwards_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 25,000 - 29,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar25000To29999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 30,000 - 34,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar30000To34999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 35,000 - 39,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar35000To39999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 40,000 - 44,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar40000To44999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 45,000 - 49,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar45000To49999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 50,000 - 59,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar50000To59999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 60,000 - 74,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar60000To74999_Race-AsianAlone"
+    },
+    {
+      "name": "Household With Householder Age, Race = Asian Alone, Income = 75,000 - 99,999 USD",
+      "dcid": "dc/g/Household_HouseholderAge_Income-USDollar75000To99999_Race-AsianAlone"
+    },
+    {
       "name": "Mortality Event With Age = 1 - 4 Years, Gender = Female, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years1To4_Gender-Female_Race-AsianOrPacificIslander"
     },
@@ -2511,6 +2847,10 @@
       "dcid": "dc/g/Person_Age-Years16To17_PovertyStatus_Race-AsianAlone"
     },
     {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Race-AsianAlone"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Race-AsianAlone"
     },
@@ -2921,6 +3261,10 @@
     {
       "name": "Person With Age = Years 5, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years5_PovertyStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Race-AsianAlone"
     },
     {
       "name": "Person With Age, Employment Status = in Labor Force, Race = Asian Alone",
@@ -3899,6 +4243,50 @@
       "dcid": "dc/g/Person_Age-Years16To17_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Occupation_Race-AsianAlone"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Race-AsianAlone"
     },
@@ -3933,6 +4321,10 @@
     {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Occupation, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Race = Asian Alone",
@@ -4031,6 +4423,30 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
     },
@@ -4053,6 +4469,22 @@
     {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Occupation, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Military Status, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
@@ -4427,6 +4859,38 @@
       "dcid": "dc/g/Person_Age-Years5_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
       "name": "Person With Age, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Race-AsianAlone"
     },
@@ -4511,6 +4975,22 @@
       "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
       "name": "Person With Age, Military Status = Civilian, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
     },
@@ -4529,6 +5009,138 @@
     {
       "name": "Person With Age, Military Status = Civilian, Occupation = Service Occupations, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Male_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
@@ -4599,6 +5211,34 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
     },
@@ -4639,44 +5279,352 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     }
   ]
 }

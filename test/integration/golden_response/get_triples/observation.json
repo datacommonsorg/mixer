@@ -56,7 +56,7 @@
       "subjectId": "dc/o/28b93wpnlkjgc",
       "predicate": "variableMeasured",
       "objectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal",
-      "objectName": "Nominal Amount of Gross Domestic Production",
+      "objectName": "Amount of Gross Domestic Production (Nominal)",
       "provenanceId": "dc/jccrh82"
     },
     {
