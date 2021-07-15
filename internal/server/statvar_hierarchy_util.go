@@ -49,7 +49,7 @@ type SearchIndex struct {
 const nonHumanCuratedNumPv = 30
 
 // This should be synced with the list of blocklisted SVGs in the website repo
-var blocklistedSvgIds = []string{"dc/g/Person_EmploymentStatus", "dc/g/Establishment", "dc/g/Person_Industry"}
+var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (

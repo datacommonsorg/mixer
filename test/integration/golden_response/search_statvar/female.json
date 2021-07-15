@@ -3189,10 +3189,6 @@
       "dcid": "dc/173smewzddlb"
     },
     {
-      "name": "16 Years or More, Civilian, Employed, in Labor Force, Female Population",
-      "dcid": "dc/y0168q5nvhgbg"
-    },
-    {
       "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services Population",
       "dcid": "dc/rydmsxhz7pxh1"
     },
@@ -3999,6 +3995,10 @@
     {
       "name": "20 - 21 Years, Civilian, Unemployed, in Labor Force, Female Population",
       "dcid": "dc/prnecsckhxz07"
+    },
+    {
+      "name": "20 - 21 Years, Civilian, in Labor Force, Female Population",
+      "dcid": "dc/9qq6mj8r4xjyc"
     }
   ],
   "statVarGroups": [
@@ -4671,6 +4671,10 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
+      "name": "Person With Enrollment Level, Gender = Female",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
+    },
+    {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -4693,10 +4697,6 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Health Behavior",
