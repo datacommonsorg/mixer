@@ -220,6 +220,20 @@
     "relatedChart": {}
   },
   {
+    "title": "Literacy",
+    "statsVars": [
+      "Count_Person_Literate",
+      "Count_Person_Illiterate"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Literate",
+        "Count_Person_Illiterate"
+      ]
+    }
+  },
+  {
     "title": "Market capitalization of domestic companies (% of GDP)",
     "statsVars": [
       "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
@@ -354,6 +368,32 @@
     }
   },
   {
+    "title": "Religion",
+    "statsVars": [
+      "indianCensus/Count_Person_Religion_Buddhist",
+      "indianCensus/Count_Person_Religion_Christian",
+      "indianCensus/Count_Person_Religion_Hindu",
+      "indianCensus/Count_Person_Religion_Jain",
+      "indianCensus/Count_Person_Religion_Muslim",
+      "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+      "indianCensus/Count_Person_Religion_ReligionNotStated",
+      "indianCensus/Count_Person_Religion_Sikh"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "indianCensus/Count_Person_Religion_Buddhist",
+        "indianCensus/Count_Person_Religion_Christian",
+        "indianCensus/Count_Person_Religion_Hindu",
+        "indianCensus/Count_Person_Religion_Jain",
+        "indianCensus/Count_Person_Religion_Muslim",
+        "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+        "indianCensus/Count_Person_Religion_ReligionNotStated",
+        "indianCensus/Count_Person_Religion_Sikh"
+      ]
+    }
+  },
+  {
     "title": "Severe wasting among children under 5 by gender",
     "statsVars": [
       "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male",
@@ -367,6 +407,20 @@
       "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years"
     ],
     "relatedChart": {}
+  },
+  {
+    "title": "Social Category",
+    "statsVars": [
+      "Count_Person_ScheduledCaste",
+      "Count_Person_ScheduledTribe"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_ScheduledCaste",
+        "Count_Person_ScheduledTribe"
+      ]
+    }
   },
   {
     "title": "State unemployment insurance claims",
@@ -397,12 +451,62 @@
     "relatedChart": {}
   },
   {
+    "title": "Unemployment rate: urban vs rural",
+    "statsVars": [
+      "UnemploymentRate_Person_Rural",
+      "UnemploymentRate_Person_Urban"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Urban and rural households",
+    "statsVars": [
+      "Count_Household_Rural",
+      "Count_Household_Urban"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Household_Rural",
+        "Count_Household_Urban"
+      ]
+    }
+  },
+  {
     "title": "Urban and rural population",
     "statsVars": [
       "Count_Person_Urban",
       "Count_Person_Rural"
     ],
     "relatedChart": {}
+  },
+  {
+    "title": "Urban vs rural homeless population",
+    "statsVars": [
+      "Count_Person_Houseless_Urban",
+      "Count_Person_Houseless_Rural"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Houseless_Urban",
+        "Count_Person_Houseless_Rural"
+      ]
+    }
+  },
+  {
+    "title": "Urban vs rural poverty population",
+    "statsVars": [
+      "Count_Person_Rural_BelowPovertyLevelInThePast12Months",
+      "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Rural_BelowPovertyLevelInThePast12Months",
+        "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+      ]
+    }
   },
   {
     "title": "Wasting among children under 5 by gender",
@@ -416,6 +520,50 @@
     "title": "Wasting among children under 5",
     "statsVars": [
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker vs nonworker population",
+    "statsVars": [
+      "Count_Person_Workers",
+      "Count_Person_NonWorker"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Workers",
+        "Count_Person_NonWorker"
+      ]
+    }
+  },
+  {
+    "title": "Worker wages (daily)",
+    "statsVars": [
+      "Mean_WagesDaily_Worker"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly): female vs male",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker_Female",
+      "Mean_WagesMonthly_Worker_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly): urban vs rural",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker_Urban",
+      "Mean_WagesMonthly_Worker_Rural"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly)",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker"
     ],
     "relatedChart": {}
   }
