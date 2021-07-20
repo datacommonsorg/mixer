@@ -65,8 +65,6 @@ type ProvInfo struct {
 // Graph represents the struct for terms matching.
 type Graph map[interface{}]map[interface{}]struct{}
 
-type tableConstraint map[base.Table][]Constraint
-
 func addQuote(s string, useQuote ...bool) string {
 	if len(useQuote) == 0 || !useQuote[0] {
 		if _, err := strconv.ParseFloat(s, 64); err == nil {
@@ -617,8 +615,11 @@ func (graph Graph) constructConstraint(
 	return result, constNode, nil
 }
 
-func (jc tableConstraint) remove(
-	t base.Table, c Constraint) {
+func removeConstraints(
+	jc map[base.Table][]Constraint,
+	t base.Table,
+	c Constraint,
+) map[base.Table][]Constraint {
 	cs := jc[t]
 	for i, _c := range cs {
 		if _c == c {
@@ -628,6 +629,7 @@ func (jc tableConstraint) remove(
 		}
 	}
 	jc[t] = cs
+	return jc
 }
 
 func getSQL(
@@ -681,7 +683,7 @@ func getSQL(
 
 	tableCounter := map[base.Table]int{}
 	constCounter := map[base.Table]int{}
-	joinConstraints := tableConstraint{}
+	joinConstraints := map[base.Table][]Constraint{}
 	whereConstraints := []Constraint{}
 
 	for _, c := range constraints {
@@ -721,6 +723,10 @@ func getSQL(
 		joinConstraints[t] = cs
 	}
 
+	// In the following section, build the "JOIN" relations from "currTable".
+	// This is conceptually building a "join graph" and keep extending it based on
+	// the `joinConstraints`.
+
 	// Choose the table with the most constant constraints as the starting table.
 	var currTable base.Table
 	maxCount := 0
@@ -740,10 +746,14 @@ func getSQL(
 
 	sql += fmt.Sprintf(" FROM %s AS %s", currTable.Name, currTable.Alias())
 
-	processedTable := map[base.Table]struct{}{currTable: {}}
+	// Keep track of table that has been processed, they should already have an
+	// alias in SQL and could be used as "currTable".
+	processedTable := map[base.Table]struct{}{}
+
 	var currCol, otherCol base.Column
 	for len(joinConstraints) > 0 {
 		futureTables := []base.Table{}
+		processedTable[currTable] = struct{}{}
 		for _, c := range joinConstraints[currTable] {
 			if currTable == c.LHS.Table {
 				currCol = c.LHS
@@ -759,20 +769,26 @@ func getSQL(
 				sql += fmt.Sprintf(
 					" ON %s.%s = %s.%s",
 					currCol.Table.Alias(), currCol.Name, otherCol.Table.Alias(), otherCol.Name)
-			}
-			joinConstraints.remove(currTable, c)
-			joinConstraints.remove(otherCol.Table, c)
+				processedTable[otherCol.Table] = struct{}{}
 
+			}
+			// Remove the processed constraints
+			joinConstraints = removeConstraints(joinConstraints, currTable, c)
+			joinConstraints = removeConstraints(joinConstraints, otherCol.Table, c)
 			if len(joinConstraints[currCol.Table]) == 0 {
 				delete(joinConstraints, currCol.Table)
 			}
 			if len(joinConstraints[otherCol.Table]) == 0 {
 				delete(joinConstraints, otherCol.Table)
 			}
+			// Add the other table to `futureTables`, which all have been processed
+			// at least once and can be used as `currTable` to further extend the
+			// "join graph"
 			futureTables = append(futureTables, otherCol.Table)
 		}
 
 		if len(futureTables) > 0 {
+			// Pick a new `currTable` from `futureTables` (if non-empty)
 			for _, v := range futureTables {
 				if _, ok := joinConstraints[v]; ok {
 					currTable = v
@@ -780,18 +796,22 @@ func getSQL(
 				}
 			}
 		} else {
-			// It's possible future tables have all matched and become empty.
-			// In this case, pick currTable from joinConstraints.
+			// It's possible `futureTables` have all matched and become empty.
+			// In this case, pick currTable from joinConstraints. `currTable` needs
+			// to be a table that has already been processed, to extend the join graph.
 			for t := range joinConstraints {
-				currTable = t
-				break
+				if _, ok := processedTable[t]; ok {
+					currTable = t
+					break
+				}
 			}
 		}
 	}
 
 	// Sort to get deterministic result.
 	sort.SliceStable(whereConstraints, func(i, j int) bool {
-		return strings.Compare(whereConstraints[i].LHS.String(), whereConstraints[j].LHS.String()) < 0
+		return strings.Compare(
+			whereConstraints[i].LHS.String(), whereConstraints[j].LHS.String()) < 0
 	})
 	for idx, c := range whereConstraints {
 		if idx == 0 {
