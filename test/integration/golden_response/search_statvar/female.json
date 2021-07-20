@@ -4679,10 +4679,6 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
-      "name": "Person With Enrollment Level, Gender = Female",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
-    },
-    {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -4705,6 +4701,10 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",
@@ -7079,6 +7079,14 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus"
+    },
+    {
       "name": "Person With Age = 18 - 19 Years, Gender = Female, Race",
       "dcid": "dc/g/Person_Age-Years18To19_Gender-Female_Race"
     },
@@ -7993,14 +8001,6 @@
     {
       "name": "Person With Age = 35 - 44 Years, Educational Attainment = Associates Degree, Gender = Female",
       "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-AssociatesDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Educational Attainment = Bachelors Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years35To44_EducationalAttainment-BachelorsDegree_Gender-Female"
     }
   ]
 }

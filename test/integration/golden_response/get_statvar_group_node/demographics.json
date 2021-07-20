@@ -91,7 +91,7 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 5393
+      "numDescendentStatVars": 5403
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -163,11 +163,11 @@
       "id": "dc/g/Residence",
       "specializedEntity": "Residence",
       "displayName": "Residence",
-      "numDescendentStatVars": 759
+      "numDescendentStatVars": 771
     }
   ],
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 7739
+  "numDescendentStatVars": 7753
 }

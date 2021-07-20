@@ -5,7 +5,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 7739
+      "numDescendentStatVars": 7753
     },
     {
       "id": "dc/g/Household",
@@ -41,7 +41,7 @@
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": 77
+      "numDescendentStatVars": 99
     },
     {
       "id": "dc/g/Energy",
@@ -77,8 +77,8 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": 76
+      "numDescendentStatVars": 2161
     }
   ],
-  "numDescendentStatVars": 55408
+  "numDescendentStatVars": 57529
 }
