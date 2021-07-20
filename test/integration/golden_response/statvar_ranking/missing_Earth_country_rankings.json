@@ -292,6 +292,20 @@
     }
   },
   {
+    "title": "Literacy",
+    "statsVars": [
+      "Count_Person_Literate",
+      "Count_Person_Illiterate"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Literate",
+        "Count_Person_Illiterate"
+      ]
+    }
+  },
+  {
     "title": "Marital status",
     "statsVars": [
       "Count_Person_MarriedAndNotSeparated",
@@ -552,6 +566,32 @@
     "relatedChart": {}
   },
   {
+    "title": "Religion",
+    "statsVars": [
+      "indianCensus/Count_Person_Religion_Buddhist",
+      "indianCensus/Count_Person_Religion_Christian",
+      "indianCensus/Count_Person_Religion_Hindu",
+      "indianCensus/Count_Person_Religion_Jain",
+      "indianCensus/Count_Person_Religion_Muslim",
+      "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+      "indianCensus/Count_Person_Religion_ReligionNotStated",
+      "indianCensus/Count_Person_Religion_Sikh"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "indianCensus/Count_Person_Religion_Buddhist",
+        "indianCensus/Count_Person_Religion_Christian",
+        "indianCensus/Count_Person_Religion_Hindu",
+        "indianCensus/Count_Person_Religion_Jain",
+        "indianCensus/Count_Person_Religion_Muslim",
+        "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+        "indianCensus/Count_Person_Religion_ReligionNotStated",
+        "indianCensus/Count_Person_Religion_Sikh"
+      ]
+    }
+  },
+  {
     "title": "School enrollment",
     "statsVars": [
       "Count_Person_EnrolledInSchool",
@@ -562,6 +602,20 @@
       "statsVars": [
         "Count_Person_EnrolledInSchool",
         "Count_Person_NotEnrolledInSchool"
+      ]
+    }
+  },
+  {
+    "title": "Social Category",
+    "statsVars": [
+      "Count_Person_ScheduledCaste",
+      "Count_Person_ScheduledTribe"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_ScheduledCaste",
+        "Count_Person_ScheduledTribe"
       ]
     }
   },
@@ -590,6 +644,56 @@
     }
   },
   {
+    "title": "Unemployment rate: urban vs rural",
+    "statsVars": [
+      "UnemploymentRate_Person_Rural",
+      "UnemploymentRate_Person_Urban"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Urban and rural households",
+    "statsVars": [
+      "Count_Household_Rural",
+      "Count_Household_Urban"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Household_Rural",
+        "Count_Household_Urban"
+      ]
+    }
+  },
+  {
+    "title": "Urban vs rural homeless population",
+    "statsVars": [
+      "Count_Person_Houseless_Urban",
+      "Count_Person_Houseless_Rural"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Houseless_Urban",
+        "Count_Person_Houseless_Rural"
+      ]
+    }
+  },
+  {
+    "title": "Urban vs rural poverty population",
+    "statsVars": [
+      "Count_Person_Rural_BelowPovertyLevelInThePast12Months",
+      "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Rural_BelowPovertyLevelInThePast12Months",
+        "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+      ]
+    }
+  },
+  {
     "title": "Violent crime",
     "statsVars": [
       "Count_CriminalActivities_ViolentCrime"
@@ -600,5 +704,49 @@
         "Count_CriminalActivities_ViolentCrime"
       ]
     }
+  },
+  {
+    "title": "Worker vs nonworker population",
+    "statsVars": [
+      "Count_Person_Workers",
+      "Count_Person_NonWorker"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Workers",
+        "Count_Person_NonWorker"
+      ]
+    }
+  },
+  {
+    "title": "Worker wages (daily)",
+    "statsVars": [
+      "Mean_WagesDaily_Worker"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly): female vs male",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker_Female",
+      "Mean_WagesMonthly_Worker_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly): urban vs rural",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker_Urban",
+      "Mean_WagesMonthly_Worker_Rural"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly)",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker"
+    ],
+    "relatedChart": {}
   }
 ]
