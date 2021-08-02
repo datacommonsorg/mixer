@@ -36,8 +36,8 @@ func buildStrategy(maxPlace int) *util.SamplingStrategy {
 	}
 }
 
-// TestGetLandingPageData tests GetLandingPageData.
-func TestGetLandingPageData(t *testing.T) {
+// TestGetPlacePageData tests GetPlacePageData.
+func TestGetPlacePageData(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 	client, err := setup()
@@ -46,7 +46,7 @@ func TestGetLandingPageData(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/get_landing_page_data")
+		path.Dir(filename), "golden_response/get_place_page_data")
 
 	for _, c := range []struct {
 		goldenFile string
@@ -91,27 +91,27 @@ func TestGetLandingPageData(t *testing.T) {
 			5,
 		},
 	} {
-		req := &pb.GetLandingPageDataRequest{
+		req := &pb.GetPlacePageDataRequest{
 			Place:       c.place,
 			NewStatVars: c.statVars,
 			Seed:        c.seed,
 		}
-		resp, err := client.GetLandingPageData(ctx, req)
+		resp, err := client.GetPlacePageData(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetLandingPageData: %s", err)
+			t.Errorf("could not GetPlacePageData: %s", err)
 			continue
 		}
 
 		resp = util.Sample(
 			resp,
-			buildStrategy(c.maxPlace)).(*pb.GetLandingPageDataResponse)
+			buildStrategy(c.maxPlace)).(*pb.GetPlacePageDataResponse)
 
 		if generateGolden {
 			updateProtoGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 
-		var expected pb.GetLandingPageDataResponse
+		var expected pb.GetPlacePageDataResponse
 		err = readJSON(goldenPath, c.goldenFile, &expected)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)

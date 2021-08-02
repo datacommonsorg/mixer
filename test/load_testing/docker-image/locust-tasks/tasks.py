@@ -38,9 +38,9 @@ class MixerUser(HttpUser):
           "/stat/series?place=geoId/06&stat_var=Count_Person_Male")
 
     @task
-    def landing_page_USA(self):
-        self.client.post("/landing-page", json={"place": "country/USA"})
+    def place_page_USA(self):
+        self.client.post("/internal/place", json={"place": "country/USA"})
 
     @task
-    def landing_page_Earth(self):
-        self.client.post("/landing-page", json={"place": "Earth"})
+    def place_page_Earth(self):
+        self.client.post("/internal/place", json={"place": "Earth"})

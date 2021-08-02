@@ -60,8 +60,8 @@ type MixerClient interface {
 	GetLocationsRankings(ctx context.Context, in *GetLocationsRankingsRequest, opts ...grpc.CallOption) (*GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error)
-	// Get landing page info for a place.
-	GetLandingPageData(ctx context.Context, in *GetLandingPageDataRequest, opts ...grpc.CallOption) (*GetLandingPageDataResponse, error)
+	// Get place page info for a place.
+	GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	// Translate Sparql Query into translation results.
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -238,9 +238,9 @@ func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *GetRelatedLoc
 	return out, nil
 }
 
-func (c *mixerClient) GetLandingPageData(ctx context.Context, in *GetLandingPageDataRequest, opts ...grpc.CallOption) (*GetLandingPageDataResponse, error) {
-	out := new(GetLandingPageDataResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetLandingPageData", in, out, opts...)
+func (c *mixerClient) GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error) {
+	out := new(GetPlacePageDataResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlacePageData", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -402,8 +402,8 @@ type MixerServer interface {
 	GetLocationsRankings(context.Context, *GetLocationsRankingsRequest) (*GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error)
-	// Get landing page info for a place.
-	GetLandingPageData(context.Context, *GetLandingPageDataRequest) (*GetLandingPageDataResponse, error)
+	// Get place page info for a place.
+	GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error)
 	// Translate Sparql Query into translation results.
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -486,8 +486,8 @@ func (*UnimplementedMixerServer) GetLocationsRankings(context.Context, *GetLocat
 func (*UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedLocations not implemented")
 }
-func (*UnimplementedMixerServer) GetLandingPageData(context.Context, *GetLandingPageDataRequest) (*GetLandingPageDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetLandingPageData not implemented")
+func (*UnimplementedMixerServer) GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlacePageData not implemented")
 }
 func (*UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (*TranslateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Translate not implemented")
@@ -800,20 +800,20 @@ func _Mixer_GetRelatedLocations_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetLandingPageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetLandingPageDataRequest)
+func _Mixer_GetPlacePageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlacePageDataRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).GetLandingPageData(ctx, in)
+		return srv.(MixerServer).GetPlacePageData(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetLandingPageData",
+		FullMethod: "/datacommons.Mixer/GetPlacePageData",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetLandingPageData(ctx, req.(*GetLandingPageDataRequest))
+		return srv.(MixerServer).GetPlacePageData(ctx, req.(*GetPlacePageDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1099,8 +1099,8 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetRelatedLocations_Handler,
 		},
 		{
-			MethodName: "GetLandingPageData",
-			Handler:    _Mixer_GetLandingPageData_Handler,
+			MethodName: "GetPlacePageData",
+			Handler:    _Mixer_GetPlacePageData_Handler,
 		},
 		{
 			MethodName: "Translate",

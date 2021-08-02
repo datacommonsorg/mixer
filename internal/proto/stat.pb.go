@@ -748,7 +748,7 @@ func (x *PlaceStat) GetStatVarData() map[string]*ObsTimeSeries {
 }
 
 // This is effectively the same proto as PlaceStat with different field name.
-// This is used to match the landing page cache data.
+// This is used to match the place page cache data.
 type StatVarObsSeries struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

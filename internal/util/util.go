@@ -44,8 +44,8 @@ const (
 	BtSVAndSVGExistence = "d/2/"
 	// BtPlaceObsPrefix for internal place obs cache.
 	BtPlaceObsPrefix = "d/3/"
-	// BtLandingPagePrefix for place landing page cache.
-	BtLandingPagePrefix = "d/4/"
+	// BtPlacePagePrefix for place page cache.
+	BtPlacePagePrefix = "d/4/"
 	// BtTriplesPrefix for internal GetTriples cache.
 	BtTriplesPrefix = "d/7/"
 	// BtArcsPrefix for internal arcs cache.
