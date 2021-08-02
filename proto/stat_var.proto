@@ -1,0 +1,155 @@
+// Copyright 2021 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+// REST API URL from the proto in this file:
+// ========================================
+//    /stat-var/group
+//    /stat-var/search
+//    /stat-var/summary
+//    /stat-var/path
+//    /stat-var/group/all (/place/stat-var-group)
+// ========================================
+
+
+syntax = "proto3";
+option go_package = "./proto";
+package datacommons;
+
+
+// Basic info for an entity (subject or object).
+message EntityInfo {
+  string name = 1;
+  repeated string types = 2;
+  string dcid = 3;
+  string provenance_id = 4;
+  string value = 5;  // Only for object value.
+}
+
+message PlaceStatVarExistence {
+  // Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
+  int32 num_descendent_stat_vars = 1;
+}
+
+message StatVarSummary {
+  message Place {
+    string dcid = 1;
+    string name = 2;
+    int64 person_count = 3;
+  }
+  message PlaceTypeSummary {
+    // Number of places with stats for this stat var
+    int64 num_places = 1;
+    // List of example places that have stats for this stat var
+    repeated Place top_places = 2;
+  }
+  // Key is type of place
+  map<string, PlaceTypeSummary> place_type_summary = 1;
+}
+
+message StatVarGroups {
+  // Key is StatVarGroup ID.
+  map<string, StatVarGroupNode> stat_var_groups = 1;
+}
+
+message StatVarGroupNode {
+  message ChildSVG {
+    // StatVarGroup ID.
+    string id = 1;
+    // The specialized entity of the child StatVarGroup relative to the parent.
+    // This can be used for naming when the child appears in the hierarchy.
+    string specialized_entity = 2;
+    // Name suitable for display in tree.
+    string display_name = 3;
+    // Number of unique descendent stat-vars.
+    int32 num_descendent_stat_vars = 4;
+  }
+
+  message ChildSV {
+    // StatVar ID.
+    string id = 1;
+    // Name suitable for search.
+    string search_name = 2;
+    // Name suitable for display in tree.
+    string display_name = 3;
+    // Whether there is a data for this stat var
+    bool has_data = 4;
+  }
+
+  // Absolute name of StatVarGroup. Typically used only for root nodes.
+  string absolute_name = 1;
+  // List of children StatVar IDs directly attached to this group. If there are
+  // auto-generated and curated IDs for a StatVar, we'll prefer the curated.
+  repeated ChildSV child_stat_vars = 2;
+  // List of children StatVarGroups that are immediate specializations.
+  repeated ChildSVG child_stat_var_groups = 3;
+  // List of parent StatVarGroup IDs.
+  repeated string parent_stat_var_groups = 4;
+    // Number of unique descendent stat-vars.
+  int32 num_descendent_stat_vars = 5;
+}
+
+message GetStatVarGroupRequest {
+  repeated string places = 2;
+  reserved 1;
+}
+message GetStatVarGroupNodeRequest {
+  // The stat var or stat var group ID to query for.
+  string stat_var_group = 1;
+  // The places that the stat var group is associated with. The response should
+  // only contain the children stat var (group) if it has data for at least one
+  // of the places.
+  repeated string places = 2;
+  // Wheather to read the nodes from triples or from pre-build full hierarchy.
+  bool read_from_triples = 3;
+}
+
+
+message GetStatVarPathRequest {
+  // DCID of a stat var or a stat var group
+  string id = 1;
+}
+message GetStatVarPathResponse {
+  // A list of stat var (stat var group) DCIDs from the queried node to the
+  // root of stat var hierarchy.
+  // This is one path out of many possible paths in the hierarchy. When there
+  // are multiple nodes to select at given level, the first one in
+  // alphabetical sorted order is selected.
+  repeated string path = 1;
+}
+
+
+message SearchStatVarRequest {
+  // Query string
+  string query = 1;
+  // Places where the stat var and stat var groups are associated with.
+  repeated string places = 2;
+  // Whether to blocklist the search results.
+  bool enable_blocklist = 3;
+}
+message SearchStatVarResponse {
+  // A list of stat vars ranked by relevance.
+  repeated EntityInfo stat_vars = 1;
+  // A list of stat var groups ranked by relevance.
+  repeated EntityInfo stat_var_groups = 2;
+}
+
+
+message GetStatVarSummaryRequest {
+  // A list of stat var dcids
+  repeated string stat_vars = 1;
+}
+message GetStatVarSummaryResponse {
+  map<string, StatVarSummary> stat_var_summary = 1;
+}

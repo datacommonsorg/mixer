@@ -77,9 +77,7 @@ type MixerClient interface {
 	GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error)
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
-	GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponseV1, error)
-	// TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnionV1 is live
-	GetPlaceStatVarsUnion(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error)
+	GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that have
 	// data for each stat var across all child places.
 	GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetPlaceStatDateWithinPlaceResponse, error)
@@ -294,18 +292,9 @@ func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVars
 	return out, nil
 }
 
-func (c *mixerClient) GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponseV1, error) {
-	out := new(GetPlaceStatVarsUnionResponseV1)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatVarsUnionV1", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlaceStatVarsUnion(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error) {
+func (c *mixerClient) GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error) {
 	out := new(GetPlaceStatVarsUnionResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatVarsUnion", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatVarsUnionV1", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -430,9 +419,7 @@ type MixerServer interface {
 	GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error)
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
-	GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponseV1, error)
-	// TODO(shifucun): Deprecate this one after GetPlaceStatVarsUnionV1 is live
-	GetPlaceStatVarsUnion(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error)
+	GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that have
 	// data for each stat var across all child places.
 	GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error)
@@ -517,11 +504,8 @@ func (*UnimplementedMixerServer) GetPlaceStatsVar(context.Context, *GetPlaceStat
 func (*UnimplementedMixerServer) GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVars not implemented")
 }
-func (*UnimplementedMixerServer) GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponseV1, error) {
+func (*UnimplementedMixerServer) GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVarsUnionV1 not implemented")
-}
-func (*UnimplementedMixerServer) GetPlaceStatVarsUnion(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVarsUnion not implemented")
 }
 func (*UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatDateWithinPlace not implemented")
@@ -942,24 +926,6 @@ func _Mixer_GetPlaceStatVarsUnionV1_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetPlaceStatVarsUnion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlaceStatVarsUnionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlaceStatVarsUnion(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetPlaceStatVarsUnion",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatVarsUnion(ctx, req.(*GetPlaceStatVarsUnionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_GetPlaceStatDateWithinPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetPlaceStatDateWithinPlaceRequest)
 	if err := dec(in); err != nil {
@@ -1159,10 +1125,6 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlaceStatVarsUnionV1",
 			Handler:    _Mixer_GetPlaceStatVarsUnionV1_Handler,
-		},
-		{
-			MethodName: "GetPlaceStatVarsUnion",
-			Handler:    _Mixer_GetPlaceStatVarsUnion_Handler,
 		},
 		{
 			MethodName: "GetPlaceStatDateWithinPlace",

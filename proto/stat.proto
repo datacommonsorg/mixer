@@ -12,9 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
 
-// Use relative go package so the generated file is in the current folder.
+// REST API URL from the proto in this file:
+// ========================================
+//    /bulk/place-obs
+//    /bulk/stats
+//    /stat/all
+//    /stat/set
+//    /stat/series
+//    /stat/set/within-place
+//    /stat/value
+//    /v1/stat/set/series
+// ========================================
+
+
+syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
@@ -42,10 +54,6 @@ message PlacePointStat {
   map<string, PointStat> stat = 1;
   // Keyed by import name.
   map<string, StatMetadata> metadata = 2;
-}
-
-message DateList {
-  repeated string dates = 1;
 }
 
 message SourceSeries {
@@ -119,6 +127,62 @@ message StatVarSeries {
   // Key is stat var dcid.
   map<string, Series> data = 1;
 }
+
+
+// SVOPlace holds basic information about a DC place along with its associated
+// StatVarObservations.
+//
+// NOTE: Equivalent to legacy PopObsPlace.
+message SVOPlace {
+  string name = 1;
+  string type = 2;
+  string dcid = 3;
+  // All StatVarObservations associated with the place.
+  repeated SVOObservation observations = 4;
+  string provenance_id = 5;
+
+  // Not persisted in cache.
+  message Temp {
+    repeated string child_places = 2;
+    repeated string mids = 3;
+    reserved 1;
+  }
+  Temp temp = 6;
+}
+
+// Stores a StatVarObservation node.
+//
+// NOTE: Equivalent to legacy PopObsObservation.
+message SVOObservation {
+  string dcid = 1;
+  string observation_date = 2;
+  string observation_period = 3;
+  string measurement_method = 4;
+  string unit = 5;
+  string scaling_factor = 6;
+  string provenance_id = 7;
+
+  oneof val {
+    // Represents value for statType == "measurementResult"
+    string str_value = 8;
+    // Represents value for statType != "measurementResult"
+    double dbl_value = 9;
+  }
+
+  // Not persisted in cache.
+  message Temp {
+    string observation_about = 1;
+    string variable_measured = 2;
+    string import_name = 3;
+  }
+  Temp temp = 10;
+}
+
+// SVOCollection holds information for multiple SVOPlace instances.
+message SVOCollection {
+  repeated SVOPlace places = 1;
+}
+
 
 // Request message for GetStats.
 message GetStatsRequest {
@@ -296,13 +360,14 @@ message GetStatSetResponse {
 }
 
 
-message GetPlaceStatDateWithinPlaceRequest {
-  string ancestor_place = 1;
-  string place_type = 2;
-  repeated string stat_vars = 3;
-}
+// Requests to get observation for all place.
+message GetPlaceObsRequest {
+  // The type of the place.
+  string place_type = 1;
 
-message GetPlaceStatDateWithinPlaceResponse {
-  // Keyed by statVar.
-  map<string, DateList> data = 1;
+  // The stat var dcid.
+  string stat_var = 2;
+
+  // Observation date.
+  string date = 3;
 }

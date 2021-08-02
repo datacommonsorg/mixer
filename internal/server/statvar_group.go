@@ -116,12 +116,12 @@ func (s *Server) GetStatVarGroup(
 	// User can provide any arbitrary dcid, which might not be associated with
 	// stat vars. In this case, an empty response is returned.
 	if len(places) > 0 {
-		svUnionResp, err := s.GetPlaceStatVarsUnion(
+		svUnionResp, err := s.GetPlaceStatVarsUnionV1(
 			ctx, &pb.GetPlaceStatVarsUnionRequest{Dcids: places})
 		if err != nil {
 			return nil, err
 		}
-		statVars = svUnionResp.StatVars.StatVars
+		statVars = svUnionResp.StatVars
 	}
 
 	// Read stat var group cache data
