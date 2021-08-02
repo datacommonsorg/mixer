@@ -15,7 +15,7 @@
 
 // REST API URL from the proto in this file:
 // ========================================
-//    /landing-page
+//    /internal/place (/landing-page)
 // ========================================
 
 
