@@ -12,14 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
 
-// Use relative go package so the generated file is in the current folder.
+// REST API URL from the proto in this file:
+// ========================================
+//    /landing-page
+// ========================================
+
+
+syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
 import "stat.proto";
-
 
 message Place {
   string dcid = 1;

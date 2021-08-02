@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
 
-// Use relative go package so the generated file is in the current folder.
+// REST API URL from the proto in this file:
+// ========================================
+//    /search
+//    /version
+// ========================================
+
+
+syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
@@ -56,7 +62,7 @@ message SearchResponse {
   repeated SearchResultSection section = 1;
 }
 
-// Etmpty request to get version information.
+// Empty request to get version information.
 message GetVersionRequest {
 }
 

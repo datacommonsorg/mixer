@@ -12,12 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
 
-// Use relative go package so the generated file is in the current folder.
+// REST API URL from the proto in this file:
+// ========================================
+//    /node/places-in
+//    /node/related-locations
+//    /node/ranking-locations
+//    /place/stats-var
+//    /place/stat-vars
+//    /v1/place/stat-vars/union
+//    /place/stat/date/within-place
+// ========================================
+
+
+syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
+
+message DateList {
+  repeated string dates = 1;
+}
 
 // Related places info for a given place and condition.
 message RelatedPlacesInfo {
@@ -142,4 +157,15 @@ message GetPlaceStatVarsUnionRequest {
 // Response message for GetPlaceStatVarsUnionV1 API.
 message GetPlaceStatVarsUnionResponse {
   repeated string stat_vars = 1;
+}
+
+message GetPlaceStatDateWithinPlaceRequest {
+  string ancestor_place = 1;
+  string place_type = 2;
+  repeated string stat_vars = 3;
+}
+
+message GetPlaceStatDateWithinPlaceResponse {
+  // Keyed by statVar.
+  map<string, DateList> data = 1;
 }
