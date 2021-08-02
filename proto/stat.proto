@@ -120,6 +120,62 @@ message StatVarSeries {
   map<string, Series> data = 1;
 }
 
+
+// SVOPlace holds basic information about a DC place along with its associated
+// StatVarObservations.
+//
+// NOTE: Equivalent to legacy PopObsPlace.
+message SVOPlace {
+  string name = 1;
+  string type = 2;
+  string dcid = 3;
+  // All StatVarObservations associated with the place.
+  repeated SVOObservation observations = 4;
+  string provenance_id = 5;
+
+  // Not persisted in cache.
+  message Temp {
+    repeated string child_places = 2;
+    repeated string mids = 3;
+    reserved 1;
+  }
+  Temp temp = 6;
+}
+
+// Stores a StatVarObservation node.
+//
+// NOTE: Equivalent to legacy PopObsObservation.
+message SVOObservation {
+  string dcid = 1;
+  string observation_date = 2;
+  string observation_period = 3;
+  string measurement_method = 4;
+  string unit = 5;
+  string scaling_factor = 6;
+  string provenance_id = 7;
+
+  oneof val {
+    // Represents value for statType == "measurementResult"
+    string str_value = 8;
+    // Represents value for statType != "measurementResult"
+    double dbl_value = 9;
+  }
+
+  // Not persisted in cache.
+  message Temp {
+    string observation_about = 1;
+    string variable_measured = 2;
+    string import_name = 3;
+  }
+  Temp temp = 10;
+}
+
+// SVOCollection holds information for multiple SVOPlace instances.
+message SVOCollection {
+  repeated SVOPlace places = 1;
+}
+
+
 // Request message for GetStats.
 message GetStatsRequest {
   // The dcids of the place.
@@ -305,4 +361,17 @@ message GetPlaceStatDateWithinPlaceRequest {
 message GetPlaceStatDateWithinPlaceResponse {
   // Keyed by statVar.
   map<string, DateList> data = 1;
+}
+
+
+// Requests to get observation for all place.
+message GetPlaceObsRequest {
+  // The type of the place.
+  string place_type = 1;
+
+  // The stat var dcid.
+  string stat_var = 2;
+
+  // Observation date.
+  string date = 3;
 }

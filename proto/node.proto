@@ -1,0 +1,70 @@
+// Copyright 2021 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+// Use relative go package so the generated file is in the current folder.
+option go_package = "./proto";
+package datacommons;
+
+// Request to get property labels.
+message GetPropertyLabelsRequest {
+  // The dcids of nodes.
+  repeated string dcids = 1;
+}
+
+// Response returned by GetPropertyLabels.
+message GetPropertyLabelsResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get all neighboring nodes along an edge labeled by a property.
+message GetPropertyValuesRequest {
+  // The dcids of nodes to query for.
+  repeated string dcids = 1;
+
+  // The type of the neighboring node to query for.
+  string value_type = 2;
+
+  // The property to get adjacent nodes for.
+  string property = 3;
+
+  // Maximum number of nodes to query for.
+  int32 limit = 4;
+
+  // Direction, "in" or "out", default to "out".
+  string direction = 5;
+}
+
+// Response returned by GetPropertyValues.
+message GetPropertyValuesResponse {
+  // The JSON payload.
+  string payload = 1;
+}
+
+// Request to get all triples linking to the given nodes.
+message GetTriplesRequest {
+  // The dcids of the nodes to query for.
+  repeated string dcids = 1;
+
+  // Maximum number of triples for each property and type of the neighbor.
+  int32 limit = 2;
+}
+
+// Response returned by GetTriples.
+message GetTriplesResponse {
+  // The JSON payload.
+  string payload = 1;
+}

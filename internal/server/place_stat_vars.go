@@ -97,15 +97,36 @@ func keysToSlice(m map[string]bool) []string {
 	return s
 }
 
-// GetPlaceStatVarsUnion implements API for Mixer.GetPlaceStatVarsUnion.
-func (s *Server) GetPlaceStatVarsUnion(
+// GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
+func (s *Server) GetPlaceStatVarsUnionV1(
 	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
 	*pb.GetPlaceStatVarsUnionResponse, error) {
+	statVars := in.GetStatVars()
 	dcids := in.GetDcids()
+
 	if len(dcids) == 0 {
 		return nil, status.Error(
 			codes.InvalidArgument, "Missing required arguments: dcids")
 	}
+
+	// When given a list of stat vars to filter for, we can use the existence
+	// cache instead to check the existence of each stat var for the list of
+	// places. This is faster than getting all the stat vars for each place and
+	// then filtering.
+	if len(statVars) > 0 && len(dcids) > 0 {
+		statVarCount, err := countStatVar(ctx, s.store, statVars, dcids)
+		if err != nil {
+			return nil, err
+		}
+		result := &pb.GetPlaceStatVarsUnionResponse{}
+		for _, sv := range statVars {
+			if existence, ok := statVarCount[sv]; ok && len(existence) > 0 {
+				result.StatVars = append(result.StatVars, sv)
+			}
+		}
+		return result, nil
+	}
+
 	resp, err := s.GetPlaceStatVars(ctx, &pb.GetPlaceStatVarsRequest{Dcids: dcids})
 	if err != nil {
 		return nil, err
@@ -114,7 +135,7 @@ func (s *Server) GetPlaceStatVarsUnion(
 
 	// For single place, return directly.
 	if len(dcids[0]) == 1 {
-		return &pb.GetPlaceStatVarsUnionResponse{StatVars: places[dcids[0]]}, nil
+		return &pb.GetPlaceStatVarsUnionResponse{StatVars: places[dcids[0]].StatVars}, nil
 	}
 
 	// Get union of the statvars for multiple places.
@@ -125,40 +146,6 @@ func (s *Server) GetPlaceStatVarsUnion(
 		}
 	}
 	return &pb.GetPlaceStatVarsUnionResponse{
-		StatVars: &pb.StatVars{
-			StatVars: keysToSlice(set),
-		},
-	}, nil
-}
-
-// GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
-func (s *Server) GetPlaceStatVarsUnionV1(
-	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
-	*pb.GetPlaceStatVarsUnionResponseV1, error) {
-	statVars := in.GetStatVars()
-	dcids := in.GetDcids()
-	// When given a list of stat vars to filter for, we can use the existence
-	// cache instead to check the existence of each stat var for the list of
-	// places. This is faster than getting all the stat vars for each place and
-	// then filtering.
-	if len(statVars) > 0 && len(dcids) > 0 {
-		statVarCount, err := countStatVar(ctx, s.store, statVars, dcids)
-		if err != nil {
-			return nil, err
-		}
-		result := &pb.GetPlaceStatVarsUnionResponseV1{}
-		for _, sv := range statVars {
-			if existence, ok := statVarCount[sv]; ok && len(existence) > 0 {
-				result.StatVars = append(result.StatVars, sv)
-			}
-		}
-		return result, nil
-	}
-	resp, err := s.GetPlaceStatVarsUnion(ctx, in)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetPlaceStatVarsUnionResponseV1{
-		StatVars: resp.StatVars.StatVars,
+		StatVars: keysToSlice(set),
 	}, nil
 }

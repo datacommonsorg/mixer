@@ -1,0 +1,52 @@
+// Copyright 2021 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+// Use relative go package so the generated file is in the current folder.
+option go_package = "./proto";
+package datacommons;
+
+// Cell in the QueryResponse
+message QueryResponseCell {
+  // Cell value.
+  string value = 1;
+
+  // Provenance ID.
+  string provenance_id = 2;
+}
+
+// A graph query response row corresponding to the query variables in graph
+// query.
+message QueryResponseRow {
+  // A list of QueryResponseCell.
+  repeated QueryResponseCell cells = 1;
+}
+
+// A graph query request in Sparql query language.
+message QueryRequest {
+  // Sparql query string.
+  string sparql = 1;
+}
+
+// Graph query response.
+message QueryResponse {
+  // Identifier for selected variable. Size of the header is the same as number
+  // of cells for each row.
+  repeated string header = 1;
+
+  // Query results, with each row containing cells corresponding to header
+  // variable order.
+  repeated QueryResponseRow rows = 2;
+}

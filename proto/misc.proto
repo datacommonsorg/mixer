@@ -1,0 +1,73 @@
+// Copyright 2021 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+// Use relative go package so the generated file is in the current folder.
+option go_package = "./proto";
+package datacommons;
+
+
+// Wrapper for all entities returned from search which belong to a single type.
+message SearchResultSection {
+  // Type of entities in this section.
+  string type_name = 1;
+
+  // List of entities in this section.
+  repeated SearchEntityResult entity = 2;
+}
+
+// Data for a single entity returned by the search endpoint.
+message SearchEntityResult {
+  // DCID of the entity.
+  string dcid = 1;
+
+  // Name of the entity.
+  string name = 2;
+}
+
+
+// Search request sent to the mixer.
+message SearchRequest {
+  // Search query which is just a plain text string, e.g. "california".
+  // This is not a datalog query, but a plain text query. The mixer is free
+  // to choose an interpretation of the query, e.g. using NLP or just plain
+  // keyword search and return relevant entities from the graph.
+  string query = 1;
+
+  // Maximum number of entities to return.
+  int32 max_results = 2;
+}
+
+// Search response from mixer.
+message SearchResponse {
+  // Matching entities broken down by type.
+  repeated SearchResultSection section = 1;
+}
+
+// Etmpty request to get version information.
+message GetVersionRequest {
+}
+
+// Get version response.
+message GetVersionResponse {
+  // Store project
+  string store = 1;
+  // Big Query dataset
+  string big_query = 2;
+  // Bigtable instance
+  string big_table = 3;
+  // Github commit hash
+  string git_hash = 4;
+}
