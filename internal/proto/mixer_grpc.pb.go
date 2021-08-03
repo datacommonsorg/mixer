@@ -63,7 +63,7 @@ type MixerClient interface {
 	// Get place page info for a place.
 	GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	// Get protein page data given a protein.
-	GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GetProteinPageDataResponse, error)
+	GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error)
 	// Translate Sparql Query into translation results.
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -249,8 +249,8 @@ func (c *mixerClient) GetPlacePageData(ctx context.Context, in *GetPlacePageData
 	return out, nil
 }
 
-func (c *mixerClient) GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GetProteinPageDataResponse, error) {
-	out := new(GetProteinPageDataResponse)
+func (c *mixerClient) GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error) {
+	out := new(GraphNode)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetProteinPageData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -416,7 +416,7 @@ type MixerServer interface {
 	// Get place page info for a place.
 	GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error)
 	// Get protein page data given a protein.
-	GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GetProteinPageDataResponse, error)
+	GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GraphNode, error)
 	// Translate Sparql Query into translation results.
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -502,7 +502,7 @@ func (*UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelate
 func (*UnimplementedMixerServer) GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlacePageData not implemented")
 }
-func (*UnimplementedMixerServer) GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GetProteinPageDataResponse, error) {
+func (*UnimplementedMixerServer) GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GraphNode, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProteinPageData not implemented")
 }
 func (*UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (*TranslateResponse, error) {

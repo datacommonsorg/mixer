@@ -27,12 +27,6 @@ package datacommons;
 import "stat.proto";
 
 
-enum PropertyDirection {
-  DIRECTION_UNKNOWN = 0;
-  DIRECTION_IN = 1;
-  DIRECTION_OUT = 2;
-}
-
 message Place {
   string dcid = 1;
   string name = 2;
@@ -75,18 +69,4 @@ message GetPlacePageDataResponse {
 message GetProteinPageDataRequest {
   // The dcid of the protein
   string protein = 1;
-}
-// Response to get all data in protein page.
-message GetProteinPageDataResponse {
-  // Message to hold a cohort of nodes that have the same predicate and
-  // direction.
-  message LinkedNodes {
-    string property = 1;
-    PropertyDirection direction = 2;
-    repeated GetProteinPageDataResponse nodes = 3;
-  }
-  // A group of neighbour nodes by predicate.
-  repeated LinkedNodes neighbours = 1;
-  // Value of the node, could be dcid or node string value.
-  string value = 2;
 }

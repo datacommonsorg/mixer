@@ -28,19 +28,19 @@ import (
 // Use pre-computed data from Bigtable when it's ready.
 func (s *Server) GetProteinPageData(
 	ctx context.Context, in *pb.GetProteinPageDataRequest) (
-	*pb.GetProteinPageDataResponse, error) {
+	*pb.GraphNode, error) {
 
 	proteinDcid := in.GetProtein()
 	if proteinDcid == "" {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "Missing required arguments: protein")
 	}
-	resp := &pb.GetProteinPageDataResponse{
+	resp := &pb.GraphNode{
 		Value: proteinDcid,
-		Neighbours: []*pb.GetProteinPageDataResponse_LinkedNodes{
+		Neighbours: []*pb.GraphNode_LinkedNodes{
 			{
 				Property: "detectedProtein",
-				Nodes:    []*pb.GetProteinPageDataResponse{},
+				Nodes:    []*pb.GraphNode{},
 			},
 		},
 	}
@@ -68,23 +68,23 @@ func (s *Server) GetProteinPageData(
 	}
 
 	for _, dp := range detectedProteins {
-		detectedProteinNode := &pb.GetProteinPageDataResponse{
+		detectedProteinNode := &pb.GraphNode{
 			Value: dp,
-			Neighbours: []*pb.GetProteinPageDataResponse_LinkedNodes{
+			Neighbours: []*pb.GraphNode_LinkedNodes{
 				{
 					Property: "humanTissue",
-					Nodes:    []*pb.GetProteinPageDataResponse{},
+					Nodes:    []*pb.GraphNode{},
 				},
 				{
 					Property: "proteinExpressionScore",
-					Nodes:    []*pb.GetProteinPageDataResponse{},
+					Nodes:    []*pb.GraphNode{},
 				},
 			},
 		}
 		for _, tissue := range humanTissueNodes[dp] {
 			detectedProteinNode.Neighbours[0].Nodes = append(
 				detectedProteinNode.Neighbours[0].Nodes,
-				&pb.GetProteinPageDataResponse{
+				&pb.GraphNode{
 					Value: tissue.Dcid,
 				},
 			)
@@ -92,7 +92,7 @@ func (s *Server) GetProteinPageData(
 		for _, score := range scoreNodes[dp] {
 			detectedProteinNode.Neighbours[1].Nodes = append(
 				detectedProteinNode.Neighbours[1].Nodes,
-				&pb.GetProteinPageDataResponse{
+				&pb.GraphNode{
 					Value: score.Dcid,
 				},
 			)
