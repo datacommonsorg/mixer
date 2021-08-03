@@ -222,29 +222,29 @@ func getDcids(places []*pb.Place) []string {
 	return result
 }
 
-// Fetch landing page cache data for a list of places.
+// Fetch place page cache data for a list of places.
 func fetchBtData(
 	ctx context.Context, s *Server, places []string, statVars []string) (
 	map[string]*pb.StatVarSeries, error) {
 	rowList := bigtable.RowList{}
 	for _, dcid := range places {
 		rowList = append(rowList, fmt.Sprintf(
-			"%s%s", util.BtLandingPagePrefix, dcid))
+			"%s%s", util.BtPlacePagePrefix, dcid))
 	}
 
-	// Fetch landing page cache data in parallel.
-	// Landing page cache only exists in base cache
+	// Fetch place page cache data in parallel.
+	// Place page cache only exists in base cache
 	baseDataMap, _, err := bigTableReadRowsParallel(
 		ctx,
 		s.store,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var landingPageData pb.StatVarObsSeries
-			err := protojson.Unmarshal(jsonRaw, &landingPageData)
+			var placePageData pb.StatVarObsSeries
+			err := protojson.Unmarshal(jsonRaw, &placePageData)
 			if err != nil {
 				return nil, err
 			}
-			return &landingPageData, nil
+			return &placePageData, nil
 		},
 		nil,
 		false, /* readBranch */
@@ -252,15 +252,15 @@ func fetchBtData(
 	if err != nil {
 		return nil, err
 	}
-	// Populate result from landing page cache
+	// Populate result from place page cache
 	result := map[string]*pb.StatVarSeries{}
 	for dcid, data := range baseDataMap {
 		if data == nil {
 			continue
 		}
-		landingPageData := data.(*pb.StatVarObsSeries)
+		placePageData := data.(*pb.StatVarObsSeries)
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
-		for statVarDcid, obsTimeSeries := range landingPageData.Data {
+		for statVarDcid, obsTimeSeries := range placePageData.Data {
 			finalData.Data[statVarDcid] = getBestSeries(obsTimeSeries)
 		}
 		result[dcid] = finalData
@@ -515,16 +515,16 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 	return getDcids(result[0:maxNearbyPlace]), nil
 }
 
-// GetLandingPageData implements API for Mixer.GetLandingPageData.
+// GetPlacePageData implements API for Mixer.GetPlacePageData.
 //
 // TODO(shifucun):For each related place, it is supposed to have dcid, name and
 // population but it's not complete now as the client in most cases only requires
 // the dcid. Should consider have the full name, even with parent place
 // abbreviations like "CA" filled in here so the client won't bother to fetch
 // those again.
-func (s *Server) GetLandingPageData(
-	ctx context.Context, in *pb.GetLandingPageDataRequest) (
-	*pb.GetLandingPageDataResponse, error) {
+func (s *Server) GetPlacePageData(
+	ctx context.Context, in *pb.GetPlacePageDataRequest) (
+	*pb.GetPlacePageDataResponse, error) {
 
 	placeDcid := in.GetPlace()
 	if placeDcid == "" {
@@ -586,7 +586,7 @@ func (s *Server) GetLandingPageData(
 	close(allChildPlaceChan)
 	close(relatedPlaceChan)
 
-	resp := pb.GetLandingPageDataResponse{}
+	resp := pb.GetPlacePageDataResponse{}
 
 	allChildPlaces := map[string]*pb.Places{}
 	for tmp := range allChildPlaceChan {
@@ -597,7 +597,7 @@ func (s *Server) GetLandingPageData(
 	resp.AllChildPlaces = allChildPlaces
 	resp.ChildPlacesType = filteredChildPlaceType
 
-	// Fetch the landing page stats data for all places.
+	// Fetch the place page stats data for all places.
 	allPlaces := []string{placeDcid}
 	for relatedPlace := range relatedPlaceChan {
 		switch relatedPlace.category {

@@ -114,7 +114,7 @@ message PlaceStat {
 }
 
 // This is effectively the same proto as PlaceStat with different field name.
-// This is used to match the landing page cache data.
+// This is used to match the place page cache data.
 message StatVarObsSeries {
   // Key is stat var dcid.
   map<string, ObsTimeSeries> data = 1;

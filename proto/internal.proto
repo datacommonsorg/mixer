@@ -35,8 +35,8 @@ message Places {
   repeated Place places = 1;
 }
 
-// Request to get all stat data in landing page for a place.
-message GetLandingPageDataRequest {
+// Request to get all data in place page.
+message GetPlacePageDataRequest {
   // The dcid of the place.
   string place = 1;
   // A list of additional stat vars need to be fetched in addition to the
@@ -50,8 +50,8 @@ message GetLandingPageDataRequest {
   reserved 2;
 }
 
-// Response to get landing page info for a place.
-message GetLandingPageDataResponse {
+// Response to get place page info for a place.
+message GetPlacePageDataResponse {
   // Keyed by place dcid.
   map<string, StatVarSeries> stat_var_series = 1;
   map<string, Places> all_child_places = 2;

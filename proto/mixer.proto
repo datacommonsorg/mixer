@@ -214,8 +214,8 @@ service Mixer {
     };
   }
 
-  // Get landing page info for a place.
-  rpc GetLandingPageData(GetLandingPageDataRequest) returns (GetLandingPageDataResponse) {
+  // Get place page info for a place.
+  rpc GetPlacePageData(GetPlacePageDataRequest) returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
       get: "/landing-page"
       additional_bindings: {
