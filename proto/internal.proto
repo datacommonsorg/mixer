@@ -16,6 +16,7 @@
 // REST API URL from the proto in this file:
 // ========================================
 //    /internal/place (/landing-page)
+//    /internal/bio
 // ========================================
 
 
@@ -24,6 +25,7 @@ option go_package = "./proto";
 package datacommons;
 
 import "stat.proto";
+
 
 message Place {
   string dcid = 1;
@@ -60,4 +62,11 @@ message GetPlacePageDataResponse {
   repeated string parent_places = 5;
   repeated string similar_places = 6;
   repeated string nearby_places = 7;
+}
+
+
+// Request to get all data in protein page.
+message GetBioPageDataRequest {
+  // The dcid of the entity
+  string dcid = 1;
 }

@@ -21,6 +21,7 @@ package datacommons;
 
 
 import "google/api/annotations.proto";
+import "common.proto";
 import "internal.proto";
 import "misc.proto";
 import "node.proto";
@@ -227,6 +228,17 @@ service Mixer {
       }
       additional_bindings: {
         post: "/internal/place"
+        body: "*"
+      }
+    };
+  }
+
+  // Get bio page data given a dcid.
+  rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNode) {
+    option (google.api.http) = {
+      get: "/internal/bio"
+      additional_bindings: {
+        post: "/internal/bio"
         body: "*"
       }
     };
