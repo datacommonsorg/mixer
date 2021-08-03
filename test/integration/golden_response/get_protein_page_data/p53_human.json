@@ -1,0 +1,1711 @@
+{
+  "neighbours": [
+    {
+      "property": "detectedProtein",
+      "nodes": [
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Vagina"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Vagina_SquamousEpithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "UrinaryBladder"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionLow"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_UrinaryBladder_UrothelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Tonsil"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionLow"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Tonsil_SquamousEpithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Tonsil"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Tonsil_NonGerminalCenterCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Tonsil"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Tonsil_GerminalCenterCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "ThyroidGland"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_ThyroidGland_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Testis"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Testis_LeydigCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Testis"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Testis_CellsInSeminiferousDucts"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Stomach2"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Stomach2_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Stomach1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Stomach1_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Spleen"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Spleen_CellsInWhitePulp"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Spleen"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Spleen_CellsInRedPulp"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SoftTissue2"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SoftTissue2_PeripheralNerve"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SoftTissue2"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SoftTissue2_Fibroblasts"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SoftTissue1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SoftTissue1_PeripheralNerve"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SoftTissue1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SoftTissue1_Fibroblasts"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SoftTissue1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SoftTissue1_Chondrocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SmoothMuscle"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SmoothMuscle_SmoothMuscleCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SmallIntestine"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SmallIntestine_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Skin2"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionLow"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Skin2_EpidermalCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Skin1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionLow"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Skin1_Melanocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Skin1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Skin1_Langerhans"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Skin1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Skin1_Keratinocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Skin1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Skin1_Fibroblasts"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SkeletalMuscle"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SkeletalMuscle_Myocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SeminalVesicle"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SeminalVesicle_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "SalivaryGland"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_SalivaryGland_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Rectum"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Rectum_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Prostate"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Prostate_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Placenta"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Placenta_TrophoblasticCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Placenta"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Placenta_DecidualCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "ParathyroidGland"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_ParathyroidGland_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Pancreas"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Pancreas_IsletsOfLangerhans"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Pancreas"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Pancreas_ExocrineGlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Ovary"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Ovary_OvarianStromaCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Ovary"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Ovary_FollicleCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "OralMucosa"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionMedium"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_OralMucosa_SquamousEpithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Nasopharynx"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Nasopharynx_RespiratoryEpithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "LymphNode"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_LymphNode_NonGerminalCenterCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "LymphNode"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_LymphNode_GerminalCenterCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Lung"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Lung_Pneumocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Lung"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Lung_Macrophages"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Liver"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Liver_Hepatocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Liver"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Liver_BileDuctCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Kidney"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Kidney_CellsInTubules"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Kidney"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Kidney_CellsInGlomeruli"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Hippocampus"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Hippocampus_NeuronalCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Hippocampus"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Hippocampus_GlialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "HeartMuscle"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_HeartMuscle_Myocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Gallbladder"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Gallbladder_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "FallopianTube"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_FallopianTube_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Esophagus"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionMedium"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Esophagus_SquamousEpithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Epididymis"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Epididymis_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Endometrium2"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Endometrium2_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Endometrium2"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Endometrium2_CellsInEndometrialStroma"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Endometrium1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Endometrium1_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Endometrium1"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Endometrium1_CellsInEndometrialStroma"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Duodenum"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Duodenum_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Colon"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Colon_PeripheralNerveGanglion"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Colon"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Colon_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Colon"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Colon_EndothelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "CervixUterine"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_CervixUterine_SquamousEpithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "CervixUterine"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_CervixUterine_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "CerebralCortex"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_CerebralCortex_Neuropil"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "CerebralCortex"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_CerebralCortex_NeuronalCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "CerebralCortex"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_CerebralCortex_GlialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "CerebralCortex"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_CerebralCortex_EndothelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Cerebellum"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Cerebellum_PurkinjeCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Cerebellum"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Cerebellum_CellsInMolecularLayer"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Cerebellum"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Cerebellum_CellsInGranularLayer"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Caudate"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Caudate_NeuronalCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Caudate"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Caudate_GlialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Bronchus"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Bronchus_RespiratoryEpithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Breast"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Breast_MyoepithelialCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Breast"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Breast_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Breast"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Breast_Adipocytes"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "BoneMarrow"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_BoneMarrow_HematopoieticCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Appendix"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Appendix_LymphoidTissue"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "Appendix"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_Appendix_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "AdrenalGland"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_AdrenalGland_GlandularCells"
+        },
+        {
+          "neighbours": [
+            {
+              "property": "humanTissue",
+              "nodes": [
+                {
+                  "value": "AdiposeTissue"
+                }
+              ]
+            },
+            {
+              "property": "proteinExpressionScore",
+              "nodes": [
+                {
+                  "value": "ProteinExpressionNotDetected"
+                }
+              ]
+            }
+          ],
+          "value": "bio/P53_HUMAN_AdiposeTissue_Adipocytes"
+        }
+      ]
+    }
+  ],
+  "value": "bio/P53_HUMAN"
+}

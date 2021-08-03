@@ -62,6 +62,8 @@ type MixerClient interface {
 	GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error)
 	// Get place page info for a place.
 	GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
+	// Get protein page data given a protein.
+	GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GetProteinPageDataResponse, error)
 	// Translate Sparql Query into translation results.
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -247,6 +249,15 @@ func (c *mixerClient) GetPlacePageData(ctx context.Context, in *GetPlacePageData
 	return out, nil
 }
 
+func (c *mixerClient) GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GetProteinPageDataResponse, error) {
+	out := new(GetProteinPageDataResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetProteinPageData", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error) {
 	out := new(TranslateResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Translate", in, out, opts...)
@@ -404,6 +415,8 @@ type MixerServer interface {
 	GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error)
 	// Get place page info for a place.
 	GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error)
+	// Get protein page data given a protein.
+	GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GetProteinPageDataResponse, error)
 	// Translate Sparql Query into translation results.
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -488,6 +501,9 @@ func (*UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelate
 }
 func (*UnimplementedMixerServer) GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlacePageData not implemented")
+}
+func (*UnimplementedMixerServer) GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GetProteinPageDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProteinPageData not implemented")
 }
 func (*UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (*TranslateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Translate not implemented")
@@ -818,6 +834,24 @@ func _Mixer_GetPlacePageData_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_GetProteinPageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProteinPageDataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetProteinPageData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/GetProteinPageData",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetProteinPageData(ctx, req.(*GetProteinPageDataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_Translate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TranslateRequest)
 	if err := dec(in); err != nil {
@@ -1101,6 +1135,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlacePageData",
 			Handler:    _Mixer_GetPlacePageData_Handler,
+		},
+		{
+			MethodName: "GetProteinPageData",
+			Handler:    _Mixer_GetProteinPageData_Handler,
 		},
 		{
 			MethodName: "Translate",

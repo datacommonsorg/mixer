@@ -232,6 +232,17 @@ service Mixer {
     };
   }
 
+  // Get protein page data given a protein.
+  rpc GetProteinPageData(GetProteinPageDataRequest) returns (GetProteinPageDataResponse) {
+    option (google.api.http) = {
+      get: "/internal/protein"
+      additional_bindings: {
+        post: "/internal/protein"
+        body: "*"
+      }
+    };
+  }
+
   // Translate Sparql Query into translation results.
   rpc Translate(TranslateRequest) returns (TranslateResponse) {
     option (google.api.http) = {
