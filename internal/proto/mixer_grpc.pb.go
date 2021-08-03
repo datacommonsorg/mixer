@@ -62,8 +62,8 @@ type MixerClient interface {
 	GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error)
 	// Get place page info for a place.
 	GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
-	// Get protein page data given a protein.
-	GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error)
+	// Get bio page data given a dcid.
+	GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error)
 	// Translate Sparql Query into translation results.
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -249,9 +249,9 @@ func (c *mixerClient) GetPlacePageData(ctx context.Context, in *GetPlacePageData
 	return out, nil
 }
 
-func (c *mixerClient) GetProteinPageData(ctx context.Context, in *GetProteinPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error) {
+func (c *mixerClient) GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error) {
 	out := new(GraphNode)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetProteinPageData", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetBioPageData", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -415,8 +415,8 @@ type MixerServer interface {
 	GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error)
 	// Get place page info for a place.
 	GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error)
-	// Get protein page data given a protein.
-	GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GraphNode, error)
+	// Get bio page data given a dcid.
+	GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNode, error)
 	// Translate Sparql Query into translation results.
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -502,8 +502,8 @@ func (*UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelate
 func (*UnimplementedMixerServer) GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlacePageData not implemented")
 }
-func (*UnimplementedMixerServer) GetProteinPageData(context.Context, *GetProteinPageDataRequest) (*GraphNode, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetProteinPageData not implemented")
+func (*UnimplementedMixerServer) GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNode, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBioPageData not implemented")
 }
 func (*UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (*TranslateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Translate not implemented")
@@ -834,20 +834,20 @@ func _Mixer_GetPlacePageData_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetProteinPageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetProteinPageDataRequest)
+func _Mixer_GetBioPageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBioPageDataRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).GetProteinPageData(ctx, in)
+		return srv.(MixerServer).GetBioPageData(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetProteinPageData",
+		FullMethod: "/datacommons.Mixer/GetBioPageData",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetProteinPageData(ctx, req.(*GetProteinPageDataRequest))
+		return srv.(MixerServer).GetBioPageData(ctx, req.(*GetBioPageDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1137,8 +1137,8 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetPlacePageData_Handler,
 		},
 		{
-			MethodName: "GetProteinPageData",
-			Handler:    _Mixer_GetProteinPageData_Handler,
+			MethodName: "GetBioPageData",
+			Handler:    _Mixer_GetBioPageData_Handler,
 		},
 		{
 			MethodName: "Translate",

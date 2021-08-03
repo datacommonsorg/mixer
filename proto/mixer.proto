@@ -233,12 +233,12 @@ service Mixer {
     };
   }
 
-  // Get protein page data given a protein.
-  rpc GetProteinPageData(GetProteinPageDataRequest) returns (GraphNode) {
+  // Get bio page data given a dcid.
+  rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNode) {
     option (google.api.http) = {
-      get: "/internal/protein"
+      get: "/internal/bio"
       additional_bindings: {
-        post: "/internal/protein"
+        post: "/internal/bio"
         body: "*"
       }
     };

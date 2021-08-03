@@ -22,21 +22,21 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// GetProteinPageData implements API for Mixer.GetProteinPageData.
+// GetBioPageData implements API for Mixer.GetBioPageData.
 //
 // TODO(shifucun): This is only a mini version with partial data.
 // Use pre-computed data from Bigtable when it's ready.
-func (s *Server) GetProteinPageData(
-	ctx context.Context, in *pb.GetProteinPageDataRequest) (
+func (s *Server) GetBioPageData(
+	ctx context.Context, in *pb.GetBioPageDataRequest) (
 	*pb.GraphNode, error) {
 
-	proteinDcid := in.GetProtein()
-	if proteinDcid == "" {
+	dcid := in.GetDcid()
+	if dcid == "" {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "Missing required arguments: protein")
+			codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	resp := &pb.GraphNode{
-		Value: proteinDcid,
+		Value: dcid,
 		Neighbours: []*pb.GraphNode_LinkedNodes{
 			{
 				Property: "detectedProtein",
@@ -46,12 +46,12 @@ func (s *Server) GetProteinPageData(
 	}
 
 	inNodes, err := getPropertyValuesHelper(
-		ctx, s.store, []string{proteinDcid}, "detectedProtein", false)
+		ctx, s.store, []string{dcid}, "detectedProtein", false)
 	if err != nil {
 		return nil, err
 	}
 	detectedProteins := []string{}
-	for _, dp := range inNodes[proteinDcid] {
+	for _, dp := range inNodes[dcid] {
 		detectedProteins = append(detectedProteins, dp.Dcid)
 	}
 

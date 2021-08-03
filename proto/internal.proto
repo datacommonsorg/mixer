@@ -16,7 +16,7 @@
 // REST API URL from the proto in this file:
 // ========================================
 //    /internal/place (/landing-page)
-//    /internal/protein
+//    /internal/bio
 // ========================================
 
 
@@ -66,7 +66,7 @@ message GetPlacePageDataResponse {
 
 
 // Request to get all data in protein page.
-message GetProteinPageDataRequest {
-  // The dcid of the protein
-  string protein = 1;
+message GetBioPageDataRequest {
+  // The dcid of the entity
+  string dcid = 1;
 }

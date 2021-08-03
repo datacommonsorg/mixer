@@ -25,8 +25,8 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-// TestGetProteinPageData tests GetProteinPageData.
-func TestGetProteinPageData(t *testing.T) {
+// TestGetBioPageData tests GetBioPageData.
+func TestGetBioPageData(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 	client, err := setup()
@@ -35,23 +35,23 @@ func TestGetProteinPageData(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/get_protein_page_data")
+		path.Dir(filename), "golden_response/get_bio_page_data")
 
 	for _, c := range []struct {
 		goldenFile string
-		protein    string
+		dcid       string
 	}{
 		{
 			"p53_human.json",
 			"bio/P53_HUMAN",
 		},
 	} {
-		req := &pb.GetProteinPageDataRequest{
-			Protein: c.protein,
+		req := &pb.GetBioPageDataRequest{
+			Dcid: c.dcid,
 		}
-		resp, err := client.GetProteinPageData(ctx, req)
+		resp, err := client.GetBioPageData(ctx, req)
 		if err != nil {
-			t.Errorf("could not GetProteinPageData: %s", err)
+			t.Errorf("could not GetBioPageData: %s", err)
 			continue
 		}
 
