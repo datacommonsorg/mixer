@@ -4,15 +4,15 @@
     "rankFromBottom": 3172
   },
   "Median_Age_Person": {
-    "rankFromTop": 2572,
-    "rankFromBottom": 614
+    "rankFromTop": 2583,
+    "rankFromBottom": 603
   },
   "Median_Income_Person": {
     "rankFromTop": 22,
     "rankFromBottom": 3164
   },
   "UnemploymentRate_Person": {
-    "rankFromTop": 1342,
-    "rankFromBottom": 1844
+    "rankFromTop": 1590,
+    "rankFromBottom": 1596
   }
 }
