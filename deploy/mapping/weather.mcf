@@ -1,87 +1,87 @@
-Node: E:MonthlyWeather->E1
+Node: E:DailyWeather->E1
 typeOf: Place
-dcid: C:MonthlyWeather->place_id
+dcid: C:DailyWeather->place_id
 functionalDeps: dcid
 
-Node: E:MonthlyWeather->E2
+Node: E:DailyWeather->E2
 typeOf: Provenance
-dcid: C:MonthlyWeather->prov_id
+dcid: C:DailyWeather->prov_id
 functionalDeps: dcid
 
-Node: E:MonthlyWeather->E3
+Node: E:DailyWeather->E3
 typeOf: WeatherObservation
-observedNode: E:MonthlyWeather->E1
-provenance: E:MonthlyWeather->E2
-observationDate: C:MonthlyWeather->observation_date
+observedNode: E:DailyWeather->E1
+provenance: E:DailyWeather->E2
+observationDate: C:DailyWeather->observation_date
 measuredProperty: "temperature"
 observationPeriod: "P1M"
 unit: "Celsius"
-minValue: C:MonthlyWeather->temp_c_min
-meanValue: C:MonthlyWeather->temp_c_mean
-maxValue: C:MonthlyWeather->temp_c_max
+minValue: C:DailyWeather->temp_c_min
+meanValue: C:DailyWeather->temp_c_mean
+maxValue: C:DailyWeather->temp_c_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
-Node: E:MonthlyWeather->E4
+Node: E:DailyWeather->E4
 typeOf: WeatherObservation
-observedNode: E:MonthlyWeather->E1
-provenance: E:MonthlyWeather->E2
-observationDate: C:MonthlyWeather->observation_date
+observedNode: E:DailyWeather->E1
+provenance: E:DailyWeather->E2
+observationDate: C:DailyWeather->observation_date
 measuredProperty: "visibility"
 observationPeriod: "P1M"
 unit: "Kilometer"
-minValue: C:MonthlyWeather->visibility_km_min
-meanValue: C:MonthlyWeather->visibility_km_mean
-maxValue: C:MonthlyWeather->visibility_km_max
+minValue: C:DailyWeather->visibility_km_min
+meanValue: C:DailyWeather->visibility_km_mean
+maxValue: C:DailyWeather->visibility_km_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
-Node: E:MonthlyWeather->E5
+Node: E:DailyWeather->E5
 typeOf: WeatherObservation
-observedNode: E:MonthlyWeather->E1
-provenance: E:MonthlyWeather->E2
-observationDate: C:MonthlyWeather->observation_date
+observedNode: E:DailyWeather->E1
+provenance: E:DailyWeather->E2
+observationDate: C:DailyWeather->observation_date
 measuredProperty: "rainfall"
 observationPeriod: "P1M"
 unit: "Millimeter"
-minValue: C:MonthlyWeather->rainfall_mm_min
-meanValue: C:MonthlyWeather->rainfall_mm_mean
-maxValue: C:MonthlyWeather->rainfall_mm_max
+minValue: C:DailyWeather->rainfall_mm_min
+meanValue: C:DailyWeather->rainfall_mm_mean
+maxValue: C:DailyWeather->rainfall_mm_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
-Node: E:MonthlyWeather->E6
+Node: E:DailyWeather->E6
 typeOf: WeatherObservation
-observedNode: E:MonthlyWeather->E1
-provenance: E:MonthlyWeather->E2
-observationDate: C:MonthlyWeather->observation_date
+observedNode: E:DailyWeather->E1
+provenance: E:DailyWeather->E2
+observationDate: C:DailyWeather->observation_date
 measuredProperty: "snowfall"
 observationPeriod: "P1M"
 unit: "Millimeter"
-minValue: C:MonthlyWeather->snowfall_mm_min
-meanValue: C:MonthlyWeather->snowfall_mm_mean
-maxValue: C:MonthlyWeather->snowfall_mm_max
+minValue: C:DailyWeather->snowfall_mm_min
+meanValue: C:DailyWeather->snowfall_mm_mean
+maxValue: C:DailyWeather->snowfall_mm_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
-Node: E:MonthlyWeather->E7
+Node: E:DailyWeather->E7
 typeOf: WeatherObservation
-observedNode: E:MonthlyWeather->E1
-provenance: E:MonthlyWeather->E2
-observationDate: C:MonthlyWeather->observation_date
+observedNode: E:DailyWeather->E1
+provenance: E:DailyWeather->E2
+observationDate: C:DailyWeather->observation_date
 measuredProperty: "barometricPressure"
 observationPeriod: "P1M"
 unit: "Millibar"
-minValue: C:MonthlyWeather->barometer_mbar_min
-meanValue: C:MonthlyWeather->barometer_mbar_mean
-maxValue: C:MonthlyWeather->barometer_mbar_max
+minValue: C:DailyWeather->barometer_mbar_min
+meanValue: C:DailyWeather->barometer_mbar_mean
+maxValue: C:DailyWeather->barometer_mbar_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
-Node: E:MonthlyWeather->E8
+Node: E:DailyWeather->E8
 typeOf: WeatherObservation
-observedNode: E:MonthlyWeather->E1
-provenance: E:MonthlyWeather->E2
-observationDate: C:MonthlyWeather->observation_date
+observedNode: E:DailyWeather->E1
+provenance: E:DailyWeather->E2
+observationDate: C:DailyWeather->observation_date
 measuredProperty: "humidity"
 observationPeriod: "P1M"
 unit: "Percent"
-minValue: C:MonthlyWeather->humidity_pct_min
-meanValue: C:MonthlyWeather->humidity_pct_mean
-maxValue: C:MonthlyWeather->humidity_pct_max
+minValue: C:DailyWeather->humidity_pct_min
+meanValue: C:DailyWeather->humidity_pct_mean
+maxValue: C:DailyWeather->humidity_pct_max
 functionalDeps: observedNode, observationDate, observationPeriod
