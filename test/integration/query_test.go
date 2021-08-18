@@ -48,7 +48,7 @@ func TestQuery(t *testing.T) {
 				?o typeOf WeatherObservation .
 				?o measuredProperty temperature .
 				?o meanValue ?MeanTemp .
-				?o observationDate "2018-01" .
+				?o observationDate "2019-01-01" .
 				?o observedNode ?place .
 				?place dcid geoId/4261000
 			}
