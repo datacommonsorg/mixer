@@ -21,7 +21,7 @@ namespace: mixer
 
 resources:
   - ../git
-  # - backendconfig.yaml
+  - backendconfig.yaml
   - deployment.yaml
   - ingress.yaml
   - namespace.yaml
