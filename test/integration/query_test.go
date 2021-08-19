@@ -45,7 +45,7 @@ func TestQuery(t *testing.T) {
 			`BASE <http://schema.org/>
 			SELECT ?MeanTemp
 			WHERE {
-				?o typeOf WeatherObservation .
+				?o typeOf DailyWeatherObservation .
 				?o measuredProperty temperature .
 				?o meanValue ?MeanTemp .
 				?o observationDate "2019-01-01" .
@@ -59,7 +59,7 @@ func TestQuery(t *testing.T) {
 			`
 			SELECT ?date ?mean ?unit
 			WHERE {
-				?o typeOf WeatherObservation .
+				?o typeOf MonthlyWeatherObservation .
 				?o observedNode geoId/0649670 .
 				?o measuredProperty temperature .
 				?o observationDate ?date .

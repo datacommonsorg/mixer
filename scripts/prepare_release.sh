@@ -36,7 +36,7 @@ function update_proto() {
 function update_golden() {
   echo ""
   echo "==== Updating staging golden files ===="
-  ./scripts/update_golden_staging.sh
+  ./scripts/update_golden.sh
   if [ $? -ne 0 ]; then
     echo "ERROR: Failed to update proto"
     exit 1
