@@ -19,5 +19,6 @@ configMapGenerator:
   - name: schema-mapping
     files:
       - base.mcf
-      - weather.mcf
+      - dailyweather.mcf
+      - monthlyweather.mcf
       - encode.mcf
