@@ -34,7 +34,7 @@ wget "http://www.pixelbeat.org/scripts/ansi2html.sh" -O /tmp/ansi2html.sh
 chmod +x /tmp/ansi2html.sh
 
 
-"$ROOT/scripts/update_golden_staging.sh" | /tmp/ansi2html.sh > /tmp/golden-diff.html
+"$ROOT/scripts/update_golden.sh" | /tmp/ansi2html.sh > /tmp/golden-diff.html
 
 if ! grep -Fxq "FAIL" /tmp/golden-diff.html; then
   git diff | /tmp/ansi2html.sh > /tmp/golden-diff.html

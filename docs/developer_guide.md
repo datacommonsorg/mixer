@@ -69,7 +69,7 @@ After code edit, the container images are automatically rebuilt and re-deployed 
 ### Update e2e test golden files
 
 ```bash
-./scripts/update_golden_staging.sh -d
+./scripts/update_golden.sh -d
 ```
 
 ## Develop mixer locally as a Go server (non-Docker)
@@ -124,7 +124,7 @@ go run examples/main.go
 ### Update e2e test golden files (Go)
 
 ```bash
-./scripts/update_golden_staging.sh
+./scripts/update_golden.sh
 ```
 
 ## Update prod golden files

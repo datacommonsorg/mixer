@@ -9,12 +9,12 @@ dcid: C:DailyWeather->prov_id
 functionalDeps: dcid
 
 Node: E:DailyWeather->E3
-typeOf: WeatherObservation
+typeOf: DailyWeatherObservation
 observedNode: E:DailyWeather->E1
 provenance: E:DailyWeather->E2
 observationDate: C:DailyWeather->observation_date
 measuredProperty: "temperature"
-observationPeriod: "P1M"
+observationPeriod: "P1D"
 unit: "Celsius"
 minValue: C:DailyWeather->temp_c_min
 meanValue: C:DailyWeather->temp_c_mean
@@ -22,12 +22,12 @@ maxValue: C:DailyWeather->temp_c_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
 Node: E:DailyWeather->E4
-typeOf: WeatherObservation
+typeOf: DailyWeatherObservation
 observedNode: E:DailyWeather->E1
 provenance: E:DailyWeather->E2
 observationDate: C:DailyWeather->observation_date
 measuredProperty: "visibility"
-observationPeriod: "P1M"
+observationPeriod: "P1D"
 unit: "Kilometer"
 minValue: C:DailyWeather->visibility_km_min
 meanValue: C:DailyWeather->visibility_km_mean
@@ -35,12 +35,12 @@ maxValue: C:DailyWeather->visibility_km_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
 Node: E:DailyWeather->E5
-typeOf: WeatherObservation
+typeOf: DailyWeatherObservation
 observedNode: E:DailyWeather->E1
 provenance: E:DailyWeather->E2
 observationDate: C:DailyWeather->observation_date
 measuredProperty: "rainfall"
-observationPeriod: "P1M"
+observationPeriod: "P1D"
 unit: "Millimeter"
 minValue: C:DailyWeather->rainfall_mm_min
 meanValue: C:DailyWeather->rainfall_mm_mean
@@ -48,12 +48,12 @@ maxValue: C:DailyWeather->rainfall_mm_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
 Node: E:DailyWeather->E6
-typeOf: WeatherObservation
+typeOf: DailyWeatherObservation
 observedNode: E:DailyWeather->E1
 provenance: E:DailyWeather->E2
 observationDate: C:DailyWeather->observation_date
 measuredProperty: "snowfall"
-observationPeriod: "P1M"
+observationPeriod: "P1D"
 unit: "Millimeter"
 minValue: C:DailyWeather->snowfall_mm_min
 meanValue: C:DailyWeather->snowfall_mm_mean
@@ -61,12 +61,12 @@ maxValue: C:DailyWeather->snowfall_mm_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
 Node: E:DailyWeather->E7
-typeOf: WeatherObservation
+typeOf: DailyWeatherObservation
 observedNode: E:DailyWeather->E1
 provenance: E:DailyWeather->E2
 observationDate: C:DailyWeather->observation_date
 measuredProperty: "barometricPressure"
-observationPeriod: "P1M"
+observationPeriod: "P1D"
 unit: "Millibar"
 minValue: C:DailyWeather->barometer_mbar_min
 meanValue: C:DailyWeather->barometer_mbar_mean
@@ -74,12 +74,12 @@ maxValue: C:DailyWeather->barometer_mbar_max
 functionalDeps: observedNode, observationDate, observationPeriod
 
 Node: E:DailyWeather->E8
-typeOf: WeatherObservation
+typeOf: DailyWeatherObservation
 observedNode: E:DailyWeather->E1
 provenance: E:DailyWeather->E2
 observationDate: C:DailyWeather->observation_date
 measuredProperty: "humidity"
-observationPeriod: "P1M"
+observationPeriod: "P1D"
 unit: "Percent"
 minValue: C:DailyWeather->humidity_pct_min
 meanValue: C:DailyWeather->humidity_pct_mean
