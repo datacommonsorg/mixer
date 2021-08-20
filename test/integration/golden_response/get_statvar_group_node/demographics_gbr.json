@@ -63,7 +63,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 648
+      "numDescendentStatVars": 717
     },
     {
       "id": "dc/g/Births",
@@ -82,10 +82,16 @@
       "displayName": "Person by Disability Status"
     },
     {
+      "id": "dc/g/Person_EducationalAttainment",
+      "specializedEntity": "Educational Attainment",
+      "displayName": "Person by Educational Attainment",
+      "numDescendentStatVars": 12
+    },
+    {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 445
+      "numDescendentStatVars": 878
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -152,5 +158,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 672
+  "numDescendentStatVars": 1164
 }

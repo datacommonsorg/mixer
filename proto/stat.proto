@@ -66,6 +66,8 @@ message SourceSeries {
   string scaling_factor = 7;
   bool is_dc_aggregate = 8;
   string provenance_url = 9;
+  // Only used for latest date obs collection.
+  map<string, string> place_to_latest_date = 11;
 }
 
 // Represents a time series from a source.
