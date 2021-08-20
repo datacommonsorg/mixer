@@ -74,6 +74,13 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 			"USA_County_2016.json",
 		},
 		{
+			"country/USA",
+			"County",
+			"",
+			[]string{"Median_Concentration_AirPollutant_PM2.5"},
+			"USA_County.json",
+		},
+		{
 			"country/FRA",
 			"AdministrativeArea2",
 			"2016",

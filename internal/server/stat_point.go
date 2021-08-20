@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"log"
+	"sort"
 	"strings"
 	"time"
 
@@ -154,7 +155,56 @@ func (s *Server) GetStatSetWithinPlace(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: child_type")
 	}
+	if date == "" {
+		// Try to read from cache directly
+		rowList, keyTokens := buildStatSetWithinPlaceKey(parentPlace, childType, "LATEST", statVars)
+		cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		result := &pb.GetStatSetResponse{
+			Data: make(map[string]*pb.PlacePointStat),
+		}
+		for _, statVar := range statVars {
+			result.Data[statVar] = &pb.PlacePointStat{
+				Stat:     make(map[string]*pb.PointStat),
+				Metadata: make(map[string]*pb.StatMetadata),
+			}
+		}
+		gotResult := false
+		for sv, data := range cacheData {
+			if data != nil {
+				gotResult = true
+				cohorts := data.SourceCohorts
+				// Sort cohort first, so the preferred source is populated first. Then only
+				// update when there is a later data.
+				sort.Sort(SeriesByRank(cohorts))
+				for _, cohort := range cohorts {
+					for place, val := range cohort.Val {
+						pointStat, ok := result.Data[sv].Stat[place]
+						if !ok || pointStat.Date < cohort.PlaceToLatestDate[place] {
+							result.Data[sv].Stat[place] = &pb.PointStat{
+								Date:  cohort.PlaceToLatestDate[place],
+								Value: val,
+								Metadata: &pb.StatMetadata{
+									MeasurementMethod: cohort.MeasurementMethod,
+									ObservationPeriod: cohort.ObservationPeriod,
+									ProvenanceUrl:     cohort.ProvenanceUrl,
+									ScalingFactor:     cohort.ScalingFactor,
+									ImportName:        cohort.ImportName,
+								},
+							}
+						}
+					}
+				}
+			}
+		}
+		if gotResult {
+			return result, nil
+		}
+	}
 
+	// No data found from cache, fetch stat series for each place separately.
 	// Get all the child places
 	rowList := buildPlaceInKey([]string{parentPlace}, childType)
 	// Place relations are from base geo imports. Only trust the base cache.

@@ -347,12 +347,12 @@
           {
             "rank": 10,
             "value": 47.8,
-            "placeDcid": "geoId/06049"
+            "placeDcid": "geoId/06093"
           },
           {
             "rank": 11,
             "value": 47.8,
-            "placeDcid": "geoId/06093"
+            "placeDcid": "geoId/06049"
           },
           {
             "rank": 12,
@@ -437,7 +437,7 @@
           {
             "rank": 28,
             "value": 38.1,
-            "placeDcid": "geoId/06111"
+            "placeDcid": "geoId/06095"
           },
           {
             "rank": 29,
@@ -447,7 +447,7 @@
           {
             "rank": 30,
             "value": 38.1,
-            "placeDcid": "geoId/06095"
+            "placeDcid": "geoId/06111"
           },
           {
             "rank": 31,
@@ -467,12 +467,12 @@
           {
             "rank": 34,
             "value": 37.1,
-            "placeDcid": "geoId/06007"
+            "placeDcid": "geoId/06085"
           },
           {
             "rank": 35,
             "value": 37.1,
-            "placeDcid": "geoId/06085"
+            "placeDcid": "geoId/06007"
           },
           {
             "rank": 36,
@@ -502,12 +502,12 @@
           {
             "rank": 41,
             "value": 35.7,
-            "placeDcid": "geoId/06069"
+            "placeDcid": "geoId/06101"
           },
           {
             "rank": 42,
             "value": 35.7,
-            "placeDcid": "geoId/06101"
+            "placeDcid": "geoId/06069"
           },
           {
             "rank": 43,
@@ -582,12 +582,12 @@
           {
             "rank": 57,
             "value": 31,
-            "placeDcid": "geoId/06113"
+            "placeDcid": "geoId/06107"
           },
           {
             "rank": 58,
             "value": 31,
-            "placeDcid": "geoId/06107"
+            "placeDcid": "geoId/06113"
           }
         ]
       }
