@@ -189,6 +189,7 @@ func (s *Server) GetStatSetWithinPlace(
 								ProvenanceUrl:     cohort.ProvenanceUrl,
 								ScalingFactor:     cohort.ScalingFactor,
 								ImportName:        cohort.ImportName,
+								Unit:              cohort.Unit,
 							}
 							result.Data[statVar].Stat[place] = &pb.PointStat{
 								Date:     cohort.PlaceToLatestDate[place],
