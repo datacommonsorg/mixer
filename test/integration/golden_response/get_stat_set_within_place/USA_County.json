@@ -27974,6 +27974,13 @@
             "observation_period": "P24H"
           }
         }
+      },
+      "metadata": {
+        "CDC_PM25County": {
+          "import_name": "CDC_PM25County",
+          "provenance_url": "https://data.cdc.gov/Environmental-Health-Toxicology/Daily-PM2-5-Concentrations-All-County-2001-2016/7vdq-ztk9",
+          "observation_period": "P24H"
+        }
       }
     }
   }
