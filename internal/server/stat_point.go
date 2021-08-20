@@ -172,7 +172,7 @@ func (s *Server) GetStatSetWithinPlace(
 			}
 		}
 		gotResult := false
-		for sv, data := range cacheData {
+		for statVar, data := range cacheData {
 			if data != nil {
 				gotResult = true
 				cohorts := data.SourceCohorts
@@ -181,19 +181,21 @@ func (s *Server) GetStatSetWithinPlace(
 				sort.Sort(SeriesByRank(cohorts))
 				for _, cohort := range cohorts {
 					for place, val := range cohort.Val {
-						pointStat, ok := result.Data[sv].Stat[place]
+						pointStat, ok := result.Data[statVar].Stat[place]
 						if !ok || pointStat.Date < cohort.PlaceToLatestDate[place] {
-							result.Data[sv].Stat[place] = &pb.PointStat{
-								Date:  cohort.PlaceToLatestDate[place],
-								Value: val,
-								Metadata: &pb.StatMetadata{
-									MeasurementMethod: cohort.MeasurementMethod,
-									ObservationPeriod: cohort.ObservationPeriod,
-									ProvenanceUrl:     cohort.ProvenanceUrl,
-									ScalingFactor:     cohort.ScalingFactor,
-									ImportName:        cohort.ImportName,
-								},
+							metaData := &pb.StatMetadata{
+								MeasurementMethod: cohort.MeasurementMethod,
+								ObservationPeriod: cohort.ObservationPeriod,
+								ProvenanceUrl:     cohort.ProvenanceUrl,
+								ScalingFactor:     cohort.ScalingFactor,
+								ImportName:        cohort.ImportName,
 							}
+							result.Data[statVar].Stat[place] = &pb.PointStat{
+								Date:     cohort.PlaceToLatestDate[place],
+								Value:    val,
+								Metadata: metaData,
+							}
+							result.Data[statVar].Metadata[cohort.ImportName] = metaData
 						}
 					}
 				}
