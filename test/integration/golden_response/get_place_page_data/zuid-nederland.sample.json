@@ -7854,6 +7854,43 @@
       ]
     }
   },
+  "latestPopulation": {
+    "country/NLD": {
+      "date": "2020",
+      "value": 17469635,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    },
+    "nuts/NL4": {
+      "date": "2019",
+      "value": 3660943,
+      "metadata": {
+        "importName": "EurostatData",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database"
+      }
+    },
+    "nuts/NL41": {
+      "date": "2019-11-01",
+      "value": 2562566,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    },
+    "nuts/NL42": {
+      "date": "2019-11-01",
+      "value": 1118223,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    }
+  },
   "childPlacesType": "AdministrativeArea1",
   "childPlaces": [
     "nuts/NL41",

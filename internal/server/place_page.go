@@ -224,8 +224,13 @@ func getDcids(places []*pb.Place) []string {
 
 // Fetch place page cache data for a list of places.
 func fetchBtData(
-	ctx context.Context, s *Server, places []string, statVars []string) (
-	map[string]*pb.StatVarSeries, error) {
+	ctx context.Context,
+	s *Server,
+	places []string,
+	statVars []string,
+) (
+	map[string]*pb.StatVarSeries, map[string]*pb.PointStat, error,
+) {
 	rowList := bigtable.RowList{}
 	for _, dcid := range places {
 		rowList = append(rowList, fmt.Sprintf(
@@ -250,20 +255,32 @@ func fetchBtData(
 		false, /* readBranch */
 	)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
+
 	// Populate result from place page cache
-	result := map[string]*pb.StatVarSeries{}
-	for dcid, data := range baseDataMap {
+	pageData := map[string]*pb.StatVarSeries{}
+	popData := map[string]*pb.PointStat{}
+
+	for place, data := range baseDataMap {
 		if data == nil {
 			continue
 		}
 		placePageData := data.(*pb.StatVarObsSeries)
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
-		for statVarDcid, obsTimeSeries := range placePageData.Data {
-			finalData.Data[statVarDcid] = getBestSeries(obsTimeSeries)
+		for statVar, obsTimeSeries := range placePageData.Data {
+			series, _ := getBestSeries(obsTimeSeries, false /* useLatest */)
+			finalData.Data[statVar] = series
+			if statVar == "Count_Person" {
+				popSeries, latestDate := getBestSeries(obsTimeSeries, true /* useLatest */)
+				popData[place] = &pb.PointStat{
+					Date:     *latestDate,
+					Value:    popSeries.Val[*latestDate],
+					Metadata: popSeries.Metadata,
+				}
+			}
 		}
-		result[dcid] = finalData
+		pageData[place] = finalData
 	}
 
 	// Fetch additional stats as requested.
@@ -273,27 +290,27 @@ func fetchBtData(
 			StatVars: statVars,
 		})
 		if err != nil {
-			return nil, err
+			return nil, popData, err
 		}
 		// Add additional data to the cache result
 		for place, seriesMap := range resp.Data {
 			for statVar, series := range seriesMap.Data {
-				if result[place] == nil {
-					result[place] = &pb.StatVarSeries{Data: map[string]*pb.Series{}}
+				if pageData[place] == nil {
+					pageData[place] = &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 				}
-				result[place].Data[statVar] = series
+				pageData[place].Data[statVar] = series
 			}
 		}
 	}
 	// Delete the empty entries. This will be moved to cache generation.
-	for _, statVarSeries := range result {
+	for _, statVarSeries := range pageData {
 		for statVar, series := range statVarSeries.Data {
 			if series == nil {
 				delete(statVarSeries.Data, statVar)
 			}
 		}
 	}
-	return result, nil
+	return pageData, popData, nil
 }
 
 // Pick child places with the largest average population.
@@ -613,10 +630,11 @@ func (s *Server) GetPlacePageData(
 		}
 		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
-	statData, err := fetchBtData(ctx, s, allPlaces, newStatVars)
+	statData, popData, err := fetchBtData(ctx, s, allPlaces, newStatVars)
 	if err != nil {
 		return nil, err
 	}
 	resp.StatVarSeries = statData
+	resp.LatestPopulation = popData
 	return &resp, nil
 }

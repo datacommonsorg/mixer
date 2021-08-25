@@ -10534,6 +10534,161 @@
       ]
     }
   },
+  "latestPopulation": {
+    "country/USA": {
+      "date": "2019",
+      "value": 328239523,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06": {
+      "date": "2019",
+      "value": 39512223,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06001": {
+      "date": "2019",
+      "value": 1671329,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/0600562": {
+      "date": "2019",
+      "value": 78522,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0606000": {
+      "date": "2019",
+      "value": 121485,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0653000": {
+      "date": "2019",
+      "value": 425097,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0656938": {
+      "date": "2019",
+      "value": 11317,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0660620": {
+      "date": "2019",
+      "value": 109884,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0667000": {
+      "date": "2019",
+      "value": 874961,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0668084": {
+      "date": "2019",
+      "value": 90025,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0937000": {
+      "date": "2019",
+      "value": 123088,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/1245000": {
+      "date": "2019",
+      "value": 454279,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/2603000": {
+      "date": "2019",
+      "value": 120735,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/4513330": {
+      "date": "2019",
+      "value": 135257,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94610": {
+      "date": "2018",
+      "value": 31496,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94611": {
+      "date": "2018",
+      "value": 39384,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94618": {
+      "date": "2018",
+      "value": 17041,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    }
+  },
   "childPlacesType": "CensusZipCodeTabulationArea",
   "childPlaces": [
     "zip/94611",

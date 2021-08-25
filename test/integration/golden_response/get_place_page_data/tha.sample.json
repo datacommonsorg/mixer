@@ -8195,6 +8195,107 @@
       ]
     }
   },
+  "latestPopulation": {
+    "country/BRA": {
+      "date": "2019",
+      "value": 211049527,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/DEU": {
+      "date": "2020-06-30",
+      "value": 83100000,
+      "metadata": {
+        "importName": "KGHumanCurated",
+        "provenanceUrl": "https://google.com",
+        "measurementMethod": "HumanCuratedStats"
+      }
+    },
+    "country/EGY": {
+      "date": "2019",
+      "value": 100388073,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/NZL": {
+      "date": "2020-05",
+      "value": 5121660,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    },
+    "country/PER": {
+      "date": "2020",
+      "value": 32824358,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    },
+    "country/THA": {
+      "date": "2019",
+      "value": 69625582,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "wikidataId/Q1861": {
+      "date": "2019",
+      "value": 5676648,
+      "metadata": {
+        "importName": "WikidataPopulation",
+        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+        "measurementMethod": "WikidataPopulation"
+      }
+    },
+    "wikidataId/Q233588": {
+      "date": "2019",
+      "value": 1763742,
+      "metadata": {
+        "importName": "WikidataPopulation",
+        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+        "measurementMethod": "WikidataPopulation"
+      }
+    },
+    "wikidataId/Q271737": {
+      "date": "2019",
+      "value": 2646401,
+      "metadata": {
+        "importName": "WikidataPopulation",
+        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+        "measurementMethod": "WikidataPopulation"
+      }
+    },
+    "wikidataId/Q327533": {
+      "date": "2018",
+      "value": 1805895,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    },
+    "wikidataId/Q629024": {
+      "date": "2019",
+      "value": 1874548,
+      "metadata": {
+        "importName": "WikidataPopulation",
+        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+        "measurementMethod": "WikidataPopulation"
+      }
+    }
+  },
   "childPlacesType": "AdministrativeArea1",
   "childPlaces": [
     "wikidataId/Q1861",
