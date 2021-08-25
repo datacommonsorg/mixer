@@ -57,6 +57,7 @@ message GetPlacePageDataResponse {
   // Keyed by place dcid.
   map<string, StatVarSeries> stat_var_series = 1;
   map<string, Places> all_child_places = 2;
+  map<string, PointStat> latest_population = 8;
   string child_places_type = 3;
   repeated string child_places = 4;
   repeated string parent_places = 5;

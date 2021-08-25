@@ -71,13 +71,31 @@ func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 	in.SourceSeries = nil
 }
 
-func getBestSeries(in *pb.ObsTimeSeries) *pb.Series {
+func getBestSeries(in *pb.ObsTimeSeries, useLatest bool) (*pb.Series, *string) {
 	rawSeries := in.SourceSeries
 	sort.Sort(SeriesByRank(rawSeries))
 	if len(rawSeries) > 0 {
-		return rawSeriesToSeries(rawSeries[0])
+		// Choose the latest series.
+		if useLatest {
+			var result *pb.Series
+			latest := ""
+			for _, series := range rawSeries {
+				currLatest := ""
+				for date := range series.Val {
+					if date > currLatest {
+						currLatest = date
+					}
+				}
+				if currLatest > latest {
+					latest = currLatest
+					result = rawSeriesToSeries(series)
+				}
+			}
+			return result, &latest
+		}
+		return rawSeriesToSeries(rawSeries[0]), nil
 	}
-	return nil
+	return nil, nil
 }
 
 func rawSeriesToSeries(in *pb.SourceSeries) *pb.Series {

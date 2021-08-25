@@ -9626,6 +9626,161 @@
       ]
     }
   },
+  "latestPopulation": {
+    "country/USA": {
+      "date": "2019",
+      "value": 328239523,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06": {
+      "date": "2019",
+      "value": 39512223,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06001": {
+      "date": "2019",
+      "value": 1671329,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06013": {
+      "date": "2019",
+      "value": 1153526,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06029": {
+      "date": "2019",
+      "value": 900202,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06067": {
+      "date": "2019",
+      "value": 1552058,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/06075": {
+      "date": "2019",
+      "value": 874961,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/06081": {
+      "date": "2019",
+      "value": 767423,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/06085": {
+      "date": "2019",
+      "value": 1927852,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/0647766": {
+      "date": "2019",
+      "value": 79517,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0649670": {
+      "date": "2019",
+      "value": 81656,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0668000": {
+      "date": "2019",
+      "value": 1027690,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0669084": {
+      "date": "2019",
+      "value": 127721,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/0677000": {
+      "date": "2019",
+      "value": 152770,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "geoId/12086": {
+      "date": "2019",
+      "value": 2716940,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/13121": {
+      "date": "2019",
+      "value": 1063937,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    },
+    "geoId/53033": {
+      "date": "2019",
+      "value": 2252782,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    }
+  },
   "childPlacesType": "City",
   "childPlaces": [
     "geoId/0668000",

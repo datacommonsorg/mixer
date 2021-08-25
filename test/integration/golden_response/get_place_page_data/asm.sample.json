@@ -15089,6 +15089,71 @@
       }
     }
   },
+  "latestPopulation": {
+    "country/ASM": {
+      "date": "2019",
+      "value": 55312,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/BRA": {
+      "date": "2019",
+      "value": 211049527,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/DEU": {
+      "date": "2020-06-30",
+      "value": 83100000,
+      "metadata": {
+        "importName": "KGHumanCurated",
+        "provenanceUrl": "https://google.com",
+        "measurementMethod": "HumanCuratedStats"
+      }
+    },
+    "country/EGY": {
+      "date": "2019",
+      "value": 100388073,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/NZL": {
+      "date": "2020-05",
+      "value": 5121660,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    },
+    "country/PER": {
+      "date": "2020",
+      "value": 32824358,
+      "metadata": {
+        "importName": "WikipediaStatsData",
+        "provenanceUrl": "https://www.wikipedia.org",
+        "measurementMethod": "Wikipedia"
+      }
+    },
+    "country/USA": {
+      "date": "2019",
+      "value": 328239523,
+      "metadata": {
+        "importName": "CensusPEP",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+        "measurementMethod": "CensusPEPSurvey"
+      }
+    }
+  },
   "parentPlaces": [
     "oceania",
     "country/USA",
