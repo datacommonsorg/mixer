@@ -71,6 +71,9 @@ func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 	in.SourceSeries = nil
 }
 
+// Get the best series for a collection of series with different metadata.
+// When "useLatest" is true, the function also returns the latest date;
+// Otherwise, the returned string pointer is nil.
 func getBestSeries(in *pb.ObsTimeSeries, useLatest bool) (*pb.Series, *string) {
 	rawSeries := in.SourceSeries
 	sort.Sort(SeriesByRank(rawSeries))
