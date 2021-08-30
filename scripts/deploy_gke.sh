@@ -77,9 +77,10 @@ gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
 kubectl apply -f $ENV.yaml
 
 # Deploy Cloud Endpoints
-yq w --style=double $ROOT/esp/endpoints.yaml.tmpl name $DOMAIN > endpoints.yaml
-yq w -i endpoints.yaml title "$API_TITLE"
-yq w -i endpoints.yaml endpoints[0].target "$IP"
-yq w -i endpoints.yaml endpoints[0].name "$DOMAIN"
+cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
+yq eval -i '.name = env(DOMAIN)' endpoints.yaml
+yq eval -i '.title = env(API_TITLE)' endpoints.yaml
+yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
+yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID
