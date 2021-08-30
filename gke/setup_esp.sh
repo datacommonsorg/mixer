@@ -15,10 +15,10 @@
 
 set -e
 
-PROJECT_ID=$(yq eval project config.yaml)
-DOMAIN=$(yq eval domain config.yaml)
-API_TITLE=$(yq eval api_title config.yaml)
-IP=$(yq eval ip config.yaml)
+PROJECT_ID=$(yq eval '.project' config.yaml)
+DOMAIN=$(yq eval '.domain' config.yaml)
+API_TITLE=$(yq eval '.api_title' config.yaml)
+IP=$(yq eval '.ip' config.yaml)
 
 if [[ $API_TITLE == '' ]]; then
   API_TITLE=$DOMAIN

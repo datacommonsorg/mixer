@@ -15,9 +15,9 @@
 
 set -e
 
-PROJECT_ID=$(yq eval project config.yaml)
-REGION=$(yq eval region config.yaml)
-NODES=$(yq eval nodes config.yaml)
+PROJECT_ID=$(yq eval '.project' config.yaml)
+REGION=$(yq eval '.region' config.yaml)
+NODES=$(yq eval '.nodes' config.yaml)
 
 CLUSTER_NAME="mixer-$REGION"
 

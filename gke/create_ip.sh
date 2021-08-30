@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-PROJECT_ID=$(yq eval project config.yaml)
+PROJECT_ID=$(yq eval '.project' config.yaml)
 
 gcloud config set project $PROJECT_ID
 
