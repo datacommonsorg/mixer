@@ -15,8 +15,8 @@
 
 set -e
 
-PROJECT_ID=$(yq r config.yaml project)
-STORE_PROJECT_ID=$(yq r config.yaml store)
+PROJECT_ID=$(yq eval project config.yaml)
+STORE_PROJECT_ID=$(yq eval store config.yaml)
 
 NAME="mixer-robot"
 SERVICE_ACCOUNT="$NAME@$PROJECT_ID.iam.gserviceaccount.com"
