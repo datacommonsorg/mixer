@@ -25,10 +25,11 @@ if [[ $API_TITLE == '' ]]; then
 fi
 
 # ESP service configuration
-yq w --style=double ../esp/endpoints.yaml.tmpl name $DOMAIN > endpoints.yaml
-yq w -i endpoints.yaml title "$API_TITLE"
-yq w -i endpoints.yaml endpoints[0].target "$IP"
-yq w -i endpoints.yaml endpoints[0].name "$DOMAIN"
+cp ../esp/endpoints.yaml.tmpl endpoints.yaml
+yq eval -i '.name = env(DOMAIN)' endpoints.yaml
+yq eval -i '.title = env(API_TITLE)' endpoints.yaml
+yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
+yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 
 ## Deploy ESP configuration
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb .
