@@ -50,7 +50,15 @@
   {
     "title": "Disasters",
     "statsVars": [
-      "Count_CycloneEvent"
+      "Count_CycloneEvent",
+      "Count_EarthquakeEvent"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Earthquakes",
+    "statsVars": [
+      "Count_EarthquakeEvent"
     ],
     "relatedChart": {}
   },

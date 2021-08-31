@@ -45,7 +45,15 @@
     "title": "Disasters",
     "statsVars": [
       "Count_DroughtEvent",
+      "Count_EarthquakeEvent",
       "Count_StormSurgeTideEvent"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Earthquakes",
+    "statsVars": [
+      "Count_EarthquakeEvent"
     ],
     "relatedChart": {}
   },
