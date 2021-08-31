@@ -1,0 +1,16 @@
+# FBI SVO TMCF
+Node: E:FBI_Crime->E0
+typeOf: dcs:StatVarObservation
+variableMeasured: dcs:Count_CriminalActivities_ViolentCrime
+measurementMethod: dcs:FBI_Crime
+observationAbout: C:FBI_Crime->GeoId
+observationDate: C:FBI_Crime->Year
+value: C:FBI_Crime->Count_CriminalActivities_ViolentCrime
+
+Node: E:FBI_Crime->E1
+typeOf: dcs:StatVarObservation
+variableMeasured: dcs:Count_CriminalActivities_MurderAndNonNegligentManslaughter
+measurementMethod: dcs:FBI_Crime
+observationAbout: C:FBI_Crime->GeoId
+observationDate: C:FBI_Crime->Year
+value: C:FBI_Crime->Count_CriminalActivities_MurderAndNonNegligentManslaughter

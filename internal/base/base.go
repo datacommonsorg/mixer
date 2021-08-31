@@ -34,6 +34,8 @@ const (
 	TypeOf = "typeOf"
 	// Triple represents Triples table name
 	Triple = "Triple"
+	// Triple represents Triples table name
+	DCS = "dcs:"
 )
 
 func toBqTable(table string, db string) string {
