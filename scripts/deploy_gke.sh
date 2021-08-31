@@ -60,12 +60,12 @@ if [[ $ENV == "autopush" ]]; then
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
 fi
 
-PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)
-REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
-IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
-DOMAIN=$(yq eval '.domain' deploy/gke/$ENV.yaml)
-API_TITLE=$(yq eval '.api_title' deploy/gke/$ENV.yaml)
-CLUSTER_NAME=mixer-$REGION
+export PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)
+export REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
+export IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
+export DOMAIN=$(yq eval '.domain' deploy/gke/$ENV.yaml)
+export API_TITLE=$(yq eval '.api_title' deploy/gke/$ENV.yaml)
+export CLUSTER_NAME=mixer-$REGION
 
 cd $ROOT/deploy/overlays/$ENV
 
