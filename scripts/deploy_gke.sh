@@ -60,12 +60,12 @@ if [[ $ENV == "autopush" ]]; then
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
 fi
 
-PROJECT_ID=$(yq read deploy/gke/$ENV.yaml project)
-REGION=$(yq read deploy/gke/$ENV.yaml region)
-IP=$(yq read deploy/gke/$ENV.yaml ip)
-DOMAIN=$(yq read deploy/gke/$ENV.yaml domain)
-API_TITLE=$(yq read deploy/gke/$ENV.yaml api_title)
-CLUSTER_NAME=mixer-$REGION
+export PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)
+export REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
+export IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
+export DOMAIN=$(yq eval '.domain' deploy/gke/$ENV.yaml)
+export API_TITLE=$(yq eval '.api_title' deploy/gke/$ENV.yaml)
+export CLUSTER_NAME=mixer-$REGION
 
 cd $ROOT/deploy/overlays/$ENV
 
@@ -77,9 +77,10 @@ gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
 kubectl apply -f $ENV.yaml
 
 # Deploy Cloud Endpoints
-yq w --style=double $ROOT/esp/endpoints.yaml.tmpl name $DOMAIN > endpoints.yaml
-yq w -i endpoints.yaml title "$API_TITLE"
-yq w -i endpoints.yaml endpoints[0].target "$IP"
-yq w -i endpoints.yaml endpoints[0].name "$DOMAIN"
+cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
+yq eval -i '.name = env(DOMAIN)' endpoints.yaml
+yq eval -i '.title = env(API_TITLE)' endpoints.yaml
+yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
+yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID
