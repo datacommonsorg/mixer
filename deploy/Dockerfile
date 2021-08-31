@@ -23,5 +23,5 @@ RUN apt-get install kubectl
 RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 RUN mv kustomize /bin/
 
-RUN wget https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_386 -O /usr/bin/yq &&\
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.12.1/yq_linux_386 -O /usr/bin/yq &&\
     chmod +x /usr/bin/yq
