@@ -22,12 +22,13 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// Column represents a csv column' node and property.
 type Column struct {
 	Node     string
 	Property string
 }
 
-// Represents the schema of one table
+// TableSchema Represents the schema of one table
 type TableSchema struct {
 	// Keyed by column name.
 	ColumnInfo map[string]*Column
@@ -35,7 +36,7 @@ type TableSchema struct {
 	NodeSchema map[string]map[string]string
 }
 
-// Parse TMCF into a map with key of the table name, and value being the
+// ParseTmcf parses TMCF into a map with key of the table name, and value being the
 // TableSchema struct.
 func ParseTmcf(tmcf string) (map[string]*TableSchema, error) {
 	result := map[string]*TableSchema{}

@@ -34,7 +34,7 @@ const (
 	TypeOf = "typeOf"
 	// Triple represents Triples table name
 	Triple = "Triple"
-	// Triple represents Triples table name
+	// DCS represents schema prefix
 	DCS = "dcs:"
 )
 
