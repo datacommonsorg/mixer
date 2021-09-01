@@ -108,17 +108,17 @@
             {
               "dcid": "geoId/4820191835",
               "name": "Houston CCD",
-              "personCount": "3433961"
+              "personCount": "3464066"
             },
             {
               "dcid": "geoId/0401392601",
               "name": "Phoenix CCD",
-              "personCount": "3347177"
+              "personCount": "3331925"
             },
             {
               "dcid": "geoId/1703114000",
               "name": "Chicago",
-              "personCount": "2709534"
+              "personCount": "2746388"
             }
           ]
         },
@@ -218,7 +218,7 @@
             {
               "dcid": "country/USA",
               "name": "United States",
-              "personCount": "328016242"
+              "personCount": "331449281"
             }
           ]
         },
@@ -228,17 +228,17 @@
             {
               "dcid": "geoId/06037",
               "name": "Los Angeles County",
-              "personCount": "10039107"
+              "personCount": "10014009"
             },
             {
               "dcid": "geoId/17031",
               "name": "Cook County",
-              "personCount": "5150233"
+              "personCount": "5275541"
             },
             {
               "dcid": "geoId/48201",
               "name": "Harris County",
-              "personCount": "4713325"
+              "personCount": "4731145"
             }
           ]
         },
@@ -386,7 +386,7 @@
             {
               "dcid": "geoId/06",
               "name": "California",
-              "personCount": "39512200"
+              "personCount": "39538223"
             },
             {
               "dcid": "geoId/48",
@@ -396,7 +396,7 @@
             {
               "dcid": "geoId/12",
               "name": "Florida",
-              "personCount": "21477700"
+              "personCount": "21538187"
             }
           ]
         },
@@ -450,17 +450,17 @@
             {
               "dcid": "geoId/4820191835",
               "name": "Houston CCD",
-              "personCount": "3433961"
+              "personCount": "3464066"
             },
             {
               "dcid": "geoId/0401392601",
               "name": "Phoenix CCD",
-              "personCount": "3347177"
+              "personCount": "3331925"
             },
             {
               "dcid": "geoId/1703114000",
               "name": "Chicago",
-              "personCount": "2709534"
+              "personCount": "2746388"
             }
           ]
         },
@@ -510,17 +510,17 @@
             {
               "dcid": "geoId/3651000",
               "name": "New York",
-              "personCount": "8550971"
+              "personCount": "8804190"
             },
             {
               "dcid": "geoId/0644000",
               "name": "Los Angeles",
-              "personCount": "3966936"
+              "personCount": "3898747"
             },
             {
               "dcid": "geoId/1714000",
               "name": "Chicago",
-              "personCount": "2709534"
+              "personCount": "2746388"
             }
           ]
         },
@@ -550,7 +550,7 @@
             {
               "dcid": "country/USA",
               "name": "United States",
-              "personCount": "328016242"
+              "personCount": "331449281"
             }
           ]
         },
@@ -560,17 +560,17 @@
             {
               "dcid": "geoId/06037",
               "name": "Los Angeles County",
-              "personCount": "10039107"
+              "personCount": "10014009"
             },
             {
               "dcid": "geoId/17031",
               "name": "Cook County",
-              "personCount": "5150233"
+              "personCount": "5275541"
             },
             {
               "dcid": "geoId/48201",
               "name": "Harris County",
-              "personCount": "4713325"
+              "personCount": "4731145"
             }
           ]
         },
@@ -657,7 +657,7 @@
             {
               "dcid": "geoId/06",
               "name": "California",
-              "personCount": "39512200"
+              "personCount": "39538223"
             },
             {
               "dcid": "geoId/48",
@@ -667,7 +667,7 @@
             {
               "dcid": "geoId/12",
               "name": "Florida",
-              "personCount": "21477700"
+              "personCount": "21538187"
             }
           ]
         },
@@ -731,7 +731,7 @@
             {
               "dcid": "country/USA",
               "name": "United States",
-              "personCount": "328016242"
+              "personCount": "331449281"
             }
           ]
         },

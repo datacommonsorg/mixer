@@ -76,37 +76,32 @@
           }
         },
         "country/USA": {
-          "date": "2019",
-          "value": 328239523,
+          "date": "2020",
+          "value": 331449281,
           "metadata": {
-            "importName": "CensusPEP"
+            "importName": "USDecennialCensus_RedistrictingRelease"
           }
         },
         "geoId/06": {
-          "date": "2019",
-          "value": 39512223,
+          "date": "2020",
+          "value": 39538223,
           "metadata": {
-            "importName": "CensusPEP"
+            "importName": "USDecennialCensus_RedistrictingRelease"
           }
         },
         "geoId/0649670": {
-          "date": "2019",
-          "value": 81656,
+          "date": "2020",
+          "value": 82376,
           "metadata": {
-            "importName": "CensusACS5YearSurvey"
+            "importName": "USDecennialCensus_RedistrictingRelease"
           }
         }
       },
       "metadata": {
-        "CensusACS5YearSurvey": {
-          "importName": "CensusACS5YearSurvey",
-          "provenanceUrl": "https://www.census.gov/",
-          "measurementMethod": "CensusACS5yrSurvey"
-        },
-        "CensusPEP": {
-          "importName": "CensusPEP",
-          "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
-          "measurementMethod": "CensusPEPSurvey"
+        "USDecennialCensus_RedistrictingRelease": {
+          "importName": "USDecennialCensus_RedistrictingRelease",
+          "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+          "measurementMethod": "USDecennialCensus"
         },
         "WikipediaStatsData": {
           "importName": "WikipediaStatsData",
