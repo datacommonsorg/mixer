@@ -4747,6 +4747,10 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
+      "name": "Person With Enrollment Level, Gender = Female",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
+    },
+    {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -4769,10 +4773,6 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",

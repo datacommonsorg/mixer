@@ -64,12 +64,6 @@
   ],
   "childStatVarGroups": [
     {
-      "id": "dc/g/Person_Age",
-      "specializedEntity": "Age",
-      "displayName": "Person by Age",
-      "numDescendentStatVars": 5154
-    },
-    {
       "id": "dc/g/Births",
       "specializedEntity": "Births",
       "displayName": "Births",
@@ -86,12 +80,6 @@
       "specializedEntity": "Disability Status",
       "displayName": "Person by Disability Status",
       "numDescendentStatVars": 112
-    },
-    {
-      "id": "dc/g/Person_EducationalAttainment",
-      "specializedEntity": "Educational Attainment",
-      "displayName": "Person by Educational Attainment",
-      "numDescendentStatVars": 379
     },
     {
       "id": "dc/g/Person_Gender",
@@ -175,5 +163,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 9078
+  "numDescendentStatVars": 8382
 }

@@ -5,7 +5,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 9078
+      "numDescendentStatVars": 8382
     },
     {
       "id": "dc/g/Household",
@@ -47,7 +47,7 @@
       "id": "dc/g/Energy",
       "specializedEntity": "Energy",
       "displayName": "Energy",
-      "numDescendentStatVars": 7151
+      "numDescendentStatVars": 7465
     },
     {
       "id": "dc/g/Crime",
@@ -77,8 +77,8 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": 4331
+      "numDescendentStatVars": 10984
     }
   ],
-  "numDescendentStatVars": 60304
+  "numDescendentStatVars": 60618
 }
