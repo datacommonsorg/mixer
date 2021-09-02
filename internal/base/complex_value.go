@@ -36,9 +36,9 @@ import (
 // 2. a GeoCoordinates type, coded as one of:
 //  [LatLong <lat_value> <long_value>]
 //  [<lat_value> <long_value> LatLong]
-func Parse(complexValue string) string {
-	trimmedValue := strings.Trim(complexValue, "[]")
-	fields := strings.Fields(trimmedValue)
+func ParseComplexValue(val string) string {
+	trimmed := strings.Trim(val, "[]")
+	fields := strings.Fields(trimmed)
 	isRange := len(fields) == 3
 	startIdx, endIdx, valueIdx, unitIdx := -1, -1, -1, -1
 	if fields[0][0] == '-' || unicode.IsDigit([]rune(fields[0])[0]) {
@@ -48,9 +48,8 @@ func Parse(complexValue string) string {
 			startIdx = 0
 			endIdx = 1
 		} else {
-			unitIdx = 0
-			startIdx = 1
-			endIdx = 2
+			unitIdx = 1
+			valueIdx = 0
 		}
 	} else {
 		// First field is unit
@@ -73,28 +72,18 @@ func Parse(complexValue string) string {
 	}
 
 	// Compute DCID.
-	var dcid, name string
-	isLatLng := false
+	var dcid string
 	if len(fields) == 2 {
 		dcid = unit + fields[valueIdx]
-		name = unit + " " + fields[valueIdx]
 	} else {
 		// len(fields) == 3
 		if strings.ToLower(unit) == "latlong" {
-			isLatLng = true
-			if !parseLatLng(fields.get(startIdx), fields.get(endIdx)) {
-				// On error parseLatLng would have updated logCtx
-				return false
-			}
+			dcid, _ = parseLatLng(fields[startIdx], fields[endIdx])
 		} else {
-			if !parseQuantityRange(fields.get(startIdx), fields.get(endIdx), unit) {
-				// On error parseQuantityRange would have updated logCtx
-				return false
-			}
+			dcid, _ = parseQuantityRange(fields[startIdx], fields[endIdx], unit)
 		}
 	}
-
-	return ""
+	return dcid
 }
 
 func parseLatLng(latStr, lngStr string) (string, string) {
@@ -121,7 +110,23 @@ func parseLatLng(latStr, lngStr string) (string, string) {
 	latStr = fmt.Sprintf("%.5f", (lat_e5 / 1e5))
 	lngStr = fmt.Sprintf("%.5f", (lng_e5 / 1e5))
 
-	dcid := fmt.Sprintf("langLong/%s_%s", lat_e5, lng_e5)
+	dcid := fmt.Sprintf("latLong/%.0f_%.0f", lat_e5, lng_e5)
 	name := latStr + "," + lngStr
+	return dcid, name
+}
+
+func parseQuantityRange(startVal, endVal, unit string) (string, string) {
+	// Do not check validity, assuming input has been checked by import tool.
+	var dcid, name string
+	if startVal == "-" {
+		dcid = unit + "Upto" + endVal
+		name = unit + " UpTo " + endVal
+	} else if endVal == "-" {
+		dcid = unit + startVal + "Onwards"
+		name = unit + " " + startVal + " Onwards"
+	} else {
+		dcid = unit + startVal + "To" + endVal
+		name = unit + " " + startVal + " To " + endVal
+	}
 	return dcid, name
 }
