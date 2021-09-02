@@ -34,8 +34,8 @@ const (
 	TypeOf = "typeOf"
 	// Triple represents Triples table name
 	Triple = "Triple"
-	// DCS represents schema prefix
-	DCS = "dcs:"
+	// ReferenceDelimiter is the delimiter for schema namespace
+	ReferenceDelimiter = ':'
 )
 
 func toBqTable(table string, db string) string {
