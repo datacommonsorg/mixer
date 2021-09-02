@@ -1,3 +1,0 @@
-City, Gender, AgeRange, Count, Year, StateName, StateId,CountyId
-New York City, dcs:Male, [10 20 Years], 20000000, 2012, New York,, geoId/NYCounty
-San Francisco, dcs:Female, [20 30 Years], 10000000.0, 2007,,geoId/CA, geoId/SFCounty

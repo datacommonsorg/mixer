@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package base
+package parser
 
 import (
 	"fmt"
@@ -20,6 +20,8 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
+
+	"github.com/datacommonsorg/mixer/internal/base"
 )
 
 // Parse parses a complex value string into node.
@@ -64,7 +66,7 @@ func ParseComplexValue(val string) string {
 	}
 	// Get unit.
 	var unit string
-	colonIndex := strings.IndexRune(fields[unitIdx], ReferenceDelimiter)
+	colonIndex := strings.IndexRune(fields[unitIdx], base.ReferenceDelimiter)
 	if colonIndex != -1 {
 		unit = fields[unitIdx][colonIndex+1:]
 	} else {
