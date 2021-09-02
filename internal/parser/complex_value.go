@@ -42,7 +42,8 @@ func ParseComplexValue(val string) string {
 	trimmed := strings.Trim(val, "[]")
 	fields := strings.Fields(trimmed)
 	isRange := len(fields) == 3
-	startIdx, endIdx, valueIdx, unitIdx := -1, -1, -1, -1
+	startIdx, endIdx, valueIdx := -1, -1, -1
+	var unitIdx int
 	if fields[0][0] == '-' || unicode.IsDigit([]rune(fields[0])[0]) {
 		// First field is value
 		if isRange {
