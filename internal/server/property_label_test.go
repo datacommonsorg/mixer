@@ -96,7 +96,7 @@ func TestMerge(t *testing.T) {
 			t.Errorf("SetupBigtable(...) = %v", err)
 		}
 
-		s := NewServer(nil, baseTable, branchTable, nil, nil)
+		s := NewServer(nil, baseTable, branchTable, nil, nil, nil)
 
 		got, err := s.GetPropertyLabels(ctx,
 			&pb.GetPropertyLabelsRequest{

@@ -67,7 +67,7 @@ func TestReadTriple(t *testing.T) {
 		},
 	}
 	got, err := readTriples(
-		ctx, store.NewStore(nil, btTable, nil), buildTriplesKey([]string{"City"}))
+		ctx, store.NewStore(nil, nil, btTable, nil), buildTriplesKey([]string{"City"}))
 	if err != nil {
 		t.Errorf("ReadTriple get err: %v", err)
 	}

@@ -23,10 +23,14 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/healthcheck"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/store"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -78,6 +82,20 @@ func main() {
 		}
 	}
 
+	// MongoDB for in-meomory tmcf+csv data
+	mongoCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	mongoClient, err := mongo.Connect(mongoCtx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	defer func() {
+		if err = mongoClient.Disconnect(ctx); err != nil {
+			panic(err)
+		}
+	}()
+	err = store.LoadTmcfCsv(ctx, mongoClient)
+	if err != nil {
+		log.Fatalf("Failed to load tmcf and csv: %v", err)
+	}
+
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, *mixerProject)
 	if err != nil {
@@ -118,7 +136,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache)
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, mongoClient)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly {

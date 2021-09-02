@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,22 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package server
+package store
 
 import (
 	"context"
-	"testing"
+	"log"
+	"time"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func TestNoBigTable(t *testing.T) {
-	ctx := context.Background()
-	s := NewServer(nil, nil, nil, nil, nil, nil)
-	_, err := s.GetPlacePageData(ctx, &pb.GetPlacePageDataRequest{
-		Place: "geoId/06",
-	})
-	if err.Error() != "rpc error: code = NotFound desc = Bigtable instance is not specified" {
-		t.Errorf("Error invalid: %s", err)
+func LoadTmcfCsv(ctx context.Context, client *mongo.Client) error {
+	collection := client.Database("testing").Collection("observations")
+	mongoCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+	res, err := collection.InsertOne(mongoCtx, bson.D{primitive.E{Key: "foo", Value: "bar"}})
+	if err != nil {
+		return err
 	}
+	log.Println(res.InsertedID)
+	return nil
 }
