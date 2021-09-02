@@ -3,471 +3,471 @@
     "Count_Person": {
       "stat": {
         "geoId/01": {
-          "date": "2019",
-          "value": 4903185,
+          "date": "2020",
+          "value": 5024279,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/02": {
-          "date": "2019",
-          "value": 731545,
+          "date": "2020",
+          "value": 733391,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/04": {
-          "date": "2019",
-          "value": 7278717,
+          "date": "2020",
+          "value": 7151502,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/05": {
-          "date": "2019",
-          "value": 3017804,
+          "date": "2020",
+          "value": 3011524,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/06": {
-          "date": "2019",
-          "value": 39512223,
+          "date": "2020",
+          "value": 39538223,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/08": {
-          "date": "2019",
-          "value": 5758736,
+          "date": "2020",
+          "value": 5773714,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/09": {
-          "date": "2019",
-          "value": 3565287,
+          "date": "2020",
+          "value": 3605944,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/10": {
-          "date": "2019",
-          "value": 973764,
+          "date": "2020",
+          "value": 989948,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/11": {
-          "date": "2019",
-          "value": 692683,
+          "date": "2020",
+          "value": 689545,
           "metadata": {
-            "import_name": "CensusACS5YearSurvey",
-            "provenance_url": "https://www.census.gov/",
-            "measurement_method": "CensusACS5yrSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/12": {
-          "date": "2019",
-          "value": 21477737,
+          "date": "2020",
+          "value": 21538187,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/13": {
-          "date": "2019",
-          "value": 10617423,
+          "date": "2020",
+          "value": 10711908,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/15": {
-          "date": "2019",
-          "value": 1415872,
+          "date": "2020",
+          "value": 1455271,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/16": {
-          "date": "2019",
-          "value": 1787065,
+          "date": "2020",
+          "value": 1839106,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/17": {
-          "date": "2019",
-          "value": 12671821,
+          "date": "2020",
+          "value": 12812508,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/18": {
-          "date": "2019",
-          "value": 6732219,
+          "date": "2020",
+          "value": 6785528,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/19": {
-          "date": "2019",
-          "value": 3155070,
+          "date": "2020",
+          "value": 3190369,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/20": {
-          "date": "2019",
-          "value": 2913314,
+          "date": "2020",
+          "value": 2937880,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/21": {
-          "date": "2019",
-          "value": 4467673,
+          "date": "2020",
+          "value": 4505836,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/22": {
-          "date": "2019",
-          "value": 4648794,
+          "date": "2020",
+          "value": 4657757,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/23": {
-          "date": "2019",
-          "value": 1344212,
+          "date": "2020",
+          "value": 1362359,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/24": {
-          "date": "2019",
-          "value": 6045680,
+          "date": "2020",
+          "value": 6177224,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/25": {
-          "date": "2019",
-          "value": 6892503,
+          "date": "2020",
+          "value": 7029917,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/26": {
-          "date": "2019",
-          "value": 9986857,
+          "date": "2020",
+          "value": 10077331,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/27": {
-          "date": "2019",
-          "value": 5639632,
+          "date": "2020",
+          "value": 5706494,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/28": {
-          "date": "2019",
-          "value": 2976149,
+          "date": "2020",
+          "value": 2961279,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/29": {
-          "date": "2019",
-          "value": 6137428,
+          "date": "2020",
+          "value": 6154913,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/30": {
-          "date": "2019",
-          "value": 1068778,
+          "date": "2020",
+          "value": 1084225,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/31": {
-          "date": "2019",
-          "value": 1934408,
+          "date": "2020",
+          "value": 1961504,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/32": {
-          "date": "2019",
-          "value": 3080156,
+          "date": "2020",
+          "value": 3104614,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/33": {
-          "date": "2019",
-          "value": 1359711,
+          "date": "2020",
+          "value": 1377529,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/34": {
-          "date": "2019",
-          "value": 8882190,
+          "date": "2020",
+          "value": 9288994,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/35": {
-          "date": "2019",
-          "value": 2096829,
+          "date": "2020",
+          "value": 2117522,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/36": {
-          "date": "2019",
-          "value": 19453561,
+          "date": "2020",
+          "value": 20201249,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/37": {
-          "date": "2019",
-          "value": 10488084,
+          "date": "2020",
+          "value": 10439388,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/38": {
-          "date": "2019",
-          "value": 762062,
+          "date": "2020",
+          "value": 779094,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/39": {
-          "date": "2019",
-          "value": 11689100,
+          "date": "2020",
+          "value": 11799448,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/40": {
-          "date": "2019",
-          "value": 3956971,
+          "date": "2020",
+          "value": 3959353,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/41": {
-          "date": "2019",
-          "value": 4217737,
+          "date": "2020",
+          "value": 4237256,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/42": {
-          "date": "2019",
-          "value": 12801989,
+          "date": "2020",
+          "value": 13002700,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/44": {
-          "date": "2019",
-          "value": 1059361,
+          "date": "2020",
+          "value": 1097379,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/45": {
-          "date": "2019",
-          "value": 5148714,
+          "date": "2020",
+          "value": 5118425,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/46": {
-          "date": "2019",
-          "value": 884659,
+          "date": "2020",
+          "value": 886667,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/47": {
-          "date": "2019",
-          "value": 6829174,
+          "date": "2020",
+          "value": 6910840,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/48": {
           "date": "2020",
-          "value": 28995881,
+          "value": 29145505,
           "metadata": {
-            "import_name": "WikidataPopulation",
-            "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-            "measurement_method": "WikidataPopulation"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/49": {
-          "date": "2019",
-          "value": 3205958,
+          "date": "2020",
+          "value": 3271616,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/50": {
-          "date": "2019",
-          "value": 623989,
+          "date": "2020",
+          "value": 643077,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/51": {
-          "date": "2019",
-          "value": 8535519,
+          "date": "2020",
+          "value": 8631393,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/53": {
-          "date": "2019",
-          "value": 7614893,
+          "date": "2020",
+          "value": 7705281,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/54": {
-          "date": "2019",
-          "value": 1792147,
+          "date": "2020",
+          "value": 1793716,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/55": {
-          "date": "2019",
-          "value": 5822434,
+          "date": "2020",
+          "value": 5893718,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/56": {
-          "date": "2019",
-          "value": 578759,
+          "date": "2020",
+          "value": 576851,
           "metadata": {
-            "import_name": "CensusPEP",
-            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-            "measurement_method": "CensusPEPSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         "geoId/72": {
-          "date": "2019",
-          "value": 3318447,
+          "date": "2020",
+          "value": 3285874,
           "metadata": {
-            "import_name": "CensusACS5YearSurvey",
-            "provenance_url": "https://www.census.gov/",
-            "measurement_method": "CensusACS5yrSurvey"
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         }
       },
@@ -482,18 +482,18 @@
           "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
           "measurement_method": "CensusPEPSurvey"
         },
-        "WikidataPopulation": {
-          "import_name": "WikidataPopulation",
-          "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-          "measurement_method": "WikidataPopulation"
+        "USDecennialCensus_RedistrictingRelease": {
+          "import_name": "USDecennialCensus_RedistrictingRelease",
+          "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+          "measurement_method": "USDecennialCensus"
         }
       }
     },
     "Count_Person_Employed": {
       "stat": {
         "geoId/01": {
-          "date": "2021-06",
-          "value": 2120154,
+          "date": "2021-07",
+          "value": 2151139,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -502,8 +502,8 @@
           }
         },
         "geoId/02": {
-          "date": "2021-06",
-          "value": 332032,
+          "date": "2021-07",
+          "value": 334832,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -512,8 +512,8 @@
           }
         },
         "geoId/04": {
-          "date": "2021-06",
-          "value": 3391094,
+          "date": "2021-07",
+          "value": 3411018,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -522,8 +522,8 @@
           }
         },
         "geoId/05": {
-          "date": "2021-06",
-          "value": 1308504,
+          "date": "2021-07",
+          "value": 1306833,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -532,8 +532,8 @@
           }
         },
         "geoId/06": {
-          "date": "2021-06",
-          "value": 17480950,
+          "date": "2021-07",
+          "value": 17659070,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -542,8 +542,8 @@
           }
         },
         "geoId/08": {
-          "date": "2021-06",
-          "value": 2993239,
+          "date": "2021-07",
+          "value": 3003917,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -552,8 +552,8 @@
           }
         },
         "geoId/09": {
-          "date": "2021-06",
-          "value": 1654833,
+          "date": "2021-07",
+          "value": 1708272,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -562,8 +562,8 @@
           }
         },
         "geoId/10": {
-          "date": "2021-06",
-          "value": 465712,
+          "date": "2021-07",
+          "value": 465367,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -572,8 +572,8 @@
           }
         },
         "geoId/11": {
-          "date": "2021-06",
-          "value": 381129,
+          "date": "2021-07",
+          "value": 391835,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -582,8 +582,8 @@
           }
         },
         "geoId/12": {
-          "date": "2021-06",
-          "value": 9974581,
+          "date": "2021-07",
+          "value": 10100431,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -592,8 +592,8 @@
           }
         },
         "geoId/13": {
-          "date": "2021-06",
-          "value": 4948901,
+          "date": "2021-07",
+          "value": 5004211,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -602,8 +602,8 @@
           }
         },
         "geoId/15": {
-          "date": "2021-06",
-          "value": 593444,
+          "date": "2021-07",
+          "value": 602621,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -612,8 +612,8 @@
           }
         },
         "geoId/16": {
-          "date": "2021-06",
-          "value": 882982,
+          "date": "2021-07",
+          "value": 885758,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -622,8 +622,8 @@
           }
         },
         "geoId/17": {
-          "date": "2021-06",
-          "value": 5805705,
+          "date": "2021-07",
+          "value": 5878070,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -632,8 +632,8 @@
           }
         },
         "geoId/18": {
-          "date": "2021-06",
-          "value": 3226177,
+          "date": "2021-07",
+          "value": 3212272,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -642,8 +642,8 @@
           }
         },
         "geoId/19": {
-          "date": "2021-06",
-          "value": 1593835,
+          "date": "2021-07",
+          "value": 1614650,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -652,8 +652,8 @@
           }
         },
         "geoId/20": {
-          "date": "2021-06",
-          "value": 1455122,
+          "date": "2021-07",
+          "value": 1466121,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -662,8 +662,8 @@
           }
         },
         "geoId/21": {
-          "date": "2021-06",
-          "value": 1887325,
+          "date": "2021-07",
+          "value": 1900637,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -672,8 +672,8 @@
           }
         },
         "geoId/22": {
-          "date": "2021-06",
-          "value": 1936239,
+          "date": "2021-07",
+          "value": 1957757,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -682,8 +682,8 @@
           }
         },
         "geoId/23": {
-          "date": "2021-06",
-          "value": 654219,
+          "date": "2021-07",
+          "value": 668041,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -692,8 +692,8 @@
           }
         },
         "geoId/24": {
-          "date": "2021-06",
-          "value": 2951491,
+          "date": "2021-07",
+          "value": 3013126,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -702,8 +702,8 @@
           }
         },
         "geoId/25": {
-          "date": "2021-06",
-          "value": 3534680,
+          "date": "2021-07",
+          "value": 3538849,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -712,8 +712,8 @@
           }
         },
         "geoId/26": {
-          "date": "2021-06",
-          "value": 4501384,
+          "date": "2021-07",
+          "value": 4563103,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -722,8 +722,8 @@
           }
         },
         "geoId/27": {
-          "date": "2021-06",
-          "value": 2917024,
+          "date": "2021-07",
+          "value": 2946645,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -732,8 +732,8 @@
           }
         },
         "geoId/28": {
-          "date": "2021-06",
-          "value": 1191258,
+          "date": "2021-07",
+          "value": 1205767,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -742,8 +742,8 @@
           }
         },
         "geoId/29": {
-          "date": "2021-06",
-          "value": 2968636,
+          "date": "2021-07",
+          "value": 2980167,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -752,8 +752,8 @@
           }
         },
         "geoId/30": {
-          "date": "2021-06",
-          "value": 526016,
+          "date": "2021-07",
+          "value": 532323,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -762,8 +762,8 @@
           }
         },
         "geoId/31": {
-          "date": "2021-06",
-          "value": 1006126,
+          "date": "2021-07",
+          "value": 1012440,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -772,8 +772,8 @@
           }
         },
         "geoId/32": {
-          "date": "2021-06",
-          "value": 1430735,
+          "date": "2021-07",
+          "value": 1420588,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -782,8 +782,8 @@
           }
         },
         "geoId/33": {
-          "date": "2021-06",
-          "value": 729813,
+          "date": "2021-07",
+          "value": 734637,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -792,8 +792,8 @@
           }
         },
         "geoId/34": {
-          "date": "2021-06",
-          "value": 4126600,
+          "date": "2021-07",
+          "value": 4158656,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -802,8 +802,8 @@
           }
         },
         "geoId/35": {
-          "date": "2021-06",
-          "value": 876664,
+          "date": "2021-07",
+          "value": 883734,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -812,8 +812,8 @@
           }
         },
         "geoId/36": {
-          "date": "2021-06",
-          "value": 8716920,
+          "date": "2021-07",
+          "value": 8688431,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -822,8 +822,8 @@
           }
         },
         "geoId/37": {
-          "date": "2021-06",
-          "value": 4790820,
+          "date": "2021-07",
+          "value": 4817155,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -832,8 +832,8 @@
           }
         },
         "geoId/38": {
-          "date": "2021-06",
-          "value": 392019,
+          "date": "2021-07",
+          "value": 396475,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -842,8 +842,8 @@
           }
         },
         "geoId/39": {
-          "date": "2021-06",
-          "value": 5295110,
+          "date": "2021-07",
+          "value": 5360766,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -852,8 +852,8 @@
           }
         },
         "geoId/40": {
-          "date": "2021-06",
-          "value": 1805789,
+          "date": "2021-07",
+          "value": 1808803,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -862,8 +862,8 @@
           }
         },
         "geoId/41": {
-          "date": "2021-06",
-          "value": 2059966,
+          "date": "2021-07",
+          "value": 2085367,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -872,8 +872,8 @@
           }
         },
         "geoId/42": {
-          "date": "2021-06",
-          "value": 5924599,
+          "date": "2021-07",
+          "value": 5937814,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -882,8 +882,8 @@
           }
         },
         "geoId/44": {
-          "date": "2021-06",
-          "value": 507721,
+          "date": "2021-07",
+          "value": 508387,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -892,8 +892,8 @@
           }
         },
         "geoId/45": {
-          "date": "2021-06",
-          "value": 2322573,
+          "date": "2021-07",
+          "value": 2334823,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -902,8 +902,8 @@
           }
         },
         "geoId/46": {
-          "date": "2021-06",
-          "value": 463089,
+          "date": "2021-07",
+          "value": 466472,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -912,8 +912,8 @@
           }
         },
         "geoId/47": {
-          "date": "2021-06",
-          "value": 3157362,
+          "date": "2021-07",
+          "value": 3197749,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -922,8 +922,8 @@
           }
         },
         "geoId/48": {
-          "date": "2021-06",
-          "value": 13188254,
+          "date": "2021-07",
+          "value": 13340757,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -932,8 +932,8 @@
           }
         },
         "geoId/49": {
-          "date": "2021-06",
-          "value": 1626029,
+          "date": "2021-07",
+          "value": 1627831,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -942,8 +942,8 @@
           }
         },
         "geoId/50": {
-          "date": "2021-06",
-          "value": 309460,
+          "date": "2021-07",
+          "value": 314592,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -952,8 +952,8 @@
           }
         },
         "geoId/51": {
-          "date": "2021-06",
-          "value": 4096230,
+          "date": "2021-07",
+          "value": 4140764,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -962,8 +962,8 @@
           }
         },
         "geoId/53": {
-          "date": "2021-06",
-          "value": 3720025,
+          "date": "2021-07",
+          "value": 3772309,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -972,8 +972,8 @@
           }
         },
         "geoId/54": {
-          "date": "2021-06",
-          "value": 761587,
+          "date": "2021-07",
+          "value": 763983,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -982,8 +982,8 @@
           }
         },
         "geoId/55": {
-          "date": "2021-06",
-          "value": 3016482,
+          "date": "2021-07",
+          "value": 3036548,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -992,8 +992,8 @@
           }
         },
         "geoId/56": {
-          "date": "2021-06",
-          "value": 282615,
+          "date": "2021-07",
+          "value": 283827,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",
@@ -1002,8 +1002,8 @@
           }
         },
         "geoId/72": {
-          "date": "2021-06",
-          "value": 982321,
+          "date": "2021-07",
+          "value": 972460,
           "metadata": {
             "import_name": "BLS_LAUS",
             "provenance_url": "https://www.bls.gov/lau/",

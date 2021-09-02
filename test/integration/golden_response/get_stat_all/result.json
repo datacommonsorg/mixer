@@ -195,6 +195,17 @@
             },
             {
               "val": {
+                "2000": 281421906,
+                "2010": 308745538,
+                "2020": 331449281
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
                 "1995": 266278000,
                 "1996": 269394000,
                 "1997": 272647000,
@@ -480,6 +491,17 @@
             },
             {
               "val": {
+                "2000": 33871648,
+                "2010": 37253956,
+                "2020": 39538223
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
                 "1995": 31696600,
                 "1996": 32018800,
                 "1997": 32486000,
@@ -725,6 +747,17 @@
               "importName": "WikidataPopulation",
               "provenanceDomain": "wikidata.org",
               "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+            },
+            {
+              "val": {
+                "2000": 70708,
+                "2010": 74066,
+                "2020": 82376
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
             },
             {
               "val": {
