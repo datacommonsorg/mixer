@@ -60,10 +60,10 @@
   ],
   "childStatVarGroups": [
     {
-      "id": "dc/g/Births",
-      "specializedEntity": "Births",
-      "displayName": "Births",
-      "numDescendentStatVars": 1
+      "id": "dc/g/Person_Age",
+      "specializedEntity": "Age",
+      "displayName": "Person by Age",
+      "numDescendentStatVars": 648
     },
     {
       "id": "dc/g/Commute",
@@ -79,7 +79,7 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 878
+      "numDescendentStatVars": 445
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -146,5 +146,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 888
+  "numDescendentStatVars": 671
 }

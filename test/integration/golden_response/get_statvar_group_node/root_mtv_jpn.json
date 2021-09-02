@@ -5,7 +5,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 4060
+      "numDescendentStatVars": 4102
     },
     {
       "id": "dc/g/Household",
@@ -77,7 +77,7 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": 2037
+      "numDescendentStatVars": 1007
     }
   ],
   "numDescendentStatVars": 6958

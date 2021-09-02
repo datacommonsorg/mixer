@@ -217,20 +217,10 @@
       "numDescendentStatVars": 2
     },
     {
-      "id": "dc/g/Person_EducationalAttainment-Primary",
-      "specializedEntity": "Primary",
-      "displayName": "Person With Educational Attainment = Primary"
-    },
-    {
       "id": "dc/g/Person_EducationalAttainment-ProfessionalSchoolDegree",
       "specializedEntity": "Professional School Degree",
       "displayName": "Person With Educational Attainment = Professional School Degree",
       "numDescendentStatVars": 3
-    },
-    {
-      "id": "dc/g/Person_EducationalAttainment-SecondaryOrHigher",
-      "specializedEntity": "Secondary or Higher",
-      "displayName": "Person With Educational Attainment = Secondary or Higher"
     },
     {
       "id": "dc/g/Person_EducationalAttainment-SomeCollege1OrMoreYearsNoDegree",
