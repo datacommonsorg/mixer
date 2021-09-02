@@ -31,12 +31,29 @@ func TestParseMcf(t *testing.T) {
 			"svo.tmcf",
 			map[string]*TableSchema{
 				"FBI_Crime": {
-					ColumnInfo: map[string]*Column{
-						"Count_CriminalActivities_MurderAndNonNegligentManslaughter": {Node: "E1", Property: "value"},
-						"GeoId": {Node: "E1", Property: "observationAbout"},
-						"Year":  {Node: "E1", Property: "observationDate"},
+					ColumnInfo: map[string][]*Column{
+						"Count_CriminalActivities_MurderAndNonNegligentManslaughter": {{Node: "E1", Property: "value"}},
+						"Count_CriminalActivities_ViolentCrime":                      {{Node: "E0", Property: "value"}},
+						"GeoId": {
+							{Node: "E0", Property: "observationAbout"},
+							{Node: "E1", Property: "observationAbout"},
+						},
+						"Year": {
+							{Node: "E0", Property: "observationDate"},
+							{Node: "E1", Property: "observationDate"},
+						},
 					},
-					NodeSchema: map[string]map[string]string{"E1": {"measurementMethod": "FBI_Crime"}},
+					NodeSchema: map[string]map[string]string{
+						"E0": {
+							"measurementMethod": "FBI_Crime",
+							"typeOf":            "StatVarObservation",
+							"variableMeasured":  "Count_CriminalActivities_ViolentCrime",
+						},
+						"E1": {
+							"measurementMethod": "FBI_Crime",
+							"typeOf":            "StatVarObservation",
+							"variableMeasured":  "Count_CriminalActivities_MurderAndNonNegligentManslaughter",
+						}},
 				},
 			},
 		},

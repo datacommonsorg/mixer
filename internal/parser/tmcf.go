@@ -31,7 +31,7 @@ type Column struct {
 // TableSchema Represents the schema of one table
 type TableSchema struct {
 	// Keyed by column name.
-	ColumnInfo map[string]*Column
+	ColumnInfo map[string][]*Column
 	// Keyed by node name and property.
 	NodeSchema map[string]map[string]string
 }
@@ -49,13 +49,13 @@ func ParseTmcf(tmcf string) (map[string]*TableSchema, error) {
 		if strings.HasPrefix(line, "#") || line == "" {
 			continue
 		}
-		parts := strings.SplitN(line, ": ", 2)
-		if len(parts) < 2 {
+		sections := strings.SplitN(line, ": ", 2)
+		if len(sections) < 2 {
 			return nil, status.Errorf(
 				codes.Internal, "invalid tmcf:\n%s", tmcf)
 		}
-		head := strings.TrimSpace(parts[0])
-		body := strings.TrimSpace(parts[1])
+		head := strings.TrimSpace(sections[0])
+		body := strings.TrimSpace(sections[1])
 
 		// Node entity mapping
 		if strings.HasPrefix(body, base.PreE) {
@@ -68,9 +68,11 @@ func ParseTmcf(tmcf string) (map[string]*TableSchema, error) {
 			}
 			table = parts[0]
 			node = parts[1]
-			result[table] = &TableSchema{
-				ColumnInfo: map[string]*Column{},
-				NodeSchema: map[string]map[string]string{},
+			if _, ok := result[table]; !ok {
+				result[table] = &TableSchema{
+					ColumnInfo: map[string][]*Column{},
+					NodeSchema: map[string]map[string]string{},
+				}
 			}
 		} else if strings.HasPrefix(body, base.PreC) {
 			// Column mapping
@@ -81,11 +83,20 @@ func ParseTmcf(tmcf string) (map[string]*TableSchema, error) {
 			if table == "" || node == "" || table != parts[0] {
 				return nil, status.Errorf(codes.Internal, "Invalid input for Column:\n%s", line)
 			}
-			result[table].ColumnInfo[parts[1]] = &Column{Node: node, Property: head}
-		} else if strings.HasPrefix(body, base.DCS) {
-			// Schema mapping
-			schema := strings.TrimPrefix(body, base.DCS)
-			if _, ok := result[table].NodeSchema[parts[1]]; !ok {
+			result[table].ColumnInfo[parts[1]] = append(
+				result[table].ColumnInfo[parts[1]],
+				&Column{Node: node, Property: head},
+			)
+		} else {
+			// This is a schema
+			schema := body
+			for _, prefix := range []string{"dcs:", "dcid:", "schema:"} {
+				schema = strings.TrimPrefix(schema, prefix)
+			}
+			if table == "" || node == "" {
+				return nil, status.Errorf(codes.Internal, "Invalid input for Column:\n%s", line)
+			}
+			if _, ok := result[table].NodeSchema[node]; !ok {
 				result[table].NodeSchema[node] = map[string]string{}
 			}
 			result[table].NodeSchema[node][head] = schema
