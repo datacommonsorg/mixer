@@ -27,6 +27,7 @@ type MemDb struct {
 	statSeries map[string]map[string]pb.SeriesMap
 }
 
+// Load loads tmcf + csv files into memory database
 func (memDb *MemDb) Load(tmcfFile string) error {
 	tmcfBytes, err := ioutil.ReadFile(tmcfFile)
 	if err != nil {
