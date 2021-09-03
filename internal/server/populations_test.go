@@ -68,7 +68,7 @@ func TestGetPlaceObs(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 
-	s := NewServer(nil, btTable1, btTable2, nil, nil)
+	s := NewServer(nil, btTable1, btTable2, nil, nil, nil)
 
 	// Base cache only.
 	req := &pb.GetPlaceObsRequest{
@@ -171,7 +171,7 @@ func TestGetPlaceObsCacheMerge(t *testing.T) {
 	}
 
 	// Test
-	s := NewServer(nil, baseTable, branchTable, nil, nil)
+	s := NewServer(nil, baseTable, branchTable, nil, nil, nil)
 	req := &pb.GetPlaceObsRequest{
 		PlaceType: "City",
 		StatVar:   "Count_Person_Male",
