@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/csv"
 	"io"
+	"log"
 	"strings"
 
 	"cloud.google.com/go/storage"
@@ -113,7 +114,8 @@ func addRow(
 	row []string,
 ) {
 	// TODO: implement csv parsing and actual data loading
-	for _, cell := range row {
-		cell = strings.TrimSpace(cell)
-	}
+	// for _, cell := range row {
+	// 	cell = strings.TrimSpace(cell)
+	// }
+	log.Println(row)
 }

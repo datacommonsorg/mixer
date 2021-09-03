@@ -88,7 +88,10 @@ func main() {
 	// TMCF + CSV from GCS
 	memdb := store.NewMemDb()
 	if *useGcsData && *dataBucket != "" {
-		memdb.LoadFromGcs(ctx, *dataBucket)
+		err = memdb.LoadFromGcs(ctx, *dataBucket)
+		if err != nil {
+			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
+		}
 	}
 
 	// BigQuery.
