@@ -24,7 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/base"
 )
 
-// Parse parses a complex value string into node.
+// ParseComplexValue parses a complex value string into node.
 //
 // [!!]This has minimal validation check, assuming the input has been checked
 // by the import tool.
@@ -108,12 +108,12 @@ func parseLatLng(latStr, lngStr string) (string, string) {
 
 	// E5 (1/100000th of a degree) or 1 meter is the maximum resolution we
 	// support.
-	lat_e5 := math.Round(1e5 * lat)
-	lng_e5 := math.Round(1e5 * lng)
-	latStr = fmt.Sprintf("%.5f", (lat_e5 / 1e5))
-	lngStr = fmt.Sprintf("%.5f", (lng_e5 / 1e5))
+	latE5 := math.Round(1e5 * lat)
+	lngE5 := math.Round(1e5 * lng)
+	latStr = fmt.Sprintf("%.5f", (latE5 / 1e5))
+	lngStr = fmt.Sprintf("%.5f", (lngE5 / 1e5))
 
-	dcid := fmt.Sprintf("latLong/%.0f_%.0f", lat_e5, lng_e5)
+	dcid := fmt.Sprintf("latLong/%.0f_%.0f", latE5, lngE5)
 	name := latStr + "," + lngStr
 	return dcid, name
 }
