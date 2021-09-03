@@ -207,9 +207,11 @@ func NewServer(
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table,
 	metadata *Metadata,
-	cache *Cache) *Server {
+	cache *Cache,
+	memdb *store.MemDb,
+) *Server {
 	return &Server{
-		store:    store.NewStore(bqClient, baseTable, branchTable),
+		store:    store.NewStore(bqClient, memdb, baseTable, branchTable),
 		metadata: metadata,
 		cache:    cache,
 	}

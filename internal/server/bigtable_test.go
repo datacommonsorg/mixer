@@ -36,7 +36,7 @@ func TestReadOneTable(t *testing.T) {
 	rowList := bigtable.RowList{"key1", "key2"}
 	baseDataMap, _, err := bigTableReadRowsParallel(
 		ctx,
-		store.NewStore(nil, btTable, nil),
+		store.NewStore(nil, nil, btTable, nil),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -80,7 +80,7 @@ func TestReadTwoTables(t *testing.T) {
 	rowList := bigtable.RowList{"key1", "key2"}
 	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
 		ctx,
-		store.NewStore(nil, btTable1, btTable2),
+		store.NewStore(nil, nil, btTable1, btTable2),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil

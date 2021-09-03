@@ -27,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/healthcheck"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -78,6 +79,8 @@ func main() {
 		}
 	}
 
+	memdb := &store.MemDb{}
+
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, *mixerProject)
 	if err != nil {
@@ -118,7 +121,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache)
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memdb)
 
 	// Subscribe to cache update
 	if !*bigqueryOnly {
