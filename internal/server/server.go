@@ -34,7 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/translator"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // Cache holds cached data for the mixer server.
@@ -209,10 +208,10 @@ func NewServer(
 	branchTable *bigtable.Table,
 	metadata *Metadata,
 	cache *Cache,
-	mongoClient *mongo.Client,
+	memdb *store.MemDb,
 ) *Server {
 	return &Server{
-		store:    store.NewStore(bqClient, mongoClient, baseTable, branchTable),
+		store:    store.NewStore(bqClient, memdb, baseTable, branchTable),
 		metadata: metadata,
 		cache:    cache,
 	}

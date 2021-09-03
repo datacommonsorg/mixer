@@ -15,23 +15,29 @@
 package store
 
 import (
-	"context"
+	"io/ioutil"
 	"log"
-	"time"
 
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo"
+	"github.com/datacommonsorg/mixer/internal/parser"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
-func LoadTmcfCsv(ctx context.Context, client *mongo.Client) error {
-	collection := client.Database("testing").Collection("observations")
-	mongoCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-	res, err := collection.InsertOne(mongoCtx, bson.D{primitive.E{Key: "foo", Value: "bar"}})
+// MemDb holds imported data in memory.
+type MemDb struct {
+	statSeries map[string]map[string]pb.SeriesMap
+}
+
+func (memDb *MemDb) Load(tmcfFile string) error {
+	tmcfBytes, err := ioutil.ReadFile(tmcfFile)
 	if err != nil {
 		return err
 	}
-	log.Println(res.InsertedID)
+	schemaMapping, err := parser.ParseTmcf(string(tmcfBytes))
+	// TODO: implement csv parsing and actual data loading
+	log.Printf("%v", schemaMapping)
+	if err != nil {
+		return err
+	}
+	memDb.statSeries = map[string]map[string]pb.SeriesMap{}
 	return nil
 }

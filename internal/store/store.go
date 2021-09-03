@@ -19,13 +19,12 @@ import (
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // Store holds the handlers to BigQuery and Bigtable
 type Store struct {
 	BqClient    *bigquery.Client
-	mongoClient *mongo.Client
+	memDb       *MemDb
 	baseTable   *bigtable.Table
 	branchTable *bigtable.Table
 	branchLock  sync.RWMutex
@@ -53,12 +52,12 @@ func (st *Store) UpdateBranchBt(branchTable *bigtable.Table) {
 // NewStore creates a new store.
 func NewStore(
 	bqClient *bigquery.Client,
-	mongoClient *mongo.Client,
+	memDb *MemDb,
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table) *Store {
 	return &Store{
 		BqClient:    bqClient,
-		mongoClient: mongoClient,
+		memDb:       memDb,
 		baseTable:   baseTable,
 		branchTable: branchTable,
 	}
