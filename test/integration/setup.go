@@ -52,7 +52,7 @@ const (
 	bqBillingProject = "datcom-ci"
 	storeProject     = "datcom-store"
 	tmcfCsvBucket    = "datcom-public"
-	tmcfCsvPrefix    = "our-world-in-data"
+	tmcfCsvPrefix    = "test"
 )
 
 func setup(option ...bool) (pb.MixerClient, error) {

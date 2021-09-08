@@ -122,7 +122,7 @@ Run the following code to start mixer gRPC server with TMCF + CSV files stored i
 # In repo root directory
 go run cmd/main.go \
     --gcs_bucket=datcom-public \
-    --gcs_object_prefix=our-world-in-data \
+    --gcs_object_prefix=test \
     --use_gcs_data=true \
     --use_bigquery=false \
     --use_base_bt=false \

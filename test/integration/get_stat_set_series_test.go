@@ -65,8 +65,8 @@ func TestGetStatSetSeries(t *testing.T) {
 			true,
 		},
 		{
-			[]string{"CumulativeCount_Vaccine_COVID_19_Administered"},
-			[]string{"country/AFG", "country/AND"},
+			[]string{"Test_Stat_Var_1", "Test_Stat_Var_10"},
+			[]string{"country/ALB", "country/AND"},
 			"memdb.json",
 			true,
 		},
