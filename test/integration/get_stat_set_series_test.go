@@ -64,6 +64,12 @@ func TestGetStatSetSeries(t *testing.T) {
 			"nyt_covid_cases.json",
 			true,
 		},
+		{
+			[]string{"CumulativeCount_Vaccine_COVID_19_Administered"},
+			[]string{"country/AFG", "country/AND"},
+			"memdb.json",
+			true,
+		},
 	} {
 		resp, err := client.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
 			StatVars: c.statVars,

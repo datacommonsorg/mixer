@@ -24,7 +24,7 @@ import (
 // Store holds the handlers to BigQuery and Bigtable
 type Store struct {
 	BqClient    *bigquery.Client
-	memDb       *MemDb
+	MemDb       *MemDb
 	baseTable   *bigtable.Table
 	branchTable *bigtable.Table
 	branchLock  sync.RWMutex
@@ -57,7 +57,7 @@ func NewStore(
 	branchTable *bigtable.Table) *Store {
 	return &Store{
 		BqClient:    bqClient,
-		memDb:       memDb,
+		MemDb:       memDb,
 		baseTable:   baseTable,
 		branchTable: branchTable,
 	}

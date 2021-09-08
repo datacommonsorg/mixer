@@ -29,6 +29,7 @@ import (
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -49,7 +50,9 @@ func init() {
 const (
 	baseInstance     = "prophet-cache"
 	bqBillingProject = "datcom-ci"
-	store            = "datcom-store"
+	storeProject     = "datcom-store"
+	tmcfCsvBucket    = "datcom-public"
+	tmcfCsvPrefix    = "our-world-in-data"
 )
 
 func setup(option ...bool) (pb.MixerClient, error) {
@@ -58,7 +61,7 @@ func setup(option ...bool) (pb.MixerClient, error) {
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
 		"../../deploy/mapping",
-		store,
+		storeProject,
 		useCache,
 	)
 }
@@ -102,7 +105,13 @@ func setupInternal(
 	} else {
 		cache = &server.Cache{}
 	}
-	return newClient(bqClient, baseTable, branchTable, metadata, cache)
+	memdb := store.NewMemDb()
+	err = memdb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
+	if err != nil {
+		log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
+	}
+
+	return newClient(bqClient, baseTable, branchTable, metadata, cache, memdb)
 }
 
 func setupBqOnly() (pb.MixerClient, error) {
@@ -119,13 +128,13 @@ func setupBqOnly() (pb.MixerClient, error) {
 	}
 	metadata, err := server.NewMetadata(
 		strings.TrimSpace(string(bqTableID)),
-		store,
+		storeProject,
 		"",
 		schemaPath)
 	if err != nil {
 		return nil, err
 	}
-	return newClient(bqClient, nil, nil, metadata, nil)
+	return newClient(bqClient, nil, nil, metadata, nil, nil)
 }
 
 func newClient(
@@ -133,8 +142,10 @@ func newClient(
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table,
 	metadata *server.Metadata,
-	cache *server.Cache) (pb.MixerClient, error) {
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, nil)
+	cache *server.Cache,
+	memdb *store.MemDb,
+) (pb.MixerClient, error) {
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memdb)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)

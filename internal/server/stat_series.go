@@ -190,6 +190,7 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			result.Data[place].Data[statVar] = nil
 		}
 	}
+	// Read data from BigTable.
 	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -202,5 +203,21 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			}
 		}
 	}
+	// Read data from in-memory cache (private data).
+	// When there is data in both BigTable and private data. Prefer private data
+	// as this instance is for a private DC.
+	if s.store.MemDb != nil {
+		for _, place := range places {
+			for _, statVar := range statVars {
+				series := s.store.MemDb.ReadSeries(statVar, place)
+				if len(series) > 0 {
+					// TODO: add ranking function for *pb.Series. Now only pick one series
+					// from the private import.
+					result.Data[place].Data[statVar] = series[0]
+				}
+			}
+		}
+	}
+
 	return result, nil
 }
