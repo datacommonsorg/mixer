@@ -19,6 +19,7 @@ import (
 	"encoding/csv"
 	"io"
 	"log"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -92,7 +93,7 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 				return err
 			}
 			defer r.Close()
-			tableName := strings.TrimSuffix(object, ".csv")
+			tableName := strings.TrimSuffix(filepath.Base(object), ".csv")
 			csvReader := csv.NewReader(r)
 			header, err := csvReader.Read()
 			if err != nil {
