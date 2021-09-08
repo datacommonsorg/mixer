@@ -41,15 +41,17 @@ do
 done
 
 # Data store project roles
-declare -a roles=(
-    "roles/bigquery.admin"   # Query BigQuery
-    "roles/bigtable.reader" # Query Bigtable
-    "roles/storage.objectViewer" # Branch Cache Read
-    "roles/pubsub.editor" # Branch Cache subscription
-)
-for role in "${roles[@]}"
-do
-  gcloud projects add-iam-policy-binding $STORE_PROJECT_ID \
-    --member serviceAccount:$SERVICE_ACCOUNT \
-    --role $role
-done
+if [[ $STORE_PROJECT_ID != '' ]]; then
+  declare -a roles=(
+      "roles/bigquery.admin"   # Query BigQuery
+      "roles/bigtable.reader" # Query Bigtable
+      "roles/storage.objectViewer" # Branch Cache Read
+      "roles/pubsub.editor" # Branch Cache subscription
+  )
+  for role in "${roles[@]}"
+  do
+    gcloud projects add-iam-policy-binding $STORE_PROJECT_ID \
+      --member serviceAccount:$SERVICE_ACCOUNT \
+      --role $role
+  done
+fi
