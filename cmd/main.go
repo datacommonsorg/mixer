@@ -49,7 +49,7 @@ var (
 	useALTS         = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	schemaPath      = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	gcsBucket       = flag.String("gcs_bucket", "", "The GCS bucket that contains tmcf and csv files")
-	gcsObjectPrefix = flag.String("gcs_object_prefix", "", "The Prefix of GCS objects, this is the sub-directory path")
+	gcsObjectPrefix = flag.String("gcs_object_prefix", "", "Path (sub-directory) for an import. An import must have a unique prefix within a bucket.")
 	useBigquery     = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
 	useBaseBt       = flag.Bool("use_base_bt", true, "Use base bigtable cache")
 	useBranchBt     = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
