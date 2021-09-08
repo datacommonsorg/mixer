@@ -72,6 +72,8 @@ func addRow(
 				meta:    &pb.StatMetadata{},
 			}
 		}
+		// TODO: handle the case when meta data is specified in the column:
+		// https://github.com/datacommonsorg/data/blob/master/scripts/un/energy/un_energy.tmcf#L8-L10
 		if v, ok := meta["measurementMethod"]; ok {
 			allNodes[node].meta.MeasurementMethod = v
 		}
@@ -80,6 +82,9 @@ func addRow(
 		}
 		if v, ok := meta["scalingFactor"]; ok {
 			allNodes[node].meta.ScalingFactor = v
+		}
+		if v, ok := meta["observationPeriod"]; ok {
+			allNodes[node].meta.ObservationPeriod = v
 		}
 	}
 
@@ -104,6 +109,7 @@ func addRow(
 			if col.Property == "value" {
 				allNodes[n].value = cell
 			}
+			// TODO: handle the case when observationDate is a constant in the tmcf.
 			if col.Property == "observationDate" {
 				allNodes[n].date = cell
 			}
