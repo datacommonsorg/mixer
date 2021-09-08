@@ -107,7 +107,10 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 				if err != nil {
 					return err
 				}
-				addRow(header, row, schemaMapping[tableName], memDb.statSeries)
+				err = addRow(header, row, schemaMapping[tableName], memDb.statSeries)
+				if err != nil {
+					return err
+				}
 				count++
 			}
 		}
