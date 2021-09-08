@@ -99,9 +99,9 @@ protoc \
   proto/*.proto
 ```
 
-### Start mixer as a gRPC server
+### Start Mixer as a gRPC server backed by Cloud BigTable (BigQuery)
 
-Run the following code to start mixer gRPC server (without branch BT)
+Run the following code to start mixer gRPC server (without branch cache)
 
 ```bash
 # In repo root directory
@@ -116,13 +116,18 @@ go run cmd/main.go \
 go run examples/main.go
 ```
 
+### Start Mixer as a gRPC server backed by TMCF + CSV files
+
+Mixer can load and serve TMCF + CSV files. This is used for a private Data Commons
+instance. This requires `--use_gcs_data=true` with `--gcs_bucket` and `gcs_object_prefix` set.
+
 Run the following code to start mixer gRPC server with TMCF + CSV files stored in GCS
 
 ```bash
 # In repo root directory
 go run cmd/main.go \
     --gcs_bucket=datcom-public \
-    --gcs_object_prefix=our-world-in-data \
+    --gcs_object_prefix=test \
     --use_gcs_data=true \
     --use_bigquery=false \
     --use_base_bt=false \

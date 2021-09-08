@@ -42,6 +42,16 @@ func NewMemDb() *MemDb {
 	}
 }
 
+// ReadSeries reads stat series from in-memory DB.
+func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
+	if _, ok := memDb.statSeries[statVar]; ok {
+		if series, ok := memDb.statSeries[statVar][place]; ok {
+			return series
+		}
+	}
+	return []*pb.Series{}
+}
+
 // LoadFromGcs loads tmcf + csv files into memory database
 func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) error {
 	gcsClient, err := storage.NewClient(ctx)
