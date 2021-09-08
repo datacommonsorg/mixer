@@ -41,14 +41,19 @@ import (
 )
 
 var (
-	mixerProject  = flag.String("mixer_project", "", "The cloud project to run the mixer instance.")
-	storeProject  = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
-	bqDataset     = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	baseTableName = flag.String("base_table", "", "Base cache Bigtable table.")
-	port          = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS       = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
-	bigqueryOnly  = flag.Bool("bigquery_only", false, "The service only serves sparql query")
-	schemaPath    = flag.String("schema_path", "/translator/mapping", "The directory that contains the schema mapping files")
+	mixerProject    = flag.String("mixer_project", "", "The cloud project to run the mixer instance.")
+	storeProject    = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
+	bqDataset       = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	baseTableName   = flag.String("base_table", "", "Base cache Bigtable table.")
+	port            = flag.Int("port", 12345, "Port on which to run the server.")
+	useALTS         = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	schemaPath      = flag.String("schema_path", "", "The directory that contains the schema mapping files")
+	gcsBucket       = flag.String("gcs_bucket", "", "The GCS bucket that contains tmcf and csv files")
+	gcsObjectPrefix = flag.String("gcs_object_prefix", "", "Path (sub-directory) for an import. An import must have a unique prefix within a bucket.")
+	useBigquery     = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
+	useBaseBt       = flag.Bool("use_base_bt", true, "Use base bigtable cache")
+	useBranchBt     = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
+	useGcsData      = flag.Bool("use_gcs_data", false, "Use tmcf and csv from GCS")
 )
 
 const (
@@ -61,14 +66,16 @@ const (
 )
 
 func main() {
-	fmt.Println("Enter mixer main() function")
-
+	log.Println("Enter mixer main() function")
+	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
-	ctx := context.Background()
 
-	credentials, error := google.FindDefaultCredentials(ctx, compute.ComputeScope)
-	if error == nil && credentials.ProjectID != "" {
+	ctx := context.Background()
+	var err error
+
+	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
+	if err == nil && credentials.ProjectID != "" {
 		cfg := profiler.Config{
 			Service:        "mixer-service",
 			ServiceVersion: *baseTableName,
@@ -79,34 +86,39 @@ func main() {
 		}
 	}
 
-	memdb := &store.MemDb{}
-
-	// BigQuery.
-	bqClient, err := bigquery.NewClient(ctx, *mixerProject)
-	if err != nil {
-		log.Fatalf("Failed to create Bigquery client: %v", err)
+	// TMCF + CSV from GCS
+	memdb := store.NewMemDb()
+	if *useGcsData && *gcsBucket != "" {
+		err = memdb.LoadFromGcs(ctx, *gcsBucket, *gcsObjectPrefix)
+		if err != nil {
+			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
+		}
 	}
 
+	// BigQuery.
+	var bqClient *bigquery.Client
+	var metadata *server.Metadata
+	if *useBigquery {
+		bqClient, err = bigquery.NewClient(ctx, *mixerProject)
+		if err != nil {
+			log.Fatalf("Failed to create Bigquery client: %v", err)
+		}
+		// Metadata.
+		metadata, err = server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
+		if err != nil {
+			log.Fatalf("Failed to create metadata: %v", err)
+		}
+	}
+
+	// Base Bigtable cache
 	var baseTable *bigtable.Table
-	var branchTable *bigtable.Table
 	var cache *server.Cache
-	if !*bigqueryOnly {
+	if *useBaseBt {
 		// Base cache
 		baseTable, err = server.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
-		branchTableName, err := server.ReadBranchTableName(
-			ctx, branchCacheVersionBucket, branchCacheVersionFile)
-		if err != nil {
-			log.Fatalf("Failed to read branch cache folder: %v", err)
-		}
-		branchTable, err = server.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
-
-		if err != nil {
-			log.Fatalf("Failed to create BigTable client: %v", err)
-		}
-
 		// Cache.
 		cache, err = server.NewCache(ctx, baseTable)
 		if err != nil {
@@ -114,17 +126,25 @@ func main() {
 		}
 	}
 
-	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
-	if err != nil {
-		log.Fatalf("Failed to create metadata: %v", err)
+	// Branch Bigtable cache
+	var branchTable *bigtable.Table
+	if *useBranchBt {
+		branchTableName, err := server.ReadBranchTableName(
+			ctx, branchCacheVersionBucket, branchCacheVersionFile)
+		if err != nil {
+			log.Fatalf("Failed to read branch cache folder: %v", err)
+		}
+		branchTable, err = server.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
+		if err != nil {
+			log.Fatalf("Failed to create BigTable client: %v", err)
+		}
 	}
 
 	// Create server object
 	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memdb)
 
-	// Subscribe to cache update
-	if !*bigqueryOnly {
+	// Subscribe to branch cache update
+	if *useBranchBt {
 		sub, err := s.SubscribeBranchCacheUpdate(
 			ctx, *storeProject, branchCacheVersionBucket, subscriberPrefix, pubsubTopic)
 		if err != nil {

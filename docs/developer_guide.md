@@ -101,7 +101,7 @@ protoc \
 
 ### Start mixer as a gRPC server
 
-Run the following code to start mixer gRPC server
+Run the following code to start mixer gRPC server (without branch BT)
 
 ```bash
 # In repo root directory
@@ -110,9 +110,23 @@ go run cmd/main.go \
     --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_table=$(head -1 deploy/storage/bigtable.version) \
-    --schema_path=$PWD/deploy/mapping/
+    --schema_path=$PWD/deploy/mapping/ \
+    --use_branch_bt=false
 
 go run examples/main.go
+```
+
+Run the following code to start mixer gRPC server with TMCF + CSV files stored in GCS
+
+```bash
+# In repo root directory
+go run cmd/main.go \
+    --gcs_bucket=datcom-public \
+    --gcs_object_prefix=our-world-in-data \
+    --use_gcs_data=true \
+    --use_bigquery=false \
+    --use_base_bt=false \
+    --use_branch_bt=false
 ```
 
 ### Run Tests (Go)

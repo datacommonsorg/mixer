@@ -15,13 +15,18 @@
 package store
 
 import (
-	"io/ioutil"
+	"context"
+	"encoding/csv"
+	"io"
 	"log"
+	"path/filepath"
 	"strconv"
 	"strings"
 
+	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"google.golang.org/api/iterator"
 )
 
 // MemDb holds imported data in memory.
@@ -30,19 +35,87 @@ type MemDb struct {
 	statSeries map[string]map[string][]*pb.Series
 }
 
-// Load loads tmcf + csv files into memory database
-func (memDb *MemDb) Load(tmcfFile string) error {
-	tmcfBytes, err := ioutil.ReadFile(tmcfFile)
+// NewMemDb initialize a MemDb instance.
+func NewMemDb() *MemDb {
+	return &MemDb{
+		statSeries: map[string]map[string][]*pb.Series{},
+	}
+}
+
+// LoadFromGcs loads tmcf + csv files into memory database
+func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) error {
+	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		return err
 	}
-	schemaMapping, err := parser.ParseTmcf(string(tmcfBytes))
-	// TODO: implement csv parsing and actual data loading
-	log.Printf("%v", schemaMapping)
-	if err != nil {
-		return err
+	// The bucket should contain one tmcf and multiple compatible csv files.
+	bkt := gcsClient.Bucket(bucket)
+	objectQuery := &storage.Query{Prefix: prefix}
+	var objects []string
+	it := bkt.Objects(ctx, objectQuery)
+	for {
+		attrs, err := it.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return err
+		}
+		objects = append(objects, attrs.Name)
 	}
-	memDb.statSeries = map[string]map[string][]*pb.Series{}
+	// Read TMCF
+	var schemaMapping map[string]*parser.TableSchema
+	for _, object := range objects {
+		if strings.HasSuffix(object, ".tmcf") {
+			obj := bkt.Object(object)
+			r, err := obj.NewReader(ctx)
+			if err != nil {
+				return err
+			}
+			defer r.Close()
+			buf := new(strings.Builder)
+			if _, err := io.Copy(buf, r); err != nil {
+				return err
+			}
+			schemaMapping, err = parser.ParseTmcf(buf.String())
+			if err != nil {
+				return err
+			}
+			break
+		}
+	}
+	count := 0
+	for _, object := range objects {
+		if strings.HasSuffix(object, ".csv") {
+			obj := bkt.Object(object)
+			r, err := obj.NewReader(ctx)
+			if err != nil {
+				return err
+			}
+			defer r.Close()
+			tableName := strings.TrimSuffix(filepath.Base(object), ".csv")
+			csvReader := csv.NewReader(r)
+			header, err := csvReader.Read()
+			if err != nil {
+				return err
+			}
+			for {
+				row, err := csvReader.Read()
+				if err == io.EOF {
+					break
+				}
+				if err != nil {
+					return err
+				}
+				err = addRow(header, row, schemaMapping[tableName], memDb.statSeries)
+				if err != nil {
+					return err
+				}
+				count++
+			}
+		}
+	}
+	log.Printf("Number of csv rows added: %d", count)
 	return nil
 }
 
