@@ -17,6 +17,7 @@ set -e
 
 PROJECT_ID=$(yq eval '.project' config.yaml)
 STORE_PROJECT_ID=$(yq eval '.store' config.yaml)
+BUCKET=$(yq eval '.bucket' config.yaml)
 
 NAME="mixer-robot"
 SERVICE_ACCOUNT="$NAME@$PROJECT_ID.iam.gserviceaccount.com"
@@ -54,4 +55,8 @@ if [[ $STORE_PROJECT_ID != '' ]]; then
       --member serviceAccount:$SERVICE_ACCOUNT \
       --role $role
   done
+fi
+
+if [[ $BUCKET != 'null' ]]; then
+  gsutil iam ch serviceAccount:$SERVICE_ACCOUNT:roles/storage.objectViewer gs://$BUCKET
 fi

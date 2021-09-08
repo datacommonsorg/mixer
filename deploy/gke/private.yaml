@@ -19,3 +19,4 @@ api_title: DataCommons API (Private)
 region: us-central1
 nodes: 1
 store:
+bucket: datcom-public
