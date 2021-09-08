@@ -17,6 +17,7 @@ set -e
 
 PROJECT_ID=$(yq eval '.project' config.yaml)
 STORE_PROJECT_ID=$(yq eval '.store' config.yaml)
+BUCKET=$(yq eval '.bucket' config.yaml)
 
 NAME="mixer-robot"
 SERVICE_ACCOUNT="$NAME@$PROJECT_ID.iam.gserviceaccount.com"
@@ -41,15 +42,21 @@ do
 done
 
 # Data store project roles
-declare -a roles=(
-    "roles/bigquery.admin"   # Query BigQuery
-    "roles/bigtable.reader" # Query Bigtable
-    "roles/storage.objectViewer" # Branch Cache Read
-    "roles/pubsub.editor" # Branch Cache subscription
-)
-for role in "${roles[@]}"
-do
-  gcloud projects add-iam-policy-binding $STORE_PROJECT_ID \
-    --member serviceAccount:$SERVICE_ACCOUNT \
-    --role $role
-done
+if [[ $STORE_PROJECT_ID != '' ]]; then
+  declare -a roles=(
+      "roles/bigquery.admin"   # Query BigQuery
+      "roles/bigtable.reader" # Query Bigtable
+      "roles/storage.objectViewer" # Branch Cache Read
+      "roles/pubsub.editor" # Branch Cache subscription
+  )
+  for role in "${roles[@]}"
+  do
+    gcloud projects add-iam-policy-binding $STORE_PROJECT_ID \
+      --member serviceAccount:$SERVICE_ACCOUNT \
+      --role $role
+  done
+fi
+
+if [[ $BUCKET != 'null' ]]; then
+  gsutil iam ch serviceAccount:$SERVICE_ACCOUNT:roles/storage.objectViewer gs://$BUCKET
+fi
