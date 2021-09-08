@@ -41,18 +41,19 @@ import (
 )
 
 var (
-	mixerProject  = flag.String("mixer_project", "", "The cloud project to run the mixer instance.")
-	storeProject  = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
-	bqDataset     = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	baseTableName = flag.String("base_table", "", "Base cache Bigtable table.")
-	port          = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS       = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
-	schemaPath    = flag.String("schema_path", "", "The directory that contains the schema mapping files")
-	dataBucket    = flag.String("data_bucket", "", "The GCS bucket that contains tmcf and csv files")
-	useBigquery   = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
-	useBaseBt     = flag.Bool("use_base_bt", true, "Use base bigtable cache")
-	useBranchBt   = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
-	useGcsData    = flag.Bool("use_gcs_data", false, "Use tmcf and csv from GCS")
+	mixerProject    = flag.String("mixer_project", "", "The cloud project to run the mixer instance.")
+	storeProject    = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
+	bqDataset       = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	baseTableName   = flag.String("base_table", "", "Base cache Bigtable table.")
+	port            = flag.Int("port", 12345, "Port on which to run the server.")
+	useALTS         = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	schemaPath      = flag.String("schema_path", "", "The directory that contains the schema mapping files")
+	gcsBucket       = flag.String("gcs_bucket", "", "The GCS bucket that contains tmcf and csv files")
+	gcsObjectPrefix = flag.String("gcs_object_prefix", "", "The Prefix of GCS objects, this is the sub-directory path")
+	useBigquery     = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
+	useBaseBt       = flag.Bool("use_base_bt", true, "Use base bigtable cache")
+	useBranchBt     = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
+	useGcsData      = flag.Bool("use_gcs_data", false, "Use tmcf and csv from GCS")
 )
 
 const (
@@ -87,8 +88,8 @@ func main() {
 
 	// TMCF + CSV from GCS
 	memdb := store.NewMemDb()
-	if *useGcsData && *dataBucket != "" {
-		err = memdb.LoadFromGcs(ctx, *dataBucket)
+	if *useGcsData && *gcsBucket != "" {
+		err = memdb.LoadFromGcs(ctx, *gcsBucket, *gcsObjectPrefix)
 		if err != nil {
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}

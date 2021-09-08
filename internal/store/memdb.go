@@ -40,14 +40,14 @@ func NewMemDb() *MemDb {
 }
 
 // LoadFromGcs loads tmcf + csv files into memory database
-func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket string) error {
+func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) error {
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		return err
 	}
 	// The bucket should contain one tmcf and multiple compatible csv files.
 	bkt := gcsClient.Bucket(bucket)
-	objectQuery := &storage.Query{Prefix: ""}
+	objectQuery := &storage.Query{Prefix: prefix}
 	var objects []string
 	it := bkt.Objects(ctx, objectQuery)
 	for {
@@ -82,6 +82,7 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket string) error {
 		}
 	}
 
+	count := 0
 	for _, object := range objects {
 		if strings.HasSuffix(object, ".csv") {
 			obj := bkt.Object(object)
@@ -101,9 +102,11 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket string) error {
 					return err
 				}
 				addRow(schemaMapping[tableName], memDb.statSeries, row)
+				count++
 			}
 		}
 	}
+	log.Printf("Number of csv rows added: %d", count)
 	return nil
 }
 
