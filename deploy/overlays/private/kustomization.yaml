@@ -45,3 +45,15 @@ patchesStrategicMerge:
         rollingUpdate:
           maxSurge: 3
           maxUnavailable: 75%
+      template:
+        spec:
+          containers:
+            - name: mixer
+              args:
+                - --mixer_project=$(MIXER_PROJECT)
+                - --use_gcs_data=true
+                - --gcs_bucket=datcom-public
+                - --gcs_object_prefix=iea
+                - --use_bigquery=false
+                - --use_base_bt=false
+                - --use_branch_bt=false

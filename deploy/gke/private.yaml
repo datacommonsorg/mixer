@@ -15,7 +15,7 @@
 project: datcom-mixer-private
 ip: 34.117.109.110
 domain: mixer.endpoints.datcom-mixer-private.cloud.goog
-api_title:
+api_title: DataCommons API (Private)
 region: us-central1
 nodes: 1
 store:
