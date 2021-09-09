@@ -46,6 +46,7 @@ func TestParseMcf(t *testing.T) {
 					NodeSchema: map[string]map[string]string{
 						"E0": {
 							"measurementMethod": "FBI_Crime",
+							"observationPeriod": "P1M",
 							"typeOf":            "StatVarObservation",
 							"variableMeasured":  "Count_CriminalActivities_ViolentCrime",
 						},
