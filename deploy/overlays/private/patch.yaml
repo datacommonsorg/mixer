@@ -12,18 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Do not use service for esp
-- op: remove
-  path: /spec/template/spec/containers/1/args/0
-# Add service json path for esp
-- op: add
-  path: /spec/template/spec/containers/1/args/0
-  value: --service_json_path=/esp/mixer-grpc.json
-# esp runs in non_gcp mode
-- op: add
-  path: /spec/template/spec/containers/1/args/0
-  value: --non_gcp
-
 # mixer tmcf+csv args
 - op: add
   path: /spec/template/spec/containers/0/args/0

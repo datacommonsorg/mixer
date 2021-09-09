@@ -93,6 +93,8 @@ func ParseTmcf(tmcf string) (map[string]*TableSchema, error) {
 			for _, prefix := range []string{"dcs:", "dcid:", "schema:"} {
 				schema = strings.TrimPrefix(schema, prefix)
 			}
+			// Remove quote in TMCF schema like:
+			// observationPeriod: "P1M"
 			schema = strings.Trim(schema, "\"")
 			if table == "" || node == "" {
 				return nil, status.Errorf(codes.Internal, "Invalid input for Column:\n%s", line)
