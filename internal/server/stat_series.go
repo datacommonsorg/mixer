@@ -177,7 +177,6 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			codes.InvalidArgument, "Missing required argument: stat_vars")
 	}
 
-	rowList, keyTokens := buildStatsKey(places, statVars)
 	// Initialize result with place and stat var dcids.
 	result := &pb.GetStatSetSeriesResponse{
 		Data: make(map[string]*pb.SeriesMap),
@@ -190,16 +189,21 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			result.Data[place].Data[statVar] = nil
 		}
 	}
-	// Read data from BigTable.
-	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
-	if err != nil {
-		return nil, err
-	}
-	for place, placeData := range cacheData {
-		for statVar, data := range placeData {
-			if data != nil {
-				series, _ := getBestSeries(data, false /* useLatest */)
-				result.Data[place].Data[statVar] = series
+	// Read data from Cloud Bigtable.
+	if s.store.BaseBt() != nil {
+		rowList, keyTokens := buildStatsKey(places, statVars)
+
+		// Read data from BigTable.
+		cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
+		if err != nil {
+			return nil, err
+		}
+		for place, placeData := range cacheData {
+			for statVar, data := range placeData {
+				if data != nil {
+					series, _ := getBestSeries(data, false /* useLatest */)
+					result.Data[place].Data[statVar] = series
+				}
 			}
 		}
 	}

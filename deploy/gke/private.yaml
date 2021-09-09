@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-project: datcom-mixer-private
-ip: 34.117.109.110
-domain: mixer.endpoints.datcom-mixer-private.cloud.goog
+project: datcom-mixer-statvar
+ip: 35.244.175.66
+domain: mixer.endpoints.datcom-mixer-statvar.cloud.goog
 api_title: DataCommons API (Private)
 region: us-central1
 nodes: 1

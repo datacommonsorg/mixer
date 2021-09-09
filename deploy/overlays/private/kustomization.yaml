@@ -29,8 +29,8 @@ configMapGenerator:
     behavior: create
     namespace: mixer
     literals:
-      - mixerProject=datcom-mixer-private
-      - serviceName=mixer.endpoints.datcom-mixer-private.cloud.goog
+      - mixerProject=datcom-mixer-statvar
+      - serviceName=mixer.endpoints.datcom-mixer-statvar.cloud.goog
 
 patchesStrategicMerge:
   - |-
