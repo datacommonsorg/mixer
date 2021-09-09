@@ -20,6 +20,7 @@ import (
 	"io"
 	"log"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -75,6 +76,8 @@ func (memDb *MemDb) GetStatVars(places []string) ([]string, []string) {
 			noDataStatVars = append(noDataStatVars, statVar)
 		}
 	}
+	sort.Strings(hasDataStatVars)
+	sort.Strings(noDataStatVars)
 	return hasDataStatVars, noDataStatVars
 }
 
