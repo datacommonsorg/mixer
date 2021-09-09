@@ -31,22 +31,22 @@ spec:
           imagePullPolicy: Never
           resources:
             limits:
-              memory: "3G"
-              cpu: "800m"
+              memory: "2G"
+              cpu: "400m"
             requests:
-              memory: "3G"
-              cpu: "800m"
+              memory: "2G"
+              cpu: "400m"
         - name: esp
           volumeMounts:
             - mountPath: /esp
               name: mixer-grpc-json
           resources:
             limits:
-              memory: "1G"
-              cpu: "200m"
+              memory: "0.5G"
+              cpu: "100m"
             requests:
-              memory: "1G"
-              cpu: "200m"
+              memory: "0.5G"
+              cpu: "100m"
         - name: api-compiler
           image: datacommons/api-compiler
           imagePullPolicy: Never
