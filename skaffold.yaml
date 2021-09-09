@@ -44,4 +44,4 @@ portForward:
   resourceName: mixer-service-local
   namespace: mixer
   port: 80
-  localPort: 9090
+  localPort: 8081

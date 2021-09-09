@@ -50,12 +50,12 @@ kubectl config use-context minikube
 skaffold dev --port-forward -n mixer
 ```
 
-This exposes the local mixer service at `localhost:9090`.
+This exposes the local mixer service at `localhost:8081`.
 
 To verify the server serving request:
 
 ```bash
-curl http://localhost:9090/node/property-labels?dcids=Class
+curl http://localhost:8081/node/property-labels?dcids=Class
 ```
 
 After code edit, the container images are automatically rebuilt and re-deployed to the local cluster.
