@@ -201,7 +201,7 @@ func addRow(
 			}
 		}
 	}
-	// Population observation into the final result.
+	// Populate observation in the final result.
 	for _, obs := range allNodes {
 		if _, ok := statSeries[obs.statVar]; !ok {
 			statSeries[obs.statVar] = map[string][]*pb.Series{}

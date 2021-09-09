@@ -23,3 +23,14 @@
 - op: add
   path: /spec/template/spec/containers/1/args/0
   value: --non_gcp
+
+# mixer tmcf+csv args
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --use_gcs_data=true
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --gcs_bucket=datcom-public
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --gcs_object_prefix=iea

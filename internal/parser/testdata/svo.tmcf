@@ -5,6 +5,7 @@ variableMeasured: dcs:Count_CriminalActivities_ViolentCrime
 measurementMethod: dcs:FBI_Crime
 observationAbout: C:FBI_Crime->GeoId
 observationDate: C:FBI_Crime->Year
+observationPeriod: "P1M"
 value: C:FBI_Crime->Count_CriminalActivities_ViolentCrime
 
 Node: E:FBI_Crime->E1

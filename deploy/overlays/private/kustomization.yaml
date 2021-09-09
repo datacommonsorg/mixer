@@ -29,8 +29,8 @@ configMapGenerator:
     behavior: create
     namespace: mixer
     literals:
-      - mixerProject=datcom-mixer-private
-      - serviceName=mixer.endpoints.datcom-mixer-private.cloud.goog
+      - mixerProject=datcom-mixer-statvar
+      - serviceName=mixer.endpoints.datcom-mixer-statvar.cloud.goog
 
 patchesStrategicMerge:
   - |-
@@ -45,15 +45,11 @@ patchesStrategicMerge:
         rollingUpdate:
           maxSurge: 3
           maxUnavailable: 75%
-      template:
-        spec:
-          containers:
-            - name: mixer
-              args:
-                - --mixer_project=$(MIXER_PROJECT)
-                - --use_gcs_data=true
-                - --gcs_bucket=datcom-public
-                - --gcs_object_prefix=iea
-                - --use_bigquery=false
-                - --use_base_bt=false
-                - --use_branch_bt=false
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: mixer-grpc
+    path: patch.yaml

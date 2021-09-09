@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-project: datcom-mixer-statvar
-ip: 35.244.175.66
-domain: mixer.endpoints.datcom-mixer-statvar.cloud.goog
-api_title: DataCommons API (Private)
-region: us-central1
-nodes: 1
-store:
-bucket: datcom-public
+# mixer tmcf+csv args
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --use_gcs_data=true
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --gcs_bucket=datcom-public
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --gcs_object_prefix=iea
