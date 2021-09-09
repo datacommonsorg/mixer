@@ -52,6 +52,32 @@ func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
 	return []*pb.Series{}
 }
 
+// GetStatVars retrieves the stat vars from private import that have data for
+// the given places.
+func (memDb *MemDb) GetStatVars(places []string) ([]string, []string) {
+	hasDataStatVars := []string{}
+	noDataStatVars := []string{}
+	for statVar, statVarData := range memDb.statSeries {
+		valid := false
+		if len(places) == 0 {
+			valid = true
+		} else {
+			for _, place := range places {
+				if _, ok := statVarData[place]; ok {
+					valid = true
+					break
+				}
+			}
+		}
+		if valid {
+			hasDataStatVars = append(hasDataStatVars, statVar)
+		} else {
+			noDataStatVars = append(noDataStatVars, statVar)
+		}
+	}
+	return hasDataStatVars, noDataStatVars
+}
+
 // LoadFromGcs loads tmcf + csv files into memory database
 func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) error {
 	gcsClient, err := storage.NewClient(ctx)

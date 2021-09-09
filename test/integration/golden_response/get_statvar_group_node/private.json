@@ -1,0 +1,54 @@
+{
+  "childStatVars": [
+    {
+      "id": "Test_Stat_Var_2",
+      "displayName": "Test_Stat_Var_2",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_4",
+      "displayName": "Test_Stat_Var_4",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_9",
+      "displayName": "Test_Stat_Var_9",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_1",
+      "displayName": "Test_Stat_Var_1",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_10",
+      "displayName": "Test_Stat_Var_10",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_6",
+      "displayName": "Test_Stat_Var_6",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_7",
+      "displayName": "Test_Stat_Var_7",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_5",
+      "displayName": "Test_Stat_Var_5",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_8",
+      "displayName": "Test_Stat_Var_8",
+      "hasData": true
+    },
+    {
+      "id": "Test_Stat_Var_3",
+      "displayName": "Test_Stat_Var_3",
+      "hasData": true
+    }
+  ]
+}

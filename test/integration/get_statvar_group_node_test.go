@@ -84,6 +84,11 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			"dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
 			"citizenship.json",
 		},
+		{
+			[]string{"country/ALB"},
+			"dc/g/Private",
+			"private.json",
+		},
 	} {
 		resp, err := client.GetStatVarGroupNode(ctx, &pb.GetStatVarGroupNodeRequest{
 			Places:       c.places,
