@@ -78,6 +78,12 @@
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
       "numDescendentStatVars": 5516
+    },
+    {
+      "id": "dc/g/Private",
+      "specializedEntity": "Private",
+      "displayName": "Private",
+      "numDescendentStatVars": 10
     }
   ],
   "numDescendentStatVars": 60618

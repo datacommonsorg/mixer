@@ -263,6 +263,43 @@ func (s *Server) GetStatVarGroupNode(
 			}
 		}
 	}
+
+	// Gather stat vars from the private import
+	if s.store.MemDb != nil {
+		hasDataStatVars, noDataStatVars := s.store.MemDb.GetStatVars([]string{})
+		if svg == "dc/g/Root" {
+			result.ChildStatVarGroups = append(
+				result.ChildStatVarGroups,
+				&pb.StatVarGroupNode_ChildSVG{
+					Id:                    "dc/g/Private",
+					SpecializedEntity:     "Private",
+					DisplayName:           "Private",
+					NumDescendentStatVars: int32(len(hasDataStatVars) + len(noDataStatVars)),
+				},
+			)
+		} else if svg == "dc/g/Private" {
+			for _, statVar := range hasDataStatVars {
+				result.ChildStatVars = append(
+					result.ChildStatVars,
+					&pb.StatVarGroupNode_ChildSV{
+						Id:          statVar,
+						DisplayName: statVar,
+						HasData:     true,
+					},
+				)
+			}
+			for _, statVar := range noDataStatVars {
+				result.ChildStatVars = append(
+					result.ChildStatVars,
+					&pb.StatVarGroupNode_ChildSV{
+						Id:          statVar,
+						DisplayName: statVar,
+						HasData:     false,
+					},
+				)
+			}
+		}
+	}
 	return result, nil
 }
 
