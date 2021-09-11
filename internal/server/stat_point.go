@@ -155,80 +155,121 @@ func (s *Server) GetStatSetWithinPlace(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: child_type")
 	}
+	dateKey := date
 	if date == "" {
-		// Try to read from cache directly
-		rowList, keyTokens := buildStatSetWithinPlaceKey(parentPlace, childType, "LATEST", statVars)
-		cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
-		if err != nil {
-			return nil, err
+		dateKey = "LATEST"
+	}
+
+	// Pre-populate result
+	result := &pb.GetStatSetResponse{
+		Data: make(map[string]*pb.PlacePointStat),
+	}
+	for _, statVar := range statVars {
+		result.Data[statVar] = &pb.PlacePointStat{
+			Stat:     make(map[string]*pb.PointStat),
+			Metadata: make(map[string]*pb.StatMetadata),
 		}
-		result := &pb.GetStatSetResponse{
-			Data: make(map[string]*pb.PlacePointStat),
+	}
+
+	// Read from cache directly
+	rowList, keyTokens := buildStatSetWithinPlaceKey(parentPlace, childType, dateKey, statVars)
+	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
+	if err != nil {
+		return nil, err
+	}
+
+	gotResult := false
+	for statVar, data := range cacheData {
+		if data == nil {
+			continue
 		}
-		for _, statVar := range statVars {
-			result.Data[statVar] = &pb.PlacePointStat{
-				Stat:     make(map[string]*pb.PointStat),
-				Metadata: make(map[string]*pb.StatMetadata),
-			}
-		}
-		gotResult := false
-		for statVar, data := range cacheData {
-			if data != nil {
-				gotResult = true
-				cohorts := data.SourceCohorts
-				// Sort cohort first, so the preferred source is populated first. Then only
-				// update when there is a later data.
-				sort.Sort(SeriesByRank(cohorts))
-				for _, cohort := range cohorts {
-					for place, val := range cohort.Val {
-						pointStat, ok := result.Data[statVar].Stat[place]
-						if !ok || pointStat.Date < cohort.PlaceToLatestDate[place] {
-							metaData := &pb.StatMetadata{
-								MeasurementMethod: cohort.MeasurementMethod,
-								ObservationPeriod: cohort.ObservationPeriod,
-								ProvenanceUrl:     cohort.ProvenanceUrl,
-								ScalingFactor:     cohort.ScalingFactor,
-								ImportName:        cohort.ImportName,
-								Unit:              cohort.Unit,
-							}
-							result.Data[statVar].Stat[place] = &pb.PointStat{
-								Date:     cohort.PlaceToLatestDate[place],
-								Value:    val,
-								Metadata: metaData,
-							}
-							result.Data[statVar].Metadata[cohort.ImportName] = metaData
-						}
+		gotResult = true
+		cohorts := data.SourceCohorts
+		// Sort cohort first, so the preferred source is populated first.
+		sort.Sort(SeriesByRank(cohorts))
+		// update when there is a later data.
+		for _, cohort := range cohorts {
+			for place, val := range cohort.Val {
+				pointStat, ok := result.Data[statVar].Stat[place]
+				// This works when date is set. The result will be populated in first
+				// for loop only.
+				if !ok || pointStat.Date < cohort.PlaceToLatestDate[place] {
+					metaData := &pb.StatMetadata{
+						MeasurementMethod: cohort.MeasurementMethod,
+						ObservationPeriod: cohort.ObservationPeriod,
+						ProvenanceUrl:     cohort.ProvenanceUrl,
+						ScalingFactor:     cohort.ScalingFactor,
+						ImportName:        cohort.ImportName,
+						Unit:              cohort.Unit,
 					}
+					usedDate := date
+					if usedDate == "" {
+						usedDate = cohort.PlaceToLatestDate[place]
+					}
+					result.Data[statVar].Stat[place] = &pb.PointStat{
+						Date:     usedDate,
+						Value:    val,
+						Metadata: &pb.StatMetadata{ImportName: cohort.ImportName},
+					}
+					result.Data[statVar].Metadata[cohort.ImportName] = metaData
 				}
 			}
 		}
-		if gotResult {
-			return result, nil
+	}
+	// Check if need to read from memory database.
+	statVarInMemDb := false
+	for _, statVar := range statVars {
+		if s.store.MemDb.HasStatVar(statVar) {
+			statVarInMemDb = true
+			break
+		}
+	}
+
+	// Need to fetch child places if to read data from memory database or
+	// from per place,statvar bigtable.
+	var childPlaces []string
+	if !gotResult || statVarInMemDb {
+		rowList = buildPlaceInKey([]string{parentPlace}, childType)
+		// Place relations are from base geo imports. Only trust the base cache.
+		baseDataMap, _, err := bigTableReadRowsParallel(
+			ctx,
+			s.store,
+			rowList,
+			func(dcid string, jsonRaw []byte) (interface{}, error) {
+				return strings.Split(string(jsonRaw), ","), nil
+			},
+			nil,
+			false, /* readBranch */
+		)
+		if err != nil {
+			return nil, err
+		}
+		if baseDataMap[parentPlace] != nil {
+			childPlaces = baseDataMap[parentPlace].([]string)
 		}
 	}
 
 	// No data found from cache, fetch stat series for each place separately.
-	// Get all the child places
-	rowList := buildPlaceInKey([]string{parentPlace}, childType)
-	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataMap, _, err := bigTableReadRowsParallel(
-		ctx,
-		s.store,
-		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			return strings.Split(string(jsonRaw), ","), nil
-		},
-		nil,
-		false, /* readBranch */
-	)
-	if err != nil {
-		return nil, err
+	if !gotResult {
+		result, err = getStatSet(ctx, s, childPlaces, statVars, date)
+		if err != nil {
+			return nil, err
+		}
 	}
-	if baseDataMap[parentPlace] == nil {
-		return &pb.GetStatSetResponse{
-			Data: make(map[string]*pb.PlacePointStat),
-		}, nil
+
+	// Merge data from in-memory database.
+	if statVarInMemDb {
+		for _, statVar := range statVars {
+			for _, place := range childPlaces {
+				pointValue, meta := s.store.MemDb.ReadPointValue(statVar, place, date)
+				// Override public data from private import
+				if pointValue != nil {
+					result.Data[statVar].Stat[place] = pointValue
+					result.Data[statVar].Metadata[meta.ImportName] = meta
+				}
+			}
+		}
 	}
-	childPlaces := baseDataMap[parentPlace].([]string)
-	return getStatSet(ctx, s, childPlaces, statVars, date)
+
+	return result, nil
 }

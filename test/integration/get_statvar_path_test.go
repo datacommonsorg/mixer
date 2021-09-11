@@ -29,7 +29,7 @@ func TestGetStatVarPath(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, err := setup(true)
+	client, err := setup(&TestOption{useCache: true, useMemdb: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -48,6 +48,10 @@ func TestGetStatVarPath(t *testing.T) {
 		{
 			"dc/g/Person_EducationalAttainment",
 			"school.json",
+		},
+		{
+			"Test_Stat_Var_1",
+			"memdb.json",
 		},
 	} {
 		resp, err := client.GetStatVarPath(ctx, &pb.GetStatVarPathRequest{

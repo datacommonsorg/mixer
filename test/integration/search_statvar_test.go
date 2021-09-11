@@ -29,7 +29,7 @@ func TestSearchStatVar(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, err := setup(true)
+	client, err := setup(&TestOption{useCache: true, useMemdb: false})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

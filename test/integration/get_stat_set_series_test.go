@@ -30,7 +30,7 @@ func TestGetStatSetSeries(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, err := setup()
+	client, err := setup(&TestOption{useCache: false, useMemdb: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

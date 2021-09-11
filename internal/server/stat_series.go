@@ -210,7 +210,7 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 	// Read data from in-memory cache (private data).
 	// When there is data in both BigTable and private data. Prefer private data
 	// as this instance is for a private DC.
-	if s.store.MemDb != nil {
+	if !s.store.MemDb.IsEmpty() {
 		for _, place := range places {
 			for _, statVar := range statVars {
 				series := s.store.MemDb.ReadSeries(statVar, place)

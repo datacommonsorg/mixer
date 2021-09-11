@@ -265,7 +265,7 @@ func (s *Server) GetStatVarGroupNode(
 	}
 
 	// Gather stat vars from the private import
-	if s.store.MemDb != nil {
+	if !s.store.MemDb.IsEmpty() {
 		hasDataStatVars, noDataStatVars := s.store.MemDb.GetStatVars([]string{})
 		if svg == "dc/g/Root" {
 			result.ChildStatVarGroups = append(
@@ -312,6 +312,13 @@ func (s *Server) GetStatVarPath(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "Missing required argument: id")
 	}
+	// Memory database stat vars are directly under "dc/g/Private"
+	if s.store.MemDb.HasStatVar(id) {
+		return &pb.GetStatVarPathResponse{
+			Path: []string{id, "dc/g/Private", "dc/g/Root"},
+		}, nil
+	}
+
 	path := []string{id}
 	curr := id
 	for {

@@ -36,6 +36,11 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 )
 
+type TestOption struct {
+	useCache bool
+	useMemdb bool
+}
+
 var generateGolden bool
 
 func init() {
@@ -55,19 +60,26 @@ const (
 	tmcfCsvPrefix    = "test"
 )
 
-func setup(option ...bool) (pb.MixerClient, error) {
-	useCache := len(option) > 0
+func setup(option ...*TestOption) (pb.MixerClient, error) {
+	useCache, useMemdb := false, false
+	if len(option) == 1 {
+		useCache = option[0].useCache
+		useMemdb = option[0].useMemdb
+	}
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
 		"../../deploy/mapping",
 		storeProject,
 		useCache,
+		useMemdb,
 	)
 }
 
 func setupInternal(
-	bq, bt, mcfPath, storeProject string, useCache bool) (pb.MixerClient, error) {
+	bq, bt, mcfPath, storeProject string, useCache, useMemdb bool) (
+	pb.MixerClient, error,
+) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
@@ -106,11 +118,12 @@ func setupInternal(
 		cache = &server.Cache{}
 	}
 	memdb := store.NewMemDb()
-	err = memdb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
-	if err != nil {
-		log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
+	if useMemdb {
+		err = memdb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
+		if err != nil {
+			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
+		}
 	}
-
 	return newClient(bqClient, baseTable, branchTable, metadata, cache, memdb)
 }
 
