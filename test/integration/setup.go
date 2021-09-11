@@ -36,6 +36,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 )
 
+// TestOption holds the options for integration test.
 type TestOption struct {
 	useCache bool
 	useMemdb bool
