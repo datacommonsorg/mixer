@@ -63,6 +63,7 @@ func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
 	return []*pb.Series{}
 }
 
+// ReadPointValue reads one observation point.
 func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 	*pb.PointStat, *pb.StatMetadata,
 ) {
