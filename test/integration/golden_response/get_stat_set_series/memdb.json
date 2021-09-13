@@ -142,8 +142,8 @@
             "2021-08-10": 1280239
           },
           "metadata": {
-            "importName": "Private Import",
-            "provenanceUrl": "private.domain",
+            "importName": "Test Private Import",
+            "provenanceUrl": "https://test.datacommons.org",
             "measurementMethod": "Test_Method"
           }
         },
@@ -622,8 +622,8 @@
             "2021-06-13": 2224
           },
           "metadata": {
-            "importName": "Private Import",
-            "provenanceUrl": "private.domain",
+            "importName": "Test Private Import",
+            "provenanceUrl": "https://test.datacommons.org",
             "measurementMethod": "Test_Method"
           }
         }
@@ -662,8 +662,8 @@
             "2021-07-19": 82349
           },
           "metadata": {
-            "importName": "Private Import",
-            "provenanceUrl": "private.domain",
+            "importName": "Test Private Import",
+            "provenanceUrl": "https://test.datacommons.org",
             "measurementMethod": "Test_Method"
           }
         },
