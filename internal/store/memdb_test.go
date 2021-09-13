@@ -54,6 +54,11 @@ var (
 			},
 		},
 	}
+
+	manifest = &pb.Manifest{
+		ImportName:    "Private Import",
+		ProvenanceUrl: "private.domain",
+	}
 )
 
 func TestAddRow(t *testing.T) {
@@ -171,7 +176,7 @@ func TestAddRow(t *testing.T) {
 	} {
 		data := map[string]map[string][]*pb.Series{}
 		for _, row := range c.rows {
-			err := addRow(c.header, row, ts, data)
+			err := addRow(c.header, row, ts, data, manifest)
 			if err != nil {
 				t.Fail()
 			}

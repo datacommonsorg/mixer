@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/csv"
 	"io"
+	"io/ioutil"
 	"log"
 	"path/filepath"
 	"sort"
@@ -28,23 +29,21 @@ import (
 	"github.com/datacommonsorg/mixer/internal/parser"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/api/iterator"
-)
-
-// TODO(shifucun): Get the import name from GCS manifest file.
-const (
-	privateImport = "Private Import"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // MemDb holds imported data in memory.
 type MemDb struct {
 	// statVar -> place -> []Series
 	statSeries map[string]map[string][]*pb.Series
+	manifest   *pb.Manifest
 }
 
 // NewMemDb initialize a MemDb instance.
 func NewMemDb() *MemDb {
 	return &MemDb{
 		statSeries: map[string]map[string][]*pb.Series{},
+		manifest:   &pb.Manifest{},
 	}
 }
 
@@ -86,7 +85,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 					Date:  date,
 					Value: val,
 					Metadata: &pb.StatMetadata{
-						ImportName: privateImport,
+						ImportName: memDb.manifest.ImportName,
 					}}, series.Metadata
 			}
 		}
@@ -108,7 +107,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 			return &pb.PointStat{
 				Date:     latestDate,
 				Value:    latestVal,
-				Metadata: &pb.StatMetadata{ImportName: privateImport},
+				Metadata: &pb.StatMetadata{ImportName: memDb.manifest.ImportName},
 			}, meta
 		}
 	}
@@ -170,6 +169,29 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 		}
 		objects = append(objects, attrs.Name)
 	}
+	// Read manifest.json
+	for _, object := range objects {
+		log.Println(object)
+		if strings.HasSuffix(object, "manifest.json") {
+			r, err := bkt.Object(object).NewReader(ctx)
+			if err != nil {
+				return err
+			}
+			defer r.Close()
+			bytes, err := ioutil.ReadAll(r)
+			if err != nil {
+				return err
+			}
+			manifest := &pb.Manifest{}
+			log.Println(manifest)
+			err = protojson.Unmarshal(bytes, manifest)
+			if err != nil {
+				return err
+			}
+			memDb.manifest = manifest
+			break
+		}
+	}
 	// Read TMCF
 	var schemaMapping map[string]*parser.TableSchema
 	for _, object := range objects {
@@ -214,7 +236,7 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 				if err != nil {
 					return err
 				}
-				err = addRow(header, row, schemaMapping[tableName], memDb.statSeries)
+				err = addRow(header, row, schemaMapping[tableName], memDb.statSeries, memDb.manifest)
 				if err != nil {
 					return err
 				}
@@ -241,6 +263,7 @@ func addRow(
 	row []string,
 	schemaMapping *parser.TableSchema,
 	statSeries map[string]map[string][]*pb.Series,
+	manifest *pb.Manifest,
 ) error {
 	// Keyed by node id like "E0"
 	allNodes := map[string]*nodeObs{}
@@ -250,8 +273,8 @@ func addRow(
 			allNodes[node] = &nodeObs{
 				statVar: meta["variableMeasured"],
 				meta: &pb.StatMetadata{
-					ProvenanceUrl: "private.domain",
-					ImportName:    privateImport,
+					ProvenanceUrl: manifest.ProvenanceUrl,
+					ImportName:    manifest.ImportName,
 				},
 			}
 		}

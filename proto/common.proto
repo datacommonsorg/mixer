@@ -39,3 +39,13 @@ message GraphNode {
   // Value of the node, could be dcid or node string value.
   string value = 2;
 }
+
+// Holds the import manifest information.
+message Manifest {
+  // Name of the import
+  string import_name = 1;
+  // The url of the data, ususally the source url link
+  string provenance_url = 2;
+  // Data download link. For private import, this should be the GCS folder url.
+  string data_download_url = 3;
+}
