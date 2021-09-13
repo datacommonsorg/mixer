@@ -115,6 +115,7 @@ func (s *Server) GetPlaceStatVarsUnionV1(
 	}
 	// filtered stat vars
 	filterStatVars := in.GetStatVars()
+	// Create a set to make the loop up logic more efficient
 	filterStatVarSet := map[string]struct{}{}
 	for _, sv := range filterStatVars {
 		filterStatVarSet[sv] = struct{}{}
@@ -158,8 +159,8 @@ func (s *Server) GetPlaceStatVarsUnionV1(
 	}
 
 	// Also check from in-memory database
-	set := map[string]bool{}
 	if !s.store.MemDb.IsEmpty() {
+		set := map[string]bool{}
 		hasDataStatVars, _ := s.store.MemDb.GetStatVars(places)
 		for _, sv := range hasDataStatVars {
 			if len(filterStatVarSet) == 0 {
@@ -170,7 +171,7 @@ func (s *Server) GetPlaceStatVarsUnionV1(
 				}
 			}
 		}
+		result.StatVars = util.MergeDedupe(result.StatVars, keysToSlice(set))
 	}
-	result.StatVars = util.MergeDedupe(result.StatVars, keysToSlice(set))
 	return result, nil
 }
