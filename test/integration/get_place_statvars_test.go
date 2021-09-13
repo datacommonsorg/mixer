@@ -24,7 +24,7 @@ import (
 func TestGetPlaceStatVars(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, err := setup()
+	client, err := setup(&TestOption{useMemdb: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -45,6 +45,12 @@ func TestGetPlaceStatVars(t *testing.T) {
 			[]string{"geoId/06085"},
 			[]string{"Count_Person"},
 			1000,
+			false,
+		},
+		{
+			[]string{"country/ALB"},
+			[]string{"GiniIndex_EconomicActivity", "Test_Stat_Var_1"},
+			0,
 			false,
 		},
 		{

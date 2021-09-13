@@ -81,6 +81,12 @@ func (s *Server) GetPlaceStatVars(
 			resp.Places[dcid].StatVars = util.MergeDedupe(
 				resp.Places[dcid].StatVars, baseDataMap[dcid].([]string))
 		}
+		// Also merge from memdb
+		if !s.store.MemDb.IsEmpty() {
+			hasDataStatVars, _ := s.store.MemDb.GetStatVars([]string{dcid})
+			resp.Places[dcid].StatVars = util.MergeDedupe(
+				resp.Places[dcid].StatVars, hasDataStatVars)
+		}
 	}
 	return &resp, nil
 }
@@ -99,53 +105,72 @@ func keysToSlice(m map[string]bool) []string {
 
 // GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
 func (s *Server) GetPlaceStatVarsUnionV1(
-	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest) (
-	*pb.GetPlaceStatVarsUnionResponse, error) {
-	statVars := in.GetStatVars()
-	dcids := in.GetDcids()
-
-	if len(dcids) == 0 {
+	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest,
+) (*pb.GetPlaceStatVarsUnionResponse, error) {
+	// Check places
+	places := in.GetDcids()
+	if len(places) == 0 {
 		return nil, status.Error(
 			codes.InvalidArgument, "Missing required arguments: dcids")
 	}
+	// filtered stat vars
+	filterStatVars := in.GetStatVars()
+	filterStatVarSet := map[string]struct{}{}
+	for _, sv := range filterStatVars {
+		filterStatVarSet[sv] = struct{}{}
+	}
+	result := &pb.GetPlaceStatVarsUnionResponse{}
 
 	// When given a list of stat vars to filter for, we can use the existence
 	// cache instead to check the existence of each stat var for the list of
 	// places. This is faster than getting all the stat vars for each place and
 	// then filtering.
-	if len(statVars) > 0 && len(dcids) > 0 {
-		statVarCount, err := countStatVar(ctx, s.store, statVars, dcids)
+	if len(filterStatVars) > 0 && len(places) > 0 {
+		statVarCount, err := countStatVar(ctx, s.store, filterStatVars, places)
 		if err != nil {
 			return nil, err
 		}
-		result := &pb.GetPlaceStatVarsUnionResponse{}
-		for _, sv := range statVars {
+		for sv := range filterStatVarSet {
 			if existence, ok := statVarCount[sv]; ok && len(existence) > 0 {
 				result.StatVars = append(result.StatVars, sv)
 			}
 		}
-		return result, nil
+	} else {
+		resp, err := s.GetPlaceStatVars(ctx, &pb.GetPlaceStatVarsRequest{Dcids: places})
+		if err != nil {
+			return nil, err
+		}
+		place2StatVars := resp.GetPlaces()
+
+		// For single place, return directly.
+		if len(places[0]) == 1 {
+			return &pb.GetPlaceStatVarsUnionResponse{StatVars: place2StatVars[places[0]].StatVars}, nil
+		}
+
+		// Get union of the statvars for multiple places.
+		set := map[string]bool{}
+		for _, statVars := range place2StatVars {
+			for _, sv := range statVars.GetStatVars() {
+				set[sv] = true
+			}
+		}
+		result.StatVars = keysToSlice(set)
 	}
 
-	resp, err := s.GetPlaceStatVars(ctx, &pb.GetPlaceStatVarsRequest{Dcids: dcids})
-	if err != nil {
-		return nil, err
-	}
-	places := resp.GetPlaces()
-
-	// For single place, return directly.
-	if len(dcids[0]) == 1 {
-		return &pb.GetPlaceStatVarsUnionResponse{StatVars: places[dcids[0]].StatVars}, nil
-	}
-
-	// Get union of the statvars for multiple places.
+	// Also check from in-memory database
 	set := map[string]bool{}
-	for _, statVars := range places {
-		for _, dcid := range statVars.GetStatVars() {
-			set[dcid] = true
+	if !s.store.MemDb.IsEmpty() {
+		hasDataStatVars, _ := s.store.MemDb.GetStatVars(places)
+		for _, sv := range hasDataStatVars {
+			if len(filterStatVarSet) == 0 {
+				set[sv] = true
+			} else {
+				if _, ok := filterStatVarSet[sv]; ok {
+					set[sv] = true
+				}
+			}
 		}
 	}
-	return &pb.GetPlaceStatVarsUnionResponse{
-		StatVars: keysToSlice(set),
-	}, nil
+	result.StatVars = util.MergeDedupe(result.StatVars, keysToSlice(set))
+	return result, nil
 }

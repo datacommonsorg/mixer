@@ -24,7 +24,7 @@ import (
 func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, err := setup()
+	client, err := setup(&TestOption{useMemdb: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -55,6 +55,13 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 			[]string{"Median_Income_Person", "Median_Age_Person", "IncrementalCount_Person", "FertilityRate_Person_Female"},
 			[]string{"Median_Age_Person", "Median_Income_Person"},
 			[]string{"IncrementalCount_Person", "FertilityRate_Person_Female"},
+			2,
+		},
+		{
+			[]string{"country/ALB", "country/ITA"},
+			[]string{},
+			[]string{"Test_Stat_Var_1", "Test_Stat_Var_2"},
+			[]string{},
 			2,
 		},
 	} {
