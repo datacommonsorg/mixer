@@ -30,6 +30,11 @@ import (
 	"google.golang.org/api/iterator"
 )
 
+// TODO(shifucun): Get the import name from GCS manifest file.
+const (
+	privateImport = "Private Import"
+)
+
 // MemDb holds imported data in memory.
 type MemDb struct {
 	// statVar -> place -> []Series
@@ -43,6 +48,11 @@ func NewMemDb() *MemDb {
 	}
 }
 
+// IsEmpty checks if memory database has data.
+func (memDb *MemDb) IsEmpty() bool {
+	return memDb.statSeries == nil || len(memDb.statSeries) == 0
+}
+
 // ReadSeries reads stat series from in-memory DB.
 func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
 	if _, ok := memDb.statSeries[statVar]; ok {
@@ -51,6 +61,58 @@ func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
 		}
 	}
 	return []*pb.Series{}
+}
+
+// ReadPointValue reads one observation point.
+// If date is "", the latest observation is returned, otherwise, the observation
+// corresponding to the given date is returned.
+func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
+	*pb.PointStat, *pb.StatMetadata,
+) {
+	placeData, ok := memDb.statSeries[statVar]
+	if !ok {
+		return nil, nil
+	}
+	seriesList, ok := placeData[place]
+	if !ok {
+		return nil, nil
+	}
+	if date != "" {
+		// For private import, pick from a random series. In most cases, there should
+		// be just one series.
+		for _, series := range seriesList {
+			if val, ok := series.Val[date]; ok {
+				return &pb.PointStat{
+					Date:  date,
+					Value: val,
+					Metadata: &pb.StatMetadata{
+						ImportName: privateImport,
+					}}, series.Metadata
+			}
+		}
+	} else {
+		// Get the latest date from all series
+		latestDate := ""
+		var latestVal float64
+		var meta *pb.StatMetadata
+		for _, series := range seriesList {
+			for date, val := range series.Val {
+				if date > latestDate {
+					latestDate = date
+					latestVal = val
+					meta = series.Metadata
+				}
+			}
+		}
+		if latestDate != "" {
+			return &pb.PointStat{
+				Date:     latestDate,
+				Value:    latestVal,
+				Metadata: &pb.StatMetadata{ImportName: privateImport},
+			}, meta
+		}
+	}
+	return nil, nil
 }
 
 // GetStatVars retrieves the stat vars from private import that have data for
@@ -79,6 +141,12 @@ func (memDb *MemDb) GetStatVars(places []string) ([]string, []string) {
 	sort.Strings(hasDataStatVars)
 	sort.Strings(noDataStatVars)
 	return hasDataStatVars, noDataStatVars
+}
+
+// HasStatVar checks if a stat var exists in the memory database.
+func (memDb *MemDb) HasStatVar(statVar string) bool {
+	_, ok := memDb.statSeries[statVar]
+	return ok
 }
 
 // LoadFromGcs loads tmcf + csv files into memory database
@@ -181,7 +249,10 @@ func addRow(
 		if typ, ok := meta["typeOf"]; ok && typ == "StatVarObservation" {
 			allNodes[node] = &nodeObs{
 				statVar: meta["variableMeasured"],
-				meta:    &pb.StatMetadata{},
+				meta: &pb.StatMetadata{
+					ProvenanceUrl: "private.domain",
+					ImportName:    privateImport,
+				},
 			}
 		}
 		// TODO: handle the case when meta data is specified in the column:

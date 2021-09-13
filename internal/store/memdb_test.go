@@ -74,16 +74,24 @@ func TestAddRow(t *testing.T) {
 				"CumulativeCount_Vaccine_COVID_19_Administered": {
 					"country/AFG": []*pb.Series{
 						{
-							Val:      map[string]float64{"2020-03-22": 100},
-							Metadata: &pb.StatMetadata{MeasurementMethod: "OurWorldInData_COVID19"},
+							Val: map[string]float64{"2020-03-22": 100},
+							Metadata: &pb.StatMetadata{
+								MeasurementMethod: "OurWorldInData_COVID19",
+								ImportName:        "Private Import",
+								ProvenanceUrl:     "private.domain",
+							},
 						},
 					},
 				},
 				"IncrementalCount_Vaccine_COVID_19_Administered": {
 					"country/AFG": []*pb.Series{
 						{
-							Val:      map[string]float64{"2020-03-22": 10},
-							Metadata: &pb.StatMetadata{MeasurementMethod: "OurWorldInData_COVID19"},
+							Val: map[string]float64{"2020-03-22": 10},
+							Metadata: &pb.StatMetadata{
+								MeasurementMethod: "OurWorldInData_COVID19",
+								ImportName:        "Private Import",
+								ProvenanceUrl:     "private.domain",
+							},
 						},
 					},
 				},
@@ -106,34 +114,54 @@ func TestAddRow(t *testing.T) {
 				"CumulativeCount_Vaccine_COVID_19_Administered": {
 					"country/AFG": []*pb.Series{
 						{
-							Val:      map[string]float64{"2020-03-22": 100},
-							Metadata: &pb.StatMetadata{MeasurementMethod: "OurWorldInData_COVID19"},
+							Val: map[string]float64{"2020-03-22": 100},
+							Metadata: &pb.StatMetadata{
+								MeasurementMethod: "OurWorldInData_COVID19",
+								ImportName:        "Private Import",
+								ProvenanceUrl:     "private.domain",
+							},
 						},
 					},
 					"country/USA": []*pb.Series{
 						{
-							Val:      map[string]float64{"2020-03-22": 200, "2020-03-23": 250},
-							Metadata: &pb.StatMetadata{MeasurementMethod: "OurWorldInData_COVID19"},
+							Val: map[string]float64{"2020-03-22": 200, "2020-03-23": 250},
+							Metadata: &pb.StatMetadata{
+								MeasurementMethod: "OurWorldInData_COVID19",
+								ImportName:        "Private Import",
+								ProvenanceUrl:     "private.domain",
+							},
 						},
 					},
 					"country/ALB": []*pb.Series{
 						{
-							Val:      map[string]float64{"2020-03-22": 30},
-							Metadata: &pb.StatMetadata{MeasurementMethod: "OurWorldInData_COVID19"},
+							Val: map[string]float64{"2020-03-22": 30},
+							Metadata: &pb.StatMetadata{
+								MeasurementMethod: "OurWorldInData_COVID19",
+								ImportName:        "Private Import",
+								ProvenanceUrl:     "private.domain",
+							},
 						},
 					},
 				},
 				"IncrementalCount_Vaccine_COVID_19_Administered": {
 					"country/AFG": []*pb.Series{
 						{
-							Val:      map[string]float64{"2020-03-22": 10},
-							Metadata: &pb.StatMetadata{MeasurementMethod: "OurWorldInData_COVID19"},
+							Val: map[string]float64{"2020-03-22": 10},
+							Metadata: &pb.StatMetadata{
+								MeasurementMethod: "OurWorldInData_COVID19",
+								ImportName:        "Private Import",
+								ProvenanceUrl:     "private.domain",
+							},
 						},
 					},
 					"country/USA": []*pb.Series{
 						{
-							Val:      map[string]float64{"2020-03-22": 20, "2020-03-23": 25},
-							Metadata: &pb.StatMetadata{MeasurementMethod: "OurWorldInData_COVID19"},
+							Val: map[string]float64{"2020-03-22": 20, "2020-03-23": 25},
+							Metadata: &pb.StatMetadata{
+								MeasurementMethod: "OurWorldInData_COVID19",
+								ImportName:        "Private Import",
+								ProvenanceUrl:     "private.domain",
+							},
 						},
 					},
 					"country/ALB": []*pb.Series{},

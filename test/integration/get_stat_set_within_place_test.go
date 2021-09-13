@@ -29,7 +29,7 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, err := setup()
+	client, err := setup(&TestOption{useCache: false, useMemdb: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -86,6 +86,13 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 			"2016",
 			[]string{"Count_Person"},
 			"FRA_AA2_2016.json",
+		},
+		{
+			"Earth",
+			"Country",
+			"",
+			[]string{"Test_Stat_Var_1"},
+			"memdb.json",
 		},
 	} {
 		resp, err := client.GetStatSetWithinPlace(ctx, &pb.GetStatSetWithinPlaceRequest{

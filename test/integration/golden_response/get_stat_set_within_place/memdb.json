@@ -1,0 +1,1542 @@
+{
+  "data": {
+    "Test_Stat_Var_1": {
+      "stat": {
+        "country/ABW": {
+          "date": "2021-08-13",
+          "value": 141611,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/AFG": {
+          "date": "2021-08-11",
+          "value": 1809517,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/AGO": {
+          "date": "2021-08-09",
+          "value": 1695588,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/AIA": {
+          "date": "2021-08-06",
+          "value": 18457,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ALB": {
+          "date": "2021-08-10",
+          "value": 1280239,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/AND": {
+          "date": "2021-07-19",
+          "value": 82349,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ANT": {},
+        "country/ARE": {
+          "date": "2021-08-13",
+          "value": 17313163,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ARG": {
+          "date": "2021-08-13",
+          "value": 36038031,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ARM": {
+          "date": "2021-08-08",
+          "value": 194902,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ASM": {},
+        "country/ATA": {},
+        "country/ATB": {},
+        "country/ATF": {},
+        "country/ATG": {
+          "date": "2021-08-10",
+          "value": 70019,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ATN": {},
+        "country/AUS": {
+          "date": "2021-08-13",
+          "value": 14747221,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/AUT": {
+          "date": "2021-08-13",
+          "value": 10141918,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/AZE": {
+          "date": "2021-08-13",
+          "value": 5671138,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BDI": {},
+        "country/BEL": {
+          "date": "2021-08-12",
+          "value": 15495398,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BEN": {
+          "date": "2021-08-03",
+          "value": 70323,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BES": {},
+        "country/BFA": {
+          "date": "2021-08-09",
+          "value": 38405,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BGD": {
+          "date": "2021-08-13",
+          "value": 20362016,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BGR": {
+          "date": "2021-08-13",
+          "value": 2149134,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BHR": {
+          "date": "2021-08-13",
+          "value": 2412624,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BHS": {
+          "date": "2021-08-09",
+          "value": 110443,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BIH": {
+          "date": "2021-08-11",
+          "value": 865306,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BLM": {},
+        "country/BLR": {
+          "date": "2021-08-10",
+          "value": 2541745,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BLZ": {
+          "date": "2021-08-11",
+          "value": 202797,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BMU": {
+          "date": "2021-08-13",
+          "value": 83297,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BOL": {
+          "date": "2021-08-13",
+          "value": 5004937,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BRA": {
+          "date": "2021-08-12",
+          "value": 160056922,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BRB": {
+          "date": "2021-08-11",
+          "value": 183493,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BRN": {
+          "date": "2021-08-11",
+          "value": 201441,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BTN": {
+          "date": "2021-08-09",
+          "value": 1010129,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/BVT": {},
+        "country/BWA": {
+          "date": "2021-08-10",
+          "value": 391360,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CAF": {
+          "date": "2021-08-05",
+          "value": 95282,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CAN": {
+          "date": "2021-08-13",
+          "value": 51290984,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CCK": {},
+        "country/CHE": {
+          "date": "2021-08-12",
+          "value": 9218419,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CHL": {
+          "date": "2021-08-11",
+          "value": 26587659,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CHN": {
+          "date": "2021-08-13",
+          "value": 1844382000,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CIV": {
+          "date": "2021-08-12",
+          "value": 1194760,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CMR": {
+          "date": "2021-08-09",
+          "value": 368280,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/COD": {
+          "date": "2021-08-09",
+          "value": 86244,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/COG": {
+          "date": "2021-08-12",
+          "value": 255988,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/COK": {
+          "date": "2021-07-20",
+          "value": 20509,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/COL": {
+          "date": "2021-08-11",
+          "value": 31149291,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/COM": {
+          "date": "2021-08-09",
+          "value": 188875,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CPV": {
+          "date": "2021-08-09",
+          "value": 204780,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CRI": {
+          "date": "2021-08-09",
+          "value": 3643509,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CTE": {},
+        "country/CUB": {
+          "date": "2021-08-11",
+          "value": 11059697,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CUW": {},
+        "country/CXR": {},
+        "country/CYM": {
+          "date": "2021-08-12",
+          "value": 99194,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CYP": {
+          "date": "2021-08-12",
+          "value": 1040915,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/CZE": {
+          "date": "2021-08-13",
+          "value": 10940137,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/DEU": {
+          "date": "2021-08-12",
+          "value": 96852861,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/DJI": {
+          "date": "2021-08-12",
+          "value": 53064,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/DMA": {
+          "date": "2021-08-13",
+          "value": 40795,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/DNK": {
+          "date": "2021-08-12",
+          "value": 7974868,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/DOM": {
+          "date": "2021-08-12",
+          "value": 10601438,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/DZA": {
+          "date": "2021-07-29",
+          "value": 4146091,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ECU": {
+          "date": "2021-08-12",
+          "value": 14363025,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/EGY": {
+          "date": "2021-08-10",
+          "value": 5750549,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ERI": {},
+        "country/ESH": {},
+        "country/ESP": {
+          "date": "2021-08-12",
+          "value": 60919867,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/EST": {
+          "date": "2021-08-13",
+          "value": 1201727,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ETH": {
+          "date": "2021-08-12",
+          "value": 2302496,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/FIN": {
+          "date": "2021-08-13",
+          "value": 6115987,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/FJI": {
+          "date": "2021-08-09",
+          "value": 690888,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/FLK": {
+          "date": "2021-04-14",
+          "value": 4407,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/FRA": {
+          "date": "2021-08-12",
+          "value": 79839977,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/FRO": {
+          "date": "2021-08-12",
+          "value": 68843,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/FSM": {},
+        "country/FXX": {},
+        "country/GAB": {
+          "date": "2021-08-12",
+          "value": 120627,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GBR": {
+          "date": "2021-08-12",
+          "value": 87421381,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GEO": {
+          "date": "2021-08-13",
+          "value": 767882,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GGY": {
+          "date": "2021-08-13",
+          "value": 96687,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GHA": {
+          "date": "2021-07-19",
+          "value": 1271393,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GIB": {
+          "date": "2021-08-12",
+          "value": 78535,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GIN": {
+          "date": "2021-08-10",
+          "value": 938537,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GLP": {},
+        "country/GMB": {
+          "date": "2021-07-15",
+          "value": 43557,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GNB": {
+          "date": "2021-08-09",
+          "value": 30471,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GNQ": {
+          "date": "2021-08-07",
+          "value": 314289,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GRC": {
+          "date": "2021-08-13",
+          "value": 10965338,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GRD": {
+          "date": "2021-08-09",
+          "value": 38872,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GRL": {
+          "date": "2021-08-13",
+          "value": 67849,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GTM": {
+          "date": "2021-08-12",
+          "value": 3066401,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/GUF": {},
+        "country/GUM": {},
+        "country/GUY": {
+          "date": "2021-08-12",
+          "value": 425580,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/HKG": {
+          "date": "2021-08-13",
+          "value": 6515453,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/HMD": {},
+        "country/HND": {
+          "date": "2021-08-11",
+          "value": 2806063,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/HRV": {
+          "date": "2021-08-12",
+          "value": 3157783,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/HTI": {
+          "date": "2021-08-11",
+          "value": 19182,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/HUN": {
+          "date": "2021-08-01",
+          "value": 10481449,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/IDN": {
+          "date": "2021-08-12",
+          "value": 79054211,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/IMN": {
+          "date": "2021-08-11",
+          "value": 125593,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/IND": {
+          "date": "2021-08-13",
+          "value": 536189903,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/IOT": {},
+        "country/IRL": {
+          "date": "2021-08-12",
+          "value": 6288754,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/IRN": {
+          "date": "2021-08-09",
+          "value": 16213714,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/IRQ": {
+          "date": "2021-08-06",
+          "value": 2102550,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ISL": {
+          "date": "2021-08-06",
+          "value": 477205,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ISR": {
+          "date": "2021-08-13",
+          "value": 12062285,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ITA": {
+          "date": "2021-08-13",
+          "value": 73592927,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/JAM": {
+          "date": "2021-08-13",
+          "value": 391076,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/JEY": {
+          "date": "2021-08-08",
+          "value": 144896,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/JOR": {
+          "date": "2021-08-13",
+          "value": 5692336,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/JPN": {
+          "date": "2021-08-12",
+          "value": 108179498,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KAZ": {
+          "date": "2021-08-13",
+          "value": 10607929,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KEN": {
+          "date": "2021-08-12",
+          "value": 1922085,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KGZ": {
+          "date": "2021-08-13",
+          "value": 841077,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KHM": {
+          "date": "2021-08-13",
+          "value": 15372439,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KIR": {
+          "date": "2021-08-09",
+          "value": 13970,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KNA": {
+          "date": "2021-08-10",
+          "value": 43966,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KOR": {
+          "date": "2021-08-13",
+          "value": 30649269,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/KWT": {
+          "date": "2021-07-03",
+          "value": 2375455,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LAO": {
+          "date": "2021-08-08",
+          "value": 2574278,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LBN": {
+          "date": "2021-08-13",
+          "value": 2190858,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LBR": {
+          "date": "2021-07-12",
+          "value": 95423,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LBY": {
+          "date": "2021-08-09",
+          "value": 764233,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LCA": {
+          "date": "2021-08-13",
+          "value": 59537,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LIE": {
+          "date": "2021-08-12",
+          "value": 40614,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LKA": {
+          "date": "2021-08-12",
+          "value": 15310726,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LSO": {
+          "date": "2021-07-26",
+          "value": 72948,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LTU": {
+          "date": "2021-08-13",
+          "value": 2911801,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LUX": {
+          "date": "2021-08-13",
+          "value": 741948,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/LVA": {
+          "date": "2021-08-13",
+          "value": 1418214,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MAC": {
+          "date": "2021-08-13",
+          "value": 547953,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MAF": {},
+        "country/MAR": {
+          "date": "2021-08-13",
+          "value": 27561271,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MCO": {
+          "date": "2021-08-06",
+          "value": 44060,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MDA": {
+          "date": "2021-08-13",
+          "value": 1136921,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MDG": {
+          "date": "2021-06-28",
+          "value": 197001,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MDV": {
+          "date": "2021-08-11",
+          "value": 633914,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MEX": {
+          "date": "2021-08-13",
+          "value": 75780229,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MHL": {},
+        "country/MKD": {
+          "date": "2021-08-12",
+          "value": 1033584,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MLI": {
+          "date": "2021-08-09",
+          "value": 259719,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MLT": {
+          "date": "2021-08-12",
+          "value": 782600,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MMR": {
+          "date": "2021-07-01",
+          "value": 3500000,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MNE": {
+          "date": "2021-08-13",
+          "value": 355963,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MNG": {
+          "date": "2021-08-13",
+          "value": 4232784,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MNP": {},
+        "country/MOZ": {
+          "date": "2021-08-09",
+          "value": 1386326,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MRT": {
+          "date": "2021-08-12",
+          "value": 242626,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MSR": {
+          "date": "2021-08-06",
+          "value": 2828,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MTQ": {},
+        "country/MUS": {
+          "date": "2021-08-09",
+          "value": 1297090,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MWI": {
+          "date": "2021-08-12",
+          "value": 683097,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MYS": {
+          "date": "2021-08-13",
+          "value": 26851765,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/MYT": {},
+        "country/NAM": {
+          "date": "2021-08-11",
+          "value": 244880,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NCL": {
+          "date": "2021-08-09",
+          "value": 133804,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NER": {
+          "date": "2021-08-09",
+          "value": 425483,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NFK": {},
+        "country/NGA": {
+          "date": "2021-08-09",
+          "value": 3967013,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NIC": {
+          "date": "2021-08-09",
+          "value": 919275,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NIU": {
+          "date": "2021-08-09",
+          "value": 2406,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NLD": {
+          "date": "2021-08-13",
+          "value": 21348406,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NOR": {
+          "date": "2021-08-12",
+          "value": 5911464,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NPL": {
+          "date": "2021-08-12",
+          "value": 7515766,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NRU": {
+          "date": "2021-07-27",
+          "value": 14784,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/NZL": {
+          "date": "2021-08-10",
+          "value": 2293301,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/OMN": {
+          "date": "2021-08-09",
+          "value": 2656658,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PAK": {
+          "date": "2021-08-13",
+          "value": 42173424,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PAN": {
+          "date": "2021-08-12",
+          "value": 3292229,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PCN": {
+          "date": "2021-08-02",
+          "value": 83,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PER": {
+          "date": "2021-08-12",
+          "value": 15659075,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PHL": {
+          "date": "2021-08-11",
+          "value": 26127502,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PLW": {},
+        "country/PNG": {
+          "date": "2021-08-02",
+          "value": 100409,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/POL": {
+          "date": "2021-08-12",
+          "value": 35281208,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PRI": {},
+        "country/PRK": {},
+        "country/PRT": {
+          "date": "2021-08-13",
+          "value": 13307865,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PRY": {
+          "date": "2021-08-12",
+          "value": 2214138,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PSE": {
+          "date": "2021-08-12",
+          "value": 1053252,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/PYF": {
+          "date": "2021-08-09",
+          "value": 174127,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/QAT": {
+          "date": "2021-08-13",
+          "value": 4067088,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/REU": {},
+        "country/ROU": {
+          "date": "2021-08-12",
+          "value": 9558787,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/RUS": {
+          "date": "2021-08-13",
+          "value": 71033270,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/RWA": {
+          "date": "2021-08-03",
+          "value": 854194,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SAU": {
+          "date": "2021-08-13",
+          "value": 31452285,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SDN": {
+          "date": "2021-08-09",
+          "value": 823881,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SEN": {
+          "date": "2021-08-09",
+          "value": 1360095,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SGP": {
+          "date": "2021-08-12",
+          "value": 8429249,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SGS": {},
+        "country/SHN": {
+          "date": "2021-05-05",
+          "value": 7892,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SJM": {},
+        "country/SLB": {
+          "date": "2021-08-09",
+          "value": 56621,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SLE": {
+          "date": "2021-07-05",
+          "value": 225380,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SLV": {
+          "date": "2021-08-13",
+          "value": 5143912,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SMR": {
+          "date": "2021-08-12",
+          "value": 46057,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SOM": {
+          "date": "2021-08-02",
+          "value": 279869,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SPM": {},
+        "country/SRB": {
+          "date": "2021-08-12",
+          "value": 5617810,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SSD": {},
+        "country/STP": {
+          "date": "2021-08-03",
+          "value": 43978,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SUR": {
+          "date": "2021-08-13",
+          "value": 271668,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SVK": {
+          "date": "2021-08-13",
+          "value": 4390776,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SVN": {
+          "date": "2021-08-13",
+          "value": 1804382,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SWE": {
+          "date": "2021-08-13",
+          "value": 11431885,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SWZ": {
+          "date": "2021-08-12",
+          "value": 181290,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SXM": {},
+        "country/SYC": {
+          "date": "2021-07-22",
+          "value": 141435,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/SYR": {
+          "date": "2021-08-09",
+          "value": 355000,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TCA": {
+          "date": "2021-07-23",
+          "value": 47263,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TCD": {
+          "date": "2021-08-12",
+          "value": 40649,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TGO": {
+          "date": "2021-08-03",
+          "value": 474776,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/THA": {
+          "date": "2021-08-11",
+          "value": 22288819,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TJK": {
+          "date": "2021-08-11",
+          "value": 1671475,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TKL": {
+          "date": "2021-08-02",
+          "value": 953,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TKM": {
+          "date": "2021-04-04",
+          "value": 41993,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TLS": {
+          "date": "2021-08-10",
+          "value": 443729,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TON": {
+          "date": "2021-08-02",
+          "value": 47553,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TTO": {
+          "date": "2021-08-13",
+          "value": 728880,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TUN": {
+          "date": "2021-08-08",
+          "value": 3392636,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TUR": {
+          "date": "2021-08-13",
+          "value": 82021528,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TUV": {
+          "date": "2021-06-15",
+          "value": 4772,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TWN": {
+          "date": "2021-08-13",
+          "value": 9749241,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/TZA": {
+          "date": "2021-08-08",
+          "value": 105745,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/UGA": {
+          "date": "2021-08-10",
+          "value": 1155265,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/UKR": {
+          "date": "2021-08-13",
+          "value": 7332550,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/UMI": {},
+        "country/URY": {
+          "date": "2021-08-13",
+          "value": 5014309,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/USA": {
+          "date": "2021-08-13",
+          "value": 354777950,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/UZB": {
+          "date": "2021-08-04",
+          "value": 8300000,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/VAT": {},
+        "country/VCT": {
+          "date": "2021-08-10",
+          "value": 25796,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/VEN": {
+          "date": "2021-07-12",
+          "value": 4000000,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/VGB": {
+          "date": "2021-08-06",
+          "value": 28777,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/VIR": {},
+        "country/VNM": {
+          "date": "2021-08-12",
+          "value": 13256472,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/VUT": {
+          "date": "2021-07-27",
+          "value": 23995,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/WLF": {
+          "date": "2021-08-09",
+          "value": 9439,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/WSM": {
+          "date": "2021-08-09",
+          "value": 100610,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/XKS": {},
+        "country/YEM": {
+          "date": "2021-07-27",
+          "value": 311483,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/YUG": {},
+        "country/ZAF": {
+          "date": "2021-08-12",
+          "value": 9185756,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ZMB": {
+          "date": "2021-08-13",
+          "value": 518446,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        },
+        "country/ZWE": {
+          "date": "2021-08-12",
+          "value": 3193256,
+          "metadata": {
+            "import_name": "Private Import"
+          }
+        }
+      },
+      "metadata": {
+        "Private Import": {
+          "import_name": "Private Import",
+          "provenance_url": "private.domain",
+          "measurement_method": "Test_Method"
+        }
+      }
+    }
+  }
+}
