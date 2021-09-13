@@ -54,6 +54,11 @@ var (
 			},
 		},
 	}
+
+	manifest = &pb.Manifest{
+		ImportName:    "Private Import",
+		ProvenanceUrl: "private.domain",
+	}
 )
 
 func TestAddRow(t *testing.T) {
@@ -169,14 +174,15 @@ func TestAddRow(t *testing.T) {
 			},
 		},
 	} {
-		data := map[string]map[string][]*pb.Series{}
+		memDb := NewMemDb()
 		for _, row := range c.rows {
-			err := addRow(c.header, row, ts, data)
+			memDb.manifest = manifest
+			err := memDb.addRow(c.header, row, ts)
 			if err != nil {
 				t.Fail()
 			}
 		}
-		if diff := cmp.Diff(data, c.want, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(memDb.statSeries, c.want, protocmp.Transform()); diff != "" {
 			t.Errorf("ParseTmcf got diff: %v", diff)
 			continue
 		}
