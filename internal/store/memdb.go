@@ -64,6 +64,8 @@ func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
 }
 
 // ReadPointValue reads one observation point.
+// If date is "", the latest observation is returned, otherwise, the observation
+// corresponding to the given date is returned.
 func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 	*pb.PointStat, *pb.StatMetadata,
 ) {
