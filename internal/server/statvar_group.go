@@ -315,7 +315,7 @@ func (s *Server) GetStatVarPath(
 	// Memory database stat vars are directly under "dc/g/Private"
 	if s.store.MemDb.HasStatVar(id) {
 		return &pb.GetStatVarPathResponse{
-			Path: []string{id, "dc/g/Private", "dc/g/Root"},
+			Path: []string{id, "dc/g/Private"},
 		}, nil
 	}
 
