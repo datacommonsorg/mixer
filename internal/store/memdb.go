@@ -234,7 +234,7 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 				if err != nil {
 					return err
 				}
-				err = addRow(header, row, schemaMapping[tableName], memDb.statSeries, memDb.manifest)
+				err = memDb.addRow(header, row, schemaMapping[tableName])
 				if err != nil {
 					return err
 				}
@@ -256,12 +256,10 @@ type nodeObs struct {
 }
 
 // addRow adds one csv row to memdb
-func addRow(
+func (memDb *MemDb) addRow(
 	header []string,
 	row []string,
 	schemaMapping *parser.TableSchema,
-	statSeries map[string]map[string][]*pb.Series,
-	manifest *pb.Manifest,
 ) error {
 	// Keyed by node id like "E0"
 	allNodes := map[string]*nodeObs{}
@@ -271,8 +269,8 @@ func addRow(
 			allNodes[node] = &nodeObs{
 				statVar: meta["variableMeasured"],
 				meta: &pb.StatMetadata{
-					ProvenanceUrl: manifest.ProvenanceUrl,
-					ImportName:    manifest.ImportName,
+					ProvenanceUrl: memDb.manifest.ProvenanceUrl,
+					ImportName:    memDb.manifest.ImportName,
 				},
 			}
 		}
@@ -324,11 +322,11 @@ func addRow(
 	}
 	// Populate observation in the final result.
 	for _, obs := range allNodes {
-		if _, ok := statSeries[obs.statVar]; !ok {
-			statSeries[obs.statVar] = map[string][]*pb.Series{}
+		if _, ok := memDb.statSeries[obs.statVar]; !ok {
+			memDb.statSeries[obs.statVar] = map[string][]*pb.Series{}
 		}
-		if _, ok := statSeries[obs.statVar][obs.place]; !ok {
-			statSeries[obs.statVar][obs.place] = []*pb.Series{}
+		if _, ok := memDb.statSeries[obs.statVar][obs.place]; !ok {
+			memDb.statSeries[obs.statVar][obs.place] = []*pb.Series{}
 		}
 		if obs.date != "" && obs.value != "" {
 			v, err := strconv.ParseFloat(obs.value, 64)
@@ -336,15 +334,15 @@ func addRow(
 				return err
 			}
 			exist := false
-			for _, series := range statSeries[obs.statVar][obs.place] {
+			for _, series := range memDb.statSeries[obs.statVar][obs.place] {
 				if series.Metadata.String() == obs.meta.String() {
 					series.Val[obs.date] = v
 					exist = true
 				}
 			}
 			if !exist {
-				statSeries[obs.statVar][obs.place] = append(
-					statSeries[obs.statVar][obs.place],
+				memDb.statSeries[obs.statVar][obs.place] = append(
+					memDb.statSeries[obs.statVar][obs.place],
 					&pb.Series{
 						Val:      map[string]float64{obs.date: v},
 						Metadata: obs.meta,
