@@ -47,6 +47,11 @@ func NewMemDb() *MemDb {
 	}
 }
 
+// GetManifest get the manifest data.
+func (memDb *MemDb) GetManifest() *pb.Manifest {
+	return memDb.manifest
+}
+
 // IsEmpty checks if memory database has data.
 func (memDb *MemDb) IsEmpty() bool {
 	return memDb.statSeries == nil || len(memDb.statSeries) == 0
