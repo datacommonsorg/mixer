@@ -47,5 +47,6 @@ message Manifest {
   // The url of the data, ususally the source url link
   string provenance_url = 2;
   // Data download link. For private import, this should be the GCS folder url.
+  // Example: https://pantheon.corp.google.com/storage/browser/datcom-public/test
   string data_download_url = 3;
 }
