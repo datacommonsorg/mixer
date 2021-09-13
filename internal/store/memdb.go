@@ -171,7 +171,6 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 	}
 	// Read manifest.json
 	for _, object := range objects {
-		log.Println(object)
 		if strings.HasSuffix(object, "manifest.json") {
 			r, err := bkt.Object(object).NewReader(ctx)
 			if err != nil {
@@ -183,7 +182,6 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 				return err
 			}
 			manifest := &pb.Manifest{}
-			log.Println(manifest)
 			err = protojson.Unmarshal(bytes, manifest)
 			if err != nil {
 				return err
