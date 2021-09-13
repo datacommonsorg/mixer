@@ -272,8 +272,8 @@ func (s *Server) GetStatVarGroupNode(
 				result.ChildStatVarGroups,
 				&pb.StatVarGroupNode_ChildSVG{
 					Id:                    "dc/g/Private",
-					SpecializedEntity:     "Private",
-					DisplayName:           "Private",
+					SpecializedEntity:     s.store.MemDb.GetManifest().ImportName,
+					DisplayName:           s.store.MemDb.GetManifest().ImportName,
 					NumDescendentStatVars: int32(len(hasDataStatVars) + len(noDataStatVars)),
 				},
 			)
