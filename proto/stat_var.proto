@@ -54,8 +54,53 @@ message StatVarSummary {
     // List of example places that have stats for this stat var
     repeated Place top_places = 2;
   }
+
+  // TODO: Consolidate with StatMetadata
+  message SeriesSummary {
+    message SeriesKey {
+      // Measurement method of this time series type
+      string measurement_method = 1;
+      // Observation period of this time series type
+      string observation_period = 2;
+      // Scaling factor of this time series type
+      string scaling_factor = 3;
+      // Unit of this time series type
+      string unit = 4;
+      // Whether this time series type is aggregated by Data Commons
+      bool is_dc_aggregate = 5;
+    }
+    SeriesKey series_key = 1;
+
+    // Earliest observation date of this time series type
+    string earliest_date = 2;
+    // Latest observation date in this time series type
+    string latest_date = 3;
+    // Number of observations of this time series type
+    int64 num_observations = 4;
+    // Number of series of this time series type
+    int64 num_time_series = 5;
+    // Map of place type to PlaceTypeSummary for this time series type
+    map<string, PlaceTypeSummary> place_type_summary = 6;
+  }
+
+  message ProvenanceSummary {
+    // Import name
+    string import_name = 1;
+    // Number of observations from this provenance
+    int64 num_observations = 2;
+    // Number of time series from this provenance
+    int64 num_time_series = 3;
+    // Release frequency of this provenance
+    string release_frequency = 4;
+    // SeriesSummary for each time series in this provenance
+    repeated SeriesSummary series_summary = 5;
+  }
+
   // Key is type of place
   map<string, PlaceTypeSummary> place_type_summary = 1;
+
+  // Key: provenance ID
+  map<string, ProvenanceSummary> provenance_summary = 2;
 }
 
 message StatVarGroups {
