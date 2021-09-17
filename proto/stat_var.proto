@@ -55,6 +55,7 @@ message StatVarSummary {
     repeated Place top_places = 2;
   }
 
+  // TODO: Consolidate with StatMetadata
   message SeriesSummary {
     message SeriesKey {
       // Measurement method of this time series type
