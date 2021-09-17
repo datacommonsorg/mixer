@@ -81,8 +81,8 @@
     },
     {
       "id": "dc/g/Private",
-      "specializedEntity": "Private",
-      "displayName": "Private",
+      "specializedEntity": "Test Private Import",
+      "displayName": "Test Private Import",
       "numDescendentStatVars": 10
     }
   ],

@@ -272,8 +272,8 @@ func (s *Server) GetStatVarGroupNode(
 				result.ChildStatVarGroups,
 				&pb.StatVarGroupNode_ChildSVG{
 					Id:                    "dc/g/Private",
-					SpecializedEntity:     "Private",
-					DisplayName:           "Private",
+					SpecializedEntity:     s.store.MemDb.GetManifest().ImportName,
+					DisplayName:           s.store.MemDb.GetManifest().ImportName,
 					NumDescendentStatVars: int32(len(hasDataStatVars) + len(noDataStatVars)),
 				},
 			)
@@ -315,7 +315,7 @@ func (s *Server) GetStatVarPath(
 	// Memory database stat vars are directly under "dc/g/Private"
 	if s.store.MemDb.HasStatVar(id) {
 		return &pb.GetStatVarPathResponse{
-			Path: []string{id, "dc/g/Private", "dc/g/Root"},
+			Path: []string{id, "dc/g/Private"},
 		}, nil
 	}
 
