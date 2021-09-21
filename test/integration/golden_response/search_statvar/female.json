@@ -3869,6 +3869,18 @@
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNurseryTo4ThGrade_Female"
     },
     {
+      "name": "Prevalence of 21 - 65 Years, Female, Cervical Cancer Screening",
+      "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+    },
+    {
+      "name": "Prevalence of 50 - 74 Years, Female, Mammography",
+      "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+    },
+    {
+      "name": "Prevalence of 65 Years or More, Female, Core Preventive Services",
+      "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
+    },
+    {
       "name": "Professional School Degree, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentProfessionalSchoolDegree_Female"
     },
@@ -3987,18 +3999,6 @@
     {
       "name": "Years 5, Female, Below Poverty Level in The Past 12 Months Population",
       "dcid": "Count_Person_5Years_Female_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Median Income of Female",
-      "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
-    },
-    {
-      "name": "Who/M_Est_cig_curr_std of Female",
-      "dcid": "WHO/M_Est_cig_curr_std_Female"
-    },
-    {
-      "name": "Who/M_Est_cig_daily_std of Female",
-      "dcid": "WHO/M_Est_cig_daily_std_Female"
     }
   ],
   "statVarGroups": [
@@ -4339,6 +4339,10 @@
       "dcid": "dc/g/Person_Age-Years21To64_Gender-Female"
     },
     {
+      "name": "Person With Age = 21 - 65 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years21To65_Gender-Female"
+    },
+    {
       "name": "Person With Age = 22 - 24 Years, Gender = Female",
       "dcid": "dc/g/Person_Age-Years22To24_Gender-Female"
     },
@@ -4433,6 +4437,10 @@
     {
       "name": "Person With Age = 50 - 64 Years, Gender = Female",
       "dcid": "dc/g/Person_Age-Years50To64_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 50 - 74 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years50To74_Gender-Female"
     },
     {
       "name": "Person With Age = 55 - 59 Years, Gender = Female",
@@ -4683,6 +4691,10 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
+      "name": "Person With Enrollment Level, Gender = Female",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
+    },
+    {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -4705,10 +4717,6 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",
@@ -4773,6 +4781,22 @@
     {
       "name": "Person With Gender = Female, Health Insurance = With Public Health Insurance",
       "dcid": "dc/g/Person_Gender-Female_HealthInsurance-WithPublicHealthInsurance"
+    },
+    {
+      "name": "Person With Gender = Female, Health Prevention",
+      "dcid": "dc/g/Person_Gender-Female_HealthPrevention"
+    },
+    {
+      "name": "Person With Gender = Female, Health Prevention = Cervical Cancer Screening",
+      "dcid": "dc/g/Person_Gender-Female_HealthPrevention-CervicalCancerScreening"
+    },
+    {
+      "name": "Person With Gender = Female, Health Prevention = Core Preventive Services",
+      "dcid": "dc/g/Person_Gender-Female_HealthPrevention-CorePreventiveServices"
+    },
+    {
+      "name": "Person With Gender = Female, Health Prevention = Mammography",
+      "dcid": "dc/g/Person_Gender-Female_HealthPrevention-Mammography"
     },
     {
       "name": "Person With Gender = Female, Income",
@@ -7231,14 +7255,6 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus"
-    },
-    {
       "name": "Person With Age = 18 - 19 Years, Gender = Female, Race",
       "dcid": "dc/g/Person_Age-Years18To19_Gender-Female_Race"
     },
@@ -7703,6 +7719,14 @@
       "dcid": "dc/g/Person_Age-Years21To64_Gender-Female_Race-WhiteAlone"
     },
     {
+      "name": "Person With Age = 21 - 65 Years, Gender = Female, Health Prevention",
+      "dcid": "dc/g/Person_Age-Years21To65_Gender-Female_HealthPrevention"
+    },
+    {
+      "name": "Person With Age = 21 - 65 Years, Gender = Female, Health Prevention = Cervical Cancer Screening",
+      "dcid": "dc/g/Person_Age-Years21To65_Gender-Female_HealthPrevention-CervicalCancerScreening"
+    },
+    {
       "name": "Person With Age = 22 - 24 Years, Employment Status = Employed, Gender = Female",
       "dcid": "dc/g/Person_Age-Years22To24_EmploymentStatus-Employed_Gender-Female"
     },
@@ -7977,30 +8001,6 @@
     {
       "name": "Person With Age = 25 Years or More, Gender = Female, Race",
       "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race = Black or African American Alone",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race = Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race = Some Other Race Alone",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race-SomeOtherRaceAlone"
     }
   ]
 }
