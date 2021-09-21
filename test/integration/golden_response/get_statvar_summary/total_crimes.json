@@ -82,6 +82,126 @@
             }
           ]
         }
+      },
+      "provenanceSummary": {
+        "dc/fx0lj33": {
+          "importName": "FBIGovCrime",
+          "numObservations": "96373",
+          "numTimeSeries": "10185",
+          "releaseFrequency": "P1Y",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "observationPeriod": "P1Y"
+              },
+              "earliestDate": "2008",
+              "latestDate": "2019",
+              "numObservations": "96373",
+              "numTimeSeries": "10185",
+              "placeTypeSummary": {
+                "CensusCountyDivision": {
+                  "numPlaces": "1327",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/1500390810",
+                      "name": "Honolulu CCD",
+                      "personCount": "405295"
+                    },
+                    {
+                      "dcid": "geoId/3608760510",
+                      "name": "Ramapo",
+                      "personCount": "148919"
+                    },
+                    {
+                      "dcid": "geoId/3402938550",
+                      "name": "Lakewood",
+                      "personCount": "135158"
+                    }
+                  ]
+                },
+                "City": {
+                  "numPlaces": "8807",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York",
+                      "personCount": "8804190"
+                    },
+                    {
+                      "dcid": "geoId/0644000",
+                      "name": "Los Angeles",
+                      "personCount": "3898747"
+                    },
+                    {
+                      "dcid": "geoId/1714000",
+                      "name": "Chicago",
+                      "personCount": "2746388"
+                    }
+                  ]
+                },
+                "County": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/34007",
+                      "name": "Camden County",
+                      "personCount": "523485"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "50",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California",
+                      "personCount": "39538223"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas",
+                      "personCount": "28995881"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida",
+                      "personCount": "21538187"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "dc/q843y93": {
+          "importName": "FBIGovCrime_AggCountry",
+          "numObservations": "12",
+          "numTimeSeries": "1",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "observationPeriod": "P1Y",
+                "isDcAggregate": true
+              },
+              "earliestDate": "2008",
+              "latestDate": "2019",
+              "numObservations": "12",
+              "numTimeSeries": "1",
+              "placeTypeSummary": {
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
       }
     }
   }

@@ -3515,7 +3515,8 @@
             "2014": 14,
             "2015": 14.9,
             "2016": 16.7,
-            "2017": 17.8
+            "2017": 17.8,
+            "2018": 16.4
           },
           "metadata": {
             "importName": "CDC500",
@@ -3529,7 +3530,8 @@
             "2014": 25.8,
             "2015": 23.9,
             "2016": 25,
-            "2017": 26.7
+            "2017": 26.7,
+            "2018": 28.4
           },
           "metadata": {
             "importName": "CDC500",
@@ -3543,7 +3545,8 @@
             "2014": 24.5,
             "2015": 21.5,
             "2016": 21.7,
-            "2017": 21.4
+            "2017": 21.4,
+            "2018": 21.7
           },
           "metadata": {
             "importName": "CDC500",
@@ -3555,7 +3558,8 @@
         "Percent_Person_SleepLessThan7Hours": {
           "val": {
             "2014": 36,
-            "2016": 37
+            "2016": 37,
+            "2018": 35.1
           },
           "metadata": {
             "importName": "CDC500",
@@ -3569,7 +3573,8 @@
             "2014": 15.2,
             "2015": 14.3,
             "2016": 15.1,
-            "2017": 14.2
+            "2017": 14.2,
+            "2018": 13.3
           },
           "metadata": {
             "importName": "CDC500",
@@ -3583,7 +3588,8 @@
             "2014": 21,
             "2015": 20.4,
             "2016": 19.7,
-            "2017": 19.8
+            "2017": 19.8,
+            "2018": 20.6
           },
           "metadata": {
             "importName": "CDC500",
@@ -3623,7 +3629,8 @@
             "2014": 12.5,
             "2015": 12.2,
             "2016": 12.2,
-            "2017": 12.4
+            "2017": 12.4,
+            "2018": 12.9
           },
           "metadata": {
             "importName": "CDC500",
@@ -3637,7 +3644,8 @@
             "2014": 13.3,
             "2015": 12.4,
             "2016": 12.1,
-            "2017": 11.8
+            "2017": 11.8,
+            "2018": 12.9
           },
           "metadata": {
             "importName": "CDC500",
@@ -7541,7 +7549,8 @@
             "2014": 14.3,
             "2015": 14.8,
             "2016": 15.2,
-            "2017": 15
+            "2017": 15,
+            "2018": 16.2
           },
           "metadata": {
             "importName": "CDC500",
@@ -7555,7 +7564,8 @@
             "2014": 32.1,
             "2015": 29.9,
             "2016": 29.8,
-            "2017": 33.4
+            "2017": 33.4,
+            "2018": 31.2
           },
           "metadata": {
             "importName": "CDC500",
@@ -7569,7 +7579,8 @@
             "2014": 32.8,
             "2015": 36.1,
             "2016": 41.6,
-            "2017": 36.8
+            "2017": 36.8,
+            "2018": 33.4
           },
           "metadata": {
             "importName": "CDC500",
@@ -7581,7 +7592,8 @@
         "Percent_Person_SleepLessThan7Hours": {
           "val": {
             "2014": 37.4,
-            "2016": 35.2
+            "2016": 35.2,
+            "2018": 39.6
           },
           "metadata": {
             "importName": "CDC500",
@@ -7595,7 +7607,8 @@
             "2014": 18.9,
             "2015": 18.4,
             "2016": 16.9,
-            "2017": 19
+            "2017": 19,
+            "2018": 17.9
           },
           "metadata": {
             "importName": "CDC500",
@@ -7609,7 +7622,8 @@
             "2014": 22.2,
             "2015": 20.8,
             "2016": 18.6,
-            "2017": 19.4
+            "2017": 19.4,
+            "2018": 20
           },
           "metadata": {
             "importName": "CDC500",
@@ -7649,7 +7663,8 @@
             "2014": 14.8,
             "2015": 15,
             "2016": 13.3,
-            "2017": 15
+            "2017": 15,
+            "2018": 15
           },
           "metadata": {
             "importName": "CDC500",
@@ -7663,7 +7678,8 @@
             "2014": 16.6,
             "2015": 16.7,
             "2016": 15.2,
-            "2017": 15.7
+            "2017": 15.7,
+            "2018": 15.8
           },
           "metadata": {
             "importName": "CDC500",
@@ -10514,6 +10530,116 @@
             "provenanceUrl": "https://www.census.gov/",
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "USDollar"
+          }
+        },
+        "Percent_Person_BingeDrinking": {
+          "val": {
+            "2018": 19.3
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_Obesity": {
+          "val": {
+            "2018": 22.1
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_PhysicalInactivity": {
+          "val": {
+            "2018": 11.8
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_SleepLessThan7Hours": {
+          "val": {
+            "2018": 28.3
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_Smoking": {
+          "val": {
+            "2018": 8
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithArthritis": {
+          "val": {
+            "2018": 19.5
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithHighBloodPressure": {
+          "val": {
+            "2017": 23.6
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithHighCholesterol": {
+          "val": {
+            "2017": 28.1
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithMentalHealthNotGood": {
+          "val": {
+            "2018": 9.2
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithPhysicalHealthNotGood": {
+          "val": {
+            "2018": 8.3
+          },
+          "metadata": {
+            "importName": "CDC500",
+            "provenanceUrl": "http://cdc.gov/",
+            "measurementMethod": "CrudePrevalence",
+            "observationPeriod": "P1Y"
           }
         }
       }
