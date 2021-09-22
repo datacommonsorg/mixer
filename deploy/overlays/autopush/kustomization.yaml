@@ -14,7 +14,7 @@
 
 # Kustomization for "autopush" mixer running on GCP `datcom-mixer-autopush` project.
 # - Adds "autopush" suffix to all the resources.
-# - Use replica of 15.
+# - Use replica of 32.
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -39,11 +39,11 @@ patchesStrategicMerge:
     metadata:
       name: mixer-grpc
     spec:
-      replicas: 8
+      replicas: 32
       strategy:
         type: RollingUpdate
         rollingUpdate:
-          maxSurge: 3
+          maxSurge: 10
           maxUnavailable: 75%
   - |-
     apiVersion: extensions/v1beta1
