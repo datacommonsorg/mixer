@@ -41,21 +41,34 @@ type Chart struct {
 	RelatedChart RelatedChart `json:"relatedChart,omitempty"`
 }
 
-func readChartConfig() ([]Chart, error) {
-	var config []Chart
-	resp, err := http.Get("https://raw.githubusercontent.com/datacommonsorg/website/master/server/chart_config.json")
-	if err != nil {
-		return config, err
+func readChartConfig() ([]*Chart, error) {
+	allConfig := []*Chart{}
+	for _, file := range []string{
+		"economics",
+		"health",
+		"equity",
+		"crime",
+		"education",
+		"demographics",
+		"housing",
+		"environment",
+	} {
+		var config []*Chart
+		resp, err := http.Get("https://raw.githubusercontent.com/datacommonsorg/website/master/server/chart_config/" + file + ".json")
+		if err != nil {
+			return nil, err
+		}
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return nil, err
+		}
+		err = json.Unmarshal(body, &config)
+		if err != nil {
+			return nil, err
+		}
+		allConfig = append(allConfig, config...)
 	}
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return config, err
-	}
-	err = json.Unmarshal(body, &config)
-	if err != nil {
-		return config, err
-	}
-	return config, nil
+	return allConfig, nil
 }
 
 func getMissingStatVarRanking(
@@ -87,7 +100,7 @@ func TestChartConfigRankings(t *testing.T) {
 	}
 	config, err := readChartConfig()
 	if err != nil {
-		t.Errorf("could not read config_statvars.txt")
+		t.Errorf("could not read chart config %v", err)
 		return
 	}
 	_, filename, _, _ := runtime.Caller(0)
@@ -124,14 +137,14 @@ func TestChartConfigRankings(t *testing.T) {
 		c := c
 		t.Run(c.goldenFile, func(t *testing.T) {
 			t.Parallel()
-			missingRankingsChan := make(chan Chart, len(config))
+			missingRankingsChan := make(chan *Chart, len(config))
 			var wg sync.WaitGroup
 
 			for _, chart := range config {
 				wg.Add(1)
-				go func(chart Chart, wg *sync.WaitGroup) {
+				go func(chart *Chart, wg *sync.WaitGroup) {
 					defer wg.Done()
-					var missingRanking Chart
+					missingRanking := &Chart{}
 					missingRanking.Title = chart.Title
 					// Test main chart rankings
 					req := &pb.GetLocationsRankingsRequest{
@@ -173,7 +186,7 @@ func TestChartConfigRankings(t *testing.T) {
 			}
 			wg.Wait()
 			close(missingRankingsChan)
-			var missingRankings []Chart
+			var missingRankings []*Chart
 			for elem := range missingRankingsChan {
 				missingRankings = append(missingRankings, elem)
 			}
@@ -188,7 +201,7 @@ func TestChartConfigRankings(t *testing.T) {
 				updateGolden(missingRankings, goldenPath, c.goldenFile)
 			}
 
-			var expected []Chart
+			var expected []*Chart
 			file, _ := ioutil.ReadFile(goldenFile)
 			err = json.Unmarshal(file, &expected)
 			if err != nil {
