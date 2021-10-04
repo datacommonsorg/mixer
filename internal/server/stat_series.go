@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"log"
 	"sort"
 
 	"cloud.google.com/go/bigtable"
@@ -119,6 +120,12 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 
 	placeDcids := in.GetPlace()
 	statsVarDcid := in.GetStatsVar()
+
+	log.Printf(
+		"GetStats(): placeDcids: %s, statsVarDcid: %v",
+		placeDcids,
+		statsVarDcid,
+	)
 
 	if len(placeDcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument,
