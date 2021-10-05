@@ -28,9 +28,9 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func logIfDurationTooLong(t time.Time, threshold_sec float32, msg string) {
+func logIfDurationTooLong(t time.Time, thresholdSec float32, msg string) {
 	duration := time.Since(t).Seconds()
-	if duration > float64(threshold_sec) {
+	if duration > float64(thresholdSec) {
 		log.Printf("%f seconds:\n%s", duration, msg)
 	}
 }
