@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"log"
 	"sort"
+	"time"
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -117,15 +118,10 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 // Endpoint: /bulk/stats
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	*pb.GetStatsResponse, error) {
+	ts := time.Now()
 
 	placeDcids := in.GetPlace()
 	statsVarDcid := in.GetStatsVar()
-
-	log.Printf(
-		"GetStats(): placeDcids: %s, statsVarDcid: %v",
-		placeDcids,
-		statsVarDcid,
-	)
 
 	if len(placeDcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument,
@@ -165,6 +161,16 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
 		return nil, err
+	}
+
+	latency := time.Since(ts).Seconds()
+	if latency > 30 {
+		log.Printf(
+			"GetStats() took %f seconds with: placeDcids: %s, statsVarDcid: %v",
+			latency,
+			placeDcids,
+			statsVarDcid,
+		)
 	}
 	return &pb.GetStatsResponse{Payload: string(jsonRaw)}, nil
 }
