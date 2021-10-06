@@ -51,7 +51,8 @@ func readChartConfig() ([]*Chart, error) {
 		"education",
 		"demographics",
 		"housing",
-		"environment",
+		"climate",
+		"energy",
 	} {
 		var config []*Chart
 		resp, err := http.Get("https://raw.githubusercontent.com/datacommonsorg/website/master/server/chart_config/" + file + ".json")
