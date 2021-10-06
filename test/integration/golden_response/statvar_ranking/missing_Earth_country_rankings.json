@@ -1,5 +1,19 @@
 [
   {
+    "title": "Air quality index",
+    "statsVars": [
+      "AirQualityIndex_AirPollutant"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Annual greenhouse gas emissions from large facilities",
+    "statsVars": [
+      "Annual_Emissions_GreenhouseGas_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Arson",
     "statsVars": [
       "Count_CriminalActivities_Arson"
@@ -42,14 +56,6 @@
     }
   },
   {
-    "title": "Disasters",
-    "statsVars": [
-      "Count_DroughtEvent",
-      "Count_StormSurgeTideEvent"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Education attainment",
     "statsVars": [
       "Count_Person_EducationalAttainmentNoSchoolingCompleted",
@@ -68,6 +74,20 @@
         "Count_Person_EducationalAttainmentDoctorateDegree"
       ]
     }
+  },
+  {
+    "title": "Electricity generation",
+    "statsVars": [
+      "Annual_Generation_Electricity"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Electricity price",
+    "statsVars": [
+      "Annual_Average_RetailPrice_Electricity"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Health behaviors",
@@ -292,6 +312,13 @@
     }
   },
   {
+    "title": "Lifetime air toxics cancer risk",
+    "statsVars": [
+      "AirPollutant_Cancer_Risk"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Literacy",
     "statsVars": [
       "Count_Person_Literate",
@@ -324,6 +351,13 @@
         "Count_Person_Separated"
       ]
     }
+  },
+  {
+    "title": "Mean PM2.5 concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_PM2.5"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Median Age",
@@ -419,6 +453,13 @@
         "Count_Person_Employed"
       ]
     }
+  },
+  {
+    "title": "Palmer drought severity index",
+    "statsVars": [
+      "PalmerDroughtSeverityIndex_Atmosphere"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Percentage of people without health insurance by gender",
@@ -528,6 +569,34 @@
         "RetailDrugDistribution_DrugDistribution_Morphine"
       ]
     }
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 2.6 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP26"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 4.5 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP45"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 6.0 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP60"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 8.5 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP85"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Property crime",
