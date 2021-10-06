@@ -1,8 +1,22 @@
 [
   {
+    "title": "Air quality index",
+    "statsVars": [
+      "AirQualityIndex_AirPollutant"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Alcohol consumption per capita (annual)",
     "statsVars": [
       "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Annual greenhouse gas emissions from large facilities",
+    "statsVars": [
+      "Annual_Emissions_GreenhouseGas_NonBiogenic"
     ],
     "relatedChart": {}
   },
@@ -48,16 +62,23 @@
     "relatedChart": {}
   },
   {
-    "title": "Disasters",
+    "title": "Electricity consumption per capita",
     "statsVars": [
-      "Count_CycloneEvent"
+      "Amount_Consumption_Electricity_PerCapita"
     ],
     "relatedChart": {}
   },
   {
-    "title": "Electricity consumption per capita",
+    "title": "Electricity generation",
     "statsVars": [
-      "Amount_Consumption_Electricity_PerCapita"
+      "Annual_Generation_Electricity"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Electricity price",
+    "statsVars": [
+      "Annual_Average_RetailPrice_Electricity"
     ],
     "relatedChart": {}
   },
@@ -194,6 +215,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Lifetime air toxics cancer risk",
+    "statsVars": [
+      "AirPollutant_Cancer_Risk"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Literacy",
     "statsVars": [
       "Count_Person_Literate",
@@ -222,9 +250,23 @@
     "relatedChart": {}
   },
   {
+    "title": "Mean PM2.5 concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_PM2.5"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Outward remittance",
     "statsVars": [
       "Amount_Remittance_OutwardRemittance"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Palmer drought severity index",
+    "statsVars": [
+      "PalmerDroughtSeverityIndex_Atmosphere"
     ],
     "relatedChart": {}
   },
@@ -290,6 +332,34 @@
     "title": "Population growth rate",
     "statsVars": [
       "GrowthRate_Count_Person"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 2.6 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP26"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 4.5 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP45"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 6.0 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP60"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max daily temperature change under RCP 8.5 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Daily_Max_Temperature_RCP85"
     ],
     "relatedChart": {}
   },
