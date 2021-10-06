@@ -43,6 +43,8 @@ var StatsRanking = map[RankKey]int{
 	{"EurostatData", ""}:                                                  1, // Unemployment Rate
 	{"NYT_COVID19", "NYT_COVID19_GitHub"}:                                 0, // Covid
 	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
+	{"UNEnergy", ""}:                                                      0, // Electricity
+	{"EIA_Electricity", ""}:                                               1, // Electricity
 	{"WikidataPopulation", "WikidataPopulation"}:                          1001,
 }
 
