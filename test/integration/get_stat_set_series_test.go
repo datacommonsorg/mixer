@@ -70,6 +70,12 @@ func TestGetStatSetSeries(t *testing.T) {
 			"memdb.json",
 			true,
 		},
+		{
+			[]string{"Annual_Generation_Electricity"},
+			[]string{"country/USA", "country/IND", "country/CHN"},
+			"electricity_generation.json",
+			false,
+		},
 	} {
 		resp, err := client.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
 			StatVars: c.statVars,
