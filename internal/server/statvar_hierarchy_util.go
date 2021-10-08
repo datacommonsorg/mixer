@@ -108,6 +108,12 @@ func (index *SearchIndex) update(
 		if strings.HasSuffix(token, "s") {
 			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "s"))
 		}
+		if strings.HasSuffix(token, "es") {
+			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "es"))
+		}
+		if strings.HasSuffix(token, "ies") {
+			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "ies"))
+		}
 	}
 	tokenList = append(tokenList, addtionalTokens...)
 	approxNumPv := len(strings.Split(nodeID, "_"))
