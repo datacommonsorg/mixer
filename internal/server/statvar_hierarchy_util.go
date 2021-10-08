@@ -103,6 +103,13 @@ func (index *SearchIndex) update(
 	processedTokenString := strings.ToLower(nodeString)
 	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
 	tokenList := strings.Fields(processedTokenString)
+	addtionalTokens := []string{}
+	for _, token := range tokenList {
+		if strings.HasSuffix(token, "s") {
+			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "s"))
+		}
+	}
+	tokenList = append(tokenList, addtionalTokens...)
 	approxNumPv := len(strings.Split(nodeID, "_"))
 	if approxNumPv == 1 {
 		// when approxNumPv is 1, most likely a non human curated PV
