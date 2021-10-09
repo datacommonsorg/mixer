@@ -1,5 +1,373 @@
 {
   "data": {
+    "Annual_Generation_Electricity": {
+      "stat": {
+        "geoId/01": {
+          "date": "2020",
+          "value": 135870901749.99998,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/02": {
+          "date": "2020",
+          "value": 5924428100,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/04": {
+          "date": "2020",
+          "value": 109628834430,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/05": {
+          "date": "2020",
+          "value": 52940512880,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/06": {
+          "date": "2020",
+          "value": 194110262920,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/08": {
+          "date": "2020",
+          "value": 54199489180,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/09": {
+          "date": "2020",
+          "value": 41164614340,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/10": {
+          "date": "2020",
+          "value": 5018144820,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/11": {
+          "date": "2020",
+          "value": 207804140,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/12": {
+          "date": "2020",
+          "value": 249657650840,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/13": {
+          "date": "2020",
+          "value": 119279200590,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/15": {
+          "date": "2020",
+          "value": 9324461090,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/16": {
+          "date": "2020",
+          "value": 19334886300,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/17": {
+          "date": "2020",
+          "value": 173552063930,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/18": {
+          "date": "2020",
+          "value": 89853263950,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/19": {
+          "date": "2020",
+          "value": 59376129450,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/20": {
+          "date": "2020",
+          "value": 54342899600,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/21": {
+          "date": "2020",
+          "value": 63424318100,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/22": {
+          "date": "2020",
+          "value": 102002451440,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/23": {
+          "date": "2020",
+          "value": 10411372640,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/24": {
+          "date": "2020",
+          "value": 36056980820,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/25": {
+          "date": "2020",
+          "value": 18349769200,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/26": {
+          "date": "2020",
+          "value": 104875132120,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/27": {
+          "date": "2020",
+          "value": 56551668250,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/28": {
+          "date": "2020",
+          "value": 65770451640,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/29": {
+          "date": "2020",
+          "value": 73430265790,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/30": {
+          "date": "2020",
+          "value": 23730185590,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/31": {
+          "date": "2020",
+          "value": 36859773700,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/32": {
+          "date": "2020",
+          "value": 40506782540,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/33": {
+          "date": "2020",
+          "value": 16710184740,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/34": {
+          "date": "2020",
+          "value": 61481734050,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/35": {
+          "date": "2020",
+          "value": 34385451940,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/36": {
+          "date": "2020",
+          "value": 131981774810,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/37": {
+          "date": "2020",
+          "value": 123953056460,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/38": {
+          "date": "2020",
+          "value": 42785159230,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/39": {
+          "date": "2020",
+          "value": 121121989880,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/40": {
+          "date": "2020",
+          "value": 83584730630,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/41": {
+          "date": "2020",
+          "value": 64859755720,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/42": {
+          "date": "2020",
+          "value": 230950472650,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/44": {
+          "date": "2020",
+          "value": 8015827290,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/45": {
+          "date": "2020",
+          "value": 98170078410,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/46": {
+          "date": "2020",
+          "value": 17038875410,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/47": {
+          "date": "2020",
+          "value": 77514124820,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/48": {
+          "date": "2020",
+          "value": 475491408540,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/49": {
+          "date": "2020",
+          "value": 37107969850,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/50": {
+          "date": "2020",
+          "value": 2366350070,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/51": {
+          "date": "2020",
+          "value": 102265106000,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/53": {
+          "date": "2020",
+          "value": 114202782640,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/54": {
+          "date": "2020",
+          "value": 56758045410,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/55": {
+          "date": "2020",
+          "value": 60934970290,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        },
+        "geoId/56": {
+          "date": "2020",
+          "value": 41650450140,
+          "metadata": {
+            "import_name": "EIA_Electricity"
+          }
+        }
+      },
+      "metadata": {
+        "EIA_Electricity": {
+          "import_name": "EIA_Electricity",
+          "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+          "unit": "KilowattHour"
+        }
+      }
+    },
     "Count_Person": {
       "stat": {
         "geoId/01": {

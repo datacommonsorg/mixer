@@ -59,6 +59,13 @@ func TestGetStatSeries(t *testing.T) {
 			false,
 		},
 		{
+			"Annual_Generation_Electricity",
+			"geoId/06",
+			"electricity_generation.json",
+			"",
+			false,
+		},
+		{
 			"Median_Age_Person",
 			"geoId/0649670",
 			"median_age.json",

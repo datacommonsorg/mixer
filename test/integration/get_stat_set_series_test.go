@@ -53,6 +53,7 @@ func TestGetStatSetSeries(t *testing.T) {
 				"Median_Age_Person",
 				"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 				"Count_Person_IsInternetUser_PerCapita",
+				"Annual_Generation_Electricity",
 			},
 			[]string{"country/USA", "country/JPN", "country/IND", "geoId/06", "geoId/06085", "geoId/0649670"},
 			"misc.json",

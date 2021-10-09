@@ -22,6 +22,18 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+type unitConversion struct {
+	unit    string
+	scaling float64
+}
+
+var unitMapping = map[string]*unitConversion{
+	"GigawattHour": {
+		unit:    "KilowattHour",
+		scaling: 1000000,
+	},
+}
+
 // ObsProp represents properties for a StatObservation.
 type ObsProp struct {
 	Mmethod string
@@ -111,6 +123,12 @@ func rawSeriesToSeries(in *pb.SourceSeries) *pb.Series {
 		ObservationPeriod: in.ObservationPeriod,
 		ScalingFactor:     in.ScalingFactor,
 		Unit:              in.Unit,
+	}
+	if conversion, ok := unitMapping[result.Metadata.Unit]; ok {
+		for date := range result.Val {
+			result.Val[date] *= conversion.scaling
+		}
+		result.Metadata.Unit = conversion.unit
 	}
 	return result
 }

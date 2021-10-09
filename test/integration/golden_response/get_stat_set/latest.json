@@ -28,6 +28,33 @@
         }
       }
     },
+    "Annual_Generation_Electricity": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {
+          "date": "2020",
+          "value": 4009084999080,
+          "metadata": {
+            "importName": "EIA_Electricity"
+          }
+        },
+        "geoId/06": {
+          "date": "2020",
+          "value": 194110262920,
+          "metadata": {
+            "importName": "EIA_Electricity"
+          }
+        },
+        "geoId/0649670": {}
+      },
+      "metadata": {
+        "EIA_Electricity": {
+          "importName": "EIA_Electricity",
+          "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
+          "unit": "KilowattHour"
+        }
+      }
+    },
     "Count_CriminalActivities_CombinedCrime": {
       "stat": {
         "country/FRA": {},

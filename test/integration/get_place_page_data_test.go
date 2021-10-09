@@ -77,6 +77,13 @@ func TestGetPlacePageData(t *testing.T) {
 			3,
 		},
 		{
+			"state.sample.json",
+			"geoId/06",
+			1,
+			[]string{"Annual_Generation_Electricity"},
+			3,
+		},
+		{
 			"city.sample.json",
 			"geoId/0656938",
 			1,

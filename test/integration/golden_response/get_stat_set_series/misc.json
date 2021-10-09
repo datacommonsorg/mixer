@@ -42,6 +42,45 @@
             "unit": "InternationalDollar"
           }
         },
+        "Annual_Generation_Electricity": {
+          "val": {
+            "1990": 289439000000,
+            "1991": 315631000000,
+            "1992": 332713000000,
+            "1993": 356335000000,
+            "1994": 385557000000,
+            "1995": 418043000000,
+            "1996": 436879000000,
+            "1997": 465825000000,
+            "1998": 496924000000,
+            "1999": 536452000000,
+            "2000": 560842000000,
+            "2001": 579120000000,
+            "2002": 596633000000,
+            "2003": 633372000000,
+            "2004": 665986000000,
+            "2005": 697470000000,
+            "2006": 752454000000,
+            "2007": 813102000000,
+            "2008": 842531000000,
+            "2009": 899389000000,
+            "2010": 954539000000,
+            "2011": 973006000000,
+            "2012": 1035264000000,
+            "2013": 1193480000000,
+            "2014": 1308873000000,
+            "2015": 1354382000000,
+            "2016": 1432358000000,
+            "2017": 1490293000000,
+            "2018": 1521785000000
+          },
+          "metadata": {
+            "importName": "UNEnergy",
+            "provenanceUrl": "https://unstats.un.org/unsd/energystats/data/",
+            "observationPeriod": "P1Y",
+            "unit": "KilowattHour"
+          }
+        },
         "Count_CriminalActivities_CombinedCrime": {},
         "Count_Person": {
           "val": {
@@ -278,6 +317,46 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "InternationalDollar"
+          }
+        },
+        "Annual_Generation_Electricity": {
+          "val": {
+            "1990": 870673000000,
+            "1991": 898388000000,
+            "1992": 903533000000,
+            "1993": 911656000000,
+            "1994": 968767000000,
+            "1995": 990427000000,
+            "1996": 1010723000000,
+            "1997": 1034767000000,
+            "1998": 1031273000000,
+            "1999": 1048230000000,
+            "2000": 1067819000000,
+            "2001": 1050234000000,
+            "2002": 1068066000000,
+            "2003": 1058890000000,
+            "2004": 1088474000000,
+            "2005": 1108840000000,
+            "2006": 1112688000000,
+            "2007": 1141865000000,
+            "2008": 1108270000000,
+            "2009": 1090484000000,
+            "2010": 1170897000000,
+            "2011": 1110735000000,
+            "2012": 1098910000000,
+            "2013": 1104249000000,
+            "2014": 1076066000000,
+            "2015": 1058748000000,
+            "2016": 1061874000000,
+            "2017": 1071200000000,
+            "2018": 1057755000000,
+            "2019": 999875000000
+          },
+          "metadata": {
+            "importName": "UNEnergy",
+            "provenanceUrl": "https://unstats.un.org/unsd/energystats/data/",
+            "observationPeriod": "P1Y",
+            "unit": "KilowattHour"
           }
         },
         "Count_CriminalActivities_CombinedCrime": {},
@@ -537,6 +616,46 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "InternationalDollar"
+          }
+        },
+        "Annual_Generation_Electricity": {
+          "val": {
+            "1990": 3218621000000,
+            "1991": 3275840000000,
+            "1992": 3291109000000,
+            "1993": 3411280000000,
+            "1994": 3473435000000,
+            "1995": 3582114000000,
+            "1996": 3677022000000,
+            "1997": 3697728000000,
+            "1998": 3830489000000,
+            "1999": 3897518000000,
+            "2000": 4052667000000,
+            "2001": 3865307000000,
+            "2002": 4051120000000,
+            "2003": 4081764000000,
+            "2004": 4174856000000,
+            "2005": 4294368000000,
+            "2006": 4300831000000,
+            "2007": 4349841000000,
+            "2008": 4368261000000,
+            "2009": 4188215000000,
+            "2010": 4378430000000,
+            "2011": 4349463000000,
+            "2012": 4290660000000,
+            "2013": 4306371000000,
+            "2014": 4340371000000,
+            "2015": 4317159000000,
+            "2016": 4322038000000,
+            "2017": 4286423000000,
+            "2018": 4455439000000,
+            "2019": 4405511000000
+          },
+          "metadata": {
+            "importName": "UNEnergy",
+            "provenanceUrl": "https://unstats.un.org/unsd/energystats/data/",
+            "observationPeriod": "P1Y",
+            "unit": "KilowattHour"
           }
         },
         "Count_CriminalActivities_CombinedCrime": {
@@ -842,6 +961,35 @@
     "geoId/06": {
       "data": {
         "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
+        "Annual_Generation_Electricity": {
+          "val": {
+            "2001": 198596075000,
+            "2002": 184210031000,
+            "2003": 192788542000,
+            "2004": 194780355000,
+            "2005": 200292818080,
+            "2006": 216798688180,
+            "2007": 210847580880,
+            "2008": 207984262830,
+            "2009": 204776132250,
+            "2010": 204125595540,
+            "2011": 200804842480,
+            "2012": 199518566570,
+            "2013": 200077114620,
+            "2014": 198807621780,
+            "2015": 196703857660,
+            "2016": 196963215380,
+            "2017": 206146519900,
+            "2018": 195465638180,
+            "2019": 201784204300,
+            "2020": 194110262920
+          },
+          "metadata": {
+            "importName": "EIA_Electricity",
+            "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
+            "unit": "KilowattHour"
+          }
+        },
         "Count_CriminalActivities_CombinedCrime": {
           "val": {
             "2008": 1265920,
@@ -1036,6 +1184,7 @@
     "geoId/06085": {
       "data": {
         "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
+        "Annual_Generation_Electricity": {},
         "Count_CriminalActivities_CombinedCrime": {},
         "Count_Person": {
           "val": {
@@ -1130,6 +1279,7 @@
     "geoId/0649670": {
       "data": {
         "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {},
+        "Annual_Generation_Electricity": {},
         "Count_CriminalActivities_CombinedCrime": {
           "val": {
             "2008": 2116,

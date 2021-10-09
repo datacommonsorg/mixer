@@ -31,7 +31,17 @@ func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsTimeSeries:
 		x.ObsTimeSeries.PlaceName = ""
-		return x.ObsTimeSeries, nil
+		ret := x.ObsTimeSeries
+		// Unify unit.
+		for _, series := range ret.SourceSeries {
+			if conversion, ok := unitMapping[series.Unit]; ok {
+				series.Unit = conversion.unit
+				for date := range series.Val {
+					series.Val[date] *= conversion.scaling
+				}
+			}
+		}
+		return ret, nil
 	case nil:
 		return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")
 	default:
@@ -56,6 +66,12 @@ func convertToObsSeries(token string, jsonRaw []byte) (
 			SourceSeries: make([]*SourceSeries, len(pbSourceSeries)),
 		}
 		for i, source := range pbSourceSeries {
+			if conversion, ok := unitMapping[source.Unit]; ok {
+				source.Unit = conversion.unit
+				for date := range source.Val {
+					source.Val[date] *= conversion.scaling
+				}
+			}
 			ret.SourceSeries[i] = &SourceSeries{
 				ImportName:        source.GetImportName(),
 				ObservationPeriod: source.GetObservationPeriod(),
@@ -65,6 +81,7 @@ func convertToObsSeries(token string, jsonRaw []byte) (
 				ProvenanceURL:     source.GetProvenanceUrl(),
 				Val:               source.GetVal(),
 			}
+
 		}
 		ret.ProvenanceURL = x.ObsTimeSeries.GetProvenanceUrl()
 		return ret, nil
@@ -84,7 +101,17 @@ func convertToObsCollection(token string, jsonRaw []byte) (
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsCollection:
-		return x.ObsCollection, nil
+		ret := x.ObsCollection
+		// Unify unit.
+		for _, series := range ret.SourceCohorts {
+			if conversion, ok := unitMapping[series.Unit]; ok {
+				series.Unit = conversion.unit
+				for date := range series.Val {
+					series.Val[date] *= conversion.scaling
+				}
+			}
+		}
+		return ret, nil
 	case nil:
 		return nil, status.Error(codes.Internal,
 			"ChartStore.Val is not set")
