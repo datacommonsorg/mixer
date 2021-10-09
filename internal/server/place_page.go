@@ -273,6 +273,12 @@ func fetchBtData(
 			finalData.Data[statVar] = series
 			if statVar == "Count_Person" {
 				popSeries, latestDate := getBestSeries(obsTimeSeries, true /* useLatest */)
+				if conversion, ok := unitMapping[popSeries.Metadata.Unit]; ok {
+					popSeries.Metadata.Unit = conversion.unit
+					for date := range popSeries.Val {
+						popSeries.Val[date] *= conversion.scaling
+					}
+				}
 				popData[place] = &pb.PointStat{
 					Date:     *latestDate,
 					Value:    popSeries.Val[*latestDate],

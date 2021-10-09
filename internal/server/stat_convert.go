@@ -21,6 +21,18 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+type unitConversion struct {
+	unit    string
+	scaling float64
+}
+
+var unitMapping = map[string]*unitConversion{
+	"GigawattHour": {
+		unit:    "KilowattHour",
+		scaling: 1000000,
+	},
+}
+
 // convert ChartStore to pb.ObsTimeSerie
 func convertToObsSeriesPb(token string, jsonRaw []byte) (
 	interface{}, error) {
