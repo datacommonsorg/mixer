@@ -43,7 +43,7 @@ func TestGetStatAll(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
+			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita", "Annual_Generation_Electricity"},
 			[]string{"country/USA", "geoId/06", "geoId/0649670"},
 			"result.json",
 		},

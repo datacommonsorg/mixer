@@ -91,6 +91,13 @@ func TestGetStats(t *testing.T) {
 			false,
 		},
 		{
+			"Annual_Generation_Electricity",
+			[]string{"country/USA", "geoId/06"},
+			"",
+			"electricity_generation.json",
+			false,
+		},
+		{
 			// This is to test for scaling factor.
 			"Count_Person_IsInternetUser_PerCapita",
 			[]string{"country/JPN"},

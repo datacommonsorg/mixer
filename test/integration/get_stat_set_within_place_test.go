@@ -56,7 +56,7 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 			"country/USA",
 			"State",
 			"",
-			[]string{"Count_Person", "Count_Person_Employed"},
+			[]string{"Count_Person", "Count_Person_Employed", "Annual_Generation_Electricity"},
 			"US_State.json",
 		},
 		{
