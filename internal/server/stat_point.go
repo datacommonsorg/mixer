@@ -134,15 +134,13 @@ func (s *Server) GetStatSetWithinPlace(
 	parentPlace := in.GetParentPlace()
 	statVars := in.GetStatVars()
 	childType := in.GetChildType()
-	importName := in.GetImportName()
 	date := in.GetDate()
 
 	log.Printf(
-		"GetStatSetWithinPlace: parentPlace: %s, statVars: %v, childType: %s, importName: %s, date: %s",
+		"GetStatSetWithinPlace: parentPlace: %s, statVars: %v, childType: %s, date: %s",
 		parentPlace,
 		statVars,
 		childType,
-		importName,
 		date,
 	)
 	if parentPlace == "" {
