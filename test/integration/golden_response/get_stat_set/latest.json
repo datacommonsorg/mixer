@@ -96,10 +96,10 @@
     "Count_Person": {
       "stat": {
         "country/FRA": {
-          "date": "2021-02",
-          "value": 67399000,
+          "date": "2019",
+          "value": 67012883,
           "metadata": {
-            "importName": "WikipediaStatsData"
+            "importName": "EurostatData"
           }
         },
         "country/USA": {
@@ -125,15 +125,15 @@
         }
       },
       "metadata": {
+        "EurostatData": {
+          "importName": "EurostatData",
+          "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
+          "measurementMethod": "EurostatRegionalPopulationData"
+        },
         "USDecennialCensus_RedistrictingRelease": {
           "importName": "USDecennialCensus_RedistrictingRelease",
           "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
           "measurementMethod": "USDecennialCensus"
-        },
-        "WikipediaStatsData": {
-          "importName": "WikipediaStatsData",
-          "provenanceUrl": "https://www.wikipedia.org",
-          "measurementMethod": "Wikipedia"
         }
       }
     }
