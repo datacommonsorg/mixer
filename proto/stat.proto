@@ -223,6 +223,9 @@ message GetStatSetSeriesRequest {
 
   // The dcids of the statistical variables.
   repeated string stat_vars = 2;
+
+  // (Optional) Import name of the desired series.
+  string import_name = 3;
 }
 
 // Response of GetStatSetSeries

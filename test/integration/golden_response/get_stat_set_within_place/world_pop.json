@@ -1,0 +1,1792 @@
+{
+  "data": {
+    "Count_Person": {
+      "stat": {
+        "country/ABW": {
+          "date": "2019",
+          "value": 106314,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/AFG": {
+          "date": "2019",
+          "value": 38041754,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/AGO": {
+          "date": "2019",
+          "value": 31825295,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/AIA": {
+          "date": "2011",
+          "value": 15094,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/ALB": {
+          "date": "2019",
+          "value": 2862427,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/AND": {
+          "date": "2019",
+          "value": 76177,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/ANT": {
+          "date": "2009",
+          "value": 227049,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/ARE": {
+          "date": "2019",
+          "value": 9770529,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ARG": {
+          "date": "2019",
+          "value": 44938712,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ARM": {
+          "date": "2019",
+          "value": 2965269,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/ASM": {
+          "date": "2019",
+          "value": 55312,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ATA": {},
+        "country/ATB": {},
+        "country/ATF": {
+          "date": "2012",
+          "value": 196,
+          "metadata": {
+            "import_name": "WikidataPopulation"
+          }
+        },
+        "country/ATG": {
+          "date": "2019",
+          "value": 97118,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ATN": {},
+        "country/AUS": {
+          "date": "2019",
+          "value": 25364307,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/AUT": {
+          "date": "2019",
+          "value": 8858775,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/AZE": {
+          "date": "2019",
+          "value": 9981457,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/BDI": {
+          "date": "2019",
+          "value": 11530580,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BEL": {
+          "date": "2019",
+          "value": 11455519,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/BEN": {
+          "date": "2019",
+          "value": 11801151,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BES": {
+          "date": "2020-01-01",
+          "value": 25987,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/BFA": {
+          "date": "2019",
+          "value": 20321378,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BGD": {
+          "date": "2019",
+          "value": 163046161,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BGR": {
+          "date": "2019",
+          "value": 7000039,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/BHR": {
+          "date": "2019",
+          "value": 1641172,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BHS": {
+          "date": "2019",
+          "value": 389482,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BIH": {
+          "date": "2019",
+          "value": 3301000,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BLM": {
+          "date": "2012",
+          "value": 9131,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/BLR": {
+          "date": "2019",
+          "value": 9475174,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/BLZ": {
+          "date": "2019",
+          "value": 390353,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BMU": {
+          "date": "2019",
+          "value": 63918,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BOL": {
+          "date": "2019",
+          "value": 11513100,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BRA": {
+          "date": "2019",
+          "value": 211049527,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BRB": {
+          "date": "2019",
+          "value": 287025,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BRN": {
+          "date": "2019",
+          "value": 433285,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BTN": {
+          "date": "2019",
+          "value": 763092,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/BVT": {},
+        "country/BWA": {
+          "date": "2019",
+          "value": 2303697,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CAF": {
+          "date": "2019",
+          "value": 4745185,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CAN": {
+          "date": "2019",
+          "value": 37589262,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CCK": {
+          "date": "2009",
+          "value": 596,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/CHE": {
+          "date": "2019",
+          "value": 8544527,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/CHL": {
+          "date": "2019",
+          "value": 18952038,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CHN": {
+          "date": "2019",
+          "value": 1397715000,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CIV": {
+          "date": "2019",
+          "value": 25716544,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CMR": {
+          "date": "2019",
+          "value": 25876380,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/COD": {
+          "date": "2019",
+          "value": 86790567,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/COG": {
+          "date": "2019",
+          "value": 5380508,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/COK": {
+          "date": "2016",
+          "value": 17459,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/COL": {
+          "date": "2019",
+          "value": 50339443,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/COM": {
+          "date": "2019",
+          "value": 850886,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CPV": {
+          "date": "2019",
+          "value": 549935,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CRI": {
+          "date": "2019",
+          "value": 5047561,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CTE": {},
+        "country/CUB": {
+          "date": "2019",
+          "value": 11333483,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CUW": {
+          "date": "2019",
+          "value": 157538,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CXR": {
+          "date": "2010",
+          "value": 1402,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/CYM": {
+          "date": "2019",
+          "value": 64948,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/CYP": {
+          "date": "2019",
+          "value": 875899,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/CZE": {
+          "date": "2019",
+          "value": 10649800,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/DEU": {
+          "date": "2019",
+          "value": 83019213,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/DJI": {
+          "date": "2019",
+          "value": 973560,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/DMA": {
+          "date": "2019",
+          "value": 71808,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/DNK": {
+          "date": "2019",
+          "value": 5806081,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/DOM": {
+          "date": "2019",
+          "value": 10738958,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/DZA": {
+          "date": "2019",
+          "value": 43053054,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ECU": {
+          "date": "2019",
+          "value": 17373662,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/EGY": {
+          "date": "2019",
+          "value": 100388073,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ERI": {
+          "date": "2011",
+          "value": 3213972,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ESH": {
+          "date": "2019",
+          "value": 582000,
+          "metadata": {
+            "import_name": "WikidataPopulation"
+          }
+        },
+        "country/ESP": {
+          "date": "2019",
+          "value": 46937060,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/EST": {
+          "date": "2019",
+          "value": 1324820,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/ETH": {
+          "date": "2019",
+          "value": 112078730,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/FIN": {
+          "date": "2019",
+          "value": 5517919,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/FJI": {
+          "date": "2019",
+          "value": 889953,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/FLK": {
+          "date": "2012",
+          "value": 2840,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/FRA": {
+          "date": "2019",
+          "value": 67012883,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/FRO": {
+          "date": "2019",
+          "value": 48678,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/FSM": {
+          "date": "2019",
+          "value": 113815,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/FXX": {
+          "date": "2019",
+          "value": 64812052,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "country/GAB": {
+          "date": "2019",
+          "value": 2172579,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GBR": {
+          "date": "2019",
+          "value": 66647112,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/GEO": {
+          "date": "2019",
+          "value": 3723464,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/GGY": {
+          "date": "2016",
+          "value": 63026,
+          "metadata": {
+            "import_name": "WikidataPopulation"
+          }
+        },
+        "country/GHA": {
+          "date": "2019",
+          "value": 30417856,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GIB": {
+          "date": "2019",
+          "value": 33701,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GIN": {
+          "date": "2019",
+          "value": 12771246,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GLP": {
+          "date": "2016",
+          "value": 395700,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/GMB": {
+          "date": "2019",
+          "value": 2347706,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GNB": {
+          "date": "2019",
+          "value": 1920922,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GNQ": {
+          "date": "2019",
+          "value": 1355986,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GRC": {
+          "date": "2019",
+          "value": 10724599,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/GRD": {
+          "date": "2019",
+          "value": 112003,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GRL": {
+          "date": "2019",
+          "value": 56225,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GTM": {
+          "date": "2019",
+          "value": 16604026,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GUF": {
+          "date": "2021-01",
+          "value": 294071,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/GUM": {
+          "date": "2019",
+          "value": 167294,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/GUY": {
+          "date": "2019",
+          "value": 782766,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/HKG": {
+          "date": "2019",
+          "value": 7507400,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/HMD": {
+          "date": "2011",
+          "metadata": {
+            "import_name": "WikidataPopulation"
+          }
+        },
+        "country/HND": {
+          "date": "2019",
+          "value": 9746117,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/HRV": {
+          "date": "2019",
+          "value": 4076246,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/HTI": {
+          "date": "2019",
+          "value": 11263077,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/HUN": {
+          "date": "2019",
+          "value": 9772756,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/IDN": {
+          "date": "2019",
+          "value": 270625568,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/IMN": {
+          "date": "2019",
+          "value": 84584,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/IND": {
+          "date": "2019",
+          "value": 1366417754,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/IOT": {},
+        "country/IRL": {
+          "date": "2019",
+          "value": 4904240,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/IRN": {
+          "date": "2019",
+          "value": 82913906,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/IRQ": {
+          "date": "2019",
+          "value": 39309783,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ISL": {
+          "date": "2019",
+          "value": 356991,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/ISR": {
+          "date": "2019",
+          "value": 9053300,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ITA": {
+          "date": "2019",
+          "value": 60359546,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/JAM": {
+          "date": "2019",
+          "value": 2948279,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/JEY": {
+          "date": "2011",
+          "value": 97857,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/JOR": {
+          "date": "2019",
+          "value": 10101694,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/JPN": {
+          "date": "2019",
+          "value": 126264931,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KAZ": {
+          "date": "2019",
+          "value": 18513930,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KEN": {
+          "date": "2019",
+          "value": 52573973,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KGZ": {
+          "date": "2019",
+          "value": 6456900,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KHM": {
+          "date": "2019",
+          "value": 16486542,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KIR": {
+          "date": "2019",
+          "value": 117606,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KNA": {
+          "date": "2019",
+          "value": 52834,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KOR": {
+          "date": "2019",
+          "value": 51709098,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/KWT": {
+          "date": "2019",
+          "value": 4207083,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LAO": {
+          "date": "2019",
+          "value": 7169455,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LBN": {
+          "date": "2019",
+          "value": 6855713,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LBR": {
+          "date": "2019",
+          "value": 4937374,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LBY": {
+          "date": "2019",
+          "value": 6777452,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LCA": {
+          "date": "2019",
+          "value": 182790,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LIE": {
+          "date": "2019",
+          "value": 38378,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/LKA": {
+          "date": "2019",
+          "value": 21803000,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LSO": {
+          "date": "2019",
+          "value": 2125268,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/LTU": {
+          "date": "2019",
+          "value": 2794184,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/LUX": {
+          "date": "2019",
+          "value": 613894,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/LVA": {
+          "date": "2019",
+          "value": 1919968,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/MAC": {
+          "date": "2019",
+          "value": 640445,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MAF": {
+          "date": "2019",
+          "value": 38002,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MAR": {
+          "date": "2019",
+          "value": 36471769,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MCO": {
+          "date": "2019",
+          "value": 38964,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MDA": {
+          "date": "2019",
+          "value": 2657637,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MDG": {
+          "date": "2019",
+          "value": 26969307,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MDV": {
+          "date": "2019",
+          "value": 530953,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MEX": {
+          "date": "2019",
+          "value": 127575529,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MHL": {
+          "date": "2019",
+          "value": 58791,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MKD": {
+          "date": "2019",
+          "value": 2077132,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/MLI": {
+          "date": "2019",
+          "value": 19658031,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MLT": {
+          "date": "2019",
+          "value": 493559,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/MMR": {
+          "date": "2019",
+          "value": 54045420,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MNE": {
+          "date": "2019",
+          "value": 622182,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/MNG": {
+          "date": "2019",
+          "value": 3225167,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MNP": {
+          "date": "2019",
+          "value": 57216,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MOZ": {
+          "date": "2019",
+          "value": 30366036,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MRT": {
+          "date": "2019",
+          "value": 4525696,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MSR": {
+          "date": "2020",
+          "value": 4992,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/MTQ": {
+          "date": "2016",
+          "value": 376480,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/MUS": {
+          "date": "2019",
+          "value": 1265711,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MWI": {
+          "date": "2019",
+          "value": 18628747,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MYS": {
+          "date": "2019",
+          "value": 31949777,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/MYT": {
+          "date": "2019",
+          "value": 270372,
+          "metadata": {
+            "import_name": "FranceINSEE"
+          }
+        },
+        "country/NAM": {
+          "date": "2019",
+          "value": 2494530,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/NCL": {
+          "date": "2019",
+          "value": 287800,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/NER": {
+          "date": "2019",
+          "value": 23310715,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/NFK": {
+          "date": "2011-07",
+          "value": 2169,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/NGA": {
+          "date": "2019",
+          "value": 200963599,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/NIC": {
+          "date": "2019",
+          "value": 6545502,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/NIU": {
+          "date": "2018",
+          "value": 1620,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/NLD": {
+          "date": "2019",
+          "value": 17282163,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/NOR": {
+          "date": "2019",
+          "value": 5328212,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/NPL": {
+          "date": "2019",
+          "value": 28608710,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/NRU": {
+          "date": "2019",
+          "value": 12581,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/NZL": {
+          "date": "2019",
+          "value": 4917000,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/OMN": {
+          "date": "2019",
+          "value": 4974986,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PAK": {
+          "date": "2019",
+          "value": 216565318,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PAN": {
+          "date": "2019",
+          "value": 4246439,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PCN": {
+          "date": "2011",
+          "value": 67,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/PER": {
+          "date": "2019",
+          "value": 32510453,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PHL": {
+          "date": "2019",
+          "value": 108116615,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PLW": {
+          "date": "2019",
+          "value": 18008,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PNG": {
+          "date": "2019",
+          "value": 8776109,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/POL": {
+          "date": "2019",
+          "value": 37972812,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/PRI": {
+          "date": "2019",
+          "value": 3193694,
+          "metadata": {
+            "import_name": "CensusPEP"
+          }
+        },
+        "country/PRK": {
+          "date": "2019",
+          "value": 25666161,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PRT": {
+          "date": "2019",
+          "value": 10276617,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/PRY": {
+          "date": "2019",
+          "value": 7044636,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PSE": {
+          "date": "2019",
+          "value": 4685306,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/PYF": {
+          "date": "2019",
+          "value": 279287,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/QAT": {
+          "date": "2019",
+          "value": 2832067,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/REU": {
+          "date": "2020-01",
+          "value": 859959,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/ROU": {
+          "date": "2019",
+          "value": 19414458,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/RUS": {
+          "date": "2019",
+          "value": 144373535,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/RWA": {
+          "date": "2019",
+          "value": 12626950,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SAU": {
+          "date": "2019",
+          "value": 34268528,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SDN": {
+          "date": "2019",
+          "value": 42813238,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SEN": {
+          "date": "2019",
+          "value": 16296364,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SGP": {
+          "date": "2019",
+          "value": 5703569,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SGS": {
+          "date": "2006",
+          "value": 30,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/SHN": {
+          "date": "2008",
+          "value": 5661,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/SJM": {},
+        "country/SLB": {
+          "date": "2019",
+          "value": 669823,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SLE": {
+          "date": "2019",
+          "value": 7813215,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SLV": {
+          "date": "2019",
+          "value": 6453553,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SMR": {
+          "date": "2019",
+          "value": 33860,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SOM": {
+          "date": "2019",
+          "value": 15442905,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SPM": {
+          "date": "2011",
+          "value": 5888,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/SRB": {
+          "date": "2019",
+          "value": 6963764,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/SSD": {
+          "date": "2019",
+          "value": 11062113,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/STP": {
+          "date": "2019",
+          "value": 215056,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SUR": {
+          "date": "2019",
+          "value": 581363,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SVK": {
+          "date": "2019",
+          "value": 5450421,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/SVN": {
+          "date": "2019",
+          "value": 2080908,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/SWE": {
+          "date": "2019",
+          "value": 10230185,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/SWZ": {
+          "date": "2019",
+          "value": 1148130,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SXM": {
+          "date": "2019",
+          "value": 40733,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SYC": {
+          "date": "2019",
+          "value": 97625,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/SYR": {
+          "date": "2019",
+          "value": 17070135,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TCA": {
+          "date": "2019",
+          "value": 38191,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TCD": {
+          "date": "2019",
+          "value": 15946876,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TGO": {
+          "date": "2019",
+          "value": 8082366,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/THA": {
+          "date": "2019",
+          "value": 69625582,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TJK": {
+          "date": "2019",
+          "value": 9321018,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TKL": {
+          "date": "2011-10",
+          "value": 1411,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/TKM": {
+          "date": "2019",
+          "value": 5942089,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TLS": {
+          "date": "2019",
+          "value": 1293119,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TON": {
+          "date": "2019",
+          "value": 104494,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TTO": {
+          "date": "2019",
+          "value": 1394973,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TUN": {
+          "date": "2019",
+          "value": 11694719,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TUR": {
+          "date": "2019",
+          "value": 82003882,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/TUV": {
+          "date": "2019",
+          "value": 11646,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/TWN": {
+          "date": "2020",
+          "value": 23568378,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/TZA": {
+          "date": "2019",
+          "value": 58005463,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/UGA": {
+          "date": "2019",
+          "value": 44269594,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/UKR": {
+          "date": "2019",
+          "value": 41983564,
+          "metadata": {
+            "import_name": "EurostatData"
+          }
+        },
+        "country/UMI": {
+          "date": "2009",
+          "value": 300,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/URY": {
+          "date": "2019",
+          "value": 3461734,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/USA": {
+          "date": "2020",
+          "value": 331449281,
+          "metadata": {
+            "import_name": "USDecennialCensus_RedistrictingRelease"
+          }
+        },
+        "country/UZB": {
+          "date": "2019",
+          "value": 33580650,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/VAT": {
+          "date": "2019",
+          "value": 825,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/VCT": {
+          "date": "2019",
+          "value": 110589,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/VEN": {
+          "date": "2019",
+          "value": 28515829,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/VGB": {
+          "date": "2019",
+          "value": 30030,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/VIR": {
+          "date": "2019",
+          "value": 106631,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/VNM": {
+          "date": "2019",
+          "value": 96462106,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/VUT": {
+          "date": "2019",
+          "value": 299882,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/WLF": {
+          "date": "2009-07",
+          "value": 15289,
+          "metadata": {
+            "import_name": "KGHumanCurated"
+          }
+        },
+        "country/WSM": {
+          "date": "2019",
+          "value": 197097,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/XKS": {
+          "date": "2020",
+          "value": 1873160,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/YEM": {
+          "date": "2019",
+          "value": 29161922,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/YUG": {
+          "date": "1991",
+          "value": 23229846,
+          "metadata": {
+            "import_name": "WikipediaStatsData"
+          }
+        },
+        "country/ZAF": {
+          "date": "2019",
+          "value": 58558270,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ZMB": {
+          "date": "2019",
+          "value": 17861030,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        },
+        "country/ZWE": {
+          "date": "2019",
+          "value": 14645468,
+          "metadata": {
+            "import_name": "WorldDevelopmentIndicators"
+          }
+        }
+      },
+      "metadata": {
+        "CensusPEP": {
+          "import_name": "CensusPEP",
+          "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+          "measurement_method": "CensusPEPSurvey"
+        },
+        "EurostatData": {
+          "import_name": "EurostatData",
+          "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+          "measurement_method": "EurostatRegionalPopulationData"
+        },
+        "FranceINSEE": {
+          "import_name": "FranceINSEE",
+          "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+          "measurement_method": "FranceINSEE"
+        },
+        "KGHumanCurated": {
+          "import_name": "KGHumanCurated",
+          "provenance_url": "https://google.com",
+          "measurement_method": "HumanCuratedStats"
+        },
+        "USDecennialCensus_RedistrictingRelease": {
+          "import_name": "USDecennialCensus_RedistrictingRelease",
+          "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+          "measurement_method": "USDecennialCensus"
+        },
+        "WikidataPopulation": {
+          "import_name": "WikidataPopulation",
+          "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+          "measurement_method": "WikidataPopulation"
+        },
+        "WikipediaStatsData": {
+          "import_name": "WikipediaStatsData",
+          "provenance_url": "https://www.wikipedia.org",
+          "measurement_method": "Wikipedia"
+        },
+        "WorldDevelopmentIndicators": {
+          "import_name": "WorldDevelopmentIndicators",
+          "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+          "observation_period": "P1Y"
+        }
+      }
+    }
+  }
+}

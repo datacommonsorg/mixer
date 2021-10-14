@@ -184,6 +184,7 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 	*pb.GetStatSetSeriesResponse, error) {
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
+	importName := in.GetImportName()
 	if len(places) == 0 {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "Missing required argument: places")
@@ -217,7 +218,7 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 		for place, placeData := range cacheData {
 			for statVar, data := range placeData {
 				if data != nil {
-					series, _ := getBestSeries(data, false /* useLatest */)
+					series, _ := getBestSeries(data, importName, false /* useLatest */)
 					result.Data[place].Data[statVar] = series
 				}
 			}

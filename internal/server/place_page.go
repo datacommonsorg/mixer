@@ -269,10 +269,10 @@ func fetchBtData(
 		placePageData := data.(*pb.StatVarObsSeries)
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 		for statVar, obsTimeSeries := range placePageData.Data {
-			series, _ := getBestSeries(obsTimeSeries, false /* useLatest */)
+			series, _ := getBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
 			if statVar == "Count_Person" {
-				popSeries, latestDate := getBestSeries(obsTimeSeries, true /* useLatest */)
+				popSeries, latestDate := getBestSeries(obsTimeSeries, "", true /* useLatest */)
 				if conversion, ok := unitMapping[popSeries.Metadata.Unit]; ok {
 					popSeries.Metadata.Unit = conversion.unit
 					for date := range popSeries.Val {

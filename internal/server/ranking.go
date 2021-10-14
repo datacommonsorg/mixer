@@ -31,7 +31,6 @@ type RankKey struct {
 
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
-// The ranking score ranges from 0 to 100.
 var StatsRanking = map[RankKey]int{
 	{"CensusPEP", "CensusPEPSurvey"}:                                      0, // Population
 	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1, // Population
@@ -45,7 +44,8 @@ var StatsRanking = map[RankKey]int{
 	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
 	{"UNEnergy", ""}:                                                      0, // Electricity
 	{"EIA_Electricity", ""}:                                               1, // Electricity
-	{"WikidataPopulation", "WikidataPopulation"}:                          1001,
+	{"WikidataPopulation", "WikidataPopulation"}:                          1002,
+	{"WikipediaStatsData", "Wikipedia"}:                                   1001,
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it

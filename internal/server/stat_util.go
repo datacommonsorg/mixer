@@ -30,6 +30,13 @@ type ObsProp struct {
 	Sfactor string
 }
 
+func lowQualityPopulationImport(importName string) bool {
+	return importName == "WikidataPopulation" ||
+		importName == "KGHumanCurated" ||
+		importName == "HumanCuratedStats" ||
+		importName == "WikipediaStatsData"
+}
+
 func tokenFn(
 	keyTokens map[string]*placeStatVar) func(rowKey string) (string, error) {
 	return func(rowKey string) (string, error) {
@@ -72,10 +79,27 @@ func (in *ObsTimeSeries) filterAndRank(prop *ObsProp) {
 }
 
 // Get the best series for a collection of series with different metadata.
-// When "useLatest" is true, the function also returns the latest date;
-// Otherwise, the returned string pointer is nil.
-func getBestSeries(in *pb.ObsTimeSeries, useLatest bool) (*pb.Series, *string) {
+//
+// - If "importName" is set, pick the series with the import name.
+// - If "useLatest" is true, pick the series with latest date and set the
+//   second return value to be the latest date.
+//
+// Note "importName" is preferred over "useLatest".
+func getBestSeries(
+	in *pb.ObsTimeSeries,
+	importName string,
+	useLatest bool,
+) (*pb.Series, *string) {
 	rawSeries := in.SourceSeries
+	// If importName is set, must return the series with that import name.
+	if importName != "" {
+		for _, series := range rawSeries {
+			if series.ImportName == importName {
+				return rawSeriesToSeries(series), nil
+			}
+		}
+		return nil, nil
+	}
 	sort.Sort(SeriesByRank(rawSeries))
 	if len(rawSeries) > 0 {
 		// Choose the latest series.
@@ -201,7 +225,11 @@ func getValueFromBestSourcePb(
 	latestDate := ""
 	var ps *pb.PointStat
 	var meta *pb.StatMetadata
-	for _, series := range sourceSeries {
+	for idx, series := range sourceSeries {
+		// Do not pick the latest population data from low quality import.
+		if idx > 0 && lowQualityPopulationImport(series.ImportName) {
+			break
+		}
 		for date, value := range series.Val {
 			if date > latestDate {
 				latestDate = date

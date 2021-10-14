@@ -43,6 +43,7 @@ func TestGetStatSetSeries(t *testing.T) {
 		places       []string
 		goldenFile   string
 		partialMatch bool
+		importName   string
 	}{
 		{
 			[]string{
@@ -58,29 +59,41 @@ func TestGetStatSetSeries(t *testing.T) {
 			[]string{"country/USA", "country/JPN", "country/IND", "geoId/06", "geoId/06085", "geoId/0649670"},
 			"misc.json",
 			false,
+			"",
+		},
+		{
+			[]string{"Count_Person"},
+			[]string{"country/USA", "country/JPN", "country/IND", "geoId/06", "geoId/06085", "geoId/0649670"},
+			"preferred_import.json",
+			false,
+			"CensusACS1YearSurvey",
 		},
 		{
 			[]string{"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
 			[]string{"country/USA", "geoId/06", "geoId/06085"},
 			"nyt_covid_cases.json",
 			true,
+			"",
 		},
 		{
 			[]string{"Test_Stat_Var_1", "Test_Stat_Var_10"},
 			[]string{"country/ALB", "country/AND"},
 			"memdb.json",
 			true,
+			"",
 		},
 		{
 			[]string{"Annual_Generation_Electricity"},
 			[]string{"country/USA", "country/IND", "country/CHN"},
 			"electricity_generation.json",
 			false,
+			"",
 		},
 	} {
 		resp, err := client.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
+			StatVars:   c.statVars,
+			Places:     c.places,
+			ImportName: c.importName,
 		})
 		if err != nil {
 			t.Errorf("could not GetStatSetSeries: %s", err)
