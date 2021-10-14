@@ -62,7 +62,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Electricity generation",
+    "title": "Electricity generation per capita",
     "statsVars": [
       "Annual_Generation_Electricity"
     ],
