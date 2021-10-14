@@ -225,7 +225,8 @@ func getValueFromBestSourcePb(
 	latestDate := ""
 	var ps *pb.PointStat
 	var meta *pb.StatMetadata
-	// sourcceSeries has been sorted already by ranking.
+	// At this stage, sourceSeries has import series ranked by the ranking score.
+	// (accomplished by SeriesByRank function above)
 	for idx, series := range sourceSeries {
 		// If there are higher quality population data, then do not pick from the
 		// lower quality import even it could have more recent data.
