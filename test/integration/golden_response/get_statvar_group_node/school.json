@@ -144,7 +144,7 @@
       "id": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher",
       "specializedEntity": "Bachelors Degree or Higher",
       "displayName": "Person With Educational Attainment = Bachelors Degree or Higher",
-      "numDescendentStatVars": 34
+      "numDescendentStatVars": 39
     },
     {
       "id": "dc/g/Person_EducationalAttainment-DoctorateDegree",
@@ -168,7 +168,7 @@
       "id": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency",
       "specializedEntity": "High School Graduate Includes Equivalency",
       "displayName": "Person With Educational Attainment = High School Graduate Includes Equivalency",
-      "numDescendentStatVars": 30
+      "numDescendentStatVars": 36
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThan9ThGrade",
@@ -185,7 +185,8 @@
     {
       "id": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate",
       "specializedEntity": "Less Than High School Graduate",
-      "displayName": "Person With Educational Attainment = Less Than High School Graduate"
+      "displayName": "Person With Educational Attainment = Less Than High School Graduate",
+      "numDescendentStatVars": 6
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducation\u0026PrimaryEducation\u0026LowerSecondaryEducation",
@@ -244,7 +245,7 @@
       "id": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree",
       "specializedEntity": "Some College or Associates Degree",
       "displayName": "Person With Educational Attainment = Some College or Associates Degree",
-      "numDescendentStatVars": 18
+      "numDescendentStatVars": 24
     },
     {
       "id": "dc/g/Person_EducationalAttainment-TertiaryEducation",
@@ -266,5 +267,5 @@
   "parentStatVarGroups": [
     "dc/g/Education"
   ],
-  "numDescendentStatVars": 254
+  "numDescendentStatVars": 277
 }

@@ -3,22 +3,22 @@
     "Count_Person": {
       "stat": {
         "country/ABW": {
-          "date": "2019",
-          "value": 106314,
+          "date": "2020",
+          "value": 106766,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/AFG": {
-          "date": "2019",
-          "value": 38041754,
+          "date": "2020",
+          "value": 38928341,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/AGO": {
-          "date": "2019",
-          "value": 31825295,
+          "date": "2020",
+          "value": 32866268,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -27,54 +27,54 @@
           "date": "2011",
           "value": 15094,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/ALB": {
-          "date": "2019",
-          "value": 2862427,
+          "date": "2020",
+          "value": 2837743,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/AND": {
-          "date": "2019",
-          "value": 76177,
+          "date": "2020",
+          "value": 77265,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ANT": {
           "date": "2009",
           "value": 227049,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/ARE": {
-          "date": "2019",
-          "value": 9770529,
+          "date": "2020",
+          "value": 9890400,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ARG": {
-          "date": "2019",
-          "value": 44938712,
+          "date": "2020",
+          "value": 45376763,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ARM": {
-          "date": "2019",
-          "value": 2965269,
+          "date": "2020",
+          "value": 2963234,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ASM": {
-          "date": "2019",
-          "value": 55312,
+          "date": "2020",
+          "value": 55197,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -89,51 +89,51 @@
           }
         },
         "country/ATG": {
-          "date": "2019",
-          "value": 97118,
+          "date": "2020",
+          "value": 97928,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ATN": {},
         "country/AUS": {
-          "date": "2019",
-          "value": 25364307,
+          "date": "2020",
+          "value": 25687041,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/AUT": {
-          "date": "2019",
-          "value": 8858775,
+          "date": "2020",
+          "value": 8917205,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/AZE": {
-          "date": "2019",
-          "value": 9981457,
+          "date": "2020",
+          "value": 10110116,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BDI": {
-          "date": "2019",
-          "value": 11530580,
+          "date": "2020",
+          "value": 11890781,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BEL": {
-          "date": "2019",
-          "value": 11455519,
+          "date": "2020",
+          "value": 11555997,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BEN": {
-          "date": "2019",
-          "value": 11801151,
+          "date": "2020",
+          "value": 12123198,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -146,43 +146,43 @@
           }
         },
         "country/BFA": {
-          "date": "2019",
-          "value": 20321378,
+          "date": "2020",
+          "value": 20903278,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BGD": {
-          "date": "2019",
-          "value": 163046161,
+          "date": "2020",
+          "value": 164689383,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BGR": {
-          "date": "2019",
-          "value": 7000039,
+          "date": "2020",
+          "value": 6927288,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BHR": {
-          "date": "2019",
-          "value": 1641172,
+          "date": "2020",
+          "value": 1701583,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BHS": {
-          "date": "2019",
-          "value": 389482,
+          "date": "2020",
+          "value": 393248,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BIH": {
-          "date": "2019",
-          "value": 3301000,
+          "date": "2020",
+          "value": 3280815,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -191,83 +191,83 @@
           "date": "2012",
           "value": 9131,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/BLR": {
-          "date": "2019",
-          "value": 9475174,
+          "date": "2020",
+          "value": 9398861,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BLZ": {
-          "date": "2019",
-          "value": 390353,
+          "date": "2020",
+          "value": 397621,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BMU": {
-          "date": "2019",
-          "value": 63918,
+          "date": "2020",
+          "value": 63903,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BOL": {
-          "date": "2019",
-          "value": 11513100,
+          "date": "2020",
+          "value": 11673029,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BRA": {
-          "date": "2019",
-          "value": 211049527,
+          "date": "2020",
+          "value": 212559409,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BRB": {
-          "date": "2019",
-          "value": 287025,
+          "date": "2020",
+          "value": 287371,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BRN": {
-          "date": "2019",
-          "value": 433285,
+          "date": "2020",
+          "value": 437483,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BTN": {
-          "date": "2019",
-          "value": 763092,
+          "date": "2020",
+          "value": 771612,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/BVT": {},
         "country/BWA": {
-          "date": "2019",
-          "value": 2303697,
+          "date": "2020",
+          "value": 2351625,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CAF": {
-          "date": "2019",
-          "value": 4745185,
+          "date": "2020",
+          "value": 4829764,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CAN": {
-          "date": "2019",
-          "value": 37589262,
+          "date": "2020",
+          "value": 38005238,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -276,54 +276,54 @@
           "date": "2009",
           "value": 596,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/CHE": {
-          "date": "2019",
-          "value": 8544527,
+          "date": "2020",
+          "value": 8636896,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CHL": {
-          "date": "2019",
-          "value": 18952038,
+          "date": "2020",
+          "value": 19116209,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CHN": {
-          "date": "2019",
-          "value": 1397715000,
+          "date": "2020",
+          "value": 1402112000,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CIV": {
-          "date": "2019",
-          "value": 25716544,
+          "date": "2020",
+          "value": 26378275,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CMR": {
-          "date": "2019",
-          "value": 25876380,
+          "date": "2020",
+          "value": 26545864,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/COD": {
-          "date": "2019",
-          "value": 86790567,
+          "date": "2020",
+          "value": 89561404,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/COG": {
-          "date": "2019",
-          "value": 5380508,
+          "date": "2020",
+          "value": 5518092,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -336,44 +336,44 @@
           }
         },
         "country/COL": {
-          "date": "2019",
-          "value": 50339443,
+          "date": "2020",
+          "value": 50882884,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/COM": {
-          "date": "2019",
-          "value": 850886,
+          "date": "2020",
+          "value": 869595,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CPV": {
-          "date": "2019",
-          "value": 549935,
+          "date": "2020",
+          "value": 555988,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CRI": {
-          "date": "2019",
-          "value": 5047561,
+          "date": "2020",
+          "value": 5094114,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CTE": {},
         "country/CUB": {
-          "date": "2019",
-          "value": 11333483,
+          "date": "2020",
+          "value": 11326616,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CUW": {
-          "date": "2019",
-          "value": 157538,
+          "date": "2020",
+          "value": 155014,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -382,89 +382,89 @@
           "date": "2010",
           "value": 1402,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/CYM": {
-          "date": "2019",
-          "value": 64948,
+          "date": "2020",
+          "value": 65720,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CYP": {
-          "date": "2019",
-          "value": 875899,
+          "date": "2020",
+          "value": 1207361,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/CZE": {
-          "date": "2019",
-          "value": 10649800,
+          "date": "2020",
+          "value": 10698896,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/DEU": {
-          "date": "2019",
-          "value": 83019213,
+          "date": "2020",
+          "value": 83240525,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/DJI": {
-          "date": "2019",
-          "value": 973560,
+          "date": "2020",
+          "value": 988002,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/DMA": {
-          "date": "2019",
-          "value": 71808,
+          "date": "2020",
+          "value": 71991,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/DNK": {
-          "date": "2019",
-          "value": 5806081,
+          "date": "2020",
+          "value": 5831404,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/DOM": {
-          "date": "2019",
-          "value": 10738958,
+          "date": "2020",
+          "value": 10847904,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/DZA": {
-          "date": "2019",
-          "value": 43053054,
+          "date": "2020",
+          "value": 43851043,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ECU": {
-          "date": "2019",
-          "value": 17373662,
+          "date": "2020",
+          "value": 17643060,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/EGY": {
-          "date": "2019",
-          "value": 100388073,
+          "date": "2020",
+          "value": 102334403,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ERI": {
           "date": "2011",
-          "value": 3213972,
+          "value": 3213969,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -477,36 +477,36 @@
           }
         },
         "country/ESP": {
-          "date": "2019",
-          "value": 46937060,
+          "date": "2020",
+          "value": 47351567,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/EST": {
-          "date": "2019",
-          "value": 1324820,
+          "date": "2020",
+          "value": 1331057,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ETH": {
-          "date": "2019",
-          "value": 112078730,
+          "date": "2020",
+          "value": 114963583,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/FIN": {
-          "date": "2019",
-          "value": 5517919,
+          "date": "2020",
+          "value": 5530719,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/FJI": {
-          "date": "2019",
-          "value": 889953,
+          "date": "2020",
+          "value": 896444,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -515,26 +515,26 @@
           "date": "2012",
           "value": 2840,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/FRA": {
-          "date": "2019",
-          "value": 67012883,
+          "date": "2020",
+          "value": 67391582,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/FRO": {
-          "date": "2019",
-          "value": 48678,
+          "date": "2020",
+          "value": 48865,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/FSM": {
-          "date": "2019",
-          "value": 113815,
+          "date": "2020",
+          "value": 115021,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -547,24 +547,24 @@
           }
         },
         "country/GAB": {
-          "date": "2019",
-          "value": 2172579,
+          "date": "2020",
+          "value": 2225728,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GBR": {
-          "date": "2019",
-          "value": 66647112,
+          "date": "2020",
+          "value": 67215293,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GEO": {
-          "date": "2019",
-          "value": 3723464,
+          "date": "2020",
+          "value": 3714000,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GGY": {
@@ -575,22 +575,22 @@
           }
         },
         "country/GHA": {
-          "date": "2019",
-          "value": 30417856,
+          "date": "2020",
+          "value": 31072945,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GIB": {
-          "date": "2019",
-          "value": 33701,
+          "date": "2020",
+          "value": 33691,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GIN": {
-          "date": "2019",
-          "value": 12771246,
+          "date": "2020",
+          "value": 13132792,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -603,50 +603,50 @@
           }
         },
         "country/GMB": {
-          "date": "2019",
-          "value": 2347706,
+          "date": "2020",
+          "value": 2416664,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GNB": {
-          "date": "2019",
-          "value": 1920922,
+          "date": "2020",
+          "value": 1967998,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GNQ": {
-          "date": "2019",
-          "value": 1355986,
+          "date": "2020",
+          "value": 1402985,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GRC": {
-          "date": "2019",
-          "value": 10724599,
+          "date": "2020",
+          "value": 10715549,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GRD": {
-          "date": "2019",
-          "value": 112003,
+          "date": "2020",
+          "value": 112519,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GRL": {
-          "date": "2019",
-          "value": 56225,
+          "date": "2020",
+          "value": 56367,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GTM": {
-          "date": "2019",
-          "value": 16604026,
+          "date": "2020",
+          "value": 16858333,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -659,22 +659,22 @@
           }
         },
         "country/GUM": {
-          "date": "2019",
-          "value": 167294,
+          "date": "2020",
+          "value": 168783,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/GUY": {
-          "date": "2019",
-          "value": 782766,
+          "date": "2020",
+          "value": 786559,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/HKG": {
-          "date": "2019",
-          "value": 7507400,
+          "date": "2020",
+          "value": 7481800,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -686,100 +686,100 @@
           }
         },
         "country/HND": {
-          "date": "2019",
-          "value": 9746117,
+          "date": "2020",
+          "value": 9904608,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/HRV": {
-          "date": "2019",
-          "value": 4076246,
+          "date": "2020",
+          "value": 4047200,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/HTI": {
-          "date": "2019",
-          "value": 11263077,
+          "date": "2020",
+          "value": 11402533,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/HUN": {
-          "date": "2019",
-          "value": 9772756,
+          "date": "2020",
+          "value": 9749763,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/IDN": {
-          "date": "2019",
-          "value": 270625568,
+          "date": "2020",
+          "value": 273523621,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/IMN": {
-          "date": "2019",
-          "value": 84584,
+          "date": "2020",
+          "value": 85032,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/IND": {
-          "date": "2019",
-          "value": 1366417754,
+          "date": "2020",
+          "value": 1380004385,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/IOT": {},
         "country/IRL": {
-          "date": "2019",
-          "value": 4904240,
+          "date": "2020",
+          "value": 4994724,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/IRN": {
-          "date": "2019",
-          "value": 82913906,
+          "date": "2020",
+          "value": 83992953,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/IRQ": {
-          "date": "2019",
-          "value": 39309783,
+          "date": "2020",
+          "value": 40222503,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ISL": {
-          "date": "2019",
-          "value": 356991,
+          "date": "2020",
+          "value": 366425,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ISR": {
-          "date": "2019",
-          "value": 9053300,
+          "date": "2020",
+          "value": 9216900,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ITA": {
-          "date": "2019",
-          "value": 60359546,
+          "date": "2020",
+          "value": 59554023,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/JAM": {
-          "date": "2019",
-          "value": 2948279,
+          "date": "2020",
+          "value": 2961161,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -788,278 +788,278 @@
           "date": "2011",
           "value": 97857,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/JOR": {
-          "date": "2019",
-          "value": 10101694,
+          "date": "2020",
+          "value": 10203140,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/JPN": {
-          "date": "2019",
-          "value": 126264931,
+          "date": "2020",
+          "value": 125836021,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KAZ": {
-          "date": "2019",
-          "value": 18513930,
+          "date": "2020",
+          "value": 18754440,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KEN": {
-          "date": "2019",
-          "value": 52573973,
+          "date": "2020",
+          "value": 53771300,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KGZ": {
-          "date": "2019",
-          "value": 6456900,
+          "date": "2020",
+          "value": 6591600,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KHM": {
-          "date": "2019",
-          "value": 16486542,
+          "date": "2020",
+          "value": 16718971,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KIR": {
-          "date": "2019",
-          "value": 117606,
+          "date": "2020",
+          "value": 119446,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KNA": {
-          "date": "2019",
-          "value": 52834,
+          "date": "2020",
+          "value": 53192,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KOR": {
-          "date": "2019",
-          "value": 51709098,
+          "date": "2020",
+          "value": 51780579,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/KWT": {
-          "date": "2019",
-          "value": 4207083,
+          "date": "2020",
+          "value": 4270563,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LAO": {
-          "date": "2019",
-          "value": 7169455,
+          "date": "2020",
+          "value": 7275556,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LBN": {
-          "date": "2019",
-          "value": 6855713,
+          "date": "2020",
+          "value": 6825442,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LBR": {
-          "date": "2019",
-          "value": 4937374,
+          "date": "2020",
+          "value": 5057677,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LBY": {
-          "date": "2019",
-          "value": 6777452,
+          "date": "2020",
+          "value": 6871287,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LCA": {
-          "date": "2019",
-          "value": 182790,
+          "date": "2020",
+          "value": 183629,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LIE": {
-          "date": "2019",
-          "value": 38378,
+          "date": "2020",
+          "value": 38137,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LKA": {
-          "date": "2019",
-          "value": 21803000,
+          "date": "2020",
+          "value": 21919000,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LSO": {
-          "date": "2019",
-          "value": 2125268,
+          "date": "2020",
+          "value": 2142252,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LTU": {
-          "date": "2019",
-          "value": 2794184,
+          "date": "2020",
+          "value": 2794700,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LUX": {
-          "date": "2019",
-          "value": 613894,
+          "date": "2020",
+          "value": 632275,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/LVA": {
-          "date": "2019",
-          "value": 1919968,
+          "date": "2020",
+          "value": 1901548,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MAC": {
-          "date": "2019",
-          "value": 640445,
+          "date": "2020",
+          "value": 649342,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MAF": {
-          "date": "2019",
-          "value": 38002,
+          "date": "2020",
+          "value": 38659,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MAR": {
-          "date": "2019",
-          "value": 36471769,
+          "date": "2020",
+          "value": 36910558,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MCO": {
-          "date": "2019",
-          "value": 38964,
+          "date": "2020",
+          "value": 39244,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MDA": {
-          "date": "2019",
-          "value": 2657637,
+          "date": "2020",
+          "value": 2617820,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MDG": {
-          "date": "2019",
-          "value": 26969307,
+          "date": "2020",
+          "value": 27691019,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MDV": {
-          "date": "2019",
-          "value": 530953,
+          "date": "2020",
+          "value": 540542,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MEX": {
-          "date": "2019",
-          "value": 127575529,
+          "date": "2020",
+          "value": 128932753,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MHL": {
-          "date": "2019",
-          "value": 58791,
+          "date": "2020",
+          "value": 59194,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MKD": {
-          "date": "2019",
-          "value": 2077132,
+          "date": "2020",
+          "value": 2083380,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MLI": {
-          "date": "2019",
-          "value": 19658031,
+          "date": "2020",
+          "value": 20250834,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MLT": {
-          "date": "2019",
-          "value": 493559,
+          "date": "2020",
+          "value": 525285,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MMR": {
-          "date": "2019",
-          "value": 54045420,
+          "date": "2020",
+          "value": 54409794,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MNE": {
-          "date": "2019",
-          "value": 622182,
+          "date": "2020",
+          "value": 621718,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MNG": {
-          "date": "2019",
-          "value": 3225167,
+          "date": "2020",
+          "value": 3278292,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MNP": {
-          "date": "2019",
-          "value": 57216,
+          "date": "2020",
+          "value": 57557,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MOZ": {
-          "date": "2019",
-          "value": 30366036,
+          "date": "2020",
+          "value": 31255435,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MRT": {
-          "date": "2019",
-          "value": 4525696,
+          "date": "2020",
+          "value": 4649660,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1068,7 +1068,7 @@
           "date": "2020",
           "value": 4992,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/MTQ": {
@@ -1079,22 +1079,22 @@
           }
         },
         "country/MUS": {
-          "date": "2019",
-          "value": 1265711,
+          "date": "2020",
+          "value": 1265740,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MWI": {
-          "date": "2019",
-          "value": 18628747,
+          "date": "2020",
+          "value": 19129955,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/MYS": {
-          "date": "2019",
-          "value": 31949777,
+          "date": "2020",
+          "value": 32365998,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1107,22 +1107,22 @@
           }
         },
         "country/NAM": {
-          "date": "2019",
-          "value": 2494530,
+          "date": "2020",
+          "value": 2540916,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/NCL": {
-          "date": "2019",
-          "value": 287800,
+          "date": "2020",
+          "value": 271960,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/NER": {
-          "date": "2019",
-          "value": 23310715,
+          "date": "2020",
+          "value": 24206636,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1131,19 +1131,19 @@
           "date": "2011-07",
           "value": 2169,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/NGA": {
-          "date": "2019",
-          "value": 200963599,
+          "date": "2020",
+          "value": 206139587,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/NIC": {
-          "date": "2019",
-          "value": 6545502,
+          "date": "2020",
+          "value": 6624554,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1156,57 +1156,57 @@
           }
         },
         "country/NLD": {
-          "date": "2019",
-          "value": 17282163,
+          "date": "2020",
+          "value": 17441139,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/NOR": {
-          "date": "2019",
-          "value": 5328212,
+          "date": "2020",
+          "value": 5379475,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/NPL": {
-          "date": "2019",
-          "value": 28608710,
+          "date": "2020",
+          "value": 29136808,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/NRU": {
-          "date": "2019",
-          "value": 12581,
+          "date": "2020",
+          "value": 10834,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/NZL": {
-          "date": "2019",
-          "value": 4917000,
+          "date": "2020",
+          "value": 5084300,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/OMN": {
-          "date": "2019",
-          "value": 4974986,
+          "date": "2020",
+          "value": 5106622,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PAK": {
-          "date": "2019",
-          "value": 216565318,
+          "date": "2020",
+          "value": 220892331,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PAN": {
-          "date": "2019",
-          "value": 4246439,
+          "date": "2020",
+          "value": 4314768,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1215,89 +1215,89 @@
           "date": "2011",
           "value": 67,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/PER": {
-          "date": "2019",
-          "value": 32510453,
+          "date": "2020",
+          "value": 32971846,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PHL": {
-          "date": "2019",
-          "value": 108116615,
+          "date": "2020",
+          "value": 109581085,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PLW": {
-          "date": "2019",
-          "value": 18008,
+          "date": "2020",
+          "value": 18092,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PNG": {
-          "date": "2019",
-          "value": 8776109,
+          "date": "2020",
+          "value": 8947027,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/POL": {
-          "date": "2019",
-          "value": 37972812,
+          "date": "2020",
+          "value": 37950802,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PRI": {
-          "date": "2019",
-          "value": 3193694,
+          "date": "2020",
+          "value": 3194034,
           "metadata": {
-            "import_name": "CensusPEP"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PRK": {
-          "date": "2019",
-          "value": 25666161,
+          "date": "2020",
+          "value": 25778815,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PRT": {
-          "date": "2019",
-          "value": 10276617,
+          "date": "2020",
+          "value": 10305564,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PRY": {
-          "date": "2019",
-          "value": 7044636,
+          "date": "2020",
+          "value": 7132530,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PSE": {
-          "date": "2019",
-          "value": 4685306,
+          "date": "2020",
+          "value": 4803269,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/PYF": {
-          "date": "2019",
-          "value": 279287,
+          "date": "2020",
+          "value": 280904,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/QAT": {
-          "date": "2019",
-          "value": 2832067,
+          "date": "2020",
+          "value": 2881060,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1310,50 +1310,50 @@
           }
         },
         "country/ROU": {
-          "date": "2019",
-          "value": 19414458,
+          "date": "2020",
+          "value": 19286123,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/RUS": {
-          "date": "2019",
-          "value": 144373535,
+          "date": "2020",
+          "value": 144104080,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/RWA": {
-          "date": "2019",
-          "value": 12626950,
+          "date": "2020",
+          "value": 12952209,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SAU": {
-          "date": "2019",
-          "value": 34268528,
+          "date": "2020",
+          "value": 34813867,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SDN": {
-          "date": "2019",
-          "value": 42813238,
+          "date": "2020",
+          "value": 43849269,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SEN": {
-          "date": "2019",
-          "value": 16296364,
+          "date": "2020",
+          "value": 16743930,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SGP": {
-          "date": "2019",
-          "value": 5703569,
+          "date": "2020",
+          "value": 5685807,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1362,48 +1362,48 @@
           "date": "2006",
           "value": 30,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/SHN": {
           "date": "2008",
           "value": 5661,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/SJM": {},
         "country/SLB": {
-          "date": "2019",
-          "value": 669823,
+          "date": "2020",
+          "value": 686878,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SLE": {
-          "date": "2019",
-          "value": 7813215,
+          "date": "2020",
+          "value": 7976985,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SLV": {
-          "date": "2019",
-          "value": 6453553,
+          "date": "2020",
+          "value": 6486201,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SMR": {
-          "date": "2019",
-          "value": 33860,
+          "date": "2020",
+          "value": 33938,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SOM": {
-          "date": "2019",
-          "value": 15442905,
+          "date": "2020",
+          "value": 15893219,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1412,117 +1412,117 @@
           "date": "2011",
           "value": 5888,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/SRB": {
-          "date": "2019",
-          "value": 6963764,
+          "date": "2020",
+          "value": 6908224,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SSD": {
-          "date": "2019",
-          "value": 11062113,
+          "date": "2020",
+          "value": 11193729,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/STP": {
-          "date": "2019",
-          "value": 215056,
+          "date": "2020",
+          "value": 219161,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SUR": {
-          "date": "2019",
-          "value": 581363,
+          "date": "2020",
+          "value": 586634,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SVK": {
-          "date": "2019",
-          "value": 5450421,
+          "date": "2020",
+          "value": 5458827,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SVN": {
-          "date": "2019",
-          "value": 2080908,
+          "date": "2020",
+          "value": 2100126,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SWE": {
-          "date": "2019",
-          "value": 10230185,
+          "date": "2020",
+          "value": 10353442,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SWZ": {
-          "date": "2019",
-          "value": 1148130,
+          "date": "2020",
+          "value": 1160164,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SXM": {
-          "date": "2019",
-          "value": 40733,
+          "date": "2020",
+          "value": 40812,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SYC": {
-          "date": "2019",
-          "value": 97625,
+          "date": "2020",
+          "value": 98462,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/SYR": {
-          "date": "2019",
-          "value": 17070135,
+          "date": "2020",
+          "value": 17500657,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TCA": {
-          "date": "2019",
-          "value": 38191,
+          "date": "2020",
+          "value": 38718,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TCD": {
-          "date": "2019",
-          "value": 15946876,
+          "date": "2020",
+          "value": 16425859,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TGO": {
-          "date": "2019",
-          "value": 8082366,
+          "date": "2020",
+          "value": 8278737,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/THA": {
-          "date": "2019",
-          "value": 69625582,
+          "date": "2020",
+          "value": 69799978,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TJK": {
-          "date": "2019",
-          "value": 9321018,
+          "date": "2020",
+          "value": 9537642,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1531,54 +1531,54 @@
           "date": "2011-10",
           "value": 1411,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/TKM": {
-          "date": "2019",
-          "value": 5942089,
+          "date": "2020",
+          "value": 6031187,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TLS": {
-          "date": "2019",
-          "value": 1293119,
+          "date": "2020",
+          "value": 1318442,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TON": {
-          "date": "2019",
-          "value": 104494,
+          "date": "2020",
+          "value": 105697,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TTO": {
-          "date": "2019",
-          "value": 1394973,
+          "date": "2020",
+          "value": 1399491,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TUN": {
-          "date": "2019",
-          "value": 11694719,
+          "date": "2020",
+          "value": 11818618,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TUR": {
-          "date": "2019",
-          "value": 82003882,
+          "date": "2020",
+          "value": 84339067,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/TUV": {
-          "date": "2019",
-          "value": 11646,
+          "date": "2020",
+          "value": 11792,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1591,24 +1591,24 @@
           }
         },
         "country/TZA": {
-          "date": "2019",
-          "value": 58005463,
+          "date": "2020",
+          "value": 59734213,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/UGA": {
-          "date": "2019",
-          "value": 44269594,
+          "date": "2020",
+          "value": 45741000,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/UKR": {
-          "date": "2019",
-          "value": 41983564,
+          "date": "2020",
+          "value": 44134693,
           "metadata": {
-            "import_name": "EurostatData"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/UMI": {
@@ -1619,22 +1619,22 @@
           }
         },
         "country/URY": {
-          "date": "2019",
-          "value": 3461734,
+          "date": "2020",
+          "value": 3473727,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/USA": {
           "date": "2020",
-          "value": 331449281,
+          "value": 329484123,
           "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
+            "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/UZB": {
-          "date": "2019",
-          "value": 33580650,
+          "date": "2020",
+          "value": 34232050,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1647,43 +1647,43 @@
           }
         },
         "country/VCT": {
-          "date": "2019",
-          "value": 110589,
+          "date": "2020",
+          "value": 110947,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/VEN": {
-          "date": "2019",
-          "value": 28515829,
+          "date": "2020",
+          "value": 28435943,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/VGB": {
-          "date": "2019",
-          "value": 30030,
+          "date": "2020",
+          "value": 30237,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/VIR": {
-          "date": "2019",
-          "value": 106631,
+          "date": "2020",
+          "value": 106290,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/VNM": {
-          "date": "2019",
-          "value": 96462106,
+          "date": "2020",
+          "value": 97338583,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/VUT": {
-          "date": "2019",
-          "value": 299882,
+          "date": "2020",
+          "value": 307150,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1692,12 +1692,12 @@
           "date": "2009-07",
           "value": 15289,
           "metadata": {
-            "import_name": "KGHumanCurated"
+            "import_name": "HumanCuratedStats"
           }
         },
         "country/WSM": {
-          "date": "2019",
-          "value": 197097,
+          "date": "2020",
+          "value": 198410,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1710,8 +1710,8 @@
           }
         },
         "country/YEM": {
-          "date": "2019",
-          "value": 29161922,
+          "date": "2020",
+          "value": 29825968,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
@@ -1724,52 +1724,37 @@
           }
         },
         "country/ZAF": {
-          "date": "2019",
-          "value": 58558270,
+          "date": "2020",
+          "value": 59308690,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ZMB": {
-          "date": "2019",
-          "value": 17861030,
+          "date": "2020",
+          "value": 18383956,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         },
         "country/ZWE": {
-          "date": "2019",
-          "value": 14645468,
+          "date": "2020",
+          "value": 14862927,
           "metadata": {
             "import_name": "WorldDevelopmentIndicators"
           }
         }
       },
       "metadata": {
-        "CensusPEP": {
-          "import_name": "CensusPEP",
-          "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-          "measurement_method": "CensusPEPSurvey"
-        },
-        "EurostatData": {
-          "import_name": "EurostatData",
-          "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-          "measurement_method": "EurostatRegionalPopulationData"
-        },
         "FranceINSEE": {
           "import_name": "FranceINSEE",
           "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
           "measurement_method": "FranceINSEE"
         },
-        "KGHumanCurated": {
-          "import_name": "KGHumanCurated",
+        "HumanCuratedStats": {
+          "import_name": "HumanCuratedStats",
           "provenance_url": "https://google.com",
           "measurement_method": "HumanCuratedStats"
-        },
-        "USDecennialCensus_RedistrictingRelease": {
-          "import_name": "USDecennialCensus_RedistrictingRelease",
-          "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-          "measurement_method": "USDecennialCensus"
         },
         "WikidataPopulation": {
           "import_name": "WikidataPopulation",

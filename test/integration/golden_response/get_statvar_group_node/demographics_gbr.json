@@ -63,7 +63,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 648
+      "numDescendentStatVars": 666
     },
     {
       "id": "dc/g/Births",
@@ -85,7 +85,7 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 445
+      "numDescendentStatVars": 457
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -133,6 +133,11 @@
       "displayName": "Person by Marital Status"
     },
     {
+      "id": "dc/g/Person_PlaceOfBirth",
+      "specializedEntity": "Place of Birth",
+      "displayName": "Person by Place of Birth"
+    },
+    {
       "id": "dc/g/Person_PovertyStatus",
       "specializedEntity": "Poverty Status",
       "displayName": "Person by Poverty Status"
@@ -152,5 +157,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 672
+  "numDescendentStatVars": 690
 }

@@ -67,7 +67,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 4655
+      "numDescendentStatVars": 5027
     },
     {
       "id": "dc/g/Births",
@@ -85,19 +85,19 @@
       "id": "dc/g/Person_DisabilityStatus",
       "specializedEntity": "Disability Status",
       "displayName": "Person by Disability Status",
-      "numDescendentStatVars": 112
+      "numDescendentStatVars": 184
     },
     {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 5413
+      "numDescendentStatVars": 5567
     },
     {
       "id": "dc/g/Person_HealthInsurance",
       "specializedEntity": "Health Insurance",
       "displayName": "Person by Health Insurance",
-      "numDescendentStatVars": 1731
+      "numDescendentStatVars": 1826
     },
     {
       "id": "dc/g/Person_HouseholdIncome",
@@ -115,25 +115,25 @@
       "id": "dc/g/ImmigrationAndCitizenship",
       "specializedEntity": "Immigration And Citizenship",
       "displayName": "Immigration and Citizenship",
-      "numDescendentStatVars": 267
+      "numDescendentStatVars": 289
     },
     {
       "id": "dc/g/Person_Income",
       "specializedEntity": "Income",
       "displayName": "Person by Income",
-      "numDescendentStatVars": 880
+      "numDescendentStatVars": 887
     },
     {
       "id": "dc/g/Person_IncomeStatus",
       "specializedEntity": "Income Status",
       "displayName": "Person by Income Status",
-      "numDescendentStatVars": 166
+      "numDescendentStatVars": 175
     },
     {
       "id": "dc/g/Language",
       "specializedEntity": "Language",
       "displayName": "Language",
-      "numDescendentStatVars": 394
+      "numDescendentStatVars": 444
     },
     {
       "id": "dc/g/Person_LiteracyStatus",
@@ -148,26 +148,32 @@
       "numDescendentStatVars": 131
     },
     {
+      "id": "dc/g/Person_PlaceOfBirth",
+      "specializedEntity": "Place of Birth",
+      "displayName": "Person by Place of Birth",
+      "numDescendentStatVars": 120
+    },
+    {
       "id": "dc/g/Person_PovertyStatus",
       "specializedEntity": "Poverty Status",
       "displayName": "Person by Poverty Status",
-      "numDescendentStatVars": 601
+      "numDescendentStatVars": 623
     },
     {
       "id": "dc/g/Person_Race",
       "specializedEntity": "Race",
       "displayName": "Person by Race",
-      "numDescendentStatVars": 3716
+      "numDescendentStatVars": 3772
     },
     {
       "id": "dc/g/Residence",
       "specializedEntity": "Residence",
       "displayName": "Residence",
-      "numDescendentStatVars": 771
+      "numDescendentStatVars": 779
     }
   ],
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 7795
+  "numDescendentStatVars": 8211
 }

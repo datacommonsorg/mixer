@@ -4,14 +4,14 @@
       "stat": {
         "country/FRA": {
           "date": "2019",
-          "value": 50460,
+          "value": 50400,
           "metadata": {
             "importName": "WorldDevelopmentIndicators"
           }
         },
         "country/USA": {
           "date": "2019",
-          "value": 66080,
+          "value": 66060,
           "metadata": {
             "importName": "WorldDevelopmentIndicators"
           }
@@ -96,17 +96,17 @@
     "Count_Person": {
       "stat": {
         "country/FRA": {
-          "date": "2019",
-          "value": 67012883,
+          "date": "2020",
+          "value": 67391582,
           "metadata": {
-            "importName": "EurostatData"
+            "importName": "WorldDevelopmentIndicators"
           }
         },
         "country/USA": {
           "date": "2020",
-          "value": 331449281,
+          "value": 329484123,
           "metadata": {
-            "importName": "USDecennialCensus_RedistrictingRelease"
+            "importName": "WorldDevelopmentIndicators"
           }
         },
         "geoId/06": {
@@ -125,15 +125,15 @@
         }
       },
       "metadata": {
-        "EurostatData": {
-          "importName": "EurostatData",
-          "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
-          "measurementMethod": "EurostatRegionalPopulationData"
-        },
         "USDecennialCensus_RedistrictingRelease": {
           "importName": "USDecennialCensus_RedistrictingRelease",
           "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
           "measurementMethod": "USDecennialCensus"
+        },
+        "WorldDevelopmentIndicators": {
+          "importName": "WorldDevelopmentIndicators",
+          "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+          "observationPeriod": "P1Y"
         }
       }
     }

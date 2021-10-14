@@ -501,6 +501,58 @@
       "dcid": "Count_Person_16To19Years_Female"
     },
     {
+      "name": "16 - 64 Years, Female Population",
+      "dcid": "Count_Person_16To64Years_Female"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 13 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerYear1To13Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour"
+    },
+    {
+      "name": "16 - 64 Years, Female, 14 - 26 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerYear14To26Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour"
+    },
+    {
+      "name": "16 - 64 Years, Female, 27 - 39 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerYear27To39Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour"
+    },
+    {
+      "name": "16 - 64 Years, Female, 40 - 47 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerYear40To47Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 40 - 49 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerYear40To49Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 48 - 49 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerYear48To49Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 50 - 52 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerYear50To52Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, Did Not Work Population",
+      "dcid": "Count_Person_Female_DidNotWork"
+    },
+    {
+      "name": "16 - 64 Years, Female, Full Time Year Round Worker Population",
+      "dcid": "Count_Person_Female_FullTimeYearRoundWorker"
+    },
+    {
       "name": "16 Years or More, Civilian, Employed, in Labor Force, Female Population",
       "dcid": "Count_Person_Female_Employed"
     },
@@ -911,6 +963,10 @@
     {
       "name": "Female, Native Hawaiian or Other Pacific Islander Alone Population",
       "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Female, No Health Insurance Population",
+      "dcid": "Count_Person_Female_NoHealthInsurance"
     },
     {
       "name": "Female, Some Other Race Alone Population",
@@ -1417,6 +1473,10 @@
       "dcid": "WHO/Yth_curr_smokeless_Female"
     },
     {
+      "name": "With Disability, Female Population",
+      "dcid": "Count_Person_WithDisability_Female"
+    },
+    {
       "name": "Years 20, Female Population",
       "dcid": "Count_Person_20Years_Female"
     },
@@ -1615,6 +1675,90 @@
     {
       "name": "16 - 19 Years, in Labor Force, Female Population",
       "dcid": "Count_Person_16To19Years_InLaborForce_Female"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, 1 - 13 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear1To13Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, 14 - 26 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear14To26Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, 27 - 39 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear27To39Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, 40 - 47 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear40To47Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, 40 Week or More, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear40OrMoreWeek"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, 48 - 49 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear48To49Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 1 - 14 Hour, 50 - 52 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear50To52Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, 1 - 13 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear1To13Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, 14 - 26 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear14To26Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, 27 - 39 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear27To39Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, 40 - 47 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear40To47Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, 40 Week or More, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear40OrMoreWeek"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, 48 - 49 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear48To49Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 15 - 34 Hour, 50 - 52 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear50To52Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, 1 - 13 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear1To13Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, 14 - 26 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear14To26Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, 27 - 39 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear27To39Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, 40 - 47 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear40To47Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, 40 Week or More, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear40OrMoreWeek"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, 48 - 49 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear48To49Week"
+    },
+    {
+      "name": "16 - 64 Years, Female, 35 Hour or More, 50 - 52 Week, Worked in The Past 12 Months Population",
+      "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear50To52Week"
     },
     {
       "name": "16 Years or More, Female, American Indian or Alaska Native Alone Population",
@@ -3855,150 +3999,6 @@
     {
       "name": "High School Graduate Includes Equivalency, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
-    },
-    {
-      "name": "Masters Degree, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentMastersDegree_Female"
-    },
-    {
-      "name": "No Schooling Completed, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
-    },
-    {
-      "name": "Nursery To 4th Grade, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNurseryTo4ThGrade_Female"
-    },
-    {
-      "name": "Prevalence of 21 - 65 Years, Female, Cervical Cancer Screening",
-      "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
-    },
-    {
-      "name": "Prevalence of 50 - 74 Years, Female, Mammography",
-      "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-    },
-    {
-      "name": "Prevalence of 65 Years or More, Female, Core Preventive Services",
-      "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-    },
-    {
-      "name": "Professional School Degree, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentProfessionalSchoolDegree_Female"
-    },
-    {
-      "name": "Some College 1 or More Years No Degree, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollege1OrMoreYearsNoDegree_Female"
-    },
-    {
-      "name": "Some College Less Than 1 Year, Female Population",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
-    },
-    {
-      "name": "Who/Adult_curr_cig_smoking of Female",
-      "dcid": "WHO/Adult_curr_cig_smoking_Female"
-    },
-    {
-      "name": "Who/Adult_curr_tob_smoking of Female",
-      "dcid": "WHO/Adult_curr_tob_smoking_Female"
-    },
-    {
-      "name": "Who/Adult_curr_tob_use of Female",
-      "dcid": "WHO/Adult_curr_tob_use_Female"
-    },
-    {
-      "name": "Who/Adult_daily_cig_smoking of Female",
-      "dcid": "WHO/Adult_daily_cig_smoking_Female"
-    },
-    {
-      "name": "Who/M_Est_cig_curr of Female",
-      "dcid": "WHO/M_Est_cig_curr_Female"
-    },
-    {
-      "name": "Who/M_Est_cig_daily of Female",
-      "dcid": "WHO/M_Est_cig_daily_Female"
-    },
-    {
-      "name": "Who/M_Est_smk_curr of Female",
-      "dcid": "WHO/M_Est_smk_curr_Female"
-    },
-    {
-      "name": "Who/M_Est_smk_daily of Female",
-      "dcid": "WHO/M_Est_smk_daily_Female"
-    },
-    {
-      "name": "Who/M_Est_tob_curr of Female",
-      "dcid": "WHO/M_Est_tob_curr_Female"
-    },
-    {
-      "name": "Who/M_Est_tob_daily of Female",
-      "dcid": "WHO/M_Est_tob_daily_Female"
-    },
-    {
-      "name": "Who/NCD_BMI_MEAN of 18 Years or More, Female",
-      "dcid": "WHO/NCD_BMI_MEAN_Female_YEARS18PLUS"
-    },
-    {
-      "name": "Who/NCD_BMI_MEANC of 20 Years or More, Female",
-      "dcid": "WHO/NCD_BMI_MEANC_Female_AGE20PLUS"
-    },
-    {
-      "name": "Who/NCD_CHOL_MEANTOTALCHOL_C of Female",
-      "dcid": "WHO/NCD_CHOL_MEANTOTALCHOL_C_Female"
-    },
-    {
-      "name": "Who/NCD_GLUC_02 of 25 Years or More, Female",
-      "dcid": "WHO/NCD_GLUC_02_Female_AGE25PLUS"
-    },
-    {
-      "name": "Who/NUTRITION_ANAEMIA_NONPREGNANT_NUM of Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_NONPREGNANT_NUM_Female"
-    },
-    {
-      "name": "Who/NUTRITION_ANAEMIA_PREGNANT_NUM of Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_NUM_Female"
-    },
-    {
-      "name": "Who/NUTRITION_ANAEMIA_PREGNANT_PREV of Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_PREV_Female"
-    },
-    {
-      "name": "Who/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_NUM of Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_NUM_Female"
-    },
-    {
-      "name": "Who/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_PREV of Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_PREV_Female"
-    },
-    {
-      "name": "Who/SA_0000001822_ARCHIVED of 2019-12, Female",
-      "dcid": "WHO/SA_0000001822_ARCHIVED_Female_2019-12"
-    },
-    {
-      "name": "Who/Yth_curr_cig_smoking of Female",
-      "dcid": "WHO/Yth_curr_cig_smoking_Female"
-    },
-    {
-      "name": "Who/Yth_curr_tob_smoking of Female",
-      "dcid": "WHO/Yth_curr_tob_smoking_Female"
-    },
-    {
-      "name": "Who/Yth_curr_tob_use of Female",
-      "dcid": "WHO/Yth_curr_tob_use_Female"
-    },
-    {
-      "name": "Years 15, Female, Above Poverty Level in The Past 12 Months Population",
-      "dcid": "Count_Person_15Years_Female_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Years 15, Female, Below Poverty Level in The Past 12 Months Population",
-      "dcid": "Count_Person_15Years_Female_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Years 5, Female, Above Poverty Level in The Past 12 Months Population",
-      "dcid": "Count_Person_5Years_Female_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Years 5, Female, Below Poverty Level in The Past 12 Months Population",
-      "dcid": "Count_Person_5Years_Female_BelowPovertyLevelInThePast12Months"
     }
   ],
   "statVarGroups": [
@@ -4099,6 +4099,10 @@
       "dcid": "dc/g/MortalityEvent_Age-Years5To14_Gender-Female"
     },
     {
+      "name": "Mortality Event With Age = 5 - 19 Years, Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years5To19_Gender-Female"
+    },
+    {
       "name": "Mortality Event With Age = 5 - 9 Years, Gender = Female",
       "dcid": "dc/g/MortalityEvent_Age-Years5To9_Gender-Female"
     },
@@ -4141,6 +4145,10 @@
     {
       "name": "Mortality Event With Age = 75 - 84 Years, Gender = Female",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 Years or More, Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75Onwards_Gender-Female"
     },
     {
       "name": "Mortality Event With Age = 80 Years or More, Gender = Female",
@@ -4299,6 +4307,10 @@
       "dcid": "dc/g/Person_Age-Years16To19_Gender-Female"
     },
     {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Gender = Female",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female"
     },
@@ -4421,6 +4433,10 @@
     {
       "name": "Person With Age = 45 - 64 Years, Gender = Female",
       "dcid": "dc/g/Person_Age-Years45To64_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 5 - 19 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female"
     },
     {
       "name": "Person With Age = 5 - 9 Years, Gender = Female",
@@ -4549,6 +4565,14 @@
     {
       "name": "Person With Age, Gender = Female",
       "dcid": "dc/g/Person_Age_Gender-Female"
+    },
+    {
+      "name": "Person With Disability Status = With Disability, Gender = Female",
+      "dcid": "dc/g/Person_DisabilityStatus-WithDisability_Gender-Female"
+    },
+    {
+      "name": "Person With Disability Status, Gender = Female",
+      "dcid": "dc/g/Person_DisabilityStatus_Gender-Female"
     },
     {
       "name": "Person With Educational Attainment = 10th Grade, Gender = Female",
@@ -4691,10 +4715,6 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
-      "name": "Person With Enrollment Level, Gender = Female",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
-    },
-    {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -4717,6 +4737,10 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",
@@ -5239,6 +5263,22 @@
       "dcid": "dc/g/Person_Gender-Female_TypeOfSchool-PublicSchool"
     },
     {
+      "name": "Person With Gender = Female, Usual Hours Worked",
+      "dcid": "dc/g/Person_Gender-Female_UsualHoursWorked"
+    },
+    {
+      "name": "Person With Gender = Female, Usual Hours Worked = 1 - 14 Hour",
+      "dcid": "dc/g/Person_Gender-Female_UsualHoursWorked-Hour1To14"
+    },
+    {
+      "name": "Person With Gender = Female, Usual Hours Worked = 15 - 34 Hour",
+      "dcid": "dc/g/Person_Gender-Female_UsualHoursWorked-Hour15To34"
+    },
+    {
+      "name": "Person With Gender = Female, Usual Hours Worked = 35 Hour or More",
+      "dcid": "dc/g/Person_Gender-Female_UsualHoursWorked-Hour35Onwards"
+    },
+    {
       "name": "Person With Gender = Female, Veteran Status",
       "dcid": "dc/g/Person_Gender-Female_VeteranStatus"
     },
@@ -5255,12 +5295,56 @@
       "dcid": "dc/g/Person_Gender-Female_WorkPeriod"
     },
     {
+      "name": "Person With Gender = Female, Work Period = 1 - 13 Week",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week1To13"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = 14 - 26 Week",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week14To26"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = 27 - 39 Week",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week27To39"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = 40 - 47 Week",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week40To47"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = 40 - 49 Week",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week40To49"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = 40 Week or More",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week40Onwards"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = 48 - 49 Week",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week48To49"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = 50 - 52 Week",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-Week50To52"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = Did Not Work",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-DidNotWork"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = Full Time Year Round Worker",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-FullTimeYearRoundWorker"
+    },
+    {
       "name": "Person With Gender = Female, Work Period = Not Worked Full Time",
       "dcid": "dc/g/Person_Gender-Female_WorkPeriod-NotWorkedFullTime"
     },
     {
       "name": "Person With Gender = Female, Work Period = Worked Full Time",
       "dcid": "dc/g/Person_Gender-Female_WorkPeriod-WorkedFullTime"
+    },
+    {
+      "name": "Person With Gender = Female, Work Period = Worked in The Past 12 Months",
+      "dcid": "dc/g/Person_Gender-Female_WorkPeriod-WorkedInThePast12Months"
     },
     {
       "name": "Person With Military Status = Civilian, Gender = Female",
@@ -6991,6 +7075,70 @@
       "dcid": "dc/g/Person_Age-Years16To19_Gender-Female_MilitaryStatus"
     },
     {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Usual Hours Worked",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_UsualHoursWorked"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Usual Hours Worked = 1 - 14 Hour",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_UsualHoursWorked-Hour1To14"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Usual Hours Worked = 15 - 34 Hour",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_UsualHoursWorked-Hour15To34"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Usual Hours Worked = 35 Hour or More",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_UsualHoursWorked-Hour35Onwards"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 1 - 13 Week",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week1To13"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 14 - 26 Week",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week14To26"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 27 - 39 Week",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week27To39"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 40 - 47 Week",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week40To47"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 40 - 49 Week",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week40To49"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 40 Week or More",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week40Onwards"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 48 - 49 Week",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week48To49"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = 50 - 52 Week",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-Week50To52"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = Did Not Work",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-DidNotWork"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = Full Time Year Round Worker",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-FullTimeYearRoundWorker"
+    },
+    {
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Work Period = Worked in The Past 12 Months",
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_WorkPeriod-WorkedInThePast12Months"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female"
     },
@@ -7253,6 +7401,14 @@
     {
       "name": "Person With Age = 16 Years or More, Gender = Female, Race = White Alone Not Hispanic or Latino",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus"
     },
     {
       "name": "Person With Age = 18 - 19 Years, Gender = Female, Race",
@@ -7845,162 +8001,6 @@
     {
       "name": "Person With Age = 25 - 34 Years, Educational Attainment = Bachelors Degree, Gender = Female",
       "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-BachelorsDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment = Graduate or Professional Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment = High School Graduate Ged or Alternative, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment = Less Than 9th Grade, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-LessThan9ThGrade_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment = Some College No Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment-SomeCollegeNoDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Educational Attainment, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EducationalAttainment_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Enrollment Level = Enrolled in Private College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EnrollmentLevel-EnrolledInPrivateCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Enrollment Level = Enrolled in Public College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EnrollmentLevel-EnrolledInPublicCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Enrollment Level, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_EnrollmentLevel_Gender-Female"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Health Insurance",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_HealthInsurance"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Health Insurance = No Health Insurance",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_HealthInsurance-NoHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Health Insurance = No Private Health Insurance",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_HealthInsurance-NoPrivateHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Health Insurance = No Public Health Insurance",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_HealthInsurance-NoPublicHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Health Insurance = With Health Insurance",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_HealthInsurance-WithHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Health Insurance = With Private Health Insurance",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_HealthInsurance-WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Health Insurance = With Public Health Insurance",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_HealthInsurance-WithPublicHealthInsurance"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Institutionalization",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Institutionalization"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Institutionalization = Non Institutionalized",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Institutionalization-NonInstitutionalized"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Poverty Status",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_PovertyStatus"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = Black or African American Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = Some Other Race Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-SomeOtherRaceAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = Two or More Races",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-TwoOrMoreRaces"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = White Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-WhiteAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Type of School",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Type of School = Not Enrolled in School",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-NotEnrolledInSchool"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Type of School = Private School",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-PrivateSchool"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Type of School = Public School",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_TypeOfSchool-PublicSchool"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_MilitaryStatus-Civilian"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_MilitaryStatus"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race"
     }
   ]
 }
