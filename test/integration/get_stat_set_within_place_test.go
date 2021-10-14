@@ -94,6 +94,13 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 			[]string{"Test_Stat_Var_1"},
 			"memdb.json",
 		},
+		{
+			"Earth",
+			"Country",
+			"",
+			[]string{"Count_Person"},
+			"world_pop.json",
+		},
 	} {
 		resp, err := client.GetStatSetWithinPlace(ctx, &pb.GetStatSetWithinPlaceRequest{
 			ParentPlace: c.parentPlace,
