@@ -225,6 +225,7 @@ message GetStatSetSeriesRequest {
   repeated string stat_vars = 2;
 
   // (Optional) Import name of the desired series.
+  // TODO(shifucun): consider add other SVObs properties for filtering.
   string import_name = 3;
 }
 

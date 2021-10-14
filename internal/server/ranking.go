@@ -44,8 +44,9 @@ var StatsRanking = map[RankKey]int{
 	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
 	{"UNEnergy", ""}:                                                      0, // Electricity
 	{"EIA_Electricity", ""}:                                               1, // Electricity
-	{"WikidataPopulation", "WikidataPopulation"}:                          1002,
 	{"WikipediaStatsData", "Wikipedia"}:                                   1001,
+	{"HumanCuratedStats", "HumanCuratedStats"}:                            1002,
+	{"WikidataPopulation", "WikidataPopulation"}:                          1003,
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
