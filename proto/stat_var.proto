@@ -81,6 +81,10 @@ message StatVarSummary {
     int64 num_time_series = 5;
     // Map of place type to PlaceTypeSummary for this time series type
     map<string, PlaceTypeSummary> place_type_summary = 6;
+    // Minimum observation value of this time series type
+    double min_value = 7;
+    // Maximum observation value of this time series type
+    double max_value = 8;
   }
 
   message ProvenanceSummary {
