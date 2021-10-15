@@ -104,9 +104,9 @@
         },
         "country/USA": {
           "date": "2020",
-          "value": 329484123,
+          "value": 331449281,
           "metadata": {
-            "importName": "WorldDevelopmentIndicators"
+            "importName": "USDecennialCensus_RedistrictingRelease"
           }
         },
         "geoId/06": {

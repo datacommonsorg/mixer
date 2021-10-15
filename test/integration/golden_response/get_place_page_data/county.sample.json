@@ -35457,11 +35457,11 @@
   "latestPopulation": {
     "country/USA": {
       "date": "2020",
-      "value": 329484123,
+      "value": 331449281,
       "metadata": {
-        "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-        "observationPeriod": "P1Y"
+        "importName": "USDecennialCensus_RedistrictingRelease",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+        "measurementMethod": "USDecennialCensus"
       }
     },
     "geoId/06": {

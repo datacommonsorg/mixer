@@ -1627,9 +1627,9 @@
         },
         "country/USA": {
           "date": "2020",
-          "value": 329484123,
+          "value": 331449281,
           "metadata": {
-            "import_name": "WorldDevelopmentIndicators"
+            "import_name": "USDecennialCensus_RedistrictingRelease"
           }
         },
         "country/UZB": {
@@ -1755,6 +1755,11 @@
           "import_name": "HumanCuratedStats",
           "provenance_url": "https://google.com",
           "measurement_method": "HumanCuratedStats"
+        },
+        "USDecennialCensus_RedistrictingRelease": {
+          "import_name": "USDecennialCensus_RedistrictingRelease",
+          "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+          "measurement_method": "USDecennialCensus"
         },
         "WikidataPopulation": {
           "import_name": "WikidataPopulation",
