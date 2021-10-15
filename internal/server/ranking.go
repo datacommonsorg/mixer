@@ -29,7 +29,7 @@ import (
 type RankKey struct {
 	ImportName        string
 	MeasurementMethod string
-	ObservationPeroid string
+	ObservationPeriod string
 }
 
 // StatsRanking is used to rank multiple source series for the same
@@ -85,7 +85,7 @@ func getScorePb(s *pb.SourceSeries) int {
 		key := RankKey{
 			ImportName:        s.ImportName,
 			MeasurementMethod: propCombination.mm,
-			ObservationPeroid: propCombination.op,
+			ObservationPeriod: propCombination.op,
 		}
 		score, ok := StatsRanking[key]
 		if ok {
@@ -214,7 +214,7 @@ func getScore(s *SourceSeries) int {
 		key := RankKey{
 			ImportName:        s.ImportName,
 			MeasurementMethod: propCombination.mm,
-			ObservationPeroid: propCombination.op,
+			ObservationPeriod: propCombination.op,
 		}
 		score, ok := StatsRanking[key]
 		if ok {
