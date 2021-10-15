@@ -76,7 +76,7 @@ func getScorePb(s *pb.SourceSeries) int {
 		mm string
 		op string
 	}{
-		// Cechk exact match first
+		// Check exact match first
 		{s.MeasurementMethod, s.ObservationPeriod},
 		{s.MeasurementMethod, "*"},
 		{"*", s.ObservationPeriod},
@@ -205,7 +205,7 @@ func getScore(s *SourceSeries) int {
 		mm string
 		op string
 	}{
-		// Cechk exact match first
+		// Check exact match first
 		{s.MeasurementMethod, s.ObservationPeriod},
 		{s.MeasurementMethod, "*"},
 		{"*", s.ObservationPeriod},
