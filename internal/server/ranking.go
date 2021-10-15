@@ -32,21 +32,26 @@ type RankKey struct {
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
 var StatsRanking = map[RankKey]int{
-	{"CensusPEP", "CensusPEPSurvey"}:                                      0, // Population
-	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1, // Population
-	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey"}: 1, // Population
-	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey"}:                    1, // Population
-	{"EurostatData", "EurostatRegionalPopulationData"}:                    2, // Population
-	{"WorldDevelopmentIndicators", ""}:                                    3, // Population
-	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}:                               0, // Unemployment Rate
-	{"EurostatData", ""}:                                                  1, // Unemployment Rate
-	{"NYT_COVID19", "NYT_COVID19_GitHub"}:                                 0, // Covid
-	{"CDC500", "AgeAdjustedPrevalence"}:                                   0, // CDC500
-	{"UNEnergy", ""}:                                                      0, // Electricity
-	{"EIA_Electricity", ""}:                                               1, // Electricity
-	{"WikipediaStatsData", "Wikipedia"}:                                   1001,
-	{"HumanCuratedStats", "HumanCuratedStats"}:                            1002,
-	{"WikidataPopulation", "WikidataPopulation"}:                          1003,
+	{"CensusPEP", "CensusPEPSurvey"}:                                      0,    // Population
+	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1,    // Population
+	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey"}: 1,    // Population
+	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey"}:                    1,    // Population
+	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus"}:       2,    // Population
+	{"EurostatData", "EurostatRegionalPopulationData"}:                    3,    // Population
+	{"WorldDevelopmentIndicators", ""}:                                    4,    // Population
+	{"WikipediaStatsData", "Wikipedia"}:                                   1001, // Population
+	{"HumanCuratedStats", "HumanCuratedStats"}:                            1002, // Population
+	{"WikidataPopulation", "WikidataPopulation"}:                          1003, // Population
+
+	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}: 0, // Unemployment Rate
+	{"EurostatData", ""}:                    1, // Unemployment Rate
+
+	{"NYT_COVID19", "NYT_COVID19_GitHub"}: 0, // Covid
+
+	{"CDC500", "AgeAdjustedPrevalence"}: 0, // CDC500
+
+	{"UNEnergy", ""}:        0, // Electricity
+	{"EIA_Electricity", ""}: 1, // Electricity
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
