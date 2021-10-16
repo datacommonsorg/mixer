@@ -24,34 +24,39 @@ import (
 )
 
 // RankKey represents keys used for ranking.
+// Import Name should be non-empty.
+// Can use "*" for wildcard match for MeasurementMethod and ObservationPeriod
 type RankKey struct {
-	Prov    string
-	Mmethod string
+	ImportName        string
+	MeasurementMethod string
+	ObservationPeriod string
 }
 
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
 var StatsRanking = map[RankKey]int{
-	{"CensusPEP", "CensusPEPSurvey"}:                                      0,    // Population
-	{"CensusACS5YearSurvey", "CensusACS5yrSurvey"}:                        1,    // Population
-	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey"}: 1,    // Population
-	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey"}:                    1,    // Population
-	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus"}:       2,    // Population
-	{"EurostatData", "EurostatRegionalPopulationData"}:                    3,    // Population
-	{"WorldDevelopmentIndicators", ""}:                                    4,    // Population
-	{"WikipediaStatsData", "Wikipedia"}:                                   1001, // Population
-	{"HumanCuratedStats", "HumanCuratedStats"}:                            1002, // Population
-	{"WikidataPopulation", "WikidataPopulation"}:                          1003, // Population
+	{"CensusPEP", "CensusPEPSurvey", "*"}:                                      0,    // Population
+	{"CensusACS5YearSurvey", "CensusACS5yrSurvey", "*"}:                        1,    // Population
+	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey", "*"}: 1,    // Population
+	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey", "*"}:                    1,    // Population
+	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus", "*"}:       2,    // Population
+	{"EurostatData", "EurostatRegionalPopulationData", "*"}:                    3,    // Population
+	{"WorldDevelopmentIndicators", "", "*"}:                                    4,    // Population
+	{"WikipediaStatsData", "Wikipedia", "*"}:                                   1001, // Population
+	{"HumanCuratedStats", "HumanCuratedStats", "*"}:                            1002, // Population
+	{"WikidataPopulation", "WikidataPopulation", "*"}:                          1003, // Population
 
-	{"BLS_LAUS", "BLSSeasonallyUnadjusted"}: 0, // Unemployment Rate
-	{"EurostatData", ""}:                    1, // Unemployment Rate
+	{"BLS_LAUS", "BLSSeasonallyUnadjusted", "*"}: 0, // Unemployment Rate
+	{"EurostatData", "", "*"}:                    1, // Unemployment Rate
 
-	{"NYT_COVID19", "NYT_COVID19_GitHub"}: 0, // Covid
+	{"NYT_COVID19", "NYT_COVID19_GitHub", "*"}: 0, // Covid
 
-	{"CDC500", "AgeAdjustedPrevalence"}: 0, // CDC500
+	{"CDC500", "AgeAdjustedPrevalence", "*"}: 0, // CDC500
 
-	{"UNEnergy", ""}:        0, // Electricity
-	{"EIA_Electricity", ""}: 1, // Electricity
+	{"UNEnergy", "*", "*"}:        0, // Electricity
+	{"EIA_Electricity", "*", "*"}: 1, // Electricity
+
+	{"NASA_NEXDCP30", "*", "P1Y"}: 0, // IPCC
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
@@ -66,34 +71,68 @@ const BaseRank = 100
 // cohort instead of time series.
 type CohortByRank []*pb.SourceSeries
 
-func (a CohortByRank) Len() int { return len(a) }
+// getScorePb derives the ranking score for a source series.
+//
+// The score depends on ImportName and other SVObs properties, by checking the
+// StatsRanking dict. To get the score, ImportName is required, with optional
+// properties:
+// - MeasurementMethod
+// - ObservationPeriod
+//
+// When there are exact match of the properties in StatsRanking, then use that
+// score, otherwise can also match to wildcard options (indicated by *).
+//
+// If no entry is found, a BaseRank is assigned to the source series.
+func getScorePb(s *pb.SourceSeries) int {
+	for _, propCombination := range []struct {
+		mm string
+		op string
+	}{
+		// Check exact match first
+		{s.MeasurementMethod, s.ObservationPeriod},
+		{s.MeasurementMethod, "*"},
+		{"*", s.ObservationPeriod},
+		{"*", "*"},
+	} {
+		key := RankKey{
+			ImportName:        s.ImportName,
+			MeasurementMethod: propCombination.mm,
+			ObservationPeriod: propCombination.op,
+		}
+		score, ok := StatsRanking[key]
+		if ok {
+			return score
+		}
+	}
+	return BaseRank
+}
 
-func (a CohortByRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+func (a CohortByRank) Len() int {
+	return len(a)
+}
+
+func (a CohortByRank) Swap(i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
 
 func (a CohortByRank) Less(i, j int) bool {
 	oi := a[i]
-	keyi := RankKey{Prov: oi.ImportName, Mmethod: oi.MeasurementMethod}
-	scorei, ok := StatsRanking[keyi]
-	if !ok {
-		scorei = BaseRank
-	}
+	scorei := getScorePb(oi)
 	oj := a[j]
-	keyj := RankKey{Prov: oj.ImportName, Mmethod: oj.MeasurementMethod}
-	scorej, ok := StatsRanking[keyj]
-	if !ok {
-		scorej = BaseRank
-	}
+	scorej := getScorePb(oj)
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
 	}
-
 	// Cohort with more place coverage is ranked higher
 	if len(a[i].Val) != len(a[j].Val) {
 		return len(a[i].Val) > len(a[j].Val)
 	}
 
 	// Compare other fields to get consistent ranking.
+	if oi.MeasurementMethod != oj.MeasurementMethod {
+		return oi.MeasurementMethod < oj.MeasurementMethod
+	}
 	if oi.ObservationPeriod != oj.ObservationPeriod {
 		return oi.ObservationPeriod < oj.ObservationPeriod
 	}
@@ -121,17 +160,10 @@ func (a SeriesByRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 func (a SeriesByRank) Less(i, j int) bool {
 	oi := a[i]
-	keyi := RankKey{Prov: oi.ImportName, Mmethod: oi.MeasurementMethod}
-	scorei, ok := StatsRanking[keyi]
-	if !ok {
-		scorei = BaseRank
-	}
+	scorei := getScorePb(oi)
 	oj := a[j]
-	keyj := RankKey{Prov: oj.ImportName, Mmethod: oj.MeasurementMethod}
-	scorej, ok := StatsRanking[keyj]
-	if !ok {
-		scorej = BaseRank
-	}
+	scorej := getScorePb(oj)
+
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
@@ -162,6 +194,9 @@ func (a SeriesByRank) Less(i, j int) bool {
 	}
 
 	// Compare other fields to get consistent ranking.
+	if oi.MeasurementMethod != oj.MeasurementMethod {
+		return oi.MeasurementMethod < oj.MeasurementMethod
+	}
 	if oi.ObservationPeriod != oj.ObservationPeriod {
 		return oi.ObservationPeriod < oj.ObservationPeriod
 	}
@@ -177,6 +212,43 @@ func (a SeriesByRank) Less(i, j int) bool {
 	return true
 }
 
+// TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
+// getScore derives the ranking score for a source series.
+//
+// The score depends on ImportName and other SVObs properties, by checking the
+// StatsRanking dict. To get the score, ImportName is required, with optional
+// properties:
+// - MeasurementMethod
+// - ObservationPeriod
+//
+// When there are exact match of the properties in StatsRanking, then use that
+// score, otherwise can also match to wildcard options (indicated by *).
+//
+// If no entry is found, a BaseRank is assigned to the source series.
+func getScore(s *SourceSeries) int {
+	for _, propCombination := range []struct {
+		mm string
+		op string
+	}{
+		// Check exact match first
+		{s.MeasurementMethod, s.ObservationPeriod},
+		{s.MeasurementMethod, "*"},
+		{"*", s.ObservationPeriod},
+		{"*", "*"},
+	} {
+		key := RankKey{
+			ImportName:        s.ImportName,
+			MeasurementMethod: propCombination.mm,
+			ObservationPeriod: propCombination.op,
+		}
+		score, ok := StatsRanking[key]
+		if ok {
+			return score
+		}
+	}
+	return BaseRank
+}
+
 // byRank implements sort.Interface for []*SourceSeries based on
 // the rank score.
 type byRank []*SourceSeries
@@ -187,17 +259,9 @@ func (a byRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 func (a byRank) Less(i, j int) bool {
 	oi := a[i]
-	keyi := RankKey{oi.ImportName, oi.MeasurementMethod}
-	scorei, ok := StatsRanking[keyi]
-	if !ok {
-		scorei = BaseRank
-	}
+	scorei := getScore(oi)
 	oj := a[j]
-	keyj := RankKey{oj.ImportName, oj.MeasurementMethod}
-	scorej, ok := StatsRanking[keyj]
-	if !ok {
-		scorej = BaseRank
-	}
+	scorej := getScore(oj)
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
@@ -228,6 +292,9 @@ func (a byRank) Less(i, j int) bool {
 	}
 
 	// Compare other fields to get consistent ranking.
+	if oi.MeasurementMethod != oj.MeasurementMethod {
+		return oi.MeasurementMethod < oj.MeasurementMethod
+	}
 	if oi.ObservationPeriod != oj.ObservationPeriod {
 		return oi.ObservationPeriod < oj.ObservationPeriod
 	}
