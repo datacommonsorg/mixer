@@ -53,7 +53,7 @@ var StatsRanking = map[RankKey]int{
 
 	{"CDC500", "AgeAdjustedPrevalence", "*"}: 0, // CDC500
 
-	{"UNEnergy", "*", "*"}:        0, // Electricity
+	{"UNEnergy", "", "*"}:         0, // Electricity
 	{"EIA_Electricity", "*", "*"}: 1, // Electricity
 
 	{"NASA_NEXDCP30", "*", "P1Y"}: 0, // IPCC
