@@ -71,6 +71,18 @@ const BaseRank = 100
 // cohort instead of time series.
 type CohortByRank []*pb.SourceSeries
 
+// getScorePb derives the ranking score for a source series.
+//
+// The score depends on ImportName and other SVObs properties, by checking the
+// StatsRanking dict. To get the score, ImportName is required, with optional
+// properties:
+// - MeasurementMethod
+// - ObservationPeriod
+//
+// When there are exact match of the properties in StatsRanking, then use that
+// score, otherwise can also match to wildcard options (indicated by *).
+//
+// If no entry is found, a BaseRank is assigned to the source series.
 func getScorePb(s *pb.SourceSeries) int {
 	for _, propCombination := range []struct {
 		mm string
@@ -200,6 +212,18 @@ func (a SeriesByRank) Less(i, j int) bool {
 	return true
 }
 
+// getScore derives the ranking score for a source series.
+//
+// The score depends on ImportName and other SVObs properties, by checking the
+// StatsRanking dict. To get the score, ImportName is required, with optional
+// properties:
+// - MeasurementMethod
+// - ObservationPeriod
+//
+// When there are exact match of the properties in StatsRanking, then use that
+// score, otherwise can also match to wildcard options (indicated by *).
+//
+// If no entry is found, a BaseRank is assigned to the source series.
 func getScore(s *SourceSeries) int {
 	for _, propCombination := range []struct {
 		mm string
