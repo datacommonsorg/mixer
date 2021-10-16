@@ -212,6 +212,7 @@ func (a SeriesByRank) Less(i, j int) bool {
 	return true
 }
 
+// TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
 // getScore derives the ranking score for a source series.
 //
 // The score depends on ImportName and other SVObs properties, by checking the
