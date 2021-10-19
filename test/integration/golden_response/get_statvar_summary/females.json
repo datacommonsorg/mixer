@@ -23,27 +23,27 @@
           ]
         },
         "AdministrativeArea1": {
-          "numPlaces": "362",
+          "numPlaces": "330",
           "topPlaces": [
-            {
-              "dcid": "wikidataId/Q1498",
-              "name": "Uttar Pradesh",
-              "personCount": "214671000"
-            },
-            {
-              "dcid": "wikidataId/Q1191",
-              "name": "Maharashtra",
-              "personCount": "118652000"
-            },
             {
               "dcid": "wikidataId/Q15175",
               "name": "Guangdong",
               "personCount": "113460000"
+            },
+            {
+              "dcid": "wikidataId/Q43407",
+              "name": "Shandong",
+              "personCount": "100470000"
+            },
+            {
+              "dcid": "wikidataId/Q43684",
+              "name": "Henan",
+              "personCount": "96050000"
             }
           ]
         },
         "AdministrativeArea2": {
-          "numPlaces": "764",
+          "numPlaces": "763",
           "topPlaces": [
             {
               "dcid": "wikidataId/Q943099",
@@ -163,13 +163,8 @@
           ]
         },
         "City": {
-          "numPlaces": "29954",
+          "numPlaces": "29952",
           "topPlaces": [
-            {
-              "dcid": "wikidataId/Q1353",
-              "name": "Delhi",
-              "personCount": "26495000"
-            },
             {
               "dcid": "wikidataId/Q8686",
               "name": "Shanghai",
@@ -179,6 +174,11 @@
               "dcid": "wikidataId/Q11736",
               "name": "Tianjin",
               "personCount": "15600000"
+            },
+            {
+              "dcid": "wikidataId/Q7473516",
+              "name": "Tokyo",
+              "personCount": "13822000"
             }
           ]
         },
@@ -381,22 +381,22 @@
           ]
         },
         "State": {
-          "numPlaces": "52",
+          "numPlaces": "87",
           "topPlaces": [
             {
-              "dcid": "geoId/06",
-              "name": "California",
-              "personCount": "39538223"
+              "dcid": "wikidataId/Q1498",
+              "name": "Uttar Pradesh",
+              "personCount": "214671000"
             },
             {
-              "dcid": "geoId/48",
-              "name": "Texas",
-              "personCount": "28995881"
+              "dcid": "wikidataId/Q1191",
+              "name": "Maharashtra",
+              "personCount": "118652000"
             },
             {
-              "dcid": "geoId/12",
-              "name": "Florida",
-              "personCount": "21538187"
+              "dcid": "wikidataId/Q1165",
+              "name": "Bihar",
+              "personCount": "102732000"
             }
           ]
         },
@@ -434,28 +434,8 @@
               "numObservations": "673",
               "numTimeSeries": "673",
               "placeTypeSummary": {
-                "AdministrativeArea1": {
-                  "numPlaces": "32",
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1498",
-                      "name": "Uttar Pradesh",
-                      "personCount": "214671000"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1191",
-                      "name": "Maharashtra",
-                      "personCount": "118652000"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1165",
-                      "name": "Bihar",
-                      "personCount": "102732000"
-                    }
-                  ]
-                },
                 "AdministrativeArea2": {
-                  "numPlaces": "637",
+                  "numPlaces": "636",
                   "topPlaces": [
                     {
                       "dcid": "wikidataId/Q943099",
@@ -475,18 +455,8 @@
                   ]
                 },
                 "City": {
-                  "numPlaces": "3",
+                  "numPlaces": "1",
                   "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1353",
-                      "name": "Delhi",
-                      "personCount": "26495000"
-                    },
-                    {
-                      "dcid": "wikidataId/Q43433",
-                      "name": "Chandigarh",
-                      "personCount": "1719000"
-                    },
                     {
                       "dcid": "wikidataId/Q987",
                       "name": "New Delhi",
@@ -501,6 +471,26 @@
                       "dcid": "country/IND",
                       "name": "India",
                       "personCount": "1380004385"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "35",
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q1498",
+                      "name": "Uttar Pradesh",
+                      "personCount": "214671000"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1191",
+                      "name": "Maharashtra",
+                      "personCount": "118652000"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1165",
+                      "name": "Bihar",
+                      "personCount": "102732000"
                     }
                   ]
                 }
@@ -547,22 +537,22 @@
                   ]
                 },
                 "AdministrativeArea1": {
-                  "numPlaces": "361",
+                  "numPlaces": "330",
                   "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1498",
-                      "name": "Uttar Pradesh",
-                      "personCount": "214671000"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1191",
-                      "name": "Maharashtra",
-                      "personCount": "118652000"
-                    },
                     {
                       "dcid": "wikidataId/Q15175",
                       "name": "Guangdong",
                       "personCount": "113460000"
+                    },
+                    {
+                      "dcid": "wikidataId/Q43407",
+                      "name": "Shandong",
+                      "personCount": "100470000"
+                    },
+                    {
+                      "dcid": "wikidataId/Q43684",
+                      "name": "Henan",
+                      "personCount": "96050000"
                     }
                   ]
                 },
@@ -617,13 +607,8 @@
                   ]
                 },
                 "City": {
-                  "numPlaces": "272",
+                  "numPlaces": "270",
                   "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1353",
-                      "name": "Delhi",
-                      "personCount": "26495000"
-                    },
                     {
                       "dcid": "wikidataId/Q8686",
                       "name": "Shanghai",
@@ -633,6 +618,11 @@
                       "dcid": "wikidataId/Q11736",
                       "name": "Tianjin",
                       "personCount": "15600000"
+                    },
+                    {
+                      "dcid": "wikidataId/Q7473516",
+                      "name": "Tokyo",
+                      "personCount": "13822000"
                     }
                   ]
                 },
@@ -735,22 +725,22 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "51",
+                  "numPlaces": "84",
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06",
-                      "name": "California",
-                      "personCount": "39538223"
+                      "dcid": "wikidataId/Q1498",
+                      "name": "Uttar Pradesh",
+                      "personCount": "214671000"
                     },
                     {
-                      "dcid": "geoId/48",
-                      "name": "Texas",
-                      "personCount": "28995881"
+                      "dcid": "wikidataId/Q1191",
+                      "name": "Maharashtra",
+                      "personCount": "118652000"
                     },
                     {
-                      "dcid": "geoId/12",
-                      "name": "Florida",
-                      "personCount": "21538187"
+                      "dcid": "wikidataId/Q1165",
+                      "name": "Bihar",
+                      "personCount": "102732000"
                     }
                   ]
                 }

@@ -20,12 +20,6 @@
       "numDescendentStatVars": 136
     },
     {
-      "id": "dc/g/COVID-19",
-      "specializedEntity": "COVID-19",
-      "displayName": "COVID-19",
-      "numDescendentStatVars": 41
-    },
-    {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
       "displayName": "Employment",

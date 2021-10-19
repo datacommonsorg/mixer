@@ -20,12 +20,6 @@
       "numDescendentStatVars": 140
     },
     {
-      "id": "dc/g/COVID-19",
-      "specializedEntity": "COVID-19",
-      "displayName": "COVID-19",
-      "numDescendentStatVars": 109
-    },
-    {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
       "displayName": "Employment",
@@ -35,13 +29,13 @@
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "numDescendentStatVars": 4003
+      "numDescendentStatVars": 4069
     },
     {
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": 202
+      "numDescendentStatVars": 212
     },
     {
       "id": "dc/g/Energy",
@@ -86,5 +80,5 @@
       "numDescendentStatVars": 10
     }
   ],
-  "numDescendentStatVars": 63552
+  "numDescendentStatVars": 63562
 }
