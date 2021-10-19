@@ -3927,6 +3927,562 @@
   ],
   "State": [
     {
+      "subjectId": "wikidataId/Q677037",
+      "subjectName": "Telangana",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/pnqh772"
+    },
+    {
+      "subjectId": "wikidataId/Q66743",
+      "subjectName": "Puducherry",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q66710",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q66278313",
+      "subjectName": "Jammu and Kashmir",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q46107",
+      "subjectName": "Dadra and Nagar Haveli",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q43433",
+      "subjectName": "Chandigarh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q40888",
+      "subjectName": "Andaman and Nicobar Islands",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q26927",
+      "subjectName": "Lakshadweep",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q22424",
+      "subjectName": "Punjab",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q22048",
+      "subjectName": "Odisha",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q200667",
+      "subjectName": "Ladakh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/pnqh772"
+    },
+    {
+      "subjectId": "wikidataId/Q1599",
+      "subjectName": "Nagaland",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1505",
+      "subjectName": "Sikkim",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1502",
+      "subjectName": "Mizoram",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1499",
+      "subjectName": "Uttarakhand",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1498",
+      "subjectName": "Uttar Pradesh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1445",
+      "subjectName": "Tamil Nadu",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1437",
+      "subjectName": "Rajasthan",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1363",
+      "subjectName": "Tripura",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1356",
+      "subjectName": "West Bengal",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1353",
+      "subjectName": "Delhi",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1195",
+      "subjectName": "Meghalaya",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1193",
+      "subjectName": "Manipur",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1191",
+      "subjectName": "Maharashtra",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1188",
+      "subjectName": "Madhya Pradesh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1186",
+      "subjectName": "Kerala",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1185",
+      "subjectName": "Karnataka",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1184",
+      "subjectName": "Jharkhand",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1177",
+      "subjectName": "Himachal Pradesh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1174",
+      "subjectName": "Haryana",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1171",
+      "subjectName": "Goa",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1168",
+      "subjectName": "Chhattisgarh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1165",
+      "subjectName": "Bihar",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1164",
+      "subjectName": "Assam",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1162",
+      "subjectName": "Arunachal Pradesh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1159",
+      "subjectName": "Andhra Pradesh",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "wikidataId/Q1061",
+      "subjectName": "Gujarat",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/rdj6vy2"
+    },
+    {
       "subjectId": "geoId/95",
       "subjectName": "Palmyra Atoll",
       "subjectTypes": [

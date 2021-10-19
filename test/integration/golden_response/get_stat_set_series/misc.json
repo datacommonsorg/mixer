@@ -276,8 +276,8 @@
             "observationPeriod": "P1Y"
           }
         },
-        "Daily_PrecipitationRate_RCP85": {},
-        "Median_Age_Person": {}
+        "Median_Age_Person": {},
+        "PrecipitationRate_RCP85": {}
       }
     },
     "country/JPN": {
@@ -577,8 +577,8 @@
             "observationPeriod": "P1Y"
           }
         },
-        "Daily_PrecipitationRate_RCP85": {},
-        "Median_Age_Person": {}
+        "Median_Age_Person": {},
+        "PrecipitationRate_RCP85": {}
       }
     },
     "country/USA": {
@@ -942,7 +942,6 @@
             "observationPeriod": "P1Y"
           }
         },
-        "Daily_PrecipitationRate_RCP85": {},
         "Median_Age_Person": {
           "val": {
             "2011": 37,
@@ -961,7 +960,8 @@
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "Year"
           }
-        }
+        },
+        "PrecipitationRate_RCP85": {}
       }
     },
     "geoId/06": {
@@ -1166,7 +1166,6 @@
         },
         "Count_Person_IsInternetUser_PerCapita": {},
         "Count_Person_Urban": {},
-        "Daily_PrecipitationRate_RCP85": {},
         "Median_Age_Person": {
           "val": {
             "2011": 35.1,
@@ -1185,7 +1184,8 @@
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "Year"
           }
-        }
+        },
+        "PrecipitationRate_RCP85": {}
       }
     },
     "geoId/06085": {
@@ -1262,7 +1262,26 @@
         },
         "Count_Person_IsInternetUser_PerCapita": {},
         "Count_Person_Urban": {},
-        "Daily_PrecipitationRate_RCP85": {
+        "Median_Age_Person": {
+          "val": {
+            "2011": 36,
+            "2012": 36.2,
+            "2013": 36.4,
+            "2014": 36.6,
+            "2015": 36.8,
+            "2016": 36.8,
+            "2017": 37,
+            "2018": 37,
+            "2019": 37.1
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "PrecipitationRate_RCP85": {
           "val": {
             "2006": 0.00002,
             "2007": 0.00002,
@@ -1366,25 +1385,6 @@
             "observationPeriod": "P1Y",
             "unit": "KilogramsPerMeterSquaredSecond"
           }
-        },
-        "Median_Age_Person": {
-          "val": {
-            "2011": 36,
-            "2012": 36.2,
-            "2013": 36.4,
-            "2014": 36.6,
-            "2015": 36.8,
-            "2016": 36.8,
-            "2017": 37,
-            "2018": 37,
-            "2019": 37.1
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "Year"
-          }
         }
       }
     },
@@ -1471,7 +1471,26 @@
         },
         "Count_Person_IsInternetUser_PerCapita": {},
         "Count_Person_Urban": {},
-        "Daily_PrecipitationRate_RCP85": {
+        "Median_Age_Person": {
+          "val": {
+            "2011": 36,
+            "2012": 35.9,
+            "2013": 35.8,
+            "2014": 35.9,
+            "2015": 35.4,
+            "2016": 35,
+            "2017": 35,
+            "2018": 34.9,
+            "2019": 34.8
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "PrecipitationRate_RCP85": {
           "val": {
             "2006": 0.000013,
             "2007": 0.000013,
@@ -1574,25 +1593,6 @@
             "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1Y",
             "unit": "KilogramsPerMeterSquaredSecond"
-          }
-        },
-        "Median_Age_Person": {
-          "val": {
-            "2011": 36,
-            "2012": 35.9,
-            "2013": 35.8,
-            "2014": 35.9,
-            "2015": 35.4,
-            "2016": 35,
-            "2017": 35,
-            "2018": 34.9,
-            "2019": 34.8
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "Year"
           }
         }
       }

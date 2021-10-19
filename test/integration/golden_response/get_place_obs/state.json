@@ -1206,6 +1206,16 @@
           "dblValue": 3193694
         }
       ]
+    },
+    {
+      "name": "Andaman and Nicobar Islands",
+      "dcid": "wikidataId/Q40888",
+      "observations": [
+        {
+          "measurementMethod": "HumanCuratedStats",
+          "dblValue": 434192
+        }
+      ]
     }
   ]
 }
