@@ -208,12 +208,12 @@
             {
               "dcid": "country/CHN",
               "name": "China",
-              "personCount": "1397715000"
+              "personCount": "1402112000"
             },
             {
               "dcid": "country/IND",
               "name": "India",
-              "personCount": "1366417754"
+              "personCount": "1380004385"
             },
             {
               "dcid": "country/USA",
@@ -500,11 +500,13 @@
                     {
                       "dcid": "country/IND",
                       "name": "India",
-                      "personCount": "1366417754"
+                      "personCount": "1380004385"
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 3590,
+              "maxValue": 587584719
             }
           ]
         },
@@ -640,12 +642,12 @@
                     {
                       "dcid": "country/CHN",
                       "name": "China",
-                      "personCount": "1397715000"
+                      "personCount": "1402112000"
                     },
                     {
                       "dcid": "country/IND",
                       "name": "India",
-                      "personCount": "1366417754"
+                      "personCount": "1380004385"
                     },
                     {
                       "dcid": "country/USA",
@@ -752,7 +754,9 @@
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 296,
+              "maxValue": 660361000
             }
           ]
         },
@@ -1028,7 +1032,8 @@
                     }
                   ]
                 }
-              }
+              },
+              "maxValue": 19757199
             }
           ]
         },
@@ -1116,7 +1121,9 @@
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 25935,
+              "maxValue": 166650550
             }
           ]
         },
@@ -1145,7 +1152,9 @@
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 157812589,
+              "maxValue": 166551005
             }
           ]
         },
@@ -1195,12 +1204,12 @@
                     {
                       "dcid": "country/TUR",
                       "name": "Turkey",
-                      "personCount": "83614362"
+                      "personCount": "84339067"
                     },
                     {
                       "dcid": "country/DEU",
                       "name": "Germany",
-                      "personCount": "83100000"
+                      "personCount": "83240525"
                     }
                   ]
                 },
@@ -1264,7 +1273,9 @@
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 4313,
+              "maxValue": 78191815
             }
           ]
         }
@@ -1813,7 +1824,8 @@
                     }
                   ]
                 }
-              }
+              },
+              "maxValue": 2996731
             }
           ]
         },
@@ -1842,7 +1854,9 @@
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 7608035,
+              "maxValue": 9416047
             }
           ]
         }
@@ -1876,12 +1890,12 @@
             {
               "dcid": "country/CHN",
               "name": "China",
-              "personCount": "1397715000"
+              "personCount": "1402112000"
             },
             {
               "dcid": "country/IND",
               "name": "India",
-              "personCount": "1366417754"
+              "personCount": "1380004385"
             },
             {
               "dcid": "country/USA",
@@ -1956,7 +1970,7 @@
             {
               "dcid": "Earth",
               "name": "Earth",
-              "personCount": "7673533974"
+              "personCount": "7752840547"
             }
           ]
         }
@@ -1964,14 +1978,14 @@
       "provenanceSummary": {
         "dc/jccrh82": {
           "importName": "WorldDevelopmentIndicators",
-          "numObservations": "11510",
+          "numObservations": "11709",
           "numTimeSeries": "207",
           "seriesSummary": [
             {
               "seriesKey": {},
               "earliestDate": "1960",
-              "latestDate": "2018",
-              "numObservations": "11510",
+              "latestDate": "2019",
+              "numObservations": "11709",
               "numTimeSeries": "207",
               "placeTypeSummary": {
                 "Country": {
@@ -1980,12 +1994,12 @@
                     {
                       "dcid": "country/CHN",
                       "name": "China",
-                      "personCount": "1397715000"
+                      "personCount": "1402112000"
                     },
                     {
                       "dcid": "country/IND",
                       "name": "India",
-                      "personCount": "1366417754"
+                      "personCount": "1380004385"
                     },
                     {
                       "dcid": "country/USA",
@@ -2000,11 +2014,13 @@
                     {
                       "dcid": "Earth",
                       "name": "Earth",
-                      "personCount": "7673533974"
+                      "personCount": "7752840547"
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 0.86,
+              "maxValue": 8.864
             }
           ]
         },
@@ -2103,7 +2119,9 @@
                     }
                   ]
                 }
-              }
+              },
+              "minValue": 0.78,
+              "maxValue": 4.9
             }
           ]
         }

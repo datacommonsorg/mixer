@@ -125,6 +125,10 @@
       "dcid": "Count_Worker_VoluntarySeparation_NAICSAccommodationFoodServices_Unadjusted"
     },
     {
+      "name": "16 Years or More, Civilian, No Health Insurance, Non Institutionalized, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Population",
+      "dcid": "Count_Person_16OrMoreYears_NoHealthInsurance_NAICSArtsEntertainmentRecreationAccommodationFoodServices_Worker"
+    },
+    {
       "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services (NAICS/72) Population",
       "dcid": "dc/rydmsxhz7pxh1"
     },
@@ -147,6 +151,10 @@
       "dcid": "dc/g/Person_Industry-NAICS/72"
     },
     {
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172"
+    },
+    {
       "name": "Economic Activity With Activity Source = Gross Domestic Production, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/EconomicActivity_ActivitySource-GrossDomesticProduction_Industry-NAICS/72"
     },
@@ -159,8 +167,16 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72"
     },
     {
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172"
+    },
+    {
       "name": "Person With Age, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172"
     },
     {
       "name": "Person With Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
@@ -207,6 +223,30 @@
       "dcid": "dc/g/Person_Gender_Industry-NAICS/72"
     },
     {
+      "name": "Person With Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172"
+    },
+    {
+      "name": "Person With Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172"
+    },
+    {
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_WorkerClassification"
+    },
+    {
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization"
+    },
+    {
       "name": "Person With Job Change Event = Hire, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-Hire"
     },
@@ -235,8 +275,16 @@
       "dcid": "dc/g/Person_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian"
+    },
+    {
       "name": "Person With Military Status, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
@@ -263,12 +311,44 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender_Industry-NAICS/72"
     },
     {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Military Status, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus"
     },
     {
       "name": "Person With Age, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
@@ -287,8 +367,24 @@
       "dcid": "dc/g/Person_Age_Gender-Male_Industry-NAICS/72"
     },
     {
+      "name": "Person With Age, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172"
+    },
+    {
+      "name": "Person With Age, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
       "name": "Person With Age, Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_MilitaryStatus-Civilian"
     },
     {
       "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
@@ -335,6 +431,42 @@
       "dcid": "dc/g/Person_EmploymentStatus_Gender-Male_Industry-NAICS/72"
     },
     {
+      "name": "Person With Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_WorkerClassification"
+    },
+    {
+      "name": "Person With Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization"
+    },
+    {
+      "name": "Person With Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification"
+    },
+    {
+      "name": "Person With Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
@@ -359,6 +491,30 @@
       "dcid": "dc/g/Person_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian"
+    },
+    {
       "name": "Person With Military Status, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus"
     },
@@ -373,6 +529,18 @@
     {
       "name": "Person With Military Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
@@ -419,6 +587,42 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Industry-NAICS/72"
     },
     {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
@@ -443,6 +647,30 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus"
     },
@@ -457,6 +685,18 @@
     {
       "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus"
     },
     {
       "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
@@ -479,6 +719,18 @@
       "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72"
     },
     {
+      "name": "Person With Age, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized"
+    },
+    {
+      "name": "Person With Age, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
@@ -493,6 +745,18 @@
     {
       "name": "Person With Age, Military Status = Civilian, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
     },
     {
       "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
@@ -521,6 +785,22 @@
     {
       "name": "Person With Employment Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification"
+    },
+    {
+      "name": "Person With Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
     },
     {
       "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
@@ -567,6 +847,42 @@
       "dcid": "dc/g/Person_EmploymentStatus_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Military Status, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus"
     },
@@ -585,6 +901,18 @@
     {
       "name": "Person With Military Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus_WorkerClassification-Worker"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
@@ -613,6 +941,22 @@
     {
       "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
     },
     {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
@@ -659,6 +1003,42 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus"
     },
@@ -679,12 +1059,28 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72"
     },
     {
       "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72"
+    },
+    {
+      "name": "Person With Age, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_WorkerClassification-Worker"
     },
     {
       "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
@@ -705,6 +1101,18 @@
     {
       "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Health Insurance = No Health Insurance, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
     },
     {
       "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
@@ -735,12 +1143,32 @@
       "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Military Status = Civilian, Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus"
     },
     {
       "name": "Person With Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
+    },
+    {
+      "name": "Person With Military Status, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus_WorkerClassification-Worker"
     },
     {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
@@ -771,6 +1199,22 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus"
     },
@@ -779,12 +1223,20 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus"
     },
     {
+      "name": "Person With Age = 16 Years or More, Military Status, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus_WorkerClassification-Worker"
+    },
+    {
       "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Industry-NAICS/72_MilitaryStatus-Civilian"
     },
     {
       "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Industry-NAICS/72_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Health Insurance = No Health Insurance, Institutionalization = Non Institutionalized, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age_HealthInsurance-NoHealthInsurance_Industry-NAICS/7172_Institutionalization-NonInstitutionalized_MilitaryStatus-Civilian_WorkerClassification-Worker"
     }
   ]
 }

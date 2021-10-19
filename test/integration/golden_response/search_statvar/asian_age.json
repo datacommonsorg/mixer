@@ -1025,12 +1025,20 @@
       "dcid": "dc/hypdmb4mcrem4"
     },
     {
+      "name": "25 - 34 Years, Female, Asian Alone Population",
+      "dcid": "dc/56ss4xsrc61g1"
+    },
+    {
       "name": "25 - 34 Years, Female, Below Poverty Level in The Past 12 Months, Asian Alone Population",
       "dcid": "dc/6xcqpvpkj3de9"
     },
     {
       "name": "25 - 34 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone Population",
       "dcid": "dc/k0q6v29zkhmg5"
+    },
+    {
+      "name": "25 - 34 Years, Male, Asian Alone Population",
+      "dcid": "dc/54kk81t26ewqb"
     },
     {
       "name": "25 - 34 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone Population",
@@ -1067,6 +1075,14 @@
     {
       "name": "45 - 54 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone Population",
       "dcid": "dc/1yg7w4tbpnfe3"
+    },
+    {
+      "name": "5 - 19 Years, Female, Asian Alone Population",
+      "dcid": "dc/7ze0b65khtxm1"
+    },
+    {
+      "name": "5 - 19 Years, Male, Asian Alone Population",
+      "dcid": "dc/vpn9ncxevqxrf"
     },
     {
       "name": "5 Years or Less, Female, Above Poverty Level in The Past 12 Months, Asian Alone Population",
@@ -1765,6 +1781,10 @@
     {
       "name": "Person With Age = 5 - 17 Years, Language Spoken At Home = Asian And Pacific Island Languages",
       "dcid": "dc/g/Person_Age-Years5To17_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
+    },
+    {
+      "name": "Person With Age = 5 - 19 Years, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years5To19_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 5 - 9 Years, Race = Asian Alone",
@@ -3057,6 +3077,18 @@
     {
       "name": "Person With Age = 45 - 54 Years, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years45To54_PovertyStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 5 - 19 Years, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Male_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 5 - 19 Years, Gender, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years5To19_Gender_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 5 - 9 Years, Gender = Female, Race = Asian Alone",
@@ -5609,22 +5641,6 @@
     {
       "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     }
   ]
 }

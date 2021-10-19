@@ -14,13 +14,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Annual greenhouse gas emissions from large facilities",
-    "statsVars": [
-      "Annual_Emissions_GreenhouseGas_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Arson",
     "statsVars": [
       "Count_CriminalActivities_Arson"
@@ -65,13 +58,6 @@
     "title": "Electricity generation per capita",
     "statsVars": [
       "Annual_Generation_Electricity"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Electricity price",
-    "statsVars": [
-      "Annual_Average_RetailPrice_Electricity"
     ],
     "relatedChart": {}
   },
