@@ -56,10 +56,10 @@ var StatsRanking = map[RankKey]int{
 	{"UNEnergy", "", "*"}:         0, // Electricity
 	{"EIA_Electricity", "*", "*"}: 1, // Electricity
 
-	{"NASA_NEXDCP30", "*", "P1Y"}:                   0, // IPCC
-	{"NASA_NEXGDDP", "*", "P1Y"}:                    0, // IPCC
-	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1Y"}: 0, // IPCC
-	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1Y"}:  0, // IPCC
+	{"NASA_NEXDCP30", "NASA_Mean_CCSM4", "P1M"}:     0, // IPCC
+	{"NASA_NEXGDDP", "NASA_Mean_CCSM4", "P1M"}:      0, // IPCC
+	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1M"}: 0, // IPCC
+	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1M"}:  0, // IPCC
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
