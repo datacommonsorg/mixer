@@ -42,11 +42,11 @@ func TestGetScorePb(t *testing.T) {
 		},
 		{
 			&pb.SourceSeries{ImportName: "NASA_NEXDCP30", MeasurementMethod: "MM", ObservationPeriod: "P1Y"},
-			0,
+			100,
 		},
 		{
-			&pb.SourceSeries{ImportName: "NASA_NEXDCP30", ObservationPeriod: "P1M"},
-			100,
+			&pb.SourceSeries{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1M"},
+			0,
 		},
 	} {
 		score := getScorePb(c.series)
@@ -78,9 +78,9 @@ func TestSeriesByRank(t *testing.T) {
 				{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
 			},
 			[]*pb.SourceSeries{
-				{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
 				{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_GISS-E2-R", ObservationPeriod: "P1M"},
 				{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1M"},
+				{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
 			},
 		},
 	} {
