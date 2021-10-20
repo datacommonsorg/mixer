@@ -63,6 +63,13 @@ func TestGetStatSetSeries(t *testing.T) {
 			"",
 		},
 		{
+			[]string{"DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85", "Max_Temperature_RCP85", "Max_Temperature"},
+			[]string{"geoId/06029", "geoId/06085"},
+			"weather.json",
+			false,
+			"",
+		},
+		{
 			[]string{"Count_Person"},
 			[]string{"country/USA", "country/JPN", "country/IND", "geoId/06", "geoId/06085", "geoId/0649670"},
 			"preferred_import.json",
