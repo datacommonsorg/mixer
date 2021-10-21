@@ -3939,7 +3939,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/pnqh772"
+      "provenanceId": "dc/vtdd2t1"
     },
     {
       "subjectId": "wikidataId/Q66743",
@@ -4481,6 +4481,19 @@
         "Class"
       ],
       "provenanceId": "dc/rdj6vy2"
+    },
+    {
+      "subjectId": "udiseCode/99",
+      "subjectTypes": [
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/crpej11"
     },
     {
       "subjectId": "geoId/95",
