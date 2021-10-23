@@ -41,9 +41,9 @@ var StatsRanking = map[RankKey]int{
 	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey", "*"}:                    1, // Population
 	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus", "*"}:       2, // Population
 	{"EurostatData", "EurostatRegionalPopulationData", "*"}:                    3, // Population
-	{"WorldDevelopmentIndicators", "", "*"}:                                    4, // Population
+	{"WorldDevelopmentIndicators", "*", "*"}:                                   4, // Population
 	// Prefer Indian Census population for Indian states, over something like OECD.
-	{"IndiaCensus_Primary", "", "*"}:                  5,    // Population
+	{"IndiaCensus_Primary", "*", "*"}:                 5,    // Population
 	{"WikipediaStatsData", "Wikipedia", "*"}:          1001, // Population
 	{"HumanCuratedStats", "HumanCuratedStats", "*"}:   1002, // Population
 	{"WikidataPopulation", "WikidataPopulation", "*"}: 1003, // Population
