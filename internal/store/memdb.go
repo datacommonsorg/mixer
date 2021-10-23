@@ -403,7 +403,7 @@ func (memDb *MemDb) SubscribeGcsUpdate(
 				}
 			}
 			log.Println("Receive notification for csv update")
-			return memdb.LoadFromGcs(ctx, bucket, folder)
+			return memDb.LoadFromGcs(ctx, bucket, folder)
 		},
 	)
 }
