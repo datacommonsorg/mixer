@@ -64,7 +64,10 @@ func Subscribe(
 			ctx,
 			func(ctx context.Context, msg *pubsub.Message) {
 				msg.Ack()
-				worker(ctx, msg)
+				err = worker(ctx, msg)
+				if err != nil {
+					log.Printf("Subscriber can not complete task: %v", err)
+				}
 			})
 		if err != nil {
 			log.Printf("Cloud pubsub receive: %v", err)
