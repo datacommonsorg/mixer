@@ -119,16 +119,31 @@ go run examples/main.go
 ### Start Mixer as a gRPC server backed by TMCF + CSV files
 
 Mixer can load and serve TMCF + CSV files. This is used for a private Data Commons
-instance. This requires `--use_gcs_data=true` with `--gcs_bucket` and `gcs_object_prefix` set.
+instance. This requires to set the following flag
+
+- `--use_tmcf_csv_data=true`
+- `--tmcf_csv_bucket=<bucket-name>`
+- `--tmcf_csv_folder=<folder-name>`
+
+Prerequists:
+
+- Create a GCS bucket <BUCKET_NAME>
+- Create a folder in the bucket <FOLDER_NAME> to host all the data files
+- Create a GCS PubSub notification:
+
+  ```bash
+  gsutil notification create -t tmcf-csv-reload -f json gs://BUCKET_NAME
+  ```
 
 Run the following code to start mixer gRPC server with TMCF + CSV files stored in GCS
 
 ```bash
 # In repo root directory
 go run cmd/main.go \
-    --gcs_bucket=datcom-public \
-    --gcs_object_prefix=test \
-    --use_gcs_data=true \
+    --mixer_project=datcom-mixer-dev-316822 \
+    --tmcf_csv_bucket=datcom-mixer-dev-resources \
+    --tmcf_csv_folder=test \
+    --use_tmcf_csv_data=true \
     --use_bigquery=false \
     --use_base_bt=false \
     --use_branch_bt=false

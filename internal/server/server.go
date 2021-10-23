@@ -16,24 +16,22 @@ package server
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
-	"time"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/bigtable"
-	"cloud.google.com/go/pubsub"
+	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/base"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/translator"
-	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // Cache holds cached data for the mixer server.
@@ -145,42 +143,22 @@ func NewBtTable(
 	return btClient.Open(tableID), nil
 }
 
-// SubscribeBranchCacheUpdate subscribe server for branch cache update.
+// SubscribeBranchCacheUpdate subscribe for branch cache update.
 func (s *Server) SubscribeBranchCacheUpdate(
-	ctx context.Context, pubsubProjectID, branchCacheBucket, subscriberPrefix,
-	pubsubTopic string) (*pubsub.Subscription, error) {
-	// Cloud PubSub receiver when branch cache is updated.
-	pubsubClient, err := pubsub.NewClient(ctx, pubsubProjectID)
-	if err != nil {
-		return nil, err
-	}
-	// Always create a new subscriber with default expiration date of 2 days.
-	subID := subscriberPrefix + util.RandomString()
-	expiration, _ := time.ParseDuration("36h")
-	retention, _ := time.ParseDuration("24h")
-	sub, err := pubsubClient.CreateSubscription(ctx, subID,
-		pubsub.SubscriptionConfig{
-			Topic:             pubsubClient.Topic(pubsubTopic),
-			ExpirationPolicy:  expiration,
-			RetentionDuration: retention,
-		})
-	if err != nil {
-		return nil, err
-	}
-	fmt.Printf("Subscriber ID: %s\n", subID)
-	// Start the receiver in a goroutine.
-	go func() {
-		err = sub.Receive(ctx, func(ctx context.Context, msg *pubsub.Message) {
+	ctx context.Context, pubsubProject, subscriberPrefix, pubsubTopic string,
+) error {
+	return dcpubsub.Subscribe(
+		ctx,
+		pubsubProject,
+		subscriberPrefix,
+		pubsubTopic,
+		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
-			msg.Ack()
-			fmt.Printf("Subscriber action: use branch cache %s\n", branchTableName)
+			log.Printf("Branch Cache Subscriber: use branch cache %s\n", branchTableName)
 			s.updateBranchTable(ctx, branchTableName)
-		})
-		if err != nil {
-			log.Printf("Cloud pubsub receive: %v", err)
-		}
-	}()
-	return sub, nil
+			return nil
+		},
+	)
 }
 
 // NewCache initializes the cache for stat var hierarchy.
