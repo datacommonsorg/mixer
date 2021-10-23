@@ -381,7 +381,7 @@ func (memDb *MemDb) addRow(
 
 // SubscribeGcsUpdate subscribe GCS csv+tmcf change.
 // When csv file is changed, reload the memdb
-func (memdb *MemDb) SubscribeGcsUpdate(
+func (memDb *MemDb) SubscribeGcsUpdate(
 	ctx context.Context,
 	pubsubProject, pubsubTopic, subscriberPrefix string,
 	bucket, folder string,
