@@ -16,7 +16,7 @@
 # The ingress exposes the mixer service to port :80.
 # It binds to the static ip and managed ssl certificate when deployed to GKE.
 
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mixer-ingress
@@ -28,6 +28,9 @@ spec:
     - http:
         paths:
           - path: /*
+            pathType: ImplementationSpecific
             backend:
-              serviceName: mixer-service
-              servicePort: 80
+              service:
+                name: mixer-service
+                port:
+                  number: 80

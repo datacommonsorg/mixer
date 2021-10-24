@@ -32,10 +32,10 @@ spec:
           resources:
             limits:
               memory: "5G"
-              cpu: "800m"
+              cpu: "1000m"
             requests:
               memory: "5G"
-              cpu: "800m"
+              cpu: "1000m"
         - name: esp
           volumeMounts:
             - mountPath: /esp

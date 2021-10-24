@@ -26,7 +26,9 @@ nameSuffix: -local
 namespace: mixer
 
 bases:
-  - ../../datacommons
+  - ../../base
+  - ../../mapping
+  - ../../storage
 
 resources:
   - serviceaccount.yaml
