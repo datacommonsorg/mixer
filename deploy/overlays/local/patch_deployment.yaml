@@ -31,11 +31,11 @@ spec:
           imagePullPolicy: Never
           resources:
             limits:
-              memory: "2G"
-              cpu: "400m"
+              memory: "5G"
+              cpu: "800m"
             requests:
-              memory: "2G"
-              cpu: "400m"
+              memory: "5G"
+              cpu: "800m"
         - name: esp
           volumeMounts:
             - mountPath: /esp

@@ -20,9 +20,6 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"os"
-	"os/signal"
-	"syscall"
 
 	"github.com/datacommonsorg/mixer/internal/healthcheck"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -41,28 +38,40 @@ import (
 )
 
 var (
-	mixerProject    = flag.String("mixer_project", "", "The cloud project to run the mixer instance.")
-	storeProject    = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
-	bqDataset       = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	baseTableName   = flag.String("base_table", "", "Base cache Bigtable table.")
-	port            = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS         = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
-	schemaPath      = flag.String("schema_path", "", "The directory that contains the schema mapping files")
-	gcsBucket       = flag.String("gcs_bucket", "", "The GCS bucket that contains tmcf and csv files")
-	gcsObjectPrefix = flag.String("gcs_object_prefix", "", "Path (sub-directory) for an import. An import must have a unique prefix within a bucket.")
-	useBigquery     = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
-	useBaseBt       = flag.Bool("use_base_bt", true, "Use base bigtable cache")
-	useBranchBt     = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
-	useGcsData      = flag.Bool("use_gcs_data", false, "Use tmcf and csv from GCS")
+	// Server config
+	port         = flag.Int("port", 12345, "Port on which to run the server.")
+	useALTS      = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
+	mixerProject = flag.String("mixer_project", "", "The GCP project to run the mixer instance.")
+	// Bigtable and BigQuery project
+	storeProject = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
+	// BigQuery (Sparql)
+	useBigquery = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
+	bqDataset   = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	schemaPath  = flag.String("schema_path", "", "The directory that contains the schema mapping files")
+	// Base Bigtable Cache
+	useBaseBt     = flag.Bool("use_base_bt", true, "Use base bigtable cache")
+	baseTableName = flag.String("base_table", "", "Base cache Bigtable table.")
+	// Branch Bigtable Cache
+	useBranchBt = flag.Bool("use_branch_bt", false, "Use branch bigtable cache")
+	// GCS to hold memdb data.
+	// Note GCS bucket and pubsub should be within the mixer project.
+	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
+	tmcfCsvBucket  = flag.String("tmcf_csv_bucket", "", "The GCS bucket that contains tmcf and csv files")
+	tmcfCsvFolder  = flag.String("tmcf_csv_folder", "", "GCS folder for an import. An import must have a unique prefix within a bucket.")
 )
 
 const (
-	baseBtInstance           = "prophet-cache"
-	branchBtInstance         = "prophet-branch-cache"
-	branchCacheVersionFile   = "latest_branch_cache_version.txt"
-	pubsubTopic              = "branch-cache-reload"
-	subscriberPrefix         = "mixer-subscriber-"
-	branchCacheVersionBucket = "datcom-control"
+	// Base BigTable
+	baseBtInstance = "prophet-cache"
+	// Branch BigTable and Pubsub
+	branchBtInstance            = "prophet-branch-cache"
+	branchCacheVersionBucket    = "datcom-control"
+	branchCacheVersionFile      = "latest_branch_cache_version.txt"
+	branchCachePubsubTopic      = "branch-cache-reload"
+	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
+	// GCS Pubsub
+	tmcfCsvPubsubTopic      = "tmcf-csv-reload"
+	tmcfCsvSubscriberPrefix = "tmcf-csv-subscriber-"
 )
 
 func main() {
@@ -88,10 +97,16 @@ func main() {
 
 	// TMCF + CSV from GCS
 	memdb := store.NewMemDb()
-	if *useGcsData && *gcsBucket != "" {
-		err = memdb.LoadFromGcs(ctx, *gcsBucket, *gcsObjectPrefix)
+	if *useTmcfCsvData && *tmcfCsvBucket != "" {
+		err = memdb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
 		if err != nil {
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
+		}
+		err = memdb.SubscribeGcsUpdate(
+			ctx, *mixerProject, tmcfCsvPubsubTopic, tmcfCsvSubscriberPrefix,
+			*tmcfCsvBucket, *tmcfCsvFolder)
+		if err != nil {
+			log.Fatalf("Failed to subscribe to tmcf and csv change: %v", err)
 		}
 	}
 
@@ -145,23 +160,11 @@ func main() {
 
 	// Subscribe to branch cache update
 	if *useBranchBt {
-		sub, err := s.SubscribeBranchCacheUpdate(
-			ctx, *storeProject, branchCacheVersionBucket, subscriberPrefix, pubsubTopic)
+		err := s.SubscribeBranchCacheUpdate(
+			ctx, *storeProject, branchCacheSubscriberPrefix, branchCachePubsubTopic)
 		if err != nil {
 			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 		}
-		// Create a go routine to check server shutdown and delete the subscriber.
-		c := make(chan os.Signal, 1)
-		signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
-		go func() {
-			<-c
-			err := sub.Delete(ctx)
-			if err != nil {
-				log.Fatalf("Failed to delete subscriber: %v", err)
-			}
-			log.Printf("Deleted subscriber: %v", sub)
-			os.Exit(1)
-		}()
 	}
 
 	opts := []grpc.ServerOption{}
@@ -186,7 +189,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to listen on network: %v", err)
 	}
-	fmt.Println("Mixer ready to serve!!")
+	log.Println("Mixer ready to serve!!")
 	if err := srv.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
