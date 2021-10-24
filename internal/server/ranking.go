@@ -35,19 +35,22 @@ type RankKey struct {
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
 var StatsRanking = map[RankKey]int{
-	{"CensusPEP", "CensusPEPSurvey", "*"}:                                      0,    // Population
-	{"CensusACS5YearSurvey", "CensusACS5yrSurvey", "*"}:                        1,    // Population
-	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey", "*"}: 1,    // Population
-	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey", "*"}:                    1,    // Population
-	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus", "*"}:       2,    // Population
-	{"EurostatData", "EurostatRegionalPopulationData", "*"}:                    3,    // Population
-	{"WorldDevelopmentIndicators", "", "*"}:                                    4,    // Population
-	{"WikipediaStatsData", "Wikipedia", "*"}:                                   1001, // Population
-	{"HumanCuratedStats", "HumanCuratedStats", "*"}:                            1002, // Population
-	{"WikidataPopulation", "WikidataPopulation", "*"}:                          1003, // Population
+	{"CensusPEP", "CensusPEPSurvey", "*"}:                                      0, // Population
+	{"CensusACS5YearSurvey", "CensusACS5yrSurvey", "*"}:                        1, // Population
+	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey", "*"}: 1, // Population
+	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey", "*"}:                    1, // Population
+	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus", "*"}:       2, // Population
+	{"EurostatData", "EurostatRegionalPopulationData", "*"}:                    3, // Population
+	{"WorldDevelopmentIndicators", "*", "*"}:                                   4, // Population
+	// Prefer Indian Census population for Indian states, over something like OECD.
+	{"IndiaCensus_Primary", "*", "*"}:                 5,    // Population
+	{"WikipediaStatsData", "Wikipedia", "*"}:          1001, // Population
+	{"HumanCuratedStats", "HumanCuratedStats", "*"}:   1002, // Population
+	{"WikidataPopulation", "WikidataPopulation", "*"}: 1003, // Population
 
 	{"BLS_LAUS", "BLSSeasonallyUnadjusted", "*"}: 0, // Unemployment Rate
-	{"EurostatData", "", "*"}:                    1, // Unemployment Rate
+	{"BLS_CPS", "BLSSeasonallyAdjusted", "*"}:    1, // Labor Force data ranked higher than WDI (above) or Eurostat
+	{"EurostatData", "", "*"}:                    2, // Unemployment Rate
 
 	{"NYT_COVID19", "NYT_COVID19_GitHub", "*"}: 0, // Covid
 

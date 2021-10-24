@@ -38,7 +38,7 @@ func TestGetScorePb(t *testing.T) {
 		},
 		{
 			&pb.SourceSeries{ImportName: "WorldDevelopmentIndicators", MeasurementMethod: "NewMM", ObservationPeriod: "P1Y"},
-			100,
+			4,
 		},
 		{
 			&pb.SourceSeries{ImportName: "NASA_NEXDCP30", MeasurementMethod: "MM", ObservationPeriod: "P1Y"},

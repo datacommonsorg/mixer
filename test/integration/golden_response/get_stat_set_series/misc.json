@@ -155,15 +155,11 @@
         },
         "Count_Person_Female": {
           "val": {
-            "2001": 496514000,
-            "2011": 586469000,
-            "2015": 604663000
+            "2011": 587584719
           },
           "metadata": {
-            "importName": "OECDRegionalDemography",
-            "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "IndiaCensus_Primary",
+            "provenanceUrl": "http://census.gov.in"
           }
         },
         "Count_Person_IsInternetUser_PerCapita": {
