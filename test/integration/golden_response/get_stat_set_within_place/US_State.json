@@ -756,365 +756,365 @@
     "Count_Person_Employed": {
       "stat": {
         "geoId/01": {
-          "date": "2021-08",
-          "value": 2140709,
+          "date": "2021-09",
+          "value": 2151009,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/02": {
-          "date": "2021-08",
-          "value": 335162,
+          "date": "2021-09",
+          "value": 332070,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/04": {
-          "date": "2021-08",
-          "value": 3441222,
+          "date": "2021-09",
+          "value": 3501496,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/05": {
-          "date": "2021-08",
-          "value": 1306344,
+          "date": "2021-09",
+          "value": 1314204,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/06": {
-          "date": "2021-08",
-          "value": 17600191,
+          "date": "2021-09",
+          "value": 17824985,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/08": {
-          "date": "2021-08",
-          "value": 3024237,
+          "date": "2021-09",
+          "value": 3062638,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/09": {
-          "date": "2021-08",
-          "value": 1694291,
+          "date": "2021-09",
+          "value": 1717962,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/10": {
-          "date": "2021-08",
-          "value": 463470,
+          "date": "2021-09",
+          "value": 460403,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/11": {
-          "date": "2021-08",
-          "value": 384554,
+          "date": "2021-09",
+          "value": 384510,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/12": {
-          "date": "2021-08",
-          "value": 10100970,
+          "date": "2021-09",
+          "value": 10208866,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/13": {
-          "date": "2021-08",
-          "value": 4986236,
+          "date": "2021-09",
+          "value": 5013254,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/15": {
-          "date": "2021-08",
-          "value": 605541,
+          "date": "2021-09",
+          "value": 605685,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/16": {
-          "date": "2021-08",
-          "value": 887983,
+          "date": "2021-09",
+          "value": 888153,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/17": {
-          "date": "2021-08",
-          "value": 5813535,
+          "date": "2021-09",
+          "value": 5875958,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/18": {
-          "date": "2021-08",
-          "value": 3201240,
+          "date": "2021-09",
+          "value": 3211486,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/19": {
-          "date": "2021-08",
-          "value": 1584684,
+          "date": "2021-09",
+          "value": 1607450,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/20": {
-          "date": "2021-08",
-          "value": 1448913,
+          "date": "2021-09",
+          "value": 1451649,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/21": {
-          "date": "2021-08",
-          "value": 1917247,
+          "date": "2021-09",
+          "value": 1912375,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/22": {
-          "date": "2021-08",
-          "value": 1947097,
+          "date": "2021-09",
+          "value": 1950884,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/23": {
-          "date": "2021-08",
-          "value": 664165,
+          "date": "2021-09",
+          "value": 653917,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/24": {
-          "date": "2021-08",
-          "value": 2969336,
+          "date": "2021-09",
+          "value": 2957276,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/25": {
-          "date": "2021-08",
-          "value": 3548992,
+          "date": "2021-09",
+          "value": 3508312,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/26": {
-          "date": "2021-08",
-          "value": 4568172,
+          "date": "2021-09",
+          "value": 4556688,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/27": {
-          "date": "2021-08",
-          "value": 2934067,
+          "date": "2021-09",
+          "value": 2948153,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/28": {
-          "date": "2021-08",
-          "value": 1196644,
+          "date": "2021-09",
+          "value": 1205255,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/29": {
-          "date": "2021-08",
-          "value": 2949809,
+          "date": "2021-09",
+          "value": 2960405,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/30": {
-          "date": "2021-08",
-          "value": 532284,
+          "date": "2021-09",
+          "value": 531749,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/31": {
-          "date": "2021-08",
-          "value": 1003315,
+          "date": "2021-09",
+          "value": 1004582,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/32": {
-          "date": "2021-08",
-          "value": 1424036,
+          "date": "2021-09",
+          "value": 1434590,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/33": {
-          "date": "2021-08",
-          "value": 735396,
+          "date": "2021-09",
+          "value": 724883,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/34": {
-          "date": "2021-08",
-          "value": 4138206,
+          "date": "2021-09",
+          "value": 4112124,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/35": {
-          "date": "2021-08",
-          "value": 890281,
+          "date": "2021-09",
+          "value": 891017,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/36": {
-          "date": "2021-08",
-          "value": 8672067,
+          "date": "2021-09",
+          "value": 8669089,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/37": {
-          "date": "2021-08",
-          "value": 4805512,
+          "date": "2021-09",
+          "value": 4855844,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/38": {
-          "date": "2021-08",
-          "value": 393651,
+          "date": "2021-09",
+          "value": 393759,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/39": {
-          "date": "2021-08",
-          "value": 5392031,
+          "date": "2021-09",
+          "value": 5382387,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/40": {
-          "date": "2021-08",
-          "value": 1800273,
+          "date": "2021-09",
+          "value": 1820622,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/41": {
-          "date": "2021-08",
-          "value": 2078379,
+          "date": "2021-09",
+          "value": 2082421,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/42": {
-          "date": "2021-08",
-          "value": 5901738,
+          "date": "2021-09",
+          "value": 5923633,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/44": {
-          "date": "2021-08",
-          "value": 503092,
+          "date": "2021-09",
+          "value": 549378,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/45": {
-          "date": "2021-08",
-          "value": 2314880,
+          "date": "2021-09",
+          "value": 2308324,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/46": {
-          "date": "2021-08",
-          "value": 462149,
+          "date": "2021-09",
+          "value": 458743,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/47": {
-          "date": "2021-08",
-          "value": 3175337,
+          "date": "2021-09",
+          "value": 3169966,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/48": {
-          "date": "2021-08",
-          "value": 13433358,
+          "date": "2021-09",
+          "value": 13549183,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/49": {
-          "date": "2021-08",
-          "value": 1632235,
+          "date": "2021-09",
+          "value": 1652425,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/50": {
-          "date": "2021-08",
-          "value": 313030,
+          "date": "2021-09",
+          "value": 311273,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/51": {
-          "date": "2021-08",
-          "value": 4104098,
+          "date": "2021-09",
+          "value": 4074029,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/53": {
-          "date": "2021-08",
-          "value": 3762660,
+          "date": "2021-09",
+          "value": 3798630,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/54": {
-          "date": "2021-08",
-          "value": 760945,
+          "date": "2021-09",
+          "value": 764843,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/55": {
-          "date": "2021-08",
-          "value": 3004342,
+          "date": "2021-09",
+          "value": 3012678,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/56": {
-          "date": "2021-08",
-          "value": 283956,
+          "date": "2021-09",
+          "value": 284720,
           "metadata": {
             "import_name": "BLS_LAUS"
           }
         },
         "geoId/72": {
-          "date": "2021-08",
-          "value": 988000,
+          "date": "2021-09",
+          "value": 1005608,
           "metadata": {
             "import_name": "BLS_LAUS"
           }

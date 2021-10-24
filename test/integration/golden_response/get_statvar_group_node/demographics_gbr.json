@@ -87,6 +87,12 @@
       "displayName": "Person by Disability Status"
     },
     {
+      "id": "dc/g/Person_EducationalAttainment",
+      "specializedEntity": "Educational Attainment",
+      "displayName": "Person by Educational Attainment",
+      "numDescendentStatVars": 12
+    },
+    {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
@@ -162,5 +168,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 690
+  "numDescendentStatVars": 694
 }

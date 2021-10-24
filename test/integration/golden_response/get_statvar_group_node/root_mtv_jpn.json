@@ -5,7 +5,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 4560
+      "numDescendentStatVars": 4594
     },
     {
       "id": "dc/g/Household",
