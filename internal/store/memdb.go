@@ -24,10 +24,13 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 
+	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"google.golang.org/api/iterator"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -37,6 +40,7 @@ type MemDb struct {
 	// statVar -> place -> []Series
 	statSeries map[string]map[string][]*pb.Series
 	manifest   *pb.Manifest
+	lock       sync.RWMutex
 }
 
 // NewMemDb initialize a MemDb instance.
@@ -49,16 +53,22 @@ func NewMemDb() *MemDb {
 
 // GetManifest get the manifest data.
 func (memDb *MemDb) GetManifest() *pb.Manifest {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
 	return memDb.manifest
 }
 
 // IsEmpty checks if memory database has data.
 func (memDb *MemDb) IsEmpty() bool {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
 	return memDb.statSeries == nil || len(memDb.statSeries) == 0
 }
 
 // ReadSeries reads stat series from in-memory DB.
 func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
 	if _, ok := memDb.statSeries[statVar]; ok {
 		if series, ok := memDb.statSeries[statVar][place]; ok {
 			return series
@@ -73,6 +83,8 @@ func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
 func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 	*pb.PointStat, *pb.StatMetadata,
 ) {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
 	placeData, ok := memDb.statSeries[statVar]
 	if !ok {
 		return nil, nil
@@ -122,6 +134,8 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 // GetStatVars retrieves the stat vars from private import that have data for
 // the given places.
 func (memDb *MemDb) GetStatVars(places []string) ([]string, []string) {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
 	hasDataStatVars := []string{}
 	noDataStatVars := []string{}
 	for statVar, statVarData := range memDb.statSeries {
@@ -149,12 +163,18 @@ func (memDb *MemDb) GetStatVars(places []string) ([]string, []string) {
 
 // HasStatVar checks if a stat var exists in the memory database.
 func (memDb *MemDb) HasStatVar(statVar string) bool {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
 	_, ok := memDb.statSeries[statVar]
 	return ok
 }
 
 // LoadFromGcs loads tmcf + csv files into memory database
 func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) error {
+	memDb.lock.Lock()
+	defer memDb.lock.Unlock()
+	memDb.statSeries = map[string]map[string][]*pb.Series{}
+	memDb.manifest = &pb.Manifest{}
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		return err
@@ -357,4 +377,33 @@ func (memDb *MemDb) addRow(
 		}
 	}
 	return nil
+}
+
+// SubscribeGcsUpdate subscribe GCS csv+tmcf change.
+// When csv file is changed, reload the memdb
+func (memDb *MemDb) SubscribeGcsUpdate(
+	ctx context.Context,
+	pubsubProject, pubsubTopic, subscriberPrefix string,
+	bucket, folder string,
+) error {
+	return dcpubsub.Subscribe(
+		ctx,
+		pubsubProject,
+		subscriberPrefix,
+		pubsubTopic,
+		func(ctx context.Context, msg *pubsub.Message) error {
+			if eventType, ok := msg.Attributes["eventType"]; ok {
+				if eventType != "OBJECT_FINALIZE" {
+					return nil
+				}
+			}
+			if objectID, ok := msg.Attributes["objectId"]; ok {
+				if !strings.HasSuffix(objectID, ".csv") {
+					return nil
+				}
+			}
+			log.Println("Receive notification for csv update")
+			return memDb.LoadFromGcs(ctx, bucket, folder)
+		},
+	)
 }
