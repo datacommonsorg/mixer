@@ -49,7 +49,8 @@ var StatsRanking = map[RankKey]int{
 	{"WikidataPopulation", "WikidataPopulation", "*"}: 1003, // Population
 
 	{"BLS_LAUS", "BLSSeasonallyUnadjusted", "*"}: 0, // Unemployment Rate
-	{"EurostatData", "", "*"}:                    1, // Unemployment Rate
+	{"BLS_CPS", "BLSSeasonallyAdjusted", "*"}:    1, // Labor Force data ranked higher than WDI (above) or Eurostat
+	{"EurostatData", "", "*"}:                    2, // Unemployment Rate
 
 	{"NYT_COVID19", "NYT_COVID19_GitHub", "*"}: 0, // Covid
 
