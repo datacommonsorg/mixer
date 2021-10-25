@@ -5,7 +5,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 8310
+      "numDescendentStatVars": 8272
     },
     {
       "id": "dc/g/Household",
@@ -41,7 +41,7 @@
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": 285
+      "numDescendentStatVars": 288
     },
     {
       "id": "dc/g/Energy",
@@ -86,5 +86,5 @@
       "numDescendentStatVars": 10
     }
   ],
-  "numDescendentStatVars": 64331
+  "numDescendentStatVars": 64334
 }

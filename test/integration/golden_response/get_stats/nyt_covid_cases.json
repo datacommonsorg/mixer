@@ -641,7 +641,8 @@
       "2021-10-19": 45120516,
       "2021-10-20": 45207108,
       "2021-10-21": 45289095,
-      "2021-10-22": 45376439
+      "2021-10-22": 45376439,
+      "2021-10-23": 45406263
     },
     "placeName": "United States",
     "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -1284,7 +1285,8 @@
       "2021-10-19": 4849225,
       "2021-10-20": 4853370,
       "2021-10-21": 4860797,
-      "2021-10-22": 4867059
+      "2021-10-22": 4867059,
+      "2021-10-23": 4868220
     },
     "placeName": "California",
     "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -1921,7 +1923,8 @@
       "2021-10-19": 145127,
       "2021-10-20": 145225,
       "2021-10-21": 145391,
-      "2021-10-22": 145543
+      "2021-10-22": 145543,
+      "2021-10-23": 145543
     },
     "placeName": "Santa Clara County",
     "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"

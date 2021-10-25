@@ -94,12 +94,6 @@
       "numDescendentStatVars": 184
     },
     {
-      "id": "dc/g/Person_EducationalAttainment",
-      "specializedEntity": "Educational Attainment",
-      "displayName": "Person by Educational Attainment",
-      "numDescendentStatVars": 309
-    },
-    {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
@@ -187,5 +181,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 8310
+  "numDescendentStatVars": 8272
 }

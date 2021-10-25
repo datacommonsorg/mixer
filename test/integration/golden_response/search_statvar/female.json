@@ -7439,14 +7439,6 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus"
-    },
-    {
       "name": "Person With Age = 18 - 19 Years, Gender = Female, Race",
       "dcid": "dc/g/Person_Age-Years18To19_Gender-Female_Race"
     },
@@ -8001,6 +7993,14 @@
     {
       "name": "Person With Age = 25 - 29 Years, Gender = Female, Race = Two or More Races",
       "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_Race-TwoOrMoreRaces"
+    },
+    {
+      "name": "Person With Age = 25 - 29 Years, Gender = Female, Race = White Alone",
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_Race-WhiteAlone"
+    },
+    {
+      "name": "Person With Age = 25 - 29 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
     }
   ]
 }
