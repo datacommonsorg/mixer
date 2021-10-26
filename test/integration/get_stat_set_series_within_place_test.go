@@ -39,7 +39,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 
 	for _, c := range []struct {
 		parentPlace string
-		childtype   string
+		childType   string
 		statVars    []string
 		goldenFile  string
 	}{
@@ -53,7 +53,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 		resp, err := client.GetStatSetSeriesWithinPlace(
 			ctx, &pb.GetStatSetSeriesWithinPlaceRequest{
 				ParentPlace: c.parentPlace,
-				ChildType:   c.childtype,
+				ChildType:   c.childType,
 				StatVars:    c.statVars,
 			})
 		if err != nil {
