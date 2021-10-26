@@ -82,6 +82,26 @@
             }
           ]
         },
+        "CensusBlockGroup": {
+          "numPlaces": "220333",
+          "topPlaces": [
+            {
+              "dcid": "geoId/481576729001",
+              "name": "Block Group 1, Census Tract 6729, Fort Bend County, Texas",
+              "personCount": "59947"
+            },
+            {
+              "dcid": "geoId/481576731011",
+              "name": "Block Group 1, Census Tract 6731.01, Fort Bend County, Texas",
+              "personCount": "58705"
+            },
+            {
+              "dcid": "geoId/380170405002",
+              "name": "Block Group 2, Census Tract 405, Cass County, North Dakota",
+              "personCount": "42175"
+            }
+          ]
+        },
         "CensusCoreBasedStatisticalArea": {
           "numPlaces": "933",
           "topPlaces": [
@@ -1145,6 +1165,46 @@
               },
               "minValue": 157812589,
               "maxValue": 166551005
+            }
+          ]
+        },
+        "dc/t660j91": {
+          "importName": "CensusACS5YearSurvey_BlockGroup",
+          "numObservations": "1982915",
+          "numTimeSeries": "220333",
+          "releaseFrequency": "P1Y",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurvey"
+              },
+              "earliestDate": "2011",
+              "latestDate": "2019",
+              "numObservations": "1982915",
+              "numTimeSeries": "220333",
+              "placeTypeSummary": {
+                "CensusBlockGroup": {
+                  "numPlaces": "220333",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/481576729001",
+                      "name": "Block Group 1, Census Tract 6729, Fort Bend County, Texas",
+                      "personCount": "59947"
+                    },
+                    {
+                      "dcid": "geoId/481576731011",
+                      "name": "Block Group 1, Census Tract 6731.01, Fort Bend County, Texas",
+                      "personCount": "58705"
+                    },
+                    {
+                      "dcid": "geoId/380170405002",
+                      "name": "Block Group 2, Census Tract 405, Cass County, North Dakota",
+                      "personCount": "42175"
+                    }
+                  ]
+                }
+              },
+              "maxValue": 31011
             }
           ]
         },

@@ -66,6 +66,11 @@
       "numDescendentStatVars": 666
     },
     {
+      "id": "dc/g/Person_BirthEventStatus",
+      "specializedEntity": "Birth Event Status",
+      "displayName": "Person by Birth Event Status"
+    },
+    {
       "id": "dc/g/Births",
       "specializedEntity": "Births",
       "displayName": "Births",
