@@ -350,6 +350,15 @@ message GetStatSetWithinPlaceRequest {
   string date = 4;
 }
 
+message GetStatSetSeriesWithinPlaceRequest {
+  // Parent place dcid.
+  string parent_place = 1;
+  // Child place type.
+  string child_type = 2;
+  // Stat Var dcids.
+  repeated string stat_vars = 3;
+}
+
 message GetStatSetRequest {
   // A list of place DCIDs.
   repeated string places = 1;

@@ -239,6 +239,37 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 			}
 		}
 	}
-
 	return result, nil
+}
+
+// GetStatSetSeriesWithinPlace implements API for Mixer.GetStatSetSeriesWithinPlace.
+// Endpoint: /v1/stat/set/series/within-place
+func (s *Server) GetStatSetSeriesWithinPlace(
+	ctx context.Context, in *pb.GetStatSetSeriesWithinPlaceRequest) (
+	*pb.GetStatSetSeriesResponse, error,
+) {
+	parentPlace := in.GetParentPlace()
+	statVars := in.GetStatVars()
+	childType := in.GetChildType()
+	if parentPlace == "" {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: parent_place")
+	}
+	if len(statVars) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: stat_vars")
+	}
+	if childType == "" {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"Missing required argument: child_type")
+	}
+	childPlaces, err := getChildPlaces(ctx, s.store, parentPlace, childType)
+	if err != nil {
+		return nil, err
+	}
+
+	return s.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
+		Places:   childPlaces,
+		StatVars: statVars,
+	})
 }

@@ -56,6 +56,8 @@ type MixerClient interface {
 	// Get the stat value for given places and stat vars. If date is not given,
 	// then the latest value for each <place, stat var> is returned.
 	GetStatSet(ctx context.Context, in *GetStatSetRequest, opts ...grpc.CallOption) (*GetStatSetResponse, error)
+	// Get the stat series for given parent places and child place type.
+	GetStatSetSeriesWithinPlace(ctx context.Context, in *GetStatSetSeriesWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatSetSeriesResponse, error)
 	// Get rankings for given stat var DCIDs.
 	GetLocationsRankings(ctx context.Context, in *GetLocationsRankingsRequest, opts ...grpc.CallOption) (*GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
@@ -216,6 +218,15 @@ func (c *mixerClient) GetStatSetWithinPlace(ctx context.Context, in *GetStatSetW
 func (c *mixerClient) GetStatSet(ctx context.Context, in *GetStatSetRequest, opts ...grpc.CallOption) (*GetStatSetResponse, error) {
 	out := new(GetStatSetResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatSet", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) GetStatSetSeriesWithinPlace(ctx context.Context, in *GetStatSetSeriesWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatSetSeriesResponse, error) {
+	out := new(GetStatSetSeriesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatSetSeriesWithinPlace", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -409,6 +420,8 @@ type MixerServer interface {
 	// Get the stat value for given places and stat vars. If date is not given,
 	// then the latest value for each <place, stat var> is returned.
 	GetStatSet(context.Context, *GetStatSetRequest) (*GetStatSetResponse, error)
+	// Get the stat series for given parent places and child place type.
+	GetStatSetSeriesWithinPlace(context.Context, *GetStatSetSeriesWithinPlaceRequest) (*GetStatSetSeriesResponse, error)
 	// Get rankings for given stat var DCIDs.
 	GetLocationsRankings(context.Context, *GetLocationsRankingsRequest) (*GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
@@ -492,6 +505,9 @@ func (*UnimplementedMixerServer) GetStatSetWithinPlace(context.Context, *GetStat
 }
 func (*UnimplementedMixerServer) GetStatSet(context.Context, *GetStatSetRequest) (*GetStatSetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatSet not implemented")
+}
+func (*UnimplementedMixerServer) GetStatSetSeriesWithinPlace(context.Context, *GetStatSetSeriesWithinPlaceRequest) (*GetStatSetSeriesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatSetSeriesWithinPlace not implemented")
 }
 func (*UnimplementedMixerServer) GetLocationsRankings(context.Context, *GetLocationsRankingsRequest) (*GetLocationsRankingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLocationsRankings not implemented")
@@ -776,6 +792,24 @@ func _Mixer_GetStatSet_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetStatSet(ctx, req.(*GetStatSetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_GetStatSetSeriesWithinPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStatSetSeriesWithinPlaceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetStatSetSeriesWithinPlace(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/GetStatSetSeriesWithinPlace",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetStatSetSeriesWithinPlace(ctx, req.(*GetStatSetSeriesWithinPlaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1123,6 +1157,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatSet",
 			Handler:    _Mixer_GetStatSet_Handler,
+		},
+		{
+			MethodName: "GetStatSetSeriesWithinPlace",
+			Handler:    _Mixer_GetStatSetSeriesWithinPlace_Handler,
 		},
 		{
 			MethodName: "GetLocationsRankings",

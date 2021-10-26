@@ -18,7 +18,6 @@ import (
 	"context"
 	"log"
 	"sort"
-	"strings"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -224,31 +223,15 @@ func (s *Server) GetStatSetWithinPlace(
 			break
 		}
 	}
-
 	// Need to fetch child places if to read data from memory database or
 	// from per place,statvar bigtable.
 	var childPlaces []string
 	if !gotResult || statVarInMemDb {
-		rowList = buildPlaceInKey([]string{parentPlace}, childType)
-		// Place relations are from base geo imports. Only trust the base cache.
-		baseDataMap, _, err := bigTableReadRowsParallel(
-			ctx,
-			s.store,
-			rowList,
-			func(dcid string, jsonRaw []byte) (interface{}, error) {
-				return strings.Split(string(jsonRaw), ","), nil
-			},
-			nil,
-			false, /* readBranch */
-		)
+		childPlaces, err = getChildPlaces(ctx, s.store, parentPlace, childType)
 		if err != nil {
 			return nil, err
 		}
-		if baseDataMap[parentPlace] != nil {
-			childPlaces = baseDataMap[parentPlace].([]string)
-		}
 	}
-
 	// No data found from cache, fetch stat series for each place separately.
 	if !gotResult {
 		result, err = getStatSet(ctx, s, childPlaces, statVars, date)
