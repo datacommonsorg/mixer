@@ -191,6 +191,17 @@ service Mixer {
     };
   }
 
+  // Get the stat series for given parent places and child place type.
+  rpc GetStatSetSeriesWithinPlace(GetStatSetSeriesWithinPlaceRequest) returns (GetStatSetSeriesResponse) {
+    option (google.api.http) = {
+      get: "/stat/set/series/within-place"
+      additional_bindings: {
+        post: "/stat/set/series/within-place"
+        body: "*"
+      }
+    };
+  }
+
   // Get rankings for given stat var DCIDs.
   rpc GetLocationsRankings(GetLocationsRankingsRequest)
       returns (GetLocationsRankingsResponse) {

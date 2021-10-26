@@ -23,11 +23,37 @@ import (
 
 	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 )
+
+func getChildPlaces(
+	ctx context.Context, s *store.Store, parentPlace string, childType string) (
+	[]string, error,
+) {
+	rowList := buildPlaceInKey([]string{parentPlace}, childType)
+	// Place relations are from base geo imports. Only trust the base cache.
+	baseDataMap, _, err := bigTableReadRowsParallel(
+		ctx,
+		s,
+		rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			return strings.Split(string(jsonRaw), ","), nil
+		},
+		nil,
+		false, /* readBranch */
+	)
+	if err != nil {
+		return []string{}, err
+	}
+	if baseDataMap[parentPlace] != nil {
+		return baseDataMap[parentPlace].([]string), nil
+	}
+	return []string{}, err
+}
 
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (

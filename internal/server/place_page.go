@@ -349,8 +349,11 @@ func filterChildPlaces(childPlaces map[string][]*pb.Place) (string, []*pb.Place)
 
 // Get child places by types.
 // The place under each type is sorted by the population.
-func getChildPlaces(ctx context.Context, s *Server, placedDcid, placeType string) (
-	map[string][]*pb.Place, error) {
+func getPlacePageChildPlaces(
+	ctx context.Context, s *Server, placedDcid, placeType string,
+) (
+	map[string][]*pb.Place, error,
+) {
 	children := []*Node{}
 	// ContainedIn places
 	containedInPlaces, err := getPropertyValuesHelper(
@@ -567,7 +570,7 @@ func (s *Server) GetPlacePageData(
 	allChildPlaceChan := make(chan map[string][]*pb.Place, 1)
 	var filteredChildPlaceType string
 	errs.Go(func() error {
-		childPlaces, err := getChildPlaces(errCtx, s, placeDcid, placeType)
+		childPlaces, err := getPlacePageChildPlaces(errCtx, s, placeDcid, placeType)
 		if err != nil {
 			return err
 		}
