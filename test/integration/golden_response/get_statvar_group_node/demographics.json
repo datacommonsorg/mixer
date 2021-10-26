@@ -67,7 +67,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 5081
+      "numDescendentStatVars": 5117
     },
     {
       "id": "dc/g/Person_BirthEventStatus",
@@ -181,5 +181,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 8272
+  "numDescendentStatVars": 8308
 }
