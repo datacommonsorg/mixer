@@ -201,6 +201,7 @@
     },
     {
       "subjectId": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+      "subjectName": "Mobile Subscriptions Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -214,6 +215,7 @@
     },
     {
       "subjectId": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
+      "subjectName": "Percent of Population Living in Areas Below 5 Meters Elevation",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -283,6 +285,7 @@
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+      "subjectName": "Count of Murder And Non Negligent Manslaughter Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -296,6 +299,7 @@
     },
     {
       "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
+      "subjectName": "Count of Live Birth Per Capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
