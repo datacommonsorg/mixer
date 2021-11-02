@@ -14,16 +14,9 @@
     "relatedChart": {}
   },
   {
-    "title": "Annual greenhouse gas emissions from large facilities",
+    "title": "Annual greenhouse gas emissions (large facilities, non-biogenic)",
     "statsVars": [
       "Annual_Emissions_GreenhouseGas_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "CO2 emissions per capita",
-    "statsVars": [
-      "Amount_Emissions_CarbonDioxide_PerCapita"
     ],
     "relatedChart": {}
   },
@@ -50,6 +43,20 @@
         "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
       ]
     }
+  },
+  {
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Carbon dioxide emissions per capita",
+    "statsVars": [
+      "Amount_Emissions_CarbonDioxide_PerCapita"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Children in employment by gender",
@@ -276,6 +283,27 @@
     "relatedChart": {}
   },
   {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Mortality events",
     "statsVars": [
       "Count_Death_DiseasesOfTheCirculatorySystem",
@@ -294,6 +322,13 @@
         "Count_Death_DiseasesOfTheNervousSystem"
       ]
     }
+  },
+  {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Outward remittance",
@@ -555,6 +590,13 @@
     "title": "Wasting among children under 5",
     "statsVars": [
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Water withdrawal rate",
+    "statsVars": [
+      "WithdrawalRate_Water"
     ],
     "relatedChart": {}
   },

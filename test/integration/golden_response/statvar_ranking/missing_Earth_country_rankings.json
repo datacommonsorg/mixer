@@ -7,7 +7,7 @@
     "relatedChart": {}
   },
   {
-    "title": "Annual greenhouse gas emissions from large facilities",
+    "title": "Annual greenhouse gas emissions (large facilities, non-biogenic)",
     "statsVars": [
       "Annual_Emissions_GreenhouseGas_NonBiogenic"
     ],
@@ -36,6 +36,13 @@
         "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
       ]
     }
+  },
+  {
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Citizenship status",
@@ -360,6 +367,20 @@
     "relatedChart": {}
   },
   {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Median Age",
     "statsVars": [
       "Median_Age_Person"
@@ -423,6 +444,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Mortality events",
     "statsVars": [
       "Count_Death_DiseasesOfTheCirculatorySystem",
@@ -441,6 +469,13 @@
         "Count_Death_DiseasesOfTheNervousSystem"
       ]
     }
+  },
+  {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Number of people employed",
@@ -570,23 +605,9 @@
     "relatedChart": {}
   },
   {
-    "title": "Projected max temperature change under RCP 4.5 (based on year 2006)",
-    "statsVars": [
-      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Projected max temperature change under RCP 6.0 (based on year 2006)",
     "statsVars": [
       "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP60"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Projected max temperature change under RCP 8.5 (based on year 2006)",
-    "statsVars": [
-      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85"
     ],
     "relatedChart": {}
   },
@@ -765,6 +786,13 @@
         "Count_CriminalActivities_ViolentCrime"
       ]
     }
+  },
+  {
+    "title": "Water withdrawal rate",
+    "statsVars": [
+      "WithdrawalRate_Water"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Worker vs nonworker population",
