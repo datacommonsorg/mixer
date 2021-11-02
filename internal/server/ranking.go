@@ -64,8 +64,8 @@ var StatsRanking = map[RankKey]int{
 	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1M"}: 0, // IPCC
 	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1M"}:  0, // IPCC
 
-	{"NASA_WetBulbComputation_Aggregation", "dcAggregate/NASA_Mean_HadGEM2-AO", "*"}: 0, // Wet bulb year aggregation
-	{"NASA_WetBulbComputation", "dcAggregate/NASA_Mean_HadGEM2-AO", "*"}:             1, // Wet bulb
+	{"NASA_WetBulbComputation_Aggregation", "NASA_Mean_HadGEM2-AO", "*"}: 0, // Wet bulb year aggregation
+	{"NASA_WetBulbComputation", "NASA_Mean_HadGEM2-AO", "*"}:             1, // Wet bulb
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
