@@ -41,7 +41,7 @@
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": 297
+      "numDescendentStatVars": 303
     },
     {
       "id": "dc/g/Energy",
@@ -86,5 +86,5 @@
       "numDescendentStatVars": 10
     }
   ],
-  "numDescendentStatVars": 61741
+  "numDescendentStatVars": 61747
 }

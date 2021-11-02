@@ -19,7 +19,14 @@
     }
   },
   {
-    "title": "CO2 emissions per capita",
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Carbon dioxide emissions per capita",
     "statsVars": [
       "Amount_Emissions_CarbonDioxide_PerCapita"
     ],
@@ -225,6 +232,34 @@
     "title": "Market capitalization of domestic companies",
     "statsVars": [
       "Amount_Stock"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
     ],
     "relatedChart": {}
   },
@@ -489,6 +524,13 @@
     "title": "Wasting among children under 5",
     "statsVars": [
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Water withdrawal rate",
+    "statsVars": [
+      "WithdrawalRate_Water"
     ],
     "relatedChart": {}
   },
