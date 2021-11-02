@@ -1932,7 +1932,7 @@ type GetStatSetSeriesWithinPlaceRequest struct {
 	ParentPlace string `protobuf:"bytes,1,opt,name=parent_place,json=parentPlace,proto3" json:"parent_place,omitempty"`
 	// Child place type.
 	ChildType string `protobuf:"bytes,2,opt,name=child_type,json=childType,proto3" json:"child_type,omitempty"`
-	// Dcid of the stat var.
+	// Stat Var dcids.
 	StatVars []string `protobuf:"bytes,3,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
 }
 
