@@ -83,6 +83,18 @@ func TestSeriesByRank(t *testing.T) {
 				{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
 			},
 		},
+		{
+			[]*pb.SourceSeries{
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
+				{ImportName: "NASA_WetBulbComputation_Aggregation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P78Y"},
+			},
+			[]*pb.SourceSeries{
+				{ImportName: "NASA_WetBulbComputation_Aggregation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P78Y"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
+			},
+		},
 	} {
 		sort.Sort(SeriesByRank(c.series))
 		if diff := cmp.Diff(c.expected, c.series, protocmp.Transform()); diff != "" {
