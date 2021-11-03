@@ -85,14 +85,14 @@ func TestSeriesByRank(t *testing.T) {
 		},
 		{
 			[]*pb.SourceSeries{
-				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
-				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
-				{ImportName: "NASA_WetBulbComputation_Aggregation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P78Y"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
+				{ImportName: "NASA_WetBulbComputation_Aggregation", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P78Y"},
 			},
 			[]*pb.SourceSeries{
-				{ImportName: "NASA_WetBulbComputation_Aggregation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P78Y"},
-				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
-				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "dcAggregate/NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
+				{ImportName: "NASA_WetBulbComputation_Aggregation", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P78Y"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
 			},
 		},
 	} {
