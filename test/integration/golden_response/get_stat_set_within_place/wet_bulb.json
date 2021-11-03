@@ -18683,8 +18683,7 @@
           "import_name": "NASA_WetBulbComputation_Aggregation",
           "provenance_url": "https://datacommons.org/",
           "measurement_method": "NASA_Mean_HadGEM2-AO",
-          "observation_period": "P78Y",
-          "unit": "Celsius"
+          "observation_period": "P78Y"
         }
       }
     }
