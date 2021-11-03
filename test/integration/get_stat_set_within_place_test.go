@@ -101,6 +101,13 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 			[]string{"Count_Person"},
 			"world_pop.json",
 		},
+		{
+			"country/USA",
+			"County",
+			"",
+			[]string{"NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
+			"wet_bulb.json",
+		},
 	} {
 		resp, err := client.GetStatSetWithinPlace(ctx, &pb.GetStatSetWithinPlaceRequest{
 			ParentPlace: c.parentPlace,
