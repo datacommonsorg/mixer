@@ -16,89 +16,46 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 
+	"cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 // GetBioPageData implements API for Mixer.GetBioPageData.
-//
-// TODO(shifucun): This is only a mini version with partial data.
-// Use pre-computed data from Bigtable when it's ready.
 func (s *Server) GetBioPageData(
 	ctx context.Context, in *pb.GetBioPageDataRequest) (
-	*pb.GraphNode, error) {
+	*pb.GraphNodes, error) {
 
 	dcid := in.GetDcid()
 	if dcid == "" {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "Missing required arguments: dcid")
 	}
-	resp := &pb.GraphNode{
-		Value: dcid,
-		Neighbours: []*pb.GraphNode_LinkedNodes{
-			{
-				Property: "detectedProtein",
-				Nodes:    []*pb.GraphNode{},
-			},
+
+	data, _, err := bigTableReadRowsParallel(
+		ctx,
+		s.store,
+		bigtable.RowList{util.BtProteinPagePrefix + dcid},
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var graph pb.GraphNodes
+			err := json.Unmarshal(jsonRaw, &graph)
+			if err != nil {
+				return nil, err
+			}
+			return &graph, nil
 		},
-	}
-
-	inNodes, err := getPropertyValuesHelper(
-		ctx, s.store, []string{dcid}, "detectedProtein", false)
+		nil,
+		false, /* readBranch */
+	)
 	if err != nil {
 		return nil, err
 	}
-	detectedProteins := []string{}
-	for _, dp := range inNodes[dcid] {
-		detectedProteins = append(detectedProteins, dp.Dcid)
+	if _, ok := data[dcid]; !ok {
+		return nil, nil
 	}
-
-	humanTissueNodes, err := getPropertyValuesHelper(
-		ctx, s.store, detectedProteins, "humanTissue", true)
-	if err != nil {
-		return nil, err
-	}
-
-	scoreNodes, err := getPropertyValuesHelper(
-		ctx, s.store, detectedProteins, "proteinExpressionScore", true)
-	if err != nil {
-		return nil, err
-	}
-
-	for _, dp := range detectedProteins {
-		detectedProteinNode := &pb.GraphNode{
-			Value: dp,
-			Neighbours: []*pb.GraphNode_LinkedNodes{
-				{
-					Property: "humanTissue",
-					Nodes:    []*pb.GraphNode{},
-				},
-				{
-					Property: "proteinExpressionScore",
-					Nodes:    []*pb.GraphNode{},
-				},
-			},
-		}
-		for _, tissue := range humanTissueNodes[dp] {
-			detectedProteinNode.Neighbours[0].Nodes = append(
-				detectedProteinNode.Neighbours[0].Nodes,
-				&pb.GraphNode{
-					Value: tissue.Dcid,
-				},
-			)
-		}
-		for _, score := range scoreNodes[dp] {
-			detectedProteinNode.Neighbours[1].Nodes = append(
-				detectedProteinNode.Neighbours[1].Nodes,
-				&pb.GraphNode{
-					Value: score.Dcid,
-				},
-			)
-		}
-		resp.Neighbours[0].Nodes = append(
-			resp.Neighbours[0].Nodes, detectedProteinNode)
-	}
-	return resp, nil
+	return data[dcid].(*pb.GraphNodes), nil
 }
