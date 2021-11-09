@@ -60,7 +60,7 @@ func TestGetBioPageData(t *testing.T) {
 			continue
 		}
 
-		var expected pb.GraphNode
+		var expected pb.GraphNodes
 		err = readJSON(goldenPath, c.goldenFile, &expected)
 		if err != nil {
 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)

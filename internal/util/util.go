@@ -46,6 +46,8 @@ const (
 	BtPlaceObsPrefix = "d/3/"
 	// BtPlacePagePrefix for place page cache.
 	BtPlacePagePrefix = "d/4/"
+	// BtProteinPagePrefix for protein page cache.
+	BtProteinPagePrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.
 	BtTriplesPrefix = "d/7/"
 	// BtArcsPrefix for internal arcs cache.

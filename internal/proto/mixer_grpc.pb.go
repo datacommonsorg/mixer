@@ -65,7 +65,7 @@ type MixerClient interface {
 	// Get place page info for a place.
 	GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	// Get bio page data given a dcid.
-	GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error)
+	GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	// Translate Sparql Query into translation results.
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -260,8 +260,8 @@ func (c *mixerClient) GetPlacePageData(ctx context.Context, in *GetPlacePageData
 	return out, nil
 }
 
-func (c *mixerClient) GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNode, error) {
-	out := new(GraphNode)
+func (c *mixerClient) GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
+	out := new(GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetBioPageData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -429,7 +429,7 @@ type MixerServer interface {
 	// Get place page info for a place.
 	GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error)
 	// Get bio page data given a dcid.
-	GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNode, error)
+	GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNodes, error)
 	// Translate Sparql Query into translation results.
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
 	// Given a text search query, return all entities matching the query.
@@ -518,7 +518,7 @@ func (*UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelate
 func (*UnimplementedMixerServer) GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlacePageData not implemented")
 }
-func (*UnimplementedMixerServer) GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNode, error) {
+func (*UnimplementedMixerServer) GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBioPageData not implemented")
 }
 func (*UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (*TranslateResponse, error) {

@@ -245,7 +245,7 @@ service Mixer {
   }
 
   // Get bio page data given a dcid.
-  rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNode) {
+  rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNodes) {
     option (google.api.http) = {
       get: "/internal/bio"
       additional_bindings: {
