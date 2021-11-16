@@ -362,42 +362,6 @@
         "Property"
       ],
       "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person",
-      "predicate": "censusACSTableId",
-      "objectValue": "B26108",
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person",
-      "predicate": "censusACSTableId",
-      "objectValue": "B06001",
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person",
-      "predicate": "censusACSTableId",
-      "objectValue": "B05001",
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person",
-      "predicate": "censusACSTableId",
-      "objectValue": "B02001",
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person",
-      "predicate": "censusACSTableId",
-      "objectValue": "B01003",
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person",
-      "predicate": "censusACSTableId",
-      "objectValue": "B01001",
-      "provenanceId": "dc/d7tbsb1"
     }
   ],
   "Count_Person_Female": [
@@ -593,12 +557,6 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person_Female",
-      "predicate": "censusACSTableId",
-      "objectValue": "B01001",
       "provenanceId": "dc/d7tbsb1"
     }
   ]

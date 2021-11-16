@@ -67,22 +67,6 @@
       "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter_Gender"
     },
     {
-      "name": "Criminal Activities With Crime Type = Murder And Non Negligent Manslaughter, Gender = Female",
-      "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter_Gender-Female"
-    },
-    {
-      "name": "Criminal Activities With Crime Type = Murder And Non Negligent Manslaughter, Gender = Male",
-      "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter_Gender-Male"
-    },
-    {
-      "name": "Criminal Activities With Crime Type, Gender = Female",
-      "dcid": "dc/g/CriminalActivities_CrimeType_Gender-Female"
-    },
-    {
-      "name": "Criminal Activities With Crime Type, Gender = Male",
-      "dcid": "dc/g/CriminalActivities_CrimeType_Gender-Male"
-    },
-    {
       "name": "Crime",
       "dcid": "dc/g/Crime"
     }
