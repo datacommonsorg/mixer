@@ -1,5 +1,19 @@
 [
   {
+    "title": "Air quality index",
+    "statsVars": [
+      "AirQualityIndex_AirPollutant"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Annual greenhouse gas emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_GreenhouseGas_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Arson",
     "statsVars": [
       "Count_CriminalActivities_Arson"
@@ -22,6 +36,13 @@
         "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
       ]
     }
+  },
+  {
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Citizenship status",
@@ -298,6 +319,13 @@
     }
   },
   {
+    "title": "Lifetime air toxics cancer risk",
+    "statsVars": [
+      "AirPollutant_Cancer_Risk"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Literacy",
     "statsVars": [
       "Count_Person_Literate",
@@ -330,6 +358,27 @@
         "Count_Person_Separated"
       ]
     }
+  },
+  {
+    "title": "Mean PM2.5 concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_PM2.5"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Median Age",
@@ -395,6 +444,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Mortality events",
     "statsVars": [
       "Count_Death_DiseasesOfTheCirculatorySystem",
@@ -415,6 +471,13 @@
     }
   },
   {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Number of people employed",
     "statsVars": [
       "Count_Person_Employed"
@@ -425,6 +488,13 @@
         "Count_Person_Employed"
       ]
     }
+  },
+  {
+    "title": "Palmer drought severity index",
+    "statsVars": [
+      "PalmerDroughtSeverityIndex_Atmosphere"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Percentage of people without health insurance by gender",
@@ -526,6 +596,20 @@
         "RetailDrugDistribution_DrugDistribution_Morphine"
       ]
     }
+  },
+  {
+    "title": "Projected max temperature change under RCP 2.6 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP26"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max temperature change under RCP 6.0 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP60"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Property crime",
@@ -704,6 +788,13 @@
     }
   },
   {
+    "title": "Water withdrawal rate",
+    "statsVars": [
+      "WithdrawalRate_Water"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Worker vs nonworker population",
     "statsVars": [
       "Count_Person_Workers",
@@ -744,97 +835,6 @@
     "title": "Worker wages (monthly)",
     "statsVars": [
       "Mean_WagesMonthly_Worker"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Air quality index",
-    "statsVars": [
-      "AirQualityIndex_AirPollutant"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Lifetime air toxics cancer risk",
-    "statsVars": [
-      "AirPollutant_Cancer_Risk"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean PM2.5 concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_PM2.5"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean diesel PM concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_DieselPM"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean ozone concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_Ozone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Annual greenhouse gas emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_GreenhouseGas_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Carbon dioxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_CarbonDioxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Methane emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_Methane_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Nitrous oxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_NitrousOxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Temperature] Projected max temperature change under RCP 2.6 (based on year 2006)",
-    "statsVars": [
-      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP26"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Temperature] Projected max temperature change under RCP 6.0 (based on year 2006)",
-    "statsVars": [
-      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP60"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Water] Palmer drought severity index",
-    "statsVars": [
-      "PalmerDroughtSeverityIndex_Atmosphere"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Water] Water withdrawal rate",
-    "statsVars": [
-      "WithdrawalRate_Water"
     ],
     "relatedChart": {}
   }

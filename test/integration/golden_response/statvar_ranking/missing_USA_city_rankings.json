@@ -1,8 +1,22 @@
 [
   {
+    "title": "Air quality index",
+    "statsVars": [
+      "AirQualityIndex_AirPollutant"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Alcohol consumption per capita (annual)",
     "statsVars": [
       "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Annual greenhouse gas emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_GreenhouseGas_NonBiogenic"
     ],
     "relatedChart": {}
   },
@@ -31,6 +45,20 @@
     }
   },
   {
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Carbon dioxide emissions per capita",
+    "statsVars": [
+      "Amount_Emissions_CarbonDioxide_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Children in employment by gender",
     "statsVars": [
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female",
@@ -42,6 +70,20 @@
     "title": "Children in employment",
     "statsVars": [
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Cyclones",
+    "statsVars": [
+      "Count_CycloneEvent"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Earthquakes",
+    "statsVars": [
+      "Count_EarthquakeEvent"
     ],
     "relatedChart": {}
   },
@@ -199,6 +241,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Lifetime air toxics cancer risk",
+    "statsVars": [
+      "AirPollutant_Cancer_Risk"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Literacy",
     "statsVars": [
       "Count_Person_Literate",
@@ -227,6 +276,34 @@
     "relatedChart": {}
   },
   {
+    "title": "Mean PM2.5 concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_PM2.5"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Mortality events",
     "statsVars": [
       "Count_Death_DiseasesOfTheCirculatorySystem",
@@ -247,9 +324,23 @@
     }
   },
   {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Outward remittance",
     "statsVars": [
       "Amount_Remittance_OutwardRemittance"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Palmer drought severity index",
+    "statsVars": [
+      "PalmerDroughtSeverityIndex_Atmosphere"
     ],
     "relatedChart": {}
   },
@@ -503,6 +594,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Water withdrawal rate",
+    "statsVars": [
+      "WithdrawalRate_Water"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Worker vs nonworker population",
     "statsVars": [
       "Count_Person_Workers",
@@ -543,104 +641,6 @@
     "title": "Worker wages (monthly)",
     "statsVars": [
       "Mean_WagesMonthly_Worker"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Air quality index",
-    "statsVars": [
-      "AirQualityIndex_AirPollutant"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Lifetime air toxics cancer risk",
-    "statsVars": [
-      "AirPollutant_Cancer_Risk"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean PM2.5 concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_PM2.5"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean diesel PM concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_DieselPM"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean ozone concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_Ozone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Disasters] Cyclones",
-    "statsVars": [
-      "Count_CycloneEvent"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Disasters] Earthquakes",
-    "statsVars": [
-      "Count_EarthquakeEvent"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Annual greenhouse gas emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_GreenhouseGas_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Carbon dioxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_CarbonDioxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Carbon dioxide emissions per capita",
-    "statsVars": [
-      "Amount_Emissions_CarbonDioxide_PerCapita"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Methane emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_Methane_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Nitrous oxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_NitrousOxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Water] Palmer drought severity index",
-    "statsVars": [
-      "PalmerDroughtSeverityIndex_Atmosphere"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Water] Water withdrawal rate",
-    "statsVars": [
-      "WithdrawalRate_Water"
     ],
     "relatedChart": {}
   }

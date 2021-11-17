@@ -19,6 +19,20 @@
     }
   },
   {
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Carbon dioxide emissions per capita",
+    "statsVars": [
+      "Amount_Emissions_CarbonDioxide_PerCapita"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Children in employment by gender",
     "statsVars": [
       "Count_Person_7To14Years_Female_Employed_AsFractionOf_Count_Person_7To14Years_Female",
@@ -30,6 +44,13 @@
     "title": "Children in employment",
     "statsVars": [
       "Count_Person_7To14Years_Employed_AsFractionOf_Count_Person_7To14Years"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Cyclones",
+    "statsVars": [
+      "Count_CycloneEvent"
     ],
     "relatedChart": {}
   },
@@ -211,6 +232,34 @@
     "title": "Market capitalization of domestic companies",
     "statsVars": [
       "Amount_Stock"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
     ],
     "relatedChart": {}
   },
@@ -479,6 +528,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Water withdrawal rate",
+    "statsVars": [
+      "WithdrawalRate_Water"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Worker vs nonworker population",
     "statsVars": [
       "Count_Person_Workers",
@@ -519,62 +575,6 @@
     "title": "Worker wages (monthly)",
     "statsVars": [
       "Mean_WagesMonthly_Worker"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean diesel PM concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_DieselPM"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Air] Mean ozone concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_Ozone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Disasters] Cyclones",
-    "statsVars": [
-      "Count_CycloneEvent"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Carbon dioxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_CarbonDioxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Carbon dioxide emissions per capita",
-    "statsVars": [
-      "Amount_Emissions_CarbonDioxide_PerCapita"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Methane emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_Methane_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Emissions] Nitrous oxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_NitrousOxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "[Water] Water withdrawal rate",
-    "statsVars": [
-      "WithdrawalRate_Water"
     ],
     "relatedChart": {}
   }
