@@ -1,6 +1,10 @@
 {
   "statVars": [
     {
+      "name": "1 Years or More, Asian Alone Population",
+      "dcid": "Count_Person_1OrMoreYears_AsianAlone"
+    },
+    {
       "name": "15 Years or More, Asian Alone Population",
       "dcid": "Count_Person_15OrMoreYears_AsianAlone"
     },
@@ -95,6 +99,22 @@
     {
       "name": "Median Age of Asian Alone",
       "dcid": "Median_Age_Person_AsianAlone"
+    },
+    {
+      "name": "1 Years or More, Asian Alone, Different House Abroad Population",
+      "dcid": "Count_Person_1OrMoreYears_AsianAlone_DifferentHouseAbroad"
+    },
+    {
+      "name": "1 Years or More, Asian Alone, Different House in Different County Different State Population",
+      "dcid": "Count_Person_1OrMoreYears_AsianAlone_DifferentHouseInDifferentCountyDifferentState"
+    },
+    {
+      "name": "1 Years or More, Asian Alone, Different House in Different County Same State Population",
+      "dcid": "Count_Person_1OrMoreYears_AsianAlone_DifferentHouseInDifferentCountySameState"
+    },
+    {
+      "name": "1 Years or More, Asian Alone, Different House in Same County Population",
+      "dcid": "Count_Person_1OrMoreYears_AsianAlone_DifferentHouseInSameCounty"
     },
     {
       "name": "10 - 14 Years, Female, Asian Alone Population",
@@ -1711,6 +1731,10 @@
       "dcid": "dc/g/MortalityEvent_Age_Race-AsianOrPacificIslander"
     },
     {
+      "name": "Person With Age = 1 Years or More, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years1Onwards_Race-AsianAlone"
+    },
+    {
       "name": "Person With Age = 10 - 14 Years, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years10To14_Race-AsianAlone"
     },
@@ -1763,10 +1787,6 @@
       "dcid": "dc/g/Person_Age-Years25Onwards_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 3 Years or More, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years3Onwards_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 30 - 34 Years, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years30To34_Race-AsianAlone"
     },
@@ -1793,10 +1813,6 @@
     {
       "name": "Person With Age = 5 Years or Less, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-YearsUpto5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 5 Years or More, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5Onwards_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 55 - 64 Years, Race = Asian Alone",
@@ -1847,272 +1863,16 @@
       "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income_Race-AsianAlone"
     },
     {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 10,000 - 14,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar10000To14999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 10,000 USD or Less",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollarUpto10000_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 100,000 - 124,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar100000To124999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 125,000 - 149,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar125000To149999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 15,000 - 19,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar15000To19999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 150,000 - 199,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar150000To199999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 20,000 - 24,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar20000To24999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 200,000 USD or More",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar200000Onwards_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 25,000 - 29,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar25000To29999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 30,000 - 34,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar30000To34999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 35,000 - 39,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar35000To39999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 40,000 - 44,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar40000To44999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 45,000 - 49,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar45000To49999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 50,000 - 59,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar50000To59999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 60,000 - 74,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar60000To74999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 - 44 Years, Race = Asian Alone, Income = 75,000 - 99,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years25To44_Income-USDollar75000To99999_Race-AsianAlone"
-    },
-    {
       "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income",
       "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 10,000 - 14,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar10000To14999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 10,000 USD or Less",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollarUpto10000_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 100,000 - 124,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar100000To124999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 125,000 - 149,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar125000To149999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 15,000 - 19,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar15000To19999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 150,000 - 199,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar150000To199999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 20,000 - 24,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar20000To24999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 200,000 USD or More",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar200000Onwards_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 25,000 - 29,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar25000To29999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 30,000 - 34,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar30000To34999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 35,000 - 39,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar35000To39999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 40,000 - 44,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar40000To44999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 45,000 - 49,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar45000To49999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 50,000 - 59,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar50000To59999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 60,000 - 74,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar60000To74999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 25 Years or Less, Race = Asian Alone, Income = 75,000 - 99,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-YearsUpto25_Income-USDollar75000To99999_Race-AsianAlone"
     },
     {
       "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income",
       "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income_Race-AsianAlone"
     },
     {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 10,000 - 14,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar10000To14999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 10,000 USD or Less",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollarUpto10000_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 100,000 - 124,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar100000To124999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 125,000 - 149,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar125000To149999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 15,000 - 19,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar15000To19999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 150,000 - 199,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar150000To199999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 20,000 - 24,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar20000To24999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 200,000 USD or More",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar200000Onwards_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 25,000 - 29,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar25000To29999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 30,000 - 34,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar30000To34999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 35,000 - 39,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar35000To39999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 40,000 - 44,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar40000To44999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 45,000 - 49,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar45000To49999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 50,000 - 59,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar50000To59999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 60,000 - 74,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar60000To74999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 45 - 64 Years, Race = Asian Alone, Income = 75,000 - 99,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years45To64_Income-USDollar75000To99999_Race-AsianAlone"
-    },
-    {
       "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income",
       "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 10,000 - 14,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar10000To14999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 10,000 USD or Less",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollarUpto10000_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 100,000 - 124,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar100000To124999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 125,000 - 149,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar125000To149999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 15,000 - 19,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar15000To19999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 150,000 - 199,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar150000To199999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 20,000 - 24,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar20000To24999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 200,000 USD or More",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar200000Onwards_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 25,000 - 29,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar25000To29999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 30,000 - 34,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar30000To34999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 35,000 - 39,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar35000To39999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 40,000 - 44,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar40000To44999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 45,000 - 49,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar45000To49999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 50,000 - 59,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar50000To59999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 60,000 - 74,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar60000To74999_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Householder Age = 65 Years or More, Race = Asian Alone, Income = 75,000 - 99,999 USD",
-      "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_Income-USDollar75000To99999_Race-AsianAlone"
     },
     {
       "name": "Household With Householder Age, Race = Asian Alone, Income = 10,000 - 14,999 USD",
@@ -2179,14 +1939,6 @@
       "dcid": "dc/g/Household_HouseholderAge_Income-USDollar75000To99999_Race-AsianAlone"
     },
     {
-      "name": "Mortality Event With Age = 1 - 4 Years, Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years1To4_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 1 - 4 Years, Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years1To4_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 1 - 4 Years, Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years1To4_Gender_Race-AsianOrPacificIslander"
     },
@@ -2197,10 +1949,6 @@
     {
       "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath-ICD10/Q00Q99_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath-ICD10/R00R99_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 1 Years or Less, Cause of Death, Race = Asian or Pacific Islander",
@@ -2217,10 +1965,6 @@
     {
       "name": "Mortality Event With Age = 1 Years or Less, Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 15 - 24 Years, Cause of Death = C00-D48 (Neoplasms), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years15To24_CauseOfDeath-ICD10/C00D48_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 15 - 24 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Race = Asian or Pacific Islander",
@@ -2271,10 +2015,6 @@
       "dcid": "dc/g/MortalityEvent_Age-Years25To34_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/A00B99_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = C00-D48 (Neoplasms), Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/C00D48_Race-AsianOrPacificIslander"
     },
@@ -2289,10 +2029,6 @@
     {
       "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/K00K92_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/R00R99_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Race = Asian or Pacific Islander",
@@ -2339,10 +2075,6 @@
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/K00K92_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/N00N98_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/R00R99_Race-AsianOrPacificIslander"
     },
@@ -2365,22 +2097,6 @@
     {
       "name": "Mortality Event With Age = 45 - 54 Years, Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 5 - 14 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years5To14_CauseOfDeath-ICD10/V01Y89_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 5 - 14 Years, Cause of Death, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years5To14_CauseOfDeath_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 5 - 14 Years, Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years5To14_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 5 - 14 Years, Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years5To14_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 5 - 14 Years, Gender, Race = Asian or Pacific Islander",
@@ -2473,10 +2189,6 @@
     {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/K00K92_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/M00M99_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Race = Asian or Pacific Islander",
@@ -2577,10 +2289,6 @@
     {
       "name": "Mortality Event With Age = Years 85, Cause of Death = C00-D48 (Neoplasms), Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/C00D48_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = D50-D89 (Diseases of The Blood And Blood-forming Organs And Certain Disorders Involving The Immune Mechanism), Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/D50D89_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = Years 85, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Race = Asian or Pacific Islander",
@@ -2707,64 +2415,16 @@
       "dcid": "dc/g/MortalityEvent_Age_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Person With Ability To Speak English = Speak English Not At All, Age = 18 - 64 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotAtAll_Age-Years18To64_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Not At All, Age = 5 - 17 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotAtAll_Age-Years5To17_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Not At All, Age = 65 Years or More, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotAtAll_Age-Years65Onwards_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
       "name": "Person With Ability To Speak English = Speak English Not At All, Age, Language Spoken At Home = Asian And Pacific Island Languages",
       "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotAtAll_Age_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Not Well, Age = 18 - 64 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotWell_Age-Years18To64_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Not Well, Age = 5 - 17 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotWell_Age-Years5To17_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Not Well, Age = 65 Years or More, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotWell_Age-Years65Onwards_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
     },
     {
       "name": "Person With Ability To Speak English = Speak English Not Well, Age, Language Spoken At Home = Asian And Pacific Island Languages",
       "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishNotWell_Age_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
     },
     {
-      "name": "Person With Ability To Speak English = Speak English Very Well, Age = 18 - 64 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishVeryWell_Age-Years18To64_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Very Well, Age = 5 - 17 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishVeryWell_Age-Years5To17_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Very Well, Age = 65 Years or More, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishVeryWell_Age-Years65Onwards_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
       "name": "Person With Ability To Speak English = Speak English Very Well, Age, Language Spoken At Home = Asian And Pacific Island Languages",
       "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishVeryWell_Age_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Well, Age = 18 - 64 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishWell_Age-Years18To64_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Well, Age = 5 - 17 Years, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishWell_Age-Years5To17_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
-    },
-    {
-      "name": "Person With Ability To Speak English = Speak English Well, Age = 65 Years or More, Language Spoken At Home = Asian And Pacific Island Languages",
-      "dcid": "dc/g/Person_AbilityToSpeakEnglish-SpeakEnglishWell_Age-Years65Onwards_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
     },
     {
       "name": "Person With Ability To Speak English = Speak English Well, Age, Language Spoken At Home = Asian And Pacific Island Languages",
@@ -2783,12 +2443,8 @@
       "dcid": "dc/g/Person_AbilityToSpeakEnglish_Age-Years65Onwards_LanguageSpokenAtHome-AsianAndPacificIslandLanguages"
     },
     {
-      "name": "Person With Age = 10 - 14 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 10 - 14 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years10To14_Gender-Male_Race-AsianAlone"
+      "name": "Person With Age = 1 Years or More, Race = Asian Alone, Resident Status",
+      "dcid": "dc/g/Person_Age-Years1Onwards_Race-AsianAlone_ResidentStatus"
     },
     {
       "name": "Person With Age = 10 - 14 Years, Gender, Race = Asian Alone",
@@ -2819,24 +2475,8 @@
       "dcid": "dc/g/Person_Age-Years12To14_PovertyStatus_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 15 - 17 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15To17_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 15 - 17 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15To17_Gender-Male_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 15 - 17 Years, Gender, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years15To17_Gender_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 15 Years or More, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 15 Years or More, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Male_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 15 Years or More, Gender, Race = Asian Alone",
@@ -2923,14 +2563,6 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_Occupation_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 18 - 19 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years18To19_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 18 - 19 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years18To19_Gender-Male_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 18 - 19 Years, Gender, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years18To19_Gender_Race-AsianAlone"
     },
@@ -2959,24 +2591,8 @@
       "dcid": "dc/g/Person_Age-Years18To24_PovertyStatus_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 20 - 24 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 20 - 24 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years20To24_Gender-Male_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 20 - 24 Years, Gender, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years20To24_Gender_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 29 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 29 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25To29_Gender-Male_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 25 - 29 Years, Gender, Race = Asian Alone",
@@ -3007,24 +2623,8 @@
       "dcid": "dc/g/Person_Age-Years25To34_PovertyStatus_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 25 Years or More, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 Years or More, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Male_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 25 Years or More, Gender, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years25Onwards_Gender_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 30 - 34 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years30To34_Gender-Male_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 30 - 34 Years, Gender, Race = Asian Alone",
@@ -3079,24 +2679,8 @@
       "dcid": "dc/g/Person_Age-Years45To54_PovertyStatus_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 5 - 19 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Male_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 5 - 19 Years, Gender, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years5To19_Gender_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 5 - 9 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 5 - 9 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5To9_Gender-Male_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 5 - 9 Years, Gender, Race = Asian Alone",
@@ -3199,14 +2783,6 @@
       "dcid": "dc/g/Person_Age-Years65To74_PovertyStatus_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 75 - 84 Years, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years75To84_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 75 - 84 Years, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years75To84_Gender-Male_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 75 - 84 Years, Gender, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years75To84_Gender_Race-AsianAlone"
     },
@@ -3233,14 +2809,6 @@
     {
       "name": "Person With Age = 75 Years or More, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years75Onwards_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 85 Years or More, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 85 Years or More, Gender = Male, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Male_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 85 Years or More, Gender, Race = Asian Alone",
@@ -3343,24 +2911,8 @@
       "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = P00-P96 (Certain Conditions Originating in The Perinatal Period), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath-ICD10/P00P96_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = P00-P96 (Certain Conditions Originating in The Perinatal Period), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath-ICD10/P00P96_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = P00-P96 (Certain Conditions Originating in The Perinatal Period), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath-ICD10/P00P96_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath-ICD10/Q00Q99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath-ICD10/Q00Q99_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 1 Years or Less, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Gender, Race = Asian or Pacific Islander",
@@ -3375,56 +2927,16 @@
       "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 15 - 24 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years15To24_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 15 - 24 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years15To24_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 15 - 24 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years15To24_CauseOfDeath-ICD10/V01Y89_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 15 - 24 Years, Cause of Death, Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years15To24_CauseOfDeath_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 15 - 24 Years, Cause of Death, Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years15To24_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/C00D48_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/C00D48_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = C00-D48 (Neoplasms), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/C00D48_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/I00I99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/I00I99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/I00I99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 25 - 34 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
@@ -3439,52 +2951,12 @@
       "dcid": "dc/g/MortalityEvent_Age-Years25To34_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/C00D48_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/C00D48_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = C00-D48 (Neoplasms), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/C00D48_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/E00E88_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/E00E88_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/I00I99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/I00I99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/I00I99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/K00K92_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/K00K92_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 35 - 44 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
@@ -3499,80 +2971,24 @@
       "dcid": "dc/g/MortalityEvent_Age-Years35To44_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/A00B99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/A00B99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/C00D48_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/C00D48_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = C00-D48 (Neoplasms), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/C00D48_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/E00E88_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/E00E88_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/E00E88_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/I00I99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/I00I99_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/I00I99_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/J00J98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/J00J98_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/K00K92_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/K00K92_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/R00R99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/R00R99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 45 - 54 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
@@ -3587,104 +3003,36 @@
       "dcid": "dc/g/MortalityEvent_Age-Years45To54_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/A00B99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/A00B99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/A00B99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/C00D48_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/C00D48_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = C00-D48 (Neoplasms), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/C00D48_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/E00E88_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/E00E88_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/E00E88_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/G00G98_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/G00G98_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/I00I99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/I00I99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/I00I99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/J00J98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/J00J98_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/J00J98_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/K00K92_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/K00K92_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/K00K92_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/N00N98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/N00N98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/N00N98_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
@@ -3699,116 +3047,36 @@
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/A00B99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/A00B99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/A00B99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/C00D48_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/C00D48_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = C00-D48 (Neoplasms), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/C00D48_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/E00E88_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/E00E88_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/E00E88_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/G00G98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/G00G98_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/G00G98_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/I00I99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/I00I99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/I00I99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/J00J98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/J00J98_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/J00J98_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/K00K92_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/K00K92_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/K00K92_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/N00N98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/N00N98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/N00N98_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/R00R99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/R00R99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
@@ -3823,136 +3091,44 @@
       "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/A00B99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/A00B99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/A00B99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/C00D48_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/C00D48_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = C00-D48 (Neoplasms), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/C00D48_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/E00E88_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/E00E88_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/E00E88_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/F01F99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/F01F99_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/F01F99_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/G00G98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/G00G98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/G00G98_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/I00I99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/I00I99_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/I00I99_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/J00J98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/J00J98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/J00J98_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/K00K92_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/K00K92_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/K00K92_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/M00M99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Gender, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/M00M99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/N00N98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/N00N98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/N00N98_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/R00R99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/R00R99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
@@ -3967,128 +3143,44 @@
       "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/A00B99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/A00B99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = Years 85, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/A00B99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = C00-D48 (Neoplasms), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/C00D48_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = C00-D48 (Neoplasms), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/C00D48_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = Years 85, Cause of Death = C00-D48 (Neoplasms), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/C00D48_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/E00E88_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/E00E88_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = Years 85, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/E00E88_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/F01F99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/F01F99_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = Years 85, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/F01F99_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/G00G98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/G00G98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = Years 85, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/G00G98_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/I00I99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/I00I99_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = Years 85, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/I00I99_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/J00J98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/J00J98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = Years 85, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/J00J98_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/K00K92_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/K00K92_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = Years 85, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/K00K92_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/N00N98_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/N00N98_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = Years 85, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/N00N98_Gender_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/R00R99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age = Years 85, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/R00R99_Gender_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/V01Y89_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = Years 85, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years85_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
       "name": "Mortality Event With Age = Years 85, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender, Race = Asian or Pacific Islander",
@@ -4179,22 +3271,6 @@
       "dcid": "dc/g/MortalityEvent_Age_CauseOfDeath-ICD10/N00N98_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Mortality Event With Age, Cause of Death = P00-P96 (Certain Conditions Originating in The Perinatal Period), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age_CauseOfDeath-ICD10/P00P96_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age, Cause of Death = P00-P96 (Certain Conditions Originating in The Perinatal Period), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age_CauseOfDeath-ICD10/P00P96_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age_CauseOfDeath-ICD10/Q00Q99_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Gender = Male, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age_CauseOfDeath-ICD10/Q00Q99_Gender-Male_Race-AsianOrPacificIslander"
-    },
-    {
       "name": "Mortality Event With Age, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female, Race = Asian or Pacific Islander",
       "dcid": "dc/g/MortalityEvent_Age_CauseOfDeath-ICD10/R00R99_Gender-Female_Race-AsianOrPacificIslander"
     },
@@ -4211,24 +3287,8 @@
       "dcid": "dc/g/MortalityEvent_Age_CauseOfDeath-ICD10/V01Y89_Gender-Male_Race-AsianOrPacificIslander"
     },
     {
-      "name": "Person With Age = 12 - 14 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years12To14_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 12 - 14 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years12To14_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 12 - 14 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years12To14_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 12 - 14 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years12To14_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 12 - 14 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years12To14_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 12 - 14 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4243,24 +3303,8 @@
       "dcid": "dc/g/Person_Age-Years12To14_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 16 - 17 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16To17_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 - 17 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16To17_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 16 - 17 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16To17_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 - 17 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16To17_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 - 17 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16To17_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 - 17 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4387,48 +3431,8 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 16 Years or More, Gender = Female, Occupation, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Occupation_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Gender = Male, Occupation, Race = Asian Alone",
@@ -4539,24 +3543,8 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 18 - 24 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years18To24_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 18 - 24 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years18To24_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 18 - 24 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years18To24_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 18 - 24 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years18To24_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 18 - 24 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years18To24_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 18 - 24 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4571,24 +3559,8 @@
       "dcid": "dc/g/Person_Age-Years18To24_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 25 - 34 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 25 - 34 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 25 - 34 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4603,24 +3575,8 @@
       "dcid": "dc/g/Person_Age-Years25To34_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 35 - 44 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 35 - 44 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 35 - 44 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4635,24 +3591,8 @@
       "dcid": "dc/g/Person_Age-Years35To44_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 45 - 54 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 45 - 54 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 45 - 54 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4667,24 +3607,8 @@
       "dcid": "dc/g/Person_Age-Years45To54_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 5 Years or Less, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-YearsUpto5_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 5 Years or Less, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-YearsUpto5_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 5 Years or Less, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-YearsUpto5_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 5 Years or Less, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-YearsUpto5_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 5 Years or Less, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-YearsUpto5_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 5 Years or Less, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4699,24 +3623,8 @@
       "dcid": "dc/g/Person_Age-YearsUpto5_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 55 - 64 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 55 - 64 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 55 - 64 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 55 - 64 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years55To64_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 55 - 64 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years55To64_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 55 - 64 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4731,24 +3639,8 @@
       "dcid": "dc/g/Person_Age-Years55To64_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 6 - 11 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years6To11_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 6 - 11 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years6To11_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 6 - 11 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years6To11_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 6 - 11 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years6To11_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 6 - 11 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years6To11_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 6 - 11 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4763,24 +3655,8 @@
       "dcid": "dc/g/Person_Age-Years6To11_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 65 - 74 Years, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 65 - 74 Years, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 65 - 74 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 65 - 74 Years, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years65To74_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 65 - 74 Years, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years65To74_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 65 - 74 Years, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4795,24 +3671,8 @@
       "dcid": "dc/g/Person_Age-Years65To74_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 75 Years or More, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 75 Years or More, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 75 Years or More, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 75 Years or More, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 75 Years or More, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 75 Years or More, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4827,24 +3687,8 @@
       "dcid": "dc/g/Person_Age-Years75Onwards_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = Years 15, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = Years 15, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = Years 15, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years15_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = Years 15, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = Years 15, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = Years 15, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4859,24 +3703,8 @@
       "dcid": "dc/g/Person_Age-Years15_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = Years 5, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = Years 5, Gender = Female, Poverty Status, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years5_Gender-Female_PovertyStatus_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Male_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age = Years 5, Gender = Male, Poverty Status, Race = Asian Alone",
@@ -4951,52 +3779,12 @@
       "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone"
     },
     {
       "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
       "name": "Person With Age, Gender = Male, Poverty Status = Above Poverty Level in The Past 12 Months, Race = Asian Alone",
@@ -5107,48 +3895,8 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Female, Occupation, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_Occupation_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender = Male, Occupation, Race = Asian Alone",
@@ -5175,48 +3923,8 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Female, Occupation, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_Occupation_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender = Male, Occupation, Race = Asian Alone",
@@ -5269,46 +3977,6 @@
     {
       "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Employment Status, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Male_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Race = Asian Alone",
@@ -5423,48 +4091,8 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female, Occupation, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Male, Occupation, Race = Asian Alone",
@@ -5551,46 +4179,6 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = 16 Years or More, Military Status, Gender = Male, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Male_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
-    },
-    {
       "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Race-AsianAlone"
     },
@@ -5619,28 +4207,324 @@
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Sales And Office Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = Employed, Gender = Female, Occupation = Service Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
     },
     {
-      "name": "Person With Age, Employment Status = Employed, Gender = Male, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Male_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender = Female, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender = Male, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Male_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender = Female, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Female_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender = Male, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender-Male_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_MilitaryStatus_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_MilitaryStatus-Civilian_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Female, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Female_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender = Male, Occupation, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender-Male_MilitaryStatus-Civilian_Occupation_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Management, Business, Science, And Arts Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation1_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Natural Resources, Construction, And Maintenance Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation4_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Production, Transportation, And Material Moving Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation5_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Sales And Office Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation3_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Service Occupations, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone"
     }
   ]
 }

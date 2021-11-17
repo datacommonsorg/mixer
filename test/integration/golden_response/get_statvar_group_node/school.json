@@ -4,78 +4,117 @@
     {
       "id": "Count_Person_EducationalAttainment1StGrade",
       "searchName": "Population Count of Person With Educational Attainment is 1st Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 1st Grade"
+      ],
       "displayName": "1st Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment2NdGrade",
       "searchName": "Population Count of Person With Educational Attainment is 2nd Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 2nd Grade"
+      ],
       "displayName": "2nd Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment3RdGrade",
       "searchName": "Population Count of Person With Educational Attainment is 3rd Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 3rd Grade"
+      ],
       "displayName": "3rd Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment4ThGrade",
       "searchName": "Population Count of Person With Educational Attainment is 4th Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 4th Grade"
+      ],
       "displayName": "4th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment5ThGrade",
       "searchName": "Population Count of Person With Educational Attainment is 5th Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 5th Grade"
+      ],
       "displayName": "5th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment6ThGrade",
       "searchName": "Population Count of Person With Educational Attainment is 6th Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 6th Grade"
+      ],
       "displayName": "6th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment7ThGrade",
       "searchName": "Population Count of Person With Educational Attainment is 7th Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 7th Grade"
+      ],
       "displayName": "7th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainment8ThGrade",
       "searchName": "Population Count of Person With Educational Attainment is 8th Grade",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is 8th Grade"
+      ],
       "displayName": "8th Grade Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainmentGedOrAlternativeCredential",
       "searchName": "Population Count of Person With Educational Attainment is Ged or Alternative Credential",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is Ged or Alternative Credential"
+      ],
       "displayName": "Ged or Alternative Credential Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainmentKindergarten",
       "searchName": "Population Count of Person With Educational Attainment is Kindergarten",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is Kindergarten"
+      ],
       "displayName": "Kindergarten Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainmentNurserySchool",
       "searchName": "Population Count of Person With Educational Attainment is Nursery School",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is Nursery School"
+      ],
       "displayName": "Nursery School Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainmentPrimarySchool",
       "searchName": "Population Count of Person With Educational Attainment is Primary School",
-      "displayName": "Primary School Population",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is Primary School"
+      ],
+      "displayName": "PrimarySchool Population",
       "hasData": true
     },
     {
       "id": "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
       "searchName": "Population Count of Person With Educational Attainment is Regular High School Diploma",
+      "searchNames": [
+        "Population Count of Person With Educational Attainment is Regular High School Diploma"
+      ],
       "displayName": "Regular High School Diploma Population",
       "hasData": true
     }
@@ -138,7 +177,7 @@
       "id": "dc/g/Person_EducationalAttainment-BachelorsDegree",
       "specializedEntity": "Bachelors Degree",
       "displayName": "Person With Educational Attainment = Bachelors Degree",
-      "numDescendentStatVars": 13
+      "numDescendentStatVars": 17
     },
     {
       "id": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher",
@@ -156,7 +195,7 @@
       "id": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree",
       "specializedEntity": "Graduate or Professional Degree",
       "displayName": "Person With Educational Attainment = Graduate or Professional Degree",
-      "numDescendentStatVars": 10
+      "numDescendentStatVars": 15
     },
     {
       "id": "dc/g/Person_EducationalAttainment-HighSchoolGraduateGedOrAlternative",
@@ -168,7 +207,7 @@
       "id": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency",
       "specializedEntity": "High School Graduate Includes Equivalency",
       "displayName": "Person With Educational Attainment = High School Graduate Includes Equivalency",
-      "numDescendentStatVars": 36
+      "numDescendentStatVars": 40
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThan9ThGrade",
@@ -186,7 +225,7 @@
       "id": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate",
       "specializedEntity": "Less Than High School Graduate",
       "displayName": "Person With Educational Attainment = Less Than High School Graduate",
-      "numDescendentStatVars": 6
+      "numDescendentStatVars": 10
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducation\u0026PrimaryEducation\u0026LowerSecondaryEducation",
@@ -245,7 +284,7 @@
       "id": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree",
       "specializedEntity": "Some College or Associates Degree",
       "displayName": "Person With Educational Attainment = Some College or Associates Degree",
-      "numDescendentStatVars": 24
+      "numDescendentStatVars": 28
     },
     {
       "id": "dc/g/Person_EducationalAttainment-TertiaryEducation",
@@ -267,5 +306,5 @@
   "parentStatVarGroups": [
     "dc/g/Education"
   ],
-  "numDescendentStatVars": 277
+  "numDescendentStatVars": 298
 }

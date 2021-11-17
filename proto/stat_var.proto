@@ -130,6 +130,8 @@ message StatVarGroupNode {
     string id = 1;
     // Name suitable for search.
     string search_name = 2;
+    // Names suitable for search.
+    repeated string search_names = 5;
     // Name suitable for display in tree.
     string display_name = 3;
     // Whether there is a data for this stat var
