@@ -4,56 +4,86 @@
     {
       "id": "FertilityRate_Person_Female",
       "searchName": "Fertility Rate of Person",
+      "searchNames": [
+        "Fertility Rate of Person"
+      ],
       "displayName": "Fertility Rate",
       "hasData": true
     },
     {
       "id": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
       "searchName": "Gender Income Inequality of Person",
+      "searchNames": [
+        "Gender Income Inequality of Person"
+      ],
       "displayName": "Gender Income Inequality"
     },
     {
       "id": "LifeExpectancy_Person",
       "searchName": "Life Expectancy of Person",
+      "searchNames": [
+        "Life Expectancy of Person"
+      ],
       "displayName": "Life Expectancy",
       "hasData": true
     },
     {
       "id": "Median_Age_Person",
       "searchName": "Median Age of Person",
+      "searchNames": [
+        "Median Age of Person"
+      ],
       "displayName": "Median Age"
     },
     {
       "id": "Median_Income_Person",
       "searchName": "Median Income of Person",
+      "searchNames": [
+        "Median Income of Person"
+      ],
       "displayName": "Median Income"
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
       "searchName": "Percent of Internet Users",
+      "searchNames": [
+        "Percent of Internet Users"
+      ],
       "displayName": "Percent of Internet Users",
       "hasData": true
     },
     {
       "id": "Count_Person",
       "searchName": "Population Count of Person",
+      "searchNames": [
+        "Population Count of Person"
+      ],
       "displayName": "Population",
       "hasData": true
     },
     {
       "id": "IncrementalCount_Person",
       "searchName": "Population Change",
+      "searchNames": [
+        "Population Change"
+      ],
       "displayName": "Population Change"
     },
     {
       "id": "Count_Person_PerArea",
       "searchName": "Population Density",
+      "searchNames": [
+        "Population Density"
+      ],
       "displayName": "Population Density",
       "hasData": true
     },
     {
       "id": "GrowthRate_Count_Person",
       "searchName": "Population Growth Rate",
+      "searchNames": [
+        "Population Growth Rate"
+      ],
       "displayName": "Population Growth Rate",
       "hasData": true
     }
@@ -63,7 +93,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 666
+      "numDescendentStatVars": 665
     },
     {
       "id": "dc/g/Person_BirthEventStatus",
@@ -94,7 +124,7 @@
     },
     {
       "id": "dc/g/Person_HealthInsurance",
-      "specializedEntity": "Health Insurance",
+      "specializedEntity": "Health Insurance (Individual)",
       "displayName": "Person by Health Insurance"
     },
     {
@@ -162,5 +192,5 @@
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 690
+  "numDescendentStatVars": 689
 }

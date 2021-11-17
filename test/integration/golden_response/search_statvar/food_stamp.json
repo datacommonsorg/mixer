@@ -343,14 +343,6 @@
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_DisabilityStatus"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Disability Status = No Disability",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_DisabilityStatus-NoDisability"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Disability Status = With Disability",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_DisabilityStatus-WithDisability"
-    },
-    {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType"
     },
@@ -391,100 +383,24 @@
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_MemberStatus-WithChildrenUnder18"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Member Status = With People Over 60",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_MemberStatus-WithPeopleOver60"
-    },
-    {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Member Status = Without Children Under 18",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Member Status = Without People Over 60",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_MemberStatus-WithoutPeopleOver60"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Poverty Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_PovertyStatus"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Poverty Status = Above Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_PovertyStatus-AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_PovertyStatus-BelowPovertyLevelInThePast12Months"
-    },
-    {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = Black or African American Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = Hispanic or Latino",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = One Race",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-OneRace"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = Some Other Race Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-SomeOtherRaceAlone"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = Two or More Races",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-TwoOrMoreRaces"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = White Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-WhiteAlone"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_Race-WhiteAloneNotHispanicOrLatino"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Work Period",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_WorkPeriod"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Work Period = No Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_WorkPeriod-NoWorkersInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Work Period = One Worker in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_WorkPeriod-OneWorkerInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Work Period = Two or More Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_WorkPeriod-TwoOrMoreWorkersInThePast12Months"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Disability Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_DisabilityStatus"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Disability Status = No Disability",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_DisabilityStatus-NoDisability"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Disability Status = With Disability",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_DisabilityStatus-WithDisability"
     },
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type",
@@ -523,88 +439,20 @@
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_MemberStatus-WithChildrenUnder18"
     },
     {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Member Status = With People Over 60",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_MemberStatus-WithPeopleOver60"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Member Status = Without Children Under 18",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Member Status = Without People Over 60",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_MemberStatus-WithoutPeopleOver60"
     },
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Poverty Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_PovertyStatus"
     },
     {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Poverty Status = Above Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_PovertyStatus-AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_PovertyStatus-BelowPovertyLevelInThePast12Months"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race"
     },
     {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = Asian Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-AsianAlone"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = Black or African American Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = Hispanic or Latino",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = One Race",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-OneRace"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = Some Other Race Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-SomeOtherRaceAlone"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = Two or More Races",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-TwoOrMoreRaces"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = White Alone",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-WhiteAlone"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Work Period",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_WorkPeriod"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Work Period = No Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_WorkPeriod-NoWorkersInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Work Period = One Worker in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_WorkPeriod-OneWorkerInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Work Period = Two or More Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_WorkPeriod-TwoOrMoreWorkersInThePast12Months"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Child School Enrollment = Public School, Member Status",
@@ -623,76 +471,24 @@
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Family Household, Work Period = No Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod-NoWorkersInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Family Household, Work Period = One Worker in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod-OneWorkerInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Family Household, Work Period = Two or More Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod-TwoOrMoreWorkersInThePast12Months"
-    },
-    {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-MarriedCoupleFamilyHousehold_MemberStatus"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-MarriedCoupleFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-MarriedCoupleFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-NonfamilyHousehold_MemberStatus"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-NonfamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-NonfamilyHousehold_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-OtherFamilyHousehold_MemberStatus"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-OtherFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-OtherFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-SingleFatherFamilyHousehold_MemberStatus"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-SingleFatherFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-SingleFatherFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-SingleMotherFamilyHousehold_MemberStatus"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-SingleMotherFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType-SingleMotherFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type, Member Status = With Children Under 18",
@@ -703,92 +499,28 @@
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType_MemberStatus-WithoutChildrenUnder18"
     },
     {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type, Work Period = No Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType_WorkPeriod-NoWorkersInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type, Work Period = One Worker in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType_WorkPeriod-OneWorkerInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type, Work Period = Two or More Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_HouseholdType_WorkPeriod-TwoOrMoreWorkersInThePast12Months"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Family Household, Work Period",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Family Household, Work Period = No Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod-NoWorkersInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Family Household, Work Period = One Worker in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod-OneWorkerInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Family Household, Work Period = Two or More Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-FamilyHousehold_WorkPeriod-TwoOrMoreWorkersInThePast12Months"
     },
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-MarriedCoupleFamilyHousehold_MemberStatus"
     },
     {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-MarriedCoupleFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-MarriedCoupleFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-NonfamilyHousehold_MemberStatus"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-NonfamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-NonfamilyHousehold_MemberStatus-WithoutChildrenUnder18"
     },
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-OtherFamilyHousehold_MemberStatus"
     },
     {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-OtherFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-OtherFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-SingleFatherFamilyHousehold_MemberStatus"
     },
     {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-SingleFatherFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-SingleFatherFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-SingleMotherFamilyHousehold_MemberStatus"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status = With Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-SingleMotherFamilyHousehold_MemberStatus-WithChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status = Without Children Under 18",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType-SingleMotherFamilyHousehold_MemberStatus-WithoutChildrenUnder18"
     },
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type, Member Status = With Children Under 18",
@@ -797,18 +529,6 @@
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type, Member Status = Without Children Under 18",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType_MemberStatus-WithoutChildrenUnder18"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type, Work Period = No Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType_WorkPeriod-NoWorkersInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type, Work Period = One Worker in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType_WorkPeriod-OneWorkerInThePast12Months"
-    },
-    {
-      "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type, Work Period = Two or More Workers in The Past 12 Months",
-      "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType_WorkPeriod-TwoOrMoreWorkersInThePast12Months"
     }
   ]
 }
