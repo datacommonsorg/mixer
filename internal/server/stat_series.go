@@ -115,6 +115,9 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 	}
 	for place, placeData := range cacheData {
 		for statVar, data := range placeData {
+			if data != nil && data.SourceSeries != nil {
+				sort.Sort(SeriesByRank(data.SourceSeries))
+			}
 			result.PlaceData[place].StatVarData[statVar] = data
 		}
 	}
