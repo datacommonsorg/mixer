@@ -86,7 +86,7 @@ const (
 	// TextType represents text type.
 	TextType = "Text"
 
-	// HashStore key in the context
+	// HashStoreKey is the key to represent a HashStore object in request context.
 	HashStoreKey = hashStoreKey("hs")
 )
 
