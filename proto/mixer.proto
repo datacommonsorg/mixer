@@ -179,6 +179,18 @@ service Mixer {
     };
   }
 
+  // Get the stat value for children places of certain place type at a given
+  // date.
+  rpc GetStatSetWithinPlaceAll(GetStatSetWithinPlaceRequest) returns (GetStatSetAllResponse) {
+    option (google.api.http) = {
+      get: "/stat/set//within-place/all"
+      additional_bindings: {
+        post: "/stat/set/within-place/all"
+        body: "*"
+      }
+    };
+  }
+
   // Get the stat value for given places and stat vars. If date is not given,
   // then the latest value for each <place, stat var> is returned.
   rpc GetStatSet(GetStatSetRequest) returns (GetStatSetResponse) {

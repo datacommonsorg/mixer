@@ -5,363 +5,261 @@
         "geoId/01": {
           "date": "2020",
           "value": 135870901749.99998,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/02": {
           "date": "2020",
           "value": 5924428100,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/04": {
           "date": "2020",
           "value": 109628834430,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/05": {
           "date": "2020",
           "value": 52940512880,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/06": {
           "date": "2020",
           "value": 194110262920,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/08": {
           "date": "2020",
           "value": 54199489180,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/09": {
           "date": "2020",
           "value": 41164614340,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/10": {
           "date": "2020",
           "value": 5018144820,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/11": {
           "date": "2020",
           "value": 207804140,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/12": {
           "date": "2020",
           "value": 249657650840,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/13": {
           "date": "2020",
           "value": 119279200590,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/15": {
           "date": "2020",
           "value": 9324461090,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/16": {
           "date": "2020",
           "value": 19334886300,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/17": {
           "date": "2020",
           "value": 173552063930,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/18": {
           "date": "2020",
           "value": 89853263950,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/19": {
           "date": "2020",
           "value": 59376129450,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/20": {
           "date": "2020",
           "value": 54342899600,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/21": {
           "date": "2020",
           "value": 63424318100,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/22": {
           "date": "2020",
           "value": 102002451440,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/23": {
           "date": "2020",
           "value": 10411372640,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/24": {
           "date": "2020",
           "value": 36056980820,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/25": {
           "date": "2020",
           "value": 18349769200,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/26": {
           "date": "2020",
           "value": 104875132120,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/27": {
           "date": "2020",
           "value": 56551668250,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/28": {
           "date": "2020",
           "value": 65770451640,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/29": {
           "date": "2020",
           "value": 73430265790,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/30": {
           "date": "2020",
           "value": 23730185590,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/31": {
           "date": "2020",
           "value": 36859773700,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/32": {
           "date": "2020",
           "value": 40506782540,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/33": {
           "date": "2020",
           "value": 16710184740,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/34": {
           "date": "2020",
           "value": 61481734050,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/35": {
           "date": "2020",
           "value": 34385451940,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/36": {
           "date": "2020",
           "value": 131981774810,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/37": {
           "date": "2020",
           "value": 123953056460,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/38": {
           "date": "2020",
           "value": 42785159230,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/39": {
           "date": "2020",
           "value": 121121989880,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/40": {
           "date": "2020",
           "value": 83584730630,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/41": {
           "date": "2020",
           "value": 64859755720,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/42": {
           "date": "2020",
           "value": 230950472650,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/44": {
           "date": "2020",
           "value": 8015827290,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/45": {
           "date": "2020",
           "value": 98170078410,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/46": {
           "date": "2020",
           "value": 17038875410,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/47": {
           "date": "2020",
           "value": 77514124820,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/48": {
           "date": "2020",
           "value": 475491408540,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/49": {
           "date": "2020",
           "value": 37107969850,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/50": {
           "date": "2020",
           "value": 2366350070,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/51": {
           "date": "2020",
           "value": 102265106000,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/53": {
           "date": "2020",
           "value": 114202782640,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/54": {
           "date": "2020",
           "value": 56758045410,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/55": {
           "date": "2020",
           "value": 60934970290,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         },
         "geoId/56": {
           "date": "2020",
           "value": 41650450140,
-          "metadata": {
-            "import_name": "EIA_Electricity"
-          }
+          "meta_hash": "5"
         }
       },
       "metadata": {
-        "EIA_Electricity": {
+        "5": {
           "import_name": "EIA_Electricity",
           "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
           "unit": "KilowattHour"
@@ -373,380 +271,276 @@
         "geoId/01": {
           "date": "2020",
           "value": 5024279,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/02": {
           "date": "2020",
           "value": 733391,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/04": {
           "date": "2020",
           "value": 7151502,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/05": {
           "date": "2020",
           "value": 3011524,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/06": {
           "date": "2020",
           "value": 39538223,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/08": {
           "date": "2020",
           "value": 5773714,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/09": {
           "date": "2020",
           "value": 3605944,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/10": {
           "date": "2020",
           "value": 989948,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/11": {
           "date": "2020",
           "value": 689545,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/12": {
           "date": "2020",
           "value": 21538187,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/13": {
           "date": "2020",
           "value": 10711908,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/15": {
           "date": "2020",
           "value": 1455271,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/16": {
           "date": "2020",
           "value": 1839106,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/17": {
           "date": "2020",
           "value": 12812508,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/18": {
           "date": "2020",
           "value": 6785528,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/19": {
           "date": "2020",
           "value": 3190369,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/20": {
           "date": "2020",
           "value": 2937880,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/21": {
           "date": "2020",
           "value": 4505836,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/22": {
           "date": "2020",
           "value": 4657757,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/23": {
           "date": "2020",
           "value": 1362359,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/24": {
           "date": "2020",
           "value": 6177224,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/25": {
           "date": "2020",
           "value": 7029917,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/26": {
           "date": "2020",
           "value": 10077331,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/27": {
           "date": "2020",
           "value": 5706494,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/28": {
           "date": "2020",
           "value": 2961279,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/29": {
           "date": "2020",
           "value": 6154913,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/30": {
           "date": "2020",
           "value": 1084225,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/31": {
           "date": "2020",
           "value": 1961504,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/32": {
           "date": "2020",
           "value": 3104614,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/33": {
           "date": "2020",
           "value": 1377529,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/34": {
           "date": "2020",
           "value": 9288994,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/35": {
           "date": "2020",
           "value": 2117522,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/36": {
           "date": "2020",
           "value": 20201249,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/37": {
           "date": "2020",
           "value": 10439388,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/38": {
           "date": "2020",
           "value": 779094,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/39": {
           "date": "2020",
           "value": 11799448,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/40": {
           "date": "2020",
           "value": 3959353,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/41": {
           "date": "2020",
           "value": 4237256,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/42": {
           "date": "2020",
           "value": 13002700,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/44": {
           "date": "2020",
           "value": 1097379,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/45": {
           "date": "2020",
           "value": 5118425,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/46": {
           "date": "2020",
           "value": 886667,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/47": {
           "date": "2020",
           "value": 6910840,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/48": {
           "date": "2020",
           "value": 29145505,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/49": {
           "date": "2020",
           "value": 3271616,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/50": {
           "date": "2020",
           "value": 643077,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/51": {
           "date": "2020",
           "value": 8631393,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/53": {
           "date": "2020",
           "value": 7705281,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/54": {
           "date": "2020",
           "value": 1793716,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/55": {
           "date": "2020",
           "value": 5893718,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/56": {
           "date": "2020",
           "value": 576851,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         },
         "geoId/72": {
           "date": "2020",
           "value": 3285874,
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease"
-          }
+          "meta_hash": "3"
         }
       },
       "metadata": {
-        "CensusACS5YearSurvey": {
-          "import_name": "CensusACS5YearSurvey",
-          "provenance_url": "https://www.census.gov/",
-          "measurement_method": "CensusACS5yrSurvey"
-        },
-        "CensusPEP": {
+        "1": {
           "import_name": "CensusPEP",
           "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
           "measurement_method": "CensusPEPSurvey"
         },
-        "USDecennialCensus_RedistrictingRelease": {
+        "2": {
+          "import_name": "CensusACS5YearSurvey",
+          "provenance_url": "https://www.census.gov/",
+          "measurement_method": "CensusACS5yrSurvey"
+        },
+        "3": {
           "import_name": "USDecennialCensus_RedistrictingRelease",
           "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
           "measurement_method": "USDecennialCensus"
@@ -758,370 +552,266 @@
         "geoId/01": {
           "date": "2021-09",
           "value": 2151009,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/02": {
           "date": "2021-09",
           "value": 332070,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/04": {
           "date": "2021-09",
           "value": 3501496,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/05": {
           "date": "2021-09",
           "value": 1314204,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/06": {
           "date": "2021-09",
           "value": 17824985,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/08": {
           "date": "2021-09",
           "value": 3062638,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/09": {
           "date": "2021-09",
           "value": 1717962,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/10": {
           "date": "2021-09",
           "value": 460403,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/11": {
           "date": "2021-09",
           "value": 384510,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/12": {
           "date": "2021-09",
           "value": 10208866,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/13": {
           "date": "2021-09",
           "value": 5013254,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/15": {
           "date": "2021-09",
           "value": 605685,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/16": {
           "date": "2021-09",
           "value": 888153,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/17": {
           "date": "2021-09",
           "value": 5875958,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/18": {
           "date": "2021-09",
           "value": 3211486,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/19": {
           "date": "2021-09",
           "value": 1607450,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/20": {
           "date": "2021-09",
           "value": 1451649,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/21": {
           "date": "2021-09",
           "value": 1912375,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/22": {
           "date": "2021-09",
           "value": 1950884,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/23": {
           "date": "2021-09",
           "value": 653917,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/24": {
           "date": "2021-09",
           "value": 2957276,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/25": {
           "date": "2021-09",
           "value": 3508312,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/26": {
           "date": "2021-09",
           "value": 4556688,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/27": {
           "date": "2021-09",
           "value": 2948153,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/28": {
           "date": "2021-09",
           "value": 1205255,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/29": {
           "date": "2021-09",
           "value": 2960405,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/30": {
           "date": "2021-09",
           "value": 531749,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/31": {
           "date": "2021-09",
           "value": 1004582,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/32": {
           "date": "2021-09",
           "value": 1434590,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/33": {
           "date": "2021-09",
           "value": 724883,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/34": {
           "date": "2021-09",
           "value": 4112124,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/35": {
           "date": "2021-09",
           "value": 891017,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/36": {
           "date": "2021-09",
           "value": 8669089,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/37": {
           "date": "2021-09",
           "value": 4855844,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/38": {
           "date": "2021-09",
           "value": 393759,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/39": {
           "date": "2021-09",
           "value": 5382387,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/40": {
           "date": "2021-09",
           "value": 1820622,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/41": {
           "date": "2021-09",
           "value": 2082421,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/42": {
           "date": "2021-09",
           "value": 5923633,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/44": {
           "date": "2021-09",
           "value": 549378,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/45": {
           "date": "2021-09",
           "value": 2308324,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/46": {
           "date": "2021-09",
           "value": 458743,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/47": {
           "date": "2021-09",
           "value": 3169966,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/48": {
           "date": "2021-09",
           "value": 13549183,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/49": {
           "date": "2021-09",
           "value": 1652425,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/50": {
           "date": "2021-09",
           "value": 311273,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/51": {
           "date": "2021-09",
           "value": 4074029,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/53": {
           "date": "2021-09",
           "value": 3798630,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/54": {
           "date": "2021-09",
           "value": 764843,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/55": {
           "date": "2021-09",
           "value": 3012678,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/56": {
           "date": "2021-09",
           "value": 284720,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         },
         "geoId/72": {
           "date": "2021-09",
           "value": 1005608,
-          "metadata": {
-            "import_name": "BLS_LAUS"
-          }
+          "meta_hash": "4"
         }
       },
       "metadata": {
-        "BLS_LAUS": {
+        "4": {
           "import_name": "BLS_LAUS",
           "provenance_url": "https://www.bls.gov/lau/",
           "measurement_method": "BLSSeasonallyUnadjusted",

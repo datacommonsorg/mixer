@@ -5,66 +5,48 @@
         "country/ABW": {
           "date": "2021-08-13",
           "value": 141611,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/AFG": {
           "date": "2021-08-11",
           "value": 1809517,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/AGO": {
           "date": "2021-08-09",
           "value": 1695588,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/AIA": {
           "date": "2021-08-06",
           "value": 18457,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ALB": {
           "date": "2021-08-10",
           "value": 1280239,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/AND": {
           "date": "2021-07-19",
           "value": 82349,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ANT": {},
         "country/ARE": {
           "date": "2021-08-13",
           "value": 17313163,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ARG": {
           "date": "2021-08-13",
           "value": 36038031,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ARM": {
           "date": "2021-08-08",
           "value": 194902,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ASM": {},
         "country/ATA": {},
@@ -73,1465 +55,1059 @@
         "country/ATG": {
           "date": "2021-08-10",
           "value": 70019,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ATN": {},
         "country/AUS": {
           "date": "2021-08-13",
           "value": 14747221,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/AUT": {
           "date": "2021-08-13",
           "value": 10141918,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/AZE": {
           "date": "2021-08-13",
           "value": 5671138,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BDI": {},
         "country/BEL": {
           "date": "2021-08-12",
           "value": 15495398,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BEN": {
           "date": "2021-08-03",
           "value": 70323,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BES": {},
         "country/BFA": {
           "date": "2021-08-09",
           "value": 38405,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BGD": {
           "date": "2021-08-13",
           "value": 20362016,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BGR": {
           "date": "2021-08-13",
           "value": 2149134,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BHR": {
           "date": "2021-08-13",
           "value": 2412624,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BHS": {
           "date": "2021-08-09",
           "value": 110443,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BIH": {
           "date": "2021-08-11",
           "value": 865306,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BLM": {},
         "country/BLR": {
           "date": "2021-08-10",
           "value": 2541745,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BLZ": {
           "date": "2021-08-11",
           "value": 202797,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BMU": {
           "date": "2021-08-13",
           "value": 83297,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BOL": {
           "date": "2021-08-13",
           "value": 5004937,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BRA": {
           "date": "2021-08-12",
           "value": 160056922,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BRB": {
           "date": "2021-08-11",
           "value": 183493,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BRN": {
           "date": "2021-08-11",
           "value": 201441,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BTN": {
           "date": "2021-08-09",
           "value": 1010129,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/BVT": {},
         "country/BWA": {
           "date": "2021-08-10",
           "value": 391360,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CAF": {
           "date": "2021-08-05",
           "value": 95282,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CAN": {
           "date": "2021-08-13",
           "value": 51290984,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CCK": {},
         "country/CHE": {
           "date": "2021-08-12",
           "value": 9218419,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CHL": {
           "date": "2021-08-11",
           "value": 26587659,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CHN": {
           "date": "2021-08-13",
           "value": 1844382000,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CIV": {
           "date": "2021-08-12",
           "value": 1194760,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CMR": {
           "date": "2021-08-09",
           "value": 368280,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/COD": {
           "date": "2021-08-09",
           "value": 86244,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/COG": {
           "date": "2021-08-12",
           "value": 255988,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/COK": {
           "date": "2021-07-20",
           "value": 20509,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/COL": {
           "date": "2021-08-11",
           "value": 31149291,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/COM": {
           "date": "2021-08-09",
           "value": 188875,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CPV": {
           "date": "2021-08-09",
           "value": 204780,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CRI": {
           "date": "2021-08-09",
           "value": 3643509,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CTE": {},
         "country/CUB": {
           "date": "2021-08-11",
           "value": 11059697,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CUW": {},
         "country/CXR": {},
         "country/CYM": {
           "date": "2021-08-12",
           "value": 99194,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CYP": {
           "date": "2021-08-12",
           "value": 1040915,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/CZE": {
           "date": "2021-08-13",
           "value": 10940137,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/DEU": {
           "date": "2021-08-12",
           "value": 96852861,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/DJI": {
           "date": "2021-08-12",
           "value": 53064,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/DMA": {
           "date": "2021-08-13",
           "value": 40795,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/DNK": {
           "date": "2021-08-12",
           "value": 7974868,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/DOM": {
           "date": "2021-08-12",
           "value": 10601438,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/DZA": {
           "date": "2021-07-29",
           "value": 4146091,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ECU": {
           "date": "2021-08-12",
           "value": 14363025,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/EGY": {
           "date": "2021-08-10",
           "value": 5750549,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ERI": {},
         "country/ESH": {},
         "country/ESP": {
           "date": "2021-08-12",
           "value": 60919867,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/EST": {
           "date": "2021-08-13",
           "value": 1201727,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ETH": {
           "date": "2021-08-12",
           "value": 2302496,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/FIN": {
           "date": "2021-08-13",
           "value": 6115987,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/FJI": {
           "date": "2021-08-09",
           "value": 690888,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/FLK": {
           "date": "2021-04-14",
           "value": 4407,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/FRA": {
           "date": "2021-08-12",
           "value": 79839977,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/FRO": {
           "date": "2021-08-12",
           "value": 68843,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/FSM": {},
         "country/FXX": {},
         "country/GAB": {
           "date": "2021-08-12",
           "value": 120627,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GBR": {
           "date": "2021-08-12",
           "value": 87421381,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GEO": {
           "date": "2021-08-13",
           "value": 767882,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GGY": {
           "date": "2021-08-13",
           "value": 96687,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GHA": {
           "date": "2021-07-19",
           "value": 1271393,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GIB": {
           "date": "2021-08-12",
           "value": 78535,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GIN": {
           "date": "2021-08-10",
           "value": 938537,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GLP": {},
         "country/GMB": {
           "date": "2021-07-15",
           "value": 43557,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GNB": {
           "date": "2021-08-09",
           "value": 30471,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GNQ": {
           "date": "2021-08-07",
           "value": 314289,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GRC": {
           "date": "2021-08-13",
           "value": 10965338,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GRD": {
           "date": "2021-08-09",
           "value": 38872,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GRL": {
           "date": "2021-08-13",
           "value": 67849,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GTM": {
           "date": "2021-08-12",
           "value": 3066401,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/GUF": {},
         "country/GUM": {},
         "country/GUY": {
           "date": "2021-08-12",
           "value": 425580,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/HKG": {
           "date": "2021-08-13",
           "value": 6515453,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/HMD": {},
         "country/HND": {
           "date": "2021-08-11",
           "value": 2806063,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/HRV": {
           "date": "2021-08-12",
           "value": 3157783,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/HTI": {
           "date": "2021-08-11",
           "value": 19182,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/HUN": {
           "date": "2021-08-01",
           "value": 10481449,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/IDN": {
           "date": "2021-08-12",
           "value": 79054211,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/IMN": {
           "date": "2021-08-11",
           "value": 125593,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/IND": {
           "date": "2021-08-13",
           "value": 536189903,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/IOT": {},
         "country/IRL": {
           "date": "2021-08-12",
           "value": 6288754,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/IRN": {
           "date": "2021-08-09",
           "value": 16213714,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/IRQ": {
           "date": "2021-08-06",
           "value": 2102550,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ISL": {
           "date": "2021-08-06",
           "value": 477205,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ISR": {
           "date": "2021-08-13",
           "value": 12062285,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ITA": {
           "date": "2021-08-13",
           "value": 73592927,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/JAM": {
           "date": "2021-08-13",
           "value": 391076,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/JEY": {
           "date": "2021-08-08",
           "value": 144896,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/JOR": {
           "date": "2021-08-13",
           "value": 5692336,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/JPN": {
           "date": "2021-08-12",
           "value": 108179498,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KAZ": {
           "date": "2021-08-13",
           "value": 10607929,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KEN": {
           "date": "2021-08-12",
           "value": 1922085,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KGZ": {
           "date": "2021-08-13",
           "value": 841077,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KHM": {
           "date": "2021-08-13",
           "value": 15372439,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KIR": {
           "date": "2021-08-09",
           "value": 13970,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KNA": {
           "date": "2021-08-10",
           "value": 43966,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KOR": {
           "date": "2021-08-13",
           "value": 30649269,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/KWT": {
           "date": "2021-07-03",
           "value": 2375455,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LAO": {
           "date": "2021-08-08",
           "value": 2574278,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LBN": {
           "date": "2021-08-13",
           "value": 2190858,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LBR": {
           "date": "2021-07-12",
           "value": 95423,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LBY": {
           "date": "2021-08-09",
           "value": 764233,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LCA": {
           "date": "2021-08-13",
           "value": 59537,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LIE": {
           "date": "2021-08-12",
           "value": 40614,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LKA": {
           "date": "2021-08-12",
           "value": 15310726,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LSO": {
           "date": "2021-07-26",
           "value": 72948,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LTU": {
           "date": "2021-08-13",
           "value": 2911801,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LUX": {
           "date": "2021-08-13",
           "value": 741948,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/LVA": {
           "date": "2021-08-13",
           "value": 1418214,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MAC": {
           "date": "2021-08-13",
           "value": 547953,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MAF": {},
         "country/MAR": {
           "date": "2021-08-13",
           "value": 27561271,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MCO": {
           "date": "2021-08-06",
           "value": 44060,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MDA": {
           "date": "2021-08-13",
           "value": 1136921,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MDG": {
           "date": "2021-06-28",
           "value": 197001,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MDV": {
           "date": "2021-08-11",
           "value": 633914,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MEX": {
           "date": "2021-08-13",
           "value": 75780229,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MHL": {},
         "country/MKD": {
           "date": "2021-08-12",
           "value": 1033584,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MLI": {
           "date": "2021-08-09",
           "value": 259719,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MLT": {
           "date": "2021-08-12",
           "value": 782600,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MMR": {
           "date": "2021-07-01",
           "value": 3500000,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MNE": {
           "date": "2021-08-13",
           "value": 355963,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MNG": {
           "date": "2021-08-13",
           "value": 4232784,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MNP": {},
         "country/MOZ": {
           "date": "2021-08-09",
           "value": 1386326,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MRT": {
           "date": "2021-08-12",
           "value": 242626,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MSR": {
           "date": "2021-08-06",
           "value": 2828,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MTQ": {},
         "country/MUS": {
           "date": "2021-08-09",
           "value": 1297090,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MWI": {
           "date": "2021-08-12",
           "value": 683097,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MYS": {
           "date": "2021-08-13",
           "value": 26851765,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/MYT": {},
         "country/NAM": {
           "date": "2021-08-11",
           "value": 244880,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NCL": {
           "date": "2021-08-09",
           "value": 133804,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NER": {
           "date": "2021-08-09",
           "value": 425483,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NFK": {},
         "country/NGA": {
           "date": "2021-08-09",
           "value": 3967013,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NIC": {
           "date": "2021-08-09",
           "value": 919275,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NIU": {
           "date": "2021-08-09",
           "value": 2406,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NLD": {
           "date": "2021-08-13",
           "value": 21348406,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NOR": {
           "date": "2021-08-12",
           "value": 5911464,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NPL": {
           "date": "2021-08-12",
           "value": 7515766,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NRU": {
           "date": "2021-07-27",
           "value": 14784,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/NZL": {
           "date": "2021-08-10",
           "value": 2293301,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/OMN": {
           "date": "2021-08-09",
           "value": 2656658,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PAK": {
           "date": "2021-08-13",
           "value": 42173424,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PAN": {
           "date": "2021-08-12",
           "value": 3292229,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PCN": {
           "date": "2021-08-02",
           "value": 83,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PER": {
           "date": "2021-08-12",
           "value": 15659075,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PHL": {
           "date": "2021-08-11",
           "value": 26127502,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PLW": {},
         "country/PNG": {
           "date": "2021-08-02",
           "value": 100409,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/POL": {
           "date": "2021-08-12",
           "value": 35281208,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PRI": {},
         "country/PRK": {},
         "country/PRT": {
           "date": "2021-08-13",
           "value": 13307865,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PRY": {
           "date": "2021-08-12",
           "value": 2214138,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PSE": {
           "date": "2021-08-12",
           "value": 1053252,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/PYF": {
           "date": "2021-08-09",
           "value": 174127,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/QAT": {
           "date": "2021-08-13",
           "value": 4067088,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/REU": {},
         "country/ROU": {
           "date": "2021-08-12",
           "value": 9558787,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/RUS": {
           "date": "2021-08-13",
           "value": 71033270,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/RWA": {
           "date": "2021-08-03",
           "value": 854194,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SAU": {
           "date": "2021-08-13",
           "value": 31452285,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SDN": {
           "date": "2021-08-09",
           "value": 823881,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SEN": {
           "date": "2021-08-09",
           "value": 1360095,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SGP": {
           "date": "2021-08-12",
           "value": 8429249,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SGS": {},
         "country/SHN": {
           "date": "2021-05-05",
           "value": 7892,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SJM": {},
         "country/SLB": {
           "date": "2021-08-09",
           "value": 56621,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SLE": {
           "date": "2021-07-05",
           "value": 225380,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SLV": {
           "date": "2021-08-13",
           "value": 5143912,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SMR": {
           "date": "2021-08-12",
           "value": 46057,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SOM": {
           "date": "2021-08-02",
           "value": 279869,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SPM": {},
         "country/SRB": {
           "date": "2021-08-12",
           "value": 5617810,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SSD": {},
         "country/STP": {
           "date": "2021-08-03",
           "value": 43978,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SUR": {
           "date": "2021-08-13",
           "value": 271668,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SVK": {
           "date": "2021-08-13",
           "value": 4390776,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SVN": {
           "date": "2021-08-13",
           "value": 1804382,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SWE": {
           "date": "2021-08-13",
           "value": 11431885,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SWZ": {
           "date": "2021-08-12",
           "value": 181290,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SXM": {},
         "country/SYC": {
           "date": "2021-07-22",
           "value": 141435,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/SYR": {
           "date": "2021-08-09",
           "value": 355000,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TCA": {
           "date": "2021-07-23",
           "value": 47263,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TCD": {
           "date": "2021-08-12",
           "value": 40649,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TGO": {
           "date": "2021-08-03",
           "value": 474776,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/THA": {
           "date": "2021-08-11",
           "value": 22288819,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TJK": {
           "date": "2021-08-11",
           "value": 1671475,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TKL": {
           "date": "2021-08-02",
           "value": 953,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TKM": {
           "date": "2021-04-04",
           "value": 41993,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TLS": {
           "date": "2021-08-10",
           "value": 443729,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TON": {
           "date": "2021-08-02",
           "value": 47553,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TTO": {
           "date": "2021-08-13",
           "value": 728880,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TUN": {
           "date": "2021-08-08",
           "value": 3392636,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TUR": {
           "date": "2021-08-13",
           "value": 82021528,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TUV": {
           "date": "2021-06-15",
           "value": 4772,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TWN": {
           "date": "2021-08-13",
           "value": 9749241,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/TZA": {
           "date": "2021-08-08",
           "value": 105745,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/UGA": {
           "date": "2021-08-10",
           "value": 1155265,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/UKR": {
           "date": "2021-08-13",
           "value": 7332550,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/UMI": {},
         "country/URY": {
           "date": "2021-08-13",
           "value": 5014309,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/USA": {
           "date": "2021-08-13",
           "value": 354777950,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/UZB": {
           "date": "2021-08-04",
           "value": 8300000,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/VAT": {},
         "country/VCT": {
           "date": "2021-08-10",
           "value": 25796,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/VEN": {
           "date": "2021-07-12",
           "value": 4000000,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/VGB": {
           "date": "2021-08-06",
           "value": 28777,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/VIR": {},
         "country/VNM": {
           "date": "2021-08-12",
           "value": 13256472,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/VUT": {
           "date": "2021-07-27",
           "value": 23995,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/WLF": {
           "date": "2021-08-09",
           "value": 9439,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/WSM": {
           "date": "2021-08-09",
           "value": 100610,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/XKS": {},
         "country/YEM": {
           "date": "2021-07-27",
           "value": 311483,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/YUG": {},
         "country/ZAF": {
           "date": "2021-08-12",
           "value": 9185756,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ZMB": {
           "date": "2021-08-13",
           "value": 518446,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         },
         "country/ZWE": {
           "date": "2021-08-12",
           "value": 3193256,
-          "metadata": {
-            "import_name": "Test Private Import"
-          }
+          "meta_hash": "1"
         }
       },
       "metadata": {
-        "Test Private Import": {
+        "1": {
           "import_name": "Test Private Import",
           "provenance_url": "https://test.datacommons.org",
           "measurement_method": "Test_Method"

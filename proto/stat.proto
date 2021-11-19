@@ -46,14 +46,23 @@ message PointStat {
   // date in IOS-8601 format
   string date = 1;
   double value = 2;
+  // Full metadata of the stat
   StatMetadata metadata = 3;
+  // A hash string of the meta data, this is to be used together with a map from
+  // the hash to the full metatdata.
+  string meta_hash = 4;
 }
 
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
-  // Keyed by import name.
+  // Keyed by metadata hash.
   map<string, StatMetadata> metadata = 2;
+}
+
+message PlacePointStatAll {
+  // Keyed by place DCID.
+  repeated PlacePointStat stat_list = 1;
 }
 
 message SourceSeries {
@@ -374,6 +383,10 @@ message GetStatSetResponse {
   map<string, PlacePointStat> data = 1;
 }
 
+message GetStatSetAllResponse {
+  // Keyed by statVar.
+  map<string, PlacePointStatAll> data = 1;
+}
 
 // Requests to get observation for all place.
 message GetPlaceObsRequest {

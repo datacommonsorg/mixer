@@ -5,22 +5,18 @@
         "country/FRA": {
           "date": "2019",
           "value": 50400,
-          "metadata": {
-            "importName": "WorldDevelopmentIndicators"
-          }
+          "metaHash": "2"
         },
         "country/USA": {
           "date": "2019",
           "value": 66060,
-          "metadata": {
-            "importName": "WorldDevelopmentIndicators"
-          }
+          "metaHash": "2"
         },
         "geoId/06": {},
         "geoId/0649670": {}
       },
       "metadata": {
-        "WorldDevelopmentIndicators": {
+        "2": {
           "importName": "WorldDevelopmentIndicators",
           "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
           "observationPeriod": "P1Y",
@@ -34,21 +30,17 @@
         "country/USA": {
           "date": "2020",
           "value": 4009084999080,
-          "metadata": {
-            "importName": "EIA_Electricity"
-          }
+          "metaHash": "5"
         },
         "geoId/06": {
           "date": "2020",
           "value": 194110262920,
-          "metadata": {
-            "importName": "EIA_Electricity"
-          }
+          "metaHash": "5"
         },
         "geoId/0649670": {}
       },
       "metadata": {
-        "EIA_Electricity": {
+        "5": {
           "importName": "EIA_Electricity",
           "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
           "unit": "KilowattHour"
@@ -61,33 +53,27 @@
         "country/USA": {
           "date": "2019",
           "value": 8132863,
-          "metadata": {
-            "importName": "FBIGovCrime_AggCountry"
-          }
+          "metaHash": "4"
         },
         "geoId/06": {
           "date": "2019",
           "value": 1095445,
-          "metadata": {
-            "importName": "FBIGovCrime"
-          }
+          "metaHash": "7"
         },
         "geoId/0649670": {
           "date": "2019",
           "value": 2634,
-          "metadata": {
-            "importName": "FBIGovCrime"
-          }
+          "metaHash": "7"
         }
       },
       "metadata": {
-        "FBIGovCrime": {
-          "importName": "FBIGovCrime",
+        "4": {
+          "importName": "FBIGovCrime_AggCountry",
           "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
           "observationPeriod": "P1Y"
         },
-        "FBIGovCrime_AggCountry": {
-          "importName": "FBIGovCrime_AggCountry",
+        "7": {
+          "importName": "FBIGovCrime",
           "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
           "observationPeriod": "P1Y"
         }
@@ -98,42 +84,40 @@
         "country/FRA": {
           "date": "2020",
           "value": 67391582,
-          "metadata": {
-            "importName": "WorldDevelopmentIndicators"
-          }
+          "metaHash": "1"
         },
         "country/USA": {
           "date": "2020",
           "value": 331449281,
-          "metadata": {
-            "importName": "USDecennialCensus_RedistrictingRelease"
-          }
+          "metaHash": "3"
         },
         "geoId/06": {
           "date": "2020",
           "value": 39538223,
-          "metadata": {
-            "importName": "USDecennialCensus_RedistrictingRelease"
-          }
+          "metaHash": "6"
         },
         "geoId/0649670": {
           "date": "2020",
           "value": 82376,
-          "metadata": {
-            "importName": "USDecennialCensus_RedistrictingRelease"
-          }
+          "metaHash": "6"
         }
       },
       "metadata": {
-        "USDecennialCensus_RedistrictingRelease": {
-          "importName": "USDecennialCensus_RedistrictingRelease",
-          "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-          "measurementMethod": "USDecennialCensus"
-        },
-        "WorldDevelopmentIndicators": {
-          "importName": "WorldDevelopmentIndicators",
-          "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "1": {
+          "importName": "OECDRegionalDemography",
+          "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+          "measurementMethod": "OECDRegionalStatistics",
           "observationPeriod": "P1Y"
+        },
+        "3": {
+          "importName": "CensusACS5YearSurvey_AggCountry",
+          "provenanceUrl": "https://www.census.gov/",
+          "measurementMethod": "CensusACS5yrSurvey"
+        },
+        "6": {
+          "importName": "CensusACS1YearSurvey",
+          "provenanceUrl": "https://www.census.gov/",
+          "measurementMethod": "CensusACS1yrSurvey"
         }
       }
     }

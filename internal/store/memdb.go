@@ -101,9 +101,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 				return &pb.PointStat{
 					Date:  date,
 					Value: val,
-					Metadata: &pb.StatMetadata{
-						ImportName: memDb.manifest.ImportName,
-					}}, series.Metadata
+				}, series.Metadata
 			}
 		}
 	} else {
@@ -122,9 +120,8 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 		}
 		if latestDate != "" {
 			return &pb.PointStat{
-				Date:     latestDate,
-				Value:    latestVal,
-				Metadata: &pb.StatMetadata{ImportName: memDb.manifest.ImportName},
+				Date:  latestDate,
+				Value: latestVal,
 			}, meta
 		}
 	}

@@ -196,27 +196,18 @@ func getValueFromBestSourcePb(
 	if date != "" {
 		for _, series := range sourceSeries {
 			if value, ok := series.Val[date]; ok {
+				meta := &pb.StatMetadata{
+					ImportName:        series.ImportName,
+					ProvenanceUrl:     series.ProvenanceUrl,
+					MeasurementMethod: series.MeasurementMethod,
+					ObservationPeriod: series.ObservationPeriod,
+					ScalingFactor:     series.ScalingFactor,
+					Unit:              series.Unit,
+				}
 				return &pb.PointStat{
-						Date:  date,
-						Value: value,
-						Metadata: &pb.StatMetadata{
-							// Each ImportName should indicate a specific source. Now this is
-							// not strictly true as the MeasurementMethod encodes source information
-							// as well.
-							// As the source is sorted deterministically, even when an ImportName
-							// contains multiple sources, the top ranked one is picked. So
-							// using ImportName as key still works.
-							ImportName: series.ImportName,
-						},
-					},
-					&pb.StatMetadata{
-						ImportName:        series.ImportName,
-						ProvenanceUrl:     series.ProvenanceUrl,
-						MeasurementMethod: series.MeasurementMethod,
-						ObservationPeriod: series.ObservationPeriod,
-						ScalingFactor:     series.ScalingFactor,
-						Unit:              series.Unit,
-					}
+					Date:  date,
+					Value: value,
+				}, meta
 			}
 		}
 		return nil, nil
@@ -233,23 +224,20 @@ func getValueFromBestSourcePb(
 		if idx > 0 && lowQualityPopulationImport(series.ImportName) {
 			break
 		}
+		meta = &pb.StatMetadata{
+			ImportName:        series.ImportName,
+			ProvenanceUrl:     series.ProvenanceUrl,
+			MeasurementMethod: series.MeasurementMethod,
+			ObservationPeriod: series.ObservationPeriod,
+			ScalingFactor:     series.ScalingFactor,
+			Unit:              series.Unit,
+		}
 		for date, value := range series.Val {
 			if date > latestDate {
 				latestDate = date
 				ps = &pb.PointStat{
 					Date:  date,
 					Value: value,
-					Metadata: &pb.StatMetadata{
-						ImportName: series.ImportName,
-					},
-				}
-				meta = &pb.StatMetadata{
-					ImportName:        series.ImportName,
-					ProvenanceUrl:     series.ProvenanceUrl,
-					MeasurementMethod: series.MeasurementMethod,
-					ObservationPeriod: series.ObservationPeriod,
-					ScalingFactor:     series.ScalingFactor,
-					Unit:              series.Unit,
 				}
 			}
 		}

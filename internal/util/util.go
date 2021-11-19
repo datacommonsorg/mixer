@@ -35,6 +35,8 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
+type hashStoreKey string
+
 const (
 	// BtPlaceStatsVarPrefix for place to statsvar list cache.
 	BtPlaceStatsVarPrefix = "d/0/"
@@ -83,6 +85,9 @@ const (
 	LimitFactor = 1
 	// TextType represents text type.
 	TextType = "Text"
+
+	// HashStore key in the context
+	HashStoreKey = hashStoreKey("hs")
 )
 
 type typeInfo struct {
@@ -422,4 +427,25 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 		return true
 	})
 	return m
+}
+
+type HashStore struct {
+	store map[string]int
+}
+
+func (hs *HashStore) GetHash(m proto.Message) string {
+	if hs.store == nil {
+		hs.store = map[string]int{}
+	}
+	b, err := proto.Marshal(m)
+	if err != nil {
+		return "0"
+	}
+	hash, ok := hs.store[string(b)]
+	if ok {
+		return fmt.Sprint(hash)
+	}
+	count := len(hs.store) + 1
+	hs.store[string(b)] = count
+	return fmt.Sprint(count)
 }

@@ -1,0 +1,1288 @@
+{
+  "data": {
+    "Max_Temperature_RCP45": {
+      "stat_list": [
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 32.52523,
+              "meta_hash": "1"
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 32.222008,
+              "meta_hash": "1"
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 32.885765,
+              "meta_hash": "1"
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 33.347404,
+              "meta_hash": "1"
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 33.126701,
+              "meta_hash": "1"
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 32.210136,
+              "meta_hash": "1"
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 34.943687,
+              "meta_hash": "1"
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 33.23217,
+              "meta_hash": "1"
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 32.470299,
+              "meta_hash": "1"
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 33.592094,
+              "meta_hash": "1"
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 33.357109,
+              "meta_hash": "1"
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 32.806358,
+              "meta_hash": "1"
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 33.02935,
+              "meta_hash": "1"
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 33.358727,
+              "meta_hash": "1"
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 34.28524,
+              "meta_hash": "1"
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 31.347284,
+              "meta_hash": "1"
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 34.090385,
+              "meta_hash": "1"
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 34.212212,
+              "meta_hash": "1"
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 34.72683,
+              "meta_hash": "1"
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 32.209099,
+              "meta_hash": "1"
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 33.36718,
+              "meta_hash": "1"
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 31.214411,
+              "meta_hash": "1"
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 32.055016,
+              "meta_hash": "1"
+            }
+          },
+          "metadata": {
+            "1": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_HadGEM2-AO",
+              "observation_period": "P1Y",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 14.203272,
+              "meta_hash": "10"
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 14.473108,
+              "meta_hash": "10"
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 14.518885,
+              "meta_hash": "10"
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 15.087763,
+              "meta_hash": "10"
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 14.110407,
+              "meta_hash": "10"
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 14.461481,
+              "meta_hash": "10"
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 15.228022,
+              "meta_hash": "10"
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 14.89303,
+              "meta_hash": "10"
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 14.660517,
+              "meta_hash": "10"
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 15.558924,
+              "meta_hash": "10"
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 14.725702,
+              "meta_hash": "10"
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 14.745234,
+              "meta_hash": "10"
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 14.366297,
+              "meta_hash": "10"
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 14.661524,
+              "meta_hash": "10"
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 15.403986,
+              "meta_hash": "10"
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 14.551416,
+              "meta_hash": "10"
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 15.38122,
+              "meta_hash": "10"
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 15.307459,
+              "meta_hash": "10"
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 15.37179,
+              "meta_hash": "10"
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 14.514063,
+              "meta_hash": "10"
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 14.969324,
+              "meta_hash": "10"
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 14.28097,
+              "meta_hash": "10"
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 14.628778,
+              "meta_hash": "10"
+            }
+          },
+          "metadata": {
+            "10": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_CCSM4",
+              "observation_period": "P1M",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 20.046473,
+              "meta_hash": "2"
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 20.149958,
+              "meta_hash": "2"
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 20.190516,
+              "meta_hash": "2"
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 20.557489,
+              "meta_hash": "2"
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 19.969629,
+              "meta_hash": "2"
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 20.13595,
+              "meta_hash": "2"
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 21.444849,
+              "meta_hash": "2"
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 20.444849,
+              "meta_hash": "2"
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 20.140924,
+              "meta_hash": "2"
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 20.925623,
+              "meta_hash": "2"
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 20.407831,
+              "meta_hash": "2"
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 20.20672,
+              "meta_hash": "2"
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 20.108637,
+              "meta_hash": "2"
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 20.228724,
+              "meta_hash": "2"
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 21.460627,
+              "meta_hash": "2"
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 20.067591,
+              "meta_hash": "2"
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 20.739588,
+              "meta_hash": "2"
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 21.248957,
+              "meta_hash": "2"
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 21.540613,
+              "meta_hash": "2"
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 20.186457,
+              "meta_hash": "2"
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 20.472193,
+              "meta_hash": "2"
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 19.677912,
+              "meta_hash": "2"
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 20.148188,
+              "meta_hash": "2"
+            }
+          },
+          "metadata": {
+            "2": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_HadGEM2-AO",
+              "observation_period": "P1M",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 30.645105,
+              "meta_hash": "3"
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 30.106562,
+              "meta_hash": "3"
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 31.145655,
+              "meta_hash": "3"
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 31.389002,
+              "meta_hash": "3"
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 31.244135,
+              "meta_hash": "3"
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 30.193598,
+              "meta_hash": "3"
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 33.521233,
+              "meta_hash": "3"
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 31.300989,
+              "meta_hash": "3"
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 30.40951,
+              "meta_hash": "3"
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 31.601221,
+              "meta_hash": "3"
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 31.715906,
+              "meta_hash": "3"
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 30.76626,
+              "meta_hash": "3"
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 31.233515,
+              "meta_hash": "3"
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 31.808771,
+              "meta_hash": "3"
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 32.68676,
+              "meta_hash": "3"
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 29.246363,
+              "meta_hash": "3"
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 32.106468,
+              "meta_hash": "3"
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 32.719261,
+              "meta_hash": "3"
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 33.143608,
+              "meta_hash": "3"
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 30.145655,
+              "meta_hash": "3"
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 31.775873,
+              "meta_hash": "3"
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 29.164392,
+              "meta_hash": "3"
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 29.963221,
+              "meta_hash": "3"
+            }
+          },
+          "metadata": {
+            "3": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_GISS-E2-R",
+              "observation_period": "P1Y",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 16.890711,
+              "meta_hash": "4"
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 17.167994,
+              "meta_hash": "4"
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 17.223413,
+              "meta_hash": "4"
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 17.77212,
+              "meta_hash": "4"
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 16.796564,
+              "meta_hash": "4"
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 17.158777,
+              "meta_hash": "4"
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 18.112329,
+              "meta_hash": "4"
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 17.620295,
+              "meta_hash": "4"
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 17.335169,
+              "meta_hash": "4"
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 18.222986,
+              "meta_hash": "4"
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 17.455378,
+              "meta_hash": "4"
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 17.421076,
+              "meta_hash": "4"
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 17.033899,
+              "meta_hash": "4"
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 17.37536,
+              "meta_hash": "4"
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 18.193323,
+              "meta_hash": "4"
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 17.224146,
+              "meta_hash": "4"
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 18.042933,
+              "meta_hash": "4"
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 18.058741,
+              "meta_hash": "4"
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 18.206537,
+              "meta_hash": "4"
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 17.200983,
+              "meta_hash": "4"
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 17.661219,
+              "meta_hash": "4"
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 16.935389,
+              "meta_hash": "4"
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 17.308374,
+              "meta_hash": "4"
+            }
+          },
+          "metadata": {
+            "4": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_GISS-E2-R",
+              "observation_period": "P1M",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 30.55456,
+              "meta_hash": "5"
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 30.287348,
+              "meta_hash": "5"
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 30.961054,
+              "meta_hash": "5"
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 31.458124,
+              "meta_hash": "5"
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 31.155787,
+              "meta_hash": "5"
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 30.276087,
+              "meta_hash": "5"
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 33.445366,
+              "meta_hash": "5"
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 31.330194,
+              "meta_hash": "5"
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 30.576014,
+              "meta_hash": "5"
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 31.717493,
+              "meta_hash": "5"
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 31.435907,
+              "meta_hash": "5"
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 30.916986,
+              "meta_hash": "5"
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 31.073023,
+              "meta_hash": "5"
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 31.451441,
+              "meta_hash": "5"
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 33.03582,
+              "meta_hash": "5"
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 29.446924,
+              "meta_hash": "5"
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 32.219353,
+              "meta_hash": "5"
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 32.527489,
+              "meta_hash": "5"
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 33.176323,
+              "meta_hash": "5"
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 30.281244,
+              "meta_hash": "5"
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 31.472864,
+              "meta_hash": "5"
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 29.333033,
+              "meta_hash": "5"
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 30.153406,
+              "meta_hash": "5"
+            }
+          },
+          "metadata": {
+            "5": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_GISS-E2-R-CC",
+              "observation_period": "P1Y",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 14.434504,
+              "meta_hash": "6"
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 14.544794,
+              "meta_hash": "6"
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 14.58465,
+              "meta_hash": "6"
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 14.960169,
+              "meta_hash": "6"
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 14.357111,
+              "meta_hash": "6"
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 14.530725,
+              "meta_hash": "6"
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 15.824183,
+              "meta_hash": "6"
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 14.841425,
+              "meta_hash": "6"
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 14.543848,
+              "meta_hash": "6"
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 15.334925,
+              "meta_hash": "6"
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 14.800653,
+              "meta_hash": "6"
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 14.610987,
+              "meta_hash": "6"
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 14.501978,
+              "meta_hash": "6"
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 14.625849,
+              "meta_hash": "6"
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 15.841211,
+              "meta_hash": "6"
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 14.470301,
+              "meta_hash": "6"
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 15.149591,
+              "meta_hash": "6"
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 15.630518,
+              "meta_hash": "6"
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 15.919062,
+              "meta_hash": "6"
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 14.581934,
+              "meta_hash": "6"
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 14.873194,
+              "meta_hash": "6"
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 14.087885,
+              "meta_hash": "6"
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 14.550013,
+              "meta_hash": "6"
+            }
+          },
+          "metadata": {
+            "6": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_GISS-E2-R-CC",
+              "observation_period": "P1M",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 31.446527,
+              "meta_hash": "7"
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 30.485376,
+              "meta_hash": "7"
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 31.524439,
+              "meta_hash": "7"
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 32.107719,
+              "meta_hash": "7"
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 32.18325,
+              "meta_hash": "7"
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 30.462061,
+              "meta_hash": "7"
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 34.438927,
+              "meta_hash": "7"
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 32.214836,
+              "meta_hash": "7"
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 30.099054,
+              "meta_hash": "7"
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 32.162315,
+              "meta_hash": "7"
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 32.38726,
+              "meta_hash": "7"
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 30.648279,
+              "meta_hash": "7"
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 32.142937,
+              "meta_hash": "7"
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 32.366356,
+              "meta_hash": "7"
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 34.157219,
+              "meta_hash": "7"
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 28.819147,
+              "meta_hash": "7"
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 32.277367,
+              "meta_hash": "7"
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 33.637596,
+              "meta_hash": "7"
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 34.222435,
+              "meta_hash": "7"
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 30.352625,
+              "meta_hash": "7"
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 32.295525,
+              "meta_hash": "7"
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 29.188471,
+              "meta_hash": "7"
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 29.822443,
+              "meta_hash": "7"
+            }
+          },
+          "metadata": {
+            "7": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_CESM1-CAM5",
+              "observation_period": "P1Y",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 17.908381,
+              "meta_hash": "8"
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 18.21023,
+              "meta_hash": "8"
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 18.285852,
+              "meta_hash": "8"
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 18.820154,
+              "meta_hash": "8"
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 17.811304,
+              "meta_hash": "8"
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 18.206049,
+              "meta_hash": "8"
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 19.386133,
+              "meta_hash": "8"
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 18.746058,
+              "meta_hash": "8"
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 18.36059,
+              "meta_hash": "8"
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 19.234491,
+              "meta_hash": "8"
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 18.564234,
+              "meta_hash": "8"
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 18.449152,
+              "meta_hash": "8"
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 18.020868,
+              "meta_hash": "8"
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 18.471094,
+              "meta_hash": "8"
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 19.348993,
+              "meta_hash": "8"
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 18.238214,
+              "meta_hash": "8"
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 19.049402,
+              "meta_hash": "8"
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 19.173456,
+              "meta_hash": "8"
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 19.413843,
+              "meta_hash": "8"
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 18.232111,
+              "meta_hash": "8"
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 18.72024,
+              "meta_hash": "8"
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 17.917841,
+              "meta_hash": "8"
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 18.337519,
+              "meta_hash": "8"
+            }
+          },
+          "metadata": {
+            "8": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_CESM1-CAM5",
+              "observation_period": "P1M",
+              "unit": "Celsius"
+            }
+          }
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 32.920647,
+              "meta_hash": "9"
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 32.151085,
+              "meta_hash": "9"
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 33.118401,
+              "meta_hash": "9"
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 33.181084,
+              "meta_hash": "9"
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 33.533531,
+              "meta_hash": "9"
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 32.22094,
+              "meta_hash": "9"
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 35.817894,
+              "meta_hash": "9"
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 33.169029,
+              "meta_hash": "9"
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 31.721094,
+              "meta_hash": "9"
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 32.994377,
+              "meta_hash": "9"
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 33.648643,
+              "meta_hash": "9"
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 32.361504,
+              "meta_hash": "9"
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 33.438286,
+              "meta_hash": "9"
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 33.698357,
+              "meta_hash": "9"
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 35.063072,
+              "meta_hash": "9"
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 30.611109,
+              "meta_hash": "9"
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 33.617119,
+              "meta_hash": "9"
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 35.030876,
+              "meta_hash": "9"
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 35.480675,
+              "meta_hash": "9"
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 32.122765,
+              "meta_hash": "9"
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 33.645622,
+              "meta_hash": "9"
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 30.762995,
+              "meta_hash": "9"
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 31.467371,
+              "meta_hash": "9"
+            }
+          },
+          "metadata": {
+            "9": {
+              "import_name": "NASA_NEXDCP30",
+              "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+              "measurement_method": "NASA_Mean_CCSM4",
+              "observation_period": "P1Y",
+              "unit": "Celsius"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
