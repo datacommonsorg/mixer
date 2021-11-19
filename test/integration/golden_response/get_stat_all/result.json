@@ -145,182 +145,6 @@
           "sourceSeries": [
             {
               "val": {
-                "1960": 180671000,
-                "1961": 183691000,
-                "1962": 186538000,
-                "1963": 189242000,
-                "1964": 191889000,
-                "1965": 194303000,
-                "1966": 196560000,
-                "1967": 198712000,
-                "1968": 200706000,
-                "1969": 202677000,
-                "1970": 205052000,
-                "1971": 207661000,
-                "1972": 209896000,
-                "1973": 211909000,
-                "1974": 213854000,
-                "1975": 215973000,
-                "1976": 218035000,
-                "1977": 220239000,
-                "1978": 222585000,
-                "1979": 225055000,
-                "1980": 227225000,
-                "1981": 229466000,
-                "1982": 231664000,
-                "1983": 233792000,
-                "1984": 235825000,
-                "1985": 237924000,
-                "1986": 240133000,
-                "1987": 242289000,
-                "1988": 244499000,
-                "1989": 246819000,
-                "1990": 249623000,
-                "1991": 252981000,
-                "1992": 256514000,
-                "1993": 259919000,
-                "1994": 263126000,
-                "1995": 266278000,
-                "1996": 269394000,
-                "1997": 272657000,
-                "1998": 275854000,
-                "1999": 279040000,
-                "2000": 282162411,
-                "2001": 284968955,
-                "2002": 287625193,
-                "2003": 290107933,
-                "2004": 292805298,
-                "2005": 295516599,
-                "2006": 298379912,
-                "2007": 301231207,
-                "2008": 304093966,
-                "2009": 306771529,
-                "2010": 309327143,
-                "2011": 311583481,
-                "2012": 313877662,
-                "2013": 316059947,
-                "2014": 318386329,
-                "2015": 320738994,
-                "2016": 323071755,
-                "2017": 325122128,
-                "2018": 326838199,
-                "2019": 328329953,
-                "2020": 329484123
-              },
-              "observationPeriod": "P1Y",
-              "importName": "WorldDevelopmentIndicators",
-              "provenanceDomain": "worldbank.org",
-              "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
-            },
-            {
-              "val": {
-                "1790": 3929214,
-                "1800": 5308483,
-                "1810": 7239881,
-                "1820": 9638453,
-                "1830": 12866020,
-                "1840": 17069453,
-                "1850": 23191876,
-                "1860": 31443321,
-                "1870": 38558371,
-                "1880": 50155783,
-                "1890": 62979766,
-                "1900": 76212168,
-                "1901": 77584000,
-                "1902": 79163000,
-                "1903": 80632000,
-                "1904": 82166000,
-                "1905": 83822000,
-                "1906": 85450000,
-                "1907": 87008000,
-                "1908": 88710000,
-                "1909": 90490000,
-                "1910": 91972266,
-                "1911": 93863000,
-                "1912": 95335000,
-                "1913": 97225000,
-                "1914": 99111000,
-                "1915": 100546000,
-                "1916": 101961000,
-                "1917": 103268000,
-                "1918": 103208000,
-                "1919": 104514000,
-                "1920": 105710620,
-                "1930": 122775046,
-                "1940-04-01": 132164569,
-                "1950-04-01": 150697361,
-                "1960-04-01": 179323175,
-                "1970-04-01": 203302031,
-                "1980-04-01": 226545805,
-                "1990-04-01": 248709873,
-                "2000-04-01": 281421906,
-                "2010-04-01": 308745538,
-                "2011-07": 311582600,
-                "2013-07-01": 316128839,
-                "2016-07-09": 323952889,
-                "2017": 325145963
-              },
-              "measurementMethod": "WikidataPopulation",
-              "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org",
-              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
-            },
-            {
-              "val": {
-                "2000": 281421906,
-                "2010": 308745538,
-                "2020": 331449281
-              },
-              "measurementMethod": "USDecennialCensus",
-              "importName": "USDecennialCensus_RedistrictingRelease",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
-            },
-            {
-              "val": {
-                "1995": 266278000,
-                "1996": 269394000,
-                "1997": 272647000,
-                "1998": 275854000,
-                "1999": 279040000,
-                "2000": 282162000,
-                "2001": 284969000,
-                "2002": 287625000,
-                "2003": 290108000,
-                "2004": 292805000,
-                "2005": 295517000,
-                "2006": 298380000,
-                "2007": 301231000,
-                "2008": 304094000,
-                "2009": 306772000,
-                "2010": 309322000,
-                "2011": 311557000,
-                "2012": 313831000,
-                "2013": 315994000,
-                "2014": 318301000,
-                "2015": 320635000,
-                "2016": 322941000,
-                "2017": 324986000,
-                "2018": 326688000,
-                "2019": 328240000
-              },
-              "measurementMethod": "OECDRegionalStatistics",
-              "observationPeriod": "P1Y",
-              "importName": "OECDRegionalDemography",
-              "provenanceDomain": "oecd.org",
-              "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
-            },
-            {
-              "val": {
-                "2011": 311591917
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "HumanCuratedStats",
-              "provenanceDomain": "google.com",
-              "provenanceUrl": "https://google.com"
-            },
-            {
-              "val": {
                 "1900": 76094000,
                 "1901": 77584000,
                 "1902": 79163000,
@@ -449,21 +273,117 @@
             },
             {
               "val": {
-                "2011": 310346358,
-                "2012": 312855438,
-                "2013": 315219560,
-                "2014": 317746049,
-                "2015": 320098094,
-                "2016": 322087547,
-                "2017": 324473370,
-                "2018": 326289971,
-                "2019": 328016242
+                "2000": 281421906,
+                "2010": 308745538,
+                "2020": 331449281
               },
-              "measurementMethod": "CensusACS5yrSurvey",
-              "importName": "CensusACS5YearSurvey_AggCountry",
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
               "provenanceDomain": "census.gov",
-              "isDcAggregate": true,
-              "provenanceUrl": "https://www.census.gov/"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
+                "1960": 180671000,
+                "1961": 183691000,
+                "1962": 186538000,
+                "1963": 189242000,
+                "1964": 191889000,
+                "1965": 194303000,
+                "1966": 196560000,
+                "1967": 198712000,
+                "1968": 200706000,
+                "1969": 202677000,
+                "1970": 205052000,
+                "1971": 207661000,
+                "1972": 209896000,
+                "1973": 211909000,
+                "1974": 213854000,
+                "1975": 215973000,
+                "1976": 218035000,
+                "1977": 220239000,
+                "1978": 222585000,
+                "1979": 225055000,
+                "1980": 227225000,
+                "1981": 229466000,
+                "1982": 231664000,
+                "1983": 233792000,
+                "1984": 235825000,
+                "1985": 237924000,
+                "1986": 240133000,
+                "1987": 242289000,
+                "1988": 244499000,
+                "1989": 246819000,
+                "1990": 249623000,
+                "1991": 252981000,
+                "1992": 256514000,
+                "1993": 259919000,
+                "1994": 263126000,
+                "1995": 266278000,
+                "1996": 269394000,
+                "1997": 272657000,
+                "1998": 275854000,
+                "1999": 279040000,
+                "2000": 282162411,
+                "2001": 284968955,
+                "2002": 287625193,
+                "2003": 290107933,
+                "2004": 292805298,
+                "2005": 295516599,
+                "2006": 298379912,
+                "2007": 301231207,
+                "2008": 304093966,
+                "2009": 306771529,
+                "2010": 309327143,
+                "2011": 311583481,
+                "2012": 313877662,
+                "2013": 316059947,
+                "2014": 318386329,
+                "2015": 320738994,
+                "2016": 323071755,
+                "2017": 325122128,
+                "2018": 326838199,
+                "2019": 328329953,
+                "2020": 329484123
+              },
+              "observationPeriod": "P1Y",
+              "importName": "WorldDevelopmentIndicators",
+              "provenanceDomain": "worldbank.org",
+              "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+            },
+            {
+              "val": {
+                "1995": 266278000,
+                "1996": 269394000,
+                "1997": 272647000,
+                "1998": 275854000,
+                "1999": 279040000,
+                "2000": 282162000,
+                "2001": 284969000,
+                "2002": 287625000,
+                "2003": 290108000,
+                "2004": 292805000,
+                "2005": 295517000,
+                "2006": 298380000,
+                "2007": 301231000,
+                "2008": 304094000,
+                "2009": 306772000,
+                "2010": 309322000,
+                "2011": 311557000,
+                "2012": 313831000,
+                "2013": 315994000,
+                "2014": 318301000,
+                "2015": 320635000,
+                "2016": 322941000,
+                "2017": 324986000,
+                "2018": 326688000,
+                "2019": 328240000
+              },
+              "measurementMethod": "OECDRegionalStatistics",
+              "observationPeriod": "P1Y",
+              "importName": "OECDRegionalDemography",
+              "provenanceDomain": "oecd.org",
+              "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
             },
             {
               "val": {
@@ -482,6 +402,86 @@
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2011": 310346358,
+                "2012": 312855438,
+                "2013": 315219560,
+                "2014": 317746049,
+                "2015": 320098094,
+                "2016": 322087547,
+                "2017": 324473370,
+                "2018": 326289971,
+                "2019": 328016242
+              },
+              "measurementMethod": "CensusACS5yrSurvey",
+              "importName": "CensusACS5YearSurvey_AggCountry",
+              "provenanceDomain": "census.gov",
+              "isDcAggregate": true,
+              "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2011": 311591917
+              },
+              "measurementMethod": "HumanCuratedStats",
+              "importName": "HumanCuratedStats",
+              "provenanceDomain": "google.com",
+              "provenanceUrl": "https://google.com"
+            },
+            {
+              "val": {
+                "1790": 3929214,
+                "1800": 5308483,
+                "1810": 7239881,
+                "1820": 9638453,
+                "1830": 12866020,
+                "1840": 17069453,
+                "1850": 23191876,
+                "1860": 31443321,
+                "1870": 38558371,
+                "1880": 50155783,
+                "1890": 62979766,
+                "1900": 76212168,
+                "1901": 77584000,
+                "1902": 79163000,
+                "1903": 80632000,
+                "1904": 82166000,
+                "1905": 83822000,
+                "1906": 85450000,
+                "1907": 87008000,
+                "1908": 88710000,
+                "1909": 90490000,
+                "1910": 91972266,
+                "1911": 93863000,
+                "1912": 95335000,
+                "1913": 97225000,
+                "1914": 99111000,
+                "1915": 100546000,
+                "1916": 101961000,
+                "1917": 103268000,
+                "1918": 103208000,
+                "1919": 104514000,
+                "1920": 105710620,
+                "1930": 122775046,
+                "1940-04-01": 132164569,
+                "1950-04-01": 150697361,
+                "1960-04-01": 179323175,
+                "1970-04-01": 203302031,
+                "1980-04-01": 226545805,
+                "1990-04-01": 248709873,
+                "2000-04-01": 281421906,
+                "2010-04-01": 308745538,
+                "2011-07": 311582600,
+                "2013-07-01": 316128839,
+                "2016-07-09": 323952889,
+                "2017": 325145963
+              },
+              "measurementMethod": "WikidataPopulation",
+              "importName": "WikidataPopulation",
+              "provenanceDomain": "wikidata.org",
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             }
           ]
         }
@@ -548,105 +548,6 @@
         },
         "Count_Person": {
           "sourceSeries": [
-            {
-              "val": {
-                "1850": 92597,
-                "1860": 379994,
-                "1870": 560247,
-                "1880": 864694,
-                "1890": 1213398,
-                "1900": 1485053,
-                "1901": 1550000,
-                "1902": 1623000,
-                "1903": 1702000,
-                "1904": 1792000,
-                "1905": 1893000,
-                "1906": 1976000,
-                "1907": 2054000,
-                "1908": 2161000,
-                "1909": 2282000,
-                "1910": 2377549,
-                "1911": 2534000,
-                "1912": 2668000,
-                "1913": 2811000,
-                "1914": 2934000,
-                "1915": 3008000,
-                "1916": 3071000,
-                "1917": 3171000,
-                "1918": 3262000,
-                "1919": 3339000,
-                "1920": 3426861,
-                "1930": 5677251,
-                "1940": 6907387,
-                "1950": 10586223,
-                "1960": 15717204,
-                "1970": 19953134,
-                "1980": 23667902,
-                "1990": 29760021,
-                "2000": 33871648,
-                "2010-04-01": 37253956,
-                "2015": 39144818,
-                "2016": 39250017
-              },
-              "measurementMethod": "WikidataPopulation",
-              "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org",
-              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
-            },
-            {
-              "val": {
-                "2000": 33871648,
-                "2010": 37253956,
-                "2020": 39538223
-              },
-              "measurementMethod": "USDecennialCensus",
-              "importName": "USDecennialCensus_RedistrictingRelease",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
-            },
-            {
-              "val": {
-                "1995": 31696600,
-                "1996": 32018800,
-                "1997": 32486000,
-                "1998": 32987700,
-                "1999": 33499200,
-                "2000": 33988000,
-                "2001": 34479500,
-                "2002": 34871800,
-                "2003": 35253200,
-                "2004": 35574600,
-                "2005": 35827900,
-                "2006": 36021200,
-                "2007": 36250300,
-                "2008": 36604300,
-                "2009": 36961200,
-                "2010": 37319500,
-                "2011": 37638400,
-                "2012": 37948800,
-                "2013": 38260800,
-                "2014": 38597000,
-                "2015": 38918000,
-                "2016": 39167100,
-                "2017": 39358500,
-                "2018": 39461600,
-                "2019": 39512200
-              },
-              "measurementMethod": "OECDRegionalStatistics",
-              "observationPeriod": "P1Y",
-              "importName": "OECDRegionalDemography",
-              "provenanceDomain": "oecd.org",
-              "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
-            },
-            {
-              "val": {
-                "2011": 37691912
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "HumanCuratedStats",
-              "provenanceDomain": "google.com",
-              "provenanceUrl": "https://google.com"
-            },
             {
               "val": {
                 "1900": 1490000,
@@ -794,6 +695,51 @@
             },
             {
               "val": {
+                "2000": 33871648,
+                "2010": 37253956,
+                "2020": 39538223
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
+                "1995": 31696600,
+                "1996": 32018800,
+                "1997": 32486000,
+                "1998": 32987700,
+                "1999": 33499200,
+                "2000": 33988000,
+                "2001": 34479500,
+                "2002": 34871800,
+                "2003": 35253200,
+                "2004": 35574600,
+                "2005": 35827900,
+                "2006": 36021200,
+                "2007": 36250300,
+                "2008": 36604300,
+                "2009": 36961200,
+                "2010": 37319500,
+                "2011": 37638400,
+                "2012": 37948800,
+                "2013": 38260800,
+                "2014": 38597000,
+                "2015": 38918000,
+                "2016": 39167100,
+                "2017": 39358500,
+                "2018": 39461600,
+                "2019": 39512200
+              },
+              "measurementMethod": "OECDRegionalStatistics",
+              "observationPeriod": "P1Y",
+              "importName": "OECDRegionalDemography",
+              "provenanceDomain": "oecd.org",
+              "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
+            },
+            {
+              "val": {
                 "2010": 37349363,
                 "2011": 37691912,
                 "2012": 38041430,
@@ -809,6 +755,60 @@
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2011": 37691912
+              },
+              "measurementMethod": "HumanCuratedStats",
+              "importName": "HumanCuratedStats",
+              "provenanceDomain": "google.com",
+              "provenanceUrl": "https://google.com"
+            },
+            {
+              "val": {
+                "1850": 92597,
+                "1860": 379994,
+                "1870": 560247,
+                "1880": 864694,
+                "1890": 1213398,
+                "1900": 1485053,
+                "1901": 1550000,
+                "1902": 1623000,
+                "1903": 1702000,
+                "1904": 1792000,
+                "1905": 1893000,
+                "1906": 1976000,
+                "1907": 2054000,
+                "1908": 2161000,
+                "1909": 2282000,
+                "1910": 2377549,
+                "1911": 2534000,
+                "1912": 2668000,
+                "1913": 2811000,
+                "1914": 2934000,
+                "1915": 3008000,
+                "1916": 3071000,
+                "1917": 3171000,
+                "1918": 3262000,
+                "1919": 3339000,
+                "1920": 3426861,
+                "1930": 5677251,
+                "1940": 6907387,
+                "1950": 10586223,
+                "1960": 15717204,
+                "1970": 19953134,
+                "1980": 23667902,
+                "1990": 29760021,
+                "2000": 33871648,
+                "2010-04-01": 37253956,
+                "2015": 39144818,
+                "2016": 39250017
+              },
+              "measurementMethod": "WikidataPopulation",
+              "importName": "WikidataPopulation",
+              "provenanceDomain": "wikidata.org",
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             }
           ]
         }
@@ -844,35 +844,6 @@
         },
         "Count_Person": {
           "sourceSeries": [
-            {
-              "val": {
-                "2010": 74066
-              },
-              "measurementMethod": "WikidataPopulation",
-              "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org",
-              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
-            },
-            {
-              "val": {
-                "2000": 70708,
-                "2010": 74066,
-                "2020": 82376
-              },
-              "measurementMethod": "USDecennialCensus",
-              "importName": "USDecennialCensus_RedistrictingRelease",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
-            },
-            {
-              "val": {
-                "2013": 77846
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "HumanCuratedStats",
-              "provenanceDomain": "google.com",
-              "provenanceUrl": "https://google.com"
-            },
             {
               "val": {
                 "1990": 66734,
@@ -929,6 +900,17 @@
             },
             {
               "val": {
+                "2000": 70708,
+                "2010": 74066,
+                "2020": 82376
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
                 "2010": 74320,
                 "2011": 75230,
                 "2012": 76612,
@@ -944,6 +926,24 @@
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2013": 77846
+              },
+              "measurementMethod": "HumanCuratedStats",
+              "importName": "HumanCuratedStats",
+              "provenanceDomain": "google.com",
+              "provenanceUrl": "https://google.com"
+            },
+            {
+              "val": {
+                "2010": 74066
+              },
+              "measurementMethod": "WikidataPopulation",
+              "importName": "WikidataPopulation",
+              "provenanceDomain": "wikidata.org",
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             }
           ]
         }
