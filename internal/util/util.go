@@ -35,6 +35,8 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
+type hashStoreKey string
+
 const (
 	// BtPlaceStatsVarPrefix for place to statsvar list cache.
 	BtPlaceStatsVarPrefix = "d/0/"
@@ -83,6 +85,9 @@ const (
 	LimitFactor = 1
 	// TextType represents text type.
 	TextType = "Text"
+
+	// HashStoreKey is the key to represent a HashStore object in request context.
+	HashStoreKey = hashStoreKey("hs")
 )
 
 type typeInfo struct {

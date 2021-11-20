@@ -65,9 +65,6 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 			&pb.PointStat{
 				Date:  "2018",
 				Value: 205,
-				Metadata: &pb.StatMetadata{
-					ImportName: "CensusPEP",
-				},
 			},
 			&pb.StatMetadata{
 				ImportName:        "CensusPEP",
@@ -106,9 +103,6 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 			&pb.PointStat{
 				Date:  "2020",
 				Value: 400,
-				Metadata: &pb.StatMetadata{
-					ImportName: "CensusACS5YearSurvey",
-				},
 			},
 			&pb.StatMetadata{
 				ImportName:        "CensusACS5YearSurvey",
