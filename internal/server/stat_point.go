@@ -200,10 +200,15 @@ func getStatSetAll(
 		}
 	}
 	for statVar, sourceData := range tmpResult {
-		for _, data := range sourceData {
+		metaHashList := []uint32{}
+		for metaHash := range sourceData {
+			metaHashList = append(metaHashList, metaHash)
+		}
+		sort.Slice(metaHashList, func(i, j int) bool { return metaHashList[i] < metaHashList[j] })
+		for _, metaHash := range metaHashList {
 			result.Data[statVar].StatList = append(
 				result.Data[statVar].StatList,
-				data,
+				sourceData[metaHash],
 			)
 		}
 	}
