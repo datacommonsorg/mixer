@@ -167,9 +167,8 @@ func getStatSetAll(
 				if date != "" {
 					if value, ok := series.Val[date]; ok {
 						tmpResult[statVar][metaHash].Stat[place] = &pb.PointStat{
-							Date:     date,
-							Value:    value,
-							MetaHash: metaHash,
+							Date:  date,
+							Value: value,
 						}
 					}
 				} else {
@@ -180,13 +179,13 @@ func getStatSetAll(
 						if date > latestDate {
 							latestDate = date
 							ps = &pb.PointStat{
-								Date:     date,
-								Value:    value,
-								MetaHash: metaHash,
+								Date:  date,
+								Value: value,
 							}
 						}
 					}
 					tmpResult[statVar][metaHash].Stat[place] = ps
+					tmpResult[statVar][metaHash].MetaHash = metaHash
 				}
 				result.Metadata[metaHash] = metaData
 			}
@@ -446,13 +445,13 @@ func (s *Server) GetStatSetWithinPlaceAll(
 			}
 			metaHash := getMetadataHash(metaData)
 			pointStat := &pb.PlacePointStat{
-				Stat: map[string]*pb.PointStat{},
+				MetaHash: metaHash,
+				Stat:     map[string]*pb.PointStat{},
 			}
 			for place, val := range cohort.Val {
 				pointStat.Stat[place] = &pb.PointStat{
-					Date:     cohort.PlaceToLatestDate[place],
-					Value:    val,
-					MetaHash: metaHash,
+					Date:  cohort.PlaceToLatestDate[place],
+					Value: val,
 				}
 			}
 			result.Data[statVar].StatList = append(result.Data[statVar].StatList, pointStat)
@@ -497,6 +496,7 @@ func (s *Server) GetStatSetWithinPlaceAll(
 					if i == 0 {
 						metaHash = getMetadataHash(metaData)
 						result.Metadata[metaHash] = metaData
+						stat.MetaHash = metaHash
 					}
 					stat.Stat[place] = pointValue
 				}

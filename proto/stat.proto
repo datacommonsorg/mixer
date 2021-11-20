@@ -46,16 +46,20 @@ message PointStat {
   // date in IOS-8601 format
   string date = 1;
   double value = 2;
-  // Full metadata of the stat
+  // Full metadata of the stat. This is set when the proto is used statalone,
+  // ex, in place page cache.
   StatMetadata metadata = 3;
   // Hash of the metadata, this is to be used together with a map from
-  // the hash to the full metatdata.
+  // the hash to the full metatdata. This is set in /stat/set/within-place/*
+  // APIs.
   uint32 meta_hash = 4;
 }
 
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
+  // Hash of the matdata, which applies to all the PointStat in `stat` field.
+  uint32 meta_hash = 2;
 }
 
 message PlacePointStatAll {
