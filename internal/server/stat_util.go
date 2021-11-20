@@ -254,7 +254,7 @@ func getValueFromBestSourcePb(
 // Note this should be restrict to a request scope.
 func getMetadataHash(m *pb.StatMetadata) uint32 {
 	h := fnv.New32a()
-	h.Write([]byte(strings.Join([]string{
+	_, _ = h.Write([]byte(strings.Join([]string{
 		m.ImportName,
 		m.MeasurementMethod,
 		m.ObservationPeriod,
