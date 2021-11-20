@@ -16,13 +16,11 @@ package server
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"sort"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -74,19 +72,13 @@ func getStatSet(
 	*pb.GetStatSetResponse, error) {
 	// Initialize result with stat vars and place dcids.
 	ts := time.Now()
-	v := ctx.Value(util.HashStoreKey)
-	if v == nil {
-		return nil, fmt.Errorf("hash store is not registered in the context")
-	}
-	hs := v.(*util.HashStore)
-
 	result := &pb.GetStatSetResponse{
-		Data: make(map[string]*pb.PlacePointStat),
+		Data:     make(map[string]*pb.PlacePointStat),
+		Metadata: make(map[uint32]*pb.StatMetadata),
 	}
 	for _, statVar := range statVars {
 		result.Data[statVar] = &pb.PlacePointStat{
-			Stat:     make(map[string]*pb.PointStat),
-			Metadata: make(map[string]*pb.StatMetadata),
+			Stat: make(map[string]*pb.PointStat),
 		}
 		for _, place := range places {
 			result.Data[statVar].Stat[place] = nil
@@ -108,14 +100,14 @@ func getStatSet(
 			if !ok || data == nil {
 				continue
 			}
-			stat, meta := getValueFromBestSourcePb(data, date)
+			stat, metaData := getValueFromBestSourcePb(data, date)
 			if stat == nil {
 				continue
 			}
-			metaHash := hs.GetHash(meta)
+			metaHash := getMetadataHash(metaData)
 			stat.MetaHash = metaHash
 			result.Data[statVar].Stat[place] = stat
-			result.Data[statVar].Metadata[metaHash] = meta
+			result.Metadata[metaHash] = metaData
 		}
 	}
 	log.Printf("getStatSet() completed for %d places, %d stat vars, in %s seconds",
@@ -128,11 +120,6 @@ func getStatSetAll(
 	*pb.GetStatSetAllResponse, error,
 ) {
 	ts := time.Now()
-	v := ctx.Value(util.HashStoreKey)
-	if v == nil {
-		return nil, fmt.Errorf("hash store is not registered in the context")
-	}
-	hs := v.(*util.HashStore)
 	rowList, keyTokens := buildStatsKey(places, statVars)
 	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
@@ -140,7 +127,12 @@ func getStatSetAll(
 	}
 	// Use a temporary result to hold statVar->source->(place,value) data, then
 	// convert to final result
-	tmpResult := map[string]map[string]*pb.PlacePointStat{}
+	tmpResult := map[string]map[uint32]*pb.PlacePointStat{}
+	// Initialize result with stat vars and place dcids.
+	result := &pb.GetStatSetAllResponse{
+		Data:     make(map[string]*pb.PlacePointStatAll),
+		Metadata: make(map[uint32]*pb.StatMetadata),
+	}
 
 	// Populate tmp result
 	for _, place := range places {
@@ -154,10 +146,10 @@ func getStatSetAll(
 				continue
 			}
 			if _, ok := tmpResult[statVar]; !ok {
-				tmpResult[statVar] = map[string]*pb.PlacePointStat{}
+				tmpResult[statVar] = map[uint32]*pb.PlacePointStat{}
 			}
 			for _, series := range ObsTimeSeries.SourceSeries {
-				meta := &pb.StatMetadata{
+				metaData := &pb.StatMetadata{
 					ImportName:        series.ImportName,
 					ProvenanceUrl:     series.ProvenanceUrl,
 					MeasurementMethod: series.MeasurementMethod,
@@ -165,11 +157,10 @@ func getStatSetAll(
 					ScalingFactor:     series.ScalingFactor,
 					Unit:              series.Unit,
 				}
-				metaHash := hs.GetHash(meta)
+				metaHash := getMetadataHash(metaData)
 				if _, ok := tmpResult[statVar][metaHash]; !ok {
 					tmpResult[statVar][metaHash] = &pb.PlacePointStat{
-						Stat:     map[string]*pb.PointStat{},
-						Metadata: map[string]*pb.StatMetadata{metaHash: meta},
+						Stat: map[string]*pb.PointStat{},
 					}
 				}
 				// Date is given
@@ -197,31 +188,22 @@ func getStatSetAll(
 					}
 					tmpResult[statVar][metaHash].Stat[place] = ps
 				}
+				result.Metadata[metaHash] = metaData
 			}
 		}
 	}
 
 	// Convert tmp result to result
-	// tmpResult := map[string]map[string]*pb.PlacePointStat{}
-	// Initialize result with stat vars and place dcids.
-	result := &pb.GetStatSetAllResponse{
-		Data: make(map[string]*pb.PlacePointStatAll),
-	}
 	for _, statVar := range statVars {
 		result.Data[statVar] = &pb.PlacePointStatAll{
 			StatList: []*pb.PlacePointStat{},
 		}
 	}
 	for statVar, sourceData := range tmpResult {
-		metaHashList := []string{}
-		for metaHash := range sourceData {
-			metaHashList = append(metaHashList, metaHash)
-		}
-		sort.Strings(metaHashList)
-		for _, metaHash := range metaHashList {
+		for _, data := range sourceData {
 			result.Data[statVar].StatList = append(
 				result.Data[statVar].StatList,
-				sourceData[metaHash],
+				data,
 			)
 		}
 	}
@@ -236,7 +218,6 @@ func getStatSetAll(
 func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	*pb.GetStatSetResponse, error) {
 	// Attach a hash store to the context
-	ctx = context.WithValue(ctx, util.HashStoreKey, &util.HashStore{})
 	places := in.GetPlaces()
 	statVars := in.GetStatVars()
 	date := in.GetDate()
@@ -258,8 +239,6 @@ func (s *Server) GetStatSetWithinPlace(
 	ctx context.Context, in *pb.GetStatSetWithinPlaceRequest) (
 	*pb.GetStatSetResponse, error,
 ) {
-	hs := &util.HashStore{}
-	ctx = context.WithValue(ctx, util.HashStoreKey, hs)
 	parentPlace := in.GetParentPlace()
 	statVars := in.GetStatVars()
 	childType := in.GetChildType()
@@ -291,12 +270,12 @@ func (s *Server) GetStatSetWithinPlace(
 
 	// Pre-populate result
 	result := &pb.GetStatSetResponse{
-		Data: make(map[string]*pb.PlacePointStat),
+		Data:     make(map[string]*pb.PlacePointStat),
+		Metadata: make(map[uint32]*pb.StatMetadata),
 	}
 	for _, statVar := range statVars {
 		result.Data[statVar] = &pb.PlacePointStat{
-			Stat:     make(map[string]*pb.PointStat),
-			Metadata: make(map[string]*pb.StatMetadata),
+			Stat: make(map[string]*pb.PointStat),
 		}
 	}
 
@@ -336,13 +315,13 @@ func (s *Server) GetStatSetWithinPlace(
 					if usedDate == "" {
 						usedDate = cohort.PlaceToLatestDate[place]
 					}
-					hash := hs.GetHash(metaData)
+					metaHash := getMetadataHash(metaData)
 					result.Data[statVar].Stat[place] = &pb.PointStat{
 						Date:     usedDate,
 						Value:    val,
-						MetaHash: hash,
+						MetaHash: metaHash,
 					}
-					result.Data[statVar].Metadata[hash] = metaData
+					result.Metadata[metaHash] = metaData
 				}
 			}
 		}
@@ -355,7 +334,7 @@ func (s *Server) GetStatSetWithinPlace(
 			break
 		}
 	}
-	// Need to fetch child places if to read data from memory database or
+	// Need to fetch child places if need to read data from memory database or
 	// from per place,statvar bigtable.
 	var childPlaces []string
 	if !gotResult || statVarInMemDb {
@@ -376,13 +355,13 @@ func (s *Server) GetStatSetWithinPlace(
 	if statVarInMemDb {
 		for _, statVar := range statVars {
 			for _, place := range childPlaces {
-				pointValue, meta := s.store.MemDb.ReadPointValue(statVar, place, date)
+				pointValue, metaData := s.store.MemDb.ReadPointValue(statVar, place, date)
 				// Override public data from private import
 				if pointValue != nil {
-					metaHash := hs.GetHash(meta)
+					metaHash := getMetadataHash(metaData)
 					pointValue.MetaHash = metaHash
 					result.Data[statVar].Stat[place] = pointValue
-					result.Data[statVar].Metadata[metaHash] = meta
+					result.Metadata[metaHash] = metaData
 				}
 			}
 		}
@@ -425,12 +404,10 @@ func (s *Server) GetStatSetWithinPlaceAll(
 		dateKey = "LATEST"
 	}
 
-	hs := &util.HashStore{}
-	ctx = context.WithValue(ctx, util.HashStoreKey, hs)
-
 	// Pre-populate result
 	result := &pb.GetStatSetAllResponse{
-		Data: make(map[string]*pb.PlacePointStatAll),
+		Data:     make(map[string]*pb.PlacePointStatAll),
+		Metadata: make(map[uint32]*pb.StatMetadata),
 	}
 	for _, statVar := range statVars {
 		result.Data[statVar] = &pb.PlacePointStatAll{
@@ -462,10 +439,9 @@ func (s *Server) GetStatSetWithinPlaceAll(
 				ImportName:        cohort.ImportName,
 				Unit:              cohort.Unit,
 			}
-			metaHash := hs.GetHash(metaData)
+			metaHash := getMetadataHash(metaData)
 			pointStat := &pb.PlacePointStat{
-				Stat:     map[string]*pb.PointStat{},
-				Metadata: map[string]*pb.StatMetadata{metaHash: metaData},
+				Stat: map[string]*pb.PointStat{},
 			}
 			for place, val := range cohort.Val {
 				pointStat.Stat[place] = &pb.PointStat{
@@ -475,6 +451,7 @@ func (s *Server) GetStatSetWithinPlaceAll(
 				}
 			}
 			result.Data[statVar].StatList = append(result.Data[statVar].StatList, pointStat)
+			result.Metadata[metaHash] = metaData
 		}
 	}
 	// Check if need to read from memory database.
@@ -509,12 +486,12 @@ func (s *Server) GetStatSetWithinPlaceAll(
 				Stat: make(map[string]*pb.PointStat),
 			}
 			for i, place := range childPlaces {
-				pointValue, meta := s.store.MemDb.ReadPointValue(statVar, place, date)
-				var metaHash string
+				pointValue, metaData := s.store.MemDb.ReadPointValue(statVar, place, date)
+				var metaHash uint32
 				if pointValue != nil {
 					if i == 0 {
-						metaHash = hs.GetHash(meta)
-						stat.Metadata = map[string]*pb.StatMetadata{metaHash: meta}
+						metaHash = getMetadataHash(metaData)
+						result.Metadata[metaHash] = metaData
 					}
 					stat.Stat[place] = pointValue
 				}

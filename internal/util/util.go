@@ -428,27 +428,3 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 	})
 	return m
 }
-
-// HashStore is a simple a store to produce hash for protobuf message
-type HashStore struct {
-	store map[string]int
-}
-
-// GetHash retrieves a hash string for a given protobuf message.
-// Note this should be restrict to a request scope.
-func (hs *HashStore) GetHash(m proto.Message) string {
-	if hs.store == nil {
-		hs.store = map[string]int{}
-	}
-	b, err := proto.Marshal(m)
-	if err != nil {
-		return "0"
-	}
-	hash, ok := hs.store[string(b)]
-	if ok {
-		return fmt.Sprint(hash)
-	}
-	count := len(hs.store) + 1
-	hs.store[string(b)] = count
-	return fmt.Sprint(count)
-}

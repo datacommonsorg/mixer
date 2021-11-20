@@ -53,8 +53,9 @@ type MixerClient interface {
 	// Get the stat value for children places of certain place type at a given
 	// date.
 	GetStatSetWithinPlace(ctx context.Context, in *GetStatSetWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatSetResponse, error)
-	// Get the stat value for children places of certain place type at a given
-	// date.
+	// Get the stat value from all sources for children places of certain place
+	// type. If date is not specified, the latest value of every source is
+	// returned.
 	GetStatSetWithinPlaceAll(ctx context.Context, in *GetStatSetWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatSetAllResponse, error)
 	// Get the stat value for given places and stat vars. If date is not given,
 	// then the latest value for each <place, stat var> is returned.
@@ -429,8 +430,9 @@ type MixerServer interface {
 	// Get the stat value for children places of certain place type at a given
 	// date.
 	GetStatSetWithinPlace(context.Context, *GetStatSetWithinPlaceRequest) (*GetStatSetResponse, error)
-	// Get the stat value for children places of certain place type at a given
-	// date.
+	// Get the stat value from all sources for children places of certain place
+	// type. If date is not specified, the latest value of every source is
+	// returned.
 	GetStatSetWithinPlaceAll(context.Context, *GetStatSetWithinPlaceRequest) (*GetStatSetAllResponse, error)
 	// Get the stat value for given places and stat vars. If date is not given,
 	// then the latest value for each <place, stat var> is returned.

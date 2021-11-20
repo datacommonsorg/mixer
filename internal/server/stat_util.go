@@ -15,7 +15,9 @@
 package server
 
 import (
+	"hash/fnv"
 	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
@@ -246,4 +248,19 @@ func getValueFromBestSourcePb(
 		return nil, nil
 	}
 	return ps, meta
+}
+
+// getMetadataHash retrieves a hash string for a given protobuf message.
+// Note this should be restrict to a request scope.
+func getMetadataHash(m *pb.StatMetadata) uint32 {
+	h := fnv.New32a()
+	h.Write([]byte(strings.Join([]string{
+		m.ImportName,
+		m.MeasurementMethod,
+		m.ObservationPeriod,
+		m.ObservationPeriod,
+		m.ScalingFactor,
+		m.Unit,
+	}, "-")))
+	return h.Sum32()
 }
