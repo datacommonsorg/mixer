@@ -41,7 +41,7 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-TAG=$(git rev-parse --short HEAD)
+TAG=$(git rev-parse --short=7 HEAD)
 if [[ $2 != "" ]]; then
   TAG=$2
   cd "$ROOT"
