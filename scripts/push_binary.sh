@@ -21,7 +21,7 @@ ROOT="$(dirname "$DIR")"
 
 cd "$ROOT"
 
-TAG=$(git rev-parse --short HEAD)
+TAG=$(git rev-parse --short=7 HEAD)
 
 cloud-build-local --config=build/ci/cloudbuild.push.yaml --dryrun=false \
 --substitutions SHORT_SHA="$TAG" .
