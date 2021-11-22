@@ -83,13 +83,6 @@
     }
   },
   {
-    "title": "Electricity generation per capita",
-    "statsVars": [
-      "Annual_Generation_Electricity"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Electricity price",
     "statsVars": [
       "Annual_Average_RetailPrice_Electricity"

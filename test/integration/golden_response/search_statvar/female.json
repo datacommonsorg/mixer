@@ -17,7 +17,7 @@
       "dcid": "Count_Person_NowMarried"
     },
     {
-      "name": "Life Expectancy of Female",
+      "name": "Life expectancy at birth, female (years)",
       "dcid": "LifeExpectancy_Person_Female"
     },
     {
@@ -1261,6 +1261,10 @@
       "dcid": "Count_Person_25To34Years_EducationalAttainmentSomeCollegeNoDegree_Female"
     },
     {
+      "name": "25 - 39 Years, Bachelors Degree or Higher, Female Population",
+      "dcid": "Count_Person_25To39Years_EducationalAttainmentBachelorsDegreeOrHigher_Female"
+    },
+    {
       "name": "25 Years or More, Female, American Indian or Alaska Native Alone Population",
       "dcid": "Count_Person_25OrMoreYears_Female_AmericanIndianOrAlaskaNativeAlone"
     },
@@ -1483,6 +1487,10 @@
     {
       "name": "40 - 64 Years, 4 Ratio To Poverty Line or Less, Female Population",
       "dcid": "Count_Person_40To64Years_RatioToPovertyLineUpto4_Female"
+    },
+    {
+      "name": "40 - 64 Years, Bachelors Degree or Higher, Female Population",
+      "dcid": "Count_Person_40To64Years_EducationalAttainmentBachelorsDegreeOrHigher_Female"
     },
     {
       "name": "40 - 64 Years, Female, Black or African American Alone Population",
@@ -3129,7 +3137,7 @@
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNurseryTo4ThGrade_Female"
     },
     {
-      "name": "Prevalence of 21 - 65 Years, Female, Cervical Cancer Screening",
+      "name": "Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
       "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
     },
     {
@@ -3193,32 +3201,32 @@
       "dcid": "Count_Person_15To19Years_Female_EverMarried_WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "21 - 65 Years, Female, Cervical Cancer Screening Population",
-      "dcid": "SampleSize_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
-    },
-    {
-      "name": "65 Years or More, Female, Core Preventive Services Population",
-      "dcid": "SampleSize_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-    },
-    {
-      "name": "Confidence Interval Lower Limit Prevalence of 21 - 65 Years, Female, Cervical Cancer Screening",
+      "name": "Lower Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
       "dcid": "LowerConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
     },
     {
-      "name": "Confidence Interval Lower Limit Prevalence of 65 Years or More, Female, Core Preventive Services",
+      "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
       "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-    },
-    {
-      "name": "Confidence Interval Upper Limit Prevalence of 21 - 65 Years, Female, Cervical Cancer Screening",
-      "dcid": "UpperConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
-    },
-    {
-      "name": "Confidence Interval Upper Limit Prevalence of 65 Years or More, Female, Core Preventive Services",
-      "dcid": "UpperConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
     },
     {
       "name": "Median Income of Female",
       "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+    },
+    {
+      "name": "Sample Size, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
+      "dcid": "SampleSize_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+    },
+    {
+      "name": "Sample Size, Prevalence of 65 Years or More, Female, Core Preventive Services",
+      "dcid": "SampleSize_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
+    },
+    {
+      "name": "Upper Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
+      "dcid": "UpperConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+    },
+    {
+      "name": "Upper Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
+      "dcid": "UpperConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
     },
     {
       "name": "Count of Female as Fraction of Count Person Female",
@@ -3991,14 +3999,6 @@
     {
       "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, White Alone Population",
       "dcid": "dc/kjls8g1mt0228"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance Population",
-      "dcid": "dc/cd74zc68krh89"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Black or African American Alone Population",
-      "dcid": "dc/t0s4nslrb9qm7"
     }
   ],
   "statVarGroups": [
@@ -4257,6 +4257,10 @@
     {
       "name": "Person With Age = 25 - 34 Years, Gender = Female",
       "dcid": "dc/g/Person_Age-Years25To34_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 25 - 39 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To39_Gender-Female"
     },
     {
       "name": "Person With Age = 25 Years or More, Gender = Female",
@@ -7015,6 +7019,14 @@
       "dcid": "dc/g/Person_Age-Years25To34_Gender-Female_MilitaryStatus"
     },
     {
+      "name": "Person With Age = 25 - 39 Years, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To39_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 25 - 39 Years, Educational Attainment, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years25To39_EducationalAttainment_Gender-Female"
+    },
+    {
       "name": "Person With Age = 25 Years or More, Gender = Female, Race",
       "dcid": "dc/g/Person_Age-Years25Onwards_Gender-Female_Race"
     },
@@ -7141,6 +7153,14 @@
     {
       "name": "Person With Age = 35 Years or More, Gender = Female, Type of School",
       "dcid": "dc/g/Person_Age-Years35Onwards_Gender-Female_TypeOfSchool"
+    },
+    {
+      "name": "Person With Age = 40 - 64 Years, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years40To64_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 40 - 64 Years, Educational Attainment, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years40To64_EducationalAttainment_Gender-Female"
     },
     {
       "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
@@ -7715,6 +7735,10 @@
       "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_MilitaryStatus"
     },
     {
+      "name": "Person With Age = 65 Years or More, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years65Onwards_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female"
+    },
+    {
       "name": "Person With Age = 65 Years or More, Educational Attainment, Gender = Female",
       "dcid": "dc/g/Person_Age-Years65Onwards_EducationalAttainment_Gender-Female"
     },
@@ -7977,30 +8001,6 @@
     {
       "name": "Person With Age, Employment Status = in Labor Force, Gender = Female",
       "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Enrollment Level = Enrolled in Private College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age_EnrollmentLevel-EnrolledInPrivateCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Enrollment Level = Enrolled in Public College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age_EnrollmentLevel-EnrolledInPublicCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female",
-      "dcid": "dc/g/Person_Age_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
-      "dcid": "dc/g/Person_Age_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female",
-      "dcid": "dc/g/Person_Age_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female",
-      "dcid": "dc/g/Person_Age_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female"
     }
   ]
 }
