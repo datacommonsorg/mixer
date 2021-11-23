@@ -58,8 +58,6 @@ message PointStat {
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
-  // Hash of the matdata, which applies to all the PointStat in `stat` field.
-  uint32 meta_hash = 2;
 }
 
 message PlacePointStatAll {
