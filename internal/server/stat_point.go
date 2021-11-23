@@ -448,9 +448,14 @@ func (s *Server) GetStatSetWithinPlaceAll(
 				MetaHash: metaHash,
 				Stat:     map[string]*pb.PointStat{},
 			}
+
 			for place, val := range cohort.Val {
+				usedDate := date
+				if usedDate == "" {
+					usedDate = cohort.PlaceToLatestDate[place]
+				}
 				pointStat.Stat[place] = &pb.PointStat{
-					Date:  cohort.PlaceToLatestDate[place],
+					Date:  usedDate,
 					Value: val,
 				}
 			}
