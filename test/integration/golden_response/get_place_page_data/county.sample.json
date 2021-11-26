@@ -15034,6 +15034,27 @@
             "observationPeriod": "P1D"
           }
         },
+        "Annual_Emissions_CarbonDioxide_NonBiogenic": {
+          "val": {
+            "2010": 2324601.1,
+            "2011": 2057903.4,
+            "2012": 2235707.3,
+            "2013": 2491925.3,
+            "2014": 2497658.1,
+            "2015": 2607735.1,
+            "2016": 2470659.7,
+            "2017": 2025173.3,
+            "2018": 2277097.2,
+            "2019": 1924397.5
+          },
+          "metadata": {
+            "importName": "EPA_GHGRP_AggCounty",
+            "provenanceUrl": "https://www.epa.gov/ghgreporting",
+            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "observationPeriod": "P1Y",
+            "unit": "MetricTonCO2e"
+          }
+        },
         "Annual_Emissions_GreenhouseGas_NonBiogenic": {
           "val": {
             "2010": 2533334.936,
@@ -15046,6 +15067,48 @@
             "2017": 2229100.074,
             "2018": 2458239.45,
             "2019": 2089390.558
+          },
+          "metadata": {
+            "importName": "EPA_GHGRP_AggCounty",
+            "provenanceUrl": "https://www.epa.gov/ghgreporting",
+            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "observationPeriod": "P1Y",
+            "unit": "MetricTonCO2e"
+          }
+        },
+        "Annual_Emissions_Methane_NonBiogenic": {
+          "val": {
+            "2010": 207167.25,
+            "2011": 265074,
+            "2012": 430705.5,
+            "2013": 256738.25,
+            "2014": 217077,
+            "2015": 199536.5,
+            "2016": 157542.25,
+            "2017": 202567,
+            "2018": 179652.25,
+            "2019": 163727.75
+          },
+          "metadata": {
+            "importName": "EPA_GHGRP_AggCounty",
+            "provenanceUrl": "https://www.epa.gov/ghgreporting",
+            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "observationPeriod": "P1Y",
+            "unit": "MetricTonCO2e"
+          }
+        },
+        "Annual_Emissions_NitrousOxide_NonBiogenic": {
+          "val": {
+            "2010": 1566.586,
+            "2011": 1419.672,
+            "2012": 1594.896,
+            "2013": 1631.848,
+            "2014": 1473.312,
+            "2015": 1661.946,
+            "2016": 1570.162,
+            "2017": 1359.774,
+            "2018": 1490,
+            "2019": 1265.308
           },
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
@@ -18870,7 +18933,11 @@
             "2021-11-11": 164960,
             "2021-11-12": 164960,
             "2021-11-13": 165395,
-            "2021-11-14": 165395
+            "2021-11-14": 165395,
+            "2021-11-15": 165759,
+            "2021-11-16": 165935,
+            "2021-11-17": 166100,
+            "2021-11-18": 166340
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -19512,7 +19579,11 @@
             "2021-11-11": 2376,
             "2021-11-12": 2379,
             "2021-11-13": 2379,
-            "2021-11-14": 2379
+            "2021-11-14": 2379,
+            "2021-11-15": 2382,
+            "2021-11-16": 2388,
+            "2021-11-17": 2394,
+            "2021-11-18": 2405
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -24076,6 +24147,39 @@
             "unit": "Celsius"
           }
         },
+        "Mean_Concentration_AirPollutant_DieselPM": {
+          "val": {
+            "2016": 0.714474110912934,
+            "2017": 0.714474110912934,
+            "2018": 0.714474110912934,
+            "2019": 0.351909058459164,
+            "2020": 0.351909058459163
+          },
+          "metadata": {
+            "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+            "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
+            "measurementMethod": "DataCommonsAggregate",
+            "observationPeriod": "P1Y",
+            "unit": "MicrogramsPerCubicMeter"
+          }
+        },
+        "Mean_Concentration_AirPollutant_Ozone": {
+          "val": {
+            "2015": 52.3461980378549,
+            "2016": 54.9764485515741,
+            "2017": 40.8139438590981,
+            "2018": 50.4105811818306,
+            "2019": 50.2569412300785,
+            "2020": 50.1557068060452
+          },
+          "metadata": {
+            "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+            "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
+            "measurementMethod": "DataCommonsAggregate",
+            "observationPeriod": "P1Y",
+            "unit": "PartsPerBillion"
+          }
+        },
         "Mean_Concentration_AirPollutant_PM2.5": {
           "val": {
             "2015": 10.1529285362776,
@@ -26792,6 +26896,23 @@
             "provenanceUrl": "https://www.bls.gov/lau/",
             "measurementMethod": "BLSSeasonallyUnadjusted",
             "observationPeriod": "P1M"
+          }
+        },
+        "WithdrawalRate_Water": {
+          "val": {
+            "1985": 1615.8,
+            "1990": 1318.28,
+            "1995": 1595.62,
+            "2000": 1558.9,
+            "2005": 1543.31,
+            "2010": 1340.98,
+            "2015": 1727.38
+          },
+          "metadata": {
+            "importName": "USGSWaterUse",
+            "provenanceUrl": "https://waterdata.usgs.gov/nwis",
+            "observationPeriod": "P1Y",
+            "unit": "MillionGallonsPerDay"
           }
         }
       }

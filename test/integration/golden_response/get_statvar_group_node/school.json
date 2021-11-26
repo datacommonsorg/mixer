@@ -183,7 +183,7 @@
       "id": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher",
       "specializedEntity": "Bachelors Degree or Higher",
       "displayName": "Person With Educational Attainment = Bachelors Degree or Higher",
-      "numDescendentStatVars": 39
+      "numDescendentStatVars": 46
     },
     {
       "id": "dc/g/Person_EducationalAttainment-DoctorateDegree",
@@ -306,5 +306,5 @@
   "parentStatVarGroups": [
     "dc/g/Education"
   ],
-  "numDescendentStatVars": 298
+  "numDescendentStatVars": 305
 }

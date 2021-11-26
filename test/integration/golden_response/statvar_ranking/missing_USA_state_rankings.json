@@ -26,13 +26,6 @@
     }
   },
   {
-    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_CarbonDioxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Carbon dioxide emissions per capita",
     "statsVars": [
       "Amount_Emissions_CarbonDioxide_PerCapita"
@@ -58,13 +51,6 @@
     "title": "Electricity consumption per capita",
     "statsVars": [
       "Amount_Consumption_Electricity_PerCapita"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Electricity generation per capita",
-    "statsVars": [
-      "Annual_Generation_Electricity"
     ],
     "relatedChart": {}
   },
@@ -272,20 +258,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Methane emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_Methane_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_NitrousOxide_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Outward remittance",
     "statsVars": [
       "Amount_Remittance_OutwardRemittance"
@@ -475,13 +447,6 @@
     "title": "Wasting among children under 5",
     "statsVars": [
       "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Water withdrawal rate",
-    "statsVars": [
-      "WithdrawalRate_Water"
     ],
     "relatedChart": {}
   },
