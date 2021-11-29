@@ -3759,16 +3759,22 @@
             "2021-11-07": 18553,
             "2021-11-08": 18561,
             "2021-11-09": 18583,
-            "2021-11-10": 18612,
-            "2021-11-11": 18637,
-            "2021-11-12": 18663,
-            "2021-11-13": 18695,
-            "2021-11-14": 18727,
-            "2021-11-15": 18734,
-            "2021-11-16": 18750,
-            "2021-11-17": 18785,
-            "2021-11-18": 18829,
-            "2021-11-19": 18863
+            "2021-11-10": 18611,
+            "2021-11-11": 18636,
+            "2021-11-12": 18661,
+            "2021-11-13": 18693,
+            "2021-11-14": 18725,
+            "2021-11-15": 18732,
+            "2021-11-16": 18748,
+            "2021-11-17": 18783,
+            "2021-11-18": 18827,
+            "2021-11-19": 18861,
+            "2021-11-20": 18900,
+            "2021-11-21": 18955,
+            "2021-11-22": 18966,
+            "2021-11-23": 18995,
+            "2021-11-24": 19048,
+            "2021-11-25": 19098
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -9753,7 +9759,7 @@
             "2100-12": 1.841614
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Subnational_StatVarSeriesAggr1",
+            "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -10904,7 +10910,7 @@
             "2100-12": 0.458222000000001
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Subnational_StatVarSeriesAggr1",
+            "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -13148,7 +13154,7 @@
             "2100-12": 1.841614
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Subnational_StatVarSeriesAggr1",
+            "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -14299,7 +14305,7 @@
             "2100-12": 0.561432
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Subnational_StatVarSeriesAggr1",
+            "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -16571,7 +16577,7 @@
             "2100-12": 2.087769
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Subnational_StatVarSeriesAggr1",
+            "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -17722,7 +17728,7 @@
             "2100-12": 0.458222000000001
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Subnational_StatVarSeriesAggr1",
+            "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
