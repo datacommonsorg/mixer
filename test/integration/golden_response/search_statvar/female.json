@@ -869,6 +869,42 @@
       "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear50To52Week"
     },
     {
+      "name": "16 Years or More, Civilian, Employed, Federal Government Owned, Female, Worker, Worker Population",
+      "dcid": "Count_Person_FederalGovernmentOwnedEstablishment_Female_Worker"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, Female Population",
+      "dcid": "Count_Person_Civilian_Employed_Female"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, Local Government Owned, Female, Worker, Worker Population",
+      "dcid": "Count_Person_LocalGovernmentOwnedEstablishment_Female_Worker"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, Privately Owned Not for Profit, Female, Paid Worker, Worker Population",
+      "dcid": "Count_Person_PrivatelyOwnedNotForProfitEstablishment_Female_PaidWorker"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, Incorporated Business Owner, Worker Population",
+      "dcid": "Count_Person_PrivatelyOwnedForProfitEstablishment_Female_IncorporatedBusinessOwner"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, Paid Employee, Worker Population",
+      "dcid": "Count_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidEmployee"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, Paid Worker, Worker Population",
+      "dcid": "Count_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidWorker"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, Privately Owned, Female, Unincorporated Business Owner or Unpaid Family Worker, Worker Population",
+      "dcid": "Count_Person_PrivatelyOwnedEstablishment_Female_UnincorporatedBusinessOwnerOrUnpaidFamilyWorker"
+    },
+    {
+      "name": "16 Years or More, Civilian, Employed, State Government Owned, Female, Worker, Worker Population",
+      "dcid": "Count_Person_StateGovernmentOwnedEstablishment_Female_Worker"
+    },
+    {
       "name": "16 Years or More, Female, American Indian or Alaska Native Alone Population",
       "dcid": "Count_Person_16OrMoreYears_Female_AmericanIndianOrAlaskaNativeAlone"
     },
@@ -3209,6 +3245,42 @@
       "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
     },
     {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Federal Government Owned, Female, With Earnings, Worker, Worker",
+      "dcid": "Median_Earnings_Person_FederalGovernmentOwnedEstablishment_Female_Worker"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings",
+      "dcid": "Median_Earnings_Person_Civilian_Employed_Female"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Local Government Owned, Female, With Earnings, Worker, Worker",
+      "dcid": "Median_Earnings_Person_LocalGovernmentOwnedEstablishment_Female_Worker"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned Not for Profit, Female, With Earnings, Paid Worker, Worker",
+      "dcid": "Median_Earnings_Person_PrivatelyOwnedNotForProfitEstablishment_Female_PaidWorker"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Incorporated Business Owner, Worker",
+      "dcid": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_IncorporatedBusinessOwner"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Paid Employee, Worker",
+      "dcid": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidEmployee"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Paid Worker, Worker",
+      "dcid": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidWorker"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned, Female, With Earnings, Unincorporated Business Owner or Unpaid Family Worker, Worker",
+      "dcid": "Median_Earnings_Person_PrivatelyOwnedEstablishment_Female_UnincorporatedBusinessOwnerOrUnpaidFamilyWorker"
+    },
+    {
+      "name": "Median Earnings of 16 Years or More, Civilian, Employed, State Government Owned, Female, With Earnings, Worker, Worker",
+      "dcid": "Median_Earnings_Person_StateGovernmentOwnedEstablishment_Female_Worker"
+    },
+    {
       "name": "Median Income of Female",
       "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
     },
@@ -3927,78 +3999,6 @@
     {
       "name": "18 - 24 Years, Female, Below Poverty Level in The Past 12 Months, Two or More Races Population",
       "dcid": "dc/b9ztgtmd65cj7"
-    },
-    {
-      "name": "18 - 24 Years, Female, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino Population",
-      "dcid": "dc/fq5zqb8qyypmb"
-    },
-    {
-      "name": "18 - 24 Years, Female, Below Poverty Level in The Past 12 Months, White Alone Population",
-      "dcid": "dc/n69fey6vcjf06"
-    },
-    {
-      "name": "18 - 24 Years, Female, No Health Insurance Population",
-      "dcid": "dc/0flj62fpwwxd"
-    },
-    {
-      "name": "18 - 24 Years, Female, No Private Health Insurance Population",
-      "dcid": "dc/40rjc7178vkrd"
-    },
-    {
-      "name": "18 - 24 Years, Female, No Public Health Insurance Population",
-      "dcid": "dc/mhfv62j3s22rc"
-    },
-    {
-      "name": "18 - 24 Years, Female, With Health Insurance Population",
-      "dcid": "dc/py9rzq2xytfe3"
-    },
-    {
-      "name": "18 - 24 Years, Female, With Private Health Insurance Population",
-      "dcid": "dc/84bwvbpr5gnjb"
-    },
-    {
-      "name": "18 - 24 Years, Female, With Public Health Insurance Population",
-      "dcid": "dc/f6tf40hb0n4k5"
-    },
-    {
-      "name": "18 - 24 Years, High School Graduate Ged or Alternative, Female Population",
-      "dcid": "dc/420l03dlqgydf"
-    },
-    {
-      "name": "18 - 34 Years, Civilian, Female, Non Veteran Population",
-      "dcid": "dc/wbqkzh12hvf2d"
-    },
-    {
-      "name": "18 - 34 Years, Civilian, Female, Veteran Population",
-      "dcid": "dc/xjyn3f0sd1vw3"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, Black or African American Alone Population",
-      "dcid": "dc/v9l12z57ys35"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, Hispanic or Latino Population",
-      "dcid": "dc/q68s0qcnvq765"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance Population",
-      "dcid": "dc/hz9b0bmpfzyxh"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Black or African American Alone Population",
-      "dcid": "dc/0n7e9hjd65j1b"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Hispanic or Latino Population",
-      "dcid": "dc/cdnpvwwqbexv9"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, White Alone Population",
-      "dcid": "dc/2dn7nje0ewrz4"
-    },
-    {
-      "name": "18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, White Alone Population",
-      "dcid": "dc/kjls8g1mt0228"
     }
   ],
   "statVarGroups": [
@@ -4495,6 +4495,38 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
+      "name": "Person With Enrollment Level, Gender = Female",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
+    },
+    {
+      "name": "Person With Establishment Ownership = Federal Government Owned, Gender = Female",
+      "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Establishment Ownership = Local Government Owned, Gender = Female",
+      "dcid": "dc/g/Person_EstablishmentOwnership-LocalGovernmentOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Establishment Ownership = Privately Owned Not for Profit, Gender = Female",
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwnedNotForProfit_Gender-Female"
+    },
+    {
+      "name": "Person With Establishment Ownership = Privately Owned for Profit, Gender = Female",
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwnedForProfit_Gender-Female"
+    },
+    {
+      "name": "Person With Establishment Ownership = Privately Owned, Gender = Female",
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Establishment Ownership = State Government Owned, Gender = Female",
+      "dcid": "dc/g/Person_EstablishmentOwnership-StateGovernmentOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Establishment Ownership, Gender = Female",
+      "dcid": "dc/g/Person_EstablishmentOwnership_Gender-Female"
+    },
+    {
       "name": "Person With Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female"
     },
@@ -4517,10 +4549,6 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
-    },
-    {
-      "name": "Person With Gender = Female, Enrollment Level",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",
@@ -4685,6 +4713,10 @@
     {
       "name": "Person With Gender = Female, Income Status = No Income",
       "dcid": "dc/g/Person_Gender-Female_IncomeStatus-NoIncome"
+    },
+    {
+      "name": "Person With Gender = Female, Income Status = With Earnings",
+      "dcid": "dc/g/Person_Gender-Female_IncomeStatus-WithEarnings"
     },
     {
       "name": "Person With Gender = Female, Income Status = With Income",
@@ -5101,6 +5133,30 @@
     {
       "name": "Person With Gender = Female, Work Period = Worked in The Past 12 Months",
       "dcid": "dc/g/Person_Gender-Female_WorkPeriod-WorkedInThePast12Months"
+    },
+    {
+      "name": "Person With Gender = Female, Worker Classification",
+      "dcid": "dc/g/Person_Gender-Female_WorkerClassification"
+    },
+    {
+      "name": "Person With Gender = Female, Worker Classification = Incorporated Business Owner",
+      "dcid": "dc/g/Person_Gender-Female_WorkerClassification-IncorporatedBusinessOwner"
+    },
+    {
+      "name": "Person With Gender = Female, Worker Classification = Paid Employee",
+      "dcid": "dc/g/Person_Gender-Female_WorkerClassification-PaidEmployee"
+    },
+    {
+      "name": "Person With Gender = Female, Worker Classification = Paid Worker",
+      "dcid": "dc/g/Person_Gender-Female_WorkerClassification-PaidWorker"
+    },
+    {
+      "name": "Person With Gender = Female, Worker Classification = Unincorporated Business Owner or Unpaid Family Worker",
+      "dcid": "dc/g/Person_Gender-Female_WorkerClassification-UnincorporatedBusinessOwnerOrUnpaidFamilyWorker"
+    },
+    {
+      "name": "Person With Gender = Female, Worker Classification = Worker",
+      "dcid": "dc/g/Person_Gender-Female_WorkerClassification-Worker"
     },
     {
       "name": "Person With Military Status = Civilian, Gender = Female",
@@ -6503,6 +6559,42 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Gender-Female"
     },
     {
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = Federal Government Owned, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-FederalGovernmentOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = Local Government Owned, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-LocalGovernmentOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = Privately Owned Not for Profit, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwnedNotForProfit_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = Privately Owned for Profit, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwnedForProfit_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = Privately Owned, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = State Government Owned, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-StateGovernmentOwned_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Establishment Ownership, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings"
+    },
+    {
       "name": "Person With Age = 16 Years or More, Gender = Female, Industry",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Industry"
     },
@@ -6673,6 +6765,38 @@
     {
       "name": "Person With Age = 16 Years or More, Gender = Female, Race = White Alone Not Hispanic or Latino",
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Worker Classification",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_WorkerClassification"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Worker Classification = Incorporated Business Owner",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_WorkerClassification-IncorporatedBusinessOwner"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Worker Classification = Paid Employee",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_WorkerClassification-PaidEmployee"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Worker Classification = Paid Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_WorkerClassification-PaidWorker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Worker Classification = Unincorporated Business Owner or Unpaid Family Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_WorkerClassification-UnincorporatedBusinessOwnerOrUnpaidFamilyWorker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Gender = Female, Worker Classification = Worker",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_WorkerClassification-Worker"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus-Civilian"
+    },
+    {
+      "name": "Person With Age = 16 Years or More, Military Status, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MilitaryStatus"
     },
     {
       "name": "Person With Age = 18 - 19 Years, Gender = Female, Race",
@@ -7877,130 +8001,6 @@
     {
       "name": "Person With Age = Years 15, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
       "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Person With Age = Years 15, Gender = Female, Race = Some Other Race Alone",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-SomeOtherRaceAlone"
-    },
-    {
-      "name": "Person With Age = Years 15, Gender = Female, Race = Two or More Races",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-TwoOrMoreRaces"
-    },
-    {
-      "name": "Person With Age = Years 15, Gender = Female, Race = White Alone",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-WhiteAlone"
-    },
-    {
-      "name": "Person With Age = Years 15, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Poverty Status",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_PovertyStatus"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = Asian Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-AsianAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = Black or African American Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-HispanicOrLatino"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = Some Other Race Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-SomeOtherRaceAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = Two or More Races",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-TwoOrMoreRaces"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = White Alone",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-WhiteAlone"
-    },
-    {
-      "name": "Person With Age = Years 5, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "dcid": "dc/g/Person_Age-Years5_Gender-Female_Race-WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Person With Age, Birth Event Status = Birth in The Past 12 Months, Gender = Female",
-      "dcid": "dc/g/Person_Age_BirthEventStatus-BirthInThePast12Months_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = Associates Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-AssociatesDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = Bachelors Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-BachelorsDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = Graduate or Professional Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = High School Graduate Ged or Alternative, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = Less Than 9th Grade, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-LessThan9ThGrade_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Educational Attainment = Some College No Degree, Gender = Female",
-      "dcid": "dc/g/Person_Age_EducationalAttainment-SomeCollegeNoDegree_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Employment Status = Employed, Gender = Female",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Employment Status = Not in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-NotInLaborForce_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Employment Status = Unemployed, Gender = Female",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-Unemployed_Gender-Female"
-    },
-    {
-      "name": "Person With Age, Employment Status = in Labor Force, Gender = Female",
-      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Gender-Female"
     }
   ]
 }
