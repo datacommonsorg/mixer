@@ -44,8 +44,6 @@ const (
 	BtStatVarGroup = "d/1"
 	// BtSVAndSVGExistence is the key for stat var and stat var group existence cache.
 	BtSVAndSVGExistence = "d/2/"
-	// BtPlaceObsPrefix for internal place obs cache.
-	BtPlaceObsPrefix = "d/3/"
 	// BtPlacePagePrefix for place page cache.
 	BtPlacePagePrefix = "d/4/"
 	// BtProteinPagePrefix for protein page cache.

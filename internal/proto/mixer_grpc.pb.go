@@ -27,9 +27,6 @@ type MixerClient interface {
 	GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*GetTriplesResponse, error)
 	// Get places contained in parent places.
 	GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, opts ...grpc.CallOption) (*GetPlacesInResponse, error)
-	// Get observation data for a list of places, given place type, population
-	// type, and population constraining properties.
-	GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, opts ...grpc.CallOption) (*SVOCollection, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
@@ -150,15 +147,6 @@ func (c *mixerClient) GetTriples(ctx context.Context, in *GetTriplesRequest, opt
 func (c *mixerClient) GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, opts ...grpc.CallOption) (*GetPlacesInResponse, error) {
 	out := new(GetPlacesInResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlacesIn", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlaceObs(ctx context.Context, in *GetPlaceObsRequest, opts ...grpc.CallOption) (*SVOCollection, error) {
-	out := new(SVOCollection)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceObs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -404,9 +392,6 @@ type MixerServer interface {
 	GetTriples(context.Context, *GetTriplesRequest) (*GetTriplesResponse, error)
 	// Get places contained in parent places.
 	GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error)
-	// Get observation data for a list of places, given place type, population
-	// type, and population constraining properties.
-	GetPlaceObs(context.Context, *GetPlaceObsRequest) (*SVOCollection, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
@@ -498,9 +483,6 @@ func (*UnimplementedMixerServer) GetTriples(context.Context, *GetTriplesRequest)
 }
 func (*UnimplementedMixerServer) GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlacesIn not implemented")
-}
-func (*UnimplementedMixerServer) GetPlaceObs(context.Context, *GetPlaceObsRequest) (*SVOCollection, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceObs not implemented")
 }
 func (*UnimplementedMixerServer) GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStats not implemented")
@@ -668,24 +650,6 @@ func _Mixer_GetPlacesIn_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetPlacesIn(ctx, req.(*GetPlacesInRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPlaceObs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlaceObsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlaceObs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetPlaceObs",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceObs(ctx, req.(*GetPlaceObsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1163,10 +1127,6 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlacesIn",
 			Handler:    _Mixer_GetPlacesIn_Handler,
-		},
-		{
-			MethodName: "GetPlaceObs",
-			Handler:    _Mixer_GetPlaceObs_Handler,
 		},
 		{
 			MethodName: "GetStats",

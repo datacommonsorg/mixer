@@ -90,18 +90,6 @@ service Mixer {
     };
   }
 
-  // Get observation data for a list of places, given place type, population
-  // type, and population constraining properties.
-  rpc GetPlaceObs(GetPlaceObsRequest) returns (SVOCollection) {
-    option (google.api.http) = {
-      get: "/bulk/place-obs"
-      additional_bindings: {
-        post: "/bulk/place-obs"
-        body: "*"
-      }
-    };
-  }
-
   // Get stats of places by StatisticalVariable. If multiple time series data
   // are avaialable, the highest ranked one by measurement method and import
   // will be returned.
