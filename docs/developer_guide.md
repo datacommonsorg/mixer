@@ -24,6 +24,14 @@ port forwarding.
   - [`Golang`](https://golang.org/doc/install)
   - [`protoc`](http://google.github.io/proto-lens/installing-protoc.html)
 
+  Make sure to add `GOPATH` and update `PATH`:
+
+  ```bash
+  # Use the actual path of your Go installation
+  export GOPATH=/Users/<USER>/go/
+  export PATH=$PATH:$GOPATH
+  ```
+
 - Authenticate to GCP
 
   ```bash
@@ -83,8 +91,8 @@ Install the following packages as a one-time action.
 
 ```bash
 cd ~/   # Be sure there is no go.mod in the local directory
-go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
-go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
 ```
 
 Run the following command to generate Go proto files.
