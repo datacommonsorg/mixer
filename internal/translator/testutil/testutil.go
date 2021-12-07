@@ -25,7 +25,7 @@ import (
 // DB is the database name.
 const DB = "dc_v3"
 
-// testutil.ReadTestMapping reads the testing schema mapping files into list of Mapping structs.
+// ReadTestMapping reads the testing schema mapping files into list of Mapping structs.
 func ReadTestMapping(t *testing.T, files []string) []*types.Mapping {
 	mappings := []*types.Mapping{}
 	for _, f := range files {
