@@ -19,8 +19,8 @@ import (
 	"fmt"
 
 	"cloud.google.com/go/bigquery"
-	"github.com/datacommonsorg/mixer/internal/sparql"
 	"github.com/datacommonsorg/mixer/internal/translator"
+	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 

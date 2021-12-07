@@ -20,7 +20,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/base"
+	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
+	"github.com/datacommonsorg/mixer/internal/translator/solver"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -28,29 +30,29 @@ import (
 
 // Binding contains a query and mapping object which bind together.
 type Binding struct {
-	Query   *base.Query
-	Mapping *base.Mapping
+	Query   *types.Query
+	Mapping *types.Mapping
 }
 
 // Constraint wraps the SQL lhs and rhs variable.
 type Constraint struct {
 	// Left hand side of an SQL condition
-	LHS base.Column
+	LHS types.Column
 	// Right hand side of an SQL condition
 	RHS interface{}
 }
 
 // entityInfo contains the information for resolved entity.
 type entityInfo struct {
-	e base.Entity
-	c base.Column
+	e types.Entity
+	c types.Column
 	v interface{}
 }
 
 // Translation contains the translated result.
 type Translation struct {
 	SQL        string
-	Nodes      []base.Node
+	Nodes      []types.Node
 	Bindings   []Binding
 	Constraint []Constraint
 	Prov       map[int][]int
@@ -59,7 +61,7 @@ type Translation struct {
 // ProvInfo contains the provenance query metadata
 type ProvInfo struct {
 	query     bool
-	tableProv map[string]base.Column
+	tableProv map[string]types.Column
 }
 
 // Graph represents the struct for terms matching.
@@ -93,11 +95,11 @@ func sortMapSet(m map[interface{}]struct{}) []interface{} {
 }
 
 func isNodeEntityMatch(
-	n base.Node,
-	e base.Entity,
+	n types.Node,
+	e types.Entity,
 	nodeType map[string]string,
 	entityType map[string][]string) bool {
-	if strings.Contains(e.Table.Name, base.Triple) {
+	if strings.Contains(e.Table.Name, tmcf.Triple) {
 		return true
 	}
 	nt, ok := nodeType[n.Alias]
@@ -117,29 +119,29 @@ func isNodeEntityMatch(
 }
 
 // Bind binds mapping and query statements.
-func Bind(mappings []*base.Mapping, queries []*base.Query) (map[*base.Query][]*base.Mapping, error) {
-	result := make(map[*base.Query][]*base.Mapping)
-	queryForTriple, err := MatchTriple(mappings, queries)
+func Bind(mappings []*types.Mapping, queries []*types.Query) (map[*types.Query][]*types.Mapping, error) {
+	result := make(map[*types.Query][]*types.Mapping)
+	queryForTriple, err := solver.MatchTriple(mappings, queries)
 	if err != nil {
 		return nil, err
 	}
-	nodeType, err := GetNodeType(queries)
+	nodeType, err := solver.GetNodeType(queries)
 	if err != nil {
 		return nil, err
 	}
-	entityType := GetEntityType(mappings)
+	entityType := solver.GetEntityType(mappings)
 
-	mustMatch := map[base.Node]base.Entity{}
+	mustMatch := map[types.Node]types.Entity{}
 	for i := 0; i < 2; i++ {
 		for _, q := range queries {
-			result[q] = []*base.Mapping{}
+			result[q] = []*types.Mapping{}
 			forTriple := queryForTriple[q]
 			for _, m := range mappings {
 				if forTriple != m.IsTriple() {
 					continue
 				}
 				// Do not match functional deps mapping.
-				if _, ok := m.Pred.(base.FuncDeps); ok {
+				if _, ok := m.Pred.(types.FuncDeps); ok {
 					continue
 				}
 				// Do not match PlaceExt as a temporary fix to multiple mapping.
@@ -187,7 +189,7 @@ func Bind(mappings []*base.Mapping, queries []*base.Query) (map[*base.Query][]*b
 		if ent, ok := mustMatch[q.Sub]; ok {
 			for _, m := range ms {
 				if m.Sub == ent {
-					result[q] = []*base.Mapping{m}
+					result[q] = []*types.Mapping{m}
 				}
 			}
 		}
@@ -197,7 +199,7 @@ func Bind(mappings []*base.Mapping, queries []*base.Query) (map[*base.Query][]*b
 }
 
 // This obtains the Cartesian product among key, value groups.
-func getBindingSets(bindingMap map[*base.Query][]*base.Mapping) [][]Binding {
+func getBindingSets(bindingMap map[*types.Query][]*types.Mapping) [][]Binding {
 	result := [][]Binding{{}}
 	for q, ms := range bindingMap {
 		tmp := [][]Binding{}
@@ -226,10 +228,10 @@ func (graph Graph) String() string {
 
 func addToGraph(g Graph, q interface{}, m interface{}, id int) {
 	switch v := m.(type) {
-	case base.Column:
+	case types.Column:
 		v.Table.ID = strconv.Itoa(id)
 		m = v
-	case base.Entity:
+	case types.Entity:
 		v.Table.ID = strconv.Itoa(id)
 		m = v
 	}
@@ -257,8 +259,8 @@ func addToGraph(g Graph, q interface{}, m interface{}, id int) {
 // getGraph obtains the matching graph between query and mapping token.
 func getGraph(
 	bindings []Binding,
-	queryID map[*base.Query]int,
-	nodeRefs map[base.Node]struct{}) Graph {
+	queryID map[*types.Query]int,
+	nodeRefs map[types.Node]struct{}) Graph {
 	// graph holds the match relations.
 	graph := Graph{}
 	for _, binding := range bindings {
@@ -279,9 +281,9 @@ func getGraph(
 		mObjCopy := m.Obj
 		if m.IsTriple() {
 			update := false
-			if q.Pred == base.TypeOf {
+			if q.Pred == tmcf.TypeOf {
 				update = true
-			} else if v, ok := q.Obj.(base.Node); ok {
+			} else if v, ok := q.Obj.(types.Node); ok {
 				for ref := range nodeRefs {
 					if v == ref {
 						update = true
@@ -290,7 +292,7 @@ func getGraph(
 				}
 			}
 			if update {
-				v := mObjCopy.(base.Column)
+				v := mObjCopy.(types.Column)
 				v.Name = strings.Replace(v.Name, "object_value", "object_id", 1)
 				mObjCopy = v
 			}
@@ -312,8 +314,8 @@ func getGraph(
 }
 
 func getFuncDepsCol(
-	e base.Entity,
-	funcDeps map[base.Entity]map[string]interface{}) (base.Column, error) {
+	e types.Entity,
+	funcDeps map[types.Entity]map[string]interface{}) (types.Column, error) {
 	id := e.Table.ID
 	e.Table.ID = "" // Unset the table id to check the func deps map.
 	propCol := funcDeps[e]
@@ -321,9 +323,9 @@ func getFuncDepsCol(
 		fmt.Printf("Multiple functional deps: %s => %s\n", e, propCol)
 	}
 
-	var col base.Column
+	var col types.Column
 	for _, c := range propCol {
-		if v, ok := c.(base.Column); ok {
+		if v, ok := c.(types.Column); ok {
 			col = v
 			break
 		}
@@ -334,15 +336,15 @@ func getFuncDepsCol(
 
 func pruneGraph(
 	graph Graph,
-	e base.Entity,
-	c base.Column,
+	e types.Entity,
+	c types.Column,
 	str interface{}) {
 	// Extra terms that should not be used to construct the query.
 	extra := make(map[interface{}]struct{})
 	for key, values := range graph {
 		if key == e || key == str {
 			delete(graph, key)
-		} else if col, ok := key.(base.Column); ok && col.Table == c.Table {
+		} else if col, ok := key.(types.Column); ok && col.Table == c.Table {
 			delete(graph, key)
 			// When an entity is fully resolved, its table column to string match
 			// would be redudent.
@@ -366,11 +368,11 @@ func pruneGraph(
 			delete(graph, key)
 		} else {
 			for value := range values {
-				if v, ok := value.(base.Entity); ok && v == e {
+				if v, ok := value.(types.Entity); ok && v == e {
 					delete(values, value)
 					values[str] = struct{}{}
 				}
-				if v, ok := value.(base.Column); ok && v == c {
+				if v, ok := value.(types.Column); ok && v == c {
 					delete(values, value)
 					values[str] = struct{}{}
 				}
@@ -382,7 +384,7 @@ func pruneGraph(
 // GetConstraint obtains a list of constraints object that can be used to construct SQL query.
 func GetConstraint(
 	graph Graph,
-	funcDeps map[base.Entity]map[string]interface{}) ([]Constraint, map[base.Node]string, error) {
+	funcDeps map[types.Entity]map[string]interface{}) ([]Constraint, map[types.Node]string, error) {
 	// Remove unnecessary JOIN
 	//
 	// Assuming an entity E:Place->E1 has functional deps "dcid" that maps to C:Place->Col.id,
@@ -401,10 +403,10 @@ func GetConstraint(
 }
 
 func (graph Graph) getResolvedEntity(
-	funcDeps map[base.Entity]map[string]interface{}) (map[base.Entity]entityInfo, error) {
-	resolvedEntities := map[base.Entity]entityInfo{}
+	funcDeps map[types.Entity]map[string]interface{}) (map[types.Entity]entityInfo, error) {
+	resolvedEntities := map[types.Entity]entityInfo{}
 	for key := range graph {
-		if e, ok := key.(base.Entity); ok {
+		if e, ok := key.(types.Entity); ok {
 			// This entity has only one functional deps.
 			col, err := getFuncDepsCol(e, funcDeps)
 			if err != nil {
@@ -428,7 +430,7 @@ func (graph Graph) getResolvedEntity(
 	return resolvedEntities, nil
 }
 
-func (graph Graph) prune(resolvedEntities map[base.Entity]entityInfo) {
+func (graph Graph) prune(resolvedEntities map[types.Entity]entityInfo) {
 	// Gather everything that "equal" the resolved entity.
 	// If there is a node in it and it matches only one entity, try to
 	// use a non-resolved entity as its match.
@@ -437,12 +439,12 @@ func (graph Graph) prune(resolvedEntities map[base.Entity]entityInfo) {
 	//
 	// In this case, { ?dcid => C:Place->id } should be updated to
 	// { ?dcid => E:Population->E2 }
-	tables := map[base.Table]struct{}{}
+	tables := map[types.Table]struct{}{}
 	for key := range graph {
-		if v, ok := key.(base.Column); ok {
+		if v, ok := key.(types.Column); ok {
 			tables[v.Table] = struct{}{}
 		}
-		if v, ok := key.(base.Entity); ok {
+		if v, ok := key.(types.Entity); ok {
 			tables[v.Table] = struct{}{}
 		}
 	}
@@ -473,14 +475,14 @@ func (graph Graph) prune(resolvedEntities map[base.Entity]entityInfo) {
 		var alt interface{}
 		items := sortMapSet(allEqual) // Sort to get stable results.
 		for _, item := range items {
-			if e, ok := item.(base.Entity); ok {
+			if e, ok := item.(types.Entity); ok {
 				if _, ok := resolvedEntities[e]; !ok {
 					alt = e
 					break
 				}
 			}
 			// Check InstanceQueryFipsIdContainedIn test case
-			if c, ok := item.(base.Column); ok {
+			if c, ok := item.(types.Column); ok {
 				if c.Table != ent.Table {
 					alt = c
 					break
@@ -491,7 +493,7 @@ func (graph Graph) prune(resolvedEntities map[base.Entity]entityInfo) {
 			continue
 		}
 		for key, values := range graph {
-			if _, ok := key.(base.Node); ok && len(values) == 1 {
+			if _, ok := key.(types.Node); ok && len(values) == 1 {
 				if _, ok := allEqual[key]; ok {
 					graph[key] = map[interface{}]struct{}{alt: {}}
 				}
@@ -504,7 +506,7 @@ func (graph Graph) prune(resolvedEntities map[base.Entity]entityInfo) {
 		replace := true
 		for key := range graph {
 			if key != e && key != c {
-				if ent, ok := key.(base.Entity); ok && ent.Table == e.Table {
+				if ent, ok := key.(types.Entity); ok && ent.Table == e.Table {
 					replace = false
 					break
 				}
@@ -517,27 +519,27 @@ func (graph Graph) prune(resolvedEntities map[base.Entity]entityInfo) {
 }
 
 func (graph Graph) constructConstraint(
-	funcDeps map[base.Entity]map[string]interface{}) (
-	[]Constraint, map[base.Node]string, error) {
+	funcDeps map[types.Entity]map[string]interface{}) (
+	[]Constraint, map[types.Node]string, error) {
 	// Pick edges from graph and use as constraints.
 	// Only need to pick the key with type Node and string.
 	result := []Constraint{}
-	constNode := map[base.Node]string{}
+	constNode := map[types.Node]string{}
 	for key, values := range graph {
 		// Sort values to get consistent result.
 		sorted := sortMapSet(values)
 		// Key is a Node.
-		if _, ok := key.(base.Node); ok {
-			var c base.Column
+		if _, ok := key.(types.Node); ok {
+			var c types.Column
 			if len(sorted) == 1 {
 				value := sorted[0]
-				if v, ok := value.(base.Entity); ok {
+				if v, ok := value.(types.Entity); ok {
 					col, err := getFuncDepsCol(v, funcDeps)
 					if err != nil {
 						return nil, nil, err
 					}
 					c = col
-				} else if col, ok := value.(base.Column); ok {
+				} else if col, ok := value.(types.Column); ok {
 					c = col
 				} else {
 					continue
@@ -546,11 +548,11 @@ func (graph Graph) constructConstraint(
 			} else {
 				// Loop through values and get one item to use as the pivot value.
 				for _, value := range sorted {
-					if v, ok := value.(base.Column); ok {
+					if v, ok := value.(types.Column); ok {
 						c = v
 						break
 					}
-					if v, ok := value.(base.Entity); ok {
+					if v, ok := value.(types.Entity); ok {
 						col, err := getFuncDepsCol(v, funcDeps)
 						if err != nil {
 							return nil, nil, err
@@ -563,7 +565,7 @@ func (graph Graph) constructConstraint(
 				// Loop through values the second time to form the constraints.
 				for _, value := range sorted {
 					if value != c {
-						if v, ok := value.(base.Entity); ok {
+						if v, ok := value.(types.Entity); ok {
 							col, err := getFuncDepsCol(v, funcDeps)
 							if err != nil {
 								return nil, nil, err
@@ -584,11 +586,11 @@ func (graph Graph) constructConstraint(
 		// If key is a string, each match forms a constraint.
 		if v, ok := key.(string); ok {
 			for _, value := range sorted {
-				if col, ok := value.(base.Column); ok {
+				if col, ok := value.(types.Column); ok {
 					result = append(result, Constraint{col, key})
-				} else if n, ok := value.(base.Node); ok {
+				} else if n, ok := value.(types.Node); ok {
 					constNode[n] = v
-				} else if ent, ok := value.(base.Entity); ok {
+				} else if ent, ok := value.(types.Entity); ok {
 					col, err := getFuncDepsCol(ent, funcDeps)
 					if err != nil {
 						return nil, nil, err
@@ -603,7 +605,7 @@ func (graph Graph) constructConstraint(
 		// If key is a slice of string, each match form a constraint.
 		if strSlice, ok := key.(*[]string); ok {
 			for _, value := range sorted {
-				if col, ok := value.(base.Column); ok {
+				if col, ok := value.(types.Column); ok {
 					result = append(result, Constraint{col, *strSlice})
 				} else {
 					return nil, nil, status.Errorf(
@@ -616,10 +618,10 @@ func (graph Graph) constructConstraint(
 }
 
 func removeConstraints(
-	jc map[base.Table][]Constraint,
-	t base.Table,
+	jc map[types.Table][]Constraint,
+	t types.Table,
 	c Constraint,
-) map[base.Table][]Constraint {
+) map[types.Table][]Constraint {
 	cs := jc[t]
 	for i, _c := range cs {
 		if _c == c {
@@ -633,15 +635,15 @@ func removeConstraints(
 }
 
 func getSQL(
-	nodes []base.Node,
+	nodes []types.Node,
 	constraints []Constraint,
-	constNode map[base.Node]string,
+	constNode map[types.Node]string,
 	provInfo ProvInfo,
-	opts *base.QueryOptions) (string, map[int][]int, error) {
+	opts *types.QueryOptions) (string, map[int][]int, error) {
 	// prov maps provenance column to node columns
 	prov := map[int][]int{}
-	provCols := map[base.Column]int{}
-	provList := []base.Column{}
+	provCols := map[types.Column]int{}
+	provList := []types.Column{}
 	pc := len(nodes)
 	sql := "SELECT"
 	if opts.Distinct {
@@ -681,19 +683,19 @@ func getSQL(
 		sql += ", " + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
 	}
 
-	tableCounter := map[base.Table]int{}
-	constCounter := map[base.Table]int{}
-	joinConstraints := map[base.Table][]Constraint{}
+	tableCounter := map[types.Table]int{}
+	constCounter := map[types.Table]int{}
+	joinConstraints := map[types.Table][]Constraint{}
 	whereConstraints := []Constraint{}
 
 	for _, c := range constraints {
 		tableCounter[c.LHS.Table]++
 		switch v := c.RHS.(type) {
-		case base.Column:
+		case types.Column:
 			joinConstraints[c.LHS.Table] = append(joinConstraints[c.LHS.Table], c)
 			joinConstraints[v.Table] = append(joinConstraints[v.Table], c)
 			tableCounter[v.Table]++
-		case base.Node:
+		case types.Node:
 		default:
 			whereConstraints = append(whereConstraints, c)
 			constCounter[c.LHS.Table]++
@@ -704,14 +706,14 @@ func getSQL(
 	// ie, the table counter count.
 	for t, cs := range joinConstraints {
 		sort.SliceStable(cs, func(i, j int) bool {
-			var t1, t2 base.Table
+			var t1, t2 types.Table
 			if cs[i].LHS.Table == t {
-				t1 = cs[i].RHS.(base.Column).Table
+				t1 = cs[i].RHS.(types.Column).Table
 			} else {
 				t1 = cs[i].LHS.Table
 			}
 			if cs[j].LHS.Table == t {
-				t2 = cs[j].RHS.(base.Column).Table
+				t2 = cs[j].RHS.(types.Column).Table
 			} else {
 				t2 = cs[j].LHS.Table
 			}
@@ -728,7 +730,7 @@ func getSQL(
 	// the `joinConstraints`.
 
 	// Choose the table with the most constant constraints as the starting table.
-	var currTable base.Table
+	var currTable types.Table
 	maxCount := 0
 	for t, count := range constCounter {
 		if count > maxCount || (count == maxCount && t.String() < currTable.String()) {
@@ -737,7 +739,7 @@ func getSQL(
 		}
 	}
 	// When there is no constant an no join, need to pick the currTable.
-	if (base.Table{}) == currTable {
+	if (types.Table{}) == currTable {
 		for _, c := range constraints {
 			currTable = c.LHS.Table
 			break
@@ -748,18 +750,18 @@ func getSQL(
 
 	// Keep track of table that has been processed, they should already have an
 	// alias in SQL and could be used as "currTable".
-	processedTable := map[base.Table]struct{}{}
+	processedTable := map[types.Table]struct{}{}
 
-	var currCol, otherCol base.Column
+	var currCol, otherCol types.Column
 	for len(joinConstraints) > 0 {
-		futureTables := []base.Table{}
+		futureTables := []types.Table{}
 		processedTable[currTable] = struct{}{}
 		for _, c := range joinConstraints[currTable] {
 			if currTable == c.LHS.Table {
 				currCol = c.LHS
-				otherCol = c.RHS.(base.Column)
+				otherCol = c.RHS.(types.Column)
 			} else {
-				currCol = c.RHS.(base.Column)
+				currCol = c.RHS.(types.Column)
 				otherCol = c.LHS
 			}
 			if _, ok := processedTable[otherCol.Table]; ok {
@@ -820,12 +822,12 @@ func getSQL(
 			sql += " AND "
 		}
 		switch v := c.RHS.(type) {
-		case base.Column:
+		case types.Column:
 			sql += fmt.Sprintf("%s.%s = %s.%s", c.LHS.Table.Alias(), c.LHS.Name, v.Table.Alias(), v.Name)
 		case string:
 			// Before we have spanner table reflection, need to hardcode check here.
 			// But the user should really have quote for strings.
-			useQuote := strings.Contains(c.LHS.Table.Name, base.Triple)
+			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
 			sql += fmt.Sprintf("%s.%s = %s", c.LHS.Table.Alias(), c.LHS.Name, addQuote(v, useQuote))
 		case []string:
 			strs := []string{}
@@ -852,26 +854,26 @@ func getSQL(
 
 // Translate takes a datalog query and translates to GoogleSQL query based on schema mapping.
 func Translate(
-	mappings []*base.Mapping, nodes []base.Node, queries []*base.Query,
-	subTypeMap map[string]string, options ...*base.QueryOptions) (
+	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
+	subTypeMap map[string]string, options ...*types.QueryOptions) (
 	*Translation, error) {
-	funcDeps, err := GetFuncDeps(mappings)
+	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
 		return nil, err
 	}
 
-	tableProv, err := GetProvColumn(mappings)
+	tableProv, err := solver.GetProvColumn(mappings)
 	if err != nil {
 		return nil, err
 	}
 
-	mappings = PruneMapping(mappings)
-	queries = RewriteQuery(queries, subTypeMap)
-	matchTriple, err := MatchTriple(mappings, queries)
+	mappings = solver.PruneMapping(mappings)
+	queries = solver.RewriteQuery(queries, subTypeMap)
+	matchTriple, err := solver.MatchTriple(mappings, queries)
 	if err != nil {
 		return nil, err
 	}
-	queryID := GetQueryID(queries, matchTriple)
+	queryID := solver.GetQueryID(queries, matchTriple)
 
 	bindingMap, err := Bind(mappings, queries)
 	if err != nil {
@@ -884,7 +886,7 @@ func Translate(
 		return nil, status.Errorf(codes.Internal, "Failed to get translation result")
 	}
 
-	nodeRefs := GetNodeRef(queries)
+	nodeRefs := solver.GetNodeRef(queries)
 	graph := getGraph(bindingSets[0], queryID, nodeRefs)
 	constraints, constNode, err := GetConstraint(graph, funcDeps)
 	if err != nil {
@@ -893,13 +895,13 @@ func Translate(
 
 	var (
 		queryProv    bool
-		queryOptions *base.QueryOptions
+		queryOptions *types.QueryOptions
 	)
 	if len(options) > 0 {
 		queryOptions = options[0]
 		queryProv = options[0].Prov
 	} else {
-		queryOptions = &base.QueryOptions{}
+		queryOptions = &types.QueryOptions{}
 	}
 
 	sql, prov, err := getSQL(nodes, constraints, constNode, ProvInfo{queryProv, tableProv}, queryOptions)

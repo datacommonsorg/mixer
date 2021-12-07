@@ -28,7 +28,7 @@ import (
 
 	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
-	"github.com/datacommonsorg/mixer/internal/parser"
+	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"google.golang.org/api/iterator"
@@ -213,7 +213,7 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 		}
 	}
 	// Read TMCF
-	var schemaMapping map[string]*parser.TableSchema
+	var schemaMapping map[string]*tmcf.TableSchema
 	for _, object := range objects {
 		if strings.HasSuffix(object, ".tmcf") {
 			obj := bkt.Object(object)
@@ -226,7 +226,7 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 			if _, err := io.Copy(buf, r); err != nil {
 				return err
 			}
-			schemaMapping, err = parser.ParseTmcf(buf.String())
+			schemaMapping, err = tmcf.ParseTmcf(buf.String())
 			if err != nil {
 				return err
 			}
@@ -281,7 +281,7 @@ type nodeObs struct {
 func (memDb *MemDb) addRow(
 	header []string,
 	row []string,
-	schemaMapping *parser.TableSchema,
+	schemaMapping *tmcf.TableSchema,
 ) error {
 	// Keyed by node id like "E0"
 	allNodes := map[string]*nodeObs{}
@@ -322,7 +322,7 @@ func (memDb *MemDb) addRow(
 			continue
 		}
 		if cell[0] == '[' && cell[len(cell)-1] == ']' {
-			cell = parser.ParseComplexValue(cell)
+			cell = tmcf.ParseComplexValue(cell)
 		}
 		// Derive node property and value for observation.
 		for _, col := range schemaMapping.ColumnInfo[colName] {
