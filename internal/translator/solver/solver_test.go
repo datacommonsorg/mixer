@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package translator
+package solver
 
 import (
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/base"
+	"github.com/datacommonsorg/mixer/internal/parser/mcf"
+	"github.com/datacommonsorg/mixer/internal/translator/datalog"
+	"github.com/datacommonsorg/mixer/internal/translator/testutil"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 
 	"github.com/go-test/deep"
 )
@@ -53,7 +56,7 @@ func TestGetNodeType(t *testing.T) {
 			true,
 		},
 	} {
-		_, queries, _ := ParseQuery(c.datalog)
+		_, queries, _ := datalog.ParseQuery(c.datalog)
 		gotNodeType, err := GetNodeType(queries)
 		if c.wantErr {
 			if err == nil {
@@ -83,7 +86,7 @@ func TestGetEntityType(t *testing.T) {
 		dcid: C:Observation->prov_id
 		functionalDeps: dcid`
 
-	mappings, _ := ParseMapping(mappingStr, "dc")
+	mappings, _ := mcf.ParseMapping(mappingStr, "dc")
 	gotEntityType := GetEntityType(mappings)
 	wantEntityType := map[string][]string{
 		"`dc.Observation`->E2": {
@@ -113,7 +116,7 @@ func TestGetExplicitTypeProp(t *testing.T) {
 		dcid: C:Observation->observed_node_key
 		functionalDeps: dcid`
 
-	mappings, _ := ParseMapping(mappingStr, "dc")
+	mappings, _ := mcf.ParseMapping(mappingStr, "dc")
 	mappings = PruneMapping(mappings)
 
 	gotTypeProp := GetExplicitTypeProp(mappings)
@@ -139,11 +142,11 @@ func TestGetQueryID(t *testing.T) {
 		measuredValue ?o ?count_value
 		`
 
-	_, queries, err := ParseQuery(queryStr)
+	_, queries, err := datalog.ParseQuery(queryStr)
 	if err != nil {
 		t.Errorf("ParseQuery(%s) got %s", queryStr, err)
 	}
-	matchTriple := map[*base.Query]bool{
+	matchTriple := map[*types.Query]bool{
 		queries[0]: false,
 		queries[1]: false,
 		queries[2]: false,
@@ -154,7 +157,7 @@ func TestGetQueryID(t *testing.T) {
 	}
 
 	gotQueryID := GetQueryID(queries, matchTriple)
-	wantQueryID := map[*base.Query]int{
+	wantQueryID := map[*types.Query]int{
 		queries[0]: 0,
 		queries[1]: 1,
 		queries[2]: 2,
@@ -170,7 +173,7 @@ func TestGetQueryID(t *testing.T) {
 }
 
 func TestMatchTriple(t *testing.T) {
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"../testdata/test_mapping.mcf"})
 	queryStr := `
 		SELECT ?dcid,
 		typeOf ?parent_node Place,
@@ -182,12 +185,12 @@ func TestMatchTriple(t *testing.T) {
 		dcid ?parent_node dc/x333,
 		dcid ?node ?dcid`
 
-	_, queries, err := ParseQuery(queryStr)
+	_, queries, err := datalog.ParseQuery(queryStr)
 	if err != nil {
 		t.Fatalf("parsing query string %s: %s", queryStr, err)
 	}
 
-	wantResult := map[*base.Query]bool{
+	wantResult := map[*types.Query]bool{
 		queries[0]: false,
 		queries[1]: false,
 		queries[2]: false,
@@ -208,7 +211,7 @@ func TestMatchTriple(t *testing.T) {
 
 func TestGetFuncDeps(t *testing.T) {
 	db := "dc_v3"
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"../testdata/test_mapping.mcf"})
 
 	funcDeps, err := GetFuncDeps(mappings)
 	if err != nil {
@@ -224,7 +227,7 @@ func TestGetFuncDeps(t *testing.T) {
 		},
 	}
 	for e, p2c := range wantStr {
-		entity, err := base.NewEntity(e, db)
+		entity, err := types.NewEntity(e, db)
 		if err != nil {
 			t.Errorf("Bad input entity string: %v, %v", e, err)
 			continue
@@ -236,7 +239,7 @@ func TestGetFuncDeps(t *testing.T) {
 		}
 		wantCs := map[string]interface{}{}
 		for p, c := range p2c {
-			col, err := base.NewColumn(c, db)
+			col, err := types.NewColumn(c, db)
 			if err != nil {
 				t.Errorf("Bad input column string: %v, %v", c, err)
 				continue
@@ -251,7 +254,7 @@ func TestGetFuncDeps(t *testing.T) {
 
 func TestGetFuncDepsWithEntity(t *testing.T) {
 	db := "dc_v3"
-	mappings := readTestMapping(t, []string{"oi_county_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"../testdata/oi_county_mapping.mcf"})
 
 	funcDeps, err := GetFuncDeps(mappings)
 	if err != nil {
@@ -275,7 +278,7 @@ func TestGetFuncDepsWithEntity(t *testing.T) {
 		},
 	}
 	for e, p2i := range wantStr {
-		entity, err := base.NewEntity(e, db)
+		entity, err := types.NewEntity(e, db)
 		if err != nil {
 			t.Errorf("Bad input entity string: %v, %v", e, err)
 			continue
@@ -287,9 +290,9 @@ func TestGetFuncDepsWithEntity(t *testing.T) {
 		}
 		wantCs := map[string]interface{}{}
 		for p, i := range p2i {
-			col, err := base.NewColumn(i, db)
+			col, err := types.NewColumn(i, db)
 			if err != nil {
-				ent, err := base.NewEntity(i, db)
+				ent, err := types.NewEntity(i, db)
 				if err != nil {
 					t.Errorf("Bad input string: %v, %v", i, err)
 					continue
@@ -307,7 +310,7 @@ func TestGetFuncDepsWithEntity(t *testing.T) {
 }
 
 func TestGetProvColumn(t *testing.T) {
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"../testdata/test_mapping.mcf"})
 	wantInfo := map[string]string{
 		"`dc_v3.ACLGroup`":              "C:ACLGroup->prov_id",
 		"`dc_v3.Curator`":               "C:Curator->prov_id",
@@ -324,9 +327,9 @@ func TestGetProvColumn(t *testing.T) {
 		"`dc_v3.StatVarObservation`":    "C:StatVarObservation->prov_id",
 	}
 
-	wantResult := map[string]base.Column{}
+	wantResult := map[string]types.Column{}
 	for key, value := range wantInfo {
-		col, _ := base.NewColumn(value, "dc_v3")
+		col, _ := types.NewColumn(value, "dc_v3")
 		wantResult[key] = *col
 	}
 
@@ -340,7 +343,7 @@ func TestGetProvColumn(t *testing.T) {
 }
 
 func TestRewriteQuery(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := GetSubTypeMap("../table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
@@ -359,12 +362,12 @@ func TestRewriteQuery(t *testing.T) {
 		a3: b3,
 	}
 	for a, b := range queryInfo {
-		_, query, err := ParseQuery(a)
+		_, query, err := datalog.ParseQuery(a)
 		if err != nil {
 			t.Errorf("ParseQuery got error: %v", err)
 			continue
 		}
-		_, wantResult, err := ParseQuery(b)
+		_, wantResult, err := datalog.ParseQuery(b)
 		if err != nil {
 			t.Errorf("ParseQuery got error: %v", err)
 			continue
@@ -377,8 +380,8 @@ func TestRewriteQuery(t *testing.T) {
 }
 
 func TestGetOutArcInfo(t *testing.T) {
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
-	wantOutArcInfo := map[string][]OutArcInfo{
+	mappings := testutil.ReadTestMapping(t, []string{"../testdata/test_mapping.mcf"})
+	wantOutArcInfo := map[string][]types.OutArcInfo{
 		"`dc_v3.Place`": {
 			{Pred: "name", Column: "name"},
 			{Pred: "alternateName", Column: "alternate_name"},

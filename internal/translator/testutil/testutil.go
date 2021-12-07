@@ -12,27 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package translator
+package testutil
 
 import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/base"
+	"github.com/datacommonsorg/mixer/internal/parser/mcf"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
 
 // DB is the database name.
 const DB = "dc_v3"
 
 // ReadTestMapping reads the testing schema mapping files into list of Mapping structs.
-func readTestMapping(t *testing.T, files []string) []*base.Mapping {
-	mappings := []*base.Mapping{}
+func ReadTestMapping(t *testing.T, files []string) []*types.Mapping {
+	mappings := []*types.Mapping{}
 	for _, f := range files {
-		mappingStr, err := ioutil.ReadFile("testdata/" + f)
+		mappingStr, err := ioutil.ReadFile(f)
 		if err != nil {
 			t.Fatalf("reading test schema mapping file: %s", err)
 		}
-		mapping, err := ParseMapping(string(mappingStr), DB)
+		mapping, err := mcf.ParseMapping(string(mappingStr), DB)
 		if err != nil {
 			t.Fatalf("parsing test schema mapping file: %s", err)
 		}

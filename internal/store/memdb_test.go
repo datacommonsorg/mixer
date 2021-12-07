@@ -17,15 +17,15 @@ package store
 import (
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/parser"
+	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
 var (
-	ts = &parser.TableSchema{
-		ColumnInfo: map[string][]*parser.Column{
+	ts = &tmcf.TableSchema{
+		ColumnInfo: map[string][]*tmcf.Column{
 			"CumulativeCount_Vaccine_COVID_19_Administered": {
 				{Node: "E0", Property: "value"},
 			},

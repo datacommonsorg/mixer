@@ -19,16 +19,19 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/base"
-	"github.com/datacommonsorg/mixer/internal/sparql"
+	"github.com/datacommonsorg/mixer/internal/translator/datalog"
+	"github.com/datacommonsorg/mixer/internal/translator/solver"
+	"github.com/datacommonsorg/mixer/internal/translator/sparql"
+	"github.com/datacommonsorg/mixer/internal/translator/testutil"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 
 	"github.com/go-test/deep"
 )
 
 func TestBind(t *testing.T) {
 	db := "dc_v3"
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
-	mappings = PruneMapping(mappings)
+	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
+	mappings = solver.PruneMapping(mappings)
 	queryStr := `
 		SELECT ?name ?timezone ?landArea ?parent_dcid ?parent_name,
 		typeOf ?parent Place,
@@ -42,33 +45,33 @@ func TestBind(t *testing.T) {
 		name ?node ?name,
 		landArea ?node ?landArea
 	`
-	_, queries, err := ParseQuery(queryStr)
+	_, queries, err := datalog.ParseQuery(queryStr)
 	if err != nil {
 		t.Fatalf("parsing query string %s: %s", queryStr, err)
 	}
 
-	wantResult := map[string][]*base.Mapping{}
-	v, _ := base.NewMapping("typeOf", "E:Place->E1", "Place", db)
-	wantResult[fmt.Sprintf("%s", queries[0])] = []*base.Mapping{v}
-	wantResult[fmt.Sprintf("%s", queries[1])] = []*base.Mapping{v}
-	v, _ = base.NewMapping("subType", "E:Place->E1", "C:Place->type", db)
-	wantResult[fmt.Sprintf("%s", queries[2])] = []*base.Mapping{v}
-	v, _ = base.NewMapping("dcid", "E:Place->E1", "C:Place->id", db)
-	wantResult[fmt.Sprintf("%s", queries[3])] = []*base.Mapping{v}
-	v, _ = base.NewMapping("timezone", "E:Place->E1", "C:Place->timezone", db)
-	wantResult[fmt.Sprintf("%s", queries[4])] = []*base.Mapping{v}
-	v, _ = base.NewMapping("C:Triple->predicate", "E:Triple->E1", "C:Triple->object_value", db)
-	wantResult[fmt.Sprintf("%s", queries[5])] = []*base.Mapping{v}
-	v, _ = base.NewMapping("dcid", "E:Place->E1", "C:Place->id", db)
-	wantResult[fmt.Sprintf("%s", queries[6])] = []*base.Mapping{v}
-	v, _ = base.NewMapping("name", "E:Place->E1", "C:Place->name", db)
-	wantResult[fmt.Sprintf("%s", queries[7])] = []*base.Mapping{v}
-	wantResult[fmt.Sprintf("%s", queries[8])] = []*base.Mapping{v}
-	v, _ = base.NewMapping("landArea", "E:Place->E1", "E:Place->E3", db)
-	wantResult[fmt.Sprintf("%s", queries[9])] = []*base.Mapping{v}
+	wantResult := map[string][]*types.Mapping{}
+	v, _ := types.NewMapping("typeOf", "E:Place->E1", "Place", db)
+	wantResult[fmt.Sprintf("%s", queries[0])] = []*types.Mapping{v}
+	wantResult[fmt.Sprintf("%s", queries[1])] = []*types.Mapping{v}
+	v, _ = types.NewMapping("subType", "E:Place->E1", "C:Place->type", db)
+	wantResult[fmt.Sprintf("%s", queries[2])] = []*types.Mapping{v}
+	v, _ = types.NewMapping("dcid", "E:Place->E1", "C:Place->id", db)
+	wantResult[fmt.Sprintf("%s", queries[3])] = []*types.Mapping{v}
+	v, _ = types.NewMapping("timezone", "E:Place->E1", "C:Place->timezone", db)
+	wantResult[fmt.Sprintf("%s", queries[4])] = []*types.Mapping{v}
+	v, _ = types.NewMapping("C:Triple->predicate", "E:Triple->E1", "C:Triple->object_value", db)
+	wantResult[fmt.Sprintf("%s", queries[5])] = []*types.Mapping{v}
+	v, _ = types.NewMapping("dcid", "E:Place->E1", "C:Place->id", db)
+	wantResult[fmt.Sprintf("%s", queries[6])] = []*types.Mapping{v}
+	v, _ = types.NewMapping("name", "E:Place->E1", "C:Place->name", db)
+	wantResult[fmt.Sprintf("%s", queries[7])] = []*types.Mapping{v}
+	wantResult[fmt.Sprintf("%s", queries[8])] = []*types.Mapping{v}
+	v, _ = types.NewMapping("landArea", "E:Place->E1", "E:Place->E3", db)
+	wantResult[fmt.Sprintf("%s", queries[9])] = []*types.Mapping{v}
 
 	bindingMap, err := Bind(mappings, queries)
-	gotResult := map[string][]*base.Mapping{}
+	gotResult := map[string][]*types.Mapping{}
 	for q, ms := range bindingMap {
 		gotResult[fmt.Sprintf("%s", q)] = ms
 	}
@@ -92,13 +95,13 @@ func TestGetBindings(t *testing.T) {
 			"name E:Instance->E1 C:Instance->id",
 		},
 	}
-	bindingMap := make(map[*base.Query][]*base.Mapping)
+	bindingMap := make(map[*types.Query][]*types.Mapping)
 	for qStr, mStrList := range qToM {
 		qTokens := strings.Split(qStr, " ")
-		q := base.NewQuery(qTokens[0], qTokens[1], qTokens[2])
+		q := types.NewQuery(qTokens[0], qTokens[1], qTokens[2])
 		for _, mStr := range mStrList {
 			mTokens := strings.Split(mStr, " ")
-			m, err := base.NewMapping(mTokens[0], mTokens[1], mTokens[2], "dc")
+			m, err := types.NewMapping(mTokens[0], mTokens[1], mTokens[2], "dc")
 			if err != nil {
 				t.Fatalf("Invalid input %s: %s", mStr, err)
 			}
@@ -124,22 +127,22 @@ func TestGetGraph(t *testing.T) {
 	}
 	bindings := []Binding{}
 	for q, m := range q2m {
-		query := base.NewQuery(q[0], q[1], q[2])
-		mapping, err := base.NewMapping(m[0], m[1], m[2], "dc")
+		query := types.NewQuery(q[0], q[1], q[2])
+		mapping, err := types.NewMapping(m[0], m[1], m[2], "dc")
 		if err != nil {
 			t.Fatalf("Invalid mapping input %s: %s", m, err)
 		}
 		bindings = append(bindings, Binding{query, mapping})
 	}
 
-	queryID := map[*base.Query]int{
+	queryID := map[*types.Query]int{
 		bindings[0].Query: 0,
 		bindings[1].Query: 0,
 		bindings[2].Query: 0,
 		bindings[3].Query: 0,
 	}
 
-	gotResult := getGraph(bindings, queryID, map[base.Node]struct{}{})
+	gotResult := getGraph(bindings, queryID, map[types.Node]struct{}{})
 	if len(gotResult) != 8 {
 		t.Errorf("gotResult expects 8 keys, got %d instead", len(gotResult))
 	}
@@ -147,39 +150,39 @@ func TestGetGraph(t *testing.T) {
 
 func TestGetConstraint(t *testing.T) {
 	db := "dc_v3"
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	graph := Graph{}
-	e, err := base.NewEntity("E:Place->E1", db)
+	e, err := types.NewEntity("E:Place->E1", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
-	n1 := base.NewNode("?p")
+	n1 := types.NewNode("?p")
 	graph[*e] = map[interface{}]struct{}{n1: {}}
 	graph[n1] = map[interface{}]struct{}{*e: {}}
 
-	c1, err := base.NewColumn("C:Place->name", db)
+	c1, err := types.NewColumn("C:Place->name", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
 	graph[*c1] = map[interface{}]struct{}{"MTV": {}}
 	graph["MTV"] = map[interface{}]struct{}{*c1: {}}
 
-	c2, err := base.NewColumn("C:Place->type", db)
+	c2, err := types.NewColumn("C:Place->type", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
 	graph[*c2] = map[interface{}]struct{}{"City": {}}
 	graph["City"] = map[interface{}]struct{}{*c2: {}}
 
-	n2 := base.NewNode("?dcid")
-	c3, err := base.NewColumn("C:Place->id", db)
+	n2 := types.NewNode("?dcid")
+	c3, err := types.NewColumn("C:Place->id", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
 	graph[n2] = map[interface{}]struct{}{*c3: {}}
 	graph[*c3] = map[interface{}]struct{}{n2: {}}
 
-	funcDeps, err := GetFuncDeps(mappings)
+	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
 		t.Fatalf("GetFuncDeps error: %s", err)
 	}
@@ -201,23 +204,23 @@ func TestGetConstraint(t *testing.T) {
 
 func TestGetSQL(t *testing.T) {
 	db := "dc_v3"
-	p, err := base.NewColumn("C:Place->prov_id", db)
+	p, err := types.NewColumn("C:Place->prov_id", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
-	tableProv := map[string]base.Column{"`dc_v3.Place`": *p}
+	tableProv := map[string]types.Column{"`dc_v3.Place`": *p}
 
-	n1 := base.NewNode("?p")
-	c1, err := base.NewColumn("C:Place->name", db)
+	n1 := types.NewNode("?p")
+	c1, err := types.NewColumn("C:Place->name", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
-	c2, err := base.NewColumn("C:Place->type", db)
+	c2, err := types.NewColumn("C:Place->type", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
-	n2 := base.NewNode("?dcid")
-	c3, err := base.NewColumn("C:Place->id", db)
+	n2 := types.NewNode("?dcid")
+	c3, err := types.NewColumn("C:Place->id", db)
 	if err != nil {
 		t.Fatalf("Invalid input %s", err)
 	}
@@ -225,11 +228,11 @@ func TestGetSQL(t *testing.T) {
 		{*c3, n2}, {*c3, n1}, {*c2, "City"}, {*c1, "MTV"},
 	}
 	gotSQL, _, err := getSQL(
-		[]base.Node{n2},
+		[]types.Node{n2},
 		constraints,
-		map[base.Node]string{},
+		map[types.Node]string{},
 		ProvInfo{true, tableProv},
-		&base.QueryOptions{Limit: 20, Distinct: true, Orderby: "?dcid", ASC: true},
+		&types.QueryOptions{Limit: 20, Distinct: true, Orderby: "?dcid", ASC: true},
 	)
 	if err != nil {
 		t.Fatalf("getSQL error: %s", err)
@@ -244,13 +247,13 @@ func TestGetSQL(t *testing.T) {
 }
 
 func TestTranslate(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
 	emptyProv := map[int][]int{}
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
 		name     string
 		askProv  bool
@@ -663,8 +666,8 @@ func TestTranslate(t *testing.T) {
 			emptyProv,
 		},
 	} {
-		options := base.QueryOptions{Prov: c.askProv}
-		nodes, queries, err := ParseQuery(c.queryStr)
+		options := types.QueryOptions{Prov: c.askProv}
+		nodes, queries, err := datalog.ParseQuery(c.queryStr)
 		if err != nil {
 			t.Errorf("ParseQuery error: %s", err)
 			continue
@@ -685,13 +688,13 @@ func TestTranslate(t *testing.T) {
 }
 
 func TestDcidSimplified(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
 	emptyProv := map[int][]int{}
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
 		name     string
 		askProv  bool
@@ -750,7 +753,7 @@ func TestDcidSimplified(t *testing.T) {
 			emptyProv,
 		},
 	} {
-		nodes, queries, err := ParseQuery(c.queryStr)
+		nodes, queries, err := datalog.ParseQuery(c.queryStr)
 		if err != nil {
 			t.Errorf("ParseQuery error: %s", err)
 			continue
@@ -767,12 +770,12 @@ func TestDcidSimplified(t *testing.T) {
 }
 
 func TestTranslateIOCountyBQ(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
-	mappings := readTestMapping(t, []string{"oi_county_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"testdata/oi_county_mapping.mcf"})
 	for _, c := range []struct {
 		name     string
 		queryStr string
@@ -790,7 +793,7 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 				"WHERE _dc_v3_bq_county_outcomes_1.geo_id = \"40005\"",
 		},
 	} {
-		nodes, queries, err := ParseQuery(c.queryStr)
+		nodes, queries, err := datalog.ParseQuery(c.queryStr)
 		if err != nil {
 			t.Errorf("ParseQuery error: %s", err)
 			continue
@@ -807,12 +810,12 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 }
 
 func TestTranslateWeather(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
 		name     string
 		queryStr string
@@ -846,7 +849,7 @@ func TestTranslateWeather(t *testing.T) {
 				"AND _dc_v3_MonthlyWeather_0.place_id IN (\"geoId/4261000\", \"geoId/0649670\", \"geoId/4805000\")",
 		},
 	} {
-		nodes, queries, err := ParseQuery(c.queryStr)
+		nodes, queries, err := datalog.ParseQuery(c.queryStr)
 		if err != nil {
 			t.Errorf("ParseQuery error: %s", err)
 			continue
@@ -863,12 +866,12 @@ func TestTranslateWeather(t *testing.T) {
 }
 
 func TestTranslateWeatherSparql(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
-	mappings := readTestMapping(t, []string{"test_mapping.mcf"})
+	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
 		name     string
 		queryStr string
@@ -908,15 +911,15 @@ func TestTranslateWeatherSparql(t *testing.T) {
 }
 
 func TestTranslatePew(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
-	mappings := readTestMapping(t, []string{
-		"PewReligiousLandscapeSurvey2007Items.mcf",
-		"PewReligiousLandscapeSurvey2007ItemsMetadata.mcf",
-		"PewReligiousLandscapeSurvey2007Response.mcf",
+	mappings := testutil.ReadTestMapping(t, []string{
+		"testdata/PewReligiousLandscapeSurvey2007Items.mcf",
+		"testdata/PewReligiousLandscapeSurvey2007ItemsMetadata.mcf",
+		"testdata/PewReligiousLandscapeSurvey2007Response.mcf",
 	})
 	for _, c := range []struct {
 		name     string
@@ -997,13 +1000,13 @@ func TestTranslatePew(t *testing.T) {
 }
 
 func TestSparql(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
-	mappings := readTestMapping(t, []string{
-		"test_mapping.mcf",
+	mappings := testutil.ReadTestMapping(t, []string{
+		"testdata/test_mapping.mcf",
 	})
 	for _, c := range []struct {
 		name     string
@@ -1088,13 +1091,13 @@ func TestSparql(t *testing.T) {
 }
 
 func TestStatVarObs(t *testing.T) {
-	subTypeMap, err := GetSubTypeMap("table_types.json")
+	subTypeMap, err := solver.GetSubTypeMap("table_types.json")
 	if err != nil {
 		t.Fatalf("GetSubTypeMap() = %v", err)
 	}
 
-	mappings := readTestMapping(t, []string{
-		"test_mapping.mcf",
+	mappings := testutil.ReadTestMapping(t, []string{
+		"testdata/test_mapping.mcf",
 	})
 	for _, c := range []struct {
 		name     string

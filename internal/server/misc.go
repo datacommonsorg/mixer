@@ -18,9 +18,10 @@ import (
 	"context"
 	"encoding/json"
 
+	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/sparql"
 	"github.com/datacommonsorg/mixer/internal/translator"
+	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -33,7 +34,7 @@ func (s *Server) Translate(ctx context.Context,
 	}
 
 	out := pb.TranslateResponse{}
-	mappings, err := translator.ParseMapping(in.GetSchemaMapping(), "bq")
+	mappings, err := mcf.ParseMapping(in.GetSchemaMapping(), "bq")
 	if err != nil {
 		return nil, err
 	}

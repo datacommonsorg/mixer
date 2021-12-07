@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package translator
+package datalog
 
 import (
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/base"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -49,7 +49,7 @@ func split(str string, sep rune) ([]string, error) {
 }
 
 // ParseQuery parses a datalog query into list of nodes and list of query statements.
-func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
+func ParseQuery(queryString string) ([]types.Node, []*types.Query, error) {
 	statements, err := split(strings.TrimSpace(queryString), ',')
 
 	if err != nil {
@@ -65,12 +65,12 @@ func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
 		return nil, nil, status.Errorf(codes.InvalidArgument, "Query does starts with SELECT: %s", queryString)
 	}
 
-	nodes := []base.Node{}
+	nodes := []types.Node{}
 	for _, alias := range sVars[1:] {
-		nodes = append(nodes, base.NewNode(alias))
+		nodes = append(nodes, types.NewNode(alias))
 	}
 
-	queries := []*base.Query{}
+	queries := []*types.Query{}
 	for _, statement := range statements[1:] {
 		tmp, err := split(strings.TrimSpace(statement), ' ')
 		if err != nil {
@@ -86,52 +86,18 @@ func ParseQuery(queryString string) ([]base.Node, []*base.Query, error) {
 		if len(terms) < 3 {
 			return nil, nil, status.Errorf(codes.InvalidArgument, "Query terms length < 3: %s", terms)
 		}
-		var query *base.Query
+		var query *types.Query
 		if strings.HasPrefix(terms[2], "?") {
-			query = base.NewQuery(terms[0], terms[1], base.NewNode(terms[2]))
+			query = types.NewQuery(terms[0], terms[1], types.NewNode(terms[2]))
 		} else {
 			if len(terms) == 3 {
-				query = base.NewQuery(terms[0], terms[1], terms[2])
+				query = types.NewQuery(terms[0], terms[1], terms[2])
 			} else {
-				query = base.NewQuery(terms[0], terms[1], terms[2:])
+				query = types.NewQuery(terms[0], terms[1], terms[2:])
 
 			}
 		}
 		queries = append(queries, query)
 	}
 	return nodes, queries, nil
-}
-
-// ParseMapping parses schema mapping mcf into a list of Mapping struct.
-func ParseMapping(mcf, database string) ([]*base.Mapping, error) {
-	lines := strings.Split(mcf, "\n")
-	mappings := []*base.Mapping{}
-	var sub string
-	for _, line := range lines {
-		line = strings.TrimSpace(line)
-		if strings.HasPrefix(line, "#") || line == "" {
-			continue
-		}
-		parts := strings.SplitN(line, ": ", 2)
-		if len(parts) < 2 {
-			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid schema mapping mcf:\n%s", mcf)
-		}
-		head := strings.TrimSpace(parts[0])
-		body := strings.TrimSuffix(strings.TrimPrefix(strings.TrimSpace(parts[1]), `"`), `"`)
-
-		if head == "Node" {
-			sub = body
-		} else {
-			if sub == "" {
-				return nil, status.Error(codes.InvalidArgument, "Missing Node identifier")
-			}
-			m, err := base.NewMapping(head, sub, body, database)
-			if err != nil {
-				return nil, err
-			}
-			mappings = append(mappings, m)
-		}
-	}
-	return mappings, nil
 }

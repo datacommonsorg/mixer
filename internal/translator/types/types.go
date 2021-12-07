@@ -12,30 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package base
+package types
 
 import (
 	"fmt"
 	"regexp"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-)
-
-const (
-	// PreC is the prefix for Column
-	PreC = "C:"
-	// PreE is the prefix for Entity
-	PreE = "E:"
-	// Arrow is the symbol in schema mapping between table name and table column
-	Arrow = "->"
-	// TypeOf represents "typeOf" literal
-	TypeOf = "typeOf"
-	// Triple represents Triples table name
-	Triple = "Triple"
-	// ReferenceDelimiter is the delimiter for schema namespace
-	ReferenceDelimiter = ':'
 )
 
 func toBqTable(table string, db string) string {
@@ -95,10 +81,10 @@ type Entity struct {
 
 // NewEntity creates a new Entity instance.
 func NewEntity(s string, db string) (*Entity, error) {
-	if !strings.HasPrefix(s, PreE) {
+	if !strings.HasPrefix(s, tmcf.PreE) {
 		return nil, status.Error(codes.InvalidArgument, "Invalid input for Entity")
 	}
-	parts := strings.SplitN(strings.TrimPrefix(s, PreE), Arrow, 2)
+	parts := strings.SplitN(strings.TrimPrefix(s, tmcf.PreE), tmcf.Arrow, 2)
 	if len(parts) != 2 {
 		return nil, status.Error(codes.InvalidArgument, "Invalid input for Entity")
 	}
@@ -111,7 +97,7 @@ func (e Entity) String() string {
 
 // Key gets the key of an entity.
 func (e Entity) Key() string {
-	return strings.Join([]string{e.Table.Name, e.ID}, Arrow)
+	return strings.Join([]string{e.Table.Name, e.ID}, tmcf.Arrow)
 }
 
 // Column represents a column in schema mapping.
@@ -128,15 +114,15 @@ func (c Column) String() string {
 
 // Key gets the key of a column.
 func (c Column) Key() string {
-	return strings.Join([]string{c.Table.Name, c.Name}, Arrow)
+	return strings.Join([]string{c.Table.Name, c.Name}, tmcf.Arrow)
 }
 
 // NewColumn creates a new Column instance.
 func NewColumn(s string, db string) (*Column, error) {
-	if !strings.HasPrefix(s, PreC) {
+	if !strings.HasPrefix(s, tmcf.PreC) {
 		return nil, status.Error(codes.InvalidArgument, "Invalid input for Column")
 	}
-	parts := strings.SplitN(strings.TrimPrefix(s, PreC), Arrow, 2)
+	parts := strings.SplitN(strings.TrimPrefix(s, tmcf.PreC), tmcf.Arrow, 2)
 	if len(parts) != 2 {
 		return nil, status.Error(codes.InvalidArgument, "Invalid input for Column")
 	}
@@ -170,7 +156,7 @@ func NewMapping(pred, sub, obj, db string) (*Mapping, error) {
 
 	if pred == "functionalDeps" {
 		p = FuncDeps{}
-	} else if strings.HasPrefix(pred, PreC) {
+	} else if strings.HasPrefix(pred, tmcf.PreC) {
 		p, err = NewColumn(pred, db)
 		if err != nil {
 			return nil, err
@@ -187,13 +173,13 @@ func NewMapping(pred, sub, obj, db string) (*Mapping, error) {
 		}
 		o = objList
 	} else {
-		if strings.HasPrefix(obj, PreC) {
+		if strings.HasPrefix(obj, tmcf.PreC) {
 			o, err = NewColumn(obj, db)
 			if err != nil {
 				return nil, err
 			}
 			o = *o.(*Column)
-		} else if strings.HasPrefix(obj, PreE) {
+		} else if strings.HasPrefix(obj, tmcf.PreE) {
 			o, err = NewEntity(obj, db)
 			o = *o.(*Entity)
 		} else {
@@ -209,7 +195,7 @@ func NewMapping(pred, sub, obj, db string) (*Mapping, error) {
 
 // IsTriple checks if a mapping is about Triples table.
 func (q *Mapping) IsTriple() bool {
-	return strings.Contains(q.Sub.Table.Name, Triple)
+	return strings.Contains(q.Sub.Table.Name, tmcf.Triple)
 }
 
 // Query represents a datalog query statement.
@@ -229,5 +215,20 @@ func NewQuery(pred string, nodeAlias string, obj interface{}) *Query {
 
 // IsTypeOf checks if a query is typeOf statement.
 func (q *Query) IsTypeOf() bool {
-	return q.Pred == TypeOf
+	return q.Pred == tmcf.TypeOf
+}
+
+// OutArcInfo is used for out arcs pred column.
+type OutArcInfo struct {
+	Pred   string
+	Column string
+	IsNode bool
+}
+
+// InArcInfo is used for in arcs pred column.
+type InArcInfo struct {
+	Table  string
+	Pred   string
+	SubCol string
+	ObjCol string
 }

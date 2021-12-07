@@ -27,11 +27,12 @@ import (
 	"cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
-	"github.com/datacommonsorg/mixer/internal/base"
+	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/translator"
+	"github.com/datacommonsorg/mixer/internal/translator/solver"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
 
 // Cache holds cached data for the mixer server.
@@ -46,9 +47,9 @@ type Cache struct {
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {
-	Mappings         []*base.Mapping
-	OutArcInfo       map[string]map[string][]translator.OutArcInfo
-	InArcInfo        map[string][]translator.InArcInfo
+	Mappings         []*types.Mapping
+	OutArcInfo       map[string]map[string][]types.OutArcInfo
+	InArcInfo        map[string][]types.InArcInfo
 	SubTypeMap       map[string]string
 	Bq               string
 	BtProject        string
@@ -95,7 +96,7 @@ func ReadBranchTableName(
 func NewMetadata(
 	bqDataset, storeProject, branchInstance, schemaPath string) (*Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
-	subTypeMap, err := translator.GetSubTypeMap(
+	subTypeMap, err := solver.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
 	if err != nil {
 		return nil, err
@@ -104,22 +105,22 @@ func NewMetadata(
 	if err != nil {
 		return nil, err
 	}
-	mappings := []*base.Mapping{}
+	mappings := []*types.Mapping{}
 	for _, f := range files {
 		if strings.HasSuffix(f.Name(), ".mcf") {
 			mappingStr, err := ioutil.ReadFile(filepath.Join(schemaPath, f.Name()))
 			if err != nil {
 				return nil, err
 			}
-			mapping, err := translator.ParseMapping(string(mappingStr), bqDataset)
+			mapping, err := mcf.ParseMapping(string(mappingStr), bqDataset)
 			if err != nil {
 				return nil, err
 			}
 			mappings = append(mappings, mapping...)
 		}
 	}
-	outArcInfo := map[string]map[string][]translator.OutArcInfo{}
-	inArcInfo := map[string][]translator.InArcInfo{}
+	outArcInfo := map[string]map[string][]types.OutArcInfo{}
+	inArcInfo := map[string][]types.InArcInfo{}
 	return &Metadata{
 			mappings,
 			outArcInfo,

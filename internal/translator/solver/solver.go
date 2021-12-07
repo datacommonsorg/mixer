@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package translator
+package solver
 
 import (
 	"encoding/json"
 	"io/ioutil"
 
-	"github.com/datacommonsorg/mixer/internal/base"
-
+	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -39,21 +39,6 @@ type data struct {
 	Parent   string   `json:"parent"`
 	Table    string   `json:"table"`
 	Children []string `json:"children"`
-}
-
-// OutArcInfo is used for out arcs pred column.
-type OutArcInfo struct {
-	Pred   string
-	Column string
-	IsNode bool
-}
-
-// InArcInfo is used for in arcs pred column.
-type InArcInfo struct {
-	Table  string
-	Pred   string
-	SubCol string
-	ObjCol string
 }
 
 // GetSubTypeMap gets subtype map.
@@ -77,10 +62,10 @@ func GetSubTypeMap(tableTypesJSONFilePath string) (map[string]string, error) {
 }
 
 // GetNodeType obtains a map from node alias to the types.
-func GetNodeType(queries []*base.Query) (map[string]string, error) {
+func GetNodeType(queries []*types.Query) (map[string]string, error) {
 	result := make(map[string]string)
 	for _, q := range queries {
-		if q.Pred == base.TypeOf {
+		if q.Pred == tmcf.TypeOf {
 			if _, ok := result[q.Sub.Alias]; ok {
 				return nil, status.Error(codes.InvalidArgument, "Duplicate select node type")
 			}
@@ -95,10 +80,10 @@ func GetNodeType(queries []*base.Query) (map[string]string, error) {
 }
 
 // GetEntityType obtains a map from entity key to the types.
-func GetEntityType(mappings []*base.Mapping) map[string][]string {
+func GetEntityType(mappings []*types.Mapping) map[string][]string {
 	result := make(map[string][]string)
 	for _, m := range mappings {
-		if m.Pred == base.TypeOf {
+		if m.Pred == tmcf.TypeOf {
 			result[m.Sub.Key()] = append(result[m.Sub.Key()], m.Obj.(string))
 		}
 	}
@@ -106,7 +91,7 @@ func GetEntityType(mappings []*base.Mapping) map[string][]string {
 }
 
 // GetExplicitTypeProp obtains a map from type to list of predicate
-func GetExplicitTypeProp(mappings []*base.Mapping) map[string][]string {
+func GetExplicitTypeProp(mappings []*types.Mapping) map[string][]string {
 	entityType := GetEntityType(mappings)
 	result := make(map[string][]string)
 	for _, m := range mappings {
@@ -125,8 +110,11 @@ func GetExplicitTypeProp(mappings []*base.Mapping) map[string][]string {
 // If two query statements match to non-Triples table, they would have the same query id
 // if they have the same subject.
 // The same query id means they point to the same spanner table instance in SQL query.
-func GetQueryID(queries []*base.Query, matchTriple map[*base.Query]bool) map[*base.Query]int {
-	result := map[*base.Query]int{}
+func GetQueryID(
+	queries []*types.Query,
+	matchTriple map[*types.Query]bool,
+) map[*types.Query]int {
+	result := map[*types.Query]int{}
 	triplepredSub := map[[2]string]int{}
 	countTriple := 0
 	nonTripleSub := map[string]int{}
@@ -165,8 +153,8 @@ func GetQueryID(queries []*base.Query, matchTriple map[*base.Query]bool) map[*ba
 
 // MatchTriple takes list of queries and mappings and determines
 // whether a query matches Triples table.
-func MatchTriple(mappings []*base.Mapping, queries []*base.Query) (map[*base.Query]bool, error) {
-	result := map[*base.Query]bool{}
+func MatchTriple(mappings []*types.Mapping, queries []*types.Query) (map[*types.Query]bool, error) {
+	result := map[*types.Query]bool{}
 	nodeType, err := GetNodeType(queries)
 	if err != nil {
 		return nil, err
@@ -196,10 +184,10 @@ func MatchTriple(mappings []*base.Mapping, queries []*base.Query) (map[*base.Que
 }
 
 // GetFuncDeps obtains the functional deps from schema mapping.
-func GetFuncDeps(mappings []*base.Mapping) (map[base.Entity]map[string]interface{}, error) {
-	result := map[base.Entity]map[string]interface{}{}
+func GetFuncDeps(mappings []*types.Mapping) (map[types.Entity]map[string]interface{}, error) {
+	result := map[types.Entity]map[string]interface{}{}
 	for _, m := range mappings {
-		if _, ok := m.Pred.(base.FuncDeps); ok {
+		if _, ok := m.Pred.(types.FuncDeps); ok {
 			result[m.Sub] = map[string]interface{}{}
 			if obj, ok := m.Obj.([]string); ok {
 				for _, o := range obj {
@@ -230,19 +218,19 @@ func GetFuncDeps(mappings []*base.Mapping) (map[base.Entity]map[string]interface
 }
 
 // GetProvColumn obtains the provenance column for each table.
-func GetProvColumn(mappings []*base.Mapping) (map[string]base.Column, error) {
+func GetProvColumn(mappings []*types.Mapping) (map[string]types.Column, error) {
 	funcDeps, err := GetFuncDeps(mappings)
 	if err != nil {
 		return nil, err
 	}
-	result := map[string]base.Column{}
+	result := map[string]types.Column{}
 	for _, m := range mappings {
 		if m.Pred == "provenance" {
-			fd, ok := funcDeps[m.Obj.(base.Entity)]["dcid"]
+			fd, ok := funcDeps[m.Obj.(types.Entity)]["dcid"]
 			if !ok {
 				return nil, err
 			}
-			col, ok := fd.(base.Column)
+			col, ok := fd.(types.Column)
 			if !ok {
 				return nil, err
 			}
@@ -253,8 +241,8 @@ func GetProvColumn(mappings []*base.Mapping) (map[string]base.Column, error) {
 }
 
 // GetNodeRef obtains a list of node reference from query statements.
-func GetNodeRef(queries []*base.Query) map[base.Node]struct{} {
-	res := map[base.Node]struct{}{}
+func GetNodeRef(queries []*types.Query) map[types.Node]struct{} {
+	res := map[types.Node]struct{}{}
 	for _, q := range queries {
 		res[q.Sub] = struct{}{}
 	}
@@ -262,23 +250,23 @@ func GetNodeRef(queries []*base.Query) map[base.Node]struct{} {
 }
 
 // RewriteQuery rewrites typeOf query for entity that is a subType.
-func RewriteQuery(queries []*base.Query, subTypeMap map[string]string) []*base.Query {
+func RewriteQuery(queries []*types.Query, subTypeMap map[string]string) []*types.Query {
 	type info struct {
 		pos int
 		t   string
 	}
 
 	// Do not modify the input "queries"
-	res := []*base.Query{}
+	res := []*types.Query{}
 	for _, q := range queries {
 		tmp := *q
 		res = append(res, &tmp)
 	}
 
-	typeOfNodeInfo := map[base.Node]info{}
-	subTypeNodes := map[base.Node]struct{}{}
+	typeOfNodeInfo := map[types.Node]info{}
+	subTypeNodes := map[types.Node]struct{}{}
 	for i, q := range res {
-		if q.Pred == base.TypeOf {
+		if q.Pred == tmcf.TypeOf {
 			if v, ok := q.Obj.(string); ok {
 				if _, ok := subTypeMap[v]; ok {
 					typeOfNodeInfo[q.Sub] = info{i, v}
@@ -294,17 +282,17 @@ func RewriteQuery(queries []*base.Query, subTypeMap map[string]string) []*base.Q
 			continue
 		}
 		in := typeOfNodeInfo[n]
-		res[in.pos] = base.NewQuery(base.TypeOf, n.Alias, subTypeMap[in.t])
-		res = append(res, base.NewQuery("subType", n.Alias, in.t))
+		res[in.pos] = types.NewQuery(tmcf.TypeOf, n.Alias, subTypeMap[in.t])
+		res = append(res, types.NewQuery("subType", n.Alias, in.t))
 	}
 	return res
 }
 
 // PruneMapping prunes foreign key entity mappings.
-func PruneMapping(mappings []*base.Mapping) []*base.Mapping {
-	tableInfo := map[base.Entity][]string{}
-	redundant := map[base.Entity]struct{}{}
-	result := []*base.Mapping{}
+func PruneMapping(mappings []*types.Mapping) []*types.Mapping {
+	tableInfo := map[types.Entity][]string{}
+	redundant := map[types.Entity]struct{}{}
+	result := []*types.Mapping{}
 	for _, m := range mappings {
 		if pred, ok := m.Pred.(string); ok {
 			tableInfo[m.Sub] = append(tableInfo[m.Sub], pred)
@@ -313,7 +301,7 @@ func PruneMapping(mappings []*base.Mapping) []*base.Mapping {
 	for sub, predList := range tableInfo {
 		remove := true
 		for _, pred := range predList {
-			if pred != base.TypeOf && pred != "dcid" {
+			if pred != tmcf.TypeOf && pred != "dcid" {
 				remove = false
 				break
 			}
@@ -331,10 +319,13 @@ func PruneMapping(mappings []*base.Mapping) []*base.Mapping {
 }
 
 // GetOutArcInfo gets the table and columns corresponding to the node properties.
-func GetOutArcInfo(mappings []*base.Mapping, nodeType string) (map[string][]OutArcInfo, error) {
-	entities := map[base.Entity]struct{}{}
+func GetOutArcInfo(
+	mappings []*types.Mapping,
+	nodeType string,
+) (map[string][]types.OutArcInfo, error) {
+	entities := map[types.Entity]struct{}{}
 	for _, m := range mappings {
-		if m.Pred == base.TypeOf {
+		if m.Pred == tmcf.TypeOf {
 			if mObj, ok := m.Obj.(string); ok {
 				if nodeType == mObj {
 					entities[m.Sub] = struct{}{}
@@ -347,7 +338,7 @@ func GetOutArcInfo(mappings []*base.Mapping, nodeType string) (map[string][]OutA
 		return nil, err
 	}
 
-	result := map[string][]OutArcInfo{}
+	result := map[string][]types.OutArcInfo{}
 	for _, m := range mappings {
 		if _, ok := entities[m.Sub]; !ok {
 			continue
@@ -359,22 +350,22 @@ func GetOutArcInfo(mappings []*base.Mapping, nodeType string) (map[string][]OutA
 		if _, ok := skippedPred[mPred]; ok {
 			continue
 		}
-		if mObj, ok := m.Obj.(base.Column); ok {
+		if mObj, ok := m.Obj.(types.Column); ok {
 			result[m.Sub.Table.Name] = append(
 				result[m.Sub.Table.Name],
-				OutArcInfo{
+				types.OutArcInfo{
 					Pred:   mPred,
 					Column: mObj.Name,
 					IsNode: false,
 				})
-		} else if mObj, ok := m.Obj.(base.Entity); ok {
+		} else if mObj, ok := m.Obj.(types.Entity); ok {
 			if deps, ok := funcDeps[mObj]; ok {
 				for p, col := range deps {
 					if p == "dcid" {
-						if c, _ := col.(base.Column); ok {
+						if c, _ := col.(types.Column); ok {
 							result[m.Sub.Table.Name] = append(
 								result[m.Sub.Table.Name],
-								OutArcInfo{
+								types.OutArcInfo{
 									Pred:   mPred,
 									Column: c.Name,
 									IsNode: true,
@@ -389,7 +380,7 @@ func GetOutArcInfo(mappings []*base.Mapping, nodeType string) (map[string][]OutA
 }
 
 // GetInArcInfo gets the table and columns corresponding to the node properties.
-func GetInArcInfo(mappings []*base.Mapping, nodeType string) ([]InArcInfo, error) {
+func GetInArcInfo(mappings []*types.Mapping, nodeType string) ([]types.InArcInfo, error) {
 
 	// type InArcInfo struct {
 	// 	Table string
@@ -402,19 +393,19 @@ func GetInArcInfo(mappings []*base.Mapping, nodeType string) ([]InArcInfo, error
 		return nil, err
 	}
 
-	entities := make(map[base.Entity]struct{})
+	entities := make(map[types.Entity]struct{})
 	for _, m := range mappings {
-		if m.Pred == base.TypeOf {
+		if m.Pred == tmcf.TypeOf {
 			if m.Obj.(string) == nodeType {
 				entities[m.Sub] = struct{}{}
 			}
 		}
 	}
 
-	result := []InArcInfo{}
+	result := []types.InArcInfo{}
 	for _, m := range mappings {
 		// Obj is entity.
-		mObj, ok := m.Obj.(base.Entity)
+		mObj, ok := m.Obj.(types.Entity)
 		if !ok {
 			continue
 		}
@@ -436,7 +427,7 @@ func GetInArcInfo(mappings []*base.Mapping, nodeType string) ([]InArcInfo, error
 				continue
 			}
 			for _, col := range deps {
-				objCol = col.(base.Column).Name
+				objCol = col.(types.Column).Name
 			}
 		}
 
@@ -446,10 +437,10 @@ func GetInArcInfo(mappings []*base.Mapping, nodeType string) ([]InArcInfo, error
 				continue
 			}
 			for _, col := range deps {
-				subCol = col.(base.Column).Name
+				subCol = col.(types.Column).Name
 			}
 		}
-		inArcInfo := InArcInfo{
+		inArcInfo := types.InArcInfo{
 			Table:  m.Sub.Table.Name,
 			Pred:   mPred,
 			SubCol: subCol,

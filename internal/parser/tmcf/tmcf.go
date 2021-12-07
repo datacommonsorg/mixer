@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package parser
+package tmcf
 
 import (
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/base"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -58,11 +57,11 @@ func ParseTmcf(tmcf string) (map[string]*TableSchema, error) {
 		body := strings.TrimSpace(sections[1])
 
 		// Node entity mapping
-		if strings.HasPrefix(body, base.PreE) {
+		if strings.HasPrefix(body, PreE) {
 			if head != "Node" {
 				return nil, status.Errorf(codes.Internal, "Only supports fully resolved TMCF import")
 			}
-			parts := strings.SplitN(strings.TrimPrefix(body, base.PreE), base.Arrow, 2)
+			parts := strings.SplitN(strings.TrimPrefix(body, PreE), Arrow, 2)
 			if len(parts) != 2 {
 				return nil, status.Errorf(codes.Internal, "Invalid input for Entity:\n%s", line)
 			}
@@ -74,9 +73,9 @@ func ParseTmcf(tmcf string) (map[string]*TableSchema, error) {
 					NodeSchema: map[string]map[string]string{},
 				}
 			}
-		} else if strings.HasPrefix(body, base.PreC) {
+		} else if strings.HasPrefix(body, PreC) {
 			// Column mapping
-			parts := strings.SplitN(strings.TrimPrefix(body, base.PreC), base.Arrow, 2)
+			parts := strings.SplitN(strings.TrimPrefix(body, PreC), Arrow, 2)
 			if len(parts) != 2 {
 				return nil, status.Errorf(codes.Internal, "Invalid input for Column:\n%s", line)
 			}

@@ -109,21 +109,21 @@ func TestParseWhere(t *testing.T) {
 		},
 		{
 			"Where {?person rdf:name ?name}",
-			&Where{[]Triple{Triple{"?person", "rdf:name", []string{"?name"}}}},
+			&Where{[]Triple{{"?person", "rdf:name", []string{"?name"}}}},
 			false,
 		},
 		{
 			"Where {?person rdf:name ?name . ?person rdf:address ?address }",
 			&Where{[]Triple{
-				Triple{"?person", "rdf:name", []string{"?name"}},
-				Triple{"?person", "rdf:address", []string{"?address"}},
+				{"?person", "rdf:name", []string{"?name"}},
+				{"?person", "rdf:address", []string{"?address"}},
 			}},
 			false,
 		},
 		{
 			`Where { ?a name ("San Jose, CA" "SJ in CA") }`,
 			&Where{[]Triple{
-				Triple{"?a", "name", []string{"\"San Jose, CA\"", "\"SJ in CA\""}},
+				{"?a", "name", []string{"\"San Jose, CA\"", "\"SJ in CA\""}},
 			}},
 			false,
 		},
@@ -237,10 +237,10 @@ func TestParseTree(t *testing.T) {
 				P: &Prologue{Base: "<http://schema.org/>", Prefix: map[string]string{}},
 				S: &Select{[]string{"?dcid"}, true},
 				W: &Where{[]Triple{
-					Triple{"?p", "typeOf", []string{"Place"}},
-					Triple{"?p", "subType", []string{"City"}},
-					Triple{"?p", "name", []string{"\"San Jose\""}},
-					Triple{"?p", "dcid", []string{"?dcid"}},
+					{"?p", "typeOf", []string{"Place"}},
+					{"?p", "subType", []string{"City"}},
+					{"?p", "name", []string{"\"San Jose\""}},
+					{"?p", "dcid", []string{"?dcid"}},
 				}},
 				L: 20,
 			},
@@ -258,7 +258,7 @@ func TestParseTree(t *testing.T) {
 				P: &Prologue{Base: "<http://schema.org/>", Prefix: map[string]string{}},
 				S: &Select{[]string{"?a"}, false},
 				W: &Where{[]Triple{
-					Triple{"?a", "name", []string{"\"San Jose, CA\"", "\"SJ in CA\""}},
+					{"?a", "name", []string{"\"San Jose, CA\"", "\"SJ in CA\""}},
 				}},
 				O: &Orderby{"?a", true},
 				L: 10,

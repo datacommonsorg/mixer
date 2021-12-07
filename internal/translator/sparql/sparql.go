@@ -18,38 +18,37 @@ package sparql
 import (
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/base"
-
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 // ParseQuery parses a sparql query into list of nodes and list of query statements.
-func ParseQuery(queryString string) ([]base.Node, []*base.Query, *base.QueryOptions, error) {
+func ParseQuery(queryString string) ([]types.Node, []*types.Query, *types.QueryOptions, error) {
 	queryTree, err := NewParser(strings.NewReader(queryString)).Parse()
 	if err != nil {
 		return nil, nil, nil, status.Errorf(
 			codes.InvalidArgument, "Invalid sparql query string\n%s", queryString)
 	}
-	opts := base.QueryOptions{Limit: queryTree.L, Distinct: queryTree.S.Distinct}
+	opts := types.QueryOptions{Limit: queryTree.L, Distinct: queryTree.S.Distinct}
 
-	nodes := []base.Node{}
+	nodes := []types.Node{}
 	for _, v := range queryTree.S.Variable {
-		nodes = append(nodes, base.NewNode(v))
+		nodes = append(nodes, types.NewNode(v))
 	}
 
-	queries := []*base.Query{}
+	queries := []*types.Query{}
 	for _, t := range queryTree.W.Triples {
-		var query *base.Query
+		var query *types.Query
 		if len(t.Objs) == 1 {
 			obj := t.Objs[0]
 			if strings.HasPrefix(obj, "?") {
-				query = base.NewQuery(t.Pred, t.Sub, base.NewNode(obj))
+				query = types.NewQuery(t.Pred, t.Sub, types.NewNode(obj))
 			} else {
-				query = base.NewQuery(t.Pred, t.Sub, obj)
+				query = types.NewQuery(t.Pred, t.Sub, obj)
 			}
 		} else {
-			query = base.NewQuery(t.Pred, t.Sub, t.Objs)
+			query = types.NewQuery(t.Pred, t.Sub, t.Objs)
 		}
 		queries = append(queries, query)
 	}
