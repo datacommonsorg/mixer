@@ -21,6 +21,7 @@ import (
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -48,7 +49,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 		Sfactor: in.GetScalingFactor(),
 	}
 
-	rowList, keyTokens := buildStatsKey([]string{place}, []string{statVar})
+	rowList, keyTokens := bigtable.BuildStatsKey([]string{place}, []string{statVar})
 	var obsTimeSeries *ObsTimeSeries
 	btData, err := readStats(ctx, s.store, rowList, keyTokens)
 	if err != nil {
@@ -85,7 +86,7 @@ func getStatSet(
 		}
 	}
 
-	rowList, keyTokens := buildStatsKey(places, statVars)
+	rowList, keyTokens := bigtable.BuildStatsKey(places, statVars)
 	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -120,7 +121,7 @@ func getStatSetAll(
 	*pb.GetStatSetAllResponse, error,
 ) {
 	ts := time.Now()
-	rowList, keyTokens := buildStatsKey(places, statVars)
+	rowList, keyTokens := bigtable.BuildStatsKey(places, statVars)
 	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -284,7 +285,7 @@ func (s *Server) GetStatSetWithinPlace(
 	}
 
 	// Read from cache directly
-	rowList, keyTokens := buildStatSetWithinPlaceKey(parentPlace, childType, dateKey, statVars)
+	rowList, keyTokens := bigtable.BuildStatSetWithinPlaceKey(parentPlace, childType, dateKey, statVars)
 	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -420,7 +421,7 @@ func (s *Server) GetStatSetWithinPlaceAll(
 	}
 
 	// Read from cache directly
-	rowList, keyTokens := buildStatSetWithinPlaceKey(parentPlace, childType, dateKey, statVars)
+	rowList, keyTokens := bigtable.BuildStatSetWithinPlaceKey(parentPlace, childType, dateKey, statVars)
 	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err

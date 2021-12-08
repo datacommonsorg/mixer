@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -40,9 +41,9 @@ func lowQualityPopulationImport(importName string) bool {
 }
 
 func tokenFn(
-	keyTokens map[string]*placeStatVar) func(rowKey string) (string, error) {
+	keyTokens map[string]*util.PlaceStatVar) func(rowKey string) (string, error) {
 	return func(rowKey string) (string, error) {
-		return keyTokens[rowKey].place + "^" + keyTokens[rowKey].statVar, nil
+		return keyTokens[rowKey].Place + "^" + keyTokens[rowKey].StatVar, nil
 	}
 }
 

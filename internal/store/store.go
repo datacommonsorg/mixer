@@ -15,50 +15,28 @@
 package store
 
 import (
-	"sync"
-
 	"cloud.google.com/go/bigquery"
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/memdb"
 )
 
 // Store holds the handlers to BigQuery and Bigtable
 type Store struct {
-	BqClient    *bigquery.Client
-	MemDb       *MemDb
-	baseTable   *bigtable.Table
-	branchTable *bigtable.Table
-	branchLock  sync.RWMutex
-}
-
-// BaseBt is the accessor for base bigtable
-func (st *Store) BaseBt() *bigtable.Table {
-	return st.baseTable
-}
-
-// BranchBt is the accessor for branch bigtable
-func (st *Store) BranchBt() *bigtable.Table {
-	st.branchLock.RLock()
-	defer st.branchLock.RUnlock()
-	return st.branchTable
-}
-
-// UpdateBranchBt updates the branch bigtable
-func (st *Store) UpdateBranchBt(branchTable *bigtable.Table) {
-	st.branchLock.Lock()
-	defer st.branchLock.Unlock()
-	st.branchTable = branchTable
+	BqClient *bigquery.Client
+	MemDb    *memdb.MemDb
+	BtGroup  *bigtable.BigtableGroup
 }
 
 // NewStore creates a new store.
 func NewStore(
 	bqClient *bigquery.Client,
-	memDb *MemDb,
-	baseTable *bigtable.Table,
-	branchTable *bigtable.Table) *Store {
+	memDb *memdb.MemDb,
+	baseTable *cbt.Table,
+	branchTable *cbt.Table) *Store {
 	return &Store{
-		BqClient:    bqClient,
-		MemDb:       memDb,
-		baseTable:   baseTable,
-		branchTable: branchTable,
+		BqClient: bqClient,
+		MemDb:    memDb,
+		BtGroup:  bigtable.NewBigtableGroup(baseTable, branchTable),
 	}
 }

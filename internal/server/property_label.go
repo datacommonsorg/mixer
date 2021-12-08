@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -35,11 +36,11 @@ func (s *Server) GetPropertyLabels(ctx context.Context,
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
-	rowList := buildPropertyLabelKey(dcids)
+	rowList := bigtable.BuildPropertyLabelKey(dcids)
 
-	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
+	baseDataMap, branchDataMap, err := bigtable.Read(
 		ctx,
-		s.store,
+		s.store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propLabels PropLabelCache

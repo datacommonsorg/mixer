@@ -18,9 +18,9 @@ import (
 	"context"
 	"encoding/json"
 
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -36,10 +36,10 @@ func (s *Server) GetBioPageData(
 			codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 
-	data, _, err := bigTableReadRowsParallel(
+	data, _, err := bigtable.Read(
 		ctx,
-		s.store,
-		bigtable.RowList{util.BtProteinPagePrefix + dcid},
+		s.store.BtGroup,
+		cbt.RowList{bigtable.BtProteinPagePrefix + dcid},
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var graph pb.GraphNodes
 			err := json.Unmarshal(jsonRaw, &graph)

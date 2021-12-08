@@ -26,10 +26,11 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
-	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -118,14 +119,14 @@ func setupInternal(
 	} else {
 		cache = &server.Cache{}
 	}
-	memdb := store.NewMemDb()
+	memDb := memdb.NewMemDb()
 	if useMemdb {
-		err = memdb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
+		err = memDb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
 		if err != nil {
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	return newClient(bqClient, baseTable, branchTable, metadata, cache, memdb)
+	return newClient(bqClient, baseTable, branchTable, metadata, cache, memDb)
 }
 
 func setupBqOnly() (pb.MixerClient, error) {
@@ -153,13 +154,13 @@ func setupBqOnly() (pb.MixerClient, error) {
 
 func newClient(
 	bqClient *bigquery.Client,
-	baseTable *bigtable.Table,
-	branchTable *bigtable.Table,
+	baseTable *cbt.Table,
+	branchTable *cbt.Table,
 	metadata *server.Metadata,
 	cache *server.Cache,
-	memdb *store.MemDb,
+	memDb *memdb.MemDb,
 ) (pb.MixerClient, error) {
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memdb)
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, s)
 	reflection.Register(srv)
@@ -187,7 +188,7 @@ func newClient(
 	return client, nil
 }
 
-func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
+func createBranchTable(ctx context.Context) (*cbt.Table, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	file, _ := ioutil.ReadFile(path.Join(path.Dir(filename), "memcache.json"))
 	var data map[string]string
@@ -195,7 +196,7 @@ func createBranchTable(ctx context.Context) (*bigtable.Table, error) {
 	if err != nil {
 		return nil, err
 	}
-	return server.SetupBigtable(ctx, data)
+	return bigtable.SetupBigtable(ctx, data)
 }
 
 func updateGolden(v interface{}, root, fname string) {

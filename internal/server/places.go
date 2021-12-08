@@ -21,7 +21,9 @@ import (
 
 	"encoding/json"
 
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -34,11 +36,11 @@ func getChildPlaces(
 	ctx context.Context, s *store.Store, parentPlace string, childType string) (
 	[]string, error,
 ) {
-	rowList := buildPlaceInKey([]string{parentPlace}, childType)
+	rowList := bigtable.BuildPlaceInKey([]string{parentPlace}, childType)
 	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		s,
+		s.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
@@ -68,12 +70,12 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
-	rowList := buildPlaceInKey(dcids, placeType)
+	rowList := bigtable.BuildPlaceInKey(dcids, placeType)
 
 	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		s.store,
+		s.store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
@@ -109,12 +111,12 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest) (
 // - Whether closeness computaion is per capita.
 var RelatedLocationsPrefixMap = map[bool]map[bool]string{
 	true: {
-		true:  util.BtRelatedLocationsSameTypeAndAncestorPCPrefix,
-		false: util.BtRelatedLocationsSameTypeAndAncestorPrefix,
+		true:  bigtable.BtRelatedLocationsSameTypeAndAncestorPCPrefix,
+		false: bigtable.BtRelatedLocationsSameTypeAndAncestorPrefix,
 	},
 	false: {
-		true:  util.BtRelatedLocationsSameTypePCPrefix,
-		false: util.BtRelatedLocationsSameTypePrefix,
+		true:  bigtable.BtRelatedLocationsSameTypePCPrefix,
+		false: bigtable.BtRelatedLocationsSameTypePrefix,
 	},
 }
 
@@ -132,7 +134,7 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 	isPerCapita := in.GetIsPerCapita()
 	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
 
-	rowList := bigtable.RowList{}
+	rowList := cbt.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {
 		if sameAncestor {
 			rowList = append(rowList, fmt.Sprintf(
@@ -143,9 +145,9 @@ func (s *Server) GetRelatedLocations(ctx context.Context,
 		}
 	}
 	// RelatedPlace cache only exists in base cache
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		s.store,
+		s.store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo RelatedPlacesInfo
@@ -193,7 +195,7 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 	isPerCapita := in.GetIsPerCapita()
 	sameAncestor := (in.GetWithinPlace() != "")
 	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
-	rowList := bigtable.RowList{}
+	rowList := cbt.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {
 		if sameAncestor {
 			rowList = append(rowList, fmt.Sprintf(
@@ -203,9 +205,9 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 		}
 	}
 	// RelatedPlace cache only exists in base cache
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		s.store,
+		s.store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo

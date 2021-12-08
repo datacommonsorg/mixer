@@ -12,37 +12,82 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package server
+package bigtable
 
 import (
 	"context"
+	"sync"
 
-	"cloud.google.com/go/bigtable"
-	"github.com/datacommonsorg/mixer/internal/store"
+	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
+// BigtableGroup represents all the cloud bigtables that mixer talks to.
+type BigtableGroup struct {
+	baseTable   *cbt.Table
+	branchTable *cbt.Table
+	branchLock  sync.RWMutex
+}
+
+// NewBigtableGroup creates a BigtableGroup
+func NewBigtableGroup(
+	baseTable *cbt.Table,
+	branchTable *cbt.Table,
+) *BigtableGroup {
+	return &BigtableGroup{
+		baseTable:   baseTable,
+		branchTable: branchTable,
+	}
+}
+
+// BaseBt is the accessor for base bigtable
+func (st *BigtableGroup) BaseBt() *cbt.Table {
+	return st.baseTable
+}
+
+// BranchBt is the accessor for branch bigtable
+func (st *BigtableGroup) BranchBt() *cbt.Table {
+	st.branchLock.RLock()
+	defer st.branchLock.RUnlock()
+	return st.branchTable
+}
+
+// UpdateBranchBt updates the branch bigtable
+func (st *BigtableGroup) UpdateBranchBt(branchTable *cbt.Table) {
+	st.branchLock.Lock()
+	defer st.branchLock.Unlock()
+	st.branchTable = branchTable
+}
+
+type chanData struct {
+	// Identifier of the data when reading multiple BigTable rows
+	// concurrently. It could be place dcid, statvar dcid or other "key".
+	token string
+	// Data read from Cloud Bigtable
+	data interface{}
+}
+
 // Generates a function to be used as the callback function in Bigtable Read.
 // This utilizes the Golang closure so the arguments can be scoped in the
 // generated function.
 func readRowFn(
 	errCtx context.Context,
-	btTable *bigtable.Table,
-	rowSetPart bigtable.RowSet,
+	btTable *cbt.Table,
+	rowSetPart cbt.RowSet,
 	getToken func(string) (string, error),
 	action func(string, []byte) (interface{}, error),
 	elemChan chan chanData,
 ) func() error {
 	return func() error {
 		if err := btTable.ReadRows(errCtx, rowSetPart,
-			func(btRow bigtable.Row) bool {
-				if len(btRow[util.BtFamily]) == 0 {
+			func(btRow cbt.Row) bool {
+				if len(btRow[BtFamily]) == 0 {
 					return true
 				}
-				raw := btRow[util.BtFamily][0].Value
+				raw := btRow[BtFamily][0].Value
 
 				if getToken == nil {
 					getToken = util.KeyToDcid
@@ -84,18 +129,18 @@ func readRowFn(
 // getToken: A function to get back the indexed token (like place dcid) from
 //		bigtable row key.
 //
-func bigTableReadRowsParallel(
+func Read(
 	ctx context.Context,
-	store *store.Store,
-	rowSet bigtable.RowSet,
+	btGroup *BigtableGroup,
+	rowSet cbt.RowSet,
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error),
 	readBranch bool,
 ) (
 	map[string]interface{}, map[string]interface{}, error,
 ) {
-	baseBt := store.BaseBt()
-	branchBt := store.BranchBt()
+	baseBt := btGroup.BaseBt()
+	branchBt := btGroup.BranchBt()
 	if baseBt == nil && branchBt == nil {
 		return nil, nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
@@ -103,14 +148,14 @@ func bigTableReadRowsParallel(
 
 	// Function start
 	var rowSetSize int
-	var rowList bigtable.RowList
-	var rowRangeList bigtable.RowRangeList
+	var rowList cbt.RowList
+	var rowRangeList cbt.RowRangeList
 	switch v := rowSet.(type) {
-	case bigtable.RowList:
-		rowList = rowSet.(bigtable.RowList)
+	case cbt.RowList:
+		rowList = rowSet.(cbt.RowList)
 		rowSetSize = len(rowList)
-	case bigtable.RowRangeList:
-		rowRangeList = rowSet.(bigtable.RowRangeList)
+	case cbt.RowRangeList:
+		rowRangeList = rowSet.(cbt.RowRangeList)
 		rowSetSize = len(rowRangeList)
 	default:
 		return nil, nil, status.Errorf(
@@ -124,13 +169,13 @@ func bigTableReadRowsParallel(
 	branchChan := make(chan chanData, rowSetSize)
 
 	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= rowSetSize/util.BtBatchQuerySize; i++ {
-		left := i * util.BtBatchQuerySize
-		right := (i + 1) * util.BtBatchQuerySize
+	for i := 0; i <= rowSetSize/BtBatchQuerySize; i++ {
+		left := i * BtBatchQuerySize
+		right := (i + 1) * BtBatchQuerySize
 		if right > rowSetSize {
 			right = rowSetSize
 		}
-		var rowSetPart bigtable.RowSet
+		var rowSetPart cbt.RowSet
 		if len(rowList) > 0 {
 			rowSetPart = rowList[left:right]
 		} else {

@@ -12,14 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package server
+package bigtable
 
 import (
 	"context"
 	"testing"
 
 	"cloud.google.com/go/bigtable"
-	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -34,9 +33,9 @@ func TestReadOneTable(t *testing.T) {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
 	rowList := bigtable.RowList{"key1", "key2"}
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := Read(
 		ctx,
-		store.NewStore(nil, nil, btTable, nil),
+		NewBigtableGroup(btTable, nil),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -78,9 +77,9 @@ func TestReadTwoTables(t *testing.T) {
 	}
 
 	rowList := bigtable.RowList{"key1", "key2"}
-	baseDataMap, branchDataMap, err := bigTableReadRowsParallel(
+	baseDataMap, branchDataMap, err := Read(
 		ctx,
-		store.NewStore(nil, nil, btTable1, btTable2),
+		NewBigtableGroup(btTable1, btTable2),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil

@@ -20,6 +20,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -125,14 +126,14 @@ func (s *Server) GetStatVarGroup(
 	}
 
 	// Read stat var group cache data
-	row, err := s.store.BaseBt().ReadRow(ctx, util.BtStatVarGroup)
+	row, err := s.store.BtGroup.BaseBt().ReadRow(ctx, bigtable.BtStatVarGroup)
 	if err != nil {
 		return nil, err
 	}
-	if len(row[util.BtFamily]) == 0 {
+	if len(row[bigtable.BtFamily]) == 0 {
 		return nil, status.Errorf(codes.NotFound, "Stat Var Group not found in cache")
 	}
-	raw := row[util.BtFamily][0].Value
+	raw := row[bigtable.BtFamily][0].Value
 	jsonRaw, err := util.UnzipAndDecode(string(raw))
 	if err != nil {
 		return nil, err
@@ -163,7 +164,7 @@ func (s *Server) GetStatVarGroupNode(
 	result := &pb.StatVarGroupNode{}
 
 	if in.GetReadFromTriples() {
-		triples, err := readTriples(ctx, s.store, buildTriplesKey([]string{svg}))
+		triples, err := readTriples(ctx, s.store, bigtable.BuildTriplesKey([]string{svg}))
 		if err != nil {
 			return nil, err
 		}
@@ -386,11 +387,11 @@ func countStatVar(
 	store *store.Store,
 	svOrSvgs []string,
 	places []string) (map[string]map[string]int32, error) {
-	rowList, keyTokens := buildStatExistenceKey(places, svOrSvgs)
+	rowList, keyTokens := bigtable.BuildStatExistenceKey(places, svOrSvgs)
 	keyToTokenFn := tokenFn(keyTokens)
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		store,
+		store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var statVarExistence pb.PlaceStatVarExistence
@@ -417,7 +418,7 @@ func countStatVar(
 		token, _ := keyToTokenFn(rowKey)
 		if data, ok := baseDataMap[token]; ok {
 			c := data.(*pb.PlaceStatVarExistence)
-			result[placeSv.statVar][placeSv.place] = c.NumDescendentStatVars
+			result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
 		}
 	}
 	return result, nil
@@ -428,10 +429,10 @@ func (s *Server) GetStatVarSummary(
 	ctx context.Context, in *pb.GetStatVarSummaryRequest) (
 	*pb.GetStatVarSummaryResponse, error) {
 	sv := in.GetStatVars()
-	rowList := buildStatVarSummaryKey(sv)
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	rowList := bigtable.BuildStatVarSummaryKey(sv)
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		s.store,
+		s.store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var statVarSummary pb.StatVarSummary

@@ -25,9 +25,10 @@ import (
 	"strings"
 	"time"
 
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -231,17 +232,17 @@ func fetchBtData(
 ) (
 	map[string]*pb.StatVarSeries, map[string]*pb.PointStat, error,
 ) {
-	rowList := bigtable.RowList{}
+	rowList := cbt.RowList{}
 	for _, dcid := range places {
 		rowList = append(rowList, fmt.Sprintf(
-			"%s%s", util.BtPlacePagePrefix, dcid))
+			"%s%s", bigtable.BtPlacePagePrefix, dcid))
 	}
 
 	// Fetch place page cache data in parallel.
 	// Place page cache only exists in base cache
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		s.store,
+		s.store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var placePageData pb.StatVarObsSeries

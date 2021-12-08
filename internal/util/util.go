@@ -35,58 +35,18 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
-type hashStoreKey string
-
 const (
-	// BtPlaceStatsVarPrefix for place to statsvar list cache.
-	BtPlaceStatsVarPrefix = "d/0/"
-	// BtStatVarGroup is the key for statvar group cache.
-	BtStatVarGroup = "d/1"
-	// BtSVAndSVGExistence is the key for stat var and stat var group existence cache.
-	BtSVAndSVGExistence = "d/2/"
-	// BtPlacePagePrefix for place page cache.
-	BtPlacePagePrefix = "d/4/"
-	// BtProteinPagePrefix for protein page cache.
-	BtProteinPagePrefix = "d/6/"
-	// BtTriplesPrefix for internal GetTriples cache.
-	BtTriplesPrefix = "d/7/"
-	// BtArcsPrefix for internal arcs cache.
-	BtArcsPrefix = "d/9/"
-	// BtStatVarSummary for stat var summary cache.
-	BtStatVarSummary = "d/a/"
-	// BtPlacesInPrefix for GetPlacesIn cache.
-	BtPlacesInPrefix = "d/c/"
-	// BtChartDataPrefix for chart data.
-	BtChartDataPrefix = "d/f/"
-	// BtInPropValPrefix for in-arc prop value.
-	BtInPropValPrefix = "d/l/"
-	// BtOutPropValPrefix for out-arc prop value.
-	BtOutPropValPrefix = "d/m/"
-	// BtRelatedLocationsSameTypePrefix for related places with same type.
-	BtRelatedLocationsSameTypePrefix = "d/o/"
-	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same type and ancestor.
-	BtRelatedLocationsSameTypeAndAncestorPrefix = "d/q/"
-	// BtRelatedLocationsSameTypePCPrefix for related places with same type, per capita.
-	BtRelatedLocationsSameTypePCPrefix = "d/o0/"
-	// BtRelatedLocationsSameTypeAndAncestorPCPrefix for related places with same type and ancestor,
-	// per capita.
-	BtRelatedLocationsSameTypeAndAncestorPCPrefix = "d/q0/"
-
-	// BtFamily is the key for the row.
-	BtFamily = "csv"
-	// BtCacheLimit is the cache limit. The limit is per predicate and neighbor type.
-	BtCacheLimit = 500
-	// BtBatchQuerySize is the size of BigTable batch query.
-	BtBatchQuerySize = 1000
 	// LimitFactor is the amount to multiply the limit by to make sure certain
 	// triples are returned by the BQ query.
 	LimitFactor = 1
 	// TextType represents text type.
 	TextType = "Text"
-
-	// HashStoreKey is the key to represent a HashStore object in request context.
-	HashStoreKey = hashStoreKey("hs")
 )
+
+type PlaceStatVar struct {
+	Place   string
+	StatVar string
+}
 
 type typeInfo struct {
 	Predicate string `json:"predicate"`

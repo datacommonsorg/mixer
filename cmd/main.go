@@ -24,7 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/healthcheck"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
-	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -96,13 +96,13 @@ func main() {
 	}
 
 	// TMCF + CSV from GCS
-	memdb := store.NewMemDb()
+	memDb := memdb.NewMemDb()
 	if *useTmcfCsvData && *tmcfCsvBucket != "" {
-		err = memdb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
+		err = memDb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
 		if err != nil {
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
-		err = memdb.SubscribeGcsUpdate(
+		err = memDb.SubscribeGcsUpdate(
 			ctx, *mixerProject, tmcfCsvPubsubTopic, tmcfCsvSubscriberPrefix,
 			*tmcfCsvBucket, *tmcfCsvFolder)
 		if err != nil {
@@ -156,7 +156,7 @@ func main() {
 	}
 
 	// Create server object
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memdb)
+	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
 
 	// Subscribe to branch cache update
 	if *useBranchBt {
