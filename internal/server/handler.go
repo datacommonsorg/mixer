@@ -21,6 +21,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/api/translator"
 )
 
+// Translate is the handler for TranslateRequest.
 func (s *Server) Translate(
 	ctx context.Context,
 	in *pb.TranslateRequest,
@@ -28,6 +29,7 @@ func (s *Server) Translate(
 	return translator.Translate(ctx, in, s.metadata)
 }
 
+// Query is the handler for QueryRequest.
 func (s *Server) Query(
 	ctx context.Context,
 	in *pb.QueryRequest,

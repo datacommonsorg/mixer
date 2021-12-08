@@ -29,6 +29,7 @@ import (
 	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"google.golang.org/grpc"
@@ -110,14 +111,14 @@ func setupInternal(
 	if err != nil {
 		return nil, err
 	}
-	var cache *server.Cache
+	var cache *resource.Cache
 	if useCache {
 		cache, err = server.NewCache(ctx, baseTable)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		cache = &server.Cache{}
+		cache = &resource.Cache{}
 	}
 	memDb := memdb.NewMemDb()
 	if useMemdb {
@@ -156,8 +157,8 @@ func newClient(
 	bqClient *bigquery.Client,
 	baseTable *cbt.Table,
 	branchTable *cbt.Table,
-	metadata *server.Metadata,
-	cache *server.Cache,
+	metadata *resource.Metadata,
+	cache *resource.Cache,
 	memDb *memdb.MemDb,
 ) (pb.MixerClient, error) {
 	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
