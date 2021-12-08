@@ -22,8 +22,10 @@ import (
 	"sort"
 	"time"
 
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -58,7 +60,7 @@ func (s *Server) GetStatSeries(
 		Sfactor: in.GetScalingFactor(),
 	}
 
-	rowList, keyTokens := buildStatsKey([]string{place}, []string{statVar})
+	rowList, keyTokens := bigtable.BuildStatsKey([]string{place}, []string{statVar})
 	btData, err := readStats(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -108,7 +110,7 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest) (
 		}
 	}
 
-	rowList, keyTokens := buildStatsKey(places, statVars)
+	rowList, keyTokens := bigtable.BuildStatsKey(places, statVars)
 	cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -152,9 +154,9 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest) (
 		Operiod: in.GetObservationPeriod(),
 		Unit:    in.GetUnit(),
 	}
-	var rowList bigtable.RowList
-	var keyTokens map[string]*placeStatVar
-	rowList, keyTokens = buildStatsKey(placeDcids, []string{statsVarDcid})
+	var rowList cbt.RowList
+	var keyTokens map[string]*util.PlaceStatVar
+	rowList, keyTokens = bigtable.BuildStatsKey(placeDcids, []string{statsVarDcid})
 
 	result := map[string]*ObsTimeSeries{}
 	cacheData, err := readStats(ctx, s.store, rowList, keyTokens)
@@ -210,8 +212,8 @@ func (s *Server) GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRe
 		}
 	}
 	// Read data from Cloud Bigtable.
-	if s.store.BaseBt() != nil {
-		rowList, keyTokens := buildStatsKey(places, statVars)
+	if s.store.BtGroup.BaseBt() != nil {
+		rowList, keyTokens := bigtable.BuildStatsKey(places, statVars)
 
 		// Read data from BigTable.
 		cacheData, err := readStatsPb(ctx, s.store, rowList, keyTokens)

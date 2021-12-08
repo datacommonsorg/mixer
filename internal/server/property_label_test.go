@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -67,7 +68,7 @@ func TestMerge(t *testing.T) {
 		if err != nil {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
-		base[util.BtArcsPrefix+d.dcid] = tableValue
+		base[bigtable.BtArcsPrefix+d.dcid] = tableValue
 		resultMap[d.dcid] = d.baseCache
 
 		jsonRaw, err = json.Marshal(d.branchCache)
@@ -78,7 +79,7 @@ func TestMerge(t *testing.T) {
 		if err != nil {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
-		branch[util.BtArcsPrefix+d.dcid] = tableValue
+		branch[bigtable.BtArcsPrefix+d.dcid] = tableValue
 		wantPayloadRaw, err := json.Marshal(resultMap)
 		if err != nil {
 			t.Fatalf("json.Marshal(%+v) = %+v", resultMap, err)
@@ -87,11 +88,11 @@ func TestMerge(t *testing.T) {
 			Payload: string(wantPayloadRaw),
 		}
 
-		baseTable, err := SetupBigtable(ctx, base)
+		baseTable, err := bigtable.SetupBigtable(ctx, base)
 		if err != nil {
 			t.Fatalf("NewTestBtStore() = %+v", err)
 		}
-		branchTable, err := SetupBigtable(ctx, branch)
+		branchTable, err := bigtable.SetupBigtable(ctx, branch)
 		if err != nil {
 			t.Errorf("SetupBigtable(...) = %v", err)
 		}

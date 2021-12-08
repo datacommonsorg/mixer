@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 )
@@ -27,7 +28,7 @@ func TestReadTriple(t *testing.T) {
 	ctx := context.Background()
 	data := map[string]string{}
 	dcid := "City"
-	key := util.BtTriplesPrefix + dcid
+	key := bigtable.BtTriplesPrefix + dcid
 	btRow := []byte(`{
 		"triples":[
 			{
@@ -48,7 +49,7 @@ func TestReadTriple(t *testing.T) {
 	}
 	data[key] = tableValue
 	// Setup bigtable
-	btTable, err := SetupBigtable(ctx, data)
+	btTable, err := bigtable.SetupBigtable(ctx, data)
 	if err != nil {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
@@ -67,7 +68,7 @@ func TestReadTriple(t *testing.T) {
 		},
 	}
 	got, err := readTriples(
-		ctx, store.NewStore(nil, nil, btTable, nil), buildTriplesKey([]string{"City"}))
+		ctx, store.NewStore(nil, nil, btTable, nil), bigtable.BuildTriplesKey([]string{"City"}))
 	if err != nil {
 		t.Errorf("ReadTriple get err: %v", err)
 	}

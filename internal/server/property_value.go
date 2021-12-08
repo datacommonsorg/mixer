@@ -18,10 +18,11 @@ import (
 	"context"
 	"encoding/json"
 
+	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -104,7 +105,7 @@ func getPropertyValuesHelper(
 	prop string,
 	arcOut bool,
 ) (map[string][]*Node, error) {
-	rowList := buildPropertyValuesKey(dcids, prop, arcOut)
+	rowList := bigtable.BuildPropertyValuesKey(dcids, prop, arcOut)
 	// Current branch cache is targeted on new stats (without addition of schema etc),
 	// so only use base cache data for property value.
 	//
@@ -139,13 +140,13 @@ func trimNodes(nodes []*Node, typ string, limit int) []*Node {
 func readPropertyValues(
 	ctx context.Context,
 	store *store.Store,
-	rowList bigtable.RowList,
+	rowList cbt.RowList,
 ) (map[string][]*Node, error) {
 	// Only read property value from base cache.
 	// Branch cache only contains supplement data but not other properties yet.
-	baseDataMap, _, err := bigTableReadRowsParallel(
+	baseDataMap, _, err := bigtable.Read(
 		ctx,
-		store,
+		store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals PropValueCache

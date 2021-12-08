@@ -31,6 +31,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
@@ -70,7 +71,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.store.UpdateBranchBt(branchTable)
+	s.store.BtGroup.UpdateBranchBt(branchTable)
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.
@@ -187,10 +188,10 @@ func NewServer(
 	branchTable *bigtable.Table,
 	metadata *Metadata,
 	cache *Cache,
-	memdb *store.MemDb,
+	memDb *memdb.MemDb,
 ) *Server {
 	return &Server{
-		store:    store.NewStore(bqClient, memdb, baseTable, branchTable),
+		store:    store.NewStore(bqClient, memDb, baseTable, branchTable),
 		metadata: metadata,
 		cache:    cache,
 	}

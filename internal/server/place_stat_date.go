@@ -19,6 +19,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -56,7 +57,7 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 	}
 
 	// Construct BigTable row keys.
-	rowList, keyTokens := buildStatSetWithinPlaceKey(ancestorPlace, placeType, "", statVars)
+	rowList, keyTokens := bigtable.BuildStatSetWithinPlaceKey(ancestorPlace, placeType, "", statVars)
 
 	cacheData, err := readStatCollection(ctx, s.store, rowList, keyTokens)
 	if err != nil {

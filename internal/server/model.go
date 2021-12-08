@@ -52,14 +52,6 @@ type PropLabelCache struct {
 	OutLabels []string `json:"outLabels"`
 }
 
-type chanData struct {
-	// Identifier of the data when reading multiple BigTable rows
-	// concurrently. It could be place dcid, statvar dcid or other "key".
-	token string
-	// Data read from Cloud Bigtable
-	data interface{}
-}
-
 // RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.
 type RelatedPlacesInfo struct {
 	RelatedPlaces  []string `json:"relatedPlaces,omitempty"`

@@ -21,7 +21,9 @@ import (
 	"sort"
 	"strings"
 
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -149,7 +151,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest) (
 
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		allTriplesCache, err := readTriples(ctx, s.store, buildTriplesKey(regDcids))
+		allTriplesCache, err := readTriples(ctx, s.store, bigtable.BuildTriplesKey(regDcids))
 		if err != nil {
 			return nil, err
 		}
@@ -230,13 +232,13 @@ func applyLimit(
 
 // ReadTriples read triples from base cache for multiple dcids.
 func readTriples(
-	ctx context.Context, store *store.Store, rowList bigtable.RowList) (
+	ctx context.Context, store *store.Store, rowList cbt.RowList) (
 	map[string]*TriplesCache, error) {
 	// Only use base cache for triples, as branch cache only consists increment
 	// stats. This saves time as the triples list size can get big.
 	// Re-evaluate this if branch cache involves other triples.
-	baseDataMap, _, err := bigTableReadRowsParallel(
-		ctx, store, rowList, convertTriplesCache, nil, false, /* readBranch */
+	baseDataMap, _, err := bigtable.Read(
+		ctx, store.BtGroup, rowList, convertTriplesCache, nil, false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

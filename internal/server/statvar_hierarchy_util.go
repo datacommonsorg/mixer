@@ -19,7 +19,9 @@ import (
 	"sort"
 	"strings"
 
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -52,17 +54,17 @@ const nonHumanCuratedNumPv = 30
 var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
 
 // GetRawSvg gets the raw svg mapping.
-func GetRawSvg(ctx context.Context, baseTable *bigtable.Table) (
+func GetRawSvg(ctx context.Context, baseTable *cbt.Table) (
 	map[string]*pb.StatVarGroupNode, error) {
 	svgResp := &pb.StatVarGroups{}
-	row, err := baseTable.ReadRow(ctx, util.BtStatVarGroup)
+	row, err := baseTable.ReadRow(ctx, bigtable.BtStatVarGroup)
 	if err != nil {
 		return nil, err
 	}
-	if len(row[util.BtFamily]) == 0 {
+	if len(row[bigtable.BtFamily]) == 0 {
 		return nil, status.Errorf(codes.NotFound, "Stat Var Group not found in cache")
 	}
-	raw := row[util.BtFamily][0].Value
+	raw := row[bigtable.BtFamily][0].Value
 	jsonRaw, err := util.UnzipAndDecode(string(raw))
 	if err != nil {
 		return nil, err

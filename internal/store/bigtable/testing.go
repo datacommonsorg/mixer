@@ -12,14 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package server
+package bigtable
 
 import (
 	"context"
 
 	"cloud.google.com/go/bigtable"
 	"cloud.google.com/go/bigtable/bttest"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/option"
 	"google.golang.org/grpc"
 )
@@ -54,7 +53,7 @@ func SetupBigtable(
 	}
 
 	if err := adminClient.CreateColumnFamily(
-		ctx, testTable, util.BtFamily); err != nil {
+		ctx, testTable, BtFamily); err != nil {
 		return nil, err
 	}
 
@@ -67,7 +66,7 @@ func SetupBigtable(
 
 	mut := bigtable.NewMutation()
 	for key, value := range data {
-		mut.Set(util.BtFamily, "value", bigtable.Now(), []byte(value))
+		mut.Set(BtFamily, "value", bigtable.Now(), []byte(value))
 		if err = bt.Apply(ctx, key, mut); err != nil {
 			return nil, err
 		}
