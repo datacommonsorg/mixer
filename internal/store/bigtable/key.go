@@ -70,6 +70,7 @@ var propValkeyPrefix = map[bool]string{
 	false: BtInPropValPrefix,
 }
 
+// BuildTriplesKey builds bigtable key for triples cache
 func BuildTriplesKey(dcids []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
@@ -78,6 +79,7 @@ func BuildTriplesKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
+// BuildStatsKey builds bigtable key for stat cache
 func BuildStatsKey(
 	places []string, statVars []string) (
 	bigtable.RowList, map[string]*util.PlaceStatVar) {
@@ -93,6 +95,7 @@ func BuildStatsKey(
 	return rowList, keyToToken
 }
 
+// BuildStatSetWithinPlaceKey builds bigtable key for stat within-place cache
 func BuildStatSetWithinPlaceKey(parentPlace, childType, date string, statVars []string) (
 	bigtable.RowList, map[string]string) {
 
@@ -111,6 +114,7 @@ func BuildStatSetWithinPlaceKey(parentPlace, childType, date string, statVars []
 	return rowList, keyToToken
 }
 
+// BuildStatExistenceKey builds bigtable key for stat existence cache
 func BuildStatExistenceKey(
 	places []string, statVars []string) (
 	bigtable.RowList, map[string]*util.PlaceStatVar) {
@@ -126,6 +130,7 @@ func BuildStatExistenceKey(
 	return rowList, keyToToken
 }
 
+// BuildPropertyValuesKey builds bigtable key for property value cache
 func BuildPropertyValuesKey(
 	dcids []string, prop string, arcOut bool) bigtable.RowList {
 	rowList := bigtable.RowList{}
@@ -136,6 +141,7 @@ func BuildPropertyValuesKey(
 	return rowList
 }
 
+// BuildPropertyLabelKey builds bigtable key for property label cache
 func BuildPropertyLabelKey(dcids []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
@@ -144,6 +150,7 @@ func BuildPropertyLabelKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
+// BuildPlaceInKey builds bigtable key for place in cache
 func BuildPlaceInKey(dcids []string, placeType string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
@@ -153,6 +160,7 @@ func BuildPlaceInKey(dcids []string, placeType string) bigtable.RowList {
 	return rowList
 }
 
+// BuildPlaceStatsVarKey builds bigtable key for place stat vars cache
 func BuildPlaceStatsVarKey(dcids []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
@@ -162,6 +170,7 @@ func BuildPlaceStatsVarKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
+// BuildStatVarSummaryKey builds bigtable key for place stat var summary cache
 func BuildStatVarSummaryKey(statVars []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, sv := range statVars {

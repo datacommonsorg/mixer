@@ -25,7 +25,7 @@ import (
 type Store struct {
 	BqClient *bigquery.Client
 	MemDb    *memdb.MemDb
-	BtGroup  *bigtable.BigtableGroup
+	BtGroup  *bigtable.Group
 }
 
 // NewStore creates a new store.

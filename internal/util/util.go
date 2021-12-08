@@ -43,6 +43,7 @@ const (
 	TextType = "Text"
 )
 
+// PlaceStatVar holds a place and a stat var dcid.
 type PlaceStatVar struct {
 	Place   string
 	StatVar string

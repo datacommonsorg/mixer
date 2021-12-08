@@ -26,7 +26,7 @@ import (
 )
 
 // BigtableGroup represents all the cloud bigtables that mixer talks to.
-type BigtableGroup struct {
+type Group struct {
 	baseTable   *cbt.Table
 	branchTable *cbt.Table
 	branchLock  sync.RWMutex
@@ -36,27 +36,27 @@ type BigtableGroup struct {
 func NewBigtableGroup(
 	baseTable *cbt.Table,
 	branchTable *cbt.Table,
-) *BigtableGroup {
-	return &BigtableGroup{
+) *Group {
+	return &Group{
 		baseTable:   baseTable,
 		branchTable: branchTable,
 	}
 }
 
 // BaseBt is the accessor for base bigtable
-func (st *BigtableGroup) BaseBt() *cbt.Table {
+func (st *Group) BaseBt() *cbt.Table {
 	return st.baseTable
 }
 
 // BranchBt is the accessor for branch bigtable
-func (st *BigtableGroup) BranchBt() *cbt.Table {
+func (st *Group) BranchBt() *cbt.Table {
 	st.branchLock.RLock()
 	defer st.branchLock.RUnlock()
 	return st.branchTable
 }
 
 // UpdateBranchBt updates the branch bigtable
-func (st *BigtableGroup) UpdateBranchBt(branchTable *cbt.Table) {
+func (st *Group) UpdateBranchBt(branchTable *cbt.Table) {
 	st.branchLock.Lock()
 	defer st.branchLock.Unlock()
 	st.branchTable = branchTable
@@ -131,7 +131,7 @@ func readRowFn(
 //
 func Read(
 	ctx context.Context,
-	btGroup *BigtableGroup,
+	btGroup *Group,
 	rowSet cbt.RowSet,
 	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error),
