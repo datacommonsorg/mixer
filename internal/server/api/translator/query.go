@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package server
+package translator
 
 import (
 	"context"
 	"fmt"
 
 	"cloud.google.com/go/bigquery"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/translator"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
@@ -28,15 +30,19 @@ import (
 )
 
 // Query implements API for Mixer.Query.
-func (s *Server) Query(
-	ctx context.Context, in *pb.QueryRequest) (*pb.QueryResponse, error) {
+func Query(
+	ctx context.Context,
+	in *pb.QueryRequest,
+	metadata *resource.Metadata,
+	store *store.Store,
+) (*pb.QueryResponse, error) {
 	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
 	if err != nil {
 		return nil, err
 	}
 
 	translation, err := translator.Translate(
-		s.metadata.Mappings, nodes, queries, s.metadata.SubTypeMap, opts)
+		metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +54,7 @@ func (s *Server) Query(
 	out.Rows = []*pb.QueryResponseRow{}
 	n := len(out.Header)
 
-	q := s.store.BqClient.Query(translation.SQL)
+	q := store.BqClient.Query(translation.SQL)
 	it, err := q.Read(ctx)
 	if err != nil {
 		return nil, err

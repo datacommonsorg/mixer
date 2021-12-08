@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 )
 
 const (
@@ -100,14 +101,14 @@ func filter(
 }
 
 func searchTokens(
-	tokens []string, index *SearchIndex) ([]*pb.EntityInfo, []*pb.EntityInfo) {
+	tokens []string, index *resource.SearchIndex) ([]*pb.EntityInfo, []*pb.EntityInfo) {
 	svCount := map[string]int{}
 	svgCount := map[string]int{}
 	for _, token := range tokens {
-		for sv := range index.token2sv[token] {
+		for sv := range index.TokenSVMap[token] {
 			svCount[sv]++
 		}
-		for svg := range index.token2svg[token] {
+		for svg := range index.TokenSVGMap[token] {
 			svgCount[svg]++
 		}
 	}
@@ -118,7 +119,7 @@ func searchTokens(
 		if c == len(tokens) {
 			svList = append(svList, &pb.EntityInfo{
 				Dcid: sv,
-				Name: index.ranking[sv].RankingName,
+				Name: index.Ranking[sv].RankingName,
 			})
 		}
 	}
@@ -126,7 +127,7 @@ func searchTokens(
 	// Sort stat vars by number of PV; If two stat vars have same number of PV,
 	// then order by the stat var (group) name.
 	sort.SliceStable(svList, func(i, j int) bool {
-		ranking := index.ranking
+		ranking := index.Ranking
 		ri := ranking[svList[i].Dcid]
 		rj := ranking[svList[j].Dcid]
 		if ri.ApproxNumPv == rj.ApproxNumPv {
@@ -143,12 +144,12 @@ func searchTokens(
 		if c == len(tokens) {
 			svgList = append(svgList, &pb.EntityInfo{
 				Dcid: svg,
-				Name: index.ranking[svg].RankingName,
+				Name: index.Ranking[svg].RankingName,
 			})
 		}
 	}
 	sort.SliceStable(svgList, func(i, j int) bool {
-		ranking := index.ranking
+		ranking := index.Ranking
 		ri := ranking[svgList[i].Dcid]
 		rj := ranking[svgList[j].Dcid]
 		if ri.ApproxNumPv == rj.ApproxNumPv {

@@ -28,40 +28,19 @@ import (
 	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
 
-// Cache holds cached data for the mixer server.
-type Cache struct {
-	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
-	ParentSvg map[string][]string
-	// SvgInfo is a map of svg id to its information.
-	SvgInfo                   map[string]*pb.StatVarGroupNode
-	SvgSearchIndex            *SearchIndex
-	BlocklistedSvgSearchIndex *SearchIndex
-}
-
-// Metadata represents the metadata used by the server.
-type Metadata struct {
-	Mappings         []*types.Mapping
-	OutArcInfo       map[string]map[string][]types.OutArcInfo
-	InArcInfo        map[string][]types.InArcInfo
-	SubTypeMap       map[string]string
-	Bq               string
-	BtProject        string
-	BranchBtInstance string
-}
-
 // Server holds resources for a mixer server
 type Server struct {
 	store    *store.Store
-	metadata *Metadata
-	cache    *Cache
+	metadata *resource.Metadata
+	cache    *resource.Cache
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
@@ -95,7 +74,7 @@ func ReadBranchTableName(
 
 // NewMetadata initialize the metadata for translator.
 func NewMetadata(
-	bqDataset, storeProject, branchInstance, schemaPath string) (*Metadata, error) {
+	bqDataset, storeProject, branchInstance, schemaPath string) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -122,14 +101,14 @@ func NewMetadata(
 	}
 	outArcInfo := map[string]map[string][]types.OutArcInfo{}
 	inArcInfo := map[string][]types.InArcInfo{}
-	return &Metadata{
-			mappings,
-			outArcInfo,
-			inArcInfo,
-			subTypeMap,
-			bqDataset,
-			storeProject,
-			branchInstance,
+	return &resource.Metadata{
+			Mappings:         mappings,
+			OutArcInfo:       outArcInfo,
+			InArcInfo:        inArcInfo,
+			SubTypeMap:       subTypeMap,
+			Bq:               bqDataset,
+			BtProject:        storeProject,
+			BranchBtInstance: branchInstance,
 		},
 		nil
 }
@@ -164,7 +143,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 }
 
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(ctx context.Context, baseTable *bigtable.Table) (*Cache, error) {
+func NewCache(ctx context.Context, baseTable *bigtable.Table) (*resource.Cache, error) {
 	rawSvg, err := GetRawSvg(ctx, baseTable)
 	if err != nil {
 		return nil, err
@@ -173,7 +152,7 @@ func NewCache(ctx context.Context, baseTable *bigtable.Table) (*Cache, error) {
 	searchIndex := BuildStatVarSearchIndex(rawSvg, false)
 	blocklistedSearchIndex := BuildStatVarSearchIndex(rawSvg, true)
 
-	return &Cache{
+	return &resource.Cache{
 		ParentSvg:                 parentSvgMap,
 		SvgInfo:                   rawSvg,
 		SvgSearchIndex:            searchIndex,
@@ -186,8 +165,8 @@ func NewServer(
 	bqClient *bigquery.Client,
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table,
-	metadata *Metadata,
-	cache *Cache,
+	metadata *resource.Metadata,
+	cache *resource.Cache,
 	memDb *memdb.MemDb,
 ) *Server {
 	return &Server{

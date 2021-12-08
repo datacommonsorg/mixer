@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/go-test/deep"
 	"github.com/google/go-cmp/cmp"
 )
@@ -77,7 +78,7 @@ func TestGetParentMapping(t *testing.T) {
 func TestBuildSearchIndex(t *testing.T) {
 	for _, c := range []struct {
 		input map[string]*pb.StatVarGroupNode
-		want  *SearchIndex
+		want  *resource.SearchIndex
 	}{
 		{
 			map[string]*pb.StatVarGroupNode{
@@ -115,8 +116,8 @@ func TestBuildSearchIndex(t *testing.T) {
 					},
 				},
 			},
-			&SearchIndex{
-				token2sv: map[string]map[string]struct{}{
+			&resource.SearchIndex{
+				TokenSVMap: map[string]map[string]struct{}{
 					"token1": {
 						"sv_1_1": {},
 					},
@@ -132,7 +133,7 @@ func TestBuildSearchIndex(t *testing.T) {
 						"sv3":    {},
 					},
 				},
-				token2svg: map[string]map[string]struct{}{
+				TokenSVGMap: map[string]map[string]struct{}{
 					"token1": {
 						"group_1": {},
 					},
@@ -144,14 +145,14 @@ func TestBuildSearchIndex(t *testing.T) {
 						"group_3_1": {},
 					},
 				},
-				ranking: map[string]*RankingInfo{
+				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {
 						ApproxNumPv: 2,
 						RankingName: "token1 token2",
 					},
 					"sv_1_1": {
 						ApproxNumPv: 3,
-						RankingName: "token1 token3",
+						RankingName: "sv1",
 					},
 					"group_3_1": {
 						ApproxNumPv: 3,
@@ -159,15 +160,15 @@ func TestBuildSearchIndex(t *testing.T) {
 					},
 					"sv_3": {
 						ApproxNumPv: 2,
-						RankingName: "token2",
+						RankingName: "sv3",
 					},
 					"sv_1_2": {
 						ApproxNumPv: 3,
-						RankingName: "token3, token4",
+						RankingName: "sv2",
 					},
 					"sv3": {
 						ApproxNumPv: 30,
-						RankingName: "token4,",
+						RankingName: "sv4",
 					},
 				},
 			},
