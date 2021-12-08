@@ -17,9 +17,9 @@ package server
 import (
 	"context"
 	"sort"
-	"strings"
 
 	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -28,27 +28,6 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 )
-
-// RankingInfo holds the ranking information for each stat var hierarchy search
-// result.
-type RankingInfo struct {
-	// ApproxNumPv is an estimate of the number of PVs in the sv/svg.
-	ApproxNumPv int
-	// RankingName is the name we will be using to rank this sv/svg against other
-	// sv/svg.
-	RankingName string
-}
-
-// SearchIndex holds the index for searching stat var (group).
-type SearchIndex struct {
-	token2sv  map[string]map[string]struct{}
-	token2svg map[string]map[string]struct{}
-	ranking   map[string]*RankingInfo
-}
-
-// we want non human curated stat vars to be ranked last, so set their number of
-// PVs to a number greater than max number of PVs for a human curated stat var.
-const nonHumanCuratedNumPv = 30
 
 // This should be synced with the list of blocklisted SVGs in the website repo
 var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
@@ -99,48 +78,6 @@ func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]stri
 	return parentSvgMap
 }
 
-// Update search index, given a stat var (group) node ID and string.
-func (index *SearchIndex) update(
-	nodeID string, nodeString string, displayName string, isSvg bool) {
-	processedTokenString := strings.ToLower(nodeString)
-	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
-	tokenList := strings.Fields(processedTokenString)
-	addtionalTokens := []string{}
-	for _, token := range tokenList {
-		if strings.HasSuffix(token, "s") {
-			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "s"))
-		}
-		if strings.HasSuffix(token, "es") {
-			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "es"))
-		}
-		if strings.HasSuffix(token, "ies") {
-			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "ies"))
-		}
-	}
-	tokenList = append(tokenList, addtionalTokens...)
-	approxNumPv := len(strings.Split(nodeID, "_"))
-	if approxNumPv == 1 {
-		// when approxNumPv is 1, most likely a non human curated PV
-		approxNumPv = nonHumanCuratedNumPv
-	}
-	// Ranking info is only dependent on a stat var (group).
-	index.ranking[nodeID] = &RankingInfo{approxNumPv, displayName}
-	// Populate token to stat var map.
-	for _, token := range tokenList {
-		if isSvg {
-			if index.token2svg[token] == nil {
-				index.token2svg[token] = map[string]struct{}{}
-			}
-			index.token2svg[token][nodeID] = struct{}{}
-		} else {
-			if index.token2sv[token] == nil {
-				index.token2sv[token] = map[string]struct{}{}
-			}
-			index.token2sv[token][nodeID] = struct{}{}
-		}
-	}
-}
-
 // Helper to build a set of ignored SVGs.
 func getIgnoredSVGHelper(
 	ignoredSvg map[string]string,
@@ -157,12 +94,12 @@ func getIgnoredSVGHelper(
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
-	blocklist bool) *SearchIndex {
+	blocklist bool) *resource.SearchIndex {
 	// map of token to map of sv/svg id to ranking information.
-	searchIndex := &SearchIndex{
-		token2sv:  map[string]map[string]struct{}{},
-		token2svg: map[string]map[string]struct{}{},
-		ranking:   map[string]*RankingInfo{},
+	searchIndex := &resource.SearchIndex{
+		TokenSVMap:  map[string]map[string]struct{}{},
+		TokenSVGMap: map[string]map[string]struct{}{},
+		Ranking:     map[string]*resource.RankingInfo{},
 	}
 	ignoredSVG := map[string]string{}
 	if blocklist {
@@ -175,10 +112,10 @@ func BuildStatVarSearchIndex(
 			continue
 		}
 		tokenString := svgData.AbsoluteName
-		searchIndex.update(svgID, tokenString, tokenString, true /* isSvg */)
+		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */)
 		for _, svData := range svgData.ChildStatVars {
 			svTokenString := svData.SearchName
-			searchIndex.update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */)
+			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */)
 		}
 	}
 	return searchIndex

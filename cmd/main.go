@@ -21,9 +21,10 @@ import (
 	"log"
 	"net"
 
-	"github.com/datacommonsorg/mixer/internal/healthcheck"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"golang.org/x/oauth2/google"
 
@@ -112,7 +113,7 @@ func main() {
 
 	// BigQuery.
 	var bqClient *bigquery.Client
-	var metadata *server.Metadata
+	var metadata *resource.Metadata
 	if *useBigquery {
 		bqClient, err = bigquery.NewClient(ctx, *mixerProject)
 		if err != nil {
@@ -127,7 +128,7 @@ func main() {
 
 	// Base Bigtable cache
 	var baseTable *bigtable.Table
-	var cache *server.Cache
+	var cache *resource.Cache
 	if *useBaseBt {
 		// Base cache
 		baseTable, err = server.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)

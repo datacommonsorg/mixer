@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -25,25 +26,25 @@ import (
 func TestSearchTokens(t *testing.T) {
 	for _, c := range []struct {
 		tokens  []string
-		index   *SearchIndex
+		index   *resource.SearchIndex
 		wantSv  []*pb.EntityInfo
 		wantSvg []*pb.EntityInfo
 	}{
 		{
 			tokens: []string{"token1"},
-			index: &SearchIndex{
-				token2sv: map[string]map[string]struct{}{
+			index: &resource.SearchIndex{
+				TokenSVMap: map[string]map[string]struct{}{
 					"token1": {
 						"sv_1_2": {},
 					},
 				},
-				token2svg: map[string]map[string]struct{}{
+				TokenSVGMap: map[string]map[string]struct{}{
 					"token1": {
 						"group_1":  {},
 						"group_31": {},
 					},
 				},
-				ranking: map[string]*RankingInfo{
+				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {
 						ApproxNumPv: 2,
 						RankingName: "token1 token2",
@@ -77,8 +78,8 @@ func TestSearchTokens(t *testing.T) {
 		},
 		{
 			tokens: []string{"token2", "token3", "token4"},
-			index: &SearchIndex{
-				token2sv: map[string]map[string]struct{}{
+			index: &resource.SearchIndex{
+				TokenSVMap: map[string]map[string]struct{}{
 					"token2": {
 						"sv_1_1": {},
 						"sv_1_2": {},
@@ -91,7 +92,7 @@ func TestSearchTokens(t *testing.T) {
 						"sv_1_2": {},
 					},
 				},
-				token2svg: map[string]map[string]struct{}{
+				TokenSVGMap: map[string]map[string]struct{}{
 					"token3": {
 						"group_3": {},
 					},
@@ -99,7 +100,7 @@ func TestSearchTokens(t *testing.T) {
 						"group_3": {},
 					},
 				},
-				ranking: map[string]*RankingInfo{
+				Ranking: map[string]*resource.RankingInfo{
 					"sv_1_1": {
 						ApproxNumPv: 3,
 						RankingName: "token2 token3",

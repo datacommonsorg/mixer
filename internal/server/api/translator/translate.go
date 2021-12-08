@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package server
+package translator
 
 import (
 	"context"
@@ -20,6 +20,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/translator"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 	"google.golang.org/grpc/codes"
@@ -27,8 +28,11 @@ import (
 )
 
 // Translate implements API for Mixer.Translate.
-func (s *Server) Translate(ctx context.Context,
-	in *pb.TranslateRequest) (*pb.TranslateResponse, error) {
+func Translate(
+	ctx context.Context,
+	in *pb.TranslateRequest,
+	metadata *resource.Metadata,
+) (*pb.TranslateResponse, error) {
 	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
@@ -43,7 +47,7 @@ func (s *Server) Translate(ctx context.Context,
 		return nil, err
 	}
 	trans, err := translator.Translate(
-		mappings, nodes, queries, s.metadata.SubTypeMap, opts)
+		mappings, nodes, queries, metadata.SubTypeMap, opts)
 	if err != nil {
 		return nil, err
 	}
