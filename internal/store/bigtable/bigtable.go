@@ -25,7 +25,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// BigtableGroup represents all the cloud bigtables that mixer talks to.
+// Group represents all the cloud bigtables that mixer talks to.
 type Group struct {
 	baseTable   *cbt.Table
 	branchTable *cbt.Table
