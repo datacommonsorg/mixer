@@ -241,3 +241,67 @@ func (s *Server) GetLocationsRankings(ctx context.Context,
 	}
 	return &pb.GetLocationsRankingsResponse{Payload: results}, nil
 }
+
+// GetPlaceMetadata implements API for Mixer.GetPlaceMetadata.
+func (s *Server) GetPlaceMetadata(ctx context.Context, in *pb.GetPlaceMetadataRequest) (
+	*pb.GetPlaceMetadataResponse, error) {
+	places := in.GetPlaces()
+
+	if len(places) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: places")
+	}
+
+	rowList := bigtable.BuildPlaceMetaDataKey(places)
+
+	// Place metadata are from base geo imports. Only trust the base cache.
+	baseDataMap, _, err := bigtable.Read(
+		ctx,
+		s.store.BtGroup,
+		rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var data pb.PlaceMetadataCache
+			err := json.Unmarshal(jsonRaw, &data)
+			if err != nil {
+				return nil, err
+			}
+			return &data, nil
+		},
+		nil,
+		false, /* readBranch */
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]*pb.PlaceMetadata{}
+	for _, place := range places {
+		if baseDataMap[place] == nil {
+			continue
+		}
+		raw := baseDataMap[place].(*pb.PlaceMetadataCache)
+		processed := pb.PlaceMetadata{}
+		metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
+		for _, info := range raw.Places {
+			metaMap[info.Dcid] = info
+		}
+		processed.Self = &pb.PlaceMetadata_PlaceInfo{
+			Dcid: place,
+			Name: metaMap[place].Name,
+			Type: metaMap[place].Type,
+		}
+		curr := place
+		for {
+			if len(metaMap[curr].Parents) == 0 {
+				break
+			}
+			parent := metaMap[curr].Parents[0]
+			processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
+				Dcid: parent,
+				Name: metaMap[parent].Name,
+				Type: metaMap[parent].Type,
+			})
+			curr = parent
+		}
+		result[place] = &processed
+	}
+	return &pb.GetPlaceMetadataResponse{Data: result}, nil
+}

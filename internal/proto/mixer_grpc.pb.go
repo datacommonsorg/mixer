@@ -80,6 +80,8 @@ type MixerClient interface {
 	// place.
 	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are migrated.
 	GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error)
+	// Give a list of place dcids, return metadata for each place.
+	GetPlaceMetadata(ctx context.Context, in *GetPlaceMetadataRequest, opts ...grpc.CallOption) (*GetPlaceMetadataResponse, error)
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
 	GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error)
@@ -315,6 +317,15 @@ func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVars
 	return out, nil
 }
 
+func (c *mixerClient) GetPlaceMetadata(ctx context.Context, in *GetPlaceMetadataRequest, opts ...grpc.CallOption) (*GetPlaceMetadataResponse, error) {
+	out := new(GetPlaceMetadataResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceMetadata", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error) {
 	out := new(GetPlaceStatVarsUnionResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatVarsUnionV1", in, out, opts...)
@@ -445,6 +456,8 @@ type MixerServer interface {
 	// place.
 	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are migrated.
 	GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error)
+	// Give a list of place dcids, return metadata for each place.
+	GetPlaceMetadata(context.Context, *GetPlaceMetadataRequest) (*GetPlaceMetadataResponse, error)
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
 	GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error)
@@ -537,6 +550,9 @@ func (*UnimplementedMixerServer) GetPlaceStatsVar(context.Context, *GetPlaceStat
 }
 func (*UnimplementedMixerServer) GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVars not implemented")
+}
+func (*UnimplementedMixerServer) GetPlaceMetadata(context.Context, *GetPlaceMetadataRequest) (*GetPlaceMetadataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceMetadata not implemented")
 }
 func (*UnimplementedMixerServer) GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVarsUnionV1 not implemented")
@@ -978,6 +994,24 @@ func _Mixer_GetPlaceStatVars_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_GetPlaceMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlaceMetadataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetPlaceMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/GetPlaceMetadata",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetPlaceMetadata(ctx, req.(*GetPlaceMetadataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_GetPlaceStatVarsUnionV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetPlaceStatVarsUnionRequest)
 	if err := dec(in); err != nil {
@@ -1199,6 +1233,10 @@ var _Mixer_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlaceStatVars",
 			Handler:    _Mixer_GetPlaceStatVars_Handler,
+		},
+		{
+			MethodName: "GetPlaceMetadata",
+			Handler:    _Mixer_GetPlaceMetadata_Handler,
 		},
 		{
 			MethodName: "GetPlaceStatVarsUnionV1",
