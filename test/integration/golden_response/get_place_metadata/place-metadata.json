@@ -1,0 +1,76 @@
+{
+  "data": {
+    "country/USA": {
+      "self": {
+        "dcid": "geoId/06085",
+        "name": "United States",
+        "type": "Country"
+      },
+      "parents": [
+        {
+          "dcid": "northamerica",
+          "name": "North America",
+          "type": "Continent"
+        },
+        {
+          "dcid": "Earth",
+          "name": "Earth",
+          "type": "Place"
+        }
+      ]
+    },
+    "geoId/06": {
+      "self": {
+        "dcid": "geoId/06085",
+        "name": "California",
+        "type": "State"
+      },
+      "parents": [
+        {
+          "dcid": "country/USA",
+          "name": "United States",
+          "type": "Country"
+        },
+        {
+          "dcid": "northamerica",
+          "name": "North America",
+          "type": "Continent"
+        },
+        {
+          "dcid": "Earth",
+          "name": "Earth",
+          "type": "Place"
+        }
+      ]
+    },
+    "geoId/06085": {
+      "self": {
+        "dcid": "geoId/06085",
+        "name": "Santa Clara County",
+        "type": "County"
+      },
+      "parents": [
+        {
+          "dcid": "geoId/06",
+          "name": "California",
+          "type": "State"
+        },
+        {
+          "dcid": "country/USA",
+          "name": "United States",
+          "type": "Country"
+        },
+        {
+          "dcid": "northamerica",
+          "name": "North America",
+          "type": "Continent"
+        },
+        {
+          "dcid": "Earth",
+          "name": "Earth",
+          "type": "Place"
+        }
+      ]
+    }
+  }
+}

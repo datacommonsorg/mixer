@@ -20,6 +20,7 @@
 //    /node/ranking-locations
 //    /place/stats-var
 //    /place/stat-vars
+//    /place/metadata
 //    /v1/place/stat-vars/union
 //    /place/stat/date/within-place
 // ========================================
@@ -168,4 +169,44 @@ message GetPlaceStatDateWithinPlaceRequest {
 message GetPlaceStatDateWithinPlaceResponse {
   // Keyed by statVar.
   map<string, DateList> data = 1;
+}
+
+
+// Metadata of a place. This is the raw cache data.
+message PlaceMetadataCache {
+  message PlaceInfo {
+    optional string dcid = 1;
+    optional string name = 2;
+    // This is the dominant type if multiple.
+    optional string type = 3;
+    // List of DCIDs of immediate parents. Each will have an entry in "places"
+    // list.
+    repeated string parents = 4;
+  }
+
+  // This includes the place itself, as well as all its ancestors.
+  // The DCID of the "main" place is part of the Cache key.
+  repeated PlaceInfo places = 1;
+}
+
+// Metadata of a place. This is used in API response
+message PlaceMetadata {
+  message PlaceInfo {
+    optional string dcid = 1;
+    optional string name = 2;
+    // This is the dominant type if multiple.
+    optional string type = 3;
+  }
+
+  optional PlaceInfo self = 1;
+  repeated PlaceInfo parents = 2;
+}
+
+message GetPlaceMetadataRequest {
+  repeated string places = 1;
+}
+
+message GetPlaceMetadataResponse {
+  // Keyed by place dcid.
+  map<string, PlaceMetadata> data = 1;
 }
