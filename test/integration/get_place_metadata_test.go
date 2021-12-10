@@ -42,7 +42,7 @@ func TestGetPlaceMetadata(t *testing.T) {
 	}{
 		{
 			"place-metadata.json",
-			[]string{"earth", "country/USA", "geoId/06", "geoId/06085"},
+			[]string{"earth", "country/USA", "geoId/06", "geoId/06085", "geoId/02158000100"},
 		},
 	} {
 		req := &pb.GetPlaceMetadataRequest{
