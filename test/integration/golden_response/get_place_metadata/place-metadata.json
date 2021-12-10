@@ -2,7 +2,7 @@
   "data": {
     "country/USA": {
       "self": {
-        "dcid": "geoId/06085",
+        "dcid": "country/USA",
         "name": "United States",
         "type": "Country"
       },
@@ -21,7 +21,7 @@
     },
     "geoId/06": {
       "self": {
-        "dcid": "geoId/06085",
+        "dcid": "geoId/06",
         "name": "California",
         "type": "State"
       },

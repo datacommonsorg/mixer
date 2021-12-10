@@ -281,10 +281,10 @@ func (s *Server) GetPlaceMetadata(ctx context.Context, in *pb.GetPlaceMetadataRe
 		processed := pb.PlaceMetadata{}
 		metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
 		for _, info := range raw.Places {
-			metaMap[*info.Dcid] = info
+			metaMap[info.Dcid] = info
 		}
 		processed.Self = &pb.PlaceMetadata_PlaceInfo{
-			Dcid: &place,
+			Dcid: place,
 			Name: metaMap[place].Name,
 			Type: metaMap[place].Type,
 		}
@@ -295,7 +295,7 @@ func (s *Server) GetPlaceMetadata(ctx context.Context, in *pb.GetPlaceMetadataRe
 			}
 			parent := metaMap[curr].Parents[0]
 			processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
-				Dcid: &parent,
+				Dcid: parent,
 				Name: metaMap[parent].Name,
 				Type: metaMap[parent].Type,
 			})

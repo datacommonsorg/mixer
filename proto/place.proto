@@ -175,10 +175,10 @@ message GetPlaceStatDateWithinPlaceResponse {
 // Metadata of a place. This is the raw cache data.
 message PlaceMetadataCache {
   message PlaceInfo {
-    optional string dcid = 1;
-    optional string name = 2;
+    string dcid = 1;
+    string name = 2;
     // This is the dominant type if multiple.
-    optional string type = 3;
+    string type = 3;
     // List of DCIDs of immediate parents. Each will have an entry in "places"
     // list.
     repeated string parents = 4;
@@ -192,13 +192,13 @@ message PlaceMetadataCache {
 // Metadata of a place. This is used in API response
 message PlaceMetadata {
   message PlaceInfo {
-    optional string dcid = 1;
-    optional string name = 2;
+    string dcid = 1;
+    string name = 2;
     // This is the dominant type if multiple.
-    optional string type = 3;
+    string type = 3;
   }
 
-  optional PlaceInfo self = 1;
+  PlaceInfo self = 1;
   repeated PlaceInfo parents = 2;
 }
 
