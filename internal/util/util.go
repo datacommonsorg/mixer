@@ -389,6 +389,7 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 	return m
 }
 
+// TimeTrack is used to track function execution time.
 func TimeTrack(start time.Time, name string) {
 	elapsed := time.Since(start)
 	log.Printf("%s took %s", name, elapsed)
