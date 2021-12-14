@@ -21,6 +21,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"math"
 	"math/rand"
 	"regexp"
@@ -386,4 +387,9 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 		return true
 	})
 	return m
+}
+
+func TimeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %s", name, elapsed)
 }

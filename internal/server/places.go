@@ -288,18 +288,24 @@ func (s *Server) GetPlaceMetadata(ctx context.Context, in *pb.GetPlaceMetadataRe
 			Name: metaMap[place].Name,
 			Type: metaMap[place].Type,
 		}
-		curr := place
+		visited := map[string]struct{}{}
+		parents := metaMap[place].Parents
 		for {
-			if len(metaMap[curr].Parents) == 0 {
+			if len(parents) == 0 {
 				break
 			}
-			parent := metaMap[curr].Parents[0]
+			curr := parents[0]
+			parents = parents[1:]
+			if _, ok := visited[curr]; ok {
+				continue
+			}
 			processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
-				Dcid: parent,
-				Name: metaMap[parent].Name,
-				Type: metaMap[parent].Type,
+				Dcid: curr,
+				Name: metaMap[curr].Name,
+				Type: metaMap[curr].Type,
 			})
-			curr = parent
+			visited[curr] = struct{}{}
+			parents = append(parents, metaMap[curr].Parents...)
 		}
 		result[place] = &processed
 	}
