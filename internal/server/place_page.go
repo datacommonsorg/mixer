@@ -27,6 +27,7 @@ import (
 
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/sync/errgroup"
@@ -87,16 +88,6 @@ var equivalentPlaceTypes = map[string]string{
 	"Town":    "City",
 	"Borough": "City",
 	"Village": "City",
-}
-
-var continents = map[string]struct{}{
-	"Africa":        {},
-	"Antarctica":    {},
-	"Asia":          {},
-	"Europe":        {},
-	"North America": {},
-	"Oceania":       {},
-	"South America": {},
 }
 
 func getCohort(placeType string, placeDcid string) (string, error) {
@@ -421,48 +412,27 @@ func getPlacePageChildPlaces(
 	return result, nil
 }
 
-// Get parent places up to continent level.
 func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 	[]string, error) {
-	result := []*pb.Place{}
-	for {
-		containedInPlaces, err := getPropertyValuesHelper(
-			ctx, s.store, []string{dcid}, "containedInPlace", true)
-		if err != nil {
-			return nil, err
-		}
-		if len(containedInPlaces) == 0 {
-			// There may be ancestors without any parents.
-			break
-		}
-		sort.SliceStable(containedInPlaces[dcid], func(i, j int) bool {
-			return containedInPlaces[dcid][i].Dcid > containedInPlaces[dcid][j].Dcid
-		})
-		for _, parent := range containedInPlaces[dcid] {
-			if parent.Types[0] == "CensusZipCodeTabulationArea" {
-				continue
-			}
-			result = append(result, &pb.Place{
-				Dcid: parent.Dcid,
-				Name: parent.Name,
-			})
-		}
-		if len(result) == 0 {
-			break
-		}
-		if _, ok := continents[result[len(result)-1].Name]; ok {
-			break
-		}
-		dcid = result[len(result)-1].Dcid
+	placeMetadata, err := s.GetPlaceMetadata(
+		ctx, &pb.GetPlaceMetadataRequest{Places: []string{dcid}})
+	if err != nil {
+		return nil, err
 	}
-	return getDcids(result), nil
+	result := []string{}
+	for _, parent := range placeMetadata.Data[dcid].Parents {
+		if parent.Type == "CensusZipCodeTabulationArea" || parent.Dcid == "Earth" {
+			continue
+		}
+		result = append(result, parent.Dcid)
+	}
+	return result, nil
 }
 
 // Get similar places.
 func getSimilarPlaces(
-	ctx context.Context, s *Server, placeDcid, placeType string, seed int64) (
-	[]string, error) {
-
+	ctx context.Context, s *Server, placeDcid, placeType string, seed int64,
+) ([]string, error) {
 	cohort, err := getCohort(placeType, placeDcid)
 	if err != nil {
 		return nil, err
@@ -509,9 +479,8 @@ func getSimilarPlaces(
 }
 
 // Get nearby places.
-func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
-	[]string, error) {
-
+func getNearbyPlaces(ctx context.Context, s *Server, dcid string,
+) ([]string, error) {
 	resp, err := getPropertyValuesHelper(
 		ctx, s.store, []string{dcid}, "nearbyPlaces", true)
 	if err != nil {
@@ -552,9 +521,9 @@ func getNearbyPlaces(ctx context.Context, s *Server, dcid string) (
 // abbreviations like "CA" filled in here so the client won't bother to fetch
 // those again.
 func (s *Server) GetPlacePageData(
-	ctx context.Context, in *pb.GetPlacePageDataRequest) (
-	*pb.GetPlacePageDataResponse, error) {
-
+	ctx context.Context, in *pb.GetPlacePageDataRequest,
+) (*pb.GetPlacePageDataResponse, error) {
+	defer util.TimeTrack(time.Now(), "GetPlacePageData")
 	placeDcid := in.GetPlace()
 	if placeDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
