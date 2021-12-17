@@ -133,12 +133,32 @@
       "dcid": "Count_Person_15To17Years_Male_AsianAlone"
     },
     {
+      "name": "15 Years or More, Divorced, Asian Alone Population",
+      "dcid": "Count_Person_15OrMoreYears_Divorced_AsianAlone"
+    },
+    {
       "name": "15 Years or More, Female, Asian Alone Population",
       "dcid": "Count_Person_15OrMoreYears_Female_AsianAlone"
     },
     {
       "name": "15 Years or More, Male, Asian Alone Population",
       "dcid": "Count_Person_15OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "15 Years or More, Married And Not Separated, Asian Alone Population",
+      "dcid": "Count_Person_15OrMoreYears_MarriedAndNotSeparated_AsianAlone"
+    },
+    {
+      "name": "15 Years or More, Never Married, Asian Alone Population",
+      "dcid": "Count_Person_15OrMoreYears_NeverMarried_AsianAlone"
+    },
+    {
+      "name": "15 Years or More, Separated, Asian Alone Population",
+      "dcid": "Count_Person_15OrMoreYears_Separated_AsianAlone"
+    },
+    {
+      "name": "15 Years or More, Widowed, Asian Alone Population",
+      "dcid": "Count_Person_15OrMoreYears_Widowed_AsianAlone"
     },
     {
       "name": "16 Years or More, Female, Asian Alone Population",
@@ -2481,6 +2501,10 @@
     {
       "name": "Person With Age = 15 Years or More, Gender, Race = Asian Alone",
       "dcid": "dc/g/Person_Age-Years15Onwards_Gender_Race-AsianAlone"
+    },
+    {
+      "name": "Person With Age = 15 Years or More, Marital Status, Race = Asian Alone",
+      "dcid": "dc/g/Person_Age-Years15Onwards_MaritalStatus_Race-AsianAlone"
     },
     {
       "name": "Person With Age = 16 - 17 Years, Gender = Female, Race = Asian Alone",
