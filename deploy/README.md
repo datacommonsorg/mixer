@@ -28,3 +28,5 @@ kubectl config use-context <CONTEXT_NAME>
 kustomize build overlays/staging > staging.yaml
 kubectl apply -f staging.yaml
 ```
+
+test
