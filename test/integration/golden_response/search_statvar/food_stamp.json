@@ -9,6 +9,10 @@
       "dcid": "Count_Household_WithoutFoodStampsInThePast12Months"
     },
     {
+      "name": "With Food Stamps in The Past 12 Months Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months"
+    },
+    {
       "name": "Count of Household With With Food Stamps in The Past 12 Months, American Indian or Alaska Native Alone",
       "dcid": "Count_Household_WithFoodStampsInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
     },
@@ -209,6 +213,34 @@
       "dcid": "Median_Income_Household_WithoutFoodStampsInThePast12Months"
     },
     {
+      "name": "With Food Stamps in The Past 12 Months, Adult Correctional Facilities Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "With Food Stamps in The Past 12 Months, College or University Student Housing Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "With Food Stamps in The Past 12 Months, Group Quarters Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInGroupQuarters"
+    },
+    {
+      "name": "With Food Stamps in The Past 12 Months, Institutionalized Group Quarters Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "With Food Stamps in The Past 12 Months, Juvenile Facilities Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "With Food Stamps in The Past 12 Months, Noninstitutionalized Group Quarters Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "With Food Stamps in The Past 12 Months, Nursing Facilities Population",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNursingFacilities"
+    },
+    {
       "name": "Count of With Food Stamps in The Past 12 Months, Family Household, No Workers in The Past 12 Months",
       "dcid": "Count_Household_WithFoodStampsInThePast12Months_FamilyHousehold_NoWorkersInThePast12Months"
     },
@@ -329,6 +361,10 @@
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months"
+    },
+    {
+      "name": "Person With Benefits Status = With Food Stamps in The Past 12 Months",
+      "dcid": "dc/g/Person_BenefitsStatus-WithFoodStampsInThePast12Months"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Child School Enrollment",
@@ -453,6 +489,10 @@
     {
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Work Period",
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_WorkPeriod"
+    },
+    {
+      "name": "Person With Benefits Status = With Food Stamps in The Past 12 Months, Residence Type",
+      "dcid": "dc/g/Person_BenefitsStatus-WithFoodStampsInThePast12Months_ResidenceType"
     },
     {
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Child School Enrollment = Public School, Member Status",

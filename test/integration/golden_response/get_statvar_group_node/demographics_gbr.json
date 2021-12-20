@@ -96,6 +96,11 @@
       "numDescendentStatVars": 663
     },
     {
+      "id": "dc/g/Person_BenefitsStatus",
+      "specializedEntity": "Benefits Status",
+      "displayName": "Person by Benefits Status"
+    },
+    {
       "id": "dc/g/Person_BirthEventStatus",
       "specializedEntity": "Birth Event Status",
       "displayName": "Person by Birth Event Status"
