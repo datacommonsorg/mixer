@@ -34,6 +34,13 @@
     {
       "cells": [
         {
+          "value": "Arab"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
           "value": "Asian"
         }
       ]
@@ -56,6 +63,13 @@
       "cells": [
         {
           "value": "AsianIndian"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "AsianOrPacificIslander"
         }
       ]
     },
@@ -230,6 +244,13 @@
     {
       "cells": [
         {
+          "value": "UCR_OtherRace"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
           "value": "USC_AmericanIndianAndAlaskaNativeAlone"
         }
       ]
@@ -273,6 +294,13 @@
       "cells": [
         {
           "value": "USC_WhiteAloneNotHispanicOrLatino"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "UnknownRace"
         }
       ]
     },

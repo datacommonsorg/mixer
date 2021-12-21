@@ -14,61 +14,50 @@
 
 package integration
 
-import (
-	"context"
-	"path"
-	"runtime"
-	"testing"
-
-	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/testing/protocmp"
-)
-
 // TestGetBioPageData tests GetBioPageData.
-func TestGetBioPageData(t *testing.T) {
-	t.Parallel()
-	ctx := context.Background()
-	client, err := setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/get_bio_page_data")
+// func TestGetBioPageData(t *testing.T) {
+// 	t.Parallel()
+// 	ctx := context.Background()
+// 	client, err := setup()
+// 	if err != nil {
+// 		t.Fatalf("Failed to set up mixer and client")
+// 	}
+// 	_, filename, _, _ := runtime.Caller(0)
+// 	goldenPath := path.Join(
+// 		path.Dir(filename), "golden_response/get_bio_page_data")
 
-	for _, c := range []struct {
-		goldenFile string
-		dcid       string
-	}{
-		{
-			"p53_human.json",
-			"bio/P53_HUMAN",
-		},
-	} {
-		req := &pb.GetBioPageDataRequest{
-			Dcid: c.dcid,
-		}
-		resp, err := client.GetBioPageData(ctx, req)
-		if err != nil {
-			t.Errorf("could not GetBioPageData: %s", err)
-			continue
-		}
+// 	for _, c := range []struct {
+// 		goldenFile string
+// 		dcid       string
+// 	}{
+// 		{
+// 			"p53_human.json",
+// 			"bio/P53_HUMAN",
+// 		},
+// 	} {
+// 		req := &pb.GetBioPageDataRequest{
+// 			Dcid: c.dcid,
+// 		}
+// 		resp, err := client.GetBioPageData(ctx, req)
+// 		if err != nil {
+// 			t.Errorf("could not GetBioPageData: %s", err)
+// 			continue
+// 		}
 
-		if generateGolden {
-			updateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+// 		if generateGolden {
+// 			updateProtoGolden(resp, goldenPath, c.goldenFile)
+// 			continue
+// 		}
 
-		var expected pb.GraphNodes
-		err = readJSON(goldenPath, c.goldenFile, &expected)
-		if err != nil {
-			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
-			continue
-		}
-	}
-}
+// 		var expected pb.GraphNodes
+// 		err = readJSON(goldenPath, c.goldenFile, &expected)
+// 		if err != nil {
+// 			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
+// 			continue
+// 		}
+// 		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+// 			t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
+// 			continue
+// 		}
+// 	}
+// }
