@@ -97,9 +97,8 @@ func BuildStatVarSearchIndex(
 	blocklist bool) *resource.SearchIndex {
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{
-		TokenSVMap:  map[string]map[string]struct{}{},
-		TokenSVGMap: map[string]map[string]struct{}{},
-		Ranking:     map[string]*resource.RankingInfo{},
+		RootTrieNode: &resource.TrieNode{},
+		Ranking:      map[string]*resource.RankingInfo{},
 	}
 	ignoredSVG := map[string]string{}
 	if blocklist {
@@ -107,6 +106,7 @@ func BuildStatVarSearchIndex(
 			getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
 		}
 	}
+	seenSV := map[string]struct{}{}
 	for svgID, svgData := range rawSvg {
 		if _, ok := ignoredSVG[svgID]; ok {
 			continue
@@ -114,6 +114,10 @@ func BuildStatVarSearchIndex(
 		tokenString := svgData.AbsoluteName
 		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */)
 		for _, svData := range svgData.ChildStatVars {
+			if _, ok := seenSV[svData.Id]; ok {
+				continue
+			}
+			seenSV[svData.Id] = struct{}{}
 			svTokenString := svData.SearchName
 			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */)
 		}

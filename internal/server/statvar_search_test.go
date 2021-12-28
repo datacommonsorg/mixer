@@ -24,6 +24,57 @@ import (
 )
 
 func TestSearchTokens(t *testing.T) {
+	token1 := resource.TrieNode{
+		ChildrenNodes: nil,
+		SvgIds:        map[string]struct{}{"group_1": {}, "group_31": {}},
+		SvIds:         map[string]struct{}{"sv_1_2": {}},
+	}
+	token3 := resource.TrieNode{
+		ChildrenNodes: nil,
+		SvgIds:        nil,
+		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
+	}
+	tokenX := resource.TrieNode{
+		ChildrenNodes: nil,
+		SvgIds:        map[string]struct{}{"group_3": {}},
+		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv_3": {}},
+	}
+	tokenDX := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'x': &tokenX,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenC := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'3': &token3,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenZ := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'd': &tokenDX,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenB := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'1': &token1,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenA := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'b': &tokenB,
+			'c': &tokenC,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
 	for _, c := range []struct {
 		tokens  []string
 		index   *resource.SearchIndex
@@ -31,18 +82,15 @@ func TestSearchTokens(t *testing.T) {
 		wantSvg []*pb.EntityInfo
 	}{
 		{
-			tokens: []string{"token1"},
+			tokens: []string{"ab1"},
 			index: &resource.SearchIndex{
-				TokenSVMap: map[string]map[string]struct{}{
-					"token1": {
-						"sv_1_2": {},
+				RootTrieNode: &resource.TrieNode{
+					ChildrenNodes: map[rune]*resource.TrieNode{
+						'a': &tokenA,
+						'z': &tokenZ,
 					},
-				},
-				TokenSVGMap: map[string]map[string]struct{}{
-					"token1": {
-						"group_1":  {},
-						"group_31": {},
-					},
+					SvgIds: nil,
+					SvIds:  nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {
@@ -77,28 +125,15 @@ func TestSearchTokens(t *testing.T) {
 			},
 		},
 		{
-			tokens: []string{"token2", "token3", "token4"},
+			tokens: []string{"ab", "zd", "ac3"},
 			index: &resource.SearchIndex{
-				TokenSVMap: map[string]map[string]struct{}{
-					"token2": {
-						"sv_1_1": {},
-						"sv_1_2": {},
+				RootTrieNode: &resource.TrieNode{
+					ChildrenNodes: map[rune]*resource.TrieNode{
+						'a': &tokenA,
+						'z': &tokenZ,
 					},
-					"token3": {
-						"sv_1_2": {},
-					},
-					"token4": {
-						"sv_3":   {},
-						"sv_1_2": {},
-					},
-				},
-				TokenSVGMap: map[string]map[string]struct{}{
-					"token3": {
-						"group_3": {},
-					},
-					"token4": {
-						"group_3": {},
-					},
+					SvgIds: nil,
+					SvIds:  nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
 					"sv_1_1": {

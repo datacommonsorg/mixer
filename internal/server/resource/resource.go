@@ -48,9 +48,14 @@ type Metadata struct {
 
 // SearchIndex holds the index for searching stat var (group).
 type SearchIndex struct {
-	TokenSVMap  map[string]map[string]struct{}
-	TokenSVGMap map[string]map[string]struct{}
-	Ranking     map[string]*RankingInfo
+	RootTrieNode *TrieNode
+	Ranking      map[string]*RankingInfo
+}
+
+type TrieNode struct {
+	ChildrenNodes map[rune]*TrieNode
+	SvgIds        map[string]struct{}
+	SvIds         map[string]struct{}
 }
 
 // RankingInfo holds the ranking information for each stat var hierarchy search
@@ -69,19 +74,6 @@ func (index *SearchIndex) Update(
 	processedTokenString := strings.ToLower(nodeString)
 	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
 	tokenList := strings.Fields(processedTokenString)
-	addtionalTokens := []string{}
-	for _, token := range tokenList {
-		if strings.HasSuffix(token, "s") {
-			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "s"))
-		}
-		if strings.HasSuffix(token, "es") {
-			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "es"))
-		}
-		if strings.HasSuffix(token, "ies") {
-			addtionalTokens = append(addtionalTokens, strings.TrimSuffix(token, "ies"))
-		}
-	}
-	tokenList = append(tokenList, addtionalTokens...)
 	approxNumPv := len(strings.Split(nodeID, "_"))
 	if approxNumPv == 1 {
 		// when approxNumPv is 1, most likely a non human curated PV
@@ -89,18 +81,28 @@ func (index *SearchIndex) Update(
 	}
 	// Ranking info is only dependent on a stat var (group).
 	index.Ranking[nodeID] = &RankingInfo{approxNumPv, displayName}
-	// Populate token to stat var map.
+	// Populate trie with each token
 	for _, token := range tokenList {
+		currNode := index.RootTrieNode
+		for _, c := range token {
+			if currNode.ChildrenNodes == nil {
+				currNode.ChildrenNodes = map[rune]*TrieNode{}
+			}
+			if _, ok := currNode.ChildrenNodes[c]; !ok {
+				currNode.ChildrenNodes[c] = &TrieNode{}
+			}
+			currNode = currNode.ChildrenNodes[c]
+		}
 		if isSvg {
-			if index.TokenSVGMap[token] == nil {
-				index.TokenSVGMap[token] = map[string]struct{}{}
+			if currNode.SvgIds == nil {
+				currNode.SvgIds = map[string]struct{}{}
 			}
-			index.TokenSVGMap[token][nodeID] = struct{}{}
+			currNode.SvgIds[nodeID] = struct{}{}
 		} else {
-			if index.TokenSVMap[token] == nil {
-				index.TokenSVMap[token] = map[string]struct{}{}
+			if currNode.SvIds == nil {
+				currNode.SvIds = map[string]struct{}{}
 			}
-			index.TokenSVMap[token][nodeID] = struct{}{}
+			currNode.SvIds[nodeID] = struct{}{}
 		}
 	}
 }

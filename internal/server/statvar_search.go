@@ -104,12 +104,33 @@ func searchTokens(
 	tokens []string, index *resource.SearchIndex) ([]*pb.EntityInfo, []*pb.EntityInfo) {
 	svCount := map[string]int{}
 	svgCount := map[string]int{}
+
+	// Get all matching sv and svg from the trie for each token
 	for _, token := range tokens {
-		for sv := range index.TokenSVMap[token] {
-			svCount[sv]++
+		currNode := index.RootTrieNode
+		for _, c := range token {
+			if _, ok := currNode.ChildrenNodes[c]; !ok {
+				currNode = nil
+				break
+			}
+			currNode = currNode.ChildrenNodes[c]
 		}
-		for svg := range index.TokenSVGMap[token] {
-			svgCount[svg]++
+		if currNode == nil {
+			continue
+		}
+		nodesToCheck := []resource.TrieNode{*currNode}
+		for len(nodesToCheck) > 0 {
+			node := nodesToCheck[0]
+			nodesToCheck = nodesToCheck[1:]
+			for _, node := range node.ChildrenNodes {
+				nodesToCheck = append(nodesToCheck, *node)
+			}
+			for sv := range node.SvIds {
+				svCount[sv]++
+			}
+			for svg := range node.SvgIds {
+				svgCount[svg]++
+			}
 		}
 	}
 

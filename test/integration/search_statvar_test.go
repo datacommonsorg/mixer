@@ -79,6 +79,12 @@ func TestSearchStatVar(t *testing.T) {
 			false,
 			"food_stamp.json",
 		},
+		{
+			"fem",
+			[]string{},
+			false,
+			"fem.json",
+		},
 	} {
 		resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 			Query:           c.query,

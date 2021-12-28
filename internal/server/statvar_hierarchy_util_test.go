@@ -76,6 +76,69 @@ func TestGetParentMapping(t *testing.T) {
 }
 
 func TestBuildSearchIndex(t *testing.T) {
+	token1 := resource.TrieNode{
+		ChildrenNodes: nil,
+		SvgIds:        map[string]struct{}{"group_1": {}},
+		SvIds:         map[string]struct{}{"sv_1_1": {}},
+	}
+	token3 := resource.TrieNode{
+		ChildrenNodes: nil,
+		SvgIds:        nil,
+		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
+	}
+	tokenX := resource.TrieNode{
+		ChildrenNodes: nil,
+		SvgIds:        map[string]struct{}{"group_1": {}, "group_3_1": {}},
+		SvIds:         map[string]struct{}{"sv_3": {}},
+	}
+	tokenDX := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'x': &tokenX,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenD := resource.TrieNode{
+		ChildrenNodes: nil,
+		SvgIds:        map[string]struct{}{"group_3_1": {}},
+		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv3": {}},
+	}
+	tokenC := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'3': &token3,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenZ := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'd': &tokenDX,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenB1 := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'd': &tokenD,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenB2 := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'1': &token1,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
+	tokenA := resource.TrieNode{
+		ChildrenNodes: map[rune]*resource.TrieNode{
+			'b': &tokenB2,
+			'c': &tokenC,
+		},
+		SvgIds: nil,
+		SvIds:  nil,
+	}
 	for _, c := range []struct {
 		input map[string]*pb.StatVarGroupNode
 		want  *resource.SearchIndex
@@ -83,72 +146,53 @@ func TestBuildSearchIndex(t *testing.T) {
 		{
 			map[string]*pb.StatVarGroupNode{
 				"group_1": {
-					AbsoluteName: "token1 token2",
+					AbsoluteName: "ab1 zdx",
 					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 						{Id: "group_3_1"},
 					},
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
 							Id:          "sv_1_1",
-							SearchName:  "token1 token3",
+							SearchName:  "ab1 ac3",
 							DisplayName: "sv1",
 						},
 						{
 							Id:          "sv_1_2",
-							SearchName:  "token3, token4",
+							SearchName:  "ac3, bd",
 							DisplayName: "sv2",
 						},
 					},
 				},
 				"group_3_1": {
-					AbsoluteName: "token2, token4",
+					AbsoluteName: "zdx, bd",
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
 							Id:          "sv_3",
-							SearchName:  "token2",
+							SearchName:  "zdx",
 							DisplayName: "sv3",
 						},
 						{
 							Id:          "sv3",
-							SearchName:  "token4,",
+							SearchName:  "bd,",
 							DisplayName: "sv4",
 						},
 					},
 				},
 			},
 			&resource.SearchIndex{
-				TokenSVMap: map[string]map[string]struct{}{
-					"token1": {
-						"sv_1_1": {},
+				RootTrieNode: &resource.TrieNode{
+					ChildrenNodes: map[rune]*resource.TrieNode{
+						'a': &tokenA,
+						'z': &tokenZ,
+						'b': &tokenB1,
 					},
-					"token2": {
-						"sv_3": {},
-					},
-					"token3": {
-						"sv_1_1": {},
-						"sv_1_2": {},
-					},
-					"token4": {
-						"sv_1_2": {},
-						"sv3":    {},
-					},
-				},
-				TokenSVGMap: map[string]map[string]struct{}{
-					"token1": {
-						"group_1": {},
-					},
-					"token2": {
-						"group_1":   {},
-						"group_3_1": {},
-					},
-					"token4": {
-						"group_3_1": {},
-					},
+					SvgIds: nil,
+					SvIds:  nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {
 						ApproxNumPv: 2,
-						RankingName: "token1 token2",
+						RankingName: "ab1 zdx",
 					},
 					"sv_1_1": {
 						ApproxNumPv: 3,
@@ -156,7 +200,7 @@ func TestBuildSearchIndex(t *testing.T) {
 					},
 					"group_3_1": {
 						ApproxNumPv: 3,
-						RankingName: "token2, token4",
+						RankingName: "zdx, bd",
 					},
 					"sv_3": {
 						ApproxNumPv: 2,
