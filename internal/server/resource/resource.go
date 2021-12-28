@@ -70,10 +70,20 @@ type RankingInfo struct {
 
 // Update search index, given a stat var (group) node ID and string.
 func (index *SearchIndex) Update(
-	nodeID string, nodeString string, displayName string, isSvg bool) {
+	nodeID string, nodeString string, displayName string, isSvg bool, synonymMap map[string][]string) {
 	processedTokenString := strings.ToLower(nodeString)
 	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
 	tokenList := strings.Fields(processedTokenString)
+	// Create a set of tokens from the tokens in tokenList and their synonyms
+	tokens := map[string]struct{}{}
+	for _, token := range tokenList {
+		tokens[token] = struct{}{}
+		if synonymList, ok := synonymMap[token]; ok {
+			for _, synonym := range synonymList {
+				tokens[synonym] = struct{}{}
+			}
+		}
+	}
 	approxNumPv := len(strings.Split(nodeID, "_"))
 	if approxNumPv == 1 {
 		// when approxNumPv is 1, most likely a non human curated PV
@@ -82,7 +92,7 @@ func (index *SearchIndex) Update(
 	// Ranking info is only dependent on a stat var (group).
 	index.Ranking[nodeID] = &RankingInfo{approxNumPv, displayName}
 	// Populate trie with each token
-	for _, token := range tokenList {
+	for token := range tokens {
 		currNode := index.RootTrieNode
 		for _, c := range token {
 			if currNode.ChildrenNodes == nil {

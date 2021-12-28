@@ -16,6 +16,10 @@ package server
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
+	"path"
+	"runtime"
 	"sort"
 
 	cbt "cloud.google.com/go/bigtable"
@@ -91,6 +95,19 @@ func getIgnoredSVGHelper(
 	}
 }
 
+func getSynonymMap() map[string][]string {
+	var synonyms map[string][]string
+	_, filename, _, _ := runtime.Caller(0)
+	bytes, err := ioutil.ReadFile(path.Join(path.Dir(filename), "resource/synonyms.json"))
+	if err == nil {
+		err = json.Unmarshal(bytes, &synonyms)
+		if err != nil {
+			synonyms = map[string][]string{}
+		}
+	}
+	return synonyms
+}
+
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
@@ -106,20 +123,21 @@ func BuildStatVarSearchIndex(
 			getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
 		}
 	}
+	synonymMap := getSynonymMap()
 	seenSV := map[string]struct{}{}
 	for svgID, svgData := range rawSvg {
 		if _, ok := ignoredSVG[svgID]; ok {
 			continue
 		}
 		tokenString := svgData.AbsoluteName
-		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */)
+		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */, synonymMap)
 		for _, svData := range svgData.ChildStatVars {
 			if _, ok := seenSV[svData.Id]; ok {
 				continue
 			}
 			seenSV[svData.Id] = struct{}{}
 			svTokenString := svData.SearchName
-			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */)
+			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */, synonymMap)
 		}
 	}
 	return searchIndex

@@ -85,6 +85,12 @@ func TestSearchStatVar(t *testing.T) {
 			false,
 			"fem.json",
 		},
+		{
+			"women",
+			[]string{},
+			false,
+			"women.json",
+		},
 	} {
 		resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 			Query:           c.query,
