@@ -52,6 +52,7 @@ type SearchIndex struct {
 	Ranking      map[string]*RankingInfo
 }
 
+// TrieNode represents a node in the sv hierarchy search Trie.
 type TrieNode struct {
 	ChildrenNodes map[rune]*TrieNode
 	SvgIds        map[string]struct{}
