@@ -35,6 +35,7 @@ import (
 
 // This should be synced with the list of blocklisted SVGs in the website repo
 var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
+var miscellaneousSvgIds = []string{"eia/g/Root", "dc/g/Uncategorized"}
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, baseTable *cbt.Table) (
@@ -118,6 +119,10 @@ func BuildStatVarSearchIndex(
 		Ranking:      map[string]*resource.RankingInfo{},
 	}
 	ignoredSVG := map[string]string{}
+	// Exclude svg and sv under miscellaneous from the search index
+	for _, svgID := range miscellaneousSvgIds {
+		getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
+	}
 	if blocklist {
 		for _, svgID := range blocklistedSvgIds {
 			getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)

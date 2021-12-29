@@ -3553,40 +3553,8 @@
       "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
     },
     {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Federal Government Owned, Female, With Earnings, Worker",
-      "dcid": "Median_Earnings_Person_FederalGovernmentOwnedEstablishment_Female_Worker"
-    },
-    {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings",
       "dcid": "Median_Earnings_Person_Civilian_Employed_Female"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Local Government Owned, Female, With Earnings, Worker",
-      "dcid": "Median_Earnings_Person_LocalGovernmentOwnedEstablishment_Female_Worker"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned Not for Profit, Female, With Earnings, Paid Worker",
-      "dcid": "Median_Earnings_Person_PrivatelyOwnedNotForProfitEstablishment_Female_PaidWorker"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Incorporated Business Owner",
-      "dcid": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_IncorporatedBusinessOwner"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Paid Employee",
-      "dcid": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidEmployee"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Paid Worker",
-      "dcid": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidWorker"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned, Female, With Earnings, Unincorporated Business Owner or Unpaid Family Worker",
-      "dcid": "Median_Earnings_Person_PrivatelyOwnedEstablishment_Female_UnincorporatedBusinessOwnerOrUnpaidFamilyWorker"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, State Government Owned, Female, With Earnings, Worker",
-      "dcid": "Median_Earnings_Person_StateGovernmentOwnedEstablishment_Female_Worker"
     },
     {
       "name": "Median Income of Female",
@@ -3637,10 +3605,6 @@
       "dcid": "Median_Earnings_Person_FederalGovernmentOwnedEstablishment_Female_Worker_FullTimeYearRoundWorker"
     },
     {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Federal Government Owned, Female, With Earnings, Worker as Fraction of Median Earnings Person Federal Government Owned Establishment Male Worker",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_FederalGovernmentOwnedEstablishment_Worker"
-    },
-    {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings as Fraction of Median Earnings Person Civilian Employed Male",
       "dcid": "Median_Earnings_Female_AsAFractionOf_Male_Civilian_Employed"
     },
@@ -3653,16 +3617,8 @@
       "dcid": "Median_Earnings_Person_LocalGovernmentOwnedEstablishment_Female_Worker_FullTimeYearRoundWorker"
     },
     {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Local Government Owned, Female, With Earnings, Worker as Fraction of Median Earnings Person Local Government Owned Establishment Male Worker",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_LocalGovernmentOwnedEstablishment_Worker"
-    },
-    {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned Not for Profit, Female, With Earnings, Full Time Year Round Worker, Paid Worker",
       "dcid": "Median_Earnings_Person_PrivatelyOwnedNotForProfitEstablishment_Female_PaidWorker_FullTimeYearRoundWorker"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned Not for Profit, Female, With Earnings, Paid Worker as Fraction of Median Earnings Person Privately Owned Not for Profit Establishment Male Paid Worker",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_PrivatelyOwnedNotForProfitEstablishment_PaidWorker"
     },
     {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Full Time Year Round Worker, Incorporated Business Owner",
@@ -3677,32 +3633,12 @@
       "dcid": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidWorker_FullTimeYearRoundWorker"
     },
     {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Incorporated Business Owner as Fraction of Median Earnings Person Privately Owned for Profit Establishment Male Incorporated Business Owner",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_PrivatelyOwnedForProfitEstablishment_IncorporatedBusinessOwner"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Paid Employee as Fraction of Median Earnings Person Privately Owned for Profit Establishment Male Paid Employee",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_PrivatelyOwnedForProfitEstablishment_PaidEmployee"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned for Profit, Female, With Earnings, Paid Worker as Fraction of Median Earnings Person Privately Owned for Profit Establishment Male Paid Worker",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_PrivatelyOwnedForProfitEstablishment_PaidWorker"
-    },
-    {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned, Female, With Earnings, Full Time Year Round Worker, Unincorporated Business Owner or Unpaid Family Worker",
       "dcid": "Median_Earnings_Person_PrivatelyOwnedEstablishment_Female_UnincorporatedBusinessOwnerOrUnpaidFamilyWorker_FullTimeYearRoundWorker"
     },
     {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Privately Owned, Female, With Earnings, Unincorporated Business Owner or Unpaid Family Worker as Fraction of Median Earnings Person Privately Owned Establishment Male Unincorporated Business Owner or Unpaid Family Worker",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_PrivatelyOwnedEstablishment_UnincorporatedBusinessOwnerOrUnpaidFamilyWorker"
-    },
-    {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, State Government Owned, Female, With Earnings, Full Time Year Round Worker, Worker",
       "dcid": "Median_Earnings_Person_StateGovernmentOwnedEstablishment_Female_Worker_FullTimeYearRoundWorker"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, State Government Owned, Female, With Earnings, Worker as Fraction of Median Earnings Person State Government Owned Establishment Male Worker",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_StateGovernmentOwnedEstablishment_Worker"
     },
     {
       "name": "Count of 1 Years or Less, Female as Fraction of Count Births Female",
@@ -3999,6 +3935,70 @@
     {
       "name": "Count of Gender, Wire Fraud, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+    },
+    {
+      "name": "Count of Murder And Non Negligent Manslaughter, Female as Fraction of Count Person Female",
+      "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Count of X60-X84 (Intentional Self-harm), Female as Fraction of Count Person Female",
+      "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "15 Years or More, in Labor Force, Female Population as Fraction of Count Person in Labor Force",
+      "dcid": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce"
+    },
+    {
+      "name": "Count of 14 Years or Less, Female as Fraction of Count Person Upto 14 Years Female",
+      "dcid": "Count_Death_Upto14Years_Female_AsAFractionOf_Count_Person_Upto14Years_Female"
+    },
+    {
+      "name": "Count of Years 0, Female as Fraction of Count Births Live Birth Female",
+      "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
+    },
+    {
+      "name": "15 - 64 Years, in Labor Force, Female Population as Fraction of Count Person 15 To 64 Years Female",
+      "dcid": "Count_Person_15To64Years_Female_InLaborForce_AsFractionOf_Count_Person_15To64Years_Female"
+    },
+    {
+      "name": "15 Years or More, Female, Smoking Population as Fraction of Count Person 15 or More Years Female",
+      "dcid": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female"
+    },
+    {
+      "name": "Bachelors Degree or Higher, Female Population as Fraction of Count Person 25 or More Years Female",
+      "dcid": "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
+    },
+    {
+      "name": "Doctorate Degree, Female Population as Fraction of Count Person 25 or More Years Female",
+      "dcid": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female"
+    },
+    {
+      "name": "Masters Degree or Higher, Female Population as Fraction of Count Person 25 or More Years Female",
+      "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
+    },
+    {
+      "name": "Tertiary Education, Female Population as Fraction of Count Person 25 or More Years Female",
+      "dcid": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, American Indian or Alaska Native Alone Population",
+      "dcid": "dc/ggdhyf1m1lfmf"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, Asian Alone Population",
+      "dcid": "dc/ebjmh3z7dy35c"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, Black or African American Alone Population",
+      "dcid": "dc/7v2zh29qtx4g2"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, Hispanic or Latino Population",
+      "dcid": "dc/09v28v6bwqt0c"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone Population",
+      "dcid": "dc/9x5jz31zt5xd8"
     }
   ],
   "statVarGroups": [
