@@ -4695,10 +4695,6 @@
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
     },
     {
-      "name": "Person With Enrollment Level, Gender = Female",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
-    },
-    {
       "name": "Person With Establishment Ownership = Federal Government Owned, Gender = Female",
       "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Gender-Female"
     },
@@ -4749,6 +4745,10 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",

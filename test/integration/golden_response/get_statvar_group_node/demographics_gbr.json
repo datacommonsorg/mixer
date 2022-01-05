@@ -117,9 +117,19 @@
       "displayName": "Commute"
     },
     {
+      "id": "dc/g/Person_DateOfEntry",
+      "specializedEntity": "Date of Entry",
+      "displayName": "Person by Date of Entry"
+    },
+    {
       "id": "dc/g/Person_DisabilityStatus",
       "specializedEntity": "Disability Status",
       "displayName": "Person by Disability Status"
+    },
+    {
+      "id": "dc/g/Person_Earnings",
+      "specializedEntity": "Earnings",
+      "displayName": "Person by Earnings"
     },
     {
       "id": "dc/g/Person_Gender",
@@ -171,6 +181,11 @@
       "id": "dc/g/Person_MaritalStatus",
       "specializedEntity": "Marital Status",
       "displayName": "Person by Marital Status"
+    },
+    {
+      "id": "dc/g/Person_MemberStatus",
+      "specializedEntity": "Member Status",
+      "displayName": "Person by Member Status"
     },
     {
       "id": "dc/g/Person_PlaceOfBirth",
