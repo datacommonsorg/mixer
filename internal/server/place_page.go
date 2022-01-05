@@ -420,11 +420,13 @@ func getParentPlaces(ctx context.Context, s *Server, dcid string) (
 		return nil, err
 	}
 	result := []string{}
-	for _, parent := range placeMetadata.Data[dcid].Parents {
-		if parent.Type == "CensusZipCodeTabulationArea" || parent.Dcid == "Earth" {
-			continue
+	if data, ok := placeMetadata.Data[dcid]; ok {
+		for _, parent := range data.Parents {
+			if parent.Type == "CensusZipCodeTabulationArea" || parent.Dcid == "Earth" {
+				continue
+			}
+			result = append(result, parent.Dcid)
 		}
-		result = append(result, parent.Dcid)
 	}
 	return result, nil
 }
