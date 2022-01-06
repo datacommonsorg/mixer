@@ -16,7 +16,12 @@ package server
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
+	"path"
+	"runtime"
 	"sort"
+	"time"
 
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -31,6 +36,7 @@ import (
 
 // This should be synced with the list of blocklisted SVGs in the website repo
 var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
+var miscellaneousSvgIds = []string{"eia/g/Root", "dc/g/Uncategorized"}
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, baseTable *cbt.Table) (
@@ -91,31 +97,65 @@ func getIgnoredSVGHelper(
 	}
 }
 
+func getSynonymMap() map[string][]string {
+	synonymMap := map[string][]string{}
+	_, filename, _, _ := runtime.Caller(0)
+	bytes, err := ioutil.ReadFile(path.Join(path.Dir(filename), "resource/synonyms.json"))
+	if err == nil {
+		var synonyms [][]string
+		err = json.Unmarshal(bytes, &synonyms)
+		if err == nil {
+			// for each synonymList (list of words that are all synonyms of each other),
+			// append that list to the synonymMap value for each word in the list.
+			for _, synonymList := range synonyms {
+				for _, word := range synonymList {
+					if _, ok := synonymMap[word]; !ok {
+						synonymMap[word] = synonymList
+					} else {
+						synonymMap[word] = append(synonymMap[word], synonymList...)
+					}
+				}
+			}
+		}
+	}
+	return synonymMap
+}
+
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
 	blocklist bool) *resource.SearchIndex {
+	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{
-		TokenSVMap:  map[string]map[string]struct{}{},
-		TokenSVGMap: map[string]map[string]struct{}{},
-		Ranking:     map[string]*resource.RankingInfo{},
+		RootTrieNode: &resource.TrieNode{},
+		Ranking:      map[string]*resource.RankingInfo{},
 	}
 	ignoredSVG := map[string]string{}
+	// Exclude svg and sv under miscellaneous from the search index
+	for _, svgID := range miscellaneousSvgIds {
+		getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
+	}
 	if blocklist {
 		for _, svgID := range blocklistedSvgIds {
 			getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
 		}
 	}
+	synonymMap := getSynonymMap()
+	seenSV := map[string]struct{}{}
 	for svgID, svgData := range rawSvg {
 		if _, ok := ignoredSVG[svgID]; ok {
 			continue
 		}
 		tokenString := svgData.AbsoluteName
-		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */)
+		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */, synonymMap)
 		for _, svData := range svgData.ChildStatVars {
+			if _, ok := seenSV[svData.Id]; ok {
+				continue
+			}
+			seenSV[svData.Id] = struct{}{}
 			svTokenString := svData.SearchName
-			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */)
+			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */, synonymMap)
 		}
 	}
 	return searchIndex

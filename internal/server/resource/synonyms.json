@@ -1,0 +1,10 @@
+[
+  ["female", "women"],
+  ["male", "men"],
+  ["mean", "average"],
+  ["commute", "transportation"],
+  ["count", "number"],
+  ["ambulatory", "walking"],
+  ["cognitive", "mental", "brain"],
+  ["hearing", "auditory"]
+]

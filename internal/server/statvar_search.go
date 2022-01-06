@@ -104,12 +104,46 @@ func searchTokens(
 	tokens []string, index *resource.SearchIndex) ([]*pb.EntityInfo, []*pb.EntityInfo) {
 	svCount := map[string]int{}
 	svgCount := map[string]int{}
+
+	// Get all matching sv and svg from the trie for each token
 	for _, token := range tokens {
-		for sv := range index.TokenSVMap[token] {
-			svCount[sv]++
+		currNode := index.RootTrieNode
+		// Traverse the Trie following the order of the characters in the token
+		// until we either reach the end of the token or we reach a node that
+		// doesn't have the next character as a child node.
+		// eg. Trie: Root - a
+		//                 / \
+		// 				       b     c
+		//
+		//			If token is "ab", currNode will go Root -> a -> b
+		// 			If token is "bc", currNode will go Root -> nil
+		//			If token is "abc", currNode will go Root -> a -> b -> nil
+		for _, c := range token {
+			if _, ok := currNode.ChildrenNodes[c]; !ok {
+				currNode = nil
+				break
+			}
+			currNode = currNode.ChildrenNodes[c]
 		}
-		for svg := range index.TokenSVGMap[token] {
-			svgCount[svg]++
+		// The token is not a prefix or word in the Trie.
+		if currNode == nil {
+			continue
+		}
+		// Traverse the entire subTrie rooted at the node corresponding to the
+		// last character in the token and add all SvIds and SvgIds seen.
+		nodesToCheck := []resource.TrieNode{*currNode}
+		for len(nodesToCheck) > 0 {
+			node := nodesToCheck[0]
+			nodesToCheck = nodesToCheck[1:]
+			for _, node := range node.ChildrenNodes {
+				nodesToCheck = append(nodesToCheck, *node)
+			}
+			for sv := range node.SvIds {
+				svCount[sv]++
+			}
+			for svg := range node.SvgIds {
+				svgCount[svg]++
+			}
 		}
 	}
 
