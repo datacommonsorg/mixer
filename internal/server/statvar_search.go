@@ -108,6 +108,16 @@ func searchTokens(
 	// Get all matching sv and svg from the trie for each token
 	for _, token := range tokens {
 		currNode := index.RootTrieNode
+		// Traverse the Trie following the order of the characters in the token
+		// until we either reach the end of the token or we reach a node that
+		// doesn't have the next character as a child node.
+		// eg. Trie: Root - a
+		//                 / \
+		// 				       b     c
+		//
+		//			If token is "ab", currNode will go Root -> a -> b
+		// 			If token is "bc", currNode will go Root -> nil
+		//			If token is "abc", currNode will go Root -> a -> b -> nil
 		for _, c := range token {
 			if _, ok := currNode.ChildrenNodes[c]; !ok {
 				currNode = nil
@@ -115,9 +125,12 @@ func searchTokens(
 			}
 			currNode = currNode.ChildrenNodes[c]
 		}
+		// The token is not a prefix or word in the Trie.
 		if currNode == nil {
 			continue
 		}
+		// Traverse the entire subTrie rooted at the node corresponding to the
+		// last character in the token and add all SvIds and SvgIds seen.
 		nodesToCheck := []resource.TrieNode{*currNode}
 		for len(nodesToCheck) > 0 {
 			node := nodesToCheck[0]

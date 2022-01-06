@@ -24,53 +24,53 @@ import (
 )
 
 func TestSearchTokens(t *testing.T) {
-	token1 := resource.TrieNode{
+	node1 := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvgIds:        map[string]struct{}{"group_1": {}, "group_31": {}},
 		SvIds:         map[string]struct{}{"sv_1_2": {}},
 	}
-	token3 := resource.TrieNode{
+	node3 := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvgIds:        nil,
 		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
 	}
-	tokenX := resource.TrieNode{
+	nodeX := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvgIds:        map[string]struct{}{"group_3": {}},
 		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv_3": {}},
 	}
-	tokenDX := resource.TrieNode{
+	nodeDX := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
-			'x': &tokenX,
+			'x': &nodeX,
 		},
 		SvgIds: nil,
 		SvIds:  nil,
 	}
-	tokenC := resource.TrieNode{
+	nodeC := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
-			'3': &token3,
+			'3': &node3,
 		},
 		SvgIds: nil,
 		SvIds:  nil,
 	}
-	tokenZ := resource.TrieNode{
+	nodeZ := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
-			'd': &tokenDX,
+			'd': &nodeDX,
 		},
 		SvgIds: nil,
 		SvIds:  nil,
 	}
-	tokenB := resource.TrieNode{
+	nodeB := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
-			'1': &token1,
+			'1': &node1,
 		},
 		SvgIds: nil,
 		SvIds:  nil,
 	}
-	tokenA := resource.TrieNode{
+	nodeA := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
-			'b': &tokenB,
-			'c': &tokenC,
+			'b': &nodeB,
+			'c': &nodeC,
 		},
 		SvgIds: nil,
 		SvIds:  nil,
@@ -86,8 +86,8 @@ func TestSearchTokens(t *testing.T) {
 			index: &resource.SearchIndex{
 				RootTrieNode: &resource.TrieNode{
 					ChildrenNodes: map[rune]*resource.TrieNode{
-						'a': &tokenA,
-						'z': &tokenZ,
+						'a': &nodeA,
+						'z': &nodeZ,
 					},
 					SvgIds: nil,
 					SvIds:  nil,
@@ -129,8 +129,8 @@ func TestSearchTokens(t *testing.T) {
 			index: &resource.SearchIndex{
 				RootTrieNode: &resource.TrieNode{
 					ChildrenNodes: map[rune]*resource.TrieNode{
-						'a': &tokenA,
-						'z': &tokenZ,
+						'a': &nodeA,
+						'z': &nodeZ,
 					},
 					SvgIds: nil,
 					SvIds:  nil,

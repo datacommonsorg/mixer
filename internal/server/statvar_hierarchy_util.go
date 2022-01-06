@@ -21,6 +21,7 @@ import (
 	"path"
 	"runtime"
 	"sort"
+	"time"
 
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -97,22 +98,34 @@ func getIgnoredSVGHelper(
 }
 
 func getSynonymMap() map[string][]string {
-	var synonyms map[string][]string
+	synonymMap := map[string][]string{}
 	_, filename, _, _ := runtime.Caller(0)
 	bytes, err := ioutil.ReadFile(path.Join(path.Dir(filename), "resource/synonyms.json"))
 	if err == nil {
+		var synonyms [][]string
 		err = json.Unmarshal(bytes, &synonyms)
-		if err != nil {
-			synonyms = map[string][]string{}
+		if err == nil {
+			// for each synonymList (list of words that are all synonyms of each other),
+			// append that list to the synonymMap value for each word in the list.
+			for _, synonymList := range synonyms {
+				for _, word := range synonymList {
+					if _, ok := synonymMap[word]; !ok {
+						synonymMap[word] = synonymList
+					} else {
+						synonymMap[word] = append(synonymMap[word], synonymList...)
+					}
+				}
+			}
 		}
 	}
-	return synonyms
+	return synonymMap
 }
 
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
 	blocklist bool) *resource.SearchIndex {
+	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{
 		RootTrieNode: &resource.TrieNode{},

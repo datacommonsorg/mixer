@@ -1,11 +1,10 @@
-{
-  "female": ["women"],
-  "male": ["men"],
-  "mean": ["average"],
-  "average": ["mean"],
-  "commute": ["transportation"],
-  "count": ["number"],
-  "ambulatory": ["walking"],
-  "cognitive": ["mental", "brain"],
-  "hearing": ["auditory"]
-}
+[
+  ["female", "women"],
+  ["male", "men"],
+  ["mean", "average"],
+  ["commute", "transportation"],
+  ["count", "number"],
+  ["ambulatory", "walking"],
+  ["cognitive", "mental", "brain"],
+  ["hearing", "auditory"]
+]
