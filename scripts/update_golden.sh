@@ -46,13 +46,4 @@ else
     ARG=""
 fi
 
-if [[ $DOCKER == "true" ]]; then
-  DOCKER_BUILDKIT=1 docker build --tag datacommons/mixer-golden-update  -f build/Dockerfile --target golden-update .
-  docker run \
-    -v $HOME/.config/gcloud:/root/.config/gcloud \
-    -v $ROOT/test/integration:/result \
-    -e arg="$ARG" \
-    datacommons/mixer-golden-update
-else
-    go test -v $ROOT/test/integration -generate_golden=true $ARG
-fi
+export GENERATE_GOLDEN=true && go test ./... $ARG

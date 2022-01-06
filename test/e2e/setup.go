@@ -17,10 +17,10 @@ package e2e
 import (
 	"context"
 	"encoding/json"
-	"flag"
 	"io/ioutil"
 	"log"
 	"net"
+	"os"
 	"path"
 	"runtime"
 	"strings"
@@ -44,12 +44,7 @@ type TestOption struct {
 	UseMemdb bool
 }
 
-var GenerateGolden bool
-
-func init() {
-	flag.BoolVar(
-		&GenerateGolden, "generate_golden", false, "generate golden files")
-}
+var GenerateGolden = os.Getenv("GENERATE_GOLDEN") == "true"
 
 // This test runs agains staging staging bt and bq dataset.
 // This is billed to GCP project "datcom-ci"
