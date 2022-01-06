@@ -32,6 +32,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"google.golang.org/api/iterator"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
@@ -283,6 +285,10 @@ func (memDb *MemDb) addRow(
 	row []string,
 	schemaMapping *tmcf.TableSchema,
 ) error {
+	if schemaMapping == nil {
+		return status.Errorf(
+			codes.Internal, "No schema mapping found for row: %s", row)
+	}
 	// Keyed by node id like "E0"
 	allNodes := map[string]*nodeObs{}
 	// Initialize observation entries with the fixed schema
