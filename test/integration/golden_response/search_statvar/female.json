@@ -3553,10 +3553,6 @@
       "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
     },
     {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings",
-      "dcid": "Median_Earnings_Person_Civilian_Employed_Female"
-    },
-    {
       "name": "Median Income of Female",
       "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
     },
@@ -3603,14 +3599,6 @@
     {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, Federal Government Owned, Female, With Earnings, Full Time Year Round Worker, Worker",
       "dcid": "Median_Earnings_Person_FederalGovernmentOwnedEstablishment_Female_Worker_FullTimeYearRoundWorker"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings as Fraction of Median Earnings Person Civilian Employed Male",
-      "dcid": "Median_Earnings_Female_AsAFractionOf_Male_Civilian_Employed"
-    },
-    {
-      "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings, Full Time Year Round Worker",
-      "dcid": "Median_Earnings_Person_Civilian_Employed_Female_FullTimeYearRoundWorker"
     },
     {
       "name": "Median Earnings of 16 Years or More, Civilian, Employed, Local Government Owned, Female, With Earnings, Full Time Year Round Worker, Worker",
@@ -3999,6 +3987,18 @@
     {
       "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone Population",
       "dcid": "dc/9x5jz31zt5xd8"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, Some Other Race Alone Population",
+      "dcid": "dc/d5dsqkt9hw5n"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, Two or More Races Population",
+      "dcid": "dc/cbdsns4eqx9xc"
+    },
+    {
+      "name": "12 - 14 Years, Female, Above Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino Population",
+      "dcid": "dc/673r6801thjl8"
     }
   ],
   "statVarGroups": [

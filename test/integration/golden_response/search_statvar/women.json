@@ -53,6 +53,10 @@
       "dcid": "Count_Person_15To19Years_Female"
     },
     {
+      "name": "15 - 50 Years, Female Population",
+      "dcid": "Count_Person_15To50Years_Female"
+    },
+    {
       "name": "15 - 64 Years, Female Population",
       "dcid": "Count_Person_15To64Years_Female"
     },
@@ -63,6 +67,10 @@
     {
       "name": "16 - 19 Years, Female Population",
       "dcid": "Count_Person_16To19Years_Female"
+    },
+    {
+      "name": "16 - 50 Years, Female Population",
+      "dcid": "Count_Person_16To50Years_Female"
     },
     {
       "name": "16 - 64 Years, Female Population",
@@ -199,6 +207,10 @@
     {
       "name": "35 - 44 Years, Female Population",
       "dcid": "Count_Person_35To44Years_Female"
+    },
+    {
+      "name": "35 - 50 Years, Female Population",
+      "dcid": "Count_Person_35To50Years_Female"
     },
     {
       "name": "4 Years or Less, Female Population",
@@ -1757,6 +1769,10 @@
       "dcid": "Count_Person_15To17Years_NotEnrolledInCollegeOrGraduateSchool_Female"
     },
     {
+      "name": "15 - 19 Years, Birth in The Past 12 Months, Female Population",
+      "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female"
+    },
+    {
       "name": "15 - 19 Years, Female, Black or African American Alone Population",
       "dcid": "Count_Person_15To19Years_Female_BlackOrAfricanAmericanAlone"
     },
@@ -1787,6 +1803,94 @@
     {
       "name": "15 - 19 Years, Female, Widowed Population",
       "dcid": "Count_Person_15To19Years_Female_Widowed"
+    },
+    {
+      "name": "15 - 50 Years, Bachelors Degree or Higher, Female Population",
+      "dcid": "Count_Person_15To50Years_EducationalAttainmentBachelorsDegreeOrHigher_Female"
+    },
+    {
+      "name": "15 - 50 Years, Birth in The Past 12 Months, Female Population",
+      "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female"
+    },
+    {
+      "name": "15 - 50 Years, Female, 1 - 2.0 Ratio To Poverty Line Population",
+      "dcid": "Count_Person_15To50Years_Female_1To1.99RatioToPovertyLine"
+    },
+    {
+      "name": "15 - 50 Years, Female, 1 Ratio To Poverty Line or Less Population",
+      "dcid": "Count_Person_15To50Years_Female_1.0OrLessRatioToPovertyLine"
+    },
+    {
+      "name": "15 - 50 Years, Female, 2 Ratio To Poverty Line or More Population",
+      "dcid": "Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine"
+    },
+    {
+      "name": "15 - 50 Years, Female, American Indian or Alaska Native Alone Population",
+      "dcid": "Count_Person_15To50Years_Female_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "15 - 50 Years, Female, Asian Alone Population",
+      "dcid": "Count_Person_15To50Years_Female_AsianAlone"
+    },
+    {
+      "name": "15 - 50 Years, Female, Black or African American Alone Population",
+      "dcid": "Count_Person_15To50Years_Female_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "15 - 50 Years, Female, Foreign Born Population",
+      "dcid": "Count_Person_15To50Years_Female_ForeignBorn"
+    },
+    {
+      "name": "15 - 50 Years, Female, Hispanic or Latino Population",
+      "dcid": "Count_Person_15To50Years_Female_HispanicOrLatino"
+    },
+    {
+      "name": "15 - 50 Years, Female, Native Hawaiian or Other Pacific Islander Alone Population",
+      "dcid": "Count_Person_15To50Years_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "15 - 50 Years, Female, Native Population",
+      "dcid": "Count_Person_15To50Years_Female_Native"
+    },
+    {
+      "name": "15 - 50 Years, Female, One Race Population",
+      "dcid": "Count_Person_15To50Years_Female_OneRace"
+    },
+    {
+      "name": "15 - 50 Years, Female, Poverty Status Determined Population",
+      "dcid": "Count_Person_15To50Years_Female_PovertyStatusDetermined"
+    },
+    {
+      "name": "15 - 50 Years, Female, Some Other Race Alone Population",
+      "dcid": "Count_Person_15To50Years_Female_SomeOtherRaceAlone"
+    },
+    {
+      "name": "15 - 50 Years, Female, Two or More Races Population",
+      "dcid": "Count_Person_15To50Years_Female_TwoOrMoreRaces"
+    },
+    {
+      "name": "15 - 50 Years, Female, White Alone Not Hispanic or Latino Population",
+      "dcid": "Count_Person_15To50Years_Female_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "15 - 50 Years, Female, White Alone Population",
+      "dcid": "Count_Person_15To50Years_Female_WhiteAlone"
+    },
+    {
+      "name": "15 - 50 Years, Graduate or Professional Degree, Female Population",
+      "dcid": "Count_Person_15To50Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
+    },
+    {
+      "name": "15 - 50 Years, High School Graduate Includes Equivalency, Female Population",
+      "dcid": "Count_Person_15To50Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
+    },
+    {
+      "name": "15 - 50 Years, Less Than High School Graduate, Female Population",
+      "dcid": "Count_Person_15To50Years_EducationalAttainmentLessThanHighSchoolGraduate_Female"
+    },
+    {
+      "name": "15 - 50 Years, Some College or Associates Degree, Female Population",
+      "dcid": "Count_Person_15To50Years_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female"
     },
     {
       "name": "15 Years or More, Enrolled in Private College or Graduate School, Female Population",
@@ -1851,6 +1955,14 @@
     {
       "name": "16 - 19 Years, in Labor Force, Female Population",
       "dcid": "Count_Person_16To19Years_InLaborForce_Female"
+    },
+    {
+      "name": "16 - 50 Years, Birth in The Past 12 Months, Female Population",
+      "dcid": "Count_Person_16To50Years_BirthInThePast12Months_Female"
+    },
+    {
+      "name": "16 - 50 Years, in Labor Force, Female Population",
+      "dcid": "Count_Person_16To50Years_InLaborForce_Female"
     },
     {
       "name": "16 - 64 Years, Female, 1 - 14 Hour, 1 - 13 Week, Worked in The Past 12 Months Population",
@@ -2027,6 +2139,14 @@
     {
       "name": "16 Years or More, Female, Widowed Population",
       "dcid": "Count_Person_16OrMoreYears_Female_Widowed"
+    },
+    {
+      "name": "16 Years or More, Female, With Earnings Population",
+      "dcid": "Count_Person_16OrMoreYears_Female_WithEarnings"
+    },
+    {
+      "name": "16 Years or More, Female, With Earnings, Full Time Year Round Worker Population",
+      "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
     },
     {
       "name": "16 Years or More, in Labor Force, Female, Divorced Population",
@@ -2279,6 +2399,10 @@
     {
       "name": "20 - 24 Years, Female, White Alone Population",
       "dcid": "Count_Person_20To24Years_Female_WhiteAlone"
+    },
+    {
+      "name": "20 - 34 Years, Birth in The Past 12 Months, Female Population",
+      "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female"
     },
     {
       "name": "20 - 34 Years, Female, Divorced Population",
@@ -2675,6 +2799,10 @@
     {
       "name": "35 - 44 Years, in Labor Force, Female Population",
       "dcid": "Count_Person_35To44Years_InLaborForce_Female"
+    },
+    {
+      "name": "35 - 50 Years, Birth in The Past 12 Months, Female Population",
+      "dcid": "Count_Person_35To50Years_BirthInThePast12Months_Female"
     },
     {
       "name": "35 - 54 Years, Civilian, Female Population",
@@ -3871,134 +3999,6 @@
     {
       "name": "Count of 55 - 64 Years, E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Female",
       "dcid": "Count_Death_55To64Years_EndocrineNutritionalMetabolicDiseases_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, F01-F99 (Mental And Behavioural Disorders), Female",
-      "dcid": "Count_Death_55To64Years_MentalBehaviouralDisorders_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, Female, American Indian And Alaska Native Alone",
-      "dcid": "Count_Death_55To64Years_Female_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Count of 55 - 64 Years, Female, Asian or Pacific Islander",
-      "dcid": "Count_Death_55To64Years_Female_AsianOrPacificIslander"
-    },
-    {
-      "name": "Count of 55 - 64 Years, Female, Black or African American",
-      "dcid": "Count_Death_55To64Years_Female_BlackOrAfricanAmerican"
-    },
-    {
-      "name": "Count of 55 - 64 Years, Female, White",
-      "dcid": "Count_Death_55To64Years_Female_White"
-    },
-    {
-      "name": "Count of 55 - 64 Years, G00-G98 (Diseases of The Nervous System), Female",
-      "dcid": "Count_Death_55To64Years_DiseasesOfTheNervousSystem_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, I00-I99 (Diseases of The Circulatory System), Female",
-      "dcid": "Count_Death_55To64Years_DiseasesOfTheCirculatorySystem_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, J00-J98 (Diseases of The Respiratory System), Female",
-      "dcid": "Count_Death_55To64Years_DiseasesOfTheRespiratorySystem_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, K00-K92 (Diseases of The Digestive System), Female",
-      "dcid": "Count_Death_55To64Years_DiseasesOfTheDigestiveSystem_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Female",
-      "dcid": "Count_Death_55To64Years_DiseasesOfTheMusculoskeletalSystemConnectiveTissue_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, N00-N98 (Diseases of The Genitourinary System), Female",
-      "dcid": "Count_Death_55To64Years_DiseasesOfTheGenitourinarySystem_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Female",
-      "dcid": "Count_Death_55To64Years_CongenitalMalformationsDeformationsChromosomalAbnormalities_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Female",
-      "dcid": "Count_Death_55To64Years_AbnormalNotClassfied_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, U00-U99 (Codes for Special Purposes), Female",
-      "dcid": "Count_Death_55To64Years_SpecialCases_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, V01-Y89 (External Causes of Morbidity And Mortality), Female",
-      "dcid": "Count_Death_55To64Years_ExternalCauses_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, A00-B99 (Certain Infectious And Parasitic Diseases), Female",
-      "dcid": "Count_Death_65To74Years_CertainInfectiousParasiticDiseases_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, C00-D48 (Neoplasms), Female",
-      "dcid": "Count_Death_65To74Years_Neoplasms_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, D50-D89 (Diseases of The Blood And Blood-forming Organs And Certain Disorders Involving The Immune Mechanism), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Female",
-      "dcid": "Count_Death_65To74Years_EndocrineNutritionalMetabolicDiseases_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, F01-F99 (Mental And Behavioural Disorders), Female",
-      "dcid": "Count_Death_65To74Years_MentalBehaviouralDisorders_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, Female, American Indian And Alaska Native Alone",
-      "dcid": "Count_Death_65To74Years_Female_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Count of 65 - 74 Years, Female, Asian or Pacific Islander",
-      "dcid": "Count_Death_65To74Years_Female_AsianOrPacificIslander"
-    },
-    {
-      "name": "Count of 65 - 74 Years, Female, Black or African American",
-      "dcid": "Count_Death_65To74Years_Female_BlackOrAfricanAmerican"
-    },
-    {
-      "name": "Count of 65 - 74 Years, Female, White",
-      "dcid": "Count_Death_65To74Years_Female_White"
-    },
-    {
-      "name": "Count of 65 - 74 Years, G00-G98 (Diseases of The Nervous System), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfTheNervousSystem_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, I00-I99 (Diseases of The Circulatory System), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfTheCirculatorySystem_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, J00-J98 (Diseases of The Respiratory System), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfTheRespiratorySystem_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, K00-K92 (Diseases of The Digestive System), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfTheDigestiveSystem_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, L00-L98 (Diseases of The Skin And Subcutaneous Tissue), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfTheSkinSubcutaneousTissue_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfTheMusculoskeletalSystemConnectiveTissue_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, N00-N98 (Diseases of The Genitourinary System), Female",
-      "dcid": "Count_Death_65To74Years_DiseasesOfTheGenitourinarySystem_Female"
-    },
-    {
-      "name": "Count of 65 - 74 Years, R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Female",
-      "dcid": "Count_Death_65To74Years_AbnormalNotClassfied_Female"
     }
   ],
   "statVarGroups": [
@@ -4583,6 +4583,10 @@
       "dcid": "dc/g/Person_Age-Years15To19_Gender-Female"
     },
     {
+      "name": "Person With Age = 15 - 50 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female"
+    },
+    {
       "name": "Person With Age = 15 - 64 Years, Gender = Female",
       "dcid": "dc/g/Person_Age-Years15To64_Gender-Female"
     },
@@ -4597,6 +4601,10 @@
     {
       "name": "Person With Age = 16 - 19 Years, Gender = Female",
       "dcid": "dc/g/Person_Age-Years16To19_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 16 - 50 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years16To50_Gender-Female"
     },
     {
       "name": "Person With Age = 16 - 64 Years, Gender = Female",
@@ -4693,6 +4701,10 @@
     {
       "name": "Person With Age = 35 - 44 Years, Gender = Female",
       "dcid": "dc/g/Person_Age-Years35To44_Gender-Female"
+    },
+    {
+      "name": "Person With Age = 35 - 50 Years, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years35To50_Gender-Female"
     },
     {
       "name": "Person With Age = 35 - 54 Years, Gender = Female",
@@ -5195,6 +5207,10 @@
       "dcid": "dc/g/Person_CorrectionalFacilityOperator-StateOperated\u0026FederallyOperated\u0026PrivatelyOperated_Gender-Female"
     },
     {
+      "name": "Person With Earnings, Gender = Female",
+      "dcid": "dc/g/Person_Earnings_Gender-Female"
+    },
+    {
       "name": "Person With Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female"
     },
@@ -5233,6 +5249,10 @@
     {
       "name": "Person With Educational Attainment = Less Than High School Diploma, Gender = Female",
       "dcid": "dc/g/Person_EducationalAttainment-LessThanHighSchoolDiploma_Gender-Female"
+    },
+    {
+      "name": "Person With Educational Attainment = Less Than High School Graduate, Gender = Female",
+      "dcid": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate_Gender-Female"
     },
     {
       "name": "Person With Educational Attainment = Some College No Degree, Gender = Female",
@@ -5281,10 +5301,6 @@
     {
       "name": "Person With Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female",
       "dcid": "dc/g/Person_EnrollmentLevel-NotEnrolledInCollegeOrGraduateSchool_Gender-Female"
-    },
-    {
-      "name": "Person With Enrollment Level, Gender = Female",
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Establishment Ownership = Federal Government Owned, Gender = Female",
@@ -5433,6 +5449,10 @@
     {
       "name": "Person With Family Income, Gender = Female",
       "dcid": "dc/g/Person_FamilyIncome_Gender-Female"
+    },
+    {
+      "name": "Person With Gender = Female, Enrollment Level",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female"
     },
     {
       "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years",
@@ -5751,6 +5771,10 @@
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Separated"
     },
     {
+      "name": "Person With Gender = Female, Marital Status = Unmarried",
+      "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Unmarried"
+    },
+    {
       "name": "Person With Gender = Female, Marital Status = Widowed",
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Widowed"
     },
@@ -5915,6 +5939,74 @@
       "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/intermediateAggregation5"
     },
     {
+      "name": "Person With Gender = Female, Place of Birth",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Africa",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-africa"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Asia",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-asia"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Caribbean",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-Caribbean"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Central America Except Mexico",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-CentralAmericaExceptMexico"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Country/MEX",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-country/MEX"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Eastern Asia",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-EasternAsia"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Europe",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-europe"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Latin America",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-LatinAmerica"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = North Western Europe",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-NorthWesternEurope"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Northamerica",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-northamerica"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Oceania",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-oceania"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = South Central Asia",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-SouthCentralAsia"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = South Eastern Asia",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-SouthEasternAsia"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = South Eastern Europe",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-SouthEasternEurope"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Southamerica",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-southamerica"
+    },
+    {
+      "name": "Person With Gender = Female, Place of Birth = Western Asia",
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-WesternAsia"
+    },
+    {
       "name": "Person With Gender = Female, Place of Residence Classification",
       "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification"
     },
@@ -5931,12 +6023,28 @@
       "dcid": "dc/g/Person_Gender-Female_PovertyStatus"
     },
     {
+      "name": "Person With Gender = Female, Poverty Status = 1 - 2.0 Ratio To Poverty Line",
+      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-RatioToPovertyLine1To1.99"
+    },
+    {
+      "name": "Person With Gender = Female, Poverty Status = 1 Ratio To Poverty Line or Less",
+      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-RatioToPovertyLineUpto1.0"
+    },
+    {
+      "name": "Person With Gender = Female, Poverty Status = 2 Ratio To Poverty Line or More",
+      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-RatioToPovertyLine2Onwards"
+    },
+    {
       "name": "Person With Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
       "dcid": "dc/g/Person_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months"
     },
     {
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
       "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Person With Gender = Female, Poverty Status = Poverty Status Determined",
+      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-PovertyStatusDetermined"
     },
     {
       "name": "Person With Gender = Female, Prison Sentence Duration = 1 Years or Less",
@@ -5977,6 +6085,10 @@
     {
       "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
       "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Person With Gender = Female, Race = One Race",
+      "dcid": "dc/g/Person_Gender-Female_Race-OneRace"
     },
     {
       "name": "Person With Gender = Female, Race = Some Other Race Alone",
@@ -7889,118 +8001,6 @@
     {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/J00J98_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/K00K92_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/M00M99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/N00N98_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/Q00Q99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/R00R99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = U00-U99 (Codes for Special Purposes), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/U00U99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/V01Y89_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death, Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = American Indian And Alaska Native Alone",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = Asian or Pacific Islander",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-AsianOrPacificIslander"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = Black or African American",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-BlackOrAfricanAmerican"
-    },
-    {
-      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = White",
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-White"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/A00B99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/C00D48_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = D50-D89 (Diseases of The Blood And Blood-forming Organs And Certain Disorders Involving The Immune Mechanism), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/D50D89_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/E00E88_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/F01F99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/G00G98_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/I00I99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/J00J98_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/K00K92_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = L00-L98 (Diseases of The Skin And Subcutaneous Tissue), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/L00L98_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/M00M99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/N00N98_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/R00R99_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/V01Y89_Gender-Female"
-    },
-    {
-      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death, Gender = Female",
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath_Gender-Female"
     }
   ]
 }
