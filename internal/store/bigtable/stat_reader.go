@@ -44,7 +44,7 @@ func ReadStats(
 
 	keyToTokenFn := TokenFn(keyTokens)
 	baseDataMap, branchDataMap, err := Read(
-		ctx, btGroup, rowList, convert.ConvertToObsSeries, TokenFn(keyTokens), true, /* readBranch */
+		ctx, btGroup, rowList, convert.ToObsSeries, TokenFn(keyTokens), true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -81,7 +81,7 @@ func ReadStatsPb(
 
 	keyToTokenFn := TokenFn(keyTokens)
 	baseDataMap, branchDataMap, err := Read(
-		ctx, btGroup, rowList, convert.ConvertToObsSeriesPb, keyToTokenFn, true, /* readBranch */
+		ctx, btGroup, rowList, convert.ToObsSeriesPb, keyToTokenFn, true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -121,7 +121,7 @@ func ReadStatCollection(
 		ctx,
 		btGroup,
 		rowList,
-		convert.ConvertToObsCollection,
+		convert.ToObsCollection,
 		func(rowKey string) (string, error) {
 			return keyTokens[rowKey], nil
 		},

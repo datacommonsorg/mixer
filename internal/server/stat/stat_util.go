@@ -54,6 +54,7 @@ func filterSeries(in []*model.SourceSeries, prop *model.ObsProp) []*model.Source
 	return result
 }
 
+// FilterAndRank filters and ranks ObsTimeSeries in place.
 func FilterAndRank(in *model.ObsTimeSeries, prop *model.ObsProp) {
 	if in == nil {
 		return

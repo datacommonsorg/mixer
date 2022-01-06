@@ -99,6 +99,7 @@ func GetPropertyValues(ctx context.Context,
 	return &pb.GetPropertyValuesResponse{Payload: string(jsonRaw)}, nil
 }
 
+// GetPropertyValuesHelper get property values.
 func GetPropertyValuesHelper(
 	ctx context.Context,
 	store *store.Store,

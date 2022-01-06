@@ -36,8 +36,8 @@ var UnitMapping = map[string]*UnitConversion{
 	},
 }
 
-// ConvertToObsSeriesPb converts ChartStore to pb.ObsTimeSerie
-func ConvertToObsSeriesPb(token string, jsonRaw []byte) (
+// ToObsSeriesPb converts ChartStore to pb.ObsTimeSerie
+func ToObsSeriesPb(token string, jsonRaw []byte) (
 	interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
@@ -65,8 +65,8 @@ func ConvertToObsSeriesPb(token string, jsonRaw []byte) (
 	}
 }
 
-// ConvertToObsSeries converts ChartStore to ObsSeries
-func ConvertToObsSeries(token string, jsonRaw []byte) (
+// ToObsSeries converts ChartStore to ObsSeries
+func ToObsSeries(token string, jsonRaw []byte) (
 	interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
@@ -107,8 +107,8 @@ func ConvertToObsSeries(token string, jsonRaw []byte) (
 	}
 }
 
-// ConvertToObsCollection converts ChartStore to pb.ObsCollection
-func ConvertToObsCollection(token string, jsonRaw []byte) (
+// ToObsCollection converts ChartStore to pb.ObsCollection
+func ToObsCollection(token string, jsonRaw []byte) (
 	interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
