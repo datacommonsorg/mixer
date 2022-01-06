@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -59,7 +59,7 @@ func TestGetPropertyLabels(t *testing.T) {
 			t.Errorf("could not GetPropertyLabels: %s", err)
 			continue
 		}
-		var result map[string]*server.PropLabelCache
+		var result map[string]*model.PropLabelCache
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -70,7 +70,7 @@ func TestGetPropertyLabels(t *testing.T) {
 			updateGolden(result, goldenPath, c.goldenFile)
 			continue
 		}
-		var expected map[string]*server.PropLabelCache
+		var expected map[string]*model.PropLabelCache
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

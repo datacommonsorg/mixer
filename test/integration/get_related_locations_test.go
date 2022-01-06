@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -72,7 +72,7 @@ func TestGetRelatedLocations(t *testing.T) {
 			t.Errorf("could not GetRelatedLocations: %s", err)
 			continue
 		}
-		var result map[string]*server.RelatedPlacesInfo
+		var result map[string]*model.RelatedPlacesInfo
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -85,7 +85,7 @@ func TestGetRelatedLocations(t *testing.T) {
 			continue
 		}
 
-		var expected map[string]*server.RelatedPlacesInfo
+		var expected map[string]*model.RelatedPlacesInfo
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -103,7 +103,7 @@ func TestGetPropertyValues(t *testing.T) {
 		}
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 
-		var result map[string]map[string][]*server.Node
+		var result map[string]map[string][]*model.Node
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -115,7 +115,7 @@ func TestGetPropertyValues(t *testing.T) {
 			continue
 		}
 
-		var expected map[string]map[string][]*server.Node
+		var expected map[string]map[string][]*model.Node
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {
