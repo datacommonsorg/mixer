@@ -100,7 +100,7 @@ func getIgnoredSVGHelper(
 func getSynonymMap() map[string][]string {
 	synonymMap := map[string][]string{}
 	_, filename, _, _ := runtime.Caller(0)
-	bytes, err := ioutil.ReadFile(path.Join(path.Dir(filename), "resource/synonyms.json"))
+	bytes, err := ioutil.ReadFile(path.Join(path.Dir(filename), "../resource/synonyms.json"))
 	if err == nil {
 		var synonyms [][]string
 		err = json.Unmarshal(bytes, &synonyms)
