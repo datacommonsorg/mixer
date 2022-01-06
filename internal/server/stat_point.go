@@ -18,6 +18,7 @@ import (
 	"context"
 	"log"
 	"sort"
+	"strings"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -159,36 +160,39 @@ func getStatSetAll(
 					Unit:              series.Unit,
 				}
 				metaHash := getMetadataHash(metaData)
+				result.Metadata[metaHash] = metaData
 				if _, ok := tmpResult[statVar][metaHash]; !ok {
 					tmpResult[statVar][metaHash] = &pb.PlacePointStat{
 						Stat: map[string]*pb.PointStat{},
 					}
 				}
-				// Date is given
-				if date != "" {
-					if value, ok := series.Val[date]; ok {
-						tmpResult[statVar][metaHash].Stat[place] = &pb.PointStat{
-							Date:  date,
+				// If date is given and series and contains the given date.
+				if value, ok := series.Val[date]; ok && date != "" {
+					tmpResult[statVar][metaHash].Stat[place] = &pb.PointStat{
+						Date:  date,
+						Value: value,
+					}
+					continue
+				}
+				// Get the value with the latest valid date from the series. If no date
+				// is given, any date is valid. If date is given, valid date is a date
+				// contained within the given date (eg. if given date is 2018, 2018-01
+				// would be a valid date)
+				latestDate := ""
+				var ps *pb.PointStat
+				for valueDate, value := range series.Val {
+					if valueDate > latestDate && strings.HasPrefix(valueDate, date) {
+						latestDate = valueDate
+						ps = &pb.PointStat{
+							Date:  valueDate,
 							Value: value,
 						}
 					}
-				} else {
-					// Date is not given, find the latest value
-					latestDate := ""
-					var ps *pb.PointStat
-					for date, value := range series.Val {
-						if date > latestDate {
-							latestDate = date
-							ps = &pb.PointStat{
-								Date:  date,
-								Value: value,
-							}
-						}
-					}
+				}
+				if latestDate != "" {
 					tmpResult[statVar][metaHash].Stat[place] = ps
 					tmpResult[statVar][metaHash].MetaHash = metaHash
 				}
-				result.Metadata[metaHash] = metaData
 			}
 		}
 	}
@@ -291,13 +295,13 @@ func (s *Server) GetStatSetWithinPlace(
 		return nil, err
 	}
 
-	gotResult := false
+	cacheMissSVs := []string{}
 	for _, statVar := range statVars {
 		data, ok := cacheData[statVar]
 		if !ok || data == nil {
+			cacheMissSVs = append(cacheMissSVs, statVar)
 			continue
 		}
-		gotResult = true
 		cohorts := data.SourceCohorts
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(SeriesByRank(cohorts))
@@ -342,17 +346,32 @@ func (s *Server) GetStatSetWithinPlace(
 	// Need to fetch child places if need to read data from memory database or
 	// from per place,statvar bigtable.
 	var childPlaces []string
-	if !gotResult || statVarInMemDb {
+	if len(cacheMissSVs) > 0 || statVarInMemDb {
 		childPlaces, err = getChildPlaces(ctx, s.store, parentPlace, childType)
 		if err != nil {
 			return nil, err
 		}
 	}
-	// No data found from cache, fetch stat series for each place separately.
-	if !gotResult {
-		result, err = getStatSet(ctx, s, childPlaces, statVars, date)
+	// For stat vars where data was not found in the cache, fetch stat series for
+	// each place separately.
+	if len(cacheMissSVs) > 0 {
+		statSetResults := &pb.GetStatSetResponse{
+			Data:     make(map[string]*pb.PlacePointStat),
+			Metadata: make(map[uint32]*pb.StatMetadata),
+		}
+		statSetResults, err = getStatSet(ctx, s, childPlaces, cacheMissSVs, date)
 		if err != nil {
 			return nil, err
+		}
+		for _, statVar := range cacheMissSVs {
+			data, ok := statSetResults.Data[statVar]
+			if !ok || data == nil {
+				continue
+			}
+			result.Data[statVar] = statSetResults.Data[statVar]
+		}
+		for metahash, metaData := range statSetResults.Metadata {
+			result.Metadata[metahash] = metaData
 		}
 	}
 
@@ -427,13 +446,13 @@ func (s *Server) GetStatSetWithinPlaceAll(
 		return nil, err
 	}
 
-	gotResult := false
+	cacheMissSVs := []string{}
 	for _, statVar := range statVars {
 		data, ok := cacheData[statVar]
 		if !ok || data == nil {
+			cacheMissSVs = append(cacheMissSVs, statVar)
 			continue
 		}
-		gotResult = true
 		for _, cohort := range data.SourceCohorts {
 			// The cohort is from the same source.
 			metaData := &pb.StatMetadata{
@@ -475,17 +494,32 @@ func (s *Server) GetStatSetWithinPlaceAll(
 	// Need to fetch child places if to read data from memory database or
 	// from per place,statvar bigtable.
 	var childPlaces []string
-	if !gotResult || statVarInMemDb {
+	if len(cacheMissSVs) > 0 || statVarInMemDb {
 		childPlaces, err = getChildPlaces(ctx, s.store, parentPlace, childType)
 		if err != nil {
 			return nil, err
 		}
 	}
-	// No data found from cache, fetch stat series for each place separately.
-	if !gotResult {
+	// For stat vars where data was not found in the cache, fetch stat series for
+	// each place separately.
+	if len(cacheMissSVs) > 0 {
+		statSetResults := &pb.GetStatSetAllResponse{
+			Data:     make(map[string]*pb.PlacePointStatAll),
+			Metadata: make(map[uint32]*pb.StatMetadata),
+		}
 		result, err = getStatSetAll(ctx, s, childPlaces, statVars, date)
 		if err != nil {
 			return nil, err
+		}
+		for _, statVar := range cacheMissSVs {
+			data, ok := statSetResults.Data[statVar]
+			if !ok || data == nil {
+				continue
+			}
+			result.Data[statVar] = statSetResults.Data[statVar]
+		}
+		for metahash, metaData := range statSetResults.Metadata {
+			result.Metadata[metahash] = metaData
 		}
 	}
 

@@ -183,7 +183,10 @@ func getValueFromBestSource(in *ObsTimeSeries, date string) (float64, error) {
 // getValueFromBestSourcePb get the stat value from ObsTimeSeries (protobuf version)
 //
 // When date is given, it get the value from the highest ranked source series
-// that has the date.
+// that has the given date. If there is no value with the given date, get the
+// latest date that is within the given date (eg. if the given date is 2018,
+// then 2018-01 or 2018-02-03 would both be considered within the given date and
+// 2018-02-03 would be returned because it is later).
 //
 // When date is not given, it get the latest value from all the source series.
 // If two sources has the same latest date, the highest ranked source is preferred.
@@ -195,28 +198,7 @@ func getValueFromBestSourcePb(
 	sourceSeries := in.SourceSeries
 	sort.Sort(SeriesByRank(sourceSeries))
 
-	// Date is given, get the value from highest ranked source that has this date.
-	if date != "" {
-		for _, series := range sourceSeries {
-			if value, ok := series.Val[date]; ok {
-				meta := &pb.StatMetadata{
-					ImportName:        series.ImportName,
-					ProvenanceUrl:     series.ProvenanceUrl,
-					MeasurementMethod: series.MeasurementMethod,
-					ObservationPeriod: series.ObservationPeriod,
-					ScalingFactor:     series.ScalingFactor,
-					Unit:              series.Unit,
-				}
-				return &pb.PointStat{
-					Date:  date,
-					Value: value,
-				}, meta
-			}
-		}
-		return nil, nil
-	}
-	// Date is not given, get the latest value from all sources.
-	latestDate := ""
+	latestValidDate := ""
 	var ps *pb.PointStat
 	var meta *pb.StatMetadata
 	// At this stage, sourceSeries has import series ranked by the ranking score.
@@ -235,17 +217,26 @@ func getValueFromBestSourcePb(
 			ScalingFactor:     series.ScalingFactor,
 			Unit:              series.Unit,
 		}
-		for date, value := range series.Val {
-			if date > latestDate {
-				latestDate = date
+		// If date is given and the series contains a value for the given date,
+		// return this value.
+		if value, ok := series.Val[date]; ok && date != "" {
+			return &pb.PointStat{
+				Date:  date,
+				Value: value,
+			}, meta
+		}
+		// Get the value with the latest valid date from all sources
+		for valueDate, value := range series.Val {
+			if valueDate > latestValidDate && strings.HasPrefix(valueDate, date) {
+				latestValidDate = valueDate
 				ps = &pb.PointStat{
-					Date:  date,
+					Date:  valueDate,
 					Value: value,
 				}
 			}
 		}
 	}
-	if latestDate == "" {
+	if latestValidDate == "" {
 		return nil, nil
 	}
 	return ps, meta

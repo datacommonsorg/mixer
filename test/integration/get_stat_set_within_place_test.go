@@ -108,6 +108,13 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 			[]string{"NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
 			"wet_bulb.json",
 		},
+		{
+			"country/USA",
+			"County",
+			"2016",
+			[]string{"Count_Person", "Median_Concentration_AirPollutant_PM2.5"},
+			"USA_County_2016_Diff_Time_Granularity.json",
+		},
 	} {
 		resp, err := client.GetStatSetWithinPlace(ctx, &pb.GetStatSetWithinPlaceRequest{
 			ParentPlace: c.parentPlace,

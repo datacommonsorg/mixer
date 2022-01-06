@@ -73,6 +73,13 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 			[]string{"Max_Temperature_RCP45"},
 			"max_temprature.json",
 		},
+		{
+			"country/USA",
+			"County",
+			"2016",
+			[]string{"Count_Person", "Median_Concentration_AirPollutant_PM2.5"},
+			"US_County_2016.json",
+		},
 	} {
 		resp, err := client.GetStatSetWithinPlaceAll(ctx, &pb.GetStatSetWithinPlaceRequest{
 			ParentPlace: c.parentPlace,

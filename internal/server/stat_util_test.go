@@ -73,6 +73,43 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 			},
 		},
 		{
+			// Latest valid value is preferred
+			&pb.ObsTimeSeries{
+				SourceSeries: []*pb.SourceSeries{
+					{
+						Val: map[string]float64{
+							"2017-01": 100,
+							"2018-09": 200,
+							"2019-01": 300,
+						},
+						ImportName:        "CensusACS5YearSurvey",
+						ProvenanceUrl:     "https://www.census.gov/",
+						MeasurementMethod: "CensusACS5yrSurvey",
+					},
+					{
+						Val: map[string]float64{
+							"2017-01": 105,
+							"2018-02": 205,
+							"2019-02": 305,
+						},
+						ImportName:        "CensusPEP",
+						ProvenanceUrl:     "https://www.census.gov/programs-surveys/popest.html",
+						MeasurementMethod: "CensusPEPSurvey",
+					},
+				},
+			},
+			"2018",
+			&pb.PointStat{
+				Date:  "2018-09",
+				Value: 200,
+			},
+			&pb.StatMetadata{
+				ImportName:        "CensusACS5YearSurvey",
+				ProvenanceUrl:     "https://www.census.gov/",
+				MeasurementMethod: "CensusACS5yrSurvey",
+			},
+		},
+		{
 			// Latest value is preferred
 			&pb.ObsTimeSeries{
 				SourceSeries: []*pb.SourceSeries{
