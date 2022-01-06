@@ -394,3 +394,15 @@ func TimeTrack(start time.Time, name string) {
 	elapsed := time.Since(start)
 	log.Printf("%s took %s", name, elapsed)
 }
+
+// KeysToSlice stores the keys of a map in a slice.
+func KeysToSlice(m map[string]bool) []string {
+	s := make([]string, len(m))
+	i := 0
+	for k := range m {
+		s[i] = k
+		i++
+	}
+	sort.Strings(s)
+	return s
+}

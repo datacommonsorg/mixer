@@ -24,7 +24,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -115,7 +115,7 @@ func TestGetStats(t *testing.T) {
 			t.Errorf("could not GetStats: %s", err)
 			continue
 		}
-		var result map[string]*server.ObsTimeSeries
+		var result map[string]*model.ObsTimeSeries
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -127,7 +127,7 @@ func TestGetStats(t *testing.T) {
 			continue
 		}
 
-		var expected map[string]*server.ObsTimeSeries
+		var expected map[string]*model.ObsTimeSeries
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

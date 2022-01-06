@@ -30,6 +30,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
@@ -144,13 +145,13 @@ func (s *Server) SubscribeBranchCacheUpdate(
 
 // NewCache initializes the cache for stat var hierarchy.
 func NewCache(ctx context.Context, baseTable *bigtable.Table) (*resource.Cache, error) {
-	rawSvg, err := GetRawSvg(ctx, baseTable)
+	rawSvg, err := statvar.GetRawSvg(ctx, baseTable)
 	if err != nil {
 		return nil, err
 	}
-	parentSvgMap := BuildParentSvgMap(rawSvg)
-	searchIndex := BuildStatVarSearchIndex(rawSvg, false)
-	blocklistedSearchIndex := BuildStatVarSearchIndex(rawSvg, true)
+	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
+	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, false)
+	blocklistedSearchIndex := statvar.BuildStatVarSearchIndex(rawSvg, true)
 
 	return &resource.Cache{
 		ParentSvg:                 parentSvgMap,

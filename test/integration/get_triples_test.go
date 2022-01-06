@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -97,7 +97,7 @@ func TestGetTriples(t *testing.T) {
 			t.Errorf("could not GetTriples: %s", err)
 			continue
 		}
-		var result map[string][]*server.Triple
+		var result map[string][]*model.Triple
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -121,7 +121,7 @@ func TestGetTriples(t *testing.T) {
 			continue
 		}
 
-		var expected map[string][]*server.Triple
+		var expected map[string][]*model.Triple
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

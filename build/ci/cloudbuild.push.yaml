@@ -74,4 +74,4 @@ options:
   volumes:
     - name: go-modules
       path: /go
-  machineType: "N1_HIGHCPU_8"
+  machineType: "E2_HIGHCPU_32"

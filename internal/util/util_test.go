@@ -1,6 +1,7 @@
 package util
 
 import (
+	"reflect"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -198,5 +199,17 @@ func TestSample(t *testing.T) {
 			t.Errorf("Sample got diff %+v", diff)
 		}
 	}
+}
 
+func TestKeysToSlice(t *testing.T) {
+	m := map[string]bool{
+		"1": true,
+		"2": true,
+		"3": true,
+	}
+	expected := []string{"1", "2", "3"}
+	result := KeysToSlice(m)
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("places.keysToSlice(%v) = %v; expected %v", m, result, expected)
+	}
 }
