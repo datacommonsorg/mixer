@@ -273,6 +273,24 @@
             },
             {
               "val": {
+                "2011": 310346358,
+                "2012": 312855438,
+                "2013": 315219560,
+                "2014": 317746049,
+                "2015": 320098094,
+                "2016": 322087547,
+                "2017": 324473370,
+                "2018": 326289971,
+                "2019": 328016242
+              },
+              "measurementMethod": "CensusACS5yrSurvey",
+              "importName": "CensusACS5YearSurvey_AggCountry",
+              "provenanceDomain": "census.gov",
+              "isDcAggregate": true,
+              "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
                 "2000": 281421906,
                 "2010": 308745538,
                 "2020": 331449281
@@ -401,24 +419,6 @@
               "measurementMethod": "CensusACS1yrSurvey",
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/"
-            },
-            {
-              "val": {
-                "2011": 310346358,
-                "2012": 312855438,
-                "2013": 315219560,
-                "2014": 317746049,
-                "2015": 320098094,
-                "2016": 322087547,
-                "2017": 324473370,
-                "2018": 326289971,
-                "2019": 328016242
-              },
-              "measurementMethod": "CensusACS5yrSurvey",
-              "importName": "CensusACS5YearSurvey_AggCountry",
-              "provenanceDomain": "census.gov",
-              "isDcAggregate": true,
               "provenanceUrl": "https://www.census.gov/"
             },
             {

@@ -3111,21 +3111,20 @@
         },
         "Count_Person_Female": {
           "val": {
-            "2010": 157260239,
-            "2011": 158324058,
-            "2012": 159477797,
-            "2013": 160501141,
-            "2014": 161966955,
-            "2015": 163250987,
-            "2016": 164065884,
-            "2017": 165316674,
-            "2018": 166049288,
-            "2019": 166650550
+            "2011": 157812589,
+            "2012": 159055934,
+            "2013": 160208857,
+            "2014": 161487986,
+            "2015": 162649954,
+            "2016": 163636438,
+            "2017": 164800620,
+            "2018": 165692916,
+            "2019": 166551005
           },
           "metadata": {
-            "importName": "CensusACS1YearSurvey",
+            "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS1yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey"
           }
         },
         "Count_Person_IsInternetUser_PerCapita": {

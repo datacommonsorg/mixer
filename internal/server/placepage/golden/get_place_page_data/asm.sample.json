@@ -7445,20 +7445,21 @@
         },
         "Count_Household": {
           "val": {
-            "2011": 115991452,
-            "2012": 116444386,
-            "2013": 116841084,
-            "2014": 117452546,
-            "2015": 118170507,
-            "2016": 118953417,
-            "2017": 120048527,
-            "2018": 120935203,
-            "2019": 121948702
+            "2010": 114567419,
+            "2011": 114991725,
+            "2012": 115969540,
+            "2013": 116291033,
+            "2014": 117259427,
+            "2015": 118208250,
+            "2016": 118860065,
+            "2017": 120062818,
+            "2018": 121520180,
+            "2019": 122802852
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
+            "importName": "CensusACS1YearSurvey",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS1yrSurvey"
           }
         },
         "Count_Household_IncomeOf100000To124999USDollar": {
@@ -7661,20 +7662,13 @@
         },
         "Count_HousingUnit": {
           "val": {
-            "2011": 132535275,
-            "2012": 133139387,
-            "2013": 133582681,
-            "2014": 134294644,
-            "2015": 134922477,
-            "2016": 135626643,
-            "2017": 136960864,
-            "2018": 137947451,
-            "2019": 138989822
+            "2010": 131704730,
+            "2020": 140498736
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "USDecennialCensus_RedistrictingRelease",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurementMethod": "USDecennialCensus"
           }
         },
         "Count_HousingUnit_1940To1949DateBuilt": {
@@ -8633,20 +8627,21 @@
         },
         "Count_Person_15OrMoreYears": {
           "val": {
-            "2011": 248585691,
-            "2012": 251029658,
-            "2013": 253381418,
-            "2014": 255936025,
-            "2015": 258354477,
-            "2016": 260429416,
-            "2017": 262873959,
-            "2018": 264772910,
-            "2019": 266645479
+            "2010": 243073468,
+            "2011": 245594777,
+            "2012": 248042237,
+            "2013": 250402813,
+            "2014": 252974135,
+            "2015": 255421235,
+            "2016": 257518302,
+            "2017": 259992659,
+            "2018": 261937267,
+            "2019": 263845370
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_15To19Years": {
@@ -8742,6 +8737,7 @@
         },
         "Count_Person_18To24Years": {
           "val": {
+            "2010": 30205496,
             "2011": 30507896,
             "2012": 30822835,
             "2013": 31071264,
@@ -8753,9 +8749,9 @@
             "2019": 30646327
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_20To24Years": {
@@ -8794,20 +8790,21 @@
         },
         "Count_Person_25OrMoreYears": {
           "val": {
-            "2011": 204486180,
-            "2012": 206776991,
-            "2013": 209026784,
-            "2014": 211487604,
-            "2015": 213877353,
-            "2016": 216054232,
-            "2017": 218662435,
-            "2018": 220810469,
-            "2019": 222968035
+            "2010": 199726659,
+            "2011": 202048123,
+            "2012": 204336017,
+            "2013": 206587852,
+            "2014": 209056129,
+            "2015": 211462522,
+            "2016": 213649147,
+            "2017": 216271644,
+            "2018": 218446071,
+            "2019": 220622076
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To29Years": {
@@ -8846,6 +8843,7 @@
         },
         "Count_Person_25To34Years": {
           "val": {
+            "2010": 40191013,
             "2011": 40668821,
             "2012": 41184290,
             "2013": 41711277,
@@ -8857,9 +8855,9 @@
             "2019": 45030415
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {
@@ -8983,7 +8981,7 @@
             "2019": 22430348
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
+            "importName": "CensusACS5YearSurvey_AggCountry_SuperEnum",
             "provenanceUrl": "https://www.census.gov/",
             "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
           }
@@ -9001,7 +8999,7 @@
             "2019": 23013263
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
+            "importName": "CensusACS5YearSurvey_AggCountry_SuperEnum",
             "provenanceUrl": "https://www.census.gov/",
             "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
           }
@@ -9076,6 +9074,7 @@
         },
         "Count_Person_35To44Years": {
           "val": {
+            "2010": 42206141,
             "2011": 41683228,
             "2012": 41227505,
             "2013": 40874162,
@@ -9087,9 +9086,9 @@
             "2019": 40978831
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_3OrMoreYears": {
@@ -9180,6 +9179,7 @@
         },
         "Count_Person_45To54Years": {
           "val": {
+            "2010": 44302697,
             "2011": 44579668,
             "2012": 44646979,
             "2013": 44506268,
@@ -9191,9 +9191,9 @@
             "2019": 42072620
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_50To54Years": {
@@ -9250,20 +9250,21 @@
         },
         "Count_Person_5To17Years": {
           "val": {
-            "2011": 54570930,
-            "2012": 54516784,
-            "2013": 54479691,
-            "2014": 54435202,
-            "2015": 54380362,
-            "2016": 54329331,
-            "2017": 54306892,
-            "2018": 54246697,
-            "2019": 54166445
+            "2010": 53901697,
+            "2011": 53877376,
+            "2012": 53841975,
+            "2013": 53825366,
+            "2014": 53803947,
+            "2015": 53771807,
+            "2016": 53745478,
+            "2017": 53747764,
+            "2018": 53716390,
+            "2019": 53661722
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_5To9Years": {
@@ -9406,6 +9407,7 @@
         },
         "Count_Person_65To74Years": {
           "val": {
+            "2010": 20493467,
             "2011": 21152731,
             "2012": 22012061,
             "2013": 22957030,
@@ -9417,9 +9419,9 @@
             "2019": 29542266
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_70To74Years": {
@@ -9458,6 +9460,7 @@
         },
         "Count_Person_75OrMoreYears": {
           "val": {
+            "2010": 18255946,
             "2011": 18456089,
             "2012": 18659380,
             "2013": 18894012,
@@ -9469,9 +9472,9 @@
             "2019": 21241530
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_75To79Years": {
@@ -9562,20 +9565,14 @@
         },
         "Count_Person_AsianAlone": {
           "val": {
-            "2011": 14508886,
-            "2012": 14872290,
-            "2013": 15244082,
-            "2014": 15722143,
-            "2015": 16245464,
-            "2016": 16624199,
-            "2017": 17194109,
-            "2018": 17581234,
-            "2019": 17930446
+            "2000": 10242998,
+            "2010": 14674252,
+            "2020": 19886049
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "USDecennialCensus_RedistrictingRelease",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurementMethod": "USDecennialCensus"
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months": {
@@ -9706,55 +9703,52 @@
         },
         "Count_Person_BlackOrAfricanAmericanAlone": {
           "val": {
-            "2011": 38670057,
-            "2012": 39108010,
-            "2013": 39451870,
-            "2014": 39855784,
-            "2015": 40209614,
-            "2016": 40561905,
-            "2017": 40949754,
-            "2018": 41281123,
-            "2019": 41621318
+            "2000": 34658190,
+            "2010": 38929319,
+            "2020": 41104200
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "USDecennialCensus_RedistrictingRelease",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurementMethod": "USDecennialCensus"
           }
         },
         "Count_Person_Divorced": {
           "val": {
-            "2011": 26006947,
-            "2012": 26657894,
-            "2013": 27151014,
-            "2014": 27630262,
-            "2015": 27972527,
-            "2016": 28207679,
-            "2017": 28212237,
-            "2018": 28417093,
-            "2019": 28642381
+            "2010": 25522714.14,
+            "2011": 26033046.362,
+            "2012": 26540519.359,
+            "2013": 27043503.804,
+            "2014": 27574180.715,
+            "2015": 28096335.85,
+            "2016": 28327013.22,
+            "2017": 28339199.831,
+            "2018": 28289224.836,
+            "2019": 28759145.33
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1602\u0026tid=ACSST5Y2019.S1201",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_EducationalAttainmentBachelorsDegree": {
           "val": {
-            "2012": 36930942,
-            "2013": 37695996,
-            "2014": 38598949,
-            "2015": 39586769,
-            "2016": 40615005,
-            "2017": 41803378,
-            "2018": 42899237,
-            "2019": 44079282
+            "2010": 35148428,
+            "2011": 35852277,
+            "2012": 36529875,
+            "2013": 37286246,
+            "2014": 38184668,
+            "2015": 39166047,
+            "2016": 40189920,
+            "2017": 41377068,
+            "2018": 42470927,
+            "2019": 43646104
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_EducationalAttainmentDoctorateDegree": {
@@ -10742,20 +10736,21 @@
         },
         "Count_Person_Female": {
           "val": {
-            "2011": 157812589,
-            "2012": 159055934,
-            "2013": 160208857,
-            "2014": 161487986,
-            "2015": 162649954,
-            "2016": 163636438,
-            "2017": 164800620,
-            "2018": 165692916,
-            "2019": 166551005
+            "2010": 157260239,
+            "2011": 158324058,
+            "2012": 159477797,
+            "2013": 160501141,
+            "2014": 161966955,
+            "2015": 163250987,
+            "2016": 164065884,
+            "2017": 165316674,
+            "2018": 166049288,
+            "2019": 166650550
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
+            "importName": "CensusACS1YearSurvey",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS1yrSurvey"
           }
         },
         "Count_Person_Female_BelowPovertyLevelInThePast12Months": {
@@ -10778,20 +10773,14 @@
         },
         "Count_Person_HispanicOrLatino": {
           "val": {
-            "2011": 52913517,
-            "2012": 54221164,
-            "2013": 55429828,
-            "2014": 56672014,
-            "2015": 57779493,
-            "2016": 58691273,
-            "2017": 59943182,
-            "2018": 60867275,
-            "2019": 61755289
+            "2000": 35305818,
+            "2010": 50477594,
+            "2020": 62080044
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "USDecennialCensus_RedistrictingRelease",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurementMethod": "USDecennialCensus"
           }
         },
         "Count_Person_InLaborForce": {
@@ -11693,6 +11682,7 @@
         },
         "Count_Person_IncomeOf10000To14999USDollar": {
           "val": {
+            "2010": 21957984,
             "2011": 22192075,
             "2012": 22472593,
             "2013": 22540898,
@@ -11704,13 +11694,14 @@
             "2019": 21336206
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_IncomeOf15000To24999USDollar": {
           "val": {
+            "2010": 34933530,
             "2011": 34679617,
             "2012": 34988433,
             "2013": 35732367,
@@ -11722,13 +11713,14 @@
             "2019": 35124586
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_IncomeOf25000To34999USDollar": {
           "val": {
+            "2010": 28306182,
             "2011": 28276742,
             "2012": 28133903,
             "2013": 27946386,
@@ -11740,13 +11732,14 @@
             "2019": 29502645
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_IncomeOf35000To49999USDollar": {
           "val": {
+            "2010": 29789227,
             "2011": 29624639,
             "2012": 29475741,
             "2013": 29294270,
@@ -11758,13 +11751,14 @@
             "2019": 31925846
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_IncomeOf50000To64999USDollar": {
           "val": {
+            "2010": 19133538,
             "2011": 19592756,
             "2012": 19876206,
             "2013": 19762652,
@@ -11776,13 +11770,14 @@
             "2019": 23542332
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_IncomeOf65000To74999USDollar": {
           "val": {
+            "2010": 7811919,
             "2011": 8075511,
             "2012": 8031641,
             "2013": 8026466,
@@ -11794,13 +11789,14 @@
             "2019": 9359781
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_IncomeOf75000OrMoreUSDollar": {
           "val": {
+            "2010": 24916825,
             "2011": 26353569,
             "2012": 27104254,
             "2013": 27942275,
@@ -11812,13 +11808,14 @@
             "2019": 39384851
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_IncomeOfUpto9999USDollar": {
           "val": {
+            "2010": 45669976,
             "2011": 44646463,
             "2012": 44375225,
             "2013": 44355459,
@@ -11830,27 +11827,28 @@
             "2019": 38845048
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_Male": {
           "val": {
-            "2011": 152533769,
-            "2012": 153799504,
-            "2013": 155010703,
-            "2014": 156258063,
-            "2015": 157448140,
-            "2016": 158451109,
-            "2017": 159672750,
-            "2018": 160597055,
-            "2019": 161465237
+            "2010": 152089450,
+            "2011": 153267861,
+            "2012": 154436243,
+            "2013": 155627698,
+            "2014": 156890101,
+            "2015": 158167834,
+            "2016": 159061631,
+            "2017": 160402504,
+            "2018": 161118151,
+            "2019": 161588973
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
+            "importName": "CensusACS1YearSurvey",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS1yrSurvey"
           }
         },
         "Count_Person_Male_BelowPovertyLevelInThePast12Months": {
@@ -11873,6 +11871,7 @@
         },
         "Count_Person_MarriedAndNotSeparated": {
           "val": {
+            "2010": 122089343,
             "2011": 122247433,
             "2012": 122097944,
             "2013": 122161506,
@@ -11884,9 +11883,9 @@
             "2019": 126823545
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
@@ -11909,6 +11908,7 @@
         },
         "Count_Person_NeverMarried": {
           "val": {
+            "2010": 75318217,
             "2011": 77121850,
             "2012": 78954939,
             "2013": 80635674,
@@ -11920,9 +11920,9 @@
             "2019": 88059061
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_NotAUSCitizen": {
@@ -12062,38 +12062,33 @@
         },
         "Count_Person_Separated": {
           "val": {
-            "2011": 5308356,
-            "2012": 5392478,
-            "2013": 5474645,
-            "2014": 5486011,
-            "2015": 5453488,
-            "2016": 5372162,
-            "2017": 5258165,
-            "2018": 5154862,
-            "2019": 5045412
+            "2010": 5347616.296,
+            "2011": 5403085.094,
+            "2012": 5456929.214,
+            "2013": 5508861.886,
+            "2014": 5565430.97,
+            "2015": 5363845.935,
+            "2016": 5407884.342,
+            "2017": 5199853.18,
+            "2018": 5238745.34,
+            "2019": 5013062.03
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1602\u0026tid=ACSST5Y2019.S1201",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_SomeOtherRaceAlone": {
           "val": {
-            "2011": 16100677,
-            "2012": 15168592,
-            "2013": 15111418,
-            "2014": 15150353,
-            "2015": 15296701,
-            "2016": 15608735,
-            "2017": 16065593,
-            "2018": 16337215,
-            "2019": 16602133
+            "2000": 15359073,
+            "2010": 19107368,
+            "2020": 27915715
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "USDecennialCensus_RedistrictingRelease",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurementMethod": "USDecennialCensus"
           }
         },
         "Count_Person_TwoOrMoreRaces": {
@@ -12308,24 +12303,19 @@
         },
         "Count_Person_WhiteAlone": {
           "val": {
-            "2011": 229862927,
-            "2012": 231930694,
-            "2013": 233168413,
-            "2014": 234383294,
-            "2015": 235439052,
-            "2016": 236105163,
-            "2017": 236759648,
-            "2018": 237188538,
-            "2019": 237565676
+            "2000": 211460626,
+            "2010": 223553265,
+            "2020": 204277273
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "USDecennialCensus_RedistrictingRelease",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurementMethod": "USDecennialCensus"
           }
         },
         "Count_Person_Widowed": {
           "val": {
+            "2010": 14902524,
             "2011": 14910191,
             "2012": 14938982,
             "2013": 14979974,
@@ -12337,9 +12327,9 @@
             "2019": 15274971
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701\u0026tid=ACSST5Y2019.S0701",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance": {
