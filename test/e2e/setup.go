@@ -44,6 +44,7 @@ type TestOption struct {
 	UseMemdb bool
 }
 
+// GenerateGolden is used to check whether generating golden
 var GenerateGolden = os.Getenv("GENERATE_GOLDEN") == "true"
 
 // This test runs agains staging staging bt and bq dataset.
@@ -58,6 +59,7 @@ const (
 	tmcfCsvPrefix    = "test"
 )
 
+// Setup creates local server and client.
 func Setup(option ...*TestOption) (pb.MixerClient, error) {
 	useCache, useMemdb := false, false
 	if len(option) == 1 {
@@ -125,6 +127,7 @@ func setupInternal(
 	return newClient(bqClient, baseTable, branchTable, metadata, cache, memDb)
 }
 
+// SetupBqOnly creates local server and client with access to BigQuery only.
 func SetupBqOnly() (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
@@ -195,6 +198,7 @@ func createBranchTable(ctx context.Context) (*cbt.Table, error) {
 	return bigtable.SetupBigtable(ctx, data)
 }
 
+// UpdateGolden updates the golden file for native typed response.
 func UpdateGolden(v interface{}, root, fname string) {
 	jsonByte, _ := json.MarshalIndent(v, "", "  ")
 	if ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644) != nil {
@@ -202,6 +206,7 @@ func UpdateGolden(v interface{}, root, fname string) {
 	}
 }
 
+// UpdateProtoGolden updates the golden file for protobuf response.
 func UpdateProtoGolden(
 	resp protoreflect.ProtoMessage, root string, fname string) {
 	var err error
@@ -226,6 +231,7 @@ func UpdateProtoGolden(
 	}
 }
 
+// ReadJSON reads in the golden Json file.
 func ReadJSON(dir, fname string, resp protoreflect.ProtoMessage) error {
 	bytes, err := ioutil.ReadFile(path.Join(dir, fname))
 	if err != nil {

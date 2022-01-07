@@ -46,4 +46,4 @@ else
     ARG=""
 fi
 
-export GENERATE_GOLDEN=true && go test ./... $ARG
+export GENERATE_GOLDEN=true && go test ./... "$ARG"
