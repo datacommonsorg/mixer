@@ -80,12 +80,3 @@ RUN ./bin/golangci-lint run --timeout=600s
 COPY test/ test
 COPY deploy/ deploy
 CMD ["go", "test", "./..."]
-
-
-# =========  golden update stage ==========
-
-FROM base as golden-update
-WORKDIR /mixer
-COPY test/ test
-COPY deploy/ deploy
-CMD ["sh", "-c", "go test -v ./test/integration/... -generate_golden=true $arg && cp -r ./test/integration/golden_response/ /result"]

@@ -13,51 +13,51 @@
 # limitations under the License.
 
 steps:
-# Build protobuf to go bindings
-- id: lint
-  name: gcr.io/datcom-ci/go-protoc
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    set -e
-    c=`cat deploy/storage/bigtable.version | wc -l`
-    if [ "$c" != "0" ]; then
-      echo "bigtable.version should not have end of file newline"
-      exit 1
-    fi
-    c=`cat deploy/storage/bigquery.version | wc -l`
-    if [ "$c" != "0" ]; then
-      echo "bigquery.version should not have end of file newline"
-      exit 1
-    fi
-    wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.33.0
-    ./bin/golangci-lint run --timeout=600s
+  # Build protobuf to go bindings
+  - id: lint
+    name: gcr.io/datcom-ci/go-protoc
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        c=`cat deploy/storage/bigtable.version | wc -l`
+        if [ "$c" != "0" ]; then
+          echo "bigtable.version should not have end of file newline"
+          exit 1
+        fi
+        c=`cat deploy/storage/bigquery.version | wc -l`
+        if [ "$c" != "0" ]; then
+          echo "bigquery.version should not have end of file newline"
+          exit 1
+        fi
+        wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.33.0
+        ./bin/golangci-lint run --timeout=600s
 
-- id: build-proto
-  name: gcr.io/datcom-ci/go-protoc
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    protoc \
-      --proto_path=proto \
-      --go_out=internal \
-      --go-grpc_out=internal \
-      --go-grpc_opt=requireUnimplementedServers=false \
-      proto/*.proto
+  - id: build-proto
+    name: gcr.io/datcom-ci/go-protoc
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        protoc \
+          --proto_path=proto \
+          --go_out=internal \
+          --go-grpc_out=internal \
+          --go-grpc_opt=requireUnimplementedServers=false \
+          proto/*.proto
 
-- id: test
-  name: golang
-  env: ['GO111MODULE=on']
-  entrypoint: 'bash'
-  args:
-  - -c
-  - |
-    go test ./...
+  - id: test
+    name: golang
+    env: ["GO111MODULE=on"]
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        go test ./...
 
 options:
   volumes:
-  - name: go-modules
-    path: /go
-  machineType: 'E2_HIGHCPU_32'
+    - name: go-modules
+      path: /go
+  machineType: "N1_HIGHCPU_32"
