@@ -62,12 +62,12 @@
         "country/USA": {
           "date": "2020",
           "value": 331449281,
-          "metaHash": 2071679530
+          "metaHash": 2869271313
         },
         "geoId/06": {
           "date": "2020",
           "value": 39538223,
-          "metaHash": 2071679530
+          "metaHash": 319306388
         },
         "geoId/0649670": {
           "date": "2020",
@@ -78,6 +78,11 @@
     }
   },
   "metadata": {
+    "319306388": {
+      "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602",
+      "measurementMethod": "CensusACS5yrSurveySubjectTable"
+    },
     "481049291": {
       "importName": "FBIGovCrime",
       "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
@@ -98,6 +103,11 @@
       "importName": "CensusACS1YearSurvey",
       "provenanceUrl": "https://www.census.gov/",
       "measurementMethod": "CensusACS1yrSurvey"
+    },
+    "2869271313": {
+      "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603",
+      "measurementMethod": "CensusACS5yrSurveySubjectTable"
     },
     "3716017963": {
       "importName": "FBIGovCrime_AggCountry",

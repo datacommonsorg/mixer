@@ -1166,7 +1166,7 @@
         "country/USA": {
           "date": "2020",
           "value": 331449281,
-          "meta_hash": 2071679530
+          "meta_hash": 2869271313
         },
         "country/UZB": {
           "date": "2020",
@@ -1287,11 +1287,6 @@
       "provenance_url": "https://slovak.statistics.sk",
       "measurement_method": "SlovakiaStatisticalOffice"
     },
-    "2071679530": {
-      "import_name": "CensusACS1YearSurvey",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS1yrSurvey"
-    },
     "2104726662": {
       "import_name": "ItalyNIS",
       "provenance_url": "http://demo.istat.it/index_e.html",
@@ -1326,6 +1321,11 @@
       "import_name": "StatisticsDenmark",
       "provenance_url": "http://www.dst.dk/en",
       "measurement_method": "StatisticsDenmark"
+    },
+    "2869271313": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2929864158": {
       "import_name": "HumanCuratedStats",

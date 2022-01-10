@@ -520,6 +520,36 @@
             }
           ]
         },
+        "dc/bxgh0w": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
+          "numObservations": "3",
+          "numTimeSeries": "1",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2017",
+              "latestDate": "2019",
+              "numObservations": "3",
+              "numTimeSeries": "1",
+              "placeTypeSummary": {
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    }
+                  ]
+                }
+              },
+              "minValue": 163070238.756,
+              "maxValue": 164946479.86
+            }
+          ]
+        },
         "dc/cl25rb": {
           "importName": "OECDRegionalDemography",
           "numObservations": "56654",
@@ -767,6 +797,36 @@
               },
               "minValue": 296,
               "maxValue": 660361000
+            }
+          ]
+        },
+        "dc/cv2kpf2": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+          "numObservations": "10",
+          "numTimeSeries": "1",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2010",
+              "latestDate": "2019",
+              "numObservations": "10",
+              "numTimeSeries": "1",
+              "placeTypeSummary": {
+                "State": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico",
+                      "personCount": "3285874"
+                    }
+                  ]
+                }
+              },
+              "minValue": 1738866.228,
+              "maxValue": 1960169.762
             }
           ]
         },
@@ -1137,6 +1197,36 @@
             }
           ]
         },
+        "dc/nnx11h2": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+          "numObservations": "3",
+          "numTimeSeries": "1",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2017",
+              "latestDate": "2019",
+              "numObservations": "3",
+              "numTimeSeries": "1",
+              "placeTypeSummary": {
+                "State": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico",
+                      "personCount": "3285874"
+                    }
+                  ]
+                }
+              },
+              "minValue": 1738866.228,
+              "maxValue": 1814267.649
+            }
+          ]
+        },
         "dc/qmsyx4": {
           "importName": "CensusACS5YearSurvey_AggCountry",
           "numObservations": "9",
@@ -1165,6 +1255,56 @@
               },
               "minValue": 157812589,
               "maxValue": 166551005
+            }
+          ]
+        },
+        "dc/scp3y31": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
+          "numObservations": "156",
+          "numTimeSeries": "52",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2017",
+              "latestDate": "2019",
+              "numObservations": "156",
+              "numTimeSeries": "52",
+              "placeTypeSummary": {
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "51",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California",
+                      "personCount": "39538223"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas",
+                      "personCount": "28995881"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida",
+                      "personCount": "21538187"
+                    }
+                  ]
+                }
+              },
+              "minValue": 284701.76,
+              "maxValue": 164946479.86
             }
           ]
         },
@@ -1326,6 +1466,56 @@
               },
               "minValue": 4313,
               "maxValue": 78191815
+            }
+          ]
+        },
+        "dc/yy2t0v": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+          "numObservations": "520",
+          "numTimeSeries": "52",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2010",
+              "latestDate": "2019",
+              "numObservations": "520",
+              "numTimeSeries": "52",
+              "placeTypeSummary": {
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "51",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California",
+                      "personCount": "39538223"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas",
+                      "personCount": "28995881"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida",
+                      "personCount": "21538187"
+                    }
+                  ]
+                }
+              },
+              "minValue": 267879.289,
+              "maxValue": 164946479.86
             }
           ]
         }

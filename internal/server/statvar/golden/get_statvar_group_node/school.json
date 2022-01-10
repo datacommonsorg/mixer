@@ -183,7 +183,7 @@
       "id": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher",
       "specializedEntity": "Bachelors Degree or Higher",
       "displayName": "Person With Educational Attainment = Bachelors Degree or Higher",
-      "numDescendentStatVars": 76
+      "numDescendentStatVars": 83
     },
     {
       "id": "dc/g/Person_EducationalAttainment-DoctorateDegree",
@@ -212,7 +212,8 @@
     {
       "id": "dc/g/Person_EducationalAttainment-HighSchoolGraduateOrHigher",
       "specializedEntity": "High School Graduate or Higher",
-      "displayName": "Person With Educational Attainment = High School Graduate or Higher"
+      "displayName": "Person With Educational Attainment = High School Graduate or Higher",
+      "numDescendentStatVars": 8
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThan9ThGrade",
@@ -311,5 +312,5 @@
   "parentStatVarGroups": [
     "dc/g/Education"
   ],
-  "numDescendentStatVars": 335
+  "numDescendentStatVars": 350
 }

@@ -11,13 +11,13 @@
       "id": "dc/g/Household",
       "specializedEntity": "Household",
       "displayName": "Household",
-      "numDescendentStatVars": 1238
+      "numDescendentStatVars": 1285
     },
     {
       "id": "dc/g/Housing",
       "specializedEntity": "Housing",
       "displayName": "Housing",
-      "numDescendentStatVars": 136
+      "numDescendentStatVars": 169
     },
     {
       "id": "dc/g/Employment",
@@ -74,7 +74,7 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": 143
+      "numDescendentStatVars": 62
     },
     {
       "id": "dc/g/Private",
@@ -83,5 +83,5 @@
       "numDescendentStatVars": 10
     }
   ],
-  "numDescendentStatVars": 8595
+  "numDescendentStatVars": 8675
 }
