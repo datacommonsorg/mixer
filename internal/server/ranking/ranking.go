@@ -36,13 +36,13 @@ type RankKey struct {
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
 var StatsRanking = map[RankKey]int{
-	{"CensusPEP", "CensusPEPSurvey", "*"}:                                      0, // Population
-	{"CensusACS5YearSurvey", "CensusACS5yrSurvey", "*"}:                        1, // Population
-	{"CensusACS5YearSurvey_AggCountry", "dcAggregate/CensusACS5yrSurvey", "*"}: 1, // Population
-	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey", "*"}:                    1, // Population
-	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus", "*"}:       2, // Population
-	{"EurostatData", "EurostatRegionalPopulationData", "*"}:                    3, // Population
-	{"WorldDevelopmentIndicators", "*", "*"}:                                   4, // Population
+	{"CensusPEP", "CensusPEPSurvey", "*"}:                                0, // Population
+	{"CensusACS5YearSurvey", "CensusACS5yrSurvey", "*"}:                  1, // Population
+	{"CensusACS5YearSurvey_AggCountry", "CensusACS5yrSurvey", "*"}:       1, // Population
+	{"CensusUSAMedianAgeIncome", "CensusACS5yrSurvey", "*"}:              1, // Population
+	{"USDecennialCensus_RedistrictingRelease", "USDecennialCensus", "*"}: 2, // Population
+	{"EurostatData", "EurostatRegionalPopulationData", "*"}:              3, // Population
+	{"WorldDevelopmentIndicators", "*", "*"}:                             4, // Population
 	// Prefer Indian Census population for Indian states, over something like OECD.
 	{"IndiaCensus_Primary", "*", "*"}:                 5,    // Population
 	{"WikipediaStatsData", "Wikipedia", "*"}:          1001, // Population

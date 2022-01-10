@@ -62,7 +62,7 @@
         "country/USA": {
           "date": "2020",
           "value": 331449281,
-          "metaHash": 2884597724
+          "metaHash": 2071679530
         },
         "geoId/06": {
           "date": "2020",
@@ -98,11 +98,6 @@
       "importName": "CensusACS1YearSurvey",
       "provenanceUrl": "https://www.census.gov/",
       "measurementMethod": "CensusACS1yrSurvey"
-    },
-    "2884597724": {
-      "importName": "CensusACS5YearSurvey_AggCountry",
-      "provenanceUrl": "https://www.census.gov/",
-      "measurementMethod": "CensusACS5yrSurvey"
     },
     "3716017963": {
       "importName": "FBIGovCrime_AggCountry",

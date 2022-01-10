@@ -26,10 +26,6 @@ ROOT="$(dirname "$DIR")"
 
 while getopts "dt:" OPTION; do
   case $OPTION in
-    d)
-        echo -e "### Update golden files in docker mode"
-        DOCKER=true
-        ;;
     t)
         echo -e "### Update golden files for test: ${OPTARG}"
         TARGET=${OPTARG}
@@ -46,4 +42,5 @@ else
     ARG=""
 fi
 
-export GENERATE_GOLDEN=true && go test ./... "$ARG"
+export GENERATE_GOLDEN=true
+go test ./... $ARG
