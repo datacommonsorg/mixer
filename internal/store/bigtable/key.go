@@ -29,12 +29,17 @@ const (
 	BtStatVarGroup = "d/1"
 	// BtSVAndSVGExistence is the key for stat var and stat var group existence cache.
 	BtSVAndSVGExistence = "d/2/"
+	// BtObsTimeSeries is the key for obs time series cache.
+	BtObsTimeSeries = "d/3/"
 	// BtPlacePagePrefix for place page cache.
 	BtPlacePagePrefix = "d/4/"
 	// BtProteinPagePrefix for protein page cache.
 	BtProteinPagePrefix = "d/6/"
 	// BtTriplesPrefix for internal GetTriples cache.
 	BtTriplesPrefix = "d/7/"
+	// BtObsCollectionDateFrequency for obs collection cache that contains the frequency of each
+	// date across places.
+	BtObsCollectionDateFrequency = "d/8/"
 	// BtArcsPrefix for internal arcs cache.
 	BtArcsPrefix = "d/9/"
 	// BtStatVarSummary for stat var summary cache.
@@ -43,8 +48,8 @@ const (
 	BtPlacesInPrefix = "d/c/"
 	// BtPlacesMetadataPrefix for GetPlaceMetadata cache.
 	BtPlacesMetadataPrefix = "d/d/"
-	// BtChartDataPrefix for chart data.
-	BtChartDataPrefix = "d/f/"
+	// BtObsCollection for obs collection cache.
+	BtObsCollection = "d/e/"
 	// BtInPropValPrefix for in-arc prop value.
 	BtInPropValPrefix = "d/l/"
 	// BtOutPropValPrefix for out-arc prop value.
@@ -81,15 +86,15 @@ func BuildTriplesKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
-// BuildStatsKey builds bigtable key for stat cache
-func BuildStatsKey(
+// BuildObsTimeSeriesKey builds bigtable key for obs time series cache.
+func BuildObsTimeSeriesKey(
 	places []string, statVars []string) (
 	bigtable.RowList, map[string]*util.PlaceStatVar) {
 	rowList := bigtable.RowList{}
 	keyToToken := map[string]*util.PlaceStatVar{}
 	for _, svID := range statVars {
 		for _, place := range places {
-			rowKey := fmt.Sprintf("%s%s^%s", BtChartDataPrefix, place, svID)
+			rowKey := fmt.Sprintf("%s%s^%s", BtObsTimeSeries, place, svID)
 			rowList = append(rowList, rowKey)
 			keyToToken[rowKey] = &util.PlaceStatVar{Place: place, StatVar: svID}
 		}
@@ -97,18 +102,36 @@ func BuildStatsKey(
 	return rowList, keyToToken
 }
 
-// BuildStatSetWithinPlaceKey builds bigtable key for stat within-place cache
-func BuildStatSetWithinPlaceKey(parentPlace, childType, date string, statVars []string) (
+// BuildObsCollectionKey builds bigtable key for obs collection cache.
+func BuildObsCollectionKey(parentPlace, childType, date string, statVars []string) (
 	bigtable.RowList, map[string]string) {
-
 	rowList := bigtable.RowList{}
 	keyToToken := map[string]string{}
 	for _, sv := range statVars {
 		rowKey := strings.Join([]string{
-			BtChartDataPrefix + parentPlace,
+			BtObsCollection + parentPlace,
 			childType,
 			sv,
 			date,
+		}, "^")
+		rowList = append(rowList, rowKey)
+		keyToToken[rowKey] = sv
+	}
+	return rowList, keyToToken
+}
+
+// BuildObsCollectionDateFrequencyKey builds bigtable key for obs collection cache that contains
+// the frequency of each date across places.
+func BuildObsCollectionDateFrequencyKey(parentPlace, childType string, statVars []string) (
+	bigtable.RowList, map[string]string) {
+	rowList := bigtable.RowList{}
+	keyToToken := map[string]string{}
+	for _, sv := range statVars {
+		rowKey := strings.Join([]string{
+			BtObsCollectionDateFrequency + parentPlace,
+			childType,
+			sv,
+			"",
 		}, "^")
 		rowList = append(rowList, rowKey)
 		keyToToken[rowKey] = sv

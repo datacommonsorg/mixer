@@ -63,7 +63,7 @@ func GetStatSeries(
 		Sfactor: in.GetScalingFactor(),
 	}
 
-	rowList, keyTokens := bigtable.BuildStatsKey([]string{place}, []string{statVar})
+	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
 	btData, err := bigtable.ReadStats(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -111,7 +111,7 @@ func GetStatAll(ctx context.Context, in *pb.GetStatAllRequest, store *store.Stor
 		}
 	}
 
-	rowList, keyTokens := bigtable.BuildStatsKey(places, statVars)
+	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
 	cacheData, err := bigtable.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
@@ -155,7 +155,7 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 	}
 	var rowList cbt.RowList
 	var keyTokens map[string]*util.PlaceStatVar
-	rowList, keyTokens = bigtable.BuildStatsKey(placeDcids, []string{statsVarDcid})
+	rowList, keyTokens = bigtable.BuildObsTimeSeriesKey(placeDcids, []string{statsVarDcid})
 
 	result := map[string]*model.ObsTimeSeries{}
 	cacheData, err := bigtable.ReadStats(ctx, store.BtGroup, rowList, keyTokens)
@@ -211,7 +211,7 @@ func GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRequest, store
 	}
 	// Read data from Cloud Bigtable.
 	if store.BtGroup.BaseBt() != nil {
-		rowList, keyTokens := bigtable.BuildStatsKey(places, statVars)
+		rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
 
 		// Read data from BigTable.
 		cacheData, err := bigtable.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
