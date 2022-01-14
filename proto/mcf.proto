@@ -1,0 +1,94 @@
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// *** IMPORTANT NOTE ***
+// Keep this in sync with the same proto in datacommonsorg/import.
+// Eventually we need to move the shared protos out to a separate repo.
+
+syntax = "proto2";
+
+// Use relative go package so the generated file is in the current folder.
+option go_package = "./proto";
+package datacommons;
+
+import "debug.proto";
+
+// Proto representation of a Data Commons sub-graph which may be made of instance nodes (INSTANCE_MCF)
+// or template nodes (TEMPLATE_MCF).
+message McfGraph {
+  // Represents a single value.
+  message TypedValue {
+    optional ValueType type = 1;
+    optional string value = 2;
+  }
+
+  // Represents a list of property values.
+  message Values {
+    // A list of typed values.
+    repeated TypedValue typed_values = 1;
+  }
+
+  // Information about a node.
+  message PropertyValues {
+    // Map of a property name to its values.
+    map<string, Values> pvs = 1;
+
+    // Information identifying the location of this node in the source.
+    // There can be multiple if PVs in this node are merged from different files.
+    repeated Log.Location location = 2;
+  }
+
+  // Type of the sub-graph.
+  optional McfType type = 1 [default = INSTANCE_MCF];
+
+  // A map from Local Node ID to its property and values.
+  map<string, PropertyValues> nodes = 2;
+}
+
+// Type of MCF sub-graph.
+enum McfType {
+  UNKNOWN_MCF_TYPE = 0;
+  // The sub-graph is made of instances.
+  INSTANCE_MCF = 1;
+  // The sub-graph is made of templates.
+  TEMPLATE_MCF = 2;
+}
+
+// Represents the type of property value.
+enum ValueType {
+  UNKNOWN_VALUE_TYPE = 0;
+
+  // Any value that has double quotes around it gets considered a text.
+  TEXT = 1;
+
+  // Any non-text and non-reference value gets interpreted as number (int /
+  // uint / double / float).
+  NUMBER = 2;
+
+  // Represents a reference to a node that has not yet been resolved.  These
+  // types should turn into RESOLVED_REF after entity resolution.
+  // REQUIRES: the value has a reference prefix (aka, "<id-space>:"), typically "l:".
+  UNRESOLVED_REF = 3;
+
+  // Represents a resolved datacommons entity. Stores a DCID value.
+  RESOLVED_REF = 4;
+
+  // Represents a complex value corresponding to Quantity, QuantityRange, LatLng, etc.
+  COMPLEX_VALUE = 5;
+
+  // Represents a table column for TEMPLATE_MCF.
+  TABLE_COLUMN = 6;
+  // Represents a table entity for TEMPLATE_MCF.
+  TABLE_ENTITY = 7;
+}

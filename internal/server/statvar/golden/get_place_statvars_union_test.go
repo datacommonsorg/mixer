@@ -25,7 +25,7 @@ import (
 func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, err := e2e.Setup(&e2e.TestOption{UseMemdb: true})
+	client, _, err := e2e.Setup(&e2e.TestOption{UseMemdb: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

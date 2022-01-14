@@ -29,7 +29,7 @@ import (
 func TestGetStatValue(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, err := e2e.Setup()
+	client, _, err := e2e.Setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

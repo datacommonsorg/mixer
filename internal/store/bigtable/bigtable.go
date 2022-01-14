@@ -70,7 +70,7 @@ type chanData struct {
 	data interface{}
 }
 
-// Generates a function to be used as the callback function in Bigtable Read.
+// readRowFn generates a function to be used as the callback function in Bigtable Read.
 // This utilizes the Golang closure so the arguments can be scoped in the
 // generated function.
 func readRowFn(
@@ -114,7 +114,7 @@ func readRowFn(
 	}
 }
 
-// bigTableReadRowsParallel reads BigTable rows from base Bigtable and branch
+// Read reads BigTable rows from base Bigtable and branch
 // Bigtable in parallel.
 //
 // Reading multiple rows is chunked as the size limit for RowSet is 500KB.

@@ -162,7 +162,7 @@ func NewCache(ctx context.Context, baseTable *bigtable.Table) (*resource.Cache, 
 }
 
 // NewServer creates a new server instance.
-func NewServer(
+func NewMixerServer(
 	bqClient *bigquery.Client,
 	baseTable *bigtable.Table,
 	branchTable *bigtable.Table,
@@ -174,5 +174,13 @@ func NewServer(
 		store:    store.NewStore(bqClient, memDb, baseTable, branchTable),
 		metadata: metadata,
 		cache:    cache,
+	}
+}
+
+func NewReconServer(
+	baseTable *bigtable.Table,
+) *Server {
+	return &Server{
+		store: store.NewStore(nil, nil, baseTable, nil),
 	}
 }

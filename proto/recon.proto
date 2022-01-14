@@ -1,0 +1,156 @@
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+// Use relative go package so the generated file is in the current folder.
+option go_package = "./proto";
+package datacommons;
+
+import "google/api/annotations.proto";
+import "entity.proto";
+
+
+// Lists of entities (with their known IDs) for a given {idProp, idVal}.
+message ReconEntities {
+  message Entity {
+    message ID {
+      string prop = 1;
+      string val = 2;
+    }
+    // All known IDs of the entity, including the DCID, excluding the ID in the
+    // recon request.
+    // NOTE: A single ID prop might be repeated.
+    repeated ID ids = 1;
+  }
+  repeated Entity entities = 1;
+}
+
+// A list of candidate places that a coordinate might be contained in.
+message CoordinateRecon {
+  message Place {
+    // The DCIDs of the places.
+    string dcid = 1;
+    // If the rectangle is fully contained in the place.
+    bool full = 2;
+  }
+  repeated Place places = 1;
+}
+
+// Basic info for a collection of entities.
+message EntityInfoCollection {
+  repeated EntityInfo entities = 1;
+  int64 total_count = 2;  // Before potential truncation.
+}
+
+
+message CompareEntitiesRequest {
+  repeated EntityPair entity_pairs = 1;
+}
+
+message CompareEntitiesResponse {
+  message Comparison {
+    // Must have two source_ids, one for each entity.
+    repeated string source_ids = 1;
+    double probability = 2;
+  }
+  repeated Comparison comparisons = 1;
+}
+
+message ResolveEntitiesRequest {
+  repeated EntitySubGraph entities = 1;
+  // The properties of IDs to find. If empty, all known IDs are returned.
+  repeated string wanted_id_properties = 2;
+}
+
+message ResolveEntitiesResponse {
+  message ResolvedId {
+    repeated IdWithProperty ids = 1;
+    double probability = 2;
+  }
+  message ResolvedEntity {
+    string source_id = 1;
+    repeated ResolvedId resolved_ids = 2;
+  }
+  repeated ResolvedEntity resolved_entities = 1;
+}
+
+message ResolveCoordinatesRequest {
+  message Coordinate {
+    double latitude = 1;
+    double longitude = 2;
+  }
+  repeated Coordinate coordinates = 1;
+}
+
+message ResolveCoordinatesResponse {
+  message PlaceCoordinate {
+    double latitude = 1;
+    double longitude = 2;
+    repeated string place_dcids = 3;
+  }
+  repeated PlaceCoordinate place_coordinates = 1;
+}
+
+message ResolveIdsRequest {
+  string in_prop = 1;
+  string out_prop = 2;
+  repeated string ids = 3;
+}
+
+message ResolveIdsResponse {
+  message Entity {
+    string in_id = 1;
+    repeated string out_ids = 2;
+  }
+  repeated Entity entities = 1;
+}
+
+service Recon {
+  // Compare two entities to determine if they are the same entity.
+  rpc CompareEntities(CompareEntitiesRequest)
+  returns (CompareEntitiesResponse) {
+    option (google.api.http) = {
+      post: "/entity/compare"
+      body: "*"
+    };
+  }
+
+  // Resolve a list of entities, given their descriptions.
+  rpc ResolveEntities(ResolveEntitiesRequest)
+  returns(ResolveEntitiesResponse) {
+    option (google.api.http) = {
+      post: "/entity/resolve"
+      body: "*"
+    };
+  }
+
+  // Resolve a list of places, given their latitude and longitude coordinates.
+  rpc ResolveCoordinates(ResolveCoordinatesRequest)
+  returns(ResolveCoordinatesResponse) {
+    option (google.api.http) = {
+      post: "/coordinate/resolve"
+      body: "*"
+    };
+  }
+
+  // Resolve a list of IDs, given the input prop and output prop.
+  rpc ResolveIds(ResolveIdsRequest)
+  returns(ResolveIdsResponse) {
+    option (google.api.http) = {
+      post: "/id/resolve"
+      body: "*"
+    };
+  }
+}

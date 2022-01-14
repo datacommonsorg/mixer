@@ -21,10 +21,11 @@ config_version: 3
 name: mixer
 
 apis:
-- name: datacommons.Mixer
+  - name: datacommons.Mixer
+  - name: datacommons.Recon
 
 usage:
   rules:
-  # All methods can be called without an API Key.
-  - selector: "*"
-    allow_unregistered_calls: true
+    # All methods can be called without an API Key.
+    - selector: "*"
+      allow_unregistered_calls: true

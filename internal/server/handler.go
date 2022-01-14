@@ -23,6 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placepage"
+	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/search"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
@@ -264,5 +265,42 @@ func (s *Server) GetVersion(
 		BigQuery: os.Getenv("BIG_QUERY"),
 		BigTable: os.Getenv("BIG_TABLE"),
 		GitHash:  os.Getenv("MIXER_HASH"),
+	}, nil
+}
+
+// GetVersion implements API for Mixer.GetVersion.
+func (s *Server) ResolveIds(
+	ctx context.Context, in *pb.ResolveIdsRequest,
+) (*pb.ResolveIdsResponse, error) {
+	return recon.ResolveIds(ctx, in, s.store)
+}
+
+// ResolveEntities implements API for ReconServer.ResolveEntities.
+func (s *Server) ResolveEntities(
+	ctx context.Context, in *pb.ResolveEntitiesRequest,
+) (*pb.ResolveEntitiesResponse, error) {
+	return recon.ResolveEntities(ctx, in, s.store)
+}
+
+// ResolveCoordinates implements API for ReconServer.ResolveCoordinates.
+func (s *Server) ResolveCoordinates(
+	ctx context.Context, in *pb.ResolveCoordinatesRequest,
+) (*pb.ResolveCoordinatesResponse, error) {
+	return recon.ResolveCoordinates(ctx, in, s.store)
+}
+
+// CompareEntities implements API for Recon.CompareEntities.
+func (s *Server) CompareEntities(
+	ctx context.Context, in *pb.CompareEntitiesRequest,
+) (
+	*pb.CompareEntitiesResponse, error) {
+	// TODO(spaceenter): Implement.
+	return &pb.CompareEntitiesResponse{
+		Comparisons: []*pb.CompareEntitiesResponse_Comparison{
+			{
+				SourceIds:   []string{"aaa", "bbb"},
+				Probability: 0.67,
+			},
+		},
 	}, nil
 }
