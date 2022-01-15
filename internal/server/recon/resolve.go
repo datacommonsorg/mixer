@@ -179,17 +179,17 @@ func ResolveEntities(
 		}
 
 		for _, entity := range reconEntities.GetEntities() {
-			resolvedId := &pb.ResolveEntitiesResponse_ResolvedId{
+			resolvedID := &pb.ResolveEntitiesResponse_ResolvedId{
 				Probability: probability,
 			}
 			for _, id := range entity.GetIds() {
-				resolvedId.Ids = append(resolvedId.Ids,
+				resolvedID.Ids = append(resolvedID.Ids,
 					&pb.IdWithProperty{
 						Prop: id.GetProp(),
 						Val:  id.GetVal(),
 					})
 			}
-			resolvedEntity.ResolvedIds = append(resolvedEntity.ResolvedIds, resolvedId)
+			resolvedEntity.ResolvedIds = append(resolvedEntity.ResolvedIds, resolvedID)
 		}
 
 		res.ResolvedEntities = append(res.ResolvedEntities, resolvedEntity)

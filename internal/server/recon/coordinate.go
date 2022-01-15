@@ -177,17 +177,17 @@ func normalizedCoordinateKey(c *pb.ResolveCoordinatesRequest_Coordinate) string 
 	return fmt.Sprintf("%.1f^%.1f", lat, lng)
 }
 
-// Polygon
+// Polygon represents a polygon shape.
 type Polygon struct {
 	Loops [][][]float64
 }
 
-// MultiPolygon
+// MultiPolygon represents a list of polygons.
 type MultiPolygon struct {
 	Polygons [][][][]float64
 }
 
-// GeoJSON
+// GeoJSON represents the geoJson data for a place.
 type GeoJSON struct {
 	Type         string          `json:"type"`
 	Coordinates  json.RawMessage `json:"coordinates"`

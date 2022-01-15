@@ -28,6 +28,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+// ResolveIds resolve entities based on IDs.
 func ResolveIds(
 	ctx context.Context, in *pb.ResolveIdsRequest, store *store.Store,
 ) (
