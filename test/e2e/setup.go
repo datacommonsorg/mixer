@@ -60,7 +60,7 @@ const (
 )
 
 // Setup creates local server and client.
-func Setup(option ...*TestOption) (pb.MixerClient, error) {
+func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 	useCache, useMemdb := false, false
 	if len(option) == 1 {
 		useCache = option[0].UseCache
@@ -78,7 +78,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 
 func setupInternal(
 	bq, bt, mcfPath, storeProject string, useCache, useMemdb bool) (
-	pb.MixerClient, error,
+	pb.MixerClient, pb.ReconClient, error,
 ) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
@@ -95,24 +95,24 @@ func setupInternal(
 	baseTable, err := server.NewBtTable(
 		ctx, storeProject, baseInstance, strings.TrimSpace(string(baseTableName)))
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	branchTable, err := createBranchTable(ctx)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	metadata, err := server.NewMetadata(
 		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	var cache *resource.Cache
 	if useCache {
 		cache, err = server.NewCache(ctx, baseTable)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 	} else {
 		cache = &resource.Cache{}
@@ -128,7 +128,7 @@ func setupInternal(
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
-func SetupBqOnly() (pb.MixerClient, error) {
+func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(
@@ -146,7 +146,7 @@ func SetupBqOnly() (pb.MixerClient, error) {
 		"",
 		schemaPath)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	return newClient(bqClient, nil, nil, metadata, nil, nil)
 }
@@ -158,14 +158,16 @@ func newClient(
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
-) (pb.MixerClient, error) {
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
+) (pb.MixerClient, pb.ReconClient, error) {
+	mixerServer := server.NewMixerServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
+	reconServer := server.NewReconServer(baseTable)
 	srv := grpc.NewServer()
-	pb.RegisterMixerServer(srv, s)
+	pb.RegisterMixerServer(srv, mixerServer)
+	pb.RegisterReconServer(srv, reconServer)
 	reflection.Register(srv)
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	// Start mixer at localhost:0
 	go func() {
@@ -181,10 +183,11 @@ func newClient(
 		grpc.WithInsecure(),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(300000000 /* 300M */)))
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	client := pb.NewMixerClient(conn)
-	return client, nil
+	mixerClient := pb.NewMixerClient(conn)
+	reconClient := pb.NewReconClient(conn)
+	return mixerClient, reconClient, nil
 }
 
 func createBranchTable(ctx context.Context) (*cbt.Table, error) {

@@ -35,7 +35,6 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/alts"
 	"google.golang.org/grpc/health/grpc_health_v1"
-	"google.golang.org/grpc/reflection"
 )
 
 var (
@@ -59,6 +58,9 @@ var (
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
 	tmcfCsvBucket  = flag.String("tmcf_csv_bucket", "", "The GCS bucket that contains tmcf and csv files")
 	tmcfCsvFolder  = flag.String("tmcf_csv_folder", "", "GCS folder for an import. An import must have a unique prefix within a bucket.")
+	// Specify what services to serve
+	serveMixerService = flag.Bool("serve_mixer_service", true, "Serve Mixer service")
+	serveReconService = flag.Bool("serve_recon_service", false, "Serve Recon service")
 )
 
 const (
@@ -87,7 +89,7 @@ func main() {
 	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
 	if err == nil && credentials.ProjectID != "" {
 		cfg := profiler.Config{
-			Service:        "mixer-service",
+			Service:        "datacommons-api",
 			ServiceVersion: *baseTableName,
 		}
 		err := profiler.Start(cfg)
@@ -96,35 +98,15 @@ func main() {
 		}
 	}
 
-	// TMCF + CSV from GCS
-	memDb := memdb.NewMemDb()
-	if *useTmcfCsvData && *tmcfCsvBucket != "" {
-		err = memDb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
-		if err != nil {
-			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
-		}
-		err = memDb.SubscribeGcsUpdate(
-			ctx, *mixerProject, tmcfCsvPubsubTopic, tmcfCsvSubscriberPrefix,
-			*tmcfCsvBucket, *tmcfCsvFolder)
-		if err != nil {
-			log.Fatalf("Failed to subscribe to tmcf and csv change: %v", err)
-		}
+	opts := []grpc.ServerOption{}
+	// Use ALTS server credential to bind to VM's private IPv6 interface.
+	if *useALTS {
+		altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
+		opts = append(opts, grpc.Creds(altsTC))
 	}
 
-	// BigQuery.
-	var bqClient *bigquery.Client
-	var metadata *resource.Metadata
-	if *useBigquery {
-		bqClient, err = bigquery.NewClient(ctx, *mixerProject)
-		if err != nil {
-			log.Fatalf("Failed to create Bigquery client: %v", err)
-		}
-		// Metadata.
-		metadata, err = server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
-		if err != nil {
-			log.Fatalf("Failed to create metadata: %v", err)
-		}
-	}
+	// Create grpc server.
+	srv := grpc.NewServer(opts...)
 
 	// Base Bigtable cache
 	var baseTable *bigtable.Table
@@ -136,52 +118,80 @@ func main() {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
 		// Cache.
-		cache, err = server.NewCache(ctx, baseTable)
-		if err != nil {
-			log.Fatalf("Failed to create cache: %v", err)
+		if *serveMixerService {
+			cache, err = server.NewCache(ctx, baseTable)
+			if err != nil {
+				log.Fatalf("Failed to create cache: %v", err)
+			}
 		}
 	}
 
-	// Branch Bigtable cache
-	var branchTable *bigtable.Table
-	if *useBranchBt {
-		branchTableName, err := server.ReadBranchTableName(
-			ctx, branchCacheVersionBucket, branchCacheVersionFile)
-		if err != nil {
-			log.Fatalf("Failed to read branch cache folder: %v", err)
+	if *serveMixerService {
+		// TMCF + CSV from GCS
+		memDb := memdb.NewMemDb()
+		if *useTmcfCsvData && *tmcfCsvBucket != "" {
+			err = memDb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
+			if err != nil {
+				log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
+			}
+			err = memDb.SubscribeGcsUpdate(
+				ctx, *mixerProject, tmcfCsvPubsubTopic, tmcfCsvSubscriberPrefix,
+				*tmcfCsvBucket, *tmcfCsvFolder)
+			if err != nil {
+				log.Fatalf("Failed to subscribe to tmcf and csv change: %v", err)
+			}
 		}
-		branchTable, err = server.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
-		if err != nil {
-			log.Fatalf("Failed to create BigTable client: %v", err)
+
+		// BigQuery.
+		var bqClient *bigquery.Client
+		var metadata *resource.Metadata
+		if *useBigquery {
+			bqClient, err = bigquery.NewClient(ctx, *mixerProject)
+			if err != nil {
+				log.Fatalf("Failed to create Bigquery client: %v", err)
+			}
+			// Metadata.
+			metadata, err = server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
+			if err != nil {
+				log.Fatalf("Failed to create metadata: %v", err)
+			}
+		}
+
+		// Branch Bigtable cache
+		var branchTable *bigtable.Table
+		if *useBranchBt {
+			branchTableName, err := server.ReadBranchTableName(
+				ctx, branchCacheVersionBucket, branchCacheVersionFile)
+			if err != nil {
+				log.Fatalf("Failed to read branch cache folder: %v", err)
+			}
+			branchTable, err = server.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
+			if err != nil {
+				log.Fatalf("Failed to create BigTable client: %v", err)
+			}
+		}
+
+		// Create server object
+		mixerServer := server.NewMixerServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
+		pb.RegisterMixerServer(srv, mixerServer)
+
+		// Subscribe to branch cache update
+		if *useBranchBt {
+			err := mixerServer.SubscribeBranchCacheUpdate(
+				ctx, *storeProject, branchCacheSubscriberPrefix, branchCachePubsubTopic)
+			if err != nil {
+				log.Fatalf("Failed to subscribe to branch cache update: %v", err)
+			}
 		}
 	}
 
-	// Create server object
-	s := server.NewServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
-
-	// Subscribe to branch cache update
-	if *useBranchBt {
-		err := s.SubscribeBranchCacheUpdate(
-			ctx, *storeProject, branchCacheSubscriberPrefix, branchCachePubsubTopic)
-		if err != nil {
-			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
-		}
+	// Register for Recon Service.
+	if *serveReconService {
+		reconServer := server.NewReconServer(baseTable)
+		pb.RegisterReconServer(srv, reconServer)
 	}
 
-	opts := []grpc.ServerOption{}
-
-	// Use ALTS server credential to bind to VM's private IPv6 interface.
-	if *useALTS {
-		altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
-		opts = append(opts, grpc.Creds(altsTC))
-	}
-
-	// Start mixer
-	srv := grpc.NewServer(opts...)
-	pb.RegisterMixerServer(srv, s)
-	// Register reflection service on gRPC server.
-	reflection.Register(srv)
-
+	// Register for healthcheck.
 	healthService := healthcheck.NewHealthChecker()
 	grpc_health_v1.RegisterHealthServer(srv, healthService)
 

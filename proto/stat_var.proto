@@ -27,15 +27,7 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
-
-// Basic info for an entity (subject or object).
-message EntityInfo {
-  string name = 1;
-  repeated string types = 2;
-  string dcid = 3;
-  string provenance_id = 4;
-  string value = 5;  // Only for object value.
-}
+import "entity.proto";
 
 message PlaceStatVarExistence {
   // Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
