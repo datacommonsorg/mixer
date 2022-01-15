@@ -30,7 +30,7 @@ import (
 
 const (
 	gridSize         float64 = 0.2
-	geoJsonPredicate string  = "geoJsonCoordinates"
+	geoJSONPredicate string  = "geoJsonCoordinates"
 )
 
 // TODO(Spaceenter): Also add place types to the results.
@@ -89,15 +89,15 @@ func ResolveCoordinates(
 	}
 
 	// Read place GeoJson cache.
-	geoJsonRowList := cbt.RowList{}
+	geoJSONRowList := cbt.RowList{}
 	for place := range questionablePlaces {
-		geoJsonRowList = append(geoJsonRowList,
-			fmt.Sprintf("%s%s^%s", bigtable.BtOutPropValPrefix, place, geoJsonPredicate))
+		geoJSONRowList = append(geoJSONRowList,
+			fmt.Sprintf("%s%s^%s", bigtable.BtOutPropValPrefix, place, geoJSONPredicate))
 	}
-	geoJsonDataMap, _, err := bigtable.Read(
+	geoJSONDataMap, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		geoJsonRowList,
+		geoJSONRowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var info pb.EntityInfoCollection
 			if err := protojson.Unmarshal(jsonRaw, &info); err != nil {
@@ -108,21 +108,21 @@ func ResolveCoordinates(
 
 		func(rowKey string) (string, error) {
 			l := strings.TrimPrefix(rowKey, bigtable.BtOutPropValPrefix)
-			return strings.TrimSuffix(l, fmt.Sprintf("^%s", geoJsonPredicate)), nil
+			return strings.TrimSuffix(l, fmt.Sprintf("^%s", geoJSONPredicate)), nil
 		},
 		false,
 	)
 	if err != nil {
 		return nil, err
 	}
-	geoJsonMap := map[string]string{}
-	for place, info := range geoJsonDataMap {
+	geoJSONMap := map[string]string{}
+	for place, info := range geoJSONDataMap {
 		// A place should only have a single geoJsonCooridnates out arc.
 		typedInfo := info.(*pb.EntityInfoCollection)
 		if typedInfo.GetTotalCount() != 1 {
 			continue
 		}
-		geoJsonMap[place] = typedInfo.GetEntities()[0].GetValue()
+		geoJSONMap[place] = typedInfo.GetEntities()[0].GetValue()
 	}
 
 	// Assemble response.
@@ -144,11 +144,11 @@ func ResolveCoordinates(
 				placeCoordinates.PlaceDcids = append(placeCoordinates.PlaceDcids,
 					place.GetDcid())
 			} else { // Not fully cover the tile.
-				geoJson, ok := geoJsonMap[place.GetDcid()]
+				geoJSON, ok := geoJSONMap[place.GetDcid()]
 				if !ok {
 					continue
 				}
-				contained, err := isContainedIn(geoJson,
+				contained, err := isContainedIn(geoJSON,
 					co.GetLatitude(), co.GetLongitude())
 				if err != nil {
 					return res, err
@@ -177,15 +177,18 @@ func normalizedCoordinateKey(c *pb.ResolveCoordinatesRequest_Coordinate) string 
 	return fmt.Sprintf("%.1f^%.1f", lat, lng)
 }
 
+// Polygon
 type Polygon struct {
 	Loops [][][]float64
 }
 
+// MultiPolygon
 type MultiPolygon struct {
 	Polygons [][][][]float64
 }
 
-type GeoJson struct {
+// GeoJSON
+type GeoJSON struct {
 	Type         string          `json:"type"`
 	Coordinates  json.RawMessage `json:"coordinates"`
 	Polygon      Polygon         `json:"-"`
@@ -231,9 +234,9 @@ func buildS2Loops(loops [][][]float64) ([]*s2.Loop, error) {
 	return res, nil
 }
 
-func parseGeoJson(geoJson string) (*s2.Polygon, error) {
-	g := &GeoJson{}
-	if err := json.Unmarshal([]byte(geoJson), g); err != nil {
+func parseGeoJSON(geoJSON string) (*s2.Polygon, error) {
+	g := &GeoJSON{}
+	if err := json.Unmarshal([]byte(geoJSON), g); err != nil {
 		return nil, err
 	}
 
@@ -265,8 +268,8 @@ func parseGeoJson(geoJson string) (*s2.Polygon, error) {
 	}
 }
 
-func isContainedIn(geoJson string, lat float64, lng float64) (bool, error) {
-	s2Polygon, err := parseGeoJson(geoJson)
+func isContainedIn(geoJSON string, lat float64, lng float64) (bool, error) {
+	s2Polygon, err := parseGeoJSON(geoJSON)
 	if err != nil {
 		return false, err
 	}

@@ -35,7 +35,7 @@ func TestCompareEntities(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/compare_entities")
+		path.Dir(filename), "compare_entities")
 
 	for _, c := range []struct {
 		req        *pb.CompareEntitiesRequest

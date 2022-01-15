@@ -23,7 +23,7 @@ import (
 
 func TestIsContainedIn(t *testing.T) {
 	for _, c := range []struct {
-		geoJsonFileName   string
+		geoJSONFileName   string
 		lat               float64
 		lng               float64
 		wantIsContainedIn bool
@@ -48,21 +48,21 @@ func TestIsContainedIn(t *testing.T) {
 		},
 	} {
 		_, filename, _, _ := runtime.Caller(0)
-		geoJsonFilePath := path.Join(
-			path.Dir(filename), "test_data", c.geoJsonFileName)
-		geoJsonBytes, err := ioutil.ReadFile(geoJsonFilePath)
+		geoJSONFilePath := path.Join(
+			path.Dir(filename), "test_data", c.geoJSONFileName)
+		geoJSONBytes, err := ioutil.ReadFile(geoJSONFilePath)
 		if err != nil {
-			t.Errorf("ioutil.ReadFile(%s) = %s", c.geoJsonFileName, err)
+			t.Errorf("ioutil.ReadFile(%s) = %s", c.geoJSONFileName, err)
 			continue
 		}
-		contained, err := isContainedIn(string(geoJsonBytes), c.lat, c.lng)
+		contained, err := isContainedIn(string(geoJSONBytes), c.lat, c.lng)
 		if err != nil {
-			t.Errorf("isContainedIn(%s) = %s", c.geoJsonFileName, err)
+			t.Errorf("isContainedIn(%s) = %s", c.geoJSONFileName, err)
 			continue
 		}
 		if contained != c.wantIsContainedIn {
 			t.Errorf("isContainedIn(%s) = %t, want %t",
-				c.geoJsonFileName, contained, c.wantIsContainedIn)
+				c.geoJSONFileName, contained, c.wantIsContainedIn)
 		}
 	}
 }

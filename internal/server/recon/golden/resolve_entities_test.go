@@ -36,7 +36,7 @@ func TestResolveEntities(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/resolve_entities")
+		path.Dir(filename), "resolve_entities")
 
 	for _, c := range []struct {
 		req        *pb.ResolveEntitiesRequest

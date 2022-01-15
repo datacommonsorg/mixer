@@ -159,7 +159,7 @@ func ResolveEntities(
 
 	// Assemble response.
 	res := &pb.ResolveEntitiesResponse{}
-	for sourceId, idProp2ReconEntities := range reconEntityStore {
+	for sourceID, idProp2ReconEntities := range reconEntityStore {
 		var reconEntities *pb.ReconEntities
 		for _, idProp := range rankedIDProps {
 			if val, ok := idProp2ReconEntities[idProp]; ok {
@@ -175,7 +175,7 @@ func ResolveEntities(
 		probability := float64(1.0 / len(reconEntities.GetEntities()))
 
 		resolvedEntity := &pb.ResolveEntitiesResponse_ResolvedEntity{
-			SourceId: sourceId,
+			SourceId: sourceID,
 		}
 
 		for _, entity := range reconEntities.GetEntities() {

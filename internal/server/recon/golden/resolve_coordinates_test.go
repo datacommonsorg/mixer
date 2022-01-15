@@ -35,7 +35,7 @@ func TestResolveCoordinates(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "golden_response/resolve_coordinates")
+		path.Dir(filename), "resolve_coordinates")
 
 	for _, c := range []struct {
 		req        *pb.ResolveCoordinatesRequest

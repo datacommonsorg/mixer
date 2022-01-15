@@ -268,7 +268,7 @@ func (s *Server) GetVersion(
 	}, nil
 }
 
-// GetVersion implements API for Mixer.GetVersion.
+// ResolveIds implements API for Recon.ResolveIds.
 func (s *Server) ResolveIds(
 	ctx context.Context, in *pb.ResolveIdsRequest,
 ) (*pb.ResolveIdsResponse, error) {
