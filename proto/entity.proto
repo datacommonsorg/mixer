@@ -30,6 +30,13 @@ message EntityInfo {
   string value = 5;  // Only for object value.
 }
 
+// Basic info for a collection of entities.
+message EntityInfoCollection {
+  repeated EntityInfo entities = 1;
+  int64 total_count = 2;  // Before potential truncation.
+}
+
+
 message IdWithProperty {
   string prop = 1;
   string val = 2;
