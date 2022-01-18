@@ -70,8 +70,8 @@ var StatsRanking = map[RankKey]int{
 	{"NASA_WetBulbComputation", "NASA_Mean_HadGEM2-AO", "*"}:             2, // Wet bulb
 
 	// Prefer FBI Hate Crime Publications over Data Commons Aggregate
-	{"FBIHateCrimePublications", "*", "*"}:        0, // FBI Hate Crime Publications
-	{"FBIHateCrime", "DataCommonsAggregate", "*"}: 1, // FBI Hate Crime Aggregations
+	{"FBIHateCrimePublications", "*", "*"}: 0, // FBI Hate Crime Publications
+	{"FBIHateCrime", "*", "*"}:             1, // FBI Hate Crime Aggregations
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
