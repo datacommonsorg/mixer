@@ -19,5 +19,6 @@ region: us-central1
 ip: 34.117.145.125
 domain: autopush.api.datacommons.org
 api_title: DataCommons API (Autopush)
+api: datacommons.Mixer
 nodes: 4
 store: datcom-store

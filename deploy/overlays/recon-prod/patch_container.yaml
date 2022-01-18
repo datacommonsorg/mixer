@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Production Mixer GKE params
-
-project: datcom-mixer
-region: us-central1
-ip: 35.244.133.155
-domain: api.datacommons.org
-api_title: DataCommons API
-api: datacommons.Mixer
-nodes: 6
-store: datcom-store
+# mixer flags
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --serve_mixer_service=false
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --serve_recon_service=true

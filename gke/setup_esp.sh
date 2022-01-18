@@ -19,6 +19,7 @@ export PROJECT_ID=$(yq eval '.project' config.yaml)
 export DOMAIN=$(yq eval '.domain' config.yaml)
 export API_TITLE=$(yq eval '.api_title' config.yaml)
 export IP=$(yq eval '.ip' config.yaml)
+export API=$(yq eval '.api' config.yaml)
 
 if [[ $API_TITLE == '' ]]; then
   API_TITLE=$DOMAIN
@@ -26,6 +27,7 @@ fi
 
 # ESP service configuration
 cp ../esp/endpoints.yaml.tmpl endpoints.yaml
+yq eval -i '.apis[0].name = env(API)' endpoints.yaml
 yq eval -i '.name = env(DOMAIN)' endpoints.yaml
 yq eval -i '.title = env(API_TITLE)' endpoints.yaml
 yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml

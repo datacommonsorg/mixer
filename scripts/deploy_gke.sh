@@ -33,8 +33,8 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" ]]; then
-  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'private'"
+if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" && $ENV != "recon-prod" ]]; then
+  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'recon-prod'"
   exit
 fi
 
@@ -65,6 +65,7 @@ export REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
 export IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
 export DOMAIN=$(yq eval '.domain' deploy/gke/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/gke/$ENV.yaml)
+export API=$(yq eval '.api' deploy/gke/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
 
 cd $ROOT/deploy/overlays/$ENV
@@ -80,6 +81,7 @@ kubectl apply -f $ENV.yaml
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
 yq eval -i '.name = env(DOMAIN)' endpoints.yaml
 yq eval -i '.title = env(API_TITLE)' endpoints.yaml
+yq eval -i '.apis[0].name = env(API)' endpoints.yaml
 yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
