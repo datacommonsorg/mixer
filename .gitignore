@@ -57,5 +57,6 @@ deploy/overlays/autopush/autopush.yaml
 deploy/overlays/encode/encode.yaml
 deploy/overlays/dev/dev.yaml
 deploy/overlays/private/private.yaml
+deploy/overlays/recon-prod/recon-prod.yaml
 
 deploy/git/mixer_hash.txt
