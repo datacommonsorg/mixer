@@ -20,6 +20,7 @@ project: <GKE_PROJECT_ID>
 ip: <API_IP>
 domain: <API_DOMAIN>
 api_title: <API_TITLE>
+api: <API>
 region: <GKE_REGION>
 nodes: 1
 store: <BIGQUERY_PROJECT_ID>
