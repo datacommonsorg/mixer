@@ -16,7 +16,6 @@ package placepage
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"hash/fnv"
 	"math/rand"
@@ -180,25 +179,20 @@ func getLatestPop(ctx context.Context, store *store.Store, placeDcids []string) 
 	if len(placeDcids) == 0 {
 		return nil, nil
 	}
-	req := &pb.GetStatsRequest{
-		Place:    placeDcids,
-		StatsVar: "Count_Person",
+	req := &pb.GetStatSetSeriesRequest{
+		Places:   placeDcids,
+		StatVars: []string{"Count_Person"},
 	}
-	resp, err := stat.GetStats(ctx, req, store)
+	resp, err := stat.GetStatSetSeries(ctx, req, store)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]int32{}
-	tmp := map[string]*model.ObsTimeSeries{}
-	err = json.Unmarshal([]byte(resp.Payload), &tmp)
-	if err != nil {
-		return nil, err
-	}
-	for place, series := range tmp {
-		if series != nil {
+	for place, series := range resp.Data {
+		if series != nil && series.Data["Count_Person"] != nil {
 			latestDate := ""
 			latestValue := 0.0
-			for date, value := range series.Data {
+			for date, value := range series.Data["Count_Person"].Val {
 				if date > latestDate {
 					latestValue = value
 					latestDate = date
