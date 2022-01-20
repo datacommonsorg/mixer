@@ -61,11 +61,7 @@ func FilterAndRank(in *model.ObsTimeSeries, prop *model.ObsProp) {
 	}
 	series := filterSeries(in.SourceSeries, prop)
 	sort.Sort(ranking.ByRank(series))
-	if len(series) > 0 {
-		in.Data = series[0].Val
-		in.ProvenanceURL = series[0].ProvenanceURL
-	}
-	in.SourceSeries = nil
+	in.SourceSeries = series
 }
 
 // GetBestSeries gets the best series for a collection of series with different metadata.

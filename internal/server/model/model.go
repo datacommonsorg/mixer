@@ -96,10 +96,15 @@ type SourceSeries struct {
 
 // ObsTimeSeries repesents multiple time series data.
 type ObsTimeSeries struct {
+	PlaceName    string          `json:"placeName,omitempty"`
+	PlaceDcid    string          `json:"placeDcid,omitempty"`
+	SourceSeries []*SourceSeries `json:"sourceSeries,omitempty"`
+}
+
+// GetStatsResponse holds the information
+type GetStatsResponse struct {
 	Data          map[string]float64 `json:"data,omitempty"`
 	PlaceName     string             `json:"placeName,omitempty"`
-	PlaceDcid     string             `json:"placeDcid,omitempty"`
-	SourceSeries  []*SourceSeries    `json:"sourceSeries,omitempty"`
 	ProvenanceURL string             `json:"provenanceUrl,omitempty"`
 }
 
