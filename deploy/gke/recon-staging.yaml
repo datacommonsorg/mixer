@@ -14,10 +14,10 @@
 
 # Production Recon Service GKE params
 
-project: datcom-recon-prod
-ip: 34.98.98.180
-domain: recon.datacommons.org
-api_title: Data Commons Recon (Prod)
+project: datcom-recon-staging
+ip: 35.244.140.168
+domain: staging.recon.datacommons.org
+api_title: Data Commons Recon (Staging)
 api: datacommons.Recon
 region: us-central1
 nodes: 3

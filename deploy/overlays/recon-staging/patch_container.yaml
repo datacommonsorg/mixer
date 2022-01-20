@@ -1,4 +1,4 @@
-# Copyright 2022 Google LLC
+# Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Production Recon Service GKE params
-
-project: datcom-recon-prod
-ip: 34.98.98.180
-domain: recon.datacommons.org
-api_title: Data Commons Recon (Prod)
-api: datacommons.Recon
-region: us-central1
-nodes: 3
-store: datcom-store
+# mixer flags
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --serve_mixer_service=false
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --serve_recon_service=true

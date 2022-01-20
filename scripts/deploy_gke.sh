@@ -33,8 +33,8 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" && $ENV != "recon-prod" ]]; then
-  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'recon-prod'"
+if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" && $ENV != "recon-prod" && $ENV != "recon-staging" && $ENV != "recon-autopush" ]]; then
+  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'recon-prod' or 'recon-staging' or 'recon-autopush'"
   exit
 fi
 
@@ -45,8 +45,6 @@ TAG=$(git rev-parse --short=7 HEAD)
 if [[ $2 != "" ]]; then
   TAG=$2
   cd "$ROOT"
-  # This is important to get the correct BT and BQ version
-  git checkout "$TAG"
 fi
 
 cd "$ROOT/deploy/git"
@@ -72,10 +70,11 @@ cd $ROOT/deploy/overlays/$ENV
 
 # Deploy to GKE
 kustomize edit set image gcr.io/datcom-ci/datacommons-mixer=gcr.io/datcom-ci/datacommons-mixer:$TAG
-kustomize build > $ENV.yaml
+kustomize build > kustomize-build.yaml
+cp kustomization.yaml kustomize-deployed.yaml
 gcloud config set project $PROJECT_ID
 gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
-kubectl apply -f $ENV.yaml
+kubectl apply -f kustomize-build.yaml
 
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
@@ -86,3 +85,9 @@ yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID
+
+
+# Reset changed file
+git checkout HEAD -- kustomization.yaml
+cd $ROOT
+git checkout HEAD -- deploy/git/mixer_hash.txt
