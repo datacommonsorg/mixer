@@ -30,6 +30,12 @@ func TestGetParentMapping(t *testing.T) {
 	}{
 		{
 			map[string]*pb.StatVarGroupNode{
+				"dc/g/Root": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgX"},
+						{Id: "svgY"},
+					},
+				},
 				"svgX": {
 					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 						{Id: "svgY"},
@@ -61,7 +67,8 @@ func TestGetParentMapping(t *testing.T) {
 				},
 			},
 			map[string][]string{
-				"svgY": {"svgX"},
+				"svgX": {"dc/g/Root"},
+				"svgY": {"dc/g/Root", "svgX"},
 				"svgZ": {"svgX", "svgY"},
 				"sv1":  {"svgY", "svgZ"},
 				"sv2":  {"svgZ"},
@@ -140,8 +147,9 @@ func TestBuildSearchIndex(t *testing.T) {
 		SvIds:  nil,
 	}
 	for _, c := range []struct {
-		input map[string]*pb.StatVarGroupNode
-		want  *resource.SearchIndex
+		inputSvg  map[string]*pb.StatVarGroupNode
+		parentSvg map[string][]string
+		want      *resource.SearchIndex
 	}{
 		{
 			map[string]*pb.StatVarGroupNode{
@@ -178,6 +186,24 @@ func TestBuildSearchIndex(t *testing.T) {
 						},
 					},
 				},
+				"group_orphan": {
+					AbsoluteName: "orphan group",
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv_orphan",
+							SearchName:  "zdx",
+							DisplayName: "sv3",
+						},
+					},
+				},
+			},
+			map[string][]string{
+				"group_1":   {"dc/g/root"},
+				"sv_1_1":    {"group_1"},
+				"sv_1_2":    {"group_1"},
+				"group_3_1": {"group_1"},
+				"sv_3":      {"group_3_1"},
+				"sv3":       {"group_3_1"},
 			},
 			&resource.SearchIndex{
 				RootTrieNode: &resource.TrieNode{
@@ -218,7 +244,7 @@ func TestBuildSearchIndex(t *testing.T) {
 			},
 		},
 	} {
-		got := BuildStatVarSearchIndex(c.input, false)
+		got := BuildStatVarSearchIndex(c.inputSvg, c.parentSvg, false)
 		if diff := deep.Equal(got, c.want); diff != nil {
 			t.Errorf("GetStatVarSearchIndex got diff %v", diff)
 		}

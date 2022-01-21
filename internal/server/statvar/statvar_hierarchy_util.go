@@ -61,21 +61,38 @@ func GetRawSvg(ctx context.Context, baseTable *cbt.Table) (
 	return svgResp.StatVarGroups, nil
 }
 
-// BuildParentSvgMap gets the mapping of svg/sv id to the parent svg for that svg/sv.
+// BuildParentSvgMap gets the mapping of svg/sv id to the parent svg for that
+// svg/sv. Only gets the parent svg that have a path to the root node.
 func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]string {
 	parentSvgMap := map[string][]string{}
-	for svgID, svgData := range rawSvg {
-		for _, childSvg := range svgData.ChildStatVarGroups {
-			if _, ok := parentSvgMap[childSvg.Id]; !ok {
-				parentSvgMap[childSvg.Id] = []string{}
+	// Do breadth first search starting at the root to find all the svg that have
+	// a path to the root. Only add those as parents.
+	seenSvg := map[string]struct{}{svgRoot: {}}
+	svgToVisit := []string{svgRoot}
+	for len(svgToVisit) > 0 {
+		svgID := svgToVisit[0]
+		svgToVisit = svgToVisit[1:]
+		if svgData, ok := rawSvg[svgID]; ok {
+			for _, childSvg := range svgData.ChildStatVarGroups {
+				// Add the current svg to the list of parents for this child svg.
+				if _, ok := parentSvgMap[childSvg.Id]; !ok {
+					parentSvgMap[childSvg.Id] = []string{}
+				}
+				parentSvgMap[childSvg.Id] = append(parentSvgMap[childSvg.Id], svgID)
+				// If this child svg hasn't been seen yet, add it to the list of svg
+				// left to visit.
+				if _, ok := seenSvg[childSvg.Id]; !ok {
+					seenSvg[childSvg.Id] = struct{}{}
+					svgToVisit = append(svgToVisit, childSvg.Id)
+				}
 			}
-			parentSvgMap[childSvg.Id] = append(parentSvgMap[childSvg.Id], svgID)
-		}
-		for _, childSv := range svgData.ChildStatVars {
-			if _, ok := parentSvgMap[childSv.Id]; !ok {
-				parentSvgMap[childSv.Id] = []string{}
+			// Add the current svg to the list of parents for each child sv.
+			for _, childSv := range svgData.ChildStatVars {
+				if _, ok := parentSvgMap[childSv.Id]; !ok {
+					parentSvgMap[childSv.Id] = []string{}
+				}
+				parentSvgMap[childSv.Id] = append(parentSvgMap[childSv.Id], svgID)
 			}
-			parentSvgMap[childSv.Id] = append(parentSvgMap[childSv.Id], svgID)
 		}
 	}
 	for _, parentSvgList := range parentSvgMap {
@@ -124,6 +141,7 @@ func getSynonymMap() map[string][]string {
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
+	parentSvg map[string][]string,
 	blocklist bool) *resource.SearchIndex {
 	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
@@ -145,6 +163,10 @@ func BuildStatVarSearchIndex(
 	seenSV := map[string]struct{}{}
 	for svgID, svgData := range rawSvg {
 		if _, ok := ignoredSVG[svgID]; ok {
+			continue
+		}
+		// Ignore svg that don't have any parents with a path to the root node.
+		if _, ok := parentSvg[svgID]; !ok {
 			continue
 		}
 		tokenString := svgData.AbsoluteName

@@ -150,8 +150,8 @@ func NewCache(ctx context.Context, baseTable *bigtable.Table) (*resource.Cache, 
 		return nil, err
 	}
 	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
-	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, false)
-	blocklistedSearchIndex := statvar.BuildStatVarSearchIndex(rawSvg, true)
+	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, false)
+	blocklistedSearchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, true)
 
 	return &resource.Cache{
 		ParentSvg:                 parentSvgMap,
