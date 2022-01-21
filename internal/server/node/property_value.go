@@ -146,7 +146,7 @@ func readPropertyValues(
 ) (map[string][]*model.Node, error) {
 	// Only read property value from base cache.
 	// Branch cache only contains supplement data but not other properties yet.
-	baseDataMap, _, err := bigtable.Read(
+	baseDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -165,7 +165,7 @@ func readPropertyValues(
 		return nil, err
 	}
 	result := map[string][]*model.Node{}
-	for dcid, data := range baseDataMap {
+	for dcid, data := range baseDataList[0] {
 		if data != nil {
 			result[dcid] = data.([]*model.Node)
 		}

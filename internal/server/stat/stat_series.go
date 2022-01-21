@@ -68,12 +68,7 @@ func GetStatSeries(
 	if err != nil {
 		return nil, err
 	}
-	obsTimeSeries := btData[place][statVar]
-	if obsTimeSeries == nil {
-		return nil, status.Errorf(codes.NotFound,
-			"No data for %s, %s", place, statVar)
-	}
-	series := obsTimeSeries.SourceSeries
+	series := btData[place][statVar].SourceSeries
 	series = filterSeries(series, filterProp)
 	sort.Sort(ranking.ByRank(series))
 	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
@@ -221,7 +216,7 @@ func GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRequest, store
 		}
 	}
 	// Read data from Cloud Bigtable.
-	if store.BtGroup.BaseBt() != nil {
+	if store.BtGroup.BaseTables() != nil {
 		rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
 
 		// Read data from BigTable.

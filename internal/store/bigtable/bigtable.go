@@ -27,7 +27,7 @@ import (
 
 // Group represents all the cloud bigtables that mixer talks to.
 type Group struct {
-	baseTable   *cbt.Table
+	baseTables  []*cbt.Table
 	branchTable *cbt.Table
 	branchLock  sync.RWMutex
 }
@@ -37,26 +37,30 @@ func NewBigtableGroup(
 	baseTable *cbt.Table,
 	branchTable *cbt.Table,
 ) *Group {
-	return &Group{
-		baseTable:   baseTable,
+	g := &Group{
+		baseTables:  []*cbt.Table{},
 		branchTable: branchTable,
 	}
+	if baseTable != nil {
+		g.baseTables = append(g.baseTables, baseTable)
+	}
+	return g
 }
 
-// BaseBt is the accessor for base bigtable
-func (st *Group) BaseBt() *cbt.Table {
-	return st.baseTable
+// BaseTables is the accessor for base bigtables
+func (st *Group) BaseTables() []*cbt.Table {
+	return st.baseTables
 }
 
-// BranchBt is the accessor for branch bigtable
-func (st *Group) BranchBt() *cbt.Table {
+// BranchTable is the accessor for branch bigtable
+func (st *Group) BranchTable() *cbt.Table {
 	st.branchLock.RLock()
 	defer st.branchLock.RUnlock()
 	return st.branchTable
 }
 
-// UpdateBranchBt updates the branch bigtable
-func (st *Group) UpdateBranchBt(branchTable *cbt.Table) {
+// UpdateBranchTable updates the branch bigtable
+func (st *Group) UpdateBranchTable(branchTable *cbt.Table) {
 	st.branchLock.Lock()
 	defer st.branchLock.Unlock()
 	st.branchTable = branchTable
@@ -137,11 +141,11 @@ func Read(
 	getToken func(string) (string, error),
 	readBranch bool,
 ) (
-	map[string]interface{}, map[string]interface{}, error,
+	[]map[string]interface{}, map[string]interface{}, error,
 ) {
-	baseBt := btGroup.BaseBt()
-	branchBt := btGroup.BranchBt()
-	if baseBt == nil && branchBt == nil {
+	baseTables := btGroup.BaseTables()
+	branchTable := btGroup.BranchTable()
+	if len(baseTables) == 0 && branchTable == nil {
 		return nil, nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
@@ -165,7 +169,10 @@ func Read(
 		return nil, nil, nil
 	}
 
-	baseChan := make(chan chanData, rowSetSize)
+	baseChans := make(map[int]chan chanData)
+	for i := 0; i < len(baseTables); i++ {
+		baseChans[i] = make(chan chanData, rowSetSize)
+	}
 	branchChan := make(chan chanData, rowSetSize)
 
 	errs, errCtx := errgroup.WithContext(ctx)
@@ -182,30 +189,41 @@ func Read(
 			rowSetPart = rowRangeList[left:right]
 		}
 		// Read from all the given tables.
-		if baseBt != nil {
-			errs.Go(readRowFn(errCtx, baseBt, rowSetPart, getToken, action, baseChan))
+		if len(baseTables) > 0 {
+			for j := 0; j < len(baseTables); j++ {
+				j := j
+				if baseTables[j] != nil {
+					errs.Go(readRowFn(errCtx, baseTables[j], rowSetPart, getToken, action, baseChans[j]))
+				}
+			}
 		}
-		if readBranch && branchBt != nil {
-			errs.Go(readRowFn(errCtx, branchBt, rowSetPart, getToken, action, branchChan))
+		if readBranch && branchTable != nil {
+			errs.Go(readRowFn(errCtx, branchTable, rowSetPart, getToken, action, branchChan))
 		}
 	}
 	err := errs.Wait()
 	if err != nil {
 		return nil, nil, err
 	}
-	close(baseChan)
+	for i := 0; i < len(baseChans); i++ {
+		close(baseChans[i])
+	}
 	close(branchChan)
 
-	baseResult := map[string]interface{}{}
-	if baseBt != nil {
-		for elem := range baseChan {
-			baseResult[elem.token] = elem.data
+	baseResult := []map[string]interface{}{}
+	if baseTables != nil {
+		for i := 0; i < len(baseTables); i++ {
+			item := map[string]interface{}{}
+			for elem := range baseChans[i] {
+				item[elem.token] = elem.data
+			}
+			baseResult = append(baseResult, item)
 		}
 	}
 
 	branchResult := map[string]interface{}{}
 	if readBranch {
-		if branchBt != nil {
+		if branchTable != nil {
 			for elem := range branchChan {
 				branchResult[elem.token] = elem.data
 			}
