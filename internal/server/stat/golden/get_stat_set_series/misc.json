@@ -159,7 +159,7 @@
           },
           "metadata": {
             "importName": "IndiaCensus_Primary",
-            "provenanceUrl": "http://census.gov.in"
+            "provenanceUrl": "https://censusindia.gov.in/"
           }
         },
         "Count_Person_IsInternetUser_PerCapita": {

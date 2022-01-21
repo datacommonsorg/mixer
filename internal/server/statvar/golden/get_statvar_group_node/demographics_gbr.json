@@ -112,6 +112,11 @@
       "numDescendentStatVars": 1
     },
     {
+      "id": "dc/g/Person_ChildrenStatus",
+      "specializedEntity": "Children Status",
+      "displayName": "Person by Children Status"
+    },
+    {
       "id": "dc/g/Commute",
       "specializedEntity": "Commute",
       "displayName": "Commute"
