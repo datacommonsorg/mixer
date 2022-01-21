@@ -128,7 +128,8 @@ func GetStatVarGroup(
 	}
 
 	// Read stat var group cache data
-	row, err := store.BtGroup.BaseBt().ReadRow(ctx, bigtable.BtStatVarGroup)
+	// TODO: [MERGE]
+	row, err := store.BtGroup.BaseTables()[0].ReadRow(ctx, bigtable.BtStatVarGroup)
 	if err != nil {
 		return nil, err
 	}
@@ -399,7 +400,7 @@ func CountStatVar(
 	places []string) (map[string]map[string]int32, error) {
 	rowList, keyTokens := bigtable.BuildStatExistenceKey(places, svOrSvgs)
 	keyToTokenFn := bigtable.TokenFn(keyTokens)
-	baseDataMap, _, err := bigtable.Read(
+	baseDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -426,7 +427,7 @@ func CountStatVar(
 	for _, rowKey := range rowList {
 		placeSv := keyTokens[rowKey]
 		token, _ := keyToTokenFn(rowKey)
-		if data, ok := baseDataMap[token]; ok {
+		if data, ok := baseDataList[0][token]; ok {
 			c := data.(*pb.PlaceStatVarExistence)
 			result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
 		}
@@ -440,7 +441,7 @@ func GetStatVarSummary(
 	*pb.GetStatVarSummaryResponse, error) {
 	sv := in.GetStatVars()
 	rowList := bigtable.BuildStatVarSummaryKey(sv)
-	baseDataMap, _, err := bigtable.Read(
+	baseDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -461,7 +462,7 @@ func GetStatVarSummary(
 	result := &pb.GetStatVarSummaryResponse{
 		StatVarSummary: map[string]*pb.StatVarSummary{},
 	}
-	for dcid, data := range baseDataMap {
+	for dcid, data := range baseDataList[0] {
 		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
 	}
 	return result, nil

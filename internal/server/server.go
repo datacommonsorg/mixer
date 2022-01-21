@@ -51,7 +51,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.store.BtGroup.UpdateBranchBt(branchTable)
+	s.store.BtGroup.UpdateBranchTable(branchTable)
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.

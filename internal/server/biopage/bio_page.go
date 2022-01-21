@@ -55,8 +55,8 @@ func GetBioPageData(
 	if err != nil {
 		return nil, err
 	}
-	if _, ok := data[dcid]; !ok {
+	if _, ok := data[0][dcid]; !ok {
 		return nil, nil
 	}
-	return data[dcid].(*pb.GraphNodes), nil
+	return data[0][dcid].(*pb.GraphNodes), nil
 }
