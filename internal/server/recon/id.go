@@ -47,7 +47,7 @@ func ResolveIds(
 		rowList = append(rowList,
 			fmt.Sprintf("%s%s^%s^%s", bigtable.BtReconIDMapPrefix, inProp, id, outProp))
 	}
-	baseDataMap, _, err := bigtable.Read(
+	baseDataList, _, err := bigtable.Read(
 		ctx, store.BtGroup, rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var reconEntities pb.ReconEntities
@@ -71,7 +71,7 @@ func ResolveIds(
 
 	// Assemble result.
 	res := &pb.ResolveIdsResponse{}
-	for inID, reconEntities := range baseDataMap {
+	for inID, reconEntities := range baseDataList[0] {
 		entity := &pb.ResolveIdsResponse_Entity{InId: inID}
 
 		for _, reconEntity := range reconEntities.(*pb.ReconEntities).GetEntities() {

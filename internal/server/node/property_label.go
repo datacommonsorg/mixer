@@ -40,7 +40,7 @@ func GetPropertyLabels(ctx context.Context,
 
 	rowList := bigtable.BuildPropertyLabelKey(dcids)
 
-	baseDataMap, branchDataMap, err := bigtable.Read(
+	baseDataList, branchData, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -62,7 +62,7 @@ func GetPropertyLabels(ctx context.Context,
 	for _, dcid := range dcids {
 		result[dcid] = &model.PropLabelCache{InLabels: []string{}, OutLabels: []string{}}
 		// Merge cache value from base and branch cache
-		for _, m := range []map[string]interface{}{baseDataMap, branchDataMap} {
+		for _, m := range []map[string]interface{}{baseDataList[0], branchData} {
 			if data, ok := m[dcid]; ok {
 				if data.(*model.PropLabelCache).InLabels != nil {
 					result[dcid].InLabels = util.MergeDedupe(

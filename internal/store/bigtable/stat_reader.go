@@ -43,7 +43,7 @@ func ReadStats(
 	map[string]map[string]*model.ObsTimeSeries, error) {
 
 	keyToTokenFn := TokenFn(keyTokens)
-	baseDataMap, branchDataMap, err := Read(
+	baseDataList, branchData, err := Read(
 		ctx, btGroup, rowList, convert.ToObsSeries, TokenFn(keyTokens), true, /* readBranch */
 	)
 	if err != nil {
@@ -55,17 +55,27 @@ func ReadStats(
 			result[psv.Place] = map[string]*model.ObsTimeSeries{}
 		}
 		if _, ok := result[psv.StatVar]; !ok {
-			result[psv.Place][psv.StatVar] = nil
+			result[psv.Place][psv.StatVar] = &model.ObsTimeSeries{}
 		}
 	}
 	for _, rowKey := range rowList {
 		token, _ := keyToTokenFn(rowKey)
 		psv := keyTokens[rowKey]
-		if data, ok := branchDataMap[token]; ok {
-			result[psv.Place][psv.StatVar] = data.(*model.ObsTimeSeries)
-		} else if data, ok := baseDataMap[token]; ok {
-			result[psv.Place][psv.StatVar] = data.(*model.ObsTimeSeries)
+		// Different base data has different source series, concatenate them together.
+		ss := result[psv.Place][psv.StatVar].SourceSeries
+		for _, baseData := range baseDataList {
+			if data, ok := baseData[token]; ok {
+				ss = append(
+					ss,
+					data.(*model.ObsTimeSeries).SourceSeries...,
+				)
+				result[psv.Place][psv.StatVar].PlaceName = data.(*model.ObsTimeSeries).PlaceName
+			}
 		}
+		if data, ok := branchData[token]; ok {
+			ss = append(ss, data.(*model.ObsTimeSeries).SourceSeries...)
+		}
+		result[psv.Place][psv.StatVar].SourceSeries = ss
 	}
 	return result, nil
 }
@@ -80,7 +90,7 @@ func ReadStatsPb(
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
 	keyToTokenFn := TokenFn(keyTokens)
-	baseDataMap, branchDataMap, err := Read(
+	baseDataList, branchData, err := Read(
 		ctx, btGroup, rowList, convert.ToObsSeriesPb, keyToTokenFn, true, /* readBranch */
 	)
 	if err != nil {
@@ -92,18 +102,28 @@ func ReadStatsPb(
 			result[psv.Place] = map[string]*pb.ObsTimeSeries{}
 		}
 		if _, ok := result[psv.StatVar]; !ok {
-			result[psv.Place][psv.StatVar] = nil
+			result[psv.Place][psv.StatVar] = &pb.ObsTimeSeries{}
 		}
 	}
 
 	for _, rowKey := range rowList {
 		token, _ := keyToTokenFn(rowKey)
 		psv := keyTokens[rowKey]
-		if data, ok := branchDataMap[token]; ok && data != nil {
-			result[psv.Place][psv.StatVar] = data.(*pb.ObsTimeSeries)
-		} else if data, ok := baseDataMap[token]; ok && data != nil {
-			result[psv.Place][psv.StatVar] = data.(*pb.ObsTimeSeries)
+		// Different base data has different source series, concatenate them together.
+		ss := result[psv.Place][psv.StatVar].SourceSeries
+		for _, baseData := range baseDataList {
+			if data, ok := baseData[token]; ok {
+				ss = append(
+					ss,
+					data.(*pb.ObsTimeSeries).SourceSeries...,
+				)
+				result[psv.Place][psv.StatVar].PlaceName = data.(*pb.ObsTimeSeries).PlaceName
+			}
 		}
+		if data, ok := branchData[token]; ok {
+			ss = append(ss, data.(*pb.ObsTimeSeries).SourceSeries...)
+		}
+		result[psv.Place][psv.StatVar].SourceSeries = ss
 	}
 	return result, nil
 }
@@ -117,7 +137,7 @@ func ReadStatCollection(
 	keyTokens map[string]string) (
 	map[string]*pb.ObsCollection, error) {
 
-	baseDataMap, branchDataMap, err := Read(
+	baseDataList, branchData, err := Read(
 		ctx,
 		btGroup,
 		rowList,
@@ -133,10 +153,21 @@ func ReadStatCollection(
 	result := map[string]*pb.ObsCollection{}
 	for _, rowKey := range rowList {
 		token := keyTokens[rowKey]
-		if data, ok := branchDataMap[token]; ok && data != nil {
-			result[token] = data.(*pb.ObsCollection)
-		} else if data, ok := baseDataMap[token]; ok && data != nil {
-			result[token] = data.(*pb.ObsCollection)
+		result[token] = &pb.ObsCollection{}
+		ss := result[token].SourceCohorts
+		for _, baseData := range baseDataList {
+			if data, ok := baseData[token]; ok {
+				ss = append(
+					ss,
+					data.(*pb.ObsCollection).SourceCohorts...,
+				)
+			}
+		}
+		if data, ok := branchData[token]; ok {
+			ss = append(ss, data.(*pb.ObsCollection).SourceCohorts...)
+		}
+		if len(ss) > 0 {
+			result[token].SourceCohorts = ss
 		} else {
 			result[token] = nil
 		}

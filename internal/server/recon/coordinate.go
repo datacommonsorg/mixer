@@ -57,7 +57,7 @@ func ResolveCoordinates(
 		reconRowList = append(reconRowList,
 			fmt.Sprintf("%s%s", bigtable.BtCoordinateReconPrefix, key))
 	}
-	reconDataMap, _, err := bigtable.Read(
+	reconDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		reconRowList,
@@ -80,7 +80,7 @@ func ResolveCoordinates(
 
 	// Collect places that don't fully cover the tiles that the coordinates are in.
 	questionablePlaces := map[string]struct{}{}
-	for _, recon := range reconDataMap {
+	for _, recon := range reconDataList[0] {
 		for _, place := range recon.(*pb.CoordinateRecon).GetPlaces() {
 			if !place.GetFull() {
 				questionablePlaces[place.GetDcid()] = struct{}{}
@@ -94,7 +94,7 @@ func ResolveCoordinates(
 		geoJSONRowList = append(geoJSONRowList,
 			fmt.Sprintf("%s%s^%s", bigtable.BtOutPropValPrefix, place, geoJSONPredicate))
 	}
-	geoJSONDataMap, _, err := bigtable.Read(
+	geoJSONDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		geoJSONRowList,
@@ -116,7 +116,7 @@ func ResolveCoordinates(
 		return nil, err
 	}
 	geoJSONMap := map[string]string{}
-	for place, info := range geoJSONDataMap {
+	for place, info := range geoJSONDataList[0] {
 		// A place should only have a single geoJsonCooridnates out arc.
 		typedInfo := info.(*pb.EntityInfoCollection)
 		if typedInfo.GetTotalCount() != 1 {
@@ -130,7 +130,7 @@ func ResolveCoordinates(
 	for _, co := range in.GetCoordinates() {
 		nKey := normCoordinateMap[coordinateKey(co)]
 
-		recon, ok := reconDataMap[nKey]
+		recon, ok := reconDataList[0][nKey]
 		if !ok {
 			continue
 		}

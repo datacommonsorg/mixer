@@ -55,7 +55,7 @@ func readChartConfig() ([]*Chart, error) {
 		"energy",
 	} {
 		var config []*Chart
-		resp, err := http.Get("https://raw.githubusercontent.com/datacommonsorg/website/master/server/chart_config/" + file + ".json")
+		resp, err := http.Get("https://raw.githubusercontent.com/datacommonsorg/website/master/server/config/chart_config/" + file + ".json")
 		if err != nil {
 			return nil, err
 		}
