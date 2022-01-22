@@ -45,6 +45,8 @@ TAG=$(git rev-parse --short=7 HEAD)
 if [[ $2 != "" ]]; then
   TAG=$2
   cd "$ROOT"
+  # This is important to get the correct BT and BQ version
+  git checkout "$TAG"
 fi
 
 cd "$ROOT/deploy/git"
