@@ -1,0 +1,19 @@
+{
+  "data": {
+    "country/CHN": {
+      "data": {
+        "Annual_Generation_Electricity": {}
+      }
+    },
+    "country/IND": {
+      "data": {
+        "Annual_Generation_Electricity": {}
+      }
+    },
+    "country/USA": {
+      "data": {
+        "Annual_Generation_Electricity": {}
+      }
+    }
+  }
+}

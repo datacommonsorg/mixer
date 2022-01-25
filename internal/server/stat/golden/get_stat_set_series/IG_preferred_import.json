@@ -1,0 +1,34 @@
+{
+  "data": {
+    "country/IND": {
+      "data": {
+        "Count_Person": {}
+      }
+    },
+    "country/JPN": {
+      "data": {
+        "Count_Person": {}
+      }
+    },
+    "country/USA": {
+      "data": {
+        "Count_Person": {}
+      }
+    },
+    "geoId/06": {
+      "data": {
+        "Count_Person": {}
+      }
+    },
+    "geoId/06085": {
+      "data": {
+        "Count_Person": {}
+      }
+    },
+    "geoId/0649670": {
+      "data": {
+        "Count_Person": {}
+      }
+    }
+  }
+}

@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -35,7 +36,7 @@ func TestReadOneTable(t *testing.T) {
 	rowList := bigtable.RowList{"key1", "key2"}
 	baseData, _, err := Read(
 		ctx,
-		NewBigtableGroup(btTable, nil),
+		NewBigtableGroup([]*cbt.Table{btTable}, nil),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -79,7 +80,7 @@ func TestReadTwoTables(t *testing.T) {
 	rowList := bigtable.RowList{"key1", "key2"}
 	baseDataList, branchData, err := Read(
 		ctx,
-		NewBigtableGroup(btTable1, btTable2),
+		NewBigtableGroup([]*cbt.Table{btTable1}, btTable2),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil

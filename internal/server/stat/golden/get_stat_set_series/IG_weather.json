@@ -1,0 +1,18 @@
+{
+  "data": {
+    "geoId/06029": {
+      "data": {
+        "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {},
+        "Max_Temperature": {},
+        "Max_Temperature_RCP85": {}
+      }
+    },
+    "geoId/06085": {
+      "data": {
+        "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {},
+        "Max_Temperature": {},
+        "Max_Temperature_RCP85": {}
+      }
+    }
+  }
+}
