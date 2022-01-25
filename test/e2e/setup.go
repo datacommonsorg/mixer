@@ -93,7 +93,10 @@ func setupInternal(
 
 	baseTableJSON, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btJSON))
 	tableConfig := &bigtable.TableConfig{}
-	json.Unmarshal(baseTableJSON, &tableConfig)
+	err := json.Unmarshal(baseTableJSON, &tableConfig)
+	if err != nil {
+		log.Fatalf("failed to read base table congi: %v", err)
+	}
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
