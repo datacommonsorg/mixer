@@ -166,10 +166,11 @@ func TestFilterAndRank(t *testing.T) {
 		},
 	} {
 		got := c.input
-		FilterAndRank(got, &model.ObsProp{
-			Mmethod: c.mmethod,
-			Operiod: c.op,
-			Unit:    c.unit})
+		FilterAndRank(got, &model.StatObsProp{
+			MeasurementMethod: c.mmethod,
+			ObservationPeriod: c.op,
+			Unit:              c.unit,
+		})
 		if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
 			t.Errorf("filterAndRank() got diff %+v", diff)
 		}

@@ -75,6 +75,42 @@
           "metaHash": 2071679530
         }
       }
+    },
+    "Count_Person_Unemployed": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {
+          "date": "2021-12",
+          "value": 6319000,
+          "metaHash": 3994166642
+        },
+        "geoId/06": {
+          "date": "2021-11",
+          "value": 1040477,
+          "metaHash": 2223217975
+        },
+        "geoId/0649670": {
+          "date": "2021-11",
+          "value": 1012,
+          "metaHash": 4038428712
+        }
+      }
+    },
+    "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {
+          "date": "2022-01-19",
+          "value": 68557114,
+          "metaHash": 1797387216
+        },
+        "geoId/06": {
+          "date": "2022-01-19",
+          "value": 7324358,
+          "metaHash": 1797387216
+        },
+        "geoId/0649670": {}
+      }
     }
   },
   "metadata": {
@@ -99,10 +135,21 @@
       "observationPeriod": "P1Y",
       "unit": "InternationalDollar"
     },
+    "1797387216": {
+      "importName": "NYT_COVID19",
+      "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+      "measurementMethod": "NYT_COVID19_GitHub"
+    },
     "2071679530": {
       "importName": "CensusACS1YearSurvey",
       "provenanceUrl": "https://www.census.gov/",
       "measurementMethod": "CensusACS1yrSurvey"
+    },
+    "2223217975": {
+      "importName": "BLS_LAUS",
+      "provenanceUrl": "https://www.bls.gov/lau/",
+      "measurementMethod": "BLSSeasonallyAdjusted",
+      "observationPeriod": "P1M"
     },
     "2869271313": {
       "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
@@ -118,6 +165,18 @@
       "importName": "OECDRegionalDemography",
       "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurementMethod": "OECDRegionalStatistics",
+      "observationPeriod": "P1Y"
+    },
+    "3994166642": {
+      "importName": "BLS_CPS",
+      "provenanceUrl": "https://www.bls.gov/cps/",
+      "measurementMethod": "BLSSeasonallyAdjusted",
+      "observationPeriod": "P3M"
+    },
+    "4038428712": {
+      "importName": "BLS_LAUS",
+      "provenanceUrl": "https://www.bls.gov/lau/",
+      "measurementMethod": "BLSSeasonallyUnadjusted",
       "observationPeriod": "P1Y"
     }
   }

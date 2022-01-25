@@ -29,57 +29,71 @@ import (
 func TestGetStatSet(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_stat_set")
-
-	for _, c := range []struct {
-		statVars   []string
-		places     []string
-		date       string
-		goldenFile string
-	}{
-		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita", "Annual_Generation_Electricity"},
-			[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
-			"",
-			"latest.json",
-		},
-		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
-			[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
-			"2010",
-			"2010.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		resp, err := client.GetStatSet(ctx, &pb.GetStatSetRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
-			Date:     c.date,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatSet: %s", err)
-			continue
-		}
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
-		var expected pb.GetStatSetResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_stat_set")
+
+		for _, c := range []struct {
+			statVars   []string
+			places     []string
+			date       string
+			goldenFile string
+		}{
+			{
+				[]string{
+					"Count_Person",
+					"Count_CriminalActivities_CombinedCrime",
+					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+					"Annual_Generation_Electricity",
+					"Count_Person_Unemployed",
+					"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+				},
+				[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
+				"",
+				"latest.json",
+			},
+			{
+				[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
+				[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
+				"2010",
+				"2010.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStatSet(ctx, &pb.GetStatSetRequest{
+				StatVars: c.statVars,
+				Places:   c.places,
+				Date:     c.date,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatSet: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+			var expected pb.GetStatSetResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

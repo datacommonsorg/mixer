@@ -1,0 +1,28 @@
+{
+  "data": {
+    "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_CriminalActivities_CombinedCrime": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_Person": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    }
+  }
+}

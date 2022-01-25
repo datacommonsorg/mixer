@@ -1,0 +1,97 @@
+{
+  "data": {
+    "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Annual_Generation_Electricity": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_CriminalActivities_CombinedCrime": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_Person": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_Person_Unemployed": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {
+          "date": "2021-12",
+          "value": 6319000,
+          "metaHash": 3994166642
+        },
+        "geoId/06": {
+          "date": "2021-11",
+          "value": 1040477,
+          "metaHash": 2223217975
+        },
+        "geoId/0649670": {
+          "date": "2021-11",
+          "value": 1012,
+          "metaHash": 4038428712
+        }
+      }
+    },
+    "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {
+          "date": "2022-01-22",
+          "value": 70468038,
+          "metaHash": 1797387216
+        },
+        "geoId/06": {
+          "date": "2022-01-22",
+          "value": 7660930,
+          "metaHash": 1797387216
+        },
+        "geoId/0649670": {}
+      }
+    }
+  },
+  "metadata": {
+    "1797387216": {
+      "importName": "NYT_COVID19",
+      "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+      "measurementMethod": "NYT_COVID19_GitHub"
+    },
+    "2223217975": {
+      "importName": "BLS_LAUS",
+      "provenanceUrl": "https://www.bls.gov/lau/",
+      "measurementMethod": "BLSSeasonallyAdjusted",
+      "observationPeriod": "P1M"
+    },
+    "3994166642": {
+      "importName": "BLS_CPS",
+      "provenanceUrl": "https://www.bls.gov/cps/",
+      "measurementMethod": "BLSSeasonallyAdjusted",
+      "observationPeriod": "P3M"
+    },
+    "4038428712": {
+      "importName": "BLS_LAUS",
+      "provenanceUrl": "https://www.bls.gov/lau/",
+      "measurementMethod": "BLSSeasonallyUnadjusted",
+      "observationPeriod": "P1Y"
+    }
+  }
+}
