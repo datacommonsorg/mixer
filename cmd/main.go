@@ -21,6 +21,7 @@ import (
 	"log"
 	"net"
 
+	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
@@ -119,7 +120,7 @@ func main() {
 		}
 		// Cache.
 		if *serveMixerService {
-			cache, err = server.NewCache(ctx, baseTable)
+			cache, err = server.NewCache(ctx, []*cbt.Table{baseTable})
 			if err != nil {
 				log.Fatalf("Failed to create cache: %v", err)
 			}
@@ -172,7 +173,7 @@ func main() {
 		}
 
 		// Create server object
-		mixerServer := server.NewMixerServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
+		mixerServer := server.NewMixerServer(bqClient, []*cbt.Table{baseTable}, branchTable, metadata, cache, memDb)
 		pb.RegisterMixerServer(srv, mixerServer)
 
 		// Subscribe to branch cache update
@@ -187,7 +188,7 @@ func main() {
 
 	// Register for Recon Service.
 	if *serveReconService {
-		reconServer := server.NewReconServer(baseTable)
+		reconServer := server.NewReconServer([]*cbt.Table{baseTable})
 		pb.RegisterReconServer(srv, reconServer)
 	}
 

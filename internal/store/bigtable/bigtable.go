@@ -32,19 +32,20 @@ type Group struct {
 	branchLock  sync.RWMutex
 }
 
+//  TableConfig represents the config for a list bigtables.
+type TableConfig struct {
+	Tables []string `json:"tables,omitempty"`
+}
+
 // NewBigtableGroup creates a BigtableGroup
 func NewBigtableGroup(
-	baseTable *cbt.Table,
+	baseTables []*cbt.Table,
 	branchTable *cbt.Table,
 ) *Group {
-	g := &Group{
-		baseTables:  []*cbt.Table{},
+	return &Group{
+		baseTables:  baseTables,
 		branchTable: branchTable,
 	}
-	if baseTable != nil {
-		g.baseTables = append(g.baseTables, baseTable)
-	}
-	return g
 }
 
 // BaseTables is the accessor for base bigtables

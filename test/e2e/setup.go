@@ -40,8 +40,9 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache bool
-	UseMemdb bool
+	UseCache       bool
+	UseMemdb       bool
+	UseImportGroup bool
 }
 
 // GenerateGolden is used to check whether generating golden
@@ -61,23 +62,27 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
-	useCache, useMemdb := false, false
+	useCache, useMemdb, useImportGroup := false, false, false
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useMemdb = option[0].UseMemdb
+		useImportGroup = option[0].UseImportGroup
 	}
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
+		"../../deploy/storage/bigtable_import_groups.json",
 		"../../deploy/mapping",
 		storeProject,
 		useCache,
 		useMemdb,
+		useImportGroup,
 	)
 }
 
 func setupInternal(
-	bq, bt, mcfPath, storeProject string, useCache, useMemdb bool) (
+	bq, bt, btJSON, mcfPath, storeProject string, useCache, useMemdb, useImportGroup bool,
+) (
 	pb.MixerClient, pb.ReconClient, error,
 ) {
 	ctx := context.Background()
@@ -86,21 +91,41 @@ func setupInternal(
 	baseTableName, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bt))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
+	baseTableJSON, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btJSON))
+	tableConfig := &bigtable.TableConfig{}
+	err := json.Unmarshal(baseTableJSON, &tableConfig)
+	if err != nil {
+		log.Fatalf("failed to read base table congi: %v", err)
+	}
+
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	baseTable, err := server.NewBtTable(
-		ctx, storeProject, baseInstance, strings.TrimSpace(string(baseTableName)))
+	branchTable, err := createBranchTable(ctx)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	branchTable, err := createBranchTable(ctx)
-	if err != nil {
-		return nil, nil, err
+	baseTables := []*cbt.Table{}
+
+	if useImportGroup {
+		for _, t := range tableConfig.Tables {
+			table, err := server.NewBtTable(ctx, storeProject, baseInstance, strings.TrimSpace(t))
+			if err != nil {
+				return nil, nil, err
+			}
+			baseTables = append(baseTables, table)
+		}
+	} else {
+		baseTable, err := server.NewBtTable(
+			ctx, storeProject, baseInstance, strings.TrimSpace(string(baseTableName)))
+		if err != nil {
+			return nil, nil, err
+		}
+		baseTables = append(baseTables, baseTable)
 	}
 
 	metadata, err := server.NewMetadata(
@@ -110,7 +135,7 @@ func setupInternal(
 	}
 	var cache *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, baseTable)
+		cache, err = server.NewCache(ctx, baseTables)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -124,7 +149,7 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	return newClient(bqClient, baseTable, branchTable, metadata, cache, memDb)
+	return newClient(bqClient, baseTables, branchTable, metadata, cache, memDb)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -153,14 +178,14 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 
 func newClient(
 	bqClient *bigquery.Client,
-	baseTable *cbt.Table,
+	baseTables []*cbt.Table,
 	branchTable *cbt.Table,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	mixerServer := server.NewMixerServer(bqClient, baseTable, branchTable, metadata, cache, memDb)
-	reconServer := server.NewReconServer(baseTable)
+	mixerServer := server.NewMixerServer(bqClient, baseTables, branchTable, metadata, cache, memDb)
+	reconServer := server.NewReconServer(baseTables)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, mixerServer)
 	pb.RegisterReconServer(srv, reconServer)
