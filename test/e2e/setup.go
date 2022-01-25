@@ -71,7 +71,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
-		"../../deploy/storage/bigtable.json",
+		"../../deploy/storage/bigtable_import_groups.json",
 		"../../deploy/mapping",
 		storeProject,
 		useCache,
