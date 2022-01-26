@@ -46,6 +46,16 @@ func main() {
 	ctx := context.Background()
 
 	{
+		// Get Version
+		req := &pb.GetVersionRequest{}
+		r, err := c.GetVersion(ctx, req)
+		if err != nil {
+			log.Fatalf("could not GetVersion: %s", err)
+		}
+		fmt.Printf("%s\n", r)
+	}
+
+	{
 		// Get Triples
 		req := &pb.GetTriplesRequest{
 			Dcids: []string{"dc/p/7c8egrk3ypkl5"},
