@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"testing"
 
+	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -99,7 +100,7 @@ func TestMerge(t *testing.T) {
 			t.Errorf("SetupBigtable(...) = %v", err)
 		}
 
-		store := store.NewStore(nil, nil, baseTable, branchTable)
+		store := store.NewStore(nil, nil, []*cbt.Table{baseTable}, branchTable)
 
 		got, err := GetPropertyLabels(ctx,
 			&pb.GetPropertyLabelsRequest{

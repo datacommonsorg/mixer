@@ -2101,12 +2101,20 @@
       "dcid": "Count_Person_16OrMoreYears_Female_Divorced"
     },
     {
+      "name": "16 Years or More, Female, Divorced in The Past 12 Months Population",
+      "dcid": "Count_Person_16OrMoreYears_Female_DivorcedInThePast12Months"
+    },
+    {
       "name": "16 Years or More, Female, Hispanic or Latino Population",
       "dcid": "Count_Person_16OrMoreYears_Female_HispanicOrLatino"
     },
     {
       "name": "16 Years or More, Female, Married And Not Separated Population",
       "dcid": "Count_Person_16OrMoreYears_Female_MarriedAndNotSeparated"
+    },
+    {
+      "name": "16 Years or More, Female, Married in The Past 12 Months Population",
+      "dcid": "Count_Person_16OrMoreYears_Female_MarriedInThePast12Months"
     },
     {
       "name": "16 Years or More, Female, Native Hawaiian or Other Pacific Islander Alone Population",
@@ -2139,14 +2147,6 @@
     {
       "name": "16 Years or More, Female, Widowed Population",
       "dcid": "Count_Person_16OrMoreYears_Female_Widowed"
-    },
-    {
-      "name": "16 Years or More, Female, With Earnings Population",
-      "dcid": "Count_Person_16OrMoreYears_Female_WithEarnings"
-    },
-    {
-      "name": "16 Years or More, Female, With Earnings, Full Time Year Round Worker Population",
-      "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
     },
     {
       "name": "16 Years or More, in Labor Force, Female, Divorced Population",
@@ -2343,6 +2343,14 @@
     {
       "name": "18 Years or Less, Female, Nursing Facilities Population",
       "dcid": "Count_Person_18OrLessYears_Female_ResidesInNursingFacilities"
+    },
+    {
+      "name": "18 Years or More, Female, Divorced in The Past 12 Months Population",
+      "dcid": "Count_Person_18OrMoreYears_Female_DivorcedInThePast12Months"
+    },
+    {
+      "name": "18 Years or More, Female, Married in The Past 12 Months Population",
+      "dcid": "Count_Person_18OrMoreYears_Female_MarriedInThePast12Months"
     },
     {
       "name": "20 - 21 Years, Not in Labor Force, Female Population",
@@ -3573,6 +3581,14 @@
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegreeOrHigher_Female"
     },
     {
+      "name": "Bachelors Degree or Higher, Female, Divorced in The Past 12 Months Population",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_DivorcedInThePast12Months"
+    },
+    {
+      "name": "Bachelors Degree or Higher, Female, Married in The Past 12 Months Population",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_MarriedInThePast12Months"
+    },
+    {
       "name": "Bachelors Degree, Female Population",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
     },
@@ -3983,22 +3999,6 @@
     {
       "name": "Count of 5 - 14 Years, V01-Y89 (External Causes of Morbidity And Mortality), Female",
       "dcid": "Count_Death_5To14Years_ExternalCauses_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, A00-B99 (Certain Infectious And Parasitic Diseases), Female",
-      "dcid": "Count_Death_55To64Years_CertainInfectiousParasiticDiseases_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, C00-D48 (Neoplasms), Female",
-      "dcid": "Count_Death_55To64Years_Neoplasms_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, D50-D89 (Diseases of The Blood And Blood-forming Organs And Certain Disorders Involving The Immune Mechanism), Female",
-      "dcid": "Count_Death_55To64Years_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female"
-    },
-    {
-      "name": "Count of 55 - 64 Years, E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Female",
-      "dcid": "Count_Death_55To64Years_EndocrineNutritionalMetabolicDiseases_Female"
     }
   ],
   "statVarGroups": [
@@ -4147,20 +4147,8 @@
       "dcid": "dc/g/CriminalIncidents_CrimeType-AllOtherLarceny_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Crime Type = Arson, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Arson_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Crime Type = Burglary, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-Burglary_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Counterfeiting or Forgery, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-CounterfeitingOrForgery_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Credit Card or Automated Teller Machine Fraud, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-CreditCardOrAutomatedTellerMachineFraud_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Crime Type = Destruction or Damage or Vandalism of Property, Targeted Gender = Female",
@@ -4187,10 +4175,6 @@
       "dcid": "dc/g/CriminalIncidents_CrimeType-ForcibleRape_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Crime Type = Impersonation, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Impersonation_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Crime Type = Intimidation, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-Intimidation_TargetedGender-Female"
     },
@@ -4199,32 +4183,8 @@
       "dcid": "dc/g/CriminalIncidents_CrimeType-KidnappingOrAbduction_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Crime Type = Motor Vehicle Theft, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-MotorVehicleTheft_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Murder And Non Negligent Manslaughter, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-MurderAndNonNegligentManslaughter_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Not Specified, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-NotSpecified_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Crime Type = Pornography or Obscene Material, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-PornographyOrObsceneMaterial_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Robbery, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Robbery_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Sexual Assault With An Object, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-SexualAssaultWithAnObject_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Shoplifting, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Shoplifting_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Crime Type = Simple Assault, Targeted Gender = Female",
@@ -4233,18 +4193,6 @@
     {
       "name": "Criminal Incidents With Crime Type = Theft From Building, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-TheftFromBuilding_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Theft From Motor Vehicle, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-TheftFromMotorVehicle_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Weapon Law Violations, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-WeaponLawViolations_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Wire Fraud, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-WireFraud_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Crime Type, Targeted Gender = Female",
@@ -5179,6 +5127,14 @@
       "dcid": "dc/g/Person_BachelorsDegreeMajor_Gender-Female"
     },
     {
+      "name": "Person With Children Status = With Own Children Under 18, Gender = Female",
+      "dcid": "dc/g/Person_ChildrenStatus-WithOwnChildrenUnder18_Gender-Female"
+    },
+    {
+      "name": "Person With Children Status, Gender = Female",
+      "dcid": "dc/g/Person_ChildrenStatus_Gender-Female"
+    },
+    {
       "name": "Person With Citizenship Status = Not A US Citizen, Gender = Female",
       "dcid": "dc/g/Person_CitizenshipStatus-NotAUSCitizen_Gender-Female"
     },
@@ -5531,6 +5487,10 @@
       "dcid": "dc/g/Person_Gender-Female_HouseholdType"
     },
     {
+      "name": "Person With Gender = Female, Household Type = Family Household",
+      "dcid": "dc/g/Person_Gender-Female_HouseholdType-FamilyHousehold"
+    },
+    {
       "name": "Person With Gender = Female, Household Type = Houseless",
       "dcid": "dc/g/Person_Gender-Female_HouseholdType-Houseless"
     },
@@ -5751,12 +5711,20 @@
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Divorced"
     },
     {
+      "name": "Person With Gender = Female, Marital Status = Divorced in The Past 12 Months",
+      "dcid": "dc/g/Person_Gender-Female_MaritalStatus-DivorcedInThePast12Months"
+    },
+    {
       "name": "Person With Gender = Female, Marital Status = Ever Married",
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-EverMarried"
     },
     {
       "name": "Person With Gender = Female, Marital Status = Married And Not Separated",
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-MarriedAndNotSeparated"
+    },
+    {
+      "name": "Person With Gender = Female, Marital Status = Married in The Past 12 Months",
+      "dcid": "dc/g/Person_Gender-Female_MaritalStatus-MarriedInThePast12Months"
     },
     {
       "name": "Person With Gender = Female, Marital Status = Never Married",
@@ -5793,6 +5761,26 @@
     {
       "name": "Person With Gender = Female, Nativity = Native",
       "dcid": "dc/g/Person_Gender-Female_Nativity-Native"
+    },
+    {
+      "name": "Person With Gender = Female, Occupancy Status",
+      "dcid": "dc/g/Person_Gender-Female_OccupancyStatus"
+    },
+    {
+      "name": "Person With Gender = Female, Occupancy Status = Occupied Housing Unit",
+      "dcid": "dc/g/Person_Gender-Female_OccupancyStatus-OccupiedHousingUnit"
+    },
+    {
+      "name": "Person With Gender = Female, Occupancy Tenure",
+      "dcid": "dc/g/Person_Gender-Female_OccupancyTenure"
+    },
+    {
+      "name": "Person With Gender = Female, Occupancy Tenure = Owner Occupied",
+      "dcid": "dc/g/Person_Gender-Female_OccupancyTenure-OwnerOccupied"
+    },
+    {
+      "name": "Person With Gender = Female, Occupancy Tenure = Renter Occupied",
+      "dcid": "dc/g/Person_Gender-Female_OccupancyTenure-RenterOccupied"
     },
     {
       "name": "Person With Gender = Female, Occupation",
@@ -6121,6 +6109,14 @@
     {
       "name": "Person With Gender = Female, Residence Type = Group Quarters",
       "dcid": "dc/g/Person_Gender-Female_ResidenceType-GroupQuarters"
+    },
+    {
+      "name": "Person With Gender = Female, Residence Type = Household",
+      "dcid": "dc/g/Person_Gender-Female_ResidenceType-Household"
+    },
+    {
+      "name": "Person With Gender = Female, Residence Type = Housing Unit",
+      "dcid": "dc/g/Person_Gender-Female_ResidenceType-HousingUnit"
     },
     {
       "name": "Person With Gender = Female, Residence Type = Institutionalized Group Quarters",
@@ -6507,20 +6503,8 @@
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-AllOtherLarceny_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Arson, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-Arson_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Burglary, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-Burglary_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Counterfeiting or Forgery, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-CounterfeitingOrForgery_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Credit Card or Automated Teller Machine Fraud, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-CreditCardOrAutomatedTellerMachineFraud_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Destruction or Damage or Vandalism of Property, Targeted Gender = Female",
@@ -6547,10 +6531,6 @@
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-ForcibleRape_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Impersonation, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-Impersonation_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Intimidation, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-Intimidation_TargetedGender-Female"
     },
@@ -6559,32 +6539,8 @@
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-KidnappingOrAbduction_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Motor Vehicle Theft, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-MotorVehicleTheft_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Murder And Non Negligent Manslaughter, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-MurderAndNonNegligentManslaughter_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Not Specified, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-NotSpecified_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Pornography or Obscene Material, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-PornographyOrObsceneMaterial_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Robbery, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-Robbery_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Sexual Assault With An Object, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-SexualAssaultWithAnObject_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Shoplifting, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-Shoplifting_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Simple Assault, Targeted Gender = Female",
@@ -6593,18 +6549,6 @@
     {
       "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Theft From Building, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-TheftFromBuilding_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Theft From Motor Vehicle, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-TheftFromMotorVehicle_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Weapon Law Violations, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-WeaponLawViolations_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type = Wire Fraud, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_CrimeType-WireFraud_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Bias Motivation = Gender, Crime Type, Targeted Gender = Female",
@@ -6671,20 +6615,8 @@
       "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-AllOtherLarceny_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Arson, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-Arson_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Bias Motivation, Crime Type = Burglary, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-Burglary_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Counterfeiting or Forgery, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-CounterfeitingOrForgery_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Credit Card or Automated Teller Machine Fraud, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-CreditCardOrAutomatedTellerMachineFraud_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Bias Motivation, Crime Type = Destruction or Damage or Vandalism of Property, Targeted Gender = Female",
@@ -6711,10 +6643,6 @@
       "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-ForcibleRape_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Impersonation, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-Impersonation_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Bias Motivation, Crime Type = Intimidation, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-Intimidation_TargetedGender-Female"
     },
@@ -6723,32 +6651,8 @@
       "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-KidnappingOrAbduction_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Motor Vehicle Theft, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-MotorVehicleTheft_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Murder And Non Negligent Manslaughter, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-MurderAndNonNegligentManslaughter_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Not Specified, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-NotSpecified_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Bias Motivation, Crime Type = Pornography or Obscene Material, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-PornographyOrObsceneMaterial_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Robbery, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-Robbery_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Sexual Assault With An Object, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-SexualAssaultWithAnObject_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Shoplifting, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-Shoplifting_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Bias Motivation, Crime Type = Simple Assault, Targeted Gender = Female",
@@ -6757,18 +6661,6 @@
     {
       "name": "Criminal Incidents With Bias Motivation, Crime Type = Theft From Building, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-TheftFromBuilding_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Theft From Motor Vehicle, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-TheftFromMotorVehicle_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Weapon Law Violations, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-WeaponLawViolations_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Bias Motivation, Crime Type = Wire Fraud, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_BiasMotivation_CrimeType-WireFraud_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Bias Motivation, Offender Ethnicity = Hispanic or Latino, Targeted Gender = Female",
@@ -6863,14 +6755,6 @@
       "dcid": "dc/g/CriminalIncidents_CrimeType-AllOtherLarceny_IsHateCrime_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Crime Type = Arson, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Arson_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Arson, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Arson_IsHateCrime_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Crime Type = Burglary, Offender Ethnicity = Not Hispanic or Latino, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-Burglary_OffenderEthnicity-NotHispanicOrLatino_TargetedGender-Female"
     },
@@ -6901,22 +6785,6 @@
     {
       "name": "Criminal Incidents With Crime Type = Burglary, is Hate Crime, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-Burglary_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Counterfeiting or Forgery, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-CounterfeitingOrForgery_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Counterfeiting or Forgery, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-CounterfeitingOrForgery_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Credit Card or Automated Teller Machine Fraud, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-CreditCardOrAutomatedTellerMachineFraud_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Credit Card or Automated Teller Machine Fraud, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Crime Type = Destruction or Damage or Vandalism of Property, Offender Ethnicity = Hispanic or Latino, Targeted Gender = Female",
@@ -7063,14 +6931,6 @@
       "dcid": "dc/g/CriminalIncidents_CrimeType-ForcibleRape_IsHateCrime_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Crime Type = Impersonation, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Impersonation_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Impersonation, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Impersonation_IsHateCrime_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Crime Type = Intimidation, Offender Ethnicity = Hispanic or Latino, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-Intimidation_OffenderEthnicity-HispanicOrLatino_TargetedGender-Female"
     },
@@ -7135,30 +6995,6 @@
       "dcid": "dc/g/CriminalIncidents_CrimeType-KidnappingOrAbduction_IsHateCrime_TargetedGender-Female"
     },
     {
-      "name": "Criminal Incidents With Crime Type = Motor Vehicle Theft, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-MotorVehicleTheft_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Motor Vehicle Theft, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-MotorVehicleTheft_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Murder And Non Negligent Manslaughter, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-MurderAndNonNegligentManslaughter_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Murder And Non Negligent Manslaughter, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-MurderAndNonNegligentManslaughter_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Not Specified, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-NotSpecified_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Not Specified, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-NotSpecified_IsHateCrime_TargetedGender-Female"
-    },
-    {
       "name": "Criminal Incidents With Crime Type = Pornography or Obscene Material, Offender Ethnicity = Unknown Ethnicity, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-PornographyOrObsceneMaterial_OffenderEthnicity-UnknownEthnicity_TargetedGender-Female"
     },
@@ -7181,30 +7017,6 @@
     {
       "name": "Criminal Incidents With Crime Type = Pornography or Obscene Material, is Hate Crime, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-PornographyOrObsceneMaterial_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Robbery, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Robbery_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Robbery, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Robbery_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Sexual Assault With An Object, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-SexualAssaultWithAnObject_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Sexual Assault With An Object, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-SexualAssaultWithAnObject_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Shoplifting, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Shoplifting_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Shoplifting, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Shoplifting_IsHateCrime_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Crime Type = Simple Assault, Offender Ethnicity = Hispanic or Latino, Targeted Gender = Female",
@@ -7261,30 +7073,6 @@
     {
       "name": "Criminal Incidents With Crime Type = Theft From Building, is Hate Crime, Targeted Gender = Female",
       "dcid": "dc/g/CriminalIncidents_CrimeType-TheftFromBuilding_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Theft From Motor Vehicle, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-TheftFromMotorVehicle_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Theft From Motor Vehicle, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-TheftFromMotorVehicle_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Weapon Law Violations, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-WeaponLawViolations_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Weapon Law Violations, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-WeaponLawViolations_IsHateCrime_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Wire Fraud, is Hate Crime = True, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-WireFraud_IsHateCrime-True_TargetedGender-Female"
-    },
-    {
-      "name": "Criminal Incidents With Crime Type = Wire Fraud, is Hate Crime, Targeted Gender = Female",
-      "dcid": "dc/g/CriminalIncidents_CrimeType-WireFraud_IsHateCrime_TargetedGender-Female"
     },
     {
       "name": "Criminal Incidents With Crime Type, Offender Ethnicity = Hispanic or Latino, Targeted Gender = Female",
@@ -8001,6 +7789,218 @@
     {
       "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female",
       "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/J00J98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/K00K92_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/M00M99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/N00N98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/Q00Q99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/R00R99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = U00-U99 (Codes for Special Purposes), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/U00U99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath-ICD10/V01Y89_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Cause of Death, Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_CauseOfDeath_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = American Indian And Alaska Native Alone",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = Asian or Pacific Islander",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-AsianOrPacificIslander"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = Black or African American",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-BlackOrAfricanAmerican"
+    },
+    {
+      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female, Race = White",
+      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female_Race-White"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/A00B99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/C00D48_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = D50-D89 (Diseases of The Blood And Blood-forming Organs And Certain Disorders Involving The Immune Mechanism), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/D50D89_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/E00E88_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/F01F99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/G00G98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/I00I99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/J00J98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/K00K92_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = L00-L98 (Diseases of The Skin And Subcutaneous Tissue), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/L00L98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/M00M99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/N00N98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/R00R99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath-ICD10/V01Y89_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Cause of Death, Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_CauseOfDeath_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Gender = Female, Race",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_Gender-Female_Race"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Gender = Female, Race = American Indian And Alaska Native Alone",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_Gender-Female_Race-AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Gender = Female, Race = Asian or Pacific Islander",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_Gender-Female_Race-AsianOrPacificIslander"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Gender = Female, Race = Black or African American",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_Gender-Female_Race-BlackOrAfricanAmerican"
+    },
+    {
+      "name": "Mortality Event With Age = 65 - 74 Years, Gender = Female, Race = White",
+      "dcid": "dc/g/MortalityEvent_Age-Years65To74_Gender-Female_Race-White"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = A00-B99 (Certain Infectious And Parasitic Diseases), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/A00B99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = C00-D48 (Neoplasms), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/C00D48_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = D50-D89 (Diseases of The Blood And Blood-forming Organs And Certain Disorders Involving The Immune Mechanism), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/D50D89_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = E00-E88 (Endocrine, Nutritional And Metabolic Diseases), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/E00E88_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = F01-F99 (Mental And Behavioural Disorders), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/F01F99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = G00-G98 (Diseases of The Nervous System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/G00G98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = I00-I99 (Diseases of The Circulatory System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/I00I99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = J00-J98 (Diseases of The Respiratory System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/J00J98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = K00-K92 (Diseases of The Digestive System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/K00K92_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = L00-L98 (Diseases of The Skin And Subcutaneous Tissue), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/L00L98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = M00-M99 (Diseases of The Musculoskeletal System And Connective Tissue), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/M00M99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = N00-N98 (Diseases of The Genitourinary System), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/N00N98_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/R00R99_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath-ICD10/V01Y89_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Cause of Death, Gender = Female",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_CauseOfDeath_Gender-Female"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Gender = Female, Race",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_Gender-Female_Race"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Gender = Female, Race = American Indian And Alaska Native Alone",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_Gender-Female_Race-AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Gender = Female, Race = Asian or Pacific Islander",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_Gender-Female_Race-AsianOrPacificIslander"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Gender = Female, Race = Black or African American",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_Gender-Female_Race-BlackOrAfricanAmerican"
+    },
+    {
+      "name": "Mortality Event With Age = 75 - 84 Years, Gender = Female, Race = White",
+      "dcid": "dc/g/MortalityEvent_Age-Years75To84_Gender-Female_Race-White"
     }
   ]
 }

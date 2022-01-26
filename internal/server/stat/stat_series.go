@@ -56,11 +56,11 @@ func GetStatSeries(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: stat_var")
 	}
-	filterProp := &model.ObsProp{
-		Mmethod: in.GetMeasurementMethod(),
-		Operiod: in.GetObservationPeriod(),
-		Unit:    in.GetUnit(),
-		Sfactor: in.GetScalingFactor(),
+	filterProp := &model.StatObsProp{
+		MeasurementMethod: in.GetMeasurementMethod(),
+		ObservationPeriod: in.GetObservationPeriod(),
+		Unit:              in.GetUnit(),
+		ScalingFactor:     in.GetScalingFactor(),
 	}
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
@@ -143,10 +143,11 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: stat_var")
 	}
-	filterProp := &model.ObsProp{
-		Mmethod: in.GetMeasurementMethod(),
-		Operiod: in.GetObservationPeriod(),
-		Unit:    in.GetUnit(),
+	filterProp := &model.StatObsProp{
+		MeasurementMethod: in.GetMeasurementMethod(),
+		ObservationPeriod: in.GetObservationPeriod(),
+		Unit:              in.GetUnit(),
+		ScalingFactor:     in.GetScalingFactor(),
 	}
 	var rowList cbt.RowList
 	var keyTokens map[string]*util.PlaceStatVar
@@ -174,7 +175,7 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 			result[place] = &model.GetStatsResponse{
 				PlaceName: obsSeries.PlaceName,
 			}
-			if obsSeries.SourceSeries != nil {
+			if obsSeries.SourceSeries != nil && len(obsSeries.SourceSeries) > 0 {
 				result[place].Data = obsSeries.SourceSeries[0].Val
 				result[place].ProvenanceURL = obsSeries.SourceSeries[0].ProvenanceURL
 			}

@@ -97,7 +97,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "numDescendentStatVars": 7581
+      "numDescendentStatVars": 7613
     },
     {
       "id": "dc/g/Person_BenefitsStatus",
@@ -116,6 +116,12 @@
       "specializedEntity": "Births",
       "displayName": "Births",
       "numDescendentStatVars": 10
+    },
+    {
+      "id": "dc/g/Person_ChildrenStatus",
+      "specializedEntity": "Children Status",
+      "displayName": "Person by Children Status",
+      "numDescendentStatVars": 4
     },
     {
       "id": "dc/g/Commute",
@@ -145,7 +151,7 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "numDescendentStatVars": 6189
+      "numDescendentStatVars": 6265
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -163,7 +169,7 @@
       "id": "dc/g/Person_HouseholdType",
       "specializedEntity": "Household Type",
       "displayName": "Person by Household Type",
-      "numDescendentStatVars": 440
+      "numDescendentStatVars": 444
     },
     {
       "id": "dc/g/ImmigrationAndCitizenship",
@@ -199,7 +205,7 @@
       "id": "dc/g/Person_MaritalStatus",
       "specializedEntity": "Marital Status",
       "displayName": "Person by Marital Status",
-      "numDescendentStatVars": 429
+      "numDescendentStatVars": 505
     },
     {
       "id": "dc/g/Person_MemberStatus",
@@ -217,7 +223,7 @@
       "id": "dc/g/Person_PovertyStatus",
       "specializedEntity": "Poverty Status",
       "displayName": "Person by Poverty Status",
-      "numDescendentStatVars": 883
+      "numDescendentStatVars": 891
     },
     {
       "id": "dc/g/Person_Race",
@@ -229,11 +235,11 @@
       "id": "dc/g/Residence",
       "specializedEntity": "Residence",
       "displayName": "Residence",
-      "numDescendentStatVars": 1755
+      "numDescendentStatVars": 1783
     }
   ],
   "parentStatVarGroups": [
     "dc/g/Root"
   ],
-  "numDescendentStatVars": 11757
+  "numDescendentStatVars": 11833
 }

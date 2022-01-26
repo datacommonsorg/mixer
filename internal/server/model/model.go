@@ -108,10 +108,10 @@ type GetStatsResponse struct {
 	ProvenanceURL string             `json:"provenanceUrl,omitempty"`
 }
 
-// ObsProp represents properties for a StatObservation.
-type ObsProp struct {
-	Mmethod string
-	Operiod string
-	Unit    string
-	Sfactor string
+// StatObsProp represents properties for a StatVarObservation.
+type StatObsProp struct {
+	MeasurementMethod string
+	ObservationPeriod string
+	Unit              string
+	ScalingFactor     string
 }

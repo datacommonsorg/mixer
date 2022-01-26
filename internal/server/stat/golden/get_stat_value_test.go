@@ -29,106 +29,99 @@ import (
 func TestGetStatValue(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_stat_value")
-
-	for _, c := range []struct {
-		statVar    string
-		place      string
-		goldenFile string
-		mmethod    string
-		wantErr    bool
-	}{
-		{
-			"Count_Person",
-			"country/USA",
-			"count_person.json",
-			"",
-			false,
-		},
-		{
-			"Count_CriminalActivities_CombinedCrime",
-			"geoId/06",
-			"total_crimes.json",
-			"",
-			false,
-		},
-		{
-			"Annual_Generation_Electricity",
-			"geoId/06",
-			"electricity_generation.json",
-			"",
-			false,
-		},
-		{
-			"Median_Age_Person",
-			"geoId/0649670",
-			"median_age.json",
-			"",
-			false,
-		},
-		{
-			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-			"country/USA",
-			"gdp.json",
-			"",
-			false,
-		},
-		{
-			"Count_Person",
-			"country/USA",
-			"empty.json",
-			"bad_mmethod",
-			true,
-		},
-		{
-			"BadStatsVar",
-			"geoId/06",
-			"",
-			"",
-			true,
-		},
-		{
-			"Count_Person",
-			"badPlace",
-			"",
-			"",
-			true,
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		resp, err := client.GetStatValue(ctx, &pb.GetStatValueRequest{
-			StatVar:           c.statVar,
-			Place:             c.place,
-			MeasurementMethod: c.mmethod,
-		})
-		if c.wantErr {
-			if err == nil {
-				t.Errorf("Expect GetStatValue to error out but it succeed")
-			}
-			continue
-		}
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatValue: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
-		var expected pb.GetStatValueResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_stat_value")
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		for _, c := range []struct {
+			statVar    string
+			place      string
+			goldenFile string
+			mmethod    string
+		}{
+			{
+				"Count_Person",
+				"country/USA",
+				"count_person.json",
+				"",
+			},
+			{
+				"Count_CriminalActivities_CombinedCrime",
+				"geoId/06",
+				"total_crimes.json",
+				"",
+			},
+			{
+				"Annual_Generation_Electricity",
+				"geoId/06",
+				"electricity_generation.json",
+				"",
+			},
+			{
+				"Median_Age_Person",
+				"geoId/0649670",
+				"median_age.json",
+				"",
+			},
+			{
+				"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+				"country/USA",
+				"gdp.json",
+				"",
+			},
+			{
+				"Count_Person",
+				"country/USA",
+				"empty.json",
+				"bad_mmethod",
+			},
+			{
+				"dummy_sv",
+				"dummy_place",
+				"dummy.json",
+				"",
+			},
+			{
+				"Count_Person_Unemployed",
+				"country/USA",
+				"umemployed.json",
+				"",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStatValue(ctx, &pb.GetStatValueRequest{
+				StatVar:           c.statVar,
+				Place:             c.place,
+				MeasurementMethod: c.mmethod,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatValue: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+			var expected pb.GetStatValueResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

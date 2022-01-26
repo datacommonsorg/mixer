@@ -45,11 +45,11 @@ func GetStatValue(ctx context.Context, in *pb.GetStatValueRequest, store *store.
 			"Missing required argument: stat_var")
 	}
 	date := in.GetDate()
-	filterProp := &model.ObsProp{
-		Mmethod: in.GetMeasurementMethod(),
-		Operiod: in.GetObservationPeriod(),
-		Unit:    in.GetUnit(),
-		Sfactor: in.GetScalingFactor(),
+	filterProp := &model.StatObsProp{
+		MeasurementMethod: in.GetMeasurementMethod(),
+		ObservationPeriod: in.GetObservationPeriod(),
+		Unit:              in.GetUnit(),
+		ScalingFactor:     in.GetScalingFactor(),
 	}
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
@@ -58,17 +58,19 @@ func GetStatValue(ctx context.Context, in *pb.GetStatValueRequest, store *store.
 	if err != nil {
 		return nil, err
 	}
+	result := &pb.GetStatValueResponse{}
 	obsTimeSeries = btData[place][statVar]
 	if obsTimeSeries == nil {
-		return nil, status.Errorf(
-			codes.NotFound, "No data for %s, %s", place, statVar)
+		return result, nil
 	}
 	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
-	result, err := getValueFromBestSource(obsTimeSeries, date)
+	value, err := getValueFromBestSource(obsTimeSeries, date)
 	if err != nil {
-		return nil, err
+		log.Println(err)
+		return result, nil
 	}
-	return &pb.GetStatValueResponse{Value: result}, nil
+	result.Value = value
+	return result, nil
 }
 
 func getStatSet(

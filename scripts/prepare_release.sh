@@ -49,7 +49,7 @@ function commit() {
   git commit -a -m "Data Release: $VERSION"
 }
 
-update_version
+# update_version
 update_proto
 update_golden
 commit
