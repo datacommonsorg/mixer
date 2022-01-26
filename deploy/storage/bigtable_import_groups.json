@@ -2,6 +2,7 @@
   "tables": [
     "borgcron_frequent_2022_01_24_15_19_06",
     "borgcron_us_employment_2022_01_24_15_33_49",
-    "borgcron_covid19_2022_01_24_15_33_49"
+    "borgcron_covid19_2022_01_24_15_33_49",
+    "borgcron_infrequent_2022_01_25_10_39_29"
   ]
 }
