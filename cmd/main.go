@@ -30,7 +30,6 @@ import (
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
-	"cloud.google.com/go/bigtable"
 	"cloud.google.com/go/profiler"
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
@@ -53,7 +52,7 @@ var (
 	useBaseBt     = flag.Bool("use_base_bt", true, "Use base bigtable cache")
 	baseTableName = flag.String("base_table", "", "Base cache Bigtable table.")
 	// Branch Bigtable Cache
-	useBranchBt = flag.Bool("use_branch_bt", false, "Use branch bigtable cache")
+	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// GCS to hold memdb data.
 	// Note GCS bucket and pubsub should be within the mixer project.
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
@@ -109,8 +108,14 @@ func main() {
 	// Create grpc server.
 	srv := grpc.NewServer(opts...)
 
+	// Metadata.
+	metadata, err := server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
+	if err != nil {
+		log.Fatalf("Failed to create metadata: %v", err)
+	}
+
 	// Base Bigtable cache
-	var baseTable *bigtable.Table
+	var baseTable *cbt.Table
 	var cache *resource.Cache
 	if *useBaseBt {
 		// Base cache
@@ -118,6 +123,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
+		metadata.BaseTables = []string{*baseTableName}
 		// Cache.
 		if *serveMixerService {
 			cache, err = server.NewCache(ctx, []*cbt.Table{baseTable})
@@ -145,21 +151,15 @@ func main() {
 
 		// BigQuery.
 		var bqClient *bigquery.Client
-		var metadata *resource.Metadata
 		if *useBigquery {
 			bqClient, err = bigquery.NewClient(ctx, *mixerProject)
 			if err != nil {
 				log.Fatalf("Failed to create Bigquery client: %v", err)
 			}
-			// Metadata.
-			metadata, err = server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
-			if err != nil {
-				log.Fatalf("Failed to create metadata: %v", err)
-			}
 		}
 
 		// Branch Bigtable cache
-		var branchTable *bigtable.Table
+		var branchTable *cbt.Table
 		if *useBranchBt {
 			branchTableName, err := server.ReadBranchTableName(
 				ctx, branchCacheVersionBucket, branchCacheVersionFile)
@@ -170,6 +170,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to create BigTable client: %v", err)
 			}
+			metadata.BranchTable = branchTableName
 		}
 
 		// Create server object
