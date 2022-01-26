@@ -2,8 +2,16 @@
   "data": {
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
       "stat": {
-        "country/FRA": {},
-        "country/USA": {},
+        "country/FRA": {
+          "date": "2019",
+          "value": 50400,
+          "metaHash": 1642072667
+        },
+        "country/USA": {
+          "date": "2019",
+          "value": 66060,
+          "metaHash": 1642072667
+        },
         "geoId/06": {},
         "geoId/0649670": {}
       }
@@ -11,25 +19,61 @@
     "Annual_Generation_Electricity": {
       "stat": {
         "country/FRA": {},
-        "country/USA": {},
-        "geoId/06": {},
+        "country/USA": {
+          "date": "2020",
+          "value": 4009084999080,
+          "metaHash": 550825656
+        },
+        "geoId/06": {
+          "date": "2020",
+          "value": 194110262920,
+          "metaHash": 550825656
+        },
         "geoId/0649670": {}
       }
     },
     "Count_CriminalActivities_CombinedCrime": {
       "stat": {
         "country/FRA": {},
-        "country/USA": {},
-        "geoId/06": {},
-        "geoId/0649670": {}
+        "country/USA": {
+          "date": "2019",
+          "value": 8132863,
+          "metaHash": 3716017963
+        },
+        "geoId/06": {
+          "date": "2019",
+          "value": 1095445,
+          "metaHash": 481049291
+        },
+        "geoId/0649670": {
+          "date": "2019",
+          "value": 2634,
+          "metaHash": 481049291
+        }
       }
     },
     "Count_Person": {
       "stat": {
-        "country/FRA": {},
-        "country/USA": {},
-        "geoId/06": {},
-        "geoId/0649670": {}
+        "country/FRA": {
+          "date": "2020",
+          "value": 67391582,
+          "metaHash": 3901933017
+        },
+        "country/USA": {
+          "date": "2020",
+          "value": 331449281,
+          "metaHash": 2869271313
+        },
+        "geoId/06": {
+          "date": "2020",
+          "value": 39538223,
+          "metaHash": 319306388
+        },
+        "geoId/0649670": {
+          "date": "2020",
+          "value": 82376,
+          "metaHash": 2071679530
+        }
       }
     },
     "Count_Person_Unemployed": {
@@ -70,16 +114,58 @@
     }
   },
   "metadata": {
+    "319306388": {
+      "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602",
+      "measurementMethod": "CensusACS5yrSurveySubjectTable"
+    },
+    "481049291": {
+      "importName": "FBIGovCrime",
+      "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+      "observationPeriod": "P1Y"
+    },
+    "550825656": {
+      "importName": "EIA_Electricity",
+      "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "1642072667": {
+      "importName": "WorldDevelopmentIndicators",
+      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observationPeriod": "P1Y",
+      "unit": "InternationalDollar"
+    },
     "1797387216": {
       "importName": "NYT_COVID19",
       "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
       "measurementMethod": "NYT_COVID19_GitHub"
+    },
+    "2071679530": {
+      "importName": "CensusACS1YearSurvey",
+      "provenanceUrl": "https://www.census.gov/",
+      "measurementMethod": "CensusACS1yrSurvey"
     },
     "2223217975": {
       "importName": "BLS_LAUS",
       "provenanceUrl": "https://www.bls.gov/lau/",
       "measurementMethod": "BLSSeasonallyAdjusted",
       "observationPeriod": "P1M"
+    },
+    "2869271313": {
+      "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603",
+      "measurementMethod": "CensusACS5yrSurveySubjectTable"
+    },
+    "3716017963": {
+      "importName": "FBIGovCrime_AggCountry",
+      "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+      "observationPeriod": "P1Y"
+    },
+    "3901933017": {
+      "importName": "OECDRegionalDemography",
+      "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurementMethod": "OECDRegionalStatistics",
+      "observationPeriod": "P1Y"
     },
     "3994166642": {
       "importName": "BLS_CPS",
