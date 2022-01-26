@@ -278,15 +278,15 @@ func MergeDedupe(strList ...[]string) []string {
 	m := map[string]struct{}{}
 	result := strList[0]
 	for i, str := range strList {
-		// Initialize the set map.
 		for _, s := range str {
 			if i == 0 {
+				// Initialize the set map.
 				m[s] = struct{}{}
 			} else {
 				if _, ok := m[s]; !ok {
 					result = append(result, s)
+					m[s] = struct{}{}
 				}
-				m[s] = struct{}{}
 			}
 		}
 	}
