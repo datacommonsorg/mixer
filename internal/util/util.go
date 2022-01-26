@@ -270,8 +270,11 @@ func bToMb(b uint64) uint64 {
 	return b / 1024 / 1024
 }
 
-// MergeDedupe merges two string slices and remove duplicate elements.
+// MergeDedupe merges a list of string slices and remove duplicate elements.
 func MergeDedupe(strList ...[]string) []string {
+	if len(strList) == 0 {
+		return []string{}
+	}
 	m := map[string]struct{}{}
 	result := strList[0]
 	for i, str := range strList {
