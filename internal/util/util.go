@@ -271,17 +271,23 @@ func bToMb(b uint64) uint64 {
 }
 
 // MergeDedupe merges two string slices and remove duplicate elements.
-func MergeDedupe(s1 []string, s2 []string) []string {
+func MergeDedupe(strList ...[]string) []string {
 	m := map[string]struct{}{}
-	for _, s := range s1 {
-		m[s] = struct{}{}
-	}
-	for _, s := range s2 {
-		if _, ok := m[s]; !ok {
-			s1 = append(s1, s)
+	result := strList[0]
+	for i, str := range strList {
+		// Initialize the set map.
+		for _, s := range str {
+			if i == 0 {
+				m[s] = struct{}{}
+			} else {
+				if _, ok := m[s]; !ok {
+					result = append(result, s)
+				}
+				m[s] = struct{}{}
+			}
 		}
 	}
-	return s1
+	return result
 }
 
 // Sample constructs a sampled protobuf message based on the sampling strategy.

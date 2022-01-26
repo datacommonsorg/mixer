@@ -40,8 +40,7 @@ func TestGetStatSetSeries(t *testing.T) {
 			t.Fatalf("Failed to set up mixer and client")
 		}
 		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_stat_set_series")
+		goldenPath := path.Join(path.Dir(filename), "get_stat_set_series")
 
 		for _, c := range []struct {
 			statVars     []string
