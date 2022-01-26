@@ -52,6 +52,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 		return
 	}
 	s.store.BtGroup.UpdateBranchTable(branchTable)
+	s.metadata.BranchTable = branchTableName
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.

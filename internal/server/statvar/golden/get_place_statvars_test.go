@@ -16,85 +16,92 @@ package golden
 
 import (
 	"context"
+	"path"
+	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetPlaceStatVars(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup(&e2e.TestOption{UseMemdb: true})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
 
-	for _, c := range []struct {
-		dcids    []string
-		want     []string
-		minCount int
-		wanterr  bool
-	}{
-		{
-			[]string{"geoId/05"},
-			[]string{"Count_Person"},
-			1000,
-			false,
-		},
-		{
-			[]string{"geoId/06085"},
-			[]string{"Count_Person"},
-			1000,
-			false,
-		},
-		{
-			[]string{"country/ALB"},
-			[]string{"GiniIndex_EconomicActivity", "Test_Stat_Var_1"},
-			0,
-			false,
-		},
-		{
-			[]string{"invalid"},
-			[]string{},
-			0,
-			false,
-		},
-		{
-			[]string{},
-			[]string{},
-			0,
-			true,
-		},
+	for _, opt := range []*e2e.TestOption{
+		{UseMemdb: true},
+		{UseMemdb: true, UseImportGroup: true},
 	} {
-
-		req := &pb.GetPlaceStatVarsRequest{
-			Dcids: c.dcids,
-		}
-		resp, err := client.GetPlaceStatVars(ctx, req)
-		if c.wanterr {
-			if err == nil {
-				t.Errorf("Expect to get error for GetPlaceStatsVar() but succeed")
-			}
-			continue
-		}
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("Could not GetPlaceStatsVar: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		for dcid, place := range resp.Places {
-			if len(place.StatVars) < c.minCount {
-				t.Errorf("%s has less than %d stats vars", dcid, c.minCount)
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(path.Dir(filename), "get_place_stat_vars")
+
+		for _, c := range []struct {
+			dcids      []string
+			goldenFile string
+			wanterr    bool
+		}{
+			{
+				[]string{"geoId/05"},
+				"california.json",
+				false,
+			},
+			{
+				[]string{"geoId/06085"},
+				"santa_clara.json",
+				false,
+			},
+			{
+				[]string{"country/ALB"},
+				"alb.json",
+				false,
+			},
+			{
+				[]string{"invalid"},
+				"invalid.json",
+				false,
+			},
+			{
+				[]string{},
+				"dummmy.json",
+				true,
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
-			statsVarSet := map[string]bool{}
-			for _, statsVar := range place.StatVars {
-				statsVarSet[statsVar] = true
+			req := &pb.GetPlaceStatVarsRequest{
+				Dcids: c.dcids,
 			}
-			for _, statsVar := range c.want {
-				if _, ok := statsVarSet[statsVar]; !ok {
-					t.Errorf("%s is not in the stats var list of %s", statsVar, dcid)
-					continue
+			resp, err := client.GetPlaceStatVars(ctx, req)
+			if c.wanterr {
+				if err == nil {
+					t.Errorf("Expect to get error for GetPlaceStatsVar() but succeed")
 				}
+				continue
+			}
+			if err != nil {
+				t.Errorf("Could not GetPlaceStatsVar: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected pb.GetPlaceStatVarsResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
 			}
 		}
 	}
