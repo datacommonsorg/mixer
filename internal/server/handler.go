@@ -261,10 +261,11 @@ func (s *Server) GetVersion(
 	ctx context.Context, in *pb.GetVersionRequest,
 ) (*pb.GetVersionResponse, error) {
 	return &pb.GetVersionResponse{
-		Store:    os.Getenv("STORE_PROJECT"),
-		BigQuery: os.Getenv("BIG_QUERY"),
-		BigTable: os.Getenv("BIG_TABLE"),
-		GitHash:  os.Getenv("MIXER_HASH"),
+		Store:       s.metadata.BtProject,
+		BigQuery:    s.metadata.Bq,
+		BaseTables:  s.metadata.BaseTables,
+		BranchTable: s.metadata.BranchTable,
+		GitHash:     os.Getenv("MIXER_HASH"),
 	}, nil
 }
 
