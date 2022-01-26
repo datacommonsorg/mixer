@@ -34,19 +34,19 @@ func lowQualityPopulationImport(importName string) bool {
 }
 
 // Filter a list of source series given the observation properties.
-func filterSeries(in []*model.SourceSeries, prop *model.ObsProp) []*model.SourceSeries {
+func filterSeries(in []*model.SourceSeries, prop *model.StatObsProp) []*model.SourceSeries {
 	result := []*model.SourceSeries{}
 	for _, series := range in {
-		if prop.Mmethod != "" && prop.Mmethod != series.MeasurementMethod {
+		if prop.MeasurementMethod != "" && prop.MeasurementMethod != series.MeasurementMethod {
 			continue
 		}
-		if prop.Operiod != "" && prop.Operiod != series.ObservationPeriod {
+		if prop.ObservationPeriod != "" && prop.ObservationPeriod != series.ObservationPeriod {
 			continue
 		}
 		if prop.Unit != "" && prop.Unit != series.Unit {
 			continue
 		}
-		if prop.Sfactor != "" && prop.Sfactor != series.ScalingFactor {
+		if prop.ScalingFactor != "" && prop.ScalingFactor != series.ScalingFactor {
 			continue
 		}
 		result = append(result, series)
@@ -55,7 +55,7 @@ func filterSeries(in []*model.SourceSeries, prop *model.ObsProp) []*model.Source
 }
 
 // FilterAndRank filters and ranks ObsTimeSeries in place.
-func FilterAndRank(in *model.ObsTimeSeries, prop *model.ObsProp) {
+func FilterAndRank(in *model.ObsTimeSeries, prop *model.StatObsProp) {
 	if in == nil {
 		return
 	}

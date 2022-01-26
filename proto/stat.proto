@@ -213,6 +213,9 @@ message GetStatsRequest {
   // (Optional) The observation period of the observation. If not specified,
   // stats series with any observation period could be returned.
   string observation_period = 6;
+
+  // (optional) scaling factor of the observation.
+  string scaling_factor = 7;
 }
 
 // Response of GetStats
