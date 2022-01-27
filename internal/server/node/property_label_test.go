@@ -41,7 +41,7 @@ func TestMerge(t *testing.T) {
 			"geoId/06",
 			&model.PropLabelCache{
 				InLabels:  []string{"containedIn"},
-				OutLabels: []string{"containedIn", "name", "longitude"},
+				OutLabels: []string{"containedIn", "longitude", "name"},
 			},
 			&model.PropLabelCache{
 				InLabels:  []string{"containedIn"},
@@ -52,7 +52,7 @@ func TestMerge(t *testing.T) {
 			"bio/tiger",
 			&model.PropLabelCache{
 				InLabels:  []string{},
-				OutLabels: []string{"name", "longitude", "color"},
+				OutLabels: []string{"color", "longitude", "name"},
 			},
 			&model.PropLabelCache{
 				InLabels:  []string{},
