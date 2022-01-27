@@ -31,56 +31,65 @@ import (
 func TestGetPropertyLabels(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_property_labels")
 
-	for _, c := range []struct {
-		goldenFile string
-		dcids      []string
-	}{
-		{
-			"property-labels-class.json",
-			[]string{"Class"},
-		},
-		{
-			"property-labels-states.json",
-			[]string{"geoId/05", "geoId/06"},
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetPropertyLabelsRequest{
-			Dcids: c.dcids,
-		}
-		resp, err := client.GetPropertyLabels(ctx, req)
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetPropertyLabels: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		var result map[string]*model.PropLabelCache
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(result, goldenPath, c.goldenFile)
-			continue
-		}
-		var expected map[string]*model.PropLabelCache
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(result, expected); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_property_labels")
+
+		for _, c := range []struct {
+			goldenFile string
+			dcids      []string
+		}{
+			{
+				"property-labels-class.json",
+				[]string{"Class"},
+			},
+			{
+				"property-labels-states.json",
+				[]string{"geoId/05", "geoId/06"},
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			req := &pb.GetPropertyLabelsRequest{
+				Dcids: c.dcids,
+			}
+			resp, err := client.GetPropertyLabels(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetPropertyLabels: %s", err)
+				continue
+			}
+			var result map[string]*model.PropLabelCache
+			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+			if err != nil {
+				t.Errorf("Can not Unmarshal payload")
+				continue
+			}
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+				continue
+			}
+			var expected map[string]*model.PropLabelCache
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(result, expected); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

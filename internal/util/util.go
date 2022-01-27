@@ -292,6 +292,7 @@ func MergeDedupe(strLists ...[]string) []string {
 			}
 		}
 	}
+	sort.Strings(result)
 	return result
 }
 
