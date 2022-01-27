@@ -68,14 +68,14 @@ func TestCheckValidDCIDs(t *testing.T) {
 
 func TestMergeDedupe(t *testing.T) {
 	for _, c := range []struct {
-		strList [][]string
-		want    []string
+		strLists [][]string
+		want     []string
 	}{
 		{[][]string{{"abc", "geoId/12"}, {"abc"}}, []string{"abc", "geoId/12"}},
 		{[][]string{{"a", "bc"}, {"a", "bc", "d"}, {"f"}}, []string{"a", "bc", "d", "f"}},
 		{[][]string{{"abc"}, {"ef"}}, []string{"abc", "ef"}},
 	} {
-		got := MergeDedupe(c.strList...)
+		got := MergeDedupe(c.strLists...)
 		if diff := cmp.Diff(got, c.want); diff != "" {
 			t.Errorf("MergeDedupe got diff %+v", diff)
 		}
