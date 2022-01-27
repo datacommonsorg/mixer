@@ -270,22 +270,24 @@ func bToMb(b uint64) uint64 {
 	return b / 1024 / 1024
 }
 
-// MergeDedupe merges a list of string slices and remove duplicate elements.
-func MergeDedupe(strList ...[]string) []string {
-	if len(strList) == 0 {
+// MergeDedupe merges a list of string lists and remove duplicate elements.
+func MergeDedupe(strLists ...[]string) []string {
+	if l := len(strLists); l == 0 {
 		return []string{}
+	} else if l == 1 {
+		return strLists[0]
 	}
 	m := map[string]struct{}{}
-	result := strList[0]
-	for i, str := range strList {
-		for _, s := range str {
+	result := strLists[0]
+	for i, strList := range strLists {
+		for _, str := range strList {
 			if i == 0 {
 				// Initialize the set map.
-				m[s] = struct{}{}
+				m[str] = struct{}{}
 			} else {
-				if _, ok := m[s]; !ok {
-					result = append(result, s)
-					m[s] = struct{}{}
+				if _, ok := m[str]; !ok {
+					result = append(result, str)
+					m[str] = struct{}{}
 				}
 			}
 		}
