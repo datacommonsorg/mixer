@@ -113,8 +113,7 @@ func TestGetPropertyValues(t *testing.T) {
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 
 			var result map[string]map[string][]*model.Node
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
+			if err := json.Unmarshal([]byte(resp.GetPayload()), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}

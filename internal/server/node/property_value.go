@@ -119,8 +119,7 @@ func GetPropertyValuesHelper(
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals model.PropValueCache
-			err := json.Unmarshal(jsonRaw, &propVals)
-			if err != nil {
+			if err := json.Unmarshal(jsonRaw, &propVals); err != nil {
 				return nil, err
 			}
 			return propVals.Nodes, nil
