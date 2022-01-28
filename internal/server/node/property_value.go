@@ -137,26 +137,38 @@ func GetPropertyValuesHelper(
 	// not seen yet.
 	for _, baseData := range baseDataList {
 		for dcid, data := range baseData {
-			if _, ok := result[dcid]; !ok {
+			_, ok := result[dcid]
+			if ok {
+				// For out arcs, only get data from one cache. Do not merge across cache.
+				if arcOut {
+					continue
+				}
+			} else {
 				result[dcid] = []*model.Node{}
-			}
-			if _, ok := visited[dcid]; !ok {
-				visited[dcid] = map[string]struct{}{}
 			}
 			if data != nil {
 				nodes := data.([]*model.Node)
-				for _, n := range nodes {
-					// Check if a duplicate node has been added to the result.
-					// Duplication is based on either the DCID or the value.
-					if n.Dcid != "" {
-						if _, ok := visited[dcid][n.Dcid]; !ok {
-							result[dcid] = append(result[dcid], n)
-							visited[dcid][n.Dcid] = struct{}{}
-						}
-					} else if n.Value != "" {
-						if _, ok := visited[dcid][n.Value]; !ok {
-							result[dcid] = append(result[dcid], n)
-							visited[dcid][n.Value] = struct{}{}
+				if arcOut {
+					// Only pick one cache for out arc.
+					result[dcid] = nodes
+				} else {
+					// Need to merge nodes of in-arc from different cache.
+					if _, ok := visited[dcid]; !ok {
+						visited[dcid] = map[string]struct{}{}
+					}
+					for _, n := range nodes {
+						// Check if a duplicate node has been added to the result.
+						// Duplication is based on either the DCID or the value.
+						if n.Dcid != "" {
+							if _, ok := visited[dcid][n.Dcid]; !ok {
+								result[dcid] = append(result[dcid], n)
+								visited[dcid][n.Dcid] = struct{}{}
+							}
+						} else if n.Value != "" {
+							if _, ok := visited[dcid][n.Value]; !ok {
+								result[dcid] = append(result[dcid], n)
+								visited[dcid][n.Value] = struct{}{}
+							}
 						}
 					}
 				}
