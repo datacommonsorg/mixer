@@ -15,6 +15,7 @@
 package stat
 
 import (
+	"fmt"
 	"hash/fnv"
 	"sort"
 	"strings"
@@ -247,4 +248,36 @@ func getMetadataHash(m *pb.StatMetadata) uint32 {
 		m.Unit,
 	}, "-")))
 	return h.Sum32()
+}
+
+// getSourceSeriesKey computes the key for *pb.SourceSeries.
+// The key is based on the unique properties of the observations.
+func getSourceSeriesKey(s *pb.SourceSeries) string {
+	return fmt.Sprintf(
+		"%s_%s_%s_%s_%s",
+		s.ImportName,
+		s.MeasurementMethod,
+		s.ObservationPeriod,
+		s.ScalingFactor,
+		s.Unit)
+}
+
+// MergeSourceSeries merges lists of SourceSeries. For same source series, the one
+// with the latest data will be used.
+func MergeSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
+	result := []*pb.SourceSeries{}
+	resultMap := map[string]*pb.SourceSeries{}
+	for _, series := range seriesList {
+		for _, s := range series {
+			key := getSourceSeriesKey(s)
+			if _, ok := resultMap[key]; ok && len(s.Val) < len(resultMap[key].Val) {
+				continue
+			}
+			resultMap[key] = s
+		}
+		for _, s := range resultMap {
+			result = append(result, s)
+		}
+	}
+	return result
 }
