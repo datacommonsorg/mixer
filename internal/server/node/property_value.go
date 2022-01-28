@@ -133,8 +133,9 @@ func GetPropertyValuesHelper(
 	}
 	result := map[string][]*model.Node{}
 	visited := map[string]map[string]struct{}{}
-	// Loop the import groups. They are ordered by the preferences. So only add
-	// a node if it is not seen yet.
+	// Loop over the import groups. They are ordered by the preferences in
+	// /deploy/storage/bigtable_import_groups.json. So only add a node if it is
+	// not seen yet.
 	for _, baseData := range baseDataList {
 		for dcid, data := range baseData {
 			if _, ok := result[dcid]; !ok {
