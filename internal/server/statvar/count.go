@@ -22,7 +22,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-// CountStatVar checks if places have data for stat vars and stat var groups.
+// Count checks if places have data for stat vars and stat var groups.
 //
 // Returns a two level map from stat var dcid to place dcid to the number of
 // stat vars with data. For a given stat var, if a place has no data, it will

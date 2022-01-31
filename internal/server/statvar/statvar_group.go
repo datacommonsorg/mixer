@@ -29,9 +29,7 @@ import (
 )
 
 const (
-	svgRoot            = "dc/g/Root"
-	autoGenSvgIDPrefix = "dc/g/"
-	svgDelimiter       = "_"
+	svgRoot = "dc/g/Root"
 )
 
 // Note this function modifies validSVG inside.
