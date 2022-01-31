@@ -53,6 +53,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 	}
 	s.store.BtGroup.UpdateBranchTable(branchTable)
 	s.metadata.BranchTable = branchTableName
+	log.Printf("Updated branch table to use %s", branchTableName)
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.
@@ -137,7 +138,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 		pubsubTopic,
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
-			log.Printf("Branch Cache Subscriber: use branch cache %s\n", branchTableName)
+			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)
 			s.updateBranchTable(ctx, branchTableName)
 			return nil
 		},
