@@ -32,7 +32,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/sync/errgroup"
@@ -525,7 +524,6 @@ func getNearbyPlaces(ctx context.Context, store *store.Store, dcid string,
 func GetPlacePageData(
 	ctx context.Context, in *pb.GetPlacePageDataRequest, store *store.Store,
 ) (*pb.GetPlacePageDataResponse, error) {
-	defer util.TimeTrack(time.Now(), "GetPlacePageData")
 	placeDcid := in.GetPlace()
 	if placeDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
