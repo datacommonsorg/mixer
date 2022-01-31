@@ -70,6 +70,8 @@ var StatsRanking = map[RankKey]int{
 	{"NASA_WetBulbComputation", "NASA_Mean_HadGEM2-AO", "*"}:             2, // Wet bulb
 
 	// Prefer FBI Hate Crime Publications over Data Commons Aggregate
+	// Validation: https://autopush.datacommons.org/browser/country/USA?statVar=Count_CriminalIncidents_IsHateCrime
+	// Expected data 2010-2020: 6628, 6222, 5796, 5928, 5479, 5850, 6121, 7175, 7120, 7314, 8263
 	{"FBIHateCrimePublications", "*", "*"}: 0, // FBI Hate Crime Publications
 	{"FBIHateCrime", "*", "*"}:             1, // FBI Hate Crime Aggregations
 }
