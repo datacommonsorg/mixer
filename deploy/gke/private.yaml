@@ -16,6 +16,7 @@ project: datcom-mixer-statvar
 ip: 35.244.175.66
 domain: mixer.endpoints.datcom-mixer-statvar.cloud.goog
 api_title: DataCommons API (Private)
+api: datacommons.Mixer
 region: us-central1
 nodes: 1
 store:

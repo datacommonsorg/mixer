@@ -1,0 +1,92 @@
+{
+  "data": {
+    "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+      "stat": {
+        "country/FRA": {
+          "date": "2010",
+          "value": 36760,
+          "metaHash": 1642072667
+        },
+        "country/USA": {
+          "date": "2010",
+          "value": 48910,
+          "metaHash": 1642072667
+        },
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_CriminalActivities_CombinedCrime": {
+      "stat": {
+        "country/FRA": {},
+        "country/USA": {
+          "date": "2010",
+          "value": 10292375,
+          "metaHash": 3716017963
+        },
+        "geoId/06": {
+          "date": "2010",
+          "value": 1146072,
+          "metaHash": 481049291
+        },
+        "geoId/0649670": {
+          "date": "2010",
+          "value": 1633,
+          "metaHash": 481049291
+        }
+      }
+    },
+    "Count_Person": {
+      "stat": {
+        "country/FRA": {
+          "date": "2010",
+          "value": 64658856,
+          "metaHash": 2450578944
+        },
+        "country/USA": {
+          "date": "2010",
+          "value": 309326085,
+          "metaHash": 4080496656
+        },
+        "geoId/06": {
+          "date": "2010",
+          "value": 37266600,
+          "metaHash": 4080496656
+        },
+        "geoId/0649670": {
+          "date": "2010",
+          "value": 74227,
+          "metaHash": 4080496656
+        }
+      }
+    }
+  },
+  "metadata": {
+    "481049291": {
+      "importName": "FBIGovCrime",
+      "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+      "observationPeriod": "P1Y"
+    },
+    "1642072667": {
+      "importName": "WorldDevelopmentIndicators",
+      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observationPeriod": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "2450578944": {
+      "importName": "EurostatData",
+      "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
+      "measurementMethod": "EurostatRegionalPopulationData"
+    },
+    "3716017963": {
+      "importName": "FBIGovCrime_AggCountry",
+      "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+      "observationPeriod": "P1Y"
+    },
+    "4080496656": {
+      "importName": "CensusPEP",
+      "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+      "measurementMethod": "CensusPEPSurvey"
+    }
+  }
+}

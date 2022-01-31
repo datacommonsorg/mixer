@@ -33,8 +33,8 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" ]]; then
-  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'private'"
+if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" && $ENV != "recon-prod" && $ENV != "recon-staging" && $ENV != "recon-autopush" ]]; then
+  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'recon-prod' or 'recon-staging' or 'recon-autopush'"
   exit
 fi
 
@@ -65,22 +65,31 @@ export REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
 export IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
 export DOMAIN=$(yq eval '.domain' deploy/gke/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/gke/$ENV.yaml)
+export API=$(yq eval '.api' deploy/gke/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
 
 cd $ROOT/deploy/overlays/$ENV
 
 # Deploy to GKE
 kustomize edit set image gcr.io/datcom-ci/datacommons-mixer=gcr.io/datcom-ci/datacommons-mixer:$TAG
-kustomize build > $ENV.yaml
+kustomize build > kustomize-build.yaml
+cp kustomization.yaml kustomize-deployed.yaml
 gcloud config set project $PROJECT_ID
 gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
-kubectl apply -f $ENV.yaml
+kubectl apply -f kustomize-build.yaml
 
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
 yq eval -i '.name = env(DOMAIN)' endpoints.yaml
 yq eval -i '.title = env(API_TITLE)' endpoints.yaml
+yq eval -i '.apis[0].name = env(API)' endpoints.yaml
 yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID
+
+
+# Reset changed file
+git checkout HEAD -- kustomization.yaml
+cd $ROOT
+git checkout HEAD -- deploy/git/mixer_hash.txt

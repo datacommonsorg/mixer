@@ -51,11 +51,7 @@ gke/endpoints.yaml
 
 mixer-grpc.*.pb
 deploy/overlays/**/endpoints.yaml
-deploy/overlays/prod/prod.yaml
-deploy/overlays/staging/staging.yaml
-deploy/overlays/autopush/autopush.yaml
-deploy/overlays/encode/encode.yaml
-deploy/overlays/dev/dev.yaml
-deploy/overlays/private/private.yaml
+deploy/overlays/**/kustomize-build.yaml
+deploy/overlays/**/kustomize-deployed.yaml
 
 deploy/git/mixer_hash.txt

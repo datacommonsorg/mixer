@@ -29,103 +29,111 @@ import (
 )
 
 func TestGetPropertyValues(t *testing.T) {
-	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_property_values")
-
 	t.Parallel()
-	for _, c := range []struct {
-		goldenFile string
-		dcids      []string
-		property   string
-		direction  string
-		valueType  string
-		limit      int32
-	}{
-		{
-			"name.json",
-			[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
-			"name",
-			"out",
-			"",
-			0,
-		},
-		{
-			"contained_in_place.json",
-			[]string{"geoId/06085", "geoId/0647766"},
-			"containedInPlace",
-			"",
-			"City",
-			0,
-		},
-		{
-			"contained_in_place_all.json",
-			[]string{"geoId/06085", "geoId/0647766"},
-			"containedInPlace",
-			"out",
-			"",
-			0,
-		},
-		{
-			"location.json",
-			[]string{"geoId/05", "geoId/06"},
-			"location",
-			"",
-			"Election",
-			0,
-		},
-		{
-			"limit.json",
-			[]string{"country/USA"},
-			"name",
-			"out",
-			"",
-			1,
-		},
+	ctx := context.Background()
+
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetPropertyValuesRequest{
-			Dcids:     c.dcids,
-			Property:  c.property,
-			Direction: c.direction,
-			ValueType: c.valueType,
-		}
-		if c.limit > 0 {
-			req.Limit = c.limit
-		}
-		resp, err := client.GetPropertyValues(ctx, req)
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetPropertyValues: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_property_values")
 
-		var result map[string]map[string][]*model.Node
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
+		for _, c := range []struct {
+			goldenFile string
+			dcids      []string
+			property   string
+			direction  string
+			valueType  string
+			limit      int32
+		}{
+			{
+				"name.json",
+				[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
+				"name",
+				"out",
+				"",
+				0,
+			},
+			{
+				"contained_in_place.json",
+				[]string{"geoId/06085", "geoId/0647766"},
+				"containedInPlace",
+				"",
+				"City",
+				0,
+			},
+			{
+				"contained_in_place_all.json",
+				[]string{"geoId/06085", "geoId/0647766"},
+				"containedInPlace",
+				"out",
+				"",
+				0,
+			},
+			{
+				"location.json",
+				[]string{"geoId/05", "geoId/06"},
+				"location",
+				"",
+				"Election",
+				0,
+			},
+			{
+				"limit.json",
+				[]string{"country/USA"},
+				"name",
+				"out",
+				"",
+				1,
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			req := &pb.GetPropertyValuesRequest{
+				Dcids:     c.dcids,
+				Property:  c.property,
+				Direction: c.direction,
+				ValueType: c.valueType,
+			}
+			if c.limit > 0 {
+				req.Limit = c.limit
+			}
+			resp, err := client.GetPropertyValues(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetPropertyValues: %s", err)
+				continue
+			}
+			goldenFile := path.Join(goldenPath, c.goldenFile)
 
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(result, goldenPath, c.goldenFile)
-			continue
-		}
+			var result map[string]map[string][]*model.Node
+			if err := json.Unmarshal([]byte(resp.GetPayload()), &result); err != nil {
+				t.Errorf("Can not Unmarshal payload")
+				continue
+			}
 
-		var expected map[string]map[string][]*model.Node
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(result, expected); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected map[string]map[string][]*model.Node
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(result, expected); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

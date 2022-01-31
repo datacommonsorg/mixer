@@ -16,7 +16,6 @@ package placepage
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"hash/fnv"
 	"math/rand"
@@ -33,7 +32,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/sync/errgroup"
@@ -180,25 +178,20 @@ func getLatestPop(ctx context.Context, store *store.Store, placeDcids []string) 
 	if len(placeDcids) == 0 {
 		return nil, nil
 	}
-	req := &pb.GetStatsRequest{
-		Place:    placeDcids,
-		StatsVar: "Count_Person",
+	req := &pb.GetStatSetSeriesRequest{
+		Places:   placeDcids,
+		StatVars: []string{"Count_Person"},
 	}
-	resp, err := stat.GetStats(ctx, req, store)
+	resp, err := stat.GetStatSetSeries(ctx, req, store)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]int32{}
-	tmp := map[string]*model.ObsTimeSeries{}
-	err = json.Unmarshal([]byte(resp.Payload), &tmp)
-	if err != nil {
-		return nil, err
-	}
-	for place, series := range tmp {
-		if series != nil {
+	for place, series := range resp.Data {
+		if series != nil && series.Data["Count_Person"] != nil {
 			latestDate := ""
 			latestValue := 0.0
-			for date, value := range series.Data {
+			for date, value := range series.Data["Count_Person"].Val {
 				if date > latestDate {
 					latestValue = value
 					latestDate = date
@@ -237,7 +230,7 @@ func fetchBtData(
 
 	// Fetch place page cache data in parallel.
 	// Place page cache only exists in base cache
-	baseDataMap, _, err := bigtable.Read(
+	baseDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -260,7 +253,7 @@ func fetchBtData(
 	pageData := map[string]*pb.StatVarSeries{}
 	popData := map[string]*pb.PointStat{}
 
-	for place, data := range baseDataMap {
+	for place, data := range baseDataList[0] {
 		if data == nil {
 			continue
 		}
@@ -531,7 +524,6 @@ func getNearbyPlaces(ctx context.Context, store *store.Store, dcid string,
 func GetPlacePageData(
 	ctx context.Context, in *pb.GetPlacePageDataRequest, store *store.Store,
 ) (*pb.GetPlacePageDataResponse, error) {
-	defer util.TimeTrack(time.Now(), "GetPlacePageData")
 	placeDcid := in.GetPlace()
 	if placeDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")

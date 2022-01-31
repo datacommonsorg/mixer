@@ -16,6 +16,7 @@ package statvar
 
 import (
 	"context"
+	"sort"
 
 	"encoding/json"
 
@@ -55,7 +56,7 @@ func GetPlaceStatVars(
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	rowList := bigtable.BuildPlaceStatsVarKey(dcids)
-	baseDataMap, branchDataMap, err := bigtable.Read(
+	baseDataList, branchData, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -76,19 +77,23 @@ func GetPlaceStatVars(
 	resp := pb.GetPlaceStatVarsResponse{Places: map[string]*pb.StatVars{}}
 	for _, dcid := range dcids {
 		resp.Places[dcid] = &pb.StatVars{StatVars: []string{}}
-		if baseDataMap[dcid] != nil {
-			resp.Places[dcid].StatVars = baseDataMap[dcid].([]string)
+		allStatVars := [][]string{}
+		for _, baseData := range baseDataList {
+			if baseData[dcid] != nil {
+				allStatVars = append(allStatVars, baseData[dcid].([]string))
+			}
 		}
-		if branchDataMap[dcid] != nil {
-			resp.Places[dcid].StatVars = util.MergeDedupe(
-				resp.Places[dcid].StatVars, baseDataMap[dcid].([]string))
+		if branchData[dcid] != nil {
+			allStatVars = append(allStatVars, branchData[dcid].([]string))
 		}
 		// Also merge from memdb
 		if !store.MemDb.IsEmpty() {
 			hasDataStatVars, _ := store.MemDb.GetStatVars([]string{dcid})
-			resp.Places[dcid].StatVars = util.MergeDedupe(
-				resp.Places[dcid].StatVars, hasDataStatVars)
+			allStatVars = append(allStatVars, hasDataStatVars)
 		}
+		resp.Places[dcid].StatVars = util.MergeDedupe(allStatVars...)
+		sort.Strings(resp.Places[dcid].StatVars)
+
 	}
 	return &resp, nil
 }

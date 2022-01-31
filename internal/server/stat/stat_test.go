@@ -54,8 +54,20 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			&model.ObsTimeSeries{
-				Data:          map[string]float64{"2011": 100, "2012": 101},
-				ProvenanceURL: "census.gov",
+				SourceSeries: []*model.SourceSeries{
+					{
+						Val:               map[string]float64{"2011": 100, "2012": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+						ProvenanceURL:     "census.gov",
+					},
+					{
+						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+						MeasurementMethod: "CensusACS5yrSurvey",
+						ImportName:        "CensusACS5YearSurvey",
+						ProvenanceURL:     "census.gov",
+					},
+				},
 			},
 		},
 		// Filter by mmethod
@@ -80,8 +92,14 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			&model.ObsTimeSeries{
-				Data:          map[string]float64{"2011": 101, "2012": 102, "2013": 103},
-				ProvenanceURL: "census.gov",
+				SourceSeries: []*model.SourceSeries{
+					{
+						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
+						MeasurementMethod: "CensusACS5yrSurvey",
+						ImportName:        "CensusACS5YearSurvey",
+						ProvenanceURL:     "census.gov",
+					},
+				},
 			},
 		},
 		// Filter by observation period
@@ -108,8 +126,15 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"P2Y",
 			&model.ObsTimeSeries{
-				Data:          map[string]float64{"2017": 101},
-				ProvenanceURL: "census.gov",
+				SourceSeries: []*model.SourceSeries{
+					{
+						Val:               map[string]float64{"2017": 101},
+						MeasurementMethod: "CensusPEPSurvey",
+						ImportName:        "CensusPEP",
+						ObservationPeriod: "P2Y",
+						ProvenanceURL:     "census.gov",
+					},
+				},
 			},
 		},
 		// No match
@@ -135,14 +160,17 @@ func TestFilterAndRank(t *testing.T) {
 			"",
 			"",
 			"P3Y",
-			&model.ObsTimeSeries{},
+			&model.ObsTimeSeries{
+				SourceSeries: []*model.SourceSeries{},
+			},
 		},
 	} {
 		got := c.input
-		FilterAndRank(got, &model.ObsProp{
-			Mmethod: c.mmethod,
-			Operiod: c.op,
-			Unit:    c.unit})
+		FilterAndRank(got, &model.StatObsProp{
+			MeasurementMethod: c.mmethod,
+			ObservationPeriod: c.op,
+			Unit:              c.unit,
+		})
 		if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
 			t.Errorf("filterAndRank() got diff %+v", diff)
 		}

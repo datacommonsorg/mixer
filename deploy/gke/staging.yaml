@@ -19,5 +19,6 @@ region: us-central1
 ip: 34.107.161.252
 domain: staging.api.datacommons.org
 api_title: DataCommons API (Staging)
+api: datacommons.Mixer
 nodes: 2
 store: datcom-store

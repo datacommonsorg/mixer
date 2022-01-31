@@ -24,7 +24,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
-	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
@@ -51,7 +51,9 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.store.BtGroup.UpdateBranchBt(branchTable)
+	s.store.BtGroup.UpdateBranchTable(branchTable)
+	s.metadata.BranchTable = branchTableName
+	log.Printf("Updated branch table to use %s", branchTableName)
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.
@@ -114,11 +116,11 @@ func NewMetadata(
 		nil
 }
 
-// NewBtTable creates a new bigtable.Table instance.
+// NewBtTable creates a new cbt.Table instance.
 func NewBtTable(
 	ctx context.Context, projectID, instanceID, tableID string) (
-	*bigtable.Table, error) {
-	btClient, err := bigtable.NewClient(ctx, projectID, instanceID)
+	*cbt.Table, error) {
+	btClient, err := cbt.NewClient(ctx, projectID, instanceID)
 	if err != nil {
 		return nil, err
 	}
@@ -136,7 +138,7 @@ func (s *Server) SubscribeBranchCacheUpdate(
 		pubsubTopic,
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
-			log.Printf("Branch Cache Subscriber: use branch cache %s\n", branchTableName)
+			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)
 			s.updateBranchTable(ctx, branchTableName)
 			return nil
 		},
@@ -144,14 +146,15 @@ func (s *Server) SubscribeBranchCacheUpdate(
 }
 
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(ctx context.Context, baseTable *bigtable.Table) (*resource.Cache, error) {
-	rawSvg, err := statvar.GetRawSvg(ctx, baseTable)
+func NewCache(ctx context.Context, baseTables []*cbt.Table) (*resource.Cache, error) {
+	// TODO: [MERGE]: need to builc cache from multiple tables.
+	rawSvg, err := statvar.GetRawSvg(ctx, baseTables[0])
 	if err != nil {
 		return nil, err
 	}
 	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
-	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, false)
-	blocklistedSearchIndex := statvar.BuildStatVarSearchIndex(rawSvg, true)
+	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, false)
+	blocklistedSearchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, true)
 
 	return &resource.Cache{
 		ParentSvg:                 parentSvgMap,
@@ -164,14 +167,14 @@ func NewCache(ctx context.Context, baseTable *bigtable.Table) (*resource.Cache, 
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
 	bqClient *bigquery.Client,
-	baseTable *bigtable.Table,
-	branchTable *bigtable.Table,
+	baseTables []*cbt.Table,
+	branchTable *cbt.Table,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
 ) *Server {
 	return &Server{
-		store:    store.NewStore(bqClient, memDb, baseTable, branchTable),
+		store:    store.NewStore(bqClient, memDb, baseTables, branchTable),
 		metadata: metadata,
 		cache:    cache,
 	}
@@ -179,9 +182,9 @@ func NewMixerServer(
 
 // NewReconServer creates a new recon server instance.
 func NewReconServer(
-	baseTable *bigtable.Table,
+	baseTables []*cbt.Table,
 ) *Server {
 	return &Server{
-		store: store.NewStore(nil, nil, baseTable, nil),
+		store: store.NewStore(nil, nil, baseTables, nil),
 	}
 }

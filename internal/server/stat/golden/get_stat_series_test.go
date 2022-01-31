@@ -43,56 +43,48 @@ func TestGetStatSeries(t *testing.T) {
 		place      string
 		goldenFile string
 		mmethod    string
-		wantErr    bool
 	}{
 		{
 			"Count_Person",
 			"country/USA",
 			"count_person.json",
 			"CensusACS5yrSurvey",
-			false,
 		},
 		{
 			"Count_CriminalActivities_CombinedCrime",
 			"geoId/06",
 			"total_crimes.json",
 			"",
-			false,
 		},
 		{
 			"Annual_Generation_Electricity",
 			"geoId/06",
 			"electricity_generation.json",
 			"",
-			false,
 		},
 		{
 			"Median_Age_Person",
 			"geoId/0649670",
 			"median_age.json",
 			"",
-			false,
 		},
 		{
 			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 			"country/USA",
 			"gdp.json",
 			"",
-			false,
 		},
 		{
-			"BadStatsVar",
+			"dummy_sv",
 			"geoId/06",
+			"dummy_sv.json",
 			"",
-			"",
-			true,
 		},
 		{
 			"Count_Person",
-			"BadPlace",
+			"dummy_place",
+			"dummy_place.json",
 			"",
-			"",
-			true,
 		},
 	} {
 		resp, err := client.GetStatSeries(ctx, &pb.GetStatSeriesRequest{
@@ -100,12 +92,6 @@ func TestGetStatSeries(t *testing.T) {
 			Place:             c.place,
 			MeasurementMethod: c.mmethod,
 		})
-		if c.wantErr {
-			if err == nil {
-				t.Errorf("Expect GetStatSeries to error out but it succeed")
-			}
-			continue
-		}
 		if err != nil {
 			t.Errorf("could not GetStatSeries: %s", err)
 			continue

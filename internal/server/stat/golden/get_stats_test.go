@@ -116,7 +116,7 @@ func TestGetStats(t *testing.T) {
 			t.Errorf("could not GetStats: %s", err)
 			continue
 		}
-		var result map[string]*model.ObsTimeSeries
+		var result map[string]*model.GetStatsResponse
 		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 		if err != nil {
 			t.Errorf("Can not Unmarshal payload")
@@ -128,7 +128,7 @@ func TestGetStats(t *testing.T) {
 			continue
 		}
 
-		var expected map[string]*model.ObsTimeSeries
+		var expected map[string]*model.GetStatsResponse
 		file, _ := ioutil.ReadFile(goldenFile)
 		err = json.Unmarshal(file, &expected)
 		if err != nil {

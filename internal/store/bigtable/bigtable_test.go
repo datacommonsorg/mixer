@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"cloud.google.com/go/bigtable"
+	cbt "cloud.google.com/go/bigtable"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -33,9 +34,9 @@ func TestReadOneTable(t *testing.T) {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
 	rowList := bigtable.RowList{"key1", "key2"}
-	baseDataMap, _, err := Read(
+	baseData, _, err := Read(
 		ctx,
-		NewBigtableGroup(btTable, nil),
+		NewBigtableGroup([]*cbt.Table{btTable}, nil),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -46,7 +47,7 @@ func TestReadOneTable(t *testing.T) {
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
-	for dcid, result := range baseDataMap {
+	for dcid, result := range baseData[0] {
 		if diff := cmp.Diff(data[dcid], result.(string)); diff != "" {
 			t.Errorf("read rows got diff from table data %+v", diff)
 		}
@@ -77,9 +78,9 @@ func TestReadTwoTables(t *testing.T) {
 	}
 
 	rowList := bigtable.RowList{"key1", "key2"}
-	baseDataMap, branchDataMap, err := Read(
+	baseDataList, branchData, err := Read(
 		ctx,
-		NewBigtableGroup(btTable1, btTable2),
+		NewBigtableGroup([]*cbt.Table{btTable1}, btTable2),
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -90,12 +91,12 @@ func TestReadTwoTables(t *testing.T) {
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
-	for dcid, result := range baseDataMap {
+	for dcid, result := range baseDataList[0] {
 		if diff := cmp.Diff(data1[dcid], result.(string)); diff != "" {
 			t.Errorf("read rows got diff from table data %+v", diff)
 		}
 	}
-	for dcid, result := range branchDataMap {
+	for dcid, result := range branchData {
 		if diff := cmp.Diff(data2[dcid], result.(string)); diff != "" {
 			t.Errorf("read rows got diff from table data %+v", diff)
 		}

@@ -56,11 +56,11 @@ func GetStatSeries(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: stat_var")
 	}
-	filterProp := &model.ObsProp{
-		Mmethod: in.GetMeasurementMethod(),
-		Operiod: in.GetObservationPeriod(),
-		Unit:    in.GetUnit(),
-		Sfactor: in.GetScalingFactor(),
+	filterProp := &model.StatObsProp{
+		MeasurementMethod: in.GetMeasurementMethod(),
+		ObservationPeriod: in.GetObservationPeriod(),
+		Unit:              in.GetUnit(),
+		ScalingFactor:     in.GetScalingFactor(),
 	}
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
@@ -68,12 +68,7 @@ func GetStatSeries(
 	if err != nil {
 		return nil, err
 	}
-	obsTimeSeries := btData[place][statVar]
-	if obsTimeSeries == nil {
-		return nil, status.Errorf(codes.NotFound,
-			"No data for %s, %s", place, statVar)
-	}
-	series := obsTimeSeries.SourceSeries
+	series := btData[place][statVar].SourceSeries
 	series = filterSeries(series, filterProp)
 	sort.Sort(ranking.ByRank(series))
 	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
@@ -148,32 +143,44 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: stat_var")
 	}
-	filterProp := &model.ObsProp{
-		Mmethod: in.GetMeasurementMethod(),
-		Operiod: in.GetObservationPeriod(),
-		Unit:    in.GetUnit(),
+	filterProp := &model.StatObsProp{
+		MeasurementMethod: in.GetMeasurementMethod(),
+		ObservationPeriod: in.GetObservationPeriod(),
+		Unit:              in.GetUnit(),
+		ScalingFactor:     in.GetScalingFactor(),
 	}
 	var rowList cbt.RowList
 	var keyTokens map[string]*util.PlaceStatVar
 	rowList, keyTokens = bigtable.BuildObsTimeSeriesKey(placeDcids, []string{statsVarDcid})
 
-	result := map[string]*model.ObsTimeSeries{}
+	tmp := map[string]*model.ObsTimeSeries{}
 	cacheData, err := bigtable.ReadStats(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
 	for place := range cacheData {
-		result[place] = cacheData[place][statsVarDcid]
+		tmp[place] = cacheData[place][statsVarDcid]
 	}
 
 	// Fill missing place data and result result
 	for _, dcid := range placeDcids {
-		if _, ok := result[dcid]; !ok {
-			result[dcid] = nil
+		if _, ok := tmp[dcid]; !ok {
+			tmp[dcid] = nil
 		}
 	}
-	for _, obsSeries := range result {
-		FilterAndRank(obsSeries, filterProp)
+	result := map[string]*model.GetStatsResponse{}
+	for place, obsSeries := range tmp {
+		if obsSeries != nil {
+			FilterAndRank(obsSeries, filterProp)
+			result[place] = &model.GetStatsResponse{
+				PlaceName: obsSeries.PlaceName,
+			}
+			if obsSeries.SourceSeries != nil && len(obsSeries.SourceSeries) > 0 {
+				result[place].Data = obsSeries.SourceSeries[0].Val
+				result[place].ProvenanceURL = obsSeries.SourceSeries[0].ProvenanceURL
+			}
+		}
+
 	}
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
@@ -210,7 +217,7 @@ func GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRequest, store
 		}
 	}
 	// Read data from Cloud Bigtable.
-	if store.BtGroup.BaseBt() != nil {
+	if store.BtGroup.BaseTables() != nil {
 		rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
 
 		// Read data from BigTable.

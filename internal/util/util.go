@@ -270,18 +270,30 @@ func bToMb(b uint64) uint64 {
 	return b / 1024 / 1024
 }
 
-// MergeDedupe merges two string slices and remove duplicate elements.
-func MergeDedupe(s1 []string, s2 []string) []string {
-	m := map[string]struct{}{}
-	for _, s := range s1 {
-		m[s] = struct{}{}
+// MergeDedupe merges a list of string lists and remove duplicate elements.
+func MergeDedupe(strLists ...[]string) []string {
+	if l := len(strLists); l == 0 {
+		return []string{}
+	} else if l == 1 {
+		return strLists[0]
 	}
-	for _, s := range s2 {
-		if _, ok := m[s]; !ok {
-			s1 = append(s1, s)
+	m := map[string]struct{}{}
+	result := strLists[0]
+	for i, strList := range strLists {
+		for _, str := range strList {
+			if i == 0 {
+				// Initialize the set map.
+				m[str] = struct{}{}
+			} else {
+				if _, ok := m[str]; !ok {
+					result = append(result, str)
+					m[str] = struct{}{}
+				}
+			}
 		}
 	}
-	return s1
+	sort.Strings(result)
+	return result
 }
 
 // Sample constructs a sampled protobuf message based on the sampling strategy.

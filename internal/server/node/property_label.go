@@ -32,7 +32,7 @@ func GetPropertyLabels(ctx context.Context,
 	in *pb.GetPropertyLabelsRequest, store *store.Store) (*pb.GetPropertyLabelsResponse, error) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcids")
 	}
 	if !util.CheckValidDCIDs(dcids) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
@@ -40,7 +40,7 @@ func GetPropertyLabels(ctx context.Context,
 
 	rowList := bigtable.BuildPropertyLabelKey(dcids)
 
-	baseDataMap, branchDataMap, err := bigtable.Read(
+	baseDataList, branchData, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -60,20 +60,25 @@ func GetPropertyLabels(ctx context.Context,
 	}
 	result := map[string]*model.PropLabelCache{}
 	for _, dcid := range dcids {
-		result[dcid] = &model.PropLabelCache{InLabels: []string{}, OutLabels: []string{}}
-		// Merge cache value from base and branch cache
-		for _, m := range []map[string]interface{}{baseDataMap, branchDataMap} {
+		result[dcid] = &model.PropLabelCache{
+			InLabels:  []string{},
+			OutLabels: []string{},
+		}
+		inLabelList := [][]string{}
+		outLabelList := [][]string{}
+		// Merge cache value from base and branch caches
+		for _, m := range append(baseDataList, branchData) {
 			if data, ok := m[dcid]; ok {
-				if data.(*model.PropLabelCache).InLabels != nil {
-					result[dcid].InLabels = util.MergeDedupe(
-						result[dcid].InLabels, data.(*model.PropLabelCache).InLabels)
+				if item := data.(*model.PropLabelCache).InLabels; item != nil {
+					inLabelList = append(inLabelList, item)
 				}
-				if data.(*model.PropLabelCache).OutLabels != nil {
-					result[dcid].OutLabels = util.MergeDedupe(
-						result[dcid].OutLabels, data.(*model.PropLabelCache).OutLabels)
+				if item := data.(*model.PropLabelCache).OutLabels; item != nil {
+					outLabelList = append(outLabelList, item)
 				}
 			}
 		}
+		result[dcid].InLabels = util.MergeDedupe(inLabelList...)
+		result[dcid].OutLabels = util.MergeDedupe(outLabelList...)
 	}
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {

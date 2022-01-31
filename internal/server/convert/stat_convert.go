@@ -76,7 +76,6 @@ func ToObsSeries(token string, jsonRaw []byte) (
 	case *pb.ChartStore_ObsTimeSeries:
 		pbSourceSeries := x.ObsTimeSeries.GetSourceSeries()
 		ret := &model.ObsTimeSeries{
-			Data:         x.ObsTimeSeries.GetData(),
 			PlaceName:    x.ObsTimeSeries.GetPlaceName(),
 			SourceSeries: make([]*model.SourceSeries, len(pbSourceSeries)),
 		}
@@ -98,7 +97,6 @@ func ToObsSeries(token string, jsonRaw []byte) (
 			}
 
 		}
-		ret.ProvenanceURL = x.ObsTimeSeries.GetProvenanceUrl()
 		return ret, nil
 	case nil:
 		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
