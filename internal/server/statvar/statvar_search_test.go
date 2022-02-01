@@ -167,7 +167,85 @@ func TestSearchTokens(t *testing.T) {
 		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var list got diff %v", diff)
 		}
-		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.EntityInfo) bool { return x.Dcid < y.Dcid })); diff != "" {
+			t.Errorf("Stat var group list got diff %v", diff)
+		}
+	}
+}
+
+func TestGroupStatVars(t *testing.T) {
+	for _, c := range []struct {
+		svList    []*pb.EntityInfo
+		svgList   []*pb.EntityInfo
+		parentMap map[string][]string
+		wantSv    []*pb.EntityInfo
+		wantSvg   []*pb.SearchStatVarResponse_SearchResultSVG
+	}{
+		{
+			svList: []*pb.EntityInfo{
+				{
+					Dcid: "sv1",
+					Name: "sv1",
+				},
+				{
+					Dcid: "sv2",
+					Name: "sv2",
+				},
+				{
+					Dcid: "sv3",
+					Name: "sv3",
+				},
+			},
+			svgList: []*pb.EntityInfo{
+				{
+					Dcid: "svg1",
+					Name: "svg1",
+				},
+				{
+					Dcid: "svg2",
+					Name: "svg2",
+				},
+			},
+			parentMap: map[string][]string{
+				"sv1": {"svg4", "svg8"},
+				"sv2": {"svg10", "svg1"},
+				"sv3": {"svg2", "svg1"},
+			},
+			wantSv: []*pb.EntityInfo{
+				{
+					Dcid: "sv1",
+					Name: "sv1",
+				},
+			},
+			wantSvg: []*pb.SearchStatVarResponse_SearchResultSVG{
+				{
+					Dcid: "svg1",
+					Name: "svg1",
+					StatVars: []*pb.EntityInfo{
+						{
+							Dcid: "sv2",
+							Name: "sv2",
+						},
+					},
+				},
+				{
+					Dcid: "svg2",
+					Name: "svg2",
+					StatVars: []*pb.EntityInfo{
+						{
+							Dcid: "sv3",
+							Name: "sv3",
+						},
+					},
+				},
+			},
+		},
+	} {
+		sv, svg := groupStatVars(c.svList, c.svgList, c.parentMap)
+		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
+			t.Errorf("Stat var list got diff %v", diff)
+		}
+		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.SearchStatVarResponse_SearchResultSVG) bool { return x.Dcid < y.Dcid })); diff != "" {
 			t.Errorf("Stat var group list got diff %v", diff)
 		}
 	}
