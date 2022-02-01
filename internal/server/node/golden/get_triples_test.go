@@ -31,107 +31,115 @@ import (
 func TestGetTriples(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_triples")
-
-	for _, c := range []struct {
-		dcids        []string
-		goldenFile   string
-		partialMatch bool
-		limit        int32
-		count        []int
-	}{
-		{
-			[]string{"State", "Country"},
-			"place_type.json",
-			false,
-			-1,
-			nil,
-		},
-		{
-			[]string{"zip/00603"},
-			"place.json",
-			true,
-			-1,
-			nil,
-		},
-		{
-			[]string{
-				"dc/o/w2z8nx9y43k97", // LifeExpectancy_Person_Female
-				"dc/o/88cs3xqnmpp55", // Count_Person<CensusPEPSurvey>
-				"dc/o/23gt9k7fql176", // Count_Person<dcAggregate/CensusACS5yrSurvey>
-				"dc/o/kyv7dxe4s18eh", // Count_Person<>
-			},
-			"observation.json",
-			false,
-			-1,
-			nil,
-		},
-		{
-			[]string{"Count_Person", "Count_Person_Female"},
-			"stat_var.json",
-			false,
-			-1,
-			nil,
-		},
-		{
-			[]string{"City", "County"},
-			"",
-			false,
-			5,
-			[]int{5, 5},
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetTriplesRequest{Dcids: c.dcids}
-		if c.limit > 0 {
-			req.Limit = c.limit
-		}
-		resp, err := client.GetTriples(ctx, req)
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetTriples: %s", err)
-			continue
-		}
-		var result map[string][]*model.Triple
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if e2e.GenerateGolden && c.goldenFile != "" {
-			e2e.UpdateGolden(result, goldenPath, c.goldenFile)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
 
-		if c.limit > 0 {
-			for idx, place := range c.dcids {
-				count := len(result[place])
-				if count < c.count[idx] {
-					t.Errorf(
-						"Len of triples for %s expect %d, got %d",
-						place, c.count[idx], count)
-				}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_triples")
+
+		for _, c := range []struct {
+			dcids        []string
+			goldenFile   string
+			partialMatch bool
+			limit        int32
+			count        []int
+		}{
+			{
+				[]string{"State", "Country"},
+				"place_type.json",
+				false,
+				-1,
+				nil,
+			},
+			{
+				[]string{"zip/00603"},
+				"place.json",
+				true,
+				-1,
+				nil,
+			},
+			{
+				[]string{
+					"dc/o/w2z8nx9y43k97", // LifeExpectancy_Person_Female
+					"dc/o/88cs3xqnmpp55", // Count_Person<CensusPEPSurvey>
+					"dc/o/23gt9k7fql176", // Count_Person<dcAggregate/CensusACS5yrSurvey>
+					"dc/o/kyv7dxe4s18eh", // Count_Person<>
+				},
+				"observation.json",
+				false,
+				-1,
+				nil,
+			},
+			{
+				[]string{"Count_Person", "Count_Person_Female"},
+				"stat_var.json",
+				false,
+				-1,
+				nil,
+			},
+			{
+				[]string{"City", "County"},
+				"limit.json",
+				false,
+				5,
+				[]int{5, 5},
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
-			continue
-		}
+			req := &pb.GetTriplesRequest{Dcids: c.dcids}
+			if c.limit > 0 {
+				req.Limit = c.limit
+			}
+			resp, err := client.GetTriples(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetTriples: %s", err)
+				continue
+			}
+			var result map[string][]*model.Triple
+			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+			if err != nil {
+				t.Errorf("Can not Unmarshal payload")
+				continue
+			}
 
-		var expected map[string][]*model.Triple
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(result, expected); diff != "" {
-			t.Errorf("payload from %s got diff: %v", goldenFile, diff)
-			continue
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if e2e.GenerateGolden && c.goldenFile != "" {
+				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+				continue
+			}
+
+			if c.limit > 0 {
+				for idx, dcid := range c.dcids {
+					count := len(result[dcid])
+					if count < c.count[idx] {
+						t.Errorf(
+							"Len of triples for %s expect %d, got %d",
+							dcid, c.count[idx], count)
+					}
+				}
+				continue
+			}
+
+			var expected map[string][]*model.Triple
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(result, expected); diff != "" {
+				t.Errorf("payload from %s got diff: %v", goldenFile, diff)
+				continue
+			}
 		}
 	}
 }
