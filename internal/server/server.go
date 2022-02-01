@@ -23,7 +23,6 @@ import (
 	"runtime"
 	"strings"
 
-	"cloud.google.com/go/bigquery"
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
@@ -32,7 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
@@ -146,9 +144,9 @@ func (s *Server) SubscribeBranchCacheUpdate(
 }
 
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(ctx context.Context, baseTables []*cbt.Table) (*resource.Cache, error) {
+func NewCache(ctx context.Context, store *store.Store) (*resource.Cache, error) {
 	// TODO: [MERGE]: need to builc cache from multiple tables.
-	rawSvg, err := statvar.GetRawSvg(ctx, baseTables[0])
+	rawSvg, err := statvar.GetRawSvg(ctx, store)
 	if err != nil {
 		return nil, err
 	}
@@ -166,15 +164,12 @@ func NewCache(ctx context.Context, baseTables []*cbt.Table) (*resource.Cache, er
 
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
-	bqClient *bigquery.Client,
-	baseTables []*cbt.Table,
-	branchTable *cbt.Table,
+	store *store.Store,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
-	memDb *memdb.MemDb,
 ) *Server {
 	return &Server{
-		store:    store.NewStore(bqClient, memDb, baseTables, branchTable),
+		store:    store,
 		metadata: metadata,
 		cache:    cache,
 	}

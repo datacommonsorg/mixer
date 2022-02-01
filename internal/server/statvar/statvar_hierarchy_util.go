@@ -23,15 +23,11 @@ import (
 	"sort"
 	"time"
 
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // This should be synced with the list of blocklisted SVGs in the website repo
@@ -39,26 +35,13 @@ var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
 var miscellaneousSvgIds = []string{"eia/g/Root", "dc/g/Uncategorized"}
 
 // GetRawSvg gets the raw svg mapping.
-func GetRawSvg(ctx context.Context, baseTable *cbt.Table) (
+func GetRawSvg(ctx context.Context, store *store.Store) (
 	map[string]*pb.StatVarGroupNode, error) {
-	svgResp := &pb.StatVarGroups{}
-	row, err := baseTable.ReadRow(ctx, bigtable.BtStatVarGroup)
+	svg, err := GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{}, store)
 	if err != nil {
 		return nil, err
 	}
-	if len(row[bigtable.BtFamily]) == 0 {
-		return nil, status.Errorf(codes.NotFound, "Stat Var Group not found in cache")
-	}
-	raw := row[bigtable.BtFamily][0].Value
-	jsonRaw, err := util.UnzipAndDecode(string(raw))
-	if err != nil {
-		return nil, err
-	}
-	err = protojson.Unmarshal(jsonRaw, svgResp)
-	if err != nil {
-		return nil, err
-	}
-	return svgResp.StatVarGroups, nil
+	return svg.StatVarGroups, nil
 }
 
 // BuildParentSvgMap gets the mapping of svg/sv id to the parent svg for that

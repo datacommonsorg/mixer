@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"golang.org/x/oauth2/google"
 
@@ -116,7 +117,6 @@ func main() {
 
 	// Base Bigtable cache
 	var baseTable *cbt.Table
-	var cache *resource.Cache
 	if *useBaseBt {
 		// Base cache
 		baseTable, err = server.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)
@@ -124,13 +124,6 @@ func main() {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
 		metadata.BaseTables = []string{*baseTableName}
-		// Cache.
-		if *serveMixerService {
-			cache, err = server.NewCache(ctx, []*cbt.Table{baseTable})
-			if err != nil {
-				log.Fatalf("Failed to create cache: %v", err)
-			}
-		}
 	}
 
 	if *serveMixerService {
@@ -173,8 +166,19 @@ func main() {
 			metadata.BranchTable = branchTableName
 		}
 
+		// Store
+		store := store.NewStore(bqClient, memDb, []*cbt.Table{baseTable}, branchTable)
+		// Cache.
+		var cache *resource.Cache
+		if *serveMixerService {
+			cache, err = server.NewCache(ctx, store)
+			if err != nil {
+				log.Fatalf("Failed to create cache: %v", err)
+			}
+		}
+
 		// Create server object
-		mixerServer := server.NewMixerServer(bqClient, []*cbt.Table{baseTable}, branchTable, metadata, cache, memDb)
+		mixerServer := server.NewMixerServer(store, metadata, cache)
 		pb.RegisterMixerServer(srv, mixerServer)
 
 		// Subscribe to branch cache update

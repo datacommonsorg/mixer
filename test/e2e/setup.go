@@ -30,6 +30,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"google.golang.org/grpc"
@@ -135,7 +136,7 @@ func setupInternal(
 	}
 	var cache *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, baseTables)
+		cache, err = server.NewCache(ctx, store.NewStore(nil, nil, baseTables, nil))
 		if err != nil {
 			return nil, nil, err
 		}
@@ -184,7 +185,8 @@ func newClient(
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	mixerServer := server.NewMixerServer(bqClient, baseTables, branchTable, metadata, cache, memDb)
+	s := store.NewStore(bqClient, memDb, baseTables, branchTable)
+	mixerServer := server.NewMixerServer(s, metadata, cache)
 	reconServer := server.NewReconServer(baseTables)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, mixerServer)

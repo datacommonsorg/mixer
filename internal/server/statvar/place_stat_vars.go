@@ -122,7 +122,7 @@ func GetPlaceStatVarsUnionV1(
 	// places. This is faster than getting all the stat vars for each place and
 	// then filtering.
 	if len(filterStatVars) > 0 && len(places) > 0 {
-		statVarCount, err := CountStatVar(ctx, store, filterStatVars, places)
+		statVarCount, err := Count(ctx, store.BtGroup, filterStatVars, places)
 		if err != nil {
 			return nil, err
 		}

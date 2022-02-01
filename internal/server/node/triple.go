@@ -162,7 +162,7 @@ func GetTriples(
 
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		allTriplesCache, err := ReadTriples(ctx, store, bigtable.BuildTriplesKey(regDcids))
+		allTriplesCache, err := ReadTriples(ctx, store.BtGroup, bigtable.BuildTriplesKey(regDcids))
 		if err != nil {
 			return nil, err
 		}
@@ -243,13 +243,13 @@ func applyLimit(
 
 // ReadTriples read triples from base cache for multiple dcids.
 func ReadTriples(
-	ctx context.Context, store *store.Store, rowList cbt.RowList) (
+	ctx context.Context, btGroup *bigtable.Group, rowList cbt.RowList) (
 	map[string]*model.TriplesCache, error) {
 	// Only use base cache for triples, as branch cache only consists increment
 	// stats. This saves time as the triples list size can get big.
 	// Re-evaluate this if branch cache involves other triples.
 	baseDataList, _, err := bigtable.Read(
-		ctx, store.BtGroup, rowList, convertTriplesCache, nil, false, /* readBranch */
+		ctx, btGroup, rowList, convertTriplesCache, nil, false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err

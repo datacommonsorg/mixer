@@ -206,7 +206,7 @@ func (s *Server) GetStatVarSummary(
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest,
 ) (*pb.SearchStatVarResponse, error) {
-	return statvar.SearchStatVar(ctx, in, s.store, s.cache)
+	return statvar.SearchStatVar(ctx, in, s.store.BtGroup, s.cache)
 }
 
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
