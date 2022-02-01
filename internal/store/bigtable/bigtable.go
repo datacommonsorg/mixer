@@ -67,7 +67,7 @@ func (g *Group) UpdateBranchTable(branchTable *cbt.Table) {
 	g.branchTable = branchTable
 }
 
-// NewGroupWithSingleBase creates a new group with only one base table.
+// NewGroupWithPreferredBase creates a new group with only one base table.
 // The base table is the preferred Bigtable, which is used for data that needs
 // not be merged.
 func NewGroupWithPreferredBase(g *Group) *Group {
