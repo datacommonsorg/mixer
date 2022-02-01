@@ -16,7 +16,6 @@ package biopage
 
 import (
 	"context"
-	"encoding/json"
 
 	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -24,6 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // GetBioPageData implements API for Mixer.GetBioPageData.
@@ -37,13 +37,13 @@ func GetBioPageData(
 			codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 
-	data, _, err := bigtable.Read(
+	baseDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		cbt.RowList{bigtable.BtProteinPagePrefix + dcid},
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var graph pb.GraphNodes
-			err := json.Unmarshal(jsonRaw, &graph)
+			graph := pb.GraphNodes{}
+			err := protojson.Unmarshal(jsonRaw, &graph)
 			if err != nil {
 				return nil, err
 			}
@@ -55,8 +55,10 @@ func GetBioPageData(
 	if err != nil {
 		return nil, err
 	}
-	if _, ok := data[0][dcid]; !ok {
-		return nil, nil
+	for _, baseData := range baseDataList {
+		if v, ok := baseData[dcid]; ok {
+			return v.(*pb.GraphNodes), nil
+		}
 	}
-	return data[0][dcid].(*pb.GraphNodes), nil
+	return nil, nil
 }

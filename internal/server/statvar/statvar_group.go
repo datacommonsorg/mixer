@@ -128,10 +128,9 @@ func GetStatVarGroup(
 	// Read stat var group cache from the first base table, which is the most
 	// preferred cache BigTable. Since stat var schemas are rebuild with every
 	// group, so no merge needed.
-	g := bigtable.NewBigtableGroup(store.BtGroup.BaseTables()[0:], nil)
 	baseDataList, _, err := bigtable.Read(
 		ctx,
-		g,
+		bigtable.NewGroupWithPreferredBase(store.BtGroup),
 		cbt.RowList{bigtable.BtStatVarGroup},
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			svgResp := &pb.StatVarGroups{}
