@@ -137,6 +137,10 @@ func (s *Server) SubscribeBranchCacheUpdate(
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
 			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)
+			if v, ok := msg.Attributes["serialization"]; ok && v == "proto" {
+				log.Printf("Skip branch cache update since it's a proto cache")
+				return nil
+			}
 			s.updateBranchTable(ctx, branchTableName)
 			return nil
 		},
