@@ -262,9 +262,10 @@ func getSourceSeriesKey(s *pb.SourceSeries) string {
 		s.Unit)
 }
 
-// MergeSourceSeries merges lists of SourceSeries. For same source series, the one
-// with the latest data will be used.
-func MergeSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
+// CollectDistinctSourceSeries merges lists of SourceSeries.
+// For same source series, the one with more data points is used. In most cases,
+// this is the series with the latest data as well.
+func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
 	result := []*pb.SourceSeries{}
 	resultMap := map[string]*pb.SourceSeries{}
 	for _, series := range seriesList {

@@ -267,7 +267,7 @@ func fetchBtData(
 				if _, ok := mergedPlacePageData[place].Data[statVar]; !ok {
 					mergedPlacePageData[place].Data[statVar] = obsTimeSeries
 				} else {
-					mergedPlacePageData[place].Data[statVar].SourceSeries = stat.MergeSourceSeries(
+					mergedPlacePageData[place].Data[statVar].SourceSeries = stat.CollectDistinctSourceSeries(
 						mergedPlacePageData[place].Data[statVar].SourceSeries,
 						obsTimeSeries.SourceSeries,
 					)
