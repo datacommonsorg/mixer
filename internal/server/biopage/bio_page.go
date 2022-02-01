@@ -55,6 +55,8 @@ func GetBioPageData(
 	if err != nil {
 		return nil, err
 	}
+	// baseData is orderred by preference. Use the one that has bio data without
+	// merging.
 	for _, baseData := range baseDataList {
 		if v, ok := baseData[dcid]; ok {
 			return v.(*pb.GraphNodes), nil
