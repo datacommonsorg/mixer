@@ -9100,7 +9100,7 @@
             "2019": 22430348
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry_SuperEnum",
+            "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
             "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
           }
@@ -9118,7 +9118,7 @@
             "2019": 23013263
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry_SuperEnum",
+            "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
             "measurementMethod": "dcAggregate/CensusACS5yrSurvey"
           }

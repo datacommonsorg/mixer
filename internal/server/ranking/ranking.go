@@ -213,6 +213,9 @@ func (a SeriesByRank) Less(i, j int) bool {
 	}
 
 	// Compare other fields to get consistent ranking.
+	if oi.ImportName != oj.ImportName {
+		return oi.ImportName < oj.ImportName
+	}
 	if oi.MeasurementMethod != oj.MeasurementMethod {
 		return oi.MeasurementMethod < oj.MeasurementMethod
 	}
