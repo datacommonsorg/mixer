@@ -21,7 +21,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 )
 
 const (
@@ -31,7 +31,9 @@ const (
 
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func SearchStatVar(
-	ctx context.Context, in *pb.SearchStatVarRequest, store *store.Store,
+	ctx context.Context,
+	in *pb.SearchStatVarRequest,
+	btGroup *bigtable.Group,
 	cache *resource.Cache,
 ) (
 	*pb.SearchStatVarResponse, error,
@@ -71,7 +73,7 @@ func SearchStatVar(
 			ids = append(ids, item.Dcid)
 		}
 
-		statVarCount, err := CountStatVar(ctx, store, ids, places)
+		statVarCount, err := Count(ctx, btGroup, ids, places)
 		if err != nil {
 			return nil, err
 		}
@@ -160,7 +162,8 @@ func groupStatVars(svList []*pb.EntityInfo, svgList []*pb.EntityInfo, parentMap 
 }
 
 func searchTokens(
-	tokens []string, index *resource.SearchIndex) ([]*pb.EntityInfo, []*pb.EntityInfo) {
+	tokens []string, index *resource.SearchIndex,
+) ([]*pb.EntityInfo, []*pb.EntityInfo) {
 	svCount := map[string]int{}
 	svgCount := map[string]int{}
 

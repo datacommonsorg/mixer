@@ -41,93 +41,109 @@ func buildStrategy(maxPlace int) *util.SamplingStrategy {
 func TestGetPlacePageData(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_place_page_data")
 
-	for _, c := range []struct {
-		goldenFile string
-		place      string
-		seed       int64
-		statVars   []string
-		maxPlace   int
-	}{
-		{
-			"asm.sample.json",
-			"country/ASM",
-			1,
-			[]string{},
-			3,
-		},
-		{
-			"tha.sample.json",
-			"country/THA",
-			1,
-			[]string{},
-			5,
-		},
-		{
-			"county.sample.json",
-			"geoId/06085",
-			1,
-			[]string{"Count_HousingUnit_2000To2004DateBuilt"},
-			3,
-		},
-		{
-			"state.sample.json",
-			"geoId/06",
-			1,
-			[]string{"Annual_Generation_Electricity"},
-			3,
-		},
-		{
-			"city.sample.json",
-			"geoId/0656938",
-			1,
-			[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
-			3,
-		},
-		{
-			"zuid-nederland.sample.json",
-			"nuts/NL4",
-			1,
-			[]string{},
-			5,
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetPlacePageDataRequest{
-			Place:       c.place,
-			NewStatVars: c.statVars,
-			Seed:        c.seed,
-		}
-		resp, err := client.GetPlacePageData(ctx, req)
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetPlacePageData: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_place_page_data")
 
-		resp = util.Sample(
-			resp,
-			buildStrategy(c.maxPlace)).(*pb.GetPlacePageDataResponse)
+		for _, c := range []struct {
+			goldenFile string
+			place      string
+			seed       int64
+			statVars   []string
+			maxPlace   int
+		}{
+			{
+				"asm.sample.json",
+				"country/ASM",
+				1,
+				[]string{},
+				3,
+			},
+			{
+				"tha.sample.json",
+				"country/THA",
+				1,
+				[]string{},
+				5,
+			},
+			{
+				"county.sample.json",
+				"geoId/06085",
+				1,
+				[]string{"Count_HousingUnit_2000To2004DateBuilt"},
+				3,
+			},
+			{
+				"state.sample.json",
+				"geoId/06",
+				1,
+				[]string{"Annual_Generation_Electricity"},
+				3,
+			},
+			{
+				"city.sample.json",
+				"geoId/0656938",
+				1,
+				[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
+				3,
+			},
+			{
+				"zuid-nederland.sample.json",
+				"nuts/NL4",
+				1,
+				[]string{},
+				5,
+			},
+			{
+				"dummy.json",
+				"dummy",
+				1,
+				[]string{},
+				5,
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			req := &pb.GetPlacePageDataRequest{
+				Place:       c.place,
+				NewStatVars: c.statVars,
+				Seed:        c.seed,
+			}
+			resp, err := client.GetPlacePageData(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetPlacePageData: %s", err)
+				continue
+			}
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+			resp = util.Sample(
+				resp,
+				buildStrategy(c.maxPlace)).(*pb.GetPlacePageDataResponse)
 
-		var expected pb.GetPlacePageDataResponse
-		err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected)
-		if err != nil {
-			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
-			continue
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected pb.GetPlacePageDataResponse
+			err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected)
+			if err != nil {
+				t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
+				continue
+			}
 		}
 	}
 }

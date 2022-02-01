@@ -16,14 +16,12 @@ package statvar
 
 import (
 	"context"
-	"strings"
 
+	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -31,9 +29,7 @@ import (
 )
 
 const (
-	svgRoot            = "dc/g/Root"
-	autoGenSvgIDPrefix = "dc/g/"
-	svgDelimiter       = "_"
+	svgRoot = "dc/g/Root"
 )
 
 // Note this function modifies validSVG inside.
@@ -113,38 +109,46 @@ func GetStatVarGroup(
 	places := in.GetPlaces()
 
 	var statVars []string
-	svgResp := &pb.StatVarGroups{}
 
 	// Only read place stat vars when the place is provided.
 	// User can provide any arbitrary dcid, which might not be associated with
 	// stat vars. In this case, an empty response is returned.
 	if len(places) > 0 {
 		svUnionResp, err := GetPlaceStatVarsUnionV1(
-			ctx, &pb.GetPlaceStatVarsUnionRequest{Dcids: places}, store)
+			ctx,
+			&pb.GetPlaceStatVarsUnionRequest{Dcids: places},
+			store,
+		)
 		if err != nil {
 			return nil, err
 		}
 		statVars = svUnionResp.StatVars
 	}
 
-	// Read stat var group cache data
-	// TODO: [MERGE]
-	row, err := store.BtGroup.BaseTables()[0].ReadRow(ctx, bigtable.BtStatVarGroup)
+	// Read stat var group cache from the first base table, which is the most
+	// preferred cache BigTable. Since stat var schemas are rebuild with every
+	// group, so no merge needed.
+	g := bigtable.NewBigtableGroup(store.BtGroup.BaseTables()[0:], nil)
+	baseDataList, _, err := bigtable.Read(
+		ctx,
+		g,
+		cbt.RowList{bigtable.BtStatVarGroup},
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			svgResp := &pb.StatVarGroups{}
+			err := protojson.Unmarshal(jsonRaw, svgResp)
+			if err != nil {
+				return nil, err
+			}
+			return svgResp, nil
+		},
+		// Since there is no dcid, use "_" as a dummy token
+		func(token string) (string, error) { return "_", nil },
+		false, /* readBranch */
+	)
 	if err != nil {
 		return nil, err
 	}
-	if len(row[bigtable.BtFamily]) == 0 {
-		return nil, status.Errorf(codes.NotFound, "Stat Var Group not found in cache")
-	}
-	raw := row[bigtable.BtFamily][0].Value
-	jsonRaw, err := util.UnzipAndDecode(string(raw))
-	if err != nil {
-		return nil, err
-	}
-	err = protojson.Unmarshal(jsonRaw, svgResp)
-	if err != nil {
-		return nil, err
-	}
+	svgResp := baseDataList[0]["_"].(*pb.StatVarGroups)
 
 	if len(places) > 0 {
 		svgResp = filterSVG(svgResp, statVars)
@@ -169,61 +173,18 @@ func GetStatVarGroupNode(
 	}
 
 	result := &pb.StatVarGroupNode{}
-
-	if in.GetReadFromTriples() {
-		triples, err := node.ReadTriples(ctx, store, bigtable.BuildTriplesKey([]string{svg}))
-		if err != nil {
-			return nil, err
-		}
-
-		if _, ok := triples[svg]; !ok {
-			return nil, status.Errorf(
-				codes.Internal, "No triples for stat var group: %s", svg)
-		}
-		// Go through triples and populate result fields.
-		for _, t := range triples[svg].Triples {
-			if t.SubjectID == svg {
-				// SVG is subject
-				if t.Predicate == "specializationOf" {
-					// Parent SVG
-					result.ParentStatVarGroups = append(result.ParentStatVarGroups, t.ObjectID)
-				} else if t.Predicate == "name" {
-					result.AbsoluteName = t.ObjectValue
-				}
-			} else {
-				// SVG is object
-				if t.Predicate == "specializationOf" {
-					// Children SVG
-					result.ChildStatVarGroups = append(result.ChildStatVarGroups,
-						&pb.StatVarGroupNode_ChildSVG{
-							Id:                t.SubjectID,
-							DisplayName:       t.SubjectName,
-							SpecializedEntity: computeSpecializedEntity(svg, t.SubjectID),
-						})
-				} else if t.Predicate == "memberOf" {
-					// Children SV
-					result.ChildStatVars = append(result.ChildStatVars,
-						&pb.StatVarGroupNode_ChildSV{
-							Id:          t.SubjectID,
-							DisplayName: t.SubjectName,
-						})
-				}
-			}
-		}
-	} else {
-		if r, ok := cache.SvgInfo[svg]; ok {
-			// Clone into result, otherwise the server cache is modified.
-			result = proto.Clone(r).(*pb.StatVarGroupNode)
-		}
-		for _, item := range result.ChildStatVarGroups {
-			item.DisplayName = cache.SvgInfo[item.Id].AbsoluteName
-			item.NumDescendentStatVars = cache.SvgInfo[item.Id].NumDescendentStatVars
-		}
-		for _, item := range result.ChildStatVars {
-			item.HasData = true
-		}
-		result.ParentStatVarGroups = cache.ParentSvg[svg]
+	if r, ok := cache.SvgInfo[svg]; ok {
+		// Clone into result, otherwise the server cache is modified.
+		result = proto.Clone(r).(*pb.StatVarGroupNode)
 	}
+	for _, item := range result.ChildStatVarGroups {
+		item.DisplayName = cache.SvgInfo[item.Id].AbsoluteName
+		item.NumDescendentStatVars = cache.SvgInfo[item.Id].NumDescendentStatVars
+	}
+	for _, item := range result.ChildStatVars {
+		item.HasData = true
+	}
+	result.ParentStatVarGroups = cache.ParentSvg[svg]
 
 	// Filter result based on places
 	if len(places) > 0 {
@@ -238,7 +199,7 @@ func GetStatVarGroupNode(
 		}
 		allIDs = append(allIDs, result.ParentStatVarGroups...)
 		// Check if stat data exists for given places
-		statVarCount, err := CountStatVar(ctx, store, allIDs, places)
+		statVarCount, err := Count(ctx, store.BtGroup, allIDs, places)
 		if err != nil {
 			return nil, err
 		}
@@ -347,123 +308,4 @@ func GetStatVarPath(
 	return &pb.GetStatVarPathResponse{
 		Path: path,
 	}, nil
-}
-
-func isBasicPopulationType(t string) bool {
-	// Household and HousingUnit are included here because they have corresponding
-	// verticals.
-	return t == "Person" || t == "Household" || t == "HousingUnit" ||
-		t == "Thing"
-}
-
-func computeSpecializedEntity(parentSvg string, childSvg string) string {
-	// We compute this only for auto-generated IDs.
-	if !strings.HasPrefix(parentSvg, autoGenSvgIDPrefix) ||
-		!strings.HasPrefix(childSvg, autoGenSvgIDPrefix) {
-		return ""
-	}
-	parentPieces := strings.Split(
-		strings.TrimPrefix(parentSvg, autoGenSvgIDPrefix), svgDelimiter)
-	parentSet := map[string]struct{}{}
-	for _, p := range parentPieces {
-		parentSet[p] = struct{}{}
-	}
-
-	childPieces := strings.Split(
-		strings.TrimPrefix(childSvg, autoGenSvgIDPrefix), svgDelimiter)
-	result := []string{}
-	for _, c := range childPieces {
-		if isBasicPopulationType(c) {
-			continue
-		}
-		if _, ok := parentSet[c]; ok {
-			continue
-		}
-		result = append(result, c)
-	}
-	if len(result) == 0 {
-		// Edge case: certain SVGs (e.g., Person_Employment) match the parent
-		// (Employment) after stripping Person from the name.
-		result = parentPieces
-	}
-	return strings.Join(result, ", ")
-}
-
-// CountStatVar checks if places have data for stat vars and stat var groups
-// Returns a two level map from stat var dcid to place dcid to the number of
-// stat vars with data. For a given stat var, if a place has no data, it will
-// not show up in the second level map.
-func CountStatVar(
-	ctx context.Context,
-	store *store.Store,
-	svOrSvgs []string,
-	places []string) (map[string]map[string]int32, error) {
-	rowList, keyTokens := bigtable.BuildStatExistenceKey(places, svOrSvgs)
-	keyToTokenFn := bigtable.TokenFn(keyTokens)
-	baseDataList, _, err := bigtable.Read(
-		ctx,
-		store.BtGroup,
-		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var statVarExistence pb.PlaceStatVarExistence
-			err := protojson.Unmarshal(jsonRaw, &statVarExistence)
-			if err != nil {
-				return nil, err
-			}
-			return &statVarExistence, nil
-		},
-		keyToTokenFn,
-		false, /* readBranch */
-	)
-	if err != nil {
-		return nil, err
-	}
-	// Initialize result
-	result := map[string]map[string]int32{}
-	for _, id := range svOrSvgs {
-		result[id] = map[string]int32{}
-	}
-	// Populate the count
-	for _, rowKey := range rowList {
-		placeSv := keyTokens[rowKey]
-		token, _ := keyToTokenFn(rowKey)
-		if data, ok := baseDataList[0][token]; ok {
-			c := data.(*pb.PlaceStatVarExistence)
-			result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
-		}
-	}
-	return result, nil
-}
-
-// GetStatVarSummary implements API for Mixer.GetStatVarSummary.
-func GetStatVarSummary(
-	ctx context.Context, in *pb.GetStatVarSummaryRequest, store *store.Store) (
-	*pb.GetStatVarSummaryResponse, error) {
-	sv := in.GetStatVars()
-	rowList := bigtable.BuildStatVarSummaryKey(sv)
-	baseDataList, _, err := bigtable.Read(
-		ctx,
-		store.BtGroup,
-		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var statVarSummary pb.StatVarSummary
-			err := protojson.Unmarshal(jsonRaw, &statVarSummary)
-			if err != nil {
-				return nil, err
-			}
-			return &statVarSummary, nil
-		},
-		nil,
-		false, /* readBranch */
-	)
-	if err != nil {
-		return nil, err
-	}
-	result := &pb.GetStatVarSummaryResponse{
-		StatVarSummary: map[string]*pb.StatVarSummary{},
-	}
-	for dcid, data := range baseDataList[0] {
-		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
-	}
-	return result, nil
 }

@@ -154,8 +154,7 @@ message GetStatVarGroupNodeRequest {
   // only contain the children stat var (group) if it has data for at least one
   // of the places.
   repeated string places = 2;
-  // Wheather to read the nodes from triples or from pre-build full hierarchy.
-  bool read_from_triples = 3;
+  reserved 3;
 }
 
 

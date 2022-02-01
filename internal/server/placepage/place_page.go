@@ -32,7 +32,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/sync/errgroup"
@@ -254,13 +253,32 @@ func fetchBtData(
 	pageData := map[string]*pb.StatVarSeries{}
 	popData := map[string]*pb.PointStat{}
 
-	for place, data := range baseDataList[0] {
-		if data == nil {
-			continue
+	mergedPlacePageData := map[string]*pb.StatVarObsSeries{}
+	for _, baseData := range baseDataList {
+		for place, data := range baseData {
+			if data == nil {
+				continue
+			}
+			placePageData := data.(*pb.StatVarObsSeries)
+			if _, ok := mergedPlacePageData[place]; !ok {
+				mergedPlacePageData[place] = placePageData
+			}
+			for statVar, obsTimeSeries := range placePageData.Data {
+				if _, ok := mergedPlacePageData[place].Data[statVar]; !ok {
+					mergedPlacePageData[place].Data[statVar] = obsTimeSeries
+				} else {
+					mergedPlacePageData[place].Data[statVar].SourceSeries = stat.CollectDistinctSourceSeries(
+						mergedPlacePageData[place].Data[statVar].SourceSeries,
+						obsTimeSeries.SourceSeries,
+					)
+				}
+			}
 		}
-		placePageData := data.(*pb.StatVarObsSeries)
+	}
+
+	for place, data := range mergedPlacePageData {
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
-		for statVar, obsTimeSeries := range placePageData.Data {
+		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
 			if statVar == "Count_Person" {
@@ -525,7 +543,6 @@ func getNearbyPlaces(ctx context.Context, store *store.Store, dcid string,
 func GetPlacePageData(
 	ctx context.Context, in *pb.GetPlacePageDataRequest, store *store.Store,
 ) (*pb.GetPlacePageDataResponse, error) {
-	defer util.TimeTrack(time.Now(), "GetPlacePageData")
 	placeDcid := in.GetPlace()
 	if placeDcid == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")

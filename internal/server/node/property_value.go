@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/json"
 
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
@@ -31,8 +30,11 @@ import (
 )
 
 // GetPropertyValues implements API for Mixer.GetPropertyValues.
-func GetPropertyValues(ctx context.Context,
-	in *pb.GetPropertyValuesRequest, store *store.Store) (*pb.GetPropertyValuesResponse, error) {
+func GetPropertyValues(
+	ctx context.Context,
+	in *pb.GetPropertyValuesRequest,
+	store *store.Store,
+) (*pb.GetPropertyValuesResponse, error) {
 	dcids := in.GetDcids()
 	prop := in.GetProperty()
 	typ := in.GetValueType()
@@ -40,11 +42,14 @@ func GetPropertyValues(ctx context.Context,
 	limit := int(in.GetLimit())
 
 	// Check arguments
-	if prop == "" || len(dcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
+	if prop == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "missing required argument: property")
+	}
+	if len(dcids) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments: dcids")
 	}
 	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
+		return nil, status.Errorf(codes.InvalidArgument, "invalid DCIDs %s", dcids)
 	}
 
 	// Get in, out or both direction
@@ -108,12 +113,69 @@ func GetPropertyValuesHelper(
 	arcOut bool,
 ) (map[string][]*model.Node, error) {
 	rowList := bigtable.BuildPropertyValuesKey(dcids, prop, arcOut)
-	// Current branch cache is targeted on new stats (without addition of schema etc),
-	// so only use base cache data for property value.
-	//
-	// TODO(shifucun): perform a systematic check on current cache data and see
-	// if this is still true.
-	return readPropertyValues(ctx, store, rowList)
+	baseDataList, _, err := bigtable.Read(
+		ctx,
+		store.BtGroup,
+		rowList,
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var propVals model.PropValueCache
+			if err := json.Unmarshal(jsonRaw, &propVals); err != nil {
+				return nil, err
+			}
+			return propVals.Nodes, nil
+		},
+		nil,
+		true, /* readBranch */
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := map[string][]*model.Node{}
+	visited := map[string]map[string]struct{}{}
+	// Loop over the import groups. They are ordered by the preferences in
+	// /deploy/storage/bigtable_import_groups.json. So only add a node if it is
+	// not seen yet.
+	for _, baseData := range baseDataList {
+		for dcid, data := range baseData {
+			_, ok := result[dcid]
+			if ok {
+				// For out arcs, only get data from one cache. Do not merge across cache.
+				if arcOut {
+					continue
+				}
+			} else {
+				result[dcid] = []*model.Node{}
+			}
+			if data != nil {
+				nodes := data.([]*model.Node)
+				if arcOut {
+					// Only pick one cache for out arc.
+					result[dcid] = nodes
+				} else {
+					// Need to merge nodes of in-arc from different cache.
+					if _, ok := visited[dcid]; !ok {
+						visited[dcid] = map[string]struct{}{}
+					}
+					for _, n := range nodes {
+						// Check if a duplicate node has been added to the result.
+						// Duplication is based on either the DCID or the value.
+						if n.Dcid != "" {
+							if _, ok := visited[dcid][n.Dcid]; !ok {
+								result[dcid] = append(result[dcid], n)
+								visited[dcid][n.Dcid] = struct{}{}
+							}
+						} else if n.Value != "" {
+							if _, ok := visited[dcid][n.Value]; !ok {
+								result[dcid] = append(result[dcid], n)
+								visited[dcid][n.Value] = struct{}{}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return result, nil
 }
 
 func trimNodes(nodes []*model.Node, typ string, limit int) []*model.Node {
@@ -137,38 +199,4 @@ func trimNodes(nodes []*model.Node, typ string, limit int) []*model.Node {
 		}
 	}
 	return result
-}
-
-func readPropertyValues(
-	ctx context.Context,
-	store *store.Store,
-	rowList cbt.RowList,
-) (map[string][]*model.Node, error) {
-	// Only read property value from base cache.
-	// Branch cache only contains supplement data but not other properties yet.
-	baseDataList, _, err := bigtable.Read(
-		ctx,
-		store.BtGroup,
-		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var propVals model.PropValueCache
-			err := json.Unmarshal(jsonRaw, &propVals)
-			if err != nil {
-				return nil, err
-			}
-			return propVals.Nodes, nil
-		},
-		nil,
-		false, /* readBranch */
-	)
-	if err != nil {
-		return nil, err
-	}
-	result := map[string][]*model.Node{}
-	for dcid, data := range baseDataList[0] {
-		if data != nil {
-			result[dcid] = data.([]*model.Node)
-		}
-	}
-	return result, nil
 }

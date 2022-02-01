@@ -23,7 +23,6 @@ import (
 	"runtime"
 	"strings"
 
-	"cloud.google.com/go/bigquery"
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
@@ -32,7 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
@@ -53,6 +51,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 	}
 	s.store.BtGroup.UpdateBranchTable(branchTable)
 	s.metadata.BranchTable = branchTableName
+	log.Printf("Updated branch table to use %s", branchTableName)
 }
 
 // ReadBranchTableName reads branch cache folder from GCS.
@@ -137,7 +136,11 @@ func (s *Server) SubscribeBranchCacheUpdate(
 		pubsubTopic,
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
-			log.Printf("Branch Cache Subscriber: use branch cache %s\n", branchTableName)
+			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)
+			if v, ok := msg.Attributes["serialization"]; ok && v == "proto" {
+				log.Printf("Skip branch cache update since it's a proto cache")
+				return nil
+			}
 			s.updateBranchTable(ctx, branchTableName)
 			return nil
 		},
@@ -145,9 +148,9 @@ func (s *Server) SubscribeBranchCacheUpdate(
 }
 
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(ctx context.Context, baseTables []*cbt.Table) (*resource.Cache, error) {
+func NewCache(ctx context.Context, store *store.Store) (*resource.Cache, error) {
 	// TODO: [MERGE]: need to builc cache from multiple tables.
-	rawSvg, err := statvar.GetRawSvg(ctx, baseTables[0])
+	rawSvg, err := statvar.GetRawSvg(ctx, store)
 	if err != nil {
 		return nil, err
 	}
@@ -165,15 +168,12 @@ func NewCache(ctx context.Context, baseTables []*cbt.Table) (*resource.Cache, er
 
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
-	bqClient *bigquery.Client,
-	baseTables []*cbt.Table,
-	branchTable *cbt.Table,
+	store *store.Store,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
-	memDb *memdb.MemDb,
 ) *Server {
 	return &Server{
-		store:    store.NewStore(bqClient, memDb, baseTables, branchTable),
+		store:    store,
 		metadata: metadata,
 		cache:    cache,
 	}

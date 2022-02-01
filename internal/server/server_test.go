@@ -19,11 +19,12 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store"
 )
 
 func TestNoBigTable(t *testing.T) {
 	ctx := context.Background()
-	s := NewMixerServer(nil, nil, nil, nil, nil, nil)
+	s := NewMixerServer(store.NewStore(nil, nil, nil, nil), nil, nil)
 	_, err := s.GetPlacePageData(ctx, &pb.GetPlacePageDataRequest{
 		Place: "geoId/06",
 	})
