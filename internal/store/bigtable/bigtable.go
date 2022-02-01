@@ -37,8 +37,8 @@ type TableConfig struct {
 	Tables []string `json:"tables,omitempty"`
 }
 
-// NewBigtableGroup creates a BigtableGroup
-func NewBigtableGroup(
+// NewGroup creates a BigtableGroup
+func NewGroup(
 	baseTables []*cbt.Table,
 	branchTable *cbt.Table,
 ) *Group {
@@ -49,22 +49,32 @@ func NewBigtableGroup(
 }
 
 // BaseTables is the accessor for base bigtables
-func (st *Group) BaseTables() []*cbt.Table {
-	return st.baseTables
+func (g *Group) BaseTables() []*cbt.Table {
+	return g.baseTables
 }
 
 // BranchTable is the accessor for branch bigtable
-func (st *Group) BranchTable() *cbt.Table {
-	st.branchLock.RLock()
-	defer st.branchLock.RUnlock()
-	return st.branchTable
+func (g *Group) BranchTable() *cbt.Table {
+	g.branchLock.RLock()
+	defer g.branchLock.RUnlock()
+	return g.branchTable
 }
 
 // UpdateBranchTable updates the branch bigtable
-func (st *Group) UpdateBranchTable(branchTable *cbt.Table) {
-	st.branchLock.Lock()
-	defer st.branchLock.Unlock()
-	st.branchTable = branchTable
+func (g *Group) UpdateBranchTable(branchTable *cbt.Table) {
+	g.branchLock.Lock()
+	defer g.branchLock.Unlock()
+	g.branchTable = branchTable
+}
+
+// NewGroupWithPreferredBase creates a new group with only one base table.
+// The base table is the preferred Bigtable, which is used for data that needs
+// not be merged.
+func NewGroupWithPreferredBase(g *Group) *Group {
+	return &Group{
+		baseTables:  g.BaseTables()[:1],
+		branchTable: nil,
+	}
 }
 
 type chanData struct {
