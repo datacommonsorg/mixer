@@ -44,7 +44,7 @@ func SearchStatVar(
 
 	result := &pb.SearchStatVarResponse{
 		StatVars:      []*pb.EntityInfo{},
-		StatVarGroups: []*pb.SearchStatVarResponse_SearchResultSVG{},
+		StatVarGroups: []*pb.SearchResultSVG{},
 	}
 	if query == "" {
 		return result, nil
@@ -80,24 +80,18 @@ func SearchStatVar(
 		svList = filter(svList, statVarCount, len(places))
 		svgList = filter(svgList, statVarCount, len(places))
 	}
-	svResult, svgResult := groupStatVars(svList, svgList, cache.ParentSvg)
+	svResult, svgResult := groupStatVars(svList, svgList, cache.ParentSvg, cache.SvgSearchIndex.Ranking)
 	// Sort the stat var group results
 	sort.SliceStable(svgResult, func(i, j int) bool {
 		svgi := svgResult[i]
 		svgj := svgResult[j]
-		if len(svgi.StatVars) == len(svgj.StatVars) {
-			ranking := cache.SvgSearchIndex.Ranking
-			ri := ranking[svgList[i].Dcid]
-			rj := ranking[svgList[j].Dcid]
-			if ri.ApproxNumPv == rj.ApproxNumPv {
-				if ri.RankingName == rj.RankingName {
-					return svgList[i].Dcid < svgList[j].Dcid
-				}
-				return ri.RankingName < rj.RankingName
-			}
-			return ri.ApproxNumPv < rj.ApproxNumPv
+		if len(svgi.StatVars) != len(svgj.StatVars) {
+			return len(svgi.StatVars) > len(svgj.StatVars)
 		}
-		return len(svgi.StatVars) > len(svgj.StatVars)
+		ranking := cache.SvgSearchIndex.Ranking
+		ri := ranking[svgResult[i].Dcid]
+		rj := ranking[svgResult[j].Dcid]
+		return compareRankingInfo(ri, svgResult[i].Dcid, rj, svgResult[j].Dcid)
 	})
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svResult) > maxResult {
@@ -124,11 +118,22 @@ func filter(
 	return result
 }
 
-func groupStatVars(svList []*pb.EntityInfo, svgList []*pb.EntityInfo, parentMap map[string][]string) ([]*pb.EntityInfo, []*pb.SearchStatVarResponse_SearchResultSVG) {
+// Return whether r1 should be ranked ahead of r2
+func compareRankingInfo(r1 *resource.RankingInfo, dcid1 string, r2 *resource.RankingInfo, dcid2 string) bool {
+	if r1.ApproxNumPv != r2.ApproxNumPv {
+		return r1.ApproxNumPv < r2.ApproxNumPv
+	}
+	if r1.RankingName != r2.RankingName {
+		return r1.RankingName < r2.RankingName
+	}
+	return dcid1 < dcid2
+}
+
+func groupStatVars(svList []*pb.EntityInfo, svgList []*pb.EntityInfo, parentMap map[string][]string, ranking map[string]*resource.RankingInfo) ([]*pb.EntityInfo, []*pb.SearchResultSVG) {
 	// Create a map of svg id to svg search result
-	svgMap := map[string]*pb.SearchStatVarResponse_SearchResultSVG{}
+	svgMap := map[string]*pb.SearchResultSVG{}
 	for _, svg := range svgList {
-		svgMap[svg.Dcid] = &pb.SearchStatVarResponse_SearchResultSVG{
+		svgMap[svg.Dcid] = &pb.SearchResultSVG{
 			Dcid:     svg.Dcid,
 			Name:     svg.Name,
 			StatVars: []*pb.EntityInfo{},
@@ -141,12 +146,24 @@ func groupStatVars(svList []*pb.EntityInfo, svgList []*pb.EntityInfo, parentMap 
 	for _, sv := range svList {
 		isGrouped := false
 		if parents, ok := parentMap[sv.Dcid]; ok {
+			// filter parents list to only those that are results
+			possibleParents := []string{}
 			for _, parent := range parents {
 				if _, ok := svgMap[parent]; ok {
-					svgMap[parent].StatVars = append(svgMap[parent].StatVars, sv)
-					isGrouped = true
-					break
+					possibleParents = append(possibleParents, parent)
 				}
+			}
+			// sort parents by their ranking info so that stat var will be added to
+			// highest ranked parent
+			sort.SliceStable(possibleParents, func(i, j int) bool {
+				ri := ranking[possibleParents[i]]
+				rj := ranking[possibleParents[j]]
+				return compareRankingInfo(ri, possibleParents[i], rj, possibleParents[j])
+			})
+			// add stat var to the svg result of the highest ranked parent
+			if len(possibleParents) > 0 {
+				svgMap[possibleParents[0]].StatVars = append(svgMap[possibleParents[0]].StatVars, sv)
+				isGrouped = true
 			}
 		}
 		if !isGrouped {
@@ -154,7 +171,7 @@ func groupStatVars(svList []*pb.EntityInfo, svgList []*pb.EntityInfo, parentMap 
 		}
 	}
 	// Convert the svgMap to a list of svg results
-	resultSvg := []*pb.SearchStatVarResponse_SearchResultSVG{}
+	resultSvg := []*pb.SearchResultSVG{}
 	for _, svg := range svgMap {
 		resultSvg = append(resultSvg, svg)
 	}
@@ -221,18 +238,12 @@ func searchTokens(
 	}
 
 	// Sort stat vars by number of PV; If two stat vars have same number of PV,
-	// then order by the stat var name.
+	// then order by the stat var (group) name.
 	sort.SliceStable(svList, func(i, j int) bool {
 		ranking := index.Ranking
 		ri := ranking[svList[i].Dcid]
 		rj := ranking[svList[j].Dcid]
-		if ri.ApproxNumPv == rj.ApproxNumPv {
-			if ri.RankingName == rj.RankingName {
-				return svList[i].Dcid < svList[j].Dcid
-			}
-			return ri.RankingName < rj.RankingName
-		}
-		return ri.ApproxNumPv < rj.ApproxNumPv
+		return compareRankingInfo(ri, svList[i].Dcid, rj, svList[j].Dcid)
 	})
 
 	// Stat Var Groups will be sorted later.
@@ -245,5 +256,11 @@ func searchTokens(
 			})
 		}
 	}
+	sort.SliceStable(svgList, func(i, j int) bool {
+		ranking := index.Ranking
+		ri := ranking[svgList[i].Dcid]
+		rj := ranking[svgList[j].Dcid]
+		return compareRankingInfo(ri, svgList[i].Dcid, rj, svgList[j].Dcid)
+	})
 	return svList, svgList
 }

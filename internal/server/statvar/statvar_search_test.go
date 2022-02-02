@@ -175,11 +175,12 @@ func TestSearchTokens(t *testing.T) {
 
 func TestGroupStatVars(t *testing.T) {
 	for _, c := range []struct {
-		svList    []*pb.EntityInfo
-		svgList   []*pb.EntityInfo
-		parentMap map[string][]string
-		wantSv    []*pb.EntityInfo
-		wantSvg   []*pb.SearchStatVarResponse_SearchResultSVG
+		svList      []*pb.EntityInfo
+		svgList     []*pb.EntityInfo
+		parentMap   map[string][]string
+		rankingInfo map[string]*resource.RankingInfo
+		wantSv      []*pb.EntityInfo
+		wantSvg     []*pb.SearchResultSVG
 	}{
 		{
 			svList: []*pb.EntityInfo{
@@ -208,8 +209,26 @@ func TestGroupStatVars(t *testing.T) {
 			},
 			parentMap: map[string][]string{
 				"sv1": {"svg4", "svg8"},
-				"sv2": {"svg10", "svg1"},
+				"sv2": {"svg8", "svg1"},
 				"sv3": {"svg2", "svg1"},
+			},
+			rankingInfo: map[string]*resource.RankingInfo{
+				"svg1": {
+					ApproxNumPv: 1,
+					RankingName: "svg1",
+				},
+				"svg2": {
+					ApproxNumPv: 3,
+					RankingName: "svg2",
+				},
+				"svg4": {
+					ApproxNumPv: 1,
+					RankingName: "svg4",
+				},
+				"svg8": {
+					ApproxNumPv: 2,
+					RankingName: "svg8",
+				},
 			},
 			wantSv: []*pb.EntityInfo{
 				{
@@ -217,7 +236,7 @@ func TestGroupStatVars(t *testing.T) {
 					Name: "sv1",
 				},
 			},
-			wantSvg: []*pb.SearchStatVarResponse_SearchResultSVG{
+			wantSvg: []*pb.SearchResultSVG{
 				{
 					Dcid: "svg1",
 					Name: "svg1",
@@ -226,27 +245,119 @@ func TestGroupStatVars(t *testing.T) {
 							Dcid: "sv2",
 							Name: "sv2",
 						},
-					},
-				},
-				{
-					Dcid: "svg2",
-					Name: "svg2",
-					StatVars: []*pb.EntityInfo{
 						{
 							Dcid: "sv3",
 							Name: "sv3",
 						},
 					},
 				},
+				{
+					Dcid: "svg2",
+					Name: "svg2",
+				},
 			},
 		},
 	} {
-		sv, svg := groupStatVars(c.svList, c.svgList, c.parentMap)
+		sv, svg := groupStatVars(c.svList, c.svgList, c.parentMap, c.rankingInfo)
 		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var list got diff %v", diff)
 		}
-		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.SearchStatVarResponse_SearchResultSVG) bool { return x.Dcid < y.Dcid })); diff != "" {
+		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var group list got diff %v", diff)
+		}
+	}
+}
+
+func TestCompareRankingInfo(t *testing.T) {
+	for _, c := range []struct {
+		r1    *resource.RankingInfo
+		dcid1 string
+		r2    *resource.RankingInfo
+		dcid2 string
+		want  bool
+	}{
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "stat var 1",
+			},
+			dcid1: "sv1",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 2,
+				RankingName: "stat var 2",
+			},
+			dcid2: "sv2",
+			want:  true,
+		},
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 2,
+				RankingName: "stat var 1",
+			},
+			dcid1: "sv1",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "stat var 2",
+			},
+			dcid2: "sv2",
+			want:  false,
+		},
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "stat var 1",
+			},
+			dcid1: "sv1",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "stat var 2",
+			},
+			dcid2: "sv2",
+			want:  true,
+		},
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "stat var 1",
+			},
+			dcid1: "sv1",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "stat",
+			},
+			dcid2: "sv2",
+			want:  false,
+		},
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "sv",
+			},
+			dcid1: "sv1",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "sv",
+			},
+			dcid2: "sv2",
+			want:  true,
+		},
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "sv",
+			},
+			dcid1: "statvar1",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				RankingName: "sv",
+			},
+			dcid2: "s2",
+			want:  false,
+		},
+	} {
+		result := compareRankingInfo(c.r1, c.dcid1, c.r2, c.dcid2)
+		if diff := cmp.Diff(result, c.want); diff != "" {
+			t.Errorf("ranking comparison got diff %v", diff)
 		}
 	}
 }
