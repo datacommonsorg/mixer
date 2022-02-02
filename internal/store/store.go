@@ -44,6 +44,6 @@ func NewStore(
 	return &Store{
 		BqClient: bqClient,
 		MemDb:    memDb,
-		BtGroup:  bigtable.NewBigtableGroup(validBaseTables, branchTable),
+		BtGroup:  bigtable.NewGroup(validBaseTables, branchTable),
 	}
 }
