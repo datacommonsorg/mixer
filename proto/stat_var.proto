@@ -171,6 +171,14 @@ message GetStatVarPathResponse {
   repeated string path = 1;
 }
 
+message SearchResultSVG {
+  // DCID of the stat var group
+  string dcid = 1;
+  // Name of the stat var group
+  string name = 2;
+  // List of children stat vars that also match the search query
+  repeated EntityInfo stat_vars = 3;
+}
 
 message SearchStatVarRequest {
   // Query string
@@ -180,11 +188,13 @@ message SearchStatVarRequest {
   // Whether to blocklist the search results.
   bool enable_blocklist = 3;
 }
+
 message SearchStatVarResponse {
-  // A list of stat vars ranked by relevance.
+  // A ranked list of stat vars that aren't included in any of the returned stat var
+  // groups.
   repeated EntityInfo stat_vars = 1;
-  // A list of stat var groups ranked by relevance.
-  repeated EntityInfo stat_var_groups = 2;
+  // A list of stat var group results ranked by relevance.
+  repeated SearchResultSVG stat_var_groups = 2;
 }
 
 
