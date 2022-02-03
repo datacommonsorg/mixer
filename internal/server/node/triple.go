@@ -190,7 +190,7 @@ func GetTriples(
 	return &pb.GetTriplesResponse{Payload: string(jsonRaw)}, nil
 }
 
-func convertTriplesCache(dcid string, jsonRaw []byte) (interface{}, error) {
+func convertTriplesCache(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 	var triples model.TriplesCache
 	err := json.Unmarshal(jsonRaw, &triples)
 	if err != nil {

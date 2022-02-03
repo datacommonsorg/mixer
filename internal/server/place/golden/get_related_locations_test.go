@@ -16,16 +16,16 @@ package golden
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/test/e2e"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetRelatedLocations(t *testing.T) {
@@ -73,27 +73,20 @@ func TestGetRelatedLocations(t *testing.T) {
 			t.Errorf("could not GetRelatedLocations: %s", err)
 			continue
 		}
-		var result map[string]*model.RelatedPlacesInfo
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
-
 		goldenFile := path.Join(goldenPath, c.goldenFile)
 		if e2e.GenerateGolden {
-			e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 
-		var expected map[string]*model.RelatedPlacesInfo
+		var expected pb.GetRelatedLocationsResponse
 		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
+		err = protojson.Unmarshal(file, &expected)
 		if err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
-		if diff := cmp.Diff(result, expected); diff != "" {
+		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 			t.Errorf("payload got diff: %v", diff)
 			continue
 		}

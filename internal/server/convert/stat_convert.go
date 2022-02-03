@@ -17,6 +17,8 @@ package convert
 import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
+	"google.golang.org/protobuf/proto"
+
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -37,10 +39,15 @@ var UnitMapping = map[string]*UnitConversion{
 }
 
 // ToObsSeriesPb converts ChartStore to pb.ObsTimeSerie
-func ToObsSeriesPb(token string, jsonRaw []byte) (
-	interface{}, error) {
+func ToObsSeriesPb(token string, jsonRaw []byte, isProto bool) (interface{}, error) {
 	pbData := &pb.ChartStore{}
-	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
+	var err error
+	if isProto {
+		err = proto.Unmarshal(jsonRaw, pbData)
+	} else {
+		err = protojson.Unmarshal(jsonRaw, pbData)
+	}
+	if err != nil {
 		return nil, err
 	}
 	switch x := pbData.Val.(type) {
@@ -66,10 +73,15 @@ func ToObsSeriesPb(token string, jsonRaw []byte) (
 }
 
 // ToObsSeries converts ChartStore to ObsSeries
-func ToObsSeries(token string, jsonRaw []byte) (
-	interface{}, error) {
+func ToObsSeries(token string, jsonRaw []byte, isProto bool) (interface{}, error) {
 	pbData := &pb.ChartStore{}
-	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
+	var err error
+	if isProto {
+		err = proto.Unmarshal(jsonRaw, pbData)
+	} else {
+		err = protojson.Unmarshal(jsonRaw, pbData)
+	}
+	if err != nil {
 		return nil, err
 	}
 	switch x := pbData.Val.(type) {
@@ -106,10 +118,15 @@ func ToObsSeries(token string, jsonRaw []byte) (
 }
 
 // ToObsCollection converts ChartStore to pb.ObsCollection
-func ToObsCollection(token string, jsonRaw []byte) (
-	interface{}, error) {
+func ToObsCollection(token string, jsonRaw []byte, isProto bool) (interface{}, error) {
 	pbData := &pb.ChartStore{}
-	if err := protojson.Unmarshal(jsonRaw, pbData); err != nil {
+	var err error
+	if isProto {
+		err = proto.Unmarshal(jsonRaw, pbData)
+	} else {
+		err = protojson.Unmarshal(jsonRaw, pbData)
+	}
+	if err != nil {
 		return nil, err
 	}
 	switch x := pbData.Val.(type) {

@@ -13,6 +13,12 @@
 // limitations under the License.
 
 
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
+
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
@@ -56,4 +62,9 @@ message Manifest {
   // Data download link. For private import, this should be the GCS folder url.
   // Example: https://pantheon.corp.google.com/storage/browser/datcom-public/test
   string data_download_url = 3;
+}
+
+// PayloadResponse represents API response with encoded payload string
+message PayloadResponse {
+  string payload = 1;
 }

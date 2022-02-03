@@ -13,6 +13,12 @@
 // limitations under the License.
 
 
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
+
 // REST API URL from the proto in this file:
 // ========================================
 //    /node/property-labels
@@ -25,6 +31,15 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
+import "entity.proto";
+
+
+// Full lists of in and out labels for a given node ID.
+message PropertyLabels {
+  repeated string in_labels = 1;
+  repeated string out_labels = 2;
+}
+
 // Request to get property labels.
 message GetPropertyLabelsRequest {
   // The dcids of nodes.
@@ -33,8 +48,7 @@ message GetPropertyLabelsRequest {
 
 // Response returned by GetPropertyLabels.
 message GetPropertyLabelsResponse {
-  // The JSON payload.
-  string payload = 1;
+  map<string, PropertyLabels> data = 1;
 }
 
 // Request to get all neighboring nodes along an edge labeled by a property.
@@ -55,10 +69,17 @@ message GetPropertyValuesRequest {
   string direction = 5;
 }
 
+// ArcNodes represents property and linked nodes.
+message ArcNodes {
+  // Key is property
+  repeated EntityInfo in = 1;
+  repeated EntityInfo out = 2;
+}
+
 // Response returned by GetPropertyValues.
 message GetPropertyValuesResponse {
-  // The JSON payload.
-  string payload = 1;
+  // Key is dcid.
+  map<string, ArcNodes> data = 1;
 }
 
 // Request to get all triples linking to the given nodes.

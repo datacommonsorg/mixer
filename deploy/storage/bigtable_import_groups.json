@@ -1,8 +1,8 @@
 {
   "tables": [
-    "borgcron_frequent_2022_01_24_15_19_06",
-    "borgcron_us_employment_2022_01_24_15_33_49",
-    "borgcron_covid19_2022_01_24_15_33_49",
-    "borgcron_infrequent_2022_01_25_10_39_29"
+    "borgcron_frequent_2022_02_01_14_20_47",
+    "borgcron_dc_branch_2022_02_01_14_00_49",
+    "borgcron_ipcc_2022_01_31_20_56_49",
+    "borgcron_infrequent_2022_01_31_23_15_14"
   ]
 }

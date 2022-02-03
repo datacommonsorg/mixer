@@ -26,12 +26,12 @@ import (
 
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"google.golang.org/protobuf/proto"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/sync/errgroup"
@@ -234,9 +234,14 @@ func fetchBtData(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var placePageData pb.StatVarObsSeries
-			err := protojson.Unmarshal(jsonRaw, &placePageData)
+			var err error
+			if isProto {
+				err = proto.Unmarshal(jsonRaw, &placePageData)
+			} else {
+				err = protojson.Unmarshal(jsonRaw, &placePageData)
+			}
 			if err != nil {
 				return nil, err
 			}
@@ -366,7 +371,7 @@ func getPlacePageChildPlaces(
 ) (
 	map[string][]*pb.Place, error,
 ) {
-	children := []*model.Node{}
+	children := []*pb.EntityInfo{}
 	// ContainedIn places
 	containedInPlaces, err := node.GetPropertyValuesHelper(
 		ctx, store, []string{placedDcid}, "containedInPlace", false)

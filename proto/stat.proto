@@ -13,6 +13,12 @@
 // limitations under the License.
 
 
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
+
 // REST API URL from the proto in this file:
 // ========================================
 //    /bulk/place-obs
@@ -69,16 +75,17 @@ message PlacePointStatAll {
 
 message SourceSeries {
   map<string, double> val = 1;
-  string measurement_method = 2;
-  string observation_period = 3;
-  string import_name = 4;
-  string provenance_domain = 5;
-  string unit = 6;
+  string measurement_method = 3;
+  string observation_period = 4;
+  string import_name = 5;
+  string provenance_domain = 6;
   string scaling_factor = 7;
-  bool is_dc_aggregate = 8;
-  string provenance_url = 9;
+  string unit = 8;
+  bool is_dc_aggregate = 9;
+  string provenance_url = 10;
   // Only used for latest date obs collection.
   map<string, string> place_to_latest_date = 11;
+  reserved 2;
 }
 
 // Represents a time series from a source.
@@ -105,7 +112,8 @@ message ObsTimeSeries {
 // and place type, for given measured property, observation period, stat type,
 // observation date, pop type, and an optional list of pop PVs.
 message ObsCollection {
-  repeated SourceSeries source_cohorts = 2;
+  repeated SourceSeries source_cohorts = 5;
+  reserved 1, 2, 3, 4;
 }
 
 // Wrapper for observation data.

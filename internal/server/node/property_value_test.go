@@ -17,13 +17,14 @@ package node
 import (
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/server/model"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestTrimNodes(t *testing.T) {
+func TestFilterEntities(t *testing.T) {
 
-	input := []*model.Node{
+	input := []*pb.EntityInfo{
 		{
 			Dcid:  "dcid1",
 			Value: "1",
@@ -49,12 +50,12 @@ func TestTrimNodes(t *testing.T) {
 	for _, c := range []struct {
 		typ   string
 		limit int
-		want  []*model.Node
+		want  []*pb.EntityInfo
 	}{
 		{
 			"",
 			1,
-			[]*model.Node{
+			[]*pb.EntityInfo{
 				{
 					Dcid:  "dcid1",
 					Value: "1",
@@ -65,7 +66,7 @@ func TestTrimNodes(t *testing.T) {
 		{
 			"City",
 			0,
-			[]*model.Node{
+			[]*pb.EntityInfo{
 				{
 					Dcid:  "dcid1",
 					Value: "1",
@@ -81,7 +82,7 @@ func TestTrimNodes(t *testing.T) {
 		{
 			"City",
 			1,
-			[]*model.Node{
+			[]*pb.EntityInfo{
 				{
 					Dcid:  "dcid1",
 					Value: "1",
@@ -90,8 +91,8 @@ func TestTrimNodes(t *testing.T) {
 			},
 		},
 	} {
-		got := trimNodes(input, c.typ, c.limit)
-		if diff := cmp.Diff(got, c.want); diff != "" {
+		got := filterEntities(input, c.typ, c.limit)
+		if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
 			t.Errorf("trimeNodes() got diff %v", diff)
 		}
 	}

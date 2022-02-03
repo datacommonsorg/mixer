@@ -27,6 +27,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 var (
@@ -111,11 +112,16 @@ func ResolveEntities(
 
 	// Read ReconIdMap cache.
 	dataList, _, err := bigtable.Read(ctx, store.BtGroup, rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var reconEntities pb.ReconEntities
-			err := protojson.Unmarshal(jsonRaw, &reconEntities)
-			if err != nil {
-				return nil, err
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &reconEntities); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &reconEntities); err != nil {
+					return nil, err
+				}
 			}
 			return &reconEntities, nil
 		},

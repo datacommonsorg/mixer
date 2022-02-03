@@ -32,7 +32,7 @@ func TestGetBioPageData(t *testing.T) {
 	ctx := context.Background()
 
 	for _, opt := range []*e2e.TestOption{
-		// {},
+		{},
 		{UseImportGroup: true},
 	} {
 		client, _, err := e2e.Setup(opt)

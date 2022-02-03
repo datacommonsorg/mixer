@@ -16,12 +16,12 @@ package node
 
 import (
 	"context"
-	"encoding/json"
 
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -56,8 +56,8 @@ func GetPropertyValues(
 	var (
 		inArc  = true
 		outArc = true
-		inRes  = map[string][]*model.Node{}
-		outRes = map[string][]*model.Node{}
+		inRes  = map[string][]*pb.EntityInfo{}
+		outRes = map[string][]*pb.EntityInfo{}
 	)
 	var err error
 	if direction == "in" {
@@ -79,29 +79,24 @@ func GetPropertyValues(
 		}
 	}
 
-	result := make(map[string]map[string][]*model.Node)
+	result := &pb.GetPropertyValuesResponse{Data: map[string]*pb.ArcNodes{}}
 	for _, dcid := range dcids {
-		result[dcid] = map[string][]*model.Node{}
+		result.Data[dcid] = &pb.ArcNodes{}
 	}
-	for dcid, nodes := range inRes {
-		trimedNodes := trimNodes(nodes, typ, limit)
-		if len(trimedNodes) > 0 {
-			result[dcid]["in"] = trimedNodes
+	for dcid, entities := range inRes {
+		entities = filterEntities(entities, typ, limit)
+		if len(entities) > 0 {
+			result.Data[dcid].In = entities
 
 		}
 	}
-	for dcid, nodes := range outRes {
-		trimedNodes := trimNodes(nodes, typ, limit)
-		if len(trimedNodes) > 0 {
-			result[dcid]["out"] = trimedNodes
+	for dcid, entities := range outRes {
+		entities := filterEntities(entities, typ, limit)
+		if len(entities) > 0 {
+			result.Data[dcid].Out = entities
 		}
 	}
-
-	jsonRaw, err := json.Marshal(result)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetPropertyValuesResponse{Payload: string(jsonRaw)}, nil
+	return result, nil
 }
 
 // GetPropertyValuesHelper get property values.
@@ -111,18 +106,21 @@ func GetPropertyValuesHelper(
 	dcids []string,
 	prop string,
 	arcOut bool,
-) (map[string][]*model.Node, error) {
+) (map[string][]*pb.EntityInfo, error) {
 	rowList := bigtable.BuildPropertyValuesKey(dcids, prop, arcOut)
 	baseDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var propVals model.PropValueCache
-			if err := json.Unmarshal(jsonRaw, &propVals); err != nil {
-				return nil, err
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			var propVals pb.EntityInfoCollection
+			var err error
+			if isProto {
+				err = proto.Unmarshal(jsonRaw, &propVals)
+			} else {
+				err = protojson.Unmarshal(jsonRaw, &propVals)
 			}
-			return propVals.Nodes, nil
+			return propVals.Entities, err
 		},
 		nil,
 		true, /* readBranch */
@@ -130,7 +128,7 @@ func GetPropertyValuesHelper(
 	if err != nil {
 		return nil, err
 	}
-	result := map[string][]*model.Node{}
+	result := map[string][]*pb.EntityInfo{}
 	visited := map[string]map[string]struct{}{}
 	// Loop over the import groups. They are ordered by the preferences in
 	// /deploy/storage/bigtable_import_groups.json. So only add a node if it is
@@ -144,30 +142,33 @@ func GetPropertyValuesHelper(
 					continue
 				}
 			} else {
-				result[dcid] = []*model.Node{}
+				result[dcid] = []*pb.EntityInfo{}
 			}
 			if data != nil {
-				nodes := data.([]*model.Node)
+				entities, ok := data.([]*pb.EntityInfo)
+				if !ok {
+					return nil, status.Error(codes.Internal, "Failed to convert data into []*pb.EntityInfo")
+				}
 				if arcOut {
 					// Only pick one cache for out arc.
-					result[dcid] = nodes
+					result[dcid] = entities
 				} else {
 					// Need to merge nodes of in-arc from different cache.
 					if _, ok := visited[dcid]; !ok {
 						visited[dcid] = map[string]struct{}{}
 					}
-					for _, n := range nodes {
+					for _, e := range entities {
 						// Check if a duplicate node has been added to the result.
 						// Duplication is based on either the DCID or the value.
-						if n.Dcid != "" {
-							if _, ok := visited[dcid][n.Dcid]; !ok {
-								result[dcid] = append(result[dcid], n)
-								visited[dcid][n.Dcid] = struct{}{}
+						if e.Dcid != "" {
+							if _, ok := visited[dcid][e.Dcid]; !ok {
+								result[dcid] = append(result[dcid], e)
+								visited[dcid][e.Dcid] = struct{}{}
 							}
-						} else if n.Value != "" {
-							if _, ok := visited[dcid][n.Value]; !ok {
-								result[dcid] = append(result[dcid], n)
-								visited[dcid][n.Value] = struct{}{}
+						} else if e.Value != "" {
+							if _, ok := visited[dcid][e.Value]; !ok {
+								result[dcid] = append(result[dcid], e)
+								visited[dcid][e.Value] = struct{}{}
 							}
 						}
 					}
@@ -178,18 +179,22 @@ func GetPropertyValuesHelper(
 	return result, nil
 }
 
-func trimNodes(nodes []*model.Node, typ string, limit int) []*model.Node {
+func filterEntities(
+	in []*pb.EntityInfo,
+	typ string,
+	limit int,
+) []*pb.EntityInfo {
 	if limit == 0 && typ == "" {
-		return nodes
+		return in
 	}
-	result := []*model.Node{}
-	for _, node := range nodes {
+	result := []*pb.EntityInfo{}
+	for _, entity := range in {
 		if typ == "" {
-			result = append(result, node)
+			result = append(result, entity)
 		} else {
-			for _, t := range node.Types {
+			for _, t := range entity.Types {
 				if t == typ {
-					result = append(result, node)
+					result = append(result, entity)
 					break
 				}
 			}

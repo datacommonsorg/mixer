@@ -27,36 +27,9 @@ type Triple struct {
 	ProvenanceID string   `json:"provenanceId,omitempty"`
 }
 
-// Node represents a information about a node.
-type Node struct {
-	Dcid   string   `json:"dcid,omitempty"`
-	Name   string   `json:"name,omitempty"`
-	ProvID string   `json:"provenanceId,omitempty"`
-	Value  string   `json:"value,omitempty"`
-	Types  []string `json:"types,omitempty"`
-}
-
 // TriplesCache represents the json structure returned by the BT triples cache
 type TriplesCache struct {
 	Triples []*Triple `json:"triples"`
-}
-
-// PropValueCache represents the json structure returned by the BT PropVal cache
-type PropValueCache struct {
-	Nodes []*Node `json:"entities,omitempty"`
-}
-
-// PropLabelCache represents the json structure returned by the BT Prop cache
-type PropLabelCache struct {
-	InLabels  []string `json:"inLabels"`
-	OutLabels []string `json:"outLabels"`
-}
-
-// RelatedPlacesInfo represents the json structure returned by the RelatedPlaces cache.
-type RelatedPlacesInfo struct {
-	RelatedPlaces  []string `json:"relatedPlaces,omitempty"`
-	RankFromTop    int32    `json:"rankFromTop,omitempty"`
-	RankFromBottom int32    `json:"rankFromBottom,omitempty"`
 }
 
 // StatisticalVariable contains key info of population and observation.
@@ -76,11 +49,6 @@ type StatisticalVariable struct {
 type PlacePopInfo struct {
 	PlaceID      string `json:"dcid,omitempty"`
 	PopulationID string `json:"population,omitempty"`
-}
-
-//PlaceStatsVar contains the place stats var list.
-type PlaceStatsVar struct {
-	StatVarIds []string `json:"statVarIds,omitempty"`
 }
 
 // SourceSeries represents time series data for a particular source.

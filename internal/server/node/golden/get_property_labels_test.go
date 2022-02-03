@@ -16,16 +16,16 @@ package golden
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/test/e2e"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetPropertyLabels(t *testing.T) {
@@ -68,25 +68,28 @@ func TestGetPropertyLabels(t *testing.T) {
 				t.Errorf("could not GetPropertyLabels: %s", err)
 				continue
 			}
-			var result map[string]*model.PropLabelCache
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
+			// Here the golden file is not same as the actual API output.
+			// The actual payload is not a full serielized protobuf but
+			// with the outer level ("data" field) removed. Here is to add that level
+			// back so the payload can be unmarshaled.
+			payload := "{\"data\":" + resp.GetPayload() + "}"
+			var result pb.GetPropertyLabelsResponse
+			if err := protojson.Unmarshal([]byte(payload), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
-				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+				e2e.UpdateProtoGolden(&result, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected map[string]*model.PropLabelCache
+			var expected pb.GetPropertyLabelsResponse
 			file, _ := ioutil.ReadFile(goldenFile)
-			err = json.Unmarshal(file, &expected)
-			if err != nil {
+			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 				continue
 			}
-			if diff := cmp.Diff(result, expected); diff != "" {
+			if diff := cmp.Diff(&result, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue
 			}

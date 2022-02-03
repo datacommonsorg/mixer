@@ -16,16 +16,15 @@ package node
 
 import (
 	"context"
-	"encoding/json"
 	"testing"
 
 	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -34,27 +33,27 @@ func TestMerge(t *testing.T) {
 
 	for _, d := range []struct {
 		dcid        string
-		baseCache   *model.PropLabelCache
-		branchCache *model.PropLabelCache
+		baseCache   *pb.PropertyLabels
+		branchCache *pb.PropertyLabels
 	}{
 		{
 			"geoId/06",
-			&model.PropLabelCache{
+			&pb.PropertyLabels{
 				InLabels:  []string{"containedIn"},
 				OutLabels: []string{"containedIn", "longitude", "name"},
 			},
-			&model.PropLabelCache{
+			&pb.PropertyLabels{
 				InLabels:  []string{"containedIn"},
 				OutLabels: []string{"containedIn"},
 			},
 		},
 		{
 			"bio/tiger",
-			&model.PropLabelCache{
+			&pb.PropertyLabels{
 				InLabels:  []string{},
 				OutLabels: []string{"color", "longitude", "name"},
 			},
-			&model.PropLabelCache{
+			&pb.PropertyLabels{
 				InLabels:  []string{},
 				OutLabels: []string{},
 			},
@@ -62,8 +61,8 @@ func TestMerge(t *testing.T) {
 	} {
 		base := map[string]string{}
 		branch := map[string]string{}
-		resultMap := map[string]*model.PropLabelCache{}
-		jsonRaw, err := json.Marshal(d.baseCache)
+		want := &pb.GetPropertyLabelsResponse{Data: make(map[string]*pb.PropertyLabels)}
+		jsonRaw, err := protojson.Marshal(d.baseCache)
 		if err != nil {
 			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
 		}
@@ -72,9 +71,9 @@ func TestMerge(t *testing.T) {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
 		base[bigtable.BtArcsPrefix+d.dcid] = tableValue
-		resultMap[d.dcid] = d.baseCache
+		want.Data[d.dcid] = d.baseCache
 
-		jsonRaw, err = json.Marshal(d.branchCache)
+		jsonRaw, err = protojson.Marshal(d.branchCache)
 		if err != nil {
 			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
 		}
@@ -83,13 +82,6 @@ func TestMerge(t *testing.T) {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
 		branch[bigtable.BtArcsPrefix+d.dcid] = tableValue
-		wantPayloadRaw, err := json.Marshal(resultMap)
-		if err != nil {
-			t.Fatalf("json.Marshal(%+v) = %+v", resultMap, err)
-		}
-		want := &pb.GetPropertyLabelsResponse{
-			Payload: string(wantPayloadRaw),
-		}
 
 		baseTable, err := bigtable.SetupBigtable(ctx, base)
 		if err != nil {

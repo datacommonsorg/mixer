@@ -16,15 +16,15 @@ package node
 
 import (
 	"context"
-	"encoding/json"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
@@ -39,16 +39,20 @@ func GetPropertyLabels(ctx context.Context,
 	}
 
 	rowList := bigtable.BuildPropertyLabelKey(dcids)
-
 	baseDataList, branchData, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var propLabels model.PropLabelCache
-			err := json.Unmarshal(jsonRaw, &propLabels)
-			if err != nil {
-				return nil, err
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			var propLabels pb.PropertyLabels
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &propLabels); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &propLabels); err != nil {
+					return nil, err
+				}
 			}
 			return &propLabels, nil
 		},
@@ -58,9 +62,9 @@ func GetPropertyLabels(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
-	result := map[string]*model.PropLabelCache{}
+	result := &pb.GetPropertyLabelsResponse{Data: map[string]*pb.PropertyLabels{}}
 	for _, dcid := range dcids {
-		result[dcid] = &model.PropLabelCache{
+		result.Data[dcid] = &pb.PropertyLabels{
 			InLabels:  []string{},
 			OutLabels: []string{},
 		}
@@ -69,20 +73,16 @@ func GetPropertyLabels(ctx context.Context,
 		// Merge cache value from base and branch caches
 		for _, m := range append(baseDataList, branchData) {
 			if data, ok := m[dcid]; ok {
-				if item := data.(*model.PropLabelCache).InLabels; item != nil {
+				if item := data.(*pb.PropertyLabels).InLabels; item != nil {
 					inLabelList = append(inLabelList, item)
 				}
-				if item := data.(*model.PropLabelCache).OutLabels; item != nil {
+				if item := data.(*pb.PropertyLabels).OutLabels; item != nil {
 					outLabelList = append(outLabelList, item)
 				}
 			}
 		}
-		result[dcid].InLabels = util.MergeDedupe(inLabelList...)
-		result[dcid].OutLabels = util.MergeDedupe(outLabelList...)
+		result.Data[dcid].InLabels = util.MergeDedupe(inLabelList...)
+		result.Data[dcid].OutLabels = util.MergeDedupe(outLabelList...)
 	}
-	jsonRaw, err := json.Marshal(result)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetPropertyLabelsResponse{Payload: string(jsonRaw)}, nil
+	return result, nil
 }

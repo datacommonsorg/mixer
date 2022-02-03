@@ -26,6 +26,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 // ResolveIds resolve entities based on IDs.
@@ -49,10 +50,16 @@ func ResolveIds(
 	}
 	baseDataList, _, err := bigtable.Read(
 		ctx, store.BtGroup, rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var reconEntities pb.ReconEntities
-			if err := protojson.Unmarshal(jsonRaw, &reconEntities); err != nil {
-				return nil, err
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &reconEntities); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &reconEntities); err != nil {
+					return nil, err
+				}
 			}
 			return &reconEntities, nil
 		},
