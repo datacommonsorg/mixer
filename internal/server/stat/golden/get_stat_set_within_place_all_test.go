@@ -91,7 +91,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 		}
 		var expected pb.GetStatSetAllResponse
 		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
+			t.Errorf("Can not Unmarshal golden file: %s", err)
 			continue
 		}
 

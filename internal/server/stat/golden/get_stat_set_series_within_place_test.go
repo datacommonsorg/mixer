@@ -30,50 +30,58 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: false, UseMemdb: false})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_stat_set_series_within_place")
-
-	for _, c := range []struct {
-		parentPlace string
-		childType   string
-		statVars    []string
-		goldenFile  string
-	}{
-		{
-			"geoId/06085",
-			"City",
-			[]string{"Count_Person"},
-			"county_city_population.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		resp, err := client.GetStatSetSeriesWithinPlace(
-			ctx, &pb.GetStatSetSeriesWithinPlaceRequest{
-				ParentPlace: c.parentPlace,
-				ChildType:   c.childType,
-				StatVars:    c.statVars,
-			})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatSetSeriesWithinPlace: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_stat_set_series_within_place")
 
-		var expected pb.GetStatSetSeriesResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		for _, c := range []struct {
+			parentPlace string
+			childType   string
+			statVars    []string
+			goldenFile  string
+		}{
+			{
+				"geoId/06085",
+				"City",
+				[]string{"Count_Person"},
+				"county_city_population.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStatSetSeriesWithinPlace(
+				ctx, &pb.GetStatSetSeriesWithinPlaceRequest{
+					ParentPlace: c.parentPlace,
+					ChildType:   c.childType,
+					StatVars:    c.statVars,
+				})
+			if err != nil {
+				t.Errorf("could not GetStatSetSeriesWithinPlace: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected pb.GetStatSetSeriesResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file: %s", err)
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

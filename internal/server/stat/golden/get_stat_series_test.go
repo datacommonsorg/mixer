@@ -102,7 +102,7 @@ func TestGetStatSeries(t *testing.T) {
 		}
 		var expected pb.GetStatSeriesResponse
 		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
+			t.Errorf("Can not Unmarshal golden file: %s", err)
 			continue
 		}
 
