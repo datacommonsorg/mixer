@@ -110,11 +110,9 @@ func TestGetPropertyValues(t *testing.T) {
 				t.Errorf("could not GetPropertyValues: %s", err)
 				continue
 			}
-			payload := resp.GetPayload()
-			payload = "{\"data\":" + payload + "}"
+			payload := "{\"data\":" + resp.GetPayload() + "}"
 			var result pb.GetPropertyValuesResponse
-			err = protojson.Unmarshal([]byte(payload), &result)
-			if err != nil {
+			if err := protojson.Unmarshal([]byte(payload), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
@@ -127,8 +125,7 @@ func TestGetPropertyValues(t *testing.T) {
 
 			var expected pb.GetPropertyValuesResponse
 			file, _ := ioutil.ReadFile(goldenFile)
-			err = protojson.Unmarshal(file, &expected)
-			if err != nil {
+			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
 			}

@@ -30,7 +30,7 @@ type Group struct {
 	baseTables  []*cbt.Table
 	branchTable *cbt.Table
 	branchLock  sync.RWMutex
-	proto       bool
+	isProto     bool
 }
 
 //  TableConfig represents the config for a list bigtables.
@@ -46,7 +46,7 @@ func NewGroup(
 	return &Group{
 		baseTables:  baseTables,
 		branchTable: branchTable,
-		proto:       len(baseTables) > 1,
+		isProto:     len(baseTables) > 1,
 	}
 }
 
@@ -76,7 +76,7 @@ func NewGroupWithPreferredBase(g *Group) *Group {
 	return &Group{
 		baseTables:  g.BaseTables()[:1],
 		branchTable: nil,
-		proto:       g.proto,
+		isProto:     g.isProto,
 	}
 }
 
@@ -208,12 +208,12 @@ func Read(
 			for j := 0; j < len(baseTables); j++ {
 				j := j
 				if baseTables[j] != nil {
-					errs.Go(readRowFn(errCtx, baseTables[j], rowSetPart, getToken, action, baseChans[j], btGroup.proto))
+					errs.Go(readRowFn(errCtx, baseTables[j], rowSetPart, getToken, action, baseChans[j], btGroup.isProto))
 				}
 			}
 		}
 		if readBranch && branchTable != nil {
-			errs.Go(readRowFn(errCtx, branchTable, rowSetPart, getToken, action, branchChan, btGroup.proto))
+			errs.Go(readRowFn(errCtx, branchTable, rowSetPart, getToken, action, branchChan, btGroup.isProto))
 		}
 	}
 	err := errs.Wait()

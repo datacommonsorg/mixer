@@ -45,7 +45,7 @@ func ToObsSeriesPb(token string, jsonRaw []byte, isProto bool) (interface{}, err
 	if isProto {
 		err = proto.Unmarshal(jsonRaw, pbData)
 	} else {
-		protojson.Unmarshal(jsonRaw, pbData)
+		err = protojson.Unmarshal(jsonRaw, pbData)
 	}
 	if err != nil {
 		return nil, err

@@ -71,11 +71,9 @@ func TestGetPropertyLabels(t *testing.T) {
 			// Here the golden file is not same as the actual API output.
 			// An addtional level of "data" is added to make the proto<->json conversion
 			// doable.
-			payload := resp.GetPayload()
-			payload = "{\"data\":" + payload + "}"
+			payload := "{\"data\":" + resp.GetPayload() + "}"
 			var result pb.GetPropertyLabelsResponse
-			err = protojson.Unmarshal([]byte(payload), &result)
-			if err != nil {
+			if err := protojson.Unmarshal([]byte(payload), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
@@ -86,8 +84,7 @@ func TestGetPropertyLabels(t *testing.T) {
 			}
 			var expected pb.GetPropertyLabelsResponse
 			file, _ := ioutil.ReadFile(goldenFile)
-			err = protojson.Unmarshal(file, &expected)
-			if err != nil {
+			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 				continue
 			}

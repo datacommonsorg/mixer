@@ -120,10 +120,7 @@ func GetPropertyValuesHelper(
 			} else {
 				err = protojson.Unmarshal(jsonRaw, &propVals)
 			}
-			if err != nil {
-				return nil, err
-			}
-			return propVals.Entities, nil
+			return propVals.Entities, err
 		},
 		nil,
 		true, /* readBranch */
@@ -148,7 +145,10 @@ func GetPropertyValuesHelper(
 				result[dcid] = []*pb.EntityInfo{}
 			}
 			if data != nil {
-				entities := data.([]*pb.EntityInfo)
+				entities, ok := data.([]*pb.EntityInfo)
+				if !ok {
+					return nil, status.Error(codes.Internal, "Failed to convert data into []*pb.EntityInfo")
+				}
 				if arcOut {
 					// Only pick one cache for out arc.
 					result[dcid] = entities
