@@ -39,6 +39,10 @@ message DateList {
   repeated string dates = 1;
 }
 
+message ContainedPlaces {
+  repeated string dcids = 1;
+}
+
 // Related places info for a given place and condition.
 message RelatedPlacesInfo {
   message Ranking {

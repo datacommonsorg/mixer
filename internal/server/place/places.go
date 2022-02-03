@@ -45,7 +45,13 @@ func GetChildPlaces(
 		s.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
-			return strings.Split(string(jsonRaw), ","), nil
+			if isProto {
+				var containedInPlaces pb.ContainedPlaces
+				err := proto.Unmarshal(jsonRaw, &containedInPlaces)
+				return containedInPlaces.Dcids, err
+			} else {
+				return strings.Split(string(jsonRaw), ","), nil
+			}
 		},
 		nil,
 		false, /* readBranch */
