@@ -34,135 +34,143 @@ func TestGetStats(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_stats")
-
-	for _, c := range []struct {
-		statsVar     string
-		place        []string
-		mmethod      string
-		goldenFile   string
-		partialMatch bool
-	}{
-		{
-			"Count_Person",
-			[]string{"country/USA", "geoId/06", "geoId/06085", "geoId/0649670"},
-			"",
-			"census_pep.json",
-			false,
-		},
-		{
-			"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
-			[]string{"country/USA", "geoId/06", "geoId/06085"},
-			"",
-			"nyt_covid_cases.json",
-			true,
-		},
-		{
-			"Count_Person",
-			[]string{"geoId/06"},
-			"CensusACS5yrSurvey",
-			"census_acs.json",
-			true,
-		},
-		{
-			"Count_CriminalActivities_CombinedCrime",
-			[]string{"geoId/06", "geoId/0649670"},
-			"",
-			"total_crimes.json",
-			false,
-		},
-		{
-			"Median_Age_Person",
-			[]string{"geoId/0649670", "geoId/06085", "geoId/06"},
-			"",
-			"median_age.json",
-			false,
-		},
-		{
-			"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-			[]string{"country/USA"},
-			"",
-			"gdp.json",
-			false,
-		},
-		{
-			"Annual_Generation_Electricity",
-			[]string{"country/USA", "geoId/06"},
-			"",
-			"electricity_generation.json",
-			false,
-		},
-		{
-			// This is to test for scaling factor.
-			"Count_Person_IsInternetUser_PerCapita",
-			[]string{"country/JPN"},
-			"",
-			"internet_user.json",
-			false,
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
-			StatsVar:          c.statsVar,
-			Place:             c.place,
-			MeasurementMethod: c.mmethod,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStats: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		var result map[string]*model.GetStatsResponse
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
-		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(result, goldenPath, c.goldenFile)
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_stats")
 
-		var expected map[string]*model.GetStatsResponse
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file " + goldenFile + "\n" + err.Error())
-			continue
-		}
-		if c.partialMatch {
-			for geo := range expected {
-				for date := range expected[geo].Data {
-					if result[geo] == nil {
-						t.Fatalf("result does not have data for geo %s", geo)
-					}
-					got := result[geo].Data[date]
-					want := expected[geo].Data[date]
-					if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
-						// Allow approximate match for NYT covid data.
-						if math.Abs(float64(got)/float64(want)-1) > 0.05 {
-							t.Errorf(
-								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
-							continue
+		for _, c := range []struct {
+			statsVar     string
+			place        []string
+			mmethod      string
+			goldenFile   string
+			partialMatch bool
+		}{
+			{
+				"Count_Person",
+				[]string{"country/USA", "geoId/06", "geoId/06085", "geoId/0649670"},
+				"",
+				"census_pep.json",
+				false,
+			},
+			{
+				"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+				[]string{"country/USA", "geoId/06", "geoId/06085"},
+				"",
+				"nyt_covid_cases.json",
+				true,
+			},
+			{
+				"Count_Person",
+				[]string{"geoId/06"},
+				"CensusACS5yrSurvey",
+				"census_acs.json",
+				true,
+			},
+			{
+				"Count_CriminalActivities_CombinedCrime",
+				[]string{"geoId/06", "geoId/0649670"},
+				"",
+				"total_crimes.json",
+				false,
+			},
+			{
+				"Median_Age_Person",
+				[]string{"geoId/0649670", "geoId/06085", "geoId/06"},
+				"",
+				"median_age.json",
+				false,
+			},
+			{
+				"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+				[]string{"country/USA"},
+				"",
+				"gdp.json",
+				false,
+			},
+			{
+				"Annual_Generation_Electricity",
+				[]string{"country/USA", "geoId/06"},
+				"",
+				"electricity_generation.json",
+				false,
+			},
+			{
+				// This is to test for scaling factor.
+				"Count_Person_IsInternetUser_PerCapita",
+				[]string{"country/JPN"},
+				"",
+				"internet_user.json",
+				false,
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
+				StatsVar:          c.statsVar,
+				Place:             c.place,
+				MeasurementMethod: c.mmethod,
+			})
+			if err != nil {
+				t.Errorf("could not GetStats: %s", err)
+				continue
+			}
+			var result map[string]*model.GetStatsResponse
+			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+			if err != nil {
+				t.Errorf("Can not Unmarshal payload")
+				continue
+			}
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected map[string]*model.GetStatsResponse
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file " + goldenFile + "\n" + err.Error())
+				continue
+			}
+			if c.partialMatch {
+				for geo := range expected {
+					for date := range expected[geo].Data {
+						if result[geo] == nil {
+							t.Fatalf("result does not have data for geo %s", geo)
 						}
-					} else {
-						if want != got {
-							t.Errorf(
-								"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
-							continue
+						got := result[geo].Data[date]
+						want := expected[geo].Data[date]
+						if c.statsVar == "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase" {
+							// Allow approximate match for NYT covid data.
+							if math.Abs(float64(got)/float64(want)-1) > 0.05 {
+								t.Errorf(
+									"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+								continue
+							}
+						} else {
+							if want != got {
+								t.Errorf(
+									"%s, %s, %s want: %f, got: %f", c.statsVar, geo, date, want, got)
+								continue
+							}
 						}
 					}
 				}
-			}
-		} else {
-			if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
-				continue
+			} else {
+				if diff := cmp.Diff(result, expected, protocmp.Transform()); diff != "" {
+					t.Errorf("payload got diff: %v", diff)
+					continue
+				}
 			}
 		}
 	}
