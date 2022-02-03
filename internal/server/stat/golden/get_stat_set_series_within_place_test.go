@@ -30,6 +30,10 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_stat_set_series_within_place")
+
 	for _, opt := range []*e2e.TestOption{
 		{},
 		{UseImportGroup: true},
@@ -38,9 +42,6 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_stat_set_series_within_place")
 
 		for _, c := range []struct {
 			parentPlace string
@@ -74,7 +75,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 			}
 
 			var expected pb.GetStatSetSeriesResponse
-			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}

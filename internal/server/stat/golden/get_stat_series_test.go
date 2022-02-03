@@ -30,6 +30,9 @@ func TestGetStatSeries(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_stat_series")
+
 	for _, opt := range []*e2e.TestOption{
 		{},
 		{UseImportGroup: true},
@@ -38,9 +41,6 @@ func TestGetStatSeries(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_stat_series")
 
 		for _, c := range []struct {
 			statVar    string
@@ -108,7 +108,7 @@ func TestGetStatSeries(t *testing.T) {
 				continue
 			}
 			var expected pb.GetStatSeriesResponse
-			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}

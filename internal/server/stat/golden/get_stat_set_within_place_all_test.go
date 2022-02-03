@@ -30,14 +30,14 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_stat_set_within_place_all")
+
 	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: false, UseMemdb: false})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_stat_set_within_place_all")
 
 	for _, c := range []struct {
 		parentPlace string
@@ -90,7 +90,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 			continue
 		}
 		var expected pb.GetStatSetAllResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+		if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 			t.Errorf("Can not Unmarshal golden file: %s", err)
 			continue
 		}
