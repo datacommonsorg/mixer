@@ -110,6 +110,10 @@ func TestGetPropertyValues(t *testing.T) {
 				t.Errorf("could not GetPropertyValues: %s", err)
 				continue
 			}
+			// Here the golden file is not same as the actual API output.
+			// The actual payload is not a full serielized protobuf but
+			// with the outer level ("data" field) removed. Here is to add that level
+			// back so the payload can be unmarshaled.
 			payload := "{\"data\":" + resp.GetPayload() + "}"
 			var result pb.GetPropertyValuesResponse
 			if err := protojson.Unmarshal([]byte(payload), &result); err != nil {

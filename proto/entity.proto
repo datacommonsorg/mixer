@@ -12,12 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
 syntax = "proto3";
 
-// Use relative go package so the generated file is in the current folder.
 option go_package = "./proto";
 package datacommons;
-
 import "mcf.proto";
 
 

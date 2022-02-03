@@ -69,8 +69,9 @@ func TestGetPropertyLabels(t *testing.T) {
 				continue
 			}
 			// Here the golden file is not same as the actual API output.
-			// An addtional level of "data" is added to make the proto<->json conversion
-			// doable.
+			// The actual payload is not a full serielized protobuf but
+			// with the outer level ("data" field) removed. Here is to add that level
+			// back so the payload can be unmarshaled.
 			payload := "{\"data\":" + resp.GetPayload() + "}"
 			var result pb.GetPropertyLabelsResponse
 			if err := protojson.Unmarshal([]byte(payload), &result); err != nil {

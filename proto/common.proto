@@ -13,6 +13,12 @@
 // limitations under the License.
 
 
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
+
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;

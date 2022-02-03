@@ -220,7 +220,7 @@ func (s *Server) GetPropertyLabels(
 	}
 	jsonRaw, err := protojson.Marshal(resp)
 	// To make the API response backward compatible. This is to add the outer
-	// level `"data:{"`
+	// level `{\"data\":`
 	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 	if err != nil {
 		return nil, err
@@ -238,7 +238,7 @@ func (s *Server) GetPropertyValues(
 	}
 	jsonRaw, err := protojson.Marshal(resp)
 	// To make the API response backward compatible. This is to add the outer
-	// level `"data:{"`
+	// level `{\"data\":`
 	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 	if err != nil {
 		return nil, err

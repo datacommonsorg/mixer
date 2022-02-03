@@ -12,6 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
 // *** IMPORTANT NOTE ***
 // Keep this in sync with the same proto in datacommonsorg/import.
 // Eventually we need to move the shared protos out to a separate repo.
