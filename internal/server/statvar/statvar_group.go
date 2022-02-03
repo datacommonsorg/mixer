@@ -132,13 +132,18 @@ func GetStatVarGroup(
 		ctx,
 		bigtable.NewGroupWithPreferredBase(store.BtGroup),
 		cbt.RowList{bigtable.BtStatVarGroup},
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			svgResp := &pb.StatVarGroups{}
-			err := protojson.Unmarshal(jsonRaw, svgResp)
-			if err != nil {
-				return nil, err
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			var svgResp pb.StatVarGroups
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &svgResp); err != nil {
+					return nil, err
+				}
 			}
-			return svgResp, nil
+			return &svgResp, nil
 		},
 		// Since there is no dcid, use "_" as a dummy token
 		func(token string) (string, error) { return "_", nil },

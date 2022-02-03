@@ -1,27 +1,29 @@
 {
-  "Count_Person": {
-    "out": [
-      {
-        "provenanceId": "dc/d7tbsb1",
-        "value": "Population"
-      }
-    ]
-  },
-  "State": {
-    "out": [
-      {
-        "provenanceId": "dc/5l5zxr1",
-        "value": "State"
-      }
-    ]
-  },
-  "dc/p/cmtdk79lnk2pd": {},
-  "geoId/05": {
-    "out": [
-      {
-        "provenanceId": "dc/5n63hr1",
-        "value": "Arkansas"
-      }
-    ]
+  "data": {
+    "Count_Person": {
+      "out": [
+        {
+          "provenanceId": "dc/d7tbsb1",
+          "value": "Population"
+        }
+      ]
+    },
+    "State": {
+      "out": [
+        {
+          "provenanceId": "dc/5l5zxr1",
+          "value": "State"
+        }
+      ]
+    },
+    "dc/p/cmtdk79lnk2pd": {},
+    "geoId/05": {
+      "out": [
+        {
+          "provenanceId": "dc/5n63hr1",
+          "value": "Arkansas"
+        }
+      ]
+    }
   }
 }

@@ -46,7 +46,7 @@ service Mixer {
 
   // Fetch property labels adjacent of nodes
   rpc GetPropertyLabels(GetPropertyLabelsRequest)
-      returns (GetPropertyLabelsResponse) {
+      returns (PayloadResponse) {
     option (google.api.http) = {
       get: "/node/property-labels"
       additional_bindings: {
@@ -58,7 +58,7 @@ service Mixer {
 
   // Fetch nodes that linked to source nodes with a given property.
   rpc GetPropertyValues(GetPropertyValuesRequest)
-      returns (GetPropertyValuesResponse) {
+      returns (PayloadResponse) {
     option (google.api.http) = {
       get: "/node/property-values"
       additional_bindings: {

@@ -76,17 +76,17 @@ func getMissingStatVarRanking(
 	client pb.MixerClient,
 	req *pb.GetLocationsRankingsRequest) ([]string, error) {
 	ctx := context.Background()
-	response, err := client.GetLocationsRankings(ctx, req)
+	resp, err := client.GetLocationsRankings(ctx, req)
 	if err != nil {
 		return nil, err
 	}
 	statVars := req.StatVarDcids
-	if len(response.Payload) == 0 {
+	if len(resp.Data) == 0 {
 		return statVars, nil
 	}
 	var missing []string
 	for _, sv := range statVars {
-		if response.Payload[sv] == nil {
+		if resp.Data[sv] == nil {
 			missing = append(missing, sv)
 		}
 	}

@@ -31,6 +31,10 @@ option go_package = "./proto";
 package datacommons;
 
 
+message PlaceStatVars {
+  repeated string stat_var_ids = 1;
+}
+
 message DateList {
   repeated string dates = 1;
 }
@@ -58,7 +62,6 @@ message RelatedPlacesInfo {
   reserved 4, 5, 6;
 }
 
-
 // Request to get places that are contained in parent places.
 message GetPlacesInRequest {
   // The parent place dcids.
@@ -67,6 +70,7 @@ message GetPlacesInRequest {
   // The child place type.
   string place_type = 2;
 }
+
 // Response of GetPlacesIn.
 message GetPlacesInResponse {
   // The JSON payload.
@@ -89,8 +93,7 @@ message GetRelatedLocationsRequest {
 }
 // Response of GetRelatedLocations request.
 message GetRelatedLocationsResponse {
-  // The JSON payload.
-  string payload = 1;
+  map<string, RelatedPlacesInfo> data = 1;
 }
 
 
@@ -107,10 +110,10 @@ message GetLocationsRankingsRequest {
   // (Optional) Whether the computation needs to be based on per capita.
   bool is_per_capita = 4;
 }
-message GetLocationsRankingsResponse {
-  map<string, RelatedPlacesInfo> payload = 1;
-}
 
+message GetLocationsRankingsResponse {
+  map<string, RelatedPlacesInfo> data = 1;
+}
 
 // StatsVars represent a list of statistical variable dcids.
 message StatsVars {

@@ -35,7 +35,7 @@ func TestGetLocationsRankings(t *testing.T) {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
-		path.Dir(filename), "get_stat_ranking")
+		path.Dir(filename), "get_locations_ranking")
 
 	for _, c := range []struct {
 		goldenFile   string

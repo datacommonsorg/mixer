@@ -20,6 +20,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 // Count checks if places have data for stat vars and stat var groups.
@@ -38,11 +39,18 @@ func Count(
 		ctx,
 		btGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var statVarExistence pb.PlaceStatVarExistence
-			err := protojson.Unmarshal(jsonRaw, &statVarExistence)
-			if err != nil {
-				return nil, err
+			if isProto {
+				err := proto.Unmarshal(jsonRaw, &statVarExistence)
+				if err != nil {
+					return nil, err
+				}
+			} else {
+				err := protojson.Unmarshal(jsonRaw, &statVarExistence)
+				if err != nil {
+					return nil, err
+				}
 			}
 			return &statVarExistence, nil
 		},

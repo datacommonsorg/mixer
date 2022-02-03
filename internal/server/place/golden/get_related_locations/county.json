@@ -1,18 +1,20 @@
 {
-  "Count_Person": {
-    "rankFromTop": 18,
-    "rankFromBottom": 3171
-  },
-  "Median_Age_Person": {
-    "rankFromTop": 2584,
-    "rankFromBottom": 601
-  },
-  "Median_Income_Person": {
-    "rankFromTop": 22,
-    "rankFromBottom": 3163
-  },
-  "UnemploymentRate_Person": {
-    "rankFromTop": 1489,
-    "rankFromBottom": 1696
+  "data": {
+    "Count_Person": {
+      "rankFromTop": 18,
+      "rankFromBottom": 3171
+    },
+    "Median_Age_Person": {
+      "rankFromTop": 2584,
+      "rankFromBottom": 601
+    },
+    "Median_Income_Person": {
+      "rankFromTop": 22,
+      "rankFromBottom": 3163
+    },
+    "UnemploymentRate_Person": {
+      "rankFromTop": 1489,
+      "rankFromBottom": 1696
+    }
   }
 }

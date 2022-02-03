@@ -28,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // Translate implements API for Mixer.Translate.
@@ -212,15 +213,35 @@ func (s *Server) SearchStatVar(
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
 func (s *Server) GetPropertyLabels(
 	ctx context.Context, in *pb.GetPropertyLabelsRequest,
-) (*pb.GetPropertyLabelsResponse, error) {
-	return node.GetPropertyLabels(ctx, in, s.store)
+) (*pb.PayloadResponse, error) {
+	resp, err := node.GetPropertyLabels(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	jsonRaw, err := protojson.Marshal(resp)
+	// To make the API response backward compatible.
+	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
+	if err != nil {
+		return nil, err
+	}
+	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetPropertyValues implements API for Mixer.GetPropertyValues.
 func (s *Server) GetPropertyValues(
 	ctx context.Context, in *pb.GetPropertyValuesRequest,
-) (*pb.GetPropertyValuesResponse, error) {
-	return node.GetPropertyValues(ctx, in, s.store)
+) (*pb.PayloadResponse, error) {
+	resp, err := node.GetPropertyValues(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	jsonRaw, err := protojson.Marshal(resp)
+	// To make the API response backward compatible.
+	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
+	if err != nil {
+		return nil, err
+	}
+	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetTriples implements API for Mixer.GetTriples.

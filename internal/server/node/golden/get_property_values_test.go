@@ -16,16 +16,16 @@ package golden
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/test/e2e"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetPropertyValues(t *testing.T) {
@@ -110,27 +110,29 @@ func TestGetPropertyValues(t *testing.T) {
 				t.Errorf("could not GetPropertyValues: %s", err)
 				continue
 			}
-			goldenFile := path.Join(goldenPath, c.goldenFile)
-
-			var result map[string]map[string][]*model.Node
-			if err := json.Unmarshal([]byte(resp.GetPayload()), &result); err != nil {
+			payload := resp.GetPayload()
+			payload = "{\"data\":" + payload + "}"
+			var result pb.GetPropertyValuesResponse
+			err = protojson.Unmarshal([]byte(payload), &result)
+			if err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
 
+			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
-				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+				e2e.UpdateProtoGolden(&result, goldenPath, c.goldenFile)
 				continue
 			}
 
-			var expected map[string]map[string][]*model.Node
+			var expected pb.GetPropertyValuesResponse
 			file, _ := ioutil.ReadFile(goldenFile)
-			err = json.Unmarshal(file, &expected)
+			err = protojson.Unmarshal(file, &expected)
 			if err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
 			}
-			if diff := cmp.Diff(result, expected); diff != "" {
+			if diff := cmp.Diff(&result, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue
 			}

@@ -24,6 +24,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 // GetBioPageData implements API for Mixer.GetBioPageData.
@@ -41,11 +42,16 @@ func GetBioPageData(
 		ctx,
 		store.BtGroup,
 		cbt.RowList{bigtable.BtProteinPagePrefix + dcid},
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			graph := pb.GraphNodes{}
-			err := protojson.Unmarshal(jsonRaw, &graph)
-			if err != nil {
-				return nil, err
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			var graph pb.GraphNodes
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &graph); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &graph); err != nil {
+					return nil, err
+				}
 			}
 			return &graph, nil
 		},

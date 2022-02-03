@@ -30,6 +30,7 @@ type Group struct {
 	baseTables  []*cbt.Table
 	branchTable *cbt.Table
 	branchLock  sync.RWMutex
+	proto       bool
 }
 
 //  TableConfig represents the config for a list bigtables.
@@ -45,6 +46,7 @@ func NewGroup(
 	return &Group{
 		baseTables:  baseTables,
 		branchTable: branchTable,
+		proto:       len(baseTables) > 1,
 	}
 }
 
@@ -74,6 +76,7 @@ func NewGroupWithPreferredBase(g *Group) *Group {
 	return &Group{
 		baseTables:  g.BaseTables()[:1],
 		branchTable: nil,
+		proto:       g.proto,
 	}
 }
 
@@ -93,8 +96,9 @@ func readRowFn(
 	btTable *cbt.Table,
 	rowSetPart cbt.RowSet,
 	getToken func(string) (string, error),
-	action func(string, []byte) (interface{}, error),
+	action func(string, []byte, bool) (interface{}, error),
 	elemChan chan chanData,
+	proto bool,
 ) func() error {
 	return func() error {
 		if err := btTable.ReadRows(errCtx, rowSetPart,
@@ -116,7 +120,7 @@ func readRowFn(
 				if err != nil {
 					return false
 				}
-				elem, err := action(token, jsonRaw)
+				elem, err := action(token, jsonRaw, proto)
 				if err != nil {
 					return false
 				}
@@ -148,7 +152,7 @@ func Read(
 	ctx context.Context,
 	btGroup *Group,
 	rowSet cbt.RowSet,
-	action func(string, []byte) (interface{}, error),
+	action func(string, []byte, bool) (interface{}, error),
 	getToken func(string) (string, error),
 	readBranch bool,
 ) (
@@ -204,12 +208,12 @@ func Read(
 			for j := 0; j < len(baseTables); j++ {
 				j := j
 				if baseTables[j] != nil {
-					errs.Go(readRowFn(errCtx, baseTables[j], rowSetPart, getToken, action, baseChans[j]))
+					errs.Go(readRowFn(errCtx, baseTables[j], rowSetPart, getToken, action, baseChans[j], btGroup.proto))
 				}
 			}
 		}
 		if readBranch && branchTable != nil {
-			errs.Go(readRowFn(errCtx, branchTable, rowSetPart, getToken, action, branchChan))
+			errs.Go(readRowFn(errCtx, branchTable, rowSetPart, getToken, action, branchChan, btGroup.proto))
 		}
 	}
 	err := errs.Wait()

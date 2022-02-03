@@ -22,8 +22,8 @@ import (
 	"encoding/json"
 
 	cbt "cloud.google.com/go/bigtable"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"google.golang.org/protobuf/proto"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -44,7 +44,7 @@ func GetChildPlaces(
 		ctx,
 		s.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
@@ -79,7 +79,7 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
@@ -123,8 +123,11 @@ var RelatedLocationsPrefixMap = map[bool]map[bool]string{
 }
 
 // GetRelatedLocations implements API for Mixer.GetRelatedLocations.
-func GetRelatedLocations(ctx context.Context,
-	in *pb.GetRelatedLocationsRequest, store *store.Store) (*pb.GetRelatedLocationsResponse, error) {
+func GetRelatedLocations(
+	ctx context.Context,
+	in *pb.GetRelatedLocationsRequest,
+	store *store.Store,
+) (*pb.GetRelatedLocationsResponse, error) {
 	if in.GetDcid() == "" || len(in.GetStatVarDcids()) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
@@ -151,11 +154,16 @@ func GetRelatedLocations(ctx context.Context,
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var btRelatedPlacesInfo model.RelatedPlacesInfo
-			err := json.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
-			if err != nil {
-				return nil, err
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			var btRelatedPlacesInfo pb.RelatedPlacesInfo
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
+					return nil, err
+				}
 			}
 			return &btRelatedPlacesInfo, nil
 		},
@@ -172,24 +180,23 @@ func GetRelatedLocations(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
-	results := map[string]*model.RelatedPlacesInfo{}
-	for statVarDcid, data := range baseDataList[0] {
+	result := &pb.GetRelatedLocationsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
+	for statVar, data := range baseDataList[0] {
 		if data == nil {
-			results[statVarDcid] = nil
+			result.Data[statVar] = nil
 		} else {
-			results[statVarDcid] = data.(*model.RelatedPlacesInfo)
+			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
 		}
 	}
-	jsonRaw, err := json.Marshal(results)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetRelatedLocationsResponse{Payload: string(jsonRaw)}, nil
+	return result, nil
 }
 
 // GetLocationsRankings implements API for Mixer.GetLocationsRankings.
-func GetLocationsRankings(ctx context.Context,
-	in *pb.GetLocationsRankingsRequest, store *store.Store) (*pb.GetLocationsRankingsResponse, error) {
+func GetLocationsRankings(
+	ctx context.Context,
+	in *pb.GetLocationsRankingsRequest,
+	store *store.Store,
+) (*pb.GetLocationsRankingsResponse, error) {
 	if in.GetPlaceType() == "" || len(in.GetStatVarDcids()) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
@@ -200,10 +207,28 @@ func GetLocationsRankings(ctx context.Context,
 	rowList := cbt.RowList{}
 	for _, statVarDcid := range in.GetStatVarDcids() {
 		if sameAncestor {
-			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s^%s^%s", prefix, "*", in.GetPlaceType(), in.GetWithinPlace(), statVarDcid))
+			rowList = append(
+				rowList,
+				fmt.Sprintf(
+					"%s%s^%s^%s^%s",
+					prefix,
+					"*",
+					in.GetPlaceType(),
+					in.GetWithinPlace(),
+					statVarDcid,
+				),
+			)
 		} else {
-			rowList = append(rowList, fmt.Sprintf("%s%s^%s^%s", prefix, "*", in.GetPlaceType(), statVarDcid))
+			rowList = append(
+				rowList,
+				fmt.Sprintf(
+					"%s%s^%s^%s",
+					prefix,
+					"*",
+					in.GetPlaceType(),
+					statVarDcid,
+				),
+			)
 		}
 	}
 	// RelatedPlace cache only exists in base cache
@@ -211,11 +236,16 @@ func GetLocationsRankings(ctx context.Context,
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
-			err := protojson.Unmarshal(jsonRaw, &btRelatedPlacesInfo)
-			if err != nil {
-				return nil, err
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
+					return nil, err
+				}
 			}
 			return &btRelatedPlacesInfo, nil
 		},
@@ -233,38 +263,44 @@ func GetLocationsRankings(ctx context.Context,
 		return nil, err
 	}
 
-	results := map[string]*pb.RelatedPlacesInfo{}
-	for statVarDcid, data := range baseDataList[0] {
+	result := &pb.GetLocationsRankingsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
+	for statVar, data := range baseDataList[0] {
 		if data == nil {
-			results[statVarDcid] = nil
+			result.Data[statVar] = nil
 		} else {
-			results[statVarDcid] = data.(*pb.RelatedPlacesInfo)
+			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
 		}
 	}
-	return &pb.GetLocationsRankingsResponse{Payload: results}, nil
+	return result, nil
 }
 
 // GetPlaceMetadata implements API for Mixer.GetPlaceMetadata.
-func GetPlaceMetadata(ctx context.Context, in *pb.GetPlaceMetadataRequest, store *store.Store) (
-	*pb.GetPlaceMetadataResponse, error) {
+func GetPlaceMetadata(
+	ctx context.Context,
+	in *pb.GetPlaceMetadataRequest,
+	store *store.Store,
+) (*pb.GetPlaceMetadataResponse, error) {
 	places := in.GetPlaces()
-
 	if len(places) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: places")
 	}
 
 	rowList := bigtable.BuildPlaceMetaDataKey(places)
-
 	// Place metadata are from base geo imports. Only trust the base cache.
 	baseDataList, _, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var data pb.PlaceMetadataCache
-			err := json.Unmarshal(jsonRaw, &data)
-			if err != nil {
-				return nil, err
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &data); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &data); err != nil {
+					return nil, err
+				}
 			}
 			return &data, nil
 		},

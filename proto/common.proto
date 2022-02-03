@@ -57,3 +57,8 @@ message Manifest {
   // Example: https://pantheon.corp.google.com/storage/browser/datcom-public/test
   string data_download_url = 3;
 }
+
+// PayloadResponse represents API response with encoded payload string
+message PayloadResponse {
+  string payload = 1;
+}

@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/golang/geo/s2"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -61,10 +62,16 @@ func ResolveCoordinates(
 		ctx,
 		store.BtGroup,
 		reconRowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var recon pb.CoordinateRecon
-			if err := protojson.Unmarshal(jsonRaw, &recon); err != nil {
-				return nil, err
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &recon); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &recon); err != nil {
+					return nil, err
+				}
 			}
 			return &recon, nil
 		},
@@ -98,10 +105,16 @@ func ResolveCoordinates(
 		ctx,
 		store.BtGroup,
 		geoJSONRowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var info pb.EntityInfoCollection
-			if err := protojson.Unmarshal(jsonRaw, &info); err != nil {
-				return nil, err
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &info); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &info); err != nil {
+					return nil, err
+				}
 			}
 			return &info, nil
 		},

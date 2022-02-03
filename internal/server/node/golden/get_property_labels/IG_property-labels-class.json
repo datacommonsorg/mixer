@@ -1,18 +1,20 @@
 {
-  "Class": {
-    "inLabels": [
-      "domainIncludes",
-      "rangeIncludes",
-      "subClassOf",
-      "typeOf"
-    ],
-    "outLabels": [
-      "isPartOf",
-      "name",
-      "provenance",
-      "sameAs",
-      "subClassOf",
-      "typeOf"
-    ]
+  "data": {
+    "Class": {
+      "inLabels": [
+        "domainIncludes",
+        "rangeIncludes",
+        "subClassOf",
+        "typeOf"
+      ],
+      "outLabels": [
+        "isPartOf",
+        "name",
+        "provenance",
+        "sameAs",
+        "subClassOf",
+        "typeOf"
+      ]
+    }
   }
 }

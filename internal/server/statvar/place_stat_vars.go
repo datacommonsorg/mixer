@@ -18,15 +18,14 @@ import (
 	"context"
 	"sort"
 
-	"encoding/json"
-
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 // GetPlaceStatsVar implements API for Mixer.GetPlaceStatsVar.
@@ -60,11 +59,16 @@ func GetPlaceStatVars(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
-			var data model.PlaceStatsVar
-			err := json.Unmarshal(jsonRaw, &data)
-			if err != nil {
-				return nil, err
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			var data pb.PlaceStatVars
+			if isProto {
+				if err := proto.Unmarshal(jsonRaw, &data); err != nil {
+					return nil, err
+				}
+			} else {
+				if err := protojson.Unmarshal(jsonRaw, &data); err != nil {
+					return nil, err
+				}
 			}
 			return data.StatVarIds, nil
 		},

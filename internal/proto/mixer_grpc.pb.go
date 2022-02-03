@@ -20,9 +20,9 @@ type MixerClient interface {
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error)
 	// Fetch property labels adjacent of nodes
-	GetPropertyLabels(ctx context.Context, in *GetPropertyLabelsRequest, opts ...grpc.CallOption) (*GetPropertyLabelsResponse, error)
+	GetPropertyLabels(ctx context.Context, in *GetPropertyLabelsRequest, opts ...grpc.CallOption) (*PayloadResponse, error)
 	// Fetch nodes that linked to source nodes with a given property.
-	GetPropertyValues(ctx context.Context, in *GetPropertyValuesRequest, opts ...grpc.CallOption) (*GetPropertyValuesResponse, error)
+	GetPropertyValues(ctx context.Context, in *GetPropertyValuesRequest, opts ...grpc.CallOption) (*PayloadResponse, error)
 	// Fetch triples that have the given nodes as subject or object.
 	GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*GetTriplesResponse, error)
 	// Get places contained in parent places.
@@ -119,8 +119,8 @@ func (c *mixerClient) Query(ctx context.Context, in *QueryRequest, opts ...grpc.
 	return out, nil
 }
 
-func (c *mixerClient) GetPropertyLabels(ctx context.Context, in *GetPropertyLabelsRequest, opts ...grpc.CallOption) (*GetPropertyLabelsResponse, error) {
-	out := new(GetPropertyLabelsResponse)
+func (c *mixerClient) GetPropertyLabels(ctx context.Context, in *GetPropertyLabelsRequest, opts ...grpc.CallOption) (*PayloadResponse, error) {
+	out := new(PayloadResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPropertyLabels", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -128,8 +128,8 @@ func (c *mixerClient) GetPropertyLabels(ctx context.Context, in *GetPropertyLabe
 	return out, nil
 }
 
-func (c *mixerClient) GetPropertyValues(ctx context.Context, in *GetPropertyValuesRequest, opts ...grpc.CallOption) (*GetPropertyValuesResponse, error) {
-	out := new(GetPropertyValuesResponse)
+func (c *mixerClient) GetPropertyValues(ctx context.Context, in *GetPropertyValuesRequest, opts ...grpc.CallOption) (*PayloadResponse, error) {
+	out := new(PayloadResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPropertyValues", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -396,9 +396,9 @@ type MixerServer interface {
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *QueryRequest) (*QueryResponse, error)
 	// Fetch property labels adjacent of nodes
-	GetPropertyLabels(context.Context, *GetPropertyLabelsRequest) (*GetPropertyLabelsResponse, error)
+	GetPropertyLabels(context.Context, *GetPropertyLabelsRequest) (*PayloadResponse, error)
 	// Fetch nodes that linked to source nodes with a given property.
-	GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*GetPropertyValuesResponse, error)
+	GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*PayloadResponse, error)
 	// Fetch triples that have the given nodes as subject or object.
 	GetTriples(context.Context, *GetTriplesRequest) (*GetTriplesResponse, error)
 	// Get places contained in parent places.
@@ -485,10 +485,10 @@ type UnimplementedMixerServer struct {
 func (*UnimplementedMixerServer) Query(context.Context, *QueryRequest) (*QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
 }
-func (*UnimplementedMixerServer) GetPropertyLabels(context.Context, *GetPropertyLabelsRequest) (*GetPropertyLabelsResponse, error) {
+func (*UnimplementedMixerServer) GetPropertyLabels(context.Context, *GetPropertyLabelsRequest) (*PayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPropertyLabels not implemented")
 }
-func (*UnimplementedMixerServer) GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*GetPropertyValuesResponse, error) {
+func (*UnimplementedMixerServer) GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*PayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPropertyValues not implemented")
 }
 func (*UnimplementedMixerServer) GetTriples(context.Context, *GetTriplesRequest) (*GetTriplesResponse, error) {
