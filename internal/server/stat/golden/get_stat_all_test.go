@@ -30,46 +30,54 @@ func TestGetStatAll(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_stat_all")
-
-	for _, c := range []struct {
-		statVars   []string
-		places     []string
-		goldenFile string
-	}{
-		{
-			[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita", "Annual_Generation_Electricity"},
-			[]string{"country/USA", "geoId/06", "geoId/0649670"},
-			"result.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
-			StatVars: c.statVars,
-			Places:   c.places,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatAll: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
-		var expected pb.GetStatAllResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file: %s", err)
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_stat_all")
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		for _, c := range []struct {
+			statVars   []string
+			places     []string
+			goldenFile string
+		}{
+			{
+				[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita", "Annual_Generation_Electricity"},
+				[]string{"country/USA", "geoId/06", "geoId/0649670"},
+				"result.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
+				StatVars: c.statVars,
+				Places:   c.places,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatAll: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+			var expected pb.GetStatAllResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file: %s", err)
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }
