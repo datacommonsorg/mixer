@@ -16,6 +16,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
@@ -27,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"golang.org/x/oauth2/google"
 
@@ -50,8 +52,10 @@ var (
 	bqDataset   = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
 	schemaPath  = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	// Base Bigtable Cache
-	useBaseBt     = flag.Bool("use_base_bt", true, "Use base bigtable cache")
-	baseTableName = flag.String("base_table", "", "Base cache Bigtable table.")
+	useBaseBt         = flag.Bool("use_base_bt", true, "Use base bigtable cache")
+	baseTableName     = flag.String("base_table", "", "Base cache Bigtable table.")
+	useImportGroup    = flag.Bool("use_import_group", false, "Use multiple base tables from import group")
+	importGroupTables = flag.String("import_group_tables", "", "A JSON string of import group tables")
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// GCS to hold memdb data.
@@ -116,14 +120,33 @@ func main() {
 	}
 
 	// Base Bigtable cache
-	var baseTable *cbt.Table
+	var baseTables []*cbt.Table
 	if *useBaseBt {
-		// Base cache
-		baseTable, err = server.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)
-		if err != nil {
-			log.Fatalf("Failed to create BigTable client: %v", err)
+		if *useImportGroup {
+			var c bigtable.TableConfig
+			if err := json.Unmarshal([]byte(*importGroupTables), &c); err != nil {
+				log.Fatalf("Failed to load import group tables config")
+			}
+			tableNames := c.Tables
+			bigtable.SortTables(tableNames)
+			for _, t := range tableNames {
+				baseTable, err := bigtable.NewTable(ctx, *storeProject, baseBtInstance, t)
+				if err != nil {
+					log.Fatalf("Failed to create BigTable client: %v", err)
+				}
+				baseTables = append(baseTables, baseTable)
+				metadata.BaseTables = append(metadata.BaseTables, t)
+			}
+
+		} else {
+			// Base cache
+			baseTable, err := bigtable.NewTable(ctx, *storeProject, baseBtInstance, *baseTableName)
+			if err != nil {
+				log.Fatalf("Failed to create BigTable client: %v", err)
+			}
+			baseTables = append(baseTables, baseTable)
+			metadata.BaseTables = []string{*baseTableName}
 		}
-		metadata.BaseTables = []string{*baseTableName}
 	}
 
 	if *serveMixerService {
@@ -159,7 +182,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to read branch cache folder: %v", err)
 			}
-			branchTable, err = server.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
+			branchTable, err = bigtable.NewTable(ctx, *storeProject, branchBtInstance, branchTableName)
 			if err != nil {
 				log.Fatalf("Failed to create BigTable client: %v", err)
 			}
@@ -167,7 +190,7 @@ func main() {
 		}
 
 		// Store
-		store := store.NewStore(bqClient, memDb, []*cbt.Table{baseTable}, branchTable)
+		store := store.NewStore(bqClient, memDb, baseTables, branchTable)
 		// Cache.
 		var cache *resource.Cache
 		if *serveMixerService {
@@ -193,7 +216,7 @@ func main() {
 
 	// Register for Recon Service.
 	if *serveReconService {
-		reconServer := server.NewReconServer([]*cbt.Table{baseTable})
+		reconServer := server.NewReconServer(baseTables)
 		pb.RegisterReconServer(srv, reconServer)
 	}
 

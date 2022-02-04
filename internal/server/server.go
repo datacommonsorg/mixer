@@ -31,6 +31,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
@@ -43,7 +44,7 @@ type Server struct {
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
-	branchTable, err := NewBtTable(
+	branchTable, err := bigtable.NewTable(
 		ctx, s.metadata.BtProject, s.metadata.BranchBtInstance, branchTableName)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
@@ -112,17 +113,6 @@ func NewMetadata(
 			BranchBtInstance: branchInstance,
 		},
 		nil
-}
-
-// NewBtTable creates a new cbt.Table instance.
-func NewBtTable(
-	ctx context.Context, projectID, instanceID, tableID string) (
-	*cbt.Table, error) {
-	btClient, err := cbt.NewClient(ctx, projectID, instanceID)
-	if err != nil {
-		return nil, err
-	}
-	return btClient.Open(tableID), nil
 }
 
 // SubscribeBranchCacheUpdate subscribe for branch cache update.

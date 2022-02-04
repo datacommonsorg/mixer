@@ -113,15 +113,16 @@ func setupInternal(
 	baseTables := []*cbt.Table{}
 
 	if useImportGroup {
+		bigtable.SortTables(tableConfig.Tables)
 		for _, t := range tableConfig.Tables {
-			table, err := server.NewBtTable(ctx, storeProject, baseInstance, strings.TrimSpace(t))
+			table, err := bigtable.NewTable(ctx, storeProject, baseInstance, strings.TrimSpace(t))
 			if err != nil {
 				return nil, nil, err
 			}
 			baseTables = append(baseTables, table)
 		}
 	} else {
-		baseTable, err := server.NewBtTable(
+		baseTable, err := bigtable.NewTable(
 			ctx, storeProject, baseInstance, strings.TrimSpace(string(baseTableName)))
 		if err != nil {
 			return nil, nil, err

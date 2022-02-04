@@ -60,6 +60,7 @@ spec:
             - --store_project=$(STORE_PROJECT)
             - --bq_dataset=$(BIG_QUERY)
             - --base_table=$(BIG_TABLE)
+            - --import_group_tables=$(IMPORT_GROUP_TABLES)
             - --schema_path=/datacommons/mapping
           volumeMounts:
             - name: schema-mapping
@@ -85,6 +86,11 @@ spec:
                 configMapKeyRef:
                   name: store-configmap
                   key: bigtable.version
+            - name: IMPORT_GROUP_TABLES
+              valueFrom:
+                configMapKeyRef:
+                  name: store-configmap
+                  key: bigtable_import_groups.json
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:
