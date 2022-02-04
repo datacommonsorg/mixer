@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
-
 
 // REST API URL from the proto in this file:
 // ========================================
@@ -26,13 +24,11 @@
 //    /node/triples
 // ========================================
 
-
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
 import "entity.proto";
-
 
 // Full lists of in and out labels for a given node ID.
 message PropertyLabels {
@@ -47,9 +43,7 @@ message GetPropertyLabelsRequest {
 }
 
 // Response returned by GetPropertyLabels.
-message GetPropertyLabelsResponse {
-  map<string, PropertyLabels> data = 1;
-}
+message GetPropertyLabelsResponse { map<string, PropertyLabels> data = 1; }
 
 // Request to get all neighboring nodes along an edge labeled by a property.
 message GetPropertyValuesRequest {

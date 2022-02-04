@@ -12,23 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
-
 
 // REST API URL from the proto in this file:
 // ========================================
 //    /translate
 // ========================================
 
-
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
-
 
 // Request to translate a graph query.
 message TranslateRequest {

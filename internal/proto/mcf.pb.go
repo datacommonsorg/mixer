@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
 // *** IMPORTANT NOTE ***
 // Keep this in sync with the same proto in datacommonsorg/import.
 // Eventually we need to move the shared protos out to a separate repo.
@@ -117,11 +122,13 @@ const (
 	ValueType_NUMBER ValueType = 2
 	// Represents a reference to a node that has not yet been resolved.  These
 	// types should turn into RESOLVED_REF after entity resolution.
-	// REQUIRES: the value has a reference prefix (aka, "<id-space>:"), typically "l:".
+	// REQUIRES: the value has a reference prefix (aka, "<id-space>:"), typically
+	// "l:".
 	ValueType_UNRESOLVED_REF ValueType = 3
 	// Represents a resolved datacommons entity. Stores a DCID value.
 	ValueType_RESOLVED_REF ValueType = 4
-	// Represents a complex value corresponding to Quantity, QuantityRange, LatLng, etc.
+	// Represents a complex value corresponding to Quantity, QuantityRange,
+	// LatLng, etc.
 	ValueType_COMPLEX_VALUE ValueType = 5
 	// Represents a table column for TEMPLATE_MCF.
 	ValueType_TABLE_COLUMN ValueType = 6
@@ -190,8 +197,8 @@ func (ValueType) EnumDescriptor() ([]byte, []int) {
 	return file_mcf_proto_rawDescGZIP(), []int{1}
 }
 
-// Proto representation of a Data Commons sub-graph which may be made of instance nodes (INSTANCE_MCF)
-// or template nodes (TEMPLATE_MCF).
+// Proto representation of a Data Commons sub-graph which may be made of
+// instance nodes (INSTANCE_MCF) or template nodes (TEMPLATE_MCF).
 type McfGraph struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -368,7 +375,8 @@ type McfGraph_PropertyValues struct {
 	// Map of a property name to its values.
 	Pvs map[string]*McfGraph_Values `protobuf:"bytes,1,rep,name=pvs" json:"pvs,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	// Information identifying the location of this node in the source.
-	// There can be multiple if PVs in this node are merged from different files.
+	// There can be multiple if PVs in this node are merged from different
+	// files.
 	Location []*Log_Location `protobuf:"bytes,2,rep,name=location" json:"location,omitempty"`
 }
 
