@@ -12,17 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
 
-
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
-
 
 // The direction of node property (arc in the graph).
 enum PropertyDirection {
@@ -49,9 +46,7 @@ message GraphNode {
 // This is used in SubGraph cache.
 // A single root ID might match multiple SubGraph configs.
 // All `nodes` have the same root ID.
-message GraphNodes {
-  repeated GraphNode nodes = 1;
-}
+message GraphNodes { repeated GraphNode nodes = 1; }
 
 // Holds the import manifest information.
 message Manifest {
@@ -60,11 +55,10 @@ message Manifest {
   // The url of the data, ususally the source url link
   string provenance_url = 2;
   // Data download link. For private import, this should be the GCS folder url.
-  // Example: https://pantheon.corp.google.com/storage/browser/datcom-public/test
+  // Example:
+  // https://pantheon.corp.google.com/storage/browser/datcom-public/test
   string data_download_url = 3;
 }
 
 // PayloadResponse represents API response with encoded payload string
-message PayloadResponse {
-  string payload = 1;
-}
+message PayloadResponse { string payload = 1; }

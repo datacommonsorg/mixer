@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
@@ -24,35 +23,33 @@ option go_package = "./proto";
 package datacommons;
 import "mcf.proto";
 
-
 // Basic info for an entity (subject or object).
 message EntityInfo {
   string name = 1;
   repeated string types = 2;
   string dcid = 3;
   string provenance_id = 4;
-  string value = 5;  // Only for object value.
+  string value = 5; // Only for object value.
 }
 
 // Basic info for a collection of entities.
 message EntityInfoCollection {
   repeated EntityInfo entities = 1;
-  int64 total_count = 2;  // Before potential truncation.
+  int64 total_count = 2; // Before potential truncation.
 }
-
 
 message IdWithProperty {
   string prop = 1;
   string val = 2;
 }
 
-message EntityIds {
-  repeated IdWithProperty ids = 1;
-}
+message EntityIds { repeated IdWithProperty ids = 1; }
 
-// An entity is represented by a subgraph, which contains itself and its neighbors.
+// An entity is represented by a subgraph, which contains itself and its
+// neighbors.
 message EntitySubGraph {
-  // REQUIRED: source_id must be a key within `sub_graph.nodes`, or one of the `ids`.
+  // REQUIRED: source_id must be a key within `sub_graph.nodes`, or one of the
+  // `ids`.
   string source_id = 1;
   oneof graph_representation {
     McfGraph sub_graph = 2;

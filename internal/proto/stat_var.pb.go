@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
 // REST API URL from the proto in this file:
 // ========================================
 //    /stat-var/group
@@ -629,8 +634,8 @@ type SearchStatVarResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A ranked list of stat vars that aren't included in any of the returned stat var
-	// groups.
+	// A ranked list of stat vars that aren't included in any of the returned stat
+	// var groups.
 	StatVars []*EntityInfo `protobuf:"bytes,1,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
 	// A list of stat var group results ranked by relevance.
 	StatVarGroups []*SearchResultSVG `protobuf:"bytes,2,rep,name=stat_var_groups,json=statVarGroups,proto3" json:"stat_var_groups,omitempty"`

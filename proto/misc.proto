@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
-
 
 // REST API URL from the proto in this file:
 // ========================================
@@ -25,11 +23,9 @@
 //    /version
 // ========================================
 
-
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
-
 
 // Wrapper for all entities returned from search which belong to a single type.
 message SearchResultSection {
@@ -48,7 +44,6 @@ message SearchEntityResult {
   // Name of the entity.
   string name = 2;
 }
-
 
 // Search request sent to the mixer.
 message SearchRequest {
@@ -69,8 +64,7 @@ message SearchResponse {
 }
 
 // Empty request to get version information.
-message GetVersionRequest {
-}
+message GetVersionRequest {}
 
 // Get version response.
 message GetVersionResponse {

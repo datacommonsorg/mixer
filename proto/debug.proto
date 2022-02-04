@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
@@ -32,44 +31,44 @@ package datacommons;
 // A log of import processing with details on any warnings, errors, etc.
 //
 message Log {
-    message Location {
-        // Name of the file. Could be a full path or not. Typically, this is
-        // an MCF file or CSV.
-        optional string file = 1;
-        // Line number in file, starting from 1.  Matches the row number in
-        // CSV (since we do not handle newlines in values).
-        optional int64 line_number = 2;
-        // Column number in line, starting from 1. Can be empty.
-        optional int64 column_number = 3;
-        // Column name set when the input is a CSV. Can be empty.
-        optional string column_name = 4;
-    }
+  message Location {
+    // Name of the file. Could be a full path or not. Typically, this is
+    // an MCF file or CSV.
+    optional string file = 1;
+    // Line number in file, starting from 1.  Matches the row number in
+    // CSV (since we do not handle newlines in values).
+    optional int64 line_number = 2;
+    // Column number in line, starting from 1. Can be empty.
+    optional int64 column_number = 3;
+    // Column name set when the input is a CSV. Can be empty.
+    optional string column_name = 4;
+  }
 
-    // Severity level of the message.
-    enum Level {
-        LEVEL_UNSPECIFIED = 0;
-        LEVEL_INFO = 1;
-        LEVEL_WARNING = 2;
-        LEVEL_ERROR = 3;
-        LEVEL_FATAL = 4;
-    }
+  // Severity level of the message.
+  enum Level {
+    LEVEL_UNSPECIFIED = 0;
+    LEVEL_INFO = 1;
+    LEVEL_WARNING = 2;
+    LEVEL_ERROR = 3;
+    LEVEL_FATAL = 4;
+  }
 
-    message CounterSet {
-      // Key is the name of a counter.
-      map<string, int64> counters = 1;
-    }
+  message CounterSet {
+    // Key is the name of a counter.
+    map<string, int64> counters = 1;
+  }
 
-    // One log entry. This could be a sample of messages for a particular
-    // counter.
-    message Entry {
-        optional Level level = 1;
-        optional Location location = 2;
-        // This must be user understandable.
-        optional string user_message = 3;
-        // A counter key in CounterSet.
-        optional string counter_key = 4;
-    }
+  // One log entry. This could be a sample of messages for a particular
+  // counter.
+  message Entry {
+    optional Level level = 1;
+    optional Location location = 2;
+    // This must be user understandable.
+    optional string user_message = 3;
+    // A counter key in CounterSet.
+    optional string counter_key = 4;
+  }
 
-    repeated Entry entries = 1;
-    optional CounterSet counter_set = 2;
+  repeated Entry entries = 1;
+  optional CounterSet counter_set = 2;
 }
