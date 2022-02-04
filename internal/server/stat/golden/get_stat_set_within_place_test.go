@@ -30,14 +30,13 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_stat_set_within_place")
+
 	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: false, UseMemdb: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_stat_set_within_place")
 
 	for _, c := range []struct {
 		parentPlace string

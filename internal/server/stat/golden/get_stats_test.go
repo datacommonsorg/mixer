@@ -34,6 +34,9 @@ func TestGetStats(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_stats")
+
 	for _, opt := range []*e2e.TestOption{
 		{},
 		{UseImportGroup: true},
@@ -42,9 +45,6 @@ func TestGetStats(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_stats")
 
 		for _, c := range []struct {
 			statsVar     string
@@ -124,8 +124,7 @@ func TestGetStats(t *testing.T) {
 				continue
 			}
 			var result map[string]*model.GetStatsResponse
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
+			if err := json.Unmarshal([]byte(resp.GetPayload()), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
@@ -136,9 +135,12 @@ func TestGetStats(t *testing.T) {
 			}
 
 			var expected map[string]*model.GetStatsResponse
-			file, _ := ioutil.ReadFile(goldenFile)
-			err = json.Unmarshal(file, &expected)
+			file, err := ioutil.ReadFile(goldenFile)
 			if err != nil {
+				t.Errorf("ioutil.ReadFile() = %s", err)
+				continue
+			}
+			if err := json.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file " + goldenFile + "\n" + err.Error())
 				continue
 			}

@@ -29,6 +29,10 @@ import (
 func TestGetStatValue(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_stat_value")
+
 	for _, opt := range []*e2e.TestOption{
 		{},
 		{UseImportGroup: true},
@@ -37,9 +41,6 @@ func TestGetStatValue(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_stat_value")
 
 		for _, c := range []struct {
 			statVar    string
