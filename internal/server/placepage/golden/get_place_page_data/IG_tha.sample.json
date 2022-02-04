@@ -1119,8 +1119,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Person": {
@@ -1538,7 +1537,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -1573,7 +1572,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -1608,7 +1607,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -1781,7 +1780,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -1954,7 +1953,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -2334,7 +2333,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -3786,7 +3785,10 @@
             "2022-01-28": 117484,
             "2022-01-29": 117666,
             "2022-01-30": 117725,
-            "2022-01-31": 117786
+            "2022-01-31": 117786,
+            "2022-02-01": 117974,
+            "2022-02-02": 118170,
+            "2022-02-03": 118334
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -4940,7 +4942,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -6091,7 +6093,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -8521,8 +8523,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Person": {
@@ -8785,7 +8786,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -8815,7 +8816,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -8845,7 +8846,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -8938,7 +8939,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -9031,7 +9032,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -9217,7 +9218,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -9279,7 +9280,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -10611,7 +10612,10 @@
             "2022-01-28": 204769,
             "2022-01-29": 204940,
             "2022-01-30": 205112,
-            "2022-01-31": 205347
+            "2022-01-31": 205347,
+            "2022-02-01": 205505,
+            "2022-02-02": 205834,
+            "2022-02-03": 205985
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -11765,7 +11769,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -12916,7 +12920,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
