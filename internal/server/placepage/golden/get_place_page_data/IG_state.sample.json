@@ -13,7 +13,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -15018,7 +15017,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15039,7 +15038,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15060,7 +15059,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15081,7 +15080,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15288,8 +15287,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Household": {
@@ -17429,7 +17427,8 @@
             "2021-08": 1483018,
             "2021-09": 1502931,
             "2021-10": 1513469,
-            "2021-11": 1528514
+            "2021-11": 1526526,
+            "2021-12": 1532122
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -17894,7 +17893,8 @@
             "2021-08": 1577855,
             "2021-09": 1582501,
             "2021-10": 1588831,
-            "2021-11": 1593253
+            "2021-11": 1591037,
+            "2021-12": 1591638
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -19055,7 +19055,10 @@
             "2022-01-27": 538115,
             "2022-01-28": 542951,
             "2022-01-29": 542951,
-            "2022-01-30": 542951
+            "2022-01-30": 542951,
+            "2022-01-31": 553030,
+            "2022-02-01": 554054,
+            "2022-02-02": 555437
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -19801,7 +19804,10 @@
             "2022-01-27": 6037,
             "2022-01-28": 6066,
             "2022-01-29": 6066,
-            "2022-01-30": 6066
+            "2022-01-30": 6066,
+            "2022-01-31": 6100,
+            "2022-02-01": 6110,
+            "2022-02-02": 6126
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -20943,7 +20949,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -22082,7 +22088,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -23221,7 +23227,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -24360,7 +24366,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -24376,7 +24382,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "MicrogramsPerCubicMeter"
           }
@@ -24393,7 +24398,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "PartsPerBillion"
           }
@@ -24410,7 +24414,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "MicrogramsPerCubicMeter"
           }
@@ -27109,7 +27112,8 @@
             "2021-08": 6,
             "2021-09": 5,
             "2021-10": 4.7,
-            "2021-11": 4.1
+            "2021-11": 4.1,
+            "2021-12": 3.7
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -27184,7 +27188,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27205,7 +27209,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27226,7 +27230,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27247,7 +27251,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27443,7 +27447,6 @@
           "metadata": {
             "importName": "CycloneNOAA",
             "provenanceUrl": "https://www.ncdc.noaa.gov/ibtracs/index.php?name=ib-v4-access",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27472,7 +27475,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27501,7 +27503,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27530,7 +27531,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27559,7 +27559,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27588,7 +27587,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27601,8 +27599,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Household": {
@@ -33495,7 +33492,8 @@
             "2022-01-01": 18674,
             "2022-01-08": 19381,
             "2022-01-15": 18784,
-            "2022-01-22": 18253
+            "2022-01-22": 18253,
+            "2022-01-29": 17273
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -34198,7 +34196,10 @@
             "2022-01-27": 1152818,
             "2022-01-28": 1160130,
             "2022-01-29": 1160130,
-            "2022-01-30": 1160130
+            "2022-01-30": 1160130,
+            "2022-01-31": 1170212,
+            "2022-02-01": 1174941,
+            "2022-02-02": 1179814
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -34900,7 +34901,10 @@
             "2022-01-27": 15570,
             "2022-01-28": 15631,
             "2022-01-29": 15631,
-            "2022-01-30": 15631
+            "2022-01-30": 15631,
+            "2022-01-31": 15674,
+            "2022-02-01": 15744,
+            "2022-02-02": 15781
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -35468,7 +35472,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35527,7 +35530,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35586,7 +35588,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35645,7 +35646,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35704,7 +35704,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
