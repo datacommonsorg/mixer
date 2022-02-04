@@ -179,7 +179,7 @@ func (s *Server) GetPlaceStatVarsUnionV1(
 func (s *Server) GetStatVarGroup(
 	ctx context.Context, in *pb.GetStatVarGroupRequest,
 ) (*pb.StatVarGroups, error) {
-	return statvar.GetStatVarGroup(ctx, in, s.store)
+	return statvar.GetStatVarGroup(ctx, in, s.store, s.cache)
 }
 
 // GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNode.
