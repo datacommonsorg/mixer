@@ -30,7 +30,7 @@ func TestGetStatVarGroup(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	client, _, err := e2e.Setup()
+	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -49,6 +49,11 @@ func TestGetStatVarGroup(t *testing.T) {
 			false,
 		},
 		{
+			[]string{"Earth"},
+			"earth.json",
+			false,
+		},
+		{
 			[]string{},
 			"",
 			true,
@@ -64,7 +69,7 @@ func TestGetStatVarGroup(t *testing.T) {
 
 		if c.checkCount {
 			num := len(resp.StatVarGroups)
-			if num < 100 {
+			if num < 10000 {
 				t.Errorf("Too few stat var groups: %d", num)
 			}
 			continue

@@ -57,59 +57,67 @@ func markValidSVG(
 	return false
 }
 
-func filterSVG(svgResp *pb.StatVarGroups, placeSVs []string) *pb.StatVarGroups {
+// Filter StatVarGroups based on give stat vars. This does not modify the input
+// data but create a filtered copy of it.
+func filterSVG(in *pb.StatVarGroups, statVars []string) *pb.StatVarGroups {
+	out := &pb.StatVarGroups{StatVarGroups: map[string]*pb.StatVarGroupNode{}}
 	// Build set for all the SV.
 	validSV := map[string]struct{}{}
-	for _, sv := range placeSVs {
+	for _, sv := range statVars {
 		validSV[sv] = struct{}{}
 	}
 
 	// Step 1: iterate over stat var group, and only keep stat var children with valid
 	// stat vars for this place.
-	for _, svgData := range svgResp.StatVarGroups {
+	for sv, svgData := range in.StatVarGroups {
 		filteredChildren := []*pb.StatVarGroupNode_ChildSV{}
 		for _, child := range svgData.ChildStatVars {
 			if _, ok := validSV[child.Id]; ok {
 				filteredChildren = append(filteredChildren, child)
 			}
 		}
-		svgData.ChildStatVars = filteredChildren
+		out.StatVarGroups[sv] = &pb.StatVarGroupNode{
+			ChildStatVars:      filteredChildren,
+			ChildStatVarGroups: svgData.ChildStatVarGroups,
+		}
 	}
-
 	// Step 2: recursively check if a stat var group is valid. A stat var group
 	// is valid if it has any descendent stat var group with non-empty stat vars
 
 	// All the svg with valid sv for this place
 	validSVG := map[string]struct{}{}
-
-	for svgID := range svgResp.StatVarGroups {
-		markValidSVG(svgResp, svgID, validSVG)
+	for svgID := range out.StatVarGroups {
+		markValidSVG(out, svgID, validSVG)
 	}
 
 	// Step3: another iteration to only keep valid svg
-	for svgID, svgData := range svgResp.StatVarGroups {
+	for svgID, svgData := range out.StatVarGroups {
 		filteredChildren := []*pb.StatVarGroupNode_ChildSVG{}
 		for _, c := range svgData.ChildStatVarGroups {
 			if _, ok := validSVG[c.Id]; ok {
 				filteredChildren = append(filteredChildren, c)
 			}
 		}
-		svgData.ChildStatVarGroups = filteredChildren
-		if len(svgData.ChildStatVars) == 0 && len(svgData.ChildStatVarGroups) == 0 {
-			delete(svgResp.StatVarGroups, svgID)
+		out.StatVarGroups[svgID].ChildStatVarGroups = filteredChildren
+		d := out.StatVarGroups[svgID]
+		if len(d.ChildStatVars) == 0 && len(d.ChildStatVarGroups) == 0 {
+			delete(out.StatVarGroups, svgID)
 		}
 	}
-	return svgResp
+	return out
 }
 
 // GetStatVarGroup implements API for Mixer.GetStatVarGroup.
 func GetStatVarGroup(
-	ctx context.Context, in *pb.GetStatVarGroupRequest, store *store.Store) (
+	ctx context.Context,
+	in *pb.GetStatVarGroupRequest,
+	store *store.Store,
+	cache *resource.Cache,
+) (
 	*pb.StatVarGroups, error) {
 	places := in.GetPlaces()
 
 	var statVars []string
-
 	// Only read place stat vars when the place is provided.
 	// User can provide any arbitrary dcid, which might not be associated with
 	// stat vars. In this case, an empty response is returned.
@@ -125,39 +133,43 @@ func GetStatVarGroup(
 		statVars = svUnionResp.StatVars
 	}
 
-	// Read stat var group cache from the first base table, which is the most
-	// preferred cache BigTable. Since stat var schemas are rebuild with every
-	// group, so no merge needed.
-	baseDataList, _, err := bigtable.Read(
-		ctx,
-		bigtable.NewGroupWithPreferredBase(store.BtGroup),
-		cbt.RowList{bigtable.BtStatVarGroup},
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
-			var svgResp pb.StatVarGroups
-			if isProto {
-				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
-					return nil, err
+	var result *pb.StatVarGroups
+	if cache == nil {
+		// Read stat var group cache from the first base table, which is the most
+		// preferred cache BigTable. Since stat var schemas are rebuild with every
+		// group, so no merge needed.
+		baseDataList, _, err := bigtable.Read(
+			ctx,
+			bigtable.NewGroupWithPreferredBase(store.BtGroup),
+			cbt.RowList{bigtable.BtStatVarGroup},
+			func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+				var svgResp pb.StatVarGroups
+				if isProto {
+					if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
+						return nil, err
+					}
+				} else {
+					if err := protojson.Unmarshal(jsonRaw, &svgResp); err != nil {
+						return nil, err
+					}
 				}
-			} else {
-				if err := protojson.Unmarshal(jsonRaw, &svgResp); err != nil {
-					return nil, err
-				}
-			}
-			return &svgResp, nil
-		},
-		// Since there is no dcid, use "_" as a dummy token
-		func(token string) (string, error) { return "_", nil },
-		false, /* readBranch */
-	)
-	if err != nil {
-		return nil, err
+				return &svgResp, nil
+			},
+			// Since there is no dcid, use "_" as a dummy token
+			func(token string) (string, error) { return "_", nil },
+			false, /* readBranch */
+		)
+		if err != nil {
+			return nil, err
+		}
+		result = baseDataList[0]["_"].(*pb.StatVarGroups)
+	} else {
+		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
 	}
-	svgResp := baseDataList[0]["_"].(*pb.StatVarGroups)
-
 	if len(places) > 0 {
-		svgResp = filterSVG(svgResp, statVars)
+		result = filterSVG(result, statVars)
 	}
-	return svgResp, nil
+	return result, nil
 }
 
 // GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNode.
@@ -177,13 +189,13 @@ func GetStatVarGroupNode(
 	}
 
 	result := &pb.StatVarGroupNode{}
-	if r, ok := cache.SvgInfo[svg]; ok {
+	if r, ok := cache.RawSvg[svg]; ok {
 		// Clone into result, otherwise the server cache is modified.
 		result = proto.Clone(r).(*pb.StatVarGroupNode)
 	}
 	for _, item := range result.ChildStatVarGroups {
-		item.DisplayName = cache.SvgInfo[item.Id].AbsoluteName
-		item.NumDescendentStatVars = cache.SvgInfo[item.Id].NumDescendentStatVars
+		item.DisplayName = cache.RawSvg[item.Id].AbsoluteName
+		item.NumDescendentStatVars = cache.RawSvg[item.Id].NumDescendentStatVars
 	}
 	for _, item := range result.ChildStatVars {
 		item.HasData = true
