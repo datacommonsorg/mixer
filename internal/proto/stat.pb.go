@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//  **** IMPORTANT NOTE ****
+//
+//  The proto of BT data has to match exactly the g3 proto, including tag
+//  number.
+
 // REST API URL from the proto in this file:
 // ========================================
 //    /bulk/place-obs
@@ -843,9 +848,9 @@ func (x *StatVarObsSeries) GetData() map[string]*ObsTimeSeries {
 	return nil
 }
 
-// Hold mapping from stat var id to Series struct. This is different from StatVarObsSeries
-// that the "Series" is processed time series with metadata while "ObsTimeSeries"
-// is the raw series from cache.
+// Hold mapping from stat var id to Series struct. This is different from
+// StatVarObsSeries that the "Series" is processed time series with metadata
+// while "ObsTimeSeries" is the raw series from cache.
 type StatVarSeries struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

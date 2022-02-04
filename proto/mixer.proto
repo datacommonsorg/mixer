@@ -12,19 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
-
 
 // Mixer service definitions
 
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
-
 
 import "google/api/annotations.proto";
 import "common.proto";
@@ -37,62 +34,44 @@ import "stat.proto";
 import "stat_var.proto";
 import "translate.proto";
 
-
 service Mixer {
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
     option (google.api.http) = {
-      get: "/query"
-      additional_bindings: {
-        post: "/query"
-        body: "*"
-      }
+      get : "/query"
+      additional_bindings : {post : "/query" body : "*"}
     };
   }
 
   // Fetch property labels adjacent of nodes
-  rpc GetPropertyLabels(GetPropertyLabelsRequest)
-      returns (PayloadResponse) {
+  rpc GetPropertyLabels(GetPropertyLabelsRequest) returns (PayloadResponse) {
     option (google.api.http) = {
-      get: "/node/property-labels"
-      additional_bindings: {
-        post: "/node/property-labels"
-        body: "*"
-      }
+      get : "/node/property-labels"
+      additional_bindings : {post : "/node/property-labels" body : "*"}
     };
   }
 
   // Fetch nodes that linked to source nodes with a given property.
-  rpc GetPropertyValues(GetPropertyValuesRequest)
-      returns (PayloadResponse) {
+  rpc GetPropertyValues(GetPropertyValuesRequest) returns (PayloadResponse) {
     option (google.api.http) = {
-      get: "/node/property-values"
-      additional_bindings: {
-        post: "/node/property-values"
-        body: "*"
-      }
+      get : "/node/property-values"
+      additional_bindings : {post : "/node/property-values" body : "*"}
     };
   }
 
   // Fetch triples that have the given nodes as subject or object.
   rpc GetTriples(GetTriplesRequest) returns (GetTriplesResponse) {
     option (google.api.http) = {
-      get: "/node/triples"
-      additional_bindings: {
-        post: "/node/triples"
-        body: "*"
-      }
+      get : "/node/triples"
+      additional_bindings : {post : "/node/triples" body : "*"}
     };
   }
 
   // Get places contained in parent places.
   rpc GetPlacesIn(GetPlacesInRequest) returns (GetPlacesInResponse) {
     option (google.api.http) = {
-      get: "/node/places-in"
-      additional_bindings: {
-        post: "/node/places-in"
-        body: "*"
-      }
+      get : "/node/places-in"
+      additional_bindings : {post : "/node/places-in" body : "*"}
     };
   }
 
@@ -101,11 +80,8 @@ service Mixer {
   // will be returned.
   rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {
     option (google.api.http) = {
-      get: "/bulk/stats"
-      additional_bindings: {
-        post: "/bulk/stats"
-        body: "*"
-      }
+      get : "/bulk/stats"
+      additional_bindings : {post : "/bulk/stats" body : "*"}
     };
   }
 
@@ -115,13 +91,11 @@ service Mixer {
   // measurement method, scaling factor and import will be returned.
   // This is a newer version of GetStats() that takes multiple stat vars and
   // returns protobuf field instead of "payload" of json string.
-  rpc GetStatSetSeries(GetStatSetSeriesRequest) returns (GetStatSetSeriesResponse) {
+  rpc GetStatSetSeries(GetStatSetSeriesRequest)
+      returns (GetStatSetSeriesResponse) {
     option (google.api.http) = {
-      get: "/v1/stat/set/series"
-      additional_bindings: {
-        post: "/v1/stat/set/series"
-        body: "*"
-      }
+      get : "/v1/stat/set/series"
+      additional_bindings : {post : "/v1/stat/set/series" body : "*"}
     };
   }
 
@@ -129,11 +103,8 @@ service Mixer {
   // If no date is given, the latest statistical variable will be returned.
   rpc GetStatValue(GetStatValueRequest) returns (GetStatValueResponse) {
     option (google.api.http) = {
-      get: "/stat/value"
-      additional_bindings: {
-        post: "/stat/value"
-        body: "*"
-      }
+      get : "/stat/value"
+      additional_bindings : {post : "/stat/value" body : "*"}
     };
   }
 
@@ -141,11 +112,8 @@ service Mixer {
   // variable.
   rpc GetStatSeries(GetStatSeriesRequest) returns (GetStatSeriesResponse) {
     option (google.api.http) = {
-      get: "/stat/series"
-      additional_bindings: {
-        post: "/stat/series"
-        body: "*"
-      }
+      get : "/stat/series"
+      additional_bindings : {post : "/stat/series" body : "*"}
     };
   }
 
@@ -153,36 +121,29 @@ service Mixer {
   // variables.
   rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
     option (google.api.http) = {
-      get: "/stat/all"
-      additional_bindings: {
-        post: "/stat/all"
-        body: "*"
-      }
+      get : "/stat/all"
+      additional_bindings : {post : "/stat/all" body : "*"}
     };
   }
 
   // Get the stat value for children places of certain place type at a given
   // date.
-  rpc GetStatSetWithinPlace(GetStatSetWithinPlaceRequest) returns (GetStatSetResponse) {
+  rpc GetStatSetWithinPlace(GetStatSetWithinPlaceRequest)
+      returns (GetStatSetResponse) {
     option (google.api.http) = {
-      get: "/stat/set/within-place"
-      additional_bindings: {
-        post: "/stat/set/within-place"
-        body: "*"
-      }
+      get : "/stat/set/within-place"
+      additional_bindings : {post : "/stat/set/within-place" body : "*"}
     };
   }
 
   // Get the stat value from all sources for children places of certain place
   // type. If date is not specified, the latest value of every source is
   // returned.
-  rpc GetStatSetWithinPlaceAll(GetStatSetWithinPlaceRequest) returns (GetStatSetAllResponse) {
+  rpc GetStatSetWithinPlaceAll(GetStatSetWithinPlaceRequest)
+      returns (GetStatSetAllResponse) {
     option (google.api.http) = {
-      get: "/stat/set/within-place/all"
-      additional_bindings: {
-        post: "/stat/set/within-place/all"
-        body: "*"
-      }
+      get : "/stat/set/within-place/all"
+      additional_bindings : {post : "/stat/set/within-place/all" body : "*"}
     };
   }
 
@@ -190,22 +151,17 @@ service Mixer {
   // then the latest value for each <place, stat var> is returned.
   rpc GetStatSet(GetStatSetRequest) returns (GetStatSetResponse) {
     option (google.api.http) = {
-      get: "/stat/set"
-      additional_bindings: {
-        post: "/stat/set"
-        body: "*"
-      }
+      get : "/stat/set"
+      additional_bindings : {post : "/stat/set" body : "*"}
     };
   }
 
   // Get the stat series for given parent places and child place type.
-  rpc GetStatSetSeriesWithinPlace(GetStatSetSeriesWithinPlaceRequest) returns (GetStatSetSeriesResponse) {
+  rpc GetStatSetSeriesWithinPlace(GetStatSetSeriesWithinPlaceRequest)
+      returns (GetStatSetSeriesResponse) {
     option (google.api.http) = {
-      get: "/stat/set/series/within-place"
-      additional_bindings: {
-        post: "/stat/set/series/within-place"
-        body: "*"
-      }
+      get : "/stat/set/series/within-place"
+      additional_bindings : {post : "/stat/set/series/within-place" body : "*"}
     };
   }
 
@@ -213,11 +169,8 @@ service Mixer {
   rpc GetLocationsRankings(GetLocationsRankingsRequest)
       returns (GetLocationsRankingsResponse) {
     option (google.api.http) = {
-      get: "/node/ranking-locations"
-      additional_bindings: {
-        post: "/node/ranking-locations"
-        body: "*"
-      }
+      get : "/node/ranking-locations"
+      additional_bindings : {post : "/node/ranking-locations" body : "*"}
     };
   }
 
@@ -225,65 +178,49 @@ service Mixer {
   rpc GetRelatedLocations(GetRelatedLocationsRequest)
       returns (GetRelatedLocationsResponse) {
     option (google.api.http) = {
-      get: "/node/related-locations"
-      additional_bindings: {
-        post: "/node/related-locations"
-        body: "*"
-      }
+      get : "/node/related-locations"
+      additional_bindings : {post : "/node/related-locations" body : "*"}
     };
   }
 
   // Get place page info for a place.
-  rpc GetPlacePageData(GetPlacePageDataRequest) returns (GetPlacePageDataResponse) {
+  rpc GetPlacePageData(GetPlacePageDataRequest)
+      returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
-      get: "/landing-page"
-      additional_bindings: {
-        post: "/landing-page"
-        body: "*"
-      }
-      additional_bindings: {
-        get: "/internal/place"
-      }
-      additional_bindings: {
-        post: "/internal/place"
-        body: "*"
-      }
+      get : "/landing-page"
+      additional_bindings : {post : "/landing-page" body : "*"}
+      additional_bindings : {get : "/internal/place"}
+      additional_bindings : {post : "/internal/place" body : "*"}
     };
   }
 
   // Get bio page data given a dcid.
   rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNodes) {
     option (google.api.http) = {
-      get: "/internal/bio"
-      additional_bindings: {
-        post: "/internal/bio"
-        body: "*"
-      }
+      get : "/internal/bio"
+      additional_bindings : {post : "/internal/bio" body : "*"}
     };
   }
 
   // Translate Sparql Query into translation results.
   rpc Translate(TranslateRequest) returns (TranslateResponse) {
     option (google.api.http) = {
-      get: "/translate"
-      additional_bindings: {
-        post: "/translate"
-        body: "*"
-      }
+      get : "/translate"
+      additional_bindings : {post : "/translate" body : "*"}
     };
   }
 
   // Given a text search query, return all entities matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
     option (google.api.http) = {
-      get: "/search"
+      get : "/search"
     };
   }
 
   // Retrieves the version metadata.
   rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {
     option (google.api.http) = {
-      get: "/version"
+      get : "/version"
     };
   }
 
@@ -292,25 +229,20 @@ service Mixer {
   rpc GetPlaceStatsVar(GetPlaceStatsVarRequest)
       returns (GetPlaceStatsVarResponse) {
     option (google.api.http) = {
-      get: "/place/stats-var"
-      additional_bindings: {
-        post: "/place/stats-var"
-        body: "*"
-      }
+      get : "/place/stats-var"
+      additional_bindings : {post : "/place/stats-var" body : "*"}
     };
   }
 
   // Give a list of place dcids, return all the statistical variables for each
   // place.
-  // TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are migrated.
+  // TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
+  // migrated.
   rpc GetPlaceStatVars(GetPlaceStatVarsRequest)
       returns (GetPlaceStatVarsResponse) {
     option (google.api.http) = {
-      get: "/place/stat-vars"
-      additional_bindings: {
-        post: "/place/stat-vars"
-        body: "*"
-      }
+      get : "/place/stat-vars"
+      additional_bindings : {post : "/place/stat-vars" body : "*"}
     };
   }
 
@@ -318,11 +250,8 @@ service Mixer {
   rpc GetPlaceMetadata(GetPlaceMetadataRequest)
       returns (GetPlaceMetadataResponse) {
     option (google.api.http) = {
-      get: "/place/metadata"
-      additional_bindings: {
-        post: "/place/metadata"
-        body: "*"
-      }
+      get : "/place/metadata"
+      additional_bindings : {post : "/place/metadata" body : "*"}
     };
   }
 
@@ -331,43 +260,28 @@ service Mixer {
   rpc GetPlaceStatVarsUnionV1(GetPlaceStatVarsUnionRequest)
       returns (GetPlaceStatVarsUnionResponse) {
     option (google.api.http) = {
-      get: "/v1/place/stat-vars/union"
-      additional_bindings: {
-        post: "/v1/place/stat-vars/union"
-        body: "*"
-      }
+      get : "/v1/place/stat-vars/union"
+      additional_bindings : {post : "/v1/place/stat-vars/union" body : "*"}
     };
   }
 
-  // Given ancestor place, child place type and stat vars, return the dates that have
-  // data for each stat var across all child places.
+  // Given ancestor place, child place type and stat vars, return the dates that
+  // have data for each stat var across all child places.
   rpc GetPlaceStatDateWithinPlace(GetPlaceStatDateWithinPlaceRequest)
       returns (GetPlaceStatDateWithinPlaceResponse) {
     option (google.api.http) = {
-      get: "/place/stat/date/within-place"
-      additional_bindings: {
-        post: "/place/stat/date/within-place"
-        body: "*"
-      }
+      get : "/place/stat/date/within-place"
+      additional_bindings : {post : "/place/stat/date/within-place" body : "*"}
     };
   }
 
   // Given a place, get the statvar group for stat vars that have data for it.
-  rpc GetStatVarGroup(GetStatVarGroupRequest)
-      returns (StatVarGroups) {
+  rpc GetStatVarGroup(GetStatVarGroupRequest) returns (StatVarGroups) {
     option (google.api.http) = {
-      get: "/place/stat-var-group"
-      additional_bindings: {
-        post: "/place/stat-var-group"
-        body: "*"
-      }
-      additional_bindings: {
-        get: "/stat-var/group/all"
-      }
-      additional_bindings: {
-        post: "/stat-var/group/all"
-        body: "*"
-      }
+      get : "/place/stat-var-group"
+      additional_bindings : {post : "/place/stat-var-group" body : "*"}
+      additional_bindings : {get : "/stat-var/group/all"}
+      additional_bindings : {post : "/stat-var/group/all" body : "*"}
     };
   }
 
@@ -376,36 +290,25 @@ service Mixer {
   rpc GetStatVarGroupNode(GetStatVarGroupNodeRequest)
       returns (StatVarGroupNode) {
     option (google.api.http) = {
-      get: "/stat-var/group"
-      additional_bindings: {
-        post: "/stat-var/group"
-        body: "*"
-      }
+      get : "/stat-var/group"
+      additional_bindings : {post : "/stat-var/group" body : "*"}
     };
   }
 
   // Get the path from a stat var or a stat var group path to the root
   // of stat var hierarchy
-  rpc GetStatVarPath(GetStatVarPathRequest)
-      returns (GetStatVarPathResponse) {
+  rpc GetStatVarPath(GetStatVarPathRequest) returns (GetStatVarPathResponse) {
     option (google.api.http) = {
-      get: "/stat-var/path"
-      additional_bindings: {
-        post: "/stat-var/path"
-        body: "*"
-      }
+      get : "/stat-var/path"
+      additional_bindings : {post : "/stat-var/path" body : "*"}
     };
   }
 
   // Search stat var and stat var groups.
-  rpc SearchStatVar(SearchStatVarRequest)
-      returns (SearchStatVarResponse) {
+  rpc SearchStatVar(SearchStatVarRequest) returns (SearchStatVarResponse) {
     option (google.api.http) = {
-      get: "/stat-var/search"
-      additional_bindings: {
-        post: "/stat-var/search"
-        body: "*"
-      }
+      get : "/stat-var/search"
+      additional_bindings : {post : "/stat-var/search" body : "*"}
     };
   }
 
@@ -413,11 +316,8 @@ service Mixer {
   rpc GetStatVarSummary(GetStatVarSummaryRequest)
       returns (GetStatVarSummaryResponse) {
     option (google.api.http) = {
-      get: "/stat-var/summary"
-      additional_bindings: {
-        post: "/stat-var/summary"
-        body: "*"
-      }
+      get : "/stat-var/summary"
+      additional_bindings : {post : "/stat-var/summary" body : "*"}
     };
   }
 }
