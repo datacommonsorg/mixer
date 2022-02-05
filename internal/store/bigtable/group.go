@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Defines struct and util functions of bigtable table and groups.
+
 package bigtable
 
 import (
@@ -30,7 +32,7 @@ var groupRank = map[string]int{
 	"infrequent": 100,
 }
 
-const middleRank = 50
+const middleRank = 99
 
 // Group represents all the cloud bigtables that mixer talks to.
 type Group struct {
@@ -49,11 +51,12 @@ type TableConfig struct {
 func NewGroup(
 	baseTables []*cbt.Table,
 	branchTable *cbt.Table,
+	useImportGroup bool,
 ) *Group {
 	return &Group{
 		baseTables:  baseTables,
 		branchTable: branchTable,
-		isProto:     len(baseTables) > 1,
+		isProto:     useImportGroup,
 	}
 }
 
@@ -105,6 +108,9 @@ func NewTable(ctx context.Context, projectID, instanceID, tableID string) (
 func SortTables(tableNames []string) {
 	sort.SliceStable(tableNames, func(i, j int) bool {
 		// ranking for i
+		// This is to parse the table name like "borgcron_frequent_2022_02_01_14_20_47"
+		// and get the actual import group name.
+		// TODO: Update this if table format changes.
 		ni := strings.Split(tableNames[i], "_")[1]
 		ri, ok := groupRank[ni]
 		if !ok {

@@ -15,6 +15,12 @@
 package bigtable
 
 import (
+	"encoding/json"
+	"io/ioutil"
+	"log"
+	"path"
+	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -45,6 +51,22 @@ func TestSortTables(t *testing.T) {
 		SortTables(c.tables)
 		if diff := cmp.Diff(c.tables, c.expected); diff != "" {
 			t.Errorf("SortTables() got diff: %v", diff)
+		}
+	}
+}
+
+func TestFileFormat(t *testing.T) {
+	_, filename, _, _ := runtime.Caller(0)
+	jsonByte, _ := ioutil.ReadFile(
+		path.Join(path.Dir(filename), "../../../deploy/storage/bigtable_import_groups.json"))
+
+	var c TableConfig
+	if err := json.Unmarshal(jsonByte, &c); err != nil {
+		log.Fatalf("Failed to load import group tables config")
+	}
+	for _, table := range c.Tables {
+		if !strings.HasPrefix(table, "borgcron_") {
+			t.Errorf("Table name should start with borgcron_, but got %s", table)
 		}
 	}
 }

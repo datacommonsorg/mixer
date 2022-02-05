@@ -174,6 +174,6 @@ func NewReconServer(
 	baseTables []*cbt.Table,
 ) *Server {
 	return &Server{
-		store: store.NewStore(nil, nil, baseTables, nil),
+		store: store.NewStore(nil, nil, baseTables, nil, false),
 	}
 }

@@ -35,7 +35,7 @@ func TestReadOneTable(t *testing.T) {
 	rowList := cbt.RowList{"key1", "key2"}
 	baseData, _, err := Read(
 		ctx,
-		NewGroup([]*cbt.Table{btTable}, nil),
+		NewGroup([]*cbt.Table{btTable}, nil, false),
 		rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			return string(jsonRaw), nil
@@ -79,7 +79,7 @@ func TestReadTwoTables(t *testing.T) {
 	rowList := cbt.RowList{"key1", "key2"}
 	baseDataList, branchData, err := Read(
 		ctx,
-		NewGroup([]*cbt.Table{btTable1}, btTable2),
+		NewGroup([]*cbt.Table{btTable1}, btTable2, false),
 		rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			return string(jsonRaw), nil

@@ -33,7 +33,9 @@ func NewStore(
 	bqClient *bigquery.Client,
 	memDb *memdb.MemDb,
 	baseTables []*cbt.Table,
-	branchTable *cbt.Table) *Store {
+	branchTable *cbt.Table,
+	useImportGroup bool,
+) *Store {
 	// Table validation happens when creating the store
 	validBaseTables := []*cbt.Table{}
 	for _, t := range baseTables {
@@ -44,6 +46,6 @@ func NewStore(
 	return &Store{
 		BqClient: bqClient,
 		MemDb:    memDb,
-		BtGroup:  bigtable.NewGroup(validBaseTables, branchTable),
+		BtGroup:  bigtable.NewGroup(validBaseTables, branchTable, useImportGroup),
 	}
 }
