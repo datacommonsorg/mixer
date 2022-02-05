@@ -29,10 +29,10 @@ var groupRank = map[string]int{
 	"frequent":   0,
 	"dc":         1,
 	"ipcc":       2,
-	"infrequent": 100,
+	"infrequent": 10000,
 }
 
-const middleRank = 99
+const defaultRank = 9999
 
 // Group represents all the cloud bigtables that mixer talks to.
 type Group struct {
@@ -114,13 +114,13 @@ func SortTables(tableNames []string) {
 		ni := strings.Split(tableNames[i], "_")[1]
 		ri, ok := groupRank[ni]
 		if !ok {
-			ri = middleRank
+			ri = defaultRank
 		}
 		// ranking for j
 		nj := strings.Split(tableNames[j], "_")[1]
 		rj, ok := groupRank[nj]
 		if !ok {
-			rj = middleRank
+			rj = defaultRank
 		}
 
 		return ri < rj
