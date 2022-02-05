@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
@@ -30,8 +29,8 @@ package datacommons;
 
 import "debug.proto";
 
-// Proto representation of a Data Commons sub-graph which may be made of instance nodes (INSTANCE_MCF)
-// or template nodes (TEMPLATE_MCF).
+// Proto representation of a Data Commons sub-graph which may be made of
+// instance nodes (INSTANCE_MCF) or template nodes (TEMPLATE_MCF).
 message McfGraph {
   // Represents a single value.
   message TypedValue {
@@ -51,12 +50,13 @@ message McfGraph {
     map<string, Values> pvs = 1;
 
     // Information identifying the location of this node in the source.
-    // There can be multiple if PVs in this node are merged from different files.
+    // There can be multiple if PVs in this node are merged from different
+    // files.
     repeated Log.Location location = 2;
   }
 
   // Type of the sub-graph.
-  optional McfType type = 1 [default = INSTANCE_MCF];
+  optional McfType type = 1 [ default = INSTANCE_MCF ];
 
   // A map from Local Node ID to its property and values.
   map<string, PropertyValues> nodes = 2;
@@ -84,13 +84,15 @@ enum ValueType {
 
   // Represents a reference to a node that has not yet been resolved.  These
   // types should turn into RESOLVED_REF after entity resolution.
-  // REQUIRES: the value has a reference prefix (aka, "<id-space>:"), typically "l:".
+  // REQUIRES: the value has a reference prefix (aka, "<id-space>:"), typically
+  // "l:".
   UNRESOLVED_REF = 3;
 
   // Represents a resolved datacommons entity. Stores a DCID value.
   RESOLVED_REF = 4;
 
-  // Represents a complex value corresponding to Quantity, QuantityRange, LatLng, etc.
+  // Represents a complex value corresponding to Quantity, QuantityRange,
+  // LatLng, etc.
   COMPLEX_VALUE = 5;
 
   // Represents a table column for TEMPLATE_MCF.

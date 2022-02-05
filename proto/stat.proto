@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
-
 
 // REST API URL from the proto in this file:
 // ========================================
@@ -31,11 +29,9 @@
 //    /v1/stat/set/series
 // ========================================
 
-
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
-
 
 // StatMetadata contains the source and measurement information for a
 // statistical observation.
@@ -104,7 +100,7 @@ message SeriesMap {
 // Represents observation time series data.
 message ObsTimeSeries {
   string place_name = 3;
-  string place_dcid = 5;  // Only set if the key uses mid.
+  string place_dcid = 5; // Only set if the key uses mid.
   repeated SourceSeries source_series = 6;
 }
 
@@ -138,14 +134,13 @@ message StatVarObsSeries {
   map<string, ObsTimeSeries> data = 1;
 }
 
-// Hold mapping from stat var id to Series struct. This is different from StatVarObsSeries
-// that the "Series" is processed time series with metadata while "ObsTimeSeries"
-// is the raw series from cache.
+// Hold mapping from stat var id to Series struct. This is different from
+// StatVarObsSeries that the "Series" is processed time series with metadata
+// while "ObsTimeSeries" is the raw series from cache.
 message StatVarSeries {
   // Key is stat var dcid.
   map<string, Series> data = 1;
 }
-
 
 // SVOPlace holds basic information about a DC place along with its associated
 // StatVarObservations.
@@ -197,10 +192,7 @@ message SVOObservation {
 }
 
 // SVOCollection holds information for multiple SVOPlace instances.
-message SVOCollection {
-  repeated SVOPlace places = 1;
-}
-
+message SVOCollection { repeated SVOPlace places = 1; }
 
 // Request message for GetStats.
 message GetStatsRequest {
@@ -254,7 +246,6 @@ message GetStatSetSeriesResponse {
   map<string, SeriesMap> data = 1;
 }
 
-
 // Request for GetStat service.
 message GetStatValueRequest {
   // dcid of the place.
@@ -273,9 +264,7 @@ message GetStatValueRequest {
   string scaling_factor = 7;
 }
 
-message GetStatValueResponse {
-  double value = 1;
-}
+message GetStatValueResponse { double value = 1; }
 
 // Request for GetStatSeries service.
 message GetStatSeriesRequest {
@@ -352,9 +341,7 @@ message GetStatAllRequest {
 //     }
 //   }
 // }
-message GetStatAllResponse {
-  map<string, PlaceStat> place_data = 1;
-}
+message GetStatAllResponse { map<string, PlaceStat> place_data = 1; }
 
 message GetStatSetWithinPlaceRequest {
   // Parent place dcid.

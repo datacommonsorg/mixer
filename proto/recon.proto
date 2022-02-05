@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
@@ -26,7 +25,6 @@ package datacommons;
 
 import "google/api/annotations.proto";
 import "entity.proto";
-
 
 // Lists of entities (with their known IDs) for a given {idProp, idVal}.
 message ReconEntities {
@@ -54,9 +52,7 @@ message CoordinateRecon {
   repeated Place places = 1;
 }
 
-message CompareEntitiesRequest {
-  repeated EntityPair entity_pairs = 1;
-}
+message CompareEntitiesRequest { repeated EntityPair entity_pairs = 1; }
 
 message CompareEntitiesResponse {
   message Comparison {
@@ -119,37 +115,36 @@ message ResolveIdsResponse {
 service Recon {
   // Compare two entities to determine if they are the same entity.
   rpc CompareEntities(CompareEntitiesRequest)
-  returns (CompareEntitiesResponse) {
+      returns (CompareEntitiesResponse) {
     option (google.api.http) = {
-      post: "/entity/compare"
-      body: "*"
+      post : "/entity/compare"
+      body : "*"
     };
   }
 
   // Resolve a list of entities, given their descriptions.
   rpc ResolveEntities(ResolveEntitiesRequest)
-  returns(ResolveEntitiesResponse) {
+      returns (ResolveEntitiesResponse) {
     option (google.api.http) = {
-      post: "/entity/resolve"
-      body: "*"
+      post : "/entity/resolve"
+      body : "*"
     };
   }
 
   // Resolve a list of places, given their latitude and longitude coordinates.
   rpc ResolveCoordinates(ResolveCoordinatesRequest)
-  returns(ResolveCoordinatesResponse) {
+      returns (ResolveCoordinatesResponse) {
     option (google.api.http) = {
-      post: "/coordinate/resolve"
-      body: "*"
+      post : "/coordinate/resolve"
+      body : "*"
     };
   }
 
   // Resolve a list of IDs, given the input prop and output prop.
-  rpc ResolveIds(ResolveIdsRequest)
-  returns(ResolveIdsResponse) {
+  rpc ResolveIds(ResolveIdsRequest) returns (ResolveIdsResponse) {
     option (google.api.http) = {
-      post: "/id/resolve"
-      body: "*"
+      post : "/id/resolve"
+      body : "*"
     };
   }
 }

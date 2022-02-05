@@ -78,15 +78,16 @@ type MixerClient interface {
 	GetPlaceStatsVar(ctx context.Context, in *GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*GetPlaceStatsVarResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
-	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are migrated.
+	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
+	// migrated.
 	GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error)
 	// Give a list of place dcids, return metadata for each place.
 	GetPlaceMetadata(ctx context.Context, in *GetPlaceMetadataRequest, opts ...grpc.CallOption) (*GetPlaceMetadataResponse, error)
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
 	GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error)
-	// Given ancestor place, child place type and stat vars, return the dates that have
-	// data for each stat var across all child places.
+	// Given ancestor place, child place type and stat vars, return the dates that
+	// have data for each stat var across all child places.
 	GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetPlaceStatDateWithinPlaceResponse, error)
 	// Given a place, get the statvar group for stat vars that have data for it.
 	GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRequest, opts ...grpc.CallOption) (*StatVarGroups, error)
@@ -454,15 +455,16 @@ type MixerServer interface {
 	GetPlaceStatsVar(context.Context, *GetPlaceStatsVarRequest) (*GetPlaceStatsVarResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
-	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are migrated.
+	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
+	// migrated.
 	GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error)
 	// Give a list of place dcids, return metadata for each place.
 	GetPlaceMetadata(context.Context, *GetPlaceMetadataRequest) (*GetPlaceMetadataResponse, error)
 	// Given a list of place dcids, returns the union of available
 	// statistical variables for the places.
 	GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error)
-	// Given ancestor place, child place type and stat vars, return the dates that have
-	// data for each stat var across all child places.
+	// Given ancestor place, child place type and stat vars, return the dates that
+	// have data for each stat var across all child places.
 	GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error)
 	// Given a place, get the statvar group for stat vars that have data for it.
 	GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error)

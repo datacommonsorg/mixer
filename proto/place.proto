@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
-
 
 // REST API URL from the proto in this file:
 // ========================================
@@ -31,23 +29,15 @@
 //    /place/stat/date/within-place
 // ========================================
 
-
 syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
+message PlaceStatVars { repeated string stat_var_ids = 1; }
 
-message PlaceStatVars {
-  repeated string stat_var_ids = 1;
-}
+message DateList { repeated string dates = 1; }
 
-message DateList {
-  repeated string dates = 1;
-}
-
-message ContainedPlaces {
-  repeated string dcids = 1;
-}
+message ContainedPlaces { repeated string dcids = 1; }
 
 // Related places info for a given place and condition.
 message RelatedPlacesInfo {
@@ -61,8 +51,8 @@ message RelatedPlacesInfo {
   }
   // The following 3 fields are set only when place is not empty.
   repeated string related_places = 1;
-  int32 rank_from_top = 2;     // Starting from 1.
-  int32 rank_from_bottom = 3;  // Starting from 1.
+  int32 rank_from_top = 2;    // Starting from 1.
+  int32 rank_from_bottom = 3; // Starting from 1.
 
   // The following 3 fields are set only when place is empty.
   Ranking rank_all = 7;
@@ -87,7 +77,6 @@ message GetPlacesInResponse {
   string payload = 1;
 }
 
-
 // Request to get related locations of a place for given stat var DCIDs.
 message GetRelatedLocationsRequest {
   // Place DCID.
@@ -102,10 +91,7 @@ message GetRelatedLocationsRequest {
   bool is_per_capita = 5;
 }
 // Response of GetRelatedLocations request.
-message GetRelatedLocationsResponse {
-  map<string, RelatedPlacesInfo> data = 1;
-}
-
+message GetRelatedLocationsResponse { map<string, RelatedPlacesInfo> data = 1; }
 
 // Request to get rankings of locations for given stat var DCIDs.
 message GetLocationsRankingsRequest {
@@ -126,9 +112,7 @@ message GetLocationsRankingsResponse {
 }
 
 // StatsVars represent a list of statistical variable dcids.
-message StatsVars {
-  repeated string statsVars = 1;
-}
+message StatsVars { repeated string statsVars = 1; }
 
 // Request message for GetPlaceStats API.
 message GetPlaceStatsVarRequest {
@@ -142,11 +126,8 @@ message GetPlaceStatsVarResponse {
   map<string, StatsVars> places = 1;
 }
 
-
 // StatVars represent a list of statistical variable dcids.
-message StatVars {
-  repeated string stat_vars = 1;
-}
+message StatVars { repeated string stat_vars = 1; }
 
 // Request message for GetPlaceStatVars API.
 message GetPlaceStatVarsRequest {
@@ -160,7 +141,6 @@ message GetPlaceStatVarsResponse {
   map<string, StatVars> places = 1;
 }
 
-
 // Request message for GetPlaceStatVarsUnionV1 API.
 message GetPlaceStatVarsUnionRequest {
   // DCIDs of the places.
@@ -169,9 +149,7 @@ message GetPlaceStatVarsUnionRequest {
   repeated string stat_vars = 2;
 }
 // Response message for GetPlaceStatVarsUnionV1 API.
-message GetPlaceStatVarsUnionResponse {
-  repeated string stat_vars = 1;
-}
+message GetPlaceStatVarsUnionResponse { repeated string stat_vars = 1; }
 
 message GetPlaceStatDateWithinPlaceRequest {
   string ancestor_place = 1;
@@ -183,7 +161,6 @@ message GetPlaceStatDateWithinPlaceResponse {
   // Keyed by statVar.
   map<string, DateList> data = 1;
 }
-
 
 // Metadata of a place. This is the raw cache data.
 message PlaceMetadataCache {
@@ -215,9 +192,7 @@ message PlaceMetadata {
   repeated PlaceInfo parents = 2;
 }
 
-message GetPlaceMetadataRequest {
-  repeated string places = 1;
-}
+message GetPlaceMetadataRequest { repeated string places = 1; }
 
 message GetPlaceMetadataResponse {
   // Keyed by place dcid.

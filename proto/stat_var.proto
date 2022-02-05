@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 //  **** IMPORTANT NOTE ****
 //
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
-
 
 // REST API URL from the proto in this file:
 // ========================================
@@ -27,7 +25,6 @@
 //    /stat-var/path
 //    /stat-var/group/all (/place/stat-var-group)
 // ========================================
-
 
 syntax = "proto3";
 option go_package = "./proto";
@@ -145,7 +142,7 @@ message StatVarGroupNode {
   repeated ChildSVG child_stat_var_groups = 3;
   // List of parent StatVarGroup IDs.
   repeated string parent_stat_var_groups = 4;
-    // Number of unique descendent stat-vars.
+  // Number of unique descendent stat-vars.
   int32 num_descendent_stat_vars = 5;
 }
 
@@ -162,7 +159,6 @@ message GetStatVarGroupNodeRequest {
   repeated string places = 2;
   reserved 3;
 }
-
 
 message GetStatVarPathRequest {
   // DCID of a stat var or a stat var group
@@ -196,13 +192,12 @@ message SearchStatVarRequest {
 }
 
 message SearchStatVarResponse {
-  // A ranked list of stat vars that aren't included in any of the returned stat var
-  // groups.
+  // A ranked list of stat vars that aren't included in any of the returned stat
+  // var groups.
   repeated EntityInfo stat_vars = 1;
   // A list of stat var group results ranked by relevance.
   repeated SearchResultSVG stat_var_groups = 2;
 }
-
 
 message GetStatVarSummaryRequest {
   // A list of stat var dcids

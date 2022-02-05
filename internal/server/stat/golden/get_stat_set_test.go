@@ -29,6 +29,10 @@ import (
 func TestGetStatSet(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_stat_set")
+
 	for _, opt := range []*e2e.TestOption{
 		{},
 		{UseImportGroup: true},
@@ -37,10 +41,6 @@ func TestGetStatSet(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_stat_set")
 
 		for _, c := range []struct {
 			statVars   []string
@@ -85,7 +85,7 @@ func TestGetStatSet(t *testing.T) {
 				continue
 			}
 			var expected pb.GetStatSetResponse
-			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
