@@ -113,15 +113,16 @@ func setupInternal(
 	baseTables := []*cbt.Table{}
 
 	if useImportGroup {
+		bigtable.SortTables(tableConfig.Tables)
 		for _, t := range tableConfig.Tables {
-			table, err := server.NewBtTable(ctx, storeProject, baseInstance, strings.TrimSpace(t))
+			table, err := bigtable.NewTable(ctx, storeProject, baseInstance, strings.TrimSpace(t))
 			if err != nil {
 				return nil, nil, err
 			}
 			baseTables = append(baseTables, table)
 		}
 	} else {
-		baseTable, err := server.NewBtTable(
+		baseTable, err := bigtable.NewTable(
 			ctx, storeProject, baseInstance, strings.TrimSpace(string(baseTableName)))
 		if err != nil {
 			return nil, nil, err
@@ -136,7 +137,7 @@ func setupInternal(
 	}
 	var cache *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, store.NewStore(nil, nil, baseTables, nil))
+		cache, err = server.NewCache(ctx, store.NewStore(nil, nil, baseTables, nil, useImportGroup))
 		if err != nil {
 			return nil, nil, err
 		}
@@ -150,7 +151,7 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	return newClient(bqClient, baseTables, branchTable, metadata, cache, memDb)
+	return newClient(bqClient, baseTables, branchTable, metadata, cache, memDb, useImportGroup)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -174,7 +175,7 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	return newClient(bqClient, nil, nil, metadata, nil, nil)
+	return newClient(bqClient, nil, nil, metadata, nil, nil, false)
 }
 
 func newClient(
@@ -184,8 +185,9 @@ func newClient(
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
+	useImportGroup bool,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	s := store.NewStore(bqClient, memDb, baseTables, branchTable)
+	s := store.NewStore(bqClient, memDb, baseTables, branchTable, useImportGroup)
 	mixerServer := server.NewMixerServer(s, metadata, cache)
 	reconServer := server.NewReconServer(baseTables)
 	srv := grpc.NewServer()

@@ -92,7 +92,7 @@ func TestMerge(t *testing.T) {
 			t.Errorf("SetupBigtable(...) = %v", err)
 		}
 
-		store := store.NewStore(nil, nil, []*cbt.Table{baseTable}, branchTable)
+		store := store.NewStore(nil, nil, []*cbt.Table{baseTable}, branchTable, false)
 
 		got, err := GetPropertyLabels(ctx,
 			&pb.GetPropertyLabelsRequest{

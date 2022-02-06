@@ -34,3 +34,8 @@
 - op: add
   path: /spec/template/spec/containers/0/args/0
   value: --tmcf_csv_folder=iea
+
+# mixer import groups
+- op: add
+  path: /spec/template/spec/containers/0/args/0
+  value: --use_import_group=true

@@ -16,7 +16,6 @@ package bigtable
 
 import (
 	"context"
-	"sync"
 
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -24,61 +23,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
-
-// Group represents all the cloud bigtables that mixer talks to.
-type Group struct {
-	baseTables  []*cbt.Table
-	branchTable *cbt.Table
-	branchLock  sync.RWMutex
-	isProto     bool
-}
-
-//  TableConfig represents the config for a list bigtables.
-type TableConfig struct {
-	Tables []string `json:"tables,omitempty"`
-}
-
-// NewGroup creates a BigtableGroup
-func NewGroup(
-	baseTables []*cbt.Table,
-	branchTable *cbt.Table,
-) *Group {
-	return &Group{
-		baseTables:  baseTables,
-		branchTable: branchTable,
-		isProto:     len(baseTables) > 1,
-	}
-}
-
-// BaseTables is the accessor for base bigtables
-func (g *Group) BaseTables() []*cbt.Table {
-	return g.baseTables
-}
-
-// BranchTable is the accessor for branch bigtable
-func (g *Group) BranchTable() *cbt.Table {
-	g.branchLock.RLock()
-	defer g.branchLock.RUnlock()
-	return g.branchTable
-}
-
-// UpdateBranchTable updates the branch bigtable
-func (g *Group) UpdateBranchTable(branchTable *cbt.Table) {
-	g.branchLock.Lock()
-	defer g.branchLock.Unlock()
-	g.branchTable = branchTable
-}
-
-// NewGroupWithPreferredBase creates a new group with only one base table.
-// The base table is the preferred Bigtable, which is used for data that needs
-// not be merged.
-func NewGroupWithPreferredBase(g *Group) *Group {
-	return &Group{
-		baseTables:  g.BaseTables()[:1],
-		branchTable: nil,
-		isProto:     g.isProto,
-	}
-}
 
 type chanData struct {
 	// Identifier of the data when reading multiple BigTable rows
