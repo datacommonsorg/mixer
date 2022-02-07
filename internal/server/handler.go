@@ -16,10 +16,12 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/biopage"
+	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placepage"
@@ -219,12 +221,13 @@ func (s *Server) GetPropertyLabels(
 		return nil, err
 	}
 	jsonRaw, err := protojson.Marshal(resp)
-	// To make the API response backward compatible. This is to add the outer
-	// level `{\"data\":`
-	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 	if err != nil {
 		return nil, err
 	}
+	// To make the API response backward compatible. This is to remove the outer
+	// level `{\"data\":` and trailing `}`
+	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
+
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
 
@@ -237,19 +240,28 @@ func (s *Server) GetPropertyValues(
 		return nil, err
 	}
 	jsonRaw, err := protojson.Marshal(resp)
-	// To make the API response backward compatible. This is to add the outer
-	// level `{\"data\":`
-	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 	if err != nil {
 		return nil, err
 	}
+	// To make the API response backward compatible. This is to remove the outer
+	// level `{\"data\":` and trailing `}`
+	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetTriples implements API for Mixer.GetTriples.
 func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
-) (*pb.GetTriplesResponse, error) {
-	return node.GetTriples(ctx, in, s.store, s.metadata)
+) (*pb.PayloadResponse, error) {
+	resp, err := node.GetTriples(ctx, in, s.store, s.metadata)
+	if err != nil {
+		return nil, err
+	}
+	result := convert.ToLegacyResult(resp)
+	jsonRaw, err := json.Marshal(result)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetPlacePageData implements API for Mixer.GetPlacePageData.

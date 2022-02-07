@@ -150,3 +150,18 @@ func ToObsCollection(token string, jsonRaw []byte, isProto bool) (interface{}, e
 			"ChartStore.Val has unexpected type %T", x)
 	}
 }
+
+// ToTriples converts raw bigtable data to pb.Triples
+func ToTriples(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+	var triples pb.Triples
+	if isProto {
+		if err := proto.Unmarshal(jsonRaw, &triples); err != nil {
+			return nil, err
+		}
+	} else {
+		if err := protojson.Unmarshal(jsonRaw, &triples); err != nil {
+			return nil, err
+		}
+	}
+	return &triples, nil
+}
