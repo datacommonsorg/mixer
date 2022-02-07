@@ -34,6 +34,7 @@ var groupRank = map[string]int{
 
 const defaultRank = 9999
 
+// Table holds the bigtable name and client stub.
 type Table struct {
 	name  string
 	table *cbt.Table
@@ -57,7 +58,7 @@ type Group struct {
 	isProto         bool
 }
 
-//  TableConfig represents the config for a list bigtables.
+//  TableConfig represents the config for a list of Bigtable.
 type TableConfig struct {
 	Tables []string `json:"tables,omitempty"`
 }
@@ -77,7 +78,7 @@ func NewGroup(
 	}
 }
 
-// Tables is the accessor for base bigtables
+// Tables is the accessor for all the Bigtable client stubs.
 func (g *Group) Tables() []*cbt.Table {
 	g.lock.RLock()
 	defer g.lock.RUnlock()
@@ -88,6 +89,7 @@ func (g *Group) Tables() []*cbt.Table {
 	return result
 }
 
+// TableNames is the accesser to get all the Bigtable names.
 func (g *Group) TableNames() []string {
 	g.lock.RLock()
 	defer g.lock.RUnlock()
@@ -98,7 +100,7 @@ func (g *Group) TableNames() []string {
 	return result
 }
 
-// UpdateBranchTable updates the branch bigtable
+// UpdateBranchTable updates the branch Bigtable.
 func (g *Group) UpdateBranchTable(branchTable *Table) {
 	g.lock.Lock()
 	defer g.lock.Unlock()
