@@ -59,6 +59,7 @@ const (
 	storeProject     = "datcom-store"
 	tmcfCsvBucket    = "datcom-public"
 	tmcfCsvPrefix    = "test"
+	branchTableName  = "borgcron_dc_branch"
 )
 
 // Setup creates local server and client.
@@ -105,29 +106,29 @@ func setupInternal(
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	branchTable, err := createBranchTable(ctx)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	baseTables := []*cbt.Table{}
+	tables := []*bigtable.Table{}
 
 	if useImportGroup {
-		bigtable.SortTables(tableConfig.Tables)
 		for _, t := range tableConfig.Tables {
-			table, err := bigtable.NewTable(ctx, storeProject, baseInstance, strings.TrimSpace(t))
+			name := strings.TrimSpace(t)
+			table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 			if err != nil {
 				return nil, nil, err
 			}
-			baseTables = append(baseTables, table)
+			tables = append(tables, bigtable.NewTable(name, table))
 		}
 	} else {
-		baseTable, err := bigtable.NewTable(
-			ctx, storeProject, baseInstance, strings.TrimSpace(string(baseTableName)))
+		name := strings.TrimSpace(string(baseTableName))
+		baseTable, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 		if err != nil {
 			return nil, nil, err
 		}
-		baseTables = append(baseTables, baseTable)
+		tables = append(tables, bigtable.NewTable(name, baseTable))
+		branchTable, err := createBranchTable(ctx)
+		if err != nil {
+			return nil, nil, err
+		}
+		tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 	}
 
 	metadata, err := server.NewMetadata(
@@ -137,7 +138,8 @@ func setupInternal(
 	}
 	var cache *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, store.NewStore(nil, nil, baseTables, nil, useImportGroup))
+		cache, err = server.NewCache(
+			ctx, store.NewStore(nil, nil, tables, branchTableName, useImportGroup))
 		if err != nil {
 			return nil, nil, err
 		}
@@ -151,7 +153,7 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	return newClient(bqClient, baseTables, branchTable, metadata, cache, memDb, useImportGroup)
+	return newClient(bqClient, tables, metadata, cache, memDb, useImportGroup)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -175,21 +177,20 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	return newClient(bqClient, nil, nil, metadata, nil, nil, false)
+	return newClient(bqClient, nil, metadata, nil, nil, false)
 }
 
 func newClient(
 	bqClient *bigquery.Client,
-	baseTables []*cbt.Table,
-	branchTable *cbt.Table,
+	tables []*bigtable.Table,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
 	useImportGroup bool,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	s := store.NewStore(bqClient, memDb, baseTables, branchTable, useImportGroup)
+	s := store.NewStore(bqClient, memDb, tables, branchTableName, useImportGroup)
 	mixerServer := server.NewMixerServer(s, metadata, cache)
-	reconServer := server.NewReconServer(baseTables)
+	reconServer := server.NewReconServer(tables)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, mixerServer)
 	pb.RegisterReconServer(srv, reconServer)

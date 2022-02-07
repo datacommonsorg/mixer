@@ -111,7 +111,7 @@ func ResolveEntities(
 	}
 
 	// Read ReconIdMap cache.
-	dataList, _, err := bigtable.Read(ctx, store.BtGroup, rowList,
+	btDataList, err := bigtable.Read(ctx, store.BtGroup, rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			var reconEntities pb.ReconEntities
 			if isProto {
@@ -128,7 +128,7 @@ func ResolveEntities(
 		func(rowKey string) (string, error) {
 			return strings.TrimPrefix(rowKey, bigtable.BtReconIDMapPrefix), nil
 		},
-		false)
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -137,7 +137,7 @@ func ResolveEntities(
 	reconEntityStore := map[string]map[string]*pb.ReconEntities{}
 
 	// Group resolving cache result by source ID.
-	for idKey, reconEntities := range dataList[0] {
+	for idKey, reconEntities := range btDataList[0] {
 		if reconEntities == nil {
 			continue
 		}

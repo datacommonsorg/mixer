@@ -248,14 +248,14 @@ func ReadTriples(
 	// Only use base cache for triples, as branch cache only consists increment
 	// stats. This saves time as the triples list size can get big.
 	// Re-evaluate this if branch cache involves other triples.
-	baseDataList, _, err := bigtable.Read(
-		ctx, btGroup, rowList, convertTriplesCache, nil, false, /* readBranch */
+	btDataList, err := bigtable.Read(
+		ctx, btGroup, rowList, convertTriplesCache, nil,
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := make(map[string]*model.TriplesCache)
-	for dcid, data := range baseDataList[0] {
+	for dcid, data := range btDataList[0] {
 		if data == nil {
 			result[dcid] = nil
 		} else {

@@ -16,7 +16,6 @@ package store
 
 import (
 	"cloud.google.com/go/bigquery"
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 )
@@ -32,12 +31,12 @@ type Store struct {
 func NewStore(
 	bqClient *bigquery.Client,
 	memDb *memdb.MemDb,
-	baseTables []*cbt.Table,
-	branchTable *cbt.Table,
+	baseTables []*bigtable.Table,
+	branchTableName string,
 	useImportGroup bool,
 ) *Store {
 	// Table validation happens when creating the store
-	validBaseTables := []*cbt.Table{}
+	validBaseTables := []*bigtable.Table{}
 	for _, t := range baseTables {
 		if t != nil {
 			validBaseTables = append(validBaseTables, t)
@@ -46,6 +45,6 @@ func NewStore(
 	return &Store{
 		BqClient: bqClient,
 		MemDb:    memDb,
-		BtGroup:  bigtable.NewGroup(validBaseTables, branchTable, useImportGroup),
+		BtGroup:  bigtable.NewGroup(validBaseTables, branchTableName, useImportGroup),
 	}
 }

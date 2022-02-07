@@ -30,7 +30,7 @@ func GetStatVarSummary(
 	*pb.GetStatVarSummaryResponse, error) {
 	sv := in.GetStatVars()
 	rowList := bigtable.BuildStatVarSummaryKey(sv)
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -48,7 +48,6 @@ func GetStatVarSummary(
 			return &statVarSummary, nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -56,7 +55,7 @@ func GetStatVarSummary(
 	result := &pb.GetStatVarSummaryResponse{
 		StatVarSummary: map[string]*pb.StatVarSummary{},
 	}
-	for dcid, data := range baseDataList[0] {
+	for dcid, data := range btDataList[0] {
 		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
 	}
 	return result, nil

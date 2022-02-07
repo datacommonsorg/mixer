@@ -40,7 +40,7 @@ func GetChildPlaces(
 ) {
 	rowList := bigtable.BuildPlaceInKey([]string{parentPlace}, childType)
 	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		s.BtGroup,
 		rowList,
@@ -53,13 +53,12 @@ func GetChildPlaces(
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return []string{}, err
 	}
-	if baseDataList[0][parentPlace] != nil {
-		return baseDataList[0][parentPlace].([]string), nil
+	if btDataList[0][parentPlace] != nil {
+		return btDataList[0][parentPlace].([]string), nil
 	}
 	return []string{}, err
 }
@@ -80,7 +79,7 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 	rowList := bigtable.BuildPlaceInKey(dcids, placeType)
 
 	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -88,15 +87,14 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
 	}
 	results := []map[string]string{}
 	for _, dcid := range dcids {
-		if baseDataList[0][dcid] != nil {
-			for _, place := range baseDataList[0][dcid].([]string) {
+		if btDataList[0][dcid] != nil {
+			for _, place := range btDataList[0][dcid].([]string) {
 				results = append(results, map[string]string{"dcid": dcid, "place": place})
 			}
 		}
@@ -155,7 +153,7 @@ func GetRelatedLocations(
 		}
 	}
 	// RelatedPlace cache only exists in base cache
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -180,13 +178,12 @@ func GetRelatedLocations(
 			}
 			return parts[len(parts)-1], nil
 		},
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := &pb.GetRelatedLocationsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for statVar, data := range baseDataList[0] {
+	for statVar, data := range btDataList[0] {
 		if data == nil {
 			result.Data[statVar] = nil
 		} else {
@@ -236,8 +233,7 @@ func GetLocationsRankings(
 			)
 		}
 	}
-	// RelatedPlace cache only exists in base cache
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -262,14 +258,13 @@ func GetLocationsRankings(
 			}
 			return parts[len(parts)-1], nil
 		},
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
 	}
 
 	result := &pb.GetLocationsRankingsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for statVar, data := range baseDataList[0] {
+	for statVar, data := range btDataList[0] {
 		if data == nil {
 			result.Data[statVar] = nil
 		} else {
@@ -292,7 +287,7 @@ func GetPlaceMetadata(
 
 	rowList := bigtable.BuildPlaceMetaDataKey(places)
 	// Place metadata are from base geo imports. Only trust the base cache.
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -310,17 +305,16 @@ func GetPlaceMetadata(
 			return &data, nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]*pb.PlaceMetadata{}
 	for _, place := range places {
-		if baseDataList[0][place] == nil {
+		if btDataList[0][place] == nil {
 			continue
 		}
-		raw := baseDataList[0][place].(*pb.PlaceMetadataCache)
+		raw := btDataList[0][place].(*pb.PlaceMetadataCache)
 		processed := pb.PlaceMetadata{}
 		metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
 		for _, info := range raw.Places {

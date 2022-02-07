@@ -23,7 +23,6 @@ import (
 	"runtime"
 	"strings"
 
-	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
@@ -44,14 +43,13 @@ type Server struct {
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
-	branchTable, err := bigtable.NewTable(
+	branchTable, err := bigtable.NewBtTable(
 		ctx, s.metadata.BtProject, s.metadata.BranchBtInstance, branchTableName)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.store.BtGroup.UpdateBranchTable(branchTable)
-	s.metadata.BranchTable = branchTableName
+	s.store.BtGroup.UpdateBranchTable(bigtable.NewTable(branchTableName, branchTable))
 	log.Printf("Updated branch table to use %s", branchTableName)
 }
 
@@ -171,9 +169,9 @@ func NewMixerServer(
 
 // NewReconServer creates a new recon server instance.
 func NewReconServer(
-	baseTables []*cbt.Table,
+	baseTables []*bigtable.Table,
 ) *Server {
 	return &Server{
-		store: store.NewStore(nil, nil, baseTables, nil, false),
+		store: store.NewStore(nil, nil, baseTables, "", false),
 	}
 }

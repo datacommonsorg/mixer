@@ -58,7 +58,7 @@ func ResolveCoordinates(
 		reconRowList = append(reconRowList,
 			fmt.Sprintf("%s%s", bigtable.BtCoordinateReconPrefix, key))
 	}
-	reconDataList, _, err := bigtable.Read(
+	reconDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		reconRowList,
@@ -79,7 +79,6 @@ func ResolveCoordinates(
 		func(rowKey string) (string, error) {
 			return strings.TrimPrefix(rowKey, bigtable.BtCoordinateReconPrefix), nil
 		},
-		false,
 	)
 	if err != nil {
 		return nil, err
@@ -101,7 +100,7 @@ func ResolveCoordinates(
 		geoJSONRowList = append(geoJSONRowList,
 			fmt.Sprintf("%s%s^%s", bigtable.BtOutPropValPrefix, place, geoJSONPredicate))
 	}
-	geoJSONDataList, _, err := bigtable.Read(
+	geoJSONDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		geoJSONRowList,
@@ -123,7 +122,6 @@ func ResolveCoordinates(
 			l := strings.TrimPrefix(rowKey, bigtable.BtOutPropValPrefix)
 			return strings.TrimSuffix(l, fmt.Sprintf("^%s", geoJSONPredicate)), nil
 		},
-		false,
 	)
 	if err != nil {
 		return nil, err

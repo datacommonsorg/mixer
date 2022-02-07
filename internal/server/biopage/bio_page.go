@@ -38,7 +38,7 @@ func GetBioPageData(
 			codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 
-	baseDataList, _, err := bigtable.Read(
+	dataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		cbt.RowList{bigtable.BtProteinPagePrefix + dcid},
@@ -56,15 +56,14 @@ func GetBioPageData(
 			return &graph, nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
 	}
 	// baseData is orderred by preference. Use the one that has bio data without
 	// merging.
-	for _, baseData := range baseDataList {
-		if v, ok := baseData[dcid]; ok {
+	for _, btData := range dataList {
+		if v, ok := btData[dcid]; ok {
 			return v.(*pb.GraphNodes), nil
 		}
 	}
