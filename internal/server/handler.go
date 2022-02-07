@@ -224,7 +224,7 @@ func (s *Server) GetPropertyLabels(
 	if err != nil {
 		return nil, err
 	}
-	// To make the API response backward compatible. This is to add the outer
+	// To make the API response backward compatible. This is to remove the outer
 	// level `{\"data\":`
 	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 
@@ -243,7 +243,7 @@ func (s *Server) GetPropertyValues(
 	if err != nil {
 		return nil, err
 	}
-	// To make the API response backward compatible. This is to add the outer
+	// To make the API response backward compatible. This is to remove the outer
 	// level `{\"data\":`
 	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil

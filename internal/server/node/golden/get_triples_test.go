@@ -105,9 +105,8 @@ func TestGetTriples(t *testing.T) {
 				continue
 			}
 			var result map[string][]*model.Triple
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
-				t.Errorf("Can not Unmarshal payload")
+			if err = json.Unmarshal([]byte(resp.GetPayload()), &result); err != nil {
+				t.Errorf("Can not Unmarshal payload, %v", err)
 				continue
 			}
 
