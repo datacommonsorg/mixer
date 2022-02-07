@@ -151,6 +151,7 @@ func ToObsCollection(token string, jsonRaw []byte, isProto bool) (interface{}, e
 	}
 }
 
+// ToTriples converts raw bigtable data to pb.Triples
 func ToTriples(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 	var triples pb.Triples
 	if isProto {

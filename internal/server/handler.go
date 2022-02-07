@@ -21,6 +21,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/biopage"
+	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placepage"
@@ -255,7 +256,7 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
 	if err != nil {
 		return nil, err
 	}
-	result := node.ToLegacyResult(resp)
+	result := convert.ToLegacyResult(resp)
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
 		return nil, err

@@ -14,7 +14,7 @@
 
 // Contains functions to convert between protobuf and golang struct.
 
-package node
+package convert
 
 import (
 	"sort"
@@ -23,8 +23,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/model"
 )
 
-// Convert pb.GetTriplesResponse to legacy golang struct to make the API response
-// backward compatible.
+// ToLegacyResult converts pb.GetTriplesResponse to legacy golang struct to
+// make the API response backward compatible.
 func ToLegacyResult(in *pb.GetTriplesResponse) map[string][]*model.Triple {
 	out := map[string][]*model.Triple{}
 	for dcid, triplesPb := range in.Triples {
@@ -86,13 +86,13 @@ func ToLegacyResult(in *pb.GetTriplesResponse) map[string][]*model.Triple {
 
 func outEntityToTriple(
 	pred string,
-	subjectId string,
+	subjectID string,
 	subjectName string,
 	subjectTypes []string,
 	e *pb.EntityInfo,
 ) *model.Triple {
 	return &model.Triple{
-		SubjectID:    subjectId,
+		SubjectID:    subjectID,
 		SubjectName:  subjectName,
 		SubjectTypes: subjectTypes,
 		Predicate:    pred,
@@ -106,13 +106,13 @@ func outEntityToTriple(
 
 func inEntityToTriple(
 	pred string,
-	objectId string,
+	objectID string,
 	objectName string,
 	objectTypes []string,
 	e *pb.EntityInfo,
 ) *model.Triple {
 	return &model.Triple{
-		ObjectID:     objectId,
+		ObjectID:     objectID,
 		ObjectName:   objectName,
 		ObjectTypes:  objectTypes,
 		Predicate:    pred,
