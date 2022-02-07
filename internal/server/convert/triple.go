@@ -25,14 +25,14 @@ import (
 
 // ToLegacyResult converts pb.GetTriplesResponse to legacy golang struct to
 // make the API response backward compatible.
-func ToLegacyResult(in *pb.GetTriplesResponse) map[string][]*model.Triple {
-	out := map[string][]*model.Triple{}
-	for dcid, triplesPb := range in.Triples {
-		out[dcid] = []*model.Triple{}
+func ToLegacyResult(input *pb.GetTriplesResponse) map[string][]*model.Triple {
+	result := map[string][]*model.Triple{}
+	for dcid, triplesPb := range input.Triples {
+		result[dcid] = []*model.Triple{}
 		if triplesPb.Triples != nil {
 			// Bigtable data is not protobuf message.
 			for _, t := range triplesPb.Triples {
-				out[dcid] = append(out[dcid], toLegacyTriple(t))
+				result[dcid] = append(result[dcid], toLegacyTriple(t))
 			}
 		} else {
 			subjectName := ""
@@ -53,35 +53,35 @@ func ToLegacyResult(in *pb.GetTriplesResponse) map[string][]*model.Triple {
 			for pred, nodes := range triplesPb.OutNodes {
 				for _, e := range nodes.Entities {
 					t := outEntityToTriple(pred, dcid, subjectName, subjectTypes, e)
-					out[dcid] = append(out[dcid], t)
+					result[dcid] = append(result[dcid], t)
 				}
 			}
 			for pred, nodes := range triplesPb.InNodes {
 				for _, e := range nodes.Entities {
 					t := inEntityToTriple(pred, dcid, subjectName, subjectTypes, e)
-					out[dcid] = append(out[dcid], t)
+					result[dcid] = append(result[dcid], t)
 				}
 			}
 		}
-		sort.SliceStable(out[dcid], func(i, j int) bool {
-			if out[dcid][i].SubjectID == out[dcid][j].SubjectID {
-				if out[dcid][i].Predicate == out[dcid][j].Predicate {
-					if out[dcid][i].ObjectID == out[dcid][j].ObjectID {
-						return out[dcid][i].ObjectValue < out[dcid][j].ObjectValue
+		sort.SliceStable(result[dcid], func(i, j int) bool {
+			if result[dcid][i].SubjectID == result[dcid][j].SubjectID {
+				if result[dcid][i].Predicate == result[dcid][j].Predicate {
+					if result[dcid][i].ObjectID == result[dcid][j].ObjectID {
+						return result[dcid][i].ObjectValue < result[dcid][j].ObjectValue
 					}
-					return out[dcid][i].ObjectID < out[dcid][j].ObjectID
+					return result[dcid][i].ObjectID < result[dcid][j].ObjectID
 				}
-				return out[dcid][i].Predicate < out[dcid][j].Predicate
+				return result[dcid][i].Predicate < result[dcid][j].Predicate
 			}
-			if out[dcid][i].SubjectID == dcid {
+			if result[dcid][i].SubjectID == dcid {
 				return true
-			} else if out[dcid][j].SubjectID == dcid {
+			} else if result[dcid][j].SubjectID == dcid {
 				return false
 			}
-			return out[dcid][i].SubjectID < out[dcid][j].SubjectID
+			return result[dcid][i].SubjectID < result[dcid][j].SubjectID
 		})
 	}
-	return out
+	return result
 }
 
 func outEntityToTriple(

@@ -225,7 +225,7 @@ func (s *Server) GetPropertyLabels(
 		return nil, err
 	}
 	// To make the API response backward compatible. This is to remove the outer
-	// level `{\"data\":`
+	// level `{\"data\":` and trailing `}`
 	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
@@ -244,7 +244,7 @@ func (s *Server) GetPropertyValues(
 		return nil, err
 	}
 	// To make the API response backward compatible. This is to remove the outer
-	// level `{\"data\":`
+	// level `{\"data\":` and trailing `}`
 	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
