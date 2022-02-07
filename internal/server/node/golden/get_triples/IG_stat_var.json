@@ -2,6 +2,10 @@
   "Count_Person": [
     {
       "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
@@ -12,6 +16,10 @@
     },
     {
       "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "memberOf",
       "objectId": "dc/g/Demographics",
       "objectName": "Demographics",
@@ -22,12 +30,20 @@
     },
     {
       "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "name",
       "objectValue": "Population",
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "populationType",
       "objectId": "Person",
       "objectName": "Person",
@@ -38,6 +54,10 @@
     },
     {
       "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://datacommons.org",
@@ -48,6 +68,10 @@
     },
     {
       "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "statType",
       "objectId": "measuredValue",
       "objectName": "measuredValue",
@@ -58,6 +82,10 @@
     },
     {
       "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
       "objectName": "StatisticalVariable",
@@ -367,6 +395,10 @@
   "Count_Person_Female": [
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "constraintProperties",
       "objectId": "gender",
       "objectName": "gender",
@@ -377,6 +409,10 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "gender",
       "objectId": "Female",
       "objectName": "Female",
@@ -387,6 +423,10 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
@@ -397,6 +437,10 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "memberOf",
       "objectId": "dc/g/Person_Gender-Female",
       "objectName": "Person With Gender = Female",
@@ -407,12 +451,20 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "name",
       "objectValue": "Female Population",
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "populationType",
       "objectId": "Person",
       "objectName": "Person",
@@ -423,6 +475,10 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://datacommons.org",
@@ -433,6 +489,10 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "statType",
       "objectId": "measuredValue",
       "objectName": "measuredValue",
@@ -443,6 +503,10 @@
     },
     {
       "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
       "objectName": "StatisticalVariable",

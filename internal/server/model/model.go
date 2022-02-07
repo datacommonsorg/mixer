@@ -27,11 +27,6 @@ type Triple struct {
 	ProvenanceID string   `json:"provenanceId,omitempty"`
 }
 
-// TriplesCache represents the json structure returned by the BT triples cache
-type TriplesCache struct {
-	Triples []*Triple `json:"triples"`
-}
-
 // StatisticalVariable contains key info of population and observation.
 type StatisticalVariable struct {
 	PopType                string            `json:"popType,omitempty"`

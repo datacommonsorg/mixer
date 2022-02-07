@@ -24,7 +24,7 @@ type MixerClient interface {
 	// Fetch nodes that linked to source nodes with a given property.
 	GetPropertyValues(ctx context.Context, in *GetPropertyValuesRequest, opts ...grpc.CallOption) (*PayloadResponse, error)
 	// Fetch triples that have the given nodes as subject or object.
-	GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*GetTriplesResponse, error)
+	GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*PayloadResponse, error)
 	// Get places contained in parent places.
 	GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, opts ...grpc.CallOption) (*GetPlacesInResponse, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
@@ -138,8 +138,8 @@ func (c *mixerClient) GetPropertyValues(ctx context.Context, in *GetPropertyValu
 	return out, nil
 }
 
-func (c *mixerClient) GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*GetTriplesResponse, error) {
-	out := new(GetTriplesResponse)
+func (c *mixerClient) GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*PayloadResponse, error) {
+	out := new(PayloadResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetTriples", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -401,7 +401,7 @@ type MixerServer interface {
 	// Fetch nodes that linked to source nodes with a given property.
 	GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*PayloadResponse, error)
 	// Fetch triples that have the given nodes as subject or object.
-	GetTriples(context.Context, *GetTriplesRequest) (*GetTriplesResponse, error)
+	GetTriples(context.Context, *GetTriplesRequest) (*PayloadResponse, error)
 	// Get places contained in parent places.
 	GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
@@ -493,7 +493,7 @@ func (*UnimplementedMixerServer) GetPropertyLabels(context.Context, *GetProperty
 func (*UnimplementedMixerServer) GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*PayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPropertyValues not implemented")
 }
-func (*UnimplementedMixerServer) GetTriples(context.Context, *GetTriplesRequest) (*GetTriplesResponse, error) {
+func (*UnimplementedMixerServer) GetTriples(context.Context, *GetTriplesRequest) (*PayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTriples not implemented")
 }
 func (*UnimplementedMixerServer) GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error) {

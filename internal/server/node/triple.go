@@ -16,13 +16,12 @@ package node
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"sort"
 	"strings"
 
 	cbt "cloud.google.com/go/bigtable"
-	"github.com/datacommonsorg/mixer/internal/server/model"
+	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -56,7 +55,8 @@ func getObsTriples(
 	ctx context.Context,
 	store *store.Store,
 	metadata *resource.Metadata,
-	obsDcids []string) (map[string][]*model.Triple, error) {
+	obsDcids []string,
+) (map[string][]*pb.Triple, error) {
 	dcidList := ""
 	for _, dcid := range obsDcids {
 		dcidList += fmt.Sprintf("\"%s\" ", dcid)
@@ -70,21 +70,22 @@ func getObsTriples(
 	tripleStatment += fmt.Sprintf("?o dcid (%s)", dcidList)
 	sparql := fmt.Sprintf(
 		`%s
-				WHERE {
-					%s
-				}
-				`, selectStatment, tripleStatment,
+			WHERE {
+				%s
+			}
+		`, selectStatment, tripleStatment,
 	)
-	resp, err := translator.Query(ctx, &pb.QueryRequest{Sparql: sparql}, metadata, store)
+	resp, err := translator.Query(
+		ctx, &pb.QueryRequest{Sparql: sparql}, metadata, store)
 	if err != nil {
 		return nil, err
 	}
-	result := map[string][]*model.Triple{}
+	result := map[string][]*pb.Triple{}
 	for _, row := range resp.GetRows() {
 		dcid := row.GetCells()[0].Value
 		prov := row.GetCells()[1].Value
 		objDcids := []string{}
-		objTriples := map[string]*model.Triple{}
+		objTriples := map[string]*pb.Triple{}
 		for i, prop := range obsProps {
 			objCell := row.GetCells()[i+2].Value
 			if objCell != "" {
@@ -92,18 +93,18 @@ func getObsTriples(
 					// The object is a node; need to fetch the name.
 					objDcid := objCell
 					objDcids = append(objDcids, objDcid)
-					objTriples[objDcid] = &model.Triple{
-						SubjectID:    dcid,
+					objTriples[objDcid] = &pb.Triple{
+						SubjectId:    dcid,
 						Predicate:    prop.name,
-						ObjectID:     objDcid,
-						ProvenanceID: prov,
+						ObjectId:     objDcid,
+						ProvenanceId: prov,
 					}
 				} else {
-					result[dcid] = append(result[dcid], &model.Triple{
-						SubjectID:    dcid,
+					result[dcid] = append(result[dcid], &pb.Triple{
+						SubjectId:    dcid,
 						Predicate:    prop.name,
 						ObjectValue:  objCell,
-						ProvenanceID: prov,
+						ProvenanceId: prov,
 					})
 				}
 			}
@@ -136,10 +137,9 @@ func GetTriples(
 	in *pb.GetTriplesRequest,
 	store *store.Store,
 	metadata *resource.Metadata,
-) (
-	*pb.GetTriplesResponse, error) {
+) (*pb.GetTriplesResponse, error) {
 	dcids := in.GetDcids()
-	limit := in.GetLimit()
+	limit := int(in.GetLimit())
 
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing argument: dcids")
@@ -158,19 +158,18 @@ func GetTriples(
 		}
 	}
 
-	resultsMap := map[string][]*model.Triple{}
-
+	result := &pb.GetTriplesResponse{Triples: make(map[string]*pb.Triples)}
+	var err error
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		allTriplesCache, err := ReadTriples(ctx, store.BtGroup, bigtable.BuildTriplesKey(regDcids))
+		result, err = ReadTriples(ctx, store.BtGroup, bigtable.BuildTriplesKey(regDcids))
 		if err != nil {
 			return nil, err
 		}
-		for dcid := range allTriplesCache {
-			resultsMap[dcid] = applyLimit(dcid, allTriplesCache[dcid].Triples, limit)
+		for dcid, triples := range result.Triples {
+			applyLimit(dcid, triples, limit)
 		}
 	}
-
 	// Observation DCIDs.
 	if len(obsDcids) > 0 {
 		obsResult, err := getObsTriples(ctx, store, metadata, obsDcids)
@@ -178,89 +177,147 @@ func GetTriples(
 			return nil, err
 		}
 		for k, v := range obsResult {
-			resultsMap[k] = append(resultsMap[k], v...)
-		}
-	}
-
-	// Format the json response and encode it in base64 as necessary.
-	jsonRaw, err := json.Marshal(resultsMap)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetTriplesResponse{Payload: string(jsonRaw)}, nil
-}
-
-func convertTriplesCache(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
-	var triples model.TriplesCache
-	err := json.Unmarshal(jsonRaw, &triples)
-	if err != nil {
-		return nil, err
-	}
-	return &triples, nil
-}
-
-func applyLimit(
-	dcid string, triples []*model.Triple, limit int32) []*model.Triple {
-	if triples == nil {
-		return []*model.Triple{}
-	}
-	if limit == 0 { // Default limit value means no further limit.
-		return triples
-	}
-
-	// Key is {isOut + predicate + neighborType}.
-	existTriple := map[string][]*model.Triple{}
-	for _, t := range triples {
-		isOut := "0"
-		neighborTypes := t.SubjectTypes
-		if t.SubjectID == dcid {
-			isOut = "1"
-			neighborTypes = t.ObjectTypes
-		}
-
-		for _, nt := range neighborTypes {
-			key := isOut + t.Predicate + nt
-			if _, ok := existTriple[key]; !ok {
-				existTriple[key] = []*model.Triple{}
+			if result.Triples[k] == nil {
+				result.Triples[k] = &pb.Triples{}
 			}
-			existTriple[key] = append(existTriple[key], t)
-		}
-	}
-
-	result := []*model.Triple{}
-	for _, triples := range existTriple {
-		var count int32
-		for _, t := range triples {
-			result = append(result, t)
-			count++
-			if count == limit {
-				break
-			}
-		}
-	}
-	return result
-}
-
-// ReadTriples read triples from base cache for multiple dcids.
-func ReadTriples(
-	ctx context.Context, btGroup *bigtable.Group, rowList cbt.RowList) (
-	map[string]*model.TriplesCache, error) {
-	// Only use base cache for triples, as branch cache only consists increment
-	// stats. This saves time as the triples list size can get big.
-	// Re-evaluate this if branch cache involves other triples.
-	btDataList, err := bigtable.Read(
-		ctx, btGroup, rowList, convertTriplesCache, nil,
-	)
-	if err != nil {
-		return nil, err
-	}
-	result := make(map[string]*model.TriplesCache)
-	for dcid, data := range btDataList[0] {
-		if data == nil {
-			result[dcid] = nil
-		} else {
-			result[dcid] = data.(*model.TriplesCache)
+			result.Triples[k].Triples = append(result.Triples[k].Triples, v...)
 		}
 	}
 	return result, nil
+}
+
+// ReadTriples read triples from base cache for multiple dcids.
+func ReadTriples(ctx context.Context, btGroup *bigtable.Group, rowList cbt.RowList) (
+	*pb.GetTriplesResponse, error) {
+	btDataList, err := bigtable.Read(ctx, btGroup, rowList, convert.ToTriples, nil)
+	if err != nil {
+		return nil, err
+	}
+	result := &pb.GetTriplesResponse{Triples: make(map[string]*pb.Triples)}
+	// dcid -> predicate -> id/value
+	visited := map[string]map[string]map[string]struct{}{}
+	for _, baseData := range btDataList {
+		for dcid, data := range baseData {
+			triples, ok := data.(*pb.Triples)
+			if !ok {
+				return nil, status.Error(codes.Internal, "Error reading triples cache")
+			}
+			if triples.Triples != nil {
+				// Non import group case.
+				result.Triples[dcid] = triples
+			} else {
+				if _, ok := result.Triples[dcid]; !ok {
+					result.Triples[dcid] = &pb.Triples{
+						InNodes:  map[string]*pb.EntityInfoCollection{},
+						OutNodes: map[string]*pb.EntityInfoCollection{},
+					}
+				}
+				if _, ok := visited[dcid]; !ok {
+					visited[dcid] = map[string]map[string]struct{}{}
+				}
+				// This is import group case, since there are multiple cache data.
+				for pred, entities := range triples.OutNodes {
+					// For out nodes, only add data to result if it does not exist.
+					if _, ok := result.Triples[dcid].OutNodes[pred]; !ok {
+						result.Triples[dcid].OutNodes[pred] = entities
+					}
+				}
+				for pred, c := range triples.InNodes {
+					if _, ok := visited[dcid][pred]; !ok {
+						visited[dcid][pred] = map[string]struct{}{}
+					}
+					// For in nodes, merge entities from different tables.
+					if _, ok := result.Triples[dcid].InNodes[pred]; !ok {
+						result.Triples[dcid].InNodes[pred] = c
+						for _, e := range c.Entities {
+							visited[dcid][pred][e.Dcid] = struct{}{}
+						}
+					} else {
+						for _, e := range c.Entities {
+							// Check if a duplicate node has been added to the result.
+							// Duplication is based on either the DCID or the value.
+							if _, ok := visited[dcid][pred][e.Dcid]; !ok {
+								result.Triples[dcid].InNodes[pred].Entities = append(
+									result.Triples[dcid].InNodes[pred].Entities,
+									e,
+								)
+								visited[dcid][pred][e.Dcid] = struct{}{}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return result, nil
+}
+
+// Filter triples in place.
+func applyLimit(dcid string, t *pb.Triples, limit int) {
+	if t == nil {
+		return
+	}
+	// Default limit value means no further limit.
+	if limit == 0 {
+		return
+	}
+	if t.Triples != nil {
+		// This is the old triples cache.
+		// Key is {isOut + predicate + neighborType}.
+		existTriple := map[string][]*pb.Triple{}
+		for _, t := range t.Triples {
+			isOut := "0"
+			neighborTypes := t.SubjectTypes
+			if t.SubjectId == dcid {
+				isOut = "1"
+				neighborTypes = t.ObjectTypes
+			}
+
+			for _, nt := range neighborTypes {
+				key := isOut + t.Predicate + nt
+				if _, ok := existTriple[key]; !ok {
+					existTriple[key] = []*pb.Triple{}
+				}
+				existTriple[key] = append(existTriple[key], t)
+			}
+		}
+
+		filtered := []*pb.Triple{}
+		for _, triples := range existTriple {
+			var count int
+			for _, t := range triples {
+				filtered = append(filtered, t)
+				count++
+				if count == limit {
+					break
+				}
+			}
+		}
+		t.Triples = filtered
+	} else {
+		// This is the import group mdoe.
+		//
+		// Apply the filtering
+		for _, target := range []map[string]*pb.EntityInfoCollection{
+			t.OutNodes,
+			t.InNodes,
+		} {
+			for _, c := range target {
+				if len(c.Entities) < limit {
+					continue
+				}
+				tmp := map[string][]*pb.EntityInfo{}
+				for _, e := range c.Entities {
+					nt := e.Types[0]
+					if len(tmp[nt]) < limit {
+						tmp[nt] = append(tmp[nt], e)
+					}
+				}
+				c.Entities = []*pb.EntityInfo{}
+				for _, entities := range tmp {
+					c.Entities = append(c.Entities, entities...)
+				}
+			}
+		}
+	}
 }

@@ -18,10 +18,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/server/model"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestReadTriple(t *testing.T) {
@@ -54,14 +55,14 @@ func TestReadTriple(t *testing.T) {
 		t.Errorf("SetupBigtable(...) = %v", err)
 	}
 	// Test
-	want := &model.TriplesCache{
-		Triples: []*model.Triple{
+	want := &pb.Triples{
+		Triples: []*pb.Triple{
 			{
-				SubjectID:    "wikidataId/Q9879",
+				SubjectId:    "wikidataId/Q9879",
 				SubjectName:  "Waalwijk",
 				SubjectTypes: []string{"City"},
 				Predicate:    "typeOf",
-				ObjectID:     "City",
+				ObjectId:     "City",
 				ObjectName:   "City",
 				ObjectTypes:  []string{"Class"},
 			},
@@ -75,7 +76,7 @@ func TestReadTriple(t *testing.T) {
 	if err != nil {
 		t.Errorf("ReadTriple get err: %v", err)
 	}
-	if diff := cmp.Diff(want, got["City"]); diff != "" {
+	if diff := cmp.Diff(want, got.Triples["City"], protocmp.Transform()); diff != "" {
 		t.Errorf("ReadTriple() got diff: %v", diff)
 	}
 }
