@@ -18,6 +18,7 @@ package bigtable
 
 import (
 	"context"
+	"log"
 	"sort"
 	"strings"
 	"sync"
@@ -116,6 +117,10 @@ func (g *Group) UpdateBranchTable(branchTable *Table) {
 	if g.isProto {
 		// To place branch table in the right place
 		SortTables(g.tables)
+	} else {
+		if len(tables) != 2 || !strings.Contains(tables[1].name, "dc_branch") {
+			log.Printf("Branch table is not the second table: %v", tables)
+		}
 	}
 }
 
