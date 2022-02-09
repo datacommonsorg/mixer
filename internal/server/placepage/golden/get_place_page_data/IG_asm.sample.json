@@ -1056,7 +1056,11 @@
             "2022-01-31": 0,
             "2022-02-01": 0,
             "2022-02-02": 0,
-            "2022-02-03": 0
+            "2022-02-03": 0,
+            "2022-02-04": 0,
+            "2022-02-05": 0,
+            "2022-02-06": 0,
+            "2022-02-07": 0
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -3379,7 +3383,11 @@
             "2022-01-31": 22604,
             "2022-02-01": 22635,
             "2022-02-02": 22683,
-            "2022-02-03": 22735
+            "2022-02-03": 22735,
+            "2022-02-04": 22780,
+            "2022-02-05": 22819,
+            "2022-02-06": 22877,
+            "2022-02-07": 22936
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -15077,7 +15085,7 @@
             "2021-12-14": 50201273,
             "2021-12-15": 50346549,
             "2021-12-16": 50492868,
-            "2021-12-17": 50662843,
+            "2021-12-17": 50664013,
             "2021-12-18": 50738676,
             "2021-12-19": 50811155,
             "2021-12-20": 51114054,
@@ -15119,12 +15127,16 @@
             "2022-01-25": 72210850,
             "2022-01-26": 72896986,
             "2022-01-27": 73426801,
-            "2022-01-28": 73977654,
-            "2022-01-29": 74224445,
+            "2022-01-28": 73982359,
+            "2022-01-29": 74224472,
             "2022-01-30": 74328530,
             "2022-01-31": 74990524,
             "2022-02-01": 75286807,
-            "2022-02-02": 75612504
+            "2022-02-02": 75612504,
+            "2022-02-03": 75924742,
+            "2022-02-04": 76234897,
+            "2022-02-05": 76358490,
+            "2022-02-06": 76419014
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -15830,7 +15842,7 @@
             "2021-12-14": 799345,
             "2021-12-15": 801438,
             "2021-12-16": 802601,
-            "2021-12-17": 804669,
+            "2021-12-17": 804697,
             "2021-12-18": 805171,
             "2021-12-19": 805334,
             "2021-12-20": 806753,
@@ -15872,12 +15884,16 @@
             "2022-01-25": 870838,
             "2022-01-26": 874733,
             "2022-01-27": 877824,
-            "2022-01-28": 881662,
+            "2022-01-28": 881703,
             "2022-01-29": 883009,
             "2022-01-30": 883370,
             "2022-01-31": 885943,
             "2022-02-01": 889525,
-            "2022-02-02": 893161
+            "2022-02-02": 893161,
+            "2022-02-03": 896183,
+            "2022-02-04": 900141,
+            "2022-02-05": 901009,
+            "2022-02-06": 901405
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -18557,6 +18573,126 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S1901",
             "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1901\u0026tid=ACSST5Y2019.S1901",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable",
+            "unit": "InflationAdjustedUSD_CurrentYear"
+          }
+        },
+        "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2010": 36779,
+            "2011": 37511,
+            "2012": 37469,
+            "2013": 37146,
+            "2014": 37170,
+            "2015": 37408,
+            "2016": 38502,
+            "2017": 40315,
+            "2018": 41879,
+            "2019": 43825
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1903",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1903\u0026tid=ACSST5Y2019.S1903",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable",
+            "unit": "InflationAdjustedUSD_CurrentYear"
+          }
+        },
+        "Median_Income_Household_HouseholderRaceAsianAlone": {
+          "val": {
+            "2010": 68950,
+            "2011": 70815,
+            "2012": 71709,
+            "2013": 72225,
+            "2014": 73244,
+            "2015": 74245,
+            "2016": 76667,
+            "2017": 80398,
+            "2018": 83898,
+            "2019": 88204
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1903",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1903\u0026tid=ACSST5Y2019.S1903",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable",
+            "unit": "InflationAdjustedUSD_CurrentYear"
+          }
+        },
+        "Median_Income_Household_HouseholderRaceBlackOrAfricanAmericanAlone": {
+          "val": {
+            "2010": 35194,
+            "2011": 35635,
+            "2012": 35564,
+            "2013": 35415,
+            "2014": 35600,
+            "2015": 35695,
+            "2016": 36651,
+            "2017": 38183,
+            "2018": 40155,
+            "2019": 41935
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1903",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1903\u0026tid=ACSST5Y2019.S1903",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable",
+            "unit": "InflationAdjustedUSD_CurrentYear"
+          }
+        },
+        "Median_Income_Household_HouseholderRaceHispanicOrLatino": {
+          "val": {
+            "2010": 41534,
+            "2011": 41965,
+            "2012": 41994,
+            "2013": 42042,
+            "2014": 42396,
+            "2015": 42651,
+            "2016": 44254,
+            "2017": 46627,
+            "2018": 49225,
+            "2019": 51811
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1903",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1903\u0026tid=ACSST5Y2019.S1903",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable",
+            "unit": "InflationAdjustedUSD_CurrentYear"
+          }
+        },
+        "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2010": 55984,
+            "2011": 56406,
+            "2012": 54938,
+            "2013": 53472,
+            "2014": 53370,
+            "2015": 52936,
+            "2016": 54993,
+            "2017": 57372,
+            "2018": 61354,
+            "2019": 63613
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1903",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1903\u0026tid=ACSST5Y2019.S1903",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable",
+            "unit": "InflationAdjustedUSD_CurrentYear"
+          }
+        },
+        "Median_Income_Household_HouseholderRaceWhiteAlone": {
+          "val": {
+            "2010": 54999,
+            "2011": 55992,
+            "2012": 56203,
+            "2013": 56300,
+            "2014": 56900,
+            "2015": 57407,
+            "2016": 59083,
+            "2017": 61363,
+            "2018": 63917,
+            "2019": 66536
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1903",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1903\u0026tid=ACSST5Y2019.S1903",
             "measurementMethod": "CensusACS5yrSurveySubjectTable",
             "unit": "InflationAdjustedUSD_CurrentYear"
           }

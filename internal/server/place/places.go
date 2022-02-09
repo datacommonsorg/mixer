@@ -145,13 +145,17 @@ func GetRelatedLocations(
 	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
 
 	rowList := cbt.RowList{}
-	for _, statVarDcid := range in.GetStatVarDcids() {
+	for _, statVar := range in.GetStatVarDcids() {
 		if sameAncestor {
-			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s^%s", prefix, in.GetDcid(), in.GetWithinPlace(), statVarDcid))
+			rowList = append(
+				rowList,
+				fmt.Sprintf("%s%s^%s^%s", prefix, in.GetDcid(), in.GetWithinPlace(), statVar),
+			)
 		} else {
-			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
+			rowList = append(
+				rowList,
+				fmt.Sprintf("%s%s^%s", prefix, in.GetDcid(), statVar),
+			)
 		}
 	}
 	// RelatedPlace cache only exists in base cache
@@ -186,10 +190,15 @@ func GetRelatedLocations(
 		return nil, err
 	}
 	result := &pb.GetRelatedLocationsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for statVar, data := range baseDataList[0] {
-		if data == nil {
-			result.Data[statVar] = nil
-		} else {
+	for _, baseData := range baseDataList {
+		for statVar, data := range baseData {
+			if _, ok := result.Data[statVar]; ok {
+				continue
+			}
+			if data == nil {
+				result.Data[statVar] = &pb.RelatedPlacesInfo{}
+				continue
+			}
 			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
 		}
 	}
@@ -269,10 +278,15 @@ func GetLocationsRankings(
 	}
 
 	result := &pb.GetLocationsRankingsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for statVar, data := range baseDataList[0] {
-		if data == nil {
-			result.Data[statVar] = nil
-		} else {
+	for _, baseData := range baseDataList {
+		for statVar, data := range baseData {
+			if _, ok := result.Data[statVar]; ok {
+				continue
+			}
+			if data == nil {
+				result.Data[statVar] = &pb.RelatedPlacesInfo{}
+				continue
+			}
 			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
 		}
 	}
