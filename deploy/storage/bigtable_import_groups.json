@@ -1,8 +1,8 @@
 {
   "tables": [
-    "borgcron_frequent_2022_02_03_23_37_09",
-    "borgcron_dc_branch_2022_02_04_13_15_42",
-    "borgcron_ipcc_2022_02_04_10_09_42",
-    "borgcron_infrequent_2022_02_03_16_30_27"
+    "borgcron_frequent_2022_02_08_09_43_36",
+    "borgcron_dc_branch_2022_02_08_09_44_26",
+    "borgcron_ipcc_2022_02_08_13_12_23",
+    "borgcron_infrequent_2022_02_08_09_44_26"
   ]
 }

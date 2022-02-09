@@ -31,64 +31,82 @@ import (
 func TestGetRelatedLocations(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_related_locations")
 
-	for _, c := range []struct {
-		goldenFile   string
-		dcid         string
-		withinPlace  string
-		statVarDcids []string
-	}{
-		{
-			"county.json",
-			"geoId/06085",
-			"country/USA",
-			[]string{
-				"Count_Person",
-				"Median_Income_Person",
-				"Median_Age_Person",
-				"UnemploymentRate_Person",
-			},
-		},
-		{
-			"crime.json",
-			"geoId/06",
-			"",
-			[]string{"Count_CriminalActivities_CombinedCrime"},
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetRelatedLocationsRequest{
-			Dcid:         c.dcid,
-			StatVarDcids: c.statVarDcids,
-			WithinPlace:  c.withinPlace,
-		}
-		resp, err := client.GetRelatedLocations(ctx, req)
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetRelatedLocations: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_related_locations")
 
-		var expected pb.GetRelatedLocationsResponse
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = protojson.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		for _, c := range []struct {
+			goldenFile   string
+			dcid         string
+			withinPlace  string
+			statVarDcids []string
+		}{
+			{
+				"county.json",
+				"geoId/06085",
+				"country/USA",
+				[]string{
+					"Count_Person",
+					"Median_Income_Person",
+					"Median_Age_Person",
+					"UnemploymentRate_Person",
+				},
+			},
+			{
+				"state.json",
+				"geoId/06",
+				"country/USA",
+				[]string{
+					"Count_Person_Unemployed",
+					"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+				},
+			},
+			{
+				"crime.json",
+				"geoId/06",
+				"",
+				[]string{"Count_CriminalActivities_CombinedCrime"},
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			req := &pb.GetRelatedLocationsRequest{
+				Dcid:         c.dcid,
+				StatVarDcids: c.statVarDcids,
+				WithinPlace:  c.withinPlace,
+			}
+			resp, err := client.GetRelatedLocations(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetRelatedLocations: %s", err)
+				continue
+			}
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected pb.GetRelatedLocationsResponse
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = protojson.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }
