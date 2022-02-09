@@ -101,7 +101,7 @@ func TestGetLocationsRankings(t *testing.T) {
 			}
 
 			var expected pb.GetLocationsRankingsResponse
-			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
 			}

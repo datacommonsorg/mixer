@@ -98,8 +98,7 @@ func TestGetRelatedLocations(t *testing.T) {
 
 			var expected pb.GetRelatedLocationsResponse
 			file, _ := ioutil.ReadFile(goldenFile)
-			err = protojson.Unmarshal(file, &expected)
-			if err != nil {
+			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
 			}
