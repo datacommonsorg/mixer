@@ -34,20 +34,20 @@ import "entity.proto";
 
 message PlaceStatVarExistence {
   // Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
-  int32 num_descendent_stat_vars = 1;
+  int64 num_descendent_stat_vars = 1;
 }
 
 message StatVarSummary {
   message Place {
     string dcid = 1;
-    string name = 2;
-    int64 person_count = 3;
+    string name = 3;
+    int64 person_count = 2;
   }
   message PlaceTypeSummary {
     // Number of places with stats for this stat var
     int64 num_places = 1;
     // List of example places that have stats for this stat var
-    repeated Place top_places = 2;
+    repeated Place top_places = 3;
   }
 
   // TODO: Consolidate with StatMetadata
@@ -114,10 +114,11 @@ message StatVarGroupNode {
     // The specialized entity of the child StatVarGroup relative to the parent.
     // This can be used for naming when the child appears in the hierarchy.
     string specialized_entity = 2;
+    //------------------ Below are fields not in original cache.
     // Name suitable for display in tree.
-    string display_name = 3;
+    string display_name = 101;
     // Number of unique descendent stat-vars.
-    int32 num_descendent_stat_vars = 4;
+    int64 num_descendent_stat_vars = 102;
   }
 
   message ChildSV {
@@ -126,11 +127,12 @@ message StatVarGroupNode {
     // Name suitable for search.
     string search_name = 2;
     // Names suitable for search.
-    repeated string search_names = 5;
+    repeated string search_names = 4;
     // Name suitable for display in tree.
     string display_name = 3;
+    //------------------ Below are fields not in original cache.
     // Whether there is a data for this stat var
-    bool has_data = 4;
+    bool has_data = 101;
   }
 
   // Absolute name of StatVarGroup. Typically used only for root nodes.
@@ -140,10 +142,11 @@ message StatVarGroupNode {
   repeated ChildSV child_stat_vars = 2;
   // List of children StatVarGroups that are immediate specializations.
   repeated ChildSVG child_stat_var_groups = 3;
-  // List of parent StatVarGroup IDs.
-  repeated string parent_stat_var_groups = 4;
   // Number of unique descendent stat-vars.
-  int32 num_descendent_stat_vars = 5;
+  int64 num_descendent_stat_vars = 4;
+  //------------------ Below are fields not in original cache.
+  // List of parent StatVarGroup IDs.
+  repeated string parent_stat_var_groups = 101;
 }
 
 message GetStatVarGroupRequest {

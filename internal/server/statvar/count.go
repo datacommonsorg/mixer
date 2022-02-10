@@ -32,7 +32,8 @@ func Count(
 	ctx context.Context,
 	btGroup *bigtable.Group,
 	svOrSvgs []string,
-	places []string) (map[string]map[string]int32, error) {
+	places []string,
+) (map[string]map[string]int64, error) {
 	rowList, keyTokens := bigtable.BuildStatExistenceKey(places, svOrSvgs)
 	keyToTokenFn := bigtable.TokenFn(keyTokens)
 	baseDataList, _, err := bigtable.Read(
@@ -61,17 +62,29 @@ func Count(
 		return nil, err
 	}
 	// Initialize result
-	result := map[string]map[string]int32{}
+	result := map[string]map[string]int64{}
 	for _, id := range svOrSvgs {
-		result[id] = map[string]int32{}
+		result[id] = map[string]int64{}
 	}
 	// Populate the count
 	for _, rowKey := range rowList {
 		placeSv := keyTokens[rowKey]
 		token, _ := keyToTokenFn(rowKey)
-		if data, ok := baseDataList[0][token]; ok {
-			c := data.(*pb.PlaceStatVarExistence)
-			result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
+		for _, baseData := range baseDataList {
+			if data, ok := baseData[token]; ok {
+				c := data.(*pb.PlaceStatVarExistence)
+				if _, ok := result[placeSv.StatVar][placeSv.Place]; !ok {
+					// This is for the case where c.NumDescendentStatVars = 0.
+					// In this case, placeSv.StatVar is a stat var (not a stat var group)
+					// so the number of descendent is 0.
+					// If not performance this check but only the one below, the the
+					// proto default 0 is compared and this map field will never be
+					// populated.
+					result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
+				} else if c.NumDescendentStatVars > result[placeSv.StatVar][placeSv.Place] {
+					result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
+				}
+			}
 		}
 	}
 	return result, nil

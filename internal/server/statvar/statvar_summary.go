@@ -56,8 +56,12 @@ func GetStatVarSummary(
 	result := &pb.GetStatVarSummaryResponse{
 		StatVarSummary: map[string]*pb.StatVarSummary{},
 	}
-	for dcid, data := range baseDataList[0] {
-		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
+	for _, baseData := range baseDataList {
+		for dcid, data := range baseData {
+			if _, ok := result.StatVarSummary[dcid]; !ok && data != nil {
+				result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
+			}
+		}
 	}
 	return result, nil
 }

@@ -29,68 +29,75 @@ import (
 func TestGetStatVarGroup(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: true})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_statvar_group")
-
-	for _, c := range []struct {
-		places     []string
-		goldenFile string
-		checkCount bool
-	}{
-		{
-			[]string{"badDcid"},
-			"empty.json",
-			false,
-		},
-		{
-			[]string{"Earth"},
-			"earth.json",
-			false,
-		},
-		{
-			[]string{},
-			"",
-			true,
-		},
+	for _, opt := range []*e2e.TestOption{
+		{UseCache: true},
+		{UseCache: true, UseImportGroup: true},
 	} {
-		resp, err := client.GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{
-			Places: c.places,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatVarGroup: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_statvar_group")
 
-		if c.checkCount {
-			num := len(resp.StatVarGroups)
-			if num < 10000 {
-				t.Errorf("Too few stat var groups: %d", num)
+		for _, c := range []struct {
+			places     []string
+			goldenFile string
+			checkCount bool
+		}{
+			{
+				[]string{"badDcid"},
+				"empty.json",
+				false,
+			},
+			{
+				[]string{"Earth"},
+				"earth.json",
+				false,
+			},
+			{
+				[]string{},
+				"",
+				true,
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
-			continue
-		}
-
-		if e2e.GenerateGolden {
-			if !c.checkCount {
-				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+			resp, err := client.GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{
+				Places: c.places,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatVarGroup: %s", err)
+				continue
 			}
-			continue
-		}
 
-		var expected pb.StatVarGroups
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+			if c.checkCount {
+				num := len(resp.StatVarGroups)
+				if num < 10000 {
+					t.Errorf("Too few stat var groups: %d", num)
+				}
+				continue
+			}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			if e2e.GenerateGolden {
+				if !c.checkCount {
+					e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				}
+				continue
+			}
+
+			var expected pb.StatVarGroups
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }
