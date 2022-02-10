@@ -57,6 +57,10 @@ func TestGetStatVarSummary(t *testing.T) {
 				[]string{"Count_Person_Female", "Count_Person_Female_AsianAlone", "FertilityRate_Person_Female"},
 				"females.json",
 			},
+			{
+				[]string{"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
+				"covid.json",
+			},
 		} {
 			if opt.UseImportGroup {
 				c.goldenFile = "IG_" + c.goldenFile

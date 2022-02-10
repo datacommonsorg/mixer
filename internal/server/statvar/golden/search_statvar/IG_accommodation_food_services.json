@@ -1,0 +1,1164 @@
+{
+  "statVarGroups": [
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_PlaceOfBirth",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Africa Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthAfrica"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Asia Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthAsia"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Caribbean Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthCaribbean"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Central America Except Mexico Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Country/MEX Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthMexico"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Eastern Asia Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthEasternAsia"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Europe Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthEurope"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Latin America Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthLatinAmerica"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Northamerica Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthNorthamerica"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Northern Western Europe Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthNorthernWesternEurope"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Oceania Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthOceania"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, South Central Asia Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthSouthCentralAsia"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, South Eastern Asia Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthSouthEasternAsia"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Southamerica Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthSouthamerica"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Southern Eastern Europe Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthSouthernEasternEurope"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Foreign Born, Western Asia Population",
+          "dcid": "Count_Person_Employed_NAICSArtsEntertainmentRecreationAccommodationFoodServices_ForeignBorn_PlaceOfBirthWesternAsia"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Occupation",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Management, Business, Science, And Arts Occupations Population",
+          "dcid": "Count_Person_NAICSArtsEntertainmentRecreationAccommodationFoodServices_SOCManagementBusinessScienceArtsOccupation"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Natural Resources, Construction, And Maintenance Occupations Population",
+          "dcid": "Count_Person_NAICSArtsEntertainmentRecreationAccommodationFoodServices_SOCNaturalResourcesConstructionMaintenanceOccupation"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Production, Transportation, And Material Moving Occupations Population",
+          "dcid": "Count_Person_NAICSArtsEntertainmentRecreationAccommodationFoodServices_SOCProductionTransportationMaterialMovingOccupation"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Sales And Office Occupations Population",
+          "dcid": "Count_Person_NAICSArtsEntertainmentRecreationAccommodationFoodServices_SOCSalesOfficeOccupation"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Service Occupations Population",
+          "dcid": "Count_Person_NAICSArtsEntertainmentRecreationAccommodationFoodServices_SOCServiceOccupation"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Industry-NAICS/72",
+      "name": "Person With Establishment Ownership = Federal Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Federal Government Owned, Accommodation And Food Services (NAICS/72) Population",
+          "dcid": "Count_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Annual of Federal Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesAnnual_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Total of Federal Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesTotal_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Weekly of Federal Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesWeekly_Worker_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-LocalGovernmentOwned_Industry-NAICS/72",
+      "name": "Person With Establishment Ownership = Local Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Local Government Owned, Accommodation And Food Services (NAICS/72) Population",
+          "dcid": "Count_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Annual of Local Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesAnnual_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Total of Local Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesTotal_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Weekly of Local Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesWeekly_Worker_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/72",
+      "name": "Person With Establishment Ownership = Privately Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Privately Owned, Accommodation And Food Services (NAICS/72) Population",
+          "dcid": "Count_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Annual of Privately Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesAnnual_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Total of Privately Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesTotal_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Weekly of Privately Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesWeekly_Worker_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-StateGovernmentOwned_Industry-NAICS/72",
+      "name": "Person With Establishment Ownership = State Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "State Government Owned, Accommodation And Food Services (NAICS/72) Population",
+          "dcid": "Count_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Annual of State Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesAnnual_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Total of State Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesTotal_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Weekly of State Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesWeekly_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/7172",
+      "name": "Person With Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, Employed, Government Owned, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Population",
+          "dcid": "Count_Person_GovernmentOwnedEstablishment_NAICS71-72_Worker"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Privately Owned Not for Profit, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Paid Worker Population",
+          "dcid": "Count_Person_PrivatelyOwnedNotForProfitEstablishment_NAICS71-72_PaidWorker"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Privately Owned, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Unincorporated Business Owner or Unpaid Family Worker Population",
+          "dcid": "Count_Person_PrivatelyOwnedEstablishment_NAICS71-72_UnincorporatedBusinessOwnerOrUnpaidFamilyWorker"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/72",
+      "name": "Establishment With Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_NAICSAccommodationFoodServices_WithPayroll"
+        },
+        {
+          "name": "Count of Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/w8gp902jnk426"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/JobPosting_Industry-NAICS/72",
+      "name": "Job Posting With Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Accommodation And Food Services (NAICS/72) (Adjusted)",
+          "dcid": "Count_JobPosting_NAICSAccommodationFoodServices_Adjusted"
+        },
+        {
+          "name": "Count of Accommodation And Food Services (NAICS/72) (Unadjusted)",
+          "dcid": "Count_JobPosting_NAICSAccommodationFoodServices_Unadjusted"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72",
+      "name": "Person With Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Accommodation And Food Services (NAICS/72) Population",
+          "dcid": "Count_Worker_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Wages Total of Accommodation And Food Services (NAICS/72)",
+          "dcid": "WagesTotal_Worker_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, Employed, Privately Owned for Profit, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Incorporated Business Owner Population",
+          "dcid": "Count_Person_PrivatelyOwnedForProfitEstablishment_NAICS71-72_IncorporatedBusinessOwner"
+        },
+        {
+          "name": "16 Years or More, Civilian, Employed, Privately Owned for Profit, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Paid Employee Population",
+          "dcid": "Count_Person_PrivatelyOwnedForProfitEstablishment_NAICS71-72_PaidEmployee"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-Hire",
+      "name": "Person With Job Change Event = Hire, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Hire, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
+          "dcid": "Count_Worker_Hire_NAICSAccommodationFoodServices_Adjusted"
+        },
+        {
+          "name": "Hire, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
+          "dcid": "Count_Worker_Hire_NAICSAccommodationFoodServices_Unadjusted"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-InvoluntarySeparation",
+      "name": "Person With Job Change Event = Involuntary Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Involuntary Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
+          "dcid": "Count_Worker_InvoluntarySeparation_NAICSAccommodationFoodServices_Adjusted"
+        },
+        {
+          "name": "Involuntary Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
+          "dcid": "Count_Worker_InvoluntarySeparation_NAICSAccommodationFoodServices_Unadjusted"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-OtherSeparation",
+      "name": "Person With Job Change Event = Other Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Other Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
+          "dcid": "Count_Worker_OtherSeparation_NAICSAccommodationFoodServices_Adjusted"
+        },
+        {
+          "name": "Other Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
+          "dcid": "Count_Worker_OtherSeparation_NAICSAccommodationFoodServices_Unadjusted"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-Separation",
+      "name": "Person With Job Change Event = Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
+          "dcid": "Count_Worker_Separation_NAICSAccommodationFoodServices_Adjusted"
+        },
+        {
+          "name": "Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
+          "dcid": "Count_Worker_Separation_NAICSAccommodationFoodServices_Unadjusted"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent-VoluntarySeparation",
+      "name": "Person With Job Change Event = Voluntary Separation, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Voluntary Separation, Accommodation And Food Services (NAICS/72) Population (Adjusted)",
+          "dcid": "Count_Worker_VoluntarySeparation_NAICSAccommodationFoodServices_Adjusted"
+        },
+        {
+          "name": "Voluntary Separation, Accommodation And Food Services (NAICS/72) Population (Unadjusted)",
+          "dcid": "Count_Worker_VoluntarySeparation_NAICSAccommodationFoodServices_Unadjusted"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, No Health Insurance, Non Institutionalized, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Population",
+          "dcid": "Count_Person_16OrMoreYears_NoHealthInsurance_NAICSArtsEntertainmentRecreationAccommodationFoodServices_Worker"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/EconomicActivity_ActivitySource-GrossDomesticProduction_Industry-NAICS/72",
+      "name": "Economic Activity With Activity Source = Gross Domestic Production, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Amount of Gross Domestic Production, Accommodation And Food Services (NAICS/72) (Real Value)",
+          "dcid": "Amount_EconomicActivity_GrossDomesticProduction_NAICSAccommodationFoodServices_RealValue"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-FederalGovernmentOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = Federal Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Federal Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-LocalGovernmentOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = Local Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Local Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = Privately Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Privately Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-StateGovernmentOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = State Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of State Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/72_PayrollStatus-WithPayroll",
+      "name": "Establishment With Industry = Accommodation And Food Services (NAICS/72), Payroll Status = With Payroll",
+      "statVars": [
+        {
+          "name": "Sales of Accommodation And Food Services (NAICS/72), With Payroll",
+          "dcid": "Sales_Establishment_NAICSAccommodationFoodServices_WithPayroll"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72",
+      "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services (NAICS/72) Population",
+          "dcid": "dc/rydmsxhz7pxh1"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_Industry-NAICS/72",
+      "name": "Person With Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, Employed, in Labor Force, Male, Accommodation And Food Services (NAICS/72) Population",
+          "dcid": "dc/pn22zf92qr31f"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "statVars": [
+        {
+          "name": "16 Years or More, Civilian, Employed, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72) Population",
+          "dcid": "Count_Person_NAICSArtsEntertainmentRecreationAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/EconomicActivity_Industry-NAICS/72",
+      "name": "Economic Activity With Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/EconomicActivity_ActivitySource_Industry-NAICS/72",
+      "name": "Economic Activity With Activity Source, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/72_PayrollStatus",
+      "name": "Establishment With Industry = Accommodation And Food Services (NAICS/72), Payroll Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/72",
+      "name": "Person With Age, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172",
+      "name": "Person With Age, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72",
+      "name": "Person With Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172",
+      "name": "Person With Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/72",
+      "name": "Person With Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/7172",
+      "name": "Person With Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/72",
+      "name": "Person With Establishment Ownership, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_Industry-NAICS/72",
+      "name": "Person With Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Nativity",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_WorkerClassification-Worker",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_JobChangeEvent",
+      "name": "Person With Job Change Event, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Military Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Nativity",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Occupation",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_WorkerClassification-Worker",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/72",
+      "name": "Person With Age, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/7172",
+      "name": "Person With Age, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Age, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Age, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Age, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_WorkerClassification-Worker",
+      "name": "Person With Age, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72",
+      "name": "Person With Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EstablishmentOwnership_Industry-NAICS/7172",
+      "name": "Person With Employment Status = Employed, Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender_Industry-NAICS/72",
+      "name": "Person With Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_Nativity",
+      "name": "Person With Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_Occupation",
+      "name": "Person With Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_PlaceOfBirth",
+      "name": "Person With Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72",
+      "name": "Person With Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Employment Status, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_Occupation",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_PlaceOfBirth",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Military Status, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Military Status, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Military Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Military Status, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus_Nativity-ForeignBorn",
+      "name": "Person With Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus_WorkerClassification-Worker",
+      "name": "Person With Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_Nativity",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_Occupation",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Age = 16 Years or More, Employment Status, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_Occupation",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus_WorkerClassification-Worker",
+      "name": "Person With Age = 16 Years or More, Military Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72",
+      "name": "Person With Age, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172",
+      "name": "Person With Age, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/7172_Nativity-ForeignBorn",
+      "name": "Person With Age, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Age, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification-Worker",
+      "name": "Person With Age, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72",
+      "name": "Person With Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EstablishmentOwnership_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Occupation",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_PlaceOfBirth",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Military Status = Civilian, Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Military Status = Civilian, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Military Status, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Military Status, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus_Nativity-ForeignBorn",
+      "name": "Person With Military Status, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Occupation",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Occupation"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus",
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus_Nativity-ForeignBorn",
+      "name": "Person With Age = 16 Years or More, Military Status, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian",
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn",
+      "name": "Person With Age, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_Industry-NAICS/72_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn_PlaceOfBirth",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "statVarSummary": {
+    "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
+      "placeTypeSummary": {
+        "City": {
+          "numPlaces": "3",
+          "topPlaces": [
+            {
+              "dcid": "geoId/3651000",
+              "name": "New York",
+              "personCount": "8804190"
+            },
+            {
+              "dcid": "geoId/2938000",
+              "name": "Kansas City",
+              "personCount": "508090"
+            },
+            {
+              "dcid": "geoId/2937592",
+              "name": "Joplin",
+              "personCount": "51762"
+            }
+          ]
+        },
+        "Country": {
+          "numPlaces": "1",
+          "topPlaces": [
+            {
+              "dcid": "country/USA",
+              "name": "United States",
+              "personCount": "331449281"
+            }
+          ]
+        },
+        "County": {
+          "numPlaces": "3216",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06037",
+              "name": "Los Angeles County",
+              "personCount": "10014009"
+            },
+            {
+              "dcid": "geoId/17031",
+              "name": "Cook County",
+              "personCount": "5275541"
+            },
+            {
+              "dcid": "geoId/48201",
+              "name": "Harris County",
+              "personCount": "4731145"
+            }
+          ]
+        },
+        "State": {
+          "numPlaces": "56",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06",
+              "name": "California",
+              "personCount": "39538223"
+            },
+            {
+              "dcid": "geoId/48",
+              "name": "Texas",
+              "personCount": "28995881"
+            },
+            {
+              "dcid": "geoId/12",
+              "name": "Florida",
+              "personCount": "21538187"
+            }
+          ]
+        }
+      },
+      "provenanceSummary": {
+        "dc/e9k9ze": {
+          "importName": "NYT_COVID19",
+          "numObservations": "2148383",
+          "numTimeSeries": "3276",
+          "releaseFrequency": "P1D",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
+              },
+              "earliestDate": "2020-01-22",
+              "latestDate": "2022-01-19",
+              "numObservations": "2148383",
+              "numTimeSeries": "3276",
+              "placeTypeSummary": {
+                "City": {
+                  "numPlaces": "3",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York",
+                      "personCount": "8804190"
+                    },
+                    {
+                      "dcid": "geoId/2938000",
+                      "name": "Kansas City",
+                      "personCount": "508090"
+                    },
+                    {
+                      "dcid": "geoId/2937592",
+                      "name": "Joplin",
+                      "personCount": "51762"
+                    }
+                  ]
+                },
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    }
+                  ]
+                },
+                "County": {
+                  "numPlaces": "3216",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06037",
+                      "name": "Los Angeles County",
+                      "personCount": "10014009"
+                    },
+                    {
+                      "dcid": "geoId/17031",
+                      "name": "Cook County",
+                      "personCount": "5275541"
+                    },
+                    {
+                      "dcid": "geoId/48201",
+                      "name": "Harris County",
+                      "personCount": "4731145"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "56",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California",
+                      "personCount": "39538223"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas",
+                      "personCount": "28995881"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida",
+                      "personCount": "21538187"
+                    }
+                  ]
+                }
+              },
+              "minValue": -40527,
+              "maxValue": 1433977
+            }
+          ]
+        }
+      }
+    }
+  }
+}

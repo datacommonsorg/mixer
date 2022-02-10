@@ -1,0 +1,300 @@
+{
+  "statVarSummary": {
+    "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
+      "placeTypeSummary": {
+        "AdministrativeArea": {
+          "numPlaces": "2",
+          "topPlaces": [
+            {
+              "dcid": "geoId/69120",
+              "name": "Tinian Municipality"
+            },
+            {
+              "dcid": "geoId/69100",
+              "name": "Rota"
+            }
+          ]
+        },
+        "City": {
+          "numPlaces": "4",
+          "topPlaces": [
+            {
+              "dcid": "geoId/69110",
+              "name": "Saipan"
+            },
+            {
+              "dcid": "geoId/3651000",
+              "name": "New York"
+            },
+            {
+              "dcid": "geoId/2938000",
+              "name": "Kansas City"
+            }
+          ]
+        },
+        "Country": {
+          "numPlaces": "1",
+          "topPlaces": [
+            {
+              "dcid": "country/USA",
+              "name": "United States"
+            }
+          ]
+        },
+        "County": {
+          "numPlaces": "3211",
+          "topPlaces": [
+            {
+              "dcid": "geoId/72153",
+              "name": "Yauco"
+            },
+            {
+              "dcid": "geoId/72151",
+              "name": "Yabucoa"
+            },
+            {
+              "dcid": "geoId/72149",
+              "name": "Villalba"
+            }
+          ]
+        },
+        "Place": {
+          "numPlaces": "2",
+          "topPlaces": [
+            {
+              "dcid": "geoId/78020"
+            },
+            {
+              "dcid": "geoId/78010",
+              "name": "Saint Croix"
+            }
+          ]
+        },
+        "State": {
+          "numPlaces": "56",
+          "topPlaces": [
+            {
+              "dcid": "geoId/78",
+              "name": "Virgin Islands of the U.S."
+            },
+            {
+              "dcid": "geoId/72",
+              "name": "Puerto Rico"
+            },
+            {
+              "dcid": "geoId/69",
+              "name": "Northern Mariana Islands"
+            }
+          ]
+        }
+      },
+      "provenanceSummary": {
+        "dc/e9k9ze": {
+          "importName": "NYT_COVID19",
+          "numObservations": "2283426",
+          "numTimeSeries": "6552",
+          "releaseFrequency": "P1D",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
+              },
+              "earliestDate": "2020-01-22",
+              "latestDate": "2022-02-06",
+              "numObservations": "2206697",
+              "numTimeSeries": "3276",
+              "placeTypeSummary": {
+                "AdministrativeArea": {
+                  "numPlaces": "2",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/69120",
+                      "name": "Tinian Municipality"
+                    },
+                    {
+                      "dcid": "geoId/69100",
+                      "name": "Rota"
+                    }
+                  ]
+                },
+                "City": {
+                  "numPlaces": "4",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/69110",
+                      "name": "Saipan"
+                    },
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York"
+                    },
+                    {
+                      "dcid": "geoId/2938000",
+                      "name": "Kansas City"
+                    }
+                  ]
+                },
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States"
+                    }
+                  ]
+                },
+                "County": {
+                  "numPlaces": "3211",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72153",
+                      "name": "Yauco"
+                    },
+                    {
+                      "dcid": "geoId/72151",
+                      "name": "Yabucoa"
+                    },
+                    {
+                      "dcid": "geoId/72149",
+                      "name": "Villalba"
+                    }
+                  ]
+                },
+                "Place": {
+                  "numPlaces": "2",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/78020"
+                    },
+                    {
+                      "dcid": "geoId/78010",
+                      "name": "Saint Croix"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "56",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/78",
+                      "name": "Virgin Islands of the U.S."
+                    },
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    },
+                    {
+                      "dcid": "geoId/69",
+                      "name": "Northern Mariana Islands"
+                    }
+                  ]
+                }
+              },
+              "minValue": -40527,
+              "maxValue": 1433977
+            },
+            {
+              "seriesKey": {
+                "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub",
+                "observationPeriod": "P1M"
+              },
+              "earliestDate": "2020-01",
+              "latestDate": "2022-02",
+              "numObservations": "76729",
+              "numTimeSeries": "3276",
+              "placeTypeSummary": {
+                "AdministrativeArea": {
+                  "numPlaces": "2",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/69120",
+                      "name": "Tinian Municipality"
+                    },
+                    {
+                      "dcid": "geoId/69100",
+                      "name": "Rota"
+                    }
+                  ]
+                },
+                "City": {
+                  "numPlaces": "4",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/69110",
+                      "name": "Saipan"
+                    },
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York"
+                    },
+                    {
+                      "dcid": "geoId/2938000",
+                      "name": "Kansas City"
+                    }
+                  ]
+                },
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States"
+                    }
+                  ]
+                },
+                "County": {
+                  "numPlaces": "3211",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72153",
+                      "name": "Yauco"
+                    },
+                    {
+                      "dcid": "geoId/72151",
+                      "name": "Yabucoa"
+                    },
+                    {
+                      "dcid": "geoId/72149",
+                      "name": "Villalba"
+                    }
+                  ]
+                },
+                "Place": {
+                  "numPlaces": "2",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/78020"
+                    },
+                    {
+                      "dcid": "geoId/78010",
+                      "name": "Saint Croix"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "56",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/78",
+                      "name": "Virgin Islands of the U.S."
+                    },
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    },
+                    {
+                      "dcid": "geoId/69",
+                      "name": "Northern Mariana Islands"
+                    }
+                  ]
+                }
+              },
+              "minValue": -3451,
+              "maxValue": 20301167
+            }
+          ]
+        }
+      }
+    }
+  }
+}
