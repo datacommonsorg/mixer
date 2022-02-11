@@ -338,7 +338,10 @@ func GetPlaceMetadata(
 			if baseData[place] == nil {
 				continue
 			}
-			raw := baseData[place].(*pb.PlaceMetadataCache)
+			raw, ok := baseData[place].(*pb.PlaceMetadataCache)
+			if !ok {
+				continue
+			}
 			processed := pb.PlaceMetadata{}
 			metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
 			for _, info := range raw.Places {
