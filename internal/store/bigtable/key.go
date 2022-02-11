@@ -180,8 +180,8 @@ func BuildPropertyLabelKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
-// BuildPlaceInKey builds bigtable key for place in cache
-func BuildPlaceInKey(dcids []string, placeType string) bigtable.RowList {
+// BuildPlacesInKey builds bigtable key for place in cache
+func BuildPlacesInKey(dcids []string, placeType string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, dcid := range dcids {
 		rowList = append(
