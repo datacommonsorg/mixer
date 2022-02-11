@@ -30,8 +30,6 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
-import "entity.proto";
-
 message PlaceStatVarExistence {
   // Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
   int32 num_descendent_stat_vars = 1;
@@ -173,13 +171,20 @@ message GetStatVarPathResponse {
   repeated string path = 1;
 }
 
-message SearchResultSVG {
-  // DCID of the stat var group
+
+message SearchResultEntry {
+  // DCID of the result
   string dcid = 1;
-  // Name of the stat var group
+  // Name of the result
   string name = 2;
+  // The strings in the name that match the search tokens
+  repeated string matches = 3;
+}
+
+message SearchResultSVG {
+  SearchResultEntry info = 1;
   // List of children stat vars that also match the search query
-  repeated EntityInfo stat_vars = 3;
+  repeated SearchResultEntry stat_vars = 2;
 }
 
 message SearchStatVarRequest {
@@ -194,7 +199,7 @@ message SearchStatVarRequest {
 message SearchStatVarResponse {
   // A ranked list of stat vars that aren't included in any of the returned stat
   // var groups.
-  repeated EntityInfo stat_vars = 1;
+  repeated SearchResultEntry stat_vars = 1;
   // A list of stat var group results ranked by relevance.
   repeated SearchResultSVG stat_var_groups = 2;
 }
