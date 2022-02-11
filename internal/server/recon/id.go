@@ -32,8 +32,7 @@ import (
 // ResolveIds resolve entities based on IDs.
 func ResolveIds(
 	ctx context.Context, in *pb.ResolveIdsRequest, store *store.Store,
-) (
-	*pb.ResolveIdsResponse, error) {
+) (*pb.ResolveIdsResponse, error) {
 	inProp := in.GetInProp()
 	outProp := in.GetOutProp()
 	ids := in.GetIds()
@@ -78,21 +77,26 @@ func ResolveIds(
 
 	// Assemble result.
 	res := &pb.ResolveIdsResponse{}
-	for inID, reconEntities := range baseDataList[0] {
-		entity := &pb.ResolveIdsResponse_Entity{InId: inID}
-
-		for _, reconEntity := range reconEntities.(*pb.ReconEntities).GetEntities() {
-			if len(reconEntity.GetIds()) != 1 {
-				return nil, fmt.Errorf("wrong cache result for %s: %v",
-					inID, reconEntities)
+	for _, baseData := range baseDataList {
+		for inID, reconEntities := range baseData {
+			reconEntitiesPb, ok := reconEntities.(*pb.ReconEntities)
+			if !ok {
+				continue
 			}
-			entity.OutIds = append(entity.OutIds, reconEntity.GetIds()[0].GetVal())
+			entity := &pb.ResolveIdsResponse_Entity{InId: inID}
+			for _, reconEntity := range reconEntitiesPb.GetEntities() {
+				if len(reconEntity.GetIds()) != 1 {
+					return nil, fmt.Errorf("wrong cache result for %s: %v",
+						inID, reconEntities)
+				}
+				entity.OutIds = append(entity.OutIds, reconEntity.GetIds()[0].GetVal())
+			}
+			// Sort to make the result deterministic.
+			sort.Strings(entity.OutIds)
+			res.Entities = append(res.Entities, entity)
+			// Only process data from one preferred import group.
+			break
 		}
-
-		// Sort to make the result deterministic.
-		sort.Strings(entity.OutIds)
-
-		res.Entities = append(res.Entities, entity)
 	}
 
 	// Sort to make the result deterministic.

@@ -1,0 +1,16 @@
+{
+  "resolvedEntities": [
+    {
+      "sourceId": "newId/VietnamId"
+    },
+    {
+      "sourceId": "newId/SunnyvaleId"
+    },
+    {
+      "sourceId": "newId/SantaClaraCountyId"
+    },
+    {
+      "sourceId": "newId/MarsPlanetId"
+    }
+  ]
+}

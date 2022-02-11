@@ -1,12 +1,6 @@
 {
   "entities": [
     {
-      "inId": "Q30",
-      "outIds": [
-        "country/USA"
-      ]
-    },
-    {
       "inId": "Q110739",
       "outIds": [
         "geoId/06085"

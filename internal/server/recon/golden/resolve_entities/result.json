@@ -6,16 +6,16 @@
         {
           "ids": [
             {
-              "prop": "wikidataId",
-              "val": "Q881"
+              "prop": "placeId",
+              "val": "ChIJd_Y0eVIvkIARuQyDN0F1LBA"
             },
             {
-              "prop": "placeId",
-              "val": "ChIJXx5qc016FTERvmL-4smwO7A"
+              "prop": "geoId",
+              "val": "06085"
             },
             {
               "prop": "dcid",
-              "val": "country/VNM"
+              "val": "geoId/06085"
             }
           ],
           "probability": 1
@@ -28,16 +28,16 @@
         {
           "ids": [
             {
-              "prop": "wikidataId",
-              "val": "Q208459"
+              "prop": "placeId",
+              "val": "ChIJd_Y0eVIvkIARuQyDN0F1LBA"
             },
             {
-              "prop": "placeId",
-              "val": "ChIJO13QqUW2j4ARosN83Sb7jXY"
+              "prop": "geoId",
+              "val": "06085"
             },
             {
               "prop": "dcid",
-              "val": "geoId/0677000"
+              "val": "geoId/06085"
             }
           ],
           "probability": 1

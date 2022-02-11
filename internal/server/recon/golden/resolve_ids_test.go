@@ -29,49 +29,57 @@ import (
 func TestResolveIds(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	_, client, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up recon client: %s", err)
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "resolve_ids")
-
-	for _, c := range []struct {
-		req        *pb.ResolveIdsRequest
-		goldenFile string
-	}{
-		{
-			&pb.ResolveIdsRequest{
-				InProp:  "wikidataId",
-				OutProp: "dcid",
-				Ids:     []string{"Q110739", "Q30"},
-			},
-			"result.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		resp, err := client.ResolveIds(ctx, c.req)
+		_, client, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not ResolveIds: %s", err)
-			continue
+			t.Fatalf("Failed to set up recon client: %s", err)
 		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(path.Dir(filename), "resolve_ids")
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		for _, c := range []struct {
+			req        *pb.ResolveIdsRequest
+			goldenFile string
+		}{
+			{
+				&pb.ResolveIdsRequest{
+					InProp:  "wikidataId",
+					OutProp: "dcid",
+					Ids:     []string{"Q110739", "Q30"},
+				},
+				"result.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.ResolveIds(ctx, c.req)
+			if err != nil {
+				t.Errorf("could not ResolveIds: %s", err)
+				continue
+			}
 
-		var expected pb.ResolveIdsResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		cmpOpts := cmp.Options{
-			protocmp.Transform(),
-		}
-		if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			var expected pb.ResolveIdsResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			cmpOpts := cmp.Options{
+				protocmp.Transform(),
+			}
+			if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

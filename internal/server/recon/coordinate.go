@@ -55,8 +55,10 @@ func ResolveCoordinates(
 	// Read coordinate recon cache.
 	reconRowList := cbt.RowList{}
 	for key := range coordinateLookupKeys {
-		reconRowList = append(reconRowList,
-			fmt.Sprintf("%s%s", bigtable.BtCoordinateReconPrefix, key))
+		reconRowList = append(
+			reconRowList,
+			fmt.Sprintf("%s%s", bigtable.BtCoordinateReconPrefix, key),
+		)
 	}
 	reconDataList, _, err := bigtable.Read(
 		ctx,
@@ -75,7 +77,6 @@ func ResolveCoordinates(
 			}
 			return &recon, nil
 		},
-
 		func(rowKey string) (string, error) {
 			return strings.TrimPrefix(rowKey, bigtable.BtCoordinateReconPrefix), nil
 		},
@@ -87,19 +88,27 @@ func ResolveCoordinates(
 
 	// Collect places that don't fully cover the tiles that the coordinates are in.
 	questionablePlaces := map[string]struct{}{}
-	for _, recon := range reconDataList[0] {
-		for _, place := range recon.(*pb.CoordinateRecon).GetPlaces() {
-			if !place.GetFull() {
-				questionablePlaces[place.GetDcid()] = struct{}{}
+	for _, reconData := range reconDataList {
+		for _, data := range reconData {
+			for _, place := range data.(*pb.CoordinateRecon).GetPlaces() {
+				if _, ok := questionablePlaces[place.GetDcid()]; !ok && !place.GetFull() {
+					questionablePlaces[place.GetDcid()] = struct{}{}
+				}
 			}
+		}
+		// Only process data from one preferred import group.
+		if reconData != nil {
+			break
 		}
 	}
 
 	// Read place GeoJson cache.
 	geoJSONRowList := cbt.RowList{}
 	for place := range questionablePlaces {
-		geoJSONRowList = append(geoJSONRowList,
-			fmt.Sprintf("%s%s^%s", bigtable.BtOutPropValPrefix, place, geoJSONPredicate))
+		geoJSONRowList = append(
+			geoJSONRowList,
+			fmt.Sprintf("%s%s^%s", bigtable.BtOutPropValPrefix, place, geoJSONPredicate),
+		)
 	}
 	geoJSONDataList, _, err := bigtable.Read(
 		ctx,
@@ -129,50 +138,63 @@ func ResolveCoordinates(
 		return nil, err
 	}
 	geoJSONMap := map[string]string{}
-	for place, info := range geoJSONDataList[0] {
-		// A place should only have a single geoJsonCooridnates out arc.
-		typedInfo := info.(*pb.EntityInfoCollection)
-		if typedInfo.GetTotalCount() != 1 {
-			continue
+	for _, geoJSONData := range geoJSONDataList {
+		for place, data := range geoJSONData {
+			if _, ok := geoJSONMap[place]; ok {
+				continue
+			}
+			// A place should only have a single geoJsonCooridnates out arc.
+			typedInfo := data.(*pb.EntityInfoCollection)
+			if typedInfo.GetTotalCount() != 1 {
+				continue
+			}
+			geoJSONMap[place] = typedInfo.GetEntities()[0].GetValue()
 		}
-		geoJSONMap[place] = typedInfo.GetEntities()[0].GetValue()
+		// Only process data from one preferred import group.
+		if geoJSONData != nil {
+			break
+		}
 	}
 
 	// Assemble response.
 	res := &pb.ResolveCoordinatesResponse{}
 	for _, co := range in.GetCoordinates() {
 		nKey := normCoordinateMap[coordinateKey(co)]
-
-		recon, ok := reconDataList[0][nKey]
-		if !ok {
-			continue
-		}
-
 		placeCoordinates := &pb.ResolveCoordinatesResponse_PlaceCoordinate{
 			Latitude:  co.GetLatitude(),
 			Longitude: co.GetLongitude(),
 		}
-		for _, place := range recon.(*pb.CoordinateRecon).GetPlaces() {
-			if place.GetFull() {
-				placeCoordinates.PlaceDcids = append(placeCoordinates.PlaceDcids,
-					place.GetDcid())
-			} else { // Not fully cover the tile.
-				geoJSON, ok := geoJSONMap[place.GetDcid()]
-				if !ok {
-					continue
-				}
-				contained, err := isContainedIn(geoJSON,
-					co.GetLatitude(), co.GetLongitude())
-				if err != nil {
-					return res, err
-				}
-				if contained {
-					placeCoordinates.PlaceDcids = append(placeCoordinates.PlaceDcids,
-						place.GetDcid())
+		for _, reconData := range reconDataList {
+			data, ok := reconData[nKey]
+			if !ok {
+				continue
+			}
+			for _, place := range data.(*pb.CoordinateRecon).GetPlaces() {
+				if place.GetFull() {
+					placeCoordinates.PlaceDcids = append(
+						placeCoordinates.PlaceDcids,
+						place.GetDcid(),
+					)
+				} else { // Not fully cover the tile.
+					geoJSON, ok := geoJSONMap[place.GetDcid()]
+					if !ok {
+						continue
+					}
+					contained, err := isContainedIn(geoJSON, co.GetLatitude(), co.GetLongitude())
+					if err != nil {
+						return res, err
+					}
+					if contained {
+						placeCoordinates.PlaceDcids = append(
+							placeCoordinates.PlaceDcids,
+							place.GetDcid(),
+						)
+					}
 				}
 			}
+			// Only need data from a preferred import group.
+			break
 		}
-
 		res.PlaceCoordinates = append(res.PlaceCoordinates, placeCoordinates)
 	}
 
