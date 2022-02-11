@@ -40,7 +40,7 @@ func TestGetPlacesIn(t *testing.T) {
 		{UseImportGroup: true},
 	} {
 
-		client, _, err := e2e.Setup()
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
