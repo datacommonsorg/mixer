@@ -38,7 +38,7 @@ func GetChildPlaces(
 	ctx context.Context, s *store.Store, parentPlace string, childType string) (
 	[]string, error,
 ) {
-	rowList := bigtable.BuildPlaceInKey([]string{parentPlace}, childType)
+	rowList := bigtable.BuildPlacesInKey([]string{parentPlace}, childType)
 	// Place relations are from base geo imports. Only trust the base cache.
 	baseDataList, _, err := bigtable.Read(
 		ctx,
@@ -77,7 +77,7 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
-	rowList := bigtable.BuildPlaceInKey(dcids, placeType)
+	rowList := bigtable.BuildPlacesInKey(dcids, placeType)
 
 	// Place relations are from base geo imports. Only trust the base cache.
 	baseDataList, _, err := bigtable.Read(
@@ -85,6 +85,11 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 		store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			if isProto {
+				var containedInPlaces pb.ContainedPlaces
+				err := proto.Unmarshal(jsonRaw, &containedInPlaces)
+				return containedInPlaces.Dcids, err
+			}
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
@@ -94,11 +99,23 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 		return nil, err
 	}
 	results := []map[string]string{}
+	processed := map[string]struct{}{}
 	for _, dcid := range dcids {
-		if baseDataList[0][dcid] != nil {
-			for _, place := range baseDataList[0][dcid].([]string) {
+		if _, ok := processed[dcid]; ok {
+			continue
+		}
+
+		// Go through (ordered) import groups one by one, stop when data is found.
+		for _, baseData := range baseDataList {
+			if _, ok := baseData[dcid]; !ok {
+				continue
+			}
+
+			for _, place := range baseData[dcid].([]string) {
 				results = append(results, map[string]string{"dcid": dcid, "place": place})
 			}
+			processed[dcid] = struct{}{}
+			break
 		}
 	}
 
@@ -331,40 +348,48 @@ func GetPlaceMetadata(
 	}
 	result := map[string]*pb.PlaceMetadata{}
 	for _, place := range places {
-		if baseDataList[0][place] == nil {
+		if _, ok := result[place]; ok {
 			continue
 		}
-		raw := baseDataList[0][place].(*pb.PlaceMetadataCache)
-		processed := pb.PlaceMetadata{}
-		metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
-		for _, info := range raw.Places {
-			metaMap[info.Dcid] = info
-		}
-		processed.Self = &pb.PlaceMetadata_PlaceInfo{
-			Dcid: place,
-			Name: metaMap[place].Name,
-			Type: metaMap[place].Type,
-		}
-		visited := map[string]struct{}{}
-		parents := metaMap[place].Parents
-		for {
-			if len(parents) == 0 {
-				break
-			}
-			curr := parents[0]
-			parents = parents[1:]
-			if _, ok := visited[curr]; ok {
+		for _, baseData := range baseDataList {
+			if baseData[place] == nil {
 				continue
 			}
-			processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
-				Dcid: curr,
-				Name: metaMap[curr].Name,
-				Type: metaMap[curr].Type,
-			})
-			visited[curr] = struct{}{}
-			parents = append(parents, metaMap[curr].Parents...)
+			raw, ok := baseData[place].(*pb.PlaceMetadataCache)
+			if !ok {
+				continue
+			}
+			processed := pb.PlaceMetadata{}
+			metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
+			for _, info := range raw.Places {
+				metaMap[info.Dcid] = info
+			}
+			processed.Self = &pb.PlaceMetadata_PlaceInfo{
+				Dcid: place,
+				Name: metaMap[place].Name,
+				Type: metaMap[place].Type,
+			}
+			visited := map[string]struct{}{}
+			parents := metaMap[place].Parents
+			for {
+				if len(parents) == 0 {
+					break
+				}
+				curr := parents[0]
+				parents = parents[1:]
+				if _, ok := visited[curr]; ok {
+					continue
+				}
+				processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
+					Dcid: curr,
+					Name: metaMap[curr].Name,
+					Type: metaMap[curr].Type,
+				})
+				visited[curr] = struct{}{}
+				parents = append(parents, metaMap[curr].Parents...)
+			}
+			result[place] = &processed
 		}
-		result[place] = &processed
 	}
 	return &pb.GetPlaceMetadataResponse{Data: result}, nil
 }
