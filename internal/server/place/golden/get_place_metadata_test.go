@@ -29,45 +29,52 @@ import (
 func TestGetPlaceMetadata(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_place_metadata")
-
-	for _, c := range []struct {
-		goldenFile string
-		places     []string
-	}{
-		{
-			"place-metadata.json",
-			[]string{"earth", "country/USA", "geoId/06", "geoId/06085", "geoId/02158000100"},
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetPlaceMetadataRequest{
-			Places: c.places,
-		}
-		resp, err := client.GetPlaceMetadata(ctx, req)
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetPlaceMetadata: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_place_metadata")
 
-		var expected pb.GetPlaceMetadataResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+		for _, c := range []struct {
+			goldenFile string
+			places     []string
+		}{
+			{
+				"place-metadata.json",
+				[]string{"earth", "country/USA", "geoId/06", "geoId/06085", "geoId/02158000100"},
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			req := &pb.GetPlaceMetadataRequest{
+				Places: c.places,
+			}
+			resp, err := client.GetPlaceMetadata(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetPlaceMetadata: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+			var expected pb.GetPlaceMetadataResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }
