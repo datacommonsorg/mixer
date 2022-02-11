@@ -331,40 +331,45 @@ func GetPlaceMetadata(
 	}
 	result := map[string]*pb.PlaceMetadata{}
 	for _, place := range places {
-		if baseDataList[0][place] == nil {
+		if _, ok := result[place]; ok {
 			continue
 		}
-		raw := baseDataList[0][place].(*pb.PlaceMetadataCache)
-		processed := pb.PlaceMetadata{}
-		metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
-		for _, info := range raw.Places {
-			metaMap[info.Dcid] = info
-		}
-		processed.Self = &pb.PlaceMetadata_PlaceInfo{
-			Dcid: place,
-			Name: metaMap[place].Name,
-			Type: metaMap[place].Type,
-		}
-		visited := map[string]struct{}{}
-		parents := metaMap[place].Parents
-		for {
-			if len(parents) == 0 {
-				break
-			}
-			curr := parents[0]
-			parents = parents[1:]
-			if _, ok := visited[curr]; ok {
+		for _, baseData := range baseDataList {
+			if baseData[place] == nil {
 				continue
 			}
-			processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
-				Dcid: curr,
-				Name: metaMap[curr].Name,
-				Type: metaMap[curr].Type,
-			})
-			visited[curr] = struct{}{}
-			parents = append(parents, metaMap[curr].Parents...)
+			raw := baseData[place].(*pb.PlaceMetadataCache)
+			processed := pb.PlaceMetadata{}
+			metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
+			for _, info := range raw.Places {
+				metaMap[info.Dcid] = info
+			}
+			processed.Self = &pb.PlaceMetadata_PlaceInfo{
+				Dcid: place,
+				Name: metaMap[place].Name,
+				Type: metaMap[place].Type,
+			}
+			visited := map[string]struct{}{}
+			parents := metaMap[place].Parents
+			for {
+				if len(parents) == 0 {
+					break
+				}
+				curr := parents[0]
+				parents = parents[1:]
+				if _, ok := visited[curr]; ok {
+					continue
+				}
+				processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
+					Dcid: curr,
+					Name: metaMap[curr].Name,
+					Type: metaMap[curr].Type,
+				})
+				visited[curr] = struct{}{}
+				parents = append(parents, metaMap[curr].Parents...)
+			}
+			result[place] = &processed
 		}
-		result[place] = &processed
 	}
 	return &pb.GetPlaceMetadataResponse{Data: result}, nil
 }
