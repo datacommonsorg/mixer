@@ -130,7 +130,10 @@ message StatVarGroupNode {
     repeated string search_names = 4;
     // Name suitable for display in tree.
     string display_name = 3;
-    //------------------ Below are fields not in original cache.
+
+    //==== Below are fields not in original cache.
+    //==== and thus we start with a large tag number.
+
     // Whether there is a data for this stat var
     bool has_data = 101;
   }
@@ -144,7 +147,10 @@ message StatVarGroupNode {
   repeated ChildSVG child_stat_var_groups = 3;
   // Number of unique descendent stat-vars.
   int64 num_descendent_stat_vars = 4;
-  //------------------ Below are fields not in original cache.
+
+    //==== Below are fields not in original cache.
+    //==== and thus we start with a large tag number.
+
   // List of parent StatVarGroup IDs.
   repeated string parent_stat_var_groups = 101;
 }

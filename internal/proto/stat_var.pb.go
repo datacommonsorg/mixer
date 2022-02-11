@@ -220,7 +220,6 @@ type StatVarGroupNode struct {
 	ChildStatVarGroups []*StatVarGroupNode_ChildSVG `protobuf:"bytes,3,rep,name=child_stat_var_groups,json=childStatVarGroups,proto3" json:"child_stat_var_groups,omitempty"`
 	// Number of unique descendent stat-vars.
 	NumDescendentStatVars int64 `protobuf:"varint,4,opt,name=num_descendent_stat_vars,json=numDescendentStatVars,proto3" json:"num_descendent_stat_vars,omitempty"`
-	//------------------ Below are fields not in original cache.
 	// List of parent StatVarGroup IDs.
 	ParentStatVarGroups []string `protobuf:"bytes,101,rep,name=parent_stat_var_groups,json=parentStatVarGroups,proto3" json:"parent_stat_var_groups,omitempty"`
 }
@@ -1272,7 +1271,6 @@ type StatVarGroupNode_ChildSV struct {
 	SearchNames []string `protobuf:"bytes,4,rep,name=search_names,json=searchNames,proto3" json:"search_names,omitempty"`
 	// Name suitable for display in tree.
 	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	//------------------ Below are fields not in original cache.
 	// Whether there is a data for this stat var
 	HasData bool `protobuf:"varint,101,opt,name=has_data,json=hasData,proto3" json:"has_data,omitempty"`
 }

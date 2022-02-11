@@ -72,17 +72,22 @@ func GetStatVarSummary(
 				result.StatVarSummary[dcid] = svs
 				continue
 			}
+			res := result.StatVarSummary[dcid]
 			// Pick place type summary with the most places.
 			for pt := range svs.PlaceTypeSummary {
-				summary, ok := result.StatVarSummary[dcid].PlaceTypeSummary[pt]
+				summary, ok := res.PlaceTypeSummary[pt]
 				if ok && svs.PlaceTypeSummary[pt].NumPlaces < summary.NumPlaces {
 					continue
 				}
-				result.StatVarSummary[dcid].PlaceTypeSummary[pt] = svs.PlaceTypeSummary[pt]
+				res.PlaceTypeSummary[pt] = svs.PlaceTypeSummary[pt]
 			}
 			//
 			for source := range svs.ProvenanceSummary {
-				result.StatVarSummary[dcid].ProvenanceSummary[source] = svs.ProvenanceSummary[source]
+				// Only set the the source if it has not been found in a preferred
+				// import group.
+				if _, ok := res.ProvenanceSummary[source]; !ok {
+					res.ProvenanceSummary[source] = svs.ProvenanceSummary[source]
+				}
 			}
 		}
 	}

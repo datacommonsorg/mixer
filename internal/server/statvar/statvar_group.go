@@ -178,8 +178,7 @@ func GetStatVarGroupNode(
 	in *pb.GetStatVarGroupNodeRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (
-	*pb.StatVarGroupNode, error) {
+) (*pb.StatVarGroupNode, error) {
 	places := in.GetPlaces()
 	svg := in.GetStatVarGroup()
 

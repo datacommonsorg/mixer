@@ -74,12 +74,10 @@ func Count(
 			if data, ok := baseData[token]; ok {
 				c := data.(*pb.PlaceStatVarExistence)
 				if _, ok := result[placeSv.StatVar][placeSv.Place]; !ok {
-					// This is for the case where c.NumDescendentStatVars = 0.
-					// In this case, placeSv.StatVar is a stat var (not a stat var group)
-					// so the number of descendent is 0.
-					// If not performance this check but only the one below, the the
-					// proto default 0 is compared and this map field will never be
-					// populated.
+					// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var
+					// (not a stat var group). In this case the check here is necessary,
+					// otherwise the proto default 0 is compared, and this map field will
+					// not be populated.
 					result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
 				} else if c.NumDescendentStatVars > result[placeSv.StatVar][placeSv.Place] {
 					result[placeSv.StatVar][placeSv.Place] = c.NumDescendentStatVars
