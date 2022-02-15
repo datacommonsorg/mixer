@@ -1,2079 +1,1014 @@
 {
   "statVarGroups": [
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_ResidenceType_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Residence Type, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years18Onwards_ResidenceType_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Residence Type, Veteran Status = Veteran",
       "statVars": [
         {
-          "dcid": "Count_Person_ResidesInAdultCorrectionalFacilities_Veteran",
           "name": "18 Years or More, Civilian, Adult Correctional Facilities, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInAdultCorrectionalFacilities_Veteran"
         },
         {
-          "dcid": "Count_Person_ResidesInCollegeOrUniversityStudentHousing_Veteran",
           "name": "18 Years or More, Civilian, College or University Student Housing, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInCollegeOrUniversityStudentHousing_Veteran"
         },
         {
-          "dcid": "Count_Person_ResidesInGroupQuarters_Veteran",
           "name": "18 Years or More, Civilian, Group Quarters, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInGroupQuarters_Veteran"
         },
         {
-          "dcid": "Count_Person_ResidesInInstitutionalizedGroupQuarters_Veteran",
           "name": "18 Years or More, Civilian, Institutionalized Group Quarters, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInInstitutionalizedGroupQuarters_Veteran"
         },
         {
-          "dcid": "Count_Person_ResidesInJuvenileFacilities_Veteran",
           "name": "18 Years or More, Civilian, Juvenile Facilities, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInJuvenileFacilities_Veteran"
         },
         {
-          "dcid": "Count_Person_ResidesInMilitaryQuartersOrMilitaryShips_Veteran",
           "name": "18 Years or More, Civilian, Military Quarters or Military Ships, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInMilitaryQuartersOrMilitaryShips_Veteran"
         },
         {
-          "dcid": "Count_Person_ResidesInNoninstitutionalizedGroupQuarters_Veteran",
           "name": "18 Years or More, Civilian, Noninstitutionalized Group Quarters, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInNoninstitutionalizedGroupQuarters_Veteran"
         },
         {
-          "dcid": "Count_Person_ResidesInNursingFacilities_Veteran",
           "name": "18 Years or More, Civilian, Nursing Facilities, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_ResidesInNursingFacilities_Veteran"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Industry-NAICS/92314",
-        "name": "Person With Establishment Ownership = Federal Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
-        "matches": [
-          "Veterans'"
-        ]
-      },
+      "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Industry-NAICS/92314",
+      "name": "Person With Establishment Ownership = Federal Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "dcid": "dc/k0fjmxcvd5fxc",
           "name": "Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314) Population",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/k0fjmxcvd5fxc"
         },
         {
-          "dcid": "dc/k1pnew6j8yb9c",
           "name": "Wages Annual of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/k1pnew6j8yb9c"
         },
         {
-          "dcid": "dc/sck2lrgklrtn2",
           "name": "Wages Total of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/sck2lrgklrtn2"
         },
         {
-          "dcid": "dc/h14ftx614lfd8",
           "name": "Wages Weekly of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/h14ftx614lfd8"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_EstablishmentOwnership-LocalGovernmentOwned_Industry-NAICS/92314",
-        "name": "Person With Establishment Ownership = Local Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
-        "matches": [
-          "Veterans'"
-        ]
-      },
+      "dcid": "dc/g/Person_EstablishmentOwnership-LocalGovernmentOwned_Industry-NAICS/92314",
+      "name": "Person With Establishment Ownership = Local Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "dcid": "dc/qvr0t9nl4n3d",
           "name": "Local Government Owned, Administration of Veterans' Affairs (NAICS/92314) Population",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/qvr0t9nl4n3d"
         },
         {
-          "dcid": "dc/j9fceyp5p8txb",
           "name": "Wages Annual of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/j9fceyp5p8txb"
         },
         {
-          "dcid": "dc/nx35tdx6clg3c",
           "name": "Wages Total of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/nx35tdx6clg3c"
         },
         {
-          "dcid": "dc/h3x52q27qwfr9",
           "name": "Wages Weekly of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/h3x52q27qwfr9"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_EstablishmentOwnership-StateGovernmentOwned_Industry-NAICS/92314",
-        "name": "Person With Establishment Ownership = State Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
-        "matches": [
-          "Veterans'"
-        ]
-      },
+      "dcid": "dc/g/Person_EstablishmentOwnership-StateGovernmentOwned_Industry-NAICS/92314",
+      "name": "Person With Establishment Ownership = State Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "dcid": "dc/3z1ywj0s6tyv5",
           "name": "State Government Owned, Administration of Veterans' Affairs (NAICS/92314) Population",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/3z1ywj0s6tyv5"
         },
         {
-          "dcid": "dc/ncwt8d1pymhkd",
           "name": "Wages Annual of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/ncwt8d1pymhkd"
         },
         {
-          "dcid": "dc/b9yl1rr3tmgq",
           "name": "Wages Total of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/b9yl1rr3tmgq"
         },
         {
-          "dcid": "dc/h104wrsjf6r25",
           "name": "Wages Weekly of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/h104wrsjf6r25"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Establishment_EstablishmentOwnership_Industry-NAICS/92314",
-        "name": "Establishment With Establishment Ownership, Industry = Administration of Veterans' Affairs (NAICS/92314)",
-        "matches": [
-          "Veterans'"
-        ]
-      },
+      "dcid": "dc/g/Establishment_EstablishmentOwnership_Industry-NAICS/92314",
+      "name": "Establishment With Establishment Ownership, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "dcid": "dc/t80ypt0pxptr2",
           "name": "Count of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/t80ypt0pxptr2"
         },
         {
-          "dcid": "dc/nrvs8h9c2w06h",
           "name": "Count of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/nrvs8h9c2w06h"
         },
         {
-          "dcid": "dc/n6nwes3xywqj1",
           "name": "Count of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/n6nwes3xywqj1"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Industry-NAICS/92314",
-        "name": "Person With Industry = Administration of Veterans' Affairs (NAICS/92314)",
-        "matches": [
-          "Veterans'"
-        ]
-      },
+      "dcid": "dc/g/Person_Industry-NAICS/92314",
+      "name": "Person With Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "dcid": "dc/qbcv7d5z7cmj3",
           "name": "Administration of Veterans' Affairs (NAICS/92314) Population",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/qbcv7d5z7cmj3"
         },
         {
-          "dcid": "dc/tnj1pcntfpgt9",
           "name": "Wages Total of Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/tnj1pcntfpgt9"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_VeteranStatus",
-        "name": "Person With Age = 18 - 34 Years, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_VeteranStatus",
+      "name": "Person With Age = 18 - 34 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/wbqkzh12hvf2d",
           "name": "18 - 34 Years, Civilian, Female, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/wbqkzh12hvf2d"
         },
         {
-          "dcid": "dc/xjyn3f0sd1vw3",
           "name": "18 - 34 Years, Civilian, Female, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/xjyn3f0sd1vw3"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender-Male_VeteranStatus",
-        "name": "Person With Age = 18 - 34 Years, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years18To34_Gender-Male_VeteranStatus",
+      "name": "Person With Age = 18 - 34 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/6y0vz343k8xg4",
           "name": "18 - 34 Years, Civilian, Male, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/6y0vz343k8xg4"
         },
         {
-          "dcid": "dc/lcptt9lhzrnrg",
           "name": "18 - 34 Years, Civilian, Male, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/lcptt9lhzrnrg"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_VeteranStatus",
-        "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_VeteranStatus",
+      "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/b4j5nwzfnmy74",
           "name": "35 - 54 Years, Civilian, Female, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/b4j5nwzfnmy74"
         },
         {
-          "dcid": "dc/xq512kjx1rffc",
           "name": "35 - 54 Years, Civilian, Female, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/xq512kjx1rffc"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender-Male_VeteranStatus",
-        "name": "Person With Age = 35 - 54 Years, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years35To54_Gender-Male_VeteranStatus",
+      "name": "Person With Age = 35 - 54 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/2t03fxjcljfz1",
           "name": "35 - 54 Years, Civilian, Male, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/2t03fxjcljfz1"
         },
         {
-          "dcid": "dc/g55znmzhk56mf",
           "name": "35 - 54 Years, Civilian, Male, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/g55znmzhk56mf"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_VeteranStatus",
-        "name": "Person With Age = 55 - 64 Years, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_VeteranStatus",
+      "name": "Person With Age = 55 - 64 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/05sysyfvd80d1",
           "name": "55 - 64 Years, Civilian, Female, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/05sysyfvd80d1"
         },
         {
-          "dcid": "dc/t7wbgxy8gr3g9",
           "name": "55 - 64 Years, Civilian, Female, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/t7wbgxy8gr3g9"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender-Male_VeteranStatus",
-        "name": "Person With Age = 55 - 64 Years, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years55To64_Gender-Male_VeteranStatus",
+      "name": "Person With Age = 55 - 64 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/yq9ybc4506wkg",
           "name": "55 - 64 Years, Civilian, Male, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/yq9ybc4506wkg"
         },
         {
-          "dcid": "dc/fzbvjmd5gjgs4",
           "name": "55 - 64 Years, Civilian, Male, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/fzbvjmd5gjgs4"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_VeteranStatus",
-        "name": "Person With Age = 65 - 74 Years, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_VeteranStatus",
+      "name": "Person With Age = 65 - 74 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/387d93vqd9e29",
           "name": "65 - 74 Years, Civilian, Female, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/387d93vqd9e29"
         },
         {
-          "dcid": "dc/zv40llg0belh4",
           "name": "65 - 74 Years, Civilian, Female, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/zv40llg0belh4"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender-Male_VeteranStatus",
-        "name": "Person With Age = 65 - 74 Years, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years65To74_Gender-Male_VeteranStatus",
+      "name": "Person With Age = 65 - 74 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/trqr1c92yv4tg",
           "name": "65 - 74 Years, Civilian, Male, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/trqr1c92yv4tg"
         },
         {
-          "dcid": "dc/z2v1n65cz84x9",
           "name": "65 - 74 Years, Civilian, Male, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/z2v1n65cz84x9"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Female_VeteranStatus",
-        "name": "Person With Age = 75 Years or More, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Female_VeteranStatus",
+      "name": "Person With Age = 75 Years or More, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/x9sfdmrzy7pvf",
           "name": "75 Years or More, Civilian, Female, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/x9sfdmrzy7pvf"
         },
         {
-          "dcid": "dc/0dxr5t9xv7cyf",
           "name": "75 Years or More, Civilian, Female, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/0dxr5t9xv7cyf"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Male_VeteranStatus",
-        "name": "Person With Age = 75 Years or More, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Male_VeteranStatus",
+      "name": "Person With Age = 75 Years or More, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "dcid": "dc/6hyhewzg8jdy8",
           "name": "75 Years or More, Civilian, Male, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/6hyhewzg8jdy8"
         },
         {
-          "dcid": "dc/x90mvznfdcqwd",
           "name": "75 Years or More, Civilian, Male, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/x90mvznfdcqwd"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Establishment_Industry-NAICS/92314",
-        "name": "Establishment With Industry = Administration of Veterans' Affairs (NAICS/92314)",
-        "matches": [
-          "Veterans'"
-        ]
-      },
+      "dcid": "dc/g/Establishment_Industry-NAICS/92314",
+      "name": "Establishment With Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "dcid": "dc/nre9cbcqqdrrc",
           "name": "Count of Administration of Veterans' Affairs (NAICS/92314)",
-          "matches": [
-            "Veterans'"
-          ]
+          "dcid": "dc/nre9cbcqqdrrc"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_VeteranStatus-Nonveteran",
-        "name": "Person With Gender = Female, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Female_VeteranStatus-Nonveteran",
+      "name": "Person With Gender = Female, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "dcid": "dc/vg392qes18p6c",
           "name": "Median Income of 18 Years or More, Civilian, Female, With Income, Non Veteran",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/vg392qes18p6c"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_VeteranStatus-Veteran",
-        "name": "Person With Gender = Female, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Female_VeteranStatus-Veteran",
+      "name": "Person With Gender = Female, Veteran Status = Veteran",
       "statVars": [
         {
-          "dcid": "dc/xg4bepzr1wb93",
           "name": "Median Income of 18 Years or More, Civilian, Female, With Income, Veteran",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/xg4bepzr1wb93"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_VeteranStatus-Nonveteran",
-        "name": "Person With Gender = Male, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Male_VeteranStatus-Nonveteran",
+      "name": "Person With Gender = Male, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "dcid": "dc/0r5m0xkb9d4g3",
           "name": "Median Income of 18 Years or More, Civilian, Male, With Income, Non Veteran",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/0r5m0xkb9d4g3"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_VeteranStatus-Veteran",
-        "name": "Person With Gender = Male, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Male_VeteranStatus-Veteran",
+      "name": "Person With Gender = Male, Veteran Status = Veteran",
       "statVars": [
         {
-          "dcid": "dc/21j845ny0gpl6",
           "name": "Median Income of 18 Years or More, Civilian, Male, With Income, Veteran",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/21j845ny0gpl6"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status = Civilian, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "dcid": "Count_Person_Nonveteran",
           "name": "Civilian, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_Nonveteran"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Veteran Status = Veteran",
       "statVars": [
         {
-          "dcid": "Count_Person_Veteran",
           "name": "Civilian, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "Count_Person_Veteran"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "dcid": "dc/9yqjetxt86ml1",
           "name": "Civilian, Female, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/9yqjetxt86ml1"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status = Veteran",
       "statVars": [
         {
-          "dcid": "dc/l6vp0xtccglcb",
           "name": "Civilian, Female, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/l6vp0xtccglcb"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "dcid": "dc/9l2frty8q44rb",
           "name": "Civilian, Male, Non Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/9l2frty8q44rb"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status = Veteran",
       "statVars": [
         {
-          "dcid": "dc/2qn8p1m6xx3d",
           "name": "Civilian, Male, Veteran Population",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/2qn8p1m6xx3d"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "dcid": "dc/mf0lyheydhfc1",
           "name": "Median Income of 18 Years or More, Civilian, With Income, Non Veteran",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/mf0lyheydhfc1"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      },
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status = Veteran",
       "statVars": [
         {
-          "dcid": "dc/ec13z1eh1d5d8",
           "name": "Median Income of 18 Years or More, Civilian, With Income, Veteran",
-          "matches": [
-            "Veteran"
-          ]
+          "dcid": "dc/ec13z1eh1d5d8"
         }
       ]
     },
     {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_VeteranStatus",
-        "name": "Person With Age = 18 - 34 Years, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 - 34 Years, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 - 34 Years, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_VeteranStatus",
-        "name": "Person With Age = 35 - 54 Years, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 35 - 54 Years, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_VeteranStatus-Veteran",
-        "name": "Person With Age = 35 - 54 Years, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_VeteranStatus",
-        "name": "Person With Age = 55 - 64 Years, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 55 - 64 Years, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_VeteranStatus-Veteran",
-        "name": "Person With Age = 55 - 64 Years, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_VeteranStatus",
-        "name": "Person With Age = 65 - 74 Years, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 65 - 74 Years, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_VeteranStatus-Veteran",
-        "name": "Person With Age = 65 - 74 Years, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_VeteranStatus",
-        "name": "Person With Age = 75 Years or More, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 75 Years or More, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_VeteranStatus-Veteran",
-        "name": "Person With Age = 75 Years or More, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/92314",
-        "name": "Person With Establishment Ownership, Industry = Administration of Veterans' Affairs (NAICS/92314)",
-        "matches": [
-          "Veterans'"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_VeteranStatus",
-        "name": "Person With Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_VeteranStatus",
-        "name": "Person With Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_VeteranStatus",
-        "name": "Person With Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
-        "name": "Person With Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_VeteranStatus-Veteran",
-        "name": "Person With Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Military Status = Civilian, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 - 34 Years, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 - 34 Years, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 - 34 Years, Military Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 - 34 Years, Military Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Income Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Income Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Military Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 35 - 54 Years, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender_VeteranStatus-Veteran",
-        "name": "Person With Age = 35 - 54 Years, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 35 - 54 Years, Military Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 35 - 54 Years, Military Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 55 - 64 Years, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender_VeteranStatus-Veteran",
-        "name": "Person With Age = 55 - 64 Years, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 55 - 64 Years, Military Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 55 - 64 Years, Military Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 65 - 74 Years, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender_VeteranStatus-Veteran",
-        "name": "Person With Age = 65 - 74 Years, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 65 - 74 Years, Military Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 65 - 74 Years, Military Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 75 Years or More, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender_VeteranStatus-Veteran",
-        "name": "Person With Age = 75 Years or More, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 75 Years or More, Military Status = Civilian, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 75 Years or More, Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 75 Years or More, Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 75 Years or More, Military Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 75 Years or More, Military Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Female_VeteranStatus-Nonveteran",
-        "name": "Person With Age, Gender = Female, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Female_VeteranStatus-Veteran",
-        "name": "Person With Age, Gender = Female, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Male_VeteranStatus-Nonveteran",
-        "name": "Person With Age, Gender = Male, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Male_VeteranStatus-Veteran",
-        "name": "Person With Age, Gender = Male, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
-        "name": "Person With Age, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_VeteranStatus-Veteran",
-        "name": "Person With Age, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age, Military Status = Civilian, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age, Military Status = Civilian, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_IncomeStatus-WithIncome_VeteranStatus",
-        "name": "Person With Gender = Female, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_IncomeStatus-WithIncome_VeteranStatus",
-        "name": "Person With Gender = Male, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
-        "name": "Person With Gender, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_VeteranStatus-Veteran",
-        "name": "Person With Gender, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status = Civilian, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Military Status = Civilian, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status = Civilian, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status = Civilian, Income Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Income Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_MilitaryStatus-Civilian_ResidenceType_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Residence Type, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status, Gender = Female, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Military Status, Gender = Female, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status, Gender = Male, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Military Status, Gender = Male, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Military Status, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18To34_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_IncomeStatus-WithIncome_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Gender = Female, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_IncomeStatus-WithIncome_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Gender = Male, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Gender, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Gender, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_ResidenceType_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Residence Type, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Military Status, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years35To54_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years55To64_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years65To74_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender = Female, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender = Male, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years75Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age, Military Status = Civilian, Gender = Female, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age, Military Status = Civilian, Gender = Female, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age, Military Status = Civilian, Gender = Male, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age, Military Status = Civilian, Gender = Male, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age, Military Status = Civilian, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age, Military Status = Civilian, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Female_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Military Status = Civilian, Gender = Female, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender-Male_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Military Status = Civilian, Gender = Male, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Female, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Male, Income Status = With Income, Veteran Status",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Non Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
-    },
-    {
-      "info": {
-        "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
-        "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Veteran",
-        "matches": [
-          "Veteran"
-        ]
-      }
+      "dcid": "dc/g/Person_Age-Years18To34_VeteranStatus",
+      "name": "Person With Age = 18 - 34 Years, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 - 34 Years, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 - 34 Years, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_VeteranStatus",
+      "name": "Person With Age = 35 - 54 Years, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 35 - 54 Years, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_VeteranStatus-Veteran",
+      "name": "Person With Age = 35 - 54 Years, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_VeteranStatus",
+      "name": "Person With Age = 55 - 64 Years, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 55 - 64 Years, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_VeteranStatus-Veteran",
+      "name": "Person With Age = 55 - 64 Years, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_VeteranStatus",
+      "name": "Person With Age = 65 - 74 Years, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 65 - 74 Years, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_VeteranStatus-Veteran",
+      "name": "Person With Age = 65 - 74 Years, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_VeteranStatus",
+      "name": "Person With Age = 75 Years or More, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 75 Years or More, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_VeteranStatus-Veteran",
+      "name": "Person With Age = 75 Years or More, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/92314",
+      "name": "Person With Establishment Ownership, Industry = Administration of Veterans' Affairs (NAICS/92314)"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_VeteranStatus",
+      "name": "Person With Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_VeteranStatus",
+      "name": "Person With Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_VeteranStatus",
+      "name": "Person With Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
+      "name": "Person With Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_VeteranStatus-Veteran",
+      "name": "Person With Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Military Status = Civilian, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_Gender_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 - 34 Years, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_Gender_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 - 34 Years, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 - 34 Years, Military Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 - 34 Years, Military Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Income Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Income Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Military Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_Gender_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 35 - 54 Years, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_Gender_VeteranStatus-Veteran",
+      "name": "Person With Age = 35 - 54 Years, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 35 - 54 Years, Military Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 35 - 54 Years, Military Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_Gender_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 55 - 64 Years, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_Gender_VeteranStatus-Veteran",
+      "name": "Person With Age = 55 - 64 Years, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 55 - 64 Years, Military Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 55 - 64 Years, Military Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_Gender_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 65 - 74 Years, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_Gender_VeteranStatus-Veteran",
+      "name": "Person With Age = 65 - 74 Years, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 65 - 74 Years, Military Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 65 - 74 Years, Military Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 75 Years or More, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender_VeteranStatus-Veteran",
+      "name": "Person With Age = 75 Years or More, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 75 Years or More, Military Status = Civilian, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 75 Years or More, Military Status = Civilian, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 75 Years or More, Military Status = Civilian, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 75 Years or More, Military Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 75 Years or More, Military Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female_VeteranStatus-Nonveteran",
+      "name": "Person With Age, Gender = Female, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female_VeteranStatus-Veteran",
+      "name": "Person With Age, Gender = Female, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Male_VeteranStatus-Nonveteran",
+      "name": "Person With Age, Gender = Male, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Male_VeteranStatus-Veteran",
+      "name": "Person With Age, Gender = Male, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
+      "name": "Person With Age, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_VeteranStatus-Veteran",
+      "name": "Person With Age, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age, Military Status = Civilian, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age, Military Status = Civilian, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_IncomeStatus-WithIncome_VeteranStatus",
+      "name": "Person With Gender = Female, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_IncomeStatus-WithIncome_VeteranStatus",
+      "name": "Person With Gender = Male, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
+      "name": "Person With Gender, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_VeteranStatus-Veteran",
+      "name": "Person With Gender, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status = Civilian, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Military Status = Civilian, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status = Civilian, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status = Civilian, Income Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Income Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_MilitaryStatus-Civilian_ResidenceType_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Residence Type, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status, Gender = Female, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Military Status, Gender = Female, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status, Gender = Male, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Military Status, Gender = Male, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Military Status, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To34_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 - 34 Years, Military Status = Civilian, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_IncomeStatus-WithIncome_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Gender = Female, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_IncomeStatus-WithIncome_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Gender = Male, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Gender, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Gender, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_MilitaryStatus-Civilian_ResidenceType_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Residence Type, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Military Status, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_IncomeStatus-WithIncome_MilitaryStatus_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To54_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 35 - 54 Years, Military Status = Civilian, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To64_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 55 - 64 Years, Military Status = Civilian, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To74_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 65 - 74 Years, Military Status = Civilian, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Female_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender = Female, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender-Male_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender = Male, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75Onwards_Gender_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 75 Years or More, Military Status = Civilian, Gender, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age, Military Status = Civilian, Gender = Female, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age, Military Status = Civilian, Gender = Female, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age, Military Status = Civilian, Gender = Male, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Male_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age, Military Status = Civilian, Gender = Male, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age, Military Status = Civilian, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age, Military Status = Civilian, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Military Status = Civilian, Gender = Female, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Military Status = Civilian, Gender = Male, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Female, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Male_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender = Male, Income Status = With Income, Veteran Status"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Nonveteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Non Veteran"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
+      "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Veteran"
     }
+  ],
+  "matches": [
+    "Veterans'",
+    "Veteran"
   ]
 }

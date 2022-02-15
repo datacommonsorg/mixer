@@ -43,8 +43,9 @@ func SearchStatVar(
 	enableBlocklist := in.GetEnableBlocklist()
 
 	result := &pb.SearchStatVarResponse{
-		StatVars:      []*pb.SearchResultEntry{},
+		StatVars:      []*pb.EntityInfo{},
 		StatVarGroups: []*pb.SearchResultSVG{},
+		Matches:       []string{},
 	}
 	if query == "" {
 		return result, nil
@@ -55,7 +56,7 @@ func SearchStatVar(
 	if enableBlocklist {
 		searchIndex = cache.BlocklistedSvgSearchIndex
 	}
-	svList, svgList := searchTokens(tokens, searchIndex)
+	svList, svgList, matches := searchTokens(tokens, searchIndex)
 
 	// Filter the stat var and stat var group by places.
 	if len(places) > 0 {
@@ -89,9 +90,9 @@ func SearchStatVar(
 			return len(svgi.StatVars) > len(svgj.StatVars)
 		}
 		ranking := cache.SvgSearchIndex.Ranking
-		ri := ranking[svgResult[i].Info.Dcid]
-		rj := ranking[svgResult[j].Info.Dcid]
-		return compareRankingInfo(ri, svgResult[i].Info.Dcid, rj, svgResult[j].Info.Dcid)
+		ri := ranking[svgResult[i].Dcid]
+		rj := ranking[svgResult[j].Dcid]
+		return compareRankingInfo(ri, svgResult[i].Dcid, rj, svgResult[j].Dcid)
 	})
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svResult) > maxResult {
@@ -102,14 +103,15 @@ func SearchStatVar(
 	}
 	result.StatVars = svResult
 	result.StatVarGroups = svgResult
+	result.Matches = matches
 	return result, nil
 }
 
 func filter(
-	nodes []*pb.SearchResultEntry,
+	nodes []*pb.EntityInfo,
 	countMap map[string]map[string]int32,
-	numPlaces int) []*pb.SearchResultEntry {
-	result := []*pb.SearchResultEntry{}
+	numPlaces int) []*pb.EntityInfo {
+	result := []*pb.EntityInfo{}
 	for _, node := range nodes {
 		if existence, ok := countMap[node.Dcid]; ok && len(existence) > 0 {
 			result = append(result, node)
@@ -129,20 +131,17 @@ func compareRankingInfo(r1 *resource.RankingInfo, dcid1 string, r2 *resource.Ran
 	return dcid1 < dcid2
 }
 
-func groupStatVars(svList []*pb.SearchResultEntry, svgList []*pb.SearchResultEntry, parentMap map[string][]string, ranking map[string]*resource.RankingInfo) ([]*pb.SearchResultEntry, []*pb.SearchResultSVG) {
+func groupStatVars(svList []*pb.EntityInfo, svgList []*pb.EntityInfo, parentMap map[string][]string, ranking map[string]*resource.RankingInfo) ([]*pb.EntityInfo, []*pb.SearchResultSVG) {
 	// Create a map of svg id to svg search result
 	svgMap := map[string]*pb.SearchResultSVG{}
 	for _, svg := range svgList {
 		svgMap[svg.Dcid] = &pb.SearchResultSVG{
-			Info: &pb.SearchResultEntry{
-				Dcid:    svg.Dcid,
-				Name:    svg.Name,
-				Matches: svg.Matches,
-			},
-			StatVars: []*pb.SearchResultEntry{},
+			Dcid:     svg.Dcid,
+			Name:     svg.Name,
+			StatVars: []*pb.EntityInfo{},
 		}
 	}
-	resultSv := []*pb.SearchResultEntry{}
+	resultSv := []*pb.EntityInfo{}
 	// Iterate through the list of stat vars. If a stat var has a parent svg that
 	// is a result, add the stat var to that svg result. If not, add the stat var
 	// to the result list of stat vars
@@ -183,7 +182,7 @@ func groupStatVars(svList []*pb.SearchResultEntry, svgList []*pb.SearchResultEnt
 
 func searchTokens(
 	tokens []string, index *resource.SearchIndex,
-) ([]*pb.SearchResultEntry, []*pb.SearchResultEntry) {
+) ([]*pb.EntityInfo, []*pb.EntityInfo, []string) {
 	svMatches := map[string][]string{}
 	svgMatches := map[string][]string{}
 
@@ -229,15 +228,18 @@ func searchTokens(
 		}
 	}
 
+	matchingStrings := map[string]struct{}{}
 	// Only select sv and svg that matches all the tokens
-	svList := []*pb.SearchResultEntry{}
+	svList := []*pb.EntityInfo{}
 	for sv, matches := range svMatches {
 		if len(matches) == len(tokens) {
-			svList = append(svList, &pb.SearchResultEntry{
-				Dcid:    sv,
-				Name:    index.Ranking[sv].RankingName,
-				Matches: matches,
+			svList = append(svList, &pb.EntityInfo{
+				Dcid: sv,
+				Name: index.Ranking[sv].RankingName,
 			})
+			for _, match := range matches {
+				matchingStrings[match] = struct{}{}
+			}
 		}
 	}
 
@@ -251,21 +253,30 @@ func searchTokens(
 	})
 
 	// Stat Var Groups will be sorted later.
-	svgList := []*pb.SearchResultEntry{}
+	svgList := []*pb.EntityInfo{}
 	for svg, matches := range svgMatches {
 		if len(matches) == len(tokens) {
-			svgList = append(svgList, &pb.SearchResultEntry{
-				Dcid:    svg,
-				Name:    index.Ranking[svg].RankingName,
-				Matches: matches,
+			svgList = append(svgList, &pb.EntityInfo{
+				Dcid: svg,
+				Name: index.Ranking[svg].RankingName,
 			})
+			for _, match := range matches {
+				matchingStrings[match] = struct{}{}
+			}
 		}
 	}
+
 	sort.SliceStable(svgList, func(i, j int) bool {
 		ranking := index.Ranking
 		ri := ranking[svgList[i].Dcid]
 		rj := ranking[svgList[j].Dcid]
 		return compareRankingInfo(ri, svgList[i].Dcid, rj, svgList[j].Dcid)
 	})
-	return svList, svgList
+
+	matchingStringsList := []string{}
+	for match, _ := range matchingStrings {
+		matchingStringsList = append(matchingStringsList, match)
+	}
+
+	return svList, svgList, matchingStringsList
 }

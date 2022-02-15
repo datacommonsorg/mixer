@@ -76,10 +76,11 @@ func TestSearchTokens(t *testing.T) {
 		SvIds:  nil,
 	}
 	for _, c := range []struct {
-		tokens  []string
-		index   *resource.SearchIndex
-		wantSv  []*pb.SearchResultEntry
-		wantSvg []*pb.SearchResultEntry
+		tokens      []string
+		index       *resource.SearchIndex
+		wantSv      []*pb.EntityInfo
+		wantSvg     []*pb.EntityInfo
+		wantMatches []string
 	}{
 		{
 			tokens: []string{"ab1"},
@@ -107,25 +108,23 @@ func TestSearchTokens(t *testing.T) {
 					},
 				},
 			},
-			wantSv: []*pb.SearchResultEntry{
+			wantSv: []*pb.EntityInfo{
 				{
-					Dcid:    "sv_1_2",
-					Name:    "ab1 ac3 token2",
-					Matches: []string{"ab1"},
+					Dcid: "sv_1_2",
+					Name: "ab1 ac3 token2",
 				},
 			},
-			wantSvg: []*pb.SearchResultEntry{
+			wantSvg: []*pb.EntityInfo{
 				{
-					Dcid:    "group_1",
-					Name:    "token1 token2",
-					Matches: []string{"token2"},
+					Dcid: "group_1",
+					Name: "token1 token2",
 				},
 				{
-					Dcid:    "group_31",
-					Name:    "token1 token5 token6",
-					Matches: []string{"token5"},
+					Dcid: "group_31",
+					Name: "token1 token5 token6",
 				},
 			},
+			wantMatches: []string{"ab1", "token2", "token5"},
 		},
 		{
 			tokens: []string{"ab", "zd", "ac3"},
@@ -157,63 +156,61 @@ func TestSearchTokens(t *testing.T) {
 					},
 				},
 			},
-			wantSv: []*pb.SearchResultEntry{
+			wantSv: []*pb.EntityInfo{
 				{
-					Dcid:    "sv_1_2",
-					Name:    "ab1 ac3 token2",
-					Matches: []string{"ab1", "token2", "ac3"},
+					Dcid: "sv_1_2",
+					Name: "ab1 ac3 token2",
 				},
 			},
-			wantSvg: []*pb.SearchResultEntry{},
+			wantSvg:     []*pb.EntityInfo{},
+			wantMatches: []string{"ab1", "token2", "ac3"},
 		},
 	} {
-		sv, svg := searchTokens(c.tokens, c.index)
+		sv, svg, matches := searchTokens(c.tokens, c.index)
 		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var list got diff %v", diff)
 		}
 		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.EntityInfo) bool { return x.Dcid < y.Dcid })); diff != "" {
 			t.Errorf("Stat var group list got diff %v", diff)
 		}
+		if diff := cmp.Diff(matches, c.wantMatches, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.EntityInfo) bool { return x.Dcid < y.Dcid })); diff != "" {
+			t.Errorf("Matches list got diff %v", diff)
+		}
 	}
 }
 
 func TestGroupStatVars(t *testing.T) {
 	for _, c := range []struct {
-		svList      []*pb.SearchResultEntry
-		svgList     []*pb.SearchResultEntry
+		svList      []*pb.EntityInfo
+		svgList     []*pb.EntityInfo
 		parentMap   map[string][]string
 		rankingInfo map[string]*resource.RankingInfo
-		wantSv      []*pb.SearchResultEntry
+		wantSv      []*pb.EntityInfo
 		wantSvg     []*pb.SearchResultSVG
 	}{
 		{
-			svList: []*pb.SearchResultEntry{
+			svList: []*pb.EntityInfo{
 				{
-					Dcid:    "sv1",
-					Name:    "sv1",
-					Matches: []string{"sv1"},
+					Dcid: "sv1",
+					Name: "sv1",
 				},
 				{
-					Dcid:    "sv2",
-					Name:    "sv2",
-					Matches: []string{"sv2"},
+					Dcid: "sv2",
+					Name: "sv2",
 				},
 				{
-					Dcid:    "sv3",
-					Name:    "sv3",
-					Matches: []string{"sv3"},
+					Dcid: "sv3",
+					Name: "sv3",
 				},
 			},
-			svgList: []*pb.SearchResultEntry{
+			svgList: []*pb.EntityInfo{
 				{
-					Dcid:    "svg1",
-					Name:    "svg1",
-					Matches: []string{"svg1"},
+					Dcid: "svg1",
+					Name: "svg1",
 				},
 				{
-					Dcid:    "svg2",
-					Name:    "svg2",
-					Matches: []string{"svg2"},
+					Dcid: "svg2",
+					Name: "svg2",
 				},
 			},
 			parentMap: map[string][]string{
@@ -239,39 +236,30 @@ func TestGroupStatVars(t *testing.T) {
 					RankingName: "svg8",
 				},
 			},
-			wantSv: []*pb.SearchResultEntry{
+			wantSv: []*pb.EntityInfo{
 				{
-					Dcid:    "sv1",
-					Name:    "sv1",
-					Matches: []string{"sv1"},
+					Dcid: "sv1",
+					Name: "sv1",
 				},
 			},
 			wantSvg: []*pb.SearchResultSVG{
 				{
-					Info: &pb.SearchResultEntry{
-						Dcid:    "svg1",
-						Name:    "svg1",
-						Matches: []string{"svg1"},
-					},
-					StatVars: []*pb.SearchResultEntry{
+					Dcid: "svg1",
+					Name: "svg1",
+					StatVars: []*pb.EntityInfo{
 						{
-							Dcid:    "sv2",
-							Name:    "sv2",
-							Matches: []string{"sv2"},
+							Dcid: "sv2",
+							Name: "sv2",
 						},
 						{
-							Dcid:    "sv3",
-							Name:    "sv3",
-							Matches: []string{"sv3"},
+							Dcid: "sv3",
+							Name: "sv3",
 						},
 					},
 				},
 				{
-					Info: &pb.SearchResultEntry{
-						Dcid:    "svg2",
-						Name:    "svg2",
-						Matches: []string{"svg2"},
-					},
+					Dcid: "svg2",
+					Name: "svg2",
 				},
 			},
 		},
