@@ -44,8 +44,6 @@ type Metadata struct {
 	Bq               string
 	BtProject        string
 	BranchBtInstance string
-	BaseTables       []string
-	BranchTable      string
 }
 
 // SearchIndex holds the index for searching stat var (group).

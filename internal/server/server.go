@@ -43,14 +43,13 @@ type Server struct {
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
-	branchTable, err := bigtable.NewTable(
+	branchTable, err := bigtable.NewBtTable(
 		ctx, s.metadata.BtProject, s.metadata.BranchBtInstance, branchTableName)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
 	}
-	s.store.BtGroup.UpdateBranchTable(branchTable)
-	s.metadata.BranchTable = branchTableName
+	s.store.BtGroup.UpdateBranchTable(bigtable.NewTable(branchTableName, branchTable))
 	log.Printf("Updated branch table to use %s", branchTableName)
 }
 

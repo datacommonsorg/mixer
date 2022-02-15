@@ -36,7 +36,7 @@ func Count(
 ) (map[string]map[string]int64, error) {
 	rowList, keyTokens := bigtable.BuildStatExistenceKey(places, svOrSvgs)
 	keyToTokenFn := bigtable.TokenFn(keyTokens)
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		btGroup,
 		rowList,
@@ -56,7 +56,6 @@ func Count(
 			return &statVarExistence, nil
 		},
 		keyToTokenFn,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -70,8 +69,8 @@ func Count(
 	for _, rowKey := range rowList {
 		placeSv := keyTokens[rowKey]
 		token, _ := keyToTokenFn(rowKey)
-		for _, baseData := range baseDataList {
-			if data, ok := baseData[token]; ok {
+		for _, btData := range btDataList {
+			if data, ok := btData[token]; ok {
 				c := data.(*pb.PlaceStatVarExistence)
 				if _, ok := result[placeSv.StatVar][placeSv.Place]; !ok {
 					// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var

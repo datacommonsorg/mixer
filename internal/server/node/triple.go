@@ -189,16 +189,14 @@ func GetTriples(
 // ReadTriples read triples from base cache for multiple dcids.
 func ReadTriples(ctx context.Context, btGroup *bigtable.Group, rowList cbt.RowList) (
 	*pb.GetTriplesResponse, error) {
-	baseDataList, _, err := bigtable.Read(
-		ctx, btGroup, rowList, convert.ToTriples, nil, true, /* readBranch */
-	)
+	btDataList, err := bigtable.Read(ctx, btGroup, rowList, convert.ToTriples, nil)
 	if err != nil {
 		return nil, err
 	}
 	result := &pb.GetTriplesResponse{Triples: make(map[string]*pb.Triples)}
 	// dcid -> predicate -> id/value
 	visited := map[string]map[string]map[string]struct{}{}
-	for _, baseData := range baseDataList {
+	for _, baseData := range btDataList {
 		for dcid, data := range baseData {
 			triples, ok := data.(*pb.Triples)
 			if !ok {

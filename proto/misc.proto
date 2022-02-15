@@ -72,12 +72,10 @@ message GetVersionResponse {
   string store = 1;
   // Big Query dataset
   string big_query = 2;
-  // Base Bigtable instance
-  repeated string base_tables = 5;
-  // Branch Bigtable instance
-  string branch_table = 6;
+  // Bigtable instance
+  repeated string tables = 5;
   // Github commit hash
   string git_hash = 4;
 
-  reserved 3;
+  reserved 3, 6;
 }

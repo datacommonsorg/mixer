@@ -18,7 +18,6 @@ import (
 	"context"
 	"testing"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -71,7 +70,7 @@ func TestReadTriple(t *testing.T) {
 	}
 	got, err := ReadTriples(
 		ctx,
-		bigtable.NewGroup([]*cbt.Table{btTable}, nil, false),
+		bigtable.NewGroup([]*bigtable.Table{bigtable.NewTable("base", btTable)}, "", false),
 		bigtable.BuildTriplesKey([]string{"City"}),
 	)
 	if err != nil {

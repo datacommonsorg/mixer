@@ -296,11 +296,10 @@ func (s *Server) GetVersion(
 	ctx context.Context, in *pb.GetVersionRequest,
 ) (*pb.GetVersionResponse, error) {
 	return &pb.GetVersionResponse{
-		Store:       s.metadata.BtProject,
-		BigQuery:    s.metadata.Bq,
-		BaseTables:  s.metadata.BaseTables,
-		BranchTable: s.metadata.BranchTable,
-		GitHash:     os.Getenv("MIXER_HASH"),
+		Store:    s.metadata.BtProject,
+		BigQuery: s.metadata.Bq,
+		Tables:   s.store.BtGroup.TableNames(),
+		GitHash:  os.Getenv("MIXER_HASH"),
 	}, nil
 }
 

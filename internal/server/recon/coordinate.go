@@ -61,7 +61,7 @@ func ResolveCoordinates(
 			fmt.Sprintf("%s%s", bigtable.BtCoordinateReconPrefix, key),
 		)
 	}
-	reconDataList, _, err := bigtable.Read(
+	reconDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		reconRowList,
@@ -81,7 +81,6 @@ func ResolveCoordinates(
 		func(rowKey string) (string, error) {
 			return strings.TrimPrefix(rowKey, bigtable.BtCoordinateReconPrefix), nil
 		},
-		false,
 	)
 	if err != nil {
 		return nil, err

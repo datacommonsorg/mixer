@@ -18,6 +18,7 @@ package bigtable
 
 import (
 	"context"
+	"log"
 	"sort"
 	"strings"
 	"sync"
@@ -34,53 +35,97 @@ var groupRank = map[string]int{
 
 const defaultRank = 9999
 
-// Group represents all the cloud bigtables that mixer talks to.
-type Group struct {
-	baseTables  []*cbt.Table
-	branchTable *cbt.Table
-	branchLock  sync.RWMutex
-	isProto     bool
+// Table holds the bigtable name and client stub.
+type Table struct {
+	name  string
+	table *cbt.Table
 }
 
-//  TableConfig represents the config for a list bigtables.
+// NewTable creates a new Table struct.
+func NewTable(name string, table *cbt.Table) *Table {
+	return &Table{name: name, table: table}
+}
+
+// Name access the name of a table
+func (t *Table) Name() string {
+	return t.name
+}
+
+// Group represents all the cloud bigtables that mixer talks to.
+type Group struct {
+	tables          []*Table
+	lock            sync.RWMutex
+	branchTableName string
+	isProto         bool
+}
+
+//  TableConfig represents the config for a list of Bigtable.
 type TableConfig struct {
 	Tables []string `json:"tables,omitempty"`
 }
 
 // NewGroup creates a BigtableGroup
 func NewGroup(
-	baseTables []*cbt.Table,
-	branchTable *cbt.Table,
+	tables []*Table,
+	branchTableName string,
 	useImportGroup bool,
 ) *Group {
+	if useImportGroup {
+		SortTables(tables)
+	}
 	return &Group{
-		baseTables:  baseTables,
-		branchTable: branchTable,
-		isProto:     useImportGroup,
+		tables:  tables,
+		isProto: useImportGroup,
 	}
 }
 
-// BaseTables is the accessor for base bigtables
-func (g *Group) BaseTables() []*cbt.Table {
-	return g.baseTables
+// Tables is the accessor for all the Bigtable client stubs.
+func (g *Group) Tables() []*cbt.Table {
+	g.lock.RLock()
+	defer g.lock.RUnlock()
+	result := []*cbt.Table{}
+	for _, t := range g.tables {
+		result = append(result, t.table)
+	}
+	return result
 }
 
-// BranchTable is the accessor for branch bigtable
-func (g *Group) BranchTable() *cbt.Table {
-	g.branchLock.RLock()
-	defer g.branchLock.RUnlock()
-	return g.branchTable
+// TableNames is the accesser to get all the Bigtable names.
+func (g *Group) TableNames() []string {
+	g.lock.RLock()
+	defer g.lock.RUnlock()
+	result := []string{}
+	for _, t := range g.tables {
+		result = append(result, t.name)
+	}
+	return result
 }
 
-// UpdateBranchTable updates the branch bigtable
-func (g *Group) UpdateBranchTable(branchTable *cbt.Table) {
-	g.branchLock.Lock()
-	defer g.branchLock.Unlock()
-	g.branchTable = branchTable
+// UpdateBranchTable updates the branch Bigtable.
+func (g *Group) UpdateBranchTable(branchTable *Table) {
+	g.lock.Lock()
+	defer g.lock.Unlock()
+	tables := []*Table{}
+	for _, t := range g.tables {
+		if t.name != g.branchTableName {
+			tables = append(tables, t)
+		}
+	}
+	tables = append(tables, branchTable)
+	g.branchTableName = branchTable.name
+	g.tables = tables
+	if g.isProto {
+		// To place branch table in the right place
+		SortTables(g.tables)
+	} else {
+		if len(tables) != 2 || !strings.Contains(tables[1].name, "dc_branch") {
+			log.Printf("Branch table is not the second table: %v", tables)
+		}
+	}
 }
 
 // NewTable creates a new cbt.Table instance.
-func NewTable(ctx context.Context, projectID, instanceID, tableID string) (
+func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
 	*cbt.Table, error) {
 	btClient, err := cbt.NewClient(ctx, projectID, instanceID)
 	if err != nil {
@@ -94,24 +139,23 @@ func NewTable(ctx context.Context, projectID, instanceID, tableID string) (
 // - infrequent should always be the lowest rank
 // - if a group is not in ranking list, put it right before "infrequent" and
 //   after other groups with ranking.
-func SortTables(tableNames []string) {
-	sort.SliceStable(tableNames, func(i, j int) bool {
+func SortTables(tables []*Table) {
+	sort.SliceStable(tables, func(i, j int) bool {
 		// ranking for i
 		// This is to parse the table name like "borgcron_frequent_2022_02_01_14_20_47"
 		// and get the actual import group name.
 		// TODO: Update this if table format changes.
-		ni := strings.Split(tableNames[i], "_")[1]
+		ni := strings.Split(tables[i].name, "_")[1]
 		ri, ok := groupRank[ni]
 		if !ok {
 			ri = defaultRank
 		}
 		// ranking for j
-		nj := strings.Split(tableNames[j], "_")[1]
+		nj := strings.Split(tables[j].name, "_")[1]
 		rj, ok := groupRank[nj]
 		if !ok {
 			rj = defaultRank
 		}
-
 		return ri < rj
 	})
 }

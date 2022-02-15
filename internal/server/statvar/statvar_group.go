@@ -135,10 +135,10 @@ func GetStatVarGroup(
 
 	var result *pb.StatVarGroups
 	if cache == nil {
-		// Read stat var group cache from the first base table, which is the most
+		// Read stat var group cache from the first table, which is the most
 		// preferred cache BigTable. Since stat var schemas are rebuild with every
 		// group, so no merge needed.
-		baseDataList, _, err := bigtable.Read(
+		btDataList, err := bigtable.Read(
 			ctx,
 			store.BtGroup,
 			cbt.RowList{bigtable.BtStatVarGroup},
@@ -157,12 +157,11 @@ func GetStatVarGroup(
 			},
 			// Since there is no dcid, use "_" as a dummy token
 			func(token string) (string, error) { return "_", nil },
-			false, /* readBranch */
 		)
 		if err != nil {
 			return nil, err
 		}
-		result = baseDataList[len(store.BtGroup.BaseTables())-1]["_"].(*pb.StatVarGroups)
+		result = btDataList[0]["_"].(*pb.StatVarGroups)
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
 	}
