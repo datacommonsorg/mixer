@@ -1,26 +1,7 @@
 {
   "resolvedEntities": [
     {
-      "sourceId": "newId/VietnamId",
-      "resolvedIds": [
-        {
-          "ids": [
-            {
-              "prop": "placeId",
-              "val": "ChIJd_Y0eVIvkIARuQyDN0F1LBA"
-            },
-            {
-              "prop": "geoId",
-              "val": "06085"
-            },
-            {
-              "prop": "dcid",
-              "val": "geoId/06085"
-            }
-          ],
-          "probability": 1
-        }
-      ]
+      "sourceId": "newId/VietnamId"
     },
     {
       "sourceId": "newId/SunnyvaleId",
@@ -28,16 +9,16 @@
         {
           "ids": [
             {
-              "prop": "placeId",
-              "val": "ChIJd_Y0eVIvkIARuQyDN0F1LBA"
+              "prop": "wikidataId",
+              "val": "Q208459"
             },
             {
-              "prop": "geoId",
-              "val": "06085"
+              "prop": "placeId",
+              "val": "ChIJO13QqUW2j4ARosN83Sb7jXY"
             },
             {
               "prop": "dcid",
-              "val": "geoId/06085"
+              "val": "geoId/0677000"
             }
           ],
           "probability": 1
@@ -45,26 +26,7 @@
       ]
     },
     {
-      "sourceId": "newId/SantaClaraCountyId",
-      "resolvedIds": [
-        {
-          "ids": [
-            {
-              "prop": "placeId",
-              "val": "ChIJd_Y0eVIvkIARuQyDN0F1LBA"
-            },
-            {
-              "prop": "geoId",
-              "val": "06085"
-            },
-            {
-              "prop": "dcid",
-              "val": "geoId/06085"
-            }
-          ],
-          "probability": 1
-        }
-      ]
+      "sourceId": "newId/SantaClaraCountyId"
     },
     {
       "sourceId": "newId/MarsPlanetId"

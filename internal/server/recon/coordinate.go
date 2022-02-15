@@ -22,6 +22,7 @@ import (
 
 	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/golang/geo/s2"
@@ -97,63 +98,22 @@ func ResolveCoordinates(
 			}
 		}
 		// Only process data from one preferred import group.
-		if reconData != nil {
+		if len(reconData) > 0 {
 			break
 		}
 	}
 
-	// Read place GeoJson cache.
-	geoJSONRowList := cbt.RowList{}
+	questionablePlaceList := []string{}
 	for place := range questionablePlaces {
-		geoJSONRowList = append(
-			geoJSONRowList,
-			fmt.Sprintf("%s%s^%s", bigtable.BtOutPropValPrefix, place, geoJSONPredicate),
-		)
+		questionablePlaceList = append(questionablePlaceList, place)
 	}
-	geoJSONDataList, _, err := bigtable.Read(
-		ctx,
-		store.BtGroup,
-		geoJSONRowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
-			var info pb.EntityInfoCollection
-			if isProto {
-				if err := proto.Unmarshal(jsonRaw, &info); err != nil {
-					return nil, err
-				}
-			} else {
-				if err := protojson.Unmarshal(jsonRaw, &info); err != nil {
-					return nil, err
-				}
-			}
-			return &info, nil
-		},
-
-		func(rowKey string) (string, error) {
-			l := strings.TrimPrefix(rowKey, bigtable.BtOutPropValPrefix)
-			return strings.TrimSuffix(l, fmt.Sprintf("^%s", geoJSONPredicate)), nil
-		},
-		false,
-	)
+	geoJSONData, err := node.GetPropertyValuesHelper(ctx, store, questionablePlaceList, geoJSONPredicate, true)
 	if err != nil {
 		return nil, err
 	}
 	geoJSONMap := map[string]string{}
-	for _, geoJSONData := range geoJSONDataList {
-		for place, data := range geoJSONData {
-			if _, ok := geoJSONMap[place]; ok {
-				continue
-			}
-			// A place should only have a single geoJsonCooridnates out arc.
-			typedInfo := data.(*pb.EntityInfoCollection)
-			if typedInfo.GetTotalCount() != 1 {
-				continue
-			}
-			geoJSONMap[place] = typedInfo.GetEntities()[0].GetValue()
-		}
-		// Only process data from one preferred import group.
-		if geoJSONData != nil {
-			break
-		}
+	for place, entities := range geoJSONData {
+		geoJSONMap[place] = entities[0].Value
 	}
 
 	// Assemble response.

@@ -77,8 +77,12 @@ func ResolveIds(
 
 	// Assemble result.
 	res := &pb.ResolveIdsResponse{}
+	existData := map[string]bool{}
 	for _, baseData := range baseDataList {
 		for inID, reconEntities := range baseData {
+			if exist, ok := existData[inID]; ok && exist {
+				continue
+			}
 			reconEntitiesPb, ok := reconEntities.(*pb.ReconEntities)
 			if !ok {
 				continue
@@ -86,23 +90,19 @@ func ResolveIds(
 			entity := &pb.ResolveIdsResponse_Entity{InId: inID}
 			for _, reconEntity := range reconEntitiesPb.GetEntities() {
 				if len(reconEntity.GetIds()) != 1 {
-					return nil, fmt.Errorf("wrong cache result for %s: %v",
-						inID, reconEntities)
+					return nil, fmt.Errorf("wrong cache result for %s: %v", inID, reconEntities)
 				}
 				entity.OutIds = append(entity.OutIds, reconEntity.GetIds()[0].GetVal())
 			}
+			existData[inID] = true
 			// Sort to make the result deterministic.
 			sort.Strings(entity.OutIds)
 			res.Entities = append(res.Entities, entity)
-			// Only process data from one preferred import group.
-			break
 		}
 	}
-
 	// Sort to make the result deterministic.
 	sort.Slice(res.Entities, func(i, j int) bool {
 		return res.Entities[i].GetInId() > res.Entities[j].GetInId()
 	})
-
 	return res, nil
 }
