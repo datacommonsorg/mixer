@@ -1,0 +1,385 @@
+{
+  "statVarSummary": {
+    "UnemploymentRate_Person": {
+      "placeTypeSummary": {
+        "City": {
+          "numPlaces": "3055",
+          "topPlaces": [
+            {
+              "dcid": "geoId/3651000",
+              "name": "New York",
+              "personCount": "8804190"
+            },
+            {
+              "dcid": "geoId/0644000",
+              "name": "Los Angeles",
+              "personCount": "3898747"
+            },
+            {
+              "dcid": "geoId/1714000",
+              "name": "Chicago",
+              "personCount": "2746388"
+            }
+          ]
+        },
+        "Country": {
+          "numPlaces": "33",
+          "topPlaces": [
+            {
+              "dcid": "country/USA",
+              "name": "United States",
+              "personCount": "331449281"
+            },
+            {
+              "dcid": "country/JPN",
+              "name": "Japan",
+              "personCount": "125836021"
+            },
+            {
+              "dcid": "country/TUR",
+              "name": "Turkey",
+              "personCount": "84339067"
+            }
+          ]
+        },
+        "County": {
+          "numPlaces": "3220",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06037",
+              "name": "Los Angeles County",
+              "personCount": "10014009"
+            },
+            {
+              "dcid": "geoId/17031",
+              "name": "Cook County",
+              "personCount": "5275541"
+            },
+            {
+              "dcid": "geoId/48201",
+              "name": "Harris County",
+              "personCount": "4731145"
+            }
+          ]
+        },
+        "State": {
+          "numPlaces": "52",
+          "topPlaces": [
+            {
+              "dcid": "geoId/06",
+              "name": "California",
+              "personCount": "39538223"
+            },
+            {
+              "dcid": "geoId/48",
+              "name": "Texas",
+              "personCount": "28995881"
+            },
+            {
+              "dcid": "geoId/12",
+              "name": "Florida",
+              "personCount": "21538187"
+            }
+          ]
+        }
+      },
+      "provenanceSummary": {
+        "dc/2xghn33": {
+          "importName": "BLS_CPS",
+          "numObservations": "1184",
+          "numTimeSeries": "2",
+          "releaseFrequency": "P1M",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyAdjusted",
+                "observationPeriod": "P1M"
+              },
+              "earliestDate": "1948-01",
+              "latestDate": "2021-12",
+              "numObservations": "888",
+              "numTimeSeries": "1",
+              "placeTypeSummary": {
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    }
+                  ]
+                }
+              },
+              "minValue": 2.5,
+              "maxValue": 14.7
+            },
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyAdjusted",
+                "observationPeriod": "P3M"
+              },
+              "earliestDate": "1948-03",
+              "latestDate": "2021-12",
+              "numObservations": "296",
+              "numTimeSeries": "1",
+              "placeTypeSummary": {
+                "Country": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    }
+                  ]
+                }
+              },
+              "minValue": 2.6,
+              "maxValue": 13
+            }
+          ]
+        },
+        "dc/lly3yc1": {
+          "importName": "BLS_LAUS",
+          "numObservations": "2580823",
+          "numTimeSeries": "12707",
+          "releaseFrequency": "P1M",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyAdjusted",
+                "observationPeriod": "P1M"
+              },
+              "earliestDate": "1976-01",
+              "latestDate": "2021-11",
+              "numObservations": "29201",
+              "numTimeSeries": "53",
+              "placeTypeSummary": {
+                "City": {
+                  "numPlaces": "1",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York",
+                      "personCount": "8804190"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "52",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California",
+                      "personCount": "39538223"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas",
+                      "personCount": "28995881"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida",
+                      "personCount": "21538187"
+                    }
+                  ]
+                }
+              },
+              "minValue": 1.8,
+              "maxValue": 29.5
+            },
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyUnadjusted",
+                "observationPeriod": "P1M"
+              },
+              "earliestDate": "1976-01",
+              "latestDate": "2021-11",
+              "numObservations": "2360766",
+              "numTimeSeries": "6327",
+              "placeTypeSummary": {
+                "City": {
+                  "numPlaces": "3055",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York",
+                      "personCount": "8804190"
+                    },
+                    {
+                      "dcid": "geoId/0644000",
+                      "name": "Los Angeles",
+                      "personCount": "3898747"
+                    },
+                    {
+                      "dcid": "geoId/1714000",
+                      "name": "Chicago",
+                      "personCount": "2746388"
+                    }
+                  ]
+                },
+                "County": {
+                  "numPlaces": "3220",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06037",
+                      "name": "Los Angeles County",
+                      "personCount": "10014009"
+                    },
+                    {
+                      "dcid": "geoId/17031",
+                      "name": "Cook County",
+                      "personCount": "5275541"
+                    },
+                    {
+                      "dcid": "geoId/48201",
+                      "name": "Harris County",
+                      "personCount": "4731145"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "52",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California",
+                      "personCount": "39538223"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas",
+                      "personCount": "28995881"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida",
+                      "personCount": "21538187"
+                    }
+                  ]
+                }
+              },
+              "maxValue": 100
+            },
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyUnadjusted",
+                "observationPeriod": "P1Y"
+              },
+              "earliestDate": "1976",
+              "latestDate": "2020",
+              "numObservations": "190856",
+              "numTimeSeries": "6327",
+              "placeTypeSummary": {
+                "City": {
+                  "numPlaces": "3055",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York",
+                      "personCount": "8804190"
+                    },
+                    {
+                      "dcid": "geoId/0644000",
+                      "name": "Los Angeles",
+                      "personCount": "3898747"
+                    },
+                    {
+                      "dcid": "geoId/1714000",
+                      "name": "Chicago",
+                      "personCount": "2746388"
+                    }
+                  ]
+                },
+                "County": {
+                  "numPlaces": "3220",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06037",
+                      "name": "Los Angeles County",
+                      "personCount": "10014009"
+                    },
+                    {
+                      "dcid": "geoId/17031",
+                      "name": "Cook County",
+                      "personCount": "5275541"
+                    },
+                    {
+                      "dcid": "geoId/48201",
+                      "name": "Harris County",
+                      "personCount": "4731145"
+                    }
+                  ]
+                },
+                "State": {
+                  "numPlaces": "52",
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California",
+                      "personCount": "39538223"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas",
+                      "personCount": "28995881"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida",
+                      "personCount": "21538187"
+                    }
+                  ]
+                }
+              },
+              "maxValue": 100
+            }
+          ]
+        },
+        "dc/yd4sfb": {
+          "importName": "EurostatData",
+          "numObservations": "11125",
+          "numTimeSeries": "33",
+          "releaseFrequency": "P1Y",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "observationPeriod": "P1M"
+              },
+              "earliestDate": "1983-01",
+              "latestDate": "2020-07",
+              "numObservations": "11125",
+              "numTimeSeries": "33",
+              "placeTypeSummary": {
+                "Country": {
+                  "numPlaces": "33",
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States",
+                      "personCount": "331449281"
+                    },
+                    {
+                      "dcid": "country/JPN",
+                      "name": "Japan",
+                      "personCount": "125836021"
+                    },
+                    {
+                      "dcid": "country/TUR",
+                      "name": "Turkey",
+                      "personCount": "84339067"
+                    }
+                  ]
+                }
+              },
+              "minValue": 1.3,
+              "maxValue": 26.3
+            }
+          ]
+        }
+      }
+    }
+  }
+}
