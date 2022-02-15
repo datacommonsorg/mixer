@@ -20,6 +20,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
@@ -56,8 +58,38 @@ func GetStatVarSummary(
 	result := &pb.GetStatVarSummaryResponse{
 		StatVarSummary: map[string]*pb.StatVarSummary{},
 	}
-	for dcid, data := range baseDataList[0] {
-		result.StatVarSummary[dcid] = data.(*pb.StatVarSummary)
+	// Merge strategy
+	// 1. "place_type_summary": For a given place type, pick the Bigtable with the
+	//    most places.
+	// 2. "provenance_summary": Merge provenances from all the Bigtables.
+	for _, baseData := range baseDataList {
+		for dcid, data := range baseData {
+			svs, ok := data.(*pb.StatVarSummary)
+			if !ok {
+				return nil, status.Errorf(codes.Internal, "Can not read StatVarSummary")
+			}
+			if _, ok := result.StatVarSummary[dcid]; !ok {
+				result.StatVarSummary[dcid] = svs
+				continue
+			}
+			res := result.StatVarSummary[dcid]
+			// Pick place type summary with the most places.
+			for pt := range svs.PlaceTypeSummary {
+				summary, ok := res.PlaceTypeSummary[pt]
+				if ok && svs.PlaceTypeSummary[pt].NumPlaces < summary.NumPlaces {
+					continue
+				}
+				res.PlaceTypeSummary[pt] = svs.PlaceTypeSummary[pt]
+			}
+			//
+			for source := range svs.ProvenanceSummary {
+				// Only set the the source if it has not been found in a preferred
+				// import group.
+				if _, ok := res.ProvenanceSummary[source]; !ok {
+					res.ProvenanceSummary[source] = svs.ProvenanceSummary[source]
+				}
+			}
+		}
 	}
 	return result, nil
 }

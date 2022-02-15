@@ -23,7 +23,6 @@ import (
 	"runtime"
 	"strings"
 
-	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
@@ -170,10 +169,6 @@ func NewMixerServer(
 }
 
 // NewReconServer creates a new recon server instance.
-func NewReconServer(
-	baseTables []*cbt.Table,
-) *Server {
-	return &Server{
-		store: store.NewStore(nil, nil, baseTables, nil, false),
-	}
+func NewReconServer(store *store.Store) *Server {
+	return &Server{store: store}
 }

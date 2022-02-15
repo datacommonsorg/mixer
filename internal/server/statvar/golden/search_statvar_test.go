@@ -29,100 +29,107 @@ import (
 func TestSearchStatVar(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: true, UseMemdb: false})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "search_statvar")
-
-	for _, c := range []struct {
-		query           string
-		places          []string
-		enableBlocklist bool
-		goldenFile      string
-	}{
-		{
-			"Asian , age",
-			[]string{"geoId/06"},
-			false,
-			"asian_age.json",
-		},
-		{
-			"crime",
-			[]string{},
-			false,
-			"crime.json",
-		},
-		{
-			"female",
-			[]string{"country/USA"},
-			false,
-			"female.json",
-		},
-		{
-			"accommodation food services",
-			[]string{"country/USA"},
-			true,
-			"accommodation_food_services_blocklist.json",
-		},
-		{
-			"accommodation food services",
-			[]string{"country/USA"},
-			false,
-			"accommodation_food_services.json",
-		},
-		{
-			"food stamp",
-			[]string{},
-			false,
-			"food_stamp.json",
-		},
-		{
-			"fem",
-			[]string{},
-			false,
-			"fem.json",
-		},
-		{
-			"women",
-			[]string{},
-			false,
-			"women.json",
-		},
-		{
-			"veteran",
-			[]string{},
-			false,
-			"veteran.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{UseCache: true},
+		{UseCache: true, UseImportGroup: true},
 	} {
-		resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
-			Query:           c.query,
-			Places:          c.places,
-			EnableBlocklist: c.enableBlocklist,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not SearchStatVar: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "search_statvar")
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		for _, c := range []struct {
+			query           string
+			places          []string
+			enableBlocklist bool
+			goldenFile      string
+		}{
+			{
+				"Asian , age",
+				[]string{"geoId/06"},
+				false,
+				"asian_age.json",
+			},
+			{
+				"crime",
+				[]string{},
+				false,
+				"crime.json",
+			},
+			{
+				"female",
+				[]string{"country/USA"},
+				false,
+				"female.json",
+			},
+			{
+				"accommodation food services",
+				[]string{"country/USA"},
+				true,
+				"accommodation_food_services_blocklist.json",
+			},
+			{
+				"accommodation food services",
+				[]string{"country/USA"},
+				false,
+				"accommodation_food_services.json",
+			},
+			{
+				"food stamp",
+				[]string{},
+				false,
+				"food_stamp.json",
+			},
+			{
+				"fem",
+				[]string{},
+				false,
+				"fem.json",
+			},
+			{
+				"women",
+				[]string{},
+				false,
+				"women.json",
+			},
+			{
+				"veteran",
+				[]string{},
+				false,
+				"veteran.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
+				Query:           c.query,
+				Places:          c.places,
+				EnableBlocklist: c.enableBlocklist,
+			})
+			if err != nil {
+				t.Errorf("could not SearchStatVar: %s", err)
+				continue
+			}
 
-		var expected pb.SearchStatVarResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			var expected pb.SearchStatVarResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

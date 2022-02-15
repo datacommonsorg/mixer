@@ -109,7 +109,7 @@ func SearchStatVar(
 
 func filter(
 	nodes []*pb.EntityInfo,
-	countMap map[string]map[string]int32,
+	countMap map[string]map[string]int64,
 	numPlaces int) []*pb.EntityInfo {
 	result := []*pb.EntityInfo{}
 	for _, node := range nodes {
@@ -121,7 +121,12 @@ func filter(
 }
 
 // Return whether r1 should be ranked ahead of r2
-func compareRankingInfo(r1 *resource.RankingInfo, dcid1 string, r2 *resource.RankingInfo, dcid2 string) bool {
+func compareRankingInfo(
+	r1 *resource.RankingInfo,
+	dcid1 string,
+	r2 *resource.RankingInfo,
+	dcid2 string,
+) bool {
 	if r1.ApproxNumPv != r2.ApproxNumPv {
 		return r1.ApproxNumPv < r2.ApproxNumPv
 	}
@@ -131,7 +136,12 @@ func compareRankingInfo(r1 *resource.RankingInfo, dcid1 string, r2 *resource.Ran
 	return dcid1 < dcid2
 }
 
-func groupStatVars(svList []*pb.EntityInfo, svgList []*pb.EntityInfo, parentMap map[string][]string, ranking map[string]*resource.RankingInfo) ([]*pb.EntityInfo, []*pb.SearchResultSVG) {
+func groupStatVars(
+	svList []*pb.EntityInfo,
+	svgList []*pb.EntityInfo,
+	parentMap map[string][]string,
+	ranking map[string]*resource.RankingInfo,
+) ([]*pb.EntityInfo, []*pb.SearchResultSVG) {
 	// Create a map of svg id to svg search result
 	svgMap := map[string]*pb.SearchResultSVG{}
 	for _, svg := range svgList {

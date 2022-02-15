@@ -1,0 +1,11 @@
+{
+  "comparisons": [
+    {
+      "sourceIds": [
+        "aaa",
+        "bbb"
+      ],
+      "probability": 0.67
+    }
+  ]
+}

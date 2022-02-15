@@ -32,8 +32,7 @@ import (
 // ResolveIds resolve entities based on IDs.
 func ResolveIds(
 	ctx context.Context, in *pb.ResolveIdsRequest, store *store.Store,
-) (
-	*pb.ResolveIdsResponse, error) {
+) (*pb.ResolveIdsResponse, error) {
 	inProp := in.GetInProp()
 	outProp := in.GetOutProp()
 	ids := in.GetIds()
@@ -77,28 +76,35 @@ func ResolveIds(
 	}
 
 	// Assemble result.
+	// TODO: merge ids from different tables. Now it only picks up IDs from
+	// one preferred table.
 	res := &pb.ResolveIdsResponse{}
-	for inID, reconEntities := range baseDataList[0] {
-		entity := &pb.ResolveIdsResponse_Entity{InId: inID}
-
-		for _, reconEntity := range reconEntities.(*pb.ReconEntities).GetEntities() {
-			if len(reconEntity.GetIds()) != 1 {
-				return nil, fmt.Errorf("wrong cache result for %s: %v",
-					inID, reconEntities)
+	existData := map[string]bool{}
+	for _, baseData := range baseDataList {
+		for inID, reconEntities := range baseData {
+			if exist, ok := existData[inID]; ok && exist {
+				continue
 			}
-			entity.OutIds = append(entity.OutIds, reconEntity.GetIds()[0].GetVal())
+			reconEntitiesPb, ok := reconEntities.(*pb.ReconEntities)
+			if !ok {
+				continue
+			}
+			entity := &pb.ResolveIdsResponse_Entity{InId: inID}
+			for _, reconEntity := range reconEntitiesPb.GetEntities() {
+				if len(reconEntity.GetIds()) != 1 {
+					return nil, fmt.Errorf("wrong cache result for %s: %v", inID, reconEntities)
+				}
+				entity.OutIds = append(entity.OutIds, reconEntity.GetIds()[0].GetVal())
+			}
+			existData[inID] = true
+			// Sort to make the result deterministic.
+			sort.Strings(entity.OutIds)
+			res.Entities = append(res.Entities, entity)
 		}
-
-		// Sort to make the result deterministic.
-		sort.Strings(entity.OutIds)
-
-		res.Entities = append(res.Entities, entity)
 	}
-
 	// Sort to make the result deterministic.
 	sort.Slice(res.Entities, func(i, j int) bool {
 		return res.Entities[i].GetInId() > res.Entities[j].GetInId()
 	})
-
 	return res, nil
 }

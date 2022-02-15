@@ -29,64 +29,72 @@ import (
 func TestResolveCoordinates(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	_, client, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up recon client: %s", err)
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "resolve_coordinates")
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
+	} {
+		_, client, err := e2e.Setup(opt)
+		if err != nil {
+			t.Fatalf("Failed to set up recon client: %s", err)
+		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "resolve_coordinates")
 
-	for _, c := range []struct {
-		req        *pb.ResolveCoordinatesRequest
-		goldenFile string
-	}{
-		{
-			&pb.ResolveCoordinatesRequest{
-				Coordinates: []*pb.ResolveCoordinatesRequest_Coordinate{
-					{
-						Latitude:  37.42,
-						Longitude: -122.08,
-					},
-					{
-						Latitude:  32.41,
-						Longitude: -102.11,
+		for _, c := range []struct {
+			req        *pb.ResolveCoordinatesRequest
+			goldenFile string
+		}{
+			{
+				&pb.ResolveCoordinatesRequest{
+					Coordinates: []*pb.ResolveCoordinatesRequest_Coordinate{
+						{
+							Latitude:  37.42,
+							Longitude: -122.08,
+						},
+						{
+							Latitude:  32.41,
+							Longitude: -102.11,
+						},
 					},
 				},
+				"result.json",
 			},
-			"result.json",
-		},
-	} {
-		resp, err := client.ResolveCoordinates(ctx, c.req)
-		if err != nil {
-			t.Errorf("could not ResolveCoordinates: %s", err)
-			continue
-		}
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.ResolveCoordinates(ctx, c.req)
+			if err != nil {
+				t.Errorf("could not ResolveCoordinates: %s", err)
+				continue
+			}
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		var expected pb.ResolveCoordinatesResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+			var expected pb.ResolveCoordinatesResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
 
-		cmpOpts := cmp.Options{
-			protocmp.Transform(),
-			protocmp.SortRepeated(
-				func(a, b *pb.ResolveCoordinatesResponse_PlaceCoordinate) bool {
-					if a.GetLatitude() == b.GetLatitude() {
-						return a.GetLongitude() > b.GetLongitude()
-					}
-					return a.GetLatitude() > b.GetLatitude()
-				}),
-		}
-		if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			cmpOpts := cmp.Options{
+				protocmp.Transform(),
+				protocmp.SortRepeated(
+					func(a, b *pb.ResolveCoordinatesResponse_PlaceCoordinate) bool {
+						if a.GetLatitude() == b.GetLatitude() {
+							return a.GetLongitude() > b.GetLongitude()
+						}
+						return a.GetLatitude() > b.GetLatitude()
+					}),
+			}
+			if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

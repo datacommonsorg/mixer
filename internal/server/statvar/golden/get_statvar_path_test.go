@@ -29,53 +29,60 @@ import (
 func TestGetStatVarPath(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: true, UseMemdb: true})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_statvar_path")
-
-	for _, c := range []struct {
-		id         string
-		goldenFile string
-	}{
-		{
-			"Count_Person",
-			"person.json",
-		},
-		{
-			"dc/g/Person_EducationalAttainment",
-			"school.json",
-		},
-		{
-			"Test_Stat_Var_1",
-			"memdb.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{UseCache: true, UseMemdb: true},
+		{UseCache: true, UseMemdb: true, UseImportGroup: true},
 	} {
-		resp, err := client.GetStatVarPath(ctx, &pb.GetStatVarPathRequest{
-			Id: c.id,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatVarPath: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_statvar_path")
 
-		var expected pb.GetStatVarPathResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+		for _, c := range []struct {
+			id         string
+			goldenFile string
+		}{
+			{
+				"Count_Person",
+				"person.json",
+			},
+			{
+				"dc/g/Person_EducationalAttainment",
+				"school.json",
+			},
+			{
+				"Test_Stat_Var_1",
+				"memdb.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStatVarPath(ctx, &pb.GetStatVarPathRequest{
+				Id: c.id,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatVarPath: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("GetStatVarPath got diff: %v", diff)
-			continue
+			var expected pb.GetStatVarPathResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("GetStatVarPath got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

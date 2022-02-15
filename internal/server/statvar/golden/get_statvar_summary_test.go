@@ -29,49 +29,64 @@ import (
 func TestGetStatVarSummary(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: true, UseMemdb: false})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_statvar_summary")
-
-	for _, c := range []struct {
-		svs        []string
-		goldenFile string
-	}{
-		{
-			[]string{"Count_CriminalActivities_CombinedCrime"},
-			"total_crimes.json",
-		},
-		{
-			[]string{"Count_Person_Female", "Count_Person_Female_AsianAlone", "FertilityRate_Person_Female"},
-			"females.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{UseCache: true},
+		{UseCache: true, UseImportGroup: true},
 	} {
-		resp, err := client.GetStatVarSummary(ctx, &pb.GetStatVarSummaryRequest{
-			StatVars: c.svs,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatVarSummary: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_statvar_summary")
 
-		var expected pb.GetStatVarSummaryResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+		for _, c := range []struct {
+			svs        []string
+			goldenFile string
+		}{
+			{
+				[]string{"Count_CriminalActivities_CombinedCrime"},
+				"total_crimes.json",
+			},
+			{
+				[]string{"UnemploymentRate_Person"},
+				"unemployment.json",
+			},
+			{
+				[]string{"Count_Person_Female", "Count_Person_Female_AsianAlone", "FertilityRate_Person_Female"},
+				"females.json",
+			},
+			{
+				[]string{"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
+				"covid.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStatVarSummary(ctx, &pb.GetStatVarSummaryRequest{
+				StatVars: c.svs,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatVarSummary: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			var expected pb.GetStatVarSummaryResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }
