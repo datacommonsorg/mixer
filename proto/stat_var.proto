@@ -183,7 +183,7 @@ message GetStatVarPathResponse {
   repeated string path = 1;
 }
 
-message SearchResultSVG {  
+message SearchResultSVG {
   // DCID of the stat var group
   string dcid = 1;
   // Name of the stat var group
