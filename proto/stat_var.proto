@@ -207,7 +207,8 @@ message SearchStatVarResponse {
   repeated EntityInfo stat_vars = 1;
   // A list of stat var group results ranked by relevance.
   repeated SearchResultSVG stat_var_groups = 2;
-  // A list of strings in the names of the results that match the search tokens
+  // A list of unique strings in the names of the results that match the search
+  // tokens
   repeated string matches = 3;
 }
 

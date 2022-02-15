@@ -238,7 +238,10 @@ func searchTokens(
 		}
 	}
 
+	// matchingStrings is a set where matches will be keys and those keys will be
+	// mapped to an empty struct
 	matchingStrings := map[string]struct{}{}
+	exists := struct{}{}
 	// Only select sv and svg that matches all the tokens
 	svList := []*pb.EntityInfo{}
 	for sv, matches := range svMatches {
@@ -248,7 +251,7 @@ func searchTokens(
 				Name: index.Ranking[sv].RankingName,
 			})
 			for _, match := range matches {
-				matchingStrings[match] = struct{}{}
+				matchingStrings[match] = exists
 			}
 		}
 	}

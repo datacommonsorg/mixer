@@ -639,7 +639,8 @@ type SearchStatVarResponse struct {
 	StatVars []*EntityInfo `protobuf:"bytes,1,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
 	// A list of stat var group results ranked by relevance.
 	StatVarGroups []*SearchResultSVG `protobuf:"bytes,2,rep,name=stat_var_groups,json=statVarGroups,proto3" json:"stat_var_groups,omitempty"`
-	// A list of strings in the names of the results that match the search tokens
+	// A list of unique strings in the names of the results that match the search
+	// tokens
 	Matches []string `protobuf:"bytes,3,rep,name=matches,proto3" json:"matches,omitempty"`
 }
 
