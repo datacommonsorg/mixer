@@ -55,7 +55,7 @@ func GetPlaceStatVars(
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
 	}
 	rowList := bigtable.BuildPlaceStatsVarKey(dcids)
-	baseDataList, branchData, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -73,7 +73,6 @@ func GetPlaceStatVars(
 			return data.StatVarIds, nil
 		},
 		nil,
-		true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -82,13 +81,10 @@ func GetPlaceStatVars(
 	for _, dcid := range dcids {
 		resp.Places[dcid] = &pb.StatVars{StatVars: []string{}}
 		allStatVars := [][]string{}
-		for _, baseData := range baseDataList {
+		for _, baseData := range btDataList {
 			if baseData[dcid] != nil {
 				allStatVars = append(allStatVars, baseData[dcid].([]string))
 			}
-		}
-		if branchData[dcid] != nil {
-			allStatVars = append(allStatVars, branchData[dcid].([]string))
 		}
 		// Also merge from memdb
 		if !store.MemDb.IsEmpty() {

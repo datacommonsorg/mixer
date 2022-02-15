@@ -18,7 +18,6 @@ import (
 	"context"
 	"testing"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -92,7 +91,16 @@ func TestMerge(t *testing.T) {
 			t.Errorf("SetupBigtable(...) = %v", err)
 		}
 
-		store := store.NewStore(nil, nil, []*cbt.Table{baseTable}, branchTable, false)
+		store := store.NewStore(
+			nil,
+			nil,
+			[]*bigtable.Table{
+				bigtable.NewTable("borgcron_base", baseTable),
+				bigtable.NewTable("borgcron_branch", branchTable),
+			},
+			"borgcron_branch",
+			false,
+		)
 
 		got, err := GetPropertyLabels(ctx,
 			&pb.GetPropertyLabelsRequest{

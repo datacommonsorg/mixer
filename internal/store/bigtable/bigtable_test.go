@@ -33,20 +33,19 @@ func TestReadOneTable(t *testing.T) {
 		t.Errorf("setupBigtable got error: %v", err)
 	}
 	rowList := cbt.RowList{"key1", "key2"}
-	baseData, _, err := Read(
+	btData, err := Read(
 		ctx,
-		NewGroup([]*cbt.Table{btTable}, nil, false),
+		NewGroup([]*Table{{name: "test", table: btTable}}, "", false),
 		rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			return string(jsonRaw), nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
-	for dcid, result := range baseData[0] {
+	for dcid, result := range btData[0] {
 		if diff := cmp.Diff(data[dcid], result.(string)); diff != "" {
 			t.Errorf("read rows got diff from table data %+v", diff)
 		}
@@ -77,26 +76,27 @@ func TestReadTwoTables(t *testing.T) {
 	}
 
 	rowList := cbt.RowList{"key1", "key2"}
-	baseDataList, branchData, err := Read(
+	dataList, err := Read(
 		ctx,
-		NewGroup([]*cbt.Table{btTable1}, btTable2, false),
+		NewGroup(
+			[]*Table{
+				{name: "t1", table: btTable1},
+				{name: "t2", table: btTable2},
+			},
+			"t2",
+			false,
+		),
 		rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 			return string(jsonRaw), nil
 		},
 		nil,
-		true, /* readBranch */
 	)
 	if err != nil {
 		t.Errorf("btReadRowsParallel got error: %v", err)
 	}
-	for dcid, result := range baseDataList[0] {
+	for dcid, result := range dataList[0] {
 		if diff := cmp.Diff(data1[dcid], result.(string)); diff != "" {
-			t.Errorf("read rows got diff from table data %+v", diff)
-		}
-	}
-	for dcid, result := range branchData {
-		if diff := cmp.Diff(data2[dcid], result.(string)); diff != "" {
 			t.Errorf("read rows got diff from table data %+v", diff)
 		}
 	}

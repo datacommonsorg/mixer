@@ -22,7 +22,6 @@ import (
 	"log"
 	"net"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
@@ -120,7 +119,7 @@ func main() {
 	}
 
 	// Base Bigtable cache
-	var baseTables []*cbt.Table
+	var tables []*bigtable.Table
 	if *useBaseBt {
 		if *useImportGroup {
 			var c bigtable.TableConfig
@@ -128,24 +127,20 @@ func main() {
 				log.Fatalf("Failed to load import group tables config")
 			}
 			tableNames := c.Tables
-			bigtable.SortTables(tableNames)
-			for _, t := range tableNames {
-				baseTable, err := bigtable.NewTable(ctx, *storeProject, baseBtInstance, t)
+			for _, name := range tableNames {
+				t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, name)
 				if err != nil {
 					log.Fatalf("Failed to create BigTable client: %v", err)
 				}
-				baseTables = append(baseTables, baseTable)
-				metadata.BaseTables = append(metadata.BaseTables, t)
+				tables = append(tables, bigtable.NewTable(name, t))
 			}
-
 		} else {
 			// Base cache
-			baseTable, err := bigtable.NewTable(ctx, *storeProject, baseBtInstance, *baseTableName)
+			t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)
 			if err != nil {
 				log.Fatalf("Failed to create BigTable client: %v", err)
 			}
-			baseTables = append(baseTables, baseTable)
-			metadata.BaseTables = []string{*baseTableName}
+			tables = append(tables, bigtable.NewTable(*baseTableName, t))
 		}
 	}
 
@@ -175,22 +170,22 @@ func main() {
 		}
 
 		// Branch Bigtable cache
-		var branchTable *cbt.Table
+		var branchTableName string
 		if *useBranchBt {
-			branchTableName, err := server.ReadBranchTableName(
+			branchTableName, err = server.ReadBranchTableName(
 				ctx, branchCacheVersionBucket, branchCacheVersionFile)
 			if err != nil {
 				log.Fatalf("Failed to read branch cache folder: %v", err)
 			}
-			branchTable, err = bigtable.NewTable(ctx, *storeProject, branchBtInstance, branchTableName)
+			branchTable, err := bigtable.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
 			if err != nil {
 				log.Fatalf("Failed to create BigTable client: %v", err)
 			}
-			metadata.BranchTable = branchTableName
+			tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 		}
 
 		// Store
-		store := store.NewStore(bqClient, memDb, baseTables, branchTable, *useImportGroup)
+		store := store.NewStore(bqClient, memDb, tables, branchTableName, *useImportGroup)
 		// Cache.
 		var cache *resource.Cache
 		if *serveMixerService {
@@ -216,7 +211,7 @@ func main() {
 
 	// Register for Recon Service.
 	if *serveReconService {
-		store := store.NewStore(nil, nil, baseTables, nil, *useImportGroup)
+		store := store.NewStore(nil, nil, tables, "", *useImportGroup)
 		reconServer := server.NewReconServer(store)
 		pb.RegisterReconServer(srv, reconServer)
 	}

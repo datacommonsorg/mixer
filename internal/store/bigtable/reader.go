@@ -77,15 +77,12 @@ func readRowFn(
 	}
 }
 
-// Read reads BigTable rows from base Bigtable and branch
-// Bigtable in parallel.
+// Read reads BigTable rows from multiple Bigtable in parallel.
 //
 // Reading multiple rows is chunked as the size limit for RowSet is 500KB.
 //
-//
 // Args:
 // baseBt: The bigtable that holds the base cache
-// branchBt: The bigtable that holds the branch cache.
 // rowSet: BigTable rowSet containing the row keys.
 // action: A callback function that converts the raw bytes into appropriate
 //		go struct based on the cache content.
@@ -98,14 +95,10 @@ func Read(
 	rowSet cbt.RowSet,
 	action func(string, []byte, bool) (interface{}, error),
 	getToken func(string) (string, error),
-	readBranch bool,
-) (
-	[]map[string]interface{}, map[string]interface{}, error,
-) {
-	baseTables := btGroup.BaseTables()
-	branchTable := btGroup.BranchTable()
-	if len(baseTables) == 0 && branchTable == nil {
-		return nil, nil, status.Errorf(
+) ([]map[string]interface{}, error) {
+	tables := btGroup.Tables()
+	if len(tables) == 0 {
+		return nil, status.Errorf(
 			codes.NotFound, "Bigtable instance is not specified")
 	}
 
@@ -121,19 +114,16 @@ func Read(
 		rowRangeList = rowSet.(cbt.RowRangeList)
 		rowSetSize = len(rowRangeList)
 	default:
-		return nil, nil, status.Errorf(
-			codes.Internal, "Unsupported RowSet type: %v", v)
+		return nil, status.Errorf(codes.Internal, "Unsupported RowSet type: %v", v)
 	}
 	if rowSetSize == 0 {
-		return nil, nil, nil
+		return nil, nil
 	}
 
-	baseChans := make(map[int]chan chanData)
-	for i := 0; i < len(baseTables); i++ {
-		baseChans[i] = make(chan chanData, rowSetSize)
+	chans := make(map[int]chan chanData)
+	for i := 0; i < len(tables); i++ {
+		chans[i] = make(chan chanData, rowSetSize)
 	}
-	branchChan := make(chan chanData, rowSetSize)
-
 	errs, errCtx := errgroup.WithContext(ctx)
 	for i := 0; i <= rowSetSize/BtBatchQuerySize; i++ {
 		left := i * BtBatchQuerySize
@@ -148,45 +138,32 @@ func Read(
 			rowSetPart = rowRangeList[left:right]
 		}
 		// Read from all the given tables.
-		if len(baseTables) > 0 {
-			for j := 0; j < len(baseTables); j++ {
+		if len(tables) > 0 {
+			for j := 0; j < len(tables); j++ {
 				j := j
-				if baseTables[j] != nil {
-					errs.Go(readRowFn(errCtx, baseTables[j], rowSetPart, getToken, action, baseChans[j], btGroup.isProto))
+				if tables[j] != nil {
+					errs.Go(readRowFn(errCtx, tables[j], rowSetPart, getToken, action, chans[j], btGroup.isProto))
 				}
 			}
-		}
-		if readBranch && branchTable != nil {
-			errs.Go(readRowFn(errCtx, branchTable, rowSetPart, getToken, action, branchChan, btGroup.isProto))
 		}
 	}
 	err := errs.Wait()
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	for i := 0; i < len(baseChans); i++ {
-		close(baseChans[i])
+	for i := 0; i < len(chans); i++ {
+		close(chans[i])
 	}
-	close(branchChan)
 
-	baseResult := []map[string]interface{}{}
-	if baseTables != nil {
-		for i := 0; i < len(baseTables); i++ {
+	result := []map[string]interface{}{}
+	if tables != nil {
+		for i := 0; i < len(tables); i++ {
 			item := map[string]interface{}{}
-			for elem := range baseChans[i] {
+			for elem := range chans[i] {
 				item[elem.token] = elem.data
 			}
-			baseResult = append(baseResult, item)
+			result = append(result, item)
 		}
 	}
-
-	branchResult := map[string]interface{}{}
-	if readBranch {
-		if branchTable != nil {
-			for elem := range branchChan {
-				branchResult[elem.token] = elem.data
-			}
-		}
-	}
-	return baseResult, branchResult, nil
+	return result, nil
 }

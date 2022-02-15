@@ -32,7 +32,7 @@ func GetStatVarSummary(
 	*pb.GetStatVarSummaryResponse, error) {
 	sv := in.GetStatVars()
 	rowList := bigtable.BuildStatVarSummaryKey(sv)
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -50,7 +50,6 @@ func GetStatVarSummary(
 			return &statVarSummary, nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -62,8 +61,8 @@ func GetStatVarSummary(
 	// 1. "place_type_summary": For a given place type, pick the Bigtable with the
 	//    most places.
 	// 2. "provenance_summary": Merge provenances from all the Bigtables.
-	for _, baseData := range baseDataList {
-		for dcid, data := range baseData {
+	for _, btData := range btDataList {
+		for dcid, data := range btData {
 			svs, ok := data.(*pb.StatVarSummary)
 			if !ok {
 				return nil, status.Errorf(codes.Internal, "Can not read StatVarSummary")
