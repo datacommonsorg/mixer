@@ -160,10 +160,10 @@ func ResolveEntities(
 					reconEntityStore[sourceID][idProp] = re
 				}
 			}
-			// Only process data from one preferred import group.
-			// TODO: merge entities from differente import groups.
-			break
 		}
+		// Only process data from one preferred import group.
+		// TODO: merge entities from differente import groups.
+		break
 	}
 
 	// Assemble response.
