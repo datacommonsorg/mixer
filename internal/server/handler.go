@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"os"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/biopage"
@@ -130,9 +131,14 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 		return nil, err
 	}
 	result := []map[string]string{}
-	for dcid, places := range placesInData {
-		for _, place := range places {
-			result = append(result, map[string]string{"dcid": dcid, "place": place})
+	parents := []string{}
+	for dcid := range placesInData {
+		parents = append(parents, dcid)
+	}
+	sort.Strings(parents)
+	for _, parent := range parents {
+		for _, child := range placesInData[parent] {
+			result = append(result, map[string]string{"dcid": parent, "place": child})
 		}
 	}
 
