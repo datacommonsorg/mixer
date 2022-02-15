@@ -30,67 +30,78 @@ import (
 func TestGetPlacesIn(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
+
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "get_places_in")
 
-	for _, c := range []struct {
-		goldenFile string
-		dcids      []string
-		typ        string
-	}{
-		{
-			"usa-state.json",
-			[]string{"country/USA"},
-			"State",
-		},
-		{
-			"state_county.json",
-			[]string{"geoId/05", "geoId/06"},
-			"County",
-		},
-		{
-			"county_zip.json",
-			[]string{"geoId/06085"},
-			"CensusZipCodeTabulationArea",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetPlacesInRequest{
-			Dcids:     c.dcids,
-			PlaceType: c.typ,
-		}
-		resp, err := client.GetPlacesIn(ctx, req)
+
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetPlacesIn: %s", err)
-			continue
-		}
-		var result []map[string]string
-		err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-		if err != nil {
-			t.Errorf("Can not Unmarshal payload")
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
 
-		goldenFile := path.Join(goldenPath, c.goldenFile)
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(result, goldenPath, c.goldenFile)
-			continue
-		}
+		for _, c := range []struct {
+			goldenFile string
+			dcids      []string
+			typ        string
+		}{
+			{
+				"usa-state.json",
+				[]string{"country/USA"},
+				"State",
+			},
+			{
+				"state_county.json",
+				[]string{"geoId/05", "geoId/06"},
+				"County",
+			},
+			{
+				"county_zip.json",
+				[]string{"geoId/06085"},
+				"CensusZipCodeTabulationArea",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			req := &pb.GetPlacesInRequest{
+				Dcids:     c.dcids,
+				PlaceType: c.typ,
+			}
+			resp, err := client.GetPlacesIn(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetPlacesIn: %s", err)
+				continue
+			}
+			var result []map[string]string
+			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
+			if err != nil {
+				t.Errorf("Can not Unmarshal payload")
+				continue
+			}
 
-		var expected []map[string]string
-		file, _ := ioutil.ReadFile(goldenFile)
-		err = json.Unmarshal(file, &expected)
-		if err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(result, expected); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			goldenFile := path.Join(goldenPath, c.goldenFile)
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected []map[string]string
+			file, _ := ioutil.ReadFile(goldenFile)
+			err = json.Unmarshal(file, &expected)
+			if err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(result, expected); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

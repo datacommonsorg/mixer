@@ -38,7 +38,7 @@ func GetChildPlaces(
 	ctx context.Context, s *store.Store, parentPlace string, childType string) (
 	[]string, error,
 ) {
-	rowList := bigtable.BuildPlaceInKey([]string{parentPlace}, childType)
+	rowList := bigtable.BuildPlacesInKey([]string{parentPlace}, childType)
 	// Place relations are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
 		ctx,
@@ -76,7 +76,7 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
-	rowList := bigtable.BuildPlaceInKey(dcids, placeType)
+	rowList := bigtable.BuildPlacesInKey(dcids, placeType)
 
 	// Place relations are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
@@ -84,6 +84,11 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 		store.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			if isProto {
+				var containedInPlaces pb.ContainedPlaces
+				err := proto.Unmarshal(jsonRaw, &containedInPlaces)
+				return containedInPlaces.Dcids, err
+			}
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
@@ -92,11 +97,23 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 		return nil, err
 	}
 	results := []map[string]string{}
+	processed := map[string]struct{}{}
 	for _, dcid := range dcids {
-		if btDataList[0][dcid] != nil {
-			for _, place := range btDataList[0][dcid].([]string) {
+		if _, ok := processed[dcid]; ok {
+			continue
+		}
+
+		// Go through (ordered) import groups one by one, stop when data is found.
+		for _, baseData := range btDataList {
+			if _, ok := baseData[dcid]; !ok {
+				continue
+			}
+
+			for _, place := range baseData[dcid].([]string) {
 				results = append(results, map[string]string{"dcid": dcid, "place": place})
 			}
+			processed[dcid] = struct{}{}
+			break
 		}
 	}
 
@@ -143,13 +160,17 @@ func GetRelatedLocations(
 	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
 
 	rowList := cbt.RowList{}
-	for _, statVarDcid := range in.GetStatVarDcids() {
+	for _, statVar := range in.GetStatVarDcids() {
 		if sameAncestor {
-			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s^%s", prefix, in.GetDcid(), in.GetWithinPlace(), statVarDcid))
+			rowList = append(
+				rowList,
+				fmt.Sprintf("%s%s^%s^%s", prefix, in.GetDcid(), in.GetWithinPlace(), statVar),
+			)
 		} else {
-			rowList = append(rowList, fmt.Sprintf(
-				"%s%s^%s", prefix, in.GetDcid(), statVarDcid))
+			rowList = append(
+				rowList,
+				fmt.Sprintf("%s%s^%s", prefix, in.GetDcid(), statVar),
+			)
 		}
 	}
 	// RelatedPlace cache only exists in base cache
@@ -183,10 +204,15 @@ func GetRelatedLocations(
 		return nil, err
 	}
 	result := &pb.GetRelatedLocationsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for statVar, data := range btDataList[0] {
-		if data == nil {
-			result.Data[statVar] = nil
-		} else {
+	for _, btData := range btDataList {
+		for statVar, data := range btData {
+			if _, ok := result.Data[statVar]; ok {
+				continue
+			}
+			if data == nil {
+				result.Data[statVar] = &pb.RelatedPlacesInfo{}
+				continue
+			}
 			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
 		}
 	}
@@ -264,10 +290,15 @@ func GetLocationsRankings(
 	}
 
 	result := &pb.GetLocationsRankingsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for statVar, data := range btDataList[0] {
-		if data == nil {
-			result.Data[statVar] = nil
-		} else {
+	for _, btData := range btDataList {
+		for statVar, data := range btData {
+			if _, ok := result.Data[statVar]; ok {
+				continue
+			}
+			if data == nil {
+				result.Data[statVar] = &pb.RelatedPlacesInfo{}
+				continue
+			}
 			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
 		}
 	}
@@ -311,40 +342,48 @@ func GetPlaceMetadata(
 	}
 	result := map[string]*pb.PlaceMetadata{}
 	for _, place := range places {
-		if btDataList[0][place] == nil {
+		if _, ok := result[place]; ok {
 			continue
 		}
-		raw := btDataList[0][place].(*pb.PlaceMetadataCache)
-		processed := pb.PlaceMetadata{}
-		metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
-		for _, info := range raw.Places {
-			metaMap[info.Dcid] = info
-		}
-		processed.Self = &pb.PlaceMetadata_PlaceInfo{
-			Dcid: place,
-			Name: metaMap[place].Name,
-			Type: metaMap[place].Type,
-		}
-		visited := map[string]struct{}{}
-		parents := metaMap[place].Parents
-		for {
-			if len(parents) == 0 {
-				break
-			}
-			curr := parents[0]
-			parents = parents[1:]
-			if _, ok := visited[curr]; ok {
+		for _, btData := range btDataList {
+			if btData[place] == nil {
 				continue
 			}
-			processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
-				Dcid: curr,
-				Name: metaMap[curr].Name,
-				Type: metaMap[curr].Type,
-			})
-			visited[curr] = struct{}{}
-			parents = append(parents, metaMap[curr].Parents...)
+			raw, ok := btData[place].(*pb.PlaceMetadataCache)
+			if !ok {
+				continue
+			}
+			processed := pb.PlaceMetadata{}
+			metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
+			for _, info := range raw.Places {
+				metaMap[info.Dcid] = info
+			}
+			processed.Self = &pb.PlaceMetadata_PlaceInfo{
+				Dcid: place,
+				Name: metaMap[place].Name,
+				Type: metaMap[place].Type,
+			}
+			visited := map[string]struct{}{}
+			parents := metaMap[place].Parents
+			for {
+				if len(parents) == 0 {
+					break
+				}
+				curr := parents[0]
+				parents = parents[1:]
+				if _, ok := visited[curr]; ok {
+					continue
+				}
+				processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
+					Dcid: curr,
+					Name: metaMap[curr].Name,
+					Type: metaMap[curr].Type,
+				})
+				visited[curr] = struct{}{}
+				parents = append(parents, metaMap[curr].Parents...)
+			}
+			result[place] = &processed
 		}
-		result[place] = &processed
 	}
 	return &pb.GetPlaceMetadataResponse{Data: result}, nil
 }

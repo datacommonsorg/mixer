@@ -168,10 +168,6 @@ func NewMixerServer(
 }
 
 // NewReconServer creates a new recon server instance.
-func NewReconServer(
-	baseTables []*bigtable.Table,
-) *Server {
-	return &Server{
-		store: store.NewStore(nil, nil, baseTables, "", false),
-	}
+func NewReconServer(store *store.Store) *Server {
+	return &Server{store: store}
 }

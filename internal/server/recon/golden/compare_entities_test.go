@@ -29,44 +29,52 @@ import (
 func TestCompareEntities(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	_, client, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up recon client: %s", err)
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "compare_entities")
-
-	for _, c := range []struct {
-		req        *pb.CompareEntitiesRequest
-		goldenFile string
-	}{
-		// TODO(spaceenter): Add real test case.
-		{
-			&pb.CompareEntitiesRequest{},
-			"result.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		resp, err := client.CompareEntities(ctx, c.req)
+		_, client, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not CompareEntities: %s", err)
-			continue
+			t.Fatalf("Failed to set up recon client: %s", err)
 		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "compare_entities")
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+		for _, c := range []struct {
+			req        *pb.CompareEntitiesRequest
+			goldenFile string
+		}{
+			// TODO(spaceenter): Add real test case.
+			{
+				&pb.CompareEntitiesRequest{},
+				"result.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.CompareEntities(ctx, c.req)
+			if err != nil {
+				t.Errorf("could not CompareEntities: %s", err)
+				continue
+			}
 
-		var expected pb.CompareEntitiesResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			var expected pb.CompareEntitiesResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

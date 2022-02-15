@@ -124,17 +124,6 @@ func (g *Group) UpdateBranchTable(branchTable *Table) {
 	}
 }
 
-// NewGroupWithPreferredBase creates a new group with only one base table.
-// The base table is the preferred Bigtable, which is used for data that needs
-// not be merged.
-func NewGroupWithPreferredBase(g *Group) *Group {
-	return &Group{
-		tables:          g.tables[:1],
-		branchTableName: "",
-		isProto:         g.isProto,
-	}
-}
-
 // NewTable creates a new cbt.Table instance.
 func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
 	*cbt.Table, error) {

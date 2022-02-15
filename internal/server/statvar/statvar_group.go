@@ -140,7 +140,7 @@ func GetStatVarGroup(
 		// group, so no merge needed.
 		btDataList, err := bigtable.Read(
 			ctx,
-			bigtable.NewGroupWithPreferredBase(store.BtGroup),
+			store.BtGroup,
 			cbt.RowList{bigtable.BtStatVarGroup},
 			func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
 				var svgResp pb.StatVarGroups
@@ -161,7 +161,7 @@ func GetStatVarGroup(
 		if err != nil {
 			return nil, err
 		}
-		result = btDataList[0]["_"].(*pb.StatVarGroups)
+		result = btDataList[len(store.BtGroup.Tables())-1]["_"].(*pb.StatVarGroups)
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
 	}
@@ -177,8 +177,7 @@ func GetStatVarGroupNode(
 	in *pb.GetStatVarGroupNodeRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (
-	*pb.StatVarGroupNode, error) {
+) (*pb.StatVarGroupNode, error) {
 	places := in.GetPlaces()
 	svg := in.GetStatVarGroup()
 
@@ -258,7 +257,7 @@ func GetStatVarGroupNode(
 					Id:                    "dc/g/Private",
 					SpecializedEntity:     store.MemDb.GetManifest().ImportName,
 					DisplayName:           store.MemDb.GetManifest().ImportName,
-					NumDescendentStatVars: int32(len(hasDataStatVars) + len(noDataStatVars)),
+					NumDescendentStatVars: int64(len(hasDataStatVars) + len(noDataStatVars)),
 				},
 			)
 		} else if svg == "dc/g/Private" {

@@ -188,9 +188,10 @@ func newClient(
 	memDb *memdb.MemDb,
 	useImportGroup bool,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	s := store.NewStore(bqClient, memDb, tables, branchTableName, useImportGroup)
-	mixerServer := server.NewMixerServer(s, metadata, cache)
-	reconServer := server.NewReconServer(tables)
+	mixerStore := store.NewStore(bqClient, memDb, tables, branchTableName, useImportGroup)
+	reconStore := store.NewStore(nil, nil, tables, "", useImportGroup)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cache)
+	reconServer := server.NewReconServer(reconStore)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, mixerServer)
 	pb.RegisterReconServer(srv, reconServer)

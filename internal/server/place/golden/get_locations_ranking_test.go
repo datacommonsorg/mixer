@@ -29,77 +29,86 @@ import (
 func TestGetLocationsRankings(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_locations_ranking")
 
-	for _, c := range []struct {
-		goldenFile   string
-		placeType    string
-		withinPlace  string
-		isPerCapita  bool
-		statVarDcids []string
-	}{
-		{
-			"country.json",
-			"Country",
-			"",
-			false,
-			[]string{
-				"Count_Person",
-				"Median_Income_Person",
-			},
-		},
-		{
-			"california.json",
-			"County",
-			"geoId/06",
-			false,
-			[]string{
-				"Count_Person",
-				"Median_Age_Person",
-				"Count_CriminalActivities_CombinedCrime",
-			},
-		},
-		{
-			"crime_percapita.json",
-			"City",
-			"geoId/06",
-			true,
-			[]string{
-				"Count_CriminalActivities_CombinedCrime",
-			},
-		},
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
 	} {
-		req := &pb.GetLocationsRankingsRequest{
-			PlaceType:    c.placeType,
-			WithinPlace:  c.withinPlace,
-			IsPerCapita:  c.isPerCapita,
-			StatVarDcids: c.statVarDcids,
-		}
-		response, err := client.GetLocationsRankings(ctx, req)
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetLocationsRankings: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_locations_ranking")
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(response, goldenPath, c.goldenFile)
-			continue
-		}
+		for _, c := range []struct {
+			goldenFile   string
+			placeType    string
+			withinPlace  string
+			isPerCapita  bool
+			statVarDcids []string
+		}{
+			{
+				"country.json",
+				"Country",
+				"",
+				false,
+				[]string{
+					"Count_Person",
+					"Median_Income_Person",
+				},
+			},
+			{
+				"california.json",
+				"County",
+				"geoId/06",
+				false,
+				[]string{
+					"Count_Person",
+					"Median_Age_Person",
+					"Count_CriminalActivities_CombinedCrime",
+				},
+			},
+			{
+				"crime_percapita.json",
+				"City",
+				"geoId/06",
+				true,
+				[]string{
+					"Count_CriminalActivities_CombinedCrime",
+				},
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			req := &pb.GetLocationsRankingsRequest{
+				PlaceType:    c.placeType,
+				WithinPlace:  c.withinPlace,
+				IsPerCapita:  c.isPerCapita,
+				StatVarDcids: c.statVarDcids,
+			}
+			response, err := client.GetLocationsRankings(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetLocationsRankings: %s", err)
+				continue
+			}
 
-		var expected pb.GetLocationsRankingsResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
-			continue
-		}
-		if diff := cmp.Diff(response, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(response, goldenPath, c.goldenFile)
+				continue
+			}
+
+			var expected pb.GetLocationsRankingsResponse
+			if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(response, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

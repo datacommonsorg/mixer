@@ -5,31 +5,31 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": 5326
+      "numDescendentStatVars": "5326"
     },
     {
       "id": "dc/g/Household",
       "specializedEntity": "Household",
       "displayName": "Household",
-      "numDescendentStatVars": 1285
+      "numDescendentStatVars": "1285"
     },
     {
       "id": "dc/g/Housing",
       "specializedEntity": "Housing",
       "displayName": "Housing",
-      "numDescendentStatVars": 169
+      "numDescendentStatVars": "169"
     },
     {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
       "displayName": "Employment",
-      "numDescendentStatVars": 5426
+      "numDescendentStatVars": "5426"
     },
     {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "numDescendentStatVars": 476
+      "numDescendentStatVars": "476"
     },
     {
       "id": "dc/g/Agriculture",
@@ -40,50 +40,50 @@
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": 45
+      "numDescendentStatVars": "45"
     },
     {
       "id": "dc/g/Energy",
       "specializedEntity": "Energy",
       "displayName": "Energy",
-      "numDescendentStatVars": 1197
+      "numDescendentStatVars": "1197"
     },
     {
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
       "displayName": "Crime",
-      "numDescendentStatVars": 159
+      "numDescendentStatVars": "159"
     },
     {
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
       "displayName": "Economics",
-      "numDescendentStatVars": 26
+      "numDescendentStatVars": "26"
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "numDescendentStatVars": 719
+      "numDescendentStatVars": "719"
     },
     {
       "id": "dc/g/MilitaryService",
       "specializedEntity": "Military Service",
       "displayName": "Military Service",
-      "numDescendentStatVars": 860
+      "numDescendentStatVars": "860"
     },
     {
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": 279
+      "numDescendentStatVars": "279"
     },
     {
       "id": "dc/g/Private",
       "specializedEntity": "Test Private Import",
       "displayName": "Test Private Import",
-      "numDescendentStatVars": 10
+      "numDescendentStatVars": "10"
     }
   ],
-  "numDescendentStatVars": 8692
+  "numDescendentStatVars": "8692"
 }

@@ -313,9 +313,14 @@ func applyLimit(dcid string, t *pb.Triples, limit int) {
 						tmp[nt] = append(tmp[nt], e)
 					}
 				}
+				keys := []string{}
+				for k := range tmp {
+					keys = append(keys, k)
+				}
+				sort.Strings(keys)
 				c.Entities = []*pb.EntityInfo{}
-				for _, entities := range tmp {
-					c.Entities = append(c.Entities, entities...)
+				for _, k := range keys {
+					c.Entities = append(c.Entities, tmp[k]...)
 				}
 			}
 		}

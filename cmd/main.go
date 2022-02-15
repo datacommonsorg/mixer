@@ -211,7 +211,8 @@ func main() {
 
 	// Register for Recon Service.
 	if *serveReconService {
-		reconServer := server.NewReconServer(tables)
+		store := store.NewStore(nil, nil, tables, "", *useImportGroup)
+		reconServer := server.NewReconServer(store)
 		pb.RegisterReconServer(srv, reconServer)
 	}
 

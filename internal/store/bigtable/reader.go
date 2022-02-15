@@ -42,7 +42,7 @@ func readRowFn(
 	getToken func(string) (string, error),
 	action func(string, []byte, bool) (interface{}, error),
 	elemChan chan chanData,
-	proto bool,
+	isProto bool,
 ) func() error {
 	return func() error {
 		if err := btTable.ReadRows(errCtx, rowSetPart,
@@ -64,7 +64,7 @@ func readRowFn(
 				if err != nil {
 					return false
 				}
-				elem, err := action(token, jsonRaw, proto)
+				elem, err := action(token, jsonRaw, isProto)
 				if err != nil {
 					return false
 				}
