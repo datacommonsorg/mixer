@@ -284,9 +284,12 @@ func searchTokens(
 	})
 
 	matchingStringsList := []string{}
-	for match, _ := range matchingStrings {
+	for match := range matchingStrings {
 		matchingStringsList = append(matchingStringsList, match)
 	}
+	sort.SliceStable(matchingStringsList, func(i, j int) bool {
+		return matchingStringsList[i] < matchingStringsList[j]
+	})
 
 	return svList, svgList, matchingStringsList
 }

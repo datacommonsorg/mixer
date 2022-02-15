@@ -163,7 +163,7 @@ func TestSearchTokens(t *testing.T) {
 				},
 			},
 			wantSvg:     []*pb.EntityInfo{},
-			wantMatches: []string{"ab1", "token2", "ac3"},
+			wantMatches: []string{"ab1", "ac3", "token2"},
 		},
 	} {
 		sv, svg, matches := searchTokens(c.tokens, c.index)
@@ -173,7 +173,7 @@ func TestSearchTokens(t *testing.T) {
 		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.EntityInfo) bool { return x.Dcid < y.Dcid })); diff != "" {
 			t.Errorf("Stat var group list got diff %v", diff)
 		}
-		if diff := cmp.Diff(matches, c.wantMatches, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.EntityInfo) bool { return x.Dcid < y.Dcid })); diff != "" {
+		if diff := cmp.Diff(matches, c.wantMatches, protocmp.Transform()); diff != "" {
 			t.Errorf("Matches list got diff %v", diff)
 		}
 	}
