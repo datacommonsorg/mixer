@@ -31,7 +31,7 @@ func TestResolveEntities(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 	for _, opt := range []*e2e.TestOption{
-		// {},
+		{},
 		{UseImportGroup: true},
 	} {
 		_, client, err := e2e.Setup(opt)
