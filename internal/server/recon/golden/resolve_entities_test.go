@@ -30,64 +30,47 @@ import (
 func TestResolveEntities(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	_, client, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up recon client: %s", err)
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "resolve_entities")
+	for _, opt := range []*e2e.TestOption{
+		{},
+		{UseImportGroup: true},
+	} {
+		_, client, err := e2e.Setup(opt)
+		if err != nil {
+			t.Fatalf("Failed to set up recon client: %s", err)
+		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "resolve_entities")
 
-	for _, c := range []struct {
-		req        *pb.ResolveEntitiesRequest
-		goldenFile string
-	}{
-		{
-			&pb.ResolveEntitiesRequest{
-				Entities: []*pb.EntitySubGraph{
-					// BySubGraph: An entity resolved by wikidataId.
-					{
-						SourceId: "newId/SantaClaraCountyId",
-						GraphRepresentation: &pb.EntitySubGraph_SubGraph{
-							SubGraph: &pb.McfGraph{
-								Nodes: map[string]*pb.McfGraph_PropertyValues{
-									"newId/SantaClaraCountyId": {
-										Pvs: map[string]*pb.McfGraph_Values{
-											"wikidataId": {
-												TypedValues: []*pb.McfGraph_TypedValue{
-													{
-														Type:  pb.ValueType_TEXT.Enum(),
-														Value: proto.String("Q110739"),
+		for _, c := range []struct {
+			req        *pb.ResolveEntitiesRequest
+			goldenFile string
+		}{
+			{
+				&pb.ResolveEntitiesRequest{
+					Entities: []*pb.EntitySubGraph{
+						// BySubGraph: An entity resolved by wikidataId.
+						{
+							SourceId: "newId/SantaClaraCountyId",
+							GraphRepresentation: &pb.EntitySubGraph_SubGraph{
+								SubGraph: &pb.McfGraph{
+									Nodes: map[string]*pb.McfGraph_PropertyValues{
+										"newId/SantaClaraCountyId": {
+											Pvs: map[string]*pb.McfGraph_Values{
+												"wikidataId": {
+													TypedValues: []*pb.McfGraph_TypedValue{
+														{
+															Type:  pb.ValueType_TEXT.Enum(),
+															Value: proto.String("Q110739"),
+														},
 													},
 												},
-											},
-											"newId": {
-												TypedValues: []*pb.McfGraph_TypedValue{
-													{
-														Type:  pb.ValueType_TEXT.Enum(),
-														Value: proto.String("SantaClaraCountyId"),
-													},
-												},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-					// BySubGraph: A new entity that cannot be resolved to a DC entity.
-					{
-						SourceId: "newId/MarsPlanetId",
-						GraphRepresentation: &pb.EntitySubGraph_SubGraph{
-							SubGraph: &pb.McfGraph{
-								Nodes: map[string]*pb.McfGraph_PropertyValues{
-									"newId/MarsPlanetId": {
-										Pvs: map[string]*pb.McfGraph_Values{
-											"planetId": {
-												TypedValues: []*pb.McfGraph_TypedValue{
-													{
-														Type:  pb.ValueType_TEXT.Enum(),
-														Value: proto.String("Mars"),
+												"newId": {
+													TypedValues: []*pb.McfGraph_TypedValue{
+														{
+															Type:  pb.ValueType_TEXT.Enum(),
+															Value: proto.String("SantaClaraCountyId"),
+														},
 													},
 												},
 											},
@@ -96,29 +79,20 @@ func TestResolveEntities(t *testing.T) {
 								},
 							},
 						},
-					},
-					// BySubGraph: An entity with conflicting IDs: isoCode is used for resolving.
-					{
-						SourceId: "newId/VietnamId",
-						GraphRepresentation: &pb.EntitySubGraph_SubGraph{
-							SubGraph: &pb.McfGraph{
-								Nodes: map[string]*pb.McfGraph_PropertyValues{
-									"newId/VietnamId": {
-										Pvs: map[string]*pb.McfGraph_Values{
-											"isoCode": {
-												TypedValues: []*pb.McfGraph_TypedValue{
-													{
-														Type:  pb.ValueType_TEXT.Enum(),
-														Value: proto.String("VN"),
-													},
-												},
-											},
-											"wikidataId": {
-												TypedValues: []*pb.McfGraph_TypedValue{
-													{
-														Type: pb.ValueType_TEXT.Enum(),
-														// Wrong and conflicting wikidataId.
-														Value: proto.String("Q110739"),
+						// BySubGraph: A new entity that cannot be resolved to a DC entity.
+						{
+							SourceId: "newId/MarsPlanetId",
+							GraphRepresentation: &pb.EntitySubGraph_SubGraph{
+								SubGraph: &pb.McfGraph{
+									Nodes: map[string]*pb.McfGraph_PropertyValues{
+										"newId/MarsPlanetId": {
+											Pvs: map[string]*pb.McfGraph_Values{
+												"planetId": {
+													TypedValues: []*pb.McfGraph_TypedValue{
+														{
+															Type:  pb.ValueType_TEXT.Enum(),
+															Value: proto.String("Mars"),
+														},
 													},
 												},
 											},
@@ -127,57 +101,91 @@ func TestResolveEntities(t *testing.T) {
 								},
 							},
 						},
-					},
-					// ByEntityIds: An entity with conflicting IDs: geoId is used for resolving.
-					{
-						SourceId: "newId/SunnyvaleId",
-						GraphRepresentation: &pb.EntitySubGraph_EntityIds{
-							EntityIds: &pb.EntityIds{
-								Ids: []*pb.IdWithProperty{
-									{
-										Prop: "geoId",
-										Val:  "0677000",
+						// BySubGraph: An entity with conflicting IDs: isoCode is used for resolving.
+						{
+							SourceId: "newId/VietnamId",
+							GraphRepresentation: &pb.EntitySubGraph_SubGraph{
+								SubGraph: &pb.McfGraph{
+									Nodes: map[string]*pb.McfGraph_PropertyValues{
+										"newId/VietnamId": {
+											Pvs: map[string]*pb.McfGraph_Values{
+												"isoCode": {
+													TypedValues: []*pb.McfGraph_TypedValue{
+														{
+															Type:  pb.ValueType_TEXT.Enum(),
+															Value: proto.String("VN"),
+														},
+													},
+												},
+												"wikidataId": {
+													TypedValues: []*pb.McfGraph_TypedValue{
+														{
+															Type: pb.ValueType_TEXT.Enum(),
+															// Wrong and conflicting wikidataId.
+															Value: proto.String("Q110739"),
+														},
+													},
+												},
+											},
+										},
 									},
-									{
-										Prop: "wikidataId",
-										// Wrong and conflicting wikidataId.
-										Val: "Q110739",
+								},
+							},
+						},
+						// ByEntityIds: An entity with conflicting IDs: geoId is used for resolving.
+						{
+							SourceId: "newId/SunnyvaleId",
+							GraphRepresentation: &pb.EntitySubGraph_EntityIds{
+								EntityIds: &pb.EntityIds{
+									Ids: []*pb.IdWithProperty{
+										{
+											Prop: "geoId",
+											Val:  "0677000",
+										},
+										{
+											Prop: "wikidataId",
+											// Wrong and conflicting wikidataId.
+											Val: "Q110739",
+										},
 									},
 								},
 							},
 						},
 					},
 				},
+				"result.json",
 			},
-			"result.json",
-		},
-	} {
-		resp, err := client.ResolveEntities(ctx, c.req)
-		if err != nil {
-			t.Errorf("could not ResolveEntities: %s", err)
-			continue
-		}
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.ResolveEntities(ctx, c.req)
+			if err != nil {
+				t.Errorf("could not ResolveEntities: %s", err)
+				continue
+			}
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		var expected pb.ResolveEntitiesResponse
-		if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+			var expected pb.ResolveEntitiesResponse
+			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
 
-		cmpOpts := cmp.Options{
-			protocmp.Transform(),
-			protocmp.SortRepeated(func(a, b *pb.ResolveEntitiesResponse_ResolvedEntity) bool {
-				return a.GetSourceId() > b.GetSourceId()
-			}),
-		}
-		if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+			cmpOpts := cmp.Options{
+				protocmp.Transform(),
+				protocmp.SortRepeated(func(a, b *pb.ResolveEntitiesResponse_ResolvedEntity) bool {
+					return a.GetSourceId() > b.GetSourceId()
+				}),
+			}
+			if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

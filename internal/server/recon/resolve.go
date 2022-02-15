@@ -137,30 +137,33 @@ func ResolveEntities(
 	reconEntityStore := map[string]map[string]*pb.ReconEntities{}
 
 	// Group resolving cache result by source ID.
-	for idKey, reconEntities := range dataList[0] {
-		if reconEntities == nil {
-			continue
-		}
-
-		sourceIDs, ok := idKeyToSourceIDs[idKey]
-		if !ok {
-			continue
-		}
-
-		parts := strings.Split(idKey, "^")
-		if len(parts) != 2 {
-			return nil, status.Errorf(codes.Internal, "Invalid id key %s", idKey)
-		}
-		idProp := parts[0]
-
-		for _, sourceID := range sourceIDs {
-			if _, ok := reconEntityStore[sourceID]; !ok {
-				reconEntityStore[sourceID] = map[string]*pb.ReconEntities{}
+	for _, data := range dataList {
+		for idKey, reconEntities := range data {
+			if reconEntities == nil {
+				continue
 			}
-			if re := reconEntities.(*pb.ReconEntities); len(re.GetEntities()) > 0 {
-				reconEntityStore[sourceID][idProp] = re
+			sourceIDs, ok := idKeyToSourceIDs[idKey]
+			if !ok {
+				continue
+			}
+			parts := strings.Split(idKey, "^")
+			if len(parts) != 2 {
+				return nil, status.Errorf(codes.Internal, "Invalid id key %s", idKey)
+			}
+			idProp := parts[0]
+
+			for _, sourceID := range sourceIDs {
+				if _, ok := reconEntityStore[sourceID]; !ok {
+					reconEntityStore[sourceID] = map[string]*pb.ReconEntities{}
+				}
+				if re := reconEntities.(*pb.ReconEntities); len(re.GetEntities()) > 0 {
+					reconEntityStore[sourceID][idProp] = re
+				}
 			}
 		}
+		// Only process data from one preferred import group.
+		// TODO: merge entities from differente import groups.
+		break
 	}
 
 	// Assemble response.
