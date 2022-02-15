@@ -1088,5 +1088,10 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_Nativity-ForeignBorn_PlaceOfBirth",
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Nativity = Foreign Born, Place of Birth"
     }
+  ],
+  "matches": [
+    "Accommodation",
+    "Food",
+    "Services"
   ]
 }

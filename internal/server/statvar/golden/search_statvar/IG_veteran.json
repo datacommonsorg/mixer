@@ -1006,5 +1006,9 @@
       "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
       "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Veteran"
     }
+  ],
+  "matches": [
+    "Veteran",
+    "Veterans'"
   ]
 }

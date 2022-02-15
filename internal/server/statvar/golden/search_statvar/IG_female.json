@@ -14222,5 +14222,8 @@
       "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/470000",
       "name": "Person With Gender = Female, Occupation = Construction And Extraction Occupations"
     }
+  ],
+  "matches": [
+    "Female"
   ]
 }
