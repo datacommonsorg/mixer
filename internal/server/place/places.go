@@ -19,8 +19,6 @@ import (
 	"fmt"
 	"strings"
 
-	"encoding/json"
-
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -33,40 +31,9 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-// GetChildPlaces fetches child places given parent place and child place type.
-func GetChildPlaces(
-	ctx context.Context, s *store.Store, parentPlace string, childType string) (
-	[]string, error,
-) {
-	rowList := bigtable.BuildPlacesInKey([]string{parentPlace}, childType)
-	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataList, _, err := bigtable.Read(
-		ctx,
-		s.BtGroup,
-		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
-			if isProto {
-				var containedInPlaces pb.ContainedPlaces
-				err := proto.Unmarshal(jsonRaw, &containedInPlaces)
-				return containedInPlaces.Dcids, err
-			}
-			return strings.Split(string(jsonRaw), ","), nil
-		},
-		nil,
-		false, /* readBranch */
-	)
-	if err != nil {
-		return []string{}, err
-	}
-	if baseDataList[0][parentPlace] != nil {
-		return baseDataList[0][parentPlace].([]string), nil
-	}
-	return []string{}, err
-}
-
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.Store) (
-	*pb.GetPlacesInResponse, error) {
+	map[string][]string, error) {
 	dcids := in.GetDcids()
 	placeType := in.GetPlaceType()
 
@@ -98,32 +65,23 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 	if err != nil {
 		return nil, err
 	}
-	results := []map[string]string{}
+	result := map[string][]string{}
 	processed := map[string]struct{}{}
 	for _, dcid := range dcids {
 		if _, ok := processed[dcid]; ok {
 			continue
 		}
-
 		// Go through (ordered) import groups one by one, stop when data is found.
 		for _, baseData := range baseDataList {
 			if _, ok := baseData[dcid]; !ok {
 				continue
 			}
-
-			for _, place := range baseData[dcid].([]string) {
-				results = append(results, map[string]string{"dcid": dcid, "place": place})
-			}
+			result[dcid] = baseData[dcid].([]string)
 			processed[dcid] = struct{}{}
 			break
 		}
 	}
-
-	jsonRaw, err := json.Marshal(results)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetPlacesInResponse{Payload: string(jsonRaw)}, nil
+	return result, nil
 }
 
 // RelatedLocationsPrefixMap is a map from different scenarios to key prefix for
