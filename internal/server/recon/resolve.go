@@ -161,6 +161,7 @@ func ResolveEntities(
 				}
 			}
 			// Only process data from one preferred import group.
+			// TODO: merge entities from differente import groups.
 			break
 		}
 	}

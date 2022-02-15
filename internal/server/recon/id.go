@@ -76,6 +76,8 @@ func ResolveIds(
 	}
 
 	// Assemble result.
+	// TODO: merge ids from different tables. Now it only picks up IDs from
+	// one preferred table.
 	res := &pb.ResolveIdsResponse{}
 	existData := map[string]bool{}
 	for _, baseData := range baseDataList {
