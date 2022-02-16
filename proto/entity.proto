@@ -36,6 +36,7 @@ message EntityInfo {
 message EntityInfoCollection {
   repeated EntityInfo entities = 1;
   int64 total_count = 2; // Before potential truncation.
+  double total = 3;
 }
 
 message IdWithProperty {

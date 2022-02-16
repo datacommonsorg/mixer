@@ -1531,6 +1531,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Asian Alone Population",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_AsianAlone"
+        },
+        {
+          "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Asian Alone Population as Fraction of Count Person 15 To 50 Years Female Asian Alone",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_AsianAlone_AsAFractionOf_Count_Person_15To50Years_Female_AsianAlone"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years16To17_Gender-Female_PovertyStatus_Race-AsianAlone",
       "name": "Person With Age = 16 - 17 Years, Gender = Female, Poverty Status, Race = Asian Alone",
       "statVars": [
@@ -2013,6 +2027,16 @@
         {
           "name": "1 Years or More, Asian Alone Population",
           "dcid": "Count_Person_1OrMoreYears_AsianAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Asian Alone Population",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_AsianAlone"
         }
       ]
     },
@@ -2867,6 +2891,16 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Gender = Female, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "15 - 50 Years, Female, Asian Alone Population",
+          "dcid": "Count_Person_15To50Years_Female_AsianAlone"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_Race-AsianAlone",
       "name": "Person With Age = 16 Years or More, Gender = Female, Race = Asian Alone",
       "statVars": [
@@ -3407,6 +3441,18 @@
       "name": "Person With Age = 12 - 14 Years, Poverty Status, Race = Asian Alone"
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Race = Asian Alone"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Birth Event Status, Race = Asian Alone"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Gender, Race = Asian Alone"
+    },
+    {
       "dcid": "dc/g/Person_Age-Years16To17_Gender-Female_Race-AsianAlone",
       "name": "Person With Age = 16 - 17 Years, Gender = Female, Race = Asian Alone"
     },
@@ -3695,6 +3741,10 @@
       "name": "Person With Age = Years 5, Poverty Status, Race = Asian Alone"
     },
     {
+      "dcid": "dc/g/Person_Age_BirthEventStatus-BirthInThePast12Months_Race-AsianAlone",
+      "name": "Person With Age, Birth Event Status = Birth in The Past 12 Months, Race = Asian Alone"
+    },
+    {
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_Race-AsianAlone",
       "name": "Person With Age, Employment Status = Employed, Race = Asian Alone"
     },
@@ -3909,6 +3959,14 @@
     {
       "dcid": "dc/g/Person_Age-Years12To14_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
       "name": "Person With Age = 12 - 14 Years, Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender, Race = Asian Alone"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus_Gender-Female_Race-AsianAlone",
+      "name": "Person With Age = 15 - 50 Years, Birth Event Status, Gender = Female, Race = Asian Alone"
     },
     {
       "dcid": "dc/g/Person_Age-Years16To17_Gender_PovertyStatus-AbovePovertyLevelInThePast12Months_Race-AsianAlone",
@@ -4221,6 +4279,10 @@
     {
       "dcid": "dc/g/Person_Age-Years5_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
       "name": "Person With Age = Years 5, Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone"
+    },
+    {
+      "dcid": "dc/g/Person_Age_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-AsianAlone",
+      "name": "Person With Age, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Asian Alone"
     },
     {
       "dcid": "dc/g/Person_Age_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Race-AsianAlone",

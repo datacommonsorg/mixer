@@ -146,7 +146,7 @@
             "City"
           ],
           "dcid": "geoId/0627080",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "East Foothills",
@@ -155,7 +155,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/0620598",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Cupertino",
@@ -179,7 +179,7 @@
             "City"
           ],
           "dcid": "geoId/0610088",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/7he3522"
         },
         {
           "name": "Burbank",
@@ -197,7 +197,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/0601458",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/5n63hr1"
         }
       ]
     },

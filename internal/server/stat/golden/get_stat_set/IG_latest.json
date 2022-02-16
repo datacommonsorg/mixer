@@ -57,22 +57,22 @@
         "country/FRA": {
           "date": "2020",
           "value": 67391582,
-          "metaHash": 3901933017
+          "metaHash": 2687541803
         },
         "country/USA": {
           "date": "2020",
           "value": 331449281,
-          "metaHash": 2869271313
+          "metaHash": 2939218655
         },
         "geoId/06": {
           "date": "2020",
           "value": 39538223,
-          "metaHash": 319306388
+          "metaHash": 2939218655
         },
         "geoId/0649670": {
           "date": "2020",
           "value": 82376,
-          "metaHash": 2071679530
+          "metaHash": 2939218655
         }
       }
     },
@@ -82,17 +82,17 @@
         "country/USA": {
           "date": "2022-01",
           "value": 6513000,
-          "metaHash": 3994166642
+          "metaHash": 1232804294
         },
         "geoId/06": {
           "date": "2021-12",
           "value": 960384,
-          "metaHash": 2223217975
+          "metaHash": 3125519592
         },
         "geoId/0649670": {
           "date": "2021-12",
           "value": 955,
-          "metaHash": 4038428712
+          "metaHash": 3125519592
         }
       }
     },
@@ -100,13 +100,13 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2022-02-06",
-          "value": 76419014,
+          "date": "2022-02-13",
+          "value": 77629672,
           "metaHash": 1797387216
         },
         "geoId/06": {
-          "date": "2022-02-06",
-          "value": 8621996,
+          "date": "2022-02-13",
+          "value": 8801383,
           "metaHash": 1797387216
         },
         "geoId/0649670": {}
@@ -114,11 +114,6 @@
     }
   },
   "metadata": {
-    "319306388": {
-      "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602",
-      "measurementMethod": "CensusACS5yrSurveySubjectTable"
-    },
     "481049291": {
       "importName": "FBIGovCrime",
       "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
@@ -128,6 +123,12 @@
       "importName": "EIA_Electricity",
       "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
       "unit": "KilowattHour"
+    },
+    "1232804294": {
+      "importName": "BLS_CPS",
+      "provenanceUrl": "https://www.bls.gov/cps/",
+      "measurementMethod": "BLSSeasonallyAdjusted",
+      "observationPeriod": "P1M"
     },
     "1642072667": {
       "importName": "WorldDevelopmentIndicators",
@@ -140,43 +141,25 @@
       "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
       "measurementMethod": "NYT_COVID19_GitHub"
     },
-    "2071679530": {
-      "importName": "CensusACS1YearSurvey",
-      "provenanceUrl": "https://www.census.gov/",
-      "measurementMethod": "CensusACS1yrSurvey"
+    "2687541803": {
+      "importName": "WorldDevelopmentIndicators",
+      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observationPeriod": "P1Y"
     },
-    "2223217975": {
+    "2939218655": {
+      "importName": "USDecennialCensus_RedistrictingRelease",
+      "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurementMethod": "USDecennialCensus"
+    },
+    "3125519592": {
       "importName": "BLS_LAUS",
       "provenanceUrl": "https://www.bls.gov/lau/",
-      "measurementMethod": "BLSSeasonallyAdjusted",
+      "measurementMethod": "BLSSeasonallyUnadjusted",
       "observationPeriod": "P1M"
-    },
-    "2869271313": {
-      "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603",
-      "measurementMethod": "CensusACS5yrSurveySubjectTable"
     },
     "3716017963": {
       "importName": "FBIGovCrime_AggCountry",
       "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-      "observationPeriod": "P1Y"
-    },
-    "3901933017": {
-      "importName": "OECDRegionalDemography",
-      "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurementMethod": "OECDRegionalStatistics",
-      "observationPeriod": "P1Y"
-    },
-    "3994166642": {
-      "importName": "BLS_CPS",
-      "provenanceUrl": "https://www.bls.gov/cps/",
-      "measurementMethod": "BLSSeasonallyAdjusted",
-      "observationPeriod": "P3M"
-    },
-    "4038428712": {
-      "importName": "BLS_LAUS",
-      "provenanceUrl": "https://www.bls.gov/lau/",
-      "measurementMethod": "BLSSeasonallyUnadjusted",
       "observationPeriod": "P1Y"
     }
   }

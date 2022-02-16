@@ -193,7 +193,7 @@ func GetStatVarGroupNode(
 	}
 	for _, item := range result.ChildStatVarGroups {
 		item.DisplayName = cache.RawSvg[item.Id].AbsoluteName
-		item.NumDescendentStatVars = cache.RawSvg[item.Id].NumDescendentStatVars
+		item.DescendentStatVarCount = cache.RawSvg[item.Id].DescendentStatVarCount
 	}
 	for _, item := range result.ChildStatVars {
 		item.HasData = true
@@ -218,23 +218,23 @@ func GetStatVarGroupNode(
 			return nil, err
 		}
 		// Count for current node.
-		result.NumDescendentStatVars = 0
+		result.DescendentStatVarCount = 0
 		if existence, ok := statVarCount[svg]; ok && len(existence) > 0 {
 			for _, count := range existence {
 				// Use the largest count among all places.
-				if count > result.NumDescendentStatVars {
-					result.NumDescendentStatVars = count
+				if count > result.GetDescendentStatVarCount() {
+					result.DescendentStatVarCount = count
 				}
 			}
 		}
 		// Filter child stat var groups
 		for _, item := range result.ChildStatVarGroups {
-			item.NumDescendentStatVars = 0
+			item.DescendentStatVarCount = 0
 			if existence, ok := statVarCount[item.Id]; ok && len(existence) > 0 {
 				for _, count := range existence {
 					// Use the largest count among all places
-					if count > item.NumDescendentStatVars {
-						item.NumDescendentStatVars = count
+					if count > item.DescendentStatVarCount {
+						item.DescendentStatVarCount = count
 					}
 				}
 			}
@@ -254,10 +254,10 @@ func GetStatVarGroupNode(
 			result.ChildStatVarGroups = append(
 				result.ChildStatVarGroups,
 				&pb.StatVarGroupNode_ChildSVG{
-					Id:                    "dc/g/Private",
-					SpecializedEntity:     store.MemDb.GetManifest().ImportName,
-					DisplayName:           store.MemDb.GetManifest().ImportName,
-					NumDescendentStatVars: int64(len(hasDataStatVars) + len(noDataStatVars)),
+					Id:                     "dc/g/Private",
+					SpecializedEntity:      store.MemDb.GetManifest().ImportName,
+					DisplayName:            store.MemDb.GetManifest().ImportName,
+					DescendentStatVarCount: int32(len(hasDataStatVars) + len(noDataStatVars)),
 				},
 			)
 		} else if svg == "dc/g/Private" {

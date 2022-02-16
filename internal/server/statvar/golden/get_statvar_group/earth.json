@@ -33,6 +33,10 @@
         {
           "id": "dc/g/Emissions",
           "specializedEntity": "Emissions"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater",
+          "specializedEntity": "Sea Body of Water"
         }
       ]
     },
@@ -1871,6 +1875,884 @@
         }
       ]
     },
+    "dc/g/SeaBodyOfWater": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9",
+          "specializedEntity": "RCP 1.9"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6",
+          "specializedEntity": "RCP 2.6"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5",
+          "specializedEntity": "RCP 4.5"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0",
+          "specializedEntity": "RCP 7.0"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5",
+          "specializedEntity": "RCP 8.5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1",
+          "specializedEntity": "SSP 1"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1": {
+      "childStatVars": [
+        {
+          "id": "Max_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP119",
+          "searchName": "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Max Surface Level of CMIP 6 Reference Period, RCP 1.9, SSP 1 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP119",
+          "searchName": "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Median Surface Level of CMIP 6 Reference Period, RCP 1.9, SSP 1 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP119",
+          "searchName": "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Min Surface Level of CMIP 6 Reference Period, RCP 1.9, SSP 1 (Difference Relative To Base Date)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1",
+          "specializedEntity": "SSP 1"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1": {
+      "childStatVars": [
+        {
+          "id": "Max_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP126",
+          "searchName": "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Max Surface Level of CMIP 6 Reference Period, RCP 2.6, SSP 1 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP126",
+          "searchName": "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Median Surface Level of CMIP 6 Reference Period, RCP 2.6, SSP 1 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP126",
+          "searchName": "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Min Surface Level of CMIP 6 Reference Period, RCP 2.6, SSP 1 (Difference Relative To Base Date)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2",
+          "specializedEntity": "SSP 2"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2": {
+      "childStatVars": [
+        {
+          "id": "Max_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP245",
+          "searchName": "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Max Surface Level of CMIP 6 Reference Period, RCP 4.5, SSP 2 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP245",
+          "searchName": "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Median Surface Level of CMIP 6 Reference Period, RCP 4.5, SSP 2 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP245",
+          "searchName": "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Min Surface Level of CMIP 6 Reference Period, RCP 4.5, SSP 2 (Difference Relative To Base Date)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3",
+          "specializedEntity": "SSP 3"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3": {
+      "childStatVars": [
+        {
+          "id": "Max_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP370",
+          "searchName": "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Max Surface Level of CMIP 6 Reference Period, RCP 7.0, SSP 3 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP370",
+          "searchName": "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Median Surface Level of CMIP 6 Reference Period, RCP 7.0, SSP 3 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP370",
+          "searchName": "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Min Surface Level of CMIP 6 Reference Period, RCP 7.0, SSP 3 (Difference Relative To Base Date)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5",
+          "specializedEntity": "SSP 5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5": {
+      "childStatVars": [
+        {
+          "id": "Max_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP585",
+          "searchName": "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Max Surface Level of CMIP 6 Reference Period, RCP 8.5, SSP 5 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP585",
+          "searchName": "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Median Surface Level of CMIP 6 Reference Period, RCP 8.5, SSP 5 (Difference Relative To Base Date)"
+        },
+        {
+          "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP585",
+          "searchName": "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)"
+          ],
+          "displayName": "Min Surface Level of CMIP 6 Reference Period, RCP 8.5, SSP 5 (Difference Relative To Base Date)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP1": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1",
+          "specializedEntity": "RCP 1.9"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1",
+          "specializedEntity": "RCP 2.6"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP2": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2",
+          "specializedEntity": "RCP 4.5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP3": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3",
+          "specializedEntity": "RCP 7.0"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5",
+          "specializedEntity": "RCP 8.5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP1",
+          "specializedEntity": "SSP 1"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP2",
+          "specializedEntity": "SSP 2"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP3",
+          "specializedEntity": "SSP 3"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP5",
+          "specializedEntity": "SSP 5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP1": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP1",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP2": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP2",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP3": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP3",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario_SocioeconomicScenario-SSP5",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP1.9": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP2.6": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP4.5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP7.0": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP8.5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP1": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP1",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP2": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP2",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP3": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP3",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate-CMIP6ReferencePeriod_SocioeconomicScenario-SSP5",
+          "specializedEntity": "CMIP 6 Reference Period"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP1.9",
+          "specializedEntity": "RCP 1.9"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP2.6",
+          "specializedEntity": "RCP 2.6"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP4.5",
+          "specializedEntity": "RCP 4.5"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP7.0",
+          "specializedEntity": "RCP 7.0"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP8.5",
+          "specializedEntity": "RCP 8.5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP1.9": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP1.9",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP1.9_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP1.9_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1",
+          "specializedEntity": "SSP 1"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1": {
+      "childStatVars": [
+        {
+          "id": "Max_RateOfChange_SeaLevel_SSP119",
+          "searchName": "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)"
+          ],
+          "displayName": "Max Surface Level of RCP 1.9, SSP 1 (Rate of Change)"
+        },
+        {
+          "id": "Median_RateOfChange_SeaLevel_SSP119",
+          "searchName": "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)"
+          ],
+          "displayName": "Median Surface Level of RCP 1.9, SSP 1 (Rate of Change)"
+        },
+        {
+          "id": "Min_RateOfChange_SeaLevel_SSP119",
+          "searchName": "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)"
+          ],
+          "displayName": "Min Surface Level of RCP 1.9, SSP 1 (Rate of Change)"
+        }
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1",
+          "specializedEntity": "Delta From Reference Date"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP2.6": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP2.6",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP2.6_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP2.6_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1",
+          "specializedEntity": "SSP 1"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1": {
+      "childStatVars": [
+        {
+          "id": "Max_RateOfChange_SeaLevel_SSP126",
+          "searchName": "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)"
+          ],
+          "displayName": "Max Surface Level of RCP 2.6, SSP 1 (Rate of Change)"
+        },
+        {
+          "id": "Median_RateOfChange_SeaLevel_SSP126",
+          "searchName": "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)"
+          ],
+          "displayName": "Median Surface Level of RCP 2.6, SSP 1 (Rate of Change)"
+        },
+        {
+          "id": "Min_RateOfChange_SeaLevel_SSP126",
+          "searchName": "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)"
+          ],
+          "displayName": "Min Surface Level of RCP 2.6, SSP 1 (Rate of Change)"
+        }
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1",
+          "specializedEntity": "Delta From Reference Date"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP4.5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP4.5",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP4.5_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP4.5_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2",
+          "specializedEntity": "SSP 2"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2": {
+      "childStatVars": [
+        {
+          "id": "Max_RateOfChange_SeaLevel_SSP245",
+          "searchName": "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)"
+          ],
+          "displayName": "Max Surface Level of RCP 4.5, SSP 2 (Rate of Change)"
+        },
+        {
+          "id": "Median_RateOfChange_SeaLevel_SSP245",
+          "searchName": "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)"
+          ],
+          "displayName": "Median Surface Level of RCP 4.5, SSP 2 (Rate of Change)"
+        },
+        {
+          "id": "Min_RateOfChange_SeaLevel_SSP245",
+          "searchName": "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)"
+          ],
+          "displayName": "Min Surface Level of RCP 4.5, SSP 2 (Rate of Change)"
+        }
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2",
+          "specializedEntity": "Delta From Reference Date"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP7.0": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP7.0",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP7.0_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP7.0_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3",
+          "specializedEntity": "SSP 3"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3": {
+      "childStatVars": [
+        {
+          "id": "Max_RateOfChange_SeaLevel_SSP370",
+          "searchName": "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)"
+          ],
+          "displayName": "Max Surface Level of RCP 7.0, SSP 3 (Rate of Change)"
+        },
+        {
+          "id": "Median_RateOfChange_SeaLevel_SSP370",
+          "searchName": "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)"
+          ],
+          "displayName": "Median Surface Level of RCP 7.0, SSP 3 (Rate of Change)"
+        },
+        {
+          "id": "Min_RateOfChange_SeaLevel_SSP370",
+          "searchName": "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)"
+          ],
+          "displayName": "Min Surface Level of RCP 7.0, SSP 3 (Rate of Change)"
+        }
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3",
+          "specializedEntity": "Delta From Reference Date"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP8.5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP8.5",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP8.5_SocioeconomicScenario",
+          "specializedEntity": "Socioeconomic Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP8.5_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5",
+          "specializedEntity": "SSP 5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5": {
+      "childStatVars": [
+        {
+          "id": "Max_RateOfChange_SeaLevel_SSP585",
+          "searchName": "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)",
+          "searchNames": [
+            "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)"
+          ],
+          "displayName": "Max Surface Level of RCP 8.5, SSP 5 (Rate of Change)"
+        },
+        {
+          "id": "Median_RateOfChange_SeaLevel_SSP585",
+          "searchName": "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)",
+          "searchNames": [
+            "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)"
+          ],
+          "displayName": "Median Surface Level of RCP 8.5, SSP 5 (Rate of Change)"
+        },
+        {
+          "id": "Min_RateOfChange_SeaLevel_SSP585",
+          "searchName": "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)",
+          "searchNames": [
+            "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)"
+          ],
+          "displayName": "Min Surface Level of RCP 8.5, SSP 5 (Rate of Change)"
+        }
+      ],
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5",
+          "specializedEntity": "Delta From Reference Date"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP1": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP1.9_SocioeconomicScenario-SSP1",
+          "specializedEntity": "RCP 1.9"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP2.6_SocioeconomicScenario-SSP1",
+          "specializedEntity": "RCP 2.6"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP2": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP4.5_SocioeconomicScenario-SSP2",
+          "specializedEntity": "RCP 4.5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP3": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP7.0_SocioeconomicScenario-SSP3",
+          "specializedEntity": "RCP 7.0"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario-RCP8.5_SocioeconomicScenario-SSP5",
+          "specializedEntity": "RCP 8.5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_SocioeconomicScenario": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP1",
+          "specializedEntity": "SSP 1"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP2",
+          "specializedEntity": "SSP 2"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP3",
+          "specializedEntity": "SSP 3"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP5",
+          "specializedEntity": "SSP 5"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP1": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP1",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP1",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP2": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP2",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP2",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP3": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP3",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP3",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
+    "dc/g/SeaBodyOfWater_SocioeconomicScenario-SSP5": {
+      "childStatVarGroups": [
+        {
+          "id": "dc/g/SeaBodyOfWater_DeltaFromReferenceDate_SocioeconomicScenario-SSP5",
+          "specializedEntity": "Delta From Reference Date"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater_EmissionsScenario_SocioeconomicScenario-SSP5",
+          "specializedEntity": "Emissions Scenario (Projected)"
+        }
+      ]
+    },
     "dc/g/Stock": {
       "childStatVars": [
         {
@@ -1896,6 +2778,10 @@
         {
           "id": "dc/g/Consumption",
           "specializedEntity": "Consumption"
+        },
+        {
+          "id": "dc/g/SeaBodyOfWater",
+          "specializedEntity": "Sea Body of Water"
         }
       ]
     },
