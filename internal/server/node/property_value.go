@@ -91,7 +91,7 @@ func GetPropertyValues(
 		}
 	}
 	for dcid, entities := range outRes {
-		entities := filterEntities(entities, typ, limit)
+		entities = filterEntities(entities, typ, limit)
 		if len(entities) > 0 {
 			result.Data[dcid].Out = entities
 		}
@@ -178,8 +178,7 @@ func GetPropertyValuesHelper(
 	return result, nil
 }
 
-func filterEntities(
-	in []*pb.EntityInfo,
+func filterEntities(in []*pb.EntityInfo,
 	typ string,
 	limit int,
 ) []*pb.EntityInfo {

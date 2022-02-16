@@ -211,20 +211,20 @@ func getValueFromBestSourcePb(
 		if idx > 0 && lowQualityPopulationImport(series.ImportName) {
 			break
 		}
-		meta = &pb.StatMetadata{
-			ImportName:        series.ImportName,
-			ProvenanceUrl:     series.ProvenanceUrl,
-			MeasurementMethod: series.MeasurementMethod,
-			ObservationPeriod: series.ObservationPeriod,
-			ScalingFactor:     series.ScalingFactor,
-			Unit:              series.Unit,
-		}
 		for date, value := range series.Val {
 			if date > latestDate {
 				latestDate = date
 				ps = &pb.PointStat{
 					Date:  date,
 					Value: value,
+				}
+				meta = &pb.StatMetadata{
+					ImportName:        series.ImportName,
+					ProvenanceUrl:     series.ProvenanceUrl,
+					MeasurementMethod: series.MeasurementMethod,
+					ObservationPeriod: series.ObservationPeriod,
+					ScalingFactor:     series.ScalingFactor,
+					Unit:              series.Unit,
 				}
 			}
 		}
