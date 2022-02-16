@@ -14040,5 +14040,8 @@
       "dcid": "dc/g/CriminalIncidents_BiasMotivation-gender_IsHateCrime-True_TargetedGender-Female",
       "name": "Criminal Incidents With Bias Motivation = Gender, is Hate Crime = True, Targeted Gender = Female"
     }
+  ],
+  "matches": [
+    "Female"
   ]
 }

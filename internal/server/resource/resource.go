@@ -55,8 +55,20 @@ type SearchIndex struct {
 // TrieNode represents a node in the sv hierarchy search Trie.
 type TrieNode struct {
 	ChildrenNodes map[rune]*TrieNode
-	SvgIds        map[string]struct{}
-	SvIds         map[string]struct{}
+	// SvgIds and SvIds are maps of the dcid to the string within the
+	// Svg/Sv name that matches the token ending at the current TrieNode.
+	//
+	// For example:
+	// token ending @ current TrieNode: "women"
+	// synonyms: ["female", "women"]
+	// svg names: svg1: "Female Population", svg2: "Women Population"
+	//
+	// SvgIds map: {
+	// 	"svg1": "Female",
+	// 	"svg2": "Women"
+	// }
+	SvgIds map[string]string
+	SvIds  map[string]string
 }
 
 // RankingInfo holds the ranking information for each stat var hierarchy search
@@ -72,16 +84,16 @@ type RankingInfo struct {
 // Update search index, given a stat var (group) node ID and string.
 func (index *SearchIndex) Update(
 	nodeID string, nodeString string, displayName string, isSvg bool, synonymMap map[string][]string) {
-	processedTokenString := strings.ToLower(nodeString)
-	processedTokenString = strings.ReplaceAll(processedTokenString, ",", " ")
-	tokenList := strings.Fields(processedTokenString)
-	// Create a set of tokens from the tokens in tokenList and their synonyms
-	tokens := map[string]struct{}{}
+	processedNodeString := strings.ReplaceAll(nodeString, ",", " ")
+	tokenList := strings.Fields(processedNodeString)
+	// Create a map of tokens/synonyms to the matching string from nodeString
+	tokens := map[string]string{}
 	for _, token := range tokenList {
-		tokens[token] = struct{}{}
-		if synonymList, ok := synonymMap[token]; ok {
+		processedToken := strings.ToLower(token)
+		tokens[processedToken] = token
+		if synonymList, ok := synonymMap[processedToken]; ok {
 			for _, synonym := range synonymList {
-				tokens[synonym] = struct{}{}
+				tokens[synonym] = token
 			}
 		}
 	}
@@ -93,7 +105,7 @@ func (index *SearchIndex) Update(
 	// Ranking info is only dependent on a stat var (group).
 	index.Ranking[nodeID] = &RankingInfo{approxNumPv, displayName}
 	// Populate trie with each token
-	for token := range tokens {
+	for token, match := range tokens {
 		currNode := index.RootTrieNode
 		for _, c := range token {
 			if currNode.ChildrenNodes == nil {
@@ -106,14 +118,14 @@ func (index *SearchIndex) Update(
 		}
 		if isSvg {
 			if currNode.SvgIds == nil {
-				currNode.SvgIds = map[string]struct{}{}
+				currNode.SvgIds = map[string]string{}
 			}
-			currNode.SvgIds[nodeID] = struct{}{}
+			currNode.SvgIds[nodeID] = match
 		} else {
 			if currNode.SvIds == nil {
-				currNode.SvIds = map[string]struct{}{}
+				currNode.SvIds = map[string]string{}
 			}
-			currNode.SvIds[nodeID] = struct{}{}
+			currNode.SvIds[nodeID] = match
 		}
 	}
 }

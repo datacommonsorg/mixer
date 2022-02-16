@@ -918,5 +918,10 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EstablishmentOwnership-PrivatelyOwnedForProfit_Industry-NAICS/7172_MilitaryStatus-Civilian_WorkerClassification",
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Establishment Ownership = Privately Owned for Profit, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Worker Classification"
     }
+  ],
+  "matches": [
+    "Accommodation",
+    "Food",
+    "Services"
   ]
 }

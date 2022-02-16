@@ -173,6 +173,7 @@ message GetStatVarPathRequest {
   // DCID of a stat var or a stat var group
   string id = 1;
 }
+
 message GetStatVarPathResponse {
   // A list of stat var (stat var group) DCIDs from the queried node to the
   // root of stat var hierarchy.
@@ -206,6 +207,9 @@ message SearchStatVarResponse {
   repeated EntityInfo stat_vars = 1;
   // A list of stat var group results ranked by relevance.
   repeated SearchResultSVG stat_var_groups = 2;
+  // A list of unique strings in the names of the results that match the search
+  // tokens
+  repeated string matches = 3;
 }
 
 message GetStatVarSummaryRequest {
