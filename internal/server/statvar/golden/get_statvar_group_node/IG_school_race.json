@@ -84,6 +84,7 @@
     }
   ],
   "numDescendentStatVars": "9",
+  "descendentStatVarCount": 9,
   "parentStatVarGroups": [
     "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears"
   ]

@@ -97,7 +97,7 @@ func setupInternal(
 	tableConfig := &bigtable.TableConfig{}
 	err := json.Unmarshal(baseTableJSON, &tableConfig)
 	if err != nil {
-		log.Fatalf("failed to read base table congi: %v", err)
+		log.Fatalf("failed to read base table config: %v", err)
 	}
 
 	// BigQuery.

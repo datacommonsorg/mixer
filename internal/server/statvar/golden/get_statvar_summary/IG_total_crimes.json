@@ -4,81 +4,75 @@
       "placeTypeSummary": {
         "CensusCountyDivision": {
           "numPlaces": "1327",
+          "placeCount": 1327,
           "topPlaces": [
             {
               "dcid": "geoId/1500390810",
-              "name": "Honolulu CCD",
-              "personCount": "405295"
+              "name": "Honolulu CCD"
             },
             {
               "dcid": "geoId/3608760510",
-              "name": "Ramapo",
-              "personCount": "148919"
+              "name": "Ramapo"
             },
             {
               "dcid": "geoId/3402938550",
-              "name": "Lakewood",
-              "personCount": "135158"
+              "name": "Lakewood"
             }
           ]
         },
         "City": {
           "numPlaces": "8807",
+          "placeCount": 8807,
           "topPlaces": [
             {
               "dcid": "geoId/3651000",
-              "name": "New York",
-              "personCount": "8804190"
+              "name": "New York"
             },
             {
               "dcid": "geoId/0644000",
-              "name": "Los Angeles",
-              "personCount": "3898747"
+              "name": "Los Angeles"
             },
             {
               "dcid": "geoId/1714000",
-              "name": "Chicago",
-              "personCount": "2746388"
+              "name": "Chicago"
             }
           ]
         },
         "Country": {
           "numPlaces": "1",
+          "placeCount": 1,
           "topPlaces": [
             {
               "dcid": "country/USA",
-              "name": "United States",
-              "personCount": "331449281"
+              "name": "United States"
             }
           ]
         },
         "County": {
           "numPlaces": "1",
+          "placeCount": 1,
           "topPlaces": [
             {
               "dcid": "geoId/34007",
-              "name": "Camden County",
-              "personCount": "523485"
+              "name": "Camden County"
             }
           ]
         },
         "State": {
           "numPlaces": "50",
+          "placeCount": 50,
           "topPlaces": [
             {
               "dcid": "geoId/06",
-              "name": "California",
-              "personCount": "39538223"
+              "name": "California"
             },
             {
               "dcid": "geoId/48",
-              "name": "Texas",
-              "personCount": "28995881"
+              "name": "Texas"
             },
             {
               "dcid": "geoId/12",
-              "name": "Florida",
-              "personCount": "21538187"
+              "name": "Florida"
             }
           ]
         }
@@ -87,7 +81,9 @@
         "dc/fx0lj33": {
           "importName": "FBIGovCrime",
           "numObservations": "96373",
+          "observationCount": 96373,
           "numTimeSeries": "10185",
+          "timeSeriesCount": 10185,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
             {
@@ -97,75 +93,71 @@
               "earliestDate": "2008",
               "latestDate": "2019",
               "numObservations": "96373",
+              "observationCount": 96373,
               "numTimeSeries": "10185",
+              "timeSeriesCount": 10185,
               "placeTypeSummary": {
                 "CensusCountyDivision": {
                   "numPlaces": "1327",
+                  "placeCount": 1327,
                   "topPlaces": [
                     {
                       "dcid": "geoId/1500390810",
-                      "name": "Honolulu CCD",
-                      "personCount": "405295"
+                      "name": "Honolulu CCD"
                     },
                     {
                       "dcid": "geoId/3608760510",
-                      "name": "Ramapo",
-                      "personCount": "148919"
+                      "name": "Ramapo"
                     },
                     {
                       "dcid": "geoId/3402938550",
-                      "name": "Lakewood",
-                      "personCount": "135158"
+                      "name": "Lakewood"
                     }
                   ]
                 },
                 "City": {
                   "numPlaces": "8807",
+                  "placeCount": 8807,
                   "topPlaces": [
                     {
                       "dcid": "geoId/3651000",
-                      "name": "New York",
-                      "personCount": "8804190"
+                      "name": "New York"
                     },
                     {
                       "dcid": "geoId/0644000",
-                      "name": "Los Angeles",
-                      "personCount": "3898747"
+                      "name": "Los Angeles"
                     },
                     {
                       "dcid": "geoId/1714000",
-                      "name": "Chicago",
-                      "personCount": "2746388"
+                      "name": "Chicago"
                     }
                   ]
                 },
                 "County": {
                   "numPlaces": "1",
+                  "placeCount": 1,
                   "topPlaces": [
                     {
                       "dcid": "geoId/34007",
-                      "name": "Camden County",
-                      "personCount": "523485"
+                      "name": "Camden County"
                     }
                   ]
                 },
                 "State": {
                   "numPlaces": "50",
+                  "placeCount": 50,
                   "topPlaces": [
                     {
                       "dcid": "geoId/06",
-                      "name": "California",
-                      "personCount": "39538223"
+                      "name": "California"
                     },
                     {
                       "dcid": "geoId/48",
-                      "name": "Texas",
-                      "personCount": "28995881"
+                      "name": "Texas"
                     },
                     {
                       "dcid": "geoId/12",
-                      "name": "Florida",
-                      "personCount": "21538187"
+                      "name": "Florida"
                     }
                   ]
                 }
@@ -177,7 +169,9 @@
         "dc/q843y93": {
           "importName": "FBIGovCrime_AggCountry",
           "numObservations": "12",
+          "observationCount": 12,
           "numTimeSeries": "1",
+          "timeSeriesCount": 1,
           "seriesSummary": [
             {
               "seriesKey": {
@@ -187,15 +181,17 @@
               "earliestDate": "2008",
               "latestDate": "2019",
               "numObservations": "12",
+              "observationCount": 12,
               "numTimeSeries": "1",
+              "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
                   "numPlaces": "1",
+                  "placeCount": 1,
                   "topPlaces": [
                     {
                       "dcid": "country/USA",
-                      "name": "United States",
-                      "personCount": "331449281"
+                      "name": "United States"
                     }
                   ]
                 }

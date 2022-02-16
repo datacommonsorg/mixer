@@ -22,6 +22,7 @@
       "displayName": "Person With Citizenship Status = Not A US Citizen, Correctional Facility Operator = State Operated \u0026 Federally Operated \u0026 Privately Operated, Prison Sentence Status"
     }
   ],
+  "numDescendentStatVars": "12",
   "parentStatVarGroups": [
     "dc/g/Person_CitizenshipStatus_CorrectionalFacilityOperator-StateOperated\u0026FederallyOperated\u0026PrivatelyOperated"
   ]

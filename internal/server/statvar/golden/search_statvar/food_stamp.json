@@ -37,12 +37,12 @@
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthLatinAmerica"
         },
         {
-          "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, North Western Europe",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthNorthWesternEurope"
-        },
-        {
           "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, Northamerica",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthNorthamerica"
+        },
+        {
+          "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, Northern Western Europe",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthNorthernWesternEurope"
         },
         {
           "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, Oceania",
@@ -57,12 +57,12 @@
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthSouthEasternAsia"
         },
         {
-          "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, South Eastern Europe",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthSouthEasternEurope"
-        },
-        {
           "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, Southamerica",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthSouthamerica"
+        },
+        {
+          "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, Southern Eastern Europe",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthSouthernEasternEurope"
         },
         {
           "name": "Count of With Food Stamps in The Past 12 Months, Foreign Born, Western Asia",

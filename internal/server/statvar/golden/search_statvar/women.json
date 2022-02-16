@@ -875,64 +875,6 @@
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type, Targeted Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Gender, Arson, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
-          "name": "Count of Gender, Counterfeiting or Forgery, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Credit Card or Automated Teller Machine Fraud, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Impersonation, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Motor Vehicle Theft, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Murder And Non Negligent Manslaughter, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Not Specified, is Hate Crime, Unknown Ethnicity, Black or African American Alone, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
-          "name": "Count of Gender, Robbery, is Hate Crime, Unknown Ethnicity, White Alone, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceWhiteAlone_Female"
-        },
-        {
-          "name": "Count of Gender, Sexual Assault With An Object, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Shoplifting, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Theft From Motor Vehicle, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Weapon Law Violations, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
-          "name": "Count of Gender, Wire Fraud, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-EighthGrade_SchoolSubject-EnglishLanguageArts",
       "name": "Student With Gender = Female, School Grade Level = Eighth Grade, School Subject = English Language Arts",
       "statVars": [
@@ -4097,6 +4039,44 @@
       ]
     },
     {
+      "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimType",
+      "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Type",
+      "statVars": [
+        {
+          "name": "Count of Gender, Female, Business",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeBusiness"
+        },
+        {
+          "name": "Count of Gender, Female, Financial Institution",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeFinancialInstitution"
+        },
+        {
+          "name": "Count of Gender, Female, Government",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeGovernment"
+        },
+        {
+          "name": "Count of Gender, Female, Law Enforcement Officer",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeLawEnforcementOfficer"
+        },
+        {
+          "name": "Count of Gender, Female, Other Victim Type",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeOtherVictimType"
+        },
+        {
+          "name": "Count of Gender, Female, Person",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypePerson"
+        },
+        {
+          "name": "Count of Gender, Female, Religious Organization",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeReligiousOrganization"
+        },
+        {
+          "name": "Count of Gender, Female, Society",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeSociety"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-YearsUpto18_Gender-Female_ResidenceType",
       "name": "Person With Age = 18 Years or Less, Gender = Female, Residence Type",
       "statVars": [
@@ -5399,6 +5379,28 @@
       ]
     },
     {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Female (Offender)",
+          "dcid": "Offender_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female",
       "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
       "statVars": [
@@ -5795,23 +5797,23 @@
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-DestructionOrDamageOrVandalismOfProperty_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Destruction or Damage or Vandalism of Property, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-DestructionOrDamageOrVandalismOfProperty_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Destruction or Damage or Vandalism of Property, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, is Hate Crime, Hispanic or Latino, Black or African American Alone, Female",
+          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, is Hate Crime, Hispanic or Latino, Two or More Races, Female",
+          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, Hispanic or Latino, Two or More Races, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceTwoOrMoreRaces_Female"
         },
         {
-          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, is Hate Crime, Unknown Ethnicity, Asian Alone, Female",
+          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Asian Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceAsianAlone_Female"
         },
         {
-          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
+          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
@@ -6577,19 +6579,559 @@
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-FalsePretenseOrSwindleOrConfidenceGame_OffenderEthnicity_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = False Pretense or Swindle or Confidence Game, Offender Ethnicity, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-AggravatedAssault_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Aggravated Assault, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, is Hate Crime, Hispanic or Latino, White Alone, Female",
+          "name": "Count of Gender, Aggravated Assault, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Aggravated Assault, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Aggravated Assault, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-AllOtherLarceny_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = All Other Larceny, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, All Other Larceny, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, All Other Larceny, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, All Other Larceny, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Arson_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Arson, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Arson, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Arson, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Arson, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Burglary_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Burglary, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Burglary, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Burglary, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Burglary, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-CounterfeitingOrForgery_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Counterfeiting or Forgery, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Counterfeiting or Forgery, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Counterfeiting or Forgery, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Counterfeiting or Forgery, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-CreditCardOrAutomatedTellerMachineFraud_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Credit Card or Automated Teller Machine Fraud, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Credit Card or Automated Teller Machine Fraud, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Credit Card or Automated Teller Machine Fraud, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Credit Card or Automated Teller Machine Fraud, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-CrimeAgainstPerson_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Person, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Crime Against Person, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Crime Against Person, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Crime Against Person, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-CrimeAgainstProperty_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Property, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Crime Against Property, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Crime Against Property, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Crime Against Property, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-CrimeAgainstSociety_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Society, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Crime Against Society, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Crime Against Society, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Crime Against Society, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-DestructionOrDamageOrVandalismOfProperty_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Destruction or Damage or Vandalism of Property, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Destruction or Damage or Vandalism of Property, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-DrugEquipmentViolations_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Drug Equipment Violations, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Drug Equipment Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Drug Equipment Violations, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Drug Equipment Violations, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-DrugOrNarcoticViolations_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Drug or Narcotic Violations, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Drug or Narcotic Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Drug or Narcotic Violations, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Drug or Narcotic Violations, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-FalsePretenseOrSwindleOrConfidenceGame_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = False Pretense or Swindle or Confidence Game, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Fondling_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Fondling, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Fondling, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Fondling, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Fondling, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Impersonation_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Impersonation, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Impersonation, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Impersonation, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Impersonation, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Intimidation_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Intimidation, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Intimidation, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Intimidation, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Intimidation, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-KidnappingOrAbduction_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Kidnapping or Abduction, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Kidnapping or Abduction, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Kidnapping or Abduction, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Kidnapping or Abduction, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-MotorVehicleTheft_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Motor Vehicle Theft, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Motor Vehicle Theft, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Motor Vehicle Theft, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Motor Vehicle Theft, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-MurderAndNonNegligentManslaughter_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Murder And Non Negligent Manslaughter, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Murder And Non Negligent Manslaughter, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Murder And Non Negligent Manslaughter, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Murder And Non Negligent Manslaughter, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-NotSpecified_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Not Specified, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Not Specified, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Not Specified, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Not Specified, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-PornographyOrObsceneMaterial_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Pornography or Obscene Material, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Pornography or Obscene Material, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Pornography or Obscene Material, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Pornography or Obscene Material, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Rape_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Rape, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Rape, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Rape, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Rape, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Robbery_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Robbery, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Robbery, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Robbery, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Robbery, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-SexualAssaultWithAnObject_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Sexual Assault With An Object, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Sexual Assault With An Object, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Sexual Assault With An Object, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Sexual Assault With An Object, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Shoplifting_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Shoplifting, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Shoplifting, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Shoplifting, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Shoplifting, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-SimpleAssault_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Simple Assault, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Simple Assault, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Simple Assault, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Simple Assault, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-TheftFromBuilding_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Theft From Building, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Theft From Building, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Theft From Building, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Theft From Building, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-TheftFromMotorVehicle_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Theft From Motor Vehicle, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Theft From Motor Vehicle, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Theft From Motor Vehicle, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Theft From Motor Vehicle, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-WeaponLawViolations_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Weapon Law Violations, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Weapon Law Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Weapon Law Violations, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Weapon Law Violations, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-WireFraud_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Wire Fraud, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Wire Fraud, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Wire Fraud, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Wire Fraud, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-FalsePretenseOrSwindleOrConfidenceGame_OffenderEthnicity_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = False Pretense or Swindle or Confidence Game, Offender Ethnicity, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         },
         {
-          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, is Hate Crime, Not Hispanic or Latino, White Alone, Female",
+          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         },
         {
-          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
+          "name": "Count of Gender, False Pretense or Swindle or Confidence Game, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
@@ -7477,37 +8019,37 @@
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Intimidation_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Intimidation, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-Intimidation_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Intimidation, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Unknown Ethnicity, Black or African American Alone, Female",
+          "name": "Count of Gender, Intimidation, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
+          "name": "Count of Gender, Intimidation, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         },
         {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Unknown Ethnicity, White Alone, Female",
+          "name": "Count of Gender, Intimidation, Unknown Ethnicity, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-SimpleAssault_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Simple Assault, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-SimpleAssault_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Simple Assault, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Unknown Ethnicity, Black or African American Alone, Female",
+          "name": "Count of Gender, Simple Assault, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
+          "name": "Count of Gender, Simple Assault, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         },
         {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Unknown Ethnicity, White Alone, Female",
+          "name": "Count of Gender, Simple Assault, Unknown Ethnicity, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceWhiteAlone_Female"
         }
       ]
@@ -8471,6 +9013,20 @@
         {
           "name": "Sales of Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
           "dcid": "dc/867ehyppl4rf1"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimAge",
+      "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Age",
+      "statVars": [
+        {
+          "name": "Count of Gender, Female, 17 Years or Less (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_17OrLessYears"
+        },
+        {
+          "name": "Count of Gender, Female, 18 Years or More (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_18OrMoreYears"
         }
       ]
     },
@@ -10407,114 +10963,212 @@
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-AggravatedAssault_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Aggravated Assault, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-ForcibleRape_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Forcible Rape, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Aggravated Assault, is Hate Crime, Not Hispanic or Latino, Asian Alone, Female",
+          "name": "Count of Gender, Forcible Rape, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Forcible Rape, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-HumanTraffickingCommercialSexActs_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Human Trafficking_Commercial Sex Acts, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Human Trafficking_Commercial Sex Acts, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_HumanTraffickingCommercialSexActs_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Human Trafficking_Commercial Sex Acts, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_HumanTraffickingCommercialSexActs_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-LarcenyTheft_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Larceny Theft, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Larceny Theft, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_LarcenyTheft_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Larceny Theft, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_LarcenyTheft_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-OtherCrimesAgainstPerson_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Other Crimes Against Person, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Other Crimes Against Person, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_OtherCrimesAgainstPerson_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Other Crimes Against Person, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_OtherCrimesAgainstPerson_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-OtherCrimesAgainstProperty_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Other Crimes Against Property, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Other Crimes Against Property, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_OtherCrimesAgainstProperty_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Gender, Other Crimes Against Property, Female (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_OtherCrimesAgainstProperty_IsHateCrime_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-UnknownEthnicity_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Unknown Ethnicity, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Unknown Ethnicity, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
+        },
+        {
+          "name": "Count of Gender, Unknown Ethnicity, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-UnknownRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Unknown Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Unknown Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Gender, Unknown Race, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderType-KnownOffender_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Type = Known Offender, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Known Offender, Female (Offender)",
+          "dcid": "Offender_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_KnownOffender_Female"
+        },
+        {
+          "name": "Count of Gender, Known Offender, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_KnownOffender_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-AggravatedAssault_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Aggravated Assault, Offender Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Aggravated Assault, Not Hispanic or Latino, Asian Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceAsianAlone_Female"
         },
         {
-          "name": "Count of Gender, Aggravated Assault, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
+          "name": "Count of Gender, Aggravated Assault, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-AllOtherLarceny_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = All Other Larceny, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-AllOtherLarceny_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = All Other Larceny, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, All Other Larceny, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
+          "name": "Count of Gender, All Other Larceny, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, All Other Larceny, is Hate Crime, Not Hispanic or Latino, White Alone, Female",
+          "name": "Count of Gender, All Other Larceny, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-DrugEquipmentViolations_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Drug Equipment Violations, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-DrugEquipmentViolations_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Drug Equipment Violations, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Drug Equipment Violations, is Hate Crime, Unknown Ethnicity, Black or African American Alone, Female",
+          "name": "Count of Gender, Drug Equipment Violations, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Drug Equipment Violations, is Hate Crime, Unknown Ethnicity, White Alone, Female",
+          "name": "Count of Gender, Drug Equipment Violations, Unknown Ethnicity, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Fondling_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Fondling, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-Fondling_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Fondling, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Fondling, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
+          "name": "Count of Gender, Fondling, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Fondling, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
+          "name": "Count of Gender, Fondling, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-ForcibleRape_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Forcible Rape, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-ForcibleRape_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Forcible Rape, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Forcible Rape, is Hate Crime, Unknown Ethnicity, Black or African American Alone, Female",
+          "name": "Count of Gender, Forcible Rape, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Forcible Rape, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
+          "name": "Count of Gender, Forcible Rape, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Intimidation_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Intimidation, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-Intimidation_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Intimidation, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Unknown Ethnicity, American Indian or Alaska Native Alone, Female",
+          "name": "Count of Gender, Intimidation, Unknown Ethnicity, American Indian or Alaska Native Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
         },
         {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Unknown Ethnicity, Two or More Races, Female",
+          "name": "Count of Gender, Intimidation, Unknown Ethnicity, Two or More Races, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceTwoOrMoreRaces_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-SimpleAssault_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Simple Assault, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-SimpleAssault_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Simple Assault, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Not Hispanic or Latino, American Indian or Alaska Native Alone, Female",
+          "name": "Count of Gender, Simple Assault, Not Hispanic or Latino, American Indian or Alaska Native Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
         },
         {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Not Hispanic or Latino, Asian Alone, Female",
+          "name": "Count of Gender, Simple Assault, Not Hispanic or Latino, Asian Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceAsianAlone_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-TheftFromBuilding_OffenderEthnicity_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Theft From Building, Offender Ethnicity, Targeted Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Gender, Theft From Building, is Hate Crime, Not Hispanic or Latino, White Alone, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
-        },
-        {
-          "name": "Count of Gender, Theft From Building, is Hate Crime, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
@@ -11849,113 +12503,183 @@
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-AggravatedAssault_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Aggravated Assault, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-HispanicOrLatino_OffenderType-KnownOffenderEthnicity_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Hispanic or Latino, Offender Type = Known Offender Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Aggravated Assault, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
+          "name": "Count of Gender, Hispanic or Latino, Known Offender Ethnicity, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Gender, Hispanic or Latino, Known Offender Ethnicity, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-NotHispanicOrLatino_OffenderType-KnownOffenderEthnicity_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Not Hispanic or Latino, Offender Type = Known Offender Ethnicity, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-AmericanIndianOrAlaskaNativeAlone_OffenderType-KnownOffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = American Indian or Alaska Native Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, American Indian or Alaska Native Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
+        },
+        {
+          "name": "Count of Gender, American Indian or Alaska Native Alone, Known Offender Race, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-AsianAlone_OffenderType-KnownOffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Asian Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Asian Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
+        },
+        {
+          "name": "Count of Gender, Asian Alone, Known Offender Race, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-BlackOrAfricanAmericanAlone_OffenderType-KnownOffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Black or African American Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Black or African American Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
+        },
+        {
+          "name": "Count of Gender, Black or African American Alone, Known Offender Race, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-TwoOrMoreRaces_OffenderType-KnownOffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Two or More Races, Offender Type = Known Offender Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Two or More Races, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
+        },
+        {
+          "name": "Count of Gender, Two or More Races, Known Offender Race, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-WhiteAlone_OffenderType-KnownOffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = White Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, White Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
+        },
+        {
+          "name": "Count of Gender, White Alone, Known Offender Race, Female (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-AggravatedAssault_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Aggravated Assault, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Gender, Aggravated Assault, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Aggravated Assault, is Hate Crime, Not Hispanic or Latino, White Alone, Female",
+          "name": "Count of Gender, Aggravated Assault, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-AggravatedAssault_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Aggravated Assault, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-AggravatedAssault_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Aggravated Assault, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Aggravated Assault, is Hate Crime, Unknown Ethnicity, Black or African American Alone, Female",
+          "name": "Count of Gender, Aggravated Assault, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Aggravated Assault, is Hate Crime, Unknown Ethnicity, White Alone, Female",
+          "name": "Count of Gender, Aggravated Assault, Unknown Ethnicity, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Burglary_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Burglary, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-Burglary_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Burglary, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Burglary, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
+          "name": "Count of Gender, Burglary, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Burglary, is Hate Crime, Not Hispanic or Latino, White Alone, Female",
+          "name": "Count of Gender, Burglary, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Burglary_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Burglary, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-Burglary_OffenderEthnicity-UnknownEthnicity_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Burglary, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Burglary, is Hate Crime, Unknown Ethnicity, Black or African American Alone, Female",
+          "name": "Count of Gender, Burglary, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Burglary, is Hate Crime, Unknown Ethnicity, White Alone, Female",
+          "name": "Count of Gender, Burglary, Unknown Ethnicity, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Intimidation_OffenderEthnicity-HispanicOrLatino_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Intimidation, Offender Ethnicity = Hispanic or Latino, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-Intimidation_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Intimidation, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Hispanic or Latino, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Hispanic or Latino, White Alone, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceWhiteAlone_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-Intimidation_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Intimidation, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
+          "name": "Count of Gender, Intimidation, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Intimidation, is Hate Crime, Not Hispanic or Latino, White Alone, Female",
+          "name": "Count of Gender, Intimidation, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-SimpleAssault_OffenderEthnicity-HispanicOrLatino_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Simple Assault, Offender Ethnicity = Hispanic or Latino, Offender Race, Targeted Gender = Female",
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-SimpleAssault_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Crime Type = Simple Assault, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Hispanic or Latino, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceUnknownRace_Female"
-        },
-        {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Hispanic or Latino, White Alone, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceWhiteAlone_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/CriminalIncidents_CrimeType-SimpleAssault_OffenderEthnicity-NotHispanicOrLatino_OffenderRace_TargetedGender-Female",
-      "name": "Criminal Incidents With Crime Type = Simple Assault, Offender Ethnicity = Not Hispanic or Latino, Offender Race, Targeted Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Not Hispanic or Latino, Black or African American Alone, Female",
+          "name": "Count of Gender, Simple Assault, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
-          "name": "Count of Gender, Simple Assault, is Hate Crime, Not Hispanic or Latino, White Alone, Female",
+          "name": "Count of Gender, Simple Assault, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         }
       ]
@@ -17767,622 +18491,6 @@
         {
           "name": "Percent of 21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone",
           "dcid": "dc/52med1q9gkz7c"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/hg2jwkcbrqcl1"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/5edxm9peejjh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/e4z6x7dy3etbg"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone",
-          "dcid": "dc/nme81p3jd5cdd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/tfb48wx9cnk18"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/5kprdwjpcv3bb"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/t4dnvdzx4er5g"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/kxx7jeewk2xm1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone Population",
-          "dcid": "dc/g39wghv9rqpp3"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone",
-          "dcid": "dc/h97xplg4kmfhd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/ze89rqtek5lqh"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/hvpd2tmc271q8"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/h9zllm681ck29"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/h4wkm9j7ns558"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 21 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/cm5t9dsmkplj2"
-        },
-        {
-          "name": "Percent of 21 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone",
-          "dcid": "dc/ljn6qfwfc7mrh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/0lts2kplzwmk5"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/fzpllxt7p08yd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/5n9pswrj3p8k3"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/9cm32f0gjdv6h"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, White Alone Population",
-          "dcid": "dc/1w8nnrq2mpt3"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, White Alone",
-          "dcid": "dc/s2nfjhyekpwk"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/14qnbnlqxfwf5"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/rezg6951f78dh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/skmswxdlz0vmb"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/j9qrzkw5le8v6"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/rytqyqgq08gxf"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, White Alone",
-          "dcid": "dc/ns8fehxnmjqx9"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/6cqwb9nve3ef4"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/m5vcxf0jvlrw6"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/9tgkg794frgn"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/pwv92cf33wlm9"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone Population",
-          "dcid": "dc/96312d2x6hbv5"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone",
-          "dcid": "dc/2std8kll6xb1d"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/y2ff8rbc51828"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/47nl3g608mbbh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/wmtz56xhlt8j6"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/7v5xceq6z33y9"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto1.38_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/74z4kj05l39q5"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone",
-          "dcid": "dc/dvgrzs4k215s1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/bxhhcq1923vr1"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/87n0t7j91n1j"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/vefy3lzy5hlr2"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/q1lg89fwfv3bg"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone Population",
-          "dcid": "dc/y2etbkxgw7xk"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone",
-          "dcid": "dc/yrw932zxcf5c4"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/pr6l34ktvf301"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/y0pde7lt72xr8"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/5klx4ql3ljy1g"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/vgrktp5t8qkz8"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/xsklkkxlk572g"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone",
-          "dcid": "dc/6vjmxptpjgnvg"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/r47d72x50xfhc"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/l838w69v0xxd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/xy16gj6mwpx0c"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/mt3qmkmyhywvf"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone Population",
-          "dcid": "dc/j3ctgeq8pv6r8"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone",
-          "dcid": "dc/0whgewmn8vkt2"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/r23y8psyhkqxh"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/38fx6w6vz7c63"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/sfleg0b7nt8s8"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/kfyg3mx7ymvp8"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/t8b1y2l2dhn78"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone",
-          "dcid": "dc/xz5vec7xpng04"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/sz98nfwbsy7h6"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/0blps54f4f2j3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/l7y6wr82ws0g2"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/qqm9wp370cq92"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone Population",
-          "dcid": "dc/h1r5ftxvw3vg"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone",
-          "dcid": "dc/2lnhytgrzq7df"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/2hkej38ffh6k1"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/c73jbhvs4plw4"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/mjp2qy185lnh2"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/mpr1h9t5sz1e3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To64_FamilyIncome-RatioToPovertyLineUpto4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 40 - 64 Years, Family Income = 4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/zhpzfy4nbdzd4"
-        },
-        {
-          "name": "Percent of 40 - 64 Years, 4 Ratio To Poverty Line or Less, Female, With Health Insurance, White Alone",
-          "dcid": "dc/jdbr6xd10xdlb"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years50To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 50 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/ref1nnkg6nce8"
-        },
-        {
-          "name": "Percent of 50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/f6xwlznpmr788"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years50To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 50 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/bnkbqpztnrnxh"
-        },
-        {
-          "name": "Percent of 50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/r7se8s5342765"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years50To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 50 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, White Alone Population",
-          "dcid": "dc/wcefbsk4bnq1d"
-        },
-        {
-          "name": "Percent of 50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance, White Alone",
-          "dcid": "dc/fg3gx6rrtr2s1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years50To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 50 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Black or African American Alone Population",
-          "dcid": "dc/4k13jv4f2m3c2"
-        },
-        {
-          "name": "Percent of 50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/lcr05yd7p9vh2"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years50To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 50 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Hispanic or Latino Population",
-          "dcid": "dc/78428tql5c8kb"
-        },
-        {
-          "name": "Percent of 50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/nf974ysn3ywtb"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years50To64_FamilyIncome-RatioToPovertyLine1.38To4_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 50 - 64 Years, Family Income = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, White Alone Population",
-          "dcid": "dc/3vzn8ytkr3zl3"
-        },
-        {
-          "name": "Percent of 50 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance, White Alone",
-          "dcid": "dc/4wdf9hs7tg2w8"
         }
       ]
     }

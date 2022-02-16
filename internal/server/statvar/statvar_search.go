@@ -109,7 +109,7 @@ func SearchStatVar(
 
 func filter(
 	nodes []*pb.EntityInfo,
-	countMap map[string]map[string]int64,
+	countMap map[string]map[string]int32,
 	numPlaces int) []*pb.EntityInfo {
 	result := []*pb.EntityInfo{}
 	for _, node := range nodes {
