@@ -48,6 +48,16 @@ func TestSortTables(t *testing.T) {
 				{name: "borgcron_infrequent_2022_01_31_23_15_14", table: nil},
 			},
 		},
+		{
+			tables: []*Table{
+				{name: "borgcron_2022_02_15_01_02_51", table: nil},
+				{name: "dc_branch_2022_02_16_14_18_02", table: nil},
+			},
+			expected: []*Table{
+				{name: "dc_branch_2022_02_16_14_18_02", table: nil},
+				{name: "borgcron_2022_02_15_01_02_51", table: nil},
+			},
+		},
 	} {
 		SortTables(c.tables)
 		tableNames := []string{}

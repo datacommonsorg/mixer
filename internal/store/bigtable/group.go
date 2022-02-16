@@ -18,7 +18,6 @@ package bigtable
 
 import (
 	"context"
-	"log"
 	"sort"
 	"strings"
 	"sync"
@@ -29,6 +28,7 @@ import (
 var groupRank = map[string]int{
 	"frequent":   0,
 	"dc":         1,
+	"branch":     1,
 	"ipcc":       2,
 	"infrequent": 10000,
 }
@@ -70,9 +70,7 @@ func NewGroup(
 	branchTableName string,
 	useImportGroup bool,
 ) *Group {
-	if useImportGroup {
-		SortTables(tables)
-	}
+	SortTables(tables)
 	return &Group{
 		tables:  tables,
 		isProto: useImportGroup,
@@ -114,14 +112,7 @@ func (g *Group) UpdateBranchTable(branchTable *Table) {
 	tables = append(tables, branchTable)
 	g.branchTableName = branchTable.name
 	g.tables = tables
-	if g.isProto {
-		// To place branch table in the right place
-		SortTables(g.tables)
-	} else {
-		if len(tables) != 2 || !strings.Contains(tables[1].name, "dc_branch") {
-			log.Printf("Branch table is not the second table: %v", tables)
-		}
-	}
+	SortTables(g.tables)
 }
 
 // NewTable creates a new cbt.Table instance.
