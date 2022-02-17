@@ -124,8 +124,8 @@ func (s *Server) GetStatSetSeriesWithinPlace(
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 ) (*pb.GetPlacesInResponse, error) {
-	// Current places in response is node idea.
-	// In next version of API, should simply return placesInData in the final response.
+	// Current places in response is not ideal.
+	// (TODO): In next version of API, should simply return placesInData in the final response.
 	placesInData, err := place.GetPlacesIn(ctx, in, s.store)
 	if err != nil {
 		return nil, err
