@@ -1162,8 +1162,8 @@
     }
   ],
   "matches": [
-    "Accommodation",
-    "Food",
-    "Services"
+    "accommodation",
+    "food",
+    "services"
   ]
 }
