@@ -5080,5 +5080,9 @@
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_EmploymentStatus+-InLaborForce_Gender_MilitaryStatus-Civilian_Occupation-SOCv2018/highLevelAggregation2_Race-AsianAlone",
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Employment Status = in Labor Force, Gender, Occupation = Service Occupations, Race = Asian Alone"
     }
+  ],
+  "matches": [
+    "Age",
+    "Asian"
   ]
 }

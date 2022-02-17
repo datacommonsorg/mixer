@@ -5,86 +5,87 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "numDescendentStatVars": "11833"
+      "descendentStatVarCount": 11833
     },
     {
       "id": "dc/g/Household",
       "specializedEntity": "Household",
       "displayName": "Household",
-      "numDescendentStatVars": "1443"
+      "descendentStatVarCount": 1443
     },
     {
       "id": "dc/g/Housing",
       "specializedEntity": "Housing",
       "displayName": "Housing",
-      "numDescendentStatVars": "528"
+      "descendentStatVarCount": 528
     },
     {
       "id": "dc/g/Employment",
       "specializedEntity": "Employment",
       "displayName": "Employment",
-      "numDescendentStatVars": "42186"
+      "descendentStatVarCount": 42017
     },
     {
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "numDescendentStatVars": "4121"
+      "descendentStatVarCount": 4121
     },
     {
       "id": "dc/g/Agriculture",
       "specializedEntity": "Agriculture",
       "displayName": "Agriculture",
-      "numDescendentStatVars": "157"
+      "descendentStatVarCount": 157
     },
     {
       "id": "dc/g/Climate",
       "specializedEntity": "Climate",
       "displayName": "Climate",
-      "numDescendentStatVars": "509"
+      "descendentStatVarCount": 559
     },
     {
       "id": "dc/g/Energy",
       "specializedEntity": "Energy",
       "displayName": "Energy",
-      "numDescendentStatVars": "9596"
+      "descendentStatVarCount": 9596
     },
     {
       "id": "dc/g/Crime",
       "specializedEntity": "Crime",
       "displayName": "Crime",
-      "numDescendentStatVars": "12308"
+      "descendentStatVarCount": 12308
     },
     {
       "id": "dc/g/Economics",
       "specializedEntity": "Economics",
       "displayName": "Economics",
-      "numDescendentStatVars": "86"
+      "descendentStatVarCount": 86
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "numDescendentStatVars": "3875"
+      "descendentStatVarCount": 3875
     },
     {
       "id": "dc/g/MilitaryService",
       "specializedEntity": "Military Service",
       "displayName": "Military Service",
-      "numDescendentStatVars": "1383"
+      "descendentStatVarCount": 1383
     },
     {
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "numDescendentStatVars": "3024"
+      "descendentStatVarCount": 2875
     },
     {
       "id": "dc/g/Private",
       "specializedEntity": "Test Private Import",
       "displayName": "Test Private Import",
-      "numDescendentStatVars": "10"
+      "descendentStatVarCount": 10
     }
   ],
-  "numDescendentStatVars": "78810"
+  "numDescendentStatVars": "78687",
+  "descendentStatVarCount": 78687
 }

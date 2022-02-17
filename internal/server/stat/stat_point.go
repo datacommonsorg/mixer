@@ -441,6 +441,7 @@ func GetStatSetWithinPlaceAll(
 			continue
 		}
 		gotResult = true
+		sort.Sort(ranking.CohortByRank(data.SourceCohorts))
 		for _, cohort := range data.SourceCohorts {
 			// The cohort is from the same source.
 			metaData := &pb.StatMetadata{
@@ -456,7 +457,6 @@ func GetStatSetWithinPlaceAll(
 				MetaHash: metaHash,
 				Stat:     map[string]*pb.PointStat{},
 			}
-
 			for place, val := range cohort.Val {
 				usedDate := date
 				if usedDate == "" {

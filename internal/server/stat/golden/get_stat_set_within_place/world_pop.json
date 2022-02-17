@@ -73,12 +73,12 @@
         "country/AUS": {
           "date": "2020",
           "value": 25687041,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/AUT": {
           "date": "2020",
           "value": 8917205,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/AZE": {
           "date": "2020",
@@ -93,7 +93,7 @@
         "country/BEL": {
           "date": "2020",
           "value": 11555997,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/BEN": {
           "date": "2020",
@@ -118,7 +118,7 @@
         "country/BGR": {
           "date": "2020",
           "value": 6927288,
-          "meta_hash": 2674877227
+          "meta_hash": 2687541803
         },
         "country/BHR": {
           "date": "2020",
@@ -133,7 +133,7 @@
         "country/BIH": {
           "date": "2020",
           "value": 3280815,
-          "meta_hash": 2365264354
+          "meta_hash": 2687541803
         },
         "country/BLM": {
           "date": "2012",
@@ -163,7 +163,7 @@
         "country/BRA": {
           "date": "2020",
           "value": 212559409,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/BRB": {
           "date": "2020",
@@ -194,7 +194,7 @@
         "country/CAN": {
           "date": "2020",
           "value": 38005238,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/CCK": {
           "date": "2009",
@@ -204,17 +204,17 @@
         "country/CHE": {
           "date": "2020",
           "value": 8636896,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/CHL": {
           "date": "2020",
           "value": 19116209,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/CHN": {
           "date": "2020",
           "value": 1402112000,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/CIV": {
           "date": "2020",
@@ -244,7 +244,7 @@
         "country/COL": {
           "date": "2020",
           "value": 50882884,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/COM": {
           "date": "2020",
@@ -259,7 +259,7 @@
         "country/CRI": {
           "date": "2020",
           "value": 5094114,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/CTE": {},
         "country/CUB": {
@@ -290,12 +290,12 @@
         "country/CZE": {
           "date": "2020",
           "value": 10698896,
-          "meta_hash": 3832274980
+          "meta_hash": 2687541803
         },
         "country/DEU": {
           "date": "2020",
           "value": 83240525,
-          "meta_hash": 17998574
+          "meta_hash": 2687541803
         },
         "country/DJI": {
           "date": "2020",
@@ -310,7 +310,7 @@
         "country/DNK": {
           "date": "2020",
           "value": 5831404,
-          "meta_hash": 2817305726
+          "meta_hash": 2687541803
         },
         "country/DOM": {
           "date": "2020",
@@ -345,12 +345,12 @@
         "country/ESP": {
           "date": "2020",
           "value": 47351567,
-          "meta_hash": 3954703622
+          "meta_hash": 2687541803
         },
         "country/EST": {
           "date": "2020",
           "value": 1331057,
-          "meta_hash": 1932907536
+          "meta_hash": 2687541803
         },
         "country/ETH": {
           "date": "2020",
@@ -360,7 +360,7 @@
         "country/FIN": {
           "date": "2020",
           "value": 5530719,
-          "meta_hash": 1930132998
+          "meta_hash": 2687541803
         },
         "country/FJI": {
           "date": "2020",
@@ -375,7 +375,7 @@
         "country/FRA": {
           "date": "2020",
           "value": 67391582,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/FRO": {
           "date": "2020",
@@ -400,7 +400,7 @@
         "country/GBR": {
           "date": "2020",
           "value": 67215293,
-          "meta_hash": 24983580
+          "meta_hash": 2687541803
         },
         "country/GEO": {
           "date": "2020",
@@ -450,7 +450,7 @@
         "country/GRC": {
           "date": "2020",
           "value": 10715549,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/GRD": {
           "date": "2020",
@@ -485,7 +485,7 @@
         "country/HKG": {
           "date": "2020",
           "value": 7481800,
-          "meta_hash": 2146959494
+          "meta_hash": 2687541803
         },
         "country/HMD": {
           "date": "2011",
@@ -499,7 +499,7 @@
         "country/HRV": {
           "date": "2020",
           "value": 4047200,
-          "meta_hash": 531309613
+          "meta_hash": 2687541803
         },
         "country/HTI": {
           "date": "2020",
@@ -509,12 +509,12 @@
         "country/HUN": {
           "date": "2020",
           "value": 9749763,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/IDN": {
           "date": "2020",
           "value": 273523621,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/IMN": {
           "date": "2020",
@@ -524,13 +524,13 @@
         "country/IND": {
           "date": "2020",
           "value": 1380004385,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/IOT": {},
         "country/IRL": {
           "date": "2020",
           "value": 4994724,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/IRN": {
           "date": "2020",
@@ -545,17 +545,17 @@
         "country/ISL": {
           "date": "2020",
           "value": 366425,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/ISR": {
           "date": "2020",
           "value": 9216900,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/ITA": {
           "date": "2020",
           "value": 59554023,
-          "meta_hash": 2104726662
+          "meta_hash": 2687541803
         },
         "country/JAM": {
           "date": "2020",
@@ -575,7 +575,7 @@
         "country/JPN": {
           "date": "2020",
           "value": 125836021,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/KAZ": {
           "date": "2020",
@@ -610,7 +610,7 @@
         "country/KOR": {
           "date": "2020",
           "value": 51780579,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/KWT": {
           "date": "2020",
@@ -660,22 +660,22 @@
         "country/LTU": {
           "date": "2020",
           "value": 2794700,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/LUX": {
           "date": "2020",
           "value": 632275,
-          "meta_hash": 3442411036
+          "meta_hash": 2687541803
         },
         "country/LVA": {
           "date": "2020",
           "value": 1901548,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/MAC": {
           "date": "2020",
           "value": 649342,
-          "meta_hash": 2146959494
+          "meta_hash": 2687541803
         },
         "country/MAF": {
           "date": "2020",
@@ -710,7 +710,7 @@
         "country/MEX": {
           "date": "2020",
           "value": 128932753,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/MHL": {
           "date": "2020",
@@ -730,7 +730,7 @@
         "country/MLT": {
           "date": "2020",
           "value": 525285,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/MMR": {
           "date": "2020",
@@ -830,12 +830,12 @@
         "country/NLD": {
           "date": "2020",
           "value": 17441139,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/NOR": {
           "date": "2020",
           "value": 5379475,
-          "meta_hash": 1613391638
+          "meta_hash": 2687541803
         },
         "country/NPL": {
           "date": "2020",
@@ -850,7 +850,7 @@
         "country/NZL": {
           "date": "2020",
           "value": 5084300,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/OMN": {
           "date": "2020",
@@ -875,7 +875,7 @@
         "country/PER": {
           "date": "2020",
           "value": 32971846,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/PHL": {
           "date": "2020",
@@ -895,7 +895,7 @@
         "country/POL": {
           "date": "2020",
           "value": 37950802,
-          "meta_hash": 100308678
+          "meta_hash": 2687541803
         },
         "country/PRI": {
           "date": "2020",
@@ -910,7 +910,7 @@
         "country/PRT": {
           "date": "2020",
           "value": 10305564,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/PRY": {
           "date": "2020",
@@ -940,12 +940,12 @@
         "country/ROU": {
           "date": "2020",
           "value": 19286123,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/RUS": {
           "date": "2020",
           "value": 144104080,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/RWA": {
           "date": "2020",
@@ -1036,17 +1036,17 @@
         "country/SVK": {
           "date": "2020",
           "value": 5458827,
-          "meta_hash": 2061222526
+          "meta_hash": 2687541803
         },
         "country/SVN": {
           "date": "2020",
           "value": 2100126,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/SWE": {
           "date": "2020",
           "value": 10353442,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/SWZ": {
           "date": "2020",
@@ -1121,12 +1121,12 @@
         "country/TUN": {
           "date": "2020",
           "value": 11818618,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/TUR": {
           "date": "2020",
           "value": 84339067,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/TUV": {
           "date": "2020",
@@ -1166,7 +1166,7 @@
         "country/USA": {
           "date": "2020",
           "value": 331449281,
-          "meta_hash": 2869271313
+          "meta_hash": 2939218655
         },
         "country/UZB": {
           "date": "2020",
@@ -1236,7 +1236,7 @@
         "country/ZAF": {
           "date": "2020",
           "value": 59308690,
-          "meta_hash": 3901933017
+          "meta_hash": 2687541803
         },
         "country/ZMB": {
           "date": "2020",
@@ -1252,85 +1252,25 @@
     }
   },
   "metadata": {
-    "100308678": {
-      "import_name": "StatisticsPoland",
-      "provenance_url": "http://stat.gov.pl/en/",
-      "measurement_method": "StatisticsPoland"
-    },
-    "1613391638": {
-      "import_name": "StatisticsNorway",
-      "provenance_url": "https://www.ssb.no/en",
-      "measurement_method": "StatisticsNorway"
-    },
     "1703226678": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
-    },
-    "17998574": {
-      "import_name": "GermanyDestatis",
-      "provenance_url": "https://www.destatis.de/EN",
-      "measurement_method": "GermanyDestatis"
-    },
-    "1930132998": {
-      "import_name": "StatisticsFinland",
-      "provenance_url": "https://www.stat.fi/index_en.html",
-      "measurement_method": "StatisticsFinland"
-    },
-    "1932907536": {
-      "import_name": "EstoniaPopulation",
-      "provenance_url": "https://www.stat.ee/en",
-      "measurement_method": "StatisticsEstonia"
-    },
-    "2061222526": {
-      "import_name": "SlovakiaStatisticalOffice",
-      "provenance_url": "https://slovak.statistics.sk",
-      "measurement_method": "SlovakiaStatisticalOffice"
-    },
-    "2104726662": {
-      "import_name": "ItalyNIS",
-      "provenance_url": "http://demo.istat.it/index_e.html",
-      "measurement_method": "ItalyNIS"
-    },
-    "2146959494": {
-      "import_name": "UNData",
-      "provenance_url": "http://data.un.org",
-      "measurement_method": "UNData"
-    },
-    "2365264354": {
-      "import_name": "BosniaPopulation",
-      "provenance_url": "http://popis.gov.ba/",
-      "measurement_method": "BosniaCensus"
-    },
-    "24983580": {
-      "import_name": "UnitedKingdomONS",
-      "provenance_url": "https://www.ons.gov.uk",
-      "measurement_method": "UnitedKingdomONS"
-    },
-    "2674877227": {
-      "import_name": "BulgariaPopulation",
-      "provenance_url": "https://www.nsi.bg/en",
-      "measurement_method": "BulgariaNSI"
     },
     "2687541803": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
-    "2817305726": {
-      "import_name": "StatisticsDenmark",
-      "provenance_url": "http://www.dst.dk/en",
-      "measurement_method": "StatisticsDenmark"
-    },
-    "2869271313": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
     "2929864158": {
       "import_name": "HumanCuratedStats",
       "provenance_url": "https://google.com",
       "measurement_method": "HumanCuratedStats"
+    },
+    "2939218655": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
     },
     "3027450874": {
       "import_name": "FranceINSEE",
@@ -1341,32 +1281,6 @@
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",
       "measurement_method": "Wikipedia"
-    },
-    "3442411036": {
-      "import_name": "LuxembourgSTATEC",
-      "provenance_url": "http://www.statistiques.public.lu/en/index.html",
-      "measurement_method": "LuxembourgSTATEC"
-    },
-    "3832274980": {
-      "import_name": "CzechRepublicPopulation",
-      "provenance_url": "https://vdb.czso.cz/vdbvo2/faces/en/index.jsf",
-      "measurement_method": "CzechStatisticalOffice"
-    },
-    "3901933017": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
-    },
-    "3954703622": {
-      "import_name": "SpainNSI",
-      "provenance_url": "http://www.ine.es/en/welcome.shtml",
-      "measurement_method": "SpainNSI"
-    },
-    "531309613": {
-      "import_name": "CroatiaPopulation",
-      "provenance_url": "https://www.dzs.hr/default_e.htm",
-      "measurement_method": "CroatiaCBS"
     }
   }
 }

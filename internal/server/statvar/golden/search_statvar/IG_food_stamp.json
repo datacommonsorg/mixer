@@ -732,5 +732,9 @@
       "dcid": "dc/g/Household_BenefitsStatus-WithoutFoodStampsInThePast12Months_HouseholdType_MemberStatus-WithoutChildrenUnder18",
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type, Member Status = Without Children Under 18"
     }
+  ],
+  "matches": [
+    "Food",
+    "Stamps"
   ]
 }

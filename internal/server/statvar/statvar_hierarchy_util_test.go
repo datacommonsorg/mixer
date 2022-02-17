@@ -85,18 +85,18 @@ func TestGetParentMapping(t *testing.T) {
 func TestBuildSearchIndex(t *testing.T) {
 	token1 := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"group_1": {}},
-		SvIds:         map[string]struct{}{"sv_1_1": {}},
+		SvgIds:        map[string]string{"group_1": "ab1"},
+		SvIds:         map[string]string{"sv_1_1": "ab1"},
 	}
 	token3 := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvgIds:        nil,
-		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
+		SvIds:         map[string]string{"sv_1_1": "Ac3", "sv_1_2": "ac3"},
 	}
 	tokenX := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"group_1": {}, "group_3_1": {}},
-		SvIds:         map[string]struct{}{"sv_3": {}},
+		SvgIds:        map[string]string{"group_1": "zDx", "group_3_1": "zdx"},
+		SvIds:         map[string]string{"sv_3": "zdx"},
 	}
 	tokenDX := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
@@ -107,8 +107,8 @@ func TestBuildSearchIndex(t *testing.T) {
 	}
 	tokenD := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"group_3_1": {}},
-		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv3": {}},
+		SvgIds:        map[string]string{"group_3_1": "bd"},
+		SvIds:         map[string]string{"sv_1_2": "bd", "sv3": "bd"},
 	}
 	tokenC := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
@@ -154,14 +154,14 @@ func TestBuildSearchIndex(t *testing.T) {
 		{
 			map[string]*pb.StatVarGroupNode{
 				"group_1": {
-					AbsoluteName: "ab1 zdx",
+					AbsoluteName: "ab1 zDx",
 					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 						{Id: "group_3_1"},
 					},
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
 							Id:          "sv_1_1",
-							SearchName:  "ab1 ac3",
+							SearchName:  "ab1 Ac3",
 							DisplayName: "sv1",
 						},
 						{
@@ -218,7 +218,7 @@ func TestBuildSearchIndex(t *testing.T) {
 				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {
 						ApproxNumPv: 2,
-						RankingName: "ab1 zdx",
+						RankingName: "ab1 zDx",
 					},
 					"sv_1_1": {
 						ApproxNumPv: 3,

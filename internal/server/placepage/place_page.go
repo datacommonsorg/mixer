@@ -229,8 +229,7 @@ func fetchBtData(
 	}
 
 	// Fetch place page cache data in parallel.
-	// Place page cache only exists in base cache
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -248,7 +247,6 @@ func fetchBtData(
 			return &placePageData, nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, nil, err
@@ -259,7 +257,7 @@ func fetchBtData(
 	popData := map[string]*pb.PointStat{}
 
 	mergedPlacePageData := map[string]*pb.StatVarObsSeries{}
-	for _, baseData := range baseDataList {
+	for _, baseData := range btDataList {
 		for place, data := range baseData {
 			if data == nil {
 				continue

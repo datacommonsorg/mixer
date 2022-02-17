@@ -2,26 +2,10 @@
   "statVarSummary": {
     "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
       "placeTypeSummary": {
-        "AdministrativeArea": {
-          "numPlaces": "2",
-          "topPlaces": [
-            {
-              "dcid": "geoId/69120",
-              "name": "Tinian Municipality"
-            },
-            {
-              "dcid": "geoId/69100",
-              "name": "Rota"
-            }
-          ]
-        },
         "City": {
-          "numPlaces": "4",
+          "numPlaces": "3",
+          "placeCount": 3,
           "topPlaces": [
-            {
-              "dcid": "geoId/69110",
-              "name": "Saipan"
-            },
             {
               "dcid": "geoId/3651000",
               "name": "New York"
@@ -29,11 +13,16 @@
             {
               "dcid": "geoId/2938000",
               "name": "Kansas City"
+            },
+            {
+              "dcid": "geoId/2937592",
+              "name": "Joplin"
             }
           ]
         },
         "Country": {
           "numPlaces": "1",
+          "placeCount": 1,
           "topPlaces": [
             {
               "dcid": "country/USA",
@@ -42,25 +31,12 @@
           ]
         },
         "County": {
-          "numPlaces": "3211",
+          "numPlaces": "3217",
+          "placeCount": 3217,
           "topPlaces": [
             {
-              "dcid": "geoId/72153",
-              "name": "Yauco"
+              "dcid": "geoId/78030"
             },
-            {
-              "dcid": "geoId/72151",
-              "name": "Yabucoa"
-            },
-            {
-              "dcid": "geoId/72149",
-              "name": "Villalba"
-            }
-          ]
-        },
-        "Place": {
-          "numPlaces": "2",
-          "topPlaces": [
             {
               "dcid": "geoId/78020"
             },
@@ -72,6 +48,7 @@
         },
         "State": {
           "numPlaces": "56",
+          "placeCount": 56,
           "topPlaces": [
             {
               "dcid": "geoId/78",
@@ -91,8 +68,10 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "numObservations": "2283426",
-          "numTimeSeries": "6552",
+          "numObservations": "2307059",
+          "observationCount": 2307059,
+          "numTimeSeries": "6554",
+          "timeSeriesCount": 6554,
           "releaseFrequency": "P1D",
           "seriesSummary": [
             {
@@ -100,30 +79,16 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2022-02-06",
-              "numObservations": "2206697",
-              "numTimeSeries": "3276",
+              "latestDate": "2022-02-13",
+              "numObservations": "2230307",
+              "observationCount": 2230307,
+              "numTimeSeries": "3277",
+              "timeSeriesCount": 3277,
               "placeTypeSummary": {
-                "AdministrativeArea": {
-                  "numPlaces": "2",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/69120",
-                      "name": "Tinian Municipality"
-                    },
-                    {
-                      "dcid": "geoId/69100",
-                      "name": "Rota"
-                    }
-                  ]
-                },
                 "City": {
-                  "numPlaces": "4",
+                  "numPlaces": "3",
+                  "placeCount": 3,
                   "topPlaces": [
-                    {
-                      "dcid": "geoId/69110",
-                      "name": "Saipan"
-                    },
                     {
                       "dcid": "geoId/3651000",
                       "name": "New York"
@@ -131,11 +96,16 @@
                     {
                       "dcid": "geoId/2938000",
                       "name": "Kansas City"
+                    },
+                    {
+                      "dcid": "geoId/2937592",
+                      "name": "Joplin"
                     }
                   ]
                 },
                 "Country": {
                   "numPlaces": "1",
+                  "placeCount": 1,
                   "topPlaces": [
                     {
                       "dcid": "country/USA",
@@ -144,25 +114,12 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3211",
+                  "numPlaces": "3217",
+                  "placeCount": 3217,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/72153",
-                      "name": "Yauco"
+                      "dcid": "geoId/78030"
                     },
-                    {
-                      "dcid": "geoId/72151",
-                      "name": "Yabucoa"
-                    },
-                    {
-                      "dcid": "geoId/72149",
-                      "name": "Villalba"
-                    }
-                  ]
-                },
-                "Place": {
-                  "numPlaces": "2",
-                  "topPlaces": [
                     {
                       "dcid": "geoId/78020"
                     },
@@ -174,6 +131,7 @@
                 },
                 "State": {
                   "numPlaces": "56",
+                  "placeCount": 56,
                   "topPlaces": [
                     {
                       "dcid": "geoId/78",
@@ -200,29 +158,15 @@
               },
               "earliestDate": "2020-01",
               "latestDate": "2022-02",
-              "numObservations": "76729",
-              "numTimeSeries": "3276",
+              "numObservations": "76752",
+              "observationCount": 76752,
+              "numTimeSeries": "3277",
+              "timeSeriesCount": 3277,
               "placeTypeSummary": {
-                "AdministrativeArea": {
-                  "numPlaces": "2",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/69120",
-                      "name": "Tinian Municipality"
-                    },
-                    {
-                      "dcid": "geoId/69100",
-                      "name": "Rota"
-                    }
-                  ]
-                },
                 "City": {
-                  "numPlaces": "4",
+                  "numPlaces": "3",
+                  "placeCount": 3,
                   "topPlaces": [
-                    {
-                      "dcid": "geoId/69110",
-                      "name": "Saipan"
-                    },
                     {
                       "dcid": "geoId/3651000",
                       "name": "New York"
@@ -230,11 +174,16 @@
                     {
                       "dcid": "geoId/2938000",
                       "name": "Kansas City"
+                    },
+                    {
+                      "dcid": "geoId/2937592",
+                      "name": "Joplin"
                     }
                   ]
                 },
                 "Country": {
                   "numPlaces": "1",
+                  "placeCount": 1,
                   "topPlaces": [
                     {
                       "dcid": "country/USA",
@@ -243,25 +192,12 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3211",
+                  "numPlaces": "3217",
+                  "placeCount": 3217,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/72153",
-                      "name": "Yauco"
+                      "dcid": "geoId/78030"
                     },
-                    {
-                      "dcid": "geoId/72151",
-                      "name": "Yabucoa"
-                    },
-                    {
-                      "dcid": "geoId/72149",
-                      "name": "Villalba"
-                    }
-                  ]
-                },
-                "Place": {
-                  "numPlaces": "2",
-                  "topPlaces": [
                     {
                       "dcid": "geoId/78020"
                     },
@@ -273,6 +209,7 @@
                 },
                 "State": {
                   "numPlaces": "56",
+                  "placeCount": 56,
                   "topPlaces": [
                     {
                       "dcid": "geoId/78",

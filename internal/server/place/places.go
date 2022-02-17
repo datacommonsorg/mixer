@@ -31,6 +31,36 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
+// GetChildPlaces fetches child places given parent place and child place type.
+func GetChildPlaces(
+	ctx context.Context, s *store.Store, parentPlace string, childType string) (
+	[]string, error,
+) {
+	rowList := bigtable.BuildPlacesInKey([]string{parentPlace}, childType)
+	// Place relations are from base geo imports. Only trust the base cache.
+	btDataList, err := bigtable.Read(
+		ctx,
+		s.BtGroup,
+		rowList,
+		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			if isProto {
+				var containedInPlaces pb.ContainedPlaces
+				err := proto.Unmarshal(jsonRaw, &containedInPlaces)
+				return containedInPlaces.Dcids, err
+			}
+			return strings.Split(string(jsonRaw), ","), nil
+		},
+		nil,
+	)
+	if err != nil {
+		return []string{}, err
+	}
+	if btDataList[0][parentPlace] != nil {
+		return btDataList[0][parentPlace].([]string), nil
+	}
+	return []string{}, err
+}
+
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.Store) (
 	map[string][]string, error) {
@@ -47,7 +77,7 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 	rowList := bigtable.BuildPlacesInKey(dcids, placeType)
 
 	// Place relations are from base geo imports. Only trust the base cache.
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -60,7 +90,6 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 			return strings.Split(string(jsonRaw), ","), nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -72,7 +101,7 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 			continue
 		}
 		// Go through (ordered) import groups one by one, stop when data is found.
-		for _, baseData := range baseDataList {
+		for _, baseData := range btDataList {
 			if _, ok := baseData[dcid]; !ok {
 				continue
 			}
@@ -134,7 +163,7 @@ func GetRelatedLocations(
 		}
 	}
 	// RelatedPlace cache only exists in base cache
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -159,14 +188,13 @@ func GetRelatedLocations(
 			}
 			return parts[len(parts)-1], nil
 		},
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := &pb.GetRelatedLocationsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for _, baseData := range baseDataList {
-		for statVar, data := range baseData {
+	for _, btData := range btDataList {
+		for statVar, data := range btData {
 			if _, ok := result.Data[statVar]; ok {
 				continue
 			}
@@ -220,8 +248,7 @@ func GetLocationsRankings(
 			)
 		}
 	}
-	// RelatedPlace cache only exists in base cache
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -246,15 +273,14 @@ func GetLocationsRankings(
 			}
 			return parts[len(parts)-1], nil
 		},
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
 	}
 
 	result := &pb.GetLocationsRankingsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
-	for _, baseData := range baseDataList {
-		for statVar, data := range baseData {
+	for _, btData := range btDataList {
+		for statVar, data := range btData {
 			if _, ok := result.Data[statVar]; ok {
 				continue
 			}
@@ -281,7 +307,7 @@ func GetPlaceMetadata(
 
 	rowList := bigtable.BuildPlaceMetaDataKey(places)
 	// Place metadata are from base geo imports. Only trust the base cache.
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -299,7 +325,6 @@ func GetPlaceMetadata(
 			return &data, nil
 		},
 		nil,
-		false, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -309,11 +334,11 @@ func GetPlaceMetadata(
 		if _, ok := result[place]; ok {
 			continue
 		}
-		for _, baseData := range baseDataList {
-			if baseData[place] == nil {
+		for _, btData := range btDataList {
+			if btData[place] == nil {
 				continue
 			}
-			raw, ok := baseData[place].(*pb.PlaceMetadataCache)
+			raw, ok := btData[place].(*pb.PlaceMetadataCache)
 			if !ok {
 				continue
 			}

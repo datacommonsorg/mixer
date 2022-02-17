@@ -2,34 +2,9 @@
   "statVarSummary": {
     "UnemploymentRate_Person": {
       "placeTypeSummary": {
-        "AdministrativeArea": {
-          "numPlaces": "8",
-          "topPlaces": [
-            {
-              "dcid": "geoId/2386865",
-              "name": "Winterville Plantation, Maine"
-            },
-            {
-              "dcid": "geoId/2348120",
-              "name": "Nashville Plantation, Maine"
-            },
-            {
-              "dcid": "geoId/2347175",
-              "name": "Moro Plantation, Maine"
-            }
-          ]
-        },
-        "AdministrativeArea2": {
-          "numPlaces": "1",
-          "topPlaces": [
-            {
-              "dcid": "geoId/02280",
-              "name": "Petersburg Borough"
-            }
-          ]
-        },
         "City": {
-          "numPlaces": "3033",
+          "numPlaces": "3055",
+          "placeCount": 3055,
           "topPlaces": [
             {
               "dcid": "geoId/5645050",
@@ -47,26 +22,25 @@
         },
         "Country": {
           "numPlaces": "33",
+          "placeCount": 33,
           "topPlaces": [
             {
               "dcid": "country/USA",
-              "name": "United States",
-              "personCount": "331449281"
+              "name": "United States"
             },
             {
               "dcid": "country/JPN",
-              "name": "Japan",
-              "personCount": "125836021"
+              "name": "Japan"
             },
             {
               "dcid": "country/TUR",
-              "name": "Turkey",
-              "personCount": "84339067"
+              "name": "Turkey"
             }
           ]
         },
         "County": {
-          "numPlaces": "3219",
+          "numPlaces": "3220",
+          "placeCount": 3220,
           "topPlaces": [
             {
               "dcid": "geoId/72153",
@@ -82,23 +56,9 @@
             }
           ]
         },
-        "Place": {
-          "numPlaces": "14",
-          "topPlaces": [
-            {
-              "dcid": "geoId/5076562"
-            },
-            {
-              "dcid": "geoId/5010300"
-            },
-            {
-              "dcid": "geoId/3655211",
-              "name": "Orangetown"
-            }
-          ]
-        },
         "State": {
           "numPlaces": "52",
+          "placeCount": 52,
           "topPlaces": [
             {
               "dcid": "geoId/72",
@@ -119,7 +79,9 @@
         "dc/2xghn33": {
           "importName": "BLS_CPS",
           "numObservations": "1185",
+          "observationCount": 1185,
           "numTimeSeries": "2",
+          "timeSeriesCount": 2,
           "releaseFrequency": "P1M",
           "seriesSummary": [
             {
@@ -130,10 +92,13 @@
               "earliestDate": "1948-01",
               "latestDate": "2022-01",
               "numObservations": "889",
+              "observationCount": 889,
               "numTimeSeries": "1",
+              "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
                   "numPlaces": "1",
+                  "placeCount": 1,
                   "topPlaces": [
                     {
                       "dcid": "country/USA",
@@ -153,10 +118,13 @@
               "earliestDate": "1948-03",
               "latestDate": "2021-12",
               "numObservations": "296",
+              "observationCount": 296,
               "numTimeSeries": "1",
+              "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
                   "numPlaces": "1",
+                  "placeCount": 1,
                   "topPlaces": [
                     {
                       "dcid": "country/USA",
@@ -173,7 +141,9 @@
         "dc/lly3yc1": {
           "importName": "BLS_LAUS",
           "numObservations": "2587200",
+          "observationCount": 2587200,
           "numTimeSeries": "12707",
+          "timeSeriesCount": 12707,
           "releaseFrequency": "P1M",
           "seriesSummary": [
             {
@@ -184,10 +154,13 @@
               "earliestDate": "1976-01",
               "latestDate": "2021-12",
               "numObservations": "29254",
+              "observationCount": 29254,
               "numTimeSeries": "53",
+              "timeSeriesCount": 53,
               "placeTypeSummary": {
                 "City": {
                   "numPlaces": "1",
+                  "placeCount": 1,
                   "topPlaces": [
                     {
                       "dcid": "geoId/3651000",
@@ -197,6 +170,7 @@
                 },
                 "State": {
                   "numPlaces": "52",
+                  "placeCount": 52,
                   "topPlaces": [
                     {
                       "dcid": "geoId/72",
@@ -224,36 +198,13 @@
               "earliestDate": "1976-01",
               "latestDate": "2021-12",
               "numObservations": "2367090",
+              "observationCount": 2367090,
               "numTimeSeries": "6327",
+              "timeSeriesCount": 6327,
               "placeTypeSummary": {
-                "AdministrativeArea": {
-                  "numPlaces": "8",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/2386865",
-                      "name": "Winterville Plantation, Maine"
-                    },
-                    {
-                      "dcid": "geoId/2348120",
-                      "name": "Nashville Plantation, Maine"
-                    },
-                    {
-                      "dcid": "geoId/2347175",
-                      "name": "Moro Plantation, Maine"
-                    }
-                  ]
-                },
-                "AdministrativeArea2": {
-                  "numPlaces": "1",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/02280",
-                      "name": "Petersburg Borough"
-                    }
-                  ]
-                },
                 "City": {
-                  "numPlaces": "3033",
+                  "numPlaces": "3055",
+                  "placeCount": 3055,
                   "topPlaces": [
                     {
                       "dcid": "geoId/5645050",
@@ -270,7 +221,8 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3219",
+                  "numPlaces": "3220",
+                  "placeCount": 3220,
                   "topPlaces": [
                     {
                       "dcid": "geoId/72153",
@@ -286,23 +238,9 @@
                     }
                   ]
                 },
-                "Place": {
-                  "numPlaces": "14",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/5076562"
-                    },
-                    {
-                      "dcid": "geoId/5010300"
-                    },
-                    {
-                      "dcid": "geoId/3655211",
-                      "name": "Orangetown"
-                    }
-                  ]
-                },
                 "State": {
                   "numPlaces": "52",
+                  "placeCount": 52,
                   "topPlaces": [
                     {
                       "dcid": "geoId/72",
@@ -329,36 +267,13 @@
               "earliestDate": "1976",
               "latestDate": "2020",
               "numObservations": "190856",
+              "observationCount": 190856,
               "numTimeSeries": "6327",
+              "timeSeriesCount": 6327,
               "placeTypeSummary": {
-                "AdministrativeArea": {
-                  "numPlaces": "8",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/2386865",
-                      "name": "Winterville Plantation, Maine"
-                    },
-                    {
-                      "dcid": "geoId/2348120",
-                      "name": "Nashville Plantation, Maine"
-                    },
-                    {
-                      "dcid": "geoId/2347175",
-                      "name": "Moro Plantation, Maine"
-                    }
-                  ]
-                },
-                "AdministrativeArea2": {
-                  "numPlaces": "1",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/02280",
-                      "name": "Petersburg Borough"
-                    }
-                  ]
-                },
                 "City": {
-                  "numPlaces": "3033",
+                  "numPlaces": "3055",
+                  "placeCount": 3055,
                   "topPlaces": [
                     {
                       "dcid": "geoId/5645050",
@@ -375,7 +290,8 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3219",
+                  "numPlaces": "3220",
+                  "placeCount": 3220,
                   "topPlaces": [
                     {
                       "dcid": "geoId/72153",
@@ -391,23 +307,9 @@
                     }
                   ]
                 },
-                "Place": {
-                  "numPlaces": "14",
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/5076562"
-                    },
-                    {
-                      "dcid": "geoId/5010300"
-                    },
-                    {
-                      "dcid": "geoId/3655211",
-                      "name": "Orangetown"
-                    }
-                  ]
-                },
                 "State": {
                   "numPlaces": "52",
+                  "placeCount": 52,
                   "topPlaces": [
                     {
                       "dcid": "geoId/72",
@@ -431,7 +333,9 @@
         "dc/yd4sfb": {
           "importName": "EurostatData",
           "numObservations": "11125",
+          "observationCount": 11125,
           "numTimeSeries": "33",
+          "timeSeriesCount": 33,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
             {
@@ -441,25 +345,25 @@
               "earliestDate": "1983-01",
               "latestDate": "2020-07",
               "numObservations": "11125",
+              "observationCount": 11125,
               "numTimeSeries": "33",
+              "timeSeriesCount": 33,
               "placeTypeSummary": {
                 "Country": {
                   "numPlaces": "33",
+                  "placeCount": 33,
                   "topPlaces": [
                     {
                       "dcid": "country/USA",
-                      "name": "United States",
-                      "personCount": "331449281"
+                      "name": "United States"
                     },
                     {
                       "dcid": "country/JPN",
-                      "name": "Japan",
-                      "personCount": "125836021"
+                      "name": "Japan"
                     },
                     {
                       "dcid": "country/TUR",
-                      "name": "Turkey",
-                      "personCount": "84339067"
+                      "name": "Turkey"
                     }
                   ]
                 }

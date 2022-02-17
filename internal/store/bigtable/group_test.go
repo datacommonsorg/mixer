@@ -24,32 +24,41 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
 )
 
 func TestSortTables(t *testing.T) {
 	for _, c := range []struct {
-		tables   []string
-		expected []string
+		tables   []*Table
+		expected []*Table
 	}{
 		{
-			tables: []string{
-				"borgcron_random",
-				"borgcron_infrequent_2022_01_31_23_15_14",
-				"borgcron_frequent_2022_02_01_14_20_47",
-				"borgcron_dc_branch_2022_02_01_14_00_49",
-				"borgcron_ipcc_2022_01_31_20_56_49",
+			tables: []*Table{
+				{name: "borgcron_random", table: nil},
+				{name: "borgcron_infrequent_2022_01_31_23_15_14", table: nil},
+				{name: "borgcron_frequent_2022_02_01_14_20_47", table: nil},
+				{name: "borgcron_dc_branch_2022_02_01_14_00_49", table: nil},
+				{name: "borgcron_ipcc_2022_01_31_20_56_49", table: nil},
 			},
-			expected: []string{
-				"borgcron_frequent_2022_02_01_14_20_47",
-				"borgcron_dc_branch_2022_02_01_14_00_49",
-				"borgcron_ipcc_2022_01_31_20_56_49",
-				"borgcron_random",
-				"borgcron_infrequent_2022_01_31_23_15_14",
+			expected: []*Table{
+				{name: "borgcron_frequent_2022_02_01_14_20_47", table: nil},
+				{name: "borgcron_dc_branch_2022_02_01_14_00_49", table: nil},
+				{name: "borgcron_ipcc_2022_01_31_20_56_49", table: nil},
+				{name: "borgcron_random", table: nil},
+				{name: "borgcron_infrequent_2022_01_31_23_15_14", table: nil},
 			},
 		},
 	} {
 		SortTables(c.tables)
-		if diff := cmp.Diff(c.tables, c.expected); diff != "" {
+		tableNames := []string{}
+		for _, t := range c.tables {
+			tableNames = append(tableNames, t.name)
+		}
+		expectNames := []string{}
+		for _, t := range c.expected {
+			expectNames = append(expectNames, t.name)
+		}
+		if diff := cmp.Diff(tableNames, expectNames, cmpopts.IgnoreUnexported()); diff != "" {
 			t.Errorf("SortTables() got diff: %v", diff)
 		}
 	}

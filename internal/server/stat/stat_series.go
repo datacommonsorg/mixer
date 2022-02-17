@@ -217,7 +217,7 @@ func GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRequest, store
 		}
 	}
 	// Read data from Cloud Bigtable.
-	if store.BtGroup.BaseTables() != nil {
+	if store.BtGroup.Tables() != nil {
 		rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
 
 		// Read data from BigTable.

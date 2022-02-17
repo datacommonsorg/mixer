@@ -91,7 +91,7 @@ func GetPropertyValues(
 		}
 	}
 	for dcid, entities := range outRes {
-		entities := filterEntities(entities, typ, limit)
+		entities = filterEntities(entities, typ, limit)
 		if len(entities) > 0 {
 			result.Data[dcid].Out = entities
 		}
@@ -108,7 +108,7 @@ func GetPropertyValuesHelper(
 	arcOut bool,
 ) (map[string][]*pb.EntityInfo, error) {
 	rowList := bigtable.BuildPropertyValuesKey(dcids, prop, arcOut)
-	baseDataList, _, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		rowList,
@@ -123,7 +123,6 @@ func GetPropertyValuesHelper(
 			return propVals.Entities, err
 		},
 		nil,
-		true, /* readBranch */
 	)
 	if err != nil {
 		return nil, err
@@ -133,8 +132,8 @@ func GetPropertyValuesHelper(
 	// Loop over the import groups. They are ordered by the preferences in
 	// /deploy/storage/bigtable_import_groups.json. So only add a node if it is
 	// not seen yet.
-	for _, baseData := range baseDataList {
-		for dcid, data := range baseData {
+	for _, btData := range btDataList {
+		for dcid, data := range btData {
 			_, ok := result[dcid]
 			if ok {
 				// For out arcs, only get data from one cache. Do not merge across cache.
@@ -179,8 +178,7 @@ func GetPropertyValuesHelper(
 	return result, nil
 }
 
-func filterEntities(
-	in []*pb.EntityInfo,
+func filterEntities(in []*pb.EntityInfo,
 	typ string,
 	limit int,
 ) []*pb.EntityInfo {
