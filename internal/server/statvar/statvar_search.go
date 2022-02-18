@@ -189,13 +189,16 @@ func groupStatVars(
 	return resultSv, resultSvg
 }
 
+// Map of token to a set of strings that match the token
+type TokenToMatches map[string]map[string]struct{}
+
 func searchTokens(
 	tokens []string, index *resource.SearchIndex,
 ) ([]*pb.EntityInfo, []*pb.EntityInfo, []string) {
-	// svMatches and svgMatches are maps of sv/svg id to a map of tokens that
-	// match each sv/svg to a set of strings that match the token
-	svMatches := map[string]map[string]map[string]struct{}{}
-	svgMatches := map[string]map[string]map[string]struct{}{}
+	// svMatches and svgMatches are maps of sv/svg id to TokenToMatches of tokens
+	// that match each sv/svg
+	svMatches := map[string]TokenToMatches{}
+	svgMatches := map[string]TokenToMatches{}
 
 	// Get all matching sv and svg from the trie for each token
 	for _, token := range tokens {
@@ -232,13 +235,13 @@ func searchTokens(
 			}
 			for sv := range node.SvIds {
 				if _, ok := svMatches[sv]; !ok {
-					svMatches[sv] = map[string]map[string]struct{}{}
+					svMatches[sv] = TokenToMatches{}
 				}
 				svMatches[sv][token] = node.Matches
 			}
 			for svg := range node.SvgIds {
 				if _, ok := svgMatches[svg]; !ok {
-					svgMatches[svg] = map[string]map[string]struct{}{}
+					svgMatches[svg] = TokenToMatches{}
 				}
 				svgMatches[svg][token] = node.Matches
 			}
