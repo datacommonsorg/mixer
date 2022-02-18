@@ -189,7 +189,7 @@ func groupStatVars(
 	return resultSv, resultSvg
 }
 
-// Map of token to a set of strings that match the token
+// TokenToMatches is a map of token to a set of strings that match the token
 type TokenToMatches map[string]map[string]struct{}
 
 func searchTokens(
