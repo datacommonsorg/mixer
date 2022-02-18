@@ -22,7 +22,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
-	"github.com/datacommonsorg/mixer/internal/server/place"
+	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -54,7 +54,7 @@ func GetStatValue(ctx context.Context, in *pb.GetStatValueRequest, store *store.
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
 	var obsTimeSeries *model.ObsTimeSeries
-	btData, err := bigtable.ReadStats(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := ReadStats(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -92,7 +92,7 @@ func getStatSet(
 	}
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := bigtable.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -127,7 +127,7 @@ func getStatSetAll(
 ) {
 	ts := time.Now()
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := bigtable.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -155,7 +155,7 @@ func getStatSetAll(
 				tmpResult[statVar] = map[uint32]*pb.PlacePointStat{}
 			}
 			for _, series := range ObsTimeSeries.SourceSeries {
-				metaData := &pb.StatMetadata{
+				metadata := &pb.StatMetadata{
 					ImportName:        series.ImportName,
 					ProvenanceUrl:     series.ProvenanceUrl,
 					MeasurementMethod: series.MeasurementMethod,
@@ -163,7 +163,7 @@ func getStatSetAll(
 					ScalingFactor:     series.ScalingFactor,
 					Unit:              series.Unit,
 				}
-				metaHash := getMetadataHash(metaData)
+				metaHash := getMetadataHash(metadata)
 				if _, ok := tmpResult[statVar][metaHash]; !ok {
 					tmpResult[statVar][metaHash] = &pb.PlacePointStat{
 						Stat: map[string]*pb.PointStat{},
@@ -193,7 +193,7 @@ func getStatSetAll(
 					tmpResult[statVar][metaHash].Stat[place] = ps
 					tmpResult[statVar][metaHash].MetaHash = metaHash
 				}
-				result.Metadata[metaHash] = metaData
+				result.Metadata[metaHash] = metadata
 			}
 		}
 	}
@@ -289,7 +289,7 @@ func GetStatSetWithinPlace(
 
 	// Read from cache directly
 	rowList, keyTokens := bigtable.BuildObsCollectionKey(parentPlace, childType, dateKey, statVars)
-	cacheData, err := bigtable.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -346,7 +346,7 @@ func GetStatSetWithinPlace(
 	// from per place,statvar bigtable.
 	var childPlaces []string
 	if !gotResult || statVarInMemDb {
-		childPlaces, err = place.GetChildPlaces(ctx, store, parentPlace, childType)
+		childPlaces, err = placein.GetChildPlaces(ctx, store, parentPlace, childType)
 		if err != nil {
 			return nil, err
 		}
@@ -424,7 +424,7 @@ func GetStatSetWithinPlaceAll(
 
 	// Read from cache directly
 	rowList, keyTokens := bigtable.BuildObsCollectionKey(parentPlace, childType, dateKey, statVars)
-	cacheData, err := bigtable.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -478,7 +478,7 @@ func GetStatSetWithinPlaceAll(
 	// from per place,statvar bigtable.
 	var childPlaces []string
 	if !gotResult || statVarInMemDb {
-		childPlaces, err = place.GetChildPlaces(ctx, store, parentPlace, childType)
+		childPlaces, err = placein.GetChildPlaces(ctx, store, parentPlace, childType)
 		if err != nil {
 			return nil, err
 		}

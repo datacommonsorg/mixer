@@ -20,6 +20,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 
@@ -61,7 +62,7 @@ func GetPlaceStatDateWithinPlace(
 	rowList, keyTokens := bigtable.BuildObsCollectionDateFrequencyKey(
 		ancestorPlace, placeType, statVars)
 
-	cacheData, err := bigtable.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}

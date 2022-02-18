@@ -18,6 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
@@ -35,7 +36,7 @@ func Count(
 	places []string,
 ) (map[string]map[string]int32, error) {
 	rowList, keyTokens := bigtable.BuildStatExistenceKey(places, svOrSvgs)
-	keyToTokenFn := bigtable.TokenFn(keyTokens)
+	keyToTokenFn := stat.TokenFn(keyTokens)
 	btDataList, err := bigtable.Read(
 		ctx,
 		btGroup,

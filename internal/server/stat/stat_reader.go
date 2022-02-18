@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package bigtable
+package stat
 
 import (
 	"context"
@@ -20,7 +20,10 @@ import (
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/model"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
@@ -37,13 +40,13 @@ func TokenFn(
 // Consider consolidate this function and bigTableReadRowsParallel.
 func ReadStats(
 	ctx context.Context,
-	btGroup *Group,
+	btGroup *bigtable.Group,
 	rowList cbt.RowList,
 	keyTokens map[string]*util.PlaceStatVar) (
 	map[string]map[string]*model.ObsTimeSeries, error) {
 
 	keyToTokenFn := TokenFn(keyTokens)
-	dataList, err := Read(
+	dataList, err := bigtable.Read(
 		ctx, btGroup, rowList, convert.ToObsSeries, TokenFn(keyTokens),
 	)
 	if err != nil {
@@ -81,13 +84,13 @@ func ReadStats(
 // Consider consolidate this function and bigTableReadRowsParallel.
 func ReadStatsPb(
 	ctx context.Context,
-	btGroup *Group,
+	btGroup *bigtable.Group,
 	rowList cbt.RowList,
 	keyTokens map[string]*util.PlaceStatVar) (
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
 	keyToTokenFn := TokenFn(keyTokens)
-	dataList, err := Read(
+	dataList, err := bigtable.Read(
 		ctx, btGroup, rowList, convert.ToObsSeriesPb, keyToTokenFn,
 	)
 	if err != nil {
@@ -126,12 +129,12 @@ func ReadStatsPb(
 // in parallel.
 func ReadStatCollection(
 	ctx context.Context,
-	btGroup *Group,
+	btGroup *bigtable.Group,
 	rowList cbt.RowList,
 	keyTokens map[string]string) (
 	map[string]*pb.ObsCollection, error) {
 
-	dataList, err := Read(
+	dataList, err := bigtable.Read(
 		ctx,
 		btGroup,
 		rowList,
@@ -150,14 +153,15 @@ func ReadStatCollection(
 		ss := result[token].SourceCohorts
 		for _, baseData := range dataList {
 			if data, ok := baseData[token]; ok {
-				ss = append(
-					ss,
-					data.(*pb.ObsCollection).SourceCohorts...,
-				)
+				obsCollection, ok := data.(*pb.ObsCollection)
+				if !ok {
+					return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")
+				}
+				ss = append(ss, obsCollection.SourceCohorts...)
 			}
 		}
 		if len(ss) > 0 {
-			result[token].SourceCohorts = ss
+			result[token].SourceCohorts = CollectDistinctSourceSeries(ss)
 		} else {
 			result[token] = nil
 		}
