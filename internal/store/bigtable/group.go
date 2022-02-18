@@ -27,9 +27,10 @@ import (
 
 var groupRank = map[string]int{
 	"frequent":   0,
-	"dc":         1,
+	"dcbranch":   1,
 	"branch":     1,
 	"ipcc":       2,
+	"borgcron":   10000,
 	"infrequent": 10000,
 }
 
@@ -132,17 +133,15 @@ func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
 //   after other groups with ranking.
 func SortTables(tables []*Table) {
 	sort.SliceStable(tables, func(i, j int) bool {
-		// ranking for i
-		// This is to parse the table name like "borgcron_frequent_2022_02_01_14_20_47"
+		// This is to parse the table name like "frequent_2022_02_01_14_20_47"
 		// and get the actual import group name.
-		// TODO: Update this if table format changes.
-		ni := strings.Split(tables[i].name, "_")[1]
+		ni := strings.Split(tables[i].name, "_")[0]
 		ri, ok := groupRank[ni]
 		if !ok {
 			ri = defaultRank
 		}
 		// ranking for j
-		nj := strings.Split(tables[j].name, "_")[1]
+		nj := strings.Split(tables[j].name, "_")[0]
 		rj, ok := groupRank[nj]
 		if !ok {
 			rj = defaultRank

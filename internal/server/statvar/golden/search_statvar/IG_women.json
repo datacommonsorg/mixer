@@ -8793,42 +8793,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings_WorkPeriod-FullTimeYearRoundWorker",
-      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings, Work Period = Full Time Year Round Worker",
-      "statVars": [
-        {
-          "name": "16 Years or More, Female, With Earnings, Full Time Year Round Worker Population",
-          "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Mean Earnings of 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Mean_Earnings_Person_Female_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Median Earnings of 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Median_Earnings_Person_Female_FullTimeYearRoundWorker"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Gender-Female_IncomeStatus-WithEarnings_MilitaryStatus-Civilian",
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Gender = Female, Income Status = With Earnings",
-      "statVars": [
-        {
-          "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings",
-          "dcid": "Median_Earnings_Person_Civilian_Employed_Female"
-        },
-        {
-          "name": "Median Earnings of 16 Years or More, Civilian, Employed, Female, With Earnings as Fraction of Median Earnings Person Civilian Employed Male",
-          "dcid": "Median_Earnings_Female_AsAFractionOf_Male_Civilian_Employed"
-        },
-        {
-          "name": "Median Income of 16 Years or More, Civilian, Employed, Female, With Earnings (Real Individual Earnings Before Deductions)",
-          "dcid": "dc/zk4npe0wztz1"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Births_Gender-Female",
       "name": "Births With Gender = Female",
       "statVars": [
@@ -18499,6 +18463,34 @@
         {
           "name": "Percent of 21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, Hispanic or Latino",
           "dcid": "dc/jmw4v3g5k49v7"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
+      "name": "Person With Age = 21 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
+      "statVars": [
+        {
+          "name": "21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone Population",
+          "dcid": "dc/j9ke603gkz965"
+        },
+        {
+          "name": "Percent of 21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, No Health Insurance, White Alone",
+          "dcid": "dc/dhg64vny02gt2"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years21To64_FamilyIncome-RatioToPovertyLineUpto2.5_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
+      "name": "Person With Age = 21 - 64 Years, Family Income = 2.5 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
+      "statVars": [
+        {
+          "name": "21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone Population",
+          "dcid": "dc/szhwx4efe0n69"
+        },
+        {
+          "name": "Percent of 21 - 64 Years, 2.5 Ratio To Poverty Line or Less, Female, With Health Insurance, Black or African American Alone",
+          "dcid": "dc/52med1q9gkz7c"
         }
       ]
     }

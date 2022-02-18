@@ -34,8 +34,9 @@ import "entity.proto";
 
 message PlaceStatVarExistence {
   // Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
-  int64 num_descendent_stat_vars = 1 [deprecated = true];
   int32 descendent_stat_var_count = 2;
+
+  reserved 1;
 }
 
 message StatVarSummary {
@@ -45,10 +46,11 @@ message StatVarSummary {
   }
   message PlaceTypeSummary {
     // Number of places with stats for this stat var
-    int64 num_places = 1 [deprecated = true];
     int32 place_count = 4;
     // List of example places that have stats for this stat var
     repeated Place top_places = 3;
+
+    reserved 1;
   }
 
   // TODO: Consolidate with StatMetadata
@@ -72,10 +74,8 @@ message StatVarSummary {
     // Latest observation date in this time series type
     string latest_date = 3;
     // Number of observations of this time series type
-    int64 num_observations = 4;
     double observation_count = 9;
     // Number of series of this time series type
-    int64 num_time_series = 5;
     double time_series_count = 10;
     // Map of place type to PlaceTypeSummary for this time series type
     map<string, PlaceTypeSummary> place_type_summary = 6;
@@ -83,21 +83,23 @@ message StatVarSummary {
     double min_value = 7;
     // Maximum observation value of this time series type
     double max_value = 8;
+
+    reserved 4, 5;
   }
 
   message ProvenanceSummary {
     // Import name
     string import_name = 1;
     // Number of observations from this provenance
-    int64 num_observations = 2;
     double observation_count = 6;
     // Number of time series from this provenance
-    int64 num_time_series = 3;
     double time_series_count = 7;
     // Release frequency of this provenance
     string release_frequency = 4;
     // SeriesSummary for each time series in this provenance
     repeated SeriesSummary series_summary = 5;
+
+    reserved 2, 3;
   }
 
   // Key is type of place
@@ -152,7 +154,6 @@ message StatVarGroupNode {
   // List of children StatVarGroups that are immediate specializations.
   repeated ChildSVG child_stat_var_groups = 3;
   // Number of unique descendent stat-vars.
-  int64 num_descendent_stat_vars = 4;
   int32 descendent_stat_var_count = 5;
 
     //==== Below are fields not in original cache.
@@ -160,6 +161,8 @@ message StatVarGroupNode {
 
   // List of parent StatVarGroup IDs.
   repeated string parent_stat_var_groups = 101;
+
+  reserved 4;
 }
 
 message GetStatVarGroupRequest {

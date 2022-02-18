@@ -3,7 +3,6 @@
     "Count_Person_Female": {
       "placeTypeSummary": {
         "AdministrativeArea": {
-          "numPlaces": "48",
           "placeCount": 48,
           "topPlaces": [
             {
@@ -21,7 +20,6 @@
           ]
         },
         "AdministrativeArea1": {
-          "numPlaces": "330",
           "placeCount": 330,
           "topPlaces": [
             {
@@ -39,7 +37,6 @@
           ]
         },
         "AdministrativeArea2": {
-          "numPlaces": "763",
           "placeCount": 763,
           "topPlaces": [
             {
@@ -57,7 +54,6 @@
           ]
         },
         "AdministrativeArea3": {
-          "numPlaces": "29",
           "placeCount": 29,
           "topPlaces": [
             {
@@ -75,7 +71,6 @@
           ]
         },
         "CensusBlockGroup": {
-          "numPlaces": "220333",
           "placeCount": 220333,
           "topPlaces": [
             {
@@ -93,7 +88,6 @@
           ]
         },
         "CensusCoreBasedStatisticalArea": {
-          "numPlaces": "933",
           "placeCount": 933,
           "topPlaces": [
             {
@@ -111,7 +105,6 @@
           ]
         },
         "CensusCountyDivision": {
-          "numPlaces": "36798",
           "placeCount": 36798,
           "topPlaces": [
             {
@@ -129,7 +122,6 @@
           ]
         },
         "CensusTract": {
-          "numPlaces": "74014",
           "placeCount": 74014,
           "topPlaces": [
             {
@@ -147,7 +139,6 @@
           ]
         },
         "CensusZipCodeTabulationArea": {
-          "numPlaces": "32989",
           "placeCount": 32989,
           "topPlaces": [
             {
@@ -165,7 +156,6 @@
           ]
         },
         "City": {
-          "numPlaces": "29952",
           "placeCount": 29952,
           "topPlaces": [
             {
@@ -183,7 +173,6 @@
           ]
         },
         "CongressionalDistrict": {
-          "numPlaces": "452",
           "placeCount": 452,
           "topPlaces": [
             {
@@ -201,7 +190,6 @@
           ]
         },
         "Country": {
-          "numPlaces": "66",
           "placeCount": 66,
           "topPlaces": [
             {
@@ -219,7 +207,6 @@
           ]
         },
         "County": {
-          "numPlaces": "3222",
           "placeCount": 3222,
           "topPlaces": [
             {
@@ -237,7 +224,6 @@
           ]
         },
         "ElementarySchoolDistrict": {
-          "numPlaces": "275",
           "placeCount": 275,
           "topPlaces": [
             {
@@ -255,7 +241,6 @@
           ]
         },
         "EurostatNUTS1": {
-          "numPlaces": "123",
           "placeCount": 123,
           "topPlaces": [
             {
@@ -273,7 +258,6 @@
           ]
         },
         "EurostatNUTS2": {
-          "numPlaces": "328",
           "placeCount": 328,
           "topPlaces": [
             {
@@ -291,7 +275,6 @@
           ]
         },
         "EurostatNUTS3": {
-          "numPlaces": "1390",
           "placeCount": 1390,
           "topPlaces": [
             {
@@ -309,7 +292,6 @@
           ]
         },
         "HighSchoolDistrict": {
-          "numPlaces": "132",
           "placeCount": 132,
           "topPlaces": [
             {
@@ -327,7 +309,6 @@
           ]
         },
         "Place": {
-          "numPlaces": "172",
           "placeCount": 172,
           "topPlaces": [
             {
@@ -343,7 +324,6 @@
           ]
         },
         "SchoolDistrict": {
-          "numPlaces": "13277",
           "placeCount": 13277,
           "topPlaces": [
             {
@@ -361,7 +341,6 @@
           ]
         },
         "State": {
-          "numPlaces": "87",
           "placeCount": 87,
           "topPlaces": [
             {
@@ -379,7 +358,6 @@
           ]
         },
         "StateComponent": {
-          "numPlaces": "550",
           "placeCount": 550,
           "topPlaces": [
             {
@@ -400,22 +378,17 @@
       "provenanceSummary": {
         "dc/2gyrxt": {
           "importName": "IndiaCensus_Primary",
-          "numObservations": "673",
           "observationCount": 673,
-          "numTimeSeries": "673",
           "timeSeriesCount": 673,
           "seriesSummary": [
             {
               "seriesKey": {},
               "earliestDate": "2011",
               "latestDate": "2011",
-              "numObservations": "673",
               "observationCount": 673,
-              "numTimeSeries": "673",
               "timeSeriesCount": 673,
               "placeTypeSummary": {
                 "AdministrativeArea2": {
-                  "numPlaces": "636",
                   "placeCount": 636,
                   "topPlaces": [
                     {
@@ -433,7 +406,6 @@
                   ]
                 },
                 "City": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -443,7 +415,6 @@
                   ]
                 },
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -453,7 +424,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "35",
                   "placeCount": 35,
                   "topPlaces": [
                     {
@@ -478,9 +448,7 @@
         },
         "dc/bxgh0w": {
           "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
-          "numObservations": "3",
           "observationCount": 3,
-          "numTimeSeries": "1",
           "timeSeriesCount": 1,
           "seriesSummary": [
             {
@@ -489,13 +457,10 @@
               },
               "earliestDate": "2017",
               "latestDate": "2019",
-              "numObservations": "3",
               "observationCount": 3,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -512,9 +477,7 @@
         },
         "dc/cl25rb": {
           "importName": "OECDRegionalDemography",
-          "numObservations": "56654",
           "observationCount": 56654,
-          "numTimeSeries": "2463",
           "timeSeriesCount": 2463,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -525,13 +488,10 @@
               },
               "earliestDate": "1995",
               "latestDate": "2019",
-              "numObservations": "56654",
               "observationCount": 56654,
-              "numTimeSeries": "2463",
               "timeSeriesCount": 2463,
               "placeTypeSummary": {
                 "AdministrativeArea": {
-                  "numPlaces": "48",
                   "placeCount": 48,
                   "topPlaces": [
                     {
@@ -549,7 +509,6 @@
                   ]
                 },
                 "AdministrativeArea1": {
-                  "numPlaces": "330",
                   "placeCount": 330,
                   "topPlaces": [
                     {
@@ -567,7 +526,6 @@
                   ]
                 },
                 "AdministrativeArea2": {
-                  "numPlaces": "127",
                   "placeCount": 127,
                   "topPlaces": [
                     {
@@ -585,7 +543,6 @@
                   ]
                 },
                 "AdministrativeArea3": {
-                  "numPlaces": "29",
                   "placeCount": 29,
                   "topPlaces": [
                     {
@@ -603,7 +560,6 @@
                   ]
                 },
                 "CensusCountyDivision": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -613,7 +569,6 @@
                   ]
                 },
                 "City": {
-                  "numPlaces": "270",
                   "placeCount": 270,
                   "topPlaces": [
                     {
@@ -631,7 +586,6 @@
                   ]
                 },
                 "Country": {
-                  "numPlaces": "50",
                   "placeCount": 50,
                   "topPlaces": [
                     {
@@ -649,7 +603,6 @@
                   ]
                 },
                 "EurostatNUTS1": {
-                  "numPlaces": "42",
                   "placeCount": 42,
                   "topPlaces": [
                     {
@@ -667,7 +620,6 @@
                   ]
                 },
                 "EurostatNUTS2": {
-                  "numPlaces": "200",
                   "placeCount": 200,
                   "topPlaces": [
                     {
@@ -685,7 +637,6 @@
                   ]
                 },
                 "EurostatNUTS3": {
-                  "numPlaces": "1274",
                   "placeCount": 1274,
                   "topPlaces": [
                     {
@@ -703,7 +654,6 @@
                   ]
                 },
                 "Place": {
-                  "numPlaces": "8",
                   "placeCount": 8,
                   "topPlaces": [
                     {
@@ -719,7 +669,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "84",
                   "placeCount": 84,
                   "topPlaces": [
                     {
@@ -744,9 +693,7 @@
         },
         "dc/cv2kpf2": {
           "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-          "numObservations": "10",
           "observationCount": 10,
-          "numTimeSeries": "1",
           "timeSeriesCount": 1,
           "seriesSummary": [
             {
@@ -755,13 +702,10 @@
               },
               "earliestDate": "2010",
               "latestDate": "2019",
-              "numObservations": "10",
               "observationCount": 10,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "State": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -778,9 +722,7 @@
         },
         "dc/gg17432": {
           "importName": "CensusACS5YearSurvey",
-          "numObservations": "1692272",
           "observationCount": 1692272,
-          "numTimeSeries": "192536",
           "timeSeriesCount": 192536,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -790,13 +732,10 @@
               },
               "earliestDate": "2011",
               "latestDate": "2019",
-              "numObservations": "1692272",
               "observationCount": 1692272,
-              "numTimeSeries": "192536",
               "timeSeriesCount": 192536,
               "placeTypeSummary": {
                 "CensusCoreBasedStatisticalArea": {
-                  "numPlaces": "933",
                   "placeCount": 933,
                   "topPlaces": [
                     {
@@ -814,7 +753,6 @@
                   ]
                 },
                 "CensusCountyDivision": {
-                  "numPlaces": "36798",
                   "placeCount": 36798,
                   "topPlaces": [
                     {
@@ -832,7 +770,6 @@
                   ]
                 },
                 "CensusTract": {
-                  "numPlaces": "74014",
                   "placeCount": 74014,
                   "topPlaces": [
                     {
@@ -850,7 +787,6 @@
                   ]
                 },
                 "CensusZipCodeTabulationArea": {
-                  "numPlaces": "32989",
                   "placeCount": 32989,
                   "topPlaces": [
                     {
@@ -868,7 +804,6 @@
                   ]
                 },
                 "City": {
-                  "numPlaces": "29678",
                   "placeCount": 29678,
                   "topPlaces": [
                     {
@@ -886,7 +821,6 @@
                   ]
                 },
                 "CongressionalDistrict": {
-                  "numPlaces": "452",
                   "placeCount": 452,
                   "topPlaces": [
                     {
@@ -904,7 +838,6 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3222",
                   "placeCount": 3222,
                   "topPlaces": [
                     {
@@ -922,7 +855,6 @@
                   ]
                 },
                 "ElementarySchoolDistrict": {
-                  "numPlaces": "275",
                   "placeCount": 275,
                   "topPlaces": [
                     {
@@ -940,7 +872,6 @@
                   ]
                 },
                 "HighSchoolDistrict": {
-                  "numPlaces": "132",
                   "placeCount": 132,
                   "topPlaces": [
                     {
@@ -958,7 +889,6 @@
                   ]
                 },
                 "Place": {
-                  "numPlaces": "164",
                   "placeCount": 164,
                   "topPlaces": [
                     {
@@ -973,7 +903,6 @@
                   ]
                 },
                 "SchoolDistrict": {
-                  "numPlaces": "13277",
                   "placeCount": 13277,
                   "topPlaces": [
                     {
@@ -991,7 +920,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "52",
                   "placeCount": 52,
                   "topPlaces": [
                     {
@@ -1009,7 +937,6 @@
                   ]
                 },
                 "StateComponent": {
-                  "numPlaces": "550",
                   "placeCount": 550,
                   "topPlaces": [
                     {
@@ -1033,9 +960,7 @@
         },
         "dc/kyzlg31": {
           "importName": "CensusACS1YearSurvey",
-          "numObservations": "14758",
           "observationCount": 14758,
-          "numTimeSeries": "1535",
           "timeSeriesCount": 1535,
           "seriesSummary": [
             {
@@ -1044,13 +969,10 @@
               },
               "earliestDate": "2010",
               "latestDate": "2019",
-              "numObservations": "14758",
               "observationCount": 14758,
-              "numTimeSeries": "1535",
               "timeSeriesCount": 1535,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "640",
                   "placeCount": 640,
                   "topPlaces": [
                     {
@@ -1068,7 +990,6 @@
                   ]
                 },
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -1078,7 +999,6 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "842",
                   "placeCount": 842,
                   "topPlaces": [
                     {
@@ -1096,7 +1016,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "52",
                   "placeCount": 52,
                   "topPlaces": [
                     {
@@ -1121,9 +1040,7 @@
         },
         "dc/nnx11h2": {
           "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-          "numObservations": "3",
           "observationCount": 3,
-          "numTimeSeries": "1",
           "timeSeriesCount": 1,
           "seriesSummary": [
             {
@@ -1132,13 +1049,10 @@
               },
               "earliestDate": "2017",
               "latestDate": "2019",
-              "numObservations": "3",
               "observationCount": 3,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "State": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -1155,9 +1069,7 @@
         },
         "dc/qmsyx4": {
           "importName": "CensusACS5YearSurvey_AggCountry",
-          "numObservations": "9",
           "observationCount": 9,
-          "numTimeSeries": "1",
           "timeSeriesCount": 1,
           "seriesSummary": [
             {
@@ -1167,13 +1079,10 @@
               },
               "earliestDate": "2011",
               "latestDate": "2019",
-              "numObservations": "9",
               "observationCount": 9,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -1190,9 +1099,7 @@
         },
         "dc/scp3y31": {
           "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
-          "numObservations": "156",
           "observationCount": 156,
-          "numTimeSeries": "52",
           "timeSeriesCount": 52,
           "seriesSummary": [
             {
@@ -1201,13 +1108,10 @@
               },
               "earliestDate": "2017",
               "latestDate": "2019",
-              "numObservations": "156",
               "observationCount": 156,
-              "numTimeSeries": "52",
               "timeSeriesCount": 52,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -1217,7 +1121,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "51",
                   "placeCount": 51,
                   "topPlaces": [
                     {
@@ -1242,9 +1145,7 @@
         },
         "dc/t660j91": {
           "importName": "CensusACS5YearSurvey_BlockGroup",
-          "numObservations": "1982915",
           "observationCount": 1982915,
-          "numTimeSeries": "220333",
           "timeSeriesCount": 220333,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -1254,13 +1155,10 @@
               },
               "earliestDate": "2011",
               "latestDate": "2019",
-              "numObservations": "1982915",
               "observationCount": 1982915,
-              "numTimeSeries": "220333",
               "timeSeriesCount": 220333,
               "placeTypeSummary": {
                 "CensusBlockGroup": {
-                  "numPlaces": "220333",
                   "placeCount": 220333,
                   "topPlaces": [
                     {
@@ -1284,9 +1182,7 @@
         },
         "dc/yd4sfb": {
           "importName": "EurostatData",
-          "numObservations": "47169",
           "observationCount": 47169,
-          "numTimeSeries": "2029",
           "timeSeriesCount": 2029,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -1296,13 +1192,10 @@
               },
               "earliestDate": "1960",
               "latestDate": "2019",
-              "numObservations": "47169",
               "observationCount": 47169,
-              "numTimeSeries": "2029",
               "timeSeriesCount": 2029,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "140",
                   "placeCount": 140,
                   "topPlaces": [
                     {
@@ -1320,7 +1213,6 @@
                   ]
                 },
                 "Country": {
-                  "numPlaces": "48",
                   "placeCount": 48,
                   "topPlaces": [
                     {
@@ -1338,7 +1230,6 @@
                   ]
                 },
                 "EurostatNUTS1": {
-                  "numPlaces": "123",
                   "placeCount": 123,
                   "topPlaces": [
                     {
@@ -1356,7 +1247,6 @@
                   ]
                 },
                 "EurostatNUTS2": {
-                  "numPlaces": "328",
                   "placeCount": 328,
                   "topPlaces": [
                     {
@@ -1374,7 +1264,6 @@
                   ]
                 },
                 "EurostatNUTS3": {
-                  "numPlaces": "1390",
                   "placeCount": 1390,
                   "topPlaces": [
                     {
@@ -1399,9 +1288,7 @@
         },
         "dc/yy2t0v": {
           "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
-          "numObservations": "520",
           "observationCount": 520,
-          "numTimeSeries": "52",
           "timeSeriesCount": 52,
           "seriesSummary": [
             {
@@ -1410,13 +1297,10 @@
               },
               "earliestDate": "2010",
               "latestDate": "2019",
-              "numObservations": "520",
               "observationCount": 520,
-              "numTimeSeries": "52",
               "timeSeriesCount": 52,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -1426,7 +1310,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "51",
                   "placeCount": 51,
                   "topPlaces": [
                     {
@@ -1454,7 +1337,6 @@
     "Count_Person_Female_AsianAlone": {
       "placeTypeSummary": {
         "CensusCoreBasedStatisticalArea": {
-          "numPlaces": "933",
           "placeCount": 933,
           "topPlaces": [
             {
@@ -1472,7 +1354,6 @@
           ]
         },
         "CensusCountyDivision": {
-          "numPlaces": "36798",
           "placeCount": 36798,
           "topPlaces": [
             {
@@ -1490,7 +1371,6 @@
           ]
         },
         "CensusTract": {
-          "numPlaces": "74014",
           "placeCount": 74014,
           "topPlaces": [
             {
@@ -1508,7 +1388,6 @@
           ]
         },
         "CensusZipCodeTabulationArea": {
-          "numPlaces": "32989",
           "placeCount": 32989,
           "topPlaces": [
             {
@@ -1526,7 +1405,6 @@
           ]
         },
         "City": {
-          "numPlaces": "29678",
           "placeCount": 29678,
           "topPlaces": [
             {
@@ -1544,7 +1422,6 @@
           ]
         },
         "CongressionalDistrict": {
-          "numPlaces": "452",
           "placeCount": 452,
           "topPlaces": [
             {
@@ -1562,7 +1439,6 @@
           ]
         },
         "Country": {
-          "numPlaces": "1",
           "placeCount": 1,
           "topPlaces": [
             {
@@ -1572,7 +1448,6 @@
           ]
         },
         "County": {
-          "numPlaces": "3222",
           "placeCount": 3222,
           "topPlaces": [
             {
@@ -1590,7 +1465,6 @@
           ]
         },
         "ElementarySchoolDistrict": {
-          "numPlaces": "275",
           "placeCount": 275,
           "topPlaces": [
             {
@@ -1608,7 +1482,6 @@
           ]
         },
         "HighSchoolDistrict": {
-          "numPlaces": "132",
           "placeCount": 132,
           "topPlaces": [
             {
@@ -1626,7 +1499,6 @@
           ]
         },
         "Place": {
-          "numPlaces": "164",
           "placeCount": 164,
           "topPlaces": [
             {
@@ -1641,7 +1513,6 @@
           ]
         },
         "SchoolDistrict": {
-          "numPlaces": "13277",
           "placeCount": 13277,
           "topPlaces": [
             {
@@ -1659,7 +1530,6 @@
           ]
         },
         "State": {
-          "numPlaces": "52",
           "placeCount": 52,
           "topPlaces": [
             {
@@ -1677,7 +1547,6 @@
           ]
         },
         "StateComponent": {
-          "numPlaces": "550",
           "placeCount": 550,
           "topPlaces": [
             {
@@ -1698,9 +1567,7 @@
       "provenanceSummary": {
         "dc/gg17432": {
           "importName": "CensusACS5YearSurvey",
-          "numObservations": "1692272",
           "observationCount": 1692272,
-          "numTimeSeries": "192536",
           "timeSeriesCount": 192536,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -1710,13 +1577,10 @@
               },
               "earliestDate": "2011",
               "latestDate": "2019",
-              "numObservations": "1692272",
               "observationCount": 1692272,
-              "numTimeSeries": "192536",
               "timeSeriesCount": 192536,
               "placeTypeSummary": {
                 "CensusCoreBasedStatisticalArea": {
-                  "numPlaces": "933",
                   "placeCount": 933,
                   "topPlaces": [
                     {
@@ -1734,7 +1598,6 @@
                   ]
                 },
                 "CensusCountyDivision": {
-                  "numPlaces": "36798",
                   "placeCount": 36798,
                   "topPlaces": [
                     {
@@ -1752,7 +1615,6 @@
                   ]
                 },
                 "CensusTract": {
-                  "numPlaces": "74014",
                   "placeCount": 74014,
                   "topPlaces": [
                     {
@@ -1770,7 +1632,6 @@
                   ]
                 },
                 "CensusZipCodeTabulationArea": {
-                  "numPlaces": "32989",
                   "placeCount": 32989,
                   "topPlaces": [
                     {
@@ -1788,7 +1649,6 @@
                   ]
                 },
                 "City": {
-                  "numPlaces": "29678",
                   "placeCount": 29678,
                   "topPlaces": [
                     {
@@ -1806,7 +1666,6 @@
                   ]
                 },
                 "CongressionalDistrict": {
-                  "numPlaces": "452",
                   "placeCount": 452,
                   "topPlaces": [
                     {
@@ -1824,7 +1683,6 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3222",
                   "placeCount": 3222,
                   "topPlaces": [
                     {
@@ -1842,7 +1700,6 @@
                   ]
                 },
                 "ElementarySchoolDistrict": {
-                  "numPlaces": "275",
                   "placeCount": 275,
                   "topPlaces": [
                     {
@@ -1860,7 +1717,6 @@
                   ]
                 },
                 "HighSchoolDistrict": {
-                  "numPlaces": "132",
                   "placeCount": 132,
                   "topPlaces": [
                     {
@@ -1878,7 +1734,6 @@
                   ]
                 },
                 "Place": {
-                  "numPlaces": "164",
                   "placeCount": 164,
                   "topPlaces": [
                     {
@@ -1893,7 +1748,6 @@
                   ]
                 },
                 "SchoolDistrict": {
-                  "numPlaces": "13277",
                   "placeCount": 13277,
                   "topPlaces": [
                     {
@@ -1911,7 +1765,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "52",
                   "placeCount": 52,
                   "topPlaces": [
                     {
@@ -1929,7 +1782,6 @@
                   ]
                 },
                 "StateComponent": {
-                  "numPlaces": "550",
                   "placeCount": 550,
                   "topPlaces": [
                     {
@@ -1953,9 +1805,7 @@
         },
         "dc/qmsyx4": {
           "importName": "CensusACS5YearSurvey_AggCountry",
-          "numObservations": "9",
           "observationCount": 9,
-          "numTimeSeries": "1",
           "timeSeriesCount": 1,
           "seriesSummary": [
             {
@@ -1965,13 +1815,10 @@
               },
               "earliestDate": "2011",
               "latestDate": "2019",
-              "numObservations": "9",
               "observationCount": 9,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -1991,7 +1838,6 @@
     "FertilityRate_Person_Female": {
       "placeTypeSummary": {
         "City": {
-          "numPlaces": "140",
           "placeCount": 140,
           "topPlaces": [
             {
@@ -2009,7 +1855,6 @@
           ]
         },
         "Country": {
-          "numPlaces": "206",
           "placeCount": 206,
           "topPlaces": [
             {
@@ -2027,7 +1872,6 @@
           ]
         },
         "EurostatNUTS1": {
-          "numPlaces": "123",
           "placeCount": 123,
           "topPlaces": [
             {
@@ -2045,7 +1889,6 @@
           ]
         },
         "EurostatNUTS2": {
-          "numPlaces": "328",
           "placeCount": 328,
           "topPlaces": [
             {
@@ -2063,7 +1906,6 @@
           ]
         },
         "EurostatNUTS3": {
-          "numPlaces": "1390",
           "placeCount": 1390,
           "topPlaces": [
             {
@@ -2081,7 +1923,6 @@
           ]
         },
         "Place": {
-          "numPlaces": "1",
           "placeCount": 1,
           "topPlaces": [
             {
@@ -2094,22 +1935,17 @@
       "provenanceSummary": {
         "dc/jccrh82": {
           "importName": "WorldDevelopmentIndicators",
-          "numObservations": "11709",
           "observationCount": 11709,
-          "numTimeSeries": "207",
           "timeSeriesCount": 207,
           "seriesSummary": [
             {
               "seriesKey": {},
               "earliestDate": "1960",
               "latestDate": "2019",
-              "numObservations": "11709",
               "observationCount": 11709,
-              "numTimeSeries": "207",
               "timeSeriesCount": 207,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "206",
                   "placeCount": 206,
                   "topPlaces": [
                     {
@@ -2127,7 +1963,6 @@
                   ]
                 },
                 "Place": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -2144,9 +1979,7 @@
         },
         "dc/yd4sfb": {
           "importName": "EurostatData",
-          "numObservations": "10106",
           "observationCount": 10106,
-          "numTimeSeries": "1981",
           "timeSeriesCount": 1981,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -2156,13 +1989,10 @@
               },
               "earliestDate": "2013",
               "latestDate": "2018",
-              "numObservations": "10106",
               "observationCount": 10106,
-              "numTimeSeries": "1981",
               "timeSeriesCount": 1981,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "140",
                   "placeCount": 140,
                   "topPlaces": [
                     {
@@ -2180,7 +2010,6 @@
                   ]
                 },
                 "EurostatNUTS1": {
-                  "numPlaces": "123",
                   "placeCount": 123,
                   "topPlaces": [
                     {
@@ -2198,7 +2027,6 @@
                   ]
                 },
                 "EurostatNUTS2": {
-                  "numPlaces": "328",
                   "placeCount": 328,
                   "topPlaces": [
                     {
@@ -2216,7 +2044,6 @@
                   ]
                 },
                 "EurostatNUTS3": {
-                  "numPlaces": "1390",
                   "placeCount": 1390,
                   "topPlaces": [
                     {

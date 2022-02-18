@@ -26,7 +26,6 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -59,7 +58,7 @@ const (
 	storeProject     = "datcom-store"
 	tmcfCsvBucket    = "datcom-public"
 	tmcfCsvPrefix    = "test"
-	branchTableName  = "borgcron_dc_branch"
+	branchInstance   = "prophet-branch-cache"
 )
 
 // Setup creates local server and client.
@@ -106,7 +105,22 @@ func setupInternal(
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
+	var branchTableName string
+	if useImportGroup {
+		branchTableName = "dcbranch_2022_02_17_11_39_12"
+	} else {
+		branchTableName = "branch_dcbranch_2022_02_17_16_16_05"
+	}
+
 	tables := []*bigtable.Table{}
+	branchTable, err := bigtable.NewBtTable(ctx, storeProject, branchInstance, branchTableName)
+	if err != nil {
+		return nil, nil, err
+	}
+	if err != nil {
+		return nil, nil, err
+	}
+	tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 
 	if useImportGroup {
 		for _, t := range tableConfig.Tables {
@@ -124,11 +138,6 @@ func setupInternal(
 			return nil, nil, err
 		}
 		tables = append(tables, bigtable.NewTable(name, baseTable))
-		branchTable, err := createBranchTable(ctx)
-		if err != nil {
-			return nil, nil, err
-		}
-		tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 	}
 
 	metadata, err := server.NewMetadata(
@@ -153,7 +162,7 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	return newClient(bqClient, tables, metadata, cache, memDb, useImportGroup)
+	return newClient(bqClient, tables, metadata, cache, memDb, useImportGroup, branchTableName)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -177,7 +186,7 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	return newClient(bqClient, nil, metadata, nil, nil, false)
+	return newClient(bqClient, nil, metadata, nil, nil, false, "")
 }
 
 func newClient(
@@ -187,6 +196,7 @@ func newClient(
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
 	useImportGroup bool,
+	branchTableName string,
 ) (pb.MixerClient, pb.ReconClient, error) {
 	mixerStore := store.NewStore(bqClient, memDb, tables, branchTableName, useImportGroup)
 	reconStore := store.NewStore(nil, nil, tables, "", useImportGroup)
@@ -219,17 +229,6 @@ func newClient(
 	mixerClient := pb.NewMixerClient(conn)
 	reconClient := pb.NewReconClient(conn)
 	return mixerClient, reconClient, nil
-}
-
-func createBranchTable(ctx context.Context) (*cbt.Table, error) {
-	_, filename, _, _ := runtime.Caller(0)
-	file, _ := ioutil.ReadFile(path.Join(path.Dir(filename), "memcache.json"))
-	var data map[string]string
-	err := json.Unmarshal(file, &data)
-	if err != nil {
-		return nil, err
-	}
-	return bigtable.SetupBigtable(ctx, data)
 }
 
 // UpdateGolden updates the golden file for native typed response.

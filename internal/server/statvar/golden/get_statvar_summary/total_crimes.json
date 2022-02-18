@@ -3,7 +3,6 @@
     "Count_CriminalActivities_CombinedCrime": {
       "placeTypeSummary": {
         "CensusCountyDivision": {
-          "numPlaces": "1327",
           "placeCount": 1327,
           "topPlaces": [
             {
@@ -21,7 +20,6 @@
           ]
         },
         "City": {
-          "numPlaces": "8807",
           "placeCount": 8807,
           "topPlaces": [
             {
@@ -39,7 +37,6 @@
           ]
         },
         "Country": {
-          "numPlaces": "1",
           "placeCount": 1,
           "topPlaces": [
             {
@@ -49,7 +46,6 @@
           ]
         },
         "County": {
-          "numPlaces": "1",
           "placeCount": 1,
           "topPlaces": [
             {
@@ -59,7 +55,6 @@
           ]
         },
         "State": {
-          "numPlaces": "50",
           "placeCount": 50,
           "topPlaces": [
             {
@@ -80,9 +75,7 @@
       "provenanceSummary": {
         "dc/fx0lj33": {
           "importName": "FBIGovCrime",
-          "numObservations": "96373",
           "observationCount": 96373,
-          "numTimeSeries": "10185",
           "timeSeriesCount": 10185,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -92,13 +85,10 @@
               },
               "earliestDate": "2008",
               "latestDate": "2019",
-              "numObservations": "96373",
               "observationCount": 96373,
-              "numTimeSeries": "10185",
               "timeSeriesCount": 10185,
               "placeTypeSummary": {
                 "CensusCountyDivision": {
-                  "numPlaces": "1327",
                   "placeCount": 1327,
                   "topPlaces": [
                     {
@@ -116,7 +106,6 @@
                   ]
                 },
                 "City": {
-                  "numPlaces": "8807",
                   "placeCount": 8807,
                   "topPlaces": [
                     {
@@ -134,7 +123,6 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -144,7 +132,6 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "50",
                   "placeCount": 50,
                   "topPlaces": [
                     {
@@ -168,9 +155,7 @@
         },
         "dc/q843y93": {
           "importName": "FBIGovCrime_AggCountry",
-          "numObservations": "12",
           "observationCount": 12,
-          "numTimeSeries": "1",
           "timeSeriesCount": 1,
           "seriesSummary": [
             {
@@ -180,13 +165,10 @@
               },
               "earliestDate": "2008",
               "latestDate": "2019",
-              "numObservations": "12",
               "observationCount": 12,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {

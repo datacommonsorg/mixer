@@ -161,7 +161,12 @@ func GetStatVarGroup(
 		if err != nil {
 			return nil, err
 		}
-		result = btDataList[0]["_"].(*pb.StatVarGroups)
+		for _, btData := range btDataList {
+			if data, ok := btData["_"]; ok {
+				result = data.(*pb.StatVarGroups)
+				break
+			}
+		}
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
 	}

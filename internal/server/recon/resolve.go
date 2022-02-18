@@ -138,6 +138,9 @@ func ResolveEntities(
 
 	// Group resolving cache result by source ID.
 	for _, btData := range btDataList {
+		if len(btData) == 0 {
+			continue
+		}
 		for idKey, reconEntities := range btData {
 			if reconEntities == nil {
 				continue

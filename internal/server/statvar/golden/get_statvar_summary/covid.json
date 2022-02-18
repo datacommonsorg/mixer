@@ -3,7 +3,6 @@
     "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
       "placeTypeSummary": {
         "City": {
-          "numPlaces": "3",
           "placeCount": 3,
           "topPlaces": [
             {
@@ -21,7 +20,6 @@
           ]
         },
         "Country": {
-          "numPlaces": "1",
           "placeCount": 1,
           "topPlaces": [
             {
@@ -31,7 +29,6 @@
           ]
         },
         "County": {
-          "numPlaces": "3217",
           "placeCount": 3217,
           "topPlaces": [
             {
@@ -49,7 +46,6 @@
           ]
         },
         "State": {
-          "numPlaces": "56",
           "placeCount": 56,
           "topPlaces": [
             {
@@ -70,9 +66,7 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "numObservations": "2307059",
-          "observationCount": 2307059,
-          "numTimeSeries": "6554",
+          "observationCount": 2316890,
           "timeSeriesCount": 6554,
           "releaseFrequency": "P1D",
           "seriesSummary": [
@@ -81,14 +75,11 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2022-02-13",
-              "numObservations": "2230307",
-              "observationCount": 2230307,
-              "numTimeSeries": "3277",
+              "latestDate": "2022-02-16",
+              "observationCount": 2240138,
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "3",
                   "placeCount": 3,
                   "topPlaces": [
                     {
@@ -106,7 +97,6 @@
                   ]
                 },
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -116,38 +106,34 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3217",
                   "placeCount": 3217,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06037",
-                      "name": "Los Angeles County"
+                      "dcid": "geoId/78030"
                     },
                     {
-                      "dcid": "geoId/17031",
-                      "name": "Cook County"
+                      "dcid": "geoId/78020"
                     },
                     {
-                      "dcid": "geoId/48201",
-                      "name": "Harris County"
+                      "dcid": "geoId/78010",
+                      "name": "Saint Croix"
                     }
                   ]
                 },
                 "State": {
-                  "numPlaces": "56",
                   "placeCount": 56,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06",
-                      "name": "California"
+                      "dcid": "geoId/78",
+                      "name": "Virgin Islands of the U.S."
                     },
                     {
-                      "dcid": "geoId/48",
-                      "name": "Texas"
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
                     },
                     {
-                      "dcid": "geoId/12",
-                      "name": "Florida"
+                      "dcid": "geoId/69",
+                      "name": "Northern Mariana Islands"
                     }
                   ]
                 }
@@ -162,13 +148,10 @@
               },
               "earliestDate": "2020-01",
               "latestDate": "2022-02",
-              "numObservations": "76752",
               "observationCount": 76752,
-              "numTimeSeries": "3277",
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "3",
                   "placeCount": 3,
                   "topPlaces": [
                     {
@@ -186,7 +169,6 @@
                   ]
                 },
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -196,38 +178,34 @@
                   ]
                 },
                 "County": {
-                  "numPlaces": "3217",
                   "placeCount": 3217,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06037",
-                      "name": "Los Angeles County"
+                      "dcid": "geoId/78030"
                     },
                     {
-                      "dcid": "geoId/17031",
-                      "name": "Cook County"
+                      "dcid": "geoId/78020"
                     },
                     {
-                      "dcid": "geoId/48201",
-                      "name": "Harris County"
+                      "dcid": "geoId/78010",
+                      "name": "Saint Croix"
                     }
                   ]
                 },
                 "State": {
-                  "numPlaces": "56",
                   "placeCount": 56,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06",
-                      "name": "California"
+                      "dcid": "geoId/78",
+                      "name": "Virgin Islands of the U.S."
                     },
                     {
-                      "dcid": "geoId/48",
-                      "name": "Texas"
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
                     },
                     {
-                      "dcid": "geoId/12",
-                      "name": "Florida"
+                      "dcid": "geoId/69",
+                      "name": "Northern Mariana Islands"
                     }
                   ]
                 }
