@@ -19,8 +19,6 @@ import (
 	"fmt"
 	"strings"
 
-	"encoding/json"
-
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -65,7 +63,7 @@ func GetChildPlaces(
 
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.Store) (
-	*pb.GetPlacesInResponse, error) {
+	map[string][]string, error) {
 	dcids := in.GetDcids()
 	placeType := in.GetPlaceType()
 
@@ -96,32 +94,23 @@ func GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest, store *store.St
 	if err != nil {
 		return nil, err
 	}
-	results := []map[string]string{}
+	result := map[string][]string{}
 	processed := map[string]struct{}{}
 	for _, dcid := range dcids {
 		if _, ok := processed[dcid]; ok {
 			continue
 		}
-
 		// Go through (ordered) import groups one by one, stop when data is found.
 		for _, baseData := range btDataList {
 			if _, ok := baseData[dcid]; !ok {
 				continue
 			}
-
-			for _, place := range baseData[dcid].([]string) {
-				results = append(results, map[string]string{"dcid": dcid, "place": place})
-			}
+			result[dcid] = baseData[dcid].([]string)
 			processed[dcid] = struct{}{}
 			break
 		}
 	}
-
-	jsonRaw, err := json.Marshal(results)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetPlacesInResponse{Payload: string(jsonRaw)}, nil
+	return result, nil
 }
 
 // RelatedLocationsPrefixMap is a map from different scenarios to key prefix for

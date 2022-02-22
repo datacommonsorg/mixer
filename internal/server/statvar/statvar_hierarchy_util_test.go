@@ -85,66 +85,76 @@ func TestGetParentMapping(t *testing.T) {
 func TestBuildSearchIndex(t *testing.T) {
 	token1 := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]string{"group_1": "ab1"},
-		SvIds:         map[string]string{"sv_1_1": "ab1"},
+		SvgIds:        map[string]struct{}{"group_1": {}},
+		SvIds:         map[string]struct{}{"sv_1_1": {}},
+		Matches:       map[string]struct{}{"ab1": {}},
 	}
 	token3 := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvgIds:        nil,
-		SvIds:         map[string]string{"sv_1_1": "Ac3", "sv_1_2": "ac3"},
+		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
+		Matches:       map[string]struct{}{"ac3": {}},
 	}
 	tokenX := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]string{"group_1": "zDx", "group_3_1": "zdx"},
-		SvIds:         map[string]string{"sv_3": "zdx"},
+		SvgIds:        map[string]struct{}{"group_1": {}, "group_3_1": {}},
+		SvIds:         map[string]struct{}{"sv_3": {}},
+		Matches:       map[string]struct{}{"zdx": {}},
 	}
 	tokenDX := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'x': &tokenX,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	tokenD := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]string{"group_3_1": "bd"},
-		SvIds:         map[string]string{"sv_1_2": "bd", "sv3": "bd"},
+		SvgIds:        map[string]struct{}{"group_3_1": {}},
+		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv3": {}},
+		Matches:       map[string]struct{}{"bd": {}},
 	}
 	tokenC := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'3': &token3,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	tokenZ := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'd': &tokenDX,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	tokenB1 := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'd': &tokenD,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	tokenB2 := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'1': &token1,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	tokenA := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'b': &tokenB2,
 			'c': &tokenC,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	for _, c := range []struct {
 		inputSvg  map[string]*pb.StatVarGroupNode
@@ -212,8 +222,9 @@ func TestBuildSearchIndex(t *testing.T) {
 						'z': &tokenZ,
 						'b': &tokenB1,
 					},
-					SvgIds: nil,
-					SvIds:  nil,
+					SvgIds:  nil,
+					SvIds:   nil,
+					Matches: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {

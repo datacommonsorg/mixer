@@ -276,7 +276,6 @@ func GetStatSetSeriesWithinPlace(
 	if err != nil {
 		return nil, err
 	}
-
 	return GetStatSetSeries(
 		ctx,
 		&pb.GetStatSetSeriesRequest{

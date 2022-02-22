@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"os"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/biopage"
@@ -123,7 +124,29 @@ func (s *Server) GetStatSetSeriesWithinPlace(
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 ) (*pb.GetPlacesInResponse, error) {
-	return place.GetPlacesIn(ctx, in, s.store)
+	// Current places in response is not ideal.
+	// (TODO): In next version of API, should simply return placesInData in the final response.
+	placesInData, err := place.GetPlacesIn(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	result := []map[string]string{}
+	parents := []string{}
+	for dcid := range placesInData {
+		parents = append(parents, dcid)
+	}
+	sort.Strings(parents)
+	for _, parent := range parents {
+		for _, child := range placesInData[parent] {
+			result = append(result, map[string]string{"dcid": parent, "place": child})
+		}
+	}
+
+	jsonRaw, err := json.Marshal(result)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.GetPlacesInResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetRelatedLocations implements API for Mixer.GetRelatedLocations.

@@ -55,20 +55,13 @@ type SearchIndex struct {
 // TrieNode represents a node in the sv hierarchy search Trie.
 type TrieNode struct {
 	ChildrenNodes map[rune]*TrieNode
-	// SvgIds and SvIds are maps of the dcid to the string within the
-	// Svg/Sv name that matches the token ending at the current TrieNode.
-	//
-	// For example:
-	// token ending @ current TrieNode: "women"
-	// synonyms: ["female", "women"]
-	// svg names: svg1: "Female Population", svg2: "Women Population"
-	//
-	// SvgIds map: {
-	// 	"svg1": "Female",
-	// 	"svg2": "Women"
-	// }
-	SvgIds map[string]string
-	SvIds  map[string]string
+	// SvgIds and SvIds are sets where Ids are keys and each key is mapped to an
+	// empty struct
+	SvgIds map[string]struct{}
+	SvIds  map[string]struct{}
+	// Matches is a set of strings that match the token ending at the current
+	// trienode
+	Matches map[string]struct{}
 }
 
 // RankingInfo holds the ranking information for each stat var hierarchy search
@@ -84,16 +77,25 @@ type RankingInfo struct {
 // Update search index, given a stat var (group) node ID and string.
 func (index *SearchIndex) Update(
 	nodeID string, nodeString string, displayName string, isSvg bool, synonymMap map[string][]string) {
-	processedNodeString := strings.ReplaceAll(nodeString, ",", " ")
+	processedNodeString := strings.ToLower(nodeString)
+	processedNodeString = strings.ReplaceAll(processedNodeString, ",", " ")
 	tokenList := strings.Fields(processedNodeString)
 	// Create a map of tokens/synonyms to the matching string from nodeString
 	tokens := map[string]string{}
 	for _, token := range tokenList {
-		processedToken := strings.ToLower(token)
-		tokens[processedToken] = token
-		if synonymList, ok := synonymMap[processedToken]; ok {
+		tokens[token] = token
+		if synonymList, ok := synonymMap[token]; ok {
 			for _, synonym := range synonymList {
 				tokens[synonym] = token
+			}
+		}
+	}
+	for s, synonymList := range synonymMap {
+		// For synonyms of phrases, need to check that the phrase is in the node
+		// string
+		if len(strings.Fields(s)) > 1 && strings.Contains(processedNodeString, s) {
+			for _, synonym := range synonymList {
+				tokens[synonym] = s
 			}
 		}
 	}
@@ -118,14 +120,18 @@ func (index *SearchIndex) Update(
 		}
 		if isSvg {
 			if currNode.SvgIds == nil {
-				currNode.SvgIds = map[string]string{}
+				currNode.SvgIds = map[string]struct{}{}
 			}
-			currNode.SvgIds[nodeID] = match
+			currNode.SvgIds[nodeID] = struct{}{}
 		} else {
 			if currNode.SvIds == nil {
-				currNode.SvIds = map[string]string{}
+				currNode.SvIds = map[string]struct{}{}
 			}
-			currNode.SvIds[nodeID] = match
+			currNode.SvIds[nodeID] = struct{}{}
 		}
+		if currNode.Matches == nil {
+			currNode.Matches = map[string]struct{}{}
+		}
+		currNode.Matches[match] = struct{}{}
 	}
 }
