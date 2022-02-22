@@ -34,70 +34,78 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_stat_set_within_place_all")
 
-	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: false, UseMemdb: false})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-
-	for _, c := range []struct {
-		parentPlace string
-		childType   string
-		date        string
-		statVar     []string
-		goldenFile  string
-	}{
-		{
-			"geoId/06",
-			"County",
-			"",
-			[]string{"Count_Person", "Median_Age_Person"},
-			"CA_County.json",
-		},
-		{
-			"country/USA",
-			"State",
-			"",
-			[]string{"Count_Person", "Count_Person_Employed", "Annual_Generation_Electricity"},
-			"US_State.json",
-		},
-		{
-			"geoId/06",
-			"County",
-			"2016",
-			[]string{"Count_Person", "Median_Age_Person"},
-			"CA_County_2016.json",
-		},
-		{
-			"geoId/06085",
-			"City",
-			"",
-			[]string{"Max_Temperature_RCP45"},
-			"max_temprature.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{UseCache: false, UseMemdb: false},
+		{UseImportGroup: true, UseCache: false, UseMemdb: false},
 	} {
-		resp, err := client.GetStatSetWithinPlaceAll(ctx, &pb.GetStatSetWithinPlaceRequest{
-			ParentPlace: c.parentPlace,
-			ChildType:   c.childType,
-			StatVars:    c.statVar,
-			Date:        c.date,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetStatSetWithinPlace: %s", err)
-			continue
-		}
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
-		var expected pb.GetStatSetAllResponse
-		if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		for _, c := range []struct {
+			parentPlace string
+			childType   string
+			date        string
+			statVar     []string
+			goldenFile  string
+		}{
+			{
+				"geoId/06",
+				"County",
+				"",
+				[]string{"Count_Person", "Median_Age_Person"},
+				"CA_County.json",
+			},
+			{
+				"country/USA",
+				"State",
+				"",
+				[]string{"Count_Person", "Count_Person_Employed", "Annual_Generation_Electricity"},
+				"US_State.json",
+			},
+			{
+				"geoId/06",
+				"County",
+				"2016",
+				[]string{"Count_Person", "Median_Age_Person"},
+				"CA_County_2016.json",
+			},
+			{
+				"geoId/06085",
+				"City",
+				"",
+				[]string{"Max_Temperature_RCP45"},
+				"max_temprature.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetStatSetWithinPlaceAll(ctx, &pb.GetStatSetWithinPlaceRequest{
+				ParentPlace: c.parentPlace,
+				ChildType:   c.childType,
+				StatVars:    c.statVar,
+				Date:        c.date,
+			})
+			if err != nil {
+				t.Errorf("could not GetStatSetWithinPlace: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+			var expected pb.GetStatSetAllResponse
+			if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file: %s", err)
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }

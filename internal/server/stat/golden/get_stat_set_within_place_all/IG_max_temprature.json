@@ -1,0 +1,1050 @@
+{
+  "data": {
+    "Max_Temperature_RCP45": {
+      "stat_list": [
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 14.203272
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 14.473108
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 14.518885
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 15.087763
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 14.110407
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 14.461481
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 15.228022
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 14.89303
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 14.660517
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 15.558924
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 14.725702
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 14.745234
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 14.366297
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 14.661524
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 15.403986
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 14.551416
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 15.38122
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 15.307459
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 15.37179
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 14.514063
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 14.969324
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 14.28097
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 14.628778
+            }
+          },
+          "meta_hash": 1235649531
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 32.920647
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 32.151085
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 33.118401
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 33.181084
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 33.533531
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 32.22094
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 35.817894
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 33.169029
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 31.721094
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 32.994377
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 33.648643
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 32.361504
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 33.438286
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 33.698357
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 35.063072
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 30.611109
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 33.617119
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 35.030876
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 35.480675
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 32.122765
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 33.645622
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 30.762995
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 31.467371
+            }
+          },
+          "meta_hash": 2133626043
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 17.908381
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 18.21023
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 18.285852
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 18.820154
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 17.811304
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 18.206049
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 19.386133
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 18.746058
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 18.36059
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 19.234491
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 18.564234
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 18.449152
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 18.020868
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 18.471094
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 19.348993
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 18.238214
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 19.049402
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 19.173456
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 19.413843
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 18.232111
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 18.72024
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 17.917841
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 18.337519
+            }
+          },
+          "meta_hash": 470273491
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 31.446527
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 30.485376
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 31.524439
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 32.107719
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 32.18325
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 30.462061
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 34.438927
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 32.214836
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 30.099054
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 32.162315
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 32.38726
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 30.648279
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 32.142937
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 32.366356
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 34.157219
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 28.819147
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 32.277367
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 33.637596
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 34.222435
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 30.352625
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 32.295525
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 29.188471
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 29.822443
+            }
+          },
+          "meta_hash": 4282903955
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 16.890711
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 17.167994
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 17.223413
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 17.77212
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 16.796564
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 17.158777
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 18.112329
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 17.620295
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 17.335169
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 18.222986
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 17.455378
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 17.421076
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 17.033899
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 17.37536
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 18.193323
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 17.224146
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 18.042933
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 18.058741
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 18.206537
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 17.200983
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 17.661219
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 16.935389
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 17.308374
+            }
+          },
+          "meta_hash": 697972538
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 30.645105
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 30.106562
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 31.145655
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 31.389002
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 31.244135
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 30.193598
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 33.521233
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 31.300989
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 30.40951
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 31.601221
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 31.715906
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 30.76626
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 31.233515
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 31.808771
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 32.68676
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 29.246363
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 32.106468
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 32.719261
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 33.143608
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 30.145655
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 31.775873
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 29.164392
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 29.963221
+            }
+          },
+          "meta_hash": 3269632986
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 14.434504
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 14.544794
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 14.58465
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 14.960169
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 14.357111
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 14.530725
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 15.824183
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 14.841425
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 14.543848
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 15.334925
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 14.800653
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 14.610987
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 14.501978
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 14.625849
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 15.841211
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 14.470301
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 15.149591
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 15.630518
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 15.919062
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 14.581934
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 14.873194
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 14.087885
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 14.550013
+            }
+          },
+          "meta_hash": 2197962405
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 30.55456
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 30.287348
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 30.961054
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 31.458124
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 31.155787
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 30.276087
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 33.445366
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 31.330194
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 30.576014
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 31.717493
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 31.435907
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 30.916986
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 31.073023
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 31.451441
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 33.03582
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 29.446924
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 32.219353
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 32.527489
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 33.176323
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 30.281244
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 31.472864
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 29.333033
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 30.153406
+            }
+          },
+          "meta_hash": 897020037
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099-12",
+              "value": 20.046473
+            },
+            "geoId/0608968": {
+              "date": "2099-12",
+              "value": 20.149958
+            },
+            "geoId/0610345": {
+              "date": "2099-12",
+              "value": 20.190516
+            },
+            "geoId/0617610": {
+              "date": "2099-12",
+              "value": 20.557489
+            },
+            "geoId/0620598": {
+              "date": "2099-12",
+              "value": 19.969629
+            },
+            "geoId/0627080": {
+              "date": "2099-12",
+              "value": 20.13595
+            },
+            "geoId/0629504": {
+              "date": "2099-12",
+              "value": 21.444849
+            },
+            "geoId/0641282": {
+              "date": "2099-12",
+              "value": 20.444849
+            },
+            "geoId/0643280": {
+              "date": "2099-12",
+              "value": 20.140924
+            },
+            "geoId/0643294": {
+              "date": "2099-12",
+              "value": 20.925623
+            },
+            "geoId/0644112": {
+              "date": "2099-12",
+              "value": 20.407831
+            },
+            "geoId/0644378": {
+              "date": "2099-12",
+              "value": 20.20672
+            },
+            "geoId/0647766": {
+              "date": "2099-12",
+              "value": 20.108637
+            },
+            "geoId/0648956": {
+              "date": "2099-12",
+              "value": 20.228724
+            },
+            "geoId/0649278": {
+              "date": "2099-12",
+              "value": 21.460627
+            },
+            "geoId/0649670": {
+              "date": "2099-12",
+              "value": 20.067591
+            },
+            "geoId/0655282": {
+              "date": "2099-12",
+              "value": 20.739588
+            },
+            "geoId/0668000": {
+              "date": "2099-12",
+              "value": 21.248957
+            },
+            "geoId/0668238": {
+              "date": "2099-12",
+              "value": 21.540613
+            },
+            "geoId/0669084": {
+              "date": "2099-12",
+              "value": 20.186457
+            },
+            "geoId/0670280": {
+              "date": "2099-12",
+              "value": 20.472193
+            },
+            "geoId/0673906": {
+              "date": "2099-12",
+              "value": 19.677912
+            },
+            "geoId/0677000": {
+              "date": "2099-12",
+              "value": 20.148188
+            }
+          },
+          "meta_hash": 4138423800
+        },
+        {
+          "stat": {
+            "geoId/0601458": {
+              "date": "2099",
+              "value": 32.52523
+            },
+            "geoId/0608968": {
+              "date": "2099",
+              "value": 32.222008
+            },
+            "geoId/0610345": {
+              "date": "2099",
+              "value": 32.885765
+            },
+            "geoId/0617610": {
+              "date": "2099",
+              "value": 33.347404
+            },
+            "geoId/0620598": {
+              "date": "2099",
+              "value": 33.126701
+            },
+            "geoId/0627080": {
+              "date": "2099",
+              "value": 32.210136
+            },
+            "geoId/0629504": {
+              "date": "2099",
+              "value": 34.943687
+            },
+            "geoId/0641282": {
+              "date": "2099",
+              "value": 33.23217
+            },
+            "geoId/0643280": {
+              "date": "2099",
+              "value": 32.470299
+            },
+            "geoId/0643294": {
+              "date": "2099",
+              "value": 33.592094
+            },
+            "geoId/0644112": {
+              "date": "2099",
+              "value": 33.357109
+            },
+            "geoId/0644378": {
+              "date": "2099",
+              "value": 32.806358
+            },
+            "geoId/0647766": {
+              "date": "2099",
+              "value": 33.02935
+            },
+            "geoId/0648956": {
+              "date": "2099",
+              "value": 33.358727
+            },
+            "geoId/0649278": {
+              "date": "2099",
+              "value": 34.28524
+            },
+            "geoId/0649670": {
+              "date": "2099",
+              "value": 31.347284
+            },
+            "geoId/0655282": {
+              "date": "2099",
+              "value": 34.090385
+            },
+            "geoId/0668000": {
+              "date": "2099",
+              "value": 34.212212
+            },
+            "geoId/0668238": {
+              "date": "2099",
+              "value": 34.72683
+            },
+            "geoId/0669084": {
+              "date": "2099",
+              "value": 32.209099
+            },
+            "geoId/0670280": {
+              "date": "2099",
+              "value": 33.36718
+            },
+            "geoId/0673906": {
+              "date": "2099",
+              "value": 31.214411
+            },
+            "geoId/0677000": {
+              "date": "2099",
+              "value": 32.055016
+            }
+          },
+          "meta_hash": 3154227640
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "1235649531": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CCSM4",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "2133626043": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CCSM4",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "2197962405": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R-CC",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "3154227640": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_HadGEM2-AO",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "3269632986": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "4138423800": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_HadGEM2-AO",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "4282903955": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CESM1-CAM5",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "470273491": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CESM1-CAM5",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "697972538": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "897020037": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R-CC",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    }
+  }
+}
