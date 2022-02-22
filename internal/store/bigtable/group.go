@@ -27,13 +27,15 @@ import (
 
 var groupRank = map[string]int{
 	"frequent":   0,
-	"dcbranch":   1,
-	"branch":     1,
+	"dcbranch":   1, // Used for the latest proto branch cache
+	"branch":     1, // Used for legacy branch cache
 	"ipcc":       2,
-	"borgcron":   10000,
+	"borgcron":   10000, // Used for legacy base cache
 	"infrequent": 10000,
 }
 
+// Import group with unspecified rank should be ranked right before the
+// infrequent group and after all other groups.
 const defaultRank = 9999
 
 // Table holds the bigtable name and client stub.

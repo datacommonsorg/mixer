@@ -117,9 +117,6 @@ func setupInternal(
 	if err != nil {
 		return nil, nil, err
 	}
-	if err != nil {
-		return nil, nil, err
-	}
 	tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 
 	if useImportGroup {

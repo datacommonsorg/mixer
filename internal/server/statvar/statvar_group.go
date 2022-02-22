@@ -34,7 +34,10 @@ const (
 
 // Note this function modifies validSVG inside.
 func markValidSVG(
-	svgResp *pb.StatVarGroups, svgID string, validSVG map[string]struct{}) bool {
+	svgResp *pb.StatVarGroups,
+	svgID string,
+	validSVG map[string]struct{},
+) bool {
 	// Already checked
 	if _, ok := validSVG[svgID]; ok {
 		return true
@@ -69,15 +72,15 @@ func filterSVG(in *pb.StatVarGroups, statVars []string) *pb.StatVarGroups {
 
 	// Step 1: iterate over stat var group, and only keep stat var children with valid
 	// stat vars for this place.
-	for sv, svgData := range in.StatVarGroups {
-		filteredChildren := []*pb.StatVarGroupNode_ChildSV{}
-		for _, child := range svgData.ChildStatVars {
-			if _, ok := validSV[child.Id]; ok {
-				filteredChildren = append(filteredChildren, child)
+	for svgID, svgData := range in.StatVarGroups {
+		filteredChildSV := []*pb.StatVarGroupNode_ChildSV{}
+		for _, childSV := range svgData.ChildStatVars {
+			if _, ok := validSV[childSV.Id]; ok {
+				filteredChildSV = append(filteredChildSV, childSV)
 			}
 		}
-		out.StatVarGroups[sv] = &pb.StatVarGroupNode{
-			ChildStatVars:      filteredChildren,
+		out.StatVarGroups[svgID] = &pb.StatVarGroupNode{
+			ChildStatVars:      filteredChildSV,
 			ChildStatVarGroups: svgData.ChildStatVarGroups,
 		}
 	}
@@ -162,9 +165,17 @@ func GetStatVarGroup(
 			return nil, err
 		}
 		for _, btData := range btDataList {
+			// A dummy token "_" is used to key the data (see callback func above).
 			if data, ok := btData["_"]; ok {
-				result = data.(*pb.StatVarGroups)
-				break
+				svg, ok := data.(*pb.StatVarGroups)
+				if ok {
+					// Pick the import group with the most stat var group node.
+					// (TODO): revisit this once we figure out why branch cache has less
+					//  stat var group node.
+					if len(svg.StatVarGroups) > len(result.GetStatVarGroups()) {
+						result = svg
+					}
+				}
 			}
 		}
 	} else {
