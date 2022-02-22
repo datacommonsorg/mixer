@@ -309,7 +309,6 @@
       "displayName": "Person With Educational Attainment = Upper Secondary Education or Higher"
     }
   ],
-  "numDescendentStatVars": "507",
   "descendentStatVarCount": 458,
   "parentStatVarGroups": [
     "dc/g/Education"

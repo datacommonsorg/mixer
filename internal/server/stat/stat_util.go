@@ -15,7 +15,6 @@
 package stat
 
 import (
-	"fmt"
 	"hash/fnv"
 	"sort"
 	"strings"
@@ -250,16 +249,17 @@ func getMetadataHash(m *pb.StatMetadata) uint32 {
 	return h.Sum32()
 }
 
-// getSourceSeriesKey computes the key for *pb.SourceSeries.
-// The key is based on the unique properties of the observations.
-func getSourceSeriesKey(s *pb.SourceSeries) string {
-	return fmt.Sprintf(
-		"%s_%s_%s_%s_%s",
-		s.ImportName,
-		s.MeasurementMethod,
-		s.ObservationPeriod,
-		s.ScalingFactor,
-		s.Unit)
+// getSourceSeriesKey computes the metahash for *pb.SourceSeries.
+func getSourceSeriesHash(series *pb.SourceSeries) uint32 {
+	metadata := &pb.StatMetadata{
+		ImportName:        series.ImportName,
+		ProvenanceUrl:     series.ProvenanceUrl,
+		MeasurementMethod: series.MeasurementMethod,
+		ObservationPeriod: series.ObservationPeriod,
+		ScalingFactor:     series.ScalingFactor,
+		Unit:              series.Unit,
+	}
+	return getMetadataHash(metadata)
 }
 
 // CollectDistinctSourceSeries merges lists of SourceSeries.
@@ -267,14 +267,14 @@ func getSourceSeriesKey(s *pb.SourceSeries) string {
 // this is the series with the latest data as well.
 func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
 	result := []*pb.SourceSeries{}
-	resultMap := map[string]*pb.SourceSeries{}
+	resultMap := map[uint32]*pb.SourceSeries{}
 	for _, series := range seriesList {
 		for _, s := range series {
-			key := getSourceSeriesKey(s)
-			if _, ok := resultMap[key]; ok && len(s.Val) < len(resultMap[key].Val) {
+			metahash := getSourceSeriesHash(s)
+			if _, ok := resultMap[metahash]; ok && len(s.Val) < len(resultMap[metahash].Val) {
 				continue
 			}
-			resultMap[key] = s
+			resultMap[metahash] = s
 		}
 		for _, s := range resultMap {
 			result = append(result, s)

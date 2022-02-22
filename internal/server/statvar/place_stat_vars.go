@@ -139,7 +139,7 @@ func GetPlaceStatVarsUnionV1(
 		place2StatVars := resp.GetPlaces()
 
 		// For single place, return directly.
-		if len(places[0]) == 1 {
+		if len(places) == 1 {
 			return &pb.GetPlaceStatVarsUnionResponse{StatVars: place2StatVars[places[0]].StatVars}, nil
 		}
 

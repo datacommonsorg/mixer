@@ -467,6 +467,20 @@
       ]
     },
     {
+      "dcid": "dc/g/HateCrimeIncidents_TargetedRace-AsianAlone_VictimAge",
+      "name": "Hate Crime Incidents With Targeted Race = Asian Alone, Victim Age",
+      "statVars": [
+        {
+          "name": "Count of Race, Asian Alone, 17 Years or Less (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_IsHateCrime_AsianAlone_17OrLessYears"
+        },
+        {
+          "name": "Count of Race, Asian Alone, 18 Years or More (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_IsHateCrime_AsianAlone_18OrMoreYears"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MortalityEvent_Age-Years5To14_Race-AsianOrPacificIslander",
       "name": "Mortality Event With Age = 5 - 14 Years, Race = Asian or Pacific Islander",
       "statVars": [
@@ -3223,6 +3237,10 @@
     {
       "dcid": "dc/g/Person_Age_LanguageSpokenAtHome-AsianAndPacificIslandLanguages",
       "name": "Person With Age, Language Spoken At Home = Asian And Pacific Island Languages"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-race_TargetedRace-AsianAlone_VictimAge",
+      "name": "Hate Crime Incidents With Bias Motivation = Race, Targeted Race = Asian Alone, Victim Age"
     },
     {
       "dcid": "dc/g/Household_HouseholderAge_Income-USDollar10000To14999_Race-AsianAlone",

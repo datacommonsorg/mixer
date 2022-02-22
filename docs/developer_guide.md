@@ -118,8 +118,10 @@ go run cmd/main.go \
     --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_table=$(head -1 deploy/storage/bigtable.version) \
+    --import_group_tables=$(head -1 deploy/storage/bigtable_import_groups.json) \
     --schema_path=$PWD/deploy/mapping/ \
-    --use_branch_bt=false
+    --use_import_group=false \
+    --use_branch_bt=true
 
 go run examples/main.go
 ```

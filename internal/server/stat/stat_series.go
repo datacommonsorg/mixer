@@ -25,7 +25,7 @@ import (
 	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
-	"github.com/datacommonsorg/mixer/internal/server/place"
+	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -64,7 +64,7 @@ func GetStatSeries(
 	}
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
-	btData, err := bigtable.ReadStats(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := ReadStats(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -107,7 +107,7 @@ func GetStatAll(ctx context.Context, in *pb.GetStatAllRequest, store *store.Stor
 	}
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := bigtable.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 	rowList, keyTokens = bigtable.BuildObsTimeSeriesKey(placeDcids, []string{statsVarDcid})
 
 	tmp := map[string]*model.ObsTimeSeries{}
-	cacheData, err := bigtable.ReadStats(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStats(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -221,7 +221,7 @@ func GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRequest, store
 		rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
 
 		// Read data from BigTable.
-		cacheData, err := bigtable.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+		cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 		if err != nil {
 			return nil, err
 		}
@@ -272,15 +272,10 @@ func GetStatSetSeriesWithinPlace(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: child_type")
 	}
-	childPlacesData, err := place.GetPlacesIn(
-		ctx,
-		&pb.GetPlacesInRequest{Dcids: []string{parentPlace}, PlaceType: childType},
-		store,
-	)
+	childPlaces, err := placein.GetChildPlaces(ctx, store, parentPlace, childType)
 	if err != nil {
 		return nil, err
 	}
-	childPlaces := childPlacesData[parentPlace]
 	return GetStatSetSeries(
 		ctx,
 		&pb.GetStatSetSeriesRequest{

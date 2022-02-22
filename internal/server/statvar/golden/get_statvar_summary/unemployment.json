@@ -3,7 +3,6 @@
     "UnemploymentRate_Person": {
       "placeTypeSummary": {
         "City": {
-          "numPlaces": "3055",
           "placeCount": 3055,
           "topPlaces": [
             {
@@ -21,7 +20,6 @@
           ]
         },
         "Country": {
-          "numPlaces": "33",
           "placeCount": 33,
           "topPlaces": [
             {
@@ -39,7 +37,6 @@
           ]
         },
         "County": {
-          "numPlaces": "3220",
           "placeCount": 3220,
           "topPlaces": [
             {
@@ -57,7 +54,6 @@
           ]
         },
         "State": {
-          "numPlaces": "52",
           "placeCount": 52,
           "topPlaces": [
             {
@@ -78,9 +74,7 @@
       "provenanceSummary": {
         "dc/2xghn33": {
           "importName": "BLS_CPS",
-          "numObservations": "1185",
           "observationCount": 1185,
-          "numTimeSeries": "2",
           "timeSeriesCount": 2,
           "releaseFrequency": "P1M",
           "seriesSummary": [
@@ -91,13 +85,10 @@
               },
               "earliestDate": "1948-01",
               "latestDate": "2022-01",
-              "numObservations": "889",
               "observationCount": 889,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -117,13 +108,10 @@
               },
               "earliestDate": "1948-03",
               "latestDate": "2021-12",
-              "numObservations": "296",
               "observationCount": 296,
-              "numTimeSeries": "1",
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -140,9 +128,7 @@
         },
         "dc/lly3yc1": {
           "importName": "BLS_LAUS",
-          "numObservations": "2587200",
           "observationCount": 2587200,
-          "numTimeSeries": "12707",
           "timeSeriesCount": 12707,
           "releaseFrequency": "P1M",
           "seriesSummary": [
@@ -153,13 +139,10 @@
               },
               "earliestDate": "1976-01",
               "latestDate": "2021-12",
-              "numObservations": "29254",
               "observationCount": 29254,
-              "numTimeSeries": "53",
               "timeSeriesCount": 53,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "1",
                   "placeCount": 1,
                   "topPlaces": [
                     {
@@ -169,20 +152,19 @@
                   ]
                 },
                 "State": {
-                  "numPlaces": "52",
                   "placeCount": 52,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06",
-                      "name": "California"
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
                     },
                     {
-                      "dcid": "geoId/48",
-                      "name": "Texas"
+                      "dcid": "geoId/56",
+                      "name": "Wyoming"
                     },
                     {
-                      "dcid": "geoId/12",
-                      "name": "Florida"
+                      "dcid": "geoId/55",
+                      "name": "Wisconsin"
                     }
                   ]
                 }
@@ -197,62 +179,57 @@
               },
               "earliestDate": "1976-01",
               "latestDate": "2021-12",
-              "numObservations": "2367090",
               "observationCount": 2367090,
-              "numTimeSeries": "6327",
               "timeSeriesCount": 6327,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "3055",
                   "placeCount": 3055,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/3651000",
-                      "name": "New York"
+                      "dcid": "geoId/5645050",
+                      "name": "Laramie"
                     },
                     {
-                      "dcid": "geoId/0644000",
-                      "name": "Los Angeles"
+                      "dcid": "geoId/5631855",
+                      "name": "Gillette"
                     },
                     {
-                      "dcid": "geoId/1714000",
-                      "name": "Chicago"
+                      "dcid": "geoId/5613900",
+                      "name": "Cheyenne"
                     }
                   ]
                 },
                 "County": {
-                  "numPlaces": "3220",
                   "placeCount": 3220,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06037",
-                      "name": "Los Angeles County"
+                      "dcid": "geoId/72153",
+                      "name": "Yauco"
                     },
                     {
-                      "dcid": "geoId/17031",
-                      "name": "Cook County"
+                      "dcid": "geoId/72151",
+                      "name": "Yabucoa"
                     },
                     {
-                      "dcid": "geoId/48201",
-                      "name": "Harris County"
+                      "dcid": "geoId/72149",
+                      "name": "Villalba"
                     }
                   ]
                 },
                 "State": {
-                  "numPlaces": "52",
                   "placeCount": 52,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06",
-                      "name": "California"
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
                     },
                     {
-                      "dcid": "geoId/48",
-                      "name": "Texas"
+                      "dcid": "geoId/56",
+                      "name": "Wyoming"
                     },
                     {
-                      "dcid": "geoId/12",
-                      "name": "Florida"
+                      "dcid": "geoId/55",
+                      "name": "Wisconsin"
                     }
                   ]
                 }
@@ -266,62 +243,57 @@
               },
               "earliestDate": "1976",
               "latestDate": "2020",
-              "numObservations": "190856",
               "observationCount": 190856,
-              "numTimeSeries": "6327",
               "timeSeriesCount": 6327,
               "placeTypeSummary": {
                 "City": {
-                  "numPlaces": "3055",
                   "placeCount": 3055,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/3651000",
-                      "name": "New York"
+                      "dcid": "geoId/5645050",
+                      "name": "Laramie"
                     },
                     {
-                      "dcid": "geoId/0644000",
-                      "name": "Los Angeles"
+                      "dcid": "geoId/5631855",
+                      "name": "Gillette"
                     },
                     {
-                      "dcid": "geoId/1714000",
-                      "name": "Chicago"
+                      "dcid": "geoId/5613900",
+                      "name": "Cheyenne"
                     }
                   ]
                 },
                 "County": {
-                  "numPlaces": "3220",
                   "placeCount": 3220,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06037",
-                      "name": "Los Angeles County"
+                      "dcid": "geoId/72153",
+                      "name": "Yauco"
                     },
                     {
-                      "dcid": "geoId/17031",
-                      "name": "Cook County"
+                      "dcid": "geoId/72151",
+                      "name": "Yabucoa"
                     },
                     {
-                      "dcid": "geoId/48201",
-                      "name": "Harris County"
+                      "dcid": "geoId/72149",
+                      "name": "Villalba"
                     }
                   ]
                 },
                 "State": {
-                  "numPlaces": "52",
                   "placeCount": 52,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/06",
-                      "name": "California"
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
                     },
                     {
-                      "dcid": "geoId/48",
-                      "name": "Texas"
+                      "dcid": "geoId/56",
+                      "name": "Wyoming"
                     },
                     {
-                      "dcid": "geoId/12",
-                      "name": "Florida"
+                      "dcid": "geoId/55",
+                      "name": "Wisconsin"
                     }
                   ]
                 }
@@ -332,9 +304,7 @@
         },
         "dc/yd4sfb": {
           "importName": "EurostatData",
-          "numObservations": "11125",
           "observationCount": 11125,
-          "numTimeSeries": "33",
           "timeSeriesCount": 33,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -344,13 +314,10 @@
               },
               "earliestDate": "1983-01",
               "latestDate": "2020-07",
-              "numObservations": "11125",
               "observationCount": 11125,
-              "numTimeSeries": "33",
               "timeSeriesCount": 33,
               "placeTypeSummary": {
                 "Country": {
-                  "numPlaces": "33",
                   "placeCount": 33,
                   "topPlaces": [
                     {

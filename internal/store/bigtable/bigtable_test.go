@@ -80,8 +80,8 @@ func TestReadTwoTables(t *testing.T) {
 		ctx,
 		NewGroup(
 			[]*Table{
-				{name: "t1", table: btTable1},
-				{name: "t2", table: btTable2},
+				{name: "t1_t", table: btTable1},
+				{name: "t2_t", table: btTable2},
 			},
 			"t2",
 			false,

@@ -77,7 +77,7 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "descendentStatVarCount": 2875
+      "descendentStatVarCount": 3015
     },
     {
       "id": "dc/g/Private",
@@ -86,6 +86,5 @@
       "descendentStatVarCount": 10
     }
   ],
-  "numDescendentStatVars": "78687",
   "descendentStatVarCount": 78687
 }

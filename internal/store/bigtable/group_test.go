@@ -15,12 +15,6 @@
 package bigtable
 
 import (
-	"encoding/json"
-	"io/ioutil"
-	"log"
-	"path"
-	"runtime"
-	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -34,18 +28,28 @@ func TestSortTables(t *testing.T) {
 	}{
 		{
 			tables: []*Table{
-				{name: "borgcron_random", table: nil},
-				{name: "borgcron_infrequent_2022_01_31_23_15_14", table: nil},
-				{name: "borgcron_frequent_2022_02_01_14_20_47", table: nil},
-				{name: "borgcron_dc_branch_2022_02_01_14_00_49", table: nil},
-				{name: "borgcron_ipcc_2022_01_31_20_56_49", table: nil},
+				{name: "random_2022", table: nil},
+				{name: "infrequent_2022_01_31_23_15_14", table: nil},
+				{name: "frequent_2022_02_01_14_20_47", table: nil},
+				{name: "dcbranch_2022_02_01_14_00_49", table: nil},
+				{name: "ipcc_2022_01_31_20_56_49", table: nil},
 			},
 			expected: []*Table{
-				{name: "borgcron_frequent_2022_02_01_14_20_47", table: nil},
-				{name: "borgcron_dc_branch_2022_02_01_14_00_49", table: nil},
-				{name: "borgcron_ipcc_2022_01_31_20_56_49", table: nil},
-				{name: "borgcron_random", table: nil},
-				{name: "borgcron_infrequent_2022_01_31_23_15_14", table: nil},
+				{name: "frequent_2022_02_01_14_20_47", table: nil},
+				{name: "dcbranch_2022_02_01_14_00_49", table: nil},
+				{name: "ipcc_2022_01_31_20_56_49", table: nil},
+				{name: "random_2022", table: nil},
+				{name: "infrequent_2022_01_31_23_15_14", table: nil},
+			},
+		},
+		{
+			tables: []*Table{
+				{name: "borgcron_2022_02_15_01_02_51", table: nil},
+				{name: "branch_dcbranch_2022_02_16_14_18_02", table: nil},
+			},
+			expected: []*Table{
+				{name: "branch_dcbranch_2022_02_16_14_18_02", table: nil},
+				{name: "borgcron_2022_02_15_01_02_51", table: nil},
 			},
 		},
 	} {
@@ -60,22 +64,6 @@ func TestSortTables(t *testing.T) {
 		}
 		if diff := cmp.Diff(tableNames, expectNames, cmpopts.IgnoreUnexported()); diff != "" {
 			t.Errorf("SortTables() got diff: %v", diff)
-		}
-	}
-}
-
-func TestFileFormat(t *testing.T) {
-	_, filename, _, _ := runtime.Caller(0)
-	jsonByte, _ := ioutil.ReadFile(
-		path.Join(path.Dir(filename), "../../../deploy/storage/bigtable_import_groups.json"))
-
-	var c TableConfig
-	if err := json.Unmarshal(jsonByte, &c); err != nil {
-		log.Fatalf("Failed to load import group tables config")
-	}
-	for _, table := range c.Tables {
-		if !strings.HasPrefix(table, "borgcron_") {
-			t.Errorf("Table name should start with borgcron_, but got %s", table)
 		}
 	}
 }

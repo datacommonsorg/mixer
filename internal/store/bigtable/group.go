@@ -18,7 +18,6 @@ package bigtable
 
 import (
 	"context"
-	"log"
 	"sort"
 	"strings"
 	"sync"
@@ -28,11 +27,15 @@ import (
 
 var groupRank = map[string]int{
 	"frequent":   0,
-	"dc":         1,
+	"dcbranch":   1, // Used for the latest proto branch cache
+	"branch":     1, // Used for legacy branch cache
 	"ipcc":       2,
+	"borgcron":   10000, // Used for legacy base cache
 	"infrequent": 10000,
 }
 
+// Import group with unspecified rank should be ranked right before the
+// infrequent group and after all other groups.
 const defaultRank = 9999
 
 // Table holds the bigtable name and client stub.
@@ -70,9 +73,7 @@ func NewGroup(
 	branchTableName string,
 	useImportGroup bool,
 ) *Group {
-	if useImportGroup {
-		SortTables(tables)
-	}
+	SortTables(tables)
 	return &Group{
 		tables:  tables,
 		isProto: useImportGroup,
@@ -114,14 +115,7 @@ func (g *Group) UpdateBranchTable(branchTable *Table) {
 	tables = append(tables, branchTable)
 	g.branchTableName = branchTable.name
 	g.tables = tables
-	if g.isProto {
-		// To place branch table in the right place
-		SortTables(g.tables)
-	} else {
-		if len(tables) != 2 || !strings.Contains(tables[1].name, "dc_branch") {
-			log.Printf("Branch table is not the second table: %v", tables)
-		}
-	}
+	SortTables(g.tables)
 }
 
 // NewTable creates a new cbt.Table instance.
@@ -141,17 +135,15 @@ func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
 //   after other groups with ranking.
 func SortTables(tables []*Table) {
 	sort.SliceStable(tables, func(i, j int) bool {
-		// ranking for i
-		// This is to parse the table name like "borgcron_frequent_2022_02_01_14_20_47"
+		// This is to parse the table name like "frequent_2022_02_01_14_20_47"
 		// and get the actual import group name.
-		// TODO: Update this if table format changes.
-		ni := strings.Split(tables[i].name, "_")[1]
+		ni := strings.Split(tables[i].name, "_")[0]
 		ri, ok := groupRank[ni]
 		if !ok {
 			ri = defaultRank
 		}
 		// ranking for j
-		nj := strings.Split(tables[j].name, "_")[1]
+		nj := strings.Split(tables[j].name, "_")[0]
 		rj, ok := groupRank[nj]
 		if !ok {
 			rj = defaultRank

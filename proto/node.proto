@@ -47,12 +47,13 @@ message Triple {
 message Triples {
   repeated Triple triples = 1;
   // Before potential truncation.
-  int64 total_count = 2;
   double total = 6;
   // A predicate could link to multiple neighbors.
   map<string, EntityInfoCollection> in_nodes = 3;  // Key is predicate.
   map<string, EntityInfoCollection> out_nodes = 4; // Key is predicate.
   string subject_id = 5;
+
+  reserved 2;
 }
 
 // Full lists of in and out labels for a given node ID.
