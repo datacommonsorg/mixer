@@ -3353,6 +3353,82 @@
       ]
     },
     {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-OtherCrimesAgainstPerson_OffenderRace",
+      "name": "Hate Crime Incidents With Crime Type = Other Crimes Against Person, Offender Race",
+      "statVars": [
+        {
+          "name": "Count of Other Crimes Against Person, American Indian or Alaska Native Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Asian Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceAsianAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Asian or Pacific Islander, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceAsianOrPacificIslander"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Black or African American Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Native Hawaiian or Other Pacific Islander Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Two or More Races, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceTwoOrMoreRaces"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, White Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceWhiteAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Unknown Race, Unknown Offender (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceUnknownRace_UnknownOffender"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-OtherCrimesAgainstProperty_OffenderRace",
+      "name": "Hate Crime Incidents With Crime Type = Other Crimes Against Property, Offender Race",
+      "statVars": [
+        {
+          "name": "Count of Other Crimes Against Property, American Indian or Alaska Native Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Asian Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceAsianAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Asian or Pacific Islander, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceAsianOrPacificIslander"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Black or African American Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Native Hawaiian or Other Pacific Islander Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Two or More Races, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceTwoOrMoreRaces"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, White Alone, Known Offender Race (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceWhiteAlone"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Unknown Race, Unknown Offender (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceUnknownRace_UnknownOffender"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_OffenderType-UnknownOffender_TargetedRace",
       "name": "Hate Crime Incidents With Offender Type = Unknown Offender, Targeted Race",
       "statVars": [
@@ -4919,6 +4995,36 @@
         {
           "name": "Count of Larceny Theft, Society (Offense)",
           "dcid": "Offense_Count_CriminalIncidents_LarcenyTheft_IsHateCrime_VictimTypeSociety"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-OtherCrimesAgainstProperty_VictimType",
+      "name": "Hate Crime Incidents With Crime Type = Other Crimes Against Property, Victim Type",
+      "statVars": [
+        {
+          "name": "Count of Other Crimes Against Property, Business (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_VictimTypeBusiness"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Government (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_VictimTypeGovernment"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Other Victim Type \u0026 Unknown Victim Type \u0026 Multiple Victim Type (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_VictimTypeOtherVictimTypeOrUnknownVictimTypeOrMultipleVictimType"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Person (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_VictimTypePerson"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Religious Organization (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_VictimTypeReligiousOrganization"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Society (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_VictimTypeSociety"
         }
       ]
     },
@@ -11069,6 +11175,50 @@
       ]
     },
     {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-OtherCrimesAgainstPerson_OffenderEthnicity",
+      "name": "Hate Crime Incidents With Crime Type = Other Crimes Against Person, Offender Ethnicity",
+      "statVars": [
+        {
+          "name": "Count of Other Crimes Against Person, Hispanic or Latino, Known Offender Ethnicity (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderEthnicityHispanicOrLatino"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Multiple Ethnicity, Known Offender Ethnicity (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderEthnicityMultipleEthnicity"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Not Hispanic or Latino, Known Offender Ethnicity (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderEthnicityNotHispanicOrLatino"
+        },
+        {
+          "name": "Count of Other Crimes Against Person, Unknown Ethnicity, Unknown Offender (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderEthnicityUnknownEthnicity_UnknownOffender"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-OtherCrimesAgainstProperty_OffenderEthnicity",
+      "name": "Hate Crime Incidents With Crime Type = Other Crimes Against Property, Offender Ethnicity",
+      "statVars": [
+        {
+          "name": "Count of Other Crimes Against Property, Hispanic or Latino, Known Offender Ethnicity (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderEthnicityHispanicOrLatino"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Multiple Ethnicity, Known Offender Ethnicity (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderEthnicityMultipleEthnicity"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Not Hispanic or Latino, Known Offender Ethnicity (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderEthnicityNotHispanicOrLatino"
+        },
+        {
+          "name": "Count of Other Crimes Against Property, Unknown Ethnicity, Unknown Offender (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_UnknownOffender"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_CrimeType-Rape_OffenderEthnicity",
       "name": "Hate Crime Incidents With Crime Type = Rape, Offender Ethnicity",
       "statVars": [
@@ -12879,6 +13029,42 @@
         {
           "name": "Count of Larceny Theft (Victim)",
           "dcid": "Victim_Count_CriminalIncidents_LarcenyTheft_IsHateCrime"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-OtherCrimesAgainstPerson",
+      "name": "Hate Crime Incidents With Crime Type = Other Crimes Against Person",
+      "statVars": [
+        {
+          "name": "Count of Other Crimes Against Person",
+          "dcid": "Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime"
+        },
+        {
+          "name": "Count of Other Crimes Against Person (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime"
+        },
+        {
+          "name": "Count of Other Crimes Against Person (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_CrimeType-OtherCrimesAgainstProperty",
+      "name": "Hate Crime Incidents With Crime Type = Other Crimes Against Property",
+      "statVars": [
+        {
+          "name": "Count of Other Crimes Against Property",
+          "dcid": "Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime"
+        },
+        {
+          "name": "Count of Other Crimes Against Property (Offense)",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime"
+        },
+        {
+          "name": "Count of Other Crimes Against Property (Victim)",
+          "dcid": "Victim_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime"
         }
       ]
     },
@@ -23033,135 +23219,10 @@
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_GenderNonConforming"
         }
       ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Fondling_TargetedGender-Male",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Fondling, Targeted Gender = Male",
-      "statVars": [
-        {
-          "name": "Count of Gender, Fondling, Male",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Male"
-        },
-        {
-          "name": "Count of Gender, Fondling, Male (Offense)",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Male"
-        },
-        {
-          "name": "Count of Gender, Fondling, Male (Victim)",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Fondling_TargetedGender-Transgender",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Fondling, Targeted Gender = Transgender",
-      "statVars": [
-        {
-          "name": "Count of Gender, Fondling, Transgender",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Transgender"
-        },
-        {
-          "name": "Count of Gender, Fondling, Transgender (Offense)",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Transgender"
-        },
-        {
-          "name": "Count of Gender, Fondling, Transgender (Victim)",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Transgender"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Fondling_TargetedGender-TransgenderOrGenderNonConforming",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Fondling, Targeted Gender = Transgender or Gender Non Conforming",
-      "statVars": [
-        {
-          "name": "Count of Gender, Fondling, Transgender or Gender Non Conforming",
-          "dcid": "Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_Fondling_IsHateCrime"
-        },
-        {
-          "name": "Count of Gender, Fondling, Transgender or Gender Non Conforming (Offense)",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_Fondling_IsHateCrime"
-        },
-        {
-          "name": "Count of Gender, Fondling, Transgender or Gender Non Conforming (Victim)",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_Fondling_IsHateCrime"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-IdentityTheft_TargetedGender-GenderNonConforming",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Identity Theft, Targeted Gender = Gender Non Conforming",
-      "statVars": [
-        {
-          "name": "Count of Gender, Identity Theft, Gender Non Conforming",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IdentityTheft_IsHateCrime_GenderNonConforming"
-        },
-        {
-          "name": "Count of Gender, Identity Theft, Gender Non Conforming (Offense)",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IdentityTheft_IsHateCrime_GenderNonConforming"
-        },
-        {
-          "name": "Count of Gender, Identity Theft, Gender Non Conforming (Victim)",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IdentityTheft_IsHateCrime_GenderNonConforming"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-IdentityTheft_TargetedGender-Transgender",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Identity Theft, Targeted Gender = Transgender",
-      "statVars": [
-        {
-          "name": "Count of Gender, Identity Theft, Transgender",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IdentityTheft_IsHateCrime_Transgender"
-        },
-        {
-          "name": "Count of Gender, Identity Theft, Transgender (Offense)",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IdentityTheft_IsHateCrime_Transgender"
-        },
-        {
-          "name": "Count of Gender, Identity Theft, Transgender (Victim)",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IdentityTheft_IsHateCrime_Transgender"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-IdentityTheft_TargetedGender-TransgenderOrGenderNonConforming",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Identity Theft, Targeted Gender = Transgender or Gender Non Conforming",
-      "statVars": [
-        {
-          "name": "Count of Gender, Identity Theft, Transgender or Gender Non Conforming",
-          "dcid": "Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_IdentityTheft_IsHateCrime"
-        },
-        {
-          "name": "Count of Gender, Identity Theft, Transgender or Gender Non Conforming (Offense)",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_IdentityTheft_IsHateCrime"
-        },
-        {
-          "name": "Count of Gender, Identity Theft, Transgender or Gender Non Conforming (Victim)",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_IdentityTheft_IsHateCrime"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-Impersonation_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Impersonation, Targeted Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Gender, Impersonation, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Gender, Impersonation, Female (Offense)",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Gender, Impersonation, Female (Victim)",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
-        }
-      ]
     }
   ],
   "matches": [
-    "Crime"
+    "crime",
+    "crimes"
   ]
 }

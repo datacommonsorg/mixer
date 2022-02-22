@@ -82,18 +82,6 @@ func SearchStatVar(
 		svgList = filter(svgList, statVarCount, len(places))
 	}
 	svResult, svgResult := groupStatVars(svList, svgList, cache.ParentSvg, cache.SvgSearchIndex.Ranking)
-	// Sort the stat var group results
-	sort.SliceStable(svgResult, func(i, j int) bool {
-		svgi := svgResult[i]
-		svgj := svgResult[j]
-		if len(svgi.StatVars) != len(svgj.StatVars) {
-			return len(svgi.StatVars) > len(svgj.StatVars)
-		}
-		ranking := cache.SvgSearchIndex.Ranking
-		ri := ranking[svgResult[i].Dcid]
-		rj := ranking[svgResult[j].Dcid]
-		return compareRankingInfo(ri, svgResult[i].Dcid, rj, svgResult[j].Dcid)
-	})
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svResult) > maxResult {
 		svResult = svResult[0:maxResult]
@@ -187,14 +175,30 @@ func groupStatVars(
 	for _, svg := range svgMap {
 		resultSvg = append(resultSvg, svg)
 	}
+	// Sort the stat var group results
+	sort.SliceStable(resultSvg, func(i, j int) bool {
+		svgi := resultSvg[i]
+		svgj := resultSvg[j]
+		if len(svgi.StatVars) != len(svgj.StatVars) {
+			return len(svgi.StatVars) > len(svgj.StatVars)
+		}
+		ri := ranking[resultSvg[i].Dcid]
+		rj := ranking[resultSvg[j].Dcid]
+		return compareRankingInfo(ri, resultSvg[i].Dcid, rj, resultSvg[j].Dcid)
+	})
 	return resultSv, resultSvg
 }
+
+// TokenToMatches is a map of token to a set of strings that match the token
+type TokenToMatches map[string]map[string]struct{}
 
 func searchTokens(
 	tokens []string, index *resource.SearchIndex,
 ) ([]*pb.EntityInfo, []*pb.EntityInfo, []string) {
-	svMatches := map[string][]string{}
-	svgMatches := map[string][]string{}
+	// svMatches and svgMatches are maps of sv/svg id to TokenToMatches of tokens
+	// that match each sv/svg
+	svMatches := map[string]TokenToMatches{}
+	svgMatches := map[string]TokenToMatches{}
 
 	// Get all matching sv and svg from the trie for each token
 	for _, token := range tokens {
@@ -229,11 +233,17 @@ func searchTokens(
 			for _, node := range node.ChildrenNodes {
 				nodesToCheck = append(nodesToCheck, *node)
 			}
-			for sv, matchString := range node.SvIds {
-				svMatches[sv] = append(svMatches[sv], matchString)
+			for sv := range node.SvIds {
+				if _, ok := svMatches[sv]; !ok {
+					svMatches[sv] = TokenToMatches{}
+				}
+				svMatches[sv][token] = node.Matches
 			}
-			for svg, matchString := range node.SvgIds {
-				svgMatches[svg] = append(svgMatches[svg], matchString)
+			for svg := range node.SvgIds {
+				if _, ok := svgMatches[svg]; !ok {
+					svgMatches[svg] = TokenToMatches{}
+				}
+				svgMatches[svg][token] = node.Matches
 			}
 		}
 	}
@@ -244,14 +254,16 @@ func searchTokens(
 	exists := struct{}{}
 	// Only select sv and svg that matches all the tokens
 	svList := []*pb.EntityInfo{}
-	for sv, matches := range svMatches {
-		if len(matches) == len(tokens) {
+	for sv, tokenMatches := range svMatches {
+		if len(tokenMatches) == len(tokens) {
 			svList = append(svList, &pb.EntityInfo{
 				Dcid: sv,
 				Name: index.Ranking[sv].RankingName,
 			})
-			for _, match := range matches {
-				matchingStrings[match] = exists
+			for _, matchList := range tokenMatches {
+				for match := range matchList {
+					matchingStrings[match] = exists
+				}
 			}
 		}
 	}
@@ -267,14 +279,16 @@ func searchTokens(
 
 	// Stat Var Groups will be sorted later.
 	svgList := []*pb.EntityInfo{}
-	for svg, matches := range svgMatches {
-		if len(matches) == len(tokens) {
+	for svg, tokenMatches := range svgMatches {
+		if len(tokenMatches) == len(tokens) {
 			svgList = append(svgList, &pb.EntityInfo{
 				Dcid: svg,
 				Name: index.Ranking[svg].RankingName,
 			})
-			for _, match := range matches {
-				matchingStrings[match] = struct{}{}
+			for _, matchList := range tokenMatches {
+				for match := range matchList {
+					matchingStrings[match] = exists
+				}
 			}
 		}
 	}

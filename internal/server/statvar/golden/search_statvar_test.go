@@ -101,6 +101,12 @@ func TestSearchStatVar(t *testing.T) {
 				false,
 				"veteran.json",
 			},
+			{
+				"poor",
+				[]string{},
+				false,
+				"poor.json",
+			},
 		} {
 			if opt.UseImportGroup {
 				c.goldenFile = "IG_" + c.goldenFile

@@ -26,54 +26,62 @@ import (
 func TestSearchTokens(t *testing.T) {
 	node1 := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]string{"group_1": "token2", "group_31": "token5"},
-		SvIds:         map[string]string{"sv_1_2": "ab1"},
+		SvgIds:        map[string]struct{}{"group_1": {}, "group_31": {}},
+		SvIds:         map[string]struct{}{"sv_1_2": {}},
+		Matches:       map[string]struct{}{"token2": {}, "token5": {}, "ab1": {}},
 	}
 	node3 := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvgIds:        nil,
-		SvIds:         map[string]string{"sv_1_1": "ac3", "sv_1_2": "ac3"},
+		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
+		Matches:       map[string]struct{}{"ac3": {}},
 	}
 	nodeX := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]string{"group_3": "zdx"},
-		SvIds:         map[string]string{"sv_1_2": "token2", "sv_3": "token4"},
+		SvgIds:        map[string]struct{}{"group_3": {}},
+		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv_3": {}},
+		Matches:       map[string]struct{}{"zdx": {}, "token2": {}, "token4": {}},
 	}
 	nodeDX := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'x': &nodeX,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	nodeC := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'3': &node3,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	nodeZ := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'd': &nodeDX,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	nodeB := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'1': &node1,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	nodeA := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'b': &nodeB,
 			'c': &nodeC,
 		},
-		SvgIds: nil,
-		SvIds:  nil,
+		SvgIds:  nil,
+		SvIds:   nil,
+		Matches: nil,
 	}
 	for _, c := range []struct {
 		tokens      []string
@@ -163,7 +171,7 @@ func TestSearchTokens(t *testing.T) {
 				},
 			},
 			wantSvg:     []*pb.EntityInfo{},
-			wantMatches: []string{"ab1", "ac3", "token2"},
+			wantMatches: []string{"ab1", "ac3", "token2", "token4", "token5", "zdx"},
 		},
 	} {
 		sv, svg, matches := searchTokens(c.tokens, c.index)

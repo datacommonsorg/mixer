@@ -1,10 +1,22 @@
 [
-  ["female", "women"],
-  ["male", "men"],
+  ["female", "women", "woman"],
+  ["male", "men", "man"],
   ["mean", "average"],
   ["commute", "transportation"],
   ["count", "number"],
   ["ambulatory", "walking"],
   ["cognitive", "mental", "brain"],
-  ["hearing", "auditory"]
+  ["hearing", "auditory"],
+  ["fertility", "birth"],
+  ["inequality", "disparity", "discrepancy"],
+  ["below poverty", "poor", "with food stamps"],
+  ["foreign", "abroad"],
+  ["below", "under"],
+  ["attainment", "achievement"],
+  ["occupation", "job", "career", "profession"],
+  ["enrolled", "registered"],
+  ["cohort", "group"],
+  ["functional", "working", "functioning", "running"],
+  ["assessment", "evaluation"],
+  ["expenditure", "spending"]
 ]
