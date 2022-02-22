@@ -73,8 +73,6 @@ const (
 	// Branch BigTable and Pubsub
 	branchBtInstance            = "prophet-branch-cache"
 	branchCacheVersionBucket    = "datcom-control"
-	branchCacheVersionFile      = "latest_branch_cache_version.txt"
-	branchCachePubsubTopic      = "branch-cache-reload"
 	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
 	// GCS Pubsub
 	tmcfCsvPubsubTopic      = "tmcf-csv-reload"
@@ -116,6 +114,15 @@ func main() {
 	metadata, err := server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
+	}
+
+	var branchCachePubsubTopic, branchCacheVersionFile string
+	if *useImportGroup {
+		branchCachePubsubTopic = "proto-branch-cache-reload"
+		branchCacheVersionFile = "latest_proto_branch_cache_version.txt"
+	} else {
+		branchCachePubsubTopic = "branch-cache-reload"
+		branchCacheVersionFile = "latest_branch_cache_version.txt"
 	}
 
 	// Base Bigtable cache
