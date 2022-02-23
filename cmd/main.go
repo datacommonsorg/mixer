@@ -208,8 +208,8 @@ func main() {
 
 		// Subscribe to branch cache update
 		if *useBranchBt {
-			err := mixerServer.SubscribeBranchCacheUpdate(
-				ctx, *storeProject, branchCacheSubscriberPrefix, branchCachePubsubTopic)
+			err := mixerServer.SubscribeBranchCacheUpdate(ctx, *storeProject,
+				branchCacheSubscriberPrefix, branchCachePubsubTopic, *useImportGroup)
 			if err != nil {
 				log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 			}
