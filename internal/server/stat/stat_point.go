@@ -303,7 +303,7 @@ func GetStatSetWithinPlace(
 		gotResult = true
 		cohorts := data.SourceCohorts
 		// Sort cohort first, so the preferred source is populated first.
-		sort.Sort(ranking.SeriesByRank(cohorts))
+		sort.Sort(ranking.CohortByRank(cohorts))
 		// update when there is a later data.
 		for _, cohort := range cohorts {
 			metaData := &pb.StatMetadata{
@@ -315,10 +315,9 @@ func GetStatSetWithinPlace(
 				Unit:              cohort.Unit,
 			}
 			for place, val := range cohort.Val {
-				pointStat, ok := result.Data[statVar].Stat[place]
 				// This works when date is set. The result will be populated in first
 				// for loop only.
-				if !ok || pointStat.Date < cohort.PlaceToLatestDate[place] {
+				if _, ok := result.Data[statVar].Stat[place]; !ok {
 					usedDate := date
 					if usedDate == "" {
 						usedDate = cohort.PlaceToLatestDate[place]
