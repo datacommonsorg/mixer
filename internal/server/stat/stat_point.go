@@ -315,9 +315,10 @@ func GetStatSetWithinPlace(
 				Unit:              cohort.Unit,
 			}
 			for place, val := range cohort.Val {
+				pointStat, ok := result.Data[statVar].Stat[place]
 				// This works when date is set. The result will be populated in first
 				// for loop only.
-				if _, ok := result.Data[statVar].Stat[place]; !ok {
+				if !ok || pointStat.Date < cohort.PlaceToLatestDate[place] {
 					usedDate := date
 					if usedDate == "" {
 						usedDate = cohort.PlaceToLatestDate[place]
