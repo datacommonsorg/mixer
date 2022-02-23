@@ -75,8 +75,9 @@ func NewGroup(
 ) *Group {
 	SortTables(tables)
 	return &Group{
-		tables:  tables,
-		isProto: useImportGroup,
+		tables:          tables,
+		isProto:         useImportGroup,
+		branchTableName: branchTableName,
 	}
 }
 
