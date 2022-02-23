@@ -303,7 +303,7 @@ func GetStatSetWithinPlace(
 		gotResult = true
 		cohorts := data.SourceCohorts
 		// Sort cohort first, so the preferred source is populated first.
-		sort.Sort(ranking.SeriesByRank(cohorts))
+		sort.Sort(ranking.CohortByRank(cohorts))
 		// update when there is a later data.
 		for _, cohort := range cohorts {
 			metaData := &pb.StatMetadata{

@@ -69,7 +69,7 @@ func GetPlaceStatDateWithinPlace(
 	for sv, data := range cacheData {
 		if data != nil && len(data.SourceCohorts) > 0 {
 			cohorts := data.SourceCohorts
-			sort.Sort(ranking.SeriesByRank(cohorts))
+			sort.Sort(ranking.CohortByRank(cohorts))
 			dates := []string{}
 			for date := range cohorts[0].Val {
 				dates = append(dates, date)
