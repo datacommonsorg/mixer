@@ -27,8 +27,12 @@ import (
 )
 
 func TestGetPlaceStatDateWithinPlace(t *testing.T) {
+	t.Parallel()
 	ctx := context.Background()
-
+	for _, opt := range []*e2e.TestOption{
+		{UseCache: true, UseMemdb: true},
+		{UseCache: true, UseMemdb: true, UseImportGroup: true},
+	} {
 	client, _, err := e2e.Setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
@@ -56,6 +60,9 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 			"USA_State.json",
 		},
 	} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 		resp, err := client.GetPlaceStatDateWithinPlace(ctx, &pb.GetPlaceStatDateWithinPlaceRequest{
 			AncestorPlace: c.ancestorPlace,
 			PlaceType:     c.placeType,
@@ -80,4 +87,5 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 			continue
 		}
 	}
+}
 }
