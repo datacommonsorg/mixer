@@ -33,7 +33,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 		{UseCache: true, UseMemdb: true},
 		{UseCache: true, UseMemdb: true, UseImportGroup: true},
 	} {
-		client, _, err := e2e.Setup()
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
