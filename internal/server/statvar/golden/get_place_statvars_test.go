@@ -62,8 +62,8 @@ func TestGetPlaceStatVars(t *testing.T) {
 				false,
 			},
 			{
-				[]string{"country/USA"},
-				"usa.json",
+				[]string{"country/IDN"},
+				"idn.json",
 				false,
 			},
 			{
