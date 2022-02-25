@@ -94,9 +94,7 @@ func GetStatAll(ctx context.Context, in *pb.GetStatAllRequest, store *store.Stor
 	}
 
 	// Initialize result with place and stat var dcids.
-	result := &pb.GetStatAllResponse{
-		PlaceData: make(map[string]*pb.PlaceStat),
-	}
+	result := &pb.GetStatAllResponse{PlaceData: make(map[string]*pb.PlaceStat)}
 	for _, place := range places {
 		result.PlaceData[place] = &pb.PlaceStat{
 			StatVarData: make(map[string]*pb.ObsTimeSeries),

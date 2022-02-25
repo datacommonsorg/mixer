@@ -52,6 +52,11 @@ func TestGetStatAll(t *testing.T) {
 				[]string{"country/USA", "geoId/06", "geoId/0649670"},
 				"result.json",
 			},
+			{
+				[]string{"UnemploymentRate_Person", "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
+				[]string{"country/USA", "geoId/06"},
+				"branch.json",
+			},
 		} {
 			if opt.UseImportGroup {
 				c.goldenFile = "IG_" + c.goldenFile

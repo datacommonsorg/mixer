@@ -120,7 +120,7 @@ func ReadStatsPb(
 				result[psv.Place][psv.StatVar].PlaceName = data.(*pb.ObsTimeSeries).PlaceName
 			}
 		}
-		result[psv.Place][psv.StatVar].SourceSeries = ss
+		result[psv.Place][psv.StatVar].SourceSeries = CollectDistinctSourceSeries(ss)
 	}
 	return result, nil
 }
