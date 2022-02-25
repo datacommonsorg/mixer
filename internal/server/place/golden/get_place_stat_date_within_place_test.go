@@ -27,57 +27,65 @@ import (
 )
 
 func TestGetPlaceStatDateWithinPlace(t *testing.T) {
+	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_place_stat_date_within_place")
-
-	for _, c := range []struct {
-		ancestorPlace string
-		placeType     string
-		statVars      []string
-		goldenFile    string
-	}{
-		{
-			"geoId/06",
-			"County",
-			[]string{"Count_Person", "Median_Age_Person"},
-			"CA_County.json",
-		},
-		{
-			"country/USA",
-			"State",
-			[]string{"Count_Person", "Count_Person_Female"},
-			"USA_State.json",
-		},
+	for _, opt := range []*e2e.TestOption{
+		{UseCache: true, UseMemdb: true},
+		{UseCache: true, UseMemdb: true, UseImportGroup: true},
 	} {
-		resp, err := client.GetPlaceStatDateWithinPlace(ctx, &pb.GetPlaceStatDateWithinPlaceRequest{
-			AncestorPlace: c.ancestorPlace,
-			PlaceType:     c.placeType,
-			StatVars:      c.statVars,
-		})
+		client, _, err := e2e.Setup(opt)
 		if err != nil {
-			t.Errorf("could not GetPlaceStatDateWithinPlace: %s", err)
-			continue
+			t.Fatalf("Failed to set up mixer and client")
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
-		var expected pb.GetPlaceStatDateWithinPlaceResponse
-		if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-			t.Errorf("Can not Unmarshal golden file")
-			continue
-		}
+		_, filename, _, _ := runtime.Caller(0)
+		goldenPath := path.Join(
+			path.Dir(filename), "get_place_stat_date_within_place")
 
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("payload got diff: %v", diff)
-			continue
+		for _, c := range []struct {
+			ancestorPlace string
+			placeType     string
+			statVars      []string
+			goldenFile    string
+		}{
+			{
+				"geoId/06",
+				"County",
+				[]string{"Count_Person", "Median_Age_Person"},
+				"CA_County.json",
+			},
+			{
+				"country/USA",
+				"State",
+				[]string{"Count_Person", "Count_Person_Female"},
+				"USA_State.json",
+			},
+		} {
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
+			resp, err := client.GetPlaceStatDateWithinPlace(ctx, &pb.GetPlaceStatDateWithinPlaceRequest{
+				AncestorPlace: c.ancestorPlace,
+				PlaceType:     c.placeType,
+				StatVars:      c.statVars,
+			})
+			if err != nil {
+				t.Errorf("could not GetPlaceStatDateWithinPlace: %s", err)
+				continue
+			}
+			if e2e.GenerateGolden {
+				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
+			var expected pb.GetPlaceStatDateWithinPlaceResponse
+			if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file")
+				continue
+			}
+
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("payload got diff: %v", diff)
+				continue
+			}
 		}
 	}
 }
