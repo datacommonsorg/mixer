@@ -91,6 +91,13 @@ func TestGetTriples(t *testing.T) {
 				5,
 				[]int{5, 5},
 			},
+			{
+				[]string{"dc/d7tbsb1"},
+				"limit1.json",
+				false,
+				1,
+				[]int{8, 8},
+			},
 		} {
 			if opt.UseImportGroup {
 				c.goldenFile = "IG_" + c.goldenFile

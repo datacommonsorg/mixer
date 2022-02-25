@@ -36,7 +36,7 @@ func TestGetStatSetSeries(t *testing.T) {
 
 	for _, opt := range []*e2e.TestOption{
 		{UseCache: false, UseMemdb: true},
-		{UseCache: false, UseImportGroup: true},
+		{UseCache: false, UseMemdb: true, UseImportGroup: true},
 	} {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {

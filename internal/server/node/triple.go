@@ -303,12 +303,19 @@ func applyLimit(dcid string, t *pb.Triples, limit int) {
 			t.InNodes,
 		} {
 			for _, c := range target {
-				if len(c.Entities) < limit {
+				if len(c.Entities) <= limit {
 					continue
 				}
 				tmp := map[string][]*pb.EntityInfo{}
+				var nt string
 				for _, e := range c.Entities {
-					nt := e.Types[0]
+					if e.Types != nil {
+						// Entity is a node and has type.
+						nt = e.Types[0]
+					} else {
+						// Entity is a string with no type. Use a dummy type as key.
+						nt = "_"
+					}
 					if len(tmp[nt]) < limit {
 						tmp[nt] = append(tmp[nt], e)
 					}

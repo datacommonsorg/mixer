@@ -1,0 +1,100 @@
+{
+  "dc/d7tbsb1": [
+    {
+      "subjectId": "dc/d7tbsb1",
+      "predicate": "curator",
+      "objectId": "dc/cjj7vp",
+      "objectName": "imports@datacommons.org",
+      "objectTypes": [
+        "Curator"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/d7tbsb1",
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/d7tbsb1",
+      "predicate": "source",
+      "objectId": "dc/kfcvsw1",
+      "objectName": "datacommons.org",
+      "objectTypes": [
+        "Source"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/d7tbsb1",
+      "predicate": "typeOf",
+      "objectId": "Provenance",
+      "objectName": "Provenance",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Worker2",
+      "subjectName": "Worker 2",
+      "subjectTypes": [
+        "Quantity"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "YearsUpto35",
+      "subjectName": "Years UpTo 35",
+      "subjectTypes": [
+        "QuantityRange"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/g/Weather",
+      "subjectName": "Weather",
+      "subjectTypes": [
+        "StatVarGroup"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "indianCensus/Count_Person_Religion_Total_MainWorker_AgriculturalLabourers_Rural_Male",
+      "subjectName": "Male Main Agricultural Labourers - Total - Rural",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    }
+  ]
+}

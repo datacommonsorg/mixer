@@ -67,23 +67,8 @@
       "provenanceId": "dc/5l5zxr1"
     },
     {
-      "subjectId": "geoId/3482570",
-      "subjectName": "Wood-Ridge",
-      "subjectTypes": [
-        "Borough",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/4204984",
-      "subjectName": "Beech Creek",
+      "subjectId": "geoId/4212296",
+      "subjectName": "Central City",
       "subjectTypes": [
         "Borough",
         "City"
@@ -97,8 +82,8 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/4250088",
-      "subjectName": "Minersville",
+      "subjectId": "geoId/4225944",
+      "subjectName": "Finleyville",
       "subjectTypes": [
         "Borough",
         "City"
@@ -112,8 +97,8 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/4261512",
-      "subjectName": "Pleasantville",
+      "subjectId": "geoId/4261536",
+      "subjectName": "Plum",
       "subjectTypes": [
         "Borough",
         "City"
@@ -127,8 +112,8 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/4278616",
-      "subjectName": "Unionville",
+      "subjectId": "geoId/4269800",
+      "subjectName": "Sharpsville",
       "subjectTypes": [
         "Borough",
         "City"
@@ -142,10 +127,10 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "wikidataId/Q1017402",
-      "subjectName": "Frisange",
+      "subjectId": "geoId/4275816",
+      "subjectName": "Swissvale",
       "subjectTypes": [
-        "AdministrativeArea1",
+        "Borough",
         "City"
       ],
       "predicate": "typeOf",
@@ -154,13 +139,13 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "wikidataId/Q167109",
-      "subjectName": "Eger",
+      "subjectId": "wikidataId/Q23013009",
+      "subjectName": "Guere, Cameroon",
       "subjectTypes": [
-        "AdministrativeArea1",
+        "AdministrativeArea5",
         "City"
       ],
       "predicate": "typeOf",
@@ -169,13 +154,29 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
-      "subjectId": "wikidataId/Q2218834",
-      "subjectName": "Kołaczyce",
+      "subjectId": "wikidataId/Q23013166",
+      "subjectName": "Widikum-Boffe",
+      "subjectTypes": [
+        "AdministrativeArea5",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5j06ly1"
+    },
+    {
+      "subjectId": "wikidataId/Q2652880",
+      "subjectName": "Bornes de Aguiar",
       "subjectTypes": [
         "AdministrativeArea3",
+        "AdministrativeArea4",
         "City"
       ],
       "predicate": "typeOf",
@@ -187,25 +188,25 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q240239",
-      "subjectName": "Fukang",
+      "subjectId": "wikidataId/Q3110389",
+      "subjectName": "Gomon, Ivory Coast",
+      "subjectTypes": [
+        "AdministrativeArea5",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5j06ly1"
+    },
+    {
+      "subjectId": "wikidataId/Q325550",
+      "subjectName": "Myślenice",
       "subjectTypes": [
         "AdministrativeArea3",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q3624",
-      "subjectName": "Addis Ababa",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "City"
       ],
       "predicate": "typeOf",
@@ -221,6 +222,81 @@
       "subjectName": "Plužine",
       "subjectTypes": [
         "AdministrativeArea1",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q41283",
+      "subjectName": "Gwangju",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q49659",
+      "subjectName": "Ruggell",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q503737",
+      "subjectName": "Rain",
+      "subjectTypes": [
+        "AdministrativeArea4",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q523265",
+      "subjectName": "Hatherleigh",
+      "subjectTypes": [
+        "AdministrativeArea4",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q542224",
+      "subjectName": "Hejnice",
+      "subjectTypes": [
+        "AdministrativeArea4",
         "City"
       ],
       "predicate": "typeOf",
@@ -248,8 +324,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q570408",
-      "subjectName": "Dahn",
+      "subjectId": "wikidataId/Q57881",
+      "subjectName": "Eibenstock",
       "subjectTypes": [
         "AdministrativeArea4",
         "City"
@@ -263,231 +339,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q570892",
-      "subjectName": "Münzenberg",
-      "subjectTypes": [
-        "AdministrativeArea4",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q582153",
-      "subjectName": "Campelos",
-      "subjectTypes": [
-        "AdministrativeArea3",
-        "AdministrativeArea4",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q59189",
-      "subjectName": "Shanwei",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q640981",
-      "subjectName": "Maryport",
-      "subjectTypes": [
-        "AdministrativeArea4",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q6863",
-      "subjectName": "Schwerte",
-      "subjectTypes": [
-        "AdministrativeArea4",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q71284",
-      "subjectName": "Xiangyang",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q745085",
-      "subjectName": "Mrągowo",
-      "subjectTypes": [
-        "AdministrativeArea3",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q862734",
-      "subjectName": "Taguasco",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q8792",
-      "subjectName": "Strehla",
-      "subjectTypes": [
-        "AdministrativeArea4",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q9041936",
-      "subjectName": "Manchester Township",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q930102",
-      "subjectName": "Tăuții-Măgherăuș",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q952273",
-      "subjectName": "Parque del Plata",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q958586",
-      "subjectName": "Barahona",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q963947",
-      "subjectName": "Ovacık",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "City",
-        "Village"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q973494",
-      "subjectName": "Cass Township",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q989833",
-      "subjectName": "Orzysz",
+      "subjectId": "wikidataId/Q734336",
+      "subjectName": "Loriga",
       "subjectTypes": [
         "AdministrativeArea3",
         "AdministrativeArea4",
@@ -502,8 +355,200 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q992432",
-      "subjectName": "Kentville",
+      "subjectId": "wikidataId/Q745088",
+      "subjectName": "Donja Stubica",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q799183",
+      "subjectName": "Cumieira",
+      "subjectTypes": [
+        "AdministrativeArea3",
+        "AdministrativeArea4",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5j06ly1"
+    },
+    {
+      "subjectId": "wikidataId/Q80021",
+      "subjectName": "Daugavpils",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q820224",
+      "subjectName": "Tafalla",
+      "subjectTypes": [
+        "AdministrativeArea3",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q822790",
+      "subjectName": "Lo-Reninge",
+      "subjectTypes": [
+        "AdministrativeArea4",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q9125",
+      "subjectName": "Winterthur",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q913390",
+      "subjectName": "Resende",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q942201",
+      "subjectName": "Jaguarão",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q945388",
+      "subjectName": "Polatlı",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q954421",
+      "subjectName": "Chashniki",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q957262",
+      "subjectName": "Kelly Township",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/qvng282"
+    },
+    {
+      "subjectId": "wikidataId/Q964928",
+      "subjectName": "Purdy",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q975960",
+      "subjectName": "Zarcero",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q993714",
+      "subjectName": "Kenora",
       "subjectTypes": [
         "City"
       ],
@@ -599,22 +644,7 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/51735",
-      "subjectName": "Poquoson",
-      "subjectTypes": [
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "County",
-      "objectName": "County",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/60030",
-      "subjectName": "Rose Atoll",
+      "subjectId": "geoId/68110",
       "subjectTypes": [
         "County"
       ],
@@ -627,7 +657,22 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/68120",
+      "subjectId": "geoId/68190",
+      "subjectName": "Majuro",
+      "subjectTypes": [
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/68350",
       "subjectTypes": [
         "County"
       ],
@@ -640,7 +685,7 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/68385",
+      "subjectId": "geoId/68420",
       "subjectTypes": [
         "County"
       ],
@@ -653,23 +698,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/70002",
-      "subjectName": "Aimeliik",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "County",
-      "objectName": "County",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/70212",
-      "subjectName": "Melekeok",
+      "subjectId": "geoId/70100",
+      "subjectName": "Kayangel",
       "subjectTypes": [
         "AdministrativeArea1",
         "County"
@@ -698,6 +728,21 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "geoId/70222",
+      "subjectName": "Ngardmau",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "geoId/70226",
       "subjectName": "Ngchesar",
       "subjectTypes": [
@@ -713,8 +758,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/70350",
-      "subjectName": "Peleliu",
+      "subjectId": "geoId/70370",
+      "subjectName": "Sonsorol",
       "subjectTypes": [
         "AdministrativeArea1",
         "County"
@@ -728,8 +773,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/72103",
-      "subjectName": "Naguabo",
+      "subjectId": "geoId/72137",
+      "subjectName": "Toa Baja",
       "subjectTypes": [
         "AdministrativeArea2",
         "County"
@@ -743,38 +788,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/72111",
-      "subjectName": "Peñuelas",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "County",
-      "objectName": "County",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/72129",
-      "subjectName": "San Lorenzo",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "County",
-      "objectName": "County",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/72139",
-      "subjectName": "Trujillo Alto",
+      "subjectId": "geoId/72141",
+      "subjectName": "Utuado",
       "subjectTypes": [
         "AdministrativeArea2",
         "County"
@@ -803,6 +818,36 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "geoId/72151",
+      "subjectName": "Yabucoa",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/72153",
+      "subjectName": "Yauco",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "geoId/78010",
       "subjectName": "Saint Croix",
       "subjectTypes": [
@@ -815,6 +860,19 @@
         "Class"
       ],
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/78030",
+      "subjectTypes": [
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/78h3b73"
     },
     {
       "subjectId": "zipsWithAccessToHealthyFoods",

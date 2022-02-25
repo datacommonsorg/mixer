@@ -82,10 +82,11 @@ message GetPropertyValuesRequest {
   // The property to get adjacent nodes for.
   string property = 3;
 
-  // Maximum number of nodes to query for.
+  // Maximum number of nodes to query for. When set to 0 or non-specified,
+  // no limit is applied.
   int32 limit = 4;
 
-  // Direction, "in" or "out", default to "out".
+  // Direction, "in" or "out". When not specified, return results for both.
   string direction = 5;
 }
 

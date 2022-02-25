@@ -107,7 +107,7 @@ func setupInternal(
 
 	var branchTableName string
 	if useImportGroup {
-		branchTableName = "dcbranch_2022_02_17_11_39_12"
+		branchTableName = "dcbranch_2022_02_23_09_33_08"
 	} else {
 		branchTableName = "branch_dcbranch_2022_02_17_16_16_05"
 	}

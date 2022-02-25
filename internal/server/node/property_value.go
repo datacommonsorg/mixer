@@ -178,10 +178,7 @@ func GetPropertyValuesHelper(
 	return result, nil
 }
 
-func filterEntities(in []*pb.EntityInfo,
-	typ string,
-	limit int,
-) []*pb.EntityInfo {
+func filterEntities(in []*pb.EntityInfo, typ string, limit int) []*pb.EntityInfo {
 	if limit == 0 && typ == "" {
 		return in
 	}
