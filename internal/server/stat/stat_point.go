@@ -346,10 +346,11 @@ func GetStatSetWithinPlace(
 	// from per place,statvar bigtable.
 	var childPlaces []string
 	if !gotResult || statVarInMemDb {
-		childPlaces, err = placein.GetChildPlaces(ctx, store, parentPlace, childType)
+		childPlacesMap, err := placein.GetPlacesIn(ctx, store, []string{parentPlace}, childType)
 		if err != nil {
 			return nil, err
 		}
+		childPlaces = childPlacesMap[parentPlace]
 	}
 	// No data found from cache, fetch stat series for each place separately.
 	if !gotResult {
@@ -478,10 +479,11 @@ func GetStatSetWithinPlaceAll(
 	// from per place,statvar bigtable.
 	var childPlaces []string
 	if !gotResult || statVarInMemDb {
-		childPlaces, err = placein.GetChildPlaces(ctx, store, parentPlace, childType)
+		childPlacesMap, err := placein.GetPlacesIn(ctx, store, []string{parentPlace}, childType)
 		if err != nil {
 			return nil, err
 		}
+		childPlaces = childPlacesMap[parentPlace]
 	}
 	// No data found from cache, fetch stat series for each place separately.
 	if !gotResult {

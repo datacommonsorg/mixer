@@ -25,6 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
+	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/placepage"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/search"
@@ -125,11 +126,11 @@ func (s *Server) GetStatSetSeriesWithinPlace(
 func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 ) (*pb.GetPlacesInResponse, error) {
 	// Current places in response is not ideal.
-	// (TODO): In next version of API, should simply return placesInData in the final response.
-	placesInData, err := place.GetPlacesIn(ctx, in, s.store)
+	placesInData, err := placein.GetPlacesIn(ctx, s.store, in.GetDcids(), in.GetPlaceType())
 	if err != nil {
 		return nil, err
 	}
+	// (TODO): In next version of API, should simply return placesInData in the final response.
 	result := []map[string]string{}
 	parents := []string{}
 	for dcid := range placesInData {
@@ -141,7 +142,6 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 			result = append(result, map[string]string{"dcid": parent, "place": child})
 		}
 	}
-
 	jsonRaw, err := json.Marshal(result)
 	if err != nil {
 		return nil, err

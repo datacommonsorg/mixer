@@ -112,6 +112,13 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 				[]string{"NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
 				"wet_bulb.json",
 			},
+			{
+				"geoId/06",
+				"EpaReportingFacility",
+				"",
+				[]string{"Annual_Emissions_GreenhouseGas_NonBiogenic"},
+				"epa_facility.json",
+			},
 		} {
 			if opt.UseImportGroup {
 				c.goldenFile = "IG_" + c.goldenFile
