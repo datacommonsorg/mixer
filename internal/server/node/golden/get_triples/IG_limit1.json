@@ -21,7 +21,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1645637653",
+      "objectValue": "1645821585",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -129,8 +129,8 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "indianCensus/Count_Person_Religion_Total_Literate_Urban_Male",
-      "subjectName": "Male literates - Total - Urban",
+      "subjectId": "indianCensus/Count_Person_Religion_Total_NonWorker_Urban_Male",
+      "subjectName": "Male Non-Workers - Total - Urban",
       "subjectTypes": [
         "StatisticalVariable"
       ],
