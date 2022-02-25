@@ -33,10 +33,7 @@ func TestGetStatAll(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stat_all")
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+	testSuite := func(opt *e2e.TestOption) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
@@ -79,5 +76,10 @@ func TestGetStatAll(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestWithImportGroupLatency(
+		"GetStatAll", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestWithImportGroupLatency() = %s", err)
 	}
 }

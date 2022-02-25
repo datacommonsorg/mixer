@@ -171,6 +171,13 @@ go run cmd/main.go \
 ./scripts/update_golden.sh
 ```
 
+### Run import group latency tests
+
+Run the following command in the root directory:
+```bash
+go test -parallel 1 ./...
+```
+
 ## Update prod golden files
 
 Run the following commands to update prod golden files from staging golden files
