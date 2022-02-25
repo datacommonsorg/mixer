@@ -272,10 +272,11 @@ func GetStatSetSeriesWithinPlace(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: child_type")
 	}
-	childPlaces, err := placein.GetChildPlaces(ctx, store, parentPlace, childType)
+	childPlacesMap, err := placein.GetPlacesIn(ctx, store, []string{parentPlace}, childType)
 	if err != nil {
 		return nil, err
 	}
+	childPlaces := childPlacesMap[parentPlace]
 	return GetStatSetSeries(
 		ctx,
 		&pb.GetStatSetSeriesRequest{
