@@ -82,6 +82,7 @@ var allWantedPlaceTypes = map[string]struct{}{
 	"CensusZipCodeTabulationArea": {}, "EurostatNUTS1": {}, "EurostatNUTS2": {},
 	"EurostatNUTS3": {}, "AdministrativeArea1": {}, "AdministrativeArea2": {},
 	"AdministrativeArea3": {}, "AdministrativeArea4": {}, "AdministrativeArea5": {},
+	"Continent": {},
 }
 
 // These place types are equivalent: prefer the key.
@@ -443,10 +444,13 @@ func getParentPlaces(ctx context.Context, store *store.Store, dcid string) (
 	result := []string{}
 	if data, ok := placeMetadata.Data[dcid]; ok {
 		for _, parent := range data.Parents {
-			if parent.Type == "CensusZipCodeTabulationArea" || parent.Dcid == "Earth" {
-				continue
+			// Only want to include parents with type that is included in
+			// allWantedPlaceTypes except and not type CensusZipCodeTabulationArea
+			if _, ok := allWantedPlaceTypes[parent.Type]; ok {
+				if parent.Type != "CensusZipCodeTabulationArea" {
+					result = append(result, parent.Dcid)
+				}
 			}
-			result = append(result, parent.Dcid)
 		}
 	}
 	return result, nil
