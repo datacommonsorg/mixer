@@ -2266,7 +2266,7 @@
     },
     {
       "dcid": "dc/g/Household_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Household With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
+      "name": "Household With Race = Black or African American Alone, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
           "name": "Percentage of Household With Has Children, Below Poverty Level in The Past 12 Months, Black or African American Alone",
