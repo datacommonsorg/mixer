@@ -2766,6 +2766,649 @@
           "meta_hash": 2223217975
         }
       ]
+    },
+    "UnemploymentRate_Person": {
+      "stat_list": [
+        {
+          "stat": {
+            "geoId/01": {
+              "date": "2021-12",
+              "value": 2.8
+            },
+            "geoId/02": {
+              "date": "2021-12",
+              "value": 5.4
+            },
+            "geoId/04": {
+              "date": "2021-12",
+              "value": 2.8
+            },
+            "geoId/05": {
+              "date": "2021-12",
+              "value": 2.4
+            },
+            "geoId/06": {
+              "date": "2021-12",
+              "value": 5
+            },
+            "geoId/08": {
+              "date": "2021-12",
+              "value": 4.1
+            },
+            "geoId/09": {
+              "date": "2021-12",
+              "value": 4.4
+            },
+            "geoId/10": {
+              "date": "2021-12",
+              "value": 4.2
+            },
+            "geoId/11": {
+              "date": "2021-12",
+              "value": 5.1
+            },
+            "geoId/12": {
+              "date": "2021-12",
+              "value": 3.2
+            },
+            "geoId/13": {
+              "date": "2021-12",
+              "value": 2.4
+            },
+            "geoId/15": {
+              "date": "2021-12",
+              "value": 4.9
+            },
+            "geoId/16": {
+              "date": "2021-12",
+              "value": 1.9
+            },
+            "geoId/17": {
+              "date": "2021-12",
+              "value": 4.3
+            },
+            "geoId/18": {
+              "date": "2021-12",
+              "value": 1.3
+            },
+            "geoId/19": {
+              "date": "2021-12",
+              "value": 2.9
+            },
+            "geoId/20": {
+              "date": "2021-12",
+              "value": 2.2
+            },
+            "geoId/21": {
+              "date": "2021-12",
+              "value": 3.4
+            },
+            "geoId/22": {
+              "date": "2021-12",
+              "value": 3.7
+            },
+            "geoId/23": {
+              "date": "2021-12",
+              "value": 4
+            },
+            "geoId/24": {
+              "date": "2021-12",
+              "value": 4
+            },
+            "geoId/25": {
+              "date": "2021-12",
+              "value": 3.5
+            },
+            "geoId/26": {
+              "date": "2021-12",
+              "value": 4.4
+            },
+            "geoId/27": {
+              "date": "2021-12",
+              "value": 2.7
+            },
+            "geoId/28": {
+              "date": "2021-12",
+              "value": 3.1
+            },
+            "geoId/29": {
+              "date": "2021-12",
+              "value": 2.7
+            },
+            "geoId/30": {
+              "date": "2021-12",
+              "value": 1.9
+            },
+            "geoId/31": {
+              "date": "2021-12",
+              "value": 1.3
+            },
+            "geoId/32": {
+              "date": "2021-12",
+              "value": 5.2
+            },
+            "geoId/33": {
+              "date": "2021-12",
+              "value": 2.2
+            },
+            "geoId/34": {
+              "date": "2021-12",
+              "value": 4.9
+            },
+            "geoId/35": {
+              "date": "2021-12",
+              "value": 4.8
+            },
+            "geoId/36": {
+              "date": "2021-12",
+              "value": 5
+            },
+            "geoId/37": {
+              "date": "2021-12",
+              "value": 3.2
+            },
+            "geoId/38": {
+              "date": "2021-12",
+              "value": 2.8
+            },
+            "geoId/39": {
+              "date": "2021-12",
+              "value": 3.4
+            },
+            "geoId/40": {
+              "date": "2021-12",
+              "value": 1.8
+            },
+            "geoId/41": {
+              "date": "2021-12",
+              "value": 3.6
+            },
+            "geoId/42": {
+              "date": "2021-12",
+              "value": 4
+            },
+            "geoId/44": {
+              "date": "2021-12",
+              "value": 3.7
+            },
+            "geoId/45": {
+              "date": "2021-12",
+              "value": 3.3
+            },
+            "geoId/46": {
+              "date": "2021-12",
+              "value": 2.4
+            },
+            "geoId/47": {
+              "date": "2021-12",
+              "value": 3.3
+            },
+            "geoId/48": {
+              "date": "2021-12",
+              "value": 4.3
+            },
+            "geoId/49": {
+              "date": "2021-12",
+              "value": 1.3
+            },
+            "geoId/50": {
+              "date": "2021-12",
+              "value": 2.2
+            },
+            "geoId/51": {
+              "date": "2021-12",
+              "value": 2.7
+            },
+            "geoId/53": {
+              "date": "2021-12",
+              "value": 3.8
+            },
+            "geoId/54": {
+              "date": "2021-12",
+              "value": 2.9
+            },
+            "geoId/55": {
+              "date": "2021-12",
+              "value": 2
+            },
+            "geoId/56": {
+              "date": "2021-12",
+              "value": 2.4
+            },
+            "geoId/72": {
+              "date": "2021-12",
+              "value": 6.6
+            }
+          },
+          "meta_hash": 3125519592
+        },
+        {
+          "stat": {
+            "geoId/01": {
+              "date": "2020",
+              "value": 5.9
+            },
+            "geoId/02": {
+              "date": "2020",
+              "value": 7.8
+            },
+            "geoId/04": {
+              "date": "2020",
+              "value": 7.9
+            },
+            "geoId/05": {
+              "date": "2020",
+              "value": 6.1
+            },
+            "geoId/06": {
+              "date": "2020",
+              "value": 10.1
+            },
+            "geoId/08": {
+              "date": "2020",
+              "value": 7.3
+            },
+            "geoId/09": {
+              "date": "2020",
+              "value": 7.9
+            },
+            "geoId/10": {
+              "date": "2020",
+              "value": 7.8
+            },
+            "geoId/11": {
+              "date": "2020",
+              "value": 8
+            },
+            "geoId/12": {
+              "date": "2020",
+              "value": 7.7
+            },
+            "geoId/13": {
+              "date": "2020",
+              "value": 6.5
+            },
+            "geoId/15": {
+              "date": "2020",
+              "value": 11.6
+            },
+            "geoId/16": {
+              "date": "2020",
+              "value": 5.4
+            },
+            "geoId/17": {
+              "date": "2020",
+              "value": 9.5
+            },
+            "geoId/18": {
+              "date": "2020",
+              "value": 7.1
+            },
+            "geoId/19": {
+              "date": "2020",
+              "value": 5.3
+            },
+            "geoId/20": {
+              "date": "2020",
+              "value": 5.9
+            },
+            "geoId/21": {
+              "date": "2020",
+              "value": 6.6
+            },
+            "geoId/22": {
+              "date": "2020",
+              "value": 8.3
+            },
+            "geoId/23": {
+              "date": "2020",
+              "value": 5.4
+            },
+            "geoId/24": {
+              "date": "2020",
+              "value": 6.8
+            },
+            "geoId/25": {
+              "date": "2020",
+              "value": 8.9
+            },
+            "geoId/26": {
+              "date": "2020",
+              "value": 9.9
+            },
+            "geoId/27": {
+              "date": "2020",
+              "value": 6.2
+            },
+            "geoId/28": {
+              "date": "2020",
+              "value": 8.1
+            },
+            "geoId/29": {
+              "date": "2020",
+              "value": 6.1
+            },
+            "geoId/30": {
+              "date": "2020",
+              "value": 5.9
+            },
+            "geoId/31": {
+              "date": "2020",
+              "value": 4.2
+            },
+            "geoId/32": {
+              "date": "2020",
+              "value": 12.8
+            },
+            "geoId/33": {
+              "date": "2020",
+              "value": 6.7
+            },
+            "geoId/34": {
+              "date": "2020",
+              "value": 9.8
+            },
+            "geoId/35": {
+              "date": "2020",
+              "value": 8.4
+            },
+            "geoId/36": {
+              "date": "2020",
+              "value": 10
+            },
+            "geoId/37": {
+              "date": "2020",
+              "value": 7.3
+            },
+            "geoId/38": {
+              "date": "2020",
+              "value": 5.1
+            },
+            "geoId/39": {
+              "date": "2020",
+              "value": 8.1
+            },
+            "geoId/40": {
+              "date": "2020",
+              "value": 6.1
+            },
+            "geoId/41": {
+              "date": "2020",
+              "value": 7.6
+            },
+            "geoId/42": {
+              "date": "2020",
+              "value": 9.1
+            },
+            "geoId/44": {
+              "date": "2020",
+              "value": 9.4
+            },
+            "geoId/45": {
+              "date": "2020",
+              "value": 6.2
+            },
+            "geoId/46": {
+              "date": "2020",
+              "value": 4.6
+            },
+            "geoId/47": {
+              "date": "2020",
+              "value": 7.5
+            },
+            "geoId/48": {
+              "date": "2020",
+              "value": 7.6
+            },
+            "geoId/49": {
+              "date": "2020",
+              "value": 4.7
+            },
+            "geoId/50": {
+              "date": "2020",
+              "value": 5.6
+            },
+            "geoId/51": {
+              "date": "2020",
+              "value": 6.2
+            },
+            "geoId/53": {
+              "date": "2020",
+              "value": 8.4
+            },
+            "geoId/54": {
+              "date": "2020",
+              "value": 8.3
+            },
+            "geoId/55": {
+              "date": "2020",
+              "value": 6.3
+            },
+            "geoId/56": {
+              "date": "2020",
+              "value": 5.8
+            },
+            "geoId/72": {
+              "date": "2019",
+              "value": 8.3
+            }
+          },
+          "meta_hash": 4038428712
+        },
+        {
+          "stat": {
+            "geoId/01": {
+              "date": "2021-12",
+              "value": 3.1
+            },
+            "geoId/02": {
+              "date": "2021-12",
+              "value": 5.7
+            },
+            "geoId/04": {
+              "date": "2021-12",
+              "value": 4.1
+            },
+            "geoId/05": {
+              "date": "2021-12",
+              "value": 3.1
+            },
+            "geoId/06": {
+              "date": "2021-12",
+              "value": 6.5
+            },
+            "geoId/08": {
+              "date": "2021-12",
+              "value": 4.8
+            },
+            "geoId/09": {
+              "date": "2021-12",
+              "value": 5.8
+            },
+            "geoId/10": {
+              "date": "2021-12",
+              "value": 5
+            },
+            "geoId/11": {
+              "date": "2021-12",
+              "value": 5.8
+            },
+            "geoId/12": {
+              "date": "2021-12",
+              "value": 4.4
+            },
+            "geoId/13": {
+              "date": "2021-12",
+              "value": 2.6
+            },
+            "geoId/15": {
+              "date": "2021-12",
+              "value": 5.7
+            },
+            "geoId/16": {
+              "date": "2021-12",
+              "value": 2.4
+            },
+            "geoId/17": {
+              "date": "2021-12",
+              "value": 5.3
+            },
+            "geoId/18": {
+              "date": "2021-12",
+              "value": 2.7
+            },
+            "geoId/19": {
+              "date": "2021-12",
+              "value": 3.5
+            },
+            "geoId/20": {
+              "date": "2021-12",
+              "value": 3.3
+            },
+            "geoId/21": {
+              "date": "2021-12",
+              "value": 3.9
+            },
+            "geoId/22": {
+              "date": "2021-12",
+              "value": 4.8
+            },
+            "geoId/23": {
+              "date": "2021-12",
+              "value": 4.7
+            },
+            "geoId/24": {
+              "date": "2021-12",
+              "value": 5
+            },
+            "geoId/25": {
+              "date": "2021-12",
+              "value": 3.9
+            },
+            "geoId/26": {
+              "date": "2021-12",
+              "value": 5.6
+            },
+            "geoId/27": {
+              "date": "2021-12",
+              "value": 3.1
+            },
+            "geoId/28": {
+              "date": "2021-12",
+              "value": 4.5
+            },
+            "geoId/29": {
+              "date": "2021-12",
+              "value": 3.3
+            },
+            "geoId/30": {
+              "date": "2021-12",
+              "value": 2.5
+            },
+            "geoId/31": {
+              "date": "2021-12",
+              "value": 1.7
+            },
+            "geoId/32": {
+              "date": "2021-12",
+              "value": 6.4
+            },
+            "geoId/33": {
+              "date": "2021-12",
+              "value": 2.6
+            },
+            "geoId/34": {
+              "date": "2021-12",
+              "value": 6.3
+            },
+            "geoId/35": {
+              "date": "2021-12",
+              "value": 5.8
+            },
+            "geoId/36": {
+              "date": "2021-12",
+              "value": 6.2
+            },
+            "geoId/37": {
+              "date": "2021-12",
+              "value": 3.7
+            },
+            "geoId/38": {
+              "date": "2021-12",
+              "value": 3.1
+            },
+            "geoId/39": {
+              "date": "2021-12",
+              "value": 4.5
+            },
+            "geoId/40": {
+              "date": "2021-12",
+              "value": 2.3
+            },
+            "geoId/41": {
+              "date": "2021-12",
+              "value": 4.1
+            },
+            "geoId/42": {
+              "date": "2021-12",
+              "value": 5.4
+            },
+            "geoId/44": {
+              "date": "2021-12",
+              "value": 4.8
+            },
+            "geoId/45": {
+              "date": "2021-12",
+              "value": 3.5
+            },
+            "geoId/46": {
+              "date": "2021-12",
+              "value": 2.6
+            },
+            "geoId/47": {
+              "date": "2021-12",
+              "value": 3.8
+            },
+            "geoId/48": {
+              "date": "2021-12",
+              "value": 5
+            },
+            "geoId/49": {
+              "date": "2021-12",
+              "value": 1.9
+            },
+            "geoId/50": {
+              "date": "2021-12",
+              "value": 2.5
+            },
+            "geoId/51": {
+              "date": "2021-12",
+              "value": 3.2
+            },
+            "geoId/53": {
+              "date": "2021-12",
+              "value": 4.5
+            },
+            "geoId/54": {
+              "date": "2021-12",
+              "value": 3.7
+            },
+            "geoId/55": {
+              "date": "2021-12",
+              "value": 2.8
+            },
+            "geoId/56": {
+              "date": "2021-12",
+              "value": 3.3
+            },
+            "geoId/72": {
+              "date": "2021-12",
+              "value": 7.5
+            }
+          },
+          "meta_hash": 2223217975
+        }
+      ]
     }
   },
   "metadata": {

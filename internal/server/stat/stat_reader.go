@@ -120,7 +120,10 @@ func ReadStatsPb(
 				result[psv.Place][psv.StatVar].PlaceName = data.(*pb.ObsTimeSeries).PlaceName
 			}
 		}
-		result[psv.Place][psv.StatVar].SourceSeries = ss
+		// Same sources could be from different import groups. For example, NYT Covid
+		// import is included in both "frequent" and "dcbranch" group. This is to
+		// collect the source with the most (latest) data.
+		result[psv.Place][psv.StatVar].SourceSeries = CollectDistinctSourceSeries(ss)
 	}
 	return result, nil
 }

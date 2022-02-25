@@ -1,5 +1,150 @@
 {
   "statVarSummary": {
+    "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
+      "placeTypeSummary": {
+        "City": {
+          "placeCount": 3,
+          "topPlaces": [
+            {
+              "dcid": "geoId/3651000",
+              "name": "New York"
+            },
+            {
+              "dcid": "geoId/2938000",
+              "name": "Kansas City"
+            },
+            {
+              "dcid": "geoId/2937592",
+              "name": "Joplin"
+            }
+          ]
+        },
+        "Country": {
+          "placeCount": 1,
+          "topPlaces": [
+            {
+              "dcid": "country/USA",
+              "name": "United States"
+            }
+          ]
+        },
+        "County": {
+          "placeCount": 3217,
+          "topPlaces": [
+            {
+              "dcid": "geoId/06037",
+              "name": "Los Angeles County"
+            },
+            {
+              "dcid": "geoId/17031",
+              "name": "Cook County"
+            },
+            {
+              "dcid": "geoId/48201",
+              "name": "Harris County"
+            }
+          ]
+        },
+        "State": {
+          "placeCount": 56,
+          "topPlaces": [
+            {
+              "dcid": "geoId/06",
+              "name": "California"
+            },
+            {
+              "dcid": "geoId/48",
+              "name": "Texas"
+            },
+            {
+              "dcid": "geoId/12",
+              "name": "Florida"
+            }
+          ]
+        }
+      },
+      "provenanceSummary": {
+        "dc/e9k9ze": {
+          "importName": "NYT_COVID19",
+          "observationCount": 2243423,
+          "timeSeriesCount": 3277,
+          "releaseFrequency": "P1D",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "NYT_COVID19_GitHub"
+              },
+              "earliestDate": "2020-01-21",
+              "latestDate": "2022-02-16",
+              "observationCount": 2243423,
+              "timeSeriesCount": 3277,
+              "placeTypeSummary": {
+                "City": {
+                  "placeCount": 3,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/3651000",
+                      "name": "New York"
+                    },
+                    {
+                      "dcid": "geoId/2938000",
+                      "name": "Kansas City"
+                    },
+                    {
+                      "dcid": "geoId/2937592",
+                      "name": "Joplin"
+                    }
+                  ]
+                },
+                "Country": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States"
+                    }
+                  ]
+                },
+                "County": {
+                  "placeCount": 3217,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/78030"
+                    },
+                    {
+                      "dcid": "geoId/78020"
+                    },
+                    {
+                      "dcid": "geoId/78010",
+                      "name": "Saint Croix"
+                    }
+                  ]
+                },
+                "State": {
+                  "placeCount": 56,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/78",
+                      "name": "Virgin Islands of the U.S."
+                    },
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    },
+                    {
+                      "dcid": "geoId/69",
+                      "name": "Northern Mariana Islands"
+                    }
+                  ]
+                }
+              },
+              "minValue": 1,
+              "maxValue": 78092675
+            }
+          ]
+        }
+      }
+    },
     "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
       "placeTypeSummary": {
         "City": {

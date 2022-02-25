@@ -58,7 +58,7 @@ func TestGetStatVarSummary(t *testing.T) {
 				"females.json",
 			},
 			{
-				[]string{"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
+				[]string{"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase", "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
 				"covid.json",
 			},
 		} {
