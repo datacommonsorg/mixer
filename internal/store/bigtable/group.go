@@ -149,6 +149,9 @@ func SortTables(tables []*Table) {
 		if !ok {
 			rj = defaultRank
 		}
+		if ri == rj {
+			return strings.TrimPrefix(tables[i].name, ni) > strings.TrimPrefix(tables[j].name, nj)
+		}
 		return ri < rj
 	})
 }
