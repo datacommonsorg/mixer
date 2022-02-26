@@ -22,8 +22,9 @@ import (
 	"time"
 )
 
-const NumTestTimes = 5
+const numTestTimes = 5
 
+// TestDriver drives various tests based on environment flags.
 func TestDriver(
 	apiName string,
 	opt *TestOption,
