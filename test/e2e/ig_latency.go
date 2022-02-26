@@ -22,19 +22,29 @@ import (
 	"time"
 )
 
+const NumTestTimes = 4
+
 func TestWithImportGroupLatency(
-	apiName string, opt *TestOption, testSuite func(*TestOption)) error {
-	durations := map[bool]float64{} // Map: useImportGroup -> duration in seconds.
+	apiName string,
+	opt *TestOption,
+	testSuite func(*TestOption, bool)) error {
+	// Map: useImportGroup -> [duration in seconds].
+	durationStore := map[bool][]float64{}
 
-	for _, useImportGroup := range []bool{true, false} {
-		opt.UseImportGroup = useImportGroup
+	// Run multiple times to reduce fluctuations.
+	for i := 0; i < NumTestTimes; i++ {
+		for _, useImportGroup := range []bool{true, false} {
+			opt.UseImportGroup = useImportGroup
 
-		startTime := time.Now()
-		testSuite(opt)
-		durations[useImportGroup] = time.Since(startTime).Seconds()
+			startTime := time.Now()
+			testSuite(opt, true /* latencyTest */)
+			durationStore[useImportGroup] = append(durationStore[useImportGroup],
+				time.Since(startTime).Seconds())
+		}
 	}
 
-	resultCsvRow := fmt.Sprintf("%s,%f,%f\n", apiName, durations[false], durations[true])
+	resultCsvRow := fmt.Sprintf("%s,%f,%f\n",
+		apiName, meanValue(durationStore[false]), meanValue(durationStore[true]))
 
 	fmt.Println(resultCsvRow)
 
@@ -42,4 +52,12 @@ func TestWithImportGroupLatency(
 	resultFilePath := path.Join(
 		path.Dir(filename), fmt.Sprintf("ig_latency_%s.csv", apiName))
 	return os.WriteFile(resultFilePath, []byte(resultCsvRow), 0644)
+}
+
+func meanValue(list []float64) float64 {
+	res := 0.0
+	for _, item := range list {
+		res += item
+	}
+	return res / float64(len(list))
 }

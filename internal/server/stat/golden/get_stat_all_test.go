@@ -33,7 +33,7 @@ func TestGetStatAll(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stat_all")
 
-	testSuite := func(opt *e2e.TestOption) {
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
@@ -50,9 +50,6 @@ func TestGetStatAll(t *testing.T) {
 				"result.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
 				StatVars: c.statVars,
 				Places:   c.places,
@@ -60,6 +57,14 @@ func TestGetStatAll(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetStatAll: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -78,6 +83,8 @@ func TestGetStatAll(t *testing.T) {
 		}
 	}
 
+	opt := &e2e.TestOption{}
+	testSuite(opt, false /* latencyTest */)
 	if err := e2e.TestWithImportGroupLatency(
 		"GetStatAll", &e2e.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestWithImportGroupLatency() = %s", err)

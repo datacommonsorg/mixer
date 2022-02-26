@@ -34,7 +34,7 @@ func TestGetPlacesIn(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_places_in")
 
-	testSuite := func(opt *e2e.TestOption) {
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
@@ -61,9 +61,6 @@ func TestGetPlacesIn(t *testing.T) {
 				"CensusZipCodeTabulationArea",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetPlacesInRequest{
 				Dcids:     c.dcids,
 				PlaceType: c.typ,
@@ -73,6 +70,11 @@ func TestGetPlacesIn(t *testing.T) {
 				t.Errorf("could not GetPlacesIn: %s", err)
 				continue
 			}
+
+			if latencyTest {
+				continue
+			}
+
 			var result []map[string]string
 			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 			if err != nil {
@@ -80,6 +82,9 @@ func TestGetPlacesIn(t *testing.T) {
 				continue
 			}
 
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
@@ -100,8 +105,10 @@ func TestGetPlacesIn(t *testing.T) {
 		}
 	}
 
+	opt := &e2e.TestOption{}
+	testSuite(opt, false /* latencyTest */)
 	if err := e2e.TestWithImportGroupLatency(
-		"GetPlacesIn", &e2e.TestOption{}, testSuite); err != nil {
+		"GetPlacesIn", opt, testSuite); err != nil {
 		t.Errorf("TestWithImportGroupLatency() = %s", err)
 	}
 }
