@@ -171,6 +171,25 @@ go run cmd/main.go \
 ./scripts/update_golden.sh
 ```
 
+### Run import group latency tests
+
+Set environment flag:
+
+```bash
+export LATENCY_TEST=true
+```
+
+In the root directory, run the following command for all latency tests:
+```bash
+go test -parallel 1 ./...
+```
+
+Or, run the following command for latency test for a specific API endpoint:
+
+```bash
+go test -parallel 1 path/to/the/test/file.go
+```
+
 ## Update prod golden files
 
 Run the following commands to update prod golden files from staging golden files
