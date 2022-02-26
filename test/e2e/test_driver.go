@@ -51,7 +51,7 @@ func latencyTest(
 	durationStore := map[bool][]float64{}
 
 	// Run multiple times to reduce fluctuations.
-	for i := 0; i < NumTestTimes; i++ {
+	for i := 0; i < numTestTimes; i++ {
 		for _, useImportGroup := range []bool{true, false} {
 			opt.UseImportGroup = useImportGroup
 
