@@ -83,8 +83,8 @@ func TestGetStatAll(t *testing.T) {
 		}
 	}
 
-	if err := e2e.TestWithImportGroupLatency(
+	if err := e2e.TestDriver(
 		"GetStatAll", &e2e.TestOption{}, testSuite); err != nil {
-		t.Errorf("TestWithImportGroupLatency() = %s", err)
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

@@ -22,9 +22,9 @@ import (
 	"time"
 )
 
-const NumTestTimes = 4
+const NumTestTimes = 5
 
-func TestWithImportGroupLatency(
+func TestDriver(
 	apiName string,
 	opt *TestOption,
 	testSuite func(*TestOption, bool)) error {
@@ -68,7 +68,7 @@ func latencyTest(
 
 	_, filename, _, _ := runtime.Caller(0)
 	resultFilePath := path.Join(
-		path.Dir(filename), fmt.Sprintf("ig_latency_%s.csv", apiName))
+		path.Dir(filename), "ig_latency", fmt.Sprintf("%s.csv", apiName))
 	return os.WriteFile(resultFilePath, []byte(resultCsvRow), 0644)
 }
 
