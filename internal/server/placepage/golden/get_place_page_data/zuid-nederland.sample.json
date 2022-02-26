@@ -1199,8 +1199,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Person": {
@@ -1618,7 +1617,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -1653,7 +1652,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -1688,7 +1687,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -1861,7 +1860,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -2034,7 +2033,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -2414,7 +2413,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -3778,59 +3777,95 @@
             "2021-11-26": 19158,
             "2021-11-27": 19217,
             "2021-11-28": 19271,
-            "2021-11-29": 19315,
-            "2021-11-30": 19348,
-            "2021-12-01": 19413,
-            "2021-12-02": 19456,
-            "2021-12-03": 19521,
-            "2021-12-04": 19583,
-            "2021-12-05": 19639,
-            "2021-12-06": 19665,
-            "2021-12-07": 19699,
-            "2021-12-08": 19767,
-            "2021-12-09": 19838,
-            "2021-12-10": 19916,
-            "2021-12-11": 20000,
-            "2021-12-12": 20069,
-            "2021-12-13": 20108,
-            "2021-12-14": 20136,
-            "2021-12-15": 20210,
-            "2021-12-16": 20251,
-            "2021-12-17": 20305,
-            "2021-12-18": 20364,
-            "2021-12-19": 20414,
-            "2021-12-20": 20462,
-            "2021-12-21": 20497,
-            "2021-12-22": 20528,
-            "2021-12-23": 20576,
-            "2021-12-24": 20616,
-            "2021-12-25": 20657,
-            "2021-12-26": 20702,
-            "2021-12-27": 20713,
-            "2021-12-28": 20725,
-            "2021-12-29": 20800,
-            "2021-12-30": 20850,
-            "2021-12-31": 20890,
-            "2022-01-01": 20923,
-            "2022-01-02": 20950,
-            "2022-01-03": 20956,
-            "2022-01-04": 20970,
-            "2022-01-05": 20989,
-            "2022-01-06": 21028,
-            "2022-01-07": 21040,
-            "2022-01-08": 21064,
-            "2022-01-09": 21072,
-            "2022-01-10": 21079,
-            "2022-01-11": 21087,
-            "2022-01-12": 21105,
-            "2022-01-13": 21113,
-            "2022-01-14": 21126,
-            "2022-01-15": 21142,
-            "2022-01-16": 21148,
-            "2022-01-17": 21155,
-            "2022-01-18": 21158,
-            "2022-01-19": 21168,
-            "2022-01-20": 21178
+            "2021-11-29": 19314,
+            "2021-11-30": 19347,
+            "2021-12-01": 19412,
+            "2021-12-02": 19455,
+            "2021-12-03": 19520,
+            "2021-12-04": 19581,
+            "2021-12-05": 19637,
+            "2021-12-06": 19663,
+            "2021-12-07": 19697,
+            "2021-12-08": 19765,
+            "2021-12-09": 19836,
+            "2021-12-10": 19914,
+            "2021-12-11": 19998,
+            "2021-12-12": 20067,
+            "2021-12-13": 20106,
+            "2021-12-14": 20134,
+            "2021-12-15": 20208,
+            "2021-12-16": 20249,
+            "2021-12-17": 20303,
+            "2021-12-18": 20362,
+            "2021-12-19": 20412,
+            "2021-12-20": 20460,
+            "2021-12-21": 20495,
+            "2021-12-22": 20526,
+            "2021-12-23": 20574,
+            "2021-12-24": 20614,
+            "2021-12-25": 20654,
+            "2021-12-26": 20699,
+            "2021-12-27": 20710,
+            "2021-12-28": 20722,
+            "2021-12-29": 20797,
+            "2021-12-30": 20847,
+            "2021-12-31": 20887,
+            "2022-01-01": 20920,
+            "2022-01-02": 20947,
+            "2022-01-03": 20953,
+            "2022-01-04": 20967,
+            "2022-01-05": 20986,
+            "2022-01-06": 21024,
+            "2022-01-07": 21036,
+            "2022-01-08": 21060,
+            "2022-01-09": 21068,
+            "2022-01-10": 21075,
+            "2022-01-11": 21082,
+            "2022-01-12": 21100,
+            "2022-01-13": 21108,
+            "2022-01-14": 21121,
+            "2022-01-15": 21137,
+            "2022-01-16": 21143,
+            "2022-01-17": 21149,
+            "2022-01-18": 21152,
+            "2022-01-19": 21162,
+            "2022-01-20": 21172,
+            "2022-01-21": 21182,
+            "2022-01-22": 21193,
+            "2022-01-23": 21201,
+            "2022-01-24": 21202,
+            "2022-01-25": 21210,
+            "2022-01-26": 21217,
+            "2022-01-27": 21228,
+            "2022-01-28": 21242,
+            "2022-01-29": 21250,
+            "2022-01-30": 21258,
+            "2022-01-31": 21260,
+            "2022-02-01": 21265,
+            "2022-02-02": 21280,
+            "2022-02-03": 21290,
+            "2022-02-04": 21300,
+            "2022-02-05": 21305,
+            "2022-02-06": 21315,
+            "2022-02-07": 21322,
+            "2022-02-08": 21326,
+            "2022-02-09": 21334,
+            "2022-02-10": 21341,
+            "2022-02-11": 21356,
+            "2022-02-12": 21375,
+            "2022-02-13": 21387,
+            "2022-02-14": 21394,
+            "2022-02-15": 21400,
+            "2022-02-16": 21412,
+            "2022-02-17": 21430,
+            "2022-02-18": 21448,
+            "2022-02-19": 21464,
+            "2022-02-20": 21474,
+            "2022-02-21": 21482,
+            "2022-02-22": 21489,
+            "2022-02-23": 21507,
+            "2022-02-24": 21518,
+            "2022-02-25": 21531
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -4982,9 +5017,9 @@
             "2100-12": 1.798249
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
+            "importName": "NASA_NEXGDDP_Country_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -6133,9 +6168,9 @@
             "2100-12": 0.561432
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
+            "importName": "NASA_NEXGDDP_Country_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -8673,18 +8708,6 @@
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45": {
           "val": {
-            "2006-01": 0,
-            "2006-02": 0,
-            "2006-03": 0,
-            "2006-04": 0,
-            "2006-05": 0,
-            "2006-06": 0,
-            "2006-07": 0,
-            "2006-08": 0,
-            "2006-09": 0,
-            "2006-10": 0,
-            "2006-11": 0,
-            "2006-12": 0,
             "2007-01": 0.127868000000001,
             "2007-02": 0.215210000000001,
             "2007-03": -2.999909,
@@ -9817,25 +9840,13 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {
           "val": {
-            "2006-01": 0,
-            "2006-02": 0,
-            "2006-03": 0,
-            "2006-04": 0,
-            "2006-05": 0,
-            "2006-06": 0,
-            "2006-07": 0,
-            "2006-08": 0,
-            "2006-09": 0,
-            "2006-10": 0,
-            "2006-11": 0,
-            "2006-12": 0,
             "2007-01": -1.665497,
             "2007-02": 5.801971,
             "2007-03": -3.593231,
@@ -10968,7 +10979,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -11234,7 +11245,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -11269,7 +11280,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -11304,7 +11315,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -11417,7 +11428,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -11530,7 +11541,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -11760,7 +11771,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -12068,18 +12079,6 @@
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45": {
           "val": {
-            "2006-01": 0,
-            "2006-02": 0,
-            "2006-03": 0,
-            "2006-04": 0,
-            "2006-05": 0,
-            "2006-06": 0,
-            "2006-07": 0,
-            "2006-08": 0,
-            "2006-09": 0,
-            "2006-10": 0,
-            "2006-11": 0,
-            "2006-12": 0,
             "2007-01": 0.127868000000001,
             "2007-02": 0.0807490000000008,
             "2007-03": -2.94928,
@@ -13212,25 +13211,13 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {
           "val": {
-            "2006-01": 0,
-            "2006-02": 0,
-            "2006-03": 0,
-            "2006-04": 0,
-            "2006-05": 0,
-            "2006-06": 0,
-            "2006-07": 0,
-            "2006-08": 0,
-            "2006-09": 0,
-            "2006-10": 0,
-            "2006-11": 0,
-            "2006-12": 0,
             "2007-01": -1.68219,
             "2007-02": 5.801971,
             "2007-03": -3.309235,
@@ -14363,7 +14350,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -14657,7 +14644,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -14692,7 +14679,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -14727,7 +14714,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -14840,7 +14827,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -14953,7 +14940,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -15183,7 +15170,7 @@
           "metadata": {
             "importName": "OECDRegionalDemography_SuperEnum",
             "provenanceUrl": "https://datacommons.org/",
-            "measurementMethod": "dcAggregate/OECDRegionalStatistics",
+            "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
         },
@@ -15491,18 +15478,6 @@
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45": {
           "val": {
-            "2006-01": 0,
-            "2006-02": 0,
-            "2006-03": 0,
-            "2006-04": 0,
-            "2006-05": 0,
-            "2006-06": 0,
-            "2006-07": 0,
-            "2006-08": 0,
-            "2006-09": 0,
-            "2006-10": 0,
-            "2006-11": 0,
-            "2006-12": 0,
             "2007-01": 0.273956999999999,
             "2007-02": 0.311553999999999,
             "2007-03": -2.999909,
@@ -16635,25 +16610,13 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {
           "val": {
-            "2006-01": 0,
-            "2006-02": 0,
-            "2006-03": 0,
-            "2006-04": 0,
-            "2006-05": 0,
-            "2006-06": 0,
-            "2006-07": 0,
-            "2006-08": 0,
-            "2006-09": 0,
-            "2006-10": 0,
-            "2006-11": 0,
-            "2006-12": 0,
             "2007-01": -1.665497,
             "2007-02": 5.975586,
             "2007-03": -3.64505,
@@ -17786,7 +17749,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "dcAggregate/NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }

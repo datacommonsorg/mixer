@@ -1075,7 +1075,10 @@
             "2022-02-19": 0,
             "2022-02-20": 0,
             "2022-02-21": 0,
-            "2022-02-22": 0
+            "2022-02-22": 0,
+            "2022-02-23": 0,
+            "2022-02-24": 0,
+            "2022-02-25": 0
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -3417,7 +3420,10 @@
             "2022-02-19": 23632,
             "2022-02-20": 23694,
             "2022-02-21": 23752,
-            "2022-02-22": 23806
+            "2022-02-22": 23806,
+            "2022-02-23": 23857,
+            "2022-02-24": 23889,
+            "2022-02-25": 23889
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -4569,7 +4575,7 @@
             "2100-12": 2.744901
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
+            "importName": "NASA_NEXGDDP_Country_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -5720,7 +5726,7 @@
             "2100-12": 5.12042
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
+            "importName": "NASA_NEXGDDP_Country_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -15184,7 +15190,9 @@
             "2022-02-19": 78351770,
             "2022-02-20": 78377937,
             "2022-02-21": 78433596,
-            "2022-02-22": 78556778
+            "2022-02-22": 78556778,
+            "2022-02-23": 78641256,
+            "2022-02-24": 78714648
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -15957,7 +15965,9 @@
             "2022-02-19": 933480,
             "2022-02-20": 933894,
             "2022-02-21": 934654,
-            "2022-02-22": 937380
+            "2022-02-22": 937380,
+            "2022-02-23": 940404,
+            "2022-02-24": 943312
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -17109,7 +17119,7 @@
             "2100-12": 7.724271
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
+            "importName": "NASA_NEXGDDP_Country_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
@@ -18260,7 +18270,7 @@
             "2100-12": 9.421629
           },
           "metadata": {
-            "importName": "NASA_NEXGDDP_Country_StatVarSeriesAggr",
+            "importName": "NASA_NEXGDDP_Country_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
