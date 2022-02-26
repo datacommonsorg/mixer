@@ -83,8 +83,6 @@ func TestGetStatAll(t *testing.T) {
 		}
 	}
 
-	opt := &e2e.TestOption{}
-	testSuite(opt, false /* latencyTest */)
 	if err := e2e.TestWithImportGroupLatency(
 		"GetStatAll", &e2e.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestWithImportGroupLatency() = %s", err)

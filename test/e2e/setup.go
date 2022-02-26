@@ -45,8 +45,12 @@ type TestOption struct {
 	UseImportGroup bool
 }
 
-// GenerateGolden is used to check whether generating golden
-var GenerateGolden = os.Getenv("GENERATE_GOLDEN") == "true"
+var (
+	// LatencyTest is used to check whether to do latency test for import group.
+	LatencyTest = os.Getenv("LATENCY_TEST") == "true"
+	// GenerateGolden is used to check whether generating golden.
+	GenerateGolden = os.Getenv("GENERATE_GOLDEN") == "true"
+)
 
 // This test runs agains staging staging bt and bq dataset.
 // This is billed to GCP project "datcom-ci"

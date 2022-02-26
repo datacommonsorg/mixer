@@ -28,6 +28,24 @@ func TestWithImportGroupLatency(
 	apiName string,
 	opt *TestOption,
 	testSuite func(*TestOption, bool)) error {
+	if LatencyTest {
+		return latencyTest(apiName, opt, testSuite)
+	}
+	goldenTest(opt, testSuite)
+	return nil
+}
+
+func goldenTest(opt *TestOption, testSuite func(*TestOption, bool)) {
+	for _, useImportGroup := range []bool{true, false} {
+		opt.UseImportGroup = useImportGroup
+		testSuite(opt, false /* latencyTest */)
+	}
+}
+
+func latencyTest(
+	apiName string,
+	opt *TestOption,
+	testSuite func(*TestOption, bool)) error {
 	// Map: useImportGroup -> [duration in seconds].
 	durationStore := map[bool][]float64{}
 

@@ -175,6 +175,7 @@ go run cmd/main.go \
 
 Run the following command in the root directory:
 ```bash
+export LATENCY_TEST=true
 go test -parallel 1 ./...
 ```
 
