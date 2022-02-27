@@ -34,10 +34,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_stat_set_within_place_all")
 
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: false, UseMemdb: false},
-		{UseImportGroup: true, UseCache: false, UseMemdb: false},
-	} {
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
@@ -79,9 +76,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 				"max_temprature.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+
 			resp, err := client.GetStatSetWithinPlaceAll(ctx, &pb.GetStatSetWithinPlaceRequest{
 				ParentPlace: c.parentPlace,
 				ChildType:   c.childType,
@@ -91,6 +86,14 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetStatSetWithinPlace: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
@@ -107,5 +110,10 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetStatSetWithinPlaceAll", &e2e.TestOption{UseCache: false, UseMemdb: false}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

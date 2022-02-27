@@ -62,8 +62,10 @@ func latencyTest(
 		}
 	}
 
-	resultCsvRow := fmt.Sprintf("%s,%f,%f\n",
-		apiName, meanValue(durationStore[false]), meanValue(durationStore[true]))
+	oldValue := meanValue(durationStore[false])
+	newValue := meanValue(durationStore[true])
+	resultCsvRow := fmt.Sprintf("%s,%f,%f,%f%%\n",
+		apiName, oldValue, newValue, newValue/oldValue*100)
 
 	fmt.Println(resultCsvRow)
 

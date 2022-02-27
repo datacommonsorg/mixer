@@ -32,17 +32,15 @@ func TestGetRelatedLocations(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_related_locations")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_related_locations")
 
 		for _, c := range []struct {
 			goldenFile   string
@@ -77,9 +75,6 @@ func TestGetRelatedLocations(t *testing.T) {
 				[]string{"Count_CriminalActivities_CombinedCrime"},
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetRelatedLocationsRequest{
 				Dcid:         c.dcid,
 				StatVarDcids: c.statVarDcids,
@@ -89,6 +84,14 @@ func TestGetRelatedLocations(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetRelatedLocations: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
@@ -107,5 +110,10 @@ func TestGetRelatedLocations(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetRelatedLocations", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

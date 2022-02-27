@@ -29,17 +29,16 @@ import (
 func TestGetPlaceMetadata(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_place_metadata")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_place_metadata")
 
 		for _, c := range []struct {
 			goldenFile string
@@ -50,9 +49,6 @@ func TestGetPlaceMetadata(t *testing.T) {
 				[]string{"earth", "country/USA", "geoId/06", "geoId/06085", "geoId/02158000100"},
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetPlaceMetadataRequest{
 				Places: c.places,
 			}
@@ -60,6 +56,14 @@ func TestGetPlaceMetadata(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetPlaceMetadata: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
@@ -76,5 +80,10 @@ func TestGetPlaceMetadata(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPlaceMetadata", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

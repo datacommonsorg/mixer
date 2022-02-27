@@ -30,17 +30,15 @@ func TestGetLocationsRankings(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_locations_ranking")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_locations_ranking")
 
 		for _, c := range []struct {
 			goldenFile   string
@@ -80,9 +78,6 @@ func TestGetLocationsRankings(t *testing.T) {
 				},
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetLocationsRankingsRequest{
 				PlaceType:    c.placeType,
 				WithinPlace:  c.withinPlace,
@@ -95,6 +90,13 @@ func TestGetLocationsRankings(t *testing.T) {
 				continue
 			}
 
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(response, goldenPath, c.goldenFile)
 				continue
@@ -110,5 +112,10 @@ func TestGetLocationsRankings(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetLocationsRankings", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

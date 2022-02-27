@@ -71,14 +71,14 @@ func TestGetPlacesIn(t *testing.T) {
 				continue
 			}
 
-			if latencyTest {
-				continue
-			}
-
 			var result []map[string]string
 			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
 			if err != nil {
 				t.Errorf("Can not Unmarshal payload")
+				continue
+			}
+
+			if latencyTest {
 				continue
 			}
 
