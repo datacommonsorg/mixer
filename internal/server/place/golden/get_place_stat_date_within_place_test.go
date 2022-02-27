@@ -59,9 +59,6 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 				"USA_State.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetPlaceStatDateWithinPlace(ctx, &pb.GetPlaceStatDateWithinPlaceRequest{
 				AncestorPlace: c.ancestorPlace,
 				PlaceType:     c.placeType,
