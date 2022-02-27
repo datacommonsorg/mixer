@@ -76,8 +76,8 @@ func TestGetPlacesIn(t *testing.T) {
 			}
 
 			var result []map[string]string
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
+			if err := json.Unmarshal(
+				[]byte(resp.GetPayload()), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}

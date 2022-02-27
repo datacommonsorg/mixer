@@ -29,17 +29,16 @@ import (
 func TestGetStatVarPath(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: true, UseMemdb: true},
-		{UseCache: true, UseMemdb: true, UseImportGroup: true},
-	} {
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_statvar_path")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_statvar_path")
 
 		for _, c := range []struct {
 			id         string
@@ -58,15 +57,16 @@ func TestGetStatVarPath(t *testing.T) {
 				"memdb.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetStatVarPath(ctx, &pb.GetStatVarPathRequest{
 				Id: c.id,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatVarPath: %s", err)
 				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -84,5 +84,12 @@ func TestGetStatVarPath(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetStatVarPath",
+		&e2e.TestOption{UseCache: true, UseMemdb: true},
+		testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

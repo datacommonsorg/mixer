@@ -31,18 +31,16 @@ import (
 func TestGetTriples(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_triples")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_triples")
 
 		for _, c := range []struct {
 			dcids        []string
@@ -99,9 +97,6 @@ func TestGetTriples(t *testing.T) {
 				[]int{8, 8},
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetTriplesRequest{Dcids: c.dcids}
 			if c.limit > 0 {
 				req.Limit = c.limit
@@ -117,6 +112,13 @@ func TestGetTriples(t *testing.T) {
 				continue
 			}
 
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden && c.goldenFile != "" {
 				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
@@ -147,5 +149,10 @@ func TestGetTriples(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetTriples", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

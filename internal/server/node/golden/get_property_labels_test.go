@@ -32,17 +32,15 @@ func TestGetPropertyLabels(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_property_labels")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_property_labels")
 
 		for _, c := range []struct {
 			goldenFile string
@@ -57,9 +55,6 @@ func TestGetPropertyLabels(t *testing.T) {
 				[]string{"geoId/05", "geoId/06"},
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetPropertyLabelsRequest{
 				Dcids: c.dcids,
 			}
@@ -68,6 +63,7 @@ func TestGetPropertyLabels(t *testing.T) {
 				t.Errorf("could not GetPropertyLabels: %s", err)
 				continue
 			}
+
 			// Here the golden file is not same as the actual API output.
 			// The actual payload is not a full serielized protobuf but
 			// with the outer level ("data" field) removed. Here is to add that level
@@ -77,6 +73,14 @@ func TestGetPropertyLabels(t *testing.T) {
 			if err := protojson.Unmarshal([]byte(payload), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
@@ -94,5 +98,10 @@ func TestGetPropertyLabels(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPropertyLabels", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

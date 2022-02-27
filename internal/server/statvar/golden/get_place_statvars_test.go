@@ -30,16 +30,14 @@ func TestGetPlaceStatVars(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{UseMemdb: true},
-		{UseMemdb: true, UseImportGroup: true},
-	} {
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_place_stat_vars")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(path.Dir(filename), "get_place_stat_vars")
 
 		for _, c := range []struct {
 			dcids      []string
@@ -72,9 +70,6 @@ func TestGetPlaceStatVars(t *testing.T) {
 				true,
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetPlaceStatVarsRequest{
 				Dcids: c.dcids,
 			}
@@ -88,6 +83,14 @@ func TestGetPlaceStatVars(t *testing.T) {
 			if err != nil {
 				t.Errorf("Could not GetPlaceStatsVar: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -104,5 +107,10 @@ func TestGetPlaceStatVars(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPlaceStatVars", &e2e.TestOption{UseMemdb: true}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

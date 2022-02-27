@@ -29,17 +29,16 @@ import (
 func TestSearchStatVar(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: true},
-		{UseCache: true, UseImportGroup: true},
-	} {
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "search_statvar")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "search_statvar")
 
 		for _, c := range []struct {
 			query           string
@@ -108,9 +107,6 @@ func TestSearchStatVar(t *testing.T) {
 				"poor.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 				Query:           c.query,
 				Places:          c.places,
@@ -121,6 +117,13 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
@@ -137,5 +140,10 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"SearchStatVar", &e2e.TestOption{UseCache: true}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }
