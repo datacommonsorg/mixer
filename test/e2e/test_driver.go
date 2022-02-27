@@ -22,7 +22,7 @@ import (
 	"time"
 )
 
-const numTestTimes = 5
+const numTestTimes = 4
 
 // TestDriver drives various tests based on environment flags.
 func TestDriver(
@@ -64,8 +64,12 @@ func latencyTest(
 
 	oldValue := meanValue(durationStore[false])
 	newValue := meanValue(durationStore[true])
-	resultCsvRow := fmt.Sprintf("%s,%f,%f,%f%%\n",
-		apiName, oldValue, newValue, newValue/oldValue*100)
+	changeSign := ""
+	if newValue > oldValue {
+		changeSign = "+"
+	}
+	resultCsvRow := fmt.Sprintf("%s,%.2f,%.2f,%s%.2f%%\n",
+		apiName, oldValue, newValue, changeSign, (newValue/oldValue-1)*100)
 
 	fmt.Println(resultCsvRow)
 
