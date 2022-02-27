@@ -190,6 +190,12 @@ Or, run the following command for latency test for a specific API endpoint:
 go test -parallel 1 path/to/the/test/file.go
 ```
 
+A CSV file is generated for each API method. To combine all of them:
+
+```bash
+./test/e2e/combine_ig_latency.sh
+```
+
 ## Update prod golden files
 
 Run the following commands to update prod golden files from staging golden files
