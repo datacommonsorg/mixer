@@ -31,9 +31,17 @@
           "type": "State"
         },
         {
+          "dcid": "usc/PacificDivision",
+          "name": "Pacific Division"
+        },
+        {
           "dcid": "country/USA",
           "name": "United States",
           "type": "Country"
+        },
+        {
+          "dcid": "usc/WestRegion",
+          "name": "West Region"
         },
         {
           "dcid": "northamerica",
@@ -55,9 +63,17 @@
       },
       "parents": [
         {
+          "dcid": "usc/PacificDivision",
+          "name": "Pacific Division"
+        },
+        {
           "dcid": "country/USA",
           "name": "United States",
           "type": "Country"
+        },
+        {
+          "dcid": "usc/WestRegion",
+          "name": "West Region"
         },
         {
           "dcid": "northamerica",
@@ -84,9 +100,17 @@
           "type": "State"
         },
         {
+          "dcid": "usc/PacificDivision",
+          "name": "Pacific Division"
+        },
+        {
           "dcid": "country/USA",
           "name": "United States",
           "type": "Country"
+        },
+        {
+          "dcid": "usc/WestRegion",
+          "name": "West Region"
         },
         {
           "dcid": "northamerica",

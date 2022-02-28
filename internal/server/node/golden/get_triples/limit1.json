@@ -83,8 +83,8 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "indianCensus/Count_Person_Religion_Total_MainWorker_AgriculturalLabourers_Rural_Male",
-      "subjectName": "Male Main Agricultural Labourers - Total - Rural",
+      "subjectId": "indianCensus/Count_Person_Religion_Sikh_YearsUpto6_Rural_Female",
+      "subjectName": "Female Population in the Age group 0-6 - Sikh - Rural",
       "subjectTypes": [
         "StatisticalVariable"
       ],

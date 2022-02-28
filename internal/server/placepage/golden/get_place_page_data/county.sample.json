@@ -13,7 +13,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -15050,7 +15049,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15071,7 +15070,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15092,7 +15091,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15113,7 +15112,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15264,8 +15263,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Household": {
@@ -17415,7 +17413,8 @@
             "2021-08": 663571,
             "2021-09": 669387,
             "2021-10": 673290,
-            "2021-11": 679161
+            "2021-11": 680391,
+            "2021-12": 679245
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -17880,7 +17879,8 @@
             "2021-08": 713640,
             "2021-09": 712666,
             "2021-10": 715077,
-            "2021-11": 715689
+            "2021-11": 716935,
+            "2021-12": 713283
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -19003,7 +19003,43 @@
             "2022-01-16": 219460,
             "2022-01-17": 230123,
             "2022-01-18": 232447,
-            "2022-01-19": 235049
+            "2022-01-19": 235049,
+            "2022-01-20": 243606,
+            "2022-01-21": 247777,
+            "2022-01-22": 247777,
+            "2022-01-23": 247777,
+            "2022-01-24": 257160,
+            "2022-01-25": 259093,
+            "2022-01-26": 262039,
+            "2022-01-27": 268214,
+            "2022-01-28": 270928,
+            "2022-01-29": 270928,
+            "2022-01-30": 270928,
+            "2022-01-31": 277513,
+            "2022-02-01": 278392,
+            "2022-02-02": 279302,
+            "2022-02-03": 283923,
+            "2022-02-04": 285282,
+            "2022-02-05": 285282,
+            "2022-02-06": 285282,
+            "2022-02-07": 287198,
+            "2022-02-08": 288679,
+            "2022-02-09": 290324,
+            "2022-02-10": 292105,
+            "2022-02-11": 292828,
+            "2022-02-12": 292828,
+            "2022-02-13": 292828,
+            "2022-02-14": 294428,
+            "2022-02-15": 295028,
+            "2022-02-16": 295431,
+            "2022-02-17": 295487,
+            "2022-02-18": 296151,
+            "2022-02-19": 296151,
+            "2022-02-20": 296151,
+            "2022-02-21": 296151,
+            "2022-02-22": 297659,
+            "2022-02-23": 297860,
+            "2022-02-24": 298604
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -19711,7 +19747,43 @@
             "2022-01-16": 2586,
             "2022-01-17": 2586,
             "2022-01-18": 2594,
-            "2022-01-19": 2598
+            "2022-01-19": 2598,
+            "2022-01-20": 2607,
+            "2022-01-21": 2623,
+            "2022-01-22": 2623,
+            "2022-01-23": 2623,
+            "2022-01-24": 2624,
+            "2022-01-25": 2639,
+            "2022-01-26": 2646,
+            "2022-01-27": 2657,
+            "2022-01-28": 2662,
+            "2022-01-29": 2662,
+            "2022-01-30": 2662,
+            "2022-01-31": 2677,
+            "2022-02-01": 2696,
+            "2022-02-02": 2710,
+            "2022-02-03": 2715,
+            "2022-02-04": 2728,
+            "2022-02-05": 2728,
+            "2022-02-06": 2728,
+            "2022-02-07": 2746,
+            "2022-02-08": 2771,
+            "2022-02-09": 2781,
+            "2022-02-10": 2802,
+            "2022-02-11": 2802,
+            "2022-02-12": 2802,
+            "2022-02-13": 2802,
+            "2022-02-14": 2816,
+            "2022-02-15": 2837,
+            "2022-02-16": 2847,
+            "2022-02-17": 2878,
+            "2022-02-18": 2878,
+            "2022-02-19": 2878,
+            "2022-02-20": 2878,
+            "2022-02-21": 2878,
+            "2022-02-22": 2887,
+            "2022-02-23": 2897,
+            "2022-02-24": 2927
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -20853,7 +20925,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -21992,7 +22064,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -23131,7 +23203,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -24270,7 +24342,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -24286,7 +24358,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "MicrogramsPerCubicMeter"
           }
@@ -24303,7 +24374,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "PartsPerBillion"
           }
@@ -24320,7 +24390,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "MicrogramsPerCubicMeter"
           }
@@ -27019,7 +27088,8 @@
             "2021-08": 7,
             "2021-09": 6.1,
             "2021-10": 5.8,
-            "2021-11": 5.1
+            "2021-11": 5.1,
+            "2021-12": 4.8
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -29269,7 +29339,8 @@
             "2021-08": 512004,
             "2021-09": 517960,
             "2021-10": 522943,
-            "2021-11": 527058
+            "2021-11": 528465,
+            "2021-12": 531565
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -29734,7 +29805,8 @@
             "2021-08": 540681,
             "2021-09": 541777,
             "2021-10": 545551,
-            "2021-11": 546404
+            "2021-11": 547704,
+            "2021-12": 549109
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -31291,7 +31363,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -32430,7 +32502,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -33569,7 +33641,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -34708,7 +34780,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -35640,7 +35712,8 @@
             "2021-08": 5.3,
             "2021-09": 4.4,
             "2021-10": 4.1,
-            "2021-11": 3.5
+            "2021-11": 3.5,
+            "2021-12": 3.2
           },
           "metadata": {
             "importName": "BLS_LAUS",
