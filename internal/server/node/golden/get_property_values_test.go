@@ -32,17 +32,15 @@ func TestGetPropertyValues(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_property_values")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_property_values")
 
 		for _, c := range []struct {
 			goldenFile string
@@ -93,9 +91,6 @@ func TestGetPropertyValues(t *testing.T) {
 				1,
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetPropertyValuesRequest{
 				Dcids:     c.dcids,
 				Property:  c.property,
@@ -110,6 +105,7 @@ func TestGetPropertyValues(t *testing.T) {
 				t.Errorf("could not GetPropertyValues: %s", err)
 				continue
 			}
+
 			// Here the golden file is not same as the actual API output.
 			// The actual payload is not a full serielized protobuf but
 			// with the outer level ("data" field) removed. Here is to add that level
@@ -121,6 +117,13 @@ func TestGetPropertyValues(t *testing.T) {
 				continue
 			}
 
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(&result, goldenPath, c.goldenFile)
@@ -138,5 +141,10 @@ func TestGetPropertyValues(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPropertyValues", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

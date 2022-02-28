@@ -30,18 +30,15 @@ func TestGetStatVarGroupNode(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: true, UseMemdb: true},
-		{UseCache: true, UseMemdb: true, UseImportGroup: true},
-	} {
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_statvar_group_node")
 
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_statvar_group_node")
 
 		for _, c := range []struct {
 			places     []string
@@ -96,9 +93,6 @@ func TestGetStatVarGroupNode(t *testing.T) {
 				"private.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetStatVarGroupNode(ctx, &pb.GetStatVarGroupNodeRequest{
 				Places:       c.places,
 				StatVarGroup: c.svg,
@@ -106,6 +100,14 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetStatVarGroupNode: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -124,4 +126,12 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			}
 		}
 	}
+
+	if err := e2e.TestDriver(
+		"GetStatVarGroupNode",
+		&e2e.TestOption{UseCache: true, UseMemdb: true},
+		testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
+	}
+
 }

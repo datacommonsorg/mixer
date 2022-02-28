@@ -29,17 +29,16 @@ import (
 func TestGetStatVarGroup(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: true},
-		{UseCache: true, UseImportGroup: true},
-	} {
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_statvar_group")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_statvar_group")
 
 		for _, c := range []struct {
 			places     []string
@@ -62,14 +61,15 @@ func TestGetStatVarGroup(t *testing.T) {
 				true,
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{
 				Places: c.places,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatVarGroup: %s", err)
+				continue
+			}
+
+			if latencyTest {
 				continue
 			}
 
@@ -81,6 +81,9 @@ func TestGetStatVarGroup(t *testing.T) {
 				continue
 			}
 
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 			if e2e.GenerateGolden {
 				if !c.checkCount {
 					e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -99,5 +102,10 @@ func TestGetStatVarGroup(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetStatVarGroup", &e2e.TestOption{UseCache: true}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

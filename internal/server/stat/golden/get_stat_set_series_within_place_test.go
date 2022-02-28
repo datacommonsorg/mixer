@@ -34,10 +34,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_stat_set_series_within_place")
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
@@ -56,9 +53,6 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 				"county_city_population.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetStatSetSeriesWithinPlace(
 				ctx, &pb.GetStatSetSeriesWithinPlaceRequest{
 					ParentPlace: c.parentPlace,
@@ -68,6 +62,14 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetStatSetSeriesWithinPlace: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -84,5 +86,10 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetStatSetSeriesWithinPlace", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

@@ -34,10 +34,7 @@ func TestGetStatSetSeries(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stat_set_series")
 
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: false, UseMemdb: true},
-		{UseCache: false, UseMemdb: true, UseImportGroup: true},
-	} {
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
@@ -104,9 +101,6 @@ func TestGetStatSetSeries(t *testing.T) {
 				"",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
 				StatVars:   c.statVars,
 				Places:     c.places,
@@ -115,6 +109,14 @@ func TestGetStatSetSeries(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetStatSetSeries: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -159,5 +161,12 @@ func TestGetStatSetSeries(t *testing.T) {
 				}
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetStatSetSeries",
+		&e2e.TestOption{UseCache: false, UseMemdb: true},
+		testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

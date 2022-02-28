@@ -29,17 +29,16 @@ import (
 func TestGetStatVarSummary(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: true},
-		{UseCache: true, UseImportGroup: true},
-	} {
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_statvar_summary")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_statvar_summary")
 
 		for _, c := range []struct {
 			svs        []string
@@ -62,15 +61,20 @@ func TestGetStatVarSummary(t *testing.T) {
 				"covid.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetStatVarSummary(ctx, &pb.GetStatVarSummaryRequest{
 				StatVars: c.svs,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatVarSummary: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
@@ -88,5 +92,10 @@ func TestGetStatVarSummary(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetStatVarSummary", &e2e.TestOption{UseCache: true}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

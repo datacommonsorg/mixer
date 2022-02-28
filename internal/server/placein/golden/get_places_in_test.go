@@ -32,14 +32,9 @@ func TestGetPlacesIn(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_places_in")
+	goldenPath := path.Join(path.Dir(filename), "get_places_in")
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
-
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
@@ -66,9 +61,6 @@ func TestGetPlacesIn(t *testing.T) {
 				"CensusZipCodeTabulationArea",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetPlacesInRequest{
 				Dcids:     c.dcids,
 				PlaceType: c.typ,
@@ -78,13 +70,21 @@ func TestGetPlacesIn(t *testing.T) {
 				t.Errorf("could not GetPlacesIn: %s", err)
 				continue
 			}
+
+			if latencyTest {
+				continue
+			}
+
 			var result []map[string]string
-			err = json.Unmarshal([]byte(resp.GetPayload()), &result)
-			if err != nil {
+			if err := json.Unmarshal(
+				[]byte(resp.GetPayload()), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
 
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
+			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
@@ -103,5 +103,10 @@ func TestGetPlacesIn(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPlacesIn", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

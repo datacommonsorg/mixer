@@ -29,17 +29,16 @@ import (
 func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{UseCache: true, UseMemdb: true},
-		{UseCache: true, UseMemdb: true, UseImportGroup: true},
-	} {
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(
+		path.Dir(filename), "get_place_stat_date_within_place")
+
+	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
 		client, _, err := e2e.Setup(opt)
 		if err != nil {
 			t.Fatalf("Failed to set up mixer and client")
 		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_place_stat_date_within_place")
 
 		for _, c := range []struct {
 			ancestorPlace string
@@ -60,9 +59,6 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 				"USA_State.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			resp, err := client.GetPlaceStatDateWithinPlace(ctx, &pb.GetPlaceStatDateWithinPlaceRequest{
 				AncestorPlace: c.ancestorPlace,
 				PlaceType:     c.placeType,
@@ -71,6 +67,14 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not GetPlaceStatDateWithinPlace: %s", err)
 				continue
+			}
+
+			if latencyTest {
+				continue
+			}
+
+			if opt.UseImportGroup {
+				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
@@ -87,5 +91,12 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPlaceStatDateWithinPlace",
+		&e2e.TestOption{UseCache: true, UseMemdb: true},
+		testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }
