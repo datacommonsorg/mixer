@@ -2265,8 +2265,18 @@
       ]
     },
     {
+      "dcid": "dc/g/Household_PovertyStatus-BelowPovertyLevelInThePast12Months_Race",
+      "name": "Household With Poverty Status = Below Poverty Level in The Past 12 Months, Race",
+      "statVars": [
+        {
+          "name": "Percentage of Household With Has Children, Below Poverty Level in The Past 12 Months, Hispanic or Latino",
+          "dcid": "dc/bt8cy5gr8lw75"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Household_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Household With Race = Black or African American Alone, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "name": "Household With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
       "statVars": [
         {
           "name": "Percentage of Household With Has Children, Below Poverty Level in The Past 12 Months, Black or African American Alone",
@@ -2276,21 +2286,11 @@
     },
     {
       "dcid": "dc/g/Household_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Household With Race = White Alone Not Hispanic or Latino, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "name": "Household With Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
       "statVars": [
         {
           "name": "Percentage of Household With Has Children, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
           "dcid": "dc/bc3x4z7240fz1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Household_PovertyStatus-BelowPovertyLevelInThePast12Months_Race",
-      "name": "Household With Race, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Percentage of Household With Has Children, Below Poverty Level in The Past 12 Months, Hispanic or Latino",
-          "dcid": "dc/bt8cy5gr8lw75"
         }
       ]
     },

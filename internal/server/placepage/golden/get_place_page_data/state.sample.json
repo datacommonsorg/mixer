@@ -13,7 +13,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -15018,7 +15017,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15039,7 +15038,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15060,7 +15059,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15081,7 +15080,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -15288,8 +15287,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Household": {
@@ -17429,7 +17427,8 @@
             "2021-08": 1483018,
             "2021-09": 1502931,
             "2021-10": 1513469,
-            "2021-11": 1528514
+            "2021-11": 1526526,
+            "2021-12": 1532122
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -17894,7 +17893,8 @@
             "2021-08": 1577855,
             "2021-09": 1582501,
             "2021-10": 1588831,
-            "2021-11": 1593253
+            "2021-11": 1591037,
+            "2021-12": 1591638
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -19044,7 +19044,43 @@
             "2022-01-16": 459016,
             "2022-01-17": 477837,
             "2022-01-18": 483293,
-            "2022-01-19": 487199
+            "2022-01-19": 487199,
+            "2022-01-20": 498022,
+            "2022-01-21": 509891,
+            "2022-01-22": 509891,
+            "2022-01-23": 509891,
+            "2022-01-24": 528530,
+            "2022-01-25": 531196,
+            "2022-01-26": 533836,
+            "2022-01-27": 538115,
+            "2022-01-28": 542951,
+            "2022-01-29": 542951,
+            "2022-01-30": 542951,
+            "2022-01-31": 553030,
+            "2022-02-01": 554054,
+            "2022-02-02": 555437,
+            "2022-02-03": 563960,
+            "2022-02-04": 567058,
+            "2022-02-05": 567058,
+            "2022-02-06": 567058,
+            "2022-02-07": 567448,
+            "2022-02-08": 570984,
+            "2022-02-09": 573049,
+            "2022-02-10": 574435,
+            "2022-02-11": 574622,
+            "2022-02-12": 574622,
+            "2022-02-13": 574622,
+            "2022-02-14": 576253,
+            "2022-02-15": 577043,
+            "2022-02-16": 577597,
+            "2022-02-17": 578359,
+            "2022-02-18": 578444,
+            "2022-02-19": 578444,
+            "2022-02-20": 578444,
+            "2022-02-21": 578444,
+            "2022-02-22": 579493,
+            "2022-02-23": 579815,
+            "2022-02-24": 580144
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -19779,7 +19815,43 @@
             "2022-01-16": 5921,
             "2022-01-17": 5932,
             "2022-01-18": 5938,
-            "2022-01-19": 5941
+            "2022-01-19": 5941,
+            "2022-01-20": 5946,
+            "2022-01-21": 5953,
+            "2022-01-22": 5953,
+            "2022-01-23": 5953,
+            "2022-01-24": 5970,
+            "2022-01-25": 5978,
+            "2022-01-26": 6006,
+            "2022-01-27": 6037,
+            "2022-01-28": 6066,
+            "2022-01-29": 6066,
+            "2022-01-30": 6066,
+            "2022-01-31": 6100,
+            "2022-02-01": 6110,
+            "2022-02-02": 6126,
+            "2022-02-03": 6140,
+            "2022-02-04": 6152,
+            "2022-02-05": 6152,
+            "2022-02-06": 6152,
+            "2022-02-07": 6180,
+            "2022-02-08": 6205,
+            "2022-02-09": 6265,
+            "2022-02-10": 6308,
+            "2022-02-11": 6308,
+            "2022-02-12": 6308,
+            "2022-02-13": 6308,
+            "2022-02-14": 6358,
+            "2022-02-15": 6376,
+            "2022-02-16": 6395,
+            "2022-02-17": 6419,
+            "2022-02-18": 6450,
+            "2022-02-19": 6450,
+            "2022-02-20": 6450,
+            "2022-02-21": 6450,
+            "2022-02-22": 6505,
+            "2022-02-23": 6524,
+            "2022-02-24": 6544
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -20921,7 +20993,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -22060,7 +22132,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -23199,7 +23271,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -24338,7 +24410,7 @@
           "metadata": {
             "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
-            "measurementMethod": "dcAggregate/NASA_Mean_CCSM4",
+            "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -24354,7 +24426,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "MicrogramsPerCubicMeter"
           }
@@ -24371,7 +24442,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "PartsPerBillion"
           }
@@ -24388,7 +24458,6 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y",
             "unit": "MicrogramsPerCubicMeter"
           }
@@ -27087,7 +27156,8 @@
             "2021-08": 6,
             "2021-09": 5,
             "2021-10": 4.7,
-            "2021-11": 4.1
+            "2021-11": 4.1,
+            "2021-12": 3.7
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -27162,7 +27232,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27183,7 +27253,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27204,7 +27274,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27225,7 +27295,7 @@
           "metadata": {
             "importName": "EPA_GHGRP_AggCounty_AggState",
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
-            "measurementMethod": "dcAggregate/EPA_GHGRP",
+            "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
             "unit": "MetricTonCO2e"
           }
@@ -27421,7 +27491,6 @@
           "metadata": {
             "importName": "CycloneNOAA",
             "provenanceUrl": "https://www.ncdc.noaa.gov/ibtracs/index.php?name=ib-v4-access",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27450,7 +27519,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27479,7 +27547,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27508,7 +27575,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27537,7 +27603,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27566,7 +27631,6 @@
           "metadata": {
             "importName": "CDCMortality_AggState",
             "provenanceUrl": "http://cdc.gov/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P1Y"
           }
         },
@@ -27579,8 +27643,7 @@
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
-            "provenanceUrl": "https://earthquake.usgs.gov/",
-            "measurementMethod": "DataCommonsAggregate"
+            "provenanceUrl": "https://earthquake.usgs.gov/"
           }
         },
         "Count_Household": {
@@ -30478,7 +30541,8 @@
             "2021-08": 1947062,
             "2021-09": 1951097,
             "2021-10": 1975304,
-            "2021-11": 1984924
+            "2021-11": 1985011,
+            "2021-12": 1980077
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -31111,7 +31175,8 @@
             "2021-08": 2060445,
             "2021-09": 2052539,
             "2021-10": 2063686,
-            "2021-11": 2068760
+            "2021-11": 2068808,
+            "2021-12": 2057188
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -33470,12 +33535,16 @@
             "2021-12-25": 18061,
             "2022-01-01": 18674,
             "2022-01-08": 19381,
-            "2022-01-15": 18784
+            "2022-01-15": 18784,
+            "2022-01-22": 18253,
+            "2022-01-29": 17273,
+            "2022-02-05": 16728,
+            "2022-02-12": 16389
           },
           "metadata": {
             "importName": "USDOL_ETA539",
             "provenanceUrl": "https://oui.doleta.gov/unemploy/",
-            "measurementMethod": "dcAggregate/BLSSeasonallyUnadjusted",
+            "measurementMethod": "BLSSeasonallyUnadjusted",
             "observationPeriod": "P1W"
           }
         },
@@ -34162,7 +34231,43 @@
             "2022-01-16": 996623,
             "2022-01-17": 996623,
             "2022-01-18": 1025748,
-            "2022-01-19": 1037249
+            "2022-01-19": 1037249,
+            "2022-01-20": 1050080,
+            "2022-01-21": 1060022,
+            "2022-01-22": 1060022,
+            "2022-01-23": 1060022,
+            "2022-01-24": 1076385,
+            "2022-01-25": 1084448,
+            "2022-01-26": 1145245,
+            "2022-01-27": 1152818,
+            "2022-01-28": 1160130,
+            "2022-01-29": 1160130,
+            "2022-01-30": 1160130,
+            "2022-01-31": 1170212,
+            "2022-02-01": 1174941,
+            "2022-02-02": 1179814,
+            "2022-02-03": 1185174,
+            "2022-02-04": 1192375,
+            "2022-02-05": 1192375,
+            "2022-02-06": 1192375,
+            "2022-02-07": 1199682,
+            "2022-02-08": 1202265,
+            "2022-02-09": 1204688,
+            "2022-02-10": 1207405,
+            "2022-02-11": 1210398,
+            "2022-02-12": 1210398,
+            "2022-02-13": 1210398,
+            "2022-02-14": 1213437,
+            "2022-02-15": 1214994,
+            "2022-02-16": 1216390,
+            "2022-02-17": 1218262,
+            "2022-02-18": 1219464,
+            "2022-02-19": 1219464,
+            "2022-02-20": 1219464,
+            "2022-02-21": 1221493,
+            "2022-02-22": 1223067,
+            "2022-02-23": 1224028,
+            "2022-02-24": 1224969
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -34853,7 +34958,43 @@
             "2022-01-16": 15137,
             "2022-01-17": 15137,
             "2022-01-18": 15195,
-            "2022-01-19": 15246
+            "2022-01-19": 15246,
+            "2022-01-20": 15283,
+            "2022-01-21": 15324,
+            "2022-01-22": 15324,
+            "2022-01-23": 15324,
+            "2022-01-24": 15374,
+            "2022-01-25": 15476,
+            "2022-01-26": 15523,
+            "2022-01-27": 15570,
+            "2022-01-28": 15631,
+            "2022-01-29": 15631,
+            "2022-01-30": 15631,
+            "2022-01-31": 15674,
+            "2022-02-01": 15744,
+            "2022-02-02": 15781,
+            "2022-02-03": 15841,
+            "2022-02-04": 15905,
+            "2022-02-05": 15905,
+            "2022-02-06": 15905,
+            "2022-02-07": 15953,
+            "2022-02-08": 16016,
+            "2022-02-09": 16066,
+            "2022-02-10": 16138,
+            "2022-02-11": 16176,
+            "2022-02-12": 16176,
+            "2022-02-13": 16176,
+            "2022-02-14": 16217,
+            "2022-02-15": 16258,
+            "2022-02-16": 16304,
+            "2022-02-17": 16353,
+            "2022-02-18": 16400,
+            "2022-02-19": 16400,
+            "2022-02-20": 16400,
+            "2022-02-21": 16465,
+            "2022-02-22": 16518,
+            "2022-02-23": 16557,
+            "2022-02-24": 16582
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -35421,7 +35562,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35480,7 +35620,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35539,7 +35678,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35598,7 +35736,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -35657,7 +35794,6 @@
           "metadata": {
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
-            "measurementMethod": "DataCommonsAggregate",
             "observationPeriod": "P3M",
             "unit": "Grams"
           }
@@ -36214,7 +36350,8 @@
             "2021-08": 5.5,
             "2021-09": 4.9,
             "2021-10": 4.3,
-            "2021-11": 4.1
+            "2021-11": 4.1,
+            "2021-12": 3.7
           },
           "metadata": {
             "importName": "BLS_LAUS",
