@@ -272,19 +272,40 @@ func applyLimit(dcid string, t *pb.Triples, limit int) {
 				isOut = "1"
 				neighborTypes = t.ObjectTypes
 			}
-
-			for _, nt := range neighborTypes {
-				key := isOut + t.Predicate + nt
-				if _, ok := existTriple[key]; !ok {
-					existTriple[key] = []*pb.Triple{}
-				}
-				existTriple[key] = append(existTriple[key], t)
+			var nt string
+			if len(neighborTypes) == 0 {
+				nt = ""
+			} else {
+				nt = neighborTypes[0]
 			}
+			key := isOut + t.Predicate + nt
+			if _, ok := existTriple[key]; !ok {
+				existTriple[key] = []*pb.Triple{}
+			}
+			existTriple[key] = append(existTriple[key], t)
 		}
 
 		filtered := []*pb.Triple{}
-		for _, triples := range existTriple {
-			var count int
+		keys := []string{}
+		for key := range existTriple {
+			keys = append(keys, key)
+		}
+		sort.Strings(keys)
+		for key := range existTriple {
+			count := 0
+			triples := existTriple[key]
+			sort.SliceStable(triples, func(i, j int) bool {
+				if triples[i].Predicate != triples[j].Predicate {
+					return triples[i].Predicate < triples[j].Predicate
+				}
+				if triples[i].SubjectId != triples[j].SubjectId {
+					return triples[i].SubjectId < triples[j].SubjectId
+				}
+				if triples[i].ObjectId != triples[j].ObjectId {
+					return triples[i].ObjectId < triples[j].ObjectId
+				}
+				return triples[i].ObjectValue < triples[j].ObjectValue
+			})
 			for _, t := range triples {
 				filtered = append(filtered, t)
 				count++
@@ -326,8 +347,14 @@ func applyLimit(dcid string, t *pb.Triples, limit int) {
 				}
 				sort.Strings(keys)
 				c.Entities = []*pb.EntityInfo{}
-				for _, k := range keys {
-					c.Entities = append(c.Entities, tmp[k]...)
+				for _, key := range keys {
+					sort.SliceStable(tmp[key], func(i, j int) bool {
+						if tmp[key][i].Dcid != tmp[key][j].Dcid {
+							return tmp[key][i].Dcid < tmp[key][j].Dcid
+						}
+						return tmp[key][i].Value < tmp[key][j].Value
+					})
+					c.Entities = append(c.Entities, tmp[key]...)
 				}
 			}
 		}

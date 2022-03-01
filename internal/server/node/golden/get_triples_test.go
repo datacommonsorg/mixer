@@ -49,39 +49,39 @@ func TestGetTriples(t *testing.T) {
 			limit        int32
 			count        []int
 		}{
-			{
-				[]string{"State", "Country"},
-				"place_type.json",
-				false,
-				-1,
-				nil,
-			},
-			{
-				[]string{"zip/00603"},
-				"place.json",
-				true,
-				-1,
-				nil,
-			},
-			{
-				[]string{
-					"dc/o/w2z8nx9y43k97", // LifeExpectancy_Person_Female
-					"dc/o/88cs3xqnmpp55", // Count_Person<CensusPEPSurvey>
-					"dc/o/23gt9k7fql176", // Count_Person<dcAggregate/CensusACS5yrSurvey>
-					"dc/o/kyv7dxe4s18eh", // Count_Person<>
-				},
-				"observation.json",
-				false,
-				-1,
-				nil,
-			},
-			{
-				[]string{"Count_Person", "Count_Person_Female"},
-				"stat_var.json",
-				false,
-				-1,
-				nil,
-			},
+			// {
+			// 	[]string{"State", "Country"},
+			// 	"place_type.json",
+			// 	false,
+			// 	-1,
+			// 	nil,
+			// },
+			// {
+			// 	[]string{"zip/00603"},
+			// 	"place.json",
+			// 	true,
+			// 	-1,
+			// 	nil,
+			// },
+			// {
+			// 	[]string{
+			// 		"dc/o/w2z8nx9y43k97", // LifeExpectancy_Person_Female
+			// 		"dc/o/88cs3xqnmpp55", // Count_Person<CensusPEPSurvey>
+			// 		"dc/o/23gt9k7fql176", // Count_Person<dcAggregate/CensusACS5yrSurvey>
+			// 		"dc/o/kyv7dxe4s18eh", // Count_Person<>
+			// 	},
+			// 	"observation.json",
+			// 	false,
+			// 	-1,
+			// 	nil,
+			// },
+			// {
+			// 	[]string{"Count_Person", "Count_Person_Female"},
+			// 	"stat_var.json",
+			// 	false,
+			// 	-1,
+			// 	nil,
+			// },
 			{
 				[]string{"City", "County"},
 				"limit.json",
@@ -89,13 +89,13 @@ func TestGetTriples(t *testing.T) {
 				5,
 				[]int{5, 5},
 			},
-			{
-				[]string{"dc/d7tbsb1"},
-				"limit1.json",
-				false,
-				1,
-				[]int{8, 8},
-			},
+			// {
+			// 	[]string{"dc/d7tbsb1"},
+			// 	"limit1.json",
+			// 	false,
+			// 	1,
+			// 	[]int{8, 8},
+			// },
 		} {
 			req := &pb.GetTriplesRequest{Dcids: c.dcids}
 			if c.limit > 0 {
