@@ -37,7 +37,7 @@ func TestDriver(
 }
 
 func goldenTest(opt *TestOption, testSuite func(*TestOption, bool)) {
-	for _, useImportGroup := range []bool{false} {
+	for _, useImportGroup := range []bool{true, false} {
 		opt.UseImportGroup = useImportGroup
 		testSuite(opt, false /* latencyTest */)
 	}
