@@ -35,11 +35,11 @@ func TestSortTables(t *testing.T) {
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},
 			},
 			expected: []*Table{
+				{name: "dcbranch_2022_02_01_14_00_49", table: nil},
 				{name: "frequent_2022_02_01_14_20_47", table: nil},
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},
 				{name: "random_2022", table: nil},
 				{name: "infrequent_2022_01_31_23_15_14", table: nil},
-				{name: "dcbranch_2022_02_01_14_00_49", table: nil},
 			},
 		},
 		{
@@ -48,8 +48,8 @@ func TestSortTables(t *testing.T) {
 				{name: "branch_dcbranch_2022_02_16_14_18_02", table: nil},
 			},
 			expected: []*Table{
-				{name: "borgcron_2022_02_15_01_02_51", table: nil},
 				{name: "branch_dcbranch_2022_02_16_14_18_02", table: nil},
+				{name: "borgcron_2022_02_15_01_02_51", table: nil},
 			},
 		},
 	} {
