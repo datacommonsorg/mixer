@@ -12,6 +12,18 @@
     },
     {
       "subjectId": "dc/d7tbsb1",
+      "predicate": "importTime",
+      "objectValue": "1645788018",
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/d7tbsb1",
+      "predicate": "name",
+      "objectValue": "HumanReadableStatVars",
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/d7tbsb1",
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://datacommons.org",
@@ -41,22 +53,14 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "Worker2",
-      "subjectName": "Worker 2",
-      "subjectTypes": [
-        "Quantity"
-      ],
-      "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
-      "objectName": "https://datacommons.org",
-      "objectTypes": [
-        "Provenance"
-      ],
+      "subjectId": "dc/d7tbsb1",
+      "predicate": "url",
+      "objectValue": "https://datacommons.org",
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "YearsUpto35",
-      "subjectName": "Years UpTo 35",
+      "subjectId": "Acre1000Onwards",
+      "subjectName": "Acre 1000 Onwards",
       "subjectTypes": [
         "QuantityRange"
       ],
@@ -69,10 +73,10 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "dc/g/Weather",
-      "subjectName": "Weather",
+      "subjectId": "AnnualChange_Stocks_Fuel_Charcoal",
+      "subjectName": "Stocks of Charcoal (Annual Change)",
       "subjectTypes": [
-        "StatVarGroup"
+        "StatisticalVariable"
       ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
@@ -83,10 +87,24 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "indianCensus/Count_Person_Religion_Sikh_YearsUpto6_Rural_Female",
-      "subjectName": "Female Population in the Age group 0-6 - Sikh - Rural",
+      "subjectId": "Child0",
+      "subjectName": "Child 0",
       "subjectTypes": [
-        "StatisticalVariable"
+        "Quantity"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/g/Agriculture",
+      "subjectName": "Agriculture",
+      "subjectTypes": [
+        "StatVarGroup"
       ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
