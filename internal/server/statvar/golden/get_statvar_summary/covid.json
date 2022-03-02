@@ -32,16 +32,14 @@
           "placeCount": 3217,
           "topPlaces": [
             {
-              "dcid": "geoId/06037",
-              "name": "Los Angeles County"
+              "dcid": "geoId/78030"
             },
             {
-              "dcid": "geoId/17031",
-              "name": "Cook County"
+              "dcid": "geoId/78020"
             },
             {
-              "dcid": "geoId/48201",
-              "name": "Harris County"
+              "dcid": "geoId/78010",
+              "name": "Saint Croix"
             }
           ]
         },
@@ -49,16 +47,16 @@
           "placeCount": 56,
           "topPlaces": [
             {
-              "dcid": "geoId/06",
-              "name": "California"
+              "dcid": "geoId/78",
+              "name": "Virgin Islands of the U.S."
             },
             {
-              "dcid": "geoId/48",
-              "name": "Texas"
+              "dcid": "geoId/72",
+              "name": "Puerto Rico"
             },
             {
-              "dcid": "geoId/12",
-              "name": "Florida"
+              "dcid": "geoId/69",
+              "name": "Northern Mariana Islands"
             }
           ]
         }
@@ -66,7 +64,7 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2269639,
+          "observationCount": 2266362,
           "timeSeriesCount": 3277,
           "releaseFrequency": "P1D",
           "seriesSummary": [
@@ -75,8 +73,8 @@
                 "measurementMethod": "NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-21",
-              "latestDate": "2022-02-24",
-              "observationCount": 2269639,
+              "latestDate": "2022-02-23",
+              "observationCount": 2266362,
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
@@ -109,14 +107,16 @@
                   "placeCount": 3217,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/78030"
+                      "dcid": "geoId/06037",
+                      "name": "Los Angeles County"
                     },
                     {
-                      "dcid": "geoId/78020"
+                      "dcid": "geoId/17031",
+                      "name": "Cook County"
                     },
                     {
-                      "dcid": "geoId/78010",
-                      "name": "Saint Croix"
+                      "dcid": "geoId/48201",
+                      "name": "Harris County"
                     }
                   ]
                 },
@@ -124,22 +124,22 @@
                   "placeCount": 56,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/78",
-                      "name": "Virgin Islands of the U.S."
+                      "dcid": "geoId/06",
+                      "name": "California"
                     },
                     {
-                      "dcid": "geoId/72",
-                      "name": "Puerto Rico"
+                      "dcid": "geoId/48",
+                      "name": "Texas"
                     },
                     {
-                      "dcid": "geoId/69",
-                      "name": "Northern Mariana Islands"
+                      "dcid": "geoId/12",
+                      "name": "Florida"
                     }
                   ]
                 }
               },
               "minValue": 1,
-              "maxValue": 78714648
+              "maxValue": 78641256
             }
           ]
         }
@@ -177,16 +177,14 @@
           "placeCount": 3217,
           "topPlaces": [
             {
-              "dcid": "geoId/06037",
-              "name": "Los Angeles County"
+              "dcid": "geoId/78030"
             },
             {
-              "dcid": "geoId/17031",
-              "name": "Cook County"
+              "dcid": "geoId/78020"
             },
             {
-              "dcid": "geoId/48201",
-              "name": "Harris County"
+              "dcid": "geoId/78010",
+              "name": "Saint Croix"
             }
           ]
         },
@@ -194,16 +192,16 @@
           "placeCount": 56,
           "topPlaces": [
             {
-              "dcid": "geoId/06",
-              "name": "California"
+              "dcid": "geoId/78",
+              "name": "Virgin Islands of the U.S."
             },
             {
-              "dcid": "geoId/48",
-              "name": "Texas"
+              "dcid": "geoId/72",
+              "name": "Puerto Rico"
             },
             {
-              "dcid": "geoId/12",
-              "name": "Florida"
+              "dcid": "geoId/69",
+              "name": "Northern Mariana Islands"
             }
           ]
         }
@@ -211,7 +209,7 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2343106,
+          "observationCount": 2341475,
           "timeSeriesCount": 6554,
           "releaseFrequency": "P1D",
           "seriesSummary": [
@@ -220,8 +218,8 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2022-02-24",
-              "observationCount": 2266354,
+              "latestDate": "2022-02-23",
+              "observationCount": 2263077,
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
@@ -254,14 +252,16 @@
                   "placeCount": 3217,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/78030"
+                      "dcid": "geoId/06037",
+                      "name": "Los Angeles County"
                     },
                     {
-                      "dcid": "geoId/78020"
+                      "dcid": "geoId/17031",
+                      "name": "Cook County"
                     },
                     {
-                      "dcid": "geoId/78010",
-                      "name": "Saint Croix"
+                      "dcid": "geoId/48201",
+                      "name": "Harris County"
                     }
                   ]
                 },
@@ -269,16 +269,16 @@
                   "placeCount": 56,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/78",
-                      "name": "Virgin Islands of the U.S."
+                      "dcid": "geoId/06",
+                      "name": "California"
                     },
                     {
-                      "dcid": "geoId/72",
-                      "name": "Puerto Rico"
+                      "dcid": "geoId/48",
+                      "name": "Texas"
                     },
                     {
-                      "dcid": "geoId/69",
-                      "name": "Northern Mariana Islands"
+                      "dcid": "geoId/12",
+                      "name": "Florida"
                     }
                   ]
                 }
@@ -293,7 +293,7 @@
               },
               "earliestDate": "2020-01",
               "latestDate": "2022-02",
-              "observationCount": 76752,
+              "observationCount": 78398,
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
@@ -326,14 +326,16 @@
                   "placeCount": 3217,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/78030"
+                      "dcid": "geoId/06037",
+                      "name": "Los Angeles County"
                     },
                     {
-                      "dcid": "geoId/78020"
+                      "dcid": "geoId/17031",
+                      "name": "Cook County"
                     },
                     {
-                      "dcid": "geoId/78010",
-                      "name": "Saint Croix"
+                      "dcid": "geoId/48201",
+                      "name": "Harris County"
                     }
                   ]
                 },
@@ -341,16 +343,16 @@
                   "placeCount": 56,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/78",
-                      "name": "Virgin Islands of the U.S."
+                      "dcid": "geoId/06",
+                      "name": "California"
                     },
                     {
-                      "dcid": "geoId/72",
-                      "name": "Puerto Rico"
+                      "dcid": "geoId/48",
+                      "name": "Texas"
                     },
                     {
-                      "dcid": "geoId/69",
-                      "name": "Northern Mariana Islands"
+                      "dcid": "geoId/12",
+                      "name": "Florida"
                     }
                   ]
                 }

@@ -111,9 +111,9 @@ func setupInternal(
 
 	var branchTableName string
 	if useImportGroup {
-		branchTableName = "dcbranch_2022_02_25_18_16_22"
+		branchTableName = "dcbranch_2022_03_01_18_18_35"
 	} else {
-		branchTableName = "branch_dcbranch_2022_02_25_16_18_23"
+		branchTableName = "branch_dcbranch_2022_03_01_16_16_50"
 	}
 
 	tables := []*bigtable.Table{}
