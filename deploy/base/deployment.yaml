@@ -60,6 +60,7 @@ spec:
             - --base_table=$(BIG_TABLE)
             - --import_group_tables=$(IMPORT_GROUP_TABLES)
             - --schema_path=/datacommons/mapping
+            - --use_import_group=true
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
