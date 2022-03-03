@@ -58,7 +58,9 @@ func TestGetPropertyLabels(t *testing.T) {
 				t.Errorf("could not GetPropertyLabels: %s", err)
 				continue
 			}
-
+			if latencyTest {
+				continue
+			}
 			// Here the golden file is not same as the actual API output.
 			// The actual payload is not a full serielized protobuf but
 			// with the outer level ("data" field) removed. Here is to add that level
@@ -69,11 +71,6 @@ func TestGetPropertyLabels(t *testing.T) {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
-
-			if latencyTest {
-				continue
-			}
-
 			if useImportGroup {
 				c.goldenFile = "IG_" + c.goldenFile
 			}
