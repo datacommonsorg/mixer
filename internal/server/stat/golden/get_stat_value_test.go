@@ -33,12 +33,7 @@ func TestGetStatValue(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stat_value")
 
-	testSuite := func(opt *e2e.TestOption, latencyTest bool) {
-		client, _, err := e2e.Setup(opt)
-		if err != nil {
-			t.Fatalf("Failed to set up mixer and client")
-		}
-
+	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
 		for _, c := range []struct {
 			statVar    string
 			place      string
@@ -109,7 +104,7 @@ func TestGetStatValue(t *testing.T) {
 				continue
 			}
 
-			if opt.UseImportGroup {
+			if useImportGroup {
 				c.goldenFile = "IG_" + c.goldenFile
 			}
 			if e2e.GenerateGolden {

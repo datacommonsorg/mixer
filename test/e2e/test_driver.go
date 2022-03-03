@@ -20,6 +20,8 @@ import (
 	"path"
 	"runtime"
 	"time"
+
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
 const numTestTimes = 4
@@ -28,35 +30,46 @@ const numTestTimes = 4
 func TestDriver(
 	apiName string,
 	opt *TestOption,
-	testSuite func(*TestOption, bool)) error {
+	testSuite func(pb.MixerClient, bool, bool)) error {
 	if LatencyTest {
 		return latencyTest(apiName, opt, testSuite)
 	}
-	goldenTest(opt, testSuite)
-	return nil
+	return goldenTest(opt, testSuite)
 }
 
-func goldenTest(opt *TestOption, testSuite func(*TestOption, bool)) {
+func goldenTest(opt *TestOption, testSuite func(pb.MixerClient, bool, bool)) error {
 	for _, useImportGroup := range []bool{true, false} {
 		opt.UseImportGroup = useImportGroup
-		testSuite(opt, false /* latencyTest */)
+
+		client, _, err := Setup(opt)
+		if err != nil {
+			return fmt.Errorf("failed to set up mixer and client")
+		}
+
+		testSuite(client, false /* latencyTest */, useImportGroup)
 	}
+	return nil
 }
 
 func latencyTest(
 	apiName string,
 	opt *TestOption,
-	testSuite func(*TestOption, bool)) error {
+	testSuite func(pb.MixerClient, bool, bool)) error {
 	// Map: useImportGroup -> [duration in seconds].
 	durationStore := map[bool][]float64{}
 
-	// Run multiple times to reduce fluctuations.
-	for i := 0; i < numTestTimes; i++ {
-		for _, useImportGroup := range []bool{true, false} {
-			opt.UseImportGroup = useImportGroup
+	for _, useImportGroup := range []bool{true, false} {
+		opt.UseImportGroup = useImportGroup
 
+		client, _, err := Setup(opt)
+		if err != nil {
+			return fmt.Errorf("failed to set up mixer and client")
+		}
+
+		// Run multiple times to reduce fluctuations.
+		for i := 0; i < numTestTimes; i++ {
 			startTime := time.Now()
-			testSuite(opt, true /* latencyTest */)
+			testSuite(client, true /* latencyTest */, useImportGroup)
 			durationStore[useImportGroup] = append(durationStore[useImportGroup],
 				time.Since(startTime).Seconds())
 		}
