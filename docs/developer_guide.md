@@ -179,6 +179,16 @@ In root directory, run:
 ./test/e2e/run_ig_latency.sh
 ```
 
+### Profile a program
+
+Install [Graphgiz](https://graphviz.org/).
+
+```bash
+go test -v -parallel 1 -cpuprofile cpu.prof -memprofile mem.prof XXX_test.go
+go tool pprof -png cpu.prof
+go tool pprof -png mem.prof
+```
+
 ## Update prod golden files
 
 Run the following commands to update prod golden files from staging golden files
