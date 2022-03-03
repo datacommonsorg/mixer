@@ -35,8 +35,8 @@ func TestSortTables(t *testing.T) {
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},
 			},
 			expected: []*Table{
-				{name: "frequent_2022_02_01_14_20_47", table: nil},
 				{name: "dcbranch_2022_02_01_14_00_49", table: nil},
+				{name: "frequent_2022_02_01_14_20_47", table: nil},
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},
 				{name: "random_2022", table: nil},
 				{name: "infrequent_2022_01_31_23_15_14", table: nil},
