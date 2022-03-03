@@ -40,12 +40,10 @@ func TestDriver(
 func goldenTest(opt *TestOption, testSuite func(pb.MixerClient, bool, bool)) error {
 	for _, useImportGroup := range []bool{true, false} {
 		opt.UseImportGroup = useImportGroup
-
 		client, _, err := Setup(opt)
 		if err != nil {
 			return fmt.Errorf("failed to set up mixer and client")
 		}
-
 		testSuite(client, false /* latencyTest */, useImportGroup)
 	}
 	return nil
@@ -60,12 +58,10 @@ func latencyTest(
 
 	for _, useImportGroup := range []bool{true, false} {
 		opt.UseImportGroup = useImportGroup
-
 		client, _, err := Setup(opt)
 		if err != nil {
 			return fmt.Errorf("failed to set up mixer and client")
 		}
-
 		// Run multiple times to reduce fluctuations.
 		for i := 0; i < numTestTimes; i++ {
 			startTime := time.Now()
@@ -81,7 +77,7 @@ func latencyTest(
 	if newValue > oldValue {
 		changeSign = "+"
 	}
-	resultCsvRow := fmt.Sprintf("%s,%.2f,%.2f,%s%.2f%%\n",
+	resultCsvRow := fmt.Sprintf("%s,%.3f,%.3f,%s%.3f%%\n",
 		apiName, oldValue, newValue, changeSign, (newValue/oldValue-1)*100)
 
 	fmt.Println(resultCsvRow)

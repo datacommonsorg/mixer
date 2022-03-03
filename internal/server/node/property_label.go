@@ -28,8 +28,11 @@ import (
 )
 
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
-func GetPropertyLabels(ctx context.Context,
-	in *pb.GetPropertyLabelsRequest, store *store.Store) (*pb.GetPropertyLabelsResponse, error) {
+func GetPropertyLabels(
+	ctx context.Context,
+	in *pb.GetPropertyLabelsRequest,
+	store *store.Store,
+) (*pb.GetPropertyLabelsResponse, error) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcids")

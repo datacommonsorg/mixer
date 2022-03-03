@@ -24,7 +24,7 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-while getopts "dt:" OPTION; do
+while getopts "t:" OPTION; do
   case $OPTION in
     t)
         echo -e "### Update golden files for test: ${OPTARG}"

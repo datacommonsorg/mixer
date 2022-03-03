@@ -116,7 +116,7 @@ func getStatSet(
 			result.Metadata[metaHash] = metaData
 		}
 	}
-	log.Printf("getStatSet() completed for %d places, %d stat vars, in %s seconds",
+	log.Printf("getStatSet() completed for %d places, %d stat vars, in %s",
 		len(places), len(statVars), time.Since(ts))
 	return result, nil
 }
@@ -218,7 +218,7 @@ func getStatSetAll(
 		}
 	}
 
-	log.Printf("getStatSetAll() completed for %d places, %d stat vars, in %s seconds",
+	log.Printf("getStatSetAll() completed for %d places, %d stat vars, in %s",
 		len(places), len(statVars), time.Since(ts))
 	return result, nil
 }

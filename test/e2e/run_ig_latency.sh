@@ -15,11 +15,31 @@
 
 set -e
 
+while getopts "t:" OPTION; do
+  case $OPTION in
+    t)
+        echo -e "### Run latency test for: ${OPTARG}"
+        TARGET=${OPTARG}
+        ;;
+    *)
+        break ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [[ $TARGET != "" ]]; then
+    ARG="-run ^$TARGET$"
+else
+    ARG=""
+fi
+
 export LATENCY_TEST=true
-go test -parallel 1 ./...
+go clean -testcache
+go test -parallel 1 ./... $ARG
 
 cd test/e2e/ig_latency
+> ig_latency
+rm ig_latency.csv
 echo "method,no-import-group,import-group,change-rate" > ig_latency
 cat ./*.csv >> ig_latency
-rm ./*.csv
 mv ig_latency ig_latency.csv
