@@ -242,7 +242,6 @@ func getMetadataHash(m *pb.StatMetadata) uint32 {
 		m.ImportName,
 		m.MeasurementMethod,
 		m.ObservationPeriod,
-		m.ObservationPeriod,
 		m.ScalingFactor,
 		m.Unit,
 	}, "-")))
@@ -253,7 +252,6 @@ func getMetadataHash(m *pb.StatMetadata) uint32 {
 func getSourceSeriesHash(series *pb.SourceSeries) uint32 {
 	metadata := &pb.StatMetadata{
 		ImportName:        series.ImportName,
-		ProvenanceUrl:     series.ProvenanceUrl,
 		MeasurementMethod: series.MeasurementMethod,
 		ObservationPeriod: series.ObservationPeriod,
 		ScalingFactor:     series.ScalingFactor,

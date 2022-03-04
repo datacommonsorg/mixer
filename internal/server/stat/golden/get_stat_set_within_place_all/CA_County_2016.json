@@ -229,7 +229,7 @@
               "value": 74952
             }
           },
-          "meta_hash": 4080496656
+          "meta_hash": 2517965213
         },
         {
           "stat": {
@@ -466,7 +466,7 @@
               "value": 73897
             }
           },
-          "meta_hash": 2928646506
+          "meta_hash": 1145703171
         },
         {
           "stat": {
@@ -631,7 +631,7 @@
               "value": 75275
             }
           },
-          "meta_hash": 2071679530
+          "meta_hash": 1226172227
         }
       ]
     },
@@ -872,32 +872,32 @@
               "value": 32.2
             }
           },
-          "meta_hash": 2257694007
+          "meta_hash": 3795540742
         }
       ]
     }
   },
   "metadata": {
-    "2071679530": {
-      "import_name": "CensusACS1YearSurvey",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS1yrSurvey"
-    },
-    "2257694007": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
-    },
-    "2928646506": {
+    "1145703171": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/",
       "measurement_method": "CensusACS5yrSurvey"
     },
-    "4080496656": {
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "2517965213": {
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
     }
   }
 }
