@@ -58,6 +58,14 @@ if [[ $ENV == "autopush" ]]; then
   # Update bigtable and bigquery version
   gsutil cp gs://datcom-control/latest_base_cache_version.txt deploy/storage/bigtable.version
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
+  # Import group
+  # TODO: Loop through gs://datcom-control/autopush/datcom-control/autopush
+  for group in frequent infrequent ipcc
+  > deploy/storage/bigtable_import_groups.version
+  do
+    gsutil cp "gs://datcom-control/autopush/datcom-control/autopush/$group_latest_base_cache_version.txt" /tmp/version.txt
+    cat  /tmp/version.txt >> deploy/storage/bigtable_import_groups.version
+  done
 fi
 
 export PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)

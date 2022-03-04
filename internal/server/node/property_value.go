@@ -129,9 +129,8 @@ func GetPropertyValuesHelper(
 	}
 	result := map[string][]*pb.EntityInfo{}
 	visited := map[string]map[string]struct{}{}
-	// Loop over the import groups. They are ordered by the preferences in
-	// /deploy/storage/bigtable_import_groups.json. So only add a node if it is
-	// not seen yet.
+	// Loop over the import groups. They are ordered by preferences.
+	// Only add a node if it is not seen yet.
 	for _, btData := range btDataList {
 		for dcid, data := range btData {
 			_, ok := result[dcid]

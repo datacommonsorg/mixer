@@ -16,11 +16,11 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
 	"net"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -54,7 +54,7 @@ var (
 	useBaseBt         = flag.Bool("use_base_bt", true, "Use base bigtable cache")
 	baseTableName     = flag.String("base_table", "", "Base cache Bigtable table.")
 	useImportGroup    = flag.Bool("use_import_group", false, "Use multiple base tables from import group; Only applicable when --use_base_bt=true")
-	importGroupTables = flag.String("import_group_tables", "", "A JSON string of import group tables; Only applicable when --use_import_group")
+	importGroupTables = flag.String("import_group_tables", "", "Newline separated list of import group tables; Only applicable when --use_import_group")
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// GCS to hold memdb data.
@@ -129,11 +129,7 @@ func main() {
 	var tables []*bigtable.Table
 	if *useBaseBt {
 		if *useImportGroup {
-			var c bigtable.TableConfig
-			if err := json.Unmarshal([]byte(*importGroupTables), &c); err != nil {
-				log.Fatalf("Failed to load import group tables config")
-			}
-			tableNames := c.Tables
+			tableNames := strings.Split(*importGroupTables, "\n")
 			for _, name := range tableNames {
 				t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, name)
 				if err != nil {

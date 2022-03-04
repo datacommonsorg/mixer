@@ -76,7 +76,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
-		"../../deploy/storage/bigtable_import_groups.json",
+		"../../deploy/storage/bigtable_import_groups.version",
 		"../../deploy/mapping",
 		storeProject,
 		useCache,
@@ -86,7 +86,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 }
 
 func setupInternal(
-	bq, bt, btJSON, mcfPath, storeProject string, useCache, useMemdb, useImportGroup bool,
+	bq, bt, btGroup, mcfPath, storeProject string, useCache, useMemdb, useImportGroup bool,
 ) (
 	pb.MixerClient, pb.ReconClient, error,
 ) {
@@ -96,12 +96,8 @@ func setupInternal(
 	baseTableName, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bt))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
-	baseTableJSON, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btJSON))
-	tableConfig := &bigtable.TableConfig{}
-	err := json.Unmarshal(baseTableJSON, &tableConfig)
-	if err != nil {
-		log.Fatalf("failed to read base table config: %v", err)
-	}
+	btGroupString, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btGroup))
+	tableNames := strings.Split(string(btGroupString), "\n")
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
@@ -124,7 +120,7 @@ func setupInternal(
 	tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 
 	if useImportGroup {
-		for _, t := range tableConfig.Tables {
+		for _, t := range tableNames {
 			name := strings.TrimSpace(t)
 			table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 			if err != nil {
