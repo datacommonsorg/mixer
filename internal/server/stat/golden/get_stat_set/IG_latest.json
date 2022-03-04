@@ -5,12 +5,12 @@
         "country/FRA": {
           "date": "2019",
           "value": 50400,
-          "metaHash": 1642072667
+          "metaHash": 2171028778
         },
         "country/USA": {
           "date": "2019",
           "value": 66060,
-          "metaHash": 1642072667
+          "metaHash": 2171028778
         },
         "geoId/06": {},
         "geoId/0649670": {}
@@ -22,12 +22,12 @@
         "country/USA": {
           "date": "2020",
           "value": 4009084999080,
-          "metaHash": 550825656
+          "metaHash": 2392525955
         },
         "geoId/06": {
           "date": "2020",
           "value": 194110262920,
-          "metaHash": 550825656
+          "metaHash": 2392525955
         },
         "geoId/0649670": {}
       }
@@ -38,17 +38,17 @@
         "country/USA": {
           "date": "2019",
           "value": 8132863,
-          "metaHash": 3716017963
+          "metaHash": 2343540064
         },
         "geoId/06": {
           "date": "2019",
           "value": 1095445,
-          "metaHash": 481049291
+          "metaHash": 4277990144
         },
         "geoId/0649670": {
           "date": "2019",
           "value": 2634,
-          "metaHash": 481049291
+          "metaHash": 4277990144
         }
       }
     },
@@ -57,22 +57,22 @@
         "country/FRA": {
           "date": "2020",
           "value": 67391582,
-          "metaHash": 2687541803
+          "metaHash": 3981252704
         },
         "country/USA": {
           "date": "2020",
           "value": 331449281,
-          "metaHash": 2939218655
+          "metaHash": 1541763368
         },
         "geoId/06": {
           "date": "2020",
           "value": 39538223,
-          "metaHash": 2939218655
+          "metaHash": 1541763368
         },
         "geoId/0649670": {
           "date": "2020",
           "value": 82376,
-          "metaHash": 2939218655
+          "metaHash": 1541763368
         }
       }
     },
@@ -82,17 +82,17 @@
         "country/USA": {
           "date": "2022-01",
           "value": 6513000,
-          "metaHash": 1232804294
+          "metaHash": 3707913853
         },
         "geoId/06": {
           "date": "2021-12",
           "value": 913303,
-          "metaHash": 3125519592
+          "metaHash": 324358135
         },
         "geoId/0649670": {
           "date": "2021-12",
           "value": 955,
-          "metaHash": 3125519592
+          "metaHash": 324358135
         }
       }
     },
@@ -102,63 +102,63 @@
         "country/USA": {
           "date": "2022-03-02",
           "value": 79048178,
-          "metaHash": 1797387216
+          "metaHash": 2232540893
         },
         "geoId/06": {
           "date": "2022-03-02",
           "value": 8984737,
-          "metaHash": 1797387216
+          "metaHash": 2232540893
         },
         "geoId/0649670": {}
       }
     }
   },
   "metadata": {
-    "481049291": {
-      "importName": "FBIGovCrime",
-      "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-      "observationPeriod": "P1Y"
-    },
-    "550825656": {
-      "importName": "EIA_Electricity",
-      "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
-      "unit": "KilowattHour"
-    },
-    "1232804294": {
-      "importName": "BLS_CPS",
-      "provenanceUrl": "https://www.bls.gov/cps/",
-      "measurementMethod": "BLSSeasonallyAdjusted",
-      "observationPeriod": "P1M"
-    },
-    "1642072667": {
-      "importName": "WorldDevelopmentIndicators",
-      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-      "observationPeriod": "P1Y",
-      "unit": "InternationalDollar"
-    },
-    "1797387216": {
-      "importName": "NYT_COVID19",
-      "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
-      "measurementMethod": "NYT_COVID19_GitHub"
-    },
-    "2687541803": {
-      "importName": "WorldDevelopmentIndicators",
-      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-      "observationPeriod": "P1Y"
-    },
-    "2939218655": {
-      "importName": "USDecennialCensus_RedistrictingRelease",
-      "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurementMethod": "USDecennialCensus"
-    },
-    "3125519592": {
+    "324358135": {
       "importName": "BLS_LAUS",
       "provenanceUrl": "https://www.bls.gov/lau/",
       "measurementMethod": "BLSSeasonallyUnadjusted",
       "observationPeriod": "P1M"
     },
-    "3716017963": {
+    "1541763368": {
+      "importName": "USDecennialCensus_RedistrictingRelease",
+      "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurementMethod": "USDecennialCensus"
+    },
+    "2171028778": {
+      "importName": "WorldDevelopmentIndicators",
+      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observationPeriod": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "2232540893": {
+      "importName": "NYT_COVID19",
+      "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+      "measurementMethod": "NYT_COVID19_GitHub"
+    },
+    "2343540064": {
       "importName": "FBIGovCrime_AggCountry",
+      "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+      "observationPeriod": "P1Y"
+    },
+    "2392525955": {
+      "importName": "EIA_Electricity",
+      "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "3707913853": {
+      "importName": "BLS_CPS",
+      "provenanceUrl": "https://www.bls.gov/cps/",
+      "measurementMethod": "BLSSeasonallyAdjusted",
+      "observationPeriod": "P1M"
+    },
+    "3981252704": {
+      "importName": "WorldDevelopmentIndicators",
+      "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observationPeriod": "P1Y"
+    },
+    "4277990144": {
+      "importName": "FBIGovCrime",
       "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
       "observationPeriod": "P1Y"
     }
