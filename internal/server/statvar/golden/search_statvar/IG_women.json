@@ -13309,7 +13309,7 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_PovertyStatus-RatioToPovertyLine1To1.99",
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_PovertyStatus-RatioToPovertyLine1.0To1.99",
       "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Poverty Status = 1 - 2.0 Ratio To Poverty Line",
       "statVars": [
         {
@@ -13337,7 +13337,7 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_PovertyStatus-RatioToPovertyLine2Onwards",
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_PovertyStatus-RatioToPovertyLine2.0Onwards",
       "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Poverty Status = 2 Ratio To Poverty Line or More",
       "statVars": [
         {
