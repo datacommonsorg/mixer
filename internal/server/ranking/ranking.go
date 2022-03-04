@@ -61,7 +61,7 @@ var StatsRanking = map[RankKey]int{
 	{"EIA_Electricity", "*", "*"}: 1, // Electricity
 
 	{"NASA_NEXDCP30", "NASA_Mean_CCSM4", "P1M"}:     0, // IPCC
-	{"NASA_NEXGDDP", "NASA_Mean_CCSM4", "P1M"}:      0, // IPCC
+	{"NASA_NEXGDDP", "NASA_Mean_CMIP5_CCSM4", "P1M"}:      0, // IPCC
 	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1M"}: 0, // IPCC
 	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1M"}:  0, // IPCC
 

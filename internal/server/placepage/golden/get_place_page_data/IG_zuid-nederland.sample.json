@@ -3869,7 +3869,9 @@
             "2022-02-26": 21539,
             "2022-02-27": 21545,
             "2022-02-28": 21548,
-            "2022-03-01": 21554
+            "2022-03-01": 21554,
+            "2022-03-02": 21570,
+            "2022-03-03": 21581
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -9844,7 +9846,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_CMIP5_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -10983,7 +10985,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_CMIP5_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -13215,7 +13217,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_CMIP5_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -14354,7 +14356,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_CMIP5_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -16614,7 +16616,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_CMIP5_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
@@ -17753,7 +17755,7 @@
           "metadata": {
             "importName": "NASA_NEXGDDP_Subnational_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
-            "measurementMethod": "NASA_Mean_ACCESS1-0",
+            "measurementMethod": "NASA_Mean_CMIP5_ACCESS1-0",
             "observationPeriod": "P1M",
             "unit": "Celsius"
           }
