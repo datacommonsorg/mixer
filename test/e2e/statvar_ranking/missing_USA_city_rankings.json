@@ -198,6 +198,90 @@
     "relatedChart": {}
   },
   {
+    "title": "Hate crime motivated by disability",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by ethnicity",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by gender",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by race",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by religion",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by sexual orientation",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime",
+    "statsVars": [
+      "Count_CriminalIncidents_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_IsHateCrime"
+      ]
+    }
+  },
+  {
     "title": "Infant mortality rate by gender",
     "statsVars": [
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
