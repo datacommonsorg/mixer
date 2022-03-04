@@ -82,21 +82,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/3603313992",
-      "subjectName": "Chateaugay",
-      "subjectTypes": [
-        "CensusCountyDivision",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/4218152",
       "subjectName": "Darby",
       "subjectTypes": [
@@ -127,8 +112,8 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/4251984",
-      "subjectName": "Mount Union",
+      "subjectId": "geoId/4251592",
+      "subjectName": "Mount Holly Springs",
       "subjectTypes": [
         "Borough",
         "City"
@@ -142,8 +127,8 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/4283512",
-      "subjectName": "West Mifflin",
+      "subjectId": "geoId/4251984",
+      "subjectName": "Mount Union",
       "subjectTypes": [
         "Borough",
         "City"
@@ -172,6 +157,21 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "wikidataId/Q1848",
+      "subjectName": "San Marino",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "wikidataId/Q215826",
       "subjectName": "Grevenmacher",
       "subjectTypes": [
@@ -187,11 +187,10 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q249994",
-      "subjectName": "Hsinchu",
+      "subjectId": "wikidataId/Q2903879",
+      "subjectName": "Bin-Houyé",
       "subjectTypes": [
-        "AdministrativeArea1",
-        "AdministrativeArea3",
+        "AdministrativeArea5",
         "City"
       ],
       "predicate": "typeOf",
@@ -200,7 +199,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/5j06ly1"
     },
     {
       "subjectId": "wikidataId/Q345331",
@@ -282,21 +281,6 @@
       "subjectName": "Bad Kötzting",
       "subjectTypes": [
         "AdministrativeArea4",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q667828",
-      "subjectName": "Baham",
-      "subjectTypes": [
-        "AdministrativeArea5",
         "City"
       ],
       "predicate": "typeOf",
@@ -596,21 +580,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/11001",
-      "subjectName": "District of Columbia",
-      "subjectTypes": [
-        "City",
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "County",
-      "objectName": "County",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/64040",
       "subjectName": "Pohnpei State",
       "subjectTypes": [
@@ -693,6 +662,21 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "geoId/70100",
+      "subjectName": "Kayangel",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "geoId/70150",
       "subjectName": "Koror",
       "subjectTypes": [
@@ -708,8 +692,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/70214",
-      "subjectName": "Ngaraard",
+      "subjectId": "geoId/70228",
+      "subjectName": "Ngiwal",
       "subjectTypes": [
         "AdministrativeArea1",
         "County"
@@ -723,8 +707,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/70228",
-      "subjectName": "Ngiwal",
+      "subjectId": "geoId/70350",
+      "subjectName": "Peleliu",
       "subjectTypes": [
         "AdministrativeArea1",
         "County"

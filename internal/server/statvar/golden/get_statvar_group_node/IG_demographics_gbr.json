@@ -137,6 +137,11 @@
       "displayName": "Person by Earnings"
     },
     {
+      "id": "dc/g/Person_EnrollmentLevel",
+      "specializedEntity": "Enrollment Level (Student)",
+      "displayName": "Person by Enrollment Level"
+    },
+    {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
