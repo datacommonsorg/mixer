@@ -421,6 +421,8 @@ func KeysToSlice(m map[string]bool) []string {
 	return s
 }
 
+// ParseBigtableGroup retrieves Bigtable names for import group from
+// newline separated list.
 func ParseBigtableGroup(s string) []string {
 	r := bufio.NewReader(strings.NewReader(s))
 	tables := []string{}

@@ -66,7 +66,6 @@ if [[ $ENV == "autopush" ]]; then
     echo "$(gsutil cat $src)" >> deploy/storage/bigtable_import_groups.version
   done
 fi
-exit
 export PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)
 export REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
 export IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
