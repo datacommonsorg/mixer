@@ -122,6 +122,9 @@ func setupInternal(
 	if useImportGroup {
 		for _, t := range tableNames {
 			name := strings.TrimSpace(t)
+			if name == "" {
+				continue
+			}
 			table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 			if err != nil {
 				return nil, nil, err

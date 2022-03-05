@@ -131,6 +131,9 @@ func main() {
 		if *useImportGroup {
 			tableNames := strings.Split(*importGroupTables, "\n")
 			for _, name := range tableNames {
+				if name == "" {
+					continue
+				}
 				t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, name)
 				if err != nil {
 					log.Fatalf("Failed to create BigTable client: %v", err)
