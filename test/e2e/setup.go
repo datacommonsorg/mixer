@@ -121,11 +121,7 @@ func setupInternal(
 	tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 
 	if useImportGroup {
-		for _, t := range tableNames {
-			name := strings.TrimSpace(t)
-			if name == "" {
-				continue
-			}
+		for _, name := range tableNames {
 			table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 			if err != nil {
 				return nil, nil, err
