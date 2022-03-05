@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -97,7 +98,7 @@ func setupInternal(
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
 	btGroupString, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btGroup))
-	tableNames := strings.Split(string(btGroupString), "\n")
+	tableNames := util.ParseBigtableGroup(string(btGroupString))
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)

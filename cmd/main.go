@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -29,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -129,7 +129,7 @@ func main() {
 	var tables []*bigtable.Table
 	if *useBaseBt {
 		if *useImportGroup {
-			tableNames := strings.Split(*importGroupTables, "\n")
+			tableNames := util.ParseBigtableGroup(*importGroupTables)
 			for _, name := range tableNames {
 				if name == "" {
 					continue

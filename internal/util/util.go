@@ -15,11 +15,13 @@
 package util
 
 import (
+	"bufio"
 	"bytes"
 	"compress/gzip"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"math"
@@ -417,4 +419,17 @@ func KeysToSlice(m map[string]bool) []string {
 	}
 	sort.Strings(s)
 	return s
+}
+
+func ParseBigtableGroup(s string) []string {
+	r := bufio.NewReader(strings.NewReader(s))
+	tables := []string{}
+	for {
+		line, _, err := r.ReadLine()
+		if err == io.EOF {
+			break
+		}
+		tables = append(tables, strings.TrimSpace(string(line)))
+	}
+	return tables
 }

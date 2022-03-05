@@ -61,13 +61,9 @@ if [[ $ENV == "autopush" ]]; then
   # Import group
   # TODO: Loop through gs://datcom-control/autopush/datcom-control/autopush
   > deploy/storage/bigtable_import_groups.version
-  for group in frequent infrequent ipcc
-  do
-    echo $group
-    src="gs://datcom-control/autopush/${group}_latest_base_cache_version.txt"
-    echo $src
-    gsutil cp $src /tmp/version.txt
-    echo "$(cat /tmp/version.txt)" >> deploy/storage/bigtable_import_groups.version
+  for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
+    echo "Copying $src"
+    echo "$(gsutil cat $src)" >> deploy/storage/bigtable_import_groups.version
   done
 fi
 exit
