@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -76,7 +77,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
 		"../../deploy/storage/bigtable.version",
-		"../../deploy/storage/bigtable_import_groups.json",
+		"../../deploy/storage/bigtable_import_groups.version",
 		"../../deploy/mapping",
 		storeProject,
 		useCache,
@@ -86,7 +87,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 }
 
 func setupInternal(
-	bq, bt, btJSON, mcfPath, storeProject string, useCache, useMemdb, useImportGroup bool,
+	bq, bt, btGroup, mcfPath, storeProject string, useCache, useMemdb, useImportGroup bool,
 ) (
 	pb.MixerClient, pb.ReconClient, error,
 ) {
@@ -96,12 +97,8 @@ func setupInternal(
 	baseTableName, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bt))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
-	baseTableJSON, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btJSON))
-	tableConfig := &bigtable.TableConfig{}
-	err := json.Unmarshal(baseTableJSON, &tableConfig)
-	if err != nil {
-		log.Fatalf("failed to read base table config: %v", err)
-	}
+	btGroupString, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btGroup))
+	tableNames := util.ParseBigtableGroup(string(btGroupString))
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
@@ -124,8 +121,7 @@ func setupInternal(
 	tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 
 	if useImportGroup {
-		for _, t := range tableConfig.Tables {
-			name := strings.TrimSpace(t)
+		for _, name := range tableNames {
 			table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 			if err != nil {
 				return nil, nil, err

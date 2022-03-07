@@ -25,4 +25,4 @@ configMapGenerator:
       - bigtable.version
       - bigquery.version
       - store.project
-      - bigtable_import_groups.json
+      - bigtable_import_groups.version

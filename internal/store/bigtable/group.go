@@ -62,11 +62,6 @@ type Group struct {
 	isProto         bool
 }
 
-//  TableConfig represents the config for a list of Bigtable.
-type TableConfig struct {
-	Tables []string `json:"tables,omitempty"`
-}
-
 // NewGroup creates a BigtableGroup
 func NewGroup(
 	tables []*Table,
