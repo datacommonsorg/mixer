@@ -74,7 +74,7 @@
       "provenanceSummary": {
         "dc/2xghn33": {
           "importName": "BLS_CPS",
-          "observationCount": 1185,
+          "observationCount": 1186,
           "timeSeriesCount": 2,
           "releaseFrequency": "P1M",
           "seriesSummary": [
@@ -84,8 +84,8 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1948-01",
-              "latestDate": "2022-01",
-              "observationCount": 889,
+              "latestDate": "2022-02",
+              "observationCount": 890,
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
@@ -128,7 +128,7 @@
         },
         "dc/lly3yc1": {
           "importName": "BLS_LAUS",
-          "observationCount": 2587200,
+          "observationCount": 2587257,
           "timeSeriesCount": 12707,
           "releaseFrequency": "P1M",
           "seriesSummary": [
@@ -169,8 +169,8 @@
                   ]
                 }
               },
-              "minValue": 1.7,
-              "maxValue": 29.5
+              "minValue": 1.9,
+              "maxValue": 28.5
             },
             {
               "seriesKey": {
@@ -242,8 +242,8 @@
                 "observationPeriod": "P1Y"
               },
               "earliestDate": "1976",
-              "latestDate": "2020",
-              "observationCount": 190856,
+              "latestDate": "2021",
+              "observationCount": 190913,
               "timeSeriesCount": 6327,
               "placeTypeSummary": {
                 "City": {
