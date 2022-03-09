@@ -142,21 +142,6 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "wikidataId/Q167109",
-      "subjectName": "Eger",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "wikidataId/Q1848",
       "subjectName": "San Marino",
       "subjectTypes": [
@@ -187,10 +172,10 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q215826",
-      "subjectName": "Grevenmacher",
+      "subjectId": "wikidataId/Q2228759",
+      "subjectName": "Tiko",
       "subjectTypes": [
-        "AdministrativeArea1",
+        "AdministrativeArea5",
         "City"
       ],
       "predicate": "typeOf",
@@ -282,6 +267,21 @@
       "subjectName": "Fuding",
       "subjectTypes": [
         "AdministrativeArea3",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q6571316",
+      "subjectName": "Dabakala",
+      "subjectTypes": [
+        "AdministrativeArea5",
         "City"
       ],
       "predicate": "typeOf",
@@ -581,21 +581,6 @@
       "provenanceId": "dc/22t2hr3"
     },
     {
-      "subjectId": "geoId/02275",
-      "subjectName": "Wrangell",
-      "subjectTypes": [
-        "City",
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "County",
-      "objectName": "County",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/02282",
       "subjectName": "Yakutat",
       "subjectTypes": [
@@ -630,21 +615,6 @@
       "subjectName": "Pohnpei State",
       "subjectTypes": [
         "AdministrativeArea1",
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "County",
-      "objectName": "County",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/68190",
-      "subjectName": "Majuro",
-      "subjectTypes": [
-        "City",
         "County"
       ],
       "predicate": "typeOf",
@@ -698,6 +668,21 @@
       "subjectId": "geoId/69100",
       "subjectName": "Rota",
       "subjectTypes": [
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/69110",
+      "subjectName": "Saipan",
+      "subjectTypes": [
+        "City",
         "County"
       ],
       "predicate": "typeOf",

@@ -41,14 +41,6 @@
       "dcid": "Count_Person_Female_Employed"
     },
     {
-      "name": "15 - 50 Years, Female, 1 - 2.0 Ratio To Poverty Line Population",
-      "dcid": "Count_Person_15To50Years_Female_1To1.99RatioToPovertyLine"
-    },
-    {
-      "name": "15 - 50 Years, Female, 2 Ratio To Poverty Line or More Population",
-      "dcid": "Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine"
-    },
-    {
       "name": "16 Years or More, Civilian, Employed, Federal Government Owned, Female, Worker Population",
       "dcid": "Count_Person_FederalGovernmentOwnedEstablishment_Female_Worker"
     },
@@ -7441,20 +7433,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Unmarried_PovertyStatus",
-      "name": "Person With Gender = Female, Marital Status = Unmarried, Poverty Status",
-      "statVars": [
-        {
-          "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 1 - 2.0 Ratio To Poverty Line Population",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_1To1.99RatioToPovertyLine"
-        },
-        {
-          "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 2 Ratio To Poverty Line or More Population",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_2OrMoreRatioToPovertyLine"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/MortalityEvent_Age-Years1To4_Gender-Female",
       "name": "Mortality Event With Age = 1 - 4 Years, Gender = Female",
       "statVars": [
@@ -8745,12 +8723,32 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-RatioToPovertyLine1.0To1.99",
+      "name": "Person With Gender = Female, Poverty Status = 1 - 2.0 Ratio To Poverty Line",
+      "statVars": [
+        {
+          "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 1 - 2.0 Ratio To Poverty Line Population",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_1To1.99RatioToPovertyLine"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_PovertyStatus-RatioToPovertyLineUpto1.0",
       "name": "Person With Gender = Female, Poverty Status = 1 Ratio To Poverty Line or Less",
       "statVars": [
         {
           "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 1 Ratio To Poverty Line or Less Population",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_1.0OrLessRatioToPovertyLine"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-RatioToPovertyLine2.0Onwards",
+      "name": "Person With Gender = Female, Poverty Status = 2 Ratio To Poverty Line or More",
+      "statVars": [
+        {
+          "name": "15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 2 Ratio To Poverty Line or More Population",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_2OrMoreRatioToPovertyLine"
         }
       ]
     },
@@ -11135,12 +11133,32 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_PovertyStatus-RatioToPovertyLine1.0To1.99",
+      "name": "Person With Age = 15 - 50 Years, Gender = Female, Poverty Status = 1 - 2.0 Ratio To Poverty Line",
+      "statVars": [
+        {
+          "name": "15 - 50 Years, Female, 1 - 2.0 Ratio To Poverty Line Population",
+          "dcid": "Count_Person_15To50Years_Female_1To1.99RatioToPovertyLine"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_PovertyStatus-RatioToPovertyLineUpto1.0",
       "name": "Person With Age = 15 - 50 Years, Gender = Female, Poverty Status = 1 Ratio To Poverty Line or Less",
       "statVars": [
         {
           "name": "15 - 50 Years, Female, 1 Ratio To Poverty Line or Less Population",
           "dcid": "Count_Person_15To50Years_Female_1.0OrLessRatioToPovertyLine"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_PovertyStatus-RatioToPovertyLine2.0Onwards",
+      "name": "Person With Age = 15 - 50 Years, Gender = Female, Poverty Status = 2 Ratio To Poverty Line or More",
+      "statVars": [
+        {
+          "name": "15 - 50 Years, Female, 2 Ratio To Poverty Line or More Population",
+          "dcid": "Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine"
         }
       ]
     },
@@ -14389,18 +14407,6 @@
     {
       "dcid": "dc/g/Person_Gender-Female_Institutionalization",
       "name": "Person With Gender = Female, Institutionalization"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Institutionalization-NonInstitutionalized",
-      "name": "Person With Gender = Female, Institutionalization = Non Institutionalized"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_MaritalStatus",
-      "name": "Person With Gender = Female, Marital Status"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_MaritalStatus-EverMarried",
-      "name": "Person With Gender = Female, Marital Status = Ever Married"
     }
   ],
   "matches": [

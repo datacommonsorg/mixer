@@ -129,6 +129,20 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "dc/kfcvsw1",
+      "subjectName": "datacommons.org",
+      "subjectTypes": [
+        "Source"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "indianCensus/Count_Person_Religion_Total_MarginalWorker_Cultivators_Urban_Male",
       "subjectName": "Male Marginal Cultivators - Total - Urban",
       "subjectTypes": [

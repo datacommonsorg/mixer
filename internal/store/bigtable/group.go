@@ -30,6 +30,7 @@ var groupRank = map[string]int{
 	"branch":     0, // Used for legacy branch cache
 	"frequent":   1,
 	"ipcc":       2,
+	"biomedical": 3,
 	"borgcron":   10000, // Used for legacy base cache
 	"infrequent": 10000,
 }
