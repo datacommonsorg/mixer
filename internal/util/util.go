@@ -431,7 +431,10 @@ func ParseBigtableGroup(s string) []string {
 		if err == io.EOF {
 			break
 		}
-		tables = append(tables, strings.TrimSpace(string(line)))
+		t := strings.TrimSpace(string(line))
+		if t != "" {
+			tables = append(tables, t)
+		}
 	}
 	return tables
 }
