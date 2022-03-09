@@ -37,15 +37,7 @@ func TestGetStats(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stats")
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
-		client, _, err := e2e.Setup(opt)
-		if err != nil {
-			t.Fatalf("Failed to set up mixer and client")
-		}
-
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			statsVar     string
 			place        []string
@@ -111,10 +103,8 @@ func TestGetStats(t *testing.T) {
 				false,
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
-			resp, err := client.GetStats(ctx, &pb.GetStatsRequest{
+			c.goldenFile = "IG_" + c.goldenFile
+			resp, err := mixer.GetStats(ctx, &pb.GetStatsRequest{
 				StatsVar:          c.statsVar,
 				Place:             c.place,
 				MeasurementMethod: c.mmethod,
@@ -175,5 +165,9 @@ func TestGetStats(t *testing.T) {
 				}
 			}
 		}
+	}
+	if err := e2e.TestDriver(
+		"GetStats", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

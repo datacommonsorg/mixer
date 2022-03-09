@@ -33,7 +33,6 @@ func NewStore(
 	memDb *memdb.MemDb,
 	baseTables []*bigtable.Table,
 	branchTableName string,
-	useImportGroup bool,
 ) *Store {
 	// Table validation happens when creating the store
 	validBaseTables := []*bigtable.Table{}
@@ -45,6 +44,6 @@ func NewStore(
 	return &Store{
 		BqClient: bqClient,
 		MemDb:    memDb,
-		BtGroup:  bigtable.NewGroup(validBaseTables, branchTableName, useImportGroup),
+		BtGroup:  bigtable.NewGroup(validBaseTables, branchTableName),
 	}
 }

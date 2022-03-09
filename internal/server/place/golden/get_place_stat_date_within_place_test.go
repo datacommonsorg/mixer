@@ -34,7 +34,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_place_stat_date_within_place")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			ancestorPlace string
 			placeType     string
@@ -54,7 +54,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 				"USA_State.json",
 			},
 		} {
-			resp, err := client.GetPlaceStatDateWithinPlace(ctx, &pb.GetPlaceStatDateWithinPlaceRequest{
+			resp, err := mixer.GetPlaceStatDateWithinPlace(ctx, &pb.GetPlaceStatDateWithinPlaceRequest{
 				AncestorPlace: c.ancestorPlace,
 				PlaceType:     c.placeType,
 				StatVars:      c.statVars,
@@ -68,9 +68,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
@@ -91,7 +89,8 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	if err := e2e.TestDriver(
 		"GetPlaceStatDateWithinPlace",
 		&e2e.TestOption{UseCache: true, UseMemdb: true},
-		testSuite); err != nil {
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

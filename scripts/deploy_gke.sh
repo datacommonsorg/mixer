@@ -55,11 +55,9 @@ echo -n "$TAG" > mixer_hash.txt
 cd $ROOT
 
 if [[ $ENV == "autopush" ]]; then
-  # Update bigtable and bigquery version
-  gsutil cp gs://datcom-control/latest_base_cache_version.txt deploy/storage/bigtable.version
+  # Update bigquery version
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
   # Import group
-  # TODO: Loop through gs://datcom-control/autopush/datcom-control/autopush
   > deploy/storage/bigtable_import_groups.version
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"

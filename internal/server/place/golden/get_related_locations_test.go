@@ -33,10 +33,9 @@ func TestGetRelatedLocations(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_related_locations")
+	goldenPath := path.Join(path.Dir(filename), "get_related_locations")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile   string
 			dcid         string
@@ -75,7 +74,7 @@ func TestGetRelatedLocations(t *testing.T) {
 				StatVarDcids: c.statVarDcids,
 				WithinPlace:  c.withinPlace,
 			}
-			resp, err := client.GetRelatedLocations(ctx, req)
+			resp, err := mixer.GetRelatedLocations(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetRelatedLocations: %s", err)
 				continue
@@ -85,9 +84,7 @@ func TestGetRelatedLocations(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)

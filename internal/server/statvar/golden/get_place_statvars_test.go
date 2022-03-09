@@ -33,7 +33,7 @@ func TestGetPlaceStatVars(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_place_stat_vars")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			dcids      []string
 			goldenFile string
@@ -68,7 +68,7 @@ func TestGetPlaceStatVars(t *testing.T) {
 			req := &pb.GetPlaceStatVarsRequest{
 				Dcids: c.dcids,
 			}
-			resp, err := client.GetPlaceStatVars(ctx, req)
+			resp, err := mixer.GetPlaceStatVars(ctx, req)
 			if c.wanterr {
 				if err == nil {
 					t.Errorf("Expect to get error for GetPlaceStatsVar() but succeed")
@@ -84,9 +84,7 @@ func TestGetPlaceStatVars(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue

@@ -24,7 +24,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -59,16 +58,10 @@ func GetPlaceStatVars(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var data pb.PlaceStatVars
-			if isProto {
-				if err := proto.Unmarshal(jsonRaw, &data); err != nil {
-					return nil, err
-				}
-			} else {
-				if err := protojson.Unmarshal(jsonRaw, &data); err != nil {
-					return nil, err
-				}
+			if err := proto.Unmarshal(jsonRaw, &data); err != nil {
+				return nil, err
 			}
 			return data.StatVarIds, nil
 		},

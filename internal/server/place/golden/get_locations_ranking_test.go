@@ -31,10 +31,9 @@ func TestGetLocationsRankings(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_locations_ranking")
+	goldenPath := path.Join(path.Dir(filename), "get_locations_ranking")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile   string
 			placeType    string
@@ -79,7 +78,7 @@ func TestGetLocationsRankings(t *testing.T) {
 				IsPerCapita:  c.isPerCapita,
 				StatVarDcids: c.statVarDcids,
 			}
-			response, err := client.GetLocationsRankings(ctx, req)
+			response, err := mixer.GetLocationsRankings(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetLocationsRankings: %s", err)
 				continue
@@ -89,9 +88,7 @@ func TestGetLocationsRankings(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(response, goldenPath, c.goldenFile)
 				continue

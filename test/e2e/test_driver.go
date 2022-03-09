@@ -30,56 +30,40 @@ const numTestTimes = 4
 func TestDriver(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, bool, bool)) error {
+	testSuite func(pb.MixerClient, pb.ReconClient, bool)) error {
 	if LatencyTest {
 		return latencyTest(apiName, opt, testSuite)
 	}
 	return goldenTest(opt, testSuite)
 }
 
-func goldenTest(opt *TestOption, testSuite func(pb.MixerClient, bool, bool)) error {
-	for _, useImportGroup := range []bool{true, false} {
-		opt.UseImportGroup = useImportGroup
-		client, _, err := Setup(opt)
-		if err != nil {
-			return fmt.Errorf("failed to set up mixer and client")
-		}
-		testSuite(client, false /* latencyTest */, useImportGroup)
+func goldenTest(opt *TestOption, testSuite func(pb.MixerClient, pb.ReconClient, bool)) error {
+	mixer, recon, err := Setup(opt)
+	if err != nil {
+		return fmt.Errorf("failed to set up mixer and client")
 	}
+	testSuite(mixer, recon, false /* latencyTest */)
 	return nil
 }
 
 func latencyTest(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, bool, bool)) error {
-	// Map: useImportGroup -> [duration in seconds].
-	durationStore := map[bool][]float64{}
+	testSuite func(pb.MixerClient, pb.ReconClient, bool)) error {
+	durationStore := []float64{}
 
-	for _, useImportGroup := range []bool{true, false} {
-		opt.UseImportGroup = useImportGroup
-		client, _, err := Setup(opt)
-		if err != nil {
-			return fmt.Errorf("failed to set up mixer and client")
-		}
-		// Run multiple times to reduce fluctuations.
-		for i := 0; i < numTestTimes; i++ {
-			startTime := time.Now()
-			testSuite(client, true /* latencyTest */, useImportGroup)
-			durationStore[useImportGroup] = append(durationStore[useImportGroup],
-				time.Since(startTime).Seconds())
-		}
+	mixer, recon, err := Setup(opt)
+	if err != nil {
+		return fmt.Errorf("failed to set up mixer and client")
 	}
-
-	oldValue := meanValue(durationStore[false])
-	newValue := meanValue(durationStore[true])
-	changeSign := ""
-	if newValue > oldValue {
-		changeSign = "+"
+	// Run multiple times to reduce fluctuations.
+	for i := 0; i < numTestTimes; i++ {
+		startTime := time.Now()
+		testSuite(mixer, recon, true /* latencyTest */)
+		durationStore = append(durationStore, time.Since(startTime).Seconds())
 	}
-	resultCsvRow := fmt.Sprintf("%s,%.3f,%.3f,%s%.3f%%\n",
-		apiName, oldValue, newValue, changeSign, (newValue/oldValue-1)*100)
-
+	value := meanValue(durationStore)
+	resultCsvRow := fmt.Sprintf("%s,%.3f\n", apiName, value)
 	fmt.Println(resultCsvRow)
 
 	_, filename, _, _ := runtime.Caller(0)

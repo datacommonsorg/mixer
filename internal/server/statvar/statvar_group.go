@@ -24,7 +24,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -145,16 +144,10 @@ func GetStatVarGroup(
 			ctx,
 			store.BtGroup,
 			cbt.RowList{bigtable.BtStatVarGroup},
-			func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+			func(dcid string, jsonRaw []byte) (interface{}, error) {
 				var svgResp pb.StatVarGroups
-				if isProto {
-					if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
-						return nil, err
-					}
-				} else {
-					if err := protojson.Unmarshal(jsonRaw, &svgResp); err != nil {
-						return nil, err
-					}
+				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
+					return nil, err
 				}
 				return &svgResp, nil
 			},

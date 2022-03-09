@@ -31,10 +31,9 @@ func TestGetPlaceMetadata(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_place_metadata")
+	goldenPath := path.Join(path.Dir(filename), "get_place_metadata")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			places     []string
@@ -47,7 +46,7 @@ func TestGetPlaceMetadata(t *testing.T) {
 			req := &pb.GetPlaceMetadataRequest{
 				Places: c.places,
 			}
-			resp, err := client.GetPlaceMetadata(ctx, req)
+			resp, err := mixer.GetPlaceMetadata(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetPlaceMetadata: %s", err)
 				continue
@@ -57,9 +56,7 @@ func TestGetPlaceMetadata(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue

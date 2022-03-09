@@ -21,7 +21,6 @@ import (
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 )
 
 // UnitConversion represents conversion sepc for units.
@@ -39,15 +38,9 @@ var UnitMapping = map[string]*UnitConversion{
 }
 
 // ToObsSeriesPb converts ChartStore to pb.ObsTimeSerie
-func ToObsSeriesPb(token string, jsonRaw []byte, isProto bool) (interface{}, error) {
+func ToObsSeriesPb(token string, jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
-	var err error
-	if isProto {
-		err = proto.Unmarshal(jsonRaw, pbData)
-	} else {
-		err = protojson.Unmarshal(jsonRaw, pbData)
-	}
-	if err != nil {
+	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
 		return nil, err
 	}
 	switch x := pbData.Val.(type) {
@@ -73,15 +66,9 @@ func ToObsSeriesPb(token string, jsonRaw []byte, isProto bool) (interface{}, err
 }
 
 // ToObsSeries converts ChartStore to ObsSeries
-func ToObsSeries(token string, jsonRaw []byte, isProto bool) (interface{}, error) {
+func ToObsSeries(token string, jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
-	var err error
-	if isProto {
-		err = proto.Unmarshal(jsonRaw, pbData)
-	} else {
-		err = protojson.Unmarshal(jsonRaw, pbData)
-	}
-	if err != nil {
+	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
 		return nil, err
 	}
 	switch x := pbData.Val.(type) {
@@ -118,15 +105,9 @@ func ToObsSeries(token string, jsonRaw []byte, isProto bool) (interface{}, error
 }
 
 // ToObsCollection converts ChartStore to pb.ObsCollection
-func ToObsCollection(token string, jsonRaw []byte, isProto bool) (interface{}, error) {
+func ToObsCollection(token string, jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
-	var err error
-	if isProto {
-		err = proto.Unmarshal(jsonRaw, pbData)
-	} else {
-		err = protojson.Unmarshal(jsonRaw, pbData)
-	}
-	if err != nil {
+	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
 		return nil, err
 	}
 	switch x := pbData.Val.(type) {
@@ -152,16 +133,10 @@ func ToObsCollection(token string, jsonRaw []byte, isProto bool) (interface{}, e
 }
 
 // ToTriples converts raw bigtable data to pb.Triples
-func ToTriples(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+func ToTriples(dcid string, jsonRaw []byte) (interface{}, error) {
 	var triples pb.Triples
-	if isProto {
-		if err := proto.Unmarshal(jsonRaw, &triples); err != nil {
-			return nil, err
-		}
-	} else {
-		if err := protojson.Unmarshal(jsonRaw, &triples); err != nil {
-			return nil, err
-		}
+	if err := proto.Unmarshal(jsonRaw, &triples); err != nil {
+		return nil, err
 	}
 	return &triples, nil
 }

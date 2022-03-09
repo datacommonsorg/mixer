@@ -70,7 +70,7 @@ func TestReadTriple(t *testing.T) {
 	}
 	got, err := ReadTriples(
 		ctx,
-		bigtable.NewGroup([]*bigtable.Table{bigtable.NewTable("base", btTable)}, "", false),
+		bigtable.NewGroup([]*bigtable.Table{bigtable.NewTable("base", btTable)}, ""),
 		bigtable.BuildTriplesKey([]string{"City"}),
 	)
 	if err != nil {

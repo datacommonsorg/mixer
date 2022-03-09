@@ -34,7 +34,7 @@ func TestGetStatVarSummary(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_statvar_summary")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			svs        []string
 			goldenFile string
@@ -56,7 +56,7 @@ func TestGetStatVarSummary(t *testing.T) {
 				"covid.json",
 			},
 		} {
-			resp, err := client.GetStatVarSummary(ctx, &pb.GetStatVarSummaryRequest{
+			resp, err := mixer.GetStatVarSummary(ctx, &pb.GetStatVarSummaryRequest{
 				StatVars: c.svs,
 			})
 			if err != nil {
@@ -68,9 +68,7 @@ func TestGetStatVarSummary(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue

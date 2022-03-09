@@ -34,7 +34,7 @@ func TestGetPlacesIn(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_places_in")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			dcids      []string
@@ -60,7 +60,7 @@ func TestGetPlacesIn(t *testing.T) {
 				Dcids:     c.dcids,
 				PlaceType: c.typ,
 			}
-			resp, err := client.GetPlacesIn(ctx, req)
+			resp, err := mixer.GetPlacesIn(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetPlacesIn: %s", err)
 				continue
@@ -77,9 +77,7 @@ func TestGetPlacesIn(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(result, goldenPath, c.goldenFile)

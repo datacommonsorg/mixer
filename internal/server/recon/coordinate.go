@@ -26,7 +26,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/golang/geo/s2"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -65,16 +64,10 @@ func ResolveCoordinates(
 		ctx,
 		store.BtGroup,
 		reconRowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var recon pb.CoordinateRecon
-			if isProto {
-				if err := proto.Unmarshal(jsonRaw, &recon); err != nil {
-					return nil, err
-				}
-			} else {
-				if err := protojson.Unmarshal(jsonRaw, &recon); err != nil {
-					return nil, err
-				}
+			if err := proto.Unmarshal(jsonRaw, &recon); err != nil {
+				return nil, err
 			}
 			return &recon, nil
 		},

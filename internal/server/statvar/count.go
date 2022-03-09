@@ -20,7 +20,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -41,18 +40,10 @@ func Count(
 		ctx,
 		btGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var statVarExistence pb.PlaceStatVarExistence
-			if isProto {
-				err := proto.Unmarshal(jsonRaw, &statVarExistence)
-				if err != nil {
-					return nil, err
-				}
-			} else {
-				err := protojson.Unmarshal(jsonRaw, &statVarExistence)
-				if err != nil {
-					return nil, err
-				}
+			if err := proto.Unmarshal(jsonRaw, &statVarExistence); err != nil {
+				return nil, err
 			}
 			return &statVarExistence, nil
 		},

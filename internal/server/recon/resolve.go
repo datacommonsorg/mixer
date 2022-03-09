@@ -26,7 +26,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -112,16 +111,10 @@ func ResolveEntities(
 
 	// Read ReconIdMap cache.
 	btDataList, err := bigtable.Read(ctx, store.BtGroup, rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var reconEntities pb.ReconEntities
-			if isProto {
-				if err := proto.Unmarshal(jsonRaw, &reconEntities); err != nil {
-					return nil, err
-				}
-			} else {
-				if err := protojson.Unmarshal(jsonRaw, &reconEntities); err != nil {
-					return nil, err
-				}
+			if err := proto.Unmarshal(jsonRaw, &reconEntities); err != nil {
+				return nil, err
 			}
 			return &reconEntities, nil
 		},

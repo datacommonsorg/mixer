@@ -34,7 +34,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_stat_set_series_within_place")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			parentPlace string
 			childType   string
@@ -48,7 +48,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 				"county_city_population.json",
 			},
 		} {
-			resp, err := client.GetStatSetSeriesWithinPlace(
+			resp, err := mixer.GetStatSetSeriesWithinPlace(
 				ctx, &pb.GetStatSetSeriesWithinPlaceRequest{
 					ParentPlace: c.parentPlace,
 					ChildType:   c.childType,
@@ -63,9 +63,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue

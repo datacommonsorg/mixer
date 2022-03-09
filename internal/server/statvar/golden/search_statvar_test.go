@@ -34,7 +34,7 @@ func TestSearchStatVar(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "search_statvar")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			query           string
 			places          []string
@@ -102,7 +102,7 @@ func TestSearchStatVar(t *testing.T) {
 				"poor.json",
 			},
 		} {
-			resp, err := client.SearchStatVar(ctx, &pb.SearchStatVarRequest{
+			resp, err := mixer.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 				Query:           c.query,
 				Places:          c.places,
 				EnableBlocklist: c.enableBlocklist,
@@ -116,9 +116,7 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue

@@ -60,19 +60,16 @@ type Group struct {
 	tables          []*Table
 	lock            sync.RWMutex
 	branchTableName string
-	isProto         bool
 }
 
 // NewGroup creates a BigtableGroup
 func NewGroup(
 	tables []*Table,
 	branchTableName string,
-	useImportGroup bool,
 ) *Group {
 	SortTables(tables)
 	return &Group{
 		tables:          tables,
-		isProto:         useImportGroup,
 		branchTableName: branchTableName,
 	}
 }

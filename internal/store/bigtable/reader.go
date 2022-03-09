@@ -40,9 +40,8 @@ func readRowFn(
 	btTable *cbt.Table,
 	rowSetPart cbt.RowSet,
 	getToken func(string) (string, error),
-	action func(string, []byte, bool) (interface{}, error),
+	action func(string, []byte) (interface{}, error),
 	elemChan chan chanData,
-	isProto bool,
 ) func() error {
 	return func() error {
 		if err := btTable.ReadRows(errCtx, rowSetPart,
@@ -64,7 +63,7 @@ func readRowFn(
 				if err != nil {
 					return false
 				}
-				elem, err := action(token, jsonRaw, isProto)
+				elem, err := action(token, jsonRaw)
 				if err != nil {
 					return false
 				}
@@ -93,7 +92,7 @@ func Read(
 	ctx context.Context,
 	btGroup *Group,
 	rowSet cbt.RowSet,
-	action func(string, []byte, bool) (interface{}, error),
+	action func(string, []byte) (interface{}, error),
 	getToken func(string) (string, error),
 ) ([]map[string]interface{}, error) {
 	tables := btGroup.Tables()
@@ -142,7 +141,7 @@ func Read(
 			for j := 0; j < len(tables); j++ {
 				j := j
 				if tables[j] != nil {
-					errs.Go(readRowFn(errCtx, tables[j], rowSetPart, getToken, action, chans[j], btGroup.isProto))
+					errs.Go(readRowFn(errCtx, tables[j], rowSetPart, getToken, action, chans[j]))
 				}
 			}
 		}

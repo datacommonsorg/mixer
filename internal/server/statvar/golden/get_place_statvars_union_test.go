@@ -26,15 +26,7 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{UseMemdb: true},
-		{UseMemdb: true, UseImportGroup: true},
-	} {
-		client, _, err := e2e.Setup(opt)
-		if err != nil {
-			t.Fatalf("Failed to set up mixer and client")
-		}
-
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			dcids          []string
 			statVars       []string
@@ -75,7 +67,7 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 				Dcids:    c.dcids,
 				StatVars: c.statVars,
 			}
-			resp, err := client.GetPlaceStatVarsUnionV1(ctx, req)
+			resp, err := mixer.GetPlaceStatVarsUnionV1(ctx, req)
 			if err != nil {
 				t.Errorf("Could not GetPlaceStatsVarUnionV1: %s", err)
 				continue
@@ -100,5 +92,10 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 				}
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPlaceStatVarsUnionV1", &e2e.TestOption{UseMemdb: true}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

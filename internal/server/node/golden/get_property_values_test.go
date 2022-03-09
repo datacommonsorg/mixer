@@ -36,7 +36,7 @@ func TestGetPropertyValues(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_property_values")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			dcids      []string
@@ -95,7 +95,7 @@ func TestGetPropertyValues(t *testing.T) {
 			if c.limit > 0 {
 				req.Limit = c.limit
 			}
-			resp, err := client.GetPropertyValues(ctx, req)
+			resp, err := mixer.GetPropertyValues(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetPropertyValues: %s", err)
 				continue
@@ -116,9 +116,7 @@ func TestGetPropertyValues(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(&result, goldenPath, c.goldenFile)

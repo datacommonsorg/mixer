@@ -29,17 +29,10 @@ import (
 func TestResolveIds(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
-		_, client, err := e2e.Setup(opt)
-		if err != nil {
-			t.Fatalf("Failed to set up recon client: %s", err)
-		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(path.Dir(filename), "resolve_ids")
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "resolve_ids")
 
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			req        *pb.ResolveIdsRequest
 			goldenFile string
@@ -53,10 +46,8 @@ func TestResolveIds(t *testing.T) {
 				"result.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
-			resp, err := client.ResolveIds(ctx, c.req)
+			c.goldenFile = "IG_" + c.goldenFile
+			resp, err := recon.ResolveIds(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not ResolveIds: %s", err)
 				continue
@@ -81,5 +72,10 @@ func TestResolveIds(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"ResolveIds", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }
