@@ -115,8 +115,6 @@ func TestGetPropertyValues(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-
-			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(&result, goldenPath, c.goldenFile)

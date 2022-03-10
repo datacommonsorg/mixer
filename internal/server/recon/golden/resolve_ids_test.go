@@ -46,10 +46,13 @@ func TestResolveIds(t *testing.T) {
 				"result.json",
 			},
 		} {
-			c.goldenFile = "IG_" + c.goldenFile
 			resp, err := recon.ResolveIds(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not ResolveIds: %s", err)
+				continue
+			}
+
+			if latencyTest {
 				continue
 			}
 

@@ -57,9 +57,11 @@ func TestGetPropertyLabels(t *testing.T) {
 				t.Errorf("could not GetPropertyLabels: %s", err)
 				continue
 			}
+
 			if latencyTest {
 				continue
 			}
+
 			// Here the golden file is not same as the actual API output.
 			// The actual payload is not a full serielized protobuf but
 			// with the outer level ("data" field) removed. Here is to add that level
@@ -70,7 +72,6 @@ func TestGetPropertyLabels(t *testing.T) {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
-			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(&result, goldenPath, c.goldenFile)

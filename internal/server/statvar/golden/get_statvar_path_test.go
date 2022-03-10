@@ -59,7 +59,10 @@ func TestGetStatVarPath(t *testing.T) {
 				continue
 			}
 
-			c.goldenFile = "IG_" + c.goldenFile
+			if latencyTest {
+				continue
+			}
+
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue

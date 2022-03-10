@@ -103,7 +103,6 @@ func TestGetStats(t *testing.T) {
 				false,
 			},
 		} {
-			c.goldenFile = "IG_" + c.goldenFile
 			resp, err := mixer.GetStats(ctx, &pb.GetStatsRequest{
 				StatsVar:          c.statsVar,
 				Place:             c.place,
@@ -113,6 +112,11 @@ func TestGetStats(t *testing.T) {
 				t.Errorf("could not GetStats: %s", err)
 				continue
 			}
+
+			if latencyTest {
+				continue
+			}
+
 			var result map[string]*model.GetStatsResponse
 			if err := json.Unmarshal([]byte(resp.GetPayload()), &result); err != nil {
 				t.Errorf("Can not Unmarshal payload")

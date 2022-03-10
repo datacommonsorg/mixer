@@ -114,11 +114,14 @@ func TestGetPlacePageData(t *testing.T) {
 				continue
 			}
 
+			if latencyTest {
+				continue
+			}
+
 			resp = util.Sample(
 				resp,
 				buildStrategy(c.maxPlace)).(*pb.GetPlacePageDataResponse)
 
-			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue

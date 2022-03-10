@@ -68,7 +68,7 @@ func latencyTest(
 
 	_, filename, _, _ := runtime.Caller(0)
 	resultFilePath := path.Join(
-		path.Dir(filename), "ig_latency", fmt.Sprintf("%s.csv", apiName))
+		path.Dir(filename), "latency", fmt.Sprintf("%s.csv", apiName))
 	return os.WriteFile(resultFilePath, []byte(resultCsvRow), 0644)
 }
 

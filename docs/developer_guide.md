@@ -174,7 +174,7 @@ go run cmd/main.go \
 In root directory, run:
 
 ```bash
-./test/e2e/run_ig_latency.sh
+./test/e2e/run_latency.sh
 ```
 
 ### Profile a program

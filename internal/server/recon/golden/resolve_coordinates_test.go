@@ -54,10 +54,13 @@ func TestResolveCoordinates(t *testing.T) {
 				"result.json",
 			},
 		} {
-			c.goldenFile = "IG_" + c.goldenFile
 			resp, err := recon.ResolveCoordinates(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not ResolveCoordinates: %s", err)
+				continue
+			}
+
+			if latencyTest {
 				continue
 			}
 
