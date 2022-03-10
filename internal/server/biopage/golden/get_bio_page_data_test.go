@@ -30,48 +30,49 @@ import (
 func TestGetBioPageData(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-
-	client, _, err := e2e.Setup(&e2e.TestOption{})
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_bio_page_data")
+	goldenPath := path.Join(path.Dir(filename), "get_bio_page_data")
 
-	for _, c := range []struct {
-		goldenFile string
-		dcid       string
-	}{
-		{
-			"p53_human.json",
-			"bio/P53_HUMAN",
-		},
-	} {
-		c.goldenFile = "IG_" + c.goldenFile
-		req := &pb.GetBioPageDataRequest{
-			Dcid: c.dcid,
-		}
-		resp, err := client.GetBioPageData(ctx, req)
-		if err != nil {
-			t.Errorf("could not GetBioPageData: %s", err)
-			continue
-		}
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+		for _, c := range []struct {
+			goldenFile string
+			dcid       string
+		}{
+			{
+				"p53_human.json",
+				"bio/P53_HUMAN",
+			},
+		} {
+			c.goldenFile = "IG_" + c.goldenFile
+			req := &pb.GetBioPageDataRequest{
+				Dcid: c.dcid,
+			}
+			resp, err := mixer.GetBioPageData(ctx, req)
+			if err != nil {
+				t.Errorf("could not GetBioPageData: %s", err)
+				continue
+			}
 
-		if e2e.GenerateGolden {
-			e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-			continue
-		}
+			if e2e.GenerateGolden {
+				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				continue
+			}
 
-		var expected pb.GraphNodes
-		err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected)
-		if err != nil {
-			t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
-			continue
+			var expected pb.GraphNodes
+			err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected)
+			if err != nil {
+				t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
+				continue
+			}
 		}
-		if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-			t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
-			continue
-		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetBioPageData", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

@@ -114,9 +114,8 @@ func main() {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
-	var branchCachePubsubTopic, branchCacheVersionFile string
-	branchCachePubsubTopic = "proto-branch-cache-reload"
-	branchCacheVersionFile = "latest_proto_branch_cache_version.txt"
+	branchCachePubsubTopic := "proto-branch-cache-reload"
+	branchCacheVersionFile := "latest_proto_branch_cache_version.txt"
 
 	// Base Bigtable cache
 	var tables []*bigtable.Table
