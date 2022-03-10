@@ -43,11 +43,11 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 			goldenFile  string
 		}{
 			{
-				"geoId/06",
+				"country/USA",
 				"County",
-				"",
+				"2015",
 				[]string{"Count_Person", "Median_Age_Person"},
-				"CA_County.json",
+				"USA_County_2015.json",
 			},
 			{
 				"country/USA",
