@@ -191,8 +191,8 @@ func getStatSetAll(
 						}
 					}
 					tmpResult[statVar][metaHash].Stat[place] = ps
-					tmpResult[statVar][metaHash].MetaHash = metaHash
 				}
+				tmpResult[statVar][metaHash].MetaHash = metaHash
 				result.Metadata[metaHash] = metadata
 			}
 		}
