@@ -39,7 +39,7 @@ go test -parallel 1 ./... $ARG
 
 cd test/e2e/latency
 > latency
-rm latency.csv
+rm ../latency.csv
 echo "method,total-latency" > latency
 cat ./*.csv >> latency
 mv latency ../latency.csv
