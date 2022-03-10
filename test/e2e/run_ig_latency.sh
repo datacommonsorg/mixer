@@ -40,6 +40,6 @@ go test -parallel 1 ./... $ARG
 cd test/e2e/ig_latency
 > ig_latency
 rm ig_latency.csv
-echo "method,no-import-group,import-group,change-rate" > ig_latency
+echo "method,total-latency" > ig_latency
 cat ./*.csv >> ig_latency
 mv ig_latency ig_latency.csv
