@@ -110,7 +110,6 @@ func TestGetTriples(t *testing.T) {
 				continue
 			}
 
-			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden && c.goldenFile != "" {
 				e2e.UpdateGolden(result, goldenPath, c.goldenFile)

@@ -43,10 +43,13 @@ func TestCompareEntities(t *testing.T) {
 				"result.json",
 			},
 		} {
-			c.goldenFile = "IG_" + c.goldenFile
 			resp, err := recon.CompareEntities(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not CompareEntities: %s", err)
+				continue
+			}
+
+			if latencyTest {
 				continue
 			}
 

@@ -84,7 +84,6 @@ func TestGetRelatedLocations(t *testing.T) {
 				continue
 			}
 
-			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)

@@ -43,13 +43,16 @@ func TestGetBioPageData(t *testing.T) {
 				"bio/P53_HUMAN",
 			},
 		} {
-			c.goldenFile = "IG_" + c.goldenFile
 			req := &pb.GetBioPageDataRequest{
 				Dcid: c.dcid,
 			}
 			resp, err := mixer.GetBioPageData(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetBioPageData: %s", err)
+				continue
+			}
+
+			if latencyTest {
 				continue
 			}
 

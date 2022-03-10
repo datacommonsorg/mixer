@@ -76,7 +76,6 @@ func TestGetStatVarGroup(t *testing.T) {
 				continue
 			}
 
-			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				if !c.checkCount {
 					e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)

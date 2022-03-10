@@ -56,7 +56,6 @@ func TestGetPlaceMetadata(t *testing.T) {
 				continue
 			}
 
-			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
