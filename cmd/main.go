@@ -52,9 +52,7 @@ var (
 	schemaPath  = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	// Base Bigtable Cache
 	useBaseBt         = flag.Bool("use_base_bt", true, "Use base bigtable cache")
-	baseTableName     = flag.String("base_table", "", "Base cache Bigtable table.")
-	useImportGroup    = flag.Bool("use_import_group", false, "Use multiple base tables from import group; Only applicable when --use_base_bt=true")
-	importGroupTables = flag.String("import_group_tables", "", "Newline separated list of import group tables; Only applicable when --use_import_group")
+	importGroupTables = flag.String("import_group_tables", "", "Newline separated list of import group tables")
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// GCS to hold memdb data.
@@ -92,7 +90,7 @@ func main() {
 	if err == nil && credentials.ProjectID != "" {
 		cfg := profiler.Config{
 			Service:        "datacommons-api",
-			ServiceVersion: *baseTableName,
+			ServiceVersion: *importGroupTables,
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
@@ -116,34 +114,19 @@ func main() {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
-	var branchCachePubsubTopic, branchCacheVersionFile string
-	if *useImportGroup {
-		branchCachePubsubTopic = "proto-branch-cache-reload"
-		branchCacheVersionFile = "latest_proto_branch_cache_version.txt"
-	} else {
-		branchCachePubsubTopic = "branch-cache-reload"
-		branchCacheVersionFile = "latest_branch_cache_version.txt"
-	}
+	branchCachePubsubTopic := "proto-branch-cache-reload"
+	branchCacheVersionFile := "latest_proto_branch_cache_version.txt"
 
 	// Base Bigtable cache
 	var tables []*bigtable.Table
 	if *useBaseBt {
-		if *useImportGroup {
-			tableNames := util.ParseBigtableGroup(*importGroupTables)
-			for _, name := range tableNames {
-				t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, name)
-				if err != nil {
-					log.Fatalf("Failed to create BigTable client: %v", err)
-				}
-				tables = append(tables, bigtable.NewTable(name, t))
-			}
-		} else {
-			// Base cache
-			t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, *baseTableName)
+		tableNames := util.ParseBigtableGroup(*importGroupTables)
+		for _, name := range tableNames {
+			t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, name)
 			if err != nil {
 				log.Fatalf("Failed to create BigTable client: %v", err)
 			}
-			tables = append(tables, bigtable.NewTable(*baseTableName, t))
+			tables = append(tables, bigtable.NewTable(name, t))
 		}
 	}
 
@@ -188,7 +171,7 @@ func main() {
 		}
 
 		// Store
-		store := store.NewStore(bqClient, memDb, tables, branchTableName, *useImportGroup)
+		store := store.NewStore(bqClient, memDb, tables, branchTableName)
 		// Cache.
 		var cache *resource.Cache
 		if *serveMixerService {
@@ -205,7 +188,7 @@ func main() {
 		// Subscribe to branch cache update
 		if *useBranchBt {
 			err := mixerServer.SubscribeBranchCacheUpdate(ctx, *storeProject,
-				branchCacheSubscriberPrefix, branchCachePubsubTopic, *useImportGroup)
+				branchCacheSubscriberPrefix, branchCachePubsubTopic)
 			if err != nil {
 				log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 			}
@@ -214,7 +197,7 @@ func main() {
 
 	// Register for Recon Service.
 	if *serveReconService {
-		store := store.NewStore(nil, nil, tables, "", *useImportGroup)
+		store := store.NewStore(nil, nil, tables, "")
 		reconServer := server.NewReconServer(store)
 		pb.RegisterReconServer(srv, reconServer)
 	}

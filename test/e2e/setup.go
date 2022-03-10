@@ -41,9 +41,8 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache       bool
-	UseMemdb       bool
-	UseImportGroup bool
+	UseCache bool
+	UseMemdb bool
 }
 
 var (
@@ -68,33 +67,27 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
-	useCache, useMemdb, useImportGroup := false, false, false
+	useCache, useMemdb := false, false
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useMemdb = option[0].UseMemdb
-		useImportGroup = option[0].UseImportGroup
 	}
 	return setupInternal(
 		"../../deploy/storage/bigquery.version",
-		"../../deploy/storage/bigtable.version",
 		"../../deploy/storage/bigtable_import_groups.version",
 		"../../deploy/mapping",
 		storeProject,
 		useCache,
 		useMemdb,
-		useImportGroup,
 	)
 }
 
-func setupInternal(
-	bq, bt, btGroup, mcfPath, storeProject string, useCache, useMemdb, useImportGroup bool,
-) (
+func setupInternal(bq, btGroup, mcfPath, storeProject string, useCache, useMemdb bool) (
 	pb.MixerClient, pb.ReconClient, error,
 ) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
-	baseTableName, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bt))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
 	btGroupString, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btGroup))
@@ -106,13 +99,7 @@ func setupInternal(
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	var branchTableName string
-	if useImportGroup {
-		branchTableName = "dcbranch_2022_03_06_18_18_49"
-	} else {
-		branchTableName = "branch_dcbranch_2022_03_01_16_16_50"
-	}
-
+	branchTableName := "dcbranch_2022_03_06_18_18_49"
 	tables := []*bigtable.Table{}
 	branchTable, err := bigtable.NewBtTable(ctx, storeProject, branchInstance, branchTableName)
 	if err != nil {
@@ -120,21 +107,12 @@ func setupInternal(
 	}
 	tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 
-	if useImportGroup {
-		for _, name := range tableNames {
-			table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
-			if err != nil {
-				return nil, nil, err
-			}
-			tables = append(tables, bigtable.NewTable(name, table))
-		}
-	} else {
-		name := strings.TrimSpace(string(baseTableName))
-		baseTable, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
+	for _, name := range tableNames {
+		table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 		if err != nil {
 			return nil, nil, err
 		}
-		tables = append(tables, bigtable.NewTable(name, baseTable))
+		tables = append(tables, bigtable.NewTable(name, table))
 	}
 
 	metadata, err := server.NewMetadata(
@@ -145,7 +123,7 @@ func setupInternal(
 	var cache *resource.Cache
 	if useCache {
 		cache, err = server.NewCache(
-			ctx, store.NewStore(nil, nil, tables, branchTableName, useImportGroup))
+			ctx, store.NewStore(nil, nil, tables, branchTableName))
 		if err != nil {
 			return nil, nil, err
 		}
@@ -159,7 +137,7 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	return newClient(bqClient, tables, metadata, cache, memDb, useImportGroup, branchTableName)
+	return newClient(bqClient, tables, metadata, cache, memDb, branchTableName)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -183,7 +161,7 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	return newClient(bqClient, nil, metadata, nil, nil, false, "")
+	return newClient(bqClient, nil, metadata, nil, nil, "")
 }
 
 func newClient(
@@ -192,11 +170,10 @@ func newClient(
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	memDb *memdb.MemDb,
-	useImportGroup bool,
 	branchTableName string,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	mixerStore := store.NewStore(bqClient, memDb, tables, branchTableName, useImportGroup)
-	reconStore := store.NewStore(nil, nil, tables, "", useImportGroup)
+	mixerStore := store.NewStore(bqClient, memDb, tables, branchTableName)
+	reconStore := store.NewStore(nil, nil, tables, "")
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cache)
 	reconServer := server.NewReconServer(reconStore)
 	srv := grpc.NewServer()

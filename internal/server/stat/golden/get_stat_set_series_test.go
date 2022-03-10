@@ -34,7 +34,7 @@ func TestGetStatSetSeries(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stat_set_series")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			statVars     []string
 			places       []string
@@ -96,7 +96,7 @@ func TestGetStatSetSeries(t *testing.T) {
 				"",
 			},
 		} {
-			resp, err := client.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
+			resp, err := mixer.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
 				StatVars:   c.statVars,
 				Places:     c.places,
 				ImportName: c.importName,
@@ -110,9 +110,7 @@ func TestGetStatSetSeries(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
@@ -161,7 +159,8 @@ func TestGetStatSetSeries(t *testing.T) {
 	if err := e2e.TestDriver(
 		"GetStatSetSeries",
 		&e2e.TestOption{UseCache: false, UseMemdb: true},
-		testSuite); err != nil {
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

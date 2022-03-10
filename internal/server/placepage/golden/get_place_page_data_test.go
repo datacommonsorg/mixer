@@ -42,18 +42,10 @@ func TestGetPlacePageData(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
-		client, _, err := e2e.Setup(opt)
-		if err != nil {
-			t.Fatalf("Failed to set up mixer and client")
-		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_place_page_data")
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_place_page_data")
 
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			place      string
@@ -111,15 +103,12 @@ func TestGetPlacePageData(t *testing.T) {
 				5,
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
 			req := &pb.GetPlacePageDataRequest{
 				Place:       c.place,
 				NewStatVars: c.statVars,
 				Seed:        c.seed,
 			}
-			resp, err := client.GetPlacePageData(ctx, req)
+			resp, err := mixer.GetPlacePageData(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetPlacePageData: %s", err)
 				continue
@@ -129,6 +118,7 @@ func TestGetPlacePageData(t *testing.T) {
 				resp,
 				buildStrategy(c.maxPlace)).(*pb.GetPlacePageDataResponse)
 
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
@@ -145,5 +135,10 @@ func TestGetPlacePageData(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetPlacesIn", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

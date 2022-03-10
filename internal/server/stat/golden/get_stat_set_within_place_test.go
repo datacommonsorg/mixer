@@ -33,7 +33,7 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stat_set_within_place")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			parentPlace string
 			childType   string
@@ -112,7 +112,7 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 				"epa_facility.json",
 			},
 		} {
-			resp, err := client.GetStatSetWithinPlace(ctx, &pb.GetStatSetWithinPlaceRequest{
+			resp, err := mixer.GetStatSetWithinPlace(ctx, &pb.GetStatSetWithinPlaceRequest{
 				ParentPlace: c.parentPlace,
 				ChildType:   c.childType,
 				StatVars:    c.statVar,
@@ -127,9 +127,7 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
@@ -150,7 +148,8 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 	if err := e2e.TestDriver(
 		"GetStatSetWithinPlace",
 		&e2e.TestOption{UseCache: false, UseMemdb: true},
-		testSuite); err != nil {
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

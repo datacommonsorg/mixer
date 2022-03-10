@@ -33,8 +33,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 // Server holds resources for a mixer server
@@ -117,7 +115,7 @@ func NewMetadata(
 
 // SubscribeBranchCacheUpdate subscribe for branch cache update.
 func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
-	pubsubProject, subscriberPrefix, pubsubTopic string, useImportGroup bool,
+	pubsubProject, subscriberPrefix, pubsubTopic string,
 ) error {
 	return dcpubsub.Subscribe(
 		ctx,
@@ -127,11 +125,6 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
 			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)
-			if v, ok := msg.Attributes["serialization"]; ok && v == "proto" {
-				if !useImportGroup {
-					return status.Errorf(codes.Internal, "Import group mode should subscribe to proto branch cache update")
-				}
-			}
 			s.updateBranchTable(ctx, branchTableName)
 			return nil
 		},

@@ -37,7 +37,6 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 )
 
 const (
@@ -234,15 +233,9 @@ func fetchBtData(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var placePageData pb.StatVarObsSeries
-			var err error
-			if isProto {
-				err = proto.Unmarshal(jsonRaw, &placePageData)
-			} else {
-				err = protojson.Unmarshal(jsonRaw, &placePageData)
-			}
-			if err != nil {
+			if err := proto.Unmarshal(jsonRaw, &placePageData); err != nil {
 				return nil, err
 			}
 			return &placePageData, nil

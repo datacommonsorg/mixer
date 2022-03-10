@@ -23,7 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -61,22 +61,22 @@ func TestMerge(t *testing.T) {
 		base := map[string]string{}
 		branch := map[string]string{}
 		want := &pb.GetPropertyLabelsResponse{Data: make(map[string]*pb.PropertyLabels)}
-		jsonRaw, err := protojson.Marshal(d.baseCache)
+		raw, err := proto.Marshal(d.baseCache)
 		if err != nil {
-			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
+			t.Errorf("proto.Marshal(%v) = %v", d.dcid, err)
 		}
-		tableValue, err := util.ZipAndEncode(jsonRaw)
+		tableValue, err := util.ZipAndEncode(raw)
 		if err != nil {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
 		base[bigtable.BtArcsPrefix+d.dcid] = tableValue
 		want.Data[d.dcid] = d.baseCache
 
-		jsonRaw, err = protojson.Marshal(d.branchCache)
+		raw, err = proto.Marshal(d.branchCache)
 		if err != nil {
 			t.Errorf("json.Marshal(%v) = %v", d.dcid, err)
 		}
-		tableValue, err = util.ZipAndEncode(jsonRaw)
+		tableValue, err = util.ZipAndEncode(raw)
 		if err != nil {
 			t.Errorf("util.ZipAndEncode(%+v) = %+v", d.dcid, err)
 		}
@@ -99,7 +99,6 @@ func TestMerge(t *testing.T) {
 				bigtable.NewTable("borgcron_branch", branchTable),
 			},
 			"borgcron_branch",
-			false,
 		)
 
 		got, err := GetPropertyLabels(ctx,

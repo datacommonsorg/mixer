@@ -31,20 +31,19 @@ type Store struct {
 func NewStore(
 	bqClient *bigquery.Client,
 	memDb *memdb.MemDb,
-	baseTables []*bigtable.Table,
+	tables []*bigtable.Table,
 	branchTableName string,
-	useImportGroup bool,
 ) *Store {
 	// Table validation happens when creating the store
-	validBaseTables := []*bigtable.Table{}
-	for _, t := range baseTables {
+	validTables := []*bigtable.Table{}
+	for _, t := range tables {
 		if t != nil {
-			validBaseTables = append(validBaseTables, t)
+			validTables = append(validTables, t)
 		}
 	}
 	return &Store{
 		BqClient: bqClient,
 		MemDb:    memDb,
-		BtGroup:  bigtable.NewGroup(validBaseTables, branchTableName, useImportGroup),
+		BtGroup:  bigtable.NewGroup(validTables, branchTableName),
 	}
 }

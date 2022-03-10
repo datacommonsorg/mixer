@@ -33,10 +33,9 @@ func TestGetTriples(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_triples")
+	goldenPath := path.Join(path.Dir(filename), "get_triples")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			dcids        []string
 			goldenFile   string
@@ -96,7 +95,7 @@ func TestGetTriples(t *testing.T) {
 			if c.limit > 0 {
 				req.Limit = c.limit
 			}
-			resp, err := client.GetTriples(ctx, req)
+			resp, err := mixer.GetTriples(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetTriples: %s", err)
 				continue
@@ -111,9 +110,7 @@ func TestGetTriples(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden && c.goldenFile != "" {
 				e2e.UpdateGolden(result, goldenPath, c.goldenFile)

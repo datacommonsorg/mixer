@@ -30,19 +30,10 @@ import (
 func TestGetBioPageData(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "get_bio_page_data")
 
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
-		client, _, err := e2e.Setup(opt)
-		if err != nil {
-			t.Fatalf("Failed to set up mixer and client")
-		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "get_bio_page_data")
-
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			dcid       string
@@ -52,13 +43,11 @@ func TestGetBioPageData(t *testing.T) {
 				"bio/P53_HUMAN",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			req := &pb.GetBioPageDataRequest{
 				Dcid: c.dcid,
 			}
-			resp, err := client.GetBioPageData(ctx, req)
+			resp, err := mixer.GetBioPageData(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetBioPageData: %s", err)
 				continue
@@ -80,5 +69,10 @@ func TestGetBioPageData(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"GetBioPageData", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

@@ -33,7 +33,7 @@ func TestGetStatAll(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_stat_all")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			statVars   []string
 			places     []string
@@ -50,7 +50,7 @@ func TestGetStatAll(t *testing.T) {
 				"branch.json",
 			},
 		} {
-			resp, err := client.GetStatAll(ctx, &pb.GetStatAllRequest{
+			resp, err := mixer.GetStatAll(ctx, &pb.GetStatAllRequest{
 				StatVars: c.statVars,
 				Places:   c.places,
 			})
@@ -63,9 +63,7 @@ func TestGetStatAll(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue

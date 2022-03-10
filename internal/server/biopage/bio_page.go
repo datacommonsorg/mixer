@@ -23,7 +23,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -42,16 +41,10 @@ func GetBioPageData(
 		ctx,
 		store.BtGroup,
 		cbt.RowList{bigtable.BtProteinPagePrefix + dcid},
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var graph pb.GraphNodes
-			if isProto {
-				if err := proto.Unmarshal(jsonRaw, &graph); err != nil {
-					return nil, err
-				}
-			} else {
-				if err := protojson.Unmarshal(jsonRaw, &graph); err != nil {
-					return nil, err
-				}
+			if err := proto.Unmarshal(jsonRaw, &graph); err != nil {
+				return nil, err
 			}
 			return &graph, nil
 		},

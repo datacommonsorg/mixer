@@ -23,7 +23,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -46,16 +45,10 @@ func GetPropertyLabels(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propLabels pb.PropertyLabels
-			if isProto {
-				if err := proto.Unmarshal(jsonRaw, &propLabels); err != nil {
-					return nil, err
-				}
-			} else {
-				if err := protojson.Unmarshal(jsonRaw, &propLabels); err != nil {
-					return nil, err
-				}
+			if err := proto.Unmarshal(jsonRaw, &propLabels); err != nil {
+				return nil, err
 			}
 			return &propLabels, nil
 		},

@@ -35,9 +35,9 @@ func TestReadOneTable(t *testing.T) {
 	rowList := cbt.RowList{"key1", "key2"}
 	btData, err := Read(
 		ctx,
-		NewGroup([]*Table{{name: "test", table: btTable}}, "", false),
+		NewGroup([]*Table{{name: "test", table: btTable}}, ""),
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		},
 		nil,
@@ -84,10 +84,9 @@ func TestReadTwoTables(t *testing.T) {
 				{name: "t2_t", table: btTable2},
 			},
 			"t2",
-			false,
 		),
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		},
 		nil,

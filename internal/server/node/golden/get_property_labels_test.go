@@ -33,10 +33,9 @@ func TestGetPropertyLabels(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_property_labels")
+	goldenPath := path.Join(path.Dir(filename), "get_property_labels")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			dcids      []string
@@ -53,7 +52,7 @@ func TestGetPropertyLabels(t *testing.T) {
 			req := &pb.GetPropertyLabelsRequest{
 				Dcids: c.dcids,
 			}
-			resp, err := client.GetPropertyLabels(ctx, req)
+			resp, err := mixer.GetPropertyLabels(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetPropertyLabels: %s", err)
 				continue
@@ -71,9 +70,7 @@ func TestGetPropertyLabels(t *testing.T) {
 				t.Errorf("Can not Unmarshal payload")
 				continue
 			}
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(&result, goldenPath, c.goldenFile)

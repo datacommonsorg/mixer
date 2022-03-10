@@ -34,7 +34,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_stat_set_within_place_all")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			parentPlace string
 			childType   string
@@ -72,7 +72,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 			},
 		} {
 
-			resp, err := client.GetStatSetWithinPlaceAll(ctx, &pb.GetStatSetWithinPlaceRequest{
+			resp, err := mixer.GetStatSetWithinPlaceAll(ctx, &pb.GetStatSetWithinPlaceRequest{
 				ParentPlace: c.parentPlace,
 				ChildType:   c.childType,
 				StatVars:    c.statVar,
@@ -87,9 +87,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue

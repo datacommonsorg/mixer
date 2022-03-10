@@ -34,7 +34,7 @@ func TestGetStatVarGroup(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_statvar_group")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			places     []string
 			goldenFile string
@@ -56,7 +56,7 @@ func TestGetStatVarGroup(t *testing.T) {
 				true,
 			},
 		} {
-			resp, err := client.GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{
+			resp, err := mixer.GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{
 				Places: c.places,
 			})
 			if err != nil {
@@ -76,9 +76,7 @@ func TestGetStatVarGroup(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				if !c.checkCount {
 					e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)

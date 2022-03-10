@@ -31,10 +31,9 @@ func TestGetStatVarPath(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_statvar_path")
+	goldenPath := path.Join(path.Dir(filename), "get_statvar_path")
 
-	testSuite := func(client pb.MixerClient, latencyTest, useImportGroup bool) {
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			id         string
 			goldenFile string
@@ -52,7 +51,7 @@ func TestGetStatVarPath(t *testing.T) {
 				"memdb.json",
 			},
 		} {
-			resp, err := client.GetStatVarPath(ctx, &pb.GetStatVarPathRequest{
+			resp, err := mixer.GetStatVarPath(ctx, &pb.GetStatVarPathRequest{
 				Id: c.id,
 			})
 			if err != nil {
@@ -60,9 +59,7 @@ func TestGetStatVarPath(t *testing.T) {
 				continue
 			}
 
-			if useImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
+			c.goldenFile = "IG_" + c.goldenFile
 			if e2e.GenerateGolden {
 				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
@@ -84,7 +81,8 @@ func TestGetStatVarPath(t *testing.T) {
 	if err := e2e.TestDriver(
 		"GetStatVarPath",
 		&e2e.TestOption{UseCache: true, UseMemdb: true},
-		testSuite); err != nil {
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

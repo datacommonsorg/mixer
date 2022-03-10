@@ -22,6 +22,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -30,21 +31,24 @@ func TestReadTriple(t *testing.T) {
 	data := map[string]string{}
 	dcid := "City"
 	key := bigtable.BtTriplesPrefix + dcid
-	btRow := []byte(`{
-		"triples":[
+	btRow := &pb.Triples{
+		Triples: []*pb.Triple{
 			{
-				"subjectId": "wikidataId/Q9879",
-				"subjectName": "Waalwijk",
-				"subjectTypes": ["City"],
-				"predicate": "typeOf",
-				"objectId": "City",
-				"objectName": "City",
-				"objectTypes" :["Class"]
-			}
-		]
-	}`)
-
-	tableValue, err := util.ZipAndEncode(btRow)
+				SubjectId:    "wikidataId/Q9879",
+				SubjectName:  "Waalwijk",
+				SubjectTypes: []string{"City"},
+				Predicate:    "typeOf",
+				ObjectId:     "City",
+				ObjectName:   "City",
+				ObjectTypes:  []string{"Class"},
+			},
+		},
+	}
+	raw, err := proto.Marshal(btRow)
+	if err != nil {
+		t.Errorf("proto.Marshal(%v) = %v", btRow, err)
+	}
+	tableValue, err := util.ZipAndEncode(raw)
 	if err != nil {
 		t.Errorf("util.ZipAndEncode(%+v) = %v", btRow, err)
 	}
@@ -70,7 +74,7 @@ func TestReadTriple(t *testing.T) {
 	}
 	got, err := ReadTriples(
 		ctx,
-		bigtable.NewGroup([]*bigtable.Table{bigtable.NewTable("base", btTable)}, "", false),
+		bigtable.NewGroup([]*bigtable.Table{bigtable.NewTable("base", btTable)}, ""),
 		bigtable.BuildTriplesKey([]string{"City"}),
 	)
 	if err != nil {

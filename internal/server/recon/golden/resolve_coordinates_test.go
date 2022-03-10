@@ -29,18 +29,11 @@ import (
 func TestResolveCoordinates(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	for _, opt := range []*e2e.TestOption{
-		{},
-		{UseImportGroup: true},
-	} {
-		_, client, err := e2e.Setup(opt)
-		if err != nil {
-			t.Fatalf("Failed to set up recon client: %s", err)
-		}
-		_, filename, _, _ := runtime.Caller(0)
-		goldenPath := path.Join(
-			path.Dir(filename), "resolve_coordinates")
 
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "resolve_coordinates")
+
+	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			req        *pb.ResolveCoordinatesRequest
 			goldenFile string
@@ -61,10 +54,8 @@ func TestResolveCoordinates(t *testing.T) {
 				"result.json",
 			},
 		} {
-			if opt.UseImportGroup {
-				c.goldenFile = "IG_" + c.goldenFile
-			}
-			resp, err := client.ResolveCoordinates(ctx, c.req)
+			c.goldenFile = "IG_" + c.goldenFile
+			resp, err := recon.ResolveCoordinates(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not ResolveCoordinates: %s", err)
 				continue
@@ -96,5 +87,10 @@ func TestResolveCoordinates(t *testing.T) {
 				continue
 			}
 		}
+	}
+
+	if err := e2e.TestDriver(
+		"ResolveCoordinates", &e2e.TestOption{}, testSuite); err != nil {
+		t.Errorf("TestDriver() = %s", err)
 	}
 }

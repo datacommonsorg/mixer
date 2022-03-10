@@ -20,7 +20,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -112,14 +111,9 @@ func GetPropertyValuesHelper(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var propVals pb.EntityInfoCollection
-			var err error
-			if isProto {
-				err = proto.Unmarshal(jsonRaw, &propVals)
-			} else {
-				err = protojson.Unmarshal(jsonRaw, &propVals)
-			}
+			err := proto.Unmarshal(jsonRaw, &propVals)
 			return propVals.Entities, err
 		},
 		nil,

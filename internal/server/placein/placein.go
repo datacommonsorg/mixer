@@ -16,7 +16,6 @@ package placein
 
 import (
 	"context"
-	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -49,13 +48,10 @@ func GetPlacesIn(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte, isProto bool) (interface{}, error) {
-			if isProto {
-				var containedInPlaces pb.ContainedPlaces
-				err := proto.Unmarshal(jsonRaw, &containedInPlaces)
-				return containedInPlaces.Dcids, err
-			}
-			return strings.Split(string(jsonRaw), ","), nil
+		func(dcid string, jsonRaw []byte) (interface{}, error) {
+			var containedInPlaces pb.ContainedPlaces
+			err := proto.Unmarshal(jsonRaw, &containedInPlaces)
+			return containedInPlaces.Dcids, err
 		},
 		nil,
 	)
