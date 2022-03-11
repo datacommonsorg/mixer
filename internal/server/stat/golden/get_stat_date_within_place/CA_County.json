@@ -71,6 +71,18 @@
         },
         {
           "date": {
+            "2000": 58,
+            "2010": 58,
+            "2020": 58
+          },
+          "metadata": {
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
+          }
+        },
+        {
+          "date": {
             "2010": 40,
             "2011": 40,
             "2012": 40,
@@ -86,6 +98,18 @@
             "import_name": "CensusACS1YearSurvey",
             "provenance_url": "https://www.census.gov/",
             "measurement_method": "CensusACS1yrSurvey"
+          }
+        },
+        {
+          "date": {
+            "2011": 54,
+            "2012": 1,
+            "2014": 2
+          },
+          "metadata": {
+            "import_name": "HumanCuratedStats",
+            "provenance_url": "https://google.com",
+            "measurement_method": "HumanCuratedStats"
           }
         },
         {
@@ -108,30 +132,6 @@
             "import_name": "WikidataPopulation",
             "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
             "measurement_method": "WikidataPopulation"
-          }
-        },
-        {
-          "date": {
-            "2000": 58,
-            "2010": 58,
-            "2020": 58
-          },
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease",
-            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-            "measurement_method": "USDecennialCensus"
-          }
-        },
-        {
-          "date": {
-            "2011": 54,
-            "2012": 1,
-            "2014": 2
-          },
-          "metadata": {
-            "import_name": "HumanCuratedStats",
-            "provenance_url": "https://google.com",
-            "measurement_method": "HumanCuratedStats"
           }
         }
       ]

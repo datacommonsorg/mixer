@@ -261,5 +261,6 @@ func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceS
 			result = append(result, s)
 		}
 	}
+	sort.Sort(ranking.SeriesByRank(result))
 	return result
 }
