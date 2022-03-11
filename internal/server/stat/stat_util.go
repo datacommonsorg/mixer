@@ -220,6 +220,7 @@ func getMetaData(s *pb.SourceSeries) *pb.StatMetadata {
 		ObservationPeriod: s.ObservationPeriod,
 		ScalingFactor:     s.ScalingFactor,
 		Unit:              s.Unit,
+		ProvenanceUrl:     s.ProvenanceUrl,
 	}
 }
 

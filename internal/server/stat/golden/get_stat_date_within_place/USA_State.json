@@ -4,6 +4,18 @@
       "stat_date": [
         {
           "date": {
+            "2017": 2,
+            "2018": 2,
+            "2019": 2
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR\u0026tid=ACSST5Y2019.S2602PR",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date": {
             "1790": 1,
             "1800": 1,
             "1810": 1,
@@ -104,7 +116,55 @@
           },
           "metadata": {
             "import_name": "WikidataPopulation",
+            "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
             "measurement_method": "WikidataPopulation"
+          }
+        },
+        {
+          "date": {
+            "2000": 52,
+            "2010": 52,
+            "2020": 52
+          },
+          "metadata": {
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
+          }
+        },
+        {
+          "date": {
+            "1995": 51,
+            "1996": 51,
+            "1997": 51,
+            "1998": 51,
+            "1999": 51,
+            "2000": 51,
+            "2001": 51,
+            "2002": 51,
+            "2003": 51,
+            "2004": 51,
+            "2005": 51,
+            "2006": 51,
+            "2007": 51,
+            "2008": 51,
+            "2009": 51,
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51
+          },
+          "metadata": {
+            "import_name": "OECDRegionalDemography",
+            "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+            "measurement_method": "OECDRegionalStatistics",
+            "observation_period": "P1Y"
           }
         },
         {
@@ -117,6 +177,7 @@
           },
           "metadata": {
             "import_name": "HumanCuratedStats",
+            "provenance_url": "https://google.com",
             "measurement_method": "HumanCuratedStats"
           }
         },
@@ -245,6 +306,7 @@
           },
           "metadata": {
             "import_name": "CensusPEP",
+            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
             "measurement_method": "CensusPEPSurvey"
           }
         },
@@ -256,97 +318,7 @@
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date": {
-            "2011": 52,
-            "2012": 52,
-            "2013": 52,
-            "2014": 52,
-            "2015": 52,
-            "2016": 52,
-            "2017": 52,
-            "2018": 52,
-            "2019": 52
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey",
-            "measurement_method": "CensusACS5yrSurvey"
-          }
-        },
-        {
-          "date": {
-            "2010": 52,
-            "2011": 52,
-            "2012": 52,
-            "2013": 52,
-            "2014": 52,
-            "2015": 52,
-            "2016": 52,
-            "2017": 52,
-            "2018": 52,
-            "2019": 52
-          },
-          "metadata": {
-            "import_name": "CensusACS1YearSurvey",
-            "measurement_method": "CensusACS1yrSurvey"
-          }
-        },
-        {
-          "date": {
-            "2000": 52,
-            "2010": 52,
-            "2020": 52
-          },
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease",
-            "measurement_method": "USDecennialCensus"
-          }
-        },
-        {
-          "date": {
-            "1995": 51,
-            "1996": 51,
-            "1997": 51,
-            "1998": 51,
-            "1999": 51,
-            "2000": 51,
-            "2001": 51,
-            "2002": 51,
-            "2003": 51,
-            "2004": 51,
-            "2005": 51,
-            "2006": 51,
-            "2007": 51,
-            "2008": 51,
-            "2009": 51,
-            "2010": 51,
-            "2011": 51,
-            "2012": 51,
-            "2013": 51,
-            "2014": 51,
-            "2015": 51,
-            "2016": 51,
-            "2017": 51,
-            "2018": 51,
-            "2019": 51
-          },
-          "metadata": {
-            "import_name": "OECDRegionalDemography",
-            "measurement_method": "OECDRegionalStatistics",
-            "observation_period": "P1Y"
-          }
-        },
-        {
-          "date": {
-            "2017": 2,
-            "2018": 2,
-            "2019": 2
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -365,6 +337,7 @@
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -383,57 +356,7 @@
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        }
-      ]
-    },
-    "Count_Person_Female": {
-      "stat_date": [
-        {
-          "date": {
-            "2017": 51,
-            "2018": 51,
-            "2019": 51
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date": {
-            "2010": 1,
-            "2011": 1,
-            "2012": 1,
-            "2013": 1,
-            "2014": 1,
-            "2015": 1,
-            "2016": 1,
-            "2017": 1,
-            "2018": 1,
-            "2019": 1
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date": {
-            "2010": 51,
-            "2011": 51,
-            "2012": 51,
-            "2013": 51,
-            "2014": 51,
-            "2015": 51,
-            "2016": 51,
-            "2017": 51,
-            "2018": 51,
-            "2019": 51
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -451,6 +374,7 @@
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey",
+            "provenance_url": "https://www.census.gov/",
             "measurement_method": "CensusACS5yrSurvey"
           }
         },
@@ -469,6 +393,86 @@
           },
           "metadata": {
             "import_name": "CensusACS1YearSurvey",
+            "provenance_url": "https://www.census.gov/",
+            "measurement_method": "CensusACS1yrSurvey"
+          }
+        }
+      ]
+    },
+    "Count_Person_Female": {
+      "stat_date": [
+        {
+          "date": {
+            "2010": 1,
+            "2011": 1,
+            "2012": 1,
+            "2013": 1,
+            "2014": 1,
+            "2015": 1,
+            "2016": 1,
+            "2017": 1,
+            "2018": 1,
+            "2019": 1
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date": {
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date": {
+            "2011": 52,
+            "2012": 52,
+            "2013": 52,
+            "2014": 52,
+            "2015": 52,
+            "2016": 52,
+            "2017": 52,
+            "2018": 52,
+            "2019": 52
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey",
+            "provenance_url": "https://www.census.gov/",
+            "measurement_method": "CensusACS5yrSurvey"
+          }
+        },
+        {
+          "date": {
+            "2010": 52,
+            "2011": 52,
+            "2012": 52,
+            "2013": 52,
+            "2014": 52,
+            "2015": 52,
+            "2016": 52,
+            "2017": 52,
+            "2018": 52,
+            "2019": 52
+          },
+          "metadata": {
+            "import_name": "CensusACS1YearSurvey",
+            "provenance_url": "https://www.census.gov/",
             "measurement_method": "CensusACS1yrSurvey"
           }
         },
@@ -501,6 +505,7 @@
           },
           "metadata": {
             "import_name": "OECDRegionalDemography",
+            "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
             "measurement_method": "OECDRegionalStatistics",
             "observation_period": "P1Y"
           }
@@ -513,6 +518,19 @@
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR\u0026tid=ACSST5Y2019.S2602PR",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date": {
+            "2017": 51,
+            "2018": 51,
+            "2019": 51
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         }

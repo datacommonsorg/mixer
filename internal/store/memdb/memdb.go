@@ -147,7 +147,7 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 				tmp[meta] = map[string]float64{}
 			}
 			for date := range series.Val {
-				tmp[meta][date] += 1
+				tmp[meta][date]++
 			}
 		}
 	}
