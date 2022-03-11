@@ -130,6 +130,36 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 	return nil, nil
 }
 
+// ReadStatDate reads observation date frequency for a given stat var.
+func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
+	result := &pb.StatDateList{}
+	placeData, ok := memDb.statSeries[statVar]
+	if !ok {
+		return result
+	}
+	tmp := map[*pb.StatMetadata]map[string]float64{}
+	for _, seriesList := range placeData {
+		for _, series := range seriesList {
+			meta := series.Metadata
+			if _, ok := tmp[meta]; !ok {
+				tmp[meta] = map[string]float64{}
+			}
+			for date := range series.Val {
+				tmp[meta][date] += 1
+			}
+		}
+	}
+	for meta, val := range tmp {
+		result.StatDate = append(result.StatDate, &pb.StatDate{
+			Date:     val,
+			Metadata: meta,
+		})
+	}
+	return result
+}
+
 // GetStatVars retrieves the stat vars from private import that have data for
 // the given places.
 func (memDb *MemDb) GetStatVars(places []string) ([]string, []string) {
