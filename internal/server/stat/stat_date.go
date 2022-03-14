@@ -65,8 +65,8 @@ func GetStatDateWithinPlace(
 		if data != nil && len(data.SourceCohorts) > 0 {
 			for _, corhort := range data.SourceCohorts {
 				statDate := &pb.StatDate{
-					Date:     corhort.Val,
-					Metadata: getMetadata(corhort),
+					DatePlaceCount: corhort.Val,
+					Metadata:       getMetadata(corhort),
 				}
 				result.Data[sv].StatDate = append(result.Data[sv].StatDate, statDate)
 			}

@@ -156,8 +156,8 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 	}
 	for meta, val := range tmp {
 		result.StatDate = append(result.StatDate, &pb.StatDate{
-			Date:     val,
-			Metadata: metaMap[meta],
+			DatePlaceCount: val,
+			Metadata:       metaMap[meta],
 		})
 	}
 	return result

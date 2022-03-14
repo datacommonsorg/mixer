@@ -391,7 +391,7 @@ message GetStatSetAllResponse {
 
 message StatDate {
   // Map from date to the number of places.
-  map<string, double> date = 1;
+  map<string, double> date_place_count = 1;
   StatMetadata metadata = 2;
 }
 
