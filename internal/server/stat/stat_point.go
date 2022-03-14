@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -110,7 +111,7 @@ func getStatSet(
 			if stat == nil {
 				continue
 			}
-			metaHash := getMetadataHash(metaData)
+			metaHash := util.GetMetadataHash(metaData)
 			stat.MetaHash = metaHash
 			result.Data[statVar].Stat[place] = stat
 			result.Metadata[metaHash] = metaData
@@ -163,7 +164,7 @@ func getStatSetAll(
 					ScalingFactor:     series.ScalingFactor,
 					Unit:              series.Unit,
 				}
-				metaHash := getMetadataHash(metadata)
+				metaHash := util.GetMetadataHash(metadata)
 				if _, ok := tmpResult[statVar][metaHash]; !ok {
 					tmpResult[statVar][metaHash] = &pb.PlacePointStat{
 						Stat: map[string]*pb.PointStat{},
@@ -323,7 +324,7 @@ func GetStatSetWithinPlace(
 					if usedDate == "" {
 						usedDate = cohort.PlaceToLatestDate[place]
 					}
-					metaHash := getMetadataHash(metaData)
+					metaHash := util.GetMetadataHash(metaData)
 					result.Data[statVar].Stat[place] = &pb.PointStat{
 						Date:     usedDate,
 						Value:    val,
@@ -367,7 +368,7 @@ func GetStatSetWithinPlace(
 				pointValue, metaData := store.MemDb.ReadPointValue(statVar, place, date)
 				// Override public data from private import
 				if pointValue != nil {
-					metaHash := getMetadataHash(metaData)
+					metaHash := util.GetMetadataHash(metaData)
 					pointValue.MetaHash = metaHash
 					result.Data[statVar].Stat[place] = pointValue
 					result.Metadata[metaHash] = metaData
@@ -448,7 +449,7 @@ func GetStatSetWithinPlaceAll(
 				ImportName:        cohort.ImportName,
 				Unit:              cohort.Unit,
 			}
-			metaHash := getMetadataHash(metaData)
+			metaHash := util.GetMetadataHash(metaData)
 			pointStat := &pb.PlacePointStat{
 				MetaHash: metaHash,
 				Stat:     map[string]*pb.PointStat{},
@@ -504,7 +505,7 @@ func GetStatSetWithinPlaceAll(
 				var metaHash uint32
 				if pointValue != nil {
 					if i == 0 {
-						metaHash = getMetadataHash(metaData)
+						metaHash = util.GetMetadataHash(metaData)
 						result.Metadata[metaHash] = metaData
 						stat.MetaHash = metaHash
 					}

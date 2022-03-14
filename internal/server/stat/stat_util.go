@@ -15,13 +15,12 @@
 package stat
 
 import (
-	"hash/fnv"
 	"sort"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -114,7 +113,7 @@ func GetBestSeries(
 func rawSeriesToSeries(raw *pb.SourceSeries) *pb.Series {
 	result := &pb.Series{}
 	result.Val = raw.Val
-	result.Metadata = getMetaData(raw)
+	result.Metadata = getMetadata(raw)
 	return result
 }
 
@@ -175,7 +174,7 @@ func getValueFromBestSourcePb(
 	if date != "" {
 		for _, series := range sourceSeries {
 			if value, ok := series.Val[date]; ok {
-				meta := getMetaData(series)
+				meta := getMetadata(series)
 				return &pb.PointStat{
 					Date:  date,
 					Value: value,
@@ -203,7 +202,7 @@ func getValueFromBestSourcePb(
 					Date:  date,
 					Value: value,
 				}
-				meta = getMetaData(series)
+				meta = getMetadata(series)
 			}
 		}
 	}
@@ -213,7 +212,7 @@ func getValueFromBestSourcePb(
 	return ps, meta
 }
 
-func getMetaData(s *pb.SourceSeries) *pb.StatMetadata {
+func getMetadata(s *pb.SourceSeries) *pb.StatMetadata {
 	return &pb.StatMetadata{
 		ImportName:        s.ImportName,
 		MeasurementMethod: s.MeasurementMethod,
@@ -224,23 +223,9 @@ func getMetaData(s *pb.SourceSeries) *pb.StatMetadata {
 	}
 }
 
-// getMetadataHash retrieves a hash string for a given protobuf message.
-// Note this should be restrict to a request scope.
-func getMetadataHash(m *pb.StatMetadata) uint32 {
-	h := fnv.New32a()
-	_, _ = h.Write([]byte(strings.Join([]string{
-		m.ImportName,
-		m.MeasurementMethod,
-		m.ObservationPeriod,
-		m.ScalingFactor,
-		m.Unit,
-	}, "-")))
-	return h.Sum32()
-}
-
 // getSourceSeriesKey computes the metahash for *pb.SourceSeries.
 func getSourceSeriesHash(series *pb.SourceSeries) uint32 {
-	return getMetadataHash(getMetaData(series))
+	return util.GetMetadataHash(getMetadata(series))
 }
 
 // CollectDistinctSourceSeries merges lists of SourceSeries.

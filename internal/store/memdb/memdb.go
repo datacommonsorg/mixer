@@ -31,6 +31,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -139,22 +140,24 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 	if !ok {
 		return result
 	}
-	tmp := map[*pb.StatMetadata]map[string]float64{}
+	tmp := map[uint32]map[string]float64{}
+	metaMap := map[uint32]*pb.StatMetadata{}
 	for _, seriesList := range placeData {
 		for _, series := range seriesList {
-			meta := series.Metadata
-			if _, ok := tmp[meta]; !ok {
-				tmp[meta] = map[string]float64{}
+			metahash := util.GetMetadataHash(series.Metadata)
+			metaMap[metahash] = series.Metadata
+			if _, ok := tmp[metahash]; !ok {
+				tmp[metahash] = map[string]float64{}
 			}
 			for date := range series.Val {
-				tmp[meta][date]++
+				tmp[metahash][date]++
 			}
 		}
 	}
 	for meta, val := range tmp {
 		result.StatDate = append(result.StatDate, &pb.StatDate{
 			Date:     val,
-			Metadata: meta,
+			Metadata: metaMap[meta],
 		})
 	}
 	return result

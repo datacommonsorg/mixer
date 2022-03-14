@@ -49,10 +49,8 @@ func GetStatDateWithinPlace(
 	result := &pb.GetStatDateWithinPlaceResponse{
 		Data: make(map[string]*pb.StatDateList),
 	}
-	// Initialize with nil to help check if data is in mem-cache. The nil field
-	// will be populated with empty pb.StatDateList struct in the end.
 	for _, sv := range statVars {
-		result.Data[sv] = nil
+		result.Data[sv] = &pb.StatDateList{}
 	}
 
 	// Construct BigTable row keys.
@@ -65,11 +63,10 @@ func GetStatDateWithinPlace(
 	}
 	for sv, data := range cacheData {
 		if data != nil && len(data.SourceCohorts) > 0 {
-			result.Data[sv] = &pb.StatDateList{}
 			for _, corhort := range data.SourceCohorts {
 				statDate := &pb.StatDate{
 					Date:     corhort.Val,
-					Metadata: getMetaData(corhort),
+					Metadata: getMetadata(corhort),
 				}
 				result.Data[sv].StatDate = append(result.Data[sv].StatDate, statDate)
 			}
@@ -77,8 +74,7 @@ func GetStatDateWithinPlace(
 	}
 
 	for sv := range result.Data {
-		if result.Data[sv] == nil {
-			result.Data[sv] = &pb.StatDateList{}
+		if result.Data[sv].StatDate == nil {
 			// Fetch from memdb.
 			if store.MemDb.HasStatVar(sv) {
 				result.Data[sv] = store.MemDb.ReadStatDate(sv)

@@ -200,8 +200,8 @@ func BuildPlaceStatsVarKey(dcids []string) bigtable.RowList {
 	return rowList
 }
 
-// BuildPlaceMetaDataKey builds Bigtable key for place metadata cache
-func BuildPlaceMetaDataKey(places []string) bigtable.RowList {
+// BuildPlaceMetadataKey builds Bigtable key for place metadata cache
+func BuildPlaceMetadataKey(places []string) bigtable.RowList {
 	rowList := bigtable.RowList{}
 	for _, place := range places {
 		rowList = append(rowList, fmt.Sprintf("%s%s", BtPlacesMetadataPrefix, place))
