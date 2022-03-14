@@ -31,6 +31,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -128,6 +129,38 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 		}
 	}
 	return nil, nil
+}
+
+// ReadStatDate reads observation date frequency for a given stat var.
+func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
+	result := &pb.StatDateList{}
+	placeData, ok := memDb.statSeries[statVar]
+	if !ok {
+		return result
+	}
+	tmp := map[uint32]map[string]float64{}
+	metaMap := map[uint32]*pb.StatMetadata{}
+	for _, seriesList := range placeData {
+		for _, series := range seriesList {
+			metahash := util.GetMetadataHash(series.Metadata)
+			metaMap[metahash] = series.Metadata
+			if _, ok := tmp[metahash]; !ok {
+				tmp[metahash] = map[string]float64{}
+			}
+			for date := range series.Val {
+				tmp[metahash][date]++
+			}
+		}
+	}
+	for meta, val := range tmp {
+		result.StatDate = append(result.StatDate, &pb.StatDate{
+			DatePlaceCount: val,
+			Metadata:       metaMap[meta],
+		})
+	}
+	return result
 }
 
 // GetStatVars retrieves the stat vars from private import that have data for

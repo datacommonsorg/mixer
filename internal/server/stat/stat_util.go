@@ -15,13 +15,12 @@
 package stat
 
 import (
-	"hash/fnv"
 	"sort"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -111,17 +110,10 @@ func GetBestSeries(
 	return nil, nil
 }
 
-func rawSeriesToSeries(in *pb.SourceSeries) *pb.Series {
+func rawSeriesToSeries(raw *pb.SourceSeries) *pb.Series {
 	result := &pb.Series{}
-	result.Val = in.Val
-	result.Metadata = &pb.StatMetadata{
-		ImportName:        in.ImportName,
-		ProvenanceUrl:     in.ProvenanceUrl,
-		MeasurementMethod: in.MeasurementMethod,
-		ObservationPeriod: in.ObservationPeriod,
-		ScalingFactor:     in.ScalingFactor,
-		Unit:              in.Unit,
-	}
+	result.Val = raw.Val
+	result.Metadata = getMetadata(raw)
 	return result
 }
 
@@ -182,14 +174,7 @@ func getValueFromBestSourcePb(
 	if date != "" {
 		for _, series := range sourceSeries {
 			if value, ok := series.Val[date]; ok {
-				meta := &pb.StatMetadata{
-					ImportName:        series.ImportName,
-					ProvenanceUrl:     series.ProvenanceUrl,
-					MeasurementMethod: series.MeasurementMethod,
-					ObservationPeriod: series.ObservationPeriod,
-					ScalingFactor:     series.ScalingFactor,
-					Unit:              series.Unit,
-				}
+				meta := getMetadata(series)
 				return &pb.PointStat{
 					Date:  date,
 					Value: value,
@@ -217,14 +202,7 @@ func getValueFromBestSourcePb(
 					Date:  date,
 					Value: value,
 				}
-				meta = &pb.StatMetadata{
-					ImportName:        series.ImportName,
-					ProvenanceUrl:     series.ProvenanceUrl,
-					MeasurementMethod: series.MeasurementMethod,
-					ObservationPeriod: series.ObservationPeriod,
-					ScalingFactor:     series.ScalingFactor,
-					Unit:              series.Unit,
-				}
+				meta = getMetadata(series)
 			}
 		}
 	}
@@ -234,30 +212,20 @@ func getValueFromBestSourcePb(
 	return ps, meta
 }
 
-// getMetadataHash retrieves a hash string for a given protobuf message.
-// Note this should be restrict to a request scope.
-func getMetadataHash(m *pb.StatMetadata) uint32 {
-	h := fnv.New32a()
-	_, _ = h.Write([]byte(strings.Join([]string{
-		m.ImportName,
-		m.MeasurementMethod,
-		m.ObservationPeriod,
-		m.ScalingFactor,
-		m.Unit,
-	}, "-")))
-	return h.Sum32()
+func getMetadata(s *pb.SourceSeries) *pb.StatMetadata {
+	return &pb.StatMetadata{
+		ImportName:        s.ImportName,
+		MeasurementMethod: s.MeasurementMethod,
+		ObservationPeriod: s.ObservationPeriod,
+		ScalingFactor:     s.ScalingFactor,
+		Unit:              s.Unit,
+		ProvenanceUrl:     s.ProvenanceUrl,
+	}
 }
 
 // getSourceSeriesKey computes the metahash for *pb.SourceSeries.
 func getSourceSeriesHash(series *pb.SourceSeries) uint32 {
-	metadata := &pb.StatMetadata{
-		ImportName:        series.ImportName,
-		MeasurementMethod: series.MeasurementMethod,
-		ObservationPeriod: series.ObservationPeriod,
-		ScalingFactor:     series.ScalingFactor,
-		Unit:              series.Unit,
-	}
-	return getMetadataHash(metadata)
+	return util.GetMetadataHash(getMetadata(series))
 }
 
 // CollectDistinctSourceSeries merges lists of SourceSeries.
@@ -278,5 +246,6 @@ func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceS
 			result = append(result, s)
 		}
 	}
+	sort.Sort(ranking.SeriesByRank(result))
 	return result
 }

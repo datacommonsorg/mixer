@@ -410,9 +410,10 @@ type GetPropertyValuesRequest struct {
 	ValueType string `protobuf:"bytes,2,opt,name=value_type,json=valueType,proto3" json:"value_type,omitempty"`
 	// The property to get adjacent nodes for.
 	Property string `protobuf:"bytes,3,opt,name=property,proto3" json:"property,omitempty"`
-	// Maximum number of nodes to query for.
+	// Maximum number of nodes to query for. When set to 0 or non-specified,
+	// no limit is applied.
 	Limit int32 `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
-	// Direction, "in" or "out", default to "out".
+	// Direction, "in" or "out". When not specified, return results for both.
 	Direction string `protobuf:"bytes,5,opt,name=direction,proto3" json:"direction,omitempty"`
 }
 

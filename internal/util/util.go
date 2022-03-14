@@ -21,6 +21,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"hash/fnv"
 	"io"
 	"io/ioutil"
 	"log"
@@ -32,6 +33,7 @@ import (
 	"strings"
 	"time"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -437,4 +439,18 @@ func ParseBigtableGroup(s string) []string {
 		}
 	}
 	return tables
+}
+
+// GetMetadataHash retrieves a hash string for a given protobuf message.
+// Note this should be restrict to a request scope.
+func GetMetadataHash(m *pb.StatMetadata) uint32 {
+	h := fnv.New32a()
+	_, _ = h.Write([]byte(strings.Join([]string{
+		m.ImportName,
+		m.MeasurementMethod,
+		m.ObservationPeriod,
+		m.ScalingFactor,
+		m.Unit,
+	}, "-")))
+	return h.Sum32()
 }
