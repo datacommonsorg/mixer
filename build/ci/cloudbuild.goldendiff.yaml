@@ -21,6 +21,8 @@ steps:
     args:
       - "-c"
       - |
+        touch /tmp/bigtable_import_groups.version
+        > /tmp/bigtable_import_groups.version
         for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
           echo "Copying $src"
           echo $(gsutil cat "$src") >> /tmp/bigtable_import_groups.version
