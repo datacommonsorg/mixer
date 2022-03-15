@@ -15,7 +15,7 @@ function update_version() {
 
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
-    echo "$(gsutil cat $src)" >> deploy/storage/bigtable_import_groups.version
+    echo $(gsutil cat "$src") >> deploy/storage/bigtable_import_groups.version
   done
 
   BQ=$(curl https://autopush.datacommons.org/version 2>/dev/null | awk '{ if ($1~/^datcom-store/) print $1; }')
