@@ -31,8 +31,7 @@ func TestGetStatVarGroupNode(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_statvar_group_node")
+	goldenPath := path.Join(path.Dir(filename), "get_statvar_group_node")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {

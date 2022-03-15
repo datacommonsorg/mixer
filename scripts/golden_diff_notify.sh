@@ -17,6 +17,8 @@
 
 # Send golden diff email for a new Bigtable cache.
 
+set -e
+
 BASE_BT_VERSION=$1
 
 apt-get update -y
@@ -25,8 +27,7 @@ apt-get install -y gawk
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-
-echo "$BASE_BT_VERSION" | tee "$ROOT/deploy/storage/bigtable.version"
+echo "$BASE_BT_VERSION" | tee "$ROOT/deploy/storage/bigtable_import_groups.version"
 
 # Script to convert terminal colors and attributes to HTML
 # https://github.com/pixelb/scripts/blob/master/scripts/ansi2html.sh

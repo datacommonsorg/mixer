@@ -61,7 +61,7 @@ if [[ $ENV == "autopush" ]]; then
   > deploy/storage/bigtable_import_groups.version
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
-    echo "$(gsutil cat $src)" >> deploy/storage/bigtable_import_groups.version
+    echo $(gsutil cat "$src") >> deploy/storage/bigtable_import_groups.version
   done
 fi
 export PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)
