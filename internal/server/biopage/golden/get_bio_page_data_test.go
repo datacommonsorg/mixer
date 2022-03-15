@@ -39,8 +39,8 @@ func TestGetBioPageData(t *testing.T) {
 			dcid       string
 		}{
 			{
-				"p53_human.json",
-				"bio/P53_HUMAN",
+				"yeast.json",
+				"bio/AHP1_YEAST",
 			},
 		} {
 			req := &pb.GetBioPageDataRequest{
