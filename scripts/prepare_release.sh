@@ -13,8 +13,10 @@ function update_version() {
   echo ""
   echo "==== Updating BT and BQ versions ===="
 
-  BT=$(curl https://autopush.datacommons.org/version 2>/dev/null | awk '{ if ($1~/^borgcron_/) print $1; }')
-  printf "$BT" > deploy/storage/bigtable.version
+  for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
+    echo "Copying $src"
+    echo "$(gsutil cat $src)" >> deploy/storage/bigtable_import_groups.version
+  done
 
   BQ=$(curl https://autopush.datacommons.org/version 2>/dev/null | awk '{ if ($1~/^datcom-store/) print $1; }')
   printf "$BQ" > deploy/storage/bigquery.version

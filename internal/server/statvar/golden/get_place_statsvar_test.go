@@ -25,11 +25,10 @@ import (
 func TestGetPlaceStatsVar(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup()
+	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
-
 	for _, c := range []struct {
 		dcids    []string
 		want     []string
@@ -61,7 +60,6 @@ func TestGetPlaceStatsVar(t *testing.T) {
 			true,
 		},
 	} {
-
 		req := &pb.GetPlaceStatsVarRequest{
 			Dcids: c.dcids,
 		}

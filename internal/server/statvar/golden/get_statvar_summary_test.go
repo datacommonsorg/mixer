@@ -31,8 +31,7 @@ func TestGetStatVarSummary(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "get_statvar_summary")
+	goldenPath := path.Join(path.Dir(filename), "get_statvar_summary")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -87,7 +86,7 @@ func TestGetStatVarSummary(t *testing.T) {
 	}
 
 	if err := e2e.TestDriver(
-		"GetStatVarSummary", &e2e.TestOption{UseCache: true}, testSuite); err != nil {
+		"GetStatVarSummary", &e2e.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

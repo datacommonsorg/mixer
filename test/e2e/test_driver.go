@@ -30,14 +30,18 @@ const numTestTimes = 4
 func TestDriver(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, pb.ReconClient, bool)) error {
+	testSuite func(pb.MixerClient, pb.ReconClient, bool),
+) error {
 	if LatencyTest {
 		return latencyTest(apiName, opt, testSuite)
 	}
 	return goldenTest(opt, testSuite)
 }
 
-func goldenTest(opt *TestOption, testSuite func(pb.MixerClient, pb.ReconClient, bool)) error {
+func goldenTest(
+	opt *TestOption,
+	testSuite func(pb.MixerClient, pb.ReconClient, bool),
+) error {
 	mixer, recon, err := Setup(opt)
 	if err != nil {
 		return fmt.Errorf("failed to set up mixer and client")
@@ -49,9 +53,9 @@ func goldenTest(opt *TestOption, testSuite func(pb.MixerClient, pb.ReconClient, 
 func latencyTest(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, pb.ReconClient, bool)) error {
+	testSuite func(pb.MixerClient, pb.ReconClient, bool),
+) error {
 	durationStore := []float64{}
-
 	mixer, recon, err := Setup(opt)
 	if err != nil {
 		return fmt.Errorf("failed to set up mixer and client")

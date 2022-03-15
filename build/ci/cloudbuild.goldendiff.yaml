@@ -21,17 +21,21 @@ steps:
     args:
       - "-c"
       - |
-        gsutil cp gs://datcom-control/latest_base_cache_version.txt /tmp/bigtable.version
+        for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
+          echo "Copying $src"
+          echo "$(gsutil cat $src)" >> /tmp/bigtable_import_groups.version
+        done
 
   - name: golang
+    env: ["GO111MODULE=on"]
     entrypoint: "bash"
     args:
       - -c
       - |
-        ./scripts/golden_diff_notify.sh $(head -1 /tmp/bigtable.version)
+        ./scripts/golden_diff_notify.sh "$(</tmp/bigtable_import_groups.version)"
         cd tools/send_email
         go run main.go \
-          --subject="Mixer golden data diff for $(head -1 /tmp/bigtable.version)" \
+          --subject="Mixer golden data diff from latest import group build" \
           --receiver="datacommons-alerts@google.com" \
           --body_file="/tmp/golden-diff.html" \
           --mime_type="text/html"
@@ -40,4 +44,8 @@ options:
   volumes:
     - name: tmp
       path: /tmp
+    - name: go-modules
+      path: /go
   machineType: "N1_HIGHCPU_32"
+
+timeout: 3600s
