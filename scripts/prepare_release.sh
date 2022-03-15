@@ -13,6 +13,7 @@ function update_version() {
   echo ""
   echo "==== Updating BT and BQ versions ===="
 
+  > deploy/storage/bigtable_import_groups.version
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
     echo $(gsutil cat "$src") >> deploy/storage/bigtable_import_groups.version
