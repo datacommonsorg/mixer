@@ -1,0 +1,163 @@
+{
+  "data": {
+    "Count_Person": {
+      "stat_date": [
+        {
+          "date_place_count": {
+            "1980": 56,
+            "1981": 56,
+            "1982": 56,
+            "1983": 56,
+            "1984": 56,
+            "1985": 56,
+            "1986": 56,
+            "1987": 56,
+            "1988": 56,
+            "1989": 56,
+            "1990": 56,
+            "1991": 56,
+            "1992": 56,
+            "1993": 56,
+            "1994": 56,
+            "1995": 56,
+            "1996": 56,
+            "1997": 56,
+            "1998": 56,
+            "1999": 56,
+            "2000": 56,
+            "2001": 56,
+            "2002": 56,
+            "2003": 56,
+            "2004": 56,
+            "2005": 56,
+            "2006": 56,
+            "2007": 56,
+            "2008": 56,
+            "2009": 56,
+            "2010": 56,
+            "2011": 56,
+            "2012": 56,
+            "2013": 56,
+            "2014": 56,
+            "2015": 56,
+            "2016": 56,
+            "2017": 56,
+            "2018": 56,
+            "2019": 43
+          },
+          "metadata": {
+            "import_name": "CensusPEP",
+            "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+            "measurement_method": "CensusPEPSurvey"
+          }
+        },
+        {
+          "date_place_count": {
+            "2011": 58,
+            "2012": 58,
+            "2013": 58,
+            "2014": 58,
+            "2015": 58,
+            "2016": 58,
+            "2017": 58,
+            "2018": 58,
+            "2019": 58
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey",
+            "provenance_url": "https://www.census.gov/",
+            "measurement_method": "CensusACS5yrSurvey"
+          }
+        },
+        {
+          "date_place_count": {
+            "2000": 58,
+            "2010": 58,
+            "2020": 58
+          },
+          "metadata": {
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
+          }
+        },
+        {
+          "date_place_count": {
+            "2010": 40,
+            "2011": 40,
+            "2012": 40,
+            "2013": 40,
+            "2014": 40,
+            "2015": 40,
+            "2016": 40,
+            "2017": 40,
+            "2018": 40,
+            "2019": 41
+          },
+          "metadata": {
+            "import_name": "CensusACS1YearSurvey",
+            "provenance_url": "https://www.census.gov/",
+            "measurement_method": "CensusACS1yrSurvey"
+          }
+        },
+        {
+          "date_place_count": {
+            "2011": 54,
+            "2012": 1,
+            "2014": 2
+          },
+          "metadata": {
+            "import_name": "HumanCuratedStats",
+            "provenance_url": "https://google.com",
+            "measurement_method": "HumanCuratedStats"
+          }
+        },
+        {
+          "date_place_count": {
+            "1850": 1,
+            "1860": 1,
+            "1870": 1,
+            "1880": 1,
+            "1890": 1,
+            "1900": 3,
+            "1910": 3,
+            "2010-04-01": 57,
+            "2010-07-01": 57,
+            "2011-07-01": 57,
+            "2012-07-01": 57,
+            "2013-07-01": 57,
+            "2015": 58
+          },
+          "metadata": {
+            "import_name": "WikidataPopulation",
+            "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+            "measurement_method": "WikidataPopulation"
+          }
+        }
+      ]
+    },
+    "Median_Age_Person": {
+      "stat_date": [
+        {
+          "date_place_count": {
+            "2011": 58,
+            "2012": 58,
+            "2013": 58,
+            "2014": 58,
+            "2015": 58,
+            "2016": 58,
+            "2017": 58,
+            "2018": 58,
+            "2019": 58
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey",
+            "provenance_url": "https://www.census.gov/",
+            "measurement_method": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        }
+      ]
+    }
+  }
+}

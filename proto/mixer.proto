@@ -267,11 +267,22 @@ service Mixer {
 
   // Given ancestor place, child place type and stat vars, return the dates that
   // have data for each stat var across all child places.
+  // [!! Deprecated] in favor of GetStatDateWithinPlace
   rpc GetPlaceStatDateWithinPlace(GetPlaceStatDateWithinPlaceRequest)
       returns (GetPlaceStatDateWithinPlaceResponse) {
     option (google.api.http) = {
       get : "/place/stat/date/within-place"
       additional_bindings : {post : "/place/stat/date/within-place" body : "*"}
+    };
+  }
+
+  // Given ancestor place, child place type and stat vars, return the dates and
+  // place count for each source
+  rpc GetStatDateWithinPlace(GetStatDateWithinPlaceRequest)
+      returns (GetStatDateWithinPlaceResponse) {
+    option (google.api.http) = {
+      get : "/v1/stat/date/within-place"
+      additional_bindings : {post : "/v1/stat/date/within-place" body : "*"}
     };
   }
 

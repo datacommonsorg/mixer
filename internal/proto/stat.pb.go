@@ -2221,22 +2221,18 @@ func (x *GetStatSetAllResponse) GetMetadata() map[uint32]*StatMetadata {
 	return nil
 }
 
-// Requests to get observation for all place.
-type GetPlaceObsRequest struct {
+type StatDate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The type of the place.
-	PlaceType string `protobuf:"bytes,1,opt,name=place_type,json=placeType,proto3" json:"place_type,omitempty"`
-	// The stat var dcid.
-	StatVar string `protobuf:"bytes,2,opt,name=stat_var,json=statVar,proto3" json:"stat_var,omitempty"`
-	// Observation date.
-	Date string `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
+	// Map from date to the number of places.
+	DatePlaceCount map[string]float64 `protobuf:"bytes,1,rep,name=date_place_count,json=datePlaceCount,proto3" json:"date_place_count,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"fixed64,2,opt,name=value,proto3"`
+	Metadata       *StatMetadata      `protobuf:"bytes,2,opt,name=metadata,proto3" json:"metadata,omitempty"`
 }
 
-func (x *GetPlaceObsRequest) Reset() {
-	*x = GetPlaceObsRequest{}
+func (x *StatDate) Reset() {
+	*x = StatDate{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_stat_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2244,13 +2240,13 @@ func (x *GetPlaceObsRequest) Reset() {
 	}
 }
 
-func (x *GetPlaceObsRequest) String() string {
+func (x *StatDate) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetPlaceObsRequest) ProtoMessage() {}
+func (*StatDate) ProtoMessage() {}
 
-func (x *GetPlaceObsRequest) ProtoReflect() protoreflect.Message {
+func (x *StatDate) ProtoReflect() protoreflect.Message {
 	mi := &file_stat_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2262,30 +2258,181 @@ func (x *GetPlaceObsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetPlaceObsRequest.ProtoReflect.Descriptor instead.
-func (*GetPlaceObsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use StatDate.ProtoReflect.Descriptor instead.
+func (*StatDate) Descriptor() ([]byte, []int) {
 	return file_stat_proto_rawDescGZIP(), []int{31}
 }
 
-func (x *GetPlaceObsRequest) GetPlaceType() string {
+func (x *StatDate) GetDatePlaceCount() map[string]float64 {
 	if x != nil {
-		return x.PlaceType
+		return x.DatePlaceCount
+	}
+	return nil
+}
+
+func (x *StatDate) GetMetadata() *StatMetadata {
+	if x != nil {
+		return x.Metadata
+	}
+	return nil
+}
+
+type StatDateList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StatDate []*StatDate `protobuf:"bytes,1,rep,name=stat_date,json=statDate,proto3" json:"stat_date,omitempty"`
+}
+
+func (x *StatDateList) Reset() {
+	*x = StatDateList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_proto_msgTypes[32]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StatDateList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StatDateList) ProtoMessage() {}
+
+func (x *StatDateList) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_proto_msgTypes[32]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StatDateList.ProtoReflect.Descriptor instead.
+func (*StatDateList) Descriptor() ([]byte, []int) {
+	return file_stat_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *StatDateList) GetStatDate() []*StatDate {
+	if x != nil {
+		return x.StatDate
+	}
+	return nil
+}
+
+type GetStatDateWithinPlaceRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AncestorPlace  string   `protobuf:"bytes,1,opt,name=ancestor_place,json=ancestorPlace,proto3" json:"ancestor_place,omitempty"`
+	ChildPlaceType string   `protobuf:"bytes,2,opt,name=child_place_type,json=childPlaceType,proto3" json:"child_place_type,omitempty"`
+	StatVars       []string `protobuf:"bytes,3,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
+}
+
+func (x *GetStatDateWithinPlaceRequest) Reset() {
+	*x = GetStatDateWithinPlaceRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_proto_msgTypes[33]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStatDateWithinPlaceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStatDateWithinPlaceRequest) ProtoMessage() {}
+
+func (x *GetStatDateWithinPlaceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_proto_msgTypes[33]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStatDateWithinPlaceRequest.ProtoReflect.Descriptor instead.
+func (*GetStatDateWithinPlaceRequest) Descriptor() ([]byte, []int) {
+	return file_stat_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *GetStatDateWithinPlaceRequest) GetAncestorPlace() string {
+	if x != nil {
+		return x.AncestorPlace
 	}
 	return ""
 }
 
-func (x *GetPlaceObsRequest) GetStatVar() string {
+func (x *GetStatDateWithinPlaceRequest) GetChildPlaceType() string {
 	if x != nil {
-		return x.StatVar
+		return x.ChildPlaceType
 	}
 	return ""
 }
 
-func (x *GetPlaceObsRequest) GetDate() string {
+func (x *GetStatDateWithinPlaceRequest) GetStatVars() []string {
 	if x != nil {
-		return x.Date
+		return x.StatVars
 	}
-	return ""
+	return nil
+}
+
+type GetStatDateWithinPlaceResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Keyed by stat var.
+	Data map[string]*StatDateList `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (x *GetStatDateWithinPlaceResponse) Reset() {
+	*x = GetStatDateWithinPlaceResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_proto_msgTypes[34]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStatDateWithinPlaceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStatDateWithinPlaceResponse) ProtoMessage() {}
+
+func (x *GetStatDateWithinPlaceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_proto_msgTypes[34]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStatDateWithinPlaceResponse.ProtoReflect.Descriptor instead.
+func (*GetStatDateWithinPlaceResponse) Descriptor() ([]byte, []int) {
+	return file_stat_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *GetStatDateWithinPlaceResponse) GetData() map[string]*StatDateList {
+	if x != nil {
+		return x.Data
+	}
+	return nil
 }
 
 // Not persisted in cache.
@@ -2301,7 +2448,7 @@ type SVOPlace_Temp struct {
 func (x *SVOPlace_Temp) Reset() {
 	*x = SVOPlace_Temp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[40]
+		mi := &file_stat_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2314,7 +2461,7 @@ func (x *SVOPlace_Temp) String() string {
 func (*SVOPlace_Temp) ProtoMessage() {}
 
 func (x *SVOPlace_Temp) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[40]
+	mi := &file_stat_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2358,7 +2505,7 @@ type SVOObservation_Temp struct {
 func (x *SVOObservation_Temp) Reset() {
 	*x = SVOObservation_Temp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[41]
+		mi := &file_stat_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2371,7 +2518,7 @@ func (x *SVOObservation_Temp) String() string {
 func (*SVOObservation_Temp) ProtoMessage() {}
 
 func (x *SVOObservation_Temp) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[41]
+	mi := &file_stat_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2783,14 +2930,47 @@ var file_stat_proto_rawDesc = []byte{
 	0x65, 0x79, 0x12, 0x2f, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x19, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
 	0x53, 0x74, 0x61, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x05, 0x76, 0x61,
-	0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x62, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x50, 0x6c,
-	0x61, 0x63, 0x65, 0x4f, 0x62, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a,
-	0x0a, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x09, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x19, 0x0a, 0x08,
-	0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
-	0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x65, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x61, 0x74, 0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e,
-	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xd9, 0x01, 0x0a, 0x08, 0x53, 0x74, 0x61, 0x74,
+	0x44, 0x61, 0x74, 0x65, 0x12, 0x53, 0x0a, 0x10, 0x64, 0x61, 0x74, 0x65, 0x5f, 0x70, 0x6c, 0x61,
+	0x63, 0x65, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29,
+	0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61,
+	0x74, 0x44, 0x61, 0x74, 0x65, 0x2e, 0x44, 0x61, 0x74, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x43,
+	0x6f, 0x75, 0x6e, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0e, 0x64, 0x61, 0x74, 0x65, 0x50,
+	0x6c, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x35, 0x0a, 0x08, 0x6d, 0x65, 0x74,
+	0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x64, 0x61,
+	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x4d, 0x65,
+	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
+	0x1a, 0x41, 0x0a, 0x13, 0x44, 0x61, 0x74, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x75,
+	0x6e, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
+	0x02, 0x38, 0x01, 0x22, 0x42, 0x0a, 0x0c, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x4c,
+	0x69, 0x73, 0x74, 0x12, 0x32, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x64, 0x61, 0x74, 0x65,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x52, 0x08, 0x73,
+	0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x22, 0x8d, 0x01, 0x0a, 0x1d, 0x47, 0x65, 0x74, 0x53,
+	0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c, 0x61,
+	0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x6e, 0x63,
+	0x65, 0x73, 0x74, 0x6f, 0x72, 0x5f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0d, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x50, 0x6c, 0x61, 0x63, 0x65,
+	0x12, 0x28, 0x0a, 0x10, 0x63, 0x68, 0x69, 0x6c, 0x64, 0x5f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x5f,
+	0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x63, 0x68, 0x69, 0x6c,
+	0x64, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x74,
+	0x61, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x73,
+	0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x22, 0xbf, 0x01, 0x0a, 0x1e, 0x47, 0x65, 0x74, 0x53,
+	0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c, 0x61,
+	0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x49, 0x0a, 0x04, 0x64, 0x61,
+	0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x35, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61,
+	0x74, 0x65, 0x57, 0x69, 0x74, 0x68, 0x69, 0x6e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52,
+	0x04, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x52, 0x0a, 0x09, 0x44, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74,
+	0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6b, 0x65, 0x79, 0x12, 0x2f, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x05,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2805,7 +2985,7 @@ func file_stat_proto_rawDescGZIP() []byte {
 	return file_stat_proto_rawDescData
 }
 
-var file_stat_proto_msgTypes = make([]protoimpl.MessageInfo, 49)
+var file_stat_proto_msgTypes = make([]protoimpl.MessageInfo, 54)
 var file_stat_proto_goTypes = []interface{}{
 	(*StatMetadata)(nil),                       // 0: datacommons.StatMetadata
 	(*PointStat)(nil),                          // 1: datacommons.PointStat
@@ -2838,68 +3018,78 @@ var file_stat_proto_goTypes = []interface{}{
 	(*GetStatSetRequest)(nil),                  // 28: datacommons.GetStatSetRequest
 	(*GetStatSetResponse)(nil),                 // 29: datacommons.GetStatSetResponse
 	(*GetStatSetAllResponse)(nil),              // 30: datacommons.GetStatSetAllResponse
-	(*GetPlaceObsRequest)(nil),                 // 31: datacommons.GetPlaceObsRequest
-	nil,                                        // 32: datacommons.PlacePointStat.StatEntry
-	nil,                                        // 33: datacommons.SourceSeries.ValEntry
-	nil,                                        // 34: datacommons.SourceSeries.PlaceToLatestDateEntry
-	nil,                                        // 35: datacommons.Series.ValEntry
-	nil,                                        // 36: datacommons.SeriesMap.DataEntry
-	nil,                                        // 37: datacommons.PlaceStat.StatVarDataEntry
-	nil,                                        // 38: datacommons.StatVarObsSeries.DataEntry
-	nil,                                        // 39: datacommons.StatVarSeries.DataEntry
-	(*SVOPlace_Temp)(nil),                      // 40: datacommons.SVOPlace.Temp
-	(*SVOObservation_Temp)(nil),                // 41: datacommons.SVOObservation.Temp
-	nil,                                        // 42: datacommons.GetStatSetSeriesResponse.DataEntry
-	nil,                                        // 43: datacommons.GetStatSeriesResponse.SeriesEntry
-	nil,                                        // 44: datacommons.GetStatAllResponse.PlaceDataEntry
-	nil,                                        // 45: datacommons.GetStatSetResponse.DataEntry
-	nil,                                        // 46: datacommons.GetStatSetResponse.MetadataEntry
-	nil,                                        // 47: datacommons.GetStatSetAllResponse.DataEntry
-	nil,                                        // 48: datacommons.GetStatSetAllResponse.MetadataEntry
+	(*StatDate)(nil),                           // 31: datacommons.StatDate
+	(*StatDateList)(nil),                       // 32: datacommons.StatDateList
+	(*GetStatDateWithinPlaceRequest)(nil),      // 33: datacommons.GetStatDateWithinPlaceRequest
+	(*GetStatDateWithinPlaceResponse)(nil),     // 34: datacommons.GetStatDateWithinPlaceResponse
+	nil,                                        // 35: datacommons.PlacePointStat.StatEntry
+	nil,                                        // 36: datacommons.SourceSeries.ValEntry
+	nil,                                        // 37: datacommons.SourceSeries.PlaceToLatestDateEntry
+	nil,                                        // 38: datacommons.Series.ValEntry
+	nil,                                        // 39: datacommons.SeriesMap.DataEntry
+	nil,                                        // 40: datacommons.PlaceStat.StatVarDataEntry
+	nil,                                        // 41: datacommons.StatVarObsSeries.DataEntry
+	nil,                                        // 42: datacommons.StatVarSeries.DataEntry
+	(*SVOPlace_Temp)(nil),                      // 43: datacommons.SVOPlace.Temp
+	(*SVOObservation_Temp)(nil),                // 44: datacommons.SVOObservation.Temp
+	nil,                                        // 45: datacommons.GetStatSetSeriesResponse.DataEntry
+	nil,                                        // 46: datacommons.GetStatSeriesResponse.SeriesEntry
+	nil,                                        // 47: datacommons.GetStatAllResponse.PlaceDataEntry
+	nil,                                        // 48: datacommons.GetStatSetResponse.DataEntry
+	nil,                                        // 49: datacommons.GetStatSetResponse.MetadataEntry
+	nil,                                        // 50: datacommons.GetStatSetAllResponse.DataEntry
+	nil,                                        // 51: datacommons.GetStatSetAllResponse.MetadataEntry
+	nil,                                        // 52: datacommons.StatDate.DatePlaceCountEntry
+	nil,                                        // 53: datacommons.GetStatDateWithinPlaceResponse.DataEntry
 }
 var file_stat_proto_depIdxs = []int32{
 	0,  // 0: datacommons.PointStat.metadata:type_name -> datacommons.StatMetadata
-	32, // 1: datacommons.PlacePointStat.stat:type_name -> datacommons.PlacePointStat.StatEntry
+	35, // 1: datacommons.PlacePointStat.stat:type_name -> datacommons.PlacePointStat.StatEntry
 	2,  // 2: datacommons.PlacePointStatAll.stat_list:type_name -> datacommons.PlacePointStat
-	33, // 3: datacommons.SourceSeries.val:type_name -> datacommons.SourceSeries.ValEntry
-	34, // 4: datacommons.SourceSeries.place_to_latest_date:type_name -> datacommons.SourceSeries.PlaceToLatestDateEntry
-	35, // 5: datacommons.Series.val:type_name -> datacommons.Series.ValEntry
+	36, // 3: datacommons.SourceSeries.val:type_name -> datacommons.SourceSeries.ValEntry
+	37, // 4: datacommons.SourceSeries.place_to_latest_date:type_name -> datacommons.SourceSeries.PlaceToLatestDateEntry
+	38, // 5: datacommons.Series.val:type_name -> datacommons.Series.ValEntry
 	0,  // 6: datacommons.Series.metadata:type_name -> datacommons.StatMetadata
-	36, // 7: datacommons.SeriesMap.data:type_name -> datacommons.SeriesMap.DataEntry
+	39, // 7: datacommons.SeriesMap.data:type_name -> datacommons.SeriesMap.DataEntry
 	4,  // 8: datacommons.ObsTimeSeries.source_series:type_name -> datacommons.SourceSeries
 	4,  // 9: datacommons.ObsCollection.source_cohorts:type_name -> datacommons.SourceSeries
 	7,  // 10: datacommons.ChartStore.obs_time_series:type_name -> datacommons.ObsTimeSeries
 	8,  // 11: datacommons.ChartStore.obs_collection:type_name -> datacommons.ObsCollection
-	37, // 12: datacommons.PlaceStat.stat_var_data:type_name -> datacommons.PlaceStat.StatVarDataEntry
-	38, // 13: datacommons.StatVarObsSeries.data:type_name -> datacommons.StatVarObsSeries.DataEntry
-	39, // 14: datacommons.StatVarSeries.data:type_name -> datacommons.StatVarSeries.DataEntry
+	40, // 12: datacommons.PlaceStat.stat_var_data:type_name -> datacommons.PlaceStat.StatVarDataEntry
+	41, // 13: datacommons.StatVarObsSeries.data:type_name -> datacommons.StatVarObsSeries.DataEntry
+	42, // 14: datacommons.StatVarSeries.data:type_name -> datacommons.StatVarSeries.DataEntry
 	14, // 15: datacommons.SVOPlace.observations:type_name -> datacommons.SVOObservation
-	40, // 16: datacommons.SVOPlace.temp:type_name -> datacommons.SVOPlace.Temp
-	41, // 17: datacommons.SVOObservation.temp:type_name -> datacommons.SVOObservation.Temp
+	43, // 16: datacommons.SVOPlace.temp:type_name -> datacommons.SVOPlace.Temp
+	44, // 17: datacommons.SVOObservation.temp:type_name -> datacommons.SVOObservation.Temp
 	13, // 18: datacommons.SVOCollection.places:type_name -> datacommons.SVOPlace
-	42, // 19: datacommons.GetStatSetSeriesResponse.data:type_name -> datacommons.GetStatSetSeriesResponse.DataEntry
-	43, // 20: datacommons.GetStatSeriesResponse.series:type_name -> datacommons.GetStatSeriesResponse.SeriesEntry
-	44, // 21: datacommons.GetStatAllResponse.place_data:type_name -> datacommons.GetStatAllResponse.PlaceDataEntry
-	45, // 22: datacommons.GetStatSetResponse.data:type_name -> datacommons.GetStatSetResponse.DataEntry
-	46, // 23: datacommons.GetStatSetResponse.metadata:type_name -> datacommons.GetStatSetResponse.MetadataEntry
-	47, // 24: datacommons.GetStatSetAllResponse.data:type_name -> datacommons.GetStatSetAllResponse.DataEntry
-	48, // 25: datacommons.GetStatSetAllResponse.metadata:type_name -> datacommons.GetStatSetAllResponse.MetadataEntry
-	1,  // 26: datacommons.PlacePointStat.StatEntry.value:type_name -> datacommons.PointStat
-	5,  // 27: datacommons.SeriesMap.DataEntry.value:type_name -> datacommons.Series
-	7,  // 28: datacommons.PlaceStat.StatVarDataEntry.value:type_name -> datacommons.ObsTimeSeries
-	7,  // 29: datacommons.StatVarObsSeries.DataEntry.value:type_name -> datacommons.ObsTimeSeries
-	5,  // 30: datacommons.StatVarSeries.DataEntry.value:type_name -> datacommons.Series
-	6,  // 31: datacommons.GetStatSetSeriesResponse.DataEntry.value:type_name -> datacommons.SeriesMap
-	10, // 32: datacommons.GetStatAllResponse.PlaceDataEntry.value:type_name -> datacommons.PlaceStat
-	2,  // 33: datacommons.GetStatSetResponse.DataEntry.value:type_name -> datacommons.PlacePointStat
-	0,  // 34: datacommons.GetStatSetResponse.MetadataEntry.value:type_name -> datacommons.StatMetadata
-	3,  // 35: datacommons.GetStatSetAllResponse.DataEntry.value:type_name -> datacommons.PlacePointStatAll
-	0,  // 36: datacommons.GetStatSetAllResponse.MetadataEntry.value:type_name -> datacommons.StatMetadata
-	37, // [37:37] is the sub-list for method output_type
-	37, // [37:37] is the sub-list for method input_type
-	37, // [37:37] is the sub-list for extension type_name
-	37, // [37:37] is the sub-list for extension extendee
-	0,  // [0:37] is the sub-list for field type_name
+	45, // 19: datacommons.GetStatSetSeriesResponse.data:type_name -> datacommons.GetStatSetSeriesResponse.DataEntry
+	46, // 20: datacommons.GetStatSeriesResponse.series:type_name -> datacommons.GetStatSeriesResponse.SeriesEntry
+	47, // 21: datacommons.GetStatAllResponse.place_data:type_name -> datacommons.GetStatAllResponse.PlaceDataEntry
+	48, // 22: datacommons.GetStatSetResponse.data:type_name -> datacommons.GetStatSetResponse.DataEntry
+	49, // 23: datacommons.GetStatSetResponse.metadata:type_name -> datacommons.GetStatSetResponse.MetadataEntry
+	50, // 24: datacommons.GetStatSetAllResponse.data:type_name -> datacommons.GetStatSetAllResponse.DataEntry
+	51, // 25: datacommons.GetStatSetAllResponse.metadata:type_name -> datacommons.GetStatSetAllResponse.MetadataEntry
+	52, // 26: datacommons.StatDate.date_place_count:type_name -> datacommons.StatDate.DatePlaceCountEntry
+	0,  // 27: datacommons.StatDate.metadata:type_name -> datacommons.StatMetadata
+	31, // 28: datacommons.StatDateList.stat_date:type_name -> datacommons.StatDate
+	53, // 29: datacommons.GetStatDateWithinPlaceResponse.data:type_name -> datacommons.GetStatDateWithinPlaceResponse.DataEntry
+	1,  // 30: datacommons.PlacePointStat.StatEntry.value:type_name -> datacommons.PointStat
+	5,  // 31: datacommons.SeriesMap.DataEntry.value:type_name -> datacommons.Series
+	7,  // 32: datacommons.PlaceStat.StatVarDataEntry.value:type_name -> datacommons.ObsTimeSeries
+	7,  // 33: datacommons.StatVarObsSeries.DataEntry.value:type_name -> datacommons.ObsTimeSeries
+	5,  // 34: datacommons.StatVarSeries.DataEntry.value:type_name -> datacommons.Series
+	6,  // 35: datacommons.GetStatSetSeriesResponse.DataEntry.value:type_name -> datacommons.SeriesMap
+	10, // 36: datacommons.GetStatAllResponse.PlaceDataEntry.value:type_name -> datacommons.PlaceStat
+	2,  // 37: datacommons.GetStatSetResponse.DataEntry.value:type_name -> datacommons.PlacePointStat
+	0,  // 38: datacommons.GetStatSetResponse.MetadataEntry.value:type_name -> datacommons.StatMetadata
+	3,  // 39: datacommons.GetStatSetAllResponse.DataEntry.value:type_name -> datacommons.PlacePointStatAll
+	0,  // 40: datacommons.GetStatSetAllResponse.MetadataEntry.value:type_name -> datacommons.StatMetadata
+	32, // 41: datacommons.GetStatDateWithinPlaceResponse.DataEntry.value:type_name -> datacommons.StatDateList
+	42, // [42:42] is the sub-list for method output_type
+	42, // [42:42] is the sub-list for method input_type
+	42, // [42:42] is the sub-list for extension type_name
+	42, // [42:42] is the sub-list for extension extendee
+	0,  // [0:42] is the sub-list for field type_name
 }
 
 func init() { file_stat_proto_init() }
@@ -3281,7 +3471,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetPlaceObsRequest); i {
+			switch v := v.(*StatDate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3292,7 +3482,43 @@ func file_stat_proto_init() {
 				return nil
 			}
 		}
-		file_stat_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StatDateList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetStatDateWithinPlaceRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetStatDateWithinPlaceResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SVOPlace_Temp); i {
 			case 0:
 				return &v.state
@@ -3304,7 +3530,7 @@ func file_stat_proto_init() {
 				return nil
 			}
 		}
-		file_stat_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SVOObservation_Temp); i {
 			case 0:
 				return &v.state
@@ -3331,7 +3557,7 @@ func file_stat_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_stat_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   49,
+			NumMessages:   54,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

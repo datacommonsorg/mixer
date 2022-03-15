@@ -389,14 +389,23 @@ message GetStatSetAllResponse {
   map<uint32, StatMetadata> metadata = 2;
 }
 
-// Requests to get observation for all place.
-message GetPlaceObsRequest {
-  // The type of the place.
-  string place_type = 1;
+message StatDate {
+  // Map from date to the number of places.
+  map<string, double> date_place_count = 1;
+  StatMetadata metadata = 2;
+}
 
-  // The stat var dcid.
-  string stat_var = 2;
+message StatDateList {
+  repeated StatDate stat_date = 1;
+}
 
-  // Observation date.
-  string date = 3;
+message GetStatDateWithinPlaceRequest {
+  string ancestor_place = 1;
+  string child_place_type = 2;
+  repeated string stat_vars = 3;
+}
+
+message GetStatDateWithinPlaceResponse {
+  // Keyed by stat var.
+  map<string, StatDateList> data = 1;
 }

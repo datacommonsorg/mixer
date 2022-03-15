@@ -210,7 +210,7 @@ func GetPlaceMetadata(
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: places")
 	}
 
-	rowList := bigtable.BuildPlaceMetaDataKey(places)
+	rowList := bigtable.BuildPlaceMetadataKey(places)
 	// Place metadata are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
 		ctx,
