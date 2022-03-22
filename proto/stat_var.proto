@@ -49,6 +49,10 @@ message StatVarSummary {
     int32 place_count = 4;
     // List of example places that have stats for this stat var
     repeated Place top_places = 3;
+    // Minimum observation value for places of this type
+    double min_value = 5;
+    // Maximum observation value for places of this type
+    double max_value = 6;
 
     reserved 1;
   }
