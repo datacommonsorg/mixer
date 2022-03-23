@@ -1,0 +1,4004 @@
+{
+  "matchInfo": [
+    {
+      "statVar": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_15To24Years_DiseasesOfTheNervousSystem_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_25To34Years_CongenitalMalformationsDeformationsChromosomalAbnormalities_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_25To34Years_Female_AsianOrPacificIslander",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_25To34Years_Female_White",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_35To44Years_DiseasesOfTheGenitourinarySystem_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_45To54Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_45To54Years_PregnancyChildbirthThePuerperium_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_55To64Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_55To64Years_Female_AsianOrPacificIslander",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_65To74Years_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_65To74Years_ExternalCauses_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_65To74Years_MentalBehaviouralDisorders_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_75To84Years_DiseasesOfTheDigestiveSystem_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_75To84Years_EndocrineNutritionalMetabolicDiseases_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_75To84Years_Neoplasms_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_85Years_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_85Years_ExternalCauses_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_AbnormalNotClassfied_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_CertainInfectiousParasiticDiseases_Female_White",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_CongenitalMalformationsDeformationsChromosomalAbnormalities_Female_BlackOrAfricanAmerican",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female_AsianOrPacificIslander",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_DiseasesOfTheGenitourinarySystem_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_DiseasesOfTheMusculoskeletalSystemConnectiveTissue_Female_White",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_DiseasesOfTheNervousSystem_Female_BlackOrAfricanAmerican",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_DiseasesOfTheRespiratorySystem_Female_AsianOrPacificIslander",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_DiseasesOfTheSkinSubcutaneousTissue_Female_AsianOrPacificIslander",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_Neoplasms_Female_White",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_Upto1Years_Female_AsianOrPacificIslander",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_10To14Years_Female_BlackOrAfricanAmericanAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_10To14Years_Female_NativeHawaiianOrOtherPacificIslanderAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_10To14Years_Female_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_10Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_11Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_12Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15OrMoreYears_Female_MarriedInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15OrMoreYears_Female_TwoOrMoreRaces",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInNursingFacilities",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15OrMoreYears_USCitizenBornInTheUnitedStates_Female_Native_ResidesInInstitutionalizedGroupQuarters",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15OrMoreYears_USCitizenBornInTheUnitedStates_Female_Native_ResidesInNursingFacilities",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To17Years_Female_SomeOtherRaceAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To19Years_Female_NeverMarried",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentBachelorsDegreeOrHigher_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_AsAFractionOf_Count_Person_15To50Years_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_AmericanIndianOrAlaskaNativeAlone_AsAFractionOf_Count_Person_15To50Years_Female_AmericanIndianOrAlaskaNativeAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_BlackOrAfricanAmericanAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_BlackOrAfricanAmericanAlone_AsAFractionOf_Count_Person_15To50Years_Female_BlackOrAfricanAmericanAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_PovertyStatusDetermined",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_AsianAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_PovertyStatusDetermined",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_WhiteAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15To50Years_Female_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_15Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_16OrMoreYears_Female_MarriedInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_16OrMoreYears_Female_WhiteAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_16OrMoreYears_Female_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_16To50Years_BirthInThePast12Months_Female_Unmarried",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To24Years_EducationalAttainment9ThTo12ThGradeNoDiploma_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To24Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To24Years_Female_BelowPovertyLevelInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To64Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To64Years_Female_HispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_19Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_1OrMoreYears_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_20To21Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_20To24Years_Female_AsianAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_20To24Years_Female_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_20To34Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_21To64Years_RatioToPovertyLineUpto2_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_22To24Years_InLaborForce_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25OrMoreYears_Female_HispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25To29Years_Female_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25To39Years_BachelorOfBusinessMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25To39Years_BachelorOfEducationMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25To64Years_EnrolledInEducationOrTraining_Female_AsAFractionOfCount_Person_25To64Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_28Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_29Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_30Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_35OrMoreYears_EnrolledInPublicCollegeOrGraduateSchool_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_35To44Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_35To44Years_Female_BelowPovertyLevelInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_35To44Years_Female_NativeHawaiianOrOtherPacificIslanderAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_35To50Years_BirthInThePast12Months_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_40To64Years_BachelorOfScienceAndEngineeringMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_41Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_45To49Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_45To54Years_Female_Divorced",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_45To64Years_EducationalAttainmentBachelorsDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_45To64Years_EducationalAttainmentSomeCollegeNoDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_45To64Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_50To64Years_Female_HispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_54Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_55To64Years_Female_Separated",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_5To9Years_Female_EnrolledInPrivateSchool",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_5To9Years_Female_WhiteAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_62To64Years_InLaborForce_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_BachelorOfScienceAndEngineeringRelatedMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_EducationalAttainmentAssociatesDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female_ResidesInCollegeOrUniversityStudentHousing",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65To74Years_Female_BlackOrAfricanAmericanAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65To74Years_Female_NativeHawaiianOrOtherPacificIslanderAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_75000To99999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_75OrMoreYears_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_7To14Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_82Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_85OrMoreYears_Female_AmericanIndianOrAlaskaNativeAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_85OrMoreYears_Female_BlackOrAfricanAmericanAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_88Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_97Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_BachelorOfArtsHumanitiesAndOtherMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_FederalGovernmentOwnedEstablishment_Female_Worker_FullTimeYearRoundWorker",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_AbovePovertyLevelInThePast12Months_TwoOrMoreRaces",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_AbovePovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_BlackOrAfricanAmericanAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_DivorcedInThePast12Months_RenterOccupied_ResidesInHousingUnit",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_Employed",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthNorthernWesternEurope",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthCentralAsia",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_MarriedAndNotSeparated",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_NoHealthInsurance",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_SomeOtherRaceAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_TwoOrMoreRaces",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_WithEarnings_ResidesInNursingFacilities",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_WorkPerWeek15To34Hour",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear40To47Week",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear50To52Week",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Female_WorkPerYear27To39Week",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_Illiterate_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_MarginalWorker_AgriculturalLabourers_Worked3To6Months_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_MarginalWorker_OtherWorkers_WorkedUpto3Months_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_MarginalWorker_OtherWorkers_WorkedUpto3Months_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_MarginalWorker_Worked3To6Months_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_MarginalWorker_WorkedUpto3Months_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_NonWorker_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_NonWorker_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Houseless_ScheduledTribe_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Illiterate_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_MainWorker_AgriculturalLabourers_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_MainWorker_Cultivators_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_MainWorker_OtherWorkers_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_MainWorker_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_MarginalWorker_Cultivators_WorkedUpto3Months_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_MarginalWorker_OtherWorkers_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_MarginalWorker_OtherWorkers_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_NotInLaborForce_Female_DivorcedInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_PrivatelyOwnedEstablishment_Female_UnincorporatedBusinessOwnerOrUnpaidFamilyWorker_FullTimeYearRoundWorker",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledCaste_Literate_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledCaste_MarginalWorker_Cultivators_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledCaste_MarginalWorker_Cultivators_Worked3To6Months_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledCaste_MarginalWorker_HouseholdIndustries_WorkedUpto3Months_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledCaste_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_Illiterate_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_MainWorker_AgriculturalLabourers_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_MainWorker_Cultivators_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_MarginalWorker_AgriculturalLabourers_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_MarginalWorker_Cultivators_Rural_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_MarginalWorker_Cultivators_WorkedUpto3Months_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_YearsUpto6_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_ScheduledTribe_YearsUpto6_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_Upto64Years_RatioToPovertyLineUpto4_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_WithDisability_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_AmericanIndianOrAlaskaNative_HighSchool",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_Asian_MiddleSchool",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_Asian_SchoolGrade1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_Asian_SchoolGrade6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_Black_PrimarySchool",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_Black_SchoolGrade5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_HispanicOrLatino_SchoolGrade11",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_HispanicOrLatino_SchoolGrade8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_PrimarySchool",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_SchoolGrade10",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_TwoOrMoreRaces_HighSchool",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_White_SchoolGrade1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_White_SchoolGrade5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Student_Female_White_UngradedClasses",
+      "matchCount": 1
+    },
+    {
+      "statVar": "DropoutRate_Student_Female_MiddleSchool_ScheduledTribe",
+      "matchCount": 1
+    },
+    {
+      "statVar": "DropoutRate_Student_Female_PrimarySchool_ScheduledTribe",
+      "matchCount": 1
+    },
+    {
+      "statVar": "DropoutRate_Student_Female_SecondarySchool_ScheduledCaste",
+      "matchCount": 1
+    },
+    {
+      "statVar": "LifeExpectancy_Person_18Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "LifeExpectancy_Person_20Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "LifeExpectancy_Person_37Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "LifeExpectancy_Person_46Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "LifeExpectancy_Person_4Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "LifeExpectancy_Person_63Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "LifeExpectancy_Person_82Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_Female_MarriedInThePast12Months_OccupiedHousingUnit_ResidesInHousingUnit",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInGroupQuarters",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_BirthInThePast12Months_Female_2OrMoreRatioToPovertyLine",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_BirthInThePast12Months_Female_OneRace",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_BirthInThePast12Months_Female_SomeOtherRaceAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_SomeOtherRaceAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_TwoOrMoreRaces",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_EducationalAttainmentBachelorsDegreeOrHigher_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_Female_1.0OrLessRatioToPovertyLine",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_Female_OneRace",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15To50Years_Female_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_16To50Years_BirthInThePast12Months_Female_Unmarried",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_16To50Years_BirthInThePast12Months_InLaborForce_Female_Unmarried",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_16To50Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_16To64Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_18OrLessYears_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_18OrMoreYears_Female_MarriedInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_1OrMoreYears_Female_DifferentHouseInDifferentCountySameState",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_40To64Years_BachelorOfBusinessMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_55To64Years_Female_NeverMarried",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_55To64Years_Female_Separated",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_65OrMoreYears_Female_ResidesInMilitaryQuartersOrMilitaryShips",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_65OrMoreYears_Female_Separated",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_75000To99999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_BachelorOfScienceAndEngineeringRelatedMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_FederalGovernmentOwnedEstablishment_Female_Worker",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_DidNotWork",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_DivorcedInThePast12Months_RenterOccupied_ResidesInHousingUnit",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_DivorcedInThePast12Months_ResidesInHousehold",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_PlaceOfBirthNorthamerica",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_ResidesInNursingFacilities",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_Widowed",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear14To26Week",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_WorkPerWeek15To34Hour_WorkPerYear50To52Week",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_WorkPerWeek1To14Hour_WorkPerYear48To49Week",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_WorkPerWeek35OrMoreHour",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear27To39Week",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear40OrMoreWeek",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_InLaborForce_Female_DivorcedInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_InLaborForce_Female_NeverMarried",
+      "matchCount": 1
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_InLaborForce_Female_Separated",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Mean_Earnings_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Mean_Earnings_Person_Female_ResidesInNoninstitutionalizedGroupQuarters",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Mean_WagesDaily_Worker_Urban_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Median_Age_Person_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Median_Age_Person_Female_TwoOrMoreRaces",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Median_Earnings_Female_AsAFractionOf_Male_PrivatelyOwnedForProfitEstablishment_IncorporatedBusinessOwner",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthCaribbean",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Median_Earnings_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Median_Earnings_Person_Female_ResidesInNoninstitutionalizedGroupQuarters",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Median_Earnings_Person_PrivatelyOwnedForProfitEstablishment_Female_PaidWorker",
+      "matchCount": 1
+    },
+    {
+      "statVar": "SampleSize_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_11_Female_TracheaBronchusLungCancers",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_15_Female_AllCauses",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_39_Female_Cataracts",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_39_Female_ChronicObstructivePulmonaryDisease",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_42_Female_TracheaBronchusLungCancers",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_45_Female_ChronicObstructivePulmonaryDisease",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_52_Female_ChronicObstructivePulmonaryDisease",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_5_Female_ChronicObstructivePulmonaryDisease",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_9_Female_LowerRespiratoryInfections",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/AIR_9_Female_Stroke",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/CATARACTSURGICALEFFECTIVE_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/CM_01_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000029_Female_AGE45TO49",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000029_Female_AGE60TO64",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000030_Female_AGE35TO39",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000030_Female_AGE55TO59",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000030_Female_AGE85PLUS",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000031_Female_AGE40TO44",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000032_Female_AGE25TO29",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000033_Female_AGE35TO39",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000033_Female_AGE85PLUS",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000034_Female_AGE1TO4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000034_Female_AGE35TO39",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000035_Female_AGE5TO9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000035_Female_AGE75TO79",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/LIFE_0000000035_Female_AGE85PLUS",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/MDG_0000000007_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/MDG_0000000015_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/M_Est_smk_daily_std_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/NCD_CHOL_MEANTOTALCHOL_C_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/NCD_GLUC_02_Female_AGE25PLUS",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/NCD_GLUC_03_Female_YEARS18PLUS",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/NUTRITION_ANAEMIA_PREGNANT_PREV_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/RSUD_2_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001403_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001424_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001436_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001449_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001452_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001455_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001459_ARCHIVED_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001690_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001739_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SA_0000001756_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SDGAIRBODA_Female_TracheaBronchusLungCancers",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SDGAIRBOD_Female_ChronicObstructivePulmonaryDisease",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SDGHIV_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SDGWSHBOD_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/SDG_SH_DTH_RNCOM_Female_MajorCardiovascularDiseases",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/TOBACCO_0000000345_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/WHOSIS_000015_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/WHS2_131_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/WSH_10_SAN_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/Yth_curr_e-cig_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/Yth_daily_smokeless_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/Yth_daily_tob_smoking_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/pncall5_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/pnchome3_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "WHO/uwgt5_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/00wqdeyqjlvw7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/01l565et72rb4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/02rc392sk7413",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/057xs7se7c723",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/06br8vxc68szc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/06f0jf8xvzw4f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0bm3wdelm2vf6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0d9bg22c3g9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0f2v15t12zshd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0flj62fpwwxd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0h9ksksllthh5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0hx5y6ggeen67",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0hz0e47c5jjr9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0kwfcrs65sbr7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0mwqnf6nf5w46",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0n48z3hgw31e5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0n7e9hjd65j1b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0pnxvhnl36sc3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0pzvvyn55k425",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0qhqp1tgnztwd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0w9l16np7ggn9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0xpv1dhkzwjc5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0y0p6czr0mmj",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/0zdxj9weplcb4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/113hjm7z1l3hg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/13qbcdl9tsxs7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/18cfvyskdp6yg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/18lkhr201ej77",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/19262w5f2404f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1b55n3p7fcsy9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1c9gh76tt5e57",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1ffmh2kf8khr4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1g5852wyvnscf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1n434bw2ygzzc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1p5dxrk76lnk",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1qfjfr2jrt4tf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1qldl7dmexnf7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1qq4s1cmdb2b7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1qx4873twxv1c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1rlsdwkhl4v37",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1rzt2jwxfzh25",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1sj8c6fw94849",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1vz4dsh5bfc71",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1wntj80jewhyd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/1yjcz2s006v74",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2267qhs3bgl21",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/23errj4py11f7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/26epkf12cntv2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/284jk99kkhkxd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2ernkb6d9yem2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2exhecp9bd1xc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2g3g971qfes19",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2gwqz4r3n1kt9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2hre8701ls0nb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2lwy9xglph1hc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2p93ezvh5k9b2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2pfbcdtkknzn8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2q6h8g0zmm8q6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2qqzld7ecm55b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2tvzm5l0xlxkg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2vpsk2x614656",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2vyr57wtwkw9d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2z7yrpbq6vsl5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/2zts4ssq1ybmc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/30heeesjwhk3c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/315xez2pfnd23",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/31hj8pg6jwtkf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/344twcrflt113",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/37s4xjee120g5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/388xq8h8hdhyh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/39ept54b5rgw8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3e8gtkmhvb552",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3f0qr216rmr5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3n1cbgh69ys4c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3nnmz5r7blkr3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3r9tskwgn4024",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3s145h6433197",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3vyb28wz7d07b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3w039ndqy7qv1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3x4xx46h7ft07",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/3zwgffmqbq57h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/41fevj7s4em95",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/41zq10cypltx8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/438eq4s5516t8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/43kgdsy45gy4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/44el6k3dgrcf2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/466cwghw1v07d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/466h0s60x6dr1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/46bef9jsyb4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/46t96zpewfrhc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/46v056n28d2e5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/46yw8d6mhn112",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/473zrj2223by7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/48revxwqqssc9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/49d4l0vv4wrh4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4bhzxn4nsp7l4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4dc1zq8vtsw03",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4dhv8330ryetc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4e5pke2qnhwe5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4enxn2r72gqh3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4ev16nfepvb3h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4f2pcjez0s58b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4f8tvq5vg5zq5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4g8l98dgp42z5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4hyh34sye8re9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4j80wx0x54s3c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4kg67mkjkwzd3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4lvmzr1h1ylk1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4mcgy5kpkk2k4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4ngls12fyns8d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4pn7bfhlnkm78",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4qgwc7wwp68jg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4qkhs33t1v2w1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4s778z8ke96n4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4tm08bhy3hxeh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4vmnltlcwgftg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/4zc8j7h24z4b5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/528r4lpm71hy8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/55dvhrledtwzc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/55v685f8f1yx2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5655rq60sjnzd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/56921qt541s2g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/56fspbwpf080f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/56kb336gzkbe9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/57ecym4rbejmh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/59k03h1hvxp89",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5b37jk90f8d46",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5b8q2q5sz0l5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5bhzm1v1e6j05",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5dt0l8ps8dvt2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5hc4etrfyj9qg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5hxtlrr9fhgfd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5l5l055gz5le1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5lrpb28bphysb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5p5dsspzr0h67",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5rng4l0shjej5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5rtyjq0b9lzd2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5t30em8k0lcg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5v8tq9hw6btg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5vsw6zmcrzty5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5wc3m779nds2h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5z4451y4509y5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/5zex71xkfxccc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/61b7h6hz5tmz9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/61hmzf36dd7w8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6bzm3nrfkp4d5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6eksnyjh7ygw8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6htf05cw9qzrf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6jx6c3p8p1r14",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6jxqk3ervcsp7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6kkefdzvzwz3c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6ktcbvwz69g7c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6l99ywxzhj103",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6lkrm25p2yetd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6mxrntcr6tme9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6nnsj69l09jld",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6p35px7wjcre6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6p3j9fwc3jt92",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6p7fmpryckr4g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6t5787k7nq2m8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6y12t0g26wld7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6z6f2zpjcbmf7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/6zllhx9q4h984",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/705k2xed81fd7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/743gx65z6zyf7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/762csxtd66f69",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/77gj567hyvrfc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/77tp5y24ezf58",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/78428tql5c8kb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/79q8hbmk2ecb5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/7by2eyt3c7lf1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/7cb0n2n28dft3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/7cd5bgcz5e2m4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/7h8twf412b0p2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/7mg680g00p5n1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/7qy16hymw2vx4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/7tdmz38s0n6g3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/818jthn7lpcth",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/81xpj06sdg2kd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/829b26b3nqry4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/82n3hsjf9mqwc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/84hvdv9k9h194",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/86w87398exhx5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/88q8n2mgd8ywc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8flsgqjfjtywc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8g7e5vdfxe3ed",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8gc1r0gmxk7vg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8h2rg3rqqb8w7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8hs8lk1s0zc86",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8jyvzy4gdp658",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8k5z555phdx4b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8knjlwfnre92d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8kweztz1m16hf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8lvdxyjynp217",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8pzbnlpv9xe1h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8r4gx6bcl775f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8rt55dcjdcz9d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8s1gkwfkqe133",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8s8l6z3ydwxg7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8t0hfgrgp6sf2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8wmn59kjx4608",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8xmsmynyened3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8xv5ec0mfxkkb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/8z85btwyhxwc4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/90kc67tvhls44",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/90qtj1gf126s1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/90zd7pjmpbq99",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/91cll1xz8dwtc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/93vc1mzwsz3x8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/94b8g45em1ky3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/950yz4f8yj6v7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/95fgt5len82n1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/96sxyvysm0475",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/972r0n3p0cqjc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/979mnf512rvf9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9dj59myq10p58",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9fzgetwbpgxh1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9g5lptct3fqqc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9hrltcsyj2mcb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9k54jj1xyymk8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9kwj0rmvt9y9f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9n02res2v05g7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9p6wctl8qjhj8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9p7s232vtyjm7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9q1hs4rt79h47",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9t0k4299ltwc4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9t4zy631krtt",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9w7c2ycnn13r2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9xw6peejzgbd5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/9ybrfcb7ldym7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/b04pynkmc1169",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/b16wshdz26h87",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/b4lvhh3skn2p8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/b6zfnexvl6bp1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/b86l08d2pysg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/b883f4m0qdlhh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bcwzhl1pwe4j3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bdl1bpzj3klq4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bdpbs6lzy1j8f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/becnsw7tk4ezb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bh990pjl15y97",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bhlcb3wz4b3v2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bhnyz3n3lcstf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bk3hfv8cfexs7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bn0jvq25dhcx6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bn69n25vrjmwh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bq21lmb22ttth",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bwxl4xy9hclk1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/bz64yr3hcesd3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/c06h8ptty8lk8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/c0vsyw8svrjxc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/c51f4xswyyvzb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/c53jk16c4g1r1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/c6zm04rlxzb25",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/c8mdlr20xyyyb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cbq3txcztvfhc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cc7wbw6g53wm8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cdnpvwwqbexv9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cftqf8x92g2jg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/chb572r0ttseh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/clt08ev67qbg4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cmkfxqye25w48",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cn22svxbk5sr4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cnr5q5lkfbb7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cnzx0m1f62993",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cq3jbp58g2ydf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cql1z5x02s3qd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cqmltht77pw85",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/crql4rnqz5ctb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ctt5zkhdgedkd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cwzz4cpmhx525",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cx9qetqc6w8k3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cxg467dfl08v7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/cz69g52cxlzl9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/d0pcx2lxn8wg7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/d1lctn6nrgy47",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/d5eslc5erhkh2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/d6x3gxswr84w5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/d84dzgkh1ybcf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/d92cvkt79pycc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dcjdtqzrx0eqh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ddlv5z14td9tf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/de4pvq0xssw0g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/df4fz8g76gnk9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/df86tww4msdx",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dgmnq3mn220sf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dh0t495vjm3e1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dtevtqtyxv5hg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dteybqyjr7m31",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dtvbvhz7c79e4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dtx5b1e2ysmn7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dwgmf2h72vg18",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/dz9qwfjg9fd7g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e07s2blmwxke5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e10el70kfdbv7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e42lels1pd4h6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e49bd7lt2m8j2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e4gnl68tezl85",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e5gp0jtn2hy07",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e6zfrmtqe88d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e7gmd6sll39x7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/e881d1ew6jqj6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ecb093dzcngxh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ecefwssfy9s6c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/efzcdvhsqsek9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/eg6rrdr1tkf76",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/egflm2tpmfjw8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/egv1vvk1hv0kb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/eh02kcwxtt3w1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/eh5b4vpc3zmg4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ekf07w0gr1216",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/eld89ytsys0v7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/enzzb4fvrxgfh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/erhgxzkr3bkjb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/etrrvbfmtkrl1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/evb4xl5qj3v6c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/evlpf9rrwrf73",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/evv4v7xwpehbf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ew354cgmx3vzb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ezdb6mvdbe3e1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/f40fce5yz4n4h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/f5bpd5l48vgd7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/f6lwx3jd6dphd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/f6wb90rcdy9v",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/f7epk945kd8q5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fcbvr13prbkm6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fd02sq6f1h981",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/febc61lwt06y7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fedxx7xwtk8x1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fetjdsdwqp2x3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ff2f4my72zx0c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fgewdm163cl6d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fgqjl1p9shgq5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fkn44bzm03t01",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fl354hn0bfpk1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/flf5wg60gwdk6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fmytqnf6nn4xg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fr00t6wpc8v5c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ftb040zmyy934",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fwkf9jl9k1fy",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fxp0g8rege5f6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/fytw2rfgjpqkb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/g429cptetvm09",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/g5709vrr9k6zc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/g8tzm4h7qzqnd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/g9zpdj0myb1cc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gb5m3ejtrfx17",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gerys9wjvtyjf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gfg87q23b8pzd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gge6jv2kk8p7c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gj1f5hc2206x4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/glxxcfxtfw0gh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gnyp0slhfklkh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gqbmqjtbqjndb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/grm2fsn5jmpr8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/grwy1z4cn0np7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gy5jtysjhg5vb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/gz88exlqkk07c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h337rel2q30jf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h3sn6609f7s38",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h4jf83hzmrg57",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h4ltg40101vp4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h4qb104wyfds5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h59cx0bpqzh55",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h6zp25p0kjrzd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/h7g5zr71grfcc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hc1px0d4vqce6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hcm8lgtmnd03c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hdwxmpg0nvzwh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hfgwqwzw6tfc5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hg13z91vv9hs4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hg9q7f26211v3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hld5qhzm3t458",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hlmdwqcddhm26",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hp7sd0mn1b129",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hpgqzjr7dqs44",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hr5c4hs9p33wb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hrgx3lel4rrnc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hrxtbvx0qlmnb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hs304blfzde3g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ht7zw6fm982b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hwbfejmnmgrf2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hx0h31x0l0ke7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/hxfqe825bclz1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/j05kd61308553",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/j2697t6fmm3y2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/j2v9253pwbc36",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/j44lmcddgngm2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/j9gznqrwcec83",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/j9qrzkw5le8v6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jcqegt0ptpgm7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jcrby2zvxg0lc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jdwe0dsgcfgz3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jf6jdv3zjx54",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jfd54v03tebw3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jlbbef4fmk52g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jnkd0lxy2fn5h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jp0k3zch5b82c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jq9yfmbm91yh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jts8gf39fybp6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jtvrlpbfykgg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jx2q10tbnwhf3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jx6f56k473pl4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jxl5v5y7y38b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/jyme55ymfzwnf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/k3lgylwqdq3xb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/k8rts2xbfd3jb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/k8w7t12t3qz7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/k97zybw69d851",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kb573hj3v844b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kbspbwxjsmg67",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kby0sppnxtbq5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kcj335hkppg4h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kebe2wtgsej37",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kfh2bc0b8qf14",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kg1fgyy5538e8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/khzcg21lq2yk3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kjh94n3whkr6c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kkhmvkvydjzlb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/klj523hre9b74",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/klyrfrlqbsdhc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kmxyj0d7gzsq4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kp4mfrz2432hc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/krlmzg9m7lgk7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ktrsplf3w26m2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kyz45gwpbeqpg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kz49wc5n3lhpd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/kzyx3ll4kpfk1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/l0egy7nhv21n6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/l2j8l7djg4sf8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/l5jmwz4fcyhdb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/l7y6wr82ws0g2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/l8pgb9nrqb2yf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ld34rcre5d9p3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ld470ycewv2k7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ldecbzsnrr7t5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/le1xvf8sl3pr2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lf92hwz11pqw2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lgn25k75fmldg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lht6t01twg7hb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lj798k869lpx5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lkh6gywp7h5w6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lq7sly0t34sc4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lvcs8n56yej08",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lx5k7f6kf7l9g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lxc23fzj398mg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lyjkw41kjkfch",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/lz5mty5qcf3sg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/m1w4xdnk3zq01",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/m2kr7m57dz0w4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/m31n2tb1kqb28",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/m480msgfr59y5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/m5fmp9vtz4g64",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/m5ltqeg1src",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/m62g67v7xcv57",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mbv624td3qf92",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mdpn1sc82wccc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mf3m8errsp755",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mfyjcwy5ywwd9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mh4z0cpe8hlhh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mlqt75zb4l5w7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mnvtkrrtftq81",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mpxh5s16w6dm9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mqmpxf7er17c1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/msk1b6xr2rf15",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mvbplfcjlw2s9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mxl99jt5k3vn9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/mxwe799fmtgnb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/my2wyr8c3fn6f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/n2rdhm186cn2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/n5mxtkyytxwdc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/n934cx3ttg0y2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/n9wqebpd8jyhc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nckqb7q34qj84",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nd4j19zx1knt",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ngq2cypexn3y2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nhk5sc938l3ph",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/njx5wenp235z7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nlfzht0jr6pd9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nm486zfpb9q8h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nn72n468xzchf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nnyegh03zy4n6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nq459xvzvp8w1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nvl8dxz9gdyy7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nwf52q919evg1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nxqjjpwkkxpx4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/nxr64h1d5vhd6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p01zfmqydk5b3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p2n8xr948kd77",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p2nskl3w6kmbh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p3wh10z8lyw8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p4f852gsfgec9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p51q9b95xzslg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p69jn4hdfm2e7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/p7n46kxtclb5d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/pg3n0g7kg0m62",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/pl02dd7y395eg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ppvye24eemnxg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/pq2ql44vv1dmh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/pxcx2jnjjbjs4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/q1xswcx2f00nd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/q2pgyz35p79l4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/q933ml6wwsh69",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qcpg8c533syd6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qdynxhb9ymjcf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qfqlrwqf6vgn5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qh7h98ryn0sfb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qj8nrzj5qyvwf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qkbqbzsyxh4v2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qnyc9h91pges6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qqnd7ct33ltyg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qt7m4kcsb7bt7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qtdnr94qs3dn3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qtylr67xy3z2c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/qxtn0jcs5zfcg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r31fgdkt36vhh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r35qfk2bdh1m8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r3d30bshtyzbc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r3dcdx00hd1ng",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r6lb69wjbm385",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r7eqgnsy4b4c5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r8d20h24vx861",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/r9b7gfrtnd1hc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rb6gqxg87y6w4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rb8f3w0b2s9sf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rdjtjr3xj4yk",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rdsfk6nwyedw",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/re168xv0q7xtb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ref1nnkg6nce8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rf30wj50xq4gd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rh88przny0hq1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rk6y9gxtsmjsh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rkk2qytzv30eb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rkylr8pzrhvrb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rl9tsr3zpzl3c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rnsgpsg71qssh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rpzw49y18y08c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rq4mn1kll0848",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rqyyjqje56s8c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rtctm07stc7yg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rtqpsbdz9zb48",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rxfs5g43dz5d8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rxnjd566thxdb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/rz89lkvrsdms4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/s0ywx1qw7v582",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/s5p87q01gc59",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/s5pmbkjhcypj5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/s8fv3dfh6fvv5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/s953dy6x7qpz2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/s9b42fye5rmkg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/s9e3zttrhb407",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sez9vpe0f1jd5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sf88wpdpw6w48",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sg7wwqyw5dh54",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sjgw58z7g2b4c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sn2hkre8em2d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/snz7t95m7wj7b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/spldqrn1s5lq4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sqpb8z6b2ffm5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/strb18c35k6vh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/svd4q9q5nfdm7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/svtd41tk1d6z",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sw7mkxmgvz25h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/swz0tq21j8rl3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sxqjsd4mdljc7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/sywdw1w2er8z7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/t1vdq0wfd89d6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/t3zkqxsfp7057",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/t4j7qnq4znt17",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/t5dbpenj74xqb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/t5ll9rvj2b8j4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/t6hh6nb8knh6f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/t8sse9z8nxkx6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tcjk3qvkykdr2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tg107l3j4h5wc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tgtgbtqfnlgtf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tjnvk1f93tq96",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tk02g7zcl5yjf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tk0gp5l0c29c7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tl9jth2r2zq9d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tmn3xqm5s1k46",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tnev4lp26wj64",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tpql2nr8dq8y9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tpt90ngykzdb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tq6v319840bbf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tqq0qwms6754b",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tt3ggm7fpv7n9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/tv5nms888b741",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/v1m8b3z200ny7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/v1qtdpvwbyzf2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/v47qw3s35w4y6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/v5831jmrfmz2g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/v7yl3k9w3h7e8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/v8w2xznf7lt78",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vdmf49gbxypwg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vgrktp5t8qkz8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vgspys5fzvh06",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vhm6hqe32b658",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vlpcb2zzlzzb6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vndgw0llpe4wb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vns6wrxc92k2c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vnvjfpkwkfs35",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vpdhdf8eegz6h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vs2gnv0zvtxh9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vtg8nwd64n8h7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vtwggry7bphh2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vxwfcr6psmwnd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/vzcx9sccfk822",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/w0c80bl6scrzh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/w0etzg5t2d9r7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/w4842503erx1f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/w4edhg4838zzf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/w5s3ewybxz0g8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/w6n7rd9v0t219",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/w99fz1t3wj2p9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wb8g1gvgv90ph",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wb9jcbyzvrs3f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wenzws0essxtd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/weq7jc9hmpn14",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wf8mchhp6cv2f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wg7qfzq741q3c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/whh1y53fj4p69",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wmgg59285lccg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ws53s0ne6kb27",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wxd795y3r27zb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wxmy39kedzgy2",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/wzkb3wpm1wvy7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/x02d20cel6t69",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/x40e5nl6b58wb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/x4wvg07t3bxx7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/x76b10zmf5lfg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xclx05yh0mbv3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xctzwbgslw924",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xgsrkjrn4hrd4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xhbfvtmdlnt8c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xhqrm03fp03sc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xhs19f46bclwh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xhvcllwslts5h",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xjgn0p5tcrzk6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xl0rnjc3emwe4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xlysv55f8bg9f",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xmjwxhzbp4968",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xw0hxggb7kshh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xzlc4j1r16jxf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/xzstrrsk6mzvg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y0t798s8m0qp6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y2lnwwepk91g9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y3cebm52hjb32",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y4xchrbx19sc7",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y6stmbdg23yeb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y70ppl4rxjhjh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y74lc6fqvqj74",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y8v8lmv3pw815",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y9eqelf5n9gjd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/y9wnecf69slt6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/yb1p56vxk72qg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ycv4tg3n2fre5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/yermyhypfzv86",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/yezfw5gqnjwv4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ygegm32ht78jf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ygzrrxpn9bjt9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/yl1rpnthyv6s3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ynhvvvhbemfmf",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/yrs8hds81zegb",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/yvdwj0eccmqr8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/ywdchxj9tte1g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/yyc9zq2f095fh",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/z2814kdz9kbs8",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/z36nwtxecdyth",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/z5rhq3c5qd5pd",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/z8e2hjb43d9l5",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/z8xqvzl32bvn6",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zbe6g6rrmcg32",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zbgmq1hqrn5l1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zhe68xsrye73g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zj5qvj0kft3bc",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zkn6kvm7h71yg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zl3texscywqj4",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zl68hvnkb2j6g",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zl7y5gy0ztb0d",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zmsx5cjkx44y3",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zqybf7e1qbesg",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zv26z833d7g3c",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zvlx55b8n6hz1",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zx4c4l6h1d2l9",
+      "matchCount": 1
+    },
+    {
+      "statVar": "dc/zz3mhw0qtqzx7",
+      "matchCount": 1
+    }
+  ]
+}

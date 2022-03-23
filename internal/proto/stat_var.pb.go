@@ -792,6 +792,102 @@ func (x *GetStatVarSummaryResponse) GetStatVarSummary() map[string]*StatVarSumma
 	return nil
 }
 
+type GetStatVarMatchRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The property value pair. Ex
+	// {gender: Male}, {statType: measuredValue}
+	PropertyValue map[string]string `protobuf:"bytes,1,rep,name=property_value,json=propertyValue,proto3" json:"property_value,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (x *GetStatVarMatchRequest) Reset() {
+	*x = GetStatVarMatchRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_var_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStatVarMatchRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStatVarMatchRequest) ProtoMessage() {}
+
+func (x *GetStatVarMatchRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_var_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStatVarMatchRequest.ProtoReflect.Descriptor instead.
+func (*GetStatVarMatchRequest) Descriptor() ([]byte, []int) {
+	return file_stat_var_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetStatVarMatchRequest) GetPropertyValue() map[string]string {
+	if x != nil {
+		return x.PropertyValue
+	}
+	return nil
+}
+
+type GetStatVarMatchResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MatchInfo []*GetStatVarMatchResponse_MatchInfo `protobuf:"bytes,1,rep,name=match_info,json=matchInfo,proto3" json:"match_info,omitempty"`
+}
+
+func (x *GetStatVarMatchResponse) Reset() {
+	*x = GetStatVarMatchResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_var_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStatVarMatchResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStatVarMatchResponse) ProtoMessage() {}
+
+func (x *GetStatVarMatchResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_var_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStatVarMatchResponse.ProtoReflect.Descriptor instead.
+func (*GetStatVarMatchResponse) Descriptor() ([]byte, []int) {
+	return file_stat_var_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetStatVarMatchResponse) GetMatchInfo() []*GetStatVarMatchResponse_MatchInfo {
+	if x != nil {
+		return x.MatchInfo
+	}
+	return nil
+}
+
 type StatVarSummary_Place struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -804,7 +900,7 @@ type StatVarSummary_Place struct {
 func (x *StatVarSummary_Place) Reset() {
 	*x = StatVarSummary_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[13]
+		mi := &file_stat_var_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -817,7 +913,7 @@ func (x *StatVarSummary_Place) String() string {
 func (*StatVarSummary_Place) ProtoMessage() {}
 
 func (x *StatVarSummary_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[13]
+	mi := &file_stat_var_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -865,7 +961,7 @@ type StatVarSummary_PlaceTypeSummary struct {
 func (x *StatVarSummary_PlaceTypeSummary) Reset() {
 	*x = StatVarSummary_PlaceTypeSummary{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[14]
+		mi := &file_stat_var_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -878,7 +974,7 @@ func (x *StatVarSummary_PlaceTypeSummary) String() string {
 func (*StatVarSummary_PlaceTypeSummary) ProtoMessage() {}
 
 func (x *StatVarSummary_PlaceTypeSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[14]
+	mi := &file_stat_var_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -948,7 +1044,7 @@ type StatVarSummary_SeriesSummary struct {
 func (x *StatVarSummary_SeriesSummary) Reset() {
 	*x = StatVarSummary_SeriesSummary{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[15]
+		mi := &file_stat_var_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -961,7 +1057,7 @@ func (x *StatVarSummary_SeriesSummary) String() string {
 func (*StatVarSummary_SeriesSummary) ProtoMessage() {}
 
 func (x *StatVarSummary_SeriesSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[15]
+	mi := &file_stat_var_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1053,7 +1149,7 @@ type StatVarSummary_ProvenanceSummary struct {
 func (x *StatVarSummary_ProvenanceSummary) Reset() {
 	*x = StatVarSummary_ProvenanceSummary{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[16]
+		mi := &file_stat_var_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1066,7 +1162,7 @@ func (x *StatVarSummary_ProvenanceSummary) String() string {
 func (*StatVarSummary_ProvenanceSummary) ProtoMessage() {}
 
 func (x *StatVarSummary_ProvenanceSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[16]
+	mi := &file_stat_var_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1137,7 +1233,7 @@ type StatVarSummary_SeriesSummary_SeriesKey struct {
 func (x *StatVarSummary_SeriesSummary_SeriesKey) Reset() {
 	*x = StatVarSummary_SeriesSummary_SeriesKey{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[19]
+		mi := &file_stat_var_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1150,7 +1246,7 @@ func (x *StatVarSummary_SeriesSummary_SeriesKey) String() string {
 func (*StatVarSummary_SeriesSummary_SeriesKey) ProtoMessage() {}
 
 func (x *StatVarSummary_SeriesSummary_SeriesKey) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[19]
+	mi := &file_stat_var_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1221,7 +1317,7 @@ type StatVarGroupNode_ChildSVG struct {
 func (x *StatVarGroupNode_ChildSVG) Reset() {
 	*x = StatVarGroupNode_ChildSVG{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[22]
+		mi := &file_stat_var_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1234,7 +1330,7 @@ func (x *StatVarGroupNode_ChildSVG) String() string {
 func (*StatVarGroupNode_ChildSVG) ProtoMessage() {}
 
 func (x *StatVarGroupNode_ChildSVG) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[22]
+	mi := &file_stat_var_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1298,7 +1394,7 @@ type StatVarGroupNode_ChildSV struct {
 func (x *StatVarGroupNode_ChildSV) Reset() {
 	*x = StatVarGroupNode_ChildSV{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[23]
+		mi := &file_stat_var_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1311,7 +1407,7 @@ func (x *StatVarGroupNode_ChildSV) String() string {
 func (*StatVarGroupNode_ChildSV) ProtoMessage() {}
 
 func (x *StatVarGroupNode_ChildSV) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[23]
+	mi := &file_stat_var_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1360,6 +1456,61 @@ func (x *StatVarGroupNode_ChildSV) GetHasData() bool {
 		return x.HasData
 	}
 	return false
+}
+
+type GetStatVarMatchResponse_MatchInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StatVar    string `protobuf:"bytes,1,opt,name=stat_var,json=statVar,proto3" json:"stat_var,omitempty"`
+	MatchCount int32  `protobuf:"varint,2,opt,name=match_count,json=matchCount,proto3" json:"match_count,omitempty"`
+}
+
+func (x *GetStatVarMatchResponse_MatchInfo) Reset() {
+	*x = GetStatVarMatchResponse_MatchInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_var_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStatVarMatchResponse_MatchInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStatVarMatchResponse_MatchInfo) ProtoMessage() {}
+
+func (x *GetStatVarMatchResponse_MatchInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_var_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStatVarMatchResponse_MatchInfo.ProtoReflect.Descriptor instead.
+func (*GetStatVarMatchResponse_MatchInfo) Descriptor() ([]byte, []int) {
+	return file_stat_var_proto_rawDescGZIP(), []int{14, 0}
+}
+
+func (x *GetStatVarMatchResponse_MatchInfo) GetStatVar() string {
+	if x != nil {
+		return x.StatVar
+	}
+	return ""
+}
+
+func (x *GetStatVarMatchResponse_MatchInfo) GetMatchCount() int32 {
+	if x != nil {
+		return x.MatchCount
+	}
+	return 0
 }
 
 var File_stat_var_proto protoreflect.FileDescriptor
@@ -1594,6 +1745,29 @@ var file_stat_var_proto_rawDesc = []byte{
 	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
 	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x53, 0x75,
 	0x6d, 0x6d, 0x61, 0x72, 0x79, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01,
+	0x22, 0xb9, 0x01, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x4d,
+	0x61, 0x74, 0x63, 0x68, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x5d, 0x0a, 0x0e, 0x70,
+	0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x36, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x73, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x4d, 0x61, 0x74, 0x63,
+	0x68, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74,
+	0x79, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0d, 0x70, 0x72, 0x6f,
+	0x70, 0x65, 0x72, 0x74, 0x79, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x40, 0x0a, 0x12, 0x50, 0x72,
+	0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
+	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xb1, 0x01, 0x0a,
+	0x17, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x4d, 0x61, 0x74, 0x63, 0x68,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4d, 0x0a, 0x0a, 0x6d, 0x61, 0x74, 0x63,
+	0x68, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x64,
+	0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74,
+	0x61, 0x74, 0x56, 0x61, 0x72, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x09, 0x6d, 0x61,
+	0x74, 0x63, 0x68, 0x49, 0x6e, 0x66, 0x6f, 0x1a, 0x47, 0x0a, 0x09, 0x4d, 0x61, 0x74, 0x63, 0x68,
+	0x49, 0x6e, 0x66, 0x6f, 0x12, 0x19, 0x0a, 0x08, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61, 0x72,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x12,
+	0x1f, 0x0a, 0x0b, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x43, 0x6f, 0x75, 0x6e, 0x74,
 	0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x33,
 }
@@ -1610,7 +1784,7 @@ func file_stat_var_proto_rawDescGZIP() []byte {
 	return file_stat_var_proto_rawDescData
 }
 
-var file_stat_var_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_stat_var_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_stat_var_proto_goTypes = []interface{}{
 	(*PlaceStatVarExistence)(nil),                  // 0: datacommons.PlaceStatVarExistence
 	(*StatVarSummary)(nil),                         // 1: datacommons.StatVarSummary
@@ -1625,44 +1799,50 @@ var file_stat_var_proto_goTypes = []interface{}{
 	(*SearchStatVarResponse)(nil),                  // 10: datacommons.SearchStatVarResponse
 	(*GetStatVarSummaryRequest)(nil),               // 11: datacommons.GetStatVarSummaryRequest
 	(*GetStatVarSummaryResponse)(nil),              // 12: datacommons.GetStatVarSummaryResponse
-	(*StatVarSummary_Place)(nil),                   // 13: datacommons.StatVarSummary.Place
-	(*StatVarSummary_PlaceTypeSummary)(nil),        // 14: datacommons.StatVarSummary.PlaceTypeSummary
-	(*StatVarSummary_SeriesSummary)(nil),           // 15: datacommons.StatVarSummary.SeriesSummary
-	(*StatVarSummary_ProvenanceSummary)(nil),       // 16: datacommons.StatVarSummary.ProvenanceSummary
-	nil,                                            // 17: datacommons.StatVarSummary.PlaceTypeSummaryEntry
-	nil,                                            // 18: datacommons.StatVarSummary.ProvenanceSummaryEntry
-	(*StatVarSummary_SeriesSummary_SeriesKey)(nil), // 19: datacommons.StatVarSummary.SeriesSummary.SeriesKey
-	nil,                               // 20: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
-	nil,                               // 21: datacommons.StatVarGroups.StatVarGroupsEntry
-	(*StatVarGroupNode_ChildSVG)(nil), // 22: datacommons.StatVarGroupNode.ChildSVG
-	(*StatVarGroupNode_ChildSV)(nil),  // 23: datacommons.StatVarGroupNode.ChildSV
-	nil,                               // 24: datacommons.GetStatVarSummaryResponse.StatVarSummaryEntry
-	(*EntityInfo)(nil),                // 25: datacommons.EntityInfo
+	(*GetStatVarMatchRequest)(nil),                 // 13: datacommons.GetStatVarMatchRequest
+	(*GetStatVarMatchResponse)(nil),                // 14: datacommons.GetStatVarMatchResponse
+	(*StatVarSummary_Place)(nil),                   // 15: datacommons.StatVarSummary.Place
+	(*StatVarSummary_PlaceTypeSummary)(nil),        // 16: datacommons.StatVarSummary.PlaceTypeSummary
+	(*StatVarSummary_SeriesSummary)(nil),           // 17: datacommons.StatVarSummary.SeriesSummary
+	(*StatVarSummary_ProvenanceSummary)(nil),       // 18: datacommons.StatVarSummary.ProvenanceSummary
+	nil,                                            // 19: datacommons.StatVarSummary.PlaceTypeSummaryEntry
+	nil,                                            // 20: datacommons.StatVarSummary.ProvenanceSummaryEntry
+	(*StatVarSummary_SeriesSummary_SeriesKey)(nil), // 21: datacommons.StatVarSummary.SeriesSummary.SeriesKey
+	nil,                               // 22: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
+	nil,                               // 23: datacommons.StatVarGroups.StatVarGroupsEntry
+	(*StatVarGroupNode_ChildSVG)(nil), // 24: datacommons.StatVarGroupNode.ChildSVG
+	(*StatVarGroupNode_ChildSV)(nil),  // 25: datacommons.StatVarGroupNode.ChildSV
+	nil,                               // 26: datacommons.GetStatVarSummaryResponse.StatVarSummaryEntry
+	nil,                               // 27: datacommons.GetStatVarMatchRequest.PropertyValueEntry
+	(*GetStatVarMatchResponse_MatchInfo)(nil), // 28: datacommons.GetStatVarMatchResponse.MatchInfo
+	(*EntityInfo)(nil),                        // 29: datacommons.EntityInfo
 }
 var file_stat_var_proto_depIdxs = []int32{
-	17, // 0: datacommons.StatVarSummary.place_type_summary:type_name -> datacommons.StatVarSummary.PlaceTypeSummaryEntry
-	18, // 1: datacommons.StatVarSummary.provenance_summary:type_name -> datacommons.StatVarSummary.ProvenanceSummaryEntry
-	21, // 2: datacommons.StatVarGroups.stat_var_groups:type_name -> datacommons.StatVarGroups.StatVarGroupsEntry
-	23, // 3: datacommons.StatVarGroupNode.child_stat_vars:type_name -> datacommons.StatVarGroupNode.ChildSV
-	22, // 4: datacommons.StatVarGroupNode.child_stat_var_groups:type_name -> datacommons.StatVarGroupNode.ChildSVG
-	25, // 5: datacommons.SearchResultSVG.stat_vars:type_name -> datacommons.EntityInfo
-	25, // 6: datacommons.SearchStatVarResponse.stat_vars:type_name -> datacommons.EntityInfo
+	19, // 0: datacommons.StatVarSummary.place_type_summary:type_name -> datacommons.StatVarSummary.PlaceTypeSummaryEntry
+	20, // 1: datacommons.StatVarSummary.provenance_summary:type_name -> datacommons.StatVarSummary.ProvenanceSummaryEntry
+	23, // 2: datacommons.StatVarGroups.stat_var_groups:type_name -> datacommons.StatVarGroups.StatVarGroupsEntry
+	25, // 3: datacommons.StatVarGroupNode.child_stat_vars:type_name -> datacommons.StatVarGroupNode.ChildSV
+	24, // 4: datacommons.StatVarGroupNode.child_stat_var_groups:type_name -> datacommons.StatVarGroupNode.ChildSVG
+	29, // 5: datacommons.SearchResultSVG.stat_vars:type_name -> datacommons.EntityInfo
+	29, // 6: datacommons.SearchStatVarResponse.stat_vars:type_name -> datacommons.EntityInfo
 	8,  // 7: datacommons.SearchStatVarResponse.stat_var_groups:type_name -> datacommons.SearchResultSVG
-	24, // 8: datacommons.GetStatVarSummaryResponse.stat_var_summary:type_name -> datacommons.GetStatVarSummaryResponse.StatVarSummaryEntry
-	13, // 9: datacommons.StatVarSummary.PlaceTypeSummary.top_places:type_name -> datacommons.StatVarSummary.Place
-	19, // 10: datacommons.StatVarSummary.SeriesSummary.series_key:type_name -> datacommons.StatVarSummary.SeriesSummary.SeriesKey
-	20, // 11: datacommons.StatVarSummary.SeriesSummary.place_type_summary:type_name -> datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
-	15, // 12: datacommons.StatVarSummary.ProvenanceSummary.series_summary:type_name -> datacommons.StatVarSummary.SeriesSummary
-	14, // 13: datacommons.StatVarSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
-	16, // 14: datacommons.StatVarSummary.ProvenanceSummaryEntry.value:type_name -> datacommons.StatVarSummary.ProvenanceSummary
-	14, // 15: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
-	3,  // 16: datacommons.StatVarGroups.StatVarGroupsEntry.value:type_name -> datacommons.StatVarGroupNode
-	1,  // 17: datacommons.GetStatVarSummaryResponse.StatVarSummaryEntry.value:type_name -> datacommons.StatVarSummary
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	26, // 8: datacommons.GetStatVarSummaryResponse.stat_var_summary:type_name -> datacommons.GetStatVarSummaryResponse.StatVarSummaryEntry
+	27, // 9: datacommons.GetStatVarMatchRequest.property_value:type_name -> datacommons.GetStatVarMatchRequest.PropertyValueEntry
+	28, // 10: datacommons.GetStatVarMatchResponse.match_info:type_name -> datacommons.GetStatVarMatchResponse.MatchInfo
+	15, // 11: datacommons.StatVarSummary.PlaceTypeSummary.top_places:type_name -> datacommons.StatVarSummary.Place
+	21, // 12: datacommons.StatVarSummary.SeriesSummary.series_key:type_name -> datacommons.StatVarSummary.SeriesSummary.SeriesKey
+	22, // 13: datacommons.StatVarSummary.SeriesSummary.place_type_summary:type_name -> datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
+	17, // 14: datacommons.StatVarSummary.ProvenanceSummary.series_summary:type_name -> datacommons.StatVarSummary.SeriesSummary
+	16, // 15: datacommons.StatVarSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
+	18, // 16: datacommons.StatVarSummary.ProvenanceSummaryEntry.value:type_name -> datacommons.StatVarSummary.ProvenanceSummary
+	16, // 17: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
+	3,  // 18: datacommons.StatVarGroups.StatVarGroupsEntry.value:type_name -> datacommons.StatVarGroupNode
+	1,  // 19: datacommons.GetStatVarSummaryResponse.StatVarSummaryEntry.value:type_name -> datacommons.StatVarSummary
+	20, // [20:20] is the sub-list for method output_type
+	20, // [20:20] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_stat_var_proto_init() }
@@ -1829,7 +2009,7 @@ func file_stat_var_proto_init() {
 			}
 		}
 		file_stat_var_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatVarSummary_Place); i {
+			switch v := v.(*GetStatVarMatchRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1841,7 +2021,7 @@ func file_stat_var_proto_init() {
 			}
 		}
 		file_stat_var_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatVarSummary_PlaceTypeSummary); i {
+			switch v := v.(*GetStatVarMatchResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1853,7 +2033,7 @@ func file_stat_var_proto_init() {
 			}
 		}
 		file_stat_var_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatVarSummary_SeriesSummary); i {
+			switch v := v.(*StatVarSummary_Place); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1865,6 +2045,30 @@ func file_stat_var_proto_init() {
 			}
 		}
 		file_stat_var_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StatVarSummary_PlaceTypeSummary); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_var_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StatVarSummary_SeriesSummary); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_var_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarSummary_ProvenanceSummary); i {
 			case 0:
 				return &v.state
@@ -1876,7 +2080,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarSummary_SeriesSummary_SeriesKey); i {
 			case 0:
 				return &v.state
@@ -1888,7 +2092,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarGroupNode_ChildSVG); i {
 			case 0:
 				return &v.state
@@ -1900,8 +2104,20 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarGroupNode_ChildSV); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_var_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetStatVarMatchResponse_MatchInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1919,7 +2135,7 @@ func file_stat_var_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_stat_var_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

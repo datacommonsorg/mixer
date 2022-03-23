@@ -331,4 +331,13 @@ service Mixer {
       additional_bindings : {post : "/stat-var/summary" body : "*"}
     };
   }
+
+  // Find matched stat vars given constraint properties
+  rpc GetStatVarMatch(GetStatVarMatchRequest)
+      returns (GetStatVarMatchResponse) {
+    option (google.api.http) = {
+      get : "/stat-var/match"
+      additional_bindings : {post : "/stat-var/match" body : "*"}
+    };
+  }
 }

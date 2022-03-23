@@ -233,3 +233,21 @@ message GetStatVarSummaryRequest {
 message GetStatVarSummaryResponse {
   map<string, StatVarSummary> stat_var_summary = 1;
 }
+
+message GetStatVarMatchRequest {
+  // The property value pair. Ex
+  // {gender: Male}, {statType: measuredValue}
+  // To improve this, can explicitly specify "statType", "measuredProperty",
+  // and constraint properties. Then the match could have must-match terms and
+  // optional match terms that have weights. That would greatly reduce the
+  // number of returned match stat vars.
+  map<string, string> property_value = 1;
+}
+
+message GetStatVarMatchResponse {
+  message MatchInfo {
+    string stat_var = 1;
+    int32 match_count = 2;
+  }
+  repeated MatchInfo match_info = 1;
+}
