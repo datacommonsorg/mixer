@@ -799,6 +799,10 @@ type GetStatVarMatchRequest struct {
 
 	// The property value pair. Ex
 	// {gender: Male}, {statType: measuredValue}
+	// To improve this, can explicitly specify "statType", "measuredProperty",
+	// and constraint properties. Then the match could have must-match terms and
+	// optional match terms that have weights. That would greatly reduce the
+	// number of returned match stat vars.
 	PropertyValue map[string]string `protobuf:"bytes,1,rep,name=property_value,json=propertyValue,proto3" json:"property_value,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
@@ -846,6 +850,7 @@ type GetStatVarMatchResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Ordered match list. Entry with larger match_count ranks at the beginning.
 	MatchInfo []*GetStatVarMatchResponse_MatchInfo `protobuf:"bytes,1,rep,name=match_info,json=matchInfo,proto3" json:"match_info,omitempty"`
 }
 
@@ -1463,8 +1468,10 @@ type GetStatVarMatchResponse_MatchInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StatVar    string `protobuf:"bytes,1,opt,name=stat_var,json=statVar,proto3" json:"stat_var,omitempty"`
-	MatchCount int32  `protobuf:"varint,2,opt,name=match_count,json=matchCount,proto3" json:"match_count,omitempty"`
+	// Stat Var that matches the request
+	StatVar string `protobuf:"bytes,1,opt,name=stat_var,json=statVar,proto3" json:"stat_var,omitempty"`
+	// Count of matched PV pairs in the request
+	MatchCount int32 `protobuf:"varint,2,opt,name=match_count,json=matchCount,proto3" json:"match_count,omitempty"`
 }
 
 func (x *GetStatVarMatchResponse_MatchInfo) Reset() {
