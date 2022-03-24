@@ -38,22 +38,23 @@ func GetStatVarMatch(
 			return nil, err
 		}
 		for _, node := range resp[value] {
+			if node.Types == nil || node.Types[0] != "StatisticalVariable" {
+				continue
+			}
 			statVarCount[node.Dcid]++
 		}
 	}
 	result := &pb.GetStatVarMatchResponse{}
-	statVars := []string{}
-	for statVar := range statVarCount {
-		statVars = append(statVars, statVar)
-	}
-	sort.Strings(statVars)
-	for _, statVar := range statVars {
+	for statVar, count := range statVarCount {
 		result.MatchInfo = append(result.MatchInfo, &pb.GetStatVarMatchResponse_MatchInfo{
 			StatVar:    statVar,
-			MatchCount: statVarCount[statVar],
+			MatchCount: count,
 		})
 	}
 	sort.SliceStable(result.MatchInfo, func(i, j int) bool {
+		if result.MatchInfo[i].MatchCount == result.MatchInfo[j].MatchCount {
+			return result.MatchInfo[i].StatVar < result.MatchInfo[j].StatVar
+		}
 		return result.MatchInfo[i].MatchCount > result.MatchInfo[j].MatchCount
 	})
 	return result, nil
