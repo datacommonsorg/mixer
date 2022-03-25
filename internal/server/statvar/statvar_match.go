@@ -23,7 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-const DEFAULT_LIMIT = 100
+const defaultLimit = 100
 
 // GetStatVarMatch implements API for Mixer.GetStatVarMatch.
 func GetStatVarMatch(
@@ -34,7 +34,7 @@ func GetStatVarMatch(
 	propertyValue := in.GetPropertyValue()
 	limit := in.GetLimit()
 	if limit == 0 {
-		limit = DEFAULT_LIMIT
+		limit = defaultLimit
 	}
 	statVarCount := map[string]int32{}
 	// TODO: consider parallel this if performance is an issue.
