@@ -242,6 +242,10 @@ message GetStatVarMatchRequest {
   // optional match terms that have weights. That would greatly reduce the
   // number of returned match stat vars.
   map<string, string> property_value = 1;
+
+  // Limit of the response entries.
+  // By default only the first 100 entries are returned.
+  int32 limit = 2;
 }
 
 message GetStatVarMatchResponse {
