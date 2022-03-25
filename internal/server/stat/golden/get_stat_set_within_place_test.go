@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -127,12 +127,12 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 				continue
 			}
 
-			if e2e.GenerateGolden {
-				e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
+			if test.GenerateGolden {
+				test.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 			var expected pb.GetStatSetResponse
-			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
@@ -144,9 +144,9 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 		}
 	}
 
-	if err := e2e.TestDriver(
+	if err := test.TestDriver(
 		"GetStatSetWithinPlace",
-		&e2e.TestOption{UseCache: false, UseMemdb: true},
+		&test.TestOption{UseCache: false, UseMemdb: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

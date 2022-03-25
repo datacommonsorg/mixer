@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -29,7 +29,7 @@ import (
 func TestSparql(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.SetupBqOnly()
+	client, _, err := test.SetupBqOnly()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -65,13 +65,13 @@ func TestSparql(t *testing.T) {
 			t.Errorf("could not Query: %v", err)
 			continue
 		}
-		if e2e.GenerateGolden {
-			e2e.UpdateGolden(resp, goldenPath, c.goldenFile)
+		if test.GenerateGolden {
+			test.UpdateGolden(resp, goldenPath, c.goldenFile)
 			continue
 		}
 
 		var expected pb.QueryResponse
-		if err := e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+		if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 			t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 			continue
 		}
@@ -85,7 +85,7 @@ func TestSparql(t *testing.T) {
 func TestBt(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.SetupBqOnly()
+	client, _, err := test.SetupBqOnly()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

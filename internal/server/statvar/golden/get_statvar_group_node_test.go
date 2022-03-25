@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -100,13 +100,13 @@ func TestGetStatVarGroupNode(t *testing.T) {
 				continue
 			}
 
-			if e2e.GenerateGolden {
-				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+			if test.GenerateGolden {
+				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 
 			var expected pb.StatVarGroupNode
-			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue
 			}
@@ -118,9 +118,9 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		}
 	}
 
-	if err := e2e.TestDriver(
+	if err := test.TestDriver(
 		"GetStatVarGroupNode",
-		&e2e.TestOption{UseCache: true, UseMemdb: true},
+		&test.TestOption{UseCache: true, UseMemdb: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

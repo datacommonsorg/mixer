@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package e2e
+package test
 
 import (
 	"context"
@@ -73,9 +73,9 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 		useMemdb = option[0].UseMemdb
 	}
 	return setupInternal(
-		"../../deploy/storage/bigquery.version",
-		"../../deploy/storage/bigtable_import_groups.version",
-		"../../deploy/mapping",
+		"../deploy/storage/bigquery.version",
+		"../deploy/storage/bigtable_import_groups.version",
+		"../deploy/mapping",
 		storeProject,
 		useCache,
 		useMemdb,
@@ -145,8 +145,8 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(
-		path.Join(path.Dir(filename), "../../deploy/storage/bigquery.version"))
-	schemaPath := path.Join(path.Dir(filename), "../../deploy/mapping/")
+		path.Join(path.Dir(filename), "../deploy/storage/bigquery.version"))
+	schemaPath := path.Join(path.Dir(filename), "../deploy/mapping/")
 
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
