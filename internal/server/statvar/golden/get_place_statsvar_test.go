@@ -19,13 +19,13 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 )
 
 func TestGetPlaceStatsVar(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := e2e.Setup(&e2e.TestOption{UseCache: true})
+	client, _, err := test.Setup(&test.TestOption{UseCache: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

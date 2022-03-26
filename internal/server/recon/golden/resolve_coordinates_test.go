@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -64,13 +64,13 @@ func TestResolveCoordinates(t *testing.T) {
 				continue
 			}
 
-			if e2e.GenerateGolden {
-				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+			if test.GenerateGolden {
+				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 
 			var expected pb.ResolveCoordinatesResponse
-			if err = e2e.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue
 			}
@@ -92,8 +92,8 @@ func TestResolveCoordinates(t *testing.T) {
 		}
 	}
 
-	if err := e2e.TestDriver(
-		"ResolveCoordinates", &e2e.TestOption{}, testSuite); err != nil {
+	if err := test.TestDriver(
+		"ResolveCoordinates", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

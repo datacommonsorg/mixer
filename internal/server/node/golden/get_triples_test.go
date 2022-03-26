@@ -24,7 +24,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -111,8 +111,8 @@ func TestGetTriples(t *testing.T) {
 			}
 
 			goldenFile := path.Join(goldenPath, c.goldenFile)
-			if e2e.GenerateGolden && c.goldenFile != "" {
-				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+			if test.GenerateGolden && c.goldenFile != "" {
+				test.UpdateGolden(result, goldenPath, c.goldenFile)
 				continue
 			}
 
@@ -142,8 +142,8 @@ func TestGetTriples(t *testing.T) {
 		}
 	}
 
-	if err := e2e.TestDriver(
-		"GetTriples", &e2e.TestOption{}, testSuite); err != nil {
+	if err := test.TestDriver(
+		"GetTriples", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

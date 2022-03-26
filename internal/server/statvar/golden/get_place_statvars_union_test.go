@@ -19,7 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 )
 
 func TestGetPlaceStatVarsUnionV1(t *testing.T) {
@@ -94,8 +94,8 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 		}
 	}
 
-	if err := e2e.TestDriver(
-		"GetPlaceStatVarsUnionV1", &e2e.TestOption{UseMemdb: true}, testSuite); err != nil {
+	if err := test.TestDriver(
+		"GetPlaceStatVarsUnionV1", &test.TestOption{UseMemdb: true}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

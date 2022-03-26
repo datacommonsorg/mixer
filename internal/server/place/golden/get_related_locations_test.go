@@ -22,7 +22,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -85,8 +85,8 @@ func TestGetRelatedLocations(t *testing.T) {
 			}
 
 			goldenFile := path.Join(goldenPath, c.goldenFile)
-			if e2e.GenerateGolden {
-				e2e.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+			if test.GenerateGolden {
+				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 
@@ -103,8 +103,8 @@ func TestGetRelatedLocations(t *testing.T) {
 		}
 	}
 
-	if err := e2e.TestDriver(
-		"GetRelatedLocations", &e2e.TestOption{}, testSuite); err != nil {
+	if err := test.TestDriver(
+		"GetRelatedLocations", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

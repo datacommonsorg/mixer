@@ -25,7 +25,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
-	"github.com/datacommonsorg/mixer/test/e2e"
+	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -123,8 +123,8 @@ func TestGetStats(t *testing.T) {
 				continue
 			}
 			goldenFile := path.Join(goldenPath, c.goldenFile)
-			if e2e.GenerateGolden {
-				e2e.UpdateGolden(result, goldenPath, c.goldenFile)
+			if test.GenerateGolden {
+				test.UpdateGolden(result, goldenPath, c.goldenFile)
 				continue
 			}
 
@@ -170,8 +170,8 @@ func TestGetStats(t *testing.T) {
 			}
 		}
 	}
-	if err := e2e.TestDriver(
-		"GetStats", &e2e.TestOption{}, testSuite); err != nil {
+	if err := test.TestDriver(
+		"GetStats", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
