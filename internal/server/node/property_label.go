@@ -26,10 +26,10 @@ import (
 
 func GetPropertiesHelper(
 	ctx context.Context,
-	entityIds []string,
+	entities []string,
 	store *store.Store,
 ) (map[string]*pb.PropertyLabels, error) {
-	rowList := bigtable.BuildPropertyLabelKey(entityIds)
+	rowList := bigtable.BuildPropertyLabelKey(entities)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
@@ -47,8 +47,8 @@ func GetPropertiesHelper(
 		return nil, err
 	}
 	result := map[string]*pb.PropertyLabels{}
-	for _, entityId := range entityIds {
-		result[entityId] = &pb.PropertyLabels{
+	for _, entity := range entities {
+		result[entity] = &pb.PropertyLabels{
 			InLabels:  []string{},
 			OutLabels: []string{},
 		}
@@ -56,7 +56,7 @@ func GetPropertiesHelper(
 		outLabelList := [][]string{}
 		// Merge cache value from base and branch caches
 		for _, btData := range btDataList {
-			if data, ok := btData[entityId]; ok {
+			if data, ok := btData[entity]; ok {
 				if item := data.(*pb.PropertyLabels).InLabels; item != nil {
 					inLabelList = append(inLabelList, item)
 				}
@@ -65,8 +65,8 @@ func GetPropertiesHelper(
 				}
 			}
 		}
-		result[entityId].InLabels = util.MergeDedupe(inLabelList...)
-		result[entityId].OutLabels = util.MergeDedupe(outLabelList...)
+		result[entity].InLabels = util.MergeDedupe(inLabelList...)
+		result[entity].OutLabels = util.MergeDedupe(outLabelList...)
 	}
 	return result, nil
 }
