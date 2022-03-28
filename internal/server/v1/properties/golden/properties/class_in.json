@@ -1,5 +1,5 @@
 {
-  "entityId": "Class",
+  "entity": "Class",
   "properties": [
     "domainIncludes",
     "rangeIncludes",

@@ -1,5 +1,5 @@
 {
-  "entityId": "geoId/06",
+  "entity": "geoId/06",
   "properties": [
     "affectedPlace",
     "containedInPlace",
