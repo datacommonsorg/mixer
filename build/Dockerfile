@@ -30,8 +30,8 @@ RUN apt-get update && \
     apt-get install -y protobuf-compiler
 # Install protobuf go plugin
 ENV GO111MODULE=on
-RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
-RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
+RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
+RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@1.2.0
 
 
 # =========  base stage ==========
