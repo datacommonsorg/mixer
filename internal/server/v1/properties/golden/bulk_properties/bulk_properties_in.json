@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "entity": "Class",
+      "properties": [
+        "domainIncludes",
+        "rangeIncludes",
+        "subClassOf",
+        "typeOf"
+      ]
+    },
+    {
+      "entity": "geoId/06",
+      "properties": [
+        "affectedPlace",
+        "containedInPlace",
+        "location",
+        "member",
+        "overlapsWith"
+      ]
+    },
+    {
+      "entity": "Place",
+      "properties": [
+        "domainIncludes",
+        "populationType",
+        "rangeIncludes",
+        "subClassOf",
+        "typeOf"
+      ]
+    }
+  ]
+}

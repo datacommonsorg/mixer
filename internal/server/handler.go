@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
@@ -254,7 +255,7 @@ func (s *Server) SearchStatVar(
 func (s *Server) GetPropertyLabels(
 	ctx context.Context, in *pb.GetPropertyLabelsRequest,
 ) (*pb.PayloadResponse, error) {
-	resp, err := node.GetPropertyLabels(ctx, in, s.store)
+	resp, err := propertylabel.GetPropertyLabels(ctx, in, s.store)
 	if err != nil {
 		return nil, err
 	}

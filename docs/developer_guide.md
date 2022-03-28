@@ -104,7 +104,7 @@ protoc \
   --go_out=internal \
   --go-grpc_out=internal \
   --go-grpc_opt=requireUnimplementedServers=false \
-  proto/*.proto
+  proto/*.proto proto/v1/*.proto
 ```
 
 ### Start Mixer as a gRPC server backed by Cloud BigTable (BigQuery)

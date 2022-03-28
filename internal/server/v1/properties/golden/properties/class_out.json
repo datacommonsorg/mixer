@@ -1,0 +1,11 @@
+{
+  "entity": "Class",
+  "properties": [
+    "isPartOf",
+    "name",
+    "provenance",
+    "sameAs",
+    "subClassOf",
+    "typeOf"
+  ]
+}

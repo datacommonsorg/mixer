@@ -31,7 +31,7 @@ steps:
           --go_out=internal \
           --go-grpc_out=internal \
           --go-grpc_opt=requireUnimplementedServers=false \
-          proto/*.proto
+          proto/*.proto proto/v1/*.proto
 
   # Push mixer server image to container registry
   - id: push-image
