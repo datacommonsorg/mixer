@@ -54,7 +54,7 @@ func Properties(
 	return result, nil
 }
 
-// Properties implements API for Mixer.Properties.
+// BulkProperties implements API for Mixer.BulkProperties.
 func BulkProperties(
 	ctx context.Context,
 	in *pb.BulkPropertiesRequest,
