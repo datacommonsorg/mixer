@@ -336,8 +336,7 @@ service Mixer {
   rpc GetStatVarMatch(GetStatVarMatchRequest)
       returns (GetStatVarMatchResponse) {
     option (google.api.http) = {
-      get : "/stat-var/match"
-      additional_bindings : {post : "/stat-var/match" body : "*"}
+      post : "/stat-var/match" body : "*"
     };
   }
 }
