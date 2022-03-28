@@ -21,26 +21,15 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
-// GetPropertyLabels implements API for Mixer.GetPropertyLabels.
-func GetPropertyLabels(
+func GetPropertiesHelper(
 	ctx context.Context,
-	in *pb.GetPropertyLabelsRequest,
+	entityIds []string,
 	store *store.Store,
-) (*pb.GetPropertyLabelsResponse, error) {
-	dcids := in.GetDcids()
-	if len(dcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcids")
-	}
-	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
-	}
-
-	rowList := bigtable.BuildPropertyLabelKey(dcids)
+) (map[string]*pb.PropertyLabels, error) {
+	rowList := bigtable.BuildPropertyLabelKey(entityIds)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
@@ -57,9 +46,9 @@ func GetPropertyLabels(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.GetPropertyLabelsResponse{Data: map[string]*pb.PropertyLabels{}}
-	for _, dcid := range dcids {
-		result.Data[dcid] = &pb.PropertyLabels{
+	result := map[string]*pb.PropertyLabels{}
+	for _, entityId := range entityIds {
+		result[entityId] = &pb.PropertyLabels{
 			InLabels:  []string{},
 			OutLabels: []string{},
 		}
@@ -67,7 +56,7 @@ func GetPropertyLabels(
 		outLabelList := [][]string{}
 		// Merge cache value from base and branch caches
 		for _, btData := range btDataList {
-			if data, ok := btData[dcid]; ok {
+			if data, ok := btData[entityId]; ok {
 				if item := data.(*pb.PropertyLabels).InLabels; item != nil {
 					inLabelList = append(inLabelList, item)
 				}
@@ -76,8 +65,8 @@ func GetPropertyLabels(
 				}
 			}
 		}
-		result.Data[dcid].InLabels = util.MergeDedupe(inLabelList...)
-		result.Data[dcid].OutLabels = util.MergeDedupe(outLabelList...)
+		result[entityId].InLabels = util.MergeDedupe(inLabelList...)
+		result[entityId].OutLabels = util.MergeDedupe(outLabelList...)
 	}
 	return result, nil
 }

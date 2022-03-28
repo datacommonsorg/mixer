@@ -29,7 +29,7 @@ function update_proto() {
   echo ""
   echo "==== Updating go proto files ===="
   protoc --proto_path=proto --go_out=internal --go-grpc_out=internal \
-         --go-grpc_opt=requireUnimplementedServers=false proto/*.proto
+         --go-grpc_opt=requireUnimplementedServers=false proto/*.proto proto/v1/*.proto
   if [ $? -ne 0 ]; then
     echo "ERROR: Failed to update proto"
     exit 1

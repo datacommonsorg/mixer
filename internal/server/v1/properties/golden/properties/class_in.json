@@ -1,0 +1,9 @@
+{
+  "entityId": "Class",
+  "properties": [
+    "domainIncludes",
+    "rangeIncludes",
+    "subClassOf",
+    "typeOf"
+  ]
+}

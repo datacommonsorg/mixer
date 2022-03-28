@@ -1,0 +1,10 @@
+{
+  "entityId": "geoId/06",
+  "properties": [
+    "affectedPlace",
+    "containedInPlace",
+    "location",
+    "member",
+    "overlapsWith"
+  ]
+}
