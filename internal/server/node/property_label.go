@@ -24,7 +24,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// GetPropertiesHelper is a wrapper to fetch entity properties from BT store
+// GetPropertiesHelper is a wrapper to fetch entity properties from BT store.
 func GetPropertiesHelper(
 	ctx context.Context,
 	entities []string,
