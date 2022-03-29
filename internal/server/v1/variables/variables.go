@@ -61,11 +61,11 @@ func Variables(
 	}
 
 	resp := &pb.VariablesResponse{Entity: entity}
-	if statVars, ok := entityToStatVars[entity]; !ok {
+	statVars, ok := entityToStatVars[entity]
+	if !ok {
 		return resp, nil
-	} else {
-		resp.Variables = append(resp.Variables, statVars.StatVars...)
 	}
+	resp.Variables = append(resp.Variables, statVars.StatVars...)
 
 	return resp, nil
 }
