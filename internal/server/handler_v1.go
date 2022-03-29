@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
+	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
 
 // Properties implements API for mixer.Properties.
@@ -33,4 +34,18 @@ func (s *Server) BulkProperties(
 	ctx context.Context, in *pb.BulkPropertiesRequest,
 ) (*pb.BulkPropertiesResponse, error) {
 	return properties.BulkProperties(ctx, in, s.store)
+}
+
+// Variables implements API for mixer.Variables.
+func (s *Server) Variables(
+	ctx context.Context, in *pb.VariablesRequest,
+) (*pb.VariablesResponse, error) {
+	return variables.Variables(ctx, in, s.store)
+}
+
+// BulkVariables implements API for mixer.BulkVariables.
+func (s *Server) BulkVariables(
+	ctx context.Context, in *pb.BulkVariablesRequest,
+) (*pb.BulkVariablesResponse, error) {
+	return variables.BulkVariables(ctx, in, s.store)
 }

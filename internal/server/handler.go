@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -199,7 +200,7 @@ func (s *Server) GetPlaceStatsVar(
 func (s *Server) GetPlaceStatVars(
 	ctx context.Context, in *pb.GetPlaceStatVarsRequest,
 ) (*pb.GetPlaceStatVarsResponse, error) {
-	return statvar.GetPlaceStatVars(ctx, in, s.store)
+	return placestatvar.GetPlaceStatVars(ctx, in, s.store)
 }
 
 // GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
