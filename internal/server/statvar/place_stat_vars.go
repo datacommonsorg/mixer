@@ -32,8 +32,15 @@ import (
 func GetPlaceStatsVar(
 	ctx context.Context, in *pb.GetPlaceStatsVarRequest, store *store.Store) (
 	*pb.GetPlaceStatsVarResponse, error) {
+	dcids := in.GetDcids()
+	if len(dcids) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcids")
+	}
+	if !util.CheckValidDCIDs(dcids) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcids")
+	}
 
-	resp, err := GetEntityStatVarsHelper(ctx, in.GetDcids(), store)
+	resp, err := GetEntityStatVarsHelper(ctx, dcids, store)
 	if err != nil {
 		return nil, err
 	}
