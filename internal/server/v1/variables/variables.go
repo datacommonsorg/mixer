@@ -64,9 +64,7 @@ func Variables(
 	if statVars, ok := entityToStatVars[entity]; !ok {
 		return resp, nil
 	} else {
-		for _, statVar := range statVars.StatVars {
-			resp.Variables = append(resp.Variables, statVar)
-		}
+		resp.Variables = append(resp.Variables, statVars.StatVars...)
 	}
 
 	return resp, nil
