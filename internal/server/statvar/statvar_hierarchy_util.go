@@ -21,6 +21,7 @@ import (
 	"path"
 	"runtime"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -159,7 +160,7 @@ func BuildStatVarSearchIndex(
 				continue
 			}
 			seenSV[svData.Id] = struct{}{}
-			svTokenString := svData.SearchName
+			svTokenString := strings.Join(svData.SearchNames, " ")
 			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */, synonymMap)
 		}
 	}

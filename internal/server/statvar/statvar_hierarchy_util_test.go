@@ -48,20 +48,20 @@ func TestGetParentMapping(t *testing.T) {
 					},
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
-							Id:         "sv1",
-							SearchName: "Name 1",
+							Id:          "sv1",
+							SearchNames: []string{"Name 1", "Name 1"},
 						},
 					},
 				},
 				"svgZ": {
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
-							Id:         "sv1",
-							SearchName: "Name 1",
+							Id:          "sv1",
+							SearchNames: []string{"Name 1"},
 						},
 						{
-							Id:         "sv2",
-							SearchName: "Name 2",
+							Id:          "sv2",
+							SearchNames: []string{"Name 2"},
 						},
 					},
 				},
@@ -171,12 +171,12 @@ func TestBuildSearchIndex(t *testing.T) {
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
 							Id:          "sv_1_1",
-							SearchName:  "ab1 Ac3",
+							SearchNames: []string{"ab1 Ac3"},
 							DisplayName: "sv1",
 						},
 						{
 							Id:          "sv_1_2",
-							SearchName:  "ac3, bd",
+							SearchNames: []string{"ac3, bd"},
 							DisplayName: "sv2",
 						},
 					},
@@ -186,12 +186,12 @@ func TestBuildSearchIndex(t *testing.T) {
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
 							Id:          "sv_3",
-							SearchName:  "zdx",
+							SearchNames: []string{"zdx"},
 							DisplayName: "sv3",
 						},
 						{
 							Id:          "sv3",
-							SearchName:  "bd,",
+							SearchNames: []string{"bd,"},
 							DisplayName: "sv4",
 						},
 					},
@@ -201,7 +201,7 @@ func TestBuildSearchIndex(t *testing.T) {
 					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
 						{
 							Id:          "sv_orphan",
-							SearchName:  "zdx",
+							SearchNames: []string{"zdx"},
 							DisplayName: "sv3",
 						},
 					},
