@@ -60,7 +60,7 @@ func TestVariables(t *testing.T) {
 				false,
 			},
 			{
-				"",
+				"a,b",
 				"empty.json",
 				true,
 			},
