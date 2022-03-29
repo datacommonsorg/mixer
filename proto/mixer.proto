@@ -346,7 +346,7 @@ service Mixer {
   rpc Properties(datacommons.v1.PropertiesRequest)
       returns (datacommons.v1.PropertiesResponse) {
     option (google.api.http) = {
-      get : "/v1/properties/{direction}/{entity}"
+      get : "/v1/properties/{direction}/{entity=**}"
     };
   }
 

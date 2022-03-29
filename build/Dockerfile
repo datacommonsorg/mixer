@@ -31,7 +31,7 @@ RUN apt-get update && \
 # Install protobuf go plugin
 ENV GO111MODULE=on
 RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
-RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@1.2.0
+RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
 
 
 # =========  base stage ==========
@@ -51,7 +51,7 @@ RUN protoc \
     --proto_path=proto \
     --go_out=internal \
     --go-grpc_out=internal \
-    --go-grpc_opt=requireUnimplementedServers=false \
+    --go-grpc_opt=require_unimplemented_servers=false \
     proto/*.proto proto/v1/*.proto
 
 
