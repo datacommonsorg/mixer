@@ -83,6 +83,10 @@ func (index *SearchIndex) Update(
 	// Create a map of tokens/synonyms to the matching string from nodeString
 	tokens := map[string]string{}
 	for _, token := range tokenList {
+		// Do not process duplicate tokens
+		if _, ok := tokens[token]; ok {
+			continue
+		}
 		tokens[token] = token
 		if synonymList, ok := synonymMap[token]; ok {
 			for _, synonym := range synonymList {
