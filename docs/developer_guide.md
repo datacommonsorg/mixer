@@ -91,8 +91,8 @@ Install the following packages as a one-time action.
 
 ```bash
 cd ~/   # Be sure there is no go.mod in the local directory
-go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.23.0
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v0.0.0-20200824180931-410880dd7d91
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
 ```
 
 Run the following command to generate Go proto files.
@@ -103,7 +103,7 @@ protoc \
   --proto_path=proto \
   --go_out=internal \
   --go-grpc_out=internal \
-  --go-grpc_opt=requireUnimplementedServers=false \
+  --go-grpc_opt=require_unimplemented_servers=false \
   proto/*.proto proto/v1/*.proto
 ```
 
