@@ -35,6 +35,7 @@ import "stat_var.proto";
 import "translate.proto";
 
 import "v1/properties.proto";
+import "v1/variables.proto";
 
 service Mixer {
   // Query DataCommons Graph with Sparql.
@@ -343,6 +344,7 @@ service Mixer {
   }
 
   // ========  V1  =======
+
   rpc Properties(datacommons.v1.PropertiesRequest)
       returns (datacommons.v1.PropertiesResponse) {
     option (google.api.http) = {
@@ -355,6 +357,21 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/bulk/properties/{direction}"
       additional_bindings : {post : "/v1/bulk/properties/{direction}" body : "*"}
+    };
+  }
+
+  rpc Variables(datacommons.v1.VariablesRequest)
+      returns (datacommons.v1.VariablesResponse) {
+    option (google.api.http) = {
+      get : "/v1/variables/{entity}"
+    };
+  }
+
+  rpc BulkVariables(datacommons.v1.BulkVariablesRequest)
+      returns (datacommons.v1.BulkVariablesResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/variables"
+      additional_bindings : {post : "/v1/bulk/variables" body : "*"}
     };
   }
 }

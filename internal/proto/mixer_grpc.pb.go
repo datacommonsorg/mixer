@@ -112,9 +112,10 @@ type MixerClient interface {
 	GetStatVarSummary(ctx context.Context, in *GetStatVarSummaryRequest, opts ...grpc.CallOption) (*GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
 	GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRequest, opts ...grpc.CallOption) (*GetStatVarMatchResponse, error)
-	// ========  V1  =======
 	Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error)
 	BulkProperties(ctx context.Context, in *BulkPropertiesRequest, opts ...grpc.CallOption) (*BulkPropertiesResponse, error)
+	Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error)
+	BulkVariables(ctx context.Context, in *BulkVariablesRequest, opts ...grpc.CallOption) (*BulkVariablesResponse, error)
 }
 
 type mixerClient struct {
@@ -440,6 +441,24 @@ func (c *mixerClient) BulkProperties(ctx context.Context, in *BulkPropertiesRequ
 	return out, nil
 }
 
+func (c *mixerClient) Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error) {
+	out := new(VariablesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Variables", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) BulkVariables(ctx context.Context, in *BulkVariablesRequest, opts ...grpc.CallOption) (*BulkVariablesResponse, error) {
+	out := new(BulkVariablesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkVariables", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -534,9 +553,10 @@ type MixerServer interface {
 	GetStatVarSummary(context.Context, *GetStatVarSummaryRequest) (*GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
 	GetStatVarMatch(context.Context, *GetStatVarMatchRequest) (*GetStatVarMatchResponse, error)
-	// ========  V1  =======
 	Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error)
 	BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error)
+	Variables(context.Context, *VariablesRequest) (*VariablesResponse, error)
+	BulkVariables(context.Context, *BulkVariablesRequest) (*BulkVariablesResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -647,6 +667,12 @@ func (UnimplementedMixerServer) Properties(context.Context, *PropertiesRequest) 
 }
 func (UnimplementedMixerServer) BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkProperties not implemented")
+}
+func (UnimplementedMixerServer) Variables(context.Context, *VariablesRequest) (*VariablesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Variables not implemented")
+}
+func (UnimplementedMixerServer) BulkVariables(context.Context, *BulkVariablesRequest) (*BulkVariablesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkVariables not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -1290,6 +1316,42 @@ func _Mixer_BulkProperties_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_Variables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VariablesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).Variables(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/Variables",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).Variables(ctx, req.(*VariablesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_BulkVariables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkVariablesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).BulkVariables(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/BulkVariables",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).BulkVariables(ctx, req.(*BulkVariablesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1436,6 +1498,14 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkProperties",
 			Handler:    _Mixer_BulkProperties_Handler,
+		},
+		{
+			MethodName: "Variables",
+			Handler:    _Mixer_Variables_Handler,
+		},
+		{
+			MethodName: "BulkVariables",
+			Handler:    _Mixer_BulkVariables_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

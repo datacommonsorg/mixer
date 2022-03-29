@@ -33,27 +33,22 @@ func GetPlaceStatsVar(
 	ctx context.Context, in *pb.GetPlaceStatsVarRequest, store *store.Store) (
 	*pb.GetPlaceStatsVarResponse, error) {
 
-	req := pb.GetPlaceStatVarsRequest{Dcids: in.GetDcids()}
-	resp, err := GetPlaceStatVars(ctx, &req, store)
+	resp, err := GetEntityStatVarsHelper(ctx, in.GetDcids(), store)
 	if err != nil {
 		return nil, err
 	}
 	out := pb.GetPlaceStatsVarResponse{Places: map[string]*pb.StatsVars{}}
-	for dcid, statVars := range resp.Places {
+	for dcid, statVars := range resp {
 		out.Places[dcid] = &pb.StatsVars{StatsVars: statVars.StatVars}
 	}
 	return &out, nil
 }
 
-// GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.
-func GetPlaceStatVars(
-	ctx context.Context, in *pb.GetPlaceStatVarsRequest, store *store.Store) (
-	*pb.GetPlaceStatVarsResponse, error) {
-	dcids := in.GetDcids()
-	if len(dcids) == 0 {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcid")
-	}
-	rowList := bigtable.BuildPlaceStatsVarKey(dcids)
+// GetEntityStatVarsHelper is a wrapper to get stat vars for given entities.
+func GetEntityStatVarsHelper(
+	ctx context.Context, entities []string, store *store.Store) (
+	map[string]*pb.StatVars, error) {
+	rowList := bigtable.BuildPlaceStatsVarKey(entities)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
@@ -70,25 +65,24 @@ func GetPlaceStatVars(
 	if err != nil {
 		return nil, err
 	}
-	resp := pb.GetPlaceStatVarsResponse{Places: map[string]*pb.StatVars{}}
-	for _, dcid := range dcids {
-		resp.Places[dcid] = &pb.StatVars{StatVars: []string{}}
+	resp := map[string]*pb.StatVars{}
+	for _, entity := range entities {
+		resp[entity] = &pb.StatVars{StatVars: []string{}}
 		allStatVars := [][]string{}
 		for _, baseData := range btDataList {
-			if baseData[dcid] != nil {
-				allStatVars = append(allStatVars, baseData[dcid].([]string))
+			if baseData[entity] != nil {
+				allStatVars = append(allStatVars, baseData[entity].([]string))
 			}
 		}
 		// Also merge from memdb
 		if !store.MemDb.IsEmpty() {
-			hasDataStatVars, _ := store.MemDb.GetStatVars([]string{dcid})
+			hasDataStatVars, _ := store.MemDb.GetStatVars([]string{entity})
 			allStatVars = append(allStatVars, hasDataStatVars)
 		}
-		resp.Places[dcid].StatVars = util.MergeDedupe(allStatVars...)
-		sort.Strings(resp.Places[dcid].StatVars)
-
+		resp[entity].StatVars = util.MergeDedupe(allStatVars...)
+		sort.Strings(resp[entity].StatVars)
 	}
-	return &resp, nil
+	return resp, nil
 }
 
 // GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
@@ -125,11 +119,11 @@ func GetPlaceStatVarsUnionV1(
 			}
 		}
 	} else {
-		resp, err := GetPlaceStatVars(ctx, &pb.GetPlaceStatVarsRequest{Dcids: places}, store)
+		resp, err := GetEntityStatVarsHelper(ctx, places, store)
 		if err != nil {
 			return nil, err
 		}
-		place2StatVars := resp.GetPlaces()
+		place2StatVars := resp
 
 		// For single place, return directly.
 		if len(places) == 1 {
