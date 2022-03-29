@@ -48,9 +48,6 @@ func Variables(
 	store *store.Store,
 ) (*pb.VariablesResponse, error) {
 	entity := in.GetEntity()
-	if entity == "" {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: entity")
-	}
 	if !util.CheckValidDCIDs([]string{entity}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
 	}
@@ -65,7 +62,7 @@ func Variables(
 	if !ok {
 		return resp, nil
 	}
-	resp.Variables = append(resp.Variables, statVars.StatVars...)
+	resp.Variables = statVars.StatVars
 
 	return resp, nil
 }
@@ -108,12 +105,13 @@ func BulkVariables(
 	} else {
 		sort.Strings(entities)
 		for _, entity := range entities {
-			if statVars, ok := entityToStatVars[entity]; ok {
-				resp.Data = append(resp.Data, &pb.VariablesResponse{
-					Entity:    entity,
-					Variables: statVars.StatVars,
-				})
+			item := &pb.VariablesResponse{
+				Entity: entity,
 			}
+			if statVars, ok := entityToStatVars[entity]; ok {
+				item.Variables = statVars.StatVars
+			}
+			resp.Data = append(resp.Data, item)
 		}
 	}
 

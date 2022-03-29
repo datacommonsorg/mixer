@@ -363,7 +363,7 @@ service Mixer {
   rpc Variables(datacommons.v1.VariablesRequest)
       returns (datacommons.v1.VariablesResponse) {
     option (google.api.http) = {
-      get : "/v1/variables/{entity}"
+      get : "/v1/variables/{entity=**}"
     };
   }
 
