@@ -199,18 +199,13 @@ func GetLocationsRankings(
 	return result, nil
 }
 
-// GetPlaceMetadata implements API for Mixer.GetPlaceMetadata.
-func GetPlaceMetadata(
+// GetPlaceMetadataHelper is a wrapper to get place metadata.
+func GetPlaceMetadataHelper(
 	ctx context.Context,
-	in *pb.GetPlaceMetadataRequest,
+	entities []string,
 	store *store.Store,
-) (*pb.GetPlaceMetadataResponse, error) {
-	places := in.GetPlaces()
-	if len(places) == 0 {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: places")
-	}
-
-	rowList := bigtable.BuildPlaceMetadataKey(places)
+) (map[string]*pb.PlaceMetadata, error) {
+	rowList := bigtable.BuildPlaceMetadataKey(entities)
 	// Place metadata are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
 		ctx,
@@ -229,15 +224,15 @@ func GetPlaceMetadata(
 		return nil, err
 	}
 	result := map[string]*pb.PlaceMetadata{}
-	for _, place := range places {
-		if _, ok := result[place]; ok {
+	for _, entity := range entities {
+		if _, ok := result[entity]; ok {
 			continue
 		}
 		for _, btData := range btDataList {
-			if btData[place] == nil {
+			if btData[entity] == nil {
 				continue
 			}
-			raw, ok := btData[place].(*pb.PlaceMetadataCache)
+			raw, ok := btData[entity].(*pb.PlaceMetadataCache)
 			if !ok {
 				continue
 			}
@@ -247,12 +242,12 @@ func GetPlaceMetadata(
 				metaMap[info.Dcid] = info
 			}
 			processed.Self = &pb.PlaceMetadata_PlaceInfo{
-				Dcid: place,
-				Name: metaMap[place].Name,
-				Type: metaMap[place].Type,
+				Dcid: entity,
+				Name: metaMap[entity].Name,
+				Type: metaMap[entity].Type,
 			}
 			visited := map[string]struct{}{}
-			parents := metaMap[place].Parents
+			parents := metaMap[entity].Parents
 			for {
 				if len(parents) == 0 {
 					break
@@ -270,8 +265,8 @@ func GetPlaceMetadata(
 				visited[curr] = struct{}{}
 				parents = append(parents, metaMap[curr].Parents...)
 			}
-			result[place] = &processed
+			result[entity] = &processed
 		}
 	}
-	return &pb.GetPlaceMetadataResponse{Data: result}, nil
+	return result, nil
 }

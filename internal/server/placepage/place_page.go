@@ -27,8 +27,8 @@ import (
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/node"
-	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
+	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -429,7 +429,7 @@ func getPlacePageChildPlaces(
 
 func getParentPlaces(ctx context.Context, store *store.Store, dcid string) (
 	[]string, error) {
-	placeMetadata, err := place.GetPlaceMetadata(
+	placeMetadata, err := placemetadata.GetPlaceMetadata(
 		ctx, &pb.GetPlaceMetadataRequest{Places: []string{dcid}}, store)
 	if err != nil {
 		return nil, err
