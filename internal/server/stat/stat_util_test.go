@@ -111,7 +111,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 			},
 		},
 	} {
-		ps, meta := getValueFromBestSourcePb(c.obs, c.date)
+		ps, meta := GetValueFromBestSourcePb(c.obs, c.date)
 		if diff := cmp.Diff(ps, c.ps, protocmp.Transform()); diff != "" {
 			t.Errorf("getValueFromBestSourcePb() got diff PointStat %v", diff)
 		}

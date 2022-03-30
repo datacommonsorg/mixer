@@ -32,8 +32,8 @@ func lowQualityPopulationImport(importName string) bool {
 		importName == "WikipediaStatsData"
 }
 
-// Filter a list of source series given the observation properties.
-func filterSeries(in []*model.SourceSeries, prop *model.StatObsProp) []*model.SourceSeries {
+// FilterSeries filters a list of source series given the observation properties.
+func FilterSeries(in []*model.SourceSeries, prop *model.StatObsProp) []*model.SourceSeries {
 	result := []*model.SourceSeries{}
 	for _, series := range in {
 		if prop.MeasurementMethod != "" && prop.MeasurementMethod != series.MeasurementMethod {
@@ -58,7 +58,7 @@ func FilterAndRank(in *model.ObsTimeSeries, prop *model.StatObsProp) {
 	if in == nil {
 		return
 	}
-	series := filterSeries(in.SourceSeries, prop)
+	series := FilterSeries(in.SourceSeries, prop)
 	sort.Sort(ranking.ByRank(series))
 	in.SourceSeries = series
 }
@@ -117,14 +117,14 @@ func rawSeriesToSeries(raw *pb.SourceSeries) *pb.Series {
 	return result
 }
 
-// getValueFromBestSource get the stat value from top ranked source series.
+// GetValueFromBestSource get the stat value from top ranked source series.
 //
 // When date is given, it get the value from the highest ranked source series
 // that has the date.
 //
 // When date is not given, it get the latest value from the highest ranked
 // source series.
-func getValueFromBestSource(in *model.ObsTimeSeries, date string) (float64, error) {
+func GetValueFromBestSource(in *model.ObsTimeSeries, date string) (float64, error) {
 	if in == nil {
 		return 0, status.Error(codes.Internal, "Nil obs time series for getValueFromBestSource()")
 	}
@@ -155,14 +155,14 @@ func getValueFromBestSource(in *model.ObsTimeSeries, date string) (float64, erro
 	return result, nil
 }
 
-// getValueFromBestSourcePb get the stat value from ObsTimeSeries (protobuf version)
+// GetValueFromBestSourcePb get the stat value from ObsTimeSeries (protobuf version)
 //
 // When date is given, it get the value from the highest ranked source series
 // that has the date.
 //
 // When date is not given, it get the latest value from all the source series.
 // If two sources has the same latest date, the highest ranked source is preferred.
-func getValueFromBestSourcePb(
+func GetValueFromBestSourcePb(
 	in *pb.ObsTimeSeries, date string) (*pb.PointStat, *pb.StatMetadata) {
 	if in == nil {
 		return nil, nil

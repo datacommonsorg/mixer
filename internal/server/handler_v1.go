@@ -18,6 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
@@ -48,4 +49,11 @@ func (s *Server) BulkVariables(
 	ctx context.Context, in *pb.BulkVariablesRequest,
 ) (*pb.BulkVariablesResponse, error) {
 	return variables.BulkVariables(ctx, in, s.store)
+}
+
+// ObservationsPoint implements API for mixer.ObservationsPoint.
+func (s *Server) ObservationsPoint(
+	ctx context.Context, in *pb.ObservationsPointRequest,
+) (*pb.PointStat, error) {
+	return observations.Point(ctx, in, s.store)
 }

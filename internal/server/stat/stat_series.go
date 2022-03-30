@@ -69,7 +69,7 @@ func GetStatSeries(
 		return nil, err
 	}
 	series := btData[place][statVar].SourceSeries
-	series = filterSeries(series, filterProp)
+	series = FilterSeries(series, filterProp)
 	sort.Sort(ranking.ByRank(series))
 	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
 	if len(series) > 0 {

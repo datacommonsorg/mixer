@@ -1,0 +1,10 @@
+{
+  "date": "2017",
+  "value": 61410,
+  "metadata": {
+    "import_name": "WorldDevelopmentIndicators",
+    "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+    "observation_period": "P1Y",
+    "unit": "InternationalDollar"
+  }
+}

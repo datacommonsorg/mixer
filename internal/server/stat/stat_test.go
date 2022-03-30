@@ -248,7 +248,7 @@ func TestGetLatest(t *testing.T) {
 			200,
 		},
 	} {
-		value, _ := getValueFromBestSource(obsTimeSeries, c.date)
+		value, _ := GetValueFromBestSource(obsTimeSeries, c.date)
 		if c.want != value {
 			t.Errorf("Wrong latest value %f", value)
 		}
