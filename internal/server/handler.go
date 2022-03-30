@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
@@ -178,7 +179,7 @@ func (s *Server) GetLocationsRankings(
 func (s *Server) GetPlaceMetadata(
 	ctx context.Context, in *pb.GetPlaceMetadataRequest,
 ) (*pb.GetPlaceMetadataResponse, error) {
-	return place.GetPlaceMetadata(ctx, in, s.store)
+	return placemetadata.GetPlaceMetadata(ctx, in, s.store)
 }
 
 // GetPlaceStatDateWithinPlace implements API for Mixer.GetPlaceStatDateWithinPlace.

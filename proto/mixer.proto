@@ -36,6 +36,7 @@ import "translate.proto";
 
 import "v1/properties.proto";
 import "v1/variables.proto";
+import "v1/places.proto";
 import "v1/observations.proto";
 
 service Mixer {
@@ -376,7 +377,22 @@ service Mixer {
     };
   }
 
-    rpc ObservationsPoint(datacommons.v1.ObservationsPointRequest)
+  rpc PlaceInfo(datacommons.v1.PlaceInfoRequest)
+      returns (datacommons.v1.PlaceInfoResponse) {
+    option (google.api.http) = {
+      get : "/v1/info/place/{entity=**}"
+    };
+  }
+
+  rpc BulkPlaceInfo(datacommons.v1.BulkPlaceInfoRequest)
+      returns (datacommons.v1.BulkPlaceInfoResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/info/place"
+      additional_bindings : {post : "/v1/bulk/info/place" body : "*"}
+    };
+  }
+
+  rpc ObservationsPoint(datacommons.v1.ObservationsPointRequest)
       returns (PointStat) {
     option (google.api.http) = {
       get : "/v1/observations/point/{variable}/{entity=**}"

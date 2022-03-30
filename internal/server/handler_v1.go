@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
+	"github.com/datacommonsorg/mixer/internal/server/v1/place"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
@@ -49,6 +50,20 @@ func (s *Server) BulkVariables(
 	ctx context.Context, in *pb.BulkVariablesRequest,
 ) (*pb.BulkVariablesResponse, error) {
 	return variables.BulkVariables(ctx, in, s.store)
+}
+
+// PlaceInfo implements API for mixer.PlaceInfo.
+func (s *Server) PlaceInfo(
+	ctx context.Context, in *pb.PlaceInfoRequest,
+) (*pb.PlaceInfoResponse, error) {
+	return place.PlaceInfo(ctx, in, s.store)
+}
+
+// BulkPlaceInfo implements API for mixer.BulkPlaceInfo.
+func (s *Server) BulkPlaceInfo(
+	ctx context.Context, in *pb.BulkPlaceInfoRequest,
+) (*pb.BulkPlaceInfoResponse, error) {
+	return place.BulkPlaceInfo(ctx, in, s.store)
 }
 
 // ObservationsPoint implements API for mixer.ObservationsPoint.

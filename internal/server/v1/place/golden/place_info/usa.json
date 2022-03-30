@@ -1,0 +1,22 @@
+{
+  "entity": "country/USA",
+  "info": {
+    "self": {
+      "dcid": "country/USA",
+      "name": "United States",
+      "type": "Country"
+    },
+    "parents": [
+      {
+        "dcid": "northamerica",
+        "name": "North America",
+        "type": "Continent"
+      },
+      {
+        "dcid": "Earth",
+        "name": "Earth",
+        "type": "Place"
+      }
+    ]
+  }
+}
