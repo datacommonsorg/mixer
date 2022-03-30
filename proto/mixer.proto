@@ -36,7 +36,7 @@ import "translate.proto";
 
 import "v1/properties.proto";
 import "v1/variables.proto";
-import "v1/places.proto";
+import "v1/info.proto";
 import "v1/observations.proto";
 
 service Mixer {
