@@ -35,6 +35,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
+	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
@@ -57,7 +58,7 @@ func (s *Server) Query(ctx context.Context, in *pb.QueryRequest) (
 func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	*pb.GetStatValueResponse, error,
 ) {
-	return stat.GetStatValue(ctx, in, s.store)
+	return statpoint.GetStatValue(ctx, in, s.store)
 }
 
 // GetStatSet implements API for Mixer.GetStatSet.

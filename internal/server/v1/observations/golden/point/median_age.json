@@ -1,0 +1,10 @@
+{
+  "date": "2015",
+  "value": 35.4,
+  "metadata": {
+    "import_name": "CensusACS5YearSurvey",
+    "provenance_url": "https://www.census.gov/",
+    "measurement_method": "CensusACS5yrSurvey",
+    "unit": "Year"
+  }
+}
