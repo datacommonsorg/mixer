@@ -1,0 +1,188 @@
+{
+  "entity": "Count_CriminalActivities_CombinedCrime",
+  "info": {
+    "placeTypeSummary": {
+      "CensusCountyDivision": {
+        "placeCount": 1327,
+        "topPlaces": [
+          {
+            "dcid": "geoId/1500390810",
+            "name": "Honolulu CCD"
+          },
+          {
+            "dcid": "geoId/3608760510",
+            "name": "Ramapo"
+          },
+          {
+            "dcid": "geoId/3402938550",
+            "name": "Lakewood"
+          }
+        ]
+      },
+      "City": {
+        "placeCount": 8807,
+        "topPlaces": [
+          {
+            "dcid": "geoId/3651000",
+            "name": "New York"
+          },
+          {
+            "dcid": "geoId/0644000",
+            "name": "Los Angeles"
+          },
+          {
+            "dcid": "geoId/1714000",
+            "name": "Chicago"
+          }
+        ]
+      },
+      "Country": {
+        "placeCount": 1,
+        "topPlaces": [
+          {
+            "dcid": "country/USA",
+            "name": "United States"
+          }
+        ]
+      },
+      "County": {
+        "placeCount": 1,
+        "topPlaces": [
+          {
+            "dcid": "geoId/34007",
+            "name": "Camden County"
+          }
+        ]
+      },
+      "State": {
+        "placeCount": 50,
+        "topPlaces": [
+          {
+            "dcid": "geoId/06",
+            "name": "California"
+          },
+          {
+            "dcid": "geoId/48",
+            "name": "Texas"
+          },
+          {
+            "dcid": "geoId/12",
+            "name": "Florida"
+          }
+        ]
+      }
+    },
+    "provenanceSummary": {
+      "dc/fx0lj33": {
+        "importName": "FBIGovCrime",
+        "observationCount": 96373,
+        "timeSeriesCount": 10185,
+        "releaseFrequency": "P1Y",
+        "seriesSummary": [
+          {
+            "seriesKey": {
+              "observationPeriod": "P1Y"
+            },
+            "earliestDate": "2008",
+            "latestDate": "2019",
+            "observationCount": 96373,
+            "timeSeriesCount": 10185,
+            "placeTypeSummary": {
+              "CensusCountyDivision": {
+                "placeCount": 1327,
+                "topPlaces": [
+                  {
+                    "dcid": "geoId/1500390810",
+                    "name": "Honolulu CCD"
+                  },
+                  {
+                    "dcid": "geoId/3608760510",
+                    "name": "Ramapo"
+                  },
+                  {
+                    "dcid": "geoId/3402938550",
+                    "name": "Lakewood"
+                  }
+                ]
+              },
+              "City": {
+                "placeCount": 8807,
+                "topPlaces": [
+                  {
+                    "dcid": "geoId/3651000",
+                    "name": "New York"
+                  },
+                  {
+                    "dcid": "geoId/0644000",
+                    "name": "Los Angeles"
+                  },
+                  {
+                    "dcid": "geoId/1714000",
+                    "name": "Chicago"
+                  }
+                ]
+              },
+              "County": {
+                "placeCount": 1,
+                "topPlaces": [
+                  {
+                    "dcid": "geoId/34007",
+                    "name": "Camden County"
+                  }
+                ]
+              },
+              "State": {
+                "placeCount": 50,
+                "topPlaces": [
+                  {
+                    "dcid": "geoId/06",
+                    "name": "California"
+                  },
+                  {
+                    "dcid": "geoId/48",
+                    "name": "Texas"
+                  },
+                  {
+                    "dcid": "geoId/12",
+                    "name": "Florida"
+                  }
+                ]
+              }
+            },
+            "maxValue": 1265920
+          }
+        ]
+      },
+      "dc/q843y93": {
+        "importName": "FBIGovCrime_AggCountry",
+        "observationCount": 12,
+        "timeSeriesCount": 1,
+        "seriesSummary": [
+          {
+            "seriesKey": {
+              "observationPeriod": "P1Y",
+              "isDcAggregate": true
+            },
+            "earliestDate": "2008",
+            "latestDate": "2019",
+            "observationCount": 12,
+            "timeSeriesCount": 1,
+            "placeTypeSummary": {
+              "Country": {
+                "placeCount": 1,
+                "topPlaces": [
+                  {
+                    "dcid": "country/USA",
+                    "name": "United States"
+                  }
+                ]
+              }
+            },
+            "minValue": 8132863,
+            "maxValue": 11111207
+          }
+        ]
+      }
+    }
+  }
+}

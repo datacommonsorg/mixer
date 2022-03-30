@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
+	"github.com/datacommonsorg/mixer/internal/server/v0/statvarsummary"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
@@ -237,7 +238,7 @@ func (s *Server) GetStatVarPath(
 func (s *Server) GetStatVarSummary(
 	ctx context.Context, in *pb.GetStatVarSummaryRequest,
 ) (*pb.GetStatVarSummaryResponse, error) {
-	return statvar.GetStatVarSummary(ctx, in, s.store)
+	return statvarsummary.GetStatVarSummary(ctx, in, s.store)
 }
 
 // GetStatVarMatch implements API for Mixer.GetStatVarMatch.
