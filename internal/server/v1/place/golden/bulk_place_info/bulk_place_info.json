@@ -1,11 +1,11 @@
 {
-  "data": [
+  "info": [
     {
       "entity": "earth"
     },
     {
       "entity": "country/USA",
-      "data": {
+      "info": {
         "self": {
           "dcid": "country/USA",
           "name": "United States",
@@ -27,7 +27,7 @@
     },
     {
       "entity": "geoId/06",
-      "data": {
+      "info": {
         "self": {
           "dcid": "geoId/06",
           "name": "California",
@@ -62,7 +62,7 @@
     },
     {
       "entity": "geoId/06085",
-      "data": {
+      "info": {
         "self": {
           "dcid": "geoId/06085",
           "name": "Santa Clara County",
@@ -102,7 +102,7 @@
     },
     {
       "entity": "geoId/02158000100",
-      "data": {
+      "info": {
         "self": {
           "dcid": "geoId/02158000100",
           "type": "CensusTract"

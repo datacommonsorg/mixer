@@ -1,6 +1,6 @@
 {
   "entity": "country/USA",
-  "data": {
+  "info": {
     "self": {
       "dcid": "country/USA",
       "name": "United States",

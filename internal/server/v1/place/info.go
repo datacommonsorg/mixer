@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package places
+package place
 
 import (
 	"context"
@@ -43,7 +43,7 @@ func PlaceInfo(
 
 	resp := &pb.PlaceInfoResponse{Entity: entity}
 	if metadata, ok := placeToMetadata[entity]; ok {
-		resp.Data = metadata
+		resp.Info = metadata
 	}
 
 	return resp, nil
@@ -72,9 +72,9 @@ func BulkPlaceInfo(
 	for _, entity := range entities {
 		item := &pb.PlaceInfoResponse{Entity: entity}
 		if metadata, ok := placeToMetadata[entity]; ok {
-			item.Data = metadata
+			item.Info = metadata
 		}
-		resp.Data = append(resp.Data, item)
+		resp.Info = append(resp.Info, item)
 	}
 
 	return resp, nil

@@ -24,7 +24,7 @@ message PlaceInfoRequest {
   
 message PlaceInfoResponse {
   string entity = 1;
-  datacommons.PlaceMetadata data = 2;
+  datacommons.PlaceMetadata info = 2;
 }
 
 message BulkPlaceInfoRequest {
@@ -32,5 +32,5 @@ message BulkPlaceInfoRequest {
 }
 
 message BulkPlaceInfoResponse {
-  repeated PlaceInfoResponse data = 1;
+  repeated PlaceInfoResponse info = 1;
 }
