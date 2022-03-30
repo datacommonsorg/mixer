@@ -21,7 +21,6 @@ import (
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -30,49 +29,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
-
-// GetStatValue implements API for Mixer.GetStatValue.
-func GetStatValue(ctx context.Context, in *pb.GetStatValueRequest, store *store.Store) (
-	*pb.GetStatValueResponse, error) {
-	place := in.GetPlace()
-	statVar := in.GetStatVar()
-
-	if place == "" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: place")
-	}
-	if statVar == "" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: stat_var")
-	}
-	date := in.GetDate()
-	filterProp := &model.StatObsProp{
-		MeasurementMethod: in.GetMeasurementMethod(),
-		ObservationPeriod: in.GetObservationPeriod(),
-		Unit:              in.GetUnit(),
-		ScalingFactor:     in.GetScalingFactor(),
-	}
-
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
-	var obsTimeSeries *model.ObsTimeSeries
-	btData, err := ReadStats(ctx, store.BtGroup, rowList, keyTokens)
-	if err != nil {
-		return nil, err
-	}
-	result := &pb.GetStatValueResponse{}
-	obsTimeSeries = btData[place][statVar]
-	if obsTimeSeries == nil {
-		return result, nil
-	}
-	obsTimeSeries.SourceSeries = filterSeries(obsTimeSeries.SourceSeries, filterProp)
-	value, err := getValueFromBestSource(obsTimeSeries, date)
-	if err != nil {
-		log.Println(err)
-		return result, nil
-	}
-	result.Value = value
-	return result, nil
-}
 
 func getStatSet(
 	ctx context.Context, store *store.Store, places []string, statVars []string, date string) (
@@ -107,7 +63,7 @@ func getStatSet(
 			if !ok || data == nil {
 				continue
 			}
-			stat, metaData := getValueFromBestSourcePb(data, date)
+			stat, metaData := GetValueFromBestSourcePb(data, date)
 			if stat == nil {
 				continue
 			}

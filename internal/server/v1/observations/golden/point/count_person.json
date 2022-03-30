@@ -1,0 +1,9 @@
+{
+  "date": "2020",
+  "value": 331449281,
+  "metadata": {
+    "import_name": "USDecennialCensus_RedistrictingRelease",
+    "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+    "measurement_method": "USDecennialCensus"
+  }
+}
