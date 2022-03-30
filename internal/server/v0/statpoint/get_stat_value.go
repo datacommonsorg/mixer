@@ -16,7 +16,6 @@ package statpoint
 
 import (
 	"context"
-	"log"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
@@ -63,7 +62,6 @@ func GetStatValue(ctx context.Context, in *pb.GetStatValueRequest, store *store.
 	obsTimeSeries.SourceSeries = stat.FilterSeries(obsTimeSeries.SourceSeries, filterProp)
 	value, err := stat.GetValueFromBestSource(obsTimeSeries, date)
 	if err != nil {
-		log.Println(err)
 		return result, nil
 	}
 	result.Value = value
