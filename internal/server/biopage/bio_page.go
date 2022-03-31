@@ -21,22 +21,13 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
-// GetBioPageData implements API for Mixer.GetBioPageData.
-func GetBioPageData(
-	ctx context.Context, in *pb.GetBioPageDataRequest, store *store.Store) (
+// GetBioPageDataHelper is a wrapper to get bio page data.
+func GetBioPageDataHelper(
+	ctx context.Context, dcid string, store *store.Store) (
 	*pb.GraphNodes, error) {
-
-	dcid := in.GetDcid()
-	if dcid == "" {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "Missing required arguments: dcid")
-	}
-
 	dataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,

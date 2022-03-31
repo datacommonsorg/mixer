@@ -21,7 +21,6 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/biopage"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
@@ -32,6 +31,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	"github.com/datacommonsorg/mixer/internal/server/v0/bio"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
@@ -324,7 +324,7 @@ func (s *Server) GetPlacePageData(
 func (s *Server) GetBioPageData(
 	ctx context.Context, in *pb.GetBioPageDataRequest,
 ) (*pb.GraphNodes, error) {
-	return biopage.GetBioPageData(ctx, in, s.store)
+	return bio.GetBioPageData(ctx, in, s.store)
 }
 
 // Search implements API for Mixer.Search.
