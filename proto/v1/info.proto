@@ -17,6 +17,7 @@ option go_package = "./proto";
 package datacommons.v1;
 
 import "place.proto";
+import "stat_var.proto";
 
 message PlaceInfoRequest {
   string entity = 1;
@@ -33,4 +34,21 @@ message BulkPlaceInfoRequest {
 
 message BulkPlaceInfoResponse {
   repeated PlaceInfoResponse info = 1;
+}
+
+message VariableInfoRequest {
+  string entity = 1;
+}
+  
+message VariableInfoResponse {
+  string entity = 1;
+  datacommons.StatVarSummary info = 2;
+}
+
+message BulkVariableInfoRequest {
+  repeated string entities = 1;
+}
+
+message BulkVariableInfoResponse {
+  repeated VariableInfoResponse data = 1;
 }

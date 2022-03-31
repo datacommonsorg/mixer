@@ -392,6 +392,21 @@ service Mixer {
     };
   }
 
+  rpc VariableInfo(datacommons.v1.VariableInfoRequest)
+      returns (datacommons.v1.VariableInfoResponse) {
+    option (google.api.http) = {
+      get : "/v1/info/variable/{entity=**}"
+    };
+  }
+
+  rpc BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
+      returns (datacommons.v1.BulkVariableInfoResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/info/variable"
+      additional_bindings : {post : "/v1/bulk/info/variable" body : "*"}
+    };
+  }
+
   rpc ObservationsPoint(datacommons.v1.ObservationsPointRequest)
       returns (PointStat) {
     option (google.api.http) = {

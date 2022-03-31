@@ -25,12 +25,11 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// GetStatVarSummary implements API for Mixer.GetStatVarSummary.
-func GetStatVarSummary(
-	ctx context.Context, in *pb.GetStatVarSummaryRequest, store *store.Store) (
-	*pb.GetStatVarSummaryResponse, error) {
-	sv := in.GetStatVars()
-	rowList := bigtable.BuildStatVarSummaryKey(sv)
+// GetStatVarSummaryHelper is a wrapper to get stat var summary.
+func GetStatVarSummaryHelper(
+	ctx context.Context, entities []string, store *store.Store) (
+	map[string]*pb.StatVarSummary, error) {
+	rowList := bigtable.BuildStatVarSummaryKey(entities)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
@@ -47,9 +46,7 @@ func GetStatVarSummary(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.GetStatVarSummaryResponse{
-		StatVarSummary: map[string]*pb.StatVarSummary{},
-	}
+	result := map[string]*pb.StatVarSummary{}
 	// Merge strategy
 	// 1. "place_type_summary": For a given place type, pick the Bigtable with the
 	//    most places.
@@ -60,11 +57,11 @@ func GetStatVarSummary(
 			if !ok {
 				return nil, status.Errorf(codes.Internal, "Can not read StatVarSummary")
 			}
-			if _, ok := result.StatVarSummary[dcid]; !ok {
-				result.StatVarSummary[dcid] = svs
+			if _, ok := result[dcid]; !ok {
+				result[dcid] = svs
 				continue
 			}
-			res := result.StatVarSummary[dcid]
+			res := result[dcid]
 			// Pick place type summary with the most places.
 			for pt := range svs.PlaceTypeSummary {
 				summary, ok := res.PlaceTypeSummary[pt]

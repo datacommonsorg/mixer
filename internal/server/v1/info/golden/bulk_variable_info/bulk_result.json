@@ -1,0 +1,2650 @@
+{
+  "data": [
+    {
+      "entity": "UnemploymentRate_Person",
+      "info": {
+        "placeTypeSummary": {
+          "City": {
+            "placeCount": 3055,
+            "topPlaces": [
+              {
+                "dcid": "geoId/3651000",
+                "name": "New York"
+              },
+              {
+                "dcid": "geoId/0644000",
+                "name": "Los Angeles"
+              },
+              {
+                "dcid": "geoId/1714000",
+                "name": "Chicago"
+              }
+            ]
+          },
+          "Country": {
+            "placeCount": 33,
+            "topPlaces": [
+              {
+                "dcid": "country/USA",
+                "name": "United States"
+              },
+              {
+                "dcid": "country/JPN",
+                "name": "Japan"
+              },
+              {
+                "dcid": "country/TUR",
+                "name": "Turkey"
+              }
+            ]
+          },
+          "County": {
+            "placeCount": 3220,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06037",
+                "name": "Los Angeles County"
+              },
+              {
+                "dcid": "geoId/17031",
+                "name": "Cook County"
+              },
+              {
+                "dcid": "geoId/48201",
+                "name": "Harris County"
+              }
+            ]
+          },
+          "State": {
+            "placeCount": 52,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06",
+                "name": "California"
+              },
+              {
+                "dcid": "geoId/48",
+                "name": "Texas"
+              },
+              {
+                "dcid": "geoId/12",
+                "name": "Florida"
+              }
+            ]
+          }
+        },
+        "provenanceSummary": {
+          "dc/2xghn33": {
+            "importName": "BLS_CPS",
+            "observationCount": 1186,
+            "timeSeriesCount": 2,
+            "releaseFrequency": "P1M",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyAdjusted",
+                  "observationPeriod": "P1M"
+                },
+                "earliestDate": "1948-01",
+                "latestDate": "2022-02",
+                "observationCount": 890,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 2.5,
+                "maxValue": 14.7
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyAdjusted",
+                  "observationPeriod": "P3M"
+                },
+                "earliestDate": "1948-03",
+                "latestDate": "2021-12",
+                "observationCount": 296,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 2.6,
+                "maxValue": 13
+              }
+            ]
+          },
+          "dc/lly3yc1": {
+            "importName": "BLS_LAUS",
+            "observationCount": 2587257,
+            "timeSeriesCount": 12707,
+            "releaseFrequency": "P1M",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyAdjusted",
+                  "observationPeriod": "P1M"
+                },
+                "earliestDate": "1976-01",
+                "latestDate": "2021-12",
+                "observationCount": 29254,
+                "timeSeriesCount": 53,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 52,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 1.9,
+                "maxValue": 28.5
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyUnadjusted",
+                  "observationPeriod": "P1M"
+                },
+                "earliestDate": "1976-01",
+                "latestDate": "2021-12",
+                "observationCount": 2367090,
+                "timeSeriesCount": 6327,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 3055,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      }
+                    ]
+                  },
+                  "County": {
+                    "placeCount": 3220,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 52,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "maxValue": 100
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyUnadjusted",
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "1976",
+                "latestDate": "2021",
+                "observationCount": 190913,
+                "timeSeriesCount": 6327,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 3055,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      }
+                    ]
+                  },
+                  "County": {
+                    "placeCount": 3220,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 52,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "maxValue": 100
+              }
+            ]
+          },
+          "dc/yd4sfb": {
+            "importName": "EurostatData",
+            "observationCount": 11125,
+            "timeSeriesCount": 33,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "observationPeriod": "P1M"
+                },
+                "earliestDate": "1983-01",
+                "latestDate": "2020-07",
+                "observationCount": 11125,
+                "timeSeriesCount": 33,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 33,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      },
+                      {
+                        "dcid": "country/JPN",
+                        "name": "Japan"
+                      },
+                      {
+                        "dcid": "country/TUR",
+                        "name": "Turkey"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 1.3,
+                "maxValue": 26.3
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "entity": "Count_Person_Female",
+      "info": {
+        "placeTypeSummary": {
+          "AdministrativeArea": {
+            "placeCount": 48,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q173121",
+                "name": "Santiago de Querétaro"
+              },
+              {
+                "dcid": "wikidataId/Q1973593",
+                "name": "Waikato District"
+              },
+              {
+                "dcid": "wikidataId/Q550219",
+                "name": "Capital Regional District"
+              }
+            ]
+          },
+          "AdministrativeArea1": {
+            "placeCount": 330,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q15175",
+                "name": "Guangdong"
+              },
+              {
+                "dcid": "wikidataId/Q43407",
+                "name": "Shandong"
+              },
+              {
+                "dcid": "wikidataId/Q43684",
+                "name": "Henan"
+              }
+            ]
+          },
+          "AdministrativeArea2": {
+            "placeCount": 763,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q943099",
+                "name": "Thane district"
+              },
+              {
+                "dcid": "wikidataId/Q338425",
+                "name": "North 24 Parganas district"
+              },
+              {
+                "dcid": "wikidataId/Q806463",
+                "name": "Bangalore Urban district"
+              }
+            ]
+          },
+          "AdministrativeArea3": {
+            "placeCount": 29,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q1143712",
+                "name": "Kanagawa-ku"
+              },
+              {
+                "dcid": "wikidataId/Q50811",
+                "name": "Regional Municipality of Peel"
+              },
+              {
+                "dcid": "wikidataId/Q18458",
+                "name": "Regional Municipality of York"
+              }
+            ]
+          },
+          "CensusBlockGroup": {
+            "placeCount": 220333,
+            "topPlaces": [
+              {
+                "dcid": "geoId/481576729001",
+                "name": "Block Group 1, Census Tract 6729, Fort Bend County, Texas"
+              },
+              {
+                "dcid": "geoId/481576731011",
+                "name": "Block Group 1, Census Tract 6731.01, Fort Bend County, Texas"
+              },
+              {
+                "dcid": "geoId/380170405002",
+                "name": "Block Group 2, Census Tract 405, Cass County, North Dakota"
+              }
+            ]
+          },
+          "CensusCoreBasedStatisticalArea": {
+            "placeCount": 933,
+            "topPlaces": [
+              {
+                "dcid": "geoId/C35620",
+                "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area"
+              },
+              {
+                "dcid": "geoId/C31080",
+                "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area"
+              },
+              {
+                "dcid": "geoId/C16980",
+                "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
+              }
+            ]
+          },
+          "CensusCountyDivision": {
+            "placeCount": 36798,
+            "topPlaces": [
+              {
+                "dcid": "geoId/4820191835",
+                "name": "Houston CCD"
+              },
+              {
+                "dcid": "geoId/0401392601",
+                "name": "Phoenix CCD"
+              },
+              {
+                "dcid": "geoId/1703114000",
+                "name": "Chicago"
+              }
+            ]
+          },
+          "CensusTract": {
+            "placeCount": 74014,
+            "topPlaces": [
+              {
+                "dcid": "geoId/48157673101",
+                "name": "Census Tract 6731.01, Fort Bend County, Texas"
+              },
+              {
+                "dcid": "geoId/48157672900",
+                "name": "Census Tract 6729, Fort Bend County, Texas"
+              },
+              {
+                "dcid": "geoId/48039660602",
+                "name": "Census Tract 6606.02, Brazoria County, Texas"
+              }
+            ]
+          },
+          "CensusZipCodeTabulationArea": {
+            "placeCount": 32989,
+            "topPlaces": [
+              {
+                "dcid": "zip/77449",
+                "name": "77449"
+              },
+              {
+                "dcid": "zip/77494",
+                "name": "77494"
+              },
+              {
+                "dcid": "zip/11368",
+                "name": "11368"
+              }
+            ]
+          },
+          "City": {
+            "placeCount": 29952,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q8686",
+                "name": "Shanghai"
+              },
+              {
+                "dcid": "wikidataId/Q987",
+                "name": "New Delhi"
+              },
+              {
+                "dcid": "wikidataId/Q11736",
+                "name": "Tianjin"
+              }
+            ]
+          },
+          "CongressionalDistrict": {
+            "placeCount": 452,
+            "topPlaces": [
+              {
+                "dcid": "geoId/7298",
+                "name": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico"
+              },
+              {
+                "dcid": "geoId/3000",
+                "name": "Congressional District (at Large) (113th Congress), Montana"
+              },
+              {
+                "dcid": "geoId/1000",
+                "name": "Congressional District (at Large) (113th Congress), Delaware"
+              }
+            ]
+          },
+          "Country": {
+            "placeCount": 66,
+            "topPlaces": [
+              {
+                "dcid": "country/CHN",
+                "name": "China"
+              },
+              {
+                "dcid": "country/IND",
+                "name": "India"
+              },
+              {
+                "dcid": "country/USA",
+                "name": "United States"
+              }
+            ]
+          },
+          "County": {
+            "placeCount": 3222,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06037",
+                "name": "Los Angeles County"
+              },
+              {
+                "dcid": "geoId/17031",
+                "name": "Cook County"
+              },
+              {
+                "dcid": "geoId/48201",
+                "name": "Harris County"
+              }
+            ]
+          },
+          "ElementarySchoolDistrict": {
+            "placeCount": 275,
+            "topPlaces": [
+              {
+                "dcid": "geoId/sch0637380",
+                "name": "South Bay Union School District"
+              },
+              {
+                "dcid": "geoId/sch0635590",
+                "name": "Santa Cruz City Elementary School District"
+              },
+              {
+                "dcid": "geoId/sch0637290",
+                "name": "Soquel Elementary School District"
+              }
+            ]
+          },
+          "EurostatNUTS1": {
+            "placeCount": 123,
+            "topPlaces": [
+              {
+                "dcid": "nuts/DEA",
+                "name": "Nordrhein-Westfalen"
+              },
+              {
+                "dcid": "nuts/ITC",
+                "name": "Nord-Ovest"
+              },
+              {
+                "dcid": "nuts/TR1",
+                "name": "Istanbul"
+              }
+            ]
+          },
+          "EurostatNUTS2": {
+            "placeCount": 328,
+            "topPlaces": [
+              {
+                "dcid": "nuts/TR10",
+                "name": "Istanbul"
+              },
+              {
+                "dcid": "nuts/FR10",
+                "name": "Ile-de-France"
+              },
+              {
+                "dcid": "nuts/ITC4",
+                "name": "Lombardia"
+              }
+            ]
+          },
+          "EurostatNUTS3": {
+            "placeCount": 1390,
+            "topPlaces": [
+              {
+                "dcid": "nuts/TR100",
+                "name": "Istanbul"
+              },
+              {
+                "dcid": "nuts/ES300",
+                "name": "Madrid"
+              },
+              {
+                "dcid": "nuts/ES511",
+                "name": "Barcelona"
+              }
+            ]
+          },
+          "HighSchoolDistrict": {
+            "placeCount": 132,
+            "topPlaces": [
+              {
+                "dcid": "geoId/sch0606034",
+                "name": "Perris Union High School District (9-12)"
+              },
+              {
+                "dcid": "geoId/sch4747149",
+                "name": "Rutherford County School District in Murfreesboro"
+              },
+              {
+                "dcid": "geoId/sch0606019",
+                "name": "Santa Barbara Unified School District (7-12)"
+              }
+            ]
+          },
+          "Place": {
+            "placeCount": 172,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q1180"
+              },
+              {
+                "dcid": "geoId/sch4702940"
+              },
+              {
+                "dcid": "wikidataId/Q2760659",
+                "name": "Dadra"
+              }
+            ]
+          },
+          "SchoolDistrict": {
+            "placeCount": 13277,
+            "topPlaces": [
+              {
+                "dcid": "geoId/sch3620580",
+                "name": "New York City Department Of Education"
+              },
+              {
+                "dcid": "geoId/sch0622710",
+                "name": "Los Angeles Unified School District"
+              },
+              {
+                "dcid": "geoId/sch7200030",
+                "name": "Puerto Rico Department of Education"
+              }
+            ]
+          },
+          "State": {
+            "placeCount": 87,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q1498",
+                "name": "Uttar Pradesh"
+              },
+              {
+                "dcid": "wikidataId/Q1191",
+                "name": "Maharashtra"
+              },
+              {
+                "dcid": "wikidataId/Q1165",
+                "name": "Bihar"
+              }
+            ]
+          },
+          "StateComponent": {
+            "placeCount": 550,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06A0",
+                "name": "California -- In metropolitan or micropolitan statistical area"
+              },
+              {
+                "dcid": "geoId/06C0",
+                "name": "California -- In metropolitan statistical area"
+              },
+              {
+                "dcid": "geoId/06U",
+                "name": "California -- Urban"
+              }
+            ]
+          }
+        },
+        "provenanceSummary": {
+          "dc/2gyrxt": {
+            "importName": "IndiaCensus_Primary",
+            "observationCount": 673,
+            "timeSeriesCount": 673,
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2011",
+                "latestDate": "2011",
+                "observationCount": 673,
+                "timeSeriesCount": 673,
+                "placeTypeSummary": {
+                  "AdministrativeArea2": {
+                    "placeCount": 636,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q943099",
+                        "name": "Thane district"
+                      },
+                      {
+                        "dcid": "wikidataId/Q338425",
+                        "name": "North 24 Parganas district"
+                      },
+                      {
+                        "dcid": "wikidataId/Q806463",
+                        "name": "Bangalore Urban district"
+                      }
+                    ]
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q987",
+                        "name": "New Delhi"
+                      }
+                    ]
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/IND",
+                        "name": "India"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 35,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1498",
+                        "name": "Uttar Pradesh"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1191",
+                        "name": "Maharashtra"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1165",
+                        "name": "Bihar"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 3590,
+                "maxValue": 587584719
+              }
+            ]
+          },
+          "dc/bxgh0w": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
+            "observationCount": 3,
+            "timeSeriesCount": 1,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable"
+                },
+                "earliestDate": "2017",
+                "latestDate": "2019",
+                "observationCount": 3,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 163070238.756,
+                "maxValue": 164946479.86
+              }
+            ]
+          },
+          "dc/cl25rb": {
+            "importName": "OECDRegionalDemography",
+            "observationCount": 56654,
+            "timeSeriesCount": 2463,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "OECDRegionalStatistics",
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "1995",
+                "latestDate": "2019",
+                "observationCount": 56654,
+                "timeSeriesCount": 2463,
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 48,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q173121",
+                        "name": "Santiago de Querétaro"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1973593",
+                        "name": "Waikato District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q550219",
+                        "name": "Capital Regional District"
+                      }
+                    ]
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 330,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q15175",
+                        "name": "Guangdong"
+                      },
+                      {
+                        "dcid": "wikidataId/Q43407",
+                        "name": "Shandong"
+                      },
+                      {
+                        "dcid": "wikidataId/Q43684",
+                        "name": "Henan"
+                      }
+                    ]
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 127,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q173270",
+                        "name": "Veracruz"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1474984",
+                        "name": "Montreal Region"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1654749",
+                        "name": "Boyacá"
+                      }
+                    ]
+                  },
+                  "AdministrativeArea3": {
+                    "placeCount": 29,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1143712",
+                        "name": "Kanagawa-ku"
+                      },
+                      {
+                        "dcid": "wikidataId/Q50811",
+                        "name": "Regional Municipality of Peel"
+                      },
+                      {
+                        "dcid": "wikidataId/Q18458",
+                        "name": "Regional Municipality of York"
+                      }
+                    ]
+                  },
+                  "CensusCountyDivision": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/7210708614",
+                        "name": "Botijas"
+                      }
+                    ]
+                  },
+                  "City": {
+                    "placeCount": 270,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q8686",
+                        "name": "Shanghai"
+                      },
+                      {
+                        "dcid": "wikidataId/Q11736",
+                        "name": "Tianjin"
+                      },
+                      {
+                        "dcid": "wikidataId/Q7473516",
+                        "name": "Tokyo"
+                      }
+                    ]
+                  },
+                  "Country": {
+                    "placeCount": 50,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/CHN",
+                        "name": "China"
+                      },
+                      {
+                        "dcid": "country/IND",
+                        "name": "India"
+                      },
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS1": {
+                    "placeCount": 42,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DEA",
+                        "name": "Nordrhein-Westfalen"
+                      },
+                      {
+                        "dcid": "nuts/DE2",
+                        "name": "Bavaria"
+                      },
+                      {
+                        "dcid": "nuts/FR1",
+                        "name": "Ile-de-France"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS2": {
+                    "placeCount": 200,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR10",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/ITC4",
+                        "name": "Lombardia"
+                      },
+                      {
+                        "dcid": "nuts/ES61",
+                        "name": "Andalucía"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS3": {
+                    "placeCount": 1274,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR100",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/ES300",
+                        "name": "Madrid"
+                      },
+                      {
+                        "dcid": "nuts/ES511",
+                        "name": "Barcelona"
+                      }
+                    ]
+                  },
+                  "Place": {
+                    "placeCount": 8,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1180"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2760659",
+                        "name": "Dadra"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3235"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 84,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1498",
+                        "name": "Uttar Pradesh"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1191",
+                        "name": "Maharashtra"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1165",
+                        "name": "Bihar"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 296,
+                "maxValue": 660361000
+              }
+            ]
+          },
+          "dc/cv2kpf2": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+            "observationCount": 10,
+            "timeSeriesCount": 1,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable"
+                },
+                "earliestDate": "2010",
+                "latestDate": "2019",
+                "observationCount": 10,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "State": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/72",
+                        "name": "Puerto Rico"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 1738866.228,
+                "maxValue": 1960169.762
+              }
+            ]
+          },
+          "dc/gg17432": {
+            "importName": "CensusACS5YearSurvey",
+            "observationCount": 1692272,
+            "timeSeriesCount": 192536,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurvey"
+                },
+                "earliestDate": "2011",
+                "latestDate": "2019",
+                "observationCount": 1692272,
+                "timeSeriesCount": 192536,
+                "placeTypeSummary": {
+                  "CensusCoreBasedStatisticalArea": {
+                    "placeCount": 933,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/C35620",
+                        "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area"
+                      },
+                      {
+                        "dcid": "geoId/C31080",
+                        "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area"
+                      },
+                      {
+                        "dcid": "geoId/C16980",
+                        "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
+                      }
+                    ]
+                  },
+                  "CensusCountyDivision": {
+                    "placeCount": 36798,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/4820191835",
+                        "name": "Houston CCD"
+                      },
+                      {
+                        "dcid": "geoId/0401392601",
+                        "name": "Phoenix CCD"
+                      },
+                      {
+                        "dcid": "geoId/1703114000",
+                        "name": "Chicago"
+                      }
+                    ]
+                  },
+                  "CensusTract": {
+                    "placeCount": 74014,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/48157673101",
+                        "name": "Census Tract 6731.01, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/48157672900",
+                        "name": "Census Tract 6729, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/48039660602",
+                        "name": "Census Tract 6606.02, Brazoria County, Texas"
+                      }
+                    ]
+                  },
+                  "CensusZipCodeTabulationArea": {
+                    "placeCount": 32989,
+                    "topPlaces": [
+                      {
+                        "dcid": "zip/77449",
+                        "name": "77449"
+                      },
+                      {
+                        "dcid": "zip/77494",
+                        "name": "77494"
+                      },
+                      {
+                        "dcid": "zip/11368",
+                        "name": "11368"
+                      }
+                    ]
+                  },
+                  "City": {
+                    "placeCount": 29678,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      }
+                    ]
+                  },
+                  "CongressionalDistrict": {
+                    "placeCount": 452,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/7298",
+                        "name": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico"
+                      },
+                      {
+                        "dcid": "geoId/3000",
+                        "name": "Congressional District (at Large) (113th Congress), Montana"
+                      },
+                      {
+                        "dcid": "geoId/1000",
+                        "name": "Congressional District (at Large) (113th Congress), Delaware"
+                      }
+                    ]
+                  },
+                  "County": {
+                    "placeCount": 3222,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ]
+                  },
+                  "ElementarySchoolDistrict": {
+                    "placeCount": 275,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch0637380",
+                        "name": "South Bay Union School District"
+                      },
+                      {
+                        "dcid": "geoId/sch0635590",
+                        "name": "Santa Cruz City Elementary School District"
+                      },
+                      {
+                        "dcid": "geoId/sch0637290",
+                        "name": "Soquel Elementary School District"
+                      }
+                    ]
+                  },
+                  "HighSchoolDistrict": {
+                    "placeCount": 132,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch0606034",
+                        "name": "Perris Union High School District (9-12)"
+                      },
+                      {
+                        "dcid": "geoId/sch4747149",
+                        "name": "Rutherford County School District in Murfreesboro"
+                      },
+                      {
+                        "dcid": "geoId/sch0606019",
+                        "name": "Santa Barbara Unified School District (7-12)"
+                      }
+                    ]
+                  },
+                  "Place": {
+                    "placeCount": 164,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch4702940"
+                      },
+                      {
+                        "dcid": "geoId/sch4703810"
+                      },
+                      {
+                        "dcid": "geoId/sch4833060"
+                      }
+                    ]
+                  },
+                  "SchoolDistrict": {
+                    "placeCount": 13277,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch3620580",
+                        "name": "New York City Department Of Education"
+                      },
+                      {
+                        "dcid": "geoId/sch0622710",
+                        "name": "Los Angeles Unified School District"
+                      },
+                      {
+                        "dcid": "geoId/sch7200030",
+                        "name": "Puerto Rico Department of Education"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 52,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  },
+                  "StateComponent": {
+                    "placeCount": 550,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06A0",
+                        "name": "California -- In metropolitan or micropolitan statistical area"
+                      },
+                      {
+                        "dcid": "geoId/06C0",
+                        "name": "California -- In metropolitan statistical area"
+                      },
+                      {
+                        "dcid": "geoId/06U",
+                        "name": "California -- Urban"
+                      }
+                    ]
+                  }
+                },
+                "maxValue": 19757199
+              }
+            ]
+          },
+          "dc/kyzlg31": {
+            "importName": "CensusACS1YearSurvey",
+            "observationCount": 14758,
+            "timeSeriesCount": 1535,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS1yrSurvey"
+                },
+                "earliestDate": "2010",
+                "latestDate": "2019",
+                "observationCount": 14758,
+                "timeSeriesCount": 1535,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 640,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      }
+                    ]
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  },
+                  "County": {
+                    "placeCount": 842,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 52,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 25935,
+                "maxValue": 166650550
+              }
+            ]
+          },
+          "dc/nnx11h2": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "observationCount": 3,
+            "timeSeriesCount": 1,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable"
+                },
+                "earliestDate": "2017",
+                "latestDate": "2019",
+                "observationCount": 3,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "State": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/72",
+                        "name": "Puerto Rico"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 1738866.228,
+                "maxValue": 1814267.649
+              }
+            ]
+          },
+          "dc/qmsyx4": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "observationCount": 9,
+            "timeSeriesCount": 1,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurvey",
+                  "isDcAggregate": true
+                },
+                "earliestDate": "2011",
+                "latestDate": "2019",
+                "observationCount": 9,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 157812589,
+                "maxValue": 166551005
+              }
+            ]
+          },
+          "dc/scp3y31": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
+            "observationCount": 156,
+            "timeSeriesCount": 52,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable"
+                },
+                "earliestDate": "2017",
+                "latestDate": "2019",
+                "observationCount": 156,
+                "timeSeriesCount": 52,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 51,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 284701.76,
+                "maxValue": 164946479.86
+              }
+            ]
+          },
+          "dc/t660j91": {
+            "importName": "CensusACS5YearSurvey_BlockGroup",
+            "observationCount": 1982915,
+            "timeSeriesCount": 220333,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurvey"
+                },
+                "earliestDate": "2011",
+                "latestDate": "2019",
+                "observationCount": 1982915,
+                "timeSeriesCount": 220333,
+                "placeTypeSummary": {
+                  "CensusBlockGroup": {
+                    "placeCount": 220333,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/481576729001",
+                        "name": "Block Group 1, Census Tract 6729, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/481576731011",
+                        "name": "Block Group 1, Census Tract 6731.01, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/380170405002",
+                        "name": "Block Group 2, Census Tract 405, Cass County, North Dakota"
+                      }
+                    ]
+                  }
+                },
+                "maxValue": 31011
+              }
+            ]
+          },
+          "dc/yd4sfb": {
+            "importName": "EurostatData",
+            "observationCount": 47169,
+            "timeSeriesCount": 2029,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "EurostatRegionalPopulationData"
+                },
+                "earliestDate": "1960",
+                "latestDate": "2019",
+                "observationCount": 47169,
+                "timeSeriesCount": 2029,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 140,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DE3",
+                        "name": "Berlin"
+                      },
+                      {
+                        "dcid": "nuts/FR101",
+                        "name": "Paris"
+                      },
+                      {
+                        "dcid": "nuts/AT13",
+                        "name": "Vienna"
+                      }
+                    ]
+                  },
+                  "Country": {
+                    "placeCount": 48,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/RUS",
+                        "name": "Russia"
+                      },
+                      {
+                        "dcid": "country/TUR",
+                        "name": "Turkey"
+                      },
+                      {
+                        "dcid": "country/DEU",
+                        "name": "Germany"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS1": {
+                    "placeCount": 123,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DEA",
+                        "name": "Nordrhein-Westfalen"
+                      },
+                      {
+                        "dcid": "nuts/ITC",
+                        "name": "Nord-Ovest"
+                      },
+                      {
+                        "dcid": "nuts/TR1",
+                        "name": "Istanbul"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS2": {
+                    "placeCount": 328,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR10",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/FR10",
+                        "name": "Ile-de-France"
+                      },
+                      {
+                        "dcid": "nuts/ITC4",
+                        "name": "Lombardia"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS3": {
+                    "placeCount": 1390,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR100",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/ES300",
+                        "name": "Madrid"
+                      },
+                      {
+                        "dcid": "nuts/ES511",
+                        "name": "Barcelona"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 4313,
+                "maxValue": 78191815
+              }
+            ]
+          },
+          "dc/yy2t0v": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+            "observationCount": 520,
+            "timeSeriesCount": 52,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable"
+                },
+                "earliestDate": "2010",
+                "latestDate": "2019",
+                "observationCount": 520,
+                "timeSeriesCount": 52,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 51,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 267879.289,
+                "maxValue": 164946479.86
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "entity": "Count_Person_Female_AsianAlone",
+      "info": {
+        "placeTypeSummary": {
+          "CensusCoreBasedStatisticalArea": {
+            "placeCount": 933,
+            "topPlaces": [
+              {
+                "dcid": "geoId/C35620",
+                "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area"
+              },
+              {
+                "dcid": "geoId/C31080",
+                "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area"
+              },
+              {
+                "dcid": "geoId/C16980",
+                "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
+              }
+            ]
+          },
+          "CensusCountyDivision": {
+            "placeCount": 36798,
+            "topPlaces": [
+              {
+                "dcid": "geoId/4820191835",
+                "name": "Houston CCD"
+              },
+              {
+                "dcid": "geoId/0401392601",
+                "name": "Phoenix CCD"
+              },
+              {
+                "dcid": "geoId/1703114000",
+                "name": "Chicago"
+              }
+            ]
+          },
+          "CensusTract": {
+            "placeCount": 74014,
+            "topPlaces": [
+              {
+                "dcid": "geoId/48157673101",
+                "name": "Census Tract 6731.01, Fort Bend County, Texas"
+              },
+              {
+                "dcid": "geoId/48157672900",
+                "name": "Census Tract 6729, Fort Bend County, Texas"
+              },
+              {
+                "dcid": "geoId/48039660602",
+                "name": "Census Tract 6606.02, Brazoria County, Texas"
+              }
+            ]
+          },
+          "CensusZipCodeTabulationArea": {
+            "placeCount": 32989,
+            "topPlaces": [
+              {
+                "dcid": "zip/77449",
+                "name": "77449"
+              },
+              {
+                "dcid": "zip/77494",
+                "name": "77494"
+              },
+              {
+                "dcid": "zip/11368",
+                "name": "11368"
+              }
+            ]
+          },
+          "City": {
+            "placeCount": 29678,
+            "topPlaces": [
+              {
+                "dcid": "geoId/3651000",
+                "name": "New York"
+              },
+              {
+                "dcid": "geoId/0644000",
+                "name": "Los Angeles"
+              },
+              {
+                "dcid": "geoId/1714000",
+                "name": "Chicago"
+              }
+            ]
+          },
+          "CongressionalDistrict": {
+            "placeCount": 452,
+            "topPlaces": [
+              {
+                "dcid": "geoId/7298",
+                "name": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico"
+              },
+              {
+                "dcid": "geoId/3000",
+                "name": "Congressional District (at Large) (113th Congress), Montana"
+              },
+              {
+                "dcid": "geoId/1000",
+                "name": "Congressional District (at Large) (113th Congress), Delaware"
+              }
+            ]
+          },
+          "Country": {
+            "placeCount": 1,
+            "topPlaces": [
+              {
+                "dcid": "country/USA",
+                "name": "United States"
+              }
+            ]
+          },
+          "County": {
+            "placeCount": 3222,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06037",
+                "name": "Los Angeles County"
+              },
+              {
+                "dcid": "geoId/17031",
+                "name": "Cook County"
+              },
+              {
+                "dcid": "geoId/48201",
+                "name": "Harris County"
+              }
+            ]
+          },
+          "ElementarySchoolDistrict": {
+            "placeCount": 275,
+            "topPlaces": [
+              {
+                "dcid": "geoId/sch0637380",
+                "name": "South Bay Union School District"
+              },
+              {
+                "dcid": "geoId/sch0635590",
+                "name": "Santa Cruz City Elementary School District"
+              },
+              {
+                "dcid": "geoId/sch0637290",
+                "name": "Soquel Elementary School District"
+              }
+            ]
+          },
+          "HighSchoolDistrict": {
+            "placeCount": 132,
+            "topPlaces": [
+              {
+                "dcid": "geoId/sch0606034",
+                "name": "Perris Union High School District (9-12)"
+              },
+              {
+                "dcid": "geoId/sch4747149",
+                "name": "Rutherford County School District in Murfreesboro"
+              },
+              {
+                "dcid": "geoId/sch0606019",
+                "name": "Santa Barbara Unified School District (7-12)"
+              }
+            ]
+          },
+          "Place": {
+            "placeCount": 164,
+            "topPlaces": [
+              {
+                "dcid": "geoId/sch4702940"
+              },
+              {
+                "dcid": "geoId/sch4703810"
+              },
+              {
+                "dcid": "geoId/sch4833060"
+              }
+            ]
+          },
+          "SchoolDistrict": {
+            "placeCount": 13277,
+            "topPlaces": [
+              {
+                "dcid": "geoId/sch3620580",
+                "name": "New York City Department Of Education"
+              },
+              {
+                "dcid": "geoId/sch0622710",
+                "name": "Los Angeles Unified School District"
+              },
+              {
+                "dcid": "geoId/sch7200030",
+                "name": "Puerto Rico Department of Education"
+              }
+            ]
+          },
+          "State": {
+            "placeCount": 52,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06",
+                "name": "California"
+              },
+              {
+                "dcid": "geoId/48",
+                "name": "Texas"
+              },
+              {
+                "dcid": "geoId/12",
+                "name": "Florida"
+              }
+            ]
+          },
+          "StateComponent": {
+            "placeCount": 550,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06A0",
+                "name": "California -- In metropolitan or micropolitan statistical area"
+              },
+              {
+                "dcid": "geoId/06C0",
+                "name": "California -- In metropolitan statistical area"
+              },
+              {
+                "dcid": "geoId/06U",
+                "name": "California -- Urban"
+              }
+            ]
+          }
+        },
+        "provenanceSummary": {
+          "dc/gg17432": {
+            "importName": "CensusACS5YearSurvey",
+            "observationCount": 1692272,
+            "timeSeriesCount": 192536,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurvey"
+                },
+                "earliestDate": "2011",
+                "latestDate": "2019",
+                "observationCount": 1692272,
+                "timeSeriesCount": 192536,
+                "placeTypeSummary": {
+                  "CensusCoreBasedStatisticalArea": {
+                    "placeCount": 933,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/C35620",
+                        "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area"
+                      },
+                      {
+                        "dcid": "geoId/C31080",
+                        "name": "Los Angeles-Long Beach-Anaheim, CA Metro Area"
+                      },
+                      {
+                        "dcid": "geoId/C16980",
+                        "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
+                      }
+                    ]
+                  },
+                  "CensusCountyDivision": {
+                    "placeCount": 36798,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/4820191835",
+                        "name": "Houston CCD"
+                      },
+                      {
+                        "dcid": "geoId/0401392601",
+                        "name": "Phoenix CCD"
+                      },
+                      {
+                        "dcid": "geoId/1703114000",
+                        "name": "Chicago"
+                      }
+                    ]
+                  },
+                  "CensusTract": {
+                    "placeCount": 74014,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/48157673101",
+                        "name": "Census Tract 6731.01, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/48157672900",
+                        "name": "Census Tract 6729, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/48039660602",
+                        "name": "Census Tract 6606.02, Brazoria County, Texas"
+                      }
+                    ]
+                  },
+                  "CensusZipCodeTabulationArea": {
+                    "placeCount": 32989,
+                    "topPlaces": [
+                      {
+                        "dcid": "zip/77449",
+                        "name": "77449"
+                      },
+                      {
+                        "dcid": "zip/77494",
+                        "name": "77494"
+                      },
+                      {
+                        "dcid": "zip/11368",
+                        "name": "11368"
+                      }
+                    ]
+                  },
+                  "City": {
+                    "placeCount": 29678,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      }
+                    ]
+                  },
+                  "CongressionalDistrict": {
+                    "placeCount": 452,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/7298",
+                        "name": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico"
+                      },
+                      {
+                        "dcid": "geoId/3000",
+                        "name": "Congressional District (at Large) (113th Congress), Montana"
+                      },
+                      {
+                        "dcid": "geoId/1000",
+                        "name": "Congressional District (at Large) (113th Congress), Delaware"
+                      }
+                    ]
+                  },
+                  "County": {
+                    "placeCount": 3222,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ]
+                  },
+                  "ElementarySchoolDistrict": {
+                    "placeCount": 275,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch0637380",
+                        "name": "South Bay Union School District"
+                      },
+                      {
+                        "dcid": "geoId/sch0635590",
+                        "name": "Santa Cruz City Elementary School District"
+                      },
+                      {
+                        "dcid": "geoId/sch0637290",
+                        "name": "Soquel Elementary School District"
+                      }
+                    ]
+                  },
+                  "HighSchoolDistrict": {
+                    "placeCount": 132,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch0606034",
+                        "name": "Perris Union High School District (9-12)"
+                      },
+                      {
+                        "dcid": "geoId/sch4747149",
+                        "name": "Rutherford County School District in Murfreesboro"
+                      },
+                      {
+                        "dcid": "geoId/sch0606019",
+                        "name": "Santa Barbara Unified School District (7-12)"
+                      }
+                    ]
+                  },
+                  "Place": {
+                    "placeCount": 164,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch4702940"
+                      },
+                      {
+                        "dcid": "geoId/sch4703810"
+                      },
+                      {
+                        "dcid": "geoId/sch4833060"
+                      }
+                    ]
+                  },
+                  "SchoolDistrict": {
+                    "placeCount": 13277,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch3620580",
+                        "name": "New York City Department Of Education"
+                      },
+                      {
+                        "dcid": "geoId/sch0622710",
+                        "name": "Los Angeles Unified School District"
+                      },
+                      {
+                        "dcid": "geoId/sch7200030",
+                        "name": "Puerto Rico Department of Education"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 52,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  },
+                  "StateComponent": {
+                    "placeCount": 550,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06A0",
+                        "name": "California -- In metropolitan or micropolitan statistical area"
+                      },
+                      {
+                        "dcid": "geoId/06C0",
+                        "name": "California -- In metropolitan statistical area"
+                      },
+                      {
+                        "dcid": "geoId/06U",
+                        "name": "California -- Urban"
+                      }
+                    ]
+                  }
+                },
+                "maxValue": 2996731
+              }
+            ]
+          },
+          "dc/qmsyx4": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "observationCount": 9,
+            "timeSeriesCount": 1,
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurvey",
+                  "isDcAggregate": true
+                },
+                "earliestDate": "2011",
+                "latestDate": "2019",
+                "observationCount": 9,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 7608035,
+                "maxValue": 9416047
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "entity": "FertilityRate_Person_Female",
+      "info": {
+        "placeTypeSummary": {
+          "City": {
+            "placeCount": 140,
+            "topPlaces": [
+              {
+                "dcid": "nuts/DE3",
+                "name": "Berlin"
+              },
+              {
+                "dcid": "nuts/FR101",
+                "name": "Paris"
+              },
+              {
+                "dcid": "nuts/AT13",
+                "name": "Vienna"
+              }
+            ]
+          },
+          "Country": {
+            "placeCount": 206,
+            "topPlaces": [
+              {
+                "dcid": "country/CHN",
+                "name": "China"
+              },
+              {
+                "dcid": "country/IND",
+                "name": "India"
+              },
+              {
+                "dcid": "country/USA",
+                "name": "United States"
+              }
+            ]
+          },
+          "EurostatNUTS1": {
+            "placeCount": 123,
+            "topPlaces": [
+              {
+                "dcid": "nuts/DEA",
+                "name": "Nordrhein-Westfalen"
+              },
+              {
+                "dcid": "nuts/ITC",
+                "name": "Nord-Ovest"
+              },
+              {
+                "dcid": "nuts/TR1",
+                "name": "Istanbul"
+              }
+            ]
+          },
+          "EurostatNUTS2": {
+            "placeCount": 328,
+            "topPlaces": [
+              {
+                "dcid": "nuts/TR10",
+                "name": "Istanbul"
+              },
+              {
+                "dcid": "nuts/FR10",
+                "name": "Ile-de-France"
+              },
+              {
+                "dcid": "nuts/ITC4",
+                "name": "Lombardia"
+              }
+            ]
+          },
+          "EurostatNUTS3": {
+            "placeCount": 1390,
+            "topPlaces": [
+              {
+                "dcid": "nuts/TR100",
+                "name": "Istanbul"
+              },
+              {
+                "dcid": "nuts/ES300",
+                "name": "Madrid"
+              },
+              {
+                "dcid": "nuts/ES511",
+                "name": "Barcelona"
+              }
+            ]
+          },
+          "Place": {
+            "placeCount": 1,
+            "topPlaces": [
+              {
+                "dcid": "Earth",
+                "name": "Earth"
+              }
+            ]
+          }
+        },
+        "provenanceSummary": {
+          "dc/jccrh82": {
+            "importName": "WorldDevelopmentIndicators",
+            "observationCount": 11709,
+            "timeSeriesCount": 207,
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1960",
+                "latestDate": "2019",
+                "observationCount": 11709,
+                "timeSeriesCount": 207,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 206,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/CHN",
+                        "name": "China"
+                      },
+                      {
+                        "dcid": "country/IND",
+                        "name": "India"
+                      },
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  },
+                  "Place": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "Earth",
+                        "name": "Earth"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 0.86,
+                "maxValue": 8.864
+              }
+            ]
+          },
+          "dc/yd4sfb": {
+            "importName": "EurostatData",
+            "observationCount": 10106,
+            "timeSeriesCount": 1981,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "EurostatRegionalStatistics"
+                },
+                "earliestDate": "2013",
+                "latestDate": "2018",
+                "observationCount": 10106,
+                "timeSeriesCount": 1981,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 140,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DE3",
+                        "name": "Berlin"
+                      },
+                      {
+                        "dcid": "nuts/FR101",
+                        "name": "Paris"
+                      },
+                      {
+                        "dcid": "nuts/AT13",
+                        "name": "Vienna"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS1": {
+                    "placeCount": 123,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DEA",
+                        "name": "Nordrhein-Westfalen"
+                      },
+                      {
+                        "dcid": "nuts/ITC",
+                        "name": "Nord-Ovest"
+                      },
+                      {
+                        "dcid": "nuts/TR1",
+                        "name": "Istanbul"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS2": {
+                    "placeCount": 328,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR10",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/FR10",
+                        "name": "Ile-de-France"
+                      },
+                      {
+                        "dcid": "nuts/ITC4",
+                        "name": "Lombardia"
+                      }
+                    ]
+                  },
+                  "EurostatNUTS3": {
+                    "placeCount": 1390,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR100",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/ES300",
+                        "name": "Madrid"
+                      },
+                      {
+                        "dcid": "nuts/ES511",
+                        "name": "Barcelona"
+                      }
+                    ]
+                  }
+                },
+                "minValue": 0.78,
+                "maxValue": 4.9
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "entity": "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+      "info": {
+        "placeTypeSummary": {
+          "City": {
+            "placeCount": 3,
+            "topPlaces": [
+              {
+                "dcid": "geoId/3651000",
+                "name": "New York"
+              },
+              {
+                "dcid": "geoId/2938000",
+                "name": "Kansas City"
+              },
+              {
+                "dcid": "geoId/2937592",
+                "name": "Joplin"
+              }
+            ]
+          },
+          "Country": {
+            "placeCount": 1,
+            "topPlaces": [
+              {
+                "dcid": "country/USA",
+                "name": "United States"
+              }
+            ]
+          },
+          "County": {
+            "placeCount": 3217,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06037",
+                "name": "Los Angeles County"
+              },
+              {
+                "dcid": "geoId/17031",
+                "name": "Cook County"
+              },
+              {
+                "dcid": "geoId/48201",
+                "name": "Harris County"
+              }
+            ]
+          },
+          "State": {
+            "placeCount": 56,
+            "topPlaces": [
+              {
+                "dcid": "geoId/06",
+                "name": "California"
+              },
+              {
+                "dcid": "geoId/48",
+                "name": "Texas"
+              },
+              {
+                "dcid": "geoId/12",
+                "name": "Florida"
+              }
+            ]
+          }
+        },
+        "provenanceSummary": {
+          "dc/e9k9ze": {
+            "importName": "NYT_COVID19",
+            "observationCount": 2375876,
+            "timeSeriesCount": 6554,
+            "releaseFrequency": "P1D",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
+                },
+                "earliestDate": "2020-01-22",
+                "latestDate": "2022-03-05",
+                "observationCount": 2295847,
+                "timeSeriesCount": 3277,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 3,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/2938000",
+                        "name": "Kansas City"
+                      },
+                      {
+                        "dcid": "geoId/2937592",
+                        "name": "Joplin"
+                      }
+                    ]
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  },
+                  "County": {
+                    "placeCount": 3217,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 56,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "minValue": -40527,
+                "maxValue": 1433977
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub",
+                  "observationPeriod": "P1M"
+                },
+                "earliestDate": "2020-01",
+                "latestDate": "2022-03",
+                "observationCount": 80029,
+                "timeSeriesCount": 3277,
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 3,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/2938000",
+                        "name": "Kansas City"
+                      },
+                      {
+                        "dcid": "geoId/2937592",
+                        "name": "Joplin"
+                      }
+                    ]
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ]
+                  },
+                  "County": {
+                    "placeCount": 3217,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ]
+                  },
+                  "State": {
+                    "placeCount": 56,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ]
+                  }
+                },
+                "minValue": -3451,
+                "maxValue": 20301167
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

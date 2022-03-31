@@ -66,6 +66,20 @@ func (s *Server) BulkPlaceInfo(
 	return info.BulkPlaceInfo(ctx, in, s.store)
 }
 
+// VariableInfo implements API for mixer.VariableInfo.
+func (s *Server) VariableInfo(
+	ctx context.Context, in *pb.VariableInfoRequest,
+) (*pb.VariableInfoResponse, error) {
+	return info.VariableInfo(ctx, in, s.store)
+}
+
+// BulkVariableInfo implements API for mixer.BulkVariableInfo.
+func (s *Server) BulkVariableInfo(
+	ctx context.Context, in *pb.BulkVariableInfoRequest,
+) (*pb.BulkVariableInfoResponse, error) {
+	return info.BulkVariableInfo(ctx, in, s.store)
+}
+
 // ObservationsPoint implements API for mixer.ObservationsPoint.
 func (s *Server) ObservationsPoint(
 	ctx context.Context, in *pb.ObservationsPointRequest,

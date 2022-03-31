@@ -230,12 +230,209 @@ func (x *BulkPlaceInfoResponse) GetInfo() []*PlaceInfoResponse {
 	return nil
 }
 
+type VariableInfoRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Entity string `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
+}
+
+func (x *VariableInfoRequest) Reset() {
+	*x = VariableInfoRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_info_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VariableInfoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VariableInfoRequest) ProtoMessage() {}
+
+func (x *VariableInfoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_info_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VariableInfoRequest.ProtoReflect.Descriptor instead.
+func (*VariableInfoRequest) Descriptor() ([]byte, []int) {
+	return file_v1_info_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *VariableInfoRequest) GetEntity() string {
+	if x != nil {
+		return x.Entity
+	}
+	return ""
+}
+
+type VariableInfoResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Entity string          `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
+	Info   *StatVarSummary `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
+}
+
+func (x *VariableInfoResponse) Reset() {
+	*x = VariableInfoResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_info_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VariableInfoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VariableInfoResponse) ProtoMessage() {}
+
+func (x *VariableInfoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_info_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VariableInfoResponse.ProtoReflect.Descriptor instead.
+func (*VariableInfoResponse) Descriptor() ([]byte, []int) {
+	return file_v1_info_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *VariableInfoResponse) GetEntity() string {
+	if x != nil {
+		return x.Entity
+	}
+	return ""
+}
+
+func (x *VariableInfoResponse) GetInfo() *StatVarSummary {
+	if x != nil {
+		return x.Info
+	}
+	return nil
+}
+
+type BulkVariableInfoRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Entities []string `protobuf:"bytes,1,rep,name=entities,proto3" json:"entities,omitempty"`
+}
+
+func (x *BulkVariableInfoRequest) Reset() {
+	*x = BulkVariableInfoRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_info_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BulkVariableInfoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkVariableInfoRequest) ProtoMessage() {}
+
+func (x *BulkVariableInfoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_info_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkVariableInfoRequest.ProtoReflect.Descriptor instead.
+func (*BulkVariableInfoRequest) Descriptor() ([]byte, []int) {
+	return file_v1_info_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *BulkVariableInfoRequest) GetEntities() []string {
+	if x != nil {
+		return x.Entities
+	}
+	return nil
+}
+
+type BulkVariableInfoResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*VariableInfoResponse `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *BulkVariableInfoResponse) Reset() {
+	*x = BulkVariableInfoResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_info_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BulkVariableInfoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkVariableInfoResponse) ProtoMessage() {}
+
+func (x *BulkVariableInfoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_info_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkVariableInfoResponse.ProtoReflect.Descriptor instead.
+func (*BulkVariableInfoResponse) Descriptor() ([]byte, []int) {
+	return file_v1_info_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *BulkVariableInfoResponse) GetData() []*VariableInfoResponse {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 var File_v1_info_proto protoreflect.FileDescriptor
 
 var file_v1_info_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x76, 0x31, 0x2f, 0x69, 0x6e, 0x66, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x0e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x1a,
-	0x0b, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x2a, 0x0a, 0x10,
+	0x0b, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x0e, 0x73, 0x74,
+	0x61, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x2a, 0x0a, 0x10,
 	0x50, 0x6c, 0x61, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x12, 0x16, 0x0a, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x22, 0x5b, 0x0a, 0x11, 0x50, 0x6c, 0x61, 0x63,
@@ -252,8 +449,26 @@ var file_v1_info_proto_rawDesc = []byte{
 	0x73, 0x65, 0x12, 0x35, 0x0a, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x21, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76,
 	0x31, 0x2e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6e, 0x73, 0x65, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x22, 0x2d, 0x0a, 0x13, 0x56, 0x61, 0x72,
+	0x69, 0x61, 0x62, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x16, 0x0a, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x22, 0x5f, 0x0a, 0x14, 0x56, 0x61, 0x72, 0x69,
+	0x61, 0x62, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x16, 0x0a, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x2f, 0x0a, 0x04, 0x69, 0x6e, 0x66, 0x6f,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x53, 0x75, 0x6d, 0x6d,
+	0x61, 0x72, 0x79, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x22, 0x35, 0x0a, 0x17, 0x42, 0x75, 0x6c,
+	0x6b, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73,
+	0x22, 0x54, 0x0a, 0x18, 0x42, 0x75, 0x6c, 0x6b, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65,
+	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x38, 0x0a, 0x04,
+	0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x61, 0x72, 0x69,
+	0x61, 0x62, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -268,22 +483,29 @@ func file_v1_info_proto_rawDescGZIP() []byte {
 	return file_v1_info_proto_rawDescData
 }
 
-var file_v1_info_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_v1_info_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_v1_info_proto_goTypes = []interface{}{
-	(*PlaceInfoRequest)(nil),      // 0: datacommons.v1.PlaceInfoRequest
-	(*PlaceInfoResponse)(nil),     // 1: datacommons.v1.PlaceInfoResponse
-	(*BulkPlaceInfoRequest)(nil),  // 2: datacommons.v1.BulkPlaceInfoRequest
-	(*BulkPlaceInfoResponse)(nil), // 3: datacommons.v1.BulkPlaceInfoResponse
-	(*PlaceMetadata)(nil),         // 4: datacommons.PlaceMetadata
+	(*PlaceInfoRequest)(nil),         // 0: datacommons.v1.PlaceInfoRequest
+	(*PlaceInfoResponse)(nil),        // 1: datacommons.v1.PlaceInfoResponse
+	(*BulkPlaceInfoRequest)(nil),     // 2: datacommons.v1.BulkPlaceInfoRequest
+	(*BulkPlaceInfoResponse)(nil),    // 3: datacommons.v1.BulkPlaceInfoResponse
+	(*VariableInfoRequest)(nil),      // 4: datacommons.v1.VariableInfoRequest
+	(*VariableInfoResponse)(nil),     // 5: datacommons.v1.VariableInfoResponse
+	(*BulkVariableInfoRequest)(nil),  // 6: datacommons.v1.BulkVariableInfoRequest
+	(*BulkVariableInfoResponse)(nil), // 7: datacommons.v1.BulkVariableInfoResponse
+	(*PlaceMetadata)(nil),            // 8: datacommons.PlaceMetadata
+	(*StatVarSummary)(nil),           // 9: datacommons.StatVarSummary
 }
 var file_v1_info_proto_depIdxs = []int32{
-	4, // 0: datacommons.v1.PlaceInfoResponse.info:type_name -> datacommons.PlaceMetadata
+	8, // 0: datacommons.v1.PlaceInfoResponse.info:type_name -> datacommons.PlaceMetadata
 	1, // 1: datacommons.v1.BulkPlaceInfoResponse.info:type_name -> datacommons.v1.PlaceInfoResponse
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	9, // 2: datacommons.v1.VariableInfoResponse.info:type_name -> datacommons.StatVarSummary
+	5, // 3: datacommons.v1.BulkVariableInfoResponse.data:type_name -> datacommons.v1.VariableInfoResponse
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_v1_info_proto_init() }
@@ -292,6 +514,7 @@ func file_v1_info_proto_init() {
 		return
 	}
 	file_place_proto_init()
+	file_stat_var_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_info_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PlaceInfoRequest); i {
@@ -341,6 +564,54 @@ func file_v1_info_proto_init() {
 				return nil
 			}
 		}
+		file_v1_info_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VariableInfoRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_info_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VariableInfoResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_info_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BulkVariableInfoRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_info_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BulkVariableInfoResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -348,7 +619,7 @@ func file_v1_info_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v1_info_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
