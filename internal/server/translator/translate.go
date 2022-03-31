@@ -38,7 +38,7 @@ func Translate(
 	}
 
 	out := pb.TranslateResponse{}
-	mappings, err := mcf.ParseMapping(in.GetSchemaMapping(), "bq")
+	mappings, err := mcf.ParseMapping(in.GetSchemaMapping(), "datcom-store.dc_kg_latest")
 	if err != nil {
 		return nil, err
 	}
