@@ -33,7 +33,7 @@ message BulkPlaceInfoRequest {
 }
 
 message BulkPlaceInfoResponse {
-  repeated PlaceInfoResponse info = 1;
+  repeated PlaceInfoResponse data = 1;
 }
 
 message VariableInfoRequest {
