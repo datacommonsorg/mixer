@@ -50,5 +50,5 @@ message BulkVariableInfoRequest {
 }
 
 message BulkVariableInfoResponse {
-  repeated VariableInfoResponse info = 1;
+  repeated VariableInfoResponse data = 1;
 }

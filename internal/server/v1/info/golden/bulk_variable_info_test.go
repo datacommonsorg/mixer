@@ -40,18 +40,14 @@ func TestBulkVariableInfo(t *testing.T) {
 			wantErr    bool
 		}{
 			{
-				[]string{"UnemploymentRate_Person"},
-				"unemployment.json",
-				false,
-			},
-			{
-				[]string{"Count_Person_Female", "Count_Person_Female_AsianAlone", "FertilityRate_Person_Female"},
-				"females.json",
-				false,
-			},
-			{
-				[]string{"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase", "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"},
-				"covid.json",
+				[]string{
+					"UnemploymentRate_Person",
+					"Count_Person_Female",
+					"Count_Person_Female_AsianAlone",
+					"FertilityRate_Person_Female",
+					"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+				},
+				"bulk_result.json",
 				false,
 			},
 			{

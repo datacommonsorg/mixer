@@ -74,7 +74,7 @@ func BulkVariableInfo(
 		if summary, ok := statVarToSummary[entity]; ok {
 			item.Info = summary
 		}
-		resp.Info = append(resp.Info, item)
+		resp.Data = append(resp.Data, item)
 	}
 
 	return resp, nil
