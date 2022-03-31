@@ -74,7 +74,7 @@ func BulkPlaceInfo(
 		if metadata, ok := placeToMetadata[entity]; ok {
 			item.Info = metadata
 		}
-		resp.Info = append(resp.Info, item)
+		resp.Data = append(resp.Data, item)
 	}
 
 	return resp, nil
