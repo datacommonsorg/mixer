@@ -38,6 +38,7 @@ import "v1/properties.proto";
 import "v1/variables.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
+import "v1/page.proto";
 
 service Mixer {
   // Query DataCommons Graph with Sparql.
@@ -411,6 +412,13 @@ service Mixer {
       returns (PointStat) {
     option (google.api.http) = {
       get : "/v1/observations/point/{variable}/{entity=**}"
+    };
+  }
+
+  rpc ProteinPage(datacommons.v1.ProteinPageRequest)
+      returns (datacommons.v1.ProteinPageResponse) {
+    option (google.api.http) = {
+      get : "/v1/internal/page/protein/{entity=**}"
     };
   }
 }
