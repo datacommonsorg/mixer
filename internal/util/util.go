@@ -215,7 +215,7 @@ func CamelToSnake(str string) string {
 // CheckValidDCIDs checks if DCIDs are valid. More criteria will be added as being discovered.
 func CheckValidDCIDs(dcids []string) bool {
 	for _, dcid := range dcids {
-		if strings.Contains(dcid, " ") || strings.Contains(dcid, ",") {
+		if dcid == "" || strings.Contains(dcid, " ") || strings.Contains(dcid, ",") {
 			return false
 		}
 	}

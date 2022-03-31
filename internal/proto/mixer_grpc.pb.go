@@ -121,6 +121,7 @@ type MixerClient interface {
 	VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error)
 	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
+	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*ProteinPageResponse, error)
 }
 
 type mixerClient struct {
@@ -509,6 +510,15 @@ func (c *mixerClient) ObservationsPoint(ctx context.Context, in *ObservationsPoi
 	return out, nil
 }
 
+func (c *mixerClient) ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*ProteinPageResponse, error) {
+	out := new(ProteinPageResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ProteinPage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -612,6 +622,7 @@ type MixerServer interface {
 	VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error)
 	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
+	ProteinPage(context.Context, *ProteinPageRequest) (*ProteinPageResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -743,6 +754,9 @@ func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *BulkVariableI
 }
 func (UnimplementedMixerServer) ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsPoint not implemented")
+}
+func (UnimplementedMixerServer) ProteinPage(context.Context, *ProteinPageRequest) (*ProteinPageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProteinPage not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -1512,6 +1526,24 @@ func _Mixer_ObservationsPoint_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_ProteinPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProteinPageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).ProteinPage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/ProteinPage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).ProteinPage(ctx, req.(*ProteinPageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1686,6 +1718,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ObservationsPoint",
 			Handler:    _Mixer_ObservationsPoint_Handler,
+		},
+		{
+			MethodName: "ProteinPage",
+			Handler:    _Mixer_ProteinPage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
