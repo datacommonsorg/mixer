@@ -73,7 +73,7 @@ func TestVariableInfo(t *testing.T) {
 				continue
 			}
 
-			var expected pb.GetStatVarSummaryResponse
+			var expected pb.VariableInfoResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue
