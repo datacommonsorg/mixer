@@ -24,8 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 	"github.com/datacommonsorg/mixer/internal/translator/testutil"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
-
-	"github.com/go-test/deep"
+	"github.com/google/go-cmp/cmp"
 )
 
 func TestBind(t *testing.T) {
@@ -78,7 +77,7 @@ func TestBind(t *testing.T) {
 	if err != nil {
 		t.Fatalf("bind datalog query %s: %s", queryStr, err)
 	}
-	if diff := deep.Equal(wantResult, gotResult); diff != nil {
+	if diff := cmp.Diff(wantResult, gotResult); diff != "" {
 		t.Errorf("Bind(%s), unexpected result diff %v", queryStr, diff)
 	}
 }
@@ -238,11 +237,15 @@ func TestGetSQL(t *testing.T) {
 		t.Fatalf("getSQL error: %s", err)
 	}
 	wantSQL :=
-		"SELECT DISTINCT _dc_v3_Place_.id AS dcid, _dc_v3_Place_.prov_id AS prov0 " +
-			"FROM `dc_v3.Place` AS _dc_v3_Place_ " +
-			"WHERE _dc_v3_Place_.name = \"MTV\" AND _dc_v3_Place_.type = \"City\" ORDER BY dcid ASC LIMIT 20"
-	if diff := deep.Equal(wantSQL, gotSQL); diff != nil {
-		t.Errorf("getSQL unexpected diff %v", diff)
+		"SELECT DISTINCT _dc_v3_Place_.id AS dcid,\n" +
+			"_dc_v3_Place_.prov_id AS prov0\n" +
+			"FROM `dc_v3.Place` AS _dc_v3_Place_\n" +
+			"WHERE _dc_v3_Place_.name = \"MTV\"\n" +
+			"AND _dc_v3_Place_.type = \"City\"\n" +
+			"ORDER BY dcid ASC\n" +
+			"LIMIT 20\n"
+	if diff := cmp.Diff(wantSQL, gotSQL); diff != "" {
+		t.Errorf("getSQL unexpected got diff %v", diff)
 	}
 }
 
@@ -270,8 +273,10 @@ func TestTranslate(t *testing.T) {
 		    name ?p "San Jose",
 		    dcid ?p ?dcid/test`,
 
-			"SELECT _dc_v3_Place_0.id AS dcid_test FROM `dc_v3.Place` AS _dc_v3_Place_0 " +
-				"WHERE _dc_v3_Place_0.name = \"San Jose\" AND _dc_v3_Place_0.type = \"City\"",
+			"SELECT _dc_v3_Place_0.id AS dcid_test\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"WHERE _dc_v3_Place_0.name = \"San Jose\"\n" +
+				"AND _dc_v3_Place_0.type = \"City\"\n",
 			emptyProv,
 		},
 		{
@@ -286,10 +291,14 @@ func TestTranslate(t *testing.T) {
 				dcid ?parent_node "dc/x333",
 				dcid ?node ?dcid`,
 
-			"SELECT _dc_v3_Place_1.id AS dcid FROM `dc_v3.Place` AS _dc_v3_Place_1 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0 ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id " +
-				"WHERE _dc_v3_Place_1.country_alpha_2_code = \"country-code\" AND _dc_v3_Place_1.type = \"City\" AND " +
-				"_dc_v3_Triple_0.object_id = \"dc/x333\" AND _dc_v3_Triple_0.predicate = \"containedInPlace\"",
+			"SELECT _dc_v3_Place_1.id AS dcid\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_1\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id\n" +
+				"WHERE _dc_v3_Place_1.country_alpha_2_code = \"country-code\"\n" +
+				"AND _dc_v3_Place_1.type = \"City\"\n" +
+				"AND _dc_v3_Triple_0.object_id = \"dc/x333\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
 			emptyProv,
 		},
 
@@ -301,8 +310,10 @@ func TestTranslate(t *testing.T) {
 			  dcid ?node "dc/m1rl3k",
 			  subType ?node ?node_type`,
 
-			"SELECT _dc_v3_Instance_0.type AS node_type, _dc_v3_Instance_0.prov_id AS prov0 " +
-				"FROM `dc_v3.Instance` AS _dc_v3_Instance_0 WHERE _dc_v3_Instance_0.id = \"dc/m1rl3k\"",
+			"SELECT _dc_v3_Instance_0.type AS node_type,\n" +
+				"_dc_v3_Instance_0.prov_id AS prov0\n" +
+				"FROM `dc_v3.Instance` AS _dc_v3_Instance_0\n" +
+				"WHERE _dc_v3_Instance_0.id = \"dc/m1rl3k\"\n",
 			map[int][]int{1: {0}},
 		},
 		{
@@ -312,7 +323,9 @@ func TestTranslate(t *testing.T) {
 				typeOf ?node Place,
 				subType ?node City,
 				dcid ?node ?dcid`,
-			"SELECT _dc_v3_Place_0.id AS dcid FROM `dc_v3.Place` AS _dc_v3_Place_0 WHERE _dc_v3_Place_0.type = \"City\"",
+			"SELECT _dc_v3_Place_0.id AS dcid\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"WHERE _dc_v3_Place_0.type = \"City\"\n",
 			emptyProv,
 		},
 		{
@@ -324,8 +337,10 @@ func TestTranslate(t *testing.T) {
 				dcid ?node dc/qp620l2,
 				name ?node ?name`,
 
-			"SELECT _dc_v3_Place_0.name AS name FROM `dc_v3.Place` AS _dc_v3_Place_0 " +
-				"WHERE _dc_v3_Place_0.id = \"dc/qp620l2\" AND _dc_v3_Place_0.type = \"City\"",
+			"SELECT _dc_v3_Place_0.name AS name\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"WHERE _dc_v3_Place_0.id = \"dc/qp620l2\"\n" +
+				"AND _dc_v3_Place_0.type = \"City\"\n",
 			emptyProv,
 		},
 		{
@@ -340,9 +355,13 @@ func TestTranslate(t *testing.T) {
 				name ?city_or_county ?name,
 				dcid ?city_or_county ?dcid`,
 
-			"SELECT _dc_v3_Place_1.name AS name, _dc_v3_Place_1.id AS dcid FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Place` AS _dc_v3_Place_1 ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_1.id " +
-				"WHERE _dc_v3_Triple_0.object_id = \"dc/b72vdv\" AND _dc_v3_Triple_0.predicate = \"containedInPlace\"",
+			"SELECT _dc_v3_Place_1.name AS name,\n" +
+				"_dc_v3_Place_1.id AS dcid\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_1\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_1.id\n" +
+				"WHERE _dc_v3_Triple_0.object_id = \"dc/b72vdv\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
 			emptyProv,
 		},
 		{
@@ -360,12 +379,21 @@ func TestTranslate(t *testing.T) {
 				name ?node ?name,
 				landArea ?node ?landArea`,
 
-			"SELECT _dc_v3_Place_1.name AS name, _dc_v3_Place_1.timezone AS timezone, _dc_v3_Place_1.land_area AS landArea, " +
-				"_dc_v3_Place_0.id AS parent_dcid, _dc_v3_Place_0.name AS parent_name, _dc_v3_Place_1.prov_id AS prov0, " +
-				"_dc_v3_Place_0.prov_id AS prov1 FROM `dc_v3.Place` AS _dc_v3_Place_1 JOIN `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id JOIN `dc_v3.Place` AS _dc_v3_Place_0 " +
-				"ON _dc_v3_Triple_0.object_id = _dc_v3_Place_0.id WHERE _dc_v3_Place_1.id IN (\"dc/1234\", \"dc/4321\") " +
-				"AND _dc_v3_Place_1.type = \"City\" AND _dc_v3_Triple_0.predicate = \"containedInPlace\"",
+			"SELECT _dc_v3_Place_1.name AS name,\n" +
+				"_dc_v3_Place_1.timezone AS timezone,\n" +
+				"_dc_v3_Place_1.land_area AS landArea,\n" +
+				"_dc_v3_Place_0.id AS parent_dcid,\n" +
+				"_dc_v3_Place_0.name AS parent_name,\n" +
+				"_dc_v3_Place_1.prov_id AS prov0,\n" +
+				"_dc_v3_Place_0.prov_id AS prov1\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_1\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id\n" +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"ON _dc_v3_Triple_0.object_id = _dc_v3_Place_0.id\n" +
+				"WHERE _dc_v3_Place_1.id IN (\"dc/1234\", \"dc/4321\")\n" +
+				"AND _dc_v3_Place_1.type = \"City\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
 			map[int][]int{5: {0, 1, 2}, 6: {3, 4}},
 		},
 
@@ -381,10 +409,10 @@ func TestTranslate(t *testing.T) {
 				location ?population ?state,
 				dcid ?population ?population_dcid`,
 
-			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid, " +
-				"_dc_v3_StatisticalPopulation_1.id AS population_dcid " +
-				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1 " +
-				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"dc/p/x1234\"",
+			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid,\n" +
+				"_dc_v3_StatisticalPopulation_1.id AS population_dcid\n" +
+				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
+				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"dc/p/x1234\"\n",
 			emptyProv,
 		},
 		{
@@ -402,12 +430,13 @@ func TestTranslate(t *testing.T) {
 				observedNode ?o ?pop,
 				measuredValue ?o ?count_value`,
 
-			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid, " +
-				"_dc_v3_Observation_2.measured_value AS count_value FROM `dc_v3.StatisticalPopulation` " +
-				"AS _dc_v3_StatisticalPopulation_1 JOIN `dc_v3.Observation` AS _dc_v3_Observation_2 " +
-				"ON _dc_v3_StatisticalPopulation_1.id = _dc_v3_Observation_2.observed_node_key " +
-				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"X1234\" " +
-				"AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"",
+			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid,\n" +
+				"_dc_v3_Observation_2.measured_value AS count_value\n" +
+				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
+				"JOIN `dc_v3.Observation` AS _dc_v3_Observation_2\n" +
+				"ON _dc_v3_StatisticalPopulation_1.id = _dc_v3_Observation_2.observed_node_key\n" +
+				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"X1234\"\n" +
+				"AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"\n",
 			emptyProv,
 		},
 		{
@@ -421,9 +450,9 @@ func TestTranslate(t *testing.T) {
 				dcid ?parent ?dcid,
 				location ?parent ?child`,
 
-			"SELECT _dc_v3_StatisticalPopulation_1.id AS dcid " +
-				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1 " +
-				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"dc/m1rl3k\"",
+			"SELECT _dc_v3_StatisticalPopulation_1.id AS dcid\n" +
+				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
+				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"dc/m1rl3k\"\n",
 			emptyProv,
 		},
 		{
@@ -435,9 +464,9 @@ func TestTranslate(t *testing.T) {
 				dcid ?o ?dcid,
 				observationAbout ?o ?place`,
 
-			"SELECT _dc_v3_StatVarObservation_0.id AS dcid " +
-				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0 " +
-				"WHERE _dc_v3_StatVarObservation_0.observation_about = \"dc/zkelys3\"",
+			"SELECT _dc_v3_StatVarObservation_0.id AS dcid\n" +
+				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
+				"WHERE _dc_v3_StatVarObservation_0.observation_about = \"dc/zkelys3\"\n",
 			emptyProv,
 		},
 
@@ -452,16 +481,25 @@ func TestTranslate(t *testing.T) {
 				name ?author ?author_name,
 				dcid ?node dc/4568bbd63cjdg`,
 
-			"SELECT _dc_v3_Triple_2.object_value AS datePublished, _dc_v3_Triple_4.object_value AS author_name " +
-				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_3.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_Triple_3.object_id = _dc_v3_Triple_1.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4 ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_4.subject_id " +
-				"WHERE _dc_v3_Triple_0.object_id = \"ClaimReview\" AND _dc_v3_Triple_0.predicate = \"typeOf\" " +
-				"AND _dc_v3_Triple_0.subject_id = \"dc/4568bbd63cjdg\" AND _dc_v3_Triple_1.object_id = \"Organization\" " +
-				"AND _dc_v3_Triple_1.predicate = \"typeOf\" AND _dc_v3_Triple_2.predicate = \"datePublished\" " +
-				"AND _dc_v3_Triple_3.predicate = \"author\" AND _dc_v3_Triple_4.predicate = \"name\"",
+			"SELECT _dc_v3_Triple_2.object_value AS datePublished,\n" +
+				"_dc_v3_Triple_4.object_value AS author_name\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_3.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"ON _dc_v3_Triple_3.object_id = _dc_v3_Triple_1.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4\n" +
+				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_4.subject_id\n" +
+				"WHERE _dc_v3_Triple_0.object_id = \"ClaimReview\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
+				"AND _dc_v3_Triple_0.subject_id = \"dc/4568bbd63cjdg\"\n" +
+				"AND _dc_v3_Triple_1.object_id = \"Organization\"\n" +
+				"AND _dc_v3_Triple_1.predicate = \"typeOf\"\n" +
+				"AND _dc_v3_Triple_2.predicate = \"datePublished\"\n" +
+				"AND _dc_v3_Triple_3.predicate = \"author\"\n" +
+				"AND _dc_v3_Triple_4.predicate = \"name\"\n",
 			emptyProv,
 		},
 		{
@@ -476,12 +514,17 @@ func TestTranslate(t *testing.T) {
 				dcid ?parent dc/zxvc6e2,
 				geoId ?node 12345`,
 
-			"SELECT _dc_v3_Place_1.id AS dcid FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Place` AS _dc_v3_Place_1 ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_1.id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_Place_1.id = _dc_v3_Triple_1.subject_id " +
-				"WHERE _dc_v3_Place_1.type = \"City\" AND _dc_v3_Triple_0.object_id = \"dc/zxvc6e2\" " +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\" AND _dc_v3_Triple_1.object_value = \"12345\" " +
-				"AND _dc_v3_Triple_1.predicate = \"geoId\"",
+			"SELECT _dc_v3_Place_1.id AS dcid\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_1\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_1.id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"ON _dc_v3_Place_1.id = _dc_v3_Triple_1.subject_id\n" +
+				"WHERE _dc_v3_Place_1.type = \"City\"\n" +
+				"AND _dc_v3_Triple_0.object_id = \"dc/zxvc6e2\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n" +
+				"AND _dc_v3_Triple_1.object_value = \"12345\"\n" +
+				"AND _dc_v3_Triple_1.predicate = \"geoId\"\n",
 			emptyProv,
 		},
 		{
@@ -491,10 +534,14 @@ func TestTranslate(t *testing.T) {
 				typeOf ?o Class,
 				dcid ?o ListenAction,
 				label ?o ?v`,
-			"SELECT _dc_v3_Triple_2.object_value AS v FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id " +
-				"WHERE _dc_v3_Triple_0.object_id = \"Class\" AND _dc_v3_Triple_0.predicate = \"typeOf\" " +
-				"AND _dc_v3_Triple_0.subject_id = \"ListenAction\" AND _dc_v3_Triple_2.predicate = \"label\"",
+			"SELECT _dc_v3_Triple_2.object_value AS v\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
+				"WHERE _dc_v3_Triple_0.object_id = \"Class\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
+				"AND _dc_v3_Triple_0.subject_id = \"ListenAction\"\n" +
+				"AND _dc_v3_Triple_2.predicate = \"label\"\n",
 			emptyProv,
 		},
 		{
@@ -505,10 +552,13 @@ func TestTranslate(t *testing.T) {
 				localCuratorLevelId ?node B01001 B022202,
 				localCuratorLevelId ?node ?local_id`,
 
-			"SELECT _dc_v3_Triple_0.subject_id AS dcid, _dc_v3_Triple_1.object_value AS local_id " +
-				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1 JOIN `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_0.subject_id " +
-				"WHERE _dc_v3_Triple_1.object_value IN (\"B01001\", \"B022202\") AND _dc_v3_Triple_1.predicate = \"localCuratorLevelId\"",
+			"SELECT _dc_v3_Triple_0.subject_id AS dcid,\n" +
+				"_dc_v3_Triple_1.object_value AS local_id\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_0.subject_id\n" +
+				"WHERE _dc_v3_Triple_1.object_value IN (\"B01001\", \"B022202\")\n" +
+				"AND _dc_v3_Triple_1.predicate = \"localCuratorLevelId\"\n",
 			emptyProv,
 		},
 		{
@@ -522,11 +572,16 @@ func TestTranslate(t *testing.T) {
 				dcid ?parent ?dcid,
 				location ?parent ?child`,
 
-			"SELECT _dc_v3_Triple_1.subject_id AS dcid FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id " +
-				"WHERE _dc_v3_Triple_0.object_id = \"CollegeOrUniversity\" AND _dc_v3_Triple_0.predicate = \"typeOf\" " +
-				"AND _dc_v3_Triple_2.object_id = \"dc/m1rl3k\" AND _dc_v3_Triple_2.predicate = \"location\"",
+			"SELECT _dc_v3_Triple_1.subject_id AS dcid\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id\n" +
+				"WHERE _dc_v3_Triple_0.object_id = \"CollegeOrUniversity\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
+				"AND _dc_v3_Triple_2.object_id = \"dc/m1rl3k\"\n" +
+				"AND _dc_v3_Triple_2.predicate = \"location\"\n",
 
 			emptyProv,
 		},
@@ -541,12 +596,12 @@ func TestTranslate(t *testing.T) {
 				measuredProperty ?sv ?measuredProperty,
 				statType ?sv ?statType`,
 
-			"SELECT _dc_v3_StatisticalVariable_1.measured_prop AS measuredProperty, " +
-				"_dc_v3_StatisticalVariable_1.stat_type AS statType " +
-				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0 " +
-				"JOIN `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_1 " +
-				"ON _dc_v3_StatVarObservation_0.variable_measured = _dc_v3_StatisticalVariable_1.id " +
-				"WHERE _dc_v3_StatVarObservation_0.id = \"dc/o/xyz\"",
+			"SELECT _dc_v3_StatisticalVariable_1.measured_prop AS measuredProperty,\n" +
+				"_dc_v3_StatisticalVariable_1.stat_type AS statType\n" +
+				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
+				"JOIN `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_1\n" +
+				"ON _dc_v3_StatVarObservation_0.variable_measured = _dc_v3_StatisticalVariable_1.id\n" +
+				"WHERE _dc_v3_StatVarObservation_0.id = \"dc/o/xyz\"\n",
 			emptyProv,
 		},
 		{
@@ -561,9 +616,11 @@ func TestTranslate(t *testing.T) {
 				dcid ?o ?dcid,
 				measuredProperty ?o ?measuredProperty`,
 
-			"SELECT _dc_v3_Observation_1.observed_node_key AS parentDcid, _dc_v3_Observation_1.id AS dcid, " +
-				"_dc_v3_Observation_1.measured_prop AS measuredProperty FROM `dc_v3.Observation` AS _dc_v3_Observation_1 " +
-				"WHERE _dc_v3_Observation_1.observed_node_key = \"dc/p/zcerrzm76y0bh\"",
+			"SELECT _dc_v3_Observation_1.observed_node_key AS parentDcid,\n" +
+				"_dc_v3_Observation_1.id AS dcid,\n" +
+				"_dc_v3_Observation_1.measured_prop AS measuredProperty\n" +
+				"FROM `dc_v3.Observation` AS _dc_v3_Observation_1\n" +
+				"WHERE _dc_v3_Observation_1.observed_node_key = \"dc/p/zcerrzm76y0bh\"\n",
 			emptyProv,
 		},
 		{
@@ -588,20 +645,27 @@ func TestTranslate(t *testing.T) {
 				value ?obs ?hasMom,
 				observationPeriod ?obs P1Y`,
 
-			"SELECT _dc_v3_Place_1.id AS countyDcid, " +
-				"_dc_v3_Place_1.name AS countyName, " +
-				"_dc_v3_StatVarObservation_3.value AS hasMom " +
-				"FROM `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_2 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_StatisticalVariable_2.id = _dc_v3_Triple_1.subject_id " +
-				"JOIN `dc_v3.Place` AS _dc_v3_Place_1 ON _dc_v3_Triple_1.object_id = _dc_v3_Place_1.id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0 ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id " +
-				"WHERE _dc_v3_Place_1.type = \"County\" " +
-				"AND _dc_v3_StatVarObservation_3.observation_period = \"P1Y\" " +
-				"AND _dc_v3_StatisticalVariable_2.measured_prop = \"opportunity_atlas_has_mom\" " +
-				"AND _dc_v3_StatisticalVariable_2.num_constraints = 2 AND _dc_v3_StatisticalVariable_2.p1 = \"gender\" " +
-				"AND _dc_v3_StatisticalVariable_2.p2 = \"parentIncome\" AND _dc_v3_StatisticalVariable_2.v1 = \"Male\" " +
-				"AND _dc_v3_StatisticalVariable_2.v2 = \"Percentile10\" AND _dc_v3_Triple_0.object_id = \"dc/y5gtcw1\" " +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\" AND _dc_v3_Triple_1.predicate = \"observationAbout\"",
+			"SELECT _dc_v3_Place_1.id AS countyDcid,\n" +
+				"_dc_v3_Place_1.name AS countyName,\n" +
+				"_dc_v3_StatVarObservation_3.value AS hasMom\n" +
+				"FROM `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_2\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"ON _dc_v3_StatisticalVariable_2.id = _dc_v3_Triple_1.subject_id\n" +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_1\n" +
+				"ON _dc_v3_Triple_1.object_id = _dc_v3_Place_1.id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id\n" +
+				"WHERE _dc_v3_Place_1.type = \"County\"\n" +
+				"AND _dc_v3_StatVarObservation_3.observation_period = \"P1Y\"\n" +
+				"AND _dc_v3_StatisticalVariable_2.measured_prop = \"opportunity_atlas_has_mom\"\n" +
+				"AND _dc_v3_StatisticalVariable_2.num_constraints = 2\n" +
+				"AND _dc_v3_StatisticalVariable_2.p1 = \"gender\"\n" +
+				"AND _dc_v3_StatisticalVariable_2.p2 = \"parentIncome\"\n" +
+				"AND _dc_v3_StatisticalVariable_2.v1 = \"Male\"\n" +
+				"AND _dc_v3_StatisticalVariable_2.v2 = \"Percentile10\"\n" +
+				"AND _dc_v3_Triple_0.object_id = \"dc/y5gtcw1\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n" +
+				"AND _dc_v3_Triple_1.predicate = \"observationAbout\"\n",
 			emptyProv,
 		},
 		{
@@ -620,12 +684,18 @@ func TestTranslate(t *testing.T) {
 				importTime ?node ?importTime,
 				importDuration ?node ?importDuration`,
 
-			"SELECT _dc_v3_Provenance_0.id AS dcid, _dc_v3_Provenance_0.name AS name, " +
-				"_dc_v3_Provenance_0.curator AS curator, _dc_v3_Provenance_0.acl_group AS aclGroup, " +
-				"_dc_v3_Provenance_0.source AS source, _dc_v3_Provenance_0.provenance_url AS url, " +
-				"_dc_v3_Provenance_0.mcf_url AS importUrl, _dc_v3_Provenance_0.timestamp_secs AS importTime, " +
-				"_dc_v3_Provenance_0.duration_secs AS importDuration, _dc_v3_Provenance_0.prov_id AS prov0 " +
-				"FROM `dc_v3.Provenance` AS _dc_v3_Provenance_0 WHERE _dc_v3_Provenance_0.id = \"dc/8eednm2\"",
+			"SELECT _dc_v3_Provenance_0.id AS dcid,\n" +
+				"_dc_v3_Provenance_0.name AS name,\n" +
+				"_dc_v3_Provenance_0.curator AS curator,\n" +
+				"_dc_v3_Provenance_0.acl_group AS aclGroup,\n" +
+				"_dc_v3_Provenance_0.source AS source,\n" +
+				"_dc_v3_Provenance_0.provenance_url AS url,\n" +
+				"_dc_v3_Provenance_0.mcf_url AS importUrl,\n" +
+				"_dc_v3_Provenance_0.timestamp_secs AS importTime,\n" +
+				"_dc_v3_Provenance_0.duration_secs AS importDuration,\n" +
+				"_dc_v3_Provenance_0.prov_id AS prov0\n" +
+				"FROM `dc_v3.Provenance` AS _dc_v3_Provenance_0\n" +
+				"WHERE _dc_v3_Provenance_0.id = \"dc/8eednm2\"\n",
 			map[int][]int{9: {0, 1, 2, 3, 4, 5, 6, 7, 8}},
 		},
 		{
@@ -639,17 +709,27 @@ func TestTranslate(t *testing.T) {
 				termName ?biosample "keratinocyte",
 				dcid ?experiment ?experimentDcid`,
 
-			"SELECT _dc_v3_Triple_5.subject_id AS experimentDcid FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_5 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_5.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_1.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4 ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_4.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3 ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_3.subject_id " +
-				"WHERE _dc_v3_Triple_0.object_id = \"EncodeExperiment\" AND _dc_v3_Triple_0.predicate = \"typeOf\" " +
-				"AND _dc_v3_Triple_1.object_id = \"BiosampleType\" AND _dc_v3_Triple_1.predicate = \"typeOf\" " +
-				"AND _dc_v3_Triple_2.predicate = \"biosampleOntology\" AND _dc_v3_Triple_3.object_value = \"primary cell\" " +
-				"AND _dc_v3_Triple_3.predicate = \"classification\" AND _dc_v3_Triple_4.object_value = \"keratinocyte\" " +
-				"AND _dc_v3_Triple_4.predicate = \"termName\"",
+			"SELECT _dc_v3_Triple_5.subject_id AS experimentDcid\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_5\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_5.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_1.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4\n" +
+				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_4.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3\n" +
+				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_3.subject_id\n" +
+				"WHERE _dc_v3_Triple_0.object_id = \"EncodeExperiment\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
+				"AND _dc_v3_Triple_1.object_id = \"BiosampleType\"\n" +
+				"AND _dc_v3_Triple_1.predicate = \"typeOf\"\n" +
+				"AND _dc_v3_Triple_2.predicate = \"biosampleOntology\"\n" +
+				"AND _dc_v3_Triple_3.object_value = \"primary cell\"\n" +
+				"AND _dc_v3_Triple_3.predicate = \"classification\"\n" +
+				"AND _dc_v3_Triple_4.object_value = \"keratinocyte\"\n" +
+				"AND _dc_v3_Triple_4.predicate = \"termName\"\n",
 			emptyProv,
 		},
 		{
@@ -660,9 +740,11 @@ func TestTranslate(t *testing.T) {
 				dcid ?experimentNode ?experiment,
 				experiment ?bedFileNode ?experimentNode`,
 
-			"SELECT _dc_v3_Triple_1.object_id AS experiment, _dc_v3_Triple_1.subject_id AS bedFileNode " +
-				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1 " +
-				"WHERE _dc_v3_Triple_1.object_id IN (\"dc/abc\", \"dc/xyz\") AND _dc_v3_Triple_1.predicate = \"experiment\"",
+			"SELECT _dc_v3_Triple_1.object_id AS experiment,\n" +
+				"_dc_v3_Triple_1.subject_id AS bedFileNode\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"WHERE _dc_v3_Triple_1.object_id IN (\"dc/abc\", \"dc/xyz\")\n" +
+				"AND _dc_v3_Triple_1.predicate = \"experiment\"\n",
 			emptyProv,
 		},
 	} {
@@ -677,11 +759,11 @@ func TestTranslate(t *testing.T) {
 			t.Errorf("getSQL error: %s", err)
 			continue
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
-		if diff := deep.Equal(c.wantProv, translation.Prov); diff != nil {
+		if diff := cmp.Diff(c.wantProv, translation.Prov); diff != "" {
 			t.Errorf("getSQL unexpected prov diff for test %s, %v", c.name, diff)
 		}
 	}
@@ -710,8 +792,10 @@ func TestDcidSimplified(t *testing.T) {
 		    subType ?p "City",
 		    name ?p "San Jose"`,
 
-			"SELECT _dc_v3_Place_0.id AS p FROM `dc_v3.Place` AS _dc_v3_Place_0 " +
-				"WHERE _dc_v3_Place_0.name = \"San Jose\" AND _dc_v3_Place_0.type = \"City\"",
+			"SELECT _dc_v3_Place_0.id AS p\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"WHERE _dc_v3_Place_0.name = \"San Jose\"\n" +
+				"AND _dc_v3_Place_0.type = \"City\"\n",
 			emptyProv,
 		},
 		{
@@ -724,10 +808,14 @@ func TestDcidSimplified(t *testing.T) {
 				containedInPlace ?node ?parent_node,
 				dcid ?parent_node "dc/x333"`,
 
-			"SELECT _dc_v3_Place_0.id AS node FROM `dc_v3.Place` AS _dc_v3_Place_0 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0 ON _dc_v3_Place_0.id = _dc_v3_Triple_0.subject_id " +
-				"WHERE _dc_v3_Place_0.country_alpha_2_code = \"alpha-code\" AND _dc_v3_Place_0.type = \"City\" " +
-				"AND _dc_v3_Triple_0.object_id = \"dc/x333\" AND _dc_v3_Triple_0.predicate = \"containedInPlace\"",
+			"SELECT _dc_v3_Place_0.id AS node\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"ON _dc_v3_Place_0.id = _dc_v3_Triple_0.subject_id\n" +
+				"WHERE _dc_v3_Place_0.country_alpha_2_code = \"alpha-code\"\n" +
+				"AND _dc_v3_Place_0.type = \"City\"\n" +
+				"AND _dc_v3_Triple_0.object_id = \"dc/x333\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
 			emptyProv,
 		},
 		{
@@ -736,7 +824,9 @@ func TestDcidSimplified(t *testing.T) {
 			`SELECT ?node,
 				typeOf ?node Place,
 				subType ?node City`,
-			"SELECT _dc_v3_Place_0.id AS node FROM `dc_v3.Place` AS _dc_v3_Place_0 WHERE _dc_v3_Place_0.type = \"City\"",
+			"SELECT _dc_v3_Place_0.id AS node\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"WHERE _dc_v3_Place_0.type = \"City\"\n",
 			emptyProv,
 		},
 		{
@@ -747,9 +837,13 @@ func TestDcidSimplified(t *testing.T) {
 				containedInPlace ?city_or_county dc/b72vdv,
 				name ?city_or_county ?name`,
 
-			"SELECT _dc_v3_Place_0.name AS name, _dc_v3_Place_0.id AS city_or_county FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Place` AS _dc_v3_Place_0 ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_0.id " +
-				"WHERE _dc_v3_Triple_0.object_value = \"dc/b72vdv\" AND _dc_v3_Triple_0.predicate = \"containedInPlace\"",
+			"SELECT _dc_v3_Place_0.name AS name,\n" +
+				"_dc_v3_Place_0.id AS city_or_county\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_0.id\n" +
+				"WHERE _dc_v3_Triple_0.object_value = \"dc/b72vdv\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
 			emptyProv,
 		},
 	} {
@@ -762,7 +856,7 @@ func TestDcidSimplified(t *testing.T) {
 		if err != nil {
 			t.Errorf("Translate(%s) = %s", c.name, err)
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
@@ -789,8 +883,9 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 				race ?pop ?race,
 				location ?pop ?place,
 				geoId ?place "40005"`,
-			"SELECT _dc_v3_bq_county_outcomes_1.race AS race FROM `dc_v3.bq_county_outcomes` AS _dc_v3_bq_county_outcomes_1 " +
-				"WHERE _dc_v3_bq_county_outcomes_1.geo_id = \"40005\"",
+			"SELECT _dc_v3_bq_county_outcomes_1.race AS race\n" +
+				"FROM `dc_v3.bq_county_outcomes` AS _dc_v3_bq_county_outcomes_1\n" +
+				"WHERE _dc_v3_bq_county_outcomes_1.geo_id = \"40005\"\n",
 		},
 	} {
 		nodes, queries, err := datalog.ParseQuery(c.queryStr)
@@ -802,7 +897,7 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 		if err != nil {
 			t.Errorf("Translate(%s) = %s", c.name, err)
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
@@ -831,8 +926,11 @@ func TestTranslateWeather(t *testing.T) {
 				minValue ?o ?min,
 				maxValue ?o ?max`,
 
-			"SELECT _dc_v3_MonthlyWeather_0.temp_c_min AS min, _dc_v3_MonthlyWeather_0.temp_c_max AS max, \"Celsius\" " +
-				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0 WHERE _dc_v3_MonthlyWeather_0.place_id = \"geoId/06\"",
+			"SELECT _dc_v3_MonthlyWeather_0.temp_c_min AS min,\n" +
+				"_dc_v3_MonthlyWeather_0.temp_c_max AS max,\n" +
+				"\"Celsius\"\n" +
+				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0\n" +
+				"WHERE _dc_v3_MonthlyWeather_0.place_id = \"geoId/06\"\n",
 		},
 		{
 			"weather_multipleCity",
@@ -843,10 +941,11 @@ func TestTranslateWeather(t *testing.T) {
 				observedNode ?o ?place,
 				dcid ?place geoId/4261000 geoId/0649670 geoId/4805000,
 				observationDate ?o "2019-05-09"`,
-			"SELECT _dc_v3_MonthlyWeather_0.place_id AS place, _dc_v3_MonthlyWeather_0.temp_c_mean AS MeanTemp " +
-				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0 " +
-				"WHERE _dc_v3_MonthlyWeather_0.observation_date = \"2019-05-09\" " +
-				"AND _dc_v3_MonthlyWeather_0.place_id IN (\"geoId/4261000\", \"geoId/0649670\", \"geoId/4805000\")",
+			"SELECT _dc_v3_MonthlyWeather_0.place_id AS place,\n" +
+				"_dc_v3_MonthlyWeather_0.temp_c_mean AS MeanTemp\n" +
+				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0\n" +
+				"WHERE _dc_v3_MonthlyWeather_0.observation_date = \"2019-05-09\"\n" +
+				"AND _dc_v3_MonthlyWeather_0.place_id IN (\"geoId/4261000\", \"geoId/0649670\", \"geoId/4805000\")\n",
 		},
 	} {
 		nodes, queries, err := datalog.ParseQuery(c.queryStr)
@@ -858,7 +957,7 @@ func TestTranslateWeather(t *testing.T) {
 		if err != nil {
 			t.Errorf("Translate(%s) = %s", c.name, err)
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
@@ -890,8 +989,10 @@ func TestTranslateWeatherSparql(t *testing.T) {
 				?place dcid geoId/4261000
 			}`,
 
-			"SELECT _dc_v3_MonthlyWeather_0.temp_c_mean AS MeanTemp FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0 " +
-				"WHERE _dc_v3_MonthlyWeather_0.observation_date = \"2018-01\" AND _dc_v3_MonthlyWeather_0.place_id = \"geoId/4261000\"",
+			"SELECT _dc_v3_MonthlyWeather_0.temp_c_mean AS MeanTemp\n" +
+				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0\n" +
+				"WHERE _dc_v3_MonthlyWeather_0.observation_date = \"2018-01\"\n" +
+				"AND _dc_v3_MonthlyWeather_0.place_id = \"geoId/4261000\"\n",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -903,7 +1004,7 @@ func TestTranslateWeatherSparql(t *testing.T) {
 		if err != nil {
 			t.Errorf("Translate(%s) = %s", c.name, err)
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
@@ -938,11 +1039,11 @@ func TestTranslatePew(t *testing.T) {
 				?response inLanguage "Spanish"
 			}
 			`,
-			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Name AS name " +
-				"FROM `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_1 " +
-				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_0 " +
-				"ON _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SampleUnit_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Dcid " +
-				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SurveyResponse_InLanguage = \"Spanish\"",
+			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Name AS name\n" +
+				"FROM `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_1\n" +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_0\n" +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SampleUnit_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Dcid\n" +
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SurveyResponse_InLanguage = \"Spanish\"\n",
 		},
 		{
 			"option name",
@@ -956,11 +1057,11 @@ func TestTranslatePew(t *testing.T) {
 				?roption name ?roptionname
 			}
 			`,
-			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Name AS roptionname " +
-				"FROM `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0 " +
-				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1 " +
-				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid " +
-				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = \"SurveyItem/Pew_ContinentalUS_ReligiousLandscapeSurvey_2007_protfam\"",
+			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Name AS roptionname\n" +
+				"FROM `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0\n" +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1\n" +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid\n" +
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = \"SurveyItem/Pew_ContinentalUS_ReligiousLandscapeSurvey_2007_protfam\"\n",
 		},
 		{
 			"qcode",
@@ -974,13 +1075,13 @@ func TestTranslatePew(t *testing.T) {
 				?roption identifier "0"
 			}
 			`,
-			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Name AS qcode " +
-				"FROM `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1 " +
-				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0 " +
-				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid " +
-				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Items` AS _dc_v3_PewReligiousLandscapeSurvey2007Items_0 " +
-				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Dcid " +
-				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Identifier = \"0\"",
+			"SELECT _dc_v3_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Name AS qcode\n" +
+				"FROM `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1\n" +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0\n" +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid\n" +
+				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Items` AS _dc_v3_PewReligiousLandscapeSurvey2007Items_0\n" +
+				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Dcid\n" +
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Identifier = \"0\"\n",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -992,7 +1093,7 @@ func TestTranslatePew(t *testing.T) {
 		if err != nil {
 			t.Errorf("Translate(%s) = %s", c.name, err)
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
@@ -1030,11 +1131,17 @@ func TestSparql(t *testing.T) {
 			  ?c measuredValue ?population .
 			}
 			`,
-			"SELECT _dc_v3_Place_0.name AS name, _dc_v3_Place_0.id AS a FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1 " +
-				"JOIN `dc_v3.Observation` AS _dc_v3_Observation_2 ON _dc_v3_StatisticalPopulation_1.id = _dc_v3_Observation_2.observed_node_key " +
-				"JOIN `dc_v3.Place` AS _dc_v3_Place_0 ON _dc_v3_StatisticalPopulation_1.place_key = _dc_v3_Place_0.id " +
-				"WHERE _dc_v3_Observation_2.measured_prop = \"count\" AND _dc_v3_Place_0.type = \"State\" AND " +
-				"_dc_v3_StatisticalPopulation_1.num_constraints = 0 AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"",
+			"SELECT _dc_v3_Place_0.name AS name,\n" +
+				"_dc_v3_Place_0.id AS a\n" +
+				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
+				"JOIN `dc_v3.Observation` AS _dc_v3_Observation_2\n" +
+				"ON _dc_v3_StatisticalPopulation_1.id = _dc_v3_Observation_2.observed_node_key\n" +
+				"JOIN `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"ON _dc_v3_StatisticalPopulation_1.place_key = _dc_v3_Place_0.id\n" +
+				"WHERE _dc_v3_Observation_2.measured_prop = \"count\"\n" +
+				"AND _dc_v3_Place_0.type = \"State\"\n" +
+				"AND _dc_v3_StatisticalPopulation_1.num_constraints = 0\n" +
+				"AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"\n",
 		},
 		{
 			"adminarea1",
@@ -1045,7 +1152,9 @@ func TestSparql(t *testing.T) {
 		    ?state name ?name .
 		  }
 			`,
-			"SELECT _dc_v3_Place_0.name AS name FROM `dc_v3.Place` AS _dc_v3_Place_0 WHERE _dc_v3_Place_0.type = \"AdministrativeArea1\"",
+			"SELECT _dc_v3_Place_0.name AS name\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
+				"WHERE _dc_v3_Place_0.type = \"AdministrativeArea1\"\n",
 		},
 		{
 			"bio",
@@ -1060,18 +1169,23 @@ func TestSparql(t *testing.T) {
 			}
 			LIMIT 100
 			`,
-			"SELECT _dc_v3_Triple_3.object_value AS d FROM `dc_v3.Triple` AS _dc_v3_Triple_0 " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2 ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4 ON _dc_v3_Triple_1.object_id = _dc_v3_Triple_4.subject_id " +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3 ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_3.subject_id " +
-				"WHERE _dc_v3_Triple_0.object_id = \"ChemicalCompoundDiseaseTreatment\" " +
-				"AND _dc_v3_Triple_0.predicate = \"typeOf\" " +
-				"AND _dc_v3_Triple_1.predicate = \"compoundID\" " +
-				"AND _dc_v3_Triple_2.predicate = \"diseaseID\" " +
-				"AND _dc_v3_Triple_3.predicate = \"commonName\" " +
-				"AND _dc_v3_Triple_4.object_value = \"Prednisone\" " +
-				"AND _dc_v3_Triple_4.predicate = \"drugName\"",
+			"SELECT _dc_v3_Triple_3.object_value AS d\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4\n" +
+				"ON _dc_v3_Triple_1.object_id = _dc_v3_Triple_4.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3\n" +
+				"ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_3.subject_id\n" +
+				"WHERE _dc_v3_Triple_0.object_id = \"ChemicalCompoundDiseaseTreatment\"\n" +
+				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
+				"AND _dc_v3_Triple_1.predicate = \"compoundID\"\n" +
+				"AND _dc_v3_Triple_2.predicate = \"diseaseID\"\n" +
+				"AND _dc_v3_Triple_3.predicate = \"commonName\"\n" +
+				"AND _dc_v3_Triple_4.object_value = \"Prednisone\"\n" +
+				"AND _dc_v3_Triple_4.predicate = \"drugName\"\n",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -1083,7 +1197,7 @@ func TestSparql(t *testing.T) {
 		if err != nil {
 			t.Errorf("Translate(%s) = %s", c.name, err)
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
@@ -1115,12 +1229,13 @@ func TestStatVarObs(t *testing.T) {
 				 ?place typeOf Country .
 				}
 				`,
-			"SELECT _dc_v3_StatVarObservation_0.id AS observation, _dc_v3_Place_1.id AS place " +
-				"FROM `dc_v3.Place` AS _dc_v3_Place_1 " +
-				"JOIN `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0 " +
-				"ON _dc_v3_Place_1.id = _dc_v3_StatVarObservation_0.observation_about " +
-				"WHERE _dc_v3_Place_1.type = \"Country\" " +
-				"AND _dc_v3_StatVarObservation_0.variable_measured = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\"",
+			"SELECT _dc_v3_StatVarObservation_0.id AS observation,\n" +
+				"_dc_v3_Place_1.id AS place\n" +
+				"FROM `dc_v3.Place` AS _dc_v3_Place_1\n" +
+				"JOIN `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
+				"ON _dc_v3_Place_1.id = _dc_v3_StatVarObservation_0.observation_about\n" +
+				"WHERE _dc_v3_Place_1.type = \"Country\"\n" +
+				"AND _dc_v3_StatVarObservation_0.variable_measured = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\"\n",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -1132,7 +1247,7 @@ func TestStatVarObs(t *testing.T) {
 		if err != nil {
 			t.Errorf("Translate(%s) = %s", c.name, err)
 		}
-		if diff := deep.Equal(c.wantSQL, translation.SQL); diff != nil {
+		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
