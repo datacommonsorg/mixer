@@ -12,28 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package page
+package internalplace
 
 import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/biopage"
+	"github.com/datacommonsorg/mixer/internal/server/placepage"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-// ProteinPage implements API for Mixer.ProteinPage.
-func ProteinPage(
-	ctx context.Context,
-	in *pb.ProteinPageRequest,
-	store *store.Store,
-) (*pb.GraphNodes, error) {
-	entity := in.GetEntity()
-	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
+// GetPlacePageData implements API for Mixer.GetPlacePageData.
+func GetPlacePageData(
+	ctx context.Context, in *pb.GetPlacePageDataRequest, store *store.Store,
+) (*pb.GetPlacePageDataResponse, error) {
+	placeDcid := in.GetPlace()
+	if !util.CheckValidDCIDs([]string{placeDcid}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid place")
 	}
-	return biopage.GetBioPageDataHelper(ctx, entity, store)
+	seed := in.GetSeed()
+	newStatVars := in.GetNewStatVars()
+	return placepage.GetPlacePageDataHelper(ctx, placeDcid, newStatVars, seed, store)
 }

@@ -25,13 +25,13 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
-	"github.com/datacommonsorg/mixer/internal/server/placepage"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/search"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/server/v0/bio"
+	"github.com/datacommonsorg/mixer/internal/server/v0/internalbio"
+	"github.com/datacommonsorg/mixer/internal/server/v0/internalplace"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
@@ -317,14 +317,14 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
 func (s *Server) GetPlacePageData(
 	ctx context.Context, in *pb.GetPlacePageDataRequest,
 ) (*pb.GetPlacePageDataResponse, error) {
-	return placepage.GetPlacePageData(ctx, in, s.store)
+	return internalplace.GetPlacePageData(ctx, in, s.store)
 }
 
 // GetBioPageData implements API for Mixer.GetBioPageData.
 func (s *Server) GetBioPageData(
 	ctx context.Context, in *pb.GetBioPageDataRequest,
 ) (*pb.GraphNodes, error) {
-	return bio.GetBioPageData(ctx, in, s.store)
+	return internalbio.GetBioPageData(ctx, in, s.store)
 }
 
 // Search implements API for Mixer.Search.

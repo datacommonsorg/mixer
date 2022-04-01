@@ -12,26 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package bio
+package page
 
 import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/biopage"
+	"github.com/datacommonsorg/mixer/internal/server/placepage"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-// GetBioPageData implements API for Mixer.GetBioPageData.
-func GetBioPageData(
-	ctx context.Context, in *pb.GetBioPageDataRequest, store *store.Store) (
-	*pb.GraphNodes, error) {
-	dcid := in.GetDcid()
-	if !util.CheckValidDCIDs([]string{dcid}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcid")
+// PlacePage implements API for Mixer.PlacePage.
+func PlacePage(
+	ctx context.Context,
+	in *pb.PlacePageRequest,
+	store *store.Store,
+) (*pb.GetPlacePageDataResponse, error) {
+	entity := in.GetEntity()
+	if !util.CheckValidDCIDs([]string{entity}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
 	}
-	return biopage.GetBioPageDataHelper(ctx, dcid, store)
+	seed := in.GetSeed()
+	newStatVars := in.GetNewStatVars()
+	return placepage.GetPlacePageDataHelper(ctx, entity, newStatVars, seed, store)
 }
