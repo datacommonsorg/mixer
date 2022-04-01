@@ -27,6 +27,9 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// TODO(shifucun): Change this to BQ Analytics table once it's set up.
+const datasetName = "datcom-store.dc_kg_latest"
+
 // Translate implements API for Mixer.Translate.
 func Translate(
 	ctx context.Context,
@@ -38,7 +41,7 @@ func Translate(
 	}
 
 	out := pb.TranslateResponse{}
-	mappings, err := mcf.ParseMapping(in.GetSchemaMapping(), "datcom-store.dc_kg_latest")
+	mappings, err := mcf.ParseMapping(in.GetSchemaMapping(), datasetName)
 	if err != nil {
 		return nil, err
 	}
