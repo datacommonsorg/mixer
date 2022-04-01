@@ -60,10 +60,13 @@ var StatsRanking = map[RankKey]int{
 	{"UNEnergy", "", "*"}:         0, // Electricity
 	{"EIA_Electricity", "*", "*"}: 1, // Electricity
 
-	{"NASA_NEXDCP30", "NASA_Mean_CCSM4", "P1M"}:     0, // IPCC
-	{"NASA_NEXGDDP", "NASA_Mean_CMIP5_CCSM4", "P1M"}:      0, // IPCC
-	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1M"}: 0, // IPCC
-	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1M"}:  0, // IPCC
+	// Prefer observational weather over gridded over projections
+	{"NOAA_EPA_Observed_Historical_Weather", "*", "*"}:	0,  // Observational
+	{"Copernicus_ECMWF_ERA5_Monthly", "*", "*"}: 0,			// Gridded reanalysis
+	{"NASA_NEXDCP30", "NASA_Mean_CCSM4", "P1M"}:     0, // IPCC Projections
+	{"NASA_NEXGDDP", "NASA_Mean_CMIP5_CCSM4", "P1M"}:      0, // IPCC Projections
+	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1M"}: 0, // IPCC Projections
+	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1M"}:  0, // IPCC Projections
 
 	{"NASA_WetBulbComputation_Aggregation", "NASA_Mean_HadGEM2-AO", "*"}: 0, // Wet bulb year aggregation
 	{"NASA_WetBulbComputation_Aggregation", "*", "*"}:                    1, // Wet bulb year aggregation
