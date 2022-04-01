@@ -17,6 +17,7 @@ option go_package = "./proto";
 package datacommons.v1;
 
 import "common.proto";
+import "internal.proto";
 
 message ProteinPageRequest {
   string entity = 1;
@@ -25,4 +26,20 @@ message ProteinPageRequest {
 message ProteinPageResponse {
   string entity = 1;
   datacommons.GraphNodes data = 2;
+}
+
+message PlacePageRequest {
+  string entity = 1;
+  // A list of additional stat vars need to be fetched in addition to the
+  // data in cache. This is to be used in local development, where new chart is
+  // added to chart config but data is not added to cache (delay from cache
+  // build).
+  repeated string new_stat_vars = 2;
+  // Seed value for random selection. Used by test to get deterministic result.
+  int64 seed = 3;
+}
+
+message PlacePageResponse {
+  string entity = 1;
+  datacommons.GetPlacePageDataResponse data = 2;
 }

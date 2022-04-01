@@ -141,7 +141,7 @@ func TestGetPlacePageData(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"GetPlacesIn", &test.TestOption{}, testSuite); err != nil {
+		"GetPlacePageData", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

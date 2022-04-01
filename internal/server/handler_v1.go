@@ -94,3 +94,10 @@ func (s *Server) ProteinPage(
 ) (*pb.ProteinPageResponse, error) {
 	return page.ProteinPage(ctx, in, s.store)
 }
+
+// PlacePage implements API for mixer.PlacePage.
+func (s *Server) PlacePage(
+	ctx context.Context, in *pb.PlacePageRequest,
+) (*pb.PlacePageResponse, error) {
+	return page.PlacePage(ctx, in, s.store)
+}

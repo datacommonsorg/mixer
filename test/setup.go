@@ -224,18 +224,18 @@ func UpdateProtoGolden(
 	// Use encoding/json to get stable output.
 	data, err := marshaller.Marshal(resp)
 	if err != nil {
-		log.Printf("could not write golden files to %s", fname)
+		log.Printf("marshaller.Marshal(%s) = %s", fname, err)
 		return
 	}
 	var rm json.RawMessage = data
 	jsonByte, err := json.MarshalIndent(rm, "", "  ")
 	if err != nil {
-		log.Printf("could not write golden files to %s", fname)
+		log.Printf("json.MarshalIndent(%s) = %s", fname, err)
 		return
 	}
 	err = ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644)
 	if err != nil {
-		log.Printf("could not write golden files to %s", fname)
+		log.Printf("ioutil.WriteFile(%s) = %s", fname, err)
 	}
 }
 
