@@ -91,13 +91,13 @@ func (s *Server) ObservationsPoint(
 // ProteinPage implements API for mixer.ProteinPage.
 func (s *Server) ProteinPage(
 	ctx context.Context, in *pb.ProteinPageRequest,
-) (*pb.ProteinPageResponse, error) {
+) (*pb.GraphNodes, error) {
 	return page.ProteinPage(ctx, in, s.store)
 }
 
 // PlacePage implements API for mixer.PlacePage.
 func (s *Server) PlacePage(
 	ctx context.Context, in *pb.PlacePageRequest,
-) (*pb.PlacePageResponse, error) {
+) (*pb.GetPlacePageDataResponse, error) {
 	return page.PlacePage(ctx, in, s.store)
 }

@@ -16,16 +16,8 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons.v1;
 
-import "common.proto";
-import "internal.proto";
-
 message ProteinPageRequest {
   string entity = 1;
-}
-
-message ProteinPageResponse {
-  string entity = 1;
-  datacommons.GraphNodes data = 2;
 }
 
 message PlacePageRequest {
@@ -37,9 +29,4 @@ message PlacePageRequest {
   repeated string new_stat_vars = 2;
   // Seed value for random selection. Used by test to get deterministic result.
   int64 seed = 3;
-}
-
-message PlacePageResponse {
-  string entity = 1;
-  datacommons.GetPlacePageDataResponse data = 2;
 }

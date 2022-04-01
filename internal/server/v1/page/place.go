@@ -30,16 +30,12 @@ func PlacePage(
 	ctx context.Context,
 	in *pb.PlacePageRequest,
 	store *store.Store,
-) (*pb.PlacePageResponse, error) {
+) (*pb.GetPlacePageDataResponse, error) {
 	entity := in.GetEntity()
 	if !util.CheckValidDCIDs([]string{entity}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
 	}
 	seed := in.GetSeed()
 	newStatVars := in.GetNewStatVars()
-	data, err := placepage.GetPlacePageDataHelper(ctx, entity, newStatVars, seed, store)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.PlacePageResponse{Entity: entity, Data: data}, nil
+	return placepage.GetPlacePageDataHelper(ctx, entity, newStatVars, seed, store)
 }

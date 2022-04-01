@@ -30,14 +30,10 @@ func ProteinPage(
 	ctx context.Context,
 	in *pb.ProteinPageRequest,
 	store *store.Store,
-) (*pb.ProteinPageResponse, error) {
+) (*pb.GraphNodes, error) {
 	entity := in.GetEntity()
 	if !util.CheckValidDCIDs([]string{entity}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
 	}
-	data, err := biopage.GetBioPageDataHelper(ctx, entity, store)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.ProteinPageResponse{Entity: entity, Data: data}, nil
+	return biopage.GetBioPageDataHelper(ctx, entity, store)
 }

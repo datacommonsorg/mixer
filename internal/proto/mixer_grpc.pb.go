@@ -121,8 +121,8 @@ type MixerClient interface {
 	VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error)
 	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
-	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*ProteinPageResponse, error)
-	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*PlacePageResponse, error)
+	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
+	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 }
 
 type mixerClient struct {
@@ -511,8 +511,8 @@ func (c *mixerClient) ObservationsPoint(ctx context.Context, in *ObservationsPoi
 	return out, nil
 }
 
-func (c *mixerClient) ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*ProteinPageResponse, error) {
-	out := new(ProteinPageResponse)
+func (c *mixerClient) ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
+	out := new(GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ProteinPage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -520,8 +520,8 @@ func (c *mixerClient) ProteinPage(ctx context.Context, in *ProteinPageRequest, o
 	return out, nil
 }
 
-func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*PlacePageResponse, error) {
-	out := new(PlacePageResponse)
+func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error) {
+	out := new(GetPlacePageDataResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/PlacePage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -632,8 +632,8 @@ type MixerServer interface {
 	VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error)
 	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
-	ProteinPage(context.Context, *ProteinPageRequest) (*ProteinPageResponse, error)
-	PlacePage(context.Context, *PlacePageRequest) (*PlacePageResponse, error)
+	ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error)
+	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -766,10 +766,10 @@ func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *BulkVariableI
 func (UnimplementedMixerServer) ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsPoint not implemented")
 }
-func (UnimplementedMixerServer) ProteinPage(context.Context, *ProteinPageRequest) (*ProteinPageResponse, error) {
+func (UnimplementedMixerServer) ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProteinPage not implemented")
 }
-func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*PlacePageResponse, error) {
+func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlacePage not implemented")
 }
 

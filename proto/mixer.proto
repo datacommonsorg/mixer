@@ -416,14 +416,14 @@ service Mixer {
   }
 
   rpc ProteinPage(datacommons.v1.ProteinPageRequest)
-      returns (datacommons.v1.ProteinPageResponse) {
+      returns (GraphNodes) {
     option (google.api.http) = {
       get : "/v1/internal/page/protein/{entity=**}"
     };
   }
 
   rpc PlacePage(datacommons.v1.PlacePageRequest)
-      returns (datacommons.v1.PlacePageResponse) {
+      returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
       get : "/v1/internal/page/place/{entity=**}"
     };
