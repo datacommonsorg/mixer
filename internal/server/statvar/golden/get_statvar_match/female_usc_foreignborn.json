@@ -1,12 +1,8 @@
 {
   "matchInfo": [
     {
-      "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInNursingFacilities",
+      "statVar": "Count_Person_Female_ForeignBorn_ResidesInJuvenileFacilities",
       "matchCount": 3
-    },
-    {
-      "statVar": "Count_Death_15To24Years_DiseasesOfTheNervousSystem_Female",
-      "matchCount": 2
     },
     {
       "statVar": "Count_Death_25To34Years_Female_AsianOrPacificIslander",
@@ -17,7 +13,23 @@
       "matchCount": 2
     },
     {
+      "statVar": "Count_Death_55To64Years_Female_BlackOrAfricanAmerican",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Death_75To84Years_CertainInfectiousParasiticDiseases_Female",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Death_75To84Years_ExternalCauses_Female",
+      "matchCount": 2
+    },
+    {
       "statVar": "Count_Death_DiseasesOfTheGenitourinarySystem_Female",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Death_Upto1Years_AbnormalNotClassfied_Female",
       "matchCount": 2
     },
     {
@@ -25,31 +37,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Household_WithSocialSecurityIncomeInThePast12Months_ForeignBorn_PlaceOfBirthOceania",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_HousingUnit_ForeignBorn_0.3OrLessRatioToHouseholdIncome_PlaceOfBirthCentralAmericaExceptMexico",
-      "matchCount": 2
-    },
-    {
       "statVar": "Count_HousingUnit_ForeignBorn_PlaceOfBirthNorthamerica_NoTelephoneService",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_HousingUnit_ForeignBorn_WithTotal2To3Rooms_PlaceOfBirthSouthernEasternEurope",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_Person_12Years_Female",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Male_ForeignBorn_ResidesInJuvenileFacilities",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_Person_15To17Years_Female_SomeOtherRaceAlone",
       "matchCount": 2
     },
     {
@@ -65,15 +53,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_50000To74999InflationAdjustedUSDCurrentYear_WithEarnings_ForeignBorn_PlaceOfBirthSouthEasternAsia_FullTimeYearRoundWorker",
-      "matchCount": 2
-    },
-    {
       "statVar": "Count_Person_50To64Years_Female_HispanicOrLatino",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_Person_5OrLessYears_ForeignBorn_PlaceOfBirthEurope",
       "matchCount": 2
     },
     {
@@ -89,7 +69,11 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_88Years_Female",
+      "statVar": "Count_Person_75OrMoreYears_InLaborForce_Female",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Person_75To84Years_Female_SomeOtherRaceAlone",
       "matchCount": 2
     },
     {
@@ -97,19 +81,15 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Employed_ForeignBorn_PlaceOfBirthSouthamerica",
+      "statVar": "Count_Person_DateOfEntry2000OrEarlier_ResidesInGroupQuarters",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Employed_ForeignBorn_SOCNaturalResourcesConstructionMaintenanceOccupation_PlaceOfBirthEurope",
+      "statVar": "Count_Person_DateOfEntry2010OrLater_ResidesInNursingFacilities",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Employed_NAICSFinanceInsuranceRealEstateRentalLeasing_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_Person_Employed_NAICSInformation_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
+      "statVar": "Count_Person_EducationalAttainmentBachelorsDegree_ForeignBorn_PlaceOfBirthMexico",
       "matchCount": 2
     },
     {
@@ -121,15 +101,19 @@
       "matchCount": 2
     },
     {
+      "statVar": "Count_Person_Employed_NAICSProfessionalScientificTechnicalServicesManagementOfCompaniesEnterprisesAdministrativeSupportWasteManagementRemediationServices_ForeignBorn_PlaceOfBirthAfrica",
+      "matchCount": 2
+    },
+    {
       "statVar": "Count_Person_Employed_NAICSProfessionalScientificTechnicalServicesManagementOfCompaniesEnterprisesAdministrativeSupportWasteManagementRemediationServices_ForeignBorn_PlaceOfBirthEasternAsia",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Employed_PrivatelyOwnedForProfitEstablishment_ForeignBorn_PlaceOfBirthAfrica_PaidWorker",
+      "statVar": "Count_Person_Employed_NAICSPublicAdministration_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_EnrolledInGrade9ToGrade12_ForeignBorn_PlaceOfBirthNorthamerica",
+      "statVar": "Count_Person_Employed_NAICSTransportationWarehousingUtilities_ForeignBorn_PlaceOfBirthNorthernWesternEurope",
       "matchCount": 2
     },
     {
@@ -137,19 +121,15 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_FamilyHousehold_WithChildrenUnder18_ForeignBorn_PlaceOfBirthEurope_PovertyStatusDetermined",
-      "matchCount": 2
-    },
-    {
       "statVar": "Count_Person_FamilyHousehold_WithChildrenUnder5_ForeignBorn_PlaceOfBirthEasternAsia_PovertyStatusDetermined",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Female_BlackOrAfricanAmericanAlone",
+      "statVar": "Count_Person_Female_DivorcedInThePast12Months_ResidesInHousehold",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Female_DivorcedInThePast12Months_RenterOccupied_ResidesInHousingUnit",
+      "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthMexico",
       "matchCount": 2
     },
     {
@@ -161,15 +141,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Female_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing",
-      "matchCount": 2
-    },
-    {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_Person_Female_NoHealthInsurance",
       "matchCount": 2
     },
     {
@@ -177,11 +149,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Female_WithEarnings_ResidesInNursingFacilities",
-      "matchCount": 2
-    },
-    {
-      "statVar": "Count_Person_ForeignBorn_PlaceOfBirthEasternAsia_2OrMoreRatioToPovertyLine",
+      "statVar": "Count_Person_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico_WhiteAlone",
       "matchCount": 2
     },
     {
@@ -189,7 +157,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_ForeignBorn_PlaceOfBirthSouthEasternAsia_OneRace",
+      "statVar": "Count_Person_ForeignBorn_PlaceOfBirthSouthEasternAsia_AmericanIndianOrAlaskaNativeAlone",
       "matchCount": 2
     },
     {
@@ -201,7 +169,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Houseless_MarginalWorker_OtherWorkers_WorkedUpto3Months_Rural_Female",
+      "statVar": "Count_Person_Houseless_MainWorker_Rural_Female",
       "matchCount": 2
     },
     {
@@ -209,7 +177,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_MarginalWorker_Cultivators_WorkedUpto3Months_Urban_Female",
+      "statVar": "Count_Person_MarginalWorker_OtherWorkers_WorkedUpto3Months_Rural_Female",
       "matchCount": 2
     },
     {
@@ -225,11 +193,19 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_OnlyEnglishSpokenAtHome_ForeignBorn_PlaceOfBirthLatinAmerica",
+      "statVar": "Count_Person_PlaceOfBirthEurope",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_PlaceOfBirthEurope",
+      "statVar": "Count_Person_PlaceOfBirthForeignBornNotBornAtSea",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Person_PlaceOfBirthForeignBornNotBornAtSea_ResidesInMilitaryQuartersOrMilitaryShips",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Person_PlaceOfBirthLatinAmerica_ResidesInNursingFacilities",
       "matchCount": 2
     },
     {
@@ -241,19 +217,39 @@
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_ScheduledTribe_YearsUpto6_Female",
+      "statVar": "Count_Person_ScheduledCaste_MarginalWorker_Worked3To6Months_Rural_Female",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_USCitizenByNaturalization_DateOfEntry2000OrLater_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
+      "statVar": "Count_Person_ScheduledTribe_Workers_Female",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_USCitizenByNaturalization_DateOfEntry2000To2009_ForeignBorn_PlaceOfBirthAfrica",
+      "statVar": "Count_Person_SingleMotherFamilyHousehold_ForeignBorn_PlaceOfBirthNorthamerica_PovertyStatusDetermined",
       "matchCount": 2
     },
     {
-      "statVar": "Count_Person_Widowed_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
+      "statVar": "Count_Person_SingleMotherFamilyHousehold_ForeignBorn_PlaceOfBirthSouthamerica_PovertyStatusDetermined",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Person_USCitizenByNaturalization_DateOfEntry2000OrLater_ForeignBorn_PlaceOfBirthEurope",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Person_Upto5Years_Female_AmericanIndianOrAlaskaNativeAlone",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Person_Upto5Years_Female_AsianAlone",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Student_Female_Black_PreKindergarten",
+      "matchCount": 2
+    },
+    {
+      "statVar": "Count_Student_Female_White_HighSchool",
       "matchCount": 2
     },
     {
@@ -261,11 +257,15 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthAsia",
+      "statVar": "MarginOfError_Count_Household_WithCashAssistanceInThePast12Months_ForeignBorn_PlaceOfBirthEurope",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Household_WithFoodStampsInThePast12Months_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
+      "statVar": "MarginOfError_Count_Household_WithCashAssistanceInThePast12Months_ForeignBorn_PlaceOfBirthMexico",
+      "matchCount": 2
+    },
+    {
+      "statVar": "MarginOfError_Count_Household_WithSSIInThePast12Months_ForeignBorn_PlaceOfBirthOceania",
       "matchCount": 2
     },
     {
@@ -273,19 +273,19 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_HousingUnit_ForeignBorn_0.3OrLessRatioToHouseholdIncome_PlaceOfBirthSouthernEasternEurope",
+      "statVar": "MarginOfError_Count_HousingUnit_ForeignBorn_0.3OrMoreRatioToHouseholdIncome_PlaceOfBirthEasternAsia",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_HousingUnit_ForeignBorn_0.3OrMoreRatioToHouseholdIncome_PlaceOfBirthCentralAmericaExceptMexico",
+      "statVar": "MarginOfError_Count_HousingUnit_ForeignBorn_WithTotal8OrMoreRooms_PlaceOfBirthOceania",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_HousingUnit_ForeignBorn_0.3OrMoreRatioToHouseholdIncome_PlaceOfBirthNorthernWesternEurope",
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_Female_DivorcedInThePast12Months_OccupiedHousingUnit_RenterOccupied_ResidesInHousingUnit",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_15OrMoreYears_Female_MarriedInThePast12Months_OccupiedHousingUnit_ResidesInHousingUnit",
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInAdultCorrectionalFacilities",
       "matchCount": 2
     },
     {
@@ -293,7 +293,11 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_15OrMoreYears_NotAUSCitizen_Male_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_NotAUSCitizen_Male_ForeignBorn_ResidesInNoninstitutionalizedGroupQuarters",
+      "matchCount": 2
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInAdultCorrectionalFacilities",
       "matchCount": 2
     },
     {
@@ -301,11 +305,15 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_15To50Years_Female_1.0OrLessRatioToPovertyLine",
+      "statVar": "MarginOfError_Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInNoninstitutionalizedGroupQuarters",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_3OrMoreYears_ForeignBorn_PlaceOfBirthCaribbean_EnrolledInSchool",
+      "statVar": "MarginOfError_Count_Person_15To19Years_Female_EverMarried_WhiteAloneNotHispanicOrLatino",
+      "matchCount": 2
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_25To44Years_ForeignBorn_PlaceOfBirthLatinAmerica",
       "matchCount": 2
     },
     {
@@ -313,7 +321,7 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_65OrMoreYears_Female_ResidesInMilitaryQuartersOrMilitaryShips",
+      "statVar": "MarginOfError_Count_Person_65To74Years_ForeignBorn_PlaceOfBirthSouthamerica",
       "matchCount": 2
     },
     {
@@ -321,7 +329,15 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_ForeignBorn_PlaceOfBirthEasternAsia",
+      "statVar": "MarginOfError_Count_Person_75To84Years_ForeignBorn_PlaceOfBirthNorthernWesternEurope",
+      "matchCount": 2
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_85OrMoreYears_ForeignBorn_PlaceOfBirthNorthamerica",
+      "matchCount": 2
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_9999OrLessInflationAdjustedUSDCurrentYear_WithEarnings_ForeignBorn_PlaceOfBirthNorthamerica_FullTimeYearRoundWorker",
       "matchCount": 2
     },
     {
@@ -329,39 +345,23 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_ElementarySchool_ForeignBorn_PlaceOfBirthNorthamerica",
+      "statVar": "MarginOfError_Count_Person_Employed_ForeignBorn_PlaceOfBirthAsia",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_Employed_ForeignBorn_SOCManagementBusinessScienceArtsOccupation_PlaceOfBirthSouthernEasternEurope",
+      "statVar": "MarginOfError_Count_Person_Employed_ForeignBorn_SOCProductionTransportationMaterialMovingOccupation_PlaceOfBirthEasternAsia",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_Employed_ForeignBorn_SOCNaturalResourcesConstructionMaintenanceOccupation_PlaceOfBirthCaribbean",
+      "statVar": "MarginOfError_Count_Person_Employed_ForeignBorn_SOCServiceOccupation_PlaceOfBirthSouthernEasternEurope",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_Employed_ForeignBorn_SOCNaturalResourcesConstructionMaintenanceOccupation_PlaceOfBirthLatinAmerica",
+      "statVar": "MarginOfError_Count_Person_Employed_NAICSAgricultureForestryFishingHuntingMiningQuarryingOilGasExtraction_ForeignBorn_PlaceOfBirthWesternAsia",
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_Employed_NAICSEducationalServicesHealthCareSocialAssistance_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
-      "matchCount": 2
-    },
-    {
-      "statVar": "MarginOfError_Count_Person_Employed_NAICSManufacturing_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
-      "matchCount": 2
-    },
-    {
-      "statVar": "MarginOfError_Count_Person_Employed_NAICSPublicAdministration_ForeignBorn_PlaceOfBirthMexico",
-      "matchCount": 2
-    },
-    {
-      "statVar": "MarginOfError_Count_Person_Employed_NAICSRetailTrade_ForeignBorn_PlaceOfBirthLatinAmerica",
-      "matchCount": 2
-    },
-    {
-      "statVar": "MarginOfError_Count_Person_Employed_NAICSTransportationWarehousingUtilities_ForeignBorn_PlaceOfBirthLatinAmerica",
+      "statVar": "MarginOfError_Count_Person_Employed_NAICSPublicAdministration_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
       "matchCount": 2
     },
     {
@@ -373,15 +373,19 @@
       "matchCount": 2
     },
     {
-      "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_PlaceOfBirthNorthamerica",
+      "statVar": "MarginOfError_Count_Person_EnrolledInNurserySchoolPreschool_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
+      "matchCount": 2
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_PlaceOfBirthEasternAsia",
+      "matchCount": 2
+    },
+    {
+      "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_PlaceOfBirthOceania",
       "matchCount": 2
     },
     {
       "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
-      "matchCount": 2
-    },
-    {
-      "statVar": "MarginOfError_Count_Person_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
       "matchCount": 2
     },
     {
@@ -394,10 +398,6 @@
     },
     {
       "statVar": "MarginOfError_Count_Person_ForeignBorn_PlaceOfBirthSouthEasternAsia_TwoOrMoreRaces",
-      "matchCount": 2
-    },
-    {
-      "statVar": "MarginOfError_Count_Person_LanguageOtherThanEnglishSpokenAtHome_ForeignBorn_PlaceOfBirthMexico",
       "matchCount": 2
     }
   ]

@@ -5,14 +5,6 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_15To24Years_DiseasesOfTheNervousSystem_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Death_25To34Years_CongenitalMalformationsDeformationsChromosomalAbnormalities_Female",
-      "matchCount": 1
-    },
-    {
       "statVar": "Count_Death_25To34Years_Female_AsianOrPacificIslander",
       "matchCount": 1
     },
@@ -21,7 +13,15 @@
       "matchCount": 1
     },
     {
+      "statVar": "Count_Death_35To44Years_CertainInfectiousParasiticDiseases_Female",
+      "matchCount": 1
+    },
+    {
       "statVar": "Count_Death_35To44Years_DiseasesOfTheGenitourinarySystem_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_45To54Years_EndocrineNutritionalMetabolicDiseases_Female",
       "matchCount": 1
     },
     {
@@ -33,15 +33,19 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_55To64Years_Female",
+      "statVar": "Count_Death_55To64Years_DiseasesOfTheGenitourinarySystem_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_55To64Years_Female_AsianOrPacificIslander",
+      "statVar": "Count_Death_55To64Years_Female_BlackOrAfricanAmerican",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_65To74Years_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female",
+      "statVar": "Count_Death_55To64Years_Female_White",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_65To74Years_DiseasesOfTheMusculoskeletalSystemConnectiveTissue_Female",
       "matchCount": 1
     },
     {
@@ -49,7 +53,11 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_65To74Years_MentalBehaviouralDisorders_Female",
+      "statVar": "Count_Death_75To84Years_CertainInfectiousParasiticDiseases_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_75To84Years_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female",
       "matchCount": 1
     },
     {
@@ -61,15 +69,19 @@
       "matchCount": 1
     },
     {
+      "statVar": "Count_Death_75To84Years_ExternalCauses_Female",
+      "matchCount": 1
+    },
+    {
       "statVar": "Count_Death_75To84Years_Neoplasms_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_85Years_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female",
+      "statVar": "Count_Death_85Years_AbnormalNotClassfied_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_85Years_ExternalCauses_Female",
+      "statVar": "Count_Death_85Years_DiseasesOfTheSkinSubcutaneousTissue_Female",
       "matchCount": 1
     },
     {
@@ -77,15 +89,15 @@
       "matchCount": 1
     },
     {
+      "statVar": "Count_Death_AbnormalNotClassfied_Female_AsianOrPacificIslander",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_AgeNotStated_Female_White",
+      "matchCount": 1
+    },
+    {
       "statVar": "Count_Death_CertainInfectiousParasiticDiseases_Female_White",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Death_CongenitalMalformationsDeformationsChromosomalAbnormalities_Female_BlackOrAfricanAmerican",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Death_DiseasesOfBloodAndBloodFormingOrgansAndImmuneDisorders_Female_AsianOrPacificIslander",
       "matchCount": 1
     },
     {
@@ -93,15 +105,7 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_DiseasesOfTheMusculoskeletalSystemConnectiveTissue_Female_White",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Death_DiseasesOfTheNervousSystem_Female_BlackOrAfricanAmerican",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Death_DiseasesOfTheRespiratorySystem_Female_AsianOrPacificIslander",
+      "statVar": "Count_Death_DiseasesOfTheRespiratorySystem_Female_White",
       "matchCount": 1
     },
     {
@@ -109,7 +113,27 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_Neoplasms_Female_White",
+      "statVar": "Count_Death_EndocrineNutritionalMetabolicDiseases_Female_AmericanIndianAndAlaskaNativeAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_ExternalCauses_Female_White",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_Neoplasms_Female_AmericanIndianAndAlaskaNativeAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_Upto14Years_Female_AsAFractionOf_Count_Person_Upto14Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_Upto1Years_AbnormalNotClassfied_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Death_Upto1Years_CertainInfectiousParasiticDiseases_Female",
       "matchCount": 1
     },
     {
@@ -117,19 +141,11 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_10To14Years_Female_BlackOrAfricanAmericanAlone",
+      "statVar": "Count_Death_Upto1Years_Female_BlackOrAfricanAmerican",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_10To14Years_Female_NativeHawaiianOrOtherPacificIslanderAlone",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_10To14Years_Female_WhiteAloneNotHispanicOrLatino",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_10Years_Female",
+      "statVar": "Count_Person_10To14Years_Female_TwoOrMoreRaces",
       "matchCount": 1
     },
     {
@@ -137,35 +153,19 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_12Years_Female",
+      "statVar": "Count_Person_15OrMoreYears_EnrolledInPublicCollegeOrGraduateSchool_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_15OrMoreYears_Female_MarriedInThePast12Months",
+      "statVar": "Count_Person_15OrMoreYears_Female_AsianAlone",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_15OrMoreYears_Female_TwoOrMoreRaces",
+      "statVar": "Count_Person_15To17Years_Female_BlackOrAfricanAmericanAlone",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInNursingFacilities",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_15OrMoreYears_USCitizenBornInTheUnitedStates_Female_Native_ResidesInInstitutionalizedGroupQuarters",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_15OrMoreYears_USCitizenBornInTheUnitedStates_Female_Native_ResidesInNursingFacilities",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_15To17Years_Female_SomeOtherRaceAlone",
+      "statVar": "Count_Person_15To17Years_Female_WhiteAloneNotHispanicOrLatino",
       "matchCount": 1
     },
     {
@@ -173,7 +173,7 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentBachelorsDegreeOrHigher_Female",
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_AsAFractionOf_Count_Person_15To50Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female",
       "matchCount": 1
     },
     {
@@ -181,7 +181,7 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_AmericanIndianOrAlaskaNativeAlone_AsAFractionOf_Count_Person_15To50Years_Female_AmericanIndianOrAlaskaNativeAlone",
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_2OrMoreRatioToPovertyLine_AsAFractionOf_Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine",
       "matchCount": 1
     },
     {
@@ -189,11 +189,7 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_BlackOrAfricanAmericanAlone_AsAFractionOf_Count_Person_15To50Years_Female_BlackOrAfricanAmericanAlone",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_PovertyStatusDetermined",
+      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_1To1.99RatioToPovertyLine",
       "matchCount": 1
     },
     {
@@ -209,14 +205,6 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_WhiteAlone",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine",
-      "matchCount": 1
-    },
-    {
       "statVar": "Count_Person_15To50Years_Female_WhiteAloneNotHispanicOrLatino",
       "matchCount": 1
     },
@@ -225,7 +213,7 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_16OrMoreYears_Female_MarriedInThePast12Months",
+      "statVar": "Count_Person_15Years_Female_BelowPovertyLevelInThePast12Months",
       "matchCount": 1
     },
     {
@@ -237,7 +225,19 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_16To50Years_BirthInThePast12Months_Female_Unmarried",
+      "statVar": "Count_Person_16To64Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18OrLessYears_Female_ResidesInMilitaryQuartersOrMilitaryShips",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To19Years_Female_AsianAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To19Years_Female_NotEnrolledInSchool",
       "matchCount": 1
     },
     {
@@ -245,11 +245,15 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_18To24Years_Female",
+      "statVar": "Count_Person_18To24Years_EducationalAttainmentBachelorsDegreeOrHigher_Female",
       "matchCount": 1
     },
     {
       "statVar": "Count_Person_18To24Years_Female_BelowPovertyLevelInThePast12Months",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_18To34Years_Civilian_Female",
       "matchCount": 1
     },
     {
@@ -258,14 +262,6 @@
     },
     {
       "statVar": "Count_Person_18To64Years_Female_HispanicOrLatino",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_19Years_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_1OrMoreYears_Female",
       "matchCount": 1
     },
     {
@@ -285,7 +281,7 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_21To64Years_RatioToPovertyLineUpto2_Female",
+      "statVar": "Count_Person_21To64Years_Female_NoHealthInsurance",
       "matchCount": 1
     },
     {
@@ -293,15 +289,19 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female",
+      "statVar": "Count_Person_25000To34999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_25OrMoreYears_Female_HispanicOrLatino",
+      "statVar": "Count_Person_25OrMoreYears_EducationalAttainment11ThGrade_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_25To29Years_Female_WhiteAloneNotHispanicOrLatino",
+      "statVar": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollege1OrMoreYearsNoDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_25To29Years_Female_SomeOtherRaceAlone",
       "matchCount": 1
     },
     {
@@ -309,27 +309,7 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_25To39Years_BachelorOfBusinessMajor_Female",
-      "matchCount": 1
-    },
-    {
       "statVar": "Count_Person_25To39Years_BachelorOfEducationMajor_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_25To64Years_EnrolledInEducationOrTraining_Female_AsAFractionOfCount_Person_25To64Years_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_28Years_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_29Years_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_30Years_Female",
       "matchCount": 1
     },
     {
@@ -337,35 +317,19 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_35To44Years_Female",
+      "statVar": "Count_Person_35To44Years_EducationalAttainmentSomeCollegeNoDegree_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_35To44Years_Female_BelowPovertyLevelInThePast12Months",
+      "statVar": "Count_Person_35To54Years_Civilian_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_35To44Years_Female_NativeHawaiianOrOtherPacificIslanderAlone",
+      "statVar": "Count_Person_40To64Years_BachelorOfScienceAndEngineeringRelatedMajor_Female",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_35To50Years_BirthInThePast12Months_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_40To64Years_BachelorOfScienceAndEngineeringMajor_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_41Years_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_45To49Years_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_45To54Years_Female_Divorced",
+      "statVar": "Count_Person_40To64Years_Female_BlackOrAfricanAmericanAlone",
       "matchCount": 1
     },
     {
@@ -373,23 +337,23 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_45To64Years_EducationalAttainmentSomeCollegeNoDegree_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_45To64Years_Female",
-      "matchCount": 1
-    },
-    {
       "statVar": "Count_Person_50To64Years_Female_HispanicOrLatino",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_54Years_Female",
+      "statVar": "Count_Person_55To64Years_Female_Separated",
       "matchCount": 1
     },
     {
-      "statVar": "Count_Person_55To64Years_Female_Separated",
+      "statVar": "Count_Person_55To64Years_Female_SomeOtherRaceAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_56Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_5To9Years_Female_AsianAlone",
       "matchCount": 1
     },
     {
@@ -398,6 +362,42 @@
     },
     {
       "statVar": "Count_Person_5To9Years_Female_WhiteAlone",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_60To64Years_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_BachelorOfScienceAndEngineeringMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_BachelorOfScienceAndEngineeringRelatedMajor_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_EducationalAttainmentAssociatesDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female_ResidesInCollegeOrUniversityStudentHousing",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female_ResidesInJuvenileFacilities",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65To69Years_InLaborForce_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65To74Years_Female_BlackOrAfricanAmericanAlone",
       "matchCount": 1
     }
   ]

@@ -5556,6 +5556,7 @@
     },
     {
       "subjectId": "wikidataId/Q66710",
+      "subjectName": "Daman and Diu",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5566,7 +5567,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/crpej11"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "wikidataId/Q66743",

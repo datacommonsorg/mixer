@@ -8,6 +8,7 @@
         "Fertility Rate of Person"
       ],
       "displayName": "Fertility Rate",
+      "definition": "mp=fertilityRate,pt=Person",
       "hasData": true
     },
     {
@@ -17,6 +18,7 @@
         "Gender Income Inequality of Person"
       ],
       "displayName": "Gender Income Inequality",
+      "definition": "mp=genderIncomeInequality,pt=Person",
       "hasData": true
     },
     {
@@ -26,6 +28,7 @@
         "Life Expectancy of Person"
       ],
       "displayName": "Life Expectancy",
+      "definition": "mp=lifeExpectancy,pt=Person",
       "hasData": true
     },
     {
@@ -35,6 +38,7 @@
         "Median Age of Person"
       ],
       "displayName": "Median Age",
+      "definition": "st=medianValue,mp=age,pt=Person",
       "hasData": true
     },
     {
@@ -44,6 +48,7 @@
         "Median Income of Person"
       ],
       "displayName": "Median Income",
+      "definition": "st=medianValue,mp=income,pt=Person",
       "hasData": true
     },
     {
@@ -53,6 +58,7 @@
         "Percent of Internet Users"
       ],
       "displayName": "Percent of Internet Users",
+      "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
       "hasData": true
     },
     {
@@ -62,6 +68,7 @@
         "Population Count of Person"
       ],
       "displayName": "Population",
+      "definition": "mp=count,pt=Person",
       "hasData": true
     },
     {
@@ -71,6 +78,7 @@
         "Population Change"
       ],
       "displayName": "Population Change",
+      "definition": "mp=incrementalCount,pt=Person",
       "hasData": true
     },
     {
@@ -80,6 +88,7 @@
         "Population Density"
       ],
       "displayName": "Population Density",
+      "definition": "md=area,mp=count,pt=Person",
       "hasData": true
     },
     {
@@ -89,6 +98,7 @@
         "Population Growth Rate"
       ],
       "displayName": "Population Growth Rate",
+      "definition": "st=growthRate,mp=count,pt=Person",
       "hasData": true
     }
   ],
@@ -104,18 +114,6 @@
       "specializedEntity": "Benefits Status",
       "displayName": "Person by Benefits Status",
       "descendentStatVarCount": 8
-    },
-    {
-      "id": "dc/g/Person_BirthEventStatus",
-      "specializedEntity": "Birth Event Status",
-      "displayName": "Person by Birth Event Status",
-      "descendentStatVarCount": 84
-    },
-    {
-      "id": "dc/g/Births",
-      "specializedEntity": "Births",
-      "displayName": "Births",
-      "descendentStatVarCount": 10
     },
     {
       "id": "dc/g/Person_ChildrenStatus",
@@ -160,6 +158,12 @@
       "descendentStatVarCount": 1826
     },
     {
+      "id": "dc/g/Household",
+      "specializedEntity": "Household",
+      "displayName": "Household",
+      "descendentStatVarCount": 1443
+    },
+    {
       "id": "dc/g/Person_HouseholdIncome",
       "specializedEntity": "Household Income",
       "displayName": "Person by Household Income",
@@ -173,13 +177,13 @@
     },
     {
       "id": "dc/g/ImmigrationAndCitizenship",
-      "specializedEntity": "Immigration And Citizenship",
+      "specializedEntity": "Immigration and Citizenship",
       "displayName": "Immigration and Citizenship",
       "descendentStatVarCount": 2297
     },
     {
       "id": "dc/g/Person_Income",
-      "specializedEntity": "Income",
+      "specializedEntity": "Income (Individual)",
       "displayName": "Person by Income",
       "descendentStatVarCount": 919
     },
@@ -214,6 +218,12 @@
       "descendentStatVarCount": 96
     },
     {
+      "id": "dc/g/MilitaryService",
+      "specializedEntity": "Military Service",
+      "displayName": "Military Service",
+      "descendentStatVarCount": 1383
+    },
+    {
       "id": "dc/g/Person_PlaceOfBirth",
       "specializedEntity": "Place of Birth",
       "displayName": "Person by Place of Birth",
@@ -238,7 +248,7 @@
       "descendentStatVarCount": 1783
     }
   ],
-  "descendentStatVarCount": 11833,
+  "descendentStatVarCount": 13285,
   "parentStatVarGroups": [
     "dc/g/Root"
   ]
