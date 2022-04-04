@@ -151,7 +151,7 @@ message StatVarGroupNode {
     //    "st=medianValue,pt=Person,mp=income,gender=Female"
     //
     // When statType is "measuredValue" (default), it is skipped.
-    optional string definition = 5;
+    string definition = 5;
 
     //==== Below are fields not in original cache.
     //==== and thus we start with a large tag number.
