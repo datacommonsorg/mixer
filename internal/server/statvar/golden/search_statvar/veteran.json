@@ -5,35 +5,35 @@
       "name": "Person With Age = 18 Years or More, Residence Type, Veteran Status = Veteran",
       "statVars": [
         {
-          "name": "18 Years or More, Civilian, Adult Correctional Facilities, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, Adult Correctional Facilities, Veteran",
           "dcid": "Count_Person_ResidesInAdultCorrectionalFacilities_Veteran"
         },
         {
-          "name": "18 Years or More, Civilian, College or University Student Housing, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, College or University Student Housing, Veteran",
           "dcid": "Count_Person_ResidesInCollegeOrUniversityStudentHousing_Veteran"
         },
         {
-          "name": "18 Years or More, Civilian, Group Quarters, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, Group Quarters, Veteran",
           "dcid": "Count_Person_ResidesInGroupQuarters_Veteran"
         },
         {
-          "name": "18 Years or More, Civilian, Institutionalized Group Quarters, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, Institutionalized Group Quarters, Veteran",
           "dcid": "Count_Person_ResidesInInstitutionalizedGroupQuarters_Veteran"
         },
         {
-          "name": "18 Years or More, Civilian, Juvenile Facilities, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, Juvenile Facilities, Veteran",
           "dcid": "Count_Person_ResidesInJuvenileFacilities_Veteran"
         },
         {
-          "name": "18 Years or More, Civilian, Military Quarters or Military Ships, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, Military Quarters or Military Ships, Veteran",
           "dcid": "Count_Person_ResidesInMilitaryQuartersOrMilitaryShips_Veteran"
         },
         {
-          "name": "18 Years or More, Civilian, Noninstitutionalized Group Quarters, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, Noninstitutionalized Group Quarters, Veteran",
           "dcid": "Count_Person_ResidesInNoninstitutionalizedGroupQuarters_Veteran"
         },
         {
-          "name": "18 Years or More, Civilian, Nursing Facilities, Veteran Population",
+          "name": "Population: 18 Years or More, Civilian, Nursing Facilities, Veteran",
           "dcid": "Count_Person_ResidesInNursingFacilities_Veteran"
         }
       ]
@@ -43,19 +43,19 @@
       "name": "Person With Establishment Ownership = Federal Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "name": "Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314) Population",
+          "name": "Population of Person: Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/k0fjmxcvd5fxc"
         },
         {
-          "name": "Wages Annual of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Annual of Person: Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/k1pnew6j8yb9c"
         },
         {
-          "name": "Wages Total of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Total of Person: Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/sck2lrgklrtn2"
         },
         {
-          "name": "Wages Weekly of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Weekly of Person: Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/h14ftx614lfd8"
         }
       ]
@@ -65,19 +65,19 @@
       "name": "Person With Establishment Ownership = Local Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "name": "Local Government Owned, Administration of Veterans' Affairs (NAICS/92314) Population",
+          "name": "Population of Person: Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/qvr0t9nl4n3d"
         },
         {
-          "name": "Wages Annual of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Annual of Person: Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/j9fceyp5p8txb"
         },
         {
-          "name": "Wages Total of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Total of Person: Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/nx35tdx6clg3c"
         },
         {
-          "name": "Wages Weekly of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Weekly of Person: Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/h3x52q27qwfr9"
         }
       ]
@@ -87,19 +87,19 @@
       "name": "Person With Establishment Ownership = State Government Owned, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "name": "State Government Owned, Administration of Veterans' Affairs (NAICS/92314) Population",
+          "name": "Population of Person: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/3z1ywj0s6tyv5"
         },
         {
-          "name": "Wages Annual of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Annual of Person: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/ncwt8d1pymhkd"
         },
         {
-          "name": "Wages Total of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Total of Person: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/b9yl1rr3tmgq"
         },
         {
-          "name": "Wages Weekly of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Weekly of Person: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/h104wrsjf6r25"
         }
       ]
@@ -109,15 +109,15 @@
       "name": "Establishment With Establishment Ownership, Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "name": "Count of Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Count of Establishment: Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/t80ypt0pxptr2"
         },
         {
-          "name": "Count of Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Count of Establishment: Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/nrvs8h9c2w06h"
         },
         {
-          "name": "Count of State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Count of Establishment: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/n6nwes3xywqj1"
         }
       ]
@@ -127,11 +127,11 @@
       "name": "Person With Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "name": "Administration of Veterans' Affairs (NAICS/92314) Population",
+          "name": "Population of Person: Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/qbcv7d5z7cmj3"
         },
         {
-          "name": "Wages Total of Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Wages Total of Person: Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/tnj1pcntfpgt9"
         }
       ]
@@ -141,11 +141,11 @@
       "name": "Person With Age = 18 - 34 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "name": "18 - 34 Years, Civilian, Female, Non Veteran Population",
+          "name": "Population: 18 - 34 Years, Civilian, Female, Non Veteran",
           "dcid": "dc/wbqkzh12hvf2d"
         },
         {
-          "name": "18 - 34 Years, Civilian, Female, Veteran Population",
+          "name": "Population: 18 - 34 Years, Civilian, Female, Veteran",
           "dcid": "dc/xjyn3f0sd1vw3"
         }
       ]
@@ -155,11 +155,11 @@
       "name": "Person With Age = 18 - 34 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "name": "18 - 34 Years, Civilian, Male, Non Veteran Population",
+          "name": "Population: 18 - 34 Years, Civilian, Male, Non Veteran",
           "dcid": "dc/6y0vz343k8xg4"
         },
         {
-          "name": "18 - 34 Years, Civilian, Male, Veteran Population",
+          "name": "Population: 18 - 34 Years, Civilian, Male, Veteran",
           "dcid": "dc/lcptt9lhzrnrg"
         }
       ]
@@ -169,11 +169,11 @@
       "name": "Person With Age = 35 - 54 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "name": "35 - 54 Years, Civilian, Female, Non Veteran Population",
+          "name": "Population: 35 - 54 Years, Civilian, Female, Non Veteran",
           "dcid": "dc/b4j5nwzfnmy74"
         },
         {
-          "name": "35 - 54 Years, Civilian, Female, Veteran Population",
+          "name": "Population: 35 - 54 Years, Civilian, Female, Veteran",
           "dcid": "dc/xq512kjx1rffc"
         }
       ]
@@ -183,11 +183,11 @@
       "name": "Person With Age = 35 - 54 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "name": "35 - 54 Years, Civilian, Male, Non Veteran Population",
+          "name": "Population: 35 - 54 Years, Civilian, Male, Non Veteran",
           "dcid": "dc/2t03fxjcljfz1"
         },
         {
-          "name": "35 - 54 Years, Civilian, Male, Veteran Population",
+          "name": "Population: 35 - 54 Years, Civilian, Male, Veteran",
           "dcid": "dc/g55znmzhk56mf"
         }
       ]
@@ -197,11 +197,11 @@
       "name": "Person With Age = 55 - 64 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "name": "55 - 64 Years, Civilian, Female, Non Veteran Population",
+          "name": "Population: 55 - 64 Years, Civilian, Female, Non Veteran",
           "dcid": "dc/05sysyfvd80d1"
         },
         {
-          "name": "55 - 64 Years, Civilian, Female, Veteran Population",
+          "name": "Population: 55 - 64 Years, Civilian, Female, Veteran",
           "dcid": "dc/t7wbgxy8gr3g9"
         }
       ]
@@ -211,11 +211,11 @@
       "name": "Person With Age = 55 - 64 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "name": "55 - 64 Years, Civilian, Male, Non Veteran Population",
+          "name": "Population: 55 - 64 Years, Civilian, Male, Non Veteran",
           "dcid": "dc/yq9ybc4506wkg"
         },
         {
-          "name": "55 - 64 Years, Civilian, Male, Veteran Population",
+          "name": "Population: 55 - 64 Years, Civilian, Male, Veteran",
           "dcid": "dc/fzbvjmd5gjgs4"
         }
       ]
@@ -225,11 +225,11 @@
       "name": "Person With Age = 65 - 74 Years, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "name": "65 - 74 Years, Civilian, Female, Non Veteran Population",
+          "name": "Population: 65 - 74 Years, Civilian, Female, Non Veteran",
           "dcid": "dc/387d93vqd9e29"
         },
         {
-          "name": "65 - 74 Years, Civilian, Female, Veteran Population",
+          "name": "Population: 65 - 74 Years, Civilian, Female, Veteran",
           "dcid": "dc/zv40llg0belh4"
         }
       ]
@@ -239,11 +239,11 @@
       "name": "Person With Age = 65 - 74 Years, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "name": "65 - 74 Years, Civilian, Male, Non Veteran Population",
+          "name": "Population: 65 - 74 Years, Civilian, Male, Non Veteran",
           "dcid": "dc/trqr1c92yv4tg"
         },
         {
-          "name": "65 - 74 Years, Civilian, Male, Veteran Population",
+          "name": "Population: 65 - 74 Years, Civilian, Male, Veteran",
           "dcid": "dc/z2v1n65cz84x9"
         }
       ]
@@ -253,11 +253,11 @@
       "name": "Person With Age = 75 Years or More, Gender = Female, Veteran Status",
       "statVars": [
         {
-          "name": "75 Years or More, Civilian, Female, Non Veteran Population",
+          "name": "Population: 75 Years or More, Civilian, Female, Non Veteran",
           "dcid": "dc/x9sfdmrzy7pvf"
         },
         {
-          "name": "75 Years or More, Civilian, Female, Veteran Population",
+          "name": "Population: 75 Years or More, Civilian, Female, Veteran",
           "dcid": "dc/0dxr5t9xv7cyf"
         }
       ]
@@ -267,11 +267,11 @@
       "name": "Person With Age = 75 Years or More, Gender = Male, Veteran Status",
       "statVars": [
         {
-          "name": "75 Years or More, Civilian, Male, Non Veteran Population",
+          "name": "Population: 75 Years or More, Civilian, Male, Non Veteran",
           "dcid": "dc/6hyhewzg8jdy8"
         },
         {
-          "name": "75 Years or More, Civilian, Male, Veteran Population",
+          "name": "Population: 75 Years or More, Civilian, Male, Veteran",
           "dcid": "dc/x90mvznfdcqwd"
         }
       ]
@@ -281,7 +281,7 @@
       "name": "Establishment With Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
         {
-          "name": "Count of Administration of Veterans' Affairs (NAICS/92314)",
+          "name": "Count of Establishment: Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/nre9cbcqqdrrc"
         }
       ]
@@ -291,7 +291,7 @@
       "name": "Person With Gender = Female, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "name": "Median Income of 18 Years or More, Civilian, Female, With Income, Non Veteran",
+          "name": "Median Income: 18 Years or More, Civilian, Female, With Income, Non Veteran",
           "dcid": "dc/vg392qes18p6c"
         }
       ]
@@ -301,7 +301,7 @@
       "name": "Person With Gender = Female, Veteran Status = Veteran",
       "statVars": [
         {
-          "name": "Median Income of 18 Years or More, Civilian, Female, With Income, Veteran",
+          "name": "Median Income: 18 Years or More, Civilian, Female, With Income, Veteran",
           "dcid": "dc/xg4bepzr1wb93"
         }
       ]
@@ -311,7 +311,7 @@
       "name": "Person With Gender = Male, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "name": "Median Income of 18 Years or More, Civilian, Male, With Income, Non Veteran",
+          "name": "Median Income: 18 Years or More, Civilian, Male, With Income, Non Veteran",
           "dcid": "dc/0r5m0xkb9d4g3"
         }
       ]
@@ -321,7 +321,7 @@
       "name": "Person With Gender = Male, Veteran Status = Veteran",
       "statVars": [
         {
-          "name": "Median Income of 18 Years or More, Civilian, Male, With Income, Veteran",
+          "name": "Median Income: 18 Years or More, Civilian, Male, With Income, Veteran",
           "dcid": "dc/21j845ny0gpl6"
         }
       ]
@@ -331,7 +331,7 @@
       "name": "Person With Military Status = Civilian, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "name": "Civilian, Non Veteran Population",
+          "name": "Population: Civilian, Non Veteran",
           "dcid": "Count_Person_Nonveteran"
         }
       ]
@@ -341,7 +341,7 @@
       "name": "Person With Military Status = Civilian, Veteran Status = Veteran",
       "statVars": [
         {
-          "name": "Civilian, Veteran Population",
+          "name": "Population: Civilian, Veteran",
           "dcid": "Count_Person_Veteran"
         }
       ]
@@ -351,7 +351,7 @@
       "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "name": "Civilian, Female, Non Veteran Population",
+          "name": "Population: Civilian, Female, Non Veteran",
           "dcid": "dc/9yqjetxt86ml1"
         }
       ]
@@ -361,7 +361,7 @@
       "name": "Person With Military Status = Civilian, Gender = Female, Veteran Status = Veteran",
       "statVars": [
         {
-          "name": "Civilian, Female, Veteran Population",
+          "name": "Population: Civilian, Female, Veteran",
           "dcid": "dc/l6vp0xtccglcb"
         }
       ]
@@ -371,7 +371,7 @@
       "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "name": "Civilian, Male, Non Veteran Population",
+          "name": "Population: Civilian, Male, Non Veteran",
           "dcid": "dc/9l2frty8q44rb"
         }
       ]
@@ -381,7 +381,7 @@
       "name": "Person With Military Status = Civilian, Gender = Male, Veteran Status = Veteran",
       "statVars": [
         {
-          "name": "Civilian, Male, Veteran Population",
+          "name": "Population: Civilian, Male, Veteran",
           "dcid": "dc/2qn8p1m6xx3d"
         }
       ]
@@ -391,7 +391,7 @@
       "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status = Non Veteran",
       "statVars": [
         {
-          "name": "Median Income of 18 Years or More, Civilian, With Income, Non Veteran",
+          "name": "Median Income: 18 Years or More, Civilian, With Income, Non Veteran",
           "dcid": "dc/mf0lyheydhfc1"
         }
       ]
@@ -401,7 +401,7 @@
       "name": "Person With Age = 18 Years or More, Military Status = Civilian, Income Status = With Income, Veteran Status = Veteran",
       "statVars": [
         {
-          "name": "Median Income of 18 Years or More, Civilian, With Income, Veteran",
+          "name": "Median Income: 18 Years or More, Civilian, With Income, Veteran",
           "dcid": "dc/ec13z1eh1d5d8"
         }
       ]

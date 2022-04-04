@@ -17,7 +17,8 @@
               "dcid": "geoId/3402938550",
               "name": "Lakewood"
             }
-          ]
+          ],
+          "maxValue": 36325
         },
         "City": {
           "placeCount": 8807,
@@ -34,7 +35,8 @@
               "dcid": "geoId/1714000",
               "name": "Chicago"
             }
-          ]
+          ],
+          "maxValue": 198419
         },
         "Country": {
           "placeCount": 1,
@@ -43,7 +45,9 @@
               "dcid": "country/USA",
               "name": "United States"
             }
-          ]
+          ],
+          "minValue": 8132863,
+          "maxValue": 11111207
         },
         "County": {
           "placeCount": 1,
@@ -52,7 +56,9 @@
               "dcid": "geoId/34007",
               "name": "Camden County"
             }
-          ]
+          ],
+          "minValue": 3301,
+          "maxValue": 4043
         },
         "State": {
           "placeCount": 50,
@@ -69,7 +75,9 @@
               "dcid": "geoId/12",
               "name": "Florida"
             }
-          ]
+          ],
+          "minValue": 9113,
+          "maxValue": 1265920
         }
       },
       "provenanceSummary": {
@@ -103,7 +111,8 @@
                       "dcid": "geoId/3402938550",
                       "name": "Lakewood"
                     }
-                  ]
+                  ],
+                  "maxValue": 36325
                 },
                 "City": {
                   "placeCount": 8807,
@@ -120,7 +129,8 @@
                       "dcid": "geoId/1714000",
                       "name": "Chicago"
                     }
-                  ]
+                  ],
+                  "maxValue": 198419
                 },
                 "County": {
                   "placeCount": 1,
@@ -129,7 +139,9 @@
                       "dcid": "geoId/34007",
                       "name": "Camden County"
                     }
-                  ]
+                  ],
+                  "minValue": 3301,
+                  "maxValue": 4043
                 },
                 "State": {
                   "placeCount": 50,
@@ -146,7 +158,9 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": 9113,
+                  "maxValue": 1265920
                 }
               },
               "maxValue": 1265920
@@ -175,7 +189,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 8132863,
+                  "maxValue": 11111207
                 }
               },
               "minValue": 8132863,

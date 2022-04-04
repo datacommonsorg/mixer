@@ -3,7 +3,7 @@
     "UnemploymentRate_Person": {
       "placeTypeSummary": {
         "City": {
-          "placeCount": 3055,
+          "placeCount": 3086,
           "topPlaces": [
             {
               "dcid": "geoId/3651000",
@@ -17,7 +17,8 @@
               "dcid": "geoId/1714000",
               "name": "Chicago"
             }
-          ]
+          ],
+          "maxValue": 100
         },
         "Country": {
           "placeCount": 33,
@@ -34,7 +35,9 @@
               "dcid": "country/TUR",
               "name": "Turkey"
             }
-          ]
+          ],
+          "minValue": 1.3,
+          "maxValue": 26.3
         },
         "County": {
           "placeCount": 3220,
@@ -51,7 +54,8 @@
               "dcid": "geoId/48201",
               "name": "Harris County"
             }
-          ]
+          ],
+          "maxValue": 58.7
         },
         "State": {
           "placeCount": 52,
@@ -68,7 +72,9 @@
               "dcid": "geoId/12",
               "name": "Florida"
             }
-          ]
+          ],
+          "minValue": 1.3,
+          "maxValue": 28.5
         }
       },
       "provenanceSummary": {
@@ -332,7 +338,9 @@
                       "dcid": "country/TUR",
                       "name": "Turkey"
                     }
-                  ]
+                  ],
+                  "minValue": 1.3,
+                  "maxValue": 26.3
                 }
               },
               "minValue": 1.3,

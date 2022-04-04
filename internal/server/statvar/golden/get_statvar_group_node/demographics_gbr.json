@@ -101,17 +101,6 @@
       "displayName": "Person by Benefits Status"
     },
     {
-      "id": "dc/g/Person_BirthEventStatus",
-      "specializedEntity": "Birth Event Status",
-      "displayName": "Person by Birth Event Status"
-    },
-    {
-      "id": "dc/g/Births",
-      "specializedEntity": "Births",
-      "displayName": "Births",
-      "descendentStatVarCount": 1
-    },
-    {
       "id": "dc/g/Person_ChildrenStatus",
       "specializedEntity": "Children Status",
       "displayName": "Person by Children Status"
@@ -148,6 +137,11 @@
       "displayName": "Person by Health Insurance"
     },
     {
+      "id": "dc/g/Household",
+      "specializedEntity": "Household",
+      "displayName": "Household"
+    },
+    {
       "id": "dc/g/Person_HouseholdIncome",
       "specializedEntity": "Household Income",
       "displayName": "Person by Household Income"
@@ -159,12 +153,12 @@
     },
     {
       "id": "dc/g/ImmigrationAndCitizenship",
-      "specializedEntity": "Immigration And Citizenship",
+      "specializedEntity": "Immigration and Citizenship",
       "displayName": "Immigration and Citizenship"
     },
     {
       "id": "dc/g/Person_Income",
-      "specializedEntity": "Income",
+      "specializedEntity": "Income (Individual)",
       "displayName": "Person by Income"
     },
     {
@@ -193,6 +187,11 @@
       "displayName": "Person by Member Status"
     },
     {
+      "id": "dc/g/MilitaryService",
+      "specializedEntity": "Military Service",
+      "displayName": "Military Service"
+    },
+    {
       "id": "dc/g/Person_PlaceOfBirth",
       "specializedEntity": "Place of Birth",
       "displayName": "Person by Place of Birth"
@@ -214,7 +213,7 @@
       "descendentStatVarCount": 3
     }
   ],
-  "descendentStatVarCount": 691,
+  "descendentStatVarCount": 686,
   "parentStatVarGroups": [
     "dc/g/Root"
   ]

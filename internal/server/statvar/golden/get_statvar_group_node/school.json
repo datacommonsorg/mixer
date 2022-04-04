@@ -7,7 +7,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 1st Grade"
       ],
-      "displayName": "1st Grade Population",
+      "displayName": "Population: 1st Grade",
       "hasData": true
     },
     {
@@ -16,7 +16,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 2nd Grade"
       ],
-      "displayName": "2nd Grade Population",
+      "displayName": "Population: 2nd Grade",
       "hasData": true
     },
     {
@@ -25,7 +25,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 3rd Grade"
       ],
-      "displayName": "3rd Grade Population",
+      "displayName": "Population: 3rd Grade",
       "hasData": true
     },
     {
@@ -34,7 +34,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 4th Grade"
       ],
-      "displayName": "4th Grade Population",
+      "displayName": "Population: 4th Grade",
       "hasData": true
     },
     {
@@ -43,7 +43,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 5th Grade"
       ],
-      "displayName": "5th Grade Population",
+      "displayName": "Population: 5th Grade",
       "hasData": true
     },
     {
@@ -52,7 +52,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 6th Grade"
       ],
-      "displayName": "6th Grade Population",
+      "displayName": "Population: 6th Grade",
       "hasData": true
     },
     {
@@ -61,7 +61,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 7th Grade"
       ],
-      "displayName": "7th Grade Population",
+      "displayName": "Population: 7th Grade",
       "hasData": true
     },
     {
@@ -70,7 +70,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is 8th Grade"
       ],
-      "displayName": "8th Grade Population",
+      "displayName": "Population: 8th Grade",
       "hasData": true
     },
     {
@@ -79,7 +79,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is Ged or Alternative Credential"
       ],
-      "displayName": "Ged or Alternative Credential Population",
+      "displayName": "Population: Ged or Alternative Credential",
       "hasData": true
     },
     {
@@ -88,7 +88,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is Kindergarten"
       ],
-      "displayName": "Kindergarten Population",
+      "displayName": "Population: Kindergarten",
       "hasData": true
     },
     {
@@ -97,7 +97,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is Nursery School"
       ],
-      "displayName": "Nursery School Population",
+      "displayName": "Population: Nursery School",
       "hasData": true
     },
     {
@@ -106,7 +106,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is Primary School"
       ],
-      "displayName": "PrimarySchool Population",
+      "displayName": "Population: PrimarySchool",
       "hasData": true
     },
     {
@@ -115,7 +115,7 @@
       "searchNames": [
         "Population Count of Person With Educational Attainment is Regular High School Diploma"
       ],
-      "displayName": "Regular High School Diploma Population",
+      "displayName": "Population: Regular High School Diploma",
       "hasData": true
     }
   ],
