@@ -154,14 +154,14 @@ func BuildStatVarSearchIndex(
 			continue
 		}
 		tokenString := svgData.AbsoluteName
-		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */, synonymMap)
+		searchIndex.Update(svgID, tokenString, tokenString, true /* isSvg */, synonymMap, "")
 		for _, svData := range svgData.ChildStatVars {
 			if _, ok := seenSV[svData.Id]; ok {
 				continue
 			}
 			seenSV[svData.Id] = struct{}{}
 			svTokenString := strings.Join(svData.SearchNames, " ")
-			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */, synonymMap)
+			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, false /* isSvg */, synonymMap, svData.Definition)
 		}
 	}
 	return searchIndex

@@ -1957,12 +1957,12 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
-        },
-        {
           "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/k0zg5lw8686z8"
+        },
+        {
+          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
         }
       ]
     },
@@ -1971,12 +1971,12 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
-        },
-        {
           "name": "Percentage: Male, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/frgn798mhwtw"
+        },
+        {
+          "name": "Population: Male, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
         }
       ]
     },

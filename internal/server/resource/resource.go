@@ -25,6 +25,18 @@ import (
 // PVs to a number greater than max number of PVs for a human curated stat var.
 const nonHumanCuratedNumPv = 30
 
+// prefixes for pv definitions for required properties
+var requiredPVDefPrefixes = map[string]struct{}{
+	"md=": {},
+	"mq=": {},
+	"st=": {},
+	"mp=": {},
+	"pt=": {},
+}
+
+// length of prefixes for required property definitions
+const requiredPVDefPrefixLength = 3
+
 // Cache holds cached data for the mixer server.
 type Cache struct {
 	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
@@ -76,13 +88,18 @@ type RankingInfo struct {
 
 // Update search index, given a stat var (group) node ID and string.
 func (index *SearchIndex) Update(
-	nodeID string, nodeString string, displayName string, isSvg bool, synonymMap map[string][]string) {
+	nodeID string, nodeString string, displayName string, isSvg bool, synonymMap map[string][]string, svDefinition string) {
 	processedNodeString := strings.ToLower(nodeString)
 	processedNodeString = strings.ReplaceAll(processedNodeString, ",", " ")
 	tokenList := strings.Fields(processedNodeString)
 	// Create a map of tokens/synonyms to the matching string from nodeString
 	tokens := map[string]string{}
-	tokens[strings.ToLower(nodeID)] = nodeID
+	// add nodeID as a token, but only set the matching string if nodeID is in
+	// the nodeString
+	tokens[strings.ToLower(nodeID)] = ""
+	if strings.Contains(nodeString, nodeID) {
+		tokens[strings.ToLower(nodeID)] = nodeID
+	}
 	for _, token := range tokenList {
 		// Do not process duplicate tokens
 		if _, ok := tokens[token]; ok {
@@ -104,13 +121,28 @@ func (index *SearchIndex) Update(
 			}
 		}
 	}
-	approxNumPv := len(strings.Split(nodeID, "_"))
-	if approxNumPv == 1 {
-		// when approxNumPv is 1, most likely a non human curated PV
-		approxNumPv = nonHumanCuratedNumPv
+	numPV := 0
+	if len(svDefinition) > 0 {
+		svDefParts := strings.Split(svDefinition, ",")
+		for _, defPart := range svDefParts {
+			// don't include required properties when counting PVs
+			if len(defPart) >= requiredPVDefPrefixLength {
+				prefix := defPart[0:requiredPVDefPrefixLength]
+				if _, ok := requiredPVDefPrefixes[prefix]; ok {
+					continue
+				}
+			}
+			numPV++
+		}
+	} else {
+		numPV = len(strings.Split(nodeID, "_"))
+		if numPV == 1 {
+			// when there is no "_" in the node ID, most likely a non human curated PV
+			numPV = nonHumanCuratedNumPv
+		}
 	}
 	// Ranking info is only dependent on a stat var (group).
-	index.Ranking[nodeID] = &RankingInfo{approxNumPv, displayName}
+	index.Ranking[nodeID] = &RankingInfo{numPV, displayName}
 	// Populate trie with each token
 	for token, match := range tokens {
 		currNode := index.RootTrieNode

@@ -151,12 +151,12 @@
           "dcid": "UnemploymentRate_Person_Upto25Years_Female"
         },
         {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
           "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
           "dcid": "dc/c17kzp0zrfkq9"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
         }
       ]
     },
@@ -205,6 +205,10 @@
           "dcid": "Count_Death_45To49Years_Female"
         },
         {
+          "name": "Count of Mortality Event: 5 - 19 Years, Female",
+          "dcid": "dc/rxg50w6jfgld4"
+        },
+        {
           "name": "Count of Mortality Event: 5 - 9 Years, Female",
           "dcid": "Count_Death_5To9Years_Female"
         },
@@ -237,20 +241,16 @@
           "dcid": "Count_Death_75To79Years_Female"
         },
         {
+          "name": "Count of Mortality Event: 75 Years or More, Female",
+          "dcid": "dc/sw43w4pbtgq4d"
+        },
+        {
           "name": "Count of Mortality Event: 80 Years or More, Female",
           "dcid": "Count_Death_80OrMoreYears_Female"
         },
         {
           "name": "Count of Mortality Event: Years 0, Female (As Fraction of Count Birth Event Live Birth Female)",
           "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 5 - 19 Years, Female",
-          "dcid": "dc/rxg50w6jfgld4"
-        },
-        {
-          "name": "Count of Mortality Event: 75 Years or More, Female",
-          "dcid": "dc/sw43w4pbtgq4d"
         }
       ]
     },
@@ -805,6 +805,10 @@
       "name": "Person With Educational Attainment, Gender = Female",
       "statVars": [
         {
+          "name": "Percentage: Bachelor Degree or Higher, Female",
+          "dcid": "dc/648tvf392fz0c"
+        },
+        {
           "name": "Population: 10th Grade, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
         },
@@ -827,6 +831,10 @@
         {
           "name": "Population: 9th Grade, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
+        },
+        {
+          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
         },
         {
           "name": "Population: Masters Degree, Female",
@@ -863,14 +871,6 @@
         {
           "name": "Population: 25 - 64 Years, Upper Secondary Education or Higher, Female (As Fraction of Count Person 25 To 64 Years Female)",
           "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrHigher_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        },
-        {
-          "name": "Percentage: Bachelor Degree or Higher, Female",
-          "dcid": "dc/648tvf392fz0c"
         }
       ]
     },
@@ -1799,6 +1799,10 @@
           "dcid": "Count_Person_18To24Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 18 - 24 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/420l03dlqgydf"
+        },
+        {
           "name": "Population: 18 - 24 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_18To24Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -1809,10 +1813,6 @@
         {
           "name": "Population: 18 - 24 Years, Some College No Degree, Female",
           "dcid": "Count_Person_18To24Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 18 - 24 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/420l03dlqgydf"
         }
       ]
     },
@@ -1925,6 +1925,10 @@
           "dcid": "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 25 - 34 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/e4f1hdtwxzkqh"
+        },
+        {
           "name": "Population: 25 - 34 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_25To34Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -1935,10 +1939,6 @@
         {
           "name": "Population: 25 - 34 Years, Some College No Degree, Female",
           "dcid": "Count_Person_25To34Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 25 - 34 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/e4f1hdtwxzkqh"
         }
       ]
     },
@@ -2051,6 +2051,10 @@
           "dcid": "Count_Person_35To44Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 35 - 44 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/dw4g4grh9ncyb"
+        },
+        {
           "name": "Population: 35 - 44 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_35To44Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -2061,10 +2065,6 @@
         {
           "name": "Population: 35 - 44 Years, Some College No Degree, Female",
           "dcid": "Count_Person_35To44Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 35 - 44 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/dw4g4grh9ncyb"
         }
       ]
     },
@@ -2093,6 +2093,10 @@
           "dcid": "Count_Person_45To64Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 45 - 64 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/t60npr95xn3m"
+        },
+        {
           "name": "Population: 45 - 64 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_45To64Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -2103,10 +2107,6 @@
         {
           "name": "Population: 45 - 64 Years, Some College No Degree, Female",
           "dcid": "Count_Person_45To64Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 45 - 64 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/t60npr95xn3m"
         }
       ]
     },
@@ -4009,14 +4009,6 @@
           "dcid": "LifeExpectancy_Person_Female"
         },
         {
-          "name": "Population: Female",
-          "dcid": "Count_Person_Female"
-        },
-        {
-          "name": "Unemployment Rate: Female",
-          "dcid": "UnemploymentRate_Person_Female"
-        },
-        {
           "name": "Mean Wages Daily: Female",
           "dcid": "Mean_WagesDaily_Worker_Female"
         },
@@ -4029,12 +4021,20 @@
           "dcid": "Median_Age_Person_Female"
         },
         {
-          "name": "Population: With Disability, Female",
-          "dcid": "Count_Person_WithDisability_Female"
-        },
-        {
           "name": "Median Income: Female",
           "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+        },
+        {
+          "name": "Population: Female",
+          "dcid": "Count_Person_Female"
+        },
+        {
+          "name": "Unemployment Rate: Female",
+          "dcid": "UnemploymentRate_Person_Female"
+        },
+        {
+          "name": "Population: With Disability, Female",
+          "dcid": "Count_Person_WithDisability_Female"
         }
       ]
     },
@@ -4135,6 +4135,10 @@
           "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 65 Years or More, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/8vf1257xef292"
+        },
+        {
           "name": "Population: 65 Years or More, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -4145,10 +4149,6 @@
         {
           "name": "Population: 65 Years or More, Some College No Degree, Female",
           "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 65 Years or More, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/8vf1257xef292"
         }
       ]
     },
@@ -4423,16 +4423,16 @@
           "dcid": "dc/ths2sxts0989g"
         },
         {
+          "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+          "dcid": "dc/5n2xf0xr930e7"
+        },
+        {
           "name": "Count of Establishment: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
           "dcid": "dc/1mzj1f5670hc"
         },
         {
           "name": "Shipments or Receipts of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239), With Payroll",
           "dcid": "dc/6qkv04wn94c53"
-        },
-        {
-          "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/5n2xf0xr930e7"
         }
       ]
     },
@@ -4440,10 +4440,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/42433",
       "name": "Establishment With Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/kxtbk13pgnvn2"
-        },
         {
           "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
           "dcid": "dc/01r1n7ysnjsed"
@@ -4457,12 +4453,16 @@
           "dcid": "dc/xre2cx37zmkef"
         },
         {
-          "name": "Sales of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433), With Payroll",
-          "dcid": "dc/6bgpdj3k5mrm3"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
           "dcid": "dc/c5kh0lky2lwff"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/kxtbk13pgnvn2"
+        },
+        {
+          "name": "Sales of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433), With Payroll",
+          "dcid": "dc/6bgpdj3k5mrm3"
         }
       ]
     },
@@ -4470,10 +4470,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315232",
       "name": "Establishment With Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/v47j59zsfcw34"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
           "dcid": "dc/dwz0wj5cn1vm2"
@@ -4487,12 +4483,16 @@
           "dcid": "dc/wdydnygy2vhh2"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232), With Payroll",
-          "dcid": "dc/fks84eehqmew7"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
           "dcid": "dc/byw105g97113f"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+          "dcid": "dc/v47j59zsfcw34"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232), With Payroll",
+          "dcid": "dc/fks84eehqmew7"
         }
       ]
     },
@@ -4500,10 +4500,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315233",
       "name": "Establishment With Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/k0l048qhs341g"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
           "dcid": "dc/0t78emz66c4p6"
@@ -4517,12 +4513,16 @@
           "dcid": "dc/hjrs2ww3j659"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233), With Payroll",
-          "dcid": "dc/6jy082t6fmvvh"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
           "dcid": "dc/dpk05r5c2z3wc"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+          "dcid": "dc/k0l048qhs341g"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233), With Payroll",
+          "dcid": "dc/6jy082t6fmvvh"
         }
       ]
     },
@@ -4530,10 +4530,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315231",
       "name": "Establishment With Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/nqjrr9wt8cx9d"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
           "dcid": "dc/72h0vycgkyxf5"
@@ -4547,12 +4543,16 @@
           "dcid": "dc/zsclgn1trelq"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231), With Payroll",
-          "dcid": "dc/pp7mk3zze5x33"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
           "dcid": "dc/y52nntfc8gc3f"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+          "dcid": "dc/nqjrr9wt8cx9d"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231), With Payroll",
+          "dcid": "dc/pp7mk3zze5x33"
         }
       ]
     },
@@ -4560,10 +4560,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315234",
       "name": "Establishment With Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/zl2fwf5mmb0j9"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
           "dcid": "dc/dwjnvlzlk9021"
@@ -4577,12 +4573,16 @@
           "dcid": "dc/sf1c454nyqxdf"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234), With Payroll",
-          "dcid": "dc/6llg4c0hm0518"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
           "dcid": "dc/cdjv5jt6gk8k6"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+          "dcid": "dc/zl2fwf5mmb0j9"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234), With Payroll",
+          "dcid": "dc/6llg4c0hm0518"
         }
       ]
     },
@@ -4590,10 +4590,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/44812",
       "name": "Establishment With Industry = Women's Clothing Stores (NAICS/44812)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/tnyv8edhmflg"
-        },
         {
           "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
           "dcid": "dc/485v7jl4qlhxb"
@@ -4607,12 +4603,16 @@
           "dcid": "dc/dbr7jyndp0151"
         },
         {
-          "name": "Sales of Establishment: Women's Clothing Stores (NAICS/44812), With Payroll",
-          "dcid": "dc/tb8gcxernde19"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's Clothing Stores (NAICS/44812)",
           "dcid": "dc/g5nryvhz7vl44"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+          "dcid": "dc/tnyv8edhmflg"
+        },
+        {
+          "name": "Sales of Establishment: Women's Clothing Stores (NAICS/44812), With Payroll",
+          "dcid": "dc/tb8gcxernde19"
         }
       ]
     },
@@ -4620,10 +4620,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/316992",
       "name": "Establishment With Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/9dlkhye638d1d"
-        },
         {
           "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
           "dcid": "dc/6vd8mtqfmnlbb"
@@ -4637,12 +4633,16 @@
           "dcid": "dc/f3qd32v7d0w9"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992), With Payroll",
-          "dcid": "dc/v8p0zbh29kv98"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
           "dcid": "dc/3nsjpbp090gr9"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+          "dcid": "dc/9dlkhye638d1d"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992), With Payroll",
+          "dcid": "dc/v8p0zbh29kv98"
         }
       ]
     },
@@ -4650,10 +4650,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/316214",
       "name": "Establishment With Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/kd5z73cqycm6c"
-        },
         {
           "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
           "dcid": "dc/g3q1g5ypdk2k"
@@ -4667,12 +4663,16 @@
           "dcid": "dc/r47bzjgblx7z4"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214), With Payroll",
-          "dcid": "dc/4xrh95yzw99w3"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
           "dcid": "dc/ye2wj5ggx5n34"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+          "dcid": "dc/kd5z73cqycm6c"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214), With Payroll",
+          "dcid": "dc/4xrh95yzw99w3"
         }
       ]
     },
@@ -4680,10 +4680,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315212",
       "name": "Establishment With Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/4d2pt897sqb09"
-        },
         {
           "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
           "dcid": "dc/0bkbm4x0nvceb"
@@ -4697,12 +4693,16 @@
           "dcid": "dc/p5sgbrbdkefl2"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212), With Payroll",
-          "dcid": "dc/mcjnbmc4tk28d"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
           "dcid": "dc/fgn46kw0vn108"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+          "dcid": "dc/4d2pt897sqb09"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212), With Payroll",
+          "dcid": "dc/mcjnbmc4tk28d"
         }
       ]
     },
@@ -4710,10 +4710,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/31524",
       "name": "Establishment With Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/e351bke5y8c75"
-        },
         {
           "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
           "dcid": "dc/1164zg41pdp4f"
@@ -4727,12 +4723,16 @@
           "dcid": "dc/yhdq1xdy3x0s9"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524), With Payroll",
-          "dcid": "dc/ne63ywxmvk1lg"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
           "dcid": "dc/4pm87j02ql96c"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+          "dcid": "dc/e351bke5y8c75"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524), With Payroll",
+          "dcid": "dc/ne63ywxmvk1lg"
         }
       ]
     },
@@ -5383,10 +5383,6 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Gender, Female",
           "dcid": "Offender_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
         },
@@ -5397,6 +5393,10 @@
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
         }
       ]
     },
@@ -5404,6 +5404,10 @@
       "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female",
       "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
       "statVars": [
+        {
+          "name": "Median Income: High School Graduate Includes Equivalency, Female",
+          "dcid": "dc/syxm9nnsl3wcc"
+        },
         {
           "name": "Population: High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
@@ -5415,10 +5419,6 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, High School Graduate Includes Equivalency, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: High School Graduate Includes Equivalency, Female",
-          "dcid": "dc/syxm9nnsl3wcc"
         }
       ]
     },
@@ -5691,20 +5691,20 @@
       "name": "Person With Gender = Female, Place of Residence Classification = Rural",
       "statVars": [
         {
-          "name": "Population: Female, Rural",
-          "dcid": "Count_Person_Rural_Female"
-        },
-        {
-          "name": "Unemployment Rate: Female, Rural",
-          "dcid": "UnemploymentRate_Person_Rural_Female"
-        },
-        {
           "name": "Mean Wages Daily: Female, Rural",
           "dcid": "Mean_WagesDaily_Worker_Rural_Female"
         },
         {
           "name": "Mean Wages Monthly: Female, Rural",
           "dcid": "Mean_WagesMonthly_Worker_Rural_Female"
+        },
+        {
+          "name": "Population: Female, Rural",
+          "dcid": "Count_Person_Rural_Female"
+        },
+        {
+          "name": "Unemployment Rate: Female, Rural",
+          "dcid": "UnemploymentRate_Person_Rural_Female"
         }
       ]
     },
@@ -5713,20 +5713,20 @@
       "name": "Person With Gender = Female, Place of Residence Classification = Urban",
       "statVars": [
         {
-          "name": "Population: Female, Urban",
-          "dcid": "Count_Person_Urban_Female"
-        },
-        {
-          "name": "Unemployment Rate: Female, Urban",
-          "dcid": "UnemploymentRate_Person_Urban_Female"
-        },
-        {
           "name": "Mean Wages Daily: Female, Urban",
           "dcid": "Mean_WagesDaily_Worker_Urban_Female"
         },
         {
           "name": "Mean Wages Monthly: Female, Urban",
           "dcid": "Mean_WagesMonthly_Worker_Urban_Female"
+        },
+        {
+          "name": "Population: Female, Urban",
+          "dcid": "Count_Person_Urban_Female"
+        },
+        {
+          "name": "Unemployment Rate: Female, Urban",
+          "dcid": "UnemploymentRate_Person_Urban_Female"
         }
       ]
     },
@@ -5801,6 +5801,10 @@
       "name": "Hate Crime Incidents With Crime Type = Destruction or Damage or Vandalism of Property, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Unknown Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
@@ -5811,10 +5815,6 @@
         {
           "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Asian Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceAsianAlone_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
@@ -5823,12 +5823,12 @@
       "name": "Person With Age = 21 - 65 Years, Gender = Female, Preventive Health = Cervical Cancer Screening",
       "statVars": [
         {
-          "name": "Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
-          "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
-        },
-        {
           "name": "Lower Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
           "dcid": "LowerConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+        },
+        {
+          "name": "Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
+          "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
         },
         {
           "name": "Sample Size, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
@@ -5845,12 +5845,12 @@
       "name": "Person With Age = 65 Years or More, Gender = Female, Preventive Health = Core Preventive Services",
       "statVars": [
         {
-          "name": "Prevalence: 65 Years or More, Female, Core Preventive Services",
-          "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-        },
-        {
           "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
           "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
+        },
+        {
+          "name": "Prevalence: 65 Years or More, Female, Core Preventive Services",
+          "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         },
         {
           "name": "Sample Size, Prevalence of 65 Years or More, Female, Core Preventive Services",
@@ -6241,16 +6241,16 @@
       "name": "Mortality Event With Gender = Female",
       "statVars": [
         {
+          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
+        },
+        {
           "name": "Count of Mortality Event: Female",
           "dcid": "Count_Death_Female"
         },
         {
           "name": "Count of Mortality Event: Female (As Fraction of Count Person Female)",
           "dcid": "Count_Death_Female_AsAFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
         }
       ]
     },
@@ -6281,12 +6281,12 @@
           "dcid": "Count_Person_15OrMoreYears_Female"
         },
         {
-          "name": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
-          "dcid": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce"
-        },
-        {
           "name": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
           "dcid": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
+          "dcid": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce"
         }
       ]
     },
@@ -6295,16 +6295,16 @@
       "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
       "statVars": [
         {
+          "name": "Median Income: Bachelors Degree, Female",
+          "dcid": "dc/ys49z0lqtj9g3"
+        },
+        {
           "name": "Population: Bachelors Degree, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
         },
         {
           "name": "Median Earnings: 25 Years or More, Bachelors Degree, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentBachelorsDegree_Female_WithEarnings"
-        },
-        {
-          "name": "Median Income: Bachelors Degree, Female",
-          "dcid": "dc/ys49z0lqtj9g3"
         }
       ]
     },
@@ -6313,16 +6313,16 @@
       "name": "Person With Educational Attainment = Graduate or Professional Degree, Gender = Female",
       "statVars": [
         {
+          "name": "Median Income: Graduate or Professional Degree, Female",
+          "dcid": "dc/zqjml3mcrpsgd"
+        },
+        {
           "name": "Median Earnings: 25 Years or More, Graduate or Professional Degree, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentGraduateOrProfessionalDegree_Female_WithEarnings"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Graduate or Professional Degree, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentGraduateOrProfessionalDegree_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: Graduate or Professional Degree, Female",
-          "dcid": "dc/zqjml3mcrpsgd"
         }
       ]
     },
@@ -6331,16 +6331,16 @@
       "name": "Person With Educational Attainment = Less Than High School Graduate, Gender = Female",
       "statVars": [
         {
+          "name": "Median Income: Less Than High School Graduate, Female",
+          "dcid": "dc/8qkkf1vx7cmh"
+        },
+        {
           "name": "Median Earnings: 25 Years or More, Less Than High School Graduate, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentLessThanHighSchoolGraduate_Female_WithEarnings"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Less Than High School Graduate, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentLessThanHighSchoolGraduate_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: Less Than High School Graduate, Female",
-          "dcid": "dc/8qkkf1vx7cmh"
         }
       ]
     },
@@ -6349,16 +6349,16 @@
       "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female",
       "statVars": [
         {
+          "name": "Median Income: Some College or Associates Degree, Female",
+          "dcid": "dc/hep54bd4vbysh"
+        },
+        {
           "name": "Median Earnings: 25 Years or More, Some College or Associates Degree, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_WithEarnings"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Some College or Associates Degree, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: Some College or Associates Degree, Female",
-          "dcid": "dc/hep54bd4vbysh"
         }
       ]
     },
@@ -6421,16 +6421,16 @@
       "name": "Person With Gender = Female, Medical Condition",
       "statVars": [
         {
+          "name": "Prevalence: Female, Diabetes",
+          "dcid": "dc/nh3s4skee5483"
+        },
+        {
           "name": "Population: 4 Years or Less, Female, Severe Wasting (As Fraction of Count Person Upto 4 Years Female)",
           "dcid": "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female"
         },
         {
           "name": "Population: 4 Years or Less, Female, Wasting (As Fraction of Count Person Upto 4 Years Female)",
           "dcid": "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
-        },
-        {
-          "name": "Prevalence: Female, Diabetes",
-          "dcid": "dc/nh3s4skee5483"
         }
       ]
     },
@@ -6439,12 +6439,12 @@
       "name": "Person With Gender = Female, Nativity = Foreign Born",
       "statVars": [
         {
-          "name": "Population: Female, Foreign Born",
-          "dcid": "Count_Person_Female_ForeignBorn"
-        },
-        {
           "name": "Median Age: Female, Foreign Born",
           "dcid": "Median_Age_Person_Female_ForeignBorn"
+        },
+        {
+          "name": "Population: Female, Foreign Born",
+          "dcid": "Count_Person_Female_ForeignBorn"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Foreign Born",
@@ -6457,12 +6457,12 @@
       "name": "Person With Gender = Female, Race = American Indian or Alaska Native Alone",
       "statVars": [
         {
-          "name": "Population: Female, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
-        },
-        {
           "name": "Median Age: Female, American Indian or Alaska Native Alone",
           "dcid": "Median_Age_Person_Female_AmericanIndianOrAlaskaNativeAlone"
+        },
+        {
+          "name": "Population: Female, American Indian or Alaska Native Alone",
+          "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, American Indian or Alaska Native Alone",
@@ -6475,12 +6475,12 @@
       "name": "Person With Gender = Female, Race = Asian Alone",
       "statVars": [
         {
-          "name": "Population: Female, Asian Alone",
-          "dcid": "Count_Person_Female_AsianAlone"
-        },
-        {
           "name": "Median Age: Female, Asian Alone",
           "dcid": "Median_Age_Person_Female_AsianAlone"
+        },
+        {
+          "name": "Population: Female, Asian Alone",
+          "dcid": "Count_Person_Female_AsianAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Asian Alone",
@@ -6493,12 +6493,12 @@
       "name": "Person With Gender = Female, Race = Black or African American Alone",
       "statVars": [
         {
-          "name": "Population: Female, Black or African American Alone",
-          "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
-        },
-        {
           "name": "Median Age: Female, Black or African American Alone",
           "dcid": "Median_Age_Person_Female_BlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Population: Female, Black or African American Alone",
+          "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Black or African American Alone",
@@ -6511,12 +6511,12 @@
       "name": "Person With Gender = Female, Race = Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Female, Hispanic or Latino",
-          "dcid": "Count_Person_Female_HispanicOrLatino"
-        },
-        {
           "name": "Median Age: Female, Hispanic or Latino",
           "dcid": "Median_Age_Person_Female_HispanicOrLatino"
+        },
+        {
+          "name": "Population: Female, Hispanic or Latino",
+          "dcid": "Count_Person_Female_HispanicOrLatino"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Hispanic or Latino",
@@ -6529,12 +6529,12 @@
       "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
       "statVars": [
         {
-          "name": "Population: Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
           "name": "Median Age: Female, Native Hawaiian or Other Pacific Islander Alone",
           "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Population: Female, Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
@@ -6547,12 +6547,12 @@
       "name": "Person With Gender = Female, Race = Two or More Races",
       "statVars": [
         {
-          "name": "Population: Female, Two or More Races",
-          "dcid": "Count_Person_Female_TwoOrMoreRaces"
-        },
-        {
           "name": "Median Age: Female, Two or More Races",
           "dcid": "Median_Age_Person_Female_TwoOrMoreRaces"
+        },
+        {
+          "name": "Population: Female, Two or More Races",
+          "dcid": "Count_Person_Female_TwoOrMoreRaces"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Two or More Races",
@@ -6565,12 +6565,12 @@
       "name": "Person With Gender = Female, Race = White Alone",
       "statVars": [
         {
-          "name": "Population: Female, White Alone",
-          "dcid": "Count_Person_Female_WhiteAlone"
-        },
-        {
           "name": "Median Age: Female, White Alone",
           "dcid": "Median_Age_Person_Female_WhiteAlone"
+        },
+        {
+          "name": "Population: Female, White Alone",
+          "dcid": "Count_Person_Female_WhiteAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, White Alone",
@@ -6583,16 +6583,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Aggravated Assault, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Aggravated Assault, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Aggravated Assault, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
         }
       ]
     },
@@ -6601,16 +6601,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = All Other Larceny, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, All Other Larceny, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, All Other Larceny, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, All Other Larceny, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, All Other Larceny, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
         }
       ]
     },
@@ -6619,16 +6619,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Arson, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Arson, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Arson, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Arson, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Arson, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
         }
       ]
     },
@@ -6637,16 +6637,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Burglary, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Burglary, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Burglary, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Burglary, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Burglary, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
         }
       ]
     },
@@ -6655,16 +6655,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Counterfeiting or Forgery, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Counterfeiting or Forgery, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Counterfeiting or Forgery, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Counterfeiting or Forgery, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Counterfeiting or Forgery, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
         }
       ]
     },
@@ -6673,16 +6673,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Credit Card or Automated Teller Machine Fraud, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Credit Card or Automated Teller Machine Fraud, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Credit Card or Automated Teller Machine Fraud, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Credit Card or Automated Teller Machine Fraud, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Credit Card or Automated Teller Machine Fraud, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
         }
       ]
     },
@@ -6691,16 +6691,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Person, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Crime Against Person, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Crime Against Person, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Crime Against Person, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Crime Against Person, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
         }
       ]
     },
@@ -6709,16 +6709,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Property, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Crime Against Property, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Crime Against Property, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Crime Against Property, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Crime Against Property, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
         }
       ]
     },
@@ -6727,16 +6727,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Society, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Crime Against Society, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Crime Against Society, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Crime Against Society, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Crime Against Society, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
         }
       ]
     },
@@ -6745,16 +6745,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Destruction or Damage or Vandalism of Property, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Destruction or Damage or Vandalism of Property, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Destruction or Damage or Vandalism of Property, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
         }
       ]
     },
@@ -6763,16 +6763,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Drug Equipment Violations, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Drug Equipment Violations, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Drug Equipment Violations, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Drug Equipment Violations, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Drug Equipment Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
         }
       ]
     },
@@ -6781,16 +6781,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Drug or Narcotic Violations, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Drug or Narcotic Violations, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Drug or Narcotic Violations, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Drug or Narcotic Violations, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Drug or Narcotic Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
         }
       ]
     },
@@ -6799,16 +6799,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = False Pretense or Swindle or Confidence Game, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, False Pretense or Swindle or Confidence Game, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, False Pretense or Swindle or Confidence Game, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
         }
       ]
     },
@@ -6817,16 +6817,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Fondling, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Fondling, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Fondling, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Fondling, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Fondling, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
         }
       ]
     },
@@ -6835,16 +6835,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Impersonation, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Impersonation, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Impersonation, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Impersonation, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Impersonation, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
         }
       ]
     },
@@ -6853,16 +6853,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Intimidation, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Intimidation, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Intimidation, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
         }
       ]
     },
@@ -6871,16 +6871,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Kidnapping or Abduction, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Kidnapping or Abduction, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Kidnapping or Abduction, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Kidnapping or Abduction, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Kidnapping or Abduction, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
         }
       ]
     },
@@ -6889,16 +6889,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Motor Vehicle Theft, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Motor Vehicle Theft, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Motor Vehicle Theft, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Motor Vehicle Theft, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Motor Vehicle Theft, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
         }
       ]
     },
@@ -6907,16 +6907,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Murder And Non Negligent Manslaughter, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Murder And Non Negligent Manslaughter, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Murder And Non Negligent Manslaughter, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Murder And Non Negligent Manslaughter, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Murder And Non Negligent Manslaughter, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
         }
       ]
     },
@@ -6925,16 +6925,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Not Specified, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Not Specified, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Not Specified, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Not Specified, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Not Specified, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
         }
       ]
     },
@@ -6943,16 +6943,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Pornography or Obscene Material, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Pornography or Obscene Material, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Pornography or Obscene Material, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Pornography or Obscene Material, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Pornography or Obscene Material, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
         }
       ]
     },
@@ -6961,16 +6961,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Rape, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Rape, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Rape, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Rape, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Rape, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
         }
       ]
     },
@@ -6979,16 +6979,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Robbery, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Robbery, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Robbery, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Robbery, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Robbery, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
         }
       ]
     },
@@ -6997,16 +6997,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Sexual Assault With An Object, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Sexual Assault With An Object, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Sexual Assault With An Object, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Sexual Assault With An Object, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Sexual Assault With An Object, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
         }
       ]
     },
@@ -7015,16 +7015,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Shoplifting, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Shoplifting, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Shoplifting, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Shoplifting, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Shoplifting, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
         }
       ]
     },
@@ -7033,16 +7033,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Simple Assault, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Simple Assault, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Simple Assault, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
         }
       ]
     },
@@ -7051,16 +7051,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Theft From Building, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Theft From Building, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Theft From Building, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Theft From Building, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Theft From Building, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
         }
       ]
     },
@@ -7069,16 +7069,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Theft From Motor Vehicle, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Theft From Motor Vehicle, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Theft From Motor Vehicle, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Theft From Motor Vehicle, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Theft From Motor Vehicle, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
         }
       ]
     },
@@ -7087,16 +7087,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Weapon Law Violations, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Weapon Law Violations, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Weapon Law Violations, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Weapon Law Violations, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Weapon Law Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
         }
       ]
     },
@@ -7105,16 +7105,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Wire Fraud, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Wire Fraud, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Wire Fraud, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Wire Fraud, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Wire Fraud, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
         }
       ]
     },
@@ -7123,16 +7123,16 @@
       "name": "Hate Crime Incidents With Crime Type = False Pretense or Swindle or Confidence Game, Offender Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Unknown Ethnicity, Unknown Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         },
         {
           "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
@@ -7235,12 +7235,12 @@
           "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female"
         },
         {
-          "name": "Population: 15 - 19 Years, Birth in The Past 12 Months, Female, Unmarried",
-          "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female_Unmarried"
-        },
-        {
           "name": "Population: 15 - 19 Years, Birth in The Past 12 Months, Female (As Fraction of Count Person 15 To 19 Years Female)",
           "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Birth in The Past 12 Months, Female, Unmarried",
+          "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female_Unmarried"
         }
       ]
     },
@@ -7379,12 +7379,12 @@
           "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female"
         },
         {
-          "name": "Population: 20 - 34 Years, Birth in The Past 12 Months, Female, Unmarried",
-          "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female_Unmarried"
-        },
-        {
           "name": "Population: 20 - 34 Years, Birth in The Past 12 Months, Female (As Fraction of Count Person 20 To 34 Years Female)",
           "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female_AsAFractionOf_Count_Person_20To34Years_Female"
+        },
+        {
+          "name": "Population: 20 - 34 Years, Birth in The Past 12 Months, Female, Unmarried",
+          "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female_Unmarried"
         }
       ]
     },
@@ -7735,12 +7735,12 @@
       "name": "Hate Crime Incidents With Crime Type = Intimidation, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
           "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, White Alone, Known Offender, Female",
@@ -7753,12 +7753,12 @@
       "name": "Hate Crime Incidents With Crime Type = Simple Assault, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
           "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, White Alone, Known Offender, Female",
@@ -8929,12 +8929,12 @@
       "name": "Person With Age = 65 - 74 Years, Gender = Female",
       "statVars": [
         {
-          "name": "Population: 65 - 74 Years, Civilian, Female, Non Institutionalized",
-          "dcid": "dc/fdt2p0r5fced1"
-        },
-        {
           "name": "Population: 65 - 74 Years, Female",
           "dcid": "dc/nf9577mjqs69g"
+        },
+        {
+          "name": "Population: 65 - 74 Years, Civilian, Female, Non Institutionalized",
+          "dcid": "dc/fdt2p0r5fced1"
         }
       ]
     },
@@ -10189,12 +10189,12 @@
       "name": "Person With Educational Attainment = Tertiary Education, Gender = Female",
       "statVars": [
         {
-          "name": "Population: 25 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
           "name": "Population: Tertiary Education, Female (As Fraction of Count Person 25 or More Years Female)",
           "dcid": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
         }
       ]
     },
@@ -10581,12 +10581,12 @@
       "name": "Person With Gender = Female, Occupation = Architecture And Engineering Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Architecture And Engineering Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/27eg6kfgxbb07"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Architecture And Engineering Occupations",
           "dcid": "dc/dtrysjz3xhyv7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Architecture And Engineering Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/27eg6kfgxbb07"
         }
       ]
     },
@@ -10595,12 +10595,12 @@
       "name": "Person With Gender = Female, Occupation = Arts, Design, Entertainment, Sports, And Media Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Arts, Design, Entertainment, Sports, And Media Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/c78fb7n4fg5t"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Arts, Design, Entertainment, Sports, And Media Occupations",
           "dcid": "dc/hgg3e8x9yvx9d"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Arts, Design, Entertainment, Sports, And Media Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/c78fb7n4fg5t"
         }
       ]
     },
@@ -10609,12 +10609,12 @@
       "name": "Person With Gender = Female, Occupation = Building And Grounds Cleaning And Maintenance Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Building And Grounds Cleaning And Maintenance Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/ngxd3wfd871sf"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Building And Grounds Cleaning And Maintenance Occupations",
           "dcid": "dc/rlyfr32w4gzn2"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Building And Grounds Cleaning And Maintenance Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/ngxd3wfd871sf"
         }
       ]
     },
@@ -10623,12 +10623,12 @@
       "name": "Person With Gender = Female, Occupation = Business And Financial Operations Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Business And Financial Operations Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/9t1nk24nllnw6"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Business And Financial Operations Occupations",
           "dcid": "dc/25jmn94yqdhk4"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Business And Financial Operations Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/9t1nk24nllnw6"
         }
       ]
     },
@@ -10637,12 +10637,12 @@
       "name": "Person With Gender = Female, Occupation = Community And Social Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Community And Social Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/24gxks3k9ggp2"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Community And Social Service Occupations",
           "dcid": "dc/09bm4cr545fyg"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Community And Social Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/24gxks3k9ggp2"
         }
       ]
     },
@@ -10651,12 +10651,12 @@
       "name": "Person With Gender = Female, Occupation = Computer And Mathematical Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer And Mathematical Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/7lydbsw4ne5w9"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Computer And Mathematical Occupations",
           "dcid": "dc/303cktswccjp7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer And Mathematical Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/7lydbsw4ne5w9"
         }
       ]
     },
@@ -10665,12 +10665,12 @@
       "name": "Person With Gender = Female, Occupation = Computer, Engineering, And Science Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer, Engineering, And Science Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/kbspbwxjsmg67"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Computer, Engineering, And Science Occupations",
           "dcid": "dc/m9qm6y12bcycd"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer, Engineering, And Science Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/kbspbwxjsmg67"
         }
       ]
     },
@@ -10679,12 +10679,12 @@
       "name": "Person With Gender = Female, Occupation = Construction And Extraction Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Construction And Extraction Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/ws53s0ne6kb27"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Construction And Extraction Occupations",
           "dcid": "dc/epv7s4v9qhlx2"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Construction And Extraction Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/ws53s0ne6kb27"
         }
       ]
     },
@@ -10693,12 +10693,12 @@
       "name": "Person With Gender = Female, Occupation = Education, Legal, Community Service, Arts, And Media Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Education, Legal, Community Service, Arts, And Media Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/89fndld3xy4z7"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Education, Legal, Community Service, Arts, And Media Occupations",
           "dcid": "dc/eqk21656mbxs8"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Education, Legal, Community Service, Arts, And Media Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/89fndld3xy4z7"
         }
       ]
     },
@@ -10707,12 +10707,12 @@
       "name": "Person With Gender = Female, Occupation = Educational Instruction And Library Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Educational Instruction And Library Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/xhbfvtmdlnt8c"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Educational Instruction And Library Occupations",
           "dcid": "dc/rlg7eme5ncf05"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Educational Instruction And Library Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/xhbfvtmdlnt8c"
         }
       ]
     },
@@ -10721,12 +10721,12 @@
       "name": "Person With Gender = Female, Occupation = Farming, Fishing, And Forestry Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Farming, Fishing, And Forestry Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/jfd54v03tebw3"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Farming, Fishing, And Forestry Occupations",
           "dcid": "dc/rzm3j1689x12b"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Farming, Fishing, And Forestry Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/jfd54v03tebw3"
         }
       ]
     },
@@ -10735,12 +10735,12 @@
       "name": "Person With Gender = Female, Occupation = Food Preparation And Serving Related Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Food Preparation And Serving Related Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/wtecthfq7p0h6"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Food Preparation And Serving Related Occupations",
           "dcid": "dc/fe9heveckd5d"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Food Preparation And Serving Related Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/wtecthfq7p0h6"
         }
       ]
     },
@@ -10749,12 +10749,12 @@
       "name": "Person With Gender = Female, Occupation = Health Technologists And Technicians",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Health Technologists And Technicians, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/92mnbbgvfskf7"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Health Technologists And Technicians",
           "dcid": "dc/heh4hrddh44d7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Health Technologists And Technicians, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/92mnbbgvfskf7"
         }
       ]
     },
@@ -10763,12 +10763,12 @@
       "name": "Person With Gender = Female, Occupation = Healthcare Practitioners And Technical Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Practitioners And Technical Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/p2w035955wkhh"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Healthcare Practitioners And Technical Occupations",
           "dcid": "dc/3kjqnheqlwzz1"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Practitioners And Technical Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/p2w035955wkhh"
         }
       ]
     },
@@ -10777,12 +10777,12 @@
       "name": "Person With Gender = Female, Occupation = Healthcare Support Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Support Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/46v056n28d2e5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Healthcare Support Occupations",
           "dcid": "dc/743gx65z6zyf7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Support Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/46v056n28d2e5"
         }
       ]
     },
@@ -10791,12 +10791,12 @@
       "name": "Person With Gender = Female, Occupation = Installation, Maintenance, And Repair Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Installation, Maintenance, And Repair Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/5ehtzjsp45dy3"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Installation, Maintenance, And Repair Occupations",
           "dcid": "dc/d90dpe6dp9d86"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Installation, Maintenance, And Repair Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/5ehtzjsp45dy3"
         }
       ]
     },
@@ -10805,12 +10805,12 @@
       "name": "Person With Gender = Female, Occupation = Legal Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Legal Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/h3ej80jh908nc"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Legal Occupations",
           "dcid": "dc/28edmskt9xw21"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Legal Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/h3ej80jh908nc"
         }
       ]
     },
@@ -10819,12 +10819,12 @@
       "name": "Person With Gender = Female, Occupation = Life, Physical, And Social Science Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Life, Physical, And Social Science Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/0bm3wdelm2vf6"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Life, Physical, And Social Science Occupations",
           "dcid": "dc/4jdy2m3k0tr96"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Life, Physical, And Social Science Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/0bm3wdelm2vf6"
         }
       ]
     },
@@ -10833,12 +10833,12 @@
       "name": "Person With Gender = Female, Occupation = Management Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/112v7fggz4mv1"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Management Occupations",
           "dcid": "dc/bd729fxzst7q7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/112v7fggz4mv1"
         }
       ]
     },
@@ -10847,12 +10847,12 @@
       "name": "Person With Gender = Female, Occupation = Management, Business, And Financial Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management, Business, And Financial Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/r7eqgnsy4b4c5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Management, Business, And Financial Occupations",
           "dcid": "dc/ce5mbgwsr2bef"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management, Business, And Financial Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/r7eqgnsy4b4c5"
         }
       ]
     },
@@ -10861,12 +10861,12 @@
       "name": "Person With Gender = Female, Occupation = Office And Administrative Support Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Office And Administrative Support Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/73yw7gf4y7ffh"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Office And Administrative Support Occupations",
           "dcid": "dc/9vlf8t9rj98z8"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Office And Administrative Support Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/73yw7gf4y7ffh"
         }
       ]
     },
@@ -10875,12 +10875,12 @@
       "name": "Person With Gender = Female, Occupation = Personal Care And Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Personal Care And Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/fgqjl1p9shgq5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Personal Care And Service Occupations",
           "dcid": "dc/jwetyvx4lertd"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Personal Care And Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/fgqjl1p9shgq5"
         }
       ]
     },
@@ -10889,12 +10889,12 @@
       "name": "Person With Gender = Female, Occupation = Production Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Production Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/fjs33byjqs207"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Production Occupations",
           "dcid": "dc/epw1tyqn3byr1"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Production Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/fjs33byjqs207"
         }
       ]
     },
@@ -10903,12 +10903,12 @@
       "name": "Person With Gender = Female, Occupation = Protective Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Protective Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/7zyd95qrp77t5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Protective Service Occupations",
           "dcid": "dc/6rdm6w7t0e5ph"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Protective Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/7zyd95qrp77t5"
         }
       ]
     },
@@ -10917,12 +10917,12 @@
       "name": "Person With Gender = Female, Occupation = Sales And Related Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Sales And Related Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/j51fewxcyrrx2"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Sales And Related Occupations",
           "dcid": "dc/w1bkl895kbe02"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Sales And Related Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/j51fewxcyrrx2"
         }
       ]
     },
@@ -10931,12 +10931,12 @@
       "name": "Person With Gender = Female, Occupation = Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/h134xdx54hppc"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Service Occupations",
           "dcid": "dc/g9rjhbvkp17b1"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/h134xdx54hppc"
         }
       ]
     },
@@ -10945,12 +10945,12 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
-        },
-        {
           "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/k0zg5lw8686z8"
+        },
+        {
+          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
         }
       ]
     },
@@ -10959,12 +10959,12 @@
       "name": "Person With Gender = Female, Race = Some Other Race Alone",
       "statVars": [
         {
-          "name": "Population: Female, Some Other Race Alone",
-          "dcid": "Count_Person_Female_SomeOtherRaceAlone"
-        },
-        {
           "name": "Median Age: Female, Some Other Race Alone",
           "dcid": "Median_Age_Person_Female_SomeOtherRaceAlone"
+        },
+        {
+          "name": "Population: Female, Some Other Race Alone",
+          "dcid": "Count_Person_Female_SomeOtherRaceAlone"
         }
       ]
     },
@@ -10973,12 +10973,12 @@
       "name": "Person With Gender = Female, Race = White Alone Not Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Female, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
-        },
-        {
           "name": "Median Age: Female, White Alone Not Hispanic or Latino",
           "dcid": "Median_Age_Person_Female_WhiteAloneNotHispanicOrLatino"
+        },
+        {
+          "name": "Population: Female, White Alone Not Hispanic or Latino",
+          "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
         }
       ]
     },
@@ -10987,12 +10987,12 @@
       "name": "Person With Gender = Female, Recent Work Status = Not Worked Full Time",
       "statVars": [
         {
-          "name": "Population: Female, Not Worked Full Time",
-          "dcid": "Count_Person_NotWorkedFullTime"
-        },
-        {
           "name": "Median Income: Female, Not Worked Full Time",
           "dcid": "dc/n0bp6h6zcgm74"
+        },
+        {
+          "name": "Population: Female, Not Worked Full Time",
+          "dcid": "Count_Person_NotWorkedFullTime"
         }
       ]
     },
@@ -11099,12 +11099,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Unknown Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Unknown Ethnicity, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Ethnicity, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Unknown Ethnicity, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
         }
       ]
     },
@@ -11113,12 +11113,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Unknown Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Race, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Unknown Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
         }
       ]
     },
@@ -11141,12 +11141,12 @@
       "name": "Hate Crime Incidents With Crime Type = Aggravated Assault, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Not Hispanic or Latino, Asian Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceAsianAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Not Hispanic or Latino, Asian Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceAsianAlone_Female"
         }
       ]
     },
@@ -11183,12 +11183,12 @@
       "name": "Hate Crime Incidents With Crime Type = Fondling, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Fondling, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Fondling, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Fondling, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         }
       ]
     },
@@ -11197,12 +11197,12 @@
       "name": "Hate Crime Incidents With Crime Type = Forcible Rape, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Forcible Rape, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Forcible Rape, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Forcible Rape, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         }
       ]
     },
@@ -12793,12 +12793,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Hispanic or Latino, Offender Type = Known Offender Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Hispanic or Latino, Known Offender Ethnicity, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Hispanic or Latino, Known Offender Ethnicity, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Hispanic or Latino, Known Offender Ethnicity, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
         }
       ]
     },
@@ -12807,12 +12807,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Not Hispanic or Latino, Offender Type = Known Offender Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
         }
       ]
     },
@@ -12821,12 +12821,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = American Indian or Alaska Native Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, American Indian or Alaska Native Alone, Known Offender Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, American Indian or Alaska Native Alone, Known Offender Race, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, American Indian or Alaska Native Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
         }
       ]
     },
@@ -12835,12 +12835,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Asian Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Asian Alone, Known Offender Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Asian Alone, Known Offender Race, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Asian Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
         }
       ]
     },
@@ -12849,12 +12849,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Black or African American Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Black or African American Alone, Known Offender Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Black or African American Alone, Known Offender Race, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Black or African American Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         }
       ]
     },
@@ -12863,12 +12863,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Two or More Races, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Two or More Races, Known Offender Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Two or More Races, Known Offender Race, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Two or More Races, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
         }
       ]
     },
@@ -12877,12 +12877,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = White Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, White Alone, Known Offender Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, White Alone, Known Offender Race, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, White Alone, Known Offender Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
         }
       ]
     },
