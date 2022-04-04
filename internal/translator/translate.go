@@ -645,20 +645,20 @@ func getSQL(
 	provCols := map[types.Column]int{}
 	provList := []types.Column{}
 	pc := len(nodes)
-	sql := "SELECT"
+	sql := "SELECT "
 	if opts.Distinct {
-		sql += " DISTINCT"
+		sql += "DISTINCT "
 	}
 	for idx, n := range nodes {
 		if idx != 0 {
-			sql += ","
+			sql += ",\n"
 		}
 		if str, ok := constNode[n]; ok {
-			sql += fmt.Sprintf(` "%s"`, str)
+			sql += fmt.Sprintf(`"%s"`, str)
 		}
 		for _, c := range constraints {
 			if n == c.RHS {
-				sql += fmt.Sprintf(" %s.%s AS %s",
+				sql += fmt.Sprintf("%s.%s AS %s",
 					c.LHS.Table.Alias(),
 					c.LHS.Name,
 					strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
@@ -680,7 +680,7 @@ func getSQL(
 		}
 	}
 	for i, p := range provList {
-		sql += ", " + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
+		sql += ",\n" + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
 	}
 
 	tableCounter := map[types.Table]int{}
@@ -746,7 +746,7 @@ func getSQL(
 		}
 	}
 
-	sql += fmt.Sprintf(" FROM %s AS %s", currTable.Name, currTable.Alias())
+	sql += fmt.Sprintf("\nFROM %s AS %s\n", currTable.Name, currTable.Alias())
 
 	// Keep track of table that has been processed, they should already have an
 	// alias in SQL and could be used as "currTable".
@@ -767,9 +767,9 @@ func getSQL(
 			if _, ok := processedTable[otherCol.Table]; ok {
 				whereConstraints = append(whereConstraints, c)
 			} else {
-				sql += fmt.Sprintf(" JOIN %s AS %s", otherCol.Table.Name, otherCol.Table.Alias())
+				sql += fmt.Sprintf("JOIN %s AS %s\n", otherCol.Table.Name, otherCol.Table.Alias())
 				sql += fmt.Sprintf(
-					" ON %s.%s = %s.%s",
+					"ON %s.%s = %s.%s\n",
 					currCol.Table.Alias(), currCol.Name, otherCol.Table.Alias(), otherCol.Name)
 				processedTable[otherCol.Table] = struct{}{}
 
@@ -817,37 +817,37 @@ func getSQL(
 	})
 	for idx, c := range whereConstraints {
 		if idx == 0 {
-			sql += " WHERE "
+			sql += "WHERE "
 		} else if idx != len(whereConstraints) {
-			sql += " AND "
+			sql += "AND "
 		}
 		switch v := c.RHS.(type) {
 		case types.Column:
-			sql += fmt.Sprintf("%s.%s = %s.%s", c.LHS.Table.Alias(), c.LHS.Name, v.Table.Alias(), v.Name)
+			sql += fmt.Sprintf("%s.%s = %s.%s\n", c.LHS.Table.Alias(), c.LHS.Name, v.Table.Alias(), v.Name)
 		case string:
 			// Before we have spanner table reflection, need to hardcode check here.
 			// But the user should really have quote for strings.
 			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
-			sql += fmt.Sprintf("%s.%s = %s", c.LHS.Table.Alias(), c.LHS.Name, addQuote(v, useQuote))
+			sql += fmt.Sprintf("%s.%s = %s\n", c.LHS.Table.Alias(), c.LHS.Name, addQuote(v, useQuote))
 		case []string:
 			strs := []string{}
 			for _, s := range v {
 				strs = append(strs, addQuote(s))
 			}
-			sql += fmt.Sprintf("%s.%s IN (%s)", c.LHS.Table.Alias(), c.LHS.Name, strings.Join(strs, ", "))
+			sql += fmt.Sprintf("%s.%s IN (%s)\n", c.LHS.Table.Alias(), c.LHS.Name, strings.Join(strs, ", "))
 		}
 	}
 	if opts.Orderby != "" {
 		sql += fmt.Sprintf(
-			" ORDER BY %s", strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"))
+			"ORDER BY %s", strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"))
 		if opts.ASC {
-			sql += " ASC"
+			sql += " ASC\n"
 		} else {
-			sql += " DESC"
+			sql += " DESC\n"
 		}
 	}
 	if opts.Limit > 0 {
-		sql += fmt.Sprintf(" LIMIT %d", opts.Limit)
+		sql += fmt.Sprintf("LIMIT %d\n", opts.Limit)
 	}
 	return sql, prov, nil
 }
