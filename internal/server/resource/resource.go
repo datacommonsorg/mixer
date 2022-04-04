@@ -82,6 +82,7 @@ func (index *SearchIndex) Update(
 	tokenList := strings.Fields(processedNodeString)
 	// Create a map of tokens/synonyms to the matching string from nodeString
 	tokens := map[string]string{}
+	tokens[strings.ToLower(nodeID)] = nodeID
 	for _, token := range tokenList {
 		// Do not process duplicate tokens
 		if _, ok := tokens[token]; ok {

@@ -101,6 +101,12 @@ func TestSearchStatVar(t *testing.T) {
 				false,
 				"poor.json",
 			},
+			{
+				"count_Person",
+				[]string{},
+				false,
+				"count_person.json",
+			},
 		} {
 			resp, err := mixer.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 				Query:           c.query,
