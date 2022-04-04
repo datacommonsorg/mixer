@@ -17,7 +17,9 @@
               "dcid": "geoId/2937592",
               "name": "Joplin"
             }
-          ]
+          ],
+          "minValue": 1,
+          "maxValue": 2309135
         },
         "Country": {
           "placeCount": 1,
@@ -26,7 +28,9 @@
               "dcid": "country/USA",
               "name": "United States"
             }
-          ]
+          ],
+          "minValue": 1,
+          "maxValue": 80051976
         },
         "County": {
           "placeCount": 3217,
@@ -43,7 +47,9 @@
               "dcid": "geoId/48201",
               "name": "Harris County"
             }
-          ]
+          ],
+          "minValue": 1,
+          "maxValue": 2835021
         },
         "State": {
           "placeCount": 56,
@@ -60,7 +66,9 @@
               "dcid": "geoId/12",
               "name": "Florida"
             }
-          ]
+          ],
+          "minValue": 1,
+          "maxValue": 9108202
         }
       },
       "provenanceSummary": {
@@ -164,7 +172,9 @@
               "dcid": "geoId/2937592",
               "name": "Joplin"
             }
-          ]
+          ],
+          "minValue": -794,
+          "maxValue": 685785
         },
         "Country": {
           "placeCount": 1,
@@ -173,7 +183,9 @@
               "dcid": "country/USA",
               "name": "United States"
             }
-          ]
+          ],
+          "minValue": -23999,
+          "maxValue": 20300128
         },
         "County": {
           "placeCount": 3217,
@@ -190,7 +202,9 @@
               "dcid": "geoId/48201",
               "name": "Harris County"
             }
-          ]
+          ],
+          "minValue": -18817,
+          "maxValue": 962832
         },
         "State": {
           "placeCount": 56,
@@ -207,7 +221,9 @@
               "dcid": "geoId/12",
               "name": "Florida"
             }
-          ]
+          ],
+          "minValue": -40527,
+          "maxValue": 2896206
         }
       },
       "provenanceSummary": {

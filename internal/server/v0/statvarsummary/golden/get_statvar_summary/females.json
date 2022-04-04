@@ -17,7 +17,9 @@
               "dcid": "wikidataId/Q550219",
               "name": "Capital Regional District"
             }
-          ]
+          ],
+          "minValue": 1565,
+          "maxValue": 3121230
         },
         "AdministrativeArea1": {
           "placeCount": 330,
@@ -34,7 +36,9 @@
               "dcid": "wikidataId/Q43684",
               "name": "Henan"
             }
-          ]
+          ],
+          "minValue": 3325,
+          "maxValue": 50483000
         },
         "AdministrativeArea2": {
           "placeCount": 763,
@@ -51,7 +55,9 @@
               "dcid": "wikidataId/Q806463",
               "name": "Bangalore Urban district"
             }
-          ]
+          ],
+          "minValue": 1668,
+          "maxValue": 5195070
         },
         "AdministrativeArea3": {
           "placeCount": 29,
@@ -68,7 +74,9 @@
               "dcid": "wikidataId/Q18458",
               "name": "Regional Municipality of York"
             }
-          ]
+          ],
+          "minValue": 2329,
+          "maxValue": 4601000
         },
         "CensusBlockGroup": {
           "placeCount": 220333,
@@ -85,7 +93,8 @@
               "dcid": "geoId/380170405002",
               "name": "Block Group 2, Census Tract 405, Cass County, North Dakota"
             }
-          ]
+          ],
+          "maxValue": 31011
         },
         "CensusCoreBasedStatisticalArea": {
           "placeCount": 933,
@@ -102,7 +111,9 @@
               "dcid": "geoId/C16980",
               "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
             }
-          ]
+          ],
+          "minValue": 5429,
+          "maxValue": 10429184
         },
         "CensusCountyDivision": {
           "placeCount": 36798,
@@ -119,7 +130,8 @@
               "dcid": "geoId/1703114000",
               "name": "Chicago"
             }
-          ]
+          ],
+          "maxValue": 5785680
         },
         "CensusTract": {
           "placeCount": 74014,
@@ -136,7 +148,8 @@
               "dcid": "geoId/48039660602",
               "name": "Census Tract 6606.02, Brazoria County, Texas"
             }
-          ]
+          ],
+          "maxValue": 37626
         },
         "CensusZipCodeTabulationArea": {
           "placeCount": 32989,
@@ -153,7 +166,8 @@
               "dcid": "zip/11368",
               "name": "11368"
             }
-          ]
+          ],
+          "maxValue": 63995
         },
         "City": {
           "placeCount": 29952,
@@ -170,7 +184,8 @@
               "dcid": "wikidataId/Q11736",
               "name": "Tianjin"
             }
-          ]
+          ],
+          "maxValue": 11710000
         },
         "CongressionalDistrict": {
           "placeCount": 452,
@@ -187,7 +202,8 @@
               "dcid": "geoId/1000",
               "name": "Congressional District (at Large) (113th Congress), Delaware"
             }
-          ]
+          ],
+          "maxValue": 1949033
         },
         "Country": {
           "placeCount": 66,
@@ -204,7 +220,9 @@
               "dcid": "country/USA",
               "name": "United States"
             }
-          ]
+          ],
+          "minValue": 8342,
+          "maxValue": 660361000
         },
         "County": {
           "placeCount": 3222,
@@ -221,7 +239,9 @@
               "dcid": "geoId/48201",
               "name": "Harris County"
             }
-          ]
+          ],
+          "minValue": 15,
+          "maxValue": 5160965
         },
         "ElementarySchoolDistrict": {
           "placeCount": 275,
@@ -238,7 +258,8 @@
               "dcid": "geoId/sch0637290",
               "name": "Soquel Elementary School District"
             }
-          ]
+          ],
+          "maxValue": 43064
         },
         "EurostatNUTS1": {
           "placeCount": 123,
@@ -255,7 +276,9 @@
               "dcid": "nuts/TR1",
               "name": "Istanbul"
             }
-          ]
+          ],
+          "minValue": 12331,
+          "maxValue": 9277682
         },
         "EurostatNUTS2": {
           "placeCount": 328,
@@ -272,7 +295,9 @@
               "dcid": "nuts/ITC4",
               "name": "Lombardia"
             }
-          ]
+          ],
+          "minValue": 12331,
+          "maxValue": 7525493
         },
         "EurostatNUTS3": {
           "placeCount": 1390,
@@ -289,7 +314,9 @@
               "dcid": "nuts/ES511",
               "name": "Barcelona"
             }
-          ]
+          ],
+          "minValue": 4313,
+          "maxValue": 7525493
         },
         "HighSchoolDistrict": {
           "placeCount": 132,
@@ -306,7 +333,8 @@
               "dcid": "geoId/sch0606019",
               "name": "Santa Barbara Unified School District (7-12)"
             }
-          ]
+          ],
+          "maxValue": 70649
         },
         "Place": {
           "placeCount": 172,
@@ -321,7 +349,8 @@
               "dcid": "wikidataId/Q2760659",
               "name": "Dadra"
             }
-          ]
+          ],
+          "maxValue": 5883370
         },
         "SchoolDistrict": {
           "placeCount": 13277,
@@ -338,7 +367,8 @@
               "dcid": "geoId/sch7200030",
               "name": "Puerto Rico Department of Education"
             }
-          ]
+          ],
+          "maxValue": 4480165
         },
         "State": {
           "placeCount": 87,
@@ -355,7 +385,9 @@
               "dcid": "wikidataId/Q1165",
               "name": "Bihar"
             }
-          ]
+          ],
+          "minValue": 29519,
+          "maxValue": 101563000
         },
         "StateComponent": {
           "placeCount": 550,
@@ -372,7 +404,9 @@
               "dcid": "geoId/06U",
               "name": "California -- Urban"
             }
-          ]
+          ],
+          "minValue": 22,
+          "maxValue": 19624718
         }
       },
       "provenanceSummary": {
@@ -403,7 +437,9 @@
                       "dcid": "wikidataId/Q806463",
                       "name": "Bangalore Urban district"
                     }
-                  ]
+                  ],
+                  "minValue": 3590,
+                  "maxValue": 5195070
                 },
                 "City": {
                   "placeCount": 1,
@@ -412,7 +448,9 @@
                       "dcid": "wikidataId/Q987",
                       "name": "New Delhi"
                     }
-                  ]
+                  ],
+                  "minValue": 64062,
+                  "maxValue": 64062
                 },
                 "Country": {
                   "placeCount": 1,
@@ -421,7 +459,9 @@
                       "dcid": "country/IND",
                       "name": "India"
                     }
-                  ]
+                  ],
+                  "minValue": 587584719,
+                  "maxValue": 587584719
                 },
                 "State": {
                   "placeCount": 35,
@@ -438,7 +478,9 @@
                       "dcid": "wikidataId/Q1165",
                       "name": "Bihar"
                     }
-                  ]
+                  ],
+                  "minValue": 31350,
+                  "maxValue": 95331831
                 }
               },
               "minValue": 3590,
@@ -467,7 +509,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 163070238.756,
+                  "maxValue": 164946479.86
                 }
               },
               "minValue": 163070238.756,
@@ -506,7 +550,9 @@
                       "dcid": "wikidataId/Q550219",
                       "name": "Capital Regional District"
                     }
-                  ]
+                  ],
+                  "minValue": 1565,
+                  "maxValue": 3121230
                 },
                 "AdministrativeArea1": {
                   "placeCount": 330,
@@ -523,7 +569,9 @@
                       "dcid": "wikidataId/Q43684",
                       "name": "Henan"
                     }
-                  ]
+                  ],
+                  "minValue": 3325,
+                  "maxValue": 50483000
                 },
                 "AdministrativeArea2": {
                   "placeCount": 127,
@@ -540,7 +588,9 @@
                       "dcid": "wikidataId/Q1654749",
                       "name": "Boyacá"
                     }
-                  ]
+                  ],
+                  "minValue": 1668,
+                  "maxValue": 4275320
                 },
                 "AdministrativeArea3": {
                   "placeCount": 29,
@@ -557,7 +607,9 @@
                       "dcid": "wikidataId/Q18458",
                       "name": "Regional Municipality of York"
                     }
-                  ]
+                  ],
+                  "minValue": 2329,
+                  "maxValue": 4601000
                 },
                 "CensusCountyDivision": {
                   "placeCount": 1,
@@ -566,7 +618,9 @@
                       "dcid": "geoId/7210708614",
                       "name": "Botijas"
                     }
-                  ]
+                  ],
+                  "minValue": 4934610,
+                  "maxValue": 5785680
                 },
                 "City": {
                   "placeCount": 270,
@@ -583,7 +637,9 @@
                       "dcid": "wikidataId/Q7473516",
                       "name": "Tokyo"
                     }
-                  ]
+                  ],
+                  "minValue": 1065,
+                  "maxValue": 11710000
                 },
                 "Country": {
                   "placeCount": 50,
@@ -600,7 +656,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 133087,
+                  "maxValue": 660361000
                 },
                 "EurostatNUTS1": {
                   "placeCount": 42,
@@ -617,7 +675,9 @@
                       "dcid": "nuts/FR1",
                       "name": "Ile-de-France"
                     }
-                  ]
+                  ],
+                  "minValue": 131453,
+                  "maxValue": 9277680
                 },
                 "EurostatNUTS2": {
                   "placeCount": 200,
@@ -634,7 +694,9 @@
                       "dcid": "nuts/ES61",
                       "name": "Andalucía"
                     }
-                  ]
+                  ],
+                  "minValue": 12793,
+                  "maxValue": 7525490
                 },
                 "EurostatNUTS3": {
                   "placeCount": 1274,
@@ -651,7 +713,9 @@
                       "dcid": "nuts/ES511",
                       "name": "Barcelona"
                     }
-                  ]
+                  ],
+                  "minValue": 4313,
+                  "maxValue": 7525490
                 },
                 "Place": {
                   "placeCount": 8,
@@ -666,7 +730,9 @@
                     {
                       "dcid": "wikidataId/Q3235"
                     }
-                  ]
+                  ],
+                  "minValue": 296,
+                  "maxValue": 5883370
                 },
                 "State": {
                   "placeCount": 84,
@@ -683,7 +749,9 @@
                       "dcid": "wikidataId/Q1165",
                       "name": "Bihar"
                     }
-                  ]
+                  ],
+                  "minValue": 29519,
+                  "maxValue": 101563000
                 }
               },
               "minValue": 296,
@@ -712,7 +780,9 @@
                       "dcid": "geoId/72",
                       "name": "Puerto Rico"
                     }
-                  ]
+                  ],
+                  "minValue": 1738866.228,
+                  "maxValue": 1960169.762
                 }
               },
               "minValue": 1738866.228,
@@ -750,7 +820,9 @@
                       "dcid": "geoId/C16980",
                       "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
                     }
-                  ]
+                  ],
+                  "minValue": 5429,
+                  "maxValue": 10429184
                 },
                 "CensusCountyDivision": {
                   "placeCount": 36798,
@@ -767,7 +839,8 @@
                       "dcid": "geoId/1703114000",
                       "name": "Chicago"
                     }
-                  ]
+                  ],
+                  "maxValue": 1723212
                 },
                 "CensusTract": {
                   "placeCount": 74014,
@@ -784,7 +857,8 @@
                       "dcid": "geoId/48039660602",
                       "name": "Census Tract 6606.02, Brazoria County, Texas"
                     }
-                  ]
+                  ],
+                  "maxValue": 37626
                 },
                 "CensusZipCodeTabulationArea": {
                   "placeCount": 32989,
@@ -801,7 +875,8 @@
                       "dcid": "zip/11368",
                       "name": "11368"
                     }
-                  ]
+                  ],
+                  "maxValue": 63995
                 },
                 "City": {
                   "placeCount": 29678,
@@ -818,7 +893,8 @@
                       "dcid": "geoId/1714000",
                       "name": "Chicago"
                     }
-                  ]
+                  ],
+                  "maxValue": 4480165
                 },
                 "CongressionalDistrict": {
                   "placeCount": 452,
@@ -835,7 +911,8 @@
                       "dcid": "geoId/1000",
                       "name": "Congressional District (at Large) (113th Congress), Delaware"
                     }
-                  ]
+                  ],
+                  "maxValue": 1949033
                 },
                 "County": {
                   "placeCount": 3222,
@@ -852,7 +929,9 @@
                       "dcid": "geoId/48201",
                       "name": "Harris County"
                     }
-                  ]
+                  ],
+                  "minValue": 15,
+                  "maxValue": 5126081
                 },
                 "ElementarySchoolDistrict": {
                   "placeCount": 275,
@@ -869,7 +948,8 @@
                       "dcid": "geoId/sch0637290",
                       "name": "Soquel Elementary School District"
                     }
-                  ]
+                  ],
+                  "maxValue": 43064
                 },
                 "HighSchoolDistrict": {
                   "placeCount": 132,
@@ -886,7 +966,8 @@
                       "dcid": "geoId/sch0606019",
                       "name": "Santa Barbara Unified School District (7-12)"
                     }
-                  ]
+                  ],
+                  "maxValue": 70649
                 },
                 "Place": {
                   "placeCount": 164,
@@ -900,7 +981,8 @@
                     {
                       "dcid": "geoId/sch4833060"
                     }
-                  ]
+                  ],
+                  "maxValue": 341895
                 },
                 "SchoolDistrict": {
                   "placeCount": 13277,
@@ -917,7 +999,8 @@
                       "dcid": "geoId/sch7200030",
                       "name": "Puerto Rico Department of Education"
                     }
-                  ]
+                  ],
+                  "maxValue": 4480165
                 },
                 "State": {
                   "placeCount": 52,
@@ -934,7 +1017,9 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": 272026,
+                  "maxValue": 19757199
                 },
                 "StateComponent": {
                   "placeCount": 550,
@@ -951,7 +1036,9 @@
                       "dcid": "geoId/06U",
                       "name": "California -- Urban"
                     }
-                  ]
+                  ],
+                  "minValue": 22,
+                  "maxValue": 19624718
                 }
               },
               "maxValue": 19757199
@@ -987,7 +1074,9 @@
                       "dcid": "geoId/1714000",
                       "name": "Chicago"
                     }
-                  ]
+                  ],
+                  "minValue": 27244,
+                  "maxValue": 4510159
                 },
                 "Country": {
                   "placeCount": 1,
@@ -996,7 +1085,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 157260239,
+                  "maxValue": 166650550
                 },
                 "County": {
                   "placeCount": 842,
@@ -1013,7 +1104,9 @@
                       "dcid": "geoId/48201",
                       "name": "Harris County"
                     }
-                  ]
+                  ],
+                  "minValue": 25935,
+                  "maxValue": 5160965
                 },
                 "State": {
                   "placeCount": 52,
@@ -1030,7 +1123,9 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": 277407,
+                  "maxValue": 19886602
                 }
               },
               "minValue": 25935,
@@ -1059,7 +1154,9 @@
                       "dcid": "geoId/72",
                       "name": "Puerto Rico"
                     }
-                  ]
+                  ],
+                  "minValue": 1738866.228,
+                  "maxValue": 1814267.649
                 }
               },
               "minValue": 1738866.228,
@@ -1089,7 +1186,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 157812589,
+                  "maxValue": 166551005
                 }
               },
               "minValue": 157812589,
@@ -1118,7 +1217,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 163070238.756,
+                  "maxValue": 164946479.86
                 },
                 "State": {
                   "placeCount": 51,
@@ -1135,7 +1236,9 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": 284701.76,
+                  "maxValue": 19759598.991
                 }
               },
               "minValue": 284701.76,
@@ -1173,7 +1276,8 @@
                       "dcid": "geoId/380170405002",
                       "name": "Block Group 2, Census Tract 405, Cass County, North Dakota"
                     }
-                  ]
+                  ],
+                  "maxValue": 31011
                 }
               },
               "maxValue": 31011
@@ -1210,7 +1314,9 @@
                       "dcid": "nuts/AT13",
                       "name": "Vienna"
                     }
-                  ]
+                  ],
+                  "minValue": 17255,
+                  "maxValue": 1852025
                 },
                 "Country": {
                   "placeCount": 48,
@@ -1227,7 +1333,9 @@
                       "dcid": "country/DEU",
                       "name": "Germany"
                     }
-                  ]
+                  ],
+                  "minValue": 8342,
+                  "maxValue": 78191815
                 },
                 "EurostatNUTS1": {
                   "placeCount": 123,
@@ -1244,7 +1352,9 @@
                       "dcid": "nuts/TR1",
                       "name": "Istanbul"
                     }
-                  ]
+                  ],
+                  "minValue": 12331,
+                  "maxValue": 9277682
                 },
                 "EurostatNUTS2": {
                   "placeCount": 328,
@@ -1261,7 +1371,9 @@
                       "dcid": "nuts/ITC4",
                       "name": "Lombardia"
                     }
-                  ]
+                  ],
+                  "minValue": 12331,
+                  "maxValue": 7525493
                 },
                 "EurostatNUTS3": {
                   "placeCount": 1390,
@@ -1278,7 +1390,9 @@
                       "dcid": "nuts/ES511",
                       "name": "Barcelona"
                     }
-                  ]
+                  ],
+                  "minValue": 4313,
+                  "maxValue": 7525493
                 }
               },
               "minValue": 4313,
@@ -1307,7 +1421,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 154718323.448,
+                  "maxValue": 164946479.86
                 },
                 "State": {
                   "placeCount": 51,
@@ -1324,7 +1440,9 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": 267879.289,
+                  "maxValue": 19759598.991
                 }
               },
               "minValue": 267879.289,
@@ -1351,7 +1469,8 @@
               "dcid": "geoId/C16980",
               "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
             }
-          ]
+          ],
+          "maxValue": 1142054
         },
         "CensusCountyDivision": {
           "placeCount": 36798,
@@ -1368,7 +1487,8 @@
               "dcid": "geoId/1703114000",
               "name": "Chicago"
             }
-          ]
+          ],
+          "maxValue": 345398
         },
         "CensusTract": {
           "placeCount": 74014,
@@ -1385,7 +1505,8 @@
               "dcid": "geoId/48039660602",
               "name": "Census Tract 6606.02, Brazoria County, Texas"
             }
-          ]
+          ],
+          "maxValue": 10208
         },
         "CensusZipCodeTabulationArea": {
           "placeCount": 32989,
@@ -1402,7 +1523,8 @@
               "dcid": "zip/11368",
               "name": "11368"
             }
-          ]
+          ],
+          "maxValue": 31687
         },
         "City": {
           "placeCount": 29678,
@@ -1419,7 +1541,8 @@
               "dcid": "geoId/1714000",
               "name": "Chicago"
             }
-          ]
+          ],
+          "maxValue": 627472
         },
         "CongressionalDistrict": {
           "placeCount": 452,
@@ -1436,7 +1559,8 @@
               "dcid": "geoId/1000",
               "name": "Congressional District (at Large) (113th Congress), Delaware"
             }
-          ]
+          ],
+          "maxValue": 213520
         },
         "Country": {
           "placeCount": 1,
@@ -1445,7 +1569,9 @@
               "dcid": "country/USA",
               "name": "United States"
             }
-          ]
+          ],
+          "minValue": 7608035,
+          "maxValue": 9416047
         },
         "County": {
           "placeCount": 3222,
@@ -1462,7 +1588,8 @@
               "dcid": "geoId/48201",
               "name": "Harris County"
             }
-          ]
+          ],
+          "maxValue": 785965
         },
         "ElementarySchoolDistrict": {
           "placeCount": 275,
@@ -1479,7 +1606,8 @@
               "dcid": "geoId/sch0637290",
               "name": "Soquel Elementary School District"
             }
-          ]
+          ],
+          "maxValue": 4380
         },
         "HighSchoolDistrict": {
           "placeCount": 132,
@@ -1496,7 +1624,8 @@
               "dcid": "geoId/sch0606019",
               "name": "Santa Barbara Unified School District (7-12)"
             }
-          ]
+          ],
+          "maxValue": 17404
         },
         "Place": {
           "placeCount": 164,
@@ -1510,7 +1639,8 @@
             {
               "dcid": "geoId/sch4833060"
             }
-          ]
+          ],
+          "maxValue": 6038
         },
         "SchoolDistrict": {
           "placeCount": 13277,
@@ -1527,7 +1657,8 @@
               "dcid": "geoId/sch7200030",
               "name": "Puerto Rico Department of Education"
             }
-          ]
+          ],
+          "maxValue": 627472
         },
         "State": {
           "placeCount": 52,
@@ -1544,7 +1675,9 @@
               "dcid": "geoId/12",
               "name": "Florida"
             }
-          ]
+          ],
+          "minValue": 2343,
+          "maxValue": 2996731
         },
         "StateComponent": {
           "placeCount": 550,
@@ -1561,7 +1694,8 @@
               "dcid": "geoId/06U",
               "name": "California -- Urban"
             }
-          ]
+          ],
+          "maxValue": 2994540
         }
       },
       "provenanceSummary": {
@@ -1595,7 +1729,8 @@
                       "dcid": "geoId/C16980",
                       "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
                     }
-                  ]
+                  ],
+                  "maxValue": 1142054
                 },
                 "CensusCountyDivision": {
                   "placeCount": 36798,
@@ -1612,7 +1747,8 @@
                       "dcid": "geoId/1703114000",
                       "name": "Chicago"
                     }
-                  ]
+                  ],
+                  "maxValue": 345398
                 },
                 "CensusTract": {
                   "placeCount": 74014,
@@ -1629,7 +1765,8 @@
                       "dcid": "geoId/48039660602",
                       "name": "Census Tract 6606.02, Brazoria County, Texas"
                     }
-                  ]
+                  ],
+                  "maxValue": 10208
                 },
                 "CensusZipCodeTabulationArea": {
                   "placeCount": 32989,
@@ -1646,7 +1783,8 @@
                       "dcid": "zip/11368",
                       "name": "11368"
                     }
-                  ]
+                  ],
+                  "maxValue": 31687
                 },
                 "City": {
                   "placeCount": 29678,
@@ -1663,7 +1801,8 @@
                       "dcid": "geoId/1714000",
                       "name": "Chicago"
                     }
-                  ]
+                  ],
+                  "maxValue": 627472
                 },
                 "CongressionalDistrict": {
                   "placeCount": 452,
@@ -1680,7 +1819,8 @@
                       "dcid": "geoId/1000",
                       "name": "Congressional District (at Large) (113th Congress), Delaware"
                     }
-                  ]
+                  ],
+                  "maxValue": 213520
                 },
                 "County": {
                   "placeCount": 3222,
@@ -1697,7 +1837,8 @@
                       "dcid": "geoId/48201",
                       "name": "Harris County"
                     }
-                  ]
+                  ],
+                  "maxValue": 785965
                 },
                 "ElementarySchoolDistrict": {
                   "placeCount": 275,
@@ -1714,7 +1855,8 @@
                       "dcid": "geoId/sch0637290",
                       "name": "Soquel Elementary School District"
                     }
-                  ]
+                  ],
+                  "maxValue": 4380
                 },
                 "HighSchoolDistrict": {
                   "placeCount": 132,
@@ -1731,7 +1873,8 @@
                       "dcid": "geoId/sch0606019",
                       "name": "Santa Barbara Unified School District (7-12)"
                     }
-                  ]
+                  ],
+                  "maxValue": 17404
                 },
                 "Place": {
                   "placeCount": 164,
@@ -1745,7 +1888,8 @@
                     {
                       "dcid": "geoId/sch4833060"
                     }
-                  ]
+                  ],
+                  "maxValue": 6038
                 },
                 "SchoolDistrict": {
                   "placeCount": 13277,
@@ -1762,7 +1906,8 @@
                       "dcid": "geoId/sch7200030",
                       "name": "Puerto Rico Department of Education"
                     }
-                  ]
+                  ],
+                  "maxValue": 627472
                 },
                 "State": {
                   "placeCount": 52,
@@ -1779,7 +1924,9 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": 2343,
+                  "maxValue": 2996731
                 },
                 "StateComponent": {
                   "placeCount": 550,
@@ -1796,7 +1943,8 @@
                       "dcid": "geoId/06U",
                       "name": "California -- Urban"
                     }
-                  ]
+                  ],
+                  "maxValue": 2994540
                 }
               },
               "maxValue": 2996731
@@ -1825,7 +1973,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 7608035,
+                  "maxValue": 9416047
                 }
               },
               "minValue": 7608035,
@@ -1852,7 +2002,9 @@
               "dcid": "nuts/AT13",
               "name": "Vienna"
             }
-          ]
+          ],
+          "minValue": 1.07,
+          "maxValue": 2.7
         },
         "Country": {
           "placeCount": 206,
@@ -1869,7 +2021,9 @@
               "dcid": "country/USA",
               "name": "United States"
             }
-          ]
+          ],
+          "minValue": 0.86,
+          "maxValue": 8.864
         },
         "EurostatNUTS1": {
           "placeCount": 123,
@@ -1886,7 +2040,9 @@
               "dcid": "nuts/TR1",
               "name": "Istanbul"
             }
-          ]
+          ],
+          "minValue": 0.95,
+          "maxValue": 3.59
         },
         "EurostatNUTS2": {
           "placeCount": 328,
@@ -1903,7 +2059,9 @@
               "dcid": "nuts/ITC4",
               "name": "Lombardia"
             }
-          ]
+          ],
+          "minValue": 0.95,
+          "maxValue": 4.9
         },
         "EurostatNUTS3": {
           "placeCount": 1390,
@@ -1920,7 +2078,9 @@
               "dcid": "nuts/ES511",
               "name": "Barcelona"
             }
-          ]
+          ],
+          "minValue": 0.78,
+          "maxValue": 4.9
         },
         "Place": {
           "placeCount": 1,
@@ -1929,7 +2089,9 @@
               "dcid": "Earth",
               "name": "Earth"
             }
-          ]
+          ],
+          "minValue": 2.40270684766091,
+          "maxValue": 5.05647011634277
         }
       },
       "provenanceSummary": {
@@ -1960,7 +2122,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 0.86,
+                  "maxValue": 8.864
                 },
                 "Place": {
                   "placeCount": 1,
@@ -1969,7 +2133,9 @@
                       "dcid": "Earth",
                       "name": "Earth"
                     }
-                  ]
+                  ],
+                  "minValue": 2.40270684766091,
+                  "maxValue": 5.05647011634277
                 }
               },
               "minValue": 0.86,
@@ -2007,7 +2173,9 @@
                       "dcid": "nuts/AT13",
                       "name": "Vienna"
                     }
-                  ]
+                  ],
+                  "minValue": 1.07,
+                  "maxValue": 2.7
                 },
                 "EurostatNUTS1": {
                   "placeCount": 123,
@@ -2024,7 +2192,9 @@
                       "dcid": "nuts/TR1",
                       "name": "Istanbul"
                     }
-                  ]
+                  ],
+                  "minValue": 0.95,
+                  "maxValue": 3.59
                 },
                 "EurostatNUTS2": {
                   "placeCount": 328,
@@ -2041,7 +2211,9 @@
                       "dcid": "nuts/ITC4",
                       "name": "Lombardia"
                     }
-                  ]
+                  ],
+                  "minValue": 0.95,
+                  "maxValue": 4.9
                 },
                 "EurostatNUTS3": {
                   "placeCount": 1390,
@@ -2058,7 +2230,9 @@
                       "dcid": "nuts/ES511",
                       "name": "Barcelona"
                     }
-                  ]
+                  ],
+                  "minValue": 0.78,
+                  "maxValue": 4.9
                 }
               },
               "minValue": 0.78,
