@@ -121,7 +121,8 @@ type MixerClient interface {
 	VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error)
 	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
-	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*ProteinPageResponse, error)
+	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
+	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 }
 
 type mixerClient struct {
@@ -510,9 +511,18 @@ func (c *mixerClient) ObservationsPoint(ctx context.Context, in *ObservationsPoi
 	return out, nil
 }
 
-func (c *mixerClient) ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*ProteinPageResponse, error) {
-	out := new(ProteinPageResponse)
+func (c *mixerClient) ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
+	out := new(GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ProteinPage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error) {
+	out := new(GetPlacePageDataResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/PlacePage", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -622,7 +632,8 @@ type MixerServer interface {
 	VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error)
 	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
-	ProteinPage(context.Context, *ProteinPageRequest) (*ProteinPageResponse, error)
+	ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error)
+	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -755,8 +766,11 @@ func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *BulkVariableI
 func (UnimplementedMixerServer) ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsPoint not implemented")
 }
-func (UnimplementedMixerServer) ProteinPage(context.Context, *ProteinPageRequest) (*ProteinPageResponse, error) {
+func (UnimplementedMixerServer) ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProteinPage not implemented")
+}
+func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PlacePage not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -1544,6 +1558,24 @@ func _Mixer_ProteinPage_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_PlacePage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PlacePageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).PlacePage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/PlacePage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).PlacePage(ctx, req.(*PlacePageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1722,6 +1754,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ProteinPage",
 			Handler:    _Mixer_ProteinPage_Handler,
+		},
+		{
+			MethodName: "PlacePage",
+			Handler:    _Mixer_PlacePage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package page
+package internalbio
 
 import (
 	"context"
@@ -25,15 +25,13 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// ProteinPage implements API for Mixer.ProteinPage.
-func ProteinPage(
-	ctx context.Context,
-	in *pb.ProteinPageRequest,
-	store *store.Store,
-) (*pb.GraphNodes, error) {
-	entity := in.GetEntity()
-	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
+// GetBioPageData implements API for Mixer.GetBioPageData.
+func GetBioPageData(
+	ctx context.Context, in *pb.GetBioPageDataRequest, store *store.Store) (
+	*pb.GraphNodes, error) {
+	dcid := in.GetDcid()
+	if !util.CheckValidDCIDs([]string{dcid}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcid")
 	}
-	return biopage.GetBioPageDataHelper(ctx, entity, store)
+	return biopage.GetBioPageDataHelper(ctx, dcid, store)
 }

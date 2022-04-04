@@ -60,9 +60,8 @@ func TestProteinPage(t *testing.T) {
 				continue
 			}
 
-			var expected pb.ProteinPageResponse
-			err = test.ReadJSON(goldenPath, c.goldenFile, &expected)
-			if err != nil {
+			var expected pb.GraphNodes
+			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
 				continue
 			}

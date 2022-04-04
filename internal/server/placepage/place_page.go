@@ -35,8 +35,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/sync/errgroup"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 const (
@@ -533,23 +531,20 @@ func getNearbyPlaces(ctx context.Context, store *store.Store, dcid string,
 	return getDcids(result[0:maxNearbyPlace]), nil
 }
 
-// GetPlacePageData implements API for Mixer.GetPlacePageData.
+// GetPlacePageDataHelper is a wrapper to get place page data.
 //
 // TODO(shifucun):For each related place, it is supposed to have dcid, name and
 // population but it's not complete now as the client in most cases only requires
 // the dcid. Should consider have the full name, even with parent place
 // abbreviations like "CA" filled in here so the client won't bother to fetch
 // those again.
-func GetPlacePageData(
-	ctx context.Context, in *pb.GetPlacePageDataRequest, store *store.Store,
+func GetPlacePageDataHelper(
+	ctx context.Context,
+	placeDcid string,
+	newStatVars []string,
+	seed int64,
+	store *store.Store,
 ) (*pb.GetPlacePageDataResponse, error) {
-	placeDcid := in.GetPlace()
-	if placeDcid == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcid")
-	}
-	seed := in.GetSeed()
-	newStatVars := in.GetNewStatVars()
-
 	placeType, err := getPlaceType(ctx, store, placeDcid)
 	if err != nil {
 		return nil, err
