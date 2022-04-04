@@ -8,6 +8,7 @@
         "Fertility Rate of Person"
       ],
       "displayName": "Fertility Rate",
+      "definition": "mp=fertilityRate,pt=Person",
       "hasData": true
     },
     {
@@ -17,6 +18,7 @@
         "Gender Income Inequality of Person"
       ],
       "displayName": "Gender Income Inequality",
+      "definition": "mp=genderIncomeInequality,pt=Person",
       "hasData": true
     },
     {
@@ -26,6 +28,7 @@
         "Life Expectancy of Person"
       ],
       "displayName": "Life Expectancy",
+      "definition": "mp=lifeExpectancy,pt=Person",
       "hasData": true
     },
     {
@@ -35,6 +38,7 @@
         "Median Age of Person"
       ],
       "displayName": "Median Age",
+      "definition": "st=medianValue,mp=age,pt=Person",
       "hasData": true
     },
     {
@@ -44,6 +48,7 @@
         "Median Income of Person"
       ],
       "displayName": "Median Income",
+      "definition": "st=medianValue,mp=income,pt=Person",
       "hasData": true
     },
     {
@@ -53,6 +58,7 @@
         "Percent of Internet Users"
       ],
       "displayName": "Percent of Internet Users",
+      "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
       "hasData": true
     },
     {
@@ -62,6 +68,7 @@
         "Population Count of Person"
       ],
       "displayName": "Population",
+      "definition": "mp=count,pt=Person",
       "hasData": true
     },
     {
@@ -71,6 +78,7 @@
         "Population Change"
       ],
       "displayName": "Population Change",
+      "definition": "mp=incrementalCount,pt=Person",
       "hasData": true
     },
     {
@@ -80,6 +88,7 @@
         "Population Density"
       ],
       "displayName": "Population Density",
+      "definition": "md=area,mp=count,pt=Person",
       "hasData": true
     },
     {
@@ -89,6 +98,7 @@
         "Population Growth Rate"
       ],
       "displayName": "Population Growth Rate",
+      "definition": "st=growthRate,mp=count,pt=Person",
       "hasData": true
     }
   ],

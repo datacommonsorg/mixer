@@ -24,7 +24,8 @@
           "searchNames": [
             "Count of Birth Event With Medical Status is Live Birth (Per Capita)"
           ],
-          "displayName": "Count of Birth Event: Live Birth (Per Capita)"
+          "displayName": "Count of Birth Event: Live Birth (Per Capita)",
+          "definition": "md=Count_Person,mp=count,pt=BirthEvent,medicalStatus=LiveBirth"
         }
       ]
     },
@@ -44,7 +45,8 @@
           "searchNames": [
             "Amount of Consumption With Consumed Thing is Alcohol, Consumer Age is 15 Years or More (As Fraction of Count Person 15 or More Years)"
           ],
-          "displayName": "Amount of Consumption: Alcohol, 15 Years or More (As Fraction of Count Person 15 or More Years)"
+          "displayName": "Amount of Consumption: Alcohol, 15 Years or More (As Fraction of Count Person 15 or More Years)",
+          "definition": "md=Count_Person_15OrMoreYears,mp=amount,pt=Consumption,consumedThing=Alcohol,consumerAge=Years15Onwards"
         }
       ],
       "childStatVarGroups": [
@@ -62,7 +64,8 @@
           "searchNames": [
             "Amount of Consumption With Consumed Thing is Alcohol, Consumer Age is 15 Years or More (As Fraction of Count Person 15 or More Years)"
           ],
-          "displayName": "Amount of Consumption: Alcohol, 15 Years or More (As Fraction of Count Person 15 or More Years)"
+          "displayName": "Amount of Consumption: Alcohol, 15 Years or More (As Fraction of Count Person 15 or More Years)",
+          "definition": "md=Count_Person_15OrMoreYears,mp=amount,pt=Consumption,consumedThing=Alcohol,consumerAge=Years15Onwards"
         },
         {
           "id": "Amount_Consumption_Electricity_PerCapita",
@@ -70,7 +73,8 @@
           "searchNames": [
             "Amount of Consumption With Consumed Thing is Electricity (As Fraction of Per Capita)"
           ],
-          "displayName": "Amount of Consumption: Electricity (As Fraction of Per Capita)"
+          "displayName": "Amount of Consumption: Electricity (As Fraction of Per Capita)",
+          "definition": "md=PerCapita,mp=amount,pt=Consumption,consumedThing=Electricity"
         },
         {
           "id": "Amount_Consumption_Energy_PerCapita",
@@ -78,7 +82,8 @@
           "searchNames": [
             "Amount of Consumption With Consumed Thing is Energy (As Fraction of Per Capita)"
           ],
-          "displayName": "Amount of Consumption: Energy (As Fraction of Per Capita)"
+          "displayName": "Amount of Consumption: Energy (As Fraction of Per Capita)",
+          "definition": "md=PerCapita,mp=amount,pt=Consumption,consumedThing=Energy"
         },
         {
           "id": "Amount_Consumption_RenewableEnergy_AsFractionOf_Amount_Consumption_Energy",
@@ -86,7 +91,8 @@
           "searchNames": [
             "Amount of Consumption With Consumed Thing is Renewable Energy (As Fraction of Amount Consumption Energy)"
           ],
-          "displayName": "Amount of Consumption: Renewable Energy (As Fraction of Amount Consumption Energy)"
+          "displayName": "Amount of Consumption: Renewable Energy (As Fraction of Amount Consumption Energy)",
+          "definition": "md=Amount_Consumption_Energy,mp=amount,pt=Consumption,consumedThing=RenewableEnergy"
         }
       ]
     },
@@ -126,7 +132,8 @@
           "searchNames": [
             "Count of Criminal Activities With Crime Type is Murder And Non Negligent Manslaughter (Per Capita)"
           ],
-          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter (Per Capita)"
+          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter (Per Capita)",
+          "definition": "md=Count_Person,mp=count,pt=CriminalActivities,crimeType=MurderAndNonNegligentManslaughter"
         }
       ],
       "childStatVarGroups": [
@@ -144,7 +151,8 @@
           "searchNames": [
             "Count of Criminal Activities With Crime Type is Murder And Non Negligent Manslaughter, Gender is Female (As Fraction of Count Person Female)"
           ],
-          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Female (As Fraction of Count Person Female)"
+          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Female (As Fraction of Count Person Female)",
+          "definition": "md=Count_Person_Female,mp=count,pt=CriminalActivities,crimeType=MurderAndNonNegligentManslaughter,gender=Female"
         },
         {
           "id": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male",
@@ -152,7 +160,8 @@
           "searchNames": [
             "Count of Criminal Activities With Crime Type is Murder And Non Negligent Manslaughter, Gender is Male (As Fraction of Count Person Male)"
           ],
-          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Male (As Fraction of Count Person Male)"
+          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Male (As Fraction of Count Person Male)",
+          "definition": "md=Count_Person_Male,mp=count,pt=CriminalActivities,crimeType=MurderAndNonNegligentManslaughter,gender=Male"
         }
       ]
     },
@@ -164,7 +173,8 @@
           "searchNames": [
             "Count of Criminal Activities With Crime Type is Murder And Non Negligent Manslaughter, Gender is Female (As Fraction of Count Person Female)"
           ],
-          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Female (As Fraction of Count Person Female)"
+          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Female (As Fraction of Count Person Female)",
+          "definition": "md=Count_Person_Female,mp=count,pt=CriminalActivities,crimeType=MurderAndNonNegligentManslaughter,gender=Female"
         },
         {
           "id": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Male_AsFractionOf_Count_Person_Male",
@@ -172,7 +182,8 @@
           "searchNames": [
             "Count of Criminal Activities With Crime Type is Murder And Non Negligent Manslaughter, Gender is Male (As Fraction of Count Person Male)"
           ],
-          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Male (As Fraction of Count Person Male)"
+          "displayName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Male (As Fraction of Count Person Male)",
+          "definition": "md=Count_Person_Male,mp=count,pt=CriminalActivities,crimeType=MurderAndNonNegligentManslaughter,gender=Male"
         }
       ]
     },
@@ -184,7 +195,8 @@
           "searchNames": [
             "Fertility Rate of Person"
           ],
-          "displayName": "Fertility Rate"
+          "displayName": "Fertility Rate",
+          "definition": "mp=fertilityRate,pt=Person"
         },
         {
           "id": "LifeExpectancy_Person",
@@ -192,7 +204,8 @@
           "searchNames": [
             "Life Expectancy of Person"
           ],
-          "displayName": "Life Expectancy"
+          "displayName": "Life Expectancy",
+          "definition": "mp=lifeExpectancy,pt=Person"
         },
         {
           "id": "Count_Person_IsInternetUser_PerCapita",
@@ -200,7 +213,8 @@
           "searchNames": [
             "Percent of Internet Users"
           ],
-          "displayName": "Percent of Internet Users"
+          "displayName": "Percent of Internet Users",
+          "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True"
         },
         {
           "id": "Count_Person",
@@ -208,7 +222,8 @@
           "searchNames": [
             "Population Count of Person"
           ],
-          "displayName": "Population"
+          "displayName": "Population",
+          "definition": "mp=count,pt=Person"
         },
         {
           "id": "GrowthRate_Count_Person",
@@ -216,7 +231,8 @@
           "searchNames": [
             "Population Growth Rate"
           ],
-          "displayName": "Population Growth Rate"
+          "displayName": "Population Growth Rate",
+          "definition": "st=growthRate,mp=count,pt=Person"
         }
       ],
       "childStatVarGroups": [
@@ -294,7 +310,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Healthcare Expenditure (Per Capita)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
+          "definition": "md=Count_Person,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=HealthcareExpenditure"
         },
         {
           "id": "Amount_EconomicActivity_ExpenditureActivity_TertiaryEducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government",
@@ -302,7 +319,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Tertiary Education Expenditure, Remunerator is Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)",
+          "definition": "md=Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=TertiaryEducationExpenditure,remunerator=Government"
         }
       ],
       "childStatVarGroups": [
@@ -340,7 +358,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Education Expenditure, Expensor is Government (As Fraction of Amount Economic Activity Expenditure Activity Government)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Government)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Government)",
+          "definition": "md=Amount_EconomicActivity_ExpenditureActivity_Government,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=EducationExpenditure,expensor=Government"
         },
         {
           "id": "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
@@ -348,7 +367,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Education Expenditure, Expensor is Government (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Education Expenditure, Government (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Education Expenditure, Government (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)",
+          "definition": "md=Amount_EconomicActivity_GrossDomesticProduction_Nominal,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=EducationExpenditure,expensor=Government"
         }
       ]
     },
@@ -376,7 +396,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Military Expenditure, Expensor is Government"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Military Expenditure, Government"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Military Expenditure, Government",
+          "definition": "mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=MilitaryExpenditure,expensor=Government"
         },
         {
           "id": "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
@@ -384,7 +405,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Military Expenditure, Expensor is Government (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Military Expenditure, Government (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Military Expenditure, Government (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)",
+          "definition": "md=Amount_EconomicActivity_GrossDomesticProduction_Nominal,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=MilitaryExpenditure,expensor=Government"
         }
       ]
     },
@@ -408,7 +430,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Tertiary Education Expenditure, Remunerator is Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)",
+          "definition": "md=Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=TertiaryEducationExpenditure,remunerator=Government"
         }
       ]
     },
@@ -452,7 +475,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Gross Domestic Production (Nominal)"
           ],
-          "displayName": "Amount of Economic Activity (Nominal): Gross Domestic Production"
+          "displayName": "Amount of Economic Activity (Nominal): Gross Domestic Production",
+          "definition": "mq=Nominal,mp=amount,pt=EconomicActivity,activitySource=GrossDomesticProduction"
         },
         {
           "id": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita",
@@ -460,7 +484,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Gross Domestic Production (As Fraction of Per Capita) (Nominal)"
           ],
-          "displayName": "Amount of Economic Activity (Nominal): Gross Domestic Production (As Fraction of Per Capita)"
+          "displayName": "Amount of Economic Activity (Nominal): Gross Domestic Production (As Fraction of Per Capita)",
+          "definition": "md=PerCapita,mq=Nominal,mp=amount,pt=EconomicActivity,activitySource=GrossDomesticProduction"
         },
         {
           "id": "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction",
@@ -468,7 +493,8 @@
           "searchNames": [
             "Growth Rate Amount of Economic Activity With Activity Source is Gross Domestic Production"
           ],
-          "displayName": "Growth Rate Amount of Economic Activity: Gross Domestic Production"
+          "displayName": "Growth Rate Amount of Economic Activity: Gross Domestic Production",
+          "definition": "st=growthRate,mp=amount,pt=EconomicActivity,activitySource=GrossDomesticProduction"
         }
       ]
     },
@@ -480,7 +506,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Gross National Income (Purchasing Power Parity)"
           ],
-          "displayName": "Amount of Economic Activity (Purchasing Power Parity): Gross National Income"
+          "displayName": "Amount of Economic Activity (Purchasing Power Parity): Gross National Income",
+          "definition": "mq=PurchasingPowerParity,mp=amount,pt=EconomicActivity,activitySource=GrossNationalIncome"
         },
         {
           "id": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
@@ -488,7 +515,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Gross National Income (As Fraction of Per Capita) (Purchasing Power Parity)"
           ],
-          "displayName": "Amount of Economic Activity (Purchasing Power Parity): Gross National Income (As Fraction of Per Capita)"
+          "displayName": "Amount of Economic Activity (Purchasing Power Parity): Gross National Income (As Fraction of Per Capita)",
+          "definition": "md=PerCapita,mq=PurchasingPowerParity,mp=amount,pt=EconomicActivity,activitySource=GrossNationalIncome"
         }
       ]
     },
@@ -548,7 +576,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Healthcare Expenditure (Per Capita)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
+          "definition": "md=Count_Person,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=HealthcareExpenditure"
         },
         {
           "id": "Amount_EconomicActivity_ExpenditureActivity_TertiaryEducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government",
@@ -556,7 +585,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Tertiary Education Expenditure, Remunerator is Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)",
+          "definition": "md=Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=TertiaryEducationExpenditure,remunerator=Government"
         }
       ],
       "childStatVarGroups": [
@@ -646,7 +676,8 @@
           "searchNames": [
             "Amount of Economic Activity With Activity Source is Expenditure Activity, Expenditure Type is Tertiary Education Expenditure, Remunerator is Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
           ],
-          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)"
+          "displayName": "Amount of Economic Activity: Expenditure Activity, Tertiary Education Expenditure, Government (As Fraction of Amount Economic Activity Expenditure Activity Education Expenditure Government)",
+          "definition": "md=Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government,mp=amount,pt=EconomicActivity,activitySource=ExpenditureActivity,expenditureType=TertiaryEducationExpenditure,remunerator=Government"
         }
       ]
     },
@@ -698,7 +729,8 @@
           "searchNames": [
             "Mobile Subscriptions Per Capita"
           ],
-          "displayName": "Mobile Subscriptions Per Capita"
+          "displayName": "Mobile Subscriptions Per Capita",
+          "definition": "md=Count_Person,mp=count,pt=Product,productType=MobileCellularSubscription"
         }
       ],
       "childStatVarGroups": [
@@ -748,7 +780,8 @@
           "searchNames": [
             "CO2 Emissions Per Capita"
           ],
-          "displayName": "CO2 Emissions Per Capita"
+          "displayName": "CO2 Emissions Per Capita",
+          "definition": "md=PerCapita,mp=amount,pt=Emissions,emittedThing=CarbonDioxide"
         }
       ]
     },
@@ -795,7 +828,8 @@
           "searchNames": [
             "Fertility Rate of Person"
           ],
-          "displayName": "Fertility Rate"
+          "displayName": "Fertility Rate",
+          "definition": "mp=fertilityRate,pt=Person"
         },
         {
           "id": "LifeExpectancy_Person",
@@ -803,7 +837,8 @@
           "searchNames": [
             "Life Expectancy of Person"
           ],
-          "displayName": "Life Expectancy"
+          "displayName": "Life Expectancy",
+          "definition": "mp=lifeExpectancy,pt=Person"
         }
       ],
       "childStatVarGroups": [
@@ -833,7 +868,8 @@
           "searchNames": [
             "Count of Mortality Event (Per Capita)"
           ],
-          "displayName": "Count of Mortality Event (Per Capita)"
+          "displayName": "Count of Mortality Event (Per Capita)",
+          "definition": "md=Count_Person,mp=count,pt=MortalityEvent"
         }
       ],
       "childStatVarGroups": [
@@ -867,7 +903,8 @@
           "searchNames": [
             "Count of Mortality Event With Age is Years 0"
           ],
-          "displayName": "Count of Mortality Event: Years 0"
+          "displayName": "Count of Mortality Event: Years 0",
+          "definition": "mp=count,pt=MortalityEvent,age=Years0"
         },
         {
           "id": "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth",
@@ -875,7 +912,8 @@
           "searchNames": [
             "Count of Mortality Event With Age is Years 0 (As Fraction of Count Birth Event Live Birth)"
           ],
-          "displayName": "Count of Mortality Event: Years 0 (As Fraction of Count Birth Event Live Birth)"
+          "displayName": "Count of Mortality Event: Years 0 (As Fraction of Count Birth Event Live Birth)",
+          "definition": "md=Count_BirthEvent_LiveBirth,mp=count,pt=MortalityEvent,age=Years0"
         }
       ],
       "childStatVarGroups": [
@@ -893,7 +931,8 @@
           "searchNames": [
             "Count of Mortality Event With Age is Years 0, Gender is Female (As Fraction of Count Birth Event Live Birth Female)"
           ],
-          "displayName": "Count of Mortality Event: Years 0, Female (As Fraction of Count Birth Event Live Birth Female)"
+          "displayName": "Count of Mortality Event: Years 0, Female (As Fraction of Count Birth Event Live Birth Female)",
+          "definition": "md=Count_BirthEvent_LiveBirth_Female,mp=count,pt=MortalityEvent,age=Years0,gender=Female"
         },
         {
           "id": "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
@@ -901,7 +940,8 @@
           "searchNames": [
             "Count of Mortality Event With Age is Years 0, Gender is Male (As Fraction of Count Birth Event Live Birth Male)"
           ],
-          "displayName": "Count of Mortality Event: Years 0, Male (As Fraction of Count Birth Event Live Birth Male)"
+          "displayName": "Count of Mortality Event: Years 0, Male (As Fraction of Count Birth Event Live Birth Male)",
+          "definition": "md=Count_BirthEvent_LiveBirth_Male,mp=count,pt=MortalityEvent,age=Years0,gender=Male"
         }
       ]
     },
@@ -913,7 +953,8 @@
           "searchNames": [
             "Count of Mortality Event With Age is Years 0, Gender is Female (As Fraction of Count Birth Event Live Birth Female)"
           ],
-          "displayName": "Count of Mortality Event: Years 0, Female (As Fraction of Count Birth Event Live Birth Female)"
+          "displayName": "Count of Mortality Event: Years 0, Female (As Fraction of Count Birth Event Live Birth Female)",
+          "definition": "md=Count_BirthEvent_LiveBirth_Female,mp=count,pt=MortalityEvent,age=Years0,gender=Female"
         }
       ]
     },
@@ -925,7 +966,8 @@
           "searchNames": [
             "Count of Mortality Event With Age is Years 0, Gender is Male (As Fraction of Count Birth Event Live Birth Male)"
           ],
-          "displayName": "Count of Mortality Event: Years 0, Male (As Fraction of Count Birth Event Live Birth Male)"
+          "displayName": "Count of Mortality Event: Years 0, Male (As Fraction of Count Birth Event Live Birth Male)",
+          "definition": "md=Count_BirthEvent_LiveBirth_Male,mp=count,pt=MortalityEvent,age=Years0,gender=Male"
         }
       ]
     },
@@ -945,7 +987,8 @@
           "searchNames": [
             "Count of Mortality Event With Cause of Death is X 60-X 84 (Intentional Self-harm) (Per Capita)"
           ],
-          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm) (Per Capita)"
+          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm) (Per Capita)",
+          "definition": "md=Count_Person,mp=count,pt=MortalityEvent,causeOfDeath=ICD10/X60-X84"
         }
       ],
       "childStatVarGroups": [
@@ -963,7 +1006,8 @@
           "searchNames": [
             "Count of Mortality Event With Cause of Death is X 60-X 84 (Intentional Self-harm), Gender is Female (As Fraction of Count Person Female)"
           ],
-          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)"
+          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+          "definition": "md=Count_Person_Female,mp=count,pt=MortalityEvent,causeOfDeath=ICD10/X60-X84,gender=Female"
         },
         {
           "id": "Count_Death_IntentionalSelfHarm_Male_AsFractionOf_Count_Person_Male",
@@ -971,7 +1015,8 @@
           "searchNames": [
             "Count of Mortality Event With Cause of Death is X 60-X 84 (Intentional Self-harm), Gender is Male (As Fraction of Count Person Male)"
           ],
-          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Male (As Fraction of Count Person Male)"
+          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Male (As Fraction of Count Person Male)",
+          "definition": "md=Count_Person_Male,mp=count,pt=MortalityEvent,causeOfDeath=ICD10/X60-X84,gender=Male"
         }
       ]
     },
@@ -983,7 +1028,8 @@
           "searchNames": [
             "Count of Mortality Event With Cause of Death is X 60-X 84 (Intentional Self-harm), Gender is Female (As Fraction of Count Person Female)"
           ],
-          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)"
+          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+          "definition": "md=Count_Person_Female,mp=count,pt=MortalityEvent,causeOfDeath=ICD10/X60-X84,gender=Female"
         }
       ]
     },
@@ -995,7 +1041,8 @@
           "searchNames": [
             "Count of Mortality Event With Cause of Death is X 60-X 84 (Intentional Self-harm), Gender is Male (As Fraction of Count Person Male)"
           ],
-          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Male (As Fraction of Count Person Male)"
+          "displayName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Male (As Fraction of Count Person Male)",
+          "definition": "md=Count_Person_Male,mp=count,pt=MortalityEvent,causeOfDeath=ICD10/X60-X84,gender=Male"
         }
       ]
     },
@@ -1063,7 +1110,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Labor Force Status is In Labor Force, Gender is Female (As Fraction of Count Person in Labor Force)"
           ],
-          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)"
+          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
+          "definition": "md=Count_Person_InLaborForce,mp=count,pt=Person,age=Years15Onwards,employmentStatus=BLS_InLaborForce,gender=Female"
         }
       ],
       "childStatVarGroups": [
@@ -1097,7 +1145,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Female, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Female)"
           ],
-          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)"
+          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
+          "definition": "md=Count_Person_15OrMoreYears_Female,mp=count,pt=Person,age=Years15Onwards,gender=Female,healthBehavior=Smoking"
         },
         {
           "id": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce",
@@ -1105,7 +1154,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Labor Force Status is In Labor Force, Gender is Female (As Fraction of Count Person in Labor Force)"
           ],
-          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)"
+          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
+          "definition": "md=Count_Person_InLaborForce,mp=count,pt=Person,age=Years15Onwards,employmentStatus=BLS_InLaborForce,gender=Female"
         }
       ]
     },
@@ -1117,7 +1167,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Male, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Male)"
           ],
-          "displayName": "Smoking prevalence, males (% of adults)"
+          "displayName": "Smoking prevalence, males (% of adults)",
+          "definition": "md=Count_Person_15OrMoreYears_Male,mp=count,pt=Person,age=Years15Onwards,gender=Male,healthBehavior=Smoking"
         }
       ]
     },
@@ -1129,7 +1180,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Female, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Female)"
           ],
-          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)"
+          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
+          "definition": "md=Count_Person_15OrMoreYears_Female,mp=count,pt=Person,age=Years15Onwards,gender=Female,healthBehavior=Smoking"
         },
         {
           "id": "Count_Person_15OrMoreYears_Male_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Male",
@@ -1137,7 +1189,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Male, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Male)"
           ],
-          "displayName": "Smoking prevalence, males (% of adults)"
+          "displayName": "Smoking prevalence, males (% of adults)",
+          "definition": "md=Count_Person_15OrMoreYears_Male,mp=count,pt=Person,age=Years15Onwards,gender=Male,healthBehavior=Smoking"
         }
       ]
     },
@@ -1157,7 +1210,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years)"
           ],
-          "displayName": "Population: 15 Years or More, Smoking (As Fraction of Count Person 15 or More Years)"
+          "displayName": "Population: 15 Years or More, Smoking (As Fraction of Count Person 15 or More Years)",
+          "definition": "md=Count_Person_15OrMoreYears,mp=count,pt=Person,age=Years15Onwards,healthBehavior=Smoking"
         }
       ],
       "childStatVarGroups": [
@@ -1199,7 +1253,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 - 64 Years, Labor Force Status is In Labor Force, Gender is Female (As Fraction of Count Person 15 To 64 Years Female)"
           ],
-          "displayName": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)"
+          "displayName": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)",
+          "definition": "md=Count_Person_15To64Years_Female,mp=count,pt=Person,age=Years15To64,employmentStatus=BLS_InLaborForce,gender=Female"
         }
       ]
     },
@@ -1211,7 +1266,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 - 64 Years, Labor Force Status is In Labor Force, Gender is Male (As Fraction of Count Person 15 To 64 Years Male)"
           ],
-          "displayName": "Population: 15 - 64 Years, in Labor Force, Male (As Fraction of Count Person 15 To 64 Years Male)"
+          "displayName": "Population: 15 - 64 Years, in Labor Force, Male (As Fraction of Count Person 15 To 64 Years Male)",
+          "definition": "md=Count_Person_15To64Years_Male,mp=count,pt=Person,age=Years15To64,employmentStatus=BLS_InLaborForce,gender=Male"
         }
       ]
     },
@@ -1223,7 +1279,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 - 64 Years, Labor Force Status is In Labor Force, Gender is Female (As Fraction of Count Person 15 To 64 Years Female)"
           ],
-          "displayName": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)"
+          "displayName": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)",
+          "definition": "md=Count_Person_15To64Years_Female,mp=count,pt=Person,age=Years15To64,employmentStatus=BLS_InLaborForce,gender=Female"
         },
         {
           "id": "Count_Person_15To64Years_Male_InLaborForce_AsFractionOf_Count_Person_15To64Years_Male",
@@ -1231,7 +1288,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 - 64 Years, Labor Force Status is In Labor Force, Gender is Male (As Fraction of Count Person 15 To 64 Years Male)"
           ],
-          "displayName": "Population: 15 - 64 Years, in Labor Force, Male (As Fraction of Count Person 15 To 64 Years Male)"
+          "displayName": "Population: 15 - 64 Years, in Labor Force, Male (As Fraction of Count Person 15 To 64 Years Male)",
+          "definition": "md=Count_Person_15To64Years_Male,mp=count,pt=Person,age=Years15To64,employmentStatus=BLS_InLaborForce,gender=Male"
         }
       ]
     },
@@ -1251,7 +1309,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 - 64 Years, Labor Force Status is In Labor Force (As Fraction of Count Person 15 To 64 Years)"
           ],
-          "displayName": "Population: 15 - 64 Years, in Labor Force (As Fraction of Count Person 15 To 64 Years)"
+          "displayName": "Population: 15 - 64 Years, in Labor Force (As Fraction of Count Person 15 To 64 Years)",
+          "definition": "md=Count_Person_15To64Years,mp=count,pt=Person,age=Years15To64,employmentStatus=BLS_InLaborForce"
         }
       ],
       "childStatVarGroups": [
@@ -1269,7 +1328,8 @@
           "searchNames": [
             "Population Count of Person With Age is 20 - 79 Years, Medical Condition is Diabetes (As Fraction of Count Person 20 To 79 Years)"
           ],
-          "displayName": "Population: 20 - 79 Years, Diabetes (As Fraction of Count Person 20 To 79 Years)"
+          "displayName": "Population: 20 - 79 Years, Diabetes (As Fraction of Count Person 20 To 79 Years)",
+          "definition": "md=Count_Person_20To79Years,mp=count,pt=Person,age=Years20To79,healthOutcome=Diabetes"
         }
       ]
     },
@@ -1281,7 +1341,8 @@
           "searchNames": [
             "Mortality Rate of Person With Age is 4 Years or Less (As Fraction of Count Birth Event Live Birth)"
           ],
-          "displayName": "Mortality Rate: 4 Years or Less (As Fraction of Count Birth Event Live Birth)"
+          "displayName": "Mortality Rate: 4 Years or Less (As Fraction of Count Birth Event Live Birth)",
+          "definition": "md=Count_BirthEvent_LiveBirth,mp=mortalityRate,pt=Person,age=YearsUpto4"
         }
       ],
       "childStatVarGroups": [
@@ -1311,7 +1372,8 @@
           "searchNames": [
             "Population Count of Person With Age is 4 Years or Less, Health Behavior is Overweight (As Fraction of Count Person Upto 4 Years)"
           ],
-          "displayName": "Population: 4 Years or Less, Overweight (As Fraction of Count Person Upto 4 Years)"
+          "displayName": "Population: 4 Years or Less, Overweight (As Fraction of Count Person Upto 4 Years)",
+          "definition": "md=Count_Person_Upto4Years,mp=count,pt=Person,age=YearsUpto4,healthBehavior=Overweight"
         }
       ]
     },
@@ -1335,7 +1397,8 @@
           "searchNames": [
             "Population Count of Person With Age is 4 Years or Less, Medical Condition is Severe Wasting (As Fraction of Count Person Upto 4 Years)"
           ],
-          "displayName": "Population: 4 Years or Less, Severe Wasting (As Fraction of Count Person Upto 4 Years)"
+          "displayName": "Population: 4 Years or Less, Severe Wasting (As Fraction of Count Person Upto 4 Years)",
+          "definition": "md=Count_Person_Upto4Years,mp=count,pt=Person,age=YearsUpto4,medicalCondition=SevereWasting"
         }
       ]
     },
@@ -1347,7 +1410,8 @@
           "searchNames": [
             "Population Count of Person With Age is 4 Years or Less, Medical Condition is Wasting (As Fraction of Count Person Upto 4 Years)"
           ],
-          "displayName": "Population: 4 Years or Less, Wasting (As Fraction of Count Person Upto 4 Years)"
+          "displayName": "Population: 4 Years or Less, Wasting (As Fraction of Count Person Upto 4 Years)",
+          "definition": "md=Count_Person_Upto4Years,mp=count,pt=Person,age=YearsUpto4,medicalCondition=Wasting"
         }
       ]
     },
@@ -1371,7 +1435,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 - 64 Years, Labor Force Status is In Labor Force, Gender is Female (As Fraction of Count Person 15 To 64 Years Female)"
           ],
-          "displayName": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)"
+          "displayName": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)",
+          "definition": "md=Count_Person_15To64Years_Female,mp=count,pt=Person,age=Years15To64,employmentStatus=BLS_InLaborForce,gender=Female"
         },
         {
           "id": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce",
@@ -1379,7 +1444,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Labor Force Status is In Labor Force, Gender is Female (As Fraction of Count Person in Labor Force)"
           ],
-          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)"
+          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
+          "definition": "md=Count_Person_InLaborForce,mp=count,pt=Person,age=Years15Onwards,employmentStatus=BLS_InLaborForce,gender=Female"
         }
       ]
     },
@@ -1403,7 +1469,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 - 64 Years, Labor Force Status is In Labor Force, Gender is Male (As Fraction of Count Person 15 To 64 Years Male)"
           ],
-          "displayName": "Population: 15 - 64 Years, in Labor Force, Male (As Fraction of Count Person 15 To 64 Years Male)"
+          "displayName": "Population: 15 - 64 Years, in Labor Force, Male (As Fraction of Count Person 15 To 64 Years Male)",
+          "definition": "md=Count_Person_15To64Years_Male,mp=count,pt=Person,age=Years15To64,employmentStatus=BLS_InLaborForce,gender=Male"
         }
       ]
     },
@@ -1431,7 +1498,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Labor Force Status is In Labor Force, Gender is Female (As Fraction of Count Person in Labor Force)"
           ],
-          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)"
+          "displayName": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
+          "definition": "md=Count_Person_InLaborForce,mp=count,pt=Person,age=Years15Onwards,employmentStatus=BLS_InLaborForce,gender=Female"
         }
       ],
       "childStatVarGroups": [
@@ -1449,7 +1517,8 @@
           "searchNames": [
             "Population Count of Person With Age is 20 - 79 Years, Medical Condition is Diabetes (As Fraction of Count Person 20 To 79 Years)"
           ],
-          "displayName": "Population: 20 - 79 Years, Diabetes (As Fraction of Count Person 20 To 79 Years)"
+          "displayName": "Population: 20 - 79 Years, Diabetes (As Fraction of Count Person 20 To 79 Years)",
+          "definition": "md=Count_Person_20To79Years,mp=count,pt=Person,age=Years20To79,healthOutcome=Diabetes"
         }
       ]
     },
@@ -1489,7 +1558,8 @@
           "searchNames": [
             "Life Expectancy of Person With Gender is Female"
           ],
-          "displayName": "Life expectancy at birth, female (years)"
+          "displayName": "Life expectancy at birth, female (years)",
+          "definition": "mp=lifeExpectancy,pt=Person,gender=Female"
         }
       ],
       "childStatVarGroups": [
@@ -1515,7 +1585,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Female, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Female)"
           ],
-          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)"
+          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
+          "definition": "md=Count_Person_15OrMoreYears_Female,mp=count,pt=Person,age=Years15Onwards,gender=Female,healthBehavior=Smoking"
         }
       ]
     },
@@ -1543,7 +1614,8 @@
           "searchNames": [
             "Life Expectancy of Person With Gender is Male"
           ],
-          "displayName": "Life Expectancy: Male"
+          "displayName": "Life Expectancy: Male",
+          "definition": "mp=lifeExpectancy,pt=Person,gender=Male"
         }
       ],
       "childStatVarGroups": [
@@ -1569,7 +1641,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Male, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Male)"
           ],
-          "displayName": "Smoking prevalence, males (% of adults)"
+          "displayName": "Smoking prevalence, males (% of adults)",
+          "definition": "md=Count_Person_15OrMoreYears_Male,mp=count,pt=Person,age=Years15Onwards,gender=Male,healthBehavior=Smoking"
         }
       ]
     },
@@ -1597,7 +1670,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Female, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Female)"
           ],
-          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)"
+          "displayName": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
+          "definition": "md=Count_Person_15OrMoreYears_Female,mp=count,pt=Person,age=Years15Onwards,gender=Female,healthBehavior=Smoking"
         },
         {
           "id": "Count_Person_15OrMoreYears_Male_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Male",
@@ -1605,7 +1679,8 @@
           "searchNames": [
             "Population Count of Person With Age is 15 Years or More, Gender is Male, Health Behavior is Smoking (As Fraction of Count Person 15 or More Years Male)"
           ],
-          "displayName": "Smoking prevalence, males (% of adults)"
+          "displayName": "Smoking prevalence, males (% of adults)",
+          "definition": "md=Count_Person_15OrMoreYears_Male,mp=count,pt=Person,age=Years15Onwards,gender=Male,healthBehavior=Smoking"
         }
       ]
     },
@@ -1669,7 +1744,8 @@
           "searchNames": [
             "Population Count of Person With Labor Force Status is In Labor Force"
           ],
-          "displayName": "Population: in Labor Force"
+          "displayName": "Population: in Labor Force",
+          "definition": "mp=count,pt=Person,employmentStatus=BLS_InLaborForce"
         }
       ],
       "childStatVarGroups": [
@@ -1743,7 +1819,8 @@
           "searchNames": [
             "Population Count of Person With Place of Residence Classification is Rural"
           ],
-          "displayName": "Population: Rural"
+          "displayName": "Population: Rural",
+          "definition": "mp=count,pt=Person,placeOfResidenceClassification=Rural"
         }
       ]
     },
@@ -1755,7 +1832,8 @@
           "searchNames": [
             "Population Count of Person With Place of Residence Classification is Urban"
           ],
-          "displayName": "Population: Urban"
+          "displayName": "Population: Urban",
+          "definition": "mp=count,pt=Person,placeOfResidenceClassification=Urban"
         }
       ]
     },
@@ -1775,7 +1853,8 @@
           "searchNames": [
             "Amount of Production With Produced Thing is Electricity From Nuclear Sources (As Fraction of Amount Production Energy)"
           ],
-          "displayName": "Amount of Production: Electricity From Nuclear Sources (As Fraction of Amount Production Energy)"
+          "displayName": "Amount of Production: Electricity From Nuclear Sources (As Fraction of Amount Production Energy)",
+          "definition": "md=Amount_Production_Energy,mp=amount,pt=Production,producedThing=ElectricityFromNuclearSources"
         },
         {
           "id": "Amount_Production_ElectricityFromOilGasOrCoalSources_AsFractionOf_Amount_Production_Energy",
@@ -1783,7 +1862,8 @@
           "searchNames": [
             "Amount of Production With Produced Thing is Electricity From Oil Gas or Coal Sources (As Fraction of Amount Production Energy)"
           ],
-          "displayName": "Amount of Production: Electricity From Oil Gas or Coal Sources (As Fraction of Amount Production Energy)"
+          "displayName": "Amount of Production: Electricity From Oil Gas or Coal Sources (As Fraction of Amount Production Energy)",
+          "definition": "md=Amount_Production_Energy,mp=amount,pt=Production,producedThing=ElectricityFromOilGasOrCoalSources"
         }
       ]
     },
@@ -1803,7 +1883,8 @@
           "searchNames": [
             "Amount of Remittance With Transfer Type is Outward Remittance"
           ],
-          "displayName": "Amount of Remittance: Outward Remittance"
+          "displayName": "Amount of Remittance: Outward Remittance",
+          "definition": "mp=amount,pt=Remittance,transferType=OutwardRemittance"
         }
       ],
       "childStatVarGroups": [
@@ -1821,7 +1902,8 @@
           "searchNames": [
             "Amount of Remittance With Transfer Type is Inward Remittance"
           ],
-          "displayName": "Amount of Remittance: Inward Remittance"
+          "displayName": "Amount of Remittance: Inward Remittance",
+          "definition": "mp=amount,pt=Remittance,transferType=InwardRemittance"
         },
         {
           "id": "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
@@ -1829,7 +1911,8 @@
           "searchNames": [
             "Amount of Remittance With Transfer Type is Inward Remittance (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
           ],
-          "displayName": "Amount of Remittance: Inward Remittance (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
+          "displayName": "Amount of Remittance: Inward Remittance (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)",
+          "definition": "md=Amount_EconomicActivity_GrossDomesticProduction_Nominal,mp=amount,pt=Remittance,transferType=InwardRemittance"
         }
       ]
     },
@@ -1841,7 +1924,8 @@
           "searchNames": [
             "Percent of Population Living in Areas Below 5 Meters Elevation"
           ],
-          "displayName": "Percent of Population Living in Areas Below 5 Meters Elevation"
+          "displayName": "Percent of Population Living in Areas Below 5 Meters Elevation",
+          "definition": "md=Count_Person,mp=count,pt=Person,residenceCharacteristic=LessThan5MetersAboveSeaLevel"
         }
       ],
       "childStatVarGroups": [
@@ -1967,7 +2051,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 1.9, SSP 1"
+          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 1.9, SSP 1",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP1.9,socioeconomicScenario=SSP1"
         },
         {
           "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP119",
@@ -1975,7 +2060,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 1.9, SSP 1"
+          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 1.9, SSP 1",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP1.9,socioeconomicScenario=SSP1"
         },
         {
           "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP119",
@@ -1983,7 +2069,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 1.9, SSP 1"
+          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 1.9, SSP 1",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP1.9,socioeconomicScenario=SSP1"
         }
       ]
     },
@@ -2011,7 +2098,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 2.6, SSP 1"
+          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 2.6, SSP 1",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP2.6,socioeconomicScenario=SSP1"
         },
         {
           "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP126",
@@ -2019,7 +2107,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 2.6, SSP 1"
+          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 2.6, SSP 1",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP2.6,socioeconomicScenario=SSP1"
         },
         {
           "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP126",
@@ -2027,7 +2116,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Difference Relative To Base Date)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 2.6, SSP 1"
+          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 2.6, SSP 1",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP2.6,socioeconomicScenario=SSP1"
         }
       ]
     },
@@ -2055,7 +2145,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 4.5, SSP 2"
+          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 4.5, SSP 2",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP4.5,socioeconomicScenario=SSP2"
         },
         {
           "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP245",
@@ -2063,7 +2154,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 4.5, SSP 2"
+          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 4.5, SSP 2",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP4.5,socioeconomicScenario=SSP2"
         },
         {
           "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP245",
@@ -2071,7 +2163,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Difference Relative To Base Date)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 4.5, SSP 2"
+          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 4.5, SSP 2",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP4.5,socioeconomicScenario=SSP2"
         }
       ]
     },
@@ -2099,7 +2192,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 7.0, SSP 3"
+          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 7.0, SSP 3",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP7.0,socioeconomicScenario=SSP3"
         },
         {
           "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP370",
@@ -2107,7 +2201,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 7.0, SSP 3"
+          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 7.0, SSP 3",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP7.0,socioeconomicScenario=SSP3"
         },
         {
           "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP370",
@@ -2115,7 +2210,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Difference Relative To Base Date)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 7.0, SSP 3"
+          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 7.0, SSP 3",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP7.0,socioeconomicScenario=SSP3"
         }
       ]
     },
@@ -2143,7 +2239,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 8.5, SSP 5"
+          "displayName": "Max Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 8.5, SSP 5",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP8.5,socioeconomicScenario=SSP5"
         },
         {
           "id": "Median_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP585",
@@ -2151,7 +2248,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 8.5, SSP 5"
+          "displayName": "Median Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 8.5, SSP 5",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP8.5,socioeconomicScenario=SSP5"
         },
         {
           "id": "Min_DifferenceRelativeToCMIP6ReferenceDate_SeaLevel_SSP585",
@@ -2159,7 +2257,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Delta From Reference Date is CMIP 6 Reference Period, Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Difference Relative To Base Date)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 8.5, SSP 5"
+          "displayName": "Min Surface Level of Sea Body of Water (Difference Relative To Base Date): CMIP 6 Reference Period, RCP 8.5, SSP 5",
+          "definition": "mq=DifferenceRelativeToBaseDate,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,baseDate=CMIP6ReferencePeriod,emissionsScenario=RCP8.5,socioeconomicScenario=SSP5"
         }
       ]
     },
@@ -2415,7 +2514,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 1.9, SSP 1"
+          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 1.9, SSP 1",
+          "definition": "mq=RateOfChange,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP1.9,socioeconomicScenario=SSP1"
         },
         {
           "id": "Median_RateOfChange_SeaLevel_SSP119",
@@ -2423,7 +2523,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 1.9, SSP 1"
+          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 1.9, SSP 1",
+          "definition": "mq=RateOfChange,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP1.9,socioeconomicScenario=SSP1"
         },
         {
           "id": "Min_RateOfChange_SeaLevel_SSP119",
@@ -2431,7 +2532,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 1.9, Socioeconomic Scenario is SSP 1 (Rate of Change)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 1.9, SSP 1"
+          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 1.9, SSP 1",
+          "definition": "mq=RateOfChange,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP1.9,socioeconomicScenario=SSP1"
         }
       ],
       "childStatVarGroups": [
@@ -2469,7 +2571,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 2.6, SSP 1"
+          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 2.6, SSP 1",
+          "definition": "mq=RateOfChange,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP2.6,socioeconomicScenario=SSP1"
         },
         {
           "id": "Median_RateOfChange_SeaLevel_SSP126",
@@ -2477,7 +2580,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 2.6, SSP 1"
+          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 2.6, SSP 1",
+          "definition": "mq=RateOfChange,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP2.6,socioeconomicScenario=SSP1"
         },
         {
           "id": "Min_RateOfChange_SeaLevel_SSP126",
@@ -2485,7 +2589,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 2.6, Socioeconomic Scenario is SSP 1 (Rate of Change)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 2.6, SSP 1"
+          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 2.6, SSP 1",
+          "definition": "mq=RateOfChange,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP2.6,socioeconomicScenario=SSP1"
         }
       ],
       "childStatVarGroups": [
@@ -2523,7 +2628,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 4.5, SSP 2"
+          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 4.5, SSP 2",
+          "definition": "mq=RateOfChange,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP4.5,socioeconomicScenario=SSP2"
         },
         {
           "id": "Median_RateOfChange_SeaLevel_SSP245",
@@ -2531,7 +2637,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 4.5, SSP 2"
+          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 4.5, SSP 2",
+          "definition": "mq=RateOfChange,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP4.5,socioeconomicScenario=SSP2"
         },
         {
           "id": "Min_RateOfChange_SeaLevel_SSP245",
@@ -2539,7 +2646,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 4.5, Socioeconomic Scenario is SSP 2 (Rate of Change)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 4.5, SSP 2"
+          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 4.5, SSP 2",
+          "definition": "mq=RateOfChange,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP4.5,socioeconomicScenario=SSP2"
         }
       ],
       "childStatVarGroups": [
@@ -2577,7 +2685,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 7.0, SSP 3"
+          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 7.0, SSP 3",
+          "definition": "mq=RateOfChange,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP7.0,socioeconomicScenario=SSP3"
         },
         {
           "id": "Median_RateOfChange_SeaLevel_SSP370",
@@ -2585,7 +2694,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 7.0, SSP 3"
+          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 7.0, SSP 3",
+          "definition": "mq=RateOfChange,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP7.0,socioeconomicScenario=SSP3"
         },
         {
           "id": "Min_RateOfChange_SeaLevel_SSP370",
@@ -2593,7 +2703,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 7.0, Socioeconomic Scenario is SSP 3 (Rate of Change)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 7.0, SSP 3"
+          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 7.0, SSP 3",
+          "definition": "mq=RateOfChange,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP7.0,socioeconomicScenario=SSP3"
         }
       ],
       "childStatVarGroups": [
@@ -2631,7 +2742,8 @@
           "searchNames": [
             "Max Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)"
           ],
-          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 8.5, SSP 5"
+          "displayName": "Max Surface Level of Sea Body of Water (Rate of Change): RCP 8.5, SSP 5",
+          "definition": "mq=RateOfChange,st=maxValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP8.5,socioeconomicScenario=SSP5"
         },
         {
           "id": "Median_RateOfChange_SeaLevel_SSP585",
@@ -2639,7 +2751,8 @@
           "searchNames": [
             "Median Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)"
           ],
-          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 8.5, SSP 5"
+          "displayName": "Median Surface Level of Sea Body of Water (Rate of Change): RCP 8.5, SSP 5",
+          "definition": "mq=RateOfChange,st=medianValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP8.5,socioeconomicScenario=SSP5"
         },
         {
           "id": "Min_RateOfChange_SeaLevel_SSP585",
@@ -2647,7 +2760,8 @@
           "searchNames": [
             "Min Surface Level of Sea Body of Water With Emissions Scenario is RCP 8.5, Socioeconomic Scenario is SSP 5 (Rate of Change)"
           ],
-          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 8.5, SSP 5"
+          "displayName": "Min Surface Level of Sea Body of Water (Rate of Change): RCP 8.5, SSP 5",
+          "definition": "mq=RateOfChange,st=minValue,mp=surfaceLevel,pt=SeaBodyOfWater,emissionsScenario=RCP8.5,socioeconomicScenario=SSP5"
         }
       ],
       "childStatVarGroups": [
@@ -2769,7 +2883,8 @@
           "searchNames": [
             "Amount of Stock"
           ],
-          "displayName": "Amount of Stock"
+          "displayName": "Amount of Stock",
+          "definition": "mp=amount,pt=Stock"
         },
         {
           "id": "Amount_Stock_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
@@ -2777,7 +2892,8 @@
           "searchNames": [
             "Amount of Stock (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
           ],
-          "displayName": "Amount of Stock (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)"
+          "displayName": "Amount of Stock (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)",
+          "definition": "md=Amount_EconomicActivity_GrossDomesticProduction_Nominal,mp=amount,pt=Stock"
         }
       ]
     },

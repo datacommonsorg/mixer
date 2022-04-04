@@ -8,6 +8,7 @@
         "Fertility Rate of Person"
       ],
       "displayName": "Fertility Rate",
+      "definition": "mp=fertilityRate,pt=Person",
       "hasData": true
     },
     {
@@ -16,7 +17,8 @@
       "searchNames": [
         "Gender Income Inequality of Person"
       ],
-      "displayName": "Gender Income Inequality"
+      "displayName": "Gender Income Inequality",
+      "definition": "mp=genderIncomeInequality,pt=Person"
     },
     {
       "id": "LifeExpectancy_Person",
@@ -25,6 +27,7 @@
         "Life Expectancy of Person"
       ],
       "displayName": "Life Expectancy",
+      "definition": "mp=lifeExpectancy,pt=Person",
       "hasData": true
     },
     {
@@ -33,7 +36,8 @@
       "searchNames": [
         "Median Age of Person"
       ],
-      "displayName": "Median Age"
+      "displayName": "Median Age",
+      "definition": "st=medianValue,mp=age,pt=Person"
     },
     {
       "id": "Median_Income_Person",
@@ -41,7 +45,8 @@
       "searchNames": [
         "Median Income of Person"
       ],
-      "displayName": "Median Income"
+      "displayName": "Median Income",
+      "definition": "st=medianValue,mp=income,pt=Person"
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
@@ -50,6 +55,7 @@
         "Percent of Internet Users"
       ],
       "displayName": "Percent of Internet Users",
+      "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
       "hasData": true
     },
     {
@@ -59,6 +65,7 @@
         "Population Count of Person"
       ],
       "displayName": "Population",
+      "definition": "mp=count,pt=Person",
       "hasData": true
     },
     {
@@ -67,7 +74,8 @@
       "searchNames": [
         "Population Change"
       ],
-      "displayName": "Population Change"
+      "displayName": "Population Change",
+      "definition": "mp=incrementalCount,pt=Person"
     },
     {
       "id": "Count_Person_PerArea",
@@ -76,6 +84,7 @@
         "Population Density"
       ],
       "displayName": "Population Density",
+      "definition": "md=area,mp=count,pt=Person",
       "hasData": true
     },
     {
@@ -85,6 +94,7 @@
         "Population Growth Rate"
       ],
       "displayName": "Population Growth Rate",
+      "definition": "st=growthRate,mp=count,pt=Person",
       "hasData": true
     }
   ],
