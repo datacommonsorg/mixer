@@ -41,6 +41,7 @@ func SearchStatVar(
 	query := in.GetQuery()
 	places := in.GetPlaces()
 	enableBlocklist := in.GetEnableBlocklist()
+	svOnly := in.GetSvOnly()
 
 	result := &pb.SearchStatVarResponse{
 		StatVars:      []*pb.EntityInfo{},
@@ -56,7 +57,7 @@ func SearchStatVar(
 	if enableBlocklist {
 		searchIndex = cache.BlocklistedSvgSearchIndex
 	}
-	svList, svgList, matches := searchTokens(tokens, searchIndex)
+	svList, svgList, matches := searchTokens(tokens, searchIndex, svOnly)
 
 	// Filter the stat var and stat var group by places.
 	if len(places) > 0 {
@@ -196,7 +197,7 @@ func groupStatVars(
 type TokenToMatches map[string]map[string]struct{}
 
 func searchTokens(
-	tokens []string, index *resource.SearchIndex,
+	tokens []string, index *resource.SearchIndex, svOnly bool,
 ) ([]*pb.EntityInfo, []*pb.EntityInfo, []string) {
 	// svMatches and svgMatches are maps of sv/svg id to TokenToMatches of tokens
 	// that match each sv/svg
@@ -241,6 +242,9 @@ func searchTokens(
 					svMatches[sv] = TokenToMatches{}
 				}
 				svMatches[sv][token] = node.Matches
+			}
+			if svOnly {
+				continue
 			}
 			for svg := range node.SvgIds {
 				if _, ok := svgMatches[svg]; !ok {

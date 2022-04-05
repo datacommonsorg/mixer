@@ -86,6 +86,7 @@ func TestSearchTokens(t *testing.T) {
 	for _, c := range []struct {
 		tokens      []string
 		index       *resource.SearchIndex
+		svOnly      bool
 		wantSv      []*pb.EntityInfo
 		wantSvg     []*pb.EntityInfo
 		wantMatches []string
@@ -116,6 +117,7 @@ func TestSearchTokens(t *testing.T) {
 					},
 				},
 			},
+			svOnly: false,
 			wantSv: []*pb.EntityInfo{
 				{
 					Dcid: "sv_1_2",
@@ -164,6 +166,7 @@ func TestSearchTokens(t *testing.T) {
 					},
 				},
 			},
+			svOnly: false,
 			wantSv: []*pb.EntityInfo{
 				{
 					Dcid: "sv_1_2",
@@ -173,8 +176,44 @@ func TestSearchTokens(t *testing.T) {
 			wantSvg:     []*pb.EntityInfo{},
 			wantMatches: []string{"ab1", "ac3", "token2", "token4", "token5", "zdx"},
 		},
+		{
+			tokens: []string{"ab1"},
+			index: &resource.SearchIndex{
+				RootTrieNode: &resource.TrieNode{
+					ChildrenNodes: map[rune]*resource.TrieNode{
+						'a': &nodeA,
+						'z': &nodeZ,
+					},
+					SvgIds: nil,
+					SvIds:  nil,
+				},
+				Ranking: map[string]*resource.RankingInfo{
+					"group_1": {
+						ApproxNumPv: 2,
+						RankingName: "token1 token2",
+					},
+					"sv_1_2": {
+						ApproxNumPv: 3,
+						RankingName: "ab1 ac3 token2",
+					},
+					"group_31": {
+						ApproxNumPv: 2,
+						RankingName: "token1 token5 token6",
+					},
+				},
+			},
+			svOnly: true,
+			wantSv: []*pb.EntityInfo{
+				{
+					Dcid: "sv_1_2",
+					Name: "ab1 ac3 token2",
+				},
+			},
+			wantSvg:     []*pb.EntityInfo{},
+			wantMatches: []string{"ab1", "token2", "token5"},
+		},
 	} {
-		sv, svg, matches := searchTokens(c.tokens, c.index)
+		sv, svg, matches := searchTokens(c.tokens, c.index, c.svOnly)
 		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var list got diff %v", diff)
 		}

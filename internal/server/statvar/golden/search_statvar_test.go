@@ -39,11 +39,13 @@ func TestSearchStatVar(t *testing.T) {
 			query           string
 			places          []string
 			enableBlocklist bool
+			svOnly          bool
 			goldenFile      string
 		}{
 			{
 				"Asian , age",
 				[]string{"geoId/06"},
+				false,
 				false,
 				"asian_age.json",
 			},
@@ -51,11 +53,13 @@ func TestSearchStatVar(t *testing.T) {
 				"crime",
 				[]string{},
 				false,
+				false,
 				"crime.json",
 			},
 			{
 				"female",
 				[]string{"country/USA"},
+				false,
 				false,
 				"female.json",
 			},
@@ -63,11 +67,13 @@ func TestSearchStatVar(t *testing.T) {
 				"accommodation food services",
 				[]string{"country/USA"},
 				true,
+				false,
 				"accommodation_food_services_blocklist.json",
 			},
 			{
 				"accommodation food services",
 				[]string{"country/USA"},
+				false,
 				false,
 				"accommodation_food_services.json",
 			},
@@ -75,11 +81,13 @@ func TestSearchStatVar(t *testing.T) {
 				"food stamp",
 				[]string{},
 				false,
+				false,
 				"food_stamp.json",
 			},
 			{
 				"fem",
 				[]string{},
+				false,
 				false,
 				"fem.json",
 			},
@@ -87,11 +95,13 @@ func TestSearchStatVar(t *testing.T) {
 				"women",
 				[]string{},
 				false,
+				false,
 				"women.json",
 			},
 			{
 				"veteran",
 				[]string{},
+				false,
 				false,
 				"veteran.json",
 			},
@@ -99,19 +109,29 @@ func TestSearchStatVar(t *testing.T) {
 				"poor",
 				[]string{},
 				false,
+				false,
 				"poor.json",
 			},
 			{
 				"count_Person",
 				[]string{},
 				false,
+				false,
 				"count_person.json",
+			},
+			{
+				"food stamp",
+				[]string{},
+				false,
+				true,
+				"food_stamp_sv.json",
 			},
 		} {
 			resp, err := mixer.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 				Query:           c.query,
 				Places:          c.places,
 				EnableBlocklist: c.enableBlocklist,
+				SvOnly:          c.svOnly,
 			})
 			if err != nil {
 				t.Errorf("could not SearchStatVar: %s", err)
@@ -122,7 +142,7 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 
-			if true {
+			if test.GenerateGolden {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
