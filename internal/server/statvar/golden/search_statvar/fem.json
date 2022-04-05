@@ -151,12 +151,12 @@
           "dcid": "UnemploymentRate_Person_Upto25Years_Female"
         },
         {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
-        },
-        {
           "name": "Prevalence: 50 - 74 Years, Female, Mammography",
           "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -833,10 +833,6 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
         },
         {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        },
-        {
           "name": "Population: Masters Degree, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentMastersDegree_Female"
         },
@@ -859,6 +855,10 @@
         {
           "name": "Population: Some College Less Than 1 Year, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
+        },
+        {
+          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
         },
         {
           "name": "Population: 25 - 64 Years, Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
@@ -4009,6 +4009,14 @@
           "dcid": "LifeExpectancy_Person_Female"
         },
         {
+          "name": "Population: Female",
+          "dcid": "Count_Person_Female"
+        },
+        {
+          "name": "Unemployment Rate: Female",
+          "dcid": "UnemploymentRate_Person_Female"
+        },
+        {
           "name": "Mean Wages Daily: Female",
           "dcid": "Mean_WagesDaily_Worker_Female"
         },
@@ -4023,14 +4031,6 @@
         {
           "name": "Median Income: Female",
           "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
-        },
-        {
-          "name": "Population: Female",
-          "dcid": "Count_Person_Female"
-        },
-        {
-          "name": "Unemployment Rate: Female",
-          "dcid": "UnemploymentRate_Person_Female"
         },
         {
           "name": "Population: With Disability, Female",
@@ -5031,6 +5031,10 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offender): Gender, Female",
           "dcid": "Offender_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
         },
@@ -5041,10 +5045,6 @@
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
         }
       ]
     },
@@ -5053,12 +5053,12 @@
       "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
       "statVars": [
         {
-          "name": "Median Income: High School Graduate Includes Equivalency, Female",
-          "dcid": "dc/syxm9nnsl3wcc"
-        },
-        {
           "name": "Population: High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
+        },
+        {
+          "name": "Median Income: High School Graduate Includes Equivalency, Female",
+          "dcid": "dc/syxm9nnsl3wcc"
         },
         {
           "name": "Median Earnings: 25 Years or More, High School Graduate Includes Equivalency, Female, With Earnings",
@@ -5075,20 +5075,20 @@
       "name": "Person With Gender = Female, Place of Residence Classification = Rural",
       "statVars": [
         {
-          "name": "Mean Wages Daily: Female, Rural",
-          "dcid": "Mean_WagesDaily_Worker_Rural_Female"
-        },
-        {
-          "name": "Mean Wages Monthly: Female, Rural",
-          "dcid": "Mean_WagesMonthly_Worker_Rural_Female"
-        },
-        {
           "name": "Population: Female, Rural",
           "dcid": "Count_Person_Rural_Female"
         },
         {
           "name": "Unemployment Rate: Female, Rural",
           "dcid": "UnemploymentRate_Person_Rural_Female"
+        },
+        {
+          "name": "Mean Wages Daily: Female, Rural",
+          "dcid": "Mean_WagesDaily_Worker_Rural_Female"
+        },
+        {
+          "name": "Mean Wages Monthly: Female, Rural",
+          "dcid": "Mean_WagesMonthly_Worker_Rural_Female"
         }
       ]
     },
@@ -5097,20 +5097,20 @@
       "name": "Person With Gender = Female, Place of Residence Classification = Urban",
       "statVars": [
         {
-          "name": "Mean Wages Daily: Female, Urban",
-          "dcid": "Mean_WagesDaily_Worker_Urban_Female"
-        },
-        {
-          "name": "Mean Wages Monthly: Female, Urban",
-          "dcid": "Mean_WagesMonthly_Worker_Urban_Female"
-        },
-        {
           "name": "Population: Female, Urban",
           "dcid": "Count_Person_Urban_Female"
         },
         {
           "name": "Unemployment Rate: Female, Urban",
           "dcid": "UnemploymentRate_Person_Urban_Female"
+        },
+        {
+          "name": "Mean Wages Daily: Female, Urban",
+          "dcid": "Mean_WagesDaily_Worker_Urban_Female"
+        },
+        {
+          "name": "Mean Wages Monthly: Female, Urban",
+          "dcid": "Mean_WagesMonthly_Worker_Urban_Female"
         }
       ]
     },
@@ -5207,16 +5207,16 @@
       "name": "Person With Age = 21 - 65 Years, Gender = Female, Preventive Health = Cervical Cancer Screening",
       "statVars": [
         {
-          "name": "Lower Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
-          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
-        },
-        {
           "name": "Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
           "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
         },
         {
           "name": "Sample Size, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
           "dcid": "SampleSize_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+        },
+        {
+          "name": "Lower Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
+          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
         },
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
@@ -5229,16 +5229,16 @@
       "name": "Person With Age = 65 Years or More, Gender = Female, Preventive Health = Core Preventive Services",
       "statVars": [
         {
-          "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
-          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-        },
-        {
           "name": "Prevalence: 65 Years or More, Female, Core Preventive Services",
           "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         },
         {
           "name": "Sample Size, Prevalence of 65 Years or More, Female, Core Preventive Services",
           "dcid": "SampleSize_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
+        },
+        {
+          "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
+          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         },
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
@@ -5625,16 +5625,16 @@
       "name": "Mortality Event With Gender = Female",
       "statVars": [
         {
-          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
-        },
-        {
           "name": "Count of Mortality Event: Female",
           "dcid": "Count_Death_Female"
         },
         {
           "name": "Count of Mortality Event: Female (As Fraction of Count Person Female)",
           "dcid": "Count_Death_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
         }
       ]
     },
@@ -5679,12 +5679,12 @@
       "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
       "statVars": [
         {
-          "name": "Median Income: Bachelors Degree, Female",
-          "dcid": "dc/ys49z0lqtj9g3"
-        },
-        {
           "name": "Population: Bachelors Degree, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
+        },
+        {
+          "name": "Median Income: Bachelors Degree, Female",
+          "dcid": "dc/ys49z0lqtj9g3"
         },
         {
           "name": "Median Earnings: 25 Years or More, Bachelors Degree, Female, With Earnings",
@@ -5751,16 +5751,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings",
+          "dcid": "Count_Person_Female_WithEarnings"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings",
           "dcid": "Mean_Earnings_Person_Female"
         },
         {
           "name": "Median Earnings: Female, With Earnings",
           "dcid": "Median_Earnings_Person_Female"
-        },
-        {
-          "name": "Population: Female, With Earnings",
-          "dcid": "Count_Person_Female_WithEarnings"
         }
       ]
     },
@@ -5769,12 +5769,12 @@
       "name": "Person With Gender = Female, Marital Status = Divorced in The Past 12 Months",
       "statVars": [
         {
-          "name": "Median Age: Female, Divorced in The Past 12 Months",
-          "dcid": "Median_Age_Person_Female_DivorcedInThePast12Months"
-        },
-        {
           "name": "Population: Female, Divorced in The Past 12 Months",
           "dcid": "Count_Person_15OrMoreYears_Female_DivorcedInThePast12Months"
+        },
+        {
+          "name": "Median Age: Female, Divorced in The Past 12 Months",
+          "dcid": "Median_Age_Person_Female_DivorcedInThePast12Months"
         },
         {
           "name": "Population: With Own Children Under 18, Female, Family Household, Divorced in The Past 12 Months, Household",
@@ -5787,12 +5787,12 @@
       "name": "Person With Gender = Female, Marital Status = Married in The Past 12 Months",
       "statVars": [
         {
-          "name": "Median Age: Female, Married in The Past 12 Months",
-          "dcid": "Median_Age_Person_Female_MarriedInThePast12Months"
-        },
-        {
           "name": "Population: Female, Married in The Past 12 Months",
           "dcid": "Count_Person_15OrMoreYears_Female_MarriedInThePast12Months"
+        },
+        {
+          "name": "Median Age: Female, Married in The Past 12 Months",
+          "dcid": "Median_Age_Person_Female_MarriedInThePast12Months"
         },
         {
           "name": "Population: With Own Children Under 18, Female, Family Household, Married in The Past 12 Months, Household",
@@ -5823,12 +5823,12 @@
       "name": "Person With Gender = Female, Nativity = Foreign Born",
       "statVars": [
         {
-          "name": "Median Age: Female, Foreign Born",
-          "dcid": "Median_Age_Person_Female_ForeignBorn"
-        },
-        {
           "name": "Population: Female, Foreign Born",
           "dcid": "Count_Person_Female_ForeignBorn"
+        },
+        {
+          "name": "Median Age: Female, Foreign Born",
+          "dcid": "Median_Age_Person_Female_ForeignBorn"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Foreign Born",
@@ -5841,12 +5841,12 @@
       "name": "Person With Gender = Female, Race = American Indian or Alaska Native Alone",
       "statVars": [
         {
-          "name": "Median Age: Female, American Indian or Alaska Native Alone",
-          "dcid": "Median_Age_Person_Female_AmericanIndianOrAlaskaNativeAlone"
-        },
-        {
           "name": "Population: Female, American Indian or Alaska Native Alone",
           "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
+        },
+        {
+          "name": "Median Age: Female, American Indian or Alaska Native Alone",
+          "dcid": "Median_Age_Person_Female_AmericanIndianOrAlaskaNativeAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, American Indian or Alaska Native Alone",
@@ -5859,12 +5859,12 @@
       "name": "Person With Gender = Female, Race = Asian Alone",
       "statVars": [
         {
-          "name": "Median Age: Female, Asian Alone",
-          "dcid": "Median_Age_Person_Female_AsianAlone"
-        },
-        {
           "name": "Population: Female, Asian Alone",
           "dcid": "Count_Person_Female_AsianAlone"
+        },
+        {
+          "name": "Median Age: Female, Asian Alone",
+          "dcid": "Median_Age_Person_Female_AsianAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Asian Alone",
@@ -5877,12 +5877,12 @@
       "name": "Person With Gender = Female, Race = Black or African American Alone",
       "statVars": [
         {
-          "name": "Median Age: Female, Black or African American Alone",
-          "dcid": "Median_Age_Person_Female_BlackOrAfricanAmericanAlone"
-        },
-        {
           "name": "Population: Female, Black or African American Alone",
           "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Median Age: Female, Black or African American Alone",
+          "dcid": "Median_Age_Person_Female_BlackOrAfricanAmericanAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Black or African American Alone",
@@ -5895,12 +5895,12 @@
       "name": "Person With Gender = Female, Race = Hispanic or Latino",
       "statVars": [
         {
-          "name": "Median Age: Female, Hispanic or Latino",
-          "dcid": "Median_Age_Person_Female_HispanicOrLatino"
-        },
-        {
           "name": "Population: Female, Hispanic or Latino",
           "dcid": "Count_Person_Female_HispanicOrLatino"
+        },
+        {
+          "name": "Median Age: Female, Hispanic or Latino",
+          "dcid": "Median_Age_Person_Female_HispanicOrLatino"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Hispanic or Latino",
@@ -5913,12 +5913,12 @@
       "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
       "statVars": [
         {
-          "name": "Median Age: Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
           "name": "Population: Female, Native Hawaiian or Other Pacific Islander Alone",
           "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Median Age: Female, Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
@@ -5931,12 +5931,12 @@
       "name": "Person With Gender = Female, Race = Two or More Races",
       "statVars": [
         {
-          "name": "Median Age: Female, Two or More Races",
-          "dcid": "Median_Age_Person_Female_TwoOrMoreRaces"
-        },
-        {
           "name": "Population: Female, Two or More Races",
           "dcid": "Count_Person_Female_TwoOrMoreRaces"
+        },
+        {
+          "name": "Median Age: Female, Two or More Races",
+          "dcid": "Median_Age_Person_Female_TwoOrMoreRaces"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Two or More Races",
@@ -5949,12 +5949,12 @@
       "name": "Person With Gender = Female, Race = White Alone",
       "statVars": [
         {
-          "name": "Median Age: Female, White Alone",
-          "dcid": "Median_Age_Person_Female_WhiteAlone"
-        },
-        {
           "name": "Population: Female, White Alone",
           "dcid": "Count_Person_Female_WhiteAlone"
+        },
+        {
+          "name": "Median Age: Female, White Alone",
+          "dcid": "Median_Age_Person_Female_WhiteAlone"
         },
         {
           "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, White Alone",
@@ -5967,16 +5967,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Aggravated Assault, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Aggravated Assault, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Aggravated Assault, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_Female"
         }
       ]
     },
@@ -5985,16 +5985,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = All Other Larceny, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, All Other Larceny, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, All Other Larceny, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, All Other Larceny, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, All Other Larceny, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AllOtherLarceny_IsHateCrime_Female"
         }
       ]
     },
@@ -6003,16 +6003,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Arson, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Arson, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Arson, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Arson, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Arson, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Arson_IsHateCrime_Female"
         }
       ]
     },
@@ -6021,16 +6021,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Burglary, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Burglary, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Burglary, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Burglary, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Burglary, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Burglary_IsHateCrime_Female"
         }
       ]
     },
@@ -6039,16 +6039,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Counterfeiting or Forgery, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Counterfeiting or Forgery, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Counterfeiting or Forgery, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Counterfeiting or Forgery, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Counterfeiting or Forgery, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CounterfeitingOrForgery_IsHateCrime_Female"
         }
       ]
     },
@@ -6057,16 +6057,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Credit Card or Automated Teller Machine Fraud, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Credit Card or Automated Teller Machine Fraud, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Credit Card or Automated Teller Machine Fraud, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Credit Card or Automated Teller Machine Fraud, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Credit Card or Automated Teller Machine Fraud, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime_Female"
         }
       ]
     },
@@ -6075,16 +6075,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Person, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Crime Against Person, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Crime Against Person, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Crime Against Person, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Crime Against Person, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstPerson_IsHateCrime_Female"
         }
       ]
     },
@@ -6093,16 +6093,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Property, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Crime Against Property, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Crime Against Property, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Crime Against Property, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Crime Against Property, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstProperty_IsHateCrime_Female"
         }
       ]
     },
@@ -6111,16 +6111,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Crime Against Society, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Crime Against Society, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Crime Against Society, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Crime Against Society, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Crime Against Society, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_CrimeAgainstSociety_IsHateCrime_Female"
         }
       ]
     },
@@ -6129,16 +6129,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Destruction or Damage or Vandalism of Property, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Destruction or Damage or Vandalism of Property, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Destruction or Damage or Vandalism of Property, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_Female"
         }
       ]
     },
@@ -6147,16 +6147,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Drug Equipment Violations, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Drug Equipment Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Drug Equipment Violations, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Drug Equipment Violations, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Drug Equipment Violations, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugEquipmentViolations_IsHateCrime_Female"
         }
       ]
     },
@@ -6165,16 +6165,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Drug or Narcotic Violations, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Drug or Narcotic Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Drug or Narcotic Violations, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Drug or Narcotic Violations, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Drug or Narcotic Violations, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DrugOrNarcoticViolations_IsHateCrime_Female"
         }
       ]
     },
@@ -6183,16 +6183,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = False Pretense or Swindle or Confidence Game, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, False Pretense or Swindle or Confidence Game, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, False Pretense or Swindle or Confidence Game, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_Female"
         }
       ]
     },
@@ -6201,16 +6201,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Fondling, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Fondling, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Fondling, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Fondling, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Fondling, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_Female"
         }
       ]
     },
@@ -6219,16 +6219,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Impersonation, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Impersonation, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Impersonation, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Impersonation, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Impersonation, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime_Female"
         }
       ]
     },
@@ -6237,16 +6237,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Intimidation, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Intimidation, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Intimidation, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_Female"
         }
       ]
     },
@@ -6255,16 +6255,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Kidnapping or Abduction, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Kidnapping or Abduction, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Kidnapping or Abduction, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Kidnapping or Abduction, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Kidnapping or Abduction, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_KidnappingOrAbduction_IsHateCrime_Female"
         }
       ]
     },
@@ -6273,16 +6273,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Motor Vehicle Theft, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Motor Vehicle Theft, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Motor Vehicle Theft, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Motor Vehicle Theft, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Motor Vehicle Theft, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MotorVehicleTheft_IsHateCrime_Female"
         }
       ]
     },
@@ -6291,16 +6291,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Murder And Non Negligent Manslaughter, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Murder And Non Negligent Manslaughter, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Murder And Non Negligent Manslaughter, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Murder And Non Negligent Manslaughter, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Murder And Non Negligent Manslaughter, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime_Female"
         }
       ]
     },
@@ -6309,16 +6309,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Not Specified, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Not Specified, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Not Specified, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Not Specified, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Not Specified, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_NotSpecified_IsHateCrime_Female"
         }
       ]
     },
@@ -6327,16 +6327,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Pornography or Obscene Material, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Pornography or Obscene Material, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Pornography or Obscene Material, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Pornography or Obscene Material, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Pornography or Obscene Material, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_PornographyOrObsceneMaterial_IsHateCrime_Female"
         }
       ]
     },
@@ -6345,16 +6345,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Rape, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Rape, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Rape, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Rape, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Rape, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Rape_IsHateCrime_Female"
         }
       ]
     },
@@ -6363,16 +6363,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Robbery, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Robbery, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Robbery, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Robbery, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Robbery, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Robbery_IsHateCrime_Female"
         }
       ]
     },
@@ -6381,16 +6381,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Sexual Assault With An Object, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Sexual Assault With An Object, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Sexual Assault With An Object, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Sexual Assault With An Object, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Sexual Assault With An Object, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SexualAssaultWithAnObject_IsHateCrime_Female"
         }
       ]
     },
@@ -6399,16 +6399,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Shoplifting, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Shoplifting, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Shoplifting, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Shoplifting, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Shoplifting, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Shoplifting_IsHateCrime_Female"
         }
       ]
     },
@@ -6417,16 +6417,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Simple Assault, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Simple Assault, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Simple Assault, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_Female"
         }
       ]
     },
@@ -6435,16 +6435,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Theft From Building, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Theft From Building, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Theft From Building, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Theft From Building, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Theft From Building, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime_Female"
         }
       ]
     },
@@ -6453,16 +6453,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Theft From Motor Vehicle, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Theft From Motor Vehicle, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Theft From Motor Vehicle, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Theft From Motor Vehicle, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Theft From Motor Vehicle, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromMotorVehicle_IsHateCrime_Female"
         }
       ]
     },
@@ -6471,16 +6471,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Weapon Law Violations, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Weapon Law Violations, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Weapon Law Violations, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Weapon Law Violations, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Weapon Law Violations, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WeaponLawViolations_IsHateCrime_Female"
         }
       ]
     },
@@ -6489,16 +6489,16 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Wire Fraud, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Wire Fraud, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Wire Fraud, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
         },
         {
           "name": "Count of Hate Crime Incidents (Victim): Gender, Wire Fraud, Female",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Wire Fraud, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_WireFraud_IsHateCrime_Female"
         }
       ]
     },
@@ -6903,16 +6903,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Adult Correctional Facilities",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Adult Correctional Facilities",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInAdultCorrectionalFacilities"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Adult Correctional Facilities",
           "dcid": "Mean_Earnings_Person_Female_ResidesInAdultCorrectionalFacilities"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Adult Correctional Facilities",
           "dcid": "Median_Earnings_Person_Female_ResidesInAdultCorrectionalFacilities"
-        },
-        {
-          "name": "Population: Female, With Earnings, Adult Correctional Facilities",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInAdultCorrectionalFacilities"
         }
       ]
     },
@@ -6921,16 +6921,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = College or University Student Housing",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, College or University Student Housing",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInCollegeOrUniversityStudentHousing"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, College or University Student Housing",
           "dcid": "Mean_Earnings_Person_Female_ResidesInCollegeOrUniversityStudentHousing"
         },
         {
           "name": "Median Earnings: Female, With Earnings, College or University Student Housing",
           "dcid": "Median_Earnings_Person_Female_ResidesInCollegeOrUniversityStudentHousing"
-        },
-        {
-          "name": "Population: Female, With Earnings, College or University Student Housing",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInCollegeOrUniversityStudentHousing"
         }
       ]
     },
@@ -6939,16 +6939,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Group Quarters",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Group Quarters",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInGroupQuarters"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Group Quarters",
           "dcid": "Mean_Earnings_Person_Female_ResidesInGroupQuarters"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Group Quarters",
           "dcid": "Median_Earnings_Person_Female_ResidesInGroupQuarters"
-        },
-        {
-          "name": "Population: Female, With Earnings, Group Quarters",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInGroupQuarters"
         }
       ]
     },
@@ -6957,16 +6957,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Institutionalized Group Quarters",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Institutionalized Group Quarters",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInInstitutionalizedGroupQuarters"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Institutionalized Group Quarters",
           "dcid": "Mean_Earnings_Person_Female_ResidesInInstitutionalizedGroupQuarters"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Institutionalized Group Quarters",
           "dcid": "Median_Earnings_Person_Female_ResidesInInstitutionalizedGroupQuarters"
-        },
-        {
-          "name": "Population: Female, With Earnings, Institutionalized Group Quarters",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInInstitutionalizedGroupQuarters"
         }
       ]
     },
@@ -6975,16 +6975,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Juvenile Facilities",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Juvenile Facilities",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInJuvenileFacilities"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Juvenile Facilities",
           "dcid": "Mean_Earnings_Person_Female_ResidesInJuvenileFacilities"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Juvenile Facilities",
           "dcid": "Median_Earnings_Person_Female_ResidesInJuvenileFacilities"
-        },
-        {
-          "name": "Population: Female, With Earnings, Juvenile Facilities",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInJuvenileFacilities"
         }
       ]
     },
@@ -6993,16 +6993,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Military Quarters or Military Ships",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Military Quarters or Military Ships",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInMilitaryQuartersOrMilitaryShips"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Military Quarters or Military Ships",
           "dcid": "Mean_Earnings_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Military Quarters or Military Ships",
           "dcid": "Median_Earnings_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips"
-        },
-        {
-          "name": "Population: Female, With Earnings, Military Quarters or Military Ships",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInMilitaryQuartersOrMilitaryShips"
         }
       ]
     },
@@ -7011,16 +7011,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Noninstitutionalized Group Quarters",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Noninstitutionalized Group Quarters",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInNoninstitutionalizedGroupQuarters"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Noninstitutionalized Group Quarters",
           "dcid": "Mean_Earnings_Person_Female_ResidesInNoninstitutionalizedGroupQuarters"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Noninstitutionalized Group Quarters",
           "dcid": "Median_Earnings_Person_Female_ResidesInNoninstitutionalizedGroupQuarters"
-        },
-        {
-          "name": "Population: Female, With Earnings, Noninstitutionalized Group Quarters",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInNoninstitutionalizedGroupQuarters"
         }
       ]
     },
@@ -7029,16 +7029,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Nursing Facilities",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Nursing Facilities",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInNursingFacilities"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Nursing Facilities",
           "dcid": "Mean_Earnings_Person_Female_ResidesInNursingFacilities"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Nursing Facilities",
           "dcid": "Median_Earnings_Person_Female_ResidesInNursingFacilities"
-        },
-        {
-          "name": "Population: Female, With Earnings, Nursing Facilities",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInNursingFacilities"
         }
       ]
     },
@@ -10133,12 +10133,12 @@
       "name": "Person With Gender = Female, Race = Some Other Race Alone",
       "statVars": [
         {
-          "name": "Median Age: Female, Some Other Race Alone",
-          "dcid": "Median_Age_Person_Female_SomeOtherRaceAlone"
-        },
-        {
           "name": "Population: Female, Some Other Race Alone",
           "dcid": "Count_Person_Female_SomeOtherRaceAlone"
+        },
+        {
+          "name": "Median Age: Female, Some Other Race Alone",
+          "dcid": "Median_Age_Person_Female_SomeOtherRaceAlone"
         }
       ]
     },
@@ -10147,12 +10147,12 @@
       "name": "Person With Gender = Female, Race = White Alone Not Hispanic or Latino",
       "statVars": [
         {
-          "name": "Median Age: Female, White Alone Not Hispanic or Latino",
-          "dcid": "Median_Age_Person_Female_WhiteAloneNotHispanicOrLatino"
-        },
-        {
           "name": "Population: Female, White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
+        },
+        {
+          "name": "Median Age: Female, White Alone Not Hispanic or Latino",
+          "dcid": "Median_Age_Person_Female_WhiteAloneNotHispanicOrLatino"
         }
       ]
     },
@@ -10161,12 +10161,12 @@
       "name": "Person With Gender = Female, Recent Work Status = Not Worked Full Time",
       "statVars": [
         {
-          "name": "Median Income: Female, Not Worked Full Time",
-          "dcid": "dc/n0bp6h6zcgm74"
-        },
-        {
           "name": "Population: Female, Not Worked Full Time",
           "dcid": "Count_Person_NotWorkedFullTime"
+        },
+        {
+          "name": "Median Income: Female, Not Worked Full Time",
+          "dcid": "dc/n0bp6h6zcgm74"
         }
       ]
     },
@@ -10175,12 +10175,12 @@
       "name": "Person With Gender = Female, Recent Work Status = Worked Full Time",
       "statVars": [
         {
-          "name": "Median Income: Female, Worked Full Time",
-          "dcid": "dc/kebe2wtgsej37"
-        },
-        {
           "name": "Population: Female, Worked Full Time",
           "dcid": "dc/q779fwy6k8skd"
+        },
+        {
+          "name": "Median Income: Female, Worked Full Time",
+          "dcid": "dc/kebe2wtgsej37"
         }
       ]
     },
@@ -10273,12 +10273,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Unknown Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Ethnicity, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Unknown Ethnicity, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Ethnicity, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityUnknownEthnicity_Female"
         }
       ]
     },
@@ -10287,12 +10287,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Unknown Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Race, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Race, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace_Female"
         }
       ]
     },
@@ -11967,12 +11967,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Hispanic or Latino, Offender Type = Known Offender Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Hispanic or Latino, Known Offender Ethnicity, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Hispanic or Latino, Known Offender Ethnicity, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Hispanic or Latino, Known Offender Ethnicity, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
         }
       ]
     },
@@ -11981,12 +11981,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Not Hispanic or Latino, Offender Type = Known Offender Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Not Hispanic or Latino, Known Offender Ethnicity, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
         }
       ]
     },
@@ -11995,12 +11995,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = American Indian or Alaska Native Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, American Indian or Alaska Native Alone, Known Offender Race, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, American Indian or Alaska Native Alone, Known Offender Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, American Indian or Alaska Native Alone, Known Offender Race, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
         }
       ]
     },
@@ -12009,12 +12009,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Asian Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Asian Alone, Known Offender Race, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Asian Alone, Known Offender Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Asian Alone, Known Offender Race, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
         }
       ]
     },
@@ -12023,12 +12023,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Black or African American Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Black or African American Alone, Known Offender Race, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Black or African American Alone, Known Offender Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Black or African American Alone, Known Offender Race, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         }
       ]
     },
@@ -12037,12 +12037,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Two or More Races, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Two or More Races, Known Offender Race, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Two or More Races, Known Offender Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Two or More Races, Known Offender Race, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceTwoOrMoreRaces_Female"
         }
       ]
     },
@@ -12051,12 +12051,12 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = White Alone, Offender Type = Known Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, White Alone, Known Offender Race, Female",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, White Alone, Known Offender Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, White Alone, Known Offender Race, Female",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceWhiteAlone_Female"
         }
       ]
     },

@@ -122,7 +122,7 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 
-			if test.GenerateGolden {
+			if true {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}

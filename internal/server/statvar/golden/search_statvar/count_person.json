@@ -9,14 +9,6 @@
       "dcid": "Count_Person_PerArea"
     },
     {
-      "name": "Percent of Internet Users",
-      "dcid": "Count_Person_IsInternetUser_PerCapita"
-    },
-    {
-      "name": "Percent of Population Living in Areas Below 5 Meters Elevation",
-      "dcid": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person"
-    },
-    {
       "name": "Population: 1 - 4 Years",
       "dcid": "Count_Person_1To4Years"
     },
@@ -421,16 +413,8 @@
       "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher"
     },
     {
-      "name": "Population: Bachelors Degree or Higher (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
-    },
-    {
       "name": "Population: Below Poverty Level in The Past 12 Months",
       "dcid": "Count_Person_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
-      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person"
     },
     {
       "name": "Population: Bengali",
@@ -487,10 +471,6 @@
     {
       "name": "Population: Doctorate Degree",
       "dcid": "Count_Person_EducationalAttainmentDoctorateDegree"
-    },
-    {
-      "name": "Population: Doctorate Degree (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
       "name": "Population: Education Major",
@@ -797,10 +777,6 @@
       "dcid": "Count_Person_EducationalAttainmentMastersDegree"
     },
     {
-      "name": "Population: Masters Degree or Higher (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
-    },
-    {
       "name": "Population: MiddleSchool",
       "dcid": "Count_Person_DetailedMiddleSchool"
     },
@@ -1091,10 +1067,6 @@
     {
       "name": "Population: Telugu",
       "dcid": "Count_Person_5OrMoreYears_TeluguSpokenAtHome"
-    },
-    {
-      "name": "Population: Tertiary Education (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
       "name": "Population: Thai",
@@ -1605,6 +1577,34 @@
       "dcid": "Count_Person_InLaborForce"
     },
     {
+      "name": "Percent of Internet Users",
+      "dcid": "Count_Person_IsInternetUser_PerCapita"
+    },
+    {
+      "name": "Percent of Population Living in Areas Below 5 Meters Elevation",
+      "dcid": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher (As Fraction of Count Person 25 or More Years)",
+      "dcid": "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person"
+    },
+    {
+      "name": "Population: Doctorate Degree (As Fraction of Count Person 25 or More Years)",
+      "dcid": "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Population: Masters Degree or Higher (As Fraction of Count Person 25 or More Years)",
+      "dcid": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Population: Tertiary Education (As Fraction of Count Person 25 or More Years)",
+      "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
       "name": "Population: 1 - 4 Years, Different House Abroad",
       "dcid": "Count_Person_1To4Years_DifferentHouseAbroad"
     },
@@ -1877,10 +1877,6 @@
       "dcid": "Count_Person_15To64Years_Male"
     },
     {
-      "name": "Population: 15 - 64 Years, in Labor Force (As Fraction of Count Person 15 To 64 Years)",
-      "dcid": "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years"
-    },
-    {
       "name": "Population: 15 Years or Less, Adult Correctional Facilities",
       "dcid": "Count_Person_15OrLessYears_ResidesInAdultCorrectionalFacilities"
     },
@@ -2023,10 +2019,6 @@
     {
       "name": "Population: 15 Years or More, One Race",
       "dcid": "Count_Person_15OrMoreYears_OneRace"
-    },
-    {
-      "name": "Population: 15 Years or More, Smoking (As Fraction of Count Person 15 or More Years)",
-      "dcid": "Count_Person_15OrMoreYears_Smoking_AsFractionOf_Count_Person_15OrMoreYears"
     },
     {
       "name": "Population: 15 Years or More, Some Other Race Alone",
@@ -2597,10 +2589,6 @@
       "dcid": "Count_Person_20To34Years_Male"
     },
     {
-      "name": "Population: 20 - 79 Years, Diabetes (As Fraction of Count Person 20 To 79 Years)",
-      "dcid": "Count_Person_20To79Years_Diabetes_AsFractionOf_Count_Person_20To79Years"
-    },
-    {
       "name": "Population: 21 - 64 Years, 1.4 - 4 Ratio To Poverty Line",
       "dcid": "Count_Person_21To64Years_RatioToPovertyLine1.38To4"
     },
@@ -2763,26 +2751,6 @@
     {
       "name": "Population: 25 - 39 Years, Science And Engineering Related Major",
       "dcid": "Count_Person_25To39Years_BachelorOfScienceAndEngineeringRelatedMajor"
-    },
-    {
-      "name": "Population: 25 - 64 Years, Enrolled in Education or Training (As Fraction of Count Person 25 To 64 Years)",
-      "dcid": "Count_Person_25To64Years_EnrolledInEducationOrTraining_AsAFractionOfCount_Person_25To64Years"
-    },
-    {
-      "name": "Population: 25 - 64 Years, Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education (As Fraction of Count Person 25 To 64 Years)",
-      "dcid": "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_AsAFractionOfCount_Person_25To64Years"
-    },
-    {
-      "name": "Population: 25 - 64 Years, Tertiary Education (As Fraction of Count Person 25 To 64 Years)",
-      "dcid": "Count_Person_25To64Years_TertiaryEducation_AsAFractionOfCount_Person_25To64Years"
-    },
-    {
-      "name": "Population: 25 - 64 Years, Upper Secondary Education \u0026 Post Secondary Non Tertiary Education (As Fraction of Count Person 25 To 64 Years)",
-      "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_AsAFractionOfCount_Person_25To64Years"
-    },
-    {
-      "name": "Population: 25 - 64 Years, Upper Secondary Education or Higher (As Fraction of Count Person 25 To 64 Years)",
-      "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrHigher_AsAFractionOfCount_Person_25To64Years"
     },
     {
       "name": "Population: 25 Years or More, Adult Correctional Facilities",
@@ -3079,18 +3047,6 @@
     {
       "name": "Population: 4 Years or Less, Male",
       "dcid": "Count_Person_Upto4Years_Male"
-    },
-    {
-      "name": "Population: 4 Years or Less, Overweight (As Fraction of Count Person Upto 4 Years)",
-      "dcid": "Count_Person_Upto4Years_Overweight_AsFractionOf_Count_Person_Upto4Years"
-    },
-    {
-      "name": "Population: 4 Years or Less, Severe Wasting (As Fraction of Count Person Upto 4 Years)",
-      "dcid": "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years"
-    },
-    {
-      "name": "Population: 4 Years or Less, Wasting (As Fraction of Count Person Upto 4 Years)",
-      "dcid": "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years"
     },
     {
       "name": "Population: 40 - 44 Years, Female",
@@ -3999,6 +3955,50 @@
     {
       "name": "Population: 65 Years or More, Other Indo European Languages",
       "dcid": "Count_Person_65OrMoreYears_OtherIndoEuropeanLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Population: 65 Years or More, Other Languages",
+      "dcid": "Count_Person_65OrMoreYears_OtherLanguagesSpokenAtHome"
+    },
+    {
+      "name": "Population: 65 Years or More, Poverty Status Determined",
+      "dcid": "Count_Person_65OrMoreYears_PovertyStatusDetermined"
+    },
+    {
+      "name": "Population: 65 Years or More, Science And Engineering Major",
+      "dcid": "Count_Person_65OrMoreYears_BachelorOfScienceAndEngineeringMajor"
+    },
+    {
+      "name": "Population: 65 Years or More, Science And Engineering Related Major",
+      "dcid": "Count_Person_65OrMoreYears_BachelorOfScienceAndEngineeringRelatedMajor"
+    },
+    {
+      "name": "Population: 65 Years or More, Self Care Difficulty",
+      "dcid": "Count_Person_65OrMoreYears_SelfCareDifficulty"
+    },
+    {
+      "name": "Population: 65 Years or More, Spanish",
+      "dcid": "Count_Person_65OrMoreYears_SpanishSpokenAtHome"
+    },
+    {
+      "name": "Population: 65 Years or More, Spanish or Spanish Creole",
+      "dcid": "Count_Person_65OrMoreYears_SpanishOrSpanishCreoleSpokenAtHome"
+    },
+    {
+      "name": "Population: 65 Years or More, Vision Difficulty",
+      "dcid": "Count_Person_65OrMoreYears_VisionDifficulty"
+    },
+    {
+      "name": "Population: 65 Years or More, With Disability",
+      "dcid": "Count_Person_65OrMoreYears_WithDisability"
+    },
+    {
+      "name": "Population: 67 - 69 Years, Female",
+      "dcid": "Count_Person_67To69Years_Female"
+    },
+    {
+      "name": "Population: 67 - 69 Years, Male",
+      "dcid": "Count_Person_67To69Years_Male"
     }
   ],
   "matches": [
