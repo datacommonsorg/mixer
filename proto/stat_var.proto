@@ -223,6 +223,8 @@ message SearchStatVarRequest {
   repeated string places = 2;
   // Whether to blocklist the search results.
   bool enable_blocklist = 3;
+  // Whether or not to only return stat vars in search results.
+  bool sv_only = 4;
 }
 
 message SearchStatVarResponse {
