@@ -168,7 +168,7 @@ func TestBuildSearchIndex(t *testing.T) {
 		SvIds:         nil,
 		Matches:       map[string]struct{}{"": {}},
 	}
-	token_b := resource.TrieNode{
+	tokenUnderscore := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'1': &token1b,
 		},
@@ -178,13 +178,13 @@ func TestBuildSearchIndex(t *testing.T) {
 	}
 	token3a := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
-			'_': &token_b,
+			'_': &tokenUnderscore,
 		},
 		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
-	tokenUnderscore := resource.TrieNode{
+	tokenUnderscore1 := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'1': &token1a,
 			'3': &token3a,
@@ -195,7 +195,7 @@ func TestBuildSearchIndex(t *testing.T) {
 	}
 	tokenG := resource.TrieNode{
 		ChildrenNodes: map[rune]*resource.TrieNode{
-			'_': &tokenUnderscore,
+			'_': &tokenUnderscore1,
 		},
 		SvgIds:  nil,
 		SvIds:   nil,
@@ -344,26 +344,32 @@ func TestBuildSearchIndex(t *testing.T) {
 				Ranking: map[string]*resource.RankingInfo{
 					"g_1": {
 						ApproxNumPv: 2,
+						NumKnownPv:  2,
 						RankingName: "ab1 zDx",
 					},
 					"sv_1_1": {
 						ApproxNumPv: 3,
+						NumKnownPv:  3,
 						RankingName: "sv1",
 					},
 					"g_3_1": {
 						ApproxNumPv: 3,
+						NumKnownPv:  3,
 						RankingName: "zdx, bd",
 					},
 					"sv_3": {
 						ApproxNumPv: 2,
+						NumKnownPv:  2,
 						RankingName: "sv3",
 					},
 					"sv_1_2": {
 						ApproxNumPv: 3,
+						NumKnownPv:  3,
 						RankingName: "sv2",
 					},
 					"sv3": {
 						ApproxNumPv: 30,
+						NumKnownPv:  30,
 						RankingName: "sv4",
 					},
 				},

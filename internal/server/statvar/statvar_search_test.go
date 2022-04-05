@@ -293,11 +293,13 @@ func TestCompareRankingInfo(t *testing.T) {
 		{
 			r1: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "stat var 1",
 			},
 			dcid1: "sv1",
 			r2: &resource.RankingInfo{
 				ApproxNumPv: 2,
+				NumKnownPv:  2,
 				RankingName: "stat var 2",
 			},
 			dcid2: "sv2",
@@ -306,11 +308,13 @@ func TestCompareRankingInfo(t *testing.T) {
 		{
 			r1: &resource.RankingInfo{
 				ApproxNumPv: 2,
+				NumKnownPv:  2,
 				RankingName: "stat var 1",
 			},
 			dcid1: "sv1",
 			r2: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "stat var 2",
 			},
 			dcid2: "sv2",
@@ -319,11 +323,13 @@ func TestCompareRankingInfo(t *testing.T) {
 		{
 			r1: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "stat var 1",
 			},
 			dcid1: "sv1",
 			r2: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "stat var 2",
 			},
 			dcid2: "sv2",
@@ -332,11 +338,13 @@ func TestCompareRankingInfo(t *testing.T) {
 		{
 			r1: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "stat var 1",
 			},
 			dcid1: "sv1",
 			r2: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "stat",
 			},
 			dcid2: "sv2",
@@ -345,11 +353,13 @@ func TestCompareRankingInfo(t *testing.T) {
 		{
 			r1: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "sv",
 			},
 			dcid1: "sv1",
 			r2: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "sv",
 			},
 			dcid2: "sv2",
@@ -358,14 +368,46 @@ func TestCompareRankingInfo(t *testing.T) {
 		{
 			r1: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "sv",
 			},
 			dcid1: "statvar1",
 			r2: &resource.RankingInfo{
 				ApproxNumPv: 1,
+				NumKnownPv:  2,
 				RankingName: "sv",
 			},
 			dcid2: "s2",
+			want:  false,
+		},
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				NumKnownPv:  2,
+				RankingName: "sv",
+			},
+			dcid1: "statvar1",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				NumKnownPv:  3,
+				RankingName: "sv",
+			},
+			dcid2: "s2",
+			want:  true,
+		},
+		{
+			r1: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				NumKnownPv:  3,
+				RankingName: "sv",
+			},
+			dcid1: "s2",
+			r2: &resource.RankingInfo{
+				ApproxNumPv: 1,
+				NumKnownPv:  2,
+				RankingName: "sv",
+			},
+			dcid2: "statvar",
 			want:  false,
 		},
 	} {
