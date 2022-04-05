@@ -205,6 +205,10 @@
           "dcid": "Count_Death_45To49Years_Female"
         },
         {
+          "name": "Count of Mortality Event: 5 - 19 Years, Female",
+          "dcid": "dc/rxg50w6jfgld4"
+        },
+        {
           "name": "Count of Mortality Event: 5 - 9 Years, Female",
           "dcid": "Count_Death_5To9Years_Female"
         },
@@ -237,20 +241,16 @@
           "dcid": "Count_Death_75To79Years_Female"
         },
         {
+          "name": "Count of Mortality Event: 75 Years or More, Female",
+          "dcid": "dc/sw43w4pbtgq4d"
+        },
+        {
           "name": "Count of Mortality Event: 80 Years or More, Female",
           "dcid": "Count_Death_80OrMoreYears_Female"
         },
         {
           "name": "Count of Mortality Event: Years 0, Female (As Fraction of Count Birth Event Live Birth Female)",
           "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 5 - 19 Years, Female",
-          "dcid": "dc/rxg50w6jfgld4"
-        },
-        {
-          "name": "Count of Mortality Event: 75 Years or More, Female",
-          "dcid": "dc/sw43w4pbtgq4d"
         }
       ]
     },
@@ -805,6 +805,10 @@
       "name": "Person With Educational Attainment, Gender = Female",
       "statVars": [
         {
+          "name": "Percentage: Bachelor Degree or Higher, Female",
+          "dcid": "dc/648tvf392fz0c"
+        },
+        {
           "name": "Population: 10th Grade, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
         },
@@ -853,6 +857,10 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
         },
         {
+          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
+        },
+        {
           "name": "Population: 25 - 64 Years, Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
           "dcid": "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
         },
@@ -863,14 +871,6 @@
         {
           "name": "Population: 25 - 64 Years, Upper Secondary Education or Higher, Female (As Fraction of Count Person 25 To 64 Years Female)",
           "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrHigher_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        },
-        {
-          "name": "Percentage: Bachelor Degree or Higher, Female",
-          "dcid": "dc/648tvf392fz0c"
         }
       ]
     },
@@ -1799,6 +1799,10 @@
           "dcid": "Count_Person_18To24Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 18 - 24 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/420l03dlqgydf"
+        },
+        {
           "name": "Population: 18 - 24 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_18To24Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -1809,10 +1813,6 @@
         {
           "name": "Population: 18 - 24 Years, Some College No Degree, Female",
           "dcid": "Count_Person_18To24Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 18 - 24 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/420l03dlqgydf"
         }
       ]
     },
@@ -1925,6 +1925,10 @@
           "dcid": "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 25 - 34 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/e4f1hdtwxzkqh"
+        },
+        {
           "name": "Population: 25 - 34 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_25To34Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -1935,10 +1939,6 @@
         {
           "name": "Population: 25 - 34 Years, Some College No Degree, Female",
           "dcid": "Count_Person_25To34Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 25 - 34 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/e4f1hdtwxzkqh"
         }
       ]
     },
@@ -2051,6 +2051,10 @@
           "dcid": "Count_Person_35To44Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 35 - 44 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/dw4g4grh9ncyb"
+        },
+        {
           "name": "Population: 35 - 44 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_35To44Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -2061,10 +2065,6 @@
         {
           "name": "Population: 35 - 44 Years, Some College No Degree, Female",
           "dcid": "Count_Person_35To44Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 35 - 44 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/dw4g4grh9ncyb"
         }
       ]
     },
@@ -2093,6 +2093,10 @@
           "dcid": "Count_Person_45To64Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 45 - 64 Years, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/t60npr95xn3m"
+        },
+        {
           "name": "Population: 45 - 64 Years, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_45To64Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -2103,10 +2107,6 @@
         {
           "name": "Population: 45 - 64 Years, Some College No Degree, Female",
           "dcid": "Count_Person_45To64Years_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 45 - 64 Years, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/t60npr95xn3m"
         }
       ]
     },
@@ -4029,12 +4029,12 @@
           "dcid": "Median_Age_Person_Female"
         },
         {
-          "name": "Population: With Disability, Female",
-          "dcid": "Count_Person_WithDisability_Female"
-        },
-        {
           "name": "Median Income: Female",
           "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+        },
+        {
+          "name": "Population: With Disability, Female",
+          "dcid": "Count_Person_WithDisability_Female"
         }
       ]
     },
@@ -4135,6 +4135,10 @@
           "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentGraduateOrProfessionalDegree_Female"
         },
         {
+          "name": "Population: 65 Years or More, High School Graduate Ged or Alternative, Female",
+          "dcid": "dc/8vf1257xef292"
+        },
+        {
           "name": "Population: 65 Years or More, High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
@@ -4145,10 +4149,6 @@
         {
           "name": "Population: 65 Years or More, Some College No Degree, Female",
           "dcid": "Count_Person_65OrMoreYears_EducationalAttainmentSomeCollegeNoDegree_Female"
-        },
-        {
-          "name": "Population: 65 Years or More, High School Graduate Ged or Alternative, Female",
-          "dcid": "dc/8vf1257xef292"
         }
       ]
     },
@@ -4423,16 +4423,16 @@
           "dcid": "dc/ths2sxts0989g"
         },
         {
+          "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+          "dcid": "dc/5n2xf0xr930e7"
+        },
+        {
           "name": "Count of Establishment: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
           "dcid": "dc/1mzj1f5670hc"
         },
         {
           "name": "Shipments or Receipts of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239), With Payroll",
           "dcid": "dc/6qkv04wn94c53"
-        },
-        {
-          "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/5n2xf0xr930e7"
         }
       ]
     },
@@ -4440,10 +4440,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/42433",
       "name": "Establishment With Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/kxtbk13pgnvn2"
-        },
         {
           "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
           "dcid": "dc/01r1n7ysnjsed"
@@ -4457,12 +4453,16 @@
           "dcid": "dc/xre2cx37zmkef"
         },
         {
-          "name": "Sales of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433), With Payroll",
-          "dcid": "dc/6bgpdj3k5mrm3"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
           "dcid": "dc/c5kh0lky2lwff"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/kxtbk13pgnvn2"
+        },
+        {
+          "name": "Sales of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433), With Payroll",
+          "dcid": "dc/6bgpdj3k5mrm3"
         }
       ]
     },
@@ -4470,10 +4470,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315232",
       "name": "Establishment With Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/v47j59zsfcw34"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
           "dcid": "dc/dwz0wj5cn1vm2"
@@ -4487,12 +4483,16 @@
           "dcid": "dc/wdydnygy2vhh2"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232), With Payroll",
-          "dcid": "dc/fks84eehqmew7"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
           "dcid": "dc/byw105g97113f"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+          "dcid": "dc/v47j59zsfcw34"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232), With Payroll",
+          "dcid": "dc/fks84eehqmew7"
         }
       ]
     },
@@ -4500,10 +4500,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315233",
       "name": "Establishment With Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/k0l048qhs341g"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
           "dcid": "dc/0t78emz66c4p6"
@@ -4517,12 +4513,16 @@
           "dcid": "dc/hjrs2ww3j659"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233), With Payroll",
-          "dcid": "dc/6jy082t6fmvvh"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
           "dcid": "dc/dpk05r5c2z3wc"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+          "dcid": "dc/k0l048qhs341g"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233), With Payroll",
+          "dcid": "dc/6jy082t6fmvvh"
         }
       ]
     },
@@ -4530,10 +4530,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315231",
       "name": "Establishment With Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/nqjrr9wt8cx9d"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
           "dcid": "dc/72h0vycgkyxf5"
@@ -4547,12 +4543,16 @@
           "dcid": "dc/zsclgn1trelq"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231), With Payroll",
-          "dcid": "dc/pp7mk3zze5x33"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
           "dcid": "dc/y52nntfc8gc3f"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+          "dcid": "dc/nqjrr9wt8cx9d"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231), With Payroll",
+          "dcid": "dc/pp7mk3zze5x33"
         }
       ]
     },
@@ -4560,10 +4560,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315234",
       "name": "Establishment With Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/zl2fwf5mmb0j9"
-        },
         {
           "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
           "dcid": "dc/dwjnvlzlk9021"
@@ -4577,12 +4573,16 @@
           "dcid": "dc/sf1c454nyqxdf"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234), With Payroll",
-          "dcid": "dc/6llg4c0hm0518"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
           "dcid": "dc/cdjv5jt6gk8k6"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+          "dcid": "dc/zl2fwf5mmb0j9"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234), With Payroll",
+          "dcid": "dc/6llg4c0hm0518"
         }
       ]
     },
@@ -4590,10 +4590,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/44812",
       "name": "Establishment With Industry = Women's Clothing Stores (NAICS/44812)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/tnyv8edhmflg"
-        },
         {
           "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
           "dcid": "dc/485v7jl4qlhxb"
@@ -4607,12 +4603,16 @@
           "dcid": "dc/dbr7jyndp0151"
         },
         {
-          "name": "Sales of Establishment: Women's Clothing Stores (NAICS/44812), With Payroll",
-          "dcid": "dc/tb8gcxernde19"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's Clothing Stores (NAICS/44812)",
           "dcid": "dc/g5nryvhz7vl44"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+          "dcid": "dc/tnyv8edhmflg"
+        },
+        {
+          "name": "Sales of Establishment: Women's Clothing Stores (NAICS/44812), With Payroll",
+          "dcid": "dc/tb8gcxernde19"
         }
       ]
     },
@@ -4620,10 +4620,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/316992",
       "name": "Establishment With Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/9dlkhye638d1d"
-        },
         {
           "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
           "dcid": "dc/6vd8mtqfmnlbb"
@@ -4637,12 +4633,16 @@
           "dcid": "dc/f3qd32v7d0w9"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992), With Payroll",
-          "dcid": "dc/v8p0zbh29kv98"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
           "dcid": "dc/3nsjpbp090gr9"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+          "dcid": "dc/9dlkhye638d1d"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992), With Payroll",
+          "dcid": "dc/v8p0zbh29kv98"
         }
       ]
     },
@@ -4650,10 +4650,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/316214",
       "name": "Establishment With Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/kd5z73cqycm6c"
-        },
         {
           "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
           "dcid": "dc/g3q1g5ypdk2k"
@@ -4667,12 +4663,16 @@
           "dcid": "dc/r47bzjgblx7z4"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214), With Payroll",
-          "dcid": "dc/4xrh95yzw99w3"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
           "dcid": "dc/ye2wj5ggx5n34"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+          "dcid": "dc/kd5z73cqycm6c"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214), With Payroll",
+          "dcid": "dc/4xrh95yzw99w3"
         }
       ]
     },
@@ -4680,10 +4680,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/315212",
       "name": "Establishment With Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/4d2pt897sqb09"
-        },
         {
           "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
           "dcid": "dc/0bkbm4x0nvceb"
@@ -4697,12 +4693,16 @@
           "dcid": "dc/p5sgbrbdkefl2"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212), With Payroll",
-          "dcid": "dc/mcjnbmc4tk28d"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
           "dcid": "dc/fgn46kw0vn108"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+          "dcid": "dc/4d2pt897sqb09"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212), With Payroll",
+          "dcid": "dc/mcjnbmc4tk28d"
         }
       ]
     },
@@ -4710,10 +4710,6 @@
       "dcid": "dc/g/Establishment_Industry-NAICS/31524",
       "name": "Establishment With Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
       "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/e351bke5y8c75"
-        },
         {
           "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
           "dcid": "dc/1164zg41pdp4f"
@@ -4727,12 +4723,16 @@
           "dcid": "dc/yhdq1xdy3x0s9"
         },
         {
-          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524), With Payroll",
-          "dcid": "dc/ne63ywxmvk1lg"
-        },
-        {
           "name": "Wages Annual of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
           "dcid": "dc/4pm87j02ql96c"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+          "dcid": "dc/e351bke5y8c75"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524), With Payroll",
+          "dcid": "dc/ne63ywxmvk1lg"
         }
       ]
     },
@@ -5409,16 +5409,16 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
         {
+          "name": "Median Income: High School Graduate Includes Equivalency, Female",
+          "dcid": "dc/syxm9nnsl3wcc"
+        },
+        {
           "name": "Median Earnings: 25 Years or More, High School Graduate Includes Equivalency, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_WithEarnings"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, High School Graduate Includes Equivalency, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: High School Graduate Includes Equivalency, Female",
-          "dcid": "dc/syxm9nnsl3wcc"
         }
       ]
     },
@@ -5801,6 +5801,10 @@
       "name": "Hate Crime Incidents With Crime Type = Destruction or Damage or Vandalism of Property, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Unknown Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Hispanic or Latino, Black or African American Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
@@ -5811,10 +5815,6 @@
         {
           "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Asian Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceAsianAlone_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, Destruction or Damage or Vandalism of Property, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_DestructionOrDamageOrVandalismOfProperty_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
@@ -5827,12 +5827,12 @@
           "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
         },
         {
-          "name": "Lower Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
-          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
-        },
-        {
           "name": "Sample Size, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
           "dcid": "SampleSize_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+        },
+        {
+          "name": "Lower Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
+          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
         },
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
@@ -5849,12 +5849,12 @@
           "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         },
         {
-          "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
-          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-        },
-        {
           "name": "Sample Size, Prevalence of 65 Years or More, Female, Core Preventive Services",
           "dcid": "SampleSize_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
+        },
+        {
+          "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
+          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         },
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
@@ -6281,12 +6281,12 @@
           "dcid": "Count_Person_15OrMoreYears_Female"
         },
         {
-          "name": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
-          "dcid": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce"
-        },
-        {
           "name": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
           "dcid": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
+          "dcid": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce"
         }
       ]
     },
@@ -6299,12 +6299,12 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
         },
         {
-          "name": "Median Earnings: 25 Years or More, Bachelors Degree, Female, With Earnings",
-          "dcid": "Median_Earnings_Person_EducationalAttainmentBachelorsDegree_Female_WithEarnings"
-        },
-        {
           "name": "Median Income: Bachelors Degree, Female",
           "dcid": "dc/ys49z0lqtj9g3"
+        },
+        {
+          "name": "Median Earnings: 25 Years or More, Bachelors Degree, Female, With Earnings",
+          "dcid": "Median_Earnings_Person_EducationalAttainmentBachelorsDegree_Female_WithEarnings"
         }
       ]
     },
@@ -6313,16 +6313,16 @@
       "name": "Person With Educational Attainment = Graduate or Professional Degree, Gender = Female",
       "statVars": [
         {
+          "name": "Median Income: Graduate or Professional Degree, Female",
+          "dcid": "dc/zqjml3mcrpsgd"
+        },
+        {
           "name": "Median Earnings: 25 Years or More, Graduate or Professional Degree, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentGraduateOrProfessionalDegree_Female_WithEarnings"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Graduate or Professional Degree, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentGraduateOrProfessionalDegree_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: Graduate or Professional Degree, Female",
-          "dcid": "dc/zqjml3mcrpsgd"
         }
       ]
     },
@@ -6331,16 +6331,16 @@
       "name": "Person With Educational Attainment = Less Than High School Graduate, Gender = Female",
       "statVars": [
         {
+          "name": "Median Income: Less Than High School Graduate, Female",
+          "dcid": "dc/8qkkf1vx7cmh"
+        },
+        {
           "name": "Median Earnings: 25 Years or More, Less Than High School Graduate, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentLessThanHighSchoolGraduate_Female_WithEarnings"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Less Than High School Graduate, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentLessThanHighSchoolGraduate_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: Less Than High School Graduate, Female",
-          "dcid": "dc/8qkkf1vx7cmh"
         }
       ]
     },
@@ -6349,16 +6349,16 @@
       "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female",
       "statVars": [
         {
+          "name": "Median Income: Some College or Associates Degree, Female",
+          "dcid": "dc/hep54bd4vbysh"
+        },
+        {
           "name": "Median Earnings: 25 Years or More, Some College or Associates Degree, Female, With Earnings",
           "dcid": "Median_Earnings_Person_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_WithEarnings"
         },
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Some College or Associates Degree, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_Unmarried"
-        },
-        {
-          "name": "Median Income: Some College or Associates Degree, Female",
-          "dcid": "dc/hep54bd4vbysh"
         }
       ]
     },
@@ -6367,16 +6367,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings",
+          "dcid": "Count_Person_Female_WithEarnings"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings",
           "dcid": "Mean_Earnings_Person_Female"
         },
         {
           "name": "Median Earnings: Female, With Earnings",
           "dcid": "Median_Earnings_Person_Female"
-        },
-        {
-          "name": "Population: Female, With Earnings",
-          "dcid": "Count_Person_Female_WithEarnings"
         }
       ]
     },
@@ -6385,12 +6385,12 @@
       "name": "Person With Gender = Female, Marital Status = Divorced in The Past 12 Months",
       "statVars": [
         {
-          "name": "Median Age: Female, Divorced in The Past 12 Months",
-          "dcid": "Median_Age_Person_Female_DivorcedInThePast12Months"
-        },
-        {
           "name": "Population: Female, Divorced in The Past 12 Months",
           "dcid": "Count_Person_15OrMoreYears_Female_DivorcedInThePast12Months"
+        },
+        {
+          "name": "Median Age: Female, Divorced in The Past 12 Months",
+          "dcid": "Median_Age_Person_Female_DivorcedInThePast12Months"
         },
         {
           "name": "Population: With Own Children Under 18, Female, Family Household, Divorced in The Past 12 Months, Household",
@@ -6403,12 +6403,12 @@
       "name": "Person With Gender = Female, Marital Status = Married in The Past 12 Months",
       "statVars": [
         {
-          "name": "Median Age: Female, Married in The Past 12 Months",
-          "dcid": "Median_Age_Person_Female_MarriedInThePast12Months"
-        },
-        {
           "name": "Population: Female, Married in The Past 12 Months",
           "dcid": "Count_Person_15OrMoreYears_Female_MarriedInThePast12Months"
+        },
+        {
+          "name": "Median Age: Female, Married in The Past 12 Months",
+          "dcid": "Median_Age_Person_Female_MarriedInThePast12Months"
         },
         {
           "name": "Population: With Own Children Under 18, Female, Family Household, Married in The Past 12 Months, Household",
@@ -6421,16 +6421,16 @@
       "name": "Person With Gender = Female, Medical Condition",
       "statVars": [
         {
+          "name": "Prevalence: Female, Diabetes",
+          "dcid": "dc/nh3s4skee5483"
+        },
+        {
           "name": "Population: 4 Years or Less, Female, Severe Wasting (As Fraction of Count Person Upto 4 Years Female)",
           "dcid": "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female"
         },
         {
           "name": "Population: 4 Years or Less, Female, Wasting (As Fraction of Count Person Upto 4 Years Female)",
           "dcid": "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
-        },
-        {
-          "name": "Prevalence: Female, Diabetes",
-          "dcid": "dc/nh3s4skee5483"
         }
       ]
     },
@@ -7123,16 +7123,16 @@
       "name": "Hate Crime Incidents With Crime Type = False Pretense or Swindle or Confidence Game, Offender Ethnicity, Targeted Gender = Female",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Unknown Ethnicity, Unknown Race, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
           "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceWhiteAlone_Female"
         },
         {
           "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Not Hispanic or Latino, White Alone, Known Offender, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceWhiteAlone_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents: Gender, False Pretense or Swindle or Confidence Game, Unknown Ethnicity, Unknown Race, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
         }
       ]
     },
@@ -7235,12 +7235,12 @@
           "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female"
         },
         {
-          "name": "Population: 15 - 19 Years, Birth in The Past 12 Months, Female, Unmarried",
-          "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female_Unmarried"
-        },
-        {
           "name": "Population: 15 - 19 Years, Birth in The Past 12 Months, Female (As Fraction of Count Person 15 To 19 Years Female)",
           "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Birth in The Past 12 Months, Female, Unmarried",
+          "dcid": "Count_Person_15To19Years_BirthInThePast12Months_Female_Unmarried"
         }
       ]
     },
@@ -7379,12 +7379,12 @@
           "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female"
         },
         {
-          "name": "Population: 20 - 34 Years, Birth in The Past 12 Months, Female, Unmarried",
-          "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female_Unmarried"
-        },
-        {
           "name": "Population: 20 - 34 Years, Birth in The Past 12 Months, Female (As Fraction of Count Person 20 To 34 Years Female)",
           "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female_AsAFractionOf_Count_Person_20To34Years_Female"
+        },
+        {
+          "name": "Population: 20 - 34 Years, Birth in The Past 12 Months, Female, Unmarried",
+          "dcid": "Count_Person_20To34Years_BirthInThePast12Months_Female_Unmarried"
         }
       ]
     },
@@ -7519,16 +7519,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Adult Correctional Facilities",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Adult Correctional Facilities",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInAdultCorrectionalFacilities"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Adult Correctional Facilities",
           "dcid": "Mean_Earnings_Person_Female_ResidesInAdultCorrectionalFacilities"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Adult Correctional Facilities",
           "dcid": "Median_Earnings_Person_Female_ResidesInAdultCorrectionalFacilities"
-        },
-        {
-          "name": "Population: Female, With Earnings, Adult Correctional Facilities",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInAdultCorrectionalFacilities"
         }
       ]
     },
@@ -7537,16 +7537,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = College or University Student Housing",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, College or University Student Housing",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInCollegeOrUniversityStudentHousing"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, College or University Student Housing",
           "dcid": "Mean_Earnings_Person_Female_ResidesInCollegeOrUniversityStudentHousing"
         },
         {
           "name": "Median Earnings: Female, With Earnings, College or University Student Housing",
           "dcid": "Median_Earnings_Person_Female_ResidesInCollegeOrUniversityStudentHousing"
-        },
-        {
-          "name": "Population: Female, With Earnings, College or University Student Housing",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInCollegeOrUniversityStudentHousing"
         }
       ]
     },
@@ -7555,16 +7555,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Group Quarters",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Group Quarters",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInGroupQuarters"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Group Quarters",
           "dcid": "Mean_Earnings_Person_Female_ResidesInGroupQuarters"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Group Quarters",
           "dcid": "Median_Earnings_Person_Female_ResidesInGroupQuarters"
-        },
-        {
-          "name": "Population: Female, With Earnings, Group Quarters",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInGroupQuarters"
         }
       ]
     },
@@ -7573,16 +7573,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Institutionalized Group Quarters",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Institutionalized Group Quarters",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInInstitutionalizedGroupQuarters"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Institutionalized Group Quarters",
           "dcid": "Mean_Earnings_Person_Female_ResidesInInstitutionalizedGroupQuarters"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Institutionalized Group Quarters",
           "dcid": "Median_Earnings_Person_Female_ResidesInInstitutionalizedGroupQuarters"
-        },
-        {
-          "name": "Population: Female, With Earnings, Institutionalized Group Quarters",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInInstitutionalizedGroupQuarters"
         }
       ]
     },
@@ -7591,16 +7591,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Juvenile Facilities",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Juvenile Facilities",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInJuvenileFacilities"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Juvenile Facilities",
           "dcid": "Mean_Earnings_Person_Female_ResidesInJuvenileFacilities"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Juvenile Facilities",
           "dcid": "Median_Earnings_Person_Female_ResidesInJuvenileFacilities"
-        },
-        {
-          "name": "Population: Female, With Earnings, Juvenile Facilities",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInJuvenileFacilities"
         }
       ]
     },
@@ -7609,16 +7609,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Military Quarters or Military Ships",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Military Quarters or Military Ships",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInMilitaryQuartersOrMilitaryShips"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Military Quarters or Military Ships",
           "dcid": "Mean_Earnings_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Military Quarters or Military Ships",
           "dcid": "Median_Earnings_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips"
-        },
-        {
-          "name": "Population: Female, With Earnings, Military Quarters or Military Ships",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInMilitaryQuartersOrMilitaryShips"
         }
       ]
     },
@@ -7627,16 +7627,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Noninstitutionalized Group Quarters",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Noninstitutionalized Group Quarters",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInNoninstitutionalizedGroupQuarters"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Noninstitutionalized Group Quarters",
           "dcid": "Mean_Earnings_Person_Female_ResidesInNoninstitutionalizedGroupQuarters"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Noninstitutionalized Group Quarters",
           "dcid": "Median_Earnings_Person_Female_ResidesInNoninstitutionalizedGroupQuarters"
-        },
-        {
-          "name": "Population: Female, With Earnings, Noninstitutionalized Group Quarters",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInNoninstitutionalizedGroupQuarters"
         }
       ]
     },
@@ -7645,16 +7645,16 @@
       "name": "Person With Gender = Female, Income Status = With Earnings, Residence Type = Nursing Facilities",
       "statVars": [
         {
+          "name": "Population: Female, With Earnings, Nursing Facilities",
+          "dcid": "Count_Person_Female_WithEarnings_ResidesInNursingFacilities"
+        },
+        {
           "name": "Mean Earnings: Female, With Earnings, Nursing Facilities",
           "dcid": "Mean_Earnings_Person_Female_ResidesInNursingFacilities"
         },
         {
           "name": "Median Earnings: Female, With Earnings, Nursing Facilities",
           "dcid": "Median_Earnings_Person_Female_ResidesInNursingFacilities"
-        },
-        {
-          "name": "Population: Female, With Earnings, Nursing Facilities",
-          "dcid": "Count_Person_Female_WithEarnings_ResidesInNursingFacilities"
         }
       ]
     },
@@ -7735,12 +7735,12 @@
       "name": "Hate Crime Incidents With Crime Type = Intimidation, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Intimidation_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
           "name": "Count of Hate Crime Incidents: Gender, Intimidation, Unknown Ethnicity, White Alone, Known Offender, Female",
@@ -7753,12 +7753,12 @@
       "name": "Hate Crime Incidents With Crime Type = Simple Assault, Offender Ethnicity = Unknown Ethnicity, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_SimpleAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         },
         {
           "name": "Count of Hate Crime Incidents: Gender, Simple Assault, Unknown Ethnicity, White Alone, Known Offender, Female",
@@ -8929,12 +8929,12 @@
       "name": "Person With Age = 65 - 74 Years, Gender = Female",
       "statVars": [
         {
-          "name": "Population: 65 - 74 Years, Civilian, Female, Non Institutionalized",
-          "dcid": "dc/fdt2p0r5fced1"
-        },
-        {
           "name": "Population: 65 - 74 Years, Female",
           "dcid": "dc/nf9577mjqs69g"
+        },
+        {
+          "name": "Population: 65 - 74 Years, Civilian, Female, Non Institutionalized",
+          "dcid": "dc/fdt2p0r5fced1"
         }
       ]
     },
@@ -10189,12 +10189,12 @@
       "name": "Person With Educational Attainment = Tertiary Education, Gender = Female",
       "statVars": [
         {
-          "name": "Population: 25 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
           "name": "Population: Tertiary Education, Female (As Fraction of Count Person 25 or More Years Female)",
           "dcid": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
         }
       ]
     },
@@ -10581,12 +10581,12 @@
       "name": "Person With Gender = Female, Occupation = Architecture And Engineering Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Architecture And Engineering Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/27eg6kfgxbb07"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Architecture And Engineering Occupations",
           "dcid": "dc/dtrysjz3xhyv7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Architecture And Engineering Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/27eg6kfgxbb07"
         }
       ]
     },
@@ -10595,12 +10595,12 @@
       "name": "Person With Gender = Female, Occupation = Arts, Design, Entertainment, Sports, And Media Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Arts, Design, Entertainment, Sports, And Media Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/c78fb7n4fg5t"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Arts, Design, Entertainment, Sports, And Media Occupations",
           "dcid": "dc/hgg3e8x9yvx9d"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Arts, Design, Entertainment, Sports, And Media Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/c78fb7n4fg5t"
         }
       ]
     },
@@ -10609,12 +10609,12 @@
       "name": "Person With Gender = Female, Occupation = Building And Grounds Cleaning And Maintenance Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Building And Grounds Cleaning And Maintenance Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/ngxd3wfd871sf"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Building And Grounds Cleaning And Maintenance Occupations",
           "dcid": "dc/rlyfr32w4gzn2"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Building And Grounds Cleaning And Maintenance Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/ngxd3wfd871sf"
         }
       ]
     },
@@ -10623,12 +10623,12 @@
       "name": "Person With Gender = Female, Occupation = Business And Financial Operations Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Business And Financial Operations Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/9t1nk24nllnw6"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Business And Financial Operations Occupations",
           "dcid": "dc/25jmn94yqdhk4"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Business And Financial Operations Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/9t1nk24nllnw6"
         }
       ]
     },
@@ -10637,12 +10637,12 @@
       "name": "Person With Gender = Female, Occupation = Community And Social Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Community And Social Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/24gxks3k9ggp2"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Community And Social Service Occupations",
           "dcid": "dc/09bm4cr545fyg"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Community And Social Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/24gxks3k9ggp2"
         }
       ]
     },
@@ -10651,12 +10651,12 @@
       "name": "Person With Gender = Female, Occupation = Computer And Mathematical Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer And Mathematical Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/7lydbsw4ne5w9"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Computer And Mathematical Occupations",
           "dcid": "dc/303cktswccjp7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer And Mathematical Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/7lydbsw4ne5w9"
         }
       ]
     },
@@ -10665,12 +10665,12 @@
       "name": "Person With Gender = Female, Occupation = Computer, Engineering, And Science Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer, Engineering, And Science Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/kbspbwxjsmg67"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Computer, Engineering, And Science Occupations",
           "dcid": "dc/m9qm6y12bcycd"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer, Engineering, And Science Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/kbspbwxjsmg67"
         }
       ]
     },
@@ -10679,12 +10679,12 @@
       "name": "Person With Gender = Female, Occupation = Construction And Extraction Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Construction And Extraction Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/ws53s0ne6kb27"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Construction And Extraction Occupations",
           "dcid": "dc/epv7s4v9qhlx2"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Construction And Extraction Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/ws53s0ne6kb27"
         }
       ]
     },
@@ -10693,12 +10693,12 @@
       "name": "Person With Gender = Female, Occupation = Education, Legal, Community Service, Arts, And Media Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Education, Legal, Community Service, Arts, And Media Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/89fndld3xy4z7"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Education, Legal, Community Service, Arts, And Media Occupations",
           "dcid": "dc/eqk21656mbxs8"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Education, Legal, Community Service, Arts, And Media Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/89fndld3xy4z7"
         }
       ]
     },
@@ -10707,12 +10707,12 @@
       "name": "Person With Gender = Female, Occupation = Educational Instruction And Library Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Educational Instruction And Library Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/xhbfvtmdlnt8c"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Educational Instruction And Library Occupations",
           "dcid": "dc/rlg7eme5ncf05"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Educational Instruction And Library Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/xhbfvtmdlnt8c"
         }
       ]
     },
@@ -10721,12 +10721,12 @@
       "name": "Person With Gender = Female, Occupation = Farming, Fishing, And Forestry Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Farming, Fishing, And Forestry Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/jfd54v03tebw3"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Farming, Fishing, And Forestry Occupations",
           "dcid": "dc/rzm3j1689x12b"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Farming, Fishing, And Forestry Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/jfd54v03tebw3"
         }
       ]
     },
@@ -10735,12 +10735,12 @@
       "name": "Person With Gender = Female, Occupation = Food Preparation And Serving Related Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Food Preparation And Serving Related Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/wtecthfq7p0h6"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Food Preparation And Serving Related Occupations",
           "dcid": "dc/fe9heveckd5d"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Food Preparation And Serving Related Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/wtecthfq7p0h6"
         }
       ]
     },
@@ -10749,12 +10749,12 @@
       "name": "Person With Gender = Female, Occupation = Health Technologists And Technicians",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Health Technologists And Technicians, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/92mnbbgvfskf7"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Health Technologists And Technicians",
           "dcid": "dc/heh4hrddh44d7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Health Technologists And Technicians, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/92mnbbgvfskf7"
         }
       ]
     },
@@ -10763,12 +10763,12 @@
       "name": "Person With Gender = Female, Occupation = Healthcare Practitioners And Technical Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Practitioners And Technical Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/p2w035955wkhh"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Healthcare Practitioners And Technical Occupations",
           "dcid": "dc/3kjqnheqlwzz1"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Practitioners And Technical Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/p2w035955wkhh"
         }
       ]
     },
@@ -10777,12 +10777,12 @@
       "name": "Person With Gender = Female, Occupation = Healthcare Support Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Support Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/46v056n28d2e5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Healthcare Support Occupations",
           "dcid": "dc/743gx65z6zyf7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Support Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/46v056n28d2e5"
         }
       ]
     },
@@ -10791,12 +10791,12 @@
       "name": "Person With Gender = Female, Occupation = Installation, Maintenance, And Repair Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Installation, Maintenance, And Repair Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/5ehtzjsp45dy3"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Installation, Maintenance, And Repair Occupations",
           "dcid": "dc/d90dpe6dp9d86"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Installation, Maintenance, And Repair Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/5ehtzjsp45dy3"
         }
       ]
     },
@@ -10805,12 +10805,12 @@
       "name": "Person With Gender = Female, Occupation = Legal Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Legal Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/h3ej80jh908nc"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Legal Occupations",
           "dcid": "dc/28edmskt9xw21"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Legal Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/h3ej80jh908nc"
         }
       ]
     },
@@ -10819,12 +10819,12 @@
       "name": "Person With Gender = Female, Occupation = Life, Physical, And Social Science Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Life, Physical, And Social Science Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/0bm3wdelm2vf6"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Life, Physical, And Social Science Occupations",
           "dcid": "dc/4jdy2m3k0tr96"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Life, Physical, And Social Science Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/0bm3wdelm2vf6"
         }
       ]
     },
@@ -10833,12 +10833,12 @@
       "name": "Person With Gender = Female, Occupation = Management Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/112v7fggz4mv1"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Management Occupations",
           "dcid": "dc/bd729fxzst7q7"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/112v7fggz4mv1"
         }
       ]
     },
@@ -10847,12 +10847,12 @@
       "name": "Person With Gender = Female, Occupation = Management, Business, And Financial Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management, Business, And Financial Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/r7eqgnsy4b4c5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Management, Business, And Financial Occupations",
           "dcid": "dc/ce5mbgwsr2bef"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management, Business, And Financial Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/r7eqgnsy4b4c5"
         }
       ]
     },
@@ -10861,12 +10861,12 @@
       "name": "Person With Gender = Female, Occupation = Office And Administrative Support Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Office And Administrative Support Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/73yw7gf4y7ffh"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Office And Administrative Support Occupations",
           "dcid": "dc/9vlf8t9rj98z8"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Office And Administrative Support Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/73yw7gf4y7ffh"
         }
       ]
     },
@@ -10875,12 +10875,12 @@
       "name": "Person With Gender = Female, Occupation = Personal Care And Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Personal Care And Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/fgqjl1p9shgq5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Personal Care And Service Occupations",
           "dcid": "dc/jwetyvx4lertd"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Personal Care And Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/fgqjl1p9shgq5"
         }
       ]
     },
@@ -10889,12 +10889,12 @@
       "name": "Person With Gender = Female, Occupation = Production Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Production Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/fjs33byjqs207"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Production Occupations",
           "dcid": "dc/epw1tyqn3byr1"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Production Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/fjs33byjqs207"
         }
       ]
     },
@@ -10903,12 +10903,12 @@
       "name": "Person With Gender = Female, Occupation = Protective Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Protective Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/7zyd95qrp77t5"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Protective Service Occupations",
           "dcid": "dc/6rdm6w7t0e5ph"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Protective Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/7zyd95qrp77t5"
         }
       ]
     },
@@ -10917,12 +10917,12 @@
       "name": "Person With Gender = Female, Occupation = Sales And Related Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Sales And Related Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/j51fewxcyrrx2"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Sales And Related Occupations",
           "dcid": "dc/w1bkl895kbe02"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Sales And Related Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/j51fewxcyrrx2"
         }
       ]
     },
@@ -10931,12 +10931,12 @@
       "name": "Person With Gender = Female, Occupation = Service Occupations",
       "statVars": [
         {
-          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Service Occupations, With Earnings, Full Time Year Round Worker",
-          "dcid": "dc/h134xdx54hppc"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Service Occupations",
           "dcid": "dc/g9rjhbvkp17b1"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Service Occupations, With Earnings, Full Time Year Round Worker",
+          "dcid": "dc/h134xdx54hppc"
         }
       ]
     },
@@ -10945,12 +10945,12 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
-        },
-        {
           "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/k0zg5lw8686z8"
+        },
+        {
+          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
         }
       ]
     },
@@ -11001,12 +11001,12 @@
       "name": "Person With Gender = Female, Recent Work Status = Worked Full Time",
       "statVars": [
         {
-          "name": "Median Income: Female, Worked Full Time",
-          "dcid": "dc/kebe2wtgsej37"
-        },
-        {
           "name": "Population: Female, Worked Full Time",
           "dcid": "dc/q779fwy6k8skd"
+        },
+        {
+          "name": "Median Income: Female, Worked Full Time",
+          "dcid": "dc/kebe2wtgsej37"
         }
       ]
     },
@@ -11141,12 +11141,12 @@
       "name": "Hate Crime Incidents With Crime Type = Aggravated Assault, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Not Hispanic or Latino, Asian Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceAsianAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Aggravated Assault, Not Hispanic or Latino, Asian Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_AggravatedAssault_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceAsianAlone_Female"
         }
       ]
     },
@@ -11183,12 +11183,12 @@
       "name": "Hate Crime Incidents With Crime Type = Fondling, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Fondling, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Fondling, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Fondling, Not Hispanic or Latino, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_Fondling_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         }
       ]
     },
@@ -11197,12 +11197,12 @@
       "name": "Hate Crime Incidents With Crime Type = Forcible Rape, Offender Race, Targeted Gender = Female",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Gender, Forcible Rape, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Gender, Forcible Rape, Unknown Ethnicity, Unknown Race, Female",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Gender, Forcible Rape, Unknown Ethnicity, Black or African American Alone, Known Offender, Female",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_ForcibleRape_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         }
       ]
     },

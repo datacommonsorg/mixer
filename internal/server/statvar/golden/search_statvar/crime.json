@@ -3343,12 +3343,12 @@
           "dcid": "Offense_Count_CriminalIncidents_LarcenyTheft_IsHateCrime_OffenderRaceTwoOrMoreRaces"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Larceny Theft, White Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_LarcenyTheft_IsHateCrime_OffenderRaceWhiteAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Larceny Theft, Unknown Race, Unknown Offender",
           "dcid": "Offense_Count_CriminalIncidents_LarcenyTheft_IsHateCrime_OffenderRaceUnknownRace_UnknownOffender"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Larceny Theft, White Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_LarcenyTheft_IsHateCrime_OffenderRaceWhiteAlone"
         }
       ]
     },
@@ -3381,12 +3381,12 @@
           "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceTwoOrMoreRaces"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Other Crimes Against Person, White Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceWhiteAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Other Crimes Against Person, Unknown Race, Unknown Offender",
           "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceUnknownRace_UnknownOffender"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Other Crimes Against Person, White Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstPerson_IsHateCrime_OffenderRaceWhiteAlone"
         }
       ]
     },
@@ -3419,12 +3419,12 @@
           "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceTwoOrMoreRaces"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Other Crimes Against Property, White Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceWhiteAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Other Crimes Against Property, Unknown Race, Unknown Offender",
           "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceUnknownRace_UnknownOffender"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Other Crimes Against Property, White Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_OtherCrimesAgainstProperty_IsHateCrime_OffenderRaceWhiteAlone"
         }
       ]
     },
@@ -3965,6 +3965,10 @@
       "name": "Hate Crime Incidents With Bias Motivation = Race or Ethnicity, Offender Race",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, Unknown Race",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderRaceUnknownRace"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, American Indian or Alaska Native Alone, Known Offender Race",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone"
         },
@@ -3983,10 +3987,6 @@
         {
           "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, Two or More Races, Known Offender Race",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderRaceTwoOrMoreRaces"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, Unknown Race",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderRaceUnknownRace"
         },
         {
           "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, White Alone, Known Offender Race",
@@ -5033,6 +5033,10 @@
       "name": "Hate Crime Incidents With Crime Type = Rape, Offender Race",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents (Offense): Rape, Unknown Race",
+          "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderRaceUnknownRace"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Rape, American Indian or Alaska Native Alone, Known Offender Race",
           "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone"
         },
@@ -5047,10 +5051,6 @@
         {
           "name": "Count of Hate Crime Incidents (Offense): Rape, Two or More Races, Known Offender Race",
           "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderRaceTwoOrMoreRaces"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Offense): Rape, Unknown Race",
-          "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderRaceUnknownRace"
         },
         {
           "name": "Count of Hate Crime Incidents (Offense): Rape, White Alone, Known Offender Race",
@@ -6753,10 +6753,6 @@
       "name": "Hate Crime Incidents With Offender Type = Unknown Offender, Targeted Gender",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Offender, Transgender or Gender Non Conforming",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_IsHateCrime_UnknownOffender"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Offender, Female",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_UnknownOffender_Female"
         },
@@ -6771,6 +6767,10 @@
         {
           "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Offender, Transgender",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_UnknownOffender_Transgender"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Gender, Unknown Offender, Transgender or Gender Non Conforming",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationTransgenderOrGenderNonConforming_IsHateCrime_UnknownOffender"
         }
       ]
     },
@@ -7117,12 +7117,12 @@
       "name": "Hate Crime Incidents With Crime Type = Drug Equipment Violations, Offender Ethnicity = Unknown Ethnicity, Targeted Religion",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Religion, Drug Equipment Violations, Unknown Ethnicity, Black or African American Alone, Known Offender, Judaism",
-          "dcid": "Count_CriminalIncidents_BiasMotivationReligion_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Judaism"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Religion, Drug Equipment Violations, Unknown Ethnicity, Unknown Race, Sikhism",
           "dcid": "Count_CriminalIncidents_BiasMotivationReligion_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Sikhism"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Religion, Drug Equipment Violations, Unknown Ethnicity, Black or African American Alone, Known Offender, Judaism",
+          "dcid": "Count_CriminalIncidents_BiasMotivationReligion_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceBlackOrAfricanAmericanAlone_Judaism"
         },
         {
           "name": "Count of Hate Crime Incidents: Religion, Drug Equipment Violations, Unknown Ethnicity, White Alone, Known Offender, Catholicism",
@@ -10057,6 +10057,10 @@
       "name": "Hate Crime Incidents With Bias Motivation = Race or Ethnicity, Offender Ethnicity",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, Unknown Ethnicity",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderEthnicityUnknownEthnicity"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, Hispanic or Latino, Known Offender Ethnicity",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderEthnicityHispanicOrLatino"
         },
@@ -10067,10 +10071,6 @@
         {
           "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, Not Hispanic or Latino, Known Offender Ethnicity",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderEthnicityNotHispanicOrLatino"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Offense): Race or Ethnicity, Unknown Ethnicity",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_OffenderEthnicityUnknownEthnicity"
         }
       ]
     },
@@ -11055,12 +11055,12 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_HispanicOrLatino"
         },
         {
-          "name": "Count of Hate Crime Incidents: Religion, Drug Equipment Violations, Hispanic or Latino, Unknown Race, Known Offender, Eastern Christianity",
-          "dcid": "Count_CriminalIncidents_BiasMotivationReligion_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceUnknownRace_EasternChristianity"
-        },
-        {
           "name": "Count of Hate Crime Incidents: Sexual Orientation, Drug Equipment Violations, Unknown Ethnicity, Unknown Race, Lesbian",
           "dcid": "Count_CriminalIncidents_BiasMotivationSexualOrientation_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityUnknownEthnicity_OffenderRaceUnknownRace_Lesbian"
+        },
+        {
+          "name": "Count of Hate Crime Incidents: Religion, Drug Equipment Violations, Hispanic or Latino, Unknown Race, Known Offender, Eastern Christianity",
+          "dcid": "Count_CriminalIncidents_BiasMotivationReligion_DrugEquipmentViolations_IsHateCrime_OffenderEthnicityHispanicOrLatino_OffenderRaceUnknownRace_EasternChristianity"
         }
       ]
     },
@@ -11223,6 +11223,10 @@
       "name": "Hate Crime Incidents With Crime Type = Rape, Offender Ethnicity",
       "statVars": [
         {
+          "name": "Count of Hate Crime Incidents (Offense): Rape, Unknown Ethnicity",
+          "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderEthnicityUnknownEthnicity"
+        },
+        {
           "name": "Count of Hate Crime Incidents (Offense): Rape, Hispanic or Latino, Known Offender Ethnicity",
           "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderEthnicityHispanicOrLatino"
         },
@@ -11233,10 +11237,6 @@
         {
           "name": "Count of Hate Crime Incidents (Offense): Rape, Not Hispanic or Latino, Known Offender Ethnicity",
           "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderEthnicityNotHispanicOrLatino"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Offense): Rape, Unknown Ethnicity",
-          "dcid": "Offense_Count_CriminalIncidents_Rape_IsHateCrime_OffenderEthnicityUnknownEthnicity"
         }
       ]
     },
@@ -19737,12 +19737,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderEthnicityHispanicOrLatino"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Hispanic or Latino, Known Offender Ethnicity",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityHispanicOrLatino"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Hispanic or Latino, Known Offender Ethnicity",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityHispanicOrLatino_KnownOffenderEthnicity"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Hispanic or Latino, Known Offender Ethnicity",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityHispanicOrLatino"
         }
       ]
     },
@@ -19755,12 +19755,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderEthnicityMultipleEthnicity"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Multiple Ethnicity, Known Offender Ethnicity",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityMultipleEthnicity"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Multiple Ethnicity, Known Offender Ethnicity",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityMultipleEthnicity_KnownOffenderEthnicity"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Multiple Ethnicity, Known Offender Ethnicity",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityMultipleEthnicity"
         }
       ]
     },
@@ -19773,12 +19773,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderEthnicityNotHispanicOrLatino"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Not Hispanic or Latino, Known Offender Ethnicity",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityNotHispanicOrLatino"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Not Hispanic or Latino, Known Offender Ethnicity",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_KnownOffenderEthnicity"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Not Hispanic or Latino, Known Offender Ethnicity",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderEthnicityNotHispanicOrLatino"
         }
       ]
     },
@@ -19791,12 +19791,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): American Indian or Alaska Native Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): American Indian or Alaska Native Alone, Known Offender Race",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_KnownOffenderRace"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): American Indian or Alaska Native Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone"
         }
       ]
     },
@@ -19809,12 +19809,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderRaceAsianAlone"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Asian Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceAsianAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Asian Alone, Known Offender Race",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderRaceAsianAlone_KnownOffenderRace"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Asian Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceAsianAlone"
         }
       ]
     },
@@ -19845,12 +19845,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Black or African American Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Black or African American Alone, Known Offender Race",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_KnownOffenderRace"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Black or African American Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone"
         }
       ]
     },
@@ -19863,12 +19863,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Native Hawaiian or Other Pacific Islander Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Native Hawaiian or Other Pacific Islander Alone, Known Offender Race",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone_KnownOffenderRace"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Native Hawaiian or Other Pacific Islander Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone"
         }
       ]
     },
@@ -19917,12 +19917,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderRaceTwoOrMoreRaces"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): Two or More Races, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceTwoOrMoreRaces"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): Two or More Races, Known Offender Race",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderRaceTwoOrMoreRaces_KnownOffenderRace"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Two or More Races, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceTwoOrMoreRaces"
         }
       ]
     },
@@ -19935,12 +19935,12 @@
           "dcid": "Count_CriminalIncidents_IsHateCrime_OffenderRaceWhiteAlone"
         },
         {
-          "name": "Count of Hate Crime Incidents (Offense): White Alone, Known Offender Race",
-          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceWhiteAlone"
-        },
-        {
           "name": "Count of Hate Crime Incidents (Offender): White Alone, Known Offender Race",
           "dcid": "Offender_Count_CriminalIncidents_IsHateCrime_OffenderRaceWhiteAlone_KnownOffenderRace"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): White Alone, Known Offender Race",
+          "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_OffenderRaceWhiteAlone"
         }
       ]
     },

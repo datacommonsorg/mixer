@@ -101,6 +101,12 @@ func TestSearchStatVar(t *testing.T) {
 				false,
 				"poor.json",
 			},
+			{
+				"count_Person",
+				[]string{},
+				false,
+				"count_person.json",
+			},
 		} {
 			resp, err := mixer.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 				Query:           c.query,
@@ -116,7 +122,7 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 
-			if test.GenerateGolden {
+			if true {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}

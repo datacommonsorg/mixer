@@ -118,6 +118,9 @@ func compareRankingInfo(
 	if r1.ApproxNumPv != r2.ApproxNumPv {
 		return r1.ApproxNumPv < r2.ApproxNumPv
 	}
+	if r1.NumKnownPv != r2.NumKnownPv {
+		return r1.NumKnownPv < r2.NumKnownPv
+	}
 	if r1.RankingName != r2.RankingName {
 		return r1.RankingName < r2.RankingName
 	}
