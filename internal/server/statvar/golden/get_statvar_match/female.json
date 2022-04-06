@@ -5,10 +5,6 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_25To34Years_DiseasesOfTheGenitourinarySystem_Female",
-      "matchCount": 1
-    },
-    {
       "statVar": "Count_Death_25To34Years_Female_AsianOrPacificIslander",
       "matchCount": 1
     },
@@ -37,10 +33,6 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_Death_55To59Years_Female",
-      "matchCount": 1
-    },
-    {
       "statVar": "Count_Death_55To64Years_DiseasesOfTheGenitourinarySystem_Female",
       "matchCount": 1
     },
@@ -62,10 +54,6 @@
     },
     {
       "statVar": "Count_Death_75To84Years_CertainInfectiousParasiticDiseases_Female",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Death_75To84Years_CongenitalMalformationsDeformationsChromosomalAbnormalities_Female",
       "matchCount": 1
     },
     {
@@ -157,10 +145,6 @@
       "matchCount": 1
     },
     {
-      "statVar": "Count_MedicalConditionIncident_0To4Years_SummerSeason_Female_ConditionHeatStress_VisitedEmergencyDepartment",
-      "matchCount": 1
-    },
-    {
       "statVar": "Count_Person_10To14Years_Female_TwoOrMoreRaces",
       "matchCount": 1
     },
@@ -218,10 +202,6 @@
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_WhiteAloneNotHispanicOrLatino",
-      "matchCount": 1
-    },
-    {
-      "statVar": "Count_Person_15To50Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female",
       "matchCount": 1
     },
     {
@@ -398,6 +378,26 @@
     },
     {
       "statVar": "Count_Person_65OrMoreYears_EducationalAttainmentAssociatesDegree_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female_ResidesInCollegeOrUniversityStudentHousing",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female_ResidesInJuvenileFacilities",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65To69Years_InLaborForce_Female",
+      "matchCount": 1
+    },
+    {
+      "statVar": "Count_Person_65To74Years_Female_BlackOrAfricanAmericanAlone",
       "matchCount": 1
     }
   ]

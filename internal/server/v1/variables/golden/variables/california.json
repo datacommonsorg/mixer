@@ -3921,7 +3921,6 @@
     "Count_IceStormEvent",
     "Count_LandslideEvent",
     "Count_LightningEvent",
-    "Count_MedicalConditionIncident_SummerSeason_ConditionHeatStress_PatientDeceased",
     "Count_Person",
     "Count_Person_100000OrMoreUSDollar_Female_FullTimeYearRoundWorker",
     "Count_Person_100000OrMoreUSDollar_FullTimeYearRoundWorker",

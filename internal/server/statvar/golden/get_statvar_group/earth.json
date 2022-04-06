@@ -209,9 +209,9 @@
         },
         {
           "id": "Count_Person_IsInternetUser_PerCapita",
-          "searchName": "Population Count of Person With is Internet User is True (As Fraction of Per Capita)",
+          "searchName": "Percent of Internet Users",
           "searchNames": [
-            "Population Count of Person With is Internet User is True (As Fraction of Per Capita)"
+            "Percent of Internet Users"
           ],
           "displayName": "Percent of Internet Users",
           "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True"
@@ -227,9 +227,9 @@
         },
         {
           "id": "GrowthRate_Count_Person",
-          "searchName": "Growth Rate Population Count of Person",
+          "searchName": "Population Growth Rate",
           "searchNames": [
-            "Growth Rate Population Count of Person"
+            "Population Growth Rate"
           ],
           "displayName": "Population Growth Rate",
           "definition": "st=growthRate,mp=count,pt=Person"
@@ -725,9 +725,9 @@
       "childStatVars": [
         {
           "id": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
-          "searchName": "Count of Product With Product Type is Mobile Cellular Subscription (Per Capita)",
+          "searchName": "Mobile Subscriptions Per Capita",
           "searchNames": [
-            "Count of Product With Product Type is Mobile Cellular Subscription (Per Capita)"
+            "Mobile Subscriptions Per Capita"
           ],
           "displayName": "Mobile Subscriptions Per Capita",
           "definition": "md=Count_Person,mp=count,pt=Product,productType=MobileCellularSubscription"
@@ -776,9 +776,9 @@
       "childStatVars": [
         {
           "id": "Amount_Emissions_CarbonDioxide_PerCapita",
-          "searchName": "Amount of Emissions With Emitted Thing is Carbon Dioxide (As Fraction of Per Capita)",
+          "searchName": "CO2 Emissions Per Capita",
           "searchNames": [
-            "Amount of Emissions With Emitted Thing is Carbon Dioxide (As Fraction of Per Capita)"
+            "CO2 Emissions Per Capita"
           ],
           "displayName": "CO2 Emissions Per Capita",
           "definition": "md=PerCapita,mp=amount,pt=Emissions,emittedThing=CarbonDioxide"
@@ -1920,9 +1920,9 @@
       "childStatVars": [
         {
           "id": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
-          "searchName": "Population Count of Person With Residence Characteristic is Less Than 5 Meters Above Sea Level (Per Capita)",
+          "searchName": "Percent of Population Living in Areas Below 5 Meters Elevation",
           "searchNames": [
-            "Population Count of Person With Residence Characteristic is Less Than 5 Meters Above Sea Level (Per Capita)"
+            "Percent of Population Living in Areas Below 5 Meters Elevation"
           ],
           "displayName": "Percent of Population Living in Areas Below 5 Meters Elevation",
           "definition": "md=Count_Person,mp=count,pt=Person,residenceCharacteristic=LessThan5MetersAboveSeaLevel"
