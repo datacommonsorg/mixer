@@ -4229,7 +4229,6 @@
         "Count_IceStormEvent",
         "Count_LandslideEvent",
         "Count_LightningEvent",
-        "Count_MedicalConditionIncident_SummerSeason_ConditionHeatStress_PatientDeceased",
         "Count_MedicareEnrollee",
         "Count_MedicareEnrollee_ConditionDiabetic_Black",
         "Count_MedicareEnrollee_ConditionDiabetic_NonBlack",

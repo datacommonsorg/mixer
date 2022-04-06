@@ -50,9 +50,9 @@
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
-      "searchName": "Population Count of Person With is Internet User is True (As Fraction of Per Capita)",
+      "searchName": "Percent of Internet Users",
       "searchNames": [
-        "Population Count of Person With is Internet User is True (As Fraction of Per Capita)"
+        "Percent of Internet Users"
       ],
       "displayName": "Percent of Internet Users",
       "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
@@ -70,18 +70,18 @@
     },
     {
       "id": "IncrementalCount_Person",
-      "searchName": "Incremental Count of Person",
+      "searchName": "Population Change",
       "searchNames": [
-        "Incremental Count of Person"
+        "Population Change"
       ],
       "displayName": "Population Change",
       "definition": "mp=incrementalCount,pt=Person"
     },
     {
       "id": "Count_Person_PerArea",
-      "searchName": "Population Count of Person (As Fraction of Area)",
+      "searchName": "Population Density",
       "searchNames": [
-        "Population Count of Person (As Fraction of Area)"
+        "Population Density"
       ],
       "displayName": "Population Density",
       "definition": "md=area,mp=count,pt=Person",
@@ -89,9 +89,9 @@
     },
     {
       "id": "GrowthRate_Count_Person",
-      "searchName": "Growth Rate Population Count of Person",
+      "searchName": "Population Growth Rate",
       "searchNames": [
-        "Growth Rate Population Count of Person"
+        "Population Growth Rate"
       ],
       "displayName": "Population Growth Rate",
       "definition": "st=growthRate,mp=count,pt=Person",

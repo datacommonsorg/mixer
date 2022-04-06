@@ -507,11 +507,11 @@
       "name": "Hate Crime Incidents With Targeted Race = Asian Alone, Victim Age",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Race, Asian Alone Victim, Victim 17 Years or Less",
+          "name": "Count of Hate Crime Incidents (Victim): Race, Asian Alone, 17 Years or Less",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_IsHateCrime_AsianAlone_17OrLessYears"
         },
         {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Race, Asian Alone Victim, Victim 18 Years or More",
+          "name": "Count of Hate Crime Incidents (Victim): Race, Asian Alone, 18 Years or More",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_IsHateCrime_AsianAlone_18OrMoreYears"
         }
       ]
