@@ -21,7 +21,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1649060231",
+      "objectValue": "1649258994",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -143,8 +143,8 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "indianCensus/Count_Person_Religion_Total_MarginalWorker_Cultivators_Urban_Male",
-      "subjectName": "Male Marginal Cultivators - Total - Urban",
+      "subjectId": "indianCensus/Count_Person_Religion_Total_MarginalWorker_OtherWorkers_Urban_Female",
+      "subjectName": "Female Marginal Other Workers - Total - Urban",
       "subjectTypes": [
         "StatisticalVariable"
       ],
