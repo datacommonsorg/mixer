@@ -138,12 +138,12 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 			}
-			// err = memDb.SubscribeGcsUpdate(
-			// 	ctx, *mixerProject, tmcfCsvPubsubTopic, tmcfCsvSubscriberPrefix,
-			// 	*tmcfCsvBucket, *tmcfCsvFolder)
-			// if err != nil {
-			// 	log.Fatalf("Failed to subscribe to tmcf and csv change: %v", err)
-			// }
+			err = memDb.SubscribeGcsUpdate(
+				ctx, *mixerProject, tmcfCsvPubsubTopic, tmcfCsvSubscriberPrefix,
+				*tmcfCsvBucket, *tmcfCsvFolder)
+			if err != nil {
+				log.Fatalf("Failed to subscribe to tmcf and csv change: %v", err)
+			}
 		}
 
 		// BigQuery.
