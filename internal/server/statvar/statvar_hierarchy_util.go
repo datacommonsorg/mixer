@@ -179,11 +179,9 @@ func BuildBleveIndex(
 	defer util.TimeTrack(time.Now(), "BuildBleveIndex")
 	indexMapping := bleve.NewIndexMapping()
 	index, err := bleve.NewUsing("", indexMapping, bleve.Config.DefaultIndexType, bleve.Config.DefaultMemKVStore, nil)
-
 	if err != nil {
 		return nil, err
 	}
-
 	batch := index.NewBatch()
 	for _, svgData := range rawSvg {
 		for _, svData := range svgData.ChildStatVars {
@@ -196,6 +194,9 @@ func BuildBleveIndex(
 			}
 		}
 	}
-	index.Batch(batch)
+	err = index.Batch(batch)
+	if err != nil {
+		return nil, err
+	}
 	return index, nil
 }
