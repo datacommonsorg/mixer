@@ -300,13 +300,13 @@
           "entity": "country/USA",
           "observations_by_facet": [
             {
-              "date": "2022-02",
-              "value": 6270000,
+              "date": "2022-03",
+              "value": 5952000,
               "facet": 3707913853
             },
             {
-              "date": "2021-12",
-              "value": 6832000,
+              "date": "2022-03",
+              "value": 6245000,
               "facet": 1714978719
             }
           ]
@@ -315,8 +315,8 @@
           "entity": "geoId/06",
           "observations_by_facet": [
             {
-              "date": "2021-12",
-              "value": 913303,
+              "date": "2022-02",
+              "value": 935895,
               "facet": 324358135
             },
             {
@@ -325,8 +325,8 @@
               "facet": 2978659163
             },
             {
-              "date": "2021-12",
-              "value": 1095056,
+              "date": "2022-02",
+              "value": 1024011,
               "facet": 1249140336
             }
           ]
@@ -335,8 +335,8 @@
           "entity": "geoId/0649670",
           "observations_by_facet": [
             {
-              "date": "2021-12",
-              "value": 955,
+              "date": "2022-01",
+              "value": 1195,
               "facet": 324358135
             },
             {
@@ -358,8 +358,8 @@
           "entity": "country/USA",
           "observations_by_facet": [
             {
-              "date": "2022-03-05",
-              "value": 79166521,
+              "date": "2022-04-02",
+              "value": 80051976,
               "facet": 2232540893
             }
           ]
@@ -368,8 +368,8 @@
           "entity": "geoId/06",
           "observations_by_facet": [
             {
-              "date": "2022-03-05",
-              "value": 9002938,
+              "date": "2022-04-02",
+              "value": 9108202,
               "facet": 2232540893
             }
           ]
