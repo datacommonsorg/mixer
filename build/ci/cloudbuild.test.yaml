@@ -35,6 +35,7 @@ steps:
     args:
       - -c
       - |
+        set -e
         protoc \
           --proto_path=proto \
           --go_out=internal \
@@ -49,7 +50,8 @@ steps:
     args:
       - -c
       - |
-        go test ./...
+        set -e
+        go test -v ./...
 
 options:
   volumes:
