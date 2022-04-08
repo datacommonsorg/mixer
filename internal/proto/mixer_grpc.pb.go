@@ -121,6 +121,7 @@ type MixerClient interface {
 	VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error)
 	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
+	ObservationsSeries(ctx context.Context, in *ObservationsSeriesRequest, opts ...grpc.CallOption) (*ObservationsSeriesResponse, error)
 	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 }
@@ -511,6 +512,15 @@ func (c *mixerClient) ObservationsPoint(ctx context.Context, in *ObservationsPoi
 	return out, nil
 }
 
+func (c *mixerClient) ObservationsSeries(ctx context.Context, in *ObservationsSeriesRequest, opts ...grpc.CallOption) (*ObservationsSeriesResponse, error) {
+	out := new(ObservationsSeriesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ObservationsSeries", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
 	out := new(GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ProteinPage", in, out, opts...)
@@ -632,6 +642,7 @@ type MixerServer interface {
 	VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error)
 	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
+	ObservationsSeries(context.Context, *ObservationsSeriesRequest) (*ObservationsSeriesResponse, error)
 	ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error)
 	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
 }
@@ -765,6 +776,9 @@ func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *BulkVariableI
 }
 func (UnimplementedMixerServer) ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsPoint not implemented")
+}
+func (UnimplementedMixerServer) ObservationsSeries(context.Context, *ObservationsSeriesRequest) (*ObservationsSeriesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ObservationsSeries not implemented")
 }
 func (UnimplementedMixerServer) ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProteinPage not implemented")
@@ -1540,6 +1554,24 @@ func _Mixer_ObservationsPoint_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_ObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ObservationsSeriesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).ObservationsSeries(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/ObservationsSeries",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).ObservationsSeries(ctx, req.(*ObservationsSeriesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_ProteinPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ProteinPageRequest)
 	if err := dec(in); err != nil {
@@ -1750,6 +1782,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ObservationsPoint",
 			Handler:    _Mixer_ObservationsPoint_Handler,
+		},
+		{
+			MethodName: "ObservationsSeries",
+			Handler:    _Mixer_ObservationsSeries_Handler,
 		},
 		{
 			MethodName: "ProteinPage",

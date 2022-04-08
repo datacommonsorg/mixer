@@ -88,6 +88,13 @@ func (s *Server) ObservationsPoint(
 	return observations.Point(ctx, in, s.store)
 }
 
+// ObservationsSeries implements API for mixer.ObservationsSeries.
+func (s *Server) ObservationsSeries(
+	ctx context.Context, in *pb.ObservationsSeriesRequest,
+) (*pb.ObservationsSeriesResponse, error) {
+	return observations.Series(ctx, in, s.store)
+}
+
 // ProteinPage implements API for mixer.ProteinPage.
 func (s *Server) ProteinPage(
 	ctx context.Context, in *pb.ProteinPageRequest,
