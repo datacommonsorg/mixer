@@ -1,0 +1,523 @@
+{
+  "data": [
+    {
+      "variable": "Count_Person",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 67012883,
+              "facet": 858679853
+            },
+            {
+              "date": "2020",
+              "value": 67391582,
+              "facet": 3981252704
+            },
+            {
+              "date": "2019",
+              "value": 66992699,
+              "facet": 738965619
+            },
+            {
+              "date": "2019",
+              "value": 67012900,
+              "facet": 1151455814
+            },
+            {
+              "date": "2021-02",
+              "value": 67399000,
+              "facet": 1456184638
+            },
+            {
+              "date": "2017",
+              "value": 67118648,
+              "facet": 2458695583
+            }
+          ]
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 328239523,
+              "facet": 2517965213
+            },
+            {
+              "date": "2019",
+              "value": 328016242,
+              "facet": 1273233945
+            },
+            {
+              "date": "2020",
+              "value": 331449281,
+              "facet": 1541763368
+            },
+            {
+              "date": "2020",
+              "value": 329484123,
+              "facet": 3981252704
+            },
+            {
+              "date": "2019",
+              "value": 328240000,
+              "facet": 1151455814
+            },
+            {
+              "date": "2019",
+              "value": 328239523,
+              "facet": 1226172227
+            },
+            {
+              "date": "2019",
+              "value": 324697795,
+              "facet": 10983471
+            },
+            {
+              "date": "2019",
+              "value": 324697795,
+              "facet": 196790193
+            },
+            {
+              "date": "2019",
+              "value": 324697795,
+              "facet": 217147238
+            },
+            {
+              "date": "2011",
+              "value": 311591917,
+              "facet": 3114843463
+            },
+            {
+              "date": "2017",
+              "value": 325145963,
+              "facet": 2458695583
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 39512223,
+              "facet": 2517965213
+            },
+            {
+              "date": "2019",
+              "value": 39283497,
+              "facet": 1145703171
+            },
+            {
+              "date": "2020",
+              "value": 39538223,
+              "facet": 1541763368
+            },
+            {
+              "date": "2019",
+              "value": 39512200,
+              "facet": 1151455814
+            },
+            {
+              "date": "2019",
+              "value": 39512223,
+              "facet": 1226172227
+            },
+            {
+              "date": "2019",
+              "value": 39283497,
+              "facet": 10983471
+            },
+            {
+              "date": "2019",
+              "value": 39283497,
+              "facet": 196790193
+            },
+            {
+              "date": "2011",
+              "value": 37691912,
+              "facet": 3114843463
+            },
+            {
+              "date": "2016",
+              "value": 39250017,
+              "facet": 2458695583
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2018",
+              "value": 83377,
+              "facet": 2517965213
+            },
+            {
+              "date": "2019",
+              "value": 81656,
+              "facet": 1145703171
+            },
+            {
+              "date": "2020",
+              "value": 82376,
+              "facet": 1541763368
+            },
+            {
+              "date": "2019",
+              "value": 82726,
+              "facet": 1226172227
+            },
+            {
+              "date": "2013",
+              "value": 77846,
+              "facet": 3114843463
+            },
+            {
+              "date": "2010",
+              "value": 74066,
+              "facet": 2458695583
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Count_CriminalActivities_CombinedCrime",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 8132863,
+              "facet": 2343540064
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 1095445,
+              "facet": 4277990144
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 2634,
+              "facet": 4277990144
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 50400,
+              "facet": 2171028778
+            }
+          ]
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 66060,
+              "facet": 2171028778
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06"
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    },
+    {
+      "variable": "Annual_Generation_Electricity",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 4405511000000,
+              "facet": 1450533103
+            },
+            {
+              "date": "2020",
+              "value": 4009084999080,
+              "facet": 2392525955
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2020",
+              "value": 194110262920,
+              "facet": 2392525955
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    },
+    {
+      "variable": "Count_Person_Unemployed",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2022-02",
+              "value": 6270000,
+              "facet": 3707913853
+            },
+            {
+              "date": "2021-12",
+              "value": 6832000,
+              "facet": 1714978719
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2021-12",
+              "value": 913303,
+              "facet": 324358135
+            },
+            {
+              "date": "2021",
+              "value": 1381250,
+              "facet": 2978659163
+            },
+            {
+              "date": "2021-12",
+              "value": 1095056,
+              "facet": 1249140336
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2021-12",
+              "value": 955,
+              "facet": 324358135
+            },
+            {
+              "date": "2020",
+              "value": 1977,
+              "facet": 2978659163
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2022-03-05",
+              "value": 79166521,
+              "facet": 2232540893
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2022-03-05",
+              "value": 9002938,
+              "facet": 2232540893
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "10983471": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1249140336": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
+    },
+    "1273233945": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1450533103": {
+      "import_name": "UNEnergy",
+      "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
+      "observation_period": "P1Y",
+      "unit": "KilowattHour"
+    },
+    "1456184638": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "1714978719": {
+      "import_name": "BLS_CPS",
+      "provenance_url": "https://www.bls.gov/cps/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P3M"
+    },
+    "196790193": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2171028778": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "217147238": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2232540893": {
+      "import_name": "NYT_COVID19",
+      "provenance_url": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+      "measurement_method": "NYT_COVID19_GitHub"
+    },
+    "2343540064": {
+      "import_name": "FBIGovCrime_AggCountry",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "2392525955": {
+      "import_name": "EIA_Electricity",
+      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "2978659163": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1Y"
+    },
+    "3114843463": {
+      "import_name": "HumanCuratedStats",
+      "provenance_url": "https://google.com",
+      "measurement_method": "HumanCuratedStats"
+    },
+    "324358135": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1M"
+    },
+    "3707913853": {
+      "import_name": "BLS_CPS",
+      "provenance_url": "https://www.bls.gov/cps/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
+    },
+    "3981252704": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "4277990144": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "738965619": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    }
+  }
+}

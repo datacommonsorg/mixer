@@ -1,0 +1,274 @@
+{
+  "data": [
+    {
+      "variable": "Count_Person",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 67012883,
+              "facet": 858679853
+            }
+          ]
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 328239523,
+              "facet": 2517965213
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 39512223,
+              "facet": 2517965213
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2018",
+              "value": 83377,
+              "facet": 2517965213
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Count_CriminalActivities_CombinedCrime",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 8132863,
+              "facet": 2343540064
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 1095445,
+              "facet": 4277990144
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 2634,
+              "facet": 4277990144
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 50400,
+              "facet": 2171028778
+            }
+          ]
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 66060,
+              "facet": 2171028778
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06"
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    },
+    {
+      "variable": "Annual_Generation_Electricity",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2019",
+              "value": 4405511000000,
+              "facet": 1450533103
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2020",
+              "value": 194110262920,
+              "facet": 2392525955
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    },
+    {
+      "variable": "Count_Person_Unemployed",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2022-02",
+              "value": 6270000,
+              "facet": 3707913853
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2021-12",
+              "value": 913303,
+              "facet": 324358135
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2021-12",
+              "value": 955,
+              "facet": 324358135
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2022-03-05",
+              "value": 79166521,
+              "facet": 2232540893
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2022-03-05",
+              "value": 9002938,
+              "facet": 2232540893
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "1450533103": {
+      "import_name": "UNEnergy",
+      "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
+      "observation_period": "P1Y",
+      "unit": "KilowattHour"
+    },
+    "2171028778": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "2232540893": {
+      "import_name": "NYT_COVID19",
+      "provenance_url": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+      "measurement_method": "NYT_COVID19_GitHub"
+    },
+    "2343540064": {
+      "import_name": "FBIGovCrime_AggCountry",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "2392525955": {
+      "import_name": "EIA_Electricity",
+      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "324358135": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1M"
+    },
+    "3707913853": {
+      "import_name": "BLS_CPS",
+      "provenance_url": "https://www.bls.gov/cps/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
+    },
+    "4277990144": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    }
+  }
+}
