@@ -427,6 +427,13 @@ service Mixer {
     };
   }
 
+  rpc ObservationsSeries(datacommons.v1.ObservationsSeriesRequest)
+      returns (datacommons.v1.ObservationsSeriesResponse) {
+    option (google.api.http) = {
+      get : "/v1/observations/series/{variable}/{entity=**}"
+    };
+  }
+
   rpc ProteinPage(datacommons.v1.ProteinPageRequest)
       returns (GraphNodes) {
     option (google.api.http) = {

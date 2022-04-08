@@ -212,6 +212,7 @@ func GetValueFromBestSourcePb(
 	return ps, meta
 }
 
+// GetMetadata derives the stat metadata from a source series.
 func GetMetadata(s *pb.SourceSeries) *pb.StatMetadata {
 	return &pb.StatMetadata{
 		ImportName:        s.ImportName,

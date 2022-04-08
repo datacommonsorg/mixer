@@ -46,3 +46,13 @@ message BulkObservationsPointResponse {
   repeated VariableObservations data = 1;
   map<uint32, datacommons.StatMetadata> facets = 2;
 }
+
+message ObservationsSeriesRequest {
+  string variable = 1;
+  string entity = 2;
+}
+
+message ObservationsSeriesResponse {
+  repeated datacommons.PointStat observations = 1;
+  datacommons.StatMetadata facet = 2;
+}
