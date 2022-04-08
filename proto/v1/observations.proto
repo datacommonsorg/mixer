@@ -16,8 +16,20 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons.v1;
 
+import "stat.proto";
+
 message ObservationsPointRequest {
   string variable = 1;
   string entity = 2;
   string date = 3;
+}
+
+message ObservationsSeriesRequest {
+  string variable = 1;
+  string entity = 2;
+}
+
+message ObservationsSeriesResponse {
+  repeated datacommons.PointStat observations = 1;
+  datacommons.StatMetadata facet = 2;
 }
