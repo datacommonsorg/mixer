@@ -39,11 +39,12 @@ message BulkObservationsPointRequest {
   repeated string entities = 1;
   repeated string variables = 2;
   string date = 3;
-  bool all_facet = 4;
+  bool all_facets = 4;
 }
 
 message BulkObservationsPointResponse {
-  repeated VariableObservations data = 1;
+  repeated VariableObservations observations_by_variable = 1;
+  // Keyed by the hash of StatMetadata
   map<uint32, datacommons.StatMetadata> facets = 2;
 }
 

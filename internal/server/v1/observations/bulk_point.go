@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// API Implementation for /v1/bulk/point/...
+
 package observations
 
 import (
@@ -35,7 +37,7 @@ func BulkPoint(
 	entities := in.GetEntities()
 	variables := in.GetVariables()
 	date := in.GetDate()
-	allFacet := in.GetAllFacet()
+	allFacets := in.GetAllFacets()
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(entities, variables)
 	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
@@ -68,7 +70,7 @@ func BulkPoint(
 			series := obsTimeSeries.SourceSeries
 			sort.Sort(ranking.SeriesByRank(series))
 
-			if !allFacet && len(series) > 0 {
+			if !allFacets && len(series) > 0 {
 				series = series[0:1]
 			}
 
@@ -83,7 +85,8 @@ func BulkPoint(
 							Value: value,
 							Facet: facet,
 						}
-						entityObservations.ObservationsByFacet = append(entityObservations.ObservationsByFacet, ps)
+						entityObservations.ObservationsByFacet = append(
+							entityObservations.ObservationsByFacet, ps)
 					}
 				} else {
 					// Date is not given, find the latest value
@@ -99,7 +102,8 @@ func BulkPoint(
 							}
 						}
 					}
-					entityObservations.ObservationsByFacet = append(entityObservations.ObservationsByFacet, ps)
+					entityObservations.ObservationsByFacet = append(
+						entityObservations.ObservationsByFacet, ps)
 				}
 				result.Facets[facet] = metadata
 			}
@@ -110,7 +114,8 @@ func BulkPoint(
 		}
 	}
 	for _, variable := range variables {
-		result.Data = append(result.Data, tmpResult[variable])
+		result.ObservationsByVariable = append(
+			result.ObservationsByVariable, tmpResult[variable])
 	}
 	return result, nil
 }

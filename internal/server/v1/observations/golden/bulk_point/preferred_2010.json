@@ -1,5 +1,5 @@
 {
-  "data": [
+  "observations_by_variable": [
     {
       "variable": "Count_Person",
       "observations_by_entity": [

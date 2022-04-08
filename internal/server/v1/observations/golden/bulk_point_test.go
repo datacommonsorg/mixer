@@ -38,7 +38,7 @@ func TestBulkObservationsPoint(t *testing.T) {
 			variables  []string
 			entities   []string
 			date       string
-			allFacet   bool
+			allFacets  bool
 			goldenFile string
 		}{
 			{
@@ -63,9 +63,9 @@ func TestBulkObservationsPoint(t *testing.T) {
 				"2010.json",
 			},
 		} {
-			for _, allFacet := range []bool{true, false} {
+			for _, allFacets := range []bool{true, false} {
 				goldenFile := c.goldenFile
-				if allFacet {
+				if allFacets {
 					goldenFile = "all_" + goldenFile
 				} else {
 					goldenFile = "preferred_" + goldenFile
@@ -74,7 +74,7 @@ func TestBulkObservationsPoint(t *testing.T) {
 					Variables: c.variables,
 					Entities:  c.entities,
 					Date:      c.date,
-					AllFacet:  allFacet,
+					AllFacets: allFacets,
 				})
 				if err != nil {
 					t.Errorf("could not run BulkObservationsPoint: %s", err)
