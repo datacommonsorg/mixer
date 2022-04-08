@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"sort"
 
 	"github.com/blevesearch/bleve/v2"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -63,5 +64,17 @@ func GetStatVarMatch(
 			Score:       float32(hit.Score),
 		})
 	}
+	// 1) Highest score wins.
+	// 2) If score are the same, shortest statvar id wins.
+	// 3) Otherwise sort lexicographically.
+	sort.SliceStable(result.MatchInfo, func(i, j int) bool {
+		if result.MatchInfo[i].Score == result.MatchInfo[j].Score {
+			if len(result.MatchInfo[i].StatVar) != len(result.MatchInfo[j].StatVar) {
+				return len(result.MatchInfo[i].StatVar) < len(result.MatchInfo[j].StatVar)
+			}
+			return result.MatchInfo[i].StatVar < result.MatchInfo[j].StatVar
+		}
+		return result.MatchInfo[i].Score > result.MatchInfo[j].Score
+	})
 	return result, nil
 }
