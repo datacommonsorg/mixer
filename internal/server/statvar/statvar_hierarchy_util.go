@@ -24,6 +24,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/blevesearch/bleve/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 
@@ -165,4 +166,36 @@ func BuildStatVarSearchIndex(
 		}
 	}
 	return searchIndex
+}
+
+type BleveDocument struct {
+	Title        string
+	KeyValueText string
+}
+
+func BuildBleveIndex(
+	rawSvg map[string]*pb.StatVarGroupNode,
+) (bleve.Index, error) {
+	defer util.TimeTrack(time.Now(), "BuildBleveIndex")
+	indexMapping := bleve.NewIndexMapping()
+	index, err := bleve.NewUsing("", indexMapping, bleve.Config.DefaultIndexType, bleve.Config.DefaultMemKVStore, nil)
+
+	if err != nil {
+		return nil, err
+	}
+
+	batch := index.NewBatch()
+	for _, svgData := range rawSvg {
+		for _, svData := range svgData.ChildStatVars {
+			err = batch.Index(svData.Id, BleveDocument{
+				Title:        svData.DisplayName,
+				KeyValueText: strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1),
+			})
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	index.Batch(batch)
+	return index, nil
 }
