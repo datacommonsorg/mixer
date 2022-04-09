@@ -5,7 +5,7 @@
       "observations_by_entity": [
         {
           "entity": "country/FRA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 67012883,
@@ -15,7 +15,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 328239523,
@@ -25,7 +25,7 @@
         },
         {
           "entity": "geoId/06",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 39512223,
@@ -35,7 +35,7 @@
         },
         {
           "entity": "geoId/0649670",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2018",
               "value": 83377,
@@ -53,7 +53,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 8132863,
@@ -63,7 +63,7 @@
         },
         {
           "entity": "geoId/06",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 1095445,
@@ -73,7 +73,7 @@
         },
         {
           "entity": "geoId/0649670",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 2634,
@@ -88,7 +88,7 @@
       "observations_by_entity": [
         {
           "entity": "country/FRA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 50400,
@@ -98,7 +98,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 66060,
@@ -122,7 +122,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2019",
               "value": 4405511000000,
@@ -132,7 +132,7 @@
         },
         {
           "entity": "geoId/06",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2020",
               "value": 194110262920,
@@ -153,7 +153,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2022-03",
               "value": 5952000,
@@ -163,7 +163,7 @@
         },
         {
           "entity": "geoId/06",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2022-02",
               "value": 935895,
@@ -173,7 +173,7 @@
         },
         {
           "entity": "geoId/0649670",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2022-01",
               "value": 1195,
@@ -191,7 +191,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2022-04-02",
               "value": 80051976,
@@ -201,7 +201,7 @@
         },
         {
           "entity": "geoId/06",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2022-04-02",
               "value": 9108202,

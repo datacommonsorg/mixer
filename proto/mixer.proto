@@ -422,8 +422,8 @@ service Mixer {
   rpc BulkObservationsPoint(datacommons.v1.BulkObservationsPointRequest)
       returns (datacommons.v1.BulkObservationsPointResponse) {
     option (google.api.http) = {
-      get : "/v1/bulk/observations"
-      additional_bindings : {post : "/v1/bulk/observations" body : "*"}
+      get : "/v1/bulk/observations/point"
+      additional_bindings : {post : "/v1/bulk/observations/points" body : "*"}
     };
   }
 
@@ -431,6 +431,14 @@ service Mixer {
       returns (datacommons.v1.ObservationsSeriesResponse) {
     option (google.api.http) = {
       get : "/v1/observations/series/{variable}/{entity=**}"
+    };
+  }
+
+  rpc BulkObservationsSeries(datacommons.v1.BulkObservationsSeriesRequest)
+      returns (datacommons.v1.BulkObservationsSeriesResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/observations/series"
+      additional_bindings : {post : "/v1/bulk/observations/series" body : "*"}
     };
   }
 
