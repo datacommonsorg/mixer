@@ -112,14 +112,7 @@ func getStatSetAll(
 				tmpResult[statVar] = map[uint32]*pb.PlacePointStat{}
 			}
 			for _, series := range ObsTimeSeries.SourceSeries {
-				metadata := &pb.StatMetadata{
-					ImportName:        series.ImportName,
-					ProvenanceUrl:     series.ProvenanceUrl,
-					MeasurementMethod: series.MeasurementMethod,
-					ObservationPeriod: series.ObservationPeriod,
-					ScalingFactor:     series.ScalingFactor,
-					Unit:              series.Unit,
-				}
+				metadata := GetMetadata(series)
 				metaHash := util.GetMetadataHash(metadata)
 				if _, ok := tmpResult[statVar][metaHash]; !ok {
 					tmpResult[statVar][metaHash] = &pb.PlacePointStat{

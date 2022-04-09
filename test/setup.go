@@ -15,6 +15,7 @@
 package test
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"io/ioutil"
@@ -208,8 +209,16 @@ func newClient(
 
 // UpdateGolden updates the golden file for native typed response.
 func UpdateGolden(v interface{}, root, fname string) {
-	jsonByte, _ := json.MarshalIndent(v, "", "  ")
-	if ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644) != nil {
+	buf := &bytes.Buffer{}
+	encoder := json.NewEncoder(buf)
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+	err := encoder.Encode(v)
+	if err != nil {
+		log.Printf("could not encode golden response %v", err)
+	}
+	if ioutil.WriteFile(
+		path.Join(root, fname), bytes.TrimRight(buf.Bytes(), "\n"), 0644) != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
 }

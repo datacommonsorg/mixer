@@ -1,0 +1,292 @@
+{
+  "observations_by_variable": [
+    {
+      "variable": "Count_Person",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 64658856,
+              "facet": 858679853
+            },
+            {
+              "date": "2010",
+              "value": 65027505,
+              "facet": 3981252704
+            },
+            {
+              "date": "2010",
+              "value": 64612939,
+              "facet": 738965619
+            },
+            {
+              "date": "2010",
+              "value": 64658900,
+              "facet": 1151455814
+            },
+            {
+              "date": "2010",
+              "value": 65023142,
+              "facet": 2458695583
+            }
+          ]
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 309326085,
+              "facet": 2517965213
+            },
+            {
+              "date": "2010",
+              "value": 308745538,
+              "facet": 1541763368
+            },
+            {
+              "date": "2010",
+              "value": 309327143,
+              "facet": 3981252704
+            },
+            {
+              "date": "2010",
+              "value": 309322000,
+              "facet": 1151455814
+            },
+            {
+              "date": "2010",
+              "value": 309349689,
+              "facet": 1226172227
+            },
+            {
+              "date": "2010",
+              "value": 303965272,
+              "facet": 10983471
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 37266600,
+              "facet": 2517965213
+            },
+            {
+              "date": "2010",
+              "value": 37253956,
+              "facet": 1541763368
+            },
+            {
+              "date": "2010",
+              "value": 37319500,
+              "facet": 1151455814
+            },
+            {
+              "date": "2010",
+              "value": 37349363,
+              "facet": 1226172227
+            },
+            {
+              "date": "2010",
+              "value": 36637290,
+              "facet": 10983471
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 74227,
+              "facet": 2517965213
+            },
+            {
+              "date": "2010",
+              "value": 74066,
+              "facet": 1541763368
+            },
+            {
+              "date": "2010",
+              "value": 74320,
+              "facet": 1226172227
+            },
+            {
+              "date": "2010",
+              "value": 74066,
+              "facet": 2458695583
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Count_CriminalActivities_CombinedCrime",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 10292375,
+              "facet": 2343540064
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 1146072,
+              "facet": 4277990144
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 1633,
+              "facet": 4277990144
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+      "observations_by_entity": [
+        {
+          "entity": "country/FRA",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 36760,
+              "facet": 2171028778
+            }
+          ]
+        },
+        {
+          "entity": "country/USA",
+          "observations_by_facet": [
+            {
+              "date": "2010",
+              "value": 48910,
+              "facet": 2171028778
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06"
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "10983471": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1273233945": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1456184638": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "196790193": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2171028778": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "217147238": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2343540064": {
+      "import_name": "FBIGovCrime_AggCountry",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "3114843463": {
+      "import_name": "HumanCuratedStats",
+      "provenance_url": "https://google.com",
+      "measurement_method": "HumanCuratedStats"
+    },
+    "3981252704": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "4277990144": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "738965619": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    }
+  }
+}

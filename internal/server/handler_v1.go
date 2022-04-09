@@ -88,6 +88,13 @@ func (s *Server) ObservationsPoint(
 	return observations.Point(ctx, in, s.store)
 }
 
+// BulkObservationsPoint implements API for mixer.BulkObservationsPoint.
+func (s *Server) BulkObservationsPoint(
+	ctx context.Context, in *pb.BulkObservationsPointRequest,
+) (*pb.BulkObservationsPointResponse, error) {
+	return observations.BulkPoint(ctx, in, s.store)
+}
+
 // ObservationsSeries implements API for mixer.ObservationsSeries.
 func (s *Server) ObservationsSeries(
 	ctx context.Context, in *pb.ObservationsSeriesRequest,

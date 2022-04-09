@@ -3414,7 +3414,7 @@
   "metadata": {
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "1145703171": {
@@ -3446,7 +3446,7 @@
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2392525955": {
@@ -3477,7 +3477,7 @@
     },
     "3144703963": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR\u0026tid=ACSST5Y2019.S2602PR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "324358135": {
@@ -3488,7 +3488,7 @@
     },
     "377779557": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     }
   }
