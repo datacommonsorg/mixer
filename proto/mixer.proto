@@ -423,7 +423,7 @@ service Mixer {
       returns (datacommons.v1.BulkObservationsPointResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/observations/point"
-      additional_bindings : {post : "/v1/bulk/observations/points" body : "*"}
+      additional_bindings : {post : "/v1/bulk/observations/point" body : "*"}
     };
   }
 
