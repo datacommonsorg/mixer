@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"math"
 	"sort"
 
 	"github.com/blevesearch/bleve/v2"
@@ -51,6 +50,8 @@ func GetStatVarMatch(
 	}
 	query := bleve.NewMatchQuery(toQueryString(in.GetPropertyValue()))
 	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, true)
+	// The - prefix indicates reverse direction.
+	searchRequest.SortBy([]string{"-_score", "Title"})
 	searchRequest.Fields = append(searchRequest.Fields, "Title")
 	searchResults, err := cache.BleveSearchIndex.Search(searchRequest)
 	if err != nil {
@@ -69,7 +70,7 @@ func GetStatVarMatch(
 	// 2) If score are the same, shortest statvar id wins.
 	// 3) Otherwise sort lexicographically.
 	sort.SliceStable(result.MatchInfo, func(i, j int) bool {
-		if math.Abs(float64(result.MatchInfo[i].Score)-float64(result.MatchInfo[j].Score)) <= 1e-9 {
+		if result.MatchInfo[i].Score == result.MatchInfo[j].Score {
 			if len(result.MatchInfo[i].StatVar) != len(result.MatchInfo[j].StatVar) {
 				return len(result.MatchInfo[i].StatVar) < len(result.MatchInfo[j].StatVar)
 			}

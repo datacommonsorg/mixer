@@ -121,8 +121,8 @@
       "score": 1.7584373
     },
     {
-      "statVar": "dc/tcqb49dvg7k53",
-      "statVarName": "Prevalence: Female, Physical Inactivity",
+      "statVar": "Count_Person_0Years_Female",
+      "statVarName": "Population: Years 0, Female",
       "score": 1.7584373
     },
     {
@@ -136,6 +136,16 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_3Years_Female",
+      "statVarName": "Population: Years 3, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_4Years_Female",
+      "statVarName": "Population: Years 4, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_5Years_Female",
       "statVarName": "Population: Years 5, Female",
       "score": 1.7584373
@@ -143,16 +153,6 @@
     {
       "statVar": "Count_Person_6Years_Female",
       "statVarName": "Population: Years 6, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_7Years_Female",
-      "statVarName": "Population: Years 7, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Student_Female_Asian",
-      "statVarName": "Count of Student: Female, Asian",
       "score": 1.7584373
     },
     {
@@ -176,8 +176,23 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_14Years_Female",
+      "statVarName": "Population: Years 14, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_15Years_Female",
       "statVarName": "Population: Years 15, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_16Years_Female",
+      "statVarName": "Population: Years 16, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_17Years_Female",
+      "statVarName": "Population: Years 17, Female",
       "score": 1.7584373
     },
     {
@@ -191,6 +206,16 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_20Years_Female",
+      "statVarName": "Population: Years 20, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_21Years_Female",
+      "statVarName": "Population: Years 21, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_22Years_Female",
       "statVarName": "Population: Years 22, Female",
       "score": 1.7584373
@@ -198,6 +223,11 @@
     {
       "statVar": "Count_Person_23Years_Female",
       "statVarName": "Population: Years 23, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_24Years_Female",
+      "statVarName": "Population: Years 24, Female",
       "score": 1.7584373
     },
     {
@@ -221,8 +251,23 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_29Years_Female",
+      "statVarName": "Population: Years 29, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_30Years_Female",
       "statVarName": "Population: Years 30, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_31Years_Female",
+      "statVarName": "Population: Years 31, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_32Years_Female",
+      "statVarName": "Population: Years 32, Female",
       "score": 1.7584373
     },
     {
@@ -231,8 +276,23 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_34Years_Female",
+      "statVarName": "Population: Years 34, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_35Years_Female",
       "statVarName": "Population: Years 35, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_36Years_Female",
+      "statVarName": "Population: Years 36, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_37Years_Female",
+      "statVarName": "Population: Years 37, Female",
       "score": 1.7584373
     },
     {
@@ -241,8 +301,28 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_39Years_Female",
+      "statVarName": "Population: Years 39, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_40Years_Female",
       "statVarName": "Population: Years 40, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_41Years_Female",
+      "statVarName": "Population: Years 41, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_42Years_Female",
+      "statVarName": "Population: Years 42, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_43Years_Female",
+      "statVarName": "Population: Years 43, Female",
       "score": 1.7584373
     },
     {
@@ -261,13 +341,73 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_47Years_Female",
+      "statVarName": "Population: Years 47, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_48Years_Female",
+      "statVarName": "Population: Years 48, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_49Years_Female",
       "statVarName": "Population: Years 49, Female",
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_50Years_Female",
+      "statVarName": "Population: Years 50, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_51Years_Female",
+      "statVarName": "Population: Years 51, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_52Years_Female",
+      "statVarName": "Population: Years 52, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_53Years_Female",
+      "statVarName": "Population: Years 53, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_54Years_Female",
+      "statVarName": "Population: Years 54, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_55Years_Female",
+      "statVarName": "Population: Years 55, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_56Years_Female",
+      "statVarName": "Population: Years 56, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_57Years_Female",
+      "statVarName": "Population: Years 57, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_58Years_Female",
+      "statVarName": "Population: Years 58, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_59Years_Female",
       "statVarName": "Population: Years 59, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_60Years_Female",
+      "statVarName": "Population: Years 60, Female",
       "score": 1.7584373
     },
     {
@@ -281,8 +421,18 @@
       "score": 1.7584373
     },
     {
+      "statVar": "Count_Person_63Years_Female",
+      "statVarName": "Population: Years 63, Female",
+      "score": 1.7584373
+    },
+    {
       "statVar": "Count_Person_64Years_Female",
       "statVarName": "Population: Years 64, Female",
+      "score": 1.7584373
+    },
+    {
+      "statVar": "Count_Person_65Years_Female",
+      "statVarName": "Population: Years 65, Female",
       "score": 1.7584373
     },
     {
@@ -291,113 +441,18 @@
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Person_71Years_Female",
-      "statVarName": "Population: Years 71, Female",
+      "statVar": "Count_Person_67Years_Female",
+      "statVarName": "Population: Years 67, Female",
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Person_72Years_Female",
-      "statVarName": "Population: Years 72, Female",
+      "statVar": "Count_Person_68Years_Female",
+      "statVarName": "Population: Years 68, Female",
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Person_73Years_Female",
-      "statVarName": "Population: Years 73, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_74Years_Female",
-      "statVarName": "Population: Years 74, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_78Years_Female",
-      "statVarName": "Population: Years 78, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_82Years_Female",
-      "statVarName": "Population: Years 82, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_83Years_Female",
-      "statVarName": "Population: Years 83, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_84Years_Female",
-      "statVarName": "Population: Years 84, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_87Years_Female",
-      "statVarName": "Population: Years 87, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_90Years_Female",
-      "statVarName": "Population: Years 90, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_91Years_Female",
-      "statVarName": "Population: Years 91, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_92Years_Female",
-      "statVarName": "Population: Years 92, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_93Years_Female",
-      "statVarName": "Population: Years 93, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_94Years_Female",
-      "statVarName": "Population: Years 94, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_96Years_Female",
-      "statVarName": "Population: Years 96, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_97Years_Female",
-      "statVarName": "Population: Years 97, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_99Years_Female",
-      "statVarName": "Population: Years 99, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Mean_WagesDaily_Worker_Female",
-      "statVarName": "Mean Wages Daily: Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_Female_WhiteAlone",
-      "statVarName": "Population: Female, White Alone",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_MainWorker_Female",
-      "statVarName": "Population: Female, Main Worker",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_Female_ForeignBorn",
-      "statVarName": "Population: Female, Foreign Born",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Student_Female_HighSchool",
-      "statVarName": "Count of Student: Female, HighSchool",
+      "statVar": "Count_Person_69Years_Female",
+      "statVarName": "Population: Years 69, Female",
       "score": 1.7584373
     },
     {
@@ -411,78 +466,28 @@
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Person_Female_NeverMarried",
-      "statVarName": "Population: Female, Never Married",
+      "statVar": "Count_Person_15OrMoreYears_Female",
+      "statVarName": "Population: 15 Years or More, Female",
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Person_75OrMoreYears_Female",
-      "statVarName": "Population: 75 Years or More, Female",
+      "statVar": "Count_Person_16OrMoreYears_Female",
+      "statVarName": "Population: 16 Years or More, Female",
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Person_80OrMoreYears_Female",
-      "statVarName": "Population: 80 Years or More, Female",
+      "statVar": "Count_Person_18OrMoreYears_Female",
+      "statVarName": "Population: 18 Years or More, Female",
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Person_85OrMoreYears_Female",
-      "statVarName": "Population: 85 Years or More, Female",
+      "statVar": "Count_Person_25OrMoreYears_Female",
+      "statVarName": "Population: 25 Years or More, Female",
       "score": 1.7584373
     },
     {
-      "statVar": "Count_Student_Female_MiddleSchool",
-      "statVarName": "Count of Student: Female, MiddleSchool",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_Female_TwoOrMoreRaces",
-      "statVarName": "Population: Female, Two or More Races",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_ScheduledCaste_Female",
-      "statVarName": "Population: Female, Scheduled Caste",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Student_Female_PrimarySchool",
-      "statVarName": "Count of Student: Female, PrimarySchool",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "UnemploymentRate_Person_Rural_Female",
-      "statVarName": "Unemployment Rate: Female, Rural",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_Female_NoHealthInsurance",
-      "statVarName": "Population: Female, No Health Insurance",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_Female_SomeOtherRaceAlone",
-      "statVarName": "Population: Female, Some Other Race Alone",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_Female_WithHealthInsurance",
-      "statVarName": "Population: Female, With Health Insurance",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_Female_ResidesInGroupQuarters",
-      "statVarName": "Population: Female, Group Quarters",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_3OrMoreYears_Female_EnrolledInPublicSchool",
-      "statVarName": "Population: Female, Public School",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_3OrMoreYears_Female_EnrolledInPrivateSchool",
-      "statVarName": "Population: Female, Private School",
+      "statVar": "Count_Person_65OrMoreYears_Female",
+      "statVarName": "Population: 65 Years or More, Female",
       "score": 1.7584373
     },
     {
@@ -493,11 +498,6 @@
     {
       "statVar": "Count_Person_25OrMoreYears_EducationalAttainment11ThGrade_Female",
       "statVarName": "Population: 11th Grade, Female",
-      "score": 1.7584373
-    },
-    {
-      "statVar": "Count_Person_25OrMoreYears_EducationalAttainmentAssociatesDegree_Female",
-      "statVarName": "Population: Associates Degree, Female",
       "score": 1.7584373
     }
   ]
