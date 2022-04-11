@@ -168,11 +168,16 @@ func BuildStatVarSearchIndex(
 	return searchIndex
 }
 
+// A document indexed by the bleve index.
+// Currently we index stat vars and treat them as documents.
 type BleveDocument struct {
-	Title        string
+	// Title of the document. For a statvar this will be the DisplayName.
+	Title string
+	// A key value pairs string describing the properties of a stat var.
 	KeyValueText string
 }
 
+// BuildBleveIndex builds the bleve search index for all the stat vars.
 func BuildBleveIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
 ) (bleve.Index, error) {
