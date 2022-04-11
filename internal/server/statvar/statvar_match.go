@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"math"
 	"sort"
 
 	"github.com/blevesearch/bleve/v2"
@@ -68,7 +69,7 @@ func GetStatVarMatch(
 	// 2) If score are the same, shortest statvar id wins.
 	// 3) Otherwise sort lexicographically.
 	sort.SliceStable(result.MatchInfo, func(i, j int) bool {
-		if result.MatchInfo[i].Score == result.MatchInfo[j].Score {
+		if math.Abs(float64(result.MatchInfo[i].Score)-float64(result.MatchInfo[j].Score)) <= 1e-9 {
 			if len(result.MatchInfo[i].StatVar) != len(result.MatchInfo[j].StatVar) {
 				return len(result.MatchInfo[i].StatVar) < len(result.MatchInfo[j].StatVar)
 			}
