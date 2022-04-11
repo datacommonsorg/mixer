@@ -55,6 +55,8 @@ message PointStat {
   // the hash to the full metatdata. This is set in /stat/set/within-place/*
   // APIs.
   uint32 meta_hash = 4;
+  // Same as meta_hash, used in V1 API.
+  uint32 facet = 5;
 }
 
 message PlacePointStat {

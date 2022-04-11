@@ -1,0 +1,130 @@
+{
+  "observations": [
+    {
+      "date": "1990",
+      "value": 23640
+    },
+    {
+      "date": "1991",
+      "value": 24100
+    },
+    {
+      "date": "1992",
+      "value": 25090
+    },
+    {
+      "date": "1993",
+      "value": 25910
+    },
+    {
+      "date": "1994",
+      "value": 27250
+    },
+    {
+      "date": "1995",
+      "value": 28450
+    },
+    {
+      "date": "1996",
+      "value": 29870
+    },
+    {
+      "date": "1997",
+      "value": 31500
+    },
+    {
+      "date": "1998",
+      "value": 33120
+    },
+    {
+      "date": "1999",
+      "value": 34720
+    },
+    {
+      "date": "2000",
+      "value": 36800
+    },
+    {
+      "date": "2001",
+      "value": 37700
+    },
+    {
+      "date": "2002",
+      "value": 38430
+    },
+    {
+      "date": "2003",
+      "value": 39740
+    },
+    {
+      "date": "2004",
+      "value": 42060
+    },
+    {
+      "date": "2005",
+      "value": 44560
+    },
+    {
+      "date": "2006",
+      "value": 47160
+    },
+    {
+      "date": "2007",
+      "value": 48280
+    },
+    {
+      "date": "2008",
+      "value": 48290
+    },
+    {
+      "date": "2009",
+      "value": 46940
+    },
+    {
+      "date": "2010",
+      "value": 48910
+    },
+    {
+      "date": "2011",
+      "value": 50820
+    },
+    {
+      "date": "2012",
+      "value": 53110
+    },
+    {
+      "date": "2013",
+      "value": 54330
+    },
+    {
+      "date": "2014",
+      "value": 56710
+    },
+    {
+      "date": "2015",
+      "value": 58290
+    },
+    {
+      "date": "2016",
+      "value": 59030
+    },
+    {
+      "date": "2017",
+      "value": 61410
+    },
+    {
+      "date": "2018",
+      "value": 64110
+    },
+    {
+      "date": "2019",
+      "value": 66060
+    }
+  ],
+  "facet": {
+    "import_name": "WorldDevelopmentIndicators",
+    "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+    "observation_period": "P1Y",
+    "unit": "InternationalDollar"
+  }
+}
