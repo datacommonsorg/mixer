@@ -19,9 +19,15 @@ package datacommons.v1;
 import "stat.proto";
 
 
+message TimeSeries {
+  repeated datacommons.PointStat series = 1;
+  uint32 facet = 2;
+}
+
 message EntityObservations {
   string entity = 1;
-  repeated datacommons.PointStat observations_by_facet = 2;
+  repeated datacommons.PointStat points_by_facet = 2;
+  repeated TimeSeries series_by_facet = 3;
 }
 
 message VariableObservations {
@@ -56,4 +62,15 @@ message ObservationsSeriesRequest {
 message ObservationsSeriesResponse {
   repeated datacommons.PointStat observations = 1;
   datacommons.StatMetadata facet = 2;
+}
+
+message BulkObservationsSeriesRequest {
+  repeated string entities = 1;
+  repeated string variables = 2;
+  bool all_facets = 3;
+}
+
+message BulkObservationsSeriesResponse {
+  repeated VariableObservations observations_by_variable = 1;
+  map<uint32, datacommons.StatMetadata> facets = 2;
 }

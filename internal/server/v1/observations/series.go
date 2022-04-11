@@ -44,9 +44,9 @@ func Series(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: variable")
 	}
+	resp := &pb.ObservationsSeriesResponse{}
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{entity}, []string{variable})
 	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
-	resp := &pb.ObservationsSeriesResponse{}
 	if err != nil {
 		return resp, err
 	}

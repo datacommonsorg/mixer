@@ -5,7 +5,7 @@
       "observations_by_entity": [
         {
           "entity": "country/FRA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 64658856,
@@ -15,7 +15,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 309326085,
@@ -25,7 +25,7 @@
         },
         {
           "entity": "geoId/06",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 37266600,
@@ -35,7 +35,7 @@
         },
         {
           "entity": "geoId/0649670",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 74227,
@@ -53,7 +53,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 10292375,
@@ -63,7 +63,7 @@
         },
         {
           "entity": "geoId/06",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 1146072,
@@ -73,7 +73,7 @@
         },
         {
           "entity": "geoId/0649670",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 1633,
@@ -88,7 +88,7 @@
       "observations_by_entity": [
         {
           "entity": "country/FRA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 36760,
@@ -98,7 +98,7 @@
         },
         {
           "entity": "country/USA",
-          "observations_by_facet": [
+          "points_by_facet": [
             {
               "date": "2010",
               "value": 48910,

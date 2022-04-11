@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// API Implementation for /v1/bulk/observations/point/...
+// API Implementation for /v1/bulk/observations/series/...
 
 package observations
 
@@ -28,29 +28,26 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// BulkPoint implements API for Mixer.BulkObservationsPoint.
-func BulkPoint(
+// BulkSeries implements API for Mixer.BulkObservationsSeries.
+func BulkSeries(
 	ctx context.Context,
-	in *pb.BulkObservationsPointRequest,
+	in *pb.BulkObservationsSeriesRequest,
 	store *store.Store,
-) (*pb.BulkObservationsPointResponse, error) {
+) (*pb.BulkObservationsSeriesResponse, error) {
 	entities := in.GetEntities()
 	variables := in.GetVariables()
-	date := in.GetDate()
 	allFacets := in.GetAllFacets()
 
+	result := &pb.BulkObservationsSeriesResponse{}
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(entities, variables)
-	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
-		return nil, err
+		return result, err
 	}
 
-	result := &pb.BulkObservationsPointResponse{
-		Facets: map[uint32]*pb.StatMetadata{},
-	}
 	tmpResult := map[string]*pb.VariableObservations{}
 	for _, entity := range entities {
-		entityData, ok := cacheData[entity]
+		entityData, ok := btData[entity]
 		if !ok {
 			continue
 		}
@@ -73,39 +70,26 @@ func BulkPoint(
 			if !allFacets && len(series) > 0 {
 				series = series[0:1]
 			}
-
 			for _, series := range series {
 				metadata := stat.GetMetadata(series)
 				facet := util.GetMetadataHash(metadata)
-				// Date is given
-				if date != "" {
-					if value, ok := series.Val[date]; ok {
-						ps := &pb.PointStat{
-							Date:  date,
-							Value: value,
-							Facet: facet,
-						}
-						entityObservations.PointsByFacet = append(
-							entityObservations.PointsByFacet, ps)
-					}
-				} else {
-					// Date is not given, find the latest value
-					latestDate := ""
-					var ps *pb.PointStat
-					for date, value := range series.Val {
-						if date > latestDate {
-							latestDate = date
-							ps = &pb.PointStat{
-								Date:  date,
-								Value: value,
-								Facet: facet,
-							}
-						}
-					}
-					entityObservations.PointsByFacet = append(
-						entityObservations.PointsByFacet, ps)
+				timeSeries := &pb.TimeSeries{
+					Facet: facet,
 				}
-				result.Facets[facet] = metadata
+				for date, value := range series.Val {
+					ps := &pb.PointStat{
+						Date:  date,
+						Value: value,
+					}
+					timeSeries.Series = append(timeSeries.Series, ps)
+					sort.SliceStable(timeSeries.Series, func(i, j int) bool {
+						return timeSeries.Series[i].Date < timeSeries.Series[j].Date
+					})
+				}
+				entityObservations.SeriesByFacet = append(
+					entityObservations.SeriesByFacet,
+					timeSeries,
+				)
 			}
 			tmpResult[variable].ObservationsByEntity = append(
 				tmpResult[variable].ObservationsByEntity,
