@@ -185,9 +185,10 @@ func BuildBleveIndex(
 	batch := index.NewBatch()
 	for _, svgData := range rawSvg {
 		for _, svData := range svgData.ChildStatVars {
+			keyValueText := strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1)
 			err = batch.Index(svData.Id, BleveDocument{
 				Title:        svData.DisplayName,
-				KeyValueText: strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1),
+				KeyValueText: keyValueText,
 			})
 			if err != nil {
 				return nil, err

@@ -51,7 +51,7 @@ func GetStatVarMatch(
 	query := bleve.NewMatchQuery(toQueryString(in.GetPropertyValue()))
 	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, true)
 	searchRequest.Fields = append(searchRequest.Fields, "Title")
-	searchResults, err := cache.SearchIndex.Search(searchRequest)
+	searchResults, err := cache.BleveSearchIndex.Search(searchRequest)
 	if err != nil {
 		return nil, err
 	}

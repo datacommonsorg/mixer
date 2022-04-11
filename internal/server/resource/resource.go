@@ -46,7 +46,7 @@ type Cache struct {
 	RawSvg                    map[string]*pb.StatVarGroupNode
 	SvgSearchIndex            *SearchIndex
 	BlocklistedSvgSearchIndex *SearchIndex
-	SearchIndex               bleve.Index
+	BleveSearchIndex          bleve.Index
 }
 
 // Metadata represents the metadata used by the server.

@@ -151,7 +151,7 @@ func NewCache(ctx context.Context, store *store.Store) (*resource.Cache, error) 
 		ParentSvg:                 parentSvgMap,
 		SvgSearchIndex:            searchIndex,
 		BlocklistedSvgSearchIndex: blocklistedSearchIndex,
-		SearchIndex:               bleveIndex,
+		BleveSearchIndex:          bleveIndex,
 	}, nil
 }
 
