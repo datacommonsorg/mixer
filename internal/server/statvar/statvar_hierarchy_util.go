@@ -32,8 +32,7 @@ import (
 )
 
 // This should be synced with the list of blocklisted SVGs in the website repo
-var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
-var miscellaneousSvgIds = []string{"eia/g/Root", "dc/g/Uncategorized"}
+var ignoredSvgIds = []string{"dc/g/Establishment_Industry", "eia/g/Root", "dc/g/Uncategorized"}
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, store *store.Store) (
@@ -125,8 +124,7 @@ func getSynonymMap() map[string][]string {
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
-	parentSvg map[string][]string,
-	blocklist bool) *resource.SearchIndex {
+	parentSvg map[string][]string) *resource.SearchIndex {
 	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{
@@ -135,13 +133,8 @@ func BuildStatVarSearchIndex(
 	}
 	ignoredSVG := map[string]string{}
 	// Exclude svg and sv under miscellaneous from the search index
-	for _, svgID := range miscellaneousSvgIds {
+	for _, svgID := range ignoredSvgIds {
 		getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
-	}
-	if blocklist {
-		for _, svgID := range blocklistedSvgIds {
-			getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
-		}
 	}
 	synonymMap := getSynonymMap()
 	seenSV := map[string]struct{}{}

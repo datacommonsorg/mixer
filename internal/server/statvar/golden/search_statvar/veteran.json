@@ -105,24 +105,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Establishment_EstablishmentOwnership_Industry-NAICS/92314",
-      "name": "Establishment With Establishment Ownership, Industry = Administration of Veterans' Affairs (NAICS/92314)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "dcid": "dc/t80ypt0pxptr2"
-        },
-        {
-          "name": "Count of Establishment: Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "dcid": "dc/nrvs8h9c2w06h"
-        },
-        {
-          "name": "Count of Establishment: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
-          "dcid": "dc/n6nwes3xywqj1"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Industry-NAICS/92314",
       "name": "Person With Industry = Administration of Veterans' Affairs (NAICS/92314)",
       "statVars": [
@@ -273,16 +255,6 @@
         {
           "name": "Population: 75 Years or More, Civilian, Male, Veteran",
           "dcid": "dc/x90mvznfdcqwd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/92314",
-      "name": "Establishment With Industry = Administration of Veterans' Affairs (NAICS/92314)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Administration of Veterans' Affairs (NAICS/92314)",
-          "dcid": "dc/nre9cbcqqdrrc"
         }
       ]
     },

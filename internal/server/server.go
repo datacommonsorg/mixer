@@ -139,14 +139,12 @@ func NewCache(ctx context.Context, store *store.Store) (*resource.Cache, error) 
 		return nil, err
 	}
 	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
-	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, false)
-	blocklistedSearchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, true)
+	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
 
 	return &resource.Cache{
-		RawSvg:                    rawSvg,
-		ParentSvg:                 parentSvgMap,
-		SvgSearchIndex:            searchIndex,
-		BlocklistedSvgSearchIndex: blocklistedSearchIndex,
+		RawSvg:         rawSvg,
+		ParentSvg:      parentSvgMap,
+		SvgSearchIndex: searchIndex,
 	}, nil
 }
 
