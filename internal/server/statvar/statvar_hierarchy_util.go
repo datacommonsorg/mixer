@@ -168,7 +168,7 @@ func BuildStatVarSearchIndex(
 	return searchIndex
 }
 
-// A document indexed by the bleve index.
+// A BleveDocument models a document by the bleve index.
 // Currently we index stat vars and treat them as documents.
 type BleveDocument struct {
 	// Title of the document. For a statvar this will be the DisplayName.
