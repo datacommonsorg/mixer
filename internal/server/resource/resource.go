@@ -42,9 +42,8 @@ type Cache struct {
 	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
 	ParentSvg map[string][]string
 	// SvgInfo is a map of svg id to its information.
-	RawSvg                    map[string]*pb.StatVarGroupNode
-	SvgSearchIndex            *SearchIndex
-	BlocklistedSvgSearchIndex *SearchIndex
+	RawSvg         map[string]*pb.StatVarGroupNode
+	SvgSearchIndex *SearchIndex
 }
 
 // Metadata represents the metadata used by the server.
