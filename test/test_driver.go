@@ -44,7 +44,7 @@ func goldenTest(
 ) error {
 	mixer, recon, err := Setup(opt)
 	if err != nil {
-		return fmt.Errorf("failed to set up mixer and client: %s", err)
+		return fmt.Errorf("failed to set up mixer and client")
 	}
 	testSuite(mixer, recon, false /* latencyTest */)
 	return nil

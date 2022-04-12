@@ -262,12 +262,10 @@ message GetStatVarMatchRequest {
 
 message GetStatVarMatchResponse {
   message MatchInfo {
-    // Stat Var ID.
+    // Stat Var that matches the request
     string stat_var = 1;
-    // Stat Var display name.
-    string stat_var_name = 2;
-    // Score for this match.
-    float score = 3;
+    // Count of matched PV pairs in the request
+    int32 match_count = 2;
   }
   // Ordered match list. Entry with larger match_count ranks at the beginning.
   repeated MatchInfo match_info = 1;

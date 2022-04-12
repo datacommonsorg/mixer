@@ -15,25 +15,13 @@
 package statvar
 
 import (
-	"bytes"
 	"context"
-	"fmt"
 	"sort"
 
-	"github.com/blevesearch/bleve/v2"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
-
-func toQueryString(m map[string]string) string {
-	b := new(bytes.Buffer)
-	for key, value := range m {
-		fmt.Fprintf(b, "%s ", key)
-		fmt.Fprintf(b, "%s ", value)
-	}
-	return b.String()
-}
 
 const defaultLimit = 100
 
@@ -42,41 +30,39 @@ func GetStatVarMatch(
 	ctx context.Context,
 	in *pb.GetStatVarMatchRequest,
 	store *store.Store,
-	cache *resource.Cache,
 ) (*pb.GetStatVarMatchResponse, error) {
+	propertyValue := in.GetPropertyValue()
 	limit := in.GetLimit()
 	if limit == 0 {
 		limit = defaultLimit
 	}
-	query := bleve.NewMatchQuery(toQueryString(in.GetPropertyValue()))
-	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, true)
-	// The - prefix indicates reverse direction.
-	searchRequest.SortBy([]string{"-_score", "Title"})
-	searchRequest.Fields = append(searchRequest.Fields, "Title")
-	searchResults, err := cache.BleveSearchIndex.Search(searchRequest)
-	if err != nil {
-		return nil, err
+	statVarCount := map[string]int32{}
+	// TODO: consider parallel this if performance is an issue.
+	for property, value := range propertyValue {
+		resp, err := node.GetPropertyValuesHelper(ctx, store, []string{value}, property, false)
+		if err != nil {
+			return nil, err
+		}
+		for _, node := range resp[value] {
+			if node.Types == nil || node.Types[0] != "StatisticalVariable" {
+				continue
+			}
+			statVarCount[node.Dcid]++
+		}
 	}
-
 	result := &pb.GetStatVarMatchResponse{}
-	for _, hit := range searchResults.Hits {
+	for statVar, count := range statVarCount {
 		result.MatchInfo = append(result.MatchInfo, &pb.GetStatVarMatchResponse_MatchInfo{
-			StatVar:     hit.ID,
-			StatVarName: hit.Fields["Title"].(string),
-			Score:       float32(hit.Score),
+			StatVar:    statVar,
+			MatchCount: count,
 		})
 	}
-	// 1) Highest score wins.
-	// 2) If score are the same, shortest statvar id wins.
-	// 3) Otherwise sort lexicographically.
 	sort.SliceStable(result.MatchInfo, func(i, j int) bool {
-		if result.MatchInfo[i].Score == result.MatchInfo[j].Score {
-			if len(result.MatchInfo[i].StatVar) != len(result.MatchInfo[j].StatVar) {
-				return len(result.MatchInfo[i].StatVar) < len(result.MatchInfo[j].StatVar)
-			}
+		if result.MatchInfo[i].MatchCount == result.MatchInfo[j].MatchCount {
 			return result.MatchInfo[i].StatVar < result.MatchInfo[j].StatVar
 		}
-		return result.MatchInfo[i].Score > result.MatchInfo[j].Score
+		return result.MatchInfo[i].MatchCount > result.MatchInfo[j].MatchCount
 	})
+	result.MatchInfo = result.MatchInfo[:limit]
 	return result, nil
 }
