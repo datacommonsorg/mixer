@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package resource
 import (
 	"strings"
 
+	bleve "github.com/blevesearch/bleve/v2"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
@@ -45,6 +46,7 @@ type Cache struct {
 	RawSvg                    map[string]*pb.StatVarGroupNode
 	SvgSearchIndex            *SearchIndex
 	BlocklistedSvgSearchIndex *SearchIndex
+	BleveSearchIndex          bleve.Index
 }
 
 // Metadata represents the metadata used by the server.
