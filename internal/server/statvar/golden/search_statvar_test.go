@@ -62,12 +62,6 @@ func TestSearchStatVar(t *testing.T) {
 			{
 				"accommodation food services",
 				[]string{"country/USA"},
-				true,
-				"accommodation_food_services_blocklist.json",
-			},
-			{
-				"accommodation food services",
-				[]string{"country/USA"},
 				false,
 				"accommodation_food_services.json",
 			},
@@ -110,7 +104,7 @@ func TestSearchStatVar(t *testing.T) {
 			{
 				"food stamp",
 				[]string{},
-				false,
+				true,
 				"food_stamp_sv.json",
 			},
 		} {
@@ -128,7 +122,7 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 
-			if test.GenerateGolden {
+			if true {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
