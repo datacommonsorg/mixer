@@ -376,7 +376,7 @@ func TestBuildSearchIndex(t *testing.T) {
 			},
 		},
 	} {
-		got := BuildStatVarSearchIndex(c.inputSvg, c.parentSvg, false)
+		got := BuildStatVarSearchIndex(c.inputSvg, c.parentSvg)
 		if diff := deep.Equal(got, c.want); diff != nil {
 			t.Errorf("GetStatVarSearchIndex got diff %v", diff)
 		}

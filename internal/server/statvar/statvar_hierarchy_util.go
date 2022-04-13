@@ -24,7 +24,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/blevesearch/bleve/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 
@@ -33,8 +32,7 @@ import (
 )
 
 // This should be synced with the list of blocklisted SVGs in the website repo
-var blocklistedSvgIds = []string{"dc/g/Establishment_Industry"}
-var miscellaneousSvgIds = []string{"eia/g/Root", "dc/g/Uncategorized"}
+var ignoredSvgIds = []string{"dc/g/Establishment_Industry", "eia/g/Root", "dc/g/Uncategorized"}
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, store *store.Store) (
@@ -126,8 +124,7 @@ func getSynonymMap() map[string][]string {
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
-	parentSvg map[string][]string,
-	blocklist bool) *resource.SearchIndex {
+	parentSvg map[string][]string) *resource.SearchIndex {
 	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{
@@ -136,13 +133,8 @@ func BuildStatVarSearchIndex(
 	}
 	ignoredSVG := map[string]string{}
 	// Exclude svg and sv under miscellaneous from the search index
-	for _, svgID := range miscellaneousSvgIds {
+	for _, svgID := range ignoredSvgIds {
 		getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
-	}
-	if blocklist {
-		for _, svgID := range blocklistedSvgIds {
-			getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
-		}
 	}
 	synonymMap := getSynonymMap()
 	seenSV := map[string]struct{}{}
@@ -166,43 +158,4 @@ func BuildStatVarSearchIndex(
 		}
 	}
 	return searchIndex
-}
-
-// A BleveDocument models a document by the bleve index.
-// Currently we index stat vars and treat them as documents.
-type BleveDocument struct {
-	// Title of the document. For a statvar this will be the DisplayName.
-	Title string
-	// A key value pairs string describing the properties of a stat var.
-	KeyValueText string
-}
-
-// BuildBleveIndex builds the bleve search index for all the stat vars.
-func BuildBleveIndex(
-	rawSvg map[string]*pb.StatVarGroupNode,
-) (bleve.Index, error) {
-	defer util.TimeTrack(time.Now(), "BuildBleveIndex")
-	indexMapping := bleve.NewIndexMapping()
-	index, err := bleve.NewUsing("", indexMapping, bleve.Config.DefaultIndexType, bleve.Config.DefaultMemKVStore, nil)
-	if err != nil {
-		return nil, err
-	}
-	batch := index.NewBatch()
-	for _, svgData := range rawSvg {
-		for _, svData := range svgData.ChildStatVars {
-			keyValueText := strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1)
-			err = batch.Index(svData.Id, BleveDocument{
-				Title:        svData.DisplayName,
-				KeyValueText: keyValueText,
-			})
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
-	err = index.Batch(batch)
-	if err != nil {
-		return nil, err
-	}
-	return index, nil
 }

@@ -40,7 +40,6 @@ func SearchStatVar(
 ) {
 	query := in.GetQuery()
 	places := in.GetPlaces()
-	enableBlocklist := in.GetEnableBlocklist()
 	svOnly := in.GetSvOnly()
 
 	result := &pb.SearchStatVarResponse{
@@ -54,9 +53,6 @@ func SearchStatVar(
 	tokens := strings.Fields(
 		strings.Replace(strings.ToLower(query), ",", " ", -1))
 	searchIndex := cache.SvgSearchIndex
-	if enableBlocklist {
-		searchIndex = cache.BlocklistedSvgSearchIndex
-	}
 	svList, svgList, matches := searchTokens(tokens, searchIndex, svOnly)
 
 	// Filter the stat var and stat var group by places.
