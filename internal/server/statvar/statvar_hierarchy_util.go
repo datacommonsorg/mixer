@@ -176,6 +176,18 @@ func BuildBleveIndex(
 ) (bleve.Index, error) {
 	defer util.TimeTrack(time.Now(), "BuildBleveIndex")
 	indexMapping := bleve.NewIndexMapping()
+
+	documentMapping := bleve.NewDocumentMapping()
+	indexMapping.AddDocumentMapping("Document", documentMapping)
+
+	titleFieldMapping := bleve.NewTextFieldMapping()
+	titleFieldMapping.Store = true
+	documentMapping.AddFieldMappingsAt("Title", titleFieldMapping)
+
+	keyValueTextFieldMapping := bleve.NewTextFieldMapping()
+	keyValueTextFieldMapping.Store = false
+	documentMapping.AddFieldMappingsAt("KeyValueText", keyValueTextFieldMapping)
+
 	index, err := bleve.NewUsing("", indexMapping, bleve.Config.DefaultIndexType, bleve.Config.DefaultMemKVStore, nil)
 	if err != nil {
 		return nil, err
