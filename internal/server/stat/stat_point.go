@@ -256,26 +256,23 @@ func GetStatSetWithinPlace(
 		sort.Sort(ranking.CohortByRank(cohorts))
 		// update when there is a later data.
 		for _, cohort := range cohorts {
-			metaData := &pb.StatMetadata{
-				MeasurementMethod: cohort.MeasurementMethod,
-				ObservationPeriod: cohort.ObservationPeriod,
-				ProvenanceUrl:     cohort.ProvenanceUrl,
-				ScalingFactor:     cohort.ScalingFactor,
-				ImportName:        cohort.ImportName,
-				Unit:              cohort.Unit,
-			}
+			metaData := GetMetadata(cohort)
+			metaHash := util.GetMetadataHash(metaData)
 			for place, val := range cohort.Val {
-				pointStat, ok := result.Data[statVar].Stat[place]
-				// This works when date is set. The result will be populated in first
-				// for loop only.
-				if !ok || pointStat.Date < cohort.PlaceToLatestDate[place] {
-					usedDate := date
-					if usedDate == "" {
-						usedDate = cohort.PlaceToLatestDate[place]
-					}
-					metaHash := util.GetMetadataHash(metaData)
+				// When date is given in the request, response date is the given date.
+				// Otherwise, response date is the latest date from the cache.
+				respDate := date
+				if respDate == "" {
+					respDate = cohort.PlaceToLatestDate[place]
+				}
+				pointStat, exist := result.Data[statVar].Stat[place]
+				// No data set yet.
+				shouldSetValue := !exist
+				// New date is from good facet with later date
+				shouldResetValue := exist && respDate > pointStat.Date && !IsInferiorFacetPb(cohort)
+				if shouldSetValue || shouldResetValue {
 					result.Data[statVar].Stat[place] = &pb.PointStat{
-						Date:     usedDate,
+						Date:     respDate,
 						Value:    val,
 						MetaHash: metaHash,
 					}
@@ -390,14 +387,7 @@ func GetStatSetWithinPlaceAll(
 		sort.Sort(ranking.CohortByRank(data.SourceCohorts))
 		for _, cohort := range data.SourceCohorts {
 			// The cohort is from the same source.
-			metaData := &pb.StatMetadata{
-				MeasurementMethod: cohort.MeasurementMethod,
-				ObservationPeriod: cohort.ObservationPeriod,
-				ProvenanceUrl:     cohort.ProvenanceUrl,
-				ScalingFactor:     cohort.ScalingFactor,
-				ImportName:        cohort.ImportName,
-				Unit:              cohort.Unit,
-			}
+			metaData := GetMetadata(cohort)
 			metaHash := util.GetMetadataHash(metaData)
 			pointStat := &pb.PlacePointStat{
 				MetaHash: metaHash,

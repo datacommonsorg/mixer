@@ -61,12 +61,12 @@ var StatsRanking = map[RankKey]int{
 	{"EIA_Electricity", "*", "*"}: 1, // Electricity
 
 	// Prefer observational weather over gridded over projections
-	{"NOAA_EPA_Observed_Historical_Weather", "*", "*"}:	0,  // Observational
-	{"Copernicus_ECMWF_ERA5_Monthly", "*", "*"}: 0,			// Gridded reanalysis
-	{"NASA_NEXDCP30", "NASA_Mean_CCSM4", "P1M"}:     0, // IPCC Projections
-	{"NASA_NEXGDDP", "NASA_Mean_CMIP5_CCSM4", "P1M"}:      0, // IPCC Projections
-	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1M"}: 0, // IPCC Projections
-	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1M"}:  0, // IPCC Projections
+	{"NOAA_EPA_Observed_Historical_Weather", "*", "*"}: 0, // Observational
+	{"Copernicus_ECMWF_ERA5_Monthly", "*", "*"}:        1, // Gridded reanalysis
+	{"NASA_NEXDCP30", "NASA_Mean_CCSM4", "P1M"}:        2, // IPCC Projections
+	{"NASA_NEXGDDP", "NASA_Mean_CMIP5_CCSM4", "P1M"}:   3, // IPCC Projections
+	{"NASA_NEXDCP30_StatVarSeriesAggr", "*", "P1M"}:    4, // IPCC Projections
+	{"NASA_NEXGDDP_StatVarSeriesAggr", "*", "P1M"}:     5, // IPCC Projections
 
 	{"NASA_WetBulbComputation_Aggregation", "NASA_Mean_HadGEM2-AO", "*"}: 0, // Wet bulb year aggregation
 	{"NASA_WetBulbComputation_Aggregation", "*", "*"}:                    1, // Wet bulb year aggregation
@@ -93,7 +93,7 @@ const BaseRank = 100
 // cohort instead of time series.
 type CohortByRank []*pb.SourceSeries
 
-// getScorePb derives the ranking score for a source series.
+// GetScorePb derives the ranking score for a source series.
 //
 // The score depends on ImportName and other SVObs properties, by checking the
 // StatsRanking dict. To get the score, ImportName is required, with optional
@@ -105,7 +105,7 @@ type CohortByRank []*pb.SourceSeries
 // score, otherwise can also match to wildcard options (indicated by *).
 //
 // If no entry is found, a BaseRank is assigned to the source series.
-func getScorePb(s *pb.SourceSeries) int {
+func GetScorePb(s *pb.SourceSeries) int {
 	for _, propCombination := range []struct {
 		mm string
 		op string
@@ -139,9 +139,9 @@ func (a CohortByRank) Swap(i, j int) {
 
 func (a CohortByRank) Less(i, j int) bool {
 	oi := a[i]
-	scorei := getScorePb(oi)
+	scorei := GetScorePb(oi)
 	oj := a[j]
-	scorej := getScorePb(oj)
+	scorej := GetScorePb(oj)
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
@@ -182,9 +182,9 @@ func (a SeriesByRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 func (a SeriesByRank) Less(i, j int) bool {
 	oi := a[i]
-	scorei := getScorePb(oi)
+	scorei := GetScorePb(oi)
 	oj := a[j]
-	scorej := getScorePb(oj)
+	scorej := GetScorePb(oj)
 
 	// Higher score value means lower rank.
 	if scorei != scorej {
@@ -238,7 +238,7 @@ func (a SeriesByRank) Less(i, j int) bool {
 }
 
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
-// getScore derives the ranking score for a source series.
+// GetScore derives the ranking score for a source series.
 //
 // The score depends on ImportName and other SVObs properties, by checking the
 // StatsRanking dict. To get the score, ImportName is required, with optional
@@ -250,7 +250,7 @@ func (a SeriesByRank) Less(i, j int) bool {
 // score, otherwise can also match to wildcard options (indicated by *).
 //
 // If no entry is found, a BaseRank is assigned to the source series.
-func getScore(s *model.SourceSeries) int {
+func GetScore(s *model.SourceSeries) int {
 	for _, propCombination := range []struct {
 		mm string
 		op string
@@ -284,9 +284,9 @@ func (a ByRank) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 func (a ByRank) Less(i, j int) bool {
 	oi := a[i]
-	scorei := getScore(oi)
+	scorei := GetScore(oi)
 	oj := a[j]
-	scorej := getScore(oj)
+	scorej := GetScore(oj)
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
