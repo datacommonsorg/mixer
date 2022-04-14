@@ -27,10 +27,14 @@ import (
 
 const inferiorFacetThreshold = 1000
 
+// IsInferiorFacetPb checks if a facet is from an inferior source.
+// This works for the proto version of "SourceSeries"
 func IsInferiorFacetPb(ss *pb.SourceSeries) bool {
 	return ranking.GetScorePb(ss) > inferiorFacetThreshold
 }
 
+// IsInferiorFacet checks if a facet is from an inferior source.
+// This works for the Go version of "SourceSeries"
 func IsInferiorFacet(ss *model.SourceSeries) bool {
 	return ranking.GetScore(ss) > inferiorFacetThreshold
 }
