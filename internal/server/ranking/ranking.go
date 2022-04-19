@@ -146,10 +146,6 @@ func (a CohortByRank) Less(i, j int) bool {
 	if scorei != scorej {
 		return scorei < scorej
 	}
-	// Cohort with more place coverage is ranked higher
-	if len(a[i].Val) != len(a[j].Val) {
-		return len(a[i].Val) > len(a[j].Val)
-	}
 
 	// Compare other fields to get consistent ranking.
 	if oi.MeasurementMethod != oj.MeasurementMethod {

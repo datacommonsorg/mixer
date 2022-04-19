@@ -91,6 +91,11 @@ func BulkPoint(
 						break
 					}
 				} else {
+					// This is to query from one facet and there is already data from
+					// higher ranked facet. If the current facet is from an inferior
+					// facet (like wikidata) then don't use it.
+					// Such inferior facet is only used when there is no better facet
+					// is prsent.
 					if !allFacets && idx > 0 && stat.IsInferiorFacetPb(series) {
 						break
 					}

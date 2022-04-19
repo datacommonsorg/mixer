@@ -254,21 +254,23 @@ func GetStatSetWithinPlace(
 		cohorts := data.SourceCohorts
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(ranking.CohortByRank(cohorts))
-		// update when there is a later data.
 		for _, cohort := range cohorts {
 			metaData := GetMetadata(cohort)
 			metaHash := util.GetMetadataHash(metaData)
 			for place, val := range cohort.Val {
-				// When date is given in the request, response date is the given date.
+				// When date is in the request, response date is the given date.
 				// Otherwise, response date is the latest date from the cache.
 				respDate := date
 				if respDate == "" {
 					respDate = cohort.PlaceToLatestDate[place]
 				}
+				// Check if there is observation from previous loops (higher ranked
+				// cohort).
 				pointStat, exist := result.Data[statVar].Stat[place]
-				// No data set yet.
 				shouldSetValue := !exist
-				// New date is from good facet with later date
+				// When observation exists from higher ranked cohort, but the current
+				// cohort has later date and is not inferior facet (like wikidata),
+				// prefer the current cohort.
 				shouldResetValue := exist && respDate > pointStat.Date && !IsInferiorFacetPb(cohort)
 				if shouldSetValue || shouldResetValue {
 					result.Data[statVar].Stat[place] = &pb.PointStat{
