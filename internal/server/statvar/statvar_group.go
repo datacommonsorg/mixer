@@ -258,15 +258,15 @@ func GetStatVarGroupNode(
 
 	// Gather stat vars from the private import
 	if !store.MemDb.IsEmpty() {
-		hasDataStatVars, noDataStatVars := store.MemDb.GetStatVars([]string{})
-		if svg == "dc/g/Root" {
+		hasDataStatVars, noDataStatVars := store.MemDb.GetStatVars(places)
+		if svg == "dc/g/Root" && len(hasDataStatVars) > 0 {
 			result.ChildStatVarGroups = append(
 				result.ChildStatVarGroups,
 				&pb.StatVarGroupNode_ChildSVG{
 					Id:                     "dc/g/Private",
 					SpecializedEntity:      store.MemDb.GetManifest().ImportName,
 					DisplayName:            store.MemDb.GetManifest().ImportName,
-					DescendentStatVarCount: int32(len(hasDataStatVars) + len(noDataStatVars)),
+					DescendentStatVarCount: int32(len(hasDataStatVars)),
 				},
 			)
 		} else if svg == "dc/g/Private" {

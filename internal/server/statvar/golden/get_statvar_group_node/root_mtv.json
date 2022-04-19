@@ -58,12 +58,6 @@
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
       "descendentStatVarCount": 63
-    },
-    {
-      "id": "dc/g/Private",
-      "specializedEntity": "Test Private Import",
-      "displayName": "Test Private Import",
-      "descendentStatVarCount": 10
     }
   ],
   "descendentStatVarCount": 10928
