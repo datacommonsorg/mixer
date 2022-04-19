@@ -51,7 +51,7 @@ func readChartConfig() ([]*Chart, error) {
 		"education",
 		"demographics",
 		"housing",
-		"climate",
+		"environment",
 		"energy",
 	} {
 		var config []*Chart
