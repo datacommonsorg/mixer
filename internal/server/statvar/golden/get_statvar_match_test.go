@@ -82,7 +82,10 @@ func TestGetStatVarMatch(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"GetStatVarMatch", &test.TestOption{UseCache: true}, testSuite); err != nil {
+		"GetStatVarMatch",
+		&test.TestOption{UseCache: true, UseSearchIndex: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

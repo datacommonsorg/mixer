@@ -21,7 +21,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store"
 )
 
 const (
@@ -33,7 +33,7 @@ const (
 func SearchStatVar(
 	ctx context.Context,
 	in *pb.SearchStatVarRequest,
-	btGroup *bigtable.Group,
+	store *store.Store,
 	cache *resource.Cache,
 ) (
 	*pb.SearchStatVarResponse, error,
@@ -71,7 +71,7 @@ func SearchStatVar(
 			ids = append(ids, item.Dcid)
 		}
 
-		statVarCount, err := Count(ctx, btGroup, ids, places)
+		statVarCount, err := Count(ctx, store, ids, places)
 		if err != nil {
 			return nil, err
 		}

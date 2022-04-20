@@ -43,8 +43,9 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache bool
-	UseMemdb bool
+	UseCache       bool
+	UseMemdb       bool
+	UseSearchIndex bool
 }
 
 var (
@@ -63,16 +64,17 @@ const (
 	bqBillingProject = "datcom-ci"
 	storeProject     = "datcom-store"
 	tmcfCsvBucket    = "datcom-public"
-	tmcfCsvPrefix    = "test"
+	tmcfCsvPrefix    = "food"
 	branchInstance   = "prophet-branch-cache"
 )
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
-	useCache, useMemdb := false, false
+	useCache, useMemdb, useSearchIndex := false, false, false
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useMemdb = option[0].UseMemdb
+		useSearchIndex = option[0].UseSearchIndex
 	}
 	return setupInternal(
 		"../deploy/storage/bigquery.version",
@@ -81,12 +83,14 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 		storeProject,
 		useCache,
 		useMemdb,
+		useSearchIndex,
 	)
 }
 
-func setupInternal(bq, btGroup, mcfPath, storeProject string, useCache, useMemdb bool) (
-	pb.MixerClient, pb.ReconClient, error,
-) {
+func setupInternal(
+	bq, btGroup, mcfPath, storeProject string,
+	useCache, useMemdb, useSearchIndex bool,
+) (pb.MixerClient, pb.ReconClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
@@ -122,16 +126,6 @@ func setupInternal(bq, btGroup, mcfPath, storeProject string, useCache, useMemdb
 	if err != nil {
 		return nil, nil, err
 	}
-	var cache *resource.Cache
-	if useCache {
-		cache, err = server.NewCache(
-			ctx, store.NewStore(nil, nil, tables, branchTableName))
-		if err != nil {
-			return nil, nil, err
-		}
-	} else {
-		cache = &resource.Cache{}
-	}
 	memDb := memdb.NewMemDb()
 	if useMemdb {
 		err = memDb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
@@ -139,7 +133,17 @@ func setupInternal(bq, btGroup, mcfPath, storeProject string, useCache, useMemdb
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	return newClient(bqClient, tables, metadata, cache, memDb, branchTableName)
+	st := store.NewStore(bqClient, memDb, tables, branchTableName)
+	var cache *resource.Cache
+	if useCache {
+		cache, err = server.NewCache(ctx, st, useSearchIndex)
+		if err != nil {
+			return nil, nil, err
+		}
+	} else {
+		cache = &resource.Cache{}
+	}
+	return newClient(st, tables, metadata, cache)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -163,18 +167,16 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	return newClient(bqClient, nil, metadata, nil, nil, "")
+	st := store.NewStore(bqClient, nil, nil, "")
+	return newClient(st, nil, metadata, nil)
 }
 
 func newClient(
-	bqClient *bigquery.Client,
+	mixerStore *store.Store,
 	tables []*bigtable.Table,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
-	memDb *memdb.MemDb,
-	branchTableName string,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	mixerStore := store.NewStore(bqClient, memDb, tables, branchTableName)
 	reconStore := store.NewStore(nil, nil, tables, "")
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cache)
 	reconServer := server.NewReconServer(reconStore)

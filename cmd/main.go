@@ -72,9 +72,6 @@ const (
 	branchBtInstance            = "prophet-branch-cache"
 	branchCacheVersionBucket    = "datcom-control"
 	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
-	// GCS Pubsub
-	tmcfCsvPubsubTopic      = "tmcf-csv-reload"
-	tmcfCsvSubscriberPrefix = "tmcf-csv-subscriber-"
 )
 
 func main() {
@@ -138,12 +135,6 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 			}
-			err = memDb.SubscribeGcsUpdate(
-				ctx, *mixerProject, tmcfCsvPubsubTopic, tmcfCsvSubscriberPrefix,
-				*tmcfCsvBucket, *tmcfCsvFolder)
-			if err != nil {
-				log.Fatalf("Failed to subscribe to tmcf and csv change: %v", err)
-			}
 		}
 
 		// BigQuery.
@@ -172,10 +163,13 @@ func main() {
 
 		// Store
 		store := store.NewStore(bqClient, memDb, tables, branchTableName)
-		// Cache.
+		// Build the cache that includes stat var group info and stat var search
+		// Index.
+		// !!Important: do this after creating the memdb, since the cache will
+		// need to merge svg info from memdb.
 		var cache *resource.Cache
 		if *serveMixerService {
-			cache, err = server.NewCache(ctx, store)
+			cache, err = server.NewCache(ctx, store, true /* useSearch */)
 			if err != nil {
 				log.Fatalf("Failed to create cache: %v", err)
 			}

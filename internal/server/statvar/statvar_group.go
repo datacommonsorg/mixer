@@ -59,18 +59,18 @@ func markValidSVG(
 	return false
 }
 
-// Filter StatVarGroups based on give stat vars. This does not modify the input
+// Filter StatVarGroups based on given stat vars. This does not modify the input
 // data but create a filtered copy of it.
 func filterSVG(in *pb.StatVarGroups, statVars []string) *pb.StatVarGroups {
-	out := &pb.StatVarGroups{StatVarGroups: map[string]*pb.StatVarGroupNode{}}
-	// Build set for all the SV.
+	result := &pb.StatVarGroups{StatVarGroups: map[string]*pb.StatVarGroupNode{}}
+	// Build set for all the given stat vars as valid stat vars.
 	validSV := map[string]struct{}{}
 	for _, sv := range statVars {
 		validSV[sv] = struct{}{}
 	}
 
-	// Step 1: iterate over stat var group, and only keep stat var children with valid
-	// stat vars for this place.
+	// Step 1: iterate over stat var group, and only keep stat var children with
+	// valid stat vars.
 	for svgID, svgData := range in.StatVarGroups {
 		filteredChildSV := []*pb.StatVarGroupNode_ChildSV{}
 		for _, childSV := range svgData.ChildStatVars {
@@ -78,7 +78,7 @@ func filterSVG(in *pb.StatVarGroups, statVars []string) *pb.StatVarGroups {
 				filteredChildSV = append(filteredChildSV, childSV)
 			}
 		}
-		out.StatVarGroups[svgID] = &pb.StatVarGroupNode{
+		result.StatVarGroups[svgID] = &pb.StatVarGroupNode{
 			ChildStatVars:      filteredChildSV,
 			ChildStatVarGroups: svgData.ChildStatVarGroups,
 		}
@@ -86,27 +86,27 @@ func filterSVG(in *pb.StatVarGroups, statVars []string) *pb.StatVarGroups {
 	// Step 2: recursively check if a stat var group is valid. A stat var group
 	// is valid if it has any descendent stat var group with non-empty stat vars
 
-	// All the svg with valid sv for this place
+	// All the svg with valid stat vars.
 	validSVG := map[string]struct{}{}
-	for svgID := range out.StatVarGroups {
-		markValidSVG(out, svgID, validSVG)
+	for svgID := range result.StatVarGroups {
+		markValidSVG(result, svgID, validSVG)
 	}
 
 	// Step3: another iteration to only keep valid svg
-	for svgID, svgData := range out.StatVarGroups {
+	for svgID, svgData := range result.StatVarGroups {
 		filteredChildren := []*pb.StatVarGroupNode_ChildSVG{}
 		for _, c := range svgData.ChildStatVarGroups {
 			if _, ok := validSVG[c.Id]; ok {
 				filteredChildren = append(filteredChildren, c)
 			}
 		}
-		out.StatVarGroups[svgID].ChildStatVarGroups = filteredChildren
-		d := out.StatVarGroups[svgID]
+		result.StatVarGroups[svgID].ChildStatVarGroups = filteredChildren
+		d := result.StatVarGroups[svgID]
 		if len(d.ChildStatVars) == 0 && len(d.ChildStatVarGroups) == 0 {
-			delete(out.StatVarGroups, svgID)
+			delete(result.StatVarGroups, svgID)
 		}
 	}
-	return out
+	return result
 }
 
 // GetStatVarGroup implements API for Mixer.GetStatVarGroup.
@@ -115,10 +115,8 @@ func GetStatVarGroup(
 	in *pb.GetStatVarGroupRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (
-	*pb.StatVarGroups, error) {
+) (*pb.StatVarGroups, error) {
 	places := in.GetPlaces()
-
 	var statVars []string
 	// Only read place stat vars when the place is provided.
 	// User can provide any arbitrary dcid, which might not be associated with
@@ -174,6 +172,20 @@ func GetStatVarGroup(
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
 	}
+	// Merge in the private import svg if exists
+	if store.MemDb != nil && store.MemDb.GetSvg() != nil {
+		for sv, data := range store.MemDb.GetSvg().StatVarGroups {
+			result.StatVarGroups[sv] = data
+		}
+		result.StatVarGroups[svgRoot].ChildStatVarGroups = append(
+			result.StatVarGroups[svgRoot].ChildStatVarGroups,
+			&pb.StatVarGroupNode_ChildSVG{
+				Id:                store.MemDb.GetManifest().RootSvg,
+				SpecializedEntity: store.MemDb.GetManifest().ImportName,
+				DisplayName:       store.MemDb.GetManifest().ImportName,
+			},
+		)
+	}
 	if len(places) > 0 {
 		result = filterSVG(result, statVars)
 	}
@@ -222,7 +234,7 @@ func GetStatVarGroupNode(
 		}
 		allIDs = append(allIDs, result.ParentStatVarGroups...)
 		// Check if stat data exists for given places
-		statVarCount, err := Count(ctx, store.BtGroup, allIDs, places)
+		statVarCount, err := Count(ctx, store, allIDs, places)
 		if err != nil {
 			return nil, err
 		}
@@ -255,43 +267,6 @@ func GetStatVarGroupNode(
 			}
 		}
 	}
-
-	// Gather stat vars from the private import
-	if !store.MemDb.IsEmpty() {
-		hasDataStatVars, noDataStatVars := store.MemDb.GetStatVars(places)
-		if svg == "dc/g/Root" && len(hasDataStatVars) > 0 {
-			result.ChildStatVarGroups = append(
-				result.ChildStatVarGroups,
-				&pb.StatVarGroupNode_ChildSVG{
-					Id:                     "dc/g/Private",
-					SpecializedEntity:      store.MemDb.GetManifest().ImportName,
-					DisplayName:            store.MemDb.GetManifest().ImportName,
-					DescendentStatVarCount: int32(len(hasDataStatVars)),
-				},
-			)
-		} else if svg == "dc/g/Private" {
-			for _, statVar := range hasDataStatVars {
-				result.ChildStatVars = append(
-					result.ChildStatVars,
-					&pb.StatVarGroupNode_ChildSV{
-						Id:          statVar,
-						DisplayName: statVar,
-						HasData:     true,
-					},
-				)
-			}
-			for _, statVar := range noDataStatVars {
-				result.ChildStatVars = append(
-					result.ChildStatVars,
-					&pb.StatVarGroupNode_ChildSV{
-						Id:          statVar,
-						DisplayName: statVar,
-						HasData:     false,
-					},
-				)
-			}
-		}
-	}
 	return result, nil
 }
 
@@ -308,13 +283,6 @@ func GetStatVarPath(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "Missing required argument: id")
 	}
-	// Memory database stat vars are directly under "dc/g/Private"
-	if store.MemDb.HasStatVar(id) {
-		return &pb.GetStatVarPathResponse{
-			Path: []string{id, "dc/g/Private"},
-		}, nil
-	}
-
 	path := []string{id}
 	curr := id
 	for {

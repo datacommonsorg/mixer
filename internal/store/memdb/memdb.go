@@ -26,11 +26,9 @@ import (
 	"strings"
 	"sync"
 
-	"cloud.google.com/go/pubsub"
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
@@ -43,14 +41,18 @@ type MemDb struct {
 	// statVar -> place -> []Series
 	statSeries map[string]map[string][]*pb.Series
 	manifest   *pb.Manifest
-	lock       sync.RWMutex
+	svg        *pb.StatVarGroups
+	// place -> svg -> count
+	placeSvExistence map[string]map[string]int32
+	lock             sync.RWMutex
 }
 
 // NewMemDb initialize a MemDb instance.
 func NewMemDb() *MemDb {
 	return &MemDb{
-		statSeries: map[string]map[string][]*pb.Series{},
-		manifest:   &pb.Manifest{},
+		statSeries:       map[string]map[string][]*pb.Series{},
+		manifest:         &pb.Manifest{},
+		placeSvExistence: map[string]map[string]int32{},
 	}
 }
 
@@ -59,6 +61,20 @@ func (memDb *MemDb) GetManifest() *pb.Manifest {
 	memDb.lock.RLock()
 	defer memDb.lock.RUnlock()
 	return memDb.manifest
+}
+
+// GetSvg get the svg data.
+func (memDb *MemDb) GetSvg() *pb.StatVarGroups {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
+	return memDb.svg
+}
+
+// GetPlaceSvExistence get the place sv existence info
+func (memDb *MemDb) GetPlaceSvExistence() map[string]map[string]int32 {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
+	return memDb.placeSvExistence
 }
 
 // IsEmpty checks if memory database has data.
@@ -226,8 +242,10 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 		}
 		objects = append(objects, attrs.Name)
 	}
-	// Read manifest.json
+
+	svgParent := map[string]string{}
 	for _, object := range objects {
+		// Read manifest.json
 		if strings.HasSuffix(object, "manifest.json") {
 			r, err := bkt.Object(object).NewReader(ctx)
 			if err != nil {
@@ -243,8 +261,49 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 			if err != nil {
 				return err
 			}
+			if manifest.RootSvg == "" {
+				return status.Errorf(codes.Internal, "Manifest missing the root SVG:\n%v", manifest)
+			}
 			memDb.manifest = manifest
-			break
+		}
+		if strings.HasSuffix(object, "variables.json") {
+			r, err := bkt.Object(object).NewReader(ctx)
+			if err != nil {
+				return err
+			}
+			defer r.Close()
+			bytes, err := ioutil.ReadAll(r)
+			if err != nil {
+				return err
+			}
+			svg := &pb.StatVarGroups{}
+			err = protojson.Unmarshal(bytes, svg)
+			if err != nil {
+				return err
+			}
+			memDb.svg = svg
+			// Compute the descendant stat var count.
+			allStatVars := map[string]struct{}{}
+			for svg, data := range memDb.svg.StatVarGroups {
+				for _, child := range data.ChildStatVars {
+					allStatVars[child.Id] = struct{}{}
+					svgParent[child.Id] = svg
+				}
+				for _, child := range data.ChildStatVarGroups {
+					svgParent[child.Id] = svg
+				}
+			}
+			for sv := range allStatVars {
+				curr := sv
+				for {
+					parent, ok := svgParent[curr]
+					if !ok {
+						break
+					}
+					memDb.svg.StatVarGroups[parent].DescendentStatVarCount++
+					curr = parent
+				}
+			}
 		}
 	}
 	// Read TMCF
@@ -300,6 +359,29 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 		}
 	}
 	log.Printf("Number of csv rows added: %d", count)
+	// Populate placeSvExistence field
+	for sv, placeData := range memDb.statSeries {
+		allParents := []string{}
+		curr := sv
+		for {
+			if _, ok := memDb.placeSvExistence[curr]; !ok {
+				memDb.placeSvExistence[curr] = map[string]int32{}
+			}
+			parent, ok := svgParent[curr]
+			if ok {
+				allParents = append(allParents, parent)
+				curr = parent
+			} else {
+				break
+			}
+		}
+		for place := range placeData {
+			memDb.placeSvExistence[sv][place] = 0
+			for _, svg := range allParents {
+				memDb.placeSvExistence[svg][place]++
+			}
+		}
+	}
 	return nil
 }
 
@@ -413,33 +495,4 @@ func (memDb *MemDb) addRow(
 		}
 	}
 	return nil
-}
-
-// SubscribeGcsUpdate subscribe GCS csv+tmcf change.
-// When csv file is changed, reload the memdb
-func (memDb *MemDb) SubscribeGcsUpdate(
-	ctx context.Context,
-	pubsubProject, pubsubTopic, subscriberPrefix string,
-	bucket, folder string,
-) error {
-	return dcpubsub.Subscribe(
-		ctx,
-		pubsubProject,
-		subscriberPrefix,
-		pubsubTopic,
-		func(ctx context.Context, msg *pubsub.Message) error {
-			if eventType, ok := msg.Attributes["eventType"]; ok {
-				if eventType != "OBJECT_FINALIZE" {
-					return nil
-				}
-			}
-			if objectID, ok := msg.Attributes["objectId"]; ok {
-				if !strings.HasSuffix(objectID, ".csv") {
-					return nil
-				}
-			}
-			log.Println("Receive notification for csv update")
-			return memDb.LoadFromGcs(ctx, bucket, folder)
-		},
-	)
 }

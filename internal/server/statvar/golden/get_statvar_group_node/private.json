@@ -1,54 +1,34 @@
 {
   "childStatVars": [
     {
-      "id": "Test_Stat_Var_1",
-      "displayName": "Test_Stat_Var_1",
+      "id": "Annual_FoodBudgetShortfall",
+      "searchNames": [
+        "Annual Food Budget Shortfall"
+      ],
+      "displayName": "Annual Food Budget Shortfall",
       "hasData": true
     },
     {
-      "id": "Test_Stat_Var_10",
-      "displayName": "Test_Stat_Var_10",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_2",
-      "displayName": "Test_Stat_Var_2",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_3",
-      "displayName": "Test_Stat_Var_3",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_4",
-      "displayName": "Test_Stat_Var_4",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_5",
-      "displayName": "Test_Stat_Var_5",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_6",
-      "displayName": "Test_Stat_Var_6",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_7",
-      "displayName": "Test_Stat_Var_7",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_8",
-      "displayName": "Test_Stat_Var_8",
-      "hasData": true
-    },
-    {
-      "id": "Test_Stat_Var_9",
-      "displayName": "Test_Stat_Var_9",
+      "id": "Mean_MealCost_Person_FoodSecure",
+      "searchNames": [
+        "Mean Meal Cost Person Food Secure"
+      ],
+      "displayName": "Mean Meal Cost for Population Food Secure",
       "hasData": true
     }
+  ],
+  "childStatVarGroups": [
+    {
+      "id": "g/Child_FoodInsecure",
+      "descendentStatVarCount": 3
+    },
+    {
+      "id": "g/Person_FoodInsecure",
+      "descendentStatVarCount": 4
+    }
+  ],
+  "descendentStatVarCount": 9,
+  "parentStatVarGroups": [
+    "dc/g/Root"
   ]
 }
