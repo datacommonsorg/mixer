@@ -51,8 +51,8 @@ func GetStatVarMatch(
 	query := bleve.NewMatchQuery(toQueryString(in.GetPropertyValue()))
 	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, true)
 	// The - prefix indicates reverse direction.
-	searchRequest.SortBy([]string{"-_score", "Title"})
-	searchRequest.Fields = append(searchRequest.Fields, "Title")
+	searchRequest.SortBy([]string{"-_score", "DisplayName"})
+	searchRequest.Fields = append(searchRequest.Fields, "DisplayName")
 	searchResults, err := cache.BleveSearchIndex.Search(searchRequest)
 	if err != nil {
 		return nil, err
@@ -62,7 +62,7 @@ func GetStatVarMatch(
 	for _, hit := range searchResults.Hits {
 		result.MatchInfo = append(result.MatchInfo, &pb.GetStatVarMatchResponse_MatchInfo{
 			StatVar:     hit.ID,
-			StatVarName: hit.Fields["Title"].(string),
+			StatVarName: hit.Fields["DisplayName"].(string),
 			Score:       float32(hit.Score),
 		})
 	}

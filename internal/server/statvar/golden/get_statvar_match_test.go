@@ -50,6 +50,15 @@ func TestGetStatVarMatch(t *testing.T) {
 				map[string]string{"gender": "Female"},
 				"female.json",
 			},
+			{
+				map[string]string{
+					"measuredProperty": "count",
+					"populationType":   "Person",
+					"statType":         "measuredValue",
+					"gender":           "Female",
+				},
+				"average_female_population.json",
+			},
 		} {
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
 				PropertyValue: c.propertyValues,

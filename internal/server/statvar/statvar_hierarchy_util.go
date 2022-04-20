@@ -165,9 +165,9 @@ func BuildStatVarSearchIndex(
 // Currently we index stat vars and treat them as documents.
 type BleveDocument struct {
 	// Title of the document. For a statvar this will be the DisplayName.
-	Title string
+	DisplayName string
 	// A key value pairs string describing the properties of a stat var.
-	KeyValueText string
+	SearchName string
 }
 
 // BuildBleveIndex builds the bleve search index for all the stat vars.
@@ -178,15 +178,15 @@ func BuildBleveIndex(
 	indexMapping := bleve.NewIndexMapping()
 
 	documentMapping := bleve.NewDocumentMapping()
-	indexMapping.AddDocumentMapping("Document", documentMapping)
+	indexMapping.AddDocumentMapping("BleveDocument", documentMapping)
 
-	titleFieldMapping := bleve.NewTextFieldMapping()
-	titleFieldMapping.Store = true
-	documentMapping.AddFieldMappingsAt("Title", titleFieldMapping)
-
-	keyValueTextFieldMapping := bleve.NewTextFieldMapping()
-	keyValueTextFieldMapping.Store = false
-	documentMapping.AddFieldMappingsAt("KeyValueText", keyValueTextFieldMapping)
+	displayNameFieldMapping := bleve.NewTextFieldMapping()
+	displayNameFieldMapping.Store = true
+	displayNameFieldMapping.Index = false
+	documentMapping.AddFieldMappingsAt("DisplayName", displayNameFieldMapping)
+	searchNameFieldMapping := bleve.NewTextFieldMapping()
+	searchNameFieldMapping.Store = false
+	documentMapping.AddFieldMappingsAt("SearchName", searchNameFieldMapping)
 
 	index, err := bleve.NewUsing("", indexMapping, bleve.Config.DefaultIndexType, bleve.Config.DefaultMemKVStore, nil)
 	if err != nil {
@@ -195,10 +195,9 @@ func BuildBleveIndex(
 	batch := index.NewBatch()
 	for _, svgData := range rawSvg {
 		for _, svData := range svgData.ChildStatVars {
-			keyValueText := strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1)
 			err = batch.Index(svData.Id, BleveDocument{
-				Title:        svData.DisplayName,
-				KeyValueText: keyValueText,
+				DisplayName: svData.DisplayName,
+				SearchName:  svData.SearchName,
 			})
 			if err != nil {
 				return nil, err
