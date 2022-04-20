@@ -25,11 +25,18 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func lowQualityPopulationImport(importName string) bool {
-	return importName == "WikidataPopulation" ||
-		importName == "KGHumanCurated" ||
-		importName == "HumanCuratedStats" ||
-		importName == "WikipediaStatsData"
+const inferiorFacetThreshold = 1000
+
+// IsInferiorFacetPb checks if a facet is from an inferior source.
+// This works for the proto version of "SourceSeries"
+func IsInferiorFacetPb(ss *pb.SourceSeries) bool {
+	return ranking.GetScorePb(ss) > inferiorFacetThreshold
+}
+
+// IsInferiorFacet checks if a facet is from an inferior source.
+// This works for the Go version of "SourceSeries"
+func IsInferiorFacet(ss *model.SourceSeries) bool {
+	return ranking.GetScore(ss) > inferiorFacetThreshold
 }
 
 // FilterSeries filters a list of source series given the observation properties.
@@ -140,7 +147,10 @@ func GetValueFromBestSource(in *model.ObsTimeSeries, date string) (float64, erro
 	}
 	latestDate := ""
 	var result float64
-	for _, series := range sourceSeries {
+	for idx, series := range sourceSeries {
+		if idx > 0 && IsInferiorFacet(series) {
+			break
+		}
 		for date, value := range series.Val {
 			if date > latestDate {
 				latestDate = date
@@ -190,9 +200,9 @@ func GetValueFromBestSourcePb(
 	// At this stage, sourceSeries has import series ranked by the ranking score.
 	// (accomplished by SeriesByRank function above)
 	for idx, series := range sourceSeries {
-		// If there are higher quality population data, then do not pick from the
-		// lower quality import even it could have more recent data.
-		if idx > 0 && lowQualityPopulationImport(series.ImportName) {
+		// If there is higher quality facet, then do not pick from the inferior
+		//facet even it could have more recent data.
+		if idx > 0 && IsInferiorFacetPb(series) {
 			break
 		}
 		for date, value := range series.Val {

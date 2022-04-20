@@ -46,10 +46,10 @@ func TestGetScorePb(t *testing.T) {
 		},
 		{
 			&pb.SourceSeries{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1M"},
-			0,
+			2,
 		},
 	} {
-		score := getScorePb(c.series)
+		score := GetScorePb(c.series)
 		if diff := cmp.Diff(score, c.score); diff != "" {
 			t.Errorf("getScorePb() got diff score %v", diff)
 		}

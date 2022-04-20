@@ -70,11 +70,9 @@ func BulkPoint(
 			series := obsTimeSeries.SourceSeries
 			sort.Sort(ranking.SeriesByRank(series))
 
-			if !allFacets && len(series) > 0 {
-				series = series[0:1]
-			}
-
-			for _, series := range series {
+			// When date is not given, tract the latest date from each series
+			latestDateAcrossSeries := ""
+			for idx, series := range series {
 				metadata := stat.GetMetadata(series)
 				facet := util.GetMetadataHash(metadata)
 				// Date is given
@@ -88,10 +86,21 @@ func BulkPoint(
 						entityObservations.PointsByFacet = append(
 							entityObservations.PointsByFacet, ps)
 					}
+					result.Facets[facet] = metadata
+					if !allFacets {
+						break
+					}
 				} else {
-					// Date is not given, find the latest value
-					latestDate := ""
+					// This is to query from one facet and there is already data from
+					// higher ranked facet. If the current facet is from an inferior
+					// facet (like wikidata) then don't use it.
+					// Such inferior facet is only used when there is no better facet
+					// is prsent.
+					if !allFacets && idx > 0 && stat.IsInferiorFacetPb(series) {
+						break
+					}
 					var ps *pb.PointStat
+					latestDate := ""
 					for date, value := range series.Val {
 						if date > latestDate {
 							latestDate = date
@@ -102,8 +111,13 @@ func BulkPoint(
 							}
 						}
 					}
-					entityObservations.PointsByFacet = append(
-						entityObservations.PointsByFacet, ps)
+					if idx == 0 || allFacets {
+						entityObservations.PointsByFacet = append(
+							entityObservations.PointsByFacet, ps)
+					} else if latestDate > latestDateAcrossSeries {
+						latestDateAcrossSeries = latestDate
+						entityObservations.PointsByFacet[0] = ps
+					}
 				}
 				result.Facets[facet] = metadata
 			}
