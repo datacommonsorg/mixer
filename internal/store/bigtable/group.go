@@ -74,7 +74,7 @@ func NewGroup(
 	}
 }
 
-// Tables is the accessor for all the Bigtable client stubs.
+// GetFrequentGroup creates a group that only has frequent import group table.
 func GetFrequentGroup(g *Group) *Group {
 	result := &Group{tables: []*Table{}}
 	for _, t := range g.tables {
