@@ -75,6 +75,18 @@ func NewGroup(
 }
 
 // Tables is the accessor for all the Bigtable client stubs.
+func GetFrequentGroup(g *Group) *Group {
+	result := &Group{tables: []*Table{}}
+	for _, t := range g.tables {
+		if strings.HasPrefix(t.name, "frequent") {
+			result.tables = append(result.tables, t)
+			break
+		}
+	}
+	return result
+}
+
+// Tables is the accessor for all the Bigtable client stubs.
 func (g *Group) Tables() []*cbt.Table {
 	g.lock.RLock()
 	defer g.lock.RUnlock()

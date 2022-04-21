@@ -38,6 +38,7 @@
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "measurementMethod",
       "objectId": "CensusPEPSurvey",
+      "objectName": "CensusPEPSurvey",
       "provenanceId": "dc/ks7tgs3"
     },
     {

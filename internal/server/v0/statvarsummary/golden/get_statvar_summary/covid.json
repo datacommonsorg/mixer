@@ -19,7 +19,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 2309135
+          "maxValue": 2343807
         },
         "Country": {
           "placeCount": 1,
@@ -30,7 +30,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 80051976
+          "maxValue": 80595074
         },
         "County": {
           "placeCount": 3217,
@@ -49,7 +49,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 2835021
+          "maxValue": 2854410
         },
         "State": {
           "placeCount": 56,
@@ -68,7 +68,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 9108202
+          "maxValue": 9161719
         }
       },
       "provenanceSummary": {
