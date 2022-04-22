@@ -53,9 +53,9 @@
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
-      "searchName": "Percent of Internet Users",
+      "searchName": "Population Count of Person With is Internet User is True (As Fraction of Per Capita)",
       "searchNames": [
-        "Percent of Internet Users"
+        "Population Count of Person With is Internet User is True (As Fraction of Per Capita)"
       ],
       "displayName": "Percent of Internet Users",
       "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
@@ -73,9 +73,9 @@
     },
     {
       "id": "IncrementalCount_Person",
-      "searchName": "Population Change",
+      "searchName": "Incremental Count of Person",
       "searchNames": [
-        "Population Change"
+        "Incremental Count of Person"
       ],
       "displayName": "Population Change",
       "definition": "mp=incrementalCount,pt=Person",
@@ -83,9 +83,9 @@
     },
     {
       "id": "Count_Person_PerArea",
-      "searchName": "Population Density",
+      "searchName": "Population Count of Person (As Fraction of Area)",
       "searchNames": [
-        "Population Density"
+        "Population Count of Person (As Fraction of Area)"
       ],
       "displayName": "Population Density",
       "definition": "md=area,mp=count,pt=Person",
@@ -93,9 +93,9 @@
     },
     {
       "id": "GrowthRate_Count_Person",
-      "searchName": "Population Growth Rate",
+      "searchName": "Growth Rate Population Count of Person",
       "searchNames": [
-        "Population Growth Rate"
+        "Growth Rate Population Count of Person"
       ],
       "displayName": "Population Growth Rate",
       "definition": "st=growthRate,mp=count,pt=Person",
@@ -107,7 +107,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "descendentStatVarCount": 7613
+      "descendentStatVarCount": 7806
     },
     {
       "id": "dc/g/Person_BenefitsStatus",
@@ -149,13 +149,13 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "descendentStatVarCount": 6265
+      "descendentStatVarCount": 7536
     },
     {
       "id": "dc/g/Person_HealthInsurance",
       "specializedEntity": "Health Insurance (Individual)",
       "displayName": "Person by Health Insurance",
-      "descendentStatVarCount": 1826
+      "descendentStatVarCount": 1867
     },
     {
       "id": "dc/g/Household",
@@ -173,13 +173,13 @@
       "id": "dc/g/Person_HouseholdType",
       "specializedEntity": "Household Type",
       "displayName": "Person by Household Type",
-      "descendentStatVarCount": 444
+      "descendentStatVarCount": 456
     },
     {
       "id": "dc/g/ImmigrationAndCitizenship",
       "specializedEntity": "Immigration and Citizenship",
       "displayName": "Immigration and Citizenship",
-      "descendentStatVarCount": 2297
+      "descendentStatVarCount": 2313
     },
     {
       "id": "dc/g/Person_Income",
@@ -203,13 +203,13 @@
       "id": "dc/g/Person_LiteracyStatus",
       "specializedEntity": "Literacy Status",
       "displayName": "Person by Literacy Status",
-      "descendentStatVarCount": 72
+      "descendentStatVarCount": 216
     },
     {
       "id": "dc/g/Person_MaritalStatus",
       "specializedEntity": "Marital Status",
       "displayName": "Person by Marital Status",
-      "descendentStatVarCount": 505
+      "descendentStatVarCount": 522
     },
     {
       "id": "dc/g/Person_MemberStatus",
@@ -221,34 +221,40 @@
       "id": "dc/g/MilitaryService",
       "specializedEntity": "Military Service",
       "displayName": "Military Service",
-      "descendentStatVarCount": 1383
+      "descendentStatVarCount": 1409
     },
     {
       "id": "dc/g/Person_PlaceOfBirth",
       "specializedEntity": "Place of Birth",
       "displayName": "Person by Place of Birth",
-      "descendentStatVarCount": 1944
+      "descendentStatVarCount": 1960
     },
     {
       "id": "dc/g/Person_PovertyStatus",
       "specializedEntity": "Poverty Status",
       "displayName": "Person by Poverty Status",
-      "descendentStatVarCount": 891
+      "descendentStatVarCount": 895
     },
     {
       "id": "dc/g/Person_Race",
       "specializedEntity": "Race",
       "displayName": "Person by Race",
-      "descendentStatVarCount": 4221
+      "descendentStatVarCount": 4260
+    },
+    {
+      "id": "dc/g/Person_Religion",
+      "specializedEntity": "Religion",
+      "displayName": "Person by Religion",
+      "descendentStatVarCount": 1872
     },
     {
       "id": "dc/g/Residence",
       "specializedEntity": "Residence",
       "displayName": "Residence",
-      "descendentStatVarCount": 1783
+      "descendentStatVarCount": 3053
     }
   ],
-  "descendentStatVarCount": 13285,
+  "descendentStatVarCount": 15294,
   "parentStatVarGroups": [
     "dc/g/Root"
   ]

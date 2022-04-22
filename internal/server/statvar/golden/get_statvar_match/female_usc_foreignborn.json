@@ -3,502 +3,502 @@
     {
       "statVar": "Count_Person_Female_ForeignBorn",
       "statVarName": "Population: Female, Foreign Born",
-      "score": 1.1573902
+      "score": 1.1317229
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthAsia",
       "statVarName": "Population: Female, Foreign Born, Asia",
-      "score": 1.0352013
+      "score": 1.0122437
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthAfrica",
       "statVarName": "Population: Female, Foreign Born, Africa",
-      "score": 1.0352013
+      "score": 1.0122437
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthEurope",
       "statVarName": "Population: Female, Foreign Born, Europe",
-      "score": 1.0352013
+      "score": 1.0122437
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthOceania",
       "statVarName": "Population: Female, Foreign Born, Oceania",
-      "score": 1.0352013
+      "score": 1.0122437
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthCaribbean",
       "statVarName": "Population: Female, Foreign Born, Caribbean",
-      "score": 1.0352013
+      "score": 1.0122437
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthNorthamerica",
       "statVarName": "Population: Female, Foreign Born, Northamerica",
-      "score": 1.0352013
+      "score": 1.0122437
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthamerica",
       "statVarName": "Population: Female, Foreign Born, Southamerica",
-      "score": 1.0352013
+      "score": 1.0122437
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInGroupQuarters",
       "statVarName": "Population: Female, Foreign Born, Group Quarters",
-      "score": 1.0023293
+      "score": 0.9801008
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthEasternAsia",
       "statVarName": "Population: Female, Foreign Born, Eastern Asia",
-      "score": 1.0023293
+      "score": 0.9801008
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthWesternAsia",
       "statVarName": "Population: Female, Foreign Born, Western Asia",
-      "score": 1.0023293
+      "score": 0.9801008
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthLatinAmerica",
       "statVarName": "Population: Female, Foreign Born, Latin America",
-      "score": 1.0023293
+      "score": 0.9801008
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInNursingFacilities",
       "statVarName": "Population: Female, Foreign Born, Nursing Facilities",
-      "score": 1.0023293
+      "score": 0.9801008
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInJuvenileFacilities",
       "statVarName": "Population: Female, Foreign Born, Juvenile Facilities",
-      "score": 1.0023293
+      "score": 0.9801008
     },
     {
       "statVar": "Count_Person_15To50Years_Female_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Female, Foreign Born",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthMexico",
       "statVarName": "Population: Female, Foreign Born, Country/MEX",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthCentralAsia",
       "statVarName": "Population: Female, Foreign Born, South Central Asia",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthEasternAsia",
       "statVarName": "Population: Female, Foreign Born, South Eastern Asia",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthNorthernWesternEurope",
       "statVarName": "Population: Female, Foreign Born, Northern Western Europe",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
       "statVarName": "Population: Female, Foreign Born, Southern Eastern Europe",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInAdultCorrectionalFacilities",
       "statVarName": "Population: Female, Foreign Born, Adult Correctional Facilities",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInInstitutionalizedGroupQuarters",
       "statVarName": "Population: Female, Foreign Born, Institutionalized Group Quarters",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInNoninstitutionalizedGroupQuarters",
       "statVarName": "Population: Female, Foreign Born, Noninstitutionalized Group Quarters",
-      "score": 0.9724023
+      "score": 0.95083743
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
       "statVarName": "Population: Female, Foreign Born, Central America Except Mexico",
-      "score": 0.9450052
+      "score": 0.92404795
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
       "statVarName": "Population: Female, Foreign Born, Military Quarters or Military Ships",
-      "score": 0.9450052
+      "score": 0.92404795
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing",
       "statVarName": "Population: Female, Foreign Born, College or University Student Housing",
-      "score": 0.9450052
+      "score": 0.92404795
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born",
-      "score": 0.8965106
+      "score": 0.8766288
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born",
-      "score": 0.8749048
+      "score": 0.8555021
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Foreign Born",
-      "score": 0.83600044
+      "score": 0.81746054
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInGroupQuarters",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, Group Quarters",
-      "score": 0.81839854
+      "score": 0.800249
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInNursingFacilities",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, Nursing Facilities",
-      "score": 0.81839854
+      "score": 0.800249
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInJuvenileFacilities",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, Juvenile Facilities",
-      "score": 0.81839854
+      "score": 0.800249
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInGroupQuarters",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, Group Quarters",
-      "score": 0.8018635
+      "score": 0.7840807
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInAdultCorrectionalFacilities",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, Adult Correctional Facilities",
-      "score": 0.8018635
+      "score": 0.7840807
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInNursingFacilities",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, Nursing Facilities",
-      "score": 0.8018635
+      "score": 0.7840807
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInInstitutionalizedGroupQuarters",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, Institutionalized Group Quarters",
-      "score": 0.8018635
+      "score": 0.7840807
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInJuvenileFacilities",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, Juvenile Facilities",
-      "score": 0.8018635
+      "score": 0.7840807
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInNoninstitutionalizedGroupQuarters",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, Noninstitutionalized Group Quarters",
-      "score": 0.8018635
+      "score": 0.7840807
     },
     {
       "statVar": "Median_Age_Person_Female_ForeignBorn",
       "statVarName": "Median Age: Female, Foreign Born",
-      "score": 0.7992733
+      "score": 0.78112715
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Foreign Born",
-      "score": 0.78629184
+      "score": 0.7688543
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, Military Quarters or Military Ships",
-      "score": 0.78629184
+      "score": 0.7688543
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born, College or University Student Housing",
-      "score": 0.78629184
+      "score": 0.7688543
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInAdultCorrectionalFacilities",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, Adult Correctional Facilities",
-      "score": 0.78629184
+      "score": 0.7688543
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInInstitutionalizedGroupQuarters",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, Institutionalized Group Quarters",
-      "score": 0.78629184
+      "score": 0.7688543
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInNoninstitutionalizedGroupQuarters",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, Noninstitutionalized Group Quarters",
-      "score": 0.78629184
+      "score": 0.7688543
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, Military Quarters or Military Ships",
-      "score": 0.7715935
+      "score": 0.754482
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born, College or University Student Housing",
-      "score": 0.7715935
+      "score": 0.754482
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_ForeignBorn_AsAFractionOf_Count_Person_15To50Years_Female_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Foreign Born (As Fraction of Count Person 15 To 50 Years Female Foreign Born)",
-      "score": 0.7412545
+      "score": 0.7256867
     },
     {
       "statVar": "Median_Age_Person_NotAUSCitizen_Female_ForeignBorn",
       "statVarName": "Median Age: Not A US Citizen, Female, Foreign Born",
-      "score": 0.71017295
+      "score": 0.6940497
     },
     {
       "statVar": "Median_Age_Person_USCitizenByNaturalization_Female_ForeignBorn",
       "statVarName": "Median Age: US Citizen by Naturalization, Female, Foreign Born",
-      "score": 0.692191
+      "score": 0.676476
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn",
       "statVarName": "Population: Male, Foreign Born",
-      "score": 0.6639102
+      "score": 0.6448354
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthAsia",
       "statVarName": "Population: Male, Foreign Born, Asia",
-      "score": 0.5938194
+      "score": 0.5767583
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthAfrica",
       "statVarName": "Population: Male, Foreign Born, Africa",
-      "score": 0.5938194
+      "score": 0.5767583
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthEurope",
       "statVarName": "Population: Male, Foreign Born, Europe",
-      "score": 0.5938194
+      "score": 0.5767583
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthOceania",
       "statVarName": "Population: Male, Foreign Born, Oceania",
-      "score": 0.5938194
+      "score": 0.5767583
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthCaribbean",
       "statVarName": "Population: Male, Foreign Born, Caribbean",
-      "score": 0.5938194
+      "score": 0.5767583
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthNorthamerica",
       "statVarName": "Population: Male, Foreign Born, Northamerica",
-      "score": 0.5938194
+      "score": 0.5767583
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthSouthamerica",
       "statVarName": "Population: Male, Foreign Born, Southamerica",
-      "score": 0.5938194
+      "score": 0.5767583
     },
     {
       "statVar": "Count_Person_15To50Years_Female_Native",
       "statVarName": "Population: 15 - 50 Years, Female, Native",
-      "score": 0.5816482
+      "score": 0.5674242
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_ResidesInGroupQuarters",
       "statVarName": "Population: Male, Foreign Born, Group Quarters",
-      "score": 0.57496315
+      "score": 0.55844384
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthEasternAsia",
       "statVarName": "Population: Male, Foreign Born, Eastern Asia",
-      "score": 0.57496315
+      "score": 0.55844384
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthWesternAsia",
       "statVarName": "Population: Male, Foreign Born, Western Asia",
-      "score": 0.57496315
+      "score": 0.55844384
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthLatinAmerica",
       "statVarName": "Population: Male, Foreign Born, Latin America",
-      "score": 0.57496315
+      "score": 0.55844384
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_ResidesInNursingFacilities",
       "statVarName": "Population: Male, Foreign Born, Nursing Facilities",
-      "score": 0.57496315
+      "score": 0.55844384
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_ResidesInJuvenileFacilities",
       "statVarName": "Population: Male, Foreign Born, Juvenile Facilities",
-      "score": 0.57496315
+      "score": 0.55844384
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthMexico",
       "statVarName": "Population: Male, Foreign Born, Country/MEX",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthSouthCentralAsia",
       "statVarName": "Population: Male, Foreign Born, South Central Asia",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthSouthEasternAsia",
       "statVarName": "Population: Male, Foreign Born, South Eastern Asia",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthNorthernWesternEurope",
       "statVarName": "Population: Male, Foreign Born, Northern Western Europe",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
       "statVarName": "Population: Male, Foreign Born, Southern Eastern Europe",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_ResidesInAdultCorrectionalFacilities",
       "statVarName": "Population: Male, Foreign Born, Adult Correctional Facilities",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_ResidesInInstitutionalizedGroupQuarters",
       "statVarName": "Population: Male, Foreign Born, Institutionalized Group Quarters",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn_ResidesInNoninstitutionalizedGroupQuarters",
       "statVarName": "Population: Male, Foreign Born, Noninstitutionalized Group Quarters",
-      "score": 0.5577962
+      "score": 0.5417701
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthAsia",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Asia, Full Time Year Round Worker",
-      "score": 0.54722506
+      "score": 0.53480124
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthAfrica",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Africa, Full Time Year Round Worker",
-      "score": 0.54722506
+      "score": 0.53480124
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthEurope",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Europe, Full Time Year Round Worker",
-      "score": 0.54722506
+      "score": 0.53480124
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthOceania",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Oceania, Full Time Year Round Worker",
-      "score": 0.54722506
+      "score": 0.53480124
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthCaribbean",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Caribbean, Full Time Year Round Worker",
-      "score": 0.54722506
+      "score": 0.53480124
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthNorthamerica",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Northamerica, Full Time Year Round Worker",
-      "score": 0.54722506
+      "score": 0.53480124
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthSouthamerica",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Southamerica, Full Time Year Round Worker",
-      "score": 0.54722506
-    },
-    {
-      "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
-      "statVarName": "Population: Male, Foreign Born, Central America Except Mexico",
-      "score": 0.54208046
-    },
-    {
-      "statVar": "Count_Person_Male_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
-      "statVarName": "Population: Male, Foreign Born, Military Quarters or Military Ships",
-      "score": 0.54208046
-    },
-    {
-      "statVar": "Count_Person_Male_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing",
-      "statVarName": "Population: Male, Foreign Born, College or University Student Housing",
-      "score": 0.54208046
+      "score": 0.53480124
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthEasternAsia",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Eastern Asia, Full Time Year Round Worker",
-      "score": 0.53887
+      "score": 0.5266359
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthWesternAsia",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Western Asia, Full Time Year Round Worker",
-      "score": 0.53887
+      "score": 0.5266359
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthLatinAmerica",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Latin America, Full Time Year Round Worker",
-      "score": 0.53887
+      "score": 0.5266359
+    },
+    {
+      "statVar": "Count_Person_Male_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
+      "statVarName": "Population: Male, Foreign Born, Central America Except Mexico",
+      "score": 0.5265059
+    },
+    {
+      "statVar": "Count_Person_Male_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips",
+      "statVarName": "Population: Male, Foreign Born, Military Quarters or Military Ships",
+      "score": 0.5265059
+    },
+    {
+      "statVar": "Count_Person_Male_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing",
+      "statVarName": "Population: Male, Foreign Born, College or University Student Housing",
+      "score": 0.5265059
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthMexico",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Country/MEX, Full Time Year Round Worker",
-      "score": 0.53088623
+      "score": 0.5188334
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthSouthCentralAsia",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, South Central Asia, Full Time Year Round Worker",
-      "score": 0.53088623
+      "score": 0.5188334
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthSouthEasternAsia",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, South Eastern Asia, Full Time Year Round Worker",
-      "score": 0.53088623
+      "score": 0.5188334
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthNorthernWesternEurope",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Northern Western Europe, Full Time Year Round Worker",
-      "score": 0.53088623
+      "score": 0.5188334
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthSouthernEasternEurope",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Southern Eastern Europe, Full Time Year Round Worker",
-      "score": 0.53088623
+      "score": 0.5188334
     },
     {
       "statVar": "Median_Earnings_Person_Female_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico",
       "statVarName": "Median Earnings: 16 Years or More, Female, With Earnings, Foreign Born, Central America Except Mexico, Full Time Year Round Worker",
-      "score": 0.5232472
+      "score": 0.51136774
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Male_ForeignBorn",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Male, Foreign Born",
-      "score": 0.5142627
+      "score": 0.49948734
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Male_ForeignBorn",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Male, Foreign Born",
-      "score": 0.50186896
+      "score": 0.48744977
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Native",
       "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Native",
-      "score": 0.49603122
+      "score": 0.483901
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenBornInTheUnitedStates_Female_Native",
       "statVarName": "Population: 15 Years or More, US Citizen Born in The United States, Female, Native",
-      "score": 0.49603122
+      "score": 0.483901
+    },
+    {
+      "statVar": "Count_Person_5OrMoreYears_ForeignBorn",
+      "statVarName": "Population: Foreign Born",
+      "score": 0.45623994
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Male_ForeignBorn_ResidesInGroupQuarters",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Male, Foreign Born, Group Quarters",
-      "score": 0.46945545
+      "score": 0.4559675
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Male_ForeignBorn_ResidesInNursingFacilities",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Male, Foreign Born, Nursing Facilities",
-      "score": 0.46945545
+      "score": 0.4559675
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Male_ForeignBorn_ResidesInJuvenileFacilities",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Male, Foreign Born, Juvenile Facilities",
-      "score": 0.46945545
-    },
-    {
-      "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_Native",
-      "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Native",
-      "score": 0.46531853
+      "score": 0.4559675
     }
   ]
 }

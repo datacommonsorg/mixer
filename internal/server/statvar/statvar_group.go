@@ -135,12 +135,12 @@ func GetStatVarGroup(
 
 	var result *pb.StatVarGroups
 	if cache == nil {
-		// Read stat var group cache from the first table, which is the most
-		// preferred cache BigTable. Since stat var schemas are rebuild with every
-		// group, so no merge needed.
+		// Read stat var group cache from the frequent import group table. It has
+		// the latest and trustworthy stat var schemas and no need to merge with
+		// other import groups.
 		btDataList, err := bigtable.Read(
 			ctx,
-			store.BtGroup,
+			bigtable.GetFrequentGroup(store.BtGroup),
 			cbt.RowList{bigtable.BtStatVarGroup},
 			func(dcid string, jsonRaw []byte) (interface{}, error) {
 				var svgResp pb.StatVarGroups
@@ -160,12 +160,7 @@ func GetStatVarGroup(
 			if data, ok := btData["_"]; ok {
 				svg, ok := data.(*pb.StatVarGroups)
 				if ok {
-					// Pick the import group with the most stat var group node.
-					// (TODO): revisit this once we figure out why branch cache has less
-					//  stat var group node.
-					if len(svg.StatVarGroups) > len(result.GetStatVarGroups()) {
-						result = svg
-					}
+					result = svg
 				}
 			}
 		}
