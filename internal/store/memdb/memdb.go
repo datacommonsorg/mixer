@@ -235,7 +235,6 @@ func (memDb *MemDb) LoadConfig(ctx context.Context, file string) error {
 	if err != nil {
 		return status.Errorf(codes.Internal, "Failed to read memdb config: %v", err)
 	}
-	log.Println(string(bytes))
 	var config pb.MemdbConfig
 	err = protojson.Unmarshal(bytes, &config)
 	if err != nil {

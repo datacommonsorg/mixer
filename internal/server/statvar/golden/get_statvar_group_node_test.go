@@ -39,48 +39,48 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			svg        string
 			goldenFile string
 		}{
-			// {
-			// 	[]string{"country/USA"},
-			// 	"dc/g/Person_EducationalAttainment",
-			// 	"school.json",
-			// },
-			// {
-			// 	[]string{"country/USA"},
-			// 	"dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race",
-			// 	"school_race.json",
-			// },
-			// {
-			// 	[]string{"country/GBR"},
-			// 	"dc/g/Demographics",
-			// 	"demographics_gbr.json",
-			// },
-			// // Run this first to test the server cache is not modified.
-			// {
-			// 	[]string{"geoId/0649670"},
-			// 	"dc/g/Root",
-			// 	"root_mtv.json",
-			// },
-			// // Run this first to test the server cache is not modified.
-			// {
-			// 	[]string{"geoId/0649670", "country/JPN"},
-			// 	"dc/g/Root",
-			// 	"root_mtv_jpn.json",
-			// },
-			// {
-			// 	[]string{},
-			// 	"dc/g/Root",
-			// 	"root.json",
-			// },
-			// {
-			// 	[]string{},
-			// 	"dc/g/Demographics",
-			// 	"demographics.json",
-			// },
-			// {
-			// 	[]string{"geoId/0649670"},
-			// 	"dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
-			// 	"citizenship.json",
-			// },
+			{
+				[]string{"country/USA"},
+				"dc/g/Person_EducationalAttainment",
+				"school.json",
+			},
+			{
+				[]string{"country/USA"},
+				"dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race",
+				"school_race.json",
+			},
+			{
+				[]string{"country/GBR"},
+				"dc/g/Demographics",
+				"demographics_gbr.json",
+			},
+			// Run this first to test the server cache is not modified.
+			{
+				[]string{"geoId/0649670"},
+				"dc/g/Root",
+				"root_mtv.json",
+			},
+			// Run this first to test the server cache is not modified.
+			{
+				[]string{"geoId/0649670", "country/JPN"},
+				"dc/g/Root",
+				"root_mtv_jpn.json",
+			},
+			{
+				[]string{},
+				"dc/g/Root",
+				"root.json",
+			},
+			{
+				[]string{},
+				"dc/g/Demographics",
+				"demographics.json",
+			},
+			{
+				[]string{"geoId/0649670"},
+				"dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
+				"citizenship.json",
+			},
 			{
 				[]string{"geoId/06"},
 				"g/Feeding_America",
