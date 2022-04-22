@@ -58,6 +58,9 @@ message Manifest {
   // Example:
   // https://pantheon.corp.google.com/storage/browser/datcom-public/test
   string data_download_url = 3;
+  // The root SVG for the import. This will be set as a child stat var group
+  // of "dc/g/Root"
+  string root_svg = 4;
 }
 
 // PayloadResponse represents API response with encoded payload string
