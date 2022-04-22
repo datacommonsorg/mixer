@@ -174,7 +174,7 @@ func GetStatVarGroup(
 	}
 	// Merge in the private import svg if exists
 	if store.MemDb != nil && store.MemDb.GetSvg() != nil {
-		for sv, data := range store.MemDb.GetSvg().StatVarGroups {
+		for sv, data := range store.MemDb.GetSvg() {
 			result.StatVarGroups[sv] = data
 		}
 		result.StatVarGroups[svgRoot].ChildStatVarGroups = append(

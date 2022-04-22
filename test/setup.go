@@ -128,6 +128,10 @@ func setupInternal(
 	}
 	memDb := memdb.NewMemDb()
 	if useMemdb {
+		err = memDb.LoadConfig(ctx, path.Join(path.Dir(filename), "memdb.json"))
+		if err != nil {
+			log.Fatalf("Failed to load config: %v", err)
+		}
 		err = memDb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
 		if err != nil {
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)

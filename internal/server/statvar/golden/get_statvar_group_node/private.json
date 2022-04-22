@@ -11,19 +11,21 @@
     {
       "id": "Mean_MealCost_Person_FoodSecure",
       "searchNames": [
-        "Mean Meal Cost Person Food Secure"
+        "Food Secure Person Mean Meal Cost"
       ],
-      "displayName": "Mean Meal Cost for Population Food Secure",
+      "displayName": "Food Secure Person Mean Meal Cost",
       "hasData": true
     }
   ],
   "childStatVarGroups": [
     {
       "id": "g/Child_FoodInsecure",
+      "specializedEntity": "Food Insecure Child",
       "descendentStatVarCount": 3
     },
     {
       "id": "g/Person_FoodInsecure",
+      "specializedEntity": "Food Insecure Person",
       "descendentStatVarCount": 4
     }
   ],

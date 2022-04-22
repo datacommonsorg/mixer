@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"path"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -60,6 +61,7 @@ var (
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
 	tmcfCsvBucket  = flag.String("tmcf_csv_bucket", "", "The GCS bucket that contains tmcf and csv files")
 	tmcfCsvFolder  = flag.String("tmcf_csv_folder", "", "GCS folder for an import. An import must have a unique prefix within a bucket.")
+	memdbPath      = flag.String("memdb_path", "", "File path of memdb config")
 	// Specify what services to serve
 	serveMixerService = flag.Bool("serve_mixer_service", true, "Serve Mixer service")
 	serveReconService = flag.Bool("serve_recon_service", false, "Serve Recon service")
@@ -72,6 +74,8 @@ const (
 	branchBtInstance            = "prophet-branch-cache"
 	branchCacheVersionBucket    = "datcom-control"
 	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
+	// Memdb config file name
+	memdbConfig = "memdb.json"
 )
 
 func main() {
@@ -106,7 +110,8 @@ func main() {
 	srv := grpc.NewServer(opts...)
 
 	// Metadata.
-	metadata, err := server.NewMetadata(*bqDataset, *storeProject, branchBtInstance, *schemaPath)
+	metadata, err := server.NewMetadata(
+		*bqDataset, *storeProject, branchBtInstance, *schemaPath)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
@@ -131,6 +136,11 @@ func main() {
 		// TMCF + CSV from GCS
 		memDb := memdb.NewMemDb()
 		if *useTmcfCsvData && *tmcfCsvBucket != "" {
+			// Read memdb config
+			err = memDb.LoadConfig(ctx, path.Join(*memdbPath, memdbConfig))
+			if err != nil {
+				log.Fatalf("Failed to load config: %v", err)
+			}
 			err = memDb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
 			if err != nil {
 				log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
