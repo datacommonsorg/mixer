@@ -78,7 +78,7 @@ func NewGroup(
 func GetFrequentGroup(g *Group) *Group {
 	result := &Group{tables: []*Table{}}
 	for _, t := range g.tables {
-		if strings.HasPrefix(t.name, "frequent") {
+		if strings.HasPrefix(t.name, "frequent_") {
 			result.tables = append(result.tables, t)
 			break
 		}
