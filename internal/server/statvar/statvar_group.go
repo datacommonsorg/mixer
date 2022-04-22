@@ -16,6 +16,7 @@ package statvar
 
 import (
 	"context"
+	"log"
 
 	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -167,6 +168,7 @@ func GetStatVarGroup(
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
 	}
+	log.Println(result.StatVarGroups["dc/g/Uncategorized_Variables"])
 	// Merge in the private import svg if exists
 	if store.MemDb != nil && store.MemDb.GetSvg() != nil {
 		for sv, data := range store.MemDb.GetSvg() {
@@ -271,8 +273,7 @@ func GetStatVarPath(
 	in *pb.GetStatVarPathRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (
-	*pb.GetStatVarPathResponse, error) {
+) (*pb.GetStatVarPathResponse, error) {
 	id := in.GetId()
 	if id == "" {
 		return nil, status.Errorf(
@@ -282,7 +283,13 @@ func GetStatVarPath(
 	curr := id
 	for {
 		if parents, ok := cache.ParentSvg[curr]; ok {
-			curr = parents[0]
+			// TODO: revert this check when feeding america stat vars are removed
+			// from schema.
+			if len(parents) == 2 && parents[0] == "dc/g/Uncategorized_Variables" {
+				curr = parents[1]
+			} else {
+				curr = parents[0]
+			}
 			if curr == svgRoot {
 				break
 			}

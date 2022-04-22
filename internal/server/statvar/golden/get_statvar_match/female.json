@@ -456,11 +456,6 @@
       "score": 1.7302276
     },
     {
-      "statVar": "Count_Person_65Years_Female",
-      "statVarName": "Population: Years 65, Female",
-      "score": 1.7302276
-    },
-    {
       "statVar": "Count_Person_1OrMoreYears_Female",
       "statVarName": "Population: 1 Years or More, Female",
       "score": 1.7302276
@@ -488,6 +483,11 @@
     {
       "statVar": "Count_Person_25OrMoreYears_Female",
       "statVarName": "Population: 25 Years or More, Female",
+      "score": 1.7302276
+    },
+    {
+      "statVar": "Count_Person_65OrMoreYears_Female",
+      "statVarName": "Population: 65 Years or More, Female",
       "score": 1.7302276
     },
     {
