@@ -8,11 +8,11 @@
       "childStatVarGroups": [
         {
           "id": "g/Child_FoodInsecure",
-          "specializedEntity": "Food Insecure Child"
+          "specializedEntity": "Food Insecure Children"
         },
         {
           "id": "g/Person_FoodInsecure",
-          "specializedEntity": "Food Insecure Person"
+          "specializedEntity": "Food Insecure People"
         }
       ],
       "childStatVars": [
@@ -24,7 +24,7 @@
         {
           "id": "Mean_MealCost_Person_FoodSecure",
           "searchNames": ["Food Secure Person Mean Meal Cost"],
-          "displayName": "Food Secure Person Mean Meal Cost"
+          "displayName": "Average Meal Cost for Food Secure Persons"
         }
       ]
     },
