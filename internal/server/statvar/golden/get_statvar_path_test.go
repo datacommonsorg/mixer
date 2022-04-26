@@ -47,7 +47,7 @@ func TestGetStatVarPath(t *testing.T) {
 				"school.json",
 			},
 			{
-				"Test_Stat_Var_1",
+				"Count_Person_FoodInsecure",
 				"memdb.json",
 			},
 		} {

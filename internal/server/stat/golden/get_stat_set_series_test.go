@@ -82,8 +82,8 @@ func TestGetStatSetSeries(t *testing.T) {
 				"",
 			},
 			{
-				[]string{"Test_Stat_Var_1", "Test_Stat_Var_10"},
-				[]string{"country/ALB", "country/AND"},
+				[]string{"Count_Person_FoodInsecure", "Mean_MealCost_Person_FoodSecure"},
+				[]string{"geoId/06", "geoId/06085"},
 				"memdb.json",
 				true,
 				"",

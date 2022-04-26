@@ -141,7 +141,10 @@ func TestSearchStatVar(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"SearchStatVar", &test.TestOption{UseCache: true}, testSuite); err != nil {
+		"SearchStatVar",
+		&test.TestOption{UseCache: true, UseSearchIndex: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

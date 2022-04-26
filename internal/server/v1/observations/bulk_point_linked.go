@@ -170,34 +170,34 @@ func BulkPointLinked(
 	}
 	// Merge data from in-memory database.
 	if variableInMemDb {
-		tmpMemDbResult := map[string]map[string]*pb.PointStat{}
 		for _, variable := range variables {
-			tmpMemDbResult[variable] = map[string]*pb.PointStat{}
+			if !store.MemDb.HasStatVar(variable) {
+				continue
+			}
+			observationsByEntity := []*pb.EntityObservations{}
 			for _, entity := range childPlaces {
 				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
 				// Override public data from private import
 				if pointValue != nil {
 					facetID := util.GetMetadataHash(facet)
 					pointValue.Facet = facetID
-					tmpMemDbResult[variable][entity] = pointValue
 					result.Facets[facetID] = facet
+					observationsByEntity = append(
+						observationsByEntity,
+						&pb.EntityObservations{
+							Entity:        entity,
+							PointsByFacet: []*pb.PointStat{pointValue},
+						},
+					)
 				}
 			}
-		}
-		for _, varibleObservation := range result.ObservationsByVariable {
-			v := varibleObservation.Variable
-			for _, entityObservation := range varibleObservation.ObservationsByEntity {
-				e := entityObservation.Entity
-				if _, ok := tmpMemDbResult[v]; ok {
-					ps, ok := tmpMemDbResult[v][e]
-					if ok {
-						entityObservation.PointsByFacet = append(
-							entityObservation.PointsByFacet,
-							ps,
-						)
-					}
-				}
-			}
+			result.ObservationsByVariable = append(
+				result.ObservationsByVariable,
+				&pb.VariableObservations{
+					Variable:             variable,
+					ObservationsByEntity: observationsByEntity,
+				},
+			)
 		}
 	}
 	// Get the preferred facet

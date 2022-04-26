@@ -56,9 +56,9 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 				2,
 			},
 			{
-				[]string{"country/ALB", "country/ITA"},
+				[]string{"geoId/06", "geoId/06085"},
 				[]string{},
-				[]string{"Test_Stat_Var_1", "Test_Stat_Var_2"},
+				[]string{"Count_Person_FoodInsecure", "Mean_MealCost_Person_FoodSecure"},
 				[]string{},
 				2,
 			},

@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
 )
@@ -30,7 +31,7 @@ import (
 // not show up in the second level map.
 func Count(
 	ctx context.Context,
-	btGroup *bigtable.Group,
+	st *store.Store,
 	svOrSvgs []string,
 	places []string,
 ) (map[string]map[string]int32, error) {
@@ -38,7 +39,7 @@ func Count(
 	keyToTokenFn := stat.TokenFn(keyTokens)
 	btDataList, err := bigtable.Read(
 		ctx,
-		btGroup,
+		st.BtGroup,
 		rowList,
 		func(dcid string, jsonRaw []byte) (interface{}, error) {
 			var statVarExistence pb.PlaceStatVarExistence
@@ -64,14 +65,26 @@ func Count(
 		for _, btData := range btDataList {
 			if data, ok := btData[token]; ok {
 				c := data.(*pb.PlaceStatVarExistence)
+				descSVCount := c.GetDescendentStatVarCount()
 				if _, ok := result[placeSv.StatVar][placeSv.Place]; !ok {
 					// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var
 					// (not a stat var group). In this case the check here is necessary,
 					// otherwise the proto default 0 is compared, and this map field will
 					// not be populated.
-					result[placeSv.StatVar][placeSv.Place] = c.GetDescendentStatVarCount()
-				} else if c.GetDescendentStatVarCount() > result[placeSv.StatVar][placeSv.Place] {
-					result[placeSv.StatVar][placeSv.Place] = c.GetDescendentStatVarCount()
+					result[placeSv.StatVar][placeSv.Place] = descSVCount
+				} else if descSVCount > result[placeSv.StatVar][placeSv.Place] {
+					result[placeSv.StatVar][placeSv.Place] = descSVCount
+				}
+			}
+		}
+	}
+	// Populate stat vars from private import
+	if st.MemDb.GetSvg() != nil {
+		for sv, placeData := range st.MemDb.GetPlaceSvExistence() {
+			result[sv] = map[string]int32{}
+			for _, place := range places {
+				if count, ok := placeData[place]; ok {
+					result[sv][place] = count
 				}
 			}
 		}

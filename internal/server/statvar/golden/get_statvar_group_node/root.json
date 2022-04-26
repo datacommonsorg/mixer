@@ -62,10 +62,9 @@
       "descendentStatVarCount": 1032
     },
     {
-      "id": "dc/g/Private",
-      "specializedEntity": "Test Private Import",
-      "displayName": "Test Private Import",
-      "descendentStatVarCount": 10
+      "id": "g/Feeding_America",
+      "specializedEntity": "Feeding America",
+      "descendentStatVarCount": 9
     }
   ],
   "descendentStatVarCount": 75925

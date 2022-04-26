@@ -97,7 +97,10 @@ func TestGetStatVarGroup(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"GetStatVarGroup", &test.TestOption{UseCache: true}, testSuite); err != nil {
+		"GetStatVarGroup",
+		&test.TestOption{UseCache: true, UseMemdb: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

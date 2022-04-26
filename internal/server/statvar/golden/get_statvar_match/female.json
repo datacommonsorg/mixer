@@ -491,6 +491,11 @@
       "score": 1.730227642930338
     },
     {
+      "statVar": "Count_Person_65OrMoreYears_Female",
+      "statVarName": "Population: 65 Years or More, Female",
+      "score": 1.7302276
+    },
+    {
       "statVar": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female",
       "statVarName": "Population: 10th Grade, Female",
       "score": 1.730227642930338
