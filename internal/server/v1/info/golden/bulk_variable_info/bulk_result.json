@@ -522,10 +522,10 @@
                 "name": "11368"
               }
             ],
-            "maxValue": 63995
+            "maxValue": 67003
           },
           "City": {
-            "placeCount": 29952,
+            "placeCount": 29988,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q8686",
@@ -689,7 +689,7 @@
                 "name": "Santa Barbara Unified School District (7-12)"
               }
             ],
-            "maxValue": 70649
+            "maxValue": 72821
           },
           "Place": {
             "placeCount": 172,
@@ -708,7 +708,7 @@
             "maxValue": 5883370
           },
           "SchoolDistrict": {
-            "placeCount": 13277,
+            "placeCount": 13278,
             "topPlaces": [
               {
                 "dcid": "geoId/sch3620580",
@@ -761,7 +761,7 @@
               }
             ],
             "minValue": 22,
-            "maxValue": 19624718
+            "maxValue": 19650581
           }
         },
         "provenanceSummary": {
@@ -1147,8 +1147,8 @@
           },
           "dc/gg17432": {
             "importName": "CensusACS5YearSurvey",
-            "observationCount": 1692272,
-            "timeSeriesCount": 192536,
+            "observationCount": 4062656,
+            "timeSeriesCount": 412906,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -1156,10 +1156,28 @@
                   "measurementMethod": "CensusACS5yrSurvey"
                 },
                 "earliestDate": "2011",
-                "latestDate": "2019",
-                "observationCount": 1692272,
-                "timeSeriesCount": 192536,
+                "latestDate": "2020",
+                "observationCount": 4062656,
+                "timeSeriesCount": 412906,
                 "placeTypeSummary": {
+                  "CensusBlockGroup": {
+                    "placeCount": 220333,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/481576729001",
+                        "name": "Block Group 1, Census Tract 6729, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/481576731011",
+                        "name": "Block Group 1, Census Tract 6731.01, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/380170405002",
+                        "name": "Block Group 2, Census Tract 405, Cass County, North Dakota"
+                      }
+                    ],
+                    "maxValue": 31011
+                  },
                   "CensusCoreBasedStatisticalArea": {
                     "placeCount": 933,
                     "topPlaces": [
@@ -1195,7 +1213,7 @@
                         "name": "Chicago"
                       }
                     ],
-                    "maxValue": 1723212
+                    "maxValue": 1731694
                   },
                   "CensusTract": {
                     "placeCount": 74014,
@@ -1231,10 +1249,10 @@
                         "name": "11368"
                       }
                     ],
-                    "maxValue": 63995
+                    "maxValue": 67003
                   },
                   "City": {
-                    "placeCount": 29678,
+                    "placeCount": 29714,
                     "topPlaces": [
                       {
                         "dcid": "geoId/3651000",
@@ -1322,7 +1340,7 @@
                         "name": "Santa Barbara Unified School District (7-12)"
                       }
                     ],
-                    "maxValue": 70649
+                    "maxValue": 72821
                   },
                   "Place": {
                     "placeCount": 164,
@@ -1340,7 +1358,7 @@
                     "maxValue": 341895
                   },
                   "SchoolDistrict": {
-                    "placeCount": 13277,
+                    "placeCount": 13278,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch3620580",
@@ -1374,7 +1392,7 @@
                       }
                     ],
                     "minValue": 272026,
-                    "maxValue": 19757199
+                    "maxValue": 19783141
                   },
                   "StateComponent": {
                     "placeCount": 550,
@@ -1393,10 +1411,10 @@
                       }
                     ],
                     "minValue": 22,
-                    "maxValue": 19624718
+                    "maxValue": 19650581
                   }
                 },
-                "maxValue": 19757199
+                "maxValue": 19783141
               }
             ]
           },
@@ -1521,7 +1539,7 @@
           },
           "dc/qmsyx4": {
             "importName": "CensusACS5YearSurvey_AggCountry",
-            "observationCount": 9,
+            "observationCount": 10,
             "timeSeriesCount": 1,
             "seriesSummary": [
               {
@@ -1530,8 +1548,8 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "2011",
-                "latestDate": "2019",
-                "observationCount": 9,
+                "latestDate": "2020",
+                "observationCount": 10,
                 "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
@@ -1543,11 +1561,11 @@
                       }
                     ],
                     "minValue": 157812589,
-                    "maxValue": 166551005
+                    "maxValue": 167459830
                   }
                 },
                 "minValue": 157812589,
-                "maxValue": 166551005
+                "maxValue": 167459830
               }
             ]
           },
@@ -1598,44 +1616,6 @@
                 },
                 "minValue": 284701.76,
                 "maxValue": 164946479.86
-              }
-            ]
-          },
-          "dc/t660j91": {
-            "importName": "CensusACS5YearSurvey_BlockGroup",
-            "observationCount": 1982915,
-            "timeSeriesCount": 220333,
-            "releaseFrequency": "P1Y",
-            "seriesSummary": [
-              {
-                "seriesKey": {
-                  "measurementMethod": "CensusACS5yrSurvey"
-                },
-                "earliestDate": "2011",
-                "latestDate": "2019",
-                "observationCount": 1982915,
-                "timeSeriesCount": 220333,
-                "placeTypeSummary": {
-                  "CensusBlockGroup": {
-                    "placeCount": 220333,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/481576729001",
-                        "name": "Block Group 1, Census Tract 6729, Fort Bend County, Texas"
-                      },
-                      {
-                        "dcid": "geoId/481576731011",
-                        "name": "Block Group 1, Census Tract 6731.01, Fort Bend County, Texas"
-                      },
-                      {
-                        "dcid": "geoId/380170405002",
-                        "name": "Block Group 2, Census Tract 405, Cass County, North Dakota"
-                      }
-                    ],
-                    "maxValue": 31011
-                  }
-                },
-                "maxValue": 31011
               }
             ]
           },
@@ -1828,7 +1808,7 @@
                 "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
               }
             ],
-            "maxValue": 1142054
+            "maxValue": 1145599
           },
           "CensusCountyDivision": {
             "placeCount": 36798,
@@ -1846,7 +1826,7 @@
                 "name": "Chicago"
               }
             ],
-            "maxValue": 345398
+            "maxValue": 354940
           },
           "CensusTract": {
             "placeCount": 74014,
@@ -1885,7 +1865,7 @@
             "maxValue": 31687
           },
           "City": {
-            "placeCount": 29678,
+            "placeCount": 29714,
             "topPlaces": [
               {
                 "dcid": "geoId/3651000",
@@ -1918,7 +1898,7 @@
                 "name": "Congressional District (at Large) (113th Congress), Delaware"
               }
             ],
-            "maxValue": 213520
+            "maxValue": 218168
           },
           "Country": {
             "placeCount": 1,
@@ -1929,7 +1909,7 @@
               }
             ],
             "minValue": 7608035,
-            "maxValue": 9416047
+            "maxValue": 9650795
           },
           "County": {
             "placeCount": 3222,
@@ -1947,7 +1927,7 @@
                 "name": "Harris County"
               }
             ],
-            "maxValue": 785965
+            "maxValue": 794118
           },
           "ElementarySchoolDistrict": {
             "placeCount": 275,
@@ -1983,7 +1963,7 @@
                 "name": "Santa Barbara Unified School District (7-12)"
               }
             ],
-            "maxValue": 17404
+            "maxValue": 17740
           },
           "Place": {
             "placeCount": 164,
@@ -2001,7 +1981,7 @@
             "maxValue": 6038
           },
           "SchoolDistrict": {
-            "placeCount": 13277,
+            "placeCount": 13278,
             "topPlaces": [
               {
                 "dcid": "geoId/sch3620580",
@@ -2035,7 +2015,7 @@
               }
             ],
             "minValue": 2343,
-            "maxValue": 2996731
+            "maxValue": 3063404
           },
           "StateComponent": {
             "placeCount": 550,
@@ -2053,14 +2033,14 @@
                 "name": "California -- Urban"
               }
             ],
-            "maxValue": 2994540
+            "maxValue": 3061164
           }
         },
         "provenanceSummary": {
           "dc/gg17432": {
             "importName": "CensusACS5YearSurvey",
-            "observationCount": 1692272,
-            "timeSeriesCount": 192536,
+            "observationCount": 1906156,
+            "timeSeriesCount": 192573,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -2068,9 +2048,9 @@
                   "measurementMethod": "CensusACS5yrSurvey"
                 },
                 "earliestDate": "2011",
-                "latestDate": "2019",
-                "observationCount": 1692272,
-                "timeSeriesCount": 192536,
+                "latestDate": "2020",
+                "observationCount": 1906156,
+                "timeSeriesCount": 192573,
                 "placeTypeSummary": {
                   "CensusCoreBasedStatisticalArea": {
                     "placeCount": 933,
@@ -2088,7 +2068,7 @@
                         "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
                       }
                     ],
-                    "maxValue": 1142054
+                    "maxValue": 1145599
                   },
                   "CensusCountyDivision": {
                     "placeCount": 36798,
@@ -2106,7 +2086,7 @@
                         "name": "Chicago"
                       }
                     ],
-                    "maxValue": 345398
+                    "maxValue": 354940
                   },
                   "CensusTract": {
                     "placeCount": 74014,
@@ -2145,7 +2125,7 @@
                     "maxValue": 31687
                   },
                   "City": {
-                    "placeCount": 29678,
+                    "placeCount": 29714,
                     "topPlaces": [
                       {
                         "dcid": "geoId/3651000",
@@ -2178,7 +2158,7 @@
                         "name": "Congressional District (at Large) (113th Congress), Delaware"
                       }
                     ],
-                    "maxValue": 213520
+                    "maxValue": 218168
                   },
                   "County": {
                     "placeCount": 3222,
@@ -2196,7 +2176,7 @@
                         "name": "Harris County"
                       }
                     ],
-                    "maxValue": 785965
+                    "maxValue": 794118
                   },
                   "ElementarySchoolDistrict": {
                     "placeCount": 275,
@@ -2232,7 +2212,7 @@
                         "name": "Santa Barbara Unified School District (7-12)"
                       }
                     ],
-                    "maxValue": 17404
+                    "maxValue": 17740
                   },
                   "Place": {
                     "placeCount": 164,
@@ -2250,7 +2230,7 @@
                     "maxValue": 6038
                   },
                   "SchoolDistrict": {
-                    "placeCount": 13277,
+                    "placeCount": 13278,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch3620580",
@@ -2284,7 +2264,7 @@
                       }
                     ],
                     "minValue": 2343,
-                    "maxValue": 2996731
+                    "maxValue": 3063404
                   },
                   "StateComponent": {
                     "placeCount": 550,
@@ -2302,16 +2282,16 @@
                         "name": "California -- Urban"
                       }
                     ],
-                    "maxValue": 2994540
+                    "maxValue": 3061164
                   }
                 },
-                "maxValue": 2996731
+                "maxValue": 3063404
               }
             ]
           },
           "dc/qmsyx4": {
             "importName": "CensusACS5YearSurvey_AggCountry",
-            "observationCount": 9,
+            "observationCount": 10,
             "timeSeriesCount": 1,
             "seriesSummary": [
               {
@@ -2320,8 +2300,8 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "2011",
-                "latestDate": "2019",
-                "observationCount": 9,
+                "latestDate": "2020",
+                "observationCount": 10,
                 "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
@@ -2333,11 +2313,11 @@
                       }
                     ],
                     "minValue": 7608035,
-                    "maxValue": 9416047
+                    "maxValue": 9650795
                   }
                 },
                 "minValue": 7608035,
-                "maxValue": 9416047
+                "maxValue": 9650795
               }
             ]
           }

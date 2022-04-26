@@ -103,7 +103,7 @@
       "id": "dc/g/Person_Age",
       "specializedEntity": "Age",
       "displayName": "Person by Age",
-      "descendentStatVarCount": 663
+      "descendentStatVarCount": 666
     },
     {
       "id": "dc/g/Person_BenefitsStatus",
@@ -139,7 +139,7 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "descendentStatVarCount": 455
+      "descendentStatVarCount": 457
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -228,7 +228,7 @@
       "descendentStatVarCount": 3
     }
   ],
-  "descendentStatVarCount": 686,
+  "descendentStatVarCount": 689,
   "parentStatVarGroups": [
     "dc/g/Root"
   ]

@@ -2615,6 +2615,7 @@
             "importName": "NOAA_EPA_Observed_Historical_Weather",
             "provenanceUrl": "https://www.noaa.gov/",
             "measurementMethod": "NASAGSOD_NASAGHCN_EPA",
+            "observationPeriod": "P1M",
             "unit": "Celsius"
           }
         },
@@ -6374,6 +6375,7 @@
             "importName": "NOAA_EPA_Observed_Historical_Weather",
             "provenanceUrl": "https://www.noaa.gov/",
             "measurementMethod": "NASAGSOD_NASAGHCN_EPA",
+            "observationPeriod": "P1M",
             "unit": "Celsius"
           }
         },

@@ -1,9 +1,9 @@
 {
   "date": "2020",
-  "value": 331449281,
+  "value": 329824950,
   "metadata": {
-    "import_name": "USDecennialCensus_RedistrictingRelease",
-    "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-    "measurement_method": "USDecennialCensus"
+    "import_name": "CensusACS5YearSurvey_AggCountry",
+    "provenance_url": "https://www.census.gov/",
+    "measurement_method": "CensusACS5yrSurvey"
   }
 }
