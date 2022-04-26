@@ -91,8 +91,8 @@ func BulkPointLinked(
 		sort.Sort(ranking.CohortByRank(cohorts))
 		for _, cohort := range cohorts {
 			facet := stat.GetMetadata(cohort)
-			facetId := util.GetMetadataHash(facet)
-			result.Facets[facetId] = facet
+			facetID := util.GetMetadataHash(facet)
+			result.Facets[facetID] = facet
 			for entity, val := range cohort.Val {
 				// When date is in the request, response date is the given date.
 				// Otherwise, response date is the latest date from the cache.
@@ -111,7 +111,7 @@ func BulkPointLinked(
 					&pb.PointStat{
 						Date:  respDate,
 						Value: val,
-						Facet: facetId,
+						Facet: facetID,
 					},
 				)
 			}
@@ -179,10 +179,10 @@ func BulkPointLinked(
 				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
 				// Override public data from private import
 				if pointValue != nil {
-					facetId := util.GetMetadataHash(facet)
-					pointValue.Facet = facetId
+					facetID := util.GetMetadataHash(facet)
+					pointValue.Facet = facetID
 					tmpMemDbResult[variable][entity] = pointValue
-					result.Facets[facetId] = facet
+					result.Facets[facetID] = facet
 				}
 			}
 		}
