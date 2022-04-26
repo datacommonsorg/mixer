@@ -35,6 +35,8 @@ message VariableObservations {
   repeated EntityObservations observations_by_entity = 2;
 }
 
+// --------------  Observations Points
+
 message ObservationsPointRequest {
   string variable = 1;
   string entity = 2;
@@ -54,6 +56,22 @@ message BulkObservationsPointResponse {
   map<uint32, datacommons.StatMetadata> facets = 2;
 }
 
+message BulkObservationsPointLinkedRequest {
+  // The observed entity type
+  string entity_type = 1;
+  // The entity that is linked to the observed entity
+  string linked_entity = 2;
+  // The property that links the root and observed entity
+  string linked_property = 3;
+  // Variables to query for
+  repeated string variables = 4;
+  // [Optional] Observation date
+  string date = 5;
+  // [Optional] Whether to fetch data from all facets
+  bool all_facets = 6;
+}
+
+// ------------  Observations Series
 message ObservationsSeriesRequest {
   string variable = 1;
   string entity = 2;

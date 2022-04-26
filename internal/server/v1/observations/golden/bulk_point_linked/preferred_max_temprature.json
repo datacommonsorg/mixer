@@ -1,0 +1,311 @@
+{
+  "observations_by_variable": [
+    {
+      "variable": "Max_Temperature_RCP45",
+      "observations_by_entity": [
+        {
+          "entity": "geoId/0601458",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.203272,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0608968",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.473108,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0610345",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.518885,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0617610",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 15.087763,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0620598",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.110407,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0627080",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.461481,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0629504",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 15.228022,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0641282",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.89303,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0643280",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.660517,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0643294",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 15.558924,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0644112",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.725702,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0644378",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.745234,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0647766",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.366297,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0648956",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.661524,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649278",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 15.403986,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.551416,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0655282",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 15.38122,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0668000",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 15.307459,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0668238",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 15.37179,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0669084",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.514063,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0670280",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.969324,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0673906",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.28097,
+              "facet": 2399108850
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0677000",
+          "points_by_facet": [
+            {
+              "date": "2099-12",
+              "value": 14.628778,
+              "facet": 2399108850
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "1100899864": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R-CC",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "1281012385": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_HadGEM2-AO",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "1568040166": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CESM1-CAM5",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "1720971453": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_HadGEM2-AO",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "1947098623": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "229755470": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CCSM4",
+      "observation_period": "P1Y",
+      "unit": "Celsius"
+    },
+    "2399108850": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CCSM4",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "2580620964": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R-CC",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "2712000547": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_GISS-E2-R",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    },
+    "752848266": {
+      "import_name": "NASA_NEXDCP30",
+      "provenance_url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
+      "measurement_method": "NASA_Mean_CESM1-CAM5",
+      "observation_period": "P1M",
+      "unit": "Celsius"
+    }
+  }
+}

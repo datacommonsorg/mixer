@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
+	"github.com/datacommonsorg/mixer/internal/server/v0/statset"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statvarsummary"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -67,7 +68,7 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 	*pb.GetStatSetResponse, error,
 ) {
-	return stat.GetStatSet(ctx, in, s.store)
+	return statset.GetStatSet(ctx, in, s.store)
 }
 
 // GetStatSetWithinPlace implements API for Mixer.GetStatSetWithinPlace.
@@ -75,7 +76,7 @@ func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
 func (s *Server) GetStatSetWithinPlace(
 	ctx context.Context, in *pb.GetStatSetWithinPlaceRequest,
 ) (*pb.GetStatSetResponse, error) {
-	return stat.GetStatSetWithinPlace(ctx, in, s.store)
+	return statset.GetStatSetWithinPlace(ctx, in, s.store)
 }
 
 // GetStatSetWithinPlaceAll implements API for Mixer.GetStatSetWithinPlaceAll.
@@ -83,7 +84,7 @@ func (s *Server) GetStatSetWithinPlace(
 func (s *Server) GetStatSetWithinPlaceAll(
 	ctx context.Context, in *pb.GetStatSetWithinPlaceRequest,
 ) (*pb.GetStatSetAllResponse, error) {
-	return stat.GetStatSetWithinPlaceAll(ctx, in, s.store)
+	return statset.GetStatSetWithinPlaceAll(ctx, in, s.store)
 }
 
 // GetStatSeries implements API for Mixer.GetStatSeries.

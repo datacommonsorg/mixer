@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// API Implementation for /v1/bulk/observations/point/...
+// API Implementation for /v1/bulk/observations/point
 
 package observations
 

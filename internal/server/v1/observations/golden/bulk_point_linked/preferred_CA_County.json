@@ -1,0 +1,1212 @@
+{
+  "observations_by_variable": [
+    {
+      "variable": "Count_Person",
+      "observations_by_entity": [
+        {
+          "entity": "geoId/06001",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 1682353,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06003",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 1204,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06005",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 40474,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06007",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 211632,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06009",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 45292,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06011",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 21839,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06013",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 1165927,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06015",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 27743,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06017",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 191185,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06019",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 1008654,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06021",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 28917,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06023",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 136463,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06025",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 179702,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06027",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 19016,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06029",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 909235,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06031",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 152486,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06033",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 68163,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06035",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 32730,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06037",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 10014009,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06039",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 156255,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06041",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 262321,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06043",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 17131,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06045",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 91601,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06047",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 281202,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06049",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 8700,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06051",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 13195,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06053",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 439035,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06055",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 138019,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06057",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 102241,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06059",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 3186989,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06061",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 404739,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06063",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 19790,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06065",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 2418185,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06067",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 1585055,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06069",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 64209,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06071",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 2181654,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06073",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 3298634,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06075",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 873965,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06077",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 779233,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06079",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 282424,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06081",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 764442,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06083",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 448229,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06085",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 1936259,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06087",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 270861,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06089",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 182155,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06091",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 3236,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06093",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 44076,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06095",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 453491,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06097",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 488863,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06099",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 552878,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06101",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 99633,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06103",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 65829,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06105",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 16112,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06107",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 473117,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06109",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 55620,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06111",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 843843,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06113",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 216403,
+              "facet": 1541763368
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06115",
+          "points_by_facet": [
+            {
+              "date": "2020",
+              "value": 81575,
+              "facet": 1541763368
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Median_Age_Person",
+      "observations_by_entity": [
+        {
+          "entity": "geoId/06001",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37.6,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06003",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 52.2,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06005",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 50.5,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06007",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06009",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 52,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06011",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35.3,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06013",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 39.7,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06015",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 39.5,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06017",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45.9,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06019",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32.2,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06021",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36.4,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06023",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38.4,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06025",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32.4,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06027",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06029",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31.6,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06031",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06033",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45.6,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06035",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36.6,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06037",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36.5,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06039",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 34.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06041",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 46.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06043",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 51.7,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06045",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 43.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06047",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06049",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 47.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06051",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37.7,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06053",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 34.4,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06055",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 41.3,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06057",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 50.5,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06059",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06061",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 42,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06063",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 52.3,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06065",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35.6,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06067",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36.2,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06069",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35.7,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06071",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33.3,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06073",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06075",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38.2,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06077",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 34.3,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06079",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 39.2,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06081",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 39.7,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06083",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06085",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06087",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06089",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 41.5,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06091",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 54.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06093",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 47.8,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06095",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06097",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 42.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06099",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 34.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06101",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35.7,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06103",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 41,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06105",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 52.5,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06107",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06109",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 48.4,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06111",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38.1,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06113",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31,
+              "facet": 3795540742
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06115",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32.8,
+              "facet": 3795540742
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "3114843463": {
+      "import_name": "HumanCuratedStats",
+      "provenance_url": "https://google.com",
+      "measurement_method": "HumanCuratedStats"
+    },
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    }
+  }
+}

@@ -63,7 +63,7 @@ func GetStatVarMatch(
 		result.MatchInfo = append(result.MatchInfo, &pb.GetStatVarMatchResponse_MatchInfo{
 			StatVar:     hit.ID,
 			StatVarName: hit.Fields["Title"].(string),
-			Score:       float32(hit.Score),
+			Score:       hit.Score,
 		})
 	}
 	// 1) Highest score wins.
