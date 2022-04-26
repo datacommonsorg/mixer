@@ -41,31 +41,31 @@ func TestBulkObservationsPointLinked(t *testing.T) {
 			date         string
 			goldenFile   string
 		}{
-			{
-				"County",
-				"geoId/06",
-				[]string{"Count_Person", "Median_Age_Person"},
-				"",
-				"CA_County.json",
-			},
-			{
-				"County",
-				"country/USA",
-				[]string{"Count_Person", "Median_Age_Person", "NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
-				"",
-				"USA_County.json",
-			},
+			// {
+			// 	"County",
+			// 	"geoId/06",
+			// 	[]string{"Count_Person", "Median_Age_Person"},
+			// 	"",
+			// 	"CA_County.json",
+			// },
+			// {
+			// 	"County",
+			// 	"country/USA",
+			// 	[]string{"Count_Person", "Median_Age_Person", "NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
+			// 	"",
+			// 	"USA_County.json",
+			// },
 			{
 				"State",
 				"country/USA",
-				[]string{"Count_Person", "Count_Person_Employed", "Annual_Generation_Electricity", "UnemploymentRate_Person"},
+				[]string{"Count_Person", "Count_Person_Employed", "Annual_Generation_Electricity", "UnemploymentRate_Person", "Count_Person_FoodInsecure"},
 				"",
 				"US_State.json",
 			},
 			{
 				"Country",
 				"Earth",
-				[]string{"Test_Stat_Var_1", "Test_Stat_Var_10", "Count_Person"},
+				[]string{"Count_Person"},
 				"",
 				"Country.json",
 			},
