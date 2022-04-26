@@ -265,7 +265,7 @@ message GetStatVarMatchResponse {
     // Stat Var display name.
     string stat_var_name = 2;
     // Score for this match.
-    float score = 3;
+    double score = 3;
   }
   // Ordered match list. Entry with larger match_count ranks at the beginning.
   repeated MatchInfo match_info = 1;
