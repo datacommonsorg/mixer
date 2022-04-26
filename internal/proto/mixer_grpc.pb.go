@@ -122,6 +122,7 @@ type MixerClient interface {
 	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
 	BulkObservationsPoint(ctx context.Context, in *BulkObservationsPointRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error)
+	BulkObservationsPointLinked(ctx context.Context, in *BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error)
 	ObservationsSeries(ctx context.Context, in *ObservationsSeriesRequest, opts ...grpc.CallOption) (*ObservationsSeriesResponse, error)
 	BulkObservationsSeries(ctx context.Context, in *BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error)
 	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
@@ -523,6 +524,15 @@ func (c *mixerClient) BulkObservationsPoint(ctx context.Context, in *BulkObserva
 	return out, nil
 }
 
+func (c *mixerClient) BulkObservationsPointLinked(ctx context.Context, in *BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error) {
+	out := new(BulkObservationsPointResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationsPointLinked", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) ObservationsSeries(ctx context.Context, in *ObservationsSeriesRequest, opts ...grpc.CallOption) (*ObservationsSeriesResponse, error) {
 	out := new(ObservationsSeriesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ObservationsSeries", in, out, opts...)
@@ -663,6 +673,7 @@ type MixerServer interface {
 	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
 	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
 	BulkObservationsPoint(context.Context, *BulkObservationsPointRequest) (*BulkObservationsPointResponse, error)
+	BulkObservationsPointLinked(context.Context, *BulkObservationsPointLinkedRequest) (*BulkObservationsPointResponse, error)
 	ObservationsSeries(context.Context, *ObservationsSeriesRequest) (*ObservationsSeriesResponse, error)
 	BulkObservationsSeries(context.Context, *BulkObservationsSeriesRequest) (*BulkObservationsSeriesResponse, error)
 	ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error)
@@ -801,6 +812,9 @@ func (UnimplementedMixerServer) ObservationsPoint(context.Context, *Observations
 }
 func (UnimplementedMixerServer) BulkObservationsPoint(context.Context, *BulkObservationsPointRequest) (*BulkObservationsPointResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsPoint not implemented")
+}
+func (UnimplementedMixerServer) BulkObservationsPointLinked(context.Context, *BulkObservationsPointLinkedRequest) (*BulkObservationsPointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsPointLinked not implemented")
 }
 func (UnimplementedMixerServer) ObservationsSeries(context.Context, *ObservationsSeriesRequest) (*ObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsSeries not implemented")
@@ -1600,6 +1614,24 @@ func _Mixer_BulkObservationsPoint_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_BulkObservationsPointLinked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkObservationsPointLinkedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).BulkObservationsPointLinked(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/BulkObservationsPointLinked",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).BulkObservationsPointLinked(ctx, req.(*BulkObservationsPointLinkedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_ObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ObservationsSeriesRequest)
 	if err := dec(in); err != nil {
@@ -1850,6 +1882,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkObservationsPoint",
 			Handler:    _Mixer_BulkObservationsPoint_Handler,
+		},
+		{
+			MethodName: "BulkObservationsPointLinked",
+			Handler:    _Mixer_BulkObservationsPointLinked_Handler,
 		},
 		{
 			MethodName: "ObservationsSeries",
