@@ -5,18 +5,6 @@
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female"
     },
     {
-      "name": "Population: 5 - 19 Years, Female, Black or African American Alone",
-      "dcid": "dc/9tje7t59y5y02"
-    },
-    {
-      "name": "Population: 5 - 19 Years, Female, Hispanic or Latino",
-      "dcid": "dc/xzecyytxdwky7"
-    },
-    {
-      "name": "Population: 5 - 19 Years, Female, White Alone Not Hispanic or Latino",
-      "dcid": "dc/4wd0sckvzn9vc"
-    },
-    {
       "name": "Population: Civilian, Female, Non Institutionalized",
       "dcid": "Count_Person_Civilian_Female_NonInstitutionalized"
     },
@@ -8503,6 +8491,16 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_MilitaryStatus-InArmedForces",
+      "name": "Person With Military Status = in Armed Forces, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, in Armed Forces, in Labor Force, Female",
+          "dcid": "Count_Person_Female_InArmedForces"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MortalityEvent_Age-Years1To4_CauseOfDeath-ICD10/V01Y89_Gender-Female",
       "name": "Mortality Event With Age = 1 - 4 Years, Cause of Death = V01-Y89 (External Causes of Morbidity And Mortality), Gender = Female",
       "statVars": [
@@ -11763,6 +11761,36 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-BlackOrAfricanAmericanAlone",
+      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Black or African American Alone",
+      "statVars": [
+        {
+          "name": "Population: 5 - 19 Years, Female, Black or African American Alone",
+          "dcid": "dc/9tje7t59y5y02"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-HispanicOrLatino",
+      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Hispanic or Latino",
+      "statVars": [
+        {
+          "name": "Population: 5 - 19 Years, Female, Hispanic or Latino",
+          "dcid": "dc/xzecyytxdwky7"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-WhiteAloneNotHispanicOrLatino",
+      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
+      "statVars": [
+        {
+          "name": "Population: 5 - 19 Years, Female, White Alone Not Hispanic or Latino",
+          "dcid": "dc/4wd0sckvzn9vc"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-YearsUpto5_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months",
       "name": "Person With Age = 5 Years or Less, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
       "statVars": [
@@ -14181,22 +14209,6 @@
     {
       "dcid": "dc/g/Person_Gender-Female_HouseholdType",
       "name": "Person With Gender = Female, Household Type"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_HouseholdType-FamilyHousehold",
-      "name": "Person With Gender = Female, Household Type = Family Household"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Income",
-      "name": "Person With Gender = Female, Income"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_IncomeStatus",
-      "name": "Person With Gender = Female, Income Status"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_IncomeStatus-NoIncome",
-      "name": "Person With Gender = Female, Income Status = No Income"
     }
   ],
   "matches": [

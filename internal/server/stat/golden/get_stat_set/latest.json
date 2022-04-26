@@ -61,18 +61,18 @@
         },
         "country/USA": {
           "date": "2020",
-          "value": 331449281,
-          "metaHash": 1541763368
+          "value": 329824950,
+          "metaHash": 1273233945
         },
         "geoId/06": {
           "date": "2020",
-          "value": 39538223,
-          "metaHash": 1541763368
+          "value": 39346023,
+          "metaHash": 1145703171
         },
         "geoId/0649670": {
           "date": "2020",
-          "value": 82376,
-          "metaHash": 1541763368
+          "value": 80104,
+          "metaHash": 1145703171
         }
       }
     },
@@ -100,13 +100,13 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2022-04-18",
-          "value": 80595074,
+          "date": "2022-04-24",
+          "value": 80869032,
           "metaHash": 2232540893
         },
         "geoId/06": {
-          "date": "2022-04-18",
-          "value": 9161719,
+          "date": "2022-04-24",
+          "value": 9193232,
           "metaHash": 2232540893
         },
         "geoId/0649670": {}
@@ -120,10 +120,15 @@
       "measurementMethod": "BLSSeasonallyUnadjusted",
       "observationPeriod": "P1M"
     },
-    "1541763368": {
-      "importName": "USDecennialCensus_RedistrictingRelease",
-      "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurementMethod": "USDecennialCensus"
+    "1145703171": {
+      "importName": "CensusACS5YearSurvey",
+      "provenanceUrl": "https://www.census.gov/",
+      "measurementMethod": "CensusACS5yrSurvey"
+    },
+    "1273233945": {
+      "importName": "CensusACS5YearSurvey_AggCountry",
+      "provenanceUrl": "https://www.census.gov/",
+      "measurementMethod": "CensusACS5yrSurvey"
     },
     "2171028778": {
       "importName": "WorldDevelopmentIndicators",

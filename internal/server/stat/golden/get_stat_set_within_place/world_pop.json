@@ -1165,8 +1165,8 @@
         },
         "country/USA": {
           "date": "2020",
-          "value": 331449281,
-          "meta_hash": 1541763368
+          "value": 329824950,
+          "meta_hash": 1273233945
         },
         "country/UZB": {
           "date": "2020",
@@ -1252,15 +1252,15 @@
     }
   },
   "metadata": {
+    "1273233945": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
     "1456184638": {
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",
       "measurement_method": "Wikipedia"
-    },
-    "1541763368": {
-      "import_name": "USDecennialCensus_RedistrictingRelease",
-      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurement_method": "USDecennialCensus"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
