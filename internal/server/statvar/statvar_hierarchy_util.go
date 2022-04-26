@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"path"
 	"runtime"
 	"sort"
@@ -73,9 +72,6 @@ func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]stri
 			}
 			// Add the current svg to the list of parents for each child sv.
 			for _, childSv := range svgData.ChildStatVars {
-				if childSv.Id == "Count_Person_FoodInsecure" {
-					log.Println(svgData)
-				}
 				if _, ok := parentSvgMap[childSv.Id]; !ok {
 					parentSvgMap[childSv.Id] = []string{}
 				}

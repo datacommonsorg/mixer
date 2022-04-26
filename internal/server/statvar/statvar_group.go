@@ -16,7 +16,6 @@ package statvar
 
 import (
 	"context"
-	"log"
 
 	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -168,7 +167,6 @@ func GetStatVarGroup(
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
 	}
-	log.Println(result.StatVarGroups["dc/g/Uncategorized_Variables"])
 	// Merge in the private import svg if exists
 	if store.MemDb != nil && store.MemDb.GetSvg() != nil {
 		for sv, data := range store.MemDb.GetSvg() {

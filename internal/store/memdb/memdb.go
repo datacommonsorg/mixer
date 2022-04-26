@@ -345,12 +345,21 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 	log.Printf("Number of csv rows added: %d", count)
 	// Populate placeSvExistence field
 	parentSvg := getParentSvg(memDb.config.StatVarGroups)
-	for sv, placeData := range memDb.statSeries {
+	memDb.placeSvExistence = buildMemSVExistenceCache(parentSvg, memDb.statSeries)
+	return nil
+}
+
+func buildMemSVExistenceCache(
+	parentSvg map[string]string,
+	statSeries map[string]map[string][]*pb.Series,
+) map[string]map[string]int32 {
+	result := map[string]map[string]int32{}
+	for sv, placeData := range statSeries {
 		allParents := []string{}
 		curr := sv
 		for {
-			if _, ok := memDb.placeSvExistence[curr]; !ok {
-				memDb.placeSvExistence[curr] = map[string]int32{}
+			if _, ok := result[curr]; !ok {
+				result[curr] = map[string]int32{}
 			}
 			parent, ok := parentSvg[curr]
 			if ok {
@@ -361,13 +370,13 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 			}
 		}
 		for place := range placeData {
-			memDb.placeSvExistence[sv][place] = 0
+			result[sv][place] = 0
 			for _, svg := range allParents {
-				memDb.placeSvExistence[svg][place]++
+				result[svg][place]++
 			}
 		}
 	}
-	return nil
+	return result
 }
 
 // nodeObs holds information for one observation

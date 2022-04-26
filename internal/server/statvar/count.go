@@ -65,15 +65,15 @@ func Count(
 		for _, btData := range btDataList {
 			if data, ok := btData[token]; ok {
 				c := data.(*pb.PlaceStatVarExistence)
-				desSVCount := c.GetDescendentStatVarCount()
+				descSVCount := c.GetDescendentStatVarCount()
 				if _, ok := result[placeSv.StatVar][placeSv.Place]; !ok {
 					// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var
 					// (not a stat var group). In this case the check here is necessary,
 					// otherwise the proto default 0 is compared, and this map field will
 					// not be populated.
-					result[placeSv.StatVar][placeSv.Place] = desSVCount
-				} else if desSVCount > result[placeSv.StatVar][placeSv.Place] {
-					result[placeSv.StatVar][placeSv.Place] = desSVCount
+					result[placeSv.StatVar][placeSv.Place] = descSVCount
+				} else if descSVCount > result[placeSv.StatVar][placeSv.Place] {
+					result[placeSv.StatVar][placeSv.Place] = descSVCount
 				}
 			}
 		}
