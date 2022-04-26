@@ -137,11 +137,6 @@ Prerequists:
 
 - Create a GCS bucket <BUCKET_NAME>
 - Create a folder in the bucket <FOLDER_NAME> to host all the data files
-- Create a GCS PubSub notification:
-
-  ```bash
-  gsutil notification create -t tmcf-csv-reload -f json gs://BUCKET_NAME
-  ```
 
 Run the following code to start mixer gRPC server with TMCF + CSV files stored in GCS
 

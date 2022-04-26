@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package stat
+package statset
 
 import (
 	"context"
@@ -23,6 +23,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -49,7 +50,7 @@ func getStatSet(
 	}
 
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +64,7 @@ func getStatSet(
 			if !ok || data == nil {
 				continue
 			}
-			stat, metaData := GetValueFromBestSourcePb(data, date)
+			stat, metaData := stat.GetValueFromBestSourcePb(data, date)
 			if stat == nil {
 				continue
 			}
@@ -84,7 +85,7 @@ func getStatSetAll(
 ) {
 	ts := time.Now()
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +113,7 @@ func getStatSetAll(
 				tmpResult[statVar] = map[uint32]*pb.PlacePointStat{}
 			}
 			for _, series := range ObsTimeSeries.SourceSeries {
-				metadata := GetMetadata(series)
+				metadata := stat.GetMetadata(series)
 				metaHash := util.GetMetadataHash(metadata)
 				if _, ok := tmpResult[statVar][metaHash]; !ok {
 					tmpResult[statVar][metaHash] = &pb.PlacePointStat{
@@ -239,7 +240,7 @@ func GetStatSetWithinPlace(
 
 	// Read from cache directly
 	rowList, keyTokens := bigtable.BuildObsCollectionKey(parentPlace, childType, dateKey, statVars)
-	cacheData, err := ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -255,7 +256,7 @@ func GetStatSetWithinPlace(
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(ranking.CohortByRank(cohorts))
 		for _, cohort := range cohorts {
-			metaData := GetMetadata(cohort)
+			metaData := stat.GetMetadata(cohort)
 			metaHash := util.GetMetadataHash(metaData)
 			for place, val := range cohort.Val {
 				// When date is in the request, response date is the given date.
@@ -271,7 +272,7 @@ func GetStatSetWithinPlace(
 				// When observation exists from higher ranked cohort, but the current
 				// cohort has later date and is not inferior facet (like wikidata),
 				// prefer the current cohort.
-				shouldResetValue := exist && respDate > pointStat.Date && !IsInferiorFacetPb(cohort)
+				shouldResetValue := exist && respDate > pointStat.Date && !stat.IsInferiorFacetPb(cohort)
 				if shouldSetValue || shouldResetValue {
 					result.Data[statVar].Stat[place] = &pb.PointStat{
 						Date:     respDate,
@@ -374,7 +375,7 @@ func GetStatSetWithinPlaceAll(
 
 	// Read from cache directly
 	rowList, keyTokens := bigtable.BuildObsCollectionKey(parentPlace, childType, dateKey, statVars)
-	cacheData, err := ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
 		return nil, err
 	}
@@ -389,7 +390,7 @@ func GetStatSetWithinPlaceAll(
 		sort.Sort(ranking.CohortByRank(data.SourceCohorts))
 		for _, cohort := range data.SourceCohorts {
 			// The cohort is from the same source.
-			metaData := GetMetadata(cohort)
+			metaData := stat.GetMetadata(cohort)
 			metaHash := util.GetMetadataHash(metaData)
 			pointStat := &pb.PlacePointStat{
 				MetaHash: metaHash,

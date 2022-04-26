@@ -132,25 +132,28 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
 }
 
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(ctx context.Context, store *store.Store) (*resource.Cache, error) {
+func NewCache(ctx context.Context, store *store.Store, useSearch bool,
+) (*resource.Cache, error) {
 	// TODO: [MERGE]: need to builc cache from multiple tables.
 	rawSvg, err := statvar.GetRawSvg(ctx, store)
 	if err != nil {
 		return nil, err
 	}
 	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
-	searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
-	bleveIndex, err := statvar.BuildBleveIndex(rawSvg)
-	if err != nil {
-		return nil, err
+	result := &resource.Cache{
+		RawSvg:    rawSvg,
+		ParentSvg: parentSvgMap,
 	}
-
-	return &resource.Cache{
-		RawSvg:           rawSvg,
-		ParentSvg:        parentSvgMap,
-		SvgSearchIndex:   searchIndex,
-		BleveSearchIndex: bleveIndex,
-	}, nil
+	if useSearch {
+		searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
+		result.SvgSearchIndex = searchIndex
+		bleveIndex, err := statvar.BuildBleveIndex(rawSvg)
+		if err != nil {
+			return nil, err
+		}
+		result.BleveSearchIndex = bleveIndex
+	}
+	return result, nil
 }
 
 // NewMixerServer creates a new mixer server instance.

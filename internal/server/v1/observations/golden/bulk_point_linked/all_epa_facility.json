@@ -1,0 +1,5850 @@
+{
+  "observations_by_variable": [
+    {
+      "variable": "Annual_Emissions_GreenhouseGas_NonBiogenic",
+      "observations_by_entity": [
+        {
+          "entity": "epaGhgrpFacilityId/1000005",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 81665.82,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000033",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000046",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 79602.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000051",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 52954.656,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000058",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 6648.324,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000064",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 64354.478,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000065",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 9132.516,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000066",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 69794.236,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000067",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 4981.932,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000070",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1359286.264,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000072",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 19492.476,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000074",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 9812.882,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000075",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 1389.396,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000080",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 6638.076,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000081",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 6722.424,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000082",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 7003.624,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000102",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 824180.696,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000122",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 3815.236,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000123",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 18529.38,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000128",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 19928.876,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000130",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 7061.024,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000133",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1607859.352,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000147",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 29760.04,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000161",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 105927.408,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000175",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 98622.232,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000224",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 8767.968,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000279",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 14380.896,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000280",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 10964.36,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000283",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 18571.38,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000289",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 410882.904,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000300",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 16499.288,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000310",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 283951.54,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000314",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000321",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 11468.908,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000323",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1045748.984,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000339",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 11367.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000341",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 143749.51,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000366",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 2377,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000367",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 1374.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000368",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 11650,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000369",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 1197.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000410",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 464930.128,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000422",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 4485.044,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000423",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2451.94,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000431",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 250052.972,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000438",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 7984.42,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000439",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 46986.728,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000447",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 40052.452,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000453",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45372.832,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000457",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 622235.144,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000458",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 9433.664,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000464",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 469490.16,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000469",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 13619.8,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000471",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45020.884,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000485",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 130376.36,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000490",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 13136.6,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000501",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 354877.248,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000506",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000507",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 220913.58,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000515",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 8046.22,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000516",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 9637.364,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000517",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 16314.54,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000518",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 10834.26,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000519",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 14976.544,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000541",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 43372.84,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000545",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31869.232,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000546",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 322670.952,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000548",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 11703.756,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000549",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 17806.084,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000560",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 9367.316,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000566",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 72182.084,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000572",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 9047.228,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000594",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 3957.336,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000596",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 114433.22,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000597",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 76963.412,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000617",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 30925.184,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000796",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 299092.096,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000806",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1015027.444,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000891",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 28829.54,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000903",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 81453.344,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000904",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 99738.276,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1000907",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 57502.684,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001003",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001107",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 207039.532,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001127",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 138320.984,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001129",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 346979.964,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001130",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 287397.684,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001134",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 11409.908,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001263",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1362892.68,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001320",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 261835.644,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001339",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 414421.664,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001366",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1122870.004,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001405",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 612070.38,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001439",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 16.3,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001440",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1940542.608,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001441",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 17.1,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001442",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 48469.62,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001444",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 531900.472,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001445",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001446",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 1.9,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001447",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 255988.948,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001448",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "value": 96586.092,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001449",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 100925.424,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001450",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 171792.812,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001451",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1216417.044,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001454",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 290451.924,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001455",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 60449.97,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001456",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 528108.56,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001457",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 865349.682,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001458",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001459",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35542.316,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001625",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2966.588,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001629",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 735568.38,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001667",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 6436.576,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001691",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 1594.304,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001698",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 2381.506,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001700",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 10078.012,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001718",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 141104.564,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001719",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 6653.732,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001735",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 74982.074,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001804",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 3055156.748,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001819",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 68996.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001886",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 53498.748,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001964",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 887959.764,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001971",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 8892.668,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001983",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 38873.336,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001984",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 26307.152,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1001998",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 77262.96,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002007",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 87241.848,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002053",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 28148.896,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002104",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 43583.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002106",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 128675.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002107",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 295457.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002121",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 717297.2,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002122",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 264073.012,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002123",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 47119.8,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002134",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 69264.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002152",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 311944.476,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002155",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 12850.204,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002156",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 70655.684,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002185",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 56275.188,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002205",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45531.58,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002224",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 23790.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002230",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 68451.092,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002231",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35542.192,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002237",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 53472.048,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002257",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 698524.9,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002261",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45527.592,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002271",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 60847.172,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002286",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37672.764,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002308",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1907920.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002315",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 27912.644,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002316",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 142478.464,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002317",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 40915.716,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002320",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 418814,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002338",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 1468066.088,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002367"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002384",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002394",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 49683.412,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002431",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 771202.92,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002435",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 819053.45,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002461",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1135681.716,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002541",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 5753.028,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002543",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 7614.072,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002565",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 95675.452,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002566",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 553979.752,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002591",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 61100.968,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002597",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 11089.108,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002634",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32868,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002640",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 19975.284,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002671",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002689",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 13607.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002692",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 41660.47,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002726",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 54288.938,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002728",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 6861.324,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002734",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 15140.906,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002759",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 5026.132,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002820",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 8919.568,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002821",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 9204.864,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002867",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33486.66,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002869",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 28327.588,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002874",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 56992.136,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002886",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 19401.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002896",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 49993.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002897",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 3781.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002898",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 11426.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002978",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 107776.078,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002981",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 376730.944,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002984",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 331054.508,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002985",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 256717.768,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1002992",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 159878.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003016",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 3095.988,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003056",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 26161.812,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003175",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003182",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 21386.21,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003187",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 23961.06,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003198",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 101690,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003199",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 67757.384,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003200",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 108970.39,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003202",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 81110.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003328",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 43687.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003340",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 138578.054,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003344",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 52677.352,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003361",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 22021.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003386",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 1067.88,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003395",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 8736,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003459",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 108.2,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003490",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 339147.772,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003599",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 57611.272,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003610",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 4521943.416,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003617",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1719.744,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003618",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 24563.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003632",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 189899.384,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003636",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 18935.234,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003641",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 12154.2,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003644",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 24296.1,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003662",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 24314,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003663",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 20196.396,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003664",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003665",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 29961.788,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003679",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 389900.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003680",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 86057.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003689",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 17088.036,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003690",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003702",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 19924.924,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003748",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 800781.6,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003756",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 16767.788,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003800",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1220.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003813",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 3115.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003814",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 15373.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003831",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 569.746,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003918",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 67954.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003978",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 60921.92,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003980",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 391425.876,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1003998",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 417479.636,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004001",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 417899.036,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004004",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004010",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 84666.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004011",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 140306.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004037",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 162975.97,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004046",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 457272.228,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004051",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "value": 3429.536,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004052",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 11886,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004058",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004068",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38968.17,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004069",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 53989.526,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004123",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 59164.292,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004186",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 1207299.304,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004193",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 421087.212,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004205",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 34544.72,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004262",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 46326.276,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004267",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 141812.496,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004272",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 74996.362,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004335",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 46441.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004362",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "value": 13507.432,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004364",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 12897.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004402",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 10837,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004403",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 6059.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004406",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 41725.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004417",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 154659.35,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004419",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 11009.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004438",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 39919.8,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004445"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004465",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38351,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004478",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33316.524,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004496",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31784.78,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004548",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 16143.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004549",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 77644.096,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004550",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 249917.542,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004577",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 12438.904,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004579",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 18251.732,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004612",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 293213.326,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004628",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 144072.118,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004651",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33900.626,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004685",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 68581.1,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004691",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 20905.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004692",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 12247.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004718",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32130.88,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004743",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 61541.692,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004745",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 97292.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004753",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 109037.04,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004779",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 40606.208,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004828",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 22517.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004830",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 368560.07,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004832",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31759.48,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004868",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 17824.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004882",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 9377.45,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004905",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 40172.65,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004938",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 2020.894,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004940",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 10948.824,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004948",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 12318.284,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004956",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38917.204,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004959",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 17542.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004965",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35994.982,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004979",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 195406.064,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1004981",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 162093.24,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005041",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 7616,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005042",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 65862.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005044",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 27964.896,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005061",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 154932,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005063",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32424.842,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005066",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 191002.58,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005087",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005088",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005092",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 4274,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005108",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 769310.252,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005133",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 11457.156,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005150",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 39198.652,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005164",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1523196.046,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005195",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 7089.816,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005209",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1307009.35,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005237"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005256",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 284127.1,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005308",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1344484.804,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005321",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 21910.338,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005355",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 512887.168,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005368",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 15749.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005413",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 21462.22,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005446",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 29064.662,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005501",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 225528.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005517",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 49947.064,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005565",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 76574.512,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005588",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35065.568,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005635",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 46851.324,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005644",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 20169.124,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005648",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31136.952,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005654",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 2666.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005657",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 43962.984,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005658",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31704.68,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005659",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 63988.96,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005662",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1063584.116,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005782",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 10762.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005790",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 207797.52,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005800",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 47646.024,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005837",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 57.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005843",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 9544.364,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005859",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 124727.88,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005864",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 89126.14,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005865",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1926.812,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005872",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 50698.108,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005910",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 17235.434,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005938",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 232583.324,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005955",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 18676.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1005975",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 3516.536,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006048",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 114267.82,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006079",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 4381.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006086",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 18233.3,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006089",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 98439,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006097",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1185641.516,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006099",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 169349.474,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006104",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36125.064,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006107",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 78164,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006113",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 7433.572,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006127",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 403.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006139",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 13795.148,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006149",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 8388.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006175",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 25313.204,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006179",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 137311,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006197",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 28027.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006215",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 4444.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006216",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 17651.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006218",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33929.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006221",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 22681,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006265",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 52664.066,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006293",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 24683,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006322",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37638.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006395",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1346104.534,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006401",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 136.9,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006405",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 219827.472,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006427",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 17,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006430",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 601812.2,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006432",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 426549.944,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006434",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32723.69,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006445",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 59553.376,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006447",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 21060.12,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006501",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 32200,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006533",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 170.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006557",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 12019.172,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006568",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006594",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 50662.758,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006627",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 5948167.598,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006628",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 67912.016,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006629",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 6250.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006642",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 795656.282,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006680",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 3226.782,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006732",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 79792.8,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006734",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "value": 107595.544,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006745",
+          "points_by_facet": [
+            {
+              "date": "2012",
+              "value": 5305.88,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006750",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33150.932,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006761",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 153388.072,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006792",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 5707.914,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006812",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 6920.724,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006836",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36981.06,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006842",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1124097.888,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006843",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1792021.334,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006844",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 170195.26,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006845",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1504685.688,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006846",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 400996.14,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006860",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 4665.532,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006861",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 25476.404,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006914",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 252039.4,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006937",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 33914.072,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1006960",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 3643.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007015",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 3328.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007040",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33057,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007055",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 58736.704,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007112",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 155039.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007125",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 53750.45,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007128",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 55126.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007173",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1157864.508,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007197",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 120712.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007198",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 83575.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007204",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007238",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 312830.872,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007262",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 62469.364,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007265",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007286"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007312",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 389942.756,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007313",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 19778.276,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007315",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 160829.804,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007316",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 10007.712,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007318",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 270922.696,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007329",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2734517.148,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007345",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 77959.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007347",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 4.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007363",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 72243.576,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007390",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2302964.872,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007398",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 194606.968,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007411",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 189361.766,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007424",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 43268.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007461",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 53719.548,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007469",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1137218.636,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007536",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33494.78,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007539",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36153.064,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007556",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 3.3,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007558",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2974.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007600",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 13295.714,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007607",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 40225,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007609",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 1.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007651",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 29159.98,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007654",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 3563.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007668",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 148556.688,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007682",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 105977.35,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007693",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 56854.15,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007699",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 183428.282,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007710",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 66396.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007736",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 10618.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007738",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 22181.368,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007749",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 5971.728,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007794",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 30011.45,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007805",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 52540.052,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007816",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 285774.746,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007817",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 89054,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007823",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 58694.428,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007836",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 6589.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007837",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 89442.95,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007839",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 49169.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007841",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 25692.2,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007904",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 116899.696,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007927",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1250995.688,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007951",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 14249.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007955",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 870823.222,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007978",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 3345878.6,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1007993",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 10946,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008030",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 90593.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008057",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 11271.05,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008102",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 5996.85,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008163",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1191599.314,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008165",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 45001.744,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008308",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 210647.92,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008346",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 24370.3,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008402",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 44352.912,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008405",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 7019.85,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008406",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 22425.012,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008409",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 210887.902,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008499",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 13570.822,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008504",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2598345.062,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008956",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1213.7,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008961",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 37670.362,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1008997",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 3122.988,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009051",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 14176.15,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009052",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 93485.33,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009053",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 27287.958,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009239",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 18924.386,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009240",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 431066.174,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009241",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 17822.408,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009300",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 45551.832,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009555",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 6336.12,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009578",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 28823.76,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009582",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 40462.846,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009626",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 8547.042,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009787",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 24277.44,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009921",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 15645.36,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009928",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 15685.630185,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009930",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 27347.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009944",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 16212.688,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009951",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 22341.626182,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1009983",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 5342.33024,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010003",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 62156.716,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010028"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010076",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2845.44,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010139",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 72548.797134,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010172",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010207",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 22130,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010231",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "value": 2995.92,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010247"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010290"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010317",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 13351.230788,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010345",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 34550.82,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010346",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35672.916,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010349",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 1980.945,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010409"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010417",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 232640.788,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010431"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010443"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010516"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010517"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010523"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010533"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010540",
+          "points_by_facet": [
+            {
+              "date": "2017",
+              "value": 7110.424,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010570",
+          "points_by_facet": [
+            {
+              "date": "2013",
+              "value": 45967.776,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010581",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 26104.518,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010590",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 82353.34,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010651"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010696",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 16768.736,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010707",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 234121.732,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010738",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38794.462,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010767",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 457459.16,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010774",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 13501.826,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010893",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 9465.986,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010932",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 611632.524,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010962",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 306143.816,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1010977",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 36373.312,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011035",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011081",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 30010.238,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011082",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 71147.636,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011090",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 41767.192,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011190",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 6991.224,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011195"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011213",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 35082.368,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011226",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 368656.058,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011303",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 43557.988,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011327"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011345",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 15328.112,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011361",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 12670.152,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011371",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 18704.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011384",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 29370.94,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011389",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 23612.812,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011449",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 288112.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011469",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33600.424,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011475",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 28323.744,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011526",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37400.972,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011548",
+          "points_by_facet": [
+            {
+              "date": "2014",
+              "value": 11.4,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011577",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 37565.008,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011669",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 17145.25,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011673",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 38084.822,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011676",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 15418,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011716",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 3047.5,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011718",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 39962.852,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011769"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011798",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 13056.391482,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011804",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 28930.042,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011819",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 28428.488,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1011905",
+          "points_by_facet": [
+            {
+              "date": "2015",
+              "value": 222.1902,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012025"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012063"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012089",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 75887.064,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012094",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 27668.896,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012095",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 25342.704,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012097",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 21899.48,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012101"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012110",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33947.772,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012143",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2429710.578,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012146",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 229050.918,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012147",
+          "points_by_facet": [
+            {
+              "date": "2018",
+              "value": 3564.138,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012257",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 26934.622,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012289",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 29191.092,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012305",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 735115.698,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012311",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 31559.46,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012348",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 219337.42,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012351",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 40456.436,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012355",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 2411.3,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012357",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 64153.018,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012360",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 1033236.146,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012361",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 136443.85,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012378",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 867757.466,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012414",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 57076.088,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012475",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 67556.596,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012548",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 22822.764,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012662"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012713",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 33764.372,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012752"
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012823",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 312254.91,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012977",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 26454.1,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1012990",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 19423.076,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1013042",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 131013.508,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1013147",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 8.75,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1013348",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 29179.64,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1013360",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 226120.708,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1013489",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 26434.9,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1013696",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 64356.026,
+              "facet": 3902333627
+            }
+          ]
+        },
+        {
+          "entity": "epaGhgrpFacilityId/1013700"
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "3902333627": {
+      "import_name": "EPA_GHGRP",
+      "provenance_url": "https://www.epa.gov/ghgreporting",
+      "measurement_method": "EPA_GHGRP",
+      "observation_period": "P1Y",
+      "unit": "MetricTonCO2e"
+    }
+  }
+}

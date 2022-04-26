@@ -129,6 +129,31 @@ func GetScorePb(s *pb.SourceSeries) int {
 	return BaseRank
 }
 
+// GetMetadataScore computes score for pb.StatMetadata
+func GetMetadataScore(m *pb.StatMetadata) int {
+	for _, propCombination := range []struct {
+		mm string
+		op string
+	}{
+		// Check exact match first
+		{m.MeasurementMethod, m.ObservationPeriod},
+		{m.MeasurementMethod, "*"},
+		{"*", m.ObservationPeriod},
+		{"*", "*"},
+	} {
+		key := RankKey{
+			ImportName:        m.ImportName,
+			MeasurementMethod: propCombination.mm,
+			ObservationPeriod: propCombination.op,
+		}
+		score, ok := StatsRanking[key]
+		if ok {
+			return score
+		}
+	}
+	return BaseRank
+}
+
 func (a CohortByRank) Len() int {
 	return len(a)
 }

@@ -25,3 +25,8 @@ resources:
   - ingress.yaml
   - namespace.yaml
   - service.yaml
+
+configMapGenerator:
+  - name: memdb-config
+    files:
+      - memdb.json

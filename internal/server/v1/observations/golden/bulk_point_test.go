@@ -38,7 +38,6 @@ func TestBulkObservationsPoint(t *testing.T) {
 			variables  []string
 			entities   []string
 			date       string
-			allFacets  bool
 			goldenFile string
 		}{
 			{
@@ -52,14 +51,12 @@ func TestBulkObservationsPoint(t *testing.T) {
 				},
 				[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"",
-				true,
 				"latest.json",
 			},
 			{
 				[]string{"Count_Person", "Count_CriminalActivities_CombinedCrime", "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita"},
 				[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2010",
-				true,
 				"2010.json",
 			},
 		} {

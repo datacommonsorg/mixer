@@ -55,7 +55,7 @@ var (
 		},
 	}
 
-	manifest = &pb.Manifest{
+	config = &pb.MemdbConfig{
 		ImportName:    "Private Import",
 		ProvenanceUrl: "private.domain",
 	}
@@ -176,7 +176,7 @@ func TestAddRow(t *testing.T) {
 	} {
 		memDb := NewMemDb()
 		for _, row := range c.rows {
-			memDb.manifest = manifest
+			memDb.config = config
 			err := memDb.addRow(c.header, row, ts)
 			if err != nil {
 				t.Fail()

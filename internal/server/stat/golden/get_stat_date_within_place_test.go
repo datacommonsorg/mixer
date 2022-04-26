@@ -54,9 +54,9 @@ func TestGetStatDateWithinPlace(t *testing.T) {
 				"USA_State.json",
 			},
 			{
-				"Earth",
-				"Country",
-				[]string{"Test_Stat_Var_1", "Test_Stat_Var_10"},
+				"country/USA",
+				"State",
+				[]string{"Count_Person_FoodInsecure", "Mean_MealCost_Person_FoodSecure"},
 				"memdb.json",
 			},
 		} {

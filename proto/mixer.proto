@@ -427,6 +427,14 @@ service Mixer {
     };
   }
 
+  rpc BulkObservationsPointLinked(datacommons.v1.BulkObservationsPointLinkedRequest)
+      returns (datacommons.v1.BulkObservationsPointResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/observations/point/linked"
+      additional_bindings : {post : "/v1/bulk/observations/point/linked" body : "*"}
+    };
+  }
+
   rpc ObservationsSeries(datacommons.v1.ObservationsSeriesRequest)
       returns (datacommons.v1.ObservationsSeriesResponse) {
     option (google.api.http) = {

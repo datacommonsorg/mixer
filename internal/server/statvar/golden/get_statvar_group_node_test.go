@@ -82,8 +82,8 @@ func TestGetStatVarGroupNode(t *testing.T) {
 				"citizenship.json",
 			},
 			{
-				[]string{"country/ALB"},
-				"dc/g/Private",
+				[]string{"geoId/06"},
+				"g/Feeding_America",
 				"private.json",
 			},
 		} {

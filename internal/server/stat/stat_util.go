@@ -33,6 +33,12 @@ func IsInferiorFacetPb(ss *pb.SourceSeries) bool {
 	return ranking.GetScorePb(ss) > inferiorFacetThreshold
 }
 
+// IsInferiorFacetMetadata checks if a facet is from an inferior source.
+// This works for StatMetadata
+func IsInferiorFacetMetadata(m *pb.StatMetadata) bool {
+	return ranking.GetMetadataScore(m) > inferiorFacetThreshold
+}
+
 // IsInferiorFacet checks if a facet is from an inferior source.
 // This works for the Go version of "SourceSeries"
 func IsInferiorFacet(ss *model.SourceSeries) bool {

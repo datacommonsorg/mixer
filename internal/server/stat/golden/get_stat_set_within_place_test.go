@@ -84,10 +84,10 @@ func TestGetStatSetWithinPlace(t *testing.T) {
 				"FRA_AA2_2016.json",
 			},
 			{
-				"Earth",
-				"Country",
+				"country/USA",
+				"State",
 				"",
-				[]string{"Test_Stat_Var_1"},
+				[]string{"Count_Person_FoodInsecure"},
 				"memdb.json",
 			},
 			{
