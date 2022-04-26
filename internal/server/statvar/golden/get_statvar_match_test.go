@@ -38,18 +38,18 @@ func TestGetStatVarMatch(t *testing.T) {
 			propertyValues map[string]string
 			goldenFile     string
 		}{
-			{
-				map[string]string{
-					"gender":           "Female",
-					"measuredProperty": "count",
-					"nativity":         "USC_ForeignBorn",
-				},
-				"female_usc_foreignborn.json",
-			},
-			{
-				map[string]string{"gender": "Female"},
-				"female.json",
-			},
+			// {
+			// 	map[string]string{
+			// 		"gender":           "Female",
+			// 		"measuredProperty": "count",
+			// 		"nativity":         "USC_ForeignBorn",
+			// 	},
+			// 	"female_usc_foreignborn.json",
+			// },
+			// {
+			// 	map[string]string{"gender": "Female"},
+			// 	"female.json",
+			// },
 		} {
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
 				PropertyValue: c.propertyValues,
