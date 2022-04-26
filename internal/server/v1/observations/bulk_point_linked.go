@@ -18,7 +18,6 @@ package observations
 
 import (
 	"context"
-	"log"
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -38,7 +37,6 @@ func BulkPointLinked(
 	in *pb.BulkObservationsPointLinkedRequest,
 	store *store.Store,
 ) (*pb.BulkObservationsPointResponse, error) {
-	log.Printf("BulkPointLinked parameter: %s", in)
 	entityType := in.GetEntityType()
 	linkedEntity := in.GetLinkedEntity()
 	linkedProperty := in.GetLinkedProperty()
