@@ -38,7 +38,7 @@ var UnitMapping = map[string]*UnitConversion{
 }
 
 // ToObsSeriesPb converts ChartStore to pb.ObsTimeSerie
-func ToObsSeriesPb(token string, jsonRaw []byte) (interface{}, error) {
+func ToObsSeriesPb(jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
 		return nil, err
@@ -66,7 +66,7 @@ func ToObsSeriesPb(token string, jsonRaw []byte) (interface{}, error) {
 }
 
 // ToObsSeries converts ChartStore to ObsSeries
-func ToObsSeries(token string, jsonRaw []byte) (interface{}, error) {
+func ToObsSeries(jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
 		return nil, err
@@ -105,7 +105,7 @@ func ToObsSeries(token string, jsonRaw []byte) (interface{}, error) {
 }
 
 // ToObsCollection converts ChartStore to pb.ObsCollection
-func ToObsCollection(token string, jsonRaw []byte) (interface{}, error) {
+func ToObsCollection(jsonRaw []byte) (interface{}, error) {
 	pbData := &pb.ChartStore{}
 	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
 		return nil, err
@@ -133,7 +133,7 @@ func ToObsCollection(token string, jsonRaw []byte) (interface{}, error) {
 }
 
 // ToTriples converts raw bigtable data to pb.Triples
-func ToTriples(dcid string, jsonRaw []byte) (interface{}, error) {
+func ToTriples(jsonRaw []byte) (interface{}, error) {
 	var triples pb.Triples
 	if err := proto.Unmarshal(jsonRaw, &triples); err != nil {
 		return nil, err

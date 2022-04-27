@@ -37,7 +37,7 @@ func TestReadOneTable(t *testing.T) {
 		ctx,
 		NewGroup([]*Table{{name: "test", table: btTable}}, ""),
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		},
 		nil,
@@ -86,7 +86,7 @@ func TestReadTwoTables(t *testing.T) {
 			"t2",
 		),
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			return string(jsonRaw), nil
 		},
 		nil,

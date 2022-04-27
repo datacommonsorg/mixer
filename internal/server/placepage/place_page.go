@@ -231,7 +231,7 @@ func fetchBtData(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var placePageData pb.StatVarObsSeries
 			if err := proto.Unmarshal(jsonRaw, &placePageData); err != nil {
 				return nil, err

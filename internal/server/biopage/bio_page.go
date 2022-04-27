@@ -32,7 +32,7 @@ func GetBioPageDataHelper(
 		ctx,
 		store.BtGroup,
 		cbt.RowList{bigtable.BtProteinPagePrefix + dcid},
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var graph pb.GraphNodes
 			if err := proto.Unmarshal(jsonRaw, &graph); err != nil {
 				return nil, err

@@ -41,7 +41,7 @@ func Count(
 		ctx,
 		st.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var statVarExistence pb.PlaceStatVarExistence
 			if err := proto.Unmarshal(jsonRaw, &statVarExistence); err != nil {
 				return nil, err

@@ -111,7 +111,7 @@ func GetPropertyValuesHelper(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var propVals pb.EntityInfoCollection
 			err := proto.Unmarshal(jsonRaw, &propVals)
 			return propVals.Entities, err

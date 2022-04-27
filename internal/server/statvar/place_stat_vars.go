@@ -60,7 +60,7 @@ func GetEntityStatVarsHelper(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var data pb.PlaceStatVars
 			if err := proto.Unmarshal(jsonRaw, &data); err != nil {
 				return nil, err

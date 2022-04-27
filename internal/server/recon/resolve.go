@@ -111,7 +111,7 @@ func ResolveEntities(
 
 	// Read ReconIdMap cache.
 	btDataList, err := bigtable.Read(ctx, store.BtGroup, rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var reconEntities pb.ReconEntities
 			if err := proto.Unmarshal(jsonRaw, &reconEntities); err != nil {
 				return nil, err
