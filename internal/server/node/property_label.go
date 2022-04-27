@@ -35,7 +35,7 @@ func GetPropertiesHelper(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var propLabels pb.PropertyLabels
 			if err := proto.Unmarshal(jsonRaw, &propLabels); err != nil {
 				return nil, err

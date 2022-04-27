@@ -64,7 +64,7 @@ func ResolveCoordinates(
 		ctx,
 		store.BtGroup,
 		reconRowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var recon pb.CoordinateRecon
 			if err := proto.Unmarshal(jsonRaw, &recon); err != nil {
 				return nil, err

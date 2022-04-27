@@ -21,7 +21,6 @@ import (
 	"strings"
 
 	cbt "cloud.google.com/go/bigtable"
-	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -31,6 +30,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 type prop struct {
@@ -187,9 +187,24 @@ func GetTriples(
 }
 
 // ReadTriples read triples from base cache for multiple dcids.
-func ReadTriples(ctx context.Context, btGroup *bigtable.Group, rowList cbt.RowList) (
-	*pb.GetTriplesResponse, error) {
-	btDataList, err := bigtable.Read(ctx, btGroup, rowList, convert.ToTriples, nil)
+func ReadTriples(
+	ctx context.Context,
+	btGroup *bigtable.Group,
+	rowList cbt.RowList,
+) (*pb.GetTriplesResponse, error) {
+	btDataList, err := bigtable.Read(
+		ctx,
+		btGroup,
+		rowList,
+		func(jsonRaw []byte) (interface{}, error) {
+			var triples pb.Triples
+			if err := proto.Unmarshal(jsonRaw, &triples); err != nil {
+				return nil, err
+			}
+			return &triples, nil
+		},
+		nil,
+	)
 	if err != nil {
 		return nil, err
 	}

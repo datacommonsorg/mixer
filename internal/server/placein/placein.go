@@ -48,7 +48,7 @@ func GetPlacesIn(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var containedInPlaces pb.ContainedPlaces
 			err := proto.Unmarshal(jsonRaw, &containedInPlaces)
 			return containedInPlaces.Dcids, err

@@ -142,7 +142,7 @@ func GetStatVarGroup(
 			ctx,
 			bigtable.GetFrequentGroup(store.BtGroup),
 			cbt.RowList{bigtable.BtStatVarGroup},
-			func(dcid string, jsonRaw []byte) (interface{}, error) {
+			func(jsonRaw []byte) (interface{}, error) {
 				var svgResp pb.StatVarGroups
 				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
 					return nil, err

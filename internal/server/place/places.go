@@ -84,7 +84,7 @@ func GetRelatedLocations(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
 			if err := proto.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
 				return nil, err
@@ -163,7 +163,7 @@ func GetLocationsRankings(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
 			if err := proto.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
 				return nil, err
@@ -211,7 +211,7 @@ func GetPlaceMetadataHelper(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var data pb.PlaceMetadataCache
 			if err := proto.Unmarshal(jsonRaw, &data); err != nil {
 				return nil, err

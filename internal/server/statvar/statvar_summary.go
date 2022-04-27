@@ -34,7 +34,7 @@ func GetStatVarSummaryHelper(
 		ctx,
 		store.BtGroup,
 		rowList,
-		func(dcid string, jsonRaw []byte) (interface{}, error) {
+		func(jsonRaw []byte) (interface{}, error) {
 			var statVarSummary pb.StatVarSummary
 			if err := proto.Unmarshal(jsonRaw, &statVarSummary); err != nil {
 				return nil, err
