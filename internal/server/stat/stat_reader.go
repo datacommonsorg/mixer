@@ -24,13 +24,108 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
+// toObsSeriesPb converts ChartStore to pb.ObsTimeSerie
+func toObsSeriesPb(jsonRaw []byte) (interface{}, error) {
+	pbData := &pb.ChartStore{}
+	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
+		return nil, err
+	}
+	switch x := pbData.Val.(type) {
+	case *pb.ChartStore_ObsTimeSeries:
+		x.ObsTimeSeries.PlaceName = ""
+		ret := x.ObsTimeSeries
+		// Unify unit.
+		for _, series := range ret.SourceSeries {
+			if conversion, ok := convert.UnitMapping[series.Unit]; ok {
+				series.Unit = conversion.Unit
+				for date := range series.Val {
+					series.Val[date] *= conversion.Scaling
+				}
+			}
+		}
+		return ret, nil
+	case nil:
+		return nil, status.Error(codes.NotFound, "ChartStore.Val is not set")
+	default:
+		return nil, status.Errorf(codes.NotFound,
+			"ChartStore.Val has unexpected type %T", x)
+	}
+}
+
+// toObsSeries converts ChartStore to ObsSeries
+func toObsSeries(jsonRaw []byte) (interface{}, error) {
+	pbData := &pb.ChartStore{}
+	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
+		return nil, err
+	}
+	switch x := pbData.Val.(type) {
+	case *pb.ChartStore_ObsTimeSeries:
+		pbSourceSeries := x.ObsTimeSeries.GetSourceSeries()
+		ret := &model.ObsTimeSeries{
+			PlaceName:    x.ObsTimeSeries.GetPlaceName(),
+			SourceSeries: make([]*model.SourceSeries, len(pbSourceSeries)),
+		}
+		for i, source := range pbSourceSeries {
+			if conversion, ok := convert.UnitMapping[source.Unit]; ok {
+				source.Unit = conversion.Unit
+				for date := range source.Val {
+					source.Val[date] *= conversion.Scaling
+				}
+			}
+			ret.SourceSeries[i] = &model.SourceSeries{
+				ImportName:        source.GetImportName(),
+				ObservationPeriod: source.GetObservationPeriod(),
+				MeasurementMethod: source.GetMeasurementMethod(),
+				ScalingFactor:     source.GetScalingFactor(),
+				Unit:              source.GetUnit(),
+				ProvenanceURL:     source.GetProvenanceUrl(),
+				Val:               source.GetVal(),
+			}
+
+		}
+		return ret, nil
+	case nil:
+		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
+	default:
+		return nil, status.Errorf(codes.Internal, "ChartStore.Val has unexpected type %T", x)
+	}
+}
+
+// toObsCollection converts ChartStore to pb.ObsCollection
+func toObsCollection(jsonRaw []byte) (interface{}, error) {
+	pbData := &pb.ChartStore{}
+	if err := proto.Unmarshal(jsonRaw, pbData); err != nil {
+		return nil, err
+	}
+	switch x := pbData.Val.(type) {
+	case *pb.ChartStore_ObsCollection:
+		ret := x.ObsCollection
+		// Unify unit.
+		for _, series := range ret.SourceCohorts {
+			if conversion, ok := convert.UnitMapping[series.Unit]; ok {
+				series.Unit = conversion.Unit
+				for date := range series.Val {
+					series.Val[date] *= conversion.Scaling
+				}
+			}
+		}
+		return ret, nil
+	case nil:
+		return nil, status.Error(codes.Internal,
+			"ChartStore.Val is not set")
+	default:
+		return nil, status.Errorf(codes.Internal,
+			"ChartStore.Val has unexpected type %T", x)
+	}
+}
+
 // TokenFn generates a function that convert row key to token string.
-func TokenFn(
-	keyTokens map[string]*util.PlaceStatVar) func(rowKey string) (string, error) {
+func TokenFn(keyTokens map[string]*util.PlaceStatVar) func(rowKey string) (string, error) {
 	return func(rowKey string) (string, error) {
 		return keyTokens[rowKey].Place + "^" + keyTokens[rowKey].StatVar, nil
 	}
@@ -42,12 +137,11 @@ func ReadStats(
 	ctx context.Context,
 	btGroup *bigtable.Group,
 	rowList cbt.RowList,
-	keyTokens map[string]*util.PlaceStatVar) (
-	map[string]map[string]*model.ObsTimeSeries, error) {
-
+	keyTokens map[string]*util.PlaceStatVar,
+) (map[string]map[string]*model.ObsTimeSeries, error) {
 	keyToTokenFn := TokenFn(keyTokens)
 	dataList, err := bigtable.Read(
-		ctx, btGroup, rowList, convert.ToObsSeries, TokenFn(keyTokens),
+		ctx, btGroup, rowList, toObsSeries, TokenFn(keyTokens),
 	)
 	if err != nil {
 		return nil, err
@@ -90,9 +184,7 @@ func ReadStatsPb(
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
 	keyToTokenFn := TokenFn(keyTokens)
-	dataList, err := bigtable.Read(
-		ctx, btGroup, rowList, convert.ToObsSeriesPb, keyToTokenFn,
-	)
+	dataList, err := bigtable.Read(ctx, btGroup, rowList, toObsSeriesPb, keyToTokenFn)
 	if err != nil {
 		return nil, err
 	}
@@ -141,7 +233,7 @@ func ReadStatCollection(
 		ctx,
 		btGroup,
 		rowList,
-		convert.ToObsCollection,
+		toObsCollection,
 		func(rowKey string) (string, error) {
 			return keyTokens[rowKey], nil
 		},
