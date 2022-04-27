@@ -249,8 +249,8 @@ func fetchBtData(
 	popData := map[string]*pb.PointStat{}
 
 	mergedPlacePageData := map[string]*pb.StatVarObsSeries{}
-	for _, baseData := range btDataList {
-		for place, data := range baseData {
+	for _, btData := range btDataList {
+		for place, data := range btData {
 			if data == nil {
 				continue
 			}

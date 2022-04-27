@@ -65,11 +65,11 @@ func GetPlacesIn(
 			continue
 		}
 		// Go through (ordered) import groups one by one, stop when data is found.
-		for _, baseData := range btDataList {
-			if _, ok := baseData[parent]; !ok {
+		for _, btData := range btDataList {
+			if _, ok := btData[parent]; !ok {
 				continue
 			}
-			result[parent] = baseData[parent].([]string)
+			result[parent] = btData[parent].([]string)
 			processed[parent] = struct{}{}
 			break
 		}

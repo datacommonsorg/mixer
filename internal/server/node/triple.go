@@ -211,8 +211,8 @@ func ReadTriples(
 	result := &pb.GetTriplesResponse{Triples: make(map[string]*pb.Triples)}
 	// dcid -> predicate -> id/value
 	visited := map[string]map[string]map[string]struct{}{}
-	for _, baseData := range btDataList {
-		for dcid, data := range baseData {
+	for _, btData := range btDataList {
+		for dcid, data := range btData {
 			triples, ok := data.(*pb.Triples)
 			if !ok {
 				return nil, status.Error(codes.Internal, "Error reading triples cache")
