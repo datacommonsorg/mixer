@@ -140,7 +140,7 @@ func ReadStats(
 	keyTokens map[string]*util.PlaceStatVar,
 ) (map[string]map[string]*model.ObsTimeSeries, error) {
 	keyToTokenFn := TokenFn(keyTokens)
-	dataList, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx, btGroup, rowList, toObsSeries, TokenFn(keyTokens),
 	)
 	if err != nil {
@@ -160,8 +160,8 @@ func ReadStats(
 		psv := keyTokens[rowKey]
 		// Different base data has different source series, concatenate them together.
 		ss := result[psv.Place][psv.StatVar].SourceSeries
-		for _, baseData := range dataList {
-			if data, ok := baseData[token]; ok {
+		for _, btData := range btDataList {
+			if data, ok := btData[token]; ok {
 				ss = append(
 					ss,
 					data.(*model.ObsTimeSeries).SourceSeries...,
@@ -184,7 +184,7 @@ func ReadStatsPb(
 	map[string]map[string]*pb.ObsTimeSeries, error) {
 
 	keyToTokenFn := TokenFn(keyTokens)
-	dataList, err := bigtable.Read(ctx, btGroup, rowList, toObsSeriesPb, keyToTokenFn)
+	btDataList, err := bigtable.Read(ctx, btGroup, rowList, toObsSeriesPb, keyToTokenFn)
 	if err != nil {
 		return nil, err
 	}
@@ -203,8 +203,8 @@ func ReadStatsPb(
 		psv := keyTokens[rowKey]
 		// Different base data has different source series, concatenate them together.
 		ss := result[psv.Place][psv.StatVar].SourceSeries
-		for _, baseData := range dataList {
-			if data, ok := baseData[token]; ok {
+		for _, btData := range btDataList {
+			if data, ok := btData[token]; ok {
 				ss = append(
 					ss,
 					data.(*pb.ObsTimeSeries).SourceSeries...,
@@ -229,7 +229,7 @@ func ReadStatCollection(
 	keyTokens map[string]string) (
 	map[string]*pb.ObsCollection, error) {
 
-	dataList, err := bigtable.Read(
+	btDataList, err := bigtable.Read(
 		ctx,
 		btGroup,
 		rowList,
@@ -246,8 +246,8 @@ func ReadStatCollection(
 		token := keyTokens[rowKey]
 		result[token] = &pb.ObsCollection{}
 		ss := result[token].SourceCohorts
-		for _, baseData := range dataList {
-			if data, ok := baseData[token]; ok {
+		for _, btData := range btDataList {
+			if data, ok := btData[token]; ok {
 				obsCollection, ok := data.(*pb.ObsCollection)
 				if !ok {
 					return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")

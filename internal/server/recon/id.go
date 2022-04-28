@@ -72,8 +72,8 @@ func ResolveIds(
 	// one preferred table.
 	res := &pb.ResolveIdsResponse{}
 	existData := map[string]bool{}
-	for _, baseData := range btDataList {
-		for inID, reconEntities := range baseData {
+	for _, btData := range btDataList {
+		for inID, reconEntities := range btData {
 			if exist, ok := existData[inID]; ok && exist {
 				continue
 			}

@@ -76,9 +76,9 @@ func GetEntityStatVarsHelper(
 	for _, entity := range entities {
 		resp[entity] = &pb.StatVars{StatVars: []string{}}
 		allStatVars := [][]string{}
-		for _, baseData := range btDataList {
-			if baseData[entity] != nil {
-				allStatVars = append(allStatVars, baseData[entity].([]string))
+		for _, btData := range btDataList {
+			if btData[entity] != nil {
+				allStatVars = append(allStatVars, btData[entity].([]string))
 			}
 		}
 		// Also merge from memdb

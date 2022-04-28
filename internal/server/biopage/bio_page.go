@@ -44,7 +44,7 @@ func GetBioPageDataHelper(
 	if err != nil {
 		return nil, err
 	}
-	// baseData is orderred by preference. Use the one that has bio data without
+	// btData is orderred by preference. Use the one that has bio data without
 	// merging.
 	for _, btData := range dataList {
 		if v, ok := btData[dcid]; ok {
