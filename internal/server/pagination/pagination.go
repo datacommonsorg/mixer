@@ -21,8 +21,8 @@ import (
 )
 
 // BuildCursor is a wrapper function to build ImportGroupCursor.
-func BuildCursor(index, page, pos int32) *pb.ImportGroupCursor {
-	return &pb.ImportGroupCursor{Index: index, Page: page, Pos: pos}
+func BuildCursor(importGroup, page, item int32) *pb.ImportGroupCursor {
+	return &pb.ImportGroupCursor{ImportGroup: importGroup, Page: page, Item: item}
 }
 
 // Decode decodes a compressed string into PaginationInfoGroup.

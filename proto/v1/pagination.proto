@@ -18,12 +18,12 @@ package datacommons.v1;
 
 
 message ImportGroupCursor {
-  // The index of the import group.
-  int32 index = 1;
-  // The page index of the cursor, starts from 0.
+  // The index of the import group, starts from 0.
+  int32 import_group = 1;
+  // The index of the page, starts from 0.
   int32 page = 2;
   // The position of the next read item in the current page, starts from 0.
-  int32 pos = 3;
+  int32 item = 3;
 }
 
 message ImportGroupCursorGroup {
