@@ -455,7 +455,7 @@ func GetMetadataHash(m *pb.StatMetadata) uint32 {
 	return h.Sum32()
 }
 
-// Encode encodes a protobuf message into a compressed string
+// EncodeProto encodes a protobuf message into a compressed string
 func EncodeProto(m proto.Message) (string, error) {
 	data, err := proto.Marshal(m)
 	if err != nil {
