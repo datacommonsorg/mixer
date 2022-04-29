@@ -1369,6 +1369,10 @@
       "dcid": "Count_Person_Civilian_Employed_Female"
     },
     {
+      "name": "Population: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
+      "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
+    },
+    {
       "name": "Population: 16 Years or More, Not in Labor Force, Female, Divorced in The Past 12 Months",
       "dcid": "Count_Person_16OrMoreYears_NotInLaborForce_Female_DivorcedInThePast12Months"
     },
@@ -2535,14 +2539,6 @@
     {
       "name": "Population: 64 Years or Less, Female, No Health Insurance, Hispanic or Latino",
       "dcid": "dc/6zbqgdcj9q316"
-    },
-    {
-      "name": "Population: 64 Years or Less, Female, No Health Insurance, White Alone",
-      "dcid": "dc/sf88wpdpw6w48"
-    },
-    {
-      "name": "Population: 64 Years or Less, Female, With Health Insurance, Black or African American Alone",
-      "dcid": "dc/b21lj1qb1nt9d"
     }
   ],
   "statVarGroups": [
@@ -10681,6 +10677,16 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings",
+      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, Female, With Earnings",
+          "dcid": "Count_Person_16OrMoreYears_Female_WithEarnings"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MaritalStatus-Divorced",
       "name": "Person With Age = 16 Years or More, Gender = Female, Marital Status = Divorced",
       "statVars": [
@@ -14127,6 +14133,10 @@
       "name": "Person With Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
+      "name": "Person With Enrollment Level, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Gender-Female",
       "name": "Person With Establishment Ownership = Federal Government Owned, Gender = Female"
     },
@@ -14179,10 +14189,6 @@
       "name": "Person With Gender = Female, Detailed Worker Classification = Worker"
     },
     {
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
-      "name": "Person With Gender = Female, Enrollment Level"
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior",
       "name": "Person With Gender = Female, Health Behavior"
     },
@@ -14205,10 +14211,6 @@
     {
       "dcid": "dc/g/Person_Gender-Female_HealthInsurance-WithPublicHealthInsurance",
       "name": "Person With Gender = Female, Health Insurance = With Public Health Insurance"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_HouseholdType",
-      "name": "Person With Gender = Female, Household Type"
     }
   ],
   "matches": [
