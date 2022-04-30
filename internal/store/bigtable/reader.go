@@ -76,72 +76,61 @@ func readRowFn(
 }
 
 // Read reads BigTable rows from multiple Bigtable in parallel.
-//
-// Reading multiple rows is chunked as the size limit for RowSet is 500KB.
-//
-// Args:
-// baseBt: The bigtable that holds the base cache
-// rowSet: BigTable rowSet containing the row keys.
-// action: A callback function that converts the raw bytes into appropriate
-//		go struct based on the cache content.
-// getToken: A function to get back the indexed token (like place dcid) from
-//		bigtable row key.
-//
+// Note all Bigtable read use the same set of rowList.
 func Read(
 	ctx context.Context,
 	btGroup *Group,
-	rowSet cbt.RowSet,
+	rowList cbt.RowList,
+	action func([]byte) (interface{}, error),
+	getToken func(string) (string, error),
+) ([]map[string]interface{}, error) {
+	rowListMap := map[int]cbt.RowList{}
+	for i := 0; i < len(btGroup.Tables()); i++ {
+		rowListMap[i] = rowList
+	}
+	return ReadWithGroupRowList(ctx, btGroup, rowListMap, action, getToken)
+}
+
+// ReadWithGroupRowList reads BigTable rows from multiple Bigtable in parallel.
+// Reading is chunked as the size limit for RowSet is 500KB.
+//
+// Note the read could have different RowList for each import group Bigtable as
+// needed by the pagination APIs.
+func ReadWithGroupRowList(
+	ctx context.Context,
+	btGroup *Group,
+	rowListMap map[int]cbt.RowList,
 	action func([]byte) (interface{}, error),
 	getToken func(string) (string, error),
 ) ([]map[string]interface{}, error) {
 	tables := btGroup.Tables()
 	if len(tables) == 0 {
-		return nil, status.Errorf(
-			codes.NotFound, "Bigtable instance is not specified")
+		return nil, status.Errorf(codes.NotFound, "Bigtable instance is not specified")
 	}
-
-	// Function start
-	var rowSetSize int
-	var rowList cbt.RowList
-	var rowRangeList cbt.RowRangeList
-	switch v := rowSet.(type) {
-	case cbt.RowList:
-		rowList = rowSet.(cbt.RowList)
-		rowSetSize = len(rowList)
-	case cbt.RowRangeList:
-		rowRangeList = rowSet.(cbt.RowRangeList)
-		rowSetSize = len(rowRangeList)
-	default:
-		return nil, status.Errorf(codes.Internal, "Unsupported RowSet type: %v", v)
+	if len(tables) != len(rowListMap) {
+		return nil, status.Errorf(codes.Internal, "Number of tables and rowList don't match")
 	}
-	if rowSetSize == 0 {
-		return nil, nil
-	}
-
+	// Channels for each import group read.
 	chans := make(map[int]chan chanData)
 	for i := 0; i < len(tables); i++ {
-		chans[i] = make(chan chanData, rowSetSize)
+		chans[i] = make(chan chanData, len(rowListMap[i]))
 	}
+
 	errs, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i <= rowSetSize/BtBatchQuerySize; i++ {
-		left := i * BtBatchQuerySize
-		right := (i + 1) * BtBatchQuerySize
-		if right > rowSetSize {
-			right = rowSetSize
-		}
-		var rowSetPart cbt.RowSet
-		if len(rowList) > 0 {
-			rowSetPart = rowList[left:right]
-		} else {
-			rowSetPart = rowRangeList[left:right]
-		}
-		// Read from all the given tables.
-		if len(tables) > 0 {
-			for j := 0; j < len(tables); j++ {
-				j := j
-				if tables[j] != nil {
-					errs.Go(readRowFn(errCtx, tables[j], rowSetPart, getToken, action, chans[j]))
-				}
+	// Read from each import group tables. Note each table could have different
+	// rowList in pagination APIs.
+	for i := 0; i < len(tables); i++ {
+		rowSet := rowListMap[i]
+		rowSetSize := len(rowSet)
+		for j := 0; j <= rowSetSize/BtBatchQuerySize; j++ {
+			left := j * BtBatchQuerySize
+			right := (j + 1) * BtBatchQuerySize
+			if right > rowSetSize {
+				right = rowSetSize
+			}
+			rowSetPart := rowSet[left:right]
+			if tables[i] != nil {
+				errs.Go(readRowFn(errCtx, tables[i], rowSetPart, getToken, action, chans[i]))
 			}
 		}
 	}
