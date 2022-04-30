@@ -80,26 +80,26 @@ func readRowFn(
 func Read(
 	ctx context.Context,
 	btGroup *Group,
-	rowSet cbt.RowList,
+	rowList cbt.RowList,
 	action func([]byte) (interface{}, error),
 	getToken func(string) (string, error),
 ) ([]map[string]interface{}, error) {
-	rowSetMap := map[int]cbt.RowList{}
+	rowListMap := map[int]cbt.RowList{}
 	for i := 0; i < len(btGroup.Tables()); i++ {
-		rowSetMap[i] = rowSet
+		rowListMap[i] = rowList
 	}
-	return ReadWithGroupRowSet(ctx, btGroup, rowSetMap, action, getToken)
+	return ReadWithGroupRowList(ctx, btGroup, rowListMap, action, getToken)
 }
 
-// ReadWithGroupRowSet reads BigTable rows from multiple Bigtable in parallel.
+// ReadWithGroupRowList reads BigTable rows from multiple Bigtable in parallel.
 // Reading is chunked as the size limit for RowSet is 500KB.
 //
 // Note the read could have different RowList for each import group Bigtable as
 // needed by the pagination APIs.
-func ReadWithGroupRowSet(
+func ReadWithGroupRowList(
 	ctx context.Context,
 	btGroup *Group,
-	rowSetMap map[int]cbt.RowList,
+	rowListMap map[int]cbt.RowList,
 	action func([]byte) (interface{}, error),
 	getToken func(string) (string, error),
 ) ([]map[string]interface{}, error) {
@@ -107,21 +107,20 @@ func ReadWithGroupRowSet(
 	if len(tables) == 0 {
 		return nil, status.Errorf(codes.NotFound, "Bigtable instance is not specified")
 	}
-	if len(tables) != len(rowSetMap) {
-		return nil, status.Errorf(codes.Internal, "Number of tables and rowSet don't match")
+	if len(tables) != len(rowListMap) {
+		return nil, status.Errorf(codes.Internal, "Number of tables and rowList don't match")
 	}
 	// Channels for each import group read.
 	chans := make(map[int]chan chanData)
 	for i := 0; i < len(tables); i++ {
-		chans[i] = make(chan chanData, len(rowSetMap[i]))
+		chans[i] = make(chan chanData, len(rowListMap[i]))
 	}
 
 	errs, errCtx := errgroup.WithContext(ctx)
 	// Read from each import group tables. Note each table could have different
-	// rowSet in pagination APIs.
+	// rowList in pagination APIs.
 	for i := 0; i < len(tables); i++ {
-		i := i
-		rowSet := rowSetMap[i]
+		rowSet := rowListMap[i]
 		rowSetSize := len(rowSet)
 		for j := 0; j <= rowSetSize/BtBatchQuerySize; j++ {
 			left := j * BtBatchQuerySize
