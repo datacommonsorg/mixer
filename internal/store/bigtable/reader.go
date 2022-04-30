@@ -17,7 +17,6 @@ package bigtable
 import (
 	"context"
 
-	"cloud.google.com/go/bigtable"
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
@@ -85,7 +84,7 @@ func Read(
 	action func([]byte) (interface{}, error),
 	getToken func(string) (string, error),
 ) ([]map[string]interface{}, error) {
-	rowSetMap := map[int]bigtable.RowList{}
+	rowSetMap := map[int]cbt.RowList{}
 	for i := 0; i < len(btGroup.Tables()); i++ {
 		rowSetMap[i] = rowSet
 	}
