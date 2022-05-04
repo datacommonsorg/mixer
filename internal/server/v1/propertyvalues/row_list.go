@@ -41,12 +41,12 @@ func buildSimpleRequestRowList(
 	return buildRowList([]string{entity}, []string{property}, arcOut, page)
 }
 
-func buildMultiEntityRowList(
-	entities []string, property string, arcOut bool, page int32) cbt.RowList {
-	return buildRowList(entities, []string{property}, arcOut, page)
-}
+// func buildMultiEntityRowList(
+// 	entities []string, property string, arcOut bool, page int32) cbt.RowList {
+// 	return buildRowList(entities, []string{property}, arcOut, page)
+// }
 
-func buildMultiPropertyRowList(
-	entity string, properties []string, arcOut bool, page int32) cbt.RowList {
-	return buildRowList([]string{entity}, properties, arcOut, page)
-}
+// func buildMultiPropertyRowList(
+// 	entity string, properties []string, arcOut bool, page int32) cbt.RowList {
+// 	return buildRowList([]string{entity}, properties, arcOut, page)
+// }

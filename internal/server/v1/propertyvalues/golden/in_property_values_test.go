@@ -47,15 +47,15 @@ func TestInPropertyValues(t *testing.T) {
 				"containedIn1.json",
 				"containedInPlace",
 				"geoId/06",
-				1000,
+				502,
 				"",
 			},
 			{
 				"containedIn2.json",
 				"containedInPlace",
 				"geoId/06",
-				1002,
-				"H4sIAAAAAAAA/+ISEWIQYuJgFGLiYBJi4mAWYuFgEWACAAAA//8BAAD//7V6I/IWAAAA",
+				500,
+				"H4sIAAAAAAAA/+ISE2IQYuJgFGLiYBJi4mAWYuNgEWCUYAIAAAD//wEAAP//76fhfBgAAAA=",
 			},
 			{
 				"geoOverlaps.json",

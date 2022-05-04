@@ -240,7 +240,7 @@ func InPropertyValues(
 			)
 		}
 	}
-	if limit == 0 {
+	if limit == 0 || limit > defaultLimit {
 		limit = defaultLimit
 	}
 	cursorGroup := pi.CursorGroups[0]
