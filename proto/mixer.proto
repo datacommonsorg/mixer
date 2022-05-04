@@ -458,6 +458,14 @@ service Mixer {
     };
   }
 
+  rpc BulkObservationsSeriesLinked(datacommons.v1.BulkObservationsSeriesLinkedRequest)
+      returns (datacommons.v1.BulkObservationsSeriesResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/observations/series/linked"
+      additional_bindings : {post : "/v1/bulk/observations/series/linked" body : "*"}
+    };
+  }
+
   rpc ProteinPage(datacommons.v1.ProteinPageRequest)
       returns (GraphNodes) {
     option (google.api.http) = {

@@ -180,9 +180,8 @@ func ReadStatsPb(
 	ctx context.Context,
 	btGroup *bigtable.Group,
 	rowList cbt.RowList,
-	keyTokens map[string]*util.PlaceStatVar) (
-	map[string]map[string]*pb.ObsTimeSeries, error) {
-
+	keyTokens map[string]*util.PlaceStatVar,
+) (map[string]map[string]*pb.ObsTimeSeries, error) {
 	keyToTokenFn := TokenFn(keyTokens)
 	btDataList, err := bigtable.Read(ctx, btGroup, rowList, toObsSeriesPb, keyToTokenFn)
 	if err != nil {
@@ -193,9 +192,7 @@ func ReadStatsPb(
 		if _, ok := result[psv.Place]; !ok {
 			result[psv.Place] = map[string]*pb.ObsTimeSeries{}
 		}
-		if _, ok := result[psv.StatVar]; !ok {
-			result[psv.Place][psv.StatVar] = &pb.ObsTimeSeries{}
-		}
+		result[psv.Place][psv.StatVar] = &pb.ObsTimeSeries{}
 	}
 
 	for _, rowKey := range rowList {

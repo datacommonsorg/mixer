@@ -124,6 +124,13 @@ func (s *Server) BulkObservationsSeries(
 	return observations.BulkSeries(ctx, in, s.store)
 }
 
+// BulkObservationsSeriesLinked implements API for mixer.BulkObservationsSeriesLinked.
+func (s *Server) BulkObservationsSeriesLinked(
+	ctx context.Context, in *pb.BulkObservationsSeriesLinkedRequest,
+) (*pb.BulkObservationsSeriesResponse, error) {
+	return observations.BulkSeriesLinked(ctx, in, s.store)
+}
+
 // ProteinPage implements API for mixer.ProteinPage.
 func (s *Server) ProteinPage(
 	ctx context.Context, in *pb.ProteinPageRequest,
