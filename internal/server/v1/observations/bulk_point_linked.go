@@ -45,19 +45,19 @@ func BulkPointLinked(
 	allFacets := in.GetAllFacets()
 	if linkedEntity == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: linked_entity")
+			"missing required argument: linked_entity")
 	}
 	if linkedProperty != "containedInPlace" {
 		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: linked_property")
+			"linked_property can only be 'containedInPlace'")
 	}
 	if len(variables) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: variables")
+			"missing required argument: variables")
 	}
 	if entityType == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: entity_type")
+			"missing required argument: entity_type")
 	}
 	dateKey := date
 	if date == "" {
