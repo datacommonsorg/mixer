@@ -16,24 +16,25 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons.v1;
 
+import "entity.proto";
 
-// Cursor represents the position of a paginated Bigtable cache data for an
-// import group.
-message Cursor {
-  // The index of the import group, starts from 0.
-  int32 ig = 1;
-  // The index of the page, starts from 0.
-  int32 page = 2;
-  // The position of the next read item in the current page, starts from 0.
-  int32 item = 3;
+
+// A page of entities. The page number starts from 0, and is in the cache key.
+// Page size is set by ::datacommons::prophet::kPageSize.
+message PagedEntities {
+  // A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
+  repeated datacommons.EntityInfo entities = 1;
+  optional double total_page_count = 2;
 }
 
-message CursorGroup {
-  // Entity DCID or other information that identifies the CursorGroup.
-  string key = 1;
-  repeated Cursor cursors = 2;
+message InPropertyValuesRequest {
+  string property = 1;
+  string entity = 2;
+  int32 limit = 3;
+  string token = 4;
 }
 
-message PaginationInfo {
-  repeated CursorGroup cursor_groups = 1;
+message InPropertyValuesResponse {
+  repeated datacommons.EntityInfo data = 1;
+  string token = 2;
 }

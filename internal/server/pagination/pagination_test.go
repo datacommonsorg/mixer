@@ -30,33 +30,33 @@ func TestDencode(t *testing.T) {
 		{
 			// One entity scenario.
 			&pb.PaginationInfo{
-				CursorGroups: []*pb.ImportGroupCursorGroup{
+				CursorGroups: []*pb.CursorGroup{
 					{
-						Cursors: []*pb.ImportGroupCursor{
+						Cursors: []*pb.Cursor{
 							{
-								ImportGroup: 0,
-								Page:        0,
-								Item:        20,
+								Ig:   0,
+								Page: 0,
+								Item: 20,
 							},
 							{
-								ImportGroup: 1,
-								Page:        1,
-								Item:        10,
+								Ig:   1,
+								Page: 1,
+								Item: 10,
 							},
 							{
-								ImportGroup: 2,
-								Page:        1,
-								Item:        10,
+								Ig:   2,
+								Page: 1,
+								Item: 10,
 							},
 							{
-								ImportGroup: 3,
-								Page:        2,
-								Item:        50,
+								Ig:   3,
+								Page: 2,
+								Item: 50,
 							},
 							{
-								ImportGroup: 4,
-								Page:        1,
-								Item:        10,
+								Ig:   4,
+								Page: 1,
+								Item: 10,
 							},
 						},
 					},
@@ -67,64 +67,64 @@ func TestDencode(t *testing.T) {
 		{
 			// Multiple entity scenario.
 			&pb.PaginationInfo{
-				CursorGroups: []*pb.ImportGroupCursorGroup{
+				CursorGroups: []*pb.CursorGroup{
 					{
 						Key: "geoId/05",
-						Cursors: []*pb.ImportGroupCursor{
+						Cursors: []*pb.Cursor{
 							{
-								ImportGroup: 0,
-								Page:        0,
-								Item:        20,
+								Ig:   0,
+								Page: 0,
+								Item: 20,
 							},
 							{
-								ImportGroup: 1,
-								Page:        1,
-								Item:        10,
+								Ig:   1,
+								Page: 1,
+								Item: 10,
 							},
 							{
-								ImportGroup: 2,
-								Page:        1,
-								Item:        10,
+								Ig:   2,
+								Page: 1,
+								Item: 10,
 							},
 							{
-								ImportGroup: 3,
-								Page:        2,
-								Item:        50,
+								Ig:   3,
+								Page: 2,
+								Item: 50,
 							},
 							{
-								ImportGroup: 4,
-								Page:        1,
-								Item:        10,
+								Ig:   4,
+								Page: 1,
+								Item: 10,
 							},
 						},
 					},
 					{
 						Key: "geoId/06",
-						Cursors: []*pb.ImportGroupCursor{
+						Cursors: []*pb.Cursor{
 							{
-								ImportGroup: 0,
-								Page:        5,
-								Item:        200,
+								Ig:   0,
+								Page: 5,
+								Item: 200,
 							},
 							{
-								ImportGroup: 1,
-								Page:        8,
-								Item:        100,
+								Ig:   1,
+								Page: 8,
+								Item: 100,
 							},
 							{
-								ImportGroup: 2,
-								Page:        7,
-								Item:        150,
+								Ig:   2,
+								Page: 7,
+								Item: 150,
 							},
 							{
-								ImportGroup: 3,
-								Page:        15,
-								Item:        60,
+								Ig:   3,
+								Page: 15,
+								Item: 60,
 							},
 							{
-								ImportGroup: 4,
-								Page:        4,
-								Item:        40,
+								Ig:   4,
+								Page: 4,
+								Item: 40,
 							},
 						},
 					},

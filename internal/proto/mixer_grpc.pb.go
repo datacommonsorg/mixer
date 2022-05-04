@@ -114,6 +114,7 @@ type MixerClient interface {
 	GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRequest, opts ...grpc.CallOption) (*GetStatVarMatchResponse, error)
 	Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error)
 	BulkProperties(ctx context.Context, in *BulkPropertiesRequest, opts ...grpc.CallOption) (*BulkPropertiesResponse, error)
+	InPropertyValues(ctx context.Context, in *InPropertyValuesRequest, opts ...grpc.CallOption) (*InPropertyValuesResponse, error)
 	Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error)
 	BulkVariables(ctx context.Context, in *BulkVariablesRequest, opts ...grpc.CallOption) (*BulkVariablesResponse, error)
 	PlaceInfo(ctx context.Context, in *PlaceInfoRequest, opts ...grpc.CallOption) (*PlaceInfoResponse, error)
@@ -452,6 +453,15 @@ func (c *mixerClient) BulkProperties(ctx context.Context, in *BulkPropertiesRequ
 	return out, nil
 }
 
+func (c *mixerClient) InPropertyValues(ctx context.Context, in *InPropertyValuesRequest, opts ...grpc.CallOption) (*InPropertyValuesResponse, error) {
+	out := new(InPropertyValuesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/InPropertyValues", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error) {
 	out := new(VariablesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Variables", in, out, opts...)
@@ -665,6 +675,7 @@ type MixerServer interface {
 	GetStatVarMatch(context.Context, *GetStatVarMatchRequest) (*GetStatVarMatchResponse, error)
 	Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error)
 	BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error)
+	InPropertyValues(context.Context, *InPropertyValuesRequest) (*InPropertyValuesResponse, error)
 	Variables(context.Context, *VariablesRequest) (*VariablesResponse, error)
 	BulkVariables(context.Context, *BulkVariablesRequest) (*BulkVariablesResponse, error)
 	PlaceInfo(context.Context, *PlaceInfoRequest) (*PlaceInfoResponse, error)
@@ -788,6 +799,9 @@ func (UnimplementedMixerServer) Properties(context.Context, *PropertiesRequest) 
 }
 func (UnimplementedMixerServer) BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkProperties not implemented")
+}
+func (UnimplementedMixerServer) InPropertyValues(context.Context, *InPropertyValuesRequest) (*InPropertyValuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InPropertyValues not implemented")
 }
 func (UnimplementedMixerServer) Variables(context.Context, *VariablesRequest) (*VariablesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Variables not implemented")
@@ -1470,6 +1484,24 @@ func _Mixer_BulkProperties_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_InPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InPropertyValuesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).InPropertyValues(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/InPropertyValues",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).InPropertyValues(ctx, req.(*InPropertyValuesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_Variables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VariablesRequest)
 	if err := dec(in); err != nil {
@@ -1850,6 +1882,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkProperties",
 			Handler:    _Mixer_BulkProperties_Handler,
+		},
+		{
+			MethodName: "InPropertyValues",
+			Handler:    _Mixer_InPropertyValues_Handler,
 		},
 		{
 			MethodName: "Variables",

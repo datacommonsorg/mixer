@@ -22,6 +22,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/server/v1/page"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
+	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
 
@@ -37,6 +38,13 @@ func (s *Server) BulkProperties(
 	ctx context.Context, in *pb.BulkPropertiesRequest,
 ) (*pb.BulkPropertiesResponse, error) {
 	return properties.BulkProperties(ctx, in, s.store)
+}
+
+// InPropertyValues implements API for mixer.InPropertyValues.
+func (s *Server) InPropertyValues(
+	ctx context.Context, in *pb.InPropertyValuesRequest,
+) (*pb.InPropertyValuesResponse, error) {
+	return propertyvalues.InPropertyValues(ctx, in, s.store)
 }
 
 // Variables implements API for mixer.Variables.
