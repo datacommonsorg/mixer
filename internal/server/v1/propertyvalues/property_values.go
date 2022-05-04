@@ -96,7 +96,7 @@ func newProcessor(
 		if data, ok := btData[entity]; ok {
 			pe := data.(*pb.PagedEntities)
 			p.raw = append(p.raw, pe.Entities)
-			p.totalPage[idx] = int(*pe.TotalPageCount)
+			p.totalPage[idx] = int(pe.TotalPageCount)
 		} else {
 			p.raw = append(p.raw, nil)
 		}
@@ -184,7 +184,7 @@ func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, er
 			if data, ok := btDataList[ig][p.entity]; ok {
 				pe := data.(*pb.PagedEntities)
 				p.raw[ig] = pe.Entities
-				p.totalPage[ig] = int(*pe.TotalPageCount)
+				p.totalPage[ig] = int(pe.TotalPageCount)
 			}
 		}
 	}

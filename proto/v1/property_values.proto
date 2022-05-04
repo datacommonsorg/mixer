@@ -24,7 +24,7 @@ import "entity.proto";
 message PagedEntities {
   // A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
   repeated datacommons.EntityInfo entities = 1;
-  optional double total_page_count = 2;
+  double total_page_count = 2;
 }
 
 message InPropertyValuesRequest {
