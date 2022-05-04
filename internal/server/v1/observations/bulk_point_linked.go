@@ -47,7 +47,7 @@ func BulkPointLinked(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: linked_entity")
 	}
-	if linkedProperty == "" {
+	if linkedProperty != "containedInPlace" {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: linked_property")
 	}
