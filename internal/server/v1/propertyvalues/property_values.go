@@ -31,6 +31,9 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// Prophet generates cache size at 500.
+// This (approximately) allows one request to be fulfilled by reading one page
+// from all import groups after merging.
 var defaultLimit = 1000
 
 type processor struct {
@@ -47,6 +50,80 @@ type processor struct {
 	h *entityHeap
 	// Total page count for each import group
 	totalPage map[int]int
+}
+
+// InPropertyValues implements mixer.InPropertyValues handler.
+func InPropertyValues(
+	ctx context.Context,
+	in *pb.InPropertyValuesRequest,
+	store *store.Store,
+) (*pb.InPropertyValuesResponse, error) {
+	property := in.GetProperty()
+	entity := in.GetEntity()
+	limit := int(in.GetLimit())
+	token := in.GetToken()
+	// Check arguments
+	if property == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "missing required argument: property")
+	}
+	if !util.CheckValidDCIDs([]string{entity}) {
+		return nil, status.Errorf(codes.InvalidArgument, "invalid entity %s", entity)
+	}
+	var err error
+	// Empty cursor group when no token is given.
+	pi := &pb.PaginationInfo{CursorGroups: []*pb.CursorGroup{{}}}
+	if token != "" {
+		pi, err = pagination.Decode(token)
+		if err != nil {
+			return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %s", token)
+		}
+		if len(pi.CursorGroups) != 1 {
+			return nil, status.Errorf(
+				codes.InvalidArgument,
+				"pagination group size should be 1, got %d instead",
+				len(pi.CursorGroups),
+			)
+		}
+	}
+	if limit == 0 || limit > defaultLimit {
+		limit = defaultLimit
+	}
+	cursorGroup := pi.CursorGroups[0]
+	// build empty cursorGroup
+	if len(cursorGroup.Cursors) == 0 {
+		cursorGroup = buildEmptyCursorGroup(len(store.BtGroup.Tables()))
+	}
+	proc, err := newProcessor(ctx, store.BtGroup, property, entity, limit, cursorGroup)
+	if err != nil {
+		return nil, err
+	}
+	for {
+		hasNext, err := proc.next(ctx, store.BtGroup)
+		if err != nil {
+			return nil, err
+		}
+		if !hasNext {
+			break
+		}
+	}
+	respToken := ""
+	for _, d := range proc.raw {
+		// If any import group has more data, then should compute the token
+		if d != nil {
+			respToken, err = util.EncodeProto(
+				&pb.PaginationInfo{
+					CursorGroups: []*pb.CursorGroup{proc.cg},
+				})
+			break
+		}
+	}
+	if err != nil {
+		return nil, err
+	}
+	return &pb.InPropertyValuesResponse{
+		Data:  proc.merged,
+		Token: respToken,
+	}, nil
 }
 
 // newProcessor builds a new processor given property, entity and cursor group.
@@ -206,77 +283,4 @@ func buildEmptyCursorGroup(n int) *pb.CursorGroup {
 		result.Cursors = append(result.Cursors, &pb.Cursor{Ig: int32(i)})
 	}
 	return result
-}
-
-func InPropertyValues(
-	ctx context.Context,
-	in *pb.InPropertyValuesRequest,
-	store *store.Store,
-) (*pb.InPropertyValuesResponse, error) {
-	property := in.GetProperty()
-	entity := in.GetEntity()
-	limit := int(in.GetLimit())
-	token := in.GetToken()
-	// Check arguments
-	if property == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required argument: property")
-	}
-	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid entity %s", entity)
-	}
-	var err error
-	// Empty cursor group when no token is given.
-	pi := &pb.PaginationInfo{CursorGroups: []*pb.CursorGroup{{}}}
-	if token != "" {
-		pi, err = pagination.Decode(token)
-		if err != nil {
-			return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %s", token)
-		}
-		if len(pi.CursorGroups) != 1 {
-			return nil, status.Errorf(
-				codes.InvalidArgument,
-				"pagination group size should be 1, got %d instead",
-				len(pi.CursorGroups),
-			)
-		}
-	}
-	if limit == 0 || limit > defaultLimit {
-		limit = defaultLimit
-	}
-	cursorGroup := pi.CursorGroups[0]
-	// build empty cursorGroup
-	if len(cursorGroup.Cursors) == 0 {
-		cursorGroup = buildEmptyCursorGroup(len(store.BtGroup.Tables()))
-	}
-	proc, err := newProcessor(ctx, store.BtGroup, property, entity, limit, cursorGroup)
-	if err != nil {
-		return nil, err
-	}
-	for {
-		hasNext, err := proc.next(ctx, store.BtGroup)
-		if err != nil {
-			return nil, err
-		}
-		if !hasNext {
-			break
-		}
-	}
-	respToken := ""
-	for _, d := range proc.raw {
-		// If any import group has more data, then should compute the token
-		if d != nil {
-			respToken, err = util.EncodeProto(
-				&pb.PaginationInfo{
-					CursorGroups: []*pb.CursorGroup{proc.cg},
-				})
-			break
-		}
-	}
-	if err != nil {
-		return nil, err
-	}
-	return &pb.InPropertyValuesResponse{
-		Data:  proc.merged,
-		Token: respToken,
-	}, nil
 }
