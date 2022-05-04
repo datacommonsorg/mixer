@@ -1,8 +1,31 @@
 {
   "observations_by_variable": [
     {
+      "variable": "dummy",
+      "observations_by_entity": [
+        {
+          "entity": "dummy"
+        },
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA"
+        },
+        {
+          "entity": "geoId/06"
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    },
+    {
       "variable": "Count_Person",
       "observations_by_entity": [
+        {
+          "entity": "dummy"
+        },
         {
           "entity": "country/FRA",
           "points_by_facet": [
@@ -49,6 +72,9 @@
       "variable": "Count_CriminalActivities_CombinedCrime",
       "observations_by_entity": [
         {
+          "entity": "dummy"
+        },
+        {
           "entity": "country/FRA"
         },
         {
@@ -87,6 +113,9 @@
       "variable": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
       "observations_by_entity": [
         {
+          "entity": "dummy"
+        },
+        {
           "entity": "country/FRA",
           "points_by_facet": [
             {
@@ -118,6 +147,9 @@
       "variable": "Annual_Generation_Electricity",
       "observations_by_entity": [
         {
+          "entity": "dummy"
+        },
+        {
           "entity": "country/FRA"
         },
         {
@@ -148,6 +180,9 @@
     {
       "variable": "Count_Person_Unemployed",
       "observations_by_entity": [
+        {
+          "entity": "dummy"
+        },
         {
           "entity": "country/FRA"
         },
@@ -187,6 +222,9 @@
       "variable": "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
       "observations_by_entity": [
         {
+          "entity": "dummy"
+        },
+        {
           "entity": "country/FRA"
         },
         {
@@ -206,6 +244,33 @@
               "date": "2022-04-27",
               "value": 9215795,
               "facet": 2232540893
+            }
+          ]
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    },
+    {
+      "variable": "Count_Person_FoodInsecure",
+      "observations_by_entity": [
+        {
+          "entity": "dummy"
+        },
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA"
+        },
+        {
+          "entity": "geoId/06",
+          "points_by_facet": [
+            {
+              "date": "2019",
+              "value": 4011960,
+              "facet": 180485622
             }
           ]
         },
@@ -264,6 +329,11 @@
       "provenance_url": "https://www.bls.gov/cps/",
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
+    },
+    "180485622": {
+      "import_name": "Feeding America",
+      "provenance_url": "https://www.feedingamerica.org/",
+      "measurement_method": "FeedingAmerica_Estimate"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",

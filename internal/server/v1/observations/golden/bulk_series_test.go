@@ -42,14 +42,16 @@ func TestBulkObservationsSeries(t *testing.T) {
 		}{
 			{
 				[]string{
+					"dummy",
 					"Count_Person",
 					"Count_CriminalActivities_CombinedCrime",
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
 					"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+					"Count_Person_FoodInsecure",
 				},
-				[]string{"country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
+				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				true,
 				"result.json",
 			},
@@ -94,7 +96,10 @@ func TestBulkObservationsSeries(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"BulkObservationsSeries", &test.TestOption{}, testSuite); err != nil {
+		"BulkObservationsSeries",
+		&test.TestOption{UseMemdb: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

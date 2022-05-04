@@ -41,20 +41,20 @@ func TestBulkObservationsPointLinked(t *testing.T) {
 			date         string
 			goldenFile   string
 		}{
-			// {
-			// 	"County",
-			// 	"geoId/06",
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"",
-			// 	"CA_County.json",
-			// },
-			// {
-			// 	"County",
-			// 	"country/USA",
-			// 	[]string{"Count_Person", "Median_Age_Person", "NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
-			// 	"",
-			// 	"USA_County.json",
-			// },
+			{
+				"County",
+				"geoId/06",
+				[]string{"dummy", "Count_Person", "Median_Age_Person"},
+				"",
+				"CA_County.json",
+			},
+			{
+				"County",
+				"country/USA",
+				[]string{"dummy", "Count_Person", "Median_Age_Person", "NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
+				"",
+				"USA_County.json",
+			},
 			{
 				"State",
 				"country/USA",
@@ -138,7 +138,10 @@ func TestBulkObservationsPointLinked(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"BulkObservationsPointLinked", &test.TestOption{UseMemdb: true}, testSuite); err != nil {
+		"BulkObservationsPointLinked",
+		&test.TestOption{UseMemdb: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

@@ -4,6 +4,9 @@
       "variable": "Count_Person",
       "observations_by_entity": [
         {
+          "entity": "dummy"
+        },
+        {
           "entity": "country/FRA",
           "points_by_facet": [
             {
@@ -129,6 +132,9 @@
       "variable": "Count_CriminalActivities_CombinedCrime",
       "observations_by_entity": [
         {
+          "entity": "dummy"
+        },
+        {
           "entity": "country/FRA"
         },
         {
@@ -167,6 +173,9 @@
       "variable": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
       "observations_by_entity": [
         {
+          "entity": "dummy"
+        },
+        {
           "entity": "country/FRA",
           "points_by_facet": [
             {
@@ -185,6 +194,26 @@
               "facet": 2171028778
             }
           ]
+        },
+        {
+          "entity": "geoId/06"
+        },
+        {
+          "entity": "geoId/0649670"
+        }
+      ]
+    },
+    {
+      "variable": "Count_Person_FoodInsecure",
+      "observations_by_entity": [
+        {
+          "entity": "dummy"
+        },
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/USA"
         },
         {
           "entity": "geoId/06"

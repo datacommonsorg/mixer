@@ -38,7 +38,9 @@ func BulkSeries(
 	variables := in.GetVariables()
 	allFacets := in.GetAllFacets()
 
-	result := &pb.BulkObservationsSeriesResponse{}
+	result := &pb.BulkObservationsSeriesResponse{
+		Facets: map[uint32]*pb.StatMetadata{},
+	}
 	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(entities, variables)
 	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
 	if err != nil {
@@ -47,49 +49,71 @@ func BulkSeries(
 
 	tmpResult := map[string]*pb.VariableObservations{}
 	for _, entity := range entities {
-		entityData, ok := btData[entity]
-		if !ok {
-			continue
-		}
 		for _, variable := range variables {
-			obsTimeSeries, ok := entityData[variable]
-			if !ok || obsTimeSeries == nil {
-				continue
+			series := btData[entity][variable].SourceSeries
+			entityObservations := &pb.EntityObservations{
+				Entity: entity,
 			}
 			if _, ok := tmpResult[variable]; !ok {
 				tmpResult[variable] = &pb.VariableObservations{
 					Variable: variable,
 				}
 			}
-			entityObservations := &pb.EntityObservations{
-				Entity: entity,
-			}
-			series := obsTimeSeries.SourceSeries
-			sort.Sort(ranking.SeriesByRank(series))
-
-			if !allFacets && len(series) > 0 {
-				series = series[0:1]
-			}
-			for _, series := range series {
-				metadata := stat.GetMetadata(series)
-				facet := util.GetMetadataHash(metadata)
-				timeSeries := &pb.TimeSeries{
-					Facet: facet,
+			if len(series) > 0 {
+				// Read series from BT cache
+				sort.Sort(ranking.SeriesByRank(series))
+				if !allFacets && len(series) > 0 {
+					series = series[0:1]
 				}
-				for date, value := range series.Val {
-					ps := &pb.PointStat{
-						Date:  date,
-						Value: value,
+				for _, series := range series {
+					metadata := stat.GetMetadata(series)
+					facet := util.GetMetadataHash(metadata)
+					timeSeries := &pb.TimeSeries{
+						Facet: facet,
 					}
-					timeSeries.Series = append(timeSeries.Series, ps)
-					sort.SliceStable(timeSeries.Series, func(i, j int) bool {
-						return timeSeries.Series[i].Date < timeSeries.Series[j].Date
-					})
+					for date, value := range series.Val {
+						ps := &pb.PointStat{
+							Date:  date,
+							Value: value,
+						}
+						timeSeries.Series = append(timeSeries.Series, ps)
+						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
+							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
+						})
+					}
+					entityObservations.SeriesByFacet = append(
+						entityObservations.SeriesByFacet,
+						timeSeries,
+					)
+					result.Facets[facet] = metadata
 				}
-				entityObservations.SeriesByFacet = append(
-					entityObservations.SeriesByFacet,
-					timeSeries,
-				)
+			} else if store.MemDb.HasStatVar(variable) {
+				// Read series from in-memory database
+				series := store.MemDb.ReadSeries(variable, entity)
+				if !allFacets && len(series) > 0 {
+					series = series[0:1]
+				}
+				for _, series := range series {
+					facet := util.GetMetadataHash(series.Metadata)
+					timeSeries := &pb.TimeSeries{
+						Facet: facet,
+					}
+					for date, value := range series.Val {
+						ps := &pb.PointStat{
+							Date:  date,
+							Value: value,
+						}
+						timeSeries.Series = append(timeSeries.Series, ps)
+						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
+							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
+						})
+					}
+					entityObservations.SeriesByFacet = append(
+						entityObservations.SeriesByFacet,
+						timeSeries,
+					)
+					result.Facets[facet] = series.Metadata
+				}
 			}
 			tmpResult[variable].ObservationsByEntity = append(
 				tmpResult[variable].ObservationsByEntity,

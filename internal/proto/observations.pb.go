@@ -719,6 +719,90 @@ func (x *BulkObservationsSeriesResponse) GetFacets() map[uint32]*StatMetadata {
 	return nil
 }
 
+type BulkObservationsSeriesLinkedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The observed entity type
+	EntityType string `protobuf:"bytes,1,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
+	// The entity that is linked to the observed entity
+	LinkedEntity string `protobuf:"bytes,2,opt,name=linked_entity,json=linkedEntity,proto3" json:"linked_entity,omitempty"`
+	// The property that links the root and observed entity
+	LinkedProperty string `protobuf:"bytes,3,opt,name=linked_property,json=linkedProperty,proto3" json:"linked_property,omitempty"`
+	// Variables to query for
+	Variables []string `protobuf:"bytes,4,rep,name=variables,proto3" json:"variables,omitempty"`
+	// [Optional] Whether to fetch data from all facets
+	AllFacets bool `protobuf:"varint,5,opt,name=all_facets,json=allFacets,proto3" json:"all_facets,omitempty"`
+}
+
+func (x *BulkObservationsSeriesLinkedRequest) Reset() {
+	*x = BulkObservationsSeriesLinkedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_observations_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BulkObservationsSeriesLinkedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkObservationsSeriesLinkedRequest) ProtoMessage() {}
+
+func (x *BulkObservationsSeriesLinkedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_observations_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkObservationsSeriesLinkedRequest.ProtoReflect.Descriptor instead.
+func (*BulkObservationsSeriesLinkedRequest) Descriptor() ([]byte, []int) {
+	return file_v1_observations_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *BulkObservationsSeriesLinkedRequest) GetEntityType() string {
+	if x != nil {
+		return x.EntityType
+	}
+	return ""
+}
+
+func (x *BulkObservationsSeriesLinkedRequest) GetLinkedEntity() string {
+	if x != nil {
+		return x.LinkedEntity
+	}
+	return ""
+}
+
+func (x *BulkObservationsSeriesLinkedRequest) GetLinkedProperty() string {
+	if x != nil {
+		return x.LinkedProperty
+	}
+	return ""
+}
+
+func (x *BulkObservationsSeriesLinkedRequest) GetVariables() []string {
+	if x != nil {
+		return x.Variables
+	}
+	return nil
+}
+
+func (x *BulkObservationsSeriesLinkedRequest) GetAllFacets() bool {
+	if x != nil {
+		return x.AllFacets
+	}
+	return false
+}
+
 var File_v1_observations_proto protoreflect.FileDescriptor
 
 var file_v1_observations_proto_rawDesc = []byte{
@@ -839,8 +923,21 @@ var file_v1_observations_proto_rawDesc = []byte{
 	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x64, 0x61,
 	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x4d, 0x65,
 	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38,
-	0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x22, 0xd1, 0x01, 0x0a, 0x23, 0x42, 0x75, 0x6c, 0x6b, 0x4f, 0x62, 0x73, 0x65, 0x72, 0x76,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x53, 0x65, 0x72, 0x69, 0x65, 0x73, 0x4c, 0x69, 0x6e, 0x6b,
+	0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x65, 0x6e, 0x74,
+	0x69, 0x74, 0x79, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x6c, 0x69,
+	0x6e, 0x6b, 0x65, 0x64, 0x5f, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0c, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12,
+	0x27, 0x0a, 0x0f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x5f, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72,
+	0x74, 0x79, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64,
+	0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x12, 0x1c, 0x0a, 0x09, 0x76, 0x61, 0x72, 0x69,
+	0x61, 0x62, 0x6c, 0x65, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x76, 0x61, 0x72,
+	0x69, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x6c, 0x6c, 0x5f, 0x66, 0x61,
+	0x63, 0x65, 0x74, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x61, 0x6c, 0x6c, 0x46,
+	0x61, 0x63, 0x65, 0x74, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -855,37 +952,38 @@ func file_v1_observations_proto_rawDescGZIP() []byte {
 	return file_v1_observations_proto_rawDescData
 }
 
-var file_v1_observations_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_v1_observations_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_v1_observations_proto_goTypes = []interface{}{
-	(*TimeSeries)(nil),                         // 0: datacommons.v1.TimeSeries
-	(*EntityObservations)(nil),                 // 1: datacommons.v1.EntityObservations
-	(*VariableObservations)(nil),               // 2: datacommons.v1.VariableObservations
-	(*ObservationsPointRequest)(nil),           // 3: datacommons.v1.ObservationsPointRequest
-	(*BulkObservationsPointRequest)(nil),       // 4: datacommons.v1.BulkObservationsPointRequest
-	(*BulkObservationsPointResponse)(nil),      // 5: datacommons.v1.BulkObservationsPointResponse
-	(*BulkObservationsPointLinkedRequest)(nil), // 6: datacommons.v1.BulkObservationsPointLinkedRequest
-	(*ObservationsSeriesRequest)(nil),          // 7: datacommons.v1.ObservationsSeriesRequest
-	(*ObservationsSeriesResponse)(nil),         // 8: datacommons.v1.ObservationsSeriesResponse
-	(*BulkObservationsSeriesRequest)(nil),      // 9: datacommons.v1.BulkObservationsSeriesRequest
-	(*BulkObservationsSeriesResponse)(nil),     // 10: datacommons.v1.BulkObservationsSeriesResponse
-	nil,                                        // 11: datacommons.v1.BulkObservationsPointResponse.FacetsEntry
-	nil,                                        // 12: datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry
-	(*PointStat)(nil),                          // 13: datacommons.PointStat
-	(*StatMetadata)(nil),                       // 14: datacommons.StatMetadata
+	(*TimeSeries)(nil),                          // 0: datacommons.v1.TimeSeries
+	(*EntityObservations)(nil),                  // 1: datacommons.v1.EntityObservations
+	(*VariableObservations)(nil),                // 2: datacommons.v1.VariableObservations
+	(*ObservationsPointRequest)(nil),            // 3: datacommons.v1.ObservationsPointRequest
+	(*BulkObservationsPointRequest)(nil),        // 4: datacommons.v1.BulkObservationsPointRequest
+	(*BulkObservationsPointResponse)(nil),       // 5: datacommons.v1.BulkObservationsPointResponse
+	(*BulkObservationsPointLinkedRequest)(nil),  // 6: datacommons.v1.BulkObservationsPointLinkedRequest
+	(*ObservationsSeriesRequest)(nil),           // 7: datacommons.v1.ObservationsSeriesRequest
+	(*ObservationsSeriesResponse)(nil),          // 8: datacommons.v1.ObservationsSeriesResponse
+	(*BulkObservationsSeriesRequest)(nil),       // 9: datacommons.v1.BulkObservationsSeriesRequest
+	(*BulkObservationsSeriesResponse)(nil),      // 10: datacommons.v1.BulkObservationsSeriesResponse
+	(*BulkObservationsSeriesLinkedRequest)(nil), // 11: datacommons.v1.BulkObservationsSeriesLinkedRequest
+	nil,                  // 12: datacommons.v1.BulkObservationsPointResponse.FacetsEntry
+	nil,                  // 13: datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry
+	(*PointStat)(nil),    // 14: datacommons.PointStat
+	(*StatMetadata)(nil), // 15: datacommons.StatMetadata
 }
 var file_v1_observations_proto_depIdxs = []int32{
-	13, // 0: datacommons.v1.TimeSeries.series:type_name -> datacommons.PointStat
-	13, // 1: datacommons.v1.EntityObservations.points_by_facet:type_name -> datacommons.PointStat
+	14, // 0: datacommons.v1.TimeSeries.series:type_name -> datacommons.PointStat
+	14, // 1: datacommons.v1.EntityObservations.points_by_facet:type_name -> datacommons.PointStat
 	0,  // 2: datacommons.v1.EntityObservations.series_by_facet:type_name -> datacommons.v1.TimeSeries
 	1,  // 3: datacommons.v1.VariableObservations.observations_by_entity:type_name -> datacommons.v1.EntityObservations
 	2,  // 4: datacommons.v1.BulkObservationsPointResponse.observations_by_variable:type_name -> datacommons.v1.VariableObservations
-	11, // 5: datacommons.v1.BulkObservationsPointResponse.facets:type_name -> datacommons.v1.BulkObservationsPointResponse.FacetsEntry
-	13, // 6: datacommons.v1.ObservationsSeriesResponse.observations:type_name -> datacommons.PointStat
-	14, // 7: datacommons.v1.ObservationsSeriesResponse.facet:type_name -> datacommons.StatMetadata
+	12, // 5: datacommons.v1.BulkObservationsPointResponse.facets:type_name -> datacommons.v1.BulkObservationsPointResponse.FacetsEntry
+	14, // 6: datacommons.v1.ObservationsSeriesResponse.observations:type_name -> datacommons.PointStat
+	15, // 7: datacommons.v1.ObservationsSeriesResponse.facet:type_name -> datacommons.StatMetadata
 	2,  // 8: datacommons.v1.BulkObservationsSeriesResponse.observations_by_variable:type_name -> datacommons.v1.VariableObservations
-	12, // 9: datacommons.v1.BulkObservationsSeriesResponse.facets:type_name -> datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry
-	14, // 10: datacommons.v1.BulkObservationsPointResponse.FacetsEntry.value:type_name -> datacommons.StatMetadata
-	14, // 11: datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry.value:type_name -> datacommons.StatMetadata
+	13, // 9: datacommons.v1.BulkObservationsSeriesResponse.facets:type_name -> datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry
+	15, // 10: datacommons.v1.BulkObservationsPointResponse.FacetsEntry.value:type_name -> datacommons.StatMetadata
+	15, // 11: datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry.value:type_name -> datacommons.StatMetadata
 	12, // [12:12] is the sub-list for method output_type
 	12, // [12:12] is the sub-list for method input_type
 	12, // [12:12] is the sub-list for extension type_name
@@ -1032,6 +1130,18 @@ func file_v1_observations_proto_init() {
 				return nil
 			}
 		}
+		file_v1_observations_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BulkObservationsSeriesLinkedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1039,7 +1149,7 @@ func file_v1_observations_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v1_observations_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

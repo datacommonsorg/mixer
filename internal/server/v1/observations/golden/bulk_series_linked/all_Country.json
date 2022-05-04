@@ -1,0 +1,922 @@
+{
+  "observations_by_variable": [
+    {
+      "variable": "Median_Age_Person",
+      "observations_by_entity": [
+        {
+          "entity": "country/ABW"
+        },
+        {
+          "entity": "country/AFG"
+        },
+        {
+          "entity": "country/AGO"
+        },
+        {
+          "entity": "country/AIA"
+        },
+        {
+          "entity": "country/ALB"
+        },
+        {
+          "entity": "country/AND"
+        },
+        {
+          "entity": "country/ANT"
+        },
+        {
+          "entity": "country/ARE"
+        },
+        {
+          "entity": "country/ARG"
+        },
+        {
+          "entity": "country/ARM"
+        },
+        {
+          "entity": "country/ASM"
+        },
+        {
+          "entity": "country/ATA"
+        },
+        {
+          "entity": "country/ATB"
+        },
+        {
+          "entity": "country/ATF"
+        },
+        {
+          "entity": "country/ATG"
+        },
+        {
+          "entity": "country/ATN"
+        },
+        {
+          "entity": "country/AUS"
+        },
+        {
+          "entity": "country/AUT"
+        },
+        {
+          "entity": "country/AZE"
+        },
+        {
+          "entity": "country/BDI"
+        },
+        {
+          "entity": "country/BEL"
+        },
+        {
+          "entity": "country/BEN"
+        },
+        {
+          "entity": "country/BES"
+        },
+        {
+          "entity": "country/BFA"
+        },
+        {
+          "entity": "country/BGD"
+        },
+        {
+          "entity": "country/BGR"
+        },
+        {
+          "entity": "country/BHR"
+        },
+        {
+          "entity": "country/BHS"
+        },
+        {
+          "entity": "country/BIH"
+        },
+        {
+          "entity": "country/BLM"
+        },
+        {
+          "entity": "country/BLR"
+        },
+        {
+          "entity": "country/BLZ"
+        },
+        {
+          "entity": "country/BMU"
+        },
+        {
+          "entity": "country/BOL"
+        },
+        {
+          "entity": "country/BRA"
+        },
+        {
+          "entity": "country/BRB"
+        },
+        {
+          "entity": "country/BRN"
+        },
+        {
+          "entity": "country/BTN"
+        },
+        {
+          "entity": "country/BVT"
+        },
+        {
+          "entity": "country/BWA"
+        },
+        {
+          "entity": "country/CAF"
+        },
+        {
+          "entity": "country/CAN"
+        },
+        {
+          "entity": "country/CCK"
+        },
+        {
+          "entity": "country/CHE"
+        },
+        {
+          "entity": "country/CHL"
+        },
+        {
+          "entity": "country/CHN"
+        },
+        {
+          "entity": "country/CIV"
+        },
+        {
+          "entity": "country/CMR"
+        },
+        {
+          "entity": "country/COD"
+        },
+        {
+          "entity": "country/COG"
+        },
+        {
+          "entity": "country/COK"
+        },
+        {
+          "entity": "country/COL"
+        },
+        {
+          "entity": "country/COM"
+        },
+        {
+          "entity": "country/CPV"
+        },
+        {
+          "entity": "country/CRI"
+        },
+        {
+          "entity": "country/CTE"
+        },
+        {
+          "entity": "country/CUB"
+        },
+        {
+          "entity": "country/CUW"
+        },
+        {
+          "entity": "country/CXR"
+        },
+        {
+          "entity": "country/CYM"
+        },
+        {
+          "entity": "country/CYP"
+        },
+        {
+          "entity": "country/CZE"
+        },
+        {
+          "entity": "country/DEU"
+        },
+        {
+          "entity": "country/DJI"
+        },
+        {
+          "entity": "country/DMA"
+        },
+        {
+          "entity": "country/DNK"
+        },
+        {
+          "entity": "country/DOM"
+        },
+        {
+          "entity": "country/DZA"
+        },
+        {
+          "entity": "country/ECU"
+        },
+        {
+          "entity": "country/EGY"
+        },
+        {
+          "entity": "country/ERI"
+        },
+        {
+          "entity": "country/ESH"
+        },
+        {
+          "entity": "country/ESP"
+        },
+        {
+          "entity": "country/EST"
+        },
+        {
+          "entity": "country/ETH"
+        },
+        {
+          "entity": "country/FIN"
+        },
+        {
+          "entity": "country/FJI"
+        },
+        {
+          "entity": "country/FLK"
+        },
+        {
+          "entity": "country/FRA"
+        },
+        {
+          "entity": "country/FRO"
+        },
+        {
+          "entity": "country/FSM"
+        },
+        {
+          "entity": "country/FXX"
+        },
+        {
+          "entity": "country/GAB"
+        },
+        {
+          "entity": "country/GBR"
+        },
+        {
+          "entity": "country/GEO"
+        },
+        {
+          "entity": "country/GGY"
+        },
+        {
+          "entity": "country/GHA"
+        },
+        {
+          "entity": "country/GIB"
+        },
+        {
+          "entity": "country/GIN"
+        },
+        {
+          "entity": "country/GLP"
+        },
+        {
+          "entity": "country/GMB"
+        },
+        {
+          "entity": "country/GNB"
+        },
+        {
+          "entity": "country/GNQ"
+        },
+        {
+          "entity": "country/GRC"
+        },
+        {
+          "entity": "country/GRD"
+        },
+        {
+          "entity": "country/GRL"
+        },
+        {
+          "entity": "country/GTM"
+        },
+        {
+          "entity": "country/GUF"
+        },
+        {
+          "entity": "country/GUM"
+        },
+        {
+          "entity": "country/GUY"
+        },
+        {
+          "entity": "country/HKG"
+        },
+        {
+          "entity": "country/HMD"
+        },
+        {
+          "entity": "country/HND"
+        },
+        {
+          "entity": "country/HRV"
+        },
+        {
+          "entity": "country/HTI"
+        },
+        {
+          "entity": "country/HUN"
+        },
+        {
+          "entity": "country/IDN"
+        },
+        {
+          "entity": "country/IMN"
+        },
+        {
+          "entity": "country/IND"
+        },
+        {
+          "entity": "country/IOT"
+        },
+        {
+          "entity": "country/IRL"
+        },
+        {
+          "entity": "country/IRN"
+        },
+        {
+          "entity": "country/IRQ"
+        },
+        {
+          "entity": "country/ISL"
+        },
+        {
+          "entity": "country/ISR"
+        },
+        {
+          "entity": "country/ITA"
+        },
+        {
+          "entity": "country/JAM"
+        },
+        {
+          "entity": "country/JEY"
+        },
+        {
+          "entity": "country/JOR"
+        },
+        {
+          "entity": "country/JPN"
+        },
+        {
+          "entity": "country/KAZ"
+        },
+        {
+          "entity": "country/KEN"
+        },
+        {
+          "entity": "country/KGZ"
+        },
+        {
+          "entity": "country/KHM"
+        },
+        {
+          "entity": "country/KIR"
+        },
+        {
+          "entity": "country/KNA"
+        },
+        {
+          "entity": "country/KOR"
+        },
+        {
+          "entity": "country/KWT"
+        },
+        {
+          "entity": "country/LAO"
+        },
+        {
+          "entity": "country/LBN"
+        },
+        {
+          "entity": "country/LBR"
+        },
+        {
+          "entity": "country/LBY"
+        },
+        {
+          "entity": "country/LCA"
+        },
+        {
+          "entity": "country/LIE"
+        },
+        {
+          "entity": "country/LKA"
+        },
+        {
+          "entity": "country/LSO"
+        },
+        {
+          "entity": "country/LTU"
+        },
+        {
+          "entity": "country/LUX"
+        },
+        {
+          "entity": "country/LVA"
+        },
+        {
+          "entity": "country/MAC"
+        },
+        {
+          "entity": "country/MAF"
+        },
+        {
+          "entity": "country/MAR"
+        },
+        {
+          "entity": "country/MCO"
+        },
+        {
+          "entity": "country/MDA"
+        },
+        {
+          "entity": "country/MDG"
+        },
+        {
+          "entity": "country/MDV"
+        },
+        {
+          "entity": "country/MEX"
+        },
+        {
+          "entity": "country/MHL"
+        },
+        {
+          "entity": "country/MKD"
+        },
+        {
+          "entity": "country/MLI"
+        },
+        {
+          "entity": "country/MLT"
+        },
+        {
+          "entity": "country/MMR"
+        },
+        {
+          "entity": "country/MNE"
+        },
+        {
+          "entity": "country/MNG"
+        },
+        {
+          "entity": "country/MNP"
+        },
+        {
+          "entity": "country/MOZ"
+        },
+        {
+          "entity": "country/MRT"
+        },
+        {
+          "entity": "country/MSR"
+        },
+        {
+          "entity": "country/MTQ"
+        },
+        {
+          "entity": "country/MUS"
+        },
+        {
+          "entity": "country/MWI"
+        },
+        {
+          "entity": "country/MYS"
+        },
+        {
+          "entity": "country/MYT"
+        },
+        {
+          "entity": "country/NAM"
+        },
+        {
+          "entity": "country/NCL"
+        },
+        {
+          "entity": "country/NER"
+        },
+        {
+          "entity": "country/NFK"
+        },
+        {
+          "entity": "country/NGA"
+        },
+        {
+          "entity": "country/NIC"
+        },
+        {
+          "entity": "country/NIU"
+        },
+        {
+          "entity": "country/NLD"
+        },
+        {
+          "entity": "country/NOR"
+        },
+        {
+          "entity": "country/NPL"
+        },
+        {
+          "entity": "country/NRU"
+        },
+        {
+          "entity": "country/NZL"
+        },
+        {
+          "entity": "country/OMN"
+        },
+        {
+          "entity": "country/PAK"
+        },
+        {
+          "entity": "country/PAN"
+        },
+        {
+          "entity": "country/PCN"
+        },
+        {
+          "entity": "country/PER"
+        },
+        {
+          "entity": "country/PHL"
+        },
+        {
+          "entity": "country/PLW"
+        },
+        {
+          "entity": "country/PNG"
+        },
+        {
+          "entity": "country/POL"
+        },
+        {
+          "entity": "country/PRI"
+        },
+        {
+          "entity": "country/PRK"
+        },
+        {
+          "entity": "country/PRT"
+        },
+        {
+          "entity": "country/PRY"
+        },
+        {
+          "entity": "country/PSE"
+        },
+        {
+          "entity": "country/PYF"
+        },
+        {
+          "entity": "country/QAT"
+        },
+        {
+          "entity": "country/REU"
+        },
+        {
+          "entity": "country/ROU"
+        },
+        {
+          "entity": "country/RUS"
+        },
+        {
+          "entity": "country/RWA"
+        },
+        {
+          "entity": "country/SAU"
+        },
+        {
+          "entity": "country/SDN"
+        },
+        {
+          "entity": "country/SEN"
+        },
+        {
+          "entity": "country/SGP"
+        },
+        {
+          "entity": "country/SGS"
+        },
+        {
+          "entity": "country/SHN"
+        },
+        {
+          "entity": "country/SJM"
+        },
+        {
+          "entity": "country/SLB"
+        },
+        {
+          "entity": "country/SLE"
+        },
+        {
+          "entity": "country/SLV"
+        },
+        {
+          "entity": "country/SMR"
+        },
+        {
+          "entity": "country/SOM"
+        },
+        {
+          "entity": "country/SPM"
+        },
+        {
+          "entity": "country/SRB"
+        },
+        {
+          "entity": "country/SSD"
+        },
+        {
+          "entity": "country/STP"
+        },
+        {
+          "entity": "country/SUR"
+        },
+        {
+          "entity": "country/SVK"
+        },
+        {
+          "entity": "country/SVN"
+        },
+        {
+          "entity": "country/SWE"
+        },
+        {
+          "entity": "country/SWZ"
+        },
+        {
+          "entity": "country/SXM"
+        },
+        {
+          "entity": "country/SYC"
+        },
+        {
+          "entity": "country/SYR"
+        },
+        {
+          "entity": "country/TCA"
+        },
+        {
+          "entity": "country/TCD"
+        },
+        {
+          "entity": "country/TGO"
+        },
+        {
+          "entity": "country/THA"
+        },
+        {
+          "entity": "country/TJK"
+        },
+        {
+          "entity": "country/TKL"
+        },
+        {
+          "entity": "country/TKM"
+        },
+        {
+          "entity": "country/TLS"
+        },
+        {
+          "entity": "country/TON"
+        },
+        {
+          "entity": "country/TTO"
+        },
+        {
+          "entity": "country/TUN"
+        },
+        {
+          "entity": "country/TUR"
+        },
+        {
+          "entity": "country/TUV"
+        },
+        {
+          "entity": "country/TWN"
+        },
+        {
+          "entity": "country/TZA"
+        },
+        {
+          "entity": "country/UGA"
+        },
+        {
+          "entity": "country/UKR"
+        },
+        {
+          "entity": "country/UMI"
+        },
+        {
+          "entity": "country/URY"
+        },
+        {
+          "entity": "country/USA",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2011",
+                  "value": 37
+                },
+                {
+                  "date": "2012",
+                  "value": 37.2
+                },
+                {
+                  "date": "2013",
+                  "value": 37.3
+                },
+                {
+                  "date": "2014",
+                  "value": 37.4
+                },
+                {
+                  "date": "2015",
+                  "value": 37.6
+                },
+                {
+                  "date": "2016",
+                  "value": 37.7
+                },
+                {
+                  "date": "2017",
+                  "value": 37.8
+                },
+                {
+                  "date": "2018",
+                  "value": 37.9
+                },
+                {
+                  "date": "2019",
+                  "value": 38.1
+                }
+              ],
+              "facet": 3357919774
+            },
+            {
+              "series": [
+                {
+                  "date": "2010",
+                  "value": 36.9
+                },
+                {
+                  "date": "2011",
+                  "value": 37
+                },
+                {
+                  "date": "2012",
+                  "value": 37.2
+                },
+                {
+                  "date": "2013",
+                  "value": 37.3
+                },
+                {
+                  "date": "2014",
+                  "value": 37.4
+                },
+                {
+                  "date": "2015",
+                  "value": 37.6
+                },
+                {
+                  "date": "2016",
+                  "value": 37.7
+                },
+                {
+                  "date": "2017",
+                  "value": 37.8
+                },
+                {
+                  "date": "2018",
+                  "value": 37.9
+                },
+                {
+                  "date": "2019",
+                  "value": 38.1
+                }
+              ],
+              "facet": 2763329611
+            },
+            {
+              "series": [
+                {
+                  "date": "2017",
+                  "value": 37.8
+                },
+                {
+                  "date": "2018",
+                  "value": 37.9
+                },
+                {
+                  "date": "2019",
+                  "value": 38.1
+                }
+              ],
+              "facet": 3690003977
+            },
+            {
+              "series": [
+                {
+                  "date": "2017",
+                  "value": 37.8
+                },
+                {
+                  "date": "2018",
+                  "value": 37.9
+                },
+                {
+                  "date": "2019",
+                  "value": 38.1
+                }
+              ],
+              "facet": 4219092424
+            }
+          ]
+        },
+        {
+          "entity": "country/UZB"
+        },
+        {
+          "entity": "country/VAT"
+        },
+        {
+          "entity": "country/VCT"
+        },
+        {
+          "entity": "country/VEN"
+        },
+        {
+          "entity": "country/VGB"
+        },
+        {
+          "entity": "country/VIR"
+        },
+        {
+          "entity": "country/VNM"
+        },
+        {
+          "entity": "country/VUT"
+        },
+        {
+          "entity": "country/WLF"
+        },
+        {
+          "entity": "country/WSM"
+        },
+        {
+          "entity": "country/XKS"
+        },
+        {
+          "entity": "country/YEM"
+        },
+        {
+          "entity": "country/YUG"
+        },
+        {
+          "entity": "country/ZAF"
+        },
+        {
+          "entity": "country/ZMB"
+        },
+        {
+          "entity": "country/ZWE"
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "2763329611": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "3357919774": {
+      "import_name": "CensusUSAMedianAgeIncome",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    },
+    "3690003977": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "4219092424": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    }
+  }
+}

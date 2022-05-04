@@ -1,0 +1,937 @@
+{
+  "observations_by_variable": [
+    {
+      "variable": "Count_Person_FoodInsecure",
+      "observations_by_entity": [
+        {
+          "entity": "geoId/01",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 829220
+                },
+                {
+                  "date": "2019",
+                  "value": 788250
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/02",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 95190
+                },
+                {
+                  "date": "2019",
+                  "value": 86970
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/04",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 937300
+                },
+                {
+                  "date": "2019",
+                  "value": 918940
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/05",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 521490
+                },
+                {
+                  "date": "2019",
+                  "value": 499950
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/06",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 4291830
+                },
+                {
+                  "date": "2019",
+                  "value": 4011960
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/08",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 566490
+                },
+                {
+                  "date": "2019",
+                  "value": 566440
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/09",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 426620
+                },
+                {
+                  "date": "2019",
+                  "value": 428800
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/10",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 121850
+                },
+                {
+                  "date": "2019",
+                  "value": 114190
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/11",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 81400
+                },
+                {
+                  "date": "2019",
+                  "value": 70480
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/12",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 2768480
+                },
+                {
+                  "date": "2019",
+                  "value": 2567300
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/13",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 1318500
+                },
+                {
+                  "date": "2019",
+                  "value": 1279310
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/15",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 159040
+                },
+                {
+                  "date": "2019",
+                  "value": 162220
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/16",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 189970
+                },
+                {
+                  "date": "2019",
+                  "value": 179580
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/17",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 1283550
+                },
+                {
+                  "date": "2019",
+                  "value": 1211410
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/18",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 883260
+                },
+                {
+                  "date": "2019",
+                  "value": 834530
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/19",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 305100
+                },
+                {
+                  "date": "2019",
+                  "value": 297800
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/20",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 368770
+                },
+                {
+                  "date": "2019",
+                  "value": 351090
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/21",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 662660
+                },
+                {
+                  "date": "2019",
+                  "value": 644540
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/22",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 751920
+                },
+                {
+                  "date": "2019",
+                  "value": 718360
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/23",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 173080
+                },
+                {
+                  "date": "2019",
+                  "value": 166910
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/24",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 667110
+                },
+                {
+                  "date": "2019",
+                  "value": 640180
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/25",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 617380
+                },
+                {
+                  "date": "2019",
+                  "value": 566930
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/26",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 1359650
+                },
+                {
+                  "date": "2019",
+                  "value": 1299020
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/27",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 461200
+                },
+                {
+                  "date": "2019",
+                  "value": 432170
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/28",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 559350
+                },
+                {
+                  "date": "2019",
+                  "value": 550370
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/29",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 813840
+                },
+                {
+                  "date": "2019",
+                  "value": 809680
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/30",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 109150
+                },
+                {
+                  "date": "2019",
+                  "value": 111080
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/31",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 237440
+                },
+                {
+                  "date": "2019",
+                  "value": 225580
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/32",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 388420
+                },
+                {
+                  "date": "2019",
+                  "value": 373370
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/33",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 125590
+                },
+                {
+                  "date": "2019",
+                  "value": 119990
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/34",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 774860
+                },
+                {
+                  "date": "2019",
+                  "value": 762530
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/35",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 315990
+                },
+                {
+                  "date": "2019",
+                  "value": 298030
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/36",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 2166060
+                },
+                {
+                  "date": "2019",
+                  "value": 2090550
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/37",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 1456200
+                },
+                {
+                  "date": "2019",
+                  "value": 1417440
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/38",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 51610
+                },
+                {
+                  "date": "2019",
+                  "value": 51380
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/39",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 1624180
+                },
+                {
+                  "date": "2019",
+                  "value": 1547110
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/40",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 594140
+                },
+                {
+                  "date": "2019",
+                  "value": 583570
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/41",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 498730
+                },
+                {
+                  "date": "2019",
+                  "value": 486200
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/42",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 1401920
+                },
+                {
+                  "date": "2019",
+                  "value": 1353730
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/44",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 120970
+                },
+                {
+                  "date": "2019",
+                  "value": 101100
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/45",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 600440
+                },
+                {
+                  "date": "2019",
+                  "value": 555630
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/46",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 95080
+                },
+                {
+                  "date": "2019",
+                  "value": 91510
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/47",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 950290
+                },
+                {
+                  "date": "2019",
+                  "value": 905090
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/48",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 4295240
+                },
+                {
+                  "date": "2019",
+                  "value": 4092850
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/49",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 347370
+                },
+                {
+                  "date": "2019",
+                  "value": 355550
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/50",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 70580
+                },
+                {
+                  "date": "2019",
+                  "value": 68590
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/51",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 842870
+                },
+                {
+                  "date": "2019",
+                  "value": 799620
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/53",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 804080
+                },
+                {
+                  "date": "2019",
+                  "value": 790050
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/54",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 250600
+                },
+                {
+                  "date": "2019",
+                  "value": 242180
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/55",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 515930
+                },
+                {
+                  "date": "2019",
+                  "value": 530500
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/56",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2018",
+                  "value": 70640
+                },
+                {
+                  "date": "2019",
+                  "value": 67750
+                }
+              ],
+              "facet": 180485622
+            }
+          ]
+        },
+        {
+          "entity": "geoId/72"
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "180485622": {
+      "import_name": "Feeding America",
+      "provenance_url": "https://www.feedingamerica.org/",
+      "measurement_method": "FeedingAmerica_Estimate"
+    }
+  }
+}
