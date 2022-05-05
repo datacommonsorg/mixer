@@ -30,11 +30,17 @@ message PagedEntities {
 message InPropertyValuesRequest {
   string property = 1;
   string entity = 2;
+  // [Optional]
+  // The limit of the number of values to return. The maximium limit is 1000.
+  // If not specified, the default limit is 1000.
   int32 limit = 3;
-  string token = 4;
+  // [Optional]
+  // The pagination token for getting the next set of entries.
+  string next_token = 4;
 }
 
 message InPropertyValuesResponse {
   repeated datacommons.EntityInfo data = 1;
-  string token = 2;
+  // The pagination token for getting the next set of entries.
+  string next_token = 2;
 }

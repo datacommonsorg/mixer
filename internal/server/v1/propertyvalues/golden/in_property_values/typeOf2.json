@@ -1,14 +1,6 @@
 {
   "data": [
     {
-      "name": "Cameroon",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/CMR",
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "name": "Congo [DRC]",
       "types": [
         "Country"
@@ -549,7 +541,7 @@
         "Country"
       ],
       "dcid": "country/IND",
-      "provenanceId": "dc/rdj6vy2"
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "British Indian Ocean Territory",
@@ -1176,7 +1168,7 @@
         "Country"
       ],
       "dcid": "country/PRI",
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/5jztpr1"
     },
     {
       "name": "North Korea",

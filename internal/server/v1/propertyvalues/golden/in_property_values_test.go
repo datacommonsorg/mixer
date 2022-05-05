@@ -16,7 +16,6 @@ package golden
 
 import (
 	"context"
-	"io/ioutil"
 	"path"
 	"runtime"
 	"testing"
@@ -24,7 +23,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -47,7 +45,7 @@ func TestInPropertyValues(t *testing.T) {
 				"containedIn1.json",
 				"containedInPlace",
 				"geoId/06",
-				502,
+				1002,
 				"",
 			},
 			{
@@ -55,7 +53,7 @@ func TestInPropertyValues(t *testing.T) {
 				"containedInPlace",
 				"geoId/06",
 				500,
-				"H4sIAAAAAAAA/+ISE2IQYuJgFGLiYBJi4mAWYuNgEWCUYAIAAAD//wEAAP//76fhfBgAAAA=",
+				"H4sIAAAAAAAA/+ISEWIQYuJgFGLiYBJi4mAWYuFgEWACAAAA//8BAAD//7V6I/IWAAAA",
 			},
 			{
 				"geoOverlaps.json",
@@ -76,14 +74,14 @@ func TestInPropertyValues(t *testing.T) {
 				"typeOf",
 				"Country",
 				0,
-				"H4sIAAAAAAAA/+KSEGIQYuFglDAUYuFgkjAUYuJgFmLhYJEwAgAAAP//AQAA//+2ckPiGgAAAA==",
+				"H4sIAAAAAAAA/+KSEGIQYuFglDASYuFgkjASYuJgFmLhYJEwAgAAAP//AQAA//8zTzsoGgAAAA==",
 			},
 		} {
 			req := &pb.InPropertyValuesRequest{
-				Property: c.property,
-				Entity:   c.entity,
-				Limit:    c.limit,
-				Token:    c.token,
+				Property:  c.property,
+				Entity:    c.entity,
+				Limit:     c.limit,
+				NextToken: c.token,
 			}
 			resp, err := mixer.InPropertyValues(ctx, req)
 			if err != nil {
@@ -99,8 +97,7 @@ func TestInPropertyValues(t *testing.T) {
 				continue
 			}
 			var expected pb.InPropertyValuesResponse
-			file, _ := ioutil.ReadFile(goldenFile)
-			if err := protojson.Unmarshal(file, &expected); err != nil {
+			if err := test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 				continue
 			}

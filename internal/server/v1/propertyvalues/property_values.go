@@ -31,7 +31,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// Prophet generates cache size at 500.
+// Cache builder generates page size of 500.
 // This (approximately) allows one request to be fulfilled by reading one page
 // from all import groups after merging.
 var defaultLimit = 1000
@@ -41,13 +41,13 @@ type processor struct {
 	entity   string
 	limit    int
 	// CursorGroup that tracks the state of current data.
-	cg *pb.CursorGroup
+	cursorGroup *pb.CursorGroup
 	// Raw entities read from BigTable
-	raw [][]*pb.EntityInfo
+	rawEntities [][]*pb.EntityInfo
 	// Merged entities
-	merged []*pb.EntityInfo
+	mergedEntities []*pb.EntityInfo
 	// Min heap for entity merge sort
-	h *entityHeap
+	heap *entityHeap
 	// Total page count for each import group
 	totalPage map[int]int
 }
@@ -61,7 +61,7 @@ func InPropertyValues(
 	property := in.GetProperty()
 	entity := in.GetEntity()
 	limit := int(in.GetLimit())
-	token := in.GetToken()
+	token := in.GetNextToken()
 	// Check arguments
 	if property == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "missing required argument: property")
@@ -107,12 +107,12 @@ func InPropertyValues(
 		}
 	}
 	respToken := ""
-	for _, d := range proc.raw {
+	for _, d := range proc.rawEntities {
 		// If any import group has more data, then should compute the token
 		if d != nil {
 			respToken, err = util.EncodeProto(
 				&pb.PaginationInfo{
-					CursorGroups: []*pb.CursorGroup{proc.cg},
+					CursorGroups: []*pb.CursorGroup{proc.cursorGroup},
 				})
 			break
 		}
@@ -121,8 +121,8 @@ func InPropertyValues(
 		return nil, err
 	}
 	return &pb.InPropertyValuesResponse{
-		Data:  proc.merged,
-		Token: respToken,
+		Data:      proc.mergedEntities,
+		NextToken: respToken,
 	}, nil
 }
 
@@ -133,22 +133,22 @@ func newProcessor(
 	property string,
 	entity string,
 	limit int,
-	cg *pb.CursorGroup,
+	cursorGroup *pb.CursorGroup,
 ) (*processor, error) {
 	// Constructor
 	p := &processor{
-		property:  property,
-		entity:    entity,
-		cg:        cg,
-		raw:       nil,
-		merged:    nil,
-		limit:     limit,
-		h:         &entityHeap{},
-		totalPage: map[int]int{},
+		property:       property,
+		entity:         entity,
+		cursorGroup:    cursorGroup,
+		rawEntities:    nil,
+		mergedEntities: nil,
+		limit:          limit,
+		heap:           &entityHeap{},
+		totalPage:      map[int]int{},
 	}
 	// Read cache data based on pagination info.
 	rowListMap := map[int]cbt.RowList{}
-	for _, c := range cg.Cursors {
+	for _, c := range cursorGroup.Cursors {
 		if c != nil {
 			rowList := buildSimpleRequestRowList(entity, property, false, c.GetPage())
 			rowListMap[int(c.GetIg())] = rowList
@@ -172,24 +172,24 @@ func newProcessor(
 	for idx, btData := range btDataList {
 		if data, ok := btData[entity]; ok {
 			pe := data.(*pb.PagedEntities)
-			p.raw = append(p.raw, pe.Entities)
+			p.rawEntities = append(p.rawEntities, pe.Entities)
 			p.totalPage[idx] = int(pe.TotalPageCount)
 		} else {
-			p.raw = append(p.raw, nil)
+			p.rawEntities = append(p.rawEntities, nil)
 		}
 	}
 	// Init the min heap.
-	heap.Init(p.h)
+	heap.Init(p.heap)
 	// Push the next entity of each import group to the heap.
-	for idx, entityList := range p.raw {
-		cursor := cg.Cursors[idx]
+	for idx, entityList := range p.rawEntities {
+		cursor := cursorGroup.Cursors[idx]
 		if int(cursor.GetItem()) < len(entityList) {
 			elem := &heapElem{
 				ig:   idx,
 				pos:  cursor.GetItem(),
 				data: entityList[cursor.GetItem()],
 			}
-			heap.Push(p.h, elem)
+			heap.Push(p.heap, elem)
 		}
 	}
 	return p, nil
@@ -206,38 +206,39 @@ func newProcessor(
 // in a merge sort.
 func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, error) {
 	// All entities in all import groups have been exhausted.
-	if p.h.Len() == 0 {
+	if p.heap.Len() == 0 {
 		return false, nil
 	}
-	elem := heap.Pop(p.h).(*heapElem)
-	entity := elem.data
-	ig := elem.ig
-	if len(p.merged) == 0 {
-		p.merged = []*pb.EntityInfo{entity}
+	elem := heap.Pop(p.heap).(*heapElem)
+	entity, ig := elem.data, elem.ig
+	if len(p.mergedEntities) == 0 {
+		p.mergedEntities = []*pb.EntityInfo{entity}
 	} else {
-		prev := p.merged[len(p.merged)-1]
+		prev := p.mergedEntities[len(p.mergedEntities)-1]
 		if entity.Dcid != prev.Dcid || entity.Value != prev.Value {
 			// Find a new entity, add to the result.
-			p.merged = append(p.merged, entity)
+			p.mergedEntities = append(p.mergedEntities, entity)
 		}
 	}
+	// Got enough entities, should stop the process.
+	// Cursor is now at the next read item, ready to be returned.
+	if len(p.mergedEntities) == p.limit+1 {
+		p.mergedEntities = p.mergedEntities[:p.limit]
+		return false, nil
+	}
 	// Update the cursor.
-	cursor := p.cg.Cursors[ig]
+	cursor := p.cursorGroup.Cursors[ig]
 	cursor.Item++
 	// Reach the end of the current page, should advance to next page.
-	if int(cursor.Item) == len(p.raw[ig]) {
+	if int(cursor.Item) == len(p.rawEntities[ig]) {
 		cursor.Page++
 		cursor.Item = 0
-	}
-	// Got enough entities, should stop the process.
-	if len(p.merged) == p.limit {
-		return false, nil
 	}
 	// Need to update raw data if advancing to the next page.
 	if cursor.Item == 0 {
 		// No more pages
 		if cursor.Page == int32(p.totalPage[ig]) {
-			p.raw[ig] = nil
+			p.rawEntities[ig] = nil
 		} else {
 			log.Printf("Read new page: import group %d, page %d", ig, cursor.Page)
 			rowList := buildSimpleRequestRowList(p.entity, p.property, false, cursor.Page)
@@ -260,19 +261,19 @@ func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, er
 			}
 			if data, ok := btDataList[ig][p.entity]; ok {
 				pe := data.(*pb.PagedEntities)
-				p.raw[ig] = pe.Entities
+				p.rawEntities[ig] = pe.Entities
 				p.totalPage[ig] = int(pe.TotalPageCount)
 			}
 		}
 	}
 	// If there is data available in the current import group, push to the heap.
-	if p.raw[ig] != nil {
+	if p.rawEntities[ig] != nil {
 		elem := &heapElem{
 			ig:   ig,
 			pos:  cursor.GetItem(),
-			data: p.raw[ig][cursor.GetItem()],
+			data: p.rawEntities[ig][cursor.GetItem()],
 		}
-		heap.Push(p.h, elem)
+		heap.Push(p.heap, elem)
 	}
 	return true, nil
 }
