@@ -91,14 +91,13 @@ func TestInPropertyValues(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			goldenFile := path.Join(goldenPath, c.goldenFile)
 			if test.GenerateGolden {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 			var expected pb.InPropertyValuesResponse
-			if err := test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
-				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
+			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
 			}
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
