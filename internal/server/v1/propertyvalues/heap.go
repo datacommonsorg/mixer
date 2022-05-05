@@ -31,7 +31,13 @@ func (h entityHeap) Len() int { return len(h) }
 func (h entityHeap) Less(i, j int) bool {
 	di := h[i].data
 	dj := h[j].data
-	// This needs to match the sorting in Prophet.
+	// This needs to match the sorting in cache builder "triple_helper.cc"
+	//
+	// std::string EntityInfoSortKey(const EntityInfo& entity_info) {
+	// return absl::StrJoin(
+	//     {entity_info.dcid(), entity_info.value(), entity_info.provenance_id()},
+	//     kStringConnector);
+	// }
 	return di.Dcid+"^"+di.Value < dj.Dcid+"^"+dj.Value
 }
 func (h entityHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }

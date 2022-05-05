@@ -64,10 +64,12 @@ func InPropertyValues(
 	token := in.GetNextToken()
 	// Check arguments
 	if property == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required argument: property")
+		return nil, status.Errorf(
+			codes.InvalidArgument, "missing required argument: property")
 	}
 	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid entity %s", entity)
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid entity %s", entity)
 	}
 	var err error
 	// Empty cursor group when no token is given.
@@ -75,8 +77,10 @@ func InPropertyValues(
 	if token != "" {
 		pi, err = pagination.Decode(token)
 		if err != nil {
-			return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %s", token)
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid pagination token: %s", token)
 		}
+		// Simple API should have exact one entity, thus one cursor group.
 		if len(pi.CursorGroups) != 1 {
 			return nil, status.Errorf(
 				codes.InvalidArgument,
@@ -126,6 +130,12 @@ func InPropertyValues(
 	}, nil
 }
 
+var action = func(jsonRaw []byte) (interface{}, error) {
+	var p pb.PagedEntities
+	err := proto.Unmarshal(jsonRaw, &p)
+	return &p, err
+}
+
 // newProcessor builds a new processor given property, entity and cursor group.
 func newProcessor(
 	ctx context.Context,
@@ -151,18 +161,14 @@ func newProcessor(
 	for _, c := range cursorGroup.Cursors {
 		if c != nil {
 			rowList := buildSimpleRequestRowList(entity, property, false, c.GetPage())
-			rowListMap[int(c.GetIg())] = rowList
+			rowListMap[int(c.GetImportGroup())] = rowList
 		}
 	}
 	btDataList, err := bigtable.ReadWithGroupRowList(
 		ctx,
 		btGroup,
 		rowListMap,
-		func(jsonRaw []byte) (interface{}, error) {
-			var p pb.PagedEntities
-			err := proto.Unmarshal(jsonRaw, &p)
-			return &p, err
-		},
+		action,
 		nil,
 	)
 	if err != nil {
@@ -197,12 +203,8 @@ func newProcessor(
 
 // Process the next entity.
 //
-// Import groups are ordered by preferences, so all entities from the preferred
-// import groups should be added first. Additional entities from other non
-// preferred import groups are added by the preference order.
-//
 // As the data in each import group is sorted already. The duplication is
-// handled by advancing the pointer in each import group simounateously like
+// handled by advancing the pointer in each import group simultaneously like
 // in a merge sort.
 func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, error) {
 	// All entities in all import groups have been exhausted.
@@ -222,6 +224,16 @@ func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, er
 	}
 	// Got enough entities, should stop the process.
 	// Cursor is now at the next read item, ready to be returned.
+	//
+	// Here go past one entity over limit to ensure all duplicated entries have
+	// been processed. Otherwise, next API request could get duplicate entries.
+
+	// For example, given the two import groups data below and limit of 1, this
+	// ensures the duplicated entry "a" are all processed in this request, and
+	// next request would start processing from "b".
+
+	// import group 1: ["a", "a", "b"]
+	// import group 2: ["a", "c"]
 	if len(p.mergedEntities) == p.limit+1 {
 		p.mergedEntities = p.mergedEntities[:p.limit]
 		return false, nil
@@ -233,9 +245,6 @@ func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, er
 	if int(cursor.Item) == len(p.rawEntities[ig]) {
 		cursor.Page++
 		cursor.Item = 0
-	}
-	// Need to update raw data if advancing to the next page.
-	if cursor.Item == 0 {
 		// No more pages
 		if cursor.Page == int32(p.totalPage[ig]) {
 			p.rawEntities[ig] = nil
@@ -249,11 +258,7 @@ func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, er
 				ctx,
 				btGroup,
 				rowListMap,
-				func(jsonRaw []byte) (interface{}, error) {
-					var p pb.PagedEntities
-					err := proto.Unmarshal(jsonRaw, &p)
-					return &p, err
-				},
+				action,
 				nil,
 			)
 			if err != nil {
@@ -281,7 +286,7 @@ func (p *processor) next(ctx context.Context, btGroup *bigtable.Group) (bool, er
 func buildEmptyCursorGroup(n int) *pb.CursorGroup {
 	result := &pb.CursorGroup{Cursors: []*pb.Cursor{}}
 	for i := 0; i < n; i++ {
-		result.Cursors = append(result.Cursors, &pb.Cursor{Ig: int32(i)})
+		result.Cursors = append(result.Cursors, &pb.Cursor{ImportGroup: int32(i)})
 	}
 	return result
 }

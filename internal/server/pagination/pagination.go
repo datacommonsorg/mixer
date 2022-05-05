@@ -22,7 +22,7 @@ import (
 
 // BuildCursor is a wrapper function to build Cursor.
 func BuildCursor(ig, page, item int32) *pb.Cursor {
-	return &pb.Cursor{Ig: ig, Page: page, Item: item}
+	return &pb.Cursor{ImportGroup: ig, Page: page, Item: item}
 }
 
 // Decode decodes a compressed token string into PaginationInfo.

@@ -21,19 +21,24 @@ package datacommons.v1;
 // import group.
 message Cursor {
   // The index of the import group, starts from 0.
-  int32 ig = 1;
+  int32 import_group = 1;
   // The index of the page, starts from 0.
   int32 page = 2;
   // The position of the next read item in the current page, starts from 0.
   int32 item = 3;
 }
 
+// Represents cursors of several import groups. This holds the position
+// information of one entity.
 message CursorGroup {
   // Entity DCID or other information that identifies the CursorGroup.
   string key = 1;
   repeated Cursor cursors = 2;
 }
 
+// Represents the cursor information of one pagination request.
 message PaginationInfo {
+  // Each cursor group corresponds to the cursor information of one requested
+  // entity. There are multiple cursor groups for bulk APIs.
   repeated CursorGroup cursor_groups = 1;
 }

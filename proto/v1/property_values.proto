@@ -35,7 +35,8 @@ message InPropertyValuesRequest {
   // If not specified, the default limit is 1000.
   int32 limit = 3;
   // [Optional]
-  // The pagination token for getting the next set of entries.
+  // The pagination token for getting the next set of entries. This is empty
+  // for the first request and needs to be set in the subsequent request.
   string next_token = 4;
 }
 

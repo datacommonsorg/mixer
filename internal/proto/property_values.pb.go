@@ -104,7 +104,8 @@ type InPropertyValuesRequest struct {
 	// If not specified, the default limit is 1000.
 	Limit int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	// [Optional]
-	// The pagination token for getting the next set of entries.
+	// The pagination token for getting the next set of entries. This is empty
+	// for the first request and needs to be set in the subsequent request.
 	NextToken string `protobuf:"bytes,4,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
 }
 
