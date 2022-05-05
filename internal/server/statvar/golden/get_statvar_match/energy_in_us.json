@@ -1,0 +1,54 @@
+{
+  "matchInfo": [
+    {
+      "statVar": "dc/2wkk5jk4qrqgb",
+      "statVarName": "Count of Establishment: Other Communication And Energy Wire Mfg. (NAICS/335929)",
+      "score": 0.5892964273451204
+    },
+    {
+      "statVar": "dc/zcr3seqer38y5",
+      "statVarName": "Count of Establishment: Other Communication And Energy Wire Mfg. (NAICS/335929)",
+      "score": 0.5892964273451204
+    },
+    {
+      "statVar": "dc/90g3bvryb6ngb",
+      "statVarName": "Count of Establishment: Communication And Energy Wire And Cable Mfg. (NAICS/33592)",
+      "score": 0.5797928857457046
+    },
+    {
+      "statVar": "dc/k87mz4bwtkk7g",
+      "statVarName": "Count of Establishment: Communication And Energy Wire And Cable Mfg. (NAICS/33592)",
+      "score": 0.5797928857457046
+    },
+    {
+      "statVar": "Amount_Production_Energy",
+      "statVarName": "Amount of Production: Energy",
+      "score": 0.5569593208110333
+    },
+    {
+      "statVar": "Amount_Consumption_Energy",
+      "statVarName": "Amount of Consumption: Energy",
+      "score": 0.5569593208110333
+    },
+    {
+      "statVar": "Annual_Consumption_Energy_EnergyIndustry_Heat_EnergyIndustryOwnUse",
+      "statVarName": "Annual Consumption of Energy: Energy Industry, Heat, Energy Industry Own Use",
+      "score": 0.5133384171678851
+    },
+    {
+      "statVar": "dc/ywkwwekstgnmd",
+      "statVarName": "Wages Annual of Establishment: Other Communication And Energy Wire Mfg. (NAICS/335929)",
+      "score": 0.5058803841714846
+    },
+    {
+      "statVar": "dc/m9xm1637te907",
+      "statVarName": "Wages Annual of Establishment: Communication And Energy Wire And Cable Mfg. (NAICS/33592)",
+      "score": 0.4972282297904411
+    },
+    {
+      "statVar": "Annual_Consumption_Energy_Geothermal",
+      "statVarName": "Annual Consumption of Energy: Geothermal",
+      "score": 0.4823408976122901
+    }
+  ]
+}

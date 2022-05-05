@@ -1,0 +1,54 @@
+{
+  "matchInfo": [
+    {
+      "statVar": "eia/SEDS.REPRB.A",
+      "statVarName": "Renewable energy production",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/SEDS.TETCB.A",
+      "statVarName": "Total energy consumption",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/SEDS.TETCV.A",
+      "statVarName": "Total energy expenditures",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/SEDS.WDPRB.A",
+      "statVarName": "Wood energy production",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/TOTAL.TEEXV.A",
+      "statVarName": "Energy Exports, Annual",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/TOTAL.TEEXV.M",
+      "statVarName": "Energy Exports, Monthly",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/TOTAL.TEIMV.A",
+      "statVarName": "Energy Imports, Annual",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/TOTAL.TENIV.A",
+      "statVarName": "Energy Balance, Annual",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/TOTAL.TENIV.M",
+      "statVarName": "Energy Balance, Monthly",
+      "score": 1.0960311906128837
+    },
+    {
+      "statVar": "eia/TOTAL.TETCV.A",
+      "statVarName": "Energy Expenditures, Annual",
+      "score": 1.0960311906128837
+    }
+  ]
+}

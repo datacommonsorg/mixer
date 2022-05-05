@@ -193,7 +193,14 @@ func BuildBleveIndex(
 		return nil, err
 	}
 	batch := index.NewBatch()
-	for _, svgData := range rawSvg {
+	// The sorting here is to guarantee a deterministic docid assignment and avoid breaking tests.
+	svgOrderedKeys := make([]string, 0, len(rawSvg))
+	for k := range rawSvg {
+		svgOrderedKeys = append(svgOrderedKeys, k)
+	}
+	sort.Strings(svgOrderedKeys)
+	for _, key := range svgOrderedKeys {
+		svgData := rawSvg[key]
 		for _, svData := range svgData.ChildStatVars {
 			keyValueText := strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1)
 			err = batch.Index(svData.Id, BleveDocument{

@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	"github.com/blevesearch/bleve/v2"
+	"github.com/blevesearch/bleve/v2/search/query"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -35,7 +36,23 @@ func toQueryString(m map[string]string) string {
 	return b.String()
 }
 
-const defaultLimit = 100
+func buildQuery(in *pb.GetStatVarMatchRequest) query.Query {
+	var queries []query.Query
+	propertyValueQuery := toQueryString(in.GetPropertyValue())
+	if propertyValueQuery != "" {
+		query := bleve.NewMatchQuery(propertyValueQuery)
+		query.SetField("KeyValueText")
+		queries = append(queries, query)
+	}
+	if in.GetQuery() != "" {
+		query := bleve.NewMatchQuery(in.GetQuery())
+		query.SetBoost(1.5)
+		queries = append(queries, query)
+	}
+	return bleve.NewConjunctionQuery(queries...)
+}
+
+const defaultLimit = 10
 
 // GetStatVarMatch implements API for Mixer.GetStatVarMatch.
 func GetStatVarMatch(
@@ -48,10 +65,10 @@ func GetStatVarMatch(
 	if limit == 0 {
 		limit = defaultLimit
 	}
-	query := bleve.NewMatchQuery(toQueryString(in.GetPropertyValue()))
+	query := buildQuery(in)
 	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, true)
 	// The - prefix indicates reverse direction.
-	searchRequest.SortBy([]string{"-_score", "Title"})
+	searchRequest.SortBy([]string{"-_score", "Title", "_id"})
 	searchRequest.Fields = append(searchRequest.Fields, "Title")
 	searchResults, err := cache.BleveSearchIndex.Search(searchRequest)
 	if err != nil {

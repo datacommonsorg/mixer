@@ -35,23 +35,53 @@ func TestGetStatVarMatch(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
+			query          string
 			propertyValues map[string]string
 			goldenFile     string
 		}{
-			// {
-			// 	map[string]string{
-			// 		"gender":           "Female",
-			// 		"measuredProperty": "count",
-			// 		"nativity":         "USC_ForeignBorn",
-			// 	},
-			// 	"female_usc_foreignborn.json",
-			// },
-			// {
-			// 	map[string]string{"gender": "Female"},
-			// 	"female.json",
-			// },
+			{
+				"number of women foreign born",
+				map[string]string{
+					"gender":   "Female",
+					"mp":       "count",
+					"nativity": "USC_ForeignBorn",
+				},
+				"female_usc_foreignborn.json",
+			},
+			{
+
+				"number of female",
+				map[string]string{"gender": "Female"},
+				"female.json",
+			},
+			{
+				"energy in us",
+				map[string]string{
+					"mp":    "count",
+					"pt":    "USCEstablishment",
+					"st":    "measuredValue",
+					"naics": "NAICS/71",
+				},
+				"energy_in_us.json",
+			},
+			{
+				"",
+				map[string]string{
+					"mp":    "count",
+					"pt":    "USCEstablishment",
+					"st":    "measuredValue",
+					"naics": "NAICS/71",
+				},
+				"energy_in_us_noquery.json",
+			},
+			{
+				"energy in us",
+				map[string]string{},
+				"energy_in_us_nomodel.json",
+			},
 		} {
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
+				Query:         c.query,
 				PropertyValue: c.propertyValues,
 			})
 			if err != nil {
