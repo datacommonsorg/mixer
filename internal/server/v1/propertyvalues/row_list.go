@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This file provides util functions to build row list for different
+// property values APIs.
+
 package propertyvalues
 
 import (
