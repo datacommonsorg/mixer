@@ -1,0 +1,4005 @@
+{
+  "data": [
+    {
+      "name": "Municipal Cogen Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/cyn5xs7ny1brh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bear Valley",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/cz9qhenn7tnv6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Gaviota Oil Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/czj2r39p57043",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #42",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/czjvshdfnlz91",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Haynes",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/czkpn4x8e18m1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "West Point PH",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/czt4yf17nsdk4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Fullerton Mill CHP",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d01r1mys7k0vf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Buidling L",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d0fc8dgs0s381",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Deadwood Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d0hdm0e9x6sng",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MM Yolo Power",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d2fp2gq8pzk06",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Avenal Park",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d2t019gpcf7s9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 2972 Stender, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d3vhyxvx91tz5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "McCoy Solar Energy Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d42j4xlcxqny6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Diamond Valley Lake",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d44elm832q087",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Coronus Adelanto West 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d4j105gthyxlh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Henrietta Peaker",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d54lt46yq3yr4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "San Gabriel Hydro Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d6fslfpxq9mkf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #05",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d6nn3vlymprpc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ormesa II",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d751qkhy6tpxb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Collierville Powerhouse",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d7cn1ez9s1yy6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kern River 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d7fl1wbcbj1mf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Oxnard Wastewater Treatment Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d7tty0r8mpww5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Santa Felicia Dam",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d7xre6vfwenb4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sierra Pacific Quincy Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d80vfrxdbfsh7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Plant No 1 Orange County",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d83lkcqy6yf26",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SunEdison Anheuser Busch Fairfield",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d89ymnwm3x889",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ramona 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d8l3mcg0gr9eg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Edward C Hyatt",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d8v2b2dpmk7m8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Tehachapi Wind Resource II",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d93j9vn9hwm21",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Valley View",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/d9c5envh0z45h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pit 4",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dc85ty54s8l28",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Indian Valley Dam Hydro Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dcb0te0qytd8c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "AES Redondo Beach LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dcclt8bkhg0rf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rio Bravo Hydro Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dcwd1c7xq4hq4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sun Harvest Solar NDP1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dd7s3w8zevb46",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MCAGCC Cogen Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ddlme0xm4zjb6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Dinuba Energy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ddx586j10zb9g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bucks Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/de09kf4wbk09g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Goal Line LP",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/de5c76137wk15",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Woodland",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/de70c111nrh0b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Star California II LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/deg4nk3p6y0nb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "North Midway Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/degplme3r4176",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Cosumnes",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dengvrfsd01g9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "San Fernando",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dg0t9k5453bv6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Desert Sunlight 300, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dg65h1wv0glq6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CBS Studio Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dgdvyvn17jmhg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Westend Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dgjvvhz2ltpx3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Geysers Unit 5-20",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dgxgqltlvxef7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "AES Redondo Beach LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dh5p41wv6wd23",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bowerman Power LFG, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dhdcw84mk52d6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Metro Support Services Center Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dhmbjfmzebqfb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Narrows PH",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dhplbtw48jzyf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SCA Cogen 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/djkmys2flpwcd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Balch 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/djngp0ztptre6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #42",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/djzpehglzfwqh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CSD 2 - Heritage High",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dk3r9y98cvw4d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bishop Creek 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dl74x9c56g999",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ralston",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dlhvrmtxe7gc8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dlj89x95ktvd4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Carson Ice-Gen Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dm7s4chdq3g93",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "DGS Central Utility Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dnclz3pqmx908",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Drop 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dnhypvc18wg8f",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sentinel Energy Center, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dnjtzvxdstwv8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SEPV 18",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dnwjc5v18p8d5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Southeast Kern River Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dp60qxhq0e7g2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Chowchilla II",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dp8yxtnxpeqwh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lundy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dph58kg0cy8r2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Valley (CA)",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dpxmvwtemegvb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "California Valley Solar Ranch",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dq19n8wfqcc49",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Summer North Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dq1n3crz2slv5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "APP Prune A-D",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dqx5f0mvrqly5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Taylor Farms Salinas",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dr5qyt735mde7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solano County Cogen Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/drb8yxtz1m9b6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 3032 Coronado, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/drpzgmcht89m5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dry8m2h1nktpd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pacific Ethanol Stockton Cogen Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dsk0feyll2rh7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rising Tree Wind Farm",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dsxde0jxrb027",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Taft 26C Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dt0zjg60q18ch",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Red Bluff",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dt5rh8vwpz948",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Los Esteros Critical Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dtsls9k2kkmp3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #17",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dtv8g3q6d3db6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pebbly Beach",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dtw1c58vjhslg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mira Loma",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dv921qhnq0nkf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Foundation Wal-Mart Red Bluff",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dvhytvp4kj0p9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Combustion Turbine Project No 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dvpq49zhxqbx7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "La Paloma Generating Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dw7pgclm737t3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "RE Victor Phelan Solar One LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dw7s9gtn01htf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Santa Ana 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dwb359zn0w7j7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Plant No 1 Orange County",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dwh11g74wlwe1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "RCWD PV Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dx086cx1p082h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CDCR (CA) - Corcoran State Prison",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dx6ykhs5ne9r1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mid-Set Cogeneration",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dx86pvf1md7dg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Hoag Hospital Cogen Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dxsqm6hq8twm2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Gen 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dxx07c4rqj575",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sentinel Energy Center, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dxzqfzw9ck3v3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Caribou 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dzrb5pjd629h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Columbia 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/dzrm2fq14595g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Heber Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e05bj1g998kk9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Vasco Winds",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e13dd0q6q3np9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Hoag Hospital Cogen Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e1v61dbm7c0w4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Brea Expansion Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e232jnqp727zf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Riverside RWQCP Fuel Cell",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e23ky0q0vswvd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Dinuba Wastewater Treatment Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e2d0bec4rr2y2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Coachella",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e2gwtl5rqv3p3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Canyon Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e2snghqdttfp8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Tehachapi Wind Resource II",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e2x47y8c8shyg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kern River Cogeneration",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e30k1gx4zs0j5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Chicago Park",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e357sqntewv83",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MM San Diego-North City",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e37032dxl6rrf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Total Energy Facilities",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e3blh5w2df9y4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #23",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e3k08fqy6w1hh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Cabazon Wind Partners",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e4nhllhjkr8dh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "High Sierra Limited",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e4w8zhmgkp1hh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Aera San Ardo Cogen Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e524xb274rmz1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Buena Vista Energy LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e53fc5xghe737",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SunE Rochester",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e547rbdgpv9x2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Box Canyon Dam",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e59pf1hf0lh7g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Clearwater Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e5p94vg6mm2v1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SEPV Imperial Dixieland East",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e5r3slsr2mte9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ples I",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e62kx6b3h9h44",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Blythe Solar II, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e6pp6260s8eq5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Swanmill Windfarm I",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e6sxlmkzkpm46",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "San Gabriel Hydro Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e6vbk6mfdqv8g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Shasta",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e72rtzhezx1j9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kern River 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e7jnb2n5jb1wg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Southeast Resource Recovery",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e812w4x6g6es9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #44",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e8fs255lt1y17",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bakersfield College Solar 01",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e8hgds0hbtwph",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Big Creek 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e8n7ekzsw5xd2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Muck Valley Hydroelectric",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e90wqdm6lvmeg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Long Beach Generation LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e9dyrrjm66kf9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bishop Creek 4",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/e9hmcmrezetcg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Glenarm",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eb887qmlenj3h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "West Valley High School Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ebjdzvk7mwmg9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ebnnsdrjbwzr3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Hanford 1 and 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ebvd44bzgxwm9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "ABEC Bidart-Old River LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ec14x64hg4m2b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Beacon Solar Plant Site 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ecfzl2cgvb1x3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Foundation IE",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ecndqgmqb247h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "J\u0026A-Santa Maria II LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ecrw1vn8xkjx4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ed5hkjwz94t12",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Haiwee",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ee7dz0qdbj909",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Woodleaf",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eegs0kvh02j21",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Dion R Holm",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eerp1x0me9tj4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Coronal Lost Hills",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/effbkgpsmb7ld",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ameresco Keller Canyon",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eftgq5cm0x9yc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Farmersville",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/efxdqh8shvfcd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "El Nido Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eg611vmvm4pd1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lodi Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eg6bx9v9y5slh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Genentech-Oceanside",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eg8jyp57lx5k2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kings Beach",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eg93k45pv5kd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Delano Land 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eghl8sj3j73f8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Walnut Creek Energy Park",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/egjvkmx0rk591",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SEGS VIII",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/egmtv4dcv72v8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Santa Ana 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/egx5g1x52e2g5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kettering Solar 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ehkp6bpjs9bd6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ameresco Santa Cruz Energy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ej0bzzvmgxqsb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Linde Wilmington",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ej11w5w2enc6d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 1656 McCarthy, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ej84hv8kqrp41",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Wheelabrator Norwalk Energy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ejjehqmvllpn6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Russell City Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ejjphdfhv0j4f",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "McGrath Peaker",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ejm9jkg4jez84",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sycamore Cogeneration",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ejnfzqjz10lc8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Gaviota Oil Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ek390b74m7qm6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Division 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ek8kpcf778xt3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kaiser Downey",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eknkl19qtsmt8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Las Virgenes Municipal Water District",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/el09zg6qp0yeg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Verizon-Torrance",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/elvrw5sb6bj97",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ameresco Ox Mountain",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/em6d0hsd29ke6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Tulloch",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/emvkx1kgfmvb9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pacific Rim Dairy Digester",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/en5y8kr21fr4c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Gen 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/engeq7qbgzcr9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Diamond Valley Lake",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/epvc4drpmzd67",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bolthouse S\u0026P and Rowen Farms Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eq2e42641ekk5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Red Bluff",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eq6dhhjqymg58",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "FPL Energy Montezuma Winds LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eqmkv0cqkc50g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Shiloh IV Wind Project LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eqvy1xfljy9s5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Childrens Hospital",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/er1wslwj59qhd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pastoria Energy Facility, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/er330vtxhrxq7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Santa Rita Jail Fuel Cell",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/er4f6tn22y4g6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Chaffey College Rancho Cucamonga Campus",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ereycg8kxy2vc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "DGS Central Utility Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/erwcm3rs15xj9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Vista Energy Storage System",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/erwse4m9qpr67",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lower Tule River",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eschebm44hl34",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #16",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eskcn5z1zq91b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Canyon Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/et5teh2b4y13d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/et6w9jttm5981",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Wheelabrator Shasta",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/et85y7egvc77",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #18",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/evs18m24xm1pd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 55 S. Market Street",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/evsbrx8cghg73",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Los Angeles Refinery Wilmington",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/exxczptx48798",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pebbly Beach",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eykt2qblrrlc9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Santa Maria LFG Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ezklm5rsve867",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sunshine Gas Producers",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/eztydcctt9wj5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Blue Lake Power LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f0hmlnqpcqy34",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Tulare 1 and 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f1dlgt9e2meh6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Panoche Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f1j4bbkb2kd46",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Century Generating Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f26yycpbjrky1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Santa Ana 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f2yxhjnnn6zjb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Stage Gulch Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f3xqcgeqle6h9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Union Valley",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f479cv3s06x92",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lincoln Landfill",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f56wvg0hfqjs8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #15",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f5yhvwnjwe9cf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Greg Avenue",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f60e9844x20bg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Otay Landfill Gas, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f64xp83qkrqc7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Intel Folsom Phase 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f66tevbp85d5f",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 3032 Coronado, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f6k144hp0q41",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MM West Covina",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f6rssr0b9y3bd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Carlsbad Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f74vw1tgevgd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Genesis Solar Energy Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f78pbwsr4e9z5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Palo Verde College",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f8s6jgh7zrk4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Alamo",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f908d20m9y4l3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Genentech Vacaville Meter #1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f90tyl8nmz6nh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Olive View Medical Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f96kfc96806y3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Golden Hills Wind",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f9pz4jq0qrp88",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pastoria Energy Facility, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f9s8g2h1p0vph",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Iron Gate",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/f9y9c0tzft4yf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Coram Energy LLC (ECT)",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fbklv2nmgj725",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SDCWA - Twin Oaks",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fbmcslp8empg4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Cymric 6Z Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fc2xd6fjk1f28",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Coso Energy Developers",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fclpwfykmz4c1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Calabasas Gas to Energy Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fczk554y5tehb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Harbor",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fd112yxz4v58",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pastoria Energy Facility, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fdpg436sevjx2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kiefer Landfill",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fdwxd9slkg1bc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "AltaGas Pomona Energy Inc.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fe0d89hggh1gg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "McCoy Solar Energy Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fe5cll65enkbc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mammoth Pool",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fe9gp0t03ss33",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Dept of General Services -FTB",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/feck87c2dnt5b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pit 7",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fefwk73w1bpl1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Belden",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fepx984qd8mf7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Long Beach Generation LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fewprnfel38y9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Balch 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fexzp49rvdby",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Garnet Solar Generation Station I LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fggzfj1bt27s2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "ELACC Photovoltaic Power Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fh32e7n6s529d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #28",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fhgc3xw8wvy1f",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "High Desert Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fhn4vqen2c27c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 2972 Stender, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fhvee50fv4mc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Altamont Gas Recovery",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fkhyqylpgydr9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SCE-Snowline-Duncan Road (North)",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fkr6dyyzrjz83",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rudy Solar, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/flwvswlbj5nkd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Genentech-Oceanside",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fmj1qf714cb4c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Palomar Energy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fmj554mlc6w67",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Terra-Gen 251 Wind LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fml0vrndktg4h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "IVC Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fmlpl07mjclt1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MM Yolo Power",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fn48k34vf2de9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #48",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fneeknn480j8h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "El Segundo Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fnhlcxe5yk3k6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Spring Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fnldxxnhkchn6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Edward C Hyatt",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fnsp7xv2vxj48",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bishop Creek 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fny89dx36lde9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CBS Studio Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fp6nv40kwmpe2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rosamond One",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fpj16fqcejmvb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Childrens Hospital",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fpyjcg15cncmb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "PRC-Desoto Intl/PPG Aerospace",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fr2h7e66vrznb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "High Desert Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/frclj0qlw2red",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Expressway Solar B",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/frj5n8k9r89t4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #44",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/frks3xzt8hfd8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Coalinga 25D Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fs59sg7bdnb4b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Middle Fork",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fs7l5qcenmznd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Coachella",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fsphpy1t6ky5b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "RE Astoria",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ft6y6l4wfpe4c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Marsh Landing Generating Station",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ft94v5m7xwy2c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kilarc",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ftsbn4j5nee73",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Panoche Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fttsk3p96p5d4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "El Segundo Energy Center LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ftz3lss5msv5g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Newcastle",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fv3fh38xj3rrh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #26",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fv7k8rn3qezb9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "City of Hayward WWTP",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fvp29tsvwndt4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Cove Hydroelectric",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fvqqbqv97we76",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Geothermal 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fvy3px7egseq2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "North Brawley Geothermal Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fxtk7k2bytkk8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Tracy Combined Cycle Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fxyyqz381dz8g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Terra Francesco",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fy9m6drgx26d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rancho Seco Solar, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fyern8yt2qb41",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Topaz Solar Farm",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/fz2zyn2ny863h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ortega Highway Energy Storage",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g0mh6tfv0ztw9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Arrache 4006",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g1byypq71t0d4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Vega Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g1l1012cdvmqh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "El Segundo Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g1px797bww817",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Wolfskill Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g1tg7vn79w7g1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Edwards Air Force Base",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g43029b969zk",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CSU Northridge Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g430kz89mrtdh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Robert O Schulz Solar Farm",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g4n3xxf7h3dj3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Second Imperial Geothermal",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g4vg9gpw6cnb6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MillerCoors Irwindale Brewery",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g4xbgs5r8d5b5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ormesa I",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g4xrw1rbmj7lb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Balch 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g55z3dqh26j66",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Frito-Lay Cogen Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g57sgf92mltx5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 2972 Stender, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g5rd9zl457wfh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #26",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g6hesj83pyb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Live Oak Limited",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g6k28yzqxtjj5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MM Lopez Energy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g6mdb9xlh48kb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "2555 E Olympic Bl",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g6th8nnceq7f",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Summer Solar D2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g7g6j8nm1xl32",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Franklin Templeton San Mateo",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g7w5wt7d97f16",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Caribou 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g89680pyt1hs1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Cameron Ridge LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g8fpmrftn8kr2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sutter Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g937p72nwvjv5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "USPS PV",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g96wknq9ptfl5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Shasta Solar Farm",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g9hv1ds7eppd2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Springville Hydroelectric",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g9n1pflhrcz14",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Atwell Island West Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/g9wjm1pfp3z79",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Carson Cogeneration",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gbdll36gsh762",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "San Dimas",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gbhx55vjr7jjd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "AT\u0026T Holger",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gc8g47hd6bb71",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 3032 Coronado, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gd19z56vy1b6d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sunrise Power LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gdc1br6hw95s3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Nove Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gde6rzvepc6nh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "TA-Acacia, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ge253808hkmz3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Wildwood Solar II",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ge4bhhpg9hyfg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rising Tree Wind Farm III",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/geqvtd68qws5b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Calistoga Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gfmm5flbmz24f",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Scattergood",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gfvsr6cs9l4v3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Regional Wastewater Control Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ggfdez57xp9w8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rock Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ggypwhwp07p16",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sierra Solar Greenworks",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gh5t6e4w46prh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "RE Tranquillity",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ghbmmd6zhwt7d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kerckhoff 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ghdq3gcnj72m7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Woodland",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ghj5gzm6tczb5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Woodland",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/ghz2hzfxpcx77",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Woodland",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gjbet68gr1zx1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "El Segundo Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gkcrehg8gc8r2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Enerparc CA2, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gl4r4817cq8j2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Walnut Creek Energy Park",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gl70x720x1s03",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "R C Kirkwood",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gl9n89rrd5ncg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Russell City Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gmtym67lwz05h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kaweah 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gn90d18xqz18c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Grayson",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gnkd93phzlbx7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Valley (CA)",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gnqeqm3eyenq6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pine Tree Wind Power Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gny72sw145qgc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bishop Creek 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gp7gzesr91nld",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Escondido Energy Storage",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gpm1gzshwcy35",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lime Saddle",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gpsylh6mrfrcg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Foundation Scheid Vineyards",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gqh8y75tqjmb2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Oroville Cogeneration LP",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gr5fsxje591f7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sycamore Energy 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gr78f8rbekqkd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Centinela Solar Energy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/grrss2qvm49h1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Quinto Solar PV Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/grvgrfd3k88c5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "W R Gianelli",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/grvl1xh99q0y5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "UCLA So Campus Cogen Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gscnsxgfykw96",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Niland Gas Turbine Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gsjc9tsgkrqcf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Chowchilla II",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gsktdt3z732gd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sand Bar Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gsmmfvt3njbjc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Grayson",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gsqzb0ejy5lpd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Western Power \u0026 Steam Inc",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gt0761tqtb0vf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sierra Pacific Sonora",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gt35bh8v7v58d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Red Bluff",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gt568cjyqhd5h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pit 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gt7jbvfstdw7g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mojave 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gt9r6eb5sc4m9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "North Midway Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gtbl9zwgs4m38",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #48",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gtdfzh4j3nst",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Cascade Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gtw0h36w34nqh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Aerojet II",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gtwdefr0jxx78",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ivanpah 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gtxdjptedpyzd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Genentech Vacaville Meter #1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gv0mlnwzzzy1c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "National Raisin",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gvjyfpe6f5yd9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #27",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gwg89ec9xs5c3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "White Rock/Slab Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gxbg3jf1k0tf4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bear Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gxrv9dn37ffp1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Tule River",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/gxzej5mpyvzv7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Equilon Los Angeles Refining",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h0frxk3lzvl07",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Algonquin Power Sanger LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h1dewc5f452b6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rockwood",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h23d9zsr85y65",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bear Valley Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h2e3d5dhj1j8d",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Colgate",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h2fzvx64f9qyd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lancaster Dry Farm Ranch B",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h2kstq7hh1re8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Westmont 401",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h2pf9xkekg0kc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Combie South",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h3z9gcbtq3m7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #33",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h46lm0cr66m5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Beardsley",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h5x6snyn0vq84",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "UC Riverside Lots 30 \u0026 32",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h5ye7hvb9w6xd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #11",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h66wby12n0f11",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Golden Acorn Casino",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h7j2mrnk80y36",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Depot Park Solar System",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h7kzn01dreq7g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Carlsbad Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h7r7e7v4bsxj8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SCE-Snowline-White Road (North)",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h806d62yjgtd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Arrache 8083",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h85wj1df8e2r5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Canyon Power Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h8egvnp4tfsg9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Midway Solar Farm III",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/h8r814b5gnqj6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Dominguez Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hbbzyhe5emlm4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Oxnard Wastewater Treatment Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hbqbqky660vn7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Midway Sunset Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hbrnykytqy8rg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "P Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hbzt43j8csjh5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ponderosa Bailey Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hc52p49pel42g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Humboldt Bay",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hc6ve4zg5yd5h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Equinix San Jose",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hcdr2f02ekzx4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Kings Beach",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hcdzlpxc3cwt1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "ABEC #4 dba CE\u0026S Dairy",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hdqtcnzvmv7r4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Anheuser-Busch #2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hev44pvnr0zz6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ameresco Ox Mountain",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hew5jvq9czqj5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Creed Energy Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hez72v8q6wd5g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Gridley Main",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hf2x6fhn5k0b9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Hanford 1 and 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hf5y3xsbttxd6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mission Solar LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hfemd4wj1l75",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lancaster Baptist Church",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hffq2bbh5rf59",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Wise",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hg57fb87fchq3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Red Bluff",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hglj2mp791wv4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Temescal Canyon RV, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hh450ym20r587",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lincoln Landfill",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hhh7krw8fngg2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CalPeak Power Border Peaker Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hhjnqvr9khe84",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rodeo Solar D2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hhvq07x8mc4pd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Richmond Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hj6e5f59y2skg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pebbly Beach",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hk1yjjxtxthtf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Thermal Energy Development Part LP",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hk59mdtdfysz9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pebbly Beach",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hkn4vvhjlnjr1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Blythe Energy Inc",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hm6ke3h5zq2df",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SCE-Snowline-Duncan Road (South)",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hmwj9etyqj6h2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CDCR (CA) - Solano State Prison",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hnbhpgq376pd7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Broadridge Cogen",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hnhr24y804p74",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ameresco Butte County",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hnhzwz6p2yyf3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "AES Alamitos LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hnj0els7bnxqc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Dome Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hnlerk4jb57td",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Madelyn Solar, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hnmdll4cbzcd9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Whitethorn Solar LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hpn85lwhd0xj4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mammoth Pacific I",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hprny2zzlcsg1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lemoore 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hpt2390xnmrwd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Adera Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hpw5sbnclmgy1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Colon PV",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hqpdew53d7lhg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CBS Studio Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hqsg6v8vpc9hc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Geysers Unit 5-20",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hqwdwrj07f39h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "DGS Central Utility Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hqz1benj6bqk4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #22",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hr8ebbdwbprw4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Tahquitz High School",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hrf99lj4rfyt2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Desert Sunlight 300, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hs1e25nrsvrt2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Desert Sunlight 300, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hsml43cfqj855",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "VA Sepulveda Ambulatory Care Center",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hw0ldj1eg99zb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "North Palm Springs 4A",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hwqc44ncnydy9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Richard J Donovan Correctional Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hy0m3ejlm37df",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Spaulding 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hyc8sl05mre06",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Inskip",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hyvj50q7jct51",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Salt Springs",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hz97cxwd6lr54",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "MM San Diego-North City",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/hzr824b0v3g1c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Phoenix",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j16k1485en376",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Gas Utilization Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j1g5gyqx68c7c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Edward C Hyatt",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j1jy9ghs97x7g",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Big Pine Creek",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j342d15gy6h37",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #15",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j377rnn1gc3j7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SPI Anderson 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j3ms7tdsnm06b",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Photovoltaic Project #48",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j3pgkt9f01sqg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Anaheim GT",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j4101pfwy9trh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Heber Geothermal",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j46wtj7x5jdph",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j4etqr9j03272",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pit 6",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j50g5e40xc1e8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sacramento (SMUD)",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j5vcycbp1tn6h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bolthouse S\u0026P and Rowen Farms Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j5vkzkl82epwd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Brea Expansion Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j5zq431h86th7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Glendale Battery Energy Storage System",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j67lwh2t7kntf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j6y9n7z3rndrh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "East Portal Generator",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j74cpfb3c9vn6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Ratkovich Alhambra",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j74ge2tb6b2x1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Woodland",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j7lhybxgb39d8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Plant No 2 Orange County",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j8b6j1prypj5c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sunshine Gas Producers",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j8hv4rpv8yg98",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "UCI Fuel Cell",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j8jv6197c9g07",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "RE McKenzie 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j8ptm88vwq155",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Grayson",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j8s12q29t8l0h",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "High Winds LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j8vxsbq4xdxj6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Drum 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j8zqemjtg0ff6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pacific-Ultrapower Chinese Station",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j99r0p00nj2r6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rutan",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/j9nvy3k59qd89",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Helms Pumped Storage",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jb8p0d9esb1w8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Pebbly Beach",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jbl77bdnlbcy8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Geysers Unit 5-20",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jbnf5qydv90d3",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "City of Palo Alto",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jc26kz1mqtvb2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CE Leathers",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jcg5m3xs8esjd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Great Valley Solar Portfolio Holdings, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jcvg58pe3nc64",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mariposa Energy Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jd7p8f4lcmlp7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Regulus Solar Project",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jdw0n4pll13r9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "San Joaquin Solar",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/je4em7vmkjwm9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Cuyamaca Peak Energy Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jeldykw347093",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "SC 1 Data Center, Phase 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jerk2me73kvqb",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Arrache 8083",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jfbn760njndk4",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "APP Prune A-D",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jfjyyjtdfbgq6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Encina Water Pollution Control",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jfsr6bgplbcjd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Regional Wastewater Control Facility",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jfxsbt8f67ce8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "W Plant",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jg874ynmyp062",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 1656 McCarthy, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jgfx3vrw2slpg",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Geothermal 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jh49qf3emcek2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Springs Generating Station",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jh5xw3088fqrf",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Sonoma Central Landfill Phase III",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jhl249hcgqny2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Bishop Creek 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jhtdm99744qd6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CoreSite Real Estate 2972 Stender, L.P.",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jhzq3yyvkpqxh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Lincoln Landfill",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jj2sefqv4b672",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Santa Rita Jail",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jj647l0y9ftrc",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Castaic",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jjzn4xkf812xh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Rancho Penasquitos",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jk6q4x3k6bvk1",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solano Wind",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jkm38t3yj0vn7",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Summer Solar LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jkstv71cnv4z2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Solar Star 1",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jlck245mmp1m8",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "James B Black",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jmq69jnbdy4dd",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "San Dimas Wash Generating Station",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jngvx8gybq582",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Great Valley Solar Portfolio Holdings, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jnn8mjbx0bl4c",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mammoth Pacific I",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jpsg2zstrj8eh",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "NRG Energy San Diego",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jq8j5ez3s02z9",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "CDCR (CA) - Pleasant Valley State Prison",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jqtkpdqztk3h5",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Columbia Solar Energy, LLC",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jqw96jc262628",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "University of California San Diego",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jqxrsycm92zc2",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Salton Sea Power Gen Co - Unit 2",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jrfhqrmj4mxq6",
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
+      "name": "Mill Creek 3",
+      "types": [
+        "PowerPlant"
+      ],
+      "dcid": "dc/jrqw281mb5rqd",
+      "provenanceId": "dc/22t2hr3"
+    }
+  ],
+  "nextToken": "H4sIAAAAAAAA/+ISEWIQYuJgFGLiYBJi4mAWYuFgEWAGAAAA//8BAAD//yNKJIUWAAAA"
+}

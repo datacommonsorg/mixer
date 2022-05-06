@@ -1,0 +1,48 @@
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+option go_package = "./proto";
+package datacommons.v1;
+
+import "entity.proto";
+
+
+// A page of entities. The page number starts from 0, and is in the cache key.
+// Page size is set by ::datacommons::prophet::kPageSize.
+message PagedEntities {
+  // A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
+  repeated datacommons.EntityInfo entities = 1;
+  double total_page_count = 2;
+}
+
+message InPropertyValuesRequest {
+  string property = 1;
+  string entity = 2;
+  // [Optional]
+  // The limit of the number of values to return. The maximium limit is 1000.
+  // If not specified, the default limit is 1000.
+  int32 limit = 3;
+  // [Optional]
+  // The pagination token for getting the next set of entries. This is empty
+  // for the first request and needs to be set in the subsequent request.
+  // This is the value returned from a prior call to InPropertyValuesResponse
+  string next_token = 4;
+}
+
+message InPropertyValuesResponse {
+  repeated datacommons.EntityInfo data = 1;
+  // The pagination token for getting the next set of entries.
+  string next_token = 2;
+}
