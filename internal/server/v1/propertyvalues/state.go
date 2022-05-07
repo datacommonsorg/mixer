@@ -47,7 +47,7 @@ type inState struct {
 type outState struct {
 	state
 	// The used import group (only one import group is used for out property values).
-	used_import_group int
+	usedImportGroup int
 	//
 }
 
@@ -176,7 +176,7 @@ func (s *outState) init(
 	}
 	for idx, data := range s.rawEntities {
 		if len(data) > 0 {
-			s.used_import_group = idx
+			s.usedImportGroup = idx
 			break
 		}
 	}

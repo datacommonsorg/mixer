@@ -96,7 +96,7 @@ func PropertyValues(
 			}
 		}
 		// If used import group has more data, then should compute the token
-		if s.rawEntities[s.used_import_group] != nil {
+		if s.rawEntities[s.usedImportGroup] != nil {
 			respToken, err = util.EncodeProto(
 				&pb.PaginationInfo{
 					CursorGroups: []*pb.CursorGroup{s.cursorGroup},
@@ -150,7 +150,7 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 	if len(s.mergedEntities) == s.limit {
 		return false, nil
 	}
-	ig := s.used_import_group
+	ig := s.usedImportGroup
 	// Update the cursor.
 	cursor := s.cursorGroup.Cursors[ig]
 	s.mergedEntities = append(s.mergedEntities, s.rawEntities[ig][cursor.Item])
