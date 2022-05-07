@@ -40,11 +40,11 @@ func (s *Server) BulkProperties(
 	return properties.BulkProperties(ctx, in, s.store)
 }
 
-// InPropertyValues implements API for mixer.InPropertyValues.
-func (s *Server) InPropertyValues(
-	ctx context.Context, in *pb.InPropertyValuesRequest,
-) (*pb.InPropertyValuesResponse, error) {
-	return propertyvalues.InPropertyValues(ctx, in, s.store)
+// PropertyValues implements API for mixer.PropertyValues.
+func (s *Server) PropertyValues(
+	ctx context.Context, in *pb.PropertyValuesRequest,
+) (*pb.PropertyValuesResponse, error) {
+	return propertyvalues.PropertyValues(ctx, in, s.store)
 }
 
 // Variables implements API for mixer.Variables.

@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "name": "United States",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/USA",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Pacific Division",
+      "types": [
+        "CensusDivision"
+      ],
+      "dcid": "usc/PacificDivision",
+      "provenanceId": "dc/5n63hr1"
+    }
+  ]
+}

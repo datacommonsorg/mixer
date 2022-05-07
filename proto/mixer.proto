@@ -368,10 +368,10 @@ service Mixer {
     };
   }
 
-  rpc InPropertyValues(datacommons.v1.InPropertyValuesRequest)
-      returns (datacommons.v1.InPropertyValuesResponse) {
+  rpc PropertyValues(datacommons.v1.PropertyValuesRequest)
+      returns (datacommons.v1.PropertyValuesResponse) {
     option (google.api.http) = {
-      get : "/v1/property/in/{property}/values/{entity=**}"
+      get : "/v1/property/{direction}/{property}/values/{entity=**}"
     };
   }
 
