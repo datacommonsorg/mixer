@@ -250,9 +250,9 @@ func TestEncode(t *testing.T) {
 		{
 			// One entity scenario.
 			&pb.PaginationInfo{
-				CursorGroups: []*pb.ImportGroupCursorGroup{
+				CursorGroups: []*pb.CursorGroup{
 					{
-						Cursors: []*pb.ImportGroupCursor{
+						Cursors: []*pb.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        0,
@@ -287,10 +287,10 @@ func TestEncode(t *testing.T) {
 		{
 			// Multiple entity scenario.
 			&pb.PaginationInfo{
-				CursorGroups: []*pb.ImportGroupCursorGroup{
+				CursorGroups: []*pb.CursorGroup{
 					{
 						Key: "geoId/05",
-						Cursors: []*pb.ImportGroupCursor{
+						Cursors: []*pb.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        0,
@@ -320,7 +320,7 @@ func TestEncode(t *testing.T) {
 					},
 					{
 						Key: "geoId/06",
-						Cursors: []*pb.ImportGroupCursor{
+						Cursors: []*pb.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        5,

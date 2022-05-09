@@ -35,6 +35,7 @@ import "stat_var.proto";
 import "translate.proto";
 
 import "v1/properties.proto";
+import "v1/property_values.proto";
 import "v1/variables.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
@@ -364,6 +365,13 @@ service Mixer {
         post : "/v1/bulk/properties/{direction}"
         body : "*"
       }
+    };
+  }
+
+  rpc InPropertyValues(datacommons.v1.InPropertyValuesRequest)
+      returns (datacommons.v1.InPropertyValuesResponse) {
+    option (google.api.http) = {
+      get : "/v1/property/in/{property}/values/{entity=**}"
     };
   }
 

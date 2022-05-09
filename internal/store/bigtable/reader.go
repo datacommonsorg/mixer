@@ -107,9 +107,6 @@ func ReadWithGroupRowList(
 	if len(tables) == 0 {
 		return nil, status.Errorf(codes.NotFound, "Bigtable instance is not specified")
 	}
-	if len(tables) != len(rowListMap) {
-		return nil, status.Errorf(codes.Internal, "Number of tables and rowList don't match")
-	}
 	// Channels for each import group read.
 	chans := make(map[int]chan chanData)
 	for i := 0; i < len(tables); i++ {
@@ -122,6 +119,9 @@ func ReadWithGroupRowList(
 	for i := 0; i < len(tables); i++ {
 		rowSet := rowListMap[i]
 		rowSetSize := len(rowSet)
+		if rowSetSize == 0 {
+			continue
+		}
 		for j := 0; j <= rowSetSize/BtBatchQuerySize; j++ {
 			left := j * BtBatchQuerySize
 			right := (j + 1) * BtBatchQuerySize

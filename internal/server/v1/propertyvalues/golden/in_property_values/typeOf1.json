@@ -1,0 +1,410 @@
+{
+  "data": [
+    {
+      "name": "Aruba",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ABW",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Afghanistan",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AFG",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "French Afars and Issas",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AFI",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Angola",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AGO",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Anguilla",
+      "types": [
+        "AdministrativeArea1",
+        "Country"
+      ],
+      "dcid": "country/AIA",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Albania",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ALB",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Andorra",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AND",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Netherlands Antilles",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ANT",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "United Arab Emirates",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ARE",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Argentina",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ARG",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Armenia",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ARM",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "American Samoa",
+      "types": [
+        "AdministrativeArea1",
+        "Country"
+      ],
+      "dcid": "country/ASM",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Antarctica",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATA",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "British Antarctic Territory",
+      "types": [
+        "AdministrativeArea1",
+        "Country"
+      ],
+      "dcid": "country/ATB",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "French Southern Territories",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATF",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Antigua and Barbuda",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATG",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Dronning Maud Land",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATN",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Australia",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AUS",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Austria",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AUT",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Azerbaijan",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AZE",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Burundi",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BDI",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Belgium",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BEL",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Benin",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BEN",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bonaire, Sint Eustatius and Saba",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BES",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Burkina Faso",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BFA",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bangladesh",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BGD",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bulgaria",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BGR",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bahrain",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BHR",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bahamas",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BHS",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BIH",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Saint Barthélemy",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BLM",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Belarus",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BLR",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Belize",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BLZ",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bermuda",
+      "types": [
+        "AdministrativeArea1",
+        "Country"
+      ],
+      "dcid": "country/BMU",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bolivia",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BOL",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Brazil",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BRA",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Barbados",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BRB",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Brunei",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BRN",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bhutan",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BTN",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Bouvet Island",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BVT",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Botswana",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BWA",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Byelorussian SSR",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BYS",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Central African Republic",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CAF",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Canada",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CAN",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Cocos (Keeling) Islands",
+      "types": [
+        "AdministrativeArea1",
+        "Country"
+      ],
+      "dcid": "country/CCK",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Switzerland",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CHE",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Chile",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CHL",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "China",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CHN",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Côte d'Ivoire",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CIV",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Cameroon",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CMR",
+      "provenanceId": "dc/5n63hr1"
+    }
+  ],
+  "nextToken": "H4sIAAAAAAAA/+KSEGIQYuFglDASYuFgkjASYuJgFmLhYJEwAgAAAP//AQAA//8zTzsoGgAAAA=="
+}
