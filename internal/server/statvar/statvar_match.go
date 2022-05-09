@@ -15,41 +15,28 @@
 package statvar
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/blevesearch/bleve/v2"
-	"github.com/blevesearch/bleve/v2/search/query"
+	"github.com/blevesearch/bleve/v2/search"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-func toQueryString(m map[string]string) string {
-	b := new(bytes.Buffer)
-	for key, value := range m {
-		fmt.Fprintf(b, "%s ", key)
-		fmt.Fprintf(b, "%s ", value)
+func buildExplanationString(in *search.Explanation, sb *strings.Builder, level int) {
+	sb.WriteString(fmt.Sprintf("%.2f => %s\n", in.Value, in.Message))
+	if len(in.Children) > 0 {
+		for _, cchild := range in.Children {
+			for i := 0; i < level+1; i++ {
+				sb.WriteString(" ")
+			}
+			buildExplanationString(cchild, sb, level+1)
+		}
 	}
-	return b.String()
-}
-
-func buildQuery(in *pb.GetStatVarMatchRequest) query.Query {
-	var queries []query.Query
-	propertyValueQuery := toQueryString(in.GetPropertyValue())
-	if propertyValueQuery != "" {
-		query := bleve.NewMatchQuery(propertyValueQuery)
-		query.SetField("KeyValueText")
-		queries = append(queries, query)
-	}
-	if in.GetQuery() != "" {
-		query := bleve.NewMatchQuery(in.GetQuery())
-		query.SetBoost(1.5)
-		queries = append(queries, query)
-	}
-	return bleve.NewConjunctionQuery(queries...)
 }
 
 const defaultLimit = 10
@@ -65,11 +52,11 @@ func GetStatVarMatch(
 	if limit == 0 {
 		limit = defaultLimit
 	}
-	query := buildQuery(in)
-	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, true)
+	query := bleve.NewQueryStringQuery(in.GetQuery())
+	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, in.GetDebug())
 	// The - prefix indicates reverse direction.
-	searchRequest.SortBy([]string{"-_score", "Title", "_id"})
-	searchRequest.Fields = append(searchRequest.Fields, "Title")
+	searchRequest.SortBy([]string{"-_score", "nc", "nt", "_id"})
+	searchRequest.Fields = append(searchRequest.Fields, "t")
 	searchResults, err := cache.BleveSearchIndex.Search(searchRequest)
 	if err != nil {
 		return nil, err
@@ -77,11 +64,19 @@ func GetStatVarMatch(
 
 	result := &pb.GetStatVarMatchResponse{}
 	for _, hit := range searchResults.Hits {
-		result.MatchInfo = append(result.MatchInfo, &pb.GetStatVarMatchResponse_MatchInfo{
+		matchInfo := &pb.GetStatVarMatchResponse_MatchInfo{
 			StatVar:     hit.ID,
-			StatVarName: hit.Fields["Title"].(string),
+			StatVarName: hit.Fields["t"].(string),
 			Score:       hit.Score,
-		})
+		}
+		if in.GetDebug() {
+			var sb strings.Builder
+			sb.WriteString(in.GetQuery())
+			sb.WriteString("\n")
+			buildExplanationString(hit.Expl, &sb, 0)
+			matchInfo.Explanation = strings.ToValidUTF8(sb.String(), "")
+		}
+		result.MatchInfo = append(result.MatchInfo, matchInfo)
 	}
 	// 1) Highest score wins.
 	// 2) If score are the same, shortest statvar id wins.

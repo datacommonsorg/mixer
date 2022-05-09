@@ -16,8 +16,10 @@ package golden
 
 import (
 	"context"
+	"fmt"
 	"path"
 	"runtime"
+	"strings"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -49,9 +51,12 @@ func TestGetStatVarMatch(t *testing.T) {
 				"female_usc_foreignborn.json",
 			},
 			{
-
-				"number of female",
-				map[string]string{"gender": "Female"},
+				"",
+				map[string]string{
+					"mp":     "count",
+					"pt":     "Person",
+					"gender": "Female",
+				},
 				"female.json",
 			},
 			{
@@ -80,9 +85,19 @@ func TestGetStatVarMatch(t *testing.T) {
 				"energy_in_us_nomodel.json",
 			},
 		} {
+			var sb strings.Builder
+			for _, queryToken := range strings.Split(c.query, " ") {
+				sb.WriteString(fmt.Sprintf("sn:\"%s\" ", queryToken))
+			}
+			for key, value := range c.propertyValues {
+				sb.WriteString(fmt.Sprintf("kv:\"%s_%s\" ", key, value))
+				sb.WriteString(fmt.Sprintf("k:\"%s\" ", key))
+				sb.WriteString(fmt.Sprintf("v:\"%s\" ", value))
+			}
+			t.Logf("Query is %s", sb.String())
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
-				Query:         c.query,
-				PropertyValue: c.propertyValues,
+				Query: sb.String(),
+				Debug: true,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatVarMatch: %s", err)
