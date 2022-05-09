@@ -50,6 +50,12 @@ const (
 	BtPlacesMetadataPrefix = "d/d/"
 	// BtObsCollection for obs collection cache.
 	BtObsCollection = "d/e/"
+	// BtPagedPropValIn for in-arc paged entities.
+	// Key: <dcid^predicate^page>
+	BtPagedPropValIn = "d/h/"
+	// BtPagedPropValOut for out-arc paged entities.
+	// Key: <dcid^predicate^page>
+	BtPagedPropValOut = "d/i/"
 	// BtInPropValPrefix for in-arc prop value.
 	BtInPropValPrefix = "d/l/"
 	// BtOutPropValPrefix for out-arc prop value.
