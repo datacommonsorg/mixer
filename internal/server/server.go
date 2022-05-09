@@ -131,8 +131,14 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
 	)
 }
 
+type SearchOptions struct {
+	UseSearch           bool
+	BuildSvgSearchIndex bool
+	BuildBleveIndex     bool
+}
+
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(ctx context.Context, store *store.Store, useSearch bool,
+func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptions,
 ) (*resource.Cache, error) {
 	// TODO: [MERGE]: need to builc cache from multiple tables.
 	rawSvg, err := statvar.GetRawSvg(ctx, store)
@@ -144,14 +150,17 @@ func NewCache(ctx context.Context, store *store.Store, useSearch bool,
 		RawSvg:    rawSvg,
 		ParentSvg: parentSvgMap,
 	}
-	if useSearch {
-		searchIndex := statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
-		result.SvgSearchIndex = searchIndex
-		bleveIndex, err := statvar.BuildBleveIndex(rawSvg)
-		if err != nil {
-			return nil, err
+	if searchOptions.UseSearch {
+		if searchOptions.BuildSvgSearchIndex {
+			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
 		}
-		result.BleveSearchIndex = bleveIndex
+		if searchOptions.BuildBleveIndex {
+			bleveIndex, err := statvar.BuildBleveIndex(rawSvg)
+			if err != nil {
+				return nil, err
+			}
+			result.BleveSearchIndex = bleveIndex
+		}
 	}
 	return result, nil
 }

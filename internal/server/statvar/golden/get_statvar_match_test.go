@@ -16,15 +16,45 @@ package golden
 
 import (
 	"context"
+	"fmt"
 	"path"
 	"runtime"
+	"sort"
+	"strings"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
+
+type QueryTestDefinition struct {
+	query          string
+	propertyValues map[string]string
+	goldenFile     string
+}
+
+func buildQuery(c QueryTestDefinition) string {
+	var sb strings.Builder
+	for _, queryToken := range strings.Split(c.query, " ") {
+		sb.WriteString(fmt.Sprintf("sn:\"%s\" ", queryToken))
+	}
+	// Sort by keys to get a consistent debug output.
+	sortedKeys := make([]string, 0, len(c.propertyValues))
+	for k := range c.propertyValues {
+		sortedKeys = append(sortedKeys, k)
+	}
+	sort.Strings(sortedKeys)
+	for _, key := range sortedKeys {
+		value := c.propertyValues[key]
+		sb.WriteString(fmt.Sprintf("kv:\"%s_%s\" ", key, value))
+		sb.WriteString(fmt.Sprintf("k:\"%s\" ", key))
+		sb.WriteString(fmt.Sprintf("v:\"%s\" ", value))
+	}
+	return sb.String()
+}
 
 func TestGetStatVarMatch(t *testing.T) {
 	t.Parallel()
@@ -34,25 +64,54 @@ func TestGetStatVarMatch(t *testing.T) {
 	goldenPath := path.Join(path.Dir(filename), "get_statvar_match")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
-		for _, c := range []struct {
-			propertyValues map[string]string
-			goldenFile     string
-		}{
-			// {
-			// 	map[string]string{
-			// 		"gender":           "Female",
-			// 		"measuredProperty": "count",
-			// 		"nativity":         "USC_ForeignBorn",
-			// 	},
-			// 	"female_usc_foreignborn.json",
-			// },
-			// {
-			// 	map[string]string{"gender": "Female"},
-			// 	"female.json",
-			// },
+		for _, c := range []QueryTestDefinition{
+			{
+				"number of women foreign born",
+				map[string]string{
+					"gender":   "Female",
+					"mp":       "count",
+					"nativity": "USC_ForeignBorn",
+				},
+				"female_usc_foreignborn.json",
+			},
+			{
+				"",
+				map[string]string{
+					"mp":     "count",
+					"pt":     "Person",
+					"gender": "Female",
+				},
+				"female.json",
+			},
+			{
+				"energy in us",
+				map[string]string{
+					"mp":    "count",
+					"pt":    "USCEstablishment",
+					"st":    "measuredValue",
+					"naics": "NAICS/71",
+				},
+				"energy_in_us.json",
+			},
+			{
+				"",
+				map[string]string{
+					"mp":    "count",
+					"pt":    "USCEstablishment",
+					"st":    "measuredValue",
+					"naics": "NAICS/71",
+				},
+				"energy_in_us_noquery.json",
+			},
+			{
+				"energy in us",
+				map[string]string{},
+				"energy_in_us_nomodel.json",
+			},
 		} {
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
-				PropertyValue: c.propertyValues,
+				Query: buildQuery(c),
+				Debug: false,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatVarMatch: %s", err)
@@ -83,7 +142,11 @@ func TestGetStatVarMatch(t *testing.T) {
 
 	if err := test.TestDriver(
 		"GetStatVarMatch",
-		&test.TestOption{UseCache: true, UseSearchIndex: true},
+		&test.TestOption{UseCache: true, SearchOptions: server.SearchOptions{
+			UseSearch:           true,
+			BuildSvgSearchIndex: false,
+			BuildBleveIndex:     true,
+		}},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

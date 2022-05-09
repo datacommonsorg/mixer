@@ -19,12 +19,19 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path"
+	"reflect"
 	"runtime"
 	"sort"
 	"strings"
 	"time"
 
 	"github.com/blevesearch/bleve/v2"
+	"github.com/blevesearch/bleve/v2/analysis/analyzer/custom"
+	"github.com/blevesearch/bleve/v2/analysis/token/lowercase"
+	"github.com/blevesearch/bleve/v2/analysis/token/stop"
+	"github.com/blevesearch/bleve/v2/analysis/tokenizer/whitespace"
+	"github.com/blevesearch/bleve/v2/analysis/tokenmap"
+	"github.com/blevesearch/bleve/v2/mapping"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 
@@ -164,10 +171,144 @@ func BuildStatVarSearchIndex(
 // A BleveDocument models a document by the bleve index.
 // Currently we index stat vars and treat them as documents.
 type BleveDocument struct {
+	// Id of the statvar.
+	Id string `index:"false"`
 	// Title of the document. For a statvar this will be the DisplayName.
-	Title string
+	Title     string `json:"t"`
+	KeyText   string `json:"k" store:"false"`
+	ValueText string `json:"v" store:"false"`
 	// A key value pairs string describing the properties of a stat var.
-	KeyValueText string
+	KeyValueText string `json:"kv" store:"false"`
+	// Searchable name of the statvar.
+	SearchName string `json:"sn" store:"false"`
+	// Number of constraints associated to a statvar.
+	NumConstraints int32 `json:"nc" store:"false"`
+	// Number of title tokens, the fewer the more generic a statvar.
+	NumTitleTokens int32 `json:"nt" store:"false"`
+}
+
+// buildBleveDocumentMapping returns a `DocumentMapping` for indexing `BleveDocument`s.
+// It uses struct tags to create the proper field mapping for each field.
+func buildBleveDocumentMapping() *mapping.DocumentMapping {
+	documentMapping := bleve.NewDocumentStaticMapping()
+	emptyDocument := BleveDocument{}
+	documentType := reflect.TypeOf(emptyDocument)
+	for i := 0; i < documentType.NumField(); i++ {
+		field := documentType.Field(i)
+		// If index:"false", we don't index this field.
+		if field.Tag.Get("index") == "false" {
+			continue
+		}
+		var fieldMapping mapping.FieldMapping
+		if field.Type.Name() == "string" {
+			fieldMapping = *bleve.NewTextFieldMapping()
+		} else {
+			fieldMapping = *bleve.NewNumericFieldMapping()
+		}
+		// If store:"false", we avoid storing this field.
+		if field.Tag.Get("store") == "false" {
+			fieldMapping.Store = false
+		}
+		fieldName := field.Tag.Get("json")
+		if fieldName == "" {
+			fieldName = field.Name
+		}
+		documentMapping.AddFieldMappingsAt(fieldName, &fieldMapping)
+	}
+	return documentMapping
+}
+
+func buildBleveIndexMapping() (mapping.IndexMapping, error) {
+	indexMapping := bleve.NewIndexMapping()
+	// This contains the standard stopwords set from EnglishAnalyzer from lucene.
+	// We also added "us" to avoid ranking high statistical variables such as
+	// https://datacommons.org/browser/Count_Person_NotAUSCitizen
+	// for queries like "*something* in US".
+	stopwordTokens := []interface{}{
+		"a", "an", "and", "are", "as", "at", "be", "but", "by",
+		"for", "if", "in", "into", "is", "it",
+		"no", "not", "of", "on", "or", "such",
+		"that", "the", "their", "then", "there", "these",
+		"they", "this", "to", "was", "will", "with", "us",
+	}
+	err := indexMapping.AddCustomTokenMap("tokenmap_custom_stopwords", map[string]interface{}{
+		"type":   tokenmap.Name,
+		"tokens": stopwordTokens,
+	})
+	if err != nil {
+		return nil, err
+	}
+	err = indexMapping.AddCustomTokenFilter("custom_stopword_filter", map[string]interface{}{
+		"type":           stop.Name,
+		"stop_token_map": "tokenmap_custom_stopwords", // name reference to stopwords tokenmap constructed above.
+	})
+	if err != nil {
+		return nil, err
+	}
+	err = indexMapping.AddCustomAnalyzer("custom_analyzer",
+		map[string]interface{}{
+			"type":         custom.Name,
+			"char_filters": []interface{}{},
+			"tokenizer":    whitespace.Name,
+			"token_filters": []interface{}{
+				lowercase.Name,
+				"custom_stopword_filter", // name reference to stopword filter constructed above.
+			},
+		})
+	if err != nil {
+		return nil, err
+	}
+	indexMapping.StoreDynamic = false                // don't allow dynamic types to be stored, only `BleveDocument`.
+	indexMapping.DefaultAnalyzer = "custom_analyzer" // name reference to custom analyzer constructed above.
+	indexMapping.DefaultMapping = buildBleveDocumentMapping()
+	return indexMapping, nil
+}
+
+func extractKeyValueStrings(svDefinition string) (string, string, string) {
+	if svDefinition == "" {
+		return "", "", ""
+	}
+	keyValueText := strings.Replace(strings.Replace(svDefinition, ",", " ", -1), "=", "_", -1)
+	var keySb strings.Builder
+	var valueSb strings.Builder
+	for _, keyValue := range strings.Split(svDefinition, ",") {
+		keyValueArray := strings.SplitN(keyValue, "=", 2)
+		if len(keyValueArray) != 2 {
+			continue
+		}
+		keySb.WriteString(keyValueArray[0])
+		keySb.WriteString(" ")
+		valueSb.WriteString(keyValueArray[1])
+		valueSb.WriteString(" ")
+	}
+	return keySb.String(), valueSb.String(), keyValueText
+}
+
+func buildSortedDocumentSet(rawSvg map[string]*pb.StatVarGroupNode) []BleveDocument {
+	documents := make([]BleveDocument, 0)
+	for _, svgData := range rawSvg {
+		for _, svData := range svgData.ChildStatVars {
+			searchName := strings.ToLower(strings.Join(svData.SearchNames, " "))
+			numConstraints := int32(strings.Count(svData.Definition, ",") + 1)
+			numTitleTokens := int32(strings.Count(svData.DisplayName, " ") + 1)
+			keyText, valueText, keyValueText := extractKeyValueStrings(svData.Definition)
+
+			documents = append(documents, BleveDocument{
+				Id:             svData.Id,
+				Title:          svData.DisplayName,
+				KeyText:        keyText,
+				ValueText:      valueText,
+				KeyValueText:   keyValueText,
+				SearchName:     searchName,
+				NumConstraints: numConstraints,
+				NumTitleTokens: numTitleTokens,
+			})
+		}
+	}
+	sort.Slice(documents, func(i, j int) bool {
+		return documents[i].Id < documents[j].Id
+	})
+	return documents
 }
 
 // BuildBleveIndex builds the bleve search index for all the stat vars.
@@ -175,34 +316,20 @@ func BuildBleveIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
 ) (bleve.Index, error) {
 	defer util.TimeTrack(time.Now(), "BuildBleveIndex")
-	indexMapping := bleve.NewIndexMapping()
-
-	documentMapping := bleve.NewDocumentMapping()
-	indexMapping.AddDocumentMapping("Document", documentMapping)
-
-	titleFieldMapping := bleve.NewTextFieldMapping()
-	titleFieldMapping.Store = true
-	documentMapping.AddFieldMappingsAt("Title", titleFieldMapping)
-
-	keyValueTextFieldMapping := bleve.NewTextFieldMapping()
-	keyValueTextFieldMapping.Store = false
-	documentMapping.AddFieldMappingsAt("KeyValueText", keyValueTextFieldMapping)
-
+	indexMapping, err := buildBleveIndexMapping()
+	if err != nil {
+		return nil, err
+	}
 	index, err := bleve.NewUsing("", indexMapping, bleve.Config.DefaultIndexType, bleve.Config.DefaultMemKVStore, nil)
 	if err != nil {
 		return nil, err
 	}
 	batch := index.NewBatch()
-	for _, svgData := range rawSvg {
-		for _, svData := range svgData.ChildStatVars {
-			keyValueText := strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1)
-			err = batch.Index(svData.Id, BleveDocument{
-				Title:        svData.DisplayName,
-				KeyValueText: keyValueText,
-			})
-			if err != nil {
-				return nil, err
-			}
+	docSet := buildSortedDocumentSet(rawSvg)
+	for _, doc := range docSet {
+		err = batch.Index(doc.Id, doc)
+		if err != nil {
+			return nil, err
 		}
 	}
 	err = index.Batch(batch)
