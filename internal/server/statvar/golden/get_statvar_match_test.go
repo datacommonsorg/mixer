@@ -40,7 +40,7 @@ func buildQuery(c QueryTestDefinition) string {
 	for _, queryToken := range strings.Split(c.query, " ") {
 		sb.WriteString(fmt.Sprintf("sn:\"%s\" ", queryToken))
 	}
-	// Sort by keys to get a consistent debug output
+	// Sort by keys to get a consistent debug output.
 	sortedKeys := make([]string, 0, len(c.propertyValues))
 	for k := range c.propertyValues {
 		sortedKeys = append(sortedKeys, k)
@@ -110,7 +110,7 @@ func TestGetStatVarMatch(t *testing.T) {
 		} {
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
 				Query: buildQuery(c),
-				Debug: true,
+				Debug: false,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatVarMatch: %s", err)

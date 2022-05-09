@@ -17,6 +17,7 @@ package statvar
 import (
 	"context"
 	"fmt"
+	"math"
 	"sort"
 	"strings"
 
@@ -37,6 +38,14 @@ func buildExplanationString(in *search.Explanation, sb *strings.Builder, level i
 			buildExplanationString(cchild, sb, level+1)
 		}
 	}
+}
+
+// For some unknown reason bleve seems to not return deterministic scores.
+// Therefore to avoid issues in the test we simply round float to a lower
+// precision and employ a sorting strategy based on other factors.
+func roundFloat(val float64, precision uint) float64 {
+	ratio := math.Pow(10, float64(precision))
+	return math.Round(val*ratio) / ratio
 }
 
 const defaultLimit = 10
@@ -67,7 +76,7 @@ func GetStatVarMatch(
 		matchInfo := &pb.GetStatVarMatchResponse_MatchInfo{
 			StatVar:     hit.ID,
 			StatVarName: hit.Fields["t"].(string),
-			Score:       hit.Score,
+			Score:       roundFloat(hit.Score, 5),
 		}
 		if in.GetDebug() {
 			var sb strings.Builder

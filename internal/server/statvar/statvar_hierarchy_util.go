@@ -187,79 +187,80 @@ type BleveDocument struct {
 	NumTitleTokens int32 `json:"nt" store:"false"`
 }
 
+// buildBleveDocumentMapping returns a `DocumentMapping` for indexing `BleveDocument`s.
+// It uses struct tags to create the proper field mapping for each field.
 func buildBleveDocumentMapping() *mapping.DocumentMapping {
-	documentMapping := bleve.NewDocumentMapping()
-	documentMapping.Dynamic = false
-
+	documentMapping := bleve.NewDocumentStaticMapping()
 	emptyDocument := BleveDocument{}
 	documentType := reflect.TypeOf(emptyDocument)
 	for i := 0; i < documentType.NumField(); i++ {
 		field := documentType.Field(i)
+		// If index:"false", we don't index this field.
 		if field.Tag.Get("index") == "false" {
 			continue
 		}
 		var fieldMapping mapping.FieldMapping
-
 		if field.Type.Name() == "string" {
-			fieldMapping = *bleve.NewNumericFieldMapping()
-		} else {
 			fieldMapping = *bleve.NewTextFieldMapping()
+		} else {
+			fieldMapping = *bleve.NewNumericFieldMapping()
 		}
+		// If store:"false", we avoid storing this field.
 		if field.Tag.Get("store") == "false" {
 			fieldMapping.Store = false
 		}
-		documentMapping.AddFieldMappingsAt(field.Name, &fieldMapping)
+		fieldName := field.Tag.Get("json")
+		if fieldName == "" {
+			fieldName = field.Name
+		}
+		documentMapping.AddFieldMappingsAt(fieldName, &fieldMapping)
 	}
 	return documentMapping
 }
 
 func buildBleveIndexMapping() (mapping.IndexMapping, error) {
 	indexMapping := bleve.NewIndexMapping()
-
-	// Lowercase all the tokens and use a custom list of stopwords.
-	err := indexMapping.AddCustomTokenFilter("lowercase", map[string]interface{}{
-		"type": lowercase.Name,
-	})
-	if err != nil {
-		return nil, err
+	// This contains the standard stopwords set from EnglishAnalyzer from lucene.
+	// We also added "us" to avoid ranking high statistical variables such as
+	// https://datacommons.org/browser/Count_Person_NotAUSCitizen
+	// for queries like "*something* in US".
+	stopwordTokens := []interface{}{
+		"a", "an", "and", "are", "as", "at", "be", "but", "by",
+		"for", "if", "in", "into", "is", "it",
+		"no", "not", "of", "on", "or", "such",
+		"that", "the", "their", "then", "there", "these",
+		"they", "this", "to", "was", "will", "with", "us",
 	}
-	err = indexMapping.AddCustomTokenMap("tokenmap_custom_stopwords", map[string]interface{}{
-		"type": tokenmap.Name,
-		"tokens": []interface{}{
-			"a", "an", "and", "are", "as", "at", "be", "but", "by",
-			"for", "if", "in", "into", "is", "it",
-			"no", "not", "of", "on", "or", "such",
-			"that", "the", "their", "then", "there", "these",
-			"they", "this", "to", "was", "will", "with", "us",
-		},
+	err := indexMapping.AddCustomTokenMap("tokenmap_custom_stopwords", map[string]interface{}{
+		"type":   tokenmap.Name,
+		"tokens": stopwordTokens,
 	})
 	if err != nil {
 		return nil, err
 	}
 	err = indexMapping.AddCustomTokenFilter("custom_stopword_filter", map[string]interface{}{
 		"type":           stop.Name,
-		"stop_token_map": "tokenmap_custom_stopwords",
+		"stop_token_map": "tokenmap_custom_stopwords", // name reference to stopwords tokenmap constructed above.
 	})
 	if err != nil {
 		return nil, err
 	}
-
-	err = indexMapping.AddCustomAnalyzer("customAnalyzer",
+	err = indexMapping.AddCustomAnalyzer("custom_analyzer",
 		map[string]interface{}{
 			"type":         custom.Name,
 			"char_filters": []interface{}{},
 			"tokenizer":    whitespace.Name,
 			"token_filters": []interface{}{
 				lowercase.Name,
-				"custom_stopword_filter",
+				"custom_stopword_filter", // name reference to stopword filter constructed above.
 			},
 		})
 	if err != nil {
 		return nil, err
 	}
-
-	indexMapping.DefaultAnalyzer = "customAnalyzer"
-	indexMapping.AddDocumentMapping("Document", buildBleveDocumentMapping())
+	indexMapping.StoreDynamic = false                // don't allow dynamic types to be stored, only `BleveDocument`.
+	indexMapping.DefaultAnalyzer = "custom_analyzer" // name reference to custom analyzer constructed above.
+	indexMapping.DefaultMapping = buildBleveDocumentMapping()
 	return indexMapping, nil
 }
 
@@ -284,7 +285,6 @@ func extractKeyValueStrings(svDefinition string) (string, string, string) {
 }
 
 func buildSortedDocumentSet(rawSvg map[string]*pb.StatVarGroupNode) []BleveDocument {
-	defer util.TimeTrack(time.Now(), "BuildBleveIndex:buildSortedDocumentSet")
 	documents := make([]BleveDocument, 0)
 	for _, svgData := range rawSvg {
 		for _, svData := range svgData.ChildStatVars {
