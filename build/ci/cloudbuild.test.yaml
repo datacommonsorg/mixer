@@ -51,7 +51,7 @@ steps:
       - -c
       - |
         set -e
-        go test -t=1m -v ./...
+        go test -v ./...
 
 options:
   volumes:

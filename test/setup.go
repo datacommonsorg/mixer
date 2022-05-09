@@ -43,9 +43,9 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache       bool
-	UseMemdb       bool
-	UseSearchIndex bool
+	UseCache      bool
+	UseMemdb      bool
+	SearchOptions server.SearchOptions
 }
 
 var (
@@ -70,11 +70,12 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
-	useCache, useMemdb, useSearchIndex := false, false, false
+	useCache, useMemdb := false, false
+	var searchOptions server.SearchOptions
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useMemdb = option[0].UseMemdb
-		useSearchIndex = option[0].UseSearchIndex
+		searchOptions = option[0].SearchOptions
 	}
 	return setupInternal(
 		"../deploy/storage/bigquery.version",
@@ -83,13 +84,13 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 		storeProject,
 		useCache,
 		useMemdb,
-		useSearchIndex,
+		searchOptions,
 	)
 }
 
 func setupInternal(
 	bq, btGroup, mcfPath, storeProject string,
-	useCache, useMemdb, useSearchIndex bool,
+	useCache bool, useMemdb bool, searchOptions server.SearchOptions,
 ) (pb.MixerClient, pb.ReconClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
@@ -140,7 +141,7 @@ func setupInternal(
 	st := store.NewStore(bqClient, memDb, tables, branchTableName)
 	var cache *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, st, useSearchIndex)
+		cache, err = server.NewCache(ctx, st, searchOptions)
 		if err != nil {
 			return nil, nil, err
 		}

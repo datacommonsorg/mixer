@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -142,7 +143,11 @@ func TestSearchStatVar(t *testing.T) {
 
 	if err := test.TestDriver(
 		"SearchStatVar",
-		&test.TestOption{UseCache: true, UseSearchIndex: true},
+		&test.TestOption{UseCache: true, SearchOptions: server.SearchOptions{
+			UseSearch:           true,
+			BuildSvgSearchIndex: true,
+			BuildBleveIndex:     false,
+		}},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
