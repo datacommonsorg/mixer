@@ -28,6 +28,8 @@ import (
 )
 
 const (
+	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
+	// that links to the top level category stat var groups.
 	SvgRoot = "dc/g/Root"
 )
 
