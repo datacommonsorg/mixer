@@ -106,6 +106,8 @@ type MixerClient interface {
 	// Get the path from a stat var or a stat var group path to the root
 	// of stat var hierarchy
 	GetStatVarPath(ctx context.Context, in *GetStatVarPathRequest, opts ...grpc.CallOption) (*GetStatVarPathResponse, error)
+	// Get the ancestors of a stat var (group) in stat var hierarchy
+	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
@@ -409,6 +411,15 @@ func (c *mixerClient) GetStatVarPath(ctx context.Context, in *GetStatVarPathRequ
 	return out, nil
 }
 
+func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error) {
+	out := new(VariableAncestorsResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableAncestors", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error) {
 	out := new(SearchStatVarResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/SearchStatVar", in, out, opts...)
@@ -677,6 +688,8 @@ type MixerServer interface {
 	// Get the path from a stat var or a stat var group path to the root
 	// of stat var hierarchy
 	GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error)
+	// Get the ancestors of a stat var (group) in stat var hierarchy
+	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
@@ -795,6 +808,9 @@ func (UnimplementedMixerServer) GetStatVarGroupNode(context.Context, *GetStatVar
 }
 func (UnimplementedMixerServer) GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarPath not implemented")
+}
+func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
 }
 func (UnimplementedMixerServer) SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
@@ -1408,6 +1424,24 @@ func _Mixer_GetStatVarPath_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VariableAncestorsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).VariableAncestors(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/VariableAncestors",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).VariableAncestors(ctx, req.(*VariableAncestorsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchStatVarRequest)
 	if err := dec(in); err != nil {
@@ -1894,6 +1928,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatVarPath",
 			Handler:    _Mixer_GetStatVarPath_Handler,
+		},
+		{
+			MethodName: "VariableAncestors",
+			Handler:    _Mixer_VariableAncestors_Handler,
 		},
 		{
 			MethodName: "SearchStatVar",

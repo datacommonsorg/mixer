@@ -28,7 +28,7 @@ import (
 )
 
 const (
-	svgRoot = "dc/g/Root"
+	SvgRoot = "dc/g/Root"
 )
 
 // Note this function modifies validSVG inside.
@@ -172,8 +172,8 @@ func GetStatVarGroup(
 		for sv, data := range store.MemDb.GetSvg() {
 			result.StatVarGroups[sv] = data
 		}
-		result.StatVarGroups[svgRoot].ChildStatVarGroups = append(
-			result.StatVarGroups[svgRoot].ChildStatVarGroups,
+		result.StatVarGroups[SvgRoot].ChildStatVarGroups = append(
+			result.StatVarGroups[SvgRoot].ChildStatVarGroups,
 			&pb.StatVarGroupNode_ChildSVG{
 				Id:                store.MemDb.GetManifest().RootSvg,
 				SpecializedEntity: store.MemDb.GetManifest().ImportName,
@@ -263,40 +263,4 @@ func GetStatVarGroupNode(
 		}
 	}
 	return result, nil
-}
-
-// GetStatVarPath implements API for Mixer.GetStatVarPath.
-func GetStatVarPath(
-	ctx context.Context,
-	in *pb.GetStatVarPathRequest,
-	store *store.Store,
-	cache *resource.Cache,
-) (*pb.GetStatVarPathResponse, error) {
-	id := in.GetId()
-	if id == "" {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "Missing required argument: id")
-	}
-	path := []string{id}
-	curr := id
-	for {
-		if parents, ok := cache.ParentSvg[curr]; ok {
-			// TODO: revert this check when feeding america stat vars are removed
-			// from schema.
-			if len(parents) == 2 && parents[0] == "dc/g/Uncategorized_Variables" {
-				curr = parents[1]
-			} else {
-				curr = parents[0]
-			}
-			if curr == svgRoot {
-				break
-			}
-			path = append(path, curr)
-		} else {
-			break
-		}
-	}
-	return &pb.GetStatVarPathResponse{
-		Path: path,
-	}, nil
 }

@@ -58,8 +58,8 @@ func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]stri
 	parentSvgMap := map[string][]string{}
 	// Do breadth first search starting at the root to find all the svg that have
 	// a path to the root. Only add those as parents.
-	seenSvg := map[string]struct{}{svgRoot: {}}
-	svgToVisit := []string{svgRoot}
+	seenSvg := map[string]struct{}{SvgRoot: {}}
+	svgToVisit := []string{SvgRoot}
 	for len(svgToVisit) > 0 {
 		svgID := svgToVisit[0]
 		svgToVisit = svgToVisit[1:]
