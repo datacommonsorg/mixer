@@ -129,6 +129,8 @@ type MixerClient interface {
 	BulkObservationsSeriesLinked(ctx context.Context, in *BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error)
 	ProteinPage(ctx context.Context, in *ProteinPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
+	// Get the ancestors of a stat var (group) in stat var hierarchy
+	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 }
 
 type mixerClient struct {
@@ -589,6 +591,15 @@ func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts 
 	return out, nil
 }
 
+func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error) {
+	out := new(VariableAncestorsResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableAncestors", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -700,6 +711,8 @@ type MixerServer interface {
 	BulkObservationsSeriesLinked(context.Context, *BulkObservationsSeriesLinkedRequest) (*BulkObservationsSeriesResponse, error)
 	ProteinPage(context.Context, *ProteinPageRequest) (*GraphNodes, error)
 	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
+	// Get the ancestors of a stat var (group) in stat var hierarchy
+	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -855,6 +868,9 @@ func (UnimplementedMixerServer) ProteinPage(context.Context, *ProteinPageRequest
 }
 func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlacePage not implemented")
+}
+func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -1768,6 +1784,24 @@ func _Mixer_PlacePage_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VariableAncestorsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).VariableAncestors(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/VariableAncestors",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).VariableAncestors(ctx, req.(*VariableAncestorsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1974,6 +2008,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PlacePage",
 			Handler:    _Mixer_PlacePage_Handler,
+		},
+		{
+			MethodName: "VariableAncestors",
+			Handler:    _Mixer_VariableAncestors_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

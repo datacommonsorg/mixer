@@ -37,6 +37,7 @@ import "translate.proto";
 import "v1/properties.proto";
 import "v1/property_values.proto";
 import "v1/variables.proto";
+import "v1/variable.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
 import "v1/page.proto";
@@ -477,6 +478,14 @@ service Mixer {
       returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
       get : "/v1/internal/page/place/{entity=**}"
+    };
+  }
+
+  // Get the ancestors of a stat var (group) in stat var hierarchy
+  rpc VariableAncestors(datacommons.v1.VariableAncestorsRequest)
+      returns (datacommons.v1.VariableAncestorsResponse) {
+    option (google.api.http) = {
+      get : "/variable/ancestors/{entity=**}"
     };
   }
 }

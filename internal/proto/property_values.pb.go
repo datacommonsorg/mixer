@@ -106,6 +106,7 @@ type InPropertyValuesRequest struct {
 	// [Optional]
 	// The pagination token for getting the next set of entries. This is empty
 	// for the first request and needs to be set in the subsequent request.
+	// This is the value returned from a prior call to InPropertyValuesResponse
 	NextToken string `protobuf:"bytes,4,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
 }
 
