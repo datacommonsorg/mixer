@@ -481,11 +481,18 @@ service Mixer {
     };
   }
 
-  // Get the ancestors of a stat var (group) in stat var hierarchy
   rpc VariableAncestors(datacommons.v1.VariableAncestorsRequest)
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/variable/ancestors/{entity=**}"
+    };
+  }
+
+  rpc VariableGroups(datacommons.v1.VariableGroupsRequest)
+      returns (datacommons.v1.VariableGroupsResponse) {
+    option (google.api.http) = {
+      get : "/v1/variable/groups"
+      additional_bindings : {post : "/v1/variable/groups" body : "*"}
     };
   }
 }
