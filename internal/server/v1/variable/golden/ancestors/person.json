@@ -1,6 +1,5 @@
 {
   "ancestors": [
-    "Count_Person",
     "dc/g/Demographics"
   ]
 }

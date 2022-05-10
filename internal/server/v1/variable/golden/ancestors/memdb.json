@@ -1,6 +1,5 @@
 {
   "ancestors": [
-    "Count_Person_FoodInsecure",
     "g/Person_FoodInsecure",
     "g/Feeding_America"
   ]

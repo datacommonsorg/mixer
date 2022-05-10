@@ -37,7 +37,7 @@ func Ancestors(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "Missing required argument: entity")
 	}
-	ancestors := []string{entity}
+	ancestors := []string{}
 	curr := entity
 	for {
 		if parents, ok := cache.ParentSvg[curr]; ok {
