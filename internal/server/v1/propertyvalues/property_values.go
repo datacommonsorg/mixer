@@ -95,7 +95,8 @@ func PropertyValues(
 				break
 			}
 		}
-		// If used import group has more data, then should compute the token
+		// Out property values only use one (the preferred) import group. So here
+		// should only check if that import group has more data to compute the token.
 		if s.rawEntities[s.usedImportGroup] != nil {
 			respToken, err = util.EncodeProto(
 				&pb.PaginationInfo{

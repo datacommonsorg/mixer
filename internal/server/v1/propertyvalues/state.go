@@ -24,6 +24,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 )
 
+// state holds raw and processed data for property values API.
+// This struct is to be extended for in / out state.
 type state struct {
 	property string
 	entity   string
@@ -48,7 +50,6 @@ type outState struct {
 	state
 	// The used import group (only one import group is used for out property values).
 	usedImportGroup int
-	//
 }
 
 // init builds a new state given property, entity and cursor group.
@@ -81,7 +82,7 @@ func (s *state) init(
 		ctx,
 		btGroup,
 		rowListMap,
-		action,
+		unmarshalFunc,
 		nil,
 	)
 	if err != nil {
@@ -116,7 +117,7 @@ func (s *state) readNextPage(
 		ctx,
 		btGroup,
 		rowListMap,
-		action,
+		unmarshalFunc,
 		nil,
 	)
 	if err != nil {

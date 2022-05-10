@@ -32,7 +32,7 @@ func buildEmptyCursorGroup(n int) *pb.CursorGroup {
 	return result
 }
 
-var action = func(jsonRaw []byte) (interface{}, error) {
+var unmarshalFunc = func(jsonRaw []byte) (interface{}, error) {
 	var p pb.PagedEntities
 	err := proto.Unmarshal(jsonRaw, &p)
 	return &p, err
