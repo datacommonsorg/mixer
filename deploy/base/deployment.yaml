@@ -108,8 +108,13 @@ spec:
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
+            failureThreshold: 1
             periodSeconds: 10
-            initialDelaySeconds: 10
+          startupProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:12345"]
+            periodSeconds: 10
+            failureThreshold: 30
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
           args:
