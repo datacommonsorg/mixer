@@ -26,12 +26,12 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestInPropertyValues(t *testing.T) {
+func TestPropertyValuesOut(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "in_property_values")
+	goldenPath := path.Join(path.Dir(filename), "property_values_out")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -42,50 +42,37 @@ func TestInPropertyValues(t *testing.T) {
 			token      string
 		}{
 			{
-				"containedIn1.json",
+				"containedIn.json",
 				"containedInPlace",
 				"geoId/06",
-				1002,
+				0,
 				"",
-			},
-			{
-				"containedIn2.json",
-				"containedInPlace",
-				"geoId/06",
-				500,
-				"H4sIAAAAAAAA/+ISEWIQYuJgFGLiYBJi4mAWYuFgEWACAAAA//8BAAD//7V6I/IWAAAA",
 			},
 			{
 				"geoOverlaps.json",
 				"geoOverlaps",
 				"geoId/0649670",
-				1000,
+				5,
 				"",
 			},
 			{
-				"typeOf1.json",
-				"typeOf",
-				"Country",
-				50,
-				"",
-			},
-			{
-				"typeOf2.json",
-				"typeOf",
-				"Country",
+				"geoOverlaps1.json",
+				"geoOverlaps",
+				"geoId/0649670",
 				0,
-				"H4sIAAAAAAAA/+KSEGIQYuFglDASYuFgkjASYuJgFmLhYJEwAgAAAP//AQAA//8zTzsoGgAAAA==",
+				"H4sIAAAAAAAA/+ISEWIQYuFglGAVYuJgEmLiYBZi4mABAAAA//8BAAD//10owCcWAAAA",
 			},
 		} {
-			req := &pb.InPropertyValuesRequest{
+			req := &pb.PropertyValuesRequest{
 				Property:  c.property,
 				Entity:    c.entity,
+				Direction: "out",
 				Limit:     c.limit,
 				NextToken: c.token,
 			}
-			resp, err := mixer.InPropertyValues(ctx, req)
+			resp, err := mixer.PropertyValues(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.InPropertyValues: %s", err)
+				t.Errorf("could not run mixer.PropertyValues/out: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -95,7 +82,7 @@ func TestInPropertyValues(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.InPropertyValuesResponse
+			var expected pb.PropertyValuesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
@@ -107,7 +94,7 @@ func TestInPropertyValues(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"InPropertyValues", &test.TestOption{}, testSuite); err != nil {
+		"PropertyValues/out", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

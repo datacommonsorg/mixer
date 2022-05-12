@@ -27,7 +27,7 @@ message PagedEntities {
   double total_page_count = 2;
 }
 
-message InPropertyValuesRequest {
+message PropertyValuesRequest {
   string property = 1;
   string entity = 2;
   // [Optional]
@@ -37,11 +37,13 @@ message InPropertyValuesRequest {
   // [Optional]
   // The pagination token for getting the next set of entries. This is empty
   // for the first request and needs to be set in the subsequent request.
-  // This is the value returned from a prior call to InPropertyValuesResponse
+  // This is the value returned from a prior call to PropertyValuesResponse
   string next_token = 4;
+  // Direction can only be "in" and "out"
+  string direction = 5;
 }
 
-message InPropertyValuesResponse {
+message PropertyValuesResponse {
   repeated datacommons.EntityInfo data = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
