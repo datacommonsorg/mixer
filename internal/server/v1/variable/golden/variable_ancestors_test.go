@@ -21,101 +21,41 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestSearchStatVar(t *testing.T) {
+func TestVariableAncestors(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(
-		path.Dir(filename), "search_statvar")
+	goldenPath := path.Join(path.Dir(filename), "ancestors")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
-			query      string
-			places     []string
-			svOnly     bool
+			entity     string
 			goldenFile string
 		}{
 			{
-				"Asian , age",
-				[]string{"geoId/06"},
-				false,
-				"asian_age.json",
+				"Count_Person",
+				"person.json",
 			},
 			{
-				"crime",
-				[]string{},
-				false,
-				"crime.json",
+				"dc/g/Person_EducationalAttainment",
+				"school.json",
 			},
 			{
-				"female",
-				[]string{"country/USA"},
-				false,
-				"female.json",
-			},
-			{
-				"accommodation food services",
-				[]string{"country/USA"},
-				false,
-				"accommodation_food_services.json",
-			},
-			{
-				"food stamp",
-				[]string{},
-				false,
-				"food_stamp.json",
-			},
-			{
-				"fem",
-				[]string{},
-				false,
-				"fem.json",
-			},
-			{
-				"women",
-				[]string{},
-				false,
-				"women.json",
-			},
-			{
-				"veteran",
-				[]string{},
-				false,
-				"veteran.json",
-			},
-			{
-				"poor",
-				[]string{},
-				false,
-				"poor.json",
-			},
-			{
-				"count_Person",
-				[]string{},
-				false,
-				"count_person.json",
-			},
-			{
-				"food stamp",
-				[]string{},
-				true,
-				"food_stamp_sv.json",
+				"Count_Person_FoodInsecure",
+				"memdb.json",
 			},
 		} {
-			resp, err := mixer.SearchStatVar(ctx, &pb.SearchStatVarRequest{
-				Query:  c.query,
-				Places: c.places,
-				SvOnly: c.svOnly,
+			resp, err := mixer.VariableAncestors(ctx, &pb.VariableAncestorsRequest{
+				Entity: c.entity,
 			})
 			if err != nil {
-				t.Errorf("could not SearchStatVar: %s", err)
+				t.Errorf("could not VariableAncestors: %s", err)
 				continue
 			}
 
@@ -123,31 +63,27 @@ func TestSearchStatVar(t *testing.T) {
 				continue
 			}
 
-			if true {
+			if test.GenerateGolden {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 
-			var expected pb.SearchStatVarResponse
+			var expected pb.VariableAncestorsResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue
 			}
 
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
+				t.Errorf("VariableAncestors got diff: %v", diff)
 				continue
 			}
 		}
 	}
 
 	if err := test.TestDriver(
-		"SearchStatVar",
-		&test.TestOption{UseCache: true, SearchOptions: server.SearchOptions{
-			UseSearch:           true,
-			BuildSvgSearchIndex: true,
-			BuildBleveIndex:     false,
-		}},
+		"VariableAncestors",
+		&test.TestOption{UseCache: true, UseMemdb: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

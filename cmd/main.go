@@ -179,7 +179,11 @@ func main() {
 		// need to merge svg info from memdb.
 		var cache *resource.Cache
 		if *serveMixerService {
-			cache, err = server.NewCache(ctx, store, true /* useSearch */)
+			cache, err = server.NewCache(ctx, store, server.SearchOptions{
+				UseSearch:           true,
+				BuildSvgSearchIndex: true,
+				BuildBleveIndex:     true,
+			})
 			if err != nil {
 				log.Fatalf("Failed to create cache: %v", err)
 			}

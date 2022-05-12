@@ -23,6 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/page"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+	"github.com/datacommonsorg/mixer/internal/server/v1/variable"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
 
@@ -143,4 +144,18 @@ func (s *Server) PlacePage(
 	ctx context.Context, in *pb.PlacePageRequest,
 ) (*pb.GetPlacePageDataResponse, error) {
 	return page.PlacePage(ctx, in, s.store)
+}
+
+// VariableAncestors implements API for Mixer.VariableAncestors.
+func (s *Server) VariableAncestors(
+	ctx context.Context, in *pb.VariableAncestorsRequest,
+) (*pb.VariableAncestorsResponse, error) {
+	return variable.Ancestors(ctx, in, s.store, s.cache)
+}
+
+// VariableGroups implements API for Mixer.VariableGroups.
+func (s *Server) VariableGroups(
+	ctx context.Context, in *pb.VariableGroupsRequest,
+) (*pb.VariableGroupsResponse, error) {
+	return variable.Groups(ctx, in, s.store, s.cache)
 }

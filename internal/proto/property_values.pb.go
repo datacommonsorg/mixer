@@ -106,7 +106,11 @@ type PropertyValuesRequest struct {
 	// [Optional]
 	// The pagination token for getting the next set of entries. This is empty
 	// for the first request and needs to be set in the subsequent request.
+<<<<<<< HEAD
 	// This is the value returned from a prior call to PropertyValuesResponse
+=======
+	// This is the value returned from a prior call to InPropertyValuesResponse
+>>>>>>> 56e39367d9414e238621c1dd87eb47fc85e8fffb
 	NextToken string `protobuf:"bytes,4,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
 	// Direction can only be "in" and "out"
 	Direction string `protobuf:"bytes,5,opt,name=direction,proto3" json:"direction,omitempty"`

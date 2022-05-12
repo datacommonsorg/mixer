@@ -1,0 +1,45 @@
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+option go_package = "./proto";
+package datacommons.v1;
+
+import "stat_var.proto";
+
+message VariableAncestorsRequest {
+  // DCID of a stat var (group)
+  string entity = 1;
+}
+
+message VariableAncestorsResponse {
+  // A list of ancestor stat var (group) DCIDs from the queried stat var to the
+  // root of stat var hierarchy.
+  //
+  // This is one of many combinations in the hierarchy. When there are multiple
+  // ancestor stat var (groups) to select at a level, the first one in
+  // alphabetical sorted order is selected.
+  repeated string ancestors = 1;
+}
+
+message VariableGroupsRequest {
+  // (optional) When specified, only return the variable groups that the entities
+  // have data for.
+  repeated string entities = 1;
+}
+
+message VariableGroupsResponse {
+  // Key is StatVar Group ID.
+  map<string, StatVarGroupNode> data = 1;
+}

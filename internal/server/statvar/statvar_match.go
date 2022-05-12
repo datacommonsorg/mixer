@@ -15,27 +15,40 @@
 package statvar
 
 import (
-	"bytes"
 	"context"
 	"fmt"
+	"math"
 	"sort"
+	"strings"
 
 	"github.com/blevesearch/bleve/v2"
+	"github.com/blevesearch/bleve/v2/search"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-func toQueryString(m map[string]string) string {
-	b := new(bytes.Buffer)
-	for key, value := range m {
-		fmt.Fprintf(b, "%s ", key)
-		fmt.Fprintf(b, "%s ", value)
+func buildExplanationString(in *search.Explanation, sb *strings.Builder, level int) {
+	sb.WriteString(fmt.Sprintf("%.2f => %s\n", in.Value, in.Message))
+	if len(in.Children) > 0 {
+		for _, cchild := range in.Children {
+			for i := 0; i < level+1; i++ {
+				sb.WriteString(" ")
+			}
+			buildExplanationString(cchild, sb, level+1)
+		}
 	}
-	return b.String()
 }
 
-const defaultLimit = 100
+// For some unknown reason bleve seems to not return deterministic scores.
+// Therefore to avoid issues in the test we simply round float to a lower
+// precision and employ a sorting strategy based on other factors.
+func roundFloat(val float64, precision uint) float64 {
+	ratio := math.Pow(10, float64(precision))
+	return math.Round(val*ratio) / ratio
+}
+
+const defaultLimit = 10
 
 // GetStatVarMatch implements API for Mixer.GetStatVarMatch.
 func GetStatVarMatch(
@@ -48,11 +61,11 @@ func GetStatVarMatch(
 	if limit == 0 {
 		limit = defaultLimit
 	}
-	query := bleve.NewMatchQuery(toQueryString(in.GetPropertyValue()))
-	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, true)
+	query := bleve.NewQueryStringQuery(in.GetQuery())
+	searchRequest := bleve.NewSearchRequestOptions(query, int(limit), 0, in.GetDebug())
 	// The - prefix indicates reverse direction.
-	searchRequest.SortBy([]string{"-_score", "Title"})
-	searchRequest.Fields = append(searchRequest.Fields, "Title")
+	searchRequest.SortBy([]string{"-_score", "nc", "nt", "_id"})
+	searchRequest.Fields = append(searchRequest.Fields, "t")
 	searchResults, err := cache.BleveSearchIndex.Search(searchRequest)
 	if err != nil {
 		return nil, err
@@ -60,11 +73,19 @@ func GetStatVarMatch(
 
 	result := &pb.GetStatVarMatchResponse{}
 	for _, hit := range searchResults.Hits {
-		result.MatchInfo = append(result.MatchInfo, &pb.GetStatVarMatchResponse_MatchInfo{
+		matchInfo := &pb.GetStatVarMatchResponse_MatchInfo{
 			StatVar:     hit.ID,
-			StatVarName: hit.Fields["Title"].(string),
-			Score:       hit.Score,
-		})
+			StatVarName: hit.Fields["t"].(string),
+			Score:       roundFloat(hit.Score, 5),
+		}
+		if in.GetDebug() {
+			var sb strings.Builder
+			sb.WriteString(in.GetQuery())
+			sb.WriteString("\n")
+			buildExplanationString(hit.Expl, &sb, 0)
+			matchInfo.Explanation = strings.ToValidUTF8(sb.String(), "")
+		}
+		result.MatchInfo = append(result.MatchInfo, matchInfo)
 	}
 	// 1) Highest score wins.
 	// 2) If score are the same, shortest statvar id wins.
