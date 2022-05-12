@@ -140,7 +140,7 @@ type VariableGroupsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// (optional) When specified, only return the variable group that the entities
+	// (optional) When specified, only return the variable groups that the entities
 	// have data for.
 	Entities []string `protobuf:"bytes,1,rep,name=entities,proto3" json:"entities,omitempty"`
 }
