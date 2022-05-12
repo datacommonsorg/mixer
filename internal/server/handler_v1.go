@@ -152,3 +152,10 @@ func (s *Server) VariableAncestors(
 ) (*pb.VariableAncestorsResponse, error) {
 	return variable.Ancestors(ctx, in, s.store, s.cache)
 }
+
+// VariableGroups implements API for Mixer.VariableGroups.
+func (s *Server) VariableGroups(
+	ctx context.Context, in *pb.VariableGroupsRequest,
+) (*pb.VariableGroupsResponse, error) {
+	return variable.Groups(ctx, in, s.store, s.cache)
+}
