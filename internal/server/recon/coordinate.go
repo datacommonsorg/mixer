@@ -92,7 +92,8 @@ func ResolveCoordinates(
 	for place := range questionablePlaces {
 		questionablePlaceList = append(questionablePlaceList, place)
 	}
-	geoJSONData, err := node.GetPropertyValuesHelper(ctx, store, questionablePlaceList, geoJSONPredicate, true)
+	geoJSONData, err := node.GetPropertyValuesHelper(
+		ctx, store, questionablePlaceList, geoJSONPredicate, true)
 	if err != nil {
 		return nil, err
 	}

@@ -25,6 +25,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// BtRow contains the BT read key tokens and the cache data.
 type BtRow struct {
 	// The body parts of the BT key, which are used to identify the place, dcid
 	// or other properties that related to the data.  This is to be used by the

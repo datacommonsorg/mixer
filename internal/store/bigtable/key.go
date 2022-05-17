@@ -79,12 +79,13 @@ const (
 	BtBatchQuerySize = 1000
 )
 
+// PropValkeyPrefix contains the out and in prop val key prefix.
 var PropValkeyPrefix = map[bool]string{
 	true:  BtOutPropValPrefix,
 	false: BtInPropValPrefix,
 }
 
-// KeyParts represents data that are used to construct a Bigtable row key.
+// Accessor represents data used to access bigtable row.
 type Accessor struct {
 	// import group table index.
 	ImportGroup int
@@ -94,6 +95,7 @@ type Accessor struct {
 	Body [][]string
 }
 
+// BuildRowList builds row list from BT prefix and token components.
 func BuildRowList(prefix string, body [][]string) bigtable.RowList {
 	rowList := bigtable.RowList{prefix}
 	for idx, component := range body {

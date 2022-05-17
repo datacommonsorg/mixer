@@ -236,7 +236,10 @@ func GetStatSetWithinPlace(
 	}
 
 	// Read from cache directly
-	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, bigtable.BtObsCollection, parentPlace, childType, statVars, dateKey)
+	cacheData, err := stat.ReadStatCollection(
+		ctx, store.BtGroup, bigtable.BtObsCollection,
+		parentPlace, childType, statVars, dateKey,
+	)
 	if err != nil {
 		return nil, err
 	}

@@ -44,7 +44,8 @@ func Series(
 			"Missing required argument: variable")
 	}
 	resp := &pb.ObservationsSeriesResponse{}
-	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, []string{entity}, []string{variable})
+	btData, err := stat.ReadStatsPb(
+		ctx, store.BtGroup, []string{entity}, []string{variable})
 	if err != nil {
 		return resp, err
 	}
