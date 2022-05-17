@@ -21,7 +21,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -48,9 +47,8 @@ func GetStatValue(ctx context.Context, in *pb.GetStatValueRequest, store *store.
 		ScalingFactor:     in.GetScalingFactor(),
 	}
 
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
 	var obsTimeSeries *model.ObsTimeSeries
-	btData, err := stat.ReadStats(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := stat.ReadStats(ctx, store.BtGroup, []string{place}, []string{statVar})
 	if err != nil {
 		return nil, err
 	}

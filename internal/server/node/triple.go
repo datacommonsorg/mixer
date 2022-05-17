@@ -20,7 +20,6 @@ import (
 	"sort"
 	"strings"
 
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -162,7 +161,7 @@ func GetTriples(
 	var err error
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		result, err = ReadTriples(ctx, store.BtGroup, bigtable.BuildTriplesKey(regDcids))
+		result, err = ReadTriples(ctx, store.BtGroup, regDcids)
 		if err != nil {
 			return nil, err
 		}
@@ -190,12 +189,13 @@ func GetTriples(
 func ReadTriples(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	rowList cbt.RowList,
+	dcids []string,
 ) (*pb.GetTriplesResponse, error) {
 	btDataList, err := bigtable.Read(
 		ctx,
 		btGroup,
-		rowList,
+		bigtable.BtTriplesPrefix,
+		[][]string{dcids},
 		func(jsonRaw []byte) (interface{}, error) {
 			var triples pb.Triples
 			if err := proto.Unmarshal(jsonRaw, &triples); err != nil {
@@ -203,7 +203,6 @@ func ReadTriples(
 			}
 			return &triples, nil
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
@@ -212,8 +211,9 @@ func ReadTriples(
 	// dcid -> predicate -> id/value
 	visited := map[string]map[string]map[string]struct{}{}
 	for _, btData := range btDataList {
-		for dcid, data := range btData {
-			triples, ok := data.(*pb.Triples)
+		for _, row := range btData {
+			dcid := row.Parts[0]
+			triples, ok := row.Data.(*pb.Triples)
 			if !ok {
 				return nil, status.Error(codes.Internal, "Error reading triples cache")
 			}

@@ -17,7 +17,6 @@ package stat
 import (
 	"context"
 
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -136,40 +135,40 @@ func TokenFn(keyTokens map[string]*util.PlaceStatVar) func(rowKey string) (strin
 func ReadStats(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	rowList cbt.RowList,
-	keyTokens map[string]*util.PlaceStatVar,
+	places []string,
+	statVars []string,
 ) (map[string]map[string]*model.ObsTimeSeries, error) {
-	keyToTokenFn := TokenFn(keyTokens)
 	btDataList, err := bigtable.Read(
-		ctx, btGroup, rowList, toObsSeries, TokenFn(keyTokens),
+		ctx,
+		btGroup,
+		bigtable.BtObsTimeSeries,
+		[][]string{places, statVars},
+		toObsSeries,
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]map[string]*model.ObsTimeSeries{}
-	for _, psv := range keyTokens {
-		if _, ok := result[psv.Place]; !ok {
-			result[psv.Place] = map[string]*model.ObsTimeSeries{}
+	for _, p := range places {
+		if _, ok := result[p]; !ok {
+			result[p] = map[string]*model.ObsTimeSeries{}
 		}
-		if _, ok := result[psv.StatVar]; !ok {
-			result[psv.Place][psv.StatVar] = &model.ObsTimeSeries{}
+		for _, sv := range statVars {
+			result[p][sv] = &model.ObsTimeSeries{}
 		}
 	}
-	for _, rowKey := range rowList {
-		token, _ := keyToTokenFn(rowKey)
-		psv := keyTokens[rowKey]
-		// Different base data has different source series, concatenate them together.
-		ss := result[psv.Place][psv.StatVar].SourceSeries
-		for _, btData := range btDataList {
-			if data, ok := btData[token]; ok {
-				ss = append(
-					ss,
-					data.(*model.ObsTimeSeries).SourceSeries...,
-				)
-				result[psv.Place][psv.StatVar].PlaceName = data.(*model.ObsTimeSeries).PlaceName
-			}
+	// Different base data has different source series, concatenate them together.
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			place := row.Parts[0]
+			sv := row.Parts[1]
+			obs := row.Data.(*model.ObsTimeSeries)
+			result[place][sv].SourceSeries = append(
+				result[place][sv].SourceSeries,
+				obs.SourceSeries...,
+			)
+			result[place][sv].PlaceName = obs.PlaceName
 		}
-		result[psv.Place][psv.StatVar].SourceSeries = ss
 	}
 	return result, nil
 }
@@ -179,40 +178,47 @@ func ReadStats(
 func ReadStatsPb(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	rowList cbt.RowList,
-	keyTokens map[string]*util.PlaceStatVar,
+	places []string,
+	statVars []string,
 ) (map[string]map[string]*pb.ObsTimeSeries, error) {
-	keyToTokenFn := TokenFn(keyTokens)
-	btDataList, err := bigtable.Read(ctx, btGroup, rowList, toObsSeriesPb, keyToTokenFn)
+	btDataList, err := bigtable.Read(
+		ctx,
+		btGroup,
+		bigtable.BtObsTimeSeries,
+		[][]string{places, statVars},
+		toObsSeriesPb,
+	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]map[string]*pb.ObsTimeSeries{}
-	for _, psv := range keyTokens {
-		if _, ok := result[psv.Place]; !ok {
-			result[psv.Place] = map[string]*pb.ObsTimeSeries{}
+	for _, p := range places {
+		if _, ok := result[p]; !ok {
+			result[p] = map[string]*pb.ObsTimeSeries{}
 		}
-		result[psv.Place][psv.StatVar] = &pb.ObsTimeSeries{}
+		for _, sv := range statVars {
+			result[p][sv] = &pb.ObsTimeSeries{}
+		}
 	}
-
-	for _, rowKey := range rowList {
-		token, _ := keyToTokenFn(rowKey)
-		psv := keyTokens[rowKey]
-		// Different base data has different source series, concatenate them together.
-		ss := result[psv.Place][psv.StatVar].SourceSeries
-		for _, btData := range btDataList {
-			if data, ok := btData[token]; ok {
-				ss = append(
-					ss,
-					data.(*pb.ObsTimeSeries).SourceSeries...,
-				)
-				result[psv.Place][psv.StatVar].PlaceName = data.(*pb.ObsTimeSeries).PlaceName
-			}
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			place := row.Parts[0]
+			sv := row.Parts[1]
+			obs := row.Data.(*pb.ObsTimeSeries)
+			result[place][sv].SourceSeries = append(
+				result[place][sv].SourceSeries,
+				obs.SourceSeries...,
+			)
+			result[place][sv].PlaceName = obs.PlaceName
 		}
-		// Same sources could be from different import groups. For example, NYT Covid
-		// import is included in both "frequent" and "dcbranch" group. This is to
-		// collect the source with the most (latest) data.
-		result[psv.Place][psv.StatVar].SourceSeries = CollectDistinctSourceSeries(ss)
+	}
+	// Same sources could be from different import groups. For example, NYT Covid
+	// import is included in both "frequent" and "dcbranch" group. This is to
+	// collect the source with the most (latest) data.
+	for p := range result {
+		for sv := range result[p] {
+			result[p][sv].SourceSeries = CollectDistinctSourceSeries(result[p][sv].SourceSeries)
+		}
 	}
 	return result, nil
 }
@@ -222,40 +228,43 @@ func ReadStatsPb(
 func ReadStatCollection(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	rowList cbt.RowList,
-	keyTokens map[string]string) (
-	map[string]*pb.ObsCollection, error) {
-
+	prefix string,
+	ancestorPlace string,
+	childPlaceType string,
+	statVars []string,
+	date string,
+) (map[string]*pb.ObsCollection, error) {
 	btDataList, err := bigtable.Read(
 		ctx,
 		btGroup,
-		rowList,
+		prefix,
+		[][]string{{ancestorPlace}, {childPlaceType}, statVars, {date}},
 		toObsCollection,
-		func(rowKey string) (string, error) {
-			return keyTokens[rowKey], nil
-		},
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]*pb.ObsCollection{}
-	for _, rowKey := range rowList {
-		token := keyTokens[rowKey]
-		result[token] = &pb.ObsCollection{}
-		ss := result[token].SourceCohorts
-		for _, btData := range btDataList {
-			if data, ok := btData[token]; ok {
-				obsCollection, ok := data.(*pb.ObsCollection)
-				if !ok {
-					return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")
-				}
-				ss = append(ss, obsCollection.SourceCohorts...)
+	for _, sv := range statVars {
+		result[sv] = &pb.ObsCollection{}
+	}
+	// ss := result[token].SourceCohorts
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			sv := row.Parts[2]
+			obsCollection, ok := row.Data.(*pb.ObsCollection)
+			if !ok {
+				return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")
 			}
+			result[sv].SourceCohorts = append(
+				result[sv].SourceCohorts, obsCollection.SourceCohorts...)
 		}
-		if len(ss) > 0 {
-			result[token].SourceCohorts = CollectDistinctSourceSeries(ss)
+	}
+	for sv := range result {
+		if len(result[sv].SourceCohorts) > 0 {
+			result[sv].SourceCohorts = CollectDistinctSourceSeries(result[sv].SourceCohorts)
 		} else {
-			result[token] = nil
+			result[sv] = nil
 		}
 	}
 	return result, nil

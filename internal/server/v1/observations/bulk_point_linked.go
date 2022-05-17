@@ -64,8 +64,10 @@ func BulkPointLinked(
 		dateKey = "LATEST"
 	}
 	// Read from cache directly
-	rowList, keyTokens := bigtable.BuildObsCollectionKey(linkedEntity, entityType, dateKey, variables)
-	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatCollection(
+		ctx, store.BtGroup, bigtable.BtObsCollection,
+		linkedEntity, entityType, variables, dateKey,
+	)
 	if err != nil {
 		return nil, err
 	}

@@ -17,7 +17,6 @@ package biopage
 import (
 	"context"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -26,12 +25,15 @@ import (
 
 // GetBioPageDataHelper is a wrapper to get bio page data.
 func GetBioPageDataHelper(
-	ctx context.Context, dcid string, store *store.Store) (
-	*pb.GraphNodes, error) {
-	dataList, err := bigtable.Read(
+	ctx context.Context,
+	dcid string,
+	store *store.Store,
+) (*pb.GraphNodes, error) {
+	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		cbt.RowList{bigtable.BtProteinPagePrefix + dcid},
+		bigtable.BtProteinPagePrefix,
+		[][]string{{dcid}},
 		func(jsonRaw []byte) (interface{}, error) {
 			var graph pb.GraphNodes
 			if err := proto.Unmarshal(jsonRaw, &graph); err != nil {
@@ -39,16 +41,17 @@ func GetBioPageDataHelper(
 			}
 			return &graph, nil
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
 	}
 	// btData is orderred by preference. Use the one that has bio data without
 	// merging.
-	for _, btData := range dataList {
-		if v, ok := btData[dcid]; ok {
-			return v.(*pb.GraphNodes), nil
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			if row.Parts[0] == dcid {
+				return row.Data.(*pb.GraphNodes), nil
+			}
 		}
 	}
 	return nil, nil

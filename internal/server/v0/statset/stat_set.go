@@ -48,9 +48,7 @@ func getStatSet(
 			result.Data[statVar].Stat[place] = nil
 		}
 	}
-
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, places, statVars)
 	if err != nil {
 		return nil, err
 	}
@@ -84,8 +82,7 @@ func getStatSetAll(
 	*pb.GetStatSetAllResponse, error,
 ) {
 	ts := time.Now()
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, places, statVars)
 	if err != nil {
 		return nil, err
 	}
@@ -239,8 +236,7 @@ func GetStatSetWithinPlace(
 	}
 
 	// Read from cache directly
-	rowList, keyTokens := bigtable.BuildObsCollectionKey(parentPlace, childType, dateKey, statVars)
-	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, bigtable.BtObsCollection, parentPlace, childType, statVars, dateKey)
 	if err != nil {
 		return nil, err
 	}
@@ -374,8 +370,10 @@ func GetStatSetWithinPlaceAll(
 	}
 
 	// Read from cache directly
-	rowList, keyTokens := bigtable.BuildObsCollectionKey(parentPlace, childType, dateKey, statVars)
-	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatCollection(
+		ctx, store.BtGroup, bigtable.BtObsCollection,
+		parentPlace, childType, statVars, dateKey,
+	)
 	if err != nil {
 		return nil, err
 	}

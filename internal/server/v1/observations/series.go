@@ -22,7 +22,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -45,8 +44,7 @@ func Series(
 			"Missing required argument: variable")
 	}
 	resp := &pb.ObservationsSeriesResponse{}
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{entity}, []string{variable})
-	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, []string{entity}, []string{variable})
 	if err != nil {
 		return resp, err
 	}

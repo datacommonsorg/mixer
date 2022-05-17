@@ -18,8 +18,8 @@ import (
 	"container/heap"
 	"context"
 	"log"
+	"strconv"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 )
@@ -71,29 +71,37 @@ func (s *state) init(
 	s.limit = limit
 	s.totalPage = map[int]int{}
 	// Read cache data based on pagination info.
-	rowListMap := map[int]cbt.RowList{}
+	prefix := bigtable.BtPagedPropValOut
+	if !arcOut {
+		prefix = bigtable.BtPagedPropValIn
+	}
+	accs := []*bigtable.Accessor{}
 	for _, c := range cursorGroup.Cursors {
 		if c != nil {
-			rowList := buildSimpleRequestRowList(entity, property, arcOut, c.GetPage())
-			rowListMap[int(c.GetImportGroup())] = rowList
+			accs = append(accs, &bigtable.Accessor{
+				ImportGroup: int(c.GetImportGroup()),
+				Body:        [][]string{{entity}, {property}, {strconv.Itoa(int(c.GetPage()))}},
+			})
 		}
 	}
 	btDataList, err := bigtable.ReadWithGroupRowList(
 		ctx,
 		btGroup,
-		rowListMap,
+		prefix,
+		accs,
 		unmarshalFunc,
-		nil,
 	)
 	if err != nil {
 		return err
 	}
 	// Store the raw cache data.
 	for idx, btData := range btDataList {
-		if data, ok := btData[entity]; ok {
-			pe := data.(*pb.PagedEntities)
-			s.rawEntities = append(s.rawEntities, pe.Entities)
-			s.totalPage[idx] = int(pe.TotalPageCount)
+		if len(btData) > 0 {
+			for _, row := range btData {
+				pe := row.Data.(*pb.PagedEntities)
+				s.rawEntities = append(s.rawEntities, pe.Entities)
+				s.totalPage[idx] = int(pe.TotalPageCount)
+			}
 		} else {
 			s.rawEntities = append(s.rawEntities, nil)
 		}
@@ -109,24 +117,33 @@ func (s *state) readNextPage(
 	page int32,
 ) error {
 	log.Printf("Read new page: import group %d, page %d", importGroup, page)
-	rowList := buildSimpleRequestRowList(s.entity, s.property, arcOut, page)
-	rowListMap := map[int]cbt.RowList{
-		importGroup: rowList,
+	prefix := bigtable.BtPagedPropValOut
+	if !arcOut {
+		prefix = bigtable.BtPagedPropValIn
 	}
+	accs := []*bigtable.Accessor{
+		{
+			ImportGroup: importGroup,
+			Body:        [][]string{{s.entity}, {s.property}, {strconv.Itoa(int(page))}},
+		},
+	}
+
 	btDataList, err := bigtable.ReadWithGroupRowList(
 		ctx,
 		btGroup,
-		rowListMap,
+		prefix,
+		accs,
 		unmarshalFunc,
-		nil,
 	)
 	if err != nil {
 		return err
 	}
-	if data, ok := btDataList[importGroup][s.entity]; ok {
-		pe := data.(*pb.PagedEntities)
-		s.rawEntities[importGroup] = pe.Entities
-		s.totalPage[importGroup] = int(pe.TotalPageCount)
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			pe := row.Data.(*pb.PagedEntities)
+			s.rawEntities[importGroup] = pe.Entities
+			s.totalPage[importGroup] = int(pe.TotalPageCount)
+		}
 	}
 	return nil
 }

@@ -18,9 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"strings"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -53,26 +51,21 @@ func ResolveCoordinates(
 	}
 
 	// Read coordinate recon cache.
-	reconRowList := cbt.RowList{}
+	keyBody := []string{}
 	for key := range coordinateLookupKeys {
-		reconRowList = append(
-			reconRowList,
-			fmt.Sprintf("%s%s", bigtable.BtCoordinateReconPrefix, key),
-		)
+		keyBody = append(keyBody, key)
 	}
 	reconDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		reconRowList,
+		bigtable.BtCoordinateReconPrefix,
+		[][]string{keyBody},
 		func(jsonRaw []byte) (interface{}, error) {
 			var recon pb.CoordinateRecon
 			if err := proto.Unmarshal(jsonRaw, &recon); err != nil {
 				return nil, err
 			}
 			return &recon, nil
-		},
-		func(rowKey string) (string, error) {
-			return strings.TrimPrefix(rowKey, bigtable.BtCoordinateReconPrefix), nil
 		},
 	)
 	if err != nil {
@@ -82,8 +75,8 @@ func ResolveCoordinates(
 	// Collect places that don't fully cover the tiles that the coordinates are in.
 	questionablePlaces := map[string]struct{}{}
 	for _, reconData := range reconDataList {
-		for _, data := range reconData {
-			for _, place := range data.(*pb.CoordinateRecon).GetPlaces() {
+		for _, row := range reconData {
+			for _, place := range row.Data.(*pb.CoordinateRecon).GetPlaces() {
 				if _, ok := questionablePlaces[place.GetDcid()]; !ok && !place.GetFull() {
 					questionablePlaces[place.GetDcid()] = struct{}{}
 				}
@@ -117,30 +110,34 @@ func ResolveCoordinates(
 			Longitude: co.GetLongitude(),
 		}
 		for _, reconData := range reconDataList {
-			data, ok := reconData[nKey]
-			if !ok {
+			if len(reconData) == 0 {
 				continue
 			}
-			for _, place := range data.(*pb.CoordinateRecon).GetPlaces() {
-				if place.GetFull() {
-					placeCoordinates.PlaceDcids = append(
-						placeCoordinates.PlaceDcids,
-						place.GetDcid(),
-					)
-				} else { // Not fully cover the tile.
-					geoJSON, ok := geoJSONMap[place.GetDcid()]
-					if !ok {
-						continue
-					}
-					contained, err := isContainedIn(geoJSON, co.GetLatitude(), co.GetLongitude())
-					if err != nil {
-						return res, err
-					}
-					if contained {
+			for _, row := range reconData {
+				if fmt.Sprintf("%s^%s", row.Parts[0], row.Parts[1]) != nKey {
+					continue
+				}
+				for _, place := range row.Data.(*pb.CoordinateRecon).GetPlaces() {
+					if place.GetFull() {
 						placeCoordinates.PlaceDcids = append(
 							placeCoordinates.PlaceDcids,
 							place.GetDcid(),
 						)
+					} else { // Not fully cover the tile.
+						geoJSON, ok := geoJSONMap[place.GetDcid()]
+						if !ok {
+							continue
+						}
+						contained, err := isContainedIn(geoJSON, co.GetLatitude(), co.GetLongitude())
+						if err != nil {
+							return res, err
+						}
+						if contained {
+							placeCoordinates.PlaceDcids = append(
+								placeCoordinates.PlaceDcids,
+								place.GetDcid(),
+							)
+						}
 					}
 				}
 			}

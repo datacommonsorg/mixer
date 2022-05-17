@@ -18,7 +18,6 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -35,12 +34,11 @@ func Count(
 	svOrSvgs []string,
 	places []string,
 ) (map[string]map[string]int32, error) {
-	rowList, keyTokens := bigtable.BuildStatExistenceKey(places, svOrSvgs)
-	keyToTokenFn := stat.TokenFn(keyTokens)
 	btDataList, err := bigtable.Read(
 		ctx,
 		st.BtGroup,
-		rowList,
+		bigtable.BtSVAndSVGExistence,
+		[][]string{places, svOrSvgs},
 		func(jsonRaw []byte) (interface{}, error) {
 			var statVarExistence pb.PlaceStatVarExistence
 			if err := proto.Unmarshal(jsonRaw, &statVarExistence); err != nil {
@@ -48,7 +46,6 @@ func Count(
 			}
 			return &statVarExistence, nil
 		},
-		keyToTokenFn,
 	)
 	if err != nil {
 		return nil, err
@@ -59,22 +56,20 @@ func Count(
 		result[id] = map[string]int32{}
 	}
 	// Populate the count
-	for _, rowKey := range rowList {
-		placeSv := keyTokens[rowKey]
-		token, _ := keyToTokenFn(rowKey)
-		for _, btData := range btDataList {
-			if data, ok := btData[token]; ok {
-				c := data.(*pb.PlaceStatVarExistence)
-				descSVCount := c.GetDescendentStatVarCount()
-				if _, ok := result[placeSv.StatVar][placeSv.Place]; !ok {
-					// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var
-					// (not a stat var group). In this case the check here is necessary,
-					// otherwise the proto default 0 is compared, and this map field will
-					// not be populated.
-					result[placeSv.StatVar][placeSv.Place] = descSVCount
-				} else if descSVCount > result[placeSv.StatVar][placeSv.Place] {
-					result[placeSv.StatVar][placeSv.Place] = descSVCount
-				}
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			p := row.Parts[0]
+			sv := row.Parts[1]
+			c := row.Data.(*pb.PlaceStatVarExistence)
+			descSVCount := c.GetDescendentStatVarCount()
+			if _, ok := result[sv][p]; !ok {
+				// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var
+				// (not a stat var group). In this case the check here is necessary,
+				// otherwise the proto default 0 is compared, and this map field will
+				// not be populated.
+				result[sv][p] = descSVCount
+			} else if descSVCount > result[sv][p] {
+				result[sv][p] = descSVCount
 			}
 		}
 	}

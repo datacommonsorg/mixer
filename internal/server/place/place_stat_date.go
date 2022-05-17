@@ -58,11 +58,10 @@ func GetPlaceStatDateWithinPlace(
 		result.Data[sv] = nil
 	}
 
-	// Construct BigTable row keys.
-	rowList, keyTokens := bigtable.BuildObsCollectionDateFrequencyKey(
-		ancestorPlace, placeType, statVars)
-
-	cacheData, err := stat.ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatCollection(
+		ctx, store.BtGroup, bigtable.BtObsCollectionDateFrequency,
+		ancestorPlace, placeType, statVars, "",
+	)
 	if err != nil {
 		return nil, err
 	}

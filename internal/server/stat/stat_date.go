@@ -52,12 +52,14 @@ func GetStatDateWithinPlace(
 	for _, sv := range statVars {
 		result.Data[sv] = &pb.StatDateList{}
 	}
-
-	// Construct BigTable row keys.
-	rowList, keyTokens := bigtable.BuildObsCollectionDateFrequencyKey(
-		ancestorPlace, childPlaceType, statVars)
-
-	cacheData, err := ReadStatCollection(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStatCollection(
+		ctx, store.BtGroup,
+		bigtable.BtObsCollectionDateFrequency,
+		ancestorPlace,
+		childPlaceType,
+		statVars,
+		"",
+	)
 	if err != nil {
 		return nil, err
 	}

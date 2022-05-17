@@ -16,10 +16,7 @@ package place
 
 import (
 	"context"
-	"fmt"
-	"strings"
 
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
 
@@ -65,25 +62,17 @@ func GetRelatedLocations(
 	isPerCapita := in.GetIsPerCapita()
 	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
 
-	rowList := cbt.RowList{}
-	for _, statVar := range in.GetStatVarDcids() {
-		if sameAncestor {
-			rowList = append(
-				rowList,
-				fmt.Sprintf("%s%s^%s^%s", prefix, in.GetDcid(), in.GetWithinPlace(), statVar),
-			)
-		} else {
-			rowList = append(
-				rowList,
-				fmt.Sprintf("%s%s^%s", prefix, in.GetDcid(), statVar),
-			)
-		}
+	keyBody := [][]string{{in.GetDcid()}}
+	if sameAncestor {
+		keyBody = append(keyBody, []string{in.GetWithinPlace()})
 	}
+	keyBody = append(keyBody, in.GetStatVarDcids())
 	// RelatedPlace cache only exists in base cache
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		prefix,
+		keyBody,
 		func(jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
 			if err := proto.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
@@ -91,29 +80,27 @@ func GetRelatedLocations(
 			}
 			return &btRelatedPlacesInfo, nil
 		},
-		func(key string) (string, error) {
-			parts := strings.Split(key, "^")
-			if len(parts) <= 1 {
-				return "", status.Errorf(
-					codes.Internal, "Invalid bigtable row key %s", key)
-			}
-			return parts[len(parts)-1], nil
-		},
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := &pb.GetRelatedLocationsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
 	for _, btData := range btDataList {
-		for statVar, data := range btData {
+		for _, row := range btData {
+			var statVar string
+			if sameAncestor {
+				statVar = row.Parts[2]
+			} else {
+				statVar = row.Parts[1]
+			}
 			if _, ok := result.Data[statVar]; ok {
 				continue
 			}
-			if data == nil {
+			if row.Data == nil {
 				result.Data[statVar] = &pb.RelatedPlacesInfo{}
 				continue
 			}
-			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
+			result.Data[statVar] = row.Data.(*pb.RelatedPlacesInfo)
 		}
 	}
 	return result, nil
@@ -132,51 +119,22 @@ func GetLocationsRankings(
 	isPerCapita := in.GetIsPerCapita()
 	sameAncestor := (in.GetWithinPlace() != "")
 	prefix := RelatedLocationsPrefixMap[sameAncestor][isPerCapita]
-	rowList := cbt.RowList{}
-	for _, statVarDcid := range in.GetStatVarDcids() {
-		if sameAncestor {
-			rowList = append(
-				rowList,
-				fmt.Sprintf(
-					"%s%s^%s^%s^%s",
-					prefix,
-					"*",
-					in.GetPlaceType(),
-					in.GetWithinPlace(),
-					statVarDcid,
-				),
-			)
-		} else {
-			rowList = append(
-				rowList,
-				fmt.Sprintf(
-					"%s%s^%s^%s",
-					prefix,
-					"*",
-					in.GetPlaceType(),
-					statVarDcid,
-				),
-			)
-		}
+	keyBody := [][]string{{"*"}, {in.GetPlaceType()}}
+	if sameAncestor {
+		keyBody = append(keyBody, []string{in.GetWithinPlace()})
 	}
+	keyBody = append(keyBody, in.GetStatVarDcids())
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		prefix,
+		keyBody,
 		func(jsonRaw []byte) (interface{}, error) {
 			var btRelatedPlacesInfo pb.RelatedPlacesInfo
 			if err := proto.Unmarshal(jsonRaw, &btRelatedPlacesInfo); err != nil {
 				return nil, err
 			}
 			return &btRelatedPlacesInfo, nil
-		},
-		func(key string) (string, error) {
-			parts := strings.Split(key, "^")
-			if len(parts) <= 1 {
-				return "", status.Errorf(
-					codes.Internal, "Invalid bigtable row key %s", key)
-			}
-			return parts[len(parts)-1], nil
 		},
 	)
 	if err != nil {
@@ -185,15 +143,21 @@ func GetLocationsRankings(
 
 	result := &pb.GetLocationsRankingsResponse{Data: map[string]*pb.RelatedPlacesInfo{}}
 	for _, btData := range btDataList {
-		for statVar, data := range btData {
+		for _, row := range btData {
+			var statVar string
+			if sameAncestor {
+				statVar = row.Parts[3]
+			} else {
+				statVar = row.Parts[2]
+			}
 			if _, ok := result.Data[statVar]; ok {
 				continue
 			}
-			if data == nil {
+			if row.Data == nil {
 				result.Data[statVar] = &pb.RelatedPlacesInfo{}
 				continue
 			}
-			result.Data[statVar] = data.(*pb.RelatedPlacesInfo)
+			result.Data[statVar] = row.Data.(*pb.RelatedPlacesInfo)
 		}
 	}
 	return result, nil
@@ -205,12 +169,12 @@ func GetPlaceMetadataHelper(
 	entities []string,
 	store *store.Store,
 ) (map[string]*pb.PlaceMetadata, error) {
-	rowList := bigtable.BuildPlaceMetadataKey(entities)
 	// Place metadata are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.BtPlacesMetadataPrefix,
+		[][]string{entities},
 		func(jsonRaw []byte) (interface{}, error) {
 			var data pb.PlaceMetadataCache
 			if err := proto.Unmarshal(jsonRaw, &data); err != nil {
@@ -218,21 +182,18 @@ func GetPlaceMetadataHelper(
 			}
 			return &data, nil
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]*pb.PlaceMetadata{}
-	for _, entity := range entities {
-		if _, ok := result[entity]; ok {
-			continue
-		}
-		for _, btData := range btDataList {
-			if btData[entity] == nil {
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			entity := row.Parts[0]
+			if _, ok := result[entity]; ok {
 				continue
 			}
-			raw, ok := btData[entity].(*pb.PlaceMetadataCache)
+			raw, ok := row.Data.(*pb.PlaceMetadataCache)
 			if !ok {
 				continue
 			}
