@@ -46,4 +46,4 @@ patchesStrategicMerge:
     metadata:
       name: mixer-ingress
       annotations:
-        ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate,multi-domain
+        ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate,multi-domain-2022
