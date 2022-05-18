@@ -87,7 +87,7 @@ var PropValkeyPrefix = map[bool]string{
 
 // Accessor represents data used to access bigtable row.
 type Accessor struct {
-	// import group table index.
+	// Import group table index.
 	ImportGroup int
 	// A list of body components, each component contains all the key element
 	// for that part. One key would constructed by taking one element from each

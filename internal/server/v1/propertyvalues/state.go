@@ -80,7 +80,11 @@ func (s *state) init(
 		if c != nil {
 			accs = append(accs, &bigtable.Accessor{
 				ImportGroup: int(c.GetImportGroup()),
-				Body:        [][]string{{entity}, {property}, {strconv.Itoa(int(c.GetPage()))}},
+				Body: [][]string{
+					{entity},
+					{property},
+					{strconv.Itoa(int(c.GetPage()))},
+				},
 			})
 		}
 	}
