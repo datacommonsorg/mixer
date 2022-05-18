@@ -29,11 +29,11 @@ import (
 func GetStatVarSummaryHelper(
 	ctx context.Context, entities []string, store *store.Store) (
 	map[string]*pb.StatVarSummary, error) {
-	rowList := bigtable.BuildStatVarSummaryKey(entities)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.BtStatVarSummary,
+		[][]string{entities},
 		func(jsonRaw []byte) (interface{}, error) {
 			var statVarSummary pb.StatVarSummary
 			if err := proto.Unmarshal(jsonRaw, &statVarSummary); err != nil {
@@ -41,7 +41,6 @@ func GetStatVarSummaryHelper(
 			}
 			return &statVarSummary, nil
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
@@ -52,8 +51,9 @@ func GetStatVarSummaryHelper(
 	//    most places.
 	// 2. "provenance_summary": Merge provenances from all the Bigtables.
 	for _, btData := range btDataList {
-		for dcid, data := range btData {
-			svs, ok := data.(*pb.StatVarSummary)
+		for _, row := range btData {
+			dcid := row.Parts[0]
+			svs, ok := row.Data.(*pb.StatVarSummary)
 			if !ok {
 				return nil, status.Errorf(codes.Internal, "Can not read StatVarSummary")
 			}

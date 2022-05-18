@@ -20,7 +20,6 @@ import (
 	"sort"
 	"strings"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -63,9 +62,9 @@ func ResolveEntities(
 	ctx context.Context, in *pb.ResolveEntitiesRequest, store *store.Store,
 ) (
 	*pb.ResolveEntitiesResponse, error) {
-	rowList := cbt.RowList{}
 	idKeyToSourceIDs := map[string][]string{}
 	sourceIDs := map[string]struct{}{}
+	idKeys := []string{}
 
 	// Collect to-be-resolved IDs to rowList and idKeyToSourceID.
 	for _, entity := range in.GetEntities() {
@@ -85,7 +84,7 @@ func ResolveEntities(
 					continue
 				}
 				idKey := fmt.Sprintf("%s^%s", idProp, idVal)
-				rowList = append(rowList, fmt.Sprintf("%s%s", bigtable.BtReconIDMapPrefix, idKey))
+				idKeys = append(idKeys, idKey)
 				idKeyToSourceIDs[idKey] = append(idKeyToSourceIDs[idKey], sourceID)
 			}
 		case *pb.EntitySubGraph_EntityIds:
@@ -99,13 +98,12 @@ func ResolveEntities(
 					continue
 				}
 				idKey := fmt.Sprintf("%s^%s", idProp, idVal)
-				rowList = append(rowList, fmt.Sprintf("%s%s", bigtable.BtReconIDMapPrefix, idKey))
+				idKeys = append(idKeys, idKey)
 				idKeyToSourceIDs[idKey] = append(idKeyToSourceIDs[idKey], sourceID)
 			}
 		default:
 			return nil, fmt.Errorf("Entity.GraphRepresentation has unexpected type %T", t)
 		}
-
 		sourceIDs[sourceID] = struct{}{}
 	}
 
@@ -113,16 +111,14 @@ func ResolveEntities(
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.BtReconIDMapPrefix,
+		[][]string{idKeys},
 		func(jsonRaw []byte) (interface{}, error) {
 			var reconEntities pb.ReconEntities
 			if err := proto.Unmarshal(jsonRaw, &reconEntities); err != nil {
 				return nil, err
 			}
 			return &reconEntities, nil
-		},
-		func(rowKey string) (string, error) {
-			return strings.TrimPrefix(rowKey, bigtable.BtReconIDMapPrefix), nil
 		},
 	)
 	if err != nil {
@@ -137,7 +133,9 @@ func ResolveEntities(
 		if len(btData) == 0 {
 			continue
 		}
-		for idKey, reconEntities := range btData {
+		for _, row := range btData {
+			idKey := fmt.Sprintf("%s^%s", row.Parts[0], row.Parts[1])
+			reconEntities := row.Data
 			if reconEntities == nil {
 				continue
 			}

@@ -20,7 +20,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -44,8 +43,7 @@ func Point(
 	}
 	date := in.GetDate()
 
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{entity}, []string{variable})
-	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, []string{entity}, []string{variable})
 	if err != nil {
 		return nil, err
 	}

@@ -41,19 +41,17 @@ func GetPlacesIn(
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
 	}
 
-	rowList := bigtable.BuildPlacesInKey(parentPlaces, childPlaceType)
-
 	// Place relations are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.BtPlacesInPrefix,
+		[][]string{parentPlaces, {childPlaceType}},
 		func(jsonRaw []byte) (interface{}, error) {
 			var containedInPlaces pb.ContainedPlaces
 			err := proto.Unmarshal(jsonRaw, &containedInPlaces)
 			return containedInPlaces.Dcids, err
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
@@ -66,12 +64,13 @@ func GetPlacesIn(
 		}
 		// Go through (ordered) import groups one by one, stop when data is found.
 		for _, btData := range btDataList {
-			if _, ok := btData[parent]; !ok {
-				continue
+			for _, row := range btData {
+				if row.Parts[0] == parent {
+					result[parent] = row.Data.([]string)
+					processed[parent] = struct{}{}
+					break
+				}
 			}
-			result[parent] = btData[parent].([]string)
-			processed[parent] = struct{}{}
-			break
 		}
 	}
 	return result, nil

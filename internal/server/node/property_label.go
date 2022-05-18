@@ -30,11 +30,11 @@ func GetPropertiesHelper(
 	entities []string,
 	store *store.Store,
 ) (map[string]*pb.PropertyLabels, error) {
-	rowList := bigtable.BuildPropertyLabelKey(entities)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.BtArcsPrefix,
+		[][]string{entities},
 		func(jsonRaw []byte) (interface{}, error) {
 			var propLabels pb.PropertyLabels
 			if err := proto.Unmarshal(jsonRaw, &propLabels); err != nil {
@@ -42,7 +42,6 @@ func GetPropertiesHelper(
 			}
 			return &propLabels, nil
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
@@ -57,12 +56,14 @@ func GetPropertiesHelper(
 		outLabelList := [][]string{}
 		// Merge cache value from base and branch caches
 		for _, btData := range btDataList {
-			if data, ok := btData[entity]; ok {
-				if item := data.(*pb.PropertyLabels).InLabels; item != nil {
-					inLabelList = append(inLabelList, item)
-				}
-				if item := data.(*pb.PropertyLabels).OutLabels; item != nil {
-					outLabelList = append(outLabelList, item)
+			for _, row := range btData {
+				if row.Parts[0] == entity {
+					if item := row.Data.(*pb.PropertyLabels).InLabels; item != nil {
+						inLabelList = append(inLabelList, item)
+					}
+					if item := row.Data.(*pb.PropertyLabels).OutLabels; item != nil {
+						outLabelList = append(outLabelList, item)
+					}
 				}
 			}
 		}

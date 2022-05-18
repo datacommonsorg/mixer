@@ -106,17 +106,16 @@ func GetPropertyValuesHelper(
 	prop string,
 	arcOut bool,
 ) (map[string][]*pb.EntityInfo, error) {
-	rowList := bigtable.BuildPropertyValuesKey(dcids, prop, arcOut)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.PropValkeyPrefix[arcOut],
+		[][]string{dcids, {prop}},
 		func(jsonRaw []byte) (interface{}, error) {
 			var propVals pb.EntityInfoCollection
 			err := proto.Unmarshal(jsonRaw, &propVals)
 			return propVals.Entities, err
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
@@ -126,7 +125,8 @@ func GetPropertyValuesHelper(
 	// Loop over the import groups. They are ordered by preferences.
 	// Only add a node if it is not seen yet.
 	for _, btData := range btDataList {
-		for dcid, data := range btData {
+		for _, row := range btData {
+			dcid := row.Parts[0]
 			_, ok := result[dcid]
 			if ok {
 				// For out arcs, only get data from one cache. Do not merge across cache.
@@ -136,8 +136,8 @@ func GetPropertyValuesHelper(
 			} else {
 				result[dcid] = []*pb.EntityInfo{}
 			}
-			if data != nil {
-				entities, ok := data.([]*pb.EntityInfo)
+			if row.Data != nil {
+				entities, ok := row.Data.([]*pb.EntityInfo)
 				if !ok {
 					return nil, status.Error(codes.Internal, "Failed to convert data into []*pb.EntityInfo")
 				}
