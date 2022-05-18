@@ -17,7 +17,6 @@ package statvar
 import (
 	"context"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -143,7 +142,8 @@ func GetStatVarGroup(
 		btDataList, err := bigtable.Read(
 			ctx,
 			bigtable.GetFrequentGroup(store.BtGroup),
-			cbt.RowList{bigtable.BtStatVarGroup},
+			bigtable.BtStatVarGroup,
+			[][]string{{""}},
 			func(jsonRaw []byte) (interface{}, error) {
 				var svgResp pb.StatVarGroups
 				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
@@ -151,16 +151,13 @@ func GetStatVarGroup(
 				}
 				return &svgResp, nil
 			},
-			// Since there is no dcid, use "_" as a dummy token
-			func(token string) (string, error) { return "_", nil },
 		)
 		if err != nil {
 			return nil, err
 		}
 		for _, btData := range btDataList {
-			// A dummy token "_" is used to key the data (see callback func above).
-			if data, ok := btData["_"]; ok {
-				svg, ok := data.(*pb.StatVarGroups)
+			for _, row := range btData {
+				svg, ok := row.Data.(*pb.StatVarGroups)
 				if ok {
 					result = svg
 				}

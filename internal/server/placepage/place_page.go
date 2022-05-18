@@ -16,7 +16,6 @@ package placepage
 
 import (
 	"context"
-	"fmt"
 	"hash/fnv"
 	"math/rand"
 	"regexp"
@@ -24,7 +23,6 @@ import (
 	"strings"
 	"time"
 
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
@@ -217,20 +215,13 @@ func fetchBtData(
 	store *store.Store,
 	places []string,
 	statVars []string,
-) (
-	map[string]*pb.StatVarSeries, map[string]*pb.PointStat, error,
-) {
-	rowList := cbt.RowList{}
-	for _, dcid := range places {
-		rowList = append(rowList, fmt.Sprintf(
-			"%s%s", bigtable.BtPlacePagePrefix, dcid))
-	}
-
+) (map[string]*pb.StatVarSeries, map[string]*pb.PointStat, error) {
 	// Fetch place page cache data in parallel.
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.BtPlacePagePrefix,
+		[][]string{places},
 		func(jsonRaw []byte) (interface{}, error) {
 			var placePageData pb.StatVarObsSeries
 			if err := proto.Unmarshal(jsonRaw, &placePageData); err != nil {
@@ -238,7 +229,6 @@ func fetchBtData(
 			}
 			return &placePageData, nil
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, nil, err
@@ -250,11 +240,12 @@ func fetchBtData(
 
 	mergedPlacePageData := map[string]*pb.StatVarObsSeries{}
 	for _, btData := range btDataList {
-		for place, data := range btData {
-			if data == nil {
+		for _, row := range btData {
+			if row.Data == nil {
 				continue
 			}
-			placePageData := data.(*pb.StatVarObsSeries)
+			place := row.Parts[0]
+			placePageData := row.Data.(*pb.StatVarObsSeries)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
 			}

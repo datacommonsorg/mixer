@@ -55,11 +55,11 @@ func GetPlaceStatsVar(
 func GetEntityStatVarsHelper(
 	ctx context.Context, entities []string, store *store.Store) (
 	map[string]*pb.StatVars, error) {
-	rowList := bigtable.BuildPlaceStatsVarKey(entities)
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		rowList,
+		bigtable.BtPlaceStatsVarPrefix,
+		[][]string{entities},
 		func(jsonRaw []byte) (interface{}, error) {
 			var data pb.PlaceStatVars
 			if err := proto.Unmarshal(jsonRaw, &data); err != nil {
@@ -67,7 +67,6 @@ func GetEntityStatVarsHelper(
 			}
 			return data.StatVarIds, nil
 		},
-		nil,
 	)
 	if err != nil {
 		return nil, err
@@ -77,17 +76,20 @@ func GetEntityStatVarsHelper(
 		resp[entity] = &pb.StatVars{StatVars: []string{}}
 		allStatVars := [][]string{}
 		for _, btData := range btDataList {
-			if btData[entity] != nil {
-				allStatVars = append(allStatVars, btData[entity].([]string))
+			for _, row := range btData {
+				if row.Parts[0] != entity {
+					continue
+				}
+				allStatVars = append(allStatVars, row.Data.([]string))
 			}
+			// Also merge from memdb
+			if !store.MemDb.IsEmpty() {
+				hasDataStatVars, _ := store.MemDb.GetStatVars([]string{entity})
+				allStatVars = append(allStatVars, hasDataStatVars)
+			}
+			resp[entity].StatVars = util.MergeDedupe(allStatVars...)
+			sort.Strings(resp[entity].StatVars)
 		}
-		// Also merge from memdb
-		if !store.MemDb.IsEmpty() {
-			hasDataStatVars, _ := store.MemDb.GetStatVars([]string{entity})
-			allStatVars = append(allStatVars, hasDataStatVars)
-		}
-		resp[entity].StatVars = util.MergeDedupe(allStatVars...)
-		sort.Strings(resp[entity].StatVars)
 	}
 	return resp, nil
 }

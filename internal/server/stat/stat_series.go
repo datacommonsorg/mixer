@@ -22,14 +22,11 @@ import (
 	"sort"
 	"time"
 
-	cbt "cloud.google.com/go/bigtable"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -63,8 +60,7 @@ func GetStatSeries(
 		ScalingFactor:     in.GetScalingFactor(),
 	}
 
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey([]string{place}, []string{statVar})
-	btData, err := ReadStats(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := ReadStats(ctx, store.BtGroup, []string{place}, []string{statVar})
 	if err != nil {
 		return nil, err
 	}
@@ -104,8 +100,7 @@ func GetStatAll(ctx context.Context, in *pb.GetStatAllRequest, store *store.Stor
 		}
 	}
 
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-	cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStatsPb(ctx, store.BtGroup, places, statVars)
 	if err != nil {
 		return nil, err
 	}
@@ -147,12 +142,8 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 		Unit:              in.GetUnit(),
 		ScalingFactor:     in.GetScalingFactor(),
 	}
-	var rowList cbt.RowList
-	var keyTokens map[string]*util.PlaceStatVar
-	rowList, keyTokens = bigtable.BuildObsTimeSeriesKey(placeDcids, []string{statsVarDcid})
-
 	tmp := map[string]*model.ObsTimeSeries{}
-	cacheData, err := ReadStats(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := ReadStats(ctx, store.BtGroup, placeDcids, []string{statsVarDcid})
 	if err != nil {
 		return nil, err
 	}
@@ -216,10 +207,8 @@ func GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRequest, store
 	}
 	// Read data from Cloud Bigtable.
 	if store.BtGroup.Tables() != nil {
-		rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(places, statVars)
-
 		// Read data from BigTable.
-		cacheData, err := ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+		cacheData, err := ReadStatsPb(ctx, store.BtGroup, places, statVars)
 		if err != nil {
 			return nil, err
 		}

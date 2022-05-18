@@ -32,7 +32,8 @@
         },
         {
           "dcid": "usc/PacificDivision",
-          "name": "Pacific Division"
+          "name": "Pacific Division",
+          "type": "CensusDivision"
         },
         {
           "dcid": "country/USA",
@@ -64,7 +65,8 @@
       "parents": [
         {
           "dcid": "usc/PacificDivision",
-          "name": "Pacific Division"
+          "name": "Pacific Division",
+          "type": "CensusDivision"
         },
         {
           "dcid": "country/USA",
@@ -101,7 +103,8 @@
         },
         {
           "dcid": "usc/PacificDivision",
-          "name": "Pacific Division"
+          "name": "Pacific Division",
+          "type": "CensusDivision"
         },
         {
           "dcid": "country/USA",

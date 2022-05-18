@@ -18,9 +18,7 @@ import (
 	"context"
 	"fmt"
 	"sort"
-	"strings"
 
-	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 
@@ -41,26 +39,15 @@ func ResolveIds(
 	}
 
 	// Read cache data.
-	rowList := cbt.RowList{}
-	for _, id := range ids {
-		rowList = append(rowList,
-			fmt.Sprintf("%s%s^%s^%s", bigtable.BtReconIDMapPrefix, inProp, id, outProp))
-	}
 	btDataList, err := bigtable.Read(
-		ctx, store.BtGroup, rowList,
+		ctx, store.BtGroup, bigtable.BtReconIDMapPrefix,
+		[][]string{{inProp}, ids, {outProp}},
 		func(jsonRaw []byte) (interface{}, error) {
 			var reconEntities pb.ReconEntities
 			if err := proto.Unmarshal(jsonRaw, &reconEntities); err != nil {
 				return nil, err
 			}
 			return &reconEntities, nil
-		},
-		func(rowKey string) (string, error) {
-			parts := strings.Split(rowKey, "^")
-			if len(parts) != 3 {
-				return "", fmt.Errorf("wrong rowKey: %s", rowKey)
-			}
-			return parts[1], nil
 		},
 	)
 	if err != nil {
@@ -73,18 +60,19 @@ func ResolveIds(
 	res := &pb.ResolveIdsResponse{}
 	existData := map[string]bool{}
 	for _, btData := range btDataList {
-		for inID, reconEntities := range btData {
+		for _, row := range btData {
+			inID := row.Parts[1]
 			if exist, ok := existData[inID]; ok && exist {
 				continue
 			}
-			reconEntitiesPb, ok := reconEntities.(*pb.ReconEntities)
+			reconEntitiesPb, ok := row.Data.(*pb.ReconEntities)
 			if !ok {
 				continue
 			}
 			entity := &pb.ResolveIdsResponse_Entity{InId: inID}
 			for _, reconEntity := range reconEntitiesPb.GetEntities() {
 				if len(reconEntity.GetIds()) != 1 {
-					return nil, fmt.Errorf("wrong cache result for %s: %v", inID, reconEntities)
+					return nil, fmt.Errorf("wrong cache result for %s: %v", inID, row.Data)
 				}
 				entity.OutIds = append(entity.OutIds, reconEntity.GetIds()[0].GetVal())
 			}

@@ -24,7 +24,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
@@ -39,8 +38,7 @@ func BulkPoint(
 	date := in.GetDate()
 	allFacets := in.GetAllFacets()
 
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(entities, variables)
-	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	cacheData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
 	if err != nil {
 		return nil, err
 	}

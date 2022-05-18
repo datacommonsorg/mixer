@@ -15,11 +15,7 @@
 package bigtable
 
 import (
-	"fmt"
-	"strings"
-
 	"cloud.google.com/go/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 const (
@@ -83,143 +79,37 @@ const (
 	BtBatchQuerySize = 1000
 )
 
-var propValkeyPrefix = map[bool]string{
+// PropValkeyPrefix contains the out and in prop val key prefix.
+var PropValkeyPrefix = map[bool]string{
 	true:  BtOutPropValPrefix,
 	false: BtInPropValPrefix,
 }
 
-// BuildTriplesKey builds bigtable key for triples cache
-func BuildTriplesKey(dcids []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf("%s%s", BtTriplesPrefix, dcid))
-	}
-	return rowList
+// Accessor represents data used to access bigtable row.
+type Accessor struct {
+	// Import group table index.
+	ImportGroup int
+	// A list of body components, each component contains all the key element
+	// for that part. One key would constructed by taking one element from each
+	// component and concate them together.
+	Body [][]string
 }
 
-// BuildObsTimeSeriesKey builds bigtable key for obs time series cache.
-func BuildObsTimeSeriesKey(
-	places []string, statVars []string) (
-	bigtable.RowList, map[string]*util.PlaceStatVar) {
-	rowList := bigtable.RowList{}
-	keyToToken := map[string]*util.PlaceStatVar{}
-	for _, svID := range statVars {
-		for _, place := range places {
-			rowKey := fmt.Sprintf("%s%s^%s", BtObsTimeSeries, place, svID)
-			rowList = append(rowList, rowKey)
-			keyToToken[rowKey] = &util.PlaceStatVar{Place: place, StatVar: svID}
+// BuildRowList builds row list from BT prefix and token components.
+func BuildRowList(prefix string, body [][]string) bigtable.RowList {
+	rowList := bigtable.RowList{prefix}
+	for idx, component := range body {
+		c := ""
+		if idx > 0 {
+			c = "^"
 		}
-	}
-	return rowList, keyToToken
-}
-
-// BuildObsCollectionKey builds bigtable key for obs collection cache.
-func BuildObsCollectionKey(parentPlace, childType, date string, statVars []string) (
-	bigtable.RowList, map[string]string) {
-	rowList := bigtable.RowList{}
-	keyToToken := map[string]string{}
-	for _, sv := range statVars {
-		rowKey := strings.Join([]string{
-			BtObsCollection + parentPlace,
-			childType,
-			sv,
-			date,
-		}, "^")
-		rowList = append(rowList, rowKey)
-		keyToToken[rowKey] = sv
-	}
-	return rowList, keyToToken
-}
-
-// BuildObsCollectionDateFrequencyKey builds bigtable key for obs collection cache that contains
-// the frequency of each date across places.
-func BuildObsCollectionDateFrequencyKey(parentPlace, childType string, statVars []string) (
-	bigtable.RowList, map[string]string) {
-	rowList := bigtable.RowList{}
-	keyToToken := map[string]string{}
-	for _, sv := range statVars {
-		rowKey := strings.Join([]string{
-			BtObsCollectionDateFrequency + parentPlace,
-			childType,
-			sv,
-			"",
-		}, "^")
-		rowList = append(rowList, rowKey)
-		keyToToken[rowKey] = sv
-	}
-	return rowList, keyToToken
-}
-
-// BuildStatExistenceKey builds bigtable key for stat existence cache
-func BuildStatExistenceKey(
-	places []string, statVars []string) (
-	bigtable.RowList, map[string]*util.PlaceStatVar) {
-	rowList := bigtable.RowList{}
-	keyToToken := map[string]*util.PlaceStatVar{}
-	for _, sv := range statVars {
-		for _, place := range places {
-			rowKey := fmt.Sprintf("%s%s^%s", BtSVAndSVGExistence, place, sv)
-			rowList = append(rowList, rowKey)
-			keyToToken[rowKey] = &util.PlaceStatVar{Place: place, StatVar: sv}
+		tmp := rowList
+		rowList = bigtable.RowList{}
+		for _, element := range component {
+			for _, key := range tmp {
+				rowList = append(rowList, key+c+element)
+			}
 		}
-	}
-	return rowList, keyToToken
-}
-
-// BuildPropertyValuesKey builds bigtable key for property value cache
-func BuildPropertyValuesKey(
-	dcids []string, prop string, arcOut bool) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowKey := fmt.Sprintf("%s%s^%s", propValkeyPrefix[arcOut], dcid, prop)
-		rowList = append(rowList, rowKey)
-	}
-	return rowList
-}
-
-// BuildPropertyLabelKey builds bigtable key for property label cache
-func BuildPropertyLabelKey(dcids []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(rowList, fmt.Sprintf("%s%s", BtArcsPrefix, dcid))
-	}
-	return rowList
-}
-
-// BuildPlacesInKey builds bigtable key for place in cache
-func BuildPlacesInKey(dcids []string, placeType string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(
-			rowList, fmt.Sprintf("%s%s^%s", BtPlacesInPrefix, dcid, placeType))
-	}
-	return rowList
-}
-
-// BuildPlaceStatsVarKey builds bigtable key for place stat vars cache
-func BuildPlaceStatsVarKey(dcids []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, dcid := range dcids {
-		rowList = append(
-			rowList, fmt.Sprintf("%s%s", BtPlaceStatsVarPrefix, dcid))
-	}
-	return rowList
-}
-
-// BuildPlaceMetadataKey builds Bigtable key for place metadata cache
-func BuildPlaceMetadataKey(places []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, place := range places {
-		rowList = append(rowList, fmt.Sprintf("%s%s", BtPlacesMetadataPrefix, place))
-	}
-	return rowList
-}
-
-// BuildStatVarSummaryKey builds bigtable key for place stat var summary cache
-func BuildStatVarSummaryKey(statVars []string) bigtable.RowList {
-	rowList := bigtable.RowList{}
-	for _, sv := range statVars {
-		rowList = append(rowList, fmt.Sprintf("%s%s", BtStatVarSummary, sv))
 	}
 	return rowList
 }

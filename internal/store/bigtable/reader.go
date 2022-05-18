@@ -16,6 +16,7 @@ package bigtable
 
 import (
 	"context"
+	"strings"
 
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -24,12 +25,14 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type chanData struct {
-	// Identifier of the data when reading multiple BigTable rows
-	// concurrently. It could be place dcid, statvar dcid or other "key".
-	token string
+// BtRow contains the BT read key tokens and the cache data.
+type BtRow struct {
+	// The body parts of the BT key, which are used to identify the place, dcid
+	// or other properties that related to the data.  This is to be used by the
+	// caller to group the result.
+	Parts []string
 	// Data read from Cloud Bigtable
-	data interface{}
+	Data interface{}
 }
 
 // readRowFn generates a function to be used as the callback function in Bigtable Read.
@@ -39,9 +42,9 @@ func readRowFn(
 	errCtx context.Context,
 	btTable *cbt.Table,
 	rowSetPart cbt.RowSet,
-	getToken func(string) (string, error),
 	action func([]byte) (interface{}, error),
-	elemChan chan chanData,
+	btRowChan chan BtRow,
+	prefix string,
 ) func() error {
 	return func() error {
 		if err := btTable.ReadRows(errCtx, rowSetPart,
@@ -50,14 +53,6 @@ func readRowFn(
 					return true
 				}
 				raw := btRow[BtFamily][0].Value
-
-				if getToken == nil {
-					getToken = util.KeyToDcid
-				}
-				token, err := getToken(btRow.Key())
-				if err != nil {
-					return false
-				}
 				jsonRaw, err := util.UnzipAndDecode(string(raw))
 				if err != nil {
 					return false
@@ -66,7 +61,8 @@ func readRowFn(
 				if err != nil {
 					return false
 				}
-				elemChan <- chanData{token, elem}
+				parts := strings.Split(strings.TrimPrefix(btRow.Key(), prefix), "^")
+				btRowChan <- BtRow{parts, elem}
 				return true
 			}); err != nil {
 			return err
@@ -80,15 +76,15 @@ func readRowFn(
 func Read(
 	ctx context.Context,
 	btGroup *Group,
-	rowList cbt.RowList,
+	prefix string,
+	body [][]string,
 	action func([]byte) (interface{}, error),
-	getToken func(string) (string, error),
-) ([]map[string]interface{}, error) {
-	rowListMap := map[int]cbt.RowList{}
+) ([][]BtRow, error) {
+	accs := []*Accessor{}
 	for i := 0; i < len(btGroup.Tables()); i++ {
-		rowListMap[i] = rowList
+		accs = append(accs, &Accessor{i, body})
 	}
-	return ReadWithGroupRowList(ctx, btGroup, rowListMap, action, getToken)
+	return ReadWithGroupRowList(ctx, btGroup, prefix, accs, action)
 }
 
 // ReadWithGroupRowList reads BigTable rows from multiple Bigtable in parallel.
@@ -99,18 +95,22 @@ func Read(
 func ReadWithGroupRowList(
 	ctx context.Context,
 	btGroup *Group,
-	rowListMap map[int]cbt.RowList,
-	action func([]byte) (interface{}, error),
-	getToken func(string) (string, error),
-) ([]map[string]interface{}, error) {
+	prefix string,
+	accs []*Accessor,
+	unmarshalFunc func([]byte) (interface{}, error),
+) ([][]BtRow, error) {
 	tables := btGroup.Tables()
 	if len(tables) == 0 {
 		return nil, status.Errorf(codes.NotFound, "Bigtable instance is not specified")
 	}
+	rowListMap := map[int]cbt.RowList{}
+	for _, acc := range accs {
+		rowListMap[acc.ImportGroup] = BuildRowList(prefix, acc.Body)
+	}
 	// Channels for each import group read.
-	chans := make(map[int]chan chanData)
+	chans := make(map[int]chan BtRow)
 	for i := 0; i < len(tables); i++ {
-		chans[i] = make(chan chanData, len(rowListMap[i]))
+		chans[i] = make(chan BtRow, len(rowListMap[i]))
 	}
 
 	errs, errCtx := errgroup.WithContext(ctx)
@@ -130,7 +130,7 @@ func ReadWithGroupRowList(
 			}
 			rowSetPart := rowSet[left:right]
 			if tables[i] != nil {
-				errs.Go(readRowFn(errCtx, tables[i], rowSetPart, getToken, action, chans[i]))
+				errs.Go(readRowFn(errCtx, tables[i], rowSetPart, unmarshalFunc, chans[i], prefix))
 			}
 		}
 	}
@@ -141,15 +141,14 @@ func ReadWithGroupRowList(
 	for i := 0; i < len(chans); i++ {
 		close(chans[i])
 	}
-
-	result := []map[string]interface{}{}
+	result := [][]BtRow{}
 	if tables != nil {
 		for i := 0; i < len(tables); i++ {
-			item := map[string]interface{}{}
+			items := []BtRow{}
 			for elem := range chans[i] {
-				item[elem.token] = elem.data
+				items = append(items, elem)
 			}
-			result = append(result, item)
+			result = append(result, items)
 		}
 	}
 	return result, nil

@@ -24,7 +24,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
@@ -41,8 +40,7 @@ func BulkSeries(
 	result := &pb.BulkObservationsSeriesResponse{
 		Facets: map[uint32]*pb.StatMetadata{},
 	}
-	rowList, keyTokens := bigtable.BuildObsTimeSeriesKey(entities, variables)
-	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, rowList, keyTokens)
+	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
 	if err != nil {
 		return result, err
 	}
