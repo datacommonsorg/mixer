@@ -26,53 +26,60 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestPropertyValuesOut(t *testing.T) {
+func TestBulkPropertyValuesOut(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "property_values_out")
+	goldenPath := path.Join(path.Dir(filename), "bulk_property_values_out")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			property   string
-			entity     string
+			entities   []string
 			limit      int32
 			token      string
 		}{
 			{
-				"containedIn.json",
-				"containedInPlace",
-				"geoId/06",
+				"name.json",
+				"name",
+				[]string{"country/USA", "geoId/06", "dummy"},
 				0,
 				"",
 			},
 			{
-				"geoOverlaps.json",
-				"geoOverlaps",
-				"geoId/0649670",
-				5,
+				"containedIn.json",
+				"containedInPlace",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				0,
 				"",
 			},
 			{
 				"geoOverlaps1.json",
 				"geoOverlaps",
-				"geoId/0649670",
-				0,
-				"H4sIAAAAAAAA/+Iy4OJNT833TNE3MDOxNDM34OJOT833L0stykksKBZiEGLhYJRgFWLiYBJi4mAWYuJgAQAAAP//AQAA//+MM0k2MgAAAA==",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				5,
+				"",
+			},
+			{
+				"geoOverlaps2.json",
+				"geoOverlaps",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				5,
+				"H4sIAAAAAAAA/+LS4eJOzi/NKymq1A8NduTiTk/N9y9LLcpJLCgWYhBi4mAUYuJgEmLiYBZi4mDh0gMr8EzRNzAzMDVGV83CwSjBiqJek4sDpp6A0QAAAAD//wEAAP//omBbzIkAAAA=",
 			},
 		} {
-			req := &pb.PropertyValuesRequest{
+			req := &pb.BulkPropertyValuesRequest{
 				Property:  c.property,
-				Entity:    c.entity,
+				Entities:  c.entities,
 				Direction: "out",
 				Limit:     c.limit,
 				NextToken: c.token,
 			}
-			resp, err := mixer.PropertyValues(ctx, req)
+			resp, err := mixer.BulkPropertyValues(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.PropertyValues/out: %s", err)
+				t.Errorf("could not run mixer.BulkPropertyValues/out: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -82,7 +89,7 @@ func TestPropertyValuesOut(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.PropertyValuesResponse
+			var expected pb.BulkPropertyValuesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
@@ -94,7 +101,7 @@ func TestPropertyValuesOut(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"PropertyValues/out", &test.TestOption{}, testSuite); err != nil {
+		"BulkPropertyValues/out", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

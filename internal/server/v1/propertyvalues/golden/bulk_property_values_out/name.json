@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "entity": "country/USA",
+      "values": [
+        {
+          "provenanceId": "dc/5n63hr1",
+          "value": "United States of America"
+        },
+        {
+          "provenanceId": "dc/5n63hr1",
+          "value": "United States"
+        }
+      ]
+    },
+    {
+      "entity": "geoId/06",
+      "values": [
+        {
+          "provenanceId": "dc/5n63hr1",
+          "value": "California"
+        }
+      ]
+    },
+    {
+      "entity": "dummy"
+    }
+  ]
+}

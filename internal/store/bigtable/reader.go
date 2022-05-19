@@ -105,7 +105,10 @@ func ReadWithGroupRowList(
 	}
 	rowListMap := map[int]cbt.RowList{}
 	for _, acc := range accs {
-		rowListMap[acc.ImportGroup] = BuildRowList(prefix, acc.Body)
+		rowListMap[acc.ImportGroup] = append(
+			rowListMap[acc.ImportGroup],
+			BuildRowList(prefix, acc.Body)...,
+		)
 	}
 	// Channels for each import group read.
 	chans := make(map[int]chan BtRow)

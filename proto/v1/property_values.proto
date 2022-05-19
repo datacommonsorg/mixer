@@ -48,3 +48,31 @@ message PropertyValuesResponse {
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }
+
+
+message BulkPropertyValuesRequest {
+  string property = 1;
+  repeated string entities = 2;
+  // [Optional]
+  // The limit of the number of values to return. The maximium limit is 1000.
+  // If not specified, the default limit is 1000.
+  // This limit is applied for each entity, instead of the bulk result.
+  int32 limit = 3;
+  // [Optional]
+  // The pagination token for getting the next set of entries. This is empty
+  // for the first request and needs to be set in the subsequent request.
+  // This is the value returned from a prior call to PropertyValuesResponse
+  string next_token = 4;
+  // Direction can only be "in" and "out"
+  string direction = 5;
+}
+
+message BulkPropertyValuesResponse {
+  message OneResult {
+    string entity = 1;
+    repeated datacommons.EntityInfo values = 2;
+  }
+  repeated OneResult data = 1;
+  // The pagination token for getting the next set of entries.
+  string next_token = 2;
+}

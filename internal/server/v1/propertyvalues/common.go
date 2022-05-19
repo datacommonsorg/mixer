@@ -24,10 +24,22 @@ import (
 // from all import groups after merging.
 var defaultLimit = 1000
 
-func buildEmptyCursorGroup(n int) *pb.CursorGroup {
-	result := &pb.CursorGroup{Cursors: []*pb.Cursor{}}
-	for i := 0; i < n; i++ {
-		result.Cursors = append(result.Cursors, &pb.Cursor{ImportGroup: int32(i)})
+func buildDefaultCursorGroups(
+	properties []string,
+	entities []string,
+	n int,
+) []*pb.CursorGroup {
+	result := []*pb.CursorGroup{}
+	for _, p := range properties {
+		for _, e := range entities {
+			cg := &pb.CursorGroup{
+				Keys: []string{e, p},
+			}
+			for i := 0; i < n; i++ {
+				cg.Cursors = append(cg.Cursors, &pb.Cursor{ImportGroup: int32(i)})
+			}
+			result = append(result, cg)
+		}
 	}
 	return result
 }

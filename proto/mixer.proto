@@ -376,6 +376,17 @@ service Mixer {
     };
   }
 
+  rpc BulkPropertyValues(datacommons.v1.BulkPropertyValuesRequest)
+      returns (datacommons.v1.BulkPropertyValuesResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/property/{direction}/{property}/values"
+      additional_bindings : {
+        post : "/v1/bulk/properties/{direction}/{property}/values"
+        body : "*"
+      }
+    };
+  }
+
   rpc Variables(datacommons.v1.VariablesRequest)
       returns (datacommons.v1.VariablesResponse) {
     option (google.api.http) = {

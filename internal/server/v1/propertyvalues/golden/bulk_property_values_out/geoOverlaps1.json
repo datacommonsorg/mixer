@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "entity": "country/USA"
+    },
+    {
+      "entity": "geoId/06053",
+      "values": [
+        {
+          "name": "93210",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93210",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "93426",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93426",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "93451",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93451",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "93461",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93461",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "93930",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93930",
+          "provenanceId": "dc/5n63hr1"
+        }
+      ]
+    },
+    {
+      "entity": "geoId/06"
+    }
+  ],
+  "nextToken": "H4sIAAAAAAAA/+LS4eJOzi/NKymq1A8NduTiTk/N9y9LLcpJLCgWYhBi4mAUYuJgEmLiYBZi4mDh0gMr8EzRNzAzMDVGV83CwSjBiqJek4sDpp6A0QAAAAD//wEAAP//omBbzIkAAAA="
+}

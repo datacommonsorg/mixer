@@ -53,7 +53,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"containedInPlace",
 				"geoId/06",
 				500,
-				"H4sIAAAAAAAA/+ISEWIQYuJgFGLiYBJi4mAWYuFgEWACAAAA//8BAAD//7V6I/IWAAAA",
+				"H4sIAAAAAAAA/+Iy4OJIT833TNE3MOMSSM7PK0nMzEtN8cwLyElMThViEGLiYBRi4mASYuJgFmLhYBFgAgAAAP//AQAA//9ymf/GMgAAAA==",
 			},
 			{
 				"geoOverlaps.json",
@@ -74,7 +74,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"typeOf",
 				"Country",
 				0,
-				"H4sIAAAAAAAA/+KSEGIQYuFglDASYuFgkjASYuJgFmLhYJEwAgAAAP//AQAA//8zTzsoGgAAAA==",
+				"H4sIAAAAAAAA/+LS5GJ3zi/NKymq5GIrqSxI9U8TYhBi4WCUMBJi4WCSMBJi4mAWYuFgkTACAAAA//8BAAD//3IiQtwrAAAA",
 			},
 		} {
 			req := &pb.PropertyValuesRequest{
