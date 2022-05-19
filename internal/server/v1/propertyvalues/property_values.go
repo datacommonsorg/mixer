@@ -71,7 +71,7 @@ func propertyValuesHelper(
 	}
 	respToken := ""
 	var mergedEntities map[string]map[string][]*pb.EntityInfo
-	if direction == "out" {
+	if direction == util.DirectionOut {
 		s := &outState{}
 		if err = s.init(ctx, store.BtGroup, properties, entities, limit, cursorGroup); err != nil {
 			return nil, "", err

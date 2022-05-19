@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/node"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
@@ -33,7 +34,7 @@ func Properties(
 ) (*pb.PropertiesResponse, error) {
 	entity := in.GetEntity()
 	direction := in.GetDirection()
-	if direction != "in" && direction != "out" {
+	if direction != util.DirectionIn && direction != util.DirectionOut {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid direction: should be 'in' or 'out'")
 	}
 	data, err := node.GetPropertiesHelper(ctx, []string{entity}, store)
@@ -43,9 +44,9 @@ func Properties(
 	result := &pb.PropertiesResponse{
 		Entity: entity,
 	}
-	if direction == "in" {
+	if direction == util.DirectionIn {
 		result.Properties = data[entity].InLabels
-	} else if direction == "out" {
+	} else if direction == util.DirectionOut {
 		result.Properties = data[entity].OutLabels
 	}
 	if result.Properties == nil {
@@ -62,7 +63,7 @@ func BulkProperties(
 ) (*pb.BulkPropertiesResponse, error) {
 	entities := in.GetEntities()
 	direction := in.GetDirection()
-	if direction != "in" && direction != "out" {
+	if direction != util.DirectionIn && direction != util.DirectionOut {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid direction: should be 'in' or 'out'")
 	}
 	resp, err := node.GetPropertiesHelper(ctx, entities, store)
@@ -80,12 +81,12 @@ func BulkProperties(
 			})
 			continue
 		}
-		if direction == "in" {
+		if direction == util.DirectionIn {
 			result.Data = append(result.Data, &pb.PropertiesResponse{
 				Entity:     entity,
 				Properties: resp[entity].InLabels,
 			})
-		} else if direction == "out" {
+		} else if direction == util.DirectionOut {
 			result.Data = append(result.Data, &pb.PropertiesResponse{
 				Entity:     entity,
 				Properties: resp[entity].OutLabels,

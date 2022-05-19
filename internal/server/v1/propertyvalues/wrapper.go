@@ -42,7 +42,7 @@ func PropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "missing required argument: property")
 	}
-	if direction != "out" && direction != "in" {
+	if direction != util.DirectionOut && direction != util.DirectionIn {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/property/out/ or /v1/property/in/")
 	}
@@ -85,7 +85,7 @@ func BulkPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "missing required argument: property")
 	}
-	if direction != "out" && direction != "in" {
+	if direction != util.DirectionOut && direction != util.DirectionIn {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/bulk/property/out/** or /v1/bulk/property/in/**")
 	}

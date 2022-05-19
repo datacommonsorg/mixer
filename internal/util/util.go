@@ -46,6 +46,10 @@ const (
 	LimitFactor = 1
 	// TextType represents text type.
 	TextType = "Text"
+	// String to represent in arc direction
+	DirectionIn = "in"
+	// String to represent out arc direction
+	DirectionOut = "out"
 )
 
 // PlaceStatVar holds a place and a stat var dcid.

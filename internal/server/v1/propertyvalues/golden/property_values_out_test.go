@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -66,7 +67,7 @@ func TestPropertyValuesOut(t *testing.T) {
 			req := &pb.PropertyValuesRequest{
 				Property:  c.property,
 				Entity:    c.entity,
-				Direction: "out",
+				Direction: util.DirectionOut,
 				Limit:     c.limit,
 				NextToken: c.token,
 			}
