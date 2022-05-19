@@ -109,10 +109,13 @@ func BulkPropertyValues(
 		NextToken: token,
 	}
 	for _, e := range entities {
-		res.Data = append(res.Data, &pb.BulkPropertyValuesResponse_OneResult{
-			Entity: e,
-			Values: data[property][e],
-		})
+		res.Data = append(
+			res.Data,
+			&pb.BulkPropertyValuesResponse_EntityPropertyValues{
+				Entity: e,
+				Values: data[property][e],
+			},
+		)
 	}
 	return res, nil
 }

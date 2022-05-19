@@ -68,11 +68,11 @@ message BulkPropertyValuesRequest {
 }
 
 message BulkPropertyValuesResponse {
-  message OneResult {
+  message EntityPropertyValues {
     string entity = 1;
     repeated datacommons.EntityInfo values = 2;
   }
-  repeated OneResult data = 1;
+  repeated EntityPropertyValues data = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }
