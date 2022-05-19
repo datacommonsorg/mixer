@@ -32,7 +32,7 @@ message Cursor {
 // information of one entity.
 message CursorGroup {
   // Entity DCID or other information that identifies the CursorGroup.
-  string key = 1;
+  repeated string keys = 1;
   repeated Cursor cursors = 2;
 }
 

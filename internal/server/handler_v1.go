@@ -48,6 +48,13 @@ func (s *Server) PropertyValues(
 	return propertyvalues.PropertyValues(ctx, in, s.store)
 }
 
+// BulkPropertyValues implements API for mixer.BulkPropertyValues.
+func (s *Server) BulkPropertyValues(
+	ctx context.Context, in *pb.BulkPropertyValuesRequest,
+) (*pb.BulkPropertyValuesResponse, error) {
+	return propertyvalues.BulkPropertyValues(ctx, in, s.store)
+}
+
 // Variables implements API for mixer.Variables.
 func (s *Server) Variables(
 	ctx context.Context, in *pb.VariablesRequest,

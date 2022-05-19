@@ -17,6 +17,7 @@ package propertyvalues
 import (
 	"container/heap"
 	"context"
+	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -28,68 +29,57 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// PropertyValues implements mixer.PropertyValues handler.
-func PropertyValues(
+func propertyValuesHelper(
 	ctx context.Context,
-	in *pb.PropertyValuesRequest,
 	store *store.Store,
-) (*pb.PropertyValuesResponse, error) {
-	property := in.GetProperty()
-	entity := in.GetEntity()
-	limit := int(in.GetLimit())
-	token := in.GetNextToken()
-	direction := in.GetDirection()
-	// Check arguments
-	if property == "" {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "missing required argument: property")
-	}
-	if direction != "out" && direction != "in" {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "uri should be /v1/property/out/ or /v1/property/in/")
-	}
-	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid entity %s", entity)
-	}
+	properties []string,
+	entities []string,
+	limit int,
+	token string,
+	direction string,
+) (
+	map[string]map[string][]*pb.EntityInfo,
+	string,
+	error,
+) {
 	var err error
 	// Empty cursor group when no token is given.
-	pi := &pb.PaginationInfo{CursorGroups: []*pb.CursorGroup{{}}}
-	if token != "" {
-		pi, err = pagination.Decode(token)
-		if err != nil {
-			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid pagination token: %s", token)
-		}
-		// Simple API should have exact one entity, thus one cursor group.
-		if len(pi.CursorGroups) != 1 {
-			return nil, status.Errorf(
-				codes.InvalidArgument,
-				"pagination group size should be 1, got %d instead",
-				len(pi.CursorGroups),
-			)
-		}
+	pi := &pb.PaginationInfo{CursorGroups: []*pb.CursorGroup{}}
+	if token == "" {
+		pi.CursorGroups = buildDefaultCursorGroups(
+			properties, entities, len(store.BtGroup.Tables()))
+	} else if pi, err = pagination.Decode(token); err != nil {
+		return nil, "", status.Errorf(
+			codes.InvalidArgument, "invalid pagination token: %s", token)
 	}
 	if limit == 0 || limit > defaultLimit {
 		limit = defaultLimit
 	}
-	cursorGroup := pi.CursorGroups[0]
-	// build empty cursorGroup
-	if len(cursorGroup.Cursors) == 0 {
-		cursorGroup = buildEmptyCursorGroup(len(store.BtGroup.Tables()))
+	cursorGroup := map[string]map[string][]*pb.Cursor{}
+	for _, g := range pi.CursorGroups {
+		keys := g.GetKeys()
+		// First key is entity, second key is property.
+		if len(keys) != 2 {
+			return nil, "", status.Errorf(
+				codes.Internal, "cursor should have two keys, cursor: %s", g)
+		}
+		p, e := keys[1], keys[0]
+		if _, ok := cursorGroup[p]; !ok {
+			cursorGroup[p] = map[string][]*pb.Cursor{}
+		}
+		cursorGroup[p][e] = g.GetCursors()
 	}
-
 	respToken := ""
-	var mergedEntities []*pb.EntityInfo
-	if direction == "out" {
+	var mergedEntities map[string]map[string][]*pb.EntityInfo
+	if direction == util.DirectionOut {
 		s := &outState{}
-		if err = s.init(ctx, store.BtGroup, property, entity, limit, cursorGroup); err != nil {
-			return nil, err
+		if err = s.init(ctx, store.BtGroup, properties, entities, limit, cursorGroup); err != nil {
+			return nil, "", err
 		}
 		for {
 			hasNext, err := nextOut(ctx, s, store.BtGroup)
 			if err != nil {
-				return nil, err
+				return nil, "", err
 			}
 			if !hasNext {
 				break
@@ -97,49 +87,48 @@ func PropertyValues(
 		}
 		// Out property values only use one (the preferred) import group. So here
 		// should only check if that import group has more data to compute the token.
-		if s.rawEntities[s.usedImportGroup] != nil {
-			respToken, err = util.EncodeProto(
-				&pb.PaginationInfo{
-					CursorGroups: []*pb.CursorGroup{s.cursorGroup},
-				})
-		}
-		if err != nil {
-			return nil, err
+	outToken:
+		for p := range s.rawEntities {
+			for e := range s.rawEntities[p] {
+				if s.rawEntities[p][e][s.usedImportGroup[p][e]] != nil {
+					if respToken, err = util.EncodeProto(s.getPagination()); err != nil {
+						return nil, "", err
+					}
+					break outToken
+				}
+			}
 		}
 		mergedEntities = s.mergedEntities
 	} else {
 		s := &inState{}
-		if err = s.init(ctx, store.BtGroup, property, entity, limit, cursorGroup); err != nil {
-			return nil, err
+		if err = s.init(ctx, store.BtGroup, properties, entities, limit, cursorGroup); err != nil {
+			return nil, "", err
 		}
 		for {
 			hasNext, err := nextIn(ctx, s, store.BtGroup)
 			if err != nil {
-				return nil, err
+				return nil, "", err
 			}
 			if !hasNext {
 				break
 			}
 		}
-		for _, d := range s.rawEntities {
-			// If any import group has more data, then should compute the token
-			if d != nil {
-				respToken, err = util.EncodeProto(
-					&pb.PaginationInfo{
-						CursorGroups: []*pb.CursorGroup{s.cursorGroup},
-					})
-				if err != nil {
-					return nil, err
+	inToken:
+		for p := range s.rawEntities {
+			for e := range s.rawEntities[p] {
+				for _, d := range s.rawEntities[p][e] {
+					if d != nil {
+						if respToken, err = util.EncodeProto(s.getPagination()); err != nil {
+							return nil, "", err
+						}
+						break inToken
+					}
 				}
-				break
 			}
 		}
 		mergedEntities = s.mergedEntities
 	}
-	return &pb.PropertyValuesResponse{
-		Data:      mergedEntities,
-		NextToken: respToken,
-	}, nil
+	return mergedEntities, respToken, nil
 }
 
 // Process the next entity for out property value
@@ -147,31 +136,66 @@ func PropertyValues(
 // Out property values are not merged, only the preferred import group result
 // is used.
 func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, error) {
-	// Got enough entities, should stop.
-	if len(s.mergedEntities) == s.limit {
-		return false, nil
-	}
-	ig := s.usedImportGroup
-	// Update the cursor.
-	cursor := s.cursorGroup.Cursors[ig]
-	s.mergedEntities = append(s.mergedEntities, s.rawEntities[ig][cursor.Item])
-	cursor.Item++
-	// Reach the end of the current page, should advance to next page.
-	if int(cursor.Item) == len(s.rawEntities[ig]) {
-		cursor.Page++
-		cursor.Item = 0
-		// No more pages
-		if cursor.Page == int32(s.totalPage[ig]) {
-			s.rawEntities[ig] = nil
-			return false, nil
-		} else {
-			err := s.readNextPage(ctx, btGroup, true, ig, cursor.Page)
-			if err != nil {
-				return false, err
+	accs := []*bigtable.Accessor{}
+	for _, p := range s.properties {
+		for _, e := range s.entities {
+			// No raw data for this "property", "entity"
+			if _, ok := s.next[p][e]; !ok {
+				continue
+			}
+			if len(s.mergedEntities[p][e]) == s.limit {
+				delete(s.next[p], e)
+				continue
+			}
+			ig := s.usedImportGroup[p][e]
+			// Update the cursor.
+			cursor := s.cursorGroup[p][e][ig]
+			if _, ok := s.mergedEntities[p][e]; !ok {
+				s.mergedEntities[p][e] = []*pb.EntityInfo{}
+			}
+			s.mergedEntities[p][e] = append(
+				s.mergedEntities[p][e],
+				s.rawEntities[p][e][ig][cursor.Item],
+			)
+			cursor.Item++
+			// Still need more data, mark in s.hasNext
+			s.next[p][e] = cursor
+			// Reach the end of the current page, should advance to next page.
+			if int(cursor.Item) == len(s.rawEntities[p][e][ig]) {
+				cursor.Page++
+				cursor.Item = 0
+				// No more pages
+				if cursor.Page == int32(s.totalPage[p][e][ig]) {
+					s.rawEntities[p][e][ig] = nil
+					delete(s.next[p], e)
+				} else {
+					s.next[p][e] = cursor
+					accs = append(accs, &bigtable.Accessor{
+						ImportGroup: ig,
+						Body: [][]string{
+							{e},
+							{p},
+							{strconv.Itoa(int(cursor.Page))},
+						},
+					})
+				}
 			}
 		}
 	}
-	return true, nil
+	if len(accs) > 0 {
+		err := s.readBt(ctx, btGroup, true, accs)
+		if err != nil {
+			return false, err
+		}
+	}
+	hasNext := false
+	for p := range s.next {
+		if len(s.next[p]) > 0 {
+			hasNext = true
+			break
+		}
+	}
+	return hasNext, nil
 }
 
 // Process the next entity for in property value
@@ -180,62 +204,96 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 // handled by advancing the pointer in each import group simultaneously like
 // in a merge sort.
 func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, error) {
-	// All entities in all import groups have been exhausted.
-	if s.heap.Len() == 0 {
-		return false, nil
-	}
-	elem := heap.Pop(s.heap).(*heapElem)
-	entity, ig := elem.data, elem.ig
-	if len(s.mergedEntities) == 0 {
-		s.mergedEntities = []*pb.EntityInfo{entity}
-	} else {
-		prev := s.mergedEntities[len(s.mergedEntities)-1]
-		if entity.Dcid != prev.Dcid || entity.Value != prev.Value {
-			// Find a new entity, add to the result.
-			s.mergedEntities = append(s.mergedEntities, entity)
-		}
-	}
-	// Got enough entities, should stop.
-	// Cursor is now at the next read item, ready to be returned.
-	//
-	// Here go past one entity over limit to ensure all duplicated entries have
-	// been processed. Otherwise, next API request could get duplicate entries.
+	accs := []*bigtable.Accessor{}
+	for _, p := range s.properties {
+		for _, e := range s.entities {
+			// All entities in all import groups have been exhausted.
+			if s.heap[p][e].Len() == 0 {
+				delete(s.next[p], e)
+				continue
+			}
+			elem := heap.Pop(s.heap[p][e]).(*heapElem)
+			entity, ig := elem.data, elem.ig
+			if len(s.mergedEntities[p][e]) == 0 {
+				s.mergedEntities[p][e] = []*pb.EntityInfo{entity}
+			} else {
+				prev := s.mergedEntities[p][e][len(s.mergedEntities[p][e])-1]
+				if entity.Dcid != prev.Dcid || entity.Value != prev.Value {
+					// Find a new entity, add to the result.
+					s.mergedEntities[p][e] = append(s.mergedEntities[p][e], entity)
+				}
+			}
+			// Got enough entities, should stop.
+			// Cursor is now at the next read item, ready to be returned.
+			//
+			// Here go past one entity over limit to ensure all duplicated entries have
+			// been processed. Otherwise, next API request could get duplicate entries.
 
-	// For example, given the two import groups data below and limit of 1, this
-	// ensures the duplicated entry "a" are all processed in this request, and
-	// next request would start processing from "b".
+			// For example, given the two import groups data below and limit of 1, this
+			// ensures the duplicated entry "a" are all processed in this request, and
+			// next request would start processing from "b".
 
-	// import group 1: ["a", "a", "b"]
-	// import group 2: ["a", "c"]
-	if len(s.mergedEntities) == s.limit+1 {
-		s.mergedEntities = s.mergedEntities[:s.limit]
-		return false, nil
-	}
-	// Update the cursor.
-	cursor := s.cursorGroup.Cursors[ig]
-	cursor.Item++
-	// Reach the end of the current page, should advance to next page.
-	if int(cursor.Item) == len(s.rawEntities[ig]) {
-		cursor.Page++
-		cursor.Item = 0
-		// No more pages
-		if cursor.Page == int32(s.totalPage[ig]) {
-			s.rawEntities[ig] = nil
-		} else {
-			err := s.readNextPage(ctx, btGroup, false, ig, cursor.Page)
-			if err != nil {
-				return false, err
+			// import group 1: ["a", "a", "b"]
+			// import group 2: ["a", "c"]
+			if len(s.mergedEntities[p][e]) == s.limit+1 {
+				s.mergedEntities[p][e] = s.mergedEntities[p][e][:s.limit]
+				delete(s.next[p], e)
+			}
+			if _, ok := s.next[p][e]; ok {
+				// Update the cursor.
+				cursor := s.cursorGroup[p][e][ig]
+				cursor.Item++
+				// Reach the end of the current page, should advance to next page.
+				if int(cursor.Item) == len(s.rawEntities[p][e][ig]) {
+					cursor.Page++
+					cursor.Item = 0
+					// No more pages
+					if cursor.Page == int32(s.totalPage[p][e][ig]) {
+						s.rawEntities[p][e][ig] = nil
+						delete(s.next[p], e)
+					} else {
+						accs = append(accs, &bigtable.Accessor{
+							ImportGroup: ig,
+							Body: [][]string{
+								{e},
+								{p},
+								{strconv.Itoa(int(cursor.Page))},
+							},
+						})
+					}
+				}
+				s.next[p][e] = cursor
 			}
 		}
 	}
-	// If there is data available in the current import group, push to the heap.
-	if s.rawEntities[ig] != nil {
-		elem := &heapElem{
-			ig:   ig,
-			pos:  cursor.GetItem(),
-			data: s.rawEntities[ig][cursor.GetItem()],
+	if len(accs) > 0 {
+		err := s.readBt(ctx, btGroup, false, accs)
+		if err != nil {
+			return false, err
 		}
-		heap.Push(s.heap, elem)
 	}
-	return true, nil
+	for _, p := range s.properties {
+		for _, e := range s.entities {
+			if cursor, ok := s.next[p][e]; ok {
+				// If there is data available in the current import group, push to the heap.
+				if s.rawEntities[p][e][cursor.GetImportGroup()] != nil {
+					elem := &heapElem{
+						ig:   int(cursor.GetImportGroup()),
+						pos:  cursor.GetItem(),
+						data: s.rawEntities[p][e][cursor.GetImportGroup()][cursor.GetItem()],
+					}
+					heap.Push(s.heap[p][e], elem)
+				}
+			}
+		}
+	}
+
+	hasNext := false
+	for p := range s.next {
+		if len(s.next[p]) > 0 {
+			hasNext = true
+			break
+		}
+	}
+	return hasNext, nil
 }

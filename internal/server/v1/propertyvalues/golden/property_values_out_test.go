@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -60,13 +61,13 @@ func TestPropertyValuesOut(t *testing.T) {
 				"geoOverlaps",
 				"geoId/0649670",
 				0,
-				"H4sIAAAAAAAA/+ISEWIQYuFglGAVYuJgEmLiYBZi4mABAAAA//8BAAD//10owCcWAAAA",
+				"H4sIAAAAAAAA/+Iy4OJNT833TNE3MDOxNDM34OJOT833L0stykksKBZiEGLhYJRgFWLiYBJi4mAWYuJgAQAAAP//AQAA//+MM0k2MgAAAA==",
 			},
 		} {
 			req := &pb.PropertyValuesRequest{
 				Property:  c.property,
 				Entity:    c.entity,
-				Direction: "out",
+				Direction: util.DirectionOut,
 				Limit:     c.limit,
 				NextToken: c.token,
 			}

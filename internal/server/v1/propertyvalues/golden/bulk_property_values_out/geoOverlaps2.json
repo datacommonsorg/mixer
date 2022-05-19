@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "entity": "country/USA"
+    },
+    {
+      "entity": "geoId/06053",
+      "values": [
+        {
+          "name": "95004",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/95004",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "95076",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/95076",
+          "provenanceId": "dc/5n63hr1"
+        }
+      ]
+    },
+    {
+      "entity": "geoId/06"
+    }
+  ]
+}

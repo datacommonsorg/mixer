@@ -21,72 +21,66 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestPropertyValuesIn(t *testing.T) {
+func TestBulkPropertyValuesOut(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "property_values_in")
+	goldenPath := path.Join(path.Dir(filename), "bulk_property_values_out")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			property   string
-			entity     string
+			entities   []string
 			limit      int32
 			token      string
 		}{
 			{
-				"containedIn1.json",
-				"containedInPlace",
-				"geoId/06",
-				1002,
-				"",
-			},
-			{
-				"containedIn2.json",
-				"containedInPlace",
-				"geoId/06",
-				500,
-				"H4sIAAAAAAAA/+Iy4OJIT833TNE3MOMSSM7PK0nMzEtN8cwLyElMThViEGLiYBRi4mASYuJgFmLhYBFgAgAAAP//AQAA//9ymf/GMgAAAA==",
-			},
-			{
-				"geoOverlaps.json",
-				"geoOverlaps",
-				"geoId/0649670",
-				1000,
-				"",
-			},
-			{
-				"typeOf1.json",
-				"typeOf",
-				"Country",
-				50,
-				"",
-			},
-			{
-				"typeOf2.json",
-				"typeOf",
-				"Country",
+				"name.json",
+				"name",
+				[]string{"country/USA", "geoId/06", "dummy"},
 				0,
-				"H4sIAAAAAAAA/+LS5GJ3zi/NKymq5GIrqSxI9U8TYhBi4WCUMBJi4WCSMBJi4mAWYuFgkTACAAAA//8BAAD//3IiQtwrAAAA",
+				"",
+			},
+			{
+				"containedIn.json",
+				"containedInPlace",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				0,
+				"",
+			},
+			{
+				"geoOverlaps1.json",
+				"geoOverlaps",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				5,
+				"",
+			},
+			{
+				"geoOverlaps2.json",
+				"geoOverlaps",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				5,
+				"H4sIAAAAAAAA/+LS4eJOzi/NKymq1A8NduTiTk/N9y9LLcpJLCgWYhBi4mAUYuJgEmLiYBZi4mDh0gMr8EzRNzAzMDVGV83CwSjBiqJek4sDpp6A0QAAAAD//wEAAP//omBbzIkAAAA=",
 			},
 		} {
-			req := &pb.PropertyValuesRequest{
+			req := &pb.BulkPropertyValuesRequest{
 				Property:  c.property,
-				Entity:    c.entity,
-				Direction: "in",
+				Entities:  c.entities,
+				Direction: util.DirectionOut,
 				Limit:     c.limit,
 				NextToken: c.token,
 			}
-			resp, err := mixer.PropertyValues(ctx, req)
+			resp, err := mixer.BulkPropertyValues(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.PropertyValues/in: %s", err)
+				t.Errorf("could not run mixer.BulkPropertyValues/out: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -96,7 +90,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.PropertyValuesResponse
+			var expected pb.BulkPropertyValuesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
@@ -108,7 +102,7 @@ func TestPropertyValuesIn(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"PropertyValues/in", &test.TestOption{}, testSuite); err != nil {
+		"BulkPropertyValues/out", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

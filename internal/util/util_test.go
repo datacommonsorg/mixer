@@ -289,7 +289,7 @@ func TestEncode(t *testing.T) {
 			&pb.PaginationInfo{
 				CursorGroups: []*pb.CursorGroup{
 					{
-						Key: "geoId/05",
+						Keys: []string{"geoId/05"},
 						Cursors: []*pb.Cursor{
 							{
 								ImportGroup: 0,
@@ -319,7 +319,7 @@ func TestEncode(t *testing.T) {
 						},
 					},
 					{
-						Key: "geoId/06",
+						Keys: []string{"geoId/06"},
 						Cursors: []*pb.Cursor{
 							{
 								ImportGroup: 0,
