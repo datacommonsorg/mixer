@@ -37,8 +37,11 @@ message CursorGroup {
 }
 
 // Represents the cursor information of one pagination request.
+// Each cursor group corresponds to the cursor information of one requested
+// entity. There are multiple cursor groups for bulk APIs.
 message PaginationInfo {
-  // Each cursor group corresponds to the cursor information of one requested
-  // entity. There are multiple cursor groups for bulk APIs.
-  repeated CursorGroup cursor_groups = 1;
+  // Cursor groups for out arcs.
+  repeated CursorGroup out_cursor_groups = 1;
+  // Cursor groups for in arcs.
+  repeated CursorGroup in_cursor_groups = 2;
 }

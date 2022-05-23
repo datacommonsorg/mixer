@@ -30,7 +30,7 @@ func TestDencode(t *testing.T) {
 		{
 			// One entity scenario.
 			&pb.PaginationInfo{
-				CursorGroups: []*pb.CursorGroup{
+				OutCursorGroups: []*pb.CursorGroup{
 					{
 						Cursors: []*pb.Cursor{
 							{
@@ -67,7 +67,7 @@ func TestDencode(t *testing.T) {
 		{
 			// Multiple entity scenario.
 			&pb.PaginationInfo{
-				CursorGroups: []*pb.CursorGroup{
+				OutCursorGroups: []*pb.CursorGroup{
 					{
 						Keys: []string{"geoId/05"},
 						Cursors: []*pb.Cursor{

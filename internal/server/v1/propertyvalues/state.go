@@ -22,6 +22,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // state holds raw and processed data for property values API.
@@ -220,18 +221,24 @@ func (s *outState) init(
 	return nil
 }
 
-func (s *state) getPagination() *pb.PaginationInfo {
-	res := &pb.PaginationInfo{}
+func (s *state) getPagination(direction string) *pb.PaginationInfo {
+	cursorGroups := []*pb.CursorGroup{}
 	for _, p := range s.properties {
 		for _, e := range s.entities {
-			res.CursorGroups = append(
-				res.CursorGroups,
+			cursorGroups = append(
+				cursorGroups,
 				&pb.CursorGroup{
 					Keys:    []string{e, p},
 					Cursors: s.cursorGroup[p][e],
 				},
 			)
 		}
+	}
+	res := &pb.PaginationInfo{}
+	if direction == util.DirectionOut {
+		res.OutCursorGroups = cursorGroups
+	} else {
+		res.InCursorGroups = cursorGroups
 	}
 	return res
 }

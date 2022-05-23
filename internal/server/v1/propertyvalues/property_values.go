@@ -29,7 +29,9 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func propertyValuesHelper(
+// PropertyValuesHelper is the generic handler to fetch property values for
+// multiple properties and entities.
+func PropertyValuesHelper(
 	ctx context.Context,
 	store *store.Store,
 	properties []string,
@@ -39,28 +41,36 @@ func propertyValuesHelper(
 	direction string,
 ) (
 	map[string]map[string][]*pb.EntityInfo,
-	string,
+	*pb.PaginationInfo,
 	error,
 ) {
 	var err error
-	// Empty cursor group when no token is given.
-	pi := &pb.PaginationInfo{CursorGroups: []*pb.CursorGroup{}}
+	// Empty cursor groups when no token is given.
+	var cursorGroups []*pb.CursorGroup
 	if token == "" {
-		pi.CursorGroups = buildDefaultCursorGroups(
+		cursorGroups = buildDefaultCursorGroups(
 			properties, entities, len(store.BtGroup.Tables()))
-	} else if pi, err = pagination.Decode(token); err != nil {
-		return nil, "", status.Errorf(
-			codes.InvalidArgument, "invalid pagination token: %s", token)
+	} else {
+		if pi, err := pagination.Decode(token); err != nil {
+			return nil, nil, status.Errorf(
+				codes.InvalidArgument, "invalid pagination token: %s", token)
+		} else {
+			if direction == util.DirectionOut {
+				cursorGroups = pi.OutCursorGroups
+			} else {
+				cursorGroups = pi.InCursorGroups
+			}
+		}
 	}
 	if limit == 0 || limit > defaultLimit {
 		limit = defaultLimit
 	}
 	cursorGroup := map[string]map[string][]*pb.Cursor{}
-	for _, g := range pi.CursorGroups {
+	for _, g := range cursorGroups {
 		keys := g.GetKeys()
 		// First key is entity, second key is property.
 		if len(keys) != 2 {
-			return nil, "", status.Errorf(
+			return nil, nil, status.Errorf(
 				codes.Internal, "cursor should have two keys, cursor: %s", g)
 		}
 		p, e := keys[1], keys[0]
@@ -69,17 +79,15 @@ func propertyValuesHelper(
 		}
 		cursorGroup[p][e] = g.GetCursors()
 	}
-	respToken := ""
-	var mergedEntities map[string]map[string][]*pb.EntityInfo
 	if direction == util.DirectionOut {
 		s := &outState{}
 		if err = s.init(ctx, store.BtGroup, properties, entities, limit, cursorGroup); err != nil {
-			return nil, "", err
+			return nil, nil, err
 		}
 		for {
 			hasNext, err := nextOut(ctx, s, store.BtGroup)
 			if err != nil {
-				return nil, "", err
+				return nil, nil, err
 			}
 			if !hasNext {
 				break
@@ -87,48 +95,39 @@ func propertyValuesHelper(
 		}
 		// Out property values only use one (the preferred) import group. So here
 		// should only check if that import group has more data to compute the token.
-	outToken:
 		for p := range s.rawEntities {
 			for e := range s.rawEntities[p] {
 				if s.rawEntities[p][e][s.usedImportGroup[p][e]] != nil {
-					if respToken, err = util.EncodeProto(s.getPagination()); err != nil {
-						return nil, "", err
-					}
-					break outToken
+					return s.mergedEntities, s.getPagination(util.DirectionOut), nil
 				}
 			}
 		}
-		mergedEntities = s.mergedEntities
+		return s.mergedEntities, nil, nil
 	} else {
 		s := &inState{}
 		if err = s.init(ctx, store.BtGroup, properties, entities, limit, cursorGroup); err != nil {
-			return nil, "", err
+			return nil, nil, err
 		}
 		for {
 			hasNext, err := nextIn(ctx, s, store.BtGroup)
 			if err != nil {
-				return nil, "", err
+				return nil, nil, err
 			}
 			if !hasNext {
 				break
 			}
 		}
-	inToken:
 		for p := range s.rawEntities {
 			for e := range s.rawEntities[p] {
 				for _, d := range s.rawEntities[p][e] {
 					if d != nil {
-						if respToken, err = util.EncodeProto(s.getPagination()); err != nil {
-							return nil, "", err
-						}
-						break inToken
+						return s.mergedEntities, s.getPagination(util.DirectionIn), nil
 					}
 				}
 			}
 		}
-		mergedEntities = s.mergedEntities
+		return s.mergedEntities, nil, nil
 	}
-	return mergedEntities, respToken, nil
 }
 
 // Process the next entity for out property value

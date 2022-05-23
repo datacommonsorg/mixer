@@ -18,15 +18,6 @@ package datacommons.v1;
 
 import "entity.proto";
 
-
-// A page of entities. The page number starts from 0, and is in the cache key.
-// Page size is set by ::datacommons::prophet::kPageSize.
-message PagedEntities {
-  // A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
-  repeated datacommons.EntityInfo entities = 1;
-  double total_page_count = 2;
-}
-
 message PropertyValuesRequest {
   string property = 1;
   string entity = 2;
@@ -37,7 +28,7 @@ message PropertyValuesRequest {
   // [Optional]
   // The pagination token for getting the next set of entries. This is empty
   // for the first request and needs to be set in the subsequent request.
-  // This is the value returned from a prior call to PropertyValuesResponse
+  // This is the value returned from a prior call to PropertyValuesRequest
   string next_token = 4;
   // Direction can only be "in" and "out"
   string direction = 5;

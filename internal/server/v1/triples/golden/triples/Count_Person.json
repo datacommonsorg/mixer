@@ -1,0 +1,255 @@
+{
+  "inEntities": {
+    "measurementDenominator": {
+      "entities": [
+        {
+          "name": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Amount of Economic Activity (Nominal): Gross Domestic Production (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Birth Event (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_BirthEvent_AsAFractionOfCount_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Birth Event: Live Birth (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Criminal Activities: Murder And Non Negligent Manslaughter (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Mortality Event (Age Adjusted) (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Mortality Event (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Death_AsAFractionOfCount_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm) (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percent of Population Living in Areas Below 5 Meters Elevation",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Mobile Subscriptions Per Capita",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/06w4nhpt1vz26",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/1xmcs407enr51",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/64exg7jchnekb",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/6kk2e7env541h",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/btjrtzjfksspd",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/cwk07wqzew6t8",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/d20yq6r828zrc",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/h00kfxhs73dhc",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/jzqt6tmmb7p0h",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/me61e2819fr9g",
+          "provenanceId": "dc/6zzrcr2"
+        },
+        {
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "dc/vec47kj93z2m6",
+          "provenanceId": "dc/6zzrcr2"
+        }
+      ]
+    }
+  },
+  "outEntities": {
+    "measuredProperty": {
+      "entities": [
+        {
+          "name": "count",
+          "types": [
+            "Property"
+          ],
+          "dcid": "count",
+          "provenanceId": "dc/d7tbsb1"
+        }
+      ]
+    },
+    "memberOf": {
+      "entities": [
+        {
+          "name": "Demographics",
+          "types": [
+            "StatVarGroup"
+          ],
+          "dcid": "dc/g/Demographics",
+          "provenanceId": "dc/d7tbsb1"
+        }
+      ]
+    },
+    "name": {
+      "entities": [
+        {
+          "provenanceId": "dc/d7tbsb1",
+          "value": "Population"
+        }
+      ]
+    },
+    "populationType": {
+      "entities": [
+        {
+          "name": "Person",
+          "types": [
+            "Class"
+          ],
+          "dcid": "Person",
+          "provenanceId": "dc/d7tbsb1"
+        }
+      ]
+    },
+    "provenance": {
+      "entities": [
+        {
+          "name": "https://datacommons.org",
+          "types": [
+            "Provenance"
+          ],
+          "dcid": "dc/d7tbsb1",
+          "provenanceId": "dc/d7tbsb1"
+        }
+      ]
+    },
+    "statType": {
+      "entities": [
+        {
+          "name": "measuredValue",
+          "types": [
+            "Property"
+          ],
+          "dcid": "measuredValue",
+          "provenanceId": "dc/d7tbsb1"
+        }
+      ]
+    },
+    "typeOf": {
+      "entities": [
+        {
+          "name": "StatisticalVariable",
+          "types": [
+            "Class"
+          ],
+          "dcid": "StatisticalVariable",
+          "provenanceId": "dc/d7tbsb1"
+        }
+      ]
+    }
+  }
+}

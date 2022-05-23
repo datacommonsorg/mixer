@@ -26,67 +26,47 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestPropertyValuesIn(t *testing.T) {
+func TestTriples(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "property_values_in")
+	goldenPath := path.Join(path.Dir(filename), "triples")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			property   string
 			entity     string
-			limit      int32
 			token      string
 		}{
 			{
-				"containedIn1.json",
-				"containedInPlace",
-				"geoId/06",
-				1002,
-				"",
-			},
-			{
-				"containedIn2.json",
-				"containedInPlace",
-				"geoId/06",
-				500,
-				"H4sIAAAAAAAA/xIy4OJIT833TNE3MOMSSM7PK0nMzEtN8cwLyElMThViEGLiYBRi4mASYuJgFmLhYBFgAgAAAP//AQAA//8h8X0SMgAAAA==",
-			},
-			{
-				"geoOverlaps.json",
-				"geoOverlaps",
-				"geoId/0649670",
-				1000,
-				"",
-			},
-			{
-				"typeOf1.json",
-				"typeOf",
+				"Country.json",
 				"Country",
-				50,
 				"",
 			},
 			{
-				"typeOf2.json",
-				"typeOf",
-				"Country",
-				0,
-				"H4sIAAAAAAAA/xLS5GJ3zi/NKymq5GIrqSxI9U8TYhBi4WCUMBJi4WCSMBJi4mAWYuFgkTACAAAA//8BAAD//1/lVyMrAAAA",
+				"BiologicalSpecimen1.json",
+				"BiologicalSpecimen",
+				"",
+			},
+			{
+				"BiologicalSpecimen2.json",
+				"BiologicalSpecimen",
+				"H4sIAAAAAAAA/xIy4BJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1TxNiEGLiYBRi4mASYuFgFmASYuJgAQAAAP//AQAA//8YMgtZMgAAAA==",
+			},
+			{
+				"Count_Person.json",
+				"Count_Person",
+				"",
 			},
 		} {
-			req := &pb.PropertyValuesRequest{
-				Property:  c.property,
+			req := &pb.TriplesRequest{
 				Entity:    c.entity,
-				Direction: "in",
-				Limit:     c.limit,
 				NextToken: c.token,
 			}
-			resp, err := mixer.PropertyValues(ctx, req)
+			resp, err := mixer.Triples(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.PropertyValues/in: %s", err)
+				t.Errorf("could not run mixer.Triples: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -96,7 +76,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.PropertyValuesResponse
+			var expected pb.TriplesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
@@ -108,7 +88,7 @@ func TestPropertyValuesIn(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"PropertyValues/in", &test.TestOption{}, testSuite); err != nil {
+		"Triples", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

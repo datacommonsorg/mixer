@@ -112,10 +112,12 @@ type MixerClient interface {
 	GetStatVarSummary(ctx context.Context, in *GetStatVarSummaryRequest, opts ...grpc.CallOption) (*GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
 	GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRequest, opts ...grpc.CallOption) (*GetStatVarMatchResponse, error)
+	// ======================  V1   V1   V1   V1  ======================
 	Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error)
 	BulkProperties(ctx context.Context, in *BulkPropertiesRequest, opts ...grpc.CallOption) (*BulkPropertiesResponse, error)
 	PropertyValues(ctx context.Context, in *PropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error)
 	BulkPropertyValues(ctx context.Context, in *BulkPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error)
+	Triples(ctx context.Context, in *TriplesRequest, opts ...grpc.CallOption) (*TriplesResponse, error)
 	Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error)
 	BulkVariables(ctx context.Context, in *BulkVariablesRequest, opts ...grpc.CallOption) (*BulkVariablesResponse, error)
 	PlaceInfo(ctx context.Context, in *PlaceInfoRequest, opts ...grpc.CallOption) (*PlaceInfoResponse, error)
@@ -475,6 +477,15 @@ func (c *mixerClient) BulkPropertyValues(ctx context.Context, in *BulkPropertyVa
 	return out, nil
 }
 
+func (c *mixerClient) Triples(ctx context.Context, in *TriplesRequest, opts ...grpc.CallOption) (*TriplesResponse, error) {
+	out := new(TriplesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Triples", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error) {
 	out := new(VariablesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Variables", in, out, opts...)
@@ -713,10 +724,12 @@ type MixerServer interface {
 	GetStatVarSummary(context.Context, *GetStatVarSummaryRequest) (*GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
 	GetStatVarMatch(context.Context, *GetStatVarMatchRequest) (*GetStatVarMatchResponse, error)
+	// ======================  V1   V1   V1   V1  ======================
 	Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error)
 	BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error)
 	PropertyValues(context.Context, *PropertyValuesRequest) (*PropertyValuesResponse, error)
 	BulkPropertyValues(context.Context, *BulkPropertyValuesRequest) (*BulkPropertyValuesResponse, error)
+	Triples(context.Context, *TriplesRequest) (*TriplesResponse, error)
 	Variables(context.Context, *VariablesRequest) (*VariablesResponse, error)
 	BulkVariables(context.Context, *BulkVariablesRequest) (*BulkVariablesResponse, error)
 	PlaceInfo(context.Context, *PlaceInfoRequest) (*PlaceInfoResponse, error)
@@ -849,6 +862,9 @@ func (UnimplementedMixerServer) PropertyValues(context.Context, *PropertyValuesR
 }
 func (UnimplementedMixerServer) BulkPropertyValues(context.Context, *BulkPropertyValuesRequest) (*BulkPropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkPropertyValues not implemented")
+}
+func (UnimplementedMixerServer) Triples(context.Context, *TriplesRequest) (*TriplesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Triples not implemented")
 }
 func (UnimplementedMixerServer) Variables(context.Context, *VariablesRequest) (*VariablesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Variables not implemented")
@@ -1576,6 +1592,24 @@ func _Mixer_BulkPropertyValues_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_Triples_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TriplesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).Triples(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/Triples",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).Triples(ctx, req.(*TriplesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_Variables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VariablesRequest)
 	if err := dec(in); err != nil {
@@ -2018,6 +2052,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkPropertyValues",
 			Handler:    _Mixer_BulkPropertyValues_Handler,
+		},
+		{
+			MethodName: "Triples",
+			Handler:    _Mixer_Triples_Handler,
 		},
 		{
 			MethodName: "Variables",
