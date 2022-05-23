@@ -50,7 +50,7 @@ func PropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid entity %s", entity)
 	}
-	data, pi, err := PropertyValuesHelper(
+	data, pi, err := Fetch(
 		ctx,
 		store,
 		[]string{property},
@@ -100,7 +100,7 @@ func BulkPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid entities %s", entities)
 	}
-	data, pi, err := PropertyValuesHelper(
+	data, pi, err := Fetch(
 		ctx,
 		store,
 		[]string{property},

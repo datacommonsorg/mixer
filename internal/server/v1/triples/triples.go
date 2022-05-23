@@ -58,7 +58,7 @@ func Triples(
 			return nil, err
 		}
 		properties := propsResp.GetProperties()
-		data, pi, err := propertyvalues.PropertyValuesHelper(
+		data, pi, err := propertyvalues.Fetch(
 			ctx,
 			store,
 			properties,

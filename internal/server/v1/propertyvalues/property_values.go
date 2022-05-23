@@ -29,9 +29,9 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// PropertyValuesHelper is the generic handler to fetch property values for
-// multiple properties and entities.
-func PropertyValuesHelper(
+// Fetch is the generic handler to fetch property values for multiple
+// properties and entities.
+func Fetch(
 	ctx context.Context,
 	store *store.Store,
 	properties []string,
@@ -51,15 +51,15 @@ func PropertyValuesHelper(
 		cursorGroups = buildDefaultCursorGroups(
 			properties, entities, len(store.BtGroup.Tables()))
 	} else {
-		if pi, err := pagination.Decode(token); err != nil {
+		pi, err := pagination.Decode(token)
+		if err != nil {
 			return nil, nil, status.Errorf(
 				codes.InvalidArgument, "invalid pagination token: %s", token)
+		}
+		if direction == util.DirectionOut {
+			cursorGroups = pi.OutCursorGroups
 		} else {
-			if direction == util.DirectionOut {
-				cursorGroups = pi.OutCursorGroups
-			} else {
-				cursorGroups = pi.InCursorGroups
-			}
+			cursorGroups = pi.InCursorGroups
 		}
 	}
 	if limit == 0 || limit > defaultLimit {
