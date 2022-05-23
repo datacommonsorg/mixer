@@ -328,6 +328,7 @@ service Mixer {
     option (google.api.http) = {
       get : "/stat-var/search"
       additional_bindings : {post : "/stat-var/search" body : "*"}
+      additional_bindings : {post : "/v1/variable/search" body : "*"}
     };
   }
 
@@ -346,6 +347,7 @@ service Mixer {
     option (google.api.http) = {
       post : "/stat-var/match"
       body : "*"
+      additional_bindings : {post : "/v1/variable/match" body : "*"}
     };
   }
 
