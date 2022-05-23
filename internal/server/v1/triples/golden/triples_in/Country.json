@@ -1,5 +1,5 @@
 {
-  "inEntities": {
+  "data": {
     "rangeIncludes": {
       "entities": [
         {
@@ -2243,52 +2243,6 @@
           ],
           "dcid": "wikidataId/Q756617",
           "provenanceId": "dc/5j06ly1"
-        }
-      ]
-    }
-  },
-  "outEntities": {
-    "name": {
-      "entities": [
-        {
-          "provenanceId": "dc/5l5zxr1",
-          "value": "Country"
-        }
-      ]
-    },
-    "provenance": {
-      "entities": [
-        {
-          "name": "https://datacommons.org",
-          "types": [
-            "Provenance"
-          ],
-          "dcid": "dc/5l5zxr1",
-          "provenanceId": "dc/5l5zxr1"
-        }
-      ]
-    },
-    "subClassOf": {
-      "entities": [
-        {
-          "name": "AdministrativeArea",
-          "types": [
-            "Class"
-          ],
-          "dcid": "AdministrativeArea",
-          "provenanceId": "dc/5l5zxr1"
-        }
-      ]
-    },
-    "typeOf": {
-      "entities": [
-        {
-          "name": "Class",
-          "types": [
-            "Class"
-          ],
-          "dcid": "Class",
-          "provenanceId": "dc/5l5zxr1"
         }
       ]
     }

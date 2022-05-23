@@ -389,7 +389,7 @@ service Mixer {
 
   rpc Triples(datacommons.v1.TriplesRequest) returns (datacommons.v1.TriplesResponse) {
     option (google.api.http) = {
-      get : "/v1/triples/{entity=**}"
+      get : "/v1/triples/{direction}/{entity=**}"
     };
   }
 

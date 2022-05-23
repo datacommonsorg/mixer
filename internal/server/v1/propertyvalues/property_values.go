@@ -56,11 +56,7 @@ func Fetch(
 			return nil, nil, status.Errorf(
 				codes.InvalidArgument, "invalid pagination token: %s", token)
 		}
-		if direction == util.DirectionOut {
-			cursorGroups = pi.OutCursorGroups
-		} else {
-			cursorGroups = pi.InCursorGroups
-		}
+		cursorGroups = pi.CursorGroups
 	}
 	if limit == 0 || limit > defaultLimit {
 		limit = defaultLimit

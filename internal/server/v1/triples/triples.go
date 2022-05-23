@@ -34,69 +34,54 @@ func Triples(
 	store *store.Store,
 ) (*pb.TriplesResponse, error) {
 	entity := in.GetEntity()
+	direction := in.GetDirection()
 	token := in.GetNextToken()
+	if direction != util.DirectionOut && direction != util.DirectionIn {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "uri should be /v1/triples/out/ or /v1/triples/in/")
+	}
 	if !util.CheckValidDCIDs([]string{entity}) {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid entity %s", entity)
 	}
-	// Assemble out and in arc entities. Do this sequentially, if needed can
-	// parallel the fetch.
 	res := &pb.TriplesResponse{
-		OutEntities: map[string]*pb.EntityInfoCollection{},
-		InEntities:  map[string]*pb.EntityInfoCollection{},
+		Data: map[string]*pb.EntityInfoCollection{},
 	}
-	paginationInfo := &pb.PaginationInfo{}
-	for _, direction := range []string{util.DirectionOut, util.DirectionIn} {
-		propsResp, err := properties.Properties(
-			ctx, &pb.PropertiesRequest{
-				Entity:    entity,
-				Direction: direction,
-			},
-			store,
-		)
-		if err != nil {
-			return nil, err
-		}
-		properties := propsResp.GetProperties()
-		data, pi, err := propertyvalues.Fetch(
-			ctx,
-			store,
-			properties,
-			[]string{entity},
-			0,
-			token,
-			direction,
-		)
-		if err != nil {
-			return nil, err
-		}
-		if pi != nil {
-			if direction == util.DirectionOut {
-				paginationInfo.OutCursorGroups = pi.OutCursorGroups
-			} else {
-				paginationInfo.InCursorGroups = pi.InCursorGroups
-			}
-		}
-		var entityMap map[string]*pb.EntityInfoCollection
-		if direction == util.DirectionOut {
-			entityMap = res.OutEntities
-		} else {
-			entityMap = res.InEntities
-		}
-		for property := range data {
-			entityMap[property] = &pb.EntityInfoCollection{
-				Entities: data[property][entity],
-			}
+	propsResp, err := properties.Properties(
+		ctx, &pb.PropertiesRequest{
+			Entity:    entity,
+			Direction: direction,
+		},
+		store,
+	)
+	if err != nil {
+		return nil, err
+	}
+	properties := propsResp.GetProperties()
+	data, pi, err := propertyvalues.Fetch(
+		ctx,
+		store,
+		properties,
+		[]string{entity},
+		0,
+		token,
+		direction,
+	)
+	if err != nil {
+		return nil, err
+	}
+	for property := range data {
+		res.Data[property] = &pb.EntityInfoCollection{
+			Entities: data[property][entity],
 		}
 	}
-	nextToken := ""
-	if paginationInfo.OutCursorGroups != nil || paginationInfo.InCursorGroups != nil {
+	if pi != nil {
 		var err error
-		nextToken, err = util.EncodeProto(paginationInfo)
+		nextToken, err := util.EncodeProto(pi)
 		if err != nil {
 			return nil, err
 		}
+		res.NextToken = nextToken
 	}
-	res.NextToken = nextToken
 	return res, nil
 }

@@ -26,12 +26,12 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestTriples(t *testing.T) {
+func TestTriplesOut(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "triples")
+	goldenPath := path.Join(path.Dir(filename), "triples_out")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -50,19 +50,20 @@ func TestTriples(t *testing.T) {
 				"",
 			},
 			{
-				"BiologicalSpecimen2.json",
-				"BiologicalSpecimen",
-				"H4sIAAAAAAAA/xIy4BJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1TxNiEGLiYBRi4mASYuFgFmASYuJgAQAAAP//AQAA//8YMgtZMgAAAA==",
-			},
-			{
 				"Count_Person.json",
 				"Count_Person",
+				"",
+			},
+			{
+				"dummy.json",
+				"dummy",
 				"",
 			},
 		} {
 			req := &pb.TriplesRequest{
 				Entity:    c.entity,
 				NextToken: c.token,
+				Direction: "out",
 			}
 			resp, err := mixer.Triples(ctx, req)
 			if err != nil {
@@ -88,7 +89,7 @@ func TestTriples(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"Triples", &test.TestOption{}, testSuite); err != nil {
+		"TriplesOut", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

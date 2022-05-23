@@ -1,0 +1,56 @@
+{
+  "data": {
+    "description": {
+      "entities": [
+        {
+          "provenanceId": "dc/5l5zxr1",
+          "value": "Biological Specimens facilitate the sharing of information about biological diversity by providing identifiers, labels, and definitions. The class definition is loosely based on the Darwin Core schema."
+        }
+      ]
+    },
+    "name": {
+      "entities": [
+        {
+          "provenanceId": "dc/5l5zxr1",
+          "value": "BiologicalSpecimen"
+        }
+      ]
+    },
+    "provenance": {
+      "entities": [
+        {
+          "name": "https://datacommons.org",
+          "types": [
+            "Provenance"
+          ],
+          "dcid": "dc/5l5zxr1",
+          "provenanceId": "dc/5l5zxr1"
+        }
+      ]
+    },
+    "subClassOf": {
+      "entities": [
+        {
+          "name": "Thing",
+          "types": [
+            "Class"
+          ],
+          "dcid": "Thing",
+          "provenanceId": "dc/5l5zxr1"
+        }
+      ]
+    },
+    "typeOf": {
+      "entities": [
+        {
+          "name": "Class",
+          "types": [
+            "Class"
+          ],
+          "dcid": "Class",
+          "provenanceId": "dc/5l5zxr1"
+        }
+      ]
+    }
+  }
+}
