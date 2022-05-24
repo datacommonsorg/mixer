@@ -136,22 +136,22 @@ func BulkLinkedPropertyValues(
 	}
 	result := &pb.BulkPropertyValuesResponse{}
 	for e, children := range resp {
-		tmp := &pb.BulkPropertyValuesResponse_EntityPropertyValues{
+		oneEntityResult := &pb.BulkPropertyValuesResponse_EntityPropertyValues{
 			Entity: e,
 		}
 		for _, dcid := range children {
 			var name string
-			if tmp, ok := data["name"][dcid]; ok {
-				name = tmp[0].Value
+			if nameValues, ok := data["name"][dcid]; ok {
+				name = nameValues[0].Value
 			}
-			tmp.Values = append(tmp.Values,
+			oneEntityResult.Values = append(oneEntityResult.Values,
 				&pb.EntityInfo{
 					Dcid: dcid,
 					Name: name,
 				},
 			)
 		}
-		result.Data = append(result.Data, tmp)
+		result.Data = append(result.Data, oneEntityResult)
 	}
 	return result, nil
 }
