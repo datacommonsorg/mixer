@@ -1134,7 +1134,7 @@
             "2099-12": 2.738678
           },
           "metadata": {
-            "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
+            "importName": "NASA_NEXDCP30_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
             "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
@@ -4894,7 +4894,7 @@
             "2099-12": 1.580841
           },
           "metadata": {
-            "importName": "NASA_NEXDCP30_StatVarSeriesAggr",
+            "importName": "NASA_NEXDCP30_AggrDiffStats",
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
             "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",

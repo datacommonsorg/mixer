@@ -401,6 +401,10 @@
       "dcid": "Count_Person_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: Asian or Pacific Islander",
+      "dcid": "Count_Person_AsianOrPacificIslander"
+    },
+    {
       "name": "Population: Associates Degree",
       "dcid": "Count_Person_EducationalAttainmentAssociatesDegree"
     },
@@ -673,6 +677,54 @@
       "dcid": "Count_Person_HispanicOrLatino"
     },
     {
+      "name": "Population: Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Asian Alone",
+      "dcid": "Count_Person_HispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Asian or Pacific Islander",
+      "dcid": "Count_Person_HispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Black or African American Alone",
+      "dcid": "Count_Person_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 Two or More Races",
+      "dcid": "Count_Person_HispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 White Alone",
+      "dcid": "Count_Person_HispanicOrLatino_WhiteAlone"
+    },
+    {
+      "name": "Population: Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: Hmong",
       "dcid": "Count_Person_5OrMoreYears_HmongSpokenAtHome"
     },
@@ -837,6 +889,10 @@
       "dcid": "Count_Person_EducationalAttainmentNoSchoolingCompleted"
     },
     {
+      "name": "Population: Non White",
+      "dcid": "Count_Person_NonWhite"
+    },
+    {
       "name": "Population: Non Worker",
       "dcid": "Count_Person_NonWorker"
     },
@@ -855,6 +911,50 @@
     {
       "name": "Population: Not Hispanic or Latino",
       "dcid": "Count_Person_NotHispanicOrLatino"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Asian Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Asian or Pacific Islander",
+      "dcid": "Count_Person_NotHispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Black or African American Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 Two or More Races",
+      "dcid": "Count_Person_NotHispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: Nursery School",
@@ -1101,11 +1201,11 @@
       "dcid": "Count_Person_USCitizenByNaturalization"
     },
     {
-      "name": "Population: USResident",
+      "name": "Population: US Resident",
       "dcid": "Count_Person_USResident"
     },
     {
-      "name": "Population: USResident \u0026 in USArmed Forces Overseas",
+      "name": "Population: US Resident or US Armed Forces Overseas",
       "dcid": "Count_Person_USResidentOrInUSArmedForcesOverseas"
     },
     {
@@ -1185,6 +1285,22 @@
       "dcid": "Count_Person_WithHealthInsurance"
     },
     {
+      "name": "Population: With Medicaid or Means Tested Public Coverage",
+      "dcid": "Count_Person_WithMedicaidOrMeansTestedPublicCoverage"
+    },
+    {
+      "name": "Population: With Medicaid or Means Tested Public Coverage Only",
+      "dcid": "Count_Person_WithMedicaidOrMeansTestedPublicCoverageOnly"
+    },
+    {
+      "name": "Population: With Medicare Coverage",
+      "dcid": "Count_Person_WithMedicareCoverage"
+    },
+    {
+      "name": "Population: With Medicare Coverage Only",
+      "dcid": "Count_Person_WithMedicareCoverageOnly"
+    },
+    {
       "name": "Population: With Private Health Insurance",
       "dcid": "Count_Person_WithPrivateHealthInsurance"
     },
@@ -1193,12 +1309,28 @@
       "dcid": "Count_Person_WithPrivateHealthInsuranceOnly"
     },
     {
+      "name": "Population: With Public Health Insurance",
+      "dcid": "Count_Person_WithPublicHealthInsurance"
+    },
+    {
+      "name": "Population: With Public Health Insurance Only",
+      "dcid": "Count_Person_WithPublicHealthInsuranceOnly"
+    },
+    {
       "name": "Population: With Tricare Military Health Coverage",
       "dcid": "Count_Person_WithTricareMilitaryHealthCoverage"
     },
     {
       "name": "Population: With Tricare Military Health Coverage Only",
       "dcid": "Count_Person_WithTricareMilitaryHealthCoverageOnly"
+    },
+    {
+      "name": "Population: With VAHealth Care",
+      "dcid": "Count_Person_WithVAHealthCare"
+    },
+    {
+      "name": "Population: With VAHealth Care Only",
+      "dcid": "Count_Person_WithVAHealthCareOnly"
     },
     {
       "name": "Population: Worker",
@@ -2301,8 +2433,16 @@
       "dcid": "Count_Person_18To24Years_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: 18 - 24 Years, With Health Insurance",
+      "dcid": "Count_Person_18To24Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 18 - 24 Years, With Private Health Insurance",
       "dcid": "Count_Person_18To24Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 18 - 24 Years, With Public Health Insurance",
+      "dcid": "Count_Person_18To24Years_WithPublicHealthInsurance"
     },
     {
       "name": "Population: 18 - 34 Years, Ambulatory Difficulty",
@@ -2493,8 +2633,20 @@
       "dcid": "Count_Person_18To64Years_WithHealthInsurance"
     },
     {
+      "name": "Population: 18 - 64 Years, With Medicaid or Means Tested Public Coverage",
+      "dcid": "Count_Person_18To64Years_WithMedicaidOrMeansTestedPublicCoverage"
+    },
+    {
+      "name": "Population: 18 - 64 Years, With Medicare Coverage",
+      "dcid": "Count_Person_18To64Years_WithMedicareCoverage"
+    },
+    {
       "name": "Population: 18 - 64 Years, With Tricare Military Health Coverage",
       "dcid": "Count_Person_18To64Years_WithTricareMilitaryHealthCoverage"
+    },
+    {
+      "name": "Population: 18 - 64 Years, With VAHealth Care",
+      "dcid": "Count_Person_18To64Years_WithVAHealthCare"
     },
     {
       "name": "Population: 18 Years or Less, 1.4 - 4 Ratio To Poverty Line",
@@ -2602,11 +2754,27 @@
     },
     {
       "name": "Population: 18 Years or Less, With Health Insurance",
+      "dcid": "Count_Person_18OrLessYears_WithHealthInsurance"
+    },
+    {
+      "name": "Population: 18 Years or Less, With Health Insurance",
       "dcid": "Count_Person_Upto18Years_WithHealthInsurance"
+    },
+    {
+      "name": "Population: 18 Years or Less, With Medicaid or Means Tested Public Coverage",
+      "dcid": "Count_Person_18OrLessYears_WithMedicaidOrMeansTestedPublicCoverage"
+    },
+    {
+      "name": "Population: 18 Years or Less, With Medicare Coverage",
+      "dcid": "Count_Person_18OrLessYears_WithMedicareCoverage"
     },
     {
       "name": "Population: 18 Years or Less, With Tricare Military Health Coverage",
       "dcid": "Count_Person_18OrLessYears_WithTricareMilitaryHealthCoverage"
+    },
+    {
+      "name": "Population: 18 Years or Less, With VAHealth Care",
+      "dcid": "Count_Person_18OrLessYears_WithVAHealthCare"
     },
     {
       "name": "Population: 18 Years or More, Civilian",
@@ -2621,16 +2789,32 @@
       "dcid": "Count_Person_18OrMoreYears_Male"
     },
     {
+      "name": "Population: 18 Years or More, No Health Insurance",
+      "dcid": "Count_Person_18OrMoreYears_NoHealthInsurance"
+    },
+    {
       "name": "Population: 18 Years or More, Poverty Status Determined",
       "dcid": "Count_Person_18OrMoreYears_PovertyStatusDetermined"
+    },
+    {
+      "name": "Population: 18 Years or More, With Health Insurance",
+      "dcid": "Count_Person_18OrMoreYears_WithHealthInsurance"
     },
     {
       "name": "Population: 19 - 25 Years, No Health Insurance",
       "dcid": "Count_Person_19To25Years_NoHealthInsurance"
     },
     {
+      "name": "Population: 19 - 25 Years, With Health Insurance",
+      "dcid": "Count_Person_19To25Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 19 - 25 Years, With Private Health Insurance",
       "dcid": "Count_Person_19To25Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 19 - 25 Years, With Public Health Insurance",
+      "dcid": "Count_Person_19To25Years_WithPublicHealthInsurance"
     },
     {
       "name": "Population: 19 - 64 Years, No Health Insurance",
@@ -2645,8 +2829,24 @@
       "dcid": "Count_Person_19To64Years_WithEmployerBasedHealthInsurance"
     },
     {
+      "name": "Population: 19 - 64 Years, With Health Insurance",
+      "dcid": "Count_Person_19To64Years_WithHealthInsurance"
+    },
+    {
+      "name": "Population: 19 - 64 Years, With Medicaid or Means Tested Public Coverage",
+      "dcid": "Count_Person_19To64Years_WithMedicaidOrMeansTestedPublicCoverage"
+    },
+    {
+      "name": "Population: 19 - 64 Years, With Medicare Coverage",
+      "dcid": "Count_Person_19To64Years_WithMedicareCoverage"
+    },
+    {
       "name": "Population: 19 - 64 Years, With Tricare Military Health Coverage",
       "dcid": "Count_Person_19To64Years_WithTricareMilitaryHealthCoverage"
+    },
+    {
+      "name": "Population: 19 - 64 Years, With VAHealth Care",
+      "dcid": "Count_Person_19To64Years_WithVAHealthCare"
     },
     {
       "name": "Population: 19 Years or Less, No Health Insurance",
@@ -2661,8 +2861,24 @@
       "dcid": "Count_Person_19OrLessYears_WithEmployerBasedHealthInsurance"
     },
     {
+      "name": "Population: 19 Years or Less, With Health Insurance",
+      "dcid": "Count_Person_19OrLessYears_WithHealthInsurance"
+    },
+    {
+      "name": "Population: 19 Years or Less, With Medicaid or Means Tested Public Coverage",
+      "dcid": "Count_Person_19OrLessYears_WithMedicaidOrMeansTestedPublicCoverage"
+    },
+    {
+      "name": "Population: 19 Years or Less, With Medicare Coverage",
+      "dcid": "Count_Person_19OrLessYears_WithMedicareCoverage"
+    },
+    {
       "name": "Population: 19 Years or Less, With Tricare Military Health Coverage",
       "dcid": "Count_Person_19OrLessYears_WithTricareMilitaryHealthCoverage"
+    },
+    {
+      "name": "Population: 19 Years or Less, With VAHealth Care",
+      "dcid": "Count_Person_19OrLessYears_WithVAHealthCare"
     },
     {
       "name": "Population: 20 - 21 Years, Female",
@@ -2829,8 +3045,16 @@
       "dcid": "Count_Person_25To34Years_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: 25 - 34 Years, With Health Insurance",
+      "dcid": "Count_Person_25To34Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 25 - 34 Years, With Private Health Insurance",
       "dcid": "Count_Person_25To34Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 25 - 34 Years, With Public Health Insurance",
+      "dcid": "Count_Person_25To34Years_WithPublicHealthInsurance"
     },
     {
       "name": "Population: 25 - 39 Years, Arts Humanities And Other Major",
@@ -2969,12 +3193,32 @@
       "dcid": "Count_Person_25OrMoreYears_WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Population: 25 Years or More, With Health Insurance",
+      "dcid": "Count_Person_25OrMoreYears_WithHealthInsurance"
+    },
+    {
       "name": "Population: 26 - 34 Years, No Health Insurance",
       "dcid": "Count_Person_26To34Years_NoHealthInsurance"
     },
     {
+      "name": "Population: 26 - 34 Years, With Health Insurance",
+      "dcid": "Count_Person_26To34Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 26 - 34 Years, With Private Health Insurance",
       "dcid": "Count_Person_26To34Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 26 - 34 Years, With Public Health Insurance",
+      "dcid": "Count_Person_26To34Years_WithPublicHealthInsurance"
+    },
+    {
+      "name": "Population: 26 Years or More, No Health Insurance",
+      "dcid": "Count_Person_26OrMoreYears_NoHealthInsurance"
+    },
+    {
+      "name": "Population: 26 Years or More, With Health Insurance",
+      "dcid": "Count_Person_26OrMoreYears_WithHealthInsurance"
     },
     {
       "name": "Population: 3 Years or More, American Indian or Alaska Native Alone",
@@ -3117,8 +3361,16 @@
       "dcid": "Count_Person_35To44Years_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: 35 - 44 Years, With Health Insurance",
+      "dcid": "Count_Person_35To44Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 35 - 44 Years, With Private Health Insurance",
       "dcid": "Count_Person_35To44Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 35 - 44 Years, With Public Health Insurance",
+      "dcid": "Count_Person_35To44Years_WithPublicHealthInsurance"
     },
     {
       "name": "Population: 35 - 50 Years, Female",
@@ -3325,8 +3577,16 @@
       "dcid": "Count_Person_45To54Years_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: 45 - 54 Years, With Health Insurance",
+      "dcid": "Count_Person_45To54Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 45 - 54 Years, With Private Health Insurance",
       "dcid": "Count_Person_45To54Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 45 - 54 Years, With Public Health Insurance",
+      "dcid": "Count_Person_45To54Years_WithPublicHealthInsurance"
     },
     {
       "name": "Population: 45 - 64 Years, Female",
@@ -3689,8 +3949,16 @@
       "dcid": "Count_Person_55To64Years_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: 55 - 64 Years, With Health Insurance",
+      "dcid": "Count_Person_55To64Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 55 - 64 Years, With Private Health Insurance",
       "dcid": "Count_Person_55To64Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 55 - 64 Years, With Public Health Insurance",
+      "dcid": "Count_Person_55To64Years_WithPublicHealthInsurance"
     },
     {
       "name": "Population: 5th And 6th Grade, Female",
@@ -3713,292 +3981,24 @@
       "dcid": "Count_Person_6To17Years_NoHealthInsurance"
     },
     {
+      "name": "Population: 6 - 17 Years, With Health Insurance",
+      "dcid": "Count_Person_6To17Years_WithHealthInsurance"
+    },
+    {
       "name": "Population: 6 - 17 Years, With Private Health Insurance",
       "dcid": "Count_Person_6To17Years_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population: 6 - 17 Years, With Public Health Insurance",
+      "dcid": "Count_Person_6To17Years_WithPublicHealthInsurance"
     },
     {
       "name": "Population: 6 - 18 Years, No Health Insurance",
       "dcid": "Count_Person_6To18Years_NoHealthInsurance"
     },
     {
-      "name": "Population: 6 - 18 Years, With Private Health Insurance",
-      "dcid": "Count_Person_6To18Years_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 6 Years or Less, Above Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_Upto6Years_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 6 Years or Less, Below Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_Upto6Years_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 6 Years or Less, Female",
-      "dcid": "Count_Person_YearsUpto6_Female"
-    },
-    {
-      "name": "Population: 6 Years or Less, Houseless",
-      "dcid": "Count_Person_Houseless_YearsUpto6"
-    },
-    {
-      "name": "Population: 6 Years or Less, Male",
-      "dcid": "Count_Person_YearsUpto6_Male"
-    },
-    {
-      "name": "Population: 6 Years or Less, No Health Insurance",
-      "dcid": "Count_Person_6OrLessYears_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 6 Years or Less, Rural",
-      "dcid": "Count_Person_YearsUpto6_Rural"
-    },
-    {
-      "name": "Population: 6 Years or Less, Scheduled Caste",
-      "dcid": "Count_Person_ScheduledCaste_YearsUpto6"
-    },
-    {
-      "name": "Population: 6 Years or Less, Scheduled Tribe",
-      "dcid": "Count_Person_ScheduledTribe_YearsUpto6"
-    },
-    {
-      "name": "Population: 6 Years or Less, Urban",
-      "dcid": "Count_Person_YearsUpto6_Urban"
-    },
-    {
-      "name": "Population: 6 Years or Less, With Private Health Insurance",
-      "dcid": "Count_Person_6OrLessYears_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 60 - 61 Years, Born in Other State in The United States",
-      "dcid": "Count_Person_60To61Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 60 - 61 Years, Born in State of Residence",
-      "dcid": "Count_Person_60To61Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 60 - 61 Years, Female",
-      "dcid": "Count_Person_60To61Years_Female"
-    },
-    {
-      "name": "Population: 60 - 61 Years, Foreign Born",
-      "dcid": "Count_Person_60To61Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 60 - 61 Years, Male",
-      "dcid": "Count_Person_60To61Years_Male"
-    },
-    {
-      "name": "Population: 60 - 61 Years, Native Born Outside The United States",
-      "dcid": "Count_Person_60To61Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 60 - 64 Years, Female",
-      "dcid": "Count_Person_60To64Years_Female"
-    },
-    {
-      "name": "Population: 60 - 64 Years, Male",
-      "dcid": "Count_Person_60To64Years_Male"
-    },
-    {
-      "name": "Population: 60 - 74 Years, Above Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_60To74Years_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 60 - 74 Years, Below Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_60To74Years_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 62 - 64 Years, Born in Other State in The United States",
-      "dcid": "Count_Person_62To64Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 62 - 64 Years, Born in State of Residence",
-      "dcid": "Count_Person_62To64Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 62 - 64 Years, Female",
-      "dcid": "Count_Person_62To64Years_Female"
-    },
-    {
-      "name": "Population: 62 - 64 Years, Foreign Born",
-      "dcid": "Count_Person_62To64Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 62 - 64 Years, Male",
-      "dcid": "Count_Person_62To64Years_Male"
-    },
-    {
-      "name": "Population: 62 - 64 Years, Native Born Outside The United States",
-      "dcid": "Count_Person_62To64Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 64 Years or Less, 1.4 - 4 Ratio To Poverty Line",
-      "dcid": "Count_Person_Upto64Years_RatioToPovertyLine1.38To4"
-    },
-    {
-      "name": "Population: 64 Years or Less, 1.4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto64Years_RatioToPovertyLineUpto1.38"
-    },
-    {
-      "name": "Population: 64 Years or Less, 2 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto64Years_RatioToPovertyLineUpto2"
-    },
-    {
-      "name": "Population: 64 Years or Less, 2.5 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto64Years_RatioToPovertyLineUpto2.5"
-    },
-    {
-      "name": "Population: 64 Years or Less, 4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto64Years_RatioToPovertyLineUpto4"
-    },
-    {
-      "name": "Population: 64 Years or Less, Black or African American Alone",
-      "dcid": "Count_Person_Upto64Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 64 Years or Less, Female",
-      "dcid": "Count_Person_Upto64Years_Female"
-    },
-    {
-      "name": "Population: 64 Years or Less, Hispanic or Latino",
-      "dcid": "Count_Person_Upto64Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 64 Years or Less, Male",
-      "dcid": "Count_Person_Upto64Years_Male"
-    },
-    {
-      "name": "Population: 64 Years or Less, No Health Insurance",
-      "dcid": "Count_Person_Upto64Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 64 Years or Less, White Alone",
-      "dcid": "Count_Person_Upto64Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 64 Years or Less, With Health Insurance",
-      "dcid": "Count_Person_Upto64Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 65 - 66 Years, Female",
-      "dcid": "Count_Person_65To66Years_Female"
-    },
-    {
-      "name": "Population: 65 - 66 Years, Male",
-      "dcid": "Count_Person_65To66Years_Male"
-    },
-    {
-      "name": "Population: 65 - 69 Years, Female",
-      "dcid": "Count_Person_65To69Years_Female"
-    },
-    {
-      "name": "Population: 65 - 69 Years, Male",
-      "dcid": "Count_Person_65To69Years_Male"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Adult Correctional Facilities",
-      "dcid": "Count_Person_65To74Years_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Ambulatory Difficulty",
-      "dcid": "Count_Person_65To74Years_AmbulatoryDifficulty"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Born in Other State in The United States",
-      "dcid": "Count_Person_65To74Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Born in State of Residence",
-      "dcid": "Count_Person_65To74Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Cognitive Difficulty",
-      "dcid": "Count_Person_65To74Years_CognitiveDifficulty"
-    },
-    {
-      "name": "Population: 65 - 74 Years, College or University Student Housing",
-      "dcid": "Count_Person_65To74Years_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Different House Abroad",
-      "dcid": "Count_Person_65To74Years_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Different House in Different County Different State",
-      "dcid": "Count_Person_65To74Years_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Different House in Different County Same State",
-      "dcid": "Count_Person_65To74Years_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Different House in Same County",
-      "dcid": "Count_Person_65To74Years_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Foreign Born",
-      "dcid": "Count_Person_65To74Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Group Quarters",
-      "dcid": "Count_Person_65To74Years_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Hearing Difficulty",
-      "dcid": "Count_Person_65To74Years_HearingDifficulty"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Independent Living Difficulty",
-      "dcid": "Count_Person_65To74Years_IndependentLivingDifficulty"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Institutionalized Group Quarters",
-      "dcid": "Count_Person_65To74Years_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Juvenile Facilities",
-      "dcid": "Count_Person_65To74Years_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Military Quarters or Military Ships",
-      "dcid": "Count_Person_65To74Years_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Native Born Outside The United States",
-      "dcid": "Count_Person_65To74Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 65 - 74 Years, No Health Insurance",
-      "dcid": "Count_Person_65To74Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_65To74Years_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Nursing Facilities",
-      "dcid": "Count_Person_65To74Years_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Self Care Difficulty",
-      "dcid": "Count_Person_65To74Years_SelfCareDifficulty"
-    },
-    {
-      "name": "Population: 65 - 74 Years, Vision Difficulty",
-      "dcid": "Count_Person_65To74Years_VisionDifficulty"
-    },
-    {
-      "name": "Population: 65 - 74 Years, With Disability",
-      "dcid": "Count_Person_65To74Years_WithDisability"
-    },
-    {
-      "name": "Population: 65 - 74 Years, With Private Health Insurance",
-      "dcid": "Count_Person_65To74Years_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 65 Years or More, Adult Correctional Facilities",
-      "dcid": "Count_Person_65OrMoreYears_ResidesInAdultCorrectionalFacilities"
+      "name": "Population: 6 - 18 Years, With Health Insurance",
+      "dcid": "Count_Person_6To18Years_WithHealthInsurance"
     }
   ],
   "matches": [

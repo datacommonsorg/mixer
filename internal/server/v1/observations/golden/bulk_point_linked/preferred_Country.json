@@ -114,12 +114,6 @@
           ]
         },
         {
-          "entity": "country/ATA"
-        },
-        {
-          "entity": "country/ATB"
-        },
-        {
           "entity": "country/ATF",
           "points_by_facet": [
             {
@@ -140,15 +134,12 @@
           ]
         },
         {
-          "entity": "country/ATN"
-        },
-        {
           "entity": "country/AUS",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 25364300,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 25687041,
+              "facet": 3981252704
             }
           ]
         },
@@ -326,9 +317,9 @@
           "entity": "country/BRA",
           "points_by_facet": [
             {
-              "date": "2018",
-              "value": 208495000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 212559409,
+              "facet": 3981252704
             }
           ]
         },
@@ -363,9 +354,6 @@
           ]
         },
         {
-          "entity": "country/BVT"
-        },
-        {
           "entity": "country/BWA",
           "points_by_facet": [
             {
@@ -389,9 +377,9 @@
           "entity": "country/CAN",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 37589262,
-              "facet": 4194503167
+              "date": "2020",
+              "value": 38005238,
+              "facet": 3981252704
             }
           ]
         },
@@ -419,9 +407,9 @@
           "entity": "country/CHL",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 19107200,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 19116209,
+              "facet": 3981252704
             }
           ]
         },
@@ -429,9 +417,9 @@
           "entity": "country/CHN",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 1396530000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 1402112000,
+              "facet": 3981252704
             }
           ]
         },
@@ -489,9 +477,9 @@
           "entity": "country/COL",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 50374500,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 50882884,
+              "facet": 3981252704
             }
           ]
         },
@@ -519,14 +507,11 @@
           "entity": "country/CRI",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 5058000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 5094114,
+              "facet": 3981252704
             }
           ]
-        },
-        {
-          "entity": "country/CTE"
         },
         {
           "entity": "country/CUB",
@@ -972,9 +957,9 @@
           "entity": "country/HKG",
           "points_by_facet": [
             {
-              "date": "2017",
-              "value": 7391700,
-              "facet": 1794369807
+              "date": "2020",
+              "value": 7481800,
+              "facet": 3981252704
             }
           ]
         },
@@ -1031,9 +1016,9 @@
           "entity": "country/IDN",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 267871000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 273523621,
+              "facet": 3981252704
             }
           ]
         },
@@ -1051,14 +1036,11 @@
           "entity": "country/IND",
           "points_by_facet": [
             {
-              "date": "2015",
-              "value": 1254020000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 1380004385,
+              "facet": 3981252704
             }
           ]
-        },
-        {
-          "entity": "country/IOT"
         },
         {
           "entity": "country/IRL",
@@ -1104,9 +1086,9 @@
           "entity": "country/ISR",
           "points_by_facet": [
             {
-              "date": "2018",
-              "value": 8797900,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 9216900,
+              "facet": 3981252704
             }
           ]
         },
@@ -1154,9 +1136,9 @@
           "entity": "country/JPN",
           "points_by_facet": [
             {
-              "date": "2018",
-              "value": 126443000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 125836021,
+              "facet": 3981252704
             }
           ]
         },
@@ -1224,9 +1206,9 @@
           "entity": "country/KOR",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 51811200,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 51780579,
+              "facet": 3981252704
             }
           ]
         },
@@ -1354,9 +1336,9 @@
           "entity": "country/MAC",
           "points_by_facet": [
             {
-              "date": "2016",
-              "value": 650834,
-              "facet": 1794369807
+              "date": "2020",
+              "value": 649342,
+              "facet": 3981252704
             }
           ]
         },
@@ -1424,9 +1406,9 @@
           "entity": "country/MEX",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 125929000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 128932753,
+              "facet": 3981252704
             }
           ]
         },
@@ -1704,9 +1686,9 @@
           "entity": "country/NZL",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 4917000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 5084300,
+              "facet": 3981252704
             }
           ]
         },
@@ -1754,9 +1736,9 @@
           "entity": "country/PER",
           "points_by_facet": [
             {
-              "date": "2017",
-              "value": 31826000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 32971846,
+              "facet": 3981252704
             }
           ]
         },
@@ -1969,9 +1951,6 @@
               "facet": 3114843463
             }
           ]
-        },
-        {
-          "entity": "country/SJM"
         },
         {
           "entity": "country/SLB",
@@ -2247,9 +2226,9 @@
           "entity": "country/TUN",
           "points_by_facet": [
             {
-              "date": "2018",
-              "value": 11551400,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 11818618,
+              "facet": 3981252704
             }
           ]
         },
@@ -2477,9 +2456,9 @@
           "entity": "country/ZAF",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 58775000,
-              "facet": 1151455814
+              "date": "2020",
+              "value": 59308690,
+              "facet": 3981252704
             }
           ]
         },
@@ -2571,6 +2550,12 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
     },
     "225305039": {
       "import_name": "StatisticsPoland",

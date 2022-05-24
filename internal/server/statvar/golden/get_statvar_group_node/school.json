@@ -196,7 +196,7 @@
       "id": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher",
       "specializedEntity": "Bachelors Degree or Higher",
       "displayName": "Person With Educational Attainment = Bachelors Degree or Higher",
-      "descendentStatVarCount": 95
+      "descendentStatVarCount": 100
     },
     {
       "id": "dc/g/Person_EducationalAttainment-DoctorateDegree",
@@ -214,13 +214,13 @@
       "id": "dc/g/Person_EducationalAttainment-HighSchoolGraduateGedOrAlternative",
       "specializedEntity": "High School Graduate Ged or Alternative",
       "displayName": "Person With Educational Attainment = High School Graduate Ged or Alternative",
-      "descendentStatVarCount": 30
+      "descendentStatVarCount": 32
     },
     {
       "id": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency",
       "specializedEntity": "High School Graduate Includes Equivalency",
       "displayName": "Person With Educational Attainment = High School Graduate Includes Equivalency",
-      "descendentStatVarCount": 60
+      "descendentStatVarCount": 65
     },
     {
       "id": "dc/g/Person_EducationalAttainment-HighSchoolGraduateOrHigher",
@@ -244,7 +244,7 @@
       "id": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate",
       "specializedEntity": "Less Than High School Graduate",
       "displayName": "Person With Educational Attainment = Less Than High School Graduate",
-      "descendentStatVarCount": 30
+      "descendentStatVarCount": 35
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducation\u0026PrimaryEducation\u0026LowerSecondaryEducation",
@@ -303,7 +303,7 @@
       "id": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree",
       "specializedEntity": "Some College or Associates Degree",
       "displayName": "Person With Educational Attainment = Some College or Associates Degree",
-      "descendentStatVarCount": 48
+      "descendentStatVarCount": 53
     },
     {
       "id": "dc/g/Person_EducationalAttainment-TertiaryEducation",
@@ -322,7 +322,7 @@
       "displayName": "Person With Educational Attainment = Upper Secondary Education or Higher"
     }
   ],
-  "descendentStatVarCount": 458,
+  "descendentStatVarCount": 480,
   "parentStatVarGroups": [
     "dc/g/Education"
   ]

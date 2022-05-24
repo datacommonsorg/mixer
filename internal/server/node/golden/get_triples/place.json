@@ -735,9 +735,8 @@
     },
     {
       "subjectId": "ipedsId/242626",
-      "subjectName": "Inter American University of Puerto Rico-Aguadilla",
       "subjectTypes": [
-        "CollegeOrUniversity"
+        "Place"
       ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
@@ -749,9 +748,8 @@
     },
     {
       "subjectId": "ipedsId/376385",
-      "subjectName": "Universal Technology College of Puerto Rico",
       "subjectTypes": [
-        "CollegeOrUniversity"
+        "Place"
       ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
@@ -763,9 +761,8 @@
     },
     {
       "subjectId": "ipedsId/443951",
-      "subjectName": "Charlie's Guard-Detective Bureau and Academy Inc",
       "subjectTypes": [
-        "CollegeOrUniversity"
+        "Place"
       ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
@@ -777,9 +774,8 @@
     },
     {
       "subjectId": "ipedsId/445984",
-      "subjectName": "Xtreme Career Institute",
       "subjectTypes": [
-        "CollegeOrUniversity"
+        "Place"
       ],
       "predicate": "postalCode",
       "objectId": "zip/00603",

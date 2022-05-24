@@ -45,11 +45,11 @@
           "topPlaces": [
             {
               "dcid": "wikidataId/Q943099",
-              "name": "Thane district"
+              "name": "Thane"
             },
             {
               "dcid": "wikidataId/Q338425",
-              "name": "North 24 Parganas district"
+              "name": "24 Paraganas North"
             },
             {
               "dcid": "wikidataId/Q806463",
@@ -427,11 +427,11 @@
                   "topPlaces": [
                     {
                       "dcid": "wikidataId/Q943099",
-                      "name": "Thane district"
+                      "name": "Thane"
                     },
                     {
                       "dcid": "wikidataId/Q338425",
-                      "name": "North 24 Parganas district"
+                      "name": "24 Paraganas North"
                     },
                     {
                       "dcid": "wikidataId/Q806463",

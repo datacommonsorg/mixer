@@ -3,52 +3,52 @@
     {
       "statVar": "Count_Person_Female",
       "statVarName": "Population: Female",
-      "score": 4.44218
+      "score": 4.52771
     },
     {
       "statVar": "Count_Person_Rural_Female",
       "statVarName": "Population: Female, Rural",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_Urban_Female",
       "statVarName": "Population: Female, Urban",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_Female_Widowed",
       "statVarName": "Population: Female, Widowed",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_Female_Divorced",
       "statVarName": "Population: Female, Divorced",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_Literate_Female",
       "statVarName": "Population: Female, Literate",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_Female_Separated",
       "statVarName": "Population: Female, Separated",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_Houseless_Female",
       "statVarName": "Population: Female, Houseless",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_Illiterate_Female",
       "statVarName": "Population: Female, Illiterate",
-      "score": 3.84704
+      "score": 3.92112
     },
     {
       "statVar": "Count_Person_18OrMoreYears_Civilian_Female",
       "statVarName": "Population: Civilian, Female",
-      "score": 3.84704
+      "score": 3.92112
     }
   ]
 }

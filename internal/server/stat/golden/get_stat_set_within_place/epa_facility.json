@@ -776,7 +776,6 @@
           "value": 1468066.088,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1002367": {},
         "epaGhgrpFacilityId/1002384": {
           "date": "2019",
           "meta_hash": 3902333627
@@ -1295,7 +1294,6 @@
           "value": 39919.8,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1004445": {},
         "epaGhgrpFacilityId/1004465": {
           "date": "2019",
           "value": 38351,
@@ -1534,7 +1532,6 @@
           "value": 1307009.35,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1005237": {},
         "epaGhgrpFacilityId/1005256": {
           "date": "2019",
           "value": 284127.1,
@@ -2052,7 +2049,6 @@
           "date": "2010",
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1007286": {},
         "epaGhgrpFacilityId/1007312": {
           "date": "2019",
           "value": 389942.756,
@@ -2463,7 +2459,6 @@
           "value": 62156.716,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1010028": {},
         "epaGhgrpFacilityId/1010076": {
           "date": "2019",
           "value": 2845.44,
@@ -2488,8 +2483,6 @@
           "value": 2995.92,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1010247": {},
-        "epaGhgrpFacilityId/1010290": {},
         "epaGhgrpFacilityId/1010317": {
           "date": "2014",
           "value": 13351.230788,
@@ -2510,18 +2503,11 @@
           "value": 1980.945,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1010409": {},
         "epaGhgrpFacilityId/1010417": {
           "date": "2019",
           "value": 232640.788,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1010431": {},
-        "epaGhgrpFacilityId/1010443": {},
-        "epaGhgrpFacilityId/1010516": {},
-        "epaGhgrpFacilityId/1010517": {},
-        "epaGhgrpFacilityId/1010523": {},
-        "epaGhgrpFacilityId/1010533": {},
         "epaGhgrpFacilityId/1010540": {
           "date": "2017",
           "value": 7110.424,
@@ -2542,7 +2528,6 @@
           "value": 82353.34,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1010651": {},
         "epaGhgrpFacilityId/1010696": {
           "date": "2018",
           "value": 16768.736,
@@ -2612,7 +2597,6 @@
           "value": 6991.224,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1011195": {},
         "epaGhgrpFacilityId/1011213": {
           "date": "2019",
           "value": 35082.368,
@@ -2628,7 +2612,6 @@
           "value": 43557.988,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1011327": {},
         "epaGhgrpFacilityId/1011345": {
           "date": "2019",
           "value": 15328.112,
@@ -2709,7 +2692,6 @@
           "value": 39962.852,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1011769": {},
         "epaGhgrpFacilityId/1011798": {
           "date": "2016",
           "value": 13056.391482,
@@ -2730,8 +2712,6 @@
           "value": 222.1902,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1012025": {},
-        "epaGhgrpFacilityId/1012063": {},
         "epaGhgrpFacilityId/1012089": {
           "date": "2019",
           "value": 75887.064,
@@ -2752,7 +2732,6 @@
           "value": 21899.48,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1012101": {},
         "epaGhgrpFacilityId/1012110": {
           "date": "2019",
           "value": 33947.772,
@@ -2843,13 +2822,11 @@
           "value": 22822.764,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1012662": {},
         "epaGhgrpFacilityId/1012713": {
           "date": "2019",
           "value": 33764.372,
           "meta_hash": 3902333627
         },
-        "epaGhgrpFacilityId/1012752": {},
         "epaGhgrpFacilityId/1012823": {
           "date": "2019",
           "value": 312254.91,
@@ -2894,8 +2871,7 @@
           "date": "2019",
           "value": 64356.026,
           "meta_hash": 3902333627
-        },
-        "epaGhgrpFacilityId/1013700": {}
+        }
       }
     }
   },

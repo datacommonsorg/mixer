@@ -21,7 +21,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1651220309",
+      "objectValue": "1653380277",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -143,8 +143,8 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "indianCensus/Count_Person_Religion_Sikh_MarginalWorker_WorkedUpto3Months_Urban_Female",
-      "subjectName": "Population: Female, Urban, Sikhism, 3 Month or Less, Marginal Worker",
+      "subjectId": "indianCensus/Count_Person_Religion_Sikh_YearsUpto6_Male",
+      "subjectName": "Population: 6 Years or Less, Male, Sikhism",
       "subjectTypes": [
         "StatisticalVariable"
       ],
