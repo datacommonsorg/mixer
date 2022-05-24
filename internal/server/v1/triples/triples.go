@@ -76,7 +76,6 @@ func Triples(
 		}
 	}
 	if pi != nil {
-		var err error
 		nextToken, err := util.EncodeProto(pi)
 		if err != nil {
 			return nil, err

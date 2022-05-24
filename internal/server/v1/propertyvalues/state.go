@@ -220,7 +220,7 @@ func (s *outState) init(
 	return nil
 }
 
-func (s *state) getPagination(direction string) *pb.PaginationInfo {
+func (s *state) getPagination() *pb.PaginationInfo {
 	cursorGroups := []*pb.CursorGroup{}
 	for _, p := range s.properties {
 		for _, e := range s.entities {
@@ -233,6 +233,5 @@ func (s *state) getPagination(direction string) *pb.PaginationInfo {
 			)
 		}
 	}
-	res := &pb.PaginationInfo{CursorGroups: cursorGroups}
-	return res
+	return &pb.PaginationInfo{CursorGroups: cursorGroups}
 }

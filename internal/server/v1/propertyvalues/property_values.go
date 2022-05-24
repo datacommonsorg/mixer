@@ -94,7 +94,7 @@ func Fetch(
 		for p := range s.rawEntities {
 			for e := range s.rawEntities[p] {
 				if s.rawEntities[p][e][s.usedImportGroup[p][e]] != nil {
-					return s.mergedEntities, s.getPagination(util.DirectionOut), nil
+					return s.mergedEntities, s.getPagination(), nil
 				}
 			}
 		}
@@ -117,7 +117,7 @@ func Fetch(
 			for e := range s.rawEntities[p] {
 				for _, d := range s.rawEntities[p][e] {
 					if d != nil {
-						return s.mergedEntities, s.getPagination(util.DirectionIn), nil
+						return s.mergedEntities, s.getPagination(), nil
 					}
 				}
 			}
