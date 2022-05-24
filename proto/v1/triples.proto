@@ -31,7 +31,7 @@ message TriplesRequest {
 
 message TriplesResponse {
   // Key is property.
-  map<string, datacommons.EntityInfoCollection> data = 1;
+  map<string, datacommons.EntityInfoCollection> triples = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }

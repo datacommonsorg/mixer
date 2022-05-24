@@ -68,10 +68,10 @@ func Triples(
 		return nil, err
 	}
 	res := &pb.TriplesResponse{
-		Data: map[string]*pb.EntityInfoCollection{},
+		Triples: map[string]*pb.EntityInfoCollection{},
 	}
 	for property := range data {
-		res.Data[property] = &pb.EntityInfoCollection{
+		res.Triples[property] = &pb.EntityInfoCollection{
 			Entities: data[property][entity],
 		}
 	}
