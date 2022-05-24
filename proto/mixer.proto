@@ -41,6 +41,7 @@ import "v1/variable.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
 import "v1/page.proto";
+import "v1/triples.proto";
 
 service Mixer {
   // Query DataCommons Graph with Sparql.
@@ -350,7 +351,6 @@ service Mixer {
   }
 
   // ======================  V1   V1   V1   V1  ======================
-
   rpc Properties(datacommons.v1.PropertiesRequest)
       returns (datacommons.v1.PropertiesResponse) {
     option (google.api.http) = {
@@ -384,6 +384,12 @@ service Mixer {
         post : "/v1/bulk/properties/{direction}/{property}/values"
         body : "*"
       }
+    };
+  }
+
+  rpc Triples(datacommons.v1.TriplesRequest) returns (datacommons.v1.TriplesResponse) {
+    option (google.api.http) = {
+      get : "/v1/triples/{direction}/{entity=**}"
     };
   }
 

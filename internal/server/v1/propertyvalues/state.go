@@ -221,11 +221,11 @@ func (s *outState) init(
 }
 
 func (s *state) getPagination() *pb.PaginationInfo {
-	res := &pb.PaginationInfo{}
+	cursorGroups := []*pb.CursorGroup{}
 	for _, p := range s.properties {
 		for _, e := range s.entities {
-			res.CursorGroups = append(
-				res.CursorGroups,
+			cursorGroups = append(
+				cursorGroups,
 				&pb.CursorGroup{
 					Keys:    []string{e, p},
 					Cursors: s.cursorGroup[p][e],
@@ -233,5 +233,5 @@ func (s *state) getPagination() *pb.PaginationInfo {
 			)
 		}
 	}
-	return res
+	return &pb.PaginationInfo{CursorGroups: cursorGroups}
 }

@@ -161,13 +161,13 @@ func (x *CursorGroup) GetCursors() []*Cursor {
 }
 
 // Represents the cursor information of one pagination request.
+// Each cursor group corresponds to the cursor information of one requested
+// entity. There are multiple cursor groups for bulk APIs.
 type PaginationInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Each cursor group corresponds to the cursor information of one requested
-	// entity. There are multiple cursor groups for bulk APIs.
 	CursorGroups []*CursorGroup `protobuf:"bytes,1,rep,name=cursor_groups,json=cursorGroups,proto3" json:"cursor_groups,omitempty"`
 }
 

@@ -32,6 +32,14 @@ message EntityInfo {
   string value = 5; // Only for object value.
 }
 
+// A page of entities. The page number starts from 0, and is in the cache key.
+// Page size is set by ::datacommons::prophet::kPageSize.
+message PagedEntities {
+  // A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
+  repeated datacommons.EntityInfo entities = 1;
+  double total_page_count = 2;
+}
+
 // Basic info for a collection of entities.
 message EntityInfoCollection {
   repeated EntityInfo entities = 1;
