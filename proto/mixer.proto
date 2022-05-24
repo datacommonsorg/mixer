@@ -378,6 +378,13 @@ service Mixer {
     };
   }
 
+  rpc LinkedPropertyValues(datacommons.v1.LinkedPropertyValuesRequest)
+      returns (datacommons.v1.LinkedPropertyValuesResponse) {
+    option (google.api.http) = {
+      get : "/v1/property/in/{property}/values/linked/{entity=**}"
+    };
+  }
+
   rpc BulkPropertyValues(datacommons.v1.BulkPropertyValuesRequest)
       returns (datacommons.v1.BulkPropertyValuesResponse) {
     option (google.api.http) = {

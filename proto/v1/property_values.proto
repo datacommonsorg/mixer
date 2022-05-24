@@ -35,7 +35,7 @@ message PropertyValuesRequest {
 }
 
 message PropertyValuesResponse {
-  repeated datacommons.EntityInfo data = 1;
+  repeated datacommons.EntityInfo values = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }
@@ -66,4 +66,17 @@ message BulkPropertyValuesResponse {
   repeated EntityPropertyValues data = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
+}
+
+
+// Note this API request only supports property "containedInPlace" now.
+// This is effectively used to query containing places for certain type.
+message LinkedPropertyValuesRequest {
+  string property = 1;
+  string entity = 2;
+  string value_entity_type = 3;
+}
+
+message LinkedPropertyValuesResponse {
+  repeated datacommons.EntityInfo values = 1;
 }

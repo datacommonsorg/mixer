@@ -70,7 +70,7 @@ func PropertyValues(
 		}
 	}
 	return &pb.PropertyValuesResponse{
-		Data:      data[property][entity],
+		Values:    data[property][entity],
 		NextToken: nextToken,
 	}, nil
 }
