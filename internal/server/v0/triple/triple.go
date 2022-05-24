@@ -20,9 +20,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v1/triples"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -108,7 +108,8 @@ func getObsTriples(
 				}
 			}
 		}
-		nameNodes, err := node.GetPropertyValuesHelper(ctx, store, objDcids, "name", true)
+		nameNodes, err := propertyvalue.GetPropertyValuesHelper(
+			ctx, store, objDcids, "name", true)
 		if err != nil {
 			return nil, err
 		}

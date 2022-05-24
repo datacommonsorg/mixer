@@ -20,7 +20,7 @@ import (
 	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/node"
+	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/golang/geo/s2"
@@ -92,7 +92,7 @@ func ResolveCoordinates(
 	for place := range questionablePlaces {
 		questionablePlaceList = append(questionablePlaceList, place)
 	}
-	geoJSONData, err := node.GetPropertyValuesHelper(
+	geoJSONData, err := propertyvalue.GetPropertyValuesHelper(
 		ctx, store, questionablePlaceList, geoJSONPredicate, true)
 	if err != nil {
 		return nil, err
