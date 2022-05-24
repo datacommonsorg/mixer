@@ -31,8 +31,6 @@ const (
 	BtPlacePagePrefix = "d/4/"
 	// BtProteinPagePrefix for protein page cache.
 	BtProteinPagePrefix = "d/6/"
-	// BtTriplesPrefix for internal GetTriples cache.
-	BtTriplesPrefix = "d/7/"
 	// BtObsCollectionDateFrequency for obs collection cache that contains the frequency of each
 	// date across places.
 	BtObsCollectionDateFrequency = "d/8/"

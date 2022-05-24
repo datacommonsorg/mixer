@@ -1,0 +1,453 @@
+{
+  "City": [
+    {
+      "subjectId": "City",
+      "subjectName": "City",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "name",
+      "objectValue": "City",
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "City",
+      "subjectName": "City",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/5l5zxr1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "City",
+      "subjectName": "City",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "subClassOf",
+      "objectId": "AdministrativeArea",
+      "objectName": "AdministrativeArea",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "City",
+      "subjectName": "City",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "typeOf",
+      "objectId": "Class",
+      "objectName": "Class",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "administrativeCapital",
+      "subjectName": "administrativeCapital",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "rangeIncludes",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "country/HKG",
+      "subjectName": "Hong Kong",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City",
+        "Country"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "country/MAC",
+      "subjectName": "Macau",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City",
+        "Country"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/0100100",
+      "subjectName": "Abanda",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/0100124",
+      "subjectName": "Abbeville",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/0100148",
+      "subjectName": "Abel",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/0100220",
+      "subjectName": "Abernant",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/0100388",
+      "subjectName": "Ada, Alabama",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/02020",
+      "subjectName": "Anchorage",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/02110",
+      "subjectName": "Juneau",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/02220",
+      "subjectName": "Sitka",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/02230",
+      "subjectName": "Skagway",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    }
+  ],
+  "County": [
+    {
+      "subjectId": "County",
+      "subjectName": "County",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "name",
+      "objectValue": "County",
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "County",
+      "subjectName": "County",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/5l5zxr1",
+      "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "County",
+      "subjectName": "County",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "subClassOf",
+      "objectId": "AdministrativeArea",
+      "objectName": "AdministrativeArea",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "County",
+      "subjectName": "County",
+      "subjectTypes": [
+        "Class"
+      ],
+      "predicate": "typeOf",
+      "objectId": "Class",
+      "objectName": "Class",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "geoId/01001",
+      "subjectName": "Autauga County",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/01003",
+      "subjectName": "Baldwin County",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/01005",
+      "subjectName": "Barbour County",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/01007",
+      "subjectName": "Bibb County",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/01009",
+      "subjectName": "Blount County",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/02195",
+      "subjectName": "Petersburg Borough",
+      "subjectTypes": [
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/02275",
+      "subjectName": "Wrangell",
+      "subjectTypes": [
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/02282",
+      "subjectName": "Yakutat",
+      "subjectTypes": [
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/08014",
+      "subjectName": "Broomfield",
+      "subjectTypes": [
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "geoId/11001",
+      "subjectName": "District of Columbia",
+      "subjectTypes": [
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "zipsWithAccessToHealthyFoods",
+      "subjectName": "zipsWithAccessToHealthyFoods",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "domainIncludes",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    }
+  ]
+}

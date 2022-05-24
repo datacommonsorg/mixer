@@ -87,22 +87,8 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "Years9",
-      "subjectName": "Years 9",
-      "subjectTypes": [
-        "Quantity"
-      ],
-      "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
-      "objectName": "HumanReadableStatVars",
-      "objectTypes": [
-        "Provenance"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "YearsUpto6",
-      "subjectName": "Years UpTo 6",
+      "subjectId": "Acre1000Onwards",
+      "subjectName": "Acre 1000 Onwards",
       "subjectTypes": [
         "QuantityRange"
       ],
@@ -115,36 +101,8 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "dc/g/Weather",
-      "subjectName": "Weather",
-      "subjectTypes": [
-        "StatVarGroup"
-      ],
-      "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
-      "objectName": "HumanReadableStatVars",
-      "objectTypes": [
-        "Provenance"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "dc/kfcvsw1",
-      "subjectName": "datacommons.org",
-      "subjectTypes": [
-        "Source"
-      ],
-      "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
-      "objectName": "HumanReadableStatVars",
-      "objectTypes": [
-        "Provenance"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "indianCensus/Count_Person_Religion_Sikh_YearsUpto6_Male",
-      "subjectName": "Population: 6 Years or Less, Male, Sikhism",
+      "subjectId": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
+      "subjectName": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Median Across Models",
       "subjectTypes": [
         "StatisticalVariable"
       ],
