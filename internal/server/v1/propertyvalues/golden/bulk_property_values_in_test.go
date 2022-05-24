@@ -21,43 +21,59 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestLinkedPropertyValues(t *testing.T) {
+func TestBulkPropertyValuesIn(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "linked_property_values")
+	goldenPath := path.Join(path.Dir(filename), "bulk_property_values_in")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entity     string
-			typ        string
+			property   string
+			entities   []string
+			limit      int32
+			token      string
 		}{
 			{
-				"USA_county.json",
-				"country/USA",
-				"County",
+				"containedIn1.json",
+				"containedInPlace",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				0,
+				"",
 			},
 			{
-				"CA_county.json",
-				"geoId/06",
-				"County",
+				"containedIn2.json",
+				"containedInPlace",
+				[]string{"country/USA", "geoId/06053", "geoId/06"},
+				0,
+				"H4sIAAAAAAAA/+Iy5+JOzi/NKymq1A8NduQSSM7PK0nMzEtN8cwLyElMThViEGLhYBRgEmLhYBJgEmLiYBZi4WARYAJpTE/N90zRNzAzMDXGqZERrJERrpGRy4CLA6YRqy4mDpBqJKsAAAAA//8BAAD///etg82kAAAA",
+			},
+			{
+				"typeOf.json",
+				"typeOf",
+				[]string{"Country", "State", "City"},
+				100,
+				"",
 			},
 		} {
-			req := &pb.LinkedPropertyValuesRequest{
-				Property:        "containedInPlace",
-				Entity:          c.entity,
-				ValueEntityType: c.typ,
+			req := &pb.BulkPropertyValuesRequest{
+				Property:  c.property,
+				Entities:  c.entities,
+				Direction: util.DirectionIn,
+				Limit:     c.limit,
+				NextToken: c.token,
 			}
-			resp, err := mixer.LinkedPropertyValues(ctx, req)
+			resp, err := mixer.BulkPropertyValues(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.LinkedPropertyValues: %s", err)
+				t.Errorf("could not run mixer.BulkPropertyValues/in: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -67,7 +83,7 @@ func TestLinkedPropertyValues(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.PropertyValuesResponse
+			var expected pb.BulkPropertyValuesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
@@ -79,7 +95,7 @@ func TestLinkedPropertyValues(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"LinkedPropertyValues", &test.TestOption{}, testSuite); err != nil {
+		"BulkPropertyValues/in", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

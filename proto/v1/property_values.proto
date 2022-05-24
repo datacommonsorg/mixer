@@ -77,6 +77,10 @@ message LinkedPropertyValuesRequest {
   string value_entity_type = 3;
 }
 
-message LinkedPropertyValuesResponse {
-  repeated datacommons.EntityInfo values = 1;
+// Note this API request only supports property "containedInPlace" now.
+// This is effectively used to query containing places for certain type.
+message BulkLinkedPropertyValuesRequest {
+  string property = 1;
+  repeated string entities = 2;
+  string value_entity_type = 3;
 }

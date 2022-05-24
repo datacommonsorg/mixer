@@ -26,38 +26,33 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestLinkedPropertyValues(t *testing.T) {
+func TestBulkLinkedPropertyValues(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "linked_property_values")
+	goldenPath := path.Join(path.Dir(filename), "bulk_linked_property_values")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entity     string
+			entities   []string
 			typ        string
 		}{
 			{
-				"USA_county.json",
-				"country/USA",
-				"County",
-			},
-			{
-				"CA_county.json",
-				"geoId/06",
-				"County",
+				"result.json",
+				[]string{"geoId/05", "geoId/06"},
+				"City",
 			},
 		} {
-			req := &pb.LinkedPropertyValuesRequest{
+			req := &pb.BulkLinkedPropertyValuesRequest{
 				Property:        "containedInPlace",
-				Entity:          c.entity,
+				Entities:        c.entities,
 				ValueEntityType: c.typ,
 			}
-			resp, err := mixer.LinkedPropertyValues(ctx, req)
+			resp, err := mixer.BulkLinkedPropertyValues(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.LinkedPropertyValues: %s", err)
+				t.Errorf("could not run mixer.BulkLinkedPropertyValues: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -67,7 +62,7 @@ func TestLinkedPropertyValues(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.PropertyValuesResponse
+			var expected pb.BulkPropertyValuesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
@@ -79,7 +74,7 @@ func TestLinkedPropertyValues(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"LinkedPropertyValues", &test.TestOption{}, testSuite); err != nil {
+		"BulkLinkedPropertyValues", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
