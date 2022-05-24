@@ -17,7 +17,6 @@ package propertyvalues
 import (
 	"container/heap"
 	"context"
-	"log"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -108,7 +107,6 @@ func (s *state) readBt(
 	arcOut bool,
 	accs []*bigtable.Accessor,
 ) error {
-	log.Printf("Read data: %+v", accs)
 	prefix := bigtable.BtPagedPropValOut
 	if !arcOut {
 		prefix = bigtable.BtPagedPropValIn
