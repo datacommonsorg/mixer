@@ -50,7 +50,7 @@ func PropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid entity %s", entity)
 	}
-	data, token, err := propertyValuesHelper(
+	data, pi, err := Fetch(
 		ctx,
 		store,
 		[]string{property},
@@ -62,9 +62,16 @@ func PropertyValues(
 	if err != nil {
 		return nil, err
 	}
+	nextToken := ""
+	if pi != nil {
+		nextToken, err = util.EncodeProto(pi)
+		if err != nil {
+			return nil, err
+		}
+	}
 	return &pb.PropertyValuesResponse{
 		Data:      data[property][entity],
-		NextToken: token,
+		NextToken: nextToken,
 	}, nil
 }
 
@@ -93,7 +100,7 @@ func BulkPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid entities %s", entities)
 	}
-	data, token, err := propertyValuesHelper(
+	data, pi, err := Fetch(
 		ctx,
 		store,
 		[]string{property},
@@ -105,8 +112,15 @@ func BulkPropertyValues(
 	if err != nil {
 		return nil, err
 	}
+	nextToken := ""
+	if pi != nil {
+		nextToken, err = util.EncodeProto(pi)
+		if err != nil {
+			return nil, err
+		}
+	}
 	res := &pb.BulkPropertyValuesResponse{
-		NextToken: token,
+		NextToken: nextToken,
 	}
 	for _, e := range entities {
 		res.Data = append(

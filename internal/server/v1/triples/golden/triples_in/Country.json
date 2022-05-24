@@ -1,0 +1,2250 @@
+{
+  "triples": {
+    "rangeIncludes": {
+      "entities": [
+        {
+          "name": "addressCountry",
+          "types": [
+            "Property"
+          ],
+          "dcid": "addressCountry",
+          "provenanceId": "dc/5l5zxr1"
+        },
+        {
+          "name": "countryOfOrigin",
+          "types": [
+            "Property"
+          ],
+          "dcid": "countryOfOrigin",
+          "provenanceId": "dc/5l5zxr1"
+        },
+        {
+          "name": "nationality",
+          "types": [
+            "Property"
+          ],
+          "dcid": "nationality",
+          "provenanceId": "dc/5l5zxr1"
+        }
+      ]
+    },
+    "typeOf": {
+      "entities": [
+        {
+          "name": "Aruba",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ABW",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Afghanistan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/AFG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "French Afars and Issas",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/AFI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Angola",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/AGO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Anguilla",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/AIA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Albania",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ALB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Andorra",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/AND",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Netherlands Antilles",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ANT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "United Arab Emirates",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ARE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Argentina",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ARG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Armenia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ARM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "American Samoa",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/ASM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Antarctica",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ATA",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "British Antarctic Territory",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/ATB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "French Southern Territories",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ATF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Antigua and Barbuda",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ATG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Dronning Maud Land",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ATN",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Australia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/AUS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Austria",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/AUT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Azerbaijan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/AZE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Burundi",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BDI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Belgium",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BEL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Benin",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BEN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bonaire, Sint Eustatius and Saba",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BES",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Burkina Faso",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BFA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bangladesh",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BGD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bulgaria",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BGR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bahrain",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BHR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bahamas",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BHS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bosnia and Herzegovina",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BIH",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Barthélemy",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BLM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Belarus",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BLR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Belize",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BLZ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bermuda",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/BMU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bolivia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BOL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Brazil",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BRA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Barbados",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BRB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Brunei",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BRN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bhutan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BTN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bouvet Island",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BVT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Botswana",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BWA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Byelorussian SSR",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/BYS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Central African Republic",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CAF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Canada",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CAN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cocos (Keeling) Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/CCK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Switzerland",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CHE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Chile",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CHL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "China",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CHN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Côte d'Ivoire",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CIV",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cameroon",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CMR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Congo [DRC]",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/COD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Congo [Republic]",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/COG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cook Islands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/COK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Colombia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/COL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Comoros",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/COM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cape Verde",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CPV",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Costa Rica",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CRI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Czechoslovakia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CSK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Canton and Enderbury Islands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CTE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cuba",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CUB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Curaçao",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CUW",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Christmas Island",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/CXR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cayman Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/CYM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cyprus",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CYP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Czech Republic",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/CZE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "German Democratic Republic",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/DDR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Germany",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/DEU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Dahomey",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/DHY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Djibouti",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/DJI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Dominica",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/DMA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Denmark",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/DNK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Dominican Republic",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/DOM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Algeria",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/DZA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Ecuador",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ECU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Egypt",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/EGY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Eritrea",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ERI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Western Sahara",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ESH",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Spain",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ESP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Estonia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/EST",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Ethiopia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ETH",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Finland",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/FIN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Fiji",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/FJI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Falkland Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/FLK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "France",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/FRA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Faroe Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/FRO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Federated States of Micronesia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/FSM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Metropolitan France",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/FXX",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Gabon",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GAB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "United Kingdom",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GBR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Gilbert and Ellice Islands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GEL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Georgia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GEO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guernsey",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GGY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Ghana",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GHA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Gibraltar",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/GIB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guinea",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GIN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guadeloupe",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/GLP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Gambia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GMB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guinea-Bissau",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GNB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Equatorial Guinea",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GNQ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Greece",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GRC",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Grenada",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GRD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Greenland",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/GRL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guatemala",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GTM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "French Guiana",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/GUF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guam",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/GUM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guyana",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/GUY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Hong Kong",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Country"
+          ],
+          "dcid": "country/HKG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Heard Island and McDonald Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/HMD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Honduras",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/HND",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Croatia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/HRV",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Haiti",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/HTI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Hungary",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/HUN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Upper Volta",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/HVO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Indonesia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/IDN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Isle of Man",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/IMN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "India",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/IND",
+          "provenanceId": "dc/rdj6vy2"
+        },
+        {
+          "name": "British Indian Ocean Territory",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/IOT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Ireland",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/IRL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Iran",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/IRN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Iraq",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/IRQ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Iceland",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ISL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Israel",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ISR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Italy",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ITA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Jamaica",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/JAM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Jersey",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/JEY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Jordan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/JOR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Japan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/JPN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kazakhstan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KAZ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kenya",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KEN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kyrgyzstan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KGZ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cambodia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KHM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kiribati",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KIR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Kitts and Nevis",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KNA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "South Korea",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KOR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kuwait",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/KWT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Laos",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LAO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Lebanon",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LBN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Liberia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LBR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Libya",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LBY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Lucia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LCA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Liechtenstein",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LIE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Sri Lanka",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LKA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Lesotho",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LSO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Lithuania",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LTU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Luxembourg",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LUX",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Latvia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/LVA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Macau",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Country"
+          ],
+          "dcid": "country/MAC",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Martin",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MAF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Morocco",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MAR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Monaco",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MCO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Moldova",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MDA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Madagascar",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MDG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Maldives",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MDV",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mexico",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MEX",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Marshall Islands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MHL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Macedonia [FYROM]",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MKD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mali",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MLI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Malta",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MLT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Myanmar",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MMR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Montenegro",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MNE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mongolia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MNG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Northern Mariana Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/MNP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mozambique",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MOZ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mauritania",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MRT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Montserrat",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/MSR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Martinique",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/MTQ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mauritius",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MUS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Malawi",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MWI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Malaysia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/MYS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mayotte",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/MYT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Namibia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NAM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "New Caledonia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NCL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Niger",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NER",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Norfolk Island",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/NFK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Nigeria",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NGA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "New Hebrides",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NHB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Nicaragua",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NIC",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Niue",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NIU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Netherlands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NLD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Norway",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NOR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Nepal",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NPL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Nauru",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NRU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "New Zealand",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/NZL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Oman",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/OMN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Pakistan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PAK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Panama",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PAN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Pitcairn Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/PCN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Peru",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PER",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Philippines",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PHL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Palau",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PLW",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Papua New Guinea",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PNG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Poland",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/POL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Puerto Rico",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PRI",
+          "provenanceId": "dc/5jztpr1"
+        },
+        {
+          "name": "North Korea",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PRK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Portugal",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PRT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Paraguay",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PRY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Palestinian Territories",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PSE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "French Polynesia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/PYF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Qatar",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/QAT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Réunion",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/REU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Romania",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ROU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Russia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/RUS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Rwanda",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/RWA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saudi Arabia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SAU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Serbia and Montenegro",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SCG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Sudan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SDN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Senegal",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SEN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Singapore",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SGP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "South Georgia and the South Sandwich Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/SGS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Helena",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/SHN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Svalbard and Jan Mayen",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SJM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Solomon Islands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SLB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Sierra Leone",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SLE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "El Salvador",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SLV",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Marino",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SMR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Somalia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SOM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Pierre and Miquelon",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SPM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Serbia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SRB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "South Sudan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SSD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "São Tomé and Príncipe",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/STP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Union of Soviet Socialist Republics",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SUN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Suriname",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SUR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Slovakia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SVK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Slovenia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SVN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Sweden",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SWE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Eswatini",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SWZ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Sint Maarten",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SXM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Seychelles",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SYC",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Syria",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/SYR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Turks and Caicos Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/TCA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Chad",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TCD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Togo",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TGO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Thailand",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/THA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tajikistan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TJK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tokelau",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TKL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Turkmenistan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TKM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "East Timor",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TLS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tonga",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TON",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Trinidad and Tobago",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TTO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tunisia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TUN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Turkey",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TUR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tuvalu",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TUV",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Taiwan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TWN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tanzania",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/TZA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Uganda",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/UGA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Ukraine",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/UKR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "U.S. Minor Outlying Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/UMI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Uruguay",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/URY",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "United States",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/USA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Uzbekistan",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/UZB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Vatican City",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/VAT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Vincent and the Grenadines",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/VCT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Venezuela",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/VEN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "British Virgin Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/VGB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "U.S. Virgin Islands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/VIR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Vietnam",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/VNM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Vanuatu",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/VUT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Wallis and Futuna",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/WLF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Samoa",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/WSM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kosovo",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/XKS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Yemen",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/YEM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Yugoslavia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/YUG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "South Africa",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ZAF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Zambia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ZMB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Zimbabwe",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ZWE",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Turkish Republic of Northern Cyprus",
+          "types": [
+            "Country"
+          ],
+          "dcid": "wikidataId/Q23681",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Artsakh",
+          "types": [
+            "Country"
+          ],
+          "dcid": "wikidataId/Q244165",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Asgardia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "wikidataId/Q27304761",
+          "provenanceId": "dc/5j06ly1"
+        },
+        {
+          "name": "Kingdom of the Netherlands",
+          "types": [
+            "Country"
+          ],
+          "dcid": "wikidataId/Q29999",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Republic of Abkhazia",
+          "types": [
+            "Country"
+          ],
+          "dcid": "wikidataId/Q31354462",
+          "provenanceId": "dc/5j06ly1"
+        },
+        {
+          "name": "Sahrawi Arab Democratic Republic",
+          "types": [
+            "Country"
+          ],
+          "dcid": "wikidataId/Q40362",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kingdom of Denmark",
+          "types": [
+            "Country"
+          ],
+          "dcid": "wikidataId/Q756617",
+          "provenanceId": "dc/5j06ly1"
+        }
+      ]
+    }
+  }
+}

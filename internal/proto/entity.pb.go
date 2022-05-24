@@ -119,6 +119,64 @@ func (x *EntityInfo) GetValue() string {
 	return ""
 }
 
+// A page of entities. The page number starts from 0, and is in the cache key.
+// Page size is set by ::datacommons::prophet::kPageSize.
+type PagedEntities struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
+	Entities       []*EntityInfo `protobuf:"bytes,1,rep,name=entities,proto3" json:"entities,omitempty"`
+	TotalPageCount float64       `protobuf:"fixed64,2,opt,name=total_page_count,json=totalPageCount,proto3" json:"total_page_count,omitempty"`
+}
+
+func (x *PagedEntities) Reset() {
+	*x = PagedEntities{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_entity_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PagedEntities) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PagedEntities) ProtoMessage() {}
+
+func (x *PagedEntities) ProtoReflect() protoreflect.Message {
+	mi := &file_entity_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PagedEntities.ProtoReflect.Descriptor instead.
+func (*PagedEntities) Descriptor() ([]byte, []int) {
+	return file_entity_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *PagedEntities) GetEntities() []*EntityInfo {
+	if x != nil {
+		return x.Entities
+	}
+	return nil
+}
+
+func (x *PagedEntities) GetTotalPageCount() float64 {
+	if x != nil {
+		return x.TotalPageCount
+	}
+	return 0
+}
+
 // Basic info for a collection of entities.
 type EntityInfoCollection struct {
 	state         protoimpl.MessageState
@@ -132,7 +190,7 @@ type EntityInfoCollection struct {
 func (x *EntityInfoCollection) Reset() {
 	*x = EntityInfoCollection{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entity_proto_msgTypes[1]
+		mi := &file_entity_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -145,7 +203,7 @@ func (x *EntityInfoCollection) String() string {
 func (*EntityInfoCollection) ProtoMessage() {}
 
 func (x *EntityInfoCollection) ProtoReflect() protoreflect.Message {
-	mi := &file_entity_proto_msgTypes[1]
+	mi := &file_entity_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -158,7 +216,7 @@ func (x *EntityInfoCollection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EntityInfoCollection.ProtoReflect.Descriptor instead.
 func (*EntityInfoCollection) Descriptor() ([]byte, []int) {
-	return file_entity_proto_rawDescGZIP(), []int{1}
+	return file_entity_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *EntityInfoCollection) GetEntities() []*EntityInfo {
@@ -187,7 +245,7 @@ type IdWithProperty struct {
 func (x *IdWithProperty) Reset() {
 	*x = IdWithProperty{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entity_proto_msgTypes[2]
+		mi := &file_entity_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -200,7 +258,7 @@ func (x *IdWithProperty) String() string {
 func (*IdWithProperty) ProtoMessage() {}
 
 func (x *IdWithProperty) ProtoReflect() protoreflect.Message {
-	mi := &file_entity_proto_msgTypes[2]
+	mi := &file_entity_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -213,7 +271,7 @@ func (x *IdWithProperty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IdWithProperty.ProtoReflect.Descriptor instead.
 func (*IdWithProperty) Descriptor() ([]byte, []int) {
-	return file_entity_proto_rawDescGZIP(), []int{2}
+	return file_entity_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *IdWithProperty) GetProp() string {
@@ -241,7 +299,7 @@ type EntityIds struct {
 func (x *EntityIds) Reset() {
 	*x = EntityIds{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entity_proto_msgTypes[3]
+		mi := &file_entity_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -254,7 +312,7 @@ func (x *EntityIds) String() string {
 func (*EntityIds) ProtoMessage() {}
 
 func (x *EntityIds) ProtoReflect() protoreflect.Message {
-	mi := &file_entity_proto_msgTypes[3]
+	mi := &file_entity_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -267,7 +325,7 @@ func (x *EntityIds) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EntityIds.ProtoReflect.Descriptor instead.
 func (*EntityIds) Descriptor() ([]byte, []int) {
-	return file_entity_proto_rawDescGZIP(), []int{3}
+	return file_entity_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *EntityIds) GetIds() []*IdWithProperty {
@@ -296,7 +354,7 @@ type EntitySubGraph struct {
 func (x *EntitySubGraph) Reset() {
 	*x = EntitySubGraph{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entity_proto_msgTypes[4]
+		mi := &file_entity_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -309,7 +367,7 @@ func (x *EntitySubGraph) String() string {
 func (*EntitySubGraph) ProtoMessage() {}
 
 func (x *EntitySubGraph) ProtoReflect() protoreflect.Message {
-	mi := &file_entity_proto_msgTypes[4]
+	mi := &file_entity_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -322,7 +380,7 @@ func (x *EntitySubGraph) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EntitySubGraph.ProtoReflect.Descriptor instead.
 func (*EntitySubGraph) Descriptor() ([]byte, []int) {
-	return file_entity_proto_rawDescGZIP(), []int{4}
+	return file_entity_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *EntitySubGraph) GetSourceId() string {
@@ -381,7 +439,7 @@ type EntityPair struct {
 func (x *EntityPair) Reset() {
 	*x = EntityPair{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entity_proto_msgTypes[5]
+		mi := &file_entity_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -394,7 +452,7 @@ func (x *EntityPair) String() string {
 func (*EntityPair) ProtoMessage() {}
 
 func (x *EntityPair) ProtoReflect() protoreflect.Message {
-	mi := &file_entity_proto_msgTypes[5]
+	mi := &file_entity_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -407,7 +465,7 @@ func (x *EntityPair) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EntityPair.ProtoReflect.Descriptor instead.
 func (*EntityPair) Descriptor() ([]byte, []int) {
-	return file_entity_proto_rawDescGZIP(), []int{5}
+	return file_entity_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *EntityPair) GetEntityOne() *EntitySubGraph {
@@ -437,7 +495,14 @@ var file_entity_proto_rawDesc = []byte{
 	0x63, 0x69, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x70, 0x72, 0x6f, 0x76, 0x65, 0x6e, 0x61, 0x6e, 0x63,
 	0x65, 0x5f, 0x69, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x70, 0x72, 0x6f, 0x76,
 	0x65, 0x6e, 0x61, 0x6e, 0x63, 0x65, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75,
-	0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x67,
+	0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x6e,
+	0x0a, 0x0d, 0x50, 0x61, 0x67, 0x65, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12,
+	0x33, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
+	0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69,
+	0x74, 0x69, 0x65, 0x73, 0x12, 0x28, 0x0a, 0x10, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x70, 0x61,
+	0x67, 0x65, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e,
+	0x74, 0x6f, 0x74, 0x61, 0x6c, 0x50, 0x61, 0x67, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x67,
 	0x0a, 0x14, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x43, 0x6f, 0x6c, 0x6c,
 	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x33, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69,
 	0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
@@ -487,28 +552,30 @@ func file_entity_proto_rawDescGZIP() []byte {
 	return file_entity_proto_rawDescData
 }
 
-var file_entity_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_entity_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_entity_proto_goTypes = []interface{}{
 	(*EntityInfo)(nil),           // 0: datacommons.EntityInfo
-	(*EntityInfoCollection)(nil), // 1: datacommons.EntityInfoCollection
-	(*IdWithProperty)(nil),       // 2: datacommons.IdWithProperty
-	(*EntityIds)(nil),            // 3: datacommons.EntityIds
-	(*EntitySubGraph)(nil),       // 4: datacommons.EntitySubGraph
-	(*EntityPair)(nil),           // 5: datacommons.EntityPair
-	(*McfGraph)(nil),             // 6: datacommons.McfGraph
+	(*PagedEntities)(nil),        // 1: datacommons.PagedEntities
+	(*EntityInfoCollection)(nil), // 2: datacommons.EntityInfoCollection
+	(*IdWithProperty)(nil),       // 3: datacommons.IdWithProperty
+	(*EntityIds)(nil),            // 4: datacommons.EntityIds
+	(*EntitySubGraph)(nil),       // 5: datacommons.EntitySubGraph
+	(*EntityPair)(nil),           // 6: datacommons.EntityPair
+	(*McfGraph)(nil),             // 7: datacommons.McfGraph
 }
 var file_entity_proto_depIdxs = []int32{
-	0, // 0: datacommons.EntityInfoCollection.entities:type_name -> datacommons.EntityInfo
-	2, // 1: datacommons.EntityIds.ids:type_name -> datacommons.IdWithProperty
-	6, // 2: datacommons.EntitySubGraph.sub_graph:type_name -> datacommons.McfGraph
-	3, // 3: datacommons.EntitySubGraph.entity_ids:type_name -> datacommons.EntityIds
-	4, // 4: datacommons.EntityPair.entity_one:type_name -> datacommons.EntitySubGraph
-	4, // 5: datacommons.EntityPair.entity_two:type_name -> datacommons.EntitySubGraph
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	0, // 0: datacommons.PagedEntities.entities:type_name -> datacommons.EntityInfo
+	0, // 1: datacommons.EntityInfoCollection.entities:type_name -> datacommons.EntityInfo
+	3, // 2: datacommons.EntityIds.ids:type_name -> datacommons.IdWithProperty
+	7, // 3: datacommons.EntitySubGraph.sub_graph:type_name -> datacommons.McfGraph
+	4, // 4: datacommons.EntitySubGraph.entity_ids:type_name -> datacommons.EntityIds
+	5, // 5: datacommons.EntityPair.entity_one:type_name -> datacommons.EntitySubGraph
+	5, // 6: datacommons.EntityPair.entity_two:type_name -> datacommons.EntitySubGraph
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_entity_proto_init() }
@@ -531,7 +598,7 @@ func file_entity_proto_init() {
 			}
 		}
 		file_entity_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EntityInfoCollection); i {
+			switch v := v.(*PagedEntities); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -543,7 +610,7 @@ func file_entity_proto_init() {
 			}
 		}
 		file_entity_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IdWithProperty); i {
+			switch v := v.(*EntityInfoCollection); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -555,7 +622,7 @@ func file_entity_proto_init() {
 			}
 		}
 		file_entity_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EntityIds); i {
+			switch v := v.(*IdWithProperty); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -567,7 +634,7 @@ func file_entity_proto_init() {
 			}
 		}
 		file_entity_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EntitySubGraph); i {
+			switch v := v.(*EntityIds); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -579,6 +646,18 @@ func file_entity_proto_init() {
 			}
 		}
 		file_entity_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EntitySubGraph); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_entity_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*EntityPair); i {
 			case 0:
 				return &v.state
@@ -591,7 +670,7 @@ func file_entity_proto_init() {
 			}
 		}
 	}
-	file_entity_proto_msgTypes[4].OneofWrappers = []interface{}{
+	file_entity_proto_msgTypes[5].OneofWrappers = []interface{}{
 		(*EntitySubGraph_SubGraph)(nil),
 		(*EntitySubGraph_EntityIds)(nil),
 	}
@@ -601,7 +680,7 @@ func file_entity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_entity_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

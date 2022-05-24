@@ -20,11 +20,6 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// BuildCursor is a wrapper function to build Cursor.
-func BuildCursor(ig, page, item int32) *pb.Cursor {
-	return &pb.Cursor{ImportGroup: ig, Page: page, Item: item}
-}
-
 // Decode decodes a compressed token string into PaginationInfo.
 func Decode(s string) (*pb.PaginationInfo, error) {
 	data, err := util.UnzipAndDecode(s)

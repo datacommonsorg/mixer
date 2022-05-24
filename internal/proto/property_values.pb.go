@@ -34,64 +34,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// A page of entities. The page number starts from 0, and is in the cache key.
-// Page size is set by ::datacommons::prophet::kPageSize.
-type PagedEntities struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
-	Entities       []*EntityInfo `protobuf:"bytes,1,rep,name=entities,proto3" json:"entities,omitempty"`
-	TotalPageCount float64       `protobuf:"fixed64,2,opt,name=total_page_count,json=totalPageCount,proto3" json:"total_page_count,omitempty"`
-}
-
-func (x *PagedEntities) Reset() {
-	*x = PagedEntities{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_property_values_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *PagedEntities) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PagedEntities) ProtoMessage() {}
-
-func (x *PagedEntities) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_property_values_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PagedEntities.ProtoReflect.Descriptor instead.
-func (*PagedEntities) Descriptor() ([]byte, []int) {
-	return file_v1_property_values_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *PagedEntities) GetEntities() []*EntityInfo {
-	if x != nil {
-		return x.Entities
-	}
-	return nil
-}
-
-func (x *PagedEntities) GetTotalPageCount() float64 {
-	if x != nil {
-		return x.TotalPageCount
-	}
-	return 0
-}
-
 type PropertyValuesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -106,7 +48,7 @@ type PropertyValuesRequest struct {
 	// [Optional]
 	// The pagination token for getting the next set of entries. This is empty
 	// for the first request and needs to be set in the subsequent request.
-	// This is the value returned from a prior call to PropertyValuesResponse
+	// This is the value returned from a prior call to PropertyValuesRequest
 	NextToken string `protobuf:"bytes,4,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
 	// Direction can only be "in" and "out"
 	Direction string `protobuf:"bytes,5,opt,name=direction,proto3" json:"direction,omitempty"`
@@ -115,7 +57,7 @@ type PropertyValuesRequest struct {
 func (x *PropertyValuesRequest) Reset() {
 	*x = PropertyValuesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_property_values_proto_msgTypes[1]
+		mi := &file_v1_property_values_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -128,7 +70,7 @@ func (x *PropertyValuesRequest) String() string {
 func (*PropertyValuesRequest) ProtoMessage() {}
 
 func (x *PropertyValuesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_property_values_proto_msgTypes[1]
+	mi := &file_v1_property_values_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -141,7 +83,7 @@ func (x *PropertyValuesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropertyValuesRequest.ProtoReflect.Descriptor instead.
 func (*PropertyValuesRequest) Descriptor() ([]byte, []int) {
-	return file_v1_property_values_proto_rawDescGZIP(), []int{1}
+	return file_v1_property_values_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *PropertyValuesRequest) GetProperty() string {
@@ -192,7 +134,7 @@ type PropertyValuesResponse struct {
 func (x *PropertyValuesResponse) Reset() {
 	*x = PropertyValuesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_property_values_proto_msgTypes[2]
+		mi := &file_v1_property_values_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -205,7 +147,7 @@ func (x *PropertyValuesResponse) String() string {
 func (*PropertyValuesResponse) ProtoMessage() {}
 
 func (x *PropertyValuesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_property_values_proto_msgTypes[2]
+	mi := &file_v1_property_values_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -218,7 +160,7 @@ func (x *PropertyValuesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropertyValuesResponse.ProtoReflect.Descriptor instead.
 func (*PropertyValuesResponse) Descriptor() ([]byte, []int) {
-	return file_v1_property_values_proto_rawDescGZIP(), []int{2}
+	return file_v1_property_values_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PropertyValuesResponse) GetData() []*EntityInfo {
@@ -259,7 +201,7 @@ type BulkPropertyValuesRequest struct {
 func (x *BulkPropertyValuesRequest) Reset() {
 	*x = BulkPropertyValuesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_property_values_proto_msgTypes[3]
+		mi := &file_v1_property_values_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -272,7 +214,7 @@ func (x *BulkPropertyValuesRequest) String() string {
 func (*BulkPropertyValuesRequest) ProtoMessage() {}
 
 func (x *BulkPropertyValuesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_property_values_proto_msgTypes[3]
+	mi := &file_v1_property_values_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -285,7 +227,7 @@ func (x *BulkPropertyValuesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BulkPropertyValuesRequest.ProtoReflect.Descriptor instead.
 func (*BulkPropertyValuesRequest) Descriptor() ([]byte, []int) {
-	return file_v1_property_values_proto_rawDescGZIP(), []int{3}
+	return file_v1_property_values_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *BulkPropertyValuesRequest) GetProperty() string {
@@ -336,7 +278,7 @@ type BulkPropertyValuesResponse struct {
 func (x *BulkPropertyValuesResponse) Reset() {
 	*x = BulkPropertyValuesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_property_values_proto_msgTypes[4]
+		mi := &file_v1_property_values_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -349,7 +291,7 @@ func (x *BulkPropertyValuesResponse) String() string {
 func (*BulkPropertyValuesResponse) ProtoMessage() {}
 
 func (x *BulkPropertyValuesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_property_values_proto_msgTypes[4]
+	mi := &file_v1_property_values_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -362,7 +304,7 @@ func (x *BulkPropertyValuesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BulkPropertyValuesResponse.ProtoReflect.Descriptor instead.
 func (*BulkPropertyValuesResponse) Descriptor() ([]byte, []int) {
-	return file_v1_property_values_proto_rawDescGZIP(), []int{4}
+	return file_v1_property_values_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *BulkPropertyValuesResponse) GetData() []*BulkPropertyValuesResponse_EntityPropertyValues {
@@ -391,7 +333,7 @@ type BulkPropertyValuesResponse_EntityPropertyValues struct {
 func (x *BulkPropertyValuesResponse_EntityPropertyValues) Reset() {
 	*x = BulkPropertyValuesResponse_EntityPropertyValues{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_property_values_proto_msgTypes[5]
+		mi := &file_v1_property_values_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -404,7 +346,7 @@ func (x *BulkPropertyValuesResponse_EntityPropertyValues) String() string {
 func (*BulkPropertyValuesResponse_EntityPropertyValues) ProtoMessage() {}
 
 func (x *BulkPropertyValuesResponse_EntityPropertyValues) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_property_values_proto_msgTypes[5]
+	mi := &file_v1_property_values_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -417,7 +359,7 @@ func (x *BulkPropertyValuesResponse_EntityPropertyValues) ProtoReflect() protore
 
 // Deprecated: Use BulkPropertyValuesResponse_EntityPropertyValues.ProtoReflect.Descriptor instead.
 func (*BulkPropertyValuesResponse_EntityPropertyValues) Descriptor() ([]byte, []int) {
-	return file_v1_property_values_proto_rawDescGZIP(), []int{4, 0}
+	return file_v1_property_values_proto_rawDescGZIP(), []int{3, 0}
 }
 
 func (x *BulkPropertyValuesResponse_EntityPropertyValues) GetEntity() string {
@@ -440,14 +382,7 @@ var file_v1_property_values_proto_rawDesc = []byte{
 	0x0a, 0x18, 0x76, 0x31, 0x2f, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x5f, 0x76, 0x61,
 	0x6c, 0x75, 0x65, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0e, 0x64, 0x61, 0x74, 0x61,
 	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x1a, 0x0c, 0x65, 0x6e, 0x74, 0x69,
-	0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x6e, 0x0a, 0x0d, 0x50, 0x61, 0x67, 0x65,
-	0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x33, 0x0a, 0x08, 0x65, 0x6e, 0x74,
-	0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79,
-	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x28,
-	0x0a, 0x10, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x63, 0x6f, 0x75,
-	0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x50,
-	0x61, 0x67, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x9e, 0x01, 0x0a, 0x15, 0x50, 0x72, 0x6f,
+	0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x9e, 0x01, 0x0a, 0x15, 0x50, 0x72, 0x6f,
 	0x70, 0x65, 0x72, 0x74, 0x79, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
 	0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x12, 0x16,
@@ -505,26 +440,24 @@ func file_v1_property_values_proto_rawDescGZIP() []byte {
 	return file_v1_property_values_proto_rawDescData
 }
 
-var file_v1_property_values_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_v1_property_values_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_v1_property_values_proto_goTypes = []interface{}{
-	(*PagedEntities)(nil),                                   // 0: datacommons.v1.PagedEntities
-	(*PropertyValuesRequest)(nil),                           // 1: datacommons.v1.PropertyValuesRequest
-	(*PropertyValuesResponse)(nil),                          // 2: datacommons.v1.PropertyValuesResponse
-	(*BulkPropertyValuesRequest)(nil),                       // 3: datacommons.v1.BulkPropertyValuesRequest
-	(*BulkPropertyValuesResponse)(nil),                      // 4: datacommons.v1.BulkPropertyValuesResponse
-	(*BulkPropertyValuesResponse_EntityPropertyValues)(nil), // 5: datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues
-	(*EntityInfo)(nil),                                      // 6: datacommons.EntityInfo
+	(*PropertyValuesRequest)(nil),                           // 0: datacommons.v1.PropertyValuesRequest
+	(*PropertyValuesResponse)(nil),                          // 1: datacommons.v1.PropertyValuesResponse
+	(*BulkPropertyValuesRequest)(nil),                       // 2: datacommons.v1.BulkPropertyValuesRequest
+	(*BulkPropertyValuesResponse)(nil),                      // 3: datacommons.v1.BulkPropertyValuesResponse
+	(*BulkPropertyValuesResponse_EntityPropertyValues)(nil), // 4: datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues
+	(*EntityInfo)(nil),                                      // 5: datacommons.EntityInfo
 }
 var file_v1_property_values_proto_depIdxs = []int32{
-	6, // 0: datacommons.v1.PagedEntities.entities:type_name -> datacommons.EntityInfo
-	6, // 1: datacommons.v1.PropertyValuesResponse.data:type_name -> datacommons.EntityInfo
-	5, // 2: datacommons.v1.BulkPropertyValuesResponse.data:type_name -> datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues
-	6, // 3: datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues.values:type_name -> datacommons.EntityInfo
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	5, // 0: datacommons.v1.PropertyValuesResponse.data:type_name -> datacommons.EntityInfo
+	4, // 1: datacommons.v1.BulkPropertyValuesResponse.data:type_name -> datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues
+	5, // 2: datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues.values:type_name -> datacommons.EntityInfo
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_v1_property_values_proto_init() }
@@ -535,18 +468,6 @@ func file_v1_property_values_proto_init() {
 	file_entity_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_property_values_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PagedEntities); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_v1_property_values_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PropertyValuesRequest); i {
 			case 0:
 				return &v.state
@@ -558,7 +479,7 @@ func file_v1_property_values_proto_init() {
 				return nil
 			}
 		}
-		file_v1_property_values_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_v1_property_values_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PropertyValuesResponse); i {
 			case 0:
 				return &v.state
@@ -570,7 +491,7 @@ func file_v1_property_values_proto_init() {
 				return nil
 			}
 		}
-		file_v1_property_values_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_v1_property_values_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkPropertyValuesRequest); i {
 			case 0:
 				return &v.state
@@ -582,7 +503,7 @@ func file_v1_property_values_proto_init() {
 				return nil
 			}
 		}
-		file_v1_property_values_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_v1_property_values_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkPropertyValuesResponse); i {
 			case 0:
 				return &v.state
@@ -594,7 +515,7 @@ func file_v1_property_values_proto_init() {
 				return nil
 			}
 		}
-		file_v1_property_values_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_v1_property_values_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkPropertyValuesResponse_EntityPropertyValues); i {
 			case 0:
 				return &v.state
@@ -613,7 +534,7 @@ func file_v1_property_values_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v1_property_values_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
