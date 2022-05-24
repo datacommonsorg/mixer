@@ -39,6 +39,10 @@ func LinkedPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "only support property 'containedInPlace'")
 	}
+	if valueEntityType == "" {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "missing argument: value_entity_type")
+	}
 	if !util.CheckValidDCIDs([]string{entity}) {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid entity %s", entity)
