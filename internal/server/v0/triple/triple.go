@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package node
+package triple
 
 import (
 	"context"
@@ -20,16 +20,16 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/server/v1/triples"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/proto"
 )
 
 type prop struct {
@@ -108,7 +108,7 @@ func getObsTriples(
 				}
 			}
 		}
-		nameNodes, err := GetPropertyValuesHelper(ctx, store, objDcids, "name", true)
+		nameNodes, err := node.GetPropertyValuesHelper(ctx, store, objDcids, "name", true)
 		if err != nil {
 			return nil, err
 		}
@@ -161,7 +161,7 @@ func GetTriples(
 	var err error
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		result, err = ReadTriples(ctx, store.BtGroup, regDcids)
+		result, err = ReadTriples(ctx, store, regDcids)
 		if err != nil {
 			return nil, err
 		}
@@ -188,79 +188,30 @@ func GetTriples(
 // ReadTriples read triples from base cache for multiple dcids.
 func ReadTriples(
 	ctx context.Context,
-	btGroup *bigtable.Group,
+	store *store.Store,
 	dcids []string,
 ) (*pb.GetTriplesResponse, error) {
-	btDataList, err := bigtable.Read(
-		ctx,
-		btGroup,
-		bigtable.BtTriplesPrefix,
-		[][]string{dcids},
-		func(jsonRaw []byte) (interface{}, error) {
-			var triples pb.Triples
-			if err := proto.Unmarshal(jsonRaw, &triples); err != nil {
-				return nil, err
-			}
-			return &triples, nil
-		},
-	)
-	if err != nil {
-		return nil, err
-	}
 	result := &pb.GetTriplesResponse{Triples: make(map[string]*pb.Triples)}
-	// dcid -> predicate -> id/value
-	visited := map[string]map[string]map[string]struct{}{}
-	for _, btData := range btDataList {
-		for _, row := range btData {
-			dcid := row.Parts[0]
-			triples, ok := row.Data.(*pb.Triples)
-			if !ok {
-				return nil, status.Error(codes.Internal, "Error reading triples cache")
-			}
-			if triples.Triples != nil {
-				// Non import group case.
-				result.Triples[dcid] = triples
+	for _, dcid := range dcids {
+		result.Triples[dcid] = &pb.Triples{}
+	}
+	for _, direction := range []string{util.DirectionOut, util.DirectionIn} {
+		v1Resp, err := triples.BulkTriples(
+			ctx,
+			&pb.BulkTriplesRequest{
+				Entities:  dcids,
+				Direction: direction,
+			},
+			store,
+		)
+		if err != nil {
+			return nil, err
+		}
+		for _, item := range v1Resp.GetData() {
+			if direction == util.DirectionIn {
+				result.Triples[item.GetEntity()].InNodes = item.GetTriples()
 			} else {
-				if _, ok := result.Triples[dcid]; !ok {
-					result.Triples[dcid] = &pb.Triples{
-						InNodes:  map[string]*pb.EntityInfoCollection{},
-						OutNodes: map[string]*pb.EntityInfoCollection{},
-					}
-				}
-				if _, ok := visited[dcid]; !ok {
-					visited[dcid] = map[string]map[string]struct{}{}
-				}
-				// This is import group case, since there are multiple cache data.
-				for pred, entities := range triples.OutNodes {
-					// For out nodes, only add data to result if it does not exist.
-					if _, ok := result.Triples[dcid].OutNodes[pred]; !ok {
-						result.Triples[dcid].OutNodes[pred] = entities
-					}
-				}
-				for pred, c := range triples.InNodes {
-					if _, ok := visited[dcid][pred]; !ok {
-						visited[dcid][pred] = map[string]struct{}{}
-					}
-					// For in nodes, merge entities from different tables.
-					if _, ok := result.Triples[dcid].InNodes[pred]; !ok {
-						result.Triples[dcid].InNodes[pred] = c
-						for _, e := range c.Entities {
-							visited[dcid][pred][e.Dcid] = struct{}{}
-						}
-					} else {
-						for _, e := range c.Entities {
-							// Check if a duplicate node has been added to the result.
-							// Duplication is based on either the DCID or the value.
-							if _, ok := visited[dcid][pred][e.Dcid]; !ok {
-								result.Triples[dcid].InNodes[pred].Entities = append(
-									result.Triples[dcid].InNodes[pred].Entities,
-									e,
-								)
-								visited[dcid][pred][e.Dcid] = struct{}{}
-							}
-						}
-					}
-				}
+				result.Triples[item.GetEntity()].OutNodes = item.GetTriples()
 			}
 		}
 	}
