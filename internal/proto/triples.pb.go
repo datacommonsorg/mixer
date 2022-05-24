@@ -159,6 +159,186 @@ func (x *TriplesResponse) GetNextToken() string {
 	return ""
 }
 
+type BulkTriplesRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Entities []string `protobuf:"bytes,1,rep,name=entities,proto3" json:"entities,omitempty"`
+	// Direction can only be "in" and "out"
+	Direction string `protobuf:"bytes,2,opt,name=direction,proto3" json:"direction,omitempty"`
+	// [Optional]
+	// The pagination token for getting the next set of entries. This is empty
+	// for the first request and needs to be set in the subsequent request.
+	// This is the value returned from a prior call to TriplesRequest
+	NextToken string `protobuf:"bytes,3,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
+}
+
+func (x *BulkTriplesRequest) Reset() {
+	*x = BulkTriplesRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_triples_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BulkTriplesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkTriplesRequest) ProtoMessage() {}
+
+func (x *BulkTriplesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_triples_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkTriplesRequest.ProtoReflect.Descriptor instead.
+func (*BulkTriplesRequest) Descriptor() ([]byte, []int) {
+	return file_v1_triples_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *BulkTriplesRequest) GetEntities() []string {
+	if x != nil {
+		return x.Entities
+	}
+	return nil
+}
+
+func (x *BulkTriplesRequest) GetDirection() string {
+	if x != nil {
+		return x.Direction
+	}
+	return ""
+}
+
+func (x *BulkTriplesRequest) GetNextToken() string {
+	if x != nil {
+		return x.NextToken
+	}
+	return ""
+}
+
+type BulkTriplesResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*BulkTriplesResponse_EntityTriples `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	// The pagination token for getting the next set of entries.
+	NextToken string `protobuf:"bytes,2,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
+}
+
+func (x *BulkTriplesResponse) Reset() {
+	*x = BulkTriplesResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_triples_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BulkTriplesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkTriplesResponse) ProtoMessage() {}
+
+func (x *BulkTriplesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_triples_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkTriplesResponse.ProtoReflect.Descriptor instead.
+func (*BulkTriplesResponse) Descriptor() ([]byte, []int) {
+	return file_v1_triples_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *BulkTriplesResponse) GetData() []*BulkTriplesResponse_EntityTriples {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+func (x *BulkTriplesResponse) GetNextToken() string {
+	if x != nil {
+		return x.NextToken
+	}
+	return ""
+}
+
+type BulkTriplesResponse_EntityTriples struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Entity string `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
+	// Key is property.
+	Triples map[string]*EntityInfoCollection `protobuf:"bytes,2,rep,name=triples,proto3" json:"triples,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (x *BulkTriplesResponse_EntityTriples) Reset() {
+	*x = BulkTriplesResponse_EntityTriples{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_triples_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BulkTriplesResponse_EntityTriples) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkTriplesResponse_EntityTriples) ProtoMessage() {}
+
+func (x *BulkTriplesResponse_EntityTriples) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_triples_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkTriplesResponse_EntityTriples.ProtoReflect.Descriptor instead.
+func (*BulkTriplesResponse_EntityTriples) Descriptor() ([]byte, []int) {
+	return file_v1_triples_proto_rawDescGZIP(), []int{3, 0}
+}
+
+func (x *BulkTriplesResponse_EntityTriples) GetEntity() string {
+	if x != nil {
+		return x.Entity
+	}
+	return ""
+}
+
+func (x *BulkTriplesResponse_EntityTriples) GetTriples() map[string]*EntityInfoCollection {
+	if x != nil {
+		return x.Triples
+	}
+	return nil
+}
+
 var File_v1_triples_proto protoreflect.FileDescriptor
 
 var file_v1_triples_proto_rawDesc = []byte{
@@ -184,6 +364,35 @@ var file_v1_triples_proto_rawDesc = []byte{
 	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
 	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f,
 	0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x6d, 0x0a, 0x12, 0x42, 0x75, 0x6c, 0x6b, 0x54, 0x72, 0x69,
+	0x70, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x65,
+	0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x65,
+	0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x64, 0x69, 0x72, 0x65, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x64, 0x69, 0x72, 0x65,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x0a, 0x0a, 0x6e, 0x65, 0x78, 0x74, 0x5f, 0x74, 0x6f,
+	0x6b, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e, 0x65, 0x78, 0x74, 0x54,
+	0x6f, 0x6b, 0x65, 0x6e, 0x22, 0xde, 0x02, 0x0a, 0x13, 0x42, 0x75, 0x6c, 0x6b, 0x54, 0x72, 0x69,
+	0x70, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x45, 0x0a, 0x04,
+	0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x75, 0x6c, 0x6b,
+	0x54, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e,
+	0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x52, 0x04, 0x64,
+	0x61, 0x74, 0x61, 0x12, 0x1d, 0x0a, 0x0a, 0x6e, 0x65, 0x78, 0x74, 0x5f, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e, 0x65, 0x78, 0x74, 0x54, 0x6f, 0x6b,
+	0x65, 0x6e, 0x1a, 0xe0, 0x01, 0x0a, 0x0d, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x72, 0x69,
+	0x70, 0x6c, 0x65, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x58, 0x0a, 0x07,
+	0x74, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x3e, 0x2e,
+	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x42,
+	0x75, 0x6c, 0x6b, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73,
+	0x2e, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x07, 0x74,
+	0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x1a, 0x5d, 0x0a, 0x0c, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65,
+	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x37, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f,
+	0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
 	0x65, 0x3a, 0x02, 0x38, 0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
@@ -200,21 +409,28 @@ func file_v1_triples_proto_rawDescGZIP() []byte {
 	return file_v1_triples_proto_rawDescData
 }
 
-var file_v1_triples_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_v1_triples_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_v1_triples_proto_goTypes = []interface{}{
-	(*TriplesRequest)(nil),       // 0: datacommons.v1.TriplesRequest
-	(*TriplesResponse)(nil),      // 1: datacommons.v1.TriplesResponse
-	nil,                          // 2: datacommons.v1.TriplesResponse.DataEntry
-	(*EntityInfoCollection)(nil), // 3: datacommons.EntityInfoCollection
+	(*TriplesRequest)(nil),      // 0: datacommons.v1.TriplesRequest
+	(*TriplesResponse)(nil),     // 1: datacommons.v1.TriplesResponse
+	(*BulkTriplesRequest)(nil),  // 2: datacommons.v1.BulkTriplesRequest
+	(*BulkTriplesResponse)(nil), // 3: datacommons.v1.BulkTriplesResponse
+	nil,                         // 4: datacommons.v1.TriplesResponse.DataEntry
+	(*BulkTriplesResponse_EntityTriples)(nil), // 5: datacommons.v1.BulkTriplesResponse.EntityTriples
+	nil,                          // 6: datacommons.v1.BulkTriplesResponse.EntityTriples.TriplesEntry
+	(*EntityInfoCollection)(nil), // 7: datacommons.EntityInfoCollection
 }
 var file_v1_triples_proto_depIdxs = []int32{
-	2, // 0: datacommons.v1.TriplesResponse.data:type_name -> datacommons.v1.TriplesResponse.DataEntry
-	3, // 1: datacommons.v1.TriplesResponse.DataEntry.value:type_name -> datacommons.EntityInfoCollection
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	4, // 0: datacommons.v1.TriplesResponse.data:type_name -> datacommons.v1.TriplesResponse.DataEntry
+	5, // 1: datacommons.v1.BulkTriplesResponse.data:type_name -> datacommons.v1.BulkTriplesResponse.EntityTriples
+	7, // 2: datacommons.v1.TriplesResponse.DataEntry.value:type_name -> datacommons.EntityInfoCollection
+	6, // 3: datacommons.v1.BulkTriplesResponse.EntityTriples.triples:type_name -> datacommons.v1.BulkTriplesResponse.EntityTriples.TriplesEntry
+	7, // 4: datacommons.v1.BulkTriplesResponse.EntityTriples.TriplesEntry.value:type_name -> datacommons.EntityInfoCollection
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_v1_triples_proto_init() }
@@ -248,6 +464,42 @@ func file_v1_triples_proto_init() {
 				return nil
 			}
 		}
+		file_v1_triples_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BulkTriplesRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_triples_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BulkTriplesResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_triples_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BulkTriplesResponse_EntityTriples); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -255,7 +507,7 @@ func file_v1_triples_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v1_triples_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

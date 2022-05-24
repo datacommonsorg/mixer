@@ -393,6 +393,16 @@ service Mixer {
     };
   }
 
+  rpc BulkTriples(datacommons.v1.BulkTriplesRequest) returns (datacommons.v1.BulkTriplesResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/triples/{direction}"
+      additional_bindings : {
+        post : "/v1/bulk/triples/{direction}"
+        body : "*"
+      }
+    };
+  }
+
   rpc Variables(datacommons.v1.VariablesRequest)
       returns (datacommons.v1.VariablesResponse) {
     option (google.api.http) = {

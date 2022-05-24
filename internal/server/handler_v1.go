@@ -63,6 +63,13 @@ func (s *Server) Triples(
 	return triples.Triples(ctx, in, s.store)
 }
 
+// BulkTriples implements API for mixer.BulkTriples.
+func (s *Server) BulkTriples(
+	ctx context.Context, in *pb.BulkTriplesRequest,
+) (*pb.BulkTriplesResponse, error) {
+	return triples.BulkTriples(ctx, in, s.store)
+}
+
 // Variables implements API for mixer.Variables.
 func (s *Server) Variables(
 	ctx context.Context, in *pb.VariablesRequest,

@@ -118,6 +118,7 @@ type MixerClient interface {
 	PropertyValues(ctx context.Context, in *PropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error)
 	BulkPropertyValues(ctx context.Context, in *BulkPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error)
 	Triples(ctx context.Context, in *TriplesRequest, opts ...grpc.CallOption) (*TriplesResponse, error)
+	BulkTriples(ctx context.Context, in *BulkTriplesRequest, opts ...grpc.CallOption) (*BulkTriplesResponse, error)
 	Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error)
 	BulkVariables(ctx context.Context, in *BulkVariablesRequest, opts ...grpc.CallOption) (*BulkVariablesResponse, error)
 	PlaceInfo(ctx context.Context, in *PlaceInfoRequest, opts ...grpc.CallOption) (*PlaceInfoResponse, error)
@@ -486,6 +487,15 @@ func (c *mixerClient) Triples(ctx context.Context, in *TriplesRequest, opts ...g
 	return out, nil
 }
 
+func (c *mixerClient) BulkTriples(ctx context.Context, in *BulkTriplesRequest, opts ...grpc.CallOption) (*BulkTriplesResponse, error) {
+	out := new(BulkTriplesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkTriples", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error) {
 	out := new(VariablesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Variables", in, out, opts...)
@@ -730,6 +740,7 @@ type MixerServer interface {
 	PropertyValues(context.Context, *PropertyValuesRequest) (*PropertyValuesResponse, error)
 	BulkPropertyValues(context.Context, *BulkPropertyValuesRequest) (*BulkPropertyValuesResponse, error)
 	Triples(context.Context, *TriplesRequest) (*TriplesResponse, error)
+	BulkTriples(context.Context, *BulkTriplesRequest) (*BulkTriplesResponse, error)
 	Variables(context.Context, *VariablesRequest) (*VariablesResponse, error)
 	BulkVariables(context.Context, *BulkVariablesRequest) (*BulkVariablesResponse, error)
 	PlaceInfo(context.Context, *PlaceInfoRequest) (*PlaceInfoResponse, error)
@@ -865,6 +876,9 @@ func (UnimplementedMixerServer) BulkPropertyValues(context.Context, *BulkPropert
 }
 func (UnimplementedMixerServer) Triples(context.Context, *TriplesRequest) (*TriplesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Triples not implemented")
+}
+func (UnimplementedMixerServer) BulkTriples(context.Context, *BulkTriplesRequest) (*BulkTriplesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkTriples not implemented")
 }
 func (UnimplementedMixerServer) Variables(context.Context, *VariablesRequest) (*VariablesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Variables not implemented")
@@ -1610,6 +1624,24 @@ func _Mixer_Triples_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_BulkTriples_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkTriplesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).BulkTriples(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/BulkTriples",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).BulkTriples(ctx, req.(*BulkTriplesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_Variables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VariablesRequest)
 	if err := dec(in); err != nil {
@@ -2056,6 +2088,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Triples",
 			Handler:    _Mixer_Triples_Handler,
+		},
+		{
+			MethodName: "BulkTriples",
+			Handler:    _Mixer_BulkTriples_Handler,
 		},
 		{
 			MethodName: "Variables",

@@ -35,3 +35,26 @@ message TriplesResponse {
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }
+
+
+message BulkTriplesRequest {
+  repeated string entities = 1;
+  // Direction can only be "in" and "out"
+  string direction = 2;
+  // [Optional]
+  // The pagination token for getting the next set of entries. This is empty
+  // for the first request and needs to be set in the subsequent request.
+  // This is the value returned from a prior call to BulkTriplesRequest
+  string next_token = 3;
+}
+
+message BulkTriplesResponse {
+  message EntityTriples {
+    string entity = 1;
+    // Key is property.
+    map<string, datacommons.EntityInfoCollection> triples = 2;
+  }
+  repeated EntityTriples data = 1;
+  // The pagination token for getting the next set of entries.
+  string next_token = 2;
+}
