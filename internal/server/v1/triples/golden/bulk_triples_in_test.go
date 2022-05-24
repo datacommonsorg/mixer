@@ -41,13 +41,13 @@ func TestBulkTriplesIn(t *testing.T) {
 		}{
 			{
 				"result1.json",
-				[]string{"Country", "BiologicalSpecimen", "Count_Person"},
+				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dummy"},
 				"",
 			},
 			{
 				"result2.json",
-				[]string{"Country", "BiologicalSpecimen", "Count_Person"},
-				"H4sIAAAAAAAA/5TPwYrCMBCA4U0adkPYhZLDPoOeLIhXEfXiScEHkFDHEmgmJU0PfXtpVAppVbzMKf/MFzEXPxvboHet+Deg6saBAfRbQGs0Km+d/JKUE0k5lZQnknImlkKutS1toXNVHivItQH8oF+J33D0dABX21cl4yQlknEaZhImS4nIevafU1jADvOyOUMdNd3FW7EYNQ/imDqLqG+DaS/79m0F+8tTUjZK6qvH6u7jNCyfRJrh2zvjCgAA//8BAAD//xWEulHYAQAA",
+				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dummy"},
+				"H4sIAAAAAAAA/+Iy5mJ3zi/NKymq5BLLTU0sLi1KzU3NK3FJzcvPzcxLLMkvEmIQYuJgFGLiYBJi4mAWYuJg4bLjEnLKzM/JT89MTswJLkhNzsxNzSNBvwMXD9jS+IDUouJ8fDpZOBgFGIVYOJjAJDOYZBFg5DLkYk0pzc0lxdEGCJ/yFiXmpad65iXnlKakFqNZA1IPscQUqzcxNKNbpI/mO4IaNGCeIahSE+EHtpLKglT/NJyON8DqeIQumNGgUGWCOgPV3ZhqYc5QhDkYpxIAAAAA//8BAAD//wiZxtFYAgAA",
 			},
 		} {
 			req := &pb.BulkTriplesRequest{

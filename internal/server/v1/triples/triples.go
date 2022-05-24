@@ -150,7 +150,7 @@ func BulkTriples(
 			}
 		}
 	}
-	for e := range triplesByEntity {
+	for _, e := range entities {
 		entityTriples := &pb.BulkTriplesResponse_EntityTriples{
 			Entity:  e,
 			Triples: map[string]*pb.EntityInfoCollection{},
