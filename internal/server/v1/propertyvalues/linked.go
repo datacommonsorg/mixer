@@ -30,7 +30,7 @@ func LinkedPropertyValues(
 	ctx context.Context,
 	in *pb.LinkedPropertyValuesRequest,
 	store *store.Store,
-) (*pb.LinkedPropertyValuesResponse, error) {
+) (*pb.PropertyValuesResponse, error) {
 	property := in.GetProperty()
 	entity := in.GetEntity()
 	valueEntityType := in.GetValueEntityType()
@@ -70,7 +70,7 @@ func LinkedPropertyValues(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.LinkedPropertyValuesResponse{}
+	result := &pb.PropertyValuesResponse{}
 	for _, dcid := range valueDcids {
 		var name string
 		if tmp, ok := data["name"][dcid]; ok {
@@ -82,6 +82,76 @@ func LinkedPropertyValues(
 				Name: name,
 			},
 		)
+	}
+	return result, nil
+}
+
+// BulkLinkedPropertyValues implements mixer.BulkLinkedPropertyValues handler.
+func BulkLinkedPropertyValues(
+	ctx context.Context,
+	in *pb.BulkLinkedPropertyValuesRequest,
+	store *store.Store,
+) (*pb.BulkPropertyValuesResponse, error) {
+	property := in.GetProperty()
+	entities := in.GetEntities()
+	valueEntityType := in.GetValueEntityType()
+	// Check arguments
+	if property != "containedInPlace" {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "only support property 'containedInPlace'")
+	}
+	if valueEntityType == "" {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "missing argument: value_entity_type")
+	}
+	if !util.CheckValidDCIDs(entities) {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid entities %s", entities)
+	}
+	resp, err := placein.GetPlacesIn(
+		ctx,
+		store,
+		entities,
+		valueEntityType,
+	)
+	if err != nil {
+		return nil, err
+	}
+	valueDcids := []string{}
+	for _, e := range resp {
+		valueDcids = append(valueDcids, e...)
+	}
+	// Fetch names
+	data, _, err := Fetch(
+		ctx,
+		store,
+		[]string{"name"},
+		valueDcids,
+		0,
+		"",
+		"out",
+	)
+	if err != nil {
+		return nil, err
+	}
+	result := &pb.BulkPropertyValuesResponse{}
+	for e, children := range resp {
+		tmp := &pb.BulkPropertyValuesResponse_EntityPropertyValues{
+			Entity: e,
+		}
+		for _, dcid := range children {
+			var name string
+			if tmp, ok := data["name"][dcid]; ok {
+				name = tmp[0].Value
+			}
+			tmp.Values = append(tmp.Values,
+				&pb.EntityInfo{
+					Dcid: dcid,
+					Name: name,
+				},
+			)
+		}
+		result.Data = append(result.Data, tmp)
 	}
 	return result, nil
 }

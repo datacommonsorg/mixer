@@ -321,6 +321,8 @@ func (x *BulkPropertyValuesResponse) GetNextToken() string {
 	return ""
 }
 
+// Note this API request only supports property "containedInPlace" now.
+// This is effectively used to query containing places for certain type.
 type LinkedPropertyValuesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -384,16 +386,20 @@ func (x *LinkedPropertyValuesRequest) GetValueEntityType() string {
 	return ""
 }
 
-type LinkedPropertyValuesResponse struct {
+// Note this API request only supports property "containedInPlace" now.
+// This is effectively used to query containing places for certain type.
+type BulkLinkedPropertyValuesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Values []*EntityInfo `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
+	Property        string   `protobuf:"bytes,1,opt,name=property,proto3" json:"property,omitempty"`
+	Entities        []string `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
+	ValueEntityType string   `protobuf:"bytes,3,opt,name=value_entity_type,json=valueEntityType,proto3" json:"value_entity_type,omitempty"`
 }
 
-func (x *LinkedPropertyValuesResponse) Reset() {
-	*x = LinkedPropertyValuesResponse{}
+func (x *BulkLinkedPropertyValuesRequest) Reset() {
+	*x = BulkLinkedPropertyValuesRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_v1_property_values_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -401,13 +407,13 @@ func (x *LinkedPropertyValuesResponse) Reset() {
 	}
 }
 
-func (x *LinkedPropertyValuesResponse) String() string {
+func (x *BulkLinkedPropertyValuesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LinkedPropertyValuesResponse) ProtoMessage() {}
+func (*BulkLinkedPropertyValuesRequest) ProtoMessage() {}
 
-func (x *LinkedPropertyValuesResponse) ProtoReflect() protoreflect.Message {
+func (x *BulkLinkedPropertyValuesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_v1_property_values_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -419,16 +425,30 @@ func (x *LinkedPropertyValuesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LinkedPropertyValuesResponse.ProtoReflect.Descriptor instead.
-func (*LinkedPropertyValuesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use BulkLinkedPropertyValuesRequest.ProtoReflect.Descriptor instead.
+func (*BulkLinkedPropertyValuesRequest) Descriptor() ([]byte, []int) {
 	return file_v1_property_values_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *LinkedPropertyValuesResponse) GetValues() []*EntityInfo {
+func (x *BulkLinkedPropertyValuesRequest) GetProperty() string {
 	if x != nil {
-		return x.Values
+		return x.Property
+	}
+	return ""
+}
+
+func (x *BulkLinkedPropertyValuesRequest) GetEntities() []string {
+	if x != nil {
+		return x.Entities
 	}
 	return nil
+}
+
+func (x *BulkLinkedPropertyValuesRequest) GetValueEntityType() string {
+	if x != nil {
+		return x.ValueEntityType
+	}
+	return ""
 }
 
 type BulkPropertyValuesResponse_EntityPropertyValues struct {
@@ -543,13 +563,16 @@ var file_v1_property_values_proto_rawDesc = []byte{
 	0x69, 0x74, 0x79, 0x12, 0x2a, 0x0a, 0x11, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x5f, 0x65, 0x6e, 0x74,
 	0x69, 0x74, 0x79, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f,
 	0x76, 0x61, 0x6c, 0x75, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x22,
-	0x4f, 0x0a, 0x1c, 0x4c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74,
-	0x79, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x2f, 0x0a, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e,
-	0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73,
-	0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x85, 0x01, 0x0a, 0x1f, 0x42, 0x75, 0x6c, 0x6b, 0x4c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x50, 0x72,
+	0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x12,
+	0x1a, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28,
+	0x09, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x2a, 0x0a, 0x11, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x5f, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x5f, 0x74, 0x79, 0x70, 0x65,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x45, 0x6e, 0x74,
+	0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -571,20 +594,19 @@ var file_v1_property_values_proto_goTypes = []interface{}{
 	(*BulkPropertyValuesRequest)(nil),                       // 2: datacommons.v1.BulkPropertyValuesRequest
 	(*BulkPropertyValuesResponse)(nil),                      // 3: datacommons.v1.BulkPropertyValuesResponse
 	(*LinkedPropertyValuesRequest)(nil),                     // 4: datacommons.v1.LinkedPropertyValuesRequest
-	(*LinkedPropertyValuesResponse)(nil),                    // 5: datacommons.v1.LinkedPropertyValuesResponse
+	(*BulkLinkedPropertyValuesRequest)(nil),                 // 5: datacommons.v1.BulkLinkedPropertyValuesRequest
 	(*BulkPropertyValuesResponse_EntityPropertyValues)(nil), // 6: datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues
 	(*EntityInfo)(nil),                                      // 7: datacommons.EntityInfo
 }
 var file_v1_property_values_proto_depIdxs = []int32{
 	7, // 0: datacommons.v1.PropertyValuesResponse.values:type_name -> datacommons.EntityInfo
 	6, // 1: datacommons.v1.BulkPropertyValuesResponse.data:type_name -> datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues
-	7, // 2: datacommons.v1.LinkedPropertyValuesResponse.values:type_name -> datacommons.EntityInfo
-	7, // 3: datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues.values:type_name -> datacommons.EntityInfo
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	7, // 2: datacommons.v1.BulkPropertyValuesResponse.EntityPropertyValues.values:type_name -> datacommons.EntityInfo
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_v1_property_values_proto_init() }
@@ -655,7 +677,7 @@ func file_v1_property_values_proto_init() {
 			}
 		}
 		file_v1_property_values_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LinkedPropertyValuesResponse); i {
+			switch v := v.(*BulkLinkedPropertyValuesRequest); i {
 			case 0:
 				return &v.state
 			case 1:

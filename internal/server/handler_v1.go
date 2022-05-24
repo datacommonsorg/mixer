@@ -52,8 +52,15 @@ func (s *Server) PropertyValues(
 // LinkedPropertyValues implements API for mixer.LinkedPropertyValues.
 func (s *Server) LinkedPropertyValues(
 	ctx context.Context, in *pb.LinkedPropertyValuesRequest,
-) (*pb.LinkedPropertyValuesResponse, error) {
+) (*pb.PropertyValuesResponse, error) {
 	return propertyvalues.LinkedPropertyValues(ctx, in, s.store)
+}
+
+// BulkLinkedPropertyValues implements API for mixer.BulkLinkedPropertyValues.
+func (s *Server) BulkLinkedPropertyValues(
+	ctx context.Context, in *pb.BulkLinkedPropertyValuesRequest,
+) (*pb.BulkPropertyValuesResponse, error) {
+	return propertyvalues.BulkLinkedPropertyValues(ctx, in, s.store)
 }
 
 // BulkPropertyValues implements API for mixer.BulkPropertyValues.
