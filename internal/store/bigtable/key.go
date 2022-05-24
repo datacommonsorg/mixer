@@ -50,10 +50,6 @@ const (
 	// BtPagedPropValOut for out-arc paged entities.
 	// Key: <dcid^predicate^page>
 	BtPagedPropValOut = "d/i/"
-	// BtInPropValPrefix for in-arc prop value.
-	BtInPropValPrefix = "d/l/"
-	// BtOutPropValPrefix for out-arc prop value.
-	BtOutPropValPrefix = "d/m/"
 	// BtRelatedLocationsSameTypePrefix for related places with same type.
 	BtRelatedLocationsSameTypePrefix = "d/o/"
 	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same type and ancestor.
@@ -76,12 +72,6 @@ const (
 	// BtBatchQuerySize is the size of BigTable batch query.
 	BtBatchQuerySize = 1000
 )
-
-// PropValkeyPrefix contains the out and in prop val key prefix.
-var PropValkeyPrefix = map[bool]string{
-	true:  BtOutPropValPrefix,
-	false: BtInPropValPrefix,
-}
 
 // Accessor represents data used to access bigtable row.
 type Accessor struct {

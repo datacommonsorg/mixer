@@ -22,7 +22,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
-	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
@@ -35,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
+	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statset"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statvarpath"
@@ -281,7 +281,7 @@ func (s *Server) GetPropertyLabels(
 func (s *Server) GetPropertyValues(
 	ctx context.Context, in *pb.GetPropertyValuesRequest,
 ) (*pb.PayloadResponse, error) {
-	resp, err := node.GetPropertyValues(ctx, in, s.store)
+	resp, err := propertyvalue.GetPropertyValues(ctx, in, s.store)
 	if err != nil {
 		return nil, err
 	}

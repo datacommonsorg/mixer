@@ -24,9 +24,9 @@ import (
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/server/convert"
-	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
+	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -131,7 +131,7 @@ func getCohort(placeType string, placeDcid string) (string, error) {
 
 // get the type of a place.
 func getPlaceType(ctx context.Context, store *store.Store, dcid string) (string, error) {
-	resp, err := node.GetPropertyValuesHelper(
+	resp, err := propertyvalue.GetPropertyValuesHelper(
 		ctx, store, []string{dcid}, "typeOf", true)
 	if err != nil {
 		return "", err
@@ -354,14 +354,14 @@ func getPlacePageChildPlaces(
 ) {
 	children := []*pb.EntityInfo{}
 	// ContainedIn places
-	containedInPlaces, err := node.GetPropertyValuesHelper(
+	containedInPlaces, err := propertyvalue.GetPropertyValuesHelper(
 		ctx, store, []string{placedDcid}, "containedInPlace", false)
 	if err != nil {
 		return nil, err
 	}
 	children = append(children, containedInPlaces[placedDcid]...)
 	// GeoOverlaps places
-	overlapPlaces, err := node.GetPropertyValuesHelper(
+	overlapPlaces, err := propertyvalue.GetPropertyValuesHelper(
 		ctx, store, []string{placedDcid}, "geoOverlaps", false)
 	if err != nil {
 		return nil, err
@@ -449,7 +449,7 @@ func getSimilarPlaces(
 	if cohort == "" {
 		return []string{}, nil
 	}
-	resp, err := node.GetPropertyValuesHelper(
+	resp, err := propertyvalue.GetPropertyValuesHelper(
 		ctx, store, []string{cohort}, "member", true)
 	if err != nil {
 		return nil, err
@@ -490,7 +490,7 @@ func getSimilarPlaces(
 // Get nearby places.
 func getNearbyPlaces(ctx context.Context, store *store.Store, dcid string,
 ) ([]string, error) {
-	resp, err := node.GetPropertyValuesHelper(
+	resp, err := propertyvalue.GetPropertyValuesHelper(
 		ctx, store, []string{dcid}, "nearbyPlaces", true)
 	if err != nil {
 		return nil, err
