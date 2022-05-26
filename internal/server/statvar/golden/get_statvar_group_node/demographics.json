@@ -221,7 +221,7 @@
       "id": "dc/g/MilitaryService",
       "specializedEntity": "Military Service",
       "displayName": "Military Service",
-      "descendentStatVarCount": 1572
+      "descendentStatVarCount": 1517
     },
     {
       "id": "dc/g/Person_PlaceOfBirth",
@@ -251,7 +251,7 @@
       "id": "dc/g/Residence",
       "specializedEntity": "Residence",
       "displayName": "Residence",
-      "descendentStatVarCount": 3071
+      "descendentStatVarCount": 3081
     }
   ],
   "descendentStatVarCount": 15589,

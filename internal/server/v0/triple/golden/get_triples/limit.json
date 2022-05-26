@@ -287,6 +287,20 @@
       "provenanceId": "dc/5l5zxr1"
     },
     {
+      "subjectId": "dc/phx9z7k0d8ne7",
+      "subjectName": "Plant Name",
+      "subjectTypes": [
+        "PowerPlantUnit"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/22t2hr3"
+    },
+    {
       "subjectId": "geoId/01001",
       "subjectName": "Autauga County",
       "subjectTypes": [
