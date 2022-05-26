@@ -12,16 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package node
+package propertyvalue
 
 import (
 	"context"
 
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/proto"
 
+	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -106,67 +105,27 @@ func GetPropertyValuesHelper(
 	prop string,
 	arcOut bool,
 ) (map[string][]*pb.EntityInfo, error) {
-	btDataList, err := bigtable.Read(
+	var direction string
+	if arcOut {
+		direction = util.DirectionOut
+	} else {
+		direction = util.DirectionIn
+	}
+	resp, err := propertyvalues.BulkPropertyValues(
 		ctx,
-		store.BtGroup,
-		bigtable.PropValkeyPrefix[arcOut],
-		[][]string{dcids, {prop}},
-		func(jsonRaw []byte) (interface{}, error) {
-			var propVals pb.EntityInfoCollection
-			err := proto.Unmarshal(jsonRaw, &propVals)
-			return propVals.Entities, err
+		&pb.BulkPropertyValuesRequest{
+			Property:  prop,
+			Entities:  dcids,
+			Direction: direction,
 		},
+		store,
 	)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string][]*pb.EntityInfo{}
-	visited := map[string]map[string]struct{}{}
-	// Loop over the import groups. They are ordered by preferences.
-	// Only add a node if it is not seen yet.
-	for _, btData := range btDataList {
-		for _, row := range btData {
-			dcid := row.Parts[0]
-			_, ok := result[dcid]
-			if ok {
-				// For out arcs, only get data from one cache. Do not merge across cache.
-				if arcOut {
-					continue
-				}
-			} else {
-				result[dcid] = []*pb.EntityInfo{}
-			}
-			if row.Data != nil {
-				entities, ok := row.Data.([]*pb.EntityInfo)
-				if !ok {
-					return nil, status.Error(codes.Internal, "Failed to convert data into []*pb.EntityInfo")
-				}
-				if arcOut {
-					// Only pick one cache for out arc.
-					result[dcid] = entities
-				} else {
-					// Need to merge nodes of in-arc from different cache.
-					if _, ok := visited[dcid]; !ok {
-						visited[dcid] = map[string]struct{}{}
-					}
-					for _, e := range entities {
-						// Check if a duplicate node has been added to the result.
-						// Duplication is based on either the DCID or the value.
-						if e.Dcid != "" {
-							if _, ok := visited[dcid][e.Dcid]; !ok {
-								result[dcid] = append(result[dcid], e)
-								visited[dcid][e.Dcid] = struct{}{}
-							}
-						} else if e.Value != "" {
-							if _, ok := visited[dcid][e.Value]; !ok {
-								result[dcid] = append(result[dcid], e)
-								visited[dcid][e.Value] = struct{}{}
-							}
-						}
-					}
-				}
-			}
-		}
+	for _, item := range resp.Data {
+		result[item.GetEntity()] = item.GetValues()
 	}
 	return result, nil
 }

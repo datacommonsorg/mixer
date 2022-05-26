@@ -116,7 +116,9 @@ type MixerClient interface {
 	Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error)
 	BulkProperties(ctx context.Context, in *BulkPropertiesRequest, opts ...grpc.CallOption) (*BulkPropertiesResponse, error)
 	PropertyValues(ctx context.Context, in *PropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error)
+	LinkedPropertyValues(ctx context.Context, in *LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error)
 	BulkPropertyValues(ctx context.Context, in *BulkPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error)
+	BulkLinkedPropertyValues(ctx context.Context, in *BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error)
 	Triples(ctx context.Context, in *TriplesRequest, opts ...grpc.CallOption) (*TriplesResponse, error)
 	BulkTriples(ctx context.Context, in *BulkTriplesRequest, opts ...grpc.CallOption) (*BulkTriplesResponse, error)
 	Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error)
@@ -469,9 +471,27 @@ func (c *mixerClient) PropertyValues(ctx context.Context, in *PropertyValuesRequ
 	return out, nil
 }
 
+func (c *mixerClient) LinkedPropertyValues(ctx context.Context, in *LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error) {
+	out := new(PropertyValuesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/LinkedPropertyValues", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) BulkPropertyValues(ctx context.Context, in *BulkPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error) {
 	out := new(BulkPropertyValuesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkPropertyValues", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) BulkLinkedPropertyValues(ctx context.Context, in *BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error) {
+	out := new(BulkPropertyValuesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkLinkedPropertyValues", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -738,7 +758,9 @@ type MixerServer interface {
 	Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error)
 	BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error)
 	PropertyValues(context.Context, *PropertyValuesRequest) (*PropertyValuesResponse, error)
+	LinkedPropertyValues(context.Context, *LinkedPropertyValuesRequest) (*PropertyValuesResponse, error)
 	BulkPropertyValues(context.Context, *BulkPropertyValuesRequest) (*BulkPropertyValuesResponse, error)
+	BulkLinkedPropertyValues(context.Context, *BulkLinkedPropertyValuesRequest) (*BulkPropertyValuesResponse, error)
 	Triples(context.Context, *TriplesRequest) (*TriplesResponse, error)
 	BulkTriples(context.Context, *BulkTriplesRequest) (*BulkTriplesResponse, error)
 	Variables(context.Context, *VariablesRequest) (*VariablesResponse, error)
@@ -871,8 +893,14 @@ func (UnimplementedMixerServer) BulkProperties(context.Context, *BulkPropertiesR
 func (UnimplementedMixerServer) PropertyValues(context.Context, *PropertyValuesRequest) (*PropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PropertyValues not implemented")
 }
+func (UnimplementedMixerServer) LinkedPropertyValues(context.Context, *LinkedPropertyValuesRequest) (*PropertyValuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LinkedPropertyValues not implemented")
+}
 func (UnimplementedMixerServer) BulkPropertyValues(context.Context, *BulkPropertyValuesRequest) (*BulkPropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkPropertyValues not implemented")
+}
+func (UnimplementedMixerServer) BulkLinkedPropertyValues(context.Context, *BulkLinkedPropertyValuesRequest) (*BulkPropertyValuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkLinkedPropertyValues not implemented")
 }
 func (UnimplementedMixerServer) Triples(context.Context, *TriplesRequest) (*TriplesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Triples not implemented")
@@ -1588,6 +1616,24 @@ func _Mixer_PropertyValues_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_LinkedPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LinkedPropertyValuesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).LinkedPropertyValues(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/LinkedPropertyValues",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).LinkedPropertyValues(ctx, req.(*LinkedPropertyValuesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_BulkPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BulkPropertyValuesRequest)
 	if err := dec(in); err != nil {
@@ -1602,6 +1648,24 @@ func _Mixer_BulkPropertyValues_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).BulkPropertyValues(ctx, req.(*BulkPropertyValuesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_BulkLinkedPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkLinkedPropertyValuesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).BulkLinkedPropertyValues(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/BulkLinkedPropertyValues",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).BulkLinkedPropertyValues(ctx, req.(*BulkLinkedPropertyValuesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2082,8 +2146,16 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_PropertyValues_Handler,
 		},
 		{
+			MethodName: "LinkedPropertyValues",
+			Handler:    _Mixer_LinkedPropertyValues_Handler,
+		},
+		{
 			MethodName: "BulkPropertyValues",
 			Handler:    _Mixer_BulkPropertyValues_Handler,
+		},
+		{
+			MethodName: "BulkLinkedPropertyValues",
+			Handler:    _Mixer_BulkLinkedPropertyValues_Handler,
 		},
 		{
 			MethodName: "Triples",

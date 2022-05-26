@@ -16,14 +16,6 @@
     "geoId/0647766": {
       "out": [
         {
-          "name": "95035",
-          "types": [
-            "CensusZipCodeTabulationArea"
-          ],
-          "dcid": "zip/95035",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Santa Clara County",
           "types": [
             "AdministrativeArea2",
@@ -39,6 +31,14 @@
             "State"
           ],
           "dcid": "geoId/06",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "95035",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/95035",
           "provenanceId": "dc/5n63hr1"
         }
       ]

@@ -378,12 +378,30 @@ service Mixer {
     };
   }
 
+  rpc LinkedPropertyValues(datacommons.v1.LinkedPropertyValuesRequest)
+      returns (datacommons.v1.PropertyValuesResponse) {
+    option (google.api.http) = {
+      get : "/v1/property/in/{property}/values/linked/{entity=**}"
+    };
+  }
+
   rpc BulkPropertyValues(datacommons.v1.BulkPropertyValuesRequest)
       returns (datacommons.v1.BulkPropertyValuesResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/property/{direction}/{property}/values"
       additional_bindings : {
-        post : "/v1/bulk/properties/{direction}/{property}/values"
+        post : "/v1/bulk/property/{direction}/{property}/values"
+        body : "*"
+      }
+    };
+  }
+
+  rpc BulkLinkedPropertyValues(datacommons.v1.BulkLinkedPropertyValuesRequest)
+      returns (datacommons.v1.BulkPropertyValuesResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/property/in/{property}/values/linked"
+      additional_bindings : {
+        post : "/v1/bulk/property/in/{property}/values/linked"
         body : "*"
       }
     };
