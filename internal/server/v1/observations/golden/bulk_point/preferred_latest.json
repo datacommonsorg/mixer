@@ -200,8 +200,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022-03",
-              "value": 933686,
+              "date": "2022-04",
+              "value": 888677,
               "facet": 1249140336
             }
           ]
@@ -231,8 +231,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2022-04-27",
-              "value": 81082663,
+              "date": "2022-05-24",
+              "value": 83457379,
               "facet": 2232540893
             }
           ]
@@ -241,8 +241,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022-04-27",
-              "value": 9215795,
+              "date": "2022-05-24",
+              "value": 9505145,
               "facet": 2232540893
             }
           ]
@@ -350,6 +350,12 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
     },
     "2232540893": {
       "import_name": "NYT_COVID19",

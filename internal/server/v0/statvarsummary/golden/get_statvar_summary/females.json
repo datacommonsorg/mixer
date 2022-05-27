@@ -45,11 +45,11 @@
           "topPlaces": [
             {
               "dcid": "wikidataId/Q943099",
-              "name": "Thane district"
+              "name": "Thane"
             },
             {
               "dcid": "wikidataId/Q338425",
-              "name": "North 24 Parganas district"
+              "name": "24 Paraganas North"
             },
             {
               "dcid": "wikidataId/Q806463",
@@ -244,22 +244,23 @@
           "maxValue": 5160965
         },
         "ElementarySchoolDistrict": {
-          "placeCount": 275,
+          "placeCount": 10,
           "topPlaces": [
             {
-              "dcid": "geoId/sch0637380",
-              "name": "South Bay Union School District"
+              "dcid": "geoId/sch1300002",
+              "name": "Fort Benning Schools"
             },
             {
-              "dcid": "geoId/sch0635590",
-              "name": "Santa Cruz City Elementary School District"
+              "dcid": "geoId/sch4500005",
+              "name": "Fort Jackson Schools"
             },
             {
-              "dcid": "geoId/sch0637290",
-              "name": "Soquel Elementary School District"
+              "dcid": "geoId/sch5050004",
+              "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
             }
           ],
-          "maxValue": 43064
+          "minValue": 2,
+          "maxValue": 6349
         },
         "EurostatNUTS1": {
           "placeCount": 123,
@@ -319,7 +320,7 @@
           "maxValue": 7525493
         },
         "HighSchoolDistrict": {
-          "placeCount": 132,
+          "placeCount": 82,
           "topPlaces": [
             {
               "dcid": "geoId/sch0606034",
@@ -337,23 +338,24 @@
           "maxValue": 72821
         },
         "Place": {
-          "placeCount": 172,
+          "placeCount": 15,
           "topPlaces": [
             {
               "dcid": "wikidataId/Q1180"
             },
             {
-              "dcid": "geoId/sch4702940"
-            },
-            {
               "dcid": "wikidataId/Q2760659",
               "name": "Dadra"
+            },
+            {
+              "dcid": "wikidataId/Q3235"
             }
           ],
+          "minValue": 261,
           "maxValue": 5883370
         },
         "SchoolDistrict": {
-          "placeCount": 13278,
+          "placeCount": 13750,
           "topPlaces": [
             {
               "dcid": "geoId/sch3620580",
@@ -361,7 +363,7 @@
             },
             {
               "dcid": "geoId/sch0622710",
-              "name": "Los Angeles Unified School District"
+              "name": "Los Angeles Unified"
             },
             {
               "dcid": "geoId/sch7200030",
@@ -427,11 +429,11 @@
                   "topPlaces": [
                     {
                       "dcid": "wikidataId/Q943099",
-                      "name": "Thane district"
+                      "name": "Thane"
                     },
                     {
                       "dcid": "wikidataId/Q338425",
-                      "name": "North 24 Parganas district"
+                      "name": "24 Paraganas North"
                     },
                     {
                       "dcid": "wikidataId/Q806463",
@@ -952,25 +954,26 @@
                   "maxValue": 5126081
                 },
                 "ElementarySchoolDistrict": {
-                  "placeCount": 275,
+                  "placeCount": 10,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/sch0637380",
-                      "name": "South Bay Union School District"
+                      "dcid": "geoId/sch1300002",
+                      "name": "Fort Benning Schools"
                     },
                     {
-                      "dcid": "geoId/sch0635590",
-                      "name": "Santa Cruz City Elementary School District"
+                      "dcid": "geoId/sch4500005",
+                      "name": "Fort Jackson Schools"
                     },
                     {
-                      "dcid": "geoId/sch0637290",
-                      "name": "Soquel Elementary School District"
+                      "dcid": "geoId/sch5050004",
+                      "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
                     }
                   ],
-                  "maxValue": 43064
+                  "minValue": 2,
+                  "maxValue": 6349
                 },
                 "HighSchoolDistrict": {
-                  "placeCount": 132,
+                  "placeCount": 82,
                   "topPlaces": [
                     {
                       "dcid": "geoId/sch0606034",
@@ -988,22 +991,23 @@
                   "maxValue": 72821
                 },
                 "Place": {
-                  "placeCount": 164,
+                  "placeCount": 7,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/sch4702940"
+                      "dcid": "geoId/sch4500012"
                     },
                     {
-                      "dcid": "geoId/sch4703810"
+                      "dcid": "geoId/sch2306840"
                     },
                     {
-                      "dcid": "geoId/sch4833060"
+                      "dcid": "geoId/sch2000005"
                     }
                   ],
-                  "maxValue": 341895
+                  "minValue": 261,
+                  "maxValue": 3383
                 },
                 "SchoolDistrict": {
-                  "placeCount": 13278,
+                  "placeCount": 13750,
                   "topPlaces": [
                     {
                       "dcid": "geoId/sch3620580",
@@ -1011,7 +1015,7 @@
                     },
                     {
                       "dcid": "geoId/sch0622710",
-                      "name": "Los Angeles Unified School District"
+                      "name": "Los Angeles Unified"
                     },
                     {
                       "dcid": "geoId/sch7200030",
@@ -1572,25 +1576,25 @@
           "maxValue": 794118
         },
         "ElementarySchoolDistrict": {
-          "placeCount": 275,
+          "placeCount": 10,
           "topPlaces": [
             {
-              "dcid": "geoId/sch0637380",
-              "name": "South Bay Union School District"
+              "dcid": "geoId/sch1300002",
+              "name": "Fort Benning Schools"
             },
             {
-              "dcid": "geoId/sch0635590",
-              "name": "Santa Cruz City Elementary School District"
+              "dcid": "geoId/sch4500005",
+              "name": "Fort Jackson Schools"
             },
             {
-              "dcid": "geoId/sch0637290",
-              "name": "Soquel Elementary School District"
+              "dcid": "geoId/sch5050004",
+              "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
             }
           ],
-          "maxValue": 4380
+          "maxValue": 477
         },
         "HighSchoolDistrict": {
-          "placeCount": 132,
+          "placeCount": 82,
           "topPlaces": [
             {
               "dcid": "geoId/sch0606034",
@@ -1608,22 +1612,22 @@
           "maxValue": 17740
         },
         "Place": {
-          "placeCount": 164,
+          "placeCount": 7,
           "topPlaces": [
             {
-              "dcid": "geoId/sch4702940"
+              "dcid": "geoId/sch4500012"
             },
             {
-              "dcid": "geoId/sch4703810"
+              "dcid": "geoId/sch2306840"
             },
             {
-              "dcid": "geoId/sch4833060"
+              "dcid": "geoId/sch2000005"
             }
           ],
-          "maxValue": 6038
+          "maxValue": 8
         },
         "SchoolDistrict": {
-          "placeCount": 13278,
+          "placeCount": 13750,
           "topPlaces": [
             {
               "dcid": "geoId/sch3620580",
@@ -1631,7 +1635,7 @@
             },
             {
               "dcid": "geoId/sch0622710",
-              "name": "Los Angeles Unified School District"
+              "name": "Los Angeles Unified"
             },
             {
               "dcid": "geoId/sch7200030",
@@ -1821,25 +1825,25 @@
                   "maxValue": 794118
                 },
                 "ElementarySchoolDistrict": {
-                  "placeCount": 275,
+                  "placeCount": 10,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/sch0637380",
-                      "name": "South Bay Union School District"
+                      "dcid": "geoId/sch1300002",
+                      "name": "Fort Benning Schools"
                     },
                     {
-                      "dcid": "geoId/sch0635590",
-                      "name": "Santa Cruz City Elementary School District"
+                      "dcid": "geoId/sch4500005",
+                      "name": "Fort Jackson Schools"
                     },
                     {
-                      "dcid": "geoId/sch0637290",
-                      "name": "Soquel Elementary School District"
+                      "dcid": "geoId/sch5050004",
+                      "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
                     }
                   ],
-                  "maxValue": 4380
+                  "maxValue": 477
                 },
                 "HighSchoolDistrict": {
-                  "placeCount": 132,
+                  "placeCount": 82,
                   "topPlaces": [
                     {
                       "dcid": "geoId/sch0606034",
@@ -1857,22 +1861,22 @@
                   "maxValue": 17740
                 },
                 "Place": {
-                  "placeCount": 164,
+                  "placeCount": 7,
                   "topPlaces": [
                     {
-                      "dcid": "geoId/sch4702940"
+                      "dcid": "geoId/sch4500012"
                     },
                     {
-                      "dcid": "geoId/sch4703810"
+                      "dcid": "geoId/sch2306840"
                     },
                     {
-                      "dcid": "geoId/sch4833060"
+                      "dcid": "geoId/sch2000005"
                     }
                   ],
-                  "maxValue": 6038
+                  "maxValue": 8
                 },
                 "SchoolDistrict": {
-                  "placeCount": 13278,
+                  "placeCount": 13750,
                   "topPlaces": [
                     {
                       "dcid": "geoId/sch3620580",
@@ -1880,7 +1884,7 @@
                     },
                     {
                       "dcid": "geoId/sch0622710",
-                      "name": "Los Angeles Unified School District"
+                      "name": "Los Angeles Unified"
                     },
                     {
                       "dcid": "geoId/sch7200030",

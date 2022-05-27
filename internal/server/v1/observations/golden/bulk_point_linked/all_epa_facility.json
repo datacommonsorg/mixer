@@ -1558,9 +1558,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1002367"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1002384",
           "points_by_facet": [
             {
@@ -2604,9 +2601,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1004445"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1004465",
           "points_by_facet": [
             {
@@ -3083,9 +3077,6 @@
               "facet": 3902333627
             }
           ]
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1005237"
         },
         {
           "entity": "epaGhgrpFacilityId/1005256",
@@ -4125,9 +4116,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1007286"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1007312",
           "points_by_facet": [
             {
@@ -4948,9 +4936,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1010028"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1010076",
           "points_by_facet": [
             {
@@ -5000,12 +4985,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1010247"
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010290"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1010317",
           "points_by_facet": [
             {
@@ -5046,9 +5025,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1010409"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1010417",
           "points_by_facet": [
             {
@@ -5057,24 +5033,6 @@
               "facet": 3902333627
             }
           ]
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010431"
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010443"
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010516"
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010517"
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010523"
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010533"
         },
         {
           "entity": "epaGhgrpFacilityId/1010540",
@@ -5115,9 +5073,6 @@
               "facet": 3902333627
             }
           ]
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1010651"
         },
         {
           "entity": "epaGhgrpFacilityId/1010696",
@@ -5259,9 +5214,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1011195"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1011213",
           "points_by_facet": [
             {
@@ -5290,9 +5242,6 @@
               "facet": 3902333627
             }
           ]
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1011327"
         },
         {
           "entity": "epaGhgrpFacilityId/1011345",
@@ -5455,9 +5404,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1011769"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1011798",
           "points_by_facet": [
             {
@@ -5498,12 +5444,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1012025"
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1012063"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1012089",
           "points_by_facet": [
             {
@@ -5542,9 +5482,6 @@
               "facet": 3902333627
             }
           ]
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1012101"
         },
         {
           "entity": "epaGhgrpFacilityId/1012110",
@@ -5727,9 +5664,6 @@
           ]
         },
         {
-          "entity": "epaGhgrpFacilityId/1012662"
-        },
-        {
           "entity": "epaGhgrpFacilityId/1012713",
           "points_by_facet": [
             {
@@ -5738,9 +5672,6 @@
               "facet": 3902333627
             }
           ]
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1012752"
         },
         {
           "entity": "epaGhgrpFacilityId/1012823",
@@ -5831,9 +5762,6 @@
               "facet": 3902333627
             }
           ]
-        },
-        {
-          "entity": "epaGhgrpFacilityId/1013700"
         }
       ]
     }

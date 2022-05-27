@@ -56,6 +56,11 @@
             },
             {
               "date": "2010",
+              "value": 309327143,
+              "facet": 2176550201
+            },
+            {
+              "date": "2010",
               "value": 309322000,
               "facet": 1151455814
             },
@@ -86,6 +91,11 @@
             },
             {
               "date": "2010",
+              "value": 37319550,
+              "facet": 2176550201
+            },
+            {
+              "date": "2010",
               "value": 37319500,
               "facet": 1151455814
             },
@@ -113,6 +123,11 @@
               "date": "2010",
               "value": 74066,
               "facet": 1541763368
+            },
+            {
+              "date": "2010",
+              "value": 74236,
+              "facet": 2176550201
             },
             {
               "date": "2010",
@@ -276,6 +291,12 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
     },
     "2343540064": {
       "import_name": "FBIGovCrime_AggCountry",
