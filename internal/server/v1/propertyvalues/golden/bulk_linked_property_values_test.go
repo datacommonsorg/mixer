@@ -41,7 +41,7 @@ func TestBulkLinkedPropertyValues(t *testing.T) {
 		}{
 			{
 				"result.json",
-				[]string{"geoId/05", "geoId/06"},
+				[]string{"geoId/05", "geoId/06", "dummy"},
 				"City",
 			},
 		} {

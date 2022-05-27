@@ -135,7 +135,8 @@ func BulkLinkedPropertyValues(
 		return nil, err
 	}
 	result := &pb.BulkPropertyValuesResponse{}
-	for e, children := range resp {
+	for _, e := range entities {
+		children := resp[e]
 		oneEntityResult := &pb.BulkPropertyValuesResponse_EntityPropertyValues{
 			Entity: e,
 		}
