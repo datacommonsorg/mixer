@@ -1781,6 +1781,66 @@
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
+      "name": "Population: 0 - 4 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_0To4Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Asian Alone",
+      "dcid": "Count_Person_0To4Years_AsianAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_0To4Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Black or African American Alone",
+      "dcid": "Count_Person_0To4Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Female",
+      "dcid": "Count_Person_0To4Years_Female"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Male",
+      "dcid": "Count_Person_0To4Years_Male"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_0To4Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Two or More Races",
+      "dcid": "Count_Person_0To4Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, White Alone",
+      "dcid": "Count_Person_0To4Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 1 - 4 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_1To4Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Asian Alone",
+      "dcid": "Count_Person_1To4Years_AsianAlone"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Black or African American Alone",
+      "dcid": "Count_Person_1To4Years_BlackOrAfricanAmericanAlone"
+    },
+    {
       "name": "Population: 1 - 4 Years, Different House Abroad",
       "dcid": "Count_Person_1To4Years_DifferentHouseAbroad"
     },
@@ -1795,6 +1855,26 @@
     {
       "name": "Population: 1 - 4 Years, Different House in Same County",
       "dcid": "Count_Person_1To4Years_DifferentHouseInSameCounty"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Female",
+      "dcid": "Count_Person_1To4Years_Female"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Male",
+      "dcid": "Count_Person_1To4Years_Male"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_1To4Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Two or More Races",
+      "dcid": "Count_Person_1To4Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 1 - 4 Years, White Alone",
+      "dcid": "Count_Person_1To4Years_WhiteAlone"
     },
     {
       "name": "Population: 1 Years or More, 1 - 1.5 Ratio To Poverty Line",
@@ -1933,12 +2013,52 @@
       "dcid": "Count_Person_1OrMoreYears_WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Population: 10 - 14 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_10To14Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 10 - 14 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_10To14Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Asian Alone",
+      "dcid": "Count_Person_10To14Years_AsianAlone"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_10To14Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Black or African American Alone",
+      "dcid": "Count_Person_10To14Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_10To14Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: 10 - 14 Years, Female",
       "dcid": "Count_Person_10To14Years_Female"
     },
     {
       "name": "Population: 10 - 14 Years, Male",
       "dcid": "Count_Person_10To14Years_Male"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_10To14Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Two or More Races",
+      "dcid": "Count_Person_10To14Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 10 - 14 Years, White Alone",
+      "dcid": "Count_Person_10To14Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 10 - 14 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_10To14Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 10th Grade, Female",
@@ -2021,8 +2141,28 @@
       "dcid": "Count_Person_15To17Years_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: 15 - 19 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_15To19Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 15 - 19 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_15To19Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Asian Alone",
+      "dcid": "Count_Person_15To19Years_AsianAlone"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_15To19Years_AsianOrPacificIslander"
+    },
+    {
       "name": "Population: 15 - 19 Years, Black or African American Alone",
       "dcid": "Count_Person_15To19Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_15To19Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 15 - 19 Years, Female",
@@ -2037,8 +2177,24 @@
       "dcid": "Count_Person_15To19Years_Male"
     },
     {
+      "name": "Population: 15 - 19 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_15To19Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Two or More Races",
+      "dcid": "Count_Person_15To19Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 15 - 19 Years, White Alone",
+      "dcid": "Count_Person_15To19Years_WhiteAlone"
+    },
+    {
       "name": "Population: 15 - 19 Years, White Alone Not Hispanic or Latino",
       "dcid": "Count_Person_15To19Years_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Population: 15 - 19 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_15To19Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 15 - 50 Years, Female",
@@ -2889,12 +3045,52 @@
       "dcid": "Count_Person_20To21Years_Male"
     },
     {
+      "name": "Population: 20 - 24 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_20To24Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 20 - 24 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_20To24Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Asian Alone",
+      "dcid": "Count_Person_20To24Years_AsianAlone"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_20To24Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Black or African American Alone",
+      "dcid": "Count_Person_20To24Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_20To24Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: 20 - 24 Years, Female",
       "dcid": "Count_Person_20To24Years_Female"
     },
     {
       "name": "Population: 20 - 24 Years, Male",
       "dcid": "Count_Person_20To24Years_Male"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_20To24Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Two or More Races",
+      "dcid": "Count_Person_20To24Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 20 - 24 Years, White Alone",
+      "dcid": "Count_Person_20To24Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 20 - 24 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_20To24Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 20 - 34 Years, Female",
@@ -2961,12 +3157,52 @@
       "dcid": "Count_Person_22To24Years_Male"
     },
     {
+      "name": "Population: 25 - 29 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_25To29Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 25 - 29 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_25To29Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 25 - 29 Years, Asian Alone",
+      "dcid": "Count_Person_25To29Years_AsianAlone"
+    },
+    {
+      "name": "Population: 25 - 29 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_25To29Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 25 - 29 Years, Black or African American Alone",
+      "dcid": "Count_Person_25To29Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 25 - 29 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_25To29Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: 25 - 29 Years, Female",
       "dcid": "Count_Person_25To29Years_Female"
     },
     {
       "name": "Population: 25 - 29 Years, Male",
       "dcid": "Count_Person_25To29Years_Male"
+    },
+    {
+      "name": "Population: 25 - 29 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_25To29Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 25 - 29 Years, Two or More Races",
+      "dcid": "Count_Person_25To29Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 25 - 29 Years, White Alone",
+      "dcid": "Count_Person_25To29Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 25 - 29 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_25To29Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 25 - 34 Years, Adult Correctional Facilities",
@@ -3269,6 +3505,30 @@
       "dcid": "Count_Person_3OrMoreYears_WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Population: 30 - 34 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_30To34Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 30 - 34 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_30To34Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 30 - 34 Years, Asian Alone",
+      "dcid": "Count_Person_30To34Years_AsianAlone"
+    },
+    {
+      "name": "Population: 30 - 34 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_30To34Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 30 - 34 Years, Black or African American Alone",
+      "dcid": "Count_Person_30To34Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 30 - 34 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_30To34Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: 30 - 34 Years, Female",
       "dcid": "Count_Person_30To34Years_Female"
     },
@@ -3277,12 +3537,68 @@
       "dcid": "Count_Person_30To34Years_Male"
     },
     {
+      "name": "Population: 30 - 34 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_30To34Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 30 - 34 Years, Two or More Races",
+      "dcid": "Count_Person_30To34Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 30 - 34 Years, White Alone",
+      "dcid": "Count_Person_30To34Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 30 - 34 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_30To34Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 35 - 39 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_35To39Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 35 - 39 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_35To39Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 35 - 39 Years, Asian Alone",
+      "dcid": "Count_Person_35To39Years_AsianAlone"
+    },
+    {
+      "name": "Population: 35 - 39 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_35To39Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 35 - 39 Years, Black or African American Alone",
+      "dcid": "Count_Person_35To39Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 35 - 39 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_35To39Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: 35 - 39 Years, Female",
       "dcid": "Count_Person_35To39Years_Female"
     },
     {
       "name": "Population: 35 - 39 Years, Male",
       "dcid": "Count_Person_35To39Years_Male"
+    },
+    {
+      "name": "Population: 35 - 39 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_35To39Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 35 - 39 Years, Two or More Races",
+      "dcid": "Count_Person_35To39Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 35 - 39 Years, White Alone",
+      "dcid": "Count_Person_35To39Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 35 - 39 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_35To39Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 35 - 44 Years, Adult Correctional Facilities",
@@ -3413,12 +3729,52 @@
       "dcid": "Count_Person_Upto4Years_Male"
     },
     {
+      "name": "Population: 40 - 44 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_40To44Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 40 - 44 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_40To44Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 40 - 44 Years, Asian Alone",
+      "dcid": "Count_Person_40To44Years_AsianAlone"
+    },
+    {
+      "name": "Population: 40 - 44 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_40To44Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 40 - 44 Years, Black or African American Alone",
+      "dcid": "Count_Person_40To44Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 40 - 44 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_40To44Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: 40 - 44 Years, Female",
       "dcid": "Count_Person_40To44Years_Female"
     },
     {
       "name": "Population: 40 - 44 Years, Male",
       "dcid": "Count_Person_40To44Years_Male"
+    },
+    {
+      "name": "Population: 40 - 44 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_40To44Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 40 - 44 Years, Two or More Races",
+      "dcid": "Count_Person_40To44Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 40 - 44 Years, White Alone",
+      "dcid": "Count_Person_40To44Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 40 - 44 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_40To44Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 40 - 64 Years, 1.4 - 4 Ratio To Poverty Line",
@@ -3493,12 +3849,52 @@
       "dcid": "Count_Person_40To64Years_WithHealthInsurance"
     },
     {
+      "name": "Population: 45 - 49 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_45To49Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 45 - 49 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_45To49Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 45 - 49 Years, Asian Alone",
+      "dcid": "Count_Person_45To49Years_AsianAlone"
+    },
+    {
+      "name": "Population: 45 - 49 Years, Asian or Pacific Islander",
+      "dcid": "Count_Person_45To49Years_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population: 45 - 49 Years, Black or African American Alone",
+      "dcid": "Count_Person_45To49Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 45 - 49 Years, Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_45To49Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
       "name": "Population: 45 - 49 Years, Female",
       "dcid": "Count_Person_45To49Years_Female"
     },
     {
       "name": "Population: 45 - 49 Years, Male",
       "dcid": "Count_Person_45To49Years_Male"
+    },
+    {
+      "name": "Population: 45 - 49 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_45To49Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 45 - 49 Years, Two or More Races",
+      "dcid": "Count_Person_45To49Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 45 - 49 Years, White Alone",
+      "dcid": "Count_Person_45To49Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 45 - 49 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_45To49Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 45 - 54 Years, Adult Correctional Facilities",
@@ -3603,402 +3999,6 @@
     {
       "name": "Population: 5 - 17 Years, Asian And Pacific Island Languages",
       "dcid": "Count_Person_5To17Years_AsianAndPacificIslandLanguagesSpokenAtHome"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Born in Other State in The United States",
-      "dcid": "Count_Person_5To17Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Born in State of Residence",
-      "dcid": "Count_Person_5To17Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Cognitive Difficulty",
-      "dcid": "Count_Person_5To17Years_CognitiveDifficulty"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Different House Abroad",
-      "dcid": "Count_Person_5To17Years_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Different House in Different County Different State",
-      "dcid": "Count_Person_5To17Years_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Different House in Different County Same State",
-      "dcid": "Count_Person_5To17Years_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Different House in Same County",
-      "dcid": "Count_Person_5To17Years_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Foreign Born",
-      "dcid": "Count_Person_5To17Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Hearing Difficulty",
-      "dcid": "Count_Person_5To17Years_HearingDifficulty"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Language Other Than English",
-      "dcid": "Count_Person_5To17Years_LanguageOtherThanEnglishSpokenAtHome"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Native Born Outside The United States",
-      "dcid": "Count_Person_5To17Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Only English",
-      "dcid": "Count_Person_5To17Years_OnlyEnglishSpokenAtHome"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Other Indo European Languages",
-      "dcid": "Count_Person_5To17Years_OtherIndoEuropeanLanguagesSpokenAtHome"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Other Languages",
-      "dcid": "Count_Person_5To17Years_OtherLanguagesSpokenAtHome"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Self Care Difficulty",
-      "dcid": "Count_Person_5To17Years_SelfCareDifficulty"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Spanish",
-      "dcid": "Count_Person_5To17Years_SpanishSpokenAtHome"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Spanish or Spanish Creole",
-      "dcid": "Count_Person_5To17Years_SpanishOrSpanishCreoleSpokenAtHome"
-    },
-    {
-      "name": "Population: 5 - 17 Years, Vision Difficulty",
-      "dcid": "Count_Person_5To17Years_VisionDifficulty"
-    },
-    {
-      "name": "Population: 5 - 17 Years, With Disability",
-      "dcid": "Count_Person_5To17Years_WithDisability"
-    },
-    {
-      "name": "Population: 5 - 9 Years, Female",
-      "dcid": "Count_Person_5To9Years_Female"
-    },
-    {
-      "name": "Population: 5 - 9 Years, Male",
-      "dcid": "Count_Person_5To9Years_Male"
-    },
-    {
-      "name": "Population: 5 Years or Less, Born in Other State in The United States",
-      "dcid": "Count_Person_Upto5Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 5 Years or Less, Born in State of Residence",
-      "dcid": "Count_Person_Upto5Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 5 Years or Less, Female",
-      "dcid": "Count_Person_Upto5Years_Female"
-    },
-    {
-      "name": "Population: 5 Years or Less, Foreign Born",
-      "dcid": "Count_Person_Upto5Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 5 Years or Less, Hearing Difficulty",
-      "dcid": "Count_Person_5OrLessYears_HearingDifficulty"
-    },
-    {
-      "name": "Population: 5 Years or Less, Male",
-      "dcid": "Count_Person_Upto5Years_Male"
-    },
-    {
-      "name": "Population: 5 Years or Less, Native Born Outside The United States",
-      "dcid": "Count_Person_Upto5Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 5 Years or Less, Vision Difficulty",
-      "dcid": "Count_Person_5OrLessYears_VisionDifficulty"
-    },
-    {
-      "name": "Population: 5 Years or Less, With Disability",
-      "dcid": "Count_Person_5OrLessYears_WithDisability"
-    },
-    {
-      "name": "Population: 5 Years or More, Above Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_5OrMoreYears_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 5 Years or More, Adult Correctional Facilities",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 5 Years or More, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_5OrMoreYears_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 5 Years or More, Asian Alone",
-      "dcid": "Count_Person_5OrMoreYears_AsianAlone"
-    },
-    {
-      "name": "Population: 5 Years or More, Below Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_5OrMoreYears_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 5 Years or More, Black or African American Alone",
-      "dcid": "Count_Person_5OrMoreYears_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 5 Years or More, College or University Student Housing",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 5 Years or More, Group Quarters",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 5 Years or More, Hispanic or Latino",
-      "dcid": "Count_Person_5OrMoreYears_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 5 Years or More, Household",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInHousehold"
-    },
-    {
-      "name": "Population: 5 Years or More, Institutionalized Group Quarters",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 5 Years or More, Juvenile Facilities",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 5 Years or More, Military Quarters or Military Ships",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 5 Years or More, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_5OrMoreYears_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 5 Years or More, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 5 Years or More, Nursing Facilities",
-      "dcid": "Count_Person_5OrMoreYears_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 5 Years or More, Poverty Status Determined",
-      "dcid": "Count_Person_5OrMoreYears_PovertyStatusDetermined"
-    },
-    {
-      "name": "Population: 5 Years or More, Some Other Race Alone",
-      "dcid": "Count_Person_5OrMoreYears_SomeOtherRaceAlone"
-    },
-    {
-      "name": "Population: 5 Years or More, Two or More Races",
-      "dcid": "Count_Person_5OrMoreYears_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 5 Years or More, White Alone",
-      "dcid": "Count_Person_5OrMoreYears_WhiteAlone"
-    },
-    {
-      "name": "Population: 5 Years or More, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_5OrMoreYears_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 50 - 54 Years, Female",
-      "dcid": "Count_Person_50To54Years_Female"
-    },
-    {
-      "name": "Population: 50 - 54 Years, Male",
-      "dcid": "Count_Person_50To54Years_Male"
-    },
-    {
-      "name": "Population: 50 - 64 Years, 1.4 - 4 Ratio To Poverty Line",
-      "dcid": "Count_Person_50To64Years_RatioToPovertyLine1.38To4"
-    },
-    {
-      "name": "Population: 50 - 64 Years, 1.4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_50To64Years_RatioToPovertyLineUpto1.38"
-    },
-    {
-      "name": "Population: 50 - 64 Years, 2 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_50To64Years_RatioToPovertyLineUpto2"
-    },
-    {
-      "name": "Population: 50 - 64 Years, 2.5 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_50To64Years_RatioToPovertyLineUpto2.5"
-    },
-    {
-      "name": "Population: 50 - 64 Years, 4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_50To64Years_RatioToPovertyLineUpto4"
-    },
-    {
-      "name": "Population: 50 - 64 Years, Black or African American Alone",
-      "dcid": "Count_Person_50To64Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 50 - 64 Years, Female",
-      "dcid": "Count_Person_50To64Years_Female"
-    },
-    {
-      "name": "Population: 50 - 64 Years, Hispanic or Latino",
-      "dcid": "Count_Person_50To64Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 50 - 64 Years, Male",
-      "dcid": "Count_Person_50To64Years_Male"
-    },
-    {
-      "name": "Population: 50 - 64 Years, No Health Insurance",
-      "dcid": "Count_Person_50To64Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 50 - 64 Years, White Alone",
-      "dcid": "Count_Person_50To64Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 50 - 64 Years, With Health Insurance",
-      "dcid": "Count_Person_50To64Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 55 - 59 Years, Born in Other State in The United States",
-      "dcid": "Count_Person_55To59Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 55 - 59 Years, Born in State of Residence",
-      "dcid": "Count_Person_55To59Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 55 - 59 Years, Female",
-      "dcid": "Count_Person_55To59Years_Female"
-    },
-    {
-      "name": "Population: 55 - 59 Years, Foreign Born",
-      "dcid": "Count_Person_55To59Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 55 - 59 Years, Male",
-      "dcid": "Count_Person_55To59Years_Male"
-    },
-    {
-      "name": "Population: 55 - 59 Years, Native Born Outside The United States",
-      "dcid": "Count_Person_55To59Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Adult Correctional Facilities",
-      "dcid": "Count_Person_55To64Years_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 55 - 64 Years, College or University Student Housing",
-      "dcid": "Count_Person_55To64Years_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Different House Abroad",
-      "dcid": "Count_Person_55To64Years_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Different House in Different County Different State",
-      "dcid": "Count_Person_55To64Years_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Different House in Different County Same State",
-      "dcid": "Count_Person_55To64Years_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Different House in Same County",
-      "dcid": "Count_Person_55To64Years_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Female",
-      "dcid": "Count_Person_55To64Years_Female"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Group Quarters",
-      "dcid": "Count_Person_55To64Years_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Institutionalized Group Quarters",
-      "dcid": "Count_Person_55To64Years_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Juvenile Facilities",
-      "dcid": "Count_Person_55To64Years_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Male",
-      "dcid": "Count_Person_55To64Years_Male"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Military Quarters or Military Ships",
-      "dcid": "Count_Person_55To64Years_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 55 - 64 Years, No Health Insurance",
-      "dcid": "Count_Person_55To64Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_55To64Years_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 55 - 64 Years, Nursing Facilities",
-      "dcid": "Count_Person_55To64Years_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 55 - 64 Years, With Health Insurance",
-      "dcid": "Count_Person_55To64Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 55 - 64 Years, With Private Health Insurance",
-      "dcid": "Count_Person_55To64Years_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 55 - 64 Years, With Public Health Insurance",
-      "dcid": "Count_Person_55To64Years_WithPublicHealthInsurance"
-    },
-    {
-      "name": "Population: 5th And 6th Grade, Female",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainment5ThAnd6ThGrade_Female"
-    },
-    {
-      "name": "Population: 5th And 6th Grade, Male",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainment5ThAnd6ThGrade_Male"
-    },
-    {
-      "name": "Population: 6 - 11 Years, Above Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_6To11Years_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 6 - 11 Years, Below Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_6To11Years_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 6 - 17 Years, No Health Insurance",
-      "dcid": "Count_Person_6To17Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 6 - 17 Years, With Health Insurance",
-      "dcid": "Count_Person_6To17Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 6 - 17 Years, With Private Health Insurance",
-      "dcid": "Count_Person_6To17Years_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 6 - 17 Years, With Public Health Insurance",
-      "dcid": "Count_Person_6To17Years_WithPublicHealthInsurance"
-    },
-    {
-      "name": "Population: 6 - 18 Years, No Health Insurance",
-      "dcid": "Count_Person_6To18Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 6 - 18 Years, With Health Insurance",
-      "dcid": "Count_Person_6To18Years_WithHealthInsurance"
     }
   ],
   "matches": [
