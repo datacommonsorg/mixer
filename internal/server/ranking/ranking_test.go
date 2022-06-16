@@ -105,7 +105,7 @@ func TestSeriesByRank(t *testing.T) {
 				{ImportName: "USFEMA_NationalRiskIndex", MeasuredProperty: "expectedLoss", Unit: "USDollar"},
 				{ImportName: "USFEMA_NationalRiskIndex", MeasuredProperty: "expectedLoss", Unit: "FemaNationalRiskScore"},
 			},
-		}
+		},
 	} {
 		sort.Sort(SeriesByRank(c.series))
 		if diff := cmp.Diff(c.expected, c.series, protocmp.Transform()); diff != "" {
