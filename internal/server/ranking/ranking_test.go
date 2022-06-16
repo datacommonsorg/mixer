@@ -96,7 +96,16 @@ func TestSeriesByRank(t *testing.T) {
 				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_HadGEM2-AO", ObservationPeriod: "P1Y"},
 				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
 			},
-		},
+		},{ // For FEMA NRI Expected Loss, prefer USDollar over FemaNationalRiskScore
+			[]*pb.SourceSeries{
+				{ImportName: "USFEMA_NationalRiskIndex", MeasuredProperty: "expectedLoss", Unit: "FemaNationalRiskScore"},
+				{ImportName: "USFEMA_NationalRiskIndex", MeasuredProperty: "expectedLoss", Unit: "USDollar"},
+			},
+			[]*pb.SourceSeries{
+				{ImportName: "USFEMA_NationalRiskIndex", MeasuredProperty: "expectedLoss", Unit: "USDollar"},
+				{ImportName: "USFEMA_NationalRiskIndex", MeasuredProperty: "expectedLoss", Unit: "FemaNationalRiskScore"},
+			},
+		}
 	} {
 		sort.Sort(SeriesByRank(c.series))
 		if diff := cmp.Diff(c.expected, c.series, protocmp.Transform()); diff != "" {
