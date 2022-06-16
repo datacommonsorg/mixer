@@ -79,6 +79,10 @@ var StatsRanking = map[RankKey]int{
 	// Expected data 2004-2010: 1393, 1379, 1297, 1400, 1381, 1015, 1092
 	{"FBIHateCrimePublications", "*", "*"}: 0, // FBI Hate Crime Publications
 	{"FBIHateCrime", "*", "*"}:             1, // FBI Hate Crime Aggregations
+	
+	// Prefer USDollar over Risk Score for Expected Annual Loss in FEMA National Risk Index (NRI)
+	{"USFEMA_NationalRiskIndex", "Annual_ExpectedLoss_NaturalHazardImpact*", "USDollar"} : 0, // Unit: USDollar
+	{"USFEMA_NationalRiskIndex", "Annual_ExpectedLoss_NaturalHazardImpact*", "FemaNationalRiskScore"} : 1, // Unit: FemaNationalRiskScore
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
