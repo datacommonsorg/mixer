@@ -3,52 +3,52 @@
     {
       "statVar": "Count_Person_Female_ForeignBorn",
       "statVarName": "Population: Female, Foreign Born",
-      "score": 3.82665
+      "score": 3.76462
     },
     {
       "statVar": "Count_Person_15To50Years_Female_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Female, Foreign Born",
-      "score": 3.29063
+      "score": 3.23083
     },
     {
       "statVar": "Count_Person_15OrMoreYears_NotAUSCitizen_Female_ForeignBorn",
       "statVarName": "Population: 15 Years or More, Not A US Citizen, Female, Foreign Born",
-      "score": 3.02095
+      "score": 2.96692
     },
     {
       "statVar": "Count_Person_15OrMoreYears_USCitizenByNaturalization_Female_ForeignBorn",
       "statVarName": "Population: 15 Years or More, US Citizen by Naturalization, Female, Foreign Born",
-      "score": 2.9931
+      "score": 2.93817
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Foreign Born",
-      "score": 2.90347
+      "score": 2.8456
     },
     {
       "statVar": "Median_Age_Person_Female_ForeignBorn",
       "statVarName": "Median Age: Female, Foreign Born",
-      "score": 2.81155
+      "score": 2.77803
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Foreign Born",
-      "score": 2.69317
+      "score": 2.63976
     },
     {
       "statVar": "Count_Person_15To50Years_BirthInThePast12Months_Female_ForeignBorn_AsAFractionOf_Count_Person_15To50Years_Female_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Foreign Born (As Fraction of Count Person 15 To 50 Years Female Foreign Born)",
-      "score": 2.68328
+      "score": 2.63041
     },
     {
       "statVar": "Count_Person_Male_ForeignBorn",
       "statVarName": "Population: Male, Foreign Born",
-      "score": 2.56864
+      "score": 2.60911
     },
     {
-      "statVar": "Median_Age_Person_NotAUSCitizen_Female_ForeignBorn",
-      "statVarName": "Median Age: Not A US Citizen, Female, Foreign Born",
-      "score": 2.50757
+      "statVar": "Count_Person_5OrMoreYears_ForeignBorn",
+      "statVarName": "Population: Foreign Born",
+      "score": 2.52506
     }
   ]
 }
