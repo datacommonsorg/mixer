@@ -135,23 +135,25 @@ func BulkLinkedPropertyValues(
 		return nil, err
 	}
 	result := &pb.BulkPropertyValuesResponse{}
-	for e, children := range resp {
-		oneEntityResult := &pb.BulkPropertyValuesResponse_EntityPropertyValues{
-			Entity: e,
-		}
-		for _, dcid := range children {
-			var name string
-			if nameValues, ok := data["name"][dcid]; ok {
-				name = nameValues[0].Value
+	for _, e := range entities {
+		if children, ok := resp[e]; ok {
+			oneEntityResult := &pb.BulkPropertyValuesResponse_EntityPropertyValues{
+				Entity: e,
 			}
-			oneEntityResult.Values = append(oneEntityResult.Values,
-				&pb.EntityInfo{
-					Dcid: dcid,
-					Name: name,
-				},
-			)
+			for _, dcid := range children {
+				var name string
+				if nameValues, ok := data["name"][dcid]; ok {
+					name = nameValues[0].Value
+				}
+				oneEntityResult.Values = append(oneEntityResult.Values,
+					&pb.EntityInfo{
+						Dcid: dcid,
+						Name: name,
+					},
+				)
+			}
+			result.Data = append(result.Data, oneEntityResult)
 		}
-		result.Data = append(result.Data, oneEntityResult)
 	}
 	return result, nil
 }
