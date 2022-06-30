@@ -3871,20 +3871,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q27304761",
-      "subjectName": "Asgardia",
-      "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
       "subjectId": "wikidataId/Q29999",
       "subjectName": "Kingdom of the Netherlands",
       "subjectTypes": [

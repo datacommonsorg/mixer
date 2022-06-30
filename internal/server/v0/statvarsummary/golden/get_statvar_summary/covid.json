@@ -30,7 +30,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 83931049
+          "maxValue": 87031752
         },
         "County": {
           "placeCount": 3217,
@@ -68,7 +68,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 9557347
+          "maxValue": 10038765
         }
       },
       "provenanceSummary": {
