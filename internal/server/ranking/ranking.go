@@ -113,16 +113,16 @@ func GetScoreRk(importName string, rk RankKey) int {
     if ! ok {
         return BaseRank
     }
-    score_of_most_exact_match := BaseRank
-    most_matches := -1
+    scoreOfMostExactMatch := BaseRank
+    mostMatches := -1
     for k, score := range importNameStatsRanking {
         matches := 0
-        is_match := true
+        isMatch := true
         if k.MeasurementMethod != "*" {
             if k.MeasurementMethod == rk.MeasurementMethod {
                 matches++
             } else {
-                is_match = false
+                isMatch = false
             }
         }
 
@@ -130,22 +130,22 @@ func GetScoreRk(importName string, rk RankKey) int {
             if k.ObservationPeriod == rk.ObservationPeriod {
                 matches++
             } else {
-                is_match = false
+                isMatch = false
             }
         }
 
-        is_more_exact_match := matches > most_matches
-        is_same_exactness_match_with_better_score := score > score_of_most_exact_match && matches == most_matches
-        if is_match && (is_more_exact_match || is_same_exactness_match_with_better_score) {
-            score_of_most_exact_match = score
-            most_matches = matches
+        isMoreExactMatch := matches > mostMatches
+        isSameExactnessMatchWithBetterScore := score < scoreOfMostExactMatch && matches == mostMatches
+        if isMatch && (isMoreExactMatch || isSameExactnessMatchWithBetterScore) {
+            scoreOfMostExactMatch = score
+            mostMatches = matches
         }
     }
 
-    return score_of_most_exact_match
+    return scoreOfMostExactMatch
 }
 
-// GetScoreRk adapter for pb.SourceSeries
+// GetScoreGb is a GetScoreRk adapter for pb.SourceSeries
 func GetScorePb(s *pb.SourceSeries) int {
     rk := RankKey{
         MeasurementMethod: s.MeasurementMethod,
@@ -154,7 +154,7 @@ func GetScorePb(s *pb.SourceSeries) int {
 	return GetScoreRk(s.ImportName, rk)
 }
 
-// GetScoreRk adapter for pb.StatMetadata
+// GetMetadataScore is a GetScoreRk adapter for pb.StatMetadata
 func GetMetadataScore(m *pb.StatMetadata) int {
     rk := RankKey{
         MeasurementMethod: m.MeasurementMethod,
@@ -267,8 +267,8 @@ func (a SeriesByRank) Less(i, j int) bool {
 	return true
 }
 
+// GetScore is a GetScoreRk adapter for model.SourceSeries
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
-// GetScoreRk adapter for model.SourceSeries 
 func GetScore(s *model.SourceSeries) int {
     rk := RankKey{
         MeasurementMethod: s.MeasurementMethod,
