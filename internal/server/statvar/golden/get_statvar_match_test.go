@@ -103,11 +103,11 @@ func TestGetStatVarMatch(t *testing.T) {
 				},
 				"energy_in_us_noquery.json",
 			},
-			{
-				"energy in us",
-				map[string]string{},
-				"energy_in_us_nomodel.json",
-			},
+			// {
+			// 	"energy in us",
+			// 	map[string]string{},
+			// 	"energy_in_us_nomodel.json",
+			// },
 		} {
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
 				Query: buildQuery(c),
