@@ -133,52 +133,22 @@ func GetScoreRk(rk RankKey) int {
 }
 
 func GetScorePb(s *pb.SourceSeries) int {
-	for _, propCombination := range []struct {
-		mm string
-		op string
-	}{
-		// Check exact match first
-		{s.MeasurementMethod, s.ObservationPeriod},
-		{s.MeasurementMethod, "*"},
-		{"*", s.ObservationPeriod},
-		{"*", "*"},
-	} {
-		key := RankKey{
-			ImportName:        s.ImportName,
-			MeasurementMethod: propCombination.mm,
-			ObservationPeriod: propCombination.op,
-		}
-		score, ok := StatsRanking[key]
-		if ok {
-			return score
-		}
-	}
-	return BaseRank
+    rk := RankKey{
+        ImportName:        s.ImportName,
+        MeasurementMethod: s.MeasurementMethod,
+        ObservationPeriod: s.ObservationPeriod,
+    }
+	return GetScoreRk(rk)
 }
 
 // GetMetadataScore computes score for pb.StatMetadata
 func GetMetadataScore(m *pb.StatMetadata) int {
-	for _, propCombination := range []struct {
-		mm string
-		op string
-	}{
-		// Check exact match first
-		{m.MeasurementMethod, m.ObservationPeriod},
-		{m.MeasurementMethod, "*"},
-		{"*", m.ObservationPeriod},
-		{"*", "*"},
-	} {
-		key := RankKey{
-			ImportName:        m.ImportName,
-			MeasurementMethod: propCombination.mm,
-			ObservationPeriod: propCombination.op,
-		}
-		score, ok := StatsRanking[key]
-		if ok {
-			return score
-		}
-	}
-	return BaseRank
+    rk := RankKey{
+        ImportName:        m.ImportName,
+        MeasurementMethod: m.MeasurementMethod,
+        ObservationPeriod: m.ObservationPeriod,
+    }
+	return GetScoreRk(rk)
 }
 
 func (a CohortByRank) Len() int {
@@ -299,27 +269,12 @@ func (a SeriesByRank) Less(i, j int) bool {
 //
 // If no entry is found, a BaseRank is assigned to the source series.
 func GetScore(s *model.SourceSeries) int {
-	for _, propCombination := range []struct {
-		mm string
-		op string
-	}{
-		// Check exact match first
-		{s.MeasurementMethod, s.ObservationPeriod},
-		{s.MeasurementMethod, "*"},
-		{"*", s.ObservationPeriod},
-		{"*", "*"},
-	} {
-		key := RankKey{
-			ImportName:        s.ImportName,
-			MeasurementMethod: propCombination.mm,
-			ObservationPeriod: propCombination.op,
-		}
-		score, ok := StatsRanking[key]
-		if ok {
-			return score
-		}
-	}
-	return BaseRank
+    rk := RankKey{
+        ImportName:        s.ImportName,
+        MeasurementMethod: s.MeasurementMethod,
+        ObservationPeriod: s.ObservationPeriod,
+    }
+    return GetScoreRk(rk)
 }
 
 // ByRank implements sort.Interface for []*SourceSeries based on
