@@ -151,8 +151,8 @@ func BulkLinkedPropertyValues(
 					Name: name,
 				},
 			)
-			result.Data = append(result.Data, oneEntityResult)
 		}
+		result.Data = append(result.Data, oneEntityResult)
 	}
 	return result, nil
 }

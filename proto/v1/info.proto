@@ -57,7 +57,7 @@ message VariableGroupInfoRequest {
   // The variable group dcid to query for.
   string dcid = 1;
   // The entities that the variable group is associated with. The response should
-  // only contain the children variable (group) if it has data for at least one
+  // only contain the child variable (group) if it has data for at least one
   // of the entities.
   repeated string entities = 2;
 }
